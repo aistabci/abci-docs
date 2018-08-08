@@ -1,0 +1,45 @@
+# Vi/Vim backup files
+*~
+*.swp
+*.swo
+
+# Emacs backup files
+.DS_Store
+*~
+*#
+.#*
+
+# ctags
+ctags/tags
+
+# temporary file
+var/
+
+# library
+*.so
+*.a
+
+# YAML for debug
+debug_*.yml
+
+# Warewulf
+*.dump
+
+# compress
+*.gz
+*.bz2
+*.xz
+*.tgz
+*.zip
+
+# original
+*.org
+*.orig
+
+# ignore files for deployment
+site/
+site_pdf/
+^Makefile
+^deploy.sh
+^deploy_pdf.sh
+^make_pdf.sh
