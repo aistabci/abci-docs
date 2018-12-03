@@ -18,6 +18,7 @@ pages:
   - '10. Software Development Environment': '10.md'
   - '11. Application Framework': '11.md'
   - 'Appendix 1. How To Install Software': 'appendix1.md'
+  - 'Appendix 2. How To Use other services': 'appendix2.md'
 theme:
   name: 'material'
   palette:
