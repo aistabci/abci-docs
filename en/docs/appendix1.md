@@ -473,7 +473,8 @@ INSTALL_DIR : install path
 [username@g0001 ~]$ pip3 install tensorflow-gpu==1.8.0 --prefix=INSTALL_DIR
 ```
 
-### Torch 
+### Torch
+
 ```
 INSTALL_DIR : install path
 INSTALL_DIR_OPENBLAS : install path (OpenBLAS)
@@ -490,13 +491,15 @@ INSTALL_DIR_OPENBLAS : install path (OpenBLAS)
 ```
 
 ### PyTorch 
+
 ```
 [username@g0001 ~]$ module load python/3.5.5 cuda/9.1/9.1.85.3
 [username@g0001 ~]$ pip3 install http://download.pytorch.org/whl/cu91/torch-0.4.0-cp35-cp35m-linux_x86_64.whl 
 [username@g0001 ~]$ pip3 install torchvision
-
 ```
+
 ### MXNet 
+
 ```
 [username@g0001 ~]$ git clone --recursive https://github.com/apache/incubator-mxnet.git
 [username@g0001 ~]$ cd incubator-mxnet
@@ -505,6 +508,7 @@ INSTALL_DIR_OPENBLAS : install path (OpenBLAS)
 ```
 
 ### Chainer
+
 ```
 INSTALL_DIR : install path
 
