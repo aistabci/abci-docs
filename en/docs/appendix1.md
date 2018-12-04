@@ -23,7 +23,7 @@ INSTALL_DIR : install path
 [root@g0001 openmpi-2.1.3]# make install 2>&1 | tee make_install.log
 ```
 
-##### CUDA 8.0.61.2
+#### CUDA 8.0.61.2
 
 ```
 INSTALL_DIR : install path
@@ -86,7 +86,7 @@ INSTALL_DIR : install path
 [root@g0001 openmpi-2.1.3]# make install 2>&1 | tee make_install.log
 ```
 
-### CUDA 9.2.88.1
+#### CUDA 9.2.88.1
 
 ```
 INSTALL_DIR : install path
@@ -512,4 +512,16 @@ INSTALL_DIR : install path
 [username@g0001 ~]$ pip3 install --prefix=INSTALL_DIR numpy==1.13
 [username@g0001 ~]$ pip3 install --prefix=INSTALL_DIR cupy-cuda91 
 [username@g0001 ~]$ pip3 install --prefix=INSTALL_DIR chainer 
+```
+
+## Big Data
+
+### Hadoop
+```
+[root@g0001 ~]# wget https://archive.apache.org/dist/hadoop/common/hadoop-2.9.1/hadoop-2.9.1.tar.gz
+...
+[root@g0001 ~]# tar xzf hadoop-2.9.1.tar.gz -C /apps/hadoop
+[root@g0001 ~]# mv /apps/hadoop/hadoop-2.9.1 /apps/hadoop/2.9.1
+[root@g0001 ~]# chown -R root:root /tmp/hoge/2.9.1
+[root@g0001 ~]#
 ```
