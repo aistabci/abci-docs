@@ -472,7 +472,8 @@ INSTALL_DIR : インストールディレクトリのパス
 [username@g0001 ~]$ pip3 install tensorflow-gpu==1.8.0 --prefix=INSTALL_DIR
 ```
 
-### Torch 
+### Torch
+
 ```
 INSTALL_DIR : インストールディレクトリのパス
 INSTALL_DIR_OPENBLAS : インストールディレクトリのパス
@@ -485,17 +486,18 @@ INSTALL_DIR_OPENBLAS : インストールディレクトリのパス
 [username@g0001 ~]$ git clone https://github.com/torch/distro.git ./torch --recursive
 [username@g0001 ~]$ export TORCH_NVCC_FLAGS="-D__CUDA_NO_HALF_OPERATORS__"
 [username@g0001 ~]$ TORCH_LUA_VERSION=LUA51 PREFIX=INSTALL_DIR ./install.sh
-
 ```
 
-### PyTorch 
+### PyTorch
+
 ```
 [username@g0001 ~]$ module load python/3.5.5 cuda/9.1/9.1.85.3
 [username@g0001 ~]$ pip3 install http://download.pytorch.org/whl/cu91/torch-0.4.0-cp35-cp35m-linux_x86_64.whl 
 [username@g0001 ~]$ pip3 install torchvision
-
 ```
-### MXNet 
+
+### MXNet
+
 ```
 [username@g0001 ~]$ git clone --recursive https://github.com/apache/incubator-mxnet.git
 [username@g0001 ~]$ cd incubator-mxnet
@@ -504,6 +506,7 @@ INSTALL_DIR_OPENBLAS : インストールディレクトリのパス
 ```
 
 ### Chainer
+
 ```
 INSTALL_DIR : インストールディレクトリのパス
 
@@ -516,12 +519,11 @@ INSTALL_DIR : インストールディレクトリのパス
 ## 大規模データ処理
 
 ### Hadoop
+
 ```
 [root@g0001 ~]# wget https://archive.apache.org/dist/hadoop/common/hadoop-2.9.1/hadoop-2.9.1.tar.gz
-...
 [root@g0001 ~]# tar xzf hadoop-2.9.1.tar.gz -C /apps/hadoop
 [root@g0001 ~]# mv /apps/hadoop/hadoop-2.9.1 /apps/hadoop/2.9.1
-[root@g0001 ~]# chown -R root:root /tmp/hoge/2.9.1
-[root@g0001 ~]#
+[root@g0001 ~]# chown -R root:root /apps/hadoop/2.9.1
 ```
 
