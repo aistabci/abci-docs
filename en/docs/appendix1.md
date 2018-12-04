@@ -319,7 +319,7 @@
 [username@g0001 ~]$ module load load python/2.7.14 cuda/9.1/9.1.85.3 cudnn/7.0/7.0.5
 [username@g0001 ~]$ git clone https://github.com/BVLC/caffe
 [username@g0001 ~]$ cd caffe
-[username@g0001 caffe$ cp Makefile.config.example Makefile.config
+[username@g0001 caffe]$ cp Makefile.config.example Makefile.config
 [username@g0001 caffe]$ vi Makefile.config
 [username@g0001 caffe]$ make all 2>&1 > log_make-all.txt
 [username@g0001 caffe]$ make test 2>&1 > log_make-test.txt
@@ -330,21 +330,24 @@
 ```
 
 ### Caffe2
+
 ```
+[username@g0001 ~]$ export PREFIX=/apps/caffe2/YYYYMMDD_fd32cc6/python3.6.5_cuda9.1.85.3_cudnn7.0.5
 [username@g0001 ~]$ module load python/3.6.5 cuda/9.1/9.1.85.3 cudnn/7.0/7.0.5 nccl/2.1/2.1.15-1
 [username@g0001 ~]$ git clone https://github.com/gflags/gflags.git
 [username@g0001 ~]$ mkdir gflags/build && cd gflags/build
-[username@g0001 ~]$ cmake3 -DBUILD_SHARED_LIBS=ON -DCMAKE_CXX_FLAGS='-fPIC' -DCMAKE_INSTALL_PREFIX=$PREFIX ..
-[username@g0001 ~]$ make -j 8 2>&1 | tee make.log
-[username@g0001 ~]$ make install 2>&1 | tee make_install.log
-[username@g0001 ~]$ cd
+[username@g0001 build]$ cmake3 -DBUILD_SHARED_LIBS=ON -DCMAKE_CXX_FLAGS='-fPIC' -DCMAKE_INSTALL_PREFIX=$PREFIX ..
+[username@g0001 build]$ make -j 8 2>&1 | tee make.log
+[username@g0001 build]$ make install 2>&1 | tee make_install.log
+[username@g0001 build]$ cd
 
 [username@g0001 ~]$ git clone https://github.com/google/glog
 [username@g0001 ~]$ cd glog
-[username@g0001 ~]$ sh autogen.sh
-[username@g0001 ~]$ CXXFLAGS="-fPIC -I$PREFIX/include" LDFLAGS="-L$PREFIX/lib" ./configure --prefix=$PREFIX 2>&1 | tee configure.log
-[username@g0001 ~]$ make -j 8 2>&1 | tee make.log
-[username@g0001 ~]$ make install 2>&1 | tee make_install.log
+[username@g0001 glog]$ sh autogen.sh
+[username@g0001 glog]$ CXXFLAGS="-fPIC -I$PREFIX/include" LDFLAGS="-L$PREFIX/lib" ./configure --prefix=$PREFIX 2>&1 | tee configure.log
+[username@g0001 glog]$ make -j 8 2>&1 | tee make.log
+[username@g0001 glog]$ make install 2>&1 | tee make_install.log
+[username@g0001 glog]$ cd
 
 [username@g0001 ~]$ pip3 install future graphviz hypothesis jupyter matplotlib numpy protobuf pydot python-nvd3 pyyaml requests scikit-image scipy six --prefix=$PREFIX
 [username@g0001 ~]$ export CUDNN_INCLUDE_DIR=$CUDNN_HOME/include
@@ -361,11 +364,12 @@
 ### Tensorflow 1.8.0
 
 ```
-[username@g0001 ~]$ module load cuda/9.0/9.0.176.2 cudnn/7.0/7.0.5
-[username@g0001 ~]$ pip3 install tensorflow==1.8.0 --prefix=/apps/tensorflow/1.8.0/python3.6.5_cuda9.0.176.2_cudnn7.0.5
+[username@g0001 ~]$ module load python/3.6.5 cuda/9.0/9.0.176.2 cudnn/7.0/7.0.5
+[username@g0001 ~]$ pip3 install tensorflow-gpu==1.8.0 --prefix=/apps/tensorflow-gpu/1.8.0/python3.6.5_cuda9.0.176.2_cudnn7.0.5
 ```
 
 ### Torch
+
 ```
 [username@g0001 ~]$ module load cuda/9.1/9.1.85.3
 [username@g0001 ~]$ git clone https://github.com/xianyi/OpenBLAS.git
@@ -379,13 +383,15 @@
 ```
 
 ### PyTorch
+
 ```
 [username@g0001 ~]$ module load python/3.5.5 cuda/9.1/9.1.85.3
 [username@g0001 ~]$ pip3 install http://download.pytorch.org/whl/cu91/torch-0.4.0-cp35-cp35m-linux_x86_64.whl
 [username@g0001 ~]$ pip3 install torchvision
-
 ```
+
 ### MXNet
+
 ```
 [username@g0001 ~]$ git clone --recursive https://github.com/apache/incubator-mxnet.git
 [username@g0001 ~]$ cd incubator-mxnet
@@ -394,9 +400,10 @@
 ```
 
 ### Chainer
+
 ```
 [username@g0001 ~]$ module python/3.5.5 cuda/9.1/9.1.85.3 cudnn/7.0/7.0.5
-[username@g0001 ~]$ pip3 install --prefix=/apps/chainer/4.1.0/python3.5.5_cuda9.1.85.3_cudnn7.0.5  numpy==1.13
+[username@g0001 ~]$ pip3 install --prefix=/apps/chainer/4.1.0/python3.5.5_cuda9.1.85.3_cudnn7.0.5 numpy==1.13
 [username@g0001 ~]$ pip3 install --prefix=/apps/chainer/4.1.0/python3.5.5_cuda9.1.85.3_cudnn7.0.5 cupy-cuda91
 [username@g0001 ~]$ pip3 install --prefix=/apps/chainer/4.1.0/python3.5.5_cuda9.1.85.3_cudnn7.0.5 chainer
 ```
