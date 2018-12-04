@@ -360,10 +360,10 @@
 [username@es1 nccl]$ su
 [root@es1 nccl]# mkdir /apps/nccl/1.3.5/cuda9.2
 [root@es1 nccl]# make PREFIX=/apps/nccl/1.3.5/cuda9.2 install
-‘/fs3/home/ausername/nccl/build/lib/libnccl.so’ -> ‘/apps/nccl/1.3.5/cuda9.2/lib/libnccl.so’
-‘/fs3/home/ausername/nccl/build/lib/libnccl.so.1’ -> ‘/apps/nccl/1.3.5/cuda9.2/lib/libnccl.so.1’
-‘/fs3/home/ausername/nccl/build/lib/libnccl.so.1.3.5’ -> ‘/apps/nccl/1.3.5/cuda9.2/lib/libnccl.so.1.3.5’
-‘/fs3/home/ausername/nccl/build/include/nccl.h’ -> ‘/apps/nccl/1.3.5/cuda9.2/include/nccl.h’
+‘/fs3/home/username/nccl/build/lib/libnccl.so’ -> ‘/apps/nccl/1.3.5/cuda9.2/lib/libnccl.so’
+‘/fs3/home/username/nccl/build/lib/libnccl.so.1’ -> ‘/apps/nccl/1.3.5/cuda9.2/lib/libnccl.so.1’
+‘/fs3/home/username/nccl/build/lib/libnccl.so.1.3.5’ -> ‘/apps/nccl/1.3.5/cuda9.2/lib/libnccl.so.1.3.5’
+‘/fs3/home/username/nccl/build/include/nccl.h’ -> ‘/apps/nccl/1.3.5/cuda9.2/include/nccl.h’
 ```
 
 ## AI frameworks
@@ -374,7 +374,7 @@
 [username@g0001 ~]$ module load load python/2.7.14 cuda/9.1/9.1.85.3 cudnn/7.0/7.0.5
 [username@g0001 ~]$ git clone https://github.com/BVLC/caffe
 [username@g0001 ~]$ cd caffe
-[username@g0001 caffe$ cp Makefile.config.example Makefile.config
+[username@g0001 caffe]$ cp Makefile.config.example Makefile.config
 [username@g0001 caffe]$ vi Makefile.config
 [username@g0001 caffe]$ make all 2>&1 > log_make-all.txt
 [username@g0001 caffe]$ make test 2>&1 > log_make-test.txt
@@ -385,21 +385,24 @@
 ```
 
 ### Caffe2
+
 ```
+[username@g0001 ~]$ export PREFIX=/apps/caffe2/YYYYMMDD_fd32cc6/python3.6.5_cuda9.1.85.3_cudnn7.0.5
 [username@g0001 ~]$ module load python/3.6.5 cuda/9.1/9.1.85.3 cudnn/7.0/7.0.5 nccl/2.1/2.1.15-1
 [username@g0001 ~]$ git clone https://github.com/gflags/gflags.git
 [username@g0001 ~]$ mkdir gflags/build && cd gflags/build
-[username@g0001 ~]$ cmake3 -DBUILD_SHARED_LIBS=ON -DCMAKE_CXX_FLAGS='-fPIC' -DCMAKE_INSTALL_PREFIX=$PREFIX .. 
-[username@g0001 ~]$ make -j 8 2>&1 | tee make.log 
-[username@g0001 ~]$ make install 2>&1 | tee make_install.log
-[username@g0001 ~]$ cd 
+[username@g0001 build]$ cmake3 -DBUILD_SHARED_LIBS=ON -DCMAKE_CXX_FLAGS='-fPIC' -DCMAKE_INSTALL_PREFIX=$PREFIX .. 
+[username@g0001 build]$ make -j 8 2>&1 | tee make.log 
+[username@g0001 build]$ make install 2>&1 | tee make_install.log
+[username@g0001 build]$ cd 
 
 [username@g0001 ~]$ git clone https://github.com/google/glog
 [username@g0001 ~]$ cd glog
-[username@g0001 ~]$ sh autogen.sh
-[username@g0001 ~]$ CXXFLAGS="-fPIC -I$PREFIX/include" LDFLAGS="-L$PREFIX/lib" ./configure --prefix=$PREFIX 2>&1 | tee configure.log
-[username@g0001 ~]$ make -j 8 2>&1 | tee make.log
-[username@g0001 ~]$ make install 2>&1 | tee make_install.log
+[username@g0001 glog]$ sh autogen.sh
+[username@g0001 glog]$ CXXFLAGS="-fPIC -I$PREFIX/include" LDFLAGS="-L$PREFIX/lib" ./configure --prefix=$PREFIX 2>&1 | tee configure.log
+[username@g0001 glog]$ make -j 8 2>&1 | tee make.log
+[username@g0001 glog]$ make install 2>&1 | tee make_install.log
+[username@g0001 glog]$ cd 
 
 [username@g0001 ~]$ pip3 install future graphviz hypothesis jupyter matplotlib numpy protobuf pydot python-nvd3 pyyaml requests scikit-image scipy six --prefix=$PREFIX
 [username@g0001 ~]$ export CUDNN_INCLUDE_DIR=$CUDNN_HOME/include
@@ -409,15 +412,15 @@
 [username@g0001 ~]$ git clone --recursive https://github.com/pytorch/pytorch.git
 [username@g0001 ~]$ cd pytorch && git submodule update --init
 [username@g0001 pytorch]$ mkdir build && cd build
-[username@g0001 buil]$ cmake3 -DPYTHON_INCLUDE_DIR=/apps/python/3.6.5/include/python3.6m -DPYTHON_EXECUTABLE=/apps/python/3.6.5/bin/python3 -DPYTHON_LIBRARY=/apps/python/3.6.5/lib -DNCCL_INCLUDE_DIR=$NCCL_INCLUDE_DIR -DNCCL_LIBRARY=$NCCL_LIBRARY -DUSE_OPENCV=ON -DCMAKE_INSTALL_PREFIX=$PREFIX .
+[username@g0001 build]$ cmake3 -DPYTHON_INCLUDE_DIR=/apps/python/3.6.5/include/python3.6m -DPYTHON_EXECUTABLE=/apps/python/3.6.5/bin/python3 -DPYTHON_LIBRARY=/apps/python/3.6.5/lib -DNCCL_INCLUDE_DIR=$NCCL_INCLUDE_DIR -DNCCL_LIBRARY=$NCCL_LIBRARY -DUSE_OPENCV=ON -DCMAKE_INSTALL_PREFIX=$PREFIX .
 [username@g0001 build]$ make install 2>&1 | tee make_install.log
 ```
 
 ### Tensorflow 1.8.0
 
 ```
-[username@g0001 ~]$ module load cuda/9.0/9.0.176.2 cudnn/7.0/7.0.5
-[username@g0001 ~]$ pip3 install tensorflow==1.8.0 --prefix=/apps/tensorflow/1.8.0/python3.6.5_cuda9.0.176.2_cudnn7.0.5
+[username@g0001 ~]$ module load python/3.6.5 cuda/9.0/9.0.176.2 cudnn/7.0/7.0.5
+[username@g0001 ~]$ pip3 install tensorflow-gpu==1.8.0 --prefix=/apps/tensorflow-gpu/1.8.0/python3.6.5_cuda9.0.176.2_cudnn7.0.5
 ```
 
 ### Torch 
@@ -451,7 +454,7 @@
 ### Chainer
 ```
 [username@g0001 ~]$ module python/3.5.5 cuda/9.1/9.1.85.3 cudnn/7.0/7.0.5
-[username@g0001 ~]$ pip3 install --prefix=/apps/chainer/4.1.0/python3.5.5_cuda9.1.85.3_cudnn7.0.5  numpy==1.13
+[username@g0001 ~]$ pip3 install --prefix=/apps/chainer/4.1.0/python3.5.5_cuda9.1.85.3_cudnn7.0.5 numpy==1.13
 [username@g0001 ~]$ pip3 install --prefix=/apps/chainer/4.1.0/python3.5.5_cuda9.1.85.3_cudnn7.0.5 cupy-cuda91 
 [username@g0001 ~]$ pip3 install --prefix=/apps/chainer/4.1.0/python3.5.5_cuda9.1.85.3_cudnn7.0.5 chainer 
 ```
