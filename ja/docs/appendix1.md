@@ -515,3 +515,15 @@ INSTALL_DIR : インストールディレクトリのパス
 [username@g0001 ~]$ pip3 install --prefix=INSTALL_DIR cupy-cuda91 
 [username@g0001 ~]$ pip3 install --prefix=INSTALL_DIR chainer 
 ```
+
+## 大規模データ処理
+
+### Hadoop
+
+```
+[root@g0001 ~]# wget https://archive.apache.org/dist/hadoop/common/hadoop-2.9.1/hadoop-2.9.1.tar.gz
+[root@g0001 ~]# tar xzf hadoop-2.9.1.tar.gz -C /apps/hadoop
+[root@g0001 ~]# mv /apps/hadoop/hadoop-2.9.1 /apps/hadoop/2.9.1
+[root@g0001 ~]# chown -R root:root /apps/hadoop/2.9.1
+```
+
