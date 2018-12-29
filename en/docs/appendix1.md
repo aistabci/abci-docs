@@ -403,10 +403,10 @@ INSTALL_DIR : install path
 [username@es1 nccl]$ su
 [root@es1 nccl]# mkdir /apps/nccl/1.3.5/cuda9.2
 [root@es1 nccl]# make PREFIX=INSTALL_DIR install
-‘/fs3/home/username/nccl/build/lib/libnccl.so’ -> ‘/apps/nccl/1.3.5/cuda9.2/lib/libnccl.so’
-‘/fs3/home/username/nccl/build/lib/libnccl.so.1’ -> ‘/apps/nccl/1.3.5/cuda9.2/lib/libnccl.so.1’
-‘/fs3/home/username/nccl/build/lib/libnccl.so.1.3.5’ -> ‘/apps/nccl/1.3.5/cuda9.2/lib/libnccl.so.1.3.5’
-‘/fs3/home/username/nccl/build/include/nccl.h’ -> ‘/apps/nccl/1.3.5/cuda9.2/include/nccl.h’
+'/fs3/home/username/nccl/build/lib/libnccl.so' -> 'apps/nccl/1.3.5/cuda9.2/lib/libnccl.so'
+'/fs3/home/username/nccl/build/lib/libnccl.so.1' -> '/apps/nccl/1.3.5/cuda9.2/lib/libnccl.so.1'
+'/fs3/home/username/nccl/build/lib/libnccl.so.1.3.5' -> '/apps/nccl/1.3.5/cuda9.2/lib/libnccl.so.1.3.5'
+'/fs3/home/username/nccl/build/include/nccl.h' -> '/apps/nccl/1.3.5/cuda9.2/include/nccl.h'
 ```
 
 ## AI frameworks
