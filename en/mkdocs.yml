@@ -21,7 +21,7 @@ nav:
   - '11. Application Framework': '11.md'
   - '12. Remote desktop': '12.md'
   - '13. AWS': '13.md'
-  - 'Appendix 1. How To Install Software': 'appendix1.md'
+  - 'Appendix 1. Configuration of Installed Software': 'appendix1.md'
 theme:
   name: 'material'
   palette:
