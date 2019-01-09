@@ -21,6 +21,7 @@ INSTALL_DIR : install path
 [username@g0001 openmpi-2.1.3]$ make -j8 > make.log 2>&1
 [username@g0001 openmpi-2.1.3]$ su
 [root@g0001 openmpi-2.1.3]# make install 2>&1 | tee make_install.log
+[root@g0001 openmpi-2.1.3]# echo "btl_openib_warn_default_gid_prefix = 0" >> INSTALL_DIR/etc/openmpi-mca-params.conf
 ```
 
 #### CUDA 8.0.61.2
@@ -42,6 +43,7 @@ INSTALL_DIR : install path
 [username@g0001 openmpi-2.1.3]$ make -j8 > make.log 2>&1
 [username@g0001 openmpi-2.1.3]$ su
 [root@g0001 openmpi-2.1.3]# make install 2>&1 | tee make_install.log
+[root@g0001 openmpi-2.1.3]# echo "btl_openib_warn_default_gid_prefix = 0" >> INSTALL_DIR/etc/openmpi-mca-params.conf
 ```
 
 #### CUDA 9.0.176.2
@@ -63,6 +65,7 @@ INSTALL_DIR : install path
 [username@g0001 openmpi-2.1.3]$ make -j8 > make.log 2>&1
 [username@g0001 openmpi-2.1.3]$ su
 [root@g0001 openmpi-2.1.3]# make install 2>&1 | tee make_install.log
+[root@g0001 openmpi-2.1.3]# echo "btl_openib_warn_default_gid_prefix = 0" >> INSTALL_DIR/etc/openmpi-mca-params.conf
 ```
 
 #### CUDA 9.1.85.3
@@ -84,6 +87,7 @@ INSTALL_DIR : install path
 [username@g0001 openmpi-2.1.3]$ make -j8 > make.log 2>&1
 [username@g0001 openmpi-2.1.3]$ su
 [root@g0001 openmpi-2.1.3]# make install 2>&1 | tee make_install.log
+[root@g0001 openmpi-2.1.3]# echo "btl_openib_warn_default_gid_prefix = 0" >> INSTALL_DIR/etc/openmpi-mca-params.conf
 ```
 
 #### CUDA 9.2.88.1
@@ -105,6 +109,7 @@ INSTALL_DIR : install path
 [username@g0001 openmpi-2.1.3]$ make -j8 > make.log 2>&1
 [username@g0001 openmpi-2.1.3]$ su
 [root@g0001 openmpi-2.1.3]# make install 2>&1 | tee make_install.log
+[root@g0001 openmpi-2.1.3]# echo "btl_openib_warn_default_gid_prefix = 0" >> INSTALL_DIR/etc/openmpi-mca-params.conf
 ```
 
 ### Open MPI 3.1.0(for GCC)
@@ -125,7 +130,7 @@ INSTALL_DIR : install path
 [username@g0001 openmpi-3.1.0]$ make -j8 > make.log 2>&1
 [username@g0001 openmpi-3.1.0]$ su
 [root@g0001 openmpi-3.1.0]# make install 2>&1 | tee make_install.log
-[root@g0001 openmpi-3.1.0]# echo "btl_openib_warn_default_gid_prefix = 0" >> /apps/openmpi/3.1.0/gcc4.8.5/etc/openmpi-mca-params.conf
+[root@g0001 openmpi-3.1.0]# echo "btl_openib_warn_default_gid_prefix = 0" >> INSTALL_DIR/etc/openmpi-mca-params.conf
 ```
 
 #### CUDA 8.0.61.2
@@ -146,7 +151,7 @@ INSTALL_DIR : install path
 [username@g0001 openmpi-3.1.0]$ make -j8 > make.log 2>&1
 [username@g0001 openmpi-3.1.0]$ su
 [root@g0001 openmpi-3.1.0]# make install 2>&1 | tee make_install.log
-[root@g0001 openmpi-3.1.0]# echo "btl_openib_warn_default_gid_prefix = 0" >> /apps/openmpi/3.1.0/gcc4.8.5_cuda8.0.61.2/etc/openmpi-mca-params.conf
+[root@g0001 openmpi-3.1.0]# echo "btl_openib_warn_default_gid_prefix = 0" >> INSTALL_DIR/etc/openmpi-mca-params.conf
 ```
 
 #### CUDA 9.0.176.2
@@ -167,7 +172,7 @@ INSTALL_DIR : install path
 [username@g0001 openmpi-3.1.0]$ make -j8 > make.log 2>&1
 [username@g0001 openmpi-3.1.0]$ su
 [root@g0001 openmpi-3.1.0]# make install 2>&1 | tee make_install.log
-[root@g0001 openmpi-3.1.0]# echo "btl_openib_warn_default_gid_prefix = 0" >> /apps/openmpi/3.1.0/gcc4.8.5_cuda9.0.176.2/etc/openmpi-mca-params.conf
+[root@g0001 openmpi-3.1.0]# echo "btl_openib_warn_default_gid_prefix = 0" >> INSTALL_DIR/etc/openmpi-mca-params.conf
 ```
 
 #### CUDA 9.1.85.3
@@ -188,7 +193,7 @@ INSTALL_DIR : install path
 [username@g0001 openmpi-3.1.0]$ make -j8 > make.log 2>&1
 [username@g0001 openmpi-3.1.0]$ su
 [root@g0001 openmpi-3.1.0]# make install 2>&1 | tee make_install.log
-[root@g0001 openmpi-3.1.0]# echo "btl_openib_warn_default_gid_prefix = 0" >> /apps/openmpi/3.1.0/gcc4.8.5_cuda9.1.85.3/etc/openmpi-mca-params.conf
+[root@g0001 openmpi-3.1.0]# echo "btl_openib_warn_default_gid_prefix = 0" >> INSTALL_DIR/etc/openmpi-mca-params.conf
 ```
 
 #### CUDA 9.2.88.1
@@ -209,7 +214,7 @@ INSTALL_DIR : install path
 [username@g0001 openmpi-3.1.0]$ make -j8 > make.log 2>&1
 [username@g0001 openmpi-3.1.0]$ su
 [root@g0001 openmpi-3.1.0]# make install 2>&1 | tee make_install.log
-[root@g0001 openmpi-3.1.0]# echo "btl_openib_warn_default_gid_prefix = 0" >> /apps/openmpi/3.1.0/gcc4.8.5_cuda9.2.88.1/etc/openmpi-mca-params.conf
+[root@g0001 openmpi-3.1.0]# echo "btl_openib_warn_default_gid_prefix = 0" >> INSTALL_DIR/etc/openmpi-mca-params.conf
 ```
 
 ### MVAPICH2(for GCC)
