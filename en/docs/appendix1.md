@@ -7,7 +7,7 @@
 
 ### Open MPI 2.1.3 (for GCC)
 
-#### Normal
+#### w/o CUDA
 
 ```
 INSTALL_DIR=/apps/openmpi/2.1.3/gcc4.8.5
@@ -115,9 +115,9 @@ INSTALL_DIR=/apps/openmpi/2.1.3/gcc4.8.5_cuda9.2.88.1
 [root@g0001 openmpi-2.1.3]# echo "btl_openib_warn_default_gid_prefix = 0" >> $INSTALL_DIR/etc/openmpi-mca-params.conf
 ```
 
-### Open MPI 3.1.0(for GCC)
+### Open MPI 3.1.0 (for GCC)
 
-#### Normal
+#### w/o CUDA
 
 ```
 INSTALL_DIR=/apps/openmpi/3.1.0/gcc4.8.5
@@ -222,9 +222,9 @@ INSTALL_DIR=/apps/openmpi/3.1.0/gcc4.8.5_cuda9.2.88.1
 [root@g0001 openmpi-3.1.0]# echo "btl_openib_warn_default_gid_prefix = 0" >> $INSTALL_DIR/etc/openmpi-mca-params.conf
 ```
 
-### MVAPICH2(for GCC)
+### MVAPICH2 (for GCC)
 
-#### Normal
+#### w/o CUDA
 
 ```
 INSTALL_DIR=/app/mvapich2/2.3rc2/gcc4.8.5
@@ -248,7 +248,7 @@ INSTALL_DIR=/apps/mvapich2/2.3rc2/gcc4.8.5_cuda8.0.61.2
 [username@g0001 ~]$ tar zxf mvapich2-2.3rc2.tar.gz
 [username@g0001 ~]$ cd mvapich2-2.3rc2
 [username@g0001 mvapich2-2.3rc2]$ module load cuda/8.0/8.0.61.2
-[username@g0001 mvapich2-2.3rc2]$ ./configiure \
+[username@g0001 mvapich2-2.3rc2]$ ./configure \
   --prefix=$INSTALL_DIR \
   --enable-cuda \
   --with-cuda=$CUDA_HOME \
@@ -268,7 +268,7 @@ INSTALL_DIR=/apps/mvapich2/2.3rc2/gcc4.8.5_cuda9.0.176.2
 [username@g0001 ~]$ tar zxf mvapich2-2.3rc2.tar.gz
 [username@g0001 ~]$ cd mvapich2-2.3rc2
 [username@g0001 mvapich2-2.3rc2]$ module load cuda/9.0/9.0.176.2
-[username@g0001 mvapich2-2.3rc2]$ ./configiure \
+[username@g0001 mvapich2-2.3rc2]$ ./configure \
   --prefix=$INSTALL_DIR \
   --enable-cuda \
   --with-cuda=$CUDA_HOME \
@@ -288,7 +288,7 @@ INSTALL_DIR=/apps/mvapich2/2.3rc2/gcc4.8.5_cuda9.1.85.3
 [username@g0001 ~]$ tar zxf mvapich2-2.3rc2.tar.gz
 [username@g0001 ~]$ cd mvapich2-2.3rc2
 [username@g0001 mvapich2-2.3rc2]$ module load cuda/9.1/9.1.85.3
-[username@g0001 mvapich2-2.3rc2]$ ./configiure \
+[username@g0001 mvapich2-2.3rc2]$ ./configure \
   --prefix=$INSTALL_DIR \
   --enable-cuda \
   --with-cuda=$CUDA_HOME \
@@ -308,7 +308,7 @@ INSTALL_DIR=/apps/mvapich2/2.3rc2/gcc4.8.5_cuda9.2.88.1
 [username@g0001 ~]$ tar zxf mvapich2-2.3rc2.tar.gz
 [username@g0001 ~]$ cd mvapich2-2.3rc2
 [username@g0001 mvapich2-2.3rc2]$ module load cuda/9.2/9.2.88.1
-[username@g0001 mvapich2-2.3rc2]$ ./configiure \
+[username@g0001 mvapich2-2.3rc2]$ ./configure \
   --prefix=INSTALL_DIR \
   --enable-cuda \
   --with-cuda=$CUDA_HOME \
@@ -364,7 +364,7 @@ INSTALL_DIR=/apps/R/3.5.0
 [username@g0001 R-3.5.0]# make install 2>&1 | tee make_install.log
 ```
 
-## NVIDIA Collective Communications Library (NCCL) 
+## NVIDIA Collective Communications Library (NCCL)
 
 ### NCCL 1.3.5
 
@@ -435,9 +435,8 @@ INSTALL_DIR=/apps/nccl/1.3.5/cuda9.2
 ```
 INSTALL_DIR=/apps/hadoop/2.9.1
 
-[username@g0001 ~]$ wget https://archive.apache.org/dist/hadoop/common/hadoop-2.9.1/hadoop-2.9.1.tar.gz
-[username@g0001 ~]$ su
-[root@g0001 ~]# mkdir -p $INSTALL_DIR
-[root@g0001 ~]# tar xzf hadoop-2.9.1.tar.gz -C $INSTALL_DIR --strip=1
-[root@g0001 ~]# chown -R root:root /apps/hadoop/2.9.1
+wget https://archive.apache.org/dist/hadoop/common/hadoop-2.9.1/hadoop-2.9.1.tar.gz
+sudo mkdir -p $INSTALL_DIR
+sudo tar xzf hadoop-2.9.1.tar.gz -C $INSTALL_DIR --strip=1
+sudo chown -R root:root $INSTALL_DIR
 ```
