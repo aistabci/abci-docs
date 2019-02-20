@@ -25,6 +25,7 @@ nav:
   - 'Appendix 2. Use of ABCI System for HPCI ': 'appendix2.md'
 theme:
   name: 'material'
+  language: 'en'
   palette:
     primary: 'red'
     accent: 'red'
