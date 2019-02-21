@@ -25,6 +25,7 @@ nav:
   - '付録2. HPCIによるABCIシステム利用': 'appendix2.md'
 theme:
   name: 'material'
+  language: 'ja'
   palette:
     primary: 'red'
     accent: 'red'
