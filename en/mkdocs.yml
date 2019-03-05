@@ -23,6 +23,7 @@ nav:
   - '13. AWS': '13.md'
   - 'Appendix 1. Configuration of Installed Software': 'appendix1.md'
   - 'Appendix 2. Use of ABCI System for HPCI ': 'appendix2.md'
+  - 'System Updates': 'system-updates.md'
 theme:
   name: 'material'
   language: 'en'
