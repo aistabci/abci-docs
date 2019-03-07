@@ -20,9 +20,7 @@ job-ID     prior   name       user         state submit/start at     queue      
 
 ## 2018-12-18
 
-### NCCL 2.3.7-1等のインストール
-
-以下のソフトウェアをインストールしました。
+### 追加インストール
 
 #### NCCL 2.3.7-1
 
@@ -114,7 +112,9 @@ $ module load intel-mkl/2018.2.199
 
 ## 2018-12-14
 
-### Singularity 2.6.1のインストール
+### 追加インストール
+
+#### Singularity 2.6.1
 
 Singularity 2.6.1 をインストールしました。使用方法は以下の通りです。
 

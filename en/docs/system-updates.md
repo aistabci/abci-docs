@@ -18,9 +18,7 @@ job-ID     prior   name       user         state submit/start at     queue      
 
 ## 2018-12-18
 
-### Installation of NCCL 2.3.7-1, cuDNN 7.4.2, etc.
-
-We installed the following software:
+### Additional Installations
 
 #### NCCL 2.3.7-1
 
@@ -112,7 +110,9 @@ $ module load intel-mkl/2018.2.199
 
 ## 2018-12-14
 
-### Installation of Singularity 2.6.1
+### Additional Installations
+
+#### Singularity 2.6.1
 
 Singularity 2.6.1 was installed. The usage is as follows:
 
