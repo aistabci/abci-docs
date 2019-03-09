@@ -1,5 +1,14 @@
 # System Updates
 
+<!--
+## 2019-XX-XX
+
+| Add / Update / Delete | Software | Version | Previous version |
+|:--|:--|:--|:--|
+| Update | CentOS | 7.X | 7.4 |
+| Add | CUDA | 10.0.X | |
+-->
+
 ## 2019-01-31
 
 ### User/Group/Job names are now masked when displaying the result of 'qstat'
@@ -18,9 +27,18 @@ job-ID     prior   name       user         state submit/start at     queue      
 
 ## 2018-12-18
 
-### Additional Installations
+| Add / Update / Delete | Software | Version | Previous version |
+|:--|:--|:--|:--|
+| Add | NCCL | 2.3.7-1 | |
+| Add | cuDNN | 7.4.2 | |
+| Add | Open MPI | 3.0.3, 3.1.3 | |
+| Add | MVAPICH2-GDR | 2.3 | |
+| Add | Hadoop | 2.9.2 | |
+| Add | Spark | 2.3.2, 2.4.0 | |
+| Add | Go | 1.11.2 | |
+| Add | Intel MKL | 2018.2.199 | |
 
-#### NCCL 2.3.7-1
+### NCCL 2.3.7-1
 
 The NVIDIA Collective Communications Library (NCCL) 2.3.7-1 was installed.
 
@@ -33,7 +51,7 @@ $ module load cuda/9.2/9.2.148.1
 $ module load nccl/2.3/2.3.7-1
 ```
 
-#### cuDNN 7.4.2
+### cuDNN 7.4.2
 
 The NVIDIA CUDA Deep Neural Network library (cuDNN) 7.4.2 was installed.
 
@@ -46,7 +64,7 @@ $ module load cuda/9.2/9.2.148.1
 $ module load cudnn/7.4/7.4.2
 ```
 
-#### Open MPI 3.0.3, 3.1.3
+### Open MPI 3.0.3, 3.1.3
 
 Open MPI (without --cuda option) 3.0.3, 3.1.3 were installed.
 
@@ -56,7 +74,7 @@ To set up user environment:
 $ module load openmpi/3.1.3
 ```
 
-#### MVAPICH2-GDR 2.3
+### MVAPICH2-GDR 2.3
 
 MVAPICH2-GDR 2.3 was installed.
 
@@ -67,7 +85,7 @@ $ module load cuda/9.2/9.2.148.1
 $ module load mvapich/mvapich2-gdr/2.3
 ```
 
-#### Hadoop 2.9.2
+### Hadoop 2.9.2
 
 Apache Hadoop 2.9.2 was installed.
 
@@ -78,7 +96,7 @@ $ module load openjdk/1.8.0.131
 $ module load hadoop/2.9.1
 ```
 
-#### Spark 2.3.2, 2.4.0
+### Spark 2.3.2, 2.4.0
 
 Apache Spark 2.3.2, 2.4.0 were installed.
 
@@ -88,7 +106,7 @@ To set up user environment:
 $ module load spark/2.4.0
 ```
 
-#### Go 1.11.2
+### Go 1.11.2
 
 Go Programming Language 1.11.2 was installed.
 
@@ -98,7 +116,7 @@ To set up user environment:
 $ module load go/1.11.2
 ```
 
-#### Intel MKL 2018.2.199
+### Intel MKL 2018.2.199
 
 Intel Math Kernel Library (MKL) 2018.2.199 was installed.
 
@@ -110,9 +128,12 @@ $ module load intel-mkl/2018.2.199
 
 ## 2018-12-14
 
-### Additional Installations
+| Add / Update / Delete | Software | Version | Previous version |
+|:--|:--|:--|:--|
+| Update | Singularity | 2.6.1 | 2.6.0 |
+| Delete | Singularity | 2.5.2 | |
 
-#### Singularity 2.6.1
+### Singularity 2.6.1
 
 Singularity 2.6.1 was installed. The usage is as follows:
 
