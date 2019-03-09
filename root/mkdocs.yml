@@ -8,6 +8,7 @@ copyright: 'Copyright &copy; 2018 National Institute of Advanced Industrial Scie
 google_analytics: ['UA-118371652-2', 'portal.abci.ai']
 nav:
   - 'Welcome': 'index.md'
+  - 'Privacy Policy': 'privacy-policy.md'
 theme:
   name: 'material'
   palette:
