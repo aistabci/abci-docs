@@ -23,6 +23,7 @@ nav:
   - '13. AWS の利用': '13.md'
   - '付録1. インストール済みソフトウェアの構成': 'appendix1.md'
   - '付録2. HPCIによるABCIシステム利用': 'appendix2.md'
+  - 'Privacy Policy': 'https://portal.abci.ai/docs/privacy-policy/'
 theme:
   name: 'material'
   language: 'ja'
