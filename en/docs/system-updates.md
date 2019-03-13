@@ -9,6 +9,24 @@
 | Add | CUDA | 10.0.X | |
 -->
 
+## 2019-03-14
+
+| Add / Update / Delete | Software | Version | Previous version |
+|:--|:--|:--|:--|
+| Add | Intel Compiler | 2017.8, 2018.3 | |
+| Add | PGI | 17.10 | |
+| Add | Open MPI | 2.1.6 | |
+| Add | cuDNN | 7.5.0 | |
+| Add | NCCL | 2.4.2-1 | |
+| Add | Intel MKL | 2017.8, 2018.3 | |
+
+Other fixes are as follows:
+
+* Add PGI 17.10 support to MVAPICH2-GDR 2.3
+* Add PGI support to Open MPI 2.1.5, 2.1.6, 3.1.3
+* Change the default version of Open MPI to 2.1.6
+* Fix typo in MVAPICH2 modules, wrong top directory
+
 ## 2019-01-31
 
 ### User/Group/Job names are now masked when displaying the result of 'qstat'
@@ -132,8 +150,6 @@ $ module load intel-mkl/2018.2.199
 |:--|:--|:--|:--|
 | Update | Singularity | 2.6.1 | 2.6.0 |
 | Delete | Singularity | 2.5.2 | |
-
-### Singularity 2.6.1
 
 Singularity 2.6.1 was installed. The usage is as follows:
 

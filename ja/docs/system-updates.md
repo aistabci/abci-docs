@@ -9,6 +9,24 @@
 | Add | CUDA | 10.0.X | |
 -->
 
+## 2019-03-14
+
+| Add / Update / Delete | Software | Version | Previous version |
+|:--|:--|:--|:--|
+| Add | Intel Compiler | 2017.8, 2018.3 | |
+| Add | PGI | 17.10 | |
+| Add | Open MPI | 2.1.6 | |
+| Add | cuDNN | 7.5.0 | |
+| Add | NCCL | 2.4.2-1 | |
+| Add | Intel MKL | 2017.8, 2018.3 | |
+
+その他の修正点は下記の通りです:
+
+* MVAPICH2-GDR 2.3 を PGI 17.10 に対応
+* Open MPI 2.1.5, 2.1.6, 3.1.3 を PGI に対応
+* Open MPI の default module を 2.1.6 に変更
+* MVAPICH2 のトップディレクトリのtypoを修正
+
 ## 2019-01-31
 
 ### qstatコマンドの出力の変更
@@ -134,8 +152,6 @@ $ module load intel-mkl/2018.2.199
 |:--|:--|:--|:--|
 | Update | Singularity | 2.6.1 | 2.6.0 |
 | Delete | Singularity | 2.5.2 | |
-
-### Singularity 2.6.1
 
 Singularity 2.6.1 をインストールしました。使用方法は以下の通りです。
 
