@@ -1,8 +1,8 @@
 TensorFlow-GPU
 
-#1 シングルGPU
+## 1 シングルGPU
 
-## 1.1 導入方法
+### 1.1 導入方法
 
 [TensorFlow](https://www.tensorflow.org/)のインストール方法は以下を参照ください。
 
@@ -17,7 +17,7 @@ NEW_VENV : インストールするPython仮想環境、またはディレクト
 (tensorflow-gpu) [username@g0001 ~]$ pip3 install tensorflow-gpu==1.12.0
 ```
 
-## 1.2 実行方法
+### 1.2 実行方法
 
 サンプルプログラムのダウンロード
 ```
@@ -55,9 +55,9 @@ WORK     : 実行環境
 ```
 
 
-# 2 シングルノードマルチGPU
+## 2 シングルノードマルチGPU
 
-## 2.1 導入方法
+### 2.1 導入方法
 
 horovodを利用したtensorflow並列環境の構築
 ```
@@ -73,7 +73,7 @@ NEW_VENV : インストールするPython仮想環境、またはディレクト
 (NEW_VENV) [username@g0001 ~]$ HOROVOD_NCCL_HOME=$NCCL_HOME HOROVOD_GPU_ALLREDUCE=NCCL pip3 install horovod
 ```
 
-## 2.2 実行方法
+### 2.2 実行方法
 
 サンプルプログラムのダウンロード
 ```
@@ -122,9 +122,9 @@ WORK     : 実行環境
 [username@es ~]$ qsub -g GROUP submit.sh
 ```
 
-# 3 マルチノードマルチGPU
+## 3 マルチノードマルチGPU
 
-## 3.1 導入方法
+### 3.1 導入方法
 
 horovodを利用したtensorflow並列環境の構築
 ```
@@ -138,7 +138,7 @@ NEW_VENV : インストールするPython仮想環境、またはディレクト
 (NEW_VENV) [username@g0001 ~]$ HOROVOD_NCCL_HOME=$NCCL_HOME HOROVOD_GPU_ALLREDUCE=NCCL pip3 install horovod
 ```
 
-## 3.2 実行方法
+### 3.2 実行方法
 
 サンプルプログラムのダウンロード
 ```
