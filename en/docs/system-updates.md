@@ -11,7 +11,7 @@
 | Add | DDN Lustre | 2.10.5_ddn7-1 | |
 | Add | CUDA | 10.0.130 | |
 | Add | Intel Compiler | 2019.3 | |
-| Add | PGI | 18.5 19.3 | |
+| Add | PGI | 18.10 19.3 | |
 
 Other fixes are as follows:
 
