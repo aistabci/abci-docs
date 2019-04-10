@@ -24,7 +24,7 @@ nav:
     - '13. AWS の利用': '13.md'
     - '付録1. インストール済みソフトウェアの構成': 'appendix1.md'
     - '付録2. HPCIによるABCIシステム利用': 'appendix2.md'
-  - '制限事項': 'restriction.md'
+  - '既知の問題': 'known-issues.md'
   - 'システム更新履歴': 'system-updates.md'
   - 'プライバシーポリシー': 'https://portal.abci.ai/docs/privacy-policy/'
 theme:

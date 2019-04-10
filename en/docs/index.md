@@ -5,4 +5,4 @@ All users who use this system are strongly recommended to read this document, as
 
 
 !!! notte
-    Please check restrictions before using.
+    Please check "Known issues" before using.
