@@ -19,11 +19,14 @@ nav:
     - '8. Use MPI': '08.md'
     - '9. Linux Container': '09.md'
     - '10. Software Development Environment': '10.md'
-    - '11. Application Framework': '11.md'
-    - '12. Remote desktop': '12.md'
-    - '13. AWS': '13.md'
+    - '11. Remote desktop': '11.md'
+    - '12. AWS': '12.md'
     - 'Appendix 1. Configuration of Installed Software': 'appendix1.md'
     - 'Appendix 2. Use of ABCI System for HPCI ': 'appendix2.md'
+  - 'Libraries':
+    - 'TensorFlow': 'apps/tensorflow.md'
+    - 'Chainer': 'apps/chainer.md'
+    - 'その他': 'apps/other.md'
   - 'System Updates': 'system-updates.md'
   - 'Privacy Policy': 'https://portal.abci.ai/docs/privacy-policy/'
 theme:

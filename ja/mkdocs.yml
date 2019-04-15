@@ -19,14 +19,14 @@ nav:
     - '8. MPIの利用': '08.md'
     - '9. Linuxコンテナ': '09.md'
     - '10. プログラム開発環境': '10.md'
-    - '11. アプリケーション・フレームワーク': '11.md'
-    - '12. ABCIでのリモートデスクトップ利用': '12.md'
-    - '13. AWS の利用': '13.md'
+    - '11. ABCIでのリモートデスクトップ利用': '11.md'
+    - '12. AWS の利用': '12.md'
     - '付録1. インストール済みソフトウェアの構成': 'appendix1.md'
     - '付録2. HPCIによるABCIシステム利用': 'appendix2.md'
-  - 'アプリケーション・フレームワーク':
-    - 'TensorFlow': 'tensorflow.md'
-    - 'Chainer': 'chainer.md'
+  - '各種ライブラリ':
+    - 'TensorFlow': 'apps/tensorflow.md'
+    - 'Chainer': 'apps/chainer.md'
+    - 'その他': 'apps/other.md'
   - 'システム更新履歴': 'system-updates.md'
   - 'プライバシーポリシー': 'https://portal.abci.ai/docs/privacy-policy/'
 theme:
