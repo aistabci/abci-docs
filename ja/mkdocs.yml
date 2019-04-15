@@ -27,6 +27,7 @@ nav:
     - 'TensorFlow': 'apps/tensorflow.md'
     - 'Chainer': 'apps/chainer.md'
     - 'その他': 'apps/other.md'
+  - '既知の問題': 'known-issues.md'
   - 'システム更新履歴': 'system-updates.md'
   - 'プライバシーポリシー': 'https://portal.abci.ai/docs/privacy-policy/'
 theme:

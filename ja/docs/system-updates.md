@@ -1,13 +1,21 @@
 # システム更新履歴
 
-<!--
-## 2019-XX-XX
+## 2019-04-05
 
 | Add / Update / Delete | Software | Version | Previous version |
 |:--|:--|:--|:--|
-| Update | CentOS | 7.X | 7.4 |
-| Add | CUDA | 10.0.X | |
--->
+| Update | CentOS | 7.5 | 7.4 |
+| Update | Univa Grid Engine | 8.6.3 | 8.5.4 |
+| Update | Java | 1.7.0_171 | 1.7.0_141|
+| Update | Java | 1.8.0_161 | 1.8.0_131|
+| Add | DDN Lustre | 2.10.5_ddn7-1 | |
+| Add | CUDA | 10.0.130 | |
+| Add | Intel Compiler | 2019.3 | |
+| Add | PGI | 18.10 19.3 | |
+
+その他の修正点は下記の通りです:
+
+* ホーム領域を GPFS から Lustre に移行
 
 ## 2019-03-14
 
