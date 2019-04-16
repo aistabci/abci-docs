@@ -17,6 +17,7 @@ NEW_VENV : python virtual environment or path to be installed
 [username@g0001 ~]$ python3 -m venv ${NEW_VENV}
 [username@g0001 ~]$ source ${NEW_VENV}/bin/activate
 (tensorflow-gpu) [username@g0001 ~]$ pip3 install tensorflow-gpu==1.12.0
+```
 
 ### 1.2 Execute
 
