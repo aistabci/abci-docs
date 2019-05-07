@@ -1,3 +1,6 @@
+To use TensorFlow on the ABCI system, user must install it to home or group area.
+The procedures for installation and test run are as follows (as of March 29th, 2019).
+
 # TensorFlow-GPU
 
 ## 1 Single GPU
