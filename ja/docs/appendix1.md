@@ -221,6 +221,280 @@ INSTALL_DIR=/apps/openmpi/3.1.0/gcc4.8.5_cuda9.2.88.1
 [root@g0001 openmpi-3.1.0]# echo "btl_openib_warn_default_gid_prefix = 0" >> $INSTALL_DIR/etc/openmpi-mca-params.conf
 ```
 
+### Open MPI 2.1.6 (for PGI18.5)
+
+#### w/o CUDA
+```
+INSTALL_DIR='/apps/openmpi/2.1.6/pgi18.5'
+
+[username@g0001 ~]$ wget https://download.open-mpi.org/release/open-mpi/v2.1/openmpi-2.1.6.tar.gz
+[username@g0001 ~]$ tar zxf openmpi-2.1.6.tar.gz
+[username@g0001 ~]$ module load pgi/18.5
+[username@g0001 ~]$ export CPP=cpp
+[username@g0001 ~]$ cd openmpi-2.1.6
+[username@g0001 openmpi-2.1.6]$ ./configure \
+    --prefix=$INSTALL_DIR \
+    --enable-orterun-prefix-by-default \
+    --with-sge \
+    2>&1 | tee configure.log
+[username@g0001 openmpi-2.1.6]$ make -j 8 2>&1 | tee make.log
+[username@g0001 openmpi-2.1.6]$ su
+[root@g0001 openmpi-2.1.6]# make install
+[root@g0001 openmpi-2.1.6]# echo "btl_openib_warn_default_gid_prefix = 0" >> $INSTALL_DIR/etc/openmpi-mca-params.conf
+```
+
+#### CUDA 8.0.61.2
+```
+INSTALL_DIR='/apps/openmpi/2.1.6/pgi18.5_cuda8.0.61.2'
+
+[username@g0001 ~]$ wget https://download.open-mpi.org/release/open-mpi/v2.1/openmpi-2.1.6.tar.gz
+[username@g0001 ~]$ tar zxf openmpi-2.1.6.tar.gz
+[username@g0001 ~]$ module load pgi/18.5
+[username@g0001 ~]$ export CPP=cpp
+[username@g0001 ~]$ module load cuda/8.0/8.0.61.2
+[username@g0001 ~]$ cd openmpi-2.1.6
+[username@g0001 openmpi-2.1.6]$ ./configure \
+    --prefix=$INSTALL_DIR \
+    --enable-mpi-thread-multiple \
+    --with-cuda=$CUDA_HOME \
+    --enable-orterun-prefix-by-default \
+    --with-sge \
+    2>&1 | tee configure.log
+[username@g0001 openmpi-2.1.6]$ make -j 8 2>&1 | tee make.log
+[username@g0001 openmpi-2.1.6]$ su
+[root@g0001 openmpi-2.1.6]# make install
+[root@g0001 openmpi-2.1.6]# echo "btl_openib_warn_default_gid_prefix = 0" >> $INSTALL_DIR/etc/openmpi-mca-params.conf
+```
+
+#### CUDA 9.0.176.2
+```
+INSTALL_DIR='/apps/openmpi/2.1.6/pgi18.5_cuda9.0.176.2'
+
+[username@g0001 ~]$ wget https://download.open-mpi.org/release/open-mpi/v2.1/openmpi-2.1.6.tar.gz
+[username@g0001 ~]$ tar zxf openmpi-2.1.6.tar.gz
+[username@g0001 ~]$ module load pgi/18.5
+[username@g0001 ~]$ export CPP=cpp
+[username@g0001 ~]$ module load cuda/9.0/9.0.176.2
+[username@g0001 ~]$ cd openmpi-2.1.6
+[username@g0001 openmpi-2.1.6]$ ./configure \
+    --prefix=$INSTALL_DIR \
+    --enable-mpi-thread-multiple \
+    --with-cuda=$CUDA_HOME \
+    --enable-orterun-prefix-by-default \
+    --with-sge \
+    2>&1 | tee configure.log
+[username@g0001 openmpi-2.1.6]$ make -j 8 2>&1 | tee make.log
+[username@g0001 openmpi-2.1.6]$ su
+[root@g0001 openmpi-2.1.6]# make install
+[root@g0001 openmpi-2.1.6]# echo "btl_openib_warn_default_gid_prefix = 0" >> $INSTALL_DIR/etc/openmpi-mca-params.conf
+```
+
+
+
+#### CUDA 9.1.85.3
+```
+INSTALL_DIR='/apps/openmpi/2.1.6/pgi18.5_cuda9.1.85.3'
+
+[username@g0001 ~]$ wget https://download.open-mpi.org/release/open-mpi/v2.1/openmpi-2.1.6.tar.gz
+[username@g0001 ~]$ tar zxf openmpi-2.1.6.tar.gz
+[username@g0001 ~]$ module load pgi/18.5
+[username@g0001 ~]$ export CPP=cpp
+[username@g0001 ~]$ module load cuda/9.1/9.1.85.3
+[username@g0001 ~]$ cd openmpi-2.1.6
+[username@g0001 openmpi-2.1.6]$ ./configure \
+    --prefix=$INSTALL_DIR \
+    --enable-mpi-thread-multiple \
+    --with-cuda=$CUDA_HOME \
+    --enable-orterun-prefix-by-default \
+    --with-sge \
+    2>&1 | tee configure.log
+[username@g0001 openmpi-2.1.6]$ make -j 8 2>&1 | tee make.log
+[username@g0001 openmpi-2.1.6]$ su
+[root@g0001 openmpi-2.1.6]# make install
+[root@g0001 openmpi-2.1.6]# echo "btl_openib_warn_default_gid_prefix = 0" >> $INSTALL_DIR/etc/openmpi-mca-params.conf
+```
+
+#### CUDA 9.2.88.1
+```
+INSTALL_DIR='/apps/openmpi/2.1.6/pgi18.5_cuda9.2.88.1'
+
+[username@g0001 ~]$ wget https://download.open-mpi.org/release/open-mpi/v2.1/openmpi-2.1.6.tar.gz
+[username@g0001 ~]$ tar zxf openmpi-2.1.6.tar.gz
+[username@g0001 ~]$ module load pgi/18.5
+[username@g0001 ~]$ export CPP=cpp
+[username@g0001 ~]$ module load cuda/9.2/9.2.88.1
+[username@g0001 ~]$ cd openmpi-2.1.6
+[username@g0001 openmpi-2.1.6]$ ./configure \
+    --prefix=$INSTALL_DIR \
+    --enable-mpi-thread-multiple \
+    --with-cuda=$CUDA_HOME \
+    --enable-orterun-prefix-by-default \
+    --with-sge \
+    2>&1 | tee configure.log
+[username@g0001 openmpi-2.1.6]$ make -j 8 2>&1 | tee make.log
+[username@g0001 openmpi-2.1.6]$ su
+[root@g0001 openmpi-2.1.6]# make install
+[root@g0001 openmpi-2.1.6]# echo "btl_openib_warn_default_gid_prefix = 0" >> $INSTALL_DIR/etc/openmpi-mca-params.conf
+```
+
+#### CUDA 9.2.148.1
+
+```
+INSTALL_DIR='/apps/openmpi/2.1.6/pgi18.5_cuda9.2.148.1'
+
+[username@g0001 ~]$ wget https://download.open-mpi.org/release/open-mpi/v2.1/openmpi-2.1.6.tar.gz
+[username@g0001 ~]$ tar zxf openmpi-2.1.6.tar.gz
+[username@g0001 ~]$ module load pgi/18.5
+[username@g0001 ~]$ export CPP=cpp
+[username@g0001 ~]$ module load cuda/9.2/9.2.148.1
+[username@g0001 ~]$ cd openmpi-2.1.6
+[username@g0001 openmpi-2.1.6]$ ./configure \
+    --prefix=$INSTALL_DIR \
+    --enable-mpi-thread-multiple \
+    --with-cuda=$CUDA_HOME \
+    --enable-orterun-prefix-by-default \
+    --with-sge \
+    2>&1 | tee configure.log
+[username@g0001 openmpi-2.1.6]$ make -j 8 2>&1 | tee make.log
+[username@g0001 openmpi-2.1.6]$ su
+[root@g0001 openmpi-2.1.6]# make install
+[root@g0001 openmpi-2.1.6]# echo "btl_openib_warn_default_gid_prefix = 0" >> $INSTALL_DIR/etc/openmpi-mca-params.conf
+```
+
+### Open MPI 3.1.3 (for PGI18.5)
+
+#### w/o CUDA
+```
+INSTALL_DIR='/apps/openmpi/3.1.3/pgi18.5'
+
+[username@g0001 ~]$ wget https://download.open-mpi.org/release/open-mpi/v3.1/openmpi-3.1.3.tar.gz
+[username@g0001 ~]$ tar zxf openmpi-3.1.3.tar.gz
+[username@g0001 ~]$ module load pgi/18.5
+[username@g0001 ~]$ export CPP=cpp
+[username@g0001 ~]$ cd openmpi-3.1.3
+[username@g0001 openmpi-3.1.3]$ ./configure \
+    --prefix=$INSTALL_DIR \
+    --enable-orterun-prefix-by-default \
+    --with-sge \
+    2>&1 | tee configure.log
+[username@g0001 openmpi-3.1.3]$ make -j 8 2>&1 | tee make.log
+[username@g0001 openmpi-3.1.3]$ su
+[root@g0001 openmpi-3.1.3]# make install
+[root@g0001 openmpi-3.1.3]# echo "btl_openib_warn_default_gid_prefix = 0" >> $INSTALL_DIR/etc/openmpi-mca-params.conf
+```
+
+#### CUDA 8.0.61.2
+```
+INSTALL_DIR='/apps/openmpi/3.1.3/pgi18.5_cuda8.0.61.2'
+
+[username@g0001 ~]$ wget https://download.open-mpi.org/release/open-mpi/v3.1/openmpi-3.1.3.tar.gz
+[username@g0001 ~]$ tar zxf openmpi-3.1.3.tar.gz
+[username@g0001 ~]$ module load pgi/18.5
+[username@g0001 ~]$ export CPP=cpp
+[username@g0001 ~]$ module load cuda/8.0/8.0.61.2
+[username@g0001 ~]$ cd openmpi-3.1.3
+[username@g0001 openmpi-3.1.3]$ ./configure \
+    --prefix=$INSTALL_DIR \
+    --with-cuda=$CUDA_HOME \
+    --enable-orterun-prefix-by-default \
+    --with-sge \
+    2>&1 | tee configure.log
+[username@g0001 openmpi-3.1.3]$ make -j 8 2>&1 | tee make.log
+[username@g0001 openmpi-3.1.3]$ su
+[root@g0001 openmpi-3.1.3]# make install
+[root@g0001 openmpi-3.1.3]# echo "btl_openib_warn_default_gid_prefix = 0" >> $INSTALL_DIR/etc/openmpi-mca-params.conf
+```
+
+#### CUDA 9.0.176.2
+```
+INSTALL_DIR='/apps/openmpi/3.1.3/pgi18.5_cuda9.0.176.2'
+
+[username@g0001 ~]$ wget https://download.open-mpi.org/release/open-mpi/v3.1/openmpi-3.1.3.tar.gz
+[username@g0001 ~]$ tar zxf openmpi-3.1.3.tar.gz
+[username@g0001 ~]$ module load pgi/18.5
+[username@g0001 ~]$ export CPP=cpp
+[username@g0001 ~]$ module load cuda/9.0/9.0.176.2
+[username@g0001 ~]$ cd openmpi-3.1.3
+[username@g0001 openmpi-3.1.3]$ ./configure \
+    --prefix=$INSTALL_DIR \
+    --with-cuda=$CUDA_HOME \
+    --enable-orterun-prefix-by-default \
+    --with-sge \
+    2>&1 | tee configure.log
+[username@g0001 openmpi-3.1.3]$ make -j 8 2>&1 | tee make.log
+[username@g0001 openmpi-3.1.3]$ su
+[root@g0001 openmpi-3.1.3]# make install
+[root@g0001 openmpi-3.1.3]# echo "btl_openib_warn_default_gid_prefix = 0" >> $INSTALL_DIR/etc/openmpi-mca-params.conf
+```
+
+#### CUDA 9.1.85.3
+```
+INSTALL_DIR='/apps/openmpi/3.1.3/pgi18.5_cuda9.1.85.3'
+
+[username@g0001 ~]$ wget https://download.open-mpi.org/release/open-mpi/v3.1/openmpi-3.1.3.tar.gz
+[username@g0001 ~]$ tar zxf openmpi-3.1.3.tar.gz
+[username@g0001 ~]$ module load pgi/18.5
+[username@g0001 ~]$ export CPP=cpp
+[username@g0001 ~]$ module load cuda/9.1/9.1.85.3
+[username@g0001 ~]$ cd openmpi-3.1.3
+[username@g0001 openmpi-3.1.3]$ ./configure \
+    --prefix=$INSTALL_DIR \
+    --with-cuda=$CUDA_HOME \
+    --enable-orterun-prefix-by-default \
+    --with-sge \
+    2>&1 | tee configure.log
+[username@g0001 openmpi-3.1.3]$ make -j 8 2>&1 | tee make.log
+[username@g0001 openmpi-3.1.3]$ su
+[root@g0001 openmpi-3.1.3]# make install
+[root@g0001 openmpi-3.1.3]# echo "btl_openib_warn_default_gid_prefix = 0" >> $INSTALL_DIR/etc/openmpi-mca-params.conf
+```
+
+#### CUDA 9.2.88.1
+```
+INSTALL_DIR='/apps/openmpi/3.1.3/pgi18.5_cuda9.2.88.1'
+
+[username@g0001 ~]$ wget https://download.open-mpi.org/release/open-mpi/v3.1/openmpi-3.1.3.tar.gz
+[username@g0001 ~]$ tar zxf openmpi-3.1.3.tar.gz
+[username@g0001 ~]$ module load pgi/18.5
+[username@g0001 ~]$ export CPP=cpp
+[username@g0001 ~]$ module load cuda/9.2/9.2.88.1
+[username@g0001 ~]$ cd openmpi-3.1.3
+[username@g0001 openmpi-3.1.3]$ ./configure \
+    --prefix=$INSTALL_DIR \
+    --with-cuda=$CUDA_HOME \
+    --enable-orterun-prefix-by-default \
+    --with-sge \
+    2>&1 | tee configure.log
+[username@g0001 openmpi-3.1.3]$ make -j 8 2>&1 | tee make.log
+[username@g0001 openmpi-3.1.3]$ su
+[root@g0001 openmpi-3.1.3]# make install
+[root@g0001 openmpi-3.1.3]# echo "btl_openib_warn_default_gid_prefix = 0" >> $INSTALL_DIR/etc/openmpi-mca-params.conf
+```
+
+
+#### CUDA 9.2.148.1
+
+```
+INSTALL_DIR='/apps/openmpi/3.1.3/pgi18.5_cuda9.2.148.1'
+
+[username@g0001 ~]$ wget https://download.open-mpi.org/release/open-mpi/v3.1/openmpi-3.1.3.tar.gz
+[username@g0001 ~]$ tar zxf openmpi-3.1.3.tar.gz
+[username@g0001 ~]$ module load pgi/18.5
+[username@g0001 ~]$ export CPP=cpp
+[username@g0001 ~]$ module load cuda/9.2/9.2.148.1
+[username@g0001 ~]$ cd openmpi-3.1.3
+[username@g0001 openmpi-3.1.3]$ ./configure \
+    --prefix=$INSTALL_DIR \
+    --with-cuda=$CUDA_HOME \
+    --enable-orterun-prefix-by-default \
+    --with-sge \
+    2>&1 | tee configure.log
+[username@g0001 openmpi-3.1.3]$ make -j 8 2>&1 | tee make.log
+[username@g0001 openmpi-3.1.3]$ su
+[root@g0001 openmpi-3.1.3]# make install
+[root@g0001 openmpi-3.1.3]# echo "btl_openib_warn_default_gid_prefix = 0" >> $INSTALL_DIR/etc/openmpi-mca-params.conf
+```
+
 ### MVAPICH2 (for GCC)
 
 #### w/o CUDA
