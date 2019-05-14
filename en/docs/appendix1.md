@@ -235,8 +235,6 @@ INSTALL_DIR='/apps/openmpi/2.1.6/pgi18.5'
 [username@g0001 ~]$ cd openmpi-2.1.6
 [username@g0001 openmpi-2.1.6]$ ./configure \
     --prefix=$INSTALL_DIR \
-    --enable-mpi-thread-multiple \
-    --with-cuda=$CUDA_HOME \
     --enable-orterun-prefix-by-default \
     --with-sge \
     2>&1 | tee configure.log
@@ -375,7 +373,6 @@ INSTALL_DIR='/apps/openmpi/3.1.3/pgi18.5'
 [username@g0001 ~]$ cd openmpi-3.1.3
 [username@g0001 openmpi-3.1.3]$ ./configure \
     --prefix=$INSTALL_DIR \
-    --with-cuda=$CUDA_HOME \
     --enable-orterun-prefix-by-default \
     --with-sge \
     2>&1 | tee configure.log
