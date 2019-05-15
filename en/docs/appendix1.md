@@ -235,6 +235,7 @@ INSTALL_DIR='/apps/openmpi/2.1.6/pgi18.5'
 [username@g0001 ~]$ cd openmpi-2.1.6
 [username@g0001 openmpi-2.1.6]$ ./configure \
     --prefix=$INSTALL_DIR \
+    --enable-mpi-thread-multiple \
     --enable-orterun-prefix-by-default \
     --with-sge \
     2>&1 | tee configure.log
