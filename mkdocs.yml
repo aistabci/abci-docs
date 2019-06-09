@@ -1,0 +1,69 @@
+site_name: ABCI Users Guide
+site_description: AI Bridging Cloud Infrastructure (ABCI)
+site_author: AIST
+site_url: https://portal.abci.ai/docs/
+repo_url: https://github.com/aistairc/abci-user-manual
+edit_uri: edit/master/docs/
+copyright: 'Copyright 2019 National Institute of Advanced Industrial Science and Technology (AIST)'
+google_analytics: ['UA-118371652-2', 'portal.abci.ai']
+nav:
+  - 'Welcome': 'index.md'
+  - 'Japanese':
+    - 'はじめに': 'ja/index.md'
+    - '利用手引き':
+      - '1. ABCIシステムの概要': 'ja/01.md'
+      - '2. ABCIシステム利用環境': 'ja/02.md'
+      - '3. ジョブ実行環境': 'ja/03.md'
+      - '4. ストレージ': 'ja/04.md'
+      - '5. Environment Modulesの利用': 'ja/05.md'
+      - '6. Pythonの利用': 'ja/06.md'
+      - '7. GPUの利用': 'ja/07.md'
+      - '8. MPIの利用': 'ja/08.md'
+      - '9. Linuxコンテナ': 'ja/09.md'
+      - '10. プログラム開発環境': 'ja/10.md'
+      - '11. アプリケーション・フレームワーク': 'ja/11.md'
+      - '付録1. インストール済みソフトウェアの構成': 'ja/appendix1.md'
+      - '付録2. HPCIによるABCIシステム利用': 'ja/appendix2.md'
+    - 'Tips':
+      - 'リモートデスクトップの利用': 'ja/tips/remote-desktop.md'
+      - 'AWS CLIの利用': 'ja/tips/awscli.md'
+      - 'GCC 7.3.0の利用': 'ja/tips/gcc-7.3.0.md'
+    - '既知の問題': 'ja/known-issues.md'
+    - 'システム更新履歴': 'ja/system-updates.md'
+    - '運転状況': 'https://abci.ai/ja/about_abci/info.html'
+
+  - 'English':
+    - 'Introduction': 'en/index.md'
+    - 'Users Guide':
+      - '1. ABCI System Overview': 'en/01.md'
+      - '2. ABCI System User Environment': 'en/02.md'
+      - '3. Job Execution Environment': 'en/03.md'
+      - '4. Storage': 'en/04.md'
+      - '5. Use Environment Modules': 'en/05.md'
+      - '6. Use Python': 'en/06.md'
+      - '7. Use GPU': 'en/07.md'
+      - '8. Use MPI': 'en/08.md'
+      - '9. Linux Container': 'en/09.md'
+      - '10. Software Development Environment': 'en/10.md'
+      - '11. Application Framework': 'en/11.md'
+      - 'Appendix 1. Configuration of Installed Software': 'en/appendix1.md'
+      - 'Appendix 2. Use of ABCI System for HPCI ': 'en/appendix2.md'
+    - 'Known Issues': 'en/known-issues.md'
+    - 'Tips':
+      - 'Remote Desktop': 'en/tips/remote-desktop.md'
+      - 'AWS CLI': 'en/tips/awscli.md'
+      - 'GCC 7.3.0': 'en/tips/gcc-7.3.0.md'
+    - 'System Updates': 'en/system-updates.md'
+    - 'Operation Status': 'https://abci.ai/en/about_abci/info.html'
+  - 'Privacy Policy': 'privacy-policy.md'
+theme:
+  name: 'material'
+  language: 'ja'
+  palette:
+    primary: 'red'
+    accent: 'red'
+  feature:
+    tabs: true
+markdown_extensions:
+  - admonition
+  - codehilite
