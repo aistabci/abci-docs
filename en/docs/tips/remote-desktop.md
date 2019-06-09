@@ -1,8 +1,8 @@
-# Remote desktop
+# Remote Desktop
 
 ## Overview
 
-This chapter describes using Remote Desktop. By using Remote Desktop, you can use the GUI on compute nodes.
+This page describes how to enable Remote Desktop on ABCI with VNC (Virtual Network Computing). By using Remote Desktop, you can use the GUI on compute nodes.
 
 ## Preparation
 
@@ -79,10 +79,9 @@ Log file is /home/username/.vnc/g0001.abci.local:1.log
 
 g0001.abci.local:1 is a display name of launched VNC server.A port number 5901 is assinged to this server. A port with 5900 added to the display number is allocated such as: 5902 in case of :2, 5903 in case of :3.
 
-
 ## Start VNC
 
-The following chapter explains how to start VNC separately for macOS and Windows.
+The following part explains how to start VNC separately for macOS and Windows.
 
 ### macOS environment
 

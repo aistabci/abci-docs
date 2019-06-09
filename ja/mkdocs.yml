@@ -20,10 +20,12 @@ nav:
     - '9. Linuxコンテナ': '09.md'
     - '10. プログラム開発環境': '10.md'
     - '11. アプリケーション・フレームワーク': '11.md'
-    - '12. ABCIでのリモートデスクトップ利用': '12.md'
-    - '13. AWS の利用': '13.md'
     - '付録1. インストール済みソフトウェアの構成': 'appendix1.md'
     - '付録2. HPCIによるABCIシステム利用': 'appendix2.md'
+  - 'Tips':
+    - 'リモートデスクトップの利用': 'tips/remote-desktop.md'
+    - 'AWS CLIの利用': 'tips/awscli.md'
+    - 'GCC 7.3.0の利用': 'tips/gcc-7.3.0.md'
   - '既知の問題': 'known-issues.md'
   - 'システム更新履歴': 'system-updates.md'
   - '運転状況': 'https://abci.ai/ja/about_abci/info.html'
@@ -34,6 +36,8 @@ theme:
   palette:
     primary: 'red'
     accent: 'red'
+  feature:
+    tabs: false
 markdown_extensions:
   - admonition
-  - codehilite:
+  - codehilite

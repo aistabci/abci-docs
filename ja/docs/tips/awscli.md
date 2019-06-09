@@ -1,18 +1,19 @@
-# AWS
+# AWS CLI の利用
 
-## Overview
+## 概要
 
-This chapter describes installation of AWS command line interface (awscli below) and command examples.
+ABCIからAWSを利用するためには、利用者ごとにAWSコマンドラインインターフェイス（以下、awscli）をインストールする必要があります。ここでは、awscliのインストールと各種利用方法を記載します。
 
-## Installation of awscli
+## AWSコマンドラインインターフェイス(awscli)のインストール
 
+pipでインストールします。
 ```
 [username@es1 testdir]$ pip install awscli
 ```
 
-## Register access token
+## アクセストークンの登録
 
-register your AWS access token
+入手済みのAWSアクセスキーを登録します。
 ```
 [username@es1 testdir]$  aws configure
 AWS Access Key ID [None]: 
@@ -21,15 +22,16 @@ Default region name [None]:
 Default output format [None]:
 ```
 
-## command example
+## 各種操作例
+ここでは、awscli の各種操作方法を説明します。
 
-* Creates an S3 bucket.
+* バケットの作成
 ```
 [username@es1 testdir]$ aws s3 mb s3://abci-access-test
 make_bucket: abci-access-test
 ```
 
-* Copy a local file to S3 bucket (cp)
+* ローカルのファイルをバケットに保存
 ```
 [username@es1 testdir]$ ls -la 1gb.dat 
 -rw-r--r-- 1 username grpname 1073741824 Nov  7 11:27 1gb.dat
@@ -37,13 +39,13 @@ make_bucket: abci-access-test
 upload: ./1gb.dat to s3://abci-access-test/1gb.dat
 ```
 
-* List S3 object in the bucket (ls) 
+* バケット内のファイルを表示(ls) 
 ```
 [username@es1 testdir]$ aws s3 ls s3://abci-access-test 
 2018-11-09 10:13:56 1073741824 1gb.dat
 ```
 
-* Delete S3 object in the bucket (rm)
+* バケット内のファイルを削除(rm)
 ```
 [username@es1 testdir]$ aws s3 rm s3://abci-access-test/1gb.dat
 delete: s3://abci-access-test/1gb.dat
@@ -54,14 +56,14 @@ total 2097152
 -rw-r--r-- 1 username grpname   1073741824 Nov  9 10:17 1gb.dat.2
 ```
 
-* Sync and recursively copy local file to bucket(sync)
+* ディレクトリを含むファイルごとバケットにアップロード(sync)
 ```
 [username@es1 testdir]$ aws s3 sync dir-test s3://abci-access-test/dir-test
 upload: dir-test/1gb.dat.2 to s3://abci-access-test/dir-test/1gb.dat.2
 upload: dir-test/1gb.dat.1 to s3://abci-access-test/dir-test/1gb.dat.1
 ```
 
-* Sync and recursively copy file to bucket(sync)
+* バケット内でディレクトリを含むファイルごとコピー(sync)
 ```
 [username@es1 testdir]$ aws s3 sync s3://abci-access-test/dir-test s3://abci-access-test/dir-test2
 copy: s3://abci-access-test/dir-test/1gb.dat.1 to s3://abci-access-test/dir-test2/1gb.dat.1
@@ -71,7 +73,7 @@ copy: s3://abci-access-test/dir-test/1gb.dat.2 to s3://abci-access-test/dir-test
 2018-11-09 10:20:06 1073741824 1gb.dat.2
 ```
 
-* Sync directories and recursively copy file to local directory (sync)
+* バケットからディレクトリを含むファイルごとダウンロード(sync)
 ```
 [username@es1 testdir]$ aws s3 sync s3://abci-access-test/dir-test2 dir-test2
 download: s3://abci-access-test/dir-test2/1gb.dat.2 to dir-test2/1gb.dat.2
@@ -82,7 +84,7 @@ total 2097152
 -rw-r--r-- 1 username grpname 1073741824 Nov  9 10:20 1gb.dat.2
 ```
 
-* Deletes an S3 object in the bucket
+* バケット内のディレクトリを含むファイルごと削除
 ```
 [username@es1 testdir]$ aws s3 rm --recursive s3://abci-access-test/dir-test
 delete: s3://abci-access-test/dir-test/1gb.dat.2
@@ -92,8 +94,9 @@ delete: s3://abci-access-test/dir-test2/1gb.dat.2
 delete: s3://abci-access-test/dir-test2/1gb.dat.1
 ```
 
-* Deletes an empty S3 bucket. 
+* バケットを削除
 ```
 [username@es1 testdir]$ aws s3 rb s3://abci-access-test
 remove_bucket: abci-access-test
 ```
+
