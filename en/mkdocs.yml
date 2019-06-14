@@ -17,7 +17,7 @@ nav:
     - '6. Python': '06.md'
     - '7. GPU': '07.md'
     - '8. MPI': '08.md'
-    - '9. Linux Container': '09.md'
+    - '9. Linux Containers': '09.md'
     - '10. Software Development Environment': '10.md'
     - '11. Application Framework': '11.md'
     - 'Appendix 1. Configuration of Installed Software': 'appendix1.md'
