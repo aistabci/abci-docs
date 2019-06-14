@@ -16,7 +16,7 @@ nav:
     - '5. Environment Modules': '05.md'
     - '6. Python': '06.md'
     - '7. GPU': '07.md'
-    - '8. Use MPI': '08.md'
+    - '8. MPI': '08.md'
     - '9. Linux Container': '09.md'
     - '10. Software Development Environment': '10.md'
     - '11. Application Framework': '11.md'
