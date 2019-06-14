@@ -3,51 +3,51 @@
 !!! note
     This section describes how to login to the interactive node, and to transfer files and so on for HPCI users.
 
-## 1. Login to Interactive Node
+## Login to Interactive Node
 
-To login to the interactive node(*es*) as frontend, you need to login to the access server(*hpci.abci.ai*) with proxy certificate and then to login to the interactive node with the `ssh` command.
+To login to the interactive node (*es*) as frontend, you need to login to the access server (*hpci.abci.ai*) with proxy certificate and then to login to the interactive node with the `ssh` command.
 
-### 1.1. Linux/Mac Environment
+### Linux / macOS Environment
 
-Login to the access server for HPCI(*hpci.abci.ai*) with the `gsissh` command.
+Login to the access server for HPCI (*hpci.abci.ai*) with the `gsissh` command.
 
-<pre>
- yourpc$ gsissh -p 2222 <i>hpci.abci.ai</i>
- [username@hpci1 ~]$
-</pre>
+<div class="codehilite"><pre>
+yourpc$ gsissh -p 2222 <i>hpci.abci.ai</i>
+[username@hpci1 ~]$
+</pre></div>
 
 After login to the access server for HPCI, login to the interactive node with the `ssh` command.
 
-<pre>
- [username@hpci1 ~]$ ssh <i>es</i>
- [username@es1 ~]$
-</pre>
+<div class="codehilite"><pre>
+[username@hpci1 ~]$ ssh <i>es</i>
+[username@es1 ~]$
+</pre></div>
 
-### 1.2. Windows Environment(GSI-SSHTerm)
+### Windows Environment (GSI-SSHTerm)
 
 To login to the interactive node, the following procedure is necessary.
 
 1. Launch the GSI-SSHTerm
-2. Enter the access server for HPCI(*hpci.abci.ai*) and login
+2. Enter the access server for HPCI (*hpci.abci.ai*) and login
 3. Login to the interactive node with the `ssh` command
 
 After login to the accesss server for HPCI, login to the interactive node with the `ssh` command.
 
-<pre>
- [username@hpci1 ~]$ ssh <i>es</i>
- [username@es1 ~]$
-</pre>
+<div class="codehilite"><pre>
+[username@hpci1 ~]$ ssh <i>es</i>
+[username@es1 ~]$
+</pre></div>
 
-## 2. File Transfer to Interactive Node
+## File Transfer to Interactive Node
 
 The home area is not shared on the access server for HPCI.
 So, when transferring files between your PC and the ABCI system,
-transfer them to the access server(*hpci.abci.ai*) once, and then transfer them to the interactive node with the `scp`(`sftp`) command.
+transfer them to the access server (*hpci.abci.ai*) once, and then transfer them to the interactive node with the `scp` (`sftp`) command.
 
-<pre>
- [username@hpci1 ~]$ scp local-file username@<i>es</i>:remote-dir
- local-file    100% |***********************|  file-size  transfer-time
-</pre>
+<div class="codehilite"><pre>
+[username@hpci1 ~]$ scp local-file username@<i>es</i>:remote-dir
+local-file    100% |***********************|  file-size  transfer-time
+</pre></div>
 
 To display disk usage and quota about home area on the access server for HPCI,
 use the `quota` command.
@@ -72,7 +72,7 @@ Disk quotas for user axa01004ti (uid 1004):
     The allocation amount of home area on the access server for HPCI is 100GB.
     Delete unnecessary files as soon as possible.
 
-## 3. Mount HPCI Shared Storage
+## Mount HPCI shared storage
 
 To mount the HPCI shared storage on the access server for HPCI, use the `mount.hpci` command.
 
@@ -95,7 +95,7 @@ To unmount the HPCI shared storage, use the `umount.hpci` command.
 [username@hpci1 ~]$ umount.hpci
 ```
 
-## 4. Communication Between Access Server for HPCI and External Service
+## Communication between Access Server for HPCI and external services
 
 Some communication between the access server for HPCI and external service/server is permitted.
 We will consider permission for a certain period of time on application basis for communication which is not currently permitted.

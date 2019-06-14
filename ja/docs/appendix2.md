@@ -3,27 +3,27 @@
 !!! note
     本項では、HPCIの利用者の方を対象に、ABCIシステムのインタラクティブノードへのログイン、ファイル転送方法等を説明します。
 
-## 1. インタラクティブノードへのログイン
+## インタラクティブノードへのログイン {#login-to-interactive-node}
 
-ABCIシステムのフロントエンドであるインタラクティブノード(代表ホスト名：*es*)にログインするには、代理証明書を利用してHPCI 向けアクセスサーバ(ホスト名：*hpci.abci.ai*)にログインして、更に`ssh`コマンドを用いてインタラクティブノードにログインする必要があります。なお本章では、ABCIのサーバ名はフォントをイタリックで表記します。
+ABCIシステムのフロントエンドであるインタラクティブノード (代表ホスト名：*es*) にログインするには、代理証明書を利用してHPCI 向けアクセスサーバ (ホスト名：*hpci.abci.ai*) にログインして、更に`ssh`コマンドを用いてインタラクティブノードにログインする必要があります。なお本章では、ABCIのサーバ名はフォントをイタリックで表記します。
 
-### 1.1. UNIX系OSでのログイン (macOSなど)
+### Linux / macOSなどの環境 {#linux-macos-environment}
 
 `gsissh`コマンドでHPCI向けアクセスサーバ(*hpci.abci.ai*)にログインします。
 
-<pre>
- yourpc$ gsissh -p 2222 <i>hpci.abci.ai</i>
- [username@hpci1 ~]$
-</pre>
+<div class="codehilite"><pre>
+yourpc$ gsissh -p 2222 <i>hpci.abci.ai</i>
+[username@hpci1 ~]$
+</pre></div>
 
 HPCI向けアクセスサーバにログイン後、`ssh`コマンドを用いてインタラクティブノードにログインします。
 
-<pre>
- [username@hpci1 ~]$ ssh <i>es</i>
- [username@es1 ~]$
-</pre>
+<div class="codehilite"><pre>
+[username@hpci1 ~]$ ssh <i>es</i>
+[username@es1 ~]$
+</pre></div>
 
-### 1.2. Windows系OSでのログイン (GSI-SSHTerm)
+### Windows環境 (GSI-SSHTerm) {#windows-environment-gsi-sshterm}
 
 インタラクティブノードへのログインは、以下手順で実施します。
 
@@ -38,17 +38,17 @@ HPCI向けアクセスサーバにログイン後、`ssh`コマンドを用い�
  [username@es1 ~]$
 </pre>
 
-## 2. インタラクティブノードへのファイル転送
+## インタラクティブノードへのファイル転送 {#file-transfer-to-interactive-node}
 
 HPCI向けアクセスサーバではホーム領域が共有されていません。
 そのため、インタラクティブノードへファイル転送をする場合、
 一旦HPCI向けアクセスサーバ(ホスト名：*hpci.abci.ai*)へファイル転送し、
 さらにインタラクティブノードへ`scp`(`sftp`)コマンドで転送してください。
 
-<pre>
- [username@hpci1 ~]$ scp local-file username@<i>es</i>:remote-dir
- local-file    100% |***********************|  file-size  transfer-time
-</pre>
+<div class="codehilite"><pre>
+[username@hpci1 ~]$ scp local-file username@<i>es</i>:remote-dir
+local-file    100% |***********************|  file-size  transfer-time
+</pre></div>
 
 HPCI向けアクセスサーバ用ホーム領域の使用状況と割り当て量を表示するには、
 `quota`コマンドを利用します。
@@ -73,7 +73,7 @@ Disk quotas for user axa01004ti (uid 1004):
     HPCI向けアクセスサーバのホーム領域の割り当て量は100GBです。
     不要になったファイルは削除してください。
 
-## 3. HPCI共用ストレージのマウント
+## HPCI共用ストレージのマウント {#mount-hpci-shared-storage}
 
 HPCI向けアクセスサーバでHPCI共用ストレージをマウントする場合は、`mount.hpci`コマンドを使用します。
 
@@ -96,7 +96,7 @@ HPCI共用ストレージをアンマウントする場合は、`umount.hpci`コ
 [username@hpci1 ~]$ umount.hpci
 ```
 
-## 4. HPCI向けアクセスサーバと外部サービスの通信
+## HPCI向けアクセスサーバと外部サービスの通信 {#communication-between-access-server-for-hpci-and-external-services}
 
 HPCI向けアクセスサーバとABCI外部のサービス・サーバ間の通信は一部許可されています。
 現在許可されていない通信に関しても、申請ベースで一定期間許可することを検討しますので、要望ありましたらサポートまで問い合わせください。
