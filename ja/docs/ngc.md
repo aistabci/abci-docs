@@ -1,95 +1,138 @@
-# NGCの利用
+# NVIDIA GPU Cloud (NGC)
 
-NGC (NVIDIA GPU Cloud) コンテナ レジストリに登録されているDockerイメージを、ABCIで使用する手順について説明します。
+[NVIDIA GPU Cloud (NGC)](https://ngc.nvidia.com/)は、NVIDIA GPUに最適化されたディープラーニングフレームワークやHPCアプリケーションのDockerイメージと、それらを配布するためのNGCレジストリを提供しています。ABCIでは、Singularityを利用することで、NGCが提供するDockerイメージを簡便に実行することができます。
 
-----
+ここでは、NGCレジストリに登録されているDockerイメージをABCIで利用する手順について説明します。
 
-## API KEY が不要なイメージの使用
+## 前提知識 {#prerequisites}
 
-API KEY が必要(アカウントの登録が必要)な場合については、後述します。
+### NGCレジストリのイメージ名 {#ngc-image-name}
 
-例えば TensorFlow が使えるイメージを探しているものとします。
+NGCレジストリのDockerイメージは、以下の形式で指定されます。
 
-ブラウザで [NGCのページ](https://ngc.nvidia.com/) を開きます。
-
-"Search Containers" と表示されている検索ワードの入力フォームに、"tensorflow" と入力すると、すぐに見つけられます。
-
-TensowFlow のアイコンをクリックすると、
 ```
-Pull Command
-  docker pull nvcr.io/nvidia/tensorflow:19.05-py2
-```
-のような案内が載っていますので、その情報を元に Singularity のイメージを作成します。
-
-インタラクティブノードで、以下のような作業を行います。
-```
-es1$ module load singularity/2.6.1
-es1$ singularity pull --name tensorflow.19.05-py2.simg docker://nvcr.io/nvidia/tensorflow:19.05-py2
+nvcr.io/<space>/image-name:tag
 ```
 
-インタラクティブジョブでサンプルプログラムを実行してみます。
+Singularityから利用する場合には、URLスキーマとして``docker://``を指定して以下のように表します。
 
-qrshを使い、1台占有するインタラクティブジョブを開始します。
 ```
-es1$ qrsh -g <利用グループ> -l rt_F=1
-g0001$ 
+docker://nvcr.io/<space>/image-name:tag
 ```
 
-サンプルプログラム cnn_mnist.py を実行します。
-最後の方に正解率などの情報が出力されます。
-```
-g0001$ module load singularity/2.6.1
-g0001$ singularity run --nv tensorflow-19.05-py2.simg python /opt/tensorflow/tensorflow/examples/tutorials/layers/cnn_mnist.py
+### NGC Website {#ngc-website}
 
+[NGC Website](https://ngc.nvidia.com/)は、NGCレジストリの内容をブラウズしたり、NGC API Keyを生成したりするためのポータルです。
+
+NGCレジストリのDockerイメージのうち、大半は自由に利用できますが、一部はNGCアカウントとNGC API Keyがなければアクセスできません。以下に両者の例を挙げます。
+
+* 自由に利用できるイメージの例: [https://ngc.nvidia.com/catalog/containers/nvidia:tensorflow](https://ngc.nvidia.com/catalog/containers/nvidia:tensorflow)
+* アクセス制限されたイメージの例: [https://ngc.nvidia.com/catalog/containers/partners:chainer](https://ngc.nvidia.com/catalog/containers/partners:chainer)
+
+NGC Websiteで、NGCアカウントでサインインしていない状態では、後者のイメージを利用するためのPull Commandなど一部情報が閲覧できず、またAPI Keyを生成することもできません。以下では、自由に利用できるイメージを前提に説明を行います。[アクセス制限されたイメージの利用](#using-locked-images)については後述します。
+
+その他、NGC Websiteに関する詳細は下記を参照してください。
+
+* [NGC Getting Started Guide](https://docs.nvidia.com/ngc/ngc-getting-started-guide/index.html)
+
+## シングルノードでの実行 {#single-node-run}
+
+以下では、TensorFlowを例に、NGCレジストリで提供されているDockerイメージの実行方法を説明します。
+
+### イメージ名の確認 {#identify-image-name}
+
+TensorFlowのイメージをNGC Wbesiteで探します。ブラウザで[NGC Website](https://ngc.nvidia.com/)を開き、"Search Containers"と表示されている検索フォームに、"tensorflow" と入力すると、
+[https://ngc.nvidia.com/catalog/containers/nvidia:tensorflow](https://ngc.nvidia.com/catalog/containers/nvidia:tensorflow)
+が見つけられるはずです。
+
+Dockerで利用する際のPull Commandが以下のように示されています。
+
+```
+docker pull nvcr.io/nvidia/tensorflow:19.05-py2
+```
+
+[NGCレジストリのイメージ名](#ngc-image-name)で説明したとおり、Singularityから利用する場合には、このイメージは以下のURLで指定できることが分かります。
+
+```
+docker://nvcr.io/nvidia/tensorflow:19.05-py2
+```
+
+### Singularityイメージの生成 {#build-singularity-image}
+
+インタラクティブノード上でSingularityイメージを生成します。
+
+```
+[username@es1 ~] $ module load singularity/2.6.1
+[username@es1 ~] $ singularity pull --name tensorflow.19.05-py2.simg docker://nvcr.io/nvidia/tensorflow:19.05-py2
+```
+
+### Singularityイメージの実行 {#run-singularity-image}
+
+1ノード占有でインタラクティブジョブを起動し、サンプルプログラム cnn_mnist.py を実行します。
+
+```
+[username@es1 ~]$ qrsh -g grpname -l rt_F=1
+[username@g0001 ~]$ module load singularity/2.6.1
+[username@g0001 ~]$ singularity run --nv tensorflow-19.05-py2.simg python /opt/tensorflow/tensorflow/examples/tutorials/layers/cnn_mnist.py
 :
-
 {'loss': 0.10828217, 'global_step': 20000, 'accuracy': 0.9667}
 ```
 
-インタラクティブジョブを終了させます。
-```
-g0001$ exit
-logout
-es1$
-```
-
-### MPI を使った実行例
-
-先ほど同じコンテナイメージを使用します。
-
-イメージの中にインストールされているOpenMPIのバージョンを確認します。
+バッチジョブでも同様に実行できます。
 
 ```
-es1$ singularity exec tensorflow-19.05-py2.simg mpirun --version
+#!/bin/sh
+#$ -l rt_F=1
+#$ -j y
+#$ -cwd
+
+source /etc/profile.d/modules.sh
+module load singularity/2.6.1
+singularity run --nv tensorflow-19.05-py2.simg python /opt/tensorflow/tensorflow/examples/tutorials/layers/cnn_mnist.py
+```
+
+## 複数ノードでの実行 {#multi-node-run}
+
+NGCのコンテナイメージのうち、MPIでの並列実行に対応しているものは複数ノードでの実行が可能です。[シングルノードでの実行](#single-node-run)で使用したTensorFlowイメージも並列実行に対応しています。
+
+### MPIバージョンの確認 {#identify-mpi-version}
+
+イメージにインストールされているMPIのバージョンを事前に確認します。
+
+```
+[username@es1 ~] $ module load singularity/2.6.1
+[username@es1 ~] $ singularity exec tensorflow-19.05-py2.simg mpirun --version
 mpirun (Open MPI) 3.1.3
 
 Report bugs to http://www.open-mpi.org/community/help/
 ```
 
-qrshを使い、今度は2台占有するインタラクティブジョブを開始します。
+次にABCIで利用できるOpen MPIのバージョンを確認します。
+
 ```
-es1$ qrsh -g <利用グループ> -l rt_F=2
-g0001$ 
+[username@es1 ~] $ module avail openmpi
+
+-------------------------------------------- /apps/modules/modulefiles/mpi ---------------------------------------------
+openmpi/1.10.7         openmpi/2.1.5          openmpi/3.0.3          openmpi/3.1.2
+openmpi/2.1.3          openmpi/2.1.6(default) openmpi/3.1.0          openmpi/3.1.3
 ```
 
-singularityのモジュールファイルをロードします。
+``openmpi/3.1.3`` を使うのが適当のようです。少なくともメジャーバージョンが一致している必要があります。
+
+### SingularityイメージのMPI実行 {#run-singularity-image-with-mpi}
+
+2ノード占有でインタラクティブジョブを起動し、必要なモジュールを読み込みます。
+
 ```
-$ module load singularity/2.6.1
+[username@es1 ~]$ qrsh -g grpname -l rt_F=1
+[username@g0001 ~]$ module load singularity/2.6.1 openmpi/3.1.3
 ```
 
-先程確認したOpenMPIのバージョンに近いバージョンのモジュールファイルをロードします。
-少なくとも2.x.x系列であるか3.x.x系列であるかは合わせる必要があります。
-```
-$ module load openmpi/3.1.3
-```
+1ノードあたり4基のGPUがあり、2ノード占有では計8基のGPUが使えることになります。この場合、8個のプロセスをノードあたり4個ずつ並列に起動し、サンプルプログラム tensorflow_mnist.py を実行します。
 
-1台あたり4GPUあり、今回は2ノード占有ですので、以下のようにサンプルプログラムを実行します。
-処理がはじまると、進行状況が出力されます。
 ```
-$ mpirun -np 8 -npernode 4 singularity run --nv tensorflow-19.05-py2.simg python /opt/tensorflow/third_party/horovod/examples/tensorflow_mnist.py
-
+[username@g0001 ~]$ mpirun -np 8 -npernode 4 singularity run --nv tensorflow-19.05-py2.simg python /opt/tensorflow/third_party/horovod/examples/tensorflow_mnist.py
 :
-
 INFO:tensorflow:loss = 2.1563044, step = 30 (0.153 sec)
 INFO:tensorflow:loss = 2.1480849, step = 30 (0.153 sec)
 INFO:tensorflow:loss = 2.1783454, step = 30 (0.152 sec)
@@ -106,86 +149,75 @@ INFO:tensorflow:loss = 1.7744101, step = 40 (0.154 sec)
 INFO:tensorflow:loss = 1.7266351, step = 40 (0.154 sec)
 INFO:tensorflow:loss = 1.7221795, step = 40 (0.154 sec)
 INFO:tensorflow:loss = 1.8231221, step = 40 (0.154 sec)
-
 :
-
 ```
 
-インタラクティブジョブを終了させます。
+バッチジョブでも同様に実行できます。
+
 ```
-g0001$ exit
-logout
-es1$
-```
+#!/bin/sh
+#$ -l rt_F=2
+#$ -j y
+#$ -cwd
 
-----
-
-## API KEY が必要なイメージの使用
-
-例えば Chainer が使える環境を探しているものとします。
-
-[NGCのページ](https://ngc.nvidia.com/) で chainer を検索します。
-見つかったChainerのページを開くと、
-```
-Pull Command
-  Sign in to access the PULL feature of this repository.
-```
-とあります。NGCのアカウントが必要ですので、"Sign in" のところをクリックし、
-"Create an Account" ボタンからダイアログの指示に従ってアカウントを作成します。
-
-登録したメールアドレスにリンクが送られてきますので、そのリンクからログインします。
-
-ログインしたら、
-[Generating Your NGC API Key](https://docs.nvidia.com/ngc/ngc-getting-started-guide/index.html#generating-api-key)
-のページを参考にAPI KEYを取得してください。
-API KEYは後で必要になるので控えますが、パスワードと同じように、失くしたり他人に見せたりしてはいけません。
-
-取得したら、左上の NVIDIA NGC のところをクリックしてトップページに戻り、
-再度 chainer を検索します。
-見つかったChainerのページを開くと、今度は Pull Command の内容が表示されていますので、
-その情報を元に Singularity のイメージを作成します。
-最初の環境変数に設定している $ マークのところは、そのまま $ マークを打ってください。何かに読み替えたり展開されることを意味しているわけではありません。
-```
-es1$ export SINGULARITY_DOCKER_USERNAME='$oauthtoken'
-es1$ export SINGULARITY_DOCKER_PASSWORD=<取得したAPI KEY>
-es1$ singularity pull -n chainer.simg docker://nvcr.io<確認した Pull Command の情報を元に続きを入力>
+source /etc/profile.d/modules.sh
+module load singularity/2.6.1 openmpi/3.1.3
+mpirun -np 8 -npernode 4 singularity run --nv tensorflow-19.05-py2.simg python /opt/tensorflow/third_party/horovod/examples/tensorflow_mnist.py
 ```
 
-インタラクティブジョブでサンプルプログラムを実行してみます。
+## アクセス制限されたイメージの利用 {#using-locked-images}
 
-qrshを使い、GPUが1つ割り当てあられるインタラクティブジョブを開始します。
-```
-es1$ qrsh -g <利用グループ> -l rt_G.small=1
-g0001$ 
-```
+以下では、Chainerを例に、NGCレジストリ上でアクセス制限されたイメージの実行方法を説明します。
 
-サンプルプログラムをダウンロードします。
-(chainerのコンテナイメージのタグが4.0.0b1の場合です)
+### イメージ名の確認 {#identify-locked-image-name}
+
+[https://ngc.nvidia.com/catalog/containers/partners:chainer](https://ngc.nvidia.com/catalog/containers/partners:chainer) でNGCアカウントにサインインすることで、Dockerで利用する際のPull Commandが得られます。
+
 ```
-g0001$ wget https://raw.githubusercontent.com/chainer/chainer/6733f15ffbc2f4a2275c09150fd94fc9ec791f75/examples/mnist/train_mnist.py
+docker pull nvcr.io/partners/chainer:4.0.0b1
 ```
 
-サンプルプログラムを実行します。
-処理が進むと、正解率などの情報が出力されます。
-```
-g0001$ module load singularity/2.6.1
-g0001$ singularity exec --nv chainer.simg python train_mnist.py -g 0
+Singularityから利用する場合には、このイメージは以下のURLで指定できることが分かります。
 
+```
+docker://nvcr.io/partners/chainer:4.0.0b1
+```
+
+### Singularityイメージの生成 {#build-locked-singularity-image}
+
+イメージの生成には、NGC API Keyが必要です。下記の手順にしたがって生成してください。
+
+* [Generating Your NGC API Key](https://docs.nvidia.com/ngc/ngc-getting-started-guide/index.html#generating-api-key)
+
+インタラクティブノード上でSingularityイメージを生成します。Dockerイメージのダウンロードには、環境変数``SINGULARITY_DOCKER_USERNAME``, ``SINGULARITY_DOCKER_PASSWORD``の設定が必要です。
+
+```
+[username@es1 ~] $ module load singularity/2.6.1
+[username@es1 ~] $ export SINGULARITY_DOCKER_USERNAME='$oauthtoken'
+[username@es1 ~] $ export SINGULARITY_DOCKER_PASSWORD=<NGC API Key>
+[username@es1 ~] $ singularity pull --name chainer-4.0.0b1.simg docker://nvcr.io/partners/chainer:4.0.0b1
+```
+
+### Singularityイメージの実行 {#run-locked-singularity-image}
+
+通常のSingularityイメージと同じ手順で実行できます。
+
+```
+[username@es1 ~] $ qrsh -g grpname -l rt_G.small=1
+[username@g0001 ~]$ module load singularity/2.6.1
+[username@g0001 ~]$ wget https://raw.githubusercontent.com/chainer/chainer/6733f15ffbc2f4a2275c09150fd94fc9ec791f75/examples/mnist/train_mnist.py
+[username@g0001 ~]$ singularity exec --nv chainer-4.0.0b1.simg python train_mnist.py -g 0
 :
-
 epoch       main/loss   validation/main/loss  main/accuracy  validation/main/accuracy  elapsed_time
 1           0.192916    0.103601              0.9418         0.967                     9.05948
 2           0.0748937   0.0690557             0.977333       0.9784                    10.951
 3           0.0507463   0.0666913             0.983682       0.9804                    12.8735
 4           0.0353792   0.0878195             0.988432       0.9748                    14.7425
-
 :
-
 ```
 
-インタラクティブジョブを終了させます。
-```
-g0001$ exit
-logout
-es1$
-```
+## 参考 {#references}
+
+1. [NGC Getting Started Guide](https://docs.nvidia.com/ngc/ngc-getting-started-guide/index.html)
+1. [NGC Container User Guide](https://docs.nvidia.com/ngc/ngc-user-guide/index.html)
+1. [Running NGC Containers Using Singularity](https://docs.nvidia.com/ngc/ngc-user-guide/singularity.html)
