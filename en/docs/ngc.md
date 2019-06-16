@@ -128,7 +128,7 @@ openmpi/2.1.3          openmpi/2.1.6(default) openmpi/3.1.0          openmpi/3.1
 Start an interative job with two full-nodes, and load required environment modules.
 
 ```
-[username@es1 ~]$ qrsh -g grpname -l rt_F=1
+[username@es1 ~]$ qrsh -g grpname -l rt_F=2
 [username@g0001 ~]$ module load singularity/2.6.1 openmpi/3.1.3
 ```
 
@@ -136,7 +136,8 @@ Each full-node has four GPUs, and we have eight GPUs in total.
 In this case, we run four processes on each full-node in parallel, that means eight processes in total, so as to execute the sample program ``tensorflow_mnist.py``.
 
 ```
-[username@g0001 ~]$ mpirun -np 8 -npernode 4 singularity run --nv tensorflow-19.05-py2.simg python /opt/tensorflow/third_party/horovod/examples/tensorflow_mnist.py
+[username@g0001 ~]$ wget https://raw.githubusercontent.com/horovod/horovod/2aac48c95c035bee7d68f9aff30e59319f46c21e/examples/tensorflow_mnist.py
+[username@g0001 ~]$ mpirun -np 8 -npernode 4 singularity run --nv tensorflow-19.05-py2.simg python tensorflow_mnist.py
 :
 INFO:tensorflow:loss = 2.1563044, step = 30 (0.153 sec)
 INFO:tensorflow:loss = 2.1480849, step = 30 (0.153 sec)
@@ -167,7 +168,8 @@ We can do the same thing with a batch job.
 
 source /etc/profile.d/modules.sh
 module load singularity/2.6.1 openmpi/3.1.3
-mpirun -np 8 -npernode 4 singularity run --nv tensorflow-19.05-py2.simg python /opt/tensorflow/third_party/horovod/examples/tensorflow_mnist.py
+wget https://raw.githubusercontent.com/horovod/horovod/2aac48c95c035bee7d68f9aff30e59319f46c21e/examples/tensorflow_mnist.py
+mpirun -np 8 -npernode 4 singularity run --nv tensorflow-19.05-py2.simg python tensorflow_mnist.py
 ```
 
 ## Using Locked Images

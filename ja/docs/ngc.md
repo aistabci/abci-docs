@@ -123,14 +123,15 @@ openmpi/2.1.3          openmpi/2.1.6(default) openmpi/3.1.0          openmpi/3.1
 2ノード占有でインタラクティブジョブを起動し、必要なモジュールを読み込みます。
 
 ```
-[username@es1 ~]$ qrsh -g grpname -l rt_F=1
+[username@es1 ~]$ qrsh -g grpname -l rt_F=2
 [username@g0001 ~]$ module load singularity/2.6.1 openmpi/3.1.3
 ```
 
 1ノードあたり4基のGPUがあり、2ノード占有では計8基のGPUが使えることになります。この場合、8個のプロセスをノードあたり4個ずつ並列に起動し、サンプルプログラム tensorflow_mnist.py を実行します。
 
 ```
-[username@g0001 ~]$ mpirun -np 8 -npernode 4 singularity run --nv tensorflow-19.05-py2.simg python /opt/tensorflow/third_party/horovod/examples/tensorflow_mnist.py
+[username@g0001 ~]$ wget https://raw.githubusercontent.com/horovod/horovod/2aac48c95c035bee7d68f9aff30e59319f46c21e/examples/tensorflow_mnist.py
+[username@g0001 ~]$ mpirun -np 8 -npernode 4 singularity run --nv tensorflow-19.05-py2.simg python tensorflow_mnist.py
 :
 INFO:tensorflow:loss = 2.1563044, step = 30 (0.153 sec)
 INFO:tensorflow:loss = 2.1480849, step = 30 (0.153 sec)
@@ -161,7 +162,8 @@ INFO:tensorflow:loss = 1.8231221, step = 40 (0.154 sec)
 
 source /etc/profile.d/modules.sh
 module load singularity/2.6.1 openmpi/3.1.3
-mpirun -np 8 -npernode 4 singularity run --nv tensorflow-19.05-py2.simg python /opt/tensorflow/third_party/horovod/examples/tensorflow_mnist.py
+wget https://raw.githubusercontent.com/horovod/horovod/2aac48c95c035bee7d68f9aff30e59319f46c21e/examples/tensorflow_mnist.py
+mpirun -np 8 -npernode 4 singularity run --nv tensorflow-19.05-py2.simg python tensorflow_mnist.py
 ```
 
 ## アクセス制限されたイメージの利用 {#using-locked-images}
