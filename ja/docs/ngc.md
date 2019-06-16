@@ -1,6 +1,6 @@
 # NVIDIA GPU Cloud (NGC)
 
-[NVIDIA GPU Cloud (NGC)](https://ngc.nvidia.com/)は、GPUに最適化されたディープラーニングフレームワークコンテナやHPCアプリケーションコンテナのDockerイメージと、それらを配布するためのNGCコンテナレジストリを提供しています。ABCIでは、Singularityを利用することで、NGCが提供するDockerイメージを簡便に実行することができます。
+[NVIDIA GPU Cloud (NGC)](https://ngc.nvidia.com/)は、GPUに最適化されたディープラーニングフレームワークコンテナやHPCアプリケーションコンテナのDockerイメージと、それらを配布するためのNGCコンテナレジストリを提供しています。ABCIでは、[Singularity](09.md#@singularity)を利用することで、NGCが提供するDockerイメージを簡便に実行することができます。
 
 ここでは、NGCコンテナレジストリに登録されているDockerイメージをABCIで利用する手順について説明します。
 
@@ -32,17 +32,15 @@ NGCコンテナレジストリのDockerイメージのうち、大半は自由�
 NGC Websiteで、NGCアカウントでサインインしていない状態では、後者のイメージを利用するためのPull Commandなど一部情報が閲覧できず、またAPI Keyを生成することもできません。
 以下では、自由に利用できるイメージを前提に説明を行います。[アクセス制限されたイメージの利用](#using-locked-images)については後述します。
 
-その他、NGC Websiteに関する詳細は下記を参照してください。
-
-* [NGC Getting Started Guide](https://docs.nvidia.com/ngc/ngc-getting-started-guide/index.html)
+その他、NGC Websiteに関する詳細は[NGC Getting Started Guide](https://docs.nvidia.com/ngc/ngc-getting-started-guide/index.html)を参照してください。
 
 ## シングルノードでの実行 {#single-node-run}
 
-以下では、TensorFlowを例に、NGCコンテナレジストリで提供されているDockerイメージの実行方法を説明します。
+TensorFlowを例にとり、NGCコンテナレジストリで提供されているDockerイメージの実行方法を説明します。
 
-### イメージ名の確認 {#identify-image-name}
+### イメージURLの確認 {#identify-image-url}
 
-TensorFlowのイメージをNGC Wbesiteで探します。ブラウザで[NGC Website](https://ngc.nvidia.com/)を開き、"Search Containers"と表示されている検索フォームに、"tensorflow" と入力すると、
+TensorFlowのイメージをNGC Wbesiteで探します。ブラウザで[https://ngc.nvidia.com/](https://ngc.nvidia.com/)を開き、"Search Containers"と表示されている検索フォームに、"tensorflow" と入力すると、
 [https://ngc.nvidia.com/catalog/containers/nvidia:tensorflow](https://ngc.nvidia.com/catalog/containers/nvidia:tensorflow)
 が見つけられるはずです。
 
@@ -52,22 +50,22 @@ Dockerで利用する際のPull Commandが以下のように示されていま�
 docker pull nvcr.io/nvidia/tensorflow:19.05-py2
 ```
 
-[NGCコンテナレジストリ](#ngc-container-registry)で説明したとおり、Singularityから利用する場合には、このイメージは以下のURLで指定できることが分かります。
+[NGCコンテナレジストリ](#ngc-container-registry)で説明したとおり、Singularityから利用する場合には、このイメージは以下のURLで指定できます。
 
 ```
 docker://nvcr.io/nvidia/tensorflow:19.05-py2
 ```
 
-### Singularityイメージの生成 {#build-singularity-image}
+### Singularityイメージの生成 {#build-a-singularity-image}
 
-インタラクティブノード上でSingularityイメージを生成します。
+インタラクティブノード上でTensorFlowのSingularityイメージを生成します。
 
 ```
 [username@es1 ~] $ module load singularity/2.6.1
-[username@es1 ~] $ singularity pull --name tensorflow.19.05-py2.simg docker://nvcr.io/nvidia/tensorflow:19.05-py2
+[username@es1 ~] $ singularity pull --name tensorflow-19.05-py2.simg docker://nvcr.io/nvidia/tensorflow:19.05-py2
 ```
 
-### Singularityイメージの実行 {#run-singularity-image}
+### Singularityイメージの実行 {#run-a-singularity-image}
 
 1ノード占有でインタラクティブジョブを起動し、サンプルプログラム cnn_mnist.py を実行します。
 
@@ -92,13 +90,13 @@ module load singularity/2.6.1
 singularity run --nv tensorflow-19.05-py2.simg python /opt/tensorflow/tensorflow/examples/tutorials/layers/cnn_mnist.py
 ```
 
-## 複数ノードでの実行 {#multi-node-run}
+## 複数ノードでの実行 {#multiple-node-run}
 
-NGCのコンテナイメージのうち、MPIでの並列実行に対応しているものは複数ノードでの実行が可能です。[シングルノードでの実行](#single-node-run)で使用したTensorFlowイメージも並列実行に対応しています。
+NGCのコンテナイメージのうち一部は、MPIでの並列実行に対応しています。[シングルノードでの実行](#single-node-run)で使用したTensorFlowイメージも並列実行に対応しています。
 
 ### MPIバージョンの確認 {#identify-mpi-version}
 
-イメージにインストールされているMPIのバージョンを事前に確認します。
+TensorFlowイメージにインストールされているMPIのバージョンを確認します。
 
 ```
 [username@es1 ~] $ module load singularity/2.6.1
@@ -120,7 +118,7 @@ openmpi/2.1.3          openmpi/2.1.6(default) openmpi/3.1.0          openmpi/3.1
 
 ``openmpi/3.1.3`` を使うのが適当のようです。少なくともメジャーバージョンが一致している必要があります。
 
-### SingularityイメージのMPI実行 {#run-singularity-image-with-mpi}
+### SingularityイメージのMPI実行 {#run-a-singularity-image-with-mpi}
 
 2ノード占有でインタラクティブジョブを起動し、必要なモジュールを読み込みます。
 
@@ -170,7 +168,7 @@ mpirun -np 8 -npernode 4 singularity run --nv tensorflow-19.05-py2.simg python /
 
 以下では、Chainerを例に、NGCコンテナレジストリ上でアクセス制限されたイメージの実行方法を説明します。
 
-### イメージ名の確認 {#identify-locked-image-name}
+### イメージURLの確認 {#identify-locked-image-url}
 
 [https://ngc.nvidia.com/catalog/containers/partners:chainer](https://ngc.nvidia.com/catalog/containers/partners:chainer) でNGCアカウントにサインインすることで、Dockerで利用する際のPull Commandが得られます。
 
@@ -184,7 +182,7 @@ Singularityから利用する場合には、このイメージは以下のURLで
 docker://nvcr.io/partners/chainer:4.0.0b1
 ```
 
-### Singularityイメージの生成 {#build-locked-singularity-image}
+### Singularityイメージの生成 {#build-a-singularity-image-for-a-locked-ngc-image}
 
 イメージの生成には、NGC API Keyが必要です。下記の手順にしたがって生成してください。
 
@@ -199,7 +197,7 @@ docker://nvcr.io/partners/chainer:4.0.0b1
 [username@es1 ~] $ singularity pull --name chainer-4.0.0b1.simg docker://nvcr.io/partners/chainer:4.0.0b1
 ```
 
-### Singularityイメージの実行 {#run-locked-singularity-image}
+### Singularityイメージの実行 {#run-a-singularity-image_1}
 
 通常のSingularityイメージと同じ手順で実行できます。
 
@@ -217,7 +215,7 @@ epoch       main/loss   validation/main/loss  main/accuracy  validation/main/acc
 :
 ```
 
-## 参考 {#references}
+## 参考 {#reference}
 
 1. [NGC Getting Started Guide](https://docs.nvidia.com/ngc/ngc-getting-started-guide/index.html)
 1. [NGC Container User Guide](https://docs.nvidia.com/ngc/ngc-user-guide/index.html)
