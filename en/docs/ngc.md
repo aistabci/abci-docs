@@ -1,7 +1,7 @@
 # NVIDIA GPU Cloud (NGC)
 
 [NVIDIA GPU Cloud (NGC)](https://ngc.nvidia.com/) provides Docker images for GPU-optimized deep learning framework containers and HPC application containers and NGC container registry to distribute them.
-By using [Singularity](09.md#singularity), ABCI allows users to execute easily Docker images provided by NGC.
+ABCI allows users to execute NGC-provided Docker images easily by using [Singularity](09.md#singularity), 
 
 In this page, we will explain the procedure to use Docker images registered in NGC container registry with ABCI.
 
@@ -9,13 +9,13 @@ In this page, we will explain the procedure to use Docker images registered in N
 
 ### NGC Container Registry
 
-Each docker images of NGC container registry is specified by the following format:
+Each Docker image of NGC container registry is specified by the following format:
 
 ```
 nvcr.io/<namespace>/<repo_name>:<repo_tag>
 ```
 
-When using with Singularity, each images is referenced first with the URL schema ``docker://`` as like:
+When using with Singularity, each image is referenced first with the URL schema ``docker://`` as like:
 
 ```
 docker://nvcr.io/<namespace>/<repo_name>:<repo_tag>
@@ -45,10 +45,10 @@ Using TensorFlow as an example, we will explain how to run Docker images provide
 First, we need to find the URL for TensorFlow image via NGC Website.
 
 Open [https://ngc.nvidia.com/](https://ngc.nvidia.com/) with your browser, and input "tensorflow" to the search form "Search Containers".
-Then, you'll be find:
+Then, you'll find:
 [https://ngc.nvidia.com/catalog/containers/nvidia:tensorflow](https://ngc.nvidia.com/catalog/containers/nvidia:tensorflow)
 
-In this page, you will see the the pull command for using TensorFlow image on Docker:
+In this page, you will see the the ``pull`` command for using TensorFlow image on Docker:
 
 ```
 docker pull nvcr.io/nvidia/tensorflow:19.05-py2
@@ -71,7 +71,7 @@ Build a Singularity image for TensorFlow on the interactive node.
 
 ### Run a Singularity image
 
-Start an interative job with one full-node, and run a sample program ``cnn_mnist.py``.
+Start an interactive job with one full-node, and run a sample program ``cnn_mnist.py``.
 
 ```
 [username@es1 ~]$ qrsh -g grpname -l rt_F=1
@@ -180,10 +180,10 @@ Using Chainer as an example, we will explain how to run locked Docker images pro
 
 First, we need to find the URL for Chainer image via NGC Website.
 
-Open [https://ngc.nvidia.com/](https://ngc.nvidia.com/) with your browser, sign in with an NGC account, and input "chainer" to the search form "Search Containers". Then, you'll be find:
+Open [https://ngc.nvidia.com/](https://ngc.nvidia.com/) with your browser, sign in with an NGC account, and input "chainer" to the search form "Search Containers". Then, you'll find:
 [https://ngc.nvidia.com/catalog/containers/partners:chainer](https://ngc.nvidia.com/catalog/containers/partners:chainer)
 
-In this page, you will see the pull command for using Chainer image on Docker (you must sign in with an NGC account):
+In this page, you will see the ``pull`` command for using Chainer image on Docker (you must sign in with an NGC account):
 
 ```
 docker pull nvcr.io/partners/chainer:4.0.0b1
