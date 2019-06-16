@@ -1,8 +1,44 @@
-# Using NGC Image
+# NVIDIA GPU Cloud (NGC)
 
-This page explains how to use an NVIDIA GPU Cloud Image on ABCI.
+[NVIDIA GPU Cloud (NGC)](https://ngc.nvidia.com/) provides Docker images for GPU-optimized deep learning framework containers and HPC application containers and NGC container registry to distribute them.
+By using Singularity, ABCI allows users to execute easily Docker images provided by NGC.
 
-----
+In this page, we will explain the procedure to use Docker images registered in NGC container registry with ABCI.
+
+## Prerequisites
+
+### NGC Container Registry
+
+Each docker images of NGC container registry is specified by the following format:
+
+```
+nvcr.io/<namespace>/<repo_name>:<repo_tag>
+```
+
+When using from Singularity, each images is referenced first with the URL schema ``docker://`` as like:
+
+```
+docker://nvcr.io/<namespace>/<repo_name>:<repo_tag>
+```
+
+### NGC Website {#ngc-website}
+
+[NGC Website](https://ngc.nvidia.com/) is the portal for browsing the contents of the NGC container registry, generating NGC API keys, and so on.
+
+Most of the docker images provided by the NGC container registry are freely available, but some are 'locked' and required that you have an NGC account and an API key to access them. Below are examples of both cases.
+
+* Freely available image: [https://ngc.nvidia.com/catalog/containers/nvidia:tensorflow](https://ngc.nvidia.com/catalog/containers/nvidia:tensorflow)
+* Locked image: [https://ngc.nvidia.com/catalog/containers/partners:chainer](https://ngc.nvidia.com/catalog/containers/partners:chainer)
+
+If you do not have signed in with an NGC account, you can neither see the information such as ``pull`` command to use locked images, nor generate an API key.
+
+In the following instructions, we will use freely available images. To use locked images, we will explain later ([Using locked images](#using-locked-images)).
+
+その他、NGC Websiteに関する詳細は下記を参照してください。
+
+* [NGC Getting Started Guide](https://docs.nvidia.com/ngc/ngc-getting-started-guide/index.html)
+
+
 
 ## Using Unlocked Image
 

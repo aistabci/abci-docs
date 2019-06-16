@@ -1,35 +1,36 @@
 # NVIDIA GPU Cloud (NGC)
 
-[NVIDIA GPU Cloud (NGC)](https://ngc.nvidia.com/)は、NVIDIA GPUに最適化されたディープラーニングフレームワークやHPCアプリケーションのDockerイメージと、それらを配布するためのNGCレジストリを提供しています。ABCIでは、Singularityを利用することで、NGCが提供するDockerイメージを簡便に実行することができます。
+[NVIDIA GPU Cloud (NGC)](https://ngc.nvidia.com/)は、GPUに最適化されたディープラーニングフレームワークコンテナやHPCアプリケーションコンテナのDockerイメージと、それらを配布するためのNGCコンテナレジストリを提供しています。ABCIでは、Singularityを利用することで、NGCが提供するDockerイメージを簡便に実行することができます。
 
-ここでは、NGCレジストリに登録されているDockerイメージをABCIで利用する手順について説明します。
+ここでは、NGCコンテナレジストリに登録されているDockerイメージをABCIで利用する手順について説明します。
 
 ## 前提知識 {#prerequisites}
 
-### NGCレジストリのイメージ名 {#ngc-image-name}
+### NGCコンテナレジストリ {#ngc-container-registry}
 
-NGCレジストリのDockerイメージは、以下の形式で指定されます。
+NGCコンテナレジストリのDockerイメージは、以下の形式で指定されます。
 
 ```
-nvcr.io/<space>/image-name:tag
+nvcr.io/<namespace>/<repo_name>:<repo_tag>
 ```
 
 Singularityから利用する場合には、URLスキーマとして``docker://``を指定して以下のように表します。
 
 ```
-docker://nvcr.io/<space>/image-name:tag
+docker://nvcr.io/<namespace>/<repo_name>:<repo_tag>
 ```
 
 ### NGC Website {#ngc-website}
 
-[NGC Website](https://ngc.nvidia.com/)は、NGCレジストリの内容をブラウズしたり、NGC API Keyを生成したりするためのポータルです。
+[NGC Website](https://ngc.nvidia.com/)は、NGCコンテナレジストリのカタログの提供、NGC API Keyの生成などの機能を提供するポータルです。
 
-NGCレジストリのDockerイメージのうち、大半は自由に利用できますが、一部はNGCアカウントとNGC API Keyがなければアクセスできません。以下に両者の例を挙げます。
+NGCコンテナレジストリのDockerイメージのうち、大半は自由に利用できますが、一部はNGCアカウントとNGC API Keyがなければアクセスできません。以下に両者の例を挙げます。
 
 * 自由に利用できるイメージの例: [https://ngc.nvidia.com/catalog/containers/nvidia:tensorflow](https://ngc.nvidia.com/catalog/containers/nvidia:tensorflow)
 * アクセス制限されたイメージの例: [https://ngc.nvidia.com/catalog/containers/partners:chainer](https://ngc.nvidia.com/catalog/containers/partners:chainer)
 
-NGC Websiteで、NGCアカウントでサインインしていない状態では、後者のイメージを利用するためのPull Commandなど一部情報が閲覧できず、またAPI Keyを生成することもできません。以下では、自由に利用できるイメージを前提に説明を行います。[アクセス制限されたイメージの利用](#using-locked-images)については後述します。
+NGC Websiteで、NGCアカウントでサインインしていない状態では、後者のイメージを利用するためのPull Commandなど一部情報が閲覧できず、またAPI Keyを生成することもできません。
+以下では、自由に利用できるイメージを前提に説明を行います。[アクセス制限されたイメージの利用](#using-locked-images)については後述します。
 
 その他、NGC Websiteに関する詳細は下記を参照してください。
 
@@ -37,7 +38,7 @@ NGC Websiteで、NGCアカウントでサインインしていない状態では
 
 ## シングルノードでの実行 {#single-node-run}
 
-以下では、TensorFlowを例に、NGCレジストリで提供されているDockerイメージの実行方法を説明します。
+以下では、TensorFlowを例に、NGCコンテナレジストリで提供されているDockerイメージの実行方法を説明します。
 
 ### イメージ名の確認 {#identify-image-name}
 
@@ -51,7 +52,7 @@ Dockerで利用する際のPull Commandが以下のように示されていま�
 docker pull nvcr.io/nvidia/tensorflow:19.05-py2
 ```
 
-[NGCレジストリのイメージ名](#ngc-image-name)で説明したとおり、Singularityから利用する場合には、このイメージは以下のURLで指定できることが分かります。
+[NGCコンテナレジストリ](#ngc-container-registry)で説明したとおり、Singularityから利用する場合には、このイメージは以下のURLで指定できることが分かります。
 
 ```
 docker://nvcr.io/nvidia/tensorflow:19.05-py2
@@ -167,7 +168,7 @@ mpirun -np 8 -npernode 4 singularity run --nv tensorflow-19.05-py2.simg python /
 
 ## アクセス制限されたイメージの利用 {#using-locked-images}
 
-以下では、Chainerを例に、NGCレジストリ上でアクセス制限されたイメージの実行方法を説明します。
+以下では、Chainerを例に、NGCコンテナレジストリ上でアクセス制限されたイメージの実行方法を説明します。
 
 ### イメージ名の確認 {#identify-locked-image-name}
 
