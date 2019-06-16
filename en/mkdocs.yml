@@ -22,11 +22,12 @@ nav:
     - '11. Application Framework': '11.md'
     - 'Appendix 1. Configuration of Installed Software': 'appendix1.md'
     - 'Appendix 2. Use of ABCI System for HPCI ': 'appendix2.md'
-  - 'Known Issues': 'known-issues.md'
   - 'Tips':
     - 'Remote Desktop': 'tips/remote-desktop.md'
     - 'AWS CLI': 'tips/awscli.md'
     - 'GCC 7.3.0': 'tips/gcc-7.3.0.md'
+  - 'NVIDIA GPU Cloud (NGC)': 'ngc.md'
+  - 'Known Issues': 'known-issues.md'
   - 'System Updates': 'system-updates.md'
   - 'Operation Status': 'https://abci.ai/en/about_abci/info.html'
   - 'Privacy Policy': 'https://portal.abci.ai/docs/privacy-policy/'
