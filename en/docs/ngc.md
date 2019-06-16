@@ -21,7 +21,7 @@ When using with Singularity, each images is referenced first with the URL schema
 docker://nvcr.io/<namespace>/<repo_name>:<repo_tag>
 ```
 
-### NGC Website {#ngc-website}
+### NGC Website
 
 [NGC Website](https://ngc.nvidia.com/) is the portal for browsing the contents of the NGC container registry, generating NGC API keys, and so on.
 
