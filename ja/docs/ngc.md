@@ -1,6 +1,6 @@
 # NVIDIA GPU Cloud (NGC)
 
-[NVIDIA GPU Cloud (NGC)](https://ngc.nvidia.com/)は、GPUに最適化されたディープラーニングフレームワークコンテナやHPCアプリケーションコンテナのDockerイメージと、それらを配布するためのNGCコンテナレジストリを提供しています。ABCIでは、[Singularity](09.md#@singularity)を利用することで、NGCが提供するDockerイメージを簡便に実行することができます。
+[NVIDIA GPU Cloud (NGC)](https://ngc.nvidia.com/)は、GPUに最適化されたディープラーニングフレームワークコンテナやHPCアプリケーションコンテナのDockerイメージと、それらを配布するためのNGCコンテナレジストリを提供しています。ABCIでは、[Singularity](09.md#singularity)を利用することで、NGCが提供するDockerイメージを簡便に実行することができます。
 
 ここでは、NGCコンテナレジストリに登録されているDockerイメージをABCIで利用する手順について説明します。
 
@@ -40,7 +40,7 @@ TensorFlowを例にとり、NGCコンテナレジストリで提供されてい�
 
 ### イメージURLの確認 {#identify-image-url}
 
-TensorFlowのイメージをNGC Wbesiteで探します。ブラウザで[https://ngc.nvidia.com/](https://ngc.nvidia.com/)を開き、"Search Containers"と表示されている検索フォームに、"tensorflow" と入力すると、
+TensorFlowのイメージをNGC Wbesiteで探します。ブラウザで "[https://ngc.nvidia.com/](https://ngc.nvidia.com/)" を開き、"Search Containers" と表示されている検索フォームに "tensorflow" と入力すると、
 [https://ngc.nvidia.com/catalog/containers/nvidia:tensorflow](https://ngc.nvidia.com/catalog/containers/nvidia:tensorflow)
 が見つけられるはずです。
 
@@ -224,3 +224,4 @@ epoch       main/loss   validation/main/loss  main/accuracy  validation/main/acc
 1. [NGC Getting Started Guide](https://docs.nvidia.com/ngc/ngc-getting-started-guide/index.html)
 1. [NGC Container User Guide](https://docs.nvidia.com/ngc/ngc-user-guide/index.html)
 1. [Running NGC Containers Using Singularity](https://docs.nvidia.com/ngc/ngc-user-guide/singularity.html)
+1. [ABCI Adopts NGC for Easy Access to Deep Learning Frameworks | NVIDIA Blog](https://blogs.nvidia.com/blog/2019/06/17/abci-adopts-ngc/)
