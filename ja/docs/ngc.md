@@ -72,7 +72,8 @@ docker://nvcr.io/nvidia/tensorflow:19.05-py2
 ```
 [username@es1 ~]$ qrsh -g grpname -l rt_F=1
 [username@g0001 ~]$ module load singularity/2.6.1
-[username@g0001 ~]$ singularity run --nv tensorflow-19.05-py2.simg python /opt/tensorflow/tensorflow/examples/tutorials/layers/cnn_mnist.py
+[username@g0001 ~]$ wget https://raw.githubusercontent.com/tensorflow/tensorflow/v1.12.0/tensorflow/examples/tutorials/layers/cnn_mnist.py
+[username@g0001 ~]$ singularity run --nv tensorflow-19.05-py2.simg python cnn_mnist.py
 :
 {'loss': 0.10828217, 'global_step': 20000, 'accuracy': 0.9667}
 ```
@@ -87,7 +88,8 @@ docker://nvcr.io/nvidia/tensorflow:19.05-py2
 
 source /etc/profile.d/modules.sh
 module load singularity/2.6.1
-singularity run --nv tensorflow-19.05-py2.simg python /opt/tensorflow/tensorflow/examples/tutorials/layers/cnn_mnist.py
+wget https://raw.githubusercontent.com/tensorflow/tensorflow/v1.12.0/tensorflow/examples/tutorials/layers/cnn_mnist.py
+singularity run --nv tensorflow-19.05-py2.simg python cnn_mnist.py
 ```
 
 ## 複数ノードでの実行 {#multiple-node-run}
