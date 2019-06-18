@@ -698,7 +698,7 @@ INSTALL_DIR=/apps/nccl/1.3.5/cuda9.2
 
 ## Deep Learning Framework
 
-[Deep Learning Framework](11.md#111-deep-learning-framework) needs to be installed by user's privilege.
+[Deep Learning Framework](11.md#deep-learning-framework) needs to be installed by user's privilege.
 
 ## Big Data
 
