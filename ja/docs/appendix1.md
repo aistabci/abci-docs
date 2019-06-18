@@ -698,9 +698,9 @@ INSTALL_DIR=/apps/nccl/1.3.5/cuda9.2
 [root@es1 nccl]# make PREFIX=$INSTALL_DIR install
 ```
 
-## ディープラーニング・フレームワーク
+## ディープラーニングフレームワーク
 
-[ディープラーニング・フレームワーク](11.md#deep-learning-framework)は、利用者権限でインストールして利用してください。
+[ディープラーニングフレームワーク](11.md#deep-learning-framework)は、利用者権限でインストールして利用してください。
 
 ## 大規模データ処理
 
