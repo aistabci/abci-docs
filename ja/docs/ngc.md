@@ -132,7 +132,7 @@ openmpi/2.1.3          openmpi/2.1.6(default) openmpi/3.1.0          openmpi/3.1
 1ノードあたり4基のGPUがあり、2ノード占有では計8基のGPUが使えることになります。この場合、8個のプロセスをノードあたり4個ずつ並列に起動し、サンプルプログラム tensorflow_mnist.py を実行します。
 
 ```
-[username@g0001 ~]$ wget https://raw.githubusercontent.com/horovod/horovod/2aac48c95c035bee7d68f9aff30e59319f46c21e/examples/tensorflow_mnist.py
+[username@g0001 ~]$ wget https://raw.githubusercontent.com/horovod/horovod/v0.16.4/examples/tensorflow_mnist.py
 [username@g0001 ~]$ mpirun -np 8 -npernode 4 singularity run --nv tensorflow-19.05-py2.simg python tensorflow_mnist.py
 :
 INFO:tensorflow:loss = 2.1563044, step = 30 (0.153 sec)
@@ -164,7 +164,7 @@ INFO:tensorflow:loss = 1.8231221, step = 40 (0.154 sec)
 
 source /etc/profile.d/modules.sh
 module load singularity/2.6.1 openmpi/3.1.3
-wget https://raw.githubusercontent.com/horovod/horovod/2aac48c95c035bee7d68f9aff30e59319f46c21e/examples/tensorflow_mnist.py
+wget https://raw.githubusercontent.com/horovod/horovod/v0.16.4/examples/tensorflow_mnist.py
 mpirun -np 8 -npernode 4 singularity run --nv tensorflow-19.05-py2.simg python tensorflow_mnist.py
 ```
 
@@ -208,7 +208,7 @@ docker://nvcr.io/partners/chainer:4.0.0b1
 ```
 [username@es1 ~] $ qrsh -g grpname -l rt_G.small=1
 [username@g0001 ~]$ module load singularity/2.6.1
-[username@g0001 ~]$ wget https://raw.githubusercontent.com/chainer/chainer/6733f15ffbc2f4a2275c09150fd94fc9ec791f75/examples/mnist/train_mnist.py
+[username@g0001 ~]$ wget https://raw.githubusercontent.com/chainer/chainer/v4.0.0b1/examples/mnist/train_mnist.py
 [username@g0001 ~]$ singularity exec --nv chainer-4.0.0b1.simg python train_mnist.py -g 0
 :
 epoch       main/loss   validation/main/loss  main/accuracy  validation/main/accuracy  elapsed_time
