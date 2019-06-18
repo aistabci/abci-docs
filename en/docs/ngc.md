@@ -76,7 +76,8 @@ Start an interactive job with one full-node, and run a sample program ``cnn_mnis
 ```
 [username@es1 ~]$ qrsh -g grpname -l rt_F=1
 [username@g0001 ~]$ module load singularity/2.6.1
-[username@g0001 ~]$ singularity run --nv tensorflow-19.05-py2.simg python /opt/tensorflow/tensorflow/examples/tutorials/layers/cnn_mnist.py
+[username@g0001 ~]$ wget https://raw.githubusercontent.com/tensorflow/tensorflow/v1.12.0/tensorflow/examples/tutorials/layers/cnn_mnist.py
+[username@g0001 ~]$ singularity run --nv tensorflow-19.05-py2.simg python cnn_mnist.py
 :
 {'loss': 0.10828217, 'global_step': 20000, 'accuracy': 0.9667}
 ```
@@ -91,7 +92,8 @@ We can do the same thing with a batch job.
 
 source /etc/profile.d/modules.sh
 module load singularity/2.6.1
-singularity run --nv tensorflow-19.05-py2.simg python /opt/tensorflow/tensorflow/examples/tutorials/layers/cnn_mnist.py
+wget https://raw.githubusercontent.com/tensorflow/tensorflow/v1.12.0/tensorflow/examples/tutorials/layers/cnn_mnist.py
+singularity run --nv tensorflow-19.05-py2.simg python cnn_mnist.py
 ```
 
 ## Multiple-node Run
@@ -136,7 +138,7 @@ Each full-node has four GPUs, and we have eight GPUs in total.
 In this case, we run four processes on each full-node in parallel, that means eight processes in total, so as to execute the sample program ``tensorflow_mnist.py``.
 
 ```
-[username@g0001 ~]$ wget https://raw.githubusercontent.com/horovod/horovod/2aac48c95c035bee7d68f9aff30e59319f46c21e/examples/tensorflow_mnist.py
+[username@g0001 ~]$ wget https://raw.githubusercontent.com/horovod/horovod/v0.16.4/examples/tensorflow_mnist.py
 [username@g0001 ~]$ mpirun -np 8 -npernode 4 singularity run --nv tensorflow-19.05-py2.simg python tensorflow_mnist.py
 :
 INFO:tensorflow:loss = 2.1563044, step = 30 (0.153 sec)
@@ -168,7 +170,7 @@ We can do the same thing with a batch job.
 
 source /etc/profile.d/modules.sh
 module load singularity/2.6.1 openmpi/3.1.3
-wget https://raw.githubusercontent.com/horovod/horovod/2aac48c95c035bee7d68f9aff30e59319f46c21e/examples/tensorflow_mnist.py
+wget https://raw.githubusercontent.com/horovod/horovod/v0.16.4/examples/tensorflow_mnist.py
 mpirun -np 8 -npernode 4 singularity run --nv tensorflow-19.05-py2.simg python tensorflow_mnist.py
 ```
 
@@ -218,7 +220,7 @@ We can run the resulted image, just as same as freely available images.
 ```
 [username@es1 ~] $ qrsh -g grpname -l rt_G.small=1
 [username@g0001 ~]$ module load singularity/2.6.1
-[username@g0001 ~]$ wget https://raw.githubusercontent.com/chainer/chainer/6733f15ffbc2f4a2275c09150fd94fc9ec791f75/examples/mnist/train_mnist.py
+[username@g0001 ~]$ wget https://raw.githubusercontent.com/chainer/chainer/v4.0.0b1/examples/mnist/train_mnist.py
 [username@g0001 ~]$ singularity exec --nv chainer-4.0.0b1.simg python train_mnist.py -g 0
 :
 epoch       main/loss   validation/main/loss  main/accuracy  validation/main/accuracy  elapsed_time
