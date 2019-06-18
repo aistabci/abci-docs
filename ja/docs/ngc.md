@@ -1,6 +1,6 @@
 # NVIDIA GPU Cloud (NGC)
 
-[NVIDIA GPU Cloud (NGC)](https://ngc.nvidia.com/)は、GPUに最適化されたディープラーニングフレームワークコンテナやHPCアプリケーションコンテナのDockerイメージと、それらを配布するためのNGCコンテナレジストリを提供しています。ABCIでは、[Singularity](09.md#@singularity)を利用することで、NGCが提供するDockerイメージを簡便に実行することができます。
+[NVIDIA GPU Cloud (NGC)](https://ngc.nvidia.com/)は、GPUに最適化されたディープラーニングフレームワークコンテナやHPCアプリケーションコンテナのDockerイメージと、それらを配布するためのNGCコンテナレジストリを提供しています。ABCIでは、[Singularity](09.md#singularity)を利用することで、NGCが提供するDockerイメージを簡便に実行することができます。
 
 ここでは、NGCコンテナレジストリに登録されているDockerイメージをABCIで利用する手順について説明します。
 
@@ -40,7 +40,7 @@ TensorFlowを例にとり、NGCコンテナレジストリで提供されてい�
 
 ### イメージURLの確認 {#identify-image-url}
 
-TensorFlowのイメージをNGC Wbesiteで探します。ブラウザで[https://ngc.nvidia.com/](https://ngc.nvidia.com/)を開き、"Search Containers"と表示されている検索フォームに、"tensorflow" と入力すると、
+TensorFlowのイメージをNGC Wbesiteで探します。ブラウザで "[https://ngc.nvidia.com/](https://ngc.nvidia.com/)" を開き、"Search Containers" と表示されている検索フォームに "tensorflow" と入力すると、
 [https://ngc.nvidia.com/catalog/containers/nvidia:tensorflow](https://ngc.nvidia.com/catalog/containers/nvidia:tensorflow)
 が見つけられるはずです。
 
@@ -72,7 +72,8 @@ docker://nvcr.io/nvidia/tensorflow:19.05-py2
 ```
 [username@es1 ~]$ qrsh -g grpname -l rt_F=1
 [username@g0001 ~]$ module load singularity/2.6.1
-[username@g0001 ~]$ singularity run --nv tensorflow-19.05-py2.simg python /opt/tensorflow/tensorflow/examples/tutorials/layers/cnn_mnist.py
+[username@g0001 ~]$ wget https://raw.githubusercontent.com/tensorflow/tensorflow/v1.12.0/tensorflow/examples/tutorials/layers/cnn_mnist.py
+[username@g0001 ~]$ singularity run --nv tensorflow-19.05-py2.simg python cnn_mnist.py
 :
 {'loss': 0.10828217, 'global_step': 20000, 'accuracy': 0.9667}
 ```
@@ -87,7 +88,8 @@ docker://nvcr.io/nvidia/tensorflow:19.05-py2
 
 source /etc/profile.d/modules.sh
 module load singularity/2.6.1
-singularity run --nv tensorflow-19.05-py2.simg python /opt/tensorflow/tensorflow/examples/tutorials/layers/cnn_mnist.py
+wget https://raw.githubusercontent.com/tensorflow/tensorflow/v1.12.0/tensorflow/examples/tutorials/layers/cnn_mnist.py
+singularity run --nv tensorflow-19.05-py2.simg python cnn_mnist.py
 ```
 
 ## 複数ノードでの実行 {#multiple-node-run}
@@ -130,7 +132,7 @@ openmpi/2.1.3          openmpi/2.1.6(default) openmpi/3.1.0          openmpi/3.1
 1ノードあたり4基のGPUがあり、2ノード占有では計8基のGPUが使えることになります。この場合、8個のプロセスをノードあたり4個ずつ並列に起動し、サンプルプログラム tensorflow_mnist.py を実行します。
 
 ```
-[username@g0001 ~]$ wget https://raw.githubusercontent.com/horovod/horovod/2aac48c95c035bee7d68f9aff30e59319f46c21e/examples/tensorflow_mnist.py
+[username@g0001 ~]$ wget https://raw.githubusercontent.com/horovod/horovod/v0.16.4/examples/tensorflow_mnist.py
 [username@g0001 ~]$ mpirun -np 8 -npernode 4 singularity run --nv tensorflow-19.05-py2.simg python tensorflow_mnist.py
 :
 INFO:tensorflow:loss = 2.1563044, step = 30 (0.153 sec)
@@ -162,7 +164,7 @@ INFO:tensorflow:loss = 1.8231221, step = 40 (0.154 sec)
 
 source /etc/profile.d/modules.sh
 module load singularity/2.6.1 openmpi/3.1.3
-wget https://raw.githubusercontent.com/horovod/horovod/2aac48c95c035bee7d68f9aff30e59319f46c21e/examples/tensorflow_mnist.py
+wget https://raw.githubusercontent.com/horovod/horovod/v0.16.4/examples/tensorflow_mnist.py
 mpirun -np 8 -npernode 4 singularity run --nv tensorflow-19.05-py2.simg python tensorflow_mnist.py
 ```
 
@@ -206,7 +208,7 @@ docker://nvcr.io/partners/chainer:4.0.0b1
 ```
 [username@es1 ~] $ qrsh -g grpname -l rt_G.small=1
 [username@g0001 ~]$ module load singularity/2.6.1
-[username@g0001 ~]$ wget https://raw.githubusercontent.com/chainer/chainer/6733f15ffbc2f4a2275c09150fd94fc9ec791f75/examples/mnist/train_mnist.py
+[username@g0001 ~]$ wget https://raw.githubusercontent.com/chainer/chainer/v4.0.0b1/examples/mnist/train_mnist.py
 [username@g0001 ~]$ singularity exec --nv chainer-4.0.0b1.simg python train_mnist.py -g 0
 :
 epoch       main/loss   validation/main/loss  main/accuracy  validation/main/accuracy  elapsed_time
@@ -222,3 +224,4 @@ epoch       main/loss   validation/main/loss  main/accuracy  validation/main/acc
 1. [NGC Getting Started Guide](https://docs.nvidia.com/ngc/ngc-getting-started-guide/index.html)
 1. [NGC Container User Guide](https://docs.nvidia.com/ngc/ngc-user-guide/index.html)
 1. [Running NGC Containers Using Singularity](https://docs.nvidia.com/ngc/ngc-user-guide/singularity.html)
+1. [ABCI Adopts NGC for Easy Access to Deep Learning Frameworks | NVIDIA Blog](https://blogs.nvidia.com/blog/2019/06/17/abci-adopts-ngc/)
