@@ -224,4 +224,4 @@ epoch       main/loss   validation/main/loss  main/accuracy  validation/main/acc
 1. [NGC Getting Started Guide](https://docs.nvidia.com/ngc/ngc-getting-started-guide/index.html)
 1. [NGC Container User Guide](https://docs.nvidia.com/ngc/ngc-user-guide/index.html)
 1. [Running NGC Containers Using Singularity](https://docs.nvidia.com/ngc/ngc-user-guide/singularity.html)
-1. [ABCI Adopts NGC for Easy Access to Deep Learning Frameworks | NVIDIA Blog](https://blogs.nvidia.com/blog/2019/06/17/abci-adopts-ngc/)
+1. [日本最速のスーパーコンピュータが NGC を採用し、ディープラーニング フレームワークの利用をより簡単に | NVIDIA](https://blogs.nvidia.co.jp/2019/06/19/abci-adopts-ngc/)
