@@ -1,12 +1,10 @@
 # Remote Desktop
 
-## Overview
-
 This page describes how to enable Remote Desktop on ABCI with VNC (Virtual Network Computing). By using Remote Desktop, you can use the GUI on compute nodes.
 
 ## Preparation
 
-* login the interactive node and launch vncserver for initial settings 
+* Login to the interactive node, and launch ``vncserver`` for initial settings 
 
 ```
 [username@es1 ~] $ vncserver
@@ -24,13 +22,13 @@ Starting applications specified in /home/username/.vnc/xstartup
 Log file is /home/username/.vnc/es4.abci.local:1.log
 ```
 
-* stop VNC server
+* Stop VNC server
 
 ```
 [username@g0001 ~] vncserver -kill :1
 ```
 
-* edit some configuration files.
+* Edit some configuration files
 
 $HOME/.vnc/xstartup:
 
@@ -46,25 +44,25 @@ xrdb $HOME/.Xresources
 startxfce4 &
 ```
 
-you can change screen size to edit $HOME/.vnc/config as needed.
+You can change screen size to edit $HOME/.vnc/config if needed.
 
 ```
 geometry=2000x1200
 ```
 
-* login to ABCI and 
+* Login to ABCI
 
 ```
 [user@localmachine] $ ssh -J %r@as.abci.ai username@es
 ```
 
-* login to a compute node which is assigned by UGE with ABCI On-demand service and resource type rt_F.
+* Login to a compute node which is assigned by UGE with ABCI On-demand service and resource type rt_F.
 
 ```
 [username@es1 ~] $ qrsh -g grpname -l rt_F=1
 ```
 
-* launch vncserver
+* Launch ``vncserver``
 
 ```
 [username@g0001 ~] vncserver
@@ -77,46 +75,51 @@ Log file is /home/username/.vnc/g0001.abci.local:1.log
 [username@g0001 ~]
 ```
 
-g0001.abci.local:1 is a display name of launched VNC server.A port number 5901 is assinged to this server. A port with 5900 added to the display number is allocated such as: 5902 in case of :2, 5903 in case of :3.
+g0001.abci.local:1 is the display name of the VNC server you launched. Port 5901 is assinged to the connection to this server.
+In general, you can connect to the VNC server using a port with the display number plus 5900. For example, port 5902 for :2, port 5903 for :3, and so on.
 
 ## Start VNC
 
 The following part explains how to start VNC separately for macOS and Windows.
 
-### macOS environment
+### Using an SSH Client
 
-In macOS, OpenSSH 7.4 or later is installed by default, and the VNC client is integrated in the Finder.
+Your local computer, UNIX-like system including Linux and macOS, and Windows 10 version 1803 (April 2018 Update) or later, most likely has an SSH client installed by default.
 
-* Configure port forwarding from the local machine.
+#### Create an SSH tunnel
+
+If you have OpenSSH 7.3 or later, you can create an SSH tunnel between ``localhost:5901`` and  ``g0001.abci.local:5901``:
 
 ```
-[user@localmachine] $ ssh -N -L 5901:XXX.abci.local:5901 -J %r@as.abci.ai username@es
+[user@localmachine] $ ssh -N -L 5901:g0001.abci.local:5901 -J %r@as.abci.ai username@es
 ```
 
-By accessing 5901 on the local machine, you can connect to the VNC server.
+By accessing Port 5901 on the local machine, you can connect to the VNC server.
 
-* launch VNC client
+#### Launch VNC client
+
+In macOS, VNC client is integrated in Finder. So, you can connect to the VNC server by the following command:
 
 ```
 [user@localmachine] $ open vnc://localhost:5901/
 ```
 
-### Windows environment
+If not using macOS, you need to install a VNC client separately and configure it to connect to the VNC server.
 
-Configure port forwarding.
+### PuTTY
 
-*   PuTTY
+First, configure an SSH tunnel.
 
-    Click [Change Settings...] and click [SSH] - [Tunnels].
+Click [Change Settings...] and click [SSH] - [Tunnels].
 
-	| item | value |
-	|:--|:--|
-	| sample image | <img src="/img/apdx2_vnc_portfw_putty_01.png"  width="480" title="putty:ssh tunnel" > |
-	| local port | port number which you can use on your system. ex) 15901 |
-	| remote host:port | hostname of compute node and port number of VNC server ex) g0123:5901) |
+| item | value |
+|:--|:--|
+| sample image | <img src="/img/apdx2_vnc_portfw_putty_01.png"  width="480" title="putty:ssh tunnel" > |
+| local port | port number which you can use on your system. ex) 15901 |
+| remote host:port | hostname of compute node and port number of VNC server ex) g0123:5901) |
 
-    Launch VNC client and connect to localhost and the port number which assigned by SSH port forwarding.
-    In the example of Tiger VNC client, hostname and port number are connected by "::".
+Launch VNC client and connect to localhost and the port number which assigned by SSH port forwarding.
+In the example of Tiger VNC client, hostname and port number are connected by "::".
 
 <div align="center">
 <img src="/img/apdx2_vnc_viewer_01.png" width="480" title="vncviewer"><br>
@@ -142,4 +145,3 @@ Killing Xvnc process ID XXXXXX
 [username@g0001 ~] exit
 [username@es1 ~]
 ```
-

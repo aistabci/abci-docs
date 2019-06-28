@@ -11,7 +11,6 @@
 * vncserverを起動し、VNCサーバのパスワードなどの初期設定をします。
 
 ```
-
 [username@es1 ~] $ vncserver
 You will require a password to access your desktops.
 
@@ -85,21 +84,21 @@ g0001.abci.local:1 が起動したVNCサーバのディスプレイ名です。�
 
 ここでは、よく利用されるSSHクライアントでの起動手順と、Windowsで利用されるTera TermやPuTTYでの起動手順を説明します。
 
-### SSHクライアントの利用 {#ssh-clients}
+### SSHクライアントの利用 {#using-an-ssh-client}
 
 ほとんどのLinux、macOSを含むUNIX系OS、Windows 10 April 2018 Update (1803)以降のWindows 10には、デフォルトでSSHクライアントがインストールされています。
 
-#### SSHトンネルの設定 {#ssh-tunnel}
+#### SSHトンネルの設定 {#create-an-ssh-tunnel}
 
 ProxyJumpが利用可能なOpenSSH 7.4以降がインストールされている場合は、以下のように実行します。
 
 ```
-[user@localmachine] $ ssh -N -L 5901:XXX.abci.local:5901 -J %r@as.abci.ai username@es
+[user@localmachine] $ ssh -N -L 5901:g0001.abci.local:5901 -J %r@as.abci.ai username@es
 ```
 
 これでローカルマシンの5901にアクセスすると、VNCサーバに接続できるようになります。
 
-#### VNCクライアントの起動 {#run-vnc-client}
+#### VNCクライアントの起動 {#launch-vnc-client}
 
 macOSでは、FinderにVNCクライアントが統合されているため、以下のコマンドで起動できます。
 
@@ -159,4 +158,3 @@ Killing Xvnc process ID XXXXXX
 [username@g0001 ~] exit
 [username@es1 ~]
 ```
-
