@@ -84,17 +84,24 @@ The following part explains how to start VNC separately for macOS and Windows.
 
 ### Using an SSH Client
 
-Your local computer, UNIX-like system including Linux and macOS, and Windows 10 version 1803 (April 2018 Update) or later, most likely has an SSH client installed by default.
+Your computer most likely has an SSH client installed by default. If your computer is a UNIX-like system such as Linux and macOS, or Windows 10 version 1803 (April 2018 Update) or later, it should have an SSH client. You can also check for an SSH client, just by typing ``ssh`` at the command line.
 
 #### Create an SSH tunnel
 
-If you have OpenSSH 7.3 or later, you can create an SSH tunnel between ``localhost:5901`` and  ``g0001.abci.local:5901``:
+To connect to the VNC server by using Port 5901 of your computer, you need to create an SSH tunnel between ``localhost:5901`` and  ``g0001.abci.local:5901``.
+
+If you have OpenSSH 7.3 or later, you can create an SSH tunnel with the following command:
 
 ```
 [user@localmachine] $ ssh -N -L 5901:g0001.abci.local:5901 -J %r@as.abci.ai username@es
 ```
 
-By accessing Port 5901 on the local machine, you can connect to the VNC server.
+If you cannot use ProxyJump, you can also create one with the following command:
+
+```
+[user@localmachine] $ ssh -L 10022:es:22 -l username as.abci.ai
+[user@localmachine] $ ssh -p 10022 -N -L 5901:g0001.abci.local:5901 -l username localhost
+```
 
 #### Launch VNC client
 
