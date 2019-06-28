@@ -90,7 +90,7 @@ g0001.abci.local:1 が起動したVNCサーバのディスプレイ名です。�
 
 #### SSHトンネルの設定 {#create-an-ssh-tunnel}
 
-ProxyJumpが利用可能なOpenSSH 7.4以降がインストールされている場合は、以下のように実行します。
+ProxyJumpが利用可能なOpenSSH 7.3以降がインストールされている場合は、以下のように実行します。
 
 ```
 [user@localmachine] $ ssh -N -L 5901:g0001.abci.local:5901 -J %r@as.abci.ai username@es
