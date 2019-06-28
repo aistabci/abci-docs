@@ -1,14 +1,12 @@
 # リモートデスクトップの利用
 
-## 概要
-
 ここでは、VNC (Virtual Network Computing) を用いた、ABCIでのリモートデスクトップの利用方法について説明します。リモートデスクトップを使うことで、計算ノードでGUIの利用が可能になります。
 
-## 前準備
+## 前準備 {#preparation}
 
 * ABCIにログインします。
 
-    ログインの方法は、ユーザガイドの2章を参照してください。
+    ログインの方法は、[インタラクティブノードへのログイン](02.md#login-to-interactive-node)を参照してください。
 
 * vncserverを起動し、VNCサーバのパスワードなどの初期設定をします。
 
@@ -62,7 +60,7 @@ geometry=2000x1200
 [user@localmachine] $ ssh -J %r@as.abci.ai username@es
 ```
 
-* On-demand、ノード専有でUGEから1ノード確保してログインします。
+* On-demand、ノード専有で1ノード確保してログインします。
 
 ```
 [username@g0001 ~] $ qrsh -g grpname -l rt_F=1
@@ -81,18 +79,19 @@ Log file is /home/username/.vnc/g0001.abci.local:1.log
 [username@g0001 ~]
 ```
 
-g0001.abci.local:1 が起動したVNCサーバのディスプレイ名です。このVNCサーバには5901というポート番号が割り当てられます。:2の場合は5902、:3の場合は5903、というようにディスプレイ番号に5900を加えたポートが割り当てられるようになっています。
+g0001.abci.local:1 が起動したVNCサーバのディスプレイ名です。このVNCサーバには5901というポート番号が割り当てられます。:2の場合は5902、:3の場合は5903、とディスプレイ番号に5900を加えたポートが割り当てられます。
 
+## 起動手順 {#start-vnc}
 
-## 起動手順
+ここでは、よく利用されるSSHクライアントでの起動手順と、Windowsで利用されるTera TermやPuTTYでの起動手順を説明します。
 
-ここでは、よく利用される macOSとWindowsに分けて開始手順を説明します。
+### SSHクライアントの利用 {#ssh-clients}
 
-### macOS系の場合
+ほとんどのLinux、macOSを含むUNIX系OS、Windows 10 April 2018 Update (1803)以降のWindows 10には、デフォルトでSSHクライアントがインストールされています。
 
-macOSでは、デフォルトでOpenSSH 7.4以降がインストールされ、FinderにVNCクライアントが統合されています。
+#### SSHトンネルの設定 {#ssh-tunnel}
 
-* ローカルマシンからポートフォワードの設定を行います。
+ProxyJumpが利用可能なOpenSSH 7.4以降がインストールされている場合は、以下のように実行します。
 
 ```
 [user@localmachine] $ ssh -N -L 5901:XXX.abci.local:5901 -J %r@as.abci.ai username@es
@@ -100,17 +99,23 @@ macOSでは、デフォルトでOpenSSH 7.4以降がインストールされ、F
 
 これでローカルマシンの5901にアクセスすると、VNCサーバに接続できるようになります。
 
-* VNCクライアントを起動します。
+#### VNCクライアントの起動 {#run-vnc-client}
+
+macOSでは、FinderにVNCクライアントが統合されているため、以下のコマンドで起動できます。
 
 ```
 [user@localmachine] $ open vnc://localhost:5901/
 ```
 
-### Windows系の場合
+macOS以外のOSでは、別途VNCクライアントをインストールする必要があります。
+
+### Tera Term や PuTTYの利用 {#tera-term-and-putty}
+
+#### SSHトンネルの設定 {#ssh-tunnel_1}
 
 Tera Term や PuTTY などでログインしている場合は、ポート転送の設定を行います。
 
-*   Tera Term の場合
+* Tera Term の場合
 
     [設定] -> [SSH転送] をクリックしSSH転送のセットアップ画面を表示します。次に、[追加]をクリックして表示される SSH転送画面で以下を設定します。
 
@@ -121,7 +126,7 @@ Tera Term や PuTTY などでログインしている場合は、ポート転送
 	| リモート側ホスト | 計算ノード (例:g0001) |
 	| リモート側ポート | VNCサーバのポート番号 （例:5901） |
 
-*   PuTTY の場合
+* PuTTY の場合
 
     タイトルバーで右クリックし、[Change Settings...]をクリックします。表示される設定メニューのCategoryから、SSH->Tunnelsを選択し、以下を設定します。
 
@@ -131,15 +136,15 @@ Tera Term や PuTTY などでログインしている場合は、ポート転送
 	| ローカルのポート | システムで許されている任意のポート番号 （例:15901） |
 	| リモート側ホスト：ポート | 計算ノードとVNCサーバのポート番号 (例:g0123:5901) |
 
-### VNC client の起動
+#### VNCクライアントの起動 {#run-vnc-client_1}
 
-ポート転送の設定が完了したらVNC clientを起動します。TigerVNC Client の例では、以下のようにlocalhostに"::"でポート番号つなげて入力します。
+ポート転送の設定が完了したらVNCクライアントを起動します。TigerVNC Clientの例では、以下のようにlocalhostに"::"でポート番号つなげて入力します。
 
 <div align="center">
 <img src="/img/apdx2_vnc_viewer_01.png" width="480" title="vncviewer"><br>
 </div>
 
-## 終了手順
+## 終了手順 {#stop-vnc}
 
 * VNCサーバを終了し、計算ノードからexitします。
 
