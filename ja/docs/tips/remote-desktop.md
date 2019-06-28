@@ -86,17 +86,24 @@ g0001.abci.local:1 が起動したVNCサーバのディスプレイ名です。�
 
 ### SSHクライアントの利用 {#using-an-ssh-client}
 
-ほとんどのLinux、macOSを含むUNIX系OS、Windows 10 April 2018 Update (1803)以降のWindows 10には、デフォルトでSSHクライアントがインストールされています。
+Linux、macOSを含むUNIX系OS、Windows 10 version 1803 (April 2018 Update)以降など、ほとんどのPCには、デフォルトでSSHクライアントがインストールされています。インストールされているかどうかを確認するには、コマンドラインから``ssh``コマンドを実行するだけで済みます。
 
 #### SSHトンネルの設定 {#create-an-ssh-tunnel}
 
-ProxyJumpが利用可能なOpenSSH 7.3以降がインストールされている場合は、以下のように実行します。
+ローカルPCのポート5901を使ってVNCサーバに接続できるようにする場合、``localhost:5901``と``g0001.abci.local:5901``の間のSSHトンネルを作成する必要があります。
+
+ProxyJumpが利用可能なOpenSSH 7.3以降がインストールされている場合は、以下のように実行することでSSHトンネルを作成できます。
 
 ```
 [user@localmachine] $ ssh -N -L 5901:g0001.abci.local:5901 -J %r@as.abci.ai username@es
 ```
 
-これでローカルマシンの5901にアクセスすると、VNCサーバに接続できるようになります。
+ProxyJumpが利用できない場合は、以下のように実行すれば同様にSSHトンネルを作成できます。
+
+```
+[user@localmachine] $ ssh -L 10022:es:22 -l username as.abci.ai
+[user@localmachine] $ ssh -p 10022 -N -L 5901:g0001.abci.local:5901 -l username localhost
+```
 
 #### VNCクライアントの起動 {#launch-vnc-client}
 
