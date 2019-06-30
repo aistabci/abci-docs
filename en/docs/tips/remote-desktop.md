@@ -121,7 +121,7 @@ Click [Change Settings...] and click [SSH] - [Tunnels].
 
 | item | value |
 |:--|:--|
-| sample image | <img src="/img/apdx2_vnc_portfw_putty_01.png"  width="480" title="putty:ssh tunnel" > |
+| sample image | <img src="vnc_portfw_putty_01.png"  width="480" title="putty:ssh tunnel" > |
 | local port | port number which you can use on your system. ex) 15901 |
 | remote host:port | hostname of compute node and port number of VNC server ex) g0123:5901) |
 
@@ -129,7 +129,7 @@ Launch VNC client and connect to localhost and the port number which assigned by
 In the example of Tiger VNC client, hostname and port number are connected by "::".
 
 <div align="center">
-<img src="/img/apdx2_vnc_viewer_01.png" width="480" title="vncviewer"><br>
+<img src="vnc_viewer_01.png" width="480" title="vncviewer"><br>
 </div>
 
 Click [Accept] , enter your VNC password, then launch VNC viewer.

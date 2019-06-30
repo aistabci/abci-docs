@@ -127,7 +127,7 @@ Tera Term や PuTTY などでログインしている場合は、ポート転送
 
 	| 項目 | 画面と設定値 |
 	|:--|:--|
-	| 設定画面 | <img src="/img/apdx2_vnc_portfw_teraterm_01.png"  width="480" title="teraterm:ssh tunnel" > |
+	| 設定画面 | <img src="vnc_portfw_teraterm_01.png"  width="480" title="teraterm:ssh tunnel" > |
 	| ローカルのポート | システムで許されている任意のポート番号 （例:15901） |
 	| リモート側ホスト | 計算ノード (例:g0001) |
 	| リモート側ポート | VNCサーバのポート番号 （例:5901） |
@@ -138,7 +138,7 @@ Tera Term や PuTTY などでログインしている場合は、ポート転送
 
 	| 項目 | 画面と設定値 |
 	|:--|:--|
-	| 設定画面 | <img src="/img/apdx2_vnc_portfw_putty_01.png"  width="480" title="putty:ssh tunnel" > |
+	| 設定画面 | <img src="vnc_portfw_putty_01.png"  width="480" title="putty:ssh tunnel" > |
 	| ローカルのポート | システムで許されている任意のポート番号 （例:15901） |
 	| リモート側ホスト：ポート | 計算ノードとVNCサーバのポート番号 (例:g0123:5901) |
 
@@ -147,7 +147,7 @@ Tera Term や PuTTY などでログインしている場合は、ポート転送
 ポート転送の設定が完了したらVNCクライアントを起動します。TigerVNC Clientの例では、以下のようにlocalhostに"::"でポート番号つなげて入力します。
 
 <div align="center">
-<img src="/img/apdx2_vnc_viewer_01.png" width="480" title="vncviewer"><br>
+<img src="vnc_viewer_01.png" width="480" title="vncviewer"><br>
 </div>
 
 ## 終了手順 {#stop-vnc}
