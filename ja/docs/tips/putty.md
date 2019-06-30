@@ -18,7 +18,7 @@
     PuTTYを起動すると以下のような画面が表示されます。
 
 <div align="center">
-<img src="/img/02_login_putty_00.png"  width="480" title="success login es" >
+<img src="login_putty_00.png"  width="480" title="success login es" >
 </div>
 
 * SSHポート転送の設定
@@ -27,7 +27,7 @@
 
 	| 項目 | 画面と設定値 |
 	|:--|:--|
-	| 設定画面 | <img src="/img/02_login_putty_02.png" width="480" title="putty:ssh tunnel setting" /> |
+	| 設定画面 | <img src="login_putty_02.png" width="480" title="putty:ssh tunnel setting" /> |
 	| ローカルのポート | システムで許されている任意のポート番号 (画面例: 11022) |
 	| リモート側ホスト | *es.abci.local:22* または *es:22* (画面例: *es.abci.local:22*) |
 	| ポート | 22 (固定値) |
@@ -35,7 +35,7 @@
 * [Add]ボタンをクリックして設定を追加します。
 
 <div align="center">
-<img src="/img/02_login_putty_03.png" width="480" title="putty:add ssh tunnel" />
+<img src="login_putty_03.png" width="480" title="putty:add ssh tunnel" />
 </div>
 
 ## アクセスサーバへの接続 {#login-to-access-server-with-putty}
@@ -48,7 +48,7 @@
 
 	| 項目 | 画面と設定値 |
 	|:--|:--|
-	| 設定画面 | <img src="/img/02_login_putty_04.png" width="480" title="putty:auth info" /> |
+	| 設定画面 | <img src="login_putty_04.png" width="480" title="putty:auth info" /> |
 	| 秘密鍵ファイル | 認証に使用する秘密鍵ファイルのパス |
 
 * アクセスサーバへのログイン
@@ -56,7 +56,7 @@
 
 	| 項目 | 画面と設定値 |
 	|:--|:--|
-	| 設定画面 | <img src="/img/02_login_putty_05.png" width="480" title="putty:login info" /> |
+	| 設定画面 | <img src="login_putty_05.png" width="480" title="putty:login info" /> |
 	| ホスト名 | *as.abci.ai* |
 
     入力が完了したら[Open]ボタンをクリックします。
@@ -64,7 +64,7 @@
     ABCIアカウントおよびパスフレーズを入力し、アクセスサーバにログインします。ログインに成功すると以下の画面が表示されます。ABCIにログイン中は、このログインセッションを維持する必要があります。
 
 <div align="center">
-<img src="/img/02_login_putty_07.png" width="540" title="putty:login as success" />
+<img src="login_putty_07.png" width="540" title="putty:login as success" />
 </div>
 
 !!! warning
@@ -84,7 +84,7 @@
 
 	| 項目 | 画面と設定値 |
 	|:--|:--|
-	| 設定画面 | <img src="/img/02_login_putty_08.png" width="480" title="putty:login es" /> |
+	| 設定画面 | <img src="login_putty_08.png" width="480" title="putty:login es" /> |
 	| ホスト名 | localhost |
 	| TCPポート | [SSHトンネル情報の設定](#ssh-tunnel-with-putty)で設定したポート番号 (画面例: 11022) |
 
@@ -93,6 +93,6 @@
     ログインに成功すると、以下のような画面が表示されます。
 
 <div align="center">
-<img src="/img/02_login_putty_09.png" width="540" title="putty:login es success" >
+<img src="login_putty_09.png" width="540" title="putty:login es success" >
 </div>
   
