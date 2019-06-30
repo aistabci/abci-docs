@@ -1,6 +1,6 @@
 # PuTTY
 
-This section describes how to use PuTTY for virtual terminal applications that are available on Windows. To use OpenSSH and other command-line based clients, you can find an instruction at [Connecting to Interative Node](../02.md#connecting-to-interactive-node).
+This section describes how to use PuTTY, a virtual terminal application available on Windows, for connecting to ABCI Interactive Node. To use OpenSSH or other command-line based clients, you can find an instruction at [Connecting to Interative Node](../02.md#connecting-to-interactive-node).
 
 In order to login to the interactive node, the following procedure is necessary.
 
