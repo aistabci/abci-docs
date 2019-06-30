@@ -26,6 +26,7 @@ nav:
     - 'Remote Desktop': 'tips/remote-desktop.md'
     - 'AWS CLI': 'tips/awscli.md'
     - 'GCC 7.3.0': 'tips/gcc-7.3.0.md'
+    - 'PuTTY': 'tips/putty.md'
   - 'NVIDIA GPU Cloud (NGC)': 'ngc.md'
   - 'Known Issues': 'known-issues.md'
   - 'System Updates': 'system-updates.md'
