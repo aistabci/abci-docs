@@ -45,9 +45,9 @@
 
 	| 項目 | 画面と設定値 |
 	|:--|:--|
-	| 設定画面 | <img src="login_teraterm_03_ja.png"  width="480" title="teraterm:ssh tunnel" > |
+	| 設定画面 | <img src="login_teraterm_03_ja.png"  width="480" title="ssh tunnel setting" /> |
 	| ローカルのポート | システムで許されている任意のポート番号 (例: 10022) |
-	| リモート側ホスト | *es.abci.local* または *es* （固定値）|
+	| リモート側ホスト | *es.abci.local* または *es* (固定値) |
 	| ポート | 22 （固定値）|
       
 * 設定が追加されていることを確認し、[OK]ボタンをクリックしてTera Term の画面に戻ります。
@@ -84,8 +84,7 @@
 
     設定が完了したら、[OK]ボタンをクリックしてSSHの認証に移ります。
 
-* 認証（アクセスサーバ）
-<a name="teraterm:ssh-auth-as"></a>
+* 認証（アクセスサーバ）<a name="ssh-auth-as"></a>
 
     SSHの認証情報を入力します。設定は以下のとおりです。
 
@@ -100,7 +99,7 @@
     設定が完了したら、[OK]ボタンをクリックしてアクセスサーバにログインします。ログインに成功すると以下の画面が表示されます。ABCIにログイン中は、このログインセッションを維持する必要があります。
 
 <div align="center">
-<img src="login_teraterm_08_ja.png"  width="640" title="success login as" >
+<img src="login_teraterm_08_ja.png"  width="640" title="success login as" />
 </div>
 
 !!! warning
@@ -118,17 +117,17 @@
 	|:--|:--|
 	| 設定画面 | <img src="login_teraterm_09_ja.png"  width="480" title="connect es" /> |
 	| ホスト | localhost(固定） |
-	| TCPポート | [SSHトンネル情報の設定](#ssh-tunnel-with-teraterm)で設定したポート番号 (画面例: 10022) |
+	| TCPポート | [SSHトンネル情報の設定](#ssh-tunnel)で設定したポート番号 (画面例: 10022) |
 	| サービス | ssh （固定）|
 
     設定が完了したら、[OK]ボタンをクリックし、SSHの認証に移ります。
 
 * 認証（インタラクティブノード）
 
-    インタラクティブノードの認証は、アクセスサーバと同じです。[アクセスサーバの認証方法](#teraterm:ssh-auth-as)を参照し、SSHの認証情報を入力してください。
+    インタラクティブノードの認証は、アクセスサーバと同じです。[アクセスサーバの認証方法](#ssh-auth-as)を参照し、SSHの認証情報を入力してください。
 
     設定が完了したら、[OK]ボタンをクリックしてインタラクティブノードにログインしてください。ログインに成功すると以下の画面が表示されます。
 
 <div align="center">
-<img src="login_teraterm_10_ja.png"  width="640" title="success login es" >
+<img src="login_teraterm_10_ja.png"  width="640" title="success login es" />
 </div>
