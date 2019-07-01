@@ -48,7 +48,7 @@ Open [https://ngc.nvidia.com/](https://ngc.nvidia.com/) with your browser, and i
 Then, you'll find:
 [https://ngc.nvidia.com/catalog/containers/nvidia:tensorflow](https://ngc.nvidia.com/catalog/containers/nvidia:tensorflow)
 
-In this page, you will see the the ``pull`` command for using TensorFlow image on Docker:
+In this page, you will see the ``pull`` command for using TensorFlow image on Docker:
 
 ```
 docker pull nvcr.io/nvidia/tensorflow:19.05-py2
@@ -71,7 +71,7 @@ Build a Singularity image for TensorFlow on the interactive node.
 
 ### Run a Singularity image
 
-Start an interactive job with one full-node, and run a sample program ``cnn_mnist.py``.
+Start an interactive job with one full-node and run a sample program ``cnn_mnist.py``.
 
 ```
 [username@es1 ~]$ qrsh -g grpname -l rt_F=1
