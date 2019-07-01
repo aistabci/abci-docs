@@ -6,7 +6,7 @@
 
 * ABCIにログインします。
 
-    ログインの方法は、[インタラクティブノードへのログイン](02.md#login-to-interactive-node)を参照してください。
+    ログインの方法は、[インタラクティブノードへのログイン](../02.md#login-to-interactive-node)を参照してください。
 
 * vncserverを起動し、VNCサーバのパスワードなどの初期設定をします。
 
