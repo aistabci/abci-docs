@@ -28,3 +28,9 @@ $ mkdocs serve
 ```
 
 And, open 'http://127.0.0.1:8000/' using a web browser.
+
+You can build the static version of three documents.
+
+```
+$ make -f site.mk
+```
