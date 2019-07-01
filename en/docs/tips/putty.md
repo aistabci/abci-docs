@@ -16,7 +16,7 @@ In order to login to the interactive node, the following procedure is necessary.
 
 	| item | value |
 	|:--|:--|
-	| sample image | <img src="login_putty_02.png" width="480" title="putty:ssh tunnel setting" /> |
+	| sample image | <img src="login_putty_02.png" width="480" title="ssh tunnel setting" /> |
 	| local port | e.g., 11022 |
 	| remote host and port | *es.abci.local:22* or *es:22* (e.g., *es.abci.local:22*) |
 	| remote port | 22 |
@@ -24,18 +24,18 @@ In order to login to the interactive node, the following procedure is necessary.
 * click [Add] to add the configuration
 
 <div align="center">
-<img src="login_putty_03.png" width="480" title="putty:add ssh tunnel" />
+<img src="login_putty_03.png" width="480" title="add ssh tunnel" />
 </div>
 
 ## Login to access server with PuTTY
 
-* Specify a private key file<a name="putty:ssh-auth-as"></a>
+* Specify a private key file<a name="ssh-auth-as"></a>
 
     Click  [Connection] - [SSH] - [Auth], and specify a private key file.
 
 	| item | value |
 	|:--|:--|
-	| sample image | <img src="login_putty_04.png" width="480" title="putty:auth info" /> |
+	| sample image | <img src="login_putty_04.png" width="480" title="auth info" /> |
 	| private key file for authentication | path of your private key file |
 
 * Open a session to access server with PuTTY
@@ -44,13 +44,13 @@ In order to login to the interactive node, the following procedure is necessary.
 
 	| item | value |
 	|:--|:--|
-	| sample image | <img src="login_putty_05.png" width="480" title="putty:login info" > |
+	| sample image | <img src="login_putty_05.png" width="480" title="login info" > |
 	| hostname | *as.abci.ai* |
 
     Click [Open] and enter your ABCI account and passphrase. Successfully logged in, the following screen displayed.
 
 <div align="center">
-<img src="login_putty_07.png" width="540" title="putty:login as success" >
+<img src="login_putty_07.png" width="540" title="login as success" >
 </div>
 
 !!! warning
@@ -60,7 +60,7 @@ In order to login to the interactive node, the following procedure is necessary.
 
 * Specify a private key file
 
-    Launch a new PuTTY screen, and enter your authentication information same as [access server](#putty:ssh-auth-as).
+    Launch a new PuTTY screen, and enter your authentication information same as [access server](#ssh-auth-as).
 
 * Open session to interactive node with PuTTY
 
@@ -68,12 +68,12 @@ In order to login to the interactive node, the following procedure is necessary.
 
 	| item | vlue |
 	|:--|:--|
-	| sample image | <img src="login_putty_08.png" width="480" title="putty:login es" /> |
+	| sample image | <img src="login_putty_08.png" width="480" title="login es" /> |
 	| host name | localhost |
 	| port | port number which use SSH tunnel (e.g., 11022) |
 
     Click [Open] and enter your ABCI account and passphrase. Successfully logged in, the following screen displayed.
 
 <div align="center">
-<img src="login_putty_09.png" width="540" title="putty:login es success" >
+<img src="login_putty_09.png" width="540" title="login es success" >
 </div>
