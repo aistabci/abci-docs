@@ -76,7 +76,7 @@ Start an interactive job with one full-node and run a sample program ``cnn_mnist
 ```
 [username@es1 ~]$ qrsh -g grpname -l rt_F=1
 [username@g0001 ~]$ module load singularity/2.6.1
-[username@g0001 ~]$ wget https://raw.githubusercontent.com/tensorflow/tensorflow/v1.12.0/tensorflow/examples/tutorials/layers/cnn_mnist.py
+[username@g0001 ~]$ wget https://raw.githubusercontent.com/tensorflow/tensorflow/v1.13.1/tensorflow/examples/tutorials/layers/cnn_mnist.py
 [username@g0001 ~]$ singularity run --nv tensorflow-19.06-py2.simg python cnn_mnist.py
 :
 {'loss': 0.10828217, 'global_step': 20000, 'accuracy': 0.9667}
@@ -92,7 +92,7 @@ We can do the same thing with a batch job.
 
 source /etc/profile.d/modules.sh
 module load singularity/2.6.1
-wget https://raw.githubusercontent.com/tensorflow/tensorflow/v1.12.0/tensorflow/examples/tutorials/layers/cnn_mnist.py
+wget https://raw.githubusercontent.com/tensorflow/tensorflow/v1.13.1/tensorflow/examples/tutorials/layers/cnn_mnist.py
 singularity run --nv tensorflow-19.06-py2.simg python cnn_mnist.py
 ```
 
