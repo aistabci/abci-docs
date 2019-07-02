@@ -51,13 +51,13 @@ Then, you'll find:
 In this page, you will see the ``pull`` command for using TensorFlow image on Docker:
 
 ```
-docker pull nvcr.io/nvidia/tensorflow:19.05-py2
+docker pull nvcr.io/nvidia/tensorflow:19.06-py2
 ```
 
 As we mentioned at [NGC Container Registry](#ngc-container-registry), when using with Singularity, this image can be specified by the following URL:
 
 ```
-docker://nvcr.io/nvidia/tensorflow:19.05-py2
+docker://nvcr.io/nvidia/tensorflow:19.06-py2
 ```
 
 ### Build a Singularity image
@@ -66,7 +66,7 @@ Build a Singularity image for TensorFlow on the interactive node.
 
 ```
 [username@es1 ~] $ module load singularity/2.6.1
-[username@es1 ~] $ singularity pull --name tensorflow-19.05-py2.simg docker://nvcr.io/nvidia/tensorflow:19.05-py2
+[username@es1 ~] $ singularity pull --name tensorflow-19.06-py2.simg docker://nvcr.io/nvidia/tensorflow:19.06-py2
 ```
 
 ### Run a Singularity image
@@ -76,8 +76,8 @@ Start an interactive job with one full-node and run a sample program ``cnn_mnist
 ```
 [username@es1 ~]$ qrsh -g grpname -l rt_F=1
 [username@g0001 ~]$ module load singularity/2.6.1
-[username@g0001 ~]$ wget https://raw.githubusercontent.com/tensorflow/tensorflow/v1.12.0/tensorflow/examples/tutorials/layers/cnn_mnist.py
-[username@g0001 ~]$ singularity run --nv tensorflow-19.05-py2.simg python cnn_mnist.py
+[username@g0001 ~]$ wget https://raw.githubusercontent.com/tensorflow/tensorflow/v1.13.1/tensorflow/examples/tutorials/layers/cnn_mnist.py
+[username@g0001 ~]$ singularity run --nv tensorflow-19.06-py2.simg python cnn_mnist.py
 :
 {'loss': 0.10828217, 'global_step': 20000, 'accuracy': 0.9667}
 ```
@@ -92,8 +92,8 @@ We can do the same thing with a batch job.
 
 source /etc/profile.d/modules.sh
 module load singularity/2.6.1
-wget https://raw.githubusercontent.com/tensorflow/tensorflow/v1.12.0/tensorflow/examples/tutorials/layers/cnn_mnist.py
-singularity run --nv tensorflow-19.05-py2.simg python cnn_mnist.py
+wget https://raw.githubusercontent.com/tensorflow/tensorflow/v1.13.1/tensorflow/examples/tutorials/layers/cnn_mnist.py
+singularity run --nv tensorflow-19.06-py2.simg python cnn_mnist.py
 ```
 
 ## Multiple-node Run
@@ -107,7 +107,7 @@ First, check the version of MPI installed into the TensorFlow image.
 
 ```
 [username@es1 ~] $ module load singularity/2.6.1
-[username@es1 ~] $ singularity exec tensorflow-19.05-py2.simg mpirun --version
+[username@es1 ~] $ singularity exec tensorflow-19.06-py2.simg mpirun --version
 mpirun (Open MPI) 3.1.3
 
 Report bugs to http://www.open-mpi.org/community/help/
@@ -139,7 +139,7 @@ In this case, we run four processes on each full-node in parallel, that means ei
 
 ```
 [username@g0001 ~]$ wget https://raw.githubusercontent.com/horovod/horovod/v0.16.4/examples/tensorflow_mnist.py
-[username@g0001 ~]$ mpirun -np 8 -npernode 4 singularity run --nv tensorflow-19.05-py2.simg python tensorflow_mnist.py
+[username@g0001 ~]$ mpirun -np 8 -npernode 4 singularity run --nv tensorflow-19.06-py2.simg python tensorflow_mnist.py
 :
 INFO:tensorflow:loss = 2.1563044, step = 30 (0.153 sec)
 INFO:tensorflow:loss = 2.1480849, step = 30 (0.153 sec)
@@ -171,7 +171,7 @@ We can do the same thing with a batch job.
 source /etc/profile.d/modules.sh
 module load singularity/2.6.1 openmpi/3.1.3
 wget https://raw.githubusercontent.com/horovod/horovod/v0.16.4/examples/tensorflow_mnist.py
-mpirun -np 8 -npernode 4 singularity run --nv tensorflow-19.05-py2.simg python tensorflow_mnist.py
+mpirun -np 8 -npernode 4 singularity run --nv tensorflow-19.06-py2.simg python tensorflow_mnist.py
 ```
 
 ## Using Locked Images
