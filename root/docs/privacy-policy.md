@@ -1,7 +1,7 @@
 # Privacy Policy
 
 !!! note
-    当サイト（https://portal.abci.ai/docs/）は、下記の産総研プライバシーポリシー（https://www.aist.go.jp/aist_j/privacy_policy/index.html）に従います。
+    当サイト（https://docs.abci.ai/）は、下記の産総研プライバシーポリシー（https://www.aist.go.jp/aist_j/privacy_policy/index.html）に従います。
 
 ------
 
