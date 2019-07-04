@@ -6,7 +6,7 @@ On every *release* we will deploy it as the current *official* version of the AB
 
 ## Structure of the repository
 
-This repository consists of three [MkDocs](https://www.mkdocs.org/) documents:
+This repository consists of the following [MkDocs](https://www.mkdocs.org/) documents:
 
 | Directory | officially deployed URL | Notes |
 |:--|:--|:--|
@@ -32,10 +32,17 @@ $ mkdocs serve
 
 And, open 'http://127.0.0.1:8000/' using a web browser.
 
-## Build
+## Build and deploy
 
-You can build the static version of three documents.
+To generate the static versions of documents:
 
 ```
 $ make -f site.mk
+(static files are generated under site/ directory)
+```
+
+And, to deploy and publish generated documents to `gh-pages` branch:
+
+```
+$ ghp-import -c docs.abci.ai -r origin -b gh-pages -p site
 ```
