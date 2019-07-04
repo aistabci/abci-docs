@@ -1,0 +1,337 @@
+<!doctype html><html lang="ja" class="no-js"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta http-equiv="x-ua-compatible" content="ie=edge"><meta name="description" content="AI Bridging Cloud Infrastructure (ABCI)"><link rel="canonical" href="https://docs.abci.ai/ja/02/"><meta name="author" content="AIST"><meta name="lang:clipboard.copy" content="クリップボードへコピー"><meta name="lang:clipboard.copied" content="コピーしました"><meta name="lang:search.language" content="ja"><meta name="lang:search.pipeline.stopwords" content="True"><meta name="lang:search.pipeline.trimmer" content="True"><meta name="lang:search.result.none" content="何も見つかりませんでした"><meta name="lang:search.result.one" content="1件見つかりました"><meta name="lang:search.result.other" content="#件見つかりました"><meta name="lang:search.tokenizer" content="[\s\-　、。，．]+"><link rel="shortcut icon" href="../assets/images/favicon.png"><meta name="generator" content="mkdocs-1.0.4, mkdocs-material-4.3.1"><title>2. ABCIシステム利用環境 - ABCI Users Guide</title><link rel="stylesheet" href="../assets/stylesheets/application.4031d38b.css"><link rel="stylesheet" href="../assets/stylesheets/application-palette.224b79ff.css"><meta name="theme-color" content="#ef5350"><script src="../assets/javascripts/modernizr.74668098.js"></script><link href="https://fonts.gstatic.com" rel="preconnect" crossorigin><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700|Roboto+Mono&display=swap"><style>body,input{font-family:"Roboto","Helvetica Neue",Helvetica,Arial,sans-serif}code,kbd,pre{font-family:"Roboto Mono","Courier New",Courier,monospace}</style><link rel="stylesheet" href="../assets/fonts/material-icons.css"><script>window.ga = window.ga || function() {
+    (ga.q = ga.q || []).push(arguments)
+  }
+  ga.l = +new Date
+  /* Setup integration and send page view */
+  ga("create", "UA-118371652-2", "docs.abci.ai")
+  ga("set", "anonymizeIp", true)
+  ga("send", "pageview")
+  /* Register handler to log search on blur */
+  document.addEventListener("DOMContentLoaded", () => {
+    if (document.forms.search) {
+      var query = document.forms.search.query
+      query.addEventListener("blur", function() {
+        if (this.value) {
+          var path = document.location.pathname;
+          ga("send", "pageview", path + "?q=" + this.value)
+        }
+      })
+    }
+  })</script><script async src="https://www.google-analytics.com/analytics.js"></script></head><body dir="ltr" data-md-color-primary="red" data-md-color-accent="red"><svg class="md-svg"><defs><svg xmlns="http://www.w3.org/2000/svg" width="416" height="448" viewBox="0 0 416 448" id="__github"><path fill="currentColor" d="M160 304q0 10-3.125 20.5t-10.75 19T128 352t-18.125-8.5-10.75-19T96 304t3.125-20.5 10.75-19T128 256t18.125 8.5 10.75 19T160 304zm160 0q0 10-3.125 20.5t-10.75 19T288 352t-18.125-8.5-10.75-19T256 304t3.125-20.5 10.75-19T288 256t18.125 8.5 10.75 19T320 304zm40 0q0-30-17.25-51T296 232q-10.25 0-48.75 5.25Q229.5 240 208 240t-39.25-2.75Q130.75 232 120 232q-29.5 0-46.75 21T56 304q0 22 8 38.375t20.25 25.75 30.5 15 35 7.375 37.25 1.75h42q20.5 0 37.25-1.75t35-7.375 30.5-15 20.25-25.75T360 304zm56-44q0 51.75-15.25 82.75-9.5 19.25-26.375 33.25t-35.25 21.5-42.5 11.875-42.875 5.5T212 416q-19.5 0-35.5-.75t-36.875-3.125-38.125-7.5-34.25-12.875T37 371.5t-21.5-28.75Q0 312 0 260q0-59.25 34-99-6.75-20.5-6.75-42.5 0-29 12.75-54.5 27 0 47.5 9.875t47.25 30.875Q171.5 96 212 96q37 0 70 8 26.25-20.5 46.75-30.25T376 64q12.75 25.5 12.75 54.5 0 21.75-6.75 42 34 40 34 99.5z"/></svg></defs></svg> <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off"> <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off"> <label class="md-overlay" data-md-component="overlay" for="__drawer"></label><a href="#2-abci" tabindex="1" class="md-skip">Skip to content </a><header class="md-header" data-md-component="header"><nav class="md-header-nav md-grid"><div class="md-flex"><div class="md-flex__cell md-flex__cell--shrink"><a href="https://docs.abci.ai/ja/" title="ABCI Users Guide" class="md-header-nav__button md-logo"><i class="md-icon"></i></a></div><div class="md-flex__cell md-flex__cell--shrink"><label class="md-icon md-icon--menu md-header-nav__button" for="__drawer"></label></div><div class="md-flex__cell md-flex__cell--stretch"><div class="md-flex__ellipsis md-header-nav__title" data-md-component="title"><span class="md-header-nav__topic">ABCI Users Guide</span><span class="md-header-nav__topic">2. ABCIシステム利用環境</span></div></div><div class="md-flex__cell md-flex__cell--shrink"><label class="md-icon md-icon--search md-header-nav__button" for="__search"></label><div class="md-search" data-md-component="search" role="dialog"><label class="md-search__overlay" for="__search"></label><div class="md-search__inner" role="search"><form class="md-search__form" name="search"><input type="text" class="md-search__input" name="query" placeholder="検索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="query" data-md-state="active"> <label class="md-icon md-search__icon" for="__search"></label> <button type="reset" class="md-icon md-search__icon" data-md-component="reset" tabindex="-1">&#xE5CD;</button></form><div class="md-search__output"><div class="md-search__scrollwrap" data-md-scrollfix><div class="md-search-result" data-md-component="result"><div class="md-search-result__meta">検索キーワードを入力してください</div><ol class="md-search-result__list"></ol></div></div></div></div></div></div><div class="md-flex__cell md-flex__cell--shrink"><div class="md-header-nav__source"><a href="https://github.com/aistairc/abci-docs/" title="リポジトリへ" class="md-source" data-md-source="github"><div class="md-source__icon"><svg viewBox="0 0 24 24" width="24" height="24"><use xlink:href="#__github" width="24" height="24"></use></svg></div><div class="md-source__repository">GitHub</div></a></div></div></div></nav></header><div class="md-container"><main class="md-main"><div class="md-main__inner md-grid" data-md-component="container"><div class="md-sidebar md-sidebar--primary" data-md-component="navigation"><div class="md-sidebar__scrollwrap"><div class="md-sidebar__inner"><nav class="md-nav md-nav--primary" data-md-level="0"><label class="md-nav__title md-nav__title--site" for="__drawer"><a href="https://docs.abci.ai/ja/" title="ABCI Users Guide" class="md-nav__button md-logo"><i class="md-icon"></i></a>ABCI Users Guide</label><div class="md-nav__source"><a href="https://github.com/aistairc/abci-docs/" title="リポジトリへ" class="md-source" data-md-source="github"><div class="md-source__icon"><svg viewBox="0 0 24 24" width="24" height="24"><use xlink:href="#__github" width="24" height="24"></use></svg></div><div class="md-source__repository">GitHub</div></a></div><ul class="md-nav__list" data-md-scrollfix><li class="md-nav__item"><a href=".." title="はじめに" class="md-nav__link">はじめに</a></li><li class="md-nav__item md-nav__item--active md-nav__item--nested"><input class="md-toggle md-nav__toggle" data-md-toggle="nav-2" type="checkbox" id="nav-2" checked><label class="md-nav__link" for="nav-2">利用手引き</label><nav class="md-nav" data-md-component="collapsible" data-md-level="1"><label class="md-nav__title" for="nav-2">利用手引き</label><ul class="md-nav__list" data-md-scrollfix><li class="md-nav__item"><a href="../01/" title="1. ABCIシステムの概要" class="md-nav__link">1. ABCIシステムの概要</a></li><li class="md-nav__item md-nav__item--active"><input class="md-toggle md-nav__toggle" data-md-toggle="toc" type="checkbox" id="__toc"><label class="md-nav__link md-nav__link--active" for="__toc">2. ABCIシステム利用環境</label><a href="./" title="2. ABCIシステム利用環境" class="md-nav__link md-nav__link--active">2. ABCIシステム利用環境</a><nav class="md-nav md-nav--secondary"><label class="md-nav__title" for="__toc">目次</label><ul class="md-nav__list" data-md-scrollfix><li class="md-nav__item"><a href="#create-an-account" title="2.1. アカウントの取得" class="md-nav__link">2.1. アカウントの取得</a></li><li class="md-nav__item"><a href="#connecting-to-interactive-node" title="2.2. インタラクティブノードへの接続" class="md-nav__link">2.2. インタラクティブノードへの接続</a><nav class="md-nav"><ul class="md-nav__list"><li class="md-nav__item"><a href="#prerequisites" title="前提" class="md-nav__link">前提</a></li><li class="md-nav__item"><a href="#login-using-an-ssh-client" title="SSHクライアントによるログイン" class="md-nav__link">SSHクライアントによるログイン</a><nav class="md-nav"><ul class="md-nav__list"><li class="md-nav__item"><a href="#general-method" title="一般的なログイン方法" class="md-nav__link">一般的なログイン方法</a></li><li class="md-nav__item"><a href="#proxyjump" title="ProxyJumpの使用" class="md-nav__link">ProxyJumpの使用</a></li></ul></nav></li></ul></nav></li><li class="md-nav__item"><a href="#file-transfer-to-interactive-node" title="2.3. インタラクティブノードへのファイル転送" class="md-nav__link">2.3. インタラクティブノードへのファイル転送</a></li><li class="md-nav__item"><a href="#change-password" title="2.4. パスワード変更" class="md-nav__link">2.4. パスワード変更</a></li><li class="md-nav__item"><a href="#login-shell" title="2.5. ログインシェル" class="md-nav__link">2.5. ログインシェル</a></li><li class="md-nav__item"><a href="#check-abci-point" title="2.6. ABCIポイントの確認" class="md-nav__link">2.6. ABCIポイントの確認</a></li><li class="md-nav__item"><a href="#check-disk-quota" title="2.7. ディスククォータの確認" class="md-nav__link">2.7. ディスククォータの確認</a></li><li class="md-nav__item"><a href="#communications-between-compute-nodes-and-external-network" title="2.8. 計算ノードと外部ネットワークとの通信" class="md-nav__link">2.8. 計算ノードと外部ネットワークとの通信</a></li></ul></nav></li><li class="md-nav__item"><a href="../03/" title="3. ジョブ実行環境" class="md-nav__link">3. ジョブ実行環境</a></li><li class="md-nav__item"><a href="../04/" title="4. ストレージ" class="md-nav__link">4. ストレージ</a></li><li class="md-nav__item"><a href="../05/" title="5. Environment Modulesの利用" class="md-nav__link">5. Environment Modulesの利用</a></li><li class="md-nav__item"><a href="../06/" title="6. Pythonの利用" class="md-nav__link">6. Pythonの利用</a></li><li class="md-nav__item"><a href="../07/" title="7. GPUの利用" class="md-nav__link">7. GPUの利用</a></li><li class="md-nav__item"><a href="../08/" title="8. MPIの利用" class="md-nav__link">8. MPIの利用</a></li><li class="md-nav__item"><a href="../09/" title="9. Linuxコンテナ" class="md-nav__link">9. Linuxコンテナ</a></li><li class="md-nav__item"><a href="../10/" title="10. プログラム開発環境" class="md-nav__link">10. プログラム開発環境</a></li><li class="md-nav__item"><a href="../11/" title="11. アプリケーション・フレームワーク" class="md-nav__link">11. アプリケーション・フレームワーク</a></li><li class="md-nav__item"><a href="../appendix1/" title="付録1. インストール済みソフトウェアの構成" class="md-nav__link">付録1. インストール済みソフトウェアの構成</a></li><li class="md-nav__item"><a href="../appendix2/" title="付録2. HPCIによるABCIシステム利用" class="md-nav__link">付録2. HPCIによるABCIシステム利用</a></li></ul></nav></li><li class="md-nav__item md-nav__item--nested"><input class="md-toggle md-nav__toggle" data-md-toggle="nav-3" type="checkbox" id="nav-3"><label class="md-nav__link" for="nav-3">Tips</label><nav class="md-nav" data-md-component="collapsible" data-md-level="1"><label class="md-nav__title" for="nav-3">Tips</label><ul class="md-nav__list" data-md-scrollfix><li class="md-nav__item"><a href="../tips/remote-desktop/" title="リモートデスクトップの利用" class="md-nav__link">リモートデスクトップの利用</a></li><li class="md-nav__item"><a href="../tips/awscli/" title="AWS CLIの利用" class="md-nav__link">AWS CLIの利用</a></li><li class="md-nav__item"><a href="../tips/gcc-7.3.0/" title="GCC 7.3.0の利用" class="md-nav__link">GCC 7.3.0の利用</a></li><li class="md-nav__item"><a href="../tips/tera-term/" title="Tera Termの利用" class="md-nav__link">Tera Termの利用</a></li><li class="md-nav__item"><a href="../tips/putty/" title="PuTTYの利用" class="md-nav__link">PuTTYの利用</a></li></ul></nav></li><li class="md-nav__item"><a href="../ngc/" title="NVIDIA GPU Cloud (NGC)" class="md-nav__link">NVIDIA GPU Cloud (NGC)</a></li><li class="md-nav__item"><a href="../known-issues/" title="既知の問題" class="md-nav__link">既知の問題</a></li><li class="md-nav__item"><a href="../system-updates/" title="システム更新履歴" class="md-nav__link">システム更新履歴</a></li><li class="md-nav__item"><a href="https://abci.ai/ja/about_abci/info.html" title="運転状況" class="md-nav__link">運転状況</a></li><li class="md-nav__item"><a href="https://docs.abci.ai/privacy-policy/" title="プライバシーポリシー" class="md-nav__link">プライバシーポリシー</a></li></ul></nav></div></div></div><div class="md-sidebar md-sidebar--secondary" data-md-component="toc"><div class="md-sidebar__scrollwrap"><div class="md-sidebar__inner"><nav class="md-nav md-nav--secondary"><label class="md-nav__title" for="__toc">目次</label><ul class="md-nav__list" data-md-scrollfix><li class="md-nav__item"><a href="#create-an-account" title="2.1. アカウントの取得" class="md-nav__link">2.1. アカウントの取得</a></li><li class="md-nav__item"><a href="#connecting-to-interactive-node" title="2.2. インタラクティブノードへの接続" class="md-nav__link">2.2. インタラクティブノードへの接続</a><nav class="md-nav"><ul class="md-nav__list"><li class="md-nav__item"><a href="#prerequisites" title="前提" class="md-nav__link">前提</a></li><li class="md-nav__item"><a href="#login-using-an-ssh-client" title="SSHクライアントによるログイン" class="md-nav__link">SSHクライアントによるログイン</a><nav class="md-nav"><ul class="md-nav__list"><li class="md-nav__item"><a href="#general-method" title="一般的なログイン方法" class="md-nav__link">一般的なログイン方法</a></li><li class="md-nav__item"><a href="#proxyjump" title="ProxyJumpの使用" class="md-nav__link">ProxyJumpの使用</a></li></ul></nav></li></ul></nav></li><li class="md-nav__item"><a href="#file-transfer-to-interactive-node" title="2.3. インタラクティブノードへのファイル転送" class="md-nav__link">2.3. インタラクティブノードへのファイル転送</a></li><li class="md-nav__item"><a href="#change-password" title="2.4. パスワード変更" class="md-nav__link">2.4. パスワード変更</a></li><li class="md-nav__item"><a href="#login-shell" title="2.5. ログインシェル" class="md-nav__link">2.5. ログインシェル</a></li><li class="md-nav__item"><a href="#check-abci-point" title="2.6. ABCIポイントの確認" class="md-nav__link">2.6. ABCIポイントの確認</a></li><li class="md-nav__item"><a href="#check-disk-quota" title="2.7. ディスククォータの確認" class="md-nav__link">2.7. ディスククォータの確認</a></li><li class="md-nav__item"><a href="#communications-between-compute-nodes-and-external-network" title="2.8. 計算ノードと外部ネットワークとの通信" class="md-nav__link">2.8. 計算ノードと外部ネットワークとの通信</a></li></ul></nav></div></div></div><div class="md-content"><article class="md-content__inner md-typeset"><a href="https://github.com/aistairc/abci-docs/edit/master/ja/docs/02.md" title="編集" class="md-icon md-content__icon">&#xE3C9;</a><h1 id="2-abci">2. ABCIシステム利用環境</h1>
+<h2 id="create-an-account">2.1. アカウントの取得</h2>
+<p>ABCI利用者には、「利用責任者」「利用管理者」「利用者」の3種類があります。
+ABCIシステムを利用するには、「利用責任者」が<a href="https://portal.abci.ai/user/project_regist_app.php">ABCI利用ポータル</a>からABCIグループ申請・利用者(「利用管理者」もしくは「利用者」)を行い、ABCIアカウントを取得する必要があります。
+詳細は<a href="https://docs.abci.ai/portal/ja/">ABCI利用ポータル利用手引き</a>を参照してください。</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<ul>
+<li>「利用責任者」自身にもABCIアカウントが発行されます。</li>
+<li>「利用責任者」は<a href="https://portal.abci.ai/user/">ABCI利用ポータル</a>にて「利用者」を「利用管理者」に変更することが可能です。</li>
+<li>「利用責任者」と「利用管理者」は、ABCIグループに利用者(「利用管理者」もしくは「利用者」)を追加することが可能です。</li>
+</ul>
+</div>
+<h2 id="connecting-to-interactive-node">2.2. インタラクティブノードへの接続</h2>
+<p>ABCIシステムのフロントエンドであるインタラクティブノード(ホスト名: <em>es</em>)に接続するには、二段階のSSH公開鍵認証による接続を行います。</p>
+<ol>
+<li>SSH公開鍵認証を用いてアクセスサーバ(ホスト名: <em>as.abci.ai</em>)にログインして、ローカルPCとインタラクティブノードの間にSSHポートフォワーディングによるトンネリング（以下「SSHトンネル」という）を作成</li>
+<li>SSHトンネルを介して、SSH公開鍵認証を用いてインタラクティブノード(<em>es</em>)にログイン</li>
+</ol>
+<p>なお本章では、ABCIのサーバ名は <em>イタリック</em> で表記します。</p>
+<h3 id="prerequisites">前提</h3>
+<p>インタラクティブノードに接続するには、以下が必要になります。</p>
+<ul>
+<li>SSHクライアント。Linux、macOSを含むUNIX系OS、Windows 10 version 1803 (April 2018 Update)以降など、ほとんどのPCには、デフォルトでSSHクライアントがインストールされています。インストールされているかどうかを確認するには、コマンドラインから<code>ssh</code>コマンドを実行してください。</li>
+<li>安全なSSH公開鍵・秘密鍵ペアの生成。ABCIで利用可能な鍵ペアは以下のとおりです。<ul>
+<li>RSA鍵 (2048bit以上)</li>
+<li>ECDSA鍵 (256bit、384bit、または521bit)</li>
+<li>Ed25519鍵</li>
+</ul>
+</li>
+<li>SSH公開鍵の登録。<a href="https://portal.abci.ai/user/">ABCI利用ポータル</a>にてSSH公開鍵の登録を事前に行ってください。登録方法は、<a href="https://docs.abci.ai/portal/ja/02/#23">SSH公開鍵の登録</a>を参照してください。</li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>SSHクライアントとして、Tera TermやPuTTYを利用する場合は、<a href="../tips/tera-term/">Tera Termの利用</a>、<a href="../tips/putty/">PuTTYの利用</a>を参照。</p>
+</div>
+<h3 id="login-using-an-ssh-client">SSHクライアントによるログイン</h3>
+<p>以下では、SSHクライアントを用いて、(1) アクセスサーバでSSHトンネルの作成後にインタラクティブノードにログインする方法と、(2) OpenSSH 7.3以降で実装されたProxyJumpを使ったより簡便なログイン方法、を説明します。</p>
+<h4 id="general-method">一般的なログイン方法</h4>
+<p>以下のコマンドでアクセスサーバ(<em>as.abci.ai</em>)にログインし、SSHトンネルを作成します。</p>
+<div class="codehilite"><pre>
+yourpc$ ssh -i /path/identity_file -L 10022:<i>es</i>:22 -l username <i>as.abci.ai</i>
+The authenticity of host 'as.abci.ai (0.0.0.1)' can't be established.
+RSA key fingerprint is XX:XX:XX:XX:XX:XX:XX:XX:XX:XX:XX:XX:XX:XX:XX:XX. <- 初回ログイン時のみ表示
+Are you sure you want to continue connecting (yes/no)?  <- yesを入力
+Warning: Permanently added ‘XX.XX.XX.XX' (RSA) to the list of known hosts.
+Enter passphrase for key '/path/identity_file': <- パスフレーズ入力
+</pre></div>
+
+<p>アクセスサーバへのログインが成功すると、ターミナル上に下記のメッセージが表示されます。</p>
+<div class="codehilite"><pre><span></span><span class="nv">Welcome</span> <span class="nv">to</span> <span class="nv">ABCI</span> <span class="nv">access</span> <span class="nv">server</span>.
+<span class="nv">Please</span> <span class="nv">press</span> <span class="nv">any</span> <span class="nv">key</span> <span class="k">if</span> <span class="nv">you</span> <span class="k">disconnect</span> <span class="nv">this</span> <span class="nv">session</span>.
+</pre></div>
+
+
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>上記状態で何らかのキーを入力するとSSH接続が切断されてしますので注意してください。</p>
+</div>
+<p>続いて、別のターミナルを起動し、SSHトンネルを用いてインタラクティブノードにログインします。</p>
+<div class="codehilite"><pre>
+yourpc$ ssh -i /path/identity_file -p 10022 -l username localhost
+The authenticity of host 'localhost (127.0.0.1)' can't be established.
+RSA key fingerprint is XX:XX:XX:XX:XX:XX:XX:XX:XX:XX:XX:XX:XX:XX:XX:XX. <- 初回ログイン時のみ表示
+Are you sure you want to continue connecting (yes/no)? <- yesを入力
+Warning: Permanently added 'localhost' (RSA) to the list of known hosts.
+Enter passphrase for key '-i /path/identity_file': <- パスフレーズ入力
+[username@es1 ~]$
+</pre></div>
+
+<h4 id="proxyjump">ProxyJumpの使用</h4>
+<p>OpenSSH 7.3以降で実装されたProxyJumpを用いると、以下のコマンドのみでログインできます。</p>
+<div class="codehilite"><pre>
+yourpc$ ssh -i /path/identity_file -o "ProxyJump username@<i>as.abci.ai</i>" username@<i>es</i>
+</pre></div>
+
+<p>より単純に以下のコマンドでもログインできます。</p>
+<div class="codehilite"><pre>
+yourpc$ ssh -i /path/identity_file -J username@<i>as.abci.ai</i> username@<i>es</i>
+</pre></div>
+
+<p>さらにローカルPCの<code>$HOME/.ssh/config</code>に以下の記述を行うと、<code>ssh abci</code>とタイプするだけで実行できます。</p>
+<div class="codehilite"><pre><span></span><span class="k">Host</span><span class="w"> </span><span class="n">abci</span><span class="w"></span>
+<span class="w">     </span><span class="n">HostName</span><span class="w"> </span><span class="n">es</span><span class="w"></span>
+<span class="w">     </span><span class="k">User</span><span class="w"> </span><span class="n">username</span><span class="w"></span>
+<span class="w">     </span><span class="n">ProxyJump</span><span class="w"> </span><span class="o">%</span><span class="n">r</span><span class="nv">@as</span><span class="p">.</span><span class="n">abci</span><span class="p">.</span><span class="n">ai</span><span class="w"></span>
+<span class="w">     </span><span class="n">IdentityFile</span><span class="w"> </span><span class="o">/</span><span class="k">path</span><span class="o">/</span><span class="n">identity_file</span><span class="w"></span>
+</pre></div>
+
+
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Windows 10 バージョン1803以降に標準でバンドルされているOpenSSH_for_Windows_7.7p1では、ProxyJumpおよびProxyCommandが使えません。Windows Subsystem for Linux (WSL)にバンドルされているOpenSSHでは使えます。</p>
+</div>
+<h2 id="file-transfer-to-interactive-node">2.3. インタラクティブノードへのファイル転送</h2>
+<p>ローカルPCとABCIシステム間でファイル転送をするには、<code>scp</code>(<code>sftp</code>)コマンドを利用します。この場合もSSHトンネルを介して行う必要があります。</p>
+<p>SSHトンネルの設定後、以下のように実行します。</p>
+<div class="codehilite"><pre><span></span><span class="nv">yourpc</span>$ <span class="nv">scp</span> <span class="o">-</span><span class="nv">i</span> <span class="o">/</span><span class="nv">path</span><span class="o">/</span><span class="nv">identity_file</span> <span class="o">-</span><span class="nv">P</span> <span class="mi">10022</span> <span class="nv">local</span><span class="o">-</span><span class="nv">file</span> <span class="nv">username</span>@<span class="nv">localhost</span>:<span class="nv">remote</span><span class="o">-</span><span class="nv">dir</span>
+<span class="nv">Enter</span> <span class="nv">passphrase</span> <span class="k">for</span> <span class="nv">key</span>: <span class="o">++++++++</span>    ← パスフレーズを入力
+
+<span class="nv">local</span><span class="o">-</span><span class="nv">file</span>    <span class="mi">100</span><span class="o">%</span> <span class="o">|***********************|</span>  <span class="nv">file</span><span class="o">-</span><span class="nv">size</span>  <span class="nv">transfer</span><span class="o">-</span><span class="nv">time</span>
+</pre></div>
+
+
+<p>ProxyJumpが使える場合は、SSHトンネルを明示的に設定する必要はありません。</p>
+<div class="codehilite"><pre>
+yourpc$ scp -i /path/identity_file -o "ProxyJump username@<i>as.abci.ai</i>" local-file username@<i>es</i>:remote-dir
+</pre></div>
+
+<h2 id="change-password">2.4. パスワード変更</h2>
+<p>ABCIシステムのパスワードはLDAPで管理されています。 SSHログインではパスワードは使用しませんが、
+<a href="https://portal.abci.ai/user/">ABCI利用ポータル</a>へのログイン、ログインシェルの変更の際にパスワードが必要になります。
+パスワードを変更する場合は、<code>passwd</code>コマンドを使用します。</p>
+<div class="codehilite"><pre><span></span>[<span class="nv">username</span>@<span class="nv">es1</span> <span class="o">~</span>]$ <span class="nv">passwd</span>
+<span class="nv">Changing</span> <span class="nv">password</span> <span class="k">for</span> <span class="nv">user</span> <span class="nv">username</span>.
+<span class="nv">Current</span> <span class="nv">Password</span>: ←  現在のパスワードを入力
+<span class="nv">New</span> <span class="nv">password</span>: ←  新しいパスワードを入力
+<span class="nv">Retype</span> <span class="nv">new</span> <span class="nv">password</span>: ←  新しいパスワードを再度入力
+<span class="nv">passwd</span>: <span class="nv">all</span> <span class="nv">authentication</span> <span class="nv">tokens</span> <span class="nv">updated</span> <span class="nv">successfully</span>.
+</pre></div>
+
+
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>パスワード規約は以下の通りです。</p>
+<ul>
+<li>15以上の文字をランダムに並べた文字列を指定してください。例えばLinux の辞書に登録されている単語は使用できません。文字をランダムに選ぶ方法として、パスワード作成用のソフトウェアを用いるなどして、自動的に生成することを推奨します。</li>
+<li>英大文字[A-Z]、英小文字[a-z]、数字[0-9]、記号の4種類をすべて使用してください。</li>
+<li>全角文字は使用できません。</li>
+</ul>
+</div>
+<h2 id="login-shell">2.5. ログインシェル</h2>
+<p>ABCIシステムのデフォルトログインシェルは、bashが設定されています。
+ログインシェルは<code>chsh</code>コマンドを使用してtcshもしくはzshに変更することができます。
+ログインシェルの変更は次回ログインから有効となります。また、ログインシェルの反映には10分程度時間がかかります。</p>
+<div class="codehilite"><pre><span></span><span class="err">$</span><span class="w"> </span><span class="n">chsh</span><span class="w"> </span><span class="o">[</span><span class="n">options</span><span class="o">]</span><span class="w"> </span><span class="o">&lt;</span><span class="n">new_shell</span><span class="o">&gt;</span><span class="w"></span>
+</pre></div>
+
+
+<table>
+<thead>
+<tr>
+<th align="left">オプション</th>
+<th align="left">説明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">-l</td>
+<td align="left">利用可能なログインシェル一覧を表示する</td>
+</tr>
+<tr>
+<td align="left">-s <em>new_shell</em></td>
+<td align="left">ログインシェルを<em>new_shell</em>に変更する</td>
+</tr>
+</tbody>
+</table>
+<p>例) ログインシェルを tcsh に変更する。</p>
+<div class="codehilite"><pre><span></span>[<span class="nv">username</span>@<span class="nv">es1</span> <span class="o">~</span>]$ <span class="nv">chsh</span> <span class="o">-</span><span class="nv">s</span> <span class="o">/</span><span class="nv">bin</span><span class="o">/</span><span class="nv">tcsh</span>
+<span class="nv">Password</span> <span class="k">for</span> <span class="nv">username</span>@<span class="nv">ABCI</span>.<span class="nv">LOCAL</span>:                      ← パスワードを入力します
+</pre></div>
+
+
+<p>ABCIシステムへログインすると、ABCIシステムを利用するための環境設定が自動で設定されます。環境変数<code>PATH</code>や環境変数<code>LD_LIBRARY_PATH</code>等をカスタマイズする場合は、以下に示す個人用設定ファイルに設定してください。</p>
+<table>
+<thead>
+<tr>
+<th align="left">ログインシェル</th>
+<th align="left">個人用設定ファイル</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">bash</td>
+<td align="left">$HOME/.bash_profile</td>
+</tr>
+<tr>
+<td align="left">tcsh</td>
+<td align="left">$HOME/.cshrc</td>
+</tr>
+<tr>
+<td align="left">zsh</td>
+<td align="left">$HOME/.zshrc</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>設定ファイルに環境変数<code>PATH</code>にパスを追加する際は、環境変数<code>PATH</code>の最後に追加してください。先頭に追加した場合、システムを正常に使用できなくなる恐れがあります。</p>
+</div>
+<p>個人用設定ファイルのオリジナル（雛形）は<code>/etc/skel</code>配下に格納しています。</p>
+<h2 id="check-abci-point">2.6. ABCIポイントの確認</h2>
+<p>ABCIポイントの使用状況と購入数を確認するには、<code>show_point</code>コマンドを利用します。
+ABCIポイント消費率が100%を超える見込みの場合、新規ジョブ投入が行えず、投入済みジョブは実行開始時にエラーになります（実行中ジョブは影響を受けません）。</p>
+<p>例) ABCIポイントを確認する。</p>
+<div class="codehilite"><pre><span></span><span class="o">[</span><span class="n">username@es1 ~</span><span class="o">]</span><span class="err">$</span><span class="w"> </span><span class="n">show_point</span><span class="w"></span>
+<span class="k">Group</span><span class="w">               </span><span class="k">Disk</span><span class="w">                    </span><span class="n">Used</span><span class="w">           </span><span class="n">Point</span><span class="w">   </span><span class="n">Used</span><span class="o">%</span><span class="w"></span>
+<span class="n">grpname</span><span class="w">                </span><span class="mi">5</span><span class="w">             </span><span class="mi">12</span><span class="p">,</span><span class="mf">345.6789</span><span class="w">         </span><span class="mi">100</span><span class="p">,</span><span class="mi">000</span><span class="w">      </span><span class="mi">12</span><span class="w"></span>
+<span class="w">  </span><span class="err">`</span><span class="o">-</span><span class="w"> </span><span class="n">username</span><span class="w">          </span><span class="o">-</span><span class="w">                  </span><span class="mf">0.1234</span><span class="w">               </span><span class="o">-</span><span class="w">       </span><span class="mi">0</span><span class="w"></span>
+</pre></div>
+
+
+<table>
+<thead>
+<tr>
+<th align="left">項目</th>
+<th align="left">説明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">Group</td>
+<td align="left">ABCI利用グループ名</td>
+</tr>
+<tr>
+<td align="left">Disk</td>
+<td align="left">グループ領域割当量(TB)</td>
+</tr>
+<tr>
+<td align="left">Used</td>
+<td align="left">ABCIポイント使用量</td>
+</tr>
+<tr>
+<td align="left">Point</td>
+<td align="left">ABCIポイント購入量</td>
+</tr>
+<tr>
+<td align="left">Used%</td>
+<td align="left">ABCIポイント消費率</td>
+</tr>
+</tbody>
+</table>
+<h2 id="check-disk-quota">2.7. ディスククォータの確認</h2>
+<p>ホーム領域およびグループ領域の使用状況と割り当て量を表示するには、
+<code>show_quota</code>コマンドを利用します。</p>
+<p>例) ディスククォータを確認する。</p>
+<div class="codehilite"><pre><span></span>[<span class="nv">username</span>@<span class="nv">es1</span> <span class="o">~</span>]$ <span class="nv">show_quota</span>
+<span class="nv">Disk</span> <span class="nv">quotas</span> <span class="k">for</span> <span class="nv">user</span> <span class="nv">username</span>
+  <span class="nv">Directory</span>                     <span class="nv">used</span><span class="ss">(</span><span class="nv">GiB</span><span class="ss">)</span>       <span class="nv">limit</span><span class="ss">(</span><span class="nv">GiB</span><span class="ss">)</span>          <span class="nv">nfiles</span>
+  <span class="o">/</span><span class="nv">home</span>                               <span class="mi">100</span>              <span class="mi">200</span>           <span class="mi">1</span>,<span class="mi">234</span>
+
+<span class="nv">Disk</span> <span class="nv">quotas</span> <span class="k">for</span> <span class="nv">ABCI</span> <span class="nv">group</span> <span class="nv">grpname</span>
+  <span class="nv">Directory</span>                     <span class="nv">used</span><span class="ss">(</span><span class="nv">GiB</span><span class="ss">)</span>       <span class="nv">limit</span><span class="ss">(</span><span class="nv">GiB</span><span class="ss">)</span>          <span class="nv">nfiles</span>
+  <span class="o">/</span><span class="nv">groups1</span><span class="o">/</span><span class="nv">grpname</span>                  <span class="mi">1</span>,<span class="mi">024</span>            <span class="mi">2</span>,<span class="mi">048</span>         <span class="mi">123</span>,<span class="mi">456</span>
+</pre></div>
+
+
+<table>
+<thead>
+<tr>
+<th align="left">項目</th>
+<th align="left">説明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">Directory</td>
+<td align="left">領域種別</td>
+</tr>
+<tr>
+<td align="left">used(GiB)</td>
+<td align="left">ディスク使用量</td>
+</tr>
+<tr>
+<td align="left">limit(GiB)</td>
+<td align="left">ディスク上限値</td>
+</tr>
+<tr>
+<td align="left">nfiles</td>
+<td align="left">ファイル数</td>
+</tr>
+</tbody>
+</table>
+<h2 id="communications-between-compute-nodes-and-external-network">2.8. 計算ノードと外部ネットワークとの通信</h2>
+<p>ABCIの計算ノードと、外部ネットワーク上のサービスやサーバとの間の通信は一部のみ許可されています。</p>
+<table>
+<thead>
+<tr>
+<th align="left">接続元</th>
+<th align="left">接続先</th>
+<th align="left">ポート</th>
+<th align="left">サービスネーム</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">外部ネットワーク</td>
+<td align="left">計算ノード</td>
+<td align="left">すべて禁止</td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="left">計算ノード</td>
+<td align="left">外部ネットワーク</td>
+<td align="left">22/tcp</td>
+<td align="left">ssh</td>
+</tr>
+<tr>
+<td align="left">計算ノード</td>
+<td align="left">外部ネットワーク</td>
+<td align="left">53/tcp</td>
+<td align="left">dns</td>
+</tr>
+<tr>
+<td align="left">計算ノード</td>
+<td align="left">外部ネットワーク</td>
+<td align="left">80/tcp</td>
+<td align="left">http</td>
+</tr>
+<tr>
+<td align="left">計算ノード</td>
+<td align="left">外部ネットワーク</td>
+<td align="left">443/tcp</td>
+<td align="left">https</td>
+</tr>
+</tbody>
+</table>
+<p>現在許可されていない通信のうち、outbound通信、すなわち計算ノードから外部ネットワークへの通信については、申請ベースで一定期間許可することを検討します。ABCIサポートまでお問い合わせください。</p></article></div></div></main><footer class="md-footer"><div class="md-footer-nav"><nav class="md-footer-nav__inner md-grid"><a href="../01/" title="1. ABCIシステムの概要" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev"><div class="md-flex__cell md-flex__cell--shrink"><i class="md-icon md-icon--arrow-back md-footer-nav__button"></i></div><div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title"><span class="md-flex__ellipsis"><span class="md-footer-nav__direction">前</span>1. ABCIシステムの概要</span></div></a><a href="../03/" title="3. ジョブ実行環境" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next"><div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title"><span class="md-flex__ellipsis"><span class="md-footer-nav__direction">次</span>3. ジョブ実行環境</span></div><div class="md-flex__cell md-flex__cell--shrink"><i class="md-icon md-icon--arrow-forward md-footer-nav__button"></i></div></a></nav></div><div class="md-footer-meta md-typeset"><div class="md-footer-meta__inner md-grid"><div class="md-footer-copyright"><div class="md-footer-copyright__highlight">Copyright &copy; 2018 National Institute of Advanced Industrial Science and Technology (AIST)</div>powered by <a href="https://www.mkdocs.org">MkDocs</a> and <a href="https://squidfunk.github.io/mkdocs-material/">Material for MkDocs</a></div></div></div></footer></div><script src="../assets/javascripts/application.b260a35d.js"></script><script src="../assets/javascripts/lunr/lunr.stemmer.support.js"></script><script src="../assets/javascripts/lunr/tinyseg.js"></script><script src="../assets/javascripts/lunr/lunr.ja.js"></script><script>app.initialize({version:"1.0.4",url:{base:".."}})</script></body></html>

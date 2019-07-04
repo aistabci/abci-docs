@@ -1,0 +1,314 @@
+<!doctype html><html lang="ja" class="no-js"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta http-equiv="x-ua-compatible" content="ie=edge"><meta name="description" content="AI Bridging Cloud Infrastructure (ABCI)"><link rel="canonical" href="https://docs.abci.ai/ja/system-updates/"><meta name="author" content="AIST"><meta name="lang:clipboard.copy" content="クリップボードへコピー"><meta name="lang:clipboard.copied" content="コピーしました"><meta name="lang:search.language" content="ja"><meta name="lang:search.pipeline.stopwords" content="True"><meta name="lang:search.pipeline.trimmer" content="True"><meta name="lang:search.result.none" content="何も見つかりませんでした"><meta name="lang:search.result.one" content="1件見つかりました"><meta name="lang:search.result.other" content="#件見つかりました"><meta name="lang:search.tokenizer" content="[\s\-　、。，．]+"><link rel="shortcut icon" href="../assets/images/favicon.png"><meta name="generator" content="mkdocs-1.0.4, mkdocs-material-4.3.1"><title>システム更新履歴 - ABCI Users Guide</title><link rel="stylesheet" href="../assets/stylesheets/application.4031d38b.css"><link rel="stylesheet" href="../assets/stylesheets/application-palette.224b79ff.css"><meta name="theme-color" content="#ef5350"><script src="../assets/javascripts/modernizr.74668098.js"></script><link href="https://fonts.gstatic.com" rel="preconnect" crossorigin><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700|Roboto+Mono&display=swap"><style>body,input{font-family:"Roboto","Helvetica Neue",Helvetica,Arial,sans-serif}code,kbd,pre{font-family:"Roboto Mono","Courier New",Courier,monospace}</style><link rel="stylesheet" href="../assets/fonts/material-icons.css"><script>window.ga = window.ga || function() {
+    (ga.q = ga.q || []).push(arguments)
+  }
+  ga.l = +new Date
+  /* Setup integration and send page view */
+  ga("create", "UA-118371652-2", "docs.abci.ai")
+  ga("set", "anonymizeIp", true)
+  ga("send", "pageview")
+  /* Register handler to log search on blur */
+  document.addEventListener("DOMContentLoaded", () => {
+    if (document.forms.search) {
+      var query = document.forms.search.query
+      query.addEventListener("blur", function() {
+        if (this.value) {
+          var path = document.location.pathname;
+          ga("send", "pageview", path + "?q=" + this.value)
+        }
+      })
+    }
+  })</script><script async src="https://www.google-analytics.com/analytics.js"></script></head><body dir="ltr" data-md-color-primary="red" data-md-color-accent="red"><svg class="md-svg"><defs><svg xmlns="http://www.w3.org/2000/svg" width="416" height="448" viewBox="0 0 416 448" id="__github"><path fill="currentColor" d="M160 304q0 10-3.125 20.5t-10.75 19T128 352t-18.125-8.5-10.75-19T96 304t3.125-20.5 10.75-19T128 256t18.125 8.5 10.75 19T160 304zm160 0q0 10-3.125 20.5t-10.75 19T288 352t-18.125-8.5-10.75-19T256 304t3.125-20.5 10.75-19T288 256t18.125 8.5 10.75 19T320 304zm40 0q0-30-17.25-51T296 232q-10.25 0-48.75 5.25Q229.5 240 208 240t-39.25-2.75Q130.75 232 120 232q-29.5 0-46.75 21T56 304q0 22 8 38.375t20.25 25.75 30.5 15 35 7.375 37.25 1.75h42q20.5 0 37.25-1.75t35-7.375 30.5-15 20.25-25.75T360 304zm56-44q0 51.75-15.25 82.75-9.5 19.25-26.375 33.25t-35.25 21.5-42.5 11.875-42.875 5.5T212 416q-19.5 0-35.5-.75t-36.875-3.125-38.125-7.5-34.25-12.875T37 371.5t-21.5-28.75Q0 312 0 260q0-59.25 34-99-6.75-20.5-6.75-42.5 0-29 12.75-54.5 27 0 47.5 9.875t47.25 30.875Q171.5 96 212 96q37 0 70 8 26.25-20.5 46.75-30.25T376 64q12.75 25.5 12.75 54.5 0 21.75-6.75 42 34 40 34 99.5z"/></svg></defs></svg> <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off"> <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off"> <label class="md-overlay" data-md-component="overlay" for="__drawer"></label><a href="#_1" tabindex="1" class="md-skip">Skip to content </a><header class="md-header" data-md-component="header"><nav class="md-header-nav md-grid"><div class="md-flex"><div class="md-flex__cell md-flex__cell--shrink"><a href="https://docs.abci.ai/ja/" title="ABCI Users Guide" class="md-header-nav__button md-logo"><i class="md-icon"></i></a></div><div class="md-flex__cell md-flex__cell--shrink"><label class="md-icon md-icon--menu md-header-nav__button" for="__drawer"></label></div><div class="md-flex__cell md-flex__cell--stretch"><div class="md-flex__ellipsis md-header-nav__title" data-md-component="title"><span class="md-header-nav__topic">ABCI Users Guide</span><span class="md-header-nav__topic">システム更新履歴</span></div></div><div class="md-flex__cell md-flex__cell--shrink"><label class="md-icon md-icon--search md-header-nav__button" for="__search"></label><div class="md-search" data-md-component="search" role="dialog"><label class="md-search__overlay" for="__search"></label><div class="md-search__inner" role="search"><form class="md-search__form" name="search"><input type="text" class="md-search__input" name="query" placeholder="検索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="query" data-md-state="active"> <label class="md-icon md-search__icon" for="__search"></label> <button type="reset" class="md-icon md-search__icon" data-md-component="reset" tabindex="-1">&#xE5CD;</button></form><div class="md-search__output"><div class="md-search__scrollwrap" data-md-scrollfix><div class="md-search-result" data-md-component="result"><div class="md-search-result__meta">検索キーワードを入力してください</div><ol class="md-search-result__list"></ol></div></div></div></div></div></div><div class="md-flex__cell md-flex__cell--shrink"><div class="md-header-nav__source"><a href="https://github.com/aistairc/abci-docs/" title="リポジトリへ" class="md-source" data-md-source="github"><div class="md-source__icon"><svg viewBox="0 0 24 24" width="24" height="24"><use xlink:href="#__github" width="24" height="24"></use></svg></div><div class="md-source__repository">GitHub</div></a></div></div></div></nav></header><div class="md-container"><main class="md-main"><div class="md-main__inner md-grid" data-md-component="container"><div class="md-sidebar md-sidebar--primary" data-md-component="navigation"><div class="md-sidebar__scrollwrap"><div class="md-sidebar__inner"><nav class="md-nav md-nav--primary" data-md-level="0"><label class="md-nav__title md-nav__title--site" for="__drawer"><a href="https://docs.abci.ai/ja/" title="ABCI Users Guide" class="md-nav__button md-logo"><i class="md-icon"></i></a>ABCI Users Guide</label><div class="md-nav__source"><a href="https://github.com/aistairc/abci-docs/" title="リポジトリへ" class="md-source" data-md-source="github"><div class="md-source__icon"><svg viewBox="0 0 24 24" width="24" height="24"><use xlink:href="#__github" width="24" height="24"></use></svg></div><div class="md-source__repository">GitHub</div></a></div><ul class="md-nav__list" data-md-scrollfix><li class="md-nav__item"><a href=".." title="はじめに" class="md-nav__link">はじめに</a></li><li class="md-nav__item md-nav__item--nested"><input class="md-toggle md-nav__toggle" data-md-toggle="nav-2" type="checkbox" id="nav-2"><label class="md-nav__link" for="nav-2">利用手引き</label><nav class="md-nav" data-md-component="collapsible" data-md-level="1"><label class="md-nav__title" for="nav-2">利用手引き</label><ul class="md-nav__list" data-md-scrollfix><li class="md-nav__item"><a href="../01/" title="1. ABCIシステムの概要" class="md-nav__link">1. ABCIシステムの概要</a></li><li class="md-nav__item"><a href="../02/" title="2. ABCIシステム利用環境" class="md-nav__link">2. ABCIシステム利用環境</a></li><li class="md-nav__item"><a href="../03/" title="3. ジョブ実行環境" class="md-nav__link">3. ジョブ実行環境</a></li><li class="md-nav__item"><a href="../04/" title="4. ストレージ" class="md-nav__link">4. ストレージ</a></li><li class="md-nav__item"><a href="../05/" title="5. Environment Modulesの利用" class="md-nav__link">5. Environment Modulesの利用</a></li><li class="md-nav__item"><a href="../06/" title="6. Pythonの利用" class="md-nav__link">6. Pythonの利用</a></li><li class="md-nav__item"><a href="../07/" title="7. GPUの利用" class="md-nav__link">7. GPUの利用</a></li><li class="md-nav__item"><a href="../08/" title="8. MPIの利用" class="md-nav__link">8. MPIの利用</a></li><li class="md-nav__item"><a href="../09/" title="9. Linuxコンテナ" class="md-nav__link">9. Linuxコンテナ</a></li><li class="md-nav__item"><a href="../10/" title="10. プログラム開発環境" class="md-nav__link">10. プログラム開発環境</a></li><li class="md-nav__item"><a href="../11/" title="11. アプリケーション・フレームワーク" class="md-nav__link">11. アプリケーション・フレームワーク</a></li><li class="md-nav__item"><a href="../appendix1/" title="付録1. インストール済みソフトウェアの構成" class="md-nav__link">付録1. インストール済みソフトウェアの構成</a></li><li class="md-nav__item"><a href="../appendix2/" title="付録2. HPCIによるABCIシステム利用" class="md-nav__link">付録2. HPCIによるABCIシステム利用</a></li></ul></nav></li><li class="md-nav__item md-nav__item--nested"><input class="md-toggle md-nav__toggle" data-md-toggle="nav-3" type="checkbox" id="nav-3"><label class="md-nav__link" for="nav-3">Tips</label><nav class="md-nav" data-md-component="collapsible" data-md-level="1"><label class="md-nav__title" for="nav-3">Tips</label><ul class="md-nav__list" data-md-scrollfix><li class="md-nav__item"><a href="../tips/remote-desktop/" title="リモートデスクトップの利用" class="md-nav__link">リモートデスクトップの利用</a></li><li class="md-nav__item"><a href="../tips/awscli/" title="AWS CLIの利用" class="md-nav__link">AWS CLIの利用</a></li><li class="md-nav__item"><a href="../tips/gcc-7.3.0/" title="GCC 7.3.0の利用" class="md-nav__link">GCC 7.3.0の利用</a></li><li class="md-nav__item"><a href="../tips/tera-term/" title="Tera Termの利用" class="md-nav__link">Tera Termの利用</a></li><li class="md-nav__item"><a href="../tips/putty/" title="PuTTYの利用" class="md-nav__link">PuTTYの利用</a></li></ul></nav></li><li class="md-nav__item"><a href="../ngc/" title="NVIDIA GPU Cloud (NGC)" class="md-nav__link">NVIDIA GPU Cloud (NGC)</a></li><li class="md-nav__item"><a href="../known-issues/" title="既知の問題" class="md-nav__link">既知の問題</a></li><li class="md-nav__item md-nav__item--active"><input class="md-toggle md-nav__toggle" data-md-toggle="toc" type="checkbox" id="__toc"><label class="md-nav__link md-nav__link--active" for="__toc">システム更新履歴</label><a href="./" title="システム更新履歴" class="md-nav__link md-nav__link--active">システム更新履歴</a><nav class="md-nav md-nav--secondary"><label class="md-nav__title" for="__toc">目次</label><ul class="md-nav__list" data-md-scrollfix><li class="md-nav__item"><a href="#2019-04-05" title="2019-04-05" class="md-nav__link">2019-04-05</a></li><li class="md-nav__item"><a href="#2019-03-14" title="2019-03-14" class="md-nav__link">2019-03-14</a></li><li class="md-nav__item"><a href="#2019-01-31" title="2019-01-31" class="md-nav__link">2019-01-31</a><nav class="md-nav"><ul class="md-nav__list"><li class="md-nav__item"><a href="#qstat" title="qstatコマンドの出力の変更" class="md-nav__link">qstatコマンドの出力の変更</a></li></ul></nav></li><li class="md-nav__item"><a href="#2018-12-18" title="2018-12-18" class="md-nav__link">2018-12-18</a><nav class="md-nav"><ul class="md-nav__list"><li class="md-nav__item"><a href="#nccl-237-1" title="NCCL 2.3.7-1" class="md-nav__link">NCCL 2.3.7-1</a></li><li class="md-nav__item"><a href="#cudnn-742" title="cuDNN 7.4.2" class="md-nav__link">cuDNN 7.4.2</a></li><li class="md-nav__item"><a href="#open-mpi-303-313" title="Open MPI 3.0.3, 3.1.3" class="md-nav__link">Open MPI 3.0.3, 3.1.3</a></li><li class="md-nav__item"><a href="#mvapich2-gdr-23" title="MVAPICH2-GDR 2.3" class="md-nav__link">MVAPICH2-GDR 2.3</a></li><li class="md-nav__item"><a href="#hadoop-292" title="Hadoop 2.9.2" class="md-nav__link">Hadoop 2.9.2</a></li><li class="md-nav__item"><a href="#spark-232-240" title="Spark 2.3.2, 2.4.0" class="md-nav__link">Spark 2.3.2, 2.4.0</a></li><li class="md-nav__item"><a href="#go-1112" title="Go 1.11.2" class="md-nav__link">Go 1.11.2</a></li><li class="md-nav__item"><a href="#intel-mkl-20182199" title="Intel MKL 2018.2.199" class="md-nav__link">Intel MKL 2018.2.199</a></li></ul></nav></li><li class="md-nav__item"><a href="#2018-12-14" title="2018-12-14" class="md-nav__link">2018-12-14</a></li></ul></nav></li><li class="md-nav__item"><a href="https://abci.ai/ja/about_abci/info.html" title="運転状況" class="md-nav__link">運転状況</a></li><li class="md-nav__item"><a href="https://docs.abci.ai/privacy-policy/" title="プライバシーポリシー" class="md-nav__link">プライバシーポリシー</a></li></ul></nav></div></div></div><div class="md-sidebar md-sidebar--secondary" data-md-component="toc"><div class="md-sidebar__scrollwrap"><div class="md-sidebar__inner"><nav class="md-nav md-nav--secondary"><label class="md-nav__title" for="__toc">目次</label><ul class="md-nav__list" data-md-scrollfix><li class="md-nav__item"><a href="#2019-04-05" title="2019-04-05" class="md-nav__link">2019-04-05</a></li><li class="md-nav__item"><a href="#2019-03-14" title="2019-03-14" class="md-nav__link">2019-03-14</a></li><li class="md-nav__item"><a href="#2019-01-31" title="2019-01-31" class="md-nav__link">2019-01-31</a><nav class="md-nav"><ul class="md-nav__list"><li class="md-nav__item"><a href="#qstat" title="qstatコマンドの出力の変更" class="md-nav__link">qstatコマンドの出力の変更</a></li></ul></nav></li><li class="md-nav__item"><a href="#2018-12-18" title="2018-12-18" class="md-nav__link">2018-12-18</a><nav class="md-nav"><ul class="md-nav__list"><li class="md-nav__item"><a href="#nccl-237-1" title="NCCL 2.3.7-1" class="md-nav__link">NCCL 2.3.7-1</a></li><li class="md-nav__item"><a href="#cudnn-742" title="cuDNN 7.4.2" class="md-nav__link">cuDNN 7.4.2</a></li><li class="md-nav__item"><a href="#open-mpi-303-313" title="Open MPI 3.0.3, 3.1.3" class="md-nav__link">Open MPI 3.0.3, 3.1.3</a></li><li class="md-nav__item"><a href="#mvapich2-gdr-23" title="MVAPICH2-GDR 2.3" class="md-nav__link">MVAPICH2-GDR 2.3</a></li><li class="md-nav__item"><a href="#hadoop-292" title="Hadoop 2.9.2" class="md-nav__link">Hadoop 2.9.2</a></li><li class="md-nav__item"><a href="#spark-232-240" title="Spark 2.3.2, 2.4.0" class="md-nav__link">Spark 2.3.2, 2.4.0</a></li><li class="md-nav__item"><a href="#go-1112" title="Go 1.11.2" class="md-nav__link">Go 1.11.2</a></li><li class="md-nav__item"><a href="#intel-mkl-20182199" title="Intel MKL 2018.2.199" class="md-nav__link">Intel MKL 2018.2.199</a></li></ul></nav></li><li class="md-nav__item"><a href="#2018-12-14" title="2018-12-14" class="md-nav__link">2018-12-14</a></li></ul></nav></div></div></div><div class="md-content"><article class="md-content__inner md-typeset"><a href="https://github.com/aistairc/abci-docs/edit/master/ja/docs/system-updates.md" title="編集" class="md-icon md-content__icon">&#xE3C9;</a><h1 id="_1">システム更新履歴</h1>
+<h2 id="2019-04-05">2019-04-05</h2>
+<table>
+<thead>
+<tr>
+<th align="left">Add / Update / Delete</th>
+<th align="left">Software</th>
+<th align="left">Version</th>
+<th align="left">Previous version</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">Update</td>
+<td align="left">CentOS</td>
+<td align="left">7.5</td>
+<td align="left">7.4</td>
+</tr>
+<tr>
+<td align="left">Update</td>
+<td align="left">Univa Grid Engine</td>
+<td align="left">8.6.3</td>
+<td align="left">8.5.4</td>
+</tr>
+<tr>
+<td align="left">Update</td>
+<td align="left">Java</td>
+<td align="left">1.7.0_171</td>
+<td align="left">1.7.0_141</td>
+</tr>
+<tr>
+<td align="left">Update</td>
+<td align="left">Java</td>
+<td align="left">1.8.0_161</td>
+<td align="left">1.8.0_131</td>
+</tr>
+<tr>
+<td align="left">Add</td>
+<td align="left">DDN Lustre</td>
+<td align="left">2.10.5_ddn7-1</td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="left">Add</td>
+<td align="left">CUDA</td>
+<td align="left">10.0.130</td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="left">Add</td>
+<td align="left">Intel Compiler</td>
+<td align="left">2019.3</td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="left">Add</td>
+<td align="left">PGI</td>
+<td align="left">18.10 19.3</td>
+<td align="left"></td>
+</tr>
+</tbody>
+</table>
+<p>その他の修正点は下記の通りです:</p>
+<ul>
+<li>ホーム領域を GPFS から Lustre に移行</li>
+</ul>
+<h2 id="2019-03-14">2019-03-14</h2>
+<table>
+<thead>
+<tr>
+<th align="left">Add / Update / Delete</th>
+<th align="left">Software</th>
+<th align="left">Version</th>
+<th align="left">Previous version</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">Add</td>
+<td align="left">Intel Compiler</td>
+<td align="left">2017.8, 2018.3</td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="left">Add</td>
+<td align="left">PGI</td>
+<td align="left">17.10</td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="left">Add</td>
+<td align="left">Open MPI</td>
+<td align="left">2.1.6</td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="left">Add</td>
+<td align="left">cuDNN</td>
+<td align="left">7.5.0</td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="left">Add</td>
+<td align="left">NCCL</td>
+<td align="left">2.4.2-1</td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="left">Add</td>
+<td align="left">Intel MKL</td>
+<td align="left">2017.8, 2018.3</td>
+<td align="left"></td>
+</tr>
+</tbody>
+</table>
+<p>その他の修正点は下記の通りです:</p>
+<ul>
+<li>MVAPICH2-GDR 2.3 を PGI 17.10 に対応</li>
+<li>Open MPI 2.1.5, 2.1.6, 3.1.3 を PGI に対応</li>
+<li>Open MPI の default module を 2.1.6 に変更</li>
+<li>MVAPICH2 のトップディレクトリのtypoを修正</li>
+</ul>
+<h2 id="2019-01-31">2019-01-31</h2>
+<h3 id="qstat">qstatコマンドの出力の変更</h3>
+<p>ジョブスケジューラの設定変更を実施し、qstat コマンドの出力において、ユーザ/グループ/ジョブ名がマスク表示されるようにしました。</p>
+<p>自身のジョブの場合のみ上記の情報は表示され、そうでない場合はこれらの情報は'*'でマスクされます。以下に表示例を示します。</p>
+<div class="codehilite"><pre><span></span><span class="o">[</span><span class="n">username@es1 ~</span><span class="o">]</span><span class="err">$</span><span class="w"> </span><span class="n">qstat</span><span class="w"> </span><span class="o">-</span><span class="n">u</span><span class="w"> </span><span class="s1">&#39;*&#39;</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="n">head</span><span class="w"></span>
+<span class="n">job</span><span class="o">-</span><span class="n">ID</span><span class="w">     </span><span class="k">prior</span><span class="w">   </span><span class="n">name</span><span class="w">       </span><span class="k">user</span><span class="w">         </span><span class="k">state</span><span class="w"> </span><span class="n">submit</span><span class="o">/</span><span class="k">start</span><span class="w"> </span><span class="k">at</span><span class="w">     </span><span class="n">queue</span><span class="w">                          </span><span class="n">jclass</span><span class="w">                         </span><span class="n">slots</span><span class="w"> </span><span class="n">ja</span><span class="o">-</span><span class="n">task</span><span class="o">-</span><span class="n">ID</span><span class="w"></span>
+<span class="c1">------------------------------------------------------------------------------------------------------------------------------------------------</span>
+<span class="w">    </span><span class="mi">123456</span><span class="w"> </span><span class="mf">0.28027</span><span class="w"> </span><span class="n">run</span><span class="p">.</span><span class="n">sh</span><span class="w">     </span><span class="n">username</span><span class="w">     </span><span class="n">r</span><span class="w">     </span><span class="mi">01</span><span class="o">/</span><span class="mi">31</span><span class="o">/</span><span class="mi">2019</span><span class="w"> </span><span class="mi">12</span><span class="err">:</span><span class="mi">34</span><span class="err">:</span><span class="mi">56</span><span class="w"> </span><span class="n">gpu</span><span class="nv">@g0001</span><span class="w">                                                        </span><span class="mi">80</span><span class="w"></span>
+<span class="w">    </span><span class="mi">123457</span><span class="w"> </span><span class="mf">0.28027</span><span class="w"> </span><span class="o">**********</span><span class="w"> </span><span class="o">**********</span><span class="w">   </span><span class="n">r</span><span class="w">     </span><span class="mi">01</span><span class="o">/</span><span class="mi">31</span><span class="o">/</span><span class="mi">2019</span><span class="w"> </span><span class="mi">12</span><span class="err">:</span><span class="mi">34</span><span class="err">:</span><span class="mi">56</span><span class="w"> </span><span class="n">gpu</span><span class="nv">@g0002</span><span class="w">                                                        </span><span class="mi">80</span><span class="w"></span>
+<span class="w">    </span><span class="mi">123458</span><span class="w"> </span><span class="mf">0.28027</span><span class="w"> </span><span class="o">**********</span><span class="w"> </span><span class="o">**********</span><span class="w">   </span><span class="n">r</span><span class="w">     </span><span class="mi">01</span><span class="o">/</span><span class="mi">31</span><span class="o">/</span><span class="mi">2019</span><span class="w"> </span><span class="mi">12</span><span class="err">:</span><span class="mi">34</span><span class="err">:</span><span class="mi">56</span><span class="w"> </span><span class="n">gpu</span><span class="nv">@g0003</span><span class="w">                                                        </span><span class="mi">80</span><span class="w"></span>
+<span class="w">    </span><span class="mi">123450</span><span class="w"> </span><span class="mf">0.28027</span><span class="w"> </span><span class="o">**********</span><span class="w"> </span><span class="o">**********</span><span class="w">   </span><span class="n">r</span><span class="w">     </span><span class="mi">01</span><span class="o">/</span><span class="mi">31</span><span class="o">/</span><span class="mi">2019</span><span class="w"> </span><span class="mi">12</span><span class="err">:</span><span class="mi">34</span><span class="err">:</span><span class="mi">56</span><span class="w"> </span><span class="n">gpu</span><span class="nv">@g0004</span><span class="w">                                                        </span><span class="mi">80</span><span class="w"></span>
+</pre></div>
+
+
+<h2 id="2018-12-18">2018-12-18</h2>
+<table>
+<thead>
+<tr>
+<th align="left">Add / Update / Delete</th>
+<th align="left">Software</th>
+<th align="left">Version</th>
+<th align="left">Previous version</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">Add</td>
+<td align="left">NCCL</td>
+<td align="left">2.3.7-1</td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="left">Add</td>
+<td align="left">cuDNN</td>
+<td align="left">7.4.2</td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="left">Add</td>
+<td align="left">Open MPI</td>
+<td align="left">3.0.3, 3.1.3</td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="left">Add</td>
+<td align="left">MVAPICH2-GDR</td>
+<td align="left">2.3</td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="left">Add</td>
+<td align="left">Hadoop</td>
+<td align="left">2.9.2</td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="left">Add</td>
+<td align="left">Spark</td>
+<td align="left">2.3.2, 2.4.0</td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="left">Add</td>
+<td align="left">Go</td>
+<td align="left">1.11.2</td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="left">Add</td>
+<td align="left">Intel MKL</td>
+<td align="left">2018.2.199</td>
+<td align="left"></td>
+</tr>
+</tbody>
+</table>
+<h3 id="nccl-237-1">NCCL 2.3.7-1</h3>
+<p>NVIDIA Collective Communications Library (NCCL) 2.3.7-1 をインストールしました。</p>
+<p>リリースノート: <a href="https://docs.nvidia.com/deeplearning/sdk/nccl-release-notes/index.html">NCCL Release 2.3.7</a></p>
+<p>利用環境の設定:</p>
+<div class="codehilite"><pre><span></span>$ module load cuda/9.2/9.2.148.1
+$ module load nccl/2.3/2.3.7-1
+</pre></div>
+
+
+<h3 id="cudnn-742">cuDNN 7.4.2</h3>
+<p>NVIDIA CUDA Deep Neural Network library (cuDNN) 7.4.2 をインストールしました。</p>
+<p>リリースノート: <a href="https://docs.nvidia.com/deeplearning/sdk/cudnn-release-notes/rel_742.html">cuDNN Release Notes v7.4.2</a></p>
+<p>利用環境の設定:</p>
+<div class="codehilite"><pre><span></span>$ module load cuda/9.2/9.2.148.1
+$ module load cudnn/7.4/7.4.2
+</pre></div>
+
+
+<h3 id="open-mpi-303-313">Open MPI 3.0.3, 3.1.3</h3>
+<p>Open MPI (without --cuda option) 3.0.3, 3.1.3 をインストールしました。</p>
+<p>利用環境の設定:</p>
+<div class="codehilite"><pre><span></span>$ module load openmpi/3.1.3
+</pre></div>
+
+
+<h3 id="mvapich2-gdr-23">MVAPICH2-GDR 2.3</h3>
+<p>MVAPICH2-GDR 2.3 をインストールしました。</p>
+<p>利用環境の設定:</p>
+<div class="codehilite"><pre><span></span>$ module load cuda/9.2/9.2.148.1
+$ module load mvapich/mvapich2-gdr/2.3
+</pre></div>
+
+
+<h3 id="hadoop-292">Hadoop 2.9.2</h3>
+<p>Apache Hadoop 2.9.2 をインストールしました。</p>
+<p>利用環境の設定:</p>
+<div class="codehilite"><pre><span></span>$ module load openjdk/1.8.0.131
+$ module load hadoop/2.9.1
+</pre></div>
+
+
+<h3 id="spark-232-240">Spark 2.3.2, 2.4.0</h3>
+<p>Apache Spark 2.3.2, 2.4.0 をインストールしました。</p>
+<p>利用環境の設定:</p>
+<div class="codehilite"><pre><span></span>$ module load spark/2.4.0
+</pre></div>
+
+
+<h3 id="go-1112">Go 1.11.2</h3>
+<p>Go 言語 1.11.2 をインストールしました。</p>
+<p>利用環境の設定:</p>
+<div class="codehilite"><pre><span></span>$ module load go/1.11.2
+</pre></div>
+
+
+<h3 id="intel-mkl-20182199">Intel MKL 2018.2.199</h3>
+<p>Intel Math Kernel Library (MKL) 2018.2.199 をインストールしました。</p>
+<p>利用環境の設定:</p>
+<div class="codehilite"><pre><span></span>$ module load intel-mkl/2018.2.199
+</pre></div>
+
+
+<h2 id="2018-12-14">2018-12-14</h2>
+<table>
+<thead>
+<tr>
+<th align="left">Add / Update / Delete</th>
+<th align="left">Software</th>
+<th align="left">Version</th>
+<th align="left">Previous version</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">Update</td>
+<td align="left">Singularity</td>
+<td align="left">2.6.1</td>
+<td align="left">2.6.0</td>
+</tr>
+<tr>
+<td align="left">Delete</td>
+<td align="left">Singularity</td>
+<td align="left">2.5.2</td>
+<td align="left"></td>
+</tr>
+</tbody>
+</table>
+<p>Singularity 2.6.1 をインストールしました。使用方法は以下の通りです。</p>
+<div class="codehilite"><pre><span></span>$ module load singularity/2.6.1
+$ singularity run image_path
+</pre></div>
+
+
+<p>アップデート情報については、以下のページを参照ください。</p>
+<p><a href="https://github.com/sylabs/singularity/releases/tag/2.6.1">Singularity 2.6.1</a></p>
+<p>また、ソフトウェアの脆弱性 (<a href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=2018-19295">CVE-2018-19295</a>) が報告されたため、Singularity 2.5.2, 2.6.0 はアンインストールしました。ジョブスクリプト内で、バージョンを指定して Singularity 環境を設定している場合（<code>singularity/2.5.2</code>, <code>singularity/2.6.0</code>など）、バージョン指定を <code>singularity/2.6.1</code> に修正ください。</p>
+<div class="codehilite"><pre><span></span><span class="n">ex</span><span class="p">)</span> <span class="n">module</span> <span class="k">load</span> <span class="n">singularity</span><span class="o">/</span><span class="mi">2</span><span class="p">.</span><span class="mi">5</span><span class="p">.</span><span class="mi">2</span> <span class="o">-&gt;</span> <span class="n">module</span> <span class="k">load</span> <span class="n">singularity</span><span class="o">/</span><span class="mi">2</span><span class="p">.</span><span class="mi">6</span><span class="p">.</span><span class="mi">1</span>
+</pre></div></article></div></div></main><footer class="md-footer"><div class="md-footer-nav"><nav class="md-footer-nav__inner md-grid"><a href="../known-issues/" title="既知の問題" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev"><div class="md-flex__cell md-flex__cell--shrink"><i class="md-icon md-icon--arrow-back md-footer-nav__button"></i></div><div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title"><span class="md-flex__ellipsis"><span class="md-footer-nav__direction">前</span>既知の問題</span></div></a></nav></div><div class="md-footer-meta md-typeset"><div class="md-footer-meta__inner md-grid"><div class="md-footer-copyright"><div class="md-footer-copyright__highlight">Copyright &copy; 2018 National Institute of Advanced Industrial Science and Technology (AIST)</div>powered by <a href="https://www.mkdocs.org">MkDocs</a> and <a href="https://squidfunk.github.io/mkdocs-material/">Material for MkDocs</a></div></div></div></footer></div><script src="../assets/javascripts/application.b260a35d.js"></script><script src="../assets/javascripts/lunr/lunr.stemmer.support.js"></script><script src="../assets/javascripts/lunr/tinyseg.js"></script><script src="../assets/javascripts/lunr/lunr.ja.js"></script><script>app.initialize({version:"1.0.4",url:{base:".."}})</script></body></html>

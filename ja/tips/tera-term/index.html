@@ -1,0 +1,238 @@
+<!doctype html><html lang="ja" class="no-js"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta http-equiv="x-ua-compatible" content="ie=edge"><meta name="description" content="AI Bridging Cloud Infrastructure (ABCI)"><link rel="canonical" href="https://docs.abci.ai/ja/tips/tera-term/"><meta name="author" content="AIST"><meta name="lang:clipboard.copy" content="クリップボードへコピー"><meta name="lang:clipboard.copied" content="コピーしました"><meta name="lang:search.language" content="ja"><meta name="lang:search.pipeline.stopwords" content="True"><meta name="lang:search.pipeline.trimmer" content="True"><meta name="lang:search.result.none" content="何も見つかりませんでした"><meta name="lang:search.result.one" content="1件見つかりました"><meta name="lang:search.result.other" content="#件見つかりました"><meta name="lang:search.tokenizer" content="[\s\-　、。，．]+"><link rel="shortcut icon" href="../../assets/images/favicon.png"><meta name="generator" content="mkdocs-1.0.4, mkdocs-material-4.3.1"><title>Tera Termの利用 - ABCI Users Guide</title><link rel="stylesheet" href="../../assets/stylesheets/application.4031d38b.css"><link rel="stylesheet" href="../../assets/stylesheets/application-palette.224b79ff.css"><meta name="theme-color" content="#ef5350"><script src="../../assets/javascripts/modernizr.74668098.js"></script><link href="https://fonts.gstatic.com" rel="preconnect" crossorigin><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700|Roboto+Mono&display=swap"><style>body,input{font-family:"Roboto","Helvetica Neue",Helvetica,Arial,sans-serif}code,kbd,pre{font-family:"Roboto Mono","Courier New",Courier,monospace}</style><link rel="stylesheet" href="../../assets/fonts/material-icons.css"><script>window.ga = window.ga || function() {
+    (ga.q = ga.q || []).push(arguments)
+  }
+  ga.l = +new Date
+  /* Setup integration and send page view */
+  ga("create", "UA-118371652-2", "docs.abci.ai")
+  ga("set", "anonymizeIp", true)
+  ga("send", "pageview")
+  /* Register handler to log search on blur */
+  document.addEventListener("DOMContentLoaded", () => {
+    if (document.forms.search) {
+      var query = document.forms.search.query
+      query.addEventListener("blur", function() {
+        if (this.value) {
+          var path = document.location.pathname;
+          ga("send", "pageview", path + "?q=" + this.value)
+        }
+      })
+    }
+  })</script><script async src="https://www.google-analytics.com/analytics.js"></script></head><body dir="ltr" data-md-color-primary="red" data-md-color-accent="red"><svg class="md-svg"><defs><svg xmlns="http://www.w3.org/2000/svg" width="416" height="448" viewBox="0 0 416 448" id="__github"><path fill="currentColor" d="M160 304q0 10-3.125 20.5t-10.75 19T128 352t-18.125-8.5-10.75-19T96 304t3.125-20.5 10.75-19T128 256t18.125 8.5 10.75 19T160 304zm160 0q0 10-3.125 20.5t-10.75 19T288 352t-18.125-8.5-10.75-19T256 304t3.125-20.5 10.75-19T288 256t18.125 8.5 10.75 19T320 304zm40 0q0-30-17.25-51T296 232q-10.25 0-48.75 5.25Q229.5 240 208 240t-39.25-2.75Q130.75 232 120 232q-29.5 0-46.75 21T56 304q0 22 8 38.375t20.25 25.75 30.5 15 35 7.375 37.25 1.75h42q20.5 0 37.25-1.75t35-7.375 30.5-15 20.25-25.75T360 304zm56-44q0 51.75-15.25 82.75-9.5 19.25-26.375 33.25t-35.25 21.5-42.5 11.875-42.875 5.5T212 416q-19.5 0-35.5-.75t-36.875-3.125-38.125-7.5-34.25-12.875T37 371.5t-21.5-28.75Q0 312 0 260q0-59.25 34-99-6.75-20.5-6.75-42.5 0-29 12.75-54.5 27 0 47.5 9.875t47.25 30.875Q171.5 96 212 96q37 0 70 8 26.25-20.5 46.75-30.25T376 64q12.75 25.5 12.75 54.5 0 21.75-6.75 42 34 40 34 99.5z"/></svg></defs></svg> <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off"> <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off"> <label class="md-overlay" data-md-component="overlay" for="__drawer"></label><a href="#tera-term" tabindex="1" class="md-skip">Skip to content </a><header class="md-header" data-md-component="header"><nav class="md-header-nav md-grid"><div class="md-flex"><div class="md-flex__cell md-flex__cell--shrink"><a href="https://docs.abci.ai/ja/" title="ABCI Users Guide" class="md-header-nav__button md-logo"><i class="md-icon"></i></a></div><div class="md-flex__cell md-flex__cell--shrink"><label class="md-icon md-icon--menu md-header-nav__button" for="__drawer"></label></div><div class="md-flex__cell md-flex__cell--stretch"><div class="md-flex__ellipsis md-header-nav__title" data-md-component="title"><span class="md-header-nav__topic">ABCI Users Guide</span><span class="md-header-nav__topic">Tera Termの利用</span></div></div><div class="md-flex__cell md-flex__cell--shrink"><label class="md-icon md-icon--search md-header-nav__button" for="__search"></label><div class="md-search" data-md-component="search" role="dialog"><label class="md-search__overlay" for="__search"></label><div class="md-search__inner" role="search"><form class="md-search__form" name="search"><input type="text" class="md-search__input" name="query" placeholder="検索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="query" data-md-state="active"> <label class="md-icon md-search__icon" for="__search"></label> <button type="reset" class="md-icon md-search__icon" data-md-component="reset" tabindex="-1">&#xE5CD;</button></form><div class="md-search__output"><div class="md-search__scrollwrap" data-md-scrollfix><div class="md-search-result" data-md-component="result"><div class="md-search-result__meta">検索キーワードを入力してください</div><ol class="md-search-result__list"></ol></div></div></div></div></div></div><div class="md-flex__cell md-flex__cell--shrink"><div class="md-header-nav__source"><a href="https://github.com/aistairc/abci-docs/" title="リポジトリへ" class="md-source" data-md-source="github"><div class="md-source__icon"><svg viewBox="0 0 24 24" width="24" height="24"><use xlink:href="#__github" width="24" height="24"></use></svg></div><div class="md-source__repository">GitHub</div></a></div></div></div></nav></header><div class="md-container"><main class="md-main"><div class="md-main__inner md-grid" data-md-component="container"><div class="md-sidebar md-sidebar--primary" data-md-component="navigation"><div class="md-sidebar__scrollwrap"><div class="md-sidebar__inner"><nav class="md-nav md-nav--primary" data-md-level="0"><label class="md-nav__title md-nav__title--site" for="__drawer"><a href="https://docs.abci.ai/ja/" title="ABCI Users Guide" class="md-nav__button md-logo"><i class="md-icon"></i></a>ABCI Users Guide</label><div class="md-nav__source"><a href="https://github.com/aistairc/abci-docs/" title="リポジトリへ" class="md-source" data-md-source="github"><div class="md-source__icon"><svg viewBox="0 0 24 24" width="24" height="24"><use xlink:href="#__github" width="24" height="24"></use></svg></div><div class="md-source__repository">GitHub</div></a></div><ul class="md-nav__list" data-md-scrollfix><li class="md-nav__item"><a href="../.." title="はじめに" class="md-nav__link">はじめに</a></li><li class="md-nav__item md-nav__item--nested"><input class="md-toggle md-nav__toggle" data-md-toggle="nav-2" type="checkbox" id="nav-2"><label class="md-nav__link" for="nav-2">利用手引き</label><nav class="md-nav" data-md-component="collapsible" data-md-level="1"><label class="md-nav__title" for="nav-2">利用手引き</label><ul class="md-nav__list" data-md-scrollfix><li class="md-nav__item"><a href="../../01/" title="1. ABCIシステムの概要" class="md-nav__link">1. ABCIシステムの概要</a></li><li class="md-nav__item"><a href="../../02/" title="2. ABCIシステム利用環境" class="md-nav__link">2. ABCIシステム利用環境</a></li><li class="md-nav__item"><a href="../../03/" title="3. ジョブ実行環境" class="md-nav__link">3. ジョブ実行環境</a></li><li class="md-nav__item"><a href="../../04/" title="4. ストレージ" class="md-nav__link">4. ストレージ</a></li><li class="md-nav__item"><a href="../../05/" title="5. Environment Modulesの利用" class="md-nav__link">5. Environment Modulesの利用</a></li><li class="md-nav__item"><a href="../../06/" title="6. Pythonの利用" class="md-nav__link">6. Pythonの利用</a></li><li class="md-nav__item"><a href="../../07/" title="7. GPUの利用" class="md-nav__link">7. GPUの利用</a></li><li class="md-nav__item"><a href="../../08/" title="8. MPIの利用" class="md-nav__link">8. MPIの利用</a></li><li class="md-nav__item"><a href="../../09/" title="9. Linuxコンテナ" class="md-nav__link">9. Linuxコンテナ</a></li><li class="md-nav__item"><a href="../../10/" title="10. プログラム開発環境" class="md-nav__link">10. プログラム開発環境</a></li><li class="md-nav__item"><a href="../../11/" title="11. アプリケーション・フレームワーク" class="md-nav__link">11. アプリケーション・フレームワーク</a></li><li class="md-nav__item"><a href="../../appendix1/" title="付録1. インストール済みソフトウェアの構成" class="md-nav__link">付録1. インストール済みソフトウェアの構成</a></li><li class="md-nav__item"><a href="../../appendix2/" title="付録2. HPCIによるABCIシステム利用" class="md-nav__link">付録2. HPCIによるABCIシステム利用</a></li></ul></nav></li><li class="md-nav__item md-nav__item--active md-nav__item--nested"><input class="md-toggle md-nav__toggle" data-md-toggle="nav-3" type="checkbox" id="nav-3" checked><label class="md-nav__link" for="nav-3">Tips</label><nav class="md-nav" data-md-component="collapsible" data-md-level="1"><label class="md-nav__title" for="nav-3">Tips</label><ul class="md-nav__list" data-md-scrollfix><li class="md-nav__item"><a href="../remote-desktop/" title="リモートデスクトップの利用" class="md-nav__link">リモートデスクトップの利用</a></li><li class="md-nav__item"><a href="../awscli/" title="AWS CLIの利用" class="md-nav__link">AWS CLIの利用</a></li><li class="md-nav__item"><a href="../gcc-7.3.0/" title="GCC 7.3.0の利用" class="md-nav__link">GCC 7.3.0の利用</a></li><li class="md-nav__item md-nav__item--active"><input class="md-toggle md-nav__toggle" data-md-toggle="toc" type="checkbox" id="__toc"><label class="md-nav__link md-nav__link--active" for="__toc">Tera Termの利用</label><a href="./" title="Tera Termの利用" class="md-nav__link md-nav__link--active">Tera Termの利用</a><nav class="md-nav md-nav--secondary"><label class="md-nav__title" for="__toc">目次</label><ul class="md-nav__list" data-md-scrollfix><li class="md-nav__item"><a href="#ssh-tunnel" title="SSHトンネル情報の設定" class="md-nav__link">SSHトンネル情報の設定</a></li><li class="md-nav__item"><a href="#login-to-access-server" title="アクセスサーバへの接続" class="md-nav__link">アクセスサーバへの接続</a></li><li class="md-nav__item"><a href="#login-to-interactive-node" title="インタラクティブノードへの接続" class="md-nav__link">インタラクティブノードへの接続</a></li></ul></nav></li><li class="md-nav__item"><a href="../putty/" title="PuTTYの利用" class="md-nav__link">PuTTYの利用</a></li></ul></nav></li><li class="md-nav__item"><a href="../../ngc/" title="NVIDIA GPU Cloud (NGC)" class="md-nav__link">NVIDIA GPU Cloud (NGC)</a></li><li class="md-nav__item"><a href="../../known-issues/" title="既知の問題" class="md-nav__link">既知の問題</a></li><li class="md-nav__item"><a href="../../system-updates/" title="システム更新履歴" class="md-nav__link">システム更新履歴</a></li><li class="md-nav__item"><a href="https://abci.ai/ja/about_abci/info.html" title="運転状況" class="md-nav__link">運転状況</a></li><li class="md-nav__item"><a href="https://docs.abci.ai/privacy-policy/" title="プライバシーポリシー" class="md-nav__link">プライバシーポリシー</a></li></ul></nav></div></div></div><div class="md-sidebar md-sidebar--secondary" data-md-component="toc"><div class="md-sidebar__scrollwrap"><div class="md-sidebar__inner"><nav class="md-nav md-nav--secondary"><label class="md-nav__title" for="__toc">目次</label><ul class="md-nav__list" data-md-scrollfix><li class="md-nav__item"><a href="#ssh-tunnel" title="SSHトンネル情報の設定" class="md-nav__link">SSHトンネル情報の設定</a></li><li class="md-nav__item"><a href="#login-to-access-server" title="アクセスサーバへの接続" class="md-nav__link">アクセスサーバへの接続</a></li><li class="md-nav__item"><a href="#login-to-interactive-node" title="インタラクティブノードへの接続" class="md-nav__link">インタラクティブノードへの接続</a></li></ul></nav></div></div></div><div class="md-content"><article class="md-content__inner md-typeset"><a href="https://github.com/aistairc/abci-docs/edit/master/ja/docs/tips/tera-term.md" title="編集" class="md-icon md-content__icon">&#xE3C9;</a><h1 id="tera-term">Tera Termの利用</h1>
+<p>ここでは、Windowsな利用可能なSSHクライアントである、Tera Termを用いたインタラクティブノードへのログイン手順を示します。OpenSSHクライアントなどコマンドラインベースのSSHクライアントを利用したログイン手順は、<a href="../../02/#connecting-to-interactive-node">インタラクティブノードへの接続</a>を参照してください。</p>
+<p>インタラクティブノードへのログインは、以下手順で実施します。</p>
+<ol>
+<li>Tera Termを起動し、SSHトンネル情報を設定</li>
+<li>アクセスサーバ(<em>as.abci.ai</em>)にログインして、SSHトンネルを作成</li>
+<li>別のTera Term画面を起動して、SSHトンネルを用いてインタラクティブノードにログイン</li>
+</ol>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>事前に<a href="https://portal.abci.ai/user/">ABCI利用ポータル</a>にて<a href="https://docs.abci.ai/portal/ja/02/#23">SSH公開鍵の登録</a>が必要です。</p>
+</div>
+<h2 id="ssh-tunnel">SSHトンネル情報の設定</h2>
+<ul>
+<li>
+<p>Tera Term の起動</p>
+<p>Tera Term起動直後に表示される新しい接続画面は[キャンセル]ボタンで閉じ、未接続のTera Termを画面を残します。</p>
+</li>
+</ul>
+<div align="center">
+<img src="login_teraterm_00_ja.png" width="480" title="cancel new connect" /><br />
+↓<br />
+<img src="login_teraterm_99_ja.png" width="480" title="teraterm" />
+</div>
+
+<ul>
+<li>
+<p>SSHポート転送画面の表示</p>
+<p>Tera Termの[設定]メニューを開き[SSH転送]を選択し、SSHポート転送画面を表示します。</p>
+</li>
+</ul>
+<div align="center">
+<img src="login_teraterm_01_ja.png" width="640" title="Screenshot" />
+</div>
+
+<ul>
+<li>
+<p>ポート転送の追加</p>
+<p>[追加]ボタンをクリックし、SSHポート転送の設定画面を表示してください。</p>
+</li>
+</ul>
+<div align="center">
+<img src="login_teraterm_02_ja.png" width="560" title="Screenshot" />
+</div>
+
+<ul>
+<li>
+<p>SSHポート転送の設定</p>
+<p>SSHポート転送の設定画面で以下の表の設定値を入力します。ローカルのポートはお使いのシステムで許容されているポート番号の中から任意の値を設定可能ですが、他設定は固定値です。設定が完了したら、[OK]ボタンをクリックして前の画面に戻ります。</p>
+<table>
+<thead>
+<tr>
+<th align="left">項目</th>
+<th align="left">画面と設定値</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">設定画面</td>
+<td align="left"><img src="login_teraterm_03_ja.png"  width="480" title="ssh tunnel setting" /></td>
+</tr>
+<tr>
+<td align="left">ローカルのポート</td>
+<td align="left">システムで許されている任意のポート番号 (例: 10022)</td>
+</tr>
+<tr>
+<td align="left">リモート側ホスト</td>
+<td align="left"><em>es.abci.local</em> または <em>es</em> (固定値)</td>
+</tr>
+<tr>
+<td align="left">ポート</td>
+<td align="left">22 （固定値）</td>
+</tr>
+</tbody>
+</table>
+</li>
+<li>
+<p>設定が追加されていることを確認し、[OK]ボタンをクリックしてTera Term の画面に戻ります。</p>
+</li>
+</ul>
+<div align="center">
+<img src="login_teraterm_04_ja.png" width="560" title="Screenshot" />
+</div>
+
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Tera Termの画面は閉じないでください。この画面を使って、次節でアクセスサーバへの接続を行います。</p>
+</div>
+<h2 id="login-to-access-server">アクセスサーバへの接続</h2>
+<p>ここでは、アクセスサーバの接続手順を説明します。</p>
+<ul>
+<li>
+<p>接続情報の入力画面の表示</p>
+<p>前章で設定したTera Termの[ファイル]メニューを開き、[新しい接続]画面を表示します。</p>
+</li>
+</ul>
+<div align="center">
+<img src="login_teraterm_05_ja.png"  width="640" title="Screenshot" />
+</div>
+
+<ul>
+<li>
+<p>アクセスサーバへの新規接続</p>
+<p>接続先にアクセスサーバ（<em>as.abci.ai</em>）を指定し、SSHで接続します。設定は以下のとおりです。</p>
+<table>
+<thead>
+<tr>
+<th align="left">項目</th>
+<th align="left">画面と設定値</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">設定画面</td>
+<td align="left"><img src="login_teraterm_06_ja.png"  width="480" title="login" /></td>
+</tr>
+<tr>
+<td align="left">ホスト</td>
+<td align="left"><em>as.abci.ai</em></td>
+</tr>
+<tr>
+<td align="left">TCPポート</td>
+<td align="left">22</td>
+</tr>
+<tr>
+<td align="left">サービス</td>
+<td align="left">ssh</td>
+</tr>
+</tbody>
+</table>
+<p>設定が完了したら、[OK]ボタンをクリックしてSSHの認証に移ります。</p>
+</li>
+<li>
+<p>認証（アクセスサーバ）<a name="ssh-auth-as"></a></p>
+<p>SSHの認証情報を入力します。設定は以下のとおりです。</p>
+<table>
+<thead>
+<tr>
+<th align="left">項目</th>
+<th align="left">画面と設定値</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">設定画面</td>
+<td align="left"><img src="login_teraterm_07_ja.png"  width="480" title="ssh auth" /></td>
+</tr>
+<tr>
+<td align="left">ユーザ名</td>
+<td align="left">ABCIアカウント</td>
+</tr>
+<tr>
+<td align="left">パスフレーズ</td>
+<td align="left">秘密鍵のパスフレーズ</td>
+</tr>
+<tr>
+<td align="left">認証方法</td>
+<td align="left">RSA/DSA/ECDSA鍵をつかうにチェック</td>
+</tr>
+<tr>
+<td align="left">秘密鍵</td>
+<td align="left">登録した公開鍵の秘密鍵ファイルパス</td>
+</tr>
+</tbody>
+</table>
+<p>設定が完了したら、[OK]ボタンをクリックしてアクセスサーバにログインします。ログインに成功すると以下の画面が表示されます。ABCIにログイン中は、このログインセッションを維持する必要があります。</p>
+</li>
+</ul>
+<div align="center">
+<img src="login_teraterm_08_ja.png"  width="640" title="success login as" />
+</div>
+
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>画面上で何らかのキーを入力するとSSH接続が切断されてしますので注意してください。</p>
+</div>
+<h2 id="login-to-interactive-node">インタラクティブノードへの接続</h2>
+<p>ここでは、インタラクティブノードへの接続手順を説明します。</p>
+<ul>
+<li>
+<p>Tera Termの起動と接続設定</p>
+<p>新規にTera Termを起動し、インタラクティブノードに接続します。設定は以下のとおりです。</p>
+<table>
+<thead>
+<tr>
+<th align="left">項目</th>
+<th align="left">画面と設定値</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">設定画面</td>
+<td align="left"><img src="login_teraterm_09_ja.png"  width="480" title="connect es" /></td>
+</tr>
+<tr>
+<td align="left">ホスト</td>
+<td align="left">localhost(固定）</td>
+</tr>
+<tr>
+<td align="left">TCPポート</td>
+<td align="left"><a href="#ssh-tunnel">SSHトンネル情報の設定</a>で設定したポート番号 (画面例: 10022)</td>
+</tr>
+<tr>
+<td align="left">サービス</td>
+<td align="left">ssh （固定）</td>
+</tr>
+</tbody>
+</table>
+<p>設定が完了したら、[OK]ボタンをクリックし、SSHの認証に移ります。</p>
+</li>
+<li>
+<p>認証（インタラクティブノード）</p>
+<p>インタラクティブノードの認証は、アクセスサーバと同じです。<a href="#ssh-auth-as">アクセスサーバの認証方法</a>を参照し、SSHの認証情報を入力してください。</p>
+<p>設定が完了したら、[OK]ボタンをクリックしてインタラクティブノードにログインしてください。ログインに成功すると以下の画面が表示されます。</p>
+</li>
+</ul>
+<div align="center">
+<img src="login_teraterm_10_ja.png"  width="640" title="success login es" />
+</div></article></div></div></main><footer class="md-footer"><div class="md-footer-nav"><nav class="md-footer-nav__inner md-grid"><a href="../gcc-7.3.0/" title="GCC 7.3.0の利用" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev"><div class="md-flex__cell md-flex__cell--shrink"><i class="md-icon md-icon--arrow-back md-footer-nav__button"></i></div><div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title"><span class="md-flex__ellipsis"><span class="md-footer-nav__direction">前</span>GCC 7.3.0の利用</span></div></a><a href="../putty/" title="PuTTYの利用" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next"><div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title"><span class="md-flex__ellipsis"><span class="md-footer-nav__direction">次</span>PuTTYの利用</span></div><div class="md-flex__cell md-flex__cell--shrink"><i class="md-icon md-icon--arrow-forward md-footer-nav__button"></i></div></a></nav></div><div class="md-footer-meta md-typeset"><div class="md-footer-meta__inner md-grid"><div class="md-footer-copyright"><div class="md-footer-copyright__highlight">Copyright &copy; 2018 National Institute of Advanced Industrial Science and Technology (AIST)</div>powered by <a href="https://www.mkdocs.org">MkDocs</a> and <a href="https://squidfunk.github.io/mkdocs-material/">Material for MkDocs</a></div></div></div></footer></div><script src="../../assets/javascripts/application.b260a35d.js"></script><script src="../../assets/javascripts/lunr/lunr.stemmer.support.js"></script><script src="../../assets/javascripts/lunr/tinyseg.js"></script><script src="../../assets/javascripts/lunr/lunr.ja.js"></script><script>app.initialize({version:"1.0.4",url:{base:"../.."}})</script></body></html>
