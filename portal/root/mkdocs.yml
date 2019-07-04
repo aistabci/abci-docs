@@ -1,11 +1,11 @@
 site_name: ABCI Portal Guide
 site_description: AI Bridging Cloud Infrastructure (ABCI)
 site_author: AIST
-site_url: https://portal.abci.ai/docs/portal/
-repo_url: https://github.com/aistairc/abci-user-manual
+site_url: https://docs.abci.ai/portal/
+repo_url: https://github.com/aistairc/abci-docs
 edit_uri: edit/master/portal/root/docs/
 copyright: 'Copyright &copy; 2018 National Institute of Advanced Industrial Science and Technology (AIST)'
-google_analytics: ['UA-118371652-2', 'portal.abci.ai']
+google_analytics: ['UA-118371652-2', 'docs.abci.ai']
 nav:
   - 'Welcome': 'index.md'
 theme:
