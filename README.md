@@ -10,9 +10,12 @@ This repository consists of three [MkDocs](https://www.mkdocs.org/) documents:
 
 | Directory | officially deployed URL | Notes |
 |:--|:--|:--|
-| root/ | https://portal.abci.ai/docs/    | Document root of the User Guide |
+| root/ | https://portal.abci.ai/docs/    | Document root of the ABCI User Guide |
 | ja/   | https://portal.abci.ai/docs/ja/ | Japanese version |
 | en/   | https://portal.abci.ai/docs/en/ | English version |
+| portal/root/ | https://portal.abci.ai/docs/    | Document root of the ABCI Portal Guide |
+| portal/ja/   | https://portal.abci.ai/docs/ja/ | Japanese version |
+| portal/en/   | https://portal.abci.ai/docs/en/ | English version |
 
 ## Development
 
@@ -28,6 +31,8 @@ $ mkdocs serve
 ```
 
 And, open 'http://127.0.0.1:8000/' using a web browser.
+
+## Build
 
 You can build the static version of three documents.
 
