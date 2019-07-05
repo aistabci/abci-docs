@@ -3,7 +3,6 @@
 このガイドは、[国立研究開発法人 産業技術総合研究所](https://www.aist.go.jp/)が運営するクラウド型計算システム「[AI橋渡しクラウド（AI Bridging Cloud Infrastructure、以下「ABCI」という）](https://abci.ai/ja/)」の利用方法について説明した資料です。
 システムを利用する方は、ご一読ください。
 
-  - [はじめに](index.md)
   - 利用手引き:
     - [1. ABCIシステムの概要](01.md)
     - [2. ABCIシステム利用環境](02.md)
