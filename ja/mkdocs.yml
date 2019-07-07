@@ -34,6 +34,7 @@ nav:
   - '既知の問題': 'known-issues.md'
   - 'システム更新履歴': 'system-updates.md'
   - '運転状況': 'https://abci.ai/ja/about_abci/info.html'
+  - 'English version': 'https://docs.abci.ai/en/'
 theme:
   name: 'material'
   logo:
@@ -44,10 +45,6 @@ theme:
     accent: 'red'
   feature:
     tabs: false
-extra:
-  social:
-    - type: language
-      link: 'https://docs.abci.ai/en/'
 markdown_extensions:
   - admonition
   - codehilite

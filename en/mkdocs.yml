@@ -33,6 +33,7 @@ nav:
   - 'Known Issues': 'known-issues.md'
   - 'System Updates': 'system-updates.md'
   - 'Operation Status': 'https://abci.ai/en/about_abci/info.html'
+  - 'Japanese version': 'https://docs.abci.ai/ja/'
 theme:
   name: 'material'
   logo:
@@ -43,10 +44,6 @@ theme:
     accent: 'red'
   feature:
     tabs: false
-extra:
-  social:
-    - type: language
-      link: 'https://docs.abci.ai/ja/'
 markdown_extensions:
   - admonition
   - codehilite

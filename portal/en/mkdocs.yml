@@ -13,6 +13,7 @@ nav:
   - '1. New Registration': '01.md'
   - '2. User Portal': '02.md'
   - '3. User Management Authority': '03.md'
+  - 'Japanese version': 'https://docs.abci.ai/portal/ja/'
 theme:
   name: 'material'
   logo:
@@ -20,10 +21,6 @@ theme:
   palette:
     primary: 'blue'
     accent: 'blue'
-extra:
-  social:
-    - type: language
-      link: 'https://docs.abci.ai/portal/ja/'
 markdown_extensions:
   - admonition
   - codehilite

@@ -13,6 +13,7 @@ nav:
   - '1. 利用課題新規申請': '01.md'   
   - '2. 利用者ポータル': '02.md'
   - '3. 利用管理者権限': '03.md'
+  - 'English version': 'https://docs.abci.ai/portal/en/'
 theme:
   name: 'material'
   logo:
@@ -22,10 +23,6 @@ theme:
     accent: 'blue'
   feature:
     tabs: false
-extra:
-  social:
-    - type: language
-      link: 'https://docs.abci.ai/portal/en/'
 markdown_extensions:
   - admonition
   - codehilite
