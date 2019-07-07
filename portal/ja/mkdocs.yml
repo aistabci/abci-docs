@@ -1,11 +1,13 @@
 site_name: ABCI Portal Guide
-site_description: AI Bridging Cloud Infrastructure (ABCI)
+site_description: ABCI Portal Guide, Japanese version
 site_author: AIST
 site_url: https://docs.abci.ai/portal/ja/
 repo_url: https://github.com/aistairc/abci-docs
 edit_uri: edit/master/portal/ja/docs/
 copyright: 'Copyright &copy; 2018 National Institute of Advanced Industrial Science and Technology (AIST)'
-google_analytics: ['UA-118371652-2', 'docs.abci.ai']
+google_analytics:
+  - 'UA-118371652-2'
+  - 'auto'
 nav:
   - 'はじめに': 'index.md'
   - '1. 利用課題新規申請': '01.md'   
@@ -13,9 +15,17 @@ nav:
   - '3. 利用管理者権限': '03.md'
 theme:
   name: 'material'
+  logo:
+    icon: 'cloud'
   palette:
     primary: 'blue'
     accent: 'blue'
+  feature:
+    tabs: false
+extra:
+  social:
+    - type: language
+      link: 'https://docs.abci.ai/portal/en/'
 markdown_extensions:
   - admonition
   - codehilite
