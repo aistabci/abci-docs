@@ -33,6 +33,11 @@ nav:
   - 'Known Issues': 'known-issues.md'
   - 'System Updates': 'system-updates.md'
   - 'Operation Status': 'https://abci.ai/en/about_abci/info.html'
+  - 'Links':
+    - 'ABCI Web page': 'https://abci.ai/'
+    - 'ABCI User Portal Guide': 'https://docs.abci.ai/portal/en/'
+    - 'ABCI User Portal (Registration)': 'https://portal.abci.ai/user/project_register_app.php?lang=en'
+    - 'ABCI User Portal (Login)':  'https://portal.abci.ai/user/login.php?lang=en'
   - 'Japanese version': 'https://docs.abci.ai/ja/'
 theme:
   name: 'material'
