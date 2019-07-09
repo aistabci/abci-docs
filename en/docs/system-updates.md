@@ -1,5 +1,13 @@
 # System Updates
 
+## 2019-07-10
+
+| Add / Update / Delete | Software | Version | Previous version |
+|:--|:--|:--|:--|
+| Add | CUDA | 10.0.130.1 | |
+| Add | cuDNN | 7.5.1, 7.6.0, 7.6.1 | |
+| Add | aws-cli | 1.16.194 | |
+
 ## 2019-04-05
 
 | Add / Update / Delete | Software | Version | Previous version |

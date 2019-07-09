@@ -26,4 +26,3 @@ All users who use this system are strongly recommended to read this document, as
   - [Known Issues](known-issues.md)
   - [System Updates](system-updates.md)
   - [Operation Status](https://abci.ai/en/about_abci/info.html)
-  - [Privacy Policy](https://docs.abci.ai/privacy-policy/)

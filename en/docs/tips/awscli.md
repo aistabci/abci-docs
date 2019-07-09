@@ -1,5 +1,8 @@
 # AWS CLI
 
+!!! note
+    Now AWS CLI was installed to the ABCI system. You can use the ``aws`` command simply by executing ``module load aws-cli``.
+
 ## Overview
 
 This page describes installation of AWS command line interface (awscli below) and command examples.
