@@ -1,5 +1,17 @@
 # System Updates
 
+## 2019-08-01
+
+| Add / Update / Delete | Software | Version | Previous version |
+|:--|:--|:--|:--|
+| Add | cuDNN | 7.6.2 | |
+| Add | NCCL | 2.4.7-1 | |
+| Add | s3fs-fuse | 1.85 | |
+
+Other fixes are as follows:
+
+* Add CUDA 10.0 support to Open MPI 1.10.7, 2.1.5, 2.1.6
+
 ## 2019-07-10
 
 | Add / Update / Delete | Software | Version | Previous version |
@@ -19,7 +31,7 @@
 | Add | DDN Lustre | 2.10.5_ddn7-1 | |
 | Add | CUDA | 10.0.130 | |
 | Add | Intel Compiler | 2019.3 | |
-| Add | PGI | 18.10 19.3 | |
+| Add | PGI | 18.10, 19.3 | |
 
 Other fixes are as follows:
 
