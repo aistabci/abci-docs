@@ -19,7 +19,7 @@ README.md          model_parallel.png    train_mnist_checkpoint.py     train_mni
 dual_parallel.png  parallelism_axis.png  train_mnist.py                train_mnist_dual_parallel.py
 ```
 
-Job submit script (example of execution train_mnist.py using 4gpu)
+Job script (an example of train_mnist.py execution using 4GPUs)
 ```
 [username@es ~]$ cat submit.sh
 #!/bin/bash
@@ -41,7 +41,7 @@ APP="python $HOME/chainer_sample/examples/chainermn/mnist/train_mnist.py"
 mpiexec ${MPIOPTS} ${APP}  --gpu
 ```
 
-Submit job (using 2nodes with 4gpus each)
+Submit job (using 2nodes with 4GPUs each)
 ```
 GROUP    : ABCI user group
 

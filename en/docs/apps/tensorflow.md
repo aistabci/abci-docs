@@ -1,9 +1,9 @@
 To use TensorFlow on the ABCI system, user must install it to home or group area.
 The procedures for installation and test run are as follows (as of March 29th, 2019).
 
-## 1 Single GPU
+## Single GPU
 
-### 1.1 Install
+### Installation
 
 To install [TensorFlow](https://www.tensorflow.org/),
 please follow the instructions below.
@@ -20,7 +20,7 @@ NEW_VENV : python virtual environment or path to be installed
 (tensorflow-gpu) [username@g0001 ~]$ pip3 install tensorflow-gpu==1.12.0
 ```
 
-### 1.2 Execute
+### Execution
 
 Download sample program
 ```
@@ -29,7 +29,7 @@ WORK : working directory
 [username@es ~]$ wget https://raw.githubusercontent.com/tensorflow/tensorflow/master/tensorflow/examples/tutorials/mnist/mnist.py
 ```
 
-Job submit script (example of execution train_mnist.py using 1gpu on node)
+Job script (an example of train_mnist.py execution using 1GPU on node)
 ```
 WORK : working directory
 [username@es ~]$ cd ${WORK}
@@ -57,11 +57,11 @@ WORK     : working directory
 [username@es ~]$ qsub -g GROUP submit.sh
 ```
 
-## 2 Multi GPU on Single node
+## Multi GPU on Single node
 
-### 2.1 Install
+### Installation
 
-Install tensorflow parallelized by horovod
+Install tensorflow with horovod
 ```
 NEW_VENV : python virtual environment or path to be installed
 
@@ -75,7 +75,7 @@ NEW_VENV : python virtual environment or path to be installed
 (NEW_VENV) [username@g0001 ~]$ HOROVOD_NCCL_HOME=$NCCL_HOME HOROVOD_GPU_ALLREDUCE=NCCL pip3 install horovod
 ```
 
-### 2.2 Execute
+### Execution
 
 Download sample program
 ```
@@ -86,7 +86,7 @@ WORK : working directory
 ```
 
 
-Job submit script (example of execution tensorflow_mnist.py using 4gpu on node)
+Job script (an example of tensorflow_mnist.py execution using 4GPUs on node)
 ```
 WORK : working directory
 
@@ -116,7 +116,7 @@ APP="python3 $HOME/tensorflow_mnist.py"
 horovodrun ${MPIOPTS} ${APP}
 ```
 
-Submit job (using 4gpus on node)
+Submit job (using 4GPUs on node)
 ```
 GROUP    : ABCI user group
 WORK     : working directory
@@ -125,9 +125,9 @@ WORK     : working directory
 [username@es ~]$ qsub -g GROUP submit.sh
 ```
 
-## 3 Multi GPU on multi nodes
+## Multi GPU on multi nodes
 
-### 3.1 Install
+### Installation
 
 Install tensorflow parallelized by horovod
 ```
@@ -143,7 +143,7 @@ NEW_VENV : python virtual environment or path to be installed
 (NEW_VENV) [username@g0001 ~]$ HOROVOD_NCCL_HOME=$NCCL_HOME HOROVOD_GPU_ALLREDUCE=NCCL pip3 install horovod
 ```
 
-### 2.2 Execute
+### Execution
 
 Download sample program
 ```
@@ -154,7 +154,7 @@ WORK : working directory
 ```
 
 
-Job submit script (example of execution tensorflow_mnist.py using 4gpu on 2nodes)
+Job script (an example of tensorflow_mnist.py execution using 4GPUs on 2nodes)
 ```
 WORK : working directory
 
@@ -184,7 +184,7 @@ APP="python3 $HOME/tensorflow_mnist.py"
 horovodrun ${MPIOPTS} ${APP}
 ```
 
-Submit job (using 2nodes with 4gpus each)
+Submit job (using 2nodes with 4GPUs each)
 ```
 GROUP    : ABCI user group
 WORK     : working directory

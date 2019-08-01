@@ -1,9 +1,9 @@
 ABCIシステムでTensorFlowを利用する場合、利用者がホーム領域またはグループ領域にインストールする必要があります。
 TensorFlowのインストール方法、動作確認方法は以下の通りです（2019年3月29日時点での確認）。
 
-## 1 シングルGPU
+## シングルGPU
 
-### 1.1 導入方法
+### 導入方法
 
 [TensorFlow](https://www.tensorflow.org/)のインストール方法は以下を参照ください。
 
@@ -18,7 +18,7 @@ NEW_VENV : インストールするPython仮想環境、またはディレクト
 (tensorflow-gpu) [username@g0001 ~]$ pip3 install tensorflow-gpu==1.12.0
 ```
 
-### 1.2 実行方法
+###  実行方法
 
 サンプルプログラムのダウンロード
 ```
@@ -27,7 +27,7 @@ WORK : 実行環境
 [username@es ~]$ wget https://raw.githubusercontent.com/tensorflow/tensorflow/master/tensorflow/examples/tutorials/mnist/mnist.py
 ```
 
-ジョブ投入スクリプト(ノード内1gpuを使用してmnist.pyを実行するジョブスクリプト例)
+ジョブスクリプト(ノード内1GPUを使用してmnist.pyを実行するジョブスクリプト例)
 ```
 WORK : 実行環境
 [username@es ~]$ cd ${WORK}
@@ -56,9 +56,9 @@ WORK     : 実行環境
 ```
 
 
-## 2 シングルノードマルチGPU
+## シングルノードマルチGPU
 
-### 2.1 導入方法
+### 導入方法
 
 horovodを利用したtensorflow並列環境の構築
 ```
@@ -74,7 +74,7 @@ NEW_VENV : インストールするPython仮想環境、またはディレクト
 (NEW_VENV) [username@g0001 ~]$ HOROVOD_NCCL_HOME=$NCCL_HOME HOROVOD_GPU_ALLREDUCE=NCCL pip3 install horovod
 ```
 
-### 2.2 実行方法
+### 実行方法
 
 サンプルプログラムのダウンロード
 ```
@@ -84,7 +84,7 @@ WORK : 実行環境
 [username@es ~]$ wget https://raw.githubusercontent.com/uber/horovod/master/examples/tensorflow_mnist.py
 ```
 
-ジョブ投入スクリプト(ノード内4gpuを使用してtensorflow_mnist.pyを実行するジョブスクリプト例)
+ジョブスクリプト(ノード内4GPUを使用してtensorflow_mnist.pyを実行するジョブスクリプト例)
 ```
 WORK : 実行環境
 
@@ -114,7 +114,7 @@ APP="python3 $HOME/tensorflow_mnist.py"
 horovodrun ${MPIOPTS} ${APP}
 ```
 
-ジョブ投入(1ノードで4gpuを利用する場合)
+ジョブ投入(1ノードで4GPUを利用する場合)
 ```
 GROUP    : ABCI利用グループ
 WORK     : 実行環境
@@ -123,9 +123,9 @@ WORK     : 実行環境
 [username@es ~]$ qsub -g GROUP submit.sh
 ```
 
-## 3 マルチノードマルチGPU
+## マルチノードマルチGPU
 
-### 3.1 導入方法
+### 導入方法
 
 horovodを利用したtensorflow並列環境の構築
 ```
@@ -139,7 +139,7 @@ NEW_VENV : インストールするPython仮想環境、またはディレクト
 (NEW_VENV) [username@g0001 ~]$ HOROVOD_NCCL_HOME=$NCCL_HOME HOROVOD_GPU_ALLREDUCE=NCCL pip3 install horovod
 ```
 
-### 3.2 実行方法
+### 実行方法
 
 サンプルプログラムのダウンロード
 ```
@@ -149,7 +149,7 @@ WORK : 実行環境
 [username@es ~]$ wget https://raw.githubusercontent.com/uber/horovod/master/examples/tensorflow_mnist.py
 ```
 
-ジョブ投入スクリプト(ノード内4gpuを使用してtensorflow_mnist.pyを実行するジョブスクリプト例)
+ジョブスクリプト(ノード内4GPUを使用してtensorflow_mnist.pyを実行するジョブスクリプト例)
 ```
 WORK : 実行環境
 
@@ -178,7 +178,7 @@ APP="python3 $HOME/tensorflow_mnist.py"
 horovodrun ${MPIOPTS} ${APP}
 ```
 
-ジョブ投入(2ノードでそれぞれ4gpuを利用する場合)
+ジョブ投入(2ノードでそれぞれ4GPUを利用する場合)
 ```
 GROUP    : ABCI利用グループ
 WORK     : 実行環境

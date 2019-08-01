@@ -18,7 +18,7 @@ README.md          model_parallel.png    train_mnist_checkpoint.py     train_mni
 dual_parallel.png  parallelism_axis.png  train_mnist.py                train_mnist_dual_parallel.py
 ```
 
-ジョブ投入スクリプト(4gpuを使用してtrain_mnist.pyを実行するジョブスクリプト例)
+ジョブスクリプト(4gpuを使用してtrain_mnist.pyを実行するジョブスクリプト例)
 ```
 [username@es ~]$ cat submit.sh
 #!/bin/bash
