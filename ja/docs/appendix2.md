@@ -12,7 +12,7 @@ ABCIシステムのフロントエンドであるインタラクティブノー�
 `gsissh`コマンドでHPCI向けアクセスサーバ(*hpci.abci.ai*)にログインします。
 
 <div class="codehilite"><pre>
-yourpc$ gsissh -p 2222 <i>hpci.abci.ai</i>
+[yourpc ~]$ gsissh -p 2222 <i>hpci.abci.ai</i>
 [username@hpci1 ~]$
 </pre></div>
 
@@ -33,10 +33,10 @@ HPCI向けアクセスサーバにログイン後、`ssh`コマンドを用い�
 
 HPCI向けアクセスサーバにログイン後、`ssh`コマンドを用いてインタラクティブノードにログインします。
 
-<pre>
- [username@hpci1 ~]$ ssh <i>es</i>
- [username@es1 ~]$
-</pre>
+<div class="codehilite"><pre>
+[username@hpci1 ~]$ ssh <i>es</i>
+[username@es1 ~]$
+</pre></div>
 
 ## インタラクティブノードへのファイル転送 {#file-transfer-to-interactive-node}
 
