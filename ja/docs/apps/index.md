@@ -1,6 +1,6 @@
-# 各種アプリケーション
+# 概要
 
-本セクションでは、利用者がABCIにインストールして利用できる、各種アプリケーションの使い方についてまとめます。
+本セクションでは、TensorFlow、Chainer、Caffeなど各種アプリケーションを、利用者がABCI上にインストールして利用するための手順を説明します。
 
 - [TensorFlow](tensorflow.md)
 - [Chainer](chainer.md)
