@@ -41,7 +41,7 @@ APP="python $HOME/chainer_sample/examples/chainermn/mnist/train_mnist.py"
 mpiexec ${MPIOPTS} ${APP}  --gpu
 ```
 
-Submit job (using 2nodes with 4GPUs each)
+Submit a job (using 2nodes with 4GPUs each)
 ```
 GROUP    : ABCI user group
 

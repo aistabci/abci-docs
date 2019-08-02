@@ -49,7 +49,7 @@ source ${NEW_VENV}/bin/activate
 python3 ${WORK}/mnist.py
 ```
 
-Job submit
+Submit a job
 ```
 GROUP    : ABCI user group
 WORK     : working directory
@@ -116,7 +116,7 @@ APP="python3 $HOME/tensorflow_mnist.py"
 horovodrun ${MPIOPTS} ${APP}
 ```
 
-Submit job (using 4GPUs on node)
+Submit a job (using 4GPUs on node)
 ```
 GROUP    : ABCI user group
 WORK     : working directory
@@ -129,7 +129,7 @@ WORK     : working directory
 
 ### Installation
 
-Install tensorflow parallelized by horovod
+Install tensorflow with horovod
 ```
 NEW_VENV : python virtual environment or path to be installed
 
@@ -184,7 +184,7 @@ APP="python3 $HOME/tensorflow_mnist.py"
 horovodrun ${MPIOPTS} ${APP}
 ```
 
-Submit job (using 2nodes with 4GPUs each)
+Submit a job (using 2nodes with 4GPUs each)
 ```
 GROUP    : ABCI user group
 WORK     : working directory
