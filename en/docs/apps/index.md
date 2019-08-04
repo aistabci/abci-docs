@@ -1,7 +1,7 @@
-# Applications
+# Overview
 
-Explanation how to use applications on ABCI in this section.
+This section will explain how users can set up and execute applications, such as TensorFlow, Chainer, Caffe, etc., on ABCI.
 
 - [TensorFlow](tensorflow.md)
 - [Chainer](chainer.md)
-- [その他](others.md)
+- [Others](others.md)

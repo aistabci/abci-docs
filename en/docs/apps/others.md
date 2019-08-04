@@ -1,4 +1,6 @@
-## Deep Learning Framework
+# Others
+
+## Deep Learning Frameworks
 
 To use Deep Learning Framework on the ABCI System,
 user must install it to home or group area.
@@ -140,7 +142,7 @@ NEW_VENV : python virtual environment or path to be installed
 
 More details can be found in [Keras](https://keras.io/).
 
-## Big Data Analytics Framework
+## Big Data Analytics Frameworks
 
 ### Hadoop
 
