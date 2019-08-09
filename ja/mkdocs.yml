@@ -35,6 +35,10 @@ nav:
     - 'Tera Termの利用': 'tips/tera-term.md'
     - 'PuTTYの利用': 'tips/putty.md'
   - 'NVIDIA GPU Cloud (NGC)': 'ngc.md'
+  - 'ABCI クラウドストレージ':
+    - '概要': 'abci-cloudstorage.md'
+    - '使い方': 'abci-cloudstorage/usage.md'
+    - '利用管理者アカウント': 'abci-cloudstorage/management.md'
   - '既知の問題': 'known-issues.md'
   - 'システム更新履歴': 'system-updates.md'
   - '運転状況': 'https://abci.ai/ja/about_abci/info.html'
