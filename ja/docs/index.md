@@ -27,6 +27,7 @@
     - [GCC 7.3.0の利用](tips/gcc-7.3.0.md)
     - [Tera Termの利用](tips/tera-term.md)
     - [PuTTYの利用](tips/putty.md)
+    - [Jupyter Notebookの利用](tips/jupyter-notebook.md)
   - [NVIDIA GPU Cloud (NGC)](ngc.md)
   - [既知の問題](known-issues.md)
   - [システム更新履歴](system-updates.md)
