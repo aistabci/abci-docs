@@ -95,7 +95,7 @@ Jupyter Notebook will be terminated by the following steps:
 
 * (Local PC) Exit with the `Quit` button on the dashboard screen
 * (Local PC) Press `Control-C` and terminate SSH tunnel connection that was forwarding port 8888
-* (Compute Node) Press `Control-C` and terminate `jupyter` program
+* (Compute Node) If `jupyter` program is not finished, quit with `Control-C`
 
 ## Using Singularity
 

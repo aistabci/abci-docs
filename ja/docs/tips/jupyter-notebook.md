@@ -94,7 +94,7 @@ Jupyter Notebookの使い方は、[Jupyter Notebook Documentation](https://jupyt
 
 * (ローカルPC) ダッシュボード画面の`Quit`ボタンで終了
 * (ローカルPC) 8888番ポートを転送していたSSHトンネル接続を`Control-C`で終了
-* (計算ノード) jupyterコマンドを`Control-C`で終了
+* (計算ノード) `jupyter`プログラムが終了していない場合は、`Control-C`で終了
 
 ## Singularityを用いた利用手順 {#using-singularity}
 
