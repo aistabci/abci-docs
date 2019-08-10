@@ -27,6 +27,7 @@ All users who use this system are strongly recommended to read this document, as
     - [AWS CLI](tips/awscli.md)
     - [GCC 7.3.0](tips/gcc-7.3.0.md)
     - [PuTTY](tips/putty.md)
+    - [Jupyter Notebook](tips/jupyter-notebook.md)
   - [NVIDIA GPU Cloud (NGC)](ngc.md)
   - [Known Issues](known-issues.md)
   - [System Updates](system-updates.md)

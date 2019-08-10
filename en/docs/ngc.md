@@ -66,8 +66,10 @@ Build a Singularity image for TensorFlow on the interactive node.
 
 ```
 [username@es1 ~] $ module load singularity/2.6.1
-[username@es1 ~] $ singularity pull --name tensorflow-19.06-py2.simg docker://nvcr.io/nvidia/tensorflow:19.06-py2
+[username@es1 ~] $ singularity pull docker://nvcr.io/nvidia/tensorflow:19.06-py2
 ```
+
+An image named ``tensorflow-19.06-py2.simg`` will be generated.
 
 ### Run a Singularity image
 
@@ -210,8 +212,10 @@ In this case, you need to set two environment variables, ``SINGULARITY_DOCKER_US
 [username@es1 ~] $ module load singularity/2.6.1
 [username@es1 ~] $ export SINGULARITY_DOCKER_USERNAME='$oauthtoken'
 [username@es1 ~] $ export SINGULARITY_DOCKER_PASSWORD=<NGC API Key>
-[username@es1 ~] $ singularity pull --name chainer-4.0.0b1.simg docker://nvcr.io/partners/chainer:4.0.0b1
+[username@es1 ~] $ singularity pull docker://nvcr.io/partners/chainer:4.0.0b1
 ```
+
+An image named ``chainer-4.0.0b1.simg`` will be generated.
 
 ### Run a Singularity image
 

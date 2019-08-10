@@ -62,8 +62,10 @@ docker://nvcr.io/nvidia/tensorflow:19.06-py2
 
 ```
 [username@es1 ~] $ module load singularity/2.6.1
-[username@es1 ~] $ singularity pull --name tensorflow-19.06-py2.simg docker://nvcr.io/nvidia/tensorflow:19.06-py2
+[username@es1 ~] $ singularity pull docker://nvcr.io/nvidia/tensorflow:19.06-py2
 ```
+
+``tensorflow-19.06-py2.simg``という名前のイメージファイルが生成されます。
 
 ### Singularityイメージの実行 {#run-a-singularity-image}
 
@@ -198,8 +200,10 @@ docker://nvcr.io/partners/chainer:4.0.0b1
 [username@es1 ~] $ module load singularity/2.6.1
 [username@es1 ~] $ export SINGULARITY_DOCKER_USERNAME='$oauthtoken'
 [username@es1 ~] $ export SINGULARITY_DOCKER_PASSWORD=<NGC API Key>
-[username@es1 ~] $ singularity pull --name chainer-4.0.0b1.simg docker://nvcr.io/partners/chainer:4.0.0b1
+[username@es1 ~] $ singularity pull docker://nvcr.io/partners/chainer:4.0.0b1
 ```
+
+``chainer-4.0.0b1.simg``という名前のイメージファイルが生成されます。
 
 ### Singularityイメージの実行 {#run-a-singularity-image_1}
 
