@@ -21,7 +21,7 @@ All users who use this system are strongly recommended to read this document, as
     - [Overview](apps/index.md)
     - [TensorFlow](apps/tensorflow.md)
     - [Chainer](apps/chainer.md)
-    - [others](apps/others.md)
+    - [Others](apps/others.md)
   - Tips
     - [Remote Desktop](tips/remote-desktop.md)
     - [AWS CLI](tips/awscli.md)
@@ -29,6 +29,7 @@ All users who use this system are strongly recommended to read this document, as
     - [PuTTY](tips/putty.md)
     - [Jupyter Notebook](tips/jupyter-notebook.md)
   - [NVIDIA GPU Cloud (NGC)](ngc.md)
+  - [FAQ](faq.md)
   - [Known Issues](known-issues.md)
   - [System Updates](system-updates.md)
   - [Operation Status](https://abci.ai/en/about_abci/info.html)
