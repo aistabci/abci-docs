@@ -35,6 +35,7 @@ nav:
     - 'PuTTY': 'tips/putty.md'
     - 'Jupyter Notebook': 'tips/jupyter-notebook.md'
   - 'NVIDIA GPU Cloud (NGC)': 'ngc.md'
+  - 'FAQ': 'faq.md'
   - 'Known Issues': 'known-issues.md'
   - 'System Updates': 'system-updates.md'
   - 'Operation Status': 'https://abci.ai/en/about_abci/info.html'
