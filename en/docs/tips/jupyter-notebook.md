@@ -15,7 +15,7 @@ First, you need to occupy one compute node, create a Python virtual environment,
 [username@g0001 ~]$ module load python/3.6/3.6.5 cuda/10.0/10.0.130.1 cudnn/7.4/7.4.2
 [username@g0001 ~]$ python3 -m venv ~/jupyter_env
 [username@g0001 ~]$ source ~/jupyter_env/bin/activate
-(jupyter_env) [username@g0001 ~]$ pip3 install tensorflow-gpu jupyter
+(jupyter_env) [username@g0001 ~]$ pip3 install tensorflow-gpu jupyter numpy==1.16.4
 ```
 
 !!! note
