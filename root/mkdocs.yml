@@ -1,0 +1,25 @@
+site_name: ABCI Users Guide & Portal Guide
+site_description: ABCI Users Guide & Portal Guide
+site_author: AIST
+site_url: https://docs.abci.ai/
+copyright: 'Copyright &copy; 2018 National Institute of Advanced Industrial Science and Technology (AIST)'
+google_analytics:
+  - 'UA-118371652-2'
+  - 'auto'
+nav:
+  - 'ABCI Users Guide 日本語版': 'https://docs.abci.ai/ja/'
+  - 'ABCI Users Guide English version': 'https://docs.abci.ai/en/'
+  - 'ABCI Portal Guide 日本語版': 'https://docs.abci.ai/portal/ja/'
+  - 'ABCI Portal Guide English version': 'https://docs.abci.ai/portal/ja/'
+theme:
+  name: 'material'
+  logo:
+    icon: 'cloud'
+  palette:
+    primary: 'red'
+    accent: 'red'
+  feature:
+    tabs: false
+markdown_extensions:
+  - admonition
+plugins: []

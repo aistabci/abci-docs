@@ -1,28 +1,61 @@
 site_name: ABCI Users Guide
-site_description: AI Bridging Cloud Infrastructure(ABCI)
+site_description: ABCI Users Guide, English version
 site_author: AIST
-site_url: https://portal.abci.ai/docs/en
-copyright: 'Copyright &copy; 2018 National Institute of Advanced Industrial Science and Technology(AIST)'
-google_analytics: ['UA-118371652-2', 'portal.abci.ai']
-pages:
+site_url: https://docs.abci.ai/en/
+repo_url: https://github.com/aistairc/abci-docs
+edit_uri: edit/master/en/docs/
+copyright: 'Copyright &copy; 2018 National Institute of Advanced Industrial Science and Technology (AIST)'
+google_analytics:
+  - 'UA-118371652-2'
+  - 'auto'
+nav:
   - 'Introduction': 'index.md'
-  - '1. ABCI System Overview': '01.md'
-  - '2. ABCI System User Environment': '02.md'
-  - '3. Job Execution Environment': '03.md'
-  - '4. Storage': '04.md'
-  - '5. Use Environment Modules': '05.md'
-  - '6. Use Python': '06.md'
-  - '7. Use GPU': '07.md'
-  - '8. Use MPI': '08.md'
-  - '9. Linux Container': '09.md'
-  - '10. Software Development Environment': '10.md'
-  - '11. Application Framework': '11.md'
-  - 'Appendix 1. How To Install Software': 'appendix1.md'
+  - 'Users Guide':
+    - '1. ABCI System Overview': '01.md'
+    - '2. ABCI System User Environment': '02.md'
+    - '3. Job Execution Environment': '03.md'
+    - '4. Storage': '04.md'
+    - '5. Environment Modules': '05.md'
+    - '6. Python': '06.md'
+    - '7. GPU': '07.md'
+    - '8. MPI': '08.md'
+    - '9. Linux Containers': '09.md'
+    - '10. Software Development Environment': '10.md'
+    - 'Appendix 1. Configuration of Installed Software': 'appendix1.md'
+    - 'Appendix 2. Use of ABCI System for HPCI ': 'appendix2.md'
+  - 'Applications':
+    - 'Overview': 'apps/index.md'
+    - 'TensorFlow': 'apps/tensorflow.md'
+    - 'Chainer': 'apps/chainer.md'
+    - 'Others': 'apps/others.md'
+  - 'Tips':
+    - 'Remote Desktop': 'tips/remote-desktop.md'
+    - 'AWS CLI': 'tips/awscli.md'
+    - 'GCC 7.3.0': 'tips/gcc-7.3.0.md'
+    - 'PuTTY': 'tips/putty.md'
+    - 'Jupyter Notebook': 'tips/jupyter-notebook.md'
+  - 'NVIDIA GPU Cloud (NGC)': 'ngc.md'
+  - 'FAQ': 'faq.md'
+  - 'Known Issues': 'known-issues.md'
+  - 'System Updates': 'system-updates.md'
+  - 'Operation Status': 'https://abci.ai/en/about_abci/info.html'
+  - 'Links':
+    - 'ABCI Web page': 'https://abci.ai/'
+    - 'ABCI User Portal Guide': 'https://docs.abci.ai/portal/en/'
+    - 'ABCI User Portal (Registration)': 'https://portal.abci.ai/user/project_register_app.php?lang=en'
+    - 'ABCI User Portal (Login)':  'https://portal.abci.ai/user/login.php?lang=en'
+  - 'Japanese version': 'https://docs.abci.ai/ja/'
 theme:
   name: 'material'
+  logo:
+    icon: 'cloud'
+  language: 'en'
   palette:
     primary: 'red'
     accent: 'red'
+  feature:
+    tabs: false
 markdown_extensions:
   - admonition
-  - codehilite:
+  - codehilite
+  - attr_list

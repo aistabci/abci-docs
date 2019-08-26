@@ -39,7 +39,7 @@ debug_*.yml
 # ignore files for deployment
 site/
 site_pdf/
-^Makefile
-^deploy.sh
-^deploy_pdf.sh
-^make_pdf.sh
+/Makefile
+/deploy.sh
+/deploy_pdf.sh
+/make_pdf.sh

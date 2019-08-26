@@ -1,0 +1,68 @@
+--- 1 ---
+1_01_A.png: 利用規約への同意
+1_02_A.png: 申請種別選択
+1_03_A.png: グループ情報入力
+1_04_A.png: 利用責任者入力
+1_05_A.png: 利用者入力
+1_05_B.png: 利用者入力
+1_05_C.png: 利用者入力
+1_05_D.png: 利用者入力
+1_06_A.png: 入力内容確認
+1_07_A.png: 入力内容修正
+1_08_A.png: 画像認証
+1_09_A.png: 申請完了
+1_10_A.png: 利用グループ申請一時保存(image authentication)
+1_10_B.png: 利用グループ申請一時保存(mail address setting)
+1_10_C.png: 利用グループ申請一時保存(sammery)
+1_10_D.png: 利用グループ申請一時保存(password authentication)
+☆　1_10_E.png: 利用グループ申請一時保存(再開)
+--- 2 ---
+2_01_A.png: ログイン(image authentication)
+2_02_B.png: ログイン(sending URL)
+2_03_C.png: ログイン(first contact password authentication)
+2_01_D.png: 初回ログイン(agreement terms of service)
+2_01_E.png: 初回ログイン(change password)
+2_01_F.png: 初回ログイン(change result)
+2_02_A.png: パスワード変更
+2_02_B.png: パスワード変更(report)
+2_03_A.png: 公開鍵の登録(uploader text box)
+2_03_B.png: 公開鍵の登録(select upload style)
+2_03_C.png: 公開鍵の登録(report)
+2_04_A.png: 公開鍵の参照・削除(select target key)
+2_04_B.png: 公開鍵の参照・削除(report)
+2_05_A.png: オブジェクトストレージ参照
+2_06_A.png: ノード予約・キャンセル(list)
+!2_06_B.png: ノード予約・キャンセル(add node)
+!2_06_C.png: ノード予約・キャンセル(report)
+!2_06_D.png: ノード予約・キャンセル(cancel)
+2_07_A.png: ABCIポイント使用履歴(used point list)
+2_07_B.png: ABCIポイント使用履歴(point status)
+2_07_C.png: ABCIポイント使用履歴(point verbose status)
+--- 3 ---
+!3_01_A.png: ログイン(差し替え不要)
+3_01_B.png: ログイン(user information)
+3_02_A.png: ABCIポイント使用履歴（利用管理者権限）
+3_02_B.png: ABCIポイント使用履歴（利用管理者権限）
+3_03_A.png: ABCIポイント追加履歴
+3_03_B.png: ABCIポイント追加履歴
+3_04_A.png: 利用グループ管理 3.4
+3_04_B.png: 利用グループ管理 3.4.1(Application)
+3_04_C.png: 利用グループ管理 3.4.1(report)
+3_04_D.png: 利用グループ管理 3.4.2(add group-disk)
+3_04_E.png: 利用グループ管理 3.4.2(report)
+3_04_F.png: 利用グループ管理 3.4.3(application)
+3_04_G.png: 利用グループ管理 3.4.3(regist)
+3_04_H.png: 利用グループ管理 3.4.3(more)
+3_04_I.png: 利用グループ管理 3.4.3(report)
+3_04_J.png: 利用グループ管理 3.4.4(delete account)
+3_04_K.png: 利用グループ管理 3.4.4(report)
+3_04_L.png: 利用グループ管理 3.4.5(permission)
+3_04_M.png: 利用グループ管理 3.4.5.1(add permission)
+3_04_N.png: 利用グループ管理 3.4.5.2(delete permission)
+3_04_O.png: 利用グループ管理 3.4.6(change account)
+3_04_P.png: 利用グループ管理 3.4.6(report)
+3_05_A.png: 利用者編集(list)
+3_05_B.png: 利用者編集(regist)
+3_05_C.png: 利用者編集(save)
+3_05_D.png: 利用者編集(report)
+
