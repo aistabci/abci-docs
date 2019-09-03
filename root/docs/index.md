@@ -1,1 +1,1 @@
-redirect: https://docs.abci.ai/ja/
+redirect: ja/
