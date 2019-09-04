@@ -63,13 +63,12 @@ $ mpirun -hostfile $SGE_JOB_HOSTLIST -np 1 command1 : -np 1 command2 : ... : -np
 
 ## Q. I want to avoid to close SSH session unexpectedly 
 
-If you success to connect ABCI, your SSH session may be closed after a while. In such case, you may avoid by sending or recieving KeepAlive between SSH server and client.
+The SSH session may be closed shortly after connecting to ABCI with SSH. In such a case, you may be able to avoid it by performing KeepAlive communication between the SSH client and the server.
 
-To enable KeepAlive is to edit system ssh configuration file "/etc/ssh/ssh_config" or user's ssh configuration file "~/.ssh/config" and add the ServerAliveInterval option with an interval like 60 seconds.
-
+To enable KeepAlive, set the option ServerAliveInterval to about 60 seconds in the system ssh configuration file (/etc/ssh/ssh_config) or per-user configuration file (~/.ssh/config) on the user's terminal.
 ```
-[username@userpc ~]$ vi ~/.ssh/config
-[username@userpc ~]$ cat ~/.ssh/config
+[username@yourpc ~]$ vi ~/.ssh/config
+[username@yourpc ~]$ cat ~/.ssh/config
 (snip)
 Host as.abci.ai
    ServerAliveInterval 60
@@ -78,5 +77,5 @@ Host as.abci.ai
 ```
 
 !!! note
-    default value of ServerAliveInterval is 0 (no KeepAlive).
+    The default value of ServerAliveInterval is 0 (no KeepAlive)..
 
