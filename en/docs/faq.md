@@ -60,3 +60,22 @@ If you give `-l rt_F=N` option to `qrsh` or `qsub`, you can assign N compute nod
 $ module load openmpi/2.1.6
 $ mpirun -hostfile $SGE_JOB_HOSTLIST -np 1 command1 : -np 1 command2 : ... : -np1 commandN
 ```
+
+## Q. I want to avoid to close SSH session unexpectedly 
+
+The SSH session may be closed shortly after connecting to ABCI with SSH. In such a case, you may be able to avoid it by performing KeepAlive communication between the SSH client and the server.
+
+To enable KeepAlive, set the option ServerAliveInterval to about 60 seconds in the system ssh configuration file (/etc/ssh/ssh_config) or per-user configuration file (~/.ssh/config) on the user's terminal.
+```
+[username@yourpc ~]$ vi ~/.ssh/config
+[username@yourpc ~]$ cat ~/.ssh/config
+(snip)
+Host as.abci.ai
+   ServerAliveInterval 60
+(snip)
+[username@userpc ~]$
+```
+
+!!! note
+    The default value of ServerAliveInterval is 0 (no KeepAlive)..
+

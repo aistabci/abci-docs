@@ -60,3 +60,22 @@ singularity exec $NGC_HOME/ubuntu-18.04.simg $NGC_HOME/ngc $@
 $ module load openmpi/2.1.6
 $ mpirun -hostfile $SGE_JOB_HOSTLIST -np 1 command1 : -np 1 command2 : ... : -np1 commandN
 ```
+
+## Q. SSHのセッションが閉じられてしまうのを回避したい
+
+SSHでABCIに無事接続したしばらく後に、SSHのセッションが閉じられてしまうことがあります。このような場合は、SSHクライアントとサーバ間でKeepAliveの通信をすることで回避できる場合があります。
+
+KeepAliveを適用するには、利用者の端末でシステムのssh設定ファイル(/etc/ssh/ssh_config)、またはユーザ毎の設定ファイル(~/.ssh/config)に、オプション ServerAliveInterval を60秒程度で設定してください。
+
+```
+[username@userpc ~]$ vi ~/.ssh/config
+[username@userpc ~]$ cat ~/.ssh/config
+(snip)
+Host as.abci.ai
+   ServerAliveInterval 60
+(snip)
+[username@userpc ~]$
+```
+
+!!! note
+    ServerAliveInterval の初期値は 0 (KeepAliveなし)です。
