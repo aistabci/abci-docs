@@ -1,6 +1,6 @@
 # ABCIクラウドストレージ
 
-ABCIでは、Amazon Simple Storage Service (Amazon S3) 互換インターフェースを備えたオブジェクトストレージサービスを提供しています。以降、ABCIクラウドストレージと呼びます。
+ABCIでは、Amazon Simple Storage Service (Amazon S3) 互換インターフェースを備えたオブジェクトストレージサービスを提供しています。以降、このサービスをABCIクラウドストレージと呼びます。
 
 ABCIクラウドストレージには、ABCIで提供する他のストレージサービスにない次の特徴があります。
 
