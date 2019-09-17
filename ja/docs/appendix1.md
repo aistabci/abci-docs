@@ -149,7 +149,7 @@ INSTALL_DIR=/apps/openmpi/3.1.0/gcc4.8.5_cuda8.0.61.2
 [username@g0001 openmpi-3.1.0]$ ./configure \
   --prefix=$INSTALL_DIR \
   --enable-orterun-prefix-by-default \
-  --cuda=$CUDA_HOME
+  --with-cuda=$CUDA_HOME \
   --with-sge \
   2>&1 | tee configure.log 2>&1
 [username@g0001 openmpi-3.1.0]$ make -j8 > make.log 2>&1
@@ -170,7 +170,7 @@ INSTALL_DIR=/apps/openmpi/3.1.0/gcc4.8.5_cuda9.0.176.2
 [username@g0001 openmpi-3.1.0]$ ./configure \
   --prefix=$INSTALL_DIR \
   --enable-orterun-prefix-by-default \
-  --cuda=$CUDA_HOME
+  --with-cuda=$CUDA_HOME \
   --with-sge \
   2>&1 | tee configure.log 2>&1
 [username@g0001 openmpi-3.1.0]$ make -j8 > make.log 2>&1
@@ -191,7 +191,7 @@ INSTALL_DIR=/apps/openmpi/3.1.0/gcc4.8.5_cuda9.1.85.3
 [username@g0001 openmpi-3.1.0]$ ./configure \
   --prefix=$INSTALL_DIR \
   --enable-orterun-prefix-by-default \
-  --cuda=$CUDA_HOME
+  --with-cuda=$CUDA_HOME \
   --with-sge \
   2>&1 | tee configure.log 2>&1
 [username@g0001 openmpi-3.1.0]$ make -j8 > make.log 2>&1
@@ -212,7 +212,7 @@ INSTALL_DIR=/apps/openmpi/3.1.0/gcc4.8.5_cuda9.2.88.1
 [username@g0001 openmpi-3.1.0]$ ./configure \
   --prefix=$INSTALL_DIR \
   --enable-orterun-prefix-by-default \
-  --cuda=$CUDA_HOME
+  --with-cuda=$CUDA_HOME \
   --with-sge \
   2>&1 | tee configure.log 2>&1
 [username@g0001 openmpi-3.1.0]$ make -j8 > make.log 2>&1
