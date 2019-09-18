@@ -67,11 +67,11 @@ s3://bucket-1/project-1/docs/fig1.png
 
 バケット名は以下の規約があります。
 
-* クラウドストレージ全体で一意となります。
+* クラウドストレージ全体で一意である必要があります。
 * 3～63文字で定義する必要があります。
 * '\_'(アンダースコア)を含めることはできません。
 * 先頭は小文字の英数字を指定する必要があります。
-* IPアドレス(192.168.0.1)のような形式は使用できません。
+* IPアドレス(例えば192.168.0.1)のような形式は使用できません。
 * '.'(ピリオド)は問題になる場合があります。使用しないことを推奨します。
 
 オブジェクトキーには、UTF-8 文字も使うことはできますが、アスキーコードの範囲であっても、避けた方が良い特殊文字があります。
@@ -87,10 +87,10 @@ s3://bucket-1/project-1/docs/fig1.png
 ### バケットの作成
 
 s3 mb コマンドでバケットを作成します。
-例として、'user1-bucket1' というバケットを作るには、以下のように aws コマンドを実行します。
+例として、'dataset-summer-2012' というバケットを作るには、以下のように aws コマンドを実行します。
 ```
-[username@es1 ~]$ aws --endpoint-url https://s3.abci.ai s3 mb s3://user1-bucket1
-make_bucket: user1-bucket1
+[username@es1 ~]$ aws --endpoint-url https://s3.abci.ai s3 mb s3://dataset-summer-2012
+make_bucket: dataset-summer-2012
 ```
 
 
@@ -108,10 +108,10 @@ make_bucket: user1-bucket1
 
 ### オブジェクトのリスト
 
-バケット入っているオブジェクトをリストするには、 `aws --endpoint-url https://s3.abci.ai/ s3 ls s3://bucket-name/` を実行します。
+バケット入っているオブジェクトをリストするには、 `aws --endpoint-url https://s3.abci.ai/ s3 ls s3://bucket-name` を実行します。
 
 ```
-[username@es1 ~]$ aws --endpoint-url https://s3.abci.ai/ s3 ls s3://user1-bucket3
+[username@es1 ~]$ aws --endpoint-url https://s3.abci.ai/ s3 ls s3://mybucket
                            PRE pics/
 2019-07-05 17:33:05          4 test1.txt
 2019-07-05 21:12:47          4 test2.txt
@@ -120,7 +120,7 @@ make_bucket: user1-bucket1
 例えば pics/ というプレフィックスを持つデータをリストするには、バケット名の後ろにプレフィックスをつけます。
 
 ```
-[username@es1 ~]$ aws --endpoint-url https://s3.abci.ai/ s3 ls s3://test13hama-bkt-1/pics/
+[username@es1 ~]$ aws --endpoint-url https://s3.abci.ai/ s3 ls s3://mybucket/pics/
 2019-07-29 21:55:57    1048576 test3.png
 2019-07-29 21:55:59    1048576 test4.png
 ```
@@ -128,7 +128,7 @@ make_bucket: user1-bucket1
 `--recursive` オプションを使い、バケット内の全オブジェクトをリストすることもできます。
 
 ```
-[username@es1 ~]$ aws --endpoint-url https://s3.abci.ai/ s3 ls s3://test13hama-bkt-1 --recursive
+[username@es1 ~]$ aws --endpoint-url https://s3.abci.ai/ s3 ls s3://mybucket --recursive
 2019-07-05 17:33:05          4 test1.txt
 2019-07-05 21:12:47          4 test2.txt
 2019-07-29 21:55:57    1048576 pics/test3.png
@@ -140,34 +140,36 @@ make_bucket: user1-bucket1
 
 ファイルシステム上からABCIクラウドストレージ上のバケットへ、クラウドストレージ上のバケットからファイルシステム上へ、またはABCIクラウドストレージ上のバケットからABCIクラウドストレージ上のバケットへデータをコピーできます。
 
-1G_test.dat というファイルを user1-bucket1 バケットにコピー
+0001.jpg というファイルを dataset-c0541 バケットにコピー
 ```
-[username@es1 ~]$ ls testdata
-10byte_text    10M_test.dat   1byte_bin.dat  1G_test.dat
-[username@es1 ~]$ aws --endpoint-url https://s3.abci.ai s3 cp ./testdata/1G_test.dat s3://user1-bucket1/
-upload: testdata/1G_test.dat to s3://user1-bucket1/1G_test.dat
+[username@es1 ~]$ ls images
+0001.jpg    0002.jpg    0003.jpg    0004.jpg
+[username@es1 ~]$ aws --endpoint-url https://s3.abci.ai s3 cp ./images/0001.jpg s3://dataset-c0541/
+upload: images/0001.jpg to s3://dataset-c0541/0001.jpg
 [username@es1 ~]$
 ```
 
-testdata ディレクトリの中身を user1-bucket2 バケットにコピー
+images ディレクトリの中身を dataset-c0542 バケットにコピー
 ```
-[username@es1 ~]$ ls testdata
-10byte_text    10M_test.dat   1byte_bin.dat  1G_test.dat
-[username@es1 ~]$ aws --endpoint-url https://s3.abci.ai s3 cp testdata  s3://user1-bucket2 --recursive
-upload: testdata/1byte_bin.dat to s3://user1-bucket2/1byte_bin.dat
-upload: testdata/readme.txt to s3://user1-bucket2/readme.txt
-upload: testdata/30kB_bin.dat to s3://user1-bucket2/30kB_bin.dat
-[username@es1 ~]$ aws --endpoint-url https://s3.abci.ai s3 ls s3://user1-bucket2/
-2019-06-10 19:03:19          1 1byte_bin.dat
-2019-06-10 19:03:19      30720 30kB_bin.dat
-2019-06-10 19:03:19         86 readme.txt
+[username@es1 ~]$ ls images
+0001.jpg    0002.jpg    0003.jpg    0004.jpg
+[username@es1 ~]$ aws --endpoint-url https://s3.abci.ai s3 cp images s3://dataset-c0542/ --recursive
+upload: images/0001.jpg to s3://dataset-c0542/0001.jpg
+upload: images/0002.jpg to s3://dataset-c0542/0002.jpg
+upload: images/0003.jpg to s3://dataset-c0542/0003.jpg
+upload: images/0004.jpg to s3://dataset-c0542/0004.jpg
+[username@es1 ~]$ aws --endpoint-url https://s3.abci.ai s3 ls s3://dataet-c0542/
+2019-06-10 19:03:19    1048576 0001.jpg
+2019-06-10 19:03:19    1048576 0002.jpg
+2019-06-10 19:03:19    1048576 0003.jpg
+2019-06-10 19:03:19    1048576 0004.jpg
 [username@es1 ~]$
 ```
 
-user1-bucket4 バケットから user1-bucket5 バケットへ logo.png をコピー
+dataset-tmpl-c0000 バケットから dataset-c0541 バケットへ logo.png をコピー
 ```
-[username@es1 ~]$ aws --endpoint-url https://s3.abci.ai s3 cp s3://user1-bucket4/logo.png s3://user1-bucket5/logo.png
-copy: s3://user1-bucket4/logo.png to s3://user1-bucket5/logo.png
+[username@es1 ~]$ aws --endpoint-url https://s3.abci.ai s3 cp s3://dataset-tmpl-c0000/logo.png s3://dataset-c0541/logo.png
+copy: s3://dataset-tmpl-c0000/logo.png to s3://dataset-c0541/logo.png
 ```
 
 
@@ -177,42 +179,42 @@ copy: s3://user1-bucket4/logo.png to s3://user1-bucket5/logo.png
 
 実行例 
 ```
-[username@es1 ~]$ aws --endpoint-url https://s3.abci.ai s3 rm s3://user1-bucket5/1G_test.dat
-delete: s3://user1-bucket5/1G_test.dat
+[username@es1 ~]$ aws --endpoint-url https://s3.abci.ai s3 rm s3://mybucket/readme.txt
+delete: s3://mybucket/readme.txt
 ```
 
 --recursive パラメータを使うことで、指定のプレフィックス以下のオブジェクトを削除できます。
 ```
-[username@es1 ~]$ aws --endpoint-url https://s3.abci.ai s3 ls s3://user1-bucket8 --recursive
-2019-07-30 20:46:53          2 a.txt
-2019-07-30 20:46:53          2 b.txt
-2019-07-31 14:51:50        512 bindata/c.bindata
-2019-07-31 14:51:54        512 bindata/d.bindata
-[username@es1 ~]$ aws --endpoint-url https://s3.abci.ai s3 rm s3://user1-bucket8/bindata --recursive
-delete: s3://test13hama-bkt-5/bindata/d.bindata
-delete: s3://test13hama-bkt-5/bindata/c.bindata
-[username@es1 ~]$ aws --endpoint-url https://s3.abci.ai s3 ls s3://user1-bucket8 --recursive
-2019-07-30 20:46:53          2 a.txt
-2019-07-30 20:46:53          2 b.txt
+[username@es1 ~]$ aws --endpoint-url https://s3.abci.ai s3 ls s3://mybucket --recursive
+2019-07-30 20:46:53         32 a.txt
+2019-07-30 20:46:53         32 b.txt
+2019-07-31 14:51:50        512 xml/c.xml
+2019-07-31 14:51:54        512 xml/d.xml
+[username@es1 ~]$ aws --endpoint-url https://s3.abci.ai s3 rm s3://mybucket/xml --recursive
+delete: s3://mybucket/xml/c.xml
+delete: s3://mybucket/xml/d.xml
+[username@es1 ~]$ aws --endpoint-url https://s3.abci.ai s3 ls s3://mybucket --recursive
+2019-07-30 20:46:53         32 a.txt
+2019-07-30 20:46:53         32 b.txt
 ```
 
 
 ### バケットの削除
 
-user1-bucket12 バケットを削除する例です。
+dataset-c0541 バケットを削除する例です。
 ```
-[username@es1 ~]$ aws --endpoint-url https://s3.abci.ai/ s3 rb s3://user1-bucket12
-remove_bucket: user1-bucket12
+[username@es1 ~]$ aws --endpoint-url https://s3.abci.ai/ s3 rb s3://dataset-c0541
+remove_bucket: dataset-c0541
 ```
 
 空でないバケットを削除しようとするとエラーが返されますが、中身も全部消してしまって良ければ --force をつけると中身を消した上でバケットを削除してくれます。
 ```
-[username@es1 ~]$ aws --endpoint-url https://s3.abci.ai/ rb s3://user1-bucket13 --force
-delete: s3://user1-bucket13/bindata.2
-delete: s3://user1-bucket13/bindata.3
-delete: s3://user1-bucket13/bindata.4
-delete: s3://user1-bucket13/bindata
-remove_bucket: user1-bucket13
+[username@es1 ~]$ aws --endpoint-url https://s3.abci.ai/ rb s3://dataset-c0542 --force
+delete: s3://dataset-c0542/0001.jpg
+delete: s3://dataset-c0542/0002.jpg
+delete: s3://dataset-c0542/0003.jpg
+delete: s3://dataset-c0542/0004.jpg
+remove_bucket: dataset-c0542
 ```
 
 
@@ -231,10 +233,10 @@ remove_bucket: user1-bucket13
 ### 暗号化を有効にしたバケットの作成
 
 サーバーサイド暗号化を有効にしたバケットを作るには、awsコマンドではなく、ABCI環境に用意されている create-encrypted-bucket コマンドを実行します。
-例えば、'user1-bucket2' というバケットを作る場合は以下のように実行します。
+例えば、'dataset-c0543' というバケットを作る場合は以下のように実行します。
 
 ```
-[username@es1 ~]$ create-encrypted-bucket --endpoint-url https://s3.abci.ai s3://user1-bucket2
+[username@es1 ~]$ create-encrypted-bucket --endpoint-url https://s3.abci.ai s3://dataset-c0543
 create-encrypted-bucket Success.
 ```
 
@@ -250,10 +252,10 @@ create-encrypted-bucket Success.
 サーバーサイド暗号化を有効にしたバケットかどうかを判別するには、オブジェクトのメタデータを確認する必要があるため、空のバケットでは確認できません。空の場合は、なにかオブジェクトを1つ作成してください。
 
 `aws s3api head-object` で確認します。
-以下では、user1-bucket9 バケットの rand.bin というオブジェクトのメタデータを確認しています。 `"ServerSideEncryption": "AES256"` という情報が含まれているため、user1-bucket9 は暗号化を有効にしたバケットです。この情報が含まれていない場合は、暗号化を指定されなかったバケットです。
+以下では、dataset-c0543 バケットの cat.jpg というオブジェクトのメタデータを確認しています。 `"ServerSideEncryption": "AES256"` という情報が含まれているため、dataset-c0543 は暗号化を有効にしたバケットです。この情報が含まれていない場合は、暗号化を指定されなかったバケットです。
 
 ```
-[username@es1 ~]$ aws --endpoint-url https://s3.abci.ai/ s3api head-object --bucket user1-bucket9 --key rand.bin
+[username@es1 ~]$ aws --endpoint-url https://s3.abci.ai/ s3api head-object --bucket dataset-c0543 --key cat.jpg
 {
     "LastModified": "Tue, 30 Jul 2019 09:34:18 GMT",
     "ContentLength": 1048576,
