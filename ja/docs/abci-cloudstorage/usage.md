@@ -173,6 +173,32 @@ copy: s3://dataset-tmpl-c0000/logo.png to s3://dataset-c0541/logo.png
 ```
 
 
+### データの移動
+
+オブジェクトを移動するには aws mv を使用します。
+バケット間の移動の他、ローカルからバケット、バケットからローカルへ移動を行えます。
+タイムスタンプは保持されません。
+--recursive オプションの付与で特定のプレフィックスを持つオブジェクト、
+または特定のディレクトリに入っているファイルを対象として扱えます。
+
+次の例では、カレントディレクトリにある annotations.zip をクラウドストレージ上の dataset-c0541 バケットに移動を行っています。
+
+```
+[username@es1 ~]$ aws --endpoint-url https://s3.abci.ai s3 mv annotations.zip s3://dataset-c0541/
+move: ./annotations.zip to s3://dataset-c0541/annotations.zip
+```
+
+次の例は、dataset-c0541 バケットの sensor-1 プレフィックスをもつオブジェクトをまとめて dataset-c0542 バケットに移動させています。
+
+```
+[username@es1 ~]$ aws --endpoint-url https://s3.abci.ai/ s3 mv s3://dataset-c0541/sensor-1/ s3://dataset-c0542/sensor-1/ --recursive
+move: s3://dataset-c0541/sensor-1/0001.dat to s3://dataset-c0542/sensor-1/0001.dat
+move: s3://dataset-c0541/sensor-1/0003.dat to s3://dataset-c0542/sensor-1/0003.dat
+move: s3://dataset-c0541/sensor-1/0004.dat to s3://dataset-c0542/sensor-1/0004.dat
+move: s3://dataset-c0541/sensor-1/0002.dat to s3://dataset-c0542/sensor-1/0002.dat
+```
+
+
 ### オブジェクトの削除
 
 オブジェクトの削除は `aws s3 rm <S3Uri> [parameters]` で行います。
