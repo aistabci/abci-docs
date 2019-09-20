@@ -265,6 +265,151 @@ create-encrypted-bucket Success.
 }
 ```
 
+## インターネットへの公開
+
+ABCIクラウドストレージは、ACL を設定することでバケットやオブジェクトをインターネットに公開することが可能です。
+インターネットに公開する既定ACL は２つが用意されており、バケットやオブジェクトに適用すると以下表の通り公開されます。
+
+| 既定ACL| バケット| オブジェクト|
+| :--| :--| :--|
+| public-read| 指定したバケット配下のオブジェクト一覧が公開されます。| 指定したオブジェクトが公開されます。オブジェクトの変更はクラウドストレージ領域内の適切なポリシーを有したクラウドストレージアカウントのみが可能です。|
+| public-read-write| インターネット上の全てのユーザが、指定したバケット配下の読み書きおよび ACL の変更が可能になります。| インターネット上の全てのユーザがACLを適用したオブジェクトの読み書きおよび ACL の変更が可能になります|
+
+!!! caution
+    public-read-write はセキュリティの観点から利用を推奨しません。リスクをご検討のうえご利用ください。
+
+また、デフォルトの既定 ACLは private が設定されています。公開を停止する場合は、private を設定してください。
+
+### バケットの公開 (public-read)
+
+既定ACL public-read をバケットに適用することで、そのバケット配下のオブジェクトの一覧が公開されます。ここでは、以下のバケットを公開する例で説明します。
+
+| 適用ACL| 公開バケット|
+| :--| :--|
+| public-read| test-pub|
+
+バケット公開 (public-read) のACL設定は put-bucket-acl で設定します。設定の確認は、get-bucket-acl でおこないます。この場合は、public を示すURI "http://acs.amazonaws.com/groups/global/AllUsers" の Permission に READ が付与された Grantee が追加されます。
+
+```
+[username@es1 ~]$ aws --endpoint-url https://s3.abci.ai/ s3api put-bucket-acl --acl public-read --bucket test-pub
+[username@es1 ~]$ aws --endpoint-url https://s3.abci.ai/ s3api get-bucket-acl --bucket test-pub
+{
+    "Owner": {
+        "DisplayName": "gxx00000",
+        "ID": "f12d0fa66ea4df5418c0c6234fd5eb3a9f4409bf50b5a58983a30be8f9a42bda"
+    },
+    "Grants": [
+        {
+            "Grantee": {
+                "DisplayName": "gxx00000",
+                "ID": "f12d0fa66ea4df5418c0c6234fd5eb3a9f4409bf50b5a58983a30be8f9a42bda",
+                "Type": "CanonicalUser"
+            },
+            "Permission": "FULL_CONTROL"
+        },
+        {
+            "Grantee": {
+                "Type": "Group",
+                "URI": "http://acs.amazonaws.com/groups/global/AllUsers"
+            },
+            "Permission": "READ"
+        }
+    ]
+}
+```
+
+確認はインターネットブラウザで https://s3.abci.ai/test-pub (https://test-pub.s3.abci.ai) にアクセスすることで可能です。Firefoxの場合は、オブジェクトのリストを含むXMLが表示されます。
+
+公開を停止し、初期値に戻す手順は以下のとおりです。
+追加された Grantee がなくなり、ABCIグループ名がの Permission が "FULL_CONTROL" になっていることを確認して下さい。
+
+```
+[username@es1 ~]$ aws --endpoint-url https://s3.abci.ai/ s3api put-bucket-acl --acl private --bucket test-pub
+[username@es1 ~]$ aws --endpoint-url https://s3.abci.ai/ s3api get-bucket-acl --bucket test-pub
+{
+    "Owner": {
+        "DisplayName": "gxx00000",
+        "ID": "f12d0fa66ea4df5418c0c6234fd5eb3a9f4409bf50b5a58983a30be8f9a42bda"
+    },
+    "Grants": [
+        {
+            "Grantee": {
+                "DisplayName": "gxx00000",
+                "ID": "f12d0fa66ea4df5418c0c6234fd5eb3a9f4409bf50b5a58983a30be8f9a42bda",
+                "Type": "CanonicalUser"
+            },
+            "Permission": "FULL_CONTROL"
+        }
+    ]
+}
+```
+
+
+
+### オブジェクトの公開 (public-read)
+
+既定ACL public-read をオブジェクトに適用することで、そのオブジェクトを公開することができます。ここでは、以下のオブジェクトを公開する例で説明します。
+
+| 適用ACL| バケット| prefix| 公開オブジェクト|
+| :--| :--| :--| :--|
+| public-read| test-pub2|testdir/|message-pub|
+
+オブジェクト公開 (public-read) のACL設定は put-object-acl で設定します。また、get-object-acl で設定状況を確認できます。この場合は、public を示すURI "http://acs.amazonaws.com/groups/global/AllUsers" の Permission に READ が付与された Grantee が追加されます。
+
+```
+[username@es1 ~]$ aws --endpoint-url https://s3.abci.ai/ s3api put-object-acl --bucket test-pub2 --acl public-read --key testdir/message-pub
+[username@es1 ~]$ aws --endpoint-url https://s3.abci.ai/ s3api get-object-acl--bucket test-pub2 --key testdir/message-pub
+{
+    "Owner": {
+        "DisplayName": "gxx00000",
+        "ID": "f12d0fa66ea4df5418c0c6234fd5eb3a9f4409bf50b5a58983a30be8f9a42bda" 
+    },
+    "Grants": [
+        {
+            "Grantee": {
+                "DisplayName": "gxx00000",
+                "ID": "f12d0fa66ea4df5418c0c6234fd5eb3a9f4409bf50b5a58983a30be8f9a42bda",
+                "Type": "CanonicalUser" 
+            },
+            "Permission": "FULL_CONTROL" 
+        },
+        {
+            "Grantee": {
+                "Type": "Group",
+                "URI": "http://acs.amazonaws.com/groups/global/AllUsers" 
+            },
+            "Permission": "READ" 
+        }
+    ]
+}
+```
+
+確認はインターネットブラウザで https://s3.abci.ai/test-pub2/testdir/message-pub (https://test-pub2.test-pub.s3.abci.ai/testdir/message-pub) にアクセスすることで可能です。Firefoxの場合は、オブジェクトのデータが表示されます。
+
+公開を停止し、初期値に戻す手順は以下のとおりです。
+追加された Grantee がなくなり、ABCIグループ名がの Permission が "FULL_CONTROL" になっていることを確認して下さい。
+
+```
+(v_s3cmd_test) [axa01001hf@es4 ~]$ aws --profile acct-gxx00000 --endpoint-url http://s3.abci.local s3api put-object-acl --acl private --bucket  gxx00000-pub -
+-key testdir/testmessage
+(v_s3cmd_test) [axa01001hf@es4 ~]$ aws --profile acct-gxx00000 --endpoint-url http://s3.abci.local s3api get-object-acl --bucket  gxx00000-pub --key testdir/testmessage
+{
+    "Owner": {
+        "DisplayName": "gxx00000",
+        "ID": "f12d0fa66ea4df5418c0c6234fd5eb3a9f4409bf50b5a58983a30be8f9a42bda"
+    },
+    "Grants": [
+        {
+            "Grantee": {
+                "DisplayName": "gxx00000",
+                "ID": "f12d0fa66ea4df5418c0c6234fd5eb3a9f4409bf50b5a58983a30be8f9a42bda",
+                "Type": "CanonicalUser"
+            },
+            "Permission": "FULL_CONTROL"
+        }
+    ]
+}
+```
 
 <!-- CSE?  -->
 
