@@ -96,11 +96,11 @@ make_bucket: dataset-summer-2012
 
 ### バケットの一覧表示
 
-所属するABCIグループ内で作成されたバケットの一覧をリストするには、 `aws --endpoint-url https://s3.abci.ai/ s3 ls` を実行します。
+所属するABCIグループ内で作成されたバケットの一覧をリストするには、 `aws --endpoint-url https://s3.abci.ai s3 ls` を実行します。
 
 実行例
 ```
-[username@es1 ~]$ aws --endpoint-url https://s3.abci.ai/ s3 ls
+[username@es1 ~]$ aws --endpoint-url https://s3.abci.ai s3 ls
 2019-06-15 10:47:37 testbucket1
 2019-06-15 18:10:37 testbucket2
 ```
@@ -108,10 +108,10 @@ make_bucket: dataset-summer-2012
 
 ### オブジェクトのリスト
 
-バケット入っているオブジェクトをリストするには、 `aws --endpoint-url https://s3.abci.ai/ s3 ls s3://bucket-name` を実行します。
+バケット入っているオブジェクトをリストするには、 `aws --endpoint-url https://s3.abci.ai s3 ls s3://bucket-name` を実行します。
 
 ```
-[username@es1 ~]$ aws --endpoint-url https://s3.abci.ai/ s3 ls s3://mybucket
+[username@es1 ~]$ aws --endpoint-url https://s3.abci.ai s3 ls s3://mybucket
                            PRE pics/
 2019-07-05 17:33:05          4 test1.txt
 2019-07-05 21:12:47          4 test2.txt
@@ -120,7 +120,7 @@ make_bucket: dataset-summer-2012
 例えば pics/ というプレフィックスを持つデータをリストするには、バケット名の後ろにプレフィックスをつけます。
 
 ```
-[username@es1 ~]$ aws --endpoint-url https://s3.abci.ai/ s3 ls s3://mybucket/pics/
+[username@es1 ~]$ aws --endpoint-url https://s3.abci.ai s3 ls s3://mybucket/pics/
 2019-07-29 21:55:57    1048576 test3.png
 2019-07-29 21:55:59    1048576 test4.png
 ```
@@ -128,7 +128,7 @@ make_bucket: dataset-summer-2012
 `--recursive` オプションを使い、バケット内の全オブジェクトをリストすることもできます。
 
 ```
-[username@es1 ~]$ aws --endpoint-url https://s3.abci.ai/ s3 ls s3://mybucket --recursive
+[username@es1 ~]$ aws --endpoint-url https://s3.abci.ai s3 ls s3://mybucket --recursive
 2019-07-05 17:33:05          4 test1.txt
 2019-07-05 21:12:47          4 test2.txt
 2019-07-29 21:55:57    1048576 pics/test3.png
@@ -191,7 +191,7 @@ move: ./annotations.zip to s3://dataset-c0541/annotations.zip
 次の例は、dataset-c0541 バケットの sensor-1 プレフィックスをもつオブジェクトをまとめて dataset-c0542 バケットに移動させています。
 
 ```
-[username@es1 ~]$ aws --endpoint-url https://s3.abci.ai/ s3 mv s3://dataset-c0541/sensor-1/ s3://dataset-c0542/sensor-1/ --recursive
+[username@es1 ~]$ aws --endpoint-url https://s3.abci.ai s3 mv s3://dataset-c0541/sensor-1/ s3://dataset-c0542/sensor-1/ --recursive
 move: s3://dataset-c0541/sensor-1/0001.dat to s3://dataset-c0542/sensor-1/0001.dat
 move: s3://dataset-c0541/sensor-1/0003.dat to s3://dataset-c0542/sensor-1/0003.dat
 move: s3://dataset-c0541/sensor-1/0004.dat to s3://dataset-c0542/sensor-1/0004.dat
@@ -203,7 +203,7 @@ move: s3://dataset-c0541/sensor-1/0002.dat to s3://dataset-c0542/sensor-1/0002.d
 
 以下の例では、カレントディレクトリにある sensor2 というディレクトリと mybucket というバケットを同期させています。--delete オプションをつけていなければバケットにあった既存のオブジェクトは削除されませんが、同名のものは上書きされます。次に同じコマンドラインを実行すると、更新されたファイルのみ送ります。
 ```
-[username@es1 ~]$ aws --endpoint-url https://s3.abci.ai/ s3 sync ./sensor2 s3://mybucket/
+[username@es1 ~]$ aws --endpoint-url https://s3.abci.ai s3 sync ./sensor2 s3://mybucket/
 upload: sensor2/0002.dat to s3://mybucket/0002.dat
 upload: sensor2/0004.dat to s3://mybucket/0004.dat
 upload: sensor2/0001.dat to s3://mybucket/0001.dat
@@ -212,7 +212,7 @@ upload: sensor2/0003.dat to s3://mybucket/0003.dat
 
 sensor3 バケットの rev1 プレフィックスをもつオブジェクトを testdata ディレクトリに同期する例です。
 ```
-[username@es1 ~]$ aws --endpoint-url https://s3.abci.ai/ s3 sync s3://sensor3/rev1/ testdata
+[username@es1 ~]$ aws --endpoint-url https://s3.abci.ai s3 sync s3://sensor3/rev1/ testdata
 download: s3://sensor3/rev1/0001.zip to testdata/0001.zip
 download: s3://sensor3/rev1/0004.zip to testdata/0004.zip
 download: s3://sensor3/rev1/0003.zip to testdata/0003.zip
@@ -253,13 +253,13 @@ delete: s3://mybucket/xml/d.xml
 
 dataset-c0541 バケットを削除する例です。
 ```
-[username@es1 ~]$ aws --endpoint-url https://s3.abci.ai/ s3 rb s3://dataset-c0541
+[username@es1 ~]$ aws --endpoint-url https://s3.abci.ai s3 rb s3://dataset-c0541
 remove_bucket: dataset-c0541
 ```
 
 空でないバケットを削除しようとするとエラーが返されますが、中身も全部消してしまって良ければ --force をつけると中身を消した上でバケットを削除してくれます。
 ```
-[username@es1 ~]$ aws --endpoint-url https://s3.abci.ai/ rb s3://dataset-c0542 --force
+[username@es1 ~]$ aws --endpoint-url https://s3.abci.ai rb s3://dataset-c0542 --force
 delete: s3://dataset-c0542/0001.jpg
 delete: s3://dataset-c0542/0002.jpg
 delete: s3://dataset-c0542/0003.jpg
@@ -305,7 +305,7 @@ create-encrypted-bucket Success.
 以下では、dataset-c0543 バケットの cat.jpg というオブジェクトのメタデータを確認しています。 `"ServerSideEncryption": "AES256"` という情報が含まれているため、dataset-c0543 は暗号化を有効にしたバケットです。この情報が含まれていない場合は、暗号化を指定されなかったバケットです。
 
 ```
-[username@es1 ~]$ aws --endpoint-url https://s3.abci.ai/ s3api head-object --bucket dataset-c0543 --key cat.jpg
+[username@es1 ~]$ aws --endpoint-url https://s3.abci.ai s3api head-object --bucket dataset-c0543 --key cat.jpg
 {
     "LastModified": "Tue, 30 Jul 2019 09:34:18 GMT",
     "ContentLength": 1048576,
@@ -341,8 +341,8 @@ ABCIクラウドストレージは、ACL を設定することでバケットや
 バケット公開 (public-read) のACL設定は put-bucket-acl で設定します。設定の確認は、get-bucket-acl でおこないます。この場合は、public を示すURI "http://acs.amazonaws.com/groups/global/AllUsers" の Permission に READ が付与された Grantee が追加されます。
 
 ```
-[username@es1 ~]$ aws --endpoint-url https://s3.abci.ai/ s3api put-bucket-acl --acl public-read --bucket test-pub
-[username@es1 ~]$ aws --endpoint-url https://s3.abci.ai/ s3api get-bucket-acl --bucket test-pub
+[username@es1 ~]$ aws --endpoint-url https://s3.abci.ai s3api put-bucket-acl --acl public-read --bucket test-pub
+[username@es1 ~]$ aws --endpoint-url https://s3.abci.ai s3api get-bucket-acl --bucket test-pub
 {
     "Owner": {
         "DisplayName": "gxx00000",
@@ -374,8 +374,8 @@ ABCIクラウドストレージは、ACL を設定することでバケットや
 追加された Grantee がなくなり、ABCIグループ名がの Permission が "FULL_CONTROL" になっていることを確認して下さい。
 
 ```
-[username@es1 ~]$ aws --endpoint-url https://s3.abci.ai/ s3api put-bucket-acl --acl private --bucket test-pub
-[username@es1 ~]$ aws --endpoint-url https://s3.abci.ai/ s3api get-bucket-acl --bucket test-pub
+[username@es1 ~]$ aws --endpoint-url https://s3.abci.ai s3api put-bucket-acl --acl private --bucket test-pub
+[username@es1 ~]$ aws --endpoint-url https://s3.abci.ai s3api get-bucket-acl --bucket test-pub
 {
     "Owner": {
         "DisplayName": "gxx00000",
@@ -407,8 +407,8 @@ ABCIクラウドストレージは、ACL を設定することでバケットや
 オブジェクト公開 (public-read) のACL設定は put-object-acl で設定します。また、get-object-acl で設定状況を確認できます。この場合は、public を示すURI "http://acs.amazonaws.com/groups/global/AllUsers" の Permission に READ が付与された Grantee が追加されます。
 
 ```
-[username@es1 ~]$ aws --endpoint-url https://s3.abci.ai/ s3api put-object-acl --bucket test-pub2 --acl public-read --key testdir/message-pub
-[username@es1 ~]$ aws --endpoint-url https://s3.abci.ai/ s3api get-object-acl--bucket test-pub2 --key testdir/message-pub
+[username@es1 ~]$ aws --endpoint-url https://s3.abci.ai s3api put-object-acl --bucket test-pub2 --acl public-read --key testdir/message-pub
+[username@es1 ~]$ aws --endpoint-url https://s3.abci.ai s3api get-object-acl--bucket test-pub2 --key testdir/message-pub
 {
     "Owner": {
         "DisplayName": "gxx00000",

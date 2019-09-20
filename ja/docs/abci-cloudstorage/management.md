@@ -153,7 +153,7 @@ ABCIクラウドストレージでは、バケットにポリシーを設定す�
 [username@es1 ~]$ aws --endpoint-url http://s3.abci.ai:8600 iam attach-user-policy --policy-arn arn:aws:iam::123456789012:policy/src-ip-pc --user-name aaa00004.1
 ```
 
-デフォルトでは制限がかかっていないため、このポリシーを適用していないアカウントは接続元の制限なくアクセスできる状態です。グループ内のクラウドストレージアカウントをリストするには、`aws --endpoint-url http://s3.abci.ai:8600/ iam list-users` を実行します。
+デフォルトでは制限がかかっていないため、このポリシーを適用していないアカウントは接続元の制限なくアクセスできる状態です。グループ内のクラウドストレージアカウントをリストするには、`aws --endpoint-url http://s3.abci.ai:8600 iam list-users` を実行します。
 
 
 <!--  例X サブグループ + 特定のプレフィックス配下のみ  -->
