@@ -199,6 +199,30 @@ move: s3://dataset-c0541/sensor-1/0002.dat to s3://dataset-c0542/sensor-1/0002.d
 ```
 
 
+### ローカルディレクトリとクラウドストレージの同期
+
+以下の例では、カレントディレクトリにある sensor2 というディレクトリと mybucket というバケットを同期させています。--delete オプションをつけていなければバケットにあった既存のオブジェクトは削除されませんが、同名のものは上書きされます。次に同じコマンドラインを実行すると、更新されたファイルのみ送ります。
+```
+[username@es1 ~]$ aws --endpoint-url https://s3.abci.ai/ s3 sync ./sensor2 s3://mybucket/
+upload: sensor2/0002.dat to s3://mybucket/0002.dat
+upload: sensor2/0004.dat to s3://mybucket/0004.dat
+upload: sensor2/0001.dat to s3://mybucket/0001.dat
+upload: sensor2/0003.dat to s3://mybucket/0003.dat
+```
+
+sensor3 バケットの rev1 プレフィックスをもつオブジェクトを testdata ディレクトリに同期する例です。
+```
+[username@es1 ~]$ aws --endpoint-url https://s3.abci.ai/ s3 sync s3://sensor3/rev1/ testdata
+download: s3://sensor3/rev1/0001.zip to testdata/0001.zip
+download: s3://sensor3/rev1/0004.zip to testdata/0004.zip
+download: s3://sensor3/rev1/0003.zip to testdata/0003.zip
+download: s3://sensor3/rev1/0002.zip to testdata/0002.zip
+```
+
+!!! note
+    次回にこのコマンドラインを実行した際、バケットに入っているデータが更新されていても、サイズが全く同じ場合は再取得の対象となりません。その場合、--exact-timestamps オプションをつけることで対象とすることができますが、ABCI環境の場合はこのオプションを指定すると、すべてのオブジェクトが再取得の対象となります。
+
+
 ### オブジェクトの削除
 
 オブジェクトの削除は `aws s3 rm <S3Uri> [parameters]` で行います。
