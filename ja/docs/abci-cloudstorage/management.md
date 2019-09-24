@@ -19,7 +19,7 @@ ABCIクラウドストレージでは、バケットにポリシーを設定す�
 
 これからいくつかの例を用いて説明していきますが、以下はどの例でも共通する注意点です。
 
-- エンドポイントは `http://s3.abci.ai:8600` です。s3 のオブジェクトをダウンロードする時などとは異なります
+- エンドポイントは `https://s3.abci.ai` です
 - 順番に関係なく、DenyルールがAllowルールよりも優先されます。同一ポリシー内でなくとも、別のポリシーにDenyルールがあればそれが優先されます
 - ポリシーの名前(--policy-nameに指定する名前)は、大文字を使ってもエラーにはなりませんが、問題になるケースがありますので、小文字英字と数字、およびハイフン(0x2d)で構成してください
 
@@ -54,7 +54,7 @@ Denyルールが優先されるため、他のポリシーで aaa00002.1 と aaa
 この定義をクラウドストレージに登録します。
 
 ```
-[username@es1 ~]$ aws --endpoint-url http://s3.abci.ai:8600 iam create-policy --policy-name sensor8policy --policy-document file://sensor8.json
+[username@es1 ~]$ aws --endpoint-url https://s3.abci.ai iam create-policy --policy-name sensor8policy --policy-document file://sensor8.json
 {
     "Policy": {
         "PolicyName": "sensor8policy",
@@ -75,21 +75,21 @@ Arn の 値は、クラウドストレージアカウントへの適用時に必
 
 ABCIクラウドストレージでは、バケットにポリシーを設定することができないため、
 このポリシーを制限したいクラウドストレージアカウントに適用します。
-`--policy-arn`に指定するポリシーのARNは、ポリシーを登録した時に出力されていますが、 `aws --endpoint-url http://s3.abci.ai:8600 iam list-policies` を実行して確認することもできます。
+`--policy-arn`に指定するポリシーのARNは、ポリシーを登録した時に出力されていますが、 `aws --endpoint-url https://s3.abci.ai iam list-policies` を実行して確認することもできます。
 
 登録したポリシーは以下のようにして aaa00002.1 と aaa00003.1 に適用します。
 
 ```
-[username@es1 ~]$ aws --endpoint-url http://s3.abci.ai:8600 iam attach-user-policy --policy-arn arn:aws:iam::123456789012:policy/sensor8policy --user-name aaa00002.1
+[username@es1 ~]$ aws --endpoint-url https://s3.abci.ai iam attach-user-policy --policy-arn arn:aws:iam::123456789012:policy/sensor8policy --user-name aaa00002.1
 ```
 
 ```
-[username@es1 ~]$ aws --endpoint-url http://s3.abci.ai:8600 iam attach-user-policy --policy-arn arn:aws:iam::123456789012:policy/sensor8policy --user-name aaa00003.1
+[username@es1 ~]$ aws --endpoint-url https://s3.abci.ai iam attach-user-policy --policy-arn arn:aws:iam::123456789012:policy/sensor8policy --user-name aaa00003.1
 ```
 
 これで aaa00002.1 と aaa00003.1 は、sensor8 バケットにアクセスできなくなりました。aaa00000.1 と aaa00001.1 は、これまで通りアクセスできます。
 
-クラウドストレージアカウントに適用されたポリシーを確認する場合は、`aws --endpoint-url http://s3.abci.ai:8600 iam list-attached-user-policies --user-name aaa00002.1`のようにして確認が可能です。
+クラウドストレージアカウントに適用されたポリシーを確認する場合は、`aws --endpoint-url https://s3.abci.ai iam list-attached-user-policies --user-name aaa00002.1`のようにして確認が可能です。
 
 
 ### 例2 バケットにアクセスできるホストを限定する
@@ -124,7 +124,7 @@ ABCIクラウドストレージでは、バケットにポリシーを設定す�
 
 
 ```
-[username@es1 ~]$ aws --endpoint-url http://s3.abci.ai:8600 iam create-policy --policy-name src-ip-pc --policy-document file://src-ip-pc.json
+[username@es1 ~]$ aws --endpoint-url https://s3.abci.ai iam create-policy --policy-name src-ip-pc --policy-document file://src-ip-pc.json
 {
     "Policy": {
         "PolicyName": "src-ip-pc",
@@ -140,13 +140,13 @@ ABCIクラウドストレージでは、バケットにポリシーを設定す�
 }
 ```
 
-これを、グループ内のクラウドストレージアカウントに適用していきます。以下の例ではクラウドストレージアカウント aaa00004.1 にポリシーを適用しています。ポリシーのARNは、ポリシーを登録した時に出力されています(aws --endpoint-url http://s3.abci.ai:8600 iam list-policies を実行して確認することもできます)。
+これを、グループ内のクラウドストレージアカウントに適用していきます。以下の例ではクラウドストレージアカウント aaa00004.1 にポリシーを適用しています。ポリシーのARNは、ポリシーを登録した時に出力されています(aws --endpoint-url https://s3.abci.ai iam list-policies を実行して確認することもできます)。
 
 ```
-[username@es1 ~]$ aws --endpoint-url http://s3.abci.ai:8600 iam attach-user-policy --policy-arn arn:aws:iam::123456789012:policy/src-ip-pc --user-name aaa00004.1
+[username@es1 ~]$ aws --endpoint-url https://s3.abci.ai iam attach-user-policy --policy-arn arn:aws:iam::123456789012:policy/src-ip-pc --user-name aaa00004.1
 ```
 
-デフォルトでは制限がかかっていないため、このポリシーを適用していないアカウントは接続元の制限なくアクセスできる状態です。グループ内のクラウドストレージアカウントをリストするには、`aws --endpoint-url http://s3.abci.ai:8600 iam list-users` を実行します。
+デフォルトでは制限がかかっていないため、このポリシーを適用していないアカウントは接続元の制限なくアクセスできる状態です。グループ内のクラウドストレージアカウントをリストするには、`aws --endpoint-url https://s3.abci.ai iam list-users` を実行します。
 
 
 <!--  例X サブグループ + 特定のプレフィックス配下のみ  -->
