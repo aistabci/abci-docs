@@ -8,6 +8,7 @@
 | Add | cuDNN | 7.6.3 | |
 | Add | NCCL | 2.4.8-1 | |
 | Add | MVAPICH2-GDR | 2.3.2 | |
+| Add | MVAPICH2 | 2.3.2 | |
 | Add | fuse-sshfs | 2.10 | |
 
 その他の修正点は下記の通りです:
