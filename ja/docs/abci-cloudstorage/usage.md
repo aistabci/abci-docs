@@ -315,7 +315,103 @@ create-encrypted-bucket Success.
 }
 ```
 
-## インターネットへの公開
+
+## アクセスコントロールリスト（ACL）の利用
+
+ABCIクラウドストレージでは、アクセスコントロールリスト(ACL)を使用してバケットやオブジェクトへのアクセス制御ができます。ACLを使用すれば、他のABCIグループやインターネットへのデータ公開が可能です。ここでは、ACLの利用方法について説明します。
+
+### ACLの概要
+
+ACLでのアクセス制御の設定は、対象となるバケットやオブジェクトに、アクセス元と許可する操作の組み合わせを付与します。指定できるアクセス元と許可する操作は、以下表のように予めシステムで用意されています。
+
+アクセス元の一覧
+
+| アクセス元| 説明|
+| :--| :--|
+| ABCIグループ| 他のABCIグループからのアクセスを対象とします。対象としたABCIグループに所属する全クラウドストレージアカウントが対象になります。|
+| ABCIクラウドストレージ全体| クラウドストレージアカウントをもつ全ての利用者からのアクセスを対象にします。| 
+| public 公開| インターネットなど不特定多数からのアクセスを許可します。|
+
+許可する操作は、バケットとオブジェクトで異なります。
+許可する操作の一覧：バケット
+
+| 許可する操作| 説明|
+| :--| :--|
+| read| 指定したバケット配下にあるオブジェクトの一覧の取得を許可します。|
+| write| 指定したバケット配下で、オブジェクトの作成、消去、変更が可能です。|
+
+許可する操作の一覧：オブジェクト
+
+| 許可する操作| 説明|
+| :--| :--|
+| read| オブジェクトデータの読み込みを許可します。|
+| read-write| オブジェクトの変更、削除が可能です。| 
+
+また、インターネットへの公開のようなアクセス元と操作の組み合わせが定型的なACLは、既定ACLが用意されています。既定ACLについては、後の「インターネットへの公開」の章を参照してください。
+
+### オブジェクト共有(ABCIグループ間)
+
+ここでは、異なるABCIグループ間でオブジェクトを共有する方法について紹介します。
+ABCIグループ aaa00000 の以下オブジェクトを読み込みのみの権限で共有します。
+
+| バケット名| prefix| オブジェクト名|
+| :--| :--| :--|
+| test-share| testdir| testmessage|
+
+まず、アクセス元(aaa11111)となるABCIグループの正規IDを入手します。正規IDは、公開する相手に s3 list-bucket コマンド実行結果の"Owner"->"ID"から取得できます。
+
+aaa11111 で実行
+
+```
+$ aws s3api list-buckets
+{
+    "Buckets": [
+        {
+            "Name": "somebucket",
+            "CreationDate": "2019-08-22T11:36:17.523Z"
+        }
+    ],
+    "Owner": {
+        "DisplayName": "aaa11111",
+正規ID->"ID": "1a2bc03fa4ee5ba678b90cc1a234f5f67f890f1f2341fa56a78901234cc5fad6"
+    }
+}
+```
+
+上記オブジェクトにACLを設定します。読み込みを許可する例です。
+
+```
+[username@es1 ~]$aws s3api put-object-acl --grant-read id=1a2bc03fa4ee5ba678b90cc1a234f5f67f890f1f2341fa56a78901234cc5fad6 --bucket test-share --key testdir/testmessage
+```
+
+設定の結果を確認します。デフォルトでは、Grantsの要素に、aaa11111 の要素が Permission "READ" で追加されています。
+```
+[username@es1 ~]$ aws s3api get-object-acl --bucket test-share --key testdir/testmessage
+{
+    "Owner": {
+        "DisplayName": "acct-gxx00000",
+        "ID": "f12d0fa66ea4df5418c0c6234fd5eb3a9f4409bf50b5a58983a30be8f9a42bda"
+    },
+    "Grants": [
+        {
+            "Grantee": {
+                "DisplayName": "aaa11111@abci.local",
+                "ID": "1a2bc03fa4ee5ba678b90cc1a234f5f67f890f1f2341fa56a78901234cc5fad6",
+                "Type": "CanonicalUser"
+            },
+            "Permission": "READ"
+        }
+    ]
+}
+```
+
+設定を戻すときは、以下のように ACL を private に設定すれば、初期値が設定されます。
+```
+[username@es1 ~]$ aws s3api put-object-acl --acl private --bucket test-share --key testdir/testmessage
+```
+
+
+### インターネットへの公開
 
 ABCIクラウドストレージは、ACL を設定することでバケットやオブジェクトをインターネットに公開することが可能です。
 インターネットに公開する既定ACL は２つが用意されており、バケットやオブジェクトに適用すると以下表の通り公開されます。
@@ -330,7 +426,7 @@ ABCIクラウドストレージは、ACL を設定することでバケットや
 
 また、デフォルトの既定 ACLは private が設定されています。公開を停止する場合は、private を設定してください。
 
-### バケットの公開 (public-read)
+#### バケットの公開 (public-read)
 
 既定ACL public-read をバケットに適用することで、そのバケット配下のオブジェクトの一覧が公開されます。ここでは、以下のバケットを公開する例で説明します。
 
@@ -396,7 +492,7 @@ ABCIクラウドストレージは、ACL を設定することでバケットや
 
 
 
-### オブジェクトの公開 (public-read)
+#### オブジェクトの公開 (public-read)
 
 既定ACL public-read をオブジェクトに適用することで、そのオブジェクトを公開することができます。ここでは、以下のオブジェクトを公開する例で説明します。
 
@@ -440,9 +536,8 @@ ABCIクラウドストレージは、ACL を設定することでバケットや
 追加された Grantee がなくなり、ABCIグループ名がの Permission が "FULL_CONTROL" になっていることを確認して下さい。
 
 ```
-(v_s3cmd_test) [axa01001hf@es4 ~]$ aws --profile acct-gxx00000 --endpoint-url http://s3.abci.local s3api put-object-acl --acl private --bucket  gxx00000-pub -
--key testdir/testmessage
-(v_s3cmd_test) [axa01001hf@es4 ~]$ aws --profile acct-gxx00000 --endpoint-url http://s3.abci.local s3api get-object-acl --bucket  gxx00000-pub --key testdir/testmessage
+[username@es1 ~]$ aws --endpoint-url http://s3.abci.local s3api put-object-acl --acl private --bucket  test-pub2 --key testdir/testmessage
+[username@es1 ~]$ aws --endpoint-url http://s3.abci.local s3api get-object-acl --bucket test-pub2 --key testdir/testmessage
 {
     "Owner": {
         "DisplayName": "gxx00000",
