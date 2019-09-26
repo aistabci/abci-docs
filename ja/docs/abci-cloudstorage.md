@@ -31,7 +31,7 @@ ABCIクラウドストレージでは、使用量(データ占有量)に応じ�
 | [使い方](abci-cloudstorage/usage.md) | アップロードやダウンロードなどの基本操作について説明しています |
 | [ACL](abci-cloudstorage/acl.md) | バケットやオブジェクトに設定できるACLについて説明しています |
 | [暗号化バケット](abci-cloudstorage/encrypted-bucket.md) | 暗号化バケットについて説明しています |
-| [利用管理者用アカウント](abci-cloudstorage/management.md) | 利用責任者または利用管理者に発行されるアカウントについて説明しています |
+| [利用管理者権限](abci-cloudstorage/management.md) | ABCIクラウドストレージにおける利用管理者権限について説明しています。従って、利用責任者または利用管理者向けのページです |
 | [ポリシー設定](abci-cloudstorage/policy.md) | アカウントに設定できるポリシーについて説明しています。利用責任者または利用管理者向けです |
 
 各ページで用いられている用語については、下記をご参照ください。
