@@ -5,7 +5,7 @@
 | Add / Update / Delete | Software | Version | Previous version |
 |:--|:--|:--|:--|
 | Add | CUDA | 10.1.243 | |
-| Add | cuDNN | 7.6.3 | |
+| Add | cuDNN | 7.6.3, 7.6.4 | |
 | Add | NCCL | 2.4.8-1 | |
 | Add | MVAPICH2-GDR | 2.3.2 | |
 | Add | MVAPICH2 | 2.3.2 | |
