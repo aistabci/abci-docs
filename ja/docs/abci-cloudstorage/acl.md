@@ -43,57 +43,55 @@ ACLでのアクセス制御の設定は、対象となるバケットやオブ�
 
 ### オブジェクト共有(ABCIグループ間)
 
-ここでは、異なるABCIグループ間でオブジェクトを共有する方法について紹介します。
-共有元として、ABCIグループ aaa00000 のオブジェクトを、ABCIグループ aaa11111 に読み込みを許可します。
+ABCIグループ間でオブジェクトを共有する方法について説明します。
+例として、ABCIグループ gaa00000 の testdata というオブジェクトを、ABCIグループ gaa11111 が読みとれるよう許可設定を行っていきます。
 
 | 共有元ABCI グループ| 共有先ABCI グループ|
 | :--| :--|
-| aaa00000| aaa11111|
+| gaa00000| gaa11111|
 
-共有元オブジェクトの詳細
+共有するオブジェクトの詳細
 
 | バケット名| prefix| オブジェクト名|
 | :--| :--| :--|
-| test-share| testdir| testmessage|
+| test-share| test/| testdata|
 
-まず、アクセス元(aaa11111)となるABCIグループの正規IDを入手します。正規IDは、公開する相手に s3 list-bucket コマンド実行結果の"Owner"->"ID"から取得できます。
-
-aaa11111 で実行
+まず、共有先ABCIグループに 正規ID の確認を依頼してください。gaa11111 に属しているクラウドストレージアカウントで s3 list-bucket を実行し、出力にある "Owner"->"ID" の値で確認します。
 
 ```
-$ aws s3api list-buckets
+$ aws --endpoint-url https://s3.abci.ai s3api list-buckets
 {
     "Buckets": [
         {
-            "Name": "somebucket",
+            "Name": "gaa11111-bucket-1",
             "CreationDate": "2019-08-22T11:36:17.523Z"
         }
     ],
     "Owner": {
-        "DisplayName": "aaa11111",
+        "DisplayName": "gaa11111",
 正規ID->"ID": "1a2bc03fa4ee5ba678b90cc1a234f5f67f890f1f2341fa56a78901234cc5fad6"
     }
 }
 ```
 
-上記オブジェクトにACLを設定します。読み込み(read)のみの操作は --grant-read を指定し、接続元として id で正規IDを指定します。
+オブジェクトにACLを設定します。読み込み(read)のみの操作は --grant-read を指定し、被付与者として共有相手の正規IDを指定します。
 
 ```
-[username@es1 ~]$aws s3api put-object-acl --grant-read id=1a2bc03fa4ee5ba678b90cc1a234f5f67f890f1f2341fa56a78901234cc5fad6 --bucket test-share --key testdir/testmessage
+[username@es1 ~]$ aws --endpoint-url https://s3.abci.ai s3api put-object-acl --grant-read id=1a2bc03fa4ee5ba678b90cc1a234f5f67f890f1f2341fa56a78901234cc5fad6 --bucket test-share --key test/testdata
 ```
 
-設定の結果を確認します。デフォルトでは、Grantsの要素に、aaa11111 の要素が Permission "READ" で追加されています。
+設定の結果を確認します。デフォルトでは、Grantsの要素に、gaa11111 の要素が Permission "READ" で追加されています。
 ```
-[username@es1 ~]$ aws s3api get-object-acl --bucket test-share --key testdir/testmessage
+[username@es1 ~]$ aws --endpoint-url https://s3.abci.ai s3api get-object-acl --bucket test-share --key test/testdata
 {
     "Owner": {
-        "DisplayName": "acct-gxx00000",
+        "DisplayName": "gaa00000",
         "ID": "f12d0fa66ea4df5418c0c6234fd5eb3a9f4409bf50b5a58983a30be8f9a42bda"
     },
     "Grants": [
         {
             "Grantee": {
-                "DisplayName": "aaa11111@abci.local",
+                "DisplayName": "gaa11111",
                 "ID": "1a2bc03fa4ee5ba678b90cc1a234f5f67f890f1f2341fa56a78901234cc5fad6",
                 "Type": "CanonicalUser"
             },
@@ -105,7 +103,7 @@ $ aws s3api list-buckets
 
 設定を戻すときは、以下のように ACL を private に設定すれば、初期値が設定されます。
 ```
-[username@es1 ~]$ aws s3api put-object-acl --acl private --bucket test-share --key testdir/testmessage
+[username@es1 ~]$ aws --endpoint-url https://s3.abci.ai s3api put-object-acl --acl private --bucket test-share --key test/testdata
 ```
 
 
@@ -162,7 +160,7 @@ ABCIクラウドストレージは、ACL を設定することでバケットや
 }
 ```
 
-確認はインターネットブラウザで https://s3.abci.ai/test-pub (https://test-pub.s3.abci.ai) にアクセスすることで可能です。Firefoxの場合は、オブジェクトのリストを含むXMLが表示されます。
+確認はインターネットブラウザで https://test-pub.s3.abci.ai にアクセスすることで可能です。Firefoxの場合は、オブジェクトのリストを含むXMLが表示されます。
 
 公開を停止し、初期値に戻す手順は以下のとおりです。
 追加された Grantee がなくなり、ABCIグループ名がの Permission が "FULL_CONTROL" になっていることを確認して下さい。
@@ -195,13 +193,13 @@ ABCIクラウドストレージは、ACL を設定することでバケットや
 
 | 適用ACL| バケット| prefix| 公開オブジェクト|
 | :--| :--| :--| :--|
-| public-read| test-pub2|testdir/|message-pub|
+| public-read| test-pub2| test/| test.txt|
 
 オブジェクト公開 (public-read) のACL設定は put-object-acl で設定します。また、get-object-acl で設定状況を確認できます。この場合は、public を示すURI "http://acs.amazonaws.com/groups/global/AllUsers" の Permission に READ が付与された Grantee が追加されます。
 
 ```
-[username@es1 ~]$ aws --endpoint-url https://s3.abci.ai s3api put-object-acl --bucket test-pub2 --acl public-read --key testdir/message-pub
-[username@es1 ~]$ aws --endpoint-url https://s3.abci.ai s3api get-object-acl--bucket test-pub2 --key testdir/message-pub
+[username@es1 ~]$ aws --endpoint-url https://s3.abci.ai s3api put-object-acl --bucket test-pub2 --acl public-read --key test/test.txt
+[username@es1 ~]$ aws --endpoint-url https://s3.abci.ai s3api get-object-acl--bucket test-pub2 --key test/test.txt
 {
     "Owner": {
         "DisplayName": "gxx00000",
@@ -227,14 +225,14 @@ ABCIクラウドストレージは、ACL を設定することでバケットや
 }
 ```
 
-確認はインターネットブラウザで https://s3.abci.ai/test-pub2/testdir/message-pub (https://test-pub2.test-pub.s3.abci.ai/testdir/message-pub) にアクセスすることで可能です。Firefoxの場合は、オブジェクトのデータが表示されます。
+確認はインターネットブラウザで https://test-pub2.s3.abci.ai/test/test.txt にアクセスすることで可能です。Firefoxの場合は、オブジェクトのデータが表示されます。
 
 公開を停止し、初期値に戻す手順は以下のとおりです。
 追加された Grantee がなくなり、ABCIグループ名がの Permission が "FULL_CONTROL" になっていることを確認して下さい。
 
 ```
-[username@es1 ~]$ aws --endpoint-url http://s3.abci.local s3api put-object-acl --acl private --bucket  test-pub2 --key testdir/testmessage
-[username@es1 ~]$ aws --endpoint-url http://s3.abci.local s3api get-object-acl --bucket test-pub2 --key testdir/testmessage
+[username@es1 ~]$ aws --endpoint-url https://s3.abci.ai s3api put-object-acl --acl private --bucket  test-pub2 --key test/test.txt
+[username@es1 ~]$ aws --endpoint-url https://s3.abci.ai s3api get-object-acl --bucket test-pub2 --key test/test.txt
 {
     "Owner": {
         "DisplayName": "gxx00000",
