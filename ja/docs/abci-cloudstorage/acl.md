@@ -120,7 +120,11 @@ ABCIクラウドストレージは、ACL を設定することでバケットや
 !!! caution
     public-read-write はセキュリティの観点から利用を推奨しません。リスクをご検討のうえご利用ください。
 
-また、デフォルトの既定 ACLは private が設定されています。公開を停止する場合は、private を設定してください。
+!!! caution
+    産業技術総合研究所に所属の方は、インターネットへ公開するにあたり、申請および審査が必要なケースがあります。詳細はクラウドストレージアカウント作成時に送られてきたメールをご確認ください。
+
+デフォルトの既定 ACLは private が設定されています。公開を停止する場合は、private を設定してください。
+
 
 #### バケットの公開 (public-read)
 
@@ -129,6 +133,9 @@ ABCIクラウドストレージは、ACL を設定することでバケットや
 | 適用ACL| 公開バケット|
 | :--| :--|
 | public-read| test-pub|
+
+!!! caution
+    産業技術総合研究所に所属の方は、インターネットへ公開するにあたり、申請および審査が必要なケースがあります。詳細はクラウドストレージアカウント作成時に送られてきたメールをご確認ください。
 
 バケット公開 (public-read) のACL設定は put-bucket-acl で設定します。設定の確認は、get-bucket-acl でおこないます。この場合は、public を示すURI "http://acs.amazonaws.com/groups/global/AllUsers" の Permission に READ が付与された Grantee が追加されます。
 
@@ -194,6 +201,9 @@ ABCIクラウドストレージは、ACL を設定することでバケットや
 | 適用ACL| バケット| prefix| 公開オブジェクト|
 | :--| :--| :--| :--|
 | public-read| test-pub2| test/| test.txt|
+
+!!! caution
+    産業技術総合研究所に所属の方は、インターネットへ公開するにあたり、申請および審査が必要なケースがあります。詳細はクラウドストレージアカウント作成時に送られてきたメールをご確認ください。
 
 オブジェクト公開 (public-read) のACL設定は put-object-acl で設定します。また、get-object-acl で設定状況を確認できます。この場合は、public を示すURI "http://acs.amazonaws.com/groups/global/AllUsers" の Permission に READ が付与された Grantee が追加されます。
 
