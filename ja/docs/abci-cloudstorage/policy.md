@@ -35,15 +35,49 @@ Action は、どのようなリクエスト(動作)に対する制限なのか�
 
 アクションの一覧
 
+* バケット
+
 | アクション | 説明 |
 | :-- | :-- |
 | s3:CreateBucket | バケットの作成 |
 | s3:DeleteBucket | バケットの削除 |
+| s3:ListBucket | バケットの一覧を表示 |
+| s3:PutBucketACL | バケットにACLを適用 |
+| s3:GetBucketACL | バケットに設定されたACLの一覧を取得 |
+
+* オブジェクト
+
+| アクション | 説明 |
+| :-- | :-- |
 | s3:GetObject | オブジェクトの取得(ダウンロード) |
+| s3:PutObject | オブジェクトの作成(アップロード) |
 | s3:DeleteObject | オブジェクトの削除 |
+| s3:GetObjectACL | オブジェクトに設定されたACLを取得 |
+| s3:PutObjectACL | オブジェクトにACLを適用 |
 | s3:HeadObject | オブジェクトのメタデータの取得 |
 | s3:CopyObject | オブジェクトのコピー |
-| s3:PutObject | オブジェクトの作成(アップロード) |
+
+* ポリシー
+
+| アクション | 説明 |
+| :-- | :-- |
+| iam:ListUsers| クラウドストレージアカウントの一覧を取得 |
+| iam:CreateGroup| サブグループを新規に作成 |
+| iam:DeleteGroup| サブグループを削除 |
+| iam:ListGroups| サブグループの一覧を表示 |
+| iam:AddUserToGroup| クラウドストレージアカウントをサブグループに追加 |
+| iam:RemoveUserFromGroup| クラウドストレージアカウントをサブグループから除外 |
+| iam:ListGroupsForUser| クラウドストレージアカウントが所属しているサブグループを表示 |
+| iam:Createpolicy| ポリシーを作成 |
+| iam:DeletePolic| ポリシーを削除 |
+| iam:ListPolicies| ポリシーの一覧を表示 |
+| iam:AttachGroupPolicy| ポリシーをサブグループに適用 |
+| iam:DetachGroupPolicy| サブグループに適用したポリシーを解除 |
+| iam:ListAttachedGroupPolicies| グループに適用したポリシーの一覧を取得 |
+| iam:AttachUserPolicy| ユーザポリシーをクラウドストレージアカウントに設定 |
+| iam:DetachUserPolicy| クラウドストレージアカウントに適用したポリシーを解除 |
+| iam:ListAttachedUserPolicies| クラウドストレージアカウントに適用したポリシーの一覧を取得 |
+
 
 <!-- TBA -->
 
