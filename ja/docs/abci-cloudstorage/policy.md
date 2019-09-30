@@ -57,6 +57,7 @@ Action は、どのようなリクエスト(動作)に対する制限なのか�
 | s3:HeadObject | オブジェクトのメタデータの取得 |
 | s3:CopyObject | オブジェクトのコピー |
 
+<!--
 * ポリシー
 
 | アクション | 説明 |
@@ -69,7 +70,7 @@ Action は、どのようなリクエスト(動作)に対する制限なのか�
 | iam:RemoveUserFromGroup| クラウドストレージアカウントをサブグループから除外 |
 | iam:ListGroupsForUser| クラウドストレージアカウントが所属しているサブグループを表示 |
 | iam:Createpolicy| ポリシーを作成 |
-| iam:DeletePolic| ポリシーを削除 |
+| iam:DeletePolicy| ポリシーを削除 |
 | iam:ListPolicies| ポリシーの一覧を表示 |
 | iam:AttachGroupPolicy| ポリシーをサブグループに適用 |
 | iam:DetachGroupPolicy| サブグループに適用したポリシーを解除 |
@@ -77,9 +78,8 @@ Action は、どのようなリクエスト(動作)に対する制限なのか�
 | iam:AttachUserPolicy| ユーザポリシーをクラウドストレージアカウントに設定 |
 | iam:DetachUserPolicy| クラウドストレージアカウントに適用したポリシーを解除 |
 | iam:ListAttachedUserPolicies| クラウドストレージアカウントに適用したポリシーの一覧を取得 |
+-->
 
-
-<!-- TBA -->
 
 Resource には、アクセス対象となるリソースを指定します。例えば、`arn:aws:s3:::sensor8` は、sensor8 という名前のバケットを指します。その中のオブジェクトは、`arn:aws:s3:::sensor8/test.dat` のように書きます。ワイルドカード (`*`) が使えます。
 
