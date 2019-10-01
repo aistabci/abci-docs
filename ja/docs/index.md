@@ -32,7 +32,7 @@
     - [概要](abci-cloudstorage.md)
     - [使い方](abci-cloudstorage/usage.md)
     - [ACL](abci-cloudstorage/acl.md)
-    - [暗号化バケット](abci-cloudstorage/encrypted-bucket.md)
+    - [データの暗号化](abci-cloudstorage/encryption.md)
     - [利用管理者権限](abci-cloudstorage/management.md)
     - [ポリシー設定](abci-cloudstorage/policy.md)
   - [既知の問題](known-issues.md)
