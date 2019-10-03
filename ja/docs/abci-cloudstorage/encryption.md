@@ -12,6 +12,16 @@ Amazon S3 では以下のような SSE が提供されています。ABCIクラ�
 | SSE-C | ユーザーがリクエストに含めた鍵を用いて暗号化 |
 | SSE-KMS | Key Management Service に登録された鍵を用いて暗号化 |
 
+クライアント側で暗号化する CSE (Client-Side Encryption) も使うことができ、
+こちらはサーバー側の機能に依存しませんが、ABCIではKMS(Key Management Service)を
+提供していませんので、ご注意ください。
+CSEの説明等は、[Protecting Data Using Client-Side Encryption](https://docs.aws.amazon.com/AmazonS3/latest/dev/UsingClientSideEncryption.html) などをご参照ください。
+
+| CSEの種類 | 説明 |
+| :-- | :-- |
+| CSE-C | ユーザーがクライアント側で管理している鍵を用いて暗号化 |
+| CSE-KMS | Key Management Service に登録された鍵を用いて暗号化 |
+
 
 ## 暗号化を有効にしたバケットの作成
 
