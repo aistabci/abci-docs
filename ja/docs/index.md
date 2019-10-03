@@ -27,6 +27,7 @@
     - [GCC 7.3.0の利用](tips/gcc-7.3.0.md)
     - [Tera Termの利用](tips/tera-term.md)
     - [PuTTYの利用](tips/putty.md)
+    - [Jupyter Notebookの利用](tips/jupyter-notebook.md)
   - [NVIDIA GPU Cloud (NGC)](ngc.md)
   - ABCI クラウドストレージ:
     - [概要](abci-cloudstorage.md)
@@ -36,6 +37,7 @@
     - [ACL](abci-cloudstorage/acl.md)
     - [データの暗号化](abci-cloudstorage/encryption.md)
     - [ポリシー設定](abci-cloudstorage/policy.md)
+  - [FAQ](faq.md)
   - [既知の問題](known-issues.md)
   - [システム更新履歴](system-updates.md)
   - [運転状況](https://abci.ai/ja/about_abci/info.html)
