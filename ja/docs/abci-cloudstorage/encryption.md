@@ -1,21 +1,22 @@
 
 # データの暗号化
 
-ABCIクラウドストレージでは、SSE を使うことができます。
-SSE は Server-Side Encryption (サーバー側暗号化) の略で、データがサーバーに送られた後、ディスクに保管される前(ストレージに渡される前)に暗号化を行います。データを取得する時には、ストレージから取り出された後に復号化が行われ、サーバーからデータが送られてきます。鍵はサーバー側が管理しているものを使い、ユーザーが指定することはできません。この機能では送信経路上の暗号化は行われませんが、エンドポイントに https://s3.abci.ai を指定することでTLSによる通信の暗号化が行われます。
+## 暗号化機能の概要
 
-Amazon S3 では以下のような SSE が提供されています。ABCIクラウドストレージの SSE は、SSE-S3 に相当するもので(厳密に全く同じではありません)、SSE-C と SSE-KMS に相当する機能は提供されていません。
+クラウド向けのストレージにおいては、一般的に、クライアント側で暗号化する CSE（Client-Side Encryption）とサーバ側で暗号化する SSE（Server-Side Encryption）があります。SSEはストレージ側での機能提供が必要であり、ABCIクラウドストレージではSSE機能をサポートしています。
+
+SSE機能を利用すると、データがサーバーに送られた後、ディスクに保存される前に暗号化が行われます。データを取得する時には、ディスクから取り出された後に復号化が行われ、サーバーからデータが送られてきます。SSEでは、送信経路上ではデータが復号化されていますが、ABCIクラウドストレージでは、エンドポイントに https://s3.abci.ai を指定することでTLSによる通信の暗号化が別途行われます。
+
+Amazon S3 では以下のような SSE が提供されていますが、ABCIクラウドストレージでは、SSE-S3 に相当する SSE を提供しています。ただし、Amazon S3 の SSE-S3 と厳密には異なるため、同じ API を用いた操作はできません。また、SSE-C と SSE-KMS もABCIクラウドストレージでは利用できません。
 
 | SSEの種類 | 説明 |
 | :-- | :-- |
-| SSE-S3 | S3サーバー側で管理された鍵を用いて暗号化 |
+| SSE-S3 | ストレージ側で管理された鍵を用いて暗号化 |
 | SSE-C | ユーザーがリクエストに含めた鍵を用いて暗号化 |
 | SSE-KMS | Key Management Service に登録された鍵を用いて暗号化 |
 
-クライアント側で暗号化する CSE (Client-Side Encryption) も使うことができ、
-こちらはサーバー側の機能に依存しませんが、ABCIではKMS(Key Management Service)を
-提供していませんので、ご注意ください。
-CSEの説明等は、[Protecting Data Using Client-Side Encryption](https://docs.aws.amazon.com/AmazonS3/latest/dev/UsingClientSideEncryption.html) などをご参照ください。
+一方、ABCIクラウドストレージではCSEの利用は可能です。ただし、ABCIではKMS(Key Management Service)を提供していませんので、ご注意ください。
+CSEの説明は、[Protecting Data Using Client-Side Encryption](https://docs.aws.amazon.com/AmazonS3/latest/dev/UsingClientSideEncryption.html) などをご参照ください。
 
 | CSEの種類 | 説明 |
 | :-- | :-- |
@@ -34,7 +35,7 @@ create-encrypted-bucket Success.
 ```
 
 !!! note
-    サーバー側が保持する鍵を用いて、サーバー上でオブジェクトを保存する時に暗号化(読み出す時に復号化)するもので、アクセスキーなど送信リクエスト固有の情報で暗号化するものではありません。
+    ストレージ側が保持する鍵を用いて、サーバー上でオブジェクトを保存する時に暗号化（読み出す時には復号化）するもので、アクセスキーなど送信リクエスト固有の情報で暗号化するものではありません。
 
 !!! note
     暗号化を有効にしていないバケットに対して、後から暗号化を有効にする方法は提供されていません。
@@ -44,8 +45,8 @@ create-encrypted-bucket Success.
 
 SSEを有効にしたバケットかどうかを判別するには、オブジェクトのメタデータを確認する必要があるため、空のバケットでは確認できません。空の場合は、なにかオブジェクトを1つ作成してください。
 
-`aws s3api head-object` で確認します。
-以下では、dataset-s0001 バケットにアップロードした cat.jpg というオブジェクトのメタデータを確認しています。 `"ServerSideEncryption": "AES256"` という情報が含まれているため、dataset-s0001 は暗号化を有効にしたバケットです。この情報が含まれていない場合は、暗号化を指定されなかったバケットです。
+確認は `aws s3api head-object` で行います。
+以下では、dataset-s0001 バケットにアップロードした cat.jpg というオブジェクトのメタデータを確認しています。 `"ServerSideEncryption": "AES256"` という情報が含まれているため、dataset-s0001 は暗号化を有効にしたバケットであるといえます。この情報が含まれていない場合は、暗号化が有効でないバケットであることを示しています。
 
 ```
 [username@es1 ~]$ aws --endpoint-url https://s3.abci.ai s3api head-object --bucket dataset-s0001 --key cat.jpg

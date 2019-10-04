@@ -1,6 +1,6 @@
 # ABCIクラウドストレージの使い方
 
-ここでは、クライアントツールとして AWS Command Line Interface (以降、AWS CLI) を用いたクラウドストレージの利用方法を説明します。
+ここでは、クライアントツールとして AWS Command Line Interface (以降、AWS CLI) を用いたクラウドストレージの基本操作を説明します。
 
 
 ## モジュールのロード
