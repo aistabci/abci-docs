@@ -1,0 +1,325 @@
+<!doctype html><html lang="ja" class="no-js"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta http-equiv="x-ua-compatible" content="ie=edge"><meta name="description" content="ABCI Users Guide, Japanese version"><link rel="canonical" href="https://docs.abci.ai/ja/abci-cloudstorage/policy/"><meta name="author" content="AIST"><meta name="lang:clipboard.copy" content="クリップボードへコピー"><meta name="lang:clipboard.copied" content="コピーしました"><meta name="lang:search.language" content="ja"><meta name="lang:search.pipeline.stopwords" content="True"><meta name="lang:search.pipeline.trimmer" content="True"><meta name="lang:search.result.none" content="何も見つかりませんでした"><meta name="lang:search.result.one" content="1件見つかりました"><meta name="lang:search.result.other" content="#件見つかりました"><meta name="lang:search.tokenizer" content="[\s\-　、。，．]+"><link rel="shortcut icon" href="../../assets/images/favicon.png"><meta name="generator" content="mkdocs-1.0.4, mkdocs-material-4.3.1"><title>アクセス制御（2） - ABCI Users Guide</title><link rel="stylesheet" href="../../assets/stylesheets/application.4031d38b.css"><link rel="stylesheet" href="../../assets/stylesheets/application-palette.224b79ff.css"><meta name="theme-color" content="#ef5350"><script src="../../assets/javascripts/modernizr.74668098.js"></script><link href="https://fonts.gstatic.com" rel="preconnect" crossorigin><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700|Roboto+Mono&display=swap"><style>body,input{font-family:"Roboto","Helvetica Neue",Helvetica,Arial,sans-serif}code,kbd,pre{font-family:"Roboto Mono","Courier New",Courier,monospace}</style><link rel="stylesheet" href="../../assets/fonts/material-icons.css"><script>window.ga = window.ga || function() {
+    (ga.q = ga.q || []).push(arguments)
+  }
+  ga.l = +new Date
+  /* Setup integration and send page view */
+  ga("create", "UA-118371652-2", "auto")
+  ga("set", "anonymizeIp", true)
+  ga("send", "pageview")
+  /* Register handler to log search on blur */
+  document.addEventListener("DOMContentLoaded", () => {
+    if (document.forms.search) {
+      var query = document.forms.search.query
+      query.addEventListener("blur", function() {
+        if (this.value) {
+          var path = document.location.pathname;
+          ga("send", "pageview", path + "?q=" + this.value)
+        }
+      })
+    }
+  })</script><script async src="https://www.google-analytics.com/analytics.js"></script></head><body dir="ltr" data-md-color-primary="red" data-md-color-accent="red"><svg class="md-svg"><defs><svg xmlns="http://www.w3.org/2000/svg" width="416" height="448" viewBox="0 0 416 448" id="__github"><path fill="currentColor" d="M160 304q0 10-3.125 20.5t-10.75 19T128 352t-18.125-8.5-10.75-19T96 304t3.125-20.5 10.75-19T128 256t18.125 8.5 10.75 19T160 304zm160 0q0 10-3.125 20.5t-10.75 19T288 352t-18.125-8.5-10.75-19T256 304t3.125-20.5 10.75-19T288 256t18.125 8.5 10.75 19T320 304zm40 0q0-30-17.25-51T296 232q-10.25 0-48.75 5.25Q229.5 240 208 240t-39.25-2.75Q130.75 232 120 232q-29.5 0-46.75 21T56 304q0 22 8 38.375t20.25 25.75 30.5 15 35 7.375 37.25 1.75h42q20.5 0 37.25-1.75t35-7.375 30.5-15 20.25-25.75T360 304zm56-44q0 51.75-15.25 82.75-9.5 19.25-26.375 33.25t-35.25 21.5-42.5 11.875-42.875 5.5T212 416q-19.5 0-35.5-.75t-36.875-3.125-38.125-7.5-34.25-12.875T37 371.5t-21.5-28.75Q0 312 0 260q0-59.25 34-99-6.75-20.5-6.75-42.5 0-29 12.75-54.5 27 0 47.5 9.875t47.25 30.875Q171.5 96 212 96q37 0 70 8 26.25-20.5 46.75-30.25T376 64q12.75 25.5 12.75 54.5 0 21.75-6.75 42 34 40 34 99.5z"/></svg></defs></svg> <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off"> <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off"> <label class="md-overlay" data-md-component="overlay" for="__drawer"></label><a href="#2-" tabindex="1" class="md-skip">Skip to content </a><header class="md-header" data-md-component="header"><nav class="md-header-nav md-grid"><div class="md-flex"><div class="md-flex__cell md-flex__cell--shrink"><a href="https://docs.abci.ai/ja/" title="ABCI Users Guide" class="md-header-nav__button md-logo"><i class="md-icon">cloud</i></a></div><div class="md-flex__cell md-flex__cell--shrink"><label class="md-icon md-icon--menu md-header-nav__button" for="__drawer"></label></div><div class="md-flex__cell md-flex__cell--stretch"><div class="md-flex__ellipsis md-header-nav__title" data-md-component="title"><span class="md-header-nav__topic">ABCI Users Guide</span><span class="md-header-nav__topic">アクセス制御（2）</span></div></div><div class="md-flex__cell md-flex__cell--shrink"><label class="md-icon md-icon--search md-header-nav__button" for="__search"></label><div class="md-search" data-md-component="search" role="dialog"><label class="md-search__overlay" for="__search"></label><div class="md-search__inner" role="search"><form class="md-search__form" name="search"><input type="text" class="md-search__input" name="query" placeholder="検索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="query" data-md-state="active"> <label class="md-icon md-search__icon" for="__search"></label> <button type="reset" class="md-icon md-search__icon" data-md-component="reset" tabindex="-1">&#xE5CD;</button></form><div class="md-search__output"><div class="md-search__scrollwrap" data-md-scrollfix><div class="md-search-result" data-md-component="result"><div class="md-search-result__meta">検索キーワードを入力してください</div><ol class="md-search-result__list"></ol></div></div></div></div></div></div><div class="md-flex__cell md-flex__cell--shrink"><div class="md-header-nav__source"><a href="https://github.com/aistairc/abci-docs/" title="リポジトリへ" class="md-source" data-md-source="github"><div class="md-source__icon"><svg viewBox="0 0 24 24" width="24" height="24"><use xlink:href="#__github" width="24" height="24"></use></svg></div><div class="md-source__repository">GitHub</div></a></div></div></div></nav></header><div class="md-container"><main class="md-main"><div class="md-main__inner md-grid" data-md-component="container"><div class="md-sidebar md-sidebar--primary" data-md-component="navigation"><div class="md-sidebar__scrollwrap"><div class="md-sidebar__inner"><nav class="md-nav md-nav--primary" data-md-level="0"><label class="md-nav__title md-nav__title--site" for="__drawer"><a href="https://docs.abci.ai/ja/" title="ABCI Users Guide" class="md-nav__button md-logo"><i class="md-icon">cloud</i></a>ABCI Users Guide</label><div class="md-nav__source"><a href="https://github.com/aistairc/abci-docs/" title="リポジトリへ" class="md-source" data-md-source="github"><div class="md-source__icon"><svg viewBox="0 0 24 24" width="24" height="24"><use xlink:href="#__github" width="24" height="24"></use></svg></div><div class="md-source__repository">GitHub</div></a></div><ul class="md-nav__list" data-md-scrollfix><li class="md-nav__item"><a href="../.." title="はじめに" class="md-nav__link">はじめに</a></li><li class="md-nav__item md-nav__item--nested"><input class="md-toggle md-nav__toggle" data-md-toggle="nav-2" type="checkbox" id="nav-2"><label class="md-nav__link" for="nav-2">利用手引き</label><nav class="md-nav" data-md-component="collapsible" data-md-level="1"><label class="md-nav__title" for="nav-2">利用手引き</label><ul class="md-nav__list" data-md-scrollfix><li class="md-nav__item"><a href="../../01/" title="1. ABCIシステムの概要" class="md-nav__link">1. ABCIシステムの概要</a></li><li class="md-nav__item"><a href="../../02/" title="2. ABCIシステム利用環境" class="md-nav__link">2. ABCIシステム利用環境</a></li><li class="md-nav__item"><a href="../../03/" title="3. ジョブ実行環境" class="md-nav__link">3. ジョブ実行環境</a></li><li class="md-nav__item"><a href="../../04/" title="4. ストレージ" class="md-nav__link">4. ストレージ</a></li><li class="md-nav__item"><a href="../../05/" title="5. Environment Modulesの利用" class="md-nav__link">5. Environment Modulesの利用</a></li><li class="md-nav__item"><a href="../../06/" title="6. Pythonの利用" class="md-nav__link">6. Pythonの利用</a></li><li class="md-nav__item"><a href="../../07/" title="7. GPUの利用" class="md-nav__link">7. GPUの利用</a></li><li class="md-nav__item"><a href="../../08/" title="8. MPIの利用" class="md-nav__link">8. MPIの利用</a></li><li class="md-nav__item"><a href="../../09/" title="9. Linuxコンテナ" class="md-nav__link">9. Linuxコンテナ</a></li><li class="md-nav__item"><a href="../../10/" title="10. プログラム開発環境" class="md-nav__link">10. プログラム開発環境</a></li><li class="md-nav__item"><a href="../../appendix1/" title="付録1. インストール済みソフトウェアの構成" class="md-nav__link">付録1. インストール済みソフトウェアの構成</a></li><li class="md-nav__item"><a href="../../appendix2/" title="付録2. HPCIによるABCIシステム利用" class="md-nav__link">付録2. HPCIによるABCIシステム利用</a></li></ul></nav></li><li class="md-nav__item md-nav__item--nested"><input class="md-toggle md-nav__toggle" data-md-toggle="nav-3" type="checkbox" id="nav-3"><label class="md-nav__link" for="nav-3">各種アプリケーション</label><nav class="md-nav" data-md-component="collapsible" data-md-level="1"><label class="md-nav__title" for="nav-3">各種アプリケーション</label><ul class="md-nav__list" data-md-scrollfix><li class="md-nav__item"><a href="../../apps/" title="概要" class="md-nav__link">概要</a></li><li class="md-nav__item"><a href="../../apps/tensorflow/" title="TensorFlow" class="md-nav__link">TensorFlow</a></li><li class="md-nav__item"><a href="../../apps/chainer/" title="Chainer" class="md-nav__link">Chainer</a></li><li class="md-nav__item"><a href="../../apps/others/" title="その他" class="md-nav__link">その他</a></li></ul></nav></li><li class="md-nav__item md-nav__item--nested"><input class="md-toggle md-nav__toggle" data-md-toggle="nav-4" type="checkbox" id="nav-4"><label class="md-nav__link" for="nav-4">Tips</label><nav class="md-nav" data-md-component="collapsible" data-md-level="1"><label class="md-nav__title" for="nav-4">Tips</label><ul class="md-nav__list" data-md-scrollfix><li class="md-nav__item"><a href="../../tips/remote-desktop/" title="リモートデスクトップの利用" class="md-nav__link">リモートデスクトップの利用</a></li><li class="md-nav__item"><a href="../../tips/awscli/" title="AWS CLIの利用" class="md-nav__link">AWS CLIの利用</a></li><li class="md-nav__item"><a href="../../tips/gcc-7.3.0/" title="GCC 7.3.0の利用" class="md-nav__link">GCC 7.3.0の利用</a></li><li class="md-nav__item"><a href="../../tips/tera-term/" title="Tera Termの利用" class="md-nav__link">Tera Termの利用</a></li><li class="md-nav__item"><a href="../../tips/putty/" title="PuTTYの利用" class="md-nav__link">PuTTYの利用</a></li><li class="md-nav__item"><a href="../../tips/jupyter-notebook/" title="Jupyter Notebookの利用" class="md-nav__link">Jupyter Notebookの利用</a></li></ul></nav></li><li class="md-nav__item"><a href="../../ngc/" title="NVIDIA GPU Cloud (NGC)" class="md-nav__link">NVIDIA GPU Cloud (NGC)</a></li><li class="md-nav__item md-nav__item--active md-nav__item--nested"><input class="md-toggle md-nav__toggle" data-md-toggle="nav-6" type="checkbox" id="nav-6" checked><label class="md-nav__link" for="nav-6">ABCI クラウドストレージ</label><nav class="md-nav" data-md-component="collapsible" data-md-level="1"><label class="md-nav__title" for="nav-6">ABCI クラウドストレージ</label><ul class="md-nav__list" data-md-scrollfix><li class="md-nav__item"><a href="../" title="概要" class="md-nav__link">概要</a></li><li class="md-nav__item"><a href="../cs-account/" title="アカウントとアクセスキー" class="md-nav__link">アカウントとアクセスキー</a></li><li class="md-nav__item"><a href="../application/" title="利用申請" class="md-nav__link">利用申請</a></li><li class="md-nav__item"><a href="../usage/" title="使い方" class="md-nav__link">使い方</a></li><li class="md-nav__item"><a href="../encryption/" title="データの暗号化" class="md-nav__link">データの暗号化</a></li><li class="md-nav__item"><a href="../acl/" title="アクセス制御（1）" class="md-nav__link">アクセス制御（1）</a></li><li class="md-nav__item md-nav__item--active"><input class="md-toggle md-nav__toggle" data-md-toggle="toc" type="checkbox" id="__toc"><label class="md-nav__link md-nav__link--active" for="__toc">アクセス制御（2）</label><a href="./" title="アクセス制御（2）" class="md-nav__link md-nav__link--active">アクセス制御（2）</a><nav class="md-nav md-nav--secondary"><label class="md-nav__title" for="__toc">目次</label><ul class="md-nav__list" data-md-scrollfix><li class="md-nav__item"><a href="#_1" title="デフォルトのアクセス許可" class="md-nav__link">デフォルトのアクセス許可</a></li><li class="md-nav__item"><a href="#_2" title="ポリシーの設定" class="md-nav__link">ポリシーの設定</a><nav class="md-nav"><ul class="md-nav__list"><li class="md-nav__item"><a href="#1" title="例1：バケットにアクセスできるアカウントを限定する" class="md-nav__link">例1：バケットにアクセスできるアカウントを限定する</a></li><li class="md-nav__item"><a href="#2" title="例2：バケットにアクセスできるホストを限定する" class="md-nav__link">例2：バケットにアクセスできるホストを限定する</a></li></ul></nav></li></ul></nav></li></ul></nav></li><li class="md-nav__item"><a href="../../faq/" title="FAQ" class="md-nav__link">FAQ</a></li><li class="md-nav__item"><a href="../../known-issues/" title="既知の問題" class="md-nav__link">既知の問題</a></li><li class="md-nav__item"><a href="../../system-updates/" title="システム更新履歴" class="md-nav__link">システム更新履歴</a></li><li class="md-nav__item"><a href="https://abci.ai/ja/about_abci/info.html" title="運転状況" class="md-nav__link">運転状況</a></li><li class="md-nav__item md-nav__item--nested"><input class="md-toggle md-nav__toggle" data-md-toggle="nav-11" type="checkbox" id="nav-11"><label class="md-nav__link" for="nav-11">リンク</label><nav class="md-nav" data-md-component="collapsible" data-md-level="1"><label class="md-nav__title" for="nav-11">リンク</label><ul class="md-nav__list" data-md-scrollfix><li class="md-nav__item"><a href="https://abci.ai/ja/" title="ABCI Webページ" class="md-nav__link">ABCI Webページ</a></li><li class="md-nav__item"><a href="https://docs.abci.ai/portal/ja/" title="ABCI利用ポータル手引き" class="md-nav__link">ABCI利用ポータル手引き</a></li><li class="md-nav__item"><a href="https://portal.abci.ai/user/project_register_app.php?lang=ja" title="ABCI利用ポータル(利用申請)" class="md-nav__link">ABCI利用ポータル(利用申請)</a></li><li class="md-nav__item"><a href="https://portal.abci.ai/user/login.php?lang=ja" title="ABCI利用ポータル(ログイン)" class="md-nav__link">ABCI利用ポータル(ログイン)</a></li></ul></nav></li><li class="md-nav__item"><a href="https://docs.abci.ai/en/" title="English version" class="md-nav__link">English version</a></li></ul></nav></div></div></div><div class="md-sidebar md-sidebar--secondary" data-md-component="toc"><div class="md-sidebar__scrollwrap"><div class="md-sidebar__inner"><nav class="md-nav md-nav--secondary"><label class="md-nav__title" for="__toc">目次</label><ul class="md-nav__list" data-md-scrollfix><li class="md-nav__item"><a href="#_1" title="デフォルトのアクセス許可" class="md-nav__link">デフォルトのアクセス許可</a></li><li class="md-nav__item"><a href="#_2" title="ポリシーの設定" class="md-nav__link">ポリシーの設定</a><nav class="md-nav"><ul class="md-nav__list"><li class="md-nav__item"><a href="#1" title="例1：バケットにアクセスできるアカウントを限定する" class="md-nav__link">例1：バケットにアクセスできるアカウントを限定する</a></li><li class="md-nav__item"><a href="#2" title="例2：バケットにアクセスできるホストを限定する" class="md-nav__link">例2：バケットにアクセスできるホストを限定する</a></li></ul></nav></li></ul></nav></div></div></div><div class="md-content"><article class="md-content__inner md-typeset"><a href="https://github.com/aistairc/abci-docs/edit/master/ja/docs/abci-cloudstorage/policy.md" title="編集" class="md-icon md-content__icon">&#xE3C9;</a><h1 id="2-">アクセス制御（２）- ポリシーによる制御</h1>
+<p>バケットやオブジェクトに設定するACLとは別に、クラウドストレージアカウントに対する「アクセス制御ポリシー」を設定することができます。これにより、ACLでは設定できないようなアクセス制御が可能です。ただし、設定には管理者用のクラウドストレージアカウントが必要です。権限がない場合は、所属グループの利用管理者等、管理者用のクラウドストレージアカウントを持つ者に設定、あるいは権限の付与を依頼してください。</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>バケットやオブジェクトにはポリシーを設定できません。そのため、グループ内のストレージアカウント全てにポリシーを設定しなければならないケースがあります。</p>
+</div>
+<h2 id="_1">デフォルトのアクセス許可</h2>
+<p>デフォルトでは、バケットやオブジェクトにACLが特に設定されていなければ、グループ内のクラウドストレージアカウントはグループ内のデータにフルアクセス（読み書き両方）できる設定となっています。</p>
+<p>デフォルトのまま使う場合には、以降に説明するポリシーの追加設定を行う必要はありません。特定のクラウドストレージアカウントを読み取りしかできないようする、あるバケットにアクセスできるのは一部のクラウドストレージアカウントだけにするなど、細かい制御が必要な場合には、以下を参考にポリシーを設定してください。</p>
+<h2 id="_2">ポリシーの設定</h2>
+<!--  デフォルトサブグループが導入されたら、デフォルトのアクセス権限を変更できる  -->
+
+<p>まず最初に、共通の注意点を挙げます。</p>
+<ul>
+<li>エンドポイントは <code>https://s3.abci.ai</code> です。</li>
+<li>順番に関係なく、DenyルールがAllowルールよりも優先されます。同一ポリシー内でなくとも、別のポリシーにDenyルールがあればそれが優先されます。</li>
+<li>ポリシーの名前(--policy-nameに指定する名前)は、大文字を用いてもエラーにはなりませんが、問題になるケースがあるため、小文字英字と数字、およびハイフン(0x2d)で構成してください。</li>
+</ul>
+<p>ポリシーの設定では、JSON形式でアクセス許可の定義を書きます。Effect, Action, Resource, Condition の組み合わせにより、何を許可するか、何を拒否するか、どのような条件で判定するかなどを記述します。</p>
+<p>Effect には、"Allow" または "Deny" が設定できます。許可するルールなのか、拒否するルールなのかを記します。</p>
+<p>Action には、どのようなリクエスト(動作)に対する制限なのかを記述します。例えば、オブジェクトのダウンロードについては、s3:GetObject を指定します。ワイルドカード (<code>s3:*</code>) を使うこともできます。</p>
+<p>アクションの一覧：</p>
+<ul>
+<li>バケット</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th align="left">アクション</th>
+<th align="left">説明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">s3:CreateBucket</td>
+<td align="left">バケットの作成</td>
+</tr>
+<tr>
+<td align="left">s3:DeleteBucket</td>
+<td align="left">バケットの削除</td>
+</tr>
+<tr>
+<td align="left">s3:ListBucket</td>
+<td align="left">バケットの一覧を表示</td>
+</tr>
+<tr>
+<td align="left">s3:PutBucketACL</td>
+<td align="left">バケットにACLを適用</td>
+</tr>
+<tr>
+<td align="left">s3:GetBucketACL</td>
+<td align="left">バケットに設定されたACLの一覧を取得</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>オブジェクト</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th align="left">アクション</th>
+<th align="left">説明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">s3:GetObject</td>
+<td align="left">オブジェクトのダウンロード</td>
+</tr>
+<tr>
+<td align="left">s3:PutObject</td>
+<td align="left">オブジェクトのアップロード</td>
+</tr>
+<tr>
+<td align="left">s3:DeleteObject</td>
+<td align="left">オブジェクトの削除</td>
+</tr>
+<tr>
+<td align="left">s3:GetObjectACL</td>
+<td align="left">オブジェクトに設定されたACLを取得</td>
+</tr>
+<tr>
+<td align="left">s3:PutObjectACL</td>
+<td align="left">オブジェクトにACLを適用</td>
+</tr>
+<tr>
+<td align="left">s3:HeadObject</td>
+<td align="left">オブジェクトのメタデータの取得</td>
+</tr>
+<tr>
+<td align="left">s3:CopyObject</td>
+<td align="left">オブジェクトのコピー</td>
+</tr>
+</tbody>
+</table>
+<!--
+* ポリシー
+
+| アクション | 説明 |
+| :-- | :-- |
+| iam:ListUsers| クラウドストレージアカウントの一覧を取得 |
+| iam:CreateGroup| サブグループを新規に作成 |
+| iam:DeleteGroup| サブグループを削除 |
+| iam:ListGroups| サブグループの一覧を表示 |
+| iam:AddUserToGroup| クラウドストレージアカウントをサブグループに追加 |
+| iam:RemoveUserFromGroup| クラウドストレージアカウントをサブグループから除外 |
+| iam:ListGroupsForUser| クラウドストレージアカウントが所属しているサブグループを表示 |
+| iam:Createpolicy| ポリシーを作成 |
+| iam:DeletePolicy| ポリシーを削除 |
+| iam:ListPolicies| ポリシーの一覧を表示 |
+| iam:AttachGroupPolicy| ポリシーをサブグループに適用 |
+| iam:DetachGroupPolicy| サブグループに適用したポリシーを解除 |
+| iam:ListAttachedGroupPolicies| グループに適用したポリシーの一覧を取得 |
+| iam:AttachUserPolicy| ユーザポリシーをクラウドストレージアカウントに設定 |
+| iam:DetachUserPolicy| クラウドストレージアカウントに適用したポリシーを解除 |
+| iam:ListAttachedUserPolicies| クラウドストレージアカウントに適用したポリシーの一覧を取得 |
+-->
+
+<p>Resource には、アクセス対象となるリソースを記述します。例えば、<code>arn:aws:s3:::sensor8</code> は、sensor8 という名前のバケットを示しています。その中のオブジェクトは、<code>arn:aws:s3:::sensor8/test.dat</code> のように記します。ワイルドカード (<code>*</code>) も使うことができます。</p>
+<p>Condition には、条件演算子と条件キーを記述します。</p>
+<table>
+<thead>
+<tr>
+<th align="left">条件演算子</th>
+<th align="left">説明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">StringEquals</td>
+<td align="left">指定した文字列と完全一致することをチェックする文字列条件演算子です。</td>
+</tr>
+<tr>
+<td align="left">StringNotEquals</td>
+<td align="left">指定した文字列に一致しないことをチェックする文字列条件演算子です 。</td>
+</tr>
+<tr>
+<td align="left">StringLike</td>
+<td align="left">指定したパターンに一致することをチェックする文字列条件演算子です。複数文字一致のワイルドカード (*) と 1 文字一致のワイルドカード (?) を使うことができます。</td>
+</tr>
+<tr>
+<td align="left">StringNotLike</td>
+<td align="left">指定したパターンに一致しないことをチェックする文字列条件演算子です。複数文字一致のワイルドカード (*) と 1 文字一致のワイルドカード (?) を使うことができます。</td>
+</tr>
+<tr>
+<td align="left">DateLessThan</td>
+<td align="left">指定した日時よりも前であるかチェックする日付条件演算子です。日付は "2019-09-27T01:30:00Z" のような形式で記述します。</td>
+</tr>
+<tr>
+<td align="left">DateGreaterThan</td>
+<td align="left">指定した日時よりも後であるかチェックする日付条件演算子です。日付のフォーマットは DateLessThan と同じです。</td>
+</tr>
+<tr>
+<td align="left">IpAddress</td>
+<td align="left">指定のIPアドレスに一致する、または指定のアドレスレンジの範囲に含まれていることをチェックするIPアドレス条件演算子です。</td>
+</tr>
+<tr>
+<td align="left">NotIpAddress</td>
+<td align="left">指定のIPアドレスに一致しない、または指定のアドレスレンジの範囲に含まれていないことをチェックするIPアドレス条件演算子です。</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th align="left">条件キー</th>
+<th align="left">説明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">aws:username</td>
+<td align="left">例えば aaa00000.1 のようなクラウドストレージアカウント名です。文字列条件演算子でチェックします。</td>
+</tr>
+<tr>
+<td align="left">aws:SourceIp</td>
+<td align="left">接続元IPアドレスです。IPアドレス条件演算子でチェックします。</td>
+</tr>
+<tr>
+<td align="left">aws:CurrentTime</td>
+<td align="left">現在の日時です。日付条件演算子でチェックします。</td>
+</tr>
+<tr>
+<td align="left">aws:UserAgent</td>
+<td align="left">HTTPヘッダのUser-Agentです。文字列条件演算子でチェックします。偽装が可能なためアクセスの禁止などには適しませんが、例えば、特定のアプリケーション向けに用意したバケットへの誤ったアクセスを防止する対策などに使うことが考えられます。</td>
+</tr>
+</tbody>
+</table>
+<p>フォーマットについては、以下の例を参考にしてください。
+Condition要素は、必要なければ省略可能です。</p>
+<div class="codehilite"><pre><span></span><span class="err">{</span>
+    <span class="ss">&quot;Version&quot;</span><span class="p">:</span> <span class="ss">&quot;2012-10-17&quot;</span><span class="p">,</span>
+    <span class="ss">&quot;Statement&quot;</span><span class="p">:</span> <span class="p">[</span>
+        <span class="err">{</span>
+            <span class="ss">&quot;Effect&quot;</span><span class="p">:</span> <span class="ss">&quot;Deny&quot;</span><span class="p">,</span>
+            <span class="ss">&quot;Action&quot;</span><span class="p">:</span> <span class="ss">&quot;s3:*&quot;</span><span class="p">,</span>
+            <span class="ss">&quot;Resource&quot;</span><span class="p">:</span> <span class="ss">&quot;*&quot;</span><span class="p">,</span>
+            <span class="ss">&quot;Condition&quot;</span><span class="p">:</span> <span class="err">{</span><span class="ss">&quot;StringLike&quot;</span><span class="p">:</span> <span class="err">{</span><span class="ss">&quot;aws:UserAgent&quot;</span> <span class="p">:</span> <span class="ss">&quot;aws-cli*&quot;</span><span class="err">}}</span>
+        <span class="err">}</span>
+    <span class="p">]</span>
+<span class="err">}</span>
+</pre></div>
+
+
+<p>以降ではいくつか例を挙げて、ポリシーによるアクセス制御の方法を説明します。</p>
+<h3 id="1">例1：バケットにアクセスできるアカウントを限定する</h3>
+<p>グループ内に aaa00000.1、aaa00001.1、aaa00002.1、aaa00003.1 という4人のクラウドストレージアカウントが作られており、sensor8 というバケットがあるものとします。今回、そこにアクセスできるユーザーを、aaa00000.1 と aaa00001.1 の 2人に限定する方法を説明します。</p>
+<p>以下の内容の sensor8.json というファイルを作成します。説明上、sensor8.json としますが、任意のファイル名を使うことができます。</p>
+<div class="codehilite"><pre><span></span><span class="err">{</span>
+    <span class="ss">&quot;Version&quot;</span><span class="p">:</span> <span class="ss">&quot;2012-10-17&quot;</span><span class="p">,</span>
+    <span class="ss">&quot;Statement&quot;</span><span class="p">:</span> <span class="p">[</span>
+        <span class="err">{</span>
+            <span class="ss">&quot;Effect&quot;</span><span class="p">:</span> <span class="ss">&quot;Deny&quot;</span><span class="p">,</span>
+            <span class="ss">&quot;Action&quot;</span><span class="p">:</span> <span class="ss">&quot;s3:*&quot;</span><span class="p">,</span>
+            <span class="ss">&quot;Resource&quot;</span><span class="p">:</span> <span class="p">[</span><span class="ss">&quot;arn:aws:s3:::sensor8&quot;</span><span class="p">,</span> <span class="ss">&quot;arn:aws:s3:::sensor8/*&quot;</span><span class="p">],</span>
+            <span class="ss">&quot;Condition&quot;</span> <span class="p">:</span> <span class="err">{</span> <span class="ss">&quot;StringNotEquals&quot;</span> <span class="p">:</span> <span class="err">{</span> <span class="ss">&quot;aws:username&quot;</span> <span class="p">:</span>
+                <span class="p">[</span><span class="ss">&quot;aaa00002.1&quot;</span><span class="p">,</span> <span class="ss">&quot;aaa00003.1&quot;</span><span class="p">]</span><span class="err">}}</span>
+        <span class="err">}</span>
+    <span class="p">]</span>
+<span class="err">}</span>
+</pre></div>
+
+
+<p>上記では aaa00002.1 と aaa00003.1 が sensor8 にアクセスを禁止するポリシーを定義しています。
+Denyルールが優先されるため、他のポリシーで aaa00002.1 と aaa00003.1 に対して Allowルールが適用されていたとしても、本ポリシーを適用することでアクセスを禁止することができます。</p>
+<p>本ポリシーをクラウドストレージに登録します。</p>
+<div class="codehilite"><pre><span></span><span class="o">[</span><span class="n">username@es1 ~</span><span class="o">]</span><span class="err">$</span><span class="w"> </span><span class="n">aws</span><span class="w"> </span><span class="c1">--endpoint-url https://s3.abci.ai iam create-policy --policy-name sensor8policy --policy-document file://sensor8.json</span>
+<span class="err">{</span><span class="w"></span>
+<span class="w">    </span><span class="ss">&quot;Policy&quot;</span><span class="err">:</span><span class="w"> </span><span class="err">{</span><span class="w"></span>
+<span class="w">        </span><span class="ss">&quot;PolicyName&quot;</span><span class="err">:</span><span class="w"> </span><span class="ss">&quot;sensor8policy&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">        </span><span class="ss">&quot;CreateDate&quot;</span><span class="err">:</span><span class="w"> </span><span class="ss">&quot;2019-07-30T06:22:47Z&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">        </span><span class="ss">&quot;AttachmentCount&quot;</span><span class="err">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"></span>
+<span class="w">        </span><span class="ss">&quot;IsAttachable&quot;</span><span class="err">:</span><span class="w"> </span><span class="k">true</span><span class="p">,</span><span class="w"></span>
+<span class="w">        </span><span class="ss">&quot;PolicyId&quot;</span><span class="err">:</span><span class="w"> </span><span class="ss">&quot;51OFYS8BQEFTP68KT4I63AAZYHNBPHHA&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">        </span><span class="ss">&quot;DefaultVersionId&quot;</span><span class="err">:</span><span class="w"> </span><span class="ss">&quot;v1&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">        </span><span class="ss">&quot;Path&quot;</span><span class="err">:</span><span class="w"> </span><span class="ss">&quot;/&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">        </span><span class="ss">&quot;Arn&quot;</span><span class="err">:</span><span class="w"> </span><span class="ss">&quot;arn:aws:iam::123456789012:policy/sensor8policy&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">        </span><span class="ss">&quot;UpdateDate&quot;</span><span class="err">:</span><span class="w"> </span><span class="ss">&quot;2019-07-30T06:22:47Z&quot;</span><span class="w"></span>
+<span class="w">    </span><span class="err">}</span><span class="w"></span>
+<span class="err">}</span><span class="w"></span>
+</pre></div>
+
+
+<p>カレントディレクトリの sensor8.json の内容を sensor8policy という名前で登録しています。
+Arn の値は、クラウドストレージアカウントへの適用時に必要になるので、控えておいてください。</p>
+<p>本ポリシーを制限したいクラウドストレージアカウント、すなわち aaa00002.1 と aaa00003.1 に適用します。</p>
+<div class="codehilite"><pre><span></span><span class="o">[</span><span class="n">username@es1 ~</span><span class="o">]</span><span class="err">$</span><span class="w"> </span><span class="n">aws</span><span class="w"> </span><span class="c1">--endpoint-url https://s3.abci.ai iam attach-user-policy --policy-arn arn:aws:iam::123456789012:policy/sensor8policy --user-name aaa00002.1</span>
+</pre></div>
+
+
+<div class="codehilite"><pre><span></span><span class="o">[</span><span class="n">username@es1 ~</span><span class="o">]</span><span class="err">$</span><span class="w"> </span><span class="n">aws</span><span class="w"> </span><span class="c1">--endpoint-url https://s3.abci.ai iam attach-user-policy --policy-arn arn:aws:iam::123456789012:policy/sensor8policy --user-name aaa00003.1</span>
+</pre></div>
+
+
+<p><code>--policy-arn</code>に指定するポリシーのARNは、ポリシーを登録した時に出力されていますが、 <code>aws --endpoint-url https://s3.abci.ai iam list-policies</code> を実行して確認することもできます。</p>
+<p>上記の登録により aaa00002.1 と aaa00003.1 は、sensor8 バケットにアクセスできなくなりました。aaa00000.1 と aaa00001.1 は、これまで通りアクセスできます。</p>
+<p>クラウドストレージアカウントに適用されたポリシーを確認する場合は、<code>aws --endpoint-url https://s3.abci.ai iam list-attached-user-policies --user-name aaa00002.1</code> を実行してください。</p>
+<h3 id="2">例2：バケットにアクセスできるホストを限定する</h3>
+<p>接続元IPアドレスによるアクセス制限を行う例として、ABCI内部ネットワーク(10.0.0.0/17)からのアクセスと外部ホスト 203.0.113.2 からのアクセスのどちらでもない場合に、アクセスを拒否する設定を行う方法を説明します。</p>
+<p>以下の内容のポリシーを定義した src-ip-pc.json というファイルを作成します。</p>
+<div class="codehilite"><pre><span></span><span class="err">{</span>
+    <span class="ss">&quot;Version&quot;</span><span class="p">:</span> <span class="ss">&quot;2012-10-17&quot;</span><span class="p">,</span>
+    <span class="ss">&quot;Statement&quot;</span><span class="p">:</span> <span class="p">[</span>
+        <span class="err">{</span>
+            <span class="ss">&quot;Effect&quot;</span><span class="p">:</span> <span class="ss">&quot;Deny&quot;</span><span class="p">,</span>
+            <span class="ss">&quot;Action&quot;</span><span class="p">:</span> <span class="ss">&quot;s3:*&quot;</span><span class="p">,</span>
+            <span class="ss">&quot;Resource&quot;</span><span class="p">:</span> <span class="ss">&quot;*&quot;</span><span class="p">,</span>
+            <span class="ss">&quot;Condition&quot;</span><span class="p">:</span> <span class="err">{</span>
+                <span class="ss">&quot;NotIpAddress&quot;</span><span class="p">:</span> <span class="err">{</span>
+                    <span class="ss">&quot;aws:SourceIp&quot;</span><span class="p">:</span> <span class="p">[</span>
+                        <span class="ss">&quot;10.0.0.0/17&quot;</span><span class="p">,</span>
+                        <span class="ss">&quot;203.0.113.2/32&quot;</span>
+                    <span class="p">]</span>
+                <span class="err">}</span>
+            <span class="err">}</span>
+        <span class="err">}</span>
+    <span class="p">]</span>
+<span class="err">}</span>
+</pre></div>
+
+
+<p>このポリシーをクラウドストレージに登録します。</p>
+<div class="codehilite"><pre><span></span><span class="o">[</span><span class="n">username@es1 ~</span><span class="o">]</span><span class="err">$</span><span class="w"> </span><span class="n">aws</span><span class="w"> </span><span class="c1">--endpoint-url https://s3.abci.ai iam create-policy --policy-name src-ip-pc --policy-document file://src-ip-pc.json</span>
+<span class="err">{</span><span class="w"></span>
+<span class="w">    </span><span class="ss">&quot;Policy&quot;</span><span class="err">:</span><span class="w"> </span><span class="err">{</span><span class="w"></span>
+<span class="w">        </span><span class="ss">&quot;PolicyName&quot;</span><span class="err">:</span><span class="w"> </span><span class="ss">&quot;src-ip-pc&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">        </span><span class="ss">&quot;CreateDate&quot;</span><span class="err">:</span><span class="w"> </span><span class="ss">&quot;2019-08-08T13:24:54Z&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">        </span><span class="ss">&quot;AttachmentCount&quot;</span><span class="err">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"></span>
+<span class="w">        </span><span class="ss">&quot;IsAttachable&quot;</span><span class="err">:</span><span class="w"> </span><span class="k">true</span><span class="p">,</span><span class="w"></span>
+<span class="w">        </span><span class="ss">&quot;PolicyId&quot;</span><span class="err">:</span><span class="w"> </span><span class="ss">&quot;K9B9SFWR0JL4GSY8Z1K2441VJERSC2Q7&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">        </span><span class="ss">&quot;DefaultVersionId&quot;</span><span class="err">:</span><span class="w"> </span><span class="ss">&quot;v1&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">        </span><span class="ss">&quot;Path&quot;</span><span class="err">:</span><span class="w"> </span><span class="ss">&quot;/&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">        </span><span class="ss">&quot;Arn&quot;</span><span class="err">:</span><span class="w"> </span><span class="ss">&quot;arn:aws:iam::123456789012:policy/src-ip-pc&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">        </span><span class="ss">&quot;UpdateDate&quot;</span><span class="err">:</span><span class="w"> </span><span class="ss">&quot;2019-08-08T13:24:54Z&quot;</span><span class="w"></span>
+<span class="w">    </span><span class="err">}</span><span class="w"></span>
+<span class="err">}</span><span class="w"></span>
+</pre></div>
+
+
+<p>次に、グループ内の各クラウドストレージアカウントに本ポリシーを適用していきます。以下の例ではクラウドストレージアカウント aaa00004.1 にポリシーを適用しています。ポリシーのARNは、ポリシーを登録した時に出力されていますが、aws --endpoint-url https://s3.abci.ai iam list-policies を実行して確認することもできます。</p>
+<div class="codehilite"><pre><span></span><span class="o">[</span><span class="n">username@es1 ~</span><span class="o">]</span><span class="err">$</span><span class="w"> </span><span class="n">aws</span><span class="w"> </span><span class="c1">--endpoint-url https://s3.abci.ai iam attach-user-policy --policy-arn arn:aws:iam::123456789012:policy/src-ip-pc --user-name aaa00004.1</span>
+</pre></div>
+
+
+<p>デフォルトでは、接続元IPアドレスによる制限がないため、本ポリシーを適用していないアカウントは接続元の制限なくアクセスができる状態です。グループ内のクラウドストレージアカウントをリストするには、<code>aws --endpoint-url https://s3.abci.ai iam list-users</code> を実行してください。</p></article></div></div></main><footer class="md-footer"><div class="md-footer-nav"><nav class="md-footer-nav__inner md-grid"><a href="../acl/" title="アクセス制御（1）" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev"><div class="md-flex__cell md-flex__cell--shrink"><i class="md-icon md-icon--arrow-back md-footer-nav__button"></i></div><div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title"><span class="md-flex__ellipsis"><span class="md-footer-nav__direction">前</span>アクセス制御（1）</span></div></a><a href="../../faq/" title="FAQ" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next"><div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title"><span class="md-flex__ellipsis"><span class="md-footer-nav__direction">次</span>FAQ</span></div><div class="md-flex__cell md-flex__cell--shrink"><i class="md-icon md-icon--arrow-forward md-footer-nav__button"></i></div></a></nav></div><div class="md-footer-meta md-typeset"><div class="md-footer-meta__inner md-grid"><div class="md-footer-copyright"><div class="md-footer-copyright__highlight">Copyright &copy; 2018 National Institute of Advanced Industrial Science and Technology (AIST)</div>powered by <a href="https://www.mkdocs.org">MkDocs</a> and <a href="https://squidfunk.github.io/mkdocs-material/">Material for MkDocs</a></div></div></div></footer></div><script src="../../assets/javascripts/application.b260a35d.js"></script><script src="../../assets/javascripts/lunr/lunr.stemmer.support.js"></script><script src="../../assets/javascripts/lunr/tinyseg.js"></script><script src="../../assets/javascripts/lunr/lunr.ja.js"></script><script>app.initialize({version:"1.0.4",url:{base:"../.."}})</script></body></html>

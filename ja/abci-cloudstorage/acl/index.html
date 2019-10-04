@@ -1,0 +1,386 @@
+<!doctype html><html lang="ja" class="no-js"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta http-equiv="x-ua-compatible" content="ie=edge"><meta name="description" content="ABCI Users Guide, Japanese version"><link rel="canonical" href="https://docs.abci.ai/ja/abci-cloudstorage/acl/"><meta name="author" content="AIST"><meta name="lang:clipboard.copy" content="クリップボードへコピー"><meta name="lang:clipboard.copied" content="コピーしました"><meta name="lang:search.language" content="ja"><meta name="lang:search.pipeline.stopwords" content="True"><meta name="lang:search.pipeline.trimmer" content="True"><meta name="lang:search.result.none" content="何も見つかりませんでした"><meta name="lang:search.result.one" content="1件見つかりました"><meta name="lang:search.result.other" content="#件見つかりました"><meta name="lang:search.tokenizer" content="[\s\-　、。，．]+"><link rel="shortcut icon" href="../../assets/images/favicon.png"><meta name="generator" content="mkdocs-1.0.4, mkdocs-material-4.3.1"><title>アクセス制御（1） - ABCI Users Guide</title><link rel="stylesheet" href="../../assets/stylesheets/application.4031d38b.css"><link rel="stylesheet" href="../../assets/stylesheets/application-palette.224b79ff.css"><meta name="theme-color" content="#ef5350"><script src="../../assets/javascripts/modernizr.74668098.js"></script><link href="https://fonts.gstatic.com" rel="preconnect" crossorigin><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700|Roboto+Mono&display=swap"><style>body,input{font-family:"Roboto","Helvetica Neue",Helvetica,Arial,sans-serif}code,kbd,pre{font-family:"Roboto Mono","Courier New",Courier,monospace}</style><link rel="stylesheet" href="../../assets/fonts/material-icons.css"><script>window.ga = window.ga || function() {
+    (ga.q = ga.q || []).push(arguments)
+  }
+  ga.l = +new Date
+  /* Setup integration and send page view */
+  ga("create", "UA-118371652-2", "auto")
+  ga("set", "anonymizeIp", true)
+  ga("send", "pageview")
+  /* Register handler to log search on blur */
+  document.addEventListener("DOMContentLoaded", () => {
+    if (document.forms.search) {
+      var query = document.forms.search.query
+      query.addEventListener("blur", function() {
+        if (this.value) {
+          var path = document.location.pathname;
+          ga("send", "pageview", path + "?q=" + this.value)
+        }
+      })
+    }
+  })</script><script async src="https://www.google-analytics.com/analytics.js"></script></head><body dir="ltr" data-md-color-primary="red" data-md-color-accent="red"><svg class="md-svg"><defs><svg xmlns="http://www.w3.org/2000/svg" width="416" height="448" viewBox="0 0 416 448" id="__github"><path fill="currentColor" d="M160 304q0 10-3.125 20.5t-10.75 19T128 352t-18.125-8.5-10.75-19T96 304t3.125-20.5 10.75-19T128 256t18.125 8.5 10.75 19T160 304zm160 0q0 10-3.125 20.5t-10.75 19T288 352t-18.125-8.5-10.75-19T256 304t3.125-20.5 10.75-19T288 256t18.125 8.5 10.75 19T320 304zm40 0q0-30-17.25-51T296 232q-10.25 0-48.75 5.25Q229.5 240 208 240t-39.25-2.75Q130.75 232 120 232q-29.5 0-46.75 21T56 304q0 22 8 38.375t20.25 25.75 30.5 15 35 7.375 37.25 1.75h42q20.5 0 37.25-1.75t35-7.375 30.5-15 20.25-25.75T360 304zm56-44q0 51.75-15.25 82.75-9.5 19.25-26.375 33.25t-35.25 21.5-42.5 11.875-42.875 5.5T212 416q-19.5 0-35.5-.75t-36.875-3.125-38.125-7.5-34.25-12.875T37 371.5t-21.5-28.75Q0 312 0 260q0-59.25 34-99-6.75-20.5-6.75-42.5 0-29 12.75-54.5 27 0 47.5 9.875t47.25 30.875Q171.5 96 212 96q37 0 70 8 26.25-20.5 46.75-30.25T376 64q12.75 25.5 12.75 54.5 0 21.75-6.75 42 34 40 34 99.5z"/></svg></defs></svg> <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off"> <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off"> <label class="md-overlay" data-md-component="overlay" for="__drawer"></label><a href="#1-acl" tabindex="1" class="md-skip">Skip to content </a><header class="md-header" data-md-component="header"><nav class="md-header-nav md-grid"><div class="md-flex"><div class="md-flex__cell md-flex__cell--shrink"><a href="https://docs.abci.ai/ja/" title="ABCI Users Guide" class="md-header-nav__button md-logo"><i class="md-icon">cloud</i></a></div><div class="md-flex__cell md-flex__cell--shrink"><label class="md-icon md-icon--menu md-header-nav__button" for="__drawer"></label></div><div class="md-flex__cell md-flex__cell--stretch"><div class="md-flex__ellipsis md-header-nav__title" data-md-component="title"><span class="md-header-nav__topic">ABCI Users Guide</span><span class="md-header-nav__topic">アクセス制御（1）</span></div></div><div class="md-flex__cell md-flex__cell--shrink"><label class="md-icon md-icon--search md-header-nav__button" for="__search"></label><div class="md-search" data-md-component="search" role="dialog"><label class="md-search__overlay" for="__search"></label><div class="md-search__inner" role="search"><form class="md-search__form" name="search"><input type="text" class="md-search__input" name="query" placeholder="検索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="query" data-md-state="active"> <label class="md-icon md-search__icon" for="__search"></label> <button type="reset" class="md-icon md-search__icon" data-md-component="reset" tabindex="-1">&#xE5CD;</button></form><div class="md-search__output"><div class="md-search__scrollwrap" data-md-scrollfix><div class="md-search-result" data-md-component="result"><div class="md-search-result__meta">検索キーワードを入力してください</div><ol class="md-search-result__list"></ol></div></div></div></div></div></div><div class="md-flex__cell md-flex__cell--shrink"><div class="md-header-nav__source"><a href="https://github.com/aistairc/abci-docs/" title="リポジトリへ" class="md-source" data-md-source="github"><div class="md-source__icon"><svg viewBox="0 0 24 24" width="24" height="24"><use xlink:href="#__github" width="24" height="24"></use></svg></div><div class="md-source__repository">GitHub</div></a></div></div></div></nav></header><div class="md-container"><main class="md-main"><div class="md-main__inner md-grid" data-md-component="container"><div class="md-sidebar md-sidebar--primary" data-md-component="navigation"><div class="md-sidebar__scrollwrap"><div class="md-sidebar__inner"><nav class="md-nav md-nav--primary" data-md-level="0"><label class="md-nav__title md-nav__title--site" for="__drawer"><a href="https://docs.abci.ai/ja/" title="ABCI Users Guide" class="md-nav__button md-logo"><i class="md-icon">cloud</i></a>ABCI Users Guide</label><div class="md-nav__source"><a href="https://github.com/aistairc/abci-docs/" title="リポジトリへ" class="md-source" data-md-source="github"><div class="md-source__icon"><svg viewBox="0 0 24 24" width="24" height="24"><use xlink:href="#__github" width="24" height="24"></use></svg></div><div class="md-source__repository">GitHub</div></a></div><ul class="md-nav__list" data-md-scrollfix><li class="md-nav__item"><a href="../.." title="はじめに" class="md-nav__link">はじめに</a></li><li class="md-nav__item md-nav__item--nested"><input class="md-toggle md-nav__toggle" data-md-toggle="nav-2" type="checkbox" id="nav-2"><label class="md-nav__link" for="nav-2">利用手引き</label><nav class="md-nav" data-md-component="collapsible" data-md-level="1"><label class="md-nav__title" for="nav-2">利用手引き</label><ul class="md-nav__list" data-md-scrollfix><li class="md-nav__item"><a href="../../01/" title="1. ABCIシステムの概要" class="md-nav__link">1. ABCIシステムの概要</a></li><li class="md-nav__item"><a href="../../02/" title="2. ABCIシステム利用環境" class="md-nav__link">2. ABCIシステム利用環境</a></li><li class="md-nav__item"><a href="../../03/" title="3. ジョブ実行環境" class="md-nav__link">3. ジョブ実行環境</a></li><li class="md-nav__item"><a href="../../04/" title="4. ストレージ" class="md-nav__link">4. ストレージ</a></li><li class="md-nav__item"><a href="../../05/" title="5. Environment Modulesの利用" class="md-nav__link">5. Environment Modulesの利用</a></li><li class="md-nav__item"><a href="../../06/" title="6. Pythonの利用" class="md-nav__link">6. Pythonの利用</a></li><li class="md-nav__item"><a href="../../07/" title="7. GPUの利用" class="md-nav__link">7. GPUの利用</a></li><li class="md-nav__item"><a href="../../08/" title="8. MPIの利用" class="md-nav__link">8. MPIの利用</a></li><li class="md-nav__item"><a href="../../09/" title="9. Linuxコンテナ" class="md-nav__link">9. Linuxコンテナ</a></li><li class="md-nav__item"><a href="../../10/" title="10. プログラム開発環境" class="md-nav__link">10. プログラム開発環境</a></li><li class="md-nav__item"><a href="../../appendix1/" title="付録1. インストール済みソフトウェアの構成" class="md-nav__link">付録1. インストール済みソフトウェアの構成</a></li><li class="md-nav__item"><a href="../../appendix2/" title="付録2. HPCIによるABCIシステム利用" class="md-nav__link">付録2. HPCIによるABCIシステム利用</a></li></ul></nav></li><li class="md-nav__item md-nav__item--nested"><input class="md-toggle md-nav__toggle" data-md-toggle="nav-3" type="checkbox" id="nav-3"><label class="md-nav__link" for="nav-3">各種アプリケーション</label><nav class="md-nav" data-md-component="collapsible" data-md-level="1"><label class="md-nav__title" for="nav-3">各種アプリケーション</label><ul class="md-nav__list" data-md-scrollfix><li class="md-nav__item"><a href="../../apps/" title="概要" class="md-nav__link">概要</a></li><li class="md-nav__item"><a href="../../apps/tensorflow/" title="TensorFlow" class="md-nav__link">TensorFlow</a></li><li class="md-nav__item"><a href="../../apps/chainer/" title="Chainer" class="md-nav__link">Chainer</a></li><li class="md-nav__item"><a href="../../apps/others/" title="その他" class="md-nav__link">その他</a></li></ul></nav></li><li class="md-nav__item md-nav__item--nested"><input class="md-toggle md-nav__toggle" data-md-toggle="nav-4" type="checkbox" id="nav-4"><label class="md-nav__link" for="nav-4">Tips</label><nav class="md-nav" data-md-component="collapsible" data-md-level="1"><label class="md-nav__title" for="nav-4">Tips</label><ul class="md-nav__list" data-md-scrollfix><li class="md-nav__item"><a href="../../tips/remote-desktop/" title="リモートデスクトップの利用" class="md-nav__link">リモートデスクトップの利用</a></li><li class="md-nav__item"><a href="../../tips/awscli/" title="AWS CLIの利用" class="md-nav__link">AWS CLIの利用</a></li><li class="md-nav__item"><a href="../../tips/gcc-7.3.0/" title="GCC 7.3.0の利用" class="md-nav__link">GCC 7.3.0の利用</a></li><li class="md-nav__item"><a href="../../tips/tera-term/" title="Tera Termの利用" class="md-nav__link">Tera Termの利用</a></li><li class="md-nav__item"><a href="../../tips/putty/" title="PuTTYの利用" class="md-nav__link">PuTTYの利用</a></li><li class="md-nav__item"><a href="../../tips/jupyter-notebook/" title="Jupyter Notebookの利用" class="md-nav__link">Jupyter Notebookの利用</a></li></ul></nav></li><li class="md-nav__item"><a href="../../ngc/" title="NVIDIA GPU Cloud (NGC)" class="md-nav__link">NVIDIA GPU Cloud (NGC)</a></li><li class="md-nav__item md-nav__item--active md-nav__item--nested"><input class="md-toggle md-nav__toggle" data-md-toggle="nav-6" type="checkbox" id="nav-6" checked><label class="md-nav__link" for="nav-6">ABCI クラウドストレージ</label><nav class="md-nav" data-md-component="collapsible" data-md-level="1"><label class="md-nav__title" for="nav-6">ABCI クラウドストレージ</label><ul class="md-nav__list" data-md-scrollfix><li class="md-nav__item"><a href="../" title="概要" class="md-nav__link">概要</a></li><li class="md-nav__item"><a href="../cs-account/" title="アカウントとアクセスキー" class="md-nav__link">アカウントとアクセスキー</a></li><li class="md-nav__item"><a href="../application/" title="利用申請" class="md-nav__link">利用申請</a></li><li class="md-nav__item"><a href="../usage/" title="使い方" class="md-nav__link">使い方</a></li><li class="md-nav__item"><a href="../encryption/" title="データの暗号化" class="md-nav__link">データの暗号化</a></li><li class="md-nav__item md-nav__item--active"><input class="md-toggle md-nav__toggle" data-md-toggle="toc" type="checkbox" id="__toc"><label class="md-nav__link md-nav__link--active" for="__toc">アクセス制御（1）</label><a href="./" title="アクセス制御（1）" class="md-nav__link md-nav__link--active">アクセス制御（1）</a><nav class="md-nav md-nav--secondary"><label class="md-nav__title" for="__toc">目次</label><ul class="md-nav__list" data-md-scrollfix><li class="md-nav__item"><a href="#acl" title="ACLでの設定項目" class="md-nav__link">ACLでの設定項目</a></li><li class="md-nav__item"><a href="#acl_1" title="ACLの設定方法（設定例）" class="md-nav__link">ACLの設定方法（設定例）</a><nav class="md-nav"><ul class="md-nav__list"><li class="md-nav__item"><a href="#abci" title="ABCIグループ間でのオブジェクトの共有" class="md-nav__link">ABCIグループ間でのオブジェクトの共有</a></li><li class="md-nav__item"><a href="#abci_1" title="ABCIクラウドストレージの全アカウントに公開" class="md-nav__link">ABCIクラウドストレージの全アカウントに公開</a></li><li class="md-nav__item"><a href="#_1" title="パブリックアクセス" class="md-nav__link">パブリックアクセス</a><nav class="md-nav"><ul class="md-nav__list"><li class="md-nav__item"><a href="#public-read" title="バケットの公開（public-read）" class="md-nav__link">バケットの公開（public-read）</a></li><li class="md-nav__item"><a href="#public-read_1" title="オブジェクトの公開（public-read）" class="md-nav__link">オブジェクトの公開（public-read）</a></li></ul></nav></li></ul></nav></li></ul></nav></li><li class="md-nav__item"><a href="../policy/" title="アクセス制御（2）" class="md-nav__link">アクセス制御（2）</a></li></ul></nav></li><li class="md-nav__item"><a href="../../faq/" title="FAQ" class="md-nav__link">FAQ</a></li><li class="md-nav__item"><a href="../../known-issues/" title="既知の問題" class="md-nav__link">既知の問題</a></li><li class="md-nav__item"><a href="../../system-updates/" title="システム更新履歴" class="md-nav__link">システム更新履歴</a></li><li class="md-nav__item"><a href="https://abci.ai/ja/about_abci/info.html" title="運転状況" class="md-nav__link">運転状況</a></li><li class="md-nav__item md-nav__item--nested"><input class="md-toggle md-nav__toggle" data-md-toggle="nav-11" type="checkbox" id="nav-11"><label class="md-nav__link" for="nav-11">リンク</label><nav class="md-nav" data-md-component="collapsible" data-md-level="1"><label class="md-nav__title" for="nav-11">リンク</label><ul class="md-nav__list" data-md-scrollfix><li class="md-nav__item"><a href="https://abci.ai/ja/" title="ABCI Webページ" class="md-nav__link">ABCI Webページ</a></li><li class="md-nav__item"><a href="https://docs.abci.ai/portal/ja/" title="ABCI利用ポータル手引き" class="md-nav__link">ABCI利用ポータル手引き</a></li><li class="md-nav__item"><a href="https://portal.abci.ai/user/project_register_app.php?lang=ja" title="ABCI利用ポータル(利用申請)" class="md-nav__link">ABCI利用ポータル(利用申請)</a></li><li class="md-nav__item"><a href="https://portal.abci.ai/user/login.php?lang=ja" title="ABCI利用ポータル(ログイン)" class="md-nav__link">ABCI利用ポータル(ログイン)</a></li></ul></nav></li><li class="md-nav__item"><a href="https://docs.abci.ai/en/" title="English version" class="md-nav__link">English version</a></li></ul></nav></div></div></div><div class="md-sidebar md-sidebar--secondary" data-md-component="toc"><div class="md-sidebar__scrollwrap"><div class="md-sidebar__inner"><nav class="md-nav md-nav--secondary"><label class="md-nav__title" for="__toc">目次</label><ul class="md-nav__list" data-md-scrollfix><li class="md-nav__item"><a href="#acl" title="ACLでの設定項目" class="md-nav__link">ACLでの設定項目</a></li><li class="md-nav__item"><a href="#acl_1" title="ACLの設定方法（設定例）" class="md-nav__link">ACLの設定方法（設定例）</a><nav class="md-nav"><ul class="md-nav__list"><li class="md-nav__item"><a href="#abci" title="ABCIグループ間でのオブジェクトの共有" class="md-nav__link">ABCIグループ間でのオブジェクトの共有</a></li><li class="md-nav__item"><a href="#abci_1" title="ABCIクラウドストレージの全アカウントに公開" class="md-nav__link">ABCIクラウドストレージの全アカウントに公開</a></li><li class="md-nav__item"><a href="#_1" title="パブリックアクセス" class="md-nav__link">パブリックアクセス</a><nav class="md-nav"><ul class="md-nav__list"><li class="md-nav__item"><a href="#public-read" title="バケットの公開（public-read）" class="md-nav__link">バケットの公開（public-read）</a></li><li class="md-nav__item"><a href="#public-read_1" title="オブジェクトの公開（public-read）" class="md-nav__link">オブジェクトの公開（public-read）</a></li></ul></nav></li></ul></nav></li></ul></nav></div></div></div><div class="md-content"><article class="md-content__inner md-typeset"><a href="https://github.com/aistairc/abci-docs/edit/master/ja/docs/abci-cloudstorage/acl.md" title="編集" class="md-icon md-content__icon">&#xE3C9;</a><h1 id="1-acl">アクセス制御（１）- ACLによる制御</h1>
+<p>ABCIクラウドストレージでは、バケットやオブジェクトに対してアクセスコントロールリスト(ACL)を設定することで、誰がアクセスできるかを制御できます。デフォルトでは、所属するグループからのみアクセスできますが、他のABCIグループ、あるいは誰でもアクセスできるよう設定を変更することができます。</p>
+<div class="admonition caution">
+<p class="admonition-title">Caution</p>
+<p>現時点では誰からでもアクセスできる設定は行わないでください。データ公開に関する約款類が整い次第、ご案内いたします。</p>
+</div>
+<h2 id="acl">ACLでの設定項目</h2>
+<p>ACLは、誰からの、どの操作を許可をするのかをバケットやオブジェクト毎に設定します。</p>
+<p>許可する相手として以下を指定することができます。ABCIグループ単位より細かく指定することはできません。つまり、ある特定のクラウドストレージアカウントを指定することはできません。</p>
+<table>
+<thead>
+<tr>
+<th align="left">許可する相手</th>
+<th align="left">説明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">ABCIグループ</td>
+<td align="left">所属グループ以外の特定のABCIグループからのアクセスを許可します。指定したABCIグループに所属する全てのクラウドストレージアカウントに対してアクセスを許可することになります。</td>
+</tr>
+<tr>
+<td align="left">ABCIクラウドストレージアカウント保持者全員</td>
+<td align="left">ABCIクラウドストレージのクラウドストレージアカウントを持つ全ての利用者からのアクセスを許可します。アクセスには、アクセスキーによる認証を要求します。</td>
+</tr>
+<tr>
+<td align="left">誰でも</td>
+<td align="left">誰からのアクセスでも許可します。アクセスキーによる認証も要求しません。</td>
+</tr>
+</tbody>
+</table>
+<p>許可する操作は、バケットとオブジェクトで異なります。</p>
+<p>許可する操作の一覧：バケット</p>
+<table>
+<thead>
+<tr>
+<th align="left">許可する操作</th>
+<th align="left">説明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">read</td>
+<td align="left">指定したバケット配下にあるオブジェクトの一覧の取得を許可します。</td>
+</tr>
+<tr>
+<td align="left">write</td>
+<td align="left">指定したバケット配下で、オブジェクトの作成、消去、変更が可能です。</td>
+</tr>
+<tr>
+<td align="left">read-acp</td>
+<td align="left">指定したバケットのACLの取得を許可します。</td>
+</tr>
+<tr>
+<td align="left">write-acp</td>
+<td align="left">指定したバケットのACLの変更を許可します。</td>
+</tr>
+<tr>
+<td align="left">full-control</td>
+<td align="left">上記全てのACLを許可します。</td>
+</tr>
+</tbody>
+</table>
+<p>許可する操作の一覧：オブジェクト</p>
+<table>
+<thead>
+<tr>
+<th align="left">許可する操作</th>
+<th align="left">説明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">read</td>
+<td align="left">オブジェクトデータの読み込みを許可します。</td>
+</tr>
+<tr>
+<td align="left">write</td>
+<td align="left">設定できません。</td>
+</tr>
+<tr>
+<td align="left">read-acp</td>
+<td align="left">指定したオブジェクトのACLの取得を許可します。</td>
+</tr>
+<tr>
+<td align="left">write-acp</td>
+<td align="left">指定したオブジェクトのACLの変更を許可します。</td>
+</tr>
+<tr>
+<td align="left">full-control</td>
+<td align="left">上記全てのACLを許可します。</td>
+</tr>
+</tbody>
+</table>
+<p>作成したばかりのバケットやオブジェクトは、所属ABCIグループに対する full-control となっています。</p>
+<p>インターネットへの公開のような許可する「相手」と「操作」の組み合わせが定型的なACLは、既定ACLが用意されています。既定ACLについては、後述します。</p>
+<h2 id="acl_1">ACLの設定方法（設定例）</h2>
+<h3 id="abci">ABCIグループ間でのオブジェクトの共有</h3>
+<p>ABCIグループ間でオブジェクトを共有する方法について説明します。
+例として、ABCIグループ gaa00000 の testdata というオブジェクトを、ABCIグループ gaa11111 が読みとれるような許可設定を行います。</p>
+<table>
+<thead>
+<tr>
+<th align="left">共有元ABCI グループ</th>
+<th align="left">共有先ABCI グループ</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">gaa00000</td>
+<td align="left">gaa11111</td>
+</tr>
+</tbody>
+</table>
+<p>共有するオブジェクトの詳細</p>
+<table>
+<thead>
+<tr>
+<th align="left">バケット名</th>
+<th align="left">prefix</th>
+<th align="left">オブジェクト名</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">test-share</td>
+<td align="left">test/</td>
+<td align="left">testdata</td>
+</tr>
+</tbody>
+</table>
+<p>まず、共有相手となるABCIグループに 正規ID の確認を依頼してください。共有相手側では、gaa11111 に属しているクラウドストレージアカウントで s3 list-bucket を実行し、出力にある "Owner"-&gt;"ID" の値を確認し、共有元に連絡してください。</p>
+<div class="codehilite"><pre><span></span>$ aws --endpoint-url https://s3.abci.ai s3api list-buckets
+<span class="o">{</span>
+    <span class="s2">&quot;Buckets&quot;</span>: <span class="o">[</span>
+        <span class="o">{</span>
+            <span class="s2">&quot;Name&quot;</span>: <span class="s2">&quot;gaa11111-bucket-1&quot;</span>,
+            <span class="s2">&quot;CreationDate&quot;</span>: <span class="s2">&quot;2019-08-22T11:36:17.523Z&quot;</span>
+        <span class="o">}</span>
+    <span class="o">]</span>,
+    <span class="s2">&quot;Owner&quot;</span>: <span class="o">{</span>
+        <span class="s2">&quot;DisplayName&quot;</span>: <span class="s2">&quot;gaa11111&quot;</span>,
+正規ID-&gt;<span class="s2">&quot;ID&quot;</span>: <span class="s2">&quot;1a2bc03fa4ee5ba678b90cc1a234f5f67f890f1f2341fa56a78901234cc5fad6&quot;</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</pre></div>
+
+
+<p>共有元では、以下のようにオブジェクトにACLを設定します。読み込み(read)のみの操作は --grant-read を指定し、被付与者として共有相手の正規IDを指定します。</p>
+<div class="codehilite"><pre><span></span><span class="o">[</span><span class="n">username@es1 ~</span><span class="o">]</span><span class="err">$</span><span class="w"> </span><span class="n">aws</span><span class="w"> </span><span class="c1">--endpoint-url https://s3.abci.ai s3api put-object-acl --grant-read id=1a2bc03fa4ee5ba678b90cc1a234f5f67f890f1f2341fa56a78901234cc5fad6 --bucket test-share --key test/testdata</span>
+</pre></div>
+
+
+<p>設定の結果を確認します。デフォルトでは、Grantsの要素に、gaa11111 の要素が Permission "READ" で追加されています。</p>
+<div class="codehilite"><pre><span></span><span class="o">[</span><span class="n">username@es1 ~</span><span class="o">]</span><span class="err">$</span><span class="w"> </span><span class="n">aws</span><span class="w"> </span><span class="c1">--endpoint-url https://s3.abci.ai s3api get-object-acl --bucket test-share --key test/testdata</span>
+<span class="err">{</span><span class="w"></span>
+<span class="w">    </span><span class="ss">&quot;Owner&quot;</span><span class="err">:</span><span class="w"> </span><span class="err">{</span><span class="w"></span>
+<span class="w">        </span><span class="ss">&quot;DisplayName&quot;</span><span class="err">:</span><span class="w"> </span><span class="ss">&quot;gaa00000&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">        </span><span class="ss">&quot;ID&quot;</span><span class="err">:</span><span class="w"> </span><span class="ss">&quot;f12d0fa66ea4df5418c0c6234fd5eb3a9f4409bf50b5a58983a30be8f9a42bda&quot;</span><span class="w"></span>
+<span class="w">    </span><span class="err">}</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="ss">&quot;Grants&quot;</span><span class="err">:</span><span class="w"> </span><span class="o">[</span><span class="n"></span>
+<span class="n">        {</span>
+<span class="n">            &quot;Grantee&quot;: {</span>
+<span class="n">                &quot;DisplayName&quot;: &quot;gaa11111&quot;,</span>
+<span class="n">                &quot;ID&quot;: &quot;1a2bc03fa4ee5ba678b90cc1a234f5f67f890f1f2341fa56a78901234cc5fad6&quot;,</span>
+<span class="n">                &quot;Type&quot;: &quot;CanonicalUser&quot;</span>
+<span class="n">            },</span>
+<span class="n">            &quot;Permission&quot;: &quot;READ&quot;</span>
+<span class="n">        }</span>
+<span class="n">    </span><span class="o">]</span><span class="w"></span>
+<span class="err">}</span><span class="w"></span>
+</pre></div>
+
+
+<p>設定を戻すときは、以下のように ACL を private に設定すれば、初期値が設定されます。</p>
+<div class="codehilite"><pre><span></span><span class="o">[</span><span class="n">username@es1 ~</span><span class="o">]</span><span class="err">$</span><span class="w"> </span><span class="n">aws</span><span class="w"> </span><span class="c1">--endpoint-url https://s3.abci.ai s3api put-object-acl --acl private --bucket test-share --key test/testdata</span>
+</pre></div>
+
+
+<h3 id="abci_1">ABCIクラウドストレージの全アカウントに公開</h3>
+<p>ABCIクラウドストレージの全アカウントに公開するには <code>--acl</code> に <code>authenticated-read</code> を指定します。
+以下は、gaa00000-bucket-2 というバケットの dataset.txt というオブジェクトに設定する例です。</p>
+<div class="codehilite"><pre><span></span><span class="o">[</span><span class="n">username@es1 ~</span><span class="o">]</span><span class="err">$</span><span class="w"> </span><span class="n">aws</span><span class="w"> </span><span class="c1">--endpoint-url https://s3.abci.ai s3api put-object-acl --acl authenticated-read  --bucket gaa00000-bucket-2 --key dataset.txt</span>
+</pre></div>
+
+
+<p><code>aws s3api put-object</code> でバケットにオブジェクトを追加する場合、この acl の指定を同時に行うこともできます。同時指定の方法は、<code>aws s3api put-object help</code> で表示されるヘルプをご参照ください。</p>
+<h3 id="_1">パブリックアクセス</h3>
+<p>インターネット上の誰からでもアクセスできるようにする（パブリックアクセス）設定は、次の２つの既定ACLを用いて行うことができます。それぞれ、バケットあるいはオブジェクトに適用します。</p>
+<table>
+<thead>
+<tr>
+<th align="left">既定ACL</th>
+<th align="left">バケット</th>
+<th align="left">オブジェクト</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">public-read</td>
+<td align="left">指定したバケット配下のオブジェクト一覧が公開されます。</td>
+<td align="left">指定したオブジェクトが公開されます。オブジェクトの変更は、適切な権限を有するクラウドストレージアカウントのみが行えます。</td>
+</tr>
+<tr>
+<td align="left">public-read-write</td>
+<td align="left">インターネット上の誰もが、指定したバケット配下の読み書き、およびACLの変更が可能になります。</td>
+<td align="left">インターネット上の誰もがACLを適用したオブジェクトの読み書き、およびACLの変更が可能になります。</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition caution">
+<p class="admonition-title">Caution</p>
+<p>public-read-write はセキュリティの観点から利用を推奨しません。必要性とリスクを十分にご検討ください。</p>
+</div>
+<div class="admonition caution">
+<p class="admonition-title">Caution</p>
+<p>現時点では誰からでもアクセスできる設定は行わないでください。データ公開に関する約款類が整い次第、ご案内いたします。</p>
+</div>
+<p>デフォルトの既定ACLは private が設定されています。公開を停止する場合は、private を設定してください。</p>
+<h4 id="public-read">バケットの公開（public-read）</h4>
+<p>既定ACL「public-read」をバケットに適用することで、そのバケット配下のオブジェクトの一覧が公開されます。ここでは、以下のバケットを公開する例で説明します。</p>
+<table>
+<thead>
+<tr>
+<th align="left">適用ACL</th>
+<th align="left">公開バケット</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">public-read</td>
+<td align="left">test-pub</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition caution">
+<p class="admonition-title">Caution</p>
+<p>現時点では本設定は行わないでください。データ公開に関する約款類が整い次第、ご案内いたします。</p>
+</div>
+<p>put-bucket-acl で public-read を設定します。設定の確認は get-bucket-acl を用いて行います。public を示すURI "http://acs.amazonaws.com/groups/global/AllUsers" の Permission に READ が付与された Grantee が追加されていることを確認してください。</p>
+<div class="codehilite"><pre><span></span><span class="o">[</span><span class="n">username@es1 ~</span><span class="o">]</span><span class="err">$</span><span class="w"> </span><span class="n">aws</span><span class="w"> </span><span class="c1">--endpoint-url https://s3.abci.ai s3api put-bucket-acl --acl public-read --bucket test-pub</span>
+<span class="o">[</span><span class="n">username@es1 ~</span><span class="o">]</span><span class="err">$</span><span class="w"> </span><span class="n">aws</span><span class="w"> </span><span class="c1">--endpoint-url https://s3.abci.ai s3api get-bucket-acl --bucket test-pub</span>
+<span class="err">{</span><span class="w"></span>
+<span class="w">    </span><span class="ss">&quot;Owner&quot;</span><span class="err">:</span><span class="w"> </span><span class="err">{</span><span class="w"></span>
+<span class="w">        </span><span class="ss">&quot;DisplayName&quot;</span><span class="err">:</span><span class="w"> </span><span class="ss">&quot;gxx00000&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">        </span><span class="ss">&quot;ID&quot;</span><span class="err">:</span><span class="w"> </span><span class="ss">&quot;f12d0fa66ea4df5418c0c6234fd5eb3a9f4409bf50b5a58983a30be8f9a42bda&quot;</span><span class="w"></span>
+<span class="w">    </span><span class="err">}</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="ss">&quot;Grants&quot;</span><span class="err">:</span><span class="w"> </span><span class="o">[</span><span class="n"></span>
+<span class="n">        {</span>
+<span class="n">            &quot;Grantee&quot;: {</span>
+<span class="n">                &quot;DisplayName&quot;: &quot;gxx00000&quot;,</span>
+<span class="n">                &quot;ID&quot;: &quot;f12d0fa66ea4df5418c0c6234fd5eb3a9f4409bf50b5a58983a30be8f9a42bda&quot;,</span>
+<span class="n">                &quot;Type&quot;: &quot;CanonicalUser&quot;</span>
+<span class="n">            },</span>
+<span class="n">            &quot;Permission&quot;: &quot;FULL_CONTROL&quot;</span>
+<span class="n">        },</span>
+<span class="n">        {</span>
+<span class="n">            &quot;Grantee&quot;: {</span>
+<span class="n">                &quot;Type&quot;: &quot;Group&quot;,</span>
+<span class="n">                &quot;URI&quot;: &quot;http://acs.amazonaws.com/groups/global/AllUsers&quot;</span>
+<span class="n">            },</span>
+<span class="n">            &quot;Permission&quot;: &quot;READ&quot;</span>
+<span class="n">        }</span>
+<span class="n">    </span><span class="o">]</span><span class="w"></span>
+<span class="err">}</span><span class="w"></span>
+</pre></div>
+
+
+<p>アクセスができることの確認はインターネットブラウザで https://test-pub.s3.abci.ai にアクセスすることでも可能です。Firefoxの場合は、オブジェクトのリストを含むXMLが表示されます。</p>
+<p>公開を停止し、初期値に戻す手順は以下の通りです。
+追加された Grantee がなくなり、ABCIグループ名がの Permission が "FULL_CONTROL" になっていることを確認してください。</p>
+<div class="codehilite"><pre><span></span><span class="o">[</span><span class="n">username@es1 ~</span><span class="o">]</span><span class="err">$</span><span class="w"> </span><span class="n">aws</span><span class="w"> </span><span class="c1">--endpoint-url https://s3.abci.ai s3api put-bucket-acl --acl private --bucket test-pub</span>
+<span class="o">[</span><span class="n">username@es1 ~</span><span class="o">]</span><span class="err">$</span><span class="w"> </span><span class="n">aws</span><span class="w"> </span><span class="c1">--endpoint-url https://s3.abci.ai s3api get-bucket-acl --bucket test-pub</span>
+<span class="err">{</span><span class="w"></span>
+<span class="w">    </span><span class="ss">&quot;Owner&quot;</span><span class="err">:</span><span class="w"> </span><span class="err">{</span><span class="w"></span>
+<span class="w">        </span><span class="ss">&quot;DisplayName&quot;</span><span class="err">:</span><span class="w"> </span><span class="ss">&quot;gxx00000&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">        </span><span class="ss">&quot;ID&quot;</span><span class="err">:</span><span class="w"> </span><span class="ss">&quot;f12d0fa66ea4df5418c0c6234fd5eb3a9f4409bf50b5a58983a30be8f9a42bda&quot;</span><span class="w"></span>
+<span class="w">    </span><span class="err">}</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="ss">&quot;Grants&quot;</span><span class="err">:</span><span class="w"> </span><span class="o">[</span><span class="n"></span>
+<span class="n">        {</span>
+<span class="n">            &quot;Grantee&quot;: {</span>
+<span class="n">                &quot;DisplayName&quot;: &quot;gxx00000&quot;,</span>
+<span class="n">                &quot;ID&quot;: &quot;f12d0fa66ea4df5418c0c6234fd5eb3a9f4409bf50b5a58983a30be8f9a42bda&quot;,</span>
+<span class="n">                &quot;Type&quot;: &quot;CanonicalUser&quot;</span>
+<span class="n">            },</span>
+<span class="n">            &quot;Permission&quot;: &quot;FULL_CONTROL&quot;</span>
+<span class="n">        }</span>
+<span class="n">    </span><span class="o">]</span><span class="w"></span>
+<span class="err">}</span><span class="w"></span>
+</pre></div>
+
+
+<h4 id="public-read_1">オブジェクトの公開（public-read）</h4>
+<p>既定ACL「public-read」をオブジェクトに適用することで、そのオブジェクトを公開することができます。ここでは、以下のオブジェクトを公開する例で説明します。</p>
+<table>
+<thead>
+<tr>
+<th align="left">適用ACL</th>
+<th align="left">バケット</th>
+<th align="left">prefix</th>
+<th align="left">公開オブジェクト</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">public-read</td>
+<td align="left">test-pub2</td>
+<td align="left">test/</td>
+<td align="left">test.txt</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition caution">
+<p class="admonition-title">Caution</p>
+<p>現時点では本設定は行わないでください。データ公開に関する約款類が整い次第、ご案内いたします。</p>
+</div>
+<p>put-object-acl で public-read を設定します。また、get-object-acl で設定状況を確認できます。public を示すURI "http://acs.amazonaws.com/groups/global/AllUsers" の Permission に READ が付与された Grantee が追加されていることを確認してください。</p>
+<div class="codehilite"><pre><span></span><span class="o">[</span><span class="n">username@es1 ~</span><span class="o">]</span><span class="err">$</span><span class="w"> </span><span class="n">aws</span><span class="w"> </span><span class="c1">--endpoint-url https://s3.abci.ai s3api put-object-acl --bucket test-pub2 --acl public-read --key test/test.txt</span>
+<span class="o">[</span><span class="n">username@es1 ~</span><span class="o">]</span><span class="err">$</span><span class="w"> </span><span class="n">aws</span><span class="w"> </span><span class="c1">--endpoint-url https://s3.abci.ai s3api get-object-acl--bucket test-pub2 --key test/test.txt</span>
+<span class="err">{</span><span class="w"></span>
+<span class="w">    </span><span class="ss">&quot;Owner&quot;</span><span class="err">:</span><span class="w"> </span><span class="err">{</span><span class="w"></span>
+<span class="w">        </span><span class="ss">&quot;DisplayName&quot;</span><span class="err">:</span><span class="w"> </span><span class="ss">&quot;gxx00000&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">        </span><span class="ss">&quot;ID&quot;</span><span class="err">:</span><span class="w"> </span><span class="ss">&quot;f12d0fa66ea4df5418c0c6234fd5eb3a9f4409bf50b5a58983a30be8f9a42bda&quot;</span><span class="w"> </span>
+<span class="w">    </span><span class="err">}</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="ss">&quot;Grants&quot;</span><span class="err">:</span><span class="w"> </span><span class="o">[</span><span class="n"></span>
+<span class="n">        {</span>
+<span class="n">            &quot;Grantee&quot;: {</span>
+<span class="n">                &quot;DisplayName&quot;: &quot;gxx00000&quot;,</span>
+<span class="n">                &quot;ID&quot;: &quot;f12d0fa66ea4df5418c0c6234fd5eb3a9f4409bf50b5a58983a30be8f9a42bda&quot;,</span>
+<span class="n">                &quot;Type&quot;: &quot;CanonicalUser&quot; </span>
+<span class="n">            },</span>
+<span class="n">            &quot;Permission&quot;: &quot;FULL_CONTROL&quot; </span>
+<span class="n">        },</span>
+<span class="n">        {</span>
+<span class="n">            &quot;Grantee&quot;: {</span>
+<span class="n">                &quot;Type&quot;: &quot;Group&quot;,</span>
+<span class="n">                &quot;URI&quot;: &quot;http://acs.amazonaws.com/groups/global/AllUsers&quot; </span>
+<span class="n">            },</span>
+<span class="n">            &quot;Permission&quot;: &quot;READ&quot; </span>
+<span class="n">        }</span>
+<span class="n">    </span><span class="o">]</span><span class="w"></span>
+<span class="err">}</span><span class="w"></span>
+</pre></div>
+
+
+<p>アクセスができることの確認はインターネットブラウザで https://test-pub2.s3.abci.ai/test/test.txt にアクセスすることでも可能です。Firefoxの場合は、オブジェクトのデータが表示されます。</p>
+<p>公開を停止し、初期値に戻す手順は以下の通りです。
+追加された Grantee がなくなり、ABCIグループ名がの Permission が "FULL_CONTROL" になっていることを確認してください。</p>
+<div class="codehilite"><pre><span></span><span class="o">[</span><span class="n">username@es1 ~</span><span class="o">]</span><span class="err">$</span><span class="w"> </span><span class="n">aws</span><span class="w"> </span><span class="c1">--endpoint-url https://s3.abci.ai s3api put-object-acl --acl private --bucket  test-pub2 --key test/test.txt</span>
+<span class="o">[</span><span class="n">username@es1 ~</span><span class="o">]</span><span class="err">$</span><span class="w"> </span><span class="n">aws</span><span class="w"> </span><span class="c1">--endpoint-url https://s3.abci.ai s3api get-object-acl --bucket test-pub2 --key test/test.txt</span>
+<span class="err">{</span><span class="w"></span>
+<span class="w">    </span><span class="ss">&quot;Owner&quot;</span><span class="err">:</span><span class="w"> </span><span class="err">{</span><span class="w"></span>
+<span class="w">        </span><span class="ss">&quot;DisplayName&quot;</span><span class="err">:</span><span class="w"> </span><span class="ss">&quot;gxx00000&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">        </span><span class="ss">&quot;ID&quot;</span><span class="err">:</span><span class="w"> </span><span class="ss">&quot;f12d0fa66ea4df5418c0c6234fd5eb3a9f4409bf50b5a58983a30be8f9a42bda&quot;</span><span class="w"></span>
+<span class="w">    </span><span class="err">}</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="ss">&quot;Grants&quot;</span><span class="err">:</span><span class="w"> </span><span class="o">[</span><span class="n"></span>
+<span class="n">        {</span>
+<span class="n">            &quot;Grantee&quot;: {</span>
+<span class="n">                &quot;DisplayName&quot;: &quot;gxx00000&quot;,</span>
+<span class="n">                &quot;ID&quot;: &quot;f12d0fa66ea4df5418c0c6234fd5eb3a9f4409bf50b5a58983a30be8f9a42bda&quot;,</span>
+<span class="n">                &quot;Type&quot;: &quot;CanonicalUser&quot;</span>
+<span class="n">            },</span>
+<span class="n">            &quot;Permission&quot;: &quot;FULL_CONTROL&quot;</span>
+<span class="n">        }</span>
+<span class="n">    </span><span class="o">]</span><span class="w"></span>
+<span class="err">}</span><span class="w"></span>
+</pre></div></article></div></div></main><footer class="md-footer"><div class="md-footer-nav"><nav class="md-footer-nav__inner md-grid"><a href="../encryption/" title="データの暗号化" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev"><div class="md-flex__cell md-flex__cell--shrink"><i class="md-icon md-icon--arrow-back md-footer-nav__button"></i></div><div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title"><span class="md-flex__ellipsis"><span class="md-footer-nav__direction">前</span>データの暗号化</span></div></a><a href="../policy/" title="アクセス制御（2）" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next"><div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title"><span class="md-flex__ellipsis"><span class="md-footer-nav__direction">次</span>アクセス制御（2）</span></div><div class="md-flex__cell md-flex__cell--shrink"><i class="md-icon md-icon--arrow-forward md-footer-nav__button"></i></div></a></nav></div><div class="md-footer-meta md-typeset"><div class="md-footer-meta__inner md-grid"><div class="md-footer-copyright"><div class="md-footer-copyright__highlight">Copyright &copy; 2018 National Institute of Advanced Industrial Science and Technology (AIST)</div>powered by <a href="https://www.mkdocs.org">MkDocs</a> and <a href="https://squidfunk.github.io/mkdocs-material/">Material for MkDocs</a></div></div></div></footer></div><script src="../../assets/javascripts/application.b260a35d.js"></script><script src="../../assets/javascripts/lunr/lunr.stemmer.support.js"></script><script src="../../assets/javascripts/lunr/tinyseg.js"></script><script src="../../assets/javascripts/lunr/lunr.ja.js"></script><script>app.initialize({version:"1.0.4",url:{base:"../.."}})</script></body></html>
