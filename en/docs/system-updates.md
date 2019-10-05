@@ -4,6 +4,7 @@
 
 | Add / Update / Delete | Software | Version | Previous version |
 |:--|:--|:--|:--|
+| Update | Univa Grid Engine | 8.6.6 | 8.6.3 |
 | Add | CUDA | 10.1.243 | |
 | Add | cuDNN | 7.6.3, 7.6.4 | |
 | Add | NCCL | 2.4.8-1 | |

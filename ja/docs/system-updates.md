@@ -4,6 +4,7 @@
 
 | Add / Update / Delete | Software | Version | Previous version |
 |:--|:--|:--|:--|
+| Update | Univa Grid Engine | 8.6.6 | 8.6.3 |
 | Add | CUDA | 10.1.243 | |
 | Add | cuDNN | 7.6.3, 7.6.4 | |
 | Add | NCCL | 2.4.8-1 | |
@@ -12,6 +13,7 @@
 | Add | fuse-sshfs | 2.10 | |
 
 その他の修正点は下記の通りです:
+
 * cuDNN 7.5.0, 7.5.1, 7.6.0, 7.6.1, 7.6.2 を CUDA 10.1 に対応
 * NCCL 2.4.2-1, 2.4.7-1 を CUDA 10.1 に対応
 * GDRCopy 1.2 を CUDA 10.0, 10.1 に対応
