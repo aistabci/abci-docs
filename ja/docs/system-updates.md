@@ -1,5 +1,22 @@
 # システム更新履歴
 
+## 2019-10-04
+
+| Add / Update / Delete | Software | Version | Previous version |
+|:--|:--|:--|:--|
+| Add | CUDA | 10.1.243 | |
+| Add | cuDNN | 7.6.3, 7.6.4 | |
+| Add | NCCL | 2.4.8-1 | |
+| Add | MVAPICH2-GDR | 2.3.2 | |
+| Add | MVAPICH2 | 2.3.2 | |
+| Add | fuse-sshfs | 2.10 | |
+
+その他の修正点は下記の通りです:
+* cuDNN 7.5.0, 7.5.1, 7.6.0, 7.6.1, 7.6.2 を CUDA 10.1 に対応
+* NCCL 2.4.2-1, 2.4.7-1 を CUDA 10.1 に対応
+* GDRCopy 1.2 を CUDA 10.0, 10.1 に対応
+* Open MPI 2.1.6 を CUDA 10.1 に対応
+
 ## 2019-08-01
 
 | Add / Update / Delete | Software | Version | Previous version |
@@ -26,9 +43,9 @@
 |:--|:--|:--|:--|
 | Update | CentOS | 7.5 | 7.4 |
 | Update | Univa Grid Engine | 8.6.3 | 8.5.4 |
-| Update | Java | 1.7.0_171 | 1.7.0_141|
-| Update | Java | 1.8.0_161 | 1.8.0_131|
-| Add | DDN Lustre | 2.10.5_ddn7-1 | |
+| Update | Java | 1.7.0\_171 | 1.7.0\_141|
+| Update | Java | 1.8.0\_161 | 1.8.0\_131|
+| Add | DDN Lustre | 2.10.5\_ddn7-1 | |
 | Add | CUDA | 10.0.130 | |
 | Add | Intel Compiler | 2019.3 | |
 | Add | PGI | 18.10 19.3 | |
