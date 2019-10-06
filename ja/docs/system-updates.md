@@ -4,6 +4,9 @@
 
 | Add / Update / Delete | Software | Version | Previous version |
 |:--|:--|:--|:--|
+| Update | Univa Grid Engine | 8.6.6 | 8.6.3 |
+| Update | DDN GRIDScaler | 4.2.3.17 | 4.2.3.15 |
+| Update | BeeOND | 7.1.3 | 7.1.2 |
 | Add | CUDA | 10.1.243 | |
 | Add | cuDNN | 7.6.3, 7.6.4 | |
 | Add | NCCL | 2.4.8-1 | |
