@@ -21,6 +21,13 @@ Other fixes are as follows:
 * Add CUDA 10.0 and 10.1 support to GDRCopy 1.2
 * Add CUDA 10.1 support to Open MPI 2.1.6
 
+### Start process monitoring on the interactive nodes
+
+Process monitoring started on the interactive nodes.
+High load or lengthy tasks on the interactive nodes will be killed by the
+process monitoring system, so use the compute nodes with the `qrsh/qsub` 
+command.
+
 ## 2019-08-01
 
 | Add / Update / Delete | Software | Version | Previous version |
