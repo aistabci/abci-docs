@@ -28,6 +28,15 @@ High load or lengthy tasks on the interactive nodes will be killed by the
 process monitoring system, so use the compute nodes with the `qrsh/qsub` 
 command.
 
+### Change the job submission and execution limits
+
+We changed the job submission and execution limits as follows.
+
+| Limitations                                                     | Current limits | Previous limits |
+| :--                                                             | :--            | :--             |
+| The maximum number of tasks within an array job                 | 75000          | 1000            |
+| The maximum number of any user's running jobs at the same time  | 200            | 0(unlimited)    |
+
 ## 2019-08-01
 
 | Add / Update / Delete | Software | Version | Previous version |
