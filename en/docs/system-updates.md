@@ -4,6 +4,9 @@
 
 | Add / Update / Delete | Software | Version | Previous version |
 |:--|:--|:--|:--|
+| Update | Univa Grid Engine | 8.6.6 | 8.6.3 |
+| Update | DDN GRIDScaler | 4.2.3.17 | 4.2.3.15 |
+| Update | BeeOND | 7.1.3 | 7.1.2 |
 | Add | CUDA | 10.1.243 | |
 | Add | cuDNN | 7.6.3, 7.6.4 | |
 | Add | NCCL | 2.4.8-1 | |
@@ -18,6 +21,29 @@ Other fixes are as follows:
 * Add CUDA 10.0 and 10.1 support to GDRCopy 1.2
 * Add CUDA 10.1 support to Open MPI 2.1.6
 * Add process monitoring and process cancellation mechanism on the interactive node
+
+### Start process monitoring on the interactive nodes
+
+Process monitoring started on the interactive nodes.
+High load or lengthy tasks on the interactive nodes will be killed by the
+process monitoring system, so use the compute nodes with the `qrsh/qsub` 
+command.
+
+### Change the job submission and execution limits
+
+We changed the job submission and execution limits as follows.
+
+| Limitations                                                     | Current limits | Previous limits |
+| :--                                                             | :--            | :--             |
+| The maximum number of tasks within an array job                 | 75000          | 1000            |
+| The maximum number of any user's running jobs at the same time  | 200            | 0(unlimited)    |
+
+### About known issues
+
+The status of following known issues were changed to close.
+
+* A comupte node can execute only up to 2 jobs each resource type "rt_G.small"
+  and "rt_C.small" (normally up to 4 jobs ).
 
 ## 2019-08-01
 
