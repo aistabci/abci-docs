@@ -37,6 +37,13 @@ We changed the job submission and execution limits as follows.
 | The maximum number of tasks within an array job                 | 75000          | 1000            |
 | The maximum number of any user's running jobs at the same time  | 200            | 0(unlimited)    |
 
+### About known issues
+
+The status of following known issues were changed to close.
+
+* A comupte node can execute only up to 2 jobs each resource type "rt_G.small"
+  and "rt_C.small" (normally up to 4 jobs ).
+
 ## 2019-08-01
 
 | Add / Update / Delete | Software | Version | Previous version |
