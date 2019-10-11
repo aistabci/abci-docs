@@ -293,6 +293,29 @@ To submit or execute a job, specify the following resource type name.</p>
 </tr>
 </tbody>
 </table>
+<p>The job limit of submission and execution for the job service are as follows.</p>
+<table>
+<thead>
+<tr>
+<th align="left">Limitations</th>
+<th align="left">Limits</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">The maximum number of tasks within an array job</td>
+<td align="left">75000</td>
+</tr>
+<tr>
+<td align="left">The maximum number of any user's unfinished jobs at the same time</td>
+<td align="left">1000</td>
+</tr>
+<tr>
+<td align="left">The maximum number of any user's running jobs at the same time</td>
+<td align="left">200</td>
+</tr>
+</tbody>
+</table>
 <p>In the case of Spot service, the job can be executed with priority, by specifying the POSIX priority.</p>
 <table>
 <thead>
