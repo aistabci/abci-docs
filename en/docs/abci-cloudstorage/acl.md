@@ -1,5 +1,5 @@
 
-# Access Control by ACL
+# Access Control (1) - ACL -
 
 By defining Access Control List (ACL), users manage groups who has accessibility to buckets and objects. The default ACL grants the resource owner accessibility to their group's data. By changing default setting, ACL grants control to specific ABCI groups or everyone.
 
@@ -15,7 +15,7 @@ The table below lists grantees. ABCI group is the smallest grantee unit. Therefo
 | Grantee | Description |
 | :--| :--|
 | ABCI group | Specific groups can be allowed to access buckets and object that belong to other groups. All accounts under the group obtain accessibility. |
-| Everyone who has ABCI Storage Account | veryone who has ABCI Cloud Storage account can access resources. Access Key is required for authentication. |
+| Everyone who has ABCI Storage Account | everyone who has ABCI Cloud Storage account can access resources. Access Key is required for authentication. |
 | Anyone | Anyone can access with no authentication. |
 
 Buckets and Objects have different lists of permissions.
