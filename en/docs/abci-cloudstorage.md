@@ -24,8 +24,8 @@ The fee for using the storage is based on the size of data stored in the storage
 
 | Page | Outline |
 |:--|:--|
-| [Account and Access Key](abci-cloudstorage/cs-account.md) | This section explains accounts and access key. |
-| [How To Use](abci-cloudstorage/usage.md) | This section shows basic usage. |
+| [Accounts and Access Keys](abci-cloudstorage/cs-account.md) | This section explains accounts and access keys. |
+| [Usage](abci-cloudstorage/usage.md) | This section shows basic usage. |
 | [Encryption](abci-cloudstorage/encryption.md) | This section explains encryption. |
 | [Access Control (1)](abci-cloudstorage/acl.md) | This section shows how to control accessibility by ACL. Data can be shared between groups. |
 | [Access Control (2)](abci-cloudstorage/policy.md) | This section explains access control which is applicable to user accounts. It actualizes what ACL can not do though, Usage Mangers Account is necessary. |
