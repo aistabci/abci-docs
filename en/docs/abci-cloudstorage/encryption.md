@@ -1,5 +1,5 @@
 
-# Encrypt data
+# Data encryption
 
 ## Outline of Encryption
 
