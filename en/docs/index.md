@@ -32,7 +32,6 @@ All users who use this system are strongly recommended to read this document, as
   - ABCI Cloud Storage:
     - [Overview](abci-cloudstorage.md)
     - [Accounts and Access keys](abci-cloudstorage/cs-account.md)
-    - [Application](abci-cloudstorage/application.md)
     - [Usage](abci-cloudstorage/usage.md)
     - [Data encryption](abci-cloudstorage/encryption.md)
     - [Access Control (1)](abci-cloudstorage/acl.md)

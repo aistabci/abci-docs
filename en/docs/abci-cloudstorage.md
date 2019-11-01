@@ -16,10 +16,11 @@ ABCI Cloud Storage has unique capabilities.
 
     Users can encrypt data transfers between clients and the storage. Users can also encrypt data and store encrypted data in the storage.
 
-To start using ABCI Cloud Storage, Usage Manager of each ABCI group should apply for use on the ABCI User Portal.
+To start using ABCI Cloud Storage, Usage Manager of each ABCI group should apply for use on [ABCI User Portal](https://portal.abci.ai/user/).
 If you are not a Usage Manager, please contact to Usage Managers of your group.
+For details of the operation, refer to [Portal Guide](https://docs.abci.ai/portal/en/).
 
-The fee for using the storage is based on the size of data stored in the storage. As for the fee, see this table (https://abci.ai/en/how_to_use/tariffs.html). The fee is not based on the data transfer size nor the number of times of calling APIs.
+The fee for using the storage is based on the size of data stored in the storage. As for the fee, see [this table](https://abci.ai/en/how_to_use/tariffs.html). The fee is not based on the data transfer size nor the number of times of calling APIs.
 
 | Page | Outline |
 |:--|:--|
