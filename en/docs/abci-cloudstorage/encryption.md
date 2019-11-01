@@ -5,9 +5,9 @@
 
 There are two typical encryptions for cloud storages. The one is Client-Side Encryption (CSE) and another one is Server-Side Encryption (SSE). SSE needs to provide functionality from storage side. The ABCI Cloud Storage supports SSE.
 
-Data is encrypted when it is stored in disks after uploading to the ABCI Cloud Storage. Encrypted data is decryped after retrieving data from the disk. Then the data will be downloaded. Thus, data are decrypted while transferring through the routes though, communications are encrypted by TLS with specifying 'https://s3.abci.ai' as an endpoint.
+Data is encrypted when it is stored in disks after uploading to ABCI Cloud Storage. Encrypted data is decryped after retrieving data from the disk. Then the data will be downloaded. Thus, data are decrypted while transferring through the routes though, communications are encrypted by TLS with specifying 'https://s3.abci.ai' as an endpoint.
 
-Amazon S3 provides SSE shown in the table below. The ABCI Cloud Storage provides SSE functionality equivalent to SSE-S3. However, it is technically slightly different from SSE-S3 provided by Amazon S3, so that APIs available for Amazon S3 don't work for the ABCI Cloud Storage. Neither SSE-C nor SSE KMS are available for the ABCI Cloud Storage.
+Amazon S3 provides SSE shown in the table below. ABCI Cloud Storage provides SSE functionality equivalent to SSE-S3. However, it is technically slightly different from SSE-S3 provided by Amazon S3, so that APIs available for Amazon S3 don't work for ABCI Cloud Storage. Neither SSE-C nor SSE KMS are available for ABCI Cloud Storage.
 
 | SSE Type | Description |
 | :-- | :-- |
@@ -15,7 +15,7 @@ Amazon S3 provides SSE shown in the table below. The ABCI Cloud Storage provides
 | SSE-C | Encryption with key included to request by user. |
 | SSE-KMS | Encryption with key registerd to Key Management Service. |
 
-CSE is available for the ABCI Cloud Storage. However, ABCI doesn't offer Key Management Service (KMS), so users should be careful.
+CSE is available for ABCI Cloud Storage. However, ABCI doesn't offer Key Management Service (KMS), so users should be careful.
 For detailed information, see [Protecting Data Using Client-Side Encryption](https://docs.aws.amazon.com/AmazonS3/latest/dev/UsingClientSideEncryption.html).
 
 | CSE Type | Description |

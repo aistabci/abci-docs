@@ -1,5 +1,5 @@
 
-# Account and Access Key
+# Accounts and Access Keys
 
 ## Cloud Storage Account
 
@@ -7,7 +7,7 @@ There are two types of accounts. The one is 'Cloud Storage Account for user' and
 
 ### Cloud Storage Account for User
 
-This account allows users to use the ABCI Cloud Storage in general ways, such as uploading and downloading data. For example, 'aaa00000aa.1' is a name of a account.
+This account allows users to use ABCI Cloud Storage in general ways, such as uploading and downloading data. For example, 'aaa00000aa.1' is a name of a account.
 
 If an ABCI user belongs to multiple groups and uses ABCI Cloud Storage from the other group, another Cloud Storage Account 'aaa0000aa.2' is given to the user.
 

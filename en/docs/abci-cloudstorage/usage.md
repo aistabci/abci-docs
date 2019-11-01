@@ -1,6 +1,6 @@
-# How to Use the ABCI Cloud Storage
+# How to Use ABCI Cloud Storage
 
-This section describes how to use the ABCI Cloud Storage as a client tool by using AWS Command Line Interface (AWS CLI).
+This section describes how to use ABCI Cloud Storage as a client tool by using AWS Command Line Interface (AWS CLI).
 
 
 ## Load Module
@@ -16,7 +16,7 @@ When using AWS CLI outside ABCI (for example, on your PC), get AWS CLI from [her
 
 ## Configuration
 
-In order to access the ABCI Cloud Storage, ABCI users need to use a Cloud Storage Account that is different from ABCI account. Users are allowed to have multiple Cloud Storage Accounts. Access Key which is a pair of Access Key ID and Secret Access Key is issued for each Cloud Storage Account. If a user belongs to multiple ABCI groups and uses the ABCI Cloud Storage from multiple groups, multiple Cloud Storage Accounts is issued per group. When accessing the ABCI Cloud Storage for the first time, Access Key should be set up in AWS CLI as shown below. Specify `us-east-1` as region name. 
+In order to access ABCI Cloud Storage, ABCI users need to use a Cloud Storage Account that is different from ABCI account. Users are allowed to have multiple Cloud Storage Accounts. Access Key which is a pair of Access Key ID and Secret Access Key is issued for each Cloud Storage Account. If a user belongs to multiple ABCI groups and uses ABCI Cloud Storage from multiple groups, multiple Cloud Storage Accounts is issued per group. When accessing ABCI Cloud Storage for the first time, Access Key should be set up in AWS CLI as shown below. Specify `us-east-1` as region name. 
 ```
 [username@es1 ~]$ aws configure
 AWS Access Key ID [None]: ACCESS-KEY-ID
@@ -42,7 +42,7 @@ When running the AWS commands with the Cloud Storage Account 'aaa00000.2', use t
 
 The configuration is stored in the home directory(i.e. ~/.aws). Therefore, it is not necessarily done in the compute node once it is done in the interacvtive node.
 
-To reissuing or deleting Access Keys, use the ABCI User Portal.
+To reissuing or deleting Access Keys, use ABCI User Portal.
 
 ## Operations
 
@@ -140,7 +140,7 @@ The option '--recursive' can list all objects in a bucket.
 
 ### Copy data (Upload, Download, Copy)
 
-Data can be copied from the file system to a bucket in the ABCI Cloud Storage, from a bucket in the ABCI Cloud Storage to the file system and from a bucket in the ABCI Cloud Storage to another bucket in the ABCI Cloud Storage.
+Data can be copied from the file system to a bucket in ABCI Cloud Storage, from a bucket in ABCI Cloud Storage to the file system and from a bucket in ABCI Cloud Storage to another bucket in ABCI Cloud Storage.
 
 Example: Copy the file '0001.jpg' to the bucket 'dataset-c0541'
 ```
@@ -183,7 +183,7 @@ Time stamps are not be preserved.
 This command can handle objects which have specific prefix with option '--recursive'
 and files which are stored in specific directories.
 
-The example shown next transfers 'annotaitions.zip' in current directory to a bucket 'dataset-c0541' in the ABCI Cloud Storage.
+The example shown next transfers 'annotaitions.zip' in current directory to a bucket 'dataset-c0541' in ABCI Cloud Storage.
 
 ```
 [username@es1 ~]$ aws --endpoint-url https://s3.abci.ai s3 mv annotations.zip s3://dataset-c0541/
@@ -201,7 +201,7 @@ move: s3://dataset-c0541/sensor-1/0002.dat to s3://dataset-c0542/sensor-1/0002.d
 ```
 
 
-### Synchronize Local Directory with the ABCI Cloud Storage
+### Synchronize Local Directory with ABCI Cloud Storage
 
 Here is an example that synchronizes a directory 'sensor2' in current directory and a bucket 'mybucket'. If an option '--delete' is not given, exsiting objects in the bucket will not be deleted and exsiting objects which have same names with the ones in the current directory will be overwritten. When executing same command again, only updated data will be sent.
 ```

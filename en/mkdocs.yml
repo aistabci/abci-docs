@@ -37,7 +37,7 @@ nav:
   - 'NVIDIA GPU Cloud (NGC)': 'ngc.md'
   - 'ABCI Cloud Storage':
     - 'Overview': 'abci-cloudstorage.md'
-    - 'Account and Access key': 'abci-cloudstorage/cs-account.md'
+    - 'Accounts and Access keys': 'abci-cloudstorage/cs-account.md'
     - 'Application': 'abci-cloudstorage/application.md'
     - 'Usage': 'abci-cloudstorage/usage.md'
     - 'Data encryption': 'abci-cloudstorage/encryption.md'
