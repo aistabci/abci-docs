@@ -1,5 +1,16 @@
 # システム更新履歴
 
+## 2019-11-06
+
+| Add / Update / Delete | Software | Version | Previous version |
+|:--|:--|:--|:--|
+| Add | GCC | 7.3.0, 7.4.0 | |
+| Add | sregistry-cli | 0.2.31 | |
+
+その他の修正点は下記の通りです:
+
+* CUDA モジュールが extras/CUPTI へのパスを設定するように変更しました。
+
 ## 2019-10-04
 
 | Add / Update / Delete | Software | Version | Previous version |

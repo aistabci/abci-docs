@@ -1,5 +1,16 @@
 # System Updates
 
+## 2019-11-06
+
+| Add / Update / Delete | Software | Version | Previous version |
+|:--|:--|:--|:--|
+| Add | GCC | 7.3.0, 7.4.0 | |
+| Add | sregistry-cli | 0.2.31 | |
+
+Other fixes are as follows:
+
+* CUDA modules now set the paths to extras/CUPTI.
+
 ## 2019-10-04
 
 | Add / Update / Delete | Software | Version | Previous version |
