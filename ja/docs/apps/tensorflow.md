@@ -55,7 +55,6 @@ WORK     : 実行環境
 [username@es ~]$ qsub -g GROUP submit.sh
 ```
 
-
 ## シングルノードマルチGPU
 
 ### 導入方法
@@ -83,6 +82,9 @@ WORK : 実行環境
 [username@es ~]$ cd ${WORK}
 [username@es ~]$ wget https://raw.githubusercontent.com/uber/horovod/master/examples/tensorflow_mnist.py
 ```
+
+!!! warning
+    以下の説明には誤りが含まれています。Horovodを利用したTensorFlow実行環境を利用したい場合は運用サポートまでご連絡ください。
 
 ジョブスクリプト(ノード内4GPUを使用してtensorflow_mnist.pyを実行するジョブスクリプト例)
 ```
@@ -148,6 +150,9 @@ WORK : 実行環境
 [username@es ~]$ cd ${WORK}
 [username@es ~]$ wget https://raw.githubusercontent.com/uber/horovod/master/examples/tensorflow_mnist.py
 ```
+
+!!! warning
+    以下の説明には誤りが含まれています。Horovodを利用したTensorFlow実行環境を利用したい場合は運用サポートまでご連絡ください。
 
 ジョブスクリプト(ノード内4GPUを使用してtensorflow_mnist.pyを実行するジョブスクリプト例)
 ```

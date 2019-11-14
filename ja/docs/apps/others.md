@@ -59,6 +59,20 @@ INSTALL_DIR : インストールディレクトリのパス
 [username@g0001 build]$ make install 2>&1 | tee make_install.log
 ```
 
+### TensorFlow
+
+[TensorFlow](https://www.tensorflow.org/)のインストール方法は以下を参照ください。
+
+```
+NEW_VENV : インストールするPython仮想環境、またはディレクトリパス
+
+[username@g0001 ~]$ module load python/3.6/3.6.5 cuda/9.0/9.0.176.4 cudnn/7.2/7.2.1
+[username@g0001 ~]$ export LD_LIBRARY_PATH=$CUDA_HOME/extras/CUPTI/lib64:$LD_LIBRARY_PATH
+[username@g0001 ~]$ python3 -m venv NEW_VENV
+[username@g0001 ~]$ source NEW_VENV/bin/activate
+(NEW_VENV) [username@g0001 ~]$ pip3 install tensorflow-gpu
+```
+
 ### Theano
 
 [Theano](http://deeplearning.net/software/theano/)のインストール方法は以下のページを参照ください。
@@ -113,6 +127,19 @@ NEW_VENV : インストールするPython仮想環境、またはディレクト
 [username@g0001 ~]$ python3 -m venv NEW_VENV
 [username@g0001 ~]$ source NEW_VENV/bin/activate
 (NEW_VENV) [username@g0001 ~]$ pip3 install mxnet-cu92
+```
+
+### Chainer
+
+[Chainer](https://chainer.org/)のインストール方法は以下を参照ください。
+
+```
+NEW_VENV : インストールするPython仮想環境、またはディレクトリパス
+
+[username@g0001 ~]$ module load python/3.6/3.6.5 cuda/9.1/9.1.85.3 cudnn/7.0/7.0.5
+[username@g0001 ~]$ python3 -m venv NEW_VENV
+[username@g0001 ~]$ source NEW_VENV/bin/activate
+(NEW_VENV) [username@g0001 ~]$ pip3 install cupy-cuda91 chainer
 ```
 
 ### Keras
