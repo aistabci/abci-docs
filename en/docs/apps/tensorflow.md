@@ -85,6 +85,8 @@ WORK : working directory
 [username@es ~]$ wget https://raw.githubusercontent.com/uber/horovod/master/examples/tensorflow_mnist.py
 ```
 
+!!! warning
+    There are obvious mistakes in the following description. If you want to use the TensorFlow execution environment using Horovod, please contact the operation support.
 
 Job script (an example of tensorflow_mnist.py execution using 4GPUs on node)
 ```
@@ -153,6 +155,8 @@ WORK : working directory
 [username@es ~]$ wget https://raw.githubusercontent.com/uber/horovod/master/examples/tensorflow_mnist.py
 ```
 
+!!! warning
+    There are obvious mistakes in the following description. If you want to use the TensorFlow execution environment using Horovod, please contact the operation support.
 
 Job script (an example of tensorflow_mnist.py execution using 4GPUs on 2nodes)
 ```

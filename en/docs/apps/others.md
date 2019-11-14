@@ -65,6 +65,21 @@ INSTALL_DIR : install path
 [username@g0001 build]$ make install 2>&1 | tee make_install.log
 ```
 
+### TensorFlow
+
+To install [TensorFlow](https://www.tensorflow.org/),
+please follow the instructions below.
+
+```
+NEW_VENV : python virtual environment or path to be installed
+
+[username@g0001 ~]$ module load python/3.6/3.6.5 cuda/9.0/9.0.176.4 cudnn/7.2/7.2.1
+[username@g0001 ~]$ export LD_LIBRARY_PATH=$CUDA_HOME/extras/CUPTI/lib64:$LD_LIBRARY_PATH
+[username@g0001 ~]$ python3 -m venv NEW_VENV
+[username@g0001 ~]$ source NEW_VENV/bin/activate
+(NEW_VENV) [username@g0001 ~]$ pip3 install tensorflow-gpu
+```
+
 ### Theano
 
 Please refer to following page for how to install [Theano](http://deeplearning.net/software/theano/).
@@ -122,6 +137,20 @@ NEW_VENV : python virtual environment or path to be installed
 [username@g0001 ~]$ python3 -m venv NEW_VENV
 [username@g0001 ~]$ source NEW_VENV/bin/activate
 (NEW_VENV) [username@g0001 ~]$ pip3 install mxnet-cu92
+```
+
+### Chainer
+
+To install [Chainer](https://chainer.org/),
+please follow the instructions below.
+
+```
+NEW_VENV : python virtual environment or path to be installed
+
+[username@g0001 ~]$ module load python/3.6/3.6.5 cuda/9.1/9.1.85.3 cudnn/7.0/7.0.5
+[username@g0001 ~]$ python3 -m venv NEW_VENV
+[username@g0001 ~]$ source NEW_VENV/bin/activate
+(NEW_VENV) [username@g0001 ~]$ pip3 install cupy-cuda91 chainer
 ```
 
 ### Keras
