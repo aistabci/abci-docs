@@ -1,10 +1,16 @@
 # GCC 7.3.0
 
-ABCI provides GCC 4.8.5 (default) and GCC 7.3.0 (experimental), but [Environment Modules](../05.md) does not support the latter version (As of May 2019).
+!!! note
+    Since November 2019, GCC 7.3.0 and 7.4.0 have been experimentally provided.
 
-To enable GCC 7.3.0, you need to explicitly set environment variables as follows:
+To enable GCC 7.3.0:
 
 ```
-[username@g0001 ~]$ export PATH=/apps/gcc/7.3.0/bin:$PATH
-[username@g0001 ~]$ export LD_LIBRARY_PATH=/apps/gcc/7.3.0/lib64:$LD_LIBRARY_PATH
+[username@g0001 ~]$ module load gcc/7.3.0
+```
+
+To enable GCC 7.4.0:
+
+```
+[username@g0001 ~]$ module load gcc/7.4.0
 ```
