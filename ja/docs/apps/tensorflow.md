@@ -1,27 +1,49 @@
-ABCIシステムでTensorFlowを利用する場合、利用者がホーム領域またはグループ領域にインストールする必要があります。
+# TensorFlow
+
+ABCIで[TensorFlow](https://www.tensorflow.org/)を利用するための手順について説明します。  
+ABCIシステムでTensorFlowを利用する場合、利用者がホーム領域またはグループ領域にインストールする必要があります。  
+本ドキュメントでは複数GPUを利用する場合に[horovod](https://github.com/horovod/horovod)を利用した並列化を行なっています。  
+horovodは、TensorFlow、Keras、PyTorch、MXNet等の分散処理フレームワークであり、horovodによる並列化を利用した場合にTensorFlowの分散処理を使用する場合よりも、簡単なソース修正で並列処理することができます。
+
 TensorFlowのインストール方法、動作確認方法は以下の通りです（2019年11月12日時点での確認）。
 
 | 使用ライブラリ | 動作確認済みバージョン |
 | :-- | :-- |
 | gcc | 7.4.0 |
 | python | 3.6.5 |
-| cuda | 10.0.130 |
+| cuda | 10.0.130.1 |
 | cudnn | 7.6.4 |
 | nccl | 2.4.8-1 |
 | openmpi | 2.1.6 |
 | tensorflow-gpu | 1.15.0 |
-| horocod | 0.18.2 |
+| horovod | 0.18.2 |
+
+> 動作確認に用いたライブラリは、動作確認時ABCIに導入している最新版で実施しています。  
+> ただしcudaについては最新版(10.1.243)では正常に動作しなかったため、10.0.130.1を使用しています。  
+> またgccについてはTensorFlowのインストールに必要なため使用しています。
+
+本ドキュメントで使用する環境変数一覧は以下の通りです。
+
+| 環境変数 | 説明 |
+| :-- | :-- |
+| HOME | ユーザのホームディレクトリ |
+| NEW_VENV | インストールするPython仮想環境、またはディレクトリパス |
+| WORK | プログラムの実行ディレクトリ |
+| GROUP | ABCI利用グループ |
+
 
 ## TensorFlow
 
 ### 導入方法
 
 [TensorFlow](https://www.tensorflow.org/)のインストール方法は以下を参照ください。
-> NEW_VENV : インストールするPython仮想環境、またはディレクトリパス
+ジョブサービスのOn-demandサービスを利用し、計算ノード上でインストールを実行します。
 ```
-[username@es1 ~]$ qrsh -g グループ名 -l rt_F=1
+[username@es1 ~]$ qrsh -g ${GROUP} -l rt_F=1
 [username@g0001 ~]$ module load gcc/7.4.0
-[username@g0001 ~]$ module load python/3.6/3.6.5 cuda/10.0/10.0.130 cudnn/7.6/7.6.4
+[username@g0001 ~]$ module load python/3.6/3.6.5
+[username@g0001 ~]$ module load cuda/10.0/10.0.130.1
+[username@g0001 ~]$ module load cudnn/7.6/7.6.4
 [username@g0001 ~]$ export LD_LIBRARY_PATH=$CUDA_HOME/extras/CUPTI/lib64:$LD_LIBRARY_PATH
 [username@g0001 ~]$ export NEW_VENV=${HOME}/venv/tensorflow-gpu
 [username@g0001 ~]$ python3 -m venv ${NEW_VENV}
@@ -29,30 +51,33 @@ TensorFlowのインストール方法、動作確認方法は以下の通りで�
 (tensorflow-gpu) [username@g0001 ~]$ pip3 install --upgrade pip
 (tensorflow-gpu) [username@g0001 ~]$ pip3 install --upgrade setuptools
 (tensorflow-gpu) [username@g0001 ~]$ pip3 install tensorflow-gpu==1.15.0
+(tensorflow-gpu) [username@g0001 ~]$ deactivate
 ```
 
-### シングルGPUを用いた深層学習の実行例
+### シングルGPUを用いたディープラーニングの実行例
 
-サンプルプログラムのダウンロード
-> WORK : 実行環境
+ここではTensorflowのサンプルプログラムの1つである[mnist](http://yann.lecun.com/exdb/mnist/)を用いて実行方法を説明します。  
+まずTensorFlowでサンプルプログラムmnistを実行するスクリプトをダウンロードします。
 ```
 [username@es ~]$ cd ${WORK}
 [username@es ~]$ wget https://raw.githubusercontent.com/tensorflow/tensorflow/master/tensorflow/examples/tutorials/mnist/mnist.py
 ```
 
-ジョブスクリプト(ノード内1GPUを使用してmnist.pyを実行するジョブスクリプト例)
-> WORK : 実行環境  
+1ノード内の1GPUを使用してmnist.pyを実行するジョブスクリプト例です。  
+資源タイプrt_G.smallを利用し、導入方法で構築したPython仮想環境を利用して実行します。
 ```
 #!/bin/sh
 
-#$ -l rt_F=1
+#$ -l rt_G.small=1
 #$ -l h_rt=1:23:45
 #$ -j y
 #$ -cwd
 
 source /etc/profile.d/modules.sh
 module load gcc/7.4.0
-module load python/3.6/3.6.5 cuda/10.0/10.0.130 cudnn/7.6/7.6.4
+module load python/3.6/3.6.5
+module load cuda/10.0/10.0.130.1
+module load cudnn/7.6/7.6.4
 export NEW_VENV=${HOME}/venv/tensorflow-gpu
 source ${NEW_VENV}/bin/activate
 
@@ -61,9 +86,7 @@ python3 ${WORK}/mnist.py
 deactivate
 ```
 
-ジョブ投入(1ノードで1GPUを利用する場合)
-> GROUP : ABCI利用グループ  
-> WORK : 実行環境  
+ABCI利用グループを指定し、qsubコマンドでジョブ実行します。
 ```
 [username@es ~]$ cd ${WORK}
 [username@es ~]$ qsub -g GROUP submit.sh
@@ -72,12 +95,18 @@ deactivate
 
 ## TensorFlow + Horovod
 ### 導入方法
-[TensorFlow](https://www.tensorflow.org/)を[horovod](https://github.com/horovod/horovod)で並列化する場合のインストール方法は以下を参照ください。
-> NEW_VENV : インストールするPython仮想環境、またはディレクトリパス
+[TensorFlow](https://www.tensorflow.org/)を[horovod](https://github.com/horovod/horovod)で並列化する場合のインストール方法は以下を参照ください。  
+ジョブサービスのOn-demandサービスを利用し、計算ノード上でインストールを実行します。
+
 ```
-[username@es1 ~]$ qrsh -g グループ名 -l rt_F=1
+[username@es1 ~]$ qrsh -g ${GROUP} -l rt_F=1
 [username@g0001 ~]$ module load gcc/7.4.0
-[username@g0001 ~]$ module load python/3.6/3.6.5 cuda/10.0/10.0.130 cudnn/7.6/7.6.4 nccl/2.4/2.4.8-1 openmpi/2.1.6
+[username@g0001 ~]$ module load python/3.6/3.6.5
+[username@g0001 ~]$ module load cuda/10.0/10.0.130.1
+[username@g0001 ~]$ module load cudnn/7.6/7.6.4
+[username@g0001 ~]$ module load cudnn/7.6/7.6.4
+[username@g0001 ~]$ module load nccl/2.4/2.4.8-1
+[username@g0001 ~]$ module load openmpi/2.1.6
 [username@g0001 ~]$ export LD_LIBRARY_PATH=$CUDA_HOME/extras/CUPTI/lib64:$LD_LIBRARY_PATH
 [username@g0001 ~]$ export NEW_VENV=${HOME}/venv/tensorflow-gpu
 [username@g0001 ~]$ python3 -m venv ${NEW_VENV}
@@ -88,17 +117,32 @@ deactivate
 (tensorflow-gpu)  [username@g0001 ~]$ HOROVOD_NCCL_HOME=$NCCL_HOME HOROVOD_GPU_ALLREDUCE=NCCL HOROVOD_WITH_TENSORFLOW=1 pip3 install horovod
 ```
 
-### シングルノードマルチGPU分散深層学習の実行例
-
-サンプルプログラムのダウンロード
-> WORK : 実行環境
+### シングルノードマルチGPU分散ディープラーニングの実行例
+ここではTensorflowのサンプルプログラムの1つである[mnist](http://yann.lecun.com/exdb/mnist/)を用いて実行方法を説明します。
 ```
 [username@es ~]$ cd ${WORK}
 [username@es ~]$ wget https://raw.githubusercontent.com/uber/horovod/master/examples/tensorflow_mnist.py
 ```
 
-ジョブスクリプト(ノード内4GPUを使用してtensorflow_mnist.pyを実行するジョブスクリプト例)
-> WORK : 実行環境
+1ノード4GPUを使用してtensorflow_mnist.pyを実行するジョブスクリプト例は以下の通りです。  
+資源タイプrt_Fを利用し、導入方法で構築したPython仮想環境を利用して実行します。  
+本スクリプト内で使用する環境変数ならびにmpirunの引数は以下の通りです。  
+rt_Fでノード数を指定することで、自動的にノード数×4のプロセス数のMPI並列プログラムを実行します。
+> horovodの推奨するhorovodrunではマルチノードを利用した並列が実行できないため、mpirunを利用しています。
+
+| 環境変数 | 説明 |
+| :-- | :-- |
+| NUM_NODES | ジョブで使用するノード数(rt_Fで指定した数が自動で入力される) |
+| NUM_GPU_PRE_NODE | 1ノード内で使用するGPU数(計算ノードに4GPU搭載しているため4を指定) |
+| NUM_GPUS_PER_SOCKET | 1ソケットにあるGPU数 |
+| NUM_PROCS | プログラムが使用するプロセス数 |
+| MPIOPTS | mpirunに渡す引数をまとめたもの |
+
+| mpirunの引数 | 説明 |
+| :-- | :-- |
+| -np <num> | プログラムが使用するプロセス数<num>を指定 |
+| -map-by ppr:<num>:node | 1ノードに配置するプロセス数<num>を指定 |
+
 ```
 #!/bin/sh
 
@@ -109,7 +153,11 @@ deactivate
 
 source /etc/profile.d/modules.sh
 module load gcc/7.4.0
-module load python/3.6/3.6.5 cuda/10.0/10.0.130 cudnn/7.6/7.6.4 nccl/2.4/2.4.8-1 openmpi/2.1.6
+module load python/3.6/3.6.5
+module load cuda/10.0/10.0.130.1
+module load cudnn/7.6/7.6.4
+module load nccl/2.4/2.4.8-1
+module load openmpi/2.1.6
 export NEW_VENV=${HOME}/venv/tensorflow-gpu
 source ${NEW_VENV}/bin/activate
 
@@ -127,40 +175,18 @@ mpirun ${MPIOPTS} ${APP}
 deactivate
 ```
 
-ジョブ投入(1ノードで4GPUを利用する場合)
-> GROUP    : ABCI利用グループ  
-> WORK     : 実行環境  
+ABCI利用グループを指定し、qsubコマンドでジョブ実行します。
 ```
 [username@es ~]$ cd ${WORK}
-[username@es ~]$ qsub -g GROUP submit.sh
+[username@es ~]$ qsub -g ${GROUP} submit.sh
 ```
 
-実行結果例
-```
-(snip)
-INFO:tensorflow:loss = 0.00024408945, step = 4990 (0.102 sec)
-I1115 11:45:54.286664 47760267357632 basic_session_run_hooks.py:260] loss = 0.00024408945, step = 4990 (0.102 sec)
-INFO:tensorflow:loss = 0.021003742, step = 4990 (0.102 sec)
-I1115 11:45:54.286758 47618314866112 basic_session_run_hooks.py:260] loss = 0.021003742, step = 4990 (0.102 sec)
-INFO:tensorflow:loss = 0.072201274, step = 4990 (0.102 sec)
-INFO:tensorflow:loss = 1.9928242e-05, step = 4990 (0.102 sec)
-I1115 11:45:54.286807 47528272862656 basic_session_run_hooks.py:260] loss = 0.072201274, step = 4990 (0.102 sec)
-I1115 11:45:54.286818 47704005340608 basic_session_run_hooks.py:260] loss = 1.9928242e-05, step = 4990 (0.102 sec)
-INFO:tensorflow:Saving checkpoints for 5000 into ./checkpoints/model.ckpt.
-I1115 11:45:54.379096 47704005340608 basic_session_run_hooks.py:606] Saving checkpoints for 5000 into ./checkpoints/model.ckpt.
-```
 
-### マルチノードマルチGPU分散深層学習の実行例
+### マルチノードマルチGPU分散ディープラーニングの実行例
 
-サンプルプログラムのダウンロード
-> WORK : 実行環境
-```
-[username@es ~]$ cd ${WORK}
-[username@es ~]$ wget https://raw.githubusercontent.com/uber/horovod/master/examples/tensorflow_mnist.py
-```
-
-ジョブスクリプト(ノード内4GPUを使用してtensorflow_mnist.pyを実行するジョブスクリプト例)
-> WORK : 実行環境
+2ノード4GPUを使用してtensorflow_mnist.pyを実行するジョブスクリプト例は以下の通りです。  
+環境・サンプルプログラムについてはシングルノードマルチGPUと同様のものを利用します。  
+1ノード実行時のスクリプトからrt_Fの値を1から2に変更することで複数ノードを利用したジョブを実行可能です。
 ```
 #!/bin/sh
 
@@ -171,7 +197,11 @@ I1115 11:45:54.379096 47704005340608 basic_session_run_hooks.py:606] Saving chec
 
 source /etc/profile.d/modules.sh
 module load gcc/7.4.0
-module load python/3.6/3.6.5 cuda/10.0/10.0.130 cudnn/7.6/7.6.4 nccl/2.4/2.4.8-1 openmpi/2.1.6
+module load python/3.6/3.6.5
+module load cuda/10.0/10.0.130.1
+module load cudnn/7.6/7.6.4
+module load nccl/2.4/2.4.8-1
+module load openmpi/2.1.6
 export NEW_VENV=${HOME}/venv/tensorflow-gpu
 source ${NEW_VENV}/bin/activate
 
@@ -189,25 +219,9 @@ mpirun ${MPIOPTS} ${APP}
 deactivate
 ```
 
-ジョブ投入(2ノードで4GPUを利用する場合)
-> GROUP    : ABCI利用グループ  
-> WORK     : 実行環境  
+ABCI利用グループを指定し、ジョブスクリプトをqsubコマンドでジョブ実行します。  
+ジョブスクリプト内で使用するノード数を指定しているため、ジョブ実行コマンドはシングルノード実行時と同様です。
 ```
 [username@es ~]$ cd ${WORK}
-[username@es ~]$ qsub -g GROUP submit.sh
-```
-
-実行結果例
-```
-(snip)
-INFO:tensorflow:loss = 1.5364076e-05, step = 2490 (0.102 sec)
-I1115 12:10:17.351316 47108070133184 basic_session_run_hooks.py:260] loss = 1.5364076e-05, step = 2490 (0.102 sec)
-I1115 12:10:17.351280 47541720673728 basic_session_run_hooks.py:260] loss = 0.037832655, step = 2490 (0.102 sec)
-I1115 12:10:17.351558 47249233841600 basic_session_run_hooks.py:260] loss = 0.0021181286, step = 2490 (0.102 sec)
-INFO:tensorflow:loss = 0.0002751056, step = 2490 (0.102 sec)
-I1115 12:10:17.351346 47446035205568 basic_session_run_hooks.py:260] loss = 0.0002751056, step = 2490 (0.102 sec)
-INFO:tensorflow:loss = 8.130686e-05, step = 2490 (0.102 sec)
-I1115 12:10:17.351369 47244077174208 basic_session_run_hooks.py:260] loss = 8.130686e-05, step = 2490 (0.102 sec)
-INFO:tensorflow:Saving checkpoints for 2500 into ./checkpoints/model.ckpt.
-I1115 12:10:17.443821 47844145257920 basic_session_run_hooks.py:606] Saving checkpoints for 2500 into ./checkpoints/model.ckpt.
+[username@es ~]$ qsub -g ${GROUP} submit.sh
 ```
