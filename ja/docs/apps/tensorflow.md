@@ -1,31 +1,30 @@
 # TensorFlow
 
-ABCIシステムで[TensorFlow](https://www.tensorflow.org/)を利用するための手順について説明します。
-ABCIシステムでTensorFlowを利用する場合、利用者がホーム領域またはグループ領域にインストールする必要があります。
+ここでは、[TensorFlow](https://www.tensorflow.org/)をpipでインストールして利用する手順を説明します。具体的には、TensorFlowをインストールして実行する手順と、TensorFlowと[Horovod](https://github.com/horovod/horovod)をインストールして分散学習を実行する手順を示します。
 
-本ドキュメントでは、複数GPU、複数ノードを用いてTensorFlowによる分散学習を実行する場合には、[Horovod](https://github.com/horovod/horovod)を使用しています。
 Horovodは、TensorFlow、Keras、PyTorch、MXNetに対応した分散学習フレームワークです。
 Horovodを使用すると、ABCIシステムが搭載するInfiniBandを用いた高速な分散学習が容易に実現できます。
 また、TensorFlow組み込みの分散処理の仕組みである[Distributed TensorFlow](https://www.tensorflow.org/guide/distributed_training)を使うよりも、Horovodを使用する方が、シングルGPU用コードを複数GPUに対応させる時の修正が少ない、高い性能が得られる、と言われています（[参考1](https://eng.uber.com/horovod/)、[参考2](https://github.com/horovod/horovod#why-not-traditional-distributed-tensorflow)）。
 
-動作確認は2019年11月12日に行なっています。
+動作確認は2019年11月12日に行っています。
+
 TensorFlow、Horovodのバージョンは以下の通りです。
 
 | 使用ライブラリ | 動作確認済みバージョン |
 | :-- | :-- |
 | tensorflow-gpu | 1.15.0 |
-| horovod | 0.18.2 |
+| horovod        | 0.18.2 |
 
 本ドキュメントで使用する、ABCIが提供するモジュールとそのバージョンは以下の通りです。
 
 | 使用モジュール | 動作確認済みバージョン |
 | :-- | :-- |
-| gcc | 7.4.0 |
-| python | 3.6.5 |
-| cuda | 10.0.130.1 |
-| cudnn | 7.6.4 |
-| nccl | 2.4.8-1 |
-| openmpi | 2.1.6 |
+| gcc     | 7.4.0      |
+| python  | 3.6.5      |
+| cuda    | 10.0.130.1 |
+| cudnn   | 7.6.4      |
+| nccl    | 2.4.8-1    |
+| openmpi | 2.1.6      |
 
 !!! warning
     動作確認に用いたライブラリは、動作確認時ABCIに導入している最新版で実施しています。
@@ -53,7 +52,6 @@ TensorFlowのインストール方法は以下を参照ください。
 [username@g0001 ~]$ module load python/3.6/3.6.5
 [username@g0001 ~]$ module load cuda/10.0/10.0.130.1
 [username@g0001 ~]$ module load cudnn/7.6/7.6.4
-[username@g0001 ~]$ export LD_LIBRARY_PATH=${CUDA_HOME}/extras/CUPTI/lib64:$LD_LIBRARY_PATH
 [username@g0001 ~]$ export NEW_VENV=${HOME}/venv/tensorflow-gpu
 [username@g0001 ~]$ python3 -m venv ${NEW_VENV}
 [username@g0001 ~]$ source ${NEW_VENV}/bin/activate
@@ -114,10 +112,8 @@ TensorFlowをHorovodで並列化する場合のインストール方法は以下
 [username@g0001 ~]$ module load python/3.6/3.6.5
 [username@g0001 ~]$ module load cuda/10.0/10.0.130.1
 [username@g0001 ~]$ module load cudnn/7.6/7.6.4
-[username@g0001 ~]$ module load cudnn/7.6/7.6.4
 [username@g0001 ~]$ module load nccl/2.4/2.4.8-1
 [username@g0001 ~]$ module load openmpi/2.1.6
-[username@g0001 ~]$ export LD_LIBRARY_PATH=${CUDA_HOME}/extras/CUPTI/lib64:$LD_LIBRARY_PATH
 [username@g0001 ~]$ export NEW_VENV=${HOME}/venv/tensorflow-gpu
 [username@g0001 ~]$ python3 -m venv ${NEW_VENV}
 [username@g0001 ~]$ source ${NEW_VENV}/bin/activate
