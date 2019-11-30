@@ -1,10 +1,16 @@
 # GCC 7.3.0 の利用
 
-ABCIには標準のGCC 4.8.5の他に、GCC 7.3.0が試験的にインストールされていますが、[Environment Modules](../05.md)が提供されていません（2019年5月時点）。
+!!! note
+    2019年11月より試験的にGCC 7.3.0, 7.4.0の提供を開始しました。
 
-下記のように明示的に環境変数を設定することで、GCC 7.3.0を利用することができます。
+GCC 7.3.0を利用する場合:
 
 ```
-[username@g0001 ~]$ export PATH=/apps/gcc/7.3.0/bin:$PATH
-[username@g0001 ~]$ export LD_LIBRARY_PATH=/apps/gcc/7.3.0/lib64:$LD_LIBRARY_PATH
+[username@g0001 ~]$ module load gcc/7.3.0
+```
+
+GCC 7.4.0を利用する場合:
+
+```
+[username@g0001 ~]$ module load gcc/7.4.0
 ```
