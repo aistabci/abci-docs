@@ -28,7 +28,6 @@ TensorFlow、Horovodのバージョンは以下の通りです。
 
 !!! warning
     動作確認に用いたライブラリは、動作確認時ABCIに導入している最新版で実施しています。
-    ただしcudaについては最新版(10.1.243)では正常に動作しなかったため、10.0.130.1を使用しています。
     またgcc7.4.0についてはTensorFlowのインストールに必要なため使用しています。
 
 本ドキュメントで使用する環境変数一覧は以下の通りです。
@@ -36,73 +35,82 @@ TensorFlow、Horovodのバージョンは以下の通りです。
 | 環境変数 | 説明 |
 | :-- | :-- |
 | HOME | ユーザのホームディレクトリ |
-| NEW_VENV | インストールするPython仮想環境、またはディレクトリパス |
 | WORK | プログラムの実行ディレクトリ |
 
+## TensorFlow の利用 { #using-tensorflow }
 
-## TensorFlow
+### 導入方法 { #installation }
 
-### 導入方法
+計算ノードを一台占有し、Python仮想環境`$HOME/venv/tensorflow-gpu`を作成し、`pip`で`tensorflow-gpu`をインストールします。
 
-TensorFlowのインストール方法は以下を参照ください。
-ジョブサービスのOn-demandサービスを利用し、計算ノード上でインストールを実行します。
 ```
 [username@es1 ~]$ qrsh -g grpname -l rt_F=1
-[username@g0001 ~]$ module load gcc/7.4.0
-[username@g0001 ~]$ module load python/3.6/3.6.5
-[username@g0001 ~]$ module load cuda/10.0/10.0.130.1
-[username@g0001 ~]$ module load cudnn/7.6/7.6.4
-[username@g0001 ~]$ export NEW_VENV=${HOME}/venv/tensorflow-gpu
-[username@g0001 ~]$ python3 -m venv ${NEW_VENV}
-[username@g0001 ~]$ source ${NEW_VENV}/bin/activate
+[username@g0001 ~]$ module load python/3.6/3.6.5 cuda/10.0/10.0.130.1 cudnn/7.6/7.6.4
+[username@g0001 ~]$ python3 -m venv $HOME/venv/tensorflow-gpu
+[username@g0001 ~]$ source $HOME/venv/tensorflow-gpu/activate
 (tensorflow-gpu) [username@g0001 ~]$ pip3 install --upgrade pip
 (tensorflow-gpu) [username@g0001 ~]$ pip3 install --upgrade setuptools
 (tensorflow-gpu) [username@g0001 ~]$ pip3 install tensorflow-gpu==1.15.0
-(tensorflow-gpu) [username@g0001 ~]$ exit
-[username@es1 ~]$
 ```
 
-### シングルGPUを用いた学習の実行例
+次回以降は、以下のようにモジュールの読み込みとPython環境のアクティベートだけでTensorFlowを利用できます。
 
-ここではTensorflowのサンプルプログラムの1つである[mnist](http://yann.lecun.com/exdb/mnist/)を用いて実行方法を説明します。
-まずTensorFlowでサンプルプログラムmnistを実行するプログラムをダウンロードします。
 ```
+[username@es1 ~]$ qrsh -g grpname -l rt_F=1
+[username@g0001 ~]$ module load python/3.6/3.6.5 cuda/10.0/10.0.130.1 cudnn/7.6/7.6.4
+[username@g0001 ~]$ source $HOME/venv/tensorflow-gpu/activate
+```
+
+### 実行方法
+
+ここでは、Tensorflowのサンプルプログラムの1つである[mnist](http://yann.lecun.com/exdb/mnist/)を用いて実行方法を説明します。
+
+まず、サンプルプログラムをダウンロードします。
+
+```
+[username@es1 ~]$ mkdir -p ${WORK}
 [username@es1 ~]$ cd ${WORK}
 [username@es1 ~]$ wget https://raw.githubusercontent.com/tensorflow/tensorflow/master/tensorflow/examples/tutorials/mnist/mnist.py
 ```
 
-1ノード内の1GPUを使用してmnist.pyを実行するジョブスクリプト例です。
-資源タイプrt_G.smallを利用し、導入方法で構築したPython仮想環境を利用して実行します。
+計算ノードを一台占有し、導入したTensorFlowの利用環境を設定し、`mnist.py`を実行します。
+
+```
+[username@es1 ~]$ qrsh -g grpname -l rt_F=1
+[username@g0001 ~]$ module load python/3.6/3.6.5 cuda/10.0/10.0.130.1 cudnn/7.6/7.6.4
+[username@g0001 ~]$ source $HOME/venv/tensorflow-gpu/activate
+[username@g0001 ~]$ cd $WORK
+[username@g0001 ~]$ python3 ./mnist.py
+```
+
+バッチ利用時のジョブスクリプトでも同様のことができます。以下では、1ノード内の1GPUを使用して実行しています。
+
 ```
 #!/bin/sh
-
 #$ -l rt_G.small=1
 #$ -l h_rt=1:23:45
-#$ -j y
 #$ -cwd
 
 source /etc/profile.d/modules.sh
-module load gcc/7.4.0
-module load python/3.6/3.6.5
-module load cuda/10.0/10.0.130.1
-module load cudnn/7.6/7.6.4
-export NEW_VENV=${HOME}/venv/tensorflow-gpu
-source ${NEW_VENV}/bin/activate
+module load python/3.6/3.6.5 cuda/10.0/10.0.130.1 cudnn/7.6/7.6.4
+source ${HOME}/venv/tensorflow-gpu/bin/activate
 
 python3 ${WORK}/mnist.py
 
 deactivate
 ```
 
-ABCI利用グループを指定し、qsubコマンドでジョブ実行します。
+qsubコマンドでジョブ実行します。
+
 ```
-[username@es1 ~]$ cd ${WORK}
+[username@es1 ~]$ cd $WORK
 [username@es1 ~]$ qsub -g grpname submit.sh
 ```
 
+## TensorFlow + Horovod の利用 { #using-tensorflow-horovod }
 
-## TensorFlow + Horovod
-### 導入方法
+### インストール { #installation_1 }
+
 TensorFlowをHorovodで並列化する場合のインストール方法は以下を参照ください。
 ジョブサービスのOn-demandサービスを利用し、計算ノード上でインストールを実行します。
 
