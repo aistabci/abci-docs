@@ -2,10 +2,6 @@
 
 ここでは、[TensorFlow](https://www.tensorflow.org/)をpipでインストールして利用する手順を説明します。具体的には、TensorFlowをインストールして実行する手順と、TensorFlowと[Horovod](https://github.com/horovod/horovod)をインストールして分散学習を実行する手順を示します。
 
-Horovodは、TensorFlow、Keras、PyTorch、MXNetに対応した分散学習フレームワークです。
-Horovodを使用すると、ABCIシステムが搭載するInfiniBandを用いた高速な分散学習が容易に実現できます。
-また、TensorFlow組み込みの分散処理の仕組みである[Distributed TensorFlow](https://www.tensorflow.org/guide/distributed_training)を使うよりも、Horovodを使用する方が、シングルGPU用コードを複数GPUに対応させる時の修正が少ない、高い性能が得られる、と言われています（[参考1](https://eng.uber.com/horovod/)、[参考2](https://github.com/horovod/horovod#why-not-traditional-distributed-tensorflow)）。
-
 動作確認は2019年11月12日に行っています。
 
 TensorFlow、Horovodのバージョンは以下の通りです。
@@ -108,6 +104,10 @@ qsubコマンドでジョブ実行します。
 ```
 
 ## TensorFlow + Horovod の利用 { #using-tensorflow-horovod }
+
+Horovodは、TensorFlow、Keras、PyTorch、MXNetに対応した分散学習フレームワークです。
+Horovodを使用すると、ABCIシステムが搭載するInfiniBandを用いた高速な分散学習が容易に実現できます。
+また、TensorFlow組み込みの分散処理の仕組みである[Distributed TensorFlow](https://www.tensorflow.org/guide/distributed_training)を使うよりも、Horovodを使用する方が、シングルGPU用コードを複数GPUに対応させる時の修正が少ない、高い性能が得られる、と言われています（[参考1](https://eng.uber.com/horovod/)、[参考2](https://github.com/horovod/horovod#why-not-traditional-distributed-tensorflow)）。
 
 ### インストール { #installation_1 }
 
