@@ -7,13 +7,10 @@ Singularity Global Client (``sregistry``コマンド）はSingularityで使用�
 事前に次の手順を実施することで``sregistry``コマンドをABCIで利用できます。
 
 ```
-[username@es1 ~]$ module load python/3.6/3.6.5 singularity/2.6.1
-[username@es1 ~]$ export PATH=/apps/sregistry-cli/0.2.31/bin:$PATH
-
+[username@es1 ~]$ module load singularity/2.6.1 sregistry-cli/0.2.31
 ```
 
-1. python、singularityモジュールを読み込みます
-1. 環境変数``PATH``に``sregistry``コマンドへのパスを追加します
+* singularityモジュールとsregistryモジュールを読み込みます
 
 
 ## レジストリ毎のチュートリアル
@@ -29,10 +26,9 @@ Singularity Global Client (``sregistry``コマンド）はSingularityで使用�
     手順は[AWS CLIの利用](/tips/awscli/){:target="aws_cli"}の[アクセストークンの登録](/tips/awscli/#_2){:target="aws_cli"}手順を完了していることを前提としています。
 
 
-Singularity Global ClientとAmazon ECR利用に必要なモジュールの読み込みとPATH環境変数を追加します。
+Singularity Global ClientとAmazon ECR利用に必要なモジュールの読み込みます。
 ```
-[username@es1 ~]$ module load python/3.6/3.6.5 singularity/2.6.1 aws-cli/1.16.194
-[username@es1 ~]$ export PATH=/apps/sregistry-cli/0.2.31/bin:$PATH
+[username@es1 ~]$ module load singularity/2.6.1 sregistry-cli/0.2.31 aws-cli/1.16.194
 ```
 
 
@@ -56,7 +52,7 @@ Amazon ECRを利用するための設定を行います。``aws ecr describe-rep
 ```
 
 イメージを取得し、``mytensorflow.simg``ファイルとして保存します。
-次回以降はモジュールの読み込みとPATH環境変数の追加、umask変更だけで済みます。
+次回以降はモジュールの読み込みとumask変更だけで済みます。
 ```
 [username@es1 ~]$ umask
 0027
@@ -73,4 +69,14 @@ Amazon ECRを利用するための設定を行います。``aws ecr describe-rep
   ```
 aws://<repositoryName>:<imageTag>
   ```
+
+取得したイメージをインタラクティブジョブとして実行します。
+```
+[username@es1 ~]$ qrsh -g <ABCI利用グループ> -l rt_F=1
+[username@g0001 ~]$ module load singularity/2.6.1
+[username@g0001 ~]$ singularity shell --nv ./mytensorflow.simg
+Singularity: Invoking an interactive shell within container...
+
+Singularity mytensorflow.simg:~> 
+```
 

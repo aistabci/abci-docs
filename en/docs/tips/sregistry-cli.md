@@ -7,13 +7,10 @@ Singularity Global Client (``sregistry`` command) is software for managing image
 The sregistry command can be used with ABCI by performing the following procedure in advance.
 
 ```
-[username@es1 ~]$ module load python/3.6/3.6.5 singularity/2.6.1
-[username@es1 ~]$ export PATH=/apps/sregistry-cli/0.2.31/bin:$PATH
-
+[username@es1 ~]$ module load singularity/2.6.1 sregistry-cli/0.2.31
 ```
 
-1. Load python and singularity module
-1. Add the path to the sregistry command to the environment variable PATH
+* Load singularity module and sregistry-cli module
 
 
 ## Client tutorials
@@ -29,10 +26,9 @@ As an execution example, the following shows the procedure for pull the latest-g
     This procedure assumes that you have completed [Register access token](/tips/awscli/#register-access-token){:target="aws_cli"} in [AWS CLI](/tips/awscli/){:target="aws_cli"}.
 
 
-Load modules necessary for using Singularity Global Client and Amazon ECR, and add PATH environment variable.
+Load modules necessary for using Singularity Global Client and Amazon ECR.
 ```
-[username@es1 ~]$ module load python/3.6/3.6.5 singularity/2.6.1 aws-cli/1.16.194
-[username@es1 ~]$ export PATH=/apps/sregistry-cli/0.2.31/bin:$PATH
+[username@es1 ~]$ module load singularity/2.6.1 sregistry-cli/0.2.31 aws-cli/1.16.194
 ```
 
 
@@ -56,7 +52,7 @@ Set up to use Amazon ECR. Check ``<registryId>`` and ``<region>`` with ``aws ecr
 ```
 
 Get the image and save it as a ``mytensorflow.simg`` file.
-From the next time, you only need to load the module, add the PATH environment variable, and change the umask.
+From the next time, you only need to load the module and change the umask.
 ```
 [username@es1 ~]$ umask
 0027
@@ -73,3 +69,12 @@ From the next time, you only need to load the module, add the PATH environment v
 aws://<repositoryName>:<imageTag>
   ```
 
+Execute pulled image as interactive job.
+```
+[username@es1 ~]$ qrsh -g <ABCI user group> -l rt_F=1
+[username@g0001 ~]$ module load singularity/2.6.1
+[username@g0001 ~]$ singularity shell --nv ./mytensorflow.simg
+Singularity: Invoking an interactive shell within container...
+
+Singularity mytensorflow.simg:~> 
+```

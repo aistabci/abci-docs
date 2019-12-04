@@ -28,6 +28,7 @@
     - [Tera Termの利用](tips/tera-term.md)
     - [PuTTYの利用](tips/putty.md)
     - [Jupyter Notebookの利用](tips/jupyter-notebook.md)
+    - [Singularity Global Clientの利用](tips/sregistry-cli.md)
   - [NVIDIA GPU Cloud (NGC)](ngc.md)
   - ABCI クラウドストレージ:
     - [概要](abci-cloudstorage.md)
