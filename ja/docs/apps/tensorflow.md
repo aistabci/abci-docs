@@ -111,8 +111,7 @@ Horovodを使用すると、ABCIシステムが搭載するInfiniBandを用い�
 
 ### インストール { #installation_1 }
 
-TensorFlowをHorovodで並列化する場合のインストール方法は以下を参照ください。
-ジョブサービスのOn-demandサービスを利用し、計算ノード上でインストールを実行します。
+計算ノードを一台占有し、Python仮想環境`$HOME/venv/tensorflow-gpu`を作成し、`pip`で`tensorflow-gpu`並びに`horovod`をインストールします。
 
 ```
 [username@es1 ~]$ qrsh -g grpname -l rt_F=1
@@ -122,9 +121,8 @@ TensorFlowをHorovodで並列化する場合のインストール方法は以下
 [username@g0001 ~]$ module load cudnn/7.6/7.6.4
 [username@g0001 ~]$ module load nccl/2.4/2.4.8-1
 [username@g0001 ~]$ module load openmpi/2.1.6
-[username@g0001 ~]$ export NEW_VENV=${HOME}/venv/tensorflow-gpu
-[username@g0001 ~]$ python3 -m venv ${NEW_VENV}
-[username@g0001 ~]$ source ${NEW_VENV}/bin/activate
+[username@g0001 ~]$ python3 -m venv $HOME/venv/tensorflow-gpu
+[username@g0001 ~]$ source $HOME/venv/tensorflow-gpu/bin/activate
 (tensorflow-gpu) [username@g0001 ~]$ pip3 install --upgrade pip
 (tensorflow-gpu) [username@g0001 ~]$ pip3 install --upgrade setuptools
 (tensorflow-gpu) [username@g0001 ~]$ pip3 install tensorflow-gpu==1.15.0
@@ -133,8 +131,8 @@ TensorFlowをHorovodで並列化する場合のインストール方法は以下
 [username@es1 ~]$
 ```
 
+### 実行方法
 
-### シングルノード複数GPUを用いた分散学習の実行例
 ここではTensorFlowのサンプルプログラムの1つであるmnistを用いて実行方法を説明します。
 まずHorovodによりTensorFlowを並列化したサンプルプログラムmnistを実行するプログラムをダウンロードします。
 
@@ -143,9 +141,18 @@ TensorFlowをHorovodで並列化する場合のインストール方法は以下
 [username@es1 ~]$ wget https://raw.githubusercontent.com/uber/horovod/master/examples/tensorflow_mnist.py
 ```
 
-ABCIの1計算ノードが搭載する、全4GPUを使用して分散学習するジョブスクリプト例は以下の通りです。
-資源タイプrt_Fを利用し、導入方法で構築したPython仮想環境を利用して実行します。
-4 MPIプロセスを起動し、各MPIプロセスが1 GPUを用いた学習を行います。
+計算ノードを一台占有し、導入したTensorFlow+horovodの利用環境を設定し、`tensorflow_mnist.py`を実行します。
+
+```
+[username@es1 ~]$ qrsh -g grpname -l rt_F=1
+[username@g0001 ~]$ module load gcc/7.4.0　python/3.6/3.6.5 cuda/10.0/10.0.130.1 cudnn/7.6/7.6.4　nccl/2.4/2.4.8-1　openmpi/2.1.6
+[username@g0001 ~]$ source $HOME/venv/tensorflow-gpu/activate
+[username@g0001 ~]$ cd $WORK
+[username@g0001 ~]$ python3 horovodrun -n 4 ./tensorflow_mnist.py
+```
+
+バッチ利用時のジョブスクリプトでも同様のことができます。
+以下のスクリプトでは、2ノードでそれぞれ4 MPIプロセスを起動し、各MPIプロセスが1 GPUを用いた学習を行います。
 
 ```
 #!/bin/sh
@@ -162,8 +169,7 @@ module load cuda/10.0/10.0.130.1
 module load cudnn/7.6/7.6.4
 module load nccl/2.4/2.4.8-1
 module load openmpi/2.1.6
-export NEW_VENV=${HOME}/venv/tensorflow-gpu
-source ${NEW_VENV}/bin/activate
+source $HOME/venv/tensorflow-gpu/bin/activate
 
 NUM_NODES=${NHOSTS}
 NUM_GPUS_PER_NODE=4
@@ -194,59 +200,12 @@ deactivate
 
 !!! warning
     Horovodの推奨するhorovodrunではマルチノードを利用した並列が実行できません。
-    シングルノードの実行ではhorovodrunを利用可能ですが、本ドキュメントではシングルノードでもmpirunを利用しています。
+    シングルノードの実行ではhorovodrunを利用可能ですが、マルチノードの実行ではmpirunを利用します。
 
 
-ABCI利用グループを指定し、qsubコマンドでジョブ実行します。
+qsubコマンドでジョブ実行します。
+
 ```
-[username@es ~]$ cd ${WORK}
-[username@es ~]$ qsub -g grpname submit.sh
-```
-
-
-### 複数ノード複数GPUを用いた分散学習の実行例
-
-2ノード8GPUを使用する場合の例を示します。
-
-環境・サンプルプログラムについてはシングルノード複数GPUと同一のものを使用します。
-シングルノード複数GPUの場合のジョブスクリプトにおいて、資源量の指定のみ変更します（rt_F=2）。
-
-より多くのノードを使用する場合は、rt_Fの値に使用したいノード数を設定します。
-この時、「ノード数 x 4」のGPUが使用されます。
-```
-#!/bin/sh
-
-#$ -l rt_F=2         # ここのみ変更
-#$ -l h_rt=1:23:45
-#$ -j y
-#$ -cwd
-
-source /etc/profile.d/modules.sh
-module load gcc/7.4.0
-module load python/3.6/3.6.5
-module load cuda/10.0/10.0.130.1
-module load cudnn/7.6/7.6.4
-module load nccl/2.4/2.4.8-1
-module load openmpi/2.1.6
-export NEW_VENV=${HOME}/venv/tensorflow-gpu
-source ${NEW_VENV}/bin/activate
-
-NUM_NODES=${NHOSTS}
-NUM_GPUS_PER_NODE=4
-NUM_PROCS=$(expr ${NUM_NODES} \* ${NUM_GPUS_PER_NODE})
-
-MPIOPTS="-np ${NUM_PROCS} -map-by ppr:${NUM_GPUS_PER_NODE}:node"
-
-APP="python3 ${WORK}/tensorflow_mnist.py"
-
-mpirun ${MPIOPTS} ${APP}
-
-deactivate
-```
-
-ABCI利用グループを指定し、ジョブスクリプトをqsubコマンドでジョブ実行します。
-ジョブスクリプト内で使用するノード数を指定しているため、ジョブ実行コマンドはシングルノード実行時と同様です。
-```
-[username@es ~]$ cd ${WORK}
-[username@es ~]$ qsub -g grpname submit.sh
+[username@es1 ~]$ cd $WORK
+[username@es1 ~]$ qsub -g grpname submit.sh
 ```
