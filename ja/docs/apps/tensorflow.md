@@ -45,7 +45,7 @@ TensorFlow、Horovodのバージョンは以下の通りです。
 [username@g0001 ~]$ module load cuda/10.0/10.0.130.1
 [username@g0001 ~]$ module load cudnn/7.6/7.6.4
 [username@g0001 ~]$ python3 -m venv $HOME/venv/tensorflow-gpu
-[username@g0001 ~]$ source $HOME/venv/tensorflow-gpu/activate
+[username@g0001 ~]$ source $HOME/venv/tensorflow-gpu/bin/activate
 (tensorflow-gpu) [username@g0001 ~]$ pip3 install --upgrade pip
 (tensorflow-gpu) [username@g0001 ~]$ pip3 install --upgrade setuptools
 (tensorflow-gpu) [username@g0001 ~]$ pip3 install tensorflow-gpu==1.15.0
@@ -60,7 +60,7 @@ TensorFlow、Horovodのバージョンは以下の通りです。
 [username@g0001 ~]$ module load python/3.6/3.6.5
 [username@g0001 ~]$ module load cuda/10.0/10.0.130.1
 [username@g0001 ~]$ module load cudnn/7.6/7.6.4
-[username@g0001 ~]$ source $HOME/venv/tensorflow-gpu/activate
+[username@g0001 ~]$ source $HOME/venv/tensorflow-gpu/bin/activate
 ```
 
 ### 実行方法
@@ -82,7 +82,7 @@ TensorFlow、Horovodのバージョンは以下の通りです。
 [username@g0001 ~]$ module load python/3.6/3.6.5
 [username@g0001 ~]$ module load cuda/10.0/10.0.130.1
 [username@g0001 ~]$ module load cudnn/7.6/7.6.4
-[username@g0001 ~]$ source $HOME/venv/tensorflow-gpu/activate
+[username@g0001 ~]$ source $HOME/venv/tensorflow-gpu/bin/activate
 (tensorflow-gpu) [username@g0001 ~]$ cd $WORK
 (tensorflow-gpu) [username@g0001 ~]$ python3 ./mnist.py
 ```
@@ -161,7 +161,7 @@ Horovodを使用すると、ABCIシステムが搭載するInfiniBandを用い�
 [username@g0001 ~]$ module load cudnn/7.6/7.6.4
 [username@g0001 ~]$ module load nccl/2.4/2.4.8-1
 [username@g0001 ~]$ module load openmpi/2.1.6
-[username@g0001 ~]$ source $HOME/venv/tensorflow-gpu/activate
+[username@g0001 ~]$ source $HOME/venv/tensorflow-gpu/bin/activate
 (tensorflow-gpu) [username@g0001 ~]$ cd $WORK
 (tensorflow-gpu) [username@g0001 ~]$ python3 horovodrun -n 4 ./tensorflow_mnist.py
 ```
