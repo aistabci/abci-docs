@@ -24,7 +24,7 @@ TensorFlow、Horovodのバージョンは以下の通りです。
 
 !!! warning
     動作確認に用いたライブラリは、動作確認時ABCIに導入している最新版で実施しています。
-    またgcc7.4.0についてはTensorFlowのインストールに必要なため使用しています。
+    またgcc7.4.0についてはHorovodのインストールに必要なため使用しています。
 
 本ドキュメントで使用する環境変数一覧は以下の通りです。
 
@@ -41,19 +41,25 @@ TensorFlow、Horovodのバージョンは以下の通りです。
 
 ```
 [username@es1 ~]$ qrsh -g grpname -l rt_F=1
-[username@g0001 ~]$ module load python/3.6/3.6.5 cuda/10.0/10.0.130.1 cudnn/7.6/7.6.4
+[username@g0001 ~]$ module load python/3.6/3.6.5
+[username@g0001 ~]$ module load cuda/10.0/10.0.130.1
+[username@g0001 ~]$ module load cudnn/7.6/7.6.4
 [username@g0001 ~]$ python3 -m venv $HOME/venv/tensorflow-gpu
 [username@g0001 ~]$ source $HOME/venv/tensorflow-gpu/activate
 (tensorflow-gpu) [username@g0001 ~]$ pip3 install --upgrade pip
 (tensorflow-gpu) [username@g0001 ~]$ pip3 install --upgrade setuptools
 (tensorflow-gpu) [username@g0001 ~]$ pip3 install tensorflow-gpu==1.15.0
+(tensorflow-gpu) [username@g0001 ~]$ exit
+[username@es1 ~]$
 ```
 
 次回以降は、以下のようにモジュールの読み込みとPython環境のアクティベートだけでTensorFlowを利用できます。
 
 ```
 [username@es1 ~]$ qrsh -g grpname -l rt_F=1
-[username@g0001 ~]$ module load python/3.6/3.6.5 cuda/10.0/10.0.130.1 cudnn/7.6/7.6.4
+[username@g0001 ~]$ module load python/3.6/3.6.5
+[username@g0001 ~]$ module load cuda/10.0/10.0.130.1
+[username@g0001 ~]$ module load cudnn/7.6/7.6.4
 [username@g0001 ~]$ source $HOME/venv/tensorflow-gpu/activate
 ```
 
@@ -73,10 +79,12 @@ TensorFlow、Horovodのバージョンは以下の通りです。
 
 ```
 [username@es1 ~]$ qrsh -g grpname -l rt_F=1
-[username@g0001 ~]$ module load python/3.6/3.6.5 cuda/10.0/10.0.130.1 cudnn/7.6/7.6.4
+[username@g0001 ~]$ module load python/3.6/3.6.5
+[username@g0001 ~]$ module load cuda/10.0/10.0.130.1
+[username@g0001 ~]$ module load cudnn/7.6/7.6.4
 [username@g0001 ~]$ source $HOME/venv/tensorflow-gpu/activate
-[username@g0001 ~]$ cd $WORK
-[username@g0001 ~]$ python3 ./mnist.py
+(tensorflow-gpu) [username@g0001 ~]$ cd $WORK
+(tensorflow-gpu) [username@g0001 ~]$ python3 ./mnist.py
 ```
 
 バッチ利用時のジョブスクリプトでも同様のことができます。以下では、1ノード内の1GPUを使用して実行しています。
@@ -88,10 +96,12 @@ TensorFlow、Horovodのバージョンは以下の通りです。
 #$ -cwd
 
 source /etc/profile.d/modules.sh
-module load python/3.6/3.6.5 cuda/10.0/10.0.130.1 cudnn/7.6/7.6.4
+module load python/3.6/3.6.5
+module load cuda/10.0/10.0.130.1
+module load cudnn/7.6/7.6.4
 source ${HOME}/venv/tensorflow-gpu/bin/activate
 
-python3 ${WORK}/mnist.py
+python3 ./mnist.py
 
 deactivate
 ```
@@ -109,7 +119,7 @@ Horovodは、TensorFlow、Keras、PyTorch、MXNetに対応した分散学習フ�
 Horovodを使用すると、ABCIシステムが搭載するInfiniBandを用いた高速な分散学習が容易に実現できます。
 また、TensorFlow組み込みの分散処理の仕組みである[Distributed TensorFlow](https://www.tensorflow.org/guide/distributed_training)を使うよりも、Horovodを使用する方が、シングルGPU用コードを複数GPUに対応させる時の修正が少ない、高い性能が得られる、と言われています（[参考1](https://eng.uber.com/horovod/)、[参考2](https://github.com/horovod/horovod#why-not-traditional-distributed-tensorflow)）。
 
-### インストール { #installation_1 }
+### 導入方法 { #installation_1 }
 
 計算ノードを一台占有し、Python仮想環境`$HOME/venv/tensorflow-gpu`を作成し、`pip`で`tensorflow-gpu`並びに`horovod`をインストールします。
 
@@ -141,23 +151,29 @@ Horovodを使用すると、ABCIシステムが搭載するInfiniBandを用い�
 [username@es1 ~]$ wget https://raw.githubusercontent.com/uber/horovod/master/examples/tensorflow_mnist.py
 ```
 
-計算ノードを一台占有し、導入したTensorFlow+horovodの利用環境を設定し、`tensorflow_mnist.py`を実行します。
+計算ノードを一台占有し、導入したTensorFlow+Horovodの利用環境を設定し、`tensorflow_mnist.py`を実行します。
 
 ```
 [username@es1 ~]$ qrsh -g grpname -l rt_F=1
-[username@g0001 ~]$ module load gcc/7.4.0　python/3.6/3.6.5 cuda/10.0/10.0.130.1 cudnn/7.6/7.6.4　nccl/2.4/2.4.8-1　openmpi/2.1.6
+[username@g0001 ~]$ module load gcc/7.4.0
+[username@g0001 ~]$ module load python/3.6/3.6.5
+[username@g0001 ~]$ module load cuda/10.0/10.0.130.1
+[username@g0001 ~]$ module load cudnn/7.6/7.6.4
+[username@g0001 ~]$ module load nccl/2.4/2.4.8-1
+[username@g0001 ~]$ module load openmpi/2.1.6
 [username@g0001 ~]$ source $HOME/venv/tensorflow-gpu/activate
-[username@g0001 ~]$ cd $WORK
-[username@g0001 ~]$ python3 horovodrun -n 4 ./tensorflow_mnist.py
+(tensorflow-gpu) [username@g0001 ~]$ cd $WORK
+(tensorflow-gpu) [username@g0001 ~]$ python3 horovodrun -n 4 ./tensorflow_mnist.py
 ```
 
 バッチ利用時のジョブスクリプトでも同様のことができます。
-以下のスクリプトでは、2ノードでそれぞれ4 MPIプロセスを起動し、各MPIプロセスが1 GPUを用いた学習を行います。
+以下のスクリプトでは、2ノードでそれぞれ4 MPIプロセスを起動し、各MPIプロセスが1 GPUを用いた学習を行います。  
+より多くのノードを使用する場合は、資源量（rt_F）の指定のみ変更することで「ノード数 x 4」のGPUが使用されます。
 
 ```
 #!/bin/sh
 
-#$ -l rt_F=1
+#$ -l rt_F=2
 #$ -l h_rt=1:23:45
 #$ -j y
 #$ -cwd
@@ -177,7 +193,7 @@ NUM_PROCS=$(expr ${NUM_NODES} \* ${NUM_GPUS_PER_NODE})
 
 MPIOPTS="-np ${NUM_PROCS} -map-by ppr:${NUM_GPUS_PER_NODE}:node"
 
-APP="python3 ${WORK}/tensorflow_mnist.py"
+APP="python3 ./tensorflow_mnist.py"
 
 mpirun ${MPIOPTS} ${APP}
 
