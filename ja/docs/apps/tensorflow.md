@@ -72,10 +72,10 @@ TensorFlow、Horovodのバージョンは以下の通りです。
 ```
 [username@es1 ~]$ mkdir -p ${WORK}
 [username@es1 ~]$ cd ${WORK}
-[username@es1 ~]$ wget https://raw.githubusercontent.com/tensorflow/tensorflow/master/tensorflow/examples/tutorials/mnist/mnist.py
+[username@es1 ~]$ wget https://raw.githubusercontent.com/tensorflow/tensorflow/master/tensorflow/examples/tutorials/mnist/fully_connected_feed.py
 ```
 
-計算ノードを一台占有し、導入したTensorFlowの利用環境を設定し、`mnist.py`を実行します。
+計算ノードを一台占有し、導入したTensorFlowの利用環境を設定し、`fully_connected_feed.py`を実行します。
 
 ```
 [username@es1 ~]$ qrsh -g grpname -l rt_F=1
@@ -84,7 +84,7 @@ TensorFlow、Horovodのバージョンは以下の通りです。
 [username@g0001 ~]$ module load cudnn/7.6/7.6.4
 [username@g0001 ~]$ source $HOME/venv/tensorflow-gpu/bin/activate
 (tensorflow-gpu) [username@g0001 ~]$ cd $WORK
-(tensorflow-gpu) [username@g0001 ~]$ python3 ./mnist.py
+(tensorflow-gpu) [username@g0001 ~]$ python3 ./fully_connected_feed.py
 ```
 
 バッチ利用時のジョブスクリプトでも同様のことができます。以下では、1ノード内の1GPUを使用して実行しています。
@@ -101,7 +101,7 @@ module load cuda/10.0/10.0.130.1
 module load cudnn/7.6/7.6.4
 source ${HOME}/venv/tensorflow-gpu/bin/activate
 
-python3 ./mnist.py
+python3 ./fully_connected_feed.py
 
 deactivate
 ```
@@ -136,7 +136,7 @@ Horovodを使用すると、ABCIシステムが搭載するInfiniBandを用い�
 (tensorflow-gpu) [username@g0001 ~]$ pip3 install --upgrade pip
 (tensorflow-gpu) [username@g0001 ~]$ pip3 install --upgrade setuptools
 (tensorflow-gpu) [username@g0001 ~]$ pip3 install tensorflow-gpu==1.15.0
-(tensorflow-gpu) [username@g0001 ~]$ HOROVOD_NCCL_HOME=$NCCL_HOME HOROVOD_GPU_ALLREDUCE=NCCL HOROVOD_WITH_TENSORFLOW=1 pip3 install horovod
+(tensorflow-gpu) [username@g0001 ~]$ HOROVOD_NCCL_HOME=$NCCL_HOME HOROVOD_GPU_ALLREDUCE=NCCL HOROVOD_WITH_TENSORFLOW=1 pip3 install horovod==0.18.2
 (tensorflow-gpu) [username@g0001 ~]$ exit
 [username@es1 ~]$
 ```
@@ -163,7 +163,7 @@ Horovodを使用すると、ABCIシステムが搭載するInfiniBandを用い�
 [username@g0001 ~]$ module load openmpi/2.1.6
 [username@g0001 ~]$ source $HOME/venv/tensorflow-gpu/bin/activate
 (tensorflow-gpu) [username@g0001 ~]$ cd $WORK
-(tensorflow-gpu) [username@g0001 ~]$ python3 horovodrun -n 4 ./tensorflow_mnist.py
+(tensorflow-gpu) [username@g0001 ~]$ horovodrun -n 4 python3 ./tensorflow_mnist.py
 ```
 
 バッチ利用時のジョブスクリプトでも同様のことができます。
