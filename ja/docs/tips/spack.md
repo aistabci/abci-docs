@@ -4,7 +4,7 @@
 Spackを使うことにより、同一ソフトウェアをバージョン、設定、コンパイラを様々に変えて複数ビルドし、切り替えて使うことができます。
 ABCI上でSpackを使うことにより、ABCIが標準でサポートしていないソフトウェアを簡単にインストールすることができるようになります。
 
-動作確認は2019年12月13日に行っています。
+動作確認は2019年12月13日に行っており、その時の最新のバージョンである0.13.2を使用しています。
 
 
 ## Spack環境設定
@@ -25,7 +25,7 @@ SpackはGitHubからCloneするだけで利用できますが、本ドキュメ�
 [username@es1 ~]$ source spack/share/spack/setup-env.sh
 ```
 
-### ABCI向け設定
+### ABCI用設定
 
 #### コンパイラの登録
 
@@ -51,6 +51,15 @@ Spackに登録されているコンパイラを表示するコマンド`spack co
 gcc@7.4.0  gcc@4.8.5  gcc@4.4.7
 ```
 
+標準で使用するコンパイラは設定ファイル`$HOME/.spack/linux/packages.yaml`で設定できます。
+以下の例では標準コンパイラをgcc 4.8.5に設定しています。
+
+```
+packages:
+  all:
+    compiler: [gcc@4.8.5]
+```
+
 #### ABCIソフトウェアの登録
 
 Spackはソフトウェアの依存関係を解決して、依存するソフトウェアも自動的にインストールします。
@@ -58,37 +67,44 @@ Spackはソフトウェアの依存関係を解決して、依存するソフト
 ディスクスペースの浪費となりますので、ABCIが提供するソフトウェアは、Spackから*参照する*ように設定することをお勧めします。
 
 Spackが参照するソフトウェアの設定は`$HOME/.spack/linux/packages.yaml`に定義します。
-以下の内容で、そのファイルを作成してください。
+以下の内容で、そのファイルを作成してください（標準コンパイラの設定も含まれています）。
 
-*[滝澤]CUDAとCMAKEについて、%gcc@4.8.5をつけるべきか検討*
-
-*[滝澤]ファイルで定義している内容の簡単な説明を追加*
+*[滝澤]他のABCIモジュールへの依存がないCUDAとCMakeはpathsではなく、modulesの方が良いか？ただ、ここでmodulesとpathsの説明を分けるのはめんどくさい*
 
 ```
 packages:
   cuda:
     paths:
-      cuda@8.0.61.2%gcc@4.8.5:   /apps/cuda/8.0.61.2
-      cuda@9.0.176.4%gcc@4.8.5:  /apps/cuda/9.0.176.4
-      cuda@9.1.85.3%gcc@4.8.5:   /apps/cuda/9.1.85.3
-      cuda@9.2.88.1%gcc@4.8.5:   /apps/cuda/9.2.88.1
-      cuda@9.2.148.1%gcc@4.8.5:  /apps/cuda/9.2.148.1
-      cuda@10.0.130.1%gcc@4.8.5: /apps/cuda/10.0.130.1
-      cuda@10.1.168%gcc@4.8.5:   /apps/cuda/10.1.168
-      cuda@10.1.243%gcc@4.8.5:   /apps/cuda/10.1.243
+      cuda@abci-8.0.61.2:   /apps/cuda/8.0.61.2
+      cuda@abci-9.0.176.4:  /apps/cuda/9.0.176.4
+      cuda@abci-9.1.85.3:   /apps/cuda/9.1.85.3
+      cuda@abci-9.2.88.1:   /apps/cuda/9.2.88.1
+      cuda@abci-9.2.148.1:  /apps/cuda/9.2.148.1
+      cuda@abci-10.0.130.1: /apps/cuda/10.0.130.1
+      cuda@abci-10.1.168:   /apps/cuda/10.1.168
+      cuda@abci-10.1.243:   /apps/cuda/10.1.243
     buildable: False
   openmpi:
     paths:
-      openmpi@nocuda-2.1.6%gcc@4.8.5: /apps/openmpi/2.1.6/gcc4.8.5
-      openmpi@nocuda-3.1.4%gcc@4.8.5: /apps/openmpi/3.1.4/gcc4.8.5
+      openmpi@abci-2.1.6-nocuda%gcc@4.8.5: /apps/openmpi/2.1.6/gcc4.8.5
+      openmpi@abci-3.1.4-nocuda%gcc@4.8.5: /apps/openmpi/3.1.4/gcc4.8.5
   mvapich2:
     paths:
-      mvapich2@nocuda-2.3%gcc@4.8.5:   /apps/mvapich2/2.3/gcc4.8.5
-      mvapich2@nocuda-2.3.2%gcc@4.8.5: /apps/mvapich2/2.3.2/gcc4.8.5
+      mvapich2@abci-2.3-nocuda%gcc@4.8.5:   /apps/mvapich2/2.3/gcc4.8.5
+      mvapich2@abci-2.3.2-nocuda%gcc@4.8.5: /apps/mvapich2/2.3.2/gcc4.8.5
   cmake:
     paths:
-      cmake@3.11.4%gcc@4.8.5: /apps/cmake/3.11.4
+      cmake@abci-3.11.4: /apps/cmake/3.11.4
+  all:
+    compiler: [gcc@4.8.5]
 ```
+
+ここでは、CUDAとOpenMPI、MVAPICH、CMakeの設定をしています。
+例えば、`cuda@abci-8.0.61.2: /apps/cuda/8.0.61.2`では、SpackでCUDAのバージョンabci-8.0.61.2のインストールを実行すると、実際にはインストールはせずに、`/apps/cuda/8.0.61.2`としてインストールされているものを使用することを意味します。
+CUDAセクションでのみ記述されている`buildable: False`は、Spackにここで指定しているバージョン以外のCUDAをインストールさせないことを意味しています。
+ABCIが提供していないバージョンのCUDAをSpackでインストールしたい場合は、この記述を削除してください。
+
+`packages.yaml`ファイルの設定の詳細は[公式ドキュメント](https://spack.readthedocs.io/en/latest/build_settings.html)を参照ください。
 
 
 ## Spack 基本操作
