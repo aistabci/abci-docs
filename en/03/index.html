@@ -123,6 +123,26 @@ To submit or execute a job, specify the following resource type name.</p>
 <td align="left">180</td>
 <td align="left">0.20</td>
 </tr>
+<tr>
+<td align="left">M.large</td>
+<td align="left">rt_M.large</td>
+<td align="left">node-sharing<br>CPU only</td>
+<td align="left">8</td>
+<td align="left">-</td>
+<td align="left">800</td>
+<td align="left">480</td>
+<td align="left">0.40</td>
+</tr>
+<tr>
+<td align="left">M.small</td>
+<td align="left">rt_M.small</td>
+<td align="left">node-sharing<br>CPU only</td>
+<td align="left">4</td>
+<td align="left">-</td>
+<td align="left">400</td>
+<td align="left">240</td>
+<td align="left">0.20</td>
+</tr>
 </tbody>
 </table>
 <p>When you execute a job using multiple nodes, you need to specify resource type <code>rt_F</code> for node-exclusive.</p>
@@ -130,90 +150,110 @@ To submit or execute a job, specify the following resource type name.</p>
 <p class="admonition-title">Warning</p>
 <p>On node-sharing job, the job process information can be seen from other jobs executed on the same nodes. If you want to hide your job process information, specify resource type <code>rt_F</code> and execute a node-exclusive job.</p>
 </div>
-<p>The available resource type and number for each service are as follows.</p>
+<p>The available resource type and number of nodes for each service are as follows.</p>
 <table>
 <thead>
 <tr>
 <th align="left">Service</th>
 <th align="left">Resource type name</th>
-<th align="left">Range of number</th>
+<th align="right">Number of nodes</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td align="left">Spot</td>
 <td align="left">rt_F</td>
-<td align="left">1-512</td>
+<td align="right">1–512</td>
 </tr>
 <tr>
 <td align="left"></td>
 <td align="left">rt_G.large</td>
-<td align="left">1</td>
+<td align="right">1</td>
 </tr>
 <tr>
 <td align="left"></td>
 <td align="left">rt_G.small</td>
-<td align="left">1</td>
+<td align="right">1</td>
 </tr>
 <tr>
 <td align="left"></td>
 <td align="left">rt_C.large</td>
-<td align="left">1</td>
+<td align="right">1</td>
 </tr>
 <tr>
 <td align="left"></td>
 <td align="left">rt_C.small</td>
-<td align="left">1</td>
+<td align="right">1</td>
+</tr>
+<tr>
+<td align="left"></td>
+<td align="left">rt_M.large</td>
+<td align="right">1</td>
+</tr>
+<tr>
+<td align="left"></td>
+<td align="left">rt_M.small</td>
+<td align="right">1</td>
 </tr>
 <tr>
 <td align="left">On-demand</td>
 <td align="left">rt_F</td>
-<td align="left">1-32</td>
+<td align="right">1–32</td>
 </tr>
 <tr>
 <td align="left"></td>
 <td align="left">rt_G.large</td>
-<td align="left">1</td>
+<td align="right">1</td>
 </tr>
 <tr>
 <td align="left"></td>
 <td align="left">rt_G.small</td>
-<td align="left">1</td>
+<td align="right">1</td>
 </tr>
 <tr>
 <td align="left"></td>
 <td align="left">rt_C.large</td>
-<td align="left">1</td>
+<td align="right">1</td>
 </tr>
 <tr>
 <td align="left"></td>
 <td align="left">rt_C.small</td>
-<td align="left">1</td>
+<td align="right">1</td>
+</tr>
+<tr>
+<td align="left"></td>
+<td align="left">rt_M.large</td>
+<td align="right">1</td>
+</tr>
+<tr>
+<td align="left"></td>
+<td align="left">rt_M.small</td>
+<td align="right">1</td>
 </tr>
 <tr>
 <td align="left">Reserved</td>
 <td align="left">rt_F</td>
-<td align="left">1-number of reserved nodes</td>
+<td align="right">1–number of reserved nodes</td>
 </tr>
 <tr>
 <td align="left"></td>
 <td align="left">rt_G.large</td>
-<td align="left">1</td>
+<td align="right">1</td>
 </tr>
 <tr>
 <td align="left"></td>
 <td align="left">rt_G.small</td>
-<td align="left">1</td>
+<td align="right">1</td>
 </tr>
 <tr>
 <td align="left"></td>
 <td align="left">rt_C.large</td>
-<td align="left">1</td>
+<td align="right">1</td>
 </tr>
 <tr>
 <td align="left"></td>
 <td align="left">rt_C.small</td>
-<td align="left">1</td>
+<td align="right">1</td>
 </tr>
 </tbody>
 </table>
@@ -234,7 +274,7 @@ To submit or execute a job, specify the following resource type name.</p>
 </tr>
 <tr>
 <td align="left"></td>
-<td align="left">rt_G.large, rt_C.large</td>
+<td align="left">rt_G.large, rt_C.large, rt_M.large, rt_M.small</td>
 <td align="left">72:00:00/1:00:00</td>
 </tr>
 <tr>
@@ -249,12 +289,12 @@ To submit or execute a job, specify the following resource type name.</p>
 </tr>
 <tr>
 <td align="left"></td>
-<td align="left">rt_G.large, rt_C.large</td>
+<td align="left">rt_G.large, rt_C.large, rt_M.large</td>
 <td align="left">12:00:00/1:00:00</td>
 </tr>
 <tr>
 <td align="left"></td>
-<td align="left">rt_G.small, rt_C.small</td>
+<td align="left">rt_G.small, rt_C.small, rt_M.small</td>
 <td align="left">12:00:00/1:00:00</td>
 </tr>
 <tr>
@@ -274,22 +314,22 @@ To submit or execute a job, specify the following resource type name.</p>
 </tr>
 </tbody>
 </table>
-<p>In case of Spot or On-demand service, the job cannot be executed over the node-hour restriction bellow.</p>
+<p>However, if multiple nodes are used in Spot or On-demand service, the job cannot be executed over the node-hour restriction bellow.</p>
 <table>
 <thead>
 <tr>
 <th align="left">Service</th>
-<th align="left">max value of node-hour</th>
+<th align="right">max value of node-hour</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td align="left">Spot</td>
-<td align="left">2304 nodes &middot; hours</td>
+<td align="right">2304 nodes &middot; hours</td>
 </tr>
 <tr>
 <td align="left">On-demand</td>
-<td align="left">12 nodes &middot; hours</td>
+<td align="right">12 nodes &middot; hours</td>
 </tr>
 </tbody>
 </table>
@@ -604,13 +644,13 @@ If ABCI point is insufficient when submitting batch job, submission is failed.</
 
 
 <h3 id="stdout-and-stderr-of-batch-jobs">3.5.4. Stdout and Stderr of Batch Jobs</h3>
-<p>Standard output file and standard error output file are written to job submission directory, or to files specified at job submission.
+<p>Standard output file and standard error output file are written to job execution directory, or to files specified at job submission.
 Standard output generated during a job execution is written to a standard output file and error messages generated during the
 job execution to a standard error output file if no standard output and standard err output files are specified at job submission,
 the following files are generated for output.</p>
 <ul>
-<li>Jobname.o.JobID  ---  Standard output file</li>
-<li>Jobname.s.JobID  ---  Standard error output file</li>
+<li><em>JOB_NAME</em>.o<em>JOB_ID</em>  ---  Standard output file</li>
+<li><em>JOB_NAME</em>.e<em>JOB_ID</em>  ---  Standard error output file</li>
 </ul>
 <h3 id="report-batch-job-accounting">3.5.5. Report batch job accounting</h3>
 <p>To report batch job accounting, use the <code>qacct</code> command.</p>
