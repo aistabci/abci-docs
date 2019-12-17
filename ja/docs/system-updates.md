@@ -1,5 +1,18 @@
 # システム更新履歴
 
+## 2019-12-17
+
+| Add / Update / Delete | Software | Version | Previous version |
+|:--|:--|:--|:--|
+| Update | DDN Lustre | 2.10.7\_ddn14-1 | 2.10.5\_ddn7-1 |
+| Update | BeeOND | 7.1.4 | 7.1.3 |
+| Update | Scality S3 Connector | 7.4.5.0 | 7.4.4.4 |
+| Add | CUDA | 10.2.89 | |
+
+その他の修正点は下記の通りです:
+
+* [メモリインテンシブノード](01.md#memory-intensive-node-configuration)を追加いたしました。
+
 ## 2019-11-06
 
 | Add / Update / Delete | Software | Version | Previous version |
