@@ -20,7 +20,7 @@
 
 | Add / Update / Delete | Software | Version | Previous version |
 |:--|:--|:--|:--|
-| Add | GCC | 7.3.0, 7.4.0 | |
+| Add | GCC | 7.3.0<br>7.4.0 | |
 | Add | sregistry-cli | 0.2.31 | |
 
 その他の修正点は下記の通りです:
@@ -35,7 +35,7 @@
 | Update | DDN GRIDScaler | 4.2.3.17 | 4.2.3.15 |
 | Update | BeeOND | 7.1.3 | 7.1.2 |
 | Add | CUDA | 10.1.243 | |
-| Add | cuDNN | 7.6.3, 7.6.4 | |
+| Add | cuDNN | 7.6.3<br>7.6.4 | |
 | Add | NCCL | 2.4.8-1 | |
 | Add | MVAPICH2-GDR | 2.3.2 | |
 | Add | MVAPICH2 | 2.3.2 | |
@@ -89,7 +89,7 @@
 | Add / Update / Delete | Software | Version | Previous version |
 |:--|:--|:--|:--|
 | Add | CUDA | 10.0.130.1 | |
-| Add | cuDNN | 7.5.1, 7.6.0, 7.6.1 | |
+| Add | cuDNN | 7.5.1<br>7.6.0<br>7.6.1 | |
 | Add | aws-cli | 1.16.194 | |
 
 ## 2019-04-05
@@ -114,12 +114,12 @@
 
 | Add / Update / Delete | Software | Version | Previous version |
 |:--|:--|:--|:--|
-| Add | Intel Compiler | 2017.8, 2018.3 | |
+| Add | Intel Compiler | 2017.8<br>2018.3 | |
 | Add | PGI | 17.10 | |
 | Add | Open MPI | 2.1.6 | |
 | Add | cuDNN | 7.5.0 | |
 | Add | NCCL | 2.4.2-1 | |
-| Add | Intel MKL | 2017.8, 2018.3 | |
+| Add | Intel MKL | 2017.8<br>2018.3 | |
 
 その他の修正点は下記の通りです:
 
@@ -152,10 +152,10 @@ job-ID     prior   name       user         state submit/start at     queue      
 |:--|:--|:--|:--|
 | Add | NCCL | 2.3.7-1 | |
 | Add | cuDNN | 7.4.2 | |
-| Add | Open MPI | 3.0.3, 3.1.3 | |
+| Add | Open MPI | 3.0.3<br>3.1.3 | |
 | Add | MVAPICH2-GDR | 2.3 | |
 | Add | Hadoop | 2.9.2 | |
-| Add | Spark | 2.3.2, 2.4.0 | |
+| Add | Spark | 2.3.2<br>2.4.0 | |
 | Add | Go | 1.11.2 | |
 | Add | Intel MKL | 2018.2.199 | |
 
