@@ -46,6 +46,7 @@ Other fixes are as follows:
 * Add CUDA 10.1 support to NCCL 2.4.2-1, 2.4.7-1
 * Add CUDA 10.0 and 10.1 support to GDRCopy 1.2
 * Add CUDA 10.1 support to Open MPI 2.1.6
+* Increase /tmp capacity of interactive nodes from 26GB to 12TB
 * Add process monitoring and process cancellation mechanism on the interactive node
 
 ### Start process monitoring on the interactive nodes
