@@ -7,6 +7,7 @@
 | Update | DDN Lustre | 2.10.7\_ddn14-1 | 2.10.5\_ddn7-1 |
 | Update | BeeOND | 7.1.4 | 7.1.3 |
 | Update | Scality S3 Connector | 7.4.5.0 | 7.4.4.4 |
+| Update | NVIDIA Tesla Driver | [440.33.01](https://docs.nvidia.com/datacenter/tesla/tesla-release-notes-440-3301/index.html) | 410.104 |
 | Add | CUDA | 10.2.89 | |
 | Add | cuDNN | 7.6.5 | |
 | Add | NCCL | 2.5.6-1 | |
@@ -101,6 +102,7 @@ Other fixes are as follows:
 | Update | Java | 1.7.0\_171 | 1.7.0\_141|
 | Update | Java | 1.8.0\_161 | 1.8.0\_131|
 | Add | DDN Lustre | 2.10.5\_ddn7-1 | |
+| Update | NVIDIA Tesla Driver | [410.104](https://docs.nvidia.com/datacenter/tesla/tesla-release-notes-410-104/index.html) | 396.44 |
 | Add | CUDA | 10.0.130 | |
 | Add | Intel Compiler | 2019.3 | |
 | Add | PGI | 18.10, 19.3 | |
