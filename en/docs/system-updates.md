@@ -8,6 +8,8 @@
 | Update | BeeOND | 7.1.4 | 7.1.3 |
 | Update | Scality S3 Connector | 7.4.5.0 | 7.4.4.4 |
 | Add | CUDA | 10.2.89 | |
+| Add | cuDNN | 7.6.5 | |
+| Add | NCCL | 2.5.6-1 | |
 
 Other fixes are as follows:
 
