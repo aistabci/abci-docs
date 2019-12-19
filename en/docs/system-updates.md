@@ -25,7 +25,8 @@ Other fixes are as follows:
 
 Other fixes are as follows:
 
-* CUDA modules now set the paths to extras/CUPTI.
+* Fixed cuda/* modules to set the paths to `extras/CUPTI`.
+* Fixed python/3.4, python/3.5, and python/3.6 to solve the problem that error occurred when executing `shutil.copytree` on Home area.
 
 ## 2019-10-04
 
@@ -109,7 +110,7 @@ Other fixes are as follows:
 
 Other fixes are as follows:
 
-* Migrate HOME area from GPFS to DDN Lustre
+* Migrate Home area from GPFS to DDN Lustre
 
 ## 2019-03-14
 
