@@ -79,3 +79,45 @@ Host as.abci.ai
 
 !!! note
     ServerAliveInterval の初期値は 0 (KeepAliveなし)です。
+
+## Q. Open MPIの新しいバージョンが使いたい
+
+ABCIではCUDA対応版Open MPIとCUDA非対応版Open MPIを提供しており、提供の状況は、[MPIの利用](08.md#open-mpi)で確認できます。
+
+ABCIが提供するEnvironment Modulesでは、事前に`cuda`モジュールがロードされている場合に限り、`openmpi`モジュールのロード時にCUDA対応版Open MPIの環境設定を試みます。
+
+したがって、CUDA対応版MPIが提供されている組み合わせ(`cuda/10.0/10.0.130.1`, `openmpi/2.1.6`)では環境設定に成功します。
+
+```
+$ module load cuda/10.0/10.0.130.1
+$ module load openmpi/2.1.6
+$ module list
+Currently Loaded Modulefiles:
+  1) cuda/10.0/10.0.130.1   2) openmpi/2.1.6
+```
+
+CUDA対応版MPIが提供されていない組み合わせ(`cuda/10.0/10.0.130.1`, `openmpi/3.1.3`)では環境設定に失敗し、`openmpi`モジュールはロードされません。
+
+```
+$ module load cuda/10.0/10.0.130.1
+$ module load openmpi/3.1.3
+ERROR: loaded cuda module is not supported.
+WARINING: openmpi/3.1.3 is supported only host version
+$ module list
+Currently Loaded Modulefiles:
+  1) cuda/10.0/10.0.130.1
+```
+
+一方、Horovodによる並列化のためにOpen MPIが使いたいなど、Open MPIのCUDA版機能が不要な場合もあります。この場合は、先に`openmpi`モジュールをロードすることで、より新しいバージョンのCUDA非対応版Open MPIを利用できます。
+
+```
+$ module load openmpi/3.1.3
+$ module load cuda/10.0/10.0.130.1
+module list
+Currently Loaded Modulefiles:
+  1) openmpi/3.1.3          2) cuda/10.0/10.0.130.1
+```
+
+CUDA対応版の機能はOpen MPIのサイトで確認できます。
+
+* [FAQ: Running CUDA-aware Open MPI](https://www.open-mpi.org/faq/?category=runcuda)
