@@ -77,7 +77,7 @@ Host as.abci.ai
 ```
 
 !!! note
-    The default value of ServerAliveInterval is 0 (no KeepAlive)..
+    The default value of ServerAliveInterval is 0 (no KeepAlive).
 
 ## Q. I want to use a newer version of Open MPI
 
@@ -117,6 +117,6 @@ Currently Loaded Modulefiles:
   1) openmpi/3.1.3          2) cuda/10.0/10.0.130.1
 ```
 
-The functions of CUDA-aware version of Open MPI can be found on the Open MPI site:
-
-* [FAQ: Running CUDA-aware Open MPI](https://www.open-mpi.org/faq/?category=runcuda)
+!!! note
+    The functions of CUDA-aware versions of Open MPI can be found on the Open MPI site:
+    [FAQ: Running CUDA-aware Open MPI](https://www.open-mpi.org/faq/?category=runcuda)

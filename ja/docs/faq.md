@@ -118,6 +118,5 @@ Currently Loaded Modulefiles:
   1) openmpi/3.1.3          2) cuda/10.0/10.0.130.1
 ```
 
-CUDA対応版の機能はOpen MPIのサイトで確認できます。
-
-* [FAQ: Running CUDA-aware Open MPI](https://www.open-mpi.org/faq/?category=runcuda)
+!!! note
+    CUDA対応版の機能はOpen MPIのサイトで確認できます: [FAQ: Running CUDA-aware Open MPI](https://www.open-mpi.org/faq/?category=runcuda)
