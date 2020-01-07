@@ -120,3 +120,36 @@ Currently Loaded Modulefiles:
 !!! note
     The functions of CUDA-aware versions of Open MPI can be found on the Open MPI site:
     [FAQ: Running CUDA-aware Open MPI](https://www.open-mpi.org/faq/?category=runcuda)
+
+## Q. Open MPI fails to run with a message "PML add procs failed"
+
+`mpirun` may fail to run with the following message depending on the version.
+
+```
+--------------------------------------------------------------------------
+It looks like MPI_INIT failed for some reason; your parallel process is
+likely to abort.  There are many reasons that a parallel process can
+fail during MPI_INIT; some of which are due to configuration or environment
+problems.  This failure appears to be an internal failure; here's some
+additional information (which may only be relevant to an Open MPI
+developer):
+
+  PML add procs failed
+    --> Returned "Error" (-1) instead of "Success" (0)
+	--------------------------------------------------------------------------
+	[g0080:118482] *** An error occurred in MPI_Init
+	[g0080:118482] *** reported by process [859504641,0]
+	[g0080:118482] *** on a NULL communicator
+	[g0080:118482] *** Unknown error
+	[g0080:118482] *** MPI_ERRORS_ARE_FATAL (processes in this communicator will now abort,
+	[g0080:118482] ***    and potentially your MPI job)
+	[g0080.abci.local:118472] 3 more processes have sent help message help-mpi-runtime.txt / mpi_init:startup:internal-failure
+	[g0080.abci.local:118472] Set MCA parameter "orte_base_help_aggregate" to 0 to see all help / error messages
+	[g0080.abci.local:118472] 3 more processes have sent help message help-mpi-errors.txt / mpi_errors_are_fatal unknown handle
+```
+
+The problem may be worked around by specifying ob1 PML component like this:
+
+```shell
+$ mpirun --mca pml ob1 a.out
+```
