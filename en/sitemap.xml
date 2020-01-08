@@ -2,162 +2,167 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     <url>
      <loc>https://docs.abci.ai/en/</loc>
-     <lastmod>2019-12-18</lastmod>
+     <lastmod>2020-01-08</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://docs.abci.ai/en/01/</loc>
-     <lastmod>2019-12-18</lastmod>
+     <lastmod>2020-01-08</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://docs.abci.ai/en/02/</loc>
-     <lastmod>2019-12-18</lastmod>
+     <lastmod>2020-01-08</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://docs.abci.ai/en/03/</loc>
-     <lastmod>2019-12-18</lastmod>
+     <lastmod>2020-01-08</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://docs.abci.ai/en/04/</loc>
-     <lastmod>2019-12-18</lastmod>
+     <lastmod>2020-01-08</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://docs.abci.ai/en/05/</loc>
-     <lastmod>2019-12-18</lastmod>
+     <lastmod>2020-01-08</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://docs.abci.ai/en/06/</loc>
-     <lastmod>2019-12-18</lastmod>
+     <lastmod>2020-01-08</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://docs.abci.ai/en/07/</loc>
-     <lastmod>2019-12-18</lastmod>
+     <lastmod>2020-01-08</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://docs.abci.ai/en/08/</loc>
-     <lastmod>2019-12-18</lastmod>
+     <lastmod>2020-01-08</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://docs.abci.ai/en/09/</loc>
-     <lastmod>2019-12-18</lastmod>
+     <lastmod>2020-01-08</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://docs.abci.ai/en/10/</loc>
-     <lastmod>2019-12-18</lastmod>
+     <lastmod>2020-01-08</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://docs.abci.ai/en/appendix1/</loc>
-     <lastmod>2019-12-18</lastmod>
+     <lastmod>2020-01-08</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://docs.abci.ai/en/appendix2/</loc>
-     <lastmod>2019-12-18</lastmod>
+     <lastmod>2020-01-08</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://docs.abci.ai/en/apps/</loc>
-     <lastmod>2019-12-18</lastmod>
+     <lastmod>2020-01-08</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://docs.abci.ai/en/apps/tensorflow/</loc>
-     <lastmod>2019-12-18</lastmod>
+     <lastmod>2020-01-08</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://docs.abci.ai/en/apps/chainer/</loc>
-     <lastmod>2019-12-18</lastmod>
+     <lastmod>2020-01-08</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://docs.abci.ai/en/apps/others/</loc>
-     <lastmod>2019-12-18</lastmod>
+     <lastmod>2020-01-08</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://docs.abci.ai/en/tips/remote-desktop/</loc>
-     <lastmod>2019-12-18</lastmod>
+     <lastmod>2020-01-08</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://docs.abci.ai/en/tips/awscli/</loc>
-     <lastmod>2019-12-18</lastmod>
+     <lastmod>2020-01-08</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://docs.abci.ai/en/tips/gcc-7.3.0/</loc>
-     <lastmod>2019-12-18</lastmod>
+     <lastmod>2020-01-08</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://docs.abci.ai/en/tips/putty/</loc>
-     <lastmod>2019-12-18</lastmod>
+     <lastmod>2020-01-08</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://docs.abci.ai/en/tips/jupyter-notebook/</loc>
-     <lastmod>2019-12-18</lastmod>
+     <lastmod>2020-01-08</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+    <url>
+     <loc>https://docs.abci.ai/en/tips/sregistry-cli/</loc>
+     <lastmod>2020-01-08</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://docs.abci.ai/en/ngc/</loc>
-     <lastmod>2019-12-18</lastmod>
+     <lastmod>2020-01-08</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://docs.abci.ai/en/abci-cloudstorage/</loc>
-     <lastmod>2019-12-18</lastmod>
+     <lastmod>2020-01-08</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://docs.abci.ai/en/abci-cloudstorage/cs-account/</loc>
-     <lastmod>2019-12-18</lastmod>
+     <lastmod>2020-01-08</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://docs.abci.ai/en/abci-cloudstorage/usage/</loc>
-     <lastmod>2019-12-18</lastmod>
+     <lastmod>2020-01-08</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://docs.abci.ai/en/abci-cloudstorage/encryption/</loc>
-     <lastmod>2019-12-18</lastmod>
+     <lastmod>2020-01-08</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://docs.abci.ai/en/abci-cloudstorage/acl/</loc>
-     <lastmod>2019-12-18</lastmod>
+     <lastmod>2020-01-08</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://docs.abci.ai/en/abci-cloudstorage/policy/</loc>
-     <lastmod>2019-12-18</lastmod>
+     <lastmod>2020-01-08</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://docs.abci.ai/en/faq/</loc>
-     <lastmod>2019-12-18</lastmod>
+     <lastmod>2020-01-08</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://docs.abci.ai/en/known-issues/</loc>
-     <lastmod>2019-12-18</lastmod>
+     <lastmod>2020-01-08</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://docs.abci.ai/en/system-updates/</loc>
-     <lastmod>2019-12-18</lastmod>
+     <lastmod>2020-01-08</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>

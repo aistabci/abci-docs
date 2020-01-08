@@ -1,0 +1,99 @@
+# 1. ABCIシステムの概要
+
+## 1.1. システム全体概要 {#system-architecture}
+
+本システムは、クラウド型計算システム「AI橋渡しクラウド（AI Bridging Cloud Infrastructure、以下「ABCI」という）」です。
+ABCIシステムは、1,088台の計算ノードなどからなる高性能計算システム、22ペタバイトの実効容量を持つ大容量ストレージシステム、これらを高速に結合するネットワークなどからなるハードウエア群と、これらを最大限活用するためのソフトウエア群から構成されます。
+
+ABCIシステムは、人工知能やビッグデータ分野の計算処理で有効とされる16ビットの半精度演算の性能が550ペタフロップス、倍精度演算の性能は37ペタフロップス、メモリ合算容量は476TiB、メモリ合算ピークバンド幅は4.19PBの高性能計算システムです。
+各計算ノードおよびストレージシステムは、InfiniBand EDR (100Gbps) による高速ネットワークに接続され、さらにインターネットとの接続にはSINET5を経由して100Gbpsで接続されます。
+
+![Screenshot](img/abci_system_ja.png) 
+
+## 1.2. 計算リソースのハードウェア概要 {#compute-resource-configuration}
+
+### 1.2.1 計算ノード {#compute-node-configuration}
+
+ABCIシステムの計算ノードは、FUJITSU Server PRIMERGY CX2570 M4 1,088台で構成されています
+1台の計算ノードには、Intel Xeon Gold 6148プロセッサー (2.4 GHz, 20コア) を2基搭載し、総コア数は43,520コアとなります。
+また、NVIDIA Tesla V100 GPUアクセラレーターをノードあたり4基搭載し、総GPU数は4,352基となります。
+
+計算ノードの構成を以下に示します。
+
+| 項目 | 説明 | 個数 |
+|:--|:--|:--|
+| CPU | [Intel Xeon Gold 6148プロセッサー<br>2.4 GHz, 20 Cores (40 Threads)](https://ark.intel.com/products/120489/Intel-Xeon-Gold-6148-Processor-27-5M-Cache-2-40-GHz-) | 2 |
+| GPU | [NVIDIA Tesla V100 for NVLink<br>16GiB HBM2](https://www.nvidia.com/en-us/data-center/tesla-v100/) | 4 |
+| メモリ | 384 GiB DDR4 2666 MHz RDIMM (ECC) |
+| SSD | [Intel SSD DC P4600 1.6 TB u.2](https://ark.intel.com/products/97005/Intel-SSD-DC-P4600-Series-1-6TB-2-5in-PCIe-3-1-x4-3D1-TLC-) | 1 |
+| インターコネクト | InfiniBand EDR (12.5 GB/s) | 2 |
+
+### 1.2.2 メモリインテンシブノード {#memory-intensive-node-configuration}
+
+ABCIシステムのメモリインテンシブノードは、マルチプラットフォームノード Supermicro 4029GR-TRT2 10台のうち 8台で構成されています。
+1台のメモリインテンシブノードには、Intel Xeon Gold 6132プロセッサー (2.6 GHz, 14コア) を2基搭載し、総コア数は224コアとなります。
+また、Intel Optane メモリをノードあたり2基搭載し、総メモリ量は2.6TiBとなります。
+
+メモリインテンシブノードの構成を以下に示します。
+
+| 項目 | 説明 | 個数 |
+|:--|:--|:--|
+| CPU | [Intel Xeon Gold 6132プロセッサー<br>2.6 GHz, 14 Cores (28 Threads)](https://ark.intel.com/content/www/us/en/ark/products/123541/intel-xeon-gold-6132-processor-19-25m-cache-2-60-ghz.html) | 2 |
+| メモリ | 768 GiB DDR4 2666 MHz RDIMM (ECC) |
+| SSD | [IntelR SSD DC S4500 1.9 TB](https://ark.intel.com/content/www/us/en/ark/products/120524/intel-ssd-dc-s4500-series-1-9tb-2-5in-sata-6gb-s-3d1-tlc.html) | 1 |
+| Optane SSD | [Intel Optaine  SSD DC P4800X 1.5 TB](https://ark.intel.com/content/www/us/en/ark/products/97155/intel-optane-ssd-dc-p4800x-series-1-5tb-2-5in-pcie-x4-3d-xpoint.html) | 2 |
+| インターコネクト | InfiniBand EDR (12.5 GB/s) | 2 |
+
+## 1.3. ソフトウェア構成 {#software-configuration}
+
+ABCIシステムで利用可能なソフトウェア一覧を以下に示します。
+
+| 項目 | ソフトウェア | バージョン |
+|:--|:--|:--|
+| OS | CentOS | 7.5 |
+| ジョブスケジューラ | Univa Grid Engine | 8.6.6 |
+| 開発環境 | Intel Parallel Stduio XE Cluster Edition | 2017.8<br>2018.2<br>2018.3<br>2019.3 |
+| | PGI Professional Edition | 17.10<br>18.10<br>19.3 |
+| | [CUDA Toolkit](07.md#cuda-toolkit) | 8.0.61.2<br>9.0.176.2<br>9.0.176.3<br>9.0.176.4<br>9.1.85.3<br>9.2.88.1<br>9.2.148.1<br>10.0.130<br>10.0.130.1<br>10.1.243<br>10.2.89 |
+| | GCC | 4.8.5<br>7.3.0<br>7.4.0 |
+| | [Python](06.md) | 2.7.15<br>3.4.8<br>3.5.5<br>3.6.5 |
+| | Ruby | 2.0.0.648-33 |
+| | R | 3.5.0 |
+| | Java | 1.6.0\_41<br>1.7.0\_171<br>1.8.0\_161 |
+| | Scala | 1.27-248 |
+| | Lua | 5.1.4 |
+| | Perl | 5.16.3 |
+| ファイルシステム | [DDN Lustre](04.md#home-area) | 2.10.7\_ddn14-1 |
+| | [DDN GRIDScaler](04.md#group-area) | 4.2.3-17 |
+| | [BeeOND](04.md#using-as-a-beeond-storage) | 7.1.4 |
+| オブジェクトストレージ | Scality S3 Connector | 7.4.5.0 |
+| コンテナ | [Docker](09.md#docker) | 17.12.0 |
+| | [Singularity](09.md#singularity) | 2.6.1 |
+| MPI | [Open MPI](08.md#open-mpi) | 1.10.7<br>2.1.3<br>2.1.5<br>2.1.6<br>3.0.3<br>3.1.0<br>3.1.2<br>3.1.3 |
+| | [MVAPICH2](08.md#mvapich2) | 2.3rc2<br>2.3 |
+| | [MVAPICH2-GDR](08.md#mvapich2-gdr) | 2.3a<br>2.3rc1<br>2.3<br>2.3.2 |
+| | [Intel MPI](08.md#intel-mpi) | 2018.2.199 |
+| ライブラリ | [cuDNN](07.md#cudnn) | 5.1.10<br>6.0.21<br>7.0.5<br>7.1.3<br>7.1.4<br>7.2.1<br>7.3.1<br>7.4.2<br>7.5.0<br>7.5.1<br>7.6.0<br>7.6.1<br>7.6.2<br>7.6.3<br>7.6.4<br>7.6.5 |
+| | [NCCL](07.md#nccl) | 1.3.5-1<br>2.1.15-1<br>2.2.13-1<br>2.3.4-1<br>2.3.5-2<br>2.3.7-1<br>2.4.2-1<br>2.4.7-1<br>2.4.8-1<br>2.5.6-1 |
+| | gdrcopy | 1.2 |
+| | Intel MKL | 2017.8<br>2018.2<br>2018.3<br>2019.3 |
+| ユーティリティ | aws-cli | 1.16.194 |
+| | fuse-sshfs | 2.10 |
+| | s3fs-fuse | 1.85 |
+| | sregistry-cli | 0.2.31 |
+
+## 1.4. ストレージ構成 {#storage-configuration}
+
+ABCIシステムでは、人工知能やビッグデータ分野の計算結果を格納するための大容量ストレージシステムを備えています。
+各計算ノードにはローカルスクラッチ領域として1.6TBのSSDが搭載されています。
+ABCIシステムで利用可能なファイルシステムの一覧を以下に示します。
+
+| 用途 | マウントポイント | 容量 | ファイルシステム | 備考 |
+|:--|:--|:--|:--|:--|
+| ホーム領域 | /home | 1.0PB | Lustre | |
+| グループ領域1 | /groups1 | 6.6PB | GPFS | |
+| グループ領域2 | /groups2 | 6.6PB | GPFS | |
+| アプリケーション領域 | /apps | 335TB | GPFS | |
+| インタラクティブノード用ローカルスクラッチ領域 | /local | 各ノード12TB | XFS | |
+| 計算ノード用ローカルスクラッチ領域 | /local | 各ノード1.5TB | XFS | |
+
