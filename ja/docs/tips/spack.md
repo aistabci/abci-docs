@@ -319,7 +319,7 @@ CUDA-aware MVAPICH2を使用する場合は、以下を参考にして、Spack�
 
 インストール方法
 ```
-$ spack install cuda@9.2.148.1
+$ spack install cuda@10.1.243
 $ spack install mvapich2@2.3 +cuda ^cuda@10.1.243
 ```
 
