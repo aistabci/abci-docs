@@ -5,7 +5,6 @@ ABCIクラウドストレージでは、バケットやオブジェクトに対�
 
 !!! caution
     * 現時点では誰からでもアクセスできる設定は行わないでください。データ公開に関する約款類が整い次第、ご案内いたします。
-    * 現時点では、問題が確認されているため、バケットに、他グループのwrite許可を設定しないでください。対応状況については、[既知の問題](../known-issues.md) を参照ください。
 
 ## ACLでの設定項目
 
@@ -111,6 +110,9 @@ $ aws --endpoint-url https://s3.abci.ai s3api list-buckets
 ```
 [username@es1 ~]$ aws --endpoint-url https://s3.abci.ai s3api put-object-acl --acl private --bucket test-share --key test/testdata
 ```
+
+!!! caution
+    * 現時点では、問題が確認されているため、バケットに、他グループのwrite許可を設定しないでください。対応状況については、[既知の問題](../known-issues.md) を参照ください。
 
 ### ABCIクラウドストレージの全アカウントに公開
 
