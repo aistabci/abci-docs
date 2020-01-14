@@ -5,7 +5,7 @@ By defining Access Control List (ACL), users manage groups who has accessibility
 
 !!! caution
     * As of now, don't grant permission to everyone since the guideline has not been determined yet. We will make an announcement once it is established.
-    * Due to bug in ACL, do not use write permission for other groups. check [here](https://docs.abci.ai/en/known-issues/ ) for support status.
+    * Due to bug in ACL, do not use write permission for other groups. check [here](../known-issues.md) for support status.
 
 ## What to Configure
 
