@@ -4,7 +4,8 @@
 By defining Access Control List (ACL), users manage groups who has accessibility to buckets and objects. The default ACL grants the resource owner accessibility to their group's data. By changing default setting, ACL grants control to specific ABCI groups or everyone.
 
 !!! caution
-    As of now, don't grant permission to everyone since the guideline has not been determined yet. We will make an announcement once it is established.
+    * As of now, don't grant permission to everyone since the guideline has not been determined yet. We will make an announcement once it is established.
+    * Due to bug in ACL, do not use write permission for other groups. check [here](https://docs.abci.ai/en/known-issues/ ) for support status.
 
 ## What to Configure
 

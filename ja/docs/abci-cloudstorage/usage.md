@@ -269,6 +269,29 @@ delete: s3://dataset-c0542/0004.jpg
 remove_bucket: dataset-c0542
 ```
 
+### オブジェクトの所有者の確認
+
+オブジェクトの所有者は、`s3api get-object-acl`コマンドで確認することができます。以下の例のようにオブジェクトを格納するバケットを BUCKET、オブジェクトの名前を OBJECT として、Owner で示される ABCIGROUP がオブジェクトを所有していることがわかります。
+```
+[username@es1 ~]$ aws --endpoint-url https://s3.abci.ai s3api get-object-acl --bucket BUCKET --key OBJECT 
+
+    "Owner": {
+        "DisplayName": "ABCIGROUP",
+        "ID": "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
+    },
+    "Grants": [
+        {
+            "Grantee": {
+                "DisplayName": "ABCIGROUP",
+                "ID": "yyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyy",
+                "Type": "CanonicalUser"
+            },
+            "Permission": "FULL_CONTROL"
+        }
+    ]
+}
+```
+
 <!--  s3fs-fuse は別?  -->
 
 <!--  使い方の説明はしないが Cyberduck と WinSCP について触れる  -->
