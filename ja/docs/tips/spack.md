@@ -69,8 +69,6 @@ Spackはソフトウェアの依存関係を解決して、依存するソフト
 Spackが参照するソフトウェアの設定は`$HOME/.spack/linux/packages.yaml`に定義します。
 以下の内容で、そのファイルを作成してください（標準コンパイラの設定も含まれています）。
 
-*[滝澤]他のABCIモジュールへの依存がないCUDAとCMakeはpathsではなく、modulesの方が良いか？ただ、ここでmodulesとpathsの説明を分けるのはめんどくさい*
-
 ```
 packages:
   cuda:
@@ -109,55 +107,30 @@ ABCIが提供していないバージョンのCUDAをSpackでインストール�
 
 ## Spack 基本操作
 
-*[坂部]本セクション執筆*
-
-*いくつかコマンドを書いてありますが、説明不要だったり、他に追記すべきものもあると思います。章構成も見直してください。*
-
 ### コンパイラ関連
 
 コンパイラ一覧確認
 ```
 $ spack compiler list
+==> Available compilers
+-- gcc centos7-x86_64 -------------------------------------------
+gcc@7.4.0  gcc@4.8.5  gcc@4.4.7
 ```
 
 特定コンパイラの情報確認
 ```
 $ spack compiler info gcc@4.8.5
+gcc@4.8.5:
+	paths:
+		cc = /usr/bin/gcc
+		cxx = /usr/bin/g++
+		f77 = /usr/bin/gfortran
+		fc = /usr/bin/gfortran
+	modules  = []
+	operating system  = centos7
 ```
 
 ### パッケージ関連
-
-#### 情報確認
-
-Spackでインストールできるパッケージ一覧を表示
-```
-$ spack list
-```
-
-キーワードを指定して、インストールできるパッケージを表示
-```
-$ spack list mpi
-```
-
-特定のパッケージの詳細情報確認
-```
-$ spack info openmpi
-```
-
-特定のパッケージのインストール可能なバージョンを確認
-```
-$ spack info openmpi
-```
-
-インストール済みパッケージ一覧確認
-```
-$ spack find
-```
-
-特定のインストール済みパッケージの依存関係を確認
-```
-$ spack find -dl openmpi
-```
 
 #### インストール
 
@@ -165,6 +138,7 @@ $ spack find -dl openmpi
 ```
 $ spack install openmpi schedulers=sge 　　　　(標準バージョンをインストール)
 $ spack install openmpi@3.1.4 schedulers=sge (バージョン指定してインストール)
+$ spack install openmpi@3.1.4 %gcc@7.3.0 schedulers=sge (コンパイラを指定してインストール)
 ```
 
 #### アンインストール
@@ -178,15 +152,85 @@ $ spack uninstall openmpi
 ```
 $ spack uninstall --all
 ```
+#### 情報確認
+パッケージ一覧
+```
+$ spack list
+abinit
+abyss
+(snip)
+```
 
+キーワードを指定して、インストールできるパッケージを表示
+```
+$ spack list mpi
+==> 21 packages.
+compiz       mpifileutils  mpix-launch-swift  r-rmpi        vampirtrace
+fujitsu-mpi  mpilander     openmpi            rempi
+intel-mpi    mpileaks      pbmpi              spectrum-mpi
+mpibash      mpip          pnmpi              sst-dumpi
+mpich        mpir          py-mpi4py          umpire
+```
+
+特定のパッケージの詳細情報確認
+```
+$ spack info openmpi
+AutotoolsPackage:   openmpi
+
+Description:
+    An open source Message Passing Interface implementation. The Open MPI
+    Project is an open source Message Passing Interface implementation that
+(snip)
+```
+
+spack installでインストール可能なパッケージのバージョン一覧
+```
+$ spack versions openmpi
+==> Safe versions (already checksummed):
+  develop  3.0.3  2.1.1   1.10.5  1.8.5  1.7.2  1.5.5  1.4.2  1.2.8  1.1.5
+  4.0.1    3.0.2  2.1.0   1.10.4  1.8.4  1.7.1  1.5.4  1.4.1  1.2.7  1.1.4
+  4.0.0    3.0.1  2.0.4   1.10.3  1.8.3  1.7    1.5.3  1.4    1.2.6  1.1.3
+  3.1.4    3.0.0  2.0.3   1.10.2  1.8.2  1.6.5  1.5.2  1.3.4  1.2.5  1.1.2
+  3.1.3    2.1.6  2.0.2   1.10.1  1.8.1  1.6.4  1.5.1  1.3.3  1.2.4  1.1.1
+  3.1.2    2.1.5  2.0.1   1.10.0  1.8    1.6.3  1.5    1.3.2  1.2.3  1.1
+  3.1.1    2.1.4  2.0.0   1.8.8   1.7.5  1.6.2  1.4.5  1.3.1  1.2.2  1.0.2
+  3.1.0    2.1.3  1.10.7  1.8.7   1.7.4  1.6.1  1.4.4  1.3    1.2.1  1.0.1
+  3.0.4    2.1.2  1.10.6  1.8.6   1.7.3  1.6    1.4.3  1.2.9  1.2    1.0
+```
+
+Spackから利用可能なインストール済みパッケージ一覧
+```
+$ spack find
+==> 49 installed packages
+-- linux-centos7-haswell / gcc@4.8.5 ----------------------------
+autoconf@2.69    gdbm@1.18.1          libxml2@2.9.9  readline@8.0
+(snip)
+```
+
+特定のインストール済みパッケージの依存関係を確認
+```
+$ spack find -dl openmpi
+-- linux-centos7-skylake_avx512 / gcc@7.4.0 ---------------------
+sif5fzv openmpi@3.1.4
+xqsp4xn     hwloc@1.11.11
+3movoj3         libpciaccess@0.13.5
+d6xghgt         libxml2@2.9.9
+zydtv5a             libiconv@1.16
+y6e4zi2             xz@5.2.4
+kv37bl2             zlib@1.2.11
+onnjyv2         numactl@2.0.12
+```
 
 ## パッケージ利用方法
 
-*[坂部]本セクション執筆*
-
-Spackでインストールされたパッケージは自動的にmodule fileが作成されている。
+Spakcパッケージ用module fileに登録・更新
 ```
-$ module avail (確認)
+$ spack module tcl refresh
+```
+
+Spackでインストールされたパッケージもmoduleコマンドで参照可能
+```
+$ module avail
 ```
 
 モジュールをロードして使用
@@ -194,10 +238,6 @@ $ module avail (確認)
 $ module load xxxxx
 ```
 
-必要に応じて、Spakcパッケージ用module fileを更新
-```
-$ spack module tcl refresh
-```
 
 Spackパッケージ用モジュールを削除
 ```
@@ -207,40 +247,69 @@ $ spack module tcl rm
 
 ## パッケージ導入事例
 
-*[坂部]本セクション執筆*
-
 ### CUDA-aware OpenMPI
 
 ABCIでは、CUDA-aware OpenMPIをモジュールで提供していますが、全てのコンパイラ、CUDA、OpenMPIの組み合わせで提供しているわけではありません（[参考](https://docs.abci.ai/ja/08/#open-mpi)）。
 使用したい組み合わせがモジュール提供されていない場合は、Spackでインストールするのが便利です。
 
 
-
-複数のバージョンを共存せてインストールする方法、バージョンを切り替えて使用する方法を書く
-
 インストール方法
 
 CUDA 10.1.243を使用するOpenMPI 3.1.1
 ```
 $ spack install cuda@10.1.243
-$ spack install openmpi +cuda schedulers=sge ^cuda@10.1.243
+$ spack install openmpi@3.1.1 +cuda schedulers=sge ^cuda@10.1.243 (+はオプション、^は依存を指定)
+$ spack module tcl refresh
 ```
 
 CUDA 9.0.176.4を使用するOpenMPI 3.1.1
 ```
 $ spack install cuda@9.0.176.4
-$ spack install openmpi +cuda schedulers=sge ^cuda@9.0.176.4
-
+$ spack install openmpi@3.1.1 +cuda schedulers=sge ^cuda@9.0.176.4 (+はオプション、^は依存を指定)
 $ spack module tcl refresh
 ```
 
 
-使い方（ジョブスクリプト例含む）
+使い方
 
 「CUDA 10.1.243を使用するOpenMPI 3.1.1」を使う場合。
 パッケージのハッシュでのみ、OpenMPIの違いを区別できる。
 $ spack find -dl openmpiでハッシュを確認。
+```
+$ spack find -dl openmpi
+==> 2 installed packages
+-- linux-centos7-haswell / gcc@4.8.5 ----------------------------
+4b7ssot openmpi@3.1.1
+abxq4dx     hwloc@1.11.11
+j56z2n2         cuda@9.0.176.4
+(snip)
+
+ffwtsvk openmpi@3.1.1
+q6crewe     hwloc@1.11.11
+aksjp4j         cuda@10.1.243
+(snip)
+```
+$module availで対応するモジュールを確認。
+```
+$ module avail openmpi
+----------------------------------------------- $HOME/spack/share/spack/modules/linux-centos7-haswell -----------------------------------------------
+openmpi-3.1.1-gcc-4.8.5-4b7ssot openmpi-3.1.1-gcc-4.8.5-ffwtsvk
+```
 -> openmpi-3.1.1-gcc-4.8.5-ffwtsvkモジュールと判明
+
+以下、「CUDA 10.1.243を使用するOpenMPI 3.1.1」を利用するジョブスクリプト例です。
+```
+#!/bin/bash
+
+#$-l rt_F=2
+#$-j y
+#$-cwd
+
+source /etc/profile.d/modules.sh
+source ${HOME}/spack/share/spack/setup-env.sh
+module load openmpi-3.1.1-gcc-4.8.5-ffwtsvk
+mpiexec -n 8 ./a.out
+```
 
 
 ### CUDA-aware MVAPICH2
@@ -248,23 +317,29 @@ $ spack find -dl openmpiでハッシュを確認。
 ABCIが提供するMVAPICH2モジュールはCUDA対応していません。
 CUDA-aware MVAPICH2を使用する場合は、以下を参考にして、Spackでインストールしてください。
 
-バージョンを切り替えて使用する方法を書く
-
 インストール方法
 ```
 $ spack install cuda@9.2.148.1
-$ spack install mvapich2@2.3 +cuda
+$ spack install mvapich2@2.3 +cuda ^cuda@10.1.243
 ```
 
-異なるバージョンのCUDAを使うには、現状ではアンインストールが必要(少なくともv0.13.1では。v0.13.2で確認)
+使い方
+
+複数バージョンインストールした場合はopenmpiと同様にモジュール名を確認してください。
+以下、ジョブスクリプト例です。
 ```
-$ spack uninstall mvapich2@2.3
-$ spack uninstall cuda@9.2.148.1
+#!/bin/bash
+
+#$-l rt_F=2
+#$-j y
+#$-cwd
+
+source /etc/profile.d/modules.sh
+source ${HOME}/spack/share/spack/setup-env.sh
+module load mvapich2-2.3-gcc-4.8.5-oghcpn7
+
+mpiexec -n 8 ./a.out
 ```
-
-
-使い方（ジョブスクリプトも）
-
 
 ### MPIFileUtils
 
