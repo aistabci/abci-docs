@@ -29,6 +29,12 @@
 </thead>
 <tbody>
 <tr>
+<td align="left">2020/01/14</td>
+<td align="left">Cloud Storage</td>
+<td align="left">The amount of object data is inconsistent, when the user of other groups put or delete objects in the bucket granted write permission by ACL. ABCI point is not charged correctly.</td>
+<td align="left">open</td>
+</tr>
+<tr>
 <td align="left">2019/11/14</td>
 <td align="left">Cloud Storage</td>
 <td align="left">Due to a bug in object storage, following error messages are output when overwriting or deleting objects that stored in multiparts.<BR>[Overwrite] upload failed: object to s3://mybucket/object An error occurred (None) when calling the CompleteMultipartUpload operation: undefined<BR>[Delete] delete failed: s3://mybucket/object An error occurred (None) when calling the DeleteObject operation: undefined<BR><BR>When you use the s3 command of AWS CLI, a large file is stored in multiparts. If you upload a large file, please refer to <a href="https://docs.aws.amazon.com/cli/latest/topic/s3-config.html">this page</a> and set multipart_threshold to a large value.</td>
