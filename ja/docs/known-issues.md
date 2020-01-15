@@ -2,7 +2,7 @@
 
 | 日時 | カテゴリ | 内容 | 状況 |
 |:--|:--|:--|:--|
-| 2020/01/14 | Cloud Storage | 他グループに ACL で write許可設定したバケットにて、他グループがオブジェクトを作成・削除した場合、課金情報に不整合が発生します。| 対応中 |
+| 2020/01/14 | Cloud Storage | 他グループに ACL で write許可設定したバケットにて、他グループがオブジェクトを作成・削除した場合、課金計算が正しく行われません。| 調査中 |
 | 2019/11/14 | Cloud Storage | オブジェクトストレージの不具合により、マルチパートに分割して保存されたオブジェクトの上書き時または削除時に以下のエラーメッセージが出力されます。<BR>[上書き時] upload failed: object to s3://mybucket/object An error occurred (None) when calling the CompleteMultipartUpload operation: undefined<BR>[削除時] delete failed: s3://mybucket/object An error occurred (None) when calling the DeleteObject operation: undefined<BR><BR>AWS CLI の s3 コマンドを使用した場合、サイズの大きなファイルはマルチパート分割されます。サイズの大きなファイルを扱う場合、[こちら](https://docs.aws.amazon.com/cli/latest/topic/s3-config.html)を参照し multipart_threshold を大きな値に設定ください。 | 2019/12/17<br>対応完了。マルチパートアップロードでサイズの大きなファイルのアップロードが可能になりました。 |
 | 2019/10/04 | Application | MVPICH2-GDR 2.3.2のMPI_Allreduceにて、GPUメモリ間での通信を行った際、以下のノード数、GPU数、メッセージサイズの組み合わせでfloating point exceptionが発生することを確認しています。<BR>Nodes: 28, GPU/Node: 4, Message size: 256KB<BR>Nodes: 30, GPU/Node: 4, Message size: 256KB<BR>Nodes: 33, GPU/Node: 4, Message size: 256KB<BR>Nodes: 34, GPU/Node: 4, Message size: 256KB | 次バージョン以降で対応予定 |
 | 2019/04/10 | Job | ジョブスケジューラのアップデート(8.5.4 -> 8.6.3)に伴い、以下のジョブ投入オプションは引数が必須になりました。<BR>リソースタイプ(-l rt_F等)<BR>$ qsub -g GROUP -l rt_F=1<BR>  $ qsub -g GROUP -l rt_G.small=1 | 対応完了 |

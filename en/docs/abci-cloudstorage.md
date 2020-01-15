@@ -20,7 +20,7 @@ To start using ABCI Cloud Storage, Usage Manager of each ABCI group should apply
 If you are not a Usage Manager, please contact to Usage Managers of your group.
 For details of the operation, refer to [ABCI Portal Guide](https://docs.abci.ai/portal/en/).
 
-ABCI point based on the total size of objects owned by ABCI group is subtracted from ABCI group's point for each day. The fee is not based on the data transfer size nor the number of times of calling APIs. How to check the size, refere to [Check ABCI Cloud Storage Usage](/02#check-cloud-storage-usage). The calculation formula of ABCI point for using ABCI Cloud Storage is as follows.
+ABCI point based on the total size of objects owned by ABCI group is subtracted from ABCI group's point for each day. The fee is not based on the data transfer size nor the number of times of calling APIs. Users can check used capacity by [show_cs_usage](/02#check-cloud-storage-usage). The calculation formula of ABCI point for using ABCI Cloud Storage is as follows.
 
 <div class="codehilite"><pre>
 ABCI point = the size of data stored in the storage of the previous day
