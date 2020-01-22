@@ -151,9 +151,6 @@ ABCIクラウドストレージの全アカウントに公開するには `--acl
 | :--| :--|
 | public-read| test-pub|
 
-!!! caution
-    現時点では本設定は行わないでください。データ公開に関する約款類が整い次第、ご案内いたします。
-
 put-bucket-acl で public-read を設定します。設定の確認は get-bucket-acl を用いて行います。public を示すURI "http://acs.amazonaws.com/groups/global/AllUsers" の Permission に READ が付与された Grantee が追加されていることを確認してください。
 
 ```
@@ -218,9 +215,6 @@ put-bucket-acl で public-read を設定します。設定の確認は get-bucke
 | 適用ACL| バケット| prefix| 公開オブジェクト|
 | :--| :--| :--| :--|
 | public-read| test-pub2| test/| test.txt|
-
-!!! caution
-    現時点では本設定は行わないでください。データ公開に関する約款類が整い次第、ご案内いたします。
 
 put-object-acl で public-read を設定します。また、get-object-acl で設定状況を確認できます。public を示すURI "http://acs.amazonaws.com/groups/global/AllUsers" の Permission に READ が付与された Grantee が追加されていることを確認してください。
 
