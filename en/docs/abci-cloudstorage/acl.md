@@ -151,9 +151,6 @@ By applying the standard ACL 'public-read' to a bucket, the list of objects in t
 | :--| :--|
 | public-read | test-pub |
 
-!!! caution
-    As of now, don't grant permission to everyone since the guideline has not been determined yet. We will make an announcement once it is established.
-
 Configure 'public-read' with 'put-bucket-acl'. To check the current configuration, run the command `get-bucket-acl`. Make sure that the grantee with URI "http://acs.amazonaws.com/groups/global/AllUsers" meaning public is added and permission 'READ' is given to it.
 
 ```
@@ -218,9 +215,6 @@ By applying the standard ACL 'public-read' to an object, the object is opened to
 | ACL to be applied | Bucket | prefix | Object to be opened |
 | :--| :--| :--| :--|
 | public-read | test-pub2 | test/ | test.txt |
-
-!!! caution
-    As of now, don't grant permission to everyone since the guideline has not been determined yet. We will make an announcement once it is established.
 
 Configure 'public-read' with 'put-object-acl'. To check the current configuration, run the command `get-object-acl`. Make sure that the grantee with URI "http://acs.amazonaws.com/groups/global/AllUsers" meaning public is added and permission 'READ' is given to it.
 
