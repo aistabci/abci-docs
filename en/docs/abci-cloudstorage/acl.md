@@ -138,7 +138,7 @@ Two standard ACLs open buckets and objects to the public, which enable any inter
     * [ABCI Cloud Storage Terms of Use](https://abci.ai/en/how_to_use/data/cloudstorage-agreement.pdf)
 
 !!! caution
-    Please do not use 'public-read-write' due to security concern.
+    Please do not use 'public-read-write' due to the possibility of unintended use by a third party.
 
 Default standard ACL is set to be private. To terminate public access, use standard ACLs.
 

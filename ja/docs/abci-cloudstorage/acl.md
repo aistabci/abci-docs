@@ -138,7 +138,7 @@ ABCIクラウドストレージの全アカウントに公開するには `--acl
     * [ABCIクラウドストレージ規約](https://abci.ai/ja/how_to_use/data/cloudstorage-agreement.pdf)
 
 !!! caution
-    public-read-write はセキュリティの観点から使わないでください。
+    第三者によって意図しない利用がなされる恐れがありますので、public-read-write は設定しないでください。
 
 デフォルトの既定ACLは private が設定されています。公開を停止する場合は、private を設定してください。
 
