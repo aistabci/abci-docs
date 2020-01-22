@@ -3,9 +3,6 @@
 
 By defining Access Control List (ACL), users manage groups who has accessibility to buckets and objects. The default ACL grants the resource owner accessibility to their group's data. By changing default setting, ACL grants control to specific ABCI groups or everyone.
 
-!!! caution
-    * As of now, don't grant permission to everyone since the guideline has not been determined yet. We will make an announcement once it is established.
-
 ## What to Configure
 
 For each bucket and object, ACL configures who is grantee and what permission is granted. 
@@ -112,7 +109,7 @@ By setting ACL to private as following, user can retrieve default ACL setting.
 ```
 
 !!! caution
-    * Due to bug in ACL, do not use write permission for other groups. Check [here](../known-issues.md) for support status.
+    Due to bug in ACL, do not use write permission for other groups. Check [here](../known-issues.md) for support status.
 
 ### Open to All Accounts on ABCI Cloud Storage
 
@@ -135,10 +132,13 @@ Two standard ACLs open buckets and objects to the public, which enable any inter
 | public-read-write | Anyone on the internet can read and overwite the objects under the bucket and set ACL of the bucket. | Anyone on the internet can read and overwite the objects and set ACL of the object. |
 
 !!! caution
-    We recommend not to use 'public-read-write' due to security concern. Be carefully consider both risks and necessity.
+    Before you grant read access to everyone in the world, please read the following agreements carefully, and make sure it is appropriate to do so.
+    
+    * [ABCI agreement and rules](https://abci.ai/en/how_to_use/)
+    * [ABCI Cloud Storage Terms of Use](https://abci.ai/en/how_to_use/data/cloudstorage-agreement.pdf)
 
 !!! caution
-    As of now, don't grant permission to everyone since the guideline has not been determined yet. We will make an announcement once it is established.
+    Please do not use 'public-read-write' due to security concern.
 
 Default standard ACL is set to be private. To terminate public access, use standard ACLs.
 
