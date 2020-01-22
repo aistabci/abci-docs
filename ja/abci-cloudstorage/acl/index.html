@@ -256,10 +256,6 @@
 </tr>
 </tbody>
 </table>
-<div class="admonition caution">
-<p class="admonition-title">Caution</p>
-<p>現時点では本設定は行わないでください。データ公開に関する約款類が整い次第、ご案内いたします。</p>
-</div>
 <p>put-bucket-acl で public-read を設定します。設定の確認は get-bucket-acl を用いて行います。public を示すURI "http://acs.amazonaws.com/groups/global/AllUsers" の Permission に READ が付与された Grantee が追加されていることを確認してください。</p>
 <div class="codehilite"><pre><span></span><span class="o">[</span><span class="n">username@es1 ~</span><span class="o">]</span><span class="err">$</span><span class="w"> </span><span class="n">aws</span><span class="w"> </span><span class="c1">--endpoint-url https://s3.abci.ai s3api put-bucket-acl --acl public-read --bucket test-pub</span>
 <span class="o">[</span><span class="n">username@es1 ~</span><span class="o">]</span><span class="err">$</span><span class="w"> </span><span class="n">aws</span><span class="w"> </span><span class="c1">--endpoint-url https://s3.abci.ai s3api get-bucket-acl --bucket test-pub</span>
@@ -333,10 +329,6 @@
 </tr>
 </tbody>
 </table>
-<div class="admonition caution">
-<p class="admonition-title">Caution</p>
-<p>現時点では本設定は行わないでください。データ公開に関する約款類が整い次第、ご案内いたします。</p>
-</div>
 <p>put-object-acl で public-read を設定します。また、get-object-acl で設定状況を確認できます。public を示すURI "http://acs.amazonaws.com/groups/global/AllUsers" の Permission に READ が付与された Grantee が追加されていることを確認してください。</p>
 <div class="codehilite"><pre><span></span><span class="o">[</span><span class="n">username@es1 ~</span><span class="o">]</span><span class="err">$</span><span class="w"> </span><span class="n">aws</span><span class="w"> </span><span class="c1">--endpoint-url https://s3.abci.ai s3api put-object-acl --bucket test-pub2 --acl public-read --key test/test.txt</span>
 <span class="o">[</span><span class="n">username@es1 ~</span><span class="o">]</span><span class="err">$</span><span class="w"> </span><span class="n">aws</span><span class="w"> </span><span class="c1">--endpoint-url https://s3.abci.ai s3api get-object-acl--bucket test-pub2 --key test/test.txt</span>
