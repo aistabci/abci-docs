@@ -269,6 +269,30 @@ delete: s3://dataset-c0542/0004.jpg
 remove_bucket: dataset-c0542
 ```
 
+### Check Object Owner
+
+To display object owner, use the `s3api get-object-acl` command. As shown in the example below, BUCKET is the bucket name, OBJECT is the object name and the owner is displayed in "Owner".
+
+```
+[username@es1 ~]$ aws --endpoint-url https://s3.abci.ai s3api get-object-acl --bucket BUCKET --key OBJECT
+{
+    "Owner": {
+        "DisplayName": "ABCIGROUP",
+        "ID": "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
+    },
+    "Grants": [
+        {
+            "Grantee": {
+                "DisplayName": "ABCIGROUP",
+                "ID": "yyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyy",
+                "Type": "CanonicalUser"
+            },
+            "Permission": "FULL_CONTROL"
+        }
+    ]
+}
+```
+
 <!--  Is s3fs-fuse another ?  -->
 
 <!--  The detail way to use is not described, Cyberduck and WinSCP is described. -->

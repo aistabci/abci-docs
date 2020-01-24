@@ -18,10 +18,14 @@ ABCIクラウドストレージには、ABCIで提供する他のストレージ
 
 利用を開始するには、各ABCIグループの利用管理者からの申請が必要です。[ABCI利用ポータル](https://portal.abci.ai/user/)から申請を行ってください。利用管理者でない場合は、所属グループの利用管理者にお問い合わせください。ABCI利用ポータルの操作方法に関しては、[こちら](https://docs.abci.ai/portal/ja/)をご参照ください。
 
-ABCIクラウドストレージでは、使用量(データ占有量)に応じて課金されます。消費されるポイントについては[料金表](https://abci.ai/ja/how_to_use/tariffs.html)をご確認ください。なお、転送量やAPIの呼び出し回数による課金はありません。
+ABCIクラウドストレージでは、保存した全オブジェクト（データ）の合計サイズに応じたABCIポイントが、オブジェクト所有者であるABCIグループのABCIポイントから日ごとに減算されます。なお、データアクセス時の通信量やAPIを使用した回数による課金は行っていません。[show_cs_usage](02.md#check-cloud-storage-usage) を使ってクラウドラウドストレージに保存したデータ量を確認できます。ABCIクラウドストレージのABCIポイントの計算式は以下の通りです。
 
-!!! note
-    現在はお試し利用期間のため、利用料金はかかりません。
+<div class="codehilite"><pre>
+ABCI point = ABCI Cloud Storage の使用量
+           &times; ABCI Cloud Storage の単価
+</pre></div>
+
+ABCIクラウドストレージの単価は、[料金表](https://abci.ai/ja/how_to_use/tariffs.html) を確認してください。
 
 | ページ名 | 概要 |
 |:--|:--|

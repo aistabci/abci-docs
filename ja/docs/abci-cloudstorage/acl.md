@@ -3,9 +3,6 @@
 
 ABCIクラウドストレージでは、バケットやオブジェクトに対してアクセスコントロールリスト(ACL)を設定することで、誰がアクセスできるかを制御できます。デフォルトでは、所属するグループからのみアクセスできますが、他のABCIグループ、あるいは誰でもアクセスできるよう設定を変更することができます。
 
-!!! caution
-    現時点では誰からでもアクセスできる設定は行わないでください。データ公開に関する約款類が整い次第、ご案内いたします。
-
 ## ACLでの設定項目
 
 ACLは、誰からの、どの操作を許可をするのかをバケットやオブジェクト毎に設定します。
@@ -111,6 +108,9 @@ $ aws --endpoint-url https://s3.abci.ai s3api list-buckets
 [username@es1 ~]$ aws --endpoint-url https://s3.abci.ai s3api put-object-acl --acl private --bucket test-share --key test/testdata
 ```
 
+!!! caution
+    現時点では、問題が確認されているため、バケットに他グループのwrite許可を設定しないでください。対応状況については、[既知の問題](../known-issues.md) を参照ください。
+
 ### ABCIクラウドストレージの全アカウントに公開
 
 ABCIクラウドストレージの全アカウントに公開するには `--acl` に `authenticated-read` を指定します。
@@ -132,10 +132,13 @@ ABCIクラウドストレージの全アカウントに公開するには `--acl
 | public-read-write| インターネット上の誰もが、指定したバケット配下の読み書き、およびACLの変更が可能になります。| インターネット上の誰もがACLを適用したオブジェクトの読み書き、およびACLの変更が可能になります。|
 
 !!! caution
-    public-read-write はセキュリティの観点から利用を推奨しません。必要性とリスクを十分にご検討ください。
+    誰からでも読み取りアクセスができる設定を行う場合は、下記をよくお読みいただき、データを公開することが適切であるかご確認の上、設定をお願いします。
+    
+    * [ABCI約款・規約](https://abci.ai/ja/how_to_use/)
+    * [ABCIクラウドストレージ規約](https://abci.ai/ja/how_to_use/data/cloudstorage-agreement.pdf)
 
 !!! caution
-    現時点では誰からでもアクセスできる設定は行わないでください。データ公開に関する約款類が整い次第、ご案内いたします。
+    第三者によって意図しない利用がなされる恐れがありますので、public-read-write は設定しないでください。
 
 デフォルトの既定ACLは private が設定されています。公開を停止する場合は、private を設定してください。
 
@@ -147,9 +150,6 @@ ABCIクラウドストレージの全アカウントに公開するには `--acl
 | 適用ACL| 公開バケット|
 | :--| :--|
 | public-read| test-pub|
-
-!!! caution
-    現時点では本設定は行わないでください。データ公開に関する約款類が整い次第、ご案内いたします。
 
 put-bucket-acl で public-read を設定します。設定の確認は get-bucket-acl を用いて行います。public を示すURI "http://acs.amazonaws.com/groups/global/AllUsers" の Permission に READ が付与された Grantee が追加されていることを確認してください。
 
@@ -215,9 +215,6 @@ put-bucket-acl で public-read を設定します。設定の確認は get-bucke
 | 適用ACL| バケット| prefix| 公開オブジェクト|
 | :--| :--| :--| :--|
 | public-read| test-pub2| test/| test.txt|
-
-!!! caution
-    現時点では本設定は行わないでください。データ公開に関する約款類が整い次第、ご案内いたします。
 
 put-object-acl で public-read を設定します。また、get-object-acl で設定状況を確認できます。public を示すURI "http://acs.amazonaws.com/groups/global/AllUsers" の Permission に READ が付与された Grantee が追加されていることを確認してください。
 
