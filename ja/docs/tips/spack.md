@@ -367,10 +367,10 @@ ABCIが提供するMVAPICH2モジュールはCUDA対応していません。
 CUDA-aware MVAPICH2を使用する場合は、以下を参考にSpackでインストールしてください。
 
 GPUを搭載する計算ノード上で作業を行います。
-[OpenMPIと同様](#example_openmpi)に、使用するCUDAをインストールしたのちに、CUDAオプション（`+cuda`）、およびCUDAの依存関係（`^cuda@abci-10.1.243`）を指定してMVAPICH2をインストールします。
+[OpenMPIと同様](#example_openmpi)に、使用するCUDAをインストールしたのちに、CUDAオプション（`+cuda`）、通信ライブラリ（`fabrics=mrail`）、およびCUDAの依存関係（`^cuda@abci-10.1.243`）を指定してMVAPICH2をインストールします。
 ```
 [username@g0001 ~]$ spack install cuda@abci-10.1.243
-[username@g0001 ~]$ spack install mvapich2@2.3 +cuda ^cuda@abci-10.1.243
+[username@g0001 ~]$ spack install mvapich2@2.3 +cuda fabrics=mrail ^cuda@abci-10.1.243
 ```
 
 使い方もOpenMPIと同様に、CUDAとインストールしたMVAPICH2をロードして使います。
