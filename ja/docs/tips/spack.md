@@ -294,6 +294,12 @@ GPUを搭載する計算ノード上で作業を行います。
 ```
 [username@g0001 ~]$ spack install cuda@abci-10.1.243
 [username@g0001 ~]$ spack install openmpi@3.1.1 +cuda schedulers=sge ^cuda@abci-10.1.243
+[username@g0001 ~]$ spack module tcl refresh
+[username@g0001 ~]$ spack find --paths openmpi@3.1.1
+==> 1 installed package
+-- linux-centos7-haswell / gcc@4.8.5 ----------------------------
+openmpi@3.1.1  ${SPACK_ROOT}/opt/spack/linux-centos7-haswell/gcc-4.8.5/openmpi-3.1.1-h3d3gio7sd2dge3tu56o2obvdtplqey3
+[username@g0001 ~]$ echo "btl_openib_warn_default_gid_prefix = 0" >> ${SPACK_ROOT}/opt/spack/linux-centos7-haswell/gcc-4.8.5/openmpi-3.1.1-h3d3gio7sd2dge3tu56o2obvdtplqey3/etc/openmpi-mca-params.conf
 ```
 1行目では、ABCIが提供するCUDAを使用するよう、CUDAのバージョン`abci-10.1.243`をインストールします。
 2行目でOpenMPI 3.1.1をインストールしています。
@@ -304,6 +310,7 @@ GPUを搭載する計算ノード上で作業を行います。
 - `^cuda@abci-10.1.243`: 使用するCUDAを指定します。`^`は依存するソフトウェアを指定するときに使います。
 
 3行目で、インストールしたOpenMPIをEnvironment Modulesに登録しています。
+4行目以降で実行時のmcaのパラメータを追加しています。
 
 Spackでは、同一ソフトウェアを異なる設定で複数インストールし、管理することができます。
 ここでは、CUDA 9.0.176.4を使用するOpenMPI 3.1.1を追加インストールします。
@@ -320,7 +327,7 @@ Spackでは、同一ソフトウェアを異なる設定で複数インストー
 ```
 [username@es1 ~]$ module avail openmpi
 ------------------------- $HOME/spack/share/spack/modules/linux-centos7-haswell -------------------------
-openmpi-3.1.1-gcc-4.8.5-4b7ssot openmpi-3.1.1-gcc-4.8.5-ffwtsvk
+openmpi-3.1.1-gcc-4.8.5-h3d3gio             openmpi-3.1.1-gcc-4.8.5-uap2sto
 (snip)
 ```
 
@@ -333,18 +340,18 @@ OpenMPIの依存関係を確認し、CUDA 10.1.243を使用しているOpenMPI�
 [username@es1 ~]$ spack find -dl openmpi
 ==> 2 installed packages
 -- linux-centos7-haswell / gcc@4.8.5 ----------------------------
-4b7ssot openmpi@3.1.1
-abxq4dx     hwloc@1.11.11
-j56z2n2         cuda@9.0.176.4
+uap2sto openmpi@3.1.1
+b4gs3k5     hwloc@1.11.11
+l6ayrkp         cuda@abci-9.0.176.4
 (snip)
 
-ffwtsvk openmpi@3.1.1
-q6crewe     hwloc@1.11.11
-aksjp4j         cuda@10.1.243
+h3d3gio openmpi@3.1.1
+glgpfmf     hwloc@1.11.11
+6ddc273         cuda@abci-10.1.243
 (snip)
 ```
 
-ハッシュ`ffwtsvk`を持つOpenMPIが使用したいOpenMPIですので、モジュール`openmpi-3.1.1-gcc-4.8.5-ffwtsvk`を使用すれば良いとわかります。
+ハッシュ`ffwtsvk`を持つOpenMPIが使用したいOpenMPIですので、モジュール`openmpi-3.1.1-gcc-4.8.5-h3d3gio`を使用すれば良いとわかります。
 
 以下に「CUDA 10.1.243を使用するOpenMPI 3.1.1」を利用するジョブスクリプト例を示します。
 ```
@@ -356,9 +363,15 @@ aksjp4j         cuda@10.1.243
 source /etc/profile.d/modules.sh
 source ${HOME}/spack/share/spack/setup-env.sh
 module load cuda/10.1/10.1.243
-module load openmpi-3.1.1-gcc-4.8.5-ffwtsvk
+module load openmpi-3.1.1-gcc-4.8.5-h3d3gio
 
-mpiexec -n 2 YOUR_PROGRAM
+NUM_NODES=${NHOSTS}
+NUM_GPUS_PER_NODE=4
+NUM_PROCS=$(expr ${NUM_NODES} \* ${NUM_GPUS_PER_NODE})
+
+MPIOPTS="-n ${NUM_PROCS} -map-by ppr:${NUM_GPUS_PER_NODE}:node -x PATH -x LD_LIBRARY_PATH"
+
+mpiexec ${MPIOPTS} YOUR_PROGRAM
 ```
 
 ### CUDA-aware MVAPICH2 {#example_mvapich2}
@@ -374,6 +387,26 @@ GPUを搭載する計算ノード上で作業を行います。
 ```
 
 使い方もOpenMPIと同様に、CUDAとインストールしたMVAPICH2をロードして使います。
+```
+#!/bin/bash
+#$-l rt_F=2
+#$-j y
+#$-cwd
+
+source /etc/profile.d/modules.sh
+source ${HOME}/spack/share/spack/setup-env.sh
+module load cuda/10.1/10.1.243
+module load mvapich2-2.3-gcc-4.8.5-wy2qkke
+
+NUM_NODES=${NHOSTS}
+NUM_GPUS_PER_NODE=4
+NUM_PROCS=$(expr ${NUM_NODES} \* ${NUM_GPUS_PER_NODE})
+MPIE_ARGS="-genv MV2_USE_CUDA=1"
+
+MPIOPTS="${MPIE_ARGS} -np ${NUM_PROCS} -ppn ${NUM_GPUS_PER_NODE}"
+
+mpiexec ${MPIOPTS} YOUR_PROGRAM
+```
 
 ### MPIFileUtils {#example_mpifileutils}
 
