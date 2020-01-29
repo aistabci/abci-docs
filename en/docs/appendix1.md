@@ -671,11 +671,11 @@
 [root@es1 nccl]# make PREFIX=$INSTALL_DIR install
 ```
 
-## ディープラーニングフレームワーク
+## Deep Learning Framework
 
-[ディープラーニングフレームワーク](11.md#deep-learning-framework)は、利用者権限でインストールして利用してください。
+[Deep Learning Framework](11.md#deep-learning-framework) needs to be installed by user's privilege.
 
-## 大規模データ処理
+## Big Data
 
 ### Hadoop
 
