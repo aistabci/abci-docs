@@ -10,8 +10,7 @@
 #### w/o CUDA
 
 ```
-INSTALL_DIR=/apps/openmpi/2.1.3/gcc4.8.5
-
+[username@g0001 ~]$ INSTALL_DIR=/apps/openmpi/2.1.3/gcc4.8.5
 [username@g0001 ~]$ wget https://download.open-mpi.org/release/open-mpi/v2.1/openmpi-2.1.3.tar.bz2
 [username@g0001 ~]$ tar zxf openmpi-2.1.3.tar.bz2
 [username@g0001 ~]$ cd openmpi-2.1.3
@@ -30,12 +29,11 @@ INSTALL_DIR=/apps/openmpi/2.1.3/gcc4.8.5
 #### CUDA 8.0.61.2
 
 ```
-INSTALL_DIR=/apps/openmpi/2.1.3/gcc4.8.5_cuda8.0.61.2
-
+[username@g0001 ~]$ INSTALL_DIR=/apps/openmpi/2.1.3/gcc4.8.5_cuda8.0.61.2
 [username@g0001 ~]$ wget https://download.open-mpi.org/release/open-mpi/v2.1/openmpi-2.1.3.tar.bz2
 [username@g0001 ~]$ tar zxf openmpi-2.1.3.tar.bz2
-[username@g0001 ~]$ cd openmpi-2.1.3
 [username@g0001 ~]$ module load cuda/8.0/8.0.61.2
+[username@g0001 ~]$ cd openmpi-2.1.3
 [username@g0001 openmpi-2.1.3]$ ./configure \
   --prefix=$INSTALL_DIR \
   --enable-mpi-thread-multiple \
@@ -52,12 +50,11 @@ INSTALL_DIR=/apps/openmpi/2.1.3/gcc4.8.5_cuda8.0.61.2
 #### CUDA 9.0.176.2
 
 ```
-INSTALL_DIR=/apps/openmpi/2.1.3/gcc4.8.5_cuda9.0.176.2
-
+[username@g0001 ~]$ INSTALL_DIR=/apps/openmpi/2.1.3/gcc4.8.5_cuda9.0.176.2
 [username@g0001 ~]$ wget https://download.open-mpi.org/release/open-mpi/v2.1/openmpi-2.1.3.tar.bz2
 [username@g0001 ~]$ tar zxf openmpi-2.1.3.tar.bz2
-[username@g0001 ~]$ cd openmpi-2.1.3
 [username@g0001 ~]$ module load cuda/9.0/9.0.176.2
+[username@g0001 ~]$ cd openmpi-2.1.3
 [username@g0001 openmpi-2.1.3]$ ./configure \
   --prefix=$INSTALL_DIR \
   --enable-mpi-thread-multiple \
@@ -74,12 +71,11 @@ INSTALL_DIR=/apps/openmpi/2.1.3/gcc4.8.5_cuda9.0.176.2
 #### CUDA 9.1.85.3
 
 ```
-INSTALL_DIR=/apps/openmpi/2.1.3/gcc4.8.5_cuda9.1.85.3
-
+[username@g0001 ~]$ INSTALL_DIR=/apps/openmpi/2.1.3/gcc4.8.5_cuda9.1.85.3
 [username@g0001 ~]$ wget https://download.open-mpi.org/release/open-mpi/v2.1/openmpi-2.1.3.tar.bz2
 [username@g0001 ~]$ tar zxf openmpi-2.1.3.tar.bz2
-[username@g0001 ~]$ cd openmpi-2.1.3
 [username@g0001 ~]$ module load cuda/9.1/9.1.85.3
+[username@g0001 ~]$ cd openmpi-2.1.3
 [username@g0001 openmpi-2.1.3]$ ./configure \
   --prefix=$INSTALL_DIR \
   --enable-mpi-thread-multiple \
@@ -96,12 +92,11 @@ INSTALL_DIR=/apps/openmpi/2.1.3/gcc4.8.5_cuda9.1.85.3
 #### CUDA 9.2.88.1
 
 ```
-INSTALL_DIR=/apps/openmpi/2.1.3/gcc4.8.5_cuda9.2.88.1
-
+[username@g0001 ~]$ INSTALL_DIR=/apps/openmpi/2.1.3/gcc4.8.5_cuda9.2.88.1
 [username@g0001 ~]$ wget https://download.open-mpi.org/release/open-mpi/v2.1/openmpi-2.1.3.tar.bz2
 [username@g0001 ~]$ tar zxf openmpi-2.1.3.tar.bz2
+[username@g0001 ~]$ module load cuda/9.2/9.2.88.1
 [username@g0001 ~]$ cd openmpi-2.1.3
-[username@g0001 ~]$ module load cuda/9.2.88.1
 [username@g0001 openmpi-2.1.3]$ ./configure \
   --prefix=$INSTALL_DIR \
   --enable-mpi-thread-multiple \
@@ -120,8 +115,7 @@ INSTALL_DIR=/apps/openmpi/2.1.3/gcc4.8.5_cuda9.2.88.1
 #### w/o CUDA
 
 ```
-INSTALL_DIR=/apps/openmpi/3.1.0/gcc4.8.5
-
+[username@g0001 ~]$ INSTALL_DIR=/apps/openmpi/3.1.0/gcc4.8.5
 [username@g0001 ~]$ wget https://download.open-mpi.org/release/open-mpi/v3.1/openmpi-3.1.0.tar.bz2
 [username@g0001 ~]$ tar zxf openmpi-3.1.0.tar.bz2
 [username@g0001 ~]$ cd openmpi-3.1.0
@@ -134,19 +128,16 @@ INSTALL_DIR=/apps/openmpi/3.1.0/gcc4.8.5
 [username@g0001 openmpi-3.1.0]$ su
 [root@g0001 openmpi-3.1.0]# make install 2>&1 | tee make_install.log
 [root@g0001 openmpi-3.1.0]# echo "btl_openib_warn_default_gid_prefix = 0" >> $INSTALL_DIR/etc/openmpi-mca-params.conf
-
 ```
 
 #### CUDA 8.0.61.2
 
 ```
-INSTALL_DIR=/apps/openmpi/3.1.0/gcc4.8.5_cuda8.0.61.2
-
+[username@g0001 ~]$ INSTALL_DIR=/apps/openmpi/3.1.0/gcc4.8.5_cuda8.0.61.2
 [username@g0001 ~]$ wget https://download.open-mpi.org/release/open-mpi/v3.1/openmpi-3.1.0.tar.bz2
 [username@g0001 ~]$ tar zxf openmpi-3.1.0.tar.bz2
-[username@g0001 ~]$ cd openmpi-3.1.0
 [username@g0001 ~]$ module load cuda/8.0/8.0.61.2
-[username@g0001 ~]$ INSTALL_DIR=/apps/openmpi/3.1.0/gcc4.8.5_cuda8.0.61.2
+[username@g0001 ~]$ cd openmpi-3.1.0
 [username@g0001 openmpi-3.1.0]$ ./configure \
   --prefix=$INSTALL_DIR \
   --enable-orterun-prefix-by-default \
@@ -162,12 +153,11 @@ INSTALL_DIR=/apps/openmpi/3.1.0/gcc4.8.5_cuda8.0.61.2
 #### CUDA 9.0.176.2
 
 ```
-INSTALL_DIR=/apps/openmpi/3.1.0/gcc4.8.5_cuda9.0.176.2
-
+[username@g0001 ~]$ INSTALL_DIR=/apps/openmpi/3.1.0/gcc4.8.5_cuda9.0.176.2
 [username@g0001 ~]$ wget https://download.open-mpi.org/release/open-mpi/v3.1/openmpi-3.1.0.tar.bz2
 [username@g0001 ~]$ tar zxf openmpi-3.1.0.tar.bz2
-[username@g0001 ~]$ cd openmpi-3.1.0
 [username@g0001 ~]$ module load cuda/9.0/9.0.176.2
+[username@g0001 ~]$ cd openmpi-3.1.0
 [username@g0001 openmpi-3.1.0]$ ./configure \
   --prefix=$INSTALL_DIR \
   --enable-orterun-prefix-by-default \
@@ -183,12 +173,11 @@ INSTALL_DIR=/apps/openmpi/3.1.0/gcc4.8.5_cuda9.0.176.2
 #### CUDA 9.1.85.3
 
 ```
-INSTALL_DIR=/apps/openmpi/3.1.0/gcc4.8.5_cuda9.1.85.3
-
+[username@g0001 ~]$ INSTALL_DIR=/apps/openmpi/3.1.0/gcc4.8.5_cuda9.1.85.3
 [username@g0001 ~]$ wget https://download.open-mpi.org/release/open-mpi/v3.1/openmpi-3.1.0.tar.bz2
 [username@g0001 ~]$ tar zxf openmpi-3.1.0.tar.bz2
-[username@g0001 ~]$ cd openmpi-3.1.0
 [username@g0001 ~]$ module load cuda/9.1/9.1.85.3
+[username@g0001 ~]$ cd openmpi-3.1.0
 [username@g0001 openmpi-3.1.0]$ ./configure \
   --prefix=$INSTALL_DIR \
   --enable-orterun-prefix-by-default \
@@ -204,12 +193,11 @@ INSTALL_DIR=/apps/openmpi/3.1.0/gcc4.8.5_cuda9.1.85.3
 #### CUDA 9.2.88.1
 
 ```
-INSTALL_DIR=/apps/openmpi/3.1.0/gcc4.8.5_cuda9.2.88.1
-
+[username@g0001 ~]$ INSTALL_DIR=/apps/openmpi/3.1.0/gcc4.8.5_cuda9.2.88.1
 [username@g0001 ~]$ wget https://download.open-mpi.org/release/open-mpi/v3.1/openmpi-3.1.0.tar.bz2
 [username@g0001 ~]$ tar zxf openmpi-3.1.0.tar.bz2
-[username@g0001 ~]$ cd openmpi-3.1.0
 [username@g0001 ~]$ module load cuda/9.2/9.2.88.1
+[username@g0001 ~]$ cd openmpi-3.1.0
 [username@g0001 openmpi-3.1.0]$ ./configure \
   --prefix=$INSTALL_DIR \
   --enable-orterun-prefix-by-default \
@@ -225,9 +213,9 @@ INSTALL_DIR=/apps/openmpi/3.1.0/gcc4.8.5_cuda9.2.88.1
 ### Open MPI 2.1.6 (for PGI18.5)
 
 #### w/o CUDA
-```
-INSTALL_DIR='/apps/openmpi/2.1.6/pgi18.5'
 
+```
+[username@g0001 ~]$ INSTALL_DIR=/apps/openmpi/2.1.6/pgi18.5
 [username@g0001 ~]$ wget https://download.open-mpi.org/release/open-mpi/v2.1/openmpi-2.1.6.tar.gz
 [username@g0001 ~]$ tar zxf openmpi-2.1.6.tar.gz
 [username@g0001 ~]$ module load pgi/18.5
@@ -246,9 +234,9 @@ INSTALL_DIR='/apps/openmpi/2.1.6/pgi18.5'
 ```
 
 #### CUDA 8.0.61.2
-```
-INSTALL_DIR='/apps/openmpi/2.1.6/pgi18.5_cuda8.0.61.2'
 
+```
+[username@g0001 ~]$ INSTALL_DIR=/apps/openmpi/2.1.6/pgi18.5_cuda8.0.61.2
 [username@g0001 ~]$ wget https://download.open-mpi.org/release/open-mpi/v2.1/openmpi-2.1.6.tar.gz
 [username@g0001 ~]$ tar zxf openmpi-2.1.6.tar.gz
 [username@g0001 ~]$ module load pgi/18.5
@@ -269,9 +257,9 @@ INSTALL_DIR='/apps/openmpi/2.1.6/pgi18.5_cuda8.0.61.2'
 ```
 
 #### CUDA 9.0.176.2
-```
-INSTALL_DIR='/apps/openmpi/2.1.6/pgi18.5_cuda9.0.176.2'
 
+```
+[username@g0001 ~]$ INSTALL_DIR=/apps/openmpi/2.1.6/pgi18.5_cuda9.0.176.2
 [username@g0001 ~]$ wget https://download.open-mpi.org/release/open-mpi/v2.1/openmpi-2.1.6.tar.gz
 [username@g0001 ~]$ tar zxf openmpi-2.1.6.tar.gz
 [username@g0001 ~]$ module load pgi/18.5
@@ -292,9 +280,9 @@ INSTALL_DIR='/apps/openmpi/2.1.6/pgi18.5_cuda9.0.176.2'
 ```
 
 #### CUDA 9.1.85.3
-```
-INSTALL_DIR='/apps/openmpi/2.1.6/pgi18.5_cuda9.1.85.3'
 
+```
+[username@g0001 ~]$ INSTALL_DIR=/apps/openmpi/2.1.6/pgi18.5_cuda9.1.85.3
 [username@g0001 ~]$ wget https://download.open-mpi.org/release/open-mpi/v2.1/openmpi-2.1.6.tar.gz
 [username@g0001 ~]$ tar zxf openmpi-2.1.6.tar.gz
 [username@g0001 ~]$ module load pgi/18.5
@@ -315,9 +303,9 @@ INSTALL_DIR='/apps/openmpi/2.1.6/pgi18.5_cuda9.1.85.3'
 ```
 
 #### CUDA 9.2.88.1
-```
-INSTALL_DIR='/apps/openmpi/2.1.6/pgi18.5_cuda9.2.88.1'
 
+```
+[username@g0001 ~]$ INSTALL_DIR=/apps/openmpi/2.1.6/pgi18.5_cuda9.2.88.1
 [username@g0001 ~]$ wget https://download.open-mpi.org/release/open-mpi/v2.1/openmpi-2.1.6.tar.gz
 [username@g0001 ~]$ tar zxf openmpi-2.1.6.tar.gz
 [username@g0001 ~]$ module load pgi/18.5
@@ -340,8 +328,7 @@ INSTALL_DIR='/apps/openmpi/2.1.6/pgi18.5_cuda9.2.88.1'
 #### CUDA 9.2.148.1
 
 ```
-INSTALL_DIR='/apps/openmpi/2.1.6/pgi18.5_cuda9.2.148.1'
-
+[username@g0001 ~]$ INSTALL_DIR=/apps/openmpi/2.1.6/pgi18.5_cuda9.2.148.1
 [username@g0001 ~]$ wget https://download.open-mpi.org/release/open-mpi/v2.1/openmpi-2.1.6.tar.gz
 [username@g0001 ~]$ tar zxf openmpi-2.1.6.tar.gz
 [username@g0001 ~]$ module load pgi/18.5
@@ -364,9 +351,9 @@ INSTALL_DIR='/apps/openmpi/2.1.6/pgi18.5_cuda9.2.148.1'
 ### Open MPI 3.1.3 (for PGI18.5)
 
 #### w/o CUDA
-```
-INSTALL_DIR='/apps/openmpi/3.1.3/pgi18.5'
 
+```
+[username@g0001 ~]$ INSTALL_DIR=/apps/openmpi/3.1.3/pgi18.5
 [username@g0001 ~]$ wget https://download.open-mpi.org/release/open-mpi/v3.1/openmpi-3.1.3.tar.gz
 [username@g0001 ~]$ tar zxf openmpi-3.1.3.tar.gz
 [username@g0001 ~]$ module load pgi/18.5
@@ -384,9 +371,9 @@ INSTALL_DIR='/apps/openmpi/3.1.3/pgi18.5'
 ```
 
 #### CUDA 8.0.61.2
-```
-INSTALL_DIR='/apps/openmpi/3.1.3/pgi18.5_cuda8.0.61.2'
 
+```
+[username@g0001 ~]$ INSTALL_DIR=/apps/openmpi/3.1.3/pgi18.5_cuda8.0.61.2
 [username@g0001 ~]$ wget https://download.open-mpi.org/release/open-mpi/v3.1/openmpi-3.1.3.tar.gz
 [username@g0001 ~]$ tar zxf openmpi-3.1.3.tar.gz
 [username@g0001 ~]$ module load pgi/18.5
@@ -406,9 +393,9 @@ INSTALL_DIR='/apps/openmpi/3.1.3/pgi18.5_cuda8.0.61.2'
 ```
 
 #### CUDA 9.0.176.2
-```
-INSTALL_DIR='/apps/openmpi/3.1.3/pgi18.5_cuda9.0.176.2'
 
+```
+[username@g0001 ~]$ INSTALL_DIR=/apps/openmpi/3.1.3/pgi18.5_cuda9.0.176.2
 [username@g0001 ~]$ wget https://download.open-mpi.org/release/open-mpi/v3.1/openmpi-3.1.3.tar.gz
 [username@g0001 ~]$ tar zxf openmpi-3.1.3.tar.gz
 [username@g0001 ~]$ module load pgi/18.5
@@ -428,9 +415,9 @@ INSTALL_DIR='/apps/openmpi/3.1.3/pgi18.5_cuda9.0.176.2'
 ```
 
 #### CUDA 9.1.85.3
-```
-INSTALL_DIR='/apps/openmpi/3.1.3/pgi18.5_cuda9.1.85.3'
 
+```
+[username@g0001 ~]$ INSTALL_DIR=/apps/openmpi/3.1.3/pgi18.5_cuda9.1.85.3
 [username@g0001 ~]$ wget https://download.open-mpi.org/release/open-mpi/v3.1/openmpi-3.1.3.tar.gz
 [username@g0001 ~]$ tar zxf openmpi-3.1.3.tar.gz
 [username@g0001 ~]$ module load pgi/18.5
@@ -450,9 +437,9 @@ INSTALL_DIR='/apps/openmpi/3.1.3/pgi18.5_cuda9.1.85.3'
 ```
 
 #### CUDA 9.2.88.1
-```
-INSTALL_DIR='/apps/openmpi/3.1.3/pgi18.5_cuda9.2.88.1'
 
+```
+[username@g0001 ~]$ INSTALL_DIR=/apps/openmpi/3.1.3/pgi18.5_cuda9.2.88.1
 [username@g0001 ~]$ wget https://download.open-mpi.org/release/open-mpi/v3.1/openmpi-3.1.3.tar.gz
 [username@g0001 ~]$ tar zxf openmpi-3.1.3.tar.gz
 [username@g0001 ~]$ module load pgi/18.5
@@ -474,8 +461,7 @@ INSTALL_DIR='/apps/openmpi/3.1.3/pgi18.5_cuda9.2.88.1'
 #### CUDA 9.2.148.1
 
 ```
-INSTALL_DIR='/apps/openmpi/3.1.3/pgi18.5_cuda9.2.148.1'
-
+[username@g0001 ~]$ INSTALL_DIR=/apps/openmpi/3.1.3/pgi18.5_cuda9.2.148.1
 [username@g0001 ~]$ wget https://download.open-mpi.org/release/open-mpi/v3.1/openmpi-3.1.3.tar.gz
 [username@g0001 ~]$ tar zxf openmpi-3.1.3.tar.gz
 [username@g0001 ~]$ module load pgi/18.5
@@ -499,8 +485,7 @@ INSTALL_DIR='/apps/openmpi/3.1.3/pgi18.5_cuda9.2.148.1'
 #### w/o CUDA
 
 ```
-INSTALL_DIR=/app/mvapich2/2.3rc2/gcc4.8.5
-
+[username@g0001 ~]$ INSTALL_DIR=/apps/mvapich2/2.3rc2/gcc4.8.5
 [username@g0001 ~]$ wget http://mvapich.cse.ohio-state.edu/download/mvapich/mv2/mvapich2-2.3rc2.tar.gz
 [username@g0001 ~]$ tar zxf mvapich2-2.3rc2.tar.gz
 [username@g0001 ~]$ cd mvapich2-2.3rc2
@@ -514,8 +499,7 @@ INSTALL_DIR=/app/mvapich2/2.3rc2/gcc4.8.5
 #### CUDA 8.0.61.2
 
 ```
-INSTALL_DIR=/apps/mvapich2/2.3rc2/gcc4.8.5_cuda8.0.61.2
-
+[username@g0001 ~]$ INSTALL_DIR=/apps/mvapich2/2.3rc2/gcc4.8.5_cuda8.0.61.2
 [username@g0001 ~]$ wget http://mvapich.cse.ohio-state.edu/download/mvapich/mv2/mvapich2-2.3rc2.tar.gz
 [username@g0001 ~]$ tar zxf mvapich2-2.3rc2.tar.gz
 [username@g0001 ~]$ cd mvapich2-2.3rc2
@@ -534,8 +518,7 @@ INSTALL_DIR=/apps/mvapich2/2.3rc2/gcc4.8.5_cuda8.0.61.2
 #### CUDA 9.0.176.2
 
 ```
-INSTALL_DIR=/apps/mvapich2/2.3rc2/gcc4.8.5_cuda9.0.176.2
-
+[username@g0001 ~]$ INSTALL_DIR=/apps/mvapich2/2.3rc2/gcc4.8.5_cuda9.0.176.2
 [username@g0001 ~]$ wget http://mvapich.cse.ohio-state.edu/download/mvapich/mv2/mvapich2-2.3rc2.tar.gz
 [username@g0001 ~]$ tar zxf mvapich2-2.3rc2.tar.gz
 [username@g0001 ~]$ cd mvapich2-2.3rc2
@@ -554,8 +537,7 @@ INSTALL_DIR=/apps/mvapich2/2.3rc2/gcc4.8.5_cuda9.0.176.2
 #### CUDA 9.1.85.3
 
 ```
-INSTALL_DIR=/apps/mvapich2/2.3rc2/gcc4.8.5_cuda9.1.85.3
-
+[username@g0001 ~]$ INSTALL_DIR=/apps/mvapich2/2.3rc2/gcc4.8.5_cuda9.1.85.3
 [username@g0001 ~]$ wget http://mvapich.cse.ohio-state.edu/download/mvapich/mv2/mvapich2-2.3rc2.tar.gz
 [username@g0001 ~]$ tar zxf mvapich2-2.3rc2.tar.gz
 [username@g0001 ~]$ cd mvapich2-2.3rc2
@@ -574,8 +556,7 @@ INSTALL_DIR=/apps/mvapich2/2.3rc2/gcc4.8.5_cuda9.1.85.3
 #### CUDA 9.2.88.1
 
 ```
-INSTALL_DIR=/apps/mvapich2/2.3rc2/gcc4.8.5_cuda9.2.88.1
-
+[username@g0001 ~]$ INSTALL_DIR=/apps/mvapich2/2.3rc2/gcc4.8.5_cuda9.2.88.1
 [username@g0001 ~]$ wget http://mvapich.cse.ohio-state.edu/download/mvapich/mv2/mvapich2-2.3rc2.tar.gz
 [username@g0001 ~]$ tar zxf mvapich2-2.3rc2.tar.gz
 [username@g0001 ~]$ cd mvapich2-2.3rc2
@@ -596,8 +577,7 @@ INSTALL_DIR=/apps/mvapich2/2.3rc2/gcc4.8.5_cuda9.2.88.1
 ### Python 2.7.15
 
 ```
-INSTALL_DIR=/apps/python/2.7.15
-
+[username@g0001 ~]$ INSTALL_DIR=/apps/python/2.7.15
 [username@g0001 ~]$ wget https://www.python.org/ftp/python/2.7.15/Python-2.7.15.tar.xz
 [username@g0001 ~]$ tar Jxf Python-2.7.15.tar.xz
 [username@g0001 ~]$ cd Python-2.7.15
@@ -624,8 +604,7 @@ INSTALL_DIR=/apps/python/2.7.15
 ### R 3.5.0
 
 ```
-INSTALL_DIR=/apps/R/3.5.0
-
+[username@g0001 ~]$ INSTALL_DIR=/apps/R/3.5.0
 [username@g0001 ~]$ wget https://cran.ism.ac.jp/src/base/R-3/R-3.5.0.tar.gz
 [username@g0001 ~]$ tar zxf R-3.5.0.tar.gz
 [username@g0001 ~]$ cd R-3.5.0
@@ -643,8 +622,7 @@ INSTALL_DIR=/apps/R/3.5.0
 #### CUDA 8.0.61.2
 
 ```
-INSTALL_DIR=/apps/nccl/1.3.5/cuda8.0
-
+[username@es1 ~]$ INSTALL_DIR=/apps/nccl/1.3.5/cuda8.0
 [username@es1 ~]$ git clone https://github.com/NVIDIA/nccl.git
 [username@es1 ~]$ cd nccl
 [username@es1 nccl]$ module load cuda/8.0/8.0.61.2
@@ -657,8 +635,7 @@ INSTALL_DIR=/apps/nccl/1.3.5/cuda8.0
 #### CUDA 9.0.176.2
 
 ```
-INSTALL_DIR=/apps/nccl/1.3.5/cuda9.0
-
+[username@es1 ~]$ INSTALL_DIR=/apps/nccl/1.3.5/cuda9.0
 [username@es1 ~]$ git clone https://github.com/NVIDIA/nccl.git
 [username@es1 ~]$ cd nccl
 [username@es1 nccl]$ module load cuda/9.0/9.0.176.2
@@ -671,8 +648,7 @@ INSTALL_DIR=/apps/nccl/1.3.5/cuda9.0
 #### CUDA 9.1.85.3
 
 ```
-INSTALL_DIR=/apps/nccl/1.3.5/cuda9.1
-
+[username@es1 ~]$ INSTALL_DIR=/apps/nccl/1.3.5/cuda9.1
 [username@es1 ~]$ git clone https://github.com/NVIDIA/nccl.git
 [username@es1 ~]$ cd nccl
 [username@es1 nccl]$ module load cuda/9.1/9.1.85.3
@@ -685,8 +661,7 @@ INSTALL_DIR=/apps/nccl/1.3.5/cuda9.1
 #### CUDA 9.2.88.1
 
 ```
-INSTALL_DIR=/apps/nccl/1.3.5/cuda9.2
-
+[username@es1 ~]$ INSTALL_DIR=/apps/nccl/1.3.5/cuda9.2
 [username@es1 ~]$ git clone https://github.com/NVIDIA/nccl.git
 [username@es1 ~]$ cd nccl
 [username@es1 nccl]$ module load cuda/9.2/9.2.88.1
@@ -696,11 +671,11 @@ INSTALL_DIR=/apps/nccl/1.3.5/cuda9.2
 [root@es1 nccl]# make PREFIX=$INSTALL_DIR install
 ```
 
-## Deep Learning Framework
+## ディープラーニングフレームワーク
 
-[Deep Learning Framework](11.md#deep-learning-framework) needs to be installed by user's privilege.
+[ディープラーニングフレームワーク](11.md#deep-learning-framework)は、利用者権限でインストールして利用してください。
 
-## Big Data
+## 大規模データ処理
 
 ### Hadoop
 
