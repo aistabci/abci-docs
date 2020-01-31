@@ -5,10 +5,10 @@ Spackを使うことにより、同一ソフトウェアをバージョン、設
 ABCI上でSpackを使うことにより、ABCIが標準でサポートしていないソフトウェアを簡単にインストールすることができるようになります。
 
 !!! note
-    動作確認は2019年12月13日に行っており、その時の最新のバージョンである0.13.2を使用しています。
+    動作確認は2020年1月29日に行っており、その時の最新のバージョンである0.13.3を使用しています。
 
 !!! caution
-    Spackは利用者のホーム領域やグループ領域にソフトウェアをインストールします。
+    Spackは、Spackをインストールしたディレクトリ以下にソフトウェアをインストールします。
     多数のソフトウェアを導入すると多くの容量を消費しますので、使わなくなったソフトウェアはアンインストールするなどの管理をしてください。
 
 
@@ -20,14 +20,14 @@ GitHubからCloneし、使用するバージョンをcheckoutすればインス�
 
 ```
 [username@es1 ~]$ git clone https://github.com/spack/spack.git
-[username@es1 ~]$ cd spack
-[username@es1 ~/spack]$ git checkout v0.13.2
+[username@es1 ~]$ cd ./spack
+[username@es1 ~/spack]$ git checkout v0.13.3
 ```
 
 以降はターミナル上で、Spackを有効化するスクリプトを読み込めば使えます。
 
 ```
-[username@es1 ~]$ source spack/share/spack/setup-env.sh
+[username@es1 ~]$ source ${HOME}/spack/share/spack/setup-env.sh
 ```
 
 ### ABCI用設定 {#setup_configure}
@@ -269,14 +269,10 @@ ABCIが提供するモジュール同様に、ロードして使用できます�
 ```
 
 !!! note
-    ソフトウェアをインストールしてもモジュールに登録されない場合は、モジュールの更新や、Spackの環境設定スクリプトの読み込みを行ってみてください。
+    ソフトウェアをインストールしてもモジュールに登録されない場合は、Spackの環境設定スクリプトの読み込みを行ってみてください。
 
     ```
-    [username@es1 ~]$ source spack/share/spack/setup-env.sh
-    ```
-
-    ```
-    [username@es1 ~]$ spack module tcl refresh
+    [username@es1 ~]$ source ${HOME}/spack/share/spack/setup-env.sh
     ```
 
 
@@ -294,7 +290,6 @@ GPUを搭載する計算ノード上で作業を行います。
 ```
 [username@g0001 ~]$ spack install cuda@abci-10.1.243
 [username@g0001 ~]$ spack install openmpi@3.1.1 +cuda schedulers=sge ^cuda@abci-10.1.243
-[username@g0001 ~]$ spack module tcl refresh
 [username@g0001 ~]$ spack find --paths openmpi@3.1.1
 ==> 1 installed package
 -- linux-centos7-haswell / gcc@4.8.5 ----------------------------
@@ -302,21 +297,21 @@ openmpi@3.1.1  ${SPACK_ROOT}/opt/spack/linux-centos7-haswell/gcc-4.8.5/openmpi-3
 [username@g0001 ~]$ echo "btl_openib_warn_default_gid_prefix = 0" >> ${SPACK_ROOT}/opt/spack/linux-centos7-haswell/gcc-4.8.5/openmpi-3.1.1-h3d3gio7sd2dge3tu56o2obvdtplqey3/etc/openmpi-mca-params.conf
 ```
 1行目では、ABCIが提供するCUDAを使用するよう、CUDAのバージョン`abci-10.1.243`をインストールします。
-2行目でOpenMPI 3.1.1をインストールしています。
-オプションの意味は以下の通りです。
+2行明目以降で、[このページ](https://docs.abci.ai/ja/appendix1/#open-mpi)と同様の設定で、OpenMPIをインストールしています。
+2行目のOpenMPI 3.1.1のインストールオプションの意味は以下の通りです。
 
 - `+cuda`: CUDAを有効にしてビルドします。
 - `schedulers=sge`: MPIプロセスを起動する手段を指定しています。ABCIではSGE互換のUGEを使っているため、sgeを指定します。
 - `^cuda@abci-10.1.243`: 使用するCUDAを指定します。`^`は依存するソフトウェアを指定するときに使います。
 
-3行目で、インストールしたOpenMPIをEnvironment Modulesに登録しています。
-4行目以降で実行時のmcaのパラメータを追加しています。
+3行目でOpenMPIがインストールされたパスを確認し、4行目で設定ファイルを編集しています。
 
 Spackでは、同一ソフトウェアを異なる設定で複数インストールし、管理することができます。
 ここでは、CUDA 9.0.176.4を使用するOpenMPI 3.1.1を追加インストールします。
 ```
 [username@g0001 ~]$ spack install cuda@abci-9.0.176.4
 [username@g0001 ~]$ spack install openmpi@3.1.1 +cuda schedulers=sge ^cuda@abci-9.0.176.4
+(同様に設定ファイルを編集)
 ```
 
 #### 使い方 {#example_openmpi_use}
@@ -351,9 +346,17 @@ glgpfmf     hwloc@1.11.11
 (snip)
 ```
 
-ハッシュ`ffwtsvk`を持つOpenMPIが使用したいOpenMPIですので、モジュール`openmpi-3.1.1-gcc-4.8.5-h3d3gio`を使用すれば良いとわかります。
+ハッシュ`h3d3gio`を持つOpenMPIが使用したいOpenMPIですので、モジュール`openmpi-3.1.1-gcc-4.8.5-h3d3gio`を使用すれば良いとわかります。
 
-以下に「CUDA 10.1.243を使用するOpenMPI 3.1.1」を利用するジョブスクリプト例を示します。
+計算ノード上でプログラムをコンパイルする場合は、ABCIが提供するCUDAモジュールとインストールしたOpenMPIのモジュールを読み込みます。
+```
+source ${HOME}/spack/share/spack/setup-env.sh
+[username@g0001 ~]$ module load cuda/10.1/10.1.243
+[username@g0001 ~]$ module load openmpi-3.1.1-gcc-4.8.5-h3d3gio
+[username@g0001 ~]$ mpicc ...
+```
+
+ジョブスクリプトでは、以下のように使用します。
 ```
 #!/bin/bash
 #$-l rt_F=2
@@ -368,9 +371,7 @@ module load openmpi-3.1.1-gcc-4.8.5-h3d3gio
 NUM_NODES=${NHOSTS}
 NUM_GPUS_PER_NODE=4
 NUM_PROCS=$(expr ${NUM_NODES} \* ${NUM_GPUS_PER_NODE})
-
 MPIOPTS="-n ${NUM_PROCS} -map-by ppr:${NUM_GPUS_PER_NODE}:node -x PATH -x LD_LIBRARY_PATH"
-
 mpiexec ${MPIOPTS} YOUR_PROGRAM
 ```
 
@@ -387,6 +388,7 @@ GPUを搭載する計算ノード上で作業を行います。
 ```
 
 使い方もOpenMPIと同様に、CUDAとインストールしたMVAPICH2をロードして使います。
+以下にジョブスクリプト例を示します。
 ```
 #!/bin/bash
 #$-l rt_F=2
@@ -402,7 +404,6 @@ NUM_NODES=${NHOSTS}
 NUM_GPUS_PER_NODE=4
 NUM_PROCS=$(expr ${NUM_NODES} \* ${NUM_GPUS_PER_NODE})
 MPIE_ARGS="-genv MV2_USE_CUDA=1"
-
 MPIOPTS="${MPIE_ARGS} -np ${NUM_PROCS} -ppn ${NUM_GPUS_PER_NODE}"
 
 mpiexec ${MPIOPTS} YOUR_PROGRAM
