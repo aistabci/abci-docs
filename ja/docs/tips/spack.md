@@ -5,7 +5,7 @@ Spackを使うことにより、同一ソフトウェアをバージョン、設
 ABCI上でSpackを使うことにより、ABCIが標準でサポートしていないソフトウェアを簡単にインストールすることができるようになります。
 
 !!! note
-    動作確認は2020年1月29日に行っており、その時の最新のバージョンである0.13.3を使用しています。
+    動作確認は2020年2月3日に行っており、その時の最新のバージョンである0.13.3を使用しています。
 
 !!! caution
     Spackは、Spackをインストールしたディレクトリ以下にソフトウェアをインストールします。
@@ -289,12 +289,12 @@ CUDA 10.1.243を使用するOpenMPI 3.1.1をインストールする場合の例
 GPUを搭載する計算ノード上で作業を行います。
 ```
 [username@g0001 ~]$ spack install cuda@abci-10.1.243
-[username@g0001 ~]$ spack install openmpi@3.1.1 +cuda schedulers=sge ^cuda@abci-10.1.243
+[username@g0001 ~]$ spack install openmpi@3.1.1 +cuda schedulers=sge fabrics=auto ^cuda@abci-10.1.243
 [username@g0001 ~]$ spack find --paths openmpi@3.1.1
 ==> 1 installed package
 -- linux-centos7-haswell / gcc@4.8.5 ----------------------------
-openmpi@3.1.1  ${SPACK_ROOT}/opt/spack/linux-centos7-haswell/gcc-4.8.5/openmpi-3.1.1-h3d3gio7sd2dge3tu56o2obvdtplqey3
-[username@g0001 ~]$ echo "btl_openib_warn_default_gid_prefix = 0" >> ${SPACK_ROOT}/opt/spack/linux-centos7-haswell/gcc-4.8.5/openmpi-3.1.1-h3d3gio7sd2dge3tu56o2obvdtplqey3/etc/openmpi-mca-params.conf
+openmpi@3.1.1  ${SPACK_ROOT}/opt/spack/linux-centos7-haswell/gcc-4.8.5/openmpi-3.1.1-4mmghhfuk5n7my7g3ko2zwzlo4wmoc5v
+[username@g0001 ~]$ echo "btl_openib_warn_default_gid_prefix = 0" >> ${SPACK_ROOT}/opt/spack/linux-centos7-haswell/gcc-4.8.5/openmpi-3.1.1-4mmghhfuk5n7my7g3ko2zwzlo4wmoc5v/etc/openmpi-mca-params.conf
 ```
 1行目では、ABCIが提供するCUDAを使用するよう、CUDAのバージョン`abci-10.1.243`をインストールします。
 2行明目以降で、[このページ](https://docs.abci.ai/ja/appendix1/#open-mpi)と同様の設定で、OpenMPIをインストールしています。
@@ -302,16 +302,17 @@ openmpi@3.1.1  ${SPACK_ROOT}/opt/spack/linux-centos7-haswell/gcc-4.8.5/openmpi-3
 
 - `+cuda`: CUDAを有効にしてビルドします。
 - `schedulers=sge`: MPIプロセスを起動する手段を指定しています。ABCIではSGE互換のUGEを使っているため、sgeを指定します。
+- `fabrics=auto`: 通信ライブラリを選択します。この例では自動判別としています。
 - `^cuda@abci-10.1.243`: 使用するCUDAを指定します。`^`は依存するソフトウェアを指定するときに使います。
 
-3行目でOpenMPIがインストールされたパスを確認し、4行目で設定ファイルを編集しています。
+3、4行目では実行時の警告を消すため、設定ファイルを編集します（任意）。
+そのため、3行目でOpenMPIがインストールされたパスを確認しています。
 
 Spackでは、同一ソフトウェアを異なる設定で複数インストールし、管理することができます。
 ここでは、CUDA 9.0.176.4を使用するOpenMPI 3.1.1を追加インストールします。
 ```
 [username@g0001 ~]$ spack install cuda@abci-9.0.176.4
-[username@g0001 ~]$ spack install openmpi@3.1.1 +cuda schedulers=sge ^cuda@abci-9.0.176.4
-(同様に設定ファイルを編集)
+[username@g0001 ~]$ spack install openmpi@3.1.1 +cuda schedulers=sge fabrics=auto ^cuda@abci-9.0.176.4
 ```
 
 #### 使い方 {#example_openmpi_use}
@@ -322,7 +323,7 @@ Spackでは、同一ソフトウェアを異なる設定で複数インストー
 ```
 [username@es1 ~]$ module avail openmpi
 ------------------------- $HOME/spack/share/spack/modules/linux-centos7-haswell -------------------------
-openmpi-3.1.1-gcc-4.8.5-h3d3gio             openmpi-3.1.1-gcc-4.8.5-uap2sto
+openmpi-3.1.1-gcc-4.8.5-4mmghhf             openmpi-3.1.1-gcc-4.8.5-zqwwrqy
 (snip)
 ```
 
@@ -335,24 +336,24 @@ OpenMPIの依存関係を確認し、CUDA 10.1.243を使用しているOpenMPI�
 [username@es1 ~]$ spack find -dl openmpi
 ==> 2 installed packages
 -- linux-centos7-haswell / gcc@4.8.5 ----------------------------
-uap2sto openmpi@3.1.1
-b4gs3k5     hwloc@1.11.11
-l6ayrkp         cuda@abci-9.0.176.4
-(snip)
-
-h3d3gio openmpi@3.1.1
+4mmghhf openmpi@3.1.1
 glgpfmf     hwloc@1.11.11
 6ddc273         cuda@abci-10.1.243
 (snip)
+
+zqwwrqy openmpi@3.1.1
+b4gs3k5     hwloc@1.11.11
+l6ayrkp         cuda@abci-9.0.176.4
+(snip)
 ```
 
-ハッシュ`h3d3gio`を持つOpenMPIが使用したいOpenMPIですので、モジュール`openmpi-3.1.1-gcc-4.8.5-h3d3gio`を使用すれば良いとわかります。
+ハッシュ`4mmghhf`を持つOpenMPIが使用したいOpenMPIですので、モジュール`openmpi-3.1.1-gcc-4.8.5-4mmghhf`を使用すれば良いとわかります。
 
 計算ノード上でプログラムをコンパイルする場合は、ABCIが提供するCUDAモジュールとインストールしたOpenMPIのモジュールを読み込みます。
 ```
 source ${HOME}/spack/share/spack/setup-env.sh
 [username@g0001 ~]$ module load cuda/10.1/10.1.243
-[username@g0001 ~]$ module load openmpi-3.1.1-gcc-4.8.5-h3d3gio
+[username@g0001 ~]$ module load openmpi-3.1.1-gcc-4.8.5-4mmghhf
 [username@g0001 ~]$ mpicc ...
 ```
 
@@ -366,7 +367,7 @@ source ${HOME}/spack/share/spack/setup-env.sh
 source /etc/profile.d/modules.sh
 source ${HOME}/spack/share/spack/setup-env.sh
 module load cuda/10.1/10.1.243
-module load openmpi-3.1.1-gcc-4.8.5-h3d3gio
+module load openmpi-3.1.1-gcc-4.8.5-4mmghhf
 
 NUM_NODES=${NHOSTS}
 NUM_GPUS_PER_NODE=4
@@ -374,6 +375,12 @@ NUM_PROCS=$(expr ${NUM_NODES} \* ${NUM_GPUS_PER_NODE})
 MPIOPTS="-n ${NUM_PROCS} -map-by ppr:${NUM_GPUS_PER_NODE}:node -x PATH -x LD_LIBRARY_PATH"
 mpiexec ${MPIOPTS} YOUR_PROGRAM
 ```
+
+不要になった場合は、ハッシュを指定してアンインストールします。
+```
+[username@es1 ~]$ spack uninstall /4mmghhf
+```
+
 
 ### CUDA-aware MVAPICH2 {#example_mvapich2}
 
@@ -408,6 +415,7 @@ MPIOPTS="${MPIE_ARGS} -np ${NUM_PROCS} -ppn ${NUM_GPUS_PER_NODE}"
 
 mpiexec ${MPIOPTS} YOUR_PROGRAM
 ```
+
 
 ### MPIFileUtils {#example_mpifileutils}
 
