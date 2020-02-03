@@ -250,7 +250,7 @@ Description:
 ```
 
 
-## ソフトウェア利用方法 {#how_to_use}
+### ソフトウェア利用方法 {#usage_installed_package}
 
 SpackでインストールしたソフトウェアはEnvironment Modulesに自動的に登録されます。
 ABCIが提供するモジュール同様に、ロードして使用できます。
@@ -297,15 +297,15 @@ openmpi@3.1.1  ${SPACK_ROOT}/opt/spack/linux-centos7-haswell/gcc-4.8.5/openmpi-3
 [username@g0001 ~]$ echo "btl_openib_warn_default_gid_prefix = 0" >> ${SPACK_ROOT}/opt/spack/linux-centos7-haswell/gcc-4.8.5/openmpi-3.1.1-4mmghhfuk5n7my7g3ko2zwzlo4wmoc5v/etc/openmpi-mca-params.conf
 ```
 1行目では、ABCIが提供するCUDAを使用するよう、CUDAのバージョン`abci-10.1.243`をインストールします。
-2行明目以降で、[このページ](https://docs.abci.ai/ja/appendix1/#open-mpi)と同様の設定で、OpenMPIをインストールしています。
-2行目のOpenMPI 3.1.1のインストールオプションの意味は以下の通りです。
+2行目では、[このページ](https://docs.abci.ai/ja/appendix1/#open-mpi)と同様の設定で、OpenMPIをインストールしています。
+インストールオプションの意味は以下の通りです。
 
 - `+cuda`: CUDAを有効にしてビルドします。
 - `schedulers=sge`: MPIプロセスを起動する手段を指定しています。ABCIではSGE互換のUGEを使っているため、sgeを指定します。
 - `fabrics=auto`: 通信ライブラリを選択します。この例では自動判別としています。
 - `^cuda@abci-10.1.243`: 使用するCUDAを指定します。`^`は依存するソフトウェアを指定するときに使います。
 
-3、4行目では実行時の警告を消すため、設定ファイルを編集します（任意）。
+4行目では実行時の警告を消すため、設定ファイルを編集しています（任意）。
 そのため、3行目でOpenMPIがインストールされたパスを確認しています。
 
 Spackでは、同一ソフトウェアを異なる設定で複数インストールし、管理することができます。
