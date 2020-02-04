@@ -12,9 +12,9 @@ ABCI上でSpackを使うことにより、ABCIが標準でサポートしてい�
     多数のソフトウェアを導入すると多くの容量を消費しますので、使わなくなったソフトウェアはアンインストールするなどの管理をしてください。
 
 
-## Spack環境設定 {#setup}
+## Spack環境設定 {#setup-spack}
 
-### インストール {#setup_install}
+### インストール {#install}
 
 GitHubからCloneし、使用するバージョンをcheckoutすればインストール完了です。
 
@@ -30,9 +30,9 @@ GitHubからCloneし、使用するバージョンをcheckoutすればインス�
 [username@es1 ~]$ source ${HOME}/spack/share/spack/setup-env.sh
 ```
 
-### ABCI用設定 {#setup_configure}
+### ABCI用設定 {#configuration-for-abci}
 
-#### コンパイラの登録 {#setup_configure_compiler}
+#### コンパイラの登録 {#adding-compilers}
 
 Spackで使用するコンパイラをSpackに登録します。
 `spack compiler find`コマンドで登録できます。
@@ -65,7 +65,7 @@ packages:
     compiler: [gcc@4.8.5]
 ```
 
-#### ABCIソフトウェアの登録 {#setup_configure_packages}
+#### ABCIソフトウェアの登録 {#adding-abci-software}
 
 Spackはソフトウェアの依存関係を解決して、依存するソフトウェアも自動的にインストールします。
 標準の設定では、CUDAやOpenMPIなど、ABCIが既に提供しているソフトウェアも利用者ごとにインストールされます。
@@ -109,12 +109,12 @@ ABCIが提供していないバージョンのCUDAをSpackでインストール�
 `packages.yaml`ファイルの設定の詳細は[公式ドキュメント](https://spack.readthedocs.io/en/latest/build_settings.html)を参照ください。
 
 
-## Spack 基本操作 {#usage}
+## Spack 基本操作 {#basic-of-spack}
 
 Spackの基本操作についてまとめます。
 詳細は[公式ドキュメント](https://spack.readthedocs.io/en/latest/basic_usage.html)を参照ください。
 
-### コンパイラ関連 {#usage_compiler}
+### コンパイラ関連 {#compiler-operations}
 
 Spackに登録されているコンパイラ一覧は`compiler list`サブコマンドで確認できます。
 ```
@@ -137,9 +137,9 @@ gcc@4.8.5:
 	operating system  = centos7
 ```
 
-### ソフトウェア管理関連 {#usage_package}
+### ソフトウェア管理関連 {#software-management-operations}
 
-#### インストール {#usage_package_install}
+#### インストール {#install}
 
 OpenMPIのSpack標準バージョンは、以下の通りにインストールできます。
 `schedulers=sge`の意味は[導入事例](#example_openmpi)を参照ください。
@@ -158,7 +158,7 @@ OpenMPIのSpack標準バージョンは、以下の通りにインストール�
 [username@es1 ~]$ spack install openmpi@3.1.4 %gcc@7.3.0 schedulers=sge
 ```
 
-#### アンインストール {#usage_package_uninstall}
+#### アンインストール {#uninstall}
 
 `uninstall`サブコマンドで、インストール済みのソフトウェアをアンインストールできます。
 インストール同様に、バージョンを指定してアンインストールできます。
@@ -178,7 +178,7 @@ OpenMPIのSpack標準バージョンは、以下の通りにインストール�
 [username@es1 ~]$ spack uninstall --all
 ```
 
-#### 情報確認 {#usage_package_info}
+#### 情報確認 {#information}
 
 Spackでインストールできるソフトウェア一覧は、`list`サブコマンドで確認できます。
 ```
@@ -250,7 +250,7 @@ Description:
 ```
 
 
-### ソフトウェア利用方法 {#usage_installed_package}
+### ソフトウェア利用方法 {#use-of-installed-software}
 
 SpackでインストールしたソフトウェアはEnvironment Modulesに自動的に登録されます。
 ABCIが提供するモジュール同様に、ロードして使用できます。
@@ -276,14 +276,14 @@ ABCIが提供するモジュール同様に、ロードして使用できます�
     ```
 
 
-## ソフトウェア導入事例 {#example}
+## ソフトウェア導入事例 {#example-software-installation}
 
-### CUDA-aware OpenMPI {#example_openmpi}
+### CUDA-aware OpenMPI {#cuda-aware-openmpi}
 
 ABCIでは、CUDA-aware OpenMPIをモジュールで提供していますが、全てのコンパイラ、CUDA、OpenMPIの組み合わせで提供しているわけではありません（[参考](https://docs.abci.ai/ja/08/#open-mpi)）。
 使用したい組み合わせがモジュール提供されていない場合は、Spackでインストールするのが簡単です。
 
-#### インストール方法 {#example_openmpi_install}
+#### インストール方法 {#how-to-install}
 
 CUDA 10.1.243を使用するOpenMPI 3.1.1をインストールする場合の例です。
 GPUを搭載する計算ノード上で作業を行います。
@@ -315,7 +315,7 @@ Spackでは、同一ソフトウェアを異なる設定で複数インストー
 [username@g0001 ~]$ spack install openmpi@3.1.1 +cuda schedulers=sge fabrics=auto ^cuda@abci-9.0.176.4
 ```
 
-#### 使い方 {#example_openmpi_use}
+#### 使い方 {#how-to-use}
 
 「CUDA 10.1.243を使用するOpenMPI 3.1.1」を使う場合の利用方法を説明します。
 
@@ -382,7 +382,7 @@ mpiexec ${MPIOPTS} YOUR_PROGRAM
 ```
 
 
-### CUDA-aware MVAPICH2 {#example_mvapich2}
+### CUDA-aware MVAPICH2 {#cuda-aware-mvapich2}
 
 ABCIが提供するMVAPICH2モジュールはCUDA対応していません。
 CUDA-aware MVAPICH2を使用する場合は、以下を参考にSpackでインストールしてください。
@@ -417,7 +417,7 @@ mpiexec ${MPIOPTS} YOUR_PROGRAM
 ```
 
 
-### MPIFileUtils {#example_mpifileutils}
+### MPIFileUtils {#mpifileutils}
 
 [MPIFileUtils](https://hpc.github.io/mpifileutils/)は、MPIを用いたファイル転送ツールです。
 複数のライブラリに依存するため、マニュアルでインストールするのは面倒ですが、Spackを用いると簡単にインストールできます。
