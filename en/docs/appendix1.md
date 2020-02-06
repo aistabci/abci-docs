@@ -219,9 +219,8 @@
 [username@g0001 ~]$ wget https://download.open-mpi.org/release/open-mpi/v2.1/openmpi-2.1.6.tar.gz
 [username@g0001 ~]$ tar zxf openmpi-2.1.6.tar.gz
 [username@g0001 ~]$ module load pgi/18.5
-[username@g0001 ~]$ export CPP=cpp
 [username@g0001 ~]$ cd openmpi-2.1.6
-[username@g0001 openmpi-2.1.6]$ ./configure \
+[username@g0001 openmpi-2.1.6]$ CPP=cpp ./configure \
     --prefix=$INSTALL_DIR \
     --enable-mpi-thread-multiple \
     --enable-orterun-prefix-by-default \
@@ -240,10 +239,9 @@
 [username@g0001 ~]$ wget https://download.open-mpi.org/release/open-mpi/v2.1/openmpi-2.1.6.tar.gz
 [username@g0001 ~]$ tar zxf openmpi-2.1.6.tar.gz
 [username@g0001 ~]$ module load pgi/18.5
-[username@g0001 ~]$ export CPP=cpp
 [username@g0001 ~]$ module load cuda/8.0/8.0.61.2
 [username@g0001 ~]$ cd openmpi-2.1.6
-[username@g0001 openmpi-2.1.6]$ ./configure \
+[username@g0001 openmpi-2.1.6]$ CPP=cpp ./configure \
     --prefix=$INSTALL_DIR \
     --enable-mpi-thread-multiple \
     --with-cuda=$CUDA_HOME \
@@ -263,10 +261,9 @@
 [username@g0001 ~]$ wget https://download.open-mpi.org/release/open-mpi/v2.1/openmpi-2.1.6.tar.gz
 [username@g0001 ~]$ tar zxf openmpi-2.1.6.tar.gz
 [username@g0001 ~]$ module load pgi/18.5
-[username@g0001 ~]$ export CPP=cpp
 [username@g0001 ~]$ module load cuda/9.0/9.0.176.2
 [username@g0001 ~]$ cd openmpi-2.1.6
-[username@g0001 openmpi-2.1.6]$ ./configure \
+[username@g0001 openmpi-2.1.6]$ CPP=cpp ./configure \
     --prefix=$INSTALL_DIR \
     --enable-mpi-thread-multiple \
     --with-cuda=$CUDA_HOME \
@@ -286,10 +283,9 @@
 [username@g0001 ~]$ wget https://download.open-mpi.org/release/open-mpi/v2.1/openmpi-2.1.6.tar.gz
 [username@g0001 ~]$ tar zxf openmpi-2.1.6.tar.gz
 [username@g0001 ~]$ module load pgi/18.5
-[username@g0001 ~]$ export CPP=cpp
 [username@g0001 ~]$ module load cuda/9.1/9.1.85.3
 [username@g0001 ~]$ cd openmpi-2.1.6
-[username@g0001 openmpi-2.1.6]$ ./configure \
+[username@g0001 openmpi-2.1.6]$ CPP=cpp ./configure \
     --prefix=$INSTALL_DIR \
     --enable-mpi-thread-multiple \
     --with-cuda=$CUDA_HOME \
@@ -309,10 +305,9 @@
 [username@g0001 ~]$ wget https://download.open-mpi.org/release/open-mpi/v2.1/openmpi-2.1.6.tar.gz
 [username@g0001 ~]$ tar zxf openmpi-2.1.6.tar.gz
 [username@g0001 ~]$ module load pgi/18.5
-[username@g0001 ~]$ export CPP=cpp
 [username@g0001 ~]$ module load cuda/9.2/9.2.88.1
 [username@g0001 ~]$ cd openmpi-2.1.6
-[username@g0001 openmpi-2.1.6]$ ./configure \
+[username@g0001 openmpi-2.1.6]$ CPP=cpp ./configure \
     --prefix=$INSTALL_DIR \
     --enable-mpi-thread-multiple \
     --with-cuda=$CUDA_HOME \
@@ -332,10 +327,9 @@
 [username@g0001 ~]$ wget https://download.open-mpi.org/release/open-mpi/v2.1/openmpi-2.1.6.tar.gz
 [username@g0001 ~]$ tar zxf openmpi-2.1.6.tar.gz
 [username@g0001 ~]$ module load pgi/18.5
-[username@g0001 ~]$ export CPP=cpp
 [username@g0001 ~]$ module load cuda/9.2/9.2.148.1
 [username@g0001 ~]$ cd openmpi-2.1.6
-[username@g0001 openmpi-2.1.6]$ ./configure \
+[username@g0001 openmpi-2.1.6]$ CPP=cpp ./configure \
     --prefix=$INSTALL_DIR \
     --enable-mpi-thread-multiple \
     --with-cuda=$CUDA_HOME \
@@ -357,9 +351,8 @@
 [username@g0001 ~]$ wget https://download.open-mpi.org/release/open-mpi/v3.1/openmpi-3.1.3.tar.gz
 [username@g0001 ~]$ tar zxf openmpi-3.1.3.tar.gz
 [username@g0001 ~]$ module load pgi/18.5
-[username@g0001 ~]$ export CPP=cpp
 [username@g0001 ~]$ cd openmpi-3.1.3
-[username@g0001 openmpi-3.1.3]$ ./configure \
+[username@g0001 openmpi-3.1.3]$ CPP=cpp ./configure \
     --prefix=$INSTALL_DIR \
     --enable-orterun-prefix-by-default \
     --with-sge \
@@ -377,10 +370,9 @@
 [username@g0001 ~]$ wget https://download.open-mpi.org/release/open-mpi/v3.1/openmpi-3.1.3.tar.gz
 [username@g0001 ~]$ tar zxf openmpi-3.1.3.tar.gz
 [username@g0001 ~]$ module load pgi/18.5
-[username@g0001 ~]$ export CPP=cpp
 [username@g0001 ~]$ module load cuda/8.0/8.0.61.2
 [username@g0001 ~]$ cd openmpi-3.1.3
-[username@g0001 openmpi-3.1.3]$ ./configure \
+[username@g0001 openmpi-3.1.3]$ CPP=cpp ./configure \
     --prefix=$INSTALL_DIR \
     --with-cuda=$CUDA_HOME \
     --enable-orterun-prefix-by-default \
@@ -399,10 +391,9 @@
 [username@g0001 ~]$ wget https://download.open-mpi.org/release/open-mpi/v3.1/openmpi-3.1.3.tar.gz
 [username@g0001 ~]$ tar zxf openmpi-3.1.3.tar.gz
 [username@g0001 ~]$ module load pgi/18.5
-[username@g0001 ~]$ export CPP=cpp
 [username@g0001 ~]$ module load cuda/9.0/9.0.176.2
 [username@g0001 ~]$ cd openmpi-3.1.3
-[username@g0001 openmpi-3.1.3]$ ./configure \
+[username@g0001 openmpi-3.1.3]$ CPP=cpp ./configure \
     --prefix=$INSTALL_DIR \
     --with-cuda=$CUDA_HOME \
     --enable-orterun-prefix-by-default \
@@ -421,10 +412,9 @@
 [username@g0001 ~]$ wget https://download.open-mpi.org/release/open-mpi/v3.1/openmpi-3.1.3.tar.gz
 [username@g0001 ~]$ tar zxf openmpi-3.1.3.tar.gz
 [username@g0001 ~]$ module load pgi/18.5
-[username@g0001 ~]$ export CPP=cpp
 [username@g0001 ~]$ module load cuda/9.1/9.1.85.3
 [username@g0001 ~]$ cd openmpi-3.1.3
-[username@g0001 openmpi-3.1.3]$ ./configure \
+[username@g0001 openmpi-3.1.3]$ CPP=cpp ./configure \
     --prefix=$INSTALL_DIR \
     --with-cuda=$CUDA_HOME \
     --enable-orterun-prefix-by-default \
@@ -443,10 +433,9 @@
 [username@g0001 ~]$ wget https://download.open-mpi.org/release/open-mpi/v3.1/openmpi-3.1.3.tar.gz
 [username@g0001 ~]$ tar zxf openmpi-3.1.3.tar.gz
 [username@g0001 ~]$ module load pgi/18.5
-[username@g0001 ~]$ export CPP=cpp
 [username@g0001 ~]$ module load cuda/9.2/9.2.88.1
 [username@g0001 ~]$ cd openmpi-3.1.3
-[username@g0001 openmpi-3.1.3]$ ./configure \
+[username@g0001 openmpi-3.1.3]$ CPP=cpp ./configure \
     --prefix=$INSTALL_DIR \
     --with-cuda=$CUDA_HOME \
     --enable-orterun-prefix-by-default \
@@ -465,10 +454,9 @@
 [username@g0001 ~]$ wget https://download.open-mpi.org/release/open-mpi/v3.1/openmpi-3.1.3.tar.gz
 [username@g0001 ~]$ tar zxf openmpi-3.1.3.tar.gz
 [username@g0001 ~]$ module load pgi/18.5
-[username@g0001 ~]$ export CPP=cpp
 [username@g0001 ~]$ module load cuda/9.2/9.2.148.1
 [username@g0001 ~]$ cd openmpi-3.1.3
-[username@g0001 openmpi-3.1.3]$ ./configure \
+[username@g0001 openmpi-3.1.3]$ CPP=cpp ./configure \
     --prefix=$INSTALL_DIR \
     --with-cuda=$CUDA_HOME \
     --enable-orterun-prefix-by-default \
