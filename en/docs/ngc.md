@@ -42,7 +42,7 @@ Using TensorFlow as an example, we will explain how to run Docker images provide
 
 ### Identify Image URL
 
-First, we need to find the URL for TensorFlow image via NGC Website.
+First, you need to find the URL for TensorFlow image via NGC Website.
 
 Open [https://ngc.nvidia.com/](https://ngc.nvidia.com/) with your browser, and input "tensorflow" to the search form "Search Containers".
 Then, you'll find:
@@ -84,7 +84,7 @@ Start an interactive job with one full-node and run a sample program ``cnn_mnist
 {'loss': 0.10828217, 'global_step': 20000, 'accuracy': 0.9667}
 ```
 
-We can do the same thing with a batch job.
+You can do the same thing with a batch job.
 
 ```
 #!/bin/sh
@@ -101,7 +101,7 @@ singularity run --nv tensorflow-19.06-py2.simg python cnn_mnist.py
 ## Multiple-node Run
 
 Some of NGC container images support multiple-node run with using MPI.
-TensorFlow image, which we used for [Single-node Run](#single-node-run), also supports multi-node run.
+TensorFlow image, which you used for [Single-node Run](#single-node-run), also supports multi-node run.
 
 ### Identify MPI version
 
@@ -136,8 +136,8 @@ Start an interative job with two full-nodes, and load required environment modul
 [username@g0001 ~]$ module load singularity/2.6.1 openmpi/3.1.3
 ```
 
-Each full-node has four GPUs, and we have eight GPUs in total.
-In this case, we run four processes on each full-node in parallel, that means eight processes in total, so as to execute the sample program ``tensorflow_mnist.py``.
+Each full-node has four GPUs, and you have eight GPUs in total.
+In this case, you run four processes on each full-node in parallel, that means eight processes in total, so as to execute the sample program ``tensorflow_mnist.py``.
 
 ```
 [username@g0001 ~]$ wget https://raw.githubusercontent.com/horovod/horovod/v0.16.4/examples/tensorflow_mnist.py
@@ -162,7 +162,7 @@ INFO:tensorflow:loss = 1.8231221, step = 40 (0.154 sec)
 :
 ```
 
-We can do the same thing with a batch job.
+You can do the same thing with a batch job.
 
 ```
 #!/bin/sh
@@ -182,7 +182,7 @@ Using Chainer as an example, we will explain how to run locked Docker images pro
 
 ### Identify Locked Image URL
 
-First, we need to find the URL for Chainer image via NGC Website.
+First, you need to find the URL for Chainer image via NGC Website.
 
 Open [https://ngc.nvidia.com/](https://ngc.nvidia.com/) with your browser, sign in with an NGC account, and input "chainer" to the search form "Search Containers". Then, you'll find:
 [https://ngc.nvidia.com/catalog/containers/partners:chainer](https://ngc.nvidia.com/catalog/containers/partners:chainer)
@@ -219,7 +219,7 @@ An image named ``chainer-4.0.0b1.simg`` will be generated.
 
 ### Run a Singularity image
 
-We can run the resulted image, just as same as freely available images.
+You can run the resulted image, just as same as freely available images.
 
 ```
 [username@es1 ~] $ qrsh -g grpname -l rt_G.small=1
