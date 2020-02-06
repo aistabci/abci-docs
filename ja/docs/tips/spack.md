@@ -16,7 +16,7 @@ ABCI上でSpackを使うことにより、ABCIが標準でサポートしてい�
 
 ### インストール {#install}
 
-GitHubからCloneし、使用するバージョンをcheckoutすればインストール完了です。
+GitHubからcloneし、使用するバージョンをcheckoutすることで、Spackをインストールすることができます。
 
 ```
 [username@es1 ~]$ git clone https://github.com/spack/spack.git
