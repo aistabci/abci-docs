@@ -41,7 +41,7 @@ A default ACL grants full control to belonged ABCI group for the buckets and obj
 
 As for ACL includes typical pairs of grantees and permissions for general situation, such as opening to the internet, the standard ACLs are available. The standard ACLs are shown in later section.
 
-## How to Set ACL (Example)
+## How to Set ACL (Examples)
 
 ### Share Objects between ABCI Groups
 
@@ -143,7 +143,7 @@ Two standard ACLs open buckets and objects to the public, which enable any inter
 Default standard ACL is set to be private. To terminate public access, use standard ACLs.
 
 
-#### Open Buckets (public-read)
+#### Public Buckets
 
 By applying the standard ACL 'public-read' to a bucket, the list of objects in the bucket is opened to public. Here is an example.
 
@@ -208,7 +208,7 @@ Confirm that the grantee added before is deleted and the permission of the ABCI 
 ```
 
 
-#### Open Objects (public-read)
+#### Public Objects
 
 By applying the standard ACL 'public-read' to an object, the object is opened to public. The following example shows the detail.
 
