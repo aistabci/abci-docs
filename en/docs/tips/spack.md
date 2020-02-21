@@ -157,7 +157,7 @@ gcc@4.8.5:
 #### Install {#install}
 
 The default version of OpenMPI can be installed as follows.
-Refer to [Example Software Installation](#example_openmpi) for options.
+Refer to [Example Software Installation](#cuda-aware-openmpi) for options.
 ```
 [username@es1 ~]$ spack install openmpi schedulers=sge fabrics=auto
 ```
@@ -183,7 +183,7 @@ As with installation, you can uninstall software by specifying a version.
 
 Each software package installed by Spack has a hash, and you can also uninstall a software by specifying a hash.
 Specify `/` followed by a hash.
-You can get a hash of an installed software by `find` sub-command shown in [Information](#usage_package_info).
+You can get a hash of an installed software by `find` sub-command shown in [Information](#information).
 ```
 [username@es1 ~]$ spack uninstall /ffwtsvk
 ```
@@ -404,7 +404,7 @@ MVAPICH2 modules provided by ABCI does not support CUDA.
 If you want to use CUDA-aware MVAPICH2, install by yourself referring to the documents below.
 
 You have to use a compute node to build CUDA-aware MVAPICH2.
-As with [OpenMPI](#example_openmpi) above, you first install CUDA and then install MVAPICH2 by enabling CUDA (`+cuda`) and specifying a communication library (`fabrics=mrail`) and CUDA dependency (`^cuda@abci-10.1.243`).
+As with [OpenMPI](#cuda-aware-openmpi) above, you first install CUDA and then install MVAPICH2 by enabling CUDA (`+cuda`) and specifying a communication library (`fabrics=mrail`) and CUDA dependency (`^cuda@abci-10.1.243`).
 ```
 [username@g0001 ~]$ spack install cuda@abci-10.1.243
 [username@g0001 ~]$ spack install mvapich2@2.3 +cuda fabrics=mrail ^cuda@abci-10.1.243
