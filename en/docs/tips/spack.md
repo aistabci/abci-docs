@@ -52,6 +52,27 @@ You can confirm the registration completion if you see the following output when
 gcc@7.4.0  gcc@4.8.5  gcc@4.4.7
 ```
 
+Edit the compiler configuration file `$HOME/.spack/linux/compilers.yaml` to set rpath for GCC 7.4.0.
+
+```
+(snip)
+- compiler:
+    paths:
+      cc: /apps/gcc/7.4.0/bin/gcc
+      cxx: /apps/gcc/7.4.0/bin/g++
+      f77: /apps/gcc/7.4.0/bin/gfortran
+      fc: /apps/gcc/7.4.0/bin/gfortran
+    operating_system: centos7
+    target: x86_64
+    modules: []
+    environment: {}
+    extra_rpaths:                <- Edit here
+      - /apps/gcc/7.4.0/lib64    <- Add this line
+    flags: {}
+    spec: gcc@7.4.0
+(snip)
+```
+
 The default compiler can be specified in the configuration file `$HOME/.spack/linux/packages.yaml`.
 Add the following lines to the file to specify GCC 4.8.5 as the default compiler.
 ```
@@ -136,20 +157,20 @@ gcc@4.8.5:
 #### Install {#install}
 
 The default version of OpenMPI can be installed as follows.
-Refer to [Example Software Installation](#example_openmpi) for options.
+Refer to [Example Software Installation](#cuda-aware-openmpi) for options.
 ```
-[username@es1 ~]$ spack install openmpi schedulers=sge
+[username@es1 ~]$ spack install openmpi schedulers=sge fabrics=auto
 ```
 
 If you want to install a specific version, use `@` to specify the version.
 ```
-[username@es1 ~]$ spack install openmpi@3.1.4 schedulers=sge
+[username@es1 ~]$ spack install openmpi@3.1.4 schedulers=sge fabrics=auto
 ```
 
 The compiler to build the software can be specified by `%`.
-The following example use GCC 7.3.0 for building OpenMPI.
+The following example use GCC 7.4.0 for building OpenMPI.
 ```
-[username@es1 ~]$ spack install openmpi@3.1.4 %gcc@7.3.0 schedulers=sge
+[username@es1 ~]$ spack install openmpi@3.1.4 %gcc@7.4.0 schedulers=sge fabrics=auto
 ```
 
 #### Uninstall {#uninstall}
@@ -162,7 +183,7 @@ As with installation, you can uninstall software by specifying a version.
 
 Each software package installed by Spack has a hash, and you can also uninstall a software by specifying a hash.
 Specify `/` followed by a hash.
-You can get a hash of an installed software by `find` sub-command shown in [Information](#usage_package_info).
+You can get a hash of an installed software by `find` sub-command shown in [Information](#information).
 ```
 [username@es1 ~]$ spack uninstall /ffwtsvk
 ```
@@ -383,7 +404,7 @@ MVAPICH2 modules provided by ABCI does not support CUDA.
 If you want to use CUDA-aware MVAPICH2, install by yourself referring to the documents below.
 
 You have to use a compute node to build CUDA-aware MVAPICH2.
-As with [OpenMPI](#example_openmpi) above, you first install CUDA and then install MVAPICH2 by enabling CUDA (`+cuda`) and specifying a communication library (`fabrics=mrail`) and CUDA dependency (`^cuda@abci-10.1.243`).
+As with [OpenMPI](#cuda-aware-openmpi) above, you first install CUDA and then install MVAPICH2 by enabling CUDA (`+cuda`) and specifying a communication library (`fabrics=mrail`) and CUDA dependency (`^cuda@abci-10.1.243`).
 ```
 [username@g0001 ~]$ spack install cuda@abci-10.1.243
 [username@g0001 ~]$ spack install mvapich2@2.3 +cuda fabrics=mrail ^cuda@abci-10.1.243

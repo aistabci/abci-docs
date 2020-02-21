@@ -56,6 +56,27 @@ Spackに登録されているコンパイラを表示するコマンド`spack co
 gcc@7.4.0  gcc@4.8.5  gcc@4.4.7
 ```
 
+コンパイラの設定ファイル`$HOME/.spack/linux/compilers.yaml`を編集し、GCC 7.4.0のrpathを設定します。
+
+```
+(snip)
+- compiler:
+    paths:
+      cc: /apps/gcc/7.4.0/bin/gcc
+      cxx: /apps/gcc/7.4.0/bin/g++
+      f77: /apps/gcc/7.4.0/bin/gfortran
+      fc: /apps/gcc/7.4.0/bin/gfortran
+    operating_system: centos7
+    target: x86_64
+    modules: []
+    environment: {}
+    extra_rpaths:                <- ここを編集
+      - /apps/gcc/7.4.0/lib64    <- この行を追加
+    flags: {}
+    spec: gcc@7.4.0
+(snip)
+```
+
 標準で使用するコンパイラは設定ファイル`$HOME/.spack/linux/packages.yaml`で設定できます。
 以下の例では標準コンパイラをgcc 4.8.5に設定しています。
 
@@ -142,20 +163,20 @@ gcc@4.8.5:
 #### インストール {#install}
 
 OpenMPIのSpack標準バージョンは、以下の通りにインストールできます。
-`schedulers=sge`の意味は[導入事例](#example_openmpi)を参照ください。
+`schedulers=sge`と`fabrics=auto`の意味は[導入事例](#cuda-aware-openmpi)を参照ください。
 ```
-[username@es1 ~]$ spack install openmpi schedulers=sge
+[username@es1 ~]$ spack install openmpi schedulers=sge fabrics=auto
 ```
 
 バージョンを指定する場合は、`@`で指定します。
 ```
-[username@es1 ~]$ spack install openmpi@3.1.4 schedulers=sge
+[username@es1 ~]$ spack install openmpi@3.1.4 schedulers=sge fabrics=auto
 ```
 
 コンパイラを指定する場合は`%`で指定します。
 以下の例では、コンパイラのバージョンも指定しています。
 ```
-[username@es1 ~]$ spack install openmpi@3.1.4 %gcc@7.3.0 schedulers=sge
+[username@es1 ~]$ spack install openmpi@3.1.4 %gcc@7.4.0 schedulers=sge fabrics=auto
 ```
 
 #### アンインストール {#uninstall}
@@ -168,7 +189,7 @@ OpenMPIのSpack標準バージョンは、以下の通りにインストール�
 
 ソフトウェアのハッシュを指定してアンインストールすることもできます。
 `/`に続いてハッシュを指定します。
-ハッシュは[情報確認](#usage_package_info)に示す通り、`find`サブコマンドで取得できます。
+ハッシュは[情報確認](#information)に示す通り、`find`サブコマンドで取得できます。
 ```
 [username@es1 ~]$ spack uninstall /ffwtsvk
 ```
@@ -388,7 +409,7 @@ ABCIが提供するMVAPICH2モジュールはCUDA対応していません。
 CUDA-aware MVAPICH2を使用する場合は、以下を参考にSpackでインストールしてください。
 
 GPUを搭載する計算ノード上で作業を行います。
-[OpenMPIと同様](#example_openmpi)に、使用するCUDAをインストールしたのちに、CUDAオプション（`+cuda`）、通信ライブラリ（`fabrics=mrail`）、およびCUDAの依存関係（`^cuda@abci-10.1.243`）を指定してMVAPICH2をインストールします。
+[OpenMPIと同様](#cuda-aware-openmpi)に、使用するCUDAをインストールしたのちに、CUDAオプション（`+cuda`）、通信ライブラリ（`fabrics=mrail`）、およびCUDAの依存関係（`^cuda@abci-10.1.243`）を指定してMVAPICH2をインストールします。
 ```
 [username@g0001 ~]$ spack install cuda@abci-10.1.243
 [username@g0001 ~]$ spack install mvapich2@2.3 +cuda fabrics=mrail ^cuda@abci-10.1.243
