@@ -65,6 +65,26 @@ GCC 7.4.0はモジュールとして提供されているため、<code>module l
 </pre></div>
 
 
+<p>コンパイラの設定ファイル<code>$HOME/.spack/linux/compilers.yaml</code>を編集し、GCC 7.4.0のrpathを設定します。</p>
+<div class="codehilite"><pre><span></span><span class="p">(</span><span class="n">snip</span><span class="p">)</span>
+<span class="o">-</span> <span class="nl">compiler</span><span class="p">:</span>
+    <span class="nl">paths</span><span class="p">:</span>
+      <span class="nl">cc</span><span class="p">:</span> <span class="o">/</span><span class="n">apps</span><span class="o">/</span><span class="n">gcc</span><span class="o">/</span><span class="mf">7.4.0</span><span class="o">/</span><span class="n">bin</span><span class="o">/</span><span class="n">gcc</span>
+      <span class="nl">cxx</span><span class="p">:</span> <span class="o">/</span><span class="n">apps</span><span class="o">/</span><span class="n">gcc</span><span class="o">/</span><span class="mf">7.4.0</span><span class="o">/</span><span class="n">bin</span><span class="o">/</span><span class="n">g</span><span class="o">++</span>
+      <span class="nl">f77</span><span class="p">:</span> <span class="o">/</span><span class="n">apps</span><span class="o">/</span><span class="n">gcc</span><span class="o">/</span><span class="mf">7.4.0</span><span class="o">/</span><span class="n">bin</span><span class="o">/</span><span class="n">gfortran</span>
+      <span class="nl">fc</span><span class="p">:</span> <span class="o">/</span><span class="n">apps</span><span class="o">/</span><span class="n">gcc</span><span class="o">/</span><span class="mf">7.4.0</span><span class="o">/</span><span class="n">bin</span><span class="o">/</span><span class="n">gfortran</span>
+    <span class="nl">operating_system</span><span class="p">:</span> <span class="n">centos7</span>
+    <span class="nl">target</span><span class="p">:</span> <span class="n">x86_64</span>
+    <span class="nl">modules</span><span class="p">:</span> <span class="p">[]</span>
+    <span class="nl">environment</span><span class="p">:</span> <span class="p">{}</span>
+    <span class="nl">extra_rpaths</span><span class="p">:</span>                <span class="o">&lt;-</span> <span class="err">ここを編集</span>
+      <span class="o">-</span> <span class="o">/</span><span class="n">apps</span><span class="o">/</span><span class="n">gcc</span><span class="o">/</span><span class="mf">7.4.0</span><span class="o">/</span><span class="n">lib64</span>    <span class="o">&lt;-</span> <span class="err">この行を追加</span>
+    <span class="nl">flags</span><span class="p">:</span> <span class="p">{}</span>
+    <span class="nl">spec</span><span class="p">:</span> <span class="n">gcc</span><span class="mf">@7.4.0</span>
+<span class="p">(</span><span class="n">snip</span><span class="p">)</span>
+</pre></div>
+
+
 <p>標準で使用するコンパイラは設定ファイル<code>$HOME/.spack/linux/packages.yaml</code>で設定できます。
 以下の例では標準コンパイラをgcc 4.8.5に設定しています。</p>
 <div class="codehilite"><pre><span></span><span class="nl">packages</span><span class="p">:</span>
@@ -139,19 +159,19 @@ ABCIが提供していないバージョンのCUDAをSpackでインストール�
 <h3 id="software-management-operations">ソフトウェア管理関連</h3>
 <h4 id="install">インストール</h4>
 <p>OpenMPIのSpack標準バージョンは、以下の通りにインストールできます。
-<code>schedulers=sge</code>の意味は<a href="#example_openmpi">導入事例</a>を参照ください。</p>
-<div class="codehilite"><pre><span></span><span class="o">[</span><span class="n">username@es1 ~</span><span class="o">]</span><span class="err">$</span><span class="w"> </span><span class="n">spack</span><span class="w"> </span><span class="n">install</span><span class="w"> </span><span class="n">openmpi</span><span class="w"> </span><span class="n">schedulers</span><span class="o">=</span><span class="n">sge</span><span class="w"></span>
+<code>schedulers=sge</code>と<code>fabrics=auto</code>の意味は<a href="#cuda-aware-openmpi">導入事例</a>を参照ください。</p>
+<div class="codehilite"><pre><span></span><span class="o">[</span><span class="n">username@es1 ~</span><span class="o">]</span><span class="err">$</span><span class="w"> </span><span class="n">spack</span><span class="w"> </span><span class="n">install</span><span class="w"> </span><span class="n">openmpi</span><span class="w"> </span><span class="n">schedulers</span><span class="o">=</span><span class="n">sge</span><span class="w"> </span><span class="n">fabrics</span><span class="o">=</span><span class="n">auto</span><span class="w"></span>
 </pre></div>
 
 
 <p>バージョンを指定する場合は、<code>@</code>で指定します。</p>
-<div class="codehilite"><pre><span></span><span class="p">[</span><span class="n">username</span><span class="p">@</span><span class="n">es1</span> <span class="o">~</span><span class="p">]</span><span class="err">$</span> <span class="n">spack</span> <span class="n">install</span> <span class="n">openmpi</span><span class="mf">@3.1.4</span> <span class="n">schedulers</span><span class="o">=</span><span class="n">sge</span>
+<div class="codehilite"><pre><span></span><span class="p">[</span><span class="n">username</span><span class="p">@</span><span class="n">es1</span> <span class="o">~</span><span class="p">]</span><span class="err">$</span> <span class="n">spack</span> <span class="n">install</span> <span class="n">openmpi</span><span class="mf">@3.1.4</span> <span class="n">schedulers</span><span class="o">=</span><span class="n">sge</span> <span class="n">fabrics</span><span class="o">=</span><span class="k">auto</span>
 </pre></div>
 
 
 <p>コンパイラを指定する場合は<code>%</code>で指定します。
 以下の例では、コンパイラのバージョンも指定しています。</p>
-<div class="codehilite"><pre><span></span><span class="p">[</span><span class="n">username</span><span class="p">@</span><span class="n">es1</span> <span class="o">~</span><span class="p">]</span><span class="err">$</span> <span class="n">spack</span> <span class="n">install</span> <span class="n">openmpi</span><span class="mf">@3.1.4</span> <span class="o">%</span><span class="n">gcc</span><span class="mf">@7.3.0</span> <span class="n">schedulers</span><span class="o">=</span><span class="n">sge</span>
+<div class="codehilite"><pre><span></span><span class="p">[</span><span class="n">username</span><span class="p">@</span><span class="n">es1</span> <span class="o">~</span><span class="p">]</span><span class="err">$</span> <span class="n">spack</span> <span class="n">install</span> <span class="n">openmpi</span><span class="mf">@3.1.4</span> <span class="o">%</span><span class="n">gcc</span><span class="mf">@7.4.0</span> <span class="n">schedulers</span><span class="o">=</span><span class="n">sge</span> <span class="n">fabrics</span><span class="o">=</span><span class="k">auto</span>
 </pre></div>
 
 
@@ -164,7 +184,7 @@ ABCIが提供していないバージョンのCUDAをSpackでインストール�
 
 <p>ソフトウェアのハッシュを指定してアンインストールすることもできます。
 <code>/</code>に続いてハッシュを指定します。
-ハッシュは<a href="#usage_package_info">情報確認</a>に示す通り、<code>find</code>サブコマンドで取得できます。</p>
+ハッシュは<a href="#information">情報確認</a>に示す通り、<code>find</code>サブコマンドで取得できます。</p>
 <div class="codehilite"><pre><span></span><span class="o">[</span><span class="n">username@es1 ~</span><span class="o">]</span><span class="err">$</span><span class="w"> </span><span class="n">spack</span><span class="w"> </span><span class="n">uninstall</span><span class="w"> </span><span class="o">/</span><span class="n">ffwtsvk</span><span class="w"></span>
 </pre></div>
 
@@ -381,7 +401,7 @@ mpiexec <span class="si">${</span><span class="nv">MPIOPTS</span><span class="si
 <p>ABCIが提供するMVAPICH2モジュールはCUDA対応していません。
 CUDA-aware MVAPICH2を使用する場合は、以下を参考にSpackでインストールしてください。</p>
 <p>GPUを搭載する計算ノード上で作業を行います。
-<a href="#example_openmpi">OpenMPIと同様</a>に、使用するCUDAをインストールしたのちに、CUDAオプション（<code>+cuda</code>）、通信ライブラリ（<code>fabrics=mrail</code>）、およびCUDAの依存関係（<code>^cuda@abci-10.1.243</code>）を指定してMVAPICH2をインストールします。</p>
+<a href="#cuda-aware-openmpi">OpenMPIと同様</a>に、使用するCUDAをインストールしたのちに、CUDAオプション（<code>+cuda</code>）、通信ライブラリ（<code>fabrics=mrail</code>）、およびCUDAの依存関係（<code>^cuda@abci-10.1.243</code>）を指定してMVAPICH2をインストールします。</p>
 <div class="codehilite"><pre><span></span><span class="p">[</span><span class="n">username</span><span class="p">@</span><span class="n">g0001</span> <span class="o">~</span><span class="p">]</span><span class="err">$</span> <span class="n">spack</span> <span class="n">install</span> <span class="n">cuda</span><span class="p">@</span><span class="n">abci</span><span class="o">-</span><span class="mf">10.1.243</span>
 <span class="p">[</span><span class="n">username</span><span class="p">@</span><span class="n">g0001</span> <span class="o">~</span><span class="p">]</span><span class="err">$</span> <span class="n">spack</span> <span class="n">install</span> <span class="n">mvapich2</span><span class="mf">@2.3</span> <span class="o">+</span><span class="n">cuda</span> <span class="n">fabrics</span><span class="o">=</span><span class="n">mrail</span> <span class="o">^</span><span class="n">cuda</span><span class="p">@</span><span class="n">abci</span><span class="o">-</span><span class="mf">10.1.243</span>
 </pre></div>

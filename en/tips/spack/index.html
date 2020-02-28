@@ -65,6 +65,26 @@ You have to do <code>module load</code> of GCC 7.4.0 because it is provided as a
 </pre></div>
 
 
+<p>Edit the compiler configuration file <code>$HOME/.spack/linux/compilers.yaml</code> to set rpath for GCC 7.4.0.</p>
+<div class="codehilite"><pre><span></span><span class="p">(</span><span class="n">snip</span><span class="p">)</span>
+<span class="o">-</span> <span class="nl">compiler</span><span class="p">:</span>
+    <span class="nl">paths</span><span class="p">:</span>
+      <span class="nl">cc</span><span class="p">:</span> <span class="o">/</span><span class="n">apps</span><span class="o">/</span><span class="n">gcc</span><span class="o">/</span><span class="mf">7.4.0</span><span class="o">/</span><span class="n">bin</span><span class="o">/</span><span class="n">gcc</span>
+      <span class="nl">cxx</span><span class="p">:</span> <span class="o">/</span><span class="n">apps</span><span class="o">/</span><span class="n">gcc</span><span class="o">/</span><span class="mf">7.4.0</span><span class="o">/</span><span class="n">bin</span><span class="o">/</span><span class="n">g</span><span class="o">++</span>
+      <span class="nl">f77</span><span class="p">:</span> <span class="o">/</span><span class="n">apps</span><span class="o">/</span><span class="n">gcc</span><span class="o">/</span><span class="mf">7.4.0</span><span class="o">/</span><span class="n">bin</span><span class="o">/</span><span class="n">gfortran</span>
+      <span class="nl">fc</span><span class="p">:</span> <span class="o">/</span><span class="n">apps</span><span class="o">/</span><span class="n">gcc</span><span class="o">/</span><span class="mf">7.4.0</span><span class="o">/</span><span class="n">bin</span><span class="o">/</span><span class="n">gfortran</span>
+    <span class="nl">operating_system</span><span class="p">:</span> <span class="n">centos7</span>
+    <span class="nl">target</span><span class="p">:</span> <span class="n">x86_64</span>
+    <span class="nl">modules</span><span class="p">:</span> <span class="p">[]</span>
+    <span class="nl">environment</span><span class="p">:</span> <span class="p">{}</span>
+    <span class="nl">extra_rpaths</span><span class="p">:</span>                <span class="o">&lt;-</span> <span class="n">Edit</span> <span class="n">here</span>
+      <span class="o">-</span> <span class="o">/</span><span class="n">apps</span><span class="o">/</span><span class="n">gcc</span><span class="o">/</span><span class="mf">7.4.0</span><span class="o">/</span><span class="n">lib64</span>    <span class="o">&lt;-</span> <span class="n">Add</span> <span class="n">this</span> <span class="n">line</span>
+    <span class="nl">flags</span><span class="p">:</span> <span class="p">{}</span>
+    <span class="nl">spec</span><span class="p">:</span> <span class="n">gcc</span><span class="mf">@7.4.0</span>
+<span class="p">(</span><span class="n">snip</span><span class="p">)</span>
+</pre></div>
+
+
 <p>The default compiler can be specified in the configuration file <code>$HOME/.spack/linux/packages.yaml</code>.
 Add the following lines to the file to specify GCC 4.8.5 as the default compiler.</p>
 <div class="codehilite"><pre><span></span><span class="nl">packages</span><span class="p">:</span>
@@ -139,19 +159,19 @@ For detail, please refer to <a href="https://spack.readthedocs.io/en/latest/basi
 <h3 id="software-management-operations">Software Management Operations</h3>
 <h4 id="install">Install</h4>
 <p>The default version of OpenMPI can be installed as follows.
-Refer to <a href="#example_openmpi">Example Software Installation</a> for options.</p>
-<div class="codehilite"><pre><span></span><span class="o">[</span><span class="n">username@es1 ~</span><span class="o">]</span><span class="err">$</span><span class="w"> </span><span class="n">spack</span><span class="w"> </span><span class="n">install</span><span class="w"> </span><span class="n">openmpi</span><span class="w"> </span><span class="n">schedulers</span><span class="o">=</span><span class="n">sge</span><span class="w"></span>
+Refer to <a href="#cuda-aware-openmpi">Example Software Installation</a> for options.</p>
+<div class="codehilite"><pre><span></span><span class="o">[</span><span class="n">username@es1 ~</span><span class="o">]</span><span class="err">$</span><span class="w"> </span><span class="n">spack</span><span class="w"> </span><span class="n">install</span><span class="w"> </span><span class="n">openmpi</span><span class="w"> </span><span class="n">schedulers</span><span class="o">=</span><span class="n">sge</span><span class="w"> </span><span class="n">fabrics</span><span class="o">=</span><span class="n">auto</span><span class="w"></span>
 </pre></div>
 
 
 <p>If you want to install a specific version, use <code>@</code> to specify the version.</p>
-<div class="codehilite"><pre><span></span><span class="p">[</span><span class="n">username</span><span class="p">@</span><span class="n">es1</span> <span class="o">~</span><span class="p">]</span><span class="err">$</span> <span class="n">spack</span> <span class="n">install</span> <span class="n">openmpi</span><span class="mf">@3.1.4</span> <span class="n">schedulers</span><span class="o">=</span><span class="n">sge</span>
+<div class="codehilite"><pre><span></span><span class="p">[</span><span class="n">username</span><span class="p">@</span><span class="n">es1</span> <span class="o">~</span><span class="p">]</span><span class="err">$</span> <span class="n">spack</span> <span class="n">install</span> <span class="n">openmpi</span><span class="mf">@3.1.4</span> <span class="n">schedulers</span><span class="o">=</span><span class="n">sge</span> <span class="n">fabrics</span><span class="o">=</span><span class="k">auto</span>
 </pre></div>
 
 
 <p>The compiler to build the software can be specified by <code>%</code>.
-The following example use GCC 7.3.0 for building OpenMPI.</p>
-<div class="codehilite"><pre><span></span><span class="p">[</span><span class="n">username</span><span class="p">@</span><span class="n">es1</span> <span class="o">~</span><span class="p">]</span><span class="err">$</span> <span class="n">spack</span> <span class="n">install</span> <span class="n">openmpi</span><span class="mf">@3.1.4</span> <span class="o">%</span><span class="n">gcc</span><span class="mf">@7.3.0</span> <span class="n">schedulers</span><span class="o">=</span><span class="n">sge</span>
+The following example use GCC 7.4.0 for building OpenMPI.</p>
+<div class="codehilite"><pre><span></span><span class="p">[</span><span class="n">username</span><span class="p">@</span><span class="n">es1</span> <span class="o">~</span><span class="p">]</span><span class="err">$</span> <span class="n">spack</span> <span class="n">install</span> <span class="n">openmpi</span><span class="mf">@3.1.4</span> <span class="o">%</span><span class="n">gcc</span><span class="mf">@7.4.0</span> <span class="n">schedulers</span><span class="o">=</span><span class="n">sge</span> <span class="n">fabrics</span><span class="o">=</span><span class="k">auto</span>
 </pre></div>
 
 
@@ -164,7 +184,7 @@ As with installation, you can uninstall software by specifying a version.</p>
 
 <p>Each software package installed by Spack has a hash, and you can also uninstall a software by specifying a hash.
 Specify <code>/</code> followed by a hash.
-You can get a hash of an installed software by <code>find</code> sub-command shown in <a href="#usage_package_info">Information</a>.</p>
+You can get a hash of an installed software by <code>find</code> sub-command shown in <a href="#information">Information</a>.</p>
 <div class="codehilite"><pre><span></span><span class="o">[</span><span class="n">username@es1 ~</span><span class="o">]</span><span class="err">$</span><span class="w"> </span><span class="n">spack</span><span class="w"> </span><span class="n">uninstall</span><span class="w"> </span><span class="o">/</span><span class="n">ffwtsvk</span><span class="w"></span>
 </pre></div>
 
@@ -381,7 +401,7 @@ mpiexec <span class="si">${</span><span class="nv">MPIOPTS</span><span class="si
 <p>MVAPICH2 modules provided by ABCI does not support CUDA.
 If you want to use CUDA-aware MVAPICH2, install by yourself referring to the documents below.</p>
 <p>You have to use a compute node to build CUDA-aware MVAPICH2.
-As with <a href="#example_openmpi">OpenMPI</a> above, you first install CUDA and then install MVAPICH2 by enabling CUDA (<code>+cuda</code>) and specifying a communication library (<code>fabrics=mrail</code>) and CUDA dependency (<code>^cuda@abci-10.1.243</code>).</p>
+As with <a href="#cuda-aware-openmpi">OpenMPI</a> above, you first install CUDA and then install MVAPICH2 by enabling CUDA (<code>+cuda</code>) and specifying a communication library (<code>fabrics=mrail</code>) and CUDA dependency (<code>^cuda@abci-10.1.243</code>).</p>
 <div class="codehilite"><pre><span></span><span class="p">[</span><span class="n">username</span><span class="p">@</span><span class="n">g0001</span> <span class="o">~</span><span class="p">]</span><span class="err">$</span> <span class="n">spack</span> <span class="n">install</span> <span class="n">cuda</span><span class="p">@</span><span class="n">abci</span><span class="o">-</span><span class="mf">10.1.243</span>
 <span class="p">[</span><span class="n">username</span><span class="p">@</span><span class="n">g0001</span> <span class="o">~</span><span class="p">]</span><span class="err">$</span> <span class="n">spack</span> <span class="n">install</span> <span class="n">mvapich2</span><span class="mf">@2.3</span> <span class="o">+</span><span class="n">cuda</span> <span class="n">fabrics</span><span class="o">=</span><span class="n">mrail</span> <span class="o">^</span><span class="n">cuda</span><span class="p">@</span><span class="n">abci</span><span class="o">-</span><span class="mf">10.1.243</span>
 </pre></div>
