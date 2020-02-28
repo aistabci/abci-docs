@@ -10,7 +10,7 @@ google_analytics:
   - 'auto'
 nav:
   - 'Introduction': 'index.md'
-  - '1. New Registration': '01.md'
+  - '1. New Application': '01.md'
   - '2. User Portal': '02.md'
   - '3. User Management Authority': '03.md'
   - 'Links':
