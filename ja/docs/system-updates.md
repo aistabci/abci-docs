@@ -1,5 +1,23 @@
 # システム更新履歴
 
+## 2020-04-0X
+
+| Add / Update / Delete | Software | Version | Previous version |
+|:--|:--|:--|:--|
+| Add | Intel Parallel Stduio XE Cluster Edition | 2018.4<br>2019.5 | |
+| Remove | Intel Parallel Stduio XE Cluster Edition | 2018.2<br>2018.3<br>2019.3 | |
+| Add | PGI Professional Edition | 19.1<br>19.10<br>20.1 |
+| Remove | PGI Professional Edition | 18.5<br>19.3 |
+| Add | NCCL | [2.6.4-1](https://docs.nvidia.com/deeplearning/sdk/nccl-release-notes/rel_2-6-x.html) | |
+| Add | CMake | 3.16<br>3.17 | |
+| Add | Julia | 1.0<br>1.3<br>1.4 | |
+| Add | Go | 1.12<br>1.13 | |
+| Add | hadoop | 2.9<br>2.10<br>3.1 | |
+| Remove | hadoop | 2.9.1<br>2.9.2 | |
+| Add | spark | 2.3<br>2.4 | |
+| Remove | spark | 2.3.1<br>2.3.2<br>2.4.0 | |
+| Add | aws-cli | 1.18<br>2.0 | |
+
 ## 2019-12-17
 
 | Add / Update / Delete | Software | Version | Previous version |
@@ -105,7 +123,7 @@
 | Update | NVIDIA Tesla Driver | [410.104](https://docs.nvidia.com/datacenter/tesla/tesla-release-notes-410-104/index.html) | 396.44 |
 | Add | CUDA | [10.0.130](https://docs.nvidia.com/cuda/archive/10.0/) | |
 | Add | Intel Compiler | 2019.3 | |
-| Add | PGI | 18.10 19.3 | |
+| Add | PGI | 18.10<br>19.3 | |
 
 その他の修正点は下記の通りです:
 
