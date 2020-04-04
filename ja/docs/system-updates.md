@@ -1,5 +1,46 @@
 # システム更新履歴
 
+## 2020-04-03
+
+| Add / Update / Delete | Software | Version | Previous version |
+|:--|:--|:--|:--|
+| Add | intel | 2018.5.274<br>2019.5.281 | |
+| Add | pgi | 19.1<br>19.10<br>20.1 | |
+| Add | R | 3.6.3 | |
+| Add | cmake | 3.16<br>3.17 | |
+| Add | go | 1.12<br>1.13 | |
+| Add | intel-advisor | 2017.6<br>2018.4<br>2019.5 | |
+| Add | intel-inspector | 2017.4<br>2018.4<br>2019.5 | |
+| Add | intel-itac | 2017.0.4<br>2018.0.4<br>2019.0.5 | |
+| Add | intel-mkl | 2017.0.4<br>2018.0.4<br>2019.0.5 | |
+| Add | intel-vtune | 2017.6<br>2018.4<br>2019.6 | |
+| Add | julia | 1.0<br>1.3<br>1.4 | |
+| Add | openjdk | 1.8.0.242<br>11.0.6.10 | |
+| Add | python | 3.7.6<br>3.8.2 | |
+| Add | gdrcopy | 2.0 | |
+| Add | nccl | [2.6.4-1](https://docs.nvidia.com/deeplearning/sdk/nccl-release-notes/rel_2-6-x.html) | |
+| Add | intel-mpi | 2017.4<br>2018.4<br>2019.5 | |
+| Add | mvapich2-gdr | 2.3.3 | |
+| Add | mvapich2 | 2.3.3 | |
+| Add | openmpi | 3.1.6<br>4.0.3 | |
+| Add | hadoop | 2.9<br>2.10<br>3.1 | |
+| Add | spark | 2.3<br>2.4 | |
+| Add | aws-cli | 1.18<br>2.0 | |
+| Delete | gcc | 7.3.0 | |
+| Delete | intel | 2018.2.199<br>2018.3.222<br>2019.3.199 | |
+| Delete | pgi | 18.5<br>19.3 | |
+| Delete | go | 1.11.2 | |
+| Delete | intel-mkl | 2017.8.262<br>2018.2.199<br>2018.3.222<br>2019.3.199 | |
+| Delete | openjdk | 1.6.0.41<br>1.8.0.161 | |
+| Delete | cuda | 9.0/9.0.176.2<br>9.0/9.0.176.3 | |
+| Delete | gdrcopy | 1.2 | |
+| Delete | intel-mpi | 2018.2.199 | |
+| Delete | mvapich2-gdr | 2.3rc1<br>2.3<br>2.3a<br>2.3.1<br>2.3.2 | |
+| Delete | mvapich2 | 2.3rc2<br>2.3<br>2.3.2 | |
+| Delete | openmpi | 1.10.7<br>2.1.3<br>2.1.5<br>3.0.3<br>3.1.0<br>3.1.2<br>3.1.3 | |
+| Delete | hadoop | 2.9.1<br>2.9.2 | |
+| Delete | spark | 2.3.1<br>2.3.2<br>2.4.0 |
+
 ## 2019-12-17
 
 | Add / Update / Delete | Software | Version | Previous version |
