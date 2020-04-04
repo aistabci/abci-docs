@@ -1,4 +1,4 @@
-<!doctype html><html lang="ja" class="no-js"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta http-equiv="x-ua-compatible" content="ie=edge"><meta name="description" content="ABCI Users Guide, Japanese version"><link rel="canonical" href="https://docs.abci.ai/ja/apps/chainer/"><meta name="author" content="AIST"><meta name="lang:clipboard.copy" content="クリップボードへコピー"><meta name="lang:clipboard.copied" content="コピーしました"><meta name="lang:search.language" content="ja"><meta name="lang:search.pipeline.stopwords" content="True"><meta name="lang:search.pipeline.trimmer" content="True"><meta name="lang:search.result.none" content="何も見つかりませんでした"><meta name="lang:search.result.one" content="1件見つかりました"><meta name="lang:search.result.other" content="#件見つかりました"><meta name="lang:search.tokenizer" content="[\s\-　、。，．]+"><link rel="shortcut icon" href="../../assets/images/favicon.png"><meta name="generator" content="mkdocs-1.0.4, mkdocs-material-4.3.1"><title>Chainer - ABCI Users Guide</title><link rel="stylesheet" href="../../assets/stylesheets/application.4031d38b.css"><link rel="stylesheet" href="../../assets/stylesheets/application-palette.224b79ff.css"><meta name="theme-color" content="#ef5350"><script src="../../assets/javascripts/modernizr.74668098.js"></script><link href="https://fonts.gstatic.com" rel="preconnect" crossorigin><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700|Roboto+Mono&display=swap"><style>body,input{font-family:"Roboto","Helvetica Neue",Helvetica,Arial,sans-serif}code,kbd,pre{font-family:"Roboto Mono","Courier New",Courier,monospace}</style><link rel="stylesheet" href="../../assets/fonts/material-icons.css"><script>window.ga = window.ga || function() {
+<!doctype html><html lang="ja" class="no-js"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta http-equiv="x-ua-compatible" content="ie=edge"><meta name="description" content="ABCI Users Guide, Japanese version"><link rel="canonical" href="https://docs.abci.ai/ja/apps/chainer/"><meta name="author" content="AIST"><meta name="lang:clipboard.copy" content="クリップボードへコピー"><meta name="lang:clipboard.copied" content="コピーしました"><meta name="lang:search.language" content="ja"><meta name="lang:search.pipeline.stopwords" content="True"><meta name="lang:search.pipeline.trimmer" content="True"><meta name="lang:search.result.none" content="何も見つかりませんでした"><meta name="lang:search.result.one" content="1件見つかりました"><meta name="lang:search.result.other" content="#件見つかりました"><meta name="lang:search.tokenizer" content="[\s\-　、。，．]+"><link rel="shortcut icon" href="../../assets/images/favicon.png"><meta name="generator" content="mkdocs-1.1, mkdocs-material-4.3.1"><title>Chainer - ABCI Users Guide</title><link rel="stylesheet" href="../../assets/stylesheets/application.4031d38b.css"><link rel="stylesheet" href="../../assets/stylesheets/application-palette.224b79ff.css"><meta name="theme-color" content="#ef5350"><script src="../../assets/javascripts/modernizr.74668098.js"></script><link href="https://fonts.gstatic.com" rel="preconnect" crossorigin><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700|Roboto+Mono&display=swap"><style>body,input{font-family:"Roboto","Helvetica Neue",Helvetica,Arial,sans-serif}code,kbd,pre{font-family:"Roboto Mono","Courier New",Courier,monospace}</style><link rel="stylesheet" href="../../assets/fonts/material-icons.css"><script>window.ga = window.ga || function() {
     (ga.q = ga.q || []).push(arguments)
   }
   ga.l = +new Date
@@ -88,47 +88,47 @@
 <h2 id="using-chainer">Chainer の利用</h2>
 <h3 id="installation">導入方法</h3>
 <p>計算ノードを一台占有し、Python仮想環境<code>$HOME/venv/chainer</code>を作成し、<code>pip</code>で<code>chainer</code>と<code>cupy-cuda</code>をインストールします。</p>
-<div class="codehilite"><pre><span></span>[<span class="nv">username</span>@<span class="nv">es1</span> <span class="o">~</span>]$ <span class="nv">qrsh</span> <span class="o">-</span><span class="nv">g</span> <span class="nv">grpname</span> <span class="o">-</span><span class="nv">l</span> <span class="nv">rt_F</span><span class="o">=</span><span class="mi">1</span>
-[<span class="nv">username</span>@<span class="nv">g0001</span> <span class="o">~</span>]$ <span class="nv">module</span> <span class="nv">load</span> <span class="nv">python</span><span class="o">/</span><span class="mi">3</span>.<span class="mi">6</span><span class="o">/</span><span class="mi">3</span>.<span class="mi">6</span>.<span class="mi">5</span>
-[<span class="nv">username</span>@<span class="nv">g0001</span> <span class="o">~</span>]$ <span class="nv">module</span> <span class="nv">load</span> <span class="nv">cuda</span><span class="o">/</span><span class="mi">10</span>.<span class="mi">0</span><span class="o">/</span><span class="mi">10</span>.<span class="mi">0</span>.<span class="mi">130</span>.<span class="mi">1</span>
-[<span class="nv">username</span>@<span class="nv">g0001</span> <span class="o">~</span>]$ <span class="nv">module</span> <span class="nv">load</span> <span class="nv">cudnn</span><span class="o">/</span><span class="mi">7</span>.<span class="mi">6</span><span class="o">/</span><span class="mi">7</span>.<span class="mi">6</span>.<span class="mi">4</span>
-[<span class="nv">username</span>@<span class="nv">g0001</span> <span class="o">~</span>]$ <span class="nv">python3</span> <span class="o">-</span><span class="nv">m</span> <span class="nv">venv</span> $<span class="nv">HOME</span><span class="o">/</span><span class="nv">venv</span><span class="o">/</span><span class="nv">chainer</span>
-[<span class="nv">username</span>@<span class="nv">g0001</span> <span class="o">~</span>]$ <span class="nv">source</span> $<span class="nv">HOME</span><span class="o">/</span><span class="nv">venv</span><span class="o">/</span><span class="nv">chainer</span><span class="o">/</span><span class="nv">bin</span><span class="o">/</span><span class="nv">activate</span>
-<span class="ss">(</span><span class="nv">chainer</span><span class="ss">)</span> [<span class="nv">username</span>@<span class="nv">g0001</span> <span class="o">~</span>]$ <span class="nv">pip3</span> <span class="nv">install</span> <span class="o">--</span><span class="nv">upgrade</span> <span class="nv">pip</span>
-<span class="ss">(</span><span class="nv">chainer</span><span class="ss">)</span> [<span class="nv">username</span>@<span class="nv">g0001</span> <span class="o">~</span>]$ <span class="nv">pip3</span> <span class="nv">install</span> <span class="o">--</span><span class="nv">upgrade</span> <span class="nv">setuptools</span>
-<span class="ss">(</span><span class="nv">chainer</span><span class="ss">)</span> [<span class="nv">username</span>@<span class="nv">g0001</span> <span class="o">~</span>]$ <span class="nv">pip3</span> <span class="nv">install</span> <span class="nv">cupy</span><span class="o">-</span><span class="nv">cuda100</span><span class="o">==</span><span class="mi">6</span>.<span class="mi">6</span>.<span class="mi">0</span> <span class="nv">chainer</span><span class="o">==</span><span class="mi">6</span>.<span class="mi">6</span>.<span class="mi">0</span> <span class="nv">mpi4py</span> <span class="nv">matplotlib</span>
-<span class="ss">(</span><span class="nv">chainer</span><span class="ss">)</span> [<span class="nv">username</span>@<span class="nv">g0001</span> <span class="o">~</span>]$ <span class="k">exit</span>
-[<span class="nv">username</span>@<span class="nv">es1</span> <span class="o">~</span>]$
-</pre></div>
+<div class="codehilite"><pre><span></span><code><span class="err">[username@es1 ~]$ qrsh -g grpname -l rt_F=1</span>
+<span class="err">[username@g0001 ~]$ module load python/3.6/3.6.5</span>
+<span class="err">[username@g0001 ~]$ module load cuda/10.0/10.0.130.1</span>
+<span class="err">[username@g0001 ~]$ module load cudnn/7.6/7.6.4</span>
+<span class="err">[username@g0001 ~]$ python3 -m venv $HOME/venv/chainer</span>
+<span class="err">[username@g0001 ~]$ source $HOME/venv/chainer/bin/activate</span>
+<span class="err">(chainer) [username@g0001 ~]$ pip3 install --upgrade pip</span>
+<span class="err">(chainer) [username@g0001 ~]$ pip3 install --upgrade setuptools</span>
+<span class="err">(chainer) [username@g0001 ~]$ pip3 install cupy-cuda100==6.6.0 chainer==6.6.0 mpi4py matplotlib</span>
+<span class="err">(chainer) [username@g0001 ~]$ exit</span>
+<span class="err">[username@es1 ~]$</span>
+</code></pre></div>
 
 
 <p>次回以降は、以下のようにモジュールの読み込みとPython環境のアクティベートだけでChainerを利用できます。</p>
-<div class="codehilite"><pre><span></span><span class="o">[</span><span class="n">username@es1 ~</span><span class="o">]</span><span class="err">$</span><span class="w"> </span><span class="n">qrsh</span><span class="w"> </span><span class="o">-</span><span class="n">g</span><span class="w"> </span><span class="n">grpname</span><span class="w"> </span><span class="o">-</span><span class="n">l</span><span class="w"> </span><span class="n">rt_F</span><span class="o">=</span><span class="mi">1</span><span class="w"></span>
-<span class="o">[</span><span class="n">username@g0001 ~</span><span class="o">]</span><span class="err">$</span><span class="w"> </span><span class="k">module</span><span class="w"> </span><span class="k">load</span><span class="w"> </span><span class="n">python</span><span class="o">/</span><span class="mf">3.6</span><span class="o">/</span><span class="mf">3.6.5</span><span class="w"></span>
-<span class="o">[</span><span class="n">username@g0001 ~</span><span class="o">]</span><span class="err">$</span><span class="w"> </span><span class="k">module</span><span class="w"> </span><span class="k">load</span><span class="w"> </span><span class="n">cuda</span><span class="o">/</span><span class="mf">10.0</span><span class="o">/</span><span class="mf">10.0.130.1</span><span class="w"></span>
-<span class="o">[</span><span class="n">username@g0001 ~</span><span class="o">]</span><span class="err">$</span><span class="w"> </span><span class="k">module</span><span class="w"> </span><span class="k">load</span><span class="w"> </span><span class="n">cudnn</span><span class="o">/</span><span class="mf">7.6</span><span class="o">/</span><span class="mf">7.6.4</span><span class="w"></span>
-<span class="o">[</span><span class="n">username@g0001 ~</span><span class="o">]</span><span class="err">$</span><span class="w"> </span><span class="n">source</span><span class="w"> </span><span class="err">$</span><span class="n">HOME</span><span class="o">/</span><span class="n">venv</span><span class="o">/</span><span class="n">chainer</span><span class="o">/</span><span class="n">bin</span><span class="o">/</span><span class="n">activate</span><span class="w"></span>
-</pre></div>
+<div class="codehilite"><pre><span></span><code><span class="err">[username@es1 ~]$ qrsh -g grpname -l rt_F=1</span>
+<span class="err">[username@g0001 ~]$ module load python/3.6/3.6.5</span>
+<span class="err">[username@g0001 ~]$ module load cuda/10.0/10.0.130.1</span>
+<span class="err">[username@g0001 ~]$ module load cudnn/7.6/7.6.4</span>
+<span class="err">[username@g0001 ~]$ source $HOME/venv/chainer/bin/activate</span>
+</code></pre></div>
 
 
 <h3 id="_1">実行方法</h3>
 <p>ここでは、Chainerのサンプルプログラムの1つである<a href="http://yann.lecun.com/exdb/mnist/">mnist</a>を用いて実行方法を説明します。</p>
 <p>まず、サンプルプログラムをダウンロードします。</p>
-<div class="codehilite"><pre><span></span>[username@es1 ~]$ mkdir -p <span class="cp">${</span><span class="n">WORK</span><span class="cp">}</span>
+<div class="codehilite"><pre><span></span><code>[username@es1 ~]$ mkdir -p <span class="cp">${</span><span class="n">WORK</span><span class="cp">}</span>
 [username@es1 ~]$ cd <span class="cp">${</span><span class="n">WORK</span><span class="cp">}</span>
 [username@es1 ~]$ wget https://raw.githubusercontent.com/chainer/chainer/master/examples/chainermn/mnist/train_mnist.py
-</pre></div>
+</code></pre></div>
 
 
 <p>計算ノードを一台占有し、導入したChainerの利用環境を設定し、<code>train_mnist.py</code>を実行します。</p>
-<div class="codehilite"><pre><span></span><span class="o">[</span><span class="n">username@es1 ~</span><span class="o">]</span><span class="err">$</span><span class="w"> </span><span class="n">qrsh</span><span class="w"> </span><span class="o">-</span><span class="n">g</span><span class="w"> </span><span class="n">grpname</span><span class="w"> </span><span class="o">-</span><span class="n">l</span><span class="w"> </span><span class="n">rt_F</span><span class="o">=</span><span class="mi">1</span><span class="w"></span>
-<span class="o">[</span><span class="n">username@g0001 ~</span><span class="o">]</span><span class="err">$</span><span class="w"> </span><span class="k">module</span><span class="w"> </span><span class="k">load</span><span class="w"> </span><span class="n">python</span><span class="o">/</span><span class="mf">3.6</span><span class="o">/</span><span class="mf">3.6.5</span><span class="w"></span>
-<span class="o">[</span><span class="n">username@g0001 ~</span><span class="o">]</span><span class="err">$</span><span class="w"> </span><span class="k">module</span><span class="w"> </span><span class="k">load</span><span class="w"> </span><span class="n">cuda</span><span class="o">/</span><span class="mf">10.0</span><span class="o">/</span><span class="mf">10.0.130.1</span><span class="w"></span>
-<span class="o">[</span><span class="n">username@g0001 ~</span><span class="o">]</span><span class="err">$</span><span class="w"> </span><span class="k">module</span><span class="w"> </span><span class="k">load</span><span class="w"> </span><span class="n">cudnn</span><span class="o">/</span><span class="mf">7.6</span><span class="o">/</span><span class="mf">7.6.4</span><span class="w"></span>
-<span class="o">[</span><span class="n">username@g0001 ~</span><span class="o">]</span><span class="err">$</span><span class="w"> </span><span class="n">source</span><span class="w"> </span><span class="err">$</span><span class="n">HOME</span><span class="o">/</span><span class="n">venv</span><span class="o">/</span><span class="n">chainer</span><span class="o">/</span><span class="n">bin</span><span class="o">/</span><span class="n">activate</span><span class="w"></span>
-<span class="p">(</span><span class="n">pytorch</span><span class="p">)</span><span class="w"> </span><span class="o">[</span><span class="n">username@g0001 ~</span><span class="o">]</span><span class="err">$</span><span class="w"> </span><span class="n">cd</span><span class="w"> </span><span class="err">$</span><span class="k">WORK</span><span class="w"></span>
-<span class="p">(</span><span class="n">pytorch</span><span class="p">)</span><span class="w"> </span><span class="o">[</span><span class="n">username@g0001 ~</span><span class="o">]</span><span class="err">$</span><span class="w"> </span><span class="n">python3</span><span class="w"> </span><span class="p">.</span><span class="o">/</span><span class="n">train_mnist</span><span class="p">.</span><span class="n">py</span><span class="w"></span>
-</pre></div>
+<div class="codehilite"><pre><span></span><code><span class="err">[username@es1 ~]$ qrsh -g grpname -l rt_F=1</span>
+<span class="err">[username@g0001 ~]$ module load python/3.6/3.6.5</span>
+<span class="err">[username@g0001 ~]$ module load cuda/10.0/10.0.130.1</span>
+<span class="err">[username@g0001 ~]$ module load cudnn/7.6/7.6.4</span>
+<span class="err">[username@g0001 ~]$ source $HOME/venv/chainer/bin/activate</span>
+<span class="err">(pytorch) [username@g0001 ~]$ cd $WORK</span>
+<span class="err">(pytorch) [username@g0001 ~]$ python3 ./train_mnist.py</span>
+</code></pre></div>
 
 
 <p>バッチ利用時のジョブスクリプトでも同様のことができます。以下では、2ノード内のそれぞれ4GPUを使用して実行しています。</p>
@@ -153,7 +153,7 @@
 19
 20
 21
-22</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="ch">#!/bin/sh</span>
+22</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><code><span class="ch">#!/bin/sh</span>
 <span class="c1">#$ -l rt_F=2</span>
 <span class="c1">#$ -l h_rt=1:23:45</span>
 <span class="c1">#$ -cwd</span>
@@ -175,7 +175,7 @@ module load cudnn/7.6/7.6.4
 mpirun <span class="si">${</span><span class="nv">MPIOPTS</span><span class="si">}</span> <span class="si">${</span><span class="nv">APP</span><span class="si">}</span>
 
 deactivate
-</pre></div>
+</code></pre></div>
 </td></tr></table>
 
 <p>本スクリプト内で使用する環境変数ならびにmpirunの引数は以下の通りです。</p>
@@ -224,6 +224,6 @@ deactivate
 </tbody>
 </table>
 <p>qsubコマンドでジョブ実行します。</p>
-<div class="codehilite"><pre><span></span><span class="o">[</span><span class="n">username@es1 ~</span><span class="o">]</span><span class="err">$</span><span class="w"> </span><span class="n">cd</span><span class="w"> </span><span class="err">$</span><span class="k">WORK</span><span class="w"></span>
-<span class="o">[</span><span class="n">username@es1 ~</span><span class="o">]</span><span class="err">$</span><span class="w"> </span><span class="n">qsub</span><span class="w"> </span><span class="o">-</span><span class="n">g</span><span class="w"> </span><span class="n">grpname</span><span class="w"> </span><span class="n">submit</span><span class="p">.</span><span class="n">sh</span><span class="w"></span>
-</pre></div></article></div></div></main><footer class="md-footer"><div class="md-footer-nav"><nav class="md-footer-nav__inner md-grid"><a href="../mxnet/" title="MXNet" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev"><div class="md-flex__cell md-flex__cell--shrink"><i class="md-icon md-icon--arrow-back md-footer-nav__button"></i></div><div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title"><span class="md-flex__ellipsis"><span class="md-footer-nav__direction">前</span>MXNet</span></div></a><a href="../others/" title="その他" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next"><div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title"><span class="md-flex__ellipsis"><span class="md-footer-nav__direction">次</span>その他</span></div><div class="md-flex__cell md-flex__cell--shrink"><i class="md-icon md-icon--arrow-forward md-footer-nav__button"></i></div></a></nav></div><div class="md-footer-meta md-typeset"><div class="md-footer-meta__inner md-grid"><div class="md-footer-copyright"><div class="md-footer-copyright__highlight">Copyright &copy; 2018 National Institute of Advanced Industrial Science and Technology (AIST)</div>powered by <a href="https://www.mkdocs.org">MkDocs</a> and <a href="https://squidfunk.github.io/mkdocs-material/">Material for MkDocs</a></div></div></div></footer></div><script src="../../assets/javascripts/application.b260a35d.js"></script><script src="../../assets/javascripts/lunr/lunr.stemmer.support.js"></script><script src="../../assets/javascripts/lunr/tinyseg.js"></script><script src="../../assets/javascripts/lunr/lunr.ja.js"></script><script>app.initialize({version:"1.0.4",url:{base:"../.."}})</script></body></html>
+<div class="codehilite"><pre><span></span><code><span class="err">[username@es1 ~]$ cd $WORK</span>
+<span class="err">[username@es1 ~]$ qsub -g grpname submit.sh</span>
+</code></pre></div></article></div></div></main><footer class="md-footer"><div class="md-footer-nav"><nav class="md-footer-nav__inner md-grid"><a href="../mxnet/" title="MXNet" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev"><div class="md-flex__cell md-flex__cell--shrink"><i class="md-icon md-icon--arrow-back md-footer-nav__button"></i></div><div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title"><span class="md-flex__ellipsis"><span class="md-footer-nav__direction">前</span>MXNet</span></div></a><a href="../others/" title="その他" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next"><div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title"><span class="md-flex__ellipsis"><span class="md-footer-nav__direction">次</span>その他</span></div><div class="md-flex__cell md-flex__cell--shrink"><i class="md-icon md-icon--arrow-forward md-footer-nav__button"></i></div></a></nav></div><div class="md-footer-meta md-typeset"><div class="md-footer-meta__inner md-grid"><div class="md-footer-copyright"><div class="md-footer-copyright__highlight">Copyright &copy; 2018 National Institute of Advanced Industrial Science and Technology (AIST)</div>powered by <a href="https://www.mkdocs.org">MkDocs</a> and <a href="https://squidfunk.github.io/mkdocs-material/">Material for MkDocs</a></div></div></div></footer></div><script src="../../assets/javascripts/application.b260a35d.js"></script><script src="../../assets/javascripts/lunr/lunr.stemmer.support.js"></script><script src="../../assets/javascripts/lunr/tinyseg.js"></script><script src="../../assets/javascripts/lunr/lunr.ja.js"></script><script>app.initialize({version:"1.1",url:{base:"../.."}})</script></body></html>

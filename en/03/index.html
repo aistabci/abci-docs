@@ -1,4 +1,4 @@
-<!doctype html><html lang="en" class="no-js"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta http-equiv="x-ua-compatible" content="ie=edge"><meta name="description" content="ABCI Users Guide, English version"><link rel="canonical" href="https://docs.abci.ai/en/03/"><meta name="author" content="AIST"><meta name="lang:clipboard.copy" content="Copy to clipboard"><meta name="lang:clipboard.copied" content="Copied to clipboard"><meta name="lang:search.language" content="en"><meta name="lang:search.pipeline.stopwords" content="True"><meta name="lang:search.pipeline.trimmer" content="True"><meta name="lang:search.result.none" content="No matching documents"><meta name="lang:search.result.one" content="1 matching document"><meta name="lang:search.result.other" content="# matching documents"><meta name="lang:search.tokenizer" content="[\s\-]+"><link rel="shortcut icon" href="../assets/images/favicon.png"><meta name="generator" content="mkdocs-1.0.4, mkdocs-material-4.3.1"><title>3. Job Execution Environment - ABCI Users Guide</title><link rel="stylesheet" href="../assets/stylesheets/application.4031d38b.css"><link rel="stylesheet" href="../assets/stylesheets/application-palette.224b79ff.css"><meta name="theme-color" content="#ef5350"><script src="../assets/javascripts/modernizr.74668098.js"></script><link href="https://fonts.gstatic.com" rel="preconnect" crossorigin><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700|Roboto+Mono&display=swap"><style>body,input{font-family:"Roboto","Helvetica Neue",Helvetica,Arial,sans-serif}code,kbd,pre{font-family:"Roboto Mono","Courier New",Courier,monospace}</style><link rel="stylesheet" href="../assets/fonts/material-icons.css"><script>window.ga = window.ga || function() {
+<!doctype html><html lang="en" class="no-js"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta http-equiv="x-ua-compatible" content="ie=edge"><meta name="description" content="ABCI Users Guide, English version"><link rel="canonical" href="https://docs.abci.ai/en/03/"><meta name="author" content="AIST"><meta name="lang:clipboard.copy" content="Copy to clipboard"><meta name="lang:clipboard.copied" content="Copied to clipboard"><meta name="lang:search.language" content="en"><meta name="lang:search.pipeline.stopwords" content="True"><meta name="lang:search.pipeline.trimmer" content="True"><meta name="lang:search.result.none" content="No matching documents"><meta name="lang:search.result.one" content="1 matching document"><meta name="lang:search.result.other" content="# matching documents"><meta name="lang:search.tokenizer" content="[\s\-]+"><link rel="shortcut icon" href="../assets/images/favicon.png"><meta name="generator" content="mkdocs-1.1, mkdocs-material-4.3.1"><title>3. Job Execution Environment - ABCI Users Guide</title><link rel="stylesheet" href="../assets/stylesheets/application.4031d38b.css"><link rel="stylesheet" href="../assets/stylesheets/application-palette.224b79ff.css"><meta name="theme-color" content="#ef5350"><script src="../assets/javascripts/modernizr.74668098.js"></script><link href="https://fonts.gstatic.com" rel="preconnect" crossorigin><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700|Roboto+Mono&display=swap"><style>body,input{font-family:"Roboto","Helvetica Neue",Helvetica,Arial,sans-serif}code,kbd,pre{font-family:"Roboto Mono","Courier New",Courier,monospace}</style><link rel="stylesheet" href="../assets/fonts/material-icons.css"><script>window.ga = window.ga || function() {
     (ga.q = ga.q || []).push(arguments)
   }
   ga.l = +new Date
@@ -477,31 +477,31 @@ To execute a job in interactive mode, use the <code>qrsh</code> command.</p>
 <h2 id="interactive-jobs">3.4. Interactive Jobs</h2>
 <p>To execute an interactive job, use the <code>qrsh</code> command.
 If ABCI point is insufficient when executing interactive job, execution is failed.</p>
-<div class="codehilite"><pre><span></span><span class="err">$</span><span class="w"> </span><span class="n">qrsh</span><span class="w"> </span><span class="o">-</span><span class="n">g</span><span class="w"> </span><span class="k">group</span><span class="w"> </span><span class="o">-</span><span class="n">l</span><span class="w"> </span><span class="n">resource_type</span><span class="o">=</span><span class="n">number</span><span class="w"> </span><span class="o">[</span><span class="n">option</span><span class="o">]</span><span class="w"></span>
-</pre></div>
+<div class="codehilite"><pre><span></span><code><span class="err">$</span><span class="w"> </span><span class="n">qrsh</span><span class="w"> </span><span class="o">-</span><span class="n">g</span><span class="w"> </span><span class="k">group</span><span class="w"> </span><span class="o">-</span><span class="n">l</span><span class="w"> </span><span class="n">resource_type</span><span class="o">=</span><span class="n">number</span><span class="w"> </span><span class="o">[</span><span class="n">option</span><span class="o">]</span><span class="w"></span>
+</code></pre></div>
 
 
 <p>Example) Executing an Interactive job</p>
-<div class="codehilite"><pre><span></span><span class="o">[</span><span class="n">username@es1 ~</span><span class="o">]</span><span class="err">$</span><span class="w"> </span><span class="n">qrsh</span><span class="w"> </span><span class="o">-</span><span class="n">g</span><span class="w"> </span><span class="n">grpname</span><span class="w"> </span><span class="o">-</span><span class="n">l</span><span class="w"> </span><span class="n">rt_F</span><span class="o">=</span><span class="mi">1</span><span class="w"></span>
-<span class="o">[</span><span class="n">username@g0001 ~</span><span class="o">]</span><span class="err">$</span><span class="w"> </span>
-</pre></div>
+<div class="codehilite"><pre><span></span><code><span class="err">[username@es1 ~]$ qrsh -g grpname -l rt_F=1</span>
+<span class="err">[username@g0001 ~]$ </span>
+</code></pre></div>
 
 
 <p>To execute an application using X-Window, you need to login with the X forwading option (-X or -Y option) as follows.</p>
-<div class="codehilite"><pre><span></span><span class="p">[</span><span class="n">yourpc</span> <span class="o">~</span><span class="p">]</span><span class="err">$</span> <span class="n">ssh</span> <span class="o">-</span><span class="n">XC</span> <span class="o">-</span><span class="n">p</span> <span class="mi">10022</span> <span class="o">-</span><span class="n">l</span> <span class="n">username</span> <span class="n">localhost</span>
-</pre></div>
+<div class="codehilite"><pre><span></span><code><span class="err">[yourpc ~]$ ssh -XC -p 10022 -l username localhost</span>
+</code></pre></div>
 
 
 <p>To execute an interactive job, specify the <code>-pty yes -display $DISPLAY -v TERM /bin/bash</code>.</p>
-<div class="codehilite"><pre><span></span><span class="n">[username</span><span class="o">@</span><span class="n">es1</span> <span class="o">~</span><span class="n">]</span><span class="o">$</span> <span class="n">qrsh</span> <span class="o">-</span><span class="n">g</span> <span class="n">grpname</span> <span class="o">-</span><span class="n">l</span> <span class="n">rt_F</span><span class="o">=</span><span class="m">1</span> <span class="o">-</span><span class="n">pty</span> <span class="n">yes</span> <span class="o">-</span><span class="n">display</span> <span class="o">$</span><span class="n">DISPLAY</span> <span class="o">-</span><span class="n">v</span> <span class="n">TERM</span> <span class="o">/</span><span class="n">bin</span><span class="o">/</span><span class="n">bash</span>
-<span class="n">[username</span><span class="o">@</span><span class="n">g0001</span> <span class="o">~</span><span class="n">]</span><span class="o">$</span> <span class="n">xterm</span> <span class="o">&lt;-</span> <span class="n">execute</span> <span class="n">X</span> <span class="n">application</span>
-</pre></div>
+<div class="codehilite"><pre><span></span><code><span class="p">[</span><span class="n">username</span><span class="o">@</span><span class="n">es1</span> <span class="o">~</span><span class="p">]</span><span class="o">$</span> <span class="n">qrsh</span> <span class="o">-</span><span class="n">g</span> <span class="n">grpname</span> <span class="o">-</span><span class="n">l</span> <span class="n">rt_F</span><span class="o">=</span><span class="m">1</span> <span class="o">-</span><span class="n">pty</span> <span class="n">yes</span> <span class="o">-</span><span class="n">display</span> <span class="o">$</span><span class="n">DISPLAY</span> <span class="o">-</span><span class="n">v</span> <span class="n">TERM</span> <span class="o">/</span><span class="n">bin</span><span class="o">/</span><span class="n">bash</span>
+<span class="p">[</span><span class="n">username</span><span class="o">@</span><span class="n">g0001</span> <span class="o">~</span><span class="p">]</span><span class="o">$</span> <span class="n">xterm</span> <span class="o">&lt;-</span> <span class="n">execute</span> <span class="n">X</span> <span class="n">application</span>
+</code></pre></div>
 
 
 <h2 id="batch-jobs">3.5. Batch Jobs</h2>
 <p>To run a batch job on the ABCI System, you need to make a job script in addition to execution program.
 The job script is described job execute option, such as resource type, elapsed time limit, etc., and executing command sequence.</p>
-<div class="codehilite"><pre><span></span><span class="ch">#!/bin/bash</span>
+<div class="codehilite"><pre><span></span><code><span class="ch">#!/bin/bash</span>
 
 <span class="c1">#$ -l rt_F=1</span>
 <span class="c1">#$ -l h_rt=1:23:45</span>
@@ -511,11 +511,11 @@ The job script is described job execute option, such as resource type, elapsed t
 <span class="o">[</span>Initialization of Environment Modules<span class="o">]</span>
 <span class="o">[</span>Setting of Environment Modules<span class="o">]</span>
 <span class="o">[</span>Executing program<span class="o">]</span>
-</pre></div>
+</code></pre></div>
 
 
 <p>Example) Sample job script executing program with CUDA</p>
-<div class="codehilite"><pre><span></span><span class="ch">#!/bin/bash</span>
+<div class="codehilite"><pre><span></span><code><span class="ch">#!/bin/bash</span>
 
 <span class="c1">#$-l rt_F=1</span>
 <span class="c1">#$-j y</span>
@@ -524,20 +524,20 @@ The job script is described job execute option, such as resource type, elapsed t
 <span class="nb">source</span> /etc/profile.d/modules.sh
 module load cuda/9.2/9.2.88.1
 ./a.out
-</pre></div>
+</code></pre></div>
 
 
 <h3 id="submit-a-batch-job">3.5.1. Submit a batch job</h3>
 <p>To submit a batch job, use the <code>qsub</code> command.
 If ABCI point is insufficient when submitting batch job, submission is failed.</p>
-<div class="codehilite"><pre><span></span><span class="err">$</span><span class="w"> </span><span class="n">qsub</span><span class="w"> </span><span class="o">-</span><span class="n">g</span><span class="w"> </span><span class="k">group</span><span class="w"> </span><span class="o">[</span><span class="n">option</span><span class="o">]</span><span class="w"> </span><span class="n">job_script</span><span class="w"></span>
-</pre></div>
+<div class="codehilite"><pre><span></span><code><span class="err">$</span><span class="w"> </span><span class="n">qsub</span><span class="w"> </span><span class="o">-</span><span class="n">g</span><span class="w"> </span><span class="k">group</span><span class="w"> </span><span class="o">[</span><span class="n">option</span><span class="o">]</span><span class="w"> </span><span class="n">job_script</span><span class="w"></span>
+</code></pre></div>
 
 
 <p>Example) Submission job script run.sh as a batch job</p>
-<div class="codehilite"><pre><span></span><span class="o">[</span><span class="n">username@es1 ~</span><span class="o">]</span><span class="err">$</span><span class="w"> </span><span class="n">qsub</span><span class="w"> </span><span class="o">-</span><span class="n">g</span><span class="w"> </span><span class="n">grpname</span><span class="w"> </span><span class="n">run</span><span class="p">.</span><span class="n">sh</span><span class="w"></span>
-<span class="n">Your</span><span class="w"> </span><span class="n">job</span><span class="w"> </span><span class="mi">12345</span><span class="w"> </span><span class="p">(</span><span class="ss">&quot;run.sh&quot;</span><span class="p">)</span><span class="w"> </span><span class="n">has</span><span class="w"> </span><span class="n">been</span><span class="w"> </span><span class="n">submitted</span><span class="w"></span>
-</pre></div>
+<div class="codehilite"><pre><span></span><code><span class="err">[username@es1 ~]$ qsub -g grpname run.sh</span>
+<span class="err">Your job 12345 (&quot;run.sh&quot;) has been submitted</span>
+</code></pre></div>
 
 
 <div class="admonition warning">
@@ -546,8 +546,8 @@ If ABCI point is insufficient when submitting batch job, submission is failed.</
 </div>
 <h3 id="show-the-status-of-batch-jobs">3.5.2. Show the status of batch jobs</h3>
 <p>To show the current status of batch jobs, use the <code>qstat</code> command.</p>
-<div class="codehilite"><pre><span></span><span class="err">$</span><span class="w"> </span><span class="n">qstat</span><span class="w"> </span><span class="o">[</span><span class="n">option</span><span class="o">]</span><span class="w"></span>
-</pre></div>
+<div class="codehilite"><pre><span></span><code><span class="err">$</span><span class="w"> </span><span class="n">qstat</span><span class="w"> </span><span class="o">[</span><span class="n">option</span><span class="o">]</span><span class="w"></span>
+</code></pre></div>
 
 
 <p>The major options of the <code>qstat</code> command are follows.</p>
@@ -570,11 +570,11 @@ If ABCI point is insufficient when submitting batch job, submission is failed.</
 </tbody>
 </table>
 <p>Example)</p>
-<div class="codehilite"><pre><span></span><span class="o">[</span><span class="n">username@es1 ~</span><span class="o">]</span><span class="err">$</span><span class="w"> </span><span class="n">qstat</span><span class="w"></span>
-<span class="n">job</span><span class="o">-</span><span class="n">ID</span><span class="w">     </span><span class="k">prior</span><span class="w">   </span><span class="n">name</span><span class="w">       </span><span class="k">user</span><span class="w">         </span><span class="k">state</span><span class="w"> </span><span class="n">submit</span><span class="o">/</span><span class="k">start</span><span class="w"> </span><span class="k">at</span><span class="w">     </span><span class="n">queue</span><span class="w">                          </span><span class="n">jclass</span><span class="w">                         </span><span class="n">slots</span><span class="w"> </span><span class="n">ja</span><span class="o">-</span><span class="n">task</span><span class="o">-</span><span class="n">ID</span><span class="w"></span>
-<span class="c1">------------------------------------------------------------------------------------------------------------------------------------------------</span>
-<span class="w">     </span><span class="mi">12345</span><span class="w"> </span><span class="mf">0.25586</span><span class="w"> </span><span class="n">run</span><span class="p">.</span><span class="n">sh</span><span class="w">     </span><span class="n">username</span><span class="w">     </span><span class="n">r</span><span class="w">     </span><span class="mi">06</span><span class="o">/</span><span class="mi">27</span><span class="o">/</span><span class="mi">2018</span><span class="w"> </span><span class="mi">21</span><span class="err">:</span><span class="mi">14</span><span class="err">:</span><span class="mi">49</span><span class="w"> </span><span class="n">gpu</span><span class="nv">@g0001</span><span class="w">                                                        </span><span class="mi">80</span><span class="w"></span>
-</pre></div>
+<div class="codehilite"><pre><span></span><code><span class="err">[username@es1 ~]$ qstat</span>
+<span class="err">job-ID     prior   name       user         state submit/start at     queue                          jclass                         slots ja-task-ID</span>
+<span class="err">------------------------------------------------------------------------------------------------------------------------------------------------</span>
+<span class="err">     12345 0.25586 run.sh     username     r     06/27/2018 21:14:49 gpu@g0001                                                        80</span>
+</code></pre></div>
 
 
 <table>
@@ -629,18 +629,18 @@ If ABCI point is insufficient when submitting batch job, submission is failed.</
 </table>
 <h3 id="delete-a-batch-job">3.5.3. Delete a batch job</h3>
 <p>To delete a batch job, use the <code>qdel</code> command.</p>
-<div class="codehilite"><pre><span></span>$ qdel job_ID
-</pre></div>
+<div class="codehilite"><pre><span></span><code>$ qdel job_ID
+</code></pre></div>
 
 
 <p>Example) Delete a batch job</p>
-<div class="codehilite"><pre><span></span>[<span class="nv">username</span>@<span class="nv">es1</span> <span class="o">~</span>]$ <span class="nv">qstat</span>
-<span class="nv">job</span><span class="o">-</span><span class="nv">ID</span>     <span class="nv">prior</span>   <span class="nv">name</span>       <span class="nv">user</span>         <span class="nv">state</span> <span class="nv">submit</span><span class="o">/</span><span class="nv">start</span> <span class="nv">at</span>     <span class="nv">queue</span>                          <span class="nv">jclass</span>                         <span class="nv">slots</span> <span class="nv">ja</span><span class="o">-</span><span class="nv">task</span><span class="o">-</span><span class="nv">ID</span>
-<span class="o">------------------------------------------------------------------------------------------------------------------------------------------------</span>
-     <span class="mi">12345</span> <span class="mi">0</span>.<span class="mi">25586</span> <span class="nv">run</span>.<span class="nv">sh</span>     <span class="nv">username</span>     <span class="nv">r</span>     <span class="mi">06</span><span class="o">/</span><span class="mi">27</span><span class="o">/</span><span class="mi">2018</span> <span class="mi">21</span>:<span class="mi">14</span>:<span class="mi">49</span> <span class="nv">gpu</span>@<span class="nv">g0001</span>                                                        <span class="mi">80</span>
-[<span class="nv">username</span>@<span class="nv">es1</span> <span class="o">~</span>]$ <span class="nv">qdel</span> <span class="mi">12345</span>
-<span class="nv">username</span> <span class="nv">has</span> <span class="nv">registered</span> <span class="nv">the</span> <span class="nv">job</span> <span class="mi">12345</span> <span class="k">for</span> <span class="nv">deletion</span>
-</pre></div>
+<div class="codehilite"><pre><span></span><code><span class="err">[username@es1 ~]$ qstat</span>
+<span class="err">job-ID     prior   name       user         state submit/start at     queue                          jclass                         slots ja-task-ID</span>
+<span class="err">------------------------------------------------------------------------------------------------------------------------------------------------</span>
+<span class="err">     12345 0.25586 run.sh     username     r     06/27/2018 21:14:49 gpu@g0001                                                        80</span>
+<span class="err">[username@es1 ~]$ qdel 12345</span>
+<span class="err">username has registered the job 12345 for deletion</span>
+</code></pre></div>
 
 
 <h3 id="stdout-and-stderr-of-batch-jobs">3.5.4. Stdout and Stderr of Batch Jobs</h3>
@@ -654,8 +654,8 @@ the following files are generated for output.</p>
 </ul>
 <h3 id="report-batch-job-accounting">3.5.5. Report batch job accounting</h3>
 <p>To report batch job accounting, use the <code>qacct</code> command.</p>
-<div class="codehilite"><pre><span></span><span class="err">$</span><span class="w"> </span><span class="n">qacct</span><span class="w"> </span><span class="o">[</span><span class="n">options</span><span class="o">]</span><span class="w"></span>
-</pre></div>
+<div class="codehilite"><pre><span></span><code><span class="err">$</span><span class="w"> </span><span class="n">qacct</span><span class="w"> </span><span class="o">[</span><span class="n">options</span><span class="o">]</span><span class="w"></span>
+</code></pre></div>
 
 
 <p>The major options of the <code>qacct</code> command are follows.</p>
@@ -682,60 +682,60 @@ the following files are generated for output.</p>
 </tbody>
 </table>
 <p>Example) Report batch job accounting</p>
-<div class="codehilite"><pre><span></span><span class="o">[</span><span class="n">username@es1 ~</span><span class="o">]</span><span class="err">$</span><span class="w"> </span><span class="n">qacct</span><span class="w"> </span><span class="o">-</span><span class="n">j</span><span class="w"> </span><span class="mi">12345</span><span class="w"></span>
-<span class="o">==============================================================</span><span class="w"></span>
-<span class="n">qname</span><span class="w">        </span><span class="n">gpu</span><span class="w"></span>
-<span class="n">hostname</span><span class="w">     </span><span class="n">g0001</span><span class="w"></span>
-<span class="k">group</span><span class="w">        </span><span class="k">group</span><span class="w"> </span>
-<span class="n">owner</span><span class="w">        </span><span class="n">username</span><span class="w"></span>
-<span class="n">project</span><span class="w">      </span><span class="k">group</span><span class="w"> </span>
-<span class="n">department</span><span class="w">   </span><span class="k">group</span><span class="w"></span>
-<span class="n">jobname</span><span class="w">      </span><span class="n">run</span><span class="p">.</span><span class="n">sh</span><span class="w"></span>
-<span class="n">jobnumber</span><span class="w">    </span><span class="mi">12345</span><span class="w"></span>
-<span class="n">taskid</span><span class="w">       </span><span class="n">undefined</span><span class="w"></span>
-<span class="n">account</span><span class="w">      </span><span class="n">username</span><span class="w"></span>
-<span class="n">priority</span><span class="w">     </span><span class="mi">0</span><span class="w"></span>
-<span class="n">cwd</span><span class="w">          </span><span class="k">NONE</span><span class="w"></span>
-<span class="n">submit_host</span><span class="w">  </span><span class="n">es1</span><span class="p">.</span><span class="n">abci</span><span class="p">.</span><span class="k">local</span><span class="w"></span>
-<span class="n">submit_cmd</span><span class="w">   </span><span class="o">/</span><span class="n">bb</span><span class="o">/</span><span class="k">system</span><span class="o">/</span><span class="n">uge</span><span class="o">/</span><span class="n">latest</span><span class="o">/</span><span class="n">bin</span><span class="o">/</span><span class="n">lx</span><span class="o">-</span><span class="n">amd64</span><span class="o">/</span><span class="n">qsub</span><span class="w"> </span><span class="o">-</span><span class="n">P</span><span class="w"> </span><span class="n">username</span><span class="w"> </span><span class="o">-</span><span class="n">l</span><span class="w"> </span><span class="n">h_rt</span><span class="o">=</span><span class="mi">600</span><span class="w"> </span><span class="o">-</span><span class="n">l</span><span class="w"> </span><span class="n">rt_F</span><span class="o">=</span><span class="mi">1</span><span class="w"></span>
-<span class="n">qsub_time</span><span class="w">    </span><span class="mi">07</span><span class="o">/</span><span class="mi">01</span><span class="o">/</span><span class="mi">2018</span><span class="w"> </span><span class="mi">11</span><span class="err">:</span><span class="mi">55</span><span class="err">:</span><span class="mf">14.706</span><span class="w"></span>
-<span class="n">start_time</span><span class="w">   </span><span class="mi">07</span><span class="o">/</span><span class="mi">01</span><span class="o">/</span><span class="mi">2018</span><span class="w"> </span><span class="mi">11</span><span class="err">:</span><span class="mi">55</span><span class="err">:</span><span class="mf">18.170</span><span class="w"></span>
-<span class="n">end_time</span><span class="w">     </span><span class="mi">07</span><span class="o">/</span><span class="mi">01</span><span class="o">/</span><span class="mi">2018</span><span class="w"> </span><span class="mi">11</span><span class="err">:</span><span class="mi">55</span><span class="err">:</span><span class="mf">18.190</span><span class="w"></span>
-<span class="n">granted_pe</span><span class="w">   </span><span class="n">perack17</span><span class="w"></span>
-<span class="n">slots</span><span class="w">        </span><span class="mi">80</span><span class="w"></span>
-<span class="n">failed</span><span class="w">       </span><span class="mi">0</span><span class="w"></span>
-<span class="n">deleted_by</span><span class="w">   </span><span class="k">NONE</span><span class="w"></span>
-<span class="n">exit_status</span><span class="w">  </span><span class="mi">0</span><span class="w"></span>
-<span class="n">ru_wallclock</span><span class="w"> </span><span class="mf">0.020</span><span class="w"></span>
-<span class="n">ru_utime</span><span class="w">     </span><span class="mf">0.010</span><span class="w"></span>
-<span class="n">ru_stime</span><span class="w">     </span><span class="mf">0.013</span><span class="w"></span>
-<span class="n">ru_maxrss</span><span class="w">    </span><span class="mi">6480</span><span class="w"></span>
-<span class="n">ru_ixrss</span><span class="w">     </span><span class="mi">0</span><span class="w"></span>
-<span class="n">ru_ismrss</span><span class="w">    </span><span class="mi">0</span><span class="w"></span>
-<span class="n">ru_idrss</span><span class="w">     </span><span class="mi">0</span><span class="w"></span>
-<span class="n">ru_isrss</span><span class="w">     </span><span class="mi">0</span><span class="w"></span>
-<span class="n">ru_minflt</span><span class="w">    </span><span class="mi">1407</span><span class="w"></span>
-<span class="n">ru_majflt</span><span class="w">    </span><span class="mi">0</span><span class="w"></span>
-<span class="n">ru_nswap</span><span class="w">     </span><span class="mi">0</span><span class="w"></span>
-<span class="n">ru_inblock</span><span class="w">   </span><span class="mi">0</span><span class="w"></span>
-<span class="n">ru_oublock</span><span class="w">   </span><span class="mi">8</span><span class="w"></span>
-<span class="n">ru_msgsnd</span><span class="w">    </span><span class="mi">0</span><span class="w"></span>
-<span class="n">ru_msgrcv</span><span class="w">    </span><span class="mi">0</span><span class="w"></span>
-<span class="n">ru_nsignals</span><span class="w">  </span><span class="mi">0</span><span class="w"></span>
-<span class="n">ru_nvcsw</span><span class="w">     </span><span class="mi">13</span><span class="w"></span>
-<span class="n">ru_nivcsw</span><span class="w">    </span><span class="mi">1</span><span class="w"></span>
-<span class="n">wallclock</span><span class="w">    </span><span class="mf">3.768</span><span class="w"></span>
-<span class="n">cpu</span><span class="w">          </span><span class="mf">0.022</span><span class="w"></span>
-<span class="n">mem</span><span class="w">          </span><span class="mf">0.000</span><span class="w"></span>
-<span class="n">io</span><span class="w">           </span><span class="mf">0.000</span><span class="w"></span>
-<span class="n">iow</span><span class="w">          </span><span class="mf">0.000</span><span class="w"></span>
-<span class="n">ioops</span><span class="w">        </span><span class="mi">0</span><span class="w"></span>
-<span class="n">maxvmem</span><span class="w">      </span><span class="mf">0.000</span><span class="w"></span>
-<span class="n">maxrss</span><span class="w">       </span><span class="mf">0.000</span><span class="w"></span>
-<span class="n">maxpss</span><span class="w">       </span><span class="mf">0.000</span><span class="w"></span>
-<span class="n">arid</span><span class="w">         </span><span class="n">undefined</span><span class="w"></span>
-<span class="n">jc_name</span><span class="w">      </span><span class="k">NONE</span><span class="w"></span>
-</pre></div>
+<div class="codehilite"><pre><span></span><code><span class="err">[username@es1 ~]$ qacct -j 12345</span>
+<span class="err">==============================================================</span>
+<span class="err">qname        gpu</span>
+<span class="err">hostname     g0001</span>
+<span class="err">group        group </span>
+<span class="err">owner        username</span>
+<span class="err">project      group </span>
+<span class="err">department   group</span>
+<span class="err">jobname      run.sh</span>
+<span class="err">jobnumber    12345</span>
+<span class="err">taskid       undefined</span>
+<span class="err">account      username</span>
+<span class="err">priority     0</span>
+<span class="err">cwd          NONE</span>
+<span class="err">submit_host  es1.abci.local</span>
+<span class="err">submit_cmd   /bb/system/uge/latest/bin/lx-amd64/qsub -P username -l h_rt=600 -l rt_F=1</span>
+<span class="err">qsub_time    07/01/2018 11:55:14.706</span>
+<span class="err">start_time   07/01/2018 11:55:18.170</span>
+<span class="err">end_time     07/01/2018 11:55:18.190</span>
+<span class="err">granted_pe   perack17</span>
+<span class="err">slots        80</span>
+<span class="err">failed       0</span>
+<span class="err">deleted_by   NONE</span>
+<span class="err">exit_status  0</span>
+<span class="err">ru_wallclock 0.020</span>
+<span class="err">ru_utime     0.010</span>
+<span class="err">ru_stime     0.013</span>
+<span class="err">ru_maxrss    6480</span>
+<span class="err">ru_ixrss     0</span>
+<span class="err">ru_ismrss    0</span>
+<span class="err">ru_idrss     0</span>
+<span class="err">ru_isrss     0</span>
+<span class="err">ru_minflt    1407</span>
+<span class="err">ru_majflt    0</span>
+<span class="err">ru_nswap     0</span>
+<span class="err">ru_inblock   0</span>
+<span class="err">ru_oublock   8</span>
+<span class="err">ru_msgsnd    0</span>
+<span class="err">ru_msgrcv    0</span>
+<span class="err">ru_nsignals  0</span>
+<span class="err">ru_nvcsw     13</span>
+<span class="err">ru_nivcsw    1</span>
+<span class="err">wallclock    3.768</span>
+<span class="err">cpu          0.022</span>
+<span class="err">mem          0.000</span>
+<span class="err">io           0.000</span>
+<span class="err">iow          0.000</span>
+<span class="err">ioops        0</span>
+<span class="err">maxvmem      0.000</span>
+<span class="err">maxrss       0.000</span>
+<span class="err">maxpss       0.000</span>
+<span class="err">arid         undefined</span>
+<span class="err">jc_name      NONE</span>
+</code></pre></div>
 
 
 <p>The major fields of accounting information are follows.
@@ -908,8 +908,8 @@ For more detail, use <code>man sge_accounting</code> command.</p>
 <p>Making reservation of compute node is permitted to a responsible person or a manager.</p>
 </div>
 <p>To make a reservation compute node, use <code>qrsub</code> command or the ABCI User Portal .</p>
-<div class="codehilite"><pre><span></span>$ qrsub options
-</pre></div>
+<div class="codehilite"><pre><span></span><code>$ qrsub options
+</code></pre></div>
 
 
 <table>
@@ -947,20 +947,20 @@ For more detail, use <code>man sge_accounting</code> command.</p>
 </tbody>
 </table>
 <p>Example) Make a reservation 4 compute nodes from 2018/07/05 to 1 week (7 days)</p>
-<div class="codehilite"><pre><span></span><span class="o">[</span><span class="n">username@es1 ~</span><span class="o">]</span><span class="err">$</span><span class="w"> </span><span class="n">qrsub</span><span class="w"> </span><span class="o">-</span><span class="n">a</span><span class="w"> </span><span class="mi">20180705</span><span class="w"> </span><span class="o">-</span><span class="n">d</span><span class="w"> </span><span class="mi">7</span><span class="w"> </span><span class="o">-</span><span class="n">g</span><span class="w"> </span><span class="n">gxa50001</span><span class="w"> </span><span class="o">-</span><span class="n">n</span><span class="w"> </span><span class="mi">4</span><span class="w"> </span><span class="o">-</span><span class="n">N</span><span class="w"> </span><span class="ss">&quot;Reserve_for_AI&quot;</span><span class="w"></span>
-<span class="n">Your</span><span class="w"> </span><span class="n">advance</span><span class="w"> </span><span class="n">reservation</span><span class="w"> </span><span class="mi">12345</span><span class="w"> </span><span class="n">has</span><span class="w"> </span><span class="n">been</span><span class="w"> </span><span class="n">granted</span><span class="w"></span>
-</pre></div>
+<div class="codehilite"><pre><span></span><code><span class="err">[username@es1 ~]$ qrsub -a 20180705 -d 7 -g gxa50001 -n 4 -N &quot;Reserve_for_AI&quot;</span>
+<span class="err">Your advance reservation 12345 has been granted</span>
+</code></pre></div>
 
 
 <p>The ABCI points are consumed when complete reservation.</p>
 <h3 id="show-the-status-of-reservations">3.6.2. Show the status of reservations</h3>
 <p>To show the current status of reservations, use the <code>qrstat</code> command or the ABCI User Portal.</p>
 <p>Example)</p>
-<div class="codehilite"><pre><span></span>[<span class="nv">username</span>@<span class="nv">es1</span> <span class="o">~</span>]$ <span class="nv">qrstat</span>
-<span class="nv">ar</span><span class="o">-</span><span class="nv">id</span>      <span class="nv">name</span>       <span class="nv">owner</span>        <span class="nv">state</span> <span class="nv">start</span> <span class="nv">at</span>             <span class="k">end</span> <span class="nv">at</span>               <span class="nv">duration</span>    <span class="nv">sr</span>
-<span class="o">----------------------------------------------------------------------------------------------------</span>
-     <span class="mi">12345</span> <span class="nv">Reserve_fo</span> <span class="nv">root</span>         <span class="nv">w</span>     <span class="mi">07</span><span class="o">/</span><span class="mi">05</span><span class="o">/</span><span class="mi">2018</span> <span class="mi">10</span>:<span class="mi">00</span>:<span class="mi">00</span>  <span class="mi">07</span><span class="o">/</span><span class="mi">12</span><span class="o">/</span><span class="mi">2018</span> <span class="mi">09</span>:<span class="mi">30</span>:<span class="mi">00</span>  <span class="mi">167</span>:<span class="mi">30</span>:<span class="mi">00</span>    <span class="nv">false</span>
-</pre></div>
+<div class="codehilite"><pre><span></span><code><span class="err">[username@es1 ~]$ qrstat</span>
+<span class="err">ar-id      name       owner        state start at             end at               duration    sr</span>
+<span class="err">----------------------------------------------------------------------------------------------------</span>
+<span class="err">     12345 Reserve_fo root         w     07/05/2018 10:00:00  07/12/2018 09:30:00  167:30:00    false</span>
+</code></pre></div>
 
 
 <table>
@@ -1006,11 +1006,11 @@ For more detail, use <code>man sge_accounting</code> command.</p>
 </tbody>
 </table>
 <p>If you want to show the number of nodes that can be reserved, you need to access User Portal, or use<code>qrstat</code> command with <code>--available</code> option.</p>
-<div class="codehilite"><pre><span></span><span class="o">[</span><span class="n">username@es1 ~</span><span class="o">]</span><span class="err">$</span><span class="w"> </span><span class="n">qrstat</span><span class="w"> </span><span class="c1">--available</span>
-<span class="mi">06</span><span class="o">/</span><span class="mi">27</span><span class="o">/</span><span class="mi">2018</span><span class="w">  </span><span class="mi">441</span><span class="w"></span>
-<span class="mi">07</span><span class="o">/</span><span class="mi">05</span><span class="o">/</span><span class="mi">2018</span><span class="w">  </span><span class="mi">432</span><span class="w"></span>
-<span class="mi">07</span><span class="o">/</span><span class="mi">06</span><span class="o">/</span><span class="mi">2018</span><span class="w">  </span><span class="mi">434</span><span class="w"></span>
-</pre></div>
+<div class="codehilite"><pre><span></span><code><span class="err">[username@es1 ~]$ qrstat --available</span>
+<span class="err">06/27/2018  441</span>
+<span class="err">07/05/2018  432</span>
+<span class="err">07/06/2018  434</span>
+</code></pre></div>
 
 
 <div class="admonition note">
@@ -1024,5 +1024,5 @@ For more detail, use <code>man sge_accounting</code> command.</p>
 </div>
 <p>To cancel a reservation, use the <code>qrdel</code> command or the ABCI User Portal.</p>
 <p>Example) Cancel a reservation</p>
-<div class="codehilite"><pre><span></span><span class="o">[</span><span class="n">username@es1 ~</span><span class="o">]</span><span class="err">$</span><span class="w"> </span><span class="n">qrdel</span><span class="w"> </span><span class="mi">12345</span><span class="w"></span>
-</pre></div></article></div></div></main><footer class="md-footer"><div class="md-footer-nav"><nav class="md-footer-nav__inner md-grid"><a href="../02/" title="2. ABCI System User Environment" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev"><div class="md-flex__cell md-flex__cell--shrink"><i class="md-icon md-icon--arrow-back md-footer-nav__button"></i></div><div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title"><span class="md-flex__ellipsis"><span class="md-footer-nav__direction">Previous</span>2. ABCI System User Environment</span></div></a><a href="../04/" title="4. Storage" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next"><div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title"><span class="md-flex__ellipsis"><span class="md-footer-nav__direction">Next</span>4. Storage</span></div><div class="md-flex__cell md-flex__cell--shrink"><i class="md-icon md-icon--arrow-forward md-footer-nav__button"></i></div></a></nav></div><div class="md-footer-meta md-typeset"><div class="md-footer-meta__inner md-grid"><div class="md-footer-copyright"><div class="md-footer-copyright__highlight">Copyright &copy; 2018 National Institute of Advanced Industrial Science and Technology (AIST)</div>powered by <a href="https://www.mkdocs.org">MkDocs</a> and <a href="https://squidfunk.github.io/mkdocs-material/">Material for MkDocs</a></div></div></div></footer></div><script src="../assets/javascripts/application.b260a35d.js"></script><script>app.initialize({version:"1.0.4",url:{base:".."}})</script></body></html>
+<div class="codehilite"><pre><span></span><code><span class="err">[username@es1 ~]$ qrdel 12345</span>
+</code></pre></div></article></div></div></main><footer class="md-footer"><div class="md-footer-nav"><nav class="md-footer-nav__inner md-grid"><a href="../02/" title="2. ABCI System User Environment" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev"><div class="md-flex__cell md-flex__cell--shrink"><i class="md-icon md-icon--arrow-back md-footer-nav__button"></i></div><div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title"><span class="md-flex__ellipsis"><span class="md-footer-nav__direction">Previous</span>2. ABCI System User Environment</span></div></a><a href="../04/" title="4. Storage" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next"><div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title"><span class="md-flex__ellipsis"><span class="md-footer-nav__direction">Next</span>4. Storage</span></div><div class="md-flex__cell md-flex__cell--shrink"><i class="md-icon md-icon--arrow-forward md-footer-nav__button"></i></div></a></nav></div><div class="md-footer-meta md-typeset"><div class="md-footer-meta__inner md-grid"><div class="md-footer-copyright"><div class="md-footer-copyright__highlight">Copyright &copy; 2018 National Institute of Advanced Industrial Science and Technology (AIST)</div>powered by <a href="https://www.mkdocs.org">MkDocs</a> and <a href="https://squidfunk.github.io/mkdocs-material/">Material for MkDocs</a></div></div></div></footer></div><script src="../assets/javascripts/application.b260a35d.js"></script><script>app.initialize({version:"1.1",url:{base:".."}})</script></body></html>

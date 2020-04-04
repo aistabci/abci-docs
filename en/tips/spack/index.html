@@ -1,4 +1,4 @@
-<!doctype html><html lang="en" class="no-js"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta http-equiv="x-ua-compatible" content="ie=edge"><meta name="description" content="ABCI Users Guide, English version"><link rel="canonical" href="https://docs.abci.ai/en/tips/spack/"><meta name="author" content="AIST"><meta name="lang:clipboard.copy" content="Copy to clipboard"><meta name="lang:clipboard.copied" content="Copied to clipboard"><meta name="lang:search.language" content="en"><meta name="lang:search.pipeline.stopwords" content="True"><meta name="lang:search.pipeline.trimmer" content="True"><meta name="lang:search.result.none" content="No matching documents"><meta name="lang:search.result.one" content="1 matching document"><meta name="lang:search.result.other" content="# matching documents"><meta name="lang:search.tokenizer" content="[\s\-]+"><link rel="shortcut icon" href="../../assets/images/favicon.png"><meta name="generator" content="mkdocs-1.0.4, mkdocs-material-4.3.1"><title>Spack - ABCI Users Guide</title><link rel="stylesheet" href="../../assets/stylesheets/application.4031d38b.css"><link rel="stylesheet" href="../../assets/stylesheets/application-palette.224b79ff.css"><meta name="theme-color" content="#ef5350"><script src="../../assets/javascripts/modernizr.74668098.js"></script><link href="https://fonts.gstatic.com" rel="preconnect" crossorigin><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700|Roboto+Mono&display=swap"><style>body,input{font-family:"Roboto","Helvetica Neue",Helvetica,Arial,sans-serif}code,kbd,pre{font-family:"Roboto Mono","Courier New",Courier,monospace}</style><link rel="stylesheet" href="../../assets/fonts/material-icons.css"><script>window.ga = window.ga || function() {
+<!doctype html><html lang="en" class="no-js"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta http-equiv="x-ua-compatible" content="ie=edge"><meta name="description" content="ABCI Users Guide, English version"><link rel="canonical" href="https://docs.abci.ai/en/tips/spack/"><meta name="author" content="AIST"><meta name="lang:clipboard.copy" content="Copy to clipboard"><meta name="lang:clipboard.copied" content="Copied to clipboard"><meta name="lang:search.language" content="en"><meta name="lang:search.pipeline.stopwords" content="True"><meta name="lang:search.pipeline.trimmer" content="True"><meta name="lang:search.result.none" content="No matching documents"><meta name="lang:search.result.one" content="1 matching document"><meta name="lang:search.result.other" content="# matching documents"><meta name="lang:search.tokenizer" content="[\s\-]+"><link rel="shortcut icon" href="../../assets/images/favicon.png"><meta name="generator" content="mkdocs-1.1, mkdocs-material-4.3.1"><title>Spack - ABCI Users Guide</title><link rel="stylesheet" href="../../assets/stylesheets/application.4031d38b.css"><link rel="stylesheet" href="../../assets/stylesheets/application-palette.224b79ff.css"><meta name="theme-color" content="#ef5350"><script src="../../assets/javascripts/modernizr.74668098.js"></script><link href="https://fonts.gstatic.com" rel="preconnect" crossorigin><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700|Roboto+Mono&display=swap"><style>body,input{font-family:"Roboto","Helvetica Neue",Helvetica,Arial,sans-serif}code,kbd,pre{font-family:"Roboto Mono","Courier New",Courier,monospace}</style><link rel="stylesheet" href="../../assets/fonts/material-icons.css"><script>window.ga = window.ga || function() {
     (ga.q = ga.q || []).push(arguments)
   }
   ga.l = +new Date
@@ -33,15 +33,15 @@ Manage software installed by Sapck by yourself, for example, by uninstalling unu
 <h2 id="setup-spack">Setup Spack</h2>
 <h3 id="install">Install</h3>
 <p>You can install Spack by cloning from GitHub and checking out the version you want to use.</p>
-<div class="codehilite"><pre><span></span><span class="o">[</span><span class="n">username@es1 ~</span><span class="o">]</span><span class="err">$</span><span class="w"> </span><span class="n">git</span><span class="w"> </span><span class="n">clone</span><span class="w"> </span><span class="nl">https</span><span class="p">:</span><span class="o">//</span><span class="n">github</span><span class="p">.</span><span class="n">com</span><span class="o">/</span><span class="n">spack</span><span class="o">/</span><span class="n">spack</span><span class="p">.</span><span class="n">git</span><span class="w"></span>
-<span class="o">[</span><span class="n">username@es1 ~</span><span class="o">]</span><span class="err">$</span><span class="w"> </span><span class="n">cd</span><span class="w"> </span><span class="p">.</span><span class="o">/</span><span class="n">spack</span><span class="w"></span>
-<span class="o">[</span><span class="n">username@es1 ~/spack</span><span class="o">]</span><span class="err">$</span><span class="w"> </span><span class="n">git</span><span class="w"> </span><span class="n">checkout</span><span class="w"> </span><span class="n">v0</span><span class="mf">.13.3</span><span class="w"></span>
-</pre></div>
+<div class="codehilite"><pre><span></span><code><span class="err">[username@es1 ~]$ git clone https://github.com/spack/spack.git</span>
+<span class="err">[username@es1 ~]$ cd ./spack</span>
+<span class="err">[username@es1 ~/spack]$ git checkout v0.13.3</span>
+</code></pre></div>
 
 
 <p>After that, you can use Spack by loading a setup shell script.</p>
-<div class="codehilite"><pre><span></span>[username@es1 ~]$ source <span class="cp">${</span><span class="n">HOME</span><span class="cp">}</span>/spack/share/spack/setup-env.sh
-</pre></div>
+<div class="codehilite"><pre><span></span><code>[username@es1 ~]$ source <span class="cp">${</span><span class="n">HOME</span><span class="cp">}</span>/spack/share/spack/setup-env.sh
+</code></pre></div>
 
 
 <h3 id="configuration-for-abci">Configuration for ABCI</h3>
@@ -51,22 +51,22 @@ It can be done by <code>spack compiler find</code> command.</p>
 <p>Here, we assume that you register GCC 4.4.7, 4.8.5 and 7.4.0.
 Spack automatically finds GCC 4.4.7 and 4.8.5 because they are installed in the default path (/usr/bin).
 You have to do <code>module load</code> of GCC 7.4.0 because it is provided as a software module.</p>
-<div class="codehilite"><pre><span></span><span class="o">[</span><span class="n">username@es1 ~</span><span class="o">]</span><span class="err">$</span><span class="w"> </span><span class="k">module</span><span class="w"> </span><span class="k">load</span><span class="w"> </span><span class="n">gcc</span><span class="o">/</span><span class="mf">7.4.0</span><span class="w"></span>
-<span class="o">[</span><span class="n">username@es1 ~</span><span class="o">]</span><span class="err">$</span><span class="w"> </span><span class="n">spack</span><span class="w"> </span><span class="n">compiler</span><span class="w"> </span><span class="n">find</span><span class="w"></span>
-<span class="o">[</span><span class="n">username@es1 ~</span><span class="o">]</span><span class="err">$</span><span class="w"> </span><span class="k">module</span><span class="w"> </span><span class="n">purge</span><span class="w"></span>
-</pre></div>
+<div class="codehilite"><pre><span></span><code><span class="err">[username@es1 ~]$ module load gcc/7.4.0</span>
+<span class="err">[username@es1 ~]$ spack compiler find</span>
+<span class="err">[username@es1 ~]$ module purge</span>
+</code></pre></div>
 
 
 <p>You can confirm the registration completion if you see the following output when you execute <code>spack compiler list</code> command which shows the registered compilers.</p>
-<div class="codehilite"><pre><span></span><span class="p">[</span><span class="n">username</span><span class="p">@</span><span class="n">es1</span> <span class="o">~</span><span class="p">]</span><span class="err">$</span> <span class="n">spack</span> <span class="n">compiler</span> <span class="n">list</span>
+<div class="codehilite"><pre><span></span><code><span class="p">[</span><span class="n">username</span><span class="p">@</span><span class="n">es1</span> <span class="o">~</span><span class="p">]</span><span class="err">$</span> <span class="n">spack</span> <span class="n">compiler</span> <span class="n">list</span>
 <span class="o">==&gt;</span> <span class="n">Available</span> <span class="n">compilers</span>
 <span class="o">--</span> <span class="n">gcc</span> <span class="n">centos7</span><span class="o">-</span><span class="n">x86_64</span> <span class="o">-------------------------------------------</span>
 <span class="n">gcc</span><span class="mf">@7.4.0</span>  <span class="n">gcc</span><span class="mf">@4.8.5</span>  <span class="n">gcc</span><span class="mf">@4.4.7</span>
-</pre></div>
+</code></pre></div>
 
 
 <p>Edit the compiler configuration file <code>$HOME/.spack/linux/compilers.yaml</code> to set rpath for GCC 7.4.0.</p>
-<div class="codehilite"><pre><span></span><span class="p">(</span><span class="n">snip</span><span class="p">)</span>
+<div class="codehilite"><pre><span></span><code><span class="p">(</span><span class="n">snip</span><span class="p">)</span>
 <span class="o">-</span> <span class="nl">compiler</span><span class="p">:</span>
     <span class="nl">paths</span><span class="p">:</span>
       <span class="nl">cc</span><span class="p">:</span> <span class="o">/</span><span class="n">apps</span><span class="o">/</span><span class="n">gcc</span><span class="o">/</span><span class="mf">7.4.0</span><span class="o">/</span><span class="n">bin</span><span class="o">/</span><span class="n">gcc</span>
@@ -82,15 +82,15 @@ You have to do <code>module load</code> of GCC 7.4.0 because it is provided as a
     <span class="nl">flags</span><span class="p">:</span> <span class="p">{}</span>
     <span class="nl">spec</span><span class="p">:</span> <span class="n">gcc</span><span class="mf">@7.4.0</span>
 <span class="p">(</span><span class="n">snip</span><span class="p">)</span>
-</pre></div>
+</code></pre></div>
 
 
 <p>The default compiler can be specified in the configuration file <code>$HOME/.spack/linux/packages.yaml</code>.
 Add the following lines to the file to specify GCC 4.8.5 as the default compiler.</p>
-<div class="codehilite"><pre><span></span><span class="nl">packages</span><span class="p">:</span>
+<div class="codehilite"><pre><span></span><code><span class="nl">packages</span><span class="p">:</span>
   <span class="nl">all</span><span class="p">:</span>
     <span class="nl">compiler</span><span class="p">:</span> <span class="p">[</span><span class="n">gcc</span><span class="mf">@4.8.5</span><span class="p">]</span>
-</pre></div>
+</code></pre></div>
 
 
 <h4 id="adding-abci-software">Adding ABCI Software</h4>
@@ -99,7 +99,7 @@ Spack, by default, installs another copies of software which is already supporte
 As it is a waste of disk space, we recommend to configure Spack to <em>refer to</em> software supported by ABCI.</p>
 <p>Software referred by Spack can be defined in the configuration file <code>$HOME/.spack/linux/packages.yaml</code>.
 Create the file by the following contents (it includes the default compiler configuration).</p>
-<div class="codehilite"><pre><span></span><span class="nl">packages</span><span class="p">:</span>
+<div class="codehilite"><pre><span></span><code><span class="nl">packages</span><span class="p">:</span>
   <span class="nl">cuda</span><span class="p">:</span>
     <span class="nl">paths</span><span class="p">:</span>
       <span class="n">cuda</span><span class="p">@</span><span class="n">abci</span><span class="o">-</span><span class="mf">8.0.61.2</span><span class="o">:</span>   <span class="o">/</span><span class="n">apps</span><span class="o">/</span><span class="n">cuda</span><span class="o">/</span><span class="mf">8.0.61.2</span>
@@ -123,7 +123,7 @@ Create the file by the following contents (it includes the default compiler conf
       <span class="n">cmake</span><span class="p">@</span><span class="n">abci</span><span class="o">-</span><span class="mf">3.11.4</span><span class="o">:</span> <span class="o">/</span><span class="n">apps</span><span class="o">/</span><span class="n">cmake</span><span class="o">/</span><span class="mf">3.11.4</span>
   <span class="nl">all</span><span class="p">:</span>
     <span class="nl">compiler</span><span class="p">:</span> <span class="p">[</span><span class="n">gcc</span><span class="mf">@4.8.5</span><span class="p">]</span>
-</pre></div>
+</code></pre></div>
 
 
 <p>The above example configures CUDA, OpenMPI, MVAPICH and CMake.
@@ -136,15 +136,15 @@ If you let Spack install versions of CUDA which are not supported by ABCI, remov
 For detail, please refer to <a href="https://spack.readthedocs.io/en/latest/basic_usage.html">the official document</a>.</p>
 <h3 id="compiler-operations">Compiler Operations</h3>
 <p><code>compiler list</code> sub-command shows the list of compilers registered to Spack.</p>
-<div class="codehilite"><pre><span></span><span class="p">[</span><span class="n">username</span><span class="p">@</span><span class="n">es1</span> <span class="o">~</span><span class="p">]</span><span class="err">$</span> <span class="n">spack</span> <span class="n">compiler</span> <span class="n">list</span>
+<div class="codehilite"><pre><span></span><code><span class="p">[</span><span class="n">username</span><span class="p">@</span><span class="n">es1</span> <span class="o">~</span><span class="p">]</span><span class="err">$</span> <span class="n">spack</span> <span class="n">compiler</span> <span class="n">list</span>
 <span class="o">==&gt;</span> <span class="n">Available</span> <span class="n">compilers</span>
 <span class="o">--</span> <span class="n">gcc</span> <span class="n">centos7</span><span class="o">-</span><span class="n">x86_64</span> <span class="o">-------------------------------------------</span>
 <span class="n">gcc</span><span class="mf">@7.4.0</span>  <span class="n">gcc</span><span class="mf">@4.8.5</span>  <span class="n">gcc</span><span class="mf">@4.4.7</span>
-</pre></div>
+</code></pre></div>
 
 
 <p><code>compiler info</code> sub-command shows the detail of a specific compiler.</p>
-<div class="codehilite"><pre><span></span><span class="p">[</span><span class="n">username</span><span class="p">@</span><span class="n">es1</span> <span class="o">~</span><span class="p">]</span><span class="err">$</span> <span class="n">spack</span> <span class="n">compiler</span> <span class="n">info</span> <span class="n">gcc</span><span class="mf">@4.8.5</span>
+<div class="codehilite"><pre><span></span><code><span class="p">[</span><span class="n">username</span><span class="p">@</span><span class="n">es1</span> <span class="o">~</span><span class="p">]</span><span class="err">$</span> <span class="n">spack</span> <span class="n">compiler</span> <span class="n">info</span> <span class="n">gcc</span><span class="mf">@4.8.5</span>
 <span class="n">gcc</span><span class="mf">@4.8.5</span><span class="o">:</span>
     <span class="nl">paths</span><span class="p">:</span>
         <span class="n">cc</span> <span class="o">=</span> <span class="o">/</span><span class="n">usr</span><span class="o">/</span><span class="n">bin</span><span class="o">/</span><span class="n">gcc</span>
@@ -153,79 +153,79 @@ For detail, please refer to <a href="https://spack.readthedocs.io/en/latest/basi
         <span class="n">fc</span> <span class="o">=</span> <span class="o">/</span><span class="n">usr</span><span class="o">/</span><span class="n">bin</span><span class="o">/</span><span class="n">gfortran</span>
     <span class="n">modules</span>  <span class="o">=</span> <span class="p">[]</span>
     <span class="n">operating</span> <span class="n">system</span>  <span class="o">=</span> <span class="n">centos7</span>
-</pre></div>
+</code></pre></div>
 
 
 <h3 id="software-management-operations">Software Management Operations</h3>
 <h4 id="install">Install</h4>
 <p>The default version of OpenMPI can be installed as follows.
 Refer to <a href="#cuda-aware-openmpi">Example Software Installation</a> for options.</p>
-<div class="codehilite"><pre><span></span><span class="o">[</span><span class="n">username@es1 ~</span><span class="o">]</span><span class="err">$</span><span class="w"> </span><span class="n">spack</span><span class="w"> </span><span class="n">install</span><span class="w"> </span><span class="n">openmpi</span><span class="w"> </span><span class="n">schedulers</span><span class="o">=</span><span class="n">sge</span><span class="w"> </span><span class="n">fabrics</span><span class="o">=</span><span class="n">auto</span><span class="w"></span>
-</pre></div>
+<div class="codehilite"><pre><span></span><code><span class="err">[username@es1 ~]$ spack install openmpi schedulers=sge fabrics=auto</span>
+</code></pre></div>
 
 
 <p>If you want to install a specific version, use <code>@</code> to specify the version.</p>
-<div class="codehilite"><pre><span></span><span class="p">[</span><span class="n">username</span><span class="p">@</span><span class="n">es1</span> <span class="o">~</span><span class="p">]</span><span class="err">$</span> <span class="n">spack</span> <span class="n">install</span> <span class="n">openmpi</span><span class="mf">@3.1.4</span> <span class="n">schedulers</span><span class="o">=</span><span class="n">sge</span> <span class="n">fabrics</span><span class="o">=</span><span class="k">auto</span>
-</pre></div>
+<div class="codehilite"><pre><span></span><code><span class="p">[</span><span class="n">username</span><span class="p">@</span><span class="n">es1</span> <span class="o">~</span><span class="p">]</span><span class="err">$</span> <span class="n">spack</span> <span class="n">install</span> <span class="n">openmpi</span><span class="mf">@3.1.4</span> <span class="n">schedulers</span><span class="o">=</span><span class="n">sge</span> <span class="n">fabrics</span><span class="o">=</span><span class="k">auto</span>
+</code></pre></div>
 
 
 <p>The compiler to build the software can be specified by <code>%</code>.
 The following example use GCC 7.4.0 for building OpenMPI.</p>
-<div class="codehilite"><pre><span></span><span class="p">[</span><span class="n">username</span><span class="p">@</span><span class="n">es1</span> <span class="o">~</span><span class="p">]</span><span class="err">$</span> <span class="n">spack</span> <span class="n">install</span> <span class="n">openmpi</span><span class="mf">@3.1.4</span> <span class="o">%</span><span class="n">gcc</span><span class="mf">@7.4.0</span> <span class="n">schedulers</span><span class="o">=</span><span class="n">sge</span> <span class="n">fabrics</span><span class="o">=</span><span class="k">auto</span>
-</pre></div>
+<div class="codehilite"><pre><span></span><code><span class="p">[</span><span class="n">username</span><span class="p">@</span><span class="n">es1</span> <span class="o">~</span><span class="p">]</span><span class="err">$</span> <span class="n">spack</span> <span class="n">install</span> <span class="n">openmpi</span><span class="mf">@3.1.4</span> <span class="o">%</span><span class="n">gcc</span><span class="mf">@7.4.0</span> <span class="n">schedulers</span><span class="o">=</span><span class="n">sge</span> <span class="n">fabrics</span><span class="o">=</span><span class="k">auto</span>
+</code></pre></div>
 
 
 <h4 id="uninstall">Uninstall</h4>
 <p><code>uninstall</code> sub-command uninstalls installed software.
 As with installation, you can uninstall software by specifying a version.</p>
-<div class="codehilite"><pre><span></span><span class="o">[</span><span class="n">username@es1 ~</span><span class="o">]</span><span class="err">$</span><span class="w"> </span><span class="n">spack</span><span class="w"> </span><span class="n">uninstall</span><span class="w"> </span><span class="n">openmpi</span><span class="w"></span>
-</pre></div>
+<div class="codehilite"><pre><span></span><code><span class="err">[username@es1 ~]$ spack uninstall openmpi</span>
+</code></pre></div>
 
 
 <p>Each software package installed by Spack has a hash, and you can also uninstall a software by specifying a hash.
 Specify <code>/</code> followed by a hash.
 You can get a hash of an installed software by <code>find</code> sub-command shown in <a href="#information">Information</a>.</p>
-<div class="codehilite"><pre><span></span><span class="o">[</span><span class="n">username@es1 ~</span><span class="o">]</span><span class="err">$</span><span class="w"> </span><span class="n">spack</span><span class="w"> </span><span class="n">uninstall</span><span class="w"> </span><span class="o">/</span><span class="n">ffwtsvk</span><span class="w"></span>
-</pre></div>
+<div class="codehilite"><pre><span></span><code><span class="err">[username@es1 ~]$ spack uninstall /ffwtsvk</span>
+</code></pre></div>
 
 
 <p>To uninstall all the installed software, type as follows.</p>
-<div class="codehilite"><pre><span></span><span class="o">[</span><span class="n">username@es1 ~</span><span class="o">]</span><span class="err">$</span><span class="w"> </span><span class="n">spack</span><span class="w"> </span><span class="n">uninstall</span><span class="w"> </span><span class="c1">--all</span>
-</pre></div>
+<div class="codehilite"><pre><span></span><code><span class="err">[username@es1 ~]$ spack uninstall --all</span>
+</code></pre></div>
 
 
 <h4 id="information">Information</h4>
 <p><code>list</code> sub-command shows all software which can be installed by Spack.</p>
-<div class="codehilite"><pre><span></span><span class="o">[</span><span class="n">username@es1 ~</span><span class="o">]</span><span class="err">$</span><span class="w"> </span><span class="n">spack</span><span class="w"> </span><span class="n">list</span><span class="w"></span>
-<span class="n">abinit</span><span class="w"></span>
-<span class="n">abyss</span><span class="w"></span>
-<span class="p">(</span><span class="n">snip</span><span class="p">)</span><span class="w"></span>
-</pre></div>
+<div class="codehilite"><pre><span></span><code><span class="err">[username@es1 ~]$ spack list</span>
+<span class="err">abinit</span>
+<span class="err">abyss</span>
+<span class="err">(snip)</span>
+</code></pre></div>
 
 
 <p>By specifying a keyword, it only shows software related to the keyword.
 The following example uses <code>mpi</code> as the keyword.</p>
-<div class="codehilite"><pre><span></span><span class="o">[</span><span class="n">username@es1 ~</span><span class="o">]</span><span class="err">$</span><span class="w"> </span><span class="n">spack</span><span class="w"> </span><span class="n">list</span><span class="w"> </span><span class="n">mpi</span><span class="w"></span>
-<span class="o">==&gt;</span><span class="w"> </span><span class="mi">21</span><span class="w"> </span><span class="n">packages</span><span class="p">.</span><span class="w"></span>
-<span class="n">compiz</span><span class="w">       </span><span class="n">mpifileutils</span><span class="w">  </span><span class="n">mpix</span><span class="o">-</span><span class="n">launch</span><span class="o">-</span><span class="n">swift</span><span class="w">  </span><span class="n">r</span><span class="o">-</span><span class="n">rmpi</span><span class="w">        </span><span class="n">vampirtrace</span><span class="w"></span>
-<span class="n">fujitsu</span><span class="o">-</span><span class="n">mpi</span><span class="w">  </span><span class="n">mpilander</span><span class="w">     </span><span class="n">openmpi</span><span class="w">            </span><span class="n">rempi</span><span class="w"></span>
-<span class="n">intel</span><span class="o">-</span><span class="n">mpi</span><span class="w">    </span><span class="n">mpileaks</span><span class="w">      </span><span class="n">pbmpi</span><span class="w">              </span><span class="n">spectrum</span><span class="o">-</span><span class="n">mpi</span><span class="w"></span>
-<span class="n">mpibash</span><span class="w">      </span><span class="n">mpip</span><span class="w">          </span><span class="n">pnmpi</span><span class="w">              </span><span class="n">sst</span><span class="o">-</span><span class="n">dumpi</span><span class="w"></span>
-<span class="n">mpich</span><span class="w">        </span><span class="n">mpir</span><span class="w">          </span><span class="n">py</span><span class="o">-</span><span class="n">mpi4py</span><span class="w">          </span><span class="n">umpire</span><span class="w"></span>
-</pre></div>
+<div class="codehilite"><pre><span></span><code><span class="err">[username@es1 ~]$ spack list mpi</span>
+<span class="err">==&gt; 21 packages.</span>
+<span class="err">compiz       mpifileutils  mpix-launch-swift  r-rmpi        vampirtrace</span>
+<span class="err">fujitsu-mpi  mpilander     openmpi            rempi</span>
+<span class="err">intel-mpi    mpileaks      pbmpi              spectrum-mpi</span>
+<span class="err">mpibash      mpip          pnmpi              sst-dumpi</span>
+<span class="err">mpich        mpir          py-mpi4py          umpire</span>
+</code></pre></div>
 
 
 <p><code>find</code> sub-command shows all the installed software.</p>
-<div class="codehilite"><pre><span></span><span class="p">[</span><span class="n">username</span><span class="p">@</span><span class="n">es1</span> <span class="o">~</span><span class="p">]</span><span class="err">$</span> <span class="n">spack</span> <span class="n">find</span>
+<div class="codehilite"><pre><span></span><code><span class="p">[</span><span class="n">username</span><span class="p">@</span><span class="n">es1</span> <span class="o">~</span><span class="p">]</span><span class="err">$</span> <span class="n">spack</span> <span class="n">find</span>
 <span class="o">==&gt;</span> <span class="mi">49</span> <span class="n">installed</span> <span class="n">packages</span>
 <span class="o">--</span> <span class="n">linux</span><span class="o">-</span><span class="n">centos7</span><span class="o">-</span><span class="n">haswell</span> <span class="o">/</span> <span class="n">gcc</span><span class="mf">@4.8.5</span> <span class="o">----------------------------</span>
 <span class="n">autoconf</span><span class="mf">@2.69</span>    <span class="n">gdbm</span><span class="mf">@1.18.1</span>          <span class="n">libxml2</span><span class="mf">@2.9.9</span>  <span class="n">readline</span><span class="mf">@8.0</span>
 <span class="p">(</span><span class="n">snip</span><span class="p">)</span>
-</pre></div>
+</code></pre></div>
 
 
 <p>Adding <code>-dl</code> option to <code>find</code> sub-command shows hashes and dependencies of installed software.</p>
-<div class="codehilite"><pre><span></span><span class="p">[</span><span class="n">username</span><span class="p">@</span><span class="n">es1</span> <span class="o">~</span><span class="p">]</span><span class="err">$</span> <span class="n">spack</span> <span class="n">find</span> <span class="o">-</span><span class="n">dl</span> <span class="n">openmpi</span>
+<div class="codehilite"><pre><span></span><code><span class="p">[</span><span class="n">username</span><span class="p">@</span><span class="n">es1</span> <span class="o">~</span><span class="p">]</span><span class="err">$</span> <span class="n">spack</span> <span class="n">find</span> <span class="o">-</span><span class="n">dl</span> <span class="n">openmpi</span>
 <span class="o">--</span> <span class="n">linux</span><span class="o">-</span><span class="n">centos7</span><span class="o">-</span><span class="n">skylake_avx512</span> <span class="o">/</span> <span class="n">gcc</span><span class="mf">@7.4.0</span> <span class="o">---------------------</span>
 <span class="n">sif5fzv</span> <span class="n">openmpi</span><span class="mf">@3.1.4</span>
 <span class="n">xqsp4xn</span>     <span class="n">hwloc</span><span class="mf">@1.11.11</span>
@@ -235,50 +235,50 @@ The following example uses <code>mpi</code> as the keyword.</p>
 <span class="n">y6e4zi2</span>             <span class="n">xz</span><span class="mf">@5.2.4</span>
 <span class="n">kv37bl2</span>             <span class="n">zlib</span><span class="mf">@1.2.11</span>
 <span class="n">onnjyv2</span>         <span class="n">numactl</span><span class="mf">@2.0.12</span>
-</pre></div>
+</code></pre></div>
 
 
 <p>To see the detail about a specific software, use <code>info</code> sub-command.</p>
-<div class="codehilite"><pre><span></span><span class="o">[</span><span class="n">username@es1 ~</span><span class="o">]</span><span class="err">$</span><span class="w"> </span><span class="n">spack</span><span class="w"> </span><span class="n">info</span><span class="w"> </span><span class="n">openmpi</span><span class="w"></span>
+<div class="codehilite"><pre><span></span><code><span class="o">[</span><span class="n">username@es1 ~</span><span class="o">]</span><span class="err">$</span><span class="w"> </span><span class="n">spack</span><span class="w"> </span><span class="n">info</span><span class="w"> </span><span class="n">openmpi</span><span class="w"></span>
 <span class="nl">AutotoolsPackage</span><span class="p">:</span><span class="w">   </span><span class="n">openmpi</span><span class="w"></span>
 
 <span class="nl">Description</span><span class="p">:</span><span class="w"></span>
 <span class="w">    </span><span class="n">An</span><span class="w"> </span><span class="k">open</span><span class="w"> </span><span class="n">source</span><span class="w"> </span><span class="n">Message</span><span class="w"> </span><span class="n">Passing</span><span class="w"> </span><span class="n">Interface</span><span class="w"> </span><span class="n">implementation</span><span class="p">.</span><span class="w"> </span><span class="n">The</span><span class="w"> </span><span class="k">Open</span><span class="w"> </span><span class="n">MPI</span><span class="w"></span>
 <span class="w">    </span><span class="n">Project</span><span class="w"> </span><span class="k">is</span><span class="w"> </span><span class="n">an</span><span class="w"> </span><span class="k">open</span><span class="w"> </span><span class="n">source</span><span class="w"> </span><span class="n">Message</span><span class="w"> </span><span class="n">Passing</span><span class="w"> </span><span class="n">Interface</span><span class="w"> </span><span class="n">implementation</span><span class="w"> </span><span class="n">that</span><span class="w"></span>
 <span class="p">(</span><span class="n">snip</span><span class="p">)</span><span class="w"></span>
-</pre></div>
+</code></pre></div>
 
 
 <p><code>versions</code> sub-command shows avaitable versions for a specific software.</p>
-<div class="codehilite"><pre><span></span><span class="o">[</span><span class="n">username@es1 ~</span><span class="o">]</span><span class="err">$</span><span class="w"> </span><span class="n">spack</span><span class="w"> </span><span class="n">versions</span><span class="w"> </span><span class="n">openmpi</span><span class="w"></span>
-<span class="o">==&gt;</span><span class="w"> </span><span class="n">Safe</span><span class="w"> </span><span class="n">versions</span><span class="w"> </span><span class="p">(</span><span class="n">already</span><span class="w"> </span><span class="n">checksummed</span><span class="p">)</span><span class="err">:</span><span class="w"></span>
-<span class="w">  </span><span class="n">develop</span><span class="w">  </span><span class="mf">3.0.3</span><span class="w">  </span><span class="mf">2.1.1</span><span class="w">   </span><span class="mf">1.10.5</span><span class="w">  </span><span class="mf">1.8.5</span><span class="w">  </span><span class="mf">1.7.2</span><span class="w">  </span><span class="mf">1.5.5</span><span class="w">  </span><span class="mf">1.4.2</span><span class="w">  </span><span class="mf">1.2.8</span><span class="w">  </span><span class="mf">1.1.5</span><span class="w"></span>
-<span class="w">  </span><span class="mf">4.0.1</span><span class="w">    </span><span class="mf">3.0.2</span><span class="w">  </span><span class="mf">2.1.0</span><span class="w">   </span><span class="mf">1.10.4</span><span class="w">  </span><span class="mf">1.8.4</span><span class="w">  </span><span class="mf">1.7.1</span><span class="w">  </span><span class="mf">1.5.4</span><span class="w">  </span><span class="mf">1.4.1</span><span class="w">  </span><span class="mf">1.2.7</span><span class="w">  </span><span class="mf">1.1.4</span><span class="w"></span>
-<span class="w">  </span><span class="mf">4.0.0</span><span class="w">    </span><span class="mf">3.0.1</span><span class="w">  </span><span class="mf">2.0.4</span><span class="w">   </span><span class="mf">1.10.3</span><span class="w">  </span><span class="mf">1.8.3</span><span class="w">  </span><span class="mf">1.7</span><span class="w">    </span><span class="mf">1.5.3</span><span class="w">  </span><span class="mf">1.4</span><span class="w">    </span><span class="mf">1.2.6</span><span class="w">  </span><span class="mf">1.1.3</span><span class="w"></span>
-<span class="w">  </span><span class="mf">3.1.4</span><span class="w">    </span><span class="mf">3.0.0</span><span class="w">  </span><span class="mf">2.0.3</span><span class="w">   </span><span class="mf">1.10.2</span><span class="w">  </span><span class="mf">1.8.2</span><span class="w">  </span><span class="mf">1.6.5</span><span class="w">  </span><span class="mf">1.5.2</span><span class="w">  </span><span class="mf">1.3.4</span><span class="w">  </span><span class="mf">1.2.5</span><span class="w">  </span><span class="mf">1.1.2</span><span class="w"></span>
-<span class="w">  </span><span class="mf">3.1.3</span><span class="w">    </span><span class="mf">2.1.6</span><span class="w">  </span><span class="mf">2.0.2</span><span class="w">   </span><span class="mf">1.10.1</span><span class="w">  </span><span class="mf">1.8.1</span><span class="w">  </span><span class="mf">1.6.4</span><span class="w">  </span><span class="mf">1.5.1</span><span class="w">  </span><span class="mf">1.3.3</span><span class="w">  </span><span class="mf">1.2.4</span><span class="w">  </span><span class="mf">1.1.1</span><span class="w"></span>
-<span class="w">  </span><span class="mf">3.1.2</span><span class="w">    </span><span class="mf">2.1.5</span><span class="w">  </span><span class="mf">2.0.1</span><span class="w">   </span><span class="mf">1.10.0</span><span class="w">  </span><span class="mf">1.8</span><span class="w">    </span><span class="mf">1.6.3</span><span class="w">  </span><span class="mf">1.5</span><span class="w">    </span><span class="mf">1.3.2</span><span class="w">  </span><span class="mf">1.2.3</span><span class="w">  </span><span class="mf">1.1</span><span class="w"></span>
-<span class="w">  </span><span class="mf">3.1.1</span><span class="w">    </span><span class="mf">2.1.4</span><span class="w">  </span><span class="mf">2.0.0</span><span class="w">   </span><span class="mf">1.8.8</span><span class="w">   </span><span class="mf">1.7.5</span><span class="w">  </span><span class="mf">1.6.2</span><span class="w">  </span><span class="mf">1.4.5</span><span class="w">  </span><span class="mf">1.3.1</span><span class="w">  </span><span class="mf">1.2.2</span><span class="w">  </span><span class="mf">1.0.2</span><span class="w"></span>
-<span class="w">  </span><span class="mf">3.1.0</span><span class="w">    </span><span class="mf">2.1.3</span><span class="w">  </span><span class="mf">1.10.7</span><span class="w">  </span><span class="mf">1.8.7</span><span class="w">   </span><span class="mf">1.7.4</span><span class="w">  </span><span class="mf">1.6.1</span><span class="w">  </span><span class="mf">1.4.4</span><span class="w">  </span><span class="mf">1.3</span><span class="w">    </span><span class="mf">1.2.1</span><span class="w">  </span><span class="mf">1.0.1</span><span class="w"></span>
-<span class="w">  </span><span class="mf">3.0.4</span><span class="w">    </span><span class="mf">2.1.2</span><span class="w">  </span><span class="mf">1.10.6</span><span class="w">  </span><span class="mf">1.8.6</span><span class="w">   </span><span class="mf">1.7.3</span><span class="w">  </span><span class="mf">1.6</span><span class="w">    </span><span class="mf">1.4.3</span><span class="w">  </span><span class="mf">1.2.9</span><span class="w">  </span><span class="mf">1.2</span><span class="w">    </span><span class="mf">1.0</span><span class="w"></span>
-</pre></div>
+<div class="codehilite"><pre><span></span><code><span class="err">[username@es1 ~]$ spack versions openmpi</span>
+<span class="err">==&gt; Safe versions (already checksummed):</span>
+<span class="err">  develop  3.0.3  2.1.1   1.10.5  1.8.5  1.7.2  1.5.5  1.4.2  1.2.8  1.1.5</span>
+<span class="err">  4.0.1    3.0.2  2.1.0   1.10.4  1.8.4  1.7.1  1.5.4  1.4.1  1.2.7  1.1.4</span>
+<span class="err">  4.0.0    3.0.1  2.0.4   1.10.3  1.8.3  1.7    1.5.3  1.4    1.2.6  1.1.3</span>
+<span class="err">  3.1.4    3.0.0  2.0.3   1.10.2  1.8.2  1.6.5  1.5.2  1.3.4  1.2.5  1.1.2</span>
+<span class="err">  3.1.3    2.1.6  2.0.2   1.10.1  1.8.1  1.6.4  1.5.1  1.3.3  1.2.4  1.1.1</span>
+<span class="err">  3.1.2    2.1.5  2.0.1   1.10.0  1.8    1.6.3  1.5    1.3.2  1.2.3  1.1</span>
+<span class="err">  3.1.1    2.1.4  2.0.0   1.8.8   1.7.5  1.6.2  1.4.5  1.3.1  1.2.2  1.0.2</span>
+<span class="err">  3.1.0    2.1.3  1.10.7  1.8.7   1.7.4  1.6.1  1.4.4  1.3    1.2.1  1.0.1</span>
+<span class="err">  3.0.4    2.1.2  1.10.6  1.8.6   1.7.3  1.6    1.4.3  1.2.9  1.2    1.0</span>
+</code></pre></div>
 
 
 <h3 id="use-of-installed-software">Use of Installed Software</h3>
 <p>Software installed by Spack is automatically registered to the Environment Modules.
 As with modules provided by ABCI, the installed software can be used by loading them.</p>
-<div class="codehilite"><pre><span></span><span class="o">[</span><span class="n">username@es1 ~</span><span class="o">]</span><span class="err">$</span><span class="w"> </span><span class="k">module</span><span class="w"> </span><span class="k">load</span><span class="w"> </span><span class="n">xxxxx</span><span class="w"></span>
-</pre></div>
+<div class="codehilite"><pre><span></span><code><span class="err">[username@es1 ~]$ module load xxxxx</span>
+</code></pre></div>
 
 
 <p>To update modules of all software installed by Spack, type the following command.</p>
-<div class="codehilite"><pre><span></span><span class="o">[</span><span class="n">username@es1 ~</span><span class="o">]</span><span class="err">$</span><span class="w"> </span><span class="n">spack</span><span class="w"> </span><span class="k">module</span><span class="w"> </span><span class="n">tcl</span><span class="w"> </span><span class="n">refresh</span><span class="w"></span>
-</pre></div>
+<div class="codehilite"><pre><span></span><code><span class="err">[username@es1 ~]$ spack module tcl refresh</span>
+</code></pre></div>
 
 
 <p>To remove modules of all software installed by Spack, type the following command.</p>
-<div class="codehilite"><pre><span></span><span class="o">[</span><span class="n">username@es1 ~</span><span class="o">]</span><span class="err">$</span><span class="w"> </span><span class="n">spack</span><span class="w"> </span><span class="k">module</span><span class="w"> </span><span class="n">tcl</span><span class="w"> </span><span class="n">rm</span><span class="w"></span>
-</pre></div>
+<div class="codehilite"><pre><span></span><code><span class="err">[username@es1 ~]$ spack module tcl rm</span>
+</code></pre></div>
 
 
 <div class="admonition note">
@@ -293,14 +293,14 @@ It is easy to use Spack to install unsupported versions of CUDA-aware OpenMPI.</
 <h4 id="how-to-install">How to Install</h4>
 <p>This is an example of installing OpenMPI 3.1.1 that uses CUDA 10.1.243.
 You have to use a compute node to install it.</p>
-<div class="codehilite"><pre><span></span><span class="p">[</span><span class="n">username</span><span class="p">@</span><span class="n">g0001</span> <span class="o">~</span><span class="p">]</span><span class="err">$</span> <span class="n">spack</span> <span class="n">install</span> <span class="n">cuda</span><span class="p">@</span><span class="n">abci</span><span class="o">-</span><span class="mf">10.1.243</span>
+<div class="codehilite"><pre><span></span><code><span class="p">[</span><span class="n">username</span><span class="p">@</span><span class="n">g0001</span> <span class="o">~</span><span class="p">]</span><span class="err">$</span> <span class="n">spack</span> <span class="n">install</span> <span class="n">cuda</span><span class="p">@</span><span class="n">abci</span><span class="o">-</span><span class="mf">10.1.243</span>
 <span class="p">[</span><span class="n">username</span><span class="p">@</span><span class="n">g0001</span> <span class="o">~</span><span class="p">]</span><span class="err">$</span> <span class="n">spack</span> <span class="n">install</span> <span class="n">openmpi</span><span class="mf">@3.1.1</span> <span class="o">+</span><span class="n">cuda</span> <span class="n">schedulers</span><span class="o">=</span><span class="n">sge</span> <span class="n">fabrics</span><span class="o">=</span><span class="k">auto</span> <span class="o">^</span><span class="n">cuda</span><span class="p">@</span><span class="n">abci</span><span class="o">-</span><span class="mf">10.1.243</span>
 <span class="p">[</span><span class="n">username</span><span class="p">@</span><span class="n">g0001</span> <span class="o">~</span><span class="p">]</span><span class="err">$</span> <span class="n">spack</span> <span class="n">find</span> <span class="o">--</span><span class="n">paths</span> <span class="n">openmpi</span><span class="mf">@3.1.1</span>
 <span class="o">==&gt;</span> <span class="mi">1</span> <span class="n">installed</span> <span class="n">package</span>
 <span class="o">--</span> <span class="n">linux</span><span class="o">-</span><span class="n">centos7</span><span class="o">-</span><span class="n">haswell</span> <span class="o">/</span> <span class="n">gcc</span><span class="mf">@4.8.5</span> <span class="o">----------------------------</span>
 <span class="n">openmpi</span><span class="mf">@3.1.1</span>  <span class="err">$</span><span class="p">{</span><span class="n">SPACK_ROOT</span><span class="p">}</span><span class="o">/</span><span class="n">opt</span><span class="o">/</span><span class="n">spack</span><span class="o">/</span><span class="n">linux</span><span class="o">-</span><span class="n">centos7</span><span class="o">-</span><span class="n">haswell</span><span class="o">/</span><span class="n">gcc</span><span class="o">-</span><span class="mf">4.8.5</span><span class="o">/</span><span class="n">openmpi</span><span class="o">-</span><span class="mf">3.1.1</span><span class="o">-</span><span class="mi">4</span><span class="n">mmghhfuk5n7my7g3ko2zwzlo4wmoc5v</span>
 <span class="p">[</span><span class="n">username</span><span class="p">@</span><span class="n">g0001</span> <span class="o">~</span><span class="p">]</span><span class="err">$</span> <span class="n">echo</span> <span class="s">&quot;btl_openib_warn_default_gid_prefix = 0&quot;</span> <span class="o">&gt;&gt;</span> <span class="err">$</span><span class="p">{</span><span class="n">SPACK_ROOT</span><span class="p">}</span><span class="o">/</span><span class="n">opt</span><span class="o">/</span><span class="n">spack</span><span class="o">/</span><span class="n">linux</span><span class="o">-</span><span class="n">centos7</span><span class="o">-</span><span class="n">haswell</span><span class="o">/</span><span class="n">gcc</span><span class="o">-</span><span class="mf">4.8.5</span><span class="o">/</span><span class="n">openmpi</span><span class="o">-</span><span class="mf">3.1.1</span><span class="o">-</span><span class="mi">4</span><span class="n">mmghhfuk5n7my7g3ko2zwzlo4wmoc5v</span><span class="o">/</span><span class="n">etc</span><span class="o">/</span><span class="n">openmpi</span><span class="o">-</span><span class="n">mca</span><span class="o">-</span><span class="n">params</span><span class="p">.</span><span class="n">conf</span>
-</pre></div>
+</code></pre></div>
 
 
 <p>Line #1 installs CUDA version <code>abci-10.1.243</code> so that Spack uses a CUDA provided by ABCI.
@@ -316,26 +316,26 @@ Meanings of the installation options are as follows.</p>
 For this purpose, Line #3 checks the installation path of OpenMPI.</p>
 <p>Spack can manage variants of the same version of software.
 This is an example that you additionally install OpenMPI 3.1.1 that uses CUDA 9.0.176.4.</p>
-<div class="codehilite"><pre><span></span><span class="p">[</span><span class="n">username</span><span class="p">@</span><span class="n">g0001</span> <span class="o">~</span><span class="p">]</span><span class="err">$</span> <span class="n">spack</span> <span class="n">install</span> <span class="n">cuda</span><span class="p">@</span><span class="n">abci</span><span class="o">-</span><span class="mf">9.0.176.4</span>
+<div class="codehilite"><pre><span></span><code><span class="p">[</span><span class="n">username</span><span class="p">@</span><span class="n">g0001</span> <span class="o">~</span><span class="p">]</span><span class="err">$</span> <span class="n">spack</span> <span class="n">install</span> <span class="n">cuda</span><span class="p">@</span><span class="n">abci</span><span class="o">-</span><span class="mf">9.0.176.4</span>
 <span class="p">[</span><span class="n">username</span><span class="p">@</span><span class="n">g0001</span> <span class="o">~</span><span class="p">]</span><span class="err">$</span> <span class="n">spack</span> <span class="n">install</span> <span class="n">openmpi</span><span class="mf">@3.1.1</span> <span class="o">+</span><span class="n">cuda</span> <span class="n">schedulers</span><span class="o">=</span><span class="n">sge</span> <span class="n">fabrics</span><span class="o">=</span><span class="k">auto</span> <span class="o">^</span><span class="n">cuda</span><span class="p">@</span><span class="n">abci</span><span class="o">-</span><span class="mf">9.0.176.4</span>
-</pre></div>
+</code></pre></div>
 
 
 <h4 id="how-to-use">How to Use</h4>
 <p>This is an example of using "OpenMPI 3.1.1 that uses CUDA 10.1.243" installed above.</p>
 <p>As you installed two OpenMPI 3.1.1, you can see the following modules.</p>
-<div class="codehilite"><pre><span></span><span class="o">[</span><span class="n">username@es1 ~</span><span class="o">]</span><span class="err">$</span><span class="w"> </span><span class="k">module</span><span class="w"> </span><span class="n">avail</span><span class="w"> </span><span class="n">openmpi</span><span class="w"></span>
-<span class="c1">------------------------- $HOME/spack/share/spack/modules/linux-centos7-haswell -------------------------</span>
-<span class="n">openmpi</span><span class="o">-</span><span class="mf">3.1.1</span><span class="o">-</span><span class="n">gcc</span><span class="o">-</span><span class="mf">4.8.5</span><span class="o">-</span><span class="mi">4</span><span class="n">mmghhf</span><span class="w">             </span><span class="n">openmpi</span><span class="o">-</span><span class="mf">3.1.1</span><span class="o">-</span><span class="n">gcc</span><span class="o">-</span><span class="mf">4.8.5</span><span class="o">-</span><span class="n">zqwwrqy</span><span class="w"></span>
-<span class="p">(</span><span class="n">snip</span><span class="p">)</span><span class="w"></span>
-</pre></div>
+<div class="codehilite"><pre><span></span><code><span class="err">[username@es1 ~]$ module avail openmpi</span>
+<span class="err">------------------------- $HOME/spack/share/spack/modules/linux-centos7-haswell -------------------------</span>
+<span class="err">openmpi-3.1.1-gcc-4.8.5-4mmghhf             openmpi-3.1.1-gcc-4.8.5-zqwwrqy</span>
+<span class="err">(snip)</span>
+</code></pre></div>
 
 
 <p>First of all, you have to identify an OpenMPI module you want to use.
 The name of a module created by Spack includes the following five attributes: (1) name of a software, (2) version of the software, (3) compiler used to build, (4) version of the compiler and (5) hash of the built software.
 You have to identify the module by (5) hash because all (1) to (4) are same in this case.</p>
 <p>You can get the hash of OpenMPI that uses CUDA 10.1.243 by checking the dependencies.</p>
-<div class="codehilite"><pre><span></span><span class="p">[</span><span class="n">username</span><span class="p">@</span><span class="n">es1</span> <span class="o">~</span><span class="p">]</span><span class="err">$</span> <span class="n">spack</span> <span class="n">find</span> <span class="o">-</span><span class="n">dl</span> <span class="n">openmpi</span>
+<div class="codehilite"><pre><span></span><code><span class="p">[</span><span class="n">username</span><span class="p">@</span><span class="n">es1</span> <span class="o">~</span><span class="p">]</span><span class="err">$</span> <span class="n">spack</span> <span class="n">find</span> <span class="o">-</span><span class="n">dl</span> <span class="n">openmpi</span>
 <span class="o">==&gt;</span> <span class="mi">2</span> <span class="n">installed</span> <span class="n">packages</span>
 <span class="o">--</span> <span class="n">linux</span><span class="o">-</span><span class="n">centos7</span><span class="o">-</span><span class="n">haswell</span> <span class="o">/</span> <span class="n">gcc</span><span class="mf">@4.8.5</span> <span class="o">----------------------------</span>
 <span class="mi">4</span><span class="n">mmghhf</span> <span class="n">openmpi</span><span class="mf">@3.1.1</span>
@@ -347,16 +347,16 @@ You have to identify the module by (5) hash because all (1) to (4) are same in t
 <span class="n">b4gs3k5</span>     <span class="n">hwloc</span><span class="mf">@1.11.11</span>
 <span class="n">l6ayrkp</span>         <span class="n">cuda</span><span class="p">@</span><span class="n">abci</span><span class="o">-</span><span class="mf">9.0.176.4</span>
 <span class="p">(</span><span class="n">snip</span><span class="p">)</span>
-</pre></div>
+</code></pre></div>
 
 
 <p>You can find that OpenMPI having hash <code>4mmghhf</code> is what you want, and you need to use a module named <code>openmpi-3.1.1-gcc-4.8.5-4mmghhf</code>.</p>
 <p>To build an MPI program using the above OpenMPI, you need to load a CUDA module provided by ABCI and the  OpenMPI module.</p>
-<div class="codehilite"><pre><span></span>source <span class="cp">${</span><span class="n">HOME</span><span class="cp">}</span>/spack/share/spack/setup-env.sh
+<div class="codehilite"><pre><span></span><code>source <span class="cp">${</span><span class="n">HOME</span><span class="cp">}</span>/spack/share/spack/setup-env.sh
 [username@g0001 ~]$ module load cuda/10.1/10.1.243
 [username@g0001 ~]$ module load openmpi-3.1.1-gcc-4.8.5-4mmghhf
 [username@g0001 ~]$ mpicc ...
-</pre></div>
+</code></pre></div>
 
 
 <p>A job script that runs the built MPI program is as follows.</p>
@@ -374,7 +374,7 @@ You have to identify the module by (5) hash because all (1) to (4) are same in t
 12
 13
 14
-15</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="ch">#!/bin/bash</span>
+15</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><code><span class="ch">#!/bin/bash</span>
 <span class="c1">#$-l rt_F=2</span>
 <span class="c1">#$-j y</span>
 <span class="c1">#$-cwd</span>
@@ -389,12 +389,12 @@ module load openmpi-3.1.1-gcc-4.8.5-4mmghhf
 <span class="nv">NUM_PROCS</span><span class="o">=</span><span class="k">$(</span>expr <span class="si">${</span><span class="nv">NUM_NODES</span><span class="si">}</span> <span class="se">\*</span> <span class="si">${</span><span class="nv">NUM_GPUS_PER_NODE</span><span class="si">}</span><span class="k">)</span>
 <span class="nv">MPIOPTS</span><span class="o">=</span><span class="s2">&quot;-n </span><span class="si">${</span><span class="nv">NUM_PROCS</span><span class="si">}</span><span class="s2"> -map-by ppr:</span><span class="si">${</span><span class="nv">NUM_GPUS_PER_NODE</span><span class="si">}</span><span class="s2">:node -x PATH -x LD_LIBRARY_PATH&quot;</span>
 mpiexec <span class="si">${</span><span class="nv">MPIOPTS</span><span class="si">}</span> YOUR_PROGRAM
-</pre></div>
+</code></pre></div>
 </td></tr></table>
 
 <p>If you no more use the OpenMPI, you can uninstall it by specifying its hash.</p>
-<div class="codehilite"><pre><span></span><span class="o">[</span><span class="n">username@es1 ~</span><span class="o">]</span><span class="err">$</span><span class="w"> </span><span class="n">spack</span><span class="w"> </span><span class="n">uninstall</span><span class="w"> </span><span class="o">/</span><span class="mi">4</span><span class="n">mmghhf</span><span class="w"></span>
-</pre></div>
+<div class="codehilite"><pre><span></span><code><span class="err">[username@es1 ~]$ spack uninstall /4mmghhf</span>
+</code></pre></div>
 
 
 <h3 id="cuda-aware-mvapich2">CUDA-aware MVAPICH2</h3>
@@ -402,9 +402,9 @@ mpiexec <span class="si">${</span><span class="nv">MPIOPTS</span><span class="si
 If you want to use CUDA-aware MVAPICH2, install by yourself referring to the documents below.</p>
 <p>You have to use a compute node to build CUDA-aware MVAPICH2.
 As with <a href="#cuda-aware-openmpi">OpenMPI</a> above, you first install CUDA and then install MVAPICH2 by enabling CUDA (<code>+cuda</code>) and specifying a communication library (<code>fabrics=mrail</code>) and CUDA dependency (<code>^cuda@abci-10.1.243</code>).</p>
-<div class="codehilite"><pre><span></span><span class="p">[</span><span class="n">username</span><span class="p">@</span><span class="n">g0001</span> <span class="o">~</span><span class="p">]</span><span class="err">$</span> <span class="n">spack</span> <span class="n">install</span> <span class="n">cuda</span><span class="p">@</span><span class="n">abci</span><span class="o">-</span><span class="mf">10.1.243</span>
+<div class="codehilite"><pre><span></span><code><span class="p">[</span><span class="n">username</span><span class="p">@</span><span class="n">g0001</span> <span class="o">~</span><span class="p">]</span><span class="err">$</span> <span class="n">spack</span> <span class="n">install</span> <span class="n">cuda</span><span class="p">@</span><span class="n">abci</span><span class="o">-</span><span class="mf">10.1.243</span>
 <span class="p">[</span><span class="n">username</span><span class="p">@</span><span class="n">g0001</span> <span class="o">~</span><span class="p">]</span><span class="err">$</span> <span class="n">spack</span> <span class="n">install</span> <span class="n">mvapich2</span><span class="mf">@2.3</span> <span class="o">+</span><span class="n">cuda</span> <span class="n">fabrics</span><span class="o">=</span><span class="n">mrail</span> <span class="o">^</span><span class="n">cuda</span><span class="p">@</span><span class="n">abci</span><span class="o">-</span><span class="mf">10.1.243</span>
-</pre></div>
+</code></pre></div>
 
 
 <p>To use CUDA-aware MVAPICH2, as with OpenMPI, load modules of a CUDA and the installed MVAPICH2.
@@ -425,7 +425,7 @@ Here is a job script example.</p>
 14
 15
 16
-17</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="ch">#!/bin/bash</span>
+17</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><code><span class="ch">#!/bin/bash</span>
 <span class="c1">#$-l rt_F=2</span>
 <span class="c1">#$-j y</span>
 <span class="c1">#$-cwd</span>
@@ -442,7 +442,7 @@ module load mvapich2-2.3-gcc-4.8.5-wy2qkke
 <span class="nv">MPIOPTS</span><span class="o">=</span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">MPIE_ARGS</span><span class="si">}</span><span class="s2"> -np </span><span class="si">${</span><span class="nv">NUM_PROCS</span><span class="si">}</span><span class="s2"> -ppn </span><span class="si">${</span><span class="nv">NUM_GPUS_PER_NODE</span><span class="si">}</span><span class="s2">&quot;</span>
 
 mpiexec <span class="si">${</span><span class="nv">MPIOPTS</span><span class="si">}</span> YOUR_PROGRAM
-</pre></div>
+</code></pre></div>
 </td></tr></table>
 
 <h3 id="mpifileutils">MPIFileUtils</h3>
@@ -450,9 +450,9 @@ mpiexec <span class="si">${</span><span class="nv">MPIOPTS</span><span class="si
 Although manually installing it is messy as it depends on many libraries, using Spack enables an easy install of MPIFileUtils.</p>
 <p>The following example installs MPIFileUtils by using OpenMPI 2.1.6 provided by ABCI.
 Line #1 installs OpenMPI to be used, and Line #2 installs MPIFileUtils by specifying a dependency for it.</p>
-<div class="codehilite"><pre><span></span><span class="o">[</span><span class="n">username@es1 ~</span><span class="o">]</span><span class="err">$</span><span class="w"> </span><span class="n">spack</span><span class="w"> </span><span class="n">install</span><span class="w"> </span><span class="n">openmpi</span><span class="nv">@abci</span><span class="o">-</span><span class="mf">2.1.6</span><span class="o">-</span><span class="n">nocuda</span><span class="w"></span>
-<span class="o">[</span><span class="n">username@es1 ~</span><span class="o">]</span><span class="err">$</span><span class="w"> </span><span class="n">spack</span><span class="w"> </span><span class="n">install</span><span class="w"> </span><span class="n">mpifileutils</span><span class="w"> </span><span class="o">^</span><span class="n">openmpi</span><span class="nv">@abci</span><span class="o">-</span><span class="mf">2.1.6</span><span class="o">-</span><span class="n">nocuda</span><span class="w"></span>
-</pre></div>
+<div class="codehilite"><pre><span></span><code><span class="err">[username@es1 ~]$ spack install openmpi@abci-2.1.6-nocuda</span>
+<span class="err">[username@es1 ~]$ spack install mpifileutils ^openmpi@abci-2.1.6-nocuda</span>
+</code></pre></div>
 
 
 <p>To use MPIFileUtils, you have to load modules of OpenMPI 2.1.6 and MPIFileUtils.
@@ -473,7 +473,7 @@ This is an example job script.</p>
 13
 14
 15
-16</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="ch">#!/bin/bash</span>
+16</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><code><span class="ch">#!/bin/bash</span>
 <span class="c1">#$-l rt_F=2</span>
 <span class="c1">#$-j y</span>
 <span class="c1">#$-cwd</span>
@@ -489,5 +489,5 @@ module load mpifileutils-0.9.1-gcc-4.8.5-qdv7523
 <span class="nv">DST_FILE</span><span class="o">=</span>name_of_file
 
 mpiexec -n <span class="si">${</span><span class="nv">NMPIPROC</span><span class="si">}</span> -map-by ppr:<span class="si">${</span><span class="nv">NPPN</span><span class="si">}</span>:node dbcast <span class="nv">$SRC_FILE</span> <span class="nv">$DST_FILE</span>
-</pre></div>
-</td></tr></table></article></div></div></main><footer class="md-footer"><div class="md-footer-nav"><nav class="md-footer-nav__inner md-grid"><a href="../sregistry-cli/" title="Singularity Global Client" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev"><div class="md-flex__cell md-flex__cell--shrink"><i class="md-icon md-icon--arrow-back md-footer-nav__button"></i></div><div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title"><span class="md-flex__ellipsis"><span class="md-footer-nav__direction">Previous</span>Singularity Global Client</span></div></a><a href="../../ngc/" title="NVIDIA GPU Cloud (NGC)" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next"><div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title"><span class="md-flex__ellipsis"><span class="md-footer-nav__direction">Next</span>NVIDIA GPU Cloud (NGC)</span></div><div class="md-flex__cell md-flex__cell--shrink"><i class="md-icon md-icon--arrow-forward md-footer-nav__button"></i></div></a></nav></div><div class="md-footer-meta md-typeset"><div class="md-footer-meta__inner md-grid"><div class="md-footer-copyright"><div class="md-footer-copyright__highlight">Copyright &copy; 2018 National Institute of Advanced Industrial Science and Technology (AIST)</div>powered by <a href="https://www.mkdocs.org">MkDocs</a> and <a href="https://squidfunk.github.io/mkdocs-material/">Material for MkDocs</a></div></div></div></footer></div><script src="../../assets/javascripts/application.b260a35d.js"></script><script>app.initialize({version:"1.0.4",url:{base:"../.."}})</script></body></html>
+</code></pre></div>
+</td></tr></table></article></div></div></main><footer class="md-footer"><div class="md-footer-nav"><nav class="md-footer-nav__inner md-grid"><a href="../sregistry-cli/" title="Singularity Global Client" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev"><div class="md-flex__cell md-flex__cell--shrink"><i class="md-icon md-icon--arrow-back md-footer-nav__button"></i></div><div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title"><span class="md-flex__ellipsis"><span class="md-footer-nav__direction">Previous</span>Singularity Global Client</span></div></a><a href="../../ngc/" title="NVIDIA GPU Cloud (NGC)" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next"><div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title"><span class="md-flex__ellipsis"><span class="md-footer-nav__direction">Next</span>NVIDIA GPU Cloud (NGC)</span></div><div class="md-flex__cell md-flex__cell--shrink"><i class="md-icon md-icon--arrow-forward md-footer-nav__button"></i></div></a></nav></div><div class="md-footer-meta md-typeset"><div class="md-footer-meta__inner md-grid"><div class="md-footer-copyright"><div class="md-footer-copyright__highlight">Copyright &copy; 2018 National Institute of Advanced Industrial Science and Technology (AIST)</div>powered by <a href="https://www.mkdocs.org">MkDocs</a> and <a href="https://squidfunk.github.io/mkdocs-material/">Material for MkDocs</a></div></div></div></footer></div><script src="../../assets/javascripts/application.b260a35d.js"></script><script>app.initialize({version:"1.1",url:{base:"../.."}})</script></body></html>

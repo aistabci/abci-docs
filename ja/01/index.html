@@ -1,4 +1,4 @@
-<!doctype html><html lang="ja" class="no-js"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta http-equiv="x-ua-compatible" content="ie=edge"><meta name="description" content="ABCI Users Guide, Japanese version"><link rel="canonical" href="https://docs.abci.ai/ja/01/"><meta name="author" content="AIST"><meta name="lang:clipboard.copy" content="クリップボードへコピー"><meta name="lang:clipboard.copied" content="コピーしました"><meta name="lang:search.language" content="ja"><meta name="lang:search.pipeline.stopwords" content="True"><meta name="lang:search.pipeline.trimmer" content="True"><meta name="lang:search.result.none" content="何も見つかりませんでした"><meta name="lang:search.result.one" content="1件見つかりました"><meta name="lang:search.result.other" content="#件見つかりました"><meta name="lang:search.tokenizer" content="[\s\-　、。，．]+"><link rel="shortcut icon" href="../assets/images/favicon.png"><meta name="generator" content="mkdocs-1.0.4, mkdocs-material-4.3.1"><title>1. ABCIシステムの概要 - ABCI Users Guide</title><link rel="stylesheet" href="../assets/stylesheets/application.4031d38b.css"><link rel="stylesheet" href="../assets/stylesheets/application-palette.224b79ff.css"><meta name="theme-color" content="#ef5350"><script src="../assets/javascripts/modernizr.74668098.js"></script><link href="https://fonts.gstatic.com" rel="preconnect" crossorigin><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700|Roboto+Mono&display=swap"><style>body,input{font-family:"Roboto","Helvetica Neue",Helvetica,Arial,sans-serif}code,kbd,pre{font-family:"Roboto Mono","Courier New",Courier,monospace}</style><link rel="stylesheet" href="../assets/fonts/material-icons.css"><script>window.ga = window.ga || function() {
+<!doctype html><html lang="ja" class="no-js"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta http-equiv="x-ua-compatible" content="ie=edge"><meta name="description" content="ABCI Users Guide, Japanese version"><link rel="canonical" href="https://docs.abci.ai/ja/01/"><meta name="author" content="AIST"><meta name="lang:clipboard.copy" content="クリップボードへコピー"><meta name="lang:clipboard.copied" content="コピーしました"><meta name="lang:search.language" content="ja"><meta name="lang:search.pipeline.stopwords" content="True"><meta name="lang:search.pipeline.trimmer" content="True"><meta name="lang:search.result.none" content="何も見つかりませんでした"><meta name="lang:search.result.one" content="1件見つかりました"><meta name="lang:search.result.other" content="#件見つかりました"><meta name="lang:search.tokenizer" content="[\s\-　、。，．]+"><link rel="shortcut icon" href="../assets/images/favicon.png"><meta name="generator" content="mkdocs-1.1, mkdocs-material-4.3.1"><title>1. ABCIシステムの概要 - ABCI Users Guide</title><link rel="stylesheet" href="../assets/stylesheets/application.4031d38b.css"><link rel="stylesheet" href="../assets/stylesheets/application-palette.224b79ff.css"><meta name="theme-color" content="#ef5350"><script src="../assets/javascripts/modernizr.74668098.js"></script><link href="https://fonts.gstatic.com" rel="preconnect" crossorigin><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700|Roboto+Mono&display=swap"><style>body,input{font-family:"Roboto","Helvetica Neue",Helvetica,Arial,sans-serif}code,kbd,pre{font-family:"Roboto Mono","Courier New",Courier,monospace}</style><link rel="stylesheet" href="../assets/fonts/material-icons.css"><script>window.ga = window.ga || function() {
     (ga.q = ga.q || []).push(arguments)
   }
   ga.l = +new Date
@@ -130,28 +130,28 @@ ABCIシステムは、1,088台の計算ノードなどからなる高性能計�
 </tr>
 <tr>
 <td align="left">開発環境</td>
-<td align="left">Intel Parallel Stduio XE Cluster Edition</td>
-<td align="left">2017.8<br>2018.2<br>2018.3<br>2019.3</td>
+<td align="left">Intel Parallel Studio XE Cluster Edition</td>
+<td align="left">2017.8<br>2018.5<br>2019.5</td>
 </tr>
 <tr>
 <td align="left"></td>
 <td align="left">PGI Professional Edition</td>
-<td align="left">17.10<br>18.10<br>19.3</td>
+<td align="left">17.10<br>18.10<br>19.1<br>19.10<br>20.1</td>
 </tr>
 <tr>
 <td align="left"></td>
 <td align="left"><a href="../07/#cuda-toolkit">CUDA Toolkit</a></td>
-<td align="left">8.0.61.2<br>9.0.176.2<br>9.0.176.3<br>9.0.176.4<br>9.1.85.3<br>9.2.88.1<br>9.2.148.1<br>10.0.130<br>10.0.130.1<br>10.1.243<br>10.2.89</td>
+<td align="left">8.0.61.2<br>9.0.176.4<br>9.1.85.3<br>9.2.88.1<br>9.2.148.1<br>10.0.130<br>10.0.130.1<br>10.1.243<br>10.2.89</td>
 </tr>
 <tr>
 <td align="left"></td>
 <td align="left">GCC</td>
-<td align="left">4.8.5<br>7.3.0<br>7.4.0</td>
+<td align="left">4.8.5<br>7.4.0</td>
 </tr>
 <tr>
 <td align="left"></td>
 <td align="left"><a href="../06/">Python</a></td>
-<td align="left">2.7.15<br>3.4.8<br>3.5.5<br>3.6.5</td>
+<td align="left">2.7.15<br>3.4.8<br>3.5.5<br>3.6.5<br>3.7.6<br>3.8.2</td>
 </tr>
 <tr>
 <td align="left"></td>
@@ -161,17 +161,17 @@ ABCIシステムは、1,088台の計算ノードなどからなる高性能計�
 <tr>
 <td align="left"></td>
 <td align="left">R</td>
-<td align="left">3.5.0</td>
+<td align="left">3.5.0<br>3.6.3</td>
 </tr>
 <tr>
 <td align="left"></td>
 <td align="left">Java</td>
-<td align="left">1.6.0_41<br>1.7.0_171<br>1.8.0_161</td>
+<td align="left">1.7.0_171<br>1.8.0_242<br>11.0.6_10</td>
 </tr>
 <tr>
 <td align="left"></td>
 <td align="left">Scala</td>
-<td align="left">1.27-248</td>
+<td align="left">2.12.6</td>
 </tr>
 <tr>
 <td align="left"></td>
@@ -182,6 +182,16 @@ ABCIシステムは、1,088台の計算ノードなどからなる高性能計�
 <td align="left"></td>
 <td align="left">Perl</td>
 <td align="left">5.16.3</td>
+</tr>
+<tr>
+<td align="left"></td>
+<td align="left">Go</td>
+<td align="left">1.12<br>1.13</td>
+</tr>
+<tr>
+<td align="left"></td>
+<td align="left">Julia</td>
+<td align="left">1.0<br>1.3<br>1.4</td>
 </tr>
 <tr>
 <td align="left">ファイルシステム</td>
@@ -216,22 +226,22 @@ ABCIシステムは、1,088台の計算ノードなどからなる高性能計�
 <tr>
 <td align="left">MPI</td>
 <td align="left"><a href="../08/#open-mpi">Open MPI</a></td>
-<td align="left">1.10.7<br>2.1.3<br>2.1.5<br>2.1.6<br>3.0.3<br>3.1.0<br>3.1.2<br>3.1.3</td>
+<td align="left">2.1.6<br>3.1.6<br>4.0.3</td>
 </tr>
 <tr>
 <td align="left"></td>
 <td align="left"><a href="../08/#mvapich2">MVAPICH2</a></td>
-<td align="left">2.3rc2<br>2.3</td>
+<td align="left">2.3.3</td>
 </tr>
 <tr>
 <td align="left"></td>
 <td align="left"><a href="../08/#mvapich2-gdr">MVAPICH2-GDR</a></td>
-<td align="left">2.3a<br>2.3rc1<br>2.3<br>2.3.2</td>
+<td align="left">2.3.3</td>
 </tr>
 <tr>
 <td align="left"></td>
 <td align="left"><a href="../08/#intel-mpi">Intel MPI</a></td>
-<td align="left">2018.2.199</td>
+<td align="left">2017.4<br>2018.4<br>2019.5</td>
 </tr>
 <tr>
 <td align="left">ライブラリ</td>
@@ -241,22 +251,27 @@ ABCIシステムは、1,088台の計算ノードなどからなる高性能計�
 <tr>
 <td align="left"></td>
 <td align="left"><a href="../07/#nccl">NCCL</a></td>
-<td align="left">1.3.5-1<br>2.1.15-1<br>2.2.13-1<br>2.3.4-1<br>2.3.5-2<br>2.3.7-1<br>2.4.2-1<br>2.4.7-1<br>2.4.8-1<br>2.5.6-1</td>
+<td align="left">1.3.5-1<br>2.1.15-1<br>2.2.13-1<br>2.3.4-1<br>2.3.5-2<br>2.3.7-1<br>2.4.2-1<br>2.4.7-1<br>2.4.8-1<br>2.5.6-1<br>2.6.4-1</td>
 </tr>
 <tr>
 <td align="left"></td>
 <td align="left">gdrcopy</td>
-<td align="left">1.2</td>
+<td align="left">2.0</td>
+</tr>
+<tr>
+<td align="left"></td>
+<td align="left">UCX</td>
+<td align="left">1.7.0</td>
 </tr>
 <tr>
 <td align="left"></td>
 <td align="left">Intel MKL</td>
-<td align="left">2017.8<br>2018.2<br>2018.3<br>2019.3</td>
+<td align="left">2017.0.4<br>2018.0.4<br>2019.0.5</td>
 </tr>
 <tr>
 <td align="left">ユーティリティ</td>
 <td align="left">aws-cli</td>
-<td align="left">1.16.194</td>
+<td align="left">1.16.194<br>1.18<br>2.0</td>
 </tr>
 <tr>
 <td align="left"></td>
@@ -272,6 +287,26 @@ ABCIシステムは、1,088台の計算ノードなどからなる高性能計�
 <td align="left"></td>
 <td align="left">sregistry-cli</td>
 <td align="left">0.2.31</td>
+</tr>
+<tr>
+<td align="left"></td>
+<td align="left">Intel VTune</td>
+<td align="left">2017.6<br>2018.4<br>2019.6</td>
+</tr>
+<tr>
+<td align="left"></td>
+<td align="left">Intel Trace Analyzer and Collector</td>
+<td align="left">2017.0.4<br>2018.0.4<br>2019.0.5</td>
+</tr>
+<tr>
+<td align="left"></td>
+<td align="left">Intel Inspector</td>
+<td align="left">2017.4<br>2018.4<br>2019.5</td>
+</tr>
+<tr>
+<td align="left"></td>
+<td align="left">Intel Advisor</td>
+<td align="left">2017.6<br>2018.4<br>2019.5</td>
 </tr>
 </tbody>
 </table>
@@ -342,4 +377,4 @@ ABCIシステムのフロントエンドであるインタラクティブノー�
 <p class="admonition-title">Warning</p>
 <p>インタラクティブノードのCPUやメモリなどの資源は多くの利用者で共有しますので、高負荷な処理は行わないようにしてください。高負荷な前処理、後処理を行う場合は、計算ノードを利用してください。
 インタラクティブノードで高負荷な処理を行った場合、システムにより処理が強制終了されますのでご注意ください。</p>
-</div></article></div></div></main><footer class="md-footer"><div class="md-footer-nav"><nav class="md-footer-nav__inner md-grid"><a href=".." title="はじめに" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev"><div class="md-flex__cell md-flex__cell--shrink"><i class="md-icon md-icon--arrow-back md-footer-nav__button"></i></div><div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title"><span class="md-flex__ellipsis"><span class="md-footer-nav__direction">前</span>はじめに</span></div></a><a href="../02/" title="2. ABCIシステム利用環境" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next"><div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title"><span class="md-flex__ellipsis"><span class="md-footer-nav__direction">次</span>2. ABCIシステム利用環境</span></div><div class="md-flex__cell md-flex__cell--shrink"><i class="md-icon md-icon--arrow-forward md-footer-nav__button"></i></div></a></nav></div><div class="md-footer-meta md-typeset"><div class="md-footer-meta__inner md-grid"><div class="md-footer-copyright"><div class="md-footer-copyright__highlight">Copyright &copy; 2018 National Institute of Advanced Industrial Science and Technology (AIST)</div>powered by <a href="https://www.mkdocs.org">MkDocs</a> and <a href="https://squidfunk.github.io/mkdocs-material/">Material for MkDocs</a></div></div></div></footer></div><script src="../assets/javascripts/application.b260a35d.js"></script><script src="../assets/javascripts/lunr/lunr.stemmer.support.js"></script><script src="../assets/javascripts/lunr/tinyseg.js"></script><script src="../assets/javascripts/lunr/lunr.ja.js"></script><script>app.initialize({version:"1.0.4",url:{base:".."}})</script></body></html>
+</div></article></div></div></main><footer class="md-footer"><div class="md-footer-nav"><nav class="md-footer-nav__inner md-grid"><a href=".." title="はじめに" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev"><div class="md-flex__cell md-flex__cell--shrink"><i class="md-icon md-icon--arrow-back md-footer-nav__button"></i></div><div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title"><span class="md-flex__ellipsis"><span class="md-footer-nav__direction">前</span>はじめに</span></div></a><a href="../02/" title="2. ABCIシステム利用環境" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next"><div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title"><span class="md-flex__ellipsis"><span class="md-footer-nav__direction">次</span>2. ABCIシステム利用環境</span></div><div class="md-flex__cell md-flex__cell--shrink"><i class="md-icon md-icon--arrow-forward md-footer-nav__button"></i></div></a></nav></div><div class="md-footer-meta md-typeset"><div class="md-footer-meta__inner md-grid"><div class="md-footer-copyright"><div class="md-footer-copyright__highlight">Copyright &copy; 2018 National Institute of Advanced Industrial Science and Technology (AIST)</div>powered by <a href="https://www.mkdocs.org">MkDocs</a> and <a href="https://squidfunk.github.io/mkdocs-material/">Material for MkDocs</a></div></div></div></footer></div><script src="../assets/javascripts/application.b260a35d.js"></script><script src="../assets/javascripts/lunr/lunr.stemmer.support.js"></script><script src="../assets/javascripts/lunr/tinyseg.js"></script><script src="../assets/javascripts/lunr/lunr.ja.js"></script><script>app.initialize({version:"1.1",url:{base:".."}})</script></body></html>

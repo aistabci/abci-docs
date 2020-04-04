@@ -1,4 +1,4 @@
-<!doctype html><html lang="ja" class="no-js"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta http-equiv="x-ua-compatible" content="ie=edge"><meta name="description" content="ABCI Users Guide, Japanese version"><link rel="canonical" href="https://docs.abci.ai/ja/02/"><meta name="author" content="AIST"><meta name="lang:clipboard.copy" content="クリップボードへコピー"><meta name="lang:clipboard.copied" content="コピーしました"><meta name="lang:search.language" content="ja"><meta name="lang:search.pipeline.stopwords" content="True"><meta name="lang:search.pipeline.trimmer" content="True"><meta name="lang:search.result.none" content="何も見つかりませんでした"><meta name="lang:search.result.one" content="1件見つかりました"><meta name="lang:search.result.other" content="#件見つかりました"><meta name="lang:search.tokenizer" content="[\s\-　、。，．]+"><link rel="shortcut icon" href="../assets/images/favicon.png"><meta name="generator" content="mkdocs-1.0.4, mkdocs-material-4.3.1"><title>2. ABCIシステム利用環境 - ABCI Users Guide</title><link rel="stylesheet" href="../assets/stylesheets/application.4031d38b.css"><link rel="stylesheet" href="../assets/stylesheets/application-palette.224b79ff.css"><meta name="theme-color" content="#ef5350"><script src="../assets/javascripts/modernizr.74668098.js"></script><link href="https://fonts.gstatic.com" rel="preconnect" crossorigin><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700|Roboto+Mono&display=swap"><style>body,input{font-family:"Roboto","Helvetica Neue",Helvetica,Arial,sans-serif}code,kbd,pre{font-family:"Roboto Mono","Courier New",Courier,monospace}</style><link rel="stylesheet" href="../assets/fonts/material-icons.css"><script>window.ga = window.ga || function() {
+<!doctype html><html lang="ja" class="no-js"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta http-equiv="x-ua-compatible" content="ie=edge"><meta name="description" content="ABCI Users Guide, Japanese version"><link rel="canonical" href="https://docs.abci.ai/ja/02/"><meta name="author" content="AIST"><meta name="lang:clipboard.copy" content="クリップボードへコピー"><meta name="lang:clipboard.copied" content="コピーしました"><meta name="lang:search.language" content="ja"><meta name="lang:search.pipeline.stopwords" content="True"><meta name="lang:search.pipeline.trimmer" content="True"><meta name="lang:search.result.none" content="何も見つかりませんでした"><meta name="lang:search.result.one" content="1件見つかりました"><meta name="lang:search.result.other" content="#件見つかりました"><meta name="lang:search.tokenizer" content="[\s\-　、。，．]+"><link rel="shortcut icon" href="../assets/images/favicon.png"><meta name="generator" content="mkdocs-1.1, mkdocs-material-4.3.1"><title>2. ABCIシステム利用環境 - ABCI Users Guide</title><link rel="stylesheet" href="../assets/stylesheets/application.4031d38b.css"><link rel="stylesheet" href="../assets/stylesheets/application-palette.224b79ff.css"><meta name="theme-color" content="#ef5350"><script src="../assets/javascripts/modernizr.74668098.js"></script><link href="https://fonts.gstatic.com" rel="preconnect" crossorigin><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700|Roboto+Mono&display=swap"><style>body,input{font-family:"Roboto","Helvetica Neue",Helvetica,Arial,sans-serif}code,kbd,pre{font-family:"Roboto Mono","Courier New",Courier,monospace}</style><link rel="stylesheet" href="../assets/fonts/material-icons.css"><script>window.ga = window.ga || function() {
     (ga.q = ga.q || []).push(arguments)
   }
   ga.l = +new Date
@@ -67,9 +67,9 @@ Enter passphrase for key '/path/identity_file': <- パスフレーズ入力
 </pre></div>
 
 <p>アクセスサーバへのログインが成功すると、ターミナル上に下記のメッセージが表示されます。</p>
-<div class="codehilite"><pre><span></span><span class="nv">Welcome</span> <span class="nv">to</span> <span class="nv">ABCI</span> <span class="nv">access</span> <span class="nv">server</span>.
-<span class="nv">Please</span> <span class="nv">press</span> <span class="nv">any</span> <span class="nv">key</span> <span class="k">if</span> <span class="nv">you</span> <span class="k">disconnect</span> <span class="nv">this</span> <span class="nv">session</span>.
-</pre></div>
+<div class="codehilite"><pre><span></span><code><span class="err">Welcome to ABCI access server.</span>
+<span class="err">Please press any key if you disconnect this session.</span>
+</code></pre></div>
 
 
 <div class="admonition warning">
@@ -77,14 +77,14 @@ Enter passphrase for key '/path/identity_file': <- パスフレーズ入力
 <p>上記状態で何らかのキーを入力するとSSH接続が切断されてしますので注意してください。</p>
 </div>
 <p>続いて、別のターミナルを起動し、SSHトンネルを用いてインタラクティブノードにログインします。</p>
-<div class="codehilite"><pre><span></span>[<span class="nv">yourpc</span> <span class="o">~</span>]$ <span class="nv">ssh</span> <span class="o">-</span><span class="nv">i</span> <span class="o">/</span><span class="nv">path</span><span class="o">/</span><span class="nv">identity_file</span> <span class="o">-</span><span class="nv">p</span> <span class="mi">10022</span> <span class="o">-</span><span class="nv">l</span> <span class="nv">username</span> <span class="nv">localhost</span>
-<span class="nv">The</span> <span class="nv">authenticity</span> <span class="nv">of</span> <span class="nv">host</span> <span class="s1">&#39;</span><span class="s">localhost (127.0.0.1)</span><span class="s1">&#39;</span> <span class="nv">can</span><span class="s1">&#39;</span><span class="s">t be established.</span>
-<span class="nv">RSA</span> <span class="nv">key</span> <span class="nv">fingerprint</span> <span class="nv">is</span> <span class="nv">XX</span>:<span class="nv">XX</span>:<span class="nv">XX</span>:<span class="nv">XX</span>:<span class="nv">XX</span>:<span class="nv">XX</span>:<span class="nv">XX</span>:<span class="nv">XX</span>:<span class="nv">XX</span>:<span class="nv">XX</span>:<span class="nv">XX</span>:<span class="nv">XX</span>:<span class="nv">XX</span>:<span class="nv">XX</span>:<span class="nv">XX</span>:<span class="nv">XX</span>. <span class="o">&lt;-</span> 初回ログイン時のみ表示
-<span class="nv">Are</span> <span class="nv">you</span> <span class="nv">sure</span> <span class="nv">you</span> <span class="nv">want</span> <span class="nv">to</span> <span class="k">continue</span> <span class="nv">connecting</span> <span class="ss">(</span><span class="nv">yes</span><span class="o">/</span><span class="nv">no</span><span class="ss">)</span>? <span class="o">&lt;-</span> <span class="nv">yes</span>を入力
-<span class="nv">Warning</span>: <span class="nv">Permanently</span> <span class="nv">added</span> <span class="s1">&#39;</span><span class="s">localhost</span><span class="s1">&#39;</span> <span class="ss">(</span><span class="nv">RSA</span><span class="ss">)</span> <span class="nv">to</span> <span class="nv">the</span> <span class="nv">list</span> <span class="nv">of</span> <span class="nv">known</span> <span class="nv">hosts</span>.
-<span class="nv">Enter</span> <span class="nv">passphrase</span> <span class="k">for</span> <span class="nv">key</span> <span class="s1">&#39;</span><span class="s">-i /path/identity_file</span><span class="s1">&#39;</span>: <span class="o">&lt;-</span> パスフレーズ入力
-[<span class="nv">username</span>@<span class="nv">es1</span> <span class="o">~</span>]$
-</pre></div>
+<div class="codehilite"><pre><span></span><code><span class="p">[</span><span class="n">yourpc</span> <span class="o">~</span><span class="p">]</span><span class="o">$</span> <span class="n">ssh</span> <span class="o">-</span><span class="n">i</span> <span class="o">/</span><span class="n">path</span><span class="o">/</span><span class="n">identity_file</span> <span class="o">-</span><span class="n">p</span> <span class="m">10022</span> <span class="o">-</span><span class="n">l</span> <span class="n">username</span> <span class="n">localhost</span>
+<span class="n">The</span> <span class="n">authenticity</span> <span class="n">of</span> <span class="n">host</span> <span class="s">&#39;localhost (127.0.0.1)&#39;</span> <span class="n">can</span><span class="s">&#39;t be established.</span>
+<span class="s">RSA key fingerprint is XX:XX:XX:XX:XX:XX:XX:XX:XX:XX:XX:XX:XX:XX:XX:XX. &lt;- 初回ログイン時のみ表示</span>
+<span class="s">Are you sure you want to continue connecting (yes/no)? &lt;- yesを入力</span>
+<span class="s">Warning: Permanently added &#39;</span><span class="n">localhost</span><span class="s">&#39; (RSA) to the list of known hosts.</span>
+<span class="s">Enter passphrase for key &#39;</span><span class="o">-</span><span class="n">i</span> <span class="o">/</span><span class="n">path</span><span class="o">/</span><span class="n">identity_file</span><span class="s">&#39;</span><span class="err">: &lt;- パスフレーズ入力</span>
+<span class="p">[</span><span class="n">username</span><span class="o">@</span><span class="n">es1</span> <span class="o">~</span><span class="p">]</span><span class="o">$</span>
+</code></pre></div>
 
 
 <h4 id="proxyjump">ProxyJumpの使用</h4>
@@ -113,11 +113,11 @@ Host <i>as.abci.ai</i>
 <h2 id="file-transfer-to-interactive-node">2.3. インタラクティブノードへのファイル転送</h2>
 <p>ローカルPCとABCIシステム間でファイル転送をするには、<code>scp</code>(<code>sftp</code>)コマンドを利用します。この場合もSSHトンネルを介して行う必要があります。</p>
 <p>SSHトンネルの設定後、以下のように実行します。</p>
-<div class="codehilite"><pre><span></span>[<span class="nv">yourpc</span> <span class="o">~</span>]$ <span class="nv">scp</span> <span class="o">-</span><span class="nv">i</span> <span class="o">/</span><span class="nv">path</span><span class="o">/</span><span class="nv">identity_file</span> <span class="o">-</span><span class="nv">P</span> <span class="mi">10022</span> <span class="nv">local</span><span class="o">-</span><span class="nv">file</span> <span class="nv">username</span>@<span class="nv">localhost</span>:<span class="nv">remote</span><span class="o">-</span><span class="nv">dir</span>
-<span class="nv">Enter</span> <span class="nv">passphrase</span> <span class="k">for</span> <span class="nv">key</span>: <span class="o">&lt;-</span> パスフレーズを入力
+<div class="codehilite"><pre><span></span><code><span class="p">[</span><span class="n">yourpc</span> <span class="o">~</span><span class="p">]</span><span class="o">$</span> <span class="n">scp</span> <span class="o">-</span><span class="n">i</span> <span class="o">/</span><span class="n">path</span><span class="o">/</span><span class="n">identity_file</span> <span class="o">-</span><span class="n">P</span> <span class="m">10022</span> <span class="n">local</span><span class="o">-</span><span class="n">file</span> <span class="n">username</span><span class="o">@</span><span class="n">localhost</span><span class="o">:</span><span class="n">remote</span><span class="o">-</span><span class="n">dir</span>
+<span class="n">Enter</span> <span class="n">passphrase</span> <span class="n">for</span> <span class="n">key</span><span class="o">:</span> <span class="o">&lt;-</span> パスフレーズを入力
 
-<span class="nv">local</span><span class="o">-</span><span class="nv">file</span>    <span class="mi">100</span><span class="o">%</span> <span class="o">|***********************|</span>  <span class="nv">file</span><span class="o">-</span><span class="nv">size</span>  <span class="nv">transfer</span><span class="o">-</span><span class="nv">time</span>
-</pre></div>
+<span class="n">local</span><span class="o">-</span><span class="n">file</span>    <span class="m">100</span>% <span class="o">|***********************|</span>  <span class="n">file</span><span class="o">-</span><span class="n">size</span>  <span class="n">transfer</span><span class="o">-</span><span class="n">time</span>
+</code></pre></div>
 
 
 <p>ProxyJumpが使える場合は、SSHトンネルを明示的に設定する必要はありません。<a href="#proxyjump">ProxyJumpの使用</a>で説明したとおり<code>$HOME/.ssh/config</code>の設定がしてあれば、直接<code>scp</code> (<code>sftp</code>)コマンドでファイル転送が行えます。</p>
@@ -129,13 +129,13 @@ Host <i>as.abci.ai</i>
 <p>ABCIシステムのパスワードはLDAPで管理されています。 SSHログインではパスワードは使用しませんが、
 <a href="https://portal.abci.ai/user/">ABCI利用ポータル</a>へのログイン、ログインシェルの変更の際にパスワードが必要になります。
 パスワードを変更する場合は、<code>passwd</code>コマンドを使用します。</p>
-<div class="codehilite"><pre><span></span>[<span class="nv">username</span>@<span class="nv">es1</span> <span class="o">~</span>]$ <span class="nv">passwd</span>
-<span class="nv">Changing</span> <span class="nv">password</span> <span class="k">for</span> <span class="nv">user</span> <span class="nv">username</span>.
-<span class="nv">Current</span> <span class="nv">Password</span>: <span class="o">&lt;-</span> 現在のパスワードを入力
-<span class="nv">New</span> <span class="nv">password</span>: <span class="o">&lt;-</span> 新しいパスワードを入力
-<span class="nv">Retype</span> <span class="nv">new</span> <span class="nv">password</span>: <span class="o">&lt;-</span> 新しいパスワードを再度入力
-<span class="nv">passwd</span>: <span class="nv">all</span> <span class="nv">authentication</span> <span class="nv">tokens</span> <span class="nv">updated</span> <span class="nv">successfully</span>.
-</pre></div>
+<div class="codehilite"><pre><span></span><code><span class="p">[</span><span class="n">username</span><span class="o">@</span><span class="n">es1</span> <span class="o">~</span><span class="p">]</span><span class="o">$</span> <span class="n">passwd</span>
+<span class="n">Changing</span> <span class="n">password</span> <span class="n">for</span> <span class="n">user</span> <span class="n">username.</span>
+<span class="n">Current</span> <span class="n">Password</span><span class="o">:</span> <span class="o">&lt;-</span> 現在のパスワードを入力
+<span class="n">New</span> <span class="n">password</span><span class="o">:</span> <span class="o">&lt;-</span> 新しいパスワードを入力
+<span class="n">Retype</span> <span class="n">new</span> <span class="n">password</span><span class="o">:</span> <span class="o">&lt;-</span> 新しいパスワードを再度入力
+<span class="n">passwd</span><span class="o">:</span> <span class="n">all</span> <span class="n">authentication</span> <span class="n">tokens</span> <span class="n">updated</span> <span class="n">successfully.</span>
+</code></pre></div>
 
 
 <div class="admonition warning">
@@ -151,8 +151,8 @@ Host <i>as.abci.ai</i>
 <p>ABCIシステムのデフォルトログインシェルは、bashが設定されています。
 ログインシェルは<code>chsh</code>コマンドを使用してtcshもしくはzshに変更することができます。
 ログインシェルの変更は次回ログインから有効となります。また、ログインシェルの反映には10分程度時間がかかります。</p>
-<div class="codehilite"><pre><span></span><span class="err">$</span><span class="w"> </span><span class="n">chsh</span><span class="w"> </span><span class="o">[</span><span class="n">options</span><span class="o">]</span><span class="w"> </span><span class="o">&lt;</span><span class="n">new_shell</span><span class="o">&gt;</span><span class="w"></span>
-</pre></div>
+<div class="codehilite"><pre><span></span><code><span class="err">$</span><span class="w"> </span><span class="n">chsh</span><span class="w"> </span><span class="o">[</span><span class="n">options</span><span class="o">]</span><span class="w"> </span><span class="o">&lt;</span><span class="n">new_shell</span><span class="o">&gt;</span><span class="w"></span>
+</code></pre></div>
 
 
 <table>
@@ -174,9 +174,9 @@ Host <i>as.abci.ai</i>
 </tbody>
 </table>
 <p>例) ログインシェルを tcsh に変更する。</p>
-<div class="codehilite"><pre><span></span>[<span class="nv">username</span>@<span class="nv">es1</span> <span class="o">~</span>]$ <span class="nv">chsh</span> <span class="o">-</span><span class="nv">s</span> <span class="o">/</span><span class="nv">bin</span><span class="o">/</span><span class="nv">tcsh</span>
-<span class="nv">Password</span> <span class="k">for</span> <span class="nv">username</span>@<span class="nv">ABCI</span>.<span class="nv">LOCAL</span>: <span class="o">&lt;-</span> パスワードを入力
-</pre></div>
+<div class="codehilite"><pre><span></span><code><span class="p">[</span><span class="n">username</span><span class="o">@</span><span class="n">es1</span> <span class="o">~</span><span class="p">]</span><span class="o">$</span> <span class="n">chsh</span> <span class="o">-</span><span class="n">s</span> <span class="o">/</span><span class="n">bin</span><span class="o">/</span><span class="n">tcsh</span>
+<span class="n">Password</span> <span class="n">for</span> <span class="n">username</span><span class="o">@</span><span class="n">ABCI.LOCAL</span><span class="o">:</span> <span class="o">&lt;-</span> パスワードを入力
+</code></pre></div>
 
 
 <p>ABCIシステムへログインすると、ABCIシステムを利用するための環境設定が自動で設定されます。環境変数<code>PATH</code>や環境変数<code>LD_LIBRARY_PATH</code>等をカスタマイズする場合は、以下に示す個人用設定ファイルに設定してください。</p>
@@ -211,11 +211,11 @@ Host <i>as.abci.ai</i>
 <p>ABCIポイントの使用状況と購入数を確認するには、<code>show_point</code>コマンドを利用します。
 ABCIポイント消費率が100%を超える見込みの場合、新規ジョブ投入が行えず、投入済みジョブは実行開始時にエラーになります（実行中ジョブは影響を受けません）。</p>
 <p>例) ABCIポイントを確認する。</p>
-<div class="codehilite"><pre><span></span><span class="o">[</span><span class="n">username@es1 ~</span><span class="o">]</span><span class="err">$</span><span class="w"> </span><span class="n">show_point</span><span class="w"></span>
-<span class="k">Group</span><span class="w">                 </span><span class="k">Disk</span><span class="w">            </span><span class="n">CloudStorage</span><span class="w">                    </span><span class="n">Used</span><span class="w">           </span><span class="n">Point</span><span class="w">   </span><span class="n">Used</span><span class="o">%</span><span class="w"></span>
-<span class="n">grpname</span><span class="w">                  </span><span class="mi">5</span><span class="w">                  </span><span class="mf">0.0124</span><span class="w">             </span><span class="mi">12</span><span class="p">,</span><span class="mf">345.6789</span><span class="w">         </span><span class="mi">100</span><span class="p">,</span><span class="mi">000</span><span class="w">      </span><span class="mi">12</span><span class="w"></span>
-<span class="w">  </span><span class="err">`</span><span class="o">-</span><span class="w"> </span><span class="n">username</span><span class="w">          </span><span class="o">-</span><span class="w">                         </span><span class="o">-</span><span class="w">                  </span><span class="mf">0.1234</span><span class="w">               </span><span class="o">-</span><span class="w">       </span><span class="mi">0</span><span class="w"></span>
-</pre></div>
+<div class="codehilite"><pre><span></span><code><span class="err">[username@es1 ~]$ show_point</span>
+<span class="err">Group                 Disk            CloudStorage                    Used           Point   Used%</span>
+<span class="err">grpname                  5                  0.0124             12,345.6789         100,000      12</span>
+<span class="err">  `- username          -                         -                  0.1234               -       0</span>
+</code></pre></div>
 
 
 <table>
@@ -256,15 +256,15 @@ ABCIポイント消費率が100%を超える見込みの場合、新規ジョブ
 <p>ホーム領域およびグループ領域の使用状況と割り当て量を表示するには、
 <code>show_quota</code>コマンドを利用します。</p>
 <p>例) ディスククォータを確認する。</p>
-<div class="codehilite"><pre><span></span>[<span class="nv">username</span>@<span class="nv">es1</span> <span class="o">~</span>]$ <span class="nv">show_quota</span>
-<span class="nv">Disk</span> <span class="nv">quotas</span> <span class="k">for</span> <span class="nv">user</span> <span class="nv">username</span>
-  <span class="nv">Directory</span>                     <span class="nv">used</span><span class="ss">(</span><span class="nv">GiB</span><span class="ss">)</span>       <span class="nv">limit</span><span class="ss">(</span><span class="nv">GiB</span><span class="ss">)</span>          <span class="nv">nfiles</span>
-  <span class="o">/</span><span class="nv">home</span>                               <span class="mi">100</span>              <span class="mi">200</span>           <span class="mi">1</span>,<span class="mi">234</span>
+<div class="codehilite"><pre><span></span><code><span class="o">[</span><span class="n">username@es1 ~</span><span class="o">]</span><span class="err">$</span><span class="w"> </span><span class="n">show_quota</span><span class="w"></span>
+<span class="k">Disk</span><span class="w"> </span><span class="n">quotas</span><span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="k">user</span><span class="w"> </span><span class="n">username</span><span class="w"></span>
+<span class="w">  </span><span class="n">Directory</span><span class="w">                     </span><span class="n">used</span><span class="p">(</span><span class="n">GiB</span><span class="p">)</span><span class="w">       </span><span class="k">limit</span><span class="p">(</span><span class="n">GiB</span><span class="p">)</span><span class="w">          </span><span class="n">nfiles</span><span class="w"></span>
+<span class="w">  </span><span class="o">/</span><span class="n">home</span><span class="w">                               </span><span class="mi">100</span><span class="w">              </span><span class="mi">200</span><span class="w">           </span><span class="mi">1</span><span class="p">,</span><span class="mi">234</span><span class="w"></span>
 
-<span class="nv">Disk</span> <span class="nv">quotas</span> <span class="k">for</span> <span class="nv">ABCI</span> <span class="nv">group</span> <span class="nv">grpname</span>
-  <span class="nv">Directory</span>                     <span class="nv">used</span><span class="ss">(</span><span class="nv">GiB</span><span class="ss">)</span>       <span class="nv">limit</span><span class="ss">(</span><span class="nv">GiB</span><span class="ss">)</span>          <span class="nv">nfiles</span>
-  <span class="o">/</span><span class="nv">groups1</span><span class="o">/</span><span class="nv">grpname</span>                  <span class="mi">1</span>,<span class="mi">024</span>            <span class="mi">2</span>,<span class="mi">048</span>         <span class="mi">123</span>,<span class="mi">456</span>
-</pre></div>
+<span class="k">Disk</span><span class="w"> </span><span class="n">quotas</span><span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="n">ABCI</span><span class="w"> </span><span class="k">group</span><span class="w"> </span><span class="n">grpname</span><span class="w"></span>
+<span class="w">  </span><span class="n">Directory</span><span class="w">                     </span><span class="n">used</span><span class="p">(</span><span class="n">GiB</span><span class="p">)</span><span class="w">       </span><span class="k">limit</span><span class="p">(</span><span class="n">GiB</span><span class="p">)</span><span class="w">          </span><span class="n">nfiles</span><span class="w"></span>
+<span class="w">  </span><span class="o">/</span><span class="n">groups1</span><span class="o">/</span><span class="n">grpname</span><span class="w">                  </span><span class="mi">1</span><span class="p">,</span><span class="mi">024</span><span class="w">            </span><span class="mi">2</span><span class="p">,</span><span class="mi">048</span><span class="w">         </span><span class="mi">123</span><span class="p">,</span><span class="mi">456</span><span class="w"></span>
+</code></pre></div>
 
 
 <table>
@@ -341,16 +341,16 @@ ABCIポイント消費率が100%を超える見込みの場合、新規ジョブ
 <h2 id="check-cloud-storage-usage">2.9. ABCI クラウドストレージ利用状況の確認</h2>
 <p>ABCI クラウドストレージの使用状況表示するには、<code>show_cs_usage</code> コマンドを利用します。</p>
 <p>例1) オプション指定なしで、所属するABCIグループ grpname の直近の利用状態を確認できます。</p>
-<div class="codehilite"><pre><span></span>[<span class="nv">username</span>@<span class="nv">es1</span> <span class="o">~</span>]$ <span class="nv">show_cs_usage</span>
-<span class="nv">Cloud</span> <span class="nv">Storage</span> <span class="nv">Usage</span> <span class="k">for</span> <span class="nv">ABCI</span> <span class="nv">groups</span>
-<span class="nv">Date</span>           <span class="nv">Group</span>                   <span class="nv">used</span><span class="ss">(</span><span class="nv">GiB</span><span class="ss">)</span>
-<span class="mi">2020</span><span class="o">/</span><span class="mi">01</span><span class="o">/</span><span class="mi">13</span>     <span class="nv">grpname</span>                       <span class="mi">162</span>
-</pre></div>
+<div class="codehilite"><pre><span></span><code><span class="err">[username@es1 ~]$ show_cs_usage</span>
+<span class="err">Cloud Storage Usage for ABCI groups</span>
+<span class="err">Date           Group                   used(GiB)</span>
+<span class="err">2020/01/13     grpname                       162</span>
+</code></pre></div>
 
 
 <p>例2) オプション -d で日付を指定できます。日付の書式は、 yyyymmdd で指定してください。(ABCIグループは grpname)</p>
-<div class="codehilite"><pre><span></span>[<span class="nv">username</span>@<span class="nv">es1</span> <span class="o">~</span>]$ <span class="nv">show_cs_usage</span> <span class="o">-</span><span class="nv">d</span> <span class="mi">20191217</span>
-<span class="nv">Cloud</span> <span class="nv">Storage</span> <span class="nv">Usage</span> <span class="k">for</span> <span class="nv">ABCI</span> <span class="nv">groups</span>
-<span class="nv">Date</span>           <span class="nv">Group</span>                   <span class="nv">used</span><span class="ss">(</span><span class="nv">GiB</span><span class="ss">)</span>
-<span class="mi">2019</span><span class="o">/</span><span class="mi">12</span><span class="o">/</span><span class="mi">17</span>     <span class="nv">grpname</span>                       <span class="mi">124</span>
-</pre></div></article></div></div></main><footer class="md-footer"><div class="md-footer-nav"><nav class="md-footer-nav__inner md-grid"><a href="../01/" title="1. ABCIシステムの概要" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev"><div class="md-flex__cell md-flex__cell--shrink"><i class="md-icon md-icon--arrow-back md-footer-nav__button"></i></div><div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title"><span class="md-flex__ellipsis"><span class="md-footer-nav__direction">前</span>1. ABCIシステムの概要</span></div></a><a href="../03/" title="3. ジョブ実行環境" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next"><div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title"><span class="md-flex__ellipsis"><span class="md-footer-nav__direction">次</span>3. ジョブ実行環境</span></div><div class="md-flex__cell md-flex__cell--shrink"><i class="md-icon md-icon--arrow-forward md-footer-nav__button"></i></div></a></nav></div><div class="md-footer-meta md-typeset"><div class="md-footer-meta__inner md-grid"><div class="md-footer-copyright"><div class="md-footer-copyright__highlight">Copyright &copy; 2018 National Institute of Advanced Industrial Science and Technology (AIST)</div>powered by <a href="https://www.mkdocs.org">MkDocs</a> and <a href="https://squidfunk.github.io/mkdocs-material/">Material for MkDocs</a></div></div></div></footer></div><script src="../assets/javascripts/application.b260a35d.js"></script><script src="../assets/javascripts/lunr/lunr.stemmer.support.js"></script><script src="../assets/javascripts/lunr/tinyseg.js"></script><script src="../assets/javascripts/lunr/lunr.ja.js"></script><script>app.initialize({version:"1.0.4",url:{base:".."}})</script></body></html>
+<div class="codehilite"><pre><span></span><code><span class="err">[username@es1 ~]$ show_cs_usage -d 20191217</span>
+<span class="err">Cloud Storage Usage for ABCI groups</span>
+<span class="err">Date           Group                   used(GiB)</span>
+<span class="err">2019/12/17     grpname                       124</span>
+</code></pre></div></article></div></div></main><footer class="md-footer"><div class="md-footer-nav"><nav class="md-footer-nav__inner md-grid"><a href="../01/" title="1. ABCIシステムの概要" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev"><div class="md-flex__cell md-flex__cell--shrink"><i class="md-icon md-icon--arrow-back md-footer-nav__button"></i></div><div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title"><span class="md-flex__ellipsis"><span class="md-footer-nav__direction">前</span>1. ABCIシステムの概要</span></div></a><a href="../03/" title="3. ジョブ実行環境" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next"><div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title"><span class="md-flex__ellipsis"><span class="md-footer-nav__direction">次</span>3. ジョブ実行環境</span></div><div class="md-flex__cell md-flex__cell--shrink"><i class="md-icon md-icon--arrow-forward md-footer-nav__button"></i></div></a></nav></div><div class="md-footer-meta md-typeset"><div class="md-footer-meta__inner md-grid"><div class="md-footer-copyright"><div class="md-footer-copyright__highlight">Copyright &copy; 2018 National Institute of Advanced Industrial Science and Technology (AIST)</div>powered by <a href="https://www.mkdocs.org">MkDocs</a> and <a href="https://squidfunk.github.io/mkdocs-material/">Material for MkDocs</a></div></div></div></footer></div><script src="../assets/javascripts/application.b260a35d.js"></script><script src="../assets/javascripts/lunr/lunr.stemmer.support.js"></script><script src="../assets/javascripts/lunr/tinyseg.js"></script><script src="../assets/javascripts/lunr/lunr.ja.js"></script><script>app.initialize({version:"1.1",url:{base:".."}})</script></body></html>

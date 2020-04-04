@@ -1,4 +1,4 @@
-<!doctype html><html lang="en" class="no-js"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta http-equiv="x-ua-compatible" content="ie=edge"><meta name="description" content="ABCI Users Guide, English version"><link rel="canonical" href="https://docs.abci.ai/en/06/"><meta name="author" content="AIST"><meta name="lang:clipboard.copy" content="Copy to clipboard"><meta name="lang:clipboard.copied" content="Copied to clipboard"><meta name="lang:search.language" content="en"><meta name="lang:search.pipeline.stopwords" content="True"><meta name="lang:search.pipeline.trimmer" content="True"><meta name="lang:search.result.none" content="No matching documents"><meta name="lang:search.result.one" content="1 matching document"><meta name="lang:search.result.other" content="# matching documents"><meta name="lang:search.tokenizer" content="[\s\-]+"><link rel="shortcut icon" href="../assets/images/favicon.png"><meta name="generator" content="mkdocs-1.0.4, mkdocs-material-4.3.1"><title>6. Python - ABCI Users Guide</title><link rel="stylesheet" href="../assets/stylesheets/application.4031d38b.css"><link rel="stylesheet" href="../assets/stylesheets/application-palette.224b79ff.css"><meta name="theme-color" content="#ef5350"><script src="../assets/javascripts/modernizr.74668098.js"></script><link href="https://fonts.gstatic.com" rel="preconnect" crossorigin><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700|Roboto+Mono&display=swap"><style>body,input{font-family:"Roboto","Helvetica Neue",Helvetica,Arial,sans-serif}code,kbd,pre{font-family:"Roboto Mono","Courier New",Courier,monospace}</style><link rel="stylesheet" href="../assets/fonts/material-icons.css"><script>window.ga = window.ga || function() {
+<!doctype html><html lang="en" class="no-js"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta http-equiv="x-ua-compatible" content="ie=edge"><meta name="description" content="ABCI Users Guide, English version"><link rel="canonical" href="https://docs.abci.ai/en/06/"><meta name="author" content="AIST"><meta name="lang:clipboard.copy" content="Copy to clipboard"><meta name="lang:clipboard.copied" content="Copied to clipboard"><meta name="lang:search.language" content="en"><meta name="lang:search.pipeline.stopwords" content="True"><meta name="lang:search.pipeline.trimmer" content="True"><meta name="lang:search.result.none" content="No matching documents"><meta name="lang:search.result.one" content="1 matching document"><meta name="lang:search.result.other" content="# matching documents"><meta name="lang:search.tokenizer" content="[\s\-]+"><link rel="shortcut icon" href="../assets/images/favicon.png"><meta name="generator" content="mkdocs-1.1, mkdocs-material-4.3.1"><title>6. Python - ABCI Users Guide</title><link rel="stylesheet" href="../assets/stylesheets/application.4031d38b.css"><link rel="stylesheet" href="../assets/stylesheets/application-palette.224b79ff.css"><meta name="theme-color" content="#ef5350"><script src="../assets/javascripts/modernizr.74668098.js"></script><link href="https://fonts.gstatic.com" rel="preconnect" crossorigin><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700|Roboto+Mono&display=swap"><style>body,input{font-family:"Roboto","Helvetica Neue",Helvetica,Arial,sans-serif}code,kbd,pre{font-family:"Roboto Mono","Courier New",Courier,monospace}</style><link rel="stylesheet" href="../assets/fonts/material-icons.css"><script>window.ga = window.ga || function() {
     (ga.q = ga.q || []).push(arguments)
   }
   ga.l = +new Date
@@ -21,26 +21,26 @@
 <h2 id="available-python-versions">Available Python versions</h2>
 <p><a href="https://www.python.org/">Python</a> is available on the ABCI System.</p>
 <p>To show available Python versions with using <code>module</code> command:</p>
-<div class="codehilite"><pre><span></span>$ module avail python
+<div class="codehilite"><pre><span></span><code>$ module avail python
 
 -------------------------------- /apps/modules/modulefiles/devtools --------------------------------
 python/2.7/2.7.15 python/3.4/3.4.8  python/3.5/3.5.5  python/3.6/3.6.5
-</pre></div>
+</code></pre></div>
 
 
 <p>To set up one of available versions with using <code>module</code> command:</p>
 <p>Example) Python 2.7.15:</p>
-<div class="codehilite"><pre><span></span>$ module load python/2.7/2.7.15
+<div class="codehilite"><pre><span></span><code>$ module load python/2.7/2.7.15
 $ python --version
 Python <span class="m">2</span>.7.15
-</pre></div>
+</code></pre></div>
 
 
 <p>Example) Python 3.6.5:</p>
-<div class="codehilite"><pre><span></span>$ module load python/3.6/3.6.5
+<div class="codehilite"><pre><span></span><code>$ module load python/3.6/3.6.5
 $ python3 --version
 Python <span class="m">3</span>.6.5
-</pre></div>
+</code></pre></div>
 
 
 <div class="admonition note">
@@ -55,67 +55,67 @@ Each virtual environment has its own Python binary (which matches the version of
 <h3 id="virtualenv">virtualenv</h3>
 <p>Below are examples of executing <code>virtualenv</code>:</p>
 <p>Example) Creation of a virtual environment</p>
-<div class="codehilite"><pre><span></span><span class="o">[</span><span class="n">username@es1 ~</span><span class="o">]</span><span class="err">$</span><span class="w"> </span><span class="k">module</span><span class="w"> </span><span class="k">load</span><span class="w"> </span><span class="n">python</span><span class="o">/</span><span class="mf">2.7</span><span class="o">/</span><span class="mf">2.7.15</span><span class="w"></span>
-<span class="o">[</span><span class="n">username@es1 ~</span><span class="o">]</span><span class="err">$</span><span class="w"> </span><span class="n">virtualenv</span><span class="w"> </span><span class="n">env1</span><span class="w"></span>
-<span class="k">New</span><span class="w"> </span><span class="n">python</span><span class="w"> </span><span class="n">executable</span><span class="w"> </span><span class="ow">in</span><span class="w"> </span><span class="o">/</span><span class="n">home</span><span class="o">/</span><span class="n">username</span><span class="o">/</span><span class="n">env1</span><span class="o">/</span><span class="n">bin</span><span class="o">/</span><span class="n">python2</span><span class="mf">.7</span><span class="w"></span>
-<span class="n">Also</span><span class="w"> </span><span class="n">creating</span><span class="w"> </span><span class="n">executable</span><span class="w"> </span><span class="ow">in</span><span class="w"> </span><span class="o">/</span><span class="n">home</span><span class="o">/</span><span class="n">username</span><span class="o">/</span><span class="n">env1</span><span class="o">/</span><span class="n">bin</span><span class="o">/</span><span class="n">python</span><span class="w"></span>
-<span class="n">Installing</span><span class="w"> </span><span class="n">setuptools</span><span class="p">,</span><span class="w"> </span><span class="n">pip</span><span class="p">,</span><span class="w"> </span><span class="n">wheel</span><span class="p">...</span><span class="n">done</span><span class="p">.</span><span class="w"></span>
-</pre></div>
+<div class="codehilite"><pre><span></span><code><span class="err">[username@es1 ~]$ module load python/2.7/2.7.15</span>
+<span class="err">[username@es1 ~]$ virtualenv env1</span>
+<span class="err">New python executable in /home/username/env1/bin/python2.7</span>
+<span class="err">Also creating executable in /home/username/env1/bin/python</span>
+<span class="err">Installing setuptools, pip, wheel...done.</span>
+</code></pre></div>
 
 
 <p>Example) Activating a virtual environment</p>
-<div class="codehilite"><pre><span></span><span class="o">[</span><span class="n">username@es1 ~</span><span class="o">]</span><span class="err">$</span><span class="w"> </span><span class="n">source</span><span class="w"> </span><span class="n">env1</span><span class="o">/</span><span class="n">bin</span><span class="o">/</span><span class="n">activate</span><span class="w"></span>
-<span class="p">(</span><span class="n">env1</span><span class="p">)</span><span class="w"> </span><span class="o">[</span><span class="n">username@es1 ~</span><span class="o">]</span><span class="err">$</span><span class="w"></span>
-<span class="p">(</span><span class="n">env1</span><span class="p">)</span><span class="w"> </span><span class="o">[</span><span class="n">username@es1 ~</span><span class="o">]</span><span class="err">$</span><span class="w"> </span><span class="n">which</span><span class="w"> </span><span class="n">python</span><span class="w"></span>
-<span class="o">~/</span><span class="n">env1</span><span class="o">/</span><span class="n">bin</span><span class="o">/</span><span class="n">python</span><span class="w"></span>
-<span class="p">(</span><span class="n">env1</span><span class="p">)</span><span class="w"> </span><span class="o">[</span><span class="n">username@es1 ~</span><span class="o">]</span><span class="err">$</span><span class="w"> </span><span class="n">which</span><span class="w"> </span><span class="n">pip</span><span class="w"></span>
-<span class="o">~/</span><span class="n">env1</span><span class="o">/</span><span class="n">bin</span><span class="o">/</span><span class="n">pip</span><span class="w"></span>
-</pre></div>
+<div class="codehilite"><pre><span></span><code><span class="err">[username@es1 ~]$ source env1/bin/activate</span>
+<span class="err">(env1) [username@es1 ~]$</span>
+<span class="err">(env1) [username@es1 ~]$ which python</span>
+<span class="err">~/env1/bin/python</span>
+<span class="err">(env1) [username@es1 ~]$ which pip</span>
+<span class="err">~/env1/bin/pip</span>
+</code></pre></div>
 
 
 <p>Example) Installing <code>numpy</code> to a virtual environment</p>
-<div class="codehilite"><pre><span></span><span class="p">(</span><span class="n">env1</span><span class="p">)</span><span class="w"> </span><span class="o">[</span><span class="n">username@es1 ~</span><span class="o">]</span><span class="err">$</span><span class="w"> </span><span class="n">pip</span><span class="w"> </span><span class="n">install</span><span class="w"> </span><span class="n">numpy</span><span class="w"></span>
-</pre></div>
+<div class="codehilite"><pre><span></span><code><span class="err">(env1) [username@es1 ~]$ pip install numpy</span>
+</code></pre></div>
 
 
 <p>Example) Deactivating a virtual environment</p>
-<div class="codehilite"><pre><span></span><span class="p">(</span><span class="n">env1</span><span class="p">)</span><span class="w"> </span><span class="o">[</span><span class="n">username@es1 ~</span><span class="o">]</span><span class="err">$</span><span class="w"> </span><span class="n">deactivate</span><span class="w"></span>
-<span class="o">[</span><span class="n">username@es1 ~</span><span class="o">]</span><span class="err">$</span><span class="w"></span>
-</pre></div>
+<div class="codehilite"><pre><span></span><code><span class="err">(env1) [username@es1 ~]$ deactivate</span>
+<span class="err">[username@es1 ~]$</span>
+</code></pre></div>
 
 
 <h3 id="venv">venv</h3>
 <p>Below are examples of executing <code>venv</code>:</p>
 <p>Example) Creation of a virtual environment</p>
-<div class="codehilite"><pre><span></span><span class="o">[</span><span class="n">username@es1 ~</span><span class="o">]</span><span class="err">$</span><span class="w"> </span><span class="k">module</span><span class="w"> </span><span class="k">load</span><span class="w"> </span><span class="n">python</span><span class="o">/</span><span class="mf">3.6</span><span class="o">/</span><span class="mf">3.6.5</span><span class="w"></span>
-<span class="o">[</span><span class="n">username@es1 ~</span><span class="o">]</span><span class="err">$</span><span class="w"> </span><span class="n">python3</span><span class="w"> </span><span class="o">-</span><span class="n">m</span><span class="w"> </span><span class="n">venv</span><span class="w"> </span><span class="k">work</span><span class="w"></span>
-</pre></div>
+<div class="codehilite"><pre><span></span><code><span class="err">[username@es1 ~]$ module load python/3.6/3.6.5</span>
+<span class="err">[username@es1 ~]$ python3 -m venv work</span>
+</code></pre></div>
 
 
 <p>Example) Activating a virtual environment</p>
-<div class="codehilite"><pre><span></span><span class="o">[</span><span class="n">username@es1 ~</span><span class="o">]</span><span class="err">$</span><span class="w"> </span><span class="n">source</span><span class="w"> </span><span class="k">work</span><span class="o">/</span><span class="n">bin</span><span class="o">/</span><span class="n">activate</span><span class="w"></span>
-<span class="p">(</span><span class="k">work</span><span class="p">)</span><span class="w"> </span><span class="o">[</span><span class="n">username@es1 ~</span><span class="o">]</span><span class="err">$</span><span class="w"> </span><span class="n">which</span><span class="w"> </span><span class="n">python3</span><span class="w"></span>
-<span class="o">/</span><span class="n">fs3</span><span class="o">/</span><span class="n">home</span><span class="o">/</span><span class="n">username</span><span class="o">/</span><span class="k">work</span><span class="o">/</span><span class="n">bin</span><span class="o">/</span><span class="n">python3</span><span class="w"></span>
-<span class="p">(</span><span class="k">work</span><span class="p">)</span><span class="w"> </span><span class="o">[</span><span class="n">username@es1 ~</span><span class="o">]</span><span class="err">$</span><span class="w"> </span><span class="n">which</span><span class="w"> </span><span class="n">pip3</span><span class="w"></span>
-<span class="o">/</span><span class="n">fs3</span><span class="o">/</span><span class="n">home</span><span class="o">/</span><span class="n">username</span><span class="o">/</span><span class="k">work</span><span class="o">/</span><span class="n">bin</span><span class="o">/</span><span class="n">pip3</span><span class="w"></span>
-</pre></div>
+<div class="codehilite"><pre><span></span><code><span class="err">[username@es1 ~]$ source work/bin/activate</span>
+<span class="err">(work) [username@es1 ~]$ which python3</span>
+<span class="err">/fs3/home/username/work/bin/python3</span>
+<span class="err">(work) [username@es1 ~]$ which pip3</span>
+<span class="err">/fs3/home/username/work/bin/pip3</span>
+</code></pre></div>
 
 
 <p>Example) Installing <code>numpy</code> to a virtual environment</p>
-<div class="codehilite"><pre><span></span><span class="p">(</span><span class="k">work</span><span class="p">)</span><span class="w"> </span><span class="o">[</span><span class="n">username@es1 ~</span><span class="o">]</span><span class="err">$</span><span class="w"> </span><span class="n">pip3</span><span class="w"> </span><span class="n">install</span><span class="w"> </span><span class="n">numpy</span><span class="w"></span>
-</pre></div>
+<div class="codehilite"><pre><span></span><code><span class="err">(work) [username@es1 ~]$ pip3 install numpy</span>
+</code></pre></div>
 
 
 <p>Example) Deactivating a virtual environment</p>
-<div class="codehilite"><pre><span></span><span class="p">(</span><span class="k">work</span><span class="p">)</span><span class="w"> </span><span class="o">[</span><span class="n">username@es1 ~</span><span class="o">]</span><span class="err">$</span><span class="w"> </span><span class="n">deactivate</span><span class="w"></span>
-<span class="o">[</span><span class="n">username@es1 ~</span><span class="o">]</span><span class="err">$</span><span class="w"></span>
-</pre></div>
+<div class="codehilite"><pre><span></span><code><span class="err">(work) [username@es1 ~]$ deactivate</span>
+<span class="err">[username@es1 ~]$</span>
+</code></pre></div>
 
 
 <h2 id="pip">pip</h2>
 <p><a href="https://pip.pypa.io/en/stable/">pip</a> in the package management system for Python. You can use pip to install packages from <a href="https://pypi.org/">the Python Pakcage Index (PyPI)</a>, a repository of Python software.</p>
-<div class="codehilite"><pre><span></span><span class="err">$</span><span class="w"> </span><span class="n">pip</span><span class="w"> </span><span class="o">&lt;</span><span class="n">sub</span><span class="o">-</span><span class="n">command</span><span class="o">&gt;</span><span class="w"> </span><span class="o">[</span><span class="n">options</span><span class="o">]</span><span class="w"></span>
-</pre></div>
+<div class="codehilite"><pre><span></span><code><span class="err">$</span><span class="w"> </span><span class="n">pip</span><span class="w"> </span><span class="o">&lt;</span><span class="n">sub</span><span class="o">-</span><span class="n">command</span><span class="o">&gt;</span><span class="w"> </span><span class="o">[</span><span class="n">options</span><span class="o">]</span><span class="w"></span>
+</code></pre></div>
 
 
 <table>
@@ -147,4 +147,4 @@ Each virtual environment has its own Python binary (which matches the version of
 <td align="left">list installed packages</td>
 </tr>
 </tbody>
-</table></article></div></div></main><footer class="md-footer"><div class="md-footer-nav"><nav class="md-footer-nav__inner md-grid"><a href="../05/" title="5. Environment Modules" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev"><div class="md-flex__cell md-flex__cell--shrink"><i class="md-icon md-icon--arrow-back md-footer-nav__button"></i></div><div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title"><span class="md-flex__ellipsis"><span class="md-footer-nav__direction">Previous</span>5. Environment Modules</span></div></a><a href="../07/" title="7. GPU" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next"><div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title"><span class="md-flex__ellipsis"><span class="md-footer-nav__direction">Next</span>7. GPU</span></div><div class="md-flex__cell md-flex__cell--shrink"><i class="md-icon md-icon--arrow-forward md-footer-nav__button"></i></div></a></nav></div><div class="md-footer-meta md-typeset"><div class="md-footer-meta__inner md-grid"><div class="md-footer-copyright"><div class="md-footer-copyright__highlight">Copyright &copy; 2018 National Institute of Advanced Industrial Science and Technology (AIST)</div>powered by <a href="https://www.mkdocs.org">MkDocs</a> and <a href="https://squidfunk.github.io/mkdocs-material/">Material for MkDocs</a></div></div></div></footer></div><script src="../assets/javascripts/application.b260a35d.js"></script><script>app.initialize({version:"1.0.4",url:{base:".."}})</script></body></html>
+</table></article></div></div></main><footer class="md-footer"><div class="md-footer-nav"><nav class="md-footer-nav__inner md-grid"><a href="../05/" title="5. Environment Modules" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev"><div class="md-flex__cell md-flex__cell--shrink"><i class="md-icon md-icon--arrow-back md-footer-nav__button"></i></div><div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title"><span class="md-flex__ellipsis"><span class="md-footer-nav__direction">Previous</span>5. Environment Modules</span></div></a><a href="../07/" title="7. GPU" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next"><div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title"><span class="md-flex__ellipsis"><span class="md-footer-nav__direction">Next</span>7. GPU</span></div><div class="md-flex__cell md-flex__cell--shrink"><i class="md-icon md-icon--arrow-forward md-footer-nav__button"></i></div></a></nav></div><div class="md-footer-meta md-typeset"><div class="md-footer-meta__inner md-grid"><div class="md-footer-copyright"><div class="md-footer-copyright__highlight">Copyright &copy; 2018 National Institute of Advanced Industrial Science and Technology (AIST)</div>powered by <a href="https://www.mkdocs.org">MkDocs</a> and <a href="https://squidfunk.github.io/mkdocs-material/">Material for MkDocs</a></div></div></div></footer></div><script src="../assets/javascripts/application.b260a35d.js"></script><script>app.initialize({version:"1.1",url:{base:".."}})</script></body></html>

@@ -1,4 +1,4 @@
-<!doctype html><html lang="ja" class="no-js"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta http-equiv="x-ua-compatible" content="ie=edge"><meta name="description" content="ABCI Users Guide, Japanese version"><link rel="canonical" href="https://docs.abci.ai/ja/tips/spack/"><meta name="author" content="AIST"><meta name="lang:clipboard.copy" content="クリップボードへコピー"><meta name="lang:clipboard.copied" content="コピーしました"><meta name="lang:search.language" content="ja"><meta name="lang:search.pipeline.stopwords" content="True"><meta name="lang:search.pipeline.trimmer" content="True"><meta name="lang:search.result.none" content="何も見つかりませんでした"><meta name="lang:search.result.one" content="1件見つかりました"><meta name="lang:search.result.other" content="#件見つかりました"><meta name="lang:search.tokenizer" content="[\s\-　、。，．]+"><link rel="shortcut icon" href="../../assets/images/favicon.png"><meta name="generator" content="mkdocs-1.0.4, mkdocs-material-4.3.1"><title>Spackによるソフトウェア管理 - ABCI Users Guide</title><link rel="stylesheet" href="../../assets/stylesheets/application.4031d38b.css"><link rel="stylesheet" href="../../assets/stylesheets/application-palette.224b79ff.css"><meta name="theme-color" content="#ef5350"><script src="../../assets/javascripts/modernizr.74668098.js"></script><link href="https://fonts.gstatic.com" rel="preconnect" crossorigin><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700|Roboto+Mono&display=swap"><style>body,input{font-family:"Roboto","Helvetica Neue",Helvetica,Arial,sans-serif}code,kbd,pre{font-family:"Roboto Mono","Courier New",Courier,monospace}</style><link rel="stylesheet" href="../../assets/fonts/material-icons.css"><script>window.ga = window.ga || function() {
+<!doctype html><html lang="ja" class="no-js"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta http-equiv="x-ua-compatible" content="ie=edge"><meta name="description" content="ABCI Users Guide, Japanese version"><link rel="canonical" href="https://docs.abci.ai/ja/tips/spack/"><meta name="author" content="AIST"><meta name="lang:clipboard.copy" content="クリップボードへコピー"><meta name="lang:clipboard.copied" content="コピーしました"><meta name="lang:search.language" content="ja"><meta name="lang:search.pipeline.stopwords" content="True"><meta name="lang:search.pipeline.trimmer" content="True"><meta name="lang:search.result.none" content="何も見つかりませんでした"><meta name="lang:search.result.one" content="1件見つかりました"><meta name="lang:search.result.other" content="#件見つかりました"><meta name="lang:search.tokenizer" content="[\s\-　、。，．]+"><link rel="shortcut icon" href="../../assets/images/favicon.png"><meta name="generator" content="mkdocs-1.1, mkdocs-material-4.3.1"><title>Spackによるソフトウェア管理 - ABCI Users Guide</title><link rel="stylesheet" href="../../assets/stylesheets/application.4031d38b.css"><link rel="stylesheet" href="../../assets/stylesheets/application-palette.224b79ff.css"><meta name="theme-color" content="#ef5350"><script src="../../assets/javascripts/modernizr.74668098.js"></script><link href="https://fonts.gstatic.com" rel="preconnect" crossorigin><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700|Roboto+Mono&display=swap"><style>body,input{font-family:"Roboto","Helvetica Neue",Helvetica,Arial,sans-serif}code,kbd,pre{font-family:"Roboto Mono","Courier New",Courier,monospace}</style><link rel="stylesheet" href="../../assets/fonts/material-icons.css"><script>window.ga = window.ga || function() {
     (ga.q = ga.q || []).push(arguments)
   }
   ga.l = +new Date
@@ -33,15 +33,15 @@ ABCI上でSpackを使うことにより、ABCIが標準でサポートしてい�
 <h2 id="setup-spack">Spack環境設定</h2>
 <h3 id="install">インストール</h3>
 <p>GitHubからcloneし、使用するバージョンをcheckoutすることで、Spackをインストールすることができます。</p>
-<div class="codehilite"><pre><span></span><span class="o">[</span><span class="n">username@es1 ~</span><span class="o">]</span><span class="err">$</span><span class="w"> </span><span class="n">git</span><span class="w"> </span><span class="n">clone</span><span class="w"> </span><span class="nl">https</span><span class="p">:</span><span class="o">//</span><span class="n">github</span><span class="p">.</span><span class="n">com</span><span class="o">/</span><span class="n">spack</span><span class="o">/</span><span class="n">spack</span><span class="p">.</span><span class="n">git</span><span class="w"></span>
-<span class="o">[</span><span class="n">username@es1 ~</span><span class="o">]</span><span class="err">$</span><span class="w"> </span><span class="n">cd</span><span class="w"> </span><span class="p">.</span><span class="o">/</span><span class="n">spack</span><span class="w"></span>
-<span class="o">[</span><span class="n">username@es1 ~/spack</span><span class="o">]</span><span class="err">$</span><span class="w"> </span><span class="n">git</span><span class="w"> </span><span class="n">checkout</span><span class="w"> </span><span class="n">v0</span><span class="mf">.13.3</span><span class="w"></span>
-</pre></div>
+<div class="codehilite"><pre><span></span><code><span class="err">[username@es1 ~]$ git clone https://github.com/spack/spack.git</span>
+<span class="err">[username@es1 ~]$ cd ./spack</span>
+<span class="err">[username@es1 ~/spack]$ git checkout v0.13.3</span>
+</code></pre></div>
 
 
 <p>以降はターミナル上で、Spackを有効化するスクリプトを読み込めば使えます。</p>
-<div class="codehilite"><pre><span></span>[username@es1 ~]$ source <span class="cp">${</span><span class="n">HOME</span><span class="cp">}</span>/spack/share/spack/setup-env.sh
-</pre></div>
+<div class="codehilite"><pre><span></span><code>[username@es1 ~]$ source <span class="cp">${</span><span class="n">HOME</span><span class="cp">}</span>/spack/share/spack/setup-env.sh
+</code></pre></div>
 
 
 <h3 id="configuration-for-abci">ABCI用設定</h3>
@@ -51,22 +51,22 @@ ABCI上でSpackを使うことにより、ABCIが標準でサポートしてい�
 <p>ここでは、ABCIが提供するGCC 4.4.7と4.8.5、7.4.0を登録します。
 GCC 4.4.7と4.8.5は標準のパス（/usr/bin）に入っているため、Spackが自動的に見つけます。
 GCC 7.4.0はモジュールとして提供されているため、<code>module load</code>する必要があります。</p>
-<div class="codehilite"><pre><span></span><span class="o">[</span><span class="n">username@es1 ~</span><span class="o">]</span><span class="err">$</span><span class="w"> </span><span class="k">module</span><span class="w"> </span><span class="k">load</span><span class="w"> </span><span class="n">gcc</span><span class="o">/</span><span class="mf">7.4.0</span><span class="w"></span>
-<span class="o">[</span><span class="n">username@es1 ~</span><span class="o">]</span><span class="err">$</span><span class="w"> </span><span class="n">spack</span><span class="w"> </span><span class="n">compiler</span><span class="w"> </span><span class="n">find</span><span class="w"></span>
-<span class="o">[</span><span class="n">username@es1 ~</span><span class="o">]</span><span class="err">$</span><span class="w"> </span><span class="k">module</span><span class="w"> </span><span class="n">purge</span><span class="w"></span>
-</pre></div>
+<div class="codehilite"><pre><span></span><code><span class="err">[username@es1 ~]$ module load gcc/7.4.0</span>
+<span class="err">[username@es1 ~]$ spack compiler find</span>
+<span class="err">[username@es1 ~]$ module purge</span>
+</code></pre></div>
 
 
 <p>Spackに登録されているコンパイラを表示するコマンド<code>spack compiler list</code>を実行し、以下のように出力されれば、登録されていることが確認できます。</p>
-<div class="codehilite"><pre><span></span><span class="p">[</span><span class="n">username</span><span class="p">@</span><span class="n">es1</span> <span class="o">~</span><span class="p">]</span><span class="err">$</span> <span class="n">spack</span> <span class="n">compiler</span> <span class="n">list</span>
+<div class="codehilite"><pre><span></span><code><span class="p">[</span><span class="n">username</span><span class="p">@</span><span class="n">es1</span> <span class="o">~</span><span class="p">]</span><span class="err">$</span> <span class="n">spack</span> <span class="n">compiler</span> <span class="n">list</span>
 <span class="o">==&gt;</span> <span class="n">Available</span> <span class="n">compilers</span>
 <span class="o">--</span> <span class="n">gcc</span> <span class="n">centos7</span><span class="o">-</span><span class="n">x86_64</span> <span class="o">-------------------------------------------</span>
 <span class="n">gcc</span><span class="mf">@7.4.0</span>  <span class="n">gcc</span><span class="mf">@4.8.5</span>  <span class="n">gcc</span><span class="mf">@4.4.7</span>
-</pre></div>
+</code></pre></div>
 
 
 <p>コンパイラの設定ファイル<code>$HOME/.spack/linux/compilers.yaml</code>を編集し、GCC 7.4.0のrpathを設定します。</p>
-<div class="codehilite"><pre><span></span><span class="p">(</span><span class="n">snip</span><span class="p">)</span>
+<div class="codehilite"><pre><span></span><code><span class="p">(</span><span class="n">snip</span><span class="p">)</span>
 <span class="o">-</span> <span class="nl">compiler</span><span class="p">:</span>
     <span class="nl">paths</span><span class="p">:</span>
       <span class="nl">cc</span><span class="p">:</span> <span class="o">/</span><span class="n">apps</span><span class="o">/</span><span class="n">gcc</span><span class="o">/</span><span class="mf">7.4.0</span><span class="o">/</span><span class="n">bin</span><span class="o">/</span><span class="n">gcc</span>
@@ -82,15 +82,15 @@ GCC 7.4.0はモジュールとして提供されているため、<code>module l
     <span class="nl">flags</span><span class="p">:</span> <span class="p">{}</span>
     <span class="nl">spec</span><span class="p">:</span> <span class="n">gcc</span><span class="mf">@7.4.0</span>
 <span class="p">(</span><span class="n">snip</span><span class="p">)</span>
-</pre></div>
+</code></pre></div>
 
 
 <p>標準で使用するコンパイラは設定ファイル<code>$HOME/.spack/linux/packages.yaml</code>で設定できます。
 以下の例では標準コンパイラをgcc 4.8.5に設定しています。</p>
-<div class="codehilite"><pre><span></span><span class="nl">packages</span><span class="p">:</span>
+<div class="codehilite"><pre><span></span><code><span class="nl">packages</span><span class="p">:</span>
   <span class="nl">all</span><span class="p">:</span>
     <span class="nl">compiler</span><span class="p">:</span> <span class="p">[</span><span class="n">gcc</span><span class="mf">@4.8.5</span><span class="p">]</span>
-</pre></div>
+</code></pre></div>
 
 
 <h4 id="adding-abci-software">ABCIソフトウェアの登録</h4>
@@ -99,7 +99,7 @@ GCC 7.4.0はモジュールとして提供されているため、<code>module l
 ディスクスペースの浪費となりますので、ABCIが提供するソフトウェアは、Spackから<em>参照する</em>ように設定することをお勧めします。</p>
 <p>Spackが参照するソフトウェアの設定は<code>$HOME/.spack/linux/packages.yaml</code>に定義します。
 以下の内容で、そのファイルを作成してください（標準コンパイラの設定も含まれています）。</p>
-<div class="codehilite"><pre><span></span><span class="nl">packages</span><span class="p">:</span>
+<div class="codehilite"><pre><span></span><code><span class="nl">packages</span><span class="p">:</span>
   <span class="nl">cuda</span><span class="p">:</span>
     <span class="nl">paths</span><span class="p">:</span>
       <span class="n">cuda</span><span class="p">@</span><span class="n">abci</span><span class="o">-</span><span class="mf">8.0.61.2</span><span class="o">:</span>   <span class="o">/</span><span class="n">apps</span><span class="o">/</span><span class="n">cuda</span><span class="o">/</span><span class="mf">8.0.61.2</span>
@@ -123,7 +123,7 @@ GCC 7.4.0はモジュールとして提供されているため、<code>module l
       <span class="n">cmake</span><span class="p">@</span><span class="n">abci</span><span class="o">-</span><span class="mf">3.11.4</span><span class="o">:</span> <span class="o">/</span><span class="n">apps</span><span class="o">/</span><span class="n">cmake</span><span class="o">/</span><span class="mf">3.11.4</span>
   <span class="nl">all</span><span class="p">:</span>
     <span class="nl">compiler</span><span class="p">:</span> <span class="p">[</span><span class="n">gcc</span><span class="mf">@4.8.5</span><span class="p">]</span>
-</pre></div>
+</code></pre></div>
 
 
 <p>ここでは、CUDAとOpenMPI、MVAPICH、CMakeの設定をしています。
@@ -136,15 +136,15 @@ ABCIが提供していないバージョンのCUDAをSpackでインストール�
 詳細は<a href="https://spack.readthedocs.io/en/latest/basic_usage.html">公式ドキュメント</a>を参照ください。</p>
 <h3 id="compiler-operations">コンパイラ関連</h3>
 <p>Spackに登録されているコンパイラ一覧は<code>compiler list</code>サブコマンドで確認できます。</p>
-<div class="codehilite"><pre><span></span><span class="p">[</span><span class="n">username</span><span class="p">@</span><span class="n">es1</span> <span class="o">~</span><span class="p">]</span><span class="err">$</span> <span class="n">spack</span> <span class="n">compiler</span> <span class="n">list</span>
+<div class="codehilite"><pre><span></span><code><span class="p">[</span><span class="n">username</span><span class="p">@</span><span class="n">es1</span> <span class="o">~</span><span class="p">]</span><span class="err">$</span> <span class="n">spack</span> <span class="n">compiler</span> <span class="n">list</span>
 <span class="o">==&gt;</span> <span class="n">Available</span> <span class="n">compilers</span>
 <span class="o">--</span> <span class="n">gcc</span> <span class="n">centos7</span><span class="o">-</span><span class="n">x86_64</span> <span class="o">-------------------------------------------</span>
 <span class="n">gcc</span><span class="mf">@7.4.0</span>  <span class="n">gcc</span><span class="mf">@4.8.5</span>  <span class="n">gcc</span><span class="mf">@4.4.7</span>
-</pre></div>
+</code></pre></div>
 
 
 <p>特定コンパイラの詳細情報を確認するには、<code>compiler info</code>サブコマンドを実行します。</p>
-<div class="codehilite"><pre><span></span><span class="p">[</span><span class="n">username</span><span class="p">@</span><span class="n">es1</span> <span class="o">~</span><span class="p">]</span><span class="err">$</span> <span class="n">spack</span> <span class="n">compiler</span> <span class="n">info</span> <span class="n">gcc</span><span class="mf">@4.8.5</span>
+<div class="codehilite"><pre><span></span><code><span class="p">[</span><span class="n">username</span><span class="p">@</span><span class="n">es1</span> <span class="o">~</span><span class="p">]</span><span class="err">$</span> <span class="n">spack</span> <span class="n">compiler</span> <span class="n">info</span> <span class="n">gcc</span><span class="mf">@4.8.5</span>
 <span class="n">gcc</span><span class="mf">@4.8.5</span><span class="o">:</span>
     <span class="nl">paths</span><span class="p">:</span>
         <span class="n">cc</span> <span class="o">=</span> <span class="o">/</span><span class="n">usr</span><span class="o">/</span><span class="n">bin</span><span class="o">/</span><span class="n">gcc</span>
@@ -153,79 +153,79 @@ ABCIが提供していないバージョンのCUDAをSpackでインストール�
         <span class="n">fc</span> <span class="o">=</span> <span class="o">/</span><span class="n">usr</span><span class="o">/</span><span class="n">bin</span><span class="o">/</span><span class="n">gfortran</span>
     <span class="n">modules</span>  <span class="o">=</span> <span class="p">[]</span>
     <span class="n">operating</span> <span class="n">system</span>  <span class="o">=</span> <span class="n">centos7</span>
-</pre></div>
+</code></pre></div>
 
 
 <h3 id="software-management-operations">ソフトウェア管理関連</h3>
 <h4 id="install">インストール</h4>
 <p>OpenMPIのSpack標準バージョンは、以下の通りにインストールできます。
 <code>schedulers=sge</code>と<code>fabrics=auto</code>の意味は<a href="#cuda-aware-openmpi">導入事例</a>を参照ください。</p>
-<div class="codehilite"><pre><span></span><span class="o">[</span><span class="n">username@es1 ~</span><span class="o">]</span><span class="err">$</span><span class="w"> </span><span class="n">spack</span><span class="w"> </span><span class="n">install</span><span class="w"> </span><span class="n">openmpi</span><span class="w"> </span><span class="n">schedulers</span><span class="o">=</span><span class="n">sge</span><span class="w"> </span><span class="n">fabrics</span><span class="o">=</span><span class="n">auto</span><span class="w"></span>
-</pre></div>
+<div class="codehilite"><pre><span></span><code><span class="err">[username@es1 ~]$ spack install openmpi schedulers=sge fabrics=auto</span>
+</code></pre></div>
 
 
 <p>バージョンを指定する場合は、<code>@</code>で指定します。</p>
-<div class="codehilite"><pre><span></span><span class="p">[</span><span class="n">username</span><span class="p">@</span><span class="n">es1</span> <span class="o">~</span><span class="p">]</span><span class="err">$</span> <span class="n">spack</span> <span class="n">install</span> <span class="n">openmpi</span><span class="mf">@3.1.4</span> <span class="n">schedulers</span><span class="o">=</span><span class="n">sge</span> <span class="n">fabrics</span><span class="o">=</span><span class="k">auto</span>
-</pre></div>
+<div class="codehilite"><pre><span></span><code><span class="p">[</span><span class="n">username</span><span class="p">@</span><span class="n">es1</span> <span class="o">~</span><span class="p">]</span><span class="err">$</span> <span class="n">spack</span> <span class="n">install</span> <span class="n">openmpi</span><span class="mf">@3.1.4</span> <span class="n">schedulers</span><span class="o">=</span><span class="n">sge</span> <span class="n">fabrics</span><span class="o">=</span><span class="k">auto</span>
+</code></pre></div>
 
 
 <p>コンパイラを指定する場合は<code>%</code>で指定します。
 以下の例では、コンパイラのバージョンも指定しています。</p>
-<div class="codehilite"><pre><span></span><span class="p">[</span><span class="n">username</span><span class="p">@</span><span class="n">es1</span> <span class="o">~</span><span class="p">]</span><span class="err">$</span> <span class="n">spack</span> <span class="n">install</span> <span class="n">openmpi</span><span class="mf">@3.1.4</span> <span class="o">%</span><span class="n">gcc</span><span class="mf">@7.4.0</span> <span class="n">schedulers</span><span class="o">=</span><span class="n">sge</span> <span class="n">fabrics</span><span class="o">=</span><span class="k">auto</span>
-</pre></div>
+<div class="codehilite"><pre><span></span><code><span class="p">[</span><span class="n">username</span><span class="p">@</span><span class="n">es1</span> <span class="o">~</span><span class="p">]</span><span class="err">$</span> <span class="n">spack</span> <span class="n">install</span> <span class="n">openmpi</span><span class="mf">@3.1.4</span> <span class="o">%</span><span class="n">gcc</span><span class="mf">@7.4.0</span> <span class="n">schedulers</span><span class="o">=</span><span class="n">sge</span> <span class="n">fabrics</span><span class="o">=</span><span class="k">auto</span>
+</code></pre></div>
 
 
 <h4 id="uninstall">アンインストール</h4>
 <p><code>uninstall</code>サブコマンドで、インストール済みのソフトウェアをアンインストールできます。
 インストール同様に、バージョンを指定してアンインストールできます。</p>
-<div class="codehilite"><pre><span></span><span class="o">[</span><span class="n">username@es1 ~</span><span class="o">]</span><span class="err">$</span><span class="w"> </span><span class="n">spack</span><span class="w"> </span><span class="n">uninstall</span><span class="w"> </span><span class="n">openmpi</span><span class="w"></span>
-</pre></div>
+<div class="codehilite"><pre><span></span><code><span class="err">[username@es1 ~]$ spack uninstall openmpi</span>
+</code></pre></div>
 
 
 <p>ソフトウェアのハッシュを指定してアンインストールすることもできます。
 <code>/</code>に続いてハッシュを指定します。
 ハッシュは<a href="#information">情報確認</a>に示す通り、<code>find</code>サブコマンドで取得できます。</p>
-<div class="codehilite"><pre><span></span><span class="o">[</span><span class="n">username@es1 ~</span><span class="o">]</span><span class="err">$</span><span class="w"> </span><span class="n">spack</span><span class="w"> </span><span class="n">uninstall</span><span class="w"> </span><span class="o">/</span><span class="n">ffwtsvk</span><span class="w"></span>
-</pre></div>
+<div class="codehilite"><pre><span></span><code><span class="err">[username@es1 ~]$ spack uninstall /ffwtsvk</span>
+</code></pre></div>
 
 
 <p>インストールした全てのソフトウェアを一括して削除するには以下の通りに実行します。</p>
-<div class="codehilite"><pre><span></span><span class="o">[</span><span class="n">username@es1 ~</span><span class="o">]</span><span class="err">$</span><span class="w"> </span><span class="n">spack</span><span class="w"> </span><span class="n">uninstall</span><span class="w"> </span><span class="c1">--all</span>
-</pre></div>
+<div class="codehilite"><pre><span></span><code><span class="err">[username@es1 ~]$ spack uninstall --all</span>
+</code></pre></div>
 
 
 <h4 id="information">情報確認</h4>
 <p>Spackでインストールできるソフトウェア一覧は、<code>list</code>サブコマンドで確認できます。</p>
-<div class="codehilite"><pre><span></span><span class="o">[</span><span class="n">username@es1 ~</span><span class="o">]</span><span class="err">$</span><span class="w"> </span><span class="n">spack</span><span class="w"> </span><span class="n">list</span><span class="w"></span>
-<span class="n">abinit</span><span class="w"></span>
-<span class="n">abyss</span><span class="w"></span>
-<span class="p">(</span><span class="n">snip</span><span class="p">)</span><span class="w"></span>
-</pre></div>
+<div class="codehilite"><pre><span></span><code><span class="err">[username@es1 ~]$ spack list</span>
+<span class="err">abinit</span>
+<span class="err">abyss</span>
+<span class="err">(snip)</span>
+</code></pre></div>
 
 
 <p>キーワードを指定することで、キーワードを名前の一部に含むソフトウェアのみを表示できます。
 以下では<code>mpi</code>をキーワードとして指定しています。</p>
-<div class="codehilite"><pre><span></span><span class="o">[</span><span class="n">username@es1 ~</span><span class="o">]</span><span class="err">$</span><span class="w"> </span><span class="n">spack</span><span class="w"> </span><span class="n">list</span><span class="w"> </span><span class="n">mpi</span><span class="w"></span>
-<span class="o">==&gt;</span><span class="w"> </span><span class="mi">21</span><span class="w"> </span><span class="n">packages</span><span class="p">.</span><span class="w"></span>
-<span class="n">compiz</span><span class="w">       </span><span class="n">mpifileutils</span><span class="w">  </span><span class="n">mpix</span><span class="o">-</span><span class="n">launch</span><span class="o">-</span><span class="n">swift</span><span class="w">  </span><span class="n">r</span><span class="o">-</span><span class="n">rmpi</span><span class="w">        </span><span class="n">vampirtrace</span><span class="w"></span>
-<span class="n">fujitsu</span><span class="o">-</span><span class="n">mpi</span><span class="w">  </span><span class="n">mpilander</span><span class="w">     </span><span class="n">openmpi</span><span class="w">            </span><span class="n">rempi</span><span class="w"></span>
-<span class="n">intel</span><span class="o">-</span><span class="n">mpi</span><span class="w">    </span><span class="n">mpileaks</span><span class="w">      </span><span class="n">pbmpi</span><span class="w">              </span><span class="n">spectrum</span><span class="o">-</span><span class="n">mpi</span><span class="w"></span>
-<span class="n">mpibash</span><span class="w">      </span><span class="n">mpip</span><span class="w">          </span><span class="n">pnmpi</span><span class="w">              </span><span class="n">sst</span><span class="o">-</span><span class="n">dumpi</span><span class="w"></span>
-<span class="n">mpich</span><span class="w">        </span><span class="n">mpir</span><span class="w">          </span><span class="n">py</span><span class="o">-</span><span class="n">mpi4py</span><span class="w">          </span><span class="n">umpire</span><span class="w"></span>
-</pre></div>
+<div class="codehilite"><pre><span></span><code><span class="err">[username@es1 ~]$ spack list mpi</span>
+<span class="err">==&gt; 21 packages.</span>
+<span class="err">compiz       mpifileutils  mpix-launch-swift  r-rmpi        vampirtrace</span>
+<span class="err">fujitsu-mpi  mpilander     openmpi            rempi</span>
+<span class="err">intel-mpi    mpileaks      pbmpi              spectrum-mpi</span>
+<span class="err">mpibash      mpip          pnmpi              sst-dumpi</span>
+<span class="err">mpich        mpir          py-mpi4py          umpire</span>
+</code></pre></div>
 
 
 <p>インストールしたソフトウェア一覧は<code>find</code>サブコマンドで確認できます。</p>
-<div class="codehilite"><pre><span></span><span class="p">[</span><span class="n">username</span><span class="p">@</span><span class="n">es1</span> <span class="o">~</span><span class="p">]</span><span class="err">$</span> <span class="n">spack</span> <span class="n">find</span>
+<div class="codehilite"><pre><span></span><code><span class="p">[</span><span class="n">username</span><span class="p">@</span><span class="n">es1</span> <span class="o">~</span><span class="p">]</span><span class="err">$</span> <span class="n">spack</span> <span class="n">find</span>
 <span class="o">==&gt;</span> <span class="mi">49</span> <span class="n">installed</span> <span class="n">packages</span>
 <span class="o">--</span> <span class="n">linux</span><span class="o">-</span><span class="n">centos7</span><span class="o">-</span><span class="n">haswell</span> <span class="o">/</span> <span class="n">gcc</span><span class="mf">@4.8.5</span> <span class="o">----------------------------</span>
 <span class="n">autoconf</span><span class="mf">@2.69</span>    <span class="n">gdbm</span><span class="mf">@1.18.1</span>          <span class="n">libxml2</span><span class="mf">@2.9.9</span>  <span class="n">readline</span><span class="mf">@8.0</span>
 <span class="p">(</span><span class="n">snip</span><span class="p">)</span>
-</pre></div>
+</code></pre></div>
 
 
 <p>インストールしたソフトウェアのハッシュ、依存関係は<code>find</code>サブコマンドに<code>-dl</code>オプションを指定することで確認できます。</p>
-<div class="codehilite"><pre><span></span><span class="p">[</span><span class="n">username</span><span class="p">@</span><span class="n">es1</span> <span class="o">~</span><span class="p">]</span><span class="err">$</span> <span class="n">spack</span> <span class="n">find</span> <span class="o">-</span><span class="n">dl</span> <span class="n">openmpi</span>
+<div class="codehilite"><pre><span></span><code><span class="p">[</span><span class="n">username</span><span class="p">@</span><span class="n">es1</span> <span class="o">~</span><span class="p">]</span><span class="err">$</span> <span class="n">spack</span> <span class="n">find</span> <span class="o">-</span><span class="n">dl</span> <span class="n">openmpi</span>
 <span class="o">--</span> <span class="n">linux</span><span class="o">-</span><span class="n">centos7</span><span class="o">-</span><span class="n">skylake_avx512</span> <span class="o">/</span> <span class="n">gcc</span><span class="mf">@7.4.0</span> <span class="o">---------------------</span>
 <span class="n">sif5fzv</span> <span class="n">openmpi</span><span class="mf">@3.1.4</span>
 <span class="n">xqsp4xn</span>     <span class="n">hwloc</span><span class="mf">@1.11.11</span>
@@ -235,50 +235,50 @@ ABCIが提供していないバージョンのCUDAをSpackでインストール�
 <span class="n">y6e4zi2</span>             <span class="n">xz</span><span class="mf">@5.2.4</span>
 <span class="n">kv37bl2</span>             <span class="n">zlib</span><span class="mf">@1.2.11</span>
 <span class="n">onnjyv2</span>         <span class="n">numactl</span><span class="mf">@2.0.12</span>
-</pre></div>
+</code></pre></div>
 
 
 <p>特定のソフトウェアの詳細情報を確認するには、<code>info</code>サブコマンドを使用します。</p>
-<div class="codehilite"><pre><span></span><span class="o">[</span><span class="n">username@es1 ~</span><span class="o">]</span><span class="err">$</span><span class="w"> </span><span class="n">spack</span><span class="w"> </span><span class="n">info</span><span class="w"> </span><span class="n">openmpi</span><span class="w"></span>
+<div class="codehilite"><pre><span></span><code><span class="o">[</span><span class="n">username@es1 ~</span><span class="o">]</span><span class="err">$</span><span class="w"> </span><span class="n">spack</span><span class="w"> </span><span class="n">info</span><span class="w"> </span><span class="n">openmpi</span><span class="w"></span>
 <span class="nl">AutotoolsPackage</span><span class="p">:</span><span class="w">   </span><span class="n">openmpi</span><span class="w"></span>
 
 <span class="nl">Description</span><span class="p">:</span><span class="w"></span>
 <span class="w">    </span><span class="n">An</span><span class="w"> </span><span class="k">open</span><span class="w"> </span><span class="n">source</span><span class="w"> </span><span class="n">Message</span><span class="w"> </span><span class="n">Passing</span><span class="w"> </span><span class="n">Interface</span><span class="w"> </span><span class="n">implementation</span><span class="p">.</span><span class="w"> </span><span class="n">The</span><span class="w"> </span><span class="k">Open</span><span class="w"> </span><span class="n">MPI</span><span class="w"></span>
 <span class="w">    </span><span class="n">Project</span><span class="w"> </span><span class="k">is</span><span class="w"> </span><span class="n">an</span><span class="w"> </span><span class="k">open</span><span class="w"> </span><span class="n">source</span><span class="w"> </span><span class="n">Message</span><span class="w"> </span><span class="n">Passing</span><span class="w"> </span><span class="n">Interface</span><span class="w"> </span><span class="n">implementation</span><span class="w"> </span><span class="n">that</span><span class="w"></span>
 <span class="p">(</span><span class="n">snip</span><span class="p">)</span><span class="w"></span>
-</pre></div>
+</code></pre></div>
 
 
 <p>特定ソフトウェアの、インストール可能なバージョン一覧は<code>versions</code>サブコマンドで確認できます。</p>
-<div class="codehilite"><pre><span></span><span class="o">[</span><span class="n">username@es1 ~</span><span class="o">]</span><span class="err">$</span><span class="w"> </span><span class="n">spack</span><span class="w"> </span><span class="n">versions</span><span class="w"> </span><span class="n">openmpi</span><span class="w"></span>
-<span class="o">==&gt;</span><span class="w"> </span><span class="n">Safe</span><span class="w"> </span><span class="n">versions</span><span class="w"> </span><span class="p">(</span><span class="n">already</span><span class="w"> </span><span class="n">checksummed</span><span class="p">)</span><span class="err">:</span><span class="w"></span>
-<span class="w">  </span><span class="n">develop</span><span class="w">  </span><span class="mf">3.0.3</span><span class="w">  </span><span class="mf">2.1.1</span><span class="w">   </span><span class="mf">1.10.5</span><span class="w">  </span><span class="mf">1.8.5</span><span class="w">  </span><span class="mf">1.7.2</span><span class="w">  </span><span class="mf">1.5.5</span><span class="w">  </span><span class="mf">1.4.2</span><span class="w">  </span><span class="mf">1.2.8</span><span class="w">  </span><span class="mf">1.1.5</span><span class="w"></span>
-<span class="w">  </span><span class="mf">4.0.1</span><span class="w">    </span><span class="mf">3.0.2</span><span class="w">  </span><span class="mf">2.1.0</span><span class="w">   </span><span class="mf">1.10.4</span><span class="w">  </span><span class="mf">1.8.4</span><span class="w">  </span><span class="mf">1.7.1</span><span class="w">  </span><span class="mf">1.5.4</span><span class="w">  </span><span class="mf">1.4.1</span><span class="w">  </span><span class="mf">1.2.7</span><span class="w">  </span><span class="mf">1.1.4</span><span class="w"></span>
-<span class="w">  </span><span class="mf">4.0.0</span><span class="w">    </span><span class="mf">3.0.1</span><span class="w">  </span><span class="mf">2.0.4</span><span class="w">   </span><span class="mf">1.10.3</span><span class="w">  </span><span class="mf">1.8.3</span><span class="w">  </span><span class="mf">1.7</span><span class="w">    </span><span class="mf">1.5.3</span><span class="w">  </span><span class="mf">1.4</span><span class="w">    </span><span class="mf">1.2.6</span><span class="w">  </span><span class="mf">1.1.3</span><span class="w"></span>
-<span class="w">  </span><span class="mf">3.1.4</span><span class="w">    </span><span class="mf">3.0.0</span><span class="w">  </span><span class="mf">2.0.3</span><span class="w">   </span><span class="mf">1.10.2</span><span class="w">  </span><span class="mf">1.8.2</span><span class="w">  </span><span class="mf">1.6.5</span><span class="w">  </span><span class="mf">1.5.2</span><span class="w">  </span><span class="mf">1.3.4</span><span class="w">  </span><span class="mf">1.2.5</span><span class="w">  </span><span class="mf">1.1.2</span><span class="w"></span>
-<span class="w">  </span><span class="mf">3.1.3</span><span class="w">    </span><span class="mf">2.1.6</span><span class="w">  </span><span class="mf">2.0.2</span><span class="w">   </span><span class="mf">1.10.1</span><span class="w">  </span><span class="mf">1.8.1</span><span class="w">  </span><span class="mf">1.6.4</span><span class="w">  </span><span class="mf">1.5.1</span><span class="w">  </span><span class="mf">1.3.3</span><span class="w">  </span><span class="mf">1.2.4</span><span class="w">  </span><span class="mf">1.1.1</span><span class="w"></span>
-<span class="w">  </span><span class="mf">3.1.2</span><span class="w">    </span><span class="mf">2.1.5</span><span class="w">  </span><span class="mf">2.0.1</span><span class="w">   </span><span class="mf">1.10.0</span><span class="w">  </span><span class="mf">1.8</span><span class="w">    </span><span class="mf">1.6.3</span><span class="w">  </span><span class="mf">1.5</span><span class="w">    </span><span class="mf">1.3.2</span><span class="w">  </span><span class="mf">1.2.3</span><span class="w">  </span><span class="mf">1.1</span><span class="w"></span>
-<span class="w">  </span><span class="mf">3.1.1</span><span class="w">    </span><span class="mf">2.1.4</span><span class="w">  </span><span class="mf">2.0.0</span><span class="w">   </span><span class="mf">1.8.8</span><span class="w">   </span><span class="mf">1.7.5</span><span class="w">  </span><span class="mf">1.6.2</span><span class="w">  </span><span class="mf">1.4.5</span><span class="w">  </span><span class="mf">1.3.1</span><span class="w">  </span><span class="mf">1.2.2</span><span class="w">  </span><span class="mf">1.0.2</span><span class="w"></span>
-<span class="w">  </span><span class="mf">3.1.0</span><span class="w">    </span><span class="mf">2.1.3</span><span class="w">  </span><span class="mf">1.10.7</span><span class="w">  </span><span class="mf">1.8.7</span><span class="w">   </span><span class="mf">1.7.4</span><span class="w">  </span><span class="mf">1.6.1</span><span class="w">  </span><span class="mf">1.4.4</span><span class="w">  </span><span class="mf">1.3</span><span class="w">    </span><span class="mf">1.2.1</span><span class="w">  </span><span class="mf">1.0.1</span><span class="w"></span>
-<span class="w">  </span><span class="mf">3.0.4</span><span class="w">    </span><span class="mf">2.1.2</span><span class="w">  </span><span class="mf">1.10.6</span><span class="w">  </span><span class="mf">1.8.6</span><span class="w">   </span><span class="mf">1.7.3</span><span class="w">  </span><span class="mf">1.6</span><span class="w">    </span><span class="mf">1.4.3</span><span class="w">  </span><span class="mf">1.2.9</span><span class="w">  </span><span class="mf">1.2</span><span class="w">    </span><span class="mf">1.0</span><span class="w"></span>
-</pre></div>
+<div class="codehilite"><pre><span></span><code><span class="err">[username@es1 ~]$ spack versions openmpi</span>
+<span class="err">==&gt; Safe versions (already checksummed):</span>
+<span class="err">  develop  3.0.3  2.1.1   1.10.5  1.8.5  1.7.2  1.5.5  1.4.2  1.2.8  1.1.5</span>
+<span class="err">  4.0.1    3.0.2  2.1.0   1.10.4  1.8.4  1.7.1  1.5.4  1.4.1  1.2.7  1.1.4</span>
+<span class="err">  4.0.0    3.0.1  2.0.4   1.10.3  1.8.3  1.7    1.5.3  1.4    1.2.6  1.1.3</span>
+<span class="err">  3.1.4    3.0.0  2.0.3   1.10.2  1.8.2  1.6.5  1.5.2  1.3.4  1.2.5  1.1.2</span>
+<span class="err">  3.1.3    2.1.6  2.0.2   1.10.1  1.8.1  1.6.4  1.5.1  1.3.3  1.2.4  1.1.1</span>
+<span class="err">  3.1.2    2.1.5  2.0.1   1.10.0  1.8    1.6.3  1.5    1.3.2  1.2.3  1.1</span>
+<span class="err">  3.1.1    2.1.4  2.0.0   1.8.8   1.7.5  1.6.2  1.4.5  1.3.1  1.2.2  1.0.2</span>
+<span class="err">  3.1.0    2.1.3  1.10.7  1.8.7   1.7.4  1.6.1  1.4.4  1.3    1.2.1  1.0.1</span>
+<span class="err">  3.0.4    2.1.2  1.10.6  1.8.6   1.7.3  1.6    1.4.3  1.2.9  1.2    1.0</span>
+</code></pre></div>
 
 
 <h3 id="use-of-installed-software">ソフトウェア利用方法</h3>
 <p>SpackでインストールしたソフトウェアはEnvironment Modulesに自動的に登録されます。
 ABCIが提供するモジュール同様に、ロードして使用できます。</p>
-<div class="codehilite"><pre><span></span><span class="o">[</span><span class="n">username@es1 ~</span><span class="o">]</span><span class="err">$</span><span class="w"> </span><span class="k">module</span><span class="w"> </span><span class="k">load</span><span class="w"> </span><span class="n">xxxxx</span><span class="w"></span>
-</pre></div>
+<div class="codehilite"><pre><span></span><code><span class="err">[username@es1 ~]$ module load xxxxx</span>
+</code></pre></div>
 
 
 <p>インストールした全ソフトウェアのモジュールを更新するには、次のコマンドを実行します。</p>
-<div class="codehilite"><pre><span></span><span class="o">[</span><span class="n">username@es1 ~</span><span class="o">]</span><span class="err">$</span><span class="w"> </span><span class="n">spack</span><span class="w"> </span><span class="k">module</span><span class="w"> </span><span class="n">tcl</span><span class="w"> </span><span class="n">refresh</span><span class="w"></span>
-</pre></div>
+<div class="codehilite"><pre><span></span><code><span class="err">[username@es1 ~]$ spack module tcl refresh</span>
+</code></pre></div>
 
 
 <p>インストールしたソフトウェアのモジュールを削除するには、次のコマンドを実行します。</p>
-<div class="codehilite"><pre><span></span><span class="o">[</span><span class="n">username@es1 ~</span><span class="o">]</span><span class="err">$</span><span class="w"> </span><span class="n">spack</span><span class="w"> </span><span class="k">module</span><span class="w"> </span><span class="n">tcl</span><span class="w"> </span><span class="n">rm</span><span class="w"></span>
-</pre></div>
+<div class="codehilite"><pre><span></span><code><span class="err">[username@es1 ~]$ spack module tcl rm</span>
+</code></pre></div>
 
 
 <div class="admonition note">
@@ -293,14 +293,14 @@ ABCIが提供するモジュール同様に、ロードして使用できます�
 <h4 id="how-to-install">インストール方法</h4>
 <p>CUDA 10.1.243を使用するOpenMPI 3.1.1をインストールする場合の例です。
 GPUを搭載する計算ノード上で作業を行います。</p>
-<div class="codehilite"><pre><span></span><span class="p">[</span><span class="n">username</span><span class="p">@</span><span class="n">g0001</span> <span class="o">~</span><span class="p">]</span><span class="err">$</span> <span class="n">spack</span> <span class="n">install</span> <span class="n">cuda</span><span class="p">@</span><span class="n">abci</span><span class="o">-</span><span class="mf">10.1.243</span>
+<div class="codehilite"><pre><span></span><code><span class="p">[</span><span class="n">username</span><span class="p">@</span><span class="n">g0001</span> <span class="o">~</span><span class="p">]</span><span class="err">$</span> <span class="n">spack</span> <span class="n">install</span> <span class="n">cuda</span><span class="p">@</span><span class="n">abci</span><span class="o">-</span><span class="mf">10.1.243</span>
 <span class="p">[</span><span class="n">username</span><span class="p">@</span><span class="n">g0001</span> <span class="o">~</span><span class="p">]</span><span class="err">$</span> <span class="n">spack</span> <span class="n">install</span> <span class="n">openmpi</span><span class="mf">@3.1.1</span> <span class="o">+</span><span class="n">cuda</span> <span class="n">schedulers</span><span class="o">=</span><span class="n">sge</span> <span class="n">fabrics</span><span class="o">=</span><span class="k">auto</span> <span class="o">^</span><span class="n">cuda</span><span class="p">@</span><span class="n">abci</span><span class="o">-</span><span class="mf">10.1.243</span>
 <span class="p">[</span><span class="n">username</span><span class="p">@</span><span class="n">g0001</span> <span class="o">~</span><span class="p">]</span><span class="err">$</span> <span class="n">spack</span> <span class="n">find</span> <span class="o">--</span><span class="n">paths</span> <span class="n">openmpi</span><span class="mf">@3.1.1</span>
 <span class="o">==&gt;</span> <span class="mi">1</span> <span class="n">installed</span> <span class="n">package</span>
 <span class="o">--</span> <span class="n">linux</span><span class="o">-</span><span class="n">centos7</span><span class="o">-</span><span class="n">haswell</span> <span class="o">/</span> <span class="n">gcc</span><span class="mf">@4.8.5</span> <span class="o">----------------------------</span>
 <span class="n">openmpi</span><span class="mf">@3.1.1</span>  <span class="err">$</span><span class="p">{</span><span class="n">SPACK_ROOT</span><span class="p">}</span><span class="o">/</span><span class="n">opt</span><span class="o">/</span><span class="n">spack</span><span class="o">/</span><span class="n">linux</span><span class="o">-</span><span class="n">centos7</span><span class="o">-</span><span class="n">haswell</span><span class="o">/</span><span class="n">gcc</span><span class="o">-</span><span class="mf">4.8.5</span><span class="o">/</span><span class="n">openmpi</span><span class="o">-</span><span class="mf">3.1.1</span><span class="o">-</span><span class="mi">4</span><span class="n">mmghhfuk5n7my7g3ko2zwzlo4wmoc5v</span>
 <span class="p">[</span><span class="n">username</span><span class="p">@</span><span class="n">g0001</span> <span class="o">~</span><span class="p">]</span><span class="err">$</span> <span class="n">echo</span> <span class="s">&quot;btl_openib_warn_default_gid_prefix = 0&quot;</span> <span class="o">&gt;&gt;</span> <span class="err">$</span><span class="p">{</span><span class="n">SPACK_ROOT</span><span class="p">}</span><span class="o">/</span><span class="n">opt</span><span class="o">/</span><span class="n">spack</span><span class="o">/</span><span class="n">linux</span><span class="o">-</span><span class="n">centos7</span><span class="o">-</span><span class="n">haswell</span><span class="o">/</span><span class="n">gcc</span><span class="o">-</span><span class="mf">4.8.5</span><span class="o">/</span><span class="n">openmpi</span><span class="o">-</span><span class="mf">3.1.1</span><span class="o">-</span><span class="mi">4</span><span class="n">mmghhfuk5n7my7g3ko2zwzlo4wmoc5v</span><span class="o">/</span><span class="n">etc</span><span class="o">/</span><span class="n">openmpi</span><span class="o">-</span><span class="n">mca</span><span class="o">-</span><span class="n">params</span><span class="p">.</span><span class="n">conf</span>
-</pre></div>
+</code></pre></div>
 
 
 <p>1行目では、ABCIが提供するCUDAを使用するよう、CUDAのバージョン<code>abci-10.1.243</code>をインストールします。
@@ -316,26 +316,26 @@ GPUを搭載する計算ノード上で作業を行います。</p>
 そのため、3行目でOpenMPIがインストールされたパスを確認しています。</p>
 <p>Spackでは、同一ソフトウェアを異なる設定で複数インストールし、管理することができます。
 ここでは、CUDA 9.0.176.4を使用するOpenMPI 3.1.1を追加インストールします。</p>
-<div class="codehilite"><pre><span></span><span class="p">[</span><span class="n">username</span><span class="p">@</span><span class="n">g0001</span> <span class="o">~</span><span class="p">]</span><span class="err">$</span> <span class="n">spack</span> <span class="n">install</span> <span class="n">cuda</span><span class="p">@</span><span class="n">abci</span><span class="o">-</span><span class="mf">9.0.176.4</span>
+<div class="codehilite"><pre><span></span><code><span class="p">[</span><span class="n">username</span><span class="p">@</span><span class="n">g0001</span> <span class="o">~</span><span class="p">]</span><span class="err">$</span> <span class="n">spack</span> <span class="n">install</span> <span class="n">cuda</span><span class="p">@</span><span class="n">abci</span><span class="o">-</span><span class="mf">9.0.176.4</span>
 <span class="p">[</span><span class="n">username</span><span class="p">@</span><span class="n">g0001</span> <span class="o">~</span><span class="p">]</span><span class="err">$</span> <span class="n">spack</span> <span class="n">install</span> <span class="n">openmpi</span><span class="mf">@3.1.1</span> <span class="o">+</span><span class="n">cuda</span> <span class="n">schedulers</span><span class="o">=</span><span class="n">sge</span> <span class="n">fabrics</span><span class="o">=</span><span class="k">auto</span> <span class="o">^</span><span class="n">cuda</span><span class="p">@</span><span class="n">abci</span><span class="o">-</span><span class="mf">9.0.176.4</span>
-</pre></div>
+</code></pre></div>
 
 
 <h4 id="how-to-use">使い方</h4>
 <p>「CUDA 10.1.243を使用するOpenMPI 3.1.1」を使う場合の利用方法を説明します。</p>
 <p>2種類のOpenMPI 3.1.1がインストールされていますので、次のようにモジュールが見えます。</p>
-<div class="codehilite"><pre><span></span><span class="o">[</span><span class="n">username@es1 ~</span><span class="o">]</span><span class="err">$</span><span class="w"> </span><span class="k">module</span><span class="w"> </span><span class="n">avail</span><span class="w"> </span><span class="n">openmpi</span><span class="w"></span>
-<span class="c1">------------------------- $HOME/spack/share/spack/modules/linux-centos7-haswell -------------------------</span>
-<span class="n">openmpi</span><span class="o">-</span><span class="mf">3.1.1</span><span class="o">-</span><span class="n">gcc</span><span class="o">-</span><span class="mf">4.8.5</span><span class="o">-</span><span class="mi">4</span><span class="n">mmghhf</span><span class="w">             </span><span class="n">openmpi</span><span class="o">-</span><span class="mf">3.1.1</span><span class="o">-</span><span class="n">gcc</span><span class="o">-</span><span class="mf">4.8.5</span><span class="o">-</span><span class="n">zqwwrqy</span><span class="w"></span>
-<span class="p">(</span><span class="n">snip</span><span class="p">)</span><span class="w"></span>
-</pre></div>
+<div class="codehilite"><pre><span></span><code><span class="err">[username@es1 ~]$ module avail openmpi</span>
+<span class="err">------------------------- $HOME/spack/share/spack/modules/linux-centos7-haswell -------------------------</span>
+<span class="err">openmpi-3.1.1-gcc-4.8.5-4mmghhf             openmpi-3.1.1-gcc-4.8.5-zqwwrqy</span>
+<span class="err">(snip)</span>
+</code></pre></div>
 
 
 <p>まず、使用するOpenMPIのモジュールを判別します。
 Spackにより生成されるモジュールは、(1)ソフトウェア名、(2)ソフトウェアバージョン、(3)コンパイラ、(4)コンパイラバージョン、(5)ハッシュ、による名前が付けられています。
 今回は(1) ~ (4)が等しいため、(5)のハッシュで判別する必要があります。</p>
 <p>OpenMPIの依存関係を確認し、CUDA 10.1.243を使用しているOpenMPIのハッシュを取得します。</p>
-<div class="codehilite"><pre><span></span><span class="p">[</span><span class="n">username</span><span class="p">@</span><span class="n">es1</span> <span class="o">~</span><span class="p">]</span><span class="err">$</span> <span class="n">spack</span> <span class="n">find</span> <span class="o">-</span><span class="n">dl</span> <span class="n">openmpi</span>
+<div class="codehilite"><pre><span></span><code><span class="p">[</span><span class="n">username</span><span class="p">@</span><span class="n">es1</span> <span class="o">~</span><span class="p">]</span><span class="err">$</span> <span class="n">spack</span> <span class="n">find</span> <span class="o">-</span><span class="n">dl</span> <span class="n">openmpi</span>
 <span class="o">==&gt;</span> <span class="mi">2</span> <span class="n">installed</span> <span class="n">packages</span>
 <span class="o">--</span> <span class="n">linux</span><span class="o">-</span><span class="n">centos7</span><span class="o">-</span><span class="n">haswell</span> <span class="o">/</span> <span class="n">gcc</span><span class="mf">@4.8.5</span> <span class="o">----------------------------</span>
 <span class="mi">4</span><span class="n">mmghhf</span> <span class="n">openmpi</span><span class="mf">@3.1.1</span>
@@ -347,16 +347,16 @@ Spackにより生成されるモジュールは、(1)ソフトウェア名、(2)
 <span class="n">b4gs3k5</span>     <span class="n">hwloc</span><span class="mf">@1.11.11</span>
 <span class="n">l6ayrkp</span>         <span class="n">cuda</span><span class="p">@</span><span class="n">abci</span><span class="o">-</span><span class="mf">9.0.176.4</span>
 <span class="p">(</span><span class="n">snip</span><span class="p">)</span>
-</pre></div>
+</code></pre></div>
 
 
 <p>ハッシュ<code>4mmghhf</code>を持つOpenMPIが使用したいOpenMPIですので、モジュール<code>openmpi-3.1.1-gcc-4.8.5-4mmghhf</code>を使用すれば良いとわかります。</p>
 <p>計算ノード上でプログラムをコンパイルする場合は、ABCIが提供するCUDAモジュールとインストールしたOpenMPIのモジュールを読み込みます。</p>
-<div class="codehilite"><pre><span></span>source <span class="cp">${</span><span class="n">HOME</span><span class="cp">}</span>/spack/share/spack/setup-env.sh
+<div class="codehilite"><pre><span></span><code>source <span class="cp">${</span><span class="n">HOME</span><span class="cp">}</span>/spack/share/spack/setup-env.sh
 [username@g0001 ~]$ module load cuda/10.1/10.1.243
 [username@g0001 ~]$ module load openmpi-3.1.1-gcc-4.8.5-4mmghhf
 [username@g0001 ~]$ mpicc ...
-</pre></div>
+</code></pre></div>
 
 
 <p>ジョブスクリプトでは、以下のように使用します。</p>
@@ -374,7 +374,7 @@ Spackにより生成されるモジュールは、(1)ソフトウェア名、(2)
 12
 13
 14
-15</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="ch">#!/bin/bash</span>
+15</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><code><span class="ch">#!/bin/bash</span>
 <span class="c1">#$-l rt_F=2</span>
 <span class="c1">#$-j y</span>
 <span class="c1">#$-cwd</span>
@@ -389,12 +389,12 @@ module load openmpi-3.1.1-gcc-4.8.5-4mmghhf
 <span class="nv">NUM_PROCS</span><span class="o">=</span><span class="k">$(</span>expr <span class="si">${</span><span class="nv">NUM_NODES</span><span class="si">}</span> <span class="se">\*</span> <span class="si">${</span><span class="nv">NUM_GPUS_PER_NODE</span><span class="si">}</span><span class="k">)</span>
 <span class="nv">MPIOPTS</span><span class="o">=</span><span class="s2">&quot;-n </span><span class="si">${</span><span class="nv">NUM_PROCS</span><span class="si">}</span><span class="s2"> -map-by ppr:</span><span class="si">${</span><span class="nv">NUM_GPUS_PER_NODE</span><span class="si">}</span><span class="s2">:node -x PATH -x LD_LIBRARY_PATH&quot;</span>
 mpiexec <span class="si">${</span><span class="nv">MPIOPTS</span><span class="si">}</span> YOUR_PROGRAM
-</pre></div>
+</code></pre></div>
 </td></tr></table>
 
 <p>不要になった場合は、ハッシュを指定してアンインストールします。</p>
-<div class="codehilite"><pre><span></span><span class="o">[</span><span class="n">username@es1 ~</span><span class="o">]</span><span class="err">$</span><span class="w"> </span><span class="n">spack</span><span class="w"> </span><span class="n">uninstall</span><span class="w"> </span><span class="o">/</span><span class="mi">4</span><span class="n">mmghhf</span><span class="w"></span>
-</pre></div>
+<div class="codehilite"><pre><span></span><code><span class="err">[username@es1 ~]$ spack uninstall /4mmghhf</span>
+</code></pre></div>
 
 
 <h3 id="cuda-aware-mvapich2">CUDA-aware MVAPICH2</h3>
@@ -402,9 +402,9 @@ mpiexec <span class="si">${</span><span class="nv">MPIOPTS</span><span class="si
 CUDA-aware MVAPICH2を使用する場合は、以下を参考にSpackでインストールしてください。</p>
 <p>GPUを搭載する計算ノード上で作業を行います。
 <a href="#cuda-aware-openmpi">OpenMPIと同様</a>に、使用するCUDAをインストールしたのちに、CUDAオプション（<code>+cuda</code>）、通信ライブラリ（<code>fabrics=mrail</code>）、およびCUDAの依存関係（<code>^cuda@abci-10.1.243</code>）を指定してMVAPICH2をインストールします。</p>
-<div class="codehilite"><pre><span></span><span class="p">[</span><span class="n">username</span><span class="p">@</span><span class="n">g0001</span> <span class="o">~</span><span class="p">]</span><span class="err">$</span> <span class="n">spack</span> <span class="n">install</span> <span class="n">cuda</span><span class="p">@</span><span class="n">abci</span><span class="o">-</span><span class="mf">10.1.243</span>
+<div class="codehilite"><pre><span></span><code><span class="p">[</span><span class="n">username</span><span class="p">@</span><span class="n">g0001</span> <span class="o">~</span><span class="p">]</span><span class="err">$</span> <span class="n">spack</span> <span class="n">install</span> <span class="n">cuda</span><span class="p">@</span><span class="n">abci</span><span class="o">-</span><span class="mf">10.1.243</span>
 <span class="p">[</span><span class="n">username</span><span class="p">@</span><span class="n">g0001</span> <span class="o">~</span><span class="p">]</span><span class="err">$</span> <span class="n">spack</span> <span class="n">install</span> <span class="n">mvapich2</span><span class="mf">@2.3</span> <span class="o">+</span><span class="n">cuda</span> <span class="n">fabrics</span><span class="o">=</span><span class="n">mrail</span> <span class="o">^</span><span class="n">cuda</span><span class="p">@</span><span class="n">abci</span><span class="o">-</span><span class="mf">10.1.243</span>
-</pre></div>
+</code></pre></div>
 
 
 <p>使い方もOpenMPIと同様に、CUDAとインストールしたMVAPICH2をロードして使います。
@@ -425,7 +425,7 @@ CUDA-aware MVAPICH2を使用する場合は、以下を参考にSpackでイン�
 14
 15
 16
-17</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="ch">#!/bin/bash</span>
+17</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><code><span class="ch">#!/bin/bash</span>
 <span class="c1">#$-l rt_F=2</span>
 <span class="c1">#$-j y</span>
 <span class="c1">#$-cwd</span>
@@ -442,7 +442,7 @@ module load mvapich2-2.3-gcc-4.8.5-wy2qkke
 <span class="nv">MPIOPTS</span><span class="o">=</span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">MPIE_ARGS</span><span class="si">}</span><span class="s2"> -np </span><span class="si">${</span><span class="nv">NUM_PROCS</span><span class="si">}</span><span class="s2"> -ppn </span><span class="si">${</span><span class="nv">NUM_GPUS_PER_NODE</span><span class="si">}</span><span class="s2">&quot;</span>
 
 mpiexec <span class="si">${</span><span class="nv">MPIOPTS</span><span class="si">}</span> YOUR_PROGRAM
-</pre></div>
+</code></pre></div>
 </td></tr></table>
 
 <h3 id="mpifileutils">MPIFileUtils</h3>
@@ -450,9 +450,9 @@ mpiexec <span class="si">${</span><span class="nv">MPIOPTS</span><span class="si
 複数のライブラリに依存するため、マニュアルでインストールするのは面倒ですが、Spackを用いると簡単にインストールできます。</p>
 <p>以下の例では、ABCIがモジュール提供するOpenMPI 2.1.6を使用して、MPIFileUtilsをインストールします。
 該当するOpenMPIをインストールした後で（1行目）、それへの依存を指定してMPIFileUtilsをインストールします（2行目）。</p>
-<div class="codehilite"><pre><span></span><span class="o">[</span><span class="n">username@es1 ~</span><span class="o">]</span><span class="err">$</span><span class="w"> </span><span class="n">spack</span><span class="w"> </span><span class="n">install</span><span class="w"> </span><span class="n">openmpi</span><span class="nv">@abci</span><span class="o">-</span><span class="mf">2.1.6</span><span class="o">-</span><span class="n">nocuda</span><span class="w"></span>
-<span class="o">[</span><span class="n">username@es1 ~</span><span class="o">]</span><span class="err">$</span><span class="w"> </span><span class="n">spack</span><span class="w"> </span><span class="n">install</span><span class="w"> </span><span class="n">mpifileutils</span><span class="w"> </span><span class="o">^</span><span class="n">openmpi</span><span class="nv">@abci</span><span class="o">-</span><span class="mf">2.1.6</span><span class="o">-</span><span class="n">nocuda</span><span class="w"></span>
-</pre></div>
+<div class="codehilite"><pre><span></span><code><span class="err">[username@es1 ~]$ spack install openmpi@abci-2.1.6-nocuda</span>
+<span class="err">[username@es1 ~]$ spack install mpifileutils ^openmpi@abci-2.1.6-nocuda</span>
+</code></pre></div>
 
 
 <p>使うときには、OpenMPI 2.1.6とMPIFileUtilsのモジュールをロードします。
@@ -473,7 +473,7 @@ MPIFileUtilsのモジュールをロードすると、<code>dbcast</code>など�
 13
 14
 15
-16</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="ch">#!/bin/bash</span>
+16</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><code><span class="ch">#!/bin/bash</span>
 <span class="c1">#$-l rt_F=2</span>
 <span class="c1">#$-j y</span>
 <span class="c1">#$-cwd</span>
@@ -489,5 +489,5 @@ module load mpifileutils-0.9.1-gcc-4.8.5-qdv7523
 <span class="nv">DST_FILE</span><span class="o">=</span>name_of_file
 
 mpiexec -n <span class="si">${</span><span class="nv">NMPIPROC</span><span class="si">}</span> -map-by ppr:<span class="si">${</span><span class="nv">NPPN</span><span class="si">}</span>:node dbcast <span class="nv">$SRC_FILE</span> <span class="nv">$DST_FILE</span>
-</pre></div>
-</td></tr></table></article></div></div></main><footer class="md-footer"><div class="md-footer-nav"><nav class="md-footer-nav__inner md-grid"><a href="../sregistry-cli/" title="Singularity Global Clientの利用" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev"><div class="md-flex__cell md-flex__cell--shrink"><i class="md-icon md-icon--arrow-back md-footer-nav__button"></i></div><div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title"><span class="md-flex__ellipsis"><span class="md-footer-nav__direction">前</span>Singularity Global Clientの利用</span></div></a><a href="../../ngc/" title="NVIDIA GPU Cloud (NGC)" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next"><div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title"><span class="md-flex__ellipsis"><span class="md-footer-nav__direction">次</span>NVIDIA GPU Cloud (NGC)</span></div><div class="md-flex__cell md-flex__cell--shrink"><i class="md-icon md-icon--arrow-forward md-footer-nav__button"></i></div></a></nav></div><div class="md-footer-meta md-typeset"><div class="md-footer-meta__inner md-grid"><div class="md-footer-copyright"><div class="md-footer-copyright__highlight">Copyright &copy; 2018 National Institute of Advanced Industrial Science and Technology (AIST)</div>powered by <a href="https://www.mkdocs.org">MkDocs</a> and <a href="https://squidfunk.github.io/mkdocs-material/">Material for MkDocs</a></div></div></div></footer></div><script src="../../assets/javascripts/application.b260a35d.js"></script><script src="../../assets/javascripts/lunr/lunr.stemmer.support.js"></script><script src="../../assets/javascripts/lunr/tinyseg.js"></script><script src="../../assets/javascripts/lunr/lunr.ja.js"></script><script>app.initialize({version:"1.0.4",url:{base:"../.."}})</script></body></html>
+</code></pre></div>
+</td></tr></table></article></div></div></main><footer class="md-footer"><div class="md-footer-nav"><nav class="md-footer-nav__inner md-grid"><a href="../sregistry-cli/" title="Singularity Global Clientの利用" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev"><div class="md-flex__cell md-flex__cell--shrink"><i class="md-icon md-icon--arrow-back md-footer-nav__button"></i></div><div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title"><span class="md-flex__ellipsis"><span class="md-footer-nav__direction">前</span>Singularity Global Clientの利用</span></div></a><a href="../../ngc/" title="NVIDIA GPU Cloud (NGC)" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next"><div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title"><span class="md-flex__ellipsis"><span class="md-footer-nav__direction">次</span>NVIDIA GPU Cloud (NGC)</span></div><div class="md-flex__cell md-flex__cell--shrink"><i class="md-icon md-icon--arrow-forward md-footer-nav__button"></i></div></a></nav></div><div class="md-footer-meta md-typeset"><div class="md-footer-meta__inner md-grid"><div class="md-footer-copyright"><div class="md-footer-copyright__highlight">Copyright &copy; 2018 National Institute of Advanced Industrial Science and Technology (AIST)</div>powered by <a href="https://www.mkdocs.org">MkDocs</a> and <a href="https://squidfunk.github.io/mkdocs-material/">Material for MkDocs</a></div></div></div></footer></div><script src="../../assets/javascripts/application.b260a35d.js"></script><script src="../../assets/javascripts/lunr/lunr.stemmer.support.js"></script><script src="../../assets/javascripts/lunr/tinyseg.js"></script><script src="../../assets/javascripts/lunr/lunr.ja.js"></script><script>app.initialize({version:"1.1",url:{base:"../.."}})</script></body></html>

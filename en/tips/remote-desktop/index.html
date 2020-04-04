@@ -1,4 +1,4 @@
-<!doctype html><html lang="en" class="no-js"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta http-equiv="x-ua-compatible" content="ie=edge"><meta name="description" content="ABCI Users Guide, English version"><link rel="canonical" href="https://docs.abci.ai/en/tips/remote-desktop/"><meta name="author" content="AIST"><meta name="lang:clipboard.copy" content="Copy to clipboard"><meta name="lang:clipboard.copied" content="Copied to clipboard"><meta name="lang:search.language" content="en"><meta name="lang:search.pipeline.stopwords" content="True"><meta name="lang:search.pipeline.trimmer" content="True"><meta name="lang:search.result.none" content="No matching documents"><meta name="lang:search.result.one" content="1 matching document"><meta name="lang:search.result.other" content="# matching documents"><meta name="lang:search.tokenizer" content="[\s\-]+"><link rel="shortcut icon" href="../../assets/images/favicon.png"><meta name="generator" content="mkdocs-1.0.4, mkdocs-material-4.3.1"><title>Remote Desktop - ABCI Users Guide</title><link rel="stylesheet" href="../../assets/stylesheets/application.4031d38b.css"><link rel="stylesheet" href="../../assets/stylesheets/application-palette.224b79ff.css"><meta name="theme-color" content="#ef5350"><script src="../../assets/javascripts/modernizr.74668098.js"></script><link href="https://fonts.gstatic.com" rel="preconnect" crossorigin><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700|Roboto+Mono&display=swap"><style>body,input{font-family:"Roboto","Helvetica Neue",Helvetica,Arial,sans-serif}code,kbd,pre{font-family:"Roboto Mono","Courier New",Courier,monospace}</style><link rel="stylesheet" href="../../assets/fonts/material-icons.css"><script>window.ga = window.ga || function() {
+<!doctype html><html lang="en" class="no-js"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta http-equiv="x-ua-compatible" content="ie=edge"><meta name="description" content="ABCI Users Guide, English version"><link rel="canonical" href="https://docs.abci.ai/en/tips/remote-desktop/"><meta name="author" content="AIST"><meta name="lang:clipboard.copy" content="Copy to clipboard"><meta name="lang:clipboard.copied" content="Copied to clipboard"><meta name="lang:search.language" content="en"><meta name="lang:search.pipeline.stopwords" content="True"><meta name="lang:search.pipeline.trimmer" content="True"><meta name="lang:search.result.none" content="No matching documents"><meta name="lang:search.result.one" content="1 matching document"><meta name="lang:search.result.other" content="# matching documents"><meta name="lang:search.tokenizer" content="[\s\-]+"><link rel="shortcut icon" href="../../assets/images/favicon.png"><meta name="generator" content="mkdocs-1.1, mkdocs-material-4.3.1"><title>Remote Desktop - ABCI Users Guide</title><link rel="stylesheet" href="../../assets/stylesheets/application.4031d38b.css"><link rel="stylesheet" href="../../assets/stylesheets/application-palette.224b79ff.css"><meta name="theme-color" content="#ef5350"><script src="../../assets/javascripts/modernizr.74668098.js"></script><link href="https://fonts.gstatic.com" rel="preconnect" crossorigin><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700|Roboto+Mono&display=swap"><style>body,input{font-family:"Roboto","Helvetica Neue",Helvetica,Arial,sans-serif}code,kbd,pre{font-family:"Roboto Mono","Courier New",Courier,monospace}</style><link rel="stylesheet" href="../../assets/fonts/material-icons.css"><script>window.ga = window.ga || function() {
     (ga.q = ga.q || []).push(arguments)
   }
   ga.l = +new Date
@@ -23,7 +23,7 @@
 <ul>
 <li>Login to the interactive node, and launch <code>vncserver</code> for initial settings </li>
 </ul>
-<div class="codehilite"><pre><span></span><span class="o">[</span><span class="n">username@es1 ~</span><span class="o">]</span><span class="w"> </span><span class="err">$</span><span class="w"> </span><span class="n">vncserver</span><span class="w"></span>
+<div class="codehilite"><pre><span></span><code><span class="o">[</span><span class="n">username@es1 ~</span><span class="o">]</span><span class="w"> </span><span class="err">$</span><span class="w"> </span><span class="n">vncserver</span><span class="w"></span>
 <span class="n">You</span><span class="w"> </span><span class="n">will</span><span class="w"> </span><span class="n">require</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="n">password</span><span class="w"> </span><span class="k">to</span><span class="w"> </span><span class="n">access</span><span class="w"> </span><span class="n">your</span><span class="w"> </span><span class="n">desktops</span><span class="p">.</span><span class="w"></span>
 
 <span class="nl">Password</span><span class="p">:</span><span class="w"></span>
@@ -36,14 +36,14 @@
 <span class="n">Creating</span><span class="w"> </span><span class="k">default</span><span class="w"> </span><span class="n">config</span><span class="w"> </span><span class="o">/</span><span class="n">home</span><span class="o">/</span><span class="n">username</span><span class="o">/</span><span class="p">.</span><span class="n">vnc</span><span class="o">/</span><span class="n">config</span><span class="w"></span>
 <span class="n">Starting</span><span class="w"> </span><span class="n">applications</span><span class="w"> </span><span class="n">specified</span><span class="w"> </span><span class="ow">in</span><span class="w"> </span><span class="o">/</span><span class="n">home</span><span class="o">/</span><span class="n">username</span><span class="o">/</span><span class="p">.</span><span class="n">vnc</span><span class="o">/</span><span class="n">xstartup</span><span class="w"></span>
 <span class="nf">Log</span><span class="w"> </span><span class="k">file</span><span class="w"> </span><span class="k">is</span><span class="w"> </span><span class="o">/</span><span class="n">home</span><span class="o">/</span><span class="n">username</span><span class="o">/</span><span class="p">.</span><span class="n">vnc</span><span class="o">/</span><span class="n">es4</span><span class="p">.</span><span class="n">abci</span><span class="p">.</span><span class="k">local</span><span class="err">:</span><span class="mf">1.</span><span class="nf">log</span><span class="w"></span>
-</pre></div>
+</code></pre></div>
 
 
 <ul>
 <li>Stop VNC server</li>
 </ul>
-<div class="codehilite"><pre><span></span><span class="o">[</span><span class="n">username@g0001 ~</span><span class="o">]</span><span class="w"> </span><span class="n">vncserver</span><span class="w"> </span><span class="o">-</span><span class="k">kill</span><span class="w"> </span><span class="err">:</span><span class="mi">1</span><span class="w"></span>
-</pre></div>
+<div class="codehilite"><pre><span></span><code><span class="err">[username@g0001 ~] vncserver -kill :1</span>
+</code></pre></div>
 
 
 <ul>
@@ -58,7 +58,7 @@
 6
 7
 8
-9</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="ch">#!/bin/sh</span>
+9</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><code><span class="ch">#!/bin/sh</span>
 
 <span class="nb">unset</span> SESSION_MANAGER
 <span class="nb">unset</span> DBUS_SESSION_BUS_ADDRESS
@@ -67,32 +67,32 @@
 xrdb <span class="nv">$HOME</span>/.Xresources
 
 startxfce4 <span class="p">&amp;</span>
-</pre></div>
+</code></pre></div>
 </td></tr></table>
 
 <p>You can change screen size to edit $HOME/.vnc/config if needed.</p>
-<div class="codehilite"><pre><span></span><span class="n">geometry</span><span class="o">=</span><span class="mi">2000</span><span class="n">x1200</span>
-</pre></div>
+<div class="codehilite"><pre><span></span><code><span class="err">geometry=2000x1200</span>
+</code></pre></div>
 
 
 <ul>
 <li>Login to ABCI</li>
 </ul>
-<div class="codehilite"><pre><span></span><span class="o">[</span><span class="n">user@localmachine</span><span class="o">]</span><span class="w"> </span><span class="err">$</span><span class="w"> </span><span class="n">ssh</span><span class="w"> </span><span class="o">-</span><span class="n">J</span><span class="w"> </span><span class="o">%</span><span class="n">r</span><span class="nv">@as</span><span class="p">.</span><span class="n">abci</span><span class="p">.</span><span class="n">ai</span><span class="w"> </span><span class="n">username</span><span class="nv">@es</span><span class="w"></span>
-</pre></div>
+<div class="codehilite"><pre><span></span><code><span class="err">[user@localmachine] $ ssh -J %r@as.abci.ai username@es</span>
+</code></pre></div>
 
 
 <ul>
 <li>Login to a compute node which is assigned by UGE with ABCI On-demand service and resource type rt_F.</li>
 </ul>
-<div class="codehilite"><pre><span></span><span class="o">[</span><span class="n">username@es1 ~</span><span class="o">]</span><span class="w"> </span><span class="err">$</span><span class="w"> </span><span class="n">qrsh</span><span class="w"> </span><span class="o">-</span><span class="n">g</span><span class="w"> </span><span class="n">grpname</span><span class="w"> </span><span class="o">-</span><span class="n">l</span><span class="w"> </span><span class="n">rt_F</span><span class="o">=</span><span class="mi">1</span><span class="w"></span>
-</pre></div>
+<div class="codehilite"><pre><span></span><code><span class="err">[username@es1 ~] $ qrsh -g grpname -l rt_F=1</span>
+</code></pre></div>
 
 
 <ul>
 <li>Launch <code>vncserver</code></li>
 </ul>
-<div class="codehilite"><pre><span></span><span class="o">[</span><span class="n">username@g0001 ~</span><span class="o">]</span><span class="w"> </span><span class="n">vncserver</span><span class="w"></span>
+<div class="codehilite"><pre><span></span><code><span class="o">[</span><span class="n">username@g0001 ~</span><span class="o">]</span><span class="w"> </span><span class="n">vncserver</span><span class="w"></span>
 
 <span class="k">New</span><span class="w"> </span><span class="s1">&#39;g0001.abci.local:1 (username)&#39;</span><span class="w"> </span><span class="n">desktop</span><span class="w"> </span><span class="k">is</span><span class="w"> </span><span class="n">g0001</span><span class="p">.</span><span class="n">abci</span><span class="p">.</span><span class="k">local</span><span class="err">:</span><span class="mi">1</span><span class="w"></span>
 
@@ -100,7 +100,7 @@ startxfce4 <span class="p">&amp;</span>
 <span class="nf">Log</span><span class="w"> </span><span class="k">file</span><span class="w"> </span><span class="k">is</span><span class="w"> </span><span class="o">/</span><span class="n">home</span><span class="o">/</span><span class="n">username</span><span class="o">/</span><span class="p">.</span><span class="n">vnc</span><span class="o">/</span><span class="n">g0001</span><span class="p">.</span><span class="n">abci</span><span class="p">.</span><span class="k">local</span><span class="err">:</span><span class="mf">1.</span><span class="nf">log</span><span class="w"></span>
 
 <span class="o">[</span><span class="n">username@g0001 ~</span><span class="o">]</span><span class="w"></span>
-</pre></div>
+</code></pre></div>
 
 
 <p>g0001.abci.local:1 is the display name of the VNC server you launched. Port 5901 is assinged to the connection to this server.
@@ -112,20 +112,20 @@ In general, you can connect to the VNC server using a port with the display numb
 <h4 id="create-an-ssh-tunnel">Create an SSH tunnel</h4>
 <p>To connect to the VNC server by using Port 5901 of your computer, you need to create an SSH tunnel between <code>localhost:5901</code> and  <code>g0001.abci.local:5901</code>.</p>
 <p>If you have OpenSSH 7.3 or later, you can create an SSH tunnel with the following command:</p>
-<div class="codehilite"><pre><span></span><span class="o">[</span><span class="n">user@localmachine</span><span class="o">]</span><span class="w"> </span><span class="err">$</span><span class="w"> </span><span class="n">ssh</span><span class="w"> </span><span class="o">-</span><span class="n">N</span><span class="w"> </span><span class="o">-</span><span class="n">L</span><span class="w"> </span><span class="mi">5901</span><span class="err">:</span><span class="n">g0001</span><span class="p">.</span><span class="n">abci</span><span class="p">.</span><span class="k">local</span><span class="err">:</span><span class="mi">5901</span><span class="w"> </span><span class="o">-</span><span class="n">J</span><span class="w"> </span><span class="o">%</span><span class="n">r</span><span class="nv">@as</span><span class="p">.</span><span class="n">abci</span><span class="p">.</span><span class="n">ai</span><span class="w"> </span><span class="n">username</span><span class="nv">@es</span><span class="w"></span>
-</pre></div>
+<div class="codehilite"><pre><span></span><code><span class="err">[user@localmachine] $ ssh -N -L 5901:g0001.abci.local:5901 -J %r@as.abci.ai username@es</span>
+</code></pre></div>
 
 
 <p>If you cannot use ProxyJump, you can also create one with the following command:</p>
-<div class="codehilite"><pre><span></span><span class="o">[</span><span class="n">user@localmachine</span><span class="o">]</span><span class="w"> </span><span class="err">$</span><span class="w"> </span><span class="n">ssh</span><span class="w"> </span><span class="o">-</span><span class="n">L</span><span class="w"> </span><span class="mi">10022</span><span class="err">:</span><span class="nl">es</span><span class="p">:</span><span class="mi">22</span><span class="w"> </span><span class="o">-</span><span class="n">l</span><span class="w"> </span><span class="n">username</span><span class="w"> </span><span class="k">as</span><span class="p">.</span><span class="n">abci</span><span class="p">.</span><span class="n">ai</span><span class="w"></span>
-<span class="o">[</span><span class="n">user@localmachine</span><span class="o">]</span><span class="w"> </span><span class="err">$</span><span class="w"> </span><span class="n">ssh</span><span class="w"> </span><span class="o">-</span><span class="n">p</span><span class="w"> </span><span class="mi">10022</span><span class="w"> </span><span class="o">-</span><span class="n">N</span><span class="w"> </span><span class="o">-</span><span class="n">L</span><span class="w"> </span><span class="mi">5901</span><span class="err">:</span><span class="n">g0001</span><span class="p">.</span><span class="n">abci</span><span class="p">.</span><span class="k">local</span><span class="err">:</span><span class="mi">5901</span><span class="w"> </span><span class="o">-</span><span class="n">l</span><span class="w"> </span><span class="n">username</span><span class="w"> </span><span class="n">localhost</span><span class="w"></span>
-</pre></div>
+<div class="codehilite"><pre><span></span><code><span class="err">[user@localmachine] $ ssh -L 10022:es:22 -l username as.abci.ai</span>
+<span class="err">[user@localmachine] $ ssh -p 10022 -N -L 5901:g0001.abci.local:5901 -l username localhost</span>
+</code></pre></div>
 
 
 <h4 id="launch-vnc-client">Launch VNC client</h4>
 <p>In macOS, VNC client is integrated in Finder. So, you can connect to the VNC server by the following command:</p>
-<div class="codehilite"><pre><span></span><span class="o">[</span><span class="n">user@localmachine</span><span class="o">]</span><span class="w"> </span><span class="err">$</span><span class="w"> </span><span class="k">open</span><span class="w"> </span><span class="nl">vnc</span><span class="p">:</span><span class="o">//</span><span class="nl">localhost</span><span class="p">:</span><span class="mi">5901</span><span class="o">/</span><span class="w"></span>
-</pre></div>
+<div class="codehilite"><pre><span></span><code><span class="err">[user@localmachine] $ open vnc://localhost:5901/</span>
+</code></pre></div>
 
 
 <p>If not using macOS, you need to install a VNC client separately and configure it to connect to the VNC server.</p>
@@ -165,16 +165,16 @@ In the example of Tiger VNC client, hostname and port number are connected by ":
 <ul>
 <li>stop VNC service and exit compute node.</li>
 </ul>
-<div class="codehilite"><pre><span></span>[<span class="nv">username</span>@<span class="nv">g0001</span> <span class="o">~</span>]$ <span class="nv">vncserver</span> <span class="o">-</span><span class="nv">list</span>
+<div class="codehilite"><pre><span></span><code><span class="o">[</span><span class="n">username@g0001 ~</span><span class="o">]</span><span class="err">$</span><span class="w"> </span><span class="n">vncserver</span><span class="w"> </span><span class="o">-</span><span class="n">list</span><span class="w"></span>
 
-<span class="nv">TigerVNC</span> <span class="nv">server</span> <span class="nv">sessions</span>:
+<span class="n">TigerVNC</span><span class="w"> </span><span class="n">server</span><span class="w"> </span><span class="nl">sessions</span><span class="p">:</span><span class="w"></span>
 
-<span class="nv">X</span> <span class="nv">DISPLAY</span> #     <span class="nv">PROCESS</span> <span class="nv">ID</span>
-<span class="nl">:1</span>              <span class="mi">5081</span>
+<span class="n">X</span><span class="w"> </span><span class="n">DISPLAY</span><span class="w"> </span><span class="err">#</span><span class="w">     </span><span class="n">PROCESS</span><span class="w"> </span><span class="n">ID</span><span class="w"></span>
+<span class="err">:</span><span class="mi">1</span><span class="w">              </span><span class="mi">5081</span><span class="w"></span>
 
-[<span class="nv">username</span>@<span class="nv">g0001</span> <span class="o">~</span>] 
-[<span class="nv">username</span>@<span class="nv">g0001</span> <span class="o">~</span>] <span class="nv">vncserver</span> <span class="o">-</span><span class="nv">kill</span> :<span class="mi">1</span>
-<span class="nv">Killing</span> <span class="nv">Xvnc</span> <span class="nv">process</span> <span class="nv">ID</span> <span class="nv">XXXXXX</span>
-[<span class="nv">username</span>@<span class="nv">g0001</span> <span class="o">~</span>] <span class="k">exit</span>
-[<span class="nv">username</span>@<span class="nv">es1</span> <span class="o">~</span>]
-</pre></div></article></div></div></main><footer class="md-footer"><div class="md-footer-nav"><nav class="md-footer-nav__inner md-grid"><a href="../../apps/others/" title="Others" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev"><div class="md-flex__cell md-flex__cell--shrink"><i class="md-icon md-icon--arrow-back md-footer-nav__button"></i></div><div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title"><span class="md-flex__ellipsis"><span class="md-footer-nav__direction">Previous</span>Others</span></div></a><a href="../awscli/" title="AWS CLI" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next"><div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title"><span class="md-flex__ellipsis"><span class="md-footer-nav__direction">Next</span>AWS CLI</span></div><div class="md-flex__cell md-flex__cell--shrink"><i class="md-icon md-icon--arrow-forward md-footer-nav__button"></i></div></a></nav></div><div class="md-footer-meta md-typeset"><div class="md-footer-meta__inner md-grid"><div class="md-footer-copyright"><div class="md-footer-copyright__highlight">Copyright &copy; 2018 National Institute of Advanced Industrial Science and Technology (AIST)</div>powered by <a href="https://www.mkdocs.org">MkDocs</a> and <a href="https://squidfunk.github.io/mkdocs-material/">Material for MkDocs</a></div></div></div></footer></div><script src="../../assets/javascripts/application.b260a35d.js"></script><script>app.initialize({version:"1.0.4",url:{base:"../.."}})</script></body></html>
+<span class="o">[</span><span class="n">username@g0001 ~</span><span class="o">]</span><span class="w"> </span>
+<span class="o">[</span><span class="n">username@g0001 ~</span><span class="o">]</span><span class="w"> </span><span class="n">vncserver</span><span class="w"> </span><span class="o">-</span><span class="k">kill</span><span class="w"> </span><span class="err">:</span><span class="mi">1</span><span class="w"></span>
+<span class="n">Killing</span><span class="w"> </span><span class="n">Xvnc</span><span class="w"> </span><span class="n">process</span><span class="w"> </span><span class="n">ID</span><span class="w"> </span><span class="n">XXXXXX</span><span class="w"></span>
+<span class="o">[</span><span class="n">username@g0001 ~</span><span class="o">]</span><span class="w"> </span><span class="k">exit</span><span class="w"></span>
+<span class="o">[</span><span class="n">username@es1 ~</span><span class="o">]</span><span class="w"></span>
+</code></pre></div></article></div></div></main><footer class="md-footer"><div class="md-footer-nav"><nav class="md-footer-nav__inner md-grid"><a href="../../apps/others/" title="Others" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev"><div class="md-flex__cell md-flex__cell--shrink"><i class="md-icon md-icon--arrow-back md-footer-nav__button"></i></div><div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title"><span class="md-flex__ellipsis"><span class="md-footer-nav__direction">Previous</span>Others</span></div></a><a href="../awscli/" title="AWS CLI" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next"><div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title"><span class="md-flex__ellipsis"><span class="md-footer-nav__direction">Next</span>AWS CLI</span></div><div class="md-flex__cell md-flex__cell--shrink"><i class="md-icon md-icon--arrow-forward md-footer-nav__button"></i></div></a></nav></div><div class="md-footer-meta md-typeset"><div class="md-footer-meta__inner md-grid"><div class="md-footer-copyright"><div class="md-footer-copyright__highlight">Copyright &copy; 2018 National Institute of Advanced Industrial Science and Technology (AIST)</div>powered by <a href="https://www.mkdocs.org">MkDocs</a> and <a href="https://squidfunk.github.io/mkdocs-material/">Material for MkDocs</a></div></div></div></footer></div><script src="../../assets/javascripts/application.b260a35d.js"></script><script>app.initialize({version:"1.1",url:{base:"../.."}})</script></body></html>

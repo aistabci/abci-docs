@@ -1,4 +1,4 @@
-<!doctype html><html lang="en" class="no-js"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta http-equiv="x-ua-compatible" content="ie=edge"><meta name="description" content="ABCI Users Guide, English version"><link rel="canonical" href="https://docs.abci.ai/en/09/"><meta name="author" content="AIST"><meta name="lang:clipboard.copy" content="Copy to clipboard"><meta name="lang:clipboard.copied" content="Copied to clipboard"><meta name="lang:search.language" content="en"><meta name="lang:search.pipeline.stopwords" content="True"><meta name="lang:search.pipeline.trimmer" content="True"><meta name="lang:search.result.none" content="No matching documents"><meta name="lang:search.result.one" content="1 matching document"><meta name="lang:search.result.other" content="# matching documents"><meta name="lang:search.tokenizer" content="[\s\-]+"><link rel="shortcut icon" href="../assets/images/favicon.png"><meta name="generator" content="mkdocs-1.0.4, mkdocs-material-4.3.1"><title>9. Linux Containers - ABCI Users Guide</title><link rel="stylesheet" href="../assets/stylesheets/application.4031d38b.css"><link rel="stylesheet" href="../assets/stylesheets/application-palette.224b79ff.css"><meta name="theme-color" content="#ef5350"><script src="../assets/javascripts/modernizr.74668098.js"></script><link href="https://fonts.gstatic.com" rel="preconnect" crossorigin><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700|Roboto+Mono&display=swap"><style>body,input{font-family:"Roboto","Helvetica Neue",Helvetica,Arial,sans-serif}code,kbd,pre{font-family:"Roboto Mono","Courier New",Courier,monospace}</style><link rel="stylesheet" href="../assets/fonts/material-icons.css"><script>window.ga = window.ga || function() {
+<!doctype html><html lang="en" class="no-js"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta http-equiv="x-ua-compatible" content="ie=edge"><meta name="description" content="ABCI Users Guide, English version"><link rel="canonical" href="https://docs.abci.ai/en/09/"><meta name="author" content="AIST"><meta name="lang:clipboard.copy" content="Copy to clipboard"><meta name="lang:clipboard.copied" content="Copied to clipboard"><meta name="lang:search.language" content="en"><meta name="lang:search.pipeline.stopwords" content="True"><meta name="lang:search.pipeline.trimmer" content="True"><meta name="lang:search.result.none" content="No matching documents"><meta name="lang:search.result.one" content="1 matching document"><meta name="lang:search.result.other" content="# matching documents"><meta name="lang:search.tokenizer" content="[\s\-]+"><link rel="shortcut icon" href="../assets/images/favicon.png"><meta name="generator" content="mkdocs-1.1, mkdocs-material-4.3.1"><title>9. Linux Containers - ABCI Users Guide</title><link rel="stylesheet" href="../assets/stylesheets/application.4031d38b.css"><link rel="stylesheet" href="../assets/stylesheets/application-palette.224b79ff.css"><meta name="theme-color" content="#ef5350"><script src="../assets/javascripts/modernizr.74668098.js"></script><link href="https://fonts.gstatic.com" rel="preconnect" crossorigin><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700|Roboto+Mono&display=swap"><style>body,input{font-family:"Roboto","Helvetica Neue",Helvetica,Arial,sans-serif}code,kbd,pre{font-family:"Roboto Mono","Courier New",Courier,monospace}</style><link rel="stylesheet" href="../assets/fonts/material-icons.css"><script>window.ga = window.ga || function() {
     (ga.q = ga.q || []).push(arguments)
   }
   ga.l = +new Date
@@ -21,8 +21,8 @@
 <h2 id="singularity">Singularity</h2>
 <p><a href="https://www.sylabs.io/singularity/">Singularity</a> is available on the ABCI System.
 To use Singularity, set up user environment by the <code>module</code> command.</p>
-<div class="codehilite"><pre><span></span><span class="o">[</span><span class="n">username@g0001~</span><span class="o">]</span><span class="err">$</span><span class="w"> </span><span class="k">module</span><span class="w"> </span><span class="k">load</span><span class="w"> </span><span class="n">singularity</span><span class="o">/</span><span class="mf">2.6.1</span><span class="w"></span>
-</pre></div>
+<div class="codehilite"><pre><span></span><code><span class="err">[username@g0001~]$ module load singularity/2.6.1</span>
+</code></pre></div>
 
 
 <p>More comprehensive user guide for Singularity will be found: <a href="https://www.sylabs.io/guides/2.6/user-guide/">User Guide &mdash; Singularity container 2.6 documentation</a>.</p>
@@ -34,16 +34,16 @@ The second and subsequent times startup is faster by using cached data.</p>
 <p>Example) Execution of Singularity</p>
 <p>The following sample is execution of Singularity using caffe2 container image published in Docker Hub.
 <code>python sample.py</code> is executed on Singularity container started by <code>singularity run</code> command.</p>
-<div class="codehilite"><pre><span></span><span class="o">[</span><span class="n">username@es1 ~</span><span class="o">]</span><span class="err">$</span><span class="w"> </span><span class="n">qrsh</span><span class="w"> </span><span class="o">-</span><span class="n">l</span><span class="w"> </span><span class="n">rt_F</span><span class="o">=</span><span class="mi">1</span><span class="w"></span>
-<span class="o">[</span><span class="n">username@g0001~</span><span class="o">]</span><span class="err">$</span><span class="w"> </span><span class="k">module</span><span class="w"> </span><span class="k">load</span><span class="w"> </span><span class="n">singularity</span><span class="o">/</span><span class="mf">2.6.1</span><span class="w"></span>
-<span class="o">[</span><span class="n">username@g0001~</span><span class="o">]</span><span class="err">$</span><span class="w"> </span><span class="n">singularity</span><span class="w"> </span><span class="n">run</span><span class="w"> </span><span class="c1">--nv docker://caffe2ai/caffe2:latest</span>
-<span class="n">Docker</span><span class="w"> </span><span class="nc">image</span><span class="w"> </span><span class="k">path</span><span class="err">:</span><span class="w"> </span><span class="k">index</span><span class="p">.</span><span class="n">docker</span><span class="p">.</span><span class="n">io</span><span class="o">/</span><span class="n">caffe2ai</span><span class="o">/</span><span class="nl">caffe2</span><span class="p">:</span><span class="n">latest</span><span class="w"></span>
-<span class="n">Cache</span><span class="w"> </span><span class="n">folder</span><span class="w"> </span><span class="k">set</span><span class="w"> </span><span class="k">to</span><span class="w"> </span><span class="o">/</span><span class="n">fs3</span><span class="o">/</span><span class="n">home</span><span class="o">/</span><span class="n">username</span><span class="o">/</span><span class="p">.</span><span class="n">singularity</span><span class="o">/</span><span class="n">docker</span><span class="w"></span>
-<span class="n">Creating</span><span class="w"> </span><span class="n">container</span><span class="w"> </span><span class="n">runtime</span><span class="p">...</span><span class="w"></span>
-<span class="p">...</span><span class="w"></span>
-<span class="o">[</span><span class="n">username@g0001~</span><span class="o">]</span><span class="err">$</span><span class="w"> </span><span class="n">python</span><span class="w"> </span><span class="n">sample</span><span class="p">.</span><span class="n">py</span><span class="w"></span>
-<span class="k">True</span><span class="w"></span>
-</pre></div>
+<div class="codehilite"><pre><span></span><code><span class="err">[username@es1 ~]$ qrsh -l rt_F=1</span>
+<span class="err">[username@g0001~]$ module load singularity/2.6.1</span>
+<span class="err">[username@g0001~]$ singularity run --nv docker://caffe2ai/caffe2:latest</span>
+<span class="err">Docker image path: index.docker.io/caffe2ai/caffe2:latest</span>
+<span class="err">Cache folder set to /fs3/home/username/.singularity/docker</span>
+<span class="err">Creating container runtime...</span>
+<span class="err">...</span>
+<span class="err">[username@g0001~]$ python sample.py</span>
+<span class="err">True</span>
+</code></pre></div>
 
 
 <h3 id="create-a-singularity-image">Create a Singularity image</h3>
@@ -52,20 +52,20 @@ On ABCI system, you cannot build a container image from the recipe.
 To use your custom container image, you adapt your own server environment to the ABCI environment (the version of singularity, framework, and mpi), build a container image on it,
 and then move the container image to ABCI system.</p>
 <p>Example) Create a Singularity image file</p>
-<div class="codehilite"><pre><span></span><span class="o">[</span><span class="n">username@es1 ~</span><span class="o">]</span><span class="err">$</span><span class="w"> </span><span class="k">module</span><span class="w"> </span><span class="k">load</span><span class="w"> </span><span class="n">singularity</span><span class="o">/</span><span class="mf">2.6.1</span><span class="w"></span>
-<span class="o">[</span><span class="n">username@es1 ~</span><span class="o">]</span><span class="err">$</span><span class="w"> </span><span class="n">singularity</span><span class="w"> </span><span class="n">pull</span><span class="w"> </span><span class="c1">--name caffe2.img docker://caffe2ai/caffe2:latest</span>
-<span class="n">Docker</span><span class="w"> </span><span class="nc">image</span><span class="w"> </span><span class="k">path</span><span class="err">:</span><span class="w"> </span><span class="k">index</span><span class="p">.</span><span class="n">docker</span><span class="p">.</span><span class="n">io</span><span class="o">/</span><span class="n">caffe2ai</span><span class="o">/</span><span class="nl">caffe2</span><span class="p">:</span><span class="n">latest</span><span class="w"></span>
-<span class="n">Cache</span><span class="w"> </span><span class="n">folder</span><span class="w"> </span><span class="k">set</span><span class="w"> </span><span class="k">to</span><span class="w"> </span><span class="o">/</span><span class="n">fs3</span><span class="o">/</span><span class="n">home</span><span class="o">/</span><span class="n">username</span><span class="o">/</span><span class="p">.</span><span class="n">singularity</span><span class="o">/</span><span class="n">docker</span><span class="w"></span>
-<span class="p">...</span><span class="w"></span>
-<span class="o">[</span><span class="n">username@es1 ~</span><span class="o">]</span><span class="err">$</span><span class="w"> </span><span class="n">ls</span><span class="w"> </span><span class="n">caffe2</span><span class="p">.</span><span class="n">img</span><span class="w"></span>
-<span class="n">caffe2</span><span class="p">.</span><span class="n">img</span><span class="w"></span>
-</pre></div>
+<div class="codehilite"><pre><span></span><code><span class="err">[username@es1 ~]$ module load singularity/2.6.1</span>
+<span class="err">[username@es1 ~]$ singularity pull --name caffe2.img docker://caffe2ai/caffe2:latest</span>
+<span class="err">Docker image path: index.docker.io/caffe2ai/caffe2:latest</span>
+<span class="err">Cache folder set to /fs3/home/username/.singularity/docker</span>
+<span class="err">...</span>
+<span class="err">[username@es1 ~]$ ls caffe2.img</span>
+<span class="err">caffe2.img</span>
+</code></pre></div>
 
 
 <p>Example) Start a container using Singularity image file</p>
-<div class="codehilite"><pre><span></span><span class="o">[</span><span class="n">username@es1 ~</span><span class="o">]</span><span class="err">$</span><span class="w"> </span><span class="k">module</span><span class="w"> </span><span class="k">load</span><span class="w"> </span><span class="n">singularity</span><span class="o">/</span><span class="mf">2.6.1</span><span class="w"></span>
-<span class="o">[</span><span class="n">username@es1 ~</span><span class="o">]</span><span class="err">$</span><span class="w"> </span><span class="n">singularity</span><span class="w"> </span><span class="n">run</span><span class="w"> </span><span class="p">.</span><span class="o">/</span><span class="n">caffe2</span><span class="p">.</span><span class="n">img</span><span class="w"></span>
-</pre></div>
+<div class="codehilite"><pre><span></span><code><span class="err">[username@es1 ~]$ module load singularity/2.6.1</span>
+<span class="err">[username@es1 ~]$ singularity run ./caffe2.img</span>
+</code></pre></div>
 
 
 <h2 id="docker">Docker</h2>
@@ -94,10 +94,10 @@ When you use Docker, you need to set up user environment by the <code>module</co
 </tbody>
 </table>
 <p>The available Docker image can be referred by <code>show_docker_images</code> command.</p>
-<div class="codehilite"><pre><span></span><span class="o">[</span><span class="n">username@es1 ~</span><span class="o">]</span><span class="err">$</span><span class="w"> </span><span class="n">show_docker_images</span><span class="w"></span>
-<span class="n">REPOSITORY</span><span class="w">                </span><span class="n">TAG</span><span class="w">             </span><span class="nc">IMAGE</span><span class="w"> </span><span class="n">ID</span><span class="w">     </span><span class="n">CREATED</span><span class="w">       </span><span class="k">SIZE</span><span class="w"></span>
-<span class="nl">jcm</span><span class="p">:</span><span class="mi">5000</span><span class="o">/</span><span class="n">dhub</span><span class="o">/</span><span class="n">ubuntu</span><span class="w">      </span><span class="n">latest</span><span class="w">          </span><span class="mi">113</span><span class="n">a43faa138</span><span class="w"> </span><span class="mi">3</span><span class="w"> </span><span class="n">weeks</span><span class="w"> </span><span class="n">ago</span><span class="w">   </span><span class="mf">81.2</span><span class="n">MB</span><span class="w"></span>
-</pre></div>
+<div class="codehilite"><pre><span></span><code><span class="err">[username@es1 ~]$ show_docker_images</span>
+<span class="err">REPOSITORY                TAG             IMAGE ID     CREATED       SIZE</span>
+<span class="c">jcm:5000/dhub/ubuntu      latest          113a43faa138 3 weeks ago   81.2MB</span>
+</code></pre></div>
 
 
 <div class="admonition warning">
@@ -106,7 +106,7 @@ When you use Docker, you need to set up user environment by the <code>module</co
 </div>
 <p>Example) job script using Docker</p>
 <p>The following job script executes <code>python3 ./test.py</code> on Docker container.</p>
-<div class="codehilite"><pre><span></span><span class="o">[</span><span class="n">username@es1 ~</span><span class="o">]</span><span class="err">$</span><span class="w"> </span><span class="n">cat</span><span class="w"> </span><span class="n">run</span><span class="p">.</span><span class="n">sh</span><span class="w"></span>
+<div class="codehilite"><pre><span></span><code><span class="o">[</span><span class="n">username@es1 ~</span><span class="o">]</span><span class="err">$</span><span class="w"> </span><span class="n">cat</span><span class="w"> </span><span class="n">run</span><span class="p">.</span><span class="n">sh</span><span class="w"></span>
 <span class="err">#!</span><span class="o">/</span><span class="n">bin</span><span class="o">/</span><span class="n">sh</span><span class="w"></span>
 <span class="err">#$</span><span class="o">-</span><span class="n">cwd</span><span class="w"></span>
 <span class="err">#$</span><span class="o">-</span><span class="n">j</span><span class="w"> </span><span class="n">y</span><span class="w"></span>
@@ -115,16 +115,16 @@ When you use Docker, you need to set up user environment by the <code>module</co
 <span class="err">#$</span><span class="o">-</span><span class="n">l</span><span class="w"> </span><span class="n">docker_images</span><span class="o">=</span><span class="ss">&quot;*jcm:5000/dhub/ubuntu*&quot;</span><span class="w"></span>
 
 <span class="n">python3</span><span class="w"> </span><span class="p">.</span><span class="o">/</span><span class="n">sample</span><span class="p">.</span><span class="n">py</span><span class="w"></span>
-</pre></div>
+</code></pre></div>
 
 
 <p>Example) Submission of job script using Docker</p>
-<div class="codehilite"><pre><span></span><span class="o">[</span><span class="n">username@es1 ~</span><span class="o">]</span><span class="err">$</span><span class="w"> </span><span class="n">qsub</span><span class="w"> </span><span class="n">run</span><span class="p">.</span><span class="n">sh</span><span class="w"></span>
-<span class="n">Your</span><span class="w"> </span><span class="n">job</span><span class="w"> </span><span class="mi">12345</span><span class="w"> </span><span class="p">(</span><span class="ss">&quot;run.sh&quot;</span><span class="p">)</span><span class="w"> </span><span class="n">has</span><span class="w"> </span><span class="n">been</span><span class="w"> </span><span class="n">submitted</span><span class="w"></span>
-</pre></div>
+<div class="codehilite"><pre><span></span><code><span class="err">[username@es1 ~]$ qsub run.sh</span>
+<span class="err">Your job 12345 (&quot;run.sh&quot;) has been submitted</span>
+</code></pre></div>
 
 
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
 <p>Docker container is only available on a node-exclusive job.</p>
-</div></article></div></div></main><footer class="md-footer"><div class="md-footer-nav"><nav class="md-footer-nav__inner md-grid"><a href="../08/" title="8. MPI" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev"><div class="md-flex__cell md-flex__cell--shrink"><i class="md-icon md-icon--arrow-back md-footer-nav__button"></i></div><div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title"><span class="md-flex__ellipsis"><span class="md-footer-nav__direction">Previous</span>8. MPI</span></div></a><a href="../10/" title="10. Software Development Environment" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next"><div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title"><span class="md-flex__ellipsis"><span class="md-footer-nav__direction">Next</span>10. Software Development Environment</span></div><div class="md-flex__cell md-flex__cell--shrink"><i class="md-icon md-icon--arrow-forward md-footer-nav__button"></i></div></a></nav></div><div class="md-footer-meta md-typeset"><div class="md-footer-meta__inner md-grid"><div class="md-footer-copyright"><div class="md-footer-copyright__highlight">Copyright &copy; 2018 National Institute of Advanced Industrial Science and Technology (AIST)</div>powered by <a href="https://www.mkdocs.org">MkDocs</a> and <a href="https://squidfunk.github.io/mkdocs-material/">Material for MkDocs</a></div></div></div></footer></div><script src="../assets/javascripts/application.b260a35d.js"></script><script>app.initialize({version:"1.0.4",url:{base:".."}})</script></body></html>
+</div></article></div></div></main><footer class="md-footer"><div class="md-footer-nav"><nav class="md-footer-nav__inner md-grid"><a href="../08/" title="8. MPI" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev"><div class="md-flex__cell md-flex__cell--shrink"><i class="md-icon md-icon--arrow-back md-footer-nav__button"></i></div><div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title"><span class="md-flex__ellipsis"><span class="md-footer-nav__direction">Previous</span>8. MPI</span></div></a><a href="../10/" title="10. Software Development Environment" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next"><div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title"><span class="md-flex__ellipsis"><span class="md-footer-nav__direction">Next</span>10. Software Development Environment</span></div><div class="md-flex__cell md-flex__cell--shrink"><i class="md-icon md-icon--arrow-forward md-footer-nav__button"></i></div></a></nav></div><div class="md-footer-meta md-typeset"><div class="md-footer-meta__inner md-grid"><div class="md-footer-copyright"><div class="md-footer-copyright__highlight">Copyright &copy; 2018 National Institute of Advanced Industrial Science and Technology (AIST)</div>powered by <a href="https://www.mkdocs.org">MkDocs</a> and <a href="https://squidfunk.github.io/mkdocs-material/">Material for MkDocs</a></div></div></div></footer></div><script src="../assets/javascripts/application.b260a35d.js"></script><script>app.initialize({version:"1.1",url:{base:".."}})</script></body></html>

@@ -1,4 +1,4 @@
-<!doctype html><html lang="en" class="no-js"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta http-equiv="x-ua-compatible" content="ie=edge"><meta name="description" content="ABCI Users Guide, English version"><link rel="canonical" href="https://docs.abci.ai/en/apps/tensorflow/"><meta name="author" content="AIST"><meta name="lang:clipboard.copy" content="Copy to clipboard"><meta name="lang:clipboard.copied" content="Copied to clipboard"><meta name="lang:search.language" content="en"><meta name="lang:search.pipeline.stopwords" content="True"><meta name="lang:search.pipeline.trimmer" content="True"><meta name="lang:search.result.none" content="No matching documents"><meta name="lang:search.result.one" content="1 matching document"><meta name="lang:search.result.other" content="# matching documents"><meta name="lang:search.tokenizer" content="[\s\-]+"><link rel="shortcut icon" href="../../assets/images/favicon.png"><meta name="generator" content="mkdocs-1.0.4, mkdocs-material-4.3.1"><title>TensorFlow - ABCI Users Guide</title><link rel="stylesheet" href="../../assets/stylesheets/application.4031d38b.css"><link rel="stylesheet" href="../../assets/stylesheets/application-palette.224b79ff.css"><meta name="theme-color" content="#ef5350"><script src="../../assets/javascripts/modernizr.74668098.js"></script><link href="https://fonts.gstatic.com" rel="preconnect" crossorigin><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700|Roboto+Mono&display=swap"><style>body,input{font-family:"Roboto","Helvetica Neue",Helvetica,Arial,sans-serif}code,kbd,pre{font-family:"Roboto Mono","Courier New",Courier,monospace}</style><link rel="stylesheet" href="../../assets/fonts/material-icons.css"><script>window.ga = window.ga || function() {
+<!doctype html><html lang="en" class="no-js"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta http-equiv="x-ua-compatible" content="ie=edge"><meta name="description" content="ABCI Users Guide, English version"><link rel="canonical" href="https://docs.abci.ai/en/apps/tensorflow/"><meta name="author" content="AIST"><meta name="lang:clipboard.copy" content="Copy to clipboard"><meta name="lang:clipboard.copied" content="Copied to clipboard"><meta name="lang:search.language" content="en"><meta name="lang:search.pipeline.stopwords" content="True"><meta name="lang:search.pipeline.trimmer" content="True"><meta name="lang:search.result.none" content="No matching documents"><meta name="lang:search.result.one" content="1 matching document"><meta name="lang:search.result.other" content="# matching documents"><meta name="lang:search.tokenizer" content="[\s\-]+"><link rel="shortcut icon" href="../../assets/images/favicon.png"><meta name="generator" content="mkdocs-1.1, mkdocs-material-4.3.1"><title>TensorFlow - ABCI Users Guide</title><link rel="stylesheet" href="../../assets/stylesheets/application.4031d38b.css"><link rel="stylesheet" href="../../assets/stylesheets/application-palette.224b79ff.css"><meta name="theme-color" content="#ef5350"><script src="../../assets/javascripts/modernizr.74668098.js"></script><link href="https://fonts.gstatic.com" rel="preconnect" crossorigin><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700|Roboto+Mono&display=swap"><style>body,input{font-family:"Roboto","Helvetica Neue",Helvetica,Arial,sans-serif}code,kbd,pre{font-family:"Roboto Mono","Courier New",Courier,monospace}</style><link rel="stylesheet" href="../../assets/fonts/material-icons.css"><script>window.ga = window.ga || function() {
     (ga.q = ga.q || []).push(arguments)
   }
   ga.l = +new Date
@@ -68,7 +68,7 @@ please follow the instructions below.</p>
 <blockquote>
 <p>NEW_VENV : python virtual environment or path to be installed</p>
 </blockquote>
-<div class="codehilite"><pre><span></span>[username@es1 ~]$ qrsh -g group_name -l rt_F=1
+<div class="codehilite"><pre><span></span><code>[username@es1 ~]$ qrsh -g group_name -l rt_F=1
 [username@g0001 ~]$ module load gcc/7.4.0
 [username@g0001 ~]$ module load python/3.6/3.6.5 cuda/10.0/10.0.130 cudnn/7.6/7.6.4
 [username@g0001 ~]$ export LD_LIBRARY_PATH=<span class="nv">$CUDA_HOME</span>/extras/CUPTI/lib64:<span class="nv">$LD_LIBRARY_PATH</span>
@@ -78,7 +78,7 @@ please follow the instructions below.</p>
 (tensorflow-gpu) [username@g0001 ~]$ pip3 install --upgrade pip
 (tensorflow-gpu) [username@g0001 ~]$ pip3 install --upgrade setuptools
 (tensorflow-gpu) [username@g0001 ~]$ pip3 install tensorflow-gpu==1.15.0
-</pre></div>
+</code></pre></div>
 
 
 <h3 id="an-example-of-deep-learning-using-1gpu">An example of deep learning using 1GPU</h3>
@@ -86,9 +86,9 @@ please follow the instructions below.</p>
 <blockquote>
 <p>WORK : working directory</p>
 </blockquote>
-<div class="codehilite"><pre><span></span>[username@es ~]$ cd <span class="cp">${</span><span class="n">WORK</span><span class="cp">}</span>
+<div class="codehilite"><pre><span></span><code>[username@es ~]$ cd <span class="cp">${</span><span class="n">WORK</span><span class="cp">}</span>
 [username@es ~]$ wget https://raw.githubusercontent.com/tensorflow/tensorflow/master/tensorflow/examples/tutorials/mnist/mnist.py
-</pre></div>
+</code></pre></div>
 
 
 <p>Job script (an example of train_mnist.py execution using 1GPU on node)</p>
@@ -110,7 +110,7 @@ please follow the instructions below.</p>
 13
 14
 15
-16</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="ch">#!/bin/sh</span>
+16</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><code><span class="ch">#!/bin/sh</span>
 
 <span class="c1">#$ -l rt_F=1</span>
 <span class="c1">#$ -l h_rt=1:23:45</span>
@@ -126,7 +126,7 @@ module load python/3.6/3.6.5 cuda/10.0/10.0.130 cudnn/7.6/7.6.4
 python3 <span class="si">${</span><span class="nv">WORK</span><span class="si">}</span>/mnist.py
 
 deactivate
-</pre></div>
+</code></pre></div>
 </td></tr></table>
 
 <p>Submit a job (using 1GPU on 1node)</p>
@@ -134,9 +134,9 @@ deactivate
 <p>GROUP    : ABCI user group<br />
 WORK     : working directory</p>
 </blockquote>
-<div class="codehilite"><pre><span></span>[username@es ~]$ cd <span class="cp">${</span><span class="n">WORK</span><span class="cp">}</span>
+<div class="codehilite"><pre><span></span><code>[username@es ~]$ cd <span class="cp">${</span><span class="n">WORK</span><span class="cp">}</span>
 [username@es ~]$ qsub -g GROUP submit.sh
-</pre></div>
+</code></pre></div>
 
 
 <h2 id="tensorflow-horovod">TensorFlow + Horovod</h2>
@@ -146,7 +146,7 @@ please follow the instructions below.</p>
 <blockquote>
 <p>NEW_VENV : python virtual environment or path to be installed</p>
 </blockquote>
-<div class="codehilite"><pre><span></span>[username@es1 ~]$ qrsh -g group_name -l rt_F=1
+<div class="codehilite"><pre><span></span><code>[username@es1 ~]$ qrsh -g group_name -l rt_F=1
 [username@g0001 ~]$ module load gcc/7.4.0
 [username@g0001 ~]$ module load python/3.6/3.6.5 cuda/10.0/10.0.130 cudnn/7.6/7.6.4 nccl/2.4/2.4.8-1 openmpi/2.1.6
 [username@g0001 ~]$ export LD_LIBRARY_PATH=<span class="nv">$CUDA_HOME</span>/extras/CUPTI/lib64:<span class="nv">$LD_LIBRARY_PATH</span>
@@ -157,7 +157,7 @@ please follow the instructions below.</p>
 (tensorflow-gpu) [username@g0001 ~]$ pip3 install --upgrade setuptools
 (tensorflow-gpu) [username@g0001 ~]$ pip3 install tensorflow-gpu==1.15.0
 (tensorflow-gpu)  [username@g0001 ~]$ HOROVOD_NCCL_HOME=<span class="nv">$NCCL_HOME</span> HOROVOD_GPU_ALLREDUCE=NCCL HOROVOD_WITH_TENSORFLOW=1 pip3 install horovod
-</pre></div>
+</code></pre></div>
 
 
 <h3 id="an-example-of-deep-learning-using-multi-gpu-on-single-node">An example of deep learning using Multi GPU on Single node</h3>
@@ -165,9 +165,9 @@ please follow the instructions below.</p>
 <blockquote>
 <p>WORK : working directory</p>
 </blockquote>
-<div class="codehilite"><pre><span></span>[username@es ~]$ cd <span class="cp">${</span><span class="n">WORK</span><span class="cp">}</span>
+<div class="codehilite"><pre><span></span><code>[username@es ~]$ cd <span class="cp">${</span><span class="n">WORK</span><span class="cp">}</span>
 [username@es ~]$ wget https://raw.githubusercontent.com/uber/horovod/master/examples/tensorflow_mnist.py
-</pre></div>
+</code></pre></div>
 
 
 <p>Job script (an example of tensorflow_mnist.py execution using 4GPUs on node)
@@ -196,7 +196,7 @@ WORK : working directory</p>
 22
 23
 24
-25</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="ch">#!/bin/sh</span>
+25</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><code><span class="ch">#!/bin/sh</span>
 
 <span class="c1">#$ -l rt_F=1</span>
 <span class="c1">#$ -l h_rt=1:23:45</span>
@@ -221,7 +221,7 @@ module load python/3.6/3.6.5 cuda/10.0/10.0.130 cudnn/7.6/7.6.4 nccl/2.4/2.4.8-1
 mpirun <span class="si">${</span><span class="nv">MPIOPTS</span><span class="si">}</span> <span class="si">${</span><span class="nv">APP</span><span class="si">}</span>
 
 deactivate
-</pre></div>
+</code></pre></div>
 </td></tr></table>
 
 <p>Submit a job (using 4GPUs on node)</p>
@@ -229,24 +229,24 @@ deactivate
 <p>GROUP    : ABCI user group<br />
 WORK     : working directory</p>
 </blockquote>
-<div class="codehilite"><pre><span></span>[username@es ~]$ cd <span class="cp">${</span><span class="n">WORK</span><span class="cp">}</span>
+<div class="codehilite"><pre><span></span><code>[username@es ~]$ cd <span class="cp">${</span><span class="n">WORK</span><span class="cp">}</span>
 [username@es ~]$ qsub -g GROUP submit.sh
-</pre></div>
+</code></pre></div>
 
 
 <p>Sample of execution result</p>
-<div class="codehilite"><pre><span></span><span class="ss">(</span><span class="nv">snip</span><span class="ss">)</span>
-<span class="nv">INFO</span>:<span class="nv">tensorflow</span>:<span class="nv">loss</span> <span class="o">=</span> <span class="mi">0</span>.<span class="mi">00024408945</span>, <span class="nv">step</span> <span class="o">=</span> <span class="mi">4990</span> <span class="ss">(</span><span class="mi">0</span>.<span class="mi">102</span> <span class="nv">sec</span><span class="ss">)</span>
-<span class="nv">I1115</span> <span class="mi">11</span>:<span class="mi">45</span>:<span class="mi">54</span>.<span class="mi">286664</span> <span class="mi">47760267357632</span> <span class="nv">basic_session_run_hooks</span>.<span class="nv">py</span>:<span class="mi">260</span>] <span class="nv">loss</span> <span class="o">=</span> <span class="mi">0</span>.<span class="mi">00024408945</span>, <span class="nv">step</span> <span class="o">=</span> <span class="mi">4990</span> <span class="ss">(</span><span class="mi">0</span>.<span class="mi">102</span> <span class="nv">sec</span><span class="ss">)</span>
-<span class="nv">INFO</span>:<span class="nv">tensorflow</span>:<span class="nv">loss</span> <span class="o">=</span> <span class="mi">0</span>.<span class="mi">021003742</span>, <span class="nv">step</span> <span class="o">=</span> <span class="mi">4990</span> <span class="ss">(</span><span class="mi">0</span>.<span class="mi">102</span> <span class="nv">sec</span><span class="ss">)</span>
-<span class="nv">I1115</span> <span class="mi">11</span>:<span class="mi">45</span>:<span class="mi">54</span>.<span class="mi">286758</span> <span class="mi">47618314866112</span> <span class="nv">basic_session_run_hooks</span>.<span class="nv">py</span>:<span class="mi">260</span>] <span class="nv">loss</span> <span class="o">=</span> <span class="mi">0</span>.<span class="mi">021003742</span>, <span class="nv">step</span> <span class="o">=</span> <span class="mi">4990</span> <span class="ss">(</span><span class="mi">0</span>.<span class="mi">102</span> <span class="nv">sec</span><span class="ss">)</span>
-<span class="nv">INFO</span>:<span class="nv">tensorflow</span>:<span class="nv">loss</span> <span class="o">=</span> <span class="mi">0</span>.<span class="mi">072201274</span>, <span class="nv">step</span> <span class="o">=</span> <span class="mi">4990</span> <span class="ss">(</span><span class="mi">0</span>.<span class="mi">102</span> <span class="nv">sec</span><span class="ss">)</span>
-<span class="nv">INFO</span>:<span class="nv">tensorflow</span>:<span class="nv">loss</span> <span class="o">=</span> <span class="mi">1</span>.<span class="mi">9928242</span><span class="nv">e</span><span class="o">-</span><span class="mi">05</span>, <span class="nv">step</span> <span class="o">=</span> <span class="mi">4990</span> <span class="ss">(</span><span class="mi">0</span>.<span class="mi">102</span> <span class="nv">sec</span><span class="ss">)</span>
-<span class="nv">I1115</span> <span class="mi">11</span>:<span class="mi">45</span>:<span class="mi">54</span>.<span class="mi">286807</span> <span class="mi">47528272862656</span> <span class="nv">basic_session_run_hooks</span>.<span class="nv">py</span>:<span class="mi">260</span>] <span class="nv">loss</span> <span class="o">=</span> <span class="mi">0</span>.<span class="mi">072201274</span>, <span class="nv">step</span> <span class="o">=</span> <span class="mi">4990</span> <span class="ss">(</span><span class="mi">0</span>.<span class="mi">102</span> <span class="nv">sec</span><span class="ss">)</span>
-<span class="nv">I1115</span> <span class="mi">11</span>:<span class="mi">45</span>:<span class="mi">54</span>.<span class="mi">286818</span> <span class="mi">47704005340608</span> <span class="nv">basic_session_run_hooks</span>.<span class="nv">py</span>:<span class="mi">260</span>] <span class="nv">loss</span> <span class="o">=</span> <span class="mi">1</span>.<span class="mi">9928242</span><span class="nv">e</span><span class="o">-</span><span class="mi">05</span>, <span class="nv">step</span> <span class="o">=</span> <span class="mi">4990</span> <span class="ss">(</span><span class="mi">0</span>.<span class="mi">102</span> <span class="nv">sec</span><span class="ss">)</span>
-<span class="nv">INFO</span>:<span class="nv">tensorflow</span>:<span class="nv">Saving</span> <span class="nv">checkpoints</span> <span class="k">for</span> <span class="mi">5000</span> <span class="nv">into</span> .<span class="o">/</span><span class="nv">checkpoints</span><span class="o">/</span><span class="nv">model</span>.<span class="nv">ckpt</span>.
-<span class="nv">I1115</span> <span class="mi">11</span>:<span class="mi">45</span>:<span class="mi">54</span>.<span class="mi">379096</span> <span class="mi">47704005340608</span> <span class="nv">basic_session_run_hooks</span>.<span class="nv">py</span>:<span class="mi">606</span>] <span class="nv">Saving</span> <span class="nv">checkpoints</span> <span class="k">for</span> <span class="mi">5000</span> <span class="nv">into</span> .<span class="o">/</span><span class="nv">checkpoints</span><span class="o">/</span><span class="nv">model</span>.<span class="nv">ckpt</span>.
-</pre></div>
+<div class="codehilite"><pre><span></span><code><span class="err">(snip)</span>
+<span class="c">INFO:tensorflow:loss = 0.00024408945, step = 4990 (0.102 sec)</span>
+<span class="err">I1115 11:45:54.286664 47760267357632 basic_session_run_hooks.py:260] loss = 0.00024408945, step = 4990 (0.102 sec)</span>
+<span class="c">INFO:tensorflow:loss = 0.021003742, step = 4990 (0.102 sec)</span>
+<span class="err">I1115 11:45:54.286758 47618314866112 basic_session_run_hooks.py:260] loss = 0.021003742, step = 4990 (0.102 sec)</span>
+<span class="c">INFO:tensorflow:loss = 0.072201274, step = 4990 (0.102 sec)</span>
+<span class="c">INFO:tensorflow:loss = 1.9928242e-05, step = 4990 (0.102 sec)</span>
+<span class="err">I1115 11:45:54.286807 47528272862656 basic_session_run_hooks.py:260] loss = 0.072201274, step = 4990 (0.102 sec)</span>
+<span class="err">I1115 11:45:54.286818 47704005340608 basic_session_run_hooks.py:260] loss = 1.9928242e-05, step = 4990 (0.102 sec)</span>
+<span class="c">INFO:tensorflow:Saving checkpoints for 5000 into ./checkpoints/model.ckpt.</span>
+<span class="err">I1115 11:45:54.379096 47704005340608 basic_session_run_hooks.py:606] Saving checkpoints for 5000 into ./checkpoints/model.ckpt.</span>
+</code></pre></div>
 
 
 <h3 id="an-example-of-deep-learning-using-multi-gpu-on-multi-nodes">An example of deep learning using Multi GPU on multi nodes</h3>
@@ -254,9 +254,9 @@ WORK     : working directory</p>
 <blockquote>
 <p>WORK : working directory</p>
 </blockquote>
-<div class="codehilite"><pre><span></span>[username@es ~]$ cd <span class="cp">${</span><span class="n">WORK</span><span class="cp">}</span>
+<div class="codehilite"><pre><span></span><code>[username@es ~]$ cd <span class="cp">${</span><span class="n">WORK</span><span class="cp">}</span>
 [username@es ~]$ wget https://raw.githubusercontent.com/uber/horovod/master/examples/tensorflow_mnist.py
-</pre></div>
+</code></pre></div>
 
 
 <p>Job script (an example of tensorflow_mnist.py execution using Multi GPUs on 2nodes)</p>
@@ -287,7 +287,7 @@ WORK     : working directory</p>
 22
 23
 24
-25</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="ch">#!/bin/sh</span>
+25</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><code><span class="ch">#!/bin/sh</span>
 
 <span class="c1">#$ -l rt_F=2</span>
 <span class="c1">#$ -l h_rt=1:23:45</span>
@@ -312,7 +312,7 @@ module load python/3.6/3.6.5 cuda/10.0/10.0.130 cudnn/7.6/7.6.4 nccl/2.4/2.4.8-1
 mpirun <span class="si">${</span><span class="nv">MPIOPTS</span><span class="si">}</span> <span class="si">${</span><span class="nv">APP</span><span class="si">}</span>
 
 deactivate
-</pre></div>
+</code></pre></div>
 </td></tr></table>
 
 <p>Submit a job (using 2nodes with 4GPUs each)</p>
@@ -320,21 +320,21 @@ deactivate
 <p>GROUP    : ABCI user group<br />
 WORK     : working directory</p>
 </blockquote>
-<div class="codehilite"><pre><span></span>[username@es ~]$ cd <span class="cp">${</span><span class="n">WORK</span><span class="cp">}</span>
+<div class="codehilite"><pre><span></span><code>[username@es ~]$ cd <span class="cp">${</span><span class="n">WORK</span><span class="cp">}</span>
 [username@es ~]$ qsub -g GROUP submit.sh
-</pre></div>
+</code></pre></div>
 
 
 <p>Sample of execution result</p>
-<div class="codehilite"><pre><span></span><span class="ss">(</span><span class="nv">snip</span><span class="ss">)</span>
-<span class="nv">INFO</span>:<span class="nv">tensorflow</span>:<span class="nv">loss</span> <span class="o">=</span> <span class="mi">1</span>.<span class="mi">5364076</span><span class="nv">e</span><span class="o">-</span><span class="mi">05</span>, <span class="nv">step</span> <span class="o">=</span> <span class="mi">2490</span> <span class="ss">(</span><span class="mi">0</span>.<span class="mi">102</span> <span class="nv">sec</span><span class="ss">)</span>
-<span class="nv">I1115</span> <span class="mi">12</span>:<span class="mi">10</span>:<span class="mi">17</span>.<span class="mi">351316</span> <span class="mi">47108070133184</span> <span class="nv">basic_session_run_hooks</span>.<span class="nv">py</span>:<span class="mi">260</span>] <span class="nv">loss</span> <span class="o">=</span> <span class="mi">1</span>.<span class="mi">5364076</span><span class="nv">e</span><span class="o">-</span><span class="mi">05</span>, <span class="nv">step</span> <span class="o">=</span> <span class="mi">2490</span> <span class="ss">(</span><span class="mi">0</span>.<span class="mi">102</span> <span class="nv">sec</span><span class="ss">)</span>
-<span class="nv">I1115</span> <span class="mi">12</span>:<span class="mi">10</span>:<span class="mi">17</span>.<span class="mi">351280</span> <span class="mi">47541720673728</span> <span class="nv">basic_session_run_hooks</span>.<span class="nv">py</span>:<span class="mi">260</span>] <span class="nv">loss</span> <span class="o">=</span> <span class="mi">0</span>.<span class="mi">037832655</span>, <span class="nv">step</span> <span class="o">=</span> <span class="mi">2490</span> <span class="ss">(</span><span class="mi">0</span>.<span class="mi">102</span> <span class="nv">sec</span><span class="ss">)</span>
-<span class="nv">I1115</span> <span class="mi">12</span>:<span class="mi">10</span>:<span class="mi">17</span>.<span class="mi">351558</span> <span class="mi">47249233841600</span> <span class="nv">basic_session_run_hooks</span>.<span class="nv">py</span>:<span class="mi">260</span>] <span class="nv">loss</span> <span class="o">=</span> <span class="mi">0</span>.<span class="mi">0021181286</span>, <span class="nv">step</span> <span class="o">=</span> <span class="mi">2490</span> <span class="ss">(</span><span class="mi">0</span>.<span class="mi">102</span> <span class="nv">sec</span><span class="ss">)</span>
-<span class="nv">INFO</span>:<span class="nv">tensorflow</span>:<span class="nv">loss</span> <span class="o">=</span> <span class="mi">0</span>.<span class="mi">0002751056</span>, <span class="nv">step</span> <span class="o">=</span> <span class="mi">2490</span> <span class="ss">(</span><span class="mi">0</span>.<span class="mi">102</span> <span class="nv">sec</span><span class="ss">)</span>
-<span class="nv">I1115</span> <span class="mi">12</span>:<span class="mi">10</span>:<span class="mi">17</span>.<span class="mi">351346</span> <span class="mi">47446035205568</span> <span class="nv">basic_session_run_hooks</span>.<span class="nv">py</span>:<span class="mi">260</span>] <span class="nv">loss</span> <span class="o">=</span> <span class="mi">0</span>.<span class="mi">0002751056</span>, <span class="nv">step</span> <span class="o">=</span> <span class="mi">2490</span> <span class="ss">(</span><span class="mi">0</span>.<span class="mi">102</span> <span class="nv">sec</span><span class="ss">)</span>
-<span class="nv">INFO</span>:<span class="nv">tensorflow</span>:<span class="nv">loss</span> <span class="o">=</span> <span class="mi">8</span>.<span class="mi">130686</span><span class="nv">e</span><span class="o">-</span><span class="mi">05</span>, <span class="nv">step</span> <span class="o">=</span> <span class="mi">2490</span> <span class="ss">(</span><span class="mi">0</span>.<span class="mi">102</span> <span class="nv">sec</span><span class="ss">)</span>
-<span class="nv">I1115</span> <span class="mi">12</span>:<span class="mi">10</span>:<span class="mi">17</span>.<span class="mi">351369</span> <span class="mi">47244077174208</span> <span class="nv">basic_session_run_hooks</span>.<span class="nv">py</span>:<span class="mi">260</span>] <span class="nv">loss</span> <span class="o">=</span> <span class="mi">8</span>.<span class="mi">130686</span><span class="nv">e</span><span class="o">-</span><span class="mi">05</span>, <span class="nv">step</span> <span class="o">=</span> <span class="mi">2490</span> <span class="ss">(</span><span class="mi">0</span>.<span class="mi">102</span> <span class="nv">sec</span><span class="ss">)</span>
-<span class="nv">INFO</span>:<span class="nv">tensorflow</span>:<span class="nv">Saving</span> <span class="nv">checkpoints</span> <span class="k">for</span> <span class="mi">2500</span> <span class="nv">into</span> .<span class="o">/</span><span class="nv">checkpoints</span><span class="o">/</span><span class="nv">model</span>.<span class="nv">ckpt</span>.
-<span class="nv">I1115</span> <span class="mi">12</span>:<span class="mi">10</span>:<span class="mi">17</span>.<span class="mi">443821</span> <span class="mi">47844145257920</span> <span class="nv">basic_session_run_hooks</span>.<span class="nv">py</span>:<span class="mi">606</span>] <span class="nv">Saving</span> <span class="nv">checkpoints</span> <span class="k">for</span> <span class="mi">2500</span> <span class="nv">into</span> .<span class="o">/</span><span class="nv">checkpoints</span><span class="o">/</span><span class="nv">model</span>.<span class="nv">ckpt</span>.
-</pre></div></article></div></div></main><footer class="md-footer"><div class="md-footer-nav"><nav class="md-footer-nav__inner md-grid"><a href="../" title="Overview" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev"><div class="md-flex__cell md-flex__cell--shrink"><i class="md-icon md-icon--arrow-back md-footer-nav__button"></i></div><div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title"><span class="md-flex__ellipsis"><span class="md-footer-nav__direction">Previous</span>Overview</span></div></a><a href="../chainer/" title="Chainer" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next"><div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title"><span class="md-flex__ellipsis"><span class="md-footer-nav__direction">Next</span>Chainer</span></div><div class="md-flex__cell md-flex__cell--shrink"><i class="md-icon md-icon--arrow-forward md-footer-nav__button"></i></div></a></nav></div><div class="md-footer-meta md-typeset"><div class="md-footer-meta__inner md-grid"><div class="md-footer-copyright"><div class="md-footer-copyright__highlight">Copyright &copy; 2018 National Institute of Advanced Industrial Science and Technology (AIST)</div>powered by <a href="https://www.mkdocs.org">MkDocs</a> and <a href="https://squidfunk.github.io/mkdocs-material/">Material for MkDocs</a></div></div></div></footer></div><script src="../../assets/javascripts/application.b260a35d.js"></script><script>app.initialize({version:"1.0.4",url:{base:"../.."}})</script></body></html>
+<div class="codehilite"><pre><span></span><code><span class="err">(snip)</span>
+<span class="c">INFO:tensorflow:loss = 1.5364076e-05, step = 2490 (0.102 sec)</span>
+<span class="err">I1115 12:10:17.351316 47108070133184 basic_session_run_hooks.py:260] loss = 1.5364076e-05, step = 2490 (0.102 sec)</span>
+<span class="err">I1115 12:10:17.351280 47541720673728 basic_session_run_hooks.py:260] loss = 0.037832655, step = 2490 (0.102 sec)</span>
+<span class="err">I1115 12:10:17.351558 47249233841600 basic_session_run_hooks.py:260] loss = 0.0021181286, step = 2490 (0.102 sec)</span>
+<span class="c">INFO:tensorflow:loss = 0.0002751056, step = 2490 (0.102 sec)</span>
+<span class="err">I1115 12:10:17.351346 47446035205568 basic_session_run_hooks.py:260] loss = 0.0002751056, step = 2490 (0.102 sec)</span>
+<span class="c">INFO:tensorflow:loss = 8.130686e-05, step = 2490 (0.102 sec)</span>
+<span class="err">I1115 12:10:17.351369 47244077174208 basic_session_run_hooks.py:260] loss = 8.130686e-05, step = 2490 (0.102 sec)</span>
+<span class="c">INFO:tensorflow:Saving checkpoints for 2500 into ./checkpoints/model.ckpt.</span>
+<span class="err">I1115 12:10:17.443821 47844145257920 basic_session_run_hooks.py:606] Saving checkpoints for 2500 into ./checkpoints/model.ckpt.</span>
+</code></pre></div></article></div></div></main><footer class="md-footer"><div class="md-footer-nav"><nav class="md-footer-nav__inner md-grid"><a href="../" title="Overview" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev"><div class="md-flex__cell md-flex__cell--shrink"><i class="md-icon md-icon--arrow-back md-footer-nav__button"></i></div><div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title"><span class="md-flex__ellipsis"><span class="md-footer-nav__direction">Previous</span>Overview</span></div></a><a href="../chainer/" title="Chainer" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next"><div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title"><span class="md-flex__ellipsis"><span class="md-footer-nav__direction">Next</span>Chainer</span></div><div class="md-flex__cell md-flex__cell--shrink"><i class="md-icon md-icon--arrow-forward md-footer-nav__button"></i></div></a></nav></div><div class="md-footer-meta md-typeset"><div class="md-footer-meta__inner md-grid"><div class="md-footer-copyright"><div class="md-footer-copyright__highlight">Copyright &copy; 2018 National Institute of Advanced Industrial Science and Technology (AIST)</div>powered by <a href="https://www.mkdocs.org">MkDocs</a> and <a href="https://squidfunk.github.io/mkdocs-material/">Material for MkDocs</a></div></div></div></footer></div><script src="../../assets/javascripts/application.b260a35d.js"></script><script>app.initialize({version:"1.1",url:{base:"../.."}})</script></body></html>

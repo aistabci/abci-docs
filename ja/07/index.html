@@ -1,4 +1,4 @@
-<!doctype html><html lang="ja" class="no-js"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta http-equiv="x-ua-compatible" content="ie=edge"><meta name="description" content="ABCI Users Guide, Japanese version"><link rel="canonical" href="https://docs.abci.ai/ja/07/"><meta name="author" content="AIST"><meta name="lang:clipboard.copy" content="クリップボードへコピー"><meta name="lang:clipboard.copied" content="コピーしました"><meta name="lang:search.language" content="ja"><meta name="lang:search.pipeline.stopwords" content="True"><meta name="lang:search.pipeline.trimmer" content="True"><meta name="lang:search.result.none" content="何も見つかりませんでした"><meta name="lang:search.result.one" content="1件見つかりました"><meta name="lang:search.result.other" content="#件見つかりました"><meta name="lang:search.tokenizer" content="[\s\-　、。，．]+"><link rel="shortcut icon" href="../assets/images/favicon.png"><meta name="generator" content="mkdocs-1.0.4, mkdocs-material-4.3.1"><title>7. GPUの利用 - ABCI Users Guide</title><link rel="stylesheet" href="../assets/stylesheets/application.4031d38b.css"><link rel="stylesheet" href="../assets/stylesheets/application-palette.224b79ff.css"><meta name="theme-color" content="#ef5350"><script src="../assets/javascripts/modernizr.74668098.js"></script><link href="https://fonts.gstatic.com" rel="preconnect" crossorigin><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700|Roboto+Mono&display=swap"><style>body,input{font-family:"Roboto","Helvetica Neue",Helvetica,Arial,sans-serif}code,kbd,pre{font-family:"Roboto Mono","Courier New",Courier,monospace}</style><link rel="stylesheet" href="../assets/fonts/material-icons.css"><script>window.ga = window.ga || function() {
+<!doctype html><html lang="ja" class="no-js"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta http-equiv="x-ua-compatible" content="ie=edge"><meta name="description" content="ABCI Users Guide, Japanese version"><link rel="canonical" href="https://docs.abci.ai/ja/07/"><meta name="author" content="AIST"><meta name="lang:clipboard.copy" content="クリップボードへコピー"><meta name="lang:clipboard.copied" content="コピーしました"><meta name="lang:search.language" content="ja"><meta name="lang:search.pipeline.stopwords" content="True"><meta name="lang:search.pipeline.trimmer" content="True"><meta name="lang:search.result.none" content="何も見つかりませんでした"><meta name="lang:search.result.one" content="1件見つかりました"><meta name="lang:search.result.other" content="#件見つかりました"><meta name="lang:search.tokenizer" content="[\s\-　、。，．]+"><link rel="shortcut icon" href="../assets/images/favicon.png"><meta name="generator" content="mkdocs-1.1, mkdocs-material-4.3.1"><title>7. GPUの利用 - ABCI Users Guide</title><link rel="stylesheet" href="../assets/stylesheets/application.4031d38b.css"><link rel="stylesheet" href="../assets/stylesheets/application-palette.224b79ff.css"><meta name="theme-color" content="#ef5350"><script src="../assets/javascripts/modernizr.74668098.js"></script><link href="https://fonts.gstatic.com" rel="preconnect" crossorigin><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700|Roboto+Mono&display=swap"><style>body,input{font-family:"Roboto","Helvetica Neue",Helvetica,Arial,sans-serif}code,kbd,pre{font-family:"Roboto Mono","Courier New",Courier,monospace}</style><link rel="stylesheet" href="../assets/fonts/material-icons.css"><script>window.ga = window.ga || function() {
     (ga.q = ga.q || []).push(arguments)
   }
   ga.l = +new Date
@@ -26,10 +26,10 @@
 <li><a href="https://github.com/NVIDIA/gdrcopy">GDRCopy: A fast GPU memory copy library based on NVIDIA GPUDirect RDMA technology</a></li>
 </ul>
 <p>これらのライブラリを利用するためには、事前に<code>module</code>コマンドを用いて利用環境を設定する必要があります。<code>module</code>コマンドを用いると、<code>PATH</code>などの実行用環境変数や、ヘッダファイルやライブラリのサーチパスなどのコンパイル用環境変数を自動的に設定できます。</p>
-<div class="codehilite"><pre><span></span><span class="o">[</span><span class="n">username@g0001 ~</span><span class="o">]</span><span class="err">$</span><span class="w"> </span><span class="k">module</span><span class="w"> </span><span class="k">load</span><span class="w"> </span><span class="n">cuda</span><span class="o">/</span><span class="mf">10.0</span><span class="o">/</span><span class="mf">10.0.130.1</span><span class="w"></span>
-<span class="o">[</span><span class="n">username@g0001 ~</span><span class="o">]</span><span class="err">$</span><span class="w"> </span><span class="k">module</span><span class="w"> </span><span class="k">load</span><span class="w"> </span><span class="n">cudnn</span><span class="o">/</span><span class="mf">7.4</span><span class="o">/</span><span class="mf">7.4.2</span><span class="w"></span>
-<span class="o">[</span><span class="n">username@g0001 ~</span><span class="o">]</span><span class="err">$</span><span class="w"> </span><span class="k">module</span><span class="w"> </span><span class="k">load</span><span class="w"> </span><span class="n">nccl</span><span class="o">/</span><span class="mf">2.4</span><span class="o">/</span><span class="mf">2.4.7</span><span class="o">-</span><span class="mi">1</span><span class="w"></span>
-</pre></div>
+<div class="codehilite"><pre><span></span><code><span class="err">[username@g0001 ~]$ module load cuda/10.0/10.0.130.1</span>
+<span class="err">[username@g0001 ~]$ module load cudnn/7.4/7.4.2</span>
+<span class="err">[username@g0001 ~]$ module load nccl/2.4/2.4.7-1</span>
+</code></pre></div>
 
 
 <p>以下では、ABCIシステムで利用可能なCUDA Toolkit、cuDNN、NCCLの一覧を示します。</p>
@@ -37,27 +37,27 @@
 <!--
 | Major version | Minor version | Available from NVIDIA | Installed on ABCI | Provided with `module` |
 |:--|:--|:--|:--|:--|
-| cuda8.0  | 8.0.44     | Yes | -   | -   |
-| cuda8.0  | 8.0.61     | Yes | -   | -   |
-| cuda8.0  | 8.0.61.2   | Yes | Yes | Yes |
-| cuda9.0  | 9.0.176    | Yes | Yes | Yes |
-| cuda9.0  | 9.0.176.1  | Yes | Yes | Yes |
-| cuda9.0  | 9.0.176.2  | Yes | Yes | Yes |
-| cuda9.0  | 9.0.176.3  | Yes | Yes | Yes |
-| cuda9.0  | 9.0.176.4  | Yes | Yes | Yes |
-| cuda9.1  | 9.1.85     | Yes | -   | -   |
-| cuda9.1  | 9.1.85.1   | Yes | -   | -   |
-| cuda9.1  | 9.1.85.2   | Yes | -   | -   |
-| cuda9.1  | 9.1.85.3   | Yes | Yes | Yes |
-| cuda9.2  | 9.2.88.1   | -   | Yes | Yes |
-| cuda9.2  | 9.2.148    | Yes | Yes | -   |
-| cuda9.2  | 9.2.148.1  | Yes | Yes | Yes |
-| cuda10.0 | 10.0.130   | Yes | Yes | Yes |
-| cuda10.0 | 10.0.130.1 | Yes | Yes | Yes |
-| cuda10.1 | 10.1.105   | Yes | -   | -   |
-| cuda10.1 | 10.1.168   | Yes | Yes | -   |
-| cuda10.1 | 10.1.243   | Yes | Yes | Yes |
-| cuda10.2 | 10.2.89    | Yes | Yes | Yes |
+| cuda/8.0  | 8.0.44     | Yes | -   | -   |
+| cuda/8.0  | 8.0.61     | Yes | -   | -   |
+| cuda/8.0  | 8.0.61.2   | Yes | Yes | Yes |
+| cuda/9.0  | 9.0.176    | Yes | Yes | Yes |
+| cuda/9.0  | 9.0.176.1  | Yes | Yes | -   |
+| cuda/9.0  | 9.0.176.2  | Yes | Yes | -   |
+| cuda/9.0  | 9.0.176.3  | Yes | Yes | -   |
+| cuda/9.0  | 9.0.176.4  | Yes | Yes | Yes |
+| cuda/9.1  | 9.1.85     | Yes | -   | -   |
+| cuda/9.1  | 9.1.85.1   | Yes | -   | -   |
+| cuda/9.1  | 9.1.85.2   | Yes | -   | -   |
+| cuda/9.1  | 9.1.85.3   | Yes | Yes | Yes |
+| cuda/9.2  | 9.2.88.1   | -   | Yes | Yes |
+| cuda/9.2  | 9.2.148    | Yes | Yes | -   |
+| cuda/9.2  | 9.2.148.1  | Yes | Yes | Yes |
+| cuda/10.0 | 10.0.130   | Yes | Yes | Yes |
+| cuda/10.0 | 10.0.130.1 | Yes | Yes | Yes |
+| cuda/10.1 | 10.1.105   | Yes | -   | -   |
+| cuda/10.1 | 10.1.168   | Yes | Yes | -   |
+| cuda/10.1 | 10.1.243   | Yes | Yes | Yes |
+| cuda/10.2 | 10.2.89    | Yes | Yes | Yes |
 -->
 
 <table>
@@ -71,127 +71,127 @@
 </thead>
 <tbody>
 <tr>
-<td align="left">cuda8.0</td>
+<td align="left">cuda/8.0</td>
 <td align="left">8.0.44</td>
 <td align="left">Yes</td>
 <td align="left">-</td>
 </tr>
 <tr>
-<td align="left">cuda8.0</td>
+<td align="left">cuda/8.0</td>
 <td align="left">8.0.61</td>
 <td align="left">Yes</td>
 <td align="left">-</td>
 </tr>
 <tr>
-<td align="left">cuda8.0</td>
+<td align="left">cuda/8.0</td>
 <td align="left">8.0.61.2</td>
 <td align="left">Yes</td>
 <td align="left">Yes</td>
 </tr>
 <tr>
-<td align="left">cuda9.0</td>
+<td align="left">cuda/9.0</td>
 <td align="left">9.0.176</td>
 <td align="left">Yes</td>
 <td align="left">Yes</td>
 </tr>
 <tr>
-<td align="left">cuda9.0</td>
+<td align="left">cuda/9.0</td>
 <td align="left">9.0.176.1</td>
 <td align="left">Yes</td>
-<td align="left">Yes</td>
+<td align="left">-</td>
 </tr>
 <tr>
-<td align="left">cuda9.0</td>
+<td align="left">cuda/9.0</td>
 <td align="left">9.0.176.2</td>
 <td align="left">Yes</td>
-<td align="left">Yes</td>
+<td align="left">-</td>
 </tr>
 <tr>
-<td align="left">cuda9.0</td>
+<td align="left">cuda/9.0</td>
 <td align="left">9.0.176.3</td>
 <td align="left">Yes</td>
-<td align="left">Yes</td>
+<td align="left">-</td>
 </tr>
 <tr>
-<td align="left">cuda9.0</td>
+<td align="left">cuda/9.0</td>
 <td align="left">9.0.176.4</td>
 <td align="left">Yes</td>
 <td align="left">Yes</td>
 </tr>
 <tr>
-<td align="left">cuda9.1</td>
+<td align="left">cuda/9.1</td>
 <td align="left">9.1.85</td>
 <td align="left">Yes</td>
 <td align="left">-</td>
 </tr>
 <tr>
-<td align="left">cuda9.1</td>
+<td align="left">cuda/9.1</td>
 <td align="left">9.1.85.1</td>
 <td align="left">Yes</td>
 <td align="left">-</td>
 </tr>
 <tr>
-<td align="left">cuda9.1</td>
+<td align="left">cuda/9.1</td>
 <td align="left">9.1.85.2</td>
 <td align="left">Yes</td>
 <td align="left">-</td>
 </tr>
 <tr>
-<td align="left">cuda9.1</td>
+<td align="left">cuda/9.1</td>
 <td align="left">9.1.85.3</td>
 <td align="left">Yes</td>
 <td align="left">Yes</td>
 </tr>
 <tr>
-<td align="left">cuda9.2</td>
+<td align="left">cuda/9.2</td>
 <td align="left">9.2.88.1</td>
 <td align="left">-</td>
 <td align="left">Yes</td>
 </tr>
 <tr>
-<td align="left">cuda9.2</td>
+<td align="left">cuda/9.2</td>
 <td align="left">9.2.148</td>
 <td align="left">Yes</td>
 <td align="left">-</td>
 </tr>
 <tr>
-<td align="left">cuda9.2</td>
+<td align="left">cuda/9.2</td>
 <td align="left">9.2.148.1</td>
 <td align="left">Yes</td>
 <td align="left">Yes</td>
 </tr>
 <tr>
-<td align="left">cuda10.0</td>
+<td align="left">cuda/10.0</td>
 <td align="left">10.0.130</td>
 <td align="left">Yes</td>
 <td align="left">Yes</td>
 </tr>
 <tr>
-<td align="left">cuda10.0</td>
+<td align="left">cuda/10.0</td>
 <td align="left">10.0.130.1</td>
 <td align="left">Yes</td>
 <td align="left">Yes</td>
 </tr>
 <tr>
-<td align="left">cuda10.1</td>
+<td align="left">cuda/10.1</td>
 <td align="left">10.1.105</td>
 <td align="left">Yes</td>
 <td align="left">-</td>
 </tr>
 <tr>
-<td align="left">cuda10.1</td>
+<td align="left">cuda/10.1</td>
 <td align="left">10.1.168</td>
 <td align="left">Yes</td>
 <td align="left">-</td>
 </tr>
 <tr>
-<td align="left">cuda10.1</td>
+<td align="left">cuda/10.1</td>
 <td align="left">10.1.243</td>
 <td align="left">Yes</td>
 <td align="left">Yes</td>
 </tr>
 <tr>
-<td align="left">cuda10.2</td>
+<td align="left">cuda/10.2</td>
 <td align="left">10.2.89</td>
 <td align="left">Yes</td>
 <td align="left">Yes</td>
@@ -200,7 +200,7 @@
 </table>
 <h2 id="cudnn">cuDNN</h2>
 <!--
-| Version | cuda8.0 | cuda9.0 | cuda9.1 | cuda9.2 | cuda10.0 | cuda10.1 | cuda10.2 |
+| Version | cuda/8.0 | cuda/9.0 | cuda/9.1 | cuda/9.2 | cuda/10.0 | cuda/10.1 | cuda/10.2 |
 |:--|:--|:--|:--|:--|:--|:--|:--|
 | 5.1.10 | Yes | -   | -   | -   | -   | -   | -   |
 | 6.0.21 | Yes | -   | -   | -   | -   | -   | -   |
@@ -229,13 +229,13 @@
 <thead>
 <tr>
 <th align="left">Version</th>
-<th align="left">cuda8.0</th>
-<th align="left">cuda9.0</th>
-<th align="left">cuda9.1</th>
-<th align="left">cuda9.2</th>
-<th align="left">cuda10.0</th>
-<th align="left">cuda10.1</th>
-<th align="left">cuda10.2</th>
+<th align="left">cuda/8.0</th>
+<th align="left">cuda/9.0</th>
+<th align="left">cuda/9.1</th>
+<th align="left">cuda/9.2</th>
+<th align="left">cuda/10.0</th>
+<th align="left">cuda/10.1</th>
+<th align="left">cuda/10.2</th>
 </tr>
 </thead>
 <tbody>
@@ -423,7 +423,7 @@
 </table>
 <h2 id="nccl">NCCL</h2>
 <!--
-| Version | cuda8.0 | cuda9.0 | cuda9.1 | cuda9.2 | cuda10.0 | cuda10.1 | cuda10.2 |
+| Version | cuda/8.0 | cuda/9.0 | cuda/9.1 | cuda/9.2 | cuda/10.0 | cuda/10.1 | cuda/10.2 |
 |:--|:--|:--|:--|:--|:--|:--|:--|
 | 1.3.5-1  | Yes | Yes | Yes | Yes | Yes | -   | -   |
 | 2.0.5-3  | \*1 | \*1 | -   | -   | -   | -   | -   |
@@ -437,6 +437,7 @@
 | 2.4.7-1  | -   | -   | -   | Yes | Yes | Yes | -   |
 | 2.4.8-1  | -   | -   | -   | Yes | Yes | Yes | -   |
 | 2.5.6-1  | -   | Yes | -   | -   | Yes | Yes | Yes |
+| 2.6.4-1  | -   | -   | -   | -   | Yes | Yes | Yes |
 
 \*1 Installed, but modules are not provided
 \*2 Installed, but not yet supported
@@ -446,13 +447,13 @@
 <thead>
 <tr>
 <th align="left">Version</th>
-<th align="left">cuda8.0</th>
-<th align="left">cuda9.0</th>
-<th align="left">cuda9.1</th>
-<th align="left">cuda9.2</th>
-<th align="left">cuda10.0</th>
-<th align="left">cuda10.1</th>
-<th align="left">cuda10.2</th>
+<th align="left">cuda/8.0</th>
+<th align="left">cuda/9.0</th>
+<th align="left">cuda/9.1</th>
+<th align="left">cuda/9.2</th>
+<th align="left">cuda/10.0</th>
+<th align="left">cuda/10.1</th>
+<th align="left">cuda/10.2</th>
 </tr>
 </thead>
 <tbody>
@@ -576,6 +577,16 @@
 <td align="left">Yes</td>
 <td align="left">Yes</td>
 </tr>
+<tr>
+<td align="left">2.6.4-1</td>
+<td align="left">-</td>
+<td align="left">-</td>
+<td align="left">-</td>
+<td align="left">-</td>
+<td align="left">Yes</td>
+<td align="left">Yes</td>
+<td align="left">Yes</td>
+</tr>
 </tbody>
 </table>
 <h2 id="gdrcopy">GDRCopy</h2>
@@ -583,25 +594,25 @@
 <thead>
 <tr>
 <th align="left">Version</th>
-<th align="left">cuda8.0</th>
-<th align="left">cuda9.0</th>
-<th align="left">cuda9.1</th>
-<th align="left">cuda9.2</th>
-<th align="left">cuda10.0</th>
-<th align="left">cuda10.1</th>
-<th align="left">cuda10.2</th>
+<th align="left">cuda/8.0</th>
+<th align="left">cuda/9.0</th>
+<th align="left">cuda/9.1</th>
+<th align="left">cuda/9.2</th>
+<th align="left">cuda/10.0</th>
+<th align="left">cuda/10.1</th>
+<th align="left">cuda/10.2</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td align="left">1.2</td>
+<td align="left">2.0</td>
 <td align="left">Yes</td>
 <td align="left">Yes</td>
 <td align="left">Yes</td>
 <td align="left">Yes</td>
 <td align="left">Yes</td>
 <td align="left">Yes</td>
-<td align="left">-</td>
+<td align="left">Yes</td>
 </tr>
 </tbody>
-</table></article></div></div></main><footer class="md-footer"><div class="md-footer-nav"><nav class="md-footer-nav__inner md-grid"><a href="../06/" title="6. Pythonの利用" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev"><div class="md-flex__cell md-flex__cell--shrink"><i class="md-icon md-icon--arrow-back md-footer-nav__button"></i></div><div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title"><span class="md-flex__ellipsis"><span class="md-footer-nav__direction">前</span>6. Pythonの利用</span></div></a><a href="../08/" title="8. MPIの利用" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next"><div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title"><span class="md-flex__ellipsis"><span class="md-footer-nav__direction">次</span>8. MPIの利用</span></div><div class="md-flex__cell md-flex__cell--shrink"><i class="md-icon md-icon--arrow-forward md-footer-nav__button"></i></div></a></nav></div><div class="md-footer-meta md-typeset"><div class="md-footer-meta__inner md-grid"><div class="md-footer-copyright"><div class="md-footer-copyright__highlight">Copyright &copy; 2018 National Institute of Advanced Industrial Science and Technology (AIST)</div>powered by <a href="https://www.mkdocs.org">MkDocs</a> and <a href="https://squidfunk.github.io/mkdocs-material/">Material for MkDocs</a></div></div></div></footer></div><script src="../assets/javascripts/application.b260a35d.js"></script><script src="../assets/javascripts/lunr/lunr.stemmer.support.js"></script><script src="../assets/javascripts/lunr/tinyseg.js"></script><script src="../assets/javascripts/lunr/lunr.ja.js"></script><script>app.initialize({version:"1.0.4",url:{base:".."}})</script></body></html>
+</table></article></div></div></main><footer class="md-footer"><div class="md-footer-nav"><nav class="md-footer-nav__inner md-grid"><a href="../06/" title="6. Pythonの利用" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev"><div class="md-flex__cell md-flex__cell--shrink"><i class="md-icon md-icon--arrow-back md-footer-nav__button"></i></div><div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title"><span class="md-flex__ellipsis"><span class="md-footer-nav__direction">前</span>6. Pythonの利用</span></div></a><a href="../08/" title="8. MPIの利用" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next"><div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title"><span class="md-flex__ellipsis"><span class="md-footer-nav__direction">次</span>8. MPIの利用</span></div><div class="md-flex__cell md-flex__cell--shrink"><i class="md-icon md-icon--arrow-forward md-footer-nav__button"></i></div></a></nav></div><div class="md-footer-meta md-typeset"><div class="md-footer-meta__inner md-grid"><div class="md-footer-copyright"><div class="md-footer-copyright__highlight">Copyright &copy; 2018 National Institute of Advanced Industrial Science and Technology (AIST)</div>powered by <a href="https://www.mkdocs.org">MkDocs</a> and <a href="https://squidfunk.github.io/mkdocs-material/">Material for MkDocs</a></div></div></div></footer></div><script src="../assets/javascripts/application.b260a35d.js"></script><script src="../assets/javascripts/lunr/lunr.stemmer.support.js"></script><script src="../assets/javascripts/lunr/tinyseg.js"></script><script src="../assets/javascripts/lunr/lunr.ja.js"></script><script>app.initialize({version:"1.1",url:{base:".."}})</script></body></html>

@@ -1,4 +1,4 @@
-<!doctype html><html lang="en" class="no-js"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta http-equiv="x-ua-compatible" content="ie=edge"><meta name="description" content="ABCI Users Guide, English version"><link rel="canonical" href="https://docs.abci.ai/en/abci-cloudstorage/usage/"><meta name="author" content="AIST"><meta name="lang:clipboard.copy" content="Copy to clipboard"><meta name="lang:clipboard.copied" content="Copied to clipboard"><meta name="lang:search.language" content="en"><meta name="lang:search.pipeline.stopwords" content="True"><meta name="lang:search.pipeline.trimmer" content="True"><meta name="lang:search.result.none" content="No matching documents"><meta name="lang:search.result.one" content="1 matching document"><meta name="lang:search.result.other" content="# matching documents"><meta name="lang:search.tokenizer" content="[\s\-]+"><link rel="shortcut icon" href="../../assets/images/favicon.png"><meta name="generator" content="mkdocs-1.0.4, mkdocs-material-4.3.1"><title>Usage - ABCI Users Guide</title><link rel="stylesheet" href="../../assets/stylesheets/application.4031d38b.css"><link rel="stylesheet" href="../../assets/stylesheets/application-palette.224b79ff.css"><meta name="theme-color" content="#ef5350"><script src="../../assets/javascripts/modernizr.74668098.js"></script><link href="https://fonts.gstatic.com" rel="preconnect" crossorigin><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700|Roboto+Mono&display=swap"><style>body,input{font-family:"Roboto","Helvetica Neue",Helvetica,Arial,sans-serif}code,kbd,pre{font-family:"Roboto Mono","Courier New",Courier,monospace}</style><link rel="stylesheet" href="../../assets/fonts/material-icons.css"><script>window.ga = window.ga || function() {
+<!doctype html><html lang="en" class="no-js"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta http-equiv="x-ua-compatible" content="ie=edge"><meta name="description" content="ABCI Users Guide, English version"><link rel="canonical" href="https://docs.abci.ai/en/abci-cloudstorage/usage/"><meta name="author" content="AIST"><meta name="lang:clipboard.copy" content="Copy to clipboard"><meta name="lang:clipboard.copied" content="Copied to clipboard"><meta name="lang:search.language" content="en"><meta name="lang:search.pipeline.stopwords" content="True"><meta name="lang:search.pipeline.trimmer" content="True"><meta name="lang:search.result.none" content="No matching documents"><meta name="lang:search.result.one" content="1 matching document"><meta name="lang:search.result.other" content="# matching documents"><meta name="lang:search.tokenizer" content="[\s\-]+"><link rel="shortcut icon" href="../../assets/images/favicon.png"><meta name="generator" content="mkdocs-1.1, mkdocs-material-4.3.1"><title>Usage - ABCI Users Guide</title><link rel="stylesheet" href="../../assets/stylesheets/application.4031d38b.css"><link rel="stylesheet" href="../../assets/stylesheets/application-palette.224b79ff.css"><meta name="theme-color" content="#ef5350"><script src="../../assets/javascripts/modernizr.74668098.js"></script><link href="https://fonts.gstatic.com" rel="preconnect" crossorigin><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700|Roboto+Mono&display=swap"><style>body,input{font-family:"Roboto","Helvetica Neue",Helvetica,Arial,sans-serif}code,kbd,pre{font-family:"Roboto Mono","Courier New",Courier,monospace}</style><link rel="stylesheet" href="../../assets/fonts/material-icons.css"><script>window.ga = window.ga || function() {
     (ga.q = ga.q || []).push(arguments)
   }
   ga.l = +new Date
@@ -21,34 +21,34 @@
 <p>This section describes how to use ABCI Cloud Storage as a client tool by using AWS Command Line Interface (AWS CLI).</p>
 <h2 id="load-module">Load Module</h2>
 <p>On the ABCI system, AWS CLI is available both in interactive nodes and in compute nodes. Load the module before using AWS CLI as following.</p>
-<div class="codehilite"><pre><span></span><span class="o">[</span><span class="n">username@es1 ~</span><span class="o">]</span><span class="err">$</span><span class="w"> </span><span class="k">module</span><span class="w"> </span><span class="k">load</span><span class="w"> </span><span class="n">aws</span><span class="o">-</span><span class="n">cli</span><span class="w"></span>
-</pre></div>
+<div class="codehilite"><pre><span></span><code><span class="err">[username@es1 ~]$ module load aws-cli</span>
+</code></pre></div>
 
 
 <p>When using AWS CLI outside ABCI (for example, on your PC), get AWS CLI from <a href="https://github.com/aws/aws-cli">here</a> and install it by following the guide.</p>
 <h2 id="configuration">Configuration</h2>
 <p>In order to access ABCI Cloud Storage, ABCI users need to use a Cloud Storage Account that is different from ABCI account. Users are allowed to have multiple Cloud Storage Accounts. Access Key which is a pair of Access Key ID and Secret Access Key is issued for each Cloud Storage Account. If a user belongs to multiple ABCI groups and uses ABCI Cloud Storage from multiple groups, multiple Cloud Storage Accounts is issued per group. When accessing ABCI Cloud Storage for the first time, Access Key should be set up in AWS CLI as shown below. Specify <code>us-east-1</code> as region name. </p>
-<div class="codehilite"><pre><span></span><span class="o">[</span><span class="n">username@es1 ~</span><span class="o">]</span><span class="err">$</span><span class="w"> </span><span class="n">aws</span><span class="w"> </span><span class="n">configure</span><span class="w"></span>
+<div class="codehilite"><pre><span></span><code><span class="o">[</span><span class="n">username@es1 ~</span><span class="o">]</span><span class="err">$</span><span class="w"> </span><span class="n">aws</span><span class="w"> </span><span class="n">configure</span><span class="w"></span>
 <span class="n">AWS</span><span class="w"> </span><span class="n">Access</span><span class="w"> </span><span class="k">Key</span><span class="w"> </span><span class="n">ID</span><span class="w"> </span><span class="o">[</span><span class="n">None</span><span class="o">]</span><span class="err">:</span><span class="w"> </span><span class="n">ACCESS</span><span class="o">-</span><span class="k">KEY</span><span class="o">-</span><span class="n">ID</span><span class="w"></span>
 <span class="n">AWS</span><span class="w"> </span><span class="n">Secret</span><span class="w"> </span><span class="n">Access</span><span class="w"> </span><span class="k">Key</span><span class="w"> </span><span class="o">[</span><span class="n">None</span><span class="o">]</span><span class="err">:</span><span class="w"> </span><span class="n">SECRET</span><span class="o">-</span><span class="n">ACCESS</span><span class="o">-</span><span class="k">KEY</span><span class="w"></span>
 <span class="k">Default</span><span class="w"> </span><span class="n">region</span><span class="w"> </span><span class="n">name</span><span class="w"> </span><span class="o">[</span><span class="n">None</span><span class="o">]</span><span class="err">:</span><span class="w"> </span><span class="n">us</span><span class="o">-</span><span class="n">east</span><span class="o">-</span><span class="mi">1</span><span class="w"></span>
 <span class="k">Default</span><span class="w"> </span><span class="k">output</span><span class="w"> </span><span class="nf">format</span><span class="w"> </span><span class="o">[</span><span class="n">None</span><span class="o">]</span><span class="err">:</span><span class="p">(</span><span class="k">No</span><span class="w"> </span><span class="k">input</span><span class="w"> </span><span class="n">required</span><span class="p">)</span><span class="w"></span>
-</pre></div>
+</code></pre></div>
 
 
 <p>A user can switch with the option '--profile' if a user has multiple Cloud Storage Accounts.
 In order to configure the Cloud Storage Account 'aaa00000.2', for example, follow the instruction below.</p>
-<div class="codehilite"><pre><span></span><span class="o">[</span><span class="n">username@es1 ~</span><span class="o">]</span><span class="err">$</span><span class="w"> </span><span class="n">aws</span><span class="w"> </span><span class="n">configure</span><span class="w"> </span><span class="c1">--profile aaa00000.2</span>
+<div class="codehilite"><pre><span></span><code><span class="o">[</span><span class="n">username@es1 ~</span><span class="o">]</span><span class="err">$</span><span class="w"> </span><span class="n">aws</span><span class="w"> </span><span class="n">configure</span><span class="w"> </span><span class="c1">--profile aaa00000.2</span>
 <span class="n">AWS</span><span class="w"> </span><span class="n">Access</span><span class="w"> </span><span class="k">Key</span><span class="w"> </span><span class="n">ID</span><span class="w"> </span><span class="o">[</span><span class="n">None</span><span class="o">]</span><span class="err">:</span><span class="w"> </span><span class="n">aaa00000</span><span class="mf">.2</span><span class="s1">&#39;s ACCESS-KEY-ID</span>
 <span class="s1">AWS Secret Access Key [None]: aaa00000.2&#39;</span><span class="n">s</span><span class="w"> </span><span class="n">SECRET</span><span class="o">-</span><span class="n">ACCESS</span><span class="o">-</span><span class="k">KEY</span><span class="w"></span>
 <span class="k">Default</span><span class="w"> </span><span class="n">region</span><span class="w"> </span><span class="n">name</span><span class="w"> </span><span class="o">[</span><span class="n">None</span><span class="o">]</span><span class="err">:</span><span class="w"> </span><span class="n">us</span><span class="o">-</span><span class="n">east</span><span class="o">-</span><span class="mi">1</span><span class="w"></span>
 <span class="k">Default</span><span class="w"> </span><span class="k">output</span><span class="w"> </span><span class="nf">format</span><span class="w"> </span><span class="o">[</span><span class="n">None</span><span class="o">]</span><span class="err">:</span><span class="p">(</span><span class="k">No</span><span class="w"> </span><span class="k">input</span><span class="w"> </span><span class="n">required</span><span class="p">)</span><span class="w"></span>
-</pre></div>
+</code></pre></div>
 
 
 <p>When running the AWS commands with the Cloud Storage Account 'aaa00000.2', use the option '--profile' as follows.</p>
-<div class="codehilite"><pre><span></span><span class="o">[</span><span class="n">username@es1 ~</span><span class="o">]</span><span class="err">$</span><span class="w"> </span><span class="n">aws</span><span class="w"> </span><span class="c1">--profile aaa00000.2 --endpoint-url https://s3.abci.ai s3api list-buckets</span>
-</pre></div>
+<div class="codehilite"><pre><span></span><code><span class="err">[username@es1 ~]$ aws --profile aaa00000.2 --endpoint-url https://s3.abci.ai s3api list-buckets</span>
+</code></pre></div>
 
 
 <p>The configuration is stored in the home directory(i.e. ~/.aws). Therefore, it is not necessarily done in the compute node once it is done in the interacvtive node.</p>
@@ -58,15 +58,15 @@ In order to configure the Cloud Storage Account 'aaa00000.2', for example, follo
 <h3 id="for-the-begining">For the Begining</h3>
 <p>Here is basic knowledge which is necessary so as to use AWS CLI.</p>
 <p>The structure of AWS CLI commands is shown below.</p>
-<div class="codehilite"><pre><span></span><span class="n">aws</span><span class="w"> </span><span class="o">[</span><span class="n">options</span><span class="o">]</span><span class="w"> </span><span class="o">&lt;</span><span class="n">command</span><span class="o">&gt;</span><span class="w"> </span><span class="o">&lt;</span><span class="n">subcommand</span><span class="o">&gt;</span><span class="w"> </span><span class="o">[</span><span class="n">parameters</span><span class="o">]</span><span class="w"></span>
-</pre></div>
+<div class="codehilite"><pre><span></span><code><span class="n">aws</span><span class="w"> </span><span class="o">[</span><span class="n">options</span><span class="o">]</span><span class="w"> </span><span class="o">&lt;</span><span class="n">command</span><span class="o">&gt;</span><span class="w"> </span><span class="o">&lt;</span><span class="n">subcommand</span><span class="o">&gt;</span><span class="w"> </span><span class="o">[</span><span class="n">parameters</span><span class="o">]</span><span class="w"></span>
+</code></pre></div>
 
 
 <p>For instance, in a sentence <code>aws --endpoint-url https://s3.abci.ai s3 ls</code>, s3 is a &lt;command&gt; and ls is a &lt;subcommand&gt; (ls command of s3 command or s3 ls command).</p>
 <p>The command <code>s3</code> will show the path of an object in S3 URI.
 The following example shows how s3 works.</p>
-<div class="codehilite"><pre><span></span><span class="n">s3</span><span class="p">:</span><span class="o">//</span><span class="n">bucket</span><span class="o">-</span><span class="mi">1</span><span class="o">/</span><span class="n">project</span><span class="o">-</span><span class="mi">1</span><span class="o">/</span><span class="n">docs</span><span class="o">/</span><span class="n">fig1</span><span class="p">.</span><span class="n">png</span>
-</pre></div>
+<div class="codehilite"><pre><span></span><code><span class="c">s3://bucket-1/project-1/docs/fig1.png</span>
+</code></pre></div>
 
 
 <p>In this example, <code>bucket-1</code> means a name of the bucket and <code>project-1/docs/fig1.png</code> is an object key (or a key name). The part <code>project-1/docs/</code> is called prefix which is used for describing object keys as if they are as hierarchic systems as "folders" in file systems.</p>
@@ -89,77 +89,77 @@ The following example shows how s3 works.</p>
 <h3 id="create-bucket">Create Bucket</h3>
 <p>To create a bucket, use s3 mb command.
 A bucket whose name is 'dataset-summer-2012', for example, can be created by running aws commands as following.</p>
-<div class="codehilite"><pre><span></span><span class="o">[</span><span class="n">username@es1 ~</span><span class="o">]</span><span class="err">$</span><span class="w"> </span><span class="n">aws</span><span class="w"> </span><span class="c1">--endpoint-url https://s3.abci.ai s3 mb s3://dataset-summer-2012</span>
-<span class="nl">make_bucket</span><span class="p">:</span><span class="w"> </span><span class="n">dataset</span><span class="o">-</span><span class="n">summer</span><span class="o">-</span><span class="mi">2012</span><span class="w"></span>
-</pre></div>
+<div class="codehilite"><pre><span></span><code><span class="err">[username@es1 ~]$ aws --endpoint-url https://s3.abci.ai s3 mb s3://dataset-summer-2012</span>
+<span class="c">make_bucket: dataset-summer-2012</span>
+</code></pre></div>
 
 
 <h3 id="list-bucket">List Bucket</h3>
 <p>To show the list of buckets created on the ABCI group, run <code>aws --endpoint-url https://s3.abci.ai s3 ls</code>.</p>
 <p>For example</p>
-<div class="codehilite"><pre><span></span><span class="o">[</span><span class="n">username@es1 ~</span><span class="o">]</span><span class="err">$</span><span class="w"> </span><span class="n">aws</span><span class="w"> </span><span class="c1">--endpoint-url https://s3.abci.ai s3 ls</span>
-<span class="mi">2019</span><span class="o">-</span><span class="mi">06</span><span class="o">-</span><span class="mi">15</span><span class="w"> </span><span class="mi">10</span><span class="err">:</span><span class="mi">47</span><span class="err">:</span><span class="mi">37</span><span class="w"> </span><span class="n">testbucket1</span><span class="w"></span>
-<span class="mi">2019</span><span class="o">-</span><span class="mi">06</span><span class="o">-</span><span class="mi">15</span><span class="w"> </span><span class="mi">18</span><span class="err">:</span><span class="mi">10</span><span class="err">:</span><span class="mi">37</span><span class="w"> </span><span class="n">testbucket2</span><span class="w"></span>
-</pre></div>
+<div class="codehilite"><pre><span></span><code><span class="err">[username@es1 ~]$ aws --endpoint-url https://s3.abci.ai s3 ls</span>
+<span class="err">2019-06-15 10:47:37 testbucket1</span>
+<span class="err">2019-06-15 18:10:37 testbucket2</span>
+</code></pre></div>
 
 
 <h3 id="list-object">List Object</h3>
 <p>To show the list of objects in the bucket, run <code>aws --endpoint-url https://s3.abci.ai s3 ls s3://bucket-name</code>.</p>
-<div class="codehilite"><pre><span></span><span class="o">[</span><span class="n">username@es1 ~</span><span class="o">]</span><span class="err">$</span><span class="w"> </span><span class="n">aws</span><span class="w"> </span><span class="c1">--endpoint-url https://s3.abci.ai s3 ls s3://mybucket</span>
-<span class="w">                           </span><span class="n">PRE</span><span class="w"> </span><span class="n">pics</span><span class="o">/</span><span class="w"></span>
-<span class="mi">2019</span><span class="o">-</span><span class="mi">07</span><span class="o">-</span><span class="mi">05</span><span class="w"> </span><span class="mi">17</span><span class="err">:</span><span class="mi">33</span><span class="err">:</span><span class="mi">05</span><span class="w">          </span><span class="mi">4</span><span class="w"> </span><span class="n">test1</span><span class="p">.</span><span class="n">txt</span><span class="w"></span>
-<span class="mi">2019</span><span class="o">-</span><span class="mi">07</span><span class="o">-</span><span class="mi">05</span><span class="w"> </span><span class="mi">21</span><span class="err">:</span><span class="mi">12</span><span class="err">:</span><span class="mi">47</span><span class="w">          </span><span class="mi">4</span><span class="w"> </span><span class="n">test2</span><span class="p">.</span><span class="n">txt</span><span class="w"></span>
-</pre></div>
+<div class="codehilite"><pre><span></span><code><span class="err">[username@es1 ~]$ aws --endpoint-url https://s3.abci.ai s3 ls s3://mybucket</span>
+<span class="err">                           PRE pics/</span>
+<span class="err">2019-07-05 17:33:05          4 test1.txt</span>
+<span class="err">2019-07-05 21:12:47          4 test2.txt</span>
+</code></pre></div>
 
 
 <p>In order to list objects that have prefix 'pics/', for example, add prefix after the bucket name.</p>
-<div class="codehilite"><pre><span></span><span class="o">[</span><span class="n">username@es1 ~</span><span class="o">]</span><span class="err">$</span><span class="w"> </span><span class="n">aws</span><span class="w"> </span><span class="c1">--endpoint-url https://s3.abci.ai s3 ls s3://mybucket/pics/</span>
-<span class="mi">2019</span><span class="o">-</span><span class="mi">07</span><span class="o">-</span><span class="mi">29</span><span class="w"> </span><span class="mi">21</span><span class="err">:</span><span class="mi">55</span><span class="err">:</span><span class="mi">57</span><span class="w">    </span><span class="mi">1048576</span><span class="w"> </span><span class="n">test3</span><span class="p">.</span><span class="n">png</span><span class="w"></span>
-<span class="mi">2019</span><span class="o">-</span><span class="mi">07</span><span class="o">-</span><span class="mi">29</span><span class="w"> </span><span class="mi">21</span><span class="err">:</span><span class="mi">55</span><span class="err">:</span><span class="mi">59</span><span class="w">    </span><span class="mi">1048576</span><span class="w"> </span><span class="n">test4</span><span class="p">.</span><span class="n">png</span><span class="w"></span>
-</pre></div>
+<div class="codehilite"><pre><span></span><code><span class="err">[username@es1 ~]$ aws --endpoint-url https://s3.abci.ai s3 ls s3://mybucket/pics/</span>
+<span class="err">2019-07-29 21:55:57    1048576 test3.png</span>
+<span class="err">2019-07-29 21:55:59    1048576 test4.png</span>
+</code></pre></div>
 
 
 <p>The option '--recursive' can list all objects in a bucket.</p>
-<div class="codehilite"><pre><span></span><span class="o">[</span><span class="n">username@es1 ~</span><span class="o">]</span><span class="err">$</span><span class="w"> </span><span class="n">aws</span><span class="w"> </span><span class="c1">--endpoint-url https://s3.abci.ai s3 ls s3://mybucket --recursive</span>
-<span class="mi">2019</span><span class="o">-</span><span class="mi">07</span><span class="o">-</span><span class="mi">05</span><span class="w"> </span><span class="mi">17</span><span class="err">:</span><span class="mi">33</span><span class="err">:</span><span class="mi">05</span><span class="w">          </span><span class="mi">4</span><span class="w"> </span><span class="n">test1</span><span class="p">.</span><span class="n">txt</span><span class="w"></span>
-<span class="mi">2019</span><span class="o">-</span><span class="mi">07</span><span class="o">-</span><span class="mi">05</span><span class="w"> </span><span class="mi">21</span><span class="err">:</span><span class="mi">12</span><span class="err">:</span><span class="mi">47</span><span class="w">          </span><span class="mi">4</span><span class="w"> </span><span class="n">test2</span><span class="p">.</span><span class="n">txt</span><span class="w"></span>
-<span class="mi">2019</span><span class="o">-</span><span class="mi">07</span><span class="o">-</span><span class="mi">29</span><span class="w"> </span><span class="mi">21</span><span class="err">:</span><span class="mi">55</span><span class="err">:</span><span class="mi">57</span><span class="w">    </span><span class="mi">1048576</span><span class="w"> </span><span class="n">pics</span><span class="o">/</span><span class="n">test3</span><span class="p">.</span><span class="n">png</span><span class="w"></span>
-<span class="mi">2019</span><span class="o">-</span><span class="mi">07</span><span class="o">-</span><span class="mi">29</span><span class="w"> </span><span class="mi">21</span><span class="err">:</span><span class="mi">55</span><span class="err">:</span><span class="mi">59</span><span class="w">    </span><span class="mi">1048576</span><span class="w"> </span><span class="n">pics</span><span class="o">/</span><span class="n">test4</span><span class="p">.</span><span class="n">png</span><span class="w"></span>
-</pre></div>
+<div class="codehilite"><pre><span></span><code><span class="err">[username@es1 ~]$ aws --endpoint-url https://s3.abci.ai s3 ls s3://mybucket --recursive</span>
+<span class="err">2019-07-05 17:33:05          4 test1.txt</span>
+<span class="err">2019-07-05 21:12:47          4 test2.txt</span>
+<span class="err">2019-07-29 21:55:57    1048576 pics/test3.png</span>
+<span class="err">2019-07-29 21:55:59    1048576 pics/test4.png</span>
+</code></pre></div>
 
 
 <h3 id="copy-data-upload-download-copy">Copy data (Upload, Download, Copy)</h3>
 <p>Data can be copied from the file system to a bucket in ABCI Cloud Storage, from a bucket in ABCI Cloud Storage to the file system and from a bucket in ABCI Cloud Storage to another bucket in ABCI Cloud Storage.</p>
 <p>Example: Copy the file '0001.jpg' to the bucket 'dataset-c0541'</p>
-<div class="codehilite"><pre><span></span><span class="o">[</span><span class="n">username@es1 ~</span><span class="o">]</span><span class="err">$</span><span class="w"> </span><span class="n">ls</span><span class="w"> </span><span class="n">images</span><span class="w"></span>
-<span class="mf">0001.</span><span class="n">jpg</span><span class="w">    </span><span class="mf">0002.</span><span class="n">jpg</span><span class="w">    </span><span class="mf">0003.</span><span class="n">jpg</span><span class="w">    </span><span class="mf">0004.</span><span class="n">jpg</span><span class="w"></span>
-<span class="o">[</span><span class="n">username@es1 ~</span><span class="o">]</span><span class="err">$</span><span class="w"> </span><span class="n">aws</span><span class="w"> </span><span class="c1">--endpoint-url https://s3.abci.ai s3 cp ./images/0001.jpg s3://dataset-c0541/</span>
-<span class="nl">upload</span><span class="p">:</span><span class="w"> </span><span class="n">images</span><span class="o">/</span><span class="mf">0001.</span><span class="n">jpg</span><span class="w"> </span><span class="k">to</span><span class="w"> </span><span class="nl">s3</span><span class="p">:</span><span class="o">//</span><span class="n">dataset</span><span class="o">-</span><span class="n">c0541</span><span class="o">/</span><span class="mf">0001.</span><span class="n">jpg</span><span class="w"></span>
-<span class="o">[</span><span class="n">username@es1 ~</span><span class="o">]</span><span class="err">$</span><span class="w"></span>
-</pre></div>
+<div class="codehilite"><pre><span></span><code><span class="err">[username@es1 ~]$ ls images</span>
+<span class="err">0001.jpg    0002.jpg    0003.jpg    0004.jpg</span>
+<span class="err">[username@es1 ~]$ aws --endpoint-url https://s3.abci.ai s3 cp ./images/0001.jpg s3://dataset-c0541/</span>
+<span class="c">upload: images/0001.jpg to s3://dataset-c0541/0001.jpg</span>
+<span class="err">[username@es1 ~]$</span>
+</code></pre></div>
 
 
 <p>Example: Copy files in the directory 'images' to the bucket 'dataset-c0542'</p>
-<div class="codehilite"><pre><span></span><span class="o">[</span><span class="n">username@es1 ~</span><span class="o">]</span><span class="err">$</span><span class="w"> </span><span class="n">ls</span><span class="w"> </span><span class="n">images</span><span class="w"></span>
-<span class="mf">0001.</span><span class="n">jpg</span><span class="w">    </span><span class="mf">0002.</span><span class="n">jpg</span><span class="w">    </span><span class="mf">0003.</span><span class="n">jpg</span><span class="w">    </span><span class="mf">0004.</span><span class="n">jpg</span><span class="w"></span>
-<span class="o">[</span><span class="n">username@es1 ~</span><span class="o">]</span><span class="err">$</span><span class="w"> </span><span class="n">aws</span><span class="w"> </span><span class="c1">--endpoint-url https://s3.abci.ai s3 cp images s3://dataset-c0542/ --recursive</span>
-<span class="nl">upload</span><span class="p">:</span><span class="w"> </span><span class="n">images</span><span class="o">/</span><span class="mf">0001.</span><span class="n">jpg</span><span class="w"> </span><span class="k">to</span><span class="w"> </span><span class="nl">s3</span><span class="p">:</span><span class="o">//</span><span class="n">dataset</span><span class="o">-</span><span class="n">c0542</span><span class="o">/</span><span class="mf">0001.</span><span class="n">jpg</span><span class="w"></span>
-<span class="nl">upload</span><span class="p">:</span><span class="w"> </span><span class="n">images</span><span class="o">/</span><span class="mf">0002.</span><span class="n">jpg</span><span class="w"> </span><span class="k">to</span><span class="w"> </span><span class="nl">s3</span><span class="p">:</span><span class="o">//</span><span class="n">dataset</span><span class="o">-</span><span class="n">c0542</span><span class="o">/</span><span class="mf">0002.</span><span class="n">jpg</span><span class="w"></span>
-<span class="nl">upload</span><span class="p">:</span><span class="w"> </span><span class="n">images</span><span class="o">/</span><span class="mf">0003.</span><span class="n">jpg</span><span class="w"> </span><span class="k">to</span><span class="w"> </span><span class="nl">s3</span><span class="p">:</span><span class="o">//</span><span class="n">dataset</span><span class="o">-</span><span class="n">c0542</span><span class="o">/</span><span class="mf">0003.</span><span class="n">jpg</span><span class="w"></span>
-<span class="nl">upload</span><span class="p">:</span><span class="w"> </span><span class="n">images</span><span class="o">/</span><span class="mf">0004.</span><span class="n">jpg</span><span class="w"> </span><span class="k">to</span><span class="w"> </span><span class="nl">s3</span><span class="p">:</span><span class="o">//</span><span class="n">dataset</span><span class="o">-</span><span class="n">c0542</span><span class="o">/</span><span class="mf">0004.</span><span class="n">jpg</span><span class="w"></span>
-<span class="o">[</span><span class="n">username@es1 ~</span><span class="o">]</span><span class="err">$</span><span class="w"> </span><span class="n">aws</span><span class="w"> </span><span class="c1">--endpoint-url https://s3.abci.ai s3 ls s3://dataet-c0542/</span>
-<span class="mi">2019</span><span class="o">-</span><span class="mi">06</span><span class="o">-</span><span class="mi">10</span><span class="w"> </span><span class="mi">19</span><span class="err">:</span><span class="mi">03</span><span class="err">:</span><span class="mi">19</span><span class="w">    </span><span class="mi">1048576</span><span class="w"> </span><span class="mf">0001.</span><span class="n">jpg</span><span class="w"></span>
-<span class="mi">2019</span><span class="o">-</span><span class="mi">06</span><span class="o">-</span><span class="mi">10</span><span class="w"> </span><span class="mi">19</span><span class="err">:</span><span class="mi">03</span><span class="err">:</span><span class="mi">19</span><span class="w">    </span><span class="mi">1048576</span><span class="w"> </span><span class="mf">0002.</span><span class="n">jpg</span><span class="w"></span>
-<span class="mi">2019</span><span class="o">-</span><span class="mi">06</span><span class="o">-</span><span class="mi">10</span><span class="w"> </span><span class="mi">19</span><span class="err">:</span><span class="mi">03</span><span class="err">:</span><span class="mi">19</span><span class="w">    </span><span class="mi">1048576</span><span class="w"> </span><span class="mf">0003.</span><span class="n">jpg</span><span class="w"></span>
-<span class="mi">2019</span><span class="o">-</span><span class="mi">06</span><span class="o">-</span><span class="mi">10</span><span class="w"> </span><span class="mi">19</span><span class="err">:</span><span class="mi">03</span><span class="err">:</span><span class="mi">19</span><span class="w">    </span><span class="mi">1048576</span><span class="w"> </span><span class="mf">0004.</span><span class="n">jpg</span><span class="w"></span>
-<span class="o">[</span><span class="n">username@es1 ~</span><span class="o">]</span><span class="err">$</span><span class="w"></span>
-</pre></div>
+<div class="codehilite"><pre><span></span><code><span class="err">[username@es1 ~]$ ls images</span>
+<span class="err">0001.jpg    0002.jpg    0003.jpg    0004.jpg</span>
+<span class="err">[username@es1 ~]$ aws --endpoint-url https://s3.abci.ai s3 cp images s3://dataset-c0542/ --recursive</span>
+<span class="c">upload: images/0001.jpg to s3://dataset-c0542/0001.jpg</span>
+<span class="c">upload: images/0002.jpg to s3://dataset-c0542/0002.jpg</span>
+<span class="c">upload: images/0003.jpg to s3://dataset-c0542/0003.jpg</span>
+<span class="c">upload: images/0004.jpg to s3://dataset-c0542/0004.jpg</span>
+<span class="err">[username@es1 ~]$ aws --endpoint-url https://s3.abci.ai s3 ls s3://dataet-c0542/</span>
+<span class="err">2019-06-10 19:03:19    1048576 0001.jpg</span>
+<span class="err">2019-06-10 19:03:19    1048576 0002.jpg</span>
+<span class="err">2019-06-10 19:03:19    1048576 0003.jpg</span>
+<span class="err">2019-06-10 19:03:19    1048576 0004.jpg</span>
+<span class="err">[username@es1 ~]$</span>
+</code></pre></div>
 
 
 <p>Example: Copy the file 'logo.png' from the bucket 'dataset-tmpl-c0000' to the bucket 'dataset-c0541'</p>
-<div class="codehilite"><pre><span></span><span class="o">[</span><span class="n">username@es1 ~</span><span class="o">]</span><span class="err">$</span><span class="w"> </span><span class="n">aws</span><span class="w"> </span><span class="c1">--endpoint-url https://s3.abci.ai s3 cp s3://dataset-tmpl-c0000/logo.png s3://dataset-c0541/logo.png</span>
-<span class="nl">copy</span><span class="p">:</span><span class="w"> </span><span class="nl">s3</span><span class="p">:</span><span class="o">//</span><span class="n">dataset</span><span class="o">-</span><span class="n">tmpl</span><span class="o">-</span><span class="n">c0000</span><span class="o">/</span><span class="n">logo</span><span class="p">.</span><span class="n">png</span><span class="w"> </span><span class="k">to</span><span class="w"> </span><span class="nl">s3</span><span class="p">:</span><span class="o">//</span><span class="n">dataset</span><span class="o">-</span><span class="n">c0541</span><span class="o">/</span><span class="n">logo</span><span class="p">.</span><span class="n">png</span><span class="w"></span>
-</pre></div>
+<div class="codehilite"><pre><span></span><code><span class="err">[username@es1 ~]$ aws --endpoint-url https://s3.abci.ai s3 cp s3://dataset-tmpl-c0000/logo.png s3://dataset-c0541/logo.png</span>
+<span class="c">copy: s3://dataset-tmpl-c0000/logo.png to s3://dataset-c0541/logo.png</span>
+</code></pre></div>
 
 
 <h3 id="move-data">Move Data</h3>
@@ -169,37 +169,37 @@ Time stamps are not be preserved.
 This command can handle objects which have specific prefix with option '--recursive'
 and files which are stored in specific directories.</p>
 <p>The example shown next transfers 'annotaitions.zip' in current directory to a bucket 'dataset-c0541' in ABCI Cloud Storage.</p>
-<div class="codehilite"><pre><span></span><span class="o">[</span><span class="n">username@es1 ~</span><span class="o">]</span><span class="err">$</span><span class="w"> </span><span class="n">aws</span><span class="w"> </span><span class="c1">--endpoint-url https://s3.abci.ai s3 mv annotations.zip s3://dataset-c0541/</span>
-<span class="nl">move</span><span class="p">:</span><span class="w"> </span><span class="p">.</span><span class="o">/</span><span class="n">annotations</span><span class="p">.</span><span class="n">zip</span><span class="w"> </span><span class="k">to</span><span class="w"> </span><span class="nl">s3</span><span class="p">:</span><span class="o">//</span><span class="n">dataset</span><span class="o">-</span><span class="n">c0541</span><span class="o">/</span><span class="n">annotations</span><span class="p">.</span><span class="n">zip</span><span class="w"></span>
-</pre></div>
+<div class="codehilite"><pre><span></span><code><span class="err">[username@es1 ~]$ aws --endpoint-url https://s3.abci.ai s3 mv annotations.zip s3://dataset-c0541/</span>
+<span class="c">move: ./annotations.zip to s3://dataset-c0541/annotations.zip</span>
+</code></pre></div>
 
 
 <p>The example shown next transfers the objects which have prefix 'sensor-1' in a bucket 'dataset-c0541' to a bucket 'dataset-c0542'.</p>
-<div class="codehilite"><pre><span></span><span class="o">[</span><span class="n">username@es1 ~</span><span class="o">]</span><span class="err">$</span><span class="w"> </span><span class="n">aws</span><span class="w"> </span><span class="c1">--endpoint-url https://s3.abci.ai s3 mv s3://dataset-c0541/sensor-1/ s3://dataset-c0542/sensor-1/ --recursive</span>
-<span class="nl">move</span><span class="p">:</span><span class="w"> </span><span class="nl">s3</span><span class="p">:</span><span class="o">//</span><span class="n">dataset</span><span class="o">-</span><span class="n">c0541</span><span class="o">/</span><span class="n">sensor</span><span class="o">-</span><span class="mi">1</span><span class="o">/</span><span class="mf">0001.</span><span class="n">dat</span><span class="w"> </span><span class="k">to</span><span class="w"> </span><span class="nl">s3</span><span class="p">:</span><span class="o">//</span><span class="n">dataset</span><span class="o">-</span><span class="n">c0542</span><span class="o">/</span><span class="n">sensor</span><span class="o">-</span><span class="mi">1</span><span class="o">/</span><span class="mf">0001.</span><span class="n">dat</span><span class="w"></span>
-<span class="nl">move</span><span class="p">:</span><span class="w"> </span><span class="nl">s3</span><span class="p">:</span><span class="o">//</span><span class="n">dataset</span><span class="o">-</span><span class="n">c0541</span><span class="o">/</span><span class="n">sensor</span><span class="o">-</span><span class="mi">1</span><span class="o">/</span><span class="mf">0003.</span><span class="n">dat</span><span class="w"> </span><span class="k">to</span><span class="w"> </span><span class="nl">s3</span><span class="p">:</span><span class="o">//</span><span class="n">dataset</span><span class="o">-</span><span class="n">c0542</span><span class="o">/</span><span class="n">sensor</span><span class="o">-</span><span class="mi">1</span><span class="o">/</span><span class="mf">0003.</span><span class="n">dat</span><span class="w"></span>
-<span class="nl">move</span><span class="p">:</span><span class="w"> </span><span class="nl">s3</span><span class="p">:</span><span class="o">//</span><span class="n">dataset</span><span class="o">-</span><span class="n">c0541</span><span class="o">/</span><span class="n">sensor</span><span class="o">-</span><span class="mi">1</span><span class="o">/</span><span class="mf">0004.</span><span class="n">dat</span><span class="w"> </span><span class="k">to</span><span class="w"> </span><span class="nl">s3</span><span class="p">:</span><span class="o">//</span><span class="n">dataset</span><span class="o">-</span><span class="n">c0542</span><span class="o">/</span><span class="n">sensor</span><span class="o">-</span><span class="mi">1</span><span class="o">/</span><span class="mf">0004.</span><span class="n">dat</span><span class="w"></span>
-<span class="nl">move</span><span class="p">:</span><span class="w"> </span><span class="nl">s3</span><span class="p">:</span><span class="o">//</span><span class="n">dataset</span><span class="o">-</span><span class="n">c0541</span><span class="o">/</span><span class="n">sensor</span><span class="o">-</span><span class="mi">1</span><span class="o">/</span><span class="mf">0002.</span><span class="n">dat</span><span class="w"> </span><span class="k">to</span><span class="w"> </span><span class="nl">s3</span><span class="p">:</span><span class="o">//</span><span class="n">dataset</span><span class="o">-</span><span class="n">c0542</span><span class="o">/</span><span class="n">sensor</span><span class="o">-</span><span class="mi">1</span><span class="o">/</span><span class="mf">0002.</span><span class="n">dat</span><span class="w"></span>
-</pre></div>
+<div class="codehilite"><pre><span></span><code><span class="err">[username@es1 ~]$ aws --endpoint-url https://s3.abci.ai s3 mv s3://dataset-c0541/sensor-1/ s3://dataset-c0542/sensor-1/ --recursive</span>
+<span class="c">move: s3://dataset-c0541/sensor-1/0001.dat to s3://dataset-c0542/sensor-1/0001.dat</span>
+<span class="c">move: s3://dataset-c0541/sensor-1/0003.dat to s3://dataset-c0542/sensor-1/0003.dat</span>
+<span class="c">move: s3://dataset-c0541/sensor-1/0004.dat to s3://dataset-c0542/sensor-1/0004.dat</span>
+<span class="c">move: s3://dataset-c0541/sensor-1/0002.dat to s3://dataset-c0542/sensor-1/0002.dat</span>
+</code></pre></div>
 
 
 <h3 id="synchronize-local-directory-with-abci-cloud-storage">Synchronize Local Directory with ABCI Cloud Storage</h3>
 <p>Here is an example that synchronizes a directory 'sensor2' in current directory and a bucket 'mybucket'. If an option '--delete' is not given, exsiting objects in the bucket will not be deleted and exsiting objects which have same names with the ones in the current directory will be overwritten. When executing same command again, only updated data will be sent.</p>
-<div class="codehilite"><pre><span></span><span class="o">[</span><span class="n">username@es1 ~</span><span class="o">]</span><span class="err">$</span><span class="w"> </span><span class="n">aws</span><span class="w"> </span><span class="c1">--endpoint-url https://s3.abci.ai s3 sync ./sensor2 s3://mybucket/</span>
-<span class="nl">upload</span><span class="p">:</span><span class="w"> </span><span class="n">sensor2</span><span class="o">/</span><span class="mf">0002.</span><span class="n">dat</span><span class="w"> </span><span class="k">to</span><span class="w"> </span><span class="nl">s3</span><span class="p">:</span><span class="o">//</span><span class="n">mybucket</span><span class="o">/</span><span class="mf">0002.</span><span class="n">dat</span><span class="w"></span>
-<span class="nl">upload</span><span class="p">:</span><span class="w"> </span><span class="n">sensor2</span><span class="o">/</span><span class="mf">0004.</span><span class="n">dat</span><span class="w"> </span><span class="k">to</span><span class="w"> </span><span class="nl">s3</span><span class="p">:</span><span class="o">//</span><span class="n">mybucket</span><span class="o">/</span><span class="mf">0004.</span><span class="n">dat</span><span class="w"></span>
-<span class="nl">upload</span><span class="p">:</span><span class="w"> </span><span class="n">sensor2</span><span class="o">/</span><span class="mf">0001.</span><span class="n">dat</span><span class="w"> </span><span class="k">to</span><span class="w"> </span><span class="nl">s3</span><span class="p">:</span><span class="o">//</span><span class="n">mybucket</span><span class="o">/</span><span class="mf">0001.</span><span class="n">dat</span><span class="w"></span>
-<span class="nl">upload</span><span class="p">:</span><span class="w"> </span><span class="n">sensor2</span><span class="o">/</span><span class="mf">0003.</span><span class="n">dat</span><span class="w"> </span><span class="k">to</span><span class="w"> </span><span class="nl">s3</span><span class="p">:</span><span class="o">//</span><span class="n">mybucket</span><span class="o">/</span><span class="mf">0003.</span><span class="n">dat</span><span class="w"></span>
-</pre></div>
+<div class="codehilite"><pre><span></span><code><span class="err">[username@es1 ~]$ aws --endpoint-url https://s3.abci.ai s3 sync ./sensor2 s3://mybucket/</span>
+<span class="c">upload: sensor2/0002.dat to s3://mybucket/0002.dat</span>
+<span class="c">upload: sensor2/0004.dat to s3://mybucket/0004.dat</span>
+<span class="c">upload: sensor2/0001.dat to s3://mybucket/0001.dat</span>
+<span class="c">upload: sensor2/0003.dat to s3://mybucket/0003.dat</span>
+</code></pre></div>
 
 
 <p>The following example sychronizes objects with the prefix 'rev1' in the bucket 'sensor3' to the directory 'testdata.'</p>
-<div class="codehilite"><pre><span></span><span class="o">[</span><span class="n">username@es1 ~</span><span class="o">]</span><span class="err">$</span><span class="w"> </span><span class="n">aws</span><span class="w"> </span><span class="c1">--endpoint-url https://s3.abci.ai s3 sync s3://sensor3/rev1/ testdata</span>
-<span class="nl">download</span><span class="p">:</span><span class="w"> </span><span class="nl">s3</span><span class="p">:</span><span class="o">//</span><span class="n">sensor3</span><span class="o">/</span><span class="n">rev1</span><span class="o">/</span><span class="mf">0001.</span><span class="n">zip</span><span class="w"> </span><span class="k">to</span><span class="w"> </span><span class="n">testdata</span><span class="o">/</span><span class="mf">0001.</span><span class="n">zip</span><span class="w"></span>
-<span class="nl">download</span><span class="p">:</span><span class="w"> </span><span class="nl">s3</span><span class="p">:</span><span class="o">//</span><span class="n">sensor3</span><span class="o">/</span><span class="n">rev1</span><span class="o">/</span><span class="mf">0004.</span><span class="n">zip</span><span class="w"> </span><span class="k">to</span><span class="w"> </span><span class="n">testdata</span><span class="o">/</span><span class="mf">0004.</span><span class="n">zip</span><span class="w"></span>
-<span class="nl">download</span><span class="p">:</span><span class="w"> </span><span class="nl">s3</span><span class="p">:</span><span class="o">//</span><span class="n">sensor3</span><span class="o">/</span><span class="n">rev1</span><span class="o">/</span><span class="mf">0003.</span><span class="n">zip</span><span class="w"> </span><span class="k">to</span><span class="w"> </span><span class="n">testdata</span><span class="o">/</span><span class="mf">0003.</span><span class="n">zip</span><span class="w"></span>
-<span class="nl">download</span><span class="p">:</span><span class="w"> </span><span class="nl">s3</span><span class="p">:</span><span class="o">//</span><span class="n">sensor3</span><span class="o">/</span><span class="n">rev1</span><span class="o">/</span><span class="mf">0002.</span><span class="n">zip</span><span class="w"> </span><span class="k">to</span><span class="w"> </span><span class="n">testdata</span><span class="o">/</span><span class="mf">0002.</span><span class="n">zip</span><span class="w"></span>
-</pre></div>
+<div class="codehilite"><pre><span></span><code><span class="err">[username@es1 ~]$ aws --endpoint-url https://s3.abci.ai s3 sync s3://sensor3/rev1/ testdata</span>
+<span class="c">download: s3://sensor3/rev1/0001.zip to testdata/0001.zip</span>
+<span class="c">download: s3://sensor3/rev1/0004.zip to testdata/0004.zip</span>
+<span class="c">download: s3://sensor3/rev1/0003.zip to testdata/0003.zip</span>
+<span class="c">download: s3://sensor3/rev1/0002.zip to testdata/0002.zip</span>
+</code></pre></div>
 
 
 <div class="admonition note">
@@ -209,65 +209,65 @@ and files which are stored in specific directories.</p>
 <h3 id="delete-object">Delete Object</h3>
 <p>To delete a object, use <code>aws s3 rm &lt;S3Uri&gt; [parameters]</code></p>
 <p>For example </p>
-<div class="codehilite"><pre><span></span><span class="o">[</span><span class="n">username@es1 ~</span><span class="o">]</span><span class="err">$</span><span class="w"> </span><span class="n">aws</span><span class="w"> </span><span class="c1">--endpoint-url https://s3.abci.ai s3 rm s3://mybucket/readme.txt</span>
-<span class="k">delete</span><span class="err">:</span><span class="w"> </span><span class="nl">s3</span><span class="p">:</span><span class="o">//</span><span class="n">mybucket</span><span class="o">/</span><span class="n">readme</span><span class="p">.</span><span class="n">txt</span><span class="w"></span>
-</pre></div>
+<div class="codehilite"><pre><span></span><code><span class="err">[username@es1 ~]$ aws --endpoint-url https://s3.abci.ai s3 rm s3://mybucket/readme.txt</span>
+<span class="c">delete: s3://mybucket/readme.txt</span>
+</code></pre></div>
 
 
 <p>The option '--recursive' enables to delete objects which are located under specified prefix.</p>
-<div class="codehilite"><pre><span></span><span class="o">[</span><span class="n">username@es1 ~</span><span class="o">]</span><span class="err">$</span><span class="w"> </span><span class="n">aws</span><span class="w"> </span><span class="c1">--endpoint-url https://s3.abci.ai s3 ls s3://mybucket --recursive</span>
-<span class="mi">2019</span><span class="o">-</span><span class="mi">07</span><span class="o">-</span><span class="mi">30</span><span class="w"> </span><span class="mi">20</span><span class="err">:</span><span class="mi">46</span><span class="err">:</span><span class="mi">53</span><span class="w">         </span><span class="mi">32</span><span class="w"> </span><span class="n">a</span><span class="p">.</span><span class="n">txt</span><span class="w"></span>
-<span class="mi">2019</span><span class="o">-</span><span class="mi">07</span><span class="o">-</span><span class="mi">30</span><span class="w"> </span><span class="mi">20</span><span class="err">:</span><span class="mi">46</span><span class="err">:</span><span class="mi">53</span><span class="w">         </span><span class="mi">32</span><span class="w"> </span><span class="n">b</span><span class="p">.</span><span class="n">txt</span><span class="w"></span>
-<span class="mi">2019</span><span class="o">-</span><span class="mi">07</span><span class="o">-</span><span class="mi">31</span><span class="w"> </span><span class="mi">14</span><span class="err">:</span><span class="mi">51</span><span class="err">:</span><span class="mi">50</span><span class="w">        </span><span class="mi">512</span><span class="w"> </span><span class="nc">xml</span><span class="o">/</span><span class="n">c</span><span class="p">.</span><span class="nc">xml</span><span class="w"></span>
-<span class="mi">2019</span><span class="o">-</span><span class="mi">07</span><span class="o">-</span><span class="mi">31</span><span class="w"> </span><span class="mi">14</span><span class="err">:</span><span class="mi">51</span><span class="err">:</span><span class="mi">54</span><span class="w">        </span><span class="mi">512</span><span class="w"> </span><span class="nc">xml</span><span class="o">/</span><span class="n">d</span><span class="p">.</span><span class="nc">xml</span><span class="w"></span>
-<span class="o">[</span><span class="n">username@es1 ~</span><span class="o">]</span><span class="err">$</span><span class="w"> </span><span class="n">aws</span><span class="w"> </span><span class="c1">--endpoint-url https://s3.abci.ai s3 rm s3://mybucket/xml --recursive</span>
-<span class="k">delete</span><span class="err">:</span><span class="w"> </span><span class="nl">s3</span><span class="p">:</span><span class="o">//</span><span class="n">mybucket</span><span class="o">/</span><span class="nc">xml</span><span class="o">/</span><span class="n">c</span><span class="p">.</span><span class="nc">xml</span><span class="w"></span>
-<span class="k">delete</span><span class="err">:</span><span class="w"> </span><span class="nl">s3</span><span class="p">:</span><span class="o">//</span><span class="n">mybucket</span><span class="o">/</span><span class="nc">xml</span><span class="o">/</span><span class="n">d</span><span class="p">.</span><span class="nc">xml</span><span class="w"></span>
-<span class="o">[</span><span class="n">username@es1 ~</span><span class="o">]</span><span class="err">$</span><span class="w"> </span><span class="n">aws</span><span class="w"> </span><span class="c1">--endpoint-url https://s3.abci.ai s3 ls s3://mybucket --recursive</span>
-<span class="mi">2019</span><span class="o">-</span><span class="mi">07</span><span class="o">-</span><span class="mi">30</span><span class="w"> </span><span class="mi">20</span><span class="err">:</span><span class="mi">46</span><span class="err">:</span><span class="mi">53</span><span class="w">         </span><span class="mi">32</span><span class="w"> </span><span class="n">a</span><span class="p">.</span><span class="n">txt</span><span class="w"></span>
-<span class="mi">2019</span><span class="o">-</span><span class="mi">07</span><span class="o">-</span><span class="mi">30</span><span class="w"> </span><span class="mi">20</span><span class="err">:</span><span class="mi">46</span><span class="err">:</span><span class="mi">53</span><span class="w">         </span><span class="mi">32</span><span class="w"> </span><span class="n">b</span><span class="p">.</span><span class="n">txt</span><span class="w"></span>
-</pre></div>
+<div class="codehilite"><pre><span></span><code><span class="err">[username@es1 ~]$ aws --endpoint-url https://s3.abci.ai s3 ls s3://mybucket --recursive</span>
+<span class="err">2019-07-30 20:46:53         32 a.txt</span>
+<span class="err">2019-07-30 20:46:53         32 b.txt</span>
+<span class="err">2019-07-31 14:51:50        512 xml/c.xml</span>
+<span class="err">2019-07-31 14:51:54        512 xml/d.xml</span>
+<span class="err">[username@es1 ~]$ aws --endpoint-url https://s3.abci.ai s3 rm s3://mybucket/xml --recursive</span>
+<span class="c">delete: s3://mybucket/xml/c.xml</span>
+<span class="c">delete: s3://mybucket/xml/d.xml</span>
+<span class="err">[username@es1 ~]$ aws --endpoint-url https://s3.abci.ai s3 ls s3://mybucket --recursive</span>
+<span class="err">2019-07-30 20:46:53         32 a.txt</span>
+<span class="err">2019-07-30 20:46:53         32 b.txt</span>
+</code></pre></div>
 
 
 <h3 id="delete-bucket">Delete Bucket</h3>
 <p>The command example shown next deletes the bucket 'dataset-c0541.'</p>
-<div class="codehilite"><pre><span></span><span class="o">[</span><span class="n">username@es1 ~</span><span class="o">]</span><span class="err">$</span><span class="w"> </span><span class="n">aws</span><span class="w"> </span><span class="c1">--endpoint-url https://s3.abci.ai s3 rb s3://dataset-c0541</span>
-<span class="nl">remove_bucket</span><span class="p">:</span><span class="w"> </span><span class="n">dataset</span><span class="o">-</span><span class="n">c0541</span><span class="w"></span>
-</pre></div>
+<div class="codehilite"><pre><span></span><code><span class="err">[username@es1 ~]$ aws --endpoint-url https://s3.abci.ai s3 rb s3://dataset-c0541</span>
+<span class="c">remove_bucket: dataset-c0541</span>
+</code></pre></div>
 
 
 <p>An error will happen when deleting non-empty buckets. By adding the option '--force', both ojects in the bucket and the bucket itself can be deleted.</p>
-<div class="codehilite"><pre><span></span><span class="o">[</span><span class="n">username@es1 ~</span><span class="o">]</span><span class="err">$</span><span class="w"> </span><span class="n">aws</span><span class="w"> </span><span class="c1">--endpoint-url https://s3.abci.ai rb s3://dataset-c0542 --force</span>
-<span class="k">delete</span><span class="err">:</span><span class="w"> </span><span class="nl">s3</span><span class="p">:</span><span class="o">//</span><span class="n">dataset</span><span class="o">-</span><span class="n">c0542</span><span class="o">/</span><span class="mf">0001.</span><span class="n">jpg</span><span class="w"></span>
-<span class="k">delete</span><span class="err">:</span><span class="w"> </span><span class="nl">s3</span><span class="p">:</span><span class="o">//</span><span class="n">dataset</span><span class="o">-</span><span class="n">c0542</span><span class="o">/</span><span class="mf">0002.</span><span class="n">jpg</span><span class="w"></span>
-<span class="k">delete</span><span class="err">:</span><span class="w"> </span><span class="nl">s3</span><span class="p">:</span><span class="o">//</span><span class="n">dataset</span><span class="o">-</span><span class="n">c0542</span><span class="o">/</span><span class="mf">0003.</span><span class="n">jpg</span><span class="w"></span>
-<span class="k">delete</span><span class="err">:</span><span class="w"> </span><span class="nl">s3</span><span class="p">:</span><span class="o">//</span><span class="n">dataset</span><span class="o">-</span><span class="n">c0542</span><span class="o">/</span><span class="mf">0004.</span><span class="n">jpg</span><span class="w"></span>
-<span class="nl">remove_bucket</span><span class="p">:</span><span class="w"> </span><span class="n">dataset</span><span class="o">-</span><span class="n">c0542</span><span class="w"></span>
-</pre></div>
+<div class="codehilite"><pre><span></span><code><span class="err">[username@es1 ~]$ aws --endpoint-url https://s3.abci.ai rb s3://dataset-c0542 --force</span>
+<span class="c">delete: s3://dataset-c0542/0001.jpg</span>
+<span class="c">delete: s3://dataset-c0542/0002.jpg</span>
+<span class="c">delete: s3://dataset-c0542/0003.jpg</span>
+<span class="c">delete: s3://dataset-c0542/0004.jpg</span>
+<span class="c">remove_bucket: dataset-c0542</span>
+</code></pre></div>
 
 
 <h3 id="check-object-owner">Check Object Owner</h3>
 <p>To display object owner, use the <code>s3api get-object-acl</code> command. As shown in the example below, BUCKET is the bucket name, OBJECT is the object name and the owner is displayed in "Owner".</p>
-<div class="codehilite"><pre><span></span><span class="o">[</span><span class="n">username@es1 ~</span><span class="o">]</span><span class="err">$</span><span class="w"> </span><span class="n">aws</span><span class="w"> </span><span class="c1">--endpoint-url https://s3.abci.ai s3api get-object-acl --bucket BUCKET --key OBJECT</span>
-<span class="err">{</span><span class="w"></span>
-<span class="w">    </span><span class="ss">&quot;Owner&quot;</span><span class="err">:</span><span class="w"> </span><span class="err">{</span><span class="w"></span>
-<span class="w">        </span><span class="ss">&quot;DisplayName&quot;</span><span class="err">:</span><span class="w"> </span><span class="ss">&quot;ABCIGROUP&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">        </span><span class="ss">&quot;ID&quot;</span><span class="err">:</span><span class="w"> </span><span class="ss">&quot;xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx&quot;</span><span class="w"></span>
-<span class="w">    </span><span class="err">}</span><span class="p">,</span><span class="w"></span>
-<span class="w">    </span><span class="ss">&quot;Grants&quot;</span><span class="err">:</span><span class="w"> </span><span class="o">[</span><span class="n"></span>
-<span class="n">        {</span>
-<span class="n">            &quot;Grantee&quot;: {</span>
-<span class="n">                &quot;DisplayName&quot;: &quot;ABCIGROUP&quot;,</span>
-<span class="n">                &quot;ID&quot;: &quot;yyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyy&quot;,</span>
-<span class="n">                &quot;Type&quot;: &quot;CanonicalUser&quot;</span>
-<span class="n">            },</span>
-<span class="n">            &quot;Permission&quot;: &quot;FULL_CONTROL&quot;</span>
-<span class="n">        }</span>
-<span class="n">    </span><span class="o">]</span><span class="w"></span>
-<span class="err">}</span><span class="w"></span>
-</pre></div>
+<div class="codehilite"><pre><span></span><code><span class="err">[username@es1 ~]$ aws --endpoint-url https://s3.abci.ai s3api get-object-acl --bucket BUCKET --key OBJECT</span>
+<span class="err">{</span>
+<span class="err">    &quot;Owner&quot;: {</span>
+<span class="err">        &quot;DisplayName&quot;: &quot;ABCIGROUP&quot;,</span>
+<span class="err">        &quot;ID&quot;: &quot;xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx&quot;</span>
+<span class="err">    },</span>
+<span class="err">    &quot;Grants&quot;: [</span>
+<span class="err">        {</span>
+<span class="err">            &quot;Grantee&quot;: {</span>
+<span class="err">                &quot;DisplayName&quot;: &quot;ABCIGROUP&quot;,</span>
+<span class="err">                &quot;ID&quot;: &quot;yyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyy&quot;,</span>
+<span class="err">                &quot;Type&quot;: &quot;CanonicalUser&quot;</span>
+<span class="err">            },</span>
+<span class="err">            &quot;Permission&quot;: &quot;FULL_CONTROL&quot;</span>
+<span class="err">        }</span>
+<span class="err">    ]</span>
+<span class="err">}</span>
+</code></pre></div>
 
 
 <!--  Is s3fs-fuse another ?  -->
 
-<!--  The detail way to use is not described, Cyberduck and WinSCP is described. --></article></div></div></main><footer class="md-footer"><div class="md-footer-nav"><nav class="md-footer-nav__inner md-grid"><a href="../cs-account/" title="Accounts and Access keys" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev"><div class="md-flex__cell md-flex__cell--shrink"><i class="md-icon md-icon--arrow-back md-footer-nav__button"></i></div><div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title"><span class="md-flex__ellipsis"><span class="md-footer-nav__direction">Previous</span>Accounts and Access keys</span></div></a><a href="../encryption/" title="Data encryption" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next"><div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title"><span class="md-flex__ellipsis"><span class="md-footer-nav__direction">Next</span>Data encryption</span></div><div class="md-flex__cell md-flex__cell--shrink"><i class="md-icon md-icon--arrow-forward md-footer-nav__button"></i></div></a></nav></div><div class="md-footer-meta md-typeset"><div class="md-footer-meta__inner md-grid"><div class="md-footer-copyright"><div class="md-footer-copyright__highlight">Copyright &copy; 2018 National Institute of Advanced Industrial Science and Technology (AIST)</div>powered by <a href="https://www.mkdocs.org">MkDocs</a> and <a href="https://squidfunk.github.io/mkdocs-material/">Material for MkDocs</a></div></div></div></footer></div><script src="../../assets/javascripts/application.b260a35d.js"></script><script>app.initialize({version:"1.0.4",url:{base:"../.."}})</script></body></html>
+<!--  The detail way to use is not described, Cyberduck and WinSCP is described. --></article></div></div></main><footer class="md-footer"><div class="md-footer-nav"><nav class="md-footer-nav__inner md-grid"><a href="../cs-account/" title="Accounts and Access keys" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev"><div class="md-flex__cell md-flex__cell--shrink"><i class="md-icon md-icon--arrow-back md-footer-nav__button"></i></div><div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title"><span class="md-flex__ellipsis"><span class="md-footer-nav__direction">Previous</span>Accounts and Access keys</span></div></a><a href="../encryption/" title="Data encryption" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next"><div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title"><span class="md-flex__ellipsis"><span class="md-footer-nav__direction">Next</span>Data encryption</span></div><div class="md-flex__cell md-flex__cell--shrink"><i class="md-icon md-icon--arrow-forward md-footer-nav__button"></i></div></a></nav></div><div class="md-footer-meta md-typeset"><div class="md-footer-meta__inner md-grid"><div class="md-footer-copyright"><div class="md-footer-copyright__highlight">Copyright &copy; 2018 National Institute of Advanced Industrial Science and Technology (AIST)</div>powered by <a href="https://www.mkdocs.org">MkDocs</a> and <a href="https://squidfunk.github.io/mkdocs-material/">Material for MkDocs</a></div></div></div></footer></div><script src="../../assets/javascripts/application.b260a35d.js"></script><script>app.initialize({version:"1.1",url:{base:"../.."}})</script></body></html>
