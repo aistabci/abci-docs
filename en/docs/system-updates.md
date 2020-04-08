@@ -4,6 +4,8 @@
 
 | Add / Update / Delete | Software | Version | Previous version |
 |:--|:--|:--|:--|
+| Update | DDN GRIDScaler | 4.2.3.20 | 4.2.3.17 |
+| Update | Scality S3 Connector | 7.4.5.4 | 7.4.5.0 |
 | Add | intel | 2018.5.274<br>2019.5.281 | |
 | Add | pgi | 19.1<br>19.10<br>20.1 | |
 | Add | R | 3.6.3 | |
