@@ -1631,20 +1631,3 @@
 [root@es1 nccl]# mkdir -p $INSTALL_DIR
 [root@es1 nccl]# make PREFIX=$INSTALL_DIR install
 ```
-
-## ディープラーニングフレームワーク
-
-[ディープラーニングフレームワーク](11.md#deep-learning-framework)は、利用者権限でインストールして利用してください。
-
-## 大規模データ処理
-
-### Hadoop
-
-```
-INSTALL_DIR=/apps/hadoop/2.9.1
-
-wget https://archive.apache.org/dist/hadoop/common/hadoop-2.9.1/hadoop-2.9.1.tar.gz
-sudo mkdir -p $INSTALL_DIR
-sudo tar xzf hadoop-2.9.1.tar.gz -C $INSTALL_DIR --strip=1
-sudo chown -R root:root $INSTALL_DIR
-```
