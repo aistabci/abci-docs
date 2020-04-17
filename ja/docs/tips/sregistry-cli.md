@@ -98,7 +98,7 @@ aws://<repositoryName>:<imageTag>
 
 取得したイメージをインタラクティブジョブとして実行します。
 ```
-[username@es1 ~]$ qrsh -g grpname -l rt_F=1
+[username@es1 ~]$ qrsh -g grpname -l rt_F=1 -l h_rt=1:00:00
 [username@g0001 ~]$ module load singularity/2.6.1
 [username@g0001 ~]$ singularity shell --nv ./mytensorflow.simg
 Singularity: Invoking an interactive shell within container...

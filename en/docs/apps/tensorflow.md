@@ -20,7 +20,7 @@ To install [TensorFlow](https://www.tensorflow.org/),
 please follow the instructions below.
 > NEW_VENV : python virtual environment or path to be installed
 ```
-[username@es1 ~]$ qrsh -g group_name -l rt_F=1
+[username@es1 ~]$ qrsh -g group_name -l rt_F=1 -l h_rt=1:00:00
 [username@g0001 ~]$ module load gcc/7.4.0
 [username@g0001 ~]$ module load python/3.6/3.6.5 cuda/10.0/10.0.130 cudnn/7.6/7.6.4
 [username@g0001 ~]$ export LD_LIBRARY_PATH=$CUDA_HOME/extras/CUPTI/lib64:$LD_LIBRARY_PATH
@@ -77,7 +77,7 @@ To install [TensorFlow](https://www.tensorflow.org/)　with [horovod](https://gi
 please follow the instructions below.
 > NEW_VENV : python virtual environment or path to be installed
 ```
-[username@es1 ~]$ qrsh -g group_name -l rt_F=1
+[username@es1 ~]$ qrsh -g group_name -l rt_F=1 -l h_rt=1:00:00
 [username@g0001 ~]$ module load gcc/7.4.0
 [username@g0001 ~]$ module load python/3.6/3.6.5 cuda/10.0/10.0.130 cudnn/7.6/7.6.4 nccl/2.4/2.4.8-1 openmpi/2.1.6
 [username@g0001 ~]$ export LD_LIBRARY_PATH=$CUDA_HOME/extras/CUPTI/lib64:$LD_LIBRARY_PATH
