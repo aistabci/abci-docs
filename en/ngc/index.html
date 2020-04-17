@@ -62,15 +62,15 @@ Then, you'll find:
 
 <h3 id="build-a-singularity-image">Build a Singularity image</h3>
 <p>Build a Singularity image for TensorFlow on the interactive node.</p>
-<div class="codehilite"><pre><span></span><code><span class="err">[username@es1 ~] $ module load singularity/2.6.1</span>
-<span class="err">[username@es1 ~] $ singularity pull docker://nvcr.io/nvidia/tensorflow:19.06-py2</span>
+<div class="codehilite"><pre><span></span><code><span class="err">[username@es1 ~]$ module load singularity/2.6.1</span>
+<span class="err">[username@es1 ~]$ singularity pull docker://nvcr.io/nvidia/tensorflow:19.06-py2</span>
 </code></pre></div>
 
 
 <p>An image named <code>tensorflow-19.06-py2.simg</code> will be generated.</p>
 <h3 id="run-a-singularity-image">Run a Singularity image</h3>
 <p>Start an interactive job with one full-node and run a sample program <code>cnn_mnist.py</code>.</p>
-<div class="codehilite"><pre><span></span><code><span class="err">[username@es1 ~]$ qrsh -g grpname -l rt_F=1</span>
+<div class="codehilite"><pre><span></span><code><span class="err">[username@es1 ~]$ qrsh -g grpname -l rt_F=1 -l h_rt=1:00:00</span>
 <span class="err">[username@g0001 ~]$ module load singularity/2.6.1</span>
 <span class="err">[username@g0001 ~]$ wget https://raw.githubusercontent.com/tensorflow/tensorflow/v1.13.1/tensorflow/examples/tutorials/layers/cnn_mnist.py</span>
 <span class="err">[username@g0001 ~]$ singularity run --nv tensorflow-19.06-py2.simg python cnn_mnist.py</span>
@@ -125,7 +125,7 @@ TensorFlow image, which you used for <a href="#single-node-run">Single-node Run<
 <p><code>openmpi/3.1.3</code> module seems to be suitable to run this image. In general, at least the major versions of both MPIs should be the same.</p>
 <h3 id="run-a-singularity-image-with-mpi">Run a Singularity image with MPI</h3>
 <p>Start an interative job with two full-nodes, and load required environment modules.</p>
-<div class="codehilite"><pre><span></span><code><span class="err">[username@es1 ~]$ qrsh -g grpname -l rt_F=2</span>
+<div class="codehilite"><pre><span></span><code><span class="err">[username@es1 ~]$ qrsh -g grpname -l rt_F=2 -l h_rt=1:00:00</span>
 <span class="err">[username@g0001 ~]$ module load singularity/2.6.1 openmpi/3.1.3</span>
 </code></pre></div>
 
@@ -199,17 +199,17 @@ mpirun -np <span class="m">8</span> -npernode <span class="m">4</span> singulari
 </ul>
 <p>Build a Singularity image for Chainer on the interactive node.
 In this case, you need to set two environment variables, <code>SINGULARITY_DOCKER_USERNAME</code> and <code>SINGULARITY_DOCKER_PASSWORD</code> for downloading images from NGC container registry.</p>
-<div class="codehilite"><pre><span></span><code><span class="err">[username@es1 ~] $ module load singularity/2.6.1</span>
-<span class="err">[username@es1 ~] $ export SINGULARITY_DOCKER_USERNAME=&#39;$oauthtoken&#39;</span>
-<span class="err">[username@es1 ~] $ export SINGULARITY_DOCKER_PASSWORD=&lt;NGC API Key&gt;</span>
-<span class="err">[username@es1 ~] $ singularity pull docker://nvcr.io/partners/chainer:4.0.0b1</span>
+<div class="codehilite"><pre><span></span><code><span class="err">[username@es1 ~]$ module load singularity/2.6.1</span>
+<span class="err">[username@es1 ~]$ export SINGULARITY_DOCKER_USERNAME=&#39;$oauthtoken&#39;</span>
+<span class="err">[username@es1 ~]$ export SINGULARITY_DOCKER_PASSWORD=&lt;NGC API Key&gt;</span>
+<span class="err">[username@es1 ~]$ singularity pull docker://nvcr.io/partners/chainer:4.0.0b1</span>
 </code></pre></div>
 
 
 <p>An image named <code>chainer-4.0.0b1.simg</code> will be generated.</p>
 <h3 id="run-a-singularity-image_1">Run a Singularity image</h3>
 <p>You can run the resulted image, just as same as freely available images.</p>
-<div class="codehilite"><pre><span></span><code><span class="err">[username@es1 ~] $ qrsh -g grpname -l rt_G.small=1</span>
+<div class="codehilite"><pre><span></span><code><span class="err">[username@es1 ~]$ qrsh -g grpname -l rt_G.small=1 -l h_rt=1:00:00</span>
 <span class="err">[username@g0001 ~]$ module load singularity/2.6.1</span>
 <span class="err">[username@g0001 ~]$ wget https://raw.githubusercontent.com/chainer/chainer/v4.0.0b1/examples/mnist/train_mnist.py</span>
 <span class="err">[username@g0001 ~]$ singularity exec --nv chainer-4.0.0b1.simg python train_mnist.py -g 0</span>

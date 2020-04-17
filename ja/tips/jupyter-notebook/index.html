@@ -23,7 +23,7 @@
 <p>ここでは、Jupyter Notebookをpipでインストールして利用する手順を説明します。</p>
 <h3 id="install-by-pip">インストール</h3>
 <p>計算ノードを一台占有し、Python仮想環境を作成し、<code>pip</code>で<code>tensorflow-gpu</code>と<code>jupyter</code>をインストールします。</p>
-<div class="codehilite"><pre><span></span><code><span class="err">[username@es1 ~]$ qrsh -g grpname -l rt_F=1</span>
+<div class="codehilite"><pre><span></span><code><span class="err">[username@es1 ~]$ qrsh -g grpname -l rt_F=1 -l h_rt=1:00:00</span>
 <span class="err">[username@g0001 ~]$ module load python/3.6/3.6.5 cuda/10.0/10.0.130.1 cudnn/7.4/7.4.2</span>
 <span class="err">[username@g0001 ~]$ python3 -m venv ~/jupyter_env</span>
 <span class="err">[username@g0001 ~]$ source ~/jupyter_env/bin/activate</span>
@@ -36,7 +36,7 @@
 <p>この例では<code>~/jupyter_env</code>ディレクトリの中にインストールしています。</p>
 </div>
 <p>次回以降は、以下のようにモジュールの読み込みと<code>~/jupyter_env</code>のアクティベートだけで済みます。</p>
-<div class="codehilite"><pre><span></span><code><span class="err">[username@es1 ~]$ qrsh -g grpname -l rt_F=1</span>
+<div class="codehilite"><pre><span></span><code><span class="err">[username@es1 ~]$ qrsh -g grpname -l rt_F=1 -l h_rt=1:00:00</span>
 <span class="err">[username@g0001 ~]$ module load python/3.6/3.6.5 cuda/10.0/10.0.130.1 cudnn/7.4/7.4.2</span>
 <span class="err">[username@g0001 ~]$ source ~/jupyter_env/bin/activate</span>
 </code></pre></div>
@@ -119,7 +119,7 @@ http://127.0.0.1:8888/?token=<i>token_string</i>
 
 <h3 id="start-jupyter-notebook_1">Jupyter Notebookの起動</h3>
 <p>計算ノードを一台占有します。あとで必要となるため、計算ノードのホスト名を確認しておきます。</p>
-<div class="codehilite"><pre><span></span><code><span class="err">[username@es1 ~]$ qrsh -g grpname -l rt_F=1</span>
+<div class="codehilite"><pre><span></span><code><span class="err">[username@es1 ~]$ qrsh -g grpname -l rt_F=1 -l h_rt=1:00:00</span>
 <span class="err">[username@g0001 ~]$ hostname</span>
 <span class="err">g0001.abci.local</span>
 </code></pre></div>

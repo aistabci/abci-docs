@@ -482,7 +482,7 @@ If ABCI point is insufficient when executing interactive job, execution is faile
 
 
 <p>Example) Executing an Interactive job</p>
-<div class="codehilite"><pre><span></span><code><span class="err">[username@es1 ~]$ qrsh -g grpname -l rt_F=1</span>
+<div class="codehilite"><pre><span></span><code><span class="err">[username@es1 ~]$ qrsh -g grpname -l rt_F=1 -l h_rt=1:00:00</span>
 <span class="err">[username@g0001 ~]$ </span>
 </code></pre></div>
 
@@ -493,7 +493,7 @@ If ABCI point is insufficient when executing interactive job, execution is faile
 
 
 <p>To execute an interactive job, specify the <code>-pty yes -display $DISPLAY -v TERM /bin/bash</code>.</p>
-<div class="codehilite"><pre><span></span><code><span class="p">[</span><span class="n">username</span><span class="o">@</span><span class="n">es1</span> <span class="o">~</span><span class="p">]</span><span class="o">$</span> <span class="n">qrsh</span> <span class="o">-</span><span class="n">g</span> <span class="n">grpname</span> <span class="o">-</span><span class="n">l</span> <span class="n">rt_F</span><span class="o">=</span><span class="m">1</span> <span class="o">-</span><span class="n">pty</span> <span class="n">yes</span> <span class="o">-</span><span class="n">display</span> <span class="o">$</span><span class="n">DISPLAY</span> <span class="o">-</span><span class="n">v</span> <span class="n">TERM</span> <span class="o">/</span><span class="n">bin</span><span class="o">/</span><span class="n">bash</span>
+<div class="codehilite"><pre><span></span><code><span class="p">[</span><span class="n">username</span><span class="o">@</span><span class="n">es1</span> <span class="o">~</span><span class="p">]</span><span class="o">$</span> <span class="n">qrsh</span> <span class="o">-</span><span class="n">g</span> <span class="n">grpname</span> <span class="o">-</span><span class="n">l</span> <span class="n">rt_F</span><span class="o">=</span><span class="m">1</span> <span class="o">-</span><span class="n">l</span> <span class="n">h_rt</span><span class="o">=</span><span class="m">1</span><span class="o">:</span><span class="m">00</span><span class="o">:</span><span class="m">00</span> <span class="o">-</span><span class="n">pty</span> <span class="n">yes</span> <span class="o">-</span><span class="n">display</span> <span class="o">$</span><span class="n">DISPLAY</span> <span class="o">-</span><span class="n">v</span> <span class="n">TERM</span> <span class="o">/</span><span class="n">bin</span><span class="o">/</span><span class="n">bash</span>
 <span class="p">[</span><span class="n">username</span><span class="o">@</span><span class="n">g0001</span> <span class="o">~</span><span class="p">]</span><span class="o">$</span> <span class="n">xterm</span> <span class="o">&lt;-</span> <span class="n">execute</span> <span class="n">X</span> <span class="n">application</span>
 </code></pre></div>
 

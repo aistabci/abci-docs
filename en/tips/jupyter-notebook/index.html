@@ -23,7 +23,7 @@
 <p>This part explains how to install and use Jupyter Notebook with pip.</p>
 <h3 id="install-by-pip">Install by Pip</h3>
 <p>First, you need to occupy one compute node, create a Python virtual environment, and install <code>tensorflow-gpu</code> and<code>jupyter</code> with <code>pip</code>.</p>
-<div class="codehilite"><pre><span></span><code><span class="err">[username@es1 ~]$ qrsh -g grpname -l rt_F=1</span>
+<div class="codehilite"><pre><span></span><code><span class="err">[username@es1 ~]$ qrsh -g grpname -l rt_F=1 -l h_rt=1:00:00</span>
 <span class="err">[username@g0001 ~]$ module load python/3.6/3.6.5 cuda/10.0/10.0.130.1 cudnn/7.4/7.4.2</span>
 <span class="err">[username@g0001 ~]$ python3 -m venv ~/jupyter_env</span>
 <span class="err">[username@g0001 ~]$ source ~/jupyter_env/bin/activate</span>
@@ -36,7 +36,7 @@
 <p>In this example, <code>tensorflow-gpu</code> and<code>jupyter</code> are installed into <code>~/jupyter_env</code> directory.</p>
 </div>
 <p>From the next time on, you only need to load modules and activate <code>~/jupyter_env</code> as shown below.</p>
-<div class="codehilite"><pre><span></span><code><span class="err">[username@es1 ~]$ qrsh -g grpname -l rt_F=1</span>
+<div class="codehilite"><pre><span></span><code><span class="err">[username@es1 ~]$ qrsh -g grpname -l rt_F=1 -l h_rt=1:00:00</span>
 <span class="err">[username@g0001 ~]$ module load python/3.6/3.6.5 cuda/10.0/10.0.130.1 cudnn/7.4/7.4.2</span>
 <span class="err">[username@g0001 ~]$ source ~/jupyter_env/bin/activate</span>
 </code></pre></div>
@@ -119,7 +119,7 @@ http://127.0.0.1:8888/?token=<i>token_string</i>
 
 <h3 id="start-jupyter-notebook_1">Start Jupyter Notebook</h3>
 <p>First, you need to occupy one compute node. And, confirm the host name of the compute node as you will need it later.</p>
-<div class="codehilite"><pre><span></span><code><span class="err">[username@es1 ~]$ qrsh -g grpname -l rt_F=1</span>
+<div class="codehilite"><pre><span></span><code><span class="err">[username@es1 ~]$ qrsh -g grpname -l rt_F=1 -l h_rt=1:00:00</span>
 <span class="err">[username@g0001 ~]$ hostname</span>
 <span class="err">g0001.abci.local</span>
 </code></pre></div>

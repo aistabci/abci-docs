@@ -192,10 +192,7 @@ regular ID-&gt;<span class="s2">&quot;ID&quot;</span>: <span class="s2">&quot;1a
 </code></pre></div>
 
 
-<div class="admonition caution">
-<p class="admonition-title">Caution</p>
-<p>Due to bug in ACL, do not use write permission for other groups. Check <a href="../../known-issues/">here</a> for support status.</p>
-</div>
+<p>When a user not belonging to your ABCI group puts objects on your bucket, your ABCI group is charged for them.</p>
 <h3 id="open-to-all-accounts-on-abci-cloud-storage">Open to All Accounts on ABCI Cloud Storage</h3>
 <p>In order to open a object to all accounts on ABCI Cloud Storage, specify <code>authenticated-read</code> for <code>--acl</code>.
 The following example opens the object 'dataset.txt' under the bucket 'gaa00000-bucket-2' to the public.</p>

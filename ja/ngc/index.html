@@ -60,15 +60,15 @@
 
 <h3 id="build-a-singularity-image">Singularityイメージの生成</h3>
 <p>インタラクティブノード上でTensorFlowのSingularityイメージを生成します。</p>
-<div class="codehilite"><pre><span></span><code><span class="err">[username@es1 ~] $ module load singularity/2.6.1</span>
-<span class="err">[username@es1 ~] $ singularity pull docker://nvcr.io/nvidia/tensorflow:19.06-py2</span>
+<div class="codehilite"><pre><span></span><code><span class="err">[username@es1 ~]$ module load singularity/2.6.1</span>
+<span class="err">[username@es1 ~]$ singularity pull docker://nvcr.io/nvidia/tensorflow:19.06-py2</span>
 </code></pre></div>
 
 
 <p><code>tensorflow-19.06-py2.simg</code>という名前のイメージファイルが生成されます。</p>
 <h3 id="run-a-singularity-image">Singularityイメージの実行</h3>
 <p>1ノード占有でインタラクティブジョブを起動し、サンプルプログラム cnn_mnist.py を実行します。</p>
-<div class="codehilite"><pre><span></span><code><span class="err">[username@es1 ~]$ qrsh -g grpname -l rt_F=1</span>
+<div class="codehilite"><pre><span></span><code><span class="err">[username@es1 ~]$ qrsh -g grpname -l rt_F=1 -l h_rt=1:00:00</span>
 <span class="err">[username@g0001 ~]$ module load singularity/2.6.1</span>
 <span class="err">[username@g0001 ~]$ wget https://raw.githubusercontent.com/tensorflow/tensorflow/v1.13.1/tensorflow/examples/tutorials/layers/cnn_mnist.py</span>
 <span class="err">[username@g0001 ~]$ singularity run --nv tensorflow-19.06-py2.simg python cnn_mnist.py</span>
@@ -122,7 +122,7 @@ singularity run --nv tensorflow-19.06-py2.simg python cnn_mnist.py
 <p><code>openmpi/3.1.3</code> を使うのが適当のようです。少なくともメジャーバージョンが一致している必要があります。</p>
 <h3 id="run-a-singularity-image-with-mpi">SingularityイメージのMPI実行</h3>
 <p>2ノード占有でインタラクティブジョブを起動し、必要なモジュールを読み込みます。</p>
-<div class="codehilite"><pre><span></span><code><span class="err">[username@es1 ~]$ qrsh -g grpname -l rt_F=2</span>
+<div class="codehilite"><pre><span></span><code><span class="err">[username@es1 ~]$ qrsh -g grpname -l rt_F=2 -l h_rt=1:00:00</span>
 <span class="err">[username@g0001 ~]$ module load singularity/2.6.1 openmpi/3.1.3</span>
 </code></pre></div>
 
@@ -191,17 +191,17 @@ mpirun -np <span class="m">8</span> -npernode <span class="m">4</span> singulari
 <li><a href="https://docs.nvidia.com/ngc/ngc-getting-started-guide/index.html#generating-api-key">Generating Your NGC API Key</a></li>
 </ul>
 <p>インタラクティブノード上でSingularityイメージを生成します。Dockerイメージのダウンロードには、環境変数<code>SINGULARITY_DOCKER_USERNAME</code>, <code>SINGULARITY_DOCKER_PASSWORD</code>の設定が必要です。</p>
-<div class="codehilite"><pre><span></span><code><span class="err">[username@es1 ~] $ module load singularity/2.6.1</span>
-<span class="err">[username@es1 ~] $ export SINGULARITY_DOCKER_USERNAME=&#39;$oauthtoken&#39;</span>
-<span class="err">[username@es1 ~] $ export SINGULARITY_DOCKER_PASSWORD=&lt;NGC API Key&gt;</span>
-<span class="err">[username@es1 ~] $ singularity pull docker://nvcr.io/partners/chainer:4.0.0b1</span>
+<div class="codehilite"><pre><span></span><code><span class="err">[username@es1 ~]$ module load singularity/2.6.1</span>
+<span class="err">[username@es1 ~]$ export SINGULARITY_DOCKER_USERNAME=&#39;$oauthtoken&#39;</span>
+<span class="err">[username@es1 ~]$ export SINGULARITY_DOCKER_PASSWORD=&lt;NGC API Key&gt;</span>
+<span class="err">[username@es1 ~]$ singularity pull docker://nvcr.io/partners/chainer:4.0.0b1</span>
 </code></pre></div>
 
 
 <p><code>chainer-4.0.0b1.simg</code>という名前のイメージファイルが生成されます。</p>
 <h3 id="run-a-singularity-image_1">Singularityイメージの実行</h3>
 <p>通常のSingularityイメージと同じ手順で実行できます。</p>
-<div class="codehilite"><pre><span></span><code><span class="err">[username@es1 ~] $ qrsh -g grpname -l rt_G.small=1</span>
+<div class="codehilite"><pre><span></span><code><span class="err">[username@es1 ~]$ qrsh -g grpname -l rt_G.small=1 -l h_rt=1:00:00</span>
 <span class="err">[username@g0001 ~]$ module load singularity/2.6.1</span>
 <span class="err">[username@g0001 ~]$ wget https://raw.githubusercontent.com/chainer/chainer/v4.0.0b1/examples/mnist/train_mnist.py</span>
 <span class="err">[username@g0001 ~]$ singularity exec --nv chainer-4.0.0b1.simg python train_mnist.py -g 0</span>

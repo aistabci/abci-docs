@@ -28,7 +28,7 @@
 </ul>
 <h3 id="installation">導入方法</h3>
 <p><a href="/06/#venv" target="python_venv">venv</a>モジュールでPython仮想環境を作成し、作成したPython仮想環境へPyTorchを<a href="/06/#pip" target="pip">pip</a>で導入する手順です。</p>
-<div class="codehilite"><pre><span></span><code><span class="err">[username@es1 ~]$ qrsh -g grpname -l rt_G.small=1</span>
+<div class="codehilite"><pre><span></span><code><span class="err">[username@es1 ~]$ qrsh -g grpname -l rt_G.small=1 -l h_rt=1:00:00</span>
 <span class="err">[username@g0001 ~]$ module load python/3.6/3.6.5 cuda/10.1/10.1.243 cudnn/7.6/7.6.5</span>
 <span class="err">[username@g0001 ~]$ python3 -m venv ~/venv/pytorch</span>
 <span class="err">[username@g0001 ~]$ source ~/venv/pytorch/bin/activate</span>
@@ -46,7 +46,7 @@
 <h3 id="run">実行方法</h3>
 <p>PyTorchサンプルプログラム <code>main.py</code> 実行方法をインタラクティブジョブとバッチジョブそれぞれの場合で示します。</p>
 <p><strong>インタラクティブジョブとして実行</strong></p>
-<div class="codehilite"><pre><span></span><code><span class="err">[username@es1 ~]$ qrsh -g grpname -l rt_G.small=1</span>
+<div class="codehilite"><pre><span></span><code><span class="err">[username@es1 ~]$ qrsh -g grpname -l rt_G.small=1 -l h_rt=1:00:00</span>
 <span class="err">[username@g0001 ~]$ module load python/3.6/3.6.5 cuda/10.1/10.1.243 cudnn/7.6/7.6.5</span>
 <span class="err">[username@g0001 ~]$ source ~/venv/pytorch/bin/activate</span>
 <span class="err">(pytorch) [username@g0001 ~]$ git clone https://github.com/pytorch/examples.git</span>
@@ -100,7 +100,7 @@ deactivate
 </ul>
 <h3 id="installation-with-horovod">導入方法</h3>
 <p><a href="/06/#venv" target="python_venv">venv</a>モジュールでPython仮想環境を作成し、作成したPython仮想環境へPyTorchとHorovodを<a href="/06/#pip" target="pip">pip</a>で導入する手順です。</p>
-<div class="codehilite"><pre><span></span><code><span class="err">[username@es1 ~]$ qrsh -g grpname -l rt_G.small=1</span>
+<div class="codehilite"><pre><span></span><code><span class="err">[username@es1 ~]$ qrsh -g grpname -l rt_G.small=1 -l h_rt=1:00:00</span>
 <span class="err">[username@g0001 ~]$ module load python/3.6/3.6.5 cuda/10.1/10.1.243 cudnn/7.6/7.6.5 nccl/2.5/2.5.6-1 openmpi/2.1.6 gcc/7.4.0</span>
 <span class="err">[username@g0001 ~]$ python3 -m venv ~/venv/pytorch+horovod</span>
 <span class="err">[username@g0001 ~]$ source ~/venv/pytorch+horovod/bin/activate</span>
@@ -120,7 +120,7 @@ deactivate
 <p>Horovodを利用するPyTorchサンプルプログラム <code>pytorch.py</code> で分散学習する方法をインタラクティブジョブとバッチジョブそれぞれの場合で示します。</p>
 <p><strong>インタラクティブジョブとして実行</strong></p>
 <p>この例では、インタラクティブノードの4つのGPUを利用して分散学習します。</p>
-<div class="codehilite"><pre><span></span><code><span class="err">[username@es1 ~]$ qrsh -g grpname -l rt_G.large=1</span>
+<div class="codehilite"><pre><span></span><code><span class="err">[username@es1 ~]$ qrsh -g grpname -l rt_G.large=1 -l h_rt=1:00:00</span>
 <span class="err">[username@g0001 ~]$ module load python/3.6/3.6.5 cuda/10.1/10.1.243 cudnn/7.6/7.6.5 nccl/2.5/2.5.6-1 openmpi/2.1.6 gcc/7.4.0</span>
 <span class="err">[username@g0001 ~]$ source ~/venv/pytorch+horovod/bin/activate</span>
 <span class="err">(pytorch+horovod) [username@g0001 ~]$ git clone -b v0.18.2 https://github.com/horovod/horovod.git</span>

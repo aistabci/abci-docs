@@ -34,7 +34,7 @@
 <p>Singularityの実行例）</p>
 <p>以下の例はDocker Hubで公開されているcaffe2のコンテナイメージを使用しSingularityを実行しています。
 <code>singularity run</code>コマンドにより起動したSingularityコンテナ上で<code>python sample.py</code>が実行されます。</p>
-<div class="codehilite"><pre><span></span><code><span class="err">[username@es1 ~]$ qrsh -l rt_F=1</span>
+<div class="codehilite"><pre><span></span><code><span class="err">[username@es1 ~]$ qrsh -l rt_F=1 -l h_rt=1:00:00</span>
 <span class="err">[username@g0001~]$ module load singularity/2.6.1</span>
 <span class="err">[username@g0001~]$ singularity run --nv docker://caffe2ai/caffe2:latest</span>
 <span class="err">Docker image path: index.docker.io/caffe2ai/caffe2:latest</span>

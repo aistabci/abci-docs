@@ -82,28 +82,28 @@ startxfce4 <span class="p">&amp;</span>
 <ul>
 <li>（ログインしていない場合は）ABCIにログインします。</li>
 </ul>
-<div class="codehilite"><pre><span></span><code><span class="err">[user@localmachine] $ ssh -J %r@as.abci.ai username@es</span>
+<div class="codehilite"><pre><span></span><code><span class="err">[user@localmachine]$ ssh -J %r@as.abci.ai username@es</span>
 </code></pre></div>
 
 
 <ul>
 <li>On-demand、ノード専有で1ノード確保してログインします。</li>
 </ul>
-<div class="codehilite"><pre><span></span><code><span class="err">[username@g0001 ~] $ qrsh -g grpname -l rt_F=1</span>
+<div class="codehilite"><pre><span></span><code><span class="err">[username@g0001 ~]$ qrsh -g grpname -l rt_F=1 -l h_rt=1:00:00</span>
 </code></pre></div>
 
 
 <ul>
 <li>vncserverを起動します。</li>
 </ul>
-<div class="codehilite"><pre><span></span><code><span class="o">[</span><span class="n">username@g0001 ~</span><span class="o">]</span><span class="w"> </span><span class="n">vncserver</span><span class="w"></span>
+<div class="codehilite"><pre><span></span><code><span class="o">[</span><span class="n">username@g0001 ~</span><span class="o">]</span><span class="err">$</span><span class="w"> </span><span class="n">vncserver</span><span class="w"></span>
 
 <span class="k">New</span><span class="w"> </span><span class="s1">&#39;g0001.abci.local:1 (username)&#39;</span><span class="w"> </span><span class="n">desktop</span><span class="w"> </span><span class="k">is</span><span class="w"> </span><span class="n">g0001</span><span class="p">.</span><span class="n">abci</span><span class="p">.</span><span class="k">local</span><span class="err">:</span><span class="mi">1</span><span class="w"></span>
 
 <span class="n">Starting</span><span class="w"> </span><span class="n">applications</span><span class="w"> </span><span class="n">specified</span><span class="w"> </span><span class="ow">in</span><span class="w"> </span><span class="o">/</span><span class="n">home</span><span class="o">/</span><span class="n">username</span><span class="o">/</span><span class="p">.</span><span class="n">vnc</span><span class="o">/</span><span class="n">xstartup</span><span class="w"></span>
 <span class="nf">Log</span><span class="w"> </span><span class="k">file</span><span class="w"> </span><span class="k">is</span><span class="w"> </span><span class="o">/</span><span class="n">home</span><span class="o">/</span><span class="n">username</span><span class="o">/</span><span class="p">.</span><span class="n">vnc</span><span class="o">/</span><span class="n">g0001</span><span class="p">.</span><span class="n">abci</span><span class="p">.</span><span class="k">local</span><span class="err">:</span><span class="mf">1.</span><span class="nf">log</span><span class="w"></span>
 
-<span class="o">[</span><span class="n">username@g0001 ~</span><span class="o">]</span><span class="w"></span>
+<span class="o">[</span><span class="n">username@g0001 ~</span><span class="o">]</span><span class="err">$</span><span class="w"></span>
 </code></pre></div>
 
 

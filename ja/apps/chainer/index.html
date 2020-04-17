@@ -88,7 +88,7 @@
 <h2 id="using-chainer">Chainer の利用</h2>
 <h3 id="installation">導入方法</h3>
 <p>計算ノードを一台占有し、Python仮想環境<code>$HOME/venv/chainer</code>を作成し、<code>pip</code>で<code>chainer</code>と<code>cupy-cuda</code>をインストールします。</p>
-<div class="codehilite"><pre><span></span><code><span class="err">[username@es1 ~]$ qrsh -g grpname -l rt_F=1</span>
+<div class="codehilite"><pre><span></span><code><span class="err">[username@es1 ~]$ qrsh -g grpname -l rt_F=1 -l h_rt=1:00:00</span>
 <span class="err">[username@g0001 ~]$ module load python/3.6/3.6.5</span>
 <span class="err">[username@g0001 ~]$ module load cuda/10.0/10.0.130.1</span>
 <span class="err">[username@g0001 ~]$ module load cudnn/7.6/7.6.4</span>
@@ -103,7 +103,7 @@
 
 
 <p>次回以降は、以下のようにモジュールの読み込みとPython環境のアクティベートだけでChainerを利用できます。</p>
-<div class="codehilite"><pre><span></span><code><span class="err">[username@es1 ~]$ qrsh -g grpname -l rt_F=1</span>
+<div class="codehilite"><pre><span></span><code><span class="err">[username@es1 ~]$ qrsh -g grpname -l rt_F=1 -l h_rt=1:00:00</span>
 <span class="err">[username@g0001 ~]$ module load python/3.6/3.6.5</span>
 <span class="err">[username@g0001 ~]$ module load cuda/10.0/10.0.130.1</span>
 <span class="err">[username@g0001 ~]$ module load cudnn/7.6/7.6.4</span>
@@ -121,7 +121,7 @@
 
 
 <p>計算ノードを一台占有し、導入したChainerの利用環境を設定し、<code>train_mnist.py</code>を実行します。</p>
-<div class="codehilite"><pre><span></span><code><span class="err">[username@es1 ~]$ qrsh -g grpname -l rt_F=1</span>
+<div class="codehilite"><pre><span></span><code><span class="err">[username@es1 ~]$ qrsh -g grpname -l rt_F=1 -l h_rt=1:00:00</span>
 <span class="err">[username@g0001 ~]$ module load python/3.6/3.6.5</span>
 <span class="err">[username@g0001 ~]$ module load cuda/10.0/10.0.130.1</span>
 <span class="err">[username@g0001 ~]$ module load cudnn/7.6/7.6.4</span>
