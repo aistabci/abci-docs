@@ -56,26 +56,26 @@ geometry=2000x1200
 * （ログインしていない場合は）ABCIにログインします。
 
 ```
-[user@localmachine] $ ssh -J %r@as.abci.ai username@es
+[user@localmachine]$ ssh -J %r@as.abci.ai username@es
 ```
 
 * On-demand、ノード専有で1ノード確保してログインします。
 
 ```
-[username@g0001 ~] $ qrsh -g grpname -l rt_F=1
+[username@g0001 ~]$ qrsh -g grpname -l rt_F=1 -l h_rt=1:00:00
 ```
 
 * vncserverを起動します。
 
 ```
-[username@g0001 ~] vncserver
+[username@g0001 ~]$ vncserver
 
 New 'g0001.abci.local:1 (username)' desktop is g0001.abci.local:1
 
 Starting applications specified in /home/username/.vnc/xstartup
 Log file is /home/username/.vnc/g0001.abci.local:1.log
 
-[username@g0001 ~]
+[username@g0001 ~]$
 ```
 
 g0001.abci.local:1 が起動したVNCサーバのディスプレイ名です。このVNCサーバには5901というポート番号が割り当てられます。:2の場合は5902、:3の場合は5903、とディスプレイ番号に5900を加えたポートが割り当てられます。

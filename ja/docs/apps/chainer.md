@@ -34,7 +34,7 @@ Chainerのバージョンは以下の通りです。
 計算ノードを一台占有し、Python仮想環境`$HOME/venv/chainer`を作成し、`pip`で`chainer`と`cupy-cuda`をインストールします。
 
 ```
-[username@es1 ~]$ qrsh -g grpname -l rt_F=1
+[username@es1 ~]$ qrsh -g grpname -l rt_F=1 -l h_rt=1:00:00
 [username@g0001 ~]$ module load python/3.6/3.6.5
 [username@g0001 ~]$ module load cuda/10.0/10.0.130.1
 [username@g0001 ~]$ module load cudnn/7.6/7.6.4
@@ -50,7 +50,7 @@ Chainerのバージョンは以下の通りです。
 次回以降は、以下のようにモジュールの読み込みとPython環境のアクティベートだけでChainerを利用できます。
 
 ```
-[username@es1 ~]$ qrsh -g grpname -l rt_F=1
+[username@es1 ~]$ qrsh -g grpname -l rt_F=1 -l h_rt=1:00:00
 [username@g0001 ~]$ module load python/3.6/3.6.5
 [username@g0001 ~]$ module load cuda/10.0/10.0.130.1
 [username@g0001 ~]$ module load cudnn/7.6/7.6.4
@@ -72,7 +72,7 @@ Chainerのバージョンは以下の通りです。
 計算ノードを一台占有し、導入したChainerの利用環境を設定し、`train_mnist.py`を実行します。
 
 ```
-[username@es1 ~]$ qrsh -g grpname -l rt_F=1
+[username@es1 ~]$ qrsh -g grpname -l rt_F=1 -l h_rt=1:00:00
 [username@g0001 ~]$ module load python/3.6/3.6.5
 [username@g0001 ~]$ module load cuda/10.0/10.0.130.1
 [username@g0001 ~]$ module load cudnn/7.6/7.6.4

@@ -11,7 +11,7 @@ Jupyter Notebookは、コードの記述とその結果の取得を、ブラウ�
 計算ノードを一台占有し、Python仮想環境を作成し、`pip`で`tensorflow-gpu`と`jupyter`をインストールします。
 
 ```
-[username@es1 ~]$ qrsh -g grpname -l rt_F=1
+[username@es1 ~]$ qrsh -g grpname -l rt_F=1 -l h_rt=1:00:00
 [username@g0001 ~]$ module load python/3.6/3.6.5 cuda/10.0/10.0.130.1 cudnn/7.4/7.4.2
 [username@g0001 ~]$ python3 -m venv ~/jupyter_env
 [username@g0001 ~]$ source ~/jupyter_env/bin/activate
@@ -24,7 +24,7 @@ Jupyter Notebookは、コードの記述とその結果の取得を、ブラウ�
 次回以降は、以下のようにモジュールの読み込みと`~/jupyter_env`のアクティベートだけで済みます。
 
 ```
-[username@es1 ~]$ qrsh -g grpname -l rt_F=1
+[username@es1 ~]$ qrsh -g grpname -l rt_F=1 -l h_rt=1:00:00
 [username@g0001 ~]$ module load python/3.6/3.6.5 cuda/10.0/10.0.130.1 cudnn/7.4/7.4.2
 [username@g0001 ~]$ source ~/jupyter_env/bin/activate
 ```
@@ -124,7 +124,7 @@ Done. Container is at: ./tensorflow-19.07-py3.simg
 計算ノードを一台占有します。あとで必要となるため、計算ノードのホスト名を確認しておきます。
 
 ```
-[username@es1 ~]$ qrsh -g grpname -l rt_F=1
+[username@es1 ~]$ qrsh -g grpname -l rt_F=1 -l h_rt=1:00:00
 [username@g0001 ~]$ hostname
 g0001.abci.local
 ```

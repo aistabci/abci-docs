@@ -65,8 +65,8 @@ docker://nvcr.io/nvidia/tensorflow:19.06-py2
 Build a Singularity image for TensorFlow on the interactive node.
 
 ```
-[username@es1 ~] $ module load singularity/2.6.1
-[username@es1 ~] $ singularity pull docker://nvcr.io/nvidia/tensorflow:19.06-py2
+[username@es1 ~]$ module load singularity/2.6.1
+[username@es1 ~]$ singularity pull docker://nvcr.io/nvidia/tensorflow:19.06-py2
 ```
 
 An image named ``tensorflow-19.06-py2.simg`` will be generated.
@@ -76,7 +76,7 @@ An image named ``tensorflow-19.06-py2.simg`` will be generated.
 Start an interactive job with one full-node and run a sample program ``cnn_mnist.py``.
 
 ```
-[username@es1 ~]$ qrsh -g grpname -l rt_F=1
+[username@es1 ~]$ qrsh -g grpname -l rt_F=1 -l h_rt=1:00:00
 [username@g0001 ~]$ module load singularity/2.6.1
 [username@g0001 ~]$ wget https://raw.githubusercontent.com/tensorflow/tensorflow/v1.13.1/tensorflow/examples/tutorials/layers/cnn_mnist.py
 [username@g0001 ~]$ singularity run --nv tensorflow-19.06-py2.simg python cnn_mnist.py
@@ -132,7 +132,7 @@ openmpi/2.1.3          openmpi/2.1.6(default) openmpi/3.1.0          openmpi/3.1
 Start an interative job with two full-nodes, and load required environment modules.
 
 ```
-[username@es1 ~]$ qrsh -g grpname -l rt_F=2
+[username@es1 ~]$ qrsh -g grpname -l rt_F=2 -l h_rt=1:00:00
 [username@g0001 ~]$ module load singularity/2.6.1 openmpi/3.1.3
 ```
 
@@ -209,10 +209,10 @@ Build a Singularity image for Chainer on the interactive node.
 In this case, you need to set two environment variables, ``SINGULARITY_DOCKER_USERNAME`` and ``SINGULARITY_DOCKER_PASSWORD`` for downloading images from NGC container registry.
 
 ```
-[username@es1 ~] $ module load singularity/2.6.1
-[username@es1 ~] $ export SINGULARITY_DOCKER_USERNAME='$oauthtoken'
-[username@es1 ~] $ export SINGULARITY_DOCKER_PASSWORD=<NGC API Key>
-[username@es1 ~] $ singularity pull docker://nvcr.io/partners/chainer:4.0.0b1
+[username@es1 ~]$ module load singularity/2.6.1
+[username@es1 ~]$ export SINGULARITY_DOCKER_USERNAME='$oauthtoken'
+[username@es1 ~]$ export SINGULARITY_DOCKER_PASSWORD=<NGC API Key>
+[username@es1 ~]$ singularity pull docker://nvcr.io/partners/chainer:4.0.0b1
 ```
 
 An image named ``chainer-4.0.0b1.simg`` will be generated.
@@ -222,7 +222,7 @@ An image named ``chainer-4.0.0b1.simg`` will be generated.
 You can run the resulted image, just as same as freely available images.
 
 ```
-[username@es1 ~] $ qrsh -g grpname -l rt_G.small=1
+[username@es1 ~]$ qrsh -g grpname -l rt_G.small=1 -l h_rt=1:00:00
 [username@g0001 ~]$ module load singularity/2.6.1
 [username@g0001 ~]$ wget https://raw.githubusercontent.com/chainer/chainer/v4.0.0b1/examples/mnist/train_mnist.py
 [username@g0001 ~]$ singularity exec --nv chainer-4.0.0b1.simg python train_mnist.py -g 0
