@@ -1,5 +1,16 @@
 # System Updates
 
+## 2020-04-21
+
+### Update MVAPICH2-GDR 2.3.3
+
+MVAPICH2-GDR 2.3.3 for gcc 4.8.5 was updated to the fixed version about the following issue.
+
+- MPI_Allreduce provided by MVAPICH2-GDR may raise floating point exceptions
+
+On the other hand, MVAPICH2-GDR 2.3.3 for PGI was uninstalled.
+If you need MVAPICH2-GDR for PGI, please contact Customer Support.
+
 ## 2020-04-03
 
 | Add / Update / Delete | Software | Version | Previous version |
