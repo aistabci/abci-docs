@@ -1,5 +1,16 @@
 # システム更新履歴
 
+## 2020-04-21
+
+### MVAPICH2-GDR 2.3.3 の更新
+
+gcc 4.8.5 対応の MVAPICH2-GDR 2.3.3 を以下の既知の問題が修正されたバージョンに更新しました。
+
+- MVPICH2-GDR の MPI_Allreduce で floating point exception が発生する場合がある。
+
+また、PGI 対応の MVAPICH2-GDR 2.3.3 は提供を停止しました。
+PGI 版が必要の場合、ユーザーサポートまでご連絡ください。
+
 ## 2020-04-03
 
 | Add / Update / Delete | Software | Version | Previous version |
