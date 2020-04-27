@@ -1378,9 +1378,240 @@
 [username@g0001 R-3.6.3]# make install 2>&1 | tee make_install.log
 ```
 
+## GDRcopy
+
+### GDRcopy 2.0 (for GCC 4.8.5)
+
+#### Kernel Module
+
+```
+[username@g0001 ~]$ wget https://github.com/NVIDIA/gdrcopy/archive/v2.0.tar.gz
+[username@g0001 ~]$ tar zxf v2.0.tar.gz
+[username@g0001 ~]$ cd gdrcopy-2.0/packages
+[username@g0001 packages]$ module load gcc/4.8.5
+[username@g0001 packages]$ module load cuda/10.2/10.2.89
+[username@g0001 packages]$ CUDA=$CUDA_HOME ./build-rpm-packages.sh 2>&1 | tee build-rpm-packages.log
+[username@g0001 packages]$ su
+[root@g0001 packages]# rpm -ivh gdrcopy-kmod-2.0-3.x86_64.rpm
+```
+
+#### CUDA 8.0.61.2
+
+```
+[username@g0001 ~]$ INSTALL_DIR=/apps/gdrcopy/2.0/gcc4.8.5_cuda8.0.61.2
+[username@g0001 ~]$ wget https://github.com/NVIDIA/gdrcopy/archive/v2.0.tar.gz
+[username@g0001 ~]$ tar zxf v2.0.tar.gz
+[username@g0001 ~]$ cd gdrcopy-2.0
+[username@g0001 gdrcopy-2.0]$ module load gcc/4.8.5
+[username@g0001 gdrcopy-2.0]$ module load cuda/8.0/8.0.61.2
+[username@g0001 gdrcopy-2.0]$ export CC=gcc
+[username@g0001 gdrcopy-2.0]$ make PREFIX=$INSTALL_DIR CUDA=$CUDA_HOME all 2>&1 | tee make_all.log
+[username@g0001 gdrcopy-2.0]$ su
+[root@g0001 gdrcopy-2.0]# make PREFIX=$PREFIX CUDA=$CUDA_HOME install 2>&1 | tee make_install.log
+```
+
+#### CUDA 9.0.176.4
+
+```
+[username@g0001 ~]$ INSTALL_DIR=/apps/gdrcopy/2.0/gcc4.8.5_cuda9.0.176.4
+[username@g0001 ~]$ wget https://github.com/NVIDIA/gdrcopy/archive/v2.0.tar.gz
+[username@g0001 ~]$ tar zxf v2.0.tar.gz
+[username@g0001 ~]$ cd gdrcopy-2.0
+[username@g0001 gdrcopy-2.0]$ module load gcc/4.8.5
+[username@g0001 gdrcopy-2.0]$ module load cuda/9.0/9.0.176.4
+[username@g0001 gdrcopy-2.0]$ export CC=gcc
+[username@g0001 gdrcopy-2.0]$ make PREFIX=$INSTALL_DIR CUDA=$CUDA_HOME all 2>&1 | tee make_all.log
+[username@g0001 gdrcopy-2.0]$ su
+[root@g0001 gdrcopy-2.0]# make PREFIX=$PREFIX CUDA=$CUDA_HOME install 2>&1 | tee make_install.log
+```
+
+#### CUDA 9.1.85.3
+
+```
+[username@g0001 ~]$ INSTALL_DIR=/apps/gdrcopy/2.0/gcc4.8.5_cuda9.1.85.3
+[username@g0001 ~]$ wget https://github.com/NVIDIA/gdrcopy/archive/v2.0.tar.gz
+[username@g0001 ~]$ tar zxf v2.0.tar.gz
+[username@g0001 ~]$ cd gdrcopy-2.0
+[username@g0001 gdrcopy-2.0]$ module load gcc/4.8.5
+[username@g0001 gdrcopy-2.0]$ module load cuda/9.1/9.1.85.3
+[username@g0001 gdrcopy-2.0]$ export CC=gcc
+[username@g0001 gdrcopy-2.0]$ make PREFIX=$INSTALL_DIR CUDA=$CUDA_HOME all 2>&1 | tee make_all.log
+[username@g0001 gdrcopy-2.0]$ su
+[root@g0001 gdrcopy-2.0]# make PREFIX=$PREFIX CUDA=$CUDA_HOME install 2>&1 | tee make_install.log
+```
+
+#### CUDA 9.2.148.1
+
+```
+[username@g0001 ~]$ INSTALL_DIR=/apps/gdrcopy/2.0/gcc4.8.5_cuda9.2.148.1
+[username@g0001 ~]$ wget https://github.com/NVIDIA/gdrcopy/archive/v2.0.tar.gz
+[username@g0001 ~]$ tar zxf v2.0.tar.gz
+[username@g0001 ~]$ cd gdrcopy-2.0
+[username@g0001 gdrcopy-2.0]$ module load gcc/4.8.5
+[username@g0001 gdrcopy-2.0]$ module load cuda/9.2/9.2.148.1
+[username@g0001 gdrcopy-2.0]$ export CC=gcc
+[username@g0001 gdrcopy-2.0]$ make PREFIX=$INSTALL_DIR CUDA=$CUDA_HOME all 2>&1 | tee make_all.log
+[username@g0001 gdrcopy-2.0]$ su
+[root@g0001 gdrcopy-2.0]# make PREFIX=$PREFIX CUDA=$CUDA_HOME install 2>&1 | tee make_install.log
+```
+
+#### CUDA 10.0.130.1
+
+```
+[username@g0001 ~]$ INSTALL_DIR=/apps/gdrcopy/2.0/gcc4.8.5_cuda10.0.130.1
+[username@g0001 ~]$ wget https://github.com/NVIDIA/gdrcopy/archive/v2.0.tar.gz
+[username@g0001 ~]$ tar zxf v2.0.tar.gz
+[username@g0001 ~]$ cd gdrcopy-2.0
+[username@g0001 gdrcopy-2.0]$ module load gcc/4.8.5
+[username@g0001 gdrcopy-2.0]$ module load cuda/10.0/10.0.130.1
+[username@g0001 gdrcopy-2.0]$ export CC=gcc
+[username@g0001 gdrcopy-2.0]$ make PREFIX=$INSTALL_DIR CUDA=$CUDA_HOME all 2>&1 | tee make_all.log
+[username@g0001 gdrcopy-2.0]$ su
+[root@g0001 gdrcopy-2.0]# make PREFIX=$PREFIX CUDA=$CUDA_HOME install 2>&1 | tee make_install.log
+```
+
+#### CUDA 10.1.243
+
+```
+[username@g0001 ~]$ INSTALL_DIR=/apps/gdrcopy/2.0/gcc4.8.5_cuda10.1.243
+[username@g0001 ~]$ wget https://github.com/NVIDIA/gdrcopy/archive/v2.0.tar.gz
+[username@g0001 ~]$ tar zxf v2.0.tar.gz
+[username@g0001 ~]$ cd gdrcopy-2.0
+[username@g0001 gdrcopy-2.0]$ module load gcc/4.8.5
+[username@g0001 gdrcopy-2.0]$ module load cuda/10.1/10.1.243
+[username@g0001 gdrcopy-2.0]$ export CC=gcc
+[username@g0001 gdrcopy-2.0]$ make PREFIX=$INSTALL_DIR CUDA=$CUDA_HOME all 2>&1 | tee make_all.log
+[username@g0001 gdrcopy-2.0]$ su
+[root@g0001 gdrcopy-2.0]# make PREFIX=$PREFIX CUDA=$CUDA_HOME install 2>&1 | tee make_install.log
+```
+
+#### CUDA 10.2.89
+
+```
+[username@g0001 ~]$ INSTALL_DIR=/apps/gdrcopy/2.0/gcc4.8.5_cuda10.2.89
+[username@g0001 ~]$ wget https://github.com/NVIDIA/gdrcopy/archive/v2.0.tar.gz
+[username@g0001 ~]$ tar zxf v2.0.tar.gz
+[username@g0001 ~]$ cd gdrcopy-2.0
+[username@g0001 gdrcopy-2.0]$ module load gcc/4.8.5
+[username@g0001 gdrcopy-2.0]$ module load cuda/10.2/10.2.89
+[username@g0001 gdrcopy-2.0]$ export CC=gcc
+[username@g0001 gdrcopy-2.0]$ make PREFIX=$INSTALL_DIR CUDA=$CUDA_HOME all 2>&1 | tee make_all.log
+[username@g0001 gdrcopy-2.0]$ su
+[root@g0001 gdrcopy-2.0]# make PREFIX=$PREFIX CUDA=$CUDA_HOME install 2>&1 | tee make_install.log
+```
+
+### GDRcopy 2.0 (for GCC 7.4.0)
+
+#### CUDA 8.0.61.2
+
+```
+[username@g0001 ~]$ INSTALL_DIR=/apps/gdrcopy/2.0/gcc7.4.0_cuda8.0.61.2
+[username@g0001 ~]$ wget https://github.com/NVIDIA/gdrcopy/archive/v2.0.tar.gz
+[username@g0001 ~]$ tar zxf v2.0.tar.gz
+[username@g0001 ~]$ cd gdrcopy-2.0
+[username@g0001 gdrcopy-2.0]$ module load gcc/7.4.0
+[username@g0001 gdrcopy-2.0]$ module load cuda/8.0/8.0.61.2
+[username@g0001 gdrcopy-2.0]$ export CC=gcc
+[username@g0001 gdrcopy-2.0]$ make PREFIX=$INSTALL_DIR CUDA=$CUDA_HOME all 2>&1 | tee make_all.log
+[username@g0001 gdrcopy-2.0]$ su
+[root@g0001 gdrcopy-2.0]# make PREFIX=$PREFIX CUDA=$CUDA_HOME install 2>&1 | tee make_install.log
+```
+
+#### CUDA 9.0.176.4
+
+```
+[username@g0001 ~]$ INSTALL_DIR=/apps/gdrcopy/2.0/gcc7.4.0_cuda9.0.176.4
+[username@g0001 ~]$ wget https://github.com/NVIDIA/gdrcopy/archive/v2.0.tar.gz
+[username@g0001 ~]$ tar zxf v2.0.tar.gz
+[username@g0001 ~]$ cd gdrcopy-2.0
+[username@g0001 gdrcopy-2.0]$ module load gcc/7.4.0
+[username@g0001 gdrcopy-2.0]$ module load cuda/9.0/9.0.176.4
+[username@g0001 gdrcopy-2.0]$ export CC=gcc
+[username@g0001 gdrcopy-2.0]$ make PREFIX=$INSTALL_DIR CUDA=$CUDA_HOME all 2>&1 | tee make_all.log
+[username@g0001 gdrcopy-2.0]$ su
+[root@g0001 gdrcopy-2.0]# make PREFIX=$PREFIX CUDA=$CUDA_HOME install 2>&1 | tee make_install.log
+```
+
+#### CUDA 9.1.85.3
+
+```
+[username@g0001 ~]$ INSTALL_DIR=/apps/gdrcopy/2.0/gcc7.4.0_cuda9.1.85.3
+[username@g0001 ~]$ wget https://github.com/NVIDIA/gdrcopy/archive/v2.0.tar.gz
+[username@g0001 ~]$ tar zxf v2.0.tar.gz
+[username@g0001 ~]$ cd gdrcopy-2.0
+[username@g0001 gdrcopy-2.0]$ module load gcc/7.4.0
+[username@g0001 gdrcopy-2.0]$ module load cuda/9.1/9.1.85.3
+[username@g0001 gdrcopy-2.0]$ export CC=gcc
+[username@g0001 gdrcopy-2.0]$ make PREFIX=$INSTALL_DIR CUDA=$CUDA_HOME all 2>&1 | tee make_all.log
+[username@g0001 gdrcopy-2.0]$ su
+[root@g0001 gdrcopy-2.0]# make PREFIX=$PREFIX CUDA=$CUDA_HOME install 2>&1 | tee make_install.log
+```
+
+#### CUDA 9.2.148.1
+
+```
+[username@g0001 ~]$ INSTALL_DIR=/apps/gdrcopy/2.0/gcc7.4.0_cuda9.2.148.1
+[username@g0001 ~]$ wget https://github.com/NVIDIA/gdrcopy/archive/v2.0.tar.gz
+[username@g0001 ~]$ tar zxf v2.0.tar.gz
+[username@g0001 ~]$ cd gdrcopy-2.0
+[username@g0001 gdrcopy-2.0]$ module load gcc/7.4.0
+[username@g0001 gdrcopy-2.0]$ module load cuda/9.2/9.2.148.1
+[username@g0001 gdrcopy-2.0]$ export CC=gcc
+[username@g0001 gdrcopy-2.0]$ make PREFIX=$INSTALL_DIR CUDA=$CUDA_HOME all 2>&1 | tee make_all.log
+[username@g0001 gdrcopy-2.0]$ su
+[root@g0001 gdrcopy-2.0]# make PREFIX=$PREFIX CUDA=$CUDA_HOME install 2>&1 | tee make_install.log
+```
+
+#### CUDA 10.0.130.1
+
+```
+[username@g0001 ~]$ INSTALL_DIR=/apps/gdrcopy/2.0/gcc7.4.0_cuda10.0.130.1
+[username@g0001 ~]$ wget https://github.com/NVIDIA/gdrcopy/archive/v2.0.tar.gz
+[username@g0001 ~]$ tar zxf v2.0.tar.gz
+[username@g0001 ~]$ cd gdrcopy-2.0
+[username@g0001 gdrcopy-2.0]$ module load gcc/7.4.0
+[username@g0001 gdrcopy-2.0]$ module load cuda/10.0/10.0.130.1
+[username@g0001 gdrcopy-2.0]$ export CC=gcc
+[username@g0001 gdrcopy-2.0]$ make PREFIX=$INSTALL_DIR CUDA=$CUDA_HOME all 2>&1 | tee make_all.log
+[username@g0001 gdrcopy-2.0]$ su
+[root@g0001 gdrcopy-2.0]# make PREFIX=$PREFIX CUDA=$CUDA_HOME install 2>&1 | tee make_install.log
+```
+
+#### CUDA 10.1.243
+
+```
+[username@g0001 ~]$ INSTALL_DIR=/apps/gdrcopy/2.0/gcc7.4.0_cuda10.1.243
+[username@g0001 ~]$ wget https://github.com/NVIDIA/gdrcopy/archive/v2.0.tar.gz
+[username@g0001 ~]$ tar zxf v2.0.tar.gz
+[username@g0001 ~]$ cd gdrcopy-2.0
+[username@g0001 gdrcopy-2.0]$ module load gcc/7.4.0
+[username@g0001 gdrcopy-2.0]$ module load cuda/10.1/10.1.243
+[username@g0001 gdrcopy-2.0]$ export CC=gcc
+[username@g0001 gdrcopy-2.0]$ make PREFIX=$INSTALL_DIR CUDA=$CUDA_HOME all 2>&1 | tee make_all.log
+[username@g0001 gdrcopy-2.0]$ su
+[root@g0001 gdrcopy-2.0]# make PREFIX=$PREFIX CUDA=$CUDA_HOME install 2>&1 | tee make_install.log
+```
+
+#### CUDA 10.2.89
+
+```
+[username@g0001 ~]$ INSTALL_DIR=/apps/gdrcopy/2.0/gcc7.4.0_cuda10.2.89
+[username@g0001 ~]$ wget https://github.com/NVIDIA/gdrcopy/archive/v2.0.tar.gz
+[username@g0001 ~]$ tar zxf v2.0.tar.gz
+[username@g0001 ~]$ cd gdrcopy-2.0
+[username@g0001 gdrcopy-2.0]$ module load gcc/7.4.0
+[username@g0001 gdrcopy-2.0]$ module load cuda/10.2/10.2.89
+[username@g0001 gdrcopy-2.0]$ export CC=gcc
+[username@g0001 gdrcopy-2.0]$ make PREFIX=$INSTALL_DIR CUDA=$CUDA_HOME all 2>&1 | tee make_all.log
+[username@g0001 gdrcopy-2.0]$ su
+[root@g0001 gdrcopy-2.0]# make PREFIX=$PREFIX CUDA=$CUDA_HOME install 2>&1 | tee make_install.log
+```
+
 ## UCX
 
 ### UCX 1.7.0 (for GCC 4.8.5)
+
+#### w/o CUDA
 
 ```
 [username@g0001 ~]$ INSTALL_DIR=/apps/ucx/1.7.0/gcc4.8.5
@@ -1557,6 +1788,212 @@
 [username@g0001 ~]$ INSTALL_DIR=/apps/ucx/1.7.0/gcc4.8.5_cuda10.2.89_gdrcopy2.0
 [username@g0001 ~]$ wget https://github.com/openucx/ucx/releases/download/v1.7.0/ucx-1.7.0.tar.gz
 [username@g0001 ~]$ tar zxf ucx-1.7.0.tar.gz
+[username@g0001 ~]$ module load cuda/10.2/10.2.89
+[username@g0001 ~]$ module load gdrcopy/2.0
+[username@g0001 ~]$ cd ucx-1.7.0
+[username@g0001 ucx-1.7.0]$ ./configure \
+  --prefix=$INSTALL_DIR \
+  --with-cuda=$CUDA_HOME \
+  --with-gdrcopy=$GDRCOPY_PATH \
+  --enable-optimizations \
+  --disable-logging \
+  --disable-debug \
+  --disable-assertions \
+  --enable-mt \
+  --disable-params-check \
+  2>&1 | tee configure.log 2>&1
+[username@g0001 ucx-1.7.0]$ make -j8 2>&1 | tee make.log
+[username@g0001 ucx-1.7.0]$ su
+[root@g0001 ucx-1.7.0]# make install 2>&1 | tee make_install.log
+```
+
+### UCX 1.7.0 (for GCC 7.4.0)
+
+#### w/o CUDA
+
+```
+[username@g0001 ~]$ INSTALL_DIR=/apps/ucx/1.7.0/gcc7.4.0
+[username@g0001 ~]$ wget https://github.com/openucx/ucx/releases/download/v1.7.0/ucx-1.7.0.tar.gz
+[username@g0001 ~]$ tar zxf ucx-1.7.0.tar.gz
+[username@g0001 ~]$ module load gcc/7.4.0
+[username@g0001 ~]$ cd ucx-1.7.0
+[username@g0001 ucx-1.7.0]$ ./configure \
+  --prefix=$INSTALL_DIR \
+  --enable-optimizations \
+  --disable-logging \
+  --disable-debug \
+  --disable-assertions \
+  --enable-mt \
+  --disable-params-check \
+  2>&1 | tee configure.log 2>&1
+[username@g0001 ucx-1.7.0]$ make -j8 2>&1 | tee make.log
+[username@g0001 ucx-1.7.0]$ su
+[root@g0001 ucx-1.7.0]# make install 2>&1 | tee make_install.log
+```
+
+#### CUDA 8.0.61.2
+
+```
+[username@g0001 ~]$ INSTALL_DIR=/apps/ucx/1.7.0/gcc7.4.0_cuda8.0.61.2_gdrcopy2.0
+[username@g0001 ~]$ wget https://github.com/openucx/ucx/releases/download/v1.7.0/ucx-1.7.0.tar.gz
+[username@g0001 ~]$ tar zxf ucx-1.7.0.tar.gz
+[username@g0001 ~]$ module load gcc/7.4.0
+[username@g0001 ~]$ module load cuda/8.0/8.0.61.2
+[username@g0001 ~]$ module load gdrcopy/2.0
+[username@g0001 ~]$ cd ucx-1.7.0
+[username@g0001 ucx-1.7.0]$ ./configure \
+  --prefix=$INSTALL_DIR \
+  --with-cuda=$CUDA_HOME \
+  --with-gdrcopy=$GDRCOPY_PATH \
+  --enable-optimizations \
+  --disable-logging \
+  --disable-debug \
+  --disable-assertions \
+  --enable-mt \
+  --disable-params-check \
+  2>&1 | tee configure.log 2>&1
+[username@g0001 ucx-1.7.0]$ make -j8 2>&1 | tee make.log
+[username@g0001 ucx-1.7.0]$ su
+[root@g0001 ucx-1.7.0]# make install 2>&1 | tee make_install.log
+```
+
+#### CUDA 9.0.176.4
+
+```
+[username@g0001 ~]$ INSTALL_DIR=/apps/ucx/1.7.0/gcc7.4.0_cuda9.0.176.4_gdrcopy2.0
+[username@g0001 ~]$ wget https://github.com/openucx/ucx/releases/download/v1.7.0/ucx-1.7.0.tar.gz
+[username@g0001 ~]$ tar zxf ucx-1.7.0.tar.gz
+[username@g0001 ~]$ module load gcc/7.4.0
+[username@g0001 ~]$ module load cuda/9.0/9.0.176.4
+[username@g0001 ~]$ module load gdrcopy/2.0
+[username@g0001 ~]$ cd ucx-1.7.0
+[username@g0001 ucx-1.7.0]$ ./configure \
+  --prefix=$INSTALL_DIR \
+  --with-cuda=$CUDA_HOME \
+  --with-gdrcopy=$GDRCOPY_PATH \
+  --enable-optimizations \
+  --disable-logging \
+  --disable-debug \
+  --disable-assertions \
+  --enable-mt \
+  --disable-params-check \
+  2>&1 | tee configure.log 2>&1
+[username@g0001 ucx-1.7.0]$ make -j8 2>&1 | tee make.log
+[username@g0001 ucx-1.7.0]$ su
+[root@g0001 ucx-1.7.0]# make install 2>&1 | tee make_install.log
+```
+
+#### CUDA 9.1.85.3
+
+```
+[username@g0001 ~]$ INSTALL_DIR=/apps/ucx/1.7.0/gcc7.4.0_cuda9.1.85.3_gdrcopy2.0
+[username@g0001 ~]$ wget https://github.com/openucx/ucx/releases/download/v1.7.0/ucx-1.7.0.tar.gz
+[username@g0001 ~]$ tar zxf ucx-1.7.0.tar.gz
+[username@g0001 ~]$ module load gcc/7.4.0
+[username@g0001 ~]$ module load cuda/9.1/9.1.85.3
+[username@g0001 ~]$ module load gdrcopy/2.0
+[username@g0001 ~]$ cd ucx-1.7.0
+[username@g0001 ucx-1.7.0]$ ./configure \
+  --prefix=$INSTALL_DIR \
+  --with-cuda=$CUDA_HOME \
+  --with-gdrcopy=$GDRCOPY_PATH \
+  --enable-optimizations \
+  --disable-logging \
+  --disable-debug \
+  --disable-assertions \
+  --enable-mt \
+  --disable-params-check \
+  2>&1 | tee configure.log 2>&1
+[username@g0001 ucx-1.7.0]$ make -j8 2>&1 | tee make.log
+[username@g0001 ucx-1.7.0]$ su
+[root@g0001 ucx-1.7.0]# make install 2>&1 | tee make_install.log
+```
+
+#### CUDA 9.2.148.1
+
+```
+[username@g0001 ~]$ INSTALL_DIR=/apps/ucx/1.7.0/gcc7.4.0_cuda9.2.148.1_gdrcopy2.0
+[username@g0001 ~]$ wget https://github.com/openucx/ucx/releases/download/v1.7.0/ucx-1.7.0.tar.gz
+[username@g0001 ~]$ tar zxf ucx-1.7.0.tar.gz
+[username@g0001 ~]$ module load gcc/7.4.0
+[username@g0001 ~]$ module load cuda/9.2/9.2.148.1
+[username@g0001 ~]$ module load gdrcopy/2.0
+[username@g0001 ~]$ cd ucx-1.7.0
+[username@g0001 ucx-1.7.0]$ ./configure \
+  --prefix=$INSTALL_DIR \
+  --with-cuda=$CUDA_HOME \
+  --with-gdrcopy=$GDRCOPY_PATH \
+  --enable-optimizations \
+  --disable-logging \
+  --disable-debug \
+  --disable-assertions \
+  --enable-mt \
+  --disable-params-check \
+  2>&1 | tee configure.log 2>&1
+[username@g0001 ucx-1.7.0]$ make -j8 2>&1 | tee make.log
+[username@g0001 ucx-1.7.0]$ su
+[root@g0001 ucx-1.7.0]# make install 2>&1 | tee make_install.log
+```
+
+#### CUDA 10.0.130.1
+
+```
+[username@g0001 ~]$ INSTALL_DIR=/apps/ucx/1.7.0/gcc7.4.0_cuda10.0.130.1_gdrcopy2.0
+[username@g0001 ~]$ wget https://github.com/openucx/ucx/releases/download/v1.7.0/ucx-1.7.0.tar.gz
+[username@g0001 ~]$ tar zxf ucx-1.7.0.tar.gz
+[username@g0001 ~]$ module load gcc/7.4.0
+[username@g0001 ~]$ module load cuda/10.0/10.0.130.1
+[username@g0001 ~]$ module load gdrcopy/2.0
+[username@g0001 ~]$ cd ucx-1.7.0
+[username@g0001 ucx-1.7.0]$ ./configure \
+  --prefix=$INSTALL_DIR \
+  --with-cuda=$CUDA_HOME \
+  --with-gdrcopy=$GDRCOPY_PATH \
+  --enable-optimizations \
+  --disable-logging \
+  --disable-debug \
+  --disable-assertions \
+  --enable-mt \
+  --disable-params-check \
+  2>&1 | tee configure.log 2>&1
+[username@g0001 ucx-1.7.0]$ make -j8 2>&1 | tee make.log
+[username@g0001 ucx-1.7.0]$ su
+[root@g0001 ucx-1.7.0]# make install 2>&1 | tee make_install.log
+```
+
+#### CUDA 10.1.243
+
+```
+[username@g0001 ~]$ INSTALL_DIR=/apps/ucx/1.7.0/gcc7.4.0_cuda10.1.243_gdrcopy2.0
+[username@g0001 ~]$ wget https://github.com/openucx/ucx/releases/download/v1.7.0/ucx-1.7.0.tar.gz
+[username@g0001 ~]$ tar zxf ucx-1.7.0.tar.gz
+[username@g0001 ~]$ module load gcc/7.4.0
+[username@g0001 ~]$ module load cuda/10.1/10.1.243
+[username@g0001 ~]$ module load gdrcopy/2.0
+[username@g0001 ~]$ cd ucx-1.7.0
+[username@g0001 ucx-1.7.0]$ ./configure \
+  --prefix=$INSTALL_DIR \
+  --with-cuda=$CUDA_HOME \
+  --with-gdrcopy=$GDRCOPY_PATH \
+  --enable-optimizations \
+  --disable-logging \
+  --disable-debug \
+  --disable-assertions \
+  --enable-mt \
+  --disable-params-check \
+  2>&1 | tee configure.log 2>&1
+[username@g0001 ucx-1.7.0]$ make -j8 2>&1 | tee make.log
+[username@g0001 ucx-1.7.0]$ su
+[root@g0001 ucx-1.7.0]# make install 2>&1 | tee make_install.log
+```
+
+#### CUDA 10.2.89
+
+```
+[username@g0001 ~]$ INSTALL_DIR=/apps/ucx/1.7.0/gcc7.4.0_cuda10.2.89_gdrcopy2.0
+[username@g0001 ~]$ wget https://github.com/openucx/ucx/releases/download/v1.7.0/ucx-1.7.0.tar.gz
+[username@g0001 ~]$ tar zxf ucx-1.7.0.tar.gz
+[username@g0001 ~]$ module load gcc/7.4.0
 [username@g0001 ~]$ module load cuda/10.2/10.2.89
 [username@g0001 ~]$ module load gdrcopy/2.0
 [username@g0001 ~]$ cd ucx-1.7.0
