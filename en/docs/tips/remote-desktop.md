@@ -53,26 +53,26 @@ geometry=2000x1200
 * Login to ABCI
 
 ```
-[user@localmachine] $ ssh -J %r@as.abci.ai username@es
+[user@localmachine]$ ssh -J %r@as.abci.ai username@es
 ```
 
 * Login to a compute node which is assigned by UGE with ABCI On-demand service and resource type rt_F.
 
 ```
-[username@es1 ~] $ qrsh -g grpname -l rt_F=1
+[username@es1 ~]$ qrsh -g grpname -l rt_F=1 -l h_rt=1:00:00
 ```
 
 * Launch ``vncserver``
 
 ```
-[username@g0001 ~] vncserver
+[username@g0001 ~]$ vncserver
 
 New 'g0001.abci.local:1 (username)' desktop is g0001.abci.local:1
 
 Starting applications specified in /home/username/.vnc/xstartup
 Log file is /home/username/.vnc/g0001.abci.local:1.log
 
-[username@g0001 ~]
+[username@g0001 ~]$
 ```
 
 g0001.abci.local:1 is the display name of the VNC server you launched. Port 5901 is assinged to the connection to this server.

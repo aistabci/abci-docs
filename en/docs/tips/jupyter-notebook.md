@@ -11,7 +11,7 @@ This part explains how to install and use Jupyter Notebook with pip.
 First, you need to occupy one compute node, create a Python virtual environment, and install `tensorflow-gpu` and` jupyter` with `pip`.
 
 ```
-[username@es1 ~]$ qrsh -g grpname -l rt_F=1
+[username@es1 ~]$ qrsh -g grpname -l rt_F=1 -l h_rt=1:00:00
 [username@g0001 ~]$ module load python/3.6/3.6.5 cuda/10.0/10.0.130.1 cudnn/7.4/7.4.2
 [username@g0001 ~]$ python3 -m venv ~/jupyter_env
 [username@g0001 ~]$ source ~/jupyter_env/bin/activate
@@ -25,7 +25,7 @@ First, you need to occupy one compute node, create a Python virtual environment,
 From the next time on, you only need to load modules and activate `~/jupyter_env` as shown below.
 
 ```
-[username@es1 ~]$ qrsh -g grpname -l rt_F=1
+[username@es1 ~]$ qrsh -g grpname -l rt_F=1 -l h_rt=1:00:00
 [username@g0001 ~]$ module load python/3.6/3.6.5 cuda/10.0/10.0.130.1 cudnn/7.4/7.4.2
 [username@g0001 ~]$ source ~/jupyter_env/bin/activate
 ```
@@ -125,7 +125,7 @@ Done. Container is at: ./tensorflow-19.07-py3.simg
 First, you need to occupy one compute node. And, confirm the host name of the compute node as you will need it later.
 
 ```
-[username@es1 ~]$ qrsh -g grpname -l rt_F=1
+[username@es1 ~]$ qrsh -g grpname -l rt_F=1 -l h_rt=1:00:00
 [username@g0001 ~]$ hostname
 g0001.abci.local
 ```

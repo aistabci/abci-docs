@@ -61,8 +61,8 @@ docker://nvcr.io/nvidia/tensorflow:19.06-py2
 インタラクティブノード上でTensorFlowのSingularityイメージを生成します。
 
 ```
-[username@es1 ~] $ module load singularity/2.6.1
-[username@es1 ~] $ singularity pull docker://nvcr.io/nvidia/tensorflow:19.06-py2
+[username@es1 ~]$ module load singularity/2.6.1
+[username@es1 ~]$ singularity pull docker://nvcr.io/nvidia/tensorflow:19.06-py2
 ```
 
 ``tensorflow-19.06-py2.simg``という名前のイメージファイルが生成されます。
@@ -72,7 +72,7 @@ docker://nvcr.io/nvidia/tensorflow:19.06-py2
 1ノード占有でインタラクティブジョブを起動し、サンプルプログラム cnn_mnist.py を実行します。
 
 ```
-[username@es1 ~]$ qrsh -g grpname -l rt_F=1
+[username@es1 ~]$ qrsh -g grpname -l rt_F=1 -l h_rt=1:00:00
 [username@g0001 ~]$ module load singularity/2.6.1
 [username@g0001 ~]$ wget https://raw.githubusercontent.com/tensorflow/tensorflow/v1.13.1/tensorflow/examples/tutorials/layers/cnn_mnist.py
 [username@g0001 ~]$ singularity run --nv tensorflow-19.06-py2.simg python cnn_mnist.py
@@ -127,7 +127,7 @@ openmpi/2.1.3          openmpi/2.1.6(default) openmpi/3.1.0          openmpi/3.1
 2ノード占有でインタラクティブジョブを起動し、必要なモジュールを読み込みます。
 
 ```
-[username@es1 ~]$ qrsh -g grpname -l rt_F=2
+[username@es1 ~]$ qrsh -g grpname -l rt_F=2 -l h_rt=1:00:00
 [username@g0001 ~]$ module load singularity/2.6.1 openmpi/3.1.3
 ```
 
@@ -197,10 +197,10 @@ docker://nvcr.io/partners/chainer:4.0.0b1
 インタラクティブノード上でSingularityイメージを生成します。Dockerイメージのダウンロードには、環境変数``SINGULARITY_DOCKER_USERNAME``, ``SINGULARITY_DOCKER_PASSWORD``の設定が必要です。
 
 ```
-[username@es1 ~] $ module load singularity/2.6.1
-[username@es1 ~] $ export SINGULARITY_DOCKER_USERNAME='$oauthtoken'
-[username@es1 ~] $ export SINGULARITY_DOCKER_PASSWORD=<NGC API Key>
-[username@es1 ~] $ singularity pull docker://nvcr.io/partners/chainer:4.0.0b1
+[username@es1 ~]$ module load singularity/2.6.1
+[username@es1 ~]$ export SINGULARITY_DOCKER_USERNAME='$oauthtoken'
+[username@es1 ~]$ export SINGULARITY_DOCKER_PASSWORD=<NGC API Key>
+[username@es1 ~]$ singularity pull docker://nvcr.io/partners/chainer:4.0.0b1
 ```
 
 ``chainer-4.0.0b1.simg``という名前のイメージファイルが生成されます。
@@ -210,7 +210,7 @@ docker://nvcr.io/partners/chainer:4.0.0b1
 通常のSingularityイメージと同じ手順で実行できます。
 
 ```
-[username@es1 ~] $ qrsh -g grpname -l rt_G.small=1
+[username@es1 ~]$ qrsh -g grpname -l rt_G.small=1 -l h_rt=1:00:00
 [username@g0001 ~]$ module load singularity/2.6.1
 [username@g0001 ~]$ wget https://raw.githubusercontent.com/chainer/chainer/v4.0.0b1/examples/mnist/train_mnist.py
 [username@g0001 ~]$ singularity exec --nv chainer-4.0.0b1.simg python train_mnist.py -g 0
