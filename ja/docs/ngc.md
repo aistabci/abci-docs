@@ -116,11 +116,10 @@ Report bugs to http://www.open-mpi.org/community/help/
 [username@es1 ~] $ module avail openmpi
 
 -------------------------------------------- /apps/modules/modulefiles/mpi ---------------------------------------------
-openmpi/1.10.7         openmpi/2.1.5          openmpi/3.0.3          openmpi/3.1.2
-openmpi/2.1.3          openmpi/2.1.6(default) openmpi/3.1.0          openmpi/3.1.3
+openmpi/2.1.6(default) openmpi/3.1.6          openmpi/4.0.3
 ```
 
-``openmpi/3.1.3`` を使うのが適当のようです。少なくともメジャーバージョンが一致している必要があります。
+``openmpi/3.1.6`` を使うのが適当のようです。少なくともメジャーバージョンが一致している必要があります。
 
 ### SingularityイメージのMPI実行 {#run-a-singularity-image-with-mpi}
 
@@ -128,7 +127,7 @@ openmpi/2.1.3          openmpi/2.1.6(default) openmpi/3.1.0          openmpi/3.1
 
 ```
 [username@es1 ~]$ qrsh -g grpname -l rt_F=2 -l h_rt=1:00:00
-[username@g0001 ~]$ module load singularity/2.6.1 openmpi/3.1.3
+[username@g0001 ~]$ module load singularity/2.6.1 openmpi/3.1.6
 ```
 
 1ノードあたり4基のGPUがあり、2ノード占有では計8基のGPUが使えることになります。この場合、8個のプロセスをノードあたり4個ずつ並列に起動し、サンプルプログラム tensorflow_mnist.py を実行します。
@@ -165,7 +164,7 @@ INFO:tensorflow:loss = 1.8231221, step = 40 (0.154 sec)
 #$ -cwd
 
 source /etc/profile.d/modules.sh
-module load singularity/2.6.1 openmpi/3.1.3
+module load singularity/2.6.1 openmpi/3.1.6
 wget https://raw.githubusercontent.com/horovod/horovod/v0.16.4/examples/tensorflow_mnist.py
 mpirun -np 8 -npernode 4 singularity run --nv tensorflow-19.06-py2.simg python tensorflow_mnist.py
 ```

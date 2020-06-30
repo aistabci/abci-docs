@@ -121,11 +121,10 @@ Next, check the available versions of Open MPI on the ABCI system.
 [username@es1 ~] $ module avail openmpi
 
 -------------------------------------------- /apps/modules/modulefiles/mpi ---------------------------------------------
-openmpi/1.10.7         openmpi/2.1.5          openmpi/3.0.3          openmpi/3.1.2
-openmpi/2.1.3          openmpi/2.1.6(default) openmpi/3.1.0          openmpi/3.1.3
+openmpi/2.1.6(default) openmpi/3.1.6          openmpi/4.0.3
 ```
 
-``openmpi/3.1.3`` module seems to be suitable to run this image. In general, at least the major versions of both MPIs should be the same.
+``openmpi/3.1.6`` module seems to be suitable to run this image. In general, at least the major versions of both MPIs should be the same.
 
 ### Run a Singularity image with MPI
 
@@ -133,7 +132,7 @@ Start an interative job with two full-nodes, and load required environment modul
 
 ```
 [username@es1 ~]$ qrsh -g grpname -l rt_F=2 -l h_rt=1:00:00
-[username@g0001 ~]$ module load singularity/2.6.1 openmpi/3.1.3
+[username@g0001 ~]$ module load singularity/2.6.1 openmpi/3.1.6
 ```
 
 Each full-node has four GPUs, and you have eight GPUs in total.
@@ -171,7 +170,7 @@ You can do the same thing with a batch job.
 #$ -cwd
 
 source /etc/profile.d/modules.sh
-module load singularity/2.6.1 openmpi/3.1.3
+module load singularity/2.6.1 openmpi/3.1.6
 wget https://raw.githubusercontent.com/horovod/horovod/v0.16.4/examples/tensorflow_mnist.py
 mpirun -np 8 -npernode 4 singularity run --nv tensorflow-19.06-py2.simg python tensorflow_mnist.py
 ```
