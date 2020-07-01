@@ -129,7 +129,7 @@ You can access it by following the procedure below.
 
 You need to set up SSH tunnel.
 The following example, written in `$HOME/.ssh/config` on your PC, sets up the SSH tunnel connection to ABCI internal servers through as.abci.ai by using ProxyCommand.
-Please also refer to the procedure in [Login using an SSH Client::General method](../02.md#general-method) in ABCI System User Environment.
+Please also refer to the procedure in [Login using an SSH Client::General method](./02.md#general-method) in ABCI System User Environment.
 
 ```shell
 Host *.abci.local
