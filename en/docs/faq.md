@@ -61,7 +61,7 @@ $ module load openmpi/2.1.6
 $ mpirun -hostfile $SGE_JOB_HOSTLIST -np 1 command1 : -np 1 command2 : ... : -np1 commandN
 ```
 
-## Q. I want to avoid to close SSH session unexpectedly 
+## Q. I want to avoid to close SSH session unexpectedly
 
 The SSH session may be closed shortly after connecting to ABCI with SSH. In such a case, you may be able to avoid it by performing KeepAlive communication between the SSH client and the server.
 
@@ -121,3 +121,27 @@ Currently Loaded Modulefiles:
     The functions of CUDA-aware versions of Open MPI can be found on the Open MPI site:
     [FAQ: Running CUDA-aware Open MPI](https://www.open-mpi.org/faq/?category=runcuda)
 
+## Q. I want to know how ABCI job execution environment is congested
+
+ABCI operates a web service that visualizes job congestion status as well as utilization of compute nodes, power consumption of the whole datacenter, PUE, cooling facility, etc.
+The service runs on an internal server, named `vws1`, on 3000/tcp port.
+You can access it by following the procedure below.
+
+You need to set up SSH tunnel.
+The following example, written in `$HOME/.ssh/config` on your PC, sets up the SSH tunnel connection to ABCI internal servers through as.abci.ai by using ProxyCommand.
+Please also refer to the procedure in [Login using an SSH Client::General method](./02.md#general-method) in ABCI System User Environment.
+
+```shell
+Host *.abci.local
+    User         username
+    IdentityFile /path/identity_file
+    ProxyCommand ssh -W %h:%p -l username -i /path/identity_file as.abci.ai
+```
+
+You can create an SSH tunnel that transfers 3000/tcp on your PC to 3000/tcp on vws1.
+
+```shell
+[username@userpc ~]$ ssh -L 3000:vws1:3000 es.abci.local
+```
+
+You can access the service by opening `http://localhost:3000/` on your favorite browser.
