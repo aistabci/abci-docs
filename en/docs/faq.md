@@ -123,7 +123,7 @@ Currently Loaded Modulefiles:
 
 ## Q. I want to know how ABCI job execution environment is congested
 
-ABCI operates an web service that visualizes job congestion status as well as utilization of compute nodes, power consumption of the whole datacenter, PUE, cooling facility, etc.
+ABCI operates a web service that visualizes job congestion status as well as utilization of compute nodes, power consumption of the whole datacenter, PUE, cooling facility, etc.
 The service runs on an internal server, named `vws1`, on 3000/tcp port.
 You can access it by following the procedure below.
 
