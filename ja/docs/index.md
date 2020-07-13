@@ -36,6 +36,7 @@
     - [データの暗号化](abci-cloudstorage/encryption.md)
     - [アクセス制御（1）](abci-cloudstorage/acl.md)
     - [アクセス制御（2）](abci-cloudstorage/policy.md)
+    - [データセットの公開](abci-cloudstorage/publishing-a-dataset.md)
   - [FAQ](faq.md)
   - [既知の問題](known-issues.md)
   - [システム更新履歴](system-updates.md)
