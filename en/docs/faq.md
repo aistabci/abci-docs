@@ -145,3 +145,8 @@ You can create an SSH tunnel that transfers 3000/tcp on your PC to 3000/tcp on v
 ```
 
 You can access the service by opening `http://localhost:3000/` on your favorite browser.
+
+## Q. Are there any pre-downloaded datasets?
+
+[This page](tips/datasets.md) may be useful.
+
