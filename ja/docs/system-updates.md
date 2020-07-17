@@ -1,5 +1,17 @@
 # システム更新履歴
 
+## 2020-07-31
+| Add / Update / Delete | Software | Version | Previous version |
+|:--|:--|:--|:--|
+| Add | Singularity PRO | 3.5 |  |
+
+Singularity PRO 3.5 をインストールしました。使用方法は以下の通りです。
+
+```
+$ module load singularitypro/3.5
+$ singularity run image_path
+```
+
 ## 2020-06-01
 | Add / Update / Delete | Software | Version | Previous version |
 |:--|:--|:--|:--|
