@@ -154,5 +154,5 @@ Host *.abci.local
 
 ## Q. ダウンロード済みのデータセットはありませんか?
 
-[こちら](tips/datasets.md)のページが役に立つかもしれません。
+[こちら](tips/datasets.md)のページをご参照ください。
 

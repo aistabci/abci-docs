@@ -148,5 +148,5 @@ You can access the service by opening `http://localhost:3000/` on your favorite 
 
 ## Q. Are there any pre-downloaded datasets?
 
-[This page](tips/datasets.md) may be useful.
+Please see [this page](tips/datasets.md).
 
