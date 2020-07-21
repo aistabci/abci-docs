@@ -104,6 +104,7 @@ pipインストールの代わりに、Jupyter Notebookがインストールさ�
 
 コンテナイメージを取得します。ここでは、NGCが提供しているDockerイメージ(``nvcr.io/nvidia/tensorflow:19.07-py3``)を利用します。
 
+**Singularity 2.6**
 ```
 [username@es1 ~]$ module load singularity/2.6.1
 [username@es1 ~]$ singularity pull docker://nvcr.io/nvidia/tensorflow:19.07-py3
@@ -118,6 +119,20 @@ Singularity container built: ./tensorflow-19.07-py3.simg
 Cleaning up...
 Done. Container is at: ./tensorflow-19.07-py3.simg
 ```
+**Singularity PRO 3.5**
+```
+[username@es1 ~]$ module load singularitypro/3.5
+[username@es1 ~]$ singularity pull docker://nvcr.io/nvidia/tensorflow:19.07-py3
+INFO:    Converting OCI blobs to SIF format
+INFO:    Starting build...
+Getting image source signatures
+Copying blob 5b7339215d1d done
+:
+(snip)
+:
+INFO:    Creating SIF file...
+INFO:    Build complete: tensorflow_19.07-py3.sif
+```
 
 ### Jupyter Notebookの起動 {#start-jupyter-notebook_1}
 
@@ -130,6 +145,8 @@ g0001.abci.local
 ```
 
 続いて、以下のようにコンテナイメージの中のJupyter Notebookを起動します。
+
+**Singularity 2.6**
 
 <div class="codehilite"><pre>
 [username@g0001 ~]$ module load singularity/2.6.1
@@ -150,6 +167,34 @@ Copyright 2017-2019 The TensorFlow Authors.  All rights reserved.
 :
 [I 19:56:19.585 NotebookApp] Use Control-C to stop this server and shut down all kernels (twice to skip confirmation).
 [C 19:56:19.593 NotebookApp]
+
+    To access the notebook, open this file in a browser:
+        file:///home/username/.local/share/jupyter/runtime/nbserver-xxxxxx-open.html
+    Or copy and paste one of these URLs:
+        http://hostname:8888/?token=<i>token_string</i>
+</pre></div>
+
+**Singularity PRO 3.5**
+
+<div class="codehilite"><pre>
+[username@g0001 ~]$ module load singularitypro/3.5
+[username@g0001 ~]$ singularity run --nv ./tensorflow_19.07-py3.sif jupyter notebook --ip=`hostname` --port=8888 --no-browser
+                                                                                                                          
+================
+== TensorFlow ==
+================
+
+NVIDIA Release 19.07 (build 7332442)
+TensorFlow Version 1.14.0
+
+Container image Copyright (c) 2019, NVIDIA CORPORATION.  All rights reserved.
+Copyright 2017-2019 The TensorFlow Authors.  All rights reserved.
+
+:
+(snip)
+:
+[I 13:40:14.131 NotebookApp] Use Control-C to stop this server and shut down all kernels (twice to skip confirmation).
+[C 13:40:14.138 NotebookApp]
 
     To access the notebook, open this file in a browser:
         file:///home/username/.local/share/jupyter/runtime/nbserver-xxxxxx-open.html
