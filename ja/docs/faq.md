@@ -48,7 +48,8 @@ ImportError: /lib64/libc.so.6: version `GLIBC_2.18' not found (required by /tmp/
 
 以下のようなシェルスクリプトを用意することで、Singularityを使って実行させることができます。NGC CLIに限らず、一般的に使えるテクニックです。
 
-#### Singularity 2.6
+**Singularity 2.6**
+
 ```
 #!/bin/sh
 source /etc/profile.d/modules.sh
@@ -57,7 +58,9 @@ module load singularity/2.6.1
 NGC_HOME=$HOME/ngc
 singularity exec $NGC_HOME/ubuntu-18.04.simg $NGC_HOME/ngc $@
 ```
-#### Singularity PRO 3.5
+
+**Singularity PRO 3.5**
+
 ```
 #!/bin/sh
 source /etc/profile.d/modules.sh
