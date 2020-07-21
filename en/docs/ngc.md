@@ -332,6 +332,15 @@ An image named ``chainer-4.0.0b1.simg`` will be generated.
 
 An image named ``chainer_4.0.0b1.sif`` will be generated.
 
+You can also specify ``--docker-login`` option to download images instead of environment variables.
+
+```
+[username@es1 ~]$ module load singularitypro/3.5
+[username@es1 ~]$ singularity pull --disable-cache --docker-login docker://nvcr.io/partners/chainer:4.0.0b1
+Enter Docker Username: $oauthtoken
+Enter Docker Password: <NGC API Key>
+```
+
 ### Run a Singularity image
 
 You can run the resulted image, just as same as freely available images.

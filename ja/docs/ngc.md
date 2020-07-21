@@ -319,6 +319,15 @@ docker://nvcr.io/partners/chainer:4.0.0b1
 
 ``chainer_4.0.0b1.sif``という名前のイメージファイルが生成されます。
 
+環境変数の代わりに``--docker-login``オプションを指定してイメージをダウンロードすることも可能です。
+
+```
+[username@es1 ~]$ module load singularitypro/3.5
+[username@es1 ~]$ singularity pull --disable-cache --docker-login docker://nvcr.io/partners/chainer:4.0.0b1
+Enter Docker Username: $oauthtoken
+Enter Docker Password: <NGC API Key>
+```
+
 ### Singularityイメージの実行 {#run-a-singularity-image_1}
 
 通常のSingularityイメージと同じ手順で実行できます。
