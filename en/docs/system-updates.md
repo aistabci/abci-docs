@@ -6,13 +6,6 @@
 |:--|:--|:--|:--|
 | Add | Singularity PRO | 3.5 | |
 
-Singularity PRO 3.5 was installed. The usage is as follows:
-
-```
-$ module load singularitypro/3.5
-$ singularity run image_path
-```
-
 ## 2020-06-01
 
 | Add / Update / Delete | Software | Version | Previous version |
