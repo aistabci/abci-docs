@@ -1,9 +1,13 @@
 # システム更新履歴
 
 ## 2020-07-31
+
 | Add / Update / Delete | Software | Version | Previous version |
 |:--|:--|:--|:--|
-| Add | Singularity PRO | 3.5 |  |
+| Add | Singularity PRO | 3.5 | |
+| Add | nccl | [2.7.6-1](https://docs.nvidia.com/deeplearning/nccl/release-notes/rel_2-7-6.html) | |
+| Add | mvapich2-gdr | 2.3.4 | |
+| Add | mvapich2 | 2.3.4 | |
 
 ## 2020-06-01
 | Add / Update / Delete | Software | Version | Previous version |
@@ -42,7 +46,7 @@ PGI 版が必要の場合、ユーザーサポートまでご連絡ください�
 | Add | openjdk | 1.8.0.242<br>11.0.6.10 | |
 | Add | python | 3.7.6<br>3.8.2 | |
 | Add | gdrcopy | 2.0 | |
-| Add | nccl | [2.6.4-1](https://docs.nvidia.com/deeplearning/sdk/nccl-release-notes/rel_2-6-x.html) | |
+| Add | nccl | [2.6.4-1](https://docs.nvidia.com/deeplearning/sdk/nccl-release-notes/rel_2-6-4.html) | |
 | Add | intel-mpi | 2017.4<br>2018.4<br>2019.5 | |
 | Add | mvapich2-gdr | 2.3.3 | |
 | Add | mvapich2 | 2.3.3 | |
