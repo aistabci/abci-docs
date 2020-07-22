@@ -18,7 +18,7 @@ ABCIでは、グループ領域のブロックサイズは128KB、ホーム領�
 
 ## Q. 認証が必要なコンテナレジストリをSingularityで利用できない
 
-Singularity version 2.6には``docker login``相当の機能として、環境変数で認証情報を与える機能があります。
+Singularity version 2.6およびSingularity PRO version 3.5には``docker login``相当の機能として、環境変数で認証情報を与える機能があります。
 
 ```shell
 [username@es ~]$ export SINGULARITY_DOCKER_USERNAME='username'
@@ -32,6 +32,11 @@ Singularity version 2.6の認証に関する詳細は、以下をご参照くだ
     * 14.6 How do I specify my Docker image?
     * 14.7 Custom Authentication
 
+Singularity PRO version 3.5の認証に関する詳細は、以下をご参照ください。
+
+* [Singularity Container Documentation](https://www.sylabs.io/guides/3.5/user-guide.pdf)
+    * 2.4 Support for Docker and OCI
+
 ## Q. NGC CLIが実行できない
 
 ABCI上で、[NGC Catalog CLI](https://docs.nvidia.com/ngc/ngc-catalog-cli-user-guide/index.html)を実行すると、以下のエラーメッセージが出て実行できません。これはNGC CLIがUbuntu 14.04以降用にビルドされているためです。
@@ -43,10 +48,23 @@ ImportError: /lib64/libc.so.6: version `GLIBC_2.18' not found (required by /tmp/
 
 以下のようなシェルスクリプトを用意することで、Singularityを使って実行させることができます。NGC CLIに限らず、一般的に使えるテクニックです。
 
+**Singularity 2.6**
+
 ```
 #!/bin/sh
 source /etc/profile.d/modules.sh
 module load singularity/2.6.1
+
+NGC_HOME=$HOME/ngc
+singularity exec $NGC_HOME/ubuntu-18.04.simg $NGC_HOME/ngc $@
+```
+
+**Singularity PRO 3.5**
+
+```
+#!/bin/sh
+source /etc/profile.d/modules.sh
+module load singularitypro/3.5
 
 NGC_HOME=$HOME/ngc
 singularity exec $NGC_HOME/ubuntu-18.04.simg $NGC_HOME/ngc $@
