@@ -10,6 +10,7 @@
 | Add | mvapich2 | 2.3.4 | |
 
 ## 2020-06-01
+
 | Add / Update / Delete | Software | Version | Previous version |
 |:--|:--|:--|:--|
 | Update | BeeOND | 7.1.5 | 7.1.4 |
