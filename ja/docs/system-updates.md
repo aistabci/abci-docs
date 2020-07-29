@@ -5,7 +5,7 @@
 | Add / Update / Delete | Software | Version | Previous version |
 |:--|:--|:--|:--|
 | Add | Singularity PRO | 3.5 | |
-| Add | nccl | [2.7.6-1](https://docs.nvidia.com/deeplearning/nccl/release-notes/rel_2-7-6.html) | |
+| Add | nccl | [2.7.8-1](https://docs.nvidia.com/deeplearning/nccl/release-notes/rel_2-7-8.html) | |
 | Add | mvapich2-gdr | 2.3.4 | |
 | Add | mvapich2 | 2.3.4 | |
 
