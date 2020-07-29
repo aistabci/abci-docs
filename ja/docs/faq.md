@@ -34,7 +34,7 @@ Singularity version 2.6の認証に関する詳細は、以下をご参照くだ
 
 Singularity PRO version 3.5の認証に関する詳細は、以下をご参照ください。
 
-* [Singularity Container Documentation](https://www.sylabs.io/guides/3.5/user-guide.pdf)
+* [User Guide &mdash; Singularity PRO Users Guide 3.5](https://repo.sylabs.io/c/0f6898986ad0b646b5ce6deba21781ac62cb7e0a86a5153bbb31732ee6593f43/guides/singularitypro35-user-guide.pdf) 
     * 2.4 Support for Docker and OCI
 
 ## Q. NGC CLIが実行できない
