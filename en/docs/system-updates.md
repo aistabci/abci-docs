@@ -38,7 +38,7 @@ If you need MVAPICH2-GDR for PGI, please contact Customer Support.
 | Add | R | 3.6.3 | |
 | Add | cmake | 3.16<br>3.17 | |
 | Add | go | 1.12<br>1.13 | |
-| Add | intel-advisor | 2017.6<br>2018.4<br>2019.5 | |
+| Add | intel-advisor | 2017.5<br>2018.4<br>2019.5 | |
 | Add | intel-inspector | 2017.4<br>2018.4<br>2019.5 | |
 | Add | intel-itac | 2017.0.4<br>2018.0.4<br>2019.0.5 | |
 | Add | intel-mkl | 2017.0.4<br>2018.0.4<br>2019.0.5 | |
