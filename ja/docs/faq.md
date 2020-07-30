@@ -178,13 +178,13 @@ Host *.abci.local
 
 バッチジョブでSingularity pullでのイメージファイルを作成しようとした際に、mksquashfs の実行ファイルが見つからず作成に失敗することがあります。
 
-実際のエラーメッセージ
 ```
 INFO:    Converting OCI blobs to SIF format
 FATAL:   While making image from oci registry: while building SIF from layers: unable to create new build: while searching for mksquashfs: exec: "mksquashfs": executable file not found in $PATH
 ```
 
-これは、以下のように、`/usr/sbin` にパスを通すことで回避できます。
+これは、以下のように、`/usr/sbin` にパスを通すことで回避できます。 
+
 実行例）
 ```
 [username@g0001~]$ PATH="$PATH:/usr/sbin" 

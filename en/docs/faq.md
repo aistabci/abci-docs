@@ -172,12 +172,13 @@ Please see [this page](tips/datasets.md).
 
 When you try to create an image file with Singularity pull in a batch job, the mksquashfs executable file may not be found and the creation may fail.
 
-The actual error message
 ```
 INFO:    Converting OCI blobs to SIF format
 FATAL:   While making image from oci registry: while building SIF from layers: unable to create new build: while searching for mksquashfs: exec: "mksquashfs": executable file not found in $PATH
 ```
+
 The problem can be avoided by setting pass `/usr/sbin` like this:
+
 Example）
 ```
 [username@g0001~]$ PATH="$PATH:/usr/sbin" 
