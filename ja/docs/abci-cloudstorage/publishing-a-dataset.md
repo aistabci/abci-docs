@@ -35,6 +35,51 @@ upload: sensor1/0002.dat to s3://example-dataset/sensor1/0002.dat
 [サンプルのページ](https://datasets.abci.ai/registration/)を参考に、各項目を記入してください。
   -->
 
+```yaml
+# required
+Name: ABC Dataset
+
+# required
+Description: This is a fictitious dataset
+
+# object detection, vehicle, action recognition, earth observation, etc.
+Keywords: image processing, health
+
+# required
+UsageInfo: https://example.com/dataset/
+
+Distribution: # (do not fill in this line)
+
+  # XML, CSV, GeoTIFF, etc.
+  EncodingFormat: DICOM
+  ContentURL: https://example.com/download/  # required
+
+Creator: # (do not fill in this line)
+
+  Name: ABC Team
+  URL: https://example.com/about/
+  ContactPoint: # (do not fill in this line)
+    # Either one is (or both are) required
+    Email: dataset@example.com
+    URL: https://example.com/contact
+
+License: # (do not fill in this line)
+
+  # MIT License, CC-BY-SA 4.0, Custom License, etc.
+  Name: Custom License
+  URL: https://example.com/dataset/LISENCE.txt
+
+Version: 1.1b
+DateCreated: 2020-04-18
+DateModified: 2020-04-20
+DatePublished: 2020-04-19
+
+# optional
+Identifier: https://doi.org/1234....
+
+Citation: 
+```
+
 次に、記入したYAMLファイルを用いて、データセットの公開ページ（index.html）を生成します。
 
 <!-- 要修正：コマンドは短く "generate_page" 等として下さい。RDFa ないし JSON-LD でマークアップされていないように思います。これは重要なことなので対応して下さい。-->
