@@ -1,5 +1,76 @@
 # システム更新履歴
 
+## 2020-07-31
+
+| Add / Update / Delete | Software | Version | Previous version |
+|:--|:--|:--|:--|
+| Add | Singularity PRO | 3.5 | |
+| Add | cuDNN | [8.0.2](https://docs.nvidia.com/deeplearning/sdk/cudnn-release-notes/rel_8.html#rel-802) | |
+| Add | NCCL | [2.7.8-1](https://docs.nvidia.com/deeplearning/nccl/release-notes/rel_2-7-8.html) | |
+| Add | mvapich2-gdr | 2.3.4 | |
+| Add | mvapich2 | 2.3.4 | |
+
+## 2020-06-01
+
+| Add / Update / Delete | Software | Version | Previous version |
+|:--|:--|:--|:--|
+| Update | BeeOND | 7.1.5 | 7.1.4 |
+
+## 2020-04-21
+
+### MVAPICH2-GDR 2.3.3 の更新
+
+gcc 4.8.5 対応の MVAPICH2-GDR 2.3.3 を以下の既知の問題が修正されたバージョンに更新しました。
+
+- MVPICH2-GDR の MPI_Allreduce で floating point exception が発生する場合がある。
+
+また、PGI 対応の MVAPICH2-GDR 2.3.3 は提供を停止しました。
+PGI 版が必要の場合、ユーザーサポートまでご連絡ください。
+
+## 2020-04-03
+
+| Add / Update / Delete | Software | Version | Previous version |
+|:--|:--|:--|:--|
+| Update | DDN GRIDScaler | 4.2.3.20 | 4.2.3.17 |
+| Update | Scality S3 Connector | 7.4.5.4 | 7.4.5.0 |
+| Update | libfabric | 1.7.0-1 | 1.5.3-1 |
+| Add | intel | 2018.5.274<br>2019.5.281 | |
+| Add | pgi | 19.1<br>19.10<br>20.1 | |
+| Add | R | 3.6.3 | |
+| Add | cmake | 3.16<br>3.17 | |
+| Add | go | 1.12<br>1.13 | |
+| Add | intel-advisor | 2017.5<br>2018.4<br>2019.5 | |
+| Add | intel-inspector | 2017.4<br>2018.4<br>2019.5 | |
+| Add | intel-itac | 2017.0.4<br>2018.0.4<br>2019.0.5 | |
+| Add | intel-mkl | 2017.0.4<br>2018.0.4<br>2019.0.5 | |
+| Add | intel-vtune | 2017.6<br>2018.4<br>2019.6 | |
+| Add | julia | 1.0<br>1.3<br>1.4 | |
+| Add | openjdk | 1.8.0.242<br>11.0.6.10 | |
+| Add | python | 3.7.6<br>3.8.2 | |
+| Add | gdrcopy | 2.0 | |
+| Add | nccl | [2.6.4-1](https://docs.nvidia.com/deeplearning/sdk/nccl-release-notes/rel_2-6-4.html) | |
+| Add | intel-mpi | 2017.4<br>2018.4<br>2019.5 | |
+| Add | mvapich2-gdr | 2.3.3 | |
+| Add | mvapich2 | 2.3.3 | |
+| Add | openmpi | 3.1.6<br>4.0.3 | |
+| Add | hadoop | 2.9<br>2.10<br>3.1 | |
+| Add | spark | 2.3<br>2.4 | |
+| Add | aws-cli | 1.18<br>2.0 | |
+| Delete | gcc | 7.3.0 | |
+| Delete | intel | 2018.2.199<br>2018.3.222<br>2019.3.199 | |
+| Delete | pgi | 18.5<br>19.3 | |
+| Delete | go | 1.11.2 | |
+| Delete | intel-mkl | 2017.8.262<br>2018.2.199<br>2018.3.222<br>2019.3.199 | |
+| Delete | openjdk | 1.6.0.41<br>1.8.0.161 | |
+| Delete | cuda | 9.0/9.0.176.2<br>9.0/9.0.176.3 | |
+| Delete | gdrcopy | 1.2 | |
+| Delete | intel-mpi | 2018.2.199 | |
+| Delete | mvapich2-gdr | 2.3rc1<br>2.3<br>2.3a<br>2.3.1<br>2.3.2 | |
+| Delete | mvapich2 | 2.3rc2<br>2.3<br>2.3.2 | |
+| Delete | openmpi | 1.10.7<br>2.1.3<br>2.1.5<br>3.0.3<br>3.1.0<br>3.1.2<br>3.1.3 | |
+| Delete | hadoop | 2.9.1<br>2.9.2 | |
+| Delete | spark | 2.3.1<br>2.3.2<br>2.4.0 |
+
 ## 2019-12-17
 
 | Add / Update / Delete | Software | Version | Previous version |

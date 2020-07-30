@@ -18,7 +18,7 @@ ABCI sets the block size of the group area to 128 KB and the block size of the h
 
 ## Q. Singularity cannot use container registries that require authentication
 
-Singularity version 2.6 has a function equivalent to ``docker login`` that provides authentication information with environment variables.
+Singularity version 2.6 and Singularity PRO version 3.5 have a function equivalent to ``docker login`` that provides authentication information with environment variables.
 
 ```shell
 [username@es ~]$ export SINGULARITY_DOCKER_USERNAME='username'
@@ -28,9 +28,14 @@ Singularity version 2.6 has a function equivalent to ``docker login`` that provi
 
 For more information on Singularity version 2.6 authentication, see below.
 
-* [Singularity Container Documentation](https://www.sylabs.io/guides/2.6/user-guide.pdf)
-    * 14.6 How do I specify my Docker image?
-    * 14.7 Custom Authentication
+* [Singularity 2.6 User Guide](https://www.sylabs.io/guides/2.6/user-guide/)
+    * [How do I specify my Docker image?](https://sylabs.io/guides/2.6/user-guide/singularity_and_docker.html#how-do-i-specify-my-docker-image)
+    * [Custom Authentication](https://sylabs.io/guides/2.6/user-guide/singularity_and_docker.html#custom-authentication)  
+
+For more information on Singularity PRO version 3.5 authentication, see below.
+
+* [Singularity PRO 3.5 User Guide](https://repo.sylabs.io/c/0f6898986ad0b646b5ce6deba21781ac62cb7e0a86a5153bbb31732ee6593f43/guides/singularitypro35-user-guide/)  
+    * [Making use of private images from Private Registries](https://repo.sylabs.io/c/0f6898986ad0b646b5ce6deba21781ac62cb7e0a86a5153bbb31732ee6593f43/guides/singularitypro35-user-guide/singularity_and_docker.html?highlight=support%20docker%20oci#making-use-of-private-images-from-private-registries) 
 
 ## Q. NGC CLI cannot be executed
 
@@ -43,10 +48,23 @@ ImportError: /lib64/libc.so.6: version `GLIBC_2.18' not found (required by /tmp/
 
 By preparing the following shell script, it can be executed using Singularity. This technique can be used not only for NGC CLI but also for general use.
 
+**Singularity 2.6**
+
 ```
 #!/bin/sh
 source /etc/profile.d/modules.sh
 module load singularity/2.6.1
+
+NGC_HOME=$HOME/ngc
+singularity exec $NGC_HOME/ubuntu-18.04.simg $NGC_HOME/ngc $@
+```
+
+**Singularity PRO 3.5**
+
+```
+#!/bin/sh
+source /etc/profile.d/modules.sh
+module load singularitypro/3.5
 
 NGC_HOME=$HOME/ngc
 singularity exec $NGC_HOME/ubuntu-18.04.simg $NGC_HOME/ngc $@
@@ -61,7 +79,7 @@ $ module load openmpi/2.1.6
 $ mpirun -hostfile $SGE_JOB_HOSTLIST -np 1 command1 : -np 1 command2 : ... : -np1 commandN
 ```
 
-## Q. I want to avoid to close SSH session unexpectedly 
+## Q. I want to avoid to close SSH session unexpectedly
 
 The SSH session may be closed shortly after connecting to ABCI with SSH. In such a case, you may be able to avoid it by performing KeepAlive communication between the SSH client and the server.
 
@@ -121,35 +139,32 @@ Currently Loaded Modulefiles:
     The functions of CUDA-aware versions of Open MPI can be found on the Open MPI site:
     [FAQ: Running CUDA-aware Open MPI](https://www.open-mpi.org/faq/?category=runcuda)
 
-## Q. Open MPI fails to run with a message "PML add procs failed"
+## Q. I want to know how ABCI job execution environment is congested
 
-`mpirun` may fail to run with the following message depending on the version.
+ABCI operates a web service that visualizes job congestion status as well as utilization of compute nodes, power consumption of the whole datacenter, PUE, cooling facility, etc.
+The service runs on an internal server, named `vws1`, on 3000/tcp port.
+You can access it by following the procedure below.
 
-```
---------------------------------------------------------------------------
-It looks like MPI_INIT failed for some reason; your parallel process is
-likely to abort.  There are many reasons that a parallel process can
-fail during MPI_INIT; some of which are due to configuration or environment
-problems.  This failure appears to be an internal failure; here's some
-additional information (which may only be relevant to an Open MPI
-developer):
-
-  PML add procs failed
-    --> Returned "Error" (-1) instead of "Success" (0)
-	--------------------------------------------------------------------------
-	[g0080:118482] *** An error occurred in MPI_Init
-	[g0080:118482] *** reported by process [859504641,0]
-	[g0080:118482] *** on a NULL communicator
-	[g0080:118482] *** Unknown error
-	[g0080:118482] *** MPI_ERRORS_ARE_FATAL (processes in this communicator will now abort,
-	[g0080:118482] ***    and potentially your MPI job)
-	[g0080.abci.local:118472] 3 more processes have sent help message help-mpi-runtime.txt / mpi_init:startup:internal-failure
-	[g0080.abci.local:118472] Set MCA parameter "orte_base_help_aggregate" to 0 to see all help / error messages
-	[g0080.abci.local:118472] 3 more processes have sent help message help-mpi-errors.txt / mpi_errors_are_fatal unknown handle
-```
-
-The problem may be worked around by specifying ob1 PML component like this:
+You need to set up SSH tunnel.
+The following example, written in `$HOME/.ssh/config` on your PC, sets up the SSH tunnel connection to ABCI internal servers through as.abci.ai by using ProxyCommand.
+Please also refer to the procedure in [Login using an SSH Client::General method](./02.md#general-method) in ABCI System User Environment.
 
 ```shell
-$ mpirun --mca pml ob1 a.out
+Host *.abci.local
+    User         username
+    IdentityFile /path/identity_file
+    ProxyCommand ssh -W %h:%p -l username -i /path/identity_file as.abci.ai
 ```
+
+You can create an SSH tunnel that transfers 3000/tcp on your PC to 3000/tcp on vws1.
+
+```shell
+[username@userpc ~]$ ssh -L 3000:vws1:3000 es.abci.local
+```
+
+You can access the service by opening `http://localhost:3000/` on your favorite browser.
+
+## Q. Are there any pre-downloaded datasets?
+
+Please see [this page](tips/datasets.md).
+

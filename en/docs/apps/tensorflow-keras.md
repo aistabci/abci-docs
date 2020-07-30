@@ -1,8 +1,8 @@
-# TensorFlow
+# TensorFlow-Keras
 
-This section describes how to install and run TensorFlow and how to install Horovod to perform distributed learning.
+This section describes how to install and run TensorFlow and Keras, and how to install TensorFlow, Keras and Horovod to perform distributed learning.
 
-## Running TensorFlow on a single node {#using}
+## Running TensorFlow-Keras on a single node {#using}
 
 ### Precondition {#precondition}
 
@@ -12,36 +12,36 @@ This section describes how to install and run TensorFlow and how to install Horo
 
 ### Installation {#installation}
 
-Here are the steps to create a Python virtual environment and install TensorFlow into the Python virtual environment.
+Here are the steps to create a Python virtual environment and install TensorFlow and Keras into the Python virtual environment.
 
 ```
 [username@es1 ~]$ qrsh -g grpname -l rt_G.small=1 -l h_rt=1:00:00
 [username@g0001 ~]$ module load python/3.6/3.6.5 cuda/10.0/10.0.130.1 cudnn/7.6/7.6.5
-[username@g0001 ~]$ python3 -m venv ~/venv/tensorflow
-[username@g0001 ~]$ source ~/venv/tensorflow/bin/activate
-(tensorflow) [username@g0001 ~]$ pip3 install --upgrade pip setuptools
-(tensorflow) [username@g0001 ~]$ pip3 install tensorflow-gpu==1.15
+[username@g0001 ~]$ python3 -m venv ~/venv/tensorflow-keras
+[username@g0001 ~]$ source ~/venv/tensorflow-keras/bin/activate
+(tensorflow-keras) [username@g0001 ~]$ pip3 install --upgrade pip setuptools
+(tensorflow-keras) [username@g0001 ~]$ pip3 install tensorflow-gpu==1.15 keras
 ```
 
-With the installation, you can use TensorFlow next time you want to use it by simply loading the module and activating the Python virtual environment, as follows
+With the installation, you can use TensorFlow and Keras next time you want to use it by simply loading the module and activating the Python virtual environment, as follows.
 
 ```
 [username@g0001 ~]$ module load python/3.6/3.6.5 cuda/10.0/10.0.130.1 cudnn/7.6/7.6.5
-[username@g0001 ~]$ source ~/venv/tensorflow/bin/activate
+[username@g0001 ~]$ source ~/venv/tensorflow-keras/bin/activate
 ```
 
 ### Execution {#run}
 
-The following shows how to execute the TensorFlow sample program `fully_connected_feeds.py` in the case of an interactive job and a batch job.
+The following shows how to execute the TensorFlow sample program `mnist_cnn.py` in the case of an interactive job and a batch job.
 
 **Run as an interactive job**
 
 ```
 [username@es1 ~]$ qrsh -g grpname -l rt_G.small=1 -l h_rt=1:00:00
 [username@g0001 ~]$ module load python/3.6/3.6.5 cuda/10.0/10.0.130.1 cudnn/7.6/7.6.5
-[username@g0001 ~]$ source ~/venv/tensorflow/bin/activate
-(tensorflow) [username@g0001 ~]$ curl -L -O https://raw.githubusercontent.com/tensorflow/tensorflow/master/tensorflow/examples/tutorials/mnist/fully_connected_feed.py
-(tensorflow) [username@g0001 ~]$ python3 fully_connected_feed.py
+[username@g0001 ~]$ source ~/venv/tensorflow-keras/bin/activate
+(tensorflow-keras) [username@g0001 ~]$ git clone https://github.com/keras-team/keras.git
+(tensorflow-keras) [username@g0001 ~]$ python3 keras/examples/mnist_cnn.py
 ```
 
 **Run as a batch job**
@@ -57,9 +57,9 @@ Save the following job script as a `run.sh` file.
 
 source /etc/profile.d/modules.sh
 module load python/3.6/3.6.5 cuda/10.0/10.0.130.1 cudnn/7.6/7.6.5
-source ~/venv/tensorflow/bin/activate
-curl -L -O https://raw.githubusercontent.com/tensorflow/tensorflow/master/tensorflow/examples/tutorials/mnist/fully_connected_feed.py
-python3 fully_connected_feed.py
+source ~/venv/tensorflow-keras/bin/activate
+git clone https://github.com/keras-team/keras.git
+python3 keras/examples/mnist_cnn.py
 deactivate
 ```
 
@@ -70,7 +70,7 @@ Submit a saved job script `run.sh` as a batch job with the qsub command.
 Your job 1234567 ('run.sh') has been submitted
 ```
 
-## Running TensorFlow on multiple nodes
+## Running TensorFlow on multiple nodes {#using-with-horovod}
 
 ### Precondition {#precondition-with-horovod}
 
@@ -80,28 +80,28 @@ Your job 1234567 ('run.sh') has been submitted
 
 ### Installation {#installation-with-horovod}
 
-Here are the steps to create a Python virtual environment and install TensorFlow and Horovod into the Python virtual environment.
+Here are the steps to create a Python virtual environment and install TensorFlow, Keras and Horovod into the Python virtual environment.
 
 ```
 [username@es1 ~]$ qrsh -g grpname -l rt_G.small=1 -l h_rt=1:00:00
 [username@g0001 ~]$ module load python/3.6/3.6.5 cuda/10.0/10.0.130.1 cudnn/7.6/7.6.5 nccl/2.5/2.5.6-1 openmpi/2.1.6 gcc/7.4.0
-[username@g0001 ~]$ python3 -m venv ~/venv/tensorflow+horovod
-[username@g0001 ~]$ source ~/venv/tensorflow+horovod/bin/activate
-(tensorflow+horovod) [username@g0001 ~]$ pip3 install --upgrade pip setuptools
-(tensorflow+horovod) [username@g0001 ~]$ pip3 install tensorflow-gpu==1.15
-(tensorflow+horovod) [username@g0001 ~]$ HOROVOD_WITH_TENSORFLOW=1 HOROVOD_GPU_ALLREDUCE=NCCL HOROVOD_GPU_BROADCAST=NCCL pip3 install --no-cache-dir horovod
+[username@g0001 ~]$ python3 -m venv ~/venv/tensorflow-keras+horovod
+[username@g0001 ~]$ source ~/venv/tensorflow-keras+horovod/bin/activate
+(tensorflow-keras+horovod) [username@g0001 ~]$ pip3 install --upgrade pip setuptools
+(tensorflow-keras+horovod) [username@g0001 ~]$ pip3 install tensorflow-gpu==1.15 keras
+(tensorflow-keras+horovod) [username@g0001 ~]$ HOROVOD_WITH_TENSORFLOW=1 HOROVOD_GPU_ALLREDUCE=NCCL HOROVOD_GPU_BROADCAST=NCCL pip3 install --no-cache-dir horovod
 ```
 
-With the installation, you can use TensorFlow and Horovod next time you want to use it by simply loading the module and activating the Python virtual environment, as follows.
+With the installation, you can use TensorFlow, Keras and Horovod next time you want to use it by simply loading the module and activating the Python virtual environment, as follows.
 
 ```
 [username@g0001 ~]$ module load python/3.6/3.6.5 cuda/10.0/10.0.130.1 cudnn/7.6/7.6.5 nccl/2.5/2.5.6-1 openmpi/2.1.6 gcc/7.4.0
-[username@g0001 ~]$ source ~/venv/tensorflow+horovod/bin/activate
+[username@g0001 ~]$ source ~/venv/tensorflow-keras+horovod/bin/activate
 ```
 
 ### Execution {#run-with-horovod}
 
-The following shows how to execute a sample program `tensorflow_mnist.py` of TensorFlow with Horovod for distributed learning.
+The following shows how to execute a sample program `keras_mnist.py` of TensorFlow with Horovod for distributed learning.
 
 **Run as an interactive job**
 
@@ -110,9 +110,9 @@ In this example, using 4 GPUs in an interactive node for distributed learning.
 ```
 [username@es1 ~]$ qrsh -g grpname -l rt_G.large=1 -l h_rt=1:00:00
 [username@g0001 ~]$ module load python/3.6/3.6.5 cuda/10.0/10.0.130.1 cudnn/7.6/7.6.5 nccl/2.5/2.5.6-1 openmpi/2.1.6 gcc/7.4.0
-[username@g0001 ~]$ source ~/venv/tensorflow+horovod/bin/activate
-(tensorflow+horovod) [username@g0001 ~]$ git clone -b v0.18.2 https://github.com/horovod/horovod.git
-(tensorflow+horovod) [username@g0001 ~]$ mpirun -np 4 -map-by ppr:4:node python3 horovod/examples/tensorflow_mnist.py
+[username@g0001 ~]$ source ~/venv/tensorflow-keras+horovod/bin/activate
+[username@g0001 ~]$ git clone -b v0.18.2 https://github.com/horovod/horovod.git
+[username@g0001 ~]$ mpirun -np 4 -map-by ppr:4:node python3 horovod/examples/keras_mnist.py
 ```
 
 **Run as a batch job**
@@ -131,7 +131,7 @@ Save the following job script as a `run.sh` file.
 
 source /etc/profile.d/modules.sh
 module load python/3.6/3.6.5 cuda/10.0/10.0.130.1 cudnn/7.6/7.6.5 nccl/2.5/2.5.6-1 openmpi/2.1.6 gcc/7.4.0
-source ~/venv/tensorflow+horovod/bin/activate
+source ~/venv/tensorflow-keras+horovod/bin/activate
 
 git clone -b v0.18.2 https://github.com/horovod/horovod.git
 
@@ -142,12 +142,13 @@ NUM_PROCS=$(expr ${NUM_NODES} \* ${NUM_GPUS_PER_NODE})
 
 MPIOPTS="-np ${NUM_PROCS} -map-by ppr:${NUM_GPUS_PER_NODE}:node"
 
-mpirun ${MPIOPTS} python3 horovod/examples/tensorflow_mnist.py
+mpirun ${MPIOPTS} python3 horovod/examples/keras_mnist.py
 
 deactivate
 ```
 
 Submit a saved job script `run.sh` as a batch job with the qsub command.
+
 
 ```
 [username@es1 ~]$ qsub -g grpname run.sh

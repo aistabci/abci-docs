@@ -15,7 +15,7 @@
 [venv](/06/#venv){:target="python_venv"}モジュールでPython仮想環境を作成し、作成したPython仮想環境へTensorFlowとKerasを[pip](/06/#pip){:target="pip"}で導入する手順です。
 
 ```
-[username@es1 ~]$ qrsh -g grpname -l rt_G.small=1
+[username@es1 ~]$ qrsh -g grpname -l rt_G.small=1 -l h_rt=1:00:00
 [username@g0001 ~]$ module load python/3.6/3.6.5 cuda/10.0/10.0.130.1 cudnn/7.6/7.6.5
 [username@g0001 ~]$ python3 -m venv ~/venv/tensorflow-keras
 [username@g0001 ~]$ source ~/venv/tensorflow-keras/bin/activate
@@ -35,7 +35,7 @@ TensorFlowサンプルプログラム `mnist_cnn.py` 実行方法をインタラ
 
 **インタラクティブジョブとして実行**
 ```
-[username@es1 ~]$ qrsh -g grpname -l rt_G.small=1
+[username@es1 ~]$ qrsh -g grpname -l rt_G.small=1 -l h_rt=1:00:00
 [username@g0001 ~]$ module load python/3.6/3.6.5 cuda/10.0/10.0.130.1 cudnn/7.6/7.6.5
 [username@g0001 ~]$ source ~/venv/tensorflow-keras/bin/activate
 (tensorflow-keras) [username@g0001 ~]$ git clone https://github.com/keras-team/keras.git
@@ -79,7 +79,7 @@ Your job 1234567 ('run.sh') has been submitted
 [venv](/06/#venv){:target="_python_venv"}モジュールでPython仮想環境を作成し、作成したPython仮想環境へTensorFlow、KerasとHorovodを[pip](/06/#pip){:target="pip"}で導入する手順です。
 
 ```
-[username@es1 ~]$ qrsh -g grpname -l rt_G.small=1
+[username@es1 ~]$ qrsh -g grpname -l rt_G.small=1 -l h_rt=1:00:00
 [username@g0001 ~]$ module load python/3.6/3.6.5 cuda/10.0/10.0.130.1 cudnn/7.6/7.6.5 nccl/2.5/2.5.6-1 openmpi/2.1.6 gcc/7.4.0
 [username@g0001 ~]$ python3 -m venv ~/venv/tensorflow-keras+horovod
 [username@g0001 ~]$ source ~/venv/tensorflow-keras+horovod/bin/activate
@@ -102,7 +102,7 @@ Horovodを利用するTensorFlowサンプルプログラム `keras_mnist.py` で
 
 この例では、インタラクティブノードの4つのGPUを利用して分散学習します。
 ```
-[username@es1 ~]$ qrsh -g grpname -l rt_G.large=1
+[username@es1 ~]$ qrsh -g grpname -l rt_G.large=1 -l h_rt=1:00:00
 [username@g0001 ~]$ module load python/3.6/3.6.5 cuda/10.0/10.0.130.1 cudnn/7.6/7.6.5 nccl/2.5/2.5.6-1 openmpi/2.1.6 gcc/7.4.0
 [username@g0001 ~]$ source ~/venv/tensorflow-keras+horovod/bin/activate
 [username@g0001 ~]$ git clone -b v0.18.2 https://github.com/horovod/horovod.git

@@ -25,10 +25,11 @@ All users who use this system are strongly recommended to read this document, as
   - Tips
     - [Remote Desktop](tips/remote-desktop.md)
     - [AWS CLI](tips/awscli.md)
-    - [GCC 7.3.0](tips/gcc-7.3.0.md)
     - [PuTTY](tips/putty.md)
     - [Jupyter Notebook](tips/jupyter-notebook.md)
     - [Singularity Global Client](tips/sregistry-cli.md)
+    - [Spack](tips/spack.md)
+    - [Datasets](tips/datasets.md)
   - [NVIDIA GPU Cloud (NGC)](ngc.md)
   - ABCI Cloud Storage:
     - [Overview](abci-cloudstorage.md)

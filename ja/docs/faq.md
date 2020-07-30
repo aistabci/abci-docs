@@ -18,7 +18,7 @@ ABCIでは、グループ領域のブロックサイズは128KB、ホーム領�
 
 ## Q. 認証が必要なコンテナレジストリをSingularityで利用できない
 
-Singularity version 2.6には``docker login``相当の機能として、環境変数で認証情報を与える機能があります。
+Singularity version 2.6およびSingularity PRO version 3.5には``docker login``相当の機能として、環境変数で認証情報を与える機能があります。
 
 ```shell
 [username@es ~]$ export SINGULARITY_DOCKER_USERNAME='username'
@@ -28,9 +28,14 @@ Singularity version 2.6には``docker login``相当の機能として、環境�
 
 Singularity version 2.6の認証に関する詳細は、以下をご参照ください。
 
-* [Singularity Container Documentation](https://www.sylabs.io/guides/2.6/user-guide.pdf)
-    * 14.6 How do I specify my Docker image?
-    * 14.7 Custom Authentication
+* [Singularity 2.6 User Guide](https://www.sylabs.io/guides/2.6/user-guide/)  
+    * [How do I specify my Docker image?](https://sylabs.io/guides/2.6/user-guide/singularity_and_docker.html#how-do-i-specify-my-docker-image)
+    * [Custom Authentication](https://sylabs.io/guides/2.6/user-guide/singularity_and_docker.html#custom-authentication)
+
+Singularity PRO version 3.5の認証に関する詳細は、以下をご参照ください。
+
+* [Singularity PRO 3.5 User Guide](https://repo.sylabs.io/c/0f6898986ad0b646b5ce6deba21781ac62cb7e0a86a5153bbb31732ee6593f43/guides/singularitypro35-user-guide/)
+    * [Making use of private images from Private Registries](https://repo.sylabs.io/c/0f6898986ad0b646b5ce6deba21781ac62cb7e0a86a5153bbb31732ee6593f43/guides/singularitypro35-user-guide/singularity_and_docker.html?highlight=support%20docker%20oci#making-use-of-private-images-from-private-registries)
 
 ## Q. NGC CLIが実行できない
 
@@ -43,10 +48,23 @@ ImportError: /lib64/libc.so.6: version `GLIBC_2.18' not found (required by /tmp/
 
 以下のようなシェルスクリプトを用意することで、Singularityを使って実行させることができます。NGC CLIに限らず、一般的に使えるテクニックです。
 
+**Singularity 2.6**
+
 ```
 #!/bin/sh
 source /etc/profile.d/modules.sh
 module load singularity/2.6.1
+
+NGC_HOME=$HOME/ngc
+singularity exec $NGC_HOME/ubuntu-18.04.simg $NGC_HOME/ngc $@
+```
+
+**Singularity PRO 3.5**
+
+```
+#!/bin/sh
+source /etc/profile.d/modules.sh
+module load singularitypro/3.5
 
 NGC_HOME=$HOME/ngc
 singularity exec $NGC_HOME/ubuntu-18.04.simg $NGC_HOME/ngc $@
@@ -121,35 +139,38 @@ Currently Loaded Modulefiles:
 !!! note
     CUDA対応版の機能はOpen MPIのサイトで確認できます: [FAQ: Running CUDA-aware Open MPI](https://www.open-mpi.org/faq/?category=runcuda)
 
-## Q. Open MPIが "PML add procs failed" というメッセージを出してエラーで終了してしまう
+## Q. ジョブの混雑状況を知りたい
 
-バージョンよっては、下記のようなメッセージを出して mpirun がエラーで終了してしまうことがあります。
+ジョブの混雑状況に加え、計算ノードの利用状況、データセンター全体の消費電力やPUE、冷却設備の稼働状況等を可視化するWebサービスを動作させています。
+ABCI内部サーバ`vws1`の3000/tcpポートで動作していますので、以下の通りにアクセスできます。
 
-```
---------------------------------------------------------------------------
-It looks like MPI_INIT failed for some reason; your parallel process is
-likely to abort.  There are many reasons that a parallel process can
-fail during MPI_INIT; some of which are due to configuration or environment
-problems.  This failure appears to be an internal failure; here's some
-additional information (which may only be relevant to an Open MPI
-developer):
-
-  PML add procs failed
-    --> Returned "Error" (-1) instead of "Success" (0)
-	--------------------------------------------------------------------------
-	[g0080:118482] *** An error occurred in MPI_Init
-	[g0080:118482] *** reported by process [859504641,0]
-	[g0080:118482] *** on a NULL communicator
-	[g0080:118482] *** Unknown error
-	[g0080:118482] *** MPI_ERRORS_ARE_FATAL (processes in this communicator will now abort,
-	[g0080:118482] ***    and potentially your MPI job)
-	[g0080.abci.local:118472] 3 more processes have sent help message help-mpi-runtime.txt / mpi_init:startup:internal-failure
-	[g0080.abci.local:118472] Set MCA parameter "orte_base_help_aggregate" to 0 to see all help / error messages
-	[g0080.abci.local:118472] 3 more processes have sent help message help-mpi-errors.txt / mpi_errors_are_fatal unknown handle
-```
-
-これは、以下のように ob1 PML コンポーネントを指定することで回避できる場合があります。
+SSHトンネルの設定をしてください。
+以下の例では、ローカルPCの`$HOME/.ssh/config`に、ProxyCommandを用いてas.abci.ai経由でABCI内部サーバにSSHトンネル接続する設定をしています。
+ABCIシステム利用環境の[SSHクライアントによるログイン::一般的なログイン方法](./02.md#general-method)も参考にしてください。
 
 ```shell
-$ mpirun --mca pml ob1 a.out
+Host *.abci.local
+    User         username
+    IdentityFile /path/identity_file
+    ProxyCommand ssh -W %h:%p -l username -i /path/identity_file as.abci.ai
 ```
+
+ローカルPCの3000番ポートをvws1サーバの3000/tcpポートに転送するSSHトンネルを作成します。
+
+```shell
+[username@userpc ~]$ ssh -L 3000:vws1:3000 es.abci.local
+```
+
+ブラウザで`http://localhost:3000/`にアクセスします。
+
+!!! note
+    ABCI User Groupでは、インタラクティブノード上で混雑状況を確認する方法が紹介されていますので、こちらもご参照ください。
+
+    - [ABCIの混雑具合を確認する](https://abciug.abci.ai/abci%e5%88%a9%e7%94%a8%e3%81%ae%e8%b1%86%e7%9f%a5%e8%ad%98/abci%e3%81%ae%e6%b7%b7%e9%9b%91%e5%85%b7%e5%90%88%e3%82%92%e7%a2%ba%e8%aa%8d%e3%81%99%e3%82%8b_i6)
+    - [ABCIの混雑具合を確認する（その２）](https://abciug.abci.ai/abci%e5%88%a9%e7%94%a8%e3%81%ae%e8%b1%86%e7%9f%a5%e8%ad%98/abci%e3%81%ae%e6%b7%b7%e9%9b%91%e5%85%b7%e5%90%88%e3%82%92%e7%a2%ba%e8%aa%8d%e3%81%99%e3%82%8b%e3%81%9d%e3%81%ae%ef%bc%92_i10)
+    - [ABCIの空ノード数を調べる](https://abciug.abci.ai/abci%e5%88%a9%e7%94%a8%e3%81%ae%e8%b1%86%e7%9f%a5%e8%ad%98/abci%e3%81%ae%e7%a9%ba%e3%83%8e%e3%83%bc%e3%83%89%e6%95%b0%e3%82%92%e8%aa%bf%e3%81%b9%e3%82%8b_i16)
+
+## Q. ダウンロード済みのデータセットはありませんか?
+
+[こちら](tips/datasets.md)のページをご参照ください。
+

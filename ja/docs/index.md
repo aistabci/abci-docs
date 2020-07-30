@@ -24,11 +24,12 @@
   - Tips:
     - [リモートデスクトップの利用](tips/remote-desktop.md)
     - [AWS CLIの利用](tips/awscli.md)
-    - [GCC 7.3.0の利用](tips/gcc-7.3.0.md)
     - [Tera Termの利用](tips/tera-term.md)
     - [PuTTYの利用](tips/putty.md)
     - [Jupyter Notebookの利用](tips/jupyter-notebook.md)
     - [Singularity Global Clientの利用](tips/sregistry-cli.md)
+    - [Spackによるソフトウェア管理](tips/spack.md)
+    - [データセットの利用](tips/datasets.md)
   - [NVIDIA GPU Cloud (NGC)](ngc.md)
   - ABCI クラウドストレージ:
     - [概要](abci-cloudstorage.md)

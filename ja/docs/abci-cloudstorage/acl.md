@@ -108,8 +108,7 @@ $ aws --endpoint-url https://s3.abci.ai s3api list-buckets
 [username@es1 ~]$ aws --endpoint-url https://s3.abci.ai s3api put-object-acl --acl private --bucket test-share --key test/testdata
 ```
 
-!!! caution
-    現時点では、問題が確認されているため、バケットに他グループのwrite許可を設定しないでください。対応状況については、[既知の問題](../known-issues.md) を参照ください。
+バケットに他のグループのwrite権限を付与し、他のグループがオブジェクトをアップロードした場合、そのオブジェクトにかかるABCIポイントは、バケットを所有しているグループから差し引かれます。
 
 ### ABCIクラウドストレージの全アカウントに公開 {#open-to-all-accounts-on-abci-cloud-storage}
 
