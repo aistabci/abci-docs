@@ -36,6 +36,7 @@ nav:
     - 'Singularity Global Client': 'tips/sregistry-cli.md'
     - 'Spack': 'tips/spack.md'
     - 'Datasets': 'tips/datasets.md'
+    - 'AWS ECR': 'tips/dl-amazon-ecr.md'
   - 'NVIDIA GPU Cloud (NGC)': 'ngc.md'
   - 'ABCI Cloud Storage':
     - 'Overview': 'abci-cloudstorage.md'
