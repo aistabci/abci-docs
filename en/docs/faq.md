@@ -185,3 +185,8 @@ Example）
 [username@g0001~]$ module load singularitypro/3.5
 [username@g0001~]$ singularity run --nv docker://caffe2ai/caffe2:latest
 ```
+
+## Q. In Singularity, Image file creation for "build --fakeroot" fails
+
+If you cannot access the group area by effective gid, `build --fakeroot` operation causes errore due to a permission problem.
+This problem can be avoided by changing `effective gid` with the `newgrp` command.
