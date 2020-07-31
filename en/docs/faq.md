@@ -177,7 +177,7 @@ INFO:    Converting OCI blobs to SIF format
 FATAL:   While making image from oci registry: while building SIF from layers: unable to create new build: while searching for mksquashfs: exec: "mksquashfs": executable file not found in $PATH
 ```
 
-The problem can be avoided by setting pass `/usr/sbin` like this:
+The problem can be avoided by adding `/usr/sbin` to PATH like this:
 
 Example）
 ```
