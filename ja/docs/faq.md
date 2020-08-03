@@ -191,8 +191,3 @@ FATAL:   While making image from oci registry: while building SIF from layers: u
 [username@g0001~]$ module load singularitypro/3.5
 [username@g0001~]$ singularity run --nv docker://caffe2ai/caffe2:latest
 ```
-
-## Q. Singularityにてbuild --fakerootでのイメージファイル作成に失敗する
-
-build --fakeroot はeffective gidで該当のグループ領域にアクセスできない場合、権限の問題でエラーが発生します。
-これは、`newgrp`コマンドで`effective gid`を変更いただくことで回避可能です。
