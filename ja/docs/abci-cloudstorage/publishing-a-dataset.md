@@ -26,7 +26,7 @@ upload: sensor1/0002.dat to s3://example-dataset/sensor1/0002.dat
 
 ## 2. 公開データセットの登録 {#registration}
 
-[こちら](https://datasets.abci.ai/dataset.yaml)のYAMLファイルを手元にダウンロードし、下記を参考に公開データセットに関する基本情報を記入して下さい。
+[こちら](https://datasets.abci.ai/dataset.yaml)のYAMLファイルを手元にダウンロードし、下記を参考に公開データセットに関する基本情報を記入して下さい。UsageInfo には、後述の index.html または別途用意するページの URL を記入します。
 
 ```yaml
 # required
@@ -39,13 +39,13 @@ Description: This is a fictitious dataset
 Keywords: image processing, health
 
 # required
-UsageInfo: https://example.com/dataset/
+UsageInfo: https://example-dataset.s3-website.abci.ai/
 
 Distribution: # (do not fill in this line)
 
   # XML, CSV, GeoTIFF, etc.
   EncodingFormat: DICOM
-  ContentURL: https://example.com/download/  # required
+  ContentURL: https://example-dataset.s3.abci.ai/abc.zip  # optional
 
 Creator: # (do not fill in this line)
 
@@ -106,4 +106,3 @@ HTMLファイルが問題なく生成されたら、データセットを公開�
 <!-- 要検討：URL 以外の必要情報 -->
 
 登録が完了したデータセットは <https://datasets.abci.ai/> に一覧表示されます。
-
