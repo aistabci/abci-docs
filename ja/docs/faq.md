@@ -28,14 +28,14 @@ Singularity version 2.6およびSingularity PRO version 3.5には``docker login`
 
 Singularity version 2.6の認証に関する詳細は、以下をご参照ください。
 
-* [Singularity Container Documentation](https://www.sylabs.io/guides/2.6/user-guide.pdf)
-    * 14.6 How do I specify my Docker image?
-    * 14.7 Custom Authentication
+* [Singularity 2.6 User Guide](https://www.sylabs.io/guides/2.6/user-guide/)  
+    * [How do I specify my Docker image?](https://sylabs.io/guides/2.6/user-guide/singularity_and_docker.html#how-do-i-specify-my-docker-image)
+    * [Custom Authentication](https://sylabs.io/guides/2.6/user-guide/singularity_and_docker.html#custom-authentication)
 
 Singularity PRO version 3.5の認証に関する詳細は、以下をご参照ください。
 
-* [Singularity Container Documentation](https://www.sylabs.io/guides/3.5/user-guide.pdf)
-    * 2.4 Support for Docker and OCI
+* [Singularity PRO 3.5 User Guide](https://repo.sylabs.io/c/0f6898986ad0b646b5ce6deba21781ac62cb7e0a86a5153bbb31732ee6593f43/guides/singularitypro35-user-guide/)
+    * [Making use of private images from Private Registries](https://repo.sylabs.io/c/0f6898986ad0b646b5ce6deba21781ac62cb7e0a86a5153bbb31732ee6593f43/guides/singularitypro35-user-guide/singularity_and_docker.html?highlight=support%20docker%20oci#making-use-of-private-images-from-private-registries)
 
 ## Q. NGC CLIが実行できない
 
