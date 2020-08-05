@@ -1,6 +1,6 @@
 # NVIDIA GPU Cloud (NGC)
 
-[NVIDIA GPU Cloud (NGC)](https://ngc.nvidia.com/) provides Docker images for GPU-optimized deep learning framework containers and HPC application containers and NGC container registry to distribute them.
+[NVIDIA NGC](https://ngc.nvidia.com/) (hereinafter referred to as "NGC") provides Docker images for GPU-optimized deep learning framework containers and HPC application containers and NGC container registry to distribute them.
 ABCI allows users to execute NGC-provided Docker images easily by using [Singularity](09.md#singularity).
 
 In this page, we will explain the procedure to use Docker images registered in NGC container registry with ABCI.
