@@ -26,7 +26,7 @@ upload: sensor1/0002.dat to s3://example-dataset/sensor1/0002.dat
 
 ## 2. 公開データセットの登録 {#registration}
 
-[こちら](https://datasets.abci.ai/dataset.yaml)のYAMLファイルを手元にダウンロードし、下記を参考に公開データセットに関する基本情報を記入して下さい。UsageInfo には、後述の index.html または別途用意するページの URL を記入します。
+[こちら](https://datasets.abci.ai/dataset.yaml)のYAMLファイルを手元にダウンロードし、下記を参考に公開データセットに関する基本情報を記入して下さい。UsageInfo には、後述の index.html または別途用意するページの URL を記入します。UsageInfo には、データファイルまたはデータファイルのリストが記載されているページの URL を記入します。
 
 ```yaml
 # required
@@ -45,7 +45,7 @@ Distribution: # (do not fill in this line)
 
   # XML, CSV, GeoTIFF, etc.
   EncodingFormat: DICOM
-  ContentURL: https://example-dataset.s3.abci.ai/abc.zip  # optional
+  ContentURL: https://example-dataset.s3.abci.ai/abc.zip  # required
 
 Creator: # (do not fill in this line)
 
@@ -54,7 +54,7 @@ Creator: # (do not fill in this line)
   ContactPoint: # (do not fill in this line)
     # Either one is (or both are) required
     Email: dataset@example.com
-    URL: https://example.com/contact
+    URL: https://example.com/contact/
 
 License: # (do not fill in this line)
 
