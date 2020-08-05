@@ -30,7 +30,7 @@ All users who use this system are strongly recommended to read this document, as
     - [Singularity Global Client](tips/sregistry-cli.md)
     - [Spack](tips/spack.md)
     - [Datasets](tips/datasets.md)
-  - [NVIDIA GPU Cloud (NGC)](ngc.md)
+  - [NVIDIA NGC](ngc.md)
   - ABCI Cloud Storage:
     - [Overview](abci-cloudstorage.md)
     - [Accounts and Access keys](abci-cloudstorage/cs-account.md)
