@@ -40,7 +40,8 @@ nav:
     - 'Singularity Global Clientの利用': 'tips/sregistry-cli.md'
     - 'Spackによるソフトウェア管理': 'tips/spack.md'
     - 'データセットの利用': 'tips/datasets.md'
-  - 'NVIDIA GPU Cloud (NGC)': 'ngc.md'
+    - 'Amazon ECR からコンテナ取得': 'tips/dl-amazon-ecr.md'
+  - 'NVIDIA NGC': 'ngc.md'
   - 'ABCI クラウドストレージ':
     - '概要': 'abci-cloudstorage.md'
     - 'アカウントとアクセスキー': 'abci-cloudstorage/cs-account.md'

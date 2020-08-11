@@ -168,3 +168,20 @@ You can access the service by opening `http://localhost:3000/` on your favorite 
 
 Please see [this page](tips/datasets.md).
 
+## Q. Image file creation with Singularity pull fails in batch job
+
+When you try to create an image file with Singularity pull in a batch job, the mksquashfs executable file may not be found and the creation may fail.
+
+```
+INFO:    Converting OCI blobs to SIF format
+FATAL:   While making image from oci registry: while building SIF from layers: unable to create new build: while searching for mksquashfs: exec: "mksquashfs": executable file not found in $PATH
+```
+
+The problem can be avoided by adding `/usr/sbin` to PATH like this:
+
+Example）
+```
+[username@g0001~]$ PATH="$PATH:/usr/sbin" 
+[username@g0001~]$ module load singularitypro/3.5
+[username@g0001~]$ singularity run --nv docker://caffe2ai/caffe2:latest
+```
