@@ -37,8 +37,8 @@ If you encounter any of the following, please report it to us likewise.
 
 * A hardware error
 * A software error
-    * Problem with the software installed on ABCI
-    * Problem with batch jobs
-    * Problem with ABCI Cloud Storage
+    * A problem with the software installed on ABCI
+    * A problem with batch jobs
+    * A problem with ABCI Cloud Storage
 * A network problem
 
