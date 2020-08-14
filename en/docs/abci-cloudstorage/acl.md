@@ -134,7 +134,7 @@ Two standard ACLs open buckets and objects to the public, which enable any inter
     Before you grant read access to everyone in the world, please read the following agreements carefully, and make sure it is appropriate to do so.
     
     * [ABCI agreement and rules](https://abci.ai/en/how_to_use/)
-    * [ABCI Cloud Storage Terms of Use](https://abci.ai/en/how_to_use/data/cloudstorage-agreement.pdf)
+    * [ABCI Cloud Storage Terms of Use](https://abci.ai/en/how_to_use/data/Cloudstorage-agreement-en.pdf)
 
 !!! caution
     Please do not use 'public-read-write' due to the possibility of unintended use by a third party.
