@@ -42,4 +42,4 @@
   - [既知の問題](known-issues.md)
   - [システム更新履歴](system-updates.md)
   - [運転状況](https://abci.ai/ja/about_abci/info.html)
-  - [問い合わせ](contact.md)
+  - [お問い合わせ](contact.md)
