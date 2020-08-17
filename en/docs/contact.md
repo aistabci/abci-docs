@@ -5,18 +5,18 @@ ABCI User Support accepts the following inquiries and reports (weekdays 9:00-17:
 * Inquiries regarding usage procedures
     * How to log in
     * How to submit a batch job
-	* How to transfer data
+    * How to transfer data
     * etc.
 * Inquiries regarding the software environment
     * How to use the software installed on ABCI
-	* How to install typical software/framework
+    * How to install typical software/framework
     * etc.
 * Hardware errors
 * Software problems
     * Problems with using the software installed on ABCI
     * Problems with the batch job scheduler
     * Problems with the ABCI Cloud Storage
-	* etc.
+    * etc.
 * Network problems
 * Inquiries about this User Guide
 
