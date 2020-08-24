@@ -1,5 +1,15 @@
 # System Updates
 
+## 2020-07-31
+
+| Add / Update / Delete | Software | Version | Previous version |
+|:--|:--|:--|:--|
+| Add | Singularity PRO | 3.5 | |
+| Add | cuDNN | [8.0.2](https://docs.nvidia.com/deeplearning/sdk/cudnn-release-notes/rel_8.html#rel-802) | |
+| Add | NCCL | [2.7.8-1](https://docs.nvidia.com/deeplearning/nccl/release-notes/rel_2-7-8.html) | |
+| Add | mvapich2-gdr | 2.3.4 | |
+| Add | mvapich2 | 2.3.4 | |
+
 ## 2020-06-01
 
 | Add / Update / Delete | Software | Version | Previous version |
@@ -29,7 +39,7 @@ If you need MVAPICH2-GDR for PGI, please contact Customer Support.
 | Add | R | 3.6.3 | |
 | Add | cmake | 3.16<br>3.17 | |
 | Add | go | 1.12<br>1.13 | |
-| Add | intel-advisor | 2017.6<br>2018.4<br>2019.5 | |
+| Add | intel-advisor | 2017.5<br>2018.4<br>2019.5 | |
 | Add | intel-inspector | 2017.4<br>2018.4<br>2019.5 | |
 | Add | intel-itac | 2017.0.4<br>2018.0.4<br>2019.0.5 | |
 | Add | intel-mkl | 2017.0.4<br>2018.0.4<br>2019.0.5 | |
@@ -38,7 +48,7 @@ If you need MVAPICH2-GDR for PGI, please contact Customer Support.
 | Add | openjdk | 1.8.0.242<br>11.0.6.10 | |
 | Add | python | 3.7.6<br>3.8.2 | |
 | Add | gdrcopy | 2.0 | |
-| Add | nccl | [2.6.4-1](https://docs.nvidia.com/deeplearning/sdk/nccl-release-notes/rel_2-6-x.html) | |
+| Add | nccl | [2.6.4-1](https://docs.nvidia.com/deeplearning/nccl/release-notes/rel_2-6-4.html) | |
 | Add | intel-mpi | 2017.4<br>2018.4<br>2019.5 | |
 | Add | mvapich2-gdr | 2.3.3 | |
 | Add | mvapich2 | 2.3.3 | |

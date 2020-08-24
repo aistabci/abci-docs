@@ -28,7 +28,9 @@
     - [PuTTYの利用](tips/putty.md)
     - [Jupyter Notebookの利用](tips/jupyter-notebook.md)
     - [Singularity Global Clientの利用](tips/sregistry-cli.md)
-  - [NVIDIA GPU Cloud (NGC)](ngc.md)
+    - [Spackによるソフトウェア管理](tips/spack.md)
+    - [データセットの利用](tips/datasets.md)
+  - [NVIDIA NGC](ngc.md)
   - ABCI クラウドストレージ:
     - [概要](abci-cloudstorage.md)
     - [アカウントとアクセスキー](abci-cloudstorage/cs-account.md)
@@ -41,3 +43,4 @@
   - [既知の問題](known-issues.md)
   - [システム更新履歴](system-updates.md)
   - [運転状況](https://abci.ai/ja/about_abci/info.html)
+  - [お問い合わせ](contact.md)

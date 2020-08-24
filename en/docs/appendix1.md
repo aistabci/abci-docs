@@ -1281,6 +1281,131 @@
 [root@g0001 mvapich2-2.3.3]# make install 2>&1 | tee make_install.log
 ```
 
+
+### MVAPICH2 2.3.4 (for GCC 4.8.5)
+
+#### w/o CUDA
+
+```
+[username@g0001 ~]$ INSTALL_DIR=/apps/mvapich2/2.3.4/gcc4.8.5
+[username@g0001 ~]$ wget https://mvapich.cse.ohio-state.edu/download/mvapich/mv2/mvapich2-2.3.4.tar.gz
+[username@g0001 ~]$ tar zxf mvapich2-2.3.4.tar.gz
+[username@g0001 ~]$ cd mvapich2-2.3.4
+[username@g0001 mvapich2-2.3.4]$ ./configure --prefix=$INSTALL_DIR 2>&1 | tee configure.log
+[username@g0001 mvapich2-2.3.4]$ make -j8 2>&1 | tee make.log
+[username@g0001 mvapich2-2.3.4]$ su
+[root@g0001 mvapich2-2.3.4]# make install 2>&1 | tee -a make_install.log
+```
+
+### MVAPICH2 2.3.4 (for PGI 17.10)
+
+#### w/o CUDA
+
+```
+[username@g0001 ~]$ INSTALL_DIR=/apps/mvapich2/2.3.4/pgi17.10
+[username@g0001 ~]$ wget wget https://mvapich.cse.ohio-state.edu/download/mvapich/mv2/mvapich2-2.3.4.tar.gz
+[username@g0001 ~]$ tar zxf mvapich2-2.3.4.tar.gz
+[username@g0001 ~]$ cd mvapich2-2.3.4
+[username@g0001 mvapich2-2.3.4]$ module load pgi/17.10
+[username@g0001 mvapich2-2.3.4]$ export FC=$PGI/bin/pgf90
+[username@g0001 mvapich2-2.3.4]$ export FCFLAGS=-noswitcherror
+[username@g0001 mvapich2-2.3.4]$ export F77=$PGI/bin/pgfortran
+[username@g0001 mvapich2-2.3.4]$ export FFLAGS=-noswitcherror
+[username@g0001 mvapich2-2.3.4]$ export CXXFLAGS="-noswitcherror -fPIC -g"
+[username@g0001 mvapich2-2.3.4]$ export CPP=cpp
+[username@g0001 mvapich2-2.3.4]$ export CPPFLAGS=-g
+[username@g0001 mvapich2-2.3.4]$ export LDFLAGS="-lstdc++"
+[username@g0001 mvapich2-2.3.4]$ export MPICHLIB_CFLAGS=-O0
+[username@g0001 mvapich2-2.3.4]$ ./configure \
+  --prefix=$INSTALL_DIR \
+  2>&1 | tee configure.log
+[username@g0001 mvapich2-2.3.4]$ make -j8 2>&1 | tee make.log
+[username@g0001 mvapich2-2.3.4]$ su
+[root@g0001 mvapich2-2.3.4]# make install 2>&1 | tee make_install.log
+```
+
+
+### MVAPICH2 2.3.4 (for PGI 18.10)
+
+#### w/o CUDA
+
+```
+[username@g0001 ~]$ INSTALL_DIR=/apps/mvapich2/2.3.4/pgi18.10
+[username@g0001 ~]$ wget wget https://mvapich.cse.ohio-state.edu/download/mvapich/mv2/mvapich2-2.3.4.tar.gz
+[username@g0001 ~]$ tar zxf mvapich2-2.3.4.tar.gz
+[username@g0001 ~]$ cd mvapich2-2.3.4
+[username@g0001 mvapich2-2.3.4]$ module load pgi/18.10
+[username@g0001 mvapich2-2.3.4]$ export FC=$PGI/bin/pgf90
+[username@g0001 mvapich2-2.3.4]$ export FCFLAGS=-noswitcherror
+[username@g0001 mvapich2-2.3.4]$ export F77=$PGI/bin/pgfortran
+[username@g0001 mvapich2-2.3.4]$ export FFLAGS=-noswitcherror
+[username@g0001 mvapich2-2.3.4]$ export CXXFLAGS="-noswitcherror -fPIC -g"
+[username@g0001 mvapich2-2.3.4]$ export CPP=cpp
+[username@g0001 mvapich2-2.3.4]$ export CPPFLAGS=-g
+[username@g0001 mvapich2-2.3.4]$ export LDFLAGS="-lstdc++"
+[username@g0001 mvapich2-2.3.4]$ export MPICHLIB_CFLAGS=-O0
+[username@g0001 mvapich2-2.3.4]$ ./configure \
+  --prefix=$INSTALL_DIR \
+  2>&1 | tee configure.log
+[username@g0001 mvapich2-2.3.4]$ make -j8 2>&1 | tee make.log
+[username@g0001 mvapich2-2.3.4]$ su
+[root@g0001 mvapich2-2.3.4]# make install 2>&1 | tee make_install.log
+```
+
+### MVAPICH2 2.3.4 (for PGI 19.10)
+
+#### w/o CUDA
+
+```
+[username@g0001 ~]$ INSTALL_DIR=/apps/mvapich2/2.3.4/pgi19.10
+[username@g0001 ~]$ wget wget https://mvapich.cse.ohio-state.edu/download/mvapich/mv2/mvapich2-2.3.4.tar.gz
+[username@g0001 ~]$ tar zxf mvapich2-2.3.4.tar.gz
+[username@g0001 ~]$ cd mvapich2-2.3.4
+[username@g0001 mvapich2-2.3.4]$ module load pgi/19.10
+[username@g0001 mvapich2-2.3.4]$ export FC=$PGI/bin/pgf90
+[username@g0001 mvapich2-2.3.4]$ export FCFLAGS=-noswitcherror
+[username@g0001 mvapich2-2.3.4]$ export F77=$PGI/bin/pgfortran
+[username@g0001 mvapich2-2.3.4]$ export FFLAGS=-noswitcherror
+[username@g0001 mvapich2-2.3.4]$ export CXXFLAGS="-noswitcherror -fPIC -g"
+[username@g0001 mvapich2-2.3.4]$ export CPP=cpp
+[username@g0001 mvapich2-2.3.4]$ export CPPFLAGS=-g
+[username@g0001 mvapich2-2.3.4]$ export LDFLAGS="-lstdc++"
+[username@g0001 mvapich2-2.3.4]$ export MPICHLIB_CFLAGS=-O0
+[username@g0001 mvapich2-2.3.4]$ ./configure \
+  --prefix=$INSTALL_DIR \
+  2>&1 | tee configure.log
+[username@g0001 mvapich2-2.3.4]$ make -j8 2>&1 | tee make.log
+[username@g0001 mvapich2-2.3.4]$ su
+[root@g0001 mvapich2-2.3.4]# make install 2>&1 | tee make_install.log
+```
+
+### MVAPICH2 2.3.4 (for PGI 20.1)
+
+#### w/o CUDA
+
+```
+[username@g0001 ~]$ INSTALL_DIR=/apps/mvapich2/2.3.4/pgi20.1
+[username@g0001 ~]$ wget wget https://mvapich.cse.ohio-state.edu/download/mvapich/mv2/mvapich2-2.3.4.tar.gz
+[username@g0001 ~]$ tar zxf mvapich2-2.3.4.tar.gz
+[username@g0001 ~]$ cd mvapich2-2.3.4
+[username@g0001 mvapich2-2.3.4]$ module load pgi/20.1
+[username@g0001 mvapich2-2.3.4]$ export FC=$PGI/bin/pgf90
+[username@g0001 mvapich2-2.3.4]$ export FCFLAGS=-noswitcherror
+[username@g0001 mvapich2-2.3.4]$ export F77=$PGI/bin/pgfortran
+[username@g0001 mvapich2-2.3.4]$ export FFLAGS=-noswitcherror
+[username@g0001 mvapich2-2.3.4]$ export CXXFLAGS="-noswitcherror -fPIC -g"
+[username@g0001 mvapich2-2.3.4]$ export CPP=cpp
+[username@g0001 mvapich2-2.3.4]$ export CPPFLAGS=-g
+[username@g0001 mvapich2-2.3.4]$ export LDFLAGS="-lstdc++"
+[username@g0001 mvapich2-2.3.4]$ export MPICHLIB_CFLAGS=-O0
+[username@g0001 mvapich2-2.3.4]$ ./configure \
+  --prefix=$INSTALL_DIR \
+  2>&1 | tee configure.log
+[username@g0001 mvapich2-2.3.4]$ make -j8 2>&1 | tee make.log
+[username@g0001 mvapich2-2.3.4]$ su
+[root@g0001 mvapich2-2.3.4]# make install 2>&1 | tee make_install.log
+```
+
 ## Python
 
 ### Python 2.7.15

@@ -18,7 +18,7 @@ ABCIでは、グループ領域のブロックサイズは128KB、ホーム領�
 
 ## Q. 認証が必要なコンテナレジストリをSingularityで利用できない
 
-Singularity version 2.6には``docker login``相当の機能として、環境変数で認証情報を与える機能があります。
+Singularity version 2.6およびSingularity PRO version 3.5には``docker login``相当の機能として、環境変数で認証情報を与える機能があります。
 
 ```shell
 [username@es ~]$ export SINGULARITY_DOCKER_USERNAME='username'
@@ -28,9 +28,14 @@ Singularity version 2.6には``docker login``相当の機能として、環境�
 
 Singularity version 2.6の認証に関する詳細は、以下をご参照ください。
 
-* [Singularity Container Documentation](https://www.sylabs.io/guides/2.6/user-guide.pdf)
-    * 14.6 How do I specify my Docker image?
-    * 14.7 Custom Authentication
+* [Singularity 2.6 User Guide](https://www.sylabs.io/guides/2.6/user-guide/)  
+    * [How do I specify my Docker image?](https://sylabs.io/guides/2.6/user-guide/singularity_and_docker.html#how-do-i-specify-my-docker-image)
+    * [Custom Authentication](https://sylabs.io/guides/2.6/user-guide/singularity_and_docker.html#custom-authentication)
+
+Singularity PRO version 3.5の認証に関する詳細は、以下をご参照ください。
+
+* [Singularity PRO 3.5 User Guide](https://repo.sylabs.io/c/0f6898986ad0b646b5ce6deba21781ac62cb7e0a86a5153bbb31732ee6593f43/guides/singularitypro35-user-guide/)
+    * [Making use of private images from Private Registries](https://repo.sylabs.io/c/0f6898986ad0b646b5ce6deba21781ac62cb7e0a86a5153bbb31732ee6593f43/guides/singularitypro35-user-guide/singularity_and_docker.html?highlight=support%20docker%20oci#making-use-of-private-images-from-private-registries)
 
 ## Q. NGC CLIが実行できない
 
@@ -43,10 +48,23 @@ ImportError: /lib64/libc.so.6: version `GLIBC_2.18' not found (required by /tmp/
 
 以下のようなシェルスクリプトを用意することで、Singularityを使って実行させることができます。NGC CLIに限らず、一般的に使えるテクニックです。
 
+**Singularity 2.6**
+
 ```
 #!/bin/sh
 source /etc/profile.d/modules.sh
 module load singularity/2.6.1
+
+NGC_HOME=$HOME/ngc
+singularity exec $NGC_HOME/ubuntu-18.04.simg $NGC_HOME/ngc $@
+```
+
+**Singularity PRO 3.5**
+
+```
+#!/bin/sh
+source /etc/profile.d/modules.sh
+module load singularitypro/3.5
 
 NGC_HOME=$HOME/ngc
 singularity exec $NGC_HOME/ubuntu-18.04.simg $NGC_HOME/ngc $@
@@ -151,3 +169,25 @@ Host *.abci.local
     - [ABCIの混雑具合を確認する](https://abciug.abci.ai/abci%e5%88%a9%e7%94%a8%e3%81%ae%e8%b1%86%e7%9f%a5%e8%ad%98/abci%e3%81%ae%e6%b7%b7%e9%9b%91%e5%85%b7%e5%90%88%e3%82%92%e7%a2%ba%e8%aa%8d%e3%81%99%e3%82%8b_i6)
     - [ABCIの混雑具合を確認する（その２）](https://abciug.abci.ai/abci%e5%88%a9%e7%94%a8%e3%81%ae%e8%b1%86%e7%9f%a5%e8%ad%98/abci%e3%81%ae%e6%b7%b7%e9%9b%91%e5%85%b7%e5%90%88%e3%82%92%e7%a2%ba%e8%aa%8d%e3%81%99%e3%82%8b%e3%81%9d%e3%81%ae%ef%bc%92_i10)
     - [ABCIの空ノード数を調べる](https://abciug.abci.ai/abci%e5%88%a9%e7%94%a8%e3%81%ae%e8%b1%86%e7%9f%a5%e8%ad%98/abci%e3%81%ae%e7%a9%ba%e3%83%8e%e3%83%bc%e3%83%89%e6%95%b0%e3%82%92%e8%aa%bf%e3%81%b9%e3%82%8b_i16)
+
+## Q. ダウンロード済みのデータセットはありませんか?
+
+[こちら](tips/datasets.md)のページをご参照ください。
+
+## Q. バッチジョブでSingularity pullでのイメージファイル作成に失敗する
+
+バッチジョブでSingularity pullでのイメージファイルを作成しようとした際に、mksquashfs の実行ファイルが見つからず作成に失敗することがあります。
+
+```
+INFO:    Converting OCI blobs to SIF format
+FATAL:   While making image from oci registry: while building SIF from layers: unable to create new build: while searching for mksquashfs: exec: "mksquashfs": executable file not found in $PATH
+```
+
+これは、以下のように、`/usr/sbin` にパスを通すことで回避できます。 
+
+実行例）
+```
+[username@g0001~]$ PATH="$PATH:/usr/sbin" 
+[username@g0001~]$ module load singularitypro/3.5
+[username@g0001~]$ singularity run --nv docker://caffe2ai/caffe2:latest
+```

@@ -28,7 +28,9 @@ All users who use this system are strongly recommended to read this document, as
     - [PuTTY](tips/putty.md)
     - [Jupyter Notebook](tips/jupyter-notebook.md)
     - [Singularity Global Client](tips/sregistry-cli.md)
-  - [NVIDIA GPU Cloud (NGC)](ngc.md)
+    - [Spack](tips/spack.md)
+    - [Datasets](tips/datasets.md)
+  - [NVIDIA NGC](ngc.md)
   - ABCI Cloud Storage:
     - [Overview](abci-cloudstorage.md)
     - [Accounts and Access keys](abci-cloudstorage/cs-account.md)
@@ -40,3 +42,4 @@ All users who use this system are strongly recommended to read this document, as
   - [Known Issues](known-issues.md)
   - [System Updates](system-updates.md)
   - [Operation Status](https://abci.ai/en/about_abci/info.html)
+  - [Contact](contact.md)

@@ -18,7 +18,7 @@ ABCI sets the block size of the group area to 128 KB and the block size of the h
 
 ## Q. Singularity cannot use container registries that require authentication
 
-Singularity version 2.6 has a function equivalent to ``docker login`` that provides authentication information with environment variables.
+Singularity version 2.6 and Singularity PRO version 3.5 have a function equivalent to ``docker login`` that provides authentication information with environment variables.
 
 ```shell
 [username@es ~]$ export SINGULARITY_DOCKER_USERNAME='username'
@@ -28,9 +28,14 @@ Singularity version 2.6 has a function equivalent to ``docker login`` that provi
 
 For more information on Singularity version 2.6 authentication, see below.
 
-* [Singularity Container Documentation](https://www.sylabs.io/guides/2.6/user-guide.pdf)
-    * 14.6 How do I specify my Docker image?
-    * 14.7 Custom Authentication
+* [Singularity 2.6 User Guide](https://www.sylabs.io/guides/2.6/user-guide/)
+    * [How do I specify my Docker image?](https://sylabs.io/guides/2.6/user-guide/singularity_and_docker.html#how-do-i-specify-my-docker-image)
+    * [Custom Authentication](https://sylabs.io/guides/2.6/user-guide/singularity_and_docker.html#custom-authentication)  
+
+For more information on Singularity PRO version 3.5 authentication, see below.
+
+* [Singularity PRO 3.5 User Guide](https://repo.sylabs.io/c/0f6898986ad0b646b5ce6deba21781ac62cb7e0a86a5153bbb31732ee6593f43/guides/singularitypro35-user-guide/)  
+    * [Making use of private images from Private Registries](https://repo.sylabs.io/c/0f6898986ad0b646b5ce6deba21781ac62cb7e0a86a5153bbb31732ee6593f43/guides/singularitypro35-user-guide/singularity_and_docker.html?highlight=support%20docker%20oci#making-use-of-private-images-from-private-registries) 
 
 ## Q. NGC CLI cannot be executed
 
@@ -43,10 +48,23 @@ ImportError: /lib64/libc.so.6: version `GLIBC_2.18' not found (required by /tmp/
 
 By preparing the following shell script, it can be executed using Singularity. This technique can be used not only for NGC CLI but also for general use.
 
+**Singularity 2.6**
+
 ```
 #!/bin/sh
 source /etc/profile.d/modules.sh
 module load singularity/2.6.1
+
+NGC_HOME=$HOME/ngc
+singularity exec $NGC_HOME/ubuntu-18.04.simg $NGC_HOME/ngc $@
+```
+
+**Singularity PRO 3.5**
+
+```
+#!/bin/sh
+source /etc/profile.d/modules.sh
+module load singularitypro/3.5
 
 NGC_HOME=$HOME/ngc
 singularity exec $NGC_HOME/ubuntu-18.04.simg $NGC_HOME/ngc $@
@@ -145,3 +163,25 @@ You can create an SSH tunnel that transfers 3000/tcp on your PC to 3000/tcp on v
 ```
 
 You can access the service by opening `http://localhost:3000/` on your favorite browser.
+
+## Q. Are there any pre-downloaded datasets?
+
+Please see [this page](tips/datasets.md).
+
+## Q. Image file creation with Singularity pull fails in batch job
+
+When you try to create an image file with Singularity pull in a batch job, the mksquashfs executable file may not be found and the creation may fail.
+
+```
+INFO:    Converting OCI blobs to SIF format
+FATAL:   While making image from oci registry: while building SIF from layers: unable to create new build: while searching for mksquashfs: exec: "mksquashfs": executable file not found in $PATH
+```
+
+The problem can be avoided by adding `/usr/sbin` to PATH like this:
+
+Example）
+```
+[username@g0001~]$ PATH="$PATH:/usr/sbin" 
+[username@g0001~]$ module load singularitypro/3.5
+[username@g0001~]$ singularity run --nv docker://caffe2ai/caffe2:latest
+```

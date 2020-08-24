@@ -35,7 +35,9 @@ nav:
     - 'Jupyter Notebook': 'tips/jupyter-notebook.md'
     - 'Singularity Global Client': 'tips/sregistry-cli.md'
     - 'Spack': 'tips/spack.md'
-  - 'NVIDIA GPU Cloud (NGC)': 'ngc.md'
+    - 'Datasets': 'tips/datasets.md'
+    - 'Amazon ECR': 'tips/dl-amazon-ecr.md'
+  - 'NVIDIA NGC': 'ngc.md'
   - 'ABCI Cloud Storage':
     - 'Overview': 'abci-cloudstorage.md'
     - 'Accounts and Access keys': 'abci-cloudstorage/cs-account.md'
@@ -47,6 +49,7 @@ nav:
   - 'Known Issues': 'known-issues.md'
   - 'System Updates': 'system-updates.md'
   - 'Operation Status': 'https://abci.ai/en/about_abci/info.html'
+  - 'Contact': 'contact.md'
   - 'Links':
     - 'ABCI Web page': 'https://abci.ai/'
     - 'ABCI User Portal Guide': 'https://docs.abci.ai/portal/en/'
