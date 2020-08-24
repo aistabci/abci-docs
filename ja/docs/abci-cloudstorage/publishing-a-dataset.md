@@ -33,7 +33,7 @@ upload: sensor1/0002.dat to s3://example-dataset/sensor1/0002.dat
 Name: ABC Dataset
 
 # required
-Description: This is a fictitious dataset
+Description: This is a fictitious dataset .... (50 or more characters)
 
 # object detection, vehicle, action recognition, earth observation, etc.
 Keywords: image processing, health
