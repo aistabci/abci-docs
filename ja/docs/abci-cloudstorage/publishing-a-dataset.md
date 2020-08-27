@@ -8,7 +8,9 @@ ABCIクラウドストレージを用いてデータセットを一般に公開�
 
 ## 1. 公開設定 {#publishing}
 
-sensor1 というディレクトリに、データが記録されたファイルが複数入っているものとします。example-dataset というバケットを作り、そこにアップロードします。
+ABCIクラウドストレージにデータをアップロードし、[アクセス制御（１）](acl.md)を参考に公開設定（パブリックアクセスの設定）を行って下さい。
+
+以下では、ABCIクラウドストレージに example-dataset というバケットを作り、sensor1 というディレクトリに格納された複数のファイルをアップロードし、公開設定を行う例を示します。
 
 ```
 [username@es1 ~]$ module load aws-cli
@@ -21,55 +23,65 @@ upload: sensor1/0002.dat to s3://example-dataset/sensor1/0002.dat
 :
 ```
 
-`--acl public-read` を指定しているため、データは公開設定されています([アクセス制御（１）](acl.md)を参照)。ABCI外部からは、`https://example-dataset.s3.abci.ai/sensor1/0001.dat` のように指定してアクセスすることができます。利用者がダウンロードできるように、これらの URL のリストを用意してください。
+上記ではアップロート時に `--acl public-read` を指定しているため、アップロードが完了後、ABCIの外部から `https://example-dataset.s3.abci.ai/sensor1/0001.dat` 等の URL でアクセスができるようになります。
+
+<!-- データセットの利用者がダウンロードできるように、これらの URL のリストを用意して下さい。-->
 
 
 ## 2. 公開データセットの登録 {#registration}
 
-[こちら](https://datasets.abci.ai/dataset.yaml)のYAMLファイルを手元にダウンロードし、下記を参考に公開データセットに関する基本情報を記入して下さい。UsageInfo には、後述の index.html または別途用意するページの URL を記入します。UsageInfo には、データファイルまたはデータファイルのリストが記載されているページの URL を記入します。
+まず、[こちら](https://datasets.abci.ai/dataset.yaml)のYAMLファイルを手元にダウンロードし、下記を参考に公開データセットに関する基本情報を記入して下さい。
+
+<!--UsageInfo には、後述の index.html または別途用意するページの URL を記入します。UsageInfo には、データファイルまたはデータファイルのリストが記載されているページの URL を記入します。-->
 
 ```yaml
-# required
+# データセット名　※必須
 Name: ABC Dataset
 
-# required
-Description: This is a fictitious dataset .... (50 or more characters)
+# データセットの概要（50文字以上）　※必須
+Description: This is a fictitious dataset ....
 
-# object detection, vehicle, action recognition, earth observation, etc.
+# データセットに関するキーワード（object detection, vehicle, action recognition, earth observation, etc.）
 Keywords: image processing, health
 
-# required
+# より詳細な情報を記した Web ページ　※必須
+#  本YAMLから生成する index.html に詳細を追記する場合は、下記のように https://<バケット名>.s3-website.abci.ai/ を記入して下さい。
 UsageInfo: https://example-dataset.s3-website.abci.ai/
 
+# 配布方法
+#  EncodingFormat:  XML, CSV, GeoTIFF, etc.
+#  ContentURL: 公開データの URL　※必須
 Distribution: # (do not fill in this line)
-
-  # XML, CSV, GeoTIFF, etc.
   EncodingFormat: DICOM
-  ContentURL: https://example-dataset.s3.abci.ai/abc.zip  # required
+  ContentURL: https://example-dataset.s3.abci.ai/abc.zip
 
+# 作成者
+#  ContactPoint: Email or URL のいずれかは必須
 Creator: # (do not fill in this line)
-
   Name: ABC Team
   URL: https://example.com/about/
   ContactPoint: # (do not fill in this line)
-    # Either one is (or both are) required
     Email: dataset@example.com
     URL: https://example.com/contact/
 
+# ライセンス
+#  Name: MIT License, CC-BY-SA 4.0, Custom License, etc.
 License: # (do not fill in this line)
-
-  # MIT License, CC-BY-SA 4.0, Custom License, etc.
   Name: Custom License
   URL: https://example.com/dataset/LISENCE.txt
 
+# バージョン
 Version: 1.1b
+
+# データ作成日、修正日、公開日
 DateCreated: 2020-04-18
 DateModified: 2020-04-20
 DatePublished: 2020-04-19
 
-# optional
+# DOI 等の識別子
 Identifier: https://doi.org/1234....
 
+# 関連文献等の情報
 Citation: 
 ```
 
