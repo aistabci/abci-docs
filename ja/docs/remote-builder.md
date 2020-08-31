@@ -1,5 +1,6 @@
 # ABCI Singularity エンドポイント
 
+
 ## 概要
 
 ABCI Singularity エンドポイントでは、ABCI 内部向けに Singularity Container サービスを提供しています。このサービスは、Singularity で用いるコンテナイメージをリモートビルドするための Remote Builder と、作成したコンテナイメージを保管・共有するための Container Library から成ります。ABCI 内部向けのサービスであるため、外部から直接アクセスすることはできません。
@@ -14,7 +15,9 @@ ABCI Singularity エンドポイントでは、ABCI 内部向けに Singularity 
     ABCI 内部向けのサービスであり、外部から直接アクセスすることはできません。
  -->
 
+
 ## 事前準備
+
 
 ### モジュールのロード
 
@@ -50,6 +53,7 @@ just a moment, please...
 !!! warning
     現時点では、一度発行したアクセストークン(後述)を無効化することはできません。-->
 
+
 ### リモートエンドポイントの設定確認
 
 `singularity remote list` を実行し、本サービスを提供している ABCI Singularity エンドポイント（cloud.se.abci.local）が、リモートエンドポイントとして正しく設定されていることを確認して下さい。
@@ -73,8 +77,8 @@ SylabsCloud  cloud.sylabs.io      YES
 アクセストークンを再発行した場合は、`singularity remote login` を実行して新しいアクセストークンを設定して下さい。既存のアクセストークンは上書きされます。
 
 ```
-[username@es1 ~]$ singularity remote login abci
-INFO:    Authenticating with remote: abci
+[username@es1 ~]$ singularity remote login ABCI
+INFO:    Authenticating with remote: ABCI
 Generate an API Key at https://cloud.se.abci.local/auth/tokens, and paste here:
 API Key:
 INFO:    API Key Verified!
@@ -117,7 +121,7 @@ INFO:    Build complete: ubuntu.sif
 [username@es1 ~]$ 
 ```
 
-動作確認として `singularity run` でコンテナイメージを起動する例を以下に示します。定義ファイル内で指定した `lsb_release -d` が実行されて、その結果が出力されています。
+動作確認として `singularity run` でコンテナイメージを起動する例を以下に示します。定義ファイル内で指定した `lsb_release -d` が実行され、その結果が出力されています。
 
 ```
 [username@es1 ~]$ qrsh -g grpname -l rt_C.small=1 -l h_rt=1:00:00
@@ -132,16 +136,19 @@ Description:	Ubuntu 18.04.5 LTS
 
 作成したコンテナイメージを Container Library にアップロードし、他の ABCI 利用者に公開することができます。1人あたり、合計 100GiB までアップロードして保存することができます。
 
-!!! note Container Library にアップロードしたコンテナイメージに対して、アクセス制御の設定はできません。つまり、ABCIの利用者であれば誰でもアクセス可能になりますので、アップロードするイメージが適切なものであるか十分に確認して下さい。
+!!! note
+    Container Library にアップロードしたコンテナイメージに対して、アクセス制御の設定はできません。つまり、ABCIの利用者であれば誰でもアクセス可能になりますので、アップロードするイメージが適切なものであるか十分に確認して下さい。
 
 
 ### 現在の制約事項
-* 自分が所有するアップロードしたコンテナイメージの一覧を取得することはできません。
+* アップロードしたコンテナイメージの一覧を取得することはできません。
 * 64MiB以上のコンテナイメージをアップロードすることはできません。リモートビルドでコンテナイメージを作成することはできます。
+
 
 ### コンテナイメージの署名鍵の作成と登録
 
 Container Library へコンテナイメージをアップロードして、ABCI 内に公開する場合には、事前に鍵ペアを作成し、KeyStore に公開鍵を登録して下さい。コンテナイメージの作成者は、秘密鍵を用いてコンテナイメージに署名し、コンテナイメージの利用者は KeyStore に登録されている公開鍵を用いてその署名を検証することが可能です。
+
 
 #### 鍵ペアの作成
 
@@ -164,9 +171,13 @@ Generating Entity and OpenPGP Key Pair... done
 | :-- | :-- |
 | Enter your name | ABCIアカウント名を入力してください。 |
 | Enter your email address | email address となっていますが、ABCIアカウント名を入力して下さい。 |
-| Enter optional comment | このキーペアにつけておきたい任意のコメントを入力します。 |
+| Enter optional comment | この鍵ペアにつけておきたい任意のコメントを入力します。 |
 | Enter a passphrase | パスフレーズを決めて入力して下さい。コンテナイメージを署名する時などに必要になります。 |
 | Would you like to push it to the keystore? | 公開鍵を Keystore にアップロードする場合は `Y` を入力して下さい。 |
+
+!!! warning
+    鍵ペアを2つ以上生成すると、意図どおりに動作しないケースがあります。現時点では 1 つだけ生成するようにしてください。
+
 
 #### 鍵の一覧表示
 
@@ -198,6 +209,7 @@ YYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYY  RSA        4096  2020-06-15 03:40:05 +
 [username@es1 ~]$
 ```
 
+
 #### Keystore への公開鍵の登録
 
 鍵ペアの作成時に、Keystore へのアップロードを指定しなかった場合、あとからアップロードすることもできます。
@@ -215,7 +227,7 @@ YYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYY  RSA        4096  2020-06-15 03:40:05 +
 
 ```
 
-この 0 番のキーをアップロードするには、`F:` のところに表示されているフィンガープリントを `singularity key push` に指定します。
+この 0 番の公開鍵をアップロードするには、`F:` のところに表示されているフィンガープリントを `singularity key push` に指定します。
 
 ```
 [username@es1 ~]$ singularity key push ZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZ
@@ -227,6 +239,7 @@ Showing 1 results
 FINGERPRINT                               ALGORITHM  BITS  CREATION DATE                  EXPIRATION DATE  STATUS     NAME/EMAIL
 ZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZ  RSA        4096  2020-06-15 03:40:05 +0900 JST  [ultimate]       [enabled]  username (comment) <username>
 ```
+
 
 #### Keysotre に登録されている公開鍵の取得
 
@@ -250,6 +263,7 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA  RSA        4096  2020-06-22 11:51:45 +
 [username@es1 ~]$
 ```
 
+
 #### 鍵の削除
 
 作成した鍵やダウンロードして保存した鍵は、`singularity key remove` に鍵のフィンガープリントを指定して、削除することができます。Keystore に登録された公開鍵を削除することはできません。
@@ -257,6 +271,7 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA  RSA        4096  2020-06-22 11:51:45 +
 ```
 [username@es1 ~]$ singularity key remove AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
 ```
+
 
 ### コンテナイメージのアップロード
 
@@ -291,25 +306,26 @@ Enter key passphrase :
 Signature created and applied to ./ubuntu.sif
 ```
 
-コレクション名を `abci-lib`、 コンテナイメージ名を `helloworld`、タグとして `latest` を指定した例を以下に示します。
+コレクション名を `abci-lib`、 コンテナイメージ名を `ubuntu`、タグとして `latest` を指定した例を以下に示します。
 
 ```
-[username@es1 ~]$ singularity push ubuntu.sif library://username/abci-lib/helloworld:latest
+[username@es1 ~]$ singularity push ubuntu.sif library://username/abci-lib/ubuntu:latest
 INFO:    Container is trusted - run 'singularity key list' to list your trusted keys
  35.36 MiB / 35.36 MiB [===========================================================================================================================================================================================================] 100.00% 182.68 MiB/s 0s
 [username@es1 ~]$
 ```
+
 
 ### コンテナイメージのダウンロード
 
 Container Library に登録されているコンテナイメージは、以下のようにダウンロードできます。
 
 ```
-[username@es1 ~]$ singularity pull library://username/abci-lib/helloworld:latest
+[username@es1 ~]$ singularity pull library://username/abci-lib/ubuntu:latest
 INFO:    Downloading library image
  35.37 MiB / 35.37 MiB [=============================================================================================================================================================================================================] 100.00% 353.47 MiB/s 0s
 INFO:    Container is trusted - run 'singularity key list' to list your trusted keys
-INFO:    Download complete: helloworld_latest.sif
+INFO:    Download complete: ubuntu_latest.sif
 [username@es1 ~]$
 ```
 
@@ -318,7 +334,7 @@ INFO:    Download complete: helloworld_latest.sif
 自分の鍵リングに公開鍵が格納されていない場合は、Keystore からダウンロードして追加するか、または、`singularity verify` コマンドで検証することができます。
 
 ```
-[username@es1 ~]$ singularity verify helloworld_latest.sif
+[username@es1 ~]$ singularity verify ubuntu_latest.sif
 Container is signed by 1 key(s):
 
 Verifying partition: FS:
@@ -326,11 +342,12 @@ BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB
 [REMOTE]  username (comment) <username>
 [OK]      Data integrity verified
 
-INFO:    Container verified: helloworld_latest.sif
+INFO:    Container verified: ubuntu_latest.sif
 ```
 
 !!! note
     検証に失敗した場合でもコンテナイメージを実行することはできますが、検証可能なコンテナイメージの使用を推奨します。
+
 
 ### コンテナイメージの検索
 
@@ -346,6 +363,7 @@ Found 1 containers for 'hello'
 	library://username/abci-lib/helloworld
 		Tags: latest
 ```
+
 
 ### コンテナイメージの削除
 
