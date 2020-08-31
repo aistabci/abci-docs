@@ -4,7 +4,7 @@
 
 ABCI Singularity エンドポイントでは、ABCI 内部向けに Singularity Container サービスを提供しています。このサービスは、Singularity で用いるコンテナイメージをリモートビルドするための Remote Builder と、作成したコンテナイメージを保管・共有するための Container Library から成ります。ABCI 内部向けのサービスであるため、外部から直接アクセスすることはできません。
 
-以下では、ABCI において本サービスを利用するための基本的な操作を説明します。詳細は Sylabs 社のドキュメントを参照下さい。
+以下では、ABCI において本サービスを利用するための基本的な操作を説明します。詳細は Sylabs 社の[ドキュメント](https://sylabs.io/docs/)を参照下さい。
 
 <!-- 削除
 !!! tip
@@ -65,7 +65,7 @@ SylabsCloud  cloud.sylabs.io      YES
 上記は "[]" で囲まれている `ABCI` が現在のデフォルトのエンドポイントであることを示しています。
 
 !!! note
-    SylabsCloud は [Sylabs](https://sylabs.io/) 社が運営するパブリックサービスのエンドポイントです。<https://cloud.sylabs.io/> にサインインし、アクセストークンを取得することで利用可能になります。
+    SylabsCloud は [Sylabs社](https://sylabs.io/) が運営するパブリックサービスのエンドポイントです。<https://cloud.sylabs.io/> にサインインし、アクセストークンを取得することで利用可能になります。
 
 
 ### アクセストークンの再設定
