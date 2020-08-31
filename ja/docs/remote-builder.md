@@ -4,6 +4,8 @@
 
 ABCI Singularity エンドポイントでは、ABCI 内部向けに Singularity Container サービスを提供しています。このサービスは、Singularity で用いるコンテナイメージをリモートビルドするための Remote Builder と、作成したコンテナイメージを保管・共有するための Container Library から成ります。ABCI 内部向けのサービスであるため、外部から直接アクセスすることはできません。
 
+以下では、ABCI において本サービスを利用するための基本的な操作を説明します。詳細は Sylabs 社のドキュメントを参照下さい。
+
 <!-- 削除
 !!! tip
     SingularityPRO 3.5 を使って、[ローカルビルドで作成](09.md#build-a-singularity-image)することもできます。
@@ -35,66 +37,36 @@ ABCI Singularity エンドポイントでは、ABCI 内部向けに Singularity 
 [username@es1 ~]$ get_singularity_token
 ABCI portal password :
 just a moment, please...
+（アクセストークンの出力）
 ```
 
-上記のメッセージに続いて、アクセストークンが出力されます。
-<!-- 本当に必要か？？ -->
+<!-- 本当に必要か？？
 後で登録する時に必要になりますので、安全なところに控えておいて下さい。
 
 !!! note
-    アクセストークンは、非常に長い１行の文字列で作られているため、途中に改行などが入らないよう注意してください。
+    アクセストークンは、非常に長い１行の文字列で作られているため、途中に改行などが入らないよう注意してください。-->
 
+<!--
 !!! warning
-    現時点では、一度発行したアクセストークン(後述)を無効化することはできません。<!-- 再発行の記述と矛盾していると誤解される恐れあり -->
+    現時点では、一度発行したアクセストークン(後述)を無効化することはできません。-->
 
-### リモートエンドポイントの設定
+### リモートエンドポイントの設定確認
 
-リモートビルドを行う時の接続先となる Remote Builder のエンドポイントを登録します。初期値として SylabsCloud (cloud.sylabs.io) が登録されています。
-
-!!! note
-    SylabsCloud は [Sylabs](https://sylabs.io/) 社が運営するサービスです。そちらを使うこともできます。サービス内容については <https://cloud.sylabs.io/> をご確認ください。
-
-ABCI の Remote Builder は、`cloud.se.abci.local` です。以下は、`abci` という名前で登録する例です。名前は任意のものをつけることができます。
-
-```
-[username@es1 ~]$ singularity remote add abci cloud.se.abci.local
-INFO:    Remote "abci" added.
-INFO:    Authenticating with remote: abci
-Generate an API Key at https://cloud.se.abci.local/auth/tokens, and paste here:
-API Key: 
-```
-
-`API Key:` と出力されたら、控えておいたアクセストークンをコピーして貼り付けます。
-
-!!! note
-    貼り付けた文字列は表示されないため、不要な文字が混入しないよう注意してください。
-
-アクセストークンが適正と判定されると、`API Key Verified!` と出力されます。登録したリモートエンドポイントは、以下コマンドで確認できます。
-
-```
-[username@es1 ~]$ singularity remote list
-NAME           URI                  GLOBAL
-[SylabsCloud]  cloud.sylabs.io      YES
-abci           cloud.se.abci.local  NO
-[username@es1 ~]$
-```
-
-リモートビルドやアップロードの時には、`[]` で囲まれているものが使われます。上記の例では SylabsCloud を使う設定になっているため、登録した `abci` に切り替えます。
-
-```
-[username@es1 ~]$ singularity remote use abci
-INFO:    Remote "abci" now in use.
-```
-
-`abci` が "[]" で囲まれたことを `singularity remote list` で確認します。
+`singularity remote list` を実行し、本サービスを提供している ABCI Singularity エンドポイント（cloud.se.abci.local）が、リモートエンドポイントとして正しく設定されていることを確認して下さい。
 
 ```
 [username@es1 ~]$ singularity remote list
 NAME         URI                  GLOBAL
 SylabsCloud  cloud.sylabs.io      YES
-[abci]       cloud.se.abci.local  NO
+[ABCI]       cloud.se.abci.local  NO
 [username@es1 ~]$
 ```
+
+上記は "[]" で囲まれている `ABCI` が現在のデフォルトのエンドポイントであることを示しています。
+
+!!! note
+    SylabsCloud は [Sylabs](https://sylabs.io/) 社が運営するパブリックサービスのエンドポイントです。<https://cloud.sylabs.io/> にサインインし、アクセストークンを取得することで利用可能になります。
+
 
 ### アクセストークンの再設定
 
@@ -112,7 +84,7 @@ INFO:    API Key Verified!
 
 ## Remote Builder の使い方
 
-最初に、コンテナイメージをビルドするための定義ファイルを作成して下さい。以下の例では、Docker Hub から取得した Ubuntu のコンテナイメージをベースとして、追加パッケージのインストールと、 `singularity run` で起動した場合に実行するコマンドを指定しています。定義ファイルの詳細については、[Definition Files](https://repo.sylabs.io/c/0f6898986ad0b646b5ce6deba21781ac62cb7e0a86a5153bbb31732ee6593f43/guides/singularitypro35-user-guide/definition_files.html) を参照して下さい。
+最初に、コンテナイメージをビルドするための定義ファイルを作成して下さい。以下の例では、Docker Hub から取得した Ubuntu のコンテナイメージをベースとして、追加パッケージのインストールと、コンテナを起動した際にコンテナが実行するコマンドを指定しています。定義ファイルの詳細については、[Definition Files](https://repo.sylabs.io/c/0f6898986ad0b646b5ce6deba21781ac62cb7e0a86a5153bbb31732ee6593f43/guides/singularitypro35-user-guide/definition_files.html) を参照して下さい。
 
 ```
 [username@es1 ~]$ vi ubuntu.def
@@ -145,7 +117,7 @@ INFO:    Build complete: ubuntu.sif
 [username@es1 ~]$ 
 ```
 
-動作確認として `singularity run` でコンテナイメージを起動する例を以下に示します。定義ファイルで指定した `lsb_release -d` が実行されて、その結果が出力されています。
+動作確認として `singularity run` でコンテナイメージを起動する例を以下に示します。定義ファイル内で指定した `lsb_release -d` が実行されて、その結果が出力されています。
 
 ```
 [username@es1 ~]$ qrsh -g grpname -l rt_C.small=1 -l h_rt=1:00:00
@@ -299,8 +271,8 @@ ABCIアカウント名以外の構成要素は以下のとおりです。
 | タグ | 同じコンテナイメージを識別するための文字列です。バージョンやリリース日、リビジョン番号や `latest` などの文字列で指定します。 |
 
 Container Library にアップロードする前に、コンテナイメージに署名します。
-`singularity key list` で使う鍵の番号を確認し、`singularity sign` で署名します。
-以下の例では 2 番の鍵を使用して、`ubuntu.sif` へ署名しています。`-k` オプションで鍵の番号を指定して下さい。
+`singularity key list` で鍵の番号を確認し、`singularity sign` で署名します。
+`-k` オプションで鍵の番号を指定して下さい。以下の例では 2 番の鍵を使用して、`ubuntu.sif` へ署名しています。
 
 ```bash hl_lines="1 11"
 [username@es1 ~]$ singularity key list
@@ -341,7 +313,7 @@ INFO:    Download complete: helloworld_latest.sif
 [username@es1 ~]$
 ```
 
-この例では、署名したキーの公開鍵が自分の（ローカルの）鍵リングに入っているため、自動的に検証が行われ、`Container is trusted` と出力されています。
+この例では、署名した鍵ペアの公開鍵が自分の（ローカルの）鍵リングに入っているため、自動的に検証が行われ、`Container is trusted` と出力されています。
 
 自分の鍵リングに公開鍵が格納されていない場合は、Keystore からダウンロードして追加するか、または、`singularity verify` コマンドで検証することができます。
 
@@ -362,7 +334,7 @@ INFO:    Container verified: helloworld_latest.sif
 
 ### コンテナイメージの検索
 
-Container Library に登録したコンテナをキーワードで検索することができます。
+Container Library に登録したコンテナイメージをキーワードで検索することができます。
 
 ```
 [username@es1 ~]$ singularity search hello
