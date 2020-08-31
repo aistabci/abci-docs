@@ -1,11 +1,5 @@
 # システム更新履歴
 
-## 2020-08-31
-
-| Add / Update / Delete | Software | Version | Previous version |
-|:--|:--|:--|:--|
-| Update | Scality S3 Connector | 7.4.6.3 | 7.4.5.4 |
-
 ## 2020-07-31
 
 | Add / Update / Delete | Software | Version | Previous version |
