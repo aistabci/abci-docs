@@ -179,7 +179,7 @@ FATAL:   While making image from oci registry: while building SIF from layers: u
 
 The problem can be avoided by adding `/usr/sbin` to PATH like this:
 
-Example）
+Example)
 ```
 [username@g0001~]$ PATH="$PATH:/usr/sbin" 
 [username@g0001~]$ module load singularitypro/3.5
