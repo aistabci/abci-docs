@@ -5,6 +5,8 @@
 
 ABCI Singularity エンドポイントでは、ABCI 内部向けに Singularity Container サービスを提供しています。このサービスは、Singularity で用いるコンテナイメージをリモートビルドするための Remote Builder と、作成したコンテナイメージを保管・共有するための Container Library から成ります。ABCI 内部向けのサービスであるため、外部から直接アクセスすることはできません。
 
+!!! warning Container Library は Experimental のサービスです。特に、64MB以上のコンテナイメージをアップロードできない問題があります。
+
 以下では、ABCI において本サービスを利用するための基本的な操作を説明します。詳細は Sylabs 社の[ドキュメント](https://sylabs.io/docs/)を参照下さい。
 
 <!-- 削除
@@ -33,21 +35,21 @@ ABCI Singularity エンドポイントでは、ABCI 内部向けに Singularity 
 
 ### アクセストークンの取得
 
-最初に、本サービスの認証に必要なアクセストークンを取得し、自身の SingularityPRO の設定ファイルに登録します。<!--ABCI の利用者は誰でも取得することができます。-->
+最初に、本サービスの認証に必要なアクセストークンを取得します。
+<!--ABCI の利用者は誰でも取得することができます。-->
 インタラクティブノードで `get_singularity_token` コマンドを実行して下さい。発行には ABCI のパスワード (利用者ポータルへのログインに使用するパスワード) の入力が必要です。<!--計算ノードやメモリインテンシブノードでも実行できます。-->
 
 ```
 [username@es1 ~]$ get_singularity_token
 ABCI portal password :
 just a moment, please...
-（アクセストークンの出力）
+  (The generated access token will be displayed.)
 ```
 
-<!-- 本当に必要か？？
-後で登録する時に必要になりますので、安全なところに控えておいて下さい。
+取得したアクセストークンは、この後の登録に必要になりますので、安全なところに控えておいて下さい。
 
 !!! note
-    アクセストークンは、非常に長い１行の文字列で作られているため、途中に改行などが入らないよう注意してください。-->
+    アクセストークンは、非常に長い１行の文字列で作られているため、途中に改行などが入らないよう注意して下さい。
 
 <!--
 !!! warning
@@ -70,11 +72,14 @@ SylabsCloud  cloud.sylabs.io      YES
 
 !!! note
     SylabsCloud は [Sylabs社](https://sylabs.io/) が運営するパブリックサービスのエンドポイントです。<https://cloud.sylabs.io/> にサインインし、アクセストークンを取得することで利用可能になります。
+ 
+!!! note
+    Singularity のコンテナイメージは、Singularity Global Client を用いて取得することも可能です。詳細は[こちら](https://docs.abci.ai/ja/tips/sregistry-cli/)を参照下さい。
 
 
-### アクセストークンの再設定
+### アクセストークンの登録
 
-アクセストークンを再発行した場合は、`singularity remote login` を実行して新しいアクセストークンを設定して下さい。既存のアクセストークンは上書きされます。
+ABCI Singularity エンドポイントに対して、`singularity remote login` を実行し、先に取得したアクセストークンを入力し、自身の SingularityPRO の設定ファイルに登録します。
 
 ```
 [username@es1 ~]$ singularity remote login ABCI
@@ -84,6 +89,11 @@ API Key:
 INFO:    API Key Verified!
 [username@es1 ~]$
 ```
+
+アクセストークンを再取得した際にも、上記コマンドを再実行し、アクセストークンを再登録して下さい。既存のアクセストークンは上書きされます。
+
+!!! note
+    現在、アクセストークンの有効期限は１ヶ月に設定されています。期限が切れた場合には再度、取得と登録を実行して下さい。
 
 
 ## Remote Builder の使い方
@@ -132,7 +142,7 @@ Description:	Ubuntu 18.04.5 LTS
 ```
 
 
-## Container Library の使い方
+## Container Library の使い方（Experimental）
 
 作成したコンテナイメージを Container Library にアップロードし、他の ABCI 利用者に公開することができます。1人あたり、合計 100GiB までアップロードして保存することができます。
 
@@ -141,8 +151,8 @@ Description:	Ubuntu 18.04.5 LTS
 
 
 ### 現在の制約事項
-* アップロードしたコンテナイメージの一覧を取得することはできません。
 * 64MiB以上のコンテナイメージをアップロードすることはできません。リモートビルドでコンテナイメージを作成することはできます。
+* アップロードしたコンテナイメージの一覧を取得することはできません。
 
 
 ### コンテナイメージの署名鍵の作成と登録
@@ -176,7 +186,7 @@ Generating Entity and OpenPGP Key Pair... done
 | Would you like to push it to the keystore? | 公開鍵を Keystore にアップロードする場合は `Y` を入力して下さい。 |
 
 !!! warning
-    鍵ペアを2つ以上生成すると、意図どおりに動作しないケースがあります。現時点では 1 つだけ生成するようにしてください。
+    鍵ペアを2つ以上生成すると、意図どおりに動作しないケースがあります。現時点では 1 つだけ生成するようにして下さい。
 
 
 #### 鍵の一覧表示
