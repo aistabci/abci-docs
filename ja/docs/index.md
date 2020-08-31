@@ -38,7 +38,7 @@
     - [データの暗号化](abci-cloudstorage/encryption.md)
     - [アクセス制御（1）](abci-cloudstorage/acl.md)
     - [アクセス制御（2）](abci-cloudstorage/policy.md)
-  - [ABCI Singularity エンドポイント](remote-builder.md)
+  - [ABCI Singularity エンドポイント](abci-singularity-endpoint.md)
   - [FAQ](faq.md)
   - [既知の問題](known-issues.md)
   - [システム更新履歴](system-updates.md)
