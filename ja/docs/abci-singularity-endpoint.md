@@ -63,8 +63,8 @@ just a moment, please...
 ```
 [username@es1 ~]$ singularity remote list
 NAME         URI                  GLOBAL
+[ABCI]       cloud.se.abci.local  YES
 SylabsCloud  cloud.sylabs.io      YES
-[ABCI]       cloud.se.abci.local  NO
 [username@es1 ~]$
 ```
 
