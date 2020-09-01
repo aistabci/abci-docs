@@ -334,25 +334,31 @@ Container Library にアップロードされたコンテナイメージは、�
 [username@es1 ~]$ singularity pull library://username/abci-lib/ubuntu:latest
 INFO:    Downloading library image
  35.37 MiB / 35.37 MiB [=============================================================================================================================================================================================================] 100.00% 353.47 MiB/s 0s
-INFO:    Container is trusted - run 'singularity key list' to list your trusted keys
 INFO:    Download complete: ubuntu_latest.sif
 [username@es1 ~]$
 ```
 
-この例では、署名した鍵ペアの公開鍵が自分の（ローカルの）鍵リングに入っているため、自動的に検証が行われ、`Container is trusted` と出力されています。
+署名が検証できない場合は、以下のような WARNING メッセージが出力されますが、ダウンロードは行われます。
 
-自分の鍵リングに公開鍵が格納されていない場合は、Keystore からダウンロードして追加するか、または、`singularity verify` コマンドで検証することができます。
+```
+WARNING: Skipping container verification
+```
+
+ダウンロードした後に `singularity verify` を使って署名を検証することもできます。
+以下の例では、Keystore に登録されている公開鍵で署名が検証されています。自分の鍵リングに登録されている公開鍵で検証された場合は、`REMOTE` ではなく `LOCAL` と出力されます。検証できなかった場合は WARNING メッセージが出力されます。
 
 ```
 [username@es1 ~]$ singularity verify ubuntu_latest.sif
-Container is signed by 1 key(s):
-
-Verifying partition: FS:
-BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB
-[REMOTE]  username (comment) <username>
-[OK]      Data integrity verified
-
-INFO:    Container verified: ubuntu_latest.sif
+Verifying image: ubuntu_latest.sif
+[REMOTE]  Signing entity: username (comment) <username>
+[REMOTE]  Fingerprint: BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB
+Objects verified:
+ID  |GROUP   |LINK    |TYPE
+------------------------------------------------
+1   |1       |NONE    |Def.FILE
+2   |1       |NONE    |JSON.Generic
+3   |1       |NONE    |FS
+Container verified: ubuntu_latest.sif
 ```
 
 !!! note
