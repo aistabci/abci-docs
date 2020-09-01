@@ -255,7 +255,7 @@ ZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZ  RSA        4096  2020-06-15 03:40:05 +
 
 Keystore に登録されている公開鍵は、ダウンロードして自分の鍵リングに保存することができます。以下の例では、username2 で検索して見つけた公開鍵をダウンロードして、保存しています。鍵につけられたコメントにマッチする文字列を指定して検索することもできます。`singularity key pull` には、フィンガープリントを指定します。
 
-```bash hl_lines="1 7"
+```bash hl_lines="1 7 9"
 [username@es1 ~]$ singularity key search -l username2
 Showing 2 results
 
@@ -265,6 +265,8 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA  RSA        4096  2020-06-22 11:51:45 +
 [username@es1 ~]$ singularity key pull AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
 1 key(s) added to keyring of trust /home/username/.singularity/sypgp/pgp-public
 [username@es1 ~]$ singularity key list
+:
+:
 1) U: username2 (comment) <username2>
    C: 2020-08-10 11:51:45 +0900 JST
    F: AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
@@ -276,7 +278,7 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA  RSA        4096  2020-06-22 11:51:45 +
 
 #### 鍵の削除
 
-作成した鍵やダウンロードして保存した鍵は、`singularity key remove` に鍵のフィンガープリントを指定して、削除することができます。Keystore に登録された公開鍵を削除することはできません。
+自分の鍵リングに登録されている公開鍵は、`singularity key remove` に鍵のフィンガープリントを指定して削除することができます。Keystore に登録された公開鍵を削除することはできません。
 
 ```
 [username@es1 ~]$ singularity key remove AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
@@ -296,12 +298,12 @@ ABCIアカウント名以外の構成要素は以下のとおりです。
 | タグ | 同じコンテナイメージを識別するための文字列です。バージョンやリリース日、リビジョン番号や `latest` などの文字列で指定します。 |
 
 Container Library にアップロードする前に、コンテナイメージに署名します。
-`singularity key list` で鍵の番号を確認し、`singularity sign` で署名します。
+`singularity key list -s` で鍵の番号を確認し、`singularity sign` で署名します。
 `-k` オプションで鍵の番号を指定して下さい。以下の例では 2 番の鍵を使用して、`ubuntu.sif` へ署名しています。
 
 ```bash hl_lines="1 11"
-[username@es1 ~]$ singularity key list
-Public key listing (/home/username/.singularity/sypgp/pgp-public):
+[username@es1 ~]$ singularity key list -s
+Public key listing (/home/username/.singularity/sypgp/pgp-secret):
 :
 :
    --------
