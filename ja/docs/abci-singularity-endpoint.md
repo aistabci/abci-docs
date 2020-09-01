@@ -74,7 +74,7 @@ SylabsCloud  cloud.sylabs.io      YES
     SylabsCloud は [Sylabs社](https://sylabs.io/) が運営するパブリックサービスのエンドポイントです。<https://cloud.sylabs.io/> にサインインし、アクセストークンを取得することで利用可能になります。
  
 !!! note
-    Singularity のコンテナイメージは、Singularity Global Client を用いて取得することも可能です。詳細は[こちら](https://docs.abci.ai/ja/tips/sregistry-cli/)を参照下さい。
+    Singularity のコンテナイメージは、Singularity Global Client を用いて取得することも可能です。詳細は[こちら](tips/sregistry-cli.md)を参照下さい。
 
 
 ### アクセストークンの登録
@@ -285,7 +285,7 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA  RSA        4096  2020-06-22 11:51:45 +
 
 ### コンテナイメージのアップロード
 
-Container Library サービスにおけるコンテナイメージの場所は、`library://ABCIアカウント名/コレクション名/コンテナイメージ名:タグ` の URI で指定します。
+Container Library におけるコンテナイメージの場所は、`library://ABCIアカウント名/コレクション名/コンテナイメージ名:タグ` の URI で指定します。
 
 ABCIアカウント名以外の構成要素は以下のとおりです。
 
@@ -328,7 +328,7 @@ INFO:    Container is trusted - run 'singularity key list' to list your trusted 
 
 ### コンテナイメージのダウンロード
 
-Container Library に登録されているコンテナイメージは、以下のようにダウンロードできます。
+Container Library にアップロードされたコンテナイメージは、以下のようにダウンロードできます。
 
 ```
 [username@es1 ~]$ singularity pull library://username/abci-lib/ubuntu:latest
@@ -361,7 +361,7 @@ INFO:    Container verified: ubuntu_latest.sif
 
 ### コンテナイメージの検索
 
-Container Library に登録したコンテナイメージをキーワードで検索することができます。
+Container Library にアップロードされたコンテナイメージをキーワードで検索することができます。
 
 ```
 [username@es1 ~]$ singularity search hello
@@ -377,7 +377,7 @@ Found 1 containers for 'hello'
 
 ### コンテナイメージの削除
 
-Container Library サービスに push したコンテナイメージは、`singularity delete` で削除することができます。
+Container Library にアップロードされたコンテナイメージは、`singularity delete` で削除することができます。
 
 ```
 [username@es1 ~]$ singularity delete library://username/abci-lib/helloworld:latest
