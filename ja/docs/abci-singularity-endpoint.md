@@ -3,9 +3,10 @@
 
 ## 概要
 
-ABCI Singularity エンドポイントでは、ABCI 内部向けに Singularity Container サービスを提供しています。このサービスは、Singularity で用いるコンテナイメージをリモートビルドするための Remote Builder と、作成したコンテナイメージを保管・共有するための Container Library から成ります。ABCI 内部向けのサービスであるため、外部から直接アクセスすることはできません。
+ABCI Singularity エンドポイントでは、ABCI 内部向けに Singularity Container サービスを提供しています。このサービスは、SingularityPRO で用いるコンテナイメージをリモートビルドするための Remote Builder と、作成したコンテナイメージを保管・共有するための Container Library から成ります。ABCI 内部向けのサービスであるため、外部から直接アクセスすることはできません。
 
-!!! warning Container Library は Experimental のサービスです。特に、64MB以上のコンテナイメージをアップロードできない問題があります。
+!!! warning
+    Container Library は Experimental のサービスです。特に、64MB以上のコンテナイメージをアップロードできない問題があります。
 
 以下では、ABCI において本サービスを利用するための基本的な操作を説明します。詳細は Sylabs 社の[ドキュメント](https://sylabs.io/docs/)を参照下さい。
 
@@ -93,10 +94,10 @@ INFO:    API Key Verified!
 アクセストークンを再取得した際にも、上記コマンドを再実行し、アクセストークンを再登録して下さい。既存のアクセストークンは上書きされます。
 
 !!! note
-    現在、アクセストークンの有効期限は１ヶ月に設定されています。期限が切れた場合には再度、取得と登録を実行して下さい。
+    現在、アクセストークンの有効期限は1ヶ月に設定されています。期限が切れた場合には再度、取得と登録を実行して下さい。
 
 
-## Remote Builder の使い方
+## Remote Builder
 
 最初に、コンテナイメージをビルドするための定義ファイルを作成して下さい。以下の例では、Docker Hub から取得した Ubuntu のコンテナイメージをベースとして、追加パッケージのインストールと、コンテナを起動した際にコンテナが実行するコマンドを指定しています。定義ファイルの詳細については、[Definition Files](https://repo.sylabs.io/c/0f6898986ad0b646b5ce6deba21781ac62cb7e0a86a5153bbb31732ee6593f43/guides/singularitypro35-user-guide/definition_files.html) を参照して下さい。
 
@@ -119,7 +120,7 @@ From: ubuntu:18.04
 次に、`singularity build` コマンドに `--remote` を指定して、ubuntu.def の内容からコンテナイメージ ubuntu.sif をリモートビルドで作成して下さい。
 
 ```
-[username@es1 ~]$ singularity build  --remote ubuntu.sif ubuntu.def
+[username@es1 ~]$ singularity build --remote ubuntu.sif ubuntu.def
 INFO:    Remote "default" added.
 INFO:    Authenticating with remote: default
 INFO:    API Key Verified!
@@ -142,7 +143,7 @@ Description:	Ubuntu 18.04.5 LTS
 ```
 
 
-## Container Library の使い方（Experimental）
+## Container Library (Experimental)
 
 作成したコンテナイメージを Container Library にアップロードし、他の ABCI 利用者に公開することができます。1人あたり、合計 100GiB までアップロードして保存することができます。
 
@@ -251,7 +252,7 @@ ZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZ  RSA        4096  2020-06-15 03:40:05 +
 ```
 
 
-#### Keysotre に登録されている公開鍵の取得
+#### Keystore に登録されている公開鍵の取得
 
 Keystore に登録されている公開鍵は、ダウンロードして自分の鍵リングに保存することができます。以下の例では、username2 で検索して見つけた公開鍵をダウンロードして、保存しています。鍵につけられたコメントにマッチする文字列を指定して検索することもできます。`singularity key pull` には、フィンガープリントを指定します。
 
