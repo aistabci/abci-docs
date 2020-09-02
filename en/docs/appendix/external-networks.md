@@ -1,4 +1,4 @@
-# Appendix: Communication with External Networks
+# Appendix. Communication with External Networks
 
 Communications between ABCI and external services/servers are restricted. The permitted communications are:
 
