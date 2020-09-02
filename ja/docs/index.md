@@ -14,8 +14,8 @@
     - [8. MPIの利用](08.md)
     - [9. Linuxコンテナ](09.md)
     - [10. プログラム開発環境](10.md)
-    - [付録1. インストール済みソフトウェアの構成](appendix1.md)
-    - [付録2. HPCIによるABCIシステム利用](appendix2.md)
+    - [付録. インストール済みソフトウェアの構成](appendix/installed-software.md)
+    - [付録. HPCIによるABCIシステム利用](appendix/using-abci-with-hpci.md)
     - [付録. 外部ネットワークとの通信](appendix/external-networks.md)
   - 各種アプリケーション:
     - [概要](apps/index.md)

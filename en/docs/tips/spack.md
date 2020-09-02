@@ -313,7 +313,7 @@ openmpi@3.1.1  ${SPACK_ROOT}/opt/spack/linux-centos7-haswell/gcc-4.8.5/openmpi-3
 ```
 
 Line #1 installs CUDA version `abci-10.1.243` so that Spack uses a CUDA provided by ABCI.
-Line #2 installs OpenMPI 3.1.1 as the same configuration with [this page](https://docs.abci.ai/en/appendix1/#open-mpi).
+Line #2 installs OpenMPI 3.1.1 as the same configuration with [this page](../appendix/installed-software.md#open-mpi).
 Meanings of the installation options are as follows.
 
 - `+cuda`: Build with CUDA support
