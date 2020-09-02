@@ -1,12 +1,12 @@
 # Download container image from Amazon ECR
 
-The container image in Amazon ECR can be easily obtained with ``singularity`` command of Singularity Pro.
+The container image in Amazon ECR can be easily obtained with ``singularity`` command of SingularityPRO.
 
 !!! note
     refer to [Singularity Global Client](/tips/sregistry-cli/){:target="sregistry-cli"} when using Singularity 2.6.1.
 
 ## Usage {#usage}
-Load environment module to use Singularity Pro and Amazon ECR.
+Load environment module to use SingularityPRO and Amazon ECR.
 
 !!! note
     This procedure assumes that you have completed [Register access token](/tips/awscli/#register-access-token){:target="aws_cli"} in [AWS CLI](/tips/awscli/){:target="aws_cli"}.

@@ -10,7 +10,7 @@
 
 | Add / Update / Delete | Software | Version | Previous version |
 |:--|:--|:--|:--|
-| Add | Singularity PRO | 3.5 | |
+| Add | SingularityPRO | 3.5 | |
 | Add | cuDNN | [8.0.2](https://docs.nvidia.com/deeplearning/sdk/cudnn-release-notes/rel_8.html#rel-802) | |
 | Add | NCCL | [2.7.8-1](https://docs.nvidia.com/deeplearning/nccl/release-notes/rel_2-7-8.html) | |
 | Add | mvapich2-gdr | 2.3.4 | |

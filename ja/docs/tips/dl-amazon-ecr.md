@@ -1,12 +1,12 @@
 # Amazon ECR からコンテナ取得
 
-Singularity Pro では、Amazon ECR からコンテナイメージを ``singularity`` コマンドを使って簡単にダウンロードすることが可能です。
+SingularityPRO では、Amazon ECR からコンテナイメージを ``singularity`` コマンドを使って簡単にダウンロードすることが可能です。
 
 !!! note
     Singularity 2.6.1 を利用する場合は、[Singularity Global Clientの利用](/tips/sregistry-cli/){:target="sregistry-cli"} を参照してください。
 
 ## 利用方法 {#usage}
-Singularity Pro と Amazon ECR の利用に必要なモジュールを読み込みます。
+SingularityPRO と Amazon ECR の利用に必要なモジュールを読み込みます。
 
 !!! note
     [AWS CLIの利用](/tips/awscli/){:target="aws_cli"}の[アクセストークンの登録手順](/tips/awscli/#_2){:target="aws_cli"}を完了していることを前提としています。

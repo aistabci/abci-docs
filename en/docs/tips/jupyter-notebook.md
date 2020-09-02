@@ -120,7 +120,7 @@ Singularity container built: ./tensorflow-19.07-py3.simg
 Cleaning up...
 Done. Container is at: ./tensorflow-19.07-py3.simg
 ```
-**Singularity PRO 3.5**
+**SingularityPRO 3.5**
 ```
 [username@es1 ~]$ module load singularitypro/3.5
 [username@es1 ~]$ singularity pull docker://nvcr.io/nvidia/tensorflow:19.07-py3
@@ -176,7 +176,7 @@ Copyright 2017-2019 The TensorFlow Authors.  All rights reserved.
         http://hostname:8888/?token=<i>token_string</i>
 </pre></div>
 
-**Singularity PRO 3.5**
+**SingularityPRO 3.5**
 
 <div class="codehilite"><pre>
 [username@g0001 ~]$ module load singularitypro/3.5
