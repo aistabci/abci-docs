@@ -31,6 +31,7 @@ All users who use this system are strongly recommended to read this document, as
     - [Singularity Global Client](tips/sregistry-cli.md)
     - [Spack](tips/spack.md)
     - [Datasets](tips/datasets.md)
+    - [Amazon ECR](tips/dl-amazon-ecr.md)
   - [NVIDIA NGC](ngc.md)
   - ABCI Cloud Storage:
     - [Overview](abci-cloudstorage.md)
