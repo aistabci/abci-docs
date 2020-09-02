@@ -1,6 +1,6 @@
 # Appendix: Communication with External Networks
 
-Communications between ABCI compute resource and external services/servers are restricted. The permitted communications are:
+Communications between ABCI and external services/servers are restricted. The permitted communications are:
 
 | Source | Destination | Port | Service Name |
 |:--|:--|:--|:--|
