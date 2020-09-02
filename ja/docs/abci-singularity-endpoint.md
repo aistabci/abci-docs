@@ -244,7 +244,7 @@ YYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYY  RSA        4096  2020-06-15 03:40:05 +
 [username@es1 ~]$ singularity key push ZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZ
 public key `ZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZ' pushed to server successfully
 
-[username@es1 ~]$ singularity key search -l ABCIアカウント名
+[username@es1 ~]$ singularity key search -l username
 Showing 1 results
 
 FINGERPRINT                               ALGORITHM  BITS  CREATION DATE                  EXPIRATION DATE  STATUS     NAME/EMAIL
@@ -288,16 +288,6 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA  RSA        4096  2020-06-22 11:51:45 +
 
 ### コンテナイメージのアップロード
 
-Container Library におけるコンテナイメージの場所は、`library://ABCIアカウント名/コレクション名/コンテナイメージ名:タグ` の URI で指定します。
-
-ABCIアカウント名以外の構成要素は以下のとおりです。
-
-| 項目名 | 値 |
-| :-- | :-- |
-| コレクション名 | コレクション名を任意の文字列で指定します。 |
-| コンテナイメージ名 | コンテナイメージ名を任意の文字列で指定します。 |
-| タグ | 同じコンテナイメージを識別するための文字列です。バージョンやリリース日、リビジョン番号や `latest` などの文字列で指定します。 |
-
 Container Library にアップロードする前に、コンテナイメージに署名します。
 `singularity key list -s` で鍵の番号を確認し、`singularity sign` で署名します。
 `-k` オプションで鍵の番号を指定して下さい。以下の例では 2 番の鍵を使用して、`ubuntu.sif` へ署名しています。
@@ -319,7 +309,16 @@ Enter key passphrase :
 Signature created and applied to ./ubuntu.sif
 ```
 
-コレクション名を `abci-lib`、 コンテナイメージ名を `ubuntu`、タグとして `latest` を指定した例を以下に示します。
+Container Library におけるコンテナイメージの場所は、`library://username/collection/container:tag` という形式の URI で表されます。下記の各構成要素の説明を参照し、アップロード先となる URI を決定してください。
+
+| 項目名 | 値 |
+| :-- | :-- |
+| username | 自分のABCIアカウント名を指定します。 |
+| collection | コレクション名を任意の文字列で指定します。 |
+| container | コンテナイメージ名を任意の文字列で指定します。 |
+| tag | 同じコンテナイメージを識別するための文字列です。バージョンやリリース日、リビジョン番号や `latest` などの文字列で指定します。 |
+
+コレクション名を `abci-lib`、 コンテナイメージ名を `ubuntu`、タグとして `latest` を指定してアップロードする例を以下に示します。
 
 ```
 [username@es1 ~]$ singularity push ubuntu.sif library://username/abci-lib/ubuntu:latest
