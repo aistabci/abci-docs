@@ -21,8 +21,8 @@ nav:
     - '8. MPI': '08.md'
     - '9. Linux Containers': '09.md'
     - '10. Software Development Environment': '10.md'
-    - 'Appendix 1. Configuration of Installed Software': 'appendix1.md'
-    - 'Appendix 2. Use of ABCI System for HPCI': 'appendix2.md'
+    - 'Appendix. Configuration of Installed Software': 'appendix/installed-software.md'
+    - 'Appendix. Using ABCI with HPCI': 'appendix/using-abci-with-hpci.md'
     - 'Appendix. Communications with External Networks': 'appendix/external-networks.md'
   - 'Applications':
     - 'Overview': 'apps/index.md'

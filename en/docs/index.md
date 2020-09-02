@@ -15,8 +15,8 @@ All users who use this system are strongly recommended to read this document, as
     - [9. Linux Containers](09.md)
     - [10. Software Development Environment](10.md)
     - [11. Application Framework](11.md)
-    - [Appendix 1. Configuration of Installed Software](appendix1.md)
-    - [Appendix 2. Use of ABCI System for HPCI](appendix2.md)
+    - [Appendix. Configuration of Installed Software](appendix/installed-software.md)
+    - [Appendix. Using ABCI with HPCI](appendix/using-abci-with-hpci.md)
     - [Appendix. Communications with External Networks](appendix/external-networks.md)
   - Applications:
     - [Overview](apps/index.md)
