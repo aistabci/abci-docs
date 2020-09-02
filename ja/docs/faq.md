@@ -18,7 +18,7 @@ ABCIでは、グループ領域のブロックサイズは128KB、ホーム領�
 
 ## Q. 認証が必要なコンテナレジストリをSingularityで利用できない
 
-Singularity version 2.6およびSingularity PRO version 3.5には``docker login``相当の機能として、環境変数で認証情報を与える機能があります。
+Singularity version 2.6およびSingularityPRO version 3.5には``docker login``相当の機能として、環境変数で認証情報を与える機能があります。
 
 ```shell
 [username@es ~]$ export SINGULARITY_DOCKER_USERNAME='username'
@@ -32,9 +32,9 @@ Singularity version 2.6の認証に関する詳細は、以下をご参照くだ
     * [How do I specify my Docker image?](https://sylabs.io/guides/2.6/user-guide/singularity_and_docker.html#how-do-i-specify-my-docker-image)
     * [Custom Authentication](https://sylabs.io/guides/2.6/user-guide/singularity_and_docker.html#custom-authentication)
 
-Singularity PRO version 3.5の認証に関する詳細は、以下をご参照ください。
+SingularityPRO version 3.5の認証に関する詳細は、以下をご参照ください。
 
-* [Singularity PRO 3.5 User Guide](https://repo.sylabs.io/c/0f6898986ad0b646b5ce6deba21781ac62cb7e0a86a5153bbb31732ee6593f43/guides/singularitypro35-user-guide/)
+* [SingularityPRO 3.5 User Guide](https://repo.sylabs.io/c/0f6898986ad0b646b5ce6deba21781ac62cb7e0a86a5153bbb31732ee6593f43/guides/singularitypro35-user-guide/)
     * [Making use of private images from Private Registries](https://repo.sylabs.io/c/0f6898986ad0b646b5ce6deba21781ac62cb7e0a86a5153bbb31732ee6593f43/guides/singularitypro35-user-guide/singularity_and_docker.html?highlight=support%20docker%20oci#making-use-of-private-images-from-private-registries)
 
 ## Q. NGC CLIが実行できない
@@ -59,7 +59,7 @@ NGC_HOME=$HOME/ngc
 singularity exec $NGC_HOME/ubuntu-18.04.simg $NGC_HOME/ngc $@
 ```
 
-**Singularity PRO 3.5**
+**SingularityPRO 3.5**
 
 ```
 #!/bin/sh

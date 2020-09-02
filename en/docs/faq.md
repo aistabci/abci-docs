@@ -18,7 +18,7 @@ ABCI sets the block size of the group area to 128 KB and the block size of the h
 
 ## Q. Singularity cannot use container registries that require authentication
 
-Singularity version 2.6 and Singularity PRO version 3.5 have a function equivalent to ``docker login`` that provides authentication information with environment variables.
+Singularity version 2.6 and SingularityPRO version 3.5 have a function equivalent to ``docker login`` that provides authentication information with environment variables.
 
 ```shell
 [username@es ~]$ export SINGULARITY_DOCKER_USERNAME='username'
@@ -32,10 +32,10 @@ For more information on Singularity version 2.6 authentication, see below.
     * [How do I specify my Docker image?](https://sylabs.io/guides/2.6/user-guide/singularity_and_docker.html#how-do-i-specify-my-docker-image)
     * [Custom Authentication](https://sylabs.io/guides/2.6/user-guide/singularity_and_docker.html#custom-authentication)  
 
-For more information on Singularity PRO version 3.5 authentication, see below.
+For more information on SingularityPRO version 3.5 authentication, see below.
 
-* [Singularity PRO 3.5 User Guide](https://repo.sylabs.io/c/0f6898986ad0b646b5ce6deba21781ac62cb7e0a86a5153bbb31732ee6593f43/guides/singularitypro35-user-guide/)  
-    * [Making use of private images from Private Registries](https://repo.sylabs.io/c/0f6898986ad0b646b5ce6deba21781ac62cb7e0a86a5153bbb31732ee6593f43/guides/singularitypro35-user-guide/singularity_and_docker.html?highlight=support%20docker%20oci#making-use-of-private-images-from-private-registries) 
+* [SingularityPRO 3.5 User Guide](https://repo.sylabs.io/c/0f6898986ad0b646b5ce6deba21781ac62cb7e0a86a5153bbb31732ee6593f43/guides/singularitypro35-user-guide/)
+    * [Making use of private images from Private Registries](https://repo.sylabs.io/c/0f6898986ad0b646b5ce6deba21781ac62cb7e0a86a5153bbb31732ee6593f43/guides/singularitypro35-user-guide/singularity_and_docker.html?highlight=support%20docker%20oci#making-use-of-private-images-from-private-registries)
 
 ## Q. NGC CLI cannot be executed
 
@@ -59,7 +59,7 @@ NGC_HOME=$HOME/ngc
 singularity exec $NGC_HOME/ubuntu-18.04.simg $NGC_HOME/ngc $@
 ```
 
-**Singularity PRO 3.5**
+**SingularityPRO 3.5**
 
 ```
 #!/bin/sh
