@@ -40,6 +40,7 @@ All users who use this system are strongly recommended to read this document, as
     - [Data encryption](abci-cloudstorage/encryption.md)
     - [Access Control (1)](abci-cloudstorage/acl.md)
     - [Access Control (2)](abci-cloudstorage/policy.md)
+  - [ABCI Singularity Endpoint](abci-singularity-endpoint.md)
   - [FAQ](faq.md)
   - [Known Issues](known-issues.md)
   - [System Updates](system-updates.md)
