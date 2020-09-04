@@ -20,6 +20,9 @@
   - 各種アプリケーション:
     - [概要](apps/index.md)
     - [TensorFlow](apps/tensorflow.md)
+    - [TensorFlow Keras](apps/tensorflow-keras.md)
+    - [PyTorch](apps/pytorch.md)
+    - [MXNet](apps/mxnet.md)
     - [Chainer](apps/chainer.md)
     - [その他](apps/others.md)
   - Tips:
