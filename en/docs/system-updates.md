@@ -91,7 +91,7 @@ If you need MVAPICH2-GDR for PGI, please contact Customer Support.
 
 Other fixes are as follows:
 
-* Add [Memory Intensive Node](01.md#memory-intensive--node-configuration)
+* Add [Memory-Intensive Node](01.md#memory-intensive-node)
 
 ## 2019-11-06
 

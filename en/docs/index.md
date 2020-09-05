@@ -21,6 +21,9 @@ All users who use this system are strongly recommended to read this document, as
   - Applications:
     - [Overview](apps/index.md)
     - [TensorFlow](apps/tensorflow.md)
+    - [TensorFlow Keras](apps/tensorflow-keras.md)
+    - [PyTorch](apps/pytorch.md)
+    - [MXNet](apps/mxnet.md)
     - [Chainer](apps/chainer.md)
     - [Others](apps/others.md)
   - Tips

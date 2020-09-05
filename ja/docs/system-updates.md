@@ -91,7 +91,7 @@ PGI 版が必要の場合、ユーザーサポートまでご連絡ください�
 
 その他の修正点は下記の通りです:
 
-* [メモリインテンシブノード](01.md#memory-intensive-node-configuration)を追加いたしました。
+* [メモリインテンシブノード](01.md#memory-intensive-node)を追加しました。
 
 ## 2019-11-06
 
