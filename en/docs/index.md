@@ -1,9 +1,10 @@
 # Introduction
 
-This Users Guide explains how to use "[AI Bridging Cloud Infrastructure (ABCI)](https://abci.ai/)" introduced by [National Institute of Advanced Industrial Science and Technology (AIST)](https://www.aist.go.jp/index_en.html).
-All users who use this system are strongly recommended to read this document, as this is helpful to gain better understanding of the system.
+[AI Bridging Cloud Infrastructure (ABCI)](https://abci.ai/), is an open computing infrastructure for both developing AI technology and bridging AI technology into the industry and the real world, constructed and operated by [National Institute of Advanced Industrial Science and Technology (AIST)](https://www.aist.go.jp/index_en.html). ABCI started full-scale operation in August 2018.
 
-  - Users Guide:
+This User Guide describes the technical details of ABCI and how to use it. All users who use ABCI are strongly recommended to read this document, as it is helpful to gain better understanding of the system.
+
+  - User Guide:
     - [1. ABCI System Overview](01.md)
     - [2. ABCI System User Environment](02.md)
     - [3. Job Execution Environment](03.md)
