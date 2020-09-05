@@ -1,4 +1,4 @@
-<!doctype html><html lang="ja" class="no-js"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta http-equiv="x-ua-compatible" content="ie=edge"><meta name="description" content="ABCI Users Guide, Japanese version"><link rel="canonical" href="https://docs.abci.ai/ja/01/"><meta name="author" content="AIST"><meta name="lang:clipboard.copy" content="クリップボードへコピー"><meta name="lang:clipboard.copied" content="コピーしました"><meta name="lang:search.language" content="ja"><meta name="lang:search.pipeline.stopwords" content="True"><meta name="lang:search.pipeline.trimmer" content="True"><meta name="lang:search.result.none" content="何も見つかりませんでした"><meta name="lang:search.result.one" content="1件見つかりました"><meta name="lang:search.result.other" content="#件見つかりました"><meta name="lang:search.tokenizer" content="[\s\-　、。，．]+"><link rel="shortcut icon" href="../assets/images/favicon.png"><meta name="generator" content="mkdocs-1.1, mkdocs-material-4.3.1"><title>1. ABCIシステムの概要 - ABCI Users Guide</title><link rel="stylesheet" href="../assets/stylesheets/application.4031d38b.css"><link rel="stylesheet" href="../assets/stylesheets/application-palette.224b79ff.css"><meta name="theme-color" content="#ef5350"><script src="../assets/javascripts/modernizr.74668098.js"></script><link href="https://fonts.gstatic.com" rel="preconnect" crossorigin><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700|Roboto+Mono&display=swap"><style>body,input{font-family:"Roboto","Helvetica Neue",Helvetica,Arial,sans-serif}code,kbd,pre{font-family:"Roboto Mono","Courier New",Courier,monospace}</style><link rel="stylesheet" href="../assets/fonts/material-icons.css"><script>window.ga = window.ga || function() {
+<!doctype html><html lang="ja" class="no-js"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta http-equiv="x-ua-compatible" content="ie=edge"><meta name="description" content="ABCI User Guide, Japanese version"><link rel="canonical" href="https://docs.abci.ai/ja/01/"><meta name="author" content="AIST"><meta name="lang:clipboard.copy" content="クリップボードへコピー"><meta name="lang:clipboard.copied" content="コピーしました"><meta name="lang:search.language" content="ja"><meta name="lang:search.pipeline.stopwords" content="True"><meta name="lang:search.pipeline.trimmer" content="True"><meta name="lang:search.result.none" content="何も見つかりませんでした"><meta name="lang:search.result.one" content="1件見つかりました"><meta name="lang:search.result.other" content="#件見つかりました"><meta name="lang:search.tokenizer" content="[\s\-　、。，．]+"><link rel="shortcut icon" href="../assets/images/favicon.png"><meta name="generator" content="mkdocs-1.1, mkdocs-material-4.3.1"><title>1. ABCIシステムの概要 - ABCI User Guide</title><link rel="stylesheet" href="../assets/stylesheets/application.4031d38b.css"><link rel="stylesheet" href="../assets/stylesheets/application-palette.224b79ff.css"><meta name="theme-color" content="#ef5350"><script src="../assets/javascripts/modernizr.74668098.js"></script><link href="https://fonts.gstatic.com" rel="preconnect" crossorigin><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700|Roboto+Mono&display=swap"><style>body,input{font-family:"Roboto","Helvetica Neue",Helvetica,Arial,sans-serif}code,kbd,pre{font-family:"Roboto Mono","Courier New",Courier,monospace}</style><link rel="stylesheet" href="../assets/fonts/material-icons.css"><script>window.ga = window.ga || function() {
     (ga.q = ga.q || []).push(arguments)
   }
   ga.l = +new Date
@@ -17,18 +17,151 @@
         }
       })
     }
-  })</script><script async src="https://www.google-analytics.com/analytics.js"></script></head><body dir="ltr" data-md-color-primary="red" data-md-color-accent="red"><svg class="md-svg"><defs><svg xmlns="http://www.w3.org/2000/svg" width="416" height="448" viewBox="0 0 416 448" id="__github"><path fill="currentColor" d="M160 304q0 10-3.125 20.5t-10.75 19T128 352t-18.125-8.5-10.75-19T96 304t3.125-20.5 10.75-19T128 256t18.125 8.5 10.75 19T160 304zm160 0q0 10-3.125 20.5t-10.75 19T288 352t-18.125-8.5-10.75-19T256 304t3.125-20.5 10.75-19T288 256t18.125 8.5 10.75 19T320 304zm40 0q0-30-17.25-51T296 232q-10.25 0-48.75 5.25Q229.5 240 208 240t-39.25-2.75Q130.75 232 120 232q-29.5 0-46.75 21T56 304q0 22 8 38.375t20.25 25.75 30.5 15 35 7.375 37.25 1.75h42q20.5 0 37.25-1.75t35-7.375 30.5-15 20.25-25.75T360 304zm56-44q0 51.75-15.25 82.75-9.5 19.25-26.375 33.25t-35.25 21.5-42.5 11.875-42.875 5.5T212 416q-19.5 0-35.5-.75t-36.875-3.125-38.125-7.5-34.25-12.875T37 371.5t-21.5-28.75Q0 312 0 260q0-59.25 34-99-6.75-20.5-6.75-42.5 0-29 12.75-54.5 27 0 47.5 9.875t47.25 30.875Q171.5 96 212 96q37 0 70 8 26.25-20.5 46.75-30.25T376 64q12.75 25.5 12.75 54.5 0 21.75-6.75 42 34 40 34 99.5z"/></svg></defs></svg> <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off"> <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off"> <label class="md-overlay" data-md-component="overlay" for="__drawer"></label><a href="#1-abci" tabindex="1" class="md-skip">Skip to content </a><header class="md-header" data-md-component="header"><nav class="md-header-nav md-grid"><div class="md-flex"><div class="md-flex__cell md-flex__cell--shrink"><a href="https://docs.abci.ai/ja/" title="ABCI Users Guide" class="md-header-nav__button md-logo"><i class="md-icon">cloud</i></a></div><div class="md-flex__cell md-flex__cell--shrink"><label class="md-icon md-icon--menu md-header-nav__button" for="__drawer"></label></div><div class="md-flex__cell md-flex__cell--stretch"><div class="md-flex__ellipsis md-header-nav__title" data-md-component="title"><span class="md-header-nav__topic">ABCI Users Guide</span><span class="md-header-nav__topic">1. ABCIシステムの概要</span></div></div><div class="md-flex__cell md-flex__cell--shrink"><label class="md-icon md-icon--search md-header-nav__button" for="__search"></label><div class="md-search" data-md-component="search" role="dialog"><label class="md-search__overlay" for="__search"></label><div class="md-search__inner" role="search"><form class="md-search__form" name="search"><input type="text" class="md-search__input" name="query" placeholder="検索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="query" data-md-state="active"> <label class="md-icon md-search__icon" for="__search"></label> <button type="reset" class="md-icon md-search__icon" data-md-component="reset" tabindex="-1">&#xE5CD;</button></form><div class="md-search__output"><div class="md-search__scrollwrap" data-md-scrollfix><div class="md-search-result" data-md-component="result"><div class="md-search-result__meta">検索キーワードを入力してください</div><ol class="md-search-result__list"></ol></div></div></div></div></div></div><div class="md-flex__cell md-flex__cell--shrink"><div class="md-header-nav__source"><a href="https://github.com/aistairc/abci-docs/" title="リポジトリへ" class="md-source" data-md-source="github"><div class="md-source__icon"><svg viewBox="0 0 24 24" width="24" height="24"><use xlink:href="#__github" width="24" height="24"></use></svg></div><div class="md-source__repository">GitHub</div></a></div></div></div></nav></header><div class="md-container"><main class="md-main"><div class="md-main__inner md-grid" data-md-component="container"><div class="md-sidebar md-sidebar--primary" data-md-component="navigation"><div class="md-sidebar__scrollwrap"><div class="md-sidebar__inner"><nav class="md-nav md-nav--primary" data-md-level="0"><label class="md-nav__title md-nav__title--site" for="__drawer"><a href="https://docs.abci.ai/ja/" title="ABCI Users Guide" class="md-nav__button md-logo"><i class="md-icon">cloud</i></a>ABCI Users Guide</label><div class="md-nav__source"><a href="https://github.com/aistairc/abci-docs/" title="リポジトリへ" class="md-source" data-md-source="github"><div class="md-source__icon"><svg viewBox="0 0 24 24" width="24" height="24"><use xlink:href="#__github" width="24" height="24"></use></svg></div><div class="md-source__repository">GitHub</div></a></div><ul class="md-nav__list" data-md-scrollfix><li class="md-nav__item"><a href=".." title="はじめに" class="md-nav__link">はじめに</a></li><li class="md-nav__item md-nav__item--active md-nav__item--nested"><input class="md-toggle md-nav__toggle" data-md-toggle="nav-2" type="checkbox" id="nav-2" checked><label class="md-nav__link" for="nav-2">利用手引き</label><nav class="md-nav" data-md-component="collapsible" data-md-level="1"><label class="md-nav__title" for="nav-2">利用手引き</label><ul class="md-nav__list" data-md-scrollfix><li class="md-nav__item md-nav__item--active"><input class="md-toggle md-nav__toggle" data-md-toggle="toc" type="checkbox" id="__toc"><label class="md-nav__link md-nav__link--active" for="__toc">1. ABCIシステムの概要</label><a href="./" title="1. ABCIシステムの概要" class="md-nav__link md-nav__link--active">1. ABCIシステムの概要</a><nav class="md-nav md-nav--secondary"><label class="md-nav__title" for="__toc">目次</label><ul class="md-nav__list" data-md-scrollfix><li class="md-nav__item"><a href="#system-architecture" title="1.1. システム全体概要" class="md-nav__link">1.1. システム全体概要</a></li><li class="md-nav__item"><a href="#compute-resource-configuration" title="1.2. 計算リソースのハードウェア概要" class="md-nav__link">1.2. 計算リソースのハードウェア概要</a><nav class="md-nav"><ul class="md-nav__list"><li class="md-nav__item"><a href="#compute-node-configuration" title="1.2.1 計算ノード" class="md-nav__link">1.2.1 計算ノード</a></li><li class="md-nav__item"><a href="#memory-intensive-node-configuration" title="1.2.2 メモリインテンシブノード" class="md-nav__link">1.2.2 メモリインテンシブノード</a></li></ul></nav></li><li class="md-nav__item"><a href="#software-configuration" title="1.3. ソフトウェア構成" class="md-nav__link">1.3. ソフトウェア構成</a></li><li class="md-nav__item"><a href="#storage-configuration" title="1.4. ストレージ構成" class="md-nav__link">1.4. ストレージ構成</a></li><li class="md-nav__item"><a href="#system-use-overview" title="1.5. システム利用概要" class="md-nav__link">1.5. システム利用概要</a></li></ul></nav></li><li class="md-nav__item"><a href="../02/" title="2. ABCIシステム利用環境" class="md-nav__link">2. ABCIシステム利用環境</a></li><li class="md-nav__item"><a href="../03/" title="3. ジョブ実行環境" class="md-nav__link">3. ジョブ実行環境</a></li><li class="md-nav__item"><a href="../04/" title="4. ストレージ" class="md-nav__link">4. ストレージ</a></li><li class="md-nav__item"><a href="../05/" title="5. Environment Modulesの利用" class="md-nav__link">5. Environment Modulesの利用</a></li><li class="md-nav__item"><a href="../06/" title="6. Pythonの利用" class="md-nav__link">6. Pythonの利用</a></li><li class="md-nav__item"><a href="../07/" title="7. GPUの利用" class="md-nav__link">7. GPUの利用</a></li><li class="md-nav__item"><a href="../08/" title="8. MPIの利用" class="md-nav__link">8. MPIの利用</a></li><li class="md-nav__item"><a href="../09/" title="9. Linuxコンテナ" class="md-nav__link">9. Linuxコンテナ</a></li><li class="md-nav__item"><a href="../10/" title="10. プログラム開発環境" class="md-nav__link">10. プログラム開発環境</a></li><li class="md-nav__item"><a href="../appendix/installed-software/" title="付録. インストール済みソフトウェアの構成" class="md-nav__link">付録. インストール済みソフトウェアの構成</a></li><li class="md-nav__item"><a href="../appendix/using-abci-with-hpci/" title="付録. HPCIによるABCIシステム利用" class="md-nav__link">付録. HPCIによるABCIシステム利用</a></li><li class="md-nav__item"><a href="../appendix/external-networks/" title="付録. 外部ネットワークとの通信" class="md-nav__link">付録. 外部ネットワークとの通信</a></li></ul></nav></li><li class="md-nav__item md-nav__item--nested"><input class="md-toggle md-nav__toggle" data-md-toggle="nav-3" type="checkbox" id="nav-3"><label class="md-nav__link" for="nav-3">各種アプリケーション</label><nav class="md-nav" data-md-component="collapsible" data-md-level="1"><label class="md-nav__title" for="nav-3">各種アプリケーション</label><ul class="md-nav__list" data-md-scrollfix><li class="md-nav__item"><a href="../apps/" title="概要" class="md-nav__link">概要</a></li><li class="md-nav__item"><a href="../apps/tensorflow/" title="TensorFlow" class="md-nav__link">TensorFlow</a></li><li class="md-nav__item"><a href="../apps/tensorflow-keras/" title="TensorFlow Keras" class="md-nav__link">TensorFlow Keras</a></li><li class="md-nav__item"><a href="../apps/pytorch/" title="PyTorch" class="md-nav__link">PyTorch</a></li><li class="md-nav__item"><a href="../apps/mxnet/" title="MXNet" class="md-nav__link">MXNet</a></li><li class="md-nav__item"><a href="../apps/chainer/" title="Chainer" class="md-nav__link">Chainer</a></li><li class="md-nav__item"><a href="../apps/others/" title="その他" class="md-nav__link">その他</a></li></ul></nav></li><li class="md-nav__item md-nav__item--nested"><input class="md-toggle md-nav__toggle" data-md-toggle="nav-4" type="checkbox" id="nav-4"><label class="md-nav__link" for="nav-4">Tips</label><nav class="md-nav" data-md-component="collapsible" data-md-level="1"><label class="md-nav__title" for="nav-4">Tips</label><ul class="md-nav__list" data-md-scrollfix><li class="md-nav__item"><a href="../tips/remote-desktop/" title="リモートデスクトップの利用" class="md-nav__link">リモートデスクトップの利用</a></li><li class="md-nav__item"><a href="../tips/awscli/" title="AWS CLIの利用" class="md-nav__link">AWS CLIの利用</a></li><li class="md-nav__item"><a href="../tips/tera-term/" title="Tera Termの利用" class="md-nav__link">Tera Termの利用</a></li><li class="md-nav__item"><a href="../tips/putty/" title="PuTTYの利用" class="md-nav__link">PuTTYの利用</a></li><li class="md-nav__item"><a href="../tips/jupyter-notebook/" title="Jupyter Notebookの利用" class="md-nav__link">Jupyter Notebookの利用</a></li><li class="md-nav__item"><a href="../tips/sregistry-cli/" title="Singularity Global Clientの利用" class="md-nav__link">Singularity Global Clientの利用</a></li><li class="md-nav__item"><a href="../tips/spack/" title="Spackによるソフトウェア管理" class="md-nav__link">Spackによるソフトウェア管理</a></li><li class="md-nav__item"><a href="../tips/datasets/" title="データセットの利用" class="md-nav__link">データセットの利用</a></li><li class="md-nav__item"><a href="../tips/dl-amazon-ecr/" title="Amazon ECR からコンテナ取得" class="md-nav__link">Amazon ECR からコンテナ取得</a></li></ul></nav></li><li class="md-nav__item"><a href="../ngc/" title="NVIDIA NGC" class="md-nav__link">NVIDIA NGC</a></li><li class="md-nav__item md-nav__item--nested"><input class="md-toggle md-nav__toggle" data-md-toggle="nav-6" type="checkbox" id="nav-6"><label class="md-nav__link" for="nav-6">ABCI クラウドストレージ</label><nav class="md-nav" data-md-component="collapsible" data-md-level="1"><label class="md-nav__title" for="nav-6">ABCI クラウドストレージ</label><ul class="md-nav__list" data-md-scrollfix><li class="md-nav__item"><a href="../abci-cloudstorage/" title="概要" class="md-nav__link">概要</a></li><li class="md-nav__item"><a href="../abci-cloudstorage/cs-account/" title="アカウントとアクセスキー" class="md-nav__link">アカウントとアクセスキー</a></li><li class="md-nav__item"><a href="../abci-cloudstorage/usage/" title="使い方" class="md-nav__link">使い方</a></li><li class="md-nav__item"><a href="../abci-cloudstorage/encryption/" title="データの暗号化" class="md-nav__link">データの暗号化</a></li><li class="md-nav__item"><a href="../abci-cloudstorage/acl/" title="アクセス制御（1）" class="md-nav__link">アクセス制御（1）</a></li><li class="md-nav__item"><a href="../abci-cloudstorage/policy/" title="アクセス制御（2）" class="md-nav__link">アクセス制御（2）</a></li></ul></nav></li><li class="md-nav__item"><a href="../abci-singularity-endpoint/" title="ABCI Singularity エンドポイント" class="md-nav__link">ABCI Singularity エンドポイント</a></li><li class="md-nav__item"><a href="../faq/" title="FAQ" class="md-nav__link">FAQ</a></li><li class="md-nav__item"><a href="../known-issues/" title="既知の問題" class="md-nav__link">既知の問題</a></li><li class="md-nav__item"><a href="../system-updates/" title="システム更新履歴" class="md-nav__link">システム更新履歴</a></li><li class="md-nav__item"><a href="https://abci.ai/ja/about_abci/info.html" title="運転状況" class="md-nav__link">運転状況</a></li><li class="md-nav__item"><a href="../contact/" title="お問い合わせ" class="md-nav__link">お問い合わせ</a></li><li class="md-nav__item md-nav__item--nested"><input class="md-toggle md-nav__toggle" data-md-toggle="nav-13" type="checkbox" id="nav-13"><label class="md-nav__link" for="nav-13">リンク</label><nav class="md-nav" data-md-component="collapsible" data-md-level="1"><label class="md-nav__title" for="nav-13">リンク</label><ul class="md-nav__list" data-md-scrollfix><li class="md-nav__item"><a href="https://abci.ai/ja/" title="ABCI Webページ" class="md-nav__link">ABCI Webページ</a></li><li class="md-nav__item"><a href="https://docs.abci.ai/portal/ja/" title="ABCI利用ポータル手引き" class="md-nav__link">ABCI利用ポータル手引き</a></li><li class="md-nav__item"><a href="https://portal.abci.ai/user/project_register_app.php?lang=ja" title="ABCI利用ポータル(利用申請)" class="md-nav__link">ABCI利用ポータル(利用申請)</a></li><li class="md-nav__item"><a href="https://portal.abci.ai/user/login.php?lang=ja" title="ABCI利用ポータル(ログイン)" class="md-nav__link">ABCI利用ポータル(ログイン)</a></li></ul></nav></li><li class="md-nav__item"><a href="https://docs.abci.ai/en/" title="English version" class="md-nav__link">English version</a></li></ul></nav></div></div></div><div class="md-sidebar md-sidebar--secondary" data-md-component="toc"><div class="md-sidebar__scrollwrap"><div class="md-sidebar__inner"><nav class="md-nav md-nav--secondary"><label class="md-nav__title" for="__toc">目次</label><ul class="md-nav__list" data-md-scrollfix><li class="md-nav__item"><a href="#system-architecture" title="1.1. システム全体概要" class="md-nav__link">1.1. システム全体概要</a></li><li class="md-nav__item"><a href="#compute-resource-configuration" title="1.2. 計算リソースのハードウェア概要" class="md-nav__link">1.2. 計算リソースのハードウェア概要</a><nav class="md-nav"><ul class="md-nav__list"><li class="md-nav__item"><a href="#compute-node-configuration" title="1.2.1 計算ノード" class="md-nav__link">1.2.1 計算ノード</a></li><li class="md-nav__item"><a href="#memory-intensive-node-configuration" title="1.2.2 メモリインテンシブノード" class="md-nav__link">1.2.2 メモリインテンシブノード</a></li></ul></nav></li><li class="md-nav__item"><a href="#software-configuration" title="1.3. ソフトウェア構成" class="md-nav__link">1.3. ソフトウェア構成</a></li><li class="md-nav__item"><a href="#storage-configuration" title="1.4. ストレージ構成" class="md-nav__link">1.4. ストレージ構成</a></li><li class="md-nav__item"><a href="#system-use-overview" title="1.5. システム利用概要" class="md-nav__link">1.5. システム利用概要</a></li></ul></nav></div></div></div><div class="md-content"><article class="md-content__inner md-typeset"><a href="https://github.com/aistairc/abci-docs/edit/master/ja/docs/01.md" title="編集" class="md-icon md-content__icon">&#xE3C9;</a><h1 id="1-abci">1. ABCIシステムの概要</h1>
+  })</script><script async src="https://www.google-analytics.com/analytics.js"></script></head><body dir="ltr" data-md-color-primary="red" data-md-color-accent="red"><svg class="md-svg"><defs><svg xmlns="http://www.w3.org/2000/svg" width="416" height="448" viewBox="0 0 416 448" id="__github"><path fill="currentColor" d="M160 304q0 10-3.125 20.5t-10.75 19T128 352t-18.125-8.5-10.75-19T96 304t3.125-20.5 10.75-19T128 256t18.125 8.5 10.75 19T160 304zm160 0q0 10-3.125 20.5t-10.75 19T288 352t-18.125-8.5-10.75-19T256 304t3.125-20.5 10.75-19T288 256t18.125 8.5 10.75 19T320 304zm40 0q0-30-17.25-51T296 232q-10.25 0-48.75 5.25Q229.5 240 208 240t-39.25-2.75Q130.75 232 120 232q-29.5 0-46.75 21T56 304q0 22 8 38.375t20.25 25.75 30.5 15 35 7.375 37.25 1.75h42q20.5 0 37.25-1.75t35-7.375 30.5-15 20.25-25.75T360 304zm56-44q0 51.75-15.25 82.75-9.5 19.25-26.375 33.25t-35.25 21.5-42.5 11.875-42.875 5.5T212 416q-19.5 0-35.5-.75t-36.875-3.125-38.125-7.5-34.25-12.875T37 371.5t-21.5-28.75Q0 312 0 260q0-59.25 34-99-6.75-20.5-6.75-42.5 0-29 12.75-54.5 27 0 47.5 9.875t47.25 30.875Q171.5 96 212 96q37 0 70 8 26.25-20.5 46.75-30.25T376 64q12.75 25.5 12.75 54.5 0 21.75-6.75 42 34 40 34 99.5z"/></svg></defs></svg> <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off"> <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off"> <label class="md-overlay" data-md-component="overlay" for="__drawer"></label><a href="#1-abci" tabindex="1" class="md-skip">Skip to content </a><header class="md-header" data-md-component="header"><nav class="md-header-nav md-grid"><div class="md-flex"><div class="md-flex__cell md-flex__cell--shrink"><a href="https://docs.abci.ai/ja/" title="ABCI User Guide" class="md-header-nav__button md-logo"><i class="md-icon">cloud</i></a></div><div class="md-flex__cell md-flex__cell--shrink"><label class="md-icon md-icon--menu md-header-nav__button" for="__drawer"></label></div><div class="md-flex__cell md-flex__cell--stretch"><div class="md-flex__ellipsis md-header-nav__title" data-md-component="title"><span class="md-header-nav__topic">ABCI User Guide</span><span class="md-header-nav__topic">1. ABCIシステムの概要</span></div></div><div class="md-flex__cell md-flex__cell--shrink"><label class="md-icon md-icon--search md-header-nav__button" for="__search"></label><div class="md-search" data-md-component="search" role="dialog"><label class="md-search__overlay" for="__search"></label><div class="md-search__inner" role="search"><form class="md-search__form" name="search"><input type="text" class="md-search__input" name="query" placeholder="検索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="query" data-md-state="active"> <label class="md-icon md-search__icon" for="__search"></label> <button type="reset" class="md-icon md-search__icon" data-md-component="reset" tabindex="-1">&#xE5CD;</button></form><div class="md-search__output"><div class="md-search__scrollwrap" data-md-scrollfix><div class="md-search-result" data-md-component="result"><div class="md-search-result__meta">検索キーワードを入力してください</div><ol class="md-search-result__list"></ol></div></div></div></div></div></div><div class="md-flex__cell md-flex__cell--shrink"><div class="md-header-nav__source"><a href="https://github.com/aistairc/abci-docs/" title="リポジトリへ" class="md-source" data-md-source="github"><div class="md-source__icon"><svg viewBox="0 0 24 24" width="24" height="24"><use xlink:href="#__github" width="24" height="24"></use></svg></div><div class="md-source__repository">GitHub</div></a></div></div></div></nav></header><div class="md-container"><main class="md-main"><div class="md-main__inner md-grid" data-md-component="container"><div class="md-sidebar md-sidebar--primary" data-md-component="navigation"><div class="md-sidebar__scrollwrap"><div class="md-sidebar__inner"><nav class="md-nav md-nav--primary" data-md-level="0"><label class="md-nav__title md-nav__title--site" for="__drawer"><a href="https://docs.abci.ai/ja/" title="ABCI User Guide" class="md-nav__button md-logo"><i class="md-icon">cloud</i></a>ABCI User Guide</label><div class="md-nav__source"><a href="https://github.com/aistairc/abci-docs/" title="リポジトリへ" class="md-source" data-md-source="github"><div class="md-source__icon"><svg viewBox="0 0 24 24" width="24" height="24"><use xlink:href="#__github" width="24" height="24"></use></svg></div><div class="md-source__repository">GitHub</div></a></div><ul class="md-nav__list" data-md-scrollfix><li class="md-nav__item"><a href=".." title="はじめに" class="md-nav__link">はじめに</a></li><li class="md-nav__item md-nav__item--active md-nav__item--nested"><input class="md-toggle md-nav__toggle" data-md-toggle="nav-2" type="checkbox" id="nav-2" checked><label class="md-nav__link" for="nav-2">利用手引き</label><nav class="md-nav" data-md-component="collapsible" data-md-level="1"><label class="md-nav__title" for="nav-2">利用手引き</label><ul class="md-nav__list" data-md-scrollfix><li class="md-nav__item md-nav__item--active"><input class="md-toggle md-nav__toggle" data-md-toggle="toc" type="checkbox" id="__toc"><label class="md-nav__link md-nav__link--active" for="__toc">1. ABCIシステムの概要</label><a href="./" title="1. ABCIシステムの概要" class="md-nav__link md-nav__link--active">1. ABCIシステムの概要</a><nav class="md-nav md-nav--secondary"><label class="md-nav__title" for="__toc">目次</label><ul class="md-nav__list" data-md-scrollfix><li class="md-nav__item"><a href="#system-architecture" title="1.1. システム全体概要" class="md-nav__link">1.1. システム全体概要</a></li><li class="md-nav__item"><a href="#computing-resources" title="1.2. 計算リソース" class="md-nav__link">1.2. 計算リソース</a><nav class="md-nav"><ul class="md-nav__list"><li class="md-nav__item"><a href="#interactive-node" title="インタラクティブノード" class="md-nav__link">インタラクティブノード</a></li><li class="md-nav__item"><a href="#compute-node" title="計算ノード" class="md-nav__link">計算ノード</a></li><li class="md-nav__item"><a href="#memory-intensive-node" title="メモリインテンシブノード" class="md-nav__link">メモリインテンシブノード</a></li></ul></nav></li><li class="md-nav__item"><a href="#storage-systems" title="1.3. ストレージシステム" class="md-nav__link">1.3. ストレージシステム</a></li><li class="md-nav__item"><a href="#software" title="1.4. ソフトウェア" class="md-nav__link">1.4. ソフトウェア</a></li></ul></nav></li><li class="md-nav__item"><a href="../02/" title="2. ABCIシステム利用環境" class="md-nav__link">2. ABCIシステム利用環境</a></li><li class="md-nav__item"><a href="../03/" title="3. ジョブ実行環境" class="md-nav__link">3. ジョブ実行環境</a></li><li class="md-nav__item"><a href="../04/" title="4. ストレージ" class="md-nav__link">4. ストレージ</a></li><li class="md-nav__item"><a href="../05/" title="5. Environment Modules" class="md-nav__link">5. Environment Modules</a></li><li class="md-nav__item"><a href="../06/" title="6. Python" class="md-nav__link">6. Python</a></li><li class="md-nav__item"><a href="../07/" title="7. GPU" class="md-nav__link">7. GPU</a></li><li class="md-nav__item"><a href="../08/" title="8. MPI" class="md-nav__link">8. MPI</a></li><li class="md-nav__item"><a href="../09/" title="9. Linuxコンテナ" class="md-nav__link">9. Linuxコンテナ</a></li><li class="md-nav__item"><a href="../10/" title="10. プログラム開発環境" class="md-nav__link">10. プログラム開発環境</a></li><li class="md-nav__item"><a href="../appendix/installed-software/" title="付録. インストール済みソフトウェアの構成" class="md-nav__link">付録. インストール済みソフトウェアの構成</a></li><li class="md-nav__item"><a href="../appendix/using-abci-with-hpci/" title="付録. HPCIによるABCIシステム利用" class="md-nav__link">付録. HPCIによるABCIシステム利用</a></li><li class="md-nav__item"><a href="../appendix/external-networks/" title="付録. 外部ネットワークとの通信" class="md-nav__link">付録. 外部ネットワークとの通信</a></li></ul></nav></li><li class="md-nav__item md-nav__item--nested"><input class="md-toggle md-nav__toggle" data-md-toggle="nav-3" type="checkbox" id="nav-3"><label class="md-nav__link" for="nav-3">各種アプリケーション</label><nav class="md-nav" data-md-component="collapsible" data-md-level="1"><label class="md-nav__title" for="nav-3">各種アプリケーション</label><ul class="md-nav__list" data-md-scrollfix><li class="md-nav__item"><a href="../apps/" title="概要" class="md-nav__link">概要</a></li><li class="md-nav__item"><a href="../apps/tensorflow/" title="TensorFlow" class="md-nav__link">TensorFlow</a></li><li class="md-nav__item"><a href="../apps/tensorflow-keras/" title="TensorFlow Keras" class="md-nav__link">TensorFlow Keras</a></li><li class="md-nav__item"><a href="../apps/pytorch/" title="PyTorch" class="md-nav__link">PyTorch</a></li><li class="md-nav__item"><a href="../apps/mxnet/" title="MXNet" class="md-nav__link">MXNet</a></li><li class="md-nav__item"><a href="../apps/chainer/" title="Chainer" class="md-nav__link">Chainer</a></li><li class="md-nav__item"><a href="../apps/others/" title="その他" class="md-nav__link">その他</a></li></ul></nav></li><li class="md-nav__item md-nav__item--nested"><input class="md-toggle md-nav__toggle" data-md-toggle="nav-4" type="checkbox" id="nav-4"><label class="md-nav__link" for="nav-4">Tips</label><nav class="md-nav" data-md-component="collapsible" data-md-level="1"><label class="md-nav__title" for="nav-4">Tips</label><ul class="md-nav__list" data-md-scrollfix><li class="md-nav__item"><a href="../tips/remote-desktop/" title="リモートデスクトップの利用" class="md-nav__link">リモートデスクトップの利用</a></li><li class="md-nav__item"><a href="../tips/awscli/" title="AWS CLIの利用" class="md-nav__link">AWS CLIの利用</a></li><li class="md-nav__item"><a href="../tips/tera-term/" title="Tera Termの利用" class="md-nav__link">Tera Termの利用</a></li><li class="md-nav__item"><a href="../tips/putty/" title="PuTTYの利用" class="md-nav__link">PuTTYの利用</a></li><li class="md-nav__item"><a href="../tips/jupyter-notebook/" title="Jupyter Notebookの利用" class="md-nav__link">Jupyter Notebookの利用</a></li><li class="md-nav__item"><a href="../tips/sregistry-cli/" title="Singularity Global Clientの利用" class="md-nav__link">Singularity Global Clientの利用</a></li><li class="md-nav__item"><a href="../tips/spack/" title="Spackによるソフトウェア管理" class="md-nav__link">Spackによるソフトウェア管理</a></li><li class="md-nav__item"><a href="../tips/datasets/" title="データセットの利用" class="md-nav__link">データセットの利用</a></li><li class="md-nav__item"><a href="../tips/dl-amazon-ecr/" title="Amazon ECR からコンテナ取得" class="md-nav__link">Amazon ECR からコンテナ取得</a></li></ul></nav></li><li class="md-nav__item"><a href="../ngc/" title="NVIDIA NGC" class="md-nav__link">NVIDIA NGC</a></li><li class="md-nav__item md-nav__item--nested"><input class="md-toggle md-nav__toggle" data-md-toggle="nav-6" type="checkbox" id="nav-6"><label class="md-nav__link" for="nav-6">ABCI クラウドストレージ</label><nav class="md-nav" data-md-component="collapsible" data-md-level="1"><label class="md-nav__title" for="nav-6">ABCI クラウドストレージ</label><ul class="md-nav__list" data-md-scrollfix><li class="md-nav__item"><a href="../abci-cloudstorage/" title="概要" class="md-nav__link">概要</a></li><li class="md-nav__item"><a href="../abci-cloudstorage/cs-account/" title="アカウントとアクセスキー" class="md-nav__link">アカウントとアクセスキー</a></li><li class="md-nav__item"><a href="../abci-cloudstorage/usage/" title="使い方" class="md-nav__link">使い方</a></li><li class="md-nav__item"><a href="../abci-cloudstorage/encryption/" title="データの暗号化" class="md-nav__link">データの暗号化</a></li><li class="md-nav__item"><a href="../abci-cloudstorage/acl/" title="アクセス制御（1）" class="md-nav__link">アクセス制御（1）</a></li><li class="md-nav__item"><a href="../abci-cloudstorage/policy/" title="アクセス制御（2）" class="md-nav__link">アクセス制御（2）</a></li></ul></nav></li><li class="md-nav__item"><a href="../abci-singularity-endpoint/" title="ABCI Singularity エンドポイント" class="md-nav__link">ABCI Singularity エンドポイント</a></li><li class="md-nav__item"><a href="../faq/" title="FAQ" class="md-nav__link">FAQ</a></li><li class="md-nav__item"><a href="../known-issues/" title="既知の問題" class="md-nav__link">既知の問題</a></li><li class="md-nav__item"><a href="../system-updates/" title="システム更新履歴" class="md-nav__link">システム更新履歴</a></li><li class="md-nav__item"><a href="https://abci.ai/ja/about_abci/info.html" title="運転状況" class="md-nav__link">運転状況</a></li><li class="md-nav__item"><a href="../contact/" title="お問い合わせ" class="md-nav__link">お問い合わせ</a></li><li class="md-nav__item md-nav__item--nested"><input class="md-toggle md-nav__toggle" data-md-toggle="nav-13" type="checkbox" id="nav-13"><label class="md-nav__link" for="nav-13">リンク</label><nav class="md-nav" data-md-component="collapsible" data-md-level="1"><label class="md-nav__title" for="nav-13">リンク</label><ul class="md-nav__list" data-md-scrollfix><li class="md-nav__item"><a href="https://abci.ai/ja/" title="ABCI Webページ" class="md-nav__link">ABCI Webページ</a></li><li class="md-nav__item"><a href="https://docs.abci.ai/portal/ja/" title="ABCI利用ポータル手引き" class="md-nav__link">ABCI利用ポータル手引き</a></li><li class="md-nav__item"><a href="https://portal.abci.ai/user/project_register_app.php?lang=ja" title="ABCI利用ポータル(利用申請)" class="md-nav__link">ABCI利用ポータル(利用申請)</a></li><li class="md-nav__item"><a href="https://portal.abci.ai/user/login.php?lang=ja" title="ABCI利用ポータル(ログイン)" class="md-nav__link">ABCI利用ポータル(ログイン)</a></li></ul></nav></li><li class="md-nav__item"><a href="https://docs.abci.ai/en/" title="English version" class="md-nav__link">English version</a></li></ul></nav></div></div></div><div class="md-sidebar md-sidebar--secondary" data-md-component="toc"><div class="md-sidebar__scrollwrap"><div class="md-sidebar__inner"><nav class="md-nav md-nav--secondary"><label class="md-nav__title" for="__toc">目次</label><ul class="md-nav__list" data-md-scrollfix><li class="md-nav__item"><a href="#system-architecture" title="1.1. システム全体概要" class="md-nav__link">1.1. システム全体概要</a></li><li class="md-nav__item"><a href="#computing-resources" title="1.2. 計算リソース" class="md-nav__link">1.2. 計算リソース</a><nav class="md-nav"><ul class="md-nav__list"><li class="md-nav__item"><a href="#interactive-node" title="インタラクティブノード" class="md-nav__link">インタラクティブノード</a></li><li class="md-nav__item"><a href="#compute-node" title="計算ノード" class="md-nav__link">計算ノード</a></li><li class="md-nav__item"><a href="#memory-intensive-node" title="メモリインテンシブノード" class="md-nav__link">メモリインテンシブノード</a></li></ul></nav></li><li class="md-nav__item"><a href="#storage-systems" title="1.3. ストレージシステム" class="md-nav__link">1.3. ストレージシステム</a></li><li class="md-nav__item"><a href="#software" title="1.4. ソフトウェア" class="md-nav__link">1.4. ソフトウェア</a></li></ul></nav></div></div></div><div class="md-content"><article class="md-content__inner md-typeset"><a href="https://github.com/aistairc/abci-docs/edit/master/ja/docs/01.md" title="編集" class="md-icon md-content__icon">&#xE3C9;</a><h1 id="1-abci">1. ABCIシステムの概要</h1>
 <h2 id="system-architecture">1.1. システム全体概要</h2>
-<p>本システムは、クラウド型計算システム「AI橋渡しクラウド（AI Bridging Cloud Infrastructure、以下「ABCI」という）」です。
-ABCIシステムは、1,088台の計算ノードなどからなる高性能計算システム、22ペタバイトの実効容量を持つ大容量ストレージシステム、これらを高速に結合するネットワークなどからなるハードウエア群と、これらを最大限活用するためのソフトウエア群から構成されます。</p>
-<p>ABCIシステムは、人工知能やビッグデータ分野の計算処理で有効とされる16ビットの半精度演算の性能が550ペタフロップス、倍精度演算の性能は37ペタフロップス、メモリ合算容量は476TiB、メモリ合算ピークバンド幅は4.19PBの高性能計算システムです。
-各計算ノードおよびストレージシステムは、InfiniBand EDR (100Gbps) による高速ネットワークに接続され、さらにインターネットとの接続にはSINET5を経由して100Gbpsで接続されます。</p>
+<p>ABCIシステムは、合計4,352基のNVIDIA V100 GPUアクセラレーターを備えた1,088台の計算ノードを始めとする計算リソース、合算で約40 PBの容量を有する共有ファイルシステム及びABCIクラウドストレージ、これらを高速に結合するInfiniBandネットワーク、ファイアウォールなどからなるハードウェアと、これらを最大限活用するためのソフトウェアから構成されます。また、ABCIシステムは学術情報ネットワークSINET5を利用して、100 Gbpsでインターネットに接続しています。</p>
 <p><img alt="Screenshot" src="../img/abci_system_ja.png" /> </p>
-<h2 id="compute-resource-configuration">1.2. 計算リソースのハードウェア概要</h2>
-<h3 id="compute-node-configuration">1.2.1 計算ノード</h3>
-<p>ABCIシステムの計算ノードは、FUJITSU Server PRIMERGY CX2570 M4 1,088台で構成されています
-1台の計算ノードには、Intel Xeon Gold 6148プロセッサー (2.4 GHz, 20コア) を2基搭載し、総コア数は43,520コアとなります。
-また、NVIDIA V100 GPUアクセラレーターをノードあたり4基搭載し、総GPU数は4,352基となります。</p>
+<p>ABCIシステムの主要な諸元は以下のとおりです。</p>
+<table>
+<thead>
+<tr>
+<th align="left">項目</th>
+<th align="left">合算性能・容量</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">理論ピーク演算性能 (FP64)</td>
+<td align="left">37.2 PFLOPS</td>
+</tr>
+<tr>
+<td align="left">HPLによる実効性能</td>
+<td align="left">19.88 PFLOPS<sup id="fnref:1"><a class="footnote-ref" href="#fn:1">1</a></sup></td>
+</tr>
+<tr>
+<td align="left">HPLによる電力あたりの実効性能</td>
+<td align="left">14.423 GFLOPS/Watt</td>
+</tr>
+<tr>
+<td align="left">理論ピーク演算性能 (FP32)</td>
+<td align="left">75.0 PFLOPS</td>
+</tr>
+<tr>
+<td align="left">理論ピーク演算性能 (FP16/FP32混合精度)</td>
+<td align="left">550.6 PFLOPS</td>
+</tr>
+<tr>
+<td align="left">理論ピーク演算性能 (INT8)</td>
+<td align="left">261.1 POPS</td>
+</tr>
+<tr>
+<td align="left">メモリ合算容量</td>
+<td align="left">476 TiB</td>
+</tr>
+<tr>
+<td align="left">メモリ合算ピークバンド幅</td>
+<td align="left">4.19 PB/s</td>
+</tr>
+<tr>
+<td align="left">ローカルストレージの合算容量</td>
+<td align="left">1,740 TB</td>
+</tr>
+</tbody>
+</table>
+<h2 id="computing-resources">1.2. 計算リソース</h2>
+<p>ABCIシステムの計算リソースの一覧を以下に示します。</p>
+<table>
+<thead>
+<tr>
+<th align="left">項目</th>
+<th align="left">ホスト名</th>
+<th align="left">説明</th>
+<th align="left">ノード数</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">アクセスサーバ</td>
+<td align="left"><em>as.abci.ai</em></td>
+<td align="left">外部からアクセスするためのSSHサーバ</td>
+<td align="left">2</td>
+</tr>
+<tr>
+<td align="left">インタラクティブノード</td>
+<td align="left"><em>es</em></td>
+<td align="left">ABCIシステムのフロントエンドとなるログインサーバ</td>
+<td align="left">4</td>
+</tr>
+<tr>
+<td align="left">計算ノード</td>
+<td align="left"><em>g0001</em>-<em>g1088</em></td>
+<td align="left">NVIDIA V100 GPUを搭載するサーバ</td>
+<td align="left">1,088</td>
+</tr>
+<tr>
+<td align="left">メモリインテンシブノード</td>
+<td align="left"><em>m01</em>-<em>m10</em></td>
+<td align="left">Intel Optaneメモリを搭載するサーバ</td>
+<td align="left">10</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>運用・保守上の合理的理由により、計算リソースの一部が提供されない場合があります。</p>
+</div>
+<p>このうち、インタラクティブノード、計算ノード、メモリインテンシブノードはInfiniBand EDRを2ポート備えており、後述の<a href="#storage-systems">ストレージシステム</a>とともに、InfiniBandスイッチによりファットツリーで接続されます。</p>
+<p>以下ではこれらのノードの詳細を以下に示します。</p>
+<h3 id="interactive-node">インタラクティブノード</h3>
+<p>ABCIシステムのインタラクティブノードは、FUJITSU Server PRIMERGY RX2540 M4で構成されています。
+Intel Xeon Gold 6148プロセッサーを2基搭載し、384 GiBのメインメモリが利用可能です。</p>
+<p>インタラクティブノードの構成を以下に示します。</p>
+<table>
+<thead>
+<tr>
+<th align="left">項目</th>
+<th align="left">説明</th>
+<th align="left">個数</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">CPU</td>
+<td align="left"><a href="https://ark.intel.com/products/120489/Intel-Xeon-Gold-6148-Processor-27-5M-Cache-2-40-GHz-">Intel Xeon Gold 6148プロセッサー 2.4 GHz, 20 Cores (40 Threads)</a></td>
+<td align="left">2</td>
+</tr>
+<tr>
+<td align="left">Memory</td>
+<td align="left">32 GiB DDR4 2666 MHz RDIMM (ECC)</td>
+<td align="left">12</td>
+</tr>
+<tr>
+<td align="left">SSD</td>
+<td align="left">SAS-SSD 3.2 TB</td>
+<td align="left">4</td>
+</tr>
+<tr>
+<td align="left">Interconnect</td>
+<td align="left">InfiniBand EDR (100 Gbps)</td>
+<td align="left">2</td>
+</tr>
+<tr>
+<td align="left"></td>
+<td align="left">10GBASE-SR</td>
+<td align="left">2</td>
+</tr>
+</tbody>
+</table>
+<p>ABCIシステムのフロントエンドであるインタラクティブノードには、アクセスサーバを経由したSSHトンネリングを用いてログインします。インタラクティブノードではコマンドの対話的実行が可能であり、プログラムの作成・編集、ジョブ投入・表示などを行います。インタラクティブノードにはGPUが搭載されていませんが、インタラクティブノードで計算ノード向けのプログラム開発も可能です。</p>
+<p>ログイン方法の詳細は<a href="../02/">ABCIシステム利用環境</a>、ジョブ投入方法の詳細は<a href="../03/">ジョブ実行環境</a>をそれぞれ参照してください。</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>インタラクティブノードのCPUやメモリなどの資源は多くの利用者で共有するため、高負荷な処理は行わないようにしてください。高負荷な前処理、後処理を行う場合は、計算ノードを利用してください。
+インタラクティブノードで高負荷な処理を行った場合、システムにより処理が強制終了されますのでご注意ください。</p>
+</div>
+<h3 id="compute-node">計算ノード</h3>
+<p>ABCIシステムの計算ノードは、FUJITSU Server PRIMERGY CX2570 M4で構成されています。
+計算ノードは、Intel Xeon Gold 6148プロセッサーを2基、NVIDIA V100 GPUアクセラレーターを4基搭載しています。システム全体では、総CPUコア数は43,520コア、総GPU数は4,352基となります。</p>
 <p>計算ノードの構成を以下に示します。</p>
 <table>
 <thead>
@@ -41,35 +174,35 @@ ABCIシステムは、1,088台の計算ノードなどからなる高性能計�
 <tbody>
 <tr>
 <td align="left">CPU</td>
-<td align="left"><a href="https://ark.intel.com/products/120489/Intel-Xeon-Gold-6148-Processor-27-5M-Cache-2-40-GHz-">Intel Xeon Gold 6148プロセッサー<br>2.4 GHz, 20 Cores (40 Threads)</a></td>
+<td align="left"><a href="https://ark.intel.com/products/120489/Intel-Xeon-Gold-6148-Processor-27-5M-Cache-2-40-GHz-">Intel Xeon Gold 6148プロセッサー 2.4 GHz, 20 Cores (40 Threads)</a></td>
 <td align="left">2</td>
 </tr>
 <tr>
 <td align="left">GPU</td>
-<td align="left"><a href="https://www.nvidia.com/en-us/data-center/v100/">NVIDIA V100 for NVLink<br>16GiB HBM2</a></td>
+<td align="left"><a href="https://www.nvidia.com/en-us/data-center/v100/">NVIDIA V100 for NVLink 16GiB HBM2</a></td>
 <td align="left">4</td>
 </tr>
 <tr>
-<td align="left">メモリ</td>
-<td align="left">384 GiB DDR4 2666 MHz RDIMM (ECC)</td>
-<td align="left"></td>
+<td align="left">Memory</td>
+<td align="left">32 GiB DDR4 2666 MHz RDIMM (ECC)</td>
+<td align="left">12</td>
 </tr>
 <tr>
-<td align="left">SSD</td>
+<td align="left">NVMe SSD</td>
 <td align="left"><a href="https://ark.intel.com/products/97005/Intel-SSD-DC-P4600-Series-1-6TB-2-5in-PCIe-3-1-x4-3D1-TLC-">Intel SSD DC P4600 1.6 TB u.2</a></td>
 <td align="left">1</td>
 </tr>
 <tr>
-<td align="left">インターコネクト</td>
-<td align="left">InfiniBand EDR (12.5 GB/s)</td>
+<td align="left">Interconnect</td>
+<td align="left">InfiniBand EDR (100 Gbps)</td>
 <td align="left">2</td>
 </tr>
 </tbody>
 </table>
-<h3 id="memory-intensive-node-configuration">1.2.2 メモリインテンシブノード</h3>
-<p>ABCIシステムのメモリインテンシブノードは、マルチプラットフォームノード Supermicro 4029GR-TRT2 10台のうち 8台で構成されています。
-1台のメモリインテンシブノードには、Intel Xeon Gold 6132プロセッサー (2.6 GHz, 14コア) を2基搭載し、総コア数は224コアとなります。
-また、Intel Optane メモリをノードあたり2基搭載し、総メモリ量は2.6TiBとなります。</p>
+<p>計算ノード向けのプログラムを実行するには、バッチジョブもしくはインタラクティブジョブとしてジョブ管理システムに処理を依頼します。インタラクティブジョブでは、プログラムのコンパイルやデバッグ、会話的なアプリケーション、可視化ソフトウェアの実行が可能です。詳細は<a href="../03/">ジョブ実行環境</a>を参照してください。</p>
+<h3 id="memory-intensive-node">メモリインテンシブノード</h3>
+<p>ABCIシステムのメモリインテンシブノードは、Supermicro 4029GR-TRT2で構成されています。
+メモリインテンシブノードは、Intel Xeon Gold 6132プロセッサーを2基、Intel Optane メモリを2基搭載し、メインメモリと合わせて最大2.6 TiBのメモリを利用可能です。</p>
 <p>メモリインテンシブノードの構成を以下に示します。</p>
 <table>
 <thead>
@@ -82,13 +215,13 @@ ABCIシステムは、1,088台の計算ノードなどからなる高性能計�
 <tbody>
 <tr>
 <td align="left">CPU</td>
-<td align="left"><a href="https://ark.intel.com/content/www/us/en/ark/products/123541/intel-xeon-gold-6132-processor-19-25m-cache-2-60-ghz.html">Intel Xeon Gold 6132プロセッサー<br>2.6 GHz, 14 Cores (28 Threads)</a></td>
+<td align="left"><a href="https://ark.intel.com/content/www/us/en/ark/products/123541/intel-xeon-gold-6132-processor-19-25m-cache-2-60-ghz.html">Intel Xeon Gold 6132プロセッサー 2.6 GHz, 14 Cores (28 Threads)</a></td>
 <td align="left">2</td>
 </tr>
 <tr>
-<td align="left">メモリ</td>
-<td align="left">768 GiB DDR4 2666 MHz RDIMM (ECC)</td>
-<td align="left"></td>
+<td align="left">Memory</td>
+<td align="left">32 GiB DDR4 2666 MHz RDIMM (ECC)</td>
+<td align="left">24</td>
 </tr>
 <tr>
 <td align="left">SSD</td>
@@ -97,17 +230,142 @@ ABCIシステムは、1,088台の計算ノードなどからなる高性能計�
 </tr>
 <tr>
 <td align="left">Optane SSD</td>
-<td align="left"><a href="https://ark.intel.com/content/www/us/en/ark/products/187934/intel-optane-ssd-dc-p4800x-series-with-intel-memory-drive-technology-1-5tb-1-2-height-pcie-x4-3d-xpoint.html">Intel Optaine  SSD DC P4800X 1.5 TB</a></td>
+<td align="left"><a href="https://ark.intel.com/content/www/us/en/ark/products/187934/intel-optane-ssd-dc-p4800x-series-with-intel-memory-drive-technology-1-5tb-1-2-height-pcie-x4-3d-xpoint.html">Intel Optane SSD DC P4800X 1.5 TB</a></td>
 <td align="left">2</td>
 </tr>
 <tr>
-<td align="left">インターコネクト</td>
-<td align="left">InfiniBand EDR (12.5 GB/s)</td>
+<td align="left">Interconnect</td>
+<td align="left">InfiniBand EDR (100 Gbps)</td>
 <td align="left">2</td>
 </tr>
 </tbody>
 </table>
-<h2 id="software-configuration">1.3. ソフトウェア構成</h2>
+<p>メモリインテンシブノード向けのプログラムを実行するには、計算ノードと同様に、バッチジョブもしくはインタラクティブジョブとしてジョブ管理システムに処理を依頼します。</p>
+<h2 id="storage-systems">1.3. ストレージシステム</h2>
+<p>ABCIシステムは、人工知能やビッグデータ応用に用いる大容量データを格納するためのストレージシステムを3基備えており、これらを用いて共有ファイルシステム及びABCIクラウドストレージを提供しています。合算で最大40 PBの実効容量があります。</p>
+<table>
+<thead>
+<tr>
+<th align="left">構成</th>
+<th align="left">ストレージシステム</th>
+<th align="left">メディア</th>
+<th align="left">用途</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">1</td>
+<td align="left">DDN SFA1 4KX x1<br>DDN SS9012エンクロージャ x5</td>
+<td align="left">7.68 TB SAS SSD x185</td>
+<td align="left">ホーム領域</td>
+</tr>
+<tr>
+<td align="left">2</td>
+<td align="left">DDN SFA 14KX x3<br>DDN SS8462エンクロージャ x30</td>
+<td align="left">3.84 TB SAS SSD x216<br>12 TB NL-SAS HDD x2400</td>
+<td align="left">グループ領域、アプリケーション領域</td>
+</tr>
+<tr>
+<td align="left">3</td>
+<td align="left">HPE Apollo 4510 Gen10 x24</td>
+<td align="left">12 TB SATA HDD x1440</td>
+<td align="left">ABCIクラウドストレージ</td>
+</tr>
+</tbody>
+</table>
+<p>上記のストレージシステムを用いて、ABCIシステムが提供している共有ファイルシステム及びABCIクラウドストレージの一覧を以下に示します。</p>
+<table>
+<thead>
+<tr>
+<th align="left">用途</th>
+<th align="left">マウントポイント</th>
+<th align="left">容量</th>
+<th align="left">ファイルシステム</th>
+<th align="left">備考</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">ホーム領域</td>
+<td align="left">/home</td>
+<td align="left">1.0 PB</td>
+<td align="left">Lustre</td>
+<td align="left"><a href="../04/#home-area">ホーム領域</a>を参照</td>
+</tr>
+<tr>
+<td align="left">グループ領域1</td>
+<td align="left">/groups1</td>
+<td align="left">7.2 PB</td>
+<td align="left">GPFS</td>
+<td align="left"><a href="../04/#group-area">グループ領域</a>を参照</td>
+</tr>
+<tr>
+<td align="left">グループ領域2</td>
+<td align="left">/groups2</td>
+<td align="left">7.2 PB</td>
+<td align="left">GPFS</td>
+<td align="left"><a href="../04/#group-area">グループ領域</a>を参照</td>
+</tr>
+<tr>
+<td align="left">グループ領域3</td>
+<td align="left">/groups3</td>
+<td align="left">7.2 PB</td>
+<td align="left">GPFS</td>
+<td align="left">特定用途に予約済みの領域</td>
+</tr>
+<tr>
+<td align="left">アプリケーション領域</td>
+<td align="left">/apps</td>
+<td align="left">0.36 PB</td>
+<td align="left">GPFS</td>
+<td align="left">共通ソフトウェア・データ等で利用する領域</td>
+</tr>
+<tr>
+<td align="left">ABCIクラウドストレージ</td>
+<td align="left"></td>
+<td align="left">最大17 PB</td>
+<td align="left"></td>
+<td align="left"><a href="../abci-cloudstorage/">ABCIクラウドストレージ</a>を参照</td>
+</tr>
+</tbody>
+</table>
+<p>インタラクティブノード、計算ノード、メモリインテンシブノードは、共有ファイルシステムをマウントしており、利用者は共通のマウントポイントからこれらのファイルシステムにアクセスすることができます。</p>
+<p>これ以外に、これらのノードはそれぞれローカルスクラッチ領域として利用可能なローカルストレージを搭載しています。以下に一覧を示します。</p>
+<table>
+<thead>
+<tr>
+<th align="left">ノード種類</th>
+<th align="left">マウントポイント</th>
+<th align="left">容量</th>
+<th align="left">ファイルシステム</th>
+<th align="left">備考</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">インタラクティブノード</td>
+<td align="left">/local</td>
+<td align="left">12 TB</td>
+<td align="left">XFS</td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="left">計算ノード</td>
+<td align="left">/local</td>
+<td align="left">1.6 TB</td>
+<td align="left">XFS</td>
+<td align="left"><a href="../04/#local-storage">ローカルストレージ</a>を参照</td>
+</tr>
+<tr>
+<td align="left">メモリインテンシブノード</td>
+<td align="left">/local</td>
+<td align="left">1.9 TB</td>
+<td align="left">XFS</td>
+<td align="left"><a href="../04/#local-storage">ローカルストレージ</a>を参照</td>
+</tr>
+</tbody>
+</table>
+<h2 id="software">1.4. ソフトウェア</h2>
 <p>ABCIシステムで利用可能なソフトウェア一覧を以下に示します。</p>
 <table>
 <thead>
@@ -320,71 +578,11 @@ ABCIシステムは、1,088台の計算ノードなどからなる高性能計�
 </tr>
 </tbody>
 </table>
-<h2 id="storage-configuration">1.4. ストレージ構成</h2>
-<p>ABCIシステムでは、人工知能やビッグデータ分野の計算結果を格納するための大容量ストレージシステムを備えています。
-各計算ノードにはローカルスクラッチ領域として1.6TBのSSDが搭載されています。
-ABCIシステムで利用可能なファイルシステムの一覧を以下に示します。</p>
-<table>
-<thead>
-<tr>
-<th align="left">用途</th>
-<th align="left">マウントポイント</th>
-<th align="left">容量</th>
-<th align="left">ファイルシステム</th>
-<th align="left">備考</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td align="left">ホーム領域</td>
-<td align="left">/home</td>
-<td align="left">1.0PB</td>
-<td align="left">Lustre</td>
-<td align="left"></td>
-</tr>
-<tr>
-<td align="left">グループ領域1</td>
-<td align="left">/groups1</td>
-<td align="left">6.6PB</td>
-<td align="left">GPFS</td>
-<td align="left"></td>
-</tr>
-<tr>
-<td align="left">グループ領域2</td>
-<td align="left">/groups2</td>
-<td align="left">6.6PB</td>
-<td align="left">GPFS</td>
-<td align="left"></td>
-</tr>
-<tr>
-<td align="left">アプリケーション領域</td>
-<td align="left">/apps</td>
-<td align="left">335TB</td>
-<td align="left">GPFS</td>
-<td align="left"></td>
-</tr>
-<tr>
-<td align="left">インタラクティブノード用ローカルスクラッチ領域</td>
-<td align="left">/local</td>
-<td align="left">各ノード12TB</td>
-<td align="left">XFS</td>
-<td align="left"></td>
-</tr>
-<tr>
-<td align="left">計算ノード用ローカルスクラッチ領域</td>
-<td align="left">/local</td>
-<td align="left">各ノード1.5TB</td>
-<td align="left">XFS</td>
-<td align="left"></td>
-</tr>
-</tbody>
-</table>
-<h2 id="system-use-overview">1.5. システム利用概要</h2>
-<p>ABCIシステムでは、全ての計算ノードとインタラクティブノードは大容量ストレージシステム(DDN GRIDScaler)を共有します。
-ABCIシステムのフロントエンドであるインタラクティブノードには、SSHトンネリングを用いてログインします。インタラクティブノードではコマンドの対話的実行が可能であり、プログラムの作成・編集、ジョブ投入・表示などを行います。インタラクティブノードにはGPUが搭載されていませんが、インタラクティブノードで計算ノード向けのプログラム開発が可能です。
-計算ノード向けのプログラムを実行する場合、バッチジョブもしくはインタラクティブジョブとしてジョブ管理システムに処理を依頼します。インタラクティブジョブは、プログラムのコンパイルやデバッグ、会話的なアプリケーション、可視化ソフトウェアの実行が可能です。</p>
-<div class="admonition warning">
-<p class="admonition-title">Warning</p>
-<p>インタラクティブノードのCPUやメモリなどの資源は多くの利用者で共有しますので、高負荷な処理は行わないようにしてください。高負荷な前処理、後処理を行う場合は、計算ノードを利用してください。
-インタラクティブノードで高負荷な処理を行った場合、システムにより処理が強制終了されますのでご注意ください。</p>
+<div class="footnote">
+<hr />
+<ol>
+<li id="fn:1">
+<p><a href="https://www.top500.org/system/179393/">https://www.top500.org/system/179393/</a>&#160;<a class="footnote-backref" href="#fnref:1" title="Jump back to footnote 1 in the text">&#8617;</a></p>
+</li>
+</ol>
 </div></article></div></div></main><footer class="md-footer"><div class="md-footer-nav"><nav class="md-footer-nav__inner md-grid"><a href=".." title="はじめに" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev"><div class="md-flex__cell md-flex__cell--shrink"><i class="md-icon md-icon--arrow-back md-footer-nav__button"></i></div><div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title"><span class="md-flex__ellipsis"><span class="md-footer-nav__direction">前</span>はじめに</span></div></a><a href="../02/" title="2. ABCIシステム利用環境" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next"><div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title"><span class="md-flex__ellipsis"><span class="md-footer-nav__direction">次</span>2. ABCIシステム利用環境</span></div><div class="md-flex__cell md-flex__cell--shrink"><i class="md-icon md-icon--arrow-forward md-footer-nav__button"></i></div></a></nav></div><div class="md-footer-meta md-typeset"><div class="md-footer-meta__inner md-grid"><div class="md-footer-copyright"><div class="md-footer-copyright__highlight">Copyright &copy; 2018 National Institute of Advanced Industrial Science and Technology (AIST)</div>powered by <a href="https://www.mkdocs.org">MkDocs</a> and <a href="https://squidfunk.github.io/mkdocs-material/">Material for MkDocs</a></div></div></div></footer></div><script src="../assets/javascripts/application.b260a35d.js"></script><script src="../assets/javascripts/lunr/lunr.stemmer.support.js"></script><script src="../assets/javascripts/lunr/tinyseg.js"></script><script src="../assets/javascripts/lunr/lunr.ja.js"></script><script>app.initialize({version:"1.1",url:{base:".."}})</script></body></html>
