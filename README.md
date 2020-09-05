@@ -1,10 +1,10 @@
 # README
 
-The primary goal of this project is to organize a concerted community effort to improve the ABCI Users Guide and Portal Guide that explain how to utilize [AI Bridging Cloud Infrastructure (ABCI)](https://abci.ai/).
+The primary goal of this project is to organize a concerted community effort to improve the ABCI User Guide and Portal Guide that explain how to utilize [AI Bridging Cloud Infrastructure (ABCI)](https://abci.ai/).
 ABCI is the world's first large-scale Open AI Computing Infrastructure, constructed and operated by [National Institute of Advanced Industrial Science and Technology (AIST)](https://www.aist.go.jp/).
 We would welcome your feedbacks including pull requests.
 
-On every *release* we will deploy it as the current *official* versions of the ABCI Users Guide and Portal Guide, which are located at [https://docs.abci.ai/](https://docs.abci.ai/).
+On every *release* we will deploy it as the current *official* versions of the ABCI User Guide and Portal Guide, which are located at [https://docs.abci.ai/](https://docs.abci.ai/).
 
 ## Structure of the repository
 
