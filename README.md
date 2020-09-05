@@ -25,7 +25,7 @@ You can clone the repository to your local environment and run the builtin devel
 
 ```
 $ pip install mkdocs
-$ pip install mkdocs-material==4.3.1
+$ pip install "mkdocs-material<5"
 $ git clone https://github.com/aistairc/abci-docs.git
 $ cd abci-docs
 $ cd root/ or ja/ or en/

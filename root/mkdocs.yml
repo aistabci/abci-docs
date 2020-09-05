@@ -13,6 +13,7 @@ nav:
   - 'ABCI Portal Guide English version': 'https://docs.abci.ai/portal/ja/'
 theme:
   name: 'material'
+  favicon: 'img/favicon.png'
   logo:
     icon: 'cloud'
   palette:

@@ -21,6 +21,7 @@ nav:
   - 'English version': 'https://docs.abci.ai/portal/en/'
 theme:
   name: 'material'
+  favicon: 'img/favicon.png'
   logo:
     icon: 'cloud'
   palette:

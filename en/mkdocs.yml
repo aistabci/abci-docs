@@ -62,6 +62,7 @@ nav:
   - 'Japanese version': 'https://docs.abci.ai/ja/'
 theme:
   name: 'material'
+  favicon: 'img/favicon.png'
   logo:
     icon: 'cloud'
   language: 'en'
