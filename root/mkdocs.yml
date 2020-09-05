@@ -14,8 +14,7 @@ nav:
 theme:
   name: 'material'
   favicon: 'img/favicon.png'
-  logo:
-    icon: 'cloud'
+  logo: 'img/logo.png'
   palette:
     primary: 'red'
     accent: 'red'
