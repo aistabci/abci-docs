@@ -2,6 +2,8 @@
 
 [AI橋渡しクラウド（AI Bridging Cloud Infrastructure、以下「ABCI」という）](https://abci.ai/ja/)は、[国立研究開発法人 産業技術総合研究所](https://www.aist.go.jp/)が構築・運用する、AI技術開発・橋渡しのためのオープンな計算インフラストラクチャです。ABCIは、2018年8月に本格運用を開始しました。
 
+![ABCI Overview](img/abci_dc.jpg)
+
 このユーザガイドは、ABCIの技術的詳細や利用方法について説明しています。ABCIを利用する方は是非ご一読ください。ABCIシステムについての理解を深めるのに役立ちます。
 
   - 利用手引き:
