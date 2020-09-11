@@ -186,9 +186,6 @@ Generating Entity and OpenPGP Key Pair... done
 | Enter a passphrase | パスフレーズを決めて入力して下さい。コンテナイメージを署名する時などに必要になります。 |
 | Would you like to push it to the keystore? | 公開鍵を Keystore にアップロードする場合は `Y` を入力して下さい。 |
 
-!!! warning
-    鍵ペアを2つ以上生成すると、意図どおりに動作しないケースがあります。現時点では 1 つだけ生成するようにして下さい。
-
 
 #### 鍵の一覧表示
 
