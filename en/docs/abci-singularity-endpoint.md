@@ -165,9 +165,6 @@ Each input value is described as follows:.
 | Enter a passphrase | Determine your passphrase and enter it. This is necessary when signing a container image. |
 | Would you like to push it to the keystore? | Enter `Y` to upload the public key to Keystore. |
 
-!!! warning
-    If generating two or more than two key pair,  it may not work as intended. Please generate only one at this time.
-
 #### List Keys
 
 To check information whch you created, use `singularity key list` command.
