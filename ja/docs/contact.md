@@ -35,5 +35,5 @@ ABCIユーザサポートでは、以下のお問い合わせやご報告を受�
     セキュリティに関するご質問等は <abci-inquiry-ml@aist.go.jp> までお問い合わせください。セキュリティホワイトペーパーは、[こちら](https://abci.ai/ja/link/security.html) からダウンロードできます。
 
 !!! note
-    ジョブIDを調べる方法については、[こちら](faq.md#q-how-do-i-know-my-batch-job-id)をご確認ください。
+    ジョブIDの調べ方は、[ジョブIDを知るには](faq.md#q-how-can-i-find-the-job-id) を参照してください。
 

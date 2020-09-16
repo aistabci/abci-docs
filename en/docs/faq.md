@@ -186,9 +186,9 @@ Example)
 [username@g0001~]$ singularity run --nv docker://caffe2ai/caffe2:latest
 ```
 
-## Q. How do I know my batch job ID?
+## Q. How can I find the job ID?
 
-When you submit a job using the `qsub` command, the command outputs the job ID.
+When you submit a batch job using the `qsub` command, the command outputs the job ID.
 
 ```
 [username@es1 ~]$ qsub -g grpname test.sh
