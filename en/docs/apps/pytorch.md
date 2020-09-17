@@ -91,7 +91,7 @@ Here are the steps to create a Python virtual environment and install PyTorch an
 [username@g0001 ~]$ source ~/venv/pytorch+horovod/bin/activate
 (pytorch+horovod) [username@g0001 ~]$ pip3 install --upgrade pip setuptools
 (pytorch+horovod) [username@g0001 ~]$ pip3 install torch torchvision
-(pytorch+horovod) [username@g0001 ~]$ HOROVOD_WITH_PYTORCH=1 HOROVOD_GPU_ALLREDUCE=NCCL HOROVOD_GPU_BROADCAST=NCCL pip3 install --no-cache-dir horovod
+(pytorch+horovod) [username@g0001 ~]$ HOROVOD_WITH_PYTORCH=1 HOROVOD_GPU_OPERATIONS=NCCL HOROVOD_NCCL_HOME=$NCCL_HOME pip3 install --no-cache-dir horovod
 ```
 
 With the installation, you can use PyTorch and Horovod next time you want to use it by simply loading the module and activating the Python virtual environment, as follows.
@@ -113,7 +113,7 @@ In this example, using 4 GPUs in an interactive node for distributed learning.
 [username@es1 ~]$ qrsh -g grpname -l rt_G.large=1 -l h_rt=1:00:00
 [username@g0001 ~]$ module load python/3.6/3.6.5 cuda/10.1/10.1.243 cudnn/7.6/7.6.5 nccl/2.5/2.5.6-1 openmpi/2.1.6 gcc/7.4.0
 [username@g0001 ~]$ source ~/venv/pytorch+horovod/bin/activate
-(pytorch+horovod) [username@g0001 ~]$ git clone -b v0.18.2 https://github.com/horovod/horovod.git
+(pytorch+horovod) [username@g0001 ~]$ git clone -b v0.20.0 https://github.com/horovod/horovod.git
 (pytorch+horovod) [username@g0001 ~]$ mpirun -np 4 -map-by ppr:4:node -mca pml ob1 python3 horovod/examples/pytorch_mnist.py
 ```
 
@@ -135,7 +135,7 @@ source /etc/profile.d/modules.sh
 module load python/3.6/3.6.5 cuda/10.1/10.1.243 cudnn/7.6/7.6.5 nccl/2.5/2.5.6-1 openmpi/2.1.6 gcc/7.4.0
 source ~/venv/pytorch+horovod/bin/activate
 
-git clone -b v0.18.2 https://github.com/horovod/horovod.git
+git clone -b v0.20.0 https://github.com/horovod/horovod.git
 
 NUM_NODES=${NHOSTS}
 NUM_GPUS_PER_NODE=4
