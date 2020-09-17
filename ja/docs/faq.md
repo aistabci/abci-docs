@@ -192,7 +192,7 @@ FATAL:   While making image from oci registry: while building SIF from layers: u
 [username@g0001~]$ singularity run --nv docker://caffe2ai/caffe2:latest
 ```
 
-## Q. ジョブ ID を知るには？ {#q-how-can-i-find-the-job-id}
+## Q. ジョブ ID を調べるには？ {#q-how-can-i-find-the-job-id}
 
 `qsub` コマンドを使ってバッチジョブを投入した場合は、コマンドがジョブ ID を出力しています。
 

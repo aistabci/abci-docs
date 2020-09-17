@@ -44,5 +44,5 @@ When you make an inquiry and a report, send an e-mail to <qa@abci.ai> with the f
     If you have any questions regarding security, please contact <abci-inquiry-ml@aist.go.jp>. You can also find security documentations including ABCI security whitepaper at <https://abci.ai/ja/link/security.html>.
 
 !!! note
-    For help finding the job ID, see [How can I find the job ID](faq.md#q-how-can-i-find-the-job-id).
+    To find the job ID, see [How can I find the job ID](faq.md#q-how-can-i-find-the-job-id).
 
