@@ -18,7 +18,7 @@ ABCI sets the block size of the group area to 128 KB and the block size of the h
 
 ## Q. Singularity cannot use container registries that require authentication
 
-Singularity version 2.6 and Singularity PRO version 3.5 have a function equivalent to ``docker login`` that provides authentication information with environment variables.
+Singularity version 2.6 and SingularityPRO version 3.5 have a function equivalent to ``docker login`` that provides authentication information with environment variables.
 
 ```shell
 [username@es ~]$ export SINGULARITY_DOCKER_USERNAME='username'
@@ -32,10 +32,10 @@ For more information on Singularity version 2.6 authentication, see below.
     * [How do I specify my Docker image?](https://sylabs.io/guides/2.6/user-guide/singularity_and_docker.html#how-do-i-specify-my-docker-image)
     * [Custom Authentication](https://sylabs.io/guides/2.6/user-guide/singularity_and_docker.html#custom-authentication)  
 
-For more information on Singularity PRO version 3.5 authentication, see below.
+For more information on SingularityPRO version 3.5 authentication, see below.
 
-* [Singularity PRO 3.5 User Guide](https://repo.sylabs.io/c/0f6898986ad0b646b5ce6deba21781ac62cb7e0a86a5153bbb31732ee6593f43/guides/singularitypro35-user-guide/)  
-    * [Making use of private images from Private Registries](https://repo.sylabs.io/c/0f6898986ad0b646b5ce6deba21781ac62cb7e0a86a5153bbb31732ee6593f43/guides/singularitypro35-user-guide/singularity_and_docker.html?highlight=support%20docker%20oci#making-use-of-private-images-from-private-registries) 
+* [SingularityPRO 3.5 User Guide](https://repo.sylabs.io/c/0f6898986ad0b646b5ce6deba21781ac62cb7e0a86a5153bbb31732ee6593f43/guides/singularitypro35-user-guide/)
+    * [Making use of private images from Private Registries](https://repo.sylabs.io/c/0f6898986ad0b646b5ce6deba21781ac62cb7e0a86a5153bbb31732ee6593f43/guides/singularitypro35-user-guide/singularity_and_docker.html?highlight=support%20docker%20oci#making-use-of-private-images-from-private-registries)
 
 ## Q. NGC CLI cannot be executed
 
@@ -59,7 +59,7 @@ NGC_HOME=$HOME/ngc
 singularity exec $NGC_HOME/ubuntu-18.04.simg $NGC_HOME/ngc $@
 ```
 
-**Singularity PRO 3.5**
+**SingularityPRO 3.5**
 
 ```
 #!/bin/sh
@@ -179,9 +179,80 @@ FATAL:   While making image from oci registry: while building SIF from layers: u
 
 The problem can be avoided by adding `/usr/sbin` to PATH like this:
 
-Example）
+Example)
 ```
 [username@g0001~]$ PATH="$PATH:/usr/sbin" 
 [username@g0001~]$ module load singularitypro/3.5
 [username@g0001~]$ singularity run --nv docker://caffe2ai/caffe2:latest
 ```
+
+## Q. How can I find the job ID?
+
+When you submit a batch job using the `qsub` command, the command outputs the job ID.
+
+```
+[username@es1 ~]$ qsub -g grpname test.sh
+Your job 1000001 ("test.sh") has been submitted
+```
+
+If you are using `qrsh`, you can get the job ID by retrieving the value of the JOB_ID environment variable.This variable is available for `qsub` (batch job environment) as well.
+
+```
+[username@es1 ~]$ qrsh -g grpname -l rt_C.small=1 -l h_rt=1:00:00
+[username@g0001 ~]$ echo $JOB_ID
+1000002
+[username@g0001 ~]$
+```
+
+To find the job ID of your already submitted job, use the `qstat` command.
+
+```
+[username@es1 ~]$ qstat
+job-ID     prior   name       user         state submit/start at     queue                          jclass                         slots ja-task-ID
+------------------------------------------------------------------------------------------------------------------------------------------------
+   1000003 0.00000 test.sh username   qw    08/01/2020 13:05:30
+```
+
+To find the job ID of your completed job, use `qacct -j`. The `-b` and `-e` options are useful for narrowing the search range. See qacct(1) man page (type `man qacct` on an interactive node). The following example lists the completed jobs that started on and after September 1st, 2020. `jobnumber` has the same meaning as `job-ID`.
+
+```
+[username@es1 ~]$ qacct -j -b 202009010000
+==============================================================
+qname        gpu
+hostname     g0001
+group        grpname
+owner        username
+
+:
+
+jobname      QRLOGIN
+jobnumber    1000010
+
+:
+
+qsub_time    09/01/2020 16:41:37.736
+start_time   09/01/2020 16:41:47.094
+end_time     09/01/2020 16:45:46.296
+
+:
+
+==============================================================
+qname        gpu
+hostname     g0001
+group        grpname
+owner        username
+
+:
+
+jobname      testjob
+jobnumber    1000120
+
+:
+
+qsub_time    09/07/2020 15:35:04.088
+start_time   09/07/2020 15:43:11.513
+end_time     09/07/2020 15:50:11.534
+
+:
+```
+

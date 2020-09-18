@@ -18,7 +18,7 @@ ABCIでは、グループ領域のブロックサイズは128KB、ホーム領�
 
 ## Q. 認証が必要なコンテナレジストリをSingularityで利用できない
 
-Singularity version 2.6およびSingularity PRO version 3.5には``docker login``相当の機能として、環境変数で認証情報を与える機能があります。
+Singularity version 2.6およびSingularityPRO version 3.5には``docker login``相当の機能として、環境変数で認証情報を与える機能があります。
 
 ```shell
 [username@es ~]$ export SINGULARITY_DOCKER_USERNAME='username'
@@ -32,9 +32,9 @@ Singularity version 2.6の認証に関する詳細は、以下をご参照くだ
     * [How do I specify my Docker image?](https://sylabs.io/guides/2.6/user-guide/singularity_and_docker.html#how-do-i-specify-my-docker-image)
     * [Custom Authentication](https://sylabs.io/guides/2.6/user-guide/singularity_and_docker.html#custom-authentication)
 
-Singularity PRO version 3.5の認証に関する詳細は、以下をご参照ください。
+SingularityPRO version 3.5の認証に関する詳細は、以下をご参照ください。
 
-* [Singularity PRO 3.5 User Guide](https://repo.sylabs.io/c/0f6898986ad0b646b5ce6deba21781ac62cb7e0a86a5153bbb31732ee6593f43/guides/singularitypro35-user-guide/)
+* [SingularityPRO 3.5 User Guide](https://repo.sylabs.io/c/0f6898986ad0b646b5ce6deba21781ac62cb7e0a86a5153bbb31732ee6593f43/guides/singularitypro35-user-guide/)
     * [Making use of private images from Private Registries](https://repo.sylabs.io/c/0f6898986ad0b646b5ce6deba21781ac62cb7e0a86a5153bbb31732ee6593f43/guides/singularitypro35-user-guide/singularity_and_docker.html?highlight=support%20docker%20oci#making-use-of-private-images-from-private-registries)
 
 ## Q. NGC CLIが実行できない
@@ -59,7 +59,7 @@ NGC_HOME=$HOME/ngc
 singularity exec $NGC_HOME/ubuntu-18.04.simg $NGC_HOME/ngc $@
 ```
 
-**Singularity PRO 3.5**
+**SingularityPRO 3.5**
 
 ```
 #!/bin/sh
@@ -191,3 +191,74 @@ FATAL:   While making image from oci registry: while building SIF from layers: u
 [username@g0001~]$ module load singularitypro/3.5
 [username@g0001~]$ singularity run --nv docker://caffe2ai/caffe2:latest
 ```
+
+## Q. ジョブ ID を調べるには？ {#q-how-can-i-find-the-job-id}
+
+`qsub` コマンドを使ってバッチジョブを投入した場合は、コマンドがジョブ ID を出力しています。
+
+```
+[username@es1 ~]$ qsub -g grpname test.sh
+Your job 1000001 ("test.sh") has been submitted
+```
+
+`qrsh` を使っている場合は、環境変数 JOB_ID の値を見ることで確認できます。この変数は、qsub (バッチジョブ) の場合でも利用可能です。
+
+```
+[username@es1 ~]$ qrsh -g grpname -l rt_C.small=1 -l h_rt=1:00:00
+[username@g0001 ~]$ echo $JOB_ID
+1000002
+[username@g0001 ~]$
+```
+
+すでに投入済みのジョブに付与されているジョブ ID を確認するには、`qstat` コマンドを使ってください。
+
+```
+[username@es1 ~]$ qstat
+job-ID     prior   name       user         state submit/start at     queue                          jclass                         slots ja-task-ID
+------------------------------------------------------------------------------------------------------------------------------------------------
+   1000003 0.00000 test.sh username   qw    08/01/2020 13:05:30
+```
+
+対象のジョブがすでに完了している場合は、`qacct -j` を使ってジョブ ID を調べます。`-b` や `-e` オプションが、対象範囲を限定するために役に立ちます。qacct(1) man ページ (インタラクティブノードで `man qacct`) で使い方を確認できます。下記の例は、完了したジョブのうち、2020年 9月 1日 以降に開始されていたものを出力しています。`jobnumber` がジョブ ID です。
+
+```
+[username@es1 ~]$ qacct -j -b 202009010000
+==============================================================
+qname        gpu
+hostname     g0001
+group        grpname
+owner        username
+
+:
+
+jobname      QRLOGIN
+jobnumber    1000010
+
+:
+
+qsub_time    09/01/2020 16:41:37.736
+start_time   09/01/2020 16:41:47.094
+end_time     09/01/2020 16:45:46.296
+
+:
+
+==============================================================
+qname        gpu
+hostname     g0001
+group        grpname
+owner        username
+
+:
+
+jobname      testjob
+jobnumber    1000120
+
+:
+
+qsub_time    09/07/2020 15:35:04.088
+start_time   09/07/2020 15:43:11.513
+end_time     09/07/2020 15:50:11.534
+
+:
+```
+

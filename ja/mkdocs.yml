@@ -1,5 +1,5 @@
-site_name: ABCI Users Guide
-site_description: ABCI Users Guide, Japanese version
+site_name: ABCI User Guide
+site_description: ABCI User Guide, Japanese version
 site_author: AIST
 site_url: https://docs.abci.ai/ja/
 repo_url: https://github.com/aistairc/abci-docs
@@ -15,14 +15,15 @@ nav:
     - '2. ABCIシステム利用環境': '02.md'
     - '3. ジョブ実行環境': '03.md'
     - '4. ストレージ': '04.md'
-    - '5. Environment Modulesの利用': '05.md'
-    - '6. Pythonの利用': '06.md'
-    - '7. GPUの利用': '07.md'
-    - '8. MPIの利用': '08.md'
+    - '5. Environment Modules': '05.md'
+    - '6. Python': '06.md'
+    - '7. GPU': '07.md'
+    - '8. MPI': '08.md'
     - '9. Linuxコンテナ': '09.md'
     - '10. プログラム開発環境': '10.md'
-    - '付録1. インストール済みソフトウェアの構成': 'appendix1.md'
-    - '付録2. HPCIによるABCIシステム利用': 'appendix2.md'
+    - '付録. インストール済みソフトウェアの構成': 'appendix/installed-software.md'
+    - '付録. HPCIによるABCIシステム利用': 'appendix/using-abci-with-hpci.md'
+    - '付録. 外部ネットワークとの通信': 'appendix/external-networks.md'
   - '各種アプリケーション':
     - '概要': 'apps/index.md'
     - 'TensorFlow': 'apps/tensorflow.md'
@@ -50,6 +51,7 @@ nav:
     - 'アクセス制御（1）': 'abci-cloudstorage/acl.md'
     - 'アクセス制御（2）': 'abci-cloudstorage/policy.md'
     - 'データセットの公開': 'abci-cloudstorage/publishing-a-dataset.md'
+  - 'ABCI Singularity エンドポイント': 'abci-singularity-endpoint.md'
   - 'FAQ': 'faq.md'
   - '既知の問題': 'known-issues.md'
   - 'システム更新履歴': 'system-updates.md'
@@ -63,8 +65,8 @@ nav:
   - 'English version': 'https://docs.abci.ai/en/'
 theme:
   name: 'material'
-  logo:
-    icon: 'cloud'
+  favicon: 'img/favicon.png'
+  logo: 'img/logo.png'
   language: 'ja'
   palette:
     primary: 'red'

@@ -1,10 +1,16 @@
 # システム更新履歴
 
+## 2020-08-31
+
+| Add / Update / Delete | Software | Version | Previous version |
+|:--|:--|:--|:--|
+| Update | Scality S3 Connector | 7.4.6.3 | 7.4.5.4 |
+
 ## 2020-07-31
 
 | Add / Update / Delete | Software | Version | Previous version |
 |:--|:--|:--|:--|
-| Add | Singularity PRO | 3.5 | |
+| Add | SingularityPRO | 3.5 | |
 | Add | cuDNN | [8.0.2](https://docs.nvidia.com/deeplearning/sdk/cudnn-release-notes/rel_8.html#rel-802) | |
 | Add | NCCL | [2.7.8-1](https://docs.nvidia.com/deeplearning/nccl/release-notes/rel_2-7-8.html) | |
 | Add | mvapich2-gdr | 2.3.4 | |
@@ -85,7 +91,7 @@ PGI 版が必要の場合、ユーザーサポートまでご連絡ください�
 
 その他の修正点は下記の通りです:
 
-* [メモリインテンシブノード](01.md#memory-intensive-node-configuration)を追加いたしました。
+* [メモリインテンシブノード](01.md#memory-intensive-node)を追加しました。
 
 ## 2019-11-06
 

@@ -68,7 +68,7 @@ docker://nvcr.io/nvidia/tensorflow:19.06-py2
 ```
 ``tensorflow-19.06-py2.simg``という名前のイメージファイルが生成されます。
 
-**Singularity PRO 3.5**
+**SingularityPRO 3.5**
 
 ```
 [username@es1 ~]$ module load singularitypro/3.5
@@ -92,7 +92,7 @@ docker://nvcr.io/nvidia/tensorflow:19.06-py2
 {'loss': 0.10828217, 'global_step': 20000, 'accuracy': 0.9667}
 ```
 
-**Singularity PRO 3.5**
+**SingularityPRO 3.5**
 
 ```
 [username@es1 ~]$ qrsh -g grpname -l rt_F=1 -l h_rt=1:00:00
@@ -119,7 +119,7 @@ wget https://raw.githubusercontent.com/tensorflow/tensorflow/v1.13.1/tensorflow/
 singularity run --nv tensorflow-19.06-py2.simg python cnn_mnist.py
 ```
 
-**Singularity PRO 3.5**
+**SingularityPRO 3.5**
 
 ```
 #!/bin/sh
@@ -151,7 +151,7 @@ mpirun (Open MPI) 3.1.3
 Report bugs to http://www.open-mpi.org/community/help/
 ```
 
-**Singularity PRO 3.5**
+**SingularityPRO 3.5**
 
 ```
 [username@es1 ~] $ module load singularitypro/3.5
@@ -183,7 +183,7 @@ openmpi/2.1.6(default) openmpi/3.1.6          openmpi/4.0.3
 [username@g0001 ~]$ module load singularity/2.6.1 openmpi/3.1.6
 ```
 
-**Singularity PRO 3.5**
+**SingularityPRO 3.5**
 
 ```
 [username@es1 ~]$ qrsh -g grpname -l rt_F=2 -l h_rt=1:00:00
@@ -217,7 +217,7 @@ INFO:tensorflow:loss = 1.8231221, step = 40 (0.154 sec)
 :
 ```
 
-**Singularity PRO 3.5**
+**SingularityPRO 3.5**
 
 ```
 [username@g0001 ~]$ wget https://raw.githubusercontent.com/horovod/horovod/v0.16.4/examples/tensorflow_mnist.py
@@ -257,7 +257,7 @@ wget https://raw.githubusercontent.com/horovod/horovod/v0.16.4/examples/tensorfl
 mpirun -np 8 -npernode 4 singularity run --nv tensorflow-19.06-py2.simg python tensorflow_mnist.py
 ```
 
-**Singularity PRO 3.5**
+**SingularityPRO 3.5**
 
 ```
 #!/bin/sh
@@ -308,7 +308,7 @@ docker://nvcr.io/partners/chainer:4.0.0b1
 
 ``chainer-4.0.0b1.simg``という名前のイメージファイルが生成されます。
 
-**Singularity PRO 3.5**
+**SingularityPRO 3.5**
 
 ```
 [username@es1 ~]$ module load singularitypro/3.5
@@ -348,7 +348,7 @@ epoch       main/loss   validation/main/loss  main/accuracy  validation/main/acc
 :
 ```
 
-**Singularity PRO 3.5**
+**SingularityPRO 3.5**
 
 ```
 [username@es1 ~]$ qrsh -g grpname -l rt_G.small=1 -l h_rt=1:00:00
