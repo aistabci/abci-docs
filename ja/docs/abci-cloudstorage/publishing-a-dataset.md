@@ -35,22 +35,22 @@ upload: sensor1/0002.dat to s3://example-dataset/sensor1/0002.dat
 <!--UsageInfo には、後述の index.html または別途用意するページの URL を記入します。UsageInfo には、データファイルまたはデータファイルのリストが記載されているページの URL を記入します。-->
 
 ```yaml
-# データセット名　※必須
+# データセット名  *必須
 Name: ABC Dataset
 
-# データセットの概要（50文字以上）　※必須
+# データセットの概要 (50文字以上)  *必須
 Description: This is a fictitious dataset ....
 
 # データセットに関するキーワード（object detection, vehicle, action recognition, earth observation, etc.）
 Keywords: image processing, health
 
-# より詳細な情報を記した Web ページ　※必須
+# より詳細な情報を記した Web ページ　*必須
 #  本YAMLから生成する index.html に詳細を追記する場合は、下記のように https://<バケット名>.s3-website.abci.ai/ を記入して下さい。
 UsageInfo: https://example-dataset.s3-website.abci.ai/
 
 # 配布方法
 #  EncodingFormat:  XML, CSV, GeoTIFF, etc.
-#  ContentURL: 公開データの URL　※必須
+#  ContentURL: 公開データの URL　*必須
 Distribution: # (do not fill in this line)
   EncodingFormat: DICOM
   ContentURL: https://example-dataset.s3.abci.ai/abc.zip
@@ -114,7 +114,15 @@ HTMLファイルが問題なく生成されたら、データセットを公開�
 
 なお、生成したHTMLファイルには、YAMLファイルに記入した情報が構造化データ (JSON-LD形式) として含まれています。データセットに関する基本情報を更新したい場合には再度、HTMLファイルの生成とアップロードを行って下さい。このファイルを直接変更したり、別のWebサイトに同等のページを用意したりすることも可能です。ただし、このファイルと同様の構造化データを保持するようにして下さい。
 
-上記がすべて完了したら、以下のフォーマットで <abci-application-ml@aist.go.jp> までお知らせ下さい。
-<!-- 要検討：URL 以外の必要情報 -->
+上記がすべて完了したら、以下のフォーマットで <abci-application-ml@aist.go.jp> までお知らせ下さい。複数のABCIグループに所属している場合、データセットがアップロードされているバケットを所有しているABCIグループを記載してください。
+
+```text
+Subject: データセットの公開(<データセット名>)
+
+申請者の氏名: 
+ABCIグループ: 
+申請者のメールアドレス: 
+アップロードしたHTMLファイルのURL: 
+```
 
 登録が完了したデータセットは <https://datasets.abci.ai/> に一覧表示されます。
