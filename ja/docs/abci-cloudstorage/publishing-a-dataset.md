@@ -8,7 +8,7 @@ ABCIクラウドストレージを用いてデータセットを一般に公開�
 
 ## 1. 公開設定 {#publishing}
 
-ABCIクラウドストレージにデータをアップロードし、[アクセス制御（１）](acl.md)を参考に公開設定（パブリックアクセスの設定）を行って下さい。
+ABCIクラウドストレージにデータをアップロードし、[アクセス制御(1)](acl.md) を参考に公開設定（パブリックアクセスの設定）を行って下さい。
 
 以下では、ABCIクラウドストレージに example-dataset というバケットを作り、sensor1 というディレクトリに格納された複数のファイルをアップロードし、公開設定を行う例を示します。
 
@@ -41,7 +41,7 @@ Name: ABC Dataset
 # データセットの概要 (50文字以上)  *必須
 Description: This is a fictitious dataset ....
 
-# データセットに関するキーワード（object detection, vehicle, action recognition, earth observation, etc.）
+# データセットに関するキーワード (object detection, vehicle, action recognition, earth observation, etc.)
 Keywords: image processing, health
 
 # より詳細な情報を記した Web ページ　*必須
