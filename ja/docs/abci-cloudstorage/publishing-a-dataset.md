@@ -28,7 +28,7 @@ upload: sensor1/0002.dat to s3://example-dataset/sensor1/0002.dat
 
 ## 2. 公開データセットの登録 {#registration}
 
-まず、[こちら](https://datasets.abci.ai/dataset.yaml)のYAMLファイルを手元にダウンロードし、下記を参考に公開データセットに関する基本情報を記入して下さい。
+まず、公開するデータセットに関する基本情報を記入したYAMLファイルを準備して下さい。テンプレート（`dataset_info_template.yaml`）を <https://datasets.abci.ai/dataset_info_template.yaml> より手元にダウンロードし、下記を参考に記入して下さい。
 
 <!--UsageInfo には、後述の index.html または別途用意するページの URL を記入します。UsageInfo には、データファイルまたはデータファイルのリストが記載されているページの URL を記入します。-->
 
@@ -83,7 +83,7 @@ Identifier: https://doi.org/1234....
 Citation: 
 ```
 
-次に、記入したYAMLファイルを用いて、データセットの公開ページ（index.html）を生成します。
+次に、記入したYAMLファイル（ここでは`my_dataset_info.yaml`）を用いて、データセットの公開ページ（index.html）を生成します。
 
 ```
 [username@es1 ~]$ module load aws-cli
@@ -93,13 +93,13 @@ Citation:
 2020-07-13 22:22:55 URL:https://datasets.abci.ai/sha256sum.txt [87/87] -> "sha256sum.txt" [1]
 [username@es1 ~]$ sha256sum -c sha256sum.txt
 generate_page: OK
-[username@es1 ~]$ ./generate_page dataset.yaml > index.html
+[username@es1 ~]$ ./generate_page my_dataset_info.yaml > index.html
 ```
 
-HTMLファイルが問題なく生成されたら、データセットを公開しているバケットに、記入したYAMLファイルと生成したHTMLファイルの両方をアップロードして下さい。 `dataset.yaml` は、違うファイル名に変えても問題ありません。
+HTMLファイルが問題なく生成されたら、データセットを公開しているバケットに、記入したYAMLファイルと生成したHTMLファイルの両方をアップロードして下さい。 `my_dataset_info.yaml` は違うファイル名でも問題ありません。
 
 ```
-[username@es1 ~]$ aws --endpoint-url https://s3.abci.ai s3 cp --acl public-read dataset.yaml s3://example-dataset/dataset.yaml
+[username@es1 ~]$ aws --endpoint-url https://s3.abci.ai s3 cp --acl public-read dataset.yaml s3://example-dataset/my_dataset_info.yaml
 [username@es1 ~]$ aws --endpoint-url https://s3.abci.ai s3 cp --acl public-read index.html s3://example-dataset/index.html
 ```
 
