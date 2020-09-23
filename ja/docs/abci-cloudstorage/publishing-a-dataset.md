@@ -28,7 +28,7 @@ upload: sensor1/0002.dat to s3://example-dataset/sensor1/0002.dat
 
 ## 2. 公開データセットの登録 {#registration}
 
-まず、公開するデータセットに関する基本情報を記入したYAMLファイルを準備して下さい。テンプレート（`dataset_info_template.yaml`）を <https://datasets.abci.ai/dataset_info_template.yaml> より手元にダウンロードし、下記を参考に記入して下さい。
+まず、公開するデータセットに関する基本情報を記入したYAMLファイルを準備して下さい。[テンプレートファイル (dataset_info_template.yaml)](https://datasets.abci.ai/dataset_info_template.yaml) を手元にダウンロードし、下記を参考に記入して下さい。
 
 <!--UsageInfo には、後述の index.html または別途用意するページの URL を記入します。UsageInfo には、データファイルまたはデータファイルのリストが記載されているページの URL を記入します。-->
 
@@ -99,7 +99,7 @@ generate_page: OK
 HTMLファイルが問題なく生成されたら、データセットを公開しているバケットに、記入したYAMLファイルと生成したHTMLファイルの両方をアップロードして下さい。 `my_dataset_info.yaml` は違うファイル名でも問題ありません。
 
 ```
-[username@es1 ~]$ aws --endpoint-url https://s3.abci.ai s3 cp --acl public-read dataset.yaml s3://example-dataset/my_dataset_info.yaml
+[username@es1 ~]$ aws --endpoint-url https://s3.abci.ai s3 cp --acl public-read my_dataset_info.yaml s3://example-dataset/my_dataset_info.yaml
 [username@es1 ~]$ aws --endpoint-url https://s3.abci.ai s3 cp --acl public-read index.html s3://example-dataset/index.html
 ```
 
