@@ -3,7 +3,7 @@
 ## Overview
 
 
-The ABCI Singularity Endpoint provides a singularity container service available within ABCI. This service consists of Remote Builder for remotely building container images using SingularityPRO and Container Library for storing and sharing the created container images. This service is available only within ABCI and cannot be accessed directly from outside of ABCI.
+ABCI Singularity Endpoint provides a singularity container service available within ABCI. This service consists of Remote Builder for remotely building container images using SingularityPRO and Container Library for storing and sharing the created container images. This service is available only within ABCI and cannot be accessed directly from outside of ABCI.
 
 !!! warning
     Container Library is an Experimental service. In particularly, it is not possible to upload container images larger than 64 MB.
@@ -25,7 +25,7 @@ In order to use this service, load the module of SingularityPRO as follows.
 
 ### Creating Access Token
 
- ABCI users need to obtain the access token required to authenticate the service. The access token can be created by using the `get_singularity_token` command on the interactive node with ABCI password which used to login to the user portal. 
+You need to obtain an access token to authenticate your requests. The access token can be created by using the `get_singularity_token` command on the interactive node with your ABCI password, which is used to log in to ABCI User Portal.
 
 ```
 [username@es1 ~]$ get_singularity_token
