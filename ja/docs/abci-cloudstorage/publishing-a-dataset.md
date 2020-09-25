@@ -43,7 +43,8 @@ Description: This is a fictitious dataset ....
 Keywords: image processing, health
 
 # より詳細な情報を記した Web ページ　*必須
-#  本YAMLから生成する index.html に詳細を追記する場合は、下記のように https://<バケット名>.s3-website.abci.ai/ を記入して下さい。
+#　本YAMLから生成する index.html に詳細を追記する場合は、以下の例のように https://<バケット名>.s3-website.abci.ai/ を記入して下さい。
+#  そうでなく、別のサイトに Web ページを用意する場合は、その URL を記入して下さい。
 UsageInfo: https://example-dataset.s3-website.abci.ai/
 
 # 配布方法
