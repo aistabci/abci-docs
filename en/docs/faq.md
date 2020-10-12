@@ -72,7 +72,7 @@ singularity exec $NGC_HOME/ubuntu-18.04.simg $NGC_HOME/ngc $@
 
 ## Q. I want to assign multiple compute nodes and have each compute node perform different processing
 
-If you give `-l rt_F=N` option to `qrsh` or `qsub`, you can assign N compute nodes. You can see the assigned compute nodes from the file set in the environment variable `SGE_JOB_HOSTLIST` or the environment variable `PE_HOSTFILE` in the job.
+If you give `-l rt_F=N` option to `qrsh` or `qsub`, you can assign N compute nodes. You can see the assigned compute nodes from the file set in the environment variable `SGE_JOB_HOSTLIST` or the environment variable `PE_HOSTFILE` in the job. See [Environment Variables](03.md#environment-variables) for the environment variables available to job scripts or the command line during job execution.
 
 * Using mpirun
 

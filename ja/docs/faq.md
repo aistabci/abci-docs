@@ -72,7 +72,7 @@ singularity exec $NGC_HOME/ubuntu-18.04.simg $NGC_HOME/ngc $@
 
 ## Q. 複数の計算ノードを割り当て、それぞれの計算ノードで異なる処理をさせたい
 
-`qrsh`や`qsub`で`-l rt_F=N`オプションを与えると、N個の計算ノードを割り当てることができます。割り当てられた計算ノードは環境変数`SGE_JOB_HOSTLIST`、もしくはジョブ中の環境変数`PE_HOSTFILE`に設定されるファイルより確認できます。
+`qrsh`や`qsub`で`-l rt_F=N`オプションを与えると、N個の計算ノードを割り当てることができます。割り当てられた計算ノードは環境変数`SGE_JOB_HOSTLIST`、もしくはジョブ中の環境変数`PE_HOSTFILE`に設定されるファイルより確認できます。ジョブ実行中に、ジョブスクリプトもしくはコマンドラインで利用できる環境変数については[環境変数](03.md#environment-variables) を参照。
 
 * mpirunを利用する場合  
 
