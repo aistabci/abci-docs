@@ -82,8 +82,8 @@ singularity exec $NGC_HOME/ubuntu-18.04.simg $NGC_HOME/ngc $@
         [username@g0001 ~]$ module load openmpi/2.1.6
         [username@g0001 ~]$ mpirun -hostfile $SGE_JOB_HOSTLIST -np 1 command1 : -np 1 command2 : ... : -np 1 commandN
 
-* MPIを利用しない場合  
-`-inherit`オプションを使用することで、スレーブノードへジョブを投入することができます。  
+* `-inherit` オプションを利用する場合  
+`qrsh`コマンドでは`-inherit`オプションを使用することで、スレーブノードへジョブを投入することができます。  
 
         [username@es1 ~]$ qrsh -g grpname -l rt_F=2 -l h_rt=1:00:00
         [username@g0001 ~]$ cat $SGE_JOB_HOSTLIST
