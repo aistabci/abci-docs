@@ -74,39 +74,31 @@ singularity exec $NGC_HOME/ubuntu-18.04.simg $NGC_HOME/ngc $@
 
 If you give `-l rt_F=N` option to `qrsh` or `qsub`, you can assign N compute nodes. You can see the assigned compute nodes from the file set in the environment variable `SGE_JOB_HOSTLIST` or the environment variable `PE_HOSTFILE` in the job. See [Environment Variables](03.md#environment-variables) for the environment variables available to job scripts or the command line during job execution.
 
-* Using mpirun
+* Using MPI  
+You can use MPI to make each assigned compute node do different things.  
 
-You can also use MPI if you want to perform different processing on each assigned compute node.
+    Example) Execute mpirun
 
-``` 
-[username@es1 ~]$ qrsh -g grpname -l rt_F=2 -l h_rt=1:00:00
-[username@g0001 ~]$ module load openmpi/2.1.6
-[username@g0001 ~]$ mpirun -hostfile $SGE_JOB_HOSTLIST -np 1 command1 : -np 1 command2 : ... : -np1 commandN
-```
+        [username@es1 ~]$ qrsh -g grpname -l rt_F=2 -l h_rt=1:00:00
+        [username@g0001 ~]$ module load openmpi/2.1.6
+        [username@g0001 ~]$ mpirun -hostfile $SGE_JOB_HOSTLIST -np 1 command1 : -np 1 command2 : ... : -np 1 commandN
 
-* Using `-inherit` option
-
+* Using `-inherit` option  
 You can submit jobs to the slave node using the `-inherit` option.
 
-```
-[username@es1 ~]$ qrsh -g grpname -l rt_F=2 -l h_rt=1:00:00
-[username@g0001 ~]$ cat $SGE_JOB_HOSTLIST
-g0001
-g0002
-```
+        [username@es1 ~]$ qrsh -g grpname -l rt_F=2 -l h_rt=1:00:00
+        [username@g0001 ~]$ cat $SGE_JOB_HOSTLIST
+        g0001
+        g0002
 
-Example) Execute interactive job with `-inherit` option
+    Example) Execute interactive job with `-inherit` option
 
-```
-[username@g0001 ~]$ qrsh -inherit g0002 hostname
-g0002.abci.local
-```
+        [username@g0001 ~]$ qrsh -inherit g0002 hostname
+        g0002.abci.local
 
-Example) Submit the batch job with `-inherit` option
+    Example) Submit the batch job with `-inherit` option
 
-```
-[username@g0001 ~]$ qrsh -inherit g0002 bash run.sh
-```
+        [username@g0001 ~]$ qrsh -inherit g0002 bash run.sh
 
 ## Q. I want to avoid to close SSH session unexpectedly
 

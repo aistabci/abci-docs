@@ -74,39 +74,31 @@ singularity exec $NGC_HOME/ubuntu-18.04.simg $NGC_HOME/ngc $@
 
 `qrsh`や`qsub`で`-l rt_F=N`オプションを与えると、N個の計算ノードを割り当てることができます。割り当てられた計算ノードは環境変数`SGE_JOB_HOSTLIST`、もしくはジョブ中の環境変数`PE_HOSTFILE`に設定されるファイルより確認できます。ジョブ実行中に、ジョブスクリプトもしくはコマンドラインで利用できる環境変数については[環境変数](03.md#environment-variables) を参照してください。
 
-* mpirunを利用する場合  
+* MPIを利用する場合    
+割り当てられた計算ノードでそれぞれ異なる処理をさせたい場合にもMPIが使えます。  
+例）mpirunの実行  
 
-割り当てられた計算ノードでそれぞれ異なる処理をさせたい場合にもMPIが使えます。
+        [username@es1 ~]$ qrsh -g grpname -l rt_F=2 -l h_rt=1:00:00
+        [username@g0001 ~]$ module load openmpi/2.1.6
+        [username@g0001 ~]$ mpirun -hostfile $SGE_JOB_HOSTLIST -np 1 command1 : -np 1 command2 : ... : -np 1 commandN
 
-```
-[username@es1 ~]$ qrsh -g grpname -l rt_F=2 -l h_rt=1:00:00
-[username@g0001 ~]$ module load openmpi/2.1.6
-[username@g0001 ~]$ mpirun -hostfile $SGE_JOB_HOSTLIST -np 1 command1 : -np 1 command2 : ... : -np1 commandN
-```
+* MPIを利用しない場合  
+`-inherit`オプションを使用することで、スレーブノードへジョブを投入することができます。  
 
-* mpirunを利用しない場合  
+        [username@es1 ~]$ qrsh -g grpname -l rt_F=2 -l h_rt=1:00:00
+        [username@g0001 ~]$ cat $SGE_JOB_HOSTLIST
+        g0001
+        g0002
 
-`-inherit`オプションを使用することで、スレーブノードへジョブを投入することができます。
+    例) `-inherit`オプションでインタラクティブジョブを実行  
 
-```
-[username@es1 ~]$ qrsh -g grpname -l rt_F=2 -l h_rt=1:00:00
-[username@g0001 ~]$ cat $SGE_JOB_HOSTLIST
-g0001
-g0002
-```
+        [username@g0001 ~]$ qrsh -inherit g0002 hostname
+        g0002.abci.local  
 
-例) `-inherit`オプションでインタラクティブジョブを実行
+    例) `-inherit`オプションでバッチジョブを投入
 
-```
-[username@g0001 ~]$ qrsh -inherit g0002 hostname
-g0002.abci.local
-```
+        [username@g0001 ~]$ qrsh -inherit g0002 bash run.sh
 
-例) `-inherit`オプションでバッチジョブを投入
-
-```
-[username@g0001 ~]$ qrsh -inherit g0002 bash run.sh
-```
 
 ## Q. SSHのセッションが閉じられてしまうのを回避したい
 
