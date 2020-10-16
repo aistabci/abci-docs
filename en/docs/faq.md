@@ -84,7 +84,7 @@ You can use MPI to make each assigned compute node do different things.
         [username@g0001 ~]$ mpirun -hostfile $SGE_JOB_HOSTLIST -np 1 command1 : -np 1 command2 : ... : -np 1 commandN
 
 * Using `-inherit` option  
-You can use the `qrsh` command to submit jobs to slave nodes using the -inherit` option.
+You can use the `qrsh` command to submit jobs to slave nodes using the `-inherit` option.
 
         [username@es1 ~]$ qrsh -g grpname -l rt_F=2 -l h_rt=1:00:00
         [username@g0001 ~]$ cat $SGE_JOB_HOSTLIST
