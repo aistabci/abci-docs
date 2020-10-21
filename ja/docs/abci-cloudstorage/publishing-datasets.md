@@ -97,7 +97,7 @@ generate_page: OK
 [username@es1 ~]$ ./generate_page my_dataset_info.yaml > index.html
 ```
 
-HTMLファイルが問題なく生成されたら、データセットを公開しているバケットに、記入したYAMLファイルと生成したHTMLファイルの両方をアップロードして下さい。 `my_dataset_info.yaml` は違うファイル名でも問題ありません。
+HTMLファイルが問題なく生成されたら、データセットを公開しているバケットに、記入したYAMLファイルと生成したHTMLファイルの両方をアップロードして下さい。 `my_dataset_info.yaml` は違うファイル名でも問題ありません。エラーになって生成されない場合は、[お問い合わせ](../contact.md)のページをご覧の上、<qa@abci.ai> までご連絡ください。
 
 ```
 [username@es1 ~]$ aws --endpoint-url https://s3.abci.ai s3 cp --acl public-read my_dataset_info.yaml s3://example-dataset/my_dataset_info.yaml
@@ -122,6 +122,7 @@ Subject: データセットの公開(<データセット名>)
 ABCIグループ: 
 申請者のメールアドレス: 
 アップロードしたHTMLファイルのURL: 
+アップロードしたYAMLファイルのURL: 
 ```
 
 登録が完了したデータセットは <https://datasets.abci.ai/> に一覧表示されます。
