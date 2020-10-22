@@ -227,7 +227,7 @@ ZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZ  RSA        4096  2020-06-15 03:40:05 +
 
 #### Getting Public Keys Registered in the Keystore
 
-Public keys registered in the Keystore can be downloaded and stored in your keyring. The following example downloads and saves the public key found by searching for username2. You can also search for a string that matches the comment attached to the key. `singularity key pull` specifies the fingerprint.
+Public keys registered in the Keystore can be downloaded and stored in your keyring. The following example downloads and saves the public key found by searching for username2. You can also search for a string that matches the comment attached to the key. The last parameter of `singularity key pull AAAA....` is a fingerprint to specify which public key to download.
 
 ```bash hl_lines="1 7 9"
 [username@es1 ~]$ singularity key search -l username2
