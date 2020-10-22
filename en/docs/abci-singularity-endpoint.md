@@ -34,10 +34,10 @@ just a moment, please...
   (The generated access token will be displayed.)
 ```
 
-Keep your access token in a safe place for future registration.
+Keep your access token in a safe place for a later registration step.
 
 !!! note
-    The access token is a very long single line of text, so be careful not to include newline characters and so on.
+    The access token is a very long single line of text, so be careful not to include unnecessary characters such as newlines.
 
 
 ### Checking remote endpoint
@@ -75,10 +75,10 @@ INFO:    API Key Verified!
 [username@es1 ~]$
 ```
 
-When you have created access token again, use above command to register new access token. The old access token is overwritten by new one.
+When you have created an access token again, use the above command to register it. The old access token is overwritten by the new one.
 
 !!! note
-    The access token currently expires in one month. When the time limit expires, create and register again.
+    Access tokens currently expire in one month. When your access token has expired, create and register again.
 
 ## Remote Builder
 
@@ -100,7 +100,7 @@ From: ubuntu:18.04
 [username@es1 ~]$ 
 ```
 
-Next, to create the container image "ubuntu.sif" by Remote Build with "ubuntunt.def", specify `--remote` to the command `singularity build`.
+Next, to create the container image "ubuntu.sif" by Remote Build with "ubuntu.def", specify `--remote` to the command `singularity build`.
 
 ```
 [username@es1 ~]$ singularity build --remote ubuntu.sif ubuntu.def
@@ -127,13 +127,13 @@ Description:	Ubuntu 18.04.5 LTS
 
 ## Container Library (Experimental)
 
-You can push your container image to Container Library and make it available to other ABCI users. Each user can store up to a total of 100 GiB.
+You can push your container images to Container Library and make those available to other ABCI users. Each user can store up to a total of 100 GiB.
 
 !!! note
     Container images pushed to the Container Library cannot be configured for access control. This means that anyone who uses ABCI will be able to access it, so make sure the container images are appropriate.
     
 ### Current Restriction
-* Uploading a container image of 64 MiB or more is not allowed. but you can create a container image in a remote build.
+* Uploading a container image of 64 MiB or more is not allowed, but you can create a container image in a remote build.
 * You cannot get a list of uploaded container images.
 
 ### Creating and Registering Signing Keys for a Container Image
@@ -167,7 +167,7 @@ Each input value is described as follows:.
 
 #### List Keys
 
-To check information whch you created, use `singularity key list` command.
+To get information about the public keys including ones you created, use `singularity key list`.
 
 ```
 [username@es1 ~]$ singularity key list
@@ -260,7 +260,7 @@ You can remove a public key from your keyring by specifying a key fingerprint us
 ### Upload Container Image
 
 Before uploading to Container Library, sign the container image.
-Check the key number with the `singularity key list -s` command and sign the container with  `singularity sign` command specified the key number by `-k` option.
+Check the key number with `singularity key list -s`, and sign the container with `singularity sign` command specified the key number by `-k` option.
 The following example uses the second key to sign `ubuntunt.sif`:.
 
 ```bash hl_lines="1 11"
