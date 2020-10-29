@@ -155,7 +155,7 @@ Would you like to push it to the keystore? [Y,n]
 Generating Entity and OpenPGP Key Pair... done
 ```
 
-Each input value is described as follows:.
+Each input value is described as follows:
 
 | item | value |
 | :-- | :-- |
@@ -261,7 +261,7 @@ You can remove a public key from your keyring by specifying a key fingerprint us
 
 Before uploading to Container Library, sign the container image.
 Check the key number with `singularity key list -s`, and sign the container with `singularity sign` command specified the key number by `-k` option.
-The following example uses the second key to sign `ubuntunt.sif`:.
+The following example uses the second key to sign `ubuntunt.sif`.
 
 ```bash hl_lines="1 11"
 [username@es1 ~]$ singularity key list -s
@@ -289,7 +289,7 @@ The location of container images in the Container Library is represented by a UR
 | container | Specify the container image name as any string. |
 | tag | A string identifying the same container image. A string such as version, release date, revision number or `latest`. |
 
-Here is an example of uploading a collection named `abci-lib`, container image named `ubuntu`, and tag `latest`:.
+Here is an example of uploading a collection named `abci-lib`, container image named `ubuntu`, and tag `latest`:
 
 ```
 [username@es1 ~]$ singularity push ubuntu.sif library://username/abci-lib/ubuntu:latest
@@ -300,7 +300,7 @@ INFO:    Container is trusted - run 'singularity key list' to list your trusted 
 
 ### Pulling container image
 
-The container image uploaded to the Container Library can be downloaded as follows:.
+The container image uploaded to the Container Library can be downloaded as follows:
 
 ```
 [username@es1 ~]$ singularity pull library://username/abci-lib/ubuntu:latest
