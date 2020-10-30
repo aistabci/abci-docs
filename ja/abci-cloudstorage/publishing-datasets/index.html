@@ -1,0 +1,1267 @@
+
+
+
+
+<!doctype html>
+<html lang="ja" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      <meta http-equiv="x-ua-compatible" content="ie=edge">
+      
+        <meta name="description" content="ABCI User Guide, Japanese version">
+      
+      
+        <link rel="canonical" href="https://docs.abci.ai/ja/abci-cloudstorage/publishing-datasets/">
+      
+      
+        <meta name="author" content="AIST">
+      
+      
+        <meta name="lang:clipboard.copy" content="クリップボードへコピー">
+      
+        <meta name="lang:clipboard.copied" content="コピーしました">
+      
+        <meta name="lang:search.language" content="ja">
+      
+        <meta name="lang:search.pipeline.stopwords" content="True">
+      
+        <meta name="lang:search.pipeline.trimmer" content="True">
+      
+        <meta name="lang:search.result.none" content="何も見つかりませんでした">
+      
+        <meta name="lang:search.result.one" content="1件見つかりました">
+      
+        <meta name="lang:search.result.other" content="#件見つかりました">
+      
+        <meta name="lang:search.tokenizer" content="[\s\-　、。，．]+">
+      
+      <link rel="shortcut icon" href="../../img/favicon.png">
+      <meta name="generator" content="mkdocs-1.1.2, mkdocs-material-4.6.3">
+    
+    
+      
+        <title>データセットの公開 - ABCI User Guide</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/application.adb8469c.css">
+      
+        <link rel="stylesheet" href="../../assets/stylesheets/application-palette.a8b3c06d.css">
+      
+      
+        
+        
+        <meta name="theme-color" content="#ef5350">
+      
+    
+    
+      <script src="../../assets/javascripts/modernizr.86422ebf.js"></script>
+    
+    
+      
+        <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700%7CRoboto+Mono&display=fallback">
+        <style>body,input{font-family:"Roboto","Helvetica Neue",Helvetica,Arial,sans-serif}code,kbd,pre{font-family:"Roboto Mono","Courier New",Courier,monospace}</style>
+      
+    
+    <link rel="stylesheet" href="../../assets/fonts/material-icons.css">
+    
+    
+    
+      
+        
+<script>
+  window.ga = window.ga || function() {
+    (ga.q = ga.q || []).push(arguments)
+  }
+  ga.l = +new Date
+  /* Setup integration and send page view */
+  ga("create", "UA-118371652-2", "auto")
+  ga("set", "anonymizeIp", true)
+  ga("send", "pageview")
+  /* Register handler to log search on blur */
+  document.addEventListener("DOMContentLoaded", () => {
+    if (document.forms.search) {
+      var query = document.forms.search.query
+      query.addEventListener("blur", function() {
+        if (this.value) {
+          var path = document.location.pathname;
+          ga("send", "pageview", path + "?q=" + this.value)
+        }
+      })
+    }
+  })
+</script>
+<script async src="https://www.google-analytics.com/analytics.js"></script>
+      
+    
+    
+  </head>
+  
+    
+    
+    <body dir="ltr" data-md-color-primary="red" data-md-color-accent="red">
+  
+    <svg class="md-svg">
+      <defs>
+        
+        
+          <svg xmlns="http://www.w3.org/2000/svg" width="416" height="448" viewBox="0 0 416 448" id="__github"><path fill="currentColor" d="M160 304q0 10-3.125 20.5t-10.75 19T128 352t-18.125-8.5-10.75-19T96 304t3.125-20.5 10.75-19T128 256t18.125 8.5 10.75 19T160 304zm160 0q0 10-3.125 20.5t-10.75 19T288 352t-18.125-8.5-10.75-19T256 304t3.125-20.5 10.75-19T288 256t18.125 8.5 10.75 19T320 304zm40 0q0-30-17.25-51T296 232q-10.25 0-48.75 5.25Q229.5 240 208 240t-39.25-2.75Q130.75 232 120 232q-29.5 0-46.75 21T56 304q0 22 8 38.375t20.25 25.75 30.5 15 35 7.375 37.25 1.75h42q20.5 0 37.25-1.75t35-7.375 30.5-15 20.25-25.75T360 304zm56-44q0 51.75-15.25 82.75-9.5 19.25-26.375 33.25t-35.25 21.5-42.5 11.875-42.875 5.5T212 416q-19.5 0-35.5-.75t-36.875-3.125-38.125-7.5-34.25-12.875T37 371.5t-21.5-28.75Q0 312 0 260q0-59.25 34-99-6.75-20.5-6.75-42.5 0-29 12.75-54.5 27 0 47.5 9.875t47.25 30.875Q171.5 96 212 96q37 0 70 8 26.25-20.5 46.75-30.25T376 64q12.75 25.5 12.75 54.5 0 21.75-6.75 42 34 40 34 99.5z"/></svg>
+        
+      </defs>
+    </svg>
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" data-md-component="overlay" for="__drawer"></label>
+    
+      <a href="#_1" tabindex="0" class="md-skip">
+        Skip to content
+      </a>
+    
+    
+      <header class="md-header" data-md-component="header">
+  <nav class="md-header-nav md-grid">
+    <div class="md-flex">
+      <div class="md-flex__cell md-flex__cell--shrink">
+        <a href="https://docs.abci.ai/ja/" title="ABCI User Guide" aria-label="ABCI User Guide" class="md-header-nav__button md-logo">
+          
+            <img alt="logo" src="../../img/logo.png" width="24" height="24">
+          
+        </a>
+      </div>
+      <div class="md-flex__cell md-flex__cell--shrink">
+        <label class="md-icon md-icon--menu md-header-nav__button" for="__drawer"></label>
+      </div>
+      <div class="md-flex__cell md-flex__cell--stretch">
+        <div class="md-flex__ellipsis md-header-nav__title" data-md-component="title">
+          
+            <span class="md-header-nav__topic">
+              ABCI User Guide
+            </span>
+            <span class="md-header-nav__topic">
+              
+                データセットの公開
+              
+            </span>
+          
+        </div>
+      </div>
+      <div class="md-flex__cell md-flex__cell--shrink">
+        
+          <label class="md-icon md-icon--search md-header-nav__button" for="__search"></label>
+          
+<div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" aria-label="search" name="query" placeholder="検索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="query" data-md-state="active">
+      <label class="md-icon md-search__icon" for="__search"></label>
+      <button type="reset" class="md-icon md-search__icon" data-md-component="reset" tabindex="-1">
+        &#xE5CD;
+      </button>
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="result">
+          <div class="md-search-result__meta">
+            検索キーワードを入力してください
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+        
+      </div>
+      
+        <div class="md-flex__cell md-flex__cell--shrink">
+          <div class="md-header-nav__source">
+            
+
+
+  
+
+<a href="https://github.com/aistairc/abci-docs/" title="リポジトリへ" class="md-source" data-md-source="github">
+  
+    <div class="md-source__icon">
+      <svg viewBox="0 0 24 24" width="24" height="24">
+        <use xlink:href="#__github" width="24" height="24"></use>
+      </svg>
+    </div>
+  
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+          </div>
+        </div>
+      
+    </div>
+  </nav>
+</header>
+    
+    <div class="md-container">
+      
+        
+      
+      
+      <main class="md-main" role="main">
+        <div class="md-main__inner md-grid" data-md-component="container">
+          
+            
+              <div class="md-sidebar md-sidebar--primary" data-md-component="navigation">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    <nav class="md-nav md-nav--primary" data-md-level="0">
+  <label class="md-nav__title md-nav__title--site" for="__drawer">
+    <a href="https://docs.abci.ai/ja/" title="ABCI User Guide" class="md-nav__button md-logo">
+      
+        <img alt="logo" src="../../img/logo.png" width="48" height="48">
+      
+    </a>
+    ABCI User Guide
+  </label>
+  
+    <div class="md-nav__source">
+      
+
+
+  
+
+<a href="https://github.com/aistairc/abci-docs/" title="リポジトリへ" class="md-source" data-md-source="github">
+  
+    <div class="md-source__icon">
+      <svg viewBox="0 0 24 24" width="24" height="24">
+        <use xlink:href="#__github" width="24" height="24"></use>
+      </svg>
+    </div>
+  
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../.." title="はじめに" class="md-nav__link">
+      はじめに
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-2" type="checkbox" id="nav-2">
+    
+    <label class="md-nav__link" for="nav-2">
+      利用手引き
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-2">
+        利用手引き
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../01/" title="1. ABCIシステムの概要" class="md-nav__link">
+      1. ABCIシステムの概要
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../02/" title="2. ABCIシステム利用環境" class="md-nav__link">
+      2. ABCIシステム利用環境
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../03/" title="3. ジョブ実行環境" class="md-nav__link">
+      3. ジョブ実行環境
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../04/" title="4. ストレージ" class="md-nav__link">
+      4. ストレージ
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../05/" title="5. Environment Modules" class="md-nav__link">
+      5. Environment Modules
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../06/" title="6. Python" class="md-nav__link">
+      6. Python
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../07/" title="7. GPU" class="md-nav__link">
+      7. GPU
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../08/" title="8. MPI" class="md-nav__link">
+      8. MPI
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../09/" title="9. Linuxコンテナ" class="md-nav__link">
+      9. Linuxコンテナ
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../10/" title="10. プログラム開発環境" class="md-nav__link">
+      10. プログラム開発環境
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../appendix/installed-software/" title="付録. インストール済みソフトウェアの構成" class="md-nav__link">
+      付録. インストール済みソフトウェアの構成
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../appendix/using-abci-with-hpci/" title="付録. HPCIによるABCIシステム利用" class="md-nav__link">
+      付録. HPCIによるABCIシステム利用
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../appendix/external-networks/" title="付録. 外部ネットワークとの通信" class="md-nav__link">
+      付録. 外部ネットワークとの通信
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-3" type="checkbox" id="nav-3">
+    
+    <label class="md-nav__link" for="nav-3">
+      各種アプリケーション
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-3">
+        各種アプリケーション
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../apps/" title="概要" class="md-nav__link">
+      概要
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../apps/tensorflow/" title="TensorFlow" class="md-nav__link">
+      TensorFlow
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../apps/tensorflow-keras/" title="TensorFlow Keras" class="md-nav__link">
+      TensorFlow Keras
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../apps/pytorch/" title="PyTorch" class="md-nav__link">
+      PyTorch
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../apps/mxnet/" title="MXNet" class="md-nav__link">
+      MXNet
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../apps/chainer/" title="Chainer" class="md-nav__link">
+      Chainer
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../apps/others/" title="その他" class="md-nav__link">
+      その他
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-4" type="checkbox" id="nav-4">
+    
+    <label class="md-nav__link" for="nav-4">
+      Tips
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-4">
+        Tips
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../tips/remote-desktop/" title="リモートデスクトップの利用" class="md-nav__link">
+      リモートデスクトップの利用
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../tips/awscli/" title="AWS CLIの利用" class="md-nav__link">
+      AWS CLIの利用
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../tips/tera-term/" title="Tera Termの利用" class="md-nav__link">
+      Tera Termの利用
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../tips/putty/" title="PuTTYの利用" class="md-nav__link">
+      PuTTYの利用
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../tips/jupyter-notebook/" title="Jupyter Notebookの利用" class="md-nav__link">
+      Jupyter Notebookの利用
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../tips/sregistry-cli/" title="Singularity Global Clientの利用" class="md-nav__link">
+      Singularity Global Clientの利用
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../tips/spack/" title="Spackによるソフトウェア管理" class="md-nav__link">
+      Spackによるソフトウェア管理
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../tips/datasets/" title="データセットの利用" class="md-nav__link">
+      データセットの利用
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../tips/dl-amazon-ecr/" title="Amazon ECR からコンテナ取得" class="md-nav__link">
+      Amazon ECR からコンテナ取得
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../../ngc/" title="NVIDIA NGC" class="md-nav__link">
+      NVIDIA NGC
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+  
+
+
+  <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-6" type="checkbox" id="nav-6" checked>
+    
+    <label class="md-nav__link" for="nav-6">
+      ABCI クラウドストレージ
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-6">
+        ABCI クラウドストレージ
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../" title="概要" class="md-nav__link">
+      概要
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../cs-account/" title="アカウントとアクセスキー" class="md-nav__link">
+      アカウントとアクセスキー
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../usage/" title="使い方" class="md-nav__link">
+      使い方
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../encryption/" title="データの暗号化" class="md-nav__link">
+      データの暗号化
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../acl/" title="アクセス制御(1)" class="md-nav__link">
+      アクセス制御(1)
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../policy/" title="アクセス制御(2)" class="md-nav__link">
+      アクセス制御(2)
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+  
+
+
+  <li class="md-nav__item md-nav__item--active">
+    
+    <input class="md-toggle md-nav__toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+    
+      
+    
+    
+      <label class="md-nav__link md-nav__link--active" for="__toc">
+        データセットの公開
+      </label>
+    
+    <a href="./" title="データセットの公開" class="md-nav__link md-nav__link--active">
+      データセットの公開
+    </a>
+    
+      
+<nav class="md-nav md-nav--secondary">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">目次</label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#publishing" class="md-nav__link">
+    1. 公開設定
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#registration" class="md-nav__link">
+    2. 公開データセットの登録
+  </a>
+  
+</li>
+      
+      
+      
+      
+      
+    </ul>
+  
+</nav>
+    
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../../abci-singularity-endpoint/" title="ABCI Singularity エンドポイント" class="md-nav__link">
+      ABCI Singularity エンドポイント
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../../faq/" title="FAQ" class="md-nav__link">
+      FAQ
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../../known-issues/" title="既知の問題" class="md-nav__link">
+      既知の問題
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../../system-updates/" title="システム更新履歴" class="md-nav__link">
+      システム更新履歴
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="https://abci.ai/ja/about_abci/info.html" title="運転状況" class="md-nav__link">
+      運転状況
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../../contact/" title="お問い合わせ" class="md-nav__link">
+      お問い合わせ
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-13" type="checkbox" id="nav-13">
+    
+    <label class="md-nav__link" for="nav-13">
+      リンク
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-13">
+        リンク
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="https://abci.ai/ja/" title="ABCI Webページ" class="md-nav__link">
+      ABCI Webページ
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="https://docs.abci.ai/portal/ja/" title="ABCI利用ポータル手引き" class="md-nav__link">
+      ABCI利用ポータル手引き
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="https://portal.abci.ai/user/project_register_app.php?lang=ja" title="ABCI利用ポータル(利用申請)" class="md-nav__link">
+      ABCI利用ポータル(利用申請)
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="https://portal.abci.ai/user/login.php?lang=ja" title="ABCI利用ポータル(ログイン)" class="md-nav__link">
+      ABCI利用ポータル(ログイン)
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="https://docs.abci.ai/en/" title="English version" class="md-nav__link">
+      English version
+    </a>
+  </li>
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="toc">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+<nav class="md-nav md-nav--secondary">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">目次</label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#publishing" class="md-nav__link">
+    1. 公開設定
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#registration" class="md-nav__link">
+    2. 公開データセットの登録
+  </a>
+  
+</li>
+      
+      
+      
+      
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content">
+            <article class="md-content__inner md-typeset">
+              
+                
+                  <a href="https://github.com/aistairc/abci-docs/edit/master/ja/docs/abci-cloudstorage/publishing-datasets.md" title="編集" class="md-icon md-content__icon">&#xE3C9;</a>
+                
+                
+                <h1 id="_1">データセットの公開</h1>
+<p>ABCIクラウドストレージを用いてデータセットを一般に公開することができます。<a href="https://abci.ai/ja/how_to_use/">ABCI約款・規約</a> や <a href="https://abci.ai/ja/how_to_use/data/cloudstorage-agreement.pdf">ABCIクラウドストレージ規約</a> に改めて目を通し、そのデータセットの公開が本当に適切であるかをご確認の上、以下の手順に従って、データセットの公開設定と登録を行って下さい。</p>
+<h2 id="publishing">1. 公開設定</h2>
+<p>ABCIクラウドストレージにデータをアップロードし、<a href="../acl/">アクセス制御(1)</a> を参考に公開設定（パブリックアクセスの設定）を行って下さい。</p>
+<p>以下では、ABCIクラウドストレージに example-dataset というバケットを作り、sensor1 というディレクトリに格納された複数のファイルをアップロードし、公開設定を行う例を示します。</p>
+<div class="codehilite"><pre><span></span><code><span class="err">[username@es1 ~]$ module load aws-cli</span>
+<span class="err">[username@es1 ~]$ aws --endpoint-url https://s3.abci.ai s3 mb s3://example-dataset</span>
+<span class="err">[username@es1 ~]$ aws --endpoint-url https://s3.abci.ai s3api put-bucket-acl --acl public-read --bucket example-dataset</span>
+<span class="err">[username@es1 ~]$ aws --endpoint-url https://s3.abci.ai s3 cp --acl public-read --recursive sensor1 s3://example-dataset/sensor1</span>
+<span class="c">upload: sensor1/0003.dat to s3://example-dataset/sensor1/0003.dat</span>
+<span class="c">upload: sensor1/0001.dat to s3://example-dataset/sensor1/0001.dat</span>
+<span class="c">upload: sensor1/0002.dat to s3://example-dataset/sensor1/0002.dat</span>
+<span class="err">:</span>
+</code></pre></div>
+
+
+<p>上記ではアップロート時に <code>--acl public-read</code> を指定しているため、アップロードが完了後、ABCIの外部から <code>https://example-dataset.s3.abci.ai/sensor1/0001.dat</code> 等の URL でアクセスができるようになります。</p>
+<!-- データセットの利用者がダウンロードできるように、これらの URL のリストを用意して下さい。-->
+
+<h2 id="registration">2. 公開データセットの登録</h2>
+<p>まず、公開するデータセットに関する基本情報を記入したYAMLファイルを準備して下さい。<a href="https://datasets.abci.ai/dataset_info_template.yaml">テンプレートファイル (dataset_info_template.yaml)</a> を手元にダウンロードし、下記を参考に記入して下さい。</p>
+<!--UsageInfo には、後述の index.html または別途用意するページの URL を記入します。UsageInfo には、データファイルまたはデータファイルのリストが記載されているページの URL を記入します。-->
+
+<div class="codehilite"><pre><span></span><code><span class="c1"># データセット名  *必須</span>
+<span class="nt">Name</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">ABC Dataset</span>
+
+<span class="c1"># データセットの概要 (50文字以上)  *必須</span>
+<span class="nt">Description</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">This is a fictitious dataset ....</span>
+
+<span class="c1"># データセットに関するキーワード (object detection, vehicle, action recognition, earth observation, etc.)</span>
+<span class="nt">Keywords</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">image processing, health</span>
+
+<span class="c1"># より詳細な情報を記した Web ページ　*必須</span>
+<span class="c1">#　本YAMLから生成する index.html に詳細を追記する場合は、以下の例のように https://&lt;バケット名&gt;.s3-website.abci.ai/ を記入して下さい。</span>
+<span class="c1">#  そうでなく、別のサイトに Web ページを用意する場合は、その URL を記入して下さい。</span>
+<span class="nt">UsageInfo</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">https://example-dataset.s3-website.abci.ai/</span>
+
+<span class="c1"># 配布方法</span>
+<span class="c1">#  EncodingFormat:  XML, CSV, GeoTIFF, etc.</span>
+<span class="c1">#  ContentURL: 公開データの URL　*必須</span>
+<span class="nt">Distribution</span><span class="p">:</span> <span class="c1"># (do not fill in this line)</span>
+  <span class="nt">EncodingFormat</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">DICOM</span>
+  <span class="nt">ContentURL</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">https://example-dataset.s3.abci.ai/abc.zip</span>
+
+<span class="c1"># 作成者</span>
+<span class="c1">#  ContactPoint: Email or URL のいずれかは必須</span>
+<span class="nt">Creator</span><span class="p">:</span> <span class="c1"># (do not fill in this line)</span>
+  <span class="nt">Name</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">ABC Team</span>
+  <span class="nt">URL</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">https://example.com/about/</span>
+  <span class="nt">ContactPoint</span><span class="p">:</span> <span class="c1"># (do not fill in this line)</span>
+    <span class="nt">Email</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">dataset@example.com</span>
+    <span class="nt">URL</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">https://example.com/contact/</span>
+
+<span class="c1"># ライセンス</span>
+<span class="c1">#  Name: MIT License, CC-BY-SA 4.0, Custom License, etc.</span>
+<span class="nt">License</span><span class="p">:</span> <span class="c1"># (do not fill in this line)</span>
+  <span class="nt">Name</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">Custom License</span>
+  <span class="nt">URL</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">https://example.com/dataset/LISENCE.txt</span>
+
+<span class="c1"># バージョン</span>
+<span class="nt">Version</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">1.1b</span>
+
+<span class="c1"># データ作成日、修正日、公開日</span>
+<span class="nt">DateCreated</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">2020-04-18</span>
+<span class="nt">DateModified</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">2020-04-20</span>
+<span class="nt">DatePublished</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">2020-04-19</span>
+
+<span class="c1"># DOI 等の識別子</span>
+<span class="nt">Identifier</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">https://doi.org/1234....</span>
+
+<span class="c1"># 関連文献等の情報</span>
+<span class="nt">Citation</span><span class="p">:</span> 
+</code></pre></div>
+
+
+<p>次に、記入したYAMLファイル（ここでは<code>my_dataset_info.yaml</code>）を用いて、データセットの公開ページ（index.html）を生成します。</p>
+<div class="codehilite"><pre><span></span><code><span class="err">[username@es1 ~]$ module load aws-cli</span>
+<span class="err">[username@es1 ~]$ aws --endpoint-url https://s3.abci.ai s3 cp s3://tools/generate_page generate_page</span>
+<span class="err">[username@es1 ~]$ chmod 755 generate_page</span>
+<span class="err">[username@es1 ~]$ wget -nv https://datasets.abci.ai/sha256sum.txt</span>
+<span class="err">2020-07-13 22:22:55 URL:https://datasets.abci.ai/sha256sum.txt [87/87] -&gt; &quot;sha256sum.txt&quot; [1]</span>
+<span class="err">[username@es1 ~]$ sha256sum -c sha256sum.txt</span>
+<span class="c">generate_page: OK</span>
+<span class="err">[username@es1 ~]$ ./generate_page my_dataset_info.yaml &gt; index.html</span>
+</code></pre></div>
+
+
+<p>HTMLファイルが問題なく生成されたら、データセットを公開しているバケットに、記入したYAMLファイルと生成したHTMLファイルの両方をアップロードして下さい。 <code>my_dataset_info.yaml</code> は違うファイル名でも問題ありません。エラーになって生成されない場合は、<a href="../../contact/">お問い合わせ</a>のページをご覧の上、<a href="&#109;&#97;&#105;&#108;&#116;&#111;&#58;&#113;&#97;&#64;&#97;&#98;&#99;&#105;&#46;&#97;&#105;">&#113;&#97;&#64;&#97;&#98;&#99;&#105;&#46;&#97;&#105;</a> までご連絡ください。</p>
+<div class="codehilite"><pre><span></span><code><span class="err">[username@es1 ~]$ aws --endpoint-url https://s3.abci.ai s3 cp --acl public-read my_dataset_info.yaml s3://example-dataset/my_dataset_info.yaml</span>
+<span class="err">[username@es1 ~]$ aws --endpoint-url https://s3.abci.ai s3 cp --acl public-read index.html s3://example-dataset/index.html</span>
+</code></pre></div>
+
+
+<p>アップロードしたHTMLファイルは、ブラウザから <code>https://example-dataset.s3.abci.ai/index.html</code> を開いて確認できます。以下の設定を行うと、<code>https://example-dataset.s3-website.abci.ai/</code> でも同じページが表示されるようになります。</p>
+<div class="codehilite"><pre><span></span><code><span class="err">[username@es1 ~]$ module load aws-cli</span>
+<span class="err">[username@es1 ~]$ aws --endpoint-url https://s3.abci.ai s3 website s3://example-dataset/ --index-document index.html</span>
+</code></pre></div>
+
+
+<p>なお、生成したHTMLファイルには、YAMLファイルに記入した情報が構造化データ (JSON-LD形式) として含まれています。データセットに関する基本情報を更新したい場合には再度、HTMLファイルの生成とアップロードを行って下さい。このファイルを直接変更したり、別のWebサイトに同等のページを用意したりすることも可能です。ただし、このファイルと同様の構造化データを保持するようにして下さい。</p>
+<p>上記がすべて完了したら、以下のフォーマットで <a href="&#109;&#97;&#105;&#108;&#116;&#111;&#58;&#97;&#98;&#99;&#105;&#45;&#97;&#112;&#112;&#108;&#105;&#99;&#97;&#116;&#105;&#111;&#110;&#45;&#109;&#108;&#64;&#97;&#105;&#115;&#116;&#46;&#103;&#111;&#46;&#106;&#112;">&#97;&#98;&#99;&#105;&#45;&#97;&#112;&#112;&#108;&#105;&#99;&#97;&#116;&#105;&#111;&#110;&#45;&#109;&#108;&#64;&#97;&#105;&#115;&#116;&#46;&#103;&#111;&#46;&#106;&#112;</a> までお知らせ下さい。複数のABCIグループに所属している場合、データセットがアップロードされているバケットを所有しているABCIグループを記載して下さい。</p>
+<div class="codehilite"><pre><span></span><code>Subject: データセットの公開(&lt;データセット名&gt;)
+
+申請者の氏名: 
+ABCIグループ: 
+申請者のメールアドレス: 
+アップロードしたHTMLファイルのURL: 
+アップロードしたYAMLファイルのURL: 
+</code></pre></div>
+
+
+<p>登録が完了したデータセットは <a href="https://datasets.abci.ai/">https://datasets.abci.ai/</a> に一覧表示されます。</p>
+                
+                  
+                
+                
+              
+              
+                
+
+
+              
+            </article>
+          </div>
+        </div>
+      </main>
+      
+        
+<footer class="md-footer">
+  
+    <div class="md-footer-nav">
+      <nav class="md-footer-nav__inner md-grid">
+        
+          <a href="../policy/" title="アクセス制御(2)" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev">
+            <div class="md-flex__cell md-flex__cell--shrink">
+              <i class="md-icon md-icon--arrow-back md-footer-nav__button"></i>
+            </div>
+            <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
+              <span class="md-flex__ellipsis">
+                <span class="md-footer-nav__direction">
+                  前
+                </span>
+                アクセス制御(2)
+              </span>
+            </div>
+          </a>
+        
+        
+          <a href="../../abci-singularity-endpoint/" title="ABCI Singularity エンドポイント" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next">
+            <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
+              <span class="md-flex__ellipsis">
+                <span class="md-footer-nav__direction">
+                  次
+                </span>
+                ABCI Singularity エンドポイント
+              </span>
+            </div>
+            <div class="md-flex__cell md-flex__cell--shrink">
+              <i class="md-icon md-icon--arrow-forward md-footer-nav__button"></i>
+            </div>
+          </a>
+        
+      </nav>
+    </div>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-footer-copyright">
+        
+          <div class="md-footer-copyright__highlight">
+            Copyright &copy; 2018 National Institute of Advanced Industrial Science and Technology (AIST)
+          </div>
+        
+        powered by
+        <a href="https://www.mkdocs.org" target="_blank" rel="noopener">MkDocs</a>
+        and
+        <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+          Material for MkDocs</a>
+      </div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    
+      <script src="../../assets/javascripts/application.c33a9706.js"></script>
+      
+        
+        
+          
+          <script src="../../assets/javascripts/lunr/lunr.stemmer.support.js"></script>
+          
+            
+              
+                <script src="../../assets/javascripts/lunr/tinyseg.js"></script>
+              
+              
+                <script src="../../assets/javascripts/lunr/lunr.ja.js"></script>
+              
+            
+          
+          
+        
+      
+      <script>app.initialize({version:"1.1.2",url:{base:"../.."}})</script>
+      
+    
+  </body>
+</html>
