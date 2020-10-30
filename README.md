@@ -26,6 +26,7 @@ You can clone the repository to your local environment and run the builtin devel
 ```
 $ pip install mkdocs
 $ pip install "mkdocs-material<5"
+$ pip install ghp-import # for deployment to GitHub pages
 $ git clone https://github.com/aistairc/abci-docs.git
 $ cd abci-docs
 $ cd root/ or ja/ or en/
@@ -39,13 +40,18 @@ And, open 'http://127.0.0.1:8000/' using a web browser.
 To generate the static versions of documents:
 
 ```
-$ make -f site.mk
+$ make -f site.mk build
 (static files are generated under site/ directory)
 ```
 
 And, to deploy and publish generated documents to `gh-pages` branch:
 
 ```
-$ pip install ghp-import
-$ ghp-import -c docs.abci.ai -r origin -b gh-pages -p site
+$ ghp-import -m "(specific message)" -c docs.abci.ai -r origin -b gh-pages -p site
+```
+
+or, just run:
+
+```
+$ make -f site.mk publish
 ```
