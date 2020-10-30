@@ -53,5 +53,5 @@ $ ghp-import -m "(specific message)" -c docs.abci.ai -r origin -b gh-pages -p si
 or, just run:
 
 ```
-$ make -f site.mk publish
+$ make -f site.mk publish-head
 ```
