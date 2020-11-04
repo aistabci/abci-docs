@@ -187,7 +187,7 @@ $ module load hadoop/2.9.1
 Example) Running Hadoop on compute nodes.
 
 ```
-[username@es1 ~]$ qrsh -l rt_F=1
+[username@es1 ~]$ qrsh -l rt_F=1 -l h_rt=1:00:00
 [username@g0001~]$ module load openjdk/1.8.0.131
 [username@g0001~]$ module load hadoop/2.9.1
 [username@g0001~]$ mkdir input

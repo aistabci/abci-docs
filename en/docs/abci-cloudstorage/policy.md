@@ -28,7 +28,7 @@ For Effect, 'Allow' and 'Deny' are available to define rules.
 
 For Action, restrictions against requests or actions are written. As for downloading objects, for example, specify 's3:GetObject.' Wildcards (e.g. s3:*) are also available.
 
-Action：
+Action:
 
 * Bucket
 

@@ -1,5 +1,5 @@
-site_name: ABCI Users Guide
-site_description: ABCI Users Guide, English version
+site_name: ABCI User Guide
+site_description: ABCI User Guide, English version
 site_author: AIST
 site_url: https://docs.abci.ai/en/
 repo_url: https://github.com/aistairc/abci-docs
@@ -10,7 +10,7 @@ google_analytics:
   - 'auto'
 nav:
   - 'Introduction': 'index.md'
-  - 'Users Guide':
+  - 'User Guide':
     - '1. ABCI System Overview': '01.md'
     - '2. ABCI System User Environment': '02.md'
     - '3. Job Execution Environment': '03.md'
@@ -21,22 +21,27 @@ nav:
     - '8. MPI': '08.md'
     - '9. Linux Containers': '09.md'
     - '10. Software Development Environment': '10.md'
-    - 'Appendix 1. Configuration of Installed Software': 'appendix1.md'
-    - 'Appendix 2. Use of ABCI System for HPCI ': 'appendix2.md'
+    - 'Appendix. Configuration of Installed Software': 'appendix/installed-software.md'
+    - 'Appendix. Using ABCI with HPCI': 'appendix/using-abci-with-hpci.md'
+    - 'Appendix. Communications with External Networks': 'appendix/external-networks.md'
   - 'Applications':
     - 'Overview': 'apps/index.md'
     - 'TensorFlow': 'apps/tensorflow.md'
+    - 'TensorFlow Keras': 'apps/tensorflow-keras.md'
+    - 'PyTorch': 'apps/pytorch.md'
+    - 'MXNet': 'apps/mxnet.md'
     - 'Chainer': 'apps/chainer.md'
     - 'Others': 'apps/others.md'
   - 'Tips':
     - 'Remote Desktop': 'tips/remote-desktop.md'
     - 'AWS CLI': 'tips/awscli.md'
-    - 'GCC 7.3.0': 'tips/gcc-7.3.0.md'
     - 'PuTTY': 'tips/putty.md'
     - 'Jupyter Notebook': 'tips/jupyter-notebook.md'
     - 'Singularity Global Client': 'tips/sregistry-cli.md'
     - 'Spack': 'tips/spack.md'
-  - 'NVIDIA GPU Cloud (NGC)': 'ngc.md'
+    - 'Datasets': 'tips/datasets.md'
+    - 'Amazon ECR': 'tips/dl-amazon-ecr.md'
+  - 'NVIDIA NGC': 'ngc.md'
   - 'ABCI Cloud Storage':
     - 'Overview': 'abci-cloudstorage.md'
     - 'Accounts and Access keys': 'abci-cloudstorage/cs-account.md'
@@ -48,6 +53,7 @@ nav:
   - 'Known Issues': 'known-issues.md'
   - 'System Updates': 'system-updates.md'
   - 'Operation Status': 'https://abci.ai/en/about_abci/info.html'
+  - 'Contact': 'contact.md'
   - 'Links':
     - 'ABCI Web page': 'https://abci.ai/'
     - 'ABCI User Portal Guide': 'https://docs.abci.ai/portal/en/'
@@ -56,8 +62,8 @@ nav:
   - 'Japanese version': 'https://docs.abci.ai/ja/'
 theme:
   name: 'material'
-  logo:
-    icon: 'cloud'
+  favicon: 'img/favicon.png'
+  logo: 'img/logo.png'
   language: 'en'
   palette:
     primary: 'red'
@@ -68,3 +74,4 @@ markdown_extensions:
   - admonition
   - codehilite
   - attr_list
+  - footnotes

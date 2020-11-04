@@ -108,8 +108,7 @@ By setting ACL to private as following, user can retrieve default ACL setting.
 [username@es1 ~]$ aws --endpoint-url https://s3.abci.ai s3api put-object-acl --acl private --bucket test-share --key test/testdata
 ```
 
-!!! caution
-    Due to bug in ACL, do not use write permission for other groups. Check [here](../known-issues.md) for support status.
+When a user not belonging to your ABCI group puts objects on your bucket, your ABCI group is charged for them.
 
 ### Open to All Accounts on ABCI Cloud Storage
 
@@ -134,7 +133,7 @@ Two standard ACLs open buckets and objects to the public, which enable any inter
 !!! caution
     Before you grant read access to everyone in the world, please read the following agreements carefully, and make sure it is appropriate to do so.
     
-    * [ABCI agreement and rules](https://abci.ai/en/how_to_use/)
+    * [ABCI Agreement and Rules](https://abci.ai/en/how_to_use/)
     * [ABCI Cloud Storage Terms of Use](https://abci.ai/en/how_to_use/data/cloudstorage-agreement.pdf)
 
 !!! caution

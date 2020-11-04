@@ -1,9 +1,12 @@
 # Introduction
 
-This Users Guide explains how to use "[AI Bridging Cloud Infrastructure (ABCI)](https://abci.ai/)" introduced by [National Institute of Advanced Industrial Science and Technology (AIST)](https://www.aist.go.jp/index_en.html).
-All users who use this system are strongly recommended to read this document, as this is helpful to gain better understanding of the system.
+[AI Bridging Cloud Infrastructure (ABCI)](https://abci.ai/), is an open computing infrastructure for both developing AI technology and bridging AI technology into the industry and the real world, constructed and operated by [National Institute of Advanced Industrial Science and Technology (AIST)](https://www.aist.go.jp/index_en.html). ABCI started full-scale operation in August 2018.
 
-  - Users Guide:
+![ABCI Overview](img/abci_dc.jpg)
+
+This User Guide describes the technical details of ABCI and how to use it. All users who use ABCI are strongly recommended to read this document, as it is helpful to gain better understanding of the system.
+
+  - User Guide:
     - [1. ABCI System Overview](01.md)
     - [2. ABCI System User Environment](02.md)
     - [3. Job Execution Environment](03.md)
@@ -15,21 +18,27 @@ All users who use this system are strongly recommended to read this document, as
     - [9. Linux Containers](09.md)
     - [10. Software Development Environment](10.md)
     - [11. Application Framework](11.md)
-    - [Appendix 1. Configuration of Installed Software](appendix1.md)
-    - [Appendix 2. Use of ABCI System for HPCI ](appendix2.md)
+    - [Appendix. Configuration of Installed Software](appendix/installed-software.md)
+    - [Appendix. Using ABCI with HPCI](appendix/using-abci-with-hpci.md)
+    - [Appendix. Communications with External Networks](appendix/external-networks.md)
   - Applications:
     - [Overview](apps/index.md)
     - [TensorFlow](apps/tensorflow.md)
+    - [TensorFlow Keras](apps/tensorflow-keras.md)
+    - [PyTorch](apps/pytorch.md)
+    - [MXNet](apps/mxnet.md)
     - [Chainer](apps/chainer.md)
     - [Others](apps/others.md)
   - Tips
     - [Remote Desktop](tips/remote-desktop.md)
     - [AWS CLI](tips/awscli.md)
-    - [GCC 7.3.0](tips/gcc-7.3.0.md)
     - [PuTTY](tips/putty.md)
     - [Jupyter Notebook](tips/jupyter-notebook.md)
     - [Singularity Global Client](tips/sregistry-cli.md)
-  - [NVIDIA GPU Cloud (NGC)](ngc.md)
+    - [Spack](tips/spack.md)
+    - [Datasets](tips/datasets.md)
+    - [Amazon ECR](tips/dl-amazon-ecr.md)
+  - [NVIDIA NGC](ngc.md)
   - ABCI Cloud Storage:
     - [Overview](abci-cloudstorage.md)
     - [Accounts and Access keys](abci-cloudstorage/cs-account.md)
@@ -41,3 +50,4 @@ All users who use this system are strongly recommended to read this document, as
   - [Known Issues](known-issues.md)
   - [System Updates](system-updates.md)
   - [Operation Status](https://abci.ai/en/about_abci/info.html)
+  - [Contact](contact.md)
