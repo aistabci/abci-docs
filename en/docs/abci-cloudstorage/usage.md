@@ -44,6 +44,19 @@ The configuration is stored in the home directory(i.e. ~/.aws). Therefore, it is
 
 To reissuing or deleting Access Keys, use ABCI User Portal.
 
+## Notes on failed data uploads (Use Multipart Upload)
+
+ABCI Cloud Storage supports Multipart Uload (MPU), which speeds up uploads by sending splite data during uploads.
+MPU is effective for data over the data size defined in the client application, for example, aws-cli, MPU is applied by default for the data size of 8MB or more.
+When uploading data using MPU, the divided data is first stored in a temporary area on the server and then moved to the specified path as an object after the upload is complete.
+
+Here, the above temporary area is subject to accounting, so you need to be careful when MPU fails.
+Such a situation does not occur with properly stopped the operation for example, stop aws-cli with 'CTRL-C', but may occur when the client is aborted or communication is unexpectedly disconnected.
+
+
+In the case of aws-cli, such a situation does not occur when the operation between the client and the server is stopped properly with CTRL-C etc., but it occurs due to the forced termination of the client, unexpected communication disconnection, etc. There is a possibility.
+If MPU fails, the data stored in the temporary area is not automatically deleted, so please delete it yourself. The removal operation is described in the following procedure 'Aborting Multipart Upload'.
+
 ## Operations
 
 This section explains basic operations, such as creating buckets and uploading data and so forth.
@@ -227,7 +240,7 @@ download: s3://sensor3/rev1/0002.zip to testdata/0002.zip
 
 ### Delete Object
 
-To delete a object, use `aws s3 rm <S3Uri> [parameters]`
+To delete an object, use `aws s3 rm <S3Uri> [parameters]`
 
 For example 
 ```
@@ -292,6 +305,45 @@ To display object owner, use the `s3api get-object-acl` command. As shown in the
     ]
 }
 ```
+
+### Listing Multipart Upload
+
+To check the data uploaded from the file system by MPU, use the `s3api list-multipart-uploads` command with the bucket name at the time of upload. If there is no data left, nothing is displayed.
+The following example shows data remaining on the server when aws-cli on the client side was killed while uploading the object named "data_10gib-1.dat" to 's3://Bucket/Testdata'.
+The path and object name are displayed in `Key`.
+
+```
+[username@es1 ~]$ aws --endpoint-url https://s3.abci.ai s3api list-multipart-uploads --bucket BUCKET
+{
+    "Uploads": [
+        {
+            "UploadId": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+            "Key": "Testdata/data_10gib-1.dat",
+            "Initiated": "2019-11-12T09:58:16.242000+00:00",
+            "StorageClass": "STANDARD",
+            "Owner": {
+                "DisplayName": "ABCI GROUP",
+                "ID": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb"
+            },
+            "Initiator": {
+                "ID": "arn:aws:iam::123456789123:user/USERNAME",
+                "DisplayName": "USERNAME"
+            }
+        }
+    ]
+}
+```
+
+### Aborting Multipart Upload
+
+To abort the MPU, specify `UploadId` and `Key` of the target upload in `s3api abort -multipart -upload` command. You can see `UploadId` and `Key` in 'Listing Multipart Upload' above. If the command succeeds, the prompt is returned.
+Also, the data remaining in the temporary area when MPU fails is deleted.
+
+```
+[username@es1 ~]$ aws --endpoint-url https://s3.abci.ai s3api abort-multipart-upload --bucket Testdata --key Testdata/data_10gib-1.dat --upload-id aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+[username@es1 ~]$
+```
+
 
 <!--  Is s3fs-fuse another ?  -->
 

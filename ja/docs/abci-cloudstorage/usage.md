@@ -17,8 +17,8 @@ ABCI以外（手元のPC等）では、[こちら](https://github.com/aws/aws-cl
 ## 認証情報などの設定
 
 ABCIクラウドストレージへのアクセスは、ABCIアカウントとは別のクラウドストレージアカウントを用います。アカウントは複数持つことができ、それぞれにアクセスキー(アクセスキー ID とシークレットアクセスキーのペア)が対応しています。複数のABCIグループに所属しており、それぞれクラウドストレージを利用している場合は、それぞれのクラウドストレージアカウントが発行されます。初回は次のように、そのアクセスキーを AWS CLI に設定する作業が必要です。region name には、 `us-east-1` を設定してください。
-```
 [username@es1 ~]$ aws configure
+```
 AWS Access Key ID [None]: ACCESS-KEY-ID
 AWS Secret Access Key [None]: SECRET-ACCESS-KEY
 Default region name [None]: us-east-1
@@ -43,6 +43,17 @@ Default output format [None]:(入力不要)
 設定はホームディレクトリ(~/.aws)に保存されるため、インタラクティブノードで設定していれば、計算ノードで改めて行う必要はありません。
 
 アクセスキーの再発行や削除は、ABCI利用ポータルから行います。
+
+## データアップロード失敗時 （Multipart Upload を使用) の注意
+
+ABCIクラウドストレージは、データアップロード時にデータを分割して送信することでアップロードを高速化する Multipart Uload (MPU) に対応しています。
+MPU は、クライアントアプリで定義されるデータサイズを超過するデータに対して有効となり、例えば aws-cli の場合は、デフォルトで 8 MB を超過するデータのアップロードに対して MPU が適用されます。
+MPU を使用したデータのアップロードでは、分割されたデータはまずサーバの一時領域に格納され、アップロードが完了した後に指定のパスに完全なオブジェクトとして移動されます。
+
+ここで、上述の一時領域は課金の対象となるため、MPU に失敗した時に注意が必要です。
+このような状況は、aws-cli であれば CTRL-C などでクライアントとサーバ間の動作を適切に停止する場合には発生しませんが、クライアントの強制終了、予期せぬ通信切断などで発生する可能性があります。
+MPU に失敗した時は、一時領域に保存されたデータは自動削除されないため、利用者自信で削除を実施してください。
+この削除手順については、後述の操作 "マルチパートアップロードの中止" で説明します。
 
 ## 各種操作
 
@@ -291,6 +302,43 @@ remove_bucket: dataset-c0542
     ]
 }
 ```
+
+### マルチパートアップロードの一覧表示
+
+MPU でファイルシステムからアップロードしたデータは、`s3api list-multipart-uploads` コマンドにアップロード時のバケットを指定して、確認することができます。データが残っていない場合は何も表示されません。
+以下の例は、オブジェクト名 data_10gib-1.dat を s3://Bucket/testdata にアップロード途中に、クライアント側の aws-cli を kill したことでサーバにデータが残った時の例です。`Key` にバケット以下のパスとオブジェクト名が表示されます。
+```
+[username@es1 ~]$ aws --endpoint-url https://s3.abci.ai s3api list-multipart-uploads --bucket BUCKET
+{
+    "Uploads": [
+        {
+            "UploadId": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+            "Key": "Testdata/data_10gib-1.dat",
+            "Initiated": "2019-11-12T09:58:16.242000+00:00",
+            "StorageClass": "STANDARD",
+            "Owner": {
+                "DisplayName": "ABCI GROUP",
+                "ID": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb"
+            },
+            "Initiator": {
+                "ID": "arn:aws:iam::123456789123:user/USERNAME",
+                "DisplayName": "USERNAME"
+            }
+        }
+    ]
+}
+```
+
+### マルチパートアップロードの中止
+
+MPU の中止は、`s3api abort-multipart-upload` コマンドに対象アップロードの `UploadId` と `Key` を指定します。`UploadId` と `Key` は上述「マルチパートアップロードの一覧表示」で確認できます。コマンドが成功すると、プロンプトが返ります。
+また、MPU に失敗した時に残った一時保存領域のデータも削除されます。
+```
+[username@es1 ~]$ aws --endpoint-url https://s3.abci.ai s3api abort-multipart-upload --bucket Bucket --key Testdata/data_10gib-1.dat --upload-id aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+[username@es1 ~]$
+```
+
+
 
 <!--  s3fs-fuse は別?  -->
 
