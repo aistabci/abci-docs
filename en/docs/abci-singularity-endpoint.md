@@ -6,7 +6,7 @@
 ABCI Singularity Endpoint provides a singularity container service available within ABCI. This service consists of Remote Builder for remotely building container images using SingularityPRO and Container Library for storing and sharing the created container images. This service is available only within ABCI and cannot be accessed directly from outside of ABCI.
 
 !!! warning
-    Container Library is an Experimental service. In particularly, it is not possible to upload container images larger than 64 MB.
+    Container Library is an Experimental service. In particular, it is not possible to upload container images larger than 64 MB.
 
 The following describes the basic operations for using this service in ABCI. See Sylabs [Document](https://sylabs.io/docs/) for more information.
 
@@ -78,11 +78,11 @@ INFO:    API Key Verified!
 When you have created an access token again, use the above command to register it. The old access token is overwritten by the new one.
 
 !!! note
-    Access tokens currently expire in one month. When your access token has expired, create and register again.
+    Access tokens currently expire in one month. When your access token has expired, create and register another access token again.
 
 ## Remote Builder
 
-First, create a definition file to build the container image. The following example is definition of adding package to the container and executed command when the container run, based on Ubuntu container image from Docker HUB. For more information about definition files, see [Definition Files](https://repo.sylabs.io/c/0f6898986ad0b646b5ce6deba21781ac62cb7e0a86a5153bbb31732ee6593f43/guides/singularitypro35-user-guide/definition_files.html).
+First, create a definition file to build a container image. The following example defines installation of additional packages to the container image and commands to be executed when the container image is run, based on Ubuntu container image from Docker Hub. For more information about definition files, see [Definition Files](https://repo.sylabs.io/c/0f6898986ad0b646b5ce6deba21781ac62cb7e0a86a5153bbb31732ee6593f43/guides/singularitypro35-user-guide/definition_files.html).
 
 ```
 [username@es1 ~]$ vi ubuntu.def
@@ -115,7 +115,7 @@ INFO:    Build complete: ubuntu.sif
 [username@es1 ~]$ 
 ```
 
-As a test, the following example is to run the container image with `singularity run` command. The `lsb_release -d` command specified in the definition file is executed and the result is printed.
+You can run the container image with `singularity run` command as follows:
 
 ```
 [username@es1 ~]$ qrsh -g grpname -l rt_C.small=1 -l h_rt=1:00:00
@@ -125,20 +125,23 @@ Description:	Ubuntu 18.04.5 LTS
 [username@g0001 ~]$ 
 ```
 
+The `lsb_release -d` command specified in the definition file is executed and the result is printed.
+
 ## Container Library (Experimental)
 
 You can push your container images to Container Library and make those available to other ABCI users. Each user can store up to a total of 100 GiB.
 
 !!! note
-    Container images pushed to the Container Library cannot be configured for access control. This means that anyone who uses ABCI will be able to access it, so make sure the container images are appropriate.
-    
-### Current Restriction
-* Uploading a container image of 64 MiB or more is not allowed, but you can create a container image in a remote build.
+    There is no access control function for the container images pushed to Container Library. This means that anyone who uses ABCI will be able to access them, so make sure the container images are appropriate.
+
+### Current Restrictions
+
+* Uploading a container image of 64 MiB or more is not possible, but you can create a container image in a remote build.
 * You cannot get a list of uploaded container images.
 
 ### Creating and Registering Signing Keys for a Container Image
 
-To push a container image to the Container Library and publish it in ABCI, create a key pair and register the public key in Keystore.The author of the container image can sign the container image using the private key, and the user of the container image can verify the signature using the public key registered in the Keystore.
+To push a container image to Container Library and publish it in ABCI, create a key pair and register the public key in Keystore.The author of the container image can sign the container image using the private key, and the user of the container image can verify the signature using the public key registered in Keystore.
 
 #### Creating Key Pairs
 
@@ -159,15 +162,15 @@ Each input value is described as follows:
 
 | item | value |
 | :-- | :-- |
-| Enter your name | enter the ABCI account name. |
+| Enter your name | Enter the ABCI account name. |
 | Enter your email address | Although it says email address, enter the ABCI account name. |
 | Enter optional comment | Enter comments you want to attach to this key pair. |
-| Enter a passphrase | Determine your passphrase and enter it. This is necessary when signing a container image. |
+| Enter a passphrase | Determine your passphrase and enter it. It is going to be necessary when signing a container image. |
 | Would you like to push it to the keystore? | Enter `Y` to upload the public key to Keystore. |
 
-#### List Keys
+#### Listing Keys
 
-To get information about the public keys including ones you created, use `singularity key list`.
+To retrieve information about the public keys in your local keyring, including ones you created, use `singularity key list`.
 
 ```
 [username@es1 ~]$ singularity key list
@@ -183,7 +186,7 @@ Public key listing (/home/username/.singularity/sypgp/pgp-public):
 [username@es1 ~]$
 ```
 
-To retrieve key information registered in the Keystore, specify the ABCI account in `singularity key search -l`.
+To retrieve key information registered in Keystore, specify the ABCI account in `singularity key search -l`.
 
 ```
 [username@es1 ~]$ singularity key search -l username
@@ -195,12 +198,12 @@ YYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYY  RSA        4096  2020-06-15 03:40:05 +
 [username@es1 ~]$
 ```
 
-#### Registering a Public Key in the Keystore
+#### Registering a Public Key in Keystore
 
-If you did not specify upload to the Keystore when you created the key pair, you can upload it later.
+If you did not specify the option to upload a public key to Keystore, you can upload it later.
 
 !!! warning
-    Public keys registered in the Keystore cannot be deleted.
+    Public keys registered in Keystore cannot be deleted.
 
 ```
 [username@es1 ~]$ singularity key list
@@ -225,9 +228,9 @@ FINGERPRINT                               ALGORITHM  BITS  CREATION DATE        
 ZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZ  RSA        4096  2020-06-15 03:40:05 +0900 JST  [ultimate]       [enabled]  username (comment) <username>
 ```
 
-#### Getting Public Keys Registered in the Keystore
+#### Getting Public Keys Registered in Keystore
 
-Public keys registered in the Keystore can be downloaded and stored in your keyring. The following example downloads and saves the public key found by searching for username2. You can also search for a string that matches the comment attached to the key. The last parameter of `singularity key pull AAAA....` is a fingerprint to specify which public key to download.
+Public keys registered in Keystore can be downloaded and stored in your keyring. The following example downloads and saves the public key found by searching for username2. You can also search for a string that matches the comment attached to the key. The last parameter of `singularity key pull AAAA....` is a fingerprint to specify which public key to download.
 
 ```bash hl_lines="1 7 9"
 [username@es1 ~]$ singularity key search -l username2
@@ -251,7 +254,7 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA  RSA        4096  2020-06-22 11:51:45 +
 
 #### Deleting Keys
 
-You can remove a public key from your keyring by specifying a key fingerprint using `singularity key remove` command. Public keys registered in the Keystore cannot be deleted.
+You can remove a public key from your keyring by specifying a key fingerprint using `singularity key remove` command. Public keys registered in Keystore cannot be deleted.
 
 ```
 [username@es1 ~]$ singularity key remove AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
@@ -280,7 +283,7 @@ Enter key passphrase :
 Signature created and applied to ./ubuntu.sif
 ```
 
-The location of container images in the Container Library is represented by a URI `library://username/collection/container:tag`. Refer to the description of each component below to determine the URI.
+The location of container images in Container Library is represented by a URI `library://username/collection/container:tag`. Refer to the description of each component below to determine the URI.
 
 | item | value |
 | :-- | :-- |
@@ -300,7 +303,7 @@ INFO:    Container is trusted - run 'singularity key list' to list your trusted 
 
 ### Pulling container image
 
-The container image uploaded to the Container Library can be downloaded as follows:
+The container image uploaded to Container Library can be downloaded as follows:
 
 ```
 [username@es1 ~]$ singularity pull library://username/abci-lib/ubuntu:latest
@@ -317,7 +320,7 @@ WARNING: Skipping container verification
 ```
 
 You can also use `singularity verify` to verify the signature after downloading it. 
-The following example validates the signature with the public key that is registered in the Keystore. The output is `LOCAL` rather than `REMOTE` if it is verified with the public key registered in your keyring. If it cannot be verified, a WARNING message is printed.
+The following example validates the signature with the public key that is registered in Keystore. The output is `LOCAL` rather than `REMOTE` if it is verified with the public key registered in your keyring. If it cannot be verified, a WARNING message is printed.
 
 ```
 [username@es1 ~]$ singularity verify ubuntu_latest.sif
@@ -338,7 +341,7 @@ Container verified: ubuntu_latest.sif
 
 ### Searching Container Image
 
-To search for container images uploaded to the Container Library by keyword, use `singularity search`.
+To search for container images uploaded to Container Library by keyword, use `singularity search`.
 
 ```
 [username@es1 ~]$ singularity search hello
@@ -354,13 +357,8 @@ Found 1 containers for 'hello'
 
 ### Deleting Container Image
 
-To delete container images uploaded to the Container Library, use `singularity delete`.
+To delete container images uploaded to Container Library, use `singularity delete`.
 
 ```
 [username@es1 ~]$ singularity delete library://username/abci-lib/helloworld:latest
 ```
-
-
-
-
-
