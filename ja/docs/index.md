@@ -1,17 +1,20 @@
 # はじめに
 
-このガイドは、[国立研究開発法人 産業技術総合研究所](https://www.aist.go.jp/)が運営するクラウド型計算システム「[AI橋渡しクラウド（AI Bridging Cloud Infrastructure、以下「ABCI」という）](https://abci.ai/ja/)」の利用方法について説明した資料です。
-システムを利用する方は、ご一読ください。
+[AI橋渡しクラウド（AI Bridging Cloud Infrastructure、以下「ABCI」という）](https://abci.ai/ja/)は、[国立研究開発法人 産業技術総合研究所](https://www.aist.go.jp/)が構築・運用する、AI技術開発・橋渡しのためのオープンな計算インフラストラクチャです。ABCIは、2018年8月に本格運用を開始しました。
+
+![ABCI Overview](img/abci_dc.jpg)
+
+このユーザガイドは、ABCIの技術的詳細や利用方法について説明しています。ABCIを利用する方は是非ご一読ください。ABCIシステムについての理解を深めるのに役立ちます。
 
   - 利用手引き:
     - [1. ABCIシステムの概要](01.md)
     - [2. ABCIシステム利用環境](02.md)
     - [3. ジョブ実行環境](03.md)
     - [4. ストレージ](04.md)
-    - [5. Environment Modulesの利用](05.md)
-    - [6. Pythonの利用](06.md)
-    - [7. GPUの利用](07.md)
-    - [8. MPIの利用](08.md)
+    - [5. Environment Modules](05.md)
+    - [6. Python](06.md)
+    - [7. GPU](07.md)
+    - [8. MPI](08.md)
     - [9. Linuxコンテナ](09.md)
     - [10. プログラム開発環境](10.md)
     - [付録. インストール済みソフトウェアの構成](appendix/installed-software.md)
@@ -20,6 +23,9 @@
   - 各種アプリケーション:
     - [概要](apps/index.md)
     - [TensorFlow](apps/tensorflow.md)
+    - [TensorFlow Keras](apps/tensorflow-keras.md)
+    - [PyTorch](apps/pytorch.md)
+    - [MXNet](apps/mxnet.md)
     - [Chainer](apps/chainer.md)
     - [その他](apps/others.md)
   - Tips:
@@ -38,8 +44,9 @@
     - [アカウントとアクセスキー](abci-cloudstorage/cs-account.md)
     - [使い方](abci-cloudstorage/usage.md)
     - [データの暗号化](abci-cloudstorage/encryption.md)
-    - [アクセス制御（1）](abci-cloudstorage/acl.md)
-    - [アクセス制御（2）](abci-cloudstorage/policy.md)
+    - [アクセス制御(1)](abci-cloudstorage/acl.md)
+    - [アクセス制御(2)](abci-cloudstorage/policy.md)
+    - [データセットの公開](abci-cloudstorage/publishing-datasets.md)
   - [ABCI Singularity エンドポイント](abci-singularity-endpoint.md)
   - [FAQ](faq.md)
   - [既知の問題](known-issues.md)

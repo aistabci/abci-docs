@@ -43,3 +43,5 @@ site_pdf/
 /deploy.sh
 /deploy_pdf.sh
 /make_pdf.sh
+
+.python-version

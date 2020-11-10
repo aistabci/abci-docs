@@ -1,5 +1,11 @@
 # System Updates
 
+## 2020-10-09
+
+| Add / Update / Delete | Software | Version | Previous version |
+|:--|:--|:--|:--|
+| Update | SingularityPRO | 3.5-4 | 3.5-2 |
+
 ## 2020-08-31
 
 | Add / Update / Delete | Software | Version | Previous version |
@@ -10,7 +16,7 @@
 
 | Add / Update / Delete | Software | Version | Previous version |
 |:--|:--|:--|:--|
-| Add | SingularityPRO | 3.5 | |
+| Add | SingularityPRO | 3.5-2 | |
 | Add | cuDNN | [8.0.2](https://docs.nvidia.com/deeplearning/sdk/cudnn-release-notes/rel_8.html#rel-802) | |
 | Add | NCCL | [2.7.8-1](https://docs.nvidia.com/deeplearning/nccl/release-notes/rel_2-7-8.html) | |
 | Add | mvapich2-gdr | 2.3.4 | |
@@ -91,7 +97,7 @@ If you need MVAPICH2-GDR for PGI, please contact Customer Support.
 
 Other fixes are as follows:
 
-* Add [Memory Intensive Node](01.md#memory-intensive--node-configuration)
+* Add [Memory-Intensive Node](01.md#memory-intensive-node)
 
 ## 2019-11-06
 

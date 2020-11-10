@@ -1,5 +1,5 @@
-site_name: ABCI Users Guide
-site_description: ABCI Users Guide, English version
+site_name: ABCI User Guide
+site_description: ABCI User Guide, English version
 site_author: AIST
 site_url: https://docs.abci.ai/en/
 repo_url: https://github.com/aistairc/abci-docs
@@ -10,7 +10,7 @@ google_analytics:
   - 'auto'
 nav:
   - 'Introduction': 'index.md'
-  - 'Users Guide':
+  - 'User Guide':
     - '1. ABCI System Overview': '01.md'
     - '2. ABCI System User Environment': '02.md'
     - '3. Job Execution Environment': '03.md'
@@ -27,6 +27,9 @@ nav:
   - 'Applications':
     - 'Overview': 'apps/index.md'
     - 'TensorFlow': 'apps/tensorflow.md'
+    - 'TensorFlow Keras': 'apps/tensorflow-keras.md'
+    - 'PyTorch': 'apps/pytorch.md'
+    - 'MXNet': 'apps/mxnet.md'
     - 'Chainer': 'apps/chainer.md'
     - 'Others': 'apps/others.md'
   - 'Tips':
@@ -60,8 +63,8 @@ nav:
   - 'Japanese version': 'https://docs.abci.ai/ja/'
 theme:
   name: 'material'
-  logo:
-    icon: 'cloud'
+  favicon: 'img/favicon.png'
+  logo: 'img/logo.png'
   language: 'en'
   palette:
     primary: 'red'
@@ -72,3 +75,4 @@ markdown_extensions:
   - admonition
   - codehilite
   - attr_list
+  - footnotes

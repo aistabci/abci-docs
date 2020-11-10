@@ -15,14 +15,15 @@ nav:
   - '3. User Management Authority': '03.md'
   - 'Links':
     - 'ABCI Web page': 'https://abci.ai/'
-    - 'ABCI Users Guide': 'https://docs.abci.ai/en/'
+    - 'ABCI User Guide': 'https://docs.abci.ai/en/'
     - 'ABCI User Portal (Registration)': 'https://portal.abci.ai/user/project_register_app.php?lang=en'
     - 'ABCI User Portal (Login)':  'https://portal.abci.ai/user/login.php?lang=en'
   - 'Japanese version': 'https://docs.abci.ai/portal/ja/'
 theme:
   name: 'material'
-  logo:
-    icon: 'cloud'
+  favicon: 'img/favicon.png'
+  logo: 'img/logo.png'
+  language: 'en'
   palette:
     primary: 'blue'
     accent: 'blue'
