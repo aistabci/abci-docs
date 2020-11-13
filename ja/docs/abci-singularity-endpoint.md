@@ -189,7 +189,7 @@ Generating Entity and OpenPGP Key Pair... done
 
 #### 鍵の一覧表示
 
-`singularity key list` を実行すると、作成した鍵も含め、ローカルのキーリングに入っている公開鍵の情報を確認できます。
+`singularity key list` を実行すると、作成した鍵も含め、ローカルの鍵リングに入っている公開鍵の情報を確認できます。
 
 ```
 [username@es1 ~]$ singularity key list

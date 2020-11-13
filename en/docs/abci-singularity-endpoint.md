@@ -260,11 +260,11 @@ You can remove a public key from your keyring by specifying a key fingerprint us
 [username@es1 ~]$ singularity key remove AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
 ```
 
-### Upload Container Image
+### Uploading Container Images
 
-Before uploading to Container Library, sign the container image.
-Check the key number with `singularity key list -s`, and sign the container with `singularity sign` command specified the key number by `-k` option.
-The following example uses the second key to sign `ubuntunt.sif`.
+Before uploading a container image to Container Library, sign the container image.
+Check the key number by using the `singularity key list -s` command, and sign the container by using the `singularity sign` command with the `-k` option to specify the key number.
+The following example uses the second key to sign `ubuntu.sif`.
 
 ```bash hl_lines="1 11"
 [username@es1 ~]$ singularity key list -s
@@ -292,7 +292,7 @@ The location of container images in Container Library is represented by a URI `l
 | container | Specify the container image name as any string. |
 | tag | A string identifying the same container image. A string such as version, release date, revision number or `latest`. |
 
-Here is an example of uploading a collection named `abci-lib`, container image named `ubuntu`, and tag `latest`:
+Here is an example of uploading the container image `ubuntu` with the collection name `abci-lib` and the tag name `latest`:
 
 ```
 [username@es1 ~]$ singularity push ubuntu.sif library://username/abci-lib/ubuntu:latest
@@ -301,7 +301,7 @@ INFO:    Container is trusted - run 'singularity key list' to list your trusted 
 [username@es1 ~]$
 ```
 
-### Pulling container image
+### Downloading Container Images
 
 The container image uploaded to Container Library can be downloaded as follows:
 
@@ -313,7 +313,7 @@ INFO:    Download complete: ubuntu_latest.sif
 [username@es1 ~]$
 ```
 
-If the signature cannot be verified, WARNING message similar to the following, but the download will continue.
+If the signature cannot be verified, you will see a warning message similar to the following, but the download will continue.
 
 ```
 WARNING: Skipping container verification
@@ -339,7 +339,7 @@ Container verified: ubuntu_latest.sif
 !!! note
     You can still run the container image if validation fails, but it is recommended that you use a verifiable container image.
 
-### Searching Container Image
+### Searching Container Images
 
 To search for container images uploaded to Container Library by keyword, use `singularity search`.
 
@@ -355,10 +355,11 @@ Found 1 containers for 'hello'
 ```
 
 
-### Deleting Container Image
+### Deleting Container Images
 
-To delete container images uploaded to Container Library, use `singularity delete`.
+To delete a container image from Container Library, use `singularity delete`.
 
 ```
 [username@es1 ~]$ singularity delete library://username/abci-lib/helloworld:latest
 ```
+
