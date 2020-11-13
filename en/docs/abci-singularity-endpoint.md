@@ -292,7 +292,7 @@ The location of container images in Container Library is represented by a URI `l
 | container | Specify the container image name as any string. |
 | tag | A string identifying the same container image. A string such as version, release date, revision number or `latest`. |
 
-Here is an example of uploading the container image `ubuntu` with the collection name `abci-lib` and the tag name `latest`:
+Here is an example of uploading the container image `ubuntu`, specifying the collection name `abci-lib` and the tag name `latest`:
 
 ```
 [username@es1 ~]$ singularity push ubuntu.sif library://username/abci-lib/ubuntu:latest
