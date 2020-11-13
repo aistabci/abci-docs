@@ -1491,10 +1491,10 @@
 <p>For the job execution resources available for each job service and the restrictions, see <a href="#job-execution-resource">Job Execution Resources</a>. Also, for accounting, see <a href="#accounting">Accounting</a>.</p>
 <h3 id="on-demand-service">On-demand Service</h3>
 <p>On-demand service is an interactive job execution service suitable for compiling and debugging programs, interactive applications, and running visualization software.</p>
-<p>See [Interactive Jobs] (# interactive-jobs) for usage, and <a href="#job-execution-options">Job Execution Options</a> for details on interactive job execution options.</p>
+<p>See [Interactive Jobs] (#interactive-jobs) for usage, and <a href="#job-execution-options">Job Execution Options</a> for details on interactive job execution options.</p>
 <h3 id="spot-service">Spot Service</h3>
 <p>Spot Service is a batch job execution service suitable for executing applications that do not require interactive processing. It is possible to execute jobs that take longer or have a higher degree of parallelism than On-demand service.</p>
-<p>See [Batch Jobs] (#batch-jobs) for usage, and <a href="#job-execution-options">Job Execution Options</a> for details on batch job execution options.</p>
+<p>See <a href="#batch-jobs">Batch Jobs</a> for usage, and <a href="#job-execution-options">Job Execution Options</a> for details on batch job execution options.</p>
 <h3 id="reserved-service">Reserved Service</h3>
 <p>Reserved service is a service that allows you to reserve and use computational resources on a daily basis in advance. It allows planned job execution without being affected by the congenstions of On-demand and Spot services. In addition, since there are no restrictions on elapsed time and node-time product, it is possible to execute jobs for a longer period of time.</p>
 <p>In Reserved service, you first make a reservation in advance to obtain a reservation ID (AR-ID), and then use this reservation ID to execute interactive jobs and batch jobs.</p>
@@ -1504,7 +1504,7 @@
 When using any of the On-demand, Spot, and Reserved services, you need to specify the resource type and its quantity that you want to use, submit or execute jobs, and reserves compute nodes.</p>
 <p>The following describes the available resource types first, followed by the restrictions on the amount of resources available at the same time, elapsed time and node-time product, job submissions and executions, and so on.</p>
 <h3 id="available-resource-types">Available Resource Types</h3>
-<p>The ABCI system has two types of computational resources, <a href="../01/#compute-node">compute node</a> and <a href="../01/#memory-intensive-node">memory-intensive node</a>, multiple resource types corresponding to each mode are prepated as shown in the table below.</p>
+<p>The ABCI system has two types of computational resources, <a href="../01/#compute-node">compute node</a> and <a href="../01/#memory-intensive-node">memory-intensive node</a>, each of which has the following resource types:</p>
 <h4 id="compute-node">Compute Node</h4>
 <table>
 <thead>
@@ -1850,9 +1850,8 @@ When using any of the On-demand, Spot, and Reserved services, you need to specif
 </tbody>
 </table>
 <h2 id="job-execution-options">3.3. Job Execution Options</h2>
-<p>To execute a job in batch mode, use the <code>qsub</code> command.
-To execute a job in interactive mode, use the <code>qrsh</code> command.</p>
-<p>The major options of the <code>qsub</code> and the <code>qrsh</code> command are follows.</p>
+<p>Use <code>qrsh</code> command to run interactive jobs and the <code>qsub</code> command to run batch jobs.</p>
+<p>The major options of the <code>qrsh</code> and the <code>qsub</code> commands are follows.</p>
 <table>
 <thead>
 <tr>

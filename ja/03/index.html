@@ -1508,13 +1508,13 @@
 <td align="left">On-demand</td>
 <td align="left">インタラクティブジョブの実行サービス</td>
 <td align="left">1.0</td>
-<td align="left">インタラクティブ利用</td>
+<td align="left">インタラクティブジョブ</td>
 </tr>
 <tr>
 <td align="left">Spot</td>
 <td align="left">バッチジョブの実行サービス</td>
 <td align="left">1.0</td>
-<td align="left">バッチ利用</td>
+<td align="left">バッチジョブ</td>
 </tr>
 <tr>
 <td align="left">Reserved</td>
@@ -1886,9 +1886,8 @@
 </tbody>
 </table>
 <h2 id="job-execution-options">3.3. ジョブ実行オプション</h2>
-<p>バッチ利用の場合は、<code>qsub</code>コマンドを使用します。
-インタラクティブ利用の場合は、<code>qrsh</code>コマンドを使用します。</p>
-<p><code>qsub</code>コマンドおよび<code>qrsh</code>コマンドの主要なオプションを以下に示します。</p>
+<p>インタラクティブジョブの実行には<code>qrsh</code>コマンド、バッチジョブの実行には<code>qsub</code>コマンドをそれぞれ使用します。</p>
+<p><code>qrsh</code>、<code>qsub</code>コマンドに共通する、主要なオプションを以下に示します。</p>
 <table>
 <thead>
 <tr>
@@ -2014,7 +2013,7 @@
 
 
 <h2 id="batch-jobs">3.5. バッチジョブ</h2>
-<p>ABCIシステムをバッチ利用する場合、実行するプログラムとは別にジョブスクリプトを作成します。
+<p>ABCIシステムでバッチジョブを実行する場合、実行するプログラムとは別にジョブスクリプトを作成します。
 ジョブスクリプトには利用する資源タイプ名、経過時間制限値などの資源などのジョブ実行オプションを記述した上で、
 実行するコマンド列を記載します。</p>
 <div class="codehilite"><pre><span></span><code><span class="ch">#!/bin/bash</span>
