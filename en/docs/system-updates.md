@@ -1,5 +1,11 @@
 # System Updates
 
+## 2020-12-15
+
+| Add / Update / Delete | Software | Version | Previous version |
+|:--|:--|:--|:--|
+| Add | NCCL | [2.8.3-1](https://docs.nvidia.com/deeplearning/nccl/release-notes/rel_2-8-3.html) | |
+
 ## 2020-10-09
 
 | Add / Update / Delete | Software | Version | Previous version |
