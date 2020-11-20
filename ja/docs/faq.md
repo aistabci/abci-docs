@@ -262,3 +262,16 @@ end_time     09/07/2020 15:50:11.534
 :
 ```
 
+## Q. 割り当てられた全計算ノードでコマンドを並列に実行したい
+
+ABCIでは、割り当てられた全計算ノードで並列にLinuxコマンドを実行するために`ugedsh`コマンドを用意しております。
+`ugepdsh`コマンドで指定したコマンドは、1ノード当たり1プロセス実行されます。
+
+実行例) 
+
+```
+[username@es1 ~]$ qrsh -g grpname -l rt_F=2
+[username@g0001 ~]$ ugedsh hostname
+g0001: g0001.abci.local
+g0002: g0002.abci.local
+```

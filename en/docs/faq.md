@@ -256,3 +256,16 @@ end_time     09/07/2020 15:50:11.534
 :
 ```
 
+## Q. I want to run the Linux command on all allocated compute node
+
+In ABCI system, the `ugedsh` command is available to run the normal Linux command on all allocated compute node concurrently.
+The given Linux command is issued once per node.
+
+Example)
+
+```
+[username@es1 ~]$ qrsh -g grpname -l rt_F=2
+[username@g0001 ~]$ ugedsh hostname
+g0001: g0001.abci.local
+g0002: g0002.abci.local
+```
