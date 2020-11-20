@@ -258,8 +258,8 @@ end_time     09/07/2020 15:50:11.534
 
 ## Q. I want to run the Linux command on all allocated compute node
 
-In ABCI system, the `ugedsh` command is available to run the normal Linux command on all allocated compute node concurrently.
-The given Linux command is issued once per node.
+ABCI provides the `ugedsh` command to execute Linux commands in parallel on all allocated compute nodes.
+The command specified in the argument of the `ugedsh` command is executed once on each node.
 
 Example)
 
