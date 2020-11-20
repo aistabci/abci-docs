@@ -40,7 +40,10 @@ Name: ABC Dataset
 Description: This is a fictitious dataset ....
 
 # データセットに関するキーワード (object detection, vehicle, action recognition, earth observation, etc.)
-Keywords: image processing, health
+# 項目が1つであっても、下記のようなハイフンではじまるリスト形式で記入してください。
+Keywords:
+  - image processing
+  - health
 
 # より詳細な情報を記した Web ページ　*必須
 #　本YAMLから生成する index.html に詳細を追記する場合は、以下の例のように https://<バケット名>.s3-website.abci.ai/ を記入して下さい。
@@ -52,7 +55,8 @@ UsageInfo: https://example-dataset.s3-website.abci.ai/
 #  ContentURL: 公開データの URL　*必須
 Distribution: # (do not fill in this line)
   EncodingFormat: DICOM
-  ContentURL: https://example-dataset.s3.abci.ai/abc.zip
+  ContentURL:  # 項目が1つであっても、下記のようなハイフンではじまるリスト形式で記入してください。
+    - https://example-dataset.s3.abci.ai/abc.zip
 
 # 作成者
 #  ContactPoint: Email or URL のいずれかは必須
@@ -70,17 +74,18 @@ License: # (do not fill in this line)
   URL: https://example.com/dataset/LISENCE.txt
 
 # バージョン
-Version: 1.1b
+Version: "1.1b"
 
 # データ作成日、修正日、公開日
+# 下記のような ISO 8601 フォーマットで記載してください。記入する場合でも時間の部分は省略可能です。
 DateCreated: 2020-04-18
-DateModified: 2020-04-20
+DateModified: 2020-04-20T22:30:10+09:00
 DatePublished: 2020-04-19
 
 # DOI 等の識別子
-Identifier: https://doi.org/1234....
+#Identifier: https://doi.org/1234....
 
-# 関連文献等の情報
+# 関連文献等の情報。項目が1つであっても、ContentURL と同じくハイフンを使ったリスト形式で記入してください。
 Citation: 
 ```
 
