@@ -1085,7 +1085,10 @@
 <span class="nt">Description</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">This is a fictitious dataset ....</span>
 
 <span class="c1"># データセットに関するキーワード (object detection, vehicle, action recognition, earth observation, etc.)</span>
-<span class="nt">Keywords</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">image processing, health</span>
+<span class="c1"># 項目が1つであっても、下記のようなハイフンではじまるリスト形式で記入してください。</span>
+<span class="nt">Keywords</span><span class="p">:</span>
+  <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">image processing</span>
+  <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">health</span>
 
 <span class="c1"># より詳細な情報を記した Web ページ　*必須</span>
 <span class="c1">#　本YAMLから生成する index.html に詳細を追記する場合は、以下の例のように https://&lt;バケット名&gt;.s3-website.abci.ai/ を記入して下さい。</span>
@@ -1097,7 +1100,8 @@
 <span class="c1">#  ContentURL: 公開データの URL　*必須</span>
 <span class="nt">Distribution</span><span class="p">:</span> <span class="c1"># (do not fill in this line)</span>
   <span class="nt">EncodingFormat</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">DICOM</span>
-  <span class="nt">ContentURL</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">https://example-dataset.s3.abci.ai/abc.zip</span>
+  <span class="nt">ContentURL</span><span class="p">:</span>  <span class="c1"># 項目が1つであっても、下記のようなハイフンではじまるリスト形式で記入してください。</span>
+    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">https://example-dataset.s3.abci.ai/abc.zip</span>
 
 <span class="c1"># 作成者</span>
 <span class="c1">#  ContactPoint: Email or URL のいずれかは必須</span>
@@ -1115,53 +1119,33 @@
   <span class="nt">URL</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">https://example.com/dataset/LISENCE.txt</span>
 
 <span class="c1"># バージョン</span>
-<span class="nt">Version</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">1.1b</span>
+<span class="nt">Version</span><span class="p">:</span> <span class="s">&quot;1.1b&quot;</span>
 
 <span class="c1"># データ作成日、修正日、公開日</span>
+<span class="c1"># 下記のような ISO 8601 フォーマットで記載してください。記入する場合でも時間の部分は省略可能です。</span>
 <span class="nt">DateCreated</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">2020-04-18</span>
-<span class="nt">DateModified</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">2020-04-20</span>
+<span class="nt">DateModified</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">2020-04-20T22:30:10+09:00</span>
 <span class="nt">DatePublished</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">2020-04-19</span>
 
 <span class="c1"># DOI 等の識別子</span>
-<span class="nt">Identifier</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">https://doi.org/1234....</span>
+<span class="c1">#Identifier: https://doi.org/1234....</span>
 
-<span class="c1"># 関連文献等の情報</span>
+<span class="c1"># 関連文献等の情報。項目が1つであっても、ContentURL と同じくハイフンを使ったリスト形式で記入してください。</span>
 <span class="nt">Citation</span><span class="p">:</span> 
 </code></pre></div>
 
 
-<p>次に、記入したYAMLファイル（ここでは<code>my_dataset_info.yaml</code>）を用いて、データセットの公開ページ（index.html）を生成します。</p>
-<div class="codehilite"><pre><span></span><code><span class="err">[username@es1 ~]$ module load aws-cli</span>
-<span class="err">[username@es1 ~]$ aws --endpoint-url https://s3.abci.ai s3 cp s3://tools/generate_page generate_page</span>
-<span class="err">[username@es1 ~]$ chmod 755 generate_page</span>
-<span class="err">[username@es1 ~]$ wget -nv https://datasets.abci.ai/sha256sum.txt</span>
-<span class="err">2020-07-13 22:22:55 URL:https://datasets.abci.ai/sha256sum.txt [87/87] -&gt; &quot;sha256sum.txt&quot; [1]</span>
-<span class="err">[username@es1 ~]$ sha256sum -c sha256sum.txt</span>
-<span class="c">generate_page: OK</span>
-<span class="err">[username@es1 ~]$ ./generate_page my_dataset_info.yaml &gt; index.html</span>
-</code></pre></div>
-
-
-<p>HTMLファイルが問題なく生成されたら、データセットを公開しているバケットに、記入したYAMLファイルと生成したHTMLファイルの両方をアップロードして下さい。 <code>my_dataset_info.yaml</code> は違うファイル名でも問題ありません。エラーになって生成されない場合は、<a href="../../contact/">お問い合わせ</a>のページをご覧の上、<a href="&#109;&#97;&#105;&#108;&#116;&#111;&#58;&#113;&#97;&#64;&#97;&#98;&#99;&#105;&#46;&#97;&#105;">&#113;&#97;&#64;&#97;&#98;&#99;&#105;&#46;&#97;&#105;</a> までご連絡ください。</p>
+<p>データセットを公開しているバケットに、記入したYAMLファイルをアップロードして下さい。 <code>my_dataset_info.yaml</code> は違うファイル名でも問題ありません。</p>
 <div class="codehilite"><pre><span></span><code><span class="err">[username@es1 ~]$ aws --endpoint-url https://s3.abci.ai s3 cp --acl public-read my_dataset_info.yaml s3://example-dataset/my_dataset_info.yaml</span>
-<span class="err">[username@es1 ~]$ aws --endpoint-url https://s3.abci.ai s3 cp --acl public-read index.html s3://example-dataset/index.html</span>
 </code></pre></div>
 
 
-<p>アップロードしたHTMLファイルは、ブラウザから <code>https://example-dataset.s3.abci.ai/index.html</code> を開いて確認できます。以下の設定を行うと、<code>https://example-dataset.s3-website.abci.ai/</code> でも同じページが表示されるようになります。</p>
-<div class="codehilite"><pre><span></span><code><span class="err">[username@es1 ~]$ module load aws-cli</span>
-<span class="err">[username@es1 ~]$ aws --endpoint-url https://s3.abci.ai s3 website s3://example-dataset/ --index-document index.html</span>
-</code></pre></div>
-
-
-<p>なお、生成したHTMLファイルには、YAMLファイルに記入した情報が構造化データ (JSON-LD形式) として含まれています。データセットに関する基本情報を更新したい場合には再度、HTMLファイルの生成とアップロードを行って下さい。このファイルを直接変更したり、別のWebサイトに同等のページを用意したりすることも可能です。ただし、このファイルと同様の構造化データを保持するようにして下さい。</p>
-<p>上記がすべて完了したら、以下のフォーマットで <a href="&#109;&#97;&#105;&#108;&#116;&#111;&#58;&#97;&#98;&#99;&#105;&#45;&#97;&#112;&#112;&#108;&#105;&#99;&#97;&#116;&#105;&#111;&#110;&#45;&#109;&#108;&#64;&#97;&#105;&#115;&#116;&#46;&#103;&#111;&#46;&#106;&#112;">&#97;&#98;&#99;&#105;&#45;&#97;&#112;&#112;&#108;&#105;&#99;&#97;&#116;&#105;&#111;&#110;&#45;&#109;&#108;&#64;&#97;&#105;&#115;&#116;&#46;&#103;&#111;&#46;&#106;&#112;</a> までお知らせ下さい。複数のABCIグループに所属している場合、データセットがアップロードされているバケットを所有しているABCIグループを記載して下さい。</p>
+<p>上記が完了したら、以下のフォーマットで <a href="&#109;&#97;&#105;&#108;&#116;&#111;&#58;&#97;&#98;&#99;&#105;&#45;&#97;&#112;&#112;&#108;&#105;&#99;&#97;&#116;&#105;&#111;&#110;&#45;&#109;&#108;&#64;&#97;&#105;&#115;&#116;&#46;&#103;&#111;&#46;&#106;&#112;">&#97;&#98;&#99;&#105;&#45;&#97;&#112;&#112;&#108;&#105;&#99;&#97;&#116;&#105;&#111;&#110;&#45;&#109;&#108;&#64;&#97;&#105;&#115;&#116;&#46;&#103;&#111;&#46;&#106;&#112;</a> までお知らせ下さい。複数のABCIグループに所属している場合、データセットがアップロードされているバケットを所有しているABCIグループを記載して下さい。</p>
 <div class="codehilite"><pre><span></span><code>Subject: データセットの公開(&lt;データセット名&gt;)
 
 申請者の氏名: 
 ABCIグループ: 
 申請者のメールアドレス: 
-アップロードしたHTMLファイルのURL: 
 アップロードしたYAMLファイルのURL: 
 </code></pre></div>
 

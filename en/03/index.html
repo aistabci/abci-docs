@@ -1824,7 +1824,7 @@ When using any of the On-demand, Spot, and Reserved services, you need to specif
 </tbody>
 </table>
 <h3 id="execution-priority">Execution Priority</h3>
-<p>On-demand and Spot services allow you to specify a priority when running a job, as follows:</p>
+<p>Each job service allows you to specify a priority when running a job, as follows:</p>
 <table>
 <thead>
 <tr>
@@ -1853,10 +1853,17 @@ When using any of the On-demand, Spot, and Reserved services, you need to specif
 <td align="left">high priority</td>
 <td align="left">1.5</td>
 </tr>
+<tr>
+<td align="left">Reserved</td>
+<td align="left">-500</td>
+<td align="left">default (unchangable)</td>
+<td align="left">NA</td>
+</tr>
 </tbody>
 </table>
 <p>In On-demand service, the priority is fixed at <code>-450</code> and cannot be changed.</p>
 <p>In Spot service, you can specify <code>-400</code> to your job, so as to execute it in higher priority to other jobs. However, you will be charged according to the POSIX priority coefficient.</p>
+<p>In Reserved service, the priority is fixed at <code>-500</code> and cannot be changed for both interactive and batch jobs.</p>
 <h2 id="job-execution-options">3.3. Job Execution Options</h2>
 <p>Use <code>qrsh</code> command to run interactive jobs and the <code>qsub</code> command to run batch jobs.</p>
 <p>The major options of the <code>qrsh</code> and the <code>qsub</code> commands are follows.</p>

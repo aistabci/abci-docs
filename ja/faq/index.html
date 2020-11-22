@@ -920,6 +920,13 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#q_4" class="md-nav__link">
+    Q. 割り当てられた全計算ノードでコマンドを並列に実行したい
+  </a>
+  
+</li>
+      
       
       
       
@@ -1156,6 +1163,13 @@
         <li class="md-nav__item">
   <a href="#q-how-can-i-find-the-job-id" class="md-nav__link">
     Q. ジョブ ID を調べるには？
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#q_4" class="md-nav__link">
+    Q. 割り当てられた全計算ノードでコマンドを並列に実行したい
   </a>
   
 </li>
@@ -1418,6 +1432,17 @@ ABCIシステム利用環境の<a href="../02/#general-method">SSHクライア�
 <span class="n">end_time</span><span class="w">     </span><span class="mi">09</span><span class="o">/</span><span class="mi">07</span><span class="o">/</span><span class="mi">2020</span><span class="w"> </span><span class="mi">15</span><span class="err">:</span><span class="mi">50</span><span class="err">:</span><span class="mf">11.534</span><span class="w"></span>
 
 <span class="err">:</span><span class="w"></span>
+</code></pre></div>
+
+
+<h2 id="q_4">Q. 割り当てられた全計算ノードでコマンドを並列に実行したい</h2>
+<p>ABCIでは、割り当てられた全計算ノードで並列にLinuxコマンドを実行する<code>ugedsh</code>コマンドを用意しています。
+<code>ugedsh</code>コマンドの引数で指定したコマンドは、各ノードで1回ずつ実行されます。</p>
+<p>実行例) </p>
+<div class="codehilite"><pre><span></span><code><span class="err">[username@es1 ~]$ qrsh -g grpname -l rt_F=2</span>
+<span class="err">[username@g0001 ~]$ ugedsh hostname</span>
+<span class="c">g0001: g0001.abci.local</span>
+<span class="c">g0002: g0002.abci.local</span>
 </code></pre></div>
                 
                   

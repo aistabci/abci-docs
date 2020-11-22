@@ -884,6 +884,13 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#q-i-want-to-run-the-linux-command-on-all-allocated-compute-node" class="md-nav__link">
+    Q. I want to run the Linux command on all allocated compute node
+  </a>
+  
+</li>
+      
       
       
       
@@ -1120,6 +1127,13 @@
         <li class="md-nav__item">
   <a href="#q-how-can-i-find-the-job-id" class="md-nav__link">
     Q. How can I find the job ID?
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#q-i-want-to-run-the-linux-command-on-all-allocated-compute-node" class="md-nav__link">
+    Q. I want to run the Linux command on all allocated compute node
   </a>
   
 </li>
@@ -1375,6 +1389,17 @@ Please also refer to the procedure in <a href="../02/#general-method">Login usin
 <span class="n">end_time</span><span class="w">     </span><span class="mi">09</span><span class="o">/</span><span class="mi">07</span><span class="o">/</span><span class="mi">2020</span><span class="w"> </span><span class="mi">15</span><span class="err">:</span><span class="mi">50</span><span class="err">:</span><span class="mf">11.534</span><span class="w"></span>
 
 <span class="err">:</span><span class="w"></span>
+</code></pre></div>
+
+
+<h2 id="q-i-want-to-run-the-linux-command-on-all-allocated-compute-node">Q. I want to run the Linux command on all allocated compute node</h2>
+<p>ABCI provides the <code>ugedsh</code> command to execute Linux commands in parallel on all allocated compute nodes.
+The command specified in the argument of the <code>ugedsh</code> command is executed once on each node.</p>
+<p>Example)</p>
+<div class="codehilite"><pre><span></span><code><span class="err">[username@es1 ~]$ qrsh -g grpname -l rt_F=2</span>
+<span class="err">[username@g0001 ~]$ ugedsh hostname</span>
+<span class="c">g0001: g0001.abci.local</span>
+<span class="c">g0002: g0002.abci.local</span>
 </code></pre></div>
                 
                   
