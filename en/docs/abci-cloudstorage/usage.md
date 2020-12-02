@@ -2,6 +2,8 @@
 
 This section describes how to use ABCI Cloud Storage as a client tool by using AWS Command Line Interface (AWS CLI).
 
+!!! note
+    Unintended charges may occur if the data upload fails. See [here](caution.md#notice-mpu-fail) for a workaround.
 
 ## Load Module
 
@@ -43,19 +45,6 @@ When running the AWS commands with the Cloud Storage Account 'aaa00000.2', use t
 The configuration is stored in the home directory(i.e. ~/.aws). Therefore, it is not necessarily done in the compute node once it is done in the interacvtive node.
 
 To reissuing or deleting Access Keys, use ABCI User Portal.
-
-## Notes on failed data uploads (Use Multipart Upload)
-
-ABCI Cloud Storage supports Multipart Uload (MPU), which speeds up uploads by sending splite data during uploads.
-MPU is effective for data over the data size defined in the client application, for example, aws-cli, MPU is applied by default for the data size of 8MB or more.
-When uploading data using MPU, the divided data is first stored in a temporary area on the server and then moved to the specified path as an object after the upload is complete.
-
-Here, the above temporary area is subject to accounting, so you need to be careful when MPU fails.
-Such a situation does not occur with properly stopped the operation for example, stop aws-cli with 'CTRL-C', but may occur when the client is aborted or communication is unexpectedly disconnected.
-
-
-In the case of aws-cli, such a situation does not occur when the operation between the client and the server is stopped properly with CTRL-C etc., but it occurs due to the forced termination of the client, unexpected communication disconnection, etc. There is a possibility.
-If MPU fails, the data stored in the temporary area is not automatically deleted, so please delete it yourself. The removal operation is described in the following procedure 'Aborting Multipart Upload'.
 
 ## Operations
 
@@ -306,10 +295,113 @@ To display object owner, use the `s3api get-object-acl` command. As shown in the
 }
 ```
 
-### Listing Multipart Upload
+### MPU
 
-To check the data uploaded from the file system by MPU, use the `s3api list-multipart-uploads` command with the bucket name at the time of upload. If there is no data left, nothing is displayed.
-The following example shows data remaining on the server when aws-cli on the client side was killed while uploading the object named "data_10gib-1.dat" to 's3://Bucket/Testdata'.
+Uploading from a local file system, client applications upload data efficiently by automatically splitting the data and sending it in parallel. This is called a multipart upload (MPU). MPU is applied when the threshold of data size defined in the client application is exceeded. For instance, the default threshold is [8MB](https://docs.aws.amazon.com/cli/latest/topic/s3-config.html#multipart-threshold) for aws-cli and [15MB](https://s3tools.org/kb/item13.htm) for s3cmd.
+
+### Uploading Data with Manual MPU
+
+The following describes how to apply MPU manually.
+
+!!! note
+    It is recommended to use MPU automatically by the client application.
+
+First, using the `split` command to split the file. In the following example,
+15M_test.dat is divided into three parts.
+
+```
+[username@es1 ~]$ split  -n 3 -d 15M_test.dat mpu_part-
+total 3199056
+-rw-r----- 1 username group   15728640 Nov 30 15:42 15M_test.dat
+-rw-r----- 1 username group    5242880 Nov 30 15:51 mpu_part-02
+-rw-r----- 1 username group    5242880 Nov 30 15:51 mpu_part-01
+-rw-r----- 1 username group    5242880 Nov 30 15:51 mpu_part-00
+[username@es1 ~]$
+```
+
+Then starting MPU with the command `s3api create-multipart-upload`, specifying the destination bucket and path. The following example creates an object named 'mpu-sample' in the bucket 'testbucket-00'. If successful, `UploadId` is issued as follows:
+
+```
+[username@es1 ~]$ aws --endpoint-url https://s3.abci.ai s3api create-multipart-upload --bucket testbucket-00 --key mpu-sample
+
+{
+    "Bucket": "testbucket-00",
+    "Key": "mpu-sample",
+    "UploadId": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+    
+}
+```
+
+To Upload files splited above use the `s3api part-upload` command, with the 'UpLoadId' specified above. Note the 'ETag' for later use.
+
+```
+[username@es1 ~]$ aws --endpoint-url https://s3.abci.ai s3api upload-part --bucket testbucket-00 --key mpu-sample --part-number 1 --body mpu_part-00 --upload-id aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+{
+    "ETag": "\"sample1d8560e70ca076c897e0715024\""
+}
+```
+
+Similarly, it sequentially uploads the rest of the files corresponding to the values specified by `--part-number`.
+
+```
+[username@es1 ~]$ aws --endpoint-url https://s3.abci.ai s3api upload-part --bucket testbucket-00 --key mpu-sample --part-number 2 --body mpu_part-01 --upload-id aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+{
+    "ETag": "\"samplee36a6ef6ae8f2c0ea3328c5e7c\""
+}
+[username@es1 ~]$ aws --endpoint-url https://s3.abci.ai s3api upload-part --bucket testbucket-00 --key mpu-sample --part-number 3 --body mpu_part-02 --upload-id aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+{
+    "ETag": "\"sample9e391d5673d2bfd8951367eb01\""
+}
+[username@es1 ~]$
+```
+
+!!! note
+    Uploaded data by `s3api upload-parts` is not displayed but charged, so MPU must be completed or aborted.
+
+After uploading all the files, create a JSONE file with the ETag value as follows:
+
+```
+[username@es1 ~]$ cat mpu_fileparts.json
+{
+    "Parts":[{
+        "ETag": "sample1d8560e70ca076c897e0715024",
+        "PartNumber": 1
+    },
+    {
+        "ETag": "samplee36a6ef6ae8f2c0ea3328c5e7c",
+        "PartNumber": 2
+    },
+    {
+        "ETag": "sample9e391d5673d2bfd8951367eb01",
+        "PartNumber": 3
+    }]
+}
+```
+
+Finally, to complete MPU use the command `s3api complete-multipart-upload`. At this time, the object is created that you specify with `--key`.
+
+```
+[username@es1 ~]$ aws --endpoint-url https://s3.abci.ai s3api complete-multipart-upload --multipart-upload file://mpu_fileparts.json --bucket testbucket-00 --key mpu-sample --upload-id aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+{
+    "Location": "http://testbucket-00.s3.abci.ai/mpu-sample",
+    "Bucket": "testbucket-00",
+    "Key": "mpu-sample",
+    "ETag": "\"6203f5cdbecbe0556e2313691861cb99-3\""
+}
+```
+
+You can verify that the object has been created as follows:
+
+```
+[username@es1 ~]$ aws --endpoint-url https://s3.abci.ai s3 ls s3://testbucket-00/
+2020-12-01 09:28:03   15728640 mpu-sample
+```
+
+### Aborting Data Upload with Manual MPU {#abort-mpu}
+
+First, display MPU list and get `UploadId` and `Key` from the list. 
+To list MPU, use the `s3api list-multipart-uploads` command with the bucket name. If there is no MPU left, nothing is displayed.
+The following example shows data remaining on the server while uploading the object "data_10gib-1.dat" to 's3://BUCKET/Testdata/'.
 The path and object name are displayed in `Key`.
 
 ```
@@ -334,16 +426,13 @@ The path and object name are displayed in `Key`.
 }
 ```
 
-### Aborting Multipart Upload
-
-To abort the MPU, specify `UploadId` and `Key` of the target upload in `s3api abort -multipart -upload` command. You can see `UploadId` and `Key` in 'Listing Multipart Upload' above. If the command succeeds, the prompt is returned.
-Also, the data remaining in the temporary area when MPU fails is deleted.
+Then, aborting the MPU, deletes the data on the server.
+To abort the MPU, use `s3api abort -multipart -upload` command with specified `UploadId` and `Key` of the MPU. If the command succeeds, a prompt is returned.
 
 ```
 [username@es1 ~]$ aws --endpoint-url https://s3.abci.ai s3api abort-multipart-upload --bucket Testdata --key Testdata/data_10gib-1.dat --upload-id aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
 [username@es1 ~]$
 ```
-
 
 <!--  Is s3fs-fuse another ?  -->
 
