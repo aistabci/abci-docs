@@ -326,14 +326,14 @@
       
         <li class="md-nav__item">
   <a href="#getting-an-account" class="md-nav__link">
-    2.1. Getting an account
+    Getting an account
   </a>
   
 </li>
       
         <li class="md-nav__item">
   <a href="#connecting-to-interactive-node" class="md-nav__link">
-    2.2. Connecting to Interactive Node
+    Connecting to Interactive Node
   </a>
   
     <nav class="md-nav">
@@ -380,42 +380,42 @@
       
         <li class="md-nav__item">
   <a href="#file-transfer-to-interactive-node" class="md-nav__link">
-    2.3. File Transfer to Interactive Node
+    File Transfer to Interactive Node
   </a>
   
 </li>
       
         <li class="md-nav__item">
   <a href="#changing-password" class="md-nav__link">
-    2.4. Changing Password
+    Changing Password
   </a>
   
 </li>
       
         <li class="md-nav__item">
   <a href="#login-shell" class="md-nav__link">
-    2.5. Login Shell
+    Login Shell
   </a>
   
 </li>
       
         <li class="md-nav__item">
   <a href="#checking-abci-point" class="md-nav__link">
-    2.6. Checking ABCI Point
+    Checking ABCI Point
   </a>
   
 </li>
       
         <li class="md-nav__item">
   <a href="#checking-disk-quota" class="md-nav__link">
-    2.7. Checking Disk Quota
+    Checking Disk Quota
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#checking-cloud-storage-usage" class="md-nav__link">
-    2.8. Checking ABCI Cloud Storage Usage
+  <a href="#checking-abci-cloud-storage-usage" class="md-nav__link">
+    Checking ABCI Cloud Storage Usage
   </a>
   
 </li>
@@ -1070,14 +1070,14 @@
       
         <li class="md-nav__item">
   <a href="#getting-an-account" class="md-nav__link">
-    2.1. Getting an account
+    Getting an account
   </a>
   
 </li>
       
         <li class="md-nav__item">
   <a href="#connecting-to-interactive-node" class="md-nav__link">
-    2.2. Connecting to Interactive Node
+    Connecting to Interactive Node
   </a>
   
     <nav class="md-nav">
@@ -1124,42 +1124,42 @@
       
         <li class="md-nav__item">
   <a href="#file-transfer-to-interactive-node" class="md-nav__link">
-    2.3. File Transfer to Interactive Node
+    File Transfer to Interactive Node
   </a>
   
 </li>
       
         <li class="md-nav__item">
   <a href="#changing-password" class="md-nav__link">
-    2.4. Changing Password
+    Changing Password
   </a>
   
 </li>
       
         <li class="md-nav__item">
   <a href="#login-shell" class="md-nav__link">
-    2.5. Login Shell
+    Login Shell
   </a>
   
 </li>
       
         <li class="md-nav__item">
   <a href="#checking-abci-point" class="md-nav__link">
-    2.6. Checking ABCI Point
+    Checking ABCI Point
   </a>
   
 </li>
       
         <li class="md-nav__item">
   <a href="#checking-disk-quota" class="md-nav__link">
-    2.7. Checking Disk Quota
+    Checking Disk Quota
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#checking-cloud-storage-usage" class="md-nav__link">
-    2.8. Checking ABCI Cloud Storage Usage
+  <a href="#checking-abci-cloud-storage-usage" class="md-nav__link">
+    Checking ABCI Cloud Storage Usage
   </a>
   
 </li>
@@ -1184,7 +1184,7 @@
                 
                 
                 <h1 id="2-abci-system-user-environment">2. ABCI System User Environment</h1>
-<h2 id="getting-an-account">2.1. Getting an account</h2>
+<h2 id="getting-an-account">Getting an account</h2>
 <p>There are three types of ABCI users: "Responsible Person", "Usage Manager", "User".
 To use the ABCI system, "Responsible Person" needs to register from the <a href="https://portal.abci.ai/user/project_register_app.php">ABCI User Portal</a> in advance.
 For more detail, see the <a href="https://docs.abci.ai/portal/en/">ABCI Portal Guide</a>.</p>
@@ -1196,7 +1196,7 @@ For more detail, see the <a href="https://docs.abci.ai/portal/en/">ABCI Portal G
 <li>"Responsible Person" and "Usage Manager" can add users ("Usage Manager" or "User").</li>
 </ul>
 </div>
-<h2 id="connecting-to-interactive-node">2.2. Connecting to Interactive Node</h2>
+<h2 id="connecting-to-interactive-node">Connecting to Interactive Node</h2>
 <p>To connect to the interactive node (<em>es</em>), the ABCI frontend, two-step SSH public key authentication is required.</p>
 <ol>
 <li>Login to the access server (<em>as.abci.ai</em>) with SSH public key authentication, so as to create an <em>SSH tunnel</em> between your computer and <em>es</em>.</li>
@@ -1284,7 +1284,7 @@ Host <i>as.abci.ai</i>
      IdentityFile C:\path\to\identity_file
 </pre></div>
 
-<h2 id="file-transfer-to-interactive-node">2.3. File Transfer to Interactive Node</h2>
+<h2 id="file-transfer-to-interactive-node">File Transfer to Interactive Node</h2>
 <p>When you transfer files between your computer and the ABCI system, create an SSH tunnel and run the <code>scp</code> (<code>sftp</code>) command.</p>
 <div class="codehilite"><pre><span></span><code><span class="p">[</span><span class="n">yourpc</span> <span class="o">~</span><span class="p">]</span><span class="o">$</span> <span class="n">scp</span> <span class="o">-</span><span class="n">P</span> <span class="m">10022</span> <span class="n">local</span><span class="o">-</span><span class="n">file</span> <span class="n">username</span><span class="o">@</span><span class="n">localhost</span><span class="o">:</span><span class="n">remote</span><span class="o">-</span><span class="n">dir</span>
 <span class="n">Enter</span> <span class="n">passphrase</span> <span class="n">for</span> <span class="n">key</span><span class="o">:</span> <span class="o">&lt;-</span> <span class="n">Enter</span> <span class="n">passphrase</span>
@@ -1298,7 +1298,7 @@ Host <i>as.abci.ai</i>
 [yourpc ~]$ scp local-file <i>abci</i>:remote-dir
 </pre></div>
 
-<h2 id="changing-password">2.4. Changing Password</h2>
+<h2 id="changing-password">Changing Password</h2>
 <p>The user accounts of the ABCI system are managed by the LDAP.
 You do not need your password to login via SSH,
 but you will need your password when you use the User Portal and change the login shell.
@@ -1322,7 +1322,7 @@ To change your password, use the <code>passwd</code> command.</p>
 <li>Do not contain multi-byte characters.</li>
 </ul>
 </div>
-<h2 id="login-shell">2.5. Login Shell</h2>
+<h2 id="login-shell">Login Shell</h2>
 <p>GNU bash is the login shell be default on the ABCI system.
 The tcsh and zsh are available as a login shell.
 To change the login shell, use the <code>chsh</code> command.
@@ -1384,7 +1384,7 @@ It will take 10 minutes to update the login shell.</p>
 <p>Make sure to add a new path at the end of <code>PATH</code>. If you add the new path to the beginning, you may not use the system properly.</p>
 </div>
 <p>The original user configuration files (templates) are stored in /etc/skel.</p>
-<h2 id="checking-abci-point">2.6. Checking ABCI Point</h2>
+<h2 id="checking-abci-point">Checking ABCI Point</h2>
 <p>To display ABCI point usage and limitation, use the <code>show_point</code> command.
 When your ABCI point usage ratio will reach 100%, a new job cannot be submitted, and queued jobs will become error state at the beginning. (Any running jobs are not affected.)</p>
 <p>Example) Display ABCI point information.</p>
@@ -1429,7 +1429,7 @@ When your ABCI point usage ratio will reach 100%, a new job cannot be submitted,
 </tr>
 </tbody>
 </table>
-<h2 id="checking-disk-quota">2.7. Checking Disk Quota</h2>
+<h2 id="checking-disk-quota">Checking Disk Quota</h2>
 <p>To display your disk usage and quota about home area and group area,
 use the <code>show_quota</code> command</p>
 <p>Example) Display disk information.</p>
@@ -1470,7 +1470,7 @@ use the <code>show_quota</code> command</p>
 </tr>
 </tbody>
 </table>
-<h2 id="checking-cloud-storage-usage">2.8. Checking ABCI Cloud Storage Usage</h2>
+<h2 id="checking-abci-cloud-storage-usage">Checking ABCI Cloud Storage Usage</h2>
 <p>To display your ABCI Cloud Storage usage, use the <code>show_cs_usage</code> command</p>
 <p>Example) Show the latest information of ABCI Cloud Storage for ABCI group grpname.</p>
 <div class="codehilite"><pre><span></span><code><span class="err">[username@es1 ~]$ show_cs_usage</span>

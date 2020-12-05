@@ -350,7 +350,7 @@
       
         <li class="md-nav__item">
   <a href="#home-area" class="md-nav__link">
-    4.1. Home Area
+    Home Area
   </a>
   
     <nav class="md-nav">
@@ -390,14 +390,14 @@
       
         <li class="md-nav__item">
   <a href="#group-area" class="md-nav__link">
-    4.2. Group Area
+    Group Area
   </a>
   
 </li>
       
         <li class="md-nav__item">
   <a href="#local-storage" class="md-nav__link">
-    4.3. Local Storage
+    Local Storage
   </a>
   
     <nav class="md-nav">
@@ -405,28 +405,28 @@
         
           <li class="md-nav__item">
   <a href="#using-as-a-local-scratch" class="md-nav__link">
-    4.3.1. Using as a local scratch
+    Using as a local scratch
   </a>
   
 </li>
         
           <li class="md-nav__item">
   <a href="#using-as-a-beeond-storage" class="md-nav__link">
-    4.3.2. Using as a BeeOND storage
+    Using as a BeeOND storage
   </a>
   
     <nav class="md-nav">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#advanced-beeond-option-servers" class="md-nav__link">
+  <a href="#advanced-option-configure-beeond-servers" class="md-nav__link">
     [Advanced Option] Configure BeeOND Servers
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#advanced-beeond-option-file-striping" class="md-nav__link">
+  <a href="#advanced-option-file-striping_1" class="md-nav__link">
     [Advanced Option] File Striping
   </a>
   
@@ -1068,7 +1068,7 @@
       
         <li class="md-nav__item">
   <a href="#home-area" class="md-nav__link">
-    4.1. Home Area
+    Home Area
   </a>
   
     <nav class="md-nav">
@@ -1108,14 +1108,14 @@
       
         <li class="md-nav__item">
   <a href="#group-area" class="md-nav__link">
-    4.2. Group Area
+    Group Area
   </a>
   
 </li>
       
         <li class="md-nav__item">
   <a href="#local-storage" class="md-nav__link">
-    4.3. Local Storage
+    Local Storage
   </a>
   
     <nav class="md-nav">
@@ -1123,28 +1123,28 @@
         
           <li class="md-nav__item">
   <a href="#using-as-a-local-scratch" class="md-nav__link">
-    4.3.1. Using as a local scratch
+    Using as a local scratch
   </a>
   
 </li>
         
           <li class="md-nav__item">
   <a href="#using-as-a-beeond-storage" class="md-nav__link">
-    4.3.2. Using as a BeeOND storage
+    Using as a BeeOND storage
   </a>
   
     <nav class="md-nav">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#advanced-beeond-option-servers" class="md-nav__link">
+  <a href="#advanced-option-configure-beeond-servers" class="md-nav__link">
     [Advanced Option] Configure BeeOND Servers
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#advanced-beeond-option-file-striping" class="md-nav__link">
+  <a href="#advanced-option-file-striping_1" class="md-nav__link">
     [Advanced Option] File Striping
   </a>
   
@@ -1180,7 +1180,7 @@
                 
                 
                 <h1 id="4-storage">4. Storage</h1>
-<h2 id="home-area">4.1. Home Area</h2>
+<h2 id="home-area">Home Area</h2>
 <p>Home area is the disk area of the Lustre file system shared by interactive and compute nodes, and is available to all ABCI users by default. The disk quota is limited to 200GiB.</p>
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
@@ -1263,11 +1263,11 @@ If an attempt is made to create a file that exceeds the limit, an error message 
 </code></pre></div>
 
 
-<h2 id="group-area">4.2. Group Area</h2>
+<h2 id="group-area">Group Area</h2>
 <p>Group area is the disk area of the GPFS file system shared by interactive and compute nodes.
 To use Group area, "Usage Manager" of the group needs to apply "Add group disk" via <a href="https://portal.abci.ai/user/">ABCI User Portal</a>. Regarding how to add group disk, please refer to <a href="https://docs.abci.ai/portal/en/03/#352-disk-addition-request">Disk Addition Request</a> in the <a href="https://docs.abci.ai/portal/en/">ABCI Portal Guide</a>.</p>
 <p>To find the path to your group area, use the <code>show_quota</code> command. For details, see <a href="../02/#checking-disk-quota">Checking Disk Quota</a>.</p>
-<h2 id="local-storage">4.3. Local Storage</h2>
+<h2 id="local-storage">Local Storage</h2>
 <p>In ABCI System, a 1.6 TB NVMe SSD is installed into each compute node and a 1.9 TB SATA 3.0 SSD is installed into each memory-intensive node. There are two ways to utilize these storages as follows:</p>
 <ul>
 <li>Using as a local scratch of a node (<em>Using as a local scratch</em>).</li>
@@ -1295,7 +1295,7 @@ To use Group area, "Usage Manager" of the group needs to apply "Add group disk" 
 </tr>
 </tbody>
 </table>
-<h3 id="using-as-a-local-scratch">4.3.1. Using as a local scratch</h3>
+<h3 id="using-as-a-local-scratch">Using as a local scratch</h3>
 <p>You can use local storages attached to compute or memory-intensive nodes on which your jobs are running as temporal local scratch without specifying any additional options.
 Note that the amount of the local storage you can use is determined by "Resource type". For more detail on "Resource type", please refer to <a href="../03/#job-execution-resource">Job Execution Resource</a>.
 The local storage path is different for each job and you can access to local storage by using <a href="../03/#environment-variables">environment variables</a> <code>SGE_LOCALDIR</code>.</p>
@@ -1326,7 +1326,7 @@ cp -rp <span class="nv">$SGE_LOCALDIR</span>/foo.txt <span class="nv">$HOME</spa
 <p class="admonition-title">Warning</p>
 <p>The file stored under <code>$SGE_LOCALDIR</code> directory is removed when job finished. The required files need to be moved to Home area or Group area in job script using <code>cp</code> command.</p>
 </div>
-<h3 id="using-as-a-beeond-storage">4.3.2. Using as a BeeOND storage</h3>
+<h3 id="using-as-a-beeond-storage">Using as a BeeOND storage</h3>
 <p>By using the BeeGFS On Demand (BeeOND), you can aggregate local storages attached to compute nodes on which your job is running to use as a temporal distributed shared file system.
 To use BeeOND, you need to submit job with <code>-l USE_BEEOND=1</code> option.
 And you need to specify <code>-l rt_F</code> option in this case, because node must be exclusively allocated to job.</p>
@@ -1359,7 +1359,7 @@ cp -rp /beeond/foo.txt <span class="nv">$HOME</span>/test/foo.txt
 <p class="admonition-title">Warning</p>
 <p>The file stored under <code>/beeond</code> directory is removed when job finished. The required files need to be moved to Home area or Group area in job script using <code>cp</code> command.</p>
 </div>
-<h4 id="advanced-beeond-option-servers">[Advanced Option] Configure BeeOND Servers</h4>
+<h4 id="advanced-option-configure-beeond-servers">[Advanced Option] Configure BeeOND Servers</h4>
 <p>A BeeOND filesystem partition consists of two kinds of services running on compute nodes: one is storage service which stores files, and the other is metadata service which stores file matadata.  Each service runs on compute nodes.  We refer to a compute node which runs storage service as a storage server and a compute node which runs metadata service as a metadata server.  Users can specify number of storage servers and metadata servers.</p>
 <p>The default values for counts of metadata server and storage server are as follows.</p>
 <table>
@@ -1430,7 +1430,7 @@ beegfs-df -p /beeond
 </code></pre></div>
 
 
-<h4 id="advanced-beeond-option-file-striping">[Advanced Option] File Striping</h4>
+<h4 id="advanced-option-file-striping_1">[Advanced Option] File Striping</h4>
 <p>Files are split into small chunks and stored in multiple storage servers in a BeeOND partition.  Users can change file striping configuration of BeeOND.</p>
 <p>The default configuration of the file striping is as follows.</p>
 <table>
