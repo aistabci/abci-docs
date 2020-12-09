@@ -8,6 +8,9 @@ Using Spack on ABCI enables easily installing software which is not officially s
     We tested Spack on Feb 3rd 2020, and we used Spack 0.13.3 which was the latest version at that time.
 
 !!! caution
+    Spack is a tool for introducing software for HPC packaged in a proprietary package format and is not compatible with packages provided by Linux distributions. Therefore, it cannot be used as a replacement for commands like yum, and apt.
+
+!!! caution
     Spack installs software under a directory where Spack was installed.
     Manage software installed by Sapck by yourself, for example, by uninstalling unused software, because Spack consumes large amount of disk space if you install many software.
 
@@ -20,7 +23,7 @@ You can install Spack by cloning from GitHub and checking out the version you wa
 ```
 [username@es1 ~]$ git clone https://github.com/spack/spack.git
 [username@es1 ~]$ cd ./spack
-[username@es1 ~/spack]$ git checkout v0.13.3
+[username@es1 ~/spack]$ git checkout v0.16.0
 ```
 
 After that, you can use Spack by loading a setup shell script.
@@ -33,29 +36,26 @@ After that, you can use Spack by loading a setup shell script.
 #### Adding Compilers {#adding-compilers}
 
 First,  have to register compilers you want to use in Spack.
-It can be done by `spack compiler find` command.
-
-Here, we assume that you register GCC 4.4.7, 4.8.5 and 7.4.0.
+You execute `spack compiler list` command which shows the registered compilers.
 Spack automatically finds GCC 4.4.7 and 4.8.5 because they are installed in the default path (/usr/bin).
-You have to do `module load` of GCC 7.4.0 because it is provided as a software module.
-```
-[username@es1 ~]$ module load gcc/7.4.0
-[username@es1 ~]$ spack compiler find
-[username@es1 ~]$ module purge
-```
-
-You can confirm the registration completion if you see the following output when you execute `spack compiler list` command which shows the registered compilers.
 ```
 [username@es1 ~]$ spack compiler list
 ==> Available compilers
 -- gcc centos7-x86_64 -------------------------------------------
-gcc@7.4.0  gcc@4.8.5  gcc@4.4.7
+gcc@4.8.5  gcc@4.4.7
 ```
 
-Edit the compiler configuration file `$HOME/.spack/linux/compilers.yaml` to set rpath for GCC 7.4.0.
-
+GCC 4.8.5 and 7.4.0 configuration file (compilers.yaml), which are provided by ABCI, can be used by copying it to the user environment as follows
 ```
-(snip)
+[username@es1 ~]$ cp /bb/apps/spack/compilers.yaml ${HOME}/.spack/linux/
+[username@es1 ~]$ spack compiler list
+==> Available compilers
+-- gcc centos7-x86_64 -------------------------------------------
+gcc@7.4.0  gcc@4.8.5
+```
+compilers.yaml
+```
+compilers:
 - compiler:
     paths:
       cc: /apps/gcc/7.4.0/bin/gcc
@@ -66,19 +66,11 @@ Edit the compiler configuration file `$HOME/.spack/linux/compilers.yaml` to set 
     target: x86_64
     modules: []
     environment: {}
-    extra_rpaths:                <- Edit here
-      - /apps/gcc/7.4.0/lib64    <- Add this line
+    extra_rpaths:
+      - /apps/gcc/7.4.0/lib64
     flags: {}
     spec: gcc@7.4.0
 (snip)
-```
-
-The default compiler can be specified in the configuration file `$HOME/.spack/linux/packages.yaml`.
-Add the following lines to the file to specify GCC 4.8.5 as the default compiler.
-```
-packages:
-  all:
-    compiler: [gcc@4.8.5]
 ```
 
 #### Adding ABCI Software {#adding-abci-software}
@@ -88,36 +80,28 @@ Spack, by default, installs another copies of software which is already supporte
 As it is a waste of disk space, we recommend to configure Spack to *refer to* software supported by ABCI.
 
 Software referred by Spack can be defined in the configuration file `$HOME/.spack/linux/packages.yaml`.
-Create the file by the following contents (it includes the default compiler configuration).
+You can *refer to* the ABCI software by copying the configuration file (packages.yaml), which describes the configuration of CUDA, OpenMPI, Mvapich2 and cmake provided by ABCI, into your environment.
+```
+[username@es1 ~]$ cp /bb/apps/spack/packages.yaml ${HOME}/.spack/linux/
+```
+
+packages.yaml
 ```
 packages:
   cuda:
-    paths:
-      cuda@abci-8.0.61.2:   /apps/cuda/8.0.61.2
-      cuda@abci-9.0.176.4:  /apps/cuda/9.0.176.4
-      cuda@abci-9.1.85.3:   /apps/cuda/9.1.85.3
-      cuda@abci-9.2.148.1:  /apps/cuda/9.2.148.1
-      cuda@abci-10.0.130.1: /apps/cuda/10.0.130.1
-      cuda@abci-10.1.243:   /apps/cuda/10.1.243
-      cuda@abci-10.2.89:    /apps/cuda/10.2.89
-    buildable: False
-  openmpi:
-    paths:
-      openmpi@abci-2.1.6-nocuda%gcc@4.8.5: /apps/openmpi/2.1.6/gcc4.8.5
-      openmpi@abci-3.1.3-nocuda%gcc@4.8.5: /apps/openmpi/3.1.3/gcc4.8.5
-  mvapich2:
-    paths:
-      mvapich2@abci-2.3-nocuda%gcc@4.8.5:   /apps/mvapich2/2.3/gcc4.8.5
-      mvapich2@abci-2.3.2-nocuda%gcc@4.8.5: /apps/mvapich2/2.3.2/gcc4.8.5
-  cmake:
-    paths:
-      cmake@abci-3.11.4: /apps/cmake/3.11.4
-  all:
-    compiler: [gcc@4.8.5]
+    buildable: false
+    externals:
+    - spec: cuda@8.0.61.2%gcc@4.8.5
+      modules:
+      - cuda/8.0/8.0.61.2
+    - spec: cuda@8.0.61.2%gcc@7.4.0
+      modules:
+      - cuda/8.0/8.0.61.2
+(snip)
 ```
 
 The above example configures CUDA, OpenMPI, MVAPICH and CMake.
-In case of `cuda@abci-8.0.61.2: /apps/cuda/8.0.61.2`, it means that Spack refers to software installed in `/apps/cuda/8.0.61.2`, instead of installing another copy of CUDA, when you conduct the installation of CUDA version abci-8.0.61.2.
+In case of `spec: cuda@8.0.61.2%gcc@4.8.5`, `modules:`, `- cuda/8.0/8.0.61.2`, it means that Spack refers to Environment Modules of `cuda/8.0/8.0.61.2`, instead of installing another copy of CUDA, when you conduct the installation of CUDA version 8.0.61.2.
 `buildable: False` defined under CUDA section prohibits Spack to install other versions of CUDA specified here.
 If you let Spack install versions of CUDA which are not supported by ABCI, remove this directive.
 
@@ -136,20 +120,22 @@ For detail, please refer to [the official document](https://spack.readthedocs.io
 [username@es1 ~]$ spack compiler list
 ==> Available compilers
 -- gcc centos7-x86_64 -------------------------------------------
-gcc@7.4.0  gcc@4.8.5  gcc@4.4.7
+gcc@7.4.0  gcc@4.8.5
 ```
 
 `compiler info` sub-command shows the detail of a specific compiler.
 ```
 [username@es1 ~]$ spack compiler info gcc@4.8.5
 gcc@4.8.5:
-	paths:
-		cc = /usr/bin/gcc
-		cxx = /usr/bin/g++
-		f77 = /usr/bin/gfortran
-		fc = /usr/bin/gfortran
-	modules  = []
-	operating system  = centos7
+    paths:
+        cc = /usr/bin/gcc
+        cxx = /usr/bin/g++
+        f77 = /usr/bin/gfortran
+        fc = /usr/bin/gfortran
+    Extra rpaths:
+        /usr/lib/gcc/x86_64-redhat-linux/4.8.5
+    modules  = []
+    operating system  = centos7
 ```
 
 ### Software Management Operations {#software-management-operations}
@@ -228,14 +214,15 @@ Adding `-dl` option to `find` sub-command shows hashes and dependencies of insta
 ```
 [username@es1 ~]$ spack find -dl openmpi
 -- linux-centos7-skylake_avx512 / gcc@7.4.0 ---------------------
-sif5fzv openmpi@3.1.4
-xqsp4xn     hwloc@1.11.11
-3movoj3         libpciaccess@0.13.5
-d6xghgt         libxml2@2.9.9
-zydtv5a             libiconv@1.16
-y6e4zi2             xz@5.2.4
-kv37bl2             zlib@1.2.11
-onnjyv2         numactl@2.0.12
+6pxjftg openmpi@3.1.1
+ahftjey     hwloc@1.11.11
+vf52amo         cuda@9.0.176.4
+edtwt6g         libpciaccess@0.16
+bt74u75         libxml2@2.9.10
+qazxaa4             libiconv@1.16
+jb22kvg             xz@5.2.5
+pkmj6e7             zlib@1.2.11
+2dq7ece         numactl@2.0.14
 ```
 
 To see the detail about a specific software, use `info` sub-command.
@@ -267,28 +254,11 @@ Description:
 
 ### Use of Installed Software {#use-of-installed-software}
 
-Software installed by Spack is automatically registered to the Environment Modules.
-As with modules provided by ABCI, the installed software can be used by loading them.
+Software installed with Spack is available with the `spack load` command.
+Like the module provided by ABCI, the installed software can be be loaded and used.
 ```
-[username@es1 ~]$ module load xxxxx
+[username@es1 ~]$ spack load xxxxx
 ```
-
-To update modules of all software installed by Spack, type the following command.
-```
-[username@es1 ~]$ spack module tcl refresh
-```
-
-To remove modules of all software installed by Spack, type the following command.
-```
-[username@es1 ~]$ spack module tcl rm
-```
-
-!!! note
-    Try to reload the Spack setup script if the installed software do not appear in the Environment Modules.
-
-    ```
-    [username@es1 ~]$ source ${HOME}/spack/share/spack/setup-env.sh
-    ```
 
 
 ## Example Software Installation {#example-software-installation}
@@ -303,8 +273,8 @@ It is easy to use Spack to install unsupported versions of CUDA-aware OpenMPI.
 This is an example of installing OpenMPI 3.1.1 that uses CUDA 10.1.243.
 You have to use a compute node to install it.
 ```
-[username@g0001 ~]$ spack install cuda@abci-10.1.243
-[username@g0001 ~]$ spack install openmpi@3.1.1 +cuda schedulers=sge fabrics=auto ^cuda@abci-10.1.243
+[username@g0001 ~]$ spack install cuda@10.1.243
+[username@g0001 ~]$ spack install openmpi@3.1.1 +cuda schedulers=sge fabrics=auto ^cuda@10.1.243
 [username@g0001 ~]$ spack find --paths openmpi@3.1.1
 ==> 1 installed package
 -- linux-centos7-haswell / gcc@4.8.5 ----------------------------
@@ -312,14 +282,14 @@ openmpi@3.1.1  ${SPACK_ROOT}/opt/spack/linux-centos7-haswell/gcc-4.8.5/openmpi-3
 [username@g0001 ~]$ echo "btl_openib_warn_default_gid_prefix = 0" >> ${SPACK_ROOT}/opt/spack/linux-centos7-haswell/gcc-4.8.5/openmpi-3.1.1-4mmghhfuk5n7my7g3ko2zwzlo4wmoc5v/etc/openmpi-mca-params.conf
 ```
 
-Line #1 installs CUDA version `abci-10.1.243` so that Spack uses a CUDA provided by ABCI.
+Line #1 installs CUDA version `10.1.243` so that Spack uses a CUDA provided by ABCI.
 Line #2 installs OpenMPI 3.1.1 as the same configuration with [this page](../appendix/installed-software.md#open-mpi).
 Meanings of the installation options are as follows.
 
 - `+cuda`: Build with CUDA support
 - `schedulers=sge`: Specify how to invoke MPI processes.  You have to specify `sge` as ABCI uses Univa Grid Engine which is compatible with SGE.
 - `fabrics=auto`: Specify a communication library.
-- `^cuda@abci-10.1.243`: Specify a CUDA to be used.  `^` is used to specify software dependency.
+- `^cuda@10.1.243`: Specify a CUDA to be used.  `^` is used to specify software dependency.
 
 Line #4 edits a configuration file to turn off runtime warnings (optional).
 For this purpose, Line #3 checks the installation path of OpenMPI.
@@ -327,49 +297,22 @@ For this purpose, Line #3 checks the installation path of OpenMPI.
 Spack can manage variants of the same version of software.
 This is an example that you additionally install OpenMPI 3.1.1 that uses CUDA 9.0.176.4.
 ```
-[username@g0001 ~]$ spack install cuda@abci-9.0.176.4
-[username@g0001 ~]$ spack install openmpi@3.1.1 +cuda schedulers=sge fabrics=auto ^cuda@abci-9.0.176.4
+[username@g0001 ~]$ spack install cuda@9.0.176.4
+[username@g0001 ~]$ spack install openmpi@3.1.1 +cuda schedulers=sge fabrics=auto ^cuda@9.0.176.4
 ```
 
 #### How to Use {#how-to-use}
 
 This is an example of using "OpenMPI 3.1.1 that uses CUDA 10.1.243" installed above.
-
-As you installed two OpenMPI 3.1.1, you can see the following modules.
+By specifying the version of OpenMPI and CUDA dependencies during the spack load run, it is possible to use a specific version.
 ```
-[username@es1 ~]$ module avail openmpi
-------------------------- $HOME/spack/share/spack/modules/linux-centos7-haswell -------------------------
-openmpi-3.1.1-gcc-4.8.5-4mmghhf             openmpi-3.1.1-gcc-4.8.5-zqwwrqy
-(snip)
+[username@es1 ~]$ spack load openmpi@3.1.1 ^cuda@10.1.243
 ```
 
-First of all, you have to identify an OpenMPI module you want to use.
-The name of a module created by Spack includes the following five attributes: (1) name of a software, (2) version of the software, (3) compiler used to build, (4) version of the compiler and (5) hash of the built software.
-You have to identify the module by (5) hash because all (1) to (4) are same in this case.
-
-You can get the hash of OpenMPI that uses CUDA 10.1.243 by checking the dependencies.
+To build an MPI program using the above OpenMPI, you need to load OpenMPI installed by Spack .
 ```
-[username@es1 ~]$ spack find -dl openmpi
-==> 2 installed packages
--- linux-centos7-haswell / gcc@4.8.5 ----------------------------
-4mmghhf openmpi@3.1.1
-glgpfmf     hwloc@1.11.11
-6ddc273         cuda@abci-10.1.243
-(snip)
-
-zqwwrqy openmpi@3.1.1
-b4gs3k5     hwloc@1.11.11
-l6ayrkp         cuda@abci-9.0.176.4
-(snip)
-```
-
-You can find that OpenMPI having hash `4mmghhf` is what you want, and you need to use a module named `openmpi-3.1.1-gcc-4.8.5-4mmghhf`.
-
-To build an MPI program using the above OpenMPI, you need to load a CUDA module provided by ABCI and the  OpenMPI module.
-```
-source ${HOME}/spack/share/spack/setup-env.sh
-[username@g0001 ~]$ module load cuda/10.1/10.1.243
-[username@g0001 ~]$ module load openmpi-3.1.1-gcc-4.8.5-4mmghhf
+[username@g0001 ~]$ source ${HOME}/spack/share/spack/setup-env.sh
+[username@g0001 ~]$ spack load openmpi@3.1.1 ^cuda@10.1.243
 [username@g0001 ~]$ mpicc ...
 ```
 
@@ -380,10 +323,8 @@ A job script that runs the built MPI program is as follows.
 #$-j y
 #$-cwd
 
-source /etc/profile.d/modules.sh
 source ${HOME}/spack/share/spack/setup-env.sh
-module load cuda/10.1/10.1.243
-module load openmpi-3.1.1-gcc-4.8.5-4mmghhf
+spack load openmpi@3.1.1 ^cuda@10.1.243
 
 NUM_NODES=${NHOSTS}
 NUM_GPUS_PER_NODE=4
@@ -392,9 +333,9 @@ MPIOPTS="-n ${NUM_PROCS} -map-by ppr:${NUM_GPUS_PER_NODE}:node -x PATH -x LD_LIB
 mpiexec ${MPIOPTS} YOUR_PROGRAM
 ```
 
-If you no more use the OpenMPI, you can uninstall it by specifying its hash.
+If you no more use the OpenMPI, you can uninstall it by specifying the version and dependencies.
 ```
-[username@es1 ~]$ spack uninstall /4mmghhf
+[username@es1 ~]$ spack uninstall openmpi@3.1.1 ^cuda@10.1.243
 ```
 
 
@@ -404,10 +345,10 @@ MVAPICH2 modules provided by ABCI does not support CUDA.
 If you want to use CUDA-aware MVAPICH2, install by yourself referring to the documents below.
 
 You have to use a compute node to build CUDA-aware MVAPICH2.
-As with [OpenMPI](#cuda-aware-openmpi) above, you first install CUDA and then install MVAPICH2 by enabling CUDA (`+cuda`) and specifying a communication library (`fabrics=mrail`) and CUDA dependency (`^cuda@abci-10.1.243`).
+As with [OpenMPI](#cuda-aware-openmpi) above, you first install CUDA and then install MVAPICH2 by enabling CUDA (`+cuda`) and specifying a communication library (`fabrics=mrail`) and CUDA dependency (`^cuda@10.1.243`).
 ```
-[username@g0001 ~]$ spack install cuda@abci-10.1.243
-[username@g0001 ~]$ spack install mvapich2@2.3 +cuda fabrics=mrail ^cuda@abci-10.1.243
+[username@g0001 ~]$ spack install cuda@10.1.243
+[username@g0001 ~]$ spack install mvapich2@2.3.2 +cuda fabrics=mrail ^cuda@10.1.243
 ```
 
 To use CUDA-aware MVAPICH2, as with OpenMPI, load modules of a CUDA and the installed MVAPICH2.
@@ -418,10 +359,8 @@ Here is a job script example.
 #$-j y
 #$-cwd
 
-source /etc/profile.d/modules.sh
 source ${HOME}/spack/share/spack/setup-env.sh
-module load cuda/10.1/10.1.243
-module load mvapich2-2.3-gcc-4.8.5-wy2qkke
+spack load mvapich2@2.3.2 ^cuda@10.1.243
 
 NUM_NODES=${NHOSTS}
 NUM_GPUS_PER_NODE=4
@@ -441,8 +380,8 @@ Although manually installing it is messy as it depends on many libraries, using 
 The following example installs MPIFileUtils by using OpenMPI 2.1.6 provided by ABCI.
 Line #1 installs OpenMPI to be used, and Line #2 installs MPIFileUtils by specifying a dependency for it.
 ```
-[username@es1 ~]$ spack install openmpi@abci-2.1.6-nocuda
-[username@es1 ~]$ spack install mpifileutils ^openmpi@abci-2.1.6-nocuda
+[username@es1 ~]$ spack install openmpi@2.1.6
+[username@es1 ~]$ spack install mpifileutils ^openmpi@2.1.6
 ```
 
 To use MPIFileUtils, you have to load modules of OpenMPI 2.1.6 and MPIFileUtils.
@@ -454,10 +393,8 @@ This is an example job script.
 #$-j y
 #$-cwd
 
-source /etc/profile.d/modules.sh
 source ${HOME}/spack/share/spack/setup-env.sh
-module load openmpi/2.1.6
-module load mpifileutils-0.9.1-gcc-4.8.5-qdv7523
+spack load mpifileutils@0.10.1 ^openmpi@2.1.6
 
 NPPN=5
 NMPIPROC=$(( $NHOSTS * $NPPN ))

@@ -317,7 +317,7 @@ Spackでは、同一ソフトウェアを異なる設定で複数インストー
 [username@es1 ~]$ spack load openmpi@3.1.1 ^cuda@10.1.243
 ```
 
-計算ノード上でプログラムをコンパイルする場合は、SpackでインストールしたOpenMPIを利用してからMPIを起動します。
+計算ノード上でプログラムをコンパイルする場合は、SpackでインストールしたOpenMPIを呼び出してからMPIを起動します。
 ```
 [username@g0001 ~]$ source ${HOME}/spack/share/spack/setup-env.sh
 [username@g0001 ~]$ spack load openmpi@3.1.1 ^cuda@10.1.243
