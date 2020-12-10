@@ -8,7 +8,9 @@ Using Spack on ABCI enables easily installing software which is not officially s
     We tested Spack on Feb 3rd 2020, and we used Spack 0.13.3 which was the latest version at that time.
 
 !!! caution
-    Spack is a tool for introducing software for HPC packaged in a proprietary package format and is not compatible with packages provided by Linux distributions. Therefore, it cannot be used as a replacement for commands like yum, and apt.
+    Spack installs software packaged in its original format which is not compatible with packages
+    provided by any Linux distributions, such as `.deb` and `.rpm`.
+    Therefore, Spack is not a replacement of `yum` or `apt` system.
 
 !!! caution
     Spack installs software under a directory where Spack was installed.
@@ -35,9 +37,9 @@ After that, you can use Spack by loading a setup shell script.
 
 #### Adding Compilers {#adding-compilers}
 
-First,  have to register compilers you want to use in Spack.
-You execute `spack compiler list` command which shows the registered compilers.
-Spack automatically finds GCC 4.4.7 and 4.8.5 because they are installed in the default path (/usr/bin).
+First, you have to register compilers you want to use in Spack.
+
+`spack compiler list` command automatically detects and registers compilers which are located in the default path (/usr/bin).
 ```
 [username@es1 ~]$ spack compiler list
 ==> Available compilers
@@ -45,64 +47,48 @@ Spack automatically finds GCC 4.4.7 and 4.8.5 because they are installed in the 
 gcc@4.8.5  gcc@4.4.7
 ```
 
-GCC 4.8.5 and 7.4.0 configuration file (compilers.yaml), which are provided by ABCI, can be used by copying it to the user environment as follows
+ABCI provides a pre-configured compiler definition file for Spack, `compilers.yaml`.
+Copying this file to your environment sets up GCC 4.8.5 and 7.4.0 to be used in Spack.
 ```
-[username@es1 ~]$ cp /bb/apps/spack/compilers.yaml ${HOME}/.spack/linux/
+[username@es1 ~]$ cp /apps/spack/compilers.yaml ${HOME}/.spack/linux/
 [username@es1 ~]$ spack compiler list
 ==> Available compilers
 -- gcc centos7-x86_64 -------------------------------------------
 gcc@7.4.0  gcc@4.8.5
 ```
-compilers.yaml
-```
-compilers:
-- compiler:
-    paths:
-      cc: /apps/gcc/7.4.0/bin/gcc
-      cxx: /apps/gcc/7.4.0/bin/g++
-      f77: /apps/gcc/7.4.0/bin/gfortran
-      fc: /apps/gcc/7.4.0/bin/gfortran
-    operating_system: centos7
-    target: x86_64
-    modules: []
-    environment: {}
-    extra_rpaths:
-      - /apps/gcc/7.4.0/lib64
-    flags: {}
-    spec: gcc@7.4.0
-(snip)
-```
+
 
 #### Adding ABCI Software {#adding-abci-software}
 
-Spack automatically resolves software dependencies and install dependant software.
+Spack automatically resolves software dependencies and installs dependant software.
 Spack, by default, installs another copies of software which is already supported by ABCI, such as CUDA and OpenMPI.
 As it is a waste of disk space, we recommend to configure Spack to *refer to* software supported by ABCI.
 
 Software referred by Spack can be defined in the configuration file `$HOME/.spack/linux/packages.yaml`.
-You can *refer to* the ABCI software by copying the configuration file (packages.yaml), which describes the configuration of CUDA, OpenMPI, Mvapich2 and cmake provided by ABCI, into your environment.
+ABCI provides a pre-configured `packages.yaml` which defines mappings of Spack package and software installed on ABCI.
+Copying this file to your environment lets Spack use installed CUDA, OpenMPI, MVAPICH, cmake and etc.
 ```
-[username@es1 ~]$ cp /bb/apps/spack/packages.yaml ${HOME}/.spack/linux/
+[username@es1 ~]$ cp /apps/spack/packages.yaml ${HOME}/.spack/linux/
 ```
 
-packages.yaml
+packages.yaml (excerpt)
 ```
 packages:
   cuda:
     buildable: false
     externals:
-    - spec: cuda@8.0.61.2%gcc@4.8.5
+(snip)
+    - spec: cuda@10.2.89%gcc@4.8.5
       modules:
-      - cuda/8.0/8.0.61.2
-    - spec: cuda@8.0.61.2%gcc@7.4.0
+      - cuda/10.2/10.2.89
+    - spec: cuda@10.2.89%gcc@7.4.0
       modules:
-      - cuda/8.0/8.0.61.2
+      - cuda/10.2/10.2.89
 (snip)
 ```
 
-The above example configures CUDA, OpenMPI, MVAPICH and CMake.
-In case of `spec: cuda@8.0.61.2%gcc@4.8.5`, `modules:`, `- cuda/8.0/8.0.61.2`, it means that Spack refers to Environment Modules of `cuda/8.0/8.0.61.2`, instead of installing another copy of CUDA, when you conduct the installation of CUDA version 8.0.61.2.
-`buildable: False` defined under CUDA section prohibits Spack to install other versions of CUDA specified here.
+After you copy this file, when you let Spack install CUDA version 10.2.89, it use `cuda/10.2/10.2.89` environment module, instead of installing another copy of CUDA.
+`buildable: false` defined under CUDA section prohibits Spack to install other versions of CUDA specified here.
 If you let Spack install versions of CUDA which are not supported by ABCI, remove this directive.
 
 Please refer to [the official document](https://spack.readthedocs.io/en/latest/build_settings.html) for detail about `packages.yaml`.
@@ -259,6 +245,12 @@ Like the module provided by ABCI, the installed software can be be loaded and us
 ```
 [username@es1 ~]$ spack load xxxxx
 ```
+`spack load` sets environment variables, such as `PATH`, `MANPATH`, `CPATH`, `LD_LIBRARY_PATH`, so that the software can be used.
+
+If you no more use, type `spack unload` to unset the variables.
+```
+[username@es1 ~]$ spack unload xxxxx
+```
 
 
 ## Example Software Installation {#example-software-installation}
@@ -304,7 +296,7 @@ This is an example that you additionally install OpenMPI 3.1.1 that uses CUDA 9.
 #### How to Use {#how-to-use}
 
 This is an example of using "OpenMPI 3.1.1 that uses CUDA 10.1.243" installed above.
-By specifying the version of OpenMPI and CUDA dependencies during the spack load run, it is possible to use a specific version.
+Specify the version of OpenMPI and CUDA dependency to load the software.
 ```
 [username@es1 ~]$ spack load openmpi@3.1.1 ^cuda@10.1.243
 ```
@@ -374,11 +366,12 @@ mpiexec ${MPIOPTS} YOUR_PROGRAM
 
 ### MPIFileUtils {#mpifileutils}
 
-[MPIFileUtils](https://hpc.github.io/mpifileutils/) a file transfer tool for supercomputers that use MPI.
+[MPIFileUtils](https://hpc.github.io/mpifileutils/) a file transfer tool that uses MPI for communication between nodes.
 Although manually installing it is messy as it depends on many libraries, using Spack enables an easy install of MPIFileUtils.
 
-The following example installs MPIFileUtils by using OpenMPI 2.1.6 provided by ABCI.
-Line #1 installs OpenMPI to be used, and Line #2 installs MPIFileUtils by specifying a dependency for it.
+The following example installs MPIFileUtils that uses OpenMPI 2.1.6.
+Line #1 installs OpenMPI, and Line #2 installs MPIFileUtils by specifying a dependency on OpenMPI.
+If you copied `packages.yaml` as described in [Adding ABCI Software](#adding-abci-software), OpenMPI 2.1.6 provided by ABCI is used.
 ```
 [username@es1 ~]$ spack install openmpi@2.1.6
 [username@es1 ~]$ spack install mpifileutils ^openmpi@2.1.6

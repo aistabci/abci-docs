@@ -52,31 +52,11 @@ gcc@4.8.5  gcc@4.4.7
 ABCIが提供しているGCC 4.8.5並びに7.4.0の設定ファイル(compilers.yaml)を配置しておりますので、以下のようにユーザ環境にコピーすることでコンパイラを利用することが可能です。
 
 ```
-[username@es1 ~]$ cp /bb/apps/spack/compilers.yaml ${HOME}/.spack/linux/
+[username@es1 ~]$ cp /apps/spack/compilers.yaml ${HOME}/.spack/linux/
 [username@es1 ~]$ spack compiler list
 ==> Available compilers
 -- gcc centos7-x86_64 -------------------------------------------
 gcc@7.4.0  gcc@4.8.5
-```
-
-compilers.yaml
-```
-compilers:
-- compiler:
-    paths:
-      cc: /apps/gcc/7.4.0/bin/gcc
-      cxx: /apps/gcc/7.4.0/bin/g++
-      f77: /apps/gcc/7.4.0/bin/gfortran
-      fc: /apps/gcc/7.4.0/bin/gfortran
-    operating_system: centos7
-    target: x86_64
-    modules: []
-    environment: {}
-    extra_rpaths:
-      - /apps/gcc/7.4.0/lib64
-    flags: {}
-    spec: gcc@7.4.0
-(snip)
 ```
 
 
@@ -87,29 +67,30 @@ Spackはソフトウェアの依存関係を解決して、依存するソフト
 ディスクスペースの浪費となりますので、ABCIが提供するソフトウェアは、Spackから*参照する*ように設定することをお勧めします。
 
 Spackが参照するソフトウェアの設定は`$HOME/.spack/linux/packages.yaml`に定義します。
-ABCIで提供するCUDA、OpenMPI、Mvapich2、cmakeの設定を記載した設定ファイル(packages.yaml)をユーザ環境にコピーすることでABCIのソフトウェアを*参照する*ことができます。
+ABCIで提供するCUDA、OpenMPI、MVAPICH、cmake等の設定を記載した設定ファイル(packages.yaml)をユーザ環境にコピーすることでABCIのソフトウェアを*参照する*ことができます。
 
 ```
-[username@es1 ~]$ cp /bb/apps/spack/packages.yaml ${HOME}/.spack/linux/
+[username@es1 ~]$ cp /apps/spack/packages.yaml ${HOME}/.spack/linux/
 ```
 
-packages.yaml
+packages.yaml (抜粋)
 ```
 packages:
   cuda:
     buildable: false
     externals:
-    - spec: cuda@8.0.61.2%gcc@4.8.5
+(snip)
+    - spec: cuda@10.2.89%gcc@4.8.5
       modules:
-      - cuda/8.0/8.0.61.2
-    - spec: cuda@8.0.61.2%gcc@7.4.0
+      - cuda/10.2/10.2.89
+    - spec: cuda@10.2.89%gcc@7.4.0
       modules:
-      - cuda/8.0/8.0.61.2
+      - cuda/10.2/10.2.89
 (snip)
 ```
 
-例えば、`spec: cuda@8.0.61.2%gcc@4.8.5`,`modules:`,`- cuda/8.0/8.0.61.2`では、SpackでCUDAのバージョン8.0.61.2のインストールを実行すると、実際にはインストールはせずに、Environment Modulesの`cuda/8.0/8.0.61.2`を使用することを意味します。
-CUDAセクションでのみ記述されている`buildable: False`は、Spackにここで指定しているバージョン以外のCUDAをインストールさせないことを意味しています。
+このファイルを設置すると、例えば、SpackでCUDAのバージョン10.2.89のインストールを実行すると、実際にはインストールはされずに、SpackがEnvironment Modulesの`cuda/10.2/10.2.89`を使用するようになります。
+CUDAセクションで`buildable: false`を指定することにより、Spackはここで指定しているバージョン以外のCUDAをインストールしなくなります。
 ABCIが提供していないバージョンのCUDAをSpackでインストールしたい場合は、この記述を削除してください。
 
 `packages.yaml`ファイルの設定の詳細は[公式ドキュメント](https://spack.readthedocs.io/en/latest/build_settings.html)を参照ください。
@@ -266,7 +247,12 @@ ABCIが提供するモジュール同様に、ロードして使用できます�
 ```
 [username@es1 ~]$ spack load xxxxx
 ```
+`spack load`はソフトウェアを使用するための`PATH`、`MANPATH`、`CPATH`、`LD_LIBRARY_PATH`等の環境変数を設定します。
 
+不要になった場合は、`spack unload`します。
+```
+[username@es1 ~]$ spack unload xxxxx
+```
 
 
 ## ソフトウェア導入事例 {#example-software-installation}
@@ -385,8 +371,9 @@ mpiexec ${MPIOPTS} YOUR_PROGRAM
 [MPIFileUtils](https://hpc.github.io/mpifileutils/)は、MPIを用いたファイル転送ツールです。
 複数のライブラリに依存するため、マニュアルでインストールするのは面倒ですが、Spackを用いると簡単にインストールできます。
 
-以下の例では、ABCIがモジュール提供するOpenMPI 2.1.6を使用して、MPIFileUtilsをインストールします。
+以下の例では、OpenMPI 2.1.6を使用して、MPIFileUtilsをインストールします。
 該当するOpenMPIをインストールした後で（1行目）、それへの依存を指定してMPIFileUtilsをインストールします（2行目）。
+[ABCIソフトウェアの登録](#adding-abci-software)にてpackages.yamlをコピーした場合、ABCIが提供するOpenMPI 2.1.6が使用されます。
 ```
 [username@es1 ~]$ spack install openmpi@2.1.6
 [username@es1 ~]$ spack install mpifileutils ^openmpi@2.1.6
