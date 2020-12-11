@@ -5,7 +5,7 @@ By using Spack, you can easily install software packages by changing their versi
 Using Spack on ABCI enables easily installing software which is not officially supported by ABCI.
 
 !!! note
-    We tested Spack on Feb 3rd 2020, and we used Spack 0.13.3 which was the latest version at that time.
+    We tested Spack using bash on Dec 3rd 2020, and we used Spack 0.16.0 which was the latest version at that time.
 
 !!! caution
     Spack installs software packaged in its original format which is not compatible with packages
