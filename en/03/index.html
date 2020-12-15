@@ -536,6 +536,13 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#how-to-use-reserved-node" class="md-nav__link">
+    How to use reserved node
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -1046,6 +1053,18 @@
 
 
   <li class="md-nav__item">
+    <a href="../abci-singularity-endpoint/" title="ABCI Singularity Endpoint" class="md-nav__link">
+      ABCI Singularity Endpoint
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
     <a href="../faq/" title="FAQ" class="md-nav__link">
       FAQ
     </a>
@@ -1107,13 +1126,13 @@
 
   <li class="md-nav__item md-nav__item--nested">
     
-      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-12" type="checkbox" id="nav-12">
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-13" type="checkbox" id="nav-13">
     
-    <label class="md-nav__link" for="nav-12">
+    <label class="md-nav__link" for="nav-13">
       Links
     </label>
     <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
-      <label class="md-nav__title" for="nav-12">
+      <label class="md-nav__title" for="nav-13">
         Links
       </label>
       <ul class="md-nav__list" data-md-scrollfix>
@@ -1400,6 +1419,13 @@
           <li class="md-nav__item">
   <a href="#cancel-a-reservation" class="md-nav__link">
     Cancel a reservation
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#how-to-use-reserved-node" class="md-nav__link">
+    How to use reserved node
   </a>
   
 </li>
@@ -1921,11 +1947,11 @@ When using any of the On-demand, Spot, and Reserved services, you need to specif
 </tr>
 <tr>
 <td align="left">-t <em>start</em>[<em>-end</em>[<em>:step</em>]]</td>
-<td align="left">Specify task ID of array job. suboption is <em>start_number</em>[-<em>end_number</em>[<em>:step_size</em>]]</td>
+<td align="left">Specify task ID of array job. The suboption is <em>start_number</em>[-<em>end_number</em>[<em>:step_size</em>]]</td>
 </tr>
 <tr>
 <td align="left">-hold_jid <em>job_id</em></td>
-<td align="left">Specify job ID having dependency. the submitted job is not executed until dependent job finished.</td>
+<td align="left">Specify job ID having dependency. The submitted job is not executed until dependent job finished. When this option is used by <code>qrsh</code> command, the command must be specified as an argument.</td>
 </tr>
 <tr>
 <td align="left">-ar <em>ar_id</em></td>
@@ -1972,13 +1998,6 @@ When using any of the On-demand, Spot, and Reserved services, you need to specif
 <p class="admonition-title">Note</p>
 <p>If ABCI point is insufficient when executing an interactive job with On-demand service, the execution is failed.</p>
 </div>
-<p>To run an interactive job using the compute resources reserved by Reserved service, specify the reservation ID with the <code>-ar</code> option.</p>
-<p>Example) Executing an interactive job (Reserved service)</p>
-<div class="codehilite"><pre><span></span><code><span class="err">[username@es1 ~]$ qrsh -g grpname -ar ar_id -l rt_F=1 -l h_rt=1:00:00</span>
-<span class="err">[username@g0001 ~]$ </span>
-</code></pre></div>
-
-
 <p>To execute an application using X-Window, first you need to login with the X forwading option (-X or -Y option) as follows:</p>
 <div class="codehilite"><pre><span></span><code><span class="err">[yourpc ~]$ ssh -XC -p 10022 -l username localhost</span>
 </code></pre></div>
@@ -2039,13 +2058,6 @@ module load cuda/9.2/9.2.88.1
 <p class="admonition-title">Note</p>
 <p>If ABCI point is insufficient when executing a batch job with Spot service, the execution is failed.</p>
 </div>
-<p>To run a batch job using the compute resources reserved by Reserved service, specify the reservation ID with the <code>-ar</code> option.</p>
-<p>Example) Submission job script run.sh as a batch job (Reserve service)</p>
-<div class="codehilite"><pre><span></span><code><span class="err">[username@es1 ~]$ qsub -g grpname -ar ar_id run.sh</span>
-<span class="err">Your job 12345 (&quot;run.sh&quot;) has been submitted</span>
-</code></pre></div>
-
-
 <h3 id="show-the-status-of-batch-jobs">Show the status of batch jobs</h3>
 <p>To show the current status of batch jobs, use the <code>qstat</code> command.</p>
 <div class="codehilite"><pre><span></span><code><span class="err">$</span><span class="w"> </span><span class="n">qstat</span><span class="w"> </span><span class="o">[</span><span class="n">option</span><span class="o">]</span><span class="w"></span>
@@ -2353,7 +2365,7 @@ For more detail, use <code>man sge_accounting</code> command.</p>
 </tbody>
 </table>
 <h2 id="advance-reservation">Advance Reservation</h2>
-<p>In the case of Reserved service, job execution can be scheduled by reserving compute node in advance. The maximum number of nodes and the node-time product that can be reserved for this service is "Maximum reserved nodes per reservation" and "Maximum reserved node time per reservtation" in the following table. In addition, in this service, the user can only execute jobs with the maximum number of reserved nodes (Up to 32 nodes). Note that there is an upper limit on "Maximum number of nodes can be reserved at once per system" for the entire system, so you may only be able to make reservations that fall below "Maximum reserved nodes per reservation" or you may not be able to make reservations.</p>
+<p>In the case of Reserved service, job execution can be scheduled by reserving compute node in advance. The maximum number of nodes and the node-time product that can be reserved for this service is "Maximum reserved nodes per reservation" and "Maximum reserved node time per reservtation" in the following table. In addition, in this service, the user can only execute jobs with the maximum number of reserved nodes (Up to 32 nodes). Note that there is an upper limit on "Maximum number of nodes can be reserved at once per system" for the entire system, so you may only be able to make reservations that fall below "Maximum reserved nodes per reservation" or you may not be able to make reservations. <a href="#compute-node">Each resource types</a> are available for reserved compute nodes.</p>
 <table>
 <thead>
 <tr>
@@ -2524,12 +2536,36 @@ For more detail, use <code>man sge_accounting</code> command.</p>
 <p class="admonition-title">Warning</p>
 <p>Canceling reservation is permitted to a responsible person or a manager.</p>
 </div>
-<p>To cancel a reservation, use the <code>qrdel</code> command or the ABCI User Portal.</p>
+<p>To cancel a reservation, use the <code>qrdel</code> command or the ABCI User Portal. When canceling reservation with qrdel command, multiple reservation IDs can be specified as comma separated list. If you specify a reservation ID that does not exist or a reservation ID that you do not have deletion permission for, an error occurs and any reservations are not canceled.</p>
 <p>Example) Cancel a reservation</p>
-<div class="codehilite"><pre><span></span><code><span class="err">[username@es1 ~]$ qrdel 12345</span>
+<div class="codehilite"><pre><span></span><code><span class="err">[username@es1 ~]$ qrdel 12345,12346</span>
 </code></pre></div>
 
 
+<h3 id="how-to-use-reserved-node">How to use reserved node</h3>
+<p>To run a job using reserved compute nodes, specify reservation ID with the <code>-ar</code> option.</p>
+<p>Example) Execute an interactive job on compute node reserved with reservation ID <code>12345</code>.</p>
+<div class="codehilite"><pre><span></span><code><span class="err">[username@es1 ~]$ qrsh -g grpname -ar 12345 -l rt_F=1 -l h_rt=1:00:00</span>
+<span class="err">[username@g0001 ~]$ </span>
+</code></pre></div>
+
+
+<p>Example) Submit a batch job on compute node reserved with reservation ID <code>12345</code>.</p>
+<div class="codehilite"><pre><span></span><code><span class="err">[username@es1 ~]$ qsub -g grpname -ar 12345 run.sh</span>
+<span class="err">Your job 12345 (&quot;run.sh&quot;) has been submitted</span>
+</code></pre></div>
+
+
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<ul>
+<li>You must specify ABCI group that you specified when making reservation.</li>
+<li>The batch job can be submitted immediately after making reservation, until reservation start time.</li>
+<li>The batch job submitted before resevation start time can be deleted with <code>qdel</code> command.</li>
+<li>If a reservation is deleted before reservation start time, batch jobs submitted to the reservation will be deleted.</li>
+<li>At reservation end time, running jobs are killed.</li>
+</ul>
+</div>
 <h2 id="accounting">Accounting</h2>
 <h3 id="on-demand-and-spot-services">On-demand and Spot Services</h3>
 <p>In On-demand and Spot services, when starting a job, the ABCI point scheduled

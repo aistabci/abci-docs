@@ -536,6 +536,13 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    予約ノードの使い方
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -1440,6 +1447,13 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    予約ノードの使い方
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -1961,7 +1975,7 @@
 </tr>
 <tr>
 <td align="left">-hold_jid <em>job_id</em></td>
-<td align="left">依存関係にあるジョブIDを<em>job_id</em>で指定します。指定された依存ジョブが終了するまでジョブは実行開始されません。</td>
+<td align="left">依存関係にあるジョブIDを<em>job_id</em>で指定します。指定された依存ジョブが終了するまでジョブは実行開始されません。<code>qrsh</code>コマンドにて使用する場合、引数にコマンドを指定した場合のみ利用可能です。</td>
 </tr>
 <tr>
 <td align="left">-ar <em>ar_id</em></td>
@@ -2008,13 +2022,6 @@
 <p class="admonition-title">Note</p>
 <p>On-demandサービスでは、インタラクティブジョブ実行時にABCIポイントが不足している場合、ジョブの実行に失敗します。</p>
 </div>
-<p>Reservedサービスで予約した計算リソースを用いてインタラクティブジョブを実行するには、<code>-ar</code>オプションで予約IDを指定します。</p>
-<p>例) インタラクティブジョブを実行 (Reservedサービス)</p>
-<div class="codehilite"><pre><span></span><code><span class="err">[username@es1 ~]$ qrsh -g grpname -ar ar_id -l rt_F=1 -l h_rt=1:00:00</span>
-<span class="err">[username@g0001 ~]$ </span>
-</code></pre></div>
-
-
 <p>X Window を利用するアプリケーションを実行するには、
 まずインタラクティブノードへのログイン時に、X11転送を有効（<code>-X</code>もしくは<code>-Y</code>オプションを指定）にします。</p>
 <div class="codehilite"><pre><span></span><code><span class="err">[yourpc ~]$ ssh -XC -p 10022 -l username localhost</span>
@@ -2077,13 +2084,6 @@ module load cuda/9.2/9.2.88.1
 <p class="admonition-title">Note</p>
 <p>Spotサービスでは、バッチジョブ投入時にABCIポイントが不足している場合、バッチジョブの投入に失敗します。</p>
 </div>
-<p>Reservedサービスで予約した計算リソースを用いてバッチジョブを実行するには、<code>-ar</code>オプションで予約IDを指定します。</p>
-<p>例) ジョブスクリプトrun.shをバッチジョブとして投入 (Reservedサービス)</p>
-<div class="codehilite"><pre><span></span><code><span class="err">[username@es1 ~]$ qsub -g grpname -ar ar_id run.sh</span>
-<span class="err">Your job 12345 (&quot;run.sh&quot;) has been submitted</span>
-</code></pre></div>
-
-
 <h3 id="show-the-status-of-batch-jobs">バッチジョブの状態の確認</h3>
 <p>バッチジョブを状態を確認するには、<code>qstat</code>コマンドを利用します。</p>
 <div class="codehilite"><pre><span></span><code><span class="err">$</span><span class="w"> </span><span class="n">qstat</span><span class="w"> </span><span class="o">[</span><span class="n">options</span><span class="o">]</span><span class="w"></span>
@@ -2192,7 +2192,7 @@ module load cuda/9.2/9.2.88.1
 <li><em>JOB_NAME</em>.o<em>JOB_ID</em>  ---  標準出力ファイル</li>
 <li><em>JOB_NAME</em>.e<em>JOB_ID</em>  ---  標準エラー出力ファイル</li>
 </ul>
-<p>例）ジョブ名がrun.sh、ジョブIDが12345の場合</p>
+<p>例）ジョブ名がrun.sh、ジョブIDが<code>12345</code>の場合</p>
 <ul>
 <li>標準出力ファイル名：run.sh.o12345</li>
 <li>標準エラー出力ファイル名：run.sh.e12345</li>
@@ -2396,7 +2396,7 @@ module load cuda/9.2/9.2.88.1
 </tbody>
 </table>
 <h2 id="advance-reservation">事前予約</h2>
-<p>Reservedサービスでは、計算ノードを事前に予約することができ、計画的なジョブ実行が可能となります。本サービスで予約可能なノード数およびノード時間積は、以下表の「1予約あたりの最大予約ノード数」、「1予約あたりの最大予約ノード時間積」が上限となります。また、本サービスでは、利用者は予約ノード数 (最大32ノード) を上限とするジョブしか実行できません。なお、システム全体で「システムあたりの最大同時予約可能ノード数」に上限があるため、「1予約あたりの最大予約ノード数」を下回る予約しかできない場合や、予約自体ができない場合があります。</p>
+<p>Reservedサービスでは、計算ノードを事前に予約することができ、計画的なジョブ実行が可能となります。本サービスで予約可能なノード数およびノード時間積は、以下表の「1予約あたりの最大予約ノード数」、「1予約あたりの最大予約ノード時間積」が上限となります。また、本サービスでは、利用者は予約ノード数 (最大32ノード) を上限とするジョブしか実行できません。なお、システム全体で「システムあたりの最大同時予約可能ノード数」に上限があるため、「1予約あたりの最大予約ノード数」を下回る予約しかできない場合や、予約自体ができない場合があります。予約した計算ノードにて<a href="#compute-node">各資源タイプ</a>が利用可能です。</p>
 <table>
 <thead>
 <tr>
@@ -2565,14 +2565,38 @@ module load cuda/9.2/9.2.88.1
 <h3 id="cancel-a-reservation">予約の取り消し</h3>
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
-<p>予約の取消は利用責任者もしくは利用管理者のみが実施できます。</p>
+<p>予約の取り消しは利用責任者もしくは利用管理者のみが実施できます。</p>
 </div>
-<p>予約を取り消すには、<a href="https://portal.abci.ai/user/">ABCI利用ポータル</a>もしくは<code>qrdel</code>コマンドを使用します。</p>
-<p>例) 予約を取消</p>
-<div class="codehilite"><pre><span></span><code><span class="err">[username@es1 ~]$ qrdel 12345</span>
+<p>予約を取り消すには、<a href="https://portal.abci.ai/user/">ABCI利用ポータル</a>もしくは<code>qrdel</code>コマンドを使用します。<code>qrdel</code>コマンドでの予約取り消しは、「,(カンマ)」区切りのリストとして複数指定できます。指定したar_idの中に1つでも存在しない予約ID、もしくは削除権限のない予約IDが指定されている場合は、エラーとなり削除は実行されません。</p>
+<p>例) 予約を取り消し</p>
+<div class="codehilite"><pre><span></span><code><span class="err">[username@es1 ~]$ qrdel 12345,12346</span>
 </code></pre></div>
 
 
+<h3 id="_4">予約ノードの使い方</h3>
+<p>予約した計算ノードには、<code>-ar</code>オプションにて予約IDを指定してジョブを投入します。</p>
+<p>例) 予約ID<code>12345</code>で予約された計算ノードでインタラクティブジョブを実行</p>
+<div class="codehilite"><pre><span></span><code><span class="err">[username@es1 ~]$ qrsh -g grpname -ar 12345 -l rt_F=1 -l h_rt=1:00:00</span>
+<span class="err">[username@g0001 ~]$ </span>
+</code></pre></div>
+
+
+<p>例) ジョブスクリプトrun.shを予約ID<code>12345</code>で予約された計算ノードにバッチジョブとして投入</p>
+<div class="codehilite"><pre><span></span><code><span class="err">[username@es1 ~]$ qsub -g grpname -ar 12345 run.sh</span>
+<span class="err">Your job 12345 (&quot;run.sh&quot;) has been submitted</span>
+</code></pre></div>
+
+
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<ul>
+<li>予約作成時に指定したABCIグループを指定する必要があります。</li>
+<li>バッチジョブは予約作成直後から投入できますが、予約開始時刻になるまで実行されません。  </li>
+<li>予約開始時刻前に投入したバッチジョブは<code>qdel</code>コマンドで削除できます。  </li>
+<li>予約開始時刻前に予約を削除した場合、当該予約に投入されていたバッチジョブは削除されます。  </li>
+<li>予約終了時刻になると実行中のジョブは強制終了されます。  </li>
+</ul>
+</div>
 <h2 id="accounting">課金</h2>
 <h3 id="on-demand-and-spot-services">On-demandおよびSpotサービス</h3>
 <p>On-demandおよびSpotサービスでは、ジョブ実行開始時にジョブが使用予定のABCIポイントを経過時間制限値を元に計算し、減算処理を実施します。ジョブ実行終了時に実際の経過時間を元にABCIポイントを再計算し、返却処理を実施します。</p>
