@@ -770,6 +770,18 @@
   </li>
 
         
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../abci-cloudstorage/caution/" title="Caution for ABCI Cloud Storage" class="md-nav__link">
+       Caution for ABCI Cloud Storage
+    </a>
+  </li>
+
+        
       </ul>
     </nav>
   </li>
@@ -1306,10 +1318,6 @@
                 <h1 id="abci-singularity-endpoint">ABCI Singularity Endpoint</h1>
 <h2 id="overview">Overview</h2>
 <p>ABCI Singularity Endpoint provides a singularity container service available within ABCI. This service consists of Remote Builder for remotely building container images using SingularityPRO and Container Library for storing and sharing the created container images. This service is available only within ABCI and cannot be accessed directly from outside of ABCI.</p>
-<div class="admonition warning">
-<p class="admonition-title">Warning</p>
-<p>Container Library is an Experimental service. In particular, it is not possible to upload container images larger than 64 MB.</p>
-</div>
 <p>The following describes the basic operations for using this service in ABCI. See Sylabs <a href="https://sylabs.io/docs/">Document</a> for more information.</p>
 <h2 id="preparation">Preparation</h2>
 <h3 id="loading-environment-module">Loading environment module</h3>
@@ -1369,7 +1377,7 @@
 <p>When you have created an access token again, use the above command to register it. The old access token is overwritten by the new one.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>Access tokens currently expire in one month. When your access token has expired, create and register another access token again.</p>
+<p>The validity period of access tokens is one year.</p>
 </div>
 <h2 id="remote-builder">Remote Builder</h2>
 <p>First, create a definition file to build a container image. The following example defines installation of additional packages to the container image and commands to be executed when the container image is run, based on Ubuntu container image from Docker Hub. For more information about definition files, see <a href="https://repo.sylabs.io/c/0f6898986ad0b646b5ce6deba21781ac62cb7e0a86a5153bbb31732ee6593f43/guides/singularitypro35-user-guide/definition_files.html">Definition Files</a>.</p>
@@ -1681,7 +1689,7 @@ The following example validates the signature with the public key that is regist
     <div class="md-footer-nav">
       <nav class="md-footer-nav__inner md-grid">
         
-          <a href="../abci-cloudstorage/policy/" title="Access Control (2)" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev">
+          <a href="../abci-cloudstorage/caution/" title="Caution for ABCI Cloud Storage" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev">
             <div class="md-flex__cell md-flex__cell--shrink">
               <i class="md-icon md-icon--arrow-back md-footer-nav__button"></i>
             </div>
@@ -1690,7 +1698,7 @@ The following example validates the signature with the public key that is regist
                 <span class="md-footer-nav__direction">
                   Previous
                 </span>
-                Access Control (2) 
+                 Caution for ABCI Cloud Storage
               </span>
             </div>
           </a>

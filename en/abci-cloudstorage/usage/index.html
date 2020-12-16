@@ -848,6 +848,27 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#mpu" class="md-nav__link">
+    MPU
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#uploading-data-with-manual-mpu" class="md-nav__link">
+    Uploading Data with Manual MPU
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#abort-mpu" class="md-nav__link">
+    Aborting Data Upload with Manual MPU
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -896,6 +917,18 @@
   <li class="md-nav__item">
     <a href="../policy/" title="Access Control (2)" class="md-nav__link">
       Access Control (2) 
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../caution/" title="Caution for ABCI Cloud Storage" class="md-nav__link">
+       Caution for ABCI Cloud Storage
     </a>
   </li>
 
@@ -1173,6 +1206,27 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#mpu" class="md-nav__link">
+    MPU
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#uploading-data-with-manual-mpu" class="md-nav__link">
+    Uploading Data with Manual MPU
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#abort-mpu" class="md-nav__link">
+    Aborting Data Upload with Manual MPU
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -1199,6 +1253,10 @@
                 
                 <h1 id="how-to-use-abci-cloud-storage">How to Use ABCI Cloud Storage</h1>
 <p>This section describes how to use ABCI Cloud Storage as a client tool by using AWS Command Line Interface (AWS CLI).</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Unintended charges may occur if the data upload fails. See <a href="../caution/#notice-mpu-fail">here</a> for a workaround.</p>
+</div>
 <h2 id="load-module">Load Module</h2>
 <p>On the ABCI system, AWS CLI is available both in interactive nodes and in compute nodes. Load the module before using AWS CLI as following.</p>
 <div class="codehilite"><pre><span></span><code><span class="err">[username@es1 ~]$ module load aws-cli</span>
@@ -1387,7 +1445,7 @@ and files which are stored in specific directories.</p>
 <p>When executing same command again, data whose size is not changed will be ignored even though the data is actually updated. In that case, the option '--exact-timestamps' enables to syncronize them. This option syncronizes all objects particularly only in the ABCI environment.</p>
 </div>
 <h3 id="delete-object">Delete Object</h3>
-<p>To delete a object, use <code>aws s3 rm &lt;S3Uri&gt; [parameters]</code></p>
+<p>To delete an object, use <code>aws s3 rm &lt;S3Uri&gt; [parameters]</code></p>
 <p>For example </p>
 <div class="codehilite"><pre><span></span><code><span class="err">[username@es1 ~]$ aws --endpoint-url https://s3.abci.ai s3 rm s3://mybucket/readme.txt</span>
 <span class="c">delete: s3://mybucket/readme.txt</span>
@@ -1445,6 +1503,133 @@ and files which are stored in specific directories.</p>
 <span class="err">        }</span>
 <span class="err">    ]</span>
 <span class="err">}</span>
+</code></pre></div>
+
+
+<h3 id="mpu">MPU</h3>
+<p>Uploading from a local file system, client applications upload data efficiently by automatically splitting the data and sending it in parallel. This is called a multipart upload (MPU). MPU is applied when the threshold of data size defined in the client application is exceeded. For instance, the default threshold is <a href="https://docs.aws.amazon.com/cli/latest/topic/s3-config.html#multipart-threshold">8MB</a> for aws-cli and <a href="https://s3tools.org/kb/item13.htm">15MB</a> for s3cmd.</p>
+<h3 id="uploading-data-with-manual-mpu">Uploading Data with Manual MPU</h3>
+<p>The following describes how to apply MPU manually.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>It is recommended to use MPU automatically by the client application.</p>
+</div>
+<p>First, using the <code>split</code> command to split the file. In the following example,
+15M_test.dat is divided into three parts.</p>
+<div class="codehilite"><pre><span></span><code><span class="err">[username@es1 ~]$ split  -n 3 -d 15M_test.dat mpu_part-</span>
+<span class="err">total 3199056</span>
+<span class="err">-rw-r----- 1 username group   15728640 Nov 30 15:42 15M_test.dat</span>
+<span class="err">-rw-r----- 1 username group    5242880 Nov 30 15:51 mpu_part-02</span>
+<span class="err">-rw-r----- 1 username group    5242880 Nov 30 15:51 mpu_part-01</span>
+<span class="err">-rw-r----- 1 username group    5242880 Nov 30 15:51 mpu_part-00</span>
+<span class="err">[username@es1 ~]$</span>
+</code></pre></div>
+
+
+<p>Then starting MPU with the command <code>s3api create-multipart-upload</code>, specifying the destination bucket and path. The following example creates an object named 'mpu-sample' in the bucket 'testbucket-00'. If successful, <code>UploadId</code> is issued as follows:</p>
+<div class="codehilite"><pre><span></span><code><span class="o">[</span><span class="n">username@es1 ~</span><span class="o">]</span><span class="err">$</span><span class="w"> </span><span class="n">aws</span><span class="w"> </span><span class="c1">--endpoint-url https://s3.abci.ai s3api create-multipart-upload --bucket testbucket-00 --key mpu-sample</span>
+
+<span class="err">{</span><span class="w"></span>
+<span class="w">    </span><span class="ss">&quot;Bucket&quot;</span><span class="err">:</span><span class="w"> </span><span class="ss">&quot;testbucket-00&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="ss">&quot;Key&quot;</span><span class="err">:</span><span class="w"> </span><span class="ss">&quot;mpu-sample&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="ss">&quot;UploadId&quot;</span><span class="err">:</span><span class="w"> </span><span class="ss">&quot;aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa&quot;</span><span class="w"></span>
+
+<span class="err">}</span><span class="w"></span>
+</code></pre></div>
+
+
+<p>To Upload files splited above use the <code>s3api part-upload</code> command, with the 'UpLoadId' specified above. Note the 'ETag' for later use.</p>
+<div class="codehilite"><pre><span></span><code><span class="err">[username@es1 ~]$ aws --endpoint-url https://s3.abci.ai s3api upload-part --bucket testbucket-00 --key mpu-sample --part-number 1 --body mpu_part-00 --upload-id aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa</span>
+<span class="err">{</span>
+<span class="err">    &quot;ETag&quot;: &quot;\&quot;sample1d8560e70ca076c897e0715024\&quot;&quot;</span>
+<span class="err">}</span>
+</code></pre></div>
+
+
+<p>Similarly, it sequentially uploads the rest of the files corresponding to the values specified by <code>--part-number</code>.</p>
+<div class="codehilite"><pre><span></span><code><span class="err">[username@es1 ~]$ aws --endpoint-url https://s3.abci.ai s3api upload-part --bucket testbucket-00 --key mpu-sample --part-number 2 --body mpu_part-01 --upload-id aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa</span>
+<span class="err">{</span>
+<span class="err">    &quot;ETag&quot;: &quot;\&quot;samplee36a6ef6ae8f2c0ea3328c5e7c\&quot;&quot;</span>
+<span class="err">}</span>
+<span class="err">[username@es1 ~]$ aws --endpoint-url https://s3.abci.ai s3api upload-part --bucket testbucket-00 --key mpu-sample --part-number 3 --body mpu_part-02 --upload-id aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa</span>
+<span class="err">{</span>
+<span class="err">    &quot;ETag&quot;: &quot;\&quot;sample9e391d5673d2bfd8951367eb01\&quot;&quot;</span>
+<span class="err">}</span>
+<span class="err">[username@es1 ~]$</span>
+</code></pre></div>
+
+
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Uploaded data by <code>s3api upload-parts</code> is not displayed but charged, so MPU must be completed or aborted.</p>
+</div>
+<p>After uploading all the files, create a JSONE file with the ETag value as follows:</p>
+<div class="codehilite"><pre><span></span><code><span class="err">[username@es1 ~]$ cat mpu_fileparts.json</span>
+<span class="err">{</span>
+<span class="err">    &quot;Parts&quot;:[{</span>
+<span class="err">        &quot;ETag&quot;: &quot;sample1d8560e70ca076c897e0715024&quot;,</span>
+<span class="err">        &quot;PartNumber&quot;: 1</span>
+<span class="err">    },</span>
+<span class="err">    {</span>
+<span class="err">        &quot;ETag&quot;: &quot;samplee36a6ef6ae8f2c0ea3328c5e7c&quot;,</span>
+<span class="err">        &quot;PartNumber&quot;: 2</span>
+<span class="err">    },</span>
+<span class="err">    {</span>
+<span class="err">        &quot;ETag&quot;: &quot;sample9e391d5673d2bfd8951367eb01&quot;,</span>
+<span class="err">        &quot;PartNumber&quot;: 3</span>
+<span class="err">    }]</span>
+<span class="err">}</span>
+</code></pre></div>
+
+
+<p>Finally, to complete MPU use the command <code>s3api complete-multipart-upload</code>. At this time, the object is created that you specify with <code>--key</code>.</p>
+<div class="codehilite"><pre><span></span><code><span class="err">[username@es1 ~]$ aws --endpoint-url https://s3.abci.ai s3api complete-multipart-upload --multipart-upload file://mpu_fileparts.json --bucket testbucket-00 --key mpu-sample --upload-id aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa</span>
+<span class="err">{</span>
+<span class="err">    &quot;Location&quot;: &quot;http://testbucket-00.s3.abci.ai/mpu-sample&quot;,</span>
+<span class="err">    &quot;Bucket&quot;: &quot;testbucket-00&quot;,</span>
+<span class="err">    &quot;Key&quot;: &quot;mpu-sample&quot;,</span>
+<span class="err">    &quot;ETag&quot;: &quot;\&quot;6203f5cdbecbe0556e2313691861cb99-3\&quot;&quot;</span>
+<span class="err">}</span>
+</code></pre></div>
+
+
+<p>You can verify that the object has been created as follows:</p>
+<div class="codehilite"><pre><span></span><code><span class="err">[username@es1 ~]$ aws --endpoint-url https://s3.abci.ai s3 ls s3://testbucket-00/</span>
+<span class="err">2020-12-01 09:28:03   15728640 mpu-sample</span>
+</code></pre></div>
+
+
+<h3 id="abort-mpu">Aborting Data Upload with Manual MPU</h3>
+<p>First, display MPU list and get <code>UploadId</code> and <code>Key</code> from the list. 
+To list MPU, use the <code>s3api list-multipart-uploads</code> command with the bucket name. If there is no MPU left, nothing is displayed.
+The following example shows data remaining on the server while uploading the object "data_10gib-1.dat" to 's3://BUCKET/Testdata/'.
+The path and object name are displayed in <code>Key</code>.</p>
+<div class="codehilite"><pre><span></span><code><span class="err">[username@es1 ~]$ aws --endpoint-url https://s3.abci.ai s3api list-multipart-uploads --bucket BUCKET</span>
+<span class="err">{</span>
+<span class="err">    &quot;Uploads&quot;: [</span>
+<span class="err">        {</span>
+<span class="err">            &quot;UploadId&quot;: &quot;aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa&quot;,</span>
+<span class="err">            &quot;Key&quot;: &quot;Testdata/data_10gib-1.dat&quot;,</span>
+<span class="err">            &quot;Initiated&quot;: &quot;2019-11-12T09:58:16.242000+00:00&quot;,</span>
+<span class="err">            &quot;StorageClass&quot;: &quot;STANDARD&quot;,</span>
+<span class="err">            &quot;Owner&quot;: {</span>
+<span class="err">                &quot;DisplayName&quot;: &quot;ABCI GROUP&quot;,</span>
+<span class="err">                &quot;ID&quot;: &quot;bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb&quot;</span>
+<span class="err">            },</span>
+<span class="err">            &quot;Initiator&quot;: {</span>
+<span class="err">                &quot;ID&quot;: &quot;arn:aws:iam::123456789123:user/USERNAME&quot;,</span>
+<span class="err">                &quot;DisplayName&quot;: &quot;USERNAME&quot;</span>
+<span class="err">            }</span>
+<span class="err">        }</span>
+<span class="err">    ]</span>
+<span class="err">}</span>
+</code></pre></div>
+
+
+<p>Then, aborting the MPU, deletes the data on the server.
+To abort the MPU, use <code>s3api abort -multipart -upload</code> command with specified <code>UploadId</code> and <code>Key</code> of the MPU. If the command succeeds, a prompt is returned.</p>
+<div class="codehilite"><pre><span></span><code><span class="err">[username@es1 ~]$ aws --endpoint-url https://s3.abci.ai s3api abort-multipart-upload --bucket Testdata --key Testdata/data_10gib-1.dat --upload-id aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa</span>
+<span class="err">[username@es1 ~]$</span>
 </code></pre></div>
 
 

@@ -860,6 +860,27 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#mpu" class="md-nav__link">
+    マルチパートアップロード（MPU）について
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_14" class="md-nav__link">
+    マルチパートアップロードを手動で有効にする方法
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#abort-mpu" class="md-nav__link">
+    MPU の中止
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -920,6 +941,18 @@
   <li class="md-nav__item">
     <a href="../publishing-datasets/" title="データセットの公開" class="md-nav__link">
       データセットの公開
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../caution/" title="ご利用時の注意" class="md-nav__link">
+      ご利用時の注意
     </a>
   </li>
 
@@ -1197,6 +1230,27 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#mpu" class="md-nav__link">
+    マルチパートアップロード（MPU）について
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_14" class="md-nav__link">
+    マルチパートアップロードを手動で有効にする方法
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#abort-mpu" class="md-nav__link">
+    MPU の中止
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -1223,6 +1277,10 @@
                 
                 <h1 id="abci">ABCIクラウドストレージの使い方</h1>
 <p>ここでは、クライアントツールとして AWS Command Line Interface (以降、AWS CLI) を用いたクラウドストレージの基本操作を説明します。</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>データアップロードに失敗すると意図せず課金が発生する場合があります。対処については、<a href="../caution/#notice-mpu-fail">こちら</a>を参照してください。</p>
+</div>
 <h2 id="_1">モジュールのロード</h2>
 <p>ABCIでは、インタラクティブノードでも計算ノードでもAWS CLIを利用できます。利用に際して以下のようにモジュールをロードしてください。</p>
 <div class="codehilite"><pre><span></span><code><span class="err">[username@es1 ~]$ module load aws-cli</span>
@@ -1231,9 +1289,9 @@
 
 <p>ABCI以外（手元のPC等）では、<a href="https://github.com/aws/aws-cli">こちら</a>よりAWS CLIを取得し、書かれている手順に従ってインストールしてください。</p>
 <h2 id="_2">認証情報などの設定</h2>
-<p>ABCIクラウドストレージへのアクセスは、ABCIアカウントとは別のクラウドストレージアカウントを用います。アカウントは複数持つことができ、それぞれにアクセスキー(アクセスキー ID とシークレットアクセスキーのペア)が対応しています。複数のABCIグループに所属しており、それぞれクラウドストレージを利用している場合は、それぞれのクラウドストレージアカウントが発行されます。初回は次のように、そのアクセスキーを AWS CLI に設定する作業が必要です。region name には、 <code>us-east-1</code> を設定してください。</p>
-<div class="codehilite"><pre><span></span><code><span class="o">[</span><span class="n">username@es1 ~</span><span class="o">]</span><span class="err">$</span><span class="w"> </span><span class="n">aws</span><span class="w"> </span><span class="n">configure</span><span class="w"></span>
-<span class="n">AWS</span><span class="w"> </span><span class="n">Access</span><span class="w"> </span><span class="k">Key</span><span class="w"> </span><span class="n">ID</span><span class="w"> </span><span class="o">[</span><span class="n">None</span><span class="o">]</span><span class="err">:</span><span class="w"> </span><span class="n">ACCESS</span><span class="o">-</span><span class="k">KEY</span><span class="o">-</span><span class="n">ID</span><span class="w"></span>
+<p>ABCIクラウドストレージへのアクセスは、ABCIアカウントとは別のクラウドストレージアカウントを用います。アカウントは複数持つことができ、それぞれにアクセスキー(アクセスキー ID とシークレットアクセスキーのペア)が対応しています。複数のABCIグループに所属しており、それぞれクラウドストレージを利用している場合は、それぞれのクラウドストレージアカウントが発行されます。初回は次のように、そのアクセスキーを AWS CLI に設定する作業が必要です。region name には、 <code>us-east-1</code> を設定してください。
+[username@es1 ~]$ aws configure</p>
+<div class="codehilite"><pre><span></span><code><span class="n">AWS</span><span class="w"> </span><span class="n">Access</span><span class="w"> </span><span class="k">Key</span><span class="w"> </span><span class="n">ID</span><span class="w"> </span><span class="o">[</span><span class="n">None</span><span class="o">]</span><span class="err">:</span><span class="w"> </span><span class="n">ACCESS</span><span class="o">-</span><span class="k">KEY</span><span class="o">-</span><span class="n">ID</span><span class="w"></span>
 <span class="n">AWS</span><span class="w"> </span><span class="n">Secret</span><span class="w"> </span><span class="n">Access</span><span class="w"> </span><span class="k">Key</span><span class="w"> </span><span class="o">[</span><span class="n">None</span><span class="o">]</span><span class="err">:</span><span class="w"> </span><span class="n">SECRET</span><span class="o">-</span><span class="n">ACCESS</span><span class="o">-</span><span class="k">KEY</span><span class="w"></span>
 <span class="k">Default</span><span class="w"> </span><span class="n">region</span><span class="w"> </span><span class="n">name</span><span class="w"> </span><span class="o">[</span><span class="n">None</span><span class="o">]</span><span class="err">:</span><span class="w"> </span><span class="n">us</span><span class="o">-</span><span class="n">east</span><span class="o">-</span><span class="mi">1</span><span class="w"></span>
 <span class="k">Default</span><span class="w"> </span><span class="k">output</span><span class="w"> </span><span class="nf">format</span><span class="w"> </span><span class="o">[</span><span class="n">None</span><span class="o">]</span><span class="err">:</span><span class="p">(</span><span class="n">入力不要</span><span class="p">)</span><span class="w"></span>
@@ -1472,7 +1530,130 @@
 </code></pre></div>
 
 
-<!--  s3fs-fuse は別?  -->
+<h3 id="mpu">マルチパートアップロード（MPU）について</h3>
+<p>AWS CLIは、データを自動的に分割して並行に送信することで、効率良くデータをアップロードする機能を備えています。これはマルチパートアップロード (MPU) と呼ばれています。MPU が有効であるかどうかは、クライアントツールやその設定に依存します。AWS CLI では、MPU が有効となるデータサイズは、デフォルトで <a href="https://docs.aws.amazon.com/cli/latest/topic/s3-config.html#multipart-threshold">8MB</a> と定義されています。</p>
+<h3 id="_14">マルチパートアップロードを手動で有効にする方法</h3>
+<p>AWS CLI では、データサイズに応じて MPU が自動的に有効になりますが、以下の方法を用いることで MPU を有効にすることもできます。</p>
+<p>まず、<code>split</code> コマンドなどでアプロードしたいデータを分割します。以下の例では、
+15M_test.dat を 3つに分割しています。</p>
+<div class="codehilite"><pre><span></span><code><span class="err">[username@es1 ~]$ split  -n 3 -d 15M_test.dat mpu_part-</span>
+<span class="err">total 3199056</span>
+<span class="err">-rw-r----- 1 username group   15728640 Nov 30 15:42 15M_test.dat</span>
+<span class="err">-rw-r----- 1 username group    5242880 Nov 30 15:51 mpu_part-02</span>
+<span class="err">-rw-r----- 1 username group    5242880 Nov 30 15:51 mpu_part-01</span>
+<span class="err">-rw-r----- 1 username group    5242880 Nov 30 15:51 mpu_part-00</span>
+<span class="err">[username@es1 ~]$</span>
+</code></pre></div>
+
+
+<p>次に、コマンド <code>s3api create-multipart-upload</code> でアップロード先のバケットとパスを指定して、 MPU を開始します。アップロード先は、バケットを <code>--bucket</code>、パスを <code>--key</code> で指定します。以下の例は、バケット 'testbucket-00' に'mpu-sample' というオブジェクトを作成します。成功すると、以下のように <code>UploadId</code> が発行されます。</p>
+<div class="codehilite"><pre><span></span><code><span class="o">[</span><span class="n">username@es1 ~</span><span class="o">]</span><span class="err">$</span><span class="w"> </span><span class="n">aws</span><span class="w"> </span><span class="c1">--endpoint-url https://s3.abci.ai s3api create-multipart-upload --bucket testbucket-00 --key mpu-sample</span>
+
+<span class="err">{</span><span class="w"></span>
+<span class="w">    </span><span class="ss">&quot;Bucket&quot;</span><span class="err">:</span><span class="w"> </span><span class="ss">&quot;testbucket-00&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="ss">&quot;Key&quot;</span><span class="err">:</span><span class="w"> </span><span class="ss">&quot;mpu-sample&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="ss">&quot;UploadId&quot;</span><span class="err">:</span><span class="w"> </span><span class="ss">&quot;aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa&quot;</span><span class="w"></span>
+
+<span class="err">}</span><span class="w"> </span>
+</code></pre></div>
+
+
+<p>これらのデータを <code>s3api part-upload</code>コマンドでアップロードします。この時、上記の UpLoadId を指定してください。コマンドが成功すると表示される 'ETag' は後で使用するため控えておいてください。</p>
+<div class="codehilite"><pre><span></span><code><span class="err">[username@es1 ~]$ aws --endpoint-url https://s3.abci.ai s3api upload-part --bucket testbucket-00 --key mpu-sample --part-number 1 --body mpu_part-00 --upload-id aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa</span>
+<span class="err">{</span>
+<span class="err">    &quot;ETag&quot;: &quot;\&quot;sample1d8560e70ca076c897e0715024\&quot;&quot;</span>
+<span class="err">}</span>
+</code></pre></div>
+
+
+<p>同様に、順次 <code>--part-number</code> の値と対応するデータを指定して残りのデータもアップロードします。</p>
+<div class="codehilite"><pre><span></span><code><span class="err">[username@es1 ~]$ aws --endpoint-url https://s3.abci.ai s3api upload-part --bucket testbucket-00 --key mpu-sample --part-number 2 --body mpu_part-01 --upload-id aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa</span>
+<span class="err">{</span>
+<span class="err">    &quot;ETag&quot;: &quot;\&quot;samplee36a6ef6ae8f2c0ea3328c5e7c\&quot;&quot;</span>
+<span class="err">}</span>
+<span class="err">[username@es1 ~]$ aws --endpoint-url https://s3.abci.ai s3api upload-part --bucket testbucket-00 --key mpu-sample --part-number 3 --body mpu_part-02 --upload-id aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa</span>
+<span class="err">{</span>
+<span class="err">    &quot;ETag&quot;: &quot;\&quot;sample9e391d5673d2bfd8951367eb01\&quot;&quot;</span>
+<span class="err">}</span>
+<span class="err">[username@es1 ~]$</span>
+</code></pre></div>
+
+
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>s3api upload-parts でアップロードされたデータは表示されませんが課金対象になります。
+このため、MPU は必ずアップロードを完了させるか中止してください。</p>
+</div>
+<p>全てのデータをアップロードしたら、ETag の値を以下のような JSONE 形式のファイルにまとめます。</p>
+<div class="codehilite"><pre><span></span><code><span class="err">[username@es1 ~]$ cat mpu_fileparts.json</span>
+<span class="err">{</span>
+<span class="err">    &quot;Parts&quot;:[{</span>
+<span class="err">        &quot;ETag&quot;: &quot;sample1d8560e70ca076c897e0715024&quot;,</span>
+<span class="err">        &quot;PartNumber&quot;: 1</span>
+<span class="err">    },</span>
+<span class="err">    {</span>
+<span class="err">        &quot;ETag&quot;: &quot;samplee36a6ef6ae8f2c0ea3328c5e7c&quot;,</span>
+<span class="err">        &quot;PartNumber&quot;: 2</span>
+<span class="err">    },</span>
+<span class="err">    {</span>
+<span class="err">        &quot;ETag&quot;: &quot;sample9e391d5673d2bfd8951367eb01&quot;,</span>
+<span class="err">        &quot;PartNumber&quot;: 3</span>
+<span class="err">    }]</span>
+<span class="err">}</span>
+</code></pre></div>
+
+
+<p>最後に、<code>s3api complete-multipart-upload</code> コマンドを使用して MPU を完了させます。このタイミングで <code>--key</code> で指定したオブジェクトが作成されます。</p>
+<div class="codehilite"><pre><span></span><code><span class="err">[username@es1 ~]$ aws --endpoint-url https://s3.abci.ai s3api complete-multipart-upload --multipart-upload file://mpu_fileparts.json --bucket testbucket-00 --key mpu-sample --upload-id aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa</span>
+<span class="err">{</span>
+<span class="err">    &quot;Location&quot;: &quot;http://testbucket-00.s3.abci.ai/mpu-sample&quot;,</span>
+<span class="err">    &quot;Bucket&quot;: &quot;testbucket-00&quot;,</span>
+<span class="err">    &quot;Key&quot;: &quot;mpu-sample&quot;,</span>
+<span class="err">    &quot;ETag&quot;: &quot;\&quot;6203f5cdbecbe0556e2313691861cb99-3\&quot;&quot;</span>
+<span class="err">}</span>
+</code></pre></div>
+
+
+<p>オブジェクトが作成されていることを確認します。</p>
+<div class="codehilite"><pre><span></span><code><span class="err">[username@es1 ~]$ aws --endpoint-url https://s3.abci.ai s3 ls s3://testbucket-00/</span>
+<span class="err">2020-12-01 09:28:03   15728640 mpu-sample</span>
+</code></pre></div>
+
+
+<h3 id="abort-mpu">MPU の中止</h3>
+<p>実行中の MPU を中止するには、まず MPU の一覧を表示し、<code>UploadId</code> と <code>Key</code> を確認します。
+MPU の一覧は、<code>s3api list-multipart-uploads</code> コマンドにアップロード時のバケットを指定して、確認することができます。MPU が残っていない場合は何も表示されません。
+以下の例では、オブジェクト data_10gib-1.dat を s3://BUCKET/Testdata/ にアップロードする途中であることが確認できます。<code>Key</code> にはバケットより下のパスとオブジェクト名が表示されています。</p>
+<div class="codehilite"><pre><span></span><code><span class="err">[username@es1 ~]$ aws --endpoint-url https://s3.abci.ai s3api list-multipart-uploads --bucket BUCKET</span>
+<span class="err">{</span>
+<span class="err">    &quot;Uploads&quot;: [</span>
+<span class="err">        {</span>
+<span class="err">            &quot;UploadId&quot;: &quot;aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa&quot;,</span>
+<span class="err">            &quot;Key&quot;: &quot;Testdata/data_10gib-1.dat&quot;,</span>
+<span class="err">            &quot;Initiated&quot;: &quot;2019-11-12T09:58:16.242000+00:00&quot;,</span>
+<span class="err">            &quot;StorageClass&quot;: &quot;STANDARD&quot;,</span>
+<span class="err">            &quot;Owner&quot;: {</span>
+<span class="err">                &quot;DisplayName&quot;: &quot;ABCI GROUP&quot;,</span>
+<span class="err">                &quot;ID&quot;: &quot;bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb&quot;</span>
+<span class="err">            },</span>
+<span class="err">            &quot;Initiator&quot;: {</span>
+<span class="err">                &quot;ID&quot;: &quot;arn:aws:iam::123456789123:user/USERNAME&quot;,</span>
+<span class="err">                &quot;DisplayName&quot;: &quot;USERNAME&quot;</span>
+<span class="err">            }</span>
+<span class="err">        }</span>
+<span class="err">    ]</span>
+<span class="err">}</span>
+</code></pre></div>
+
+
+<p>次に、MPU の中止を実行します。以下に示すように MPU の中止は、<code>s3api abort-multipart-upload</code> コマンドの引数に、中止したい MPU の <code>UploadId</code> と <code>Key</code> を指定します。コマンドが成功すると、プロンプトが返ります。</p>
+<div class="codehilite"><pre><span></span><code><span class="err">[username@es1 ~]$ aws --endpoint-url https://s3.abci.ai s3api abort-multipart-upload --bucket Bucket --key Testdata/data_10gib-1.dat --upload-id aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa</span>
+<span class="err">[username@es1 ~]$</span>
+</code></pre></div>
+
+
+<p>これで MPU の中止は完了です。MPU の実行中にサーバ側に作成されたデータも削除されます。</p>
+<!--  s3fs-fuse は別で書くこと  -->
 
 <!--  使い方の説明はしないが Cyberduck と WinSCP について触れる  -->
                 

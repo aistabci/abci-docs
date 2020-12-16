@@ -437,6 +437,33 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#build-singularity-image-from-dockerfile" class="md-nav__link">
+    Build Singularity image from Dockerfile
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#build-via-dockerhub" class="md-nav__link">
+    Via Docker Hub
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#convert-dockerfile-to-singularity-recipe" class="md-nav__link">
+    Convert Dockerfile to Singularity recipe
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -844,6 +871,18 @@
   </li>
 
         
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../abci-cloudstorage/caution/" title="Caution for ABCI Cloud Storage" class="md-nav__link">
+       Caution for ABCI Cloud Storage
+    </a>
+  </li>
+
+        
       </ul>
     </nav>
   </li>
@@ -1054,6 +1093,33 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#build-singularity-image-from-dockerfile" class="md-nav__link">
+    Build Singularity image from Dockerfile
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#build-via-dockerhub" class="md-nav__link">
+    Via Docker Hub
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#convert-dockerfile-to-singularity-recipe" class="md-nav__link">
+    Convert Dockerfile to Singularity recipe
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -1087,6 +1153,10 @@
                 
                 <h1 id="9-linux-containers">9. Linux Containers</h1>
 <h2 id="singularity">Singularity</h2>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>We are going to stop offering Singularity 2.6 at the end of March.</p>
+</div>
 <p><a href="https://www.sylabs.io/singularity/">Singularity</a> is available on the ABCI System.
 Available versions are Singularity version 2.6 and SingularityPRO 3.5.
 To use Singularity, set up user environment by the <code>module</code> command.</p>
@@ -1216,7 +1286,7 @@ This procedure shows how to create a Singularity image file using pull.</p>
 </code></pre></div>
 
 
-<p>If the above command is executed under the group area (/ groups1,/groups2), an error occurs. This can be avoided by executing the <code>newgrp</code> command after checking the group to which the <code>id -a</code> command belongs, as shown below, before executing the <code>singularity</code> command.<br />
+<p>If the above command is executed under the group area (/ groups1,/groups2), an error occurs. This can be avoided by executing the <code>newgrp</code> command after checking the group to which the <code>id -a</code> command belongs, as shown below, before executing the <code>singularity</code> command.
 In the example below, <code>gaa00000</code> is the group to which it belongs.</p>
 <div class="codehilite"><pre><span></span><code><span class="err">[username@es1 groupname]$ id -a</span>
 <span class="err">uid=0000(aaa00000aa) gid=0000(aaa00000aa) groups=0000(aaa00000aa),00000(gaa00000)</span>
@@ -1224,6 +1294,107 @@ In the example below, <code>gaa00000</code> is the group to which it belongs.</p
 </code></pre></div>
 
 
+<h3 id="build-singularity-image-from-dockerfile">Build Singularity image from Dockerfile</h3>
+<p>On ABCI, you cannot build a Singularity image directly from Dockerfile.
+If you have only Dockerfile, you have two ways to build a Singularity image on ABCI.</p>
+<h4 id="build-via-dockerhub">Via Docker Hub</h4>
+<p>Build a Docker container image from Dockerfile on a system having Docker execution environment, and upload the image to Docker Hub. You can use the Docker container image on ABCI.</p>
+<p>Following example shows how to build <a href="https://github.com/NVIDIA/DeepLearningExamples/tree/master/PyTorch/Detection/SSD">SSD300 v1.1 image</a> developed by NVIDIA from Dockerfile and upload it to Docker Hub.</p>
+<div class="codehilite"><pre><span></span><code>[user@pc ~]$ git clone https://github.com/NVIDIA/DeepLearningExamples
+[user@pc ~]$ cd DeepLearningExamples/PyTorch/Detection/SSD
+[user@pc SSD]$ cat Dockerfile
+ARG FROM_IMAGE_NAME=nvcr.io/nvidia/pytorch:20.06-py3
+FROM <span class="cp">${</span><span class="n">FROM_IMAGE_NAME</span><span class="cp">}</span>
+
+# Set working directory
+WORKDIR /workspace
+
+ENV PYTHONPATH &quot;<span class="cp">${</span><span class="n">PYTHONPATH</span><span class="cp">}</span>:/workspace&quot;
+
+COPY requirements.txt .
+RUN pip install --no-cache-dir git+https://github.com/NVIDIA/dllogger.git#egg=dllogger
+RUN pip install -r requirements.txt
+RUN python3 -m pip install pycocotools==2.0.0
+
+# Copy SSD code
+COPY ./setup.py .
+COPY ./csrc ./csrc
+RUN pip install .
+
+COPY . .
+[user@pc SSD]$ docker build -t user/docker_name .
+[user@pc SSD]$ docker login <span class="err">&amp;&amp;</span> docker push user/docker_name
+</code></pre></div>
+
+
+<p>To run the built image on ABCI, please refer to <a href="#running-a-container-with-singularity">Running a container with Singularity</a></p>
+<h4 id="convert-dockerfile-to-singularity-recipe">Convert Dockerfile to Singularity recipe</h4>
+<p>By converting Dockerfile to Singularity recipe, you can build a Singularity container image which provides the same functionality defined in the Dockerfile on ABCI.
+You can manually convert Dockerfile, but using <a href="https://singularityhub.github.io/singularity-cli/">Singularity Python</a> helps the conversion.</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>The conversion of Singularity Python is not perfect.
+If <code>singularity build</code> fails when the generated Singularity recipe file is used, modify the recipe file manually.</p>
+</div>
+<p>Example procedure for installing Singularity Python)</p>
+<div class="codehilite"><pre><span></span><code><span class="err">[username@es1 ~]$ module load python/3.6/3.6.5</span>
+<span class="err">[username@es1 ~]$ python3 -m venv work</span>
+<span class="err">[username@es1 ~]$ source work/bin/activate</span>
+<span class="err">(work) [username@es1 ~]$ pip3 install spython</span>
+</code></pre></div>
+
+
+<p>Following example shows how to convert Dockerfile of <a href="https://github.com/NVIDIA/DeepLearningExamples/tree/master/PyTorch/Detection/SSD">SSD300 v1.1 image</a> developed by NVIDIA using Singularity Python and modify the generated Singularity recipe (ssd.def) so that it can correctly generate a Singularity image.</p>
+<p>Just converting Dockerfile results in a built time error.
+To avoid the problem, this example modifies the Singularity recipe as described below.</p>
+<ul>
+<li>Files in WORKDIR will not be copied =&gt; Set the copy destination to the absolute path of WORKDIR</li>
+<li>No path to pip =&gt; Add a setting to take over environment variables available in Docker image</li>
+</ul>
+<div class="codehilite"><pre><span></span><code><span class="p">[</span><span class="n">username</span><span class="err">@</span><span class="n">es1</span> <span class="o">~</span><span class="p">]</span><span class="err">$</span> <span class="k">module</span> <span class="n">load</span> <span class="n">python</span><span class="o">/</span><span class="mf">3.6</span><span class="o">/</span><span class="mf">3.6.5</span>
+<span class="p">[</span><span class="n">username</span><span class="err">@</span><span class="n">es1</span> <span class="o">~</span><span class="p">]</span><span class="err">$</span> <span class="n">source</span> <span class="n">work</span><span class="o">/</span><span class="n">bin</span><span class="o">/</span><span class="n">activate</span>
+<span class="p">(</span><span class="n">work</span><span class="p">)</span> <span class="p">[</span><span class="n">username</span><span class="err">@</span><span class="n">es1</span> <span class="o">~</span><span class="p">]</span><span class="err">$</span> <span class="n">git</span> <span class="n">clone</span> <span class="nl">https</span><span class="p">:</span><span class="c1">//github.com/NVIDIA/DeepLearningExamples</span>
+<span class="p">(</span><span class="n">work</span><span class="p">)</span> <span class="p">[</span><span class="n">username</span><span class="err">@</span><span class="n">es1</span> <span class="o">~</span><span class="p">]</span><span class="err">$</span> <span class="n">cd</span> <span class="n">DeepLearningExamples</span><span class="o">/</span><span class="n">PyTorch</span><span class="o">/</span><span class="n">Detection</span><span class="o">/</span><span class="n">SSD</span>
+<span class="p">(</span><span class="n">work</span><span class="p">)</span> <span class="p">[</span><span class="n">username</span><span class="err">@</span><span class="n">es1</span> <span class="n">SSD</span><span class="p">]</span><span class="err">$</span> <span class="n">spython</span> <span class="n">recipe</span> <span class="n">Dockerfile</span> <span class="n">ssd</span><span class="p">.</span><span class="n">def</span>
+<span class="p">(</span><span class="n">work</span><span class="p">)</span> <span class="p">[</span><span class="n">username</span><span class="err">@</span><span class="n">es1</span> <span class="n">SSD</span><span class="p">]</span><span class="err">$</span> <span class="n">cp</span> <span class="o">-</span><span class="n">p</span> <span class="n">ssd</span><span class="p">.</span><span class="n">def</span> <span class="n">ssd_org</span><span class="p">.</span><span class="n">def</span>
+<span class="p">(</span><span class="n">work</span><span class="p">)</span> <span class="p">[</span><span class="n">username</span><span class="err">@</span><span class="n">es1</span> <span class="n">SSD</span><span class="p">]</span><span class="err">$</span> <span class="n">vi</span> <span class="n">ssd</span><span class="p">.</span><span class="n">def</span>
+<span class="nl">Bootstrap</span><span class="p">:</span> <span class="n">docker</span>
+<span class="nl">From</span><span class="p">:</span> <span class="n">nvcr</span><span class="p">.</span><span class="n">io</span><span class="o">/</span><span class="n">nvidia</span><span class="o">/</span><span class="nl">pytorch</span><span class="p">:</span><span class="mf">20.06</span><span class="o">-</span><span class="n">py3</span>
+<span class="nl">Stage</span><span class="p">:</span> <span class="n">spython</span><span class="o">-</span><span class="n">base</span>
+
+<span class="nf">%files</span>
+<span class="n">requirements</span><span class="p">.</span><span class="n">txt</span> <span class="o">/</span><span class="n">workspace</span>                     <span class="o">&lt;-</span> <span class="n">Change</span> <span class="n">path</span>
+<span class="p">.</span><span class="o">/</span><span class="n">setup</span><span class="p">.</span><span class="n">py</span> <span class="o">/</span><span class="n">workspace</span>                           <span class="o">&lt;-</span> <span class="n">Change</span> <span class="n">path</span>
+<span class="p">.</span><span class="o">/</span><span class="n">csrc</span> <span class="o">/</span><span class="n">workspace</span><span class="o">/</span><span class="n">csrc</span>                          <span class="o">&lt;-</span> <span class="n">Change</span> <span class="n">path</span>
+<span class="p">.</span> <span class="o">/</span><span class="n">workspace</span>                                    <span class="o">&lt;-</span> <span class="n">Change</span> <span class="n">path</span>
+<span class="nf">%post</span>
+<span class="n">FROM_IMAGE_NAME</span><span class="o">=</span><span class="n">nvcr</span><span class="p">.</span><span class="n">io</span><span class="o">/</span><span class="n">nvidia</span><span class="o">/</span><span class="nl">pytorch</span><span class="p">:</span><span class="mf">20.06</span><span class="o">-</span><span class="n">py3</span>
+<span class="p">.</span> <span class="o">/</span><span class="p">.</span><span class="n">singularity</span><span class="p">.</span><span class="n">d</span><span class="o">/</span><span class="n">env</span><span class="o">/</span><span class="mi">10</span><span class="o">-</span><span class="n">docker2singularity</span><span class="p">.</span><span class="n">sh</span>  <span class="o">&lt;-</span> <span class="n">Add</span>
+
+<span class="cp"># Set working directory</span>
+<span class="n">cd</span> <span class="o">/</span><span class="n">workspace</span>
+
+<span class="n">PYTHONPATH</span><span class="o">=</span><span class="s">&quot;${PYTHONPATH}:/workspace&quot;</span>
+
+<span class="n">pip</span> <span class="n">install</span> <span class="o">--</span><span class="n">no</span><span class="o">-</span><span class="n">cache</span><span class="o">-</span><span class="n">dir</span> <span class="n">git</span><span class="o">+</span><span class="nl">https</span><span class="p">:</span><span class="c1">//github.com/NVIDIA/dllogger.git#egg=dllogger</span>
+<span class="n">pip</span> <span class="n">install</span> <span class="o">-</span><span class="n">r</span> <span class="n">requirements</span><span class="p">.</span><span class="n">txt</span>
+<span class="n">python3</span> <span class="o">-</span><span class="n">m</span> <span class="n">pip</span> <span class="n">install</span> <span class="n">pycocotools</span><span class="o">==</span><span class="mf">2.0.0</span>
+
+<span class="cp"># Copy SSD code</span>
+<span class="n">pip</span> <span class="n">install</span> <span class="p">.</span>
+
+<span class="nf">%environment</span>
+<span class="k">export</span> <span class="n">PYTHONPATH</span><span class="o">=</span><span class="s">&quot;${PYTHONPATH}:/workspace&quot;</span>
+<span class="nf">%runscript</span>
+<span class="n">cd</span> <span class="o">/</span><span class="n">workspace</span>
+<span class="n">exec</span> <span class="o">/</span><span class="n">bin</span><span class="o">/</span><span class="n">bash</span> <span class="s">&quot;$@&quot;</span>
+<span class="nf">%startscript</span>
+<span class="n">cd</span> <span class="o">/</span><span class="n">workspace</span>
+<span class="n">exec</span> <span class="o">/</span><span class="n">bin</span><span class="o">/</span><span class="n">bash</span> <span class="s">&quot;$@&quot;</span>
+</code></pre></div>
+
+
+<p>To create a Singularity image from the generated recipe file on ABCI, please refer to <a href="#create-a-singularity-image-build">Create a Singularity image (build)</a>.</p>
 <h2 id="docker">Docker</h2>
 <p>In the ABCI System, job can be executed on Docker container.
 When you use Docker, you need to set up user environment by the <code>module</code> command and specify <code>-l docker</code> option and <code>-l docker_image</code> option at job submission.</p>

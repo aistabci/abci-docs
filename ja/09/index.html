@@ -437,6 +437,33 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#build-image-from-dockerfile" class="md-nav__link">
+    DockerfileからのSingularityイメージファイルの作成方法
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#build-via-dockerhub" class="md-nav__link">
+    Docker Hubを経由
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#build-by-singularity-recipe" class="md-nav__link">
+    DockerfileをSingularity recipeファイルに変換
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -868,6 +895,18 @@
   </li>
 
         
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../abci-cloudstorage/caution/" title="ご利用時の注意" class="md-nav__link">
+      ご利用時の注意
+    </a>
+  </li>
+
+        
       </ul>
     </nav>
   </li>
@@ -1078,6 +1117,33 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#build-image-from-dockerfile" class="md-nav__link">
+    DockerfileからのSingularityイメージファイルの作成方法
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#build-via-dockerhub" class="md-nav__link">
+    Docker Hubを経由
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#build-by-singularity-recipe" class="md-nav__link">
+    DockerfileをSingularity recipeファイルに変換
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -1111,6 +1177,10 @@
                 
                 <h1 id="9-linux">9. Linuxコンテナ</h1>
 <h2 id="singularity">Singularity</h2>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Singularity 2.6 は3月末に提供を停止します。</p>
+</div>
 <p>ABCIシステムでは<a href="https://www.sylabs.io/singularity/">Singularity</a>が利用可能です。
 利用可能なバージョンはSingularity version 2.6とSingularityPRO 3.5となります。
 利用するためには事前に<code>module</code>コマンドを用いて利用環境を設定する必要があります。</p>
@@ -1230,9 +1300,9 @@
 </div>
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
-<p>Singularity 2.6環境ではrecipeファイルを用いたイメージのbuildは実行できません。 利用者自身でカスタムしたコンテナイメージを利用したい場合は、 ABCIの環境(Singularity、フレームワーク、MPIのバージョン等)に合わせたユーザ環境で イメージを作成後、イメージファイルをABCI上に転送する必要があります。  </p>
+<p>Singularity 2.6環境ではrecipeファイルを用いたイメージのbuildは実行できません。 利用者自身でカスタムしたコンテナイメージを利用したい場合は、 ABCIの環境(Singularity、フレームワーク、MPIのバージョン等)に合わせたユーザ環境で イメージを作成後、イメージファイルをABCI上に転送する必要があります。</p>
 </div>
-<p>buildによるSingularityイメージファイルの作成例）  </p>
+<p>buildによるSingularityイメージファイルの作成例）</p>
 <p><strong>SingularityPRO 3.5</strong></p>
 <div class="codehilite"><pre><span></span><code><span class="err">[username@es1 ~]$ module load singularitypro/3.5</span>
 <span class="err">[username@es1 ~]$ singularity build --fakeroot ubuntu.sif ubuntu.def</span>
@@ -1244,7 +1314,7 @@
 </code></pre></div>
 
 
-<p>なお、 上記コマンドをグループ領域(/groups1, /groups2)配下で実行するとエラーが発生します。その場合、singularityコマンドを実行する前に以下のように<code>id -a</code>コマンドで所属するグループを確認の上、<code>newgrp</code>コマンドを実施いただくことで回避可能です。<br />
+<p>なお、 上記コマンドをグループ領域(/groups1, /groups2)配下で実行するとエラーが発生します。その場合、singularityコマンドを実行する前に以下のように<code>id -a</code>コマンドで所属するグループを確認の上、<code>newgrp</code>コマンドを実施いただくことで回避可能です。
 下記例の<code>gaa00000</code>の箇所が所属するグループとなります。</p>
 <div class="codehilite"><pre><span></span><code><span class="err">[username@es1 groupname]$ id -a</span>
 <span class="err">uid=0000(aaa00000aa) gid=0000(aaa00000aa) groups=0000(aaa00000aa),00000(gaa00000)</span>
@@ -1252,6 +1322,106 @@
 </code></pre></div>
 
 
+<h3 id="build-image-from-dockerfile">DockerfileからのSingularityイメージファイルの作成方法</h3>
+<p>Singularityでは、Dockerfileから直接Singularityで利用できるコンテナイメージを作成できません。
+Dockerfileしかない場合には、次の2通りの方法にて、ABCIシステム上のSingularityで利用できるコンテナイメージを作成できます。</p>
+<h4 id="build-via-dockerhub">Docker Hubを経由</h4>
+<p>Dockerの実行環境があるシステム上でDockerfileからDockerコンテナイメージを作成し、Docker Hubにアップロードすることで、作成したDockerコンテナイメージをABCIシステム上で利用することができるようになります。</p>
+<p>以下の例では、NVIDIA社による<a href="https://github.com/NVIDIA/DeepLearningExamples/tree/master/PyTorch/Detection/SSD">SSD300 v1.1モデル学習用コンテナイメージ</a>をDockerfileから作成し、Docker Hubにアップロードしています。</p>
+<div class="codehilite"><pre><span></span><code>[user@pc ~]$ git clone https://github.com/NVIDIA/DeepLearningExamples
+[user@pc ~]$ cd DeepLearningExamples/PyTorch/Detection/SSD
+[user@pc SSD]$ cat Dockerfile
+ARG FROM_IMAGE_NAME=nvcr.io/nvidia/pytorch:20.06-py3
+FROM <span class="cp">${</span><span class="n">FROM_IMAGE_NAME</span><span class="cp">}</span>
+
+# Set working directory
+WORKDIR /workspace
+
+ENV PYTHONPATH &quot;<span class="cp">${</span><span class="n">PYTHONPATH</span><span class="cp">}</span>:/workspace&quot;
+
+COPY requirements.txt .
+RUN pip install --no-cache-dir git+https://github.com/NVIDIA/dllogger.git#egg=dllogger
+RUN pip install -r requirements.txt
+RUN python3 -m pip install pycocotools==2.0.0
+
+# Copy SSD code
+COPY ./setup.py .
+COPY ./csrc ./csrc
+RUN pip install .
+
+COPY . .
+[user@pc SSD]$ docker build -t user/docker_name .
+[user@pc SSD]$ docker login <span class="err">&amp;&amp;</span> docker push user/docker_name
+</code></pre></div>
+
+
+<p>作成したDockerコンテナイメージをABCI上で起動する方法については<a href="#running-a-container-with-singularity">Singularityの実行</a>をご参照ください。</p>
+<h4 id="build-by-singularity-recipe">DockerfileをSingularity recipeファイルに変換</h4>
+<p>DockerfileをSingularity recipeファイルに変換することで、ABCIシステム上でSingularityコンテナイメージを作成できます。
+変換には<a href="https://singularityhub.github.io/singularity-cli/">Singularity Python</a>を使うことができます。</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Singularity Pythonを使うことでDockerfileとSingularity recipeファイルの相互変換を行うことができますが、完璧ではありません。
+変換されたSingularity recipeファイルにて<code>singularity build</code>に失敗する場合は、手動でrecipeファイルを修正してください。</p>
+</div>
+<p>Singularity Pythonのインストール例）</p>
+<div class="codehilite"><pre><span></span><code><span class="err">[username@es1 ~]$ module load python/3.6/3.6.5</span>
+<span class="err">[username@es1 ~]$ python3 -m venv work</span>
+<span class="err">[username@es1 ~]$ source work/bin/activate</span>
+<span class="err">(work) [username@es1 ~]$ pip3 install spython</span>
+</code></pre></div>
+
+
+<p>以下の例では、NVIDIA社による<a href="https://github.com/NVIDIA/DeepLearningExamples/tree/master/PyTorch/Detection/SSD">SSD300 v1.1モデル学習用コンテナイメージ</a>のDockerfileをSingularity recipeファイル（ssd.def）に変換し、正常にイメージを作成できるよう修正します。</p>
+<p>Dockerfileから変換しただけでは次の2点の問題が発生するため、それぞれの対処が必要となります。</p>
+<ul>
+<li>WORKDIRにファイルがコピーされない =&gt; コピー先をWORKDIRの絶対パスに設定</li>
+<li>pipにパスが通らない =&gt; %postセクションにDockerイメージの環境変数を引き継ぐ設定を追加</li>
+</ul>
+<div class="codehilite"><pre><span></span><code><span class="p">[</span><span class="n">username</span><span class="err">@</span><span class="n">es1</span> <span class="o">~</span><span class="p">]</span><span class="err">$</span> <span class="k">module</span> <span class="n">load</span> <span class="n">python</span><span class="o">/</span><span class="mf">3.6</span><span class="o">/</span><span class="mf">3.6.5</span>
+<span class="p">[</span><span class="n">username</span><span class="err">@</span><span class="n">es1</span> <span class="o">~</span><span class="p">]</span><span class="err">$</span> <span class="n">source</span> <span class="n">work</span><span class="o">/</span><span class="n">bin</span><span class="o">/</span><span class="n">activate</span>
+<span class="p">(</span><span class="n">work</span><span class="p">)</span> <span class="p">[</span><span class="n">username</span><span class="err">@</span><span class="n">es1</span> <span class="o">~</span><span class="p">]</span><span class="err">$</span> <span class="n">git</span> <span class="n">clone</span> <span class="nl">https</span><span class="p">:</span><span class="c1">//github.com/NVIDIA/DeepLearningExamples</span>
+<span class="p">(</span><span class="n">work</span><span class="p">)</span> <span class="p">[</span><span class="n">username</span><span class="err">@</span><span class="n">es1</span> <span class="o">~</span><span class="p">]</span><span class="err">$</span> <span class="n">cd</span> <span class="n">DeepLearningExamples</span><span class="o">/</span><span class="n">PyTorch</span><span class="o">/</span><span class="n">Detection</span><span class="o">/</span><span class="n">SSD</span>
+<span class="p">(</span><span class="n">work</span><span class="p">)</span> <span class="p">[</span><span class="n">username</span><span class="err">@</span><span class="n">es1</span> <span class="n">SSD</span><span class="p">]</span><span class="err">$</span> <span class="n">spython</span> <span class="n">recipe</span> <span class="n">Dockerfile</span> <span class="n">ssd</span><span class="p">.</span><span class="n">def</span>
+<span class="p">(</span><span class="n">work</span><span class="p">)</span> <span class="p">[</span><span class="n">username</span><span class="err">@</span><span class="n">es1</span> <span class="n">SSD</span><span class="p">]</span><span class="err">$</span> <span class="n">cp</span> <span class="o">-</span><span class="n">p</span> <span class="n">ssd</span><span class="p">.</span><span class="n">def</span> <span class="n">ssd_org</span><span class="p">.</span><span class="n">def</span>
+<span class="p">(</span><span class="n">work</span><span class="p">)</span> <span class="p">[</span><span class="n">username</span><span class="err">@</span><span class="n">es1</span> <span class="n">SSD</span><span class="p">]</span><span class="err">$</span> <span class="n">vi</span> <span class="n">ssd</span><span class="p">.</span><span class="n">def</span>
+<span class="nl">Bootstrap</span><span class="p">:</span> <span class="n">docker</span>
+<span class="nl">From</span><span class="p">:</span> <span class="n">nvcr</span><span class="p">.</span><span class="n">io</span><span class="o">/</span><span class="n">nvidia</span><span class="o">/</span><span class="nl">pytorch</span><span class="p">:</span><span class="mf">20.06</span><span class="o">-</span><span class="n">py3</span>
+<span class="nl">Stage</span><span class="p">:</span> <span class="n">spython</span><span class="o">-</span><span class="n">base</span>
+
+<span class="nf">%files</span>
+<span class="n">requirements</span><span class="p">.</span><span class="n">txt</span> <span class="o">/</span><span class="n">workspace</span>                     <span class="o">&lt;-</span> <span class="err">コピー先を相対パス（</span><span class="p">.</span><span class="err">）から絶対パスに変更</span>
+<span class="p">.</span><span class="o">/</span><span class="n">setup</span><span class="p">.</span><span class="n">py</span> <span class="o">/</span><span class="n">workspace</span>                           <span class="o">&lt;-</span> <span class="err">コピー先を相対パス（</span><span class="p">.</span><span class="err">）から絶対パスに変更</span>
+<span class="p">.</span><span class="o">/</span><span class="n">csrc</span> <span class="o">/</span><span class="n">workspace</span><span class="o">/</span><span class="n">csrc</span>                          <span class="o">&lt;-</span> <span class="err">コピー先を相対パス（</span><span class="p">.</span><span class="err">）から絶対パスに変更</span>
+<span class="p">.</span> <span class="o">/</span><span class="n">workspace</span>                                    <span class="o">&lt;-</span> <span class="err">コピー先を相対パス（</span><span class="p">.</span><span class="err">）から絶対パスに変更</span>
+<span class="nf">%post</span>
+<span class="n">FROM_IMAGE_NAME</span><span class="o">=</span><span class="n">nvcr</span><span class="p">.</span><span class="n">io</span><span class="o">/</span><span class="n">nvidia</span><span class="o">/</span><span class="nl">pytorch</span><span class="p">:</span><span class="mf">20.06</span><span class="o">-</span><span class="n">py3</span>
+<span class="p">.</span> <span class="o">/</span><span class="p">.</span><span class="n">singularity</span><span class="p">.</span><span class="n">d</span><span class="o">/</span><span class="n">env</span><span class="o">/</span><span class="mi">10</span><span class="o">-</span><span class="n">docker2singularity</span><span class="p">.</span><span class="n">sh</span>  <span class="o">&lt;-</span> <span class="err">追加</span>
+
+<span class="cp"># Set working directory</span>
+<span class="n">cd</span> <span class="o">/</span><span class="n">workspace</span>
+
+<span class="n">PYTHONPATH</span><span class="o">=</span><span class="s">&quot;${PYTHONPATH}:/workspace&quot;</span>
+
+<span class="n">pip</span> <span class="n">install</span> <span class="o">--</span><span class="n">no</span><span class="o">-</span><span class="n">cache</span><span class="o">-</span><span class="n">dir</span> <span class="n">git</span><span class="o">+</span><span class="nl">https</span><span class="p">:</span><span class="c1">//github.com/NVIDIA/dllogger.git#egg=dllogger</span>
+<span class="n">pip</span> <span class="n">install</span> <span class="o">-</span><span class="n">r</span> <span class="n">requirements</span><span class="p">.</span><span class="n">txt</span>
+<span class="n">python3</span> <span class="o">-</span><span class="n">m</span> <span class="n">pip</span> <span class="n">install</span> <span class="n">pycocotools</span><span class="o">==</span><span class="mf">2.0.0</span>
+
+<span class="cp"># Copy SSD code</span>
+<span class="n">pip</span> <span class="n">install</span> <span class="p">.</span>
+
+<span class="nf">%environment</span>
+<span class="k">export</span> <span class="n">PYTHONPATH</span><span class="o">=</span><span class="s">&quot;${PYTHONPATH}:/workspace&quot;</span>
+<span class="nf">%runscript</span>
+<span class="n">cd</span> <span class="o">/</span><span class="n">workspace</span>
+<span class="n">exec</span> <span class="o">/</span><span class="n">bin</span><span class="o">/</span><span class="n">bash</span> <span class="s">&quot;$@&quot;</span>
+<span class="nf">%startscript</span>
+<span class="n">cd</span> <span class="o">/</span><span class="n">workspace</span>
+<span class="n">exec</span> <span class="o">/</span><span class="n">bin</span><span class="o">/</span><span class="n">bash</span> <span class="s">&quot;$@&quot;</span>
+</code></pre></div>
+
+
+<p>Singularity recipeファイルからのコンテナイメージの作成方法については、<a href="#build-a-singularity-image">Singularityイメージファイルの作成(build)</a>をご参照ください。</p>
 <h2 id="docker">Docker</h2>
 <p>ABCIシステムではDockerコンテナ上でのジョブ実行が可能です。
 Dockerを利用する場合、ジョブ投入時に<code>-l docker</code>オプションと<code>-l docker_images</code>オプションを指定する必要があります。</p>

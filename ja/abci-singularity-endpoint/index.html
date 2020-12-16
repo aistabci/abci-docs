@@ -794,6 +794,18 @@
   </li>
 
         
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../abci-cloudstorage/caution/" title="ご利用時の注意" class="md-nav__link">
+      ご利用時の注意
+    </a>
+  </li>
+
+        
       </ul>
     </nav>
   </li>
@@ -1693,6 +1705,12 @@ Signature created and applied to ./ubuntu.sif
 <p>Container Library にアップロードされたコンテナイメージは、<code>singularity delete</code> で削除することができます。</p>
 <div class="codehilite"><pre><span></span><code><span class="err">[username@es1 ~]$ singularity delete library://username/abci-lib/helloworld:latest</span>
 </code></pre></div>
+
+
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>singularity の仕様により、コンテナイメージとして Tag 相当 (上例では latest) のイメージは削除可能ですが、それより上位のディレクトリ (helloworld) の削除は出来ません。</p>
+</div>
                 
                   
                 
@@ -1714,7 +1732,7 @@ Signature created and applied to ./ubuntu.sif
     <div class="md-footer-nav">
       <nav class="md-footer-nav__inner md-grid">
         
-          <a href="../abci-cloudstorage/publishing-datasets/" title="データセットの公開" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev">
+          <a href="../abci-cloudstorage/caution/" title="ご利用時の注意" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev">
             <div class="md-flex__cell md-flex__cell--shrink">
               <i class="md-icon md-icon--arrow-back md-footer-nav__button"></i>
             </div>
@@ -1723,7 +1741,7 @@ Signature created and applied to ./ubuntu.sif
                 <span class="md-footer-nav__direction">
                   前
                 </span>
-                データセットの公開
+                ご利用時の注意
               </span>
             </div>
           </a>

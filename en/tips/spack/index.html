@@ -965,6 +965,18 @@
   </li>
 
         
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../abci-cloudstorage/caution/" title="Caution for ABCI Cloud Storage" class="md-nav__link">
+       Caution for ABCI Cloud Storage
+    </a>
+  </li>
+
+        
       </ul>
     </nav>
   </li>
@@ -1333,7 +1345,13 @@ By using Spack, you can easily install software packages by changing their versi
 Using Spack on ABCI enables easily installing software which is not officially supported by ABCI.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>We tested Spack on Feb 3rd 2020, and we used Spack 0.13.3 which was the latest version at that time.</p>
+<p>We tested Spack using bash on Dec 3rd 2020, and we used Spack 0.16.0 which was the latest version at that time.</p>
+</div>
+<div class="admonition caution">
+<p class="admonition-title">Caution</p>
+<p>Spack installs software packaged in its original format which is not compatible with packages
+provided by any Linux distributions, such as <code>.deb</code> and <code>.rpm</code>.
+Therefore, Spack is not a replacement of <code>yum</code> or <code>apt</code> system.</p>
 </div>
 <div class="admonition caution">
 <p class="admonition-title">Caution</p>
@@ -1345,7 +1363,7 @@ Manage software installed by Sapck by yourself, for example, by uninstalling unu
 <p>You can install Spack by cloning from GitHub and checking out the version you want to use.</p>
 <div class="codehilite"><pre><span></span><code><span class="err">[username@es1 ~]$ git clone https://github.com/spack/spack.git</span>
 <span class="err">[username@es1 ~]$ cd ./spack</span>
-<span class="err">[username@es1 ~/spack]$ git checkout v0.13.3</span>
+<span class="err">[username@es1 ~/spack]$ git checkout v0.16.0</span>
 </code></pre></div>
 
 
@@ -1356,89 +1374,54 @@ Manage software installed by Sapck by yourself, for example, by uninstalling unu
 
 <h3 id="configuration-for-abci">Configuration for ABCI</h3>
 <h4 id="adding-compilers">Adding Compilers</h4>
-<p>First,  have to register compilers you want to use in Spack.
-It can be done by <code>spack compiler find</code> command.</p>
-<p>Here, we assume that you register GCC 4.4.7, 4.8.5 and 7.4.0.
-Spack automatically finds GCC 4.4.7 and 4.8.5 because they are installed in the default path (/usr/bin).
-You have to do <code>module load</code> of GCC 7.4.0 because it is provided as a software module.</p>
-<div class="codehilite"><pre><span></span><code><span class="err">[username@es1 ~]$ module load gcc/7.4.0</span>
-<span class="err">[username@es1 ~]$ spack compiler find</span>
-<span class="err">[username@es1 ~]$ module purge</span>
-</code></pre></div>
-
-
-<p>You can confirm the registration completion if you see the following output when you execute <code>spack compiler list</code> command which shows the registered compilers.</p>
+<p>First, you have to register compilers you want to use in Spack.</p>
+<p><code>spack compiler list</code> command automatically detects and registers compilers which are located in the default path (/usr/bin).</p>
 <div class="codehilite"><pre><span></span><code><span class="p">[</span><span class="n">username</span><span class="p">@</span><span class="n">es1</span> <span class="o">~</span><span class="p">]</span><span class="err">$</span> <span class="n">spack</span> <span class="n">compiler</span> <span class="n">list</span>
 <span class="o">==&gt;</span> <span class="n">Available</span> <span class="n">compilers</span>
 <span class="o">--</span> <span class="n">gcc</span> <span class="n">centos7</span><span class="o">-</span><span class="n">x86_64</span> <span class="o">-------------------------------------------</span>
-<span class="n">gcc</span><span class="mf">@7.4.0</span>  <span class="n">gcc</span><span class="mf">@4.8.5</span>  <span class="n">gcc</span><span class="mf">@4.4.7</span>
+<span class="n">gcc</span><span class="mf">@4.8.5</span>  <span class="n">gcc</span><span class="mf">@4.4.7</span>
 </code></pre></div>
 
 
-<p>Edit the compiler configuration file <code>$HOME/.spack/linux/compilers.yaml</code> to set rpath for GCC 7.4.0.</p>
-<div class="codehilite"><pre><span></span><code><span class="p">(</span><span class="n">snip</span><span class="p">)</span>
-<span class="o">-</span> <span class="nl">compiler</span><span class="p">:</span>
-    <span class="nl">paths</span><span class="p">:</span>
-      <span class="nl">cc</span><span class="p">:</span> <span class="o">/</span><span class="n">apps</span><span class="o">/</span><span class="n">gcc</span><span class="o">/</span><span class="mf">7.4.0</span><span class="o">/</span><span class="n">bin</span><span class="o">/</span><span class="n">gcc</span>
-      <span class="nl">cxx</span><span class="p">:</span> <span class="o">/</span><span class="n">apps</span><span class="o">/</span><span class="n">gcc</span><span class="o">/</span><span class="mf">7.4.0</span><span class="o">/</span><span class="n">bin</span><span class="o">/</span><span class="n">g</span><span class="o">++</span>
-      <span class="nl">f77</span><span class="p">:</span> <span class="o">/</span><span class="n">apps</span><span class="o">/</span><span class="n">gcc</span><span class="o">/</span><span class="mf">7.4.0</span><span class="o">/</span><span class="n">bin</span><span class="o">/</span><span class="n">gfortran</span>
-      <span class="nl">fc</span><span class="p">:</span> <span class="o">/</span><span class="n">apps</span><span class="o">/</span><span class="n">gcc</span><span class="o">/</span><span class="mf">7.4.0</span><span class="o">/</span><span class="n">bin</span><span class="o">/</span><span class="n">gfortran</span>
-    <span class="nl">operating_system</span><span class="p">:</span> <span class="n">centos7</span>
-    <span class="nl">target</span><span class="p">:</span> <span class="n">x86_64</span>
-    <span class="nl">modules</span><span class="p">:</span> <span class="p">[]</span>
-    <span class="nl">environment</span><span class="p">:</span> <span class="p">{}</span>
-    <span class="nl">extra_rpaths</span><span class="p">:</span>                <span class="o">&lt;-</span> <span class="n">Edit</span> <span class="n">here</span>
-      <span class="o">-</span> <span class="o">/</span><span class="n">apps</span><span class="o">/</span><span class="n">gcc</span><span class="o">/</span><span class="mf">7.4.0</span><span class="o">/</span><span class="n">lib64</span>    <span class="o">&lt;-</span> <span class="n">Add</span> <span class="n">this</span> <span class="n">line</span>
-    <span class="nl">flags</span><span class="p">:</span> <span class="p">{}</span>
-    <span class="nl">spec</span><span class="p">:</span> <span class="n">gcc</span><span class="mf">@7.4.0</span>
-<span class="p">(</span><span class="n">snip</span><span class="p">)</span>
-</code></pre></div>
-
-
-<p>The default compiler can be specified in the configuration file <code>$HOME/.spack/linux/packages.yaml</code>.
-Add the following lines to the file to specify GCC 4.8.5 as the default compiler.</p>
-<div class="codehilite"><pre><span></span><code><span class="nl">packages</span><span class="p">:</span>
-  <span class="nl">all</span><span class="p">:</span>
-    <span class="nl">compiler</span><span class="p">:</span> <span class="p">[</span><span class="n">gcc</span><span class="mf">@4.8.5</span><span class="p">]</span>
+<p>ABCI provides a pre-configured compiler definition file for Spack, <code>compilers.yaml</code>.
+Copying this file to your environment sets up GCC 4.8.5 and 7.4.0 to be used in Spack.</p>
+<div class="codehilite"><pre><span></span><code><span class="p">[</span><span class="n">username</span><span class="p">@</span><span class="n">es1</span> <span class="o">~</span><span class="p">]</span><span class="err">$</span> <span class="n">cp</span> <span class="o">/</span><span class="n">apps</span><span class="o">/</span><span class="n">spack</span><span class="o">/</span><span class="n">compilers</span><span class="p">.</span><span class="n">yaml</span> <span class="err">$</span><span class="p">{</span><span class="n">HOME</span><span class="p">}</span><span class="o">/</span><span class="p">.</span><span class="n">spack</span><span class="o">/</span><span class="n">linux</span><span class="o">/</span>
+<span class="p">[</span><span class="n">username</span><span class="p">@</span><span class="n">es1</span> <span class="o">~</span><span class="p">]</span><span class="err">$</span> <span class="n">spack</span> <span class="n">compiler</span> <span class="n">list</span>
+<span class="o">==&gt;</span> <span class="n">Available</span> <span class="n">compilers</span>
+<span class="o">--</span> <span class="n">gcc</span> <span class="n">centos7</span><span class="o">-</span><span class="n">x86_64</span> <span class="o">-------------------------------------------</span>
+<span class="n">gcc</span><span class="mf">@7.4.0</span>  <span class="n">gcc</span><span class="mf">@4.8.5</span>
 </code></pre></div>
 
 
 <h4 id="adding-abci-software">Adding ABCI Software</h4>
-<p>Spack automatically resolves software dependencies and install dependant software.
+<p>Spack automatically resolves software dependencies and installs dependant software.
 Spack, by default, installs another copies of software which is already supported by ABCI, such as CUDA and OpenMPI.
 As it is a waste of disk space, we recommend to configure Spack to <em>refer to</em> software supported by ABCI.</p>
 <p>Software referred by Spack can be defined in the configuration file <code>$HOME/.spack/linux/packages.yaml</code>.
-Create the file by the following contents (it includes the default compiler configuration).</p>
-<div class="codehilite"><pre><span></span><code><span class="nl">packages</span><span class="p">:</span>
-  <span class="nl">cuda</span><span class="p">:</span>
-    <span class="nl">paths</span><span class="p">:</span>
-      <span class="n">cuda</span><span class="p">@</span><span class="n">abci</span><span class="o">-</span><span class="mf">8.0.61.2</span><span class="o">:</span>   <span class="o">/</span><span class="n">apps</span><span class="o">/</span><span class="n">cuda</span><span class="o">/</span><span class="mf">8.0.61.2</span>
-      <span class="n">cuda</span><span class="p">@</span><span class="n">abci</span><span class="o">-</span><span class="mf">9.0.176.4</span><span class="o">:</span>  <span class="o">/</span><span class="n">apps</span><span class="o">/</span><span class="n">cuda</span><span class="o">/</span><span class="mf">9.0.176.4</span>
-      <span class="n">cuda</span><span class="p">@</span><span class="n">abci</span><span class="o">-</span><span class="mf">9.1.85.3</span><span class="o">:</span>   <span class="o">/</span><span class="n">apps</span><span class="o">/</span><span class="n">cuda</span><span class="o">/</span><span class="mf">9.1.85.3</span>
-      <span class="n">cuda</span><span class="p">@</span><span class="n">abci</span><span class="o">-</span><span class="mf">9.2.148.1</span><span class="o">:</span>  <span class="o">/</span><span class="n">apps</span><span class="o">/</span><span class="n">cuda</span><span class="o">/</span><span class="mf">9.2.148.1</span>
-      <span class="n">cuda</span><span class="p">@</span><span class="n">abci</span><span class="o">-</span><span class="mf">10.0.130.1</span><span class="o">:</span> <span class="o">/</span><span class="n">apps</span><span class="o">/</span><span class="n">cuda</span><span class="o">/</span><span class="mf">10.0.130.1</span>
-      <span class="n">cuda</span><span class="p">@</span><span class="n">abci</span><span class="o">-</span><span class="mf">10.1.243</span><span class="o">:</span>   <span class="o">/</span><span class="n">apps</span><span class="o">/</span><span class="n">cuda</span><span class="o">/</span><span class="mf">10.1.243</span>
-      <span class="n">cuda</span><span class="p">@</span><span class="n">abci</span><span class="o">-</span><span class="mf">10.2.89</span><span class="o">:</span>    <span class="o">/</span><span class="n">apps</span><span class="o">/</span><span class="n">cuda</span><span class="o">/</span><span class="mf">10.2.89</span>
-    <span class="nl">buildable</span><span class="p">:</span> <span class="n">False</span>
-  <span class="nl">openmpi</span><span class="p">:</span>
-    <span class="nl">paths</span><span class="p">:</span>
-      <span class="n">openmpi</span><span class="p">@</span><span class="n">abci</span><span class="o">-</span><span class="mf">2.1.6</span><span class="o">-</span><span class="n">nocuda</span><span class="o">%</span><span class="n">gcc</span><span class="mf">@4.8.5</span><span class="o">:</span> <span class="o">/</span><span class="n">apps</span><span class="o">/</span><span class="n">openmpi</span><span class="o">/</span><span class="mf">2.1.6</span><span class="o">/</span><span class="n">gcc4</span><span class="mf">.8.5</span>
-      <span class="n">openmpi</span><span class="p">@</span><span class="n">abci</span><span class="o">-</span><span class="mf">3.1.3</span><span class="o">-</span><span class="n">nocuda</span><span class="o">%</span><span class="n">gcc</span><span class="mf">@4.8.5</span><span class="o">:</span> <span class="o">/</span><span class="n">apps</span><span class="o">/</span><span class="n">openmpi</span><span class="o">/</span><span class="mf">3.1.3</span><span class="o">/</span><span class="n">gcc4</span><span class="mf">.8.5</span>
-  <span class="nl">mvapich2</span><span class="p">:</span>
-    <span class="nl">paths</span><span class="p">:</span>
-      <span class="n">mvapich2</span><span class="p">@</span><span class="n">abci</span><span class="o">-</span><span class="mf">2.3</span><span class="o">-</span><span class="n">nocuda</span><span class="o">%</span><span class="n">gcc</span><span class="mf">@4.8.5</span><span class="o">:</span>   <span class="o">/</span><span class="n">apps</span><span class="o">/</span><span class="n">mvapich2</span><span class="o">/</span><span class="mf">2.3</span><span class="o">/</span><span class="n">gcc4</span><span class="mf">.8.5</span>
-      <span class="n">mvapich2</span><span class="p">@</span><span class="n">abci</span><span class="o">-</span><span class="mf">2.3.2</span><span class="o">-</span><span class="n">nocuda</span><span class="o">%</span><span class="n">gcc</span><span class="mf">@4.8.5</span><span class="o">:</span> <span class="o">/</span><span class="n">apps</span><span class="o">/</span><span class="n">mvapich2</span><span class="o">/</span><span class="mf">2.3.2</span><span class="o">/</span><span class="n">gcc4</span><span class="mf">.8.5</span>
-  <span class="nl">cmake</span><span class="p">:</span>
-    <span class="nl">paths</span><span class="p">:</span>
-      <span class="n">cmake</span><span class="p">@</span><span class="n">abci</span><span class="o">-</span><span class="mf">3.11.4</span><span class="o">:</span> <span class="o">/</span><span class="n">apps</span><span class="o">/</span><span class="n">cmake</span><span class="o">/</span><span class="mf">3.11.4</span>
-  <span class="nl">all</span><span class="p">:</span>
-    <span class="nl">compiler</span><span class="p">:</span> <span class="p">[</span><span class="n">gcc</span><span class="mf">@4.8.5</span><span class="p">]</span>
+ABCI provides a pre-configured <code>packages.yaml</code> which defines mappings of Spack package and software installed on ABCI.
+Copying this file to your environment lets Spack use installed CUDA, OpenMPI, MVAPICH, cmake and etc.</p>
+<div class="codehilite"><pre><span></span><code>[username@es1 ~]$ cp /apps/spack/packages.yaml <span class="cp">${</span><span class="n">HOME</span><span class="cp">}</span>/.spack/linux/
 </code></pre></div>
 
 
-<p>The above example configures CUDA, OpenMPI, MVAPICH and CMake.
-In case of <code>cuda@abci-8.0.61.2: /apps/cuda/8.0.61.2</code>, it means that Spack refers to software installed in <code>/apps/cuda/8.0.61.2</code>, instead of installing another copy of CUDA, when you conduct the installation of CUDA version abci-8.0.61.2.
-<code>buildable: False</code> defined under CUDA section prohibits Spack to install other versions of CUDA specified here.
+<p>packages.yaml (excerpt)</p>
+<div class="codehilite"><pre><span></span><code><span class="nl">packages</span><span class="p">:</span>
+  <span class="nl">cuda</span><span class="p">:</span>
+    <span class="nl">buildable</span><span class="p">:</span> <span class="nb">false</span>
+    <span class="nl">externals</span><span class="p">:</span>
+<span class="p">(</span><span class="n">snip</span><span class="p">)</span>
+    <span class="o">-</span> <span class="nl">spec</span><span class="p">:</span> <span class="n">cuda</span><span class="mf">@10.2.89</span><span class="o">%</span><span class="n">gcc</span><span class="mf">@4.8.5</span>
+      <span class="nl">modules</span><span class="p">:</span>
+      <span class="o">-</span> <span class="n">cuda</span><span class="o">/</span><span class="mf">10.2</span><span class="o">/</span><span class="mf">10.2.89</span>
+    <span class="o">-</span> <span class="nl">spec</span><span class="p">:</span> <span class="n">cuda</span><span class="mf">@10.2.89</span><span class="o">%</span><span class="n">gcc</span><span class="mf">@7.4.0</span>
+      <span class="nl">modules</span><span class="p">:</span>
+      <span class="o">-</span> <span class="n">cuda</span><span class="o">/</span><span class="mf">10.2</span><span class="o">/</span><span class="mf">10.2.89</span>
+<span class="p">(</span><span class="n">snip</span><span class="p">)</span>
+</code></pre></div>
+
+
+<p>After you copy this file, when you let Spack install CUDA version 10.2.89, it use <code>cuda/10.2/10.2.89</code> environment module, instead of installing another copy of CUDA.
+<code>buildable: false</code> defined under CUDA section prohibits Spack to install other versions of CUDA specified here.
 If you let Spack install versions of CUDA which are not supported by ABCI, remove this directive.</p>
 <p>Please refer to <a href="https://spack.readthedocs.io/en/latest/build_settings.html">the official document</a> for detail about <code>packages.yaml</code>.</p>
 <h2 id="basic-of-spack">Basic of Spack</h2>
@@ -1449,7 +1432,7 @@ For detail, please refer to <a href="https://spack.readthedocs.io/en/latest/basi
 <div class="codehilite"><pre><span></span><code><span class="p">[</span><span class="n">username</span><span class="p">@</span><span class="n">es1</span> <span class="o">~</span><span class="p">]</span><span class="err">$</span> <span class="n">spack</span> <span class="n">compiler</span> <span class="n">list</span>
 <span class="o">==&gt;</span> <span class="n">Available</span> <span class="n">compilers</span>
 <span class="o">--</span> <span class="n">gcc</span> <span class="n">centos7</span><span class="o">-</span><span class="n">x86_64</span> <span class="o">-------------------------------------------</span>
-<span class="n">gcc</span><span class="mf">@7.4.0</span>  <span class="n">gcc</span><span class="mf">@4.8.5</span>  <span class="n">gcc</span><span class="mf">@4.4.7</span>
+<span class="n">gcc</span><span class="mf">@7.4.0</span>  <span class="n">gcc</span><span class="mf">@4.8.5</span>
 </code></pre></div>
 
 
@@ -1461,6 +1444,8 @@ For detail, please refer to <a href="https://spack.readthedocs.io/en/latest/basi
         <span class="n">cxx</span> <span class="o">=</span> <span class="o">/</span><span class="n">usr</span><span class="o">/</span><span class="n">bin</span><span class="o">/</span><span class="n">g</span><span class="o">++</span>
         <span class="n">f77</span> <span class="o">=</span> <span class="o">/</span><span class="n">usr</span><span class="o">/</span><span class="n">bin</span><span class="o">/</span><span class="n">gfortran</span>
         <span class="n">fc</span> <span class="o">=</span> <span class="o">/</span><span class="n">usr</span><span class="o">/</span><span class="n">bin</span><span class="o">/</span><span class="n">gfortran</span>
+    <span class="n">Extra</span> <span class="nl">rpaths</span><span class="p">:</span>
+        <span class="o">/</span><span class="n">usr</span><span class="o">/</span><span class="n">lib</span><span class="o">/</span><span class="n">gcc</span><span class="o">/</span><span class="n">x86_64</span><span class="o">-</span><span class="n">redhat</span><span class="o">-</span><span class="n">linux</span><span class="o">/</span><span class="mf">4.8.5</span>
     <span class="n">modules</span>  <span class="o">=</span> <span class="p">[]</span>
     <span class="n">operating</span> <span class="n">system</span>  <span class="o">=</span> <span class="n">centos7</span>
 </code></pre></div>
@@ -1537,14 +1522,15 @@ The following example uses <code>mpi</code> as the keyword.</p>
 <p>Adding <code>-dl</code> option to <code>find</code> sub-command shows hashes and dependencies of installed software.</p>
 <div class="codehilite"><pre><span></span><code><span class="p">[</span><span class="n">username</span><span class="p">@</span><span class="n">es1</span> <span class="o">~</span><span class="p">]</span><span class="err">$</span> <span class="n">spack</span> <span class="n">find</span> <span class="o">-</span><span class="n">dl</span> <span class="n">openmpi</span>
 <span class="o">--</span> <span class="n">linux</span><span class="o">-</span><span class="n">centos7</span><span class="o">-</span><span class="n">skylake_avx512</span> <span class="o">/</span> <span class="n">gcc</span><span class="mf">@7.4.0</span> <span class="o">---------------------</span>
-<span class="n">sif5fzv</span> <span class="n">openmpi</span><span class="mf">@3.1.4</span>
-<span class="n">xqsp4xn</span>     <span class="n">hwloc</span><span class="mf">@1.11.11</span>
-<span class="mi">3</span><span class="n">movoj3</span>         <span class="n">libpciaccess</span><span class="mf">@0.13.5</span>
-<span class="n">d6xghgt</span>         <span class="n">libxml2</span><span class="mf">@2.9.9</span>
-<span class="n">zydtv5a</span>             <span class="n">libiconv</span><span class="mf">@1.16</span>
-<span class="n">y6e4zi2</span>             <span class="n">xz</span><span class="mf">@5.2.4</span>
-<span class="n">kv37bl2</span>             <span class="n">zlib</span><span class="mf">@1.2.11</span>
-<span class="n">onnjyv2</span>         <span class="n">numactl</span><span class="mf">@2.0.12</span>
+<span class="mi">6</span><span class="n">pxjftg</span> <span class="n">openmpi</span><span class="mf">@3.1.1</span>
+<span class="n">ahftjey</span>     <span class="n">hwloc</span><span class="mf">@1.11.11</span>
+<span class="n">vf52amo</span>         <span class="n">cuda</span><span class="mf">@9.0.176.4</span>
+<span class="n">edtwt6g</span>         <span class="n">libpciaccess</span><span class="mf">@0.16</span>
+<span class="n">bt74u75</span>         <span class="n">libxml2</span><span class="mf">@2.9.10</span>
+<span class="n">qazxaa4</span>             <span class="n">libiconv</span><span class="mf">@1.16</span>
+<span class="n">jb22kvg</span>             <span class="n">xz</span><span class="mf">@5.2.5</span>
+<span class="n">pkmj6e7</span>             <span class="n">zlib</span><span class="mf">@1.2.11</span>
+<span class="mi">2</span><span class="n">dq7ece</span>         <span class="n">numactl</span><span class="mf">@2.0.14</span>
 </code></pre></div>
 
 
@@ -1575,27 +1561,18 @@ The following example uses <code>mpi</code> as the keyword.</p>
 
 
 <h3 id="use-of-installed-software">Use of Installed Software</h3>
-<p>Software installed by Spack is automatically registered to the Environment Modules.
-As with modules provided by ABCI, the installed software can be used by loading them.</p>
-<div class="codehilite"><pre><span></span><code><span class="err">[username@es1 ~]$ module load xxxxx</span>
+<p>Software installed with Spack is available with the <code>spack load</code> command.
+Like the module provided by ABCI, the installed software can be be loaded and used.</p>
+<div class="codehilite"><pre><span></span><code><span class="err">[username@es1 ~]$ spack load xxxxx</span>
 </code></pre></div>
 
 
-<p>To update modules of all software installed by Spack, type the following command.</p>
-<div class="codehilite"><pre><span></span><code><span class="err">[username@es1 ~]$ spack module tcl refresh</span>
+<p><code>spack load</code> sets environment variables, such as <code>PATH</code>, <code>MANPATH</code>, <code>CPATH</code>, <code>LD_LIBRARY_PATH</code>, so that the software can be used.</p>
+<p>If you no more use, type <code>spack unload</code> to unset the variables.</p>
+<div class="codehilite"><pre><span></span><code><span class="err">[username@es1 ~]$ spack unload xxxxx</span>
 </code></pre></div>
 
 
-<p>To remove modules of all software installed by Spack, type the following command.</p>
-<div class="codehilite"><pre><span></span><code><span class="err">[username@es1 ~]$ spack module tcl rm</span>
-</code></pre></div>
-
-
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>Try to reload the Spack setup script if the installed software do not appear in the Environment Modules.</p>
-<p><code>[username@es1 ~]$ source ${HOME}/spack/share/spack/setup-env.sh</code></p>
-</div>
 <h2 id="example-software-installation">Example Software Installation</h2>
 <h3 id="cuda-aware-openmpi">CUDA-aware OpenMPI</h3>
 <p>ABCI provides software modules of CUDA-aware OpenMPI, however, they do not support all the combinations of compilers, CUDA and OpenMPI versions (<a href="https://docs.abci.ai/en/08/#open-mpi">Reference</a>).
@@ -1603,8 +1580,8 @@ It is easy to use Spack to install unsupported versions of CUDA-aware OpenMPI.</
 <h4 id="how-to-install">How to Install</h4>
 <p>This is an example of installing OpenMPI 3.1.1 that uses CUDA 10.1.243.
 You have to use a compute node to install it.</p>
-<div class="codehilite"><pre><span></span><code><span class="p">[</span><span class="n">username</span><span class="p">@</span><span class="n">g0001</span> <span class="o">~</span><span class="p">]</span><span class="err">$</span> <span class="n">spack</span> <span class="n">install</span> <span class="n">cuda</span><span class="p">@</span><span class="n">abci</span><span class="o">-</span><span class="mf">10.1.243</span>
-<span class="p">[</span><span class="n">username</span><span class="p">@</span><span class="n">g0001</span> <span class="o">~</span><span class="p">]</span><span class="err">$</span> <span class="n">spack</span> <span class="n">install</span> <span class="n">openmpi</span><span class="mf">@3.1.1</span> <span class="o">+</span><span class="n">cuda</span> <span class="n">schedulers</span><span class="o">=</span><span class="n">sge</span> <span class="n">fabrics</span><span class="o">=</span><span class="k">auto</span> <span class="o">^</span><span class="n">cuda</span><span class="p">@</span><span class="n">abci</span><span class="o">-</span><span class="mf">10.1.243</span>
+<div class="codehilite"><pre><span></span><code><span class="p">[</span><span class="n">username</span><span class="p">@</span><span class="n">g0001</span> <span class="o">~</span><span class="p">]</span><span class="err">$</span> <span class="n">spack</span> <span class="n">install</span> <span class="n">cuda</span><span class="mf">@10.1.243</span>
+<span class="p">[</span><span class="n">username</span><span class="p">@</span><span class="n">g0001</span> <span class="o">~</span><span class="p">]</span><span class="err">$</span> <span class="n">spack</span> <span class="n">install</span> <span class="n">openmpi</span><span class="mf">@3.1.1</span> <span class="o">+</span><span class="n">cuda</span> <span class="n">schedulers</span><span class="o">=</span><span class="n">sge</span> <span class="n">fabrics</span><span class="o">=</span><span class="k">auto</span> <span class="o">^</span><span class="n">cuda</span><span class="mf">@10.1.243</span>
 <span class="p">[</span><span class="n">username</span><span class="p">@</span><span class="n">g0001</span> <span class="o">~</span><span class="p">]</span><span class="err">$</span> <span class="n">spack</span> <span class="n">find</span> <span class="o">--</span><span class="n">paths</span> <span class="n">openmpi</span><span class="mf">@3.1.1</span>
 <span class="o">==&gt;</span> <span class="mi">1</span> <span class="n">installed</span> <span class="n">package</span>
 <span class="o">--</span> <span class="n">linux</span><span class="o">-</span><span class="n">centos7</span><span class="o">-</span><span class="n">haswell</span> <span class="o">/</span> <span class="n">gcc</span><span class="mf">@4.8.5</span> <span class="o">----------------------------</span>
@@ -1613,59 +1590,35 @@ You have to use a compute node to install it.</p>
 </code></pre></div>
 
 
-<p>Line #1 installs CUDA version <code>abci-10.1.243</code> so that Spack uses a CUDA provided by ABCI.
+<p>Line #1 installs CUDA version <code>10.1.243</code> so that Spack uses a CUDA provided by ABCI.
 Line #2 installs OpenMPI 3.1.1 as the same configuration with <a href="../../appendix/installed-software/#open-mpi">this page</a>.
 Meanings of the installation options are as follows.</p>
 <ul>
 <li><code>+cuda</code>: Build with CUDA support</li>
 <li><code>schedulers=sge</code>: Specify how to invoke MPI processes.  You have to specify <code>sge</code> as ABCI uses Univa Grid Engine which is compatible with SGE.</li>
 <li><code>fabrics=auto</code>: Specify a communication library.</li>
-<li><code>^cuda@abci-10.1.243</code>: Specify a CUDA to be used.  <code>^</code> is used to specify software dependency.</li>
+<li><code>^cuda@10.1.243</code>: Specify a CUDA to be used.  <code>^</code> is used to specify software dependency.</li>
 </ul>
 <p>Line #4 edits a configuration file to turn off runtime warnings (optional).
 For this purpose, Line #3 checks the installation path of OpenMPI.</p>
 <p>Spack can manage variants of the same version of software.
 This is an example that you additionally install OpenMPI 3.1.1 that uses CUDA 9.0.176.4.</p>
-<div class="codehilite"><pre><span></span><code><span class="p">[</span><span class="n">username</span><span class="p">@</span><span class="n">g0001</span> <span class="o">~</span><span class="p">]</span><span class="err">$</span> <span class="n">spack</span> <span class="n">install</span> <span class="n">cuda</span><span class="p">@</span><span class="n">abci</span><span class="o">-</span><span class="mf">9.0.176.4</span>
-<span class="p">[</span><span class="n">username</span><span class="p">@</span><span class="n">g0001</span> <span class="o">~</span><span class="p">]</span><span class="err">$</span> <span class="n">spack</span> <span class="n">install</span> <span class="n">openmpi</span><span class="mf">@3.1.1</span> <span class="o">+</span><span class="n">cuda</span> <span class="n">schedulers</span><span class="o">=</span><span class="n">sge</span> <span class="n">fabrics</span><span class="o">=</span><span class="k">auto</span> <span class="o">^</span><span class="n">cuda</span><span class="p">@</span><span class="n">abci</span><span class="o">-</span><span class="mf">9.0.176.4</span>
+<div class="codehilite"><pre><span></span><code><span class="p">[</span><span class="n">username</span><span class="p">@</span><span class="n">g0001</span> <span class="o">~</span><span class="p">]</span><span class="err">$</span> <span class="n">spack</span> <span class="n">install</span> <span class="n">cuda</span><span class="mf">@9.0.176.4</span>
+<span class="p">[</span><span class="n">username</span><span class="p">@</span><span class="n">g0001</span> <span class="o">~</span><span class="p">]</span><span class="err">$</span> <span class="n">spack</span> <span class="n">install</span> <span class="n">openmpi</span><span class="mf">@3.1.1</span> <span class="o">+</span><span class="n">cuda</span> <span class="n">schedulers</span><span class="o">=</span><span class="n">sge</span> <span class="n">fabrics</span><span class="o">=</span><span class="k">auto</span> <span class="o">^</span><span class="n">cuda</span><span class="mf">@9.0.176.4</span>
 </code></pre></div>
 
 
 <h4 id="how-to-use">How to Use</h4>
-<p>This is an example of using "OpenMPI 3.1.1 that uses CUDA 10.1.243" installed above.</p>
-<p>As you installed two OpenMPI 3.1.1, you can see the following modules.</p>
-<div class="codehilite"><pre><span></span><code><span class="err">[username@es1 ~]$ module avail openmpi</span>
-<span class="err">------------------------- $HOME/spack/share/spack/modules/linux-centos7-haswell -------------------------</span>
-<span class="err">openmpi-3.1.1-gcc-4.8.5-4mmghhf             openmpi-3.1.1-gcc-4.8.5-zqwwrqy</span>
-<span class="err">(snip)</span>
+<p>This is an example of using "OpenMPI 3.1.1 that uses CUDA 10.1.243" installed above.
+Specify the version of OpenMPI and CUDA dependency to load the software.</p>
+<div class="codehilite"><pre><span></span><code><span class="p">[</span><span class="n">username</span><span class="p">@</span><span class="n">es1</span> <span class="o">~</span><span class="p">]</span><span class="err">$</span> <span class="n">spack</span> <span class="n">load</span> <span class="n">openmpi</span><span class="mf">@3.1.1</span> <span class="o">^</span><span class="n">cuda</span><span class="mf">@10.1.243</span>
 </code></pre></div>
 
 
-<p>First of all, you have to identify an OpenMPI module you want to use.
-The name of a module created by Spack includes the following five attributes: (1) name of a software, (2) version of the software, (3) compiler used to build, (4) version of the compiler and (5) hash of the built software.
-You have to identify the module by (5) hash because all (1) to (4) are same in this case.</p>
-<p>You can get the hash of OpenMPI that uses CUDA 10.1.243 by checking the dependencies.</p>
-<div class="codehilite"><pre><span></span><code><span class="p">[</span><span class="n">username</span><span class="p">@</span><span class="n">es1</span> <span class="o">~</span><span class="p">]</span><span class="err">$</span> <span class="n">spack</span> <span class="n">find</span> <span class="o">-</span><span class="n">dl</span> <span class="n">openmpi</span>
-<span class="o">==&gt;</span> <span class="mi">2</span> <span class="n">installed</span> <span class="n">packages</span>
-<span class="o">--</span> <span class="n">linux</span><span class="o">-</span><span class="n">centos7</span><span class="o">-</span><span class="n">haswell</span> <span class="o">/</span> <span class="n">gcc</span><span class="mf">@4.8.5</span> <span class="o">----------------------------</span>
-<span class="mi">4</span><span class="n">mmghhf</span> <span class="n">openmpi</span><span class="mf">@3.1.1</span>
-<span class="n">glgpfmf</span>     <span class="n">hwloc</span><span class="mf">@1.11.11</span>
-<span class="mi">6</span><span class="n">ddc273</span>         <span class="n">cuda</span><span class="p">@</span><span class="n">abci</span><span class="o">-</span><span class="mf">10.1.243</span>
-<span class="p">(</span><span class="n">snip</span><span class="p">)</span>
-
-<span class="n">zqwwrqy</span> <span class="n">openmpi</span><span class="mf">@3.1.1</span>
-<span class="n">b4gs3k5</span>     <span class="n">hwloc</span><span class="mf">@1.11.11</span>
-<span class="n">l6ayrkp</span>         <span class="n">cuda</span><span class="p">@</span><span class="n">abci</span><span class="o">-</span><span class="mf">9.0.176.4</span>
-<span class="p">(</span><span class="n">snip</span><span class="p">)</span>
-</code></pre></div>
-
-
-<p>You can find that OpenMPI having hash <code>4mmghhf</code> is what you want, and you need to use a module named <code>openmpi-3.1.1-gcc-4.8.5-4mmghhf</code>.</p>
-<p>To build an MPI program using the above OpenMPI, you need to load a CUDA module provided by ABCI and the  OpenMPI module.</p>
-<div class="codehilite"><pre><span></span><code>source <span class="cp">${</span><span class="n">HOME</span><span class="cp">}</span>/spack/share/spack/setup-env.sh
-[username@g0001 ~]$ module load cuda/10.1/10.1.243
-[username@g0001 ~]$ module load openmpi-3.1.1-gcc-4.8.5-4mmghhf
-[username@g0001 ~]$ mpicc ...
+<p>To build an MPI program using the above OpenMPI, you need to load OpenMPI installed by Spack .</p>
+<div class="codehilite"><pre><span></span><code><span class="p">[</span><span class="n">username</span><span class="p">@</span><span class="n">g0001</span> <span class="o">~</span><span class="p">]</span><span class="err">$</span> <span class="n">source</span> <span class="err">$</span><span class="p">{</span><span class="n">HOME</span><span class="p">}</span><span class="o">/</span><span class="n">spack</span><span class="o">/</span><span class="n">share</span><span class="o">/</span><span class="n">spack</span><span class="o">/</span><span class="n">setup</span><span class="o">-</span><span class="n">env</span><span class="p">.</span><span class="n">sh</span>
+<span class="p">[</span><span class="n">username</span><span class="p">@</span><span class="n">g0001</span> <span class="o">~</span><span class="p">]</span><span class="err">$</span> <span class="n">spack</span> <span class="n">load</span> <span class="n">openmpi</span><span class="mf">@3.1.1</span> <span class="o">^</span><span class="n">cuda</span><span class="mf">@10.1.243</span>
+<span class="p">[</span><span class="n">username</span><span class="p">@</span><span class="n">g0001</span> <span class="o">~</span><span class="p">]</span><span class="err">$</span> <span class="n">mpicc</span> <span class="p">...</span>
 </code></pre></div>
 
 
@@ -1682,17 +1635,13 @@ You have to identify the module by (5) hash because all (1) to (4) are same in t
 10
 11
 12
-13
-14
-15</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><code><span class="ch">#!/bin/bash</span>
+13</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><code><span class="ch">#!/bin/bash</span>
 <span class="c1">#$-l rt_F=2</span>
 <span class="c1">#$-j y</span>
 <span class="c1">#$-cwd</span>
 
-<span class="nb">source</span> /etc/profile.d/modules.sh
 <span class="nb">source</span> <span class="si">${</span><span class="nv">HOME</span><span class="si">}</span>/spack/share/spack/setup-env.sh
-module load cuda/10.1/10.1.243
-module load openmpi-3.1.1-gcc-4.8.5-4mmghhf
+spack load openmpi@3.1.1 ^cuda@10.1.243
 
 <span class="nv">NUM_NODES</span><span class="o">=</span><span class="si">${</span><span class="nv">NHOSTS</span><span class="si">}</span>
 <span class="nv">NUM_GPUS_PER_NODE</span><span class="o">=</span><span class="m">4</span>
@@ -1702,8 +1651,8 @@ mpiexec <span class="si">${</span><span class="nv">MPIOPTS</span><span class="si
 </code></pre></div>
 </td></tr></table>
 
-<p>If you no more use the OpenMPI, you can uninstall it by specifying its hash.</p>
-<div class="codehilite"><pre><span></span><code><span class="err">[username@es1 ~]$ spack uninstall /4mmghhf</span>
+<p>If you no more use the OpenMPI, you can uninstall it by specifying the version and dependencies.</p>
+<div class="codehilite"><pre><span></span><code><span class="p">[</span><span class="n">username</span><span class="p">@</span><span class="n">es1</span> <span class="o">~</span><span class="p">]</span><span class="err">$</span> <span class="n">spack</span> <span class="n">uninstall</span> <span class="n">openmpi</span><span class="mf">@3.1.1</span> <span class="o">^</span><span class="n">cuda</span><span class="mf">@10.1.243</span>
 </code></pre></div>
 
 
@@ -1711,9 +1660,9 @@ mpiexec <span class="si">${</span><span class="nv">MPIOPTS</span><span class="si
 <p>MVAPICH2 modules provided by ABCI does not support CUDA.
 If you want to use CUDA-aware MVAPICH2, install by yourself referring to the documents below.</p>
 <p>You have to use a compute node to build CUDA-aware MVAPICH2.
-As with <a href="#cuda-aware-openmpi">OpenMPI</a> above, you first install CUDA and then install MVAPICH2 by enabling CUDA (<code>+cuda</code>) and specifying a communication library (<code>fabrics=mrail</code>) and CUDA dependency (<code>^cuda@abci-10.1.243</code>).</p>
-<div class="codehilite"><pre><span></span><code><span class="p">[</span><span class="n">username</span><span class="p">@</span><span class="n">g0001</span> <span class="o">~</span><span class="p">]</span><span class="err">$</span> <span class="n">spack</span> <span class="n">install</span> <span class="n">cuda</span><span class="p">@</span><span class="n">abci</span><span class="o">-</span><span class="mf">10.1.243</span>
-<span class="p">[</span><span class="n">username</span><span class="p">@</span><span class="n">g0001</span> <span class="o">~</span><span class="p">]</span><span class="err">$</span> <span class="n">spack</span> <span class="n">install</span> <span class="n">mvapich2</span><span class="mf">@2.3</span> <span class="o">+</span><span class="n">cuda</span> <span class="n">fabrics</span><span class="o">=</span><span class="n">mrail</span> <span class="o">^</span><span class="n">cuda</span><span class="p">@</span><span class="n">abci</span><span class="o">-</span><span class="mf">10.1.243</span>
+As with <a href="#cuda-aware-openmpi">OpenMPI</a> above, you first install CUDA and then install MVAPICH2 by enabling CUDA (<code>+cuda</code>) and specifying a communication library (<code>fabrics=mrail</code>) and CUDA dependency (<code>^cuda@10.1.243</code>).</p>
+<div class="codehilite"><pre><span></span><code><span class="p">[</span><span class="n">username</span><span class="p">@</span><span class="n">g0001</span> <span class="o">~</span><span class="p">]</span><span class="err">$</span> <span class="n">spack</span> <span class="n">install</span> <span class="n">cuda</span><span class="mf">@10.1.243</span>
+<span class="p">[</span><span class="n">username</span><span class="p">@</span><span class="n">g0001</span> <span class="o">~</span><span class="p">]</span><span class="err">$</span> <span class="n">spack</span> <span class="n">install</span> <span class="n">mvapich2</span><span class="mf">@2.3.2</span> <span class="o">+</span><span class="n">cuda</span> <span class="n">fabrics</span><span class="o">=</span><span class="n">mrail</span> <span class="o">^</span><span class="n">cuda</span><span class="mf">@10.1.243</span>
 </code></pre></div>
 
 
@@ -1733,17 +1682,13 @@ Here is a job script example.</p>
 12
 13
 14
-15
-16
-17</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><code><span class="ch">#!/bin/bash</span>
+15</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><code><span class="ch">#!/bin/bash</span>
 <span class="c1">#$-l rt_F=2</span>
 <span class="c1">#$-j y</span>
 <span class="c1">#$-cwd</span>
 
-<span class="nb">source</span> /etc/profile.d/modules.sh
 <span class="nb">source</span> <span class="si">${</span><span class="nv">HOME</span><span class="si">}</span>/spack/share/spack/setup-env.sh
-module load cuda/10.1/10.1.243
-module load mvapich2-2.3-gcc-4.8.5-wy2qkke
+spack load mvapich2@2.3.2 ^cuda@10.1.243
 
 <span class="nv">NUM_NODES</span><span class="o">=</span><span class="si">${</span><span class="nv">NHOSTS</span><span class="si">}</span>
 <span class="nv">NUM_GPUS_PER_NODE</span><span class="o">=</span><span class="m">4</span>
@@ -1756,12 +1701,13 @@ mpiexec <span class="si">${</span><span class="nv">MPIOPTS</span><span class="si
 </td></tr></table>
 
 <h3 id="mpifileutils">MPIFileUtils</h3>
-<p><a href="https://hpc.github.io/mpifileutils/">MPIFileUtils</a> a file transfer tool for supercomputers that use MPI.
+<p><a href="https://hpc.github.io/mpifileutils/">MPIFileUtils</a> a file transfer tool that uses MPI for communication between nodes.
 Although manually installing it is messy as it depends on many libraries, using Spack enables an easy install of MPIFileUtils.</p>
-<p>The following example installs MPIFileUtils by using OpenMPI 2.1.6 provided by ABCI.
-Line #1 installs OpenMPI to be used, and Line #2 installs MPIFileUtils by specifying a dependency for it.</p>
-<div class="codehilite"><pre><span></span><code><span class="err">[username@es1 ~]$ spack install openmpi@abci-2.1.6-nocuda</span>
-<span class="err">[username@es1 ~]$ spack install mpifileutils ^openmpi@abci-2.1.6-nocuda</span>
+<p>The following example installs MPIFileUtils that uses OpenMPI 2.1.6.
+Line #1 installs OpenMPI, and Line #2 installs MPIFileUtils by specifying a dependency on OpenMPI.
+If you copied <code>packages.yaml</code> as described in <a href="#adding-abci-software">Adding ABCI Software</a>, OpenMPI 2.1.6 provided by ABCI is used.</p>
+<div class="codehilite"><pre><span></span><code><span class="p">[</span><span class="n">username</span><span class="p">@</span><span class="n">es1</span> <span class="o">~</span><span class="p">]</span><span class="err">$</span> <span class="n">spack</span> <span class="n">install</span> <span class="n">openmpi</span><span class="mf">@2.1.6</span>
+<span class="p">[</span><span class="n">username</span><span class="p">@</span><span class="n">es1</span> <span class="o">~</span><span class="p">]</span><span class="err">$</span> <span class="n">spack</span> <span class="n">install</span> <span class="n">mpifileutils</span> <span class="o">^</span><span class="n">openmpi</span><span class="mf">@2.1.6</span>
 </code></pre></div>
 
 
@@ -1781,17 +1727,13 @@ This is an example job script.</p>
 11
 12
 13
-14
-15
-16</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><code><span class="ch">#!/bin/bash</span>
+14</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><code><span class="ch">#!/bin/bash</span>
 <span class="c1">#$-l rt_F=2</span>
 <span class="c1">#$-j y</span>
 <span class="c1">#$-cwd</span>
 
-<span class="nb">source</span> /etc/profile.d/modules.sh
 <span class="nb">source</span> <span class="si">${</span><span class="nv">HOME</span><span class="si">}</span>/spack/share/spack/setup-env.sh
-module load openmpi/2.1.6
-module load mpifileutils-0.9.1-gcc-4.8.5-qdv7523
+spack load mpifileutils@0.10.1 ^openmpi@2.1.6
 
 <span class="nv">NPPN</span><span class="o">=</span><span class="m">5</span>
 <span class="nv">NMPIPROC</span><span class="o">=</span><span class="k">$((</span> <span class="nv">$NHOSTS</span> <span class="o">*</span> <span class="nv">$NPPN</span> <span class="k">))</span>
