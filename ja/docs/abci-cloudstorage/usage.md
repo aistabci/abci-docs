@@ -294,16 +294,13 @@ remove_bucket: dataset-c0542
 }
 ```
 
-### MPU について
+### マルチパートアップロード（MPU）について
 
-ローカルファイルシステムからのアップロードでは、クライアントアプリケーションはデータを自動的に分割して並行に送信することで、効率良くデータをアップロードしています。この方法はマルチパートアップロード (MPU) と呼ばれています。MPU の適用可否は、クライアントアプリケーションに定義されたデータサイズの閾値によって決められています。例えば、MPU 適用を開始するデータサイズは、デフォルトで aws-cliで [8MB](https://docs.aws.amazon.com/cli/latest/topic/s3-config.html#multipart-threshold), s3cmd で [15MB](https://s3tools.org/kb/item13.htm) になります。
+AWS CLIは、データを自動的に分割して並行に送信することで、効率良くデータをアップロードする機能を備えています。これはマルチパートアップロード (MPU) と呼ばれています。MPU が有効であるかどうかは、クライアントツールやその設定に依存します。AWS CLI では、MPU が有効となるデータサイズは、デフォルトで [8MB](https://docs.aws.amazon.com/cli/latest/topic/s3-config.html#multipart-threshold) と定義されています。
 
-### MPU の手動操作によるデータアップロード
+### マルチパートアップロードを手動で有効にする方法
 
-ここでは、MPU を手動で適用しデータをアップロードする方法を紹介します。
-
-!!! note
-    MPU の利用はクライアントアプリケーションによる自動適用を推奨します。
+AWS CLI では、データサイズに応じて MPU が自動的に有効になりますが、以下の方法を用いることで MPU を有効にすることもできます。
 
 まず、`split` コマンドなどでアプロードしたいデータを分割します。以下の例では、
 15M_test.dat を 3つに分割しています。
@@ -393,9 +390,9 @@ total 3199056
 
 ### MPU の中止 {#abort-mpu}
 
-MPU を中止するために、まず MPU の一覧を表示し、`UploadId` と `Key` を確認します。
+実行中の MPU を中止するには、まず MPU の一覧を表示し、`UploadId` と `Key` を確認します。
 MPU の一覧は、`s3api list-multipart-uploads` コマンドにアップロード時のバケットを指定して、確認することができます。MPU が残っていない場合は何も表示されません。
-以下の例は、オブジェクト data_10gib-1.dat を s3://BUCKET/Testdata/ にアップロード途中のものです。`Key` にはバケットより下のパスとオブジェクト名が表示されます。
+以下の例では、オブジェクト data_10gib-1.dat を s3://BUCKET/Testdata/ にアップロードする途中であることが確認できます。`Key` にはバケットより下のパスとオブジェクト名が表示されています。
 ```
 [username@es1 ~]$ aws --endpoint-url https://s3.abci.ai s3api list-multipart-uploads --bucket BUCKET
 {
@@ -418,14 +415,14 @@ MPU の一覧は、`s3api list-multipart-uploads` コマンドにアップロー
 }
 ```
 
-次に、該当する MPU を中止します。これによりサーバ側のデータは削除されます。MPU の中止は、`s3api abort-multipart-upload` コマンドに対象アップロードの `UploadId` と `Key` を指定します。コマンドが成功すると、プロンプトが返ります。
+次に、MPU の中止を実行します。以下に示すように MPU の中止は、`s3api abort-multipart-upload` コマンドの引数に、中止したい MPU の `UploadId` と `Key` を指定します。コマンドが成功すると、プロンプトが返ります。
 ```
 [username@es1 ~]$ aws --endpoint-url https://s3.abci.ai s3api abort-multipart-upload --bucket Bucket --key Testdata/data_10gib-1.dat --upload-id aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
 [username@es1 ~]$
 ```
 
-これで MPU の中止は完了しました。
+これで MPU の中止は完了です。MPU の実行中にサーバ側に作成されたデータも削除されます。
 
-<!--  s3fs-fuse は別?  -->
+<!--  s3fs-fuse は別で書くこと  -->
 
 <!--  使い方の説明はしないが Cyberduck と WinSCP について触れる  -->
