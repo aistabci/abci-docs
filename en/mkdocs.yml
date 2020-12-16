@@ -49,6 +49,7 @@ nav:
     - 'Data encryption': 'abci-cloudstorage/encryption.md'
     - 'Access Control (1) ': 'abci-cloudstorage/acl.md'
     - 'Access Control (2) ': 'abci-cloudstorage/policy.md'
+    - ' Caution for ABCI Cloud Storage': 'abci-cloudstorage/caution.md'
   - 'ABCI Singularity Endpoint': 'abci-singularity-endpoint.md'
   - 'FAQ': 'faq.md'
   - 'Known Issues': 'known-issues.md'

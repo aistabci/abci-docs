@@ -384,3 +384,6 @@ Container Library にアップロードされたコンテナイメージは、`s
 ```
 [username@es1 ~]$ singularity delete library://username/abci-lib/helloworld:latest
 ```
+
+!!! note
+    singularity の仕様により、コンテナイメージとして Tag 相当 (上例では latest) のイメージは削除可能ですが、それより上位のディレクトリ (helloworld) の削除は出来ません。
