@@ -5,9 +5,6 @@
 
 ABCI Singularity Endpoint provides a singularity container service available within ABCI. This service consists of Remote Builder for remotely building container images using SingularityPRO and Container Library for storing and sharing the created container images. This service is available only within ABCI and cannot be accessed directly from outside of ABCI.
 
-!!! warning
-    Container Library is an Experimental service. In particular, it is not possible to upload container images larger than 64 MB.
-
 The following describes the basic operations for using this service in ABCI. See Sylabs [Document](https://sylabs.io/docs/) for more information.
 
 ## Preparation
@@ -78,7 +75,7 @@ INFO:    API Key Verified!
 When you have created an access token again, use the above command to register it. The old access token is overwritten by the new one.
 
 !!! note
-    Access tokens currently expire in one month. When your access token has expired, create and register another access token again.
+    The validity period of access tokens is one year.
 
 ## Remote Builder
 
