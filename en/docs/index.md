@@ -21,6 +21,7 @@ This User Guide describes the technical details of ABCI and how to use it. All u
     - [Appendix. Configuration of Installed Software](appendix/installed-software.md)
     - [Appendix. Using ABCI with HPCI](appendix/using-abci-with-hpci.md)
     - [Appendix. Communications with External Networks](appendix/external-networks.md)
+    - [Appendix. SSH Access to Compute Node](appendix/ssh-access.md)
   - Applications:
     - [Overview](apps/index.md)
     - [TensorFlow](apps/tensorflow.md)
