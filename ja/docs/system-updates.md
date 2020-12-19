@@ -18,6 +18,10 @@
 | Update | BeeOND | 7.2 | 7.1.5 |
 | Update | Scality S3 Connector | 7.4.8 | 7.4.6.3 |
 
+### 機能追加: 計算ノードへのSSHアクセス
+
+使用する計算ノードへのSSHログインを可能にする機能を追加しました。詳細は[計算ノードへのSSHアクセス](appendix/ssh-access.md)を参照してください。
+
 ## 2020-10-09
 
 | Add / Update / Delete | Software | Version | Previous version |
