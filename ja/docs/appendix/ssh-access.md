@@ -11,7 +11,7 @@
 
 #$-l rt_F=2
 #$-l USE_SSH=1
-#$-v SSH_PORT=22222
+#$-v SSH_PORT=2222
 #$-cwd
 
 ...
@@ -34,7 +34,7 @@ exec_host_list        1:    g0001:80, g0002:80
 インタラクティブノードから計算ノードへログインします。
 
 ```
-[username@es1 ~]$ ssh -p 22222 g0001
+[username@es1 ~]$ ssh -p 2222 g0001
 [username@g0001 ~]$ 
 ```
 
@@ -44,7 +44,7 @@ exec_host_list        1:    g0001:80, g0002:80
 また、ジョブに割り当てられた計算ノード間でもログインすることが可能です。
 
 ```
-[username@g0001 ~]$ ssh -p 22222 g0002
+[username@g0001 ~]$ ssh -p 2222 g0002
 [username@g0002 ~]$
 ```
 

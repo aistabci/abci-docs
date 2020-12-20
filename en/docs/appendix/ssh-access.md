@@ -11,7 +11,7 @@ Example) sample of job script (use_ssh.sh)
 
 #$-l rt_F=2
 #$-l USE_SSH=1
-#$-v SSH_PORT=22222
+#$-v SSH_PORT=2222
 #$-cwd
 
 ...
@@ -33,7 +33,7 @@ exec_host_list        1:    g0001:80, g0002:80
 Login to the compute node from interactive node with port number specified at job submission.
 
 ```
-[username@es1 ~]$ ssh -p 22222 g0001
+[username@es1 ~]$ ssh -p 2222 g0001
 [username@g0001 ~]$ 
 ```
 
@@ -43,7 +43,7 @@ Login to the compute node from interactive node with port number specified at jo
 And you can also login between allocated compute nodes.
 
 ```
-[username@g0001 ~]$ ssh -p 22222 g0002
+[username@g0001 ~]$ ssh -p 2222 g0002
 [username@g0002 ~]$
 ```
 
