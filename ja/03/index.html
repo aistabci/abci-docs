@@ -706,6 +706,18 @@
   </li>
 
         
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../appendix/ssh-access/" title="付録. 計算ノードへのSSHアクセス" class="md-nav__link">
+      付録. 計算ノードへのSSHアクセス
+    </a>
+  </li>
+
+        
       </ul>
     </nav>
   </li>
@@ -1673,8 +1685,8 @@
 <p>複数ノードを使用するジョブを実行する場合は、計算ノードを占有する資源タイプ<code>rt_F</code>を指定してください。メモリインテンシブノードでは複数ノードを使用するジョブを実行することはできません。</p>
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
-<p>ノード共有の資源タイプでは、ジョブのプロセス情報は同一ノードで実行されている他のジョブから参照可能となります。
-他のジョブから参照させたくない場合、資源タイプ<code>rt_F</code>を指定しノード占有でジョブを実行ください。</p>
+<p>ノード共有の資源タイプでは、ジョブのプロセス情報は同一ノードで実行されている他のジョブから参照可能になります。
+他のジョブから参照させたくない場合、資源タイプ<code>rt_F</code>を指定しノード占有でジョブを実行してください。</p>
 </div>
 <h3 id="_1">同時に利用可能なノード数</h3>
 <p>ジョブサービスごとに利用可能な資源タイプとノード数の組み合わせを以下に示します。同時に複数ノードを利用する場合は、資源タイプ<code>rt_F</code>を指定する必要があります。</p>
@@ -2005,12 +2017,16 @@
 </thead>
 <tbody>
 <tr>
+<td align="left">-l USE_SSH=<em>1</em><br>-v SSH_PORT=<em>port</em></td>
+<td align="left">計算ノードへのSSHログインを有効にする。詳細は<a href="../appendix/ssh-access/">計算ノードへのSSHアクセス</a>を参照。</td>
+</tr>
+<tr>
 <td align="left">-l USE_BEEOND=<em>1</em><br>-v BEEOND_METADATA_SERVER=<em>num</em><br>-v BEEOND_STORAGE_SERVER=<em>num</em></td>
 <td align="left">BeeGFS On Demand (BeeOND)を利用するジョブの投入。詳細は<a href="../04/#using-as-a-beeond-storage">BeeONDストレージ利用</a>を参照。</td>
 </tr>
 <tr>
 <td align="left">-v GPU_COMPUTE_MODE=<em>mode</em></td>
-<td align="left">使用する計算ノードのGPU Compute Modeの変更。詳細は<a href="../07/#changing-gpu-compute-mode">GPU Compute Modeの変更</a>を参照。</td>
+<td align="left">計算ノードのGPU Compute Modeの変更。詳細は<a href="../07/#changing-gpu-compute-mode">GPU Compute Modeの変更</a>を参照。</td>
 </tr>
 <tr>
 <td align="left">-l docker<br>-l docker_images</td>
@@ -2408,7 +2424,8 @@ module load cuda/9.2/9.2.88.1
 </tbody>
 </table>
 <h2 id="advance-reservation">事前予約</h2>
-<p>Reservedサービスでは、計算ノードを事前に予約することができ、計画的なジョブ実行が可能となります。本サービスで予約可能なノード数およびノード時間積は、以下表の「1予約あたりの最大予約ノード数」、「1予約あたりの最大予約ノード時間積」が上限となります。また、本サービスでは、利用者は予約ノード数 (最大32ノード) を上限とするジョブしか実行できません。なお、システム全体で「システムあたりの最大同時予約可能ノード数」に上限があるため、「1予約あたりの最大予約ノード数」を下回る予約しかできない場合や、予約自体ができない場合があります。予約した計算ノードにて<a href="#compute-node">各資源タイプ</a>が利用可能です。</p>
+<p>Reservedサービスでは、計算ノードを事前に予約して計画的なジョブ実行が可能となります。</p>
+<p>本サービスで予約可能なノード数およびノード時間積は、以下表の「1予約あたりの最大予約ノード数」、「1予約あたりの最大予約ノード時間積」が上限です。また、本サービスでは、利用者は予約ノード数 (最大32ノード) を上限とするジョブしか実行できません。なお、システム全体で「システムあたりの最大同時予約可能ノード数」に上限があるため、「1予約あたりの最大予約ノード数」を下回る予約しかできない場合や、予約自体ができない場合があります。予約した計算ノードにて<a href="#available-resource-types">各資源タイプ</a>が利用可能です。</p>
 <table>
 <thead>
 <tr>

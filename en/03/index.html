@@ -706,6 +706,18 @@
   </li>
 
         
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../appendix/ssh-access/" title="Appendix. SSH Access to Compute Nodes" class="md-nav__link">
+      Appendix. SSH Access to Compute Nodes
+    </a>
+  </li>
+
+        
       </ul>
     </nav>
   </li>
@@ -1981,6 +1993,10 @@ When using any of the On-demand, Spot, and Reserved services, you need to specif
 </thead>
 <tbody>
 <tr>
+<td align="left">-l USE_SSH=<em>1</em><br>-v SSH_PORT=<em>port</em></td>
+<td align="left">Enable SSH login to the compute nodes. See <a href="../appendix/ssh-access/">SSH Access to Compute Nodes</a> for details.</td>
+</tr>
+<tr>
 <td align="left">-l USE_BEEOND=<em>1</em><br>-v BEEOND_METADATA_SERVER=<em>num</em><br>-v BEEOND_STORAGE_SERVER=<em>num</em></td>
 <td align="left">Submit a job with using BeeGFS On Demand (BeeOND). See <a href="../04/#using-as-a-beeond-storage">Using as a BeeOND storage</a> for details.</td>
 </tr>
@@ -2377,7 +2393,8 @@ For more detail, use <code>man sge_accounting</code> command.</p>
 </tbody>
 </table>
 <h2 id="advance-reservation">Advance Reservation</h2>
-<p>In the case of Reserved service, job execution can be scheduled by reserving compute node in advance. The maximum number of nodes and the node-time product that can be reserved for this service is "Maximum reserved nodes per reservation" and "Maximum reserved node time per reservtation" in the following table. In addition, in this service, the user can only execute jobs with the maximum number of reserved nodes (Up to 32 nodes). Note that there is an upper limit on "Maximum number of nodes can be reserved at once per system" for the entire system, so you may only be able to make reservations that fall below "Maximum reserved nodes per reservation" or you may not be able to make reservations. <a href="#compute-node">Each resource types</a> are available for reserved compute nodes.</p>
+<p>In the case of Reserved service, job execution can be scheduled by reserving compute node in advance.</p>
+<p>The maximum number of nodes and the node-time product that can be reserved for this service is "Maximum reserved nodes per reservation" and "Maximum reserved node time per reservtation" in the following table. In addition, in this service, the user can only execute jobs with the maximum number of reserved nodes (Up to 32 nodes). Note that there is an upper limit on "Maximum number of nodes can be reserved at once per system" for the entire system, so you may only be able to make reservations that fall below "Maximum reserved nodes per reservation" or you may not be able to make reservations. <a href="#available-resource-types">Each resource types</a> are available for reserved compute nodes.</p>
 <table>
 <thead>
 <tr>
