@@ -18,6 +18,10 @@
 | Update | BeeOND | 7.2 | 7.1.5 |
 | Update | Scality S3 Connector | 7.4.8 | 7.4.6.3 |
 
+### Additional Feature: SSH Access to Compute Nodes
+
+We have added the feature to enable SSH login to the compute nodes. See [SSH Access to Compute Nodes](appendix/ssh-access.md) for details.
+
 ## 2020-10-09
 
 | Add / Update / Delete | Software | Version | Previous version |
