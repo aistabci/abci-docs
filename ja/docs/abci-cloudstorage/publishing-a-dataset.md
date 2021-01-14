@@ -84,36 +84,13 @@ Identifier: https://doi.org/1234....
 Citation: 
 ```
 
-次に、記入したYAMLファイル（ここでは`my_dataset_info.yaml`）を用いて、データセットの公開ページ（index.html）を生成します。
-
-```
-[username@es1 ~]$ module load aws-cli
-[username@es1 ~]$ aws --endpoint-url https://s3.abci.ai s3 cp s3://tools/generate_page generate_page
-[username@es1 ~]$ chmod 755 generate_page
-[username@es1 ~]$ wget -nv https://datasets.abci.ai/sha256sum.txt
-2020-07-13 22:22:55 URL:https://datasets.abci.ai/sha256sum.txt [87/87] -> "sha256sum.txt" [1]
-[username@es1 ~]$ sha256sum -c sha256sum.txt
-generate_page: OK
-[username@es1 ~]$ ./generate_page my_dataset_info.yaml > index.html
-```
-
-HTMLファイルが問題なく生成されたら、データセットを公開しているバケットに、記入したYAMLファイルと生成したHTMLファイルの両方をアップロードして下さい。 `my_dataset_info.yaml` は違うファイル名でも問題ありません。
+次に、記入したYAMLファイルをクラウドストレージにアップロードして下さい。 `my_dataset_info.yaml` は違うファイル名でも問題ありません。
 
 ```
 [username@es1 ~]$ aws --endpoint-url https://s3.abci.ai s3 cp --acl public-read my_dataset_info.yaml s3://example-dataset/my_dataset_info.yaml
-[username@es1 ~]$ aws --endpoint-url https://s3.abci.ai s3 cp --acl public-read index.html s3://example-dataset/index.html
 ```
 
-アップロードしたHTMLファイルは、ブラウザから `https://example-dataset.s3.abci.ai/index.html` を開いて確認できます。以下の設定を行うと、`https://example-dataset.s3-website.abci.ai/` でも同じページが表示されるようになります。
-
-```
-[username@es1 ~]$ module load aws-cli
-[username@es1 ~]$ aws --endpoint-url https://s3.abci.ai s3 website s3://example-dataset/ --index-document index.html
-```
-
-なお、生成したHTMLファイルには、YAMLファイルに記入した情報が構造化データ (JSON-LD形式) として含まれています。データセットに関する基本情報を更新したい場合には再度、HTMLファイルの生成とアップロードを行って下さい。このファイルを直接変更したり、別のWebサイトに同等のページを用意したりすることも可能です。ただし、このファイルと同様の構造化データを保持するようにして下さい。
-
-上記がすべて完了したら、以下のフォーマットで <abci-application-ml@aist.go.jp> までお知らせ下さい。複数のABCIグループに所属している場合、データセットがアップロードされているバケットを所有しているABCIグループを記載して下さい。
+完了したら、以下のフォーマットで <abci-application-ml@aist.go.jp> までお知らせ下さい。複数のABCIグループに所属している場合、データセットがアップロードされているバケットを所有しているABCIグループを記載して下さい。
 
 ```text
 Subject: データセットの公開(<データセット名>)
@@ -121,7 +98,7 @@ Subject: データセットの公開(<データセット名>)
 申請者の氏名: 
 ABCIグループ: 
 申請者のメールアドレス: 
-アップロードしたHTMLファイルのURL: 
+アップロードしたYAMLファイルのURL: 
 ```
 
 登録が完了したデータセットは <https://datasets.abci.ai/> に一覧表示されます。
