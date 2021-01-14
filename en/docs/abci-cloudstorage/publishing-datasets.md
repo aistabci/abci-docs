@@ -75,7 +75,7 @@ USA, Oct. 8-10, 2020.
 # AdditionalInfo:
 ```
 
-Next, upload the YAML file to ABCI Cloud Storage:
+Next, upload the YAML file to the bucket where your dataset is hosted:
 
 ```
 [username@es1 ~]$ aws --endpoint-url https://s3.abci.ai s3 cp --acl public-read my_dataset_info.yaml s3://example-dataset/my_dataset_info.yaml

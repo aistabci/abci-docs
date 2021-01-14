@@ -20,6 +20,7 @@
     - [付録. インストール済みソフトウェアの構成](appendix/installed-software.md)
     - [付録. HPCIによるABCIシステム利用](appendix/using-abci-with-hpci.md)
     - [付録. 外部ネットワークとの通信](appendix/external-networks.md)
+    - [付録. 計算ノードへのSSHアクセス](appendix/ssh-access.md)
   - 各種アプリケーション:
     - [概要](apps/index.md)
     - [TensorFlow](apps/tensorflow.md)
@@ -46,7 +47,7 @@
     - [データの暗号化](abci-cloudstorage/encryption.md)
     - [アクセス制御(1)](abci-cloudstorage/acl.md)
     - [アクセス制御(2)](abci-cloudstorage/policy.md)
-    - [データセットの公開](abci-cloudstorage/publishing-a-dataset.md)
+    - [データセットの公開](abci-cloudstorage/publishing-datasets.md)
   - [ABCI Singularity エンドポイント](abci-singularity-endpoint.md)
   - [FAQ](faq.md)
   - [既知の問題](known-issues.md)

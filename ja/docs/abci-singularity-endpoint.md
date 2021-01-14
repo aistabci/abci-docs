@@ -5,9 +5,6 @@
 
 ABCI Singularity エンドポイントでは、ABCI 内部向けに Singularity Container サービスを提供しています。このサービスは、SingularityPRO で用いるコンテナイメージをリモートビルドするための Remote Builder と、作成したコンテナイメージを保管・共有するための Container Library から成ります。ABCI 内部向けのサービスであるため、外部から直接アクセスすることはできません。
 
-!!! warning
-    Container Library は Experimental のサービスです。特に、64MB以上のコンテナイメージをアップロードできない問題があります。
-
 以下では、ABCI において本サービスを利用するための基本的な操作を説明します。詳細は Sylabs 社の[ドキュメント](https://sylabs.io/docs/)を参照下さい。
 
 <!-- 削除
@@ -94,12 +91,12 @@ INFO:    API Key Verified!
 アクセストークンを再取得した際にも、上記コマンドを再実行し、アクセストークンを再登録して下さい。既存のアクセストークンは上書きされます。
 
 !!! note
-    現在、アクセストークンの有効期限は1ヶ月に設定されています。期限が切れた場合には再度、取得と登録を実行して下さい。
+    現在、アクセストークンの有効期限は1年に設定されています。
 
 
 ## Remote Builder
 
-最初に、コンテナイメージをビルドするための定義ファイルを作成して下さい。以下の例では、Docker Hub から取得した Ubuntu のコンテナイメージをベースとして、追加パッケージのインストールと、コンテナを起動した際にコンテナが実行するコマンドを指定しています。定義ファイルの詳細については、[Definition Files](https://repo.sylabs.io/c/0f6898986ad0b646b5ce6deba21781ac62cb7e0a86a5153bbb31732ee6593f43/guides/singularitypro35-user-guide/definition_files.html) を参照して下さい。
+最初に、コンテナイメージをビルドするための定義ファイルを作成して下さい。以下の例では、Docker Hub から取得した Ubuntu のコンテナイメージをベースとして、追加パッケージのインストールと、コンテナを実行した時に実行されるコマンドを指定しています。定義ファイルの詳細については、[Definition Files](https://repo.sylabs.io/c/0f6898986ad0b646b5ce6deba21781ac62cb7e0a86a5153bbb31732ee6593f43/guides/singularitypro35-user-guide/definition_files.html) を参照して下さい。
 
 ```
 [username@es1 ~]$ vi ubuntu.def
@@ -189,7 +186,7 @@ Generating Entity and OpenPGP Key Pair... done
 
 #### 鍵の一覧表示
 
-`singularity key list` を実行すると、作成した鍵情報を確認できます。
+`singularity key list` を実行すると、作成した鍵も含め、ローカルの鍵リングに入っている公開鍵の情報を確認できます。
 
 ```
 [username@es1 ~]$ singularity key list
@@ -387,3 +384,6 @@ Container Library にアップロードされたコンテナイメージは、`s
 ```
 [username@es1 ~]$ singularity delete library://username/abci-lib/helloworld:latest
 ```
+
+!!! note
+    singularity の仕様により、コンテナイメージとして Tag 相当 (上例では latest) のイメージは削除可能ですが、それより上位のディレクトリ (helloworld) の削除は出来ません。

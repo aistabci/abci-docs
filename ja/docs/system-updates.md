@@ -1,5 +1,33 @@
 # システム更新履歴
 
+## 2020-12-15
+
+| Add / Update / Delete | Software | Version | Previous version |
+|:--|:--|:--|:--|
+| Add | go | 1.14 | |
+| Add | intel | 2020.4.304 | |
+| Add | intel-advisor | 2020.3 | |
+| Add | intel-inspector | 2020.3 | |
+| Add | intel-itac | 2020.0.3 | |
+| Add | intel-mkl | 2020.0.4 | |
+| Add | intel-mpi | 2019.9 | |
+| Add | intel-vtune | 2020.3 | |
+| Add | nvhpc | 20.9 | |
+| Add | cuDNN | [8.0.5](https://docs.nvidia.com/deeplearning/sdk/cudnn-release-notes/rel_8.html#rel-805) | |
+| Add | NCCL | [2.8.3-1](https://docs.nvidia.com/deeplearning/nccl/release-notes/rel_2-8-3.html) | |
+| Update | BeeOND | 7.2 | 7.1.5 |
+| Update | Scality S3 Connector | 7.4.8 | 7.4.6.3 |
+
+### 機能追加: 計算ノードへのSSHアクセス
+
+使用する計算ノードへのSSHログインを可能にする機能を追加しました。詳細は[計算ノードへのSSHアクセス](appendix/ssh-access.md)を参照してください。
+
+## 2020-10-09
+
+| Add / Update / Delete | Software | Version | Previous version |
+|:--|:--|:--|:--|
+| Update | SingularityPRO | 3.5-4 | 3.5-2 |
+
 ## 2020-08-31
 
 | Add / Update / Delete | Software | Version | Previous version |
@@ -10,7 +38,7 @@
 
 | Add / Update / Delete | Software | Version | Previous version |
 |:--|:--|:--|:--|
-| Add | SingularityPRO | 3.5 | |
+| Add | SingularityPRO | 3.5-2 | |
 | Add | cuDNN | [8.0.2](https://docs.nvidia.com/deeplearning/sdk/cudnn-release-notes/rel_8.html#rel-802) | |
 | Add | NCCL | [2.7.8-1](https://docs.nvidia.com/deeplearning/nccl/release-notes/rel_2-7-8.html) | |
 | Add | mvapich2-gdr | 2.3.4 | |
