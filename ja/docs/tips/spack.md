@@ -255,6 +255,28 @@ ABCIが提供するモジュール同様に、ロードして使用できます�
 ```
 
 
+### Environmentの利用 {#using-environments}
+
+`spack env`を用いることでソフトウェアを仮想環境毎に分けてインストールし、複数のバージョンのソフトウェアを切り替えて利用することができます。
+まず`spack env create`で仮想環境を構築します。ここで別の仮想環境名を指定することで複数の仮想環境を作成することが可能です。
+```
+[username@es1 ~]$ spack env create myenv
+```
+
+`spack env activate`で作った仮想環境を有効にします。`-p`をつけることで現在有効になっているenvironment名をプロンプトに表示することができます。
+```
+[username@es1 ~]$ spack env activate -p myenv
+[myenv] [username@es1 ~]$ spack install xxxxx
+```
+
+`spack env deactivate`で仮想環境を無効にします。
+```
+[myenv] [username@es1 ~]$ deactivate
+[username@es1 ~]$
+```
+
+
+
 ## ソフトウェア導入事例 {#example-software-installation}
 
 ### CUDA-aware OpenMPI {#cuda-aware-openmpi}
@@ -398,4 +420,43 @@ SRC_FILE=name_of_file
 DST_FILE=name_of_file
 
 mpiexec -n ${NMPIPROC} -map-by ppr:${NPPN}:node dbcast $SRC_FILE $DST_FILE
+```
+
+
+
+## Environmentを用いたSinguarityイメージの作成手順 {build-singularity-image-from-environment}
+
+[Environmentの利用](#using-environment)で作成した仮想環境を用いてSingurarityのイメージを作成することが可能です。
+ここではopenmpiをインストール済みのmyenvという名前の仮想環境を用いてSingularityイメージを作成する例を示します。
+
+仮想環境の設定ファイルspack.yamlをコピーし編集します。
+```
+[username@es1 ~]$ cp -p ${HOME}/spack/var/spack/environments/myenv/spack.yaml .
+[username@es1 ~]$ vi spack.yaml
+# This is a Spack Environment file.
+#
+# It describes a set of packages to be installed, along with
+# configuration settings.
+spack:
+  # add package specs to the `specs` list
+  specs: [openmpi fabrics=auto schedulers=sge]
+  view: true  <- 行を削除
+
+  container:                       <- 追加
+    images:                        <- 追加
+      build: spack/centos7:0.16.0  <- 追加
+      final: spack/centos7:0.16.0  <- 追加
+    format: singularity            <- 追加
+    strip: false                   <- 追加
+```
+
+`spack containerize`を用いて、spack.yamlファイルからSingularityレシピファイル(myenv.def)を作成します。
+```
+[username@es1 ~]$ spack containerize > myenv.def
+```
+
+SigularityレシピファイルからSingularityイメージを作成します。
+```
+[username@es1 ~]$ module load singularitypro/3.5
+[username@es1 ~]$ singularity build --fakeroot myenv.sif myenv.def
 ```
