@@ -31,11 +31,14 @@ Since `--acl public-read` option enables public read access, the data can be acc
 Firstly, prepare a YAML file, which contains basic information about your dataset. Download [the template file](https://datasets.abci.ai/dataset_info_template.yaml) and fill out it, referring to the following.
 
 ```yaml
-
+# Your dataset name  *Required
 Name: ABC Dataset
 
+# Dataset description with more than 50 characters  *Required
 Description: This is a ... [ProjectPage](https://example.com/).
 
+# Related keywords (object detection, vehicle, action recognition, earth observation, etc.)
+# Use a bullet list (block sequence) using "- ", even if there is only one item
 Keywords:
   - image processing
   - object detection
@@ -48,6 +51,8 @@ Distribution:
   ContentURL:
     - https://example-dataset.s3.abci.ai/abc.zip
 
+# Creator name
+#  ContactPoint: *At least one of Email and URL is required
 Creator:
   Name: ABC Team
   ContactPoint:
