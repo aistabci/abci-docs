@@ -133,7 +133,6 @@ You can push your container images to Container Library and make those available
 
 ### Current Restrictions
 
-* Uploading a container image of 64 MiB or more is not possible, but you can create a container image in a remote build.
 * You cannot get a list of uploaded container images.
 
 ### Creating and Registering Signing Keys for a Container Image
