@@ -8,9 +8,9 @@ Please read [ABCI Agreement/Rules](https://abci.ai/en/how_to_use/) and [ABCI Clo
 
 ## 1. Public Access Setting
 
-Upload your data to ABCI Cloud Storage and allow public access to it, referencing [Access Control (1)](acl.md).
+Upload your data to ABCI Cloud Storage and allow public access to them, referencing [Access Control (1)](acl.md).
 
-The following example makes `example-dataset` bucket, uploads files in `sensor1` directory and grants public read access to it.
+The following example makes `example-dataset` bucket, uploads files in `sensor1` directory and grants public read access to them.
 
 ```
 [username@es1 ~]$ module load aws-cli
@@ -37,47 +37,63 @@ Name: ABC Dataset
 # Dataset description with more than 50 characters  *Required
 Description: This is a ... [ProjectPage](https://example.com/).
 
-# Related keywords (object detection, vehicle, action recognition, earth observation, etc.)
+# Related keywords (object detection, vehicle, action recognition, earth observation, etc.)  *Required
 # Use a bullet list (block sequence) using "- ", even if there is only one item
 Keywords:
   - image processing
   - object detection
   - health
 
+# URL of your page providing more detailed information  *Optional
 UsageInfo: https://example-dataset.s3-website.abci.ai/
 
+# Downloadable form
+#   EncodingFormat:  XML, CSV, GeoTIFF, etc.  *Optional
+#   ContentURL: URLs of data or data list  *Required
 Distribution:
   EncodingFormat: DICOM
-  ContentURL:
+  ContentURL:  # Use a bullet list (block sequence) using "- ", even if there is only one item
     - https://example-dataset.s3.abci.ai/abc.zip
 
-# Creator name
-#  ContactPoint: *At least one of Email and URL is required
+# Creator
+#   Name: Organization name (or individual name)  *Required
+#   URL: Organization website (or individual website)  *Optional
+#   ContactPoint:
+#     Email: Contact point e-mail address  *At least one of Email and URL is required
+#     URL: URL of a contact page  *At least one of Email and URL is required
 Creator:
   Name: ABC Team
   ContactPoint:
     Email: dataset@example.com
     URL: https://example.com/contact/
 
+# License
+#   Name: MIT License, CC-BY-SA 4.0, Custom License, etc.  *Required
+#   URL: URL of the license page  *Optional
 License:
   Name: Custom License
   URL: https://example.com/dataset/LISENCE.txt
 
+# Version of the dataset  *Optional
 Version: "1.1b"
 
+# Creation, update and publication dates of the dataset  *Optional
+# Use ISO 8601 format. The time portion is optional
 DateCreated: 2020-04-18
 DateModified: 2020-04-20T22:30:10+09:00
 DatePublished: 2020-04-19
 
-# Identifier: https://doi.org/10.1000/a0000
+# Identifier, such as DOI  *Optional
+#Identifier: https://doi.org/10.1000/a0000
 
+# References  *Optional
+# Use a bullet list (block sequence) using "- ", even if there is only one item
 Citation:
-- John, Doe. "Example Paper 1," presented at Example Conf., Los Angeles, CA,
-USA, Oct. 8-10, 2020.
-- John, Doe. "Example Paper 3," in 23rd Example Conf., London, U.K., Aug. 2015.
-[Online]. Available: https://example.com/papers/23-5.pdf
+- John, Doe. "Example Paper 1," presented at Example Conf., Los Angeles, CA, USA, Oct. 8-10, 2020.
+- John, Doe. "Example Paper 3," in 23rd Example Conf., London, U.K., Aug. 2015. [Online]. Available: https://example.com/papers/23-5.pdf
 
-# AdditionalInfo:
+# More detailed description or additional information  *Optional
+#AdditionalInfo:
 ```
 
 Next, upload the YAML file to the bucket where your dataset is hosted:
@@ -88,6 +104,7 @@ Next, upload the YAML file to the bucket where your dataset is hosted:
 where `my_dataset_info.yaml` can be an arbitrary name.
 
 After that, send an e-mail to <abci-application-ml@aist.go.jp>, following the format below.
+If you belong to multiple ABCI groups, please fill in with the group that owns the bucket containing the dataset.
 
 ```text
 Subject: Dataset Registration Application (<YOUR DATASET NAME>)
@@ -97,4 +114,6 @@ ABCI group:
 Your e-mail address:
 URL to the YAML:
 ```
+
+Once the registration is completed, the dataset will be listed on <https://datasets.abci.ai/>.
 
