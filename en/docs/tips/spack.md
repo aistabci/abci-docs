@@ -251,9 +251,40 @@ If you no more use, type `spack unload` to unset the variables.
 ```
 [username@es1 ~]$ spack unload xxxxx
 ```
+### Using environments
+
+By using `spack env`, you can install software separately for each Spack environment and switch between multiple versions of software.
+You create a Spack environment with `spack env create`. You can create multiple Spack environments by specifying a different Spack environment name here.
+
+```
+[username@es1 ~]$ spack env create myenv
+```
+
+Activate the Spack environment created with `spack env activate`. You can show the name of the currently activated Spack environment at the prompt by adding `-p`.
+
+```
+[username@es1 ~]$ spack env activate -p myenv
+[myenv] [username@es1 ~]$ spack install xxxxx
+```
+
+Deactivate the Spack environment by `spack env deactivate`.
+
+```
+[myenv] [username@es1 ~]$ spack env deactivate
+[username@es1 ~]$
+```
+
+Use `spack env list` to display the list of created Spack environments.
+
+```
+[username@es1 ~]$ spack env list
+==> 1 environments
+    myenv
+```
 
 
-## Example Software Installation {#example-software-installation}
+
+## Example of Use
 
 ### CUDA-aware OpenMPI {#cuda-aware-openmpi}
 
@@ -396,3 +427,39 @@ DST_FILE=name_of_file
 
 mpiexec -n ${NMPIPROC} -map-by ppr:${NPPN}:node dbcast $SRC_FILE $DST_FILE
 ```
+
+### Build singularity image from Spack environment
+
+You can create Singularity image using Spack environment created in [Using environments](#using-environments).
+Here is an example of how to install CUDA-aware OpenMPI and create Singularity image using Spack environment named "myenv".
+
+```
+[username@es1 ~]$ spack env create myenv
+[username@es1 ~]$ spack activate -p myenv
+[myenv] [username@es1 ~]$ openmpi +cuda schedulers=sge fabrics=auto
+[username@es1 ~]$ cp -p ${HOME}/spack/var/spack/environments/myenv/spack.yaml .
+[username@es1 ~]$ vi spack.yaml
+# This is a Spack Environment file.
+#
+# It describes a set of packages to be installed, along with
+# configuration settings.
+spack:
+  # add package specs to the `specs` list
+  specs: [openmpi +cuda fabrics=auto schedulers=sge]
+  view: true  <- Delete
+
+  container:                       <- Add
+    images:                        <- Add
+      build: spack/centos7:0.16.0  <- Add
+      final: spack/centos7:0.16.0  <- Add
+    format: singularity            <- Add
+    strip: false                   <- Add
+```
+
+Create a Singularity recipe file (myenv.def) from `spack.yaml` using `spack containerize`.
+
+```
+[username@es1 ~]$ spack containerize > myenv.def
+```
+
+To create a Singularity image from the generated recipe file on ABCI, please refer to [Create a Singularity image (build)](09#build-a-singularity-image).
