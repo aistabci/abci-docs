@@ -255,39 +255,39 @@ ABCIが提供するモジュール同様に、ロードして使用できます�
 ```
 
 
-### Spack環境の利用 {#using-environments}
+### ソフトウェア環境の定義と利用 {#using-environments}
 
-`spack env`を用いることでソフトウェアをSpavck環境毎に分けてインストールし、複数のバージョンのソフトウェアを切り替えて利用することができます。
+Spackにはソフトウェアパッケージを「環境」という単位でグルーピングする機能があります。
+環境ごとにソフトウェアをバージョンや依存関係を変えてインストールすることができ、環境を切り替えることで一括して使用するソフトウェアを変えることができます。
+
 まず`spack env create`でSpack環境を構築します。ここで別のSpack環境名を指定することで複数のSpack環境を作成することが可能です。
 
-```
+```shell
 [username@es1 ~]$ spack env create myenv
 ```
 
-`spack env activate`で作ったSpack環境を有効にします。`-p`をつけることで現在有効になっているSpack環境名をプロンプトに表示することができます。
+`spack env activate`で作ったSpack環境を有効にします。`-p`をつけることで現在有効になっているSpack環境名をプロンプトに表示することができます。有効にした環境にソフトウェアをインストールしていきます。
 
-```
+```shell
 [username@es1 ~]$ spack env activate -p myenv
 [myenv] [username@es1 ~]$ spack install xxxxx
 ```
 
-`spack env deactivate`でSpack環境を無効にします。
+`spack env deactivate`でSpack環境を無効にします。別の環境を使う場合、その環境を`spack env activate`します。
 
-```
+```shell
 [myenv] [username@es1 ~]$ spack env deactivate
 [username@es1 ~]$
 ```
 
 `spack env list`で作成済みのSpack環境の一覧を表示することが可能です。
 
-```
+```shell
 [username@es1 ~]$ spack env list
 ==> 1 environments
     myenv
+    another_env
 ```
-
-
-
 
 
 ## 利用事例 {#example-of-use}
@@ -436,18 +436,22 @@ mpiexec -n ${NMPIPROC} -map-by ppr:${NPPN}:node dbcast $SRC_FILE $DST_FILE
 ```
 
 
+### ソフトウェア環境からのSinguarityイメージの作成手順 {#build-singularity-image-from-environment}
 
-### Spack環境を用いたSinguarityイメージの作成手順 {#build-singularity-image-from-environment}
+[ソフトウェア環境の定義と利用](#using-environments)で作成した環境を用いてSingurarityのイメージを作成することが可能です。
+ここではmyenvという名前のSpack環境を用いてCUDA-awareのOpenMPIをインストールし、Singularityイメージを作成する例を示します。
 
-[Spack環境の利用](#using-environments)で作成したSpack環境を用いてSingurarityのイメージを作成することが可能です。
-ここではmyenvという名前のSpack環境にを用いてCUDA-awareのOpenMPIをインストールし、Singularityイメージを作成する例を示します。
-
-```
+```shell
 [username@es1 ~]$ spack env create myenv
 [username@es1 ~]$ spack activate -p myenv
 [myenv] [username@es1 ~]$ openmpi +cuda schedulers=sge fabrics=auto
 [username@es1 ~]$ cp -p ${HOME}/spack/var/spack/environments/myenv/spack.yaml .
 [username@es1 ~]$ vi spack.yaml
+```
+
+`spack.yaml`は以下にように編集します。
+
+```yaml
 # This is a Spack Environment file.
 #
 # It describes a set of packages to be installed, along with
@@ -455,19 +459,20 @@ mpiexec -n ${NMPIPROC} -map-by ppr:${NPPN}:node dbcast $SRC_FILE $DST_FILE
 spack:
   # add package specs to the `specs` list
   specs: [openmpi +cuda fabrics=auto schedulers=sge]
-  view: true  <- 行を削除
+  view: true                       # <- この行は削除
 
-  container:                       <- 追加
-    images:                        <- 追加
-      build: spack/centos7:0.16.0  <- 追加
-      final: spack/centos7:0.16.0  <- 追加
-    format: singularity            <- 追加
-    strip: false                   <- 追加
+  container:                       # <- 追加
+    images:                        # <- 追加
+      build: spack/centos7:0.16.0  # <- 追加
+      final: spack/centos7:0.16.0  # <- 追加
+    format: singularity            # <- 追加
+    strip: false                   # <- 追加
 ```
 
 `spack containerize`を用いて、spack.yamlファイルからSingularityレシピファイル(myenv.def)を作成します。
-```
+
+```shell
 [username@es1 ~]$ spack containerize > myenv.def
 ```
 
-SigularityレシピファイルからSingularityイメージを作成する方法については、[Singularityイメージファイルの作成(build)](09#build-a-singularity-image)をご参照ください。
+SigularityレシピファイルからSingularityイメージを作成する方法については、[Singularityイメージファイルの作成(build)](../09.md#build-a-singularity-image)をご参照ください。

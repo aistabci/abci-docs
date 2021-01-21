@@ -251,37 +251,43 @@ If you no more use, type `spack unload` to unset the variables.
 ```
 [username@es1 ~]$ spack unload xxxxx
 ```
-### Using environments
 
-By using `spack env`, you can install software separately for each Spack environment and switch between multiple versions of software.
-You create a Spack environment with `spack env create`. You can create multiple Spack environments by specifying a different Spack environment name here.
+### Using Environments {#using-environments}
 
-```
+Spack has an *environment* feature in which you can group installed software.
+You can install software with different versions and dependencies in each environment, and can change software to use at once by changing environments.
+
+You can create a Spack environment by `spack env create` command.
+You can create multiple environments by specifying different environment names here.
+
+```shell
 [username@es1 ~]$ spack env create myenv
 ```
 
-Activate the Spack environment created with `spack env activate`. You can show the name of the currently activated Spack environment at the prompt by adding `-p`.
+To activate the created environment, type `spack env activate`.
+Adding `-p` option will display the current activated environment on your console.
+Then, install software you need to the activated environment.
 
-```
+```shell
 [username@es1 ~]$ spack env activate -p myenv
 [myenv] [username@es1 ~]$ spack install xxxxx
 ```
 
-Deactivate the Spack environment by `spack env deactivate`.
+You can deactivate the environment by `spack env deactivate`.
+To switch to another environment, type `spack env activate` to activate it.
 
-```
+```shell
 [myenv] [username@es1 ~]$ spack env deactivate
 [username@es1 ~]$
 ```
 
 Use `spack env list` to display the list of created Spack environments.
 
-```
+```shell
 [username@es1 ~]$ spack env list
 ==> 1 environments
     myenv
 ```
-
 
 
 ## Example of Use
@@ -428,17 +434,22 @@ DST_FILE=name_of_file
 mpiexec -n ${NMPIPROC} -map-by ppr:${NPPN}:node dbcast $SRC_FILE $DST_FILE
 ```
 
-### Build singularity image from Spack environment
+### Build Singularity Image from Environment {#build-singularity-image-from-environment}
 
-You can create Singularity image using Spack environment created in [Using environments](#using-environments).
-Here is an example of how to install CUDA-aware OpenMPI and create Singularity image using Spack environment named "myenv".
+You can create a Singularity image from a Spack environment created referring [Using environments](#using-environments).
+The following example creates an environment named `myenv`, installs CUDA-aware OpenMPI and creates a Singularity image from the environment.
 
-```
+```shell
 [username@es1 ~]$ spack env create myenv
 [username@es1 ~]$ spack activate -p myenv
 [myenv] [username@es1 ~]$ openmpi +cuda schedulers=sge fabrics=auto
 [username@es1 ~]$ cp -p ${HOME}/spack/var/spack/environments/myenv/spack.yaml .
 [username@es1 ~]$ vi spack.yaml
+```
+
+Edit `spack.yaml` as follows.
+
+```yaml
 # This is a Spack Environment file.
 #
 # It describes a set of packages to be installed, along with
@@ -446,20 +457,20 @@ Here is an example of how to install CUDA-aware OpenMPI and create Singularity i
 spack:
   # add package specs to the `specs` list
   specs: [openmpi +cuda fabrics=auto schedulers=sge]
-  view: true  <- Delete
+  view: true                       # <- Delete this line
 
-  container:                       <- Add
-    images:                        <- Add
-      build: spack/centos7:0.16.0  <- Add
-      final: spack/centos7:0.16.0  <- Add
-    format: singularity            <- Add
-    strip: false                   <- Add
+  container:                       # <- Add this line
+    images:                        # <- Add this line
+      build: spack/centos7:0.16.0  # <- Add this line
+      final: spack/centos7:0.16.0  # <- Add this line
+    format: singularity            # <- Add this line
+    strip: false                   # <- Add this line
 ```
 
 Create a Singularity recipe file (myenv.def) from `spack.yaml` using `spack containerize`.
 
-```
+```shell
 [username@es1 ~]$ spack containerize > myenv.def
 ```
 
-To create a Singularity image from the generated recipe file on ABCI, please refer to [Create a Singularity image (build)](09#build-a-singularity-image).
+To create a Singularity image from the generated recipe file on ABCI, please refer to [Create a Singularity image (build)](../09.md#create-a-singularity-image-build).
