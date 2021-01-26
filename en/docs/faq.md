@@ -269,12 +269,3 @@ Example)
 g0001: g0001.abci.local
 g0002: g0002.abci.local
 ```
-
-## I want to delete my cloud storage account
-
-If you wish to delete your Cloud Storage Account, please check [Contact](./contact.md) and contact <qa@abci.ai> with the name of Cloud Storage Account you want to delete. ABCI support will remove it. The delete operation is as follows, so please check it in advance.
-
-!!! note
-    - A deleted Cloud Storage Account cannot be restored. Please verify that the name of Cloud Storage Account is correct.
-    - When a Cloud Storage Account is deleted , the access key set for that Cloud Storage Account is disabled.
-    - The suffix of the deleted Cloud Storage Account will be a missing number. For example, assume that an ABCI user belongs to a group and the user have 2 Cloud Storage Accounts 'aaa00000aa.1' and 'aaa00000aa.2'. When Cloud Storage Account 'aaa00000aa.2' is deleted, next issued name of Cloud Storage Account is 'aaa00000aa.3'. An ABCI user can own at most 10 Cloud Storage Accounts per group. After Cloud Storage Account 'aaa00000aa.2' is deleted, Cloud Storage Account can be issued up to 'aaa00000aa.11'.
