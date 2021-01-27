@@ -25,7 +25,7 @@ The Cloud Storage Account for Manager is issued to every single Usage Manager. I
 
 ## Access Key
 
-Access keys consist of an access key ID and a secret access key. Secret access keys are not allowed to be disclosed to third parties or put somewhere accessible by third parties.
+An access key is issued to every Cloud Storage account. Access keys consist of an access key ID and a secret access key. Secret access keys are not allowed to be disclosed to third parties or put somewhere accessible by third parties.
 
 Cloud Storage account can have a maximum of two access keys. When using different clients, creating different access keys for each client is highly recommended.
 
@@ -35,10 +35,4 @@ ABCI User Portal does not have a feature to delete ABCI Cloud Storage accounts a
 
 !!! note
     - Deleted accounts cannot be restored. Make sure that the Cloud Storage account name you wish to delete is correct.
-    - The suffix number of deleted account is vacant permanently. Since you can create 10 accounts per group, if you belong to only one group, the last account name is like "aaa00000aa.11", not "aaa00000aa.10".
-
-<!--
-## Subgroups
-
-A group created in a group. Subgroups are used when applying access policies to some or all group members.
--->
+    - The suffix numbers which were assigned to deleted accounts will be vacant permanently. Since you can create 10 accounts per group, if you belong to only one group and delete one account, the last account number is 11 (e.g. "aaa00000aa.11"), not 10.
