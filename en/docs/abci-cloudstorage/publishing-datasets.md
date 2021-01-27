@@ -23,7 +23,7 @@ upload: sensor1/0002.dat to s3://example-dataset/sensor1/0002.dat
 :
 ```
 
-Since `--acl public-read` option enables public read access, the data can be accessed by anyone from the outside of ABCI.
+Since `--acl public-read` option enables public read access, the data can be accessed with URLs such as "https://example-dataset.s3.abci.ai/sensor1/0001.dat" by anyone from the outside of ABCI.
 
 
 ## 2. Registration Application

@@ -72,7 +72,7 @@ Creator:
 # ライセンス
 #   Name: MIT License, CC-BY-SA 4.0, Custom License, etc.  *必須
 #   URL: ライセンスが記述されているページのURL  *任意
-License: # (do not fill in this line)
+License:
   Name: Custom License
   URL: https://example.com/dataset/LISENCE.txt
 
@@ -90,6 +90,8 @@ DatePublished: 2020-04-19
 
 # 関連文献等の情報。項目が1つであっても、ContentURL と同じくハイフンを使ったリスト形式で記入してください。
 Citation: 
+- John, Doe. "Example Paper 1," presented at Example Conf., Los Angeles, CA, USA, Oct. 8-10, 2020.
+- John, Doe. "Example Paper 3," in 23rd Example Conf., London, U.K., Aug. 2015. [Online]. Available: https://example.com/papers/23-5.pdf
 
 # 詳細な説明や追加情報等  *任意
 #AdditionalInfo:
