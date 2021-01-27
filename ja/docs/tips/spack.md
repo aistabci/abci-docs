@@ -21,7 +21,7 @@ ABCI上でSpackを使うことにより、ABCIが標準でサポートしてい�
 
 GitHubからcloneし、使用するバージョンをcheckoutすることで、Spackをインストールすることができます。
 
-```
+```Console
 [username@es1 ~]$ git clone https://github.com/spack/spack.git
 [username@es1 ~]$ cd ./spack
 [username@es1 ~/spack]$ git checkout v0.16.0
@@ -29,7 +29,7 @@ GitHubからcloneし、使用するバージョンをcheckoutすることで、S
 
 以降はターミナル上で、Spackを有効化するスクリプトを読み込めば使えます。
 
-```
+```Console
 [username@es1 ~]$ source ${HOME}/spack/share/spack/setup-env.sh
 ```
 
@@ -42,7 +42,7 @@ Spackで使用するコンパイラをSpackに登録します。
 
 GCC 4.4.7と4.8.5は標準のパス（/usr/bin）に入っているため、Spackが自動的に見つけます。
 
-```
+```Console
 [username@es1 ~]$ spack compiler list
 ==> Available compilers
 -- gcc centos7-x86_64 -------------------------------------------
@@ -51,7 +51,7 @@ gcc@4.8.5  gcc@4.4.7
 
 ABCIが提供しているGCC 4.8.5並びに7.4.0の設定ファイル(compilers.yaml)を配置しておりますので、以下のようにユーザ環境にコピーすることでコンパイラを利用することが可能です。
 
-```
+```Console
 [username@es1 ~]$ cp /apps/spack/compilers.yaml ${HOME}/.spack/linux/
 [username@es1 ~]$ spack compiler list
 ==> Available compilers
@@ -69,12 +69,13 @@ Spackはソフトウェアの依存関係を解決して、依存するソフト
 Spackが参照するソフトウェアの設定は`$HOME/.spack/linux/packages.yaml`に定義します。
 ABCIで提供するCUDA、OpenMPI、MVAPICH、cmake等の設定を記載した設定ファイル(packages.yaml)をユーザ環境にコピーすることでABCIのソフトウェアを*参照する*ことができます。
 
-```
+```Console
 [username@es1 ~]$ cp /apps/spack/packages.yaml ${HOME}/.spack/linux/
 ```
 
 packages.yaml (抜粋)
-```
+
+```yaml
 packages:
   cuda:
     buildable: false
@@ -104,7 +105,8 @@ Spackの基本操作についてまとめます。
 ### コンパイラ関連 {#compiler-operations}
 
 Spackに登録されているコンパイラ一覧は`compiler list`サブコマンドで確認できます。
-```
+
+```Console
 [username@es1 ~]$ spack compiler list
 ==> Available compilers
 -- gcc centos7-x86_64 -------------------------------------------
@@ -112,7 +114,8 @@ gcc@7.4.0  gcc@4.8.5
 ```
 
 特定コンパイラの詳細情報を確認するには、`compiler info`サブコマンドを実行します。
-```
+
+```Console
 [username@es1 ~]$ spack compiler info gcc@4.8.5
 gcc@4.8.5:
 	paths:
@@ -132,18 +135,21 @@ gcc@4.8.5:
 
 OpenMPIのSpack標準バージョンは、以下の通りにインストールできます。
 `schedulers=sge`と`fabrics=auto`の意味は[導入事例](#cuda-aware-openmpi)を参照ください。
-```
+
+```Console
 [username@es1 ~]$ spack install openmpi schedulers=sge fabrics=auto
 ```
 
 バージョンを指定する場合は、`@`で指定します。
-```
+
+```Console
 [username@es1 ~]$ spack install openmpi@3.1.4 schedulers=sge fabrics=auto
 ```
 
 コンパイラを指定する場合は`%`で指定します。
 以下の例では、コンパイラのバージョンも指定しています。
-```
+
+```Console
 [username@es1 ~]$ spack install openmpi@3.1.4 %gcc@7.4.0 schedulers=sge fabrics=auto
 ```
 
@@ -151,26 +157,30 @@ OpenMPIのSpack標準バージョンは、以下の通りにインストール�
 
 `uninstall`サブコマンドで、インストール済みのソフトウェアをアンインストールできます。
 インストール同様に、バージョンを指定してアンインストールできます。
-```
+
+```Console
 [username@es1 ~]$ spack uninstall openmpi
 ```
 
 ソフトウェアのハッシュを指定してアンインストールすることもできます。
 `/`に続いてハッシュを指定します。
 ハッシュは[情報確認](#information)に示す通り、`find`サブコマンドで取得できます。
-```
+
+```Console
 [username@es1 ~]$ spack uninstall /ffwtsvk
 ```
 
 インストールした全てのソフトウェアを一括して削除するには以下の通りに実行します。
-```
+
+```Console
 [username@es1 ~]$ spack uninstall --all
 ```
 
 #### 情報確認 {#information}
 
 Spackでインストールできるソフトウェア一覧は、`list`サブコマンドで確認できます。
-```
+
+```Console
 [username@es1 ~]$ spack list
 abinit
 abyss
@@ -179,7 +189,8 @@ abyss
 
 キーワードを指定することで、キーワードを名前の一部に含むソフトウェアのみを表示できます。
 以下では`mpi`をキーワードとして指定しています。
-```
+
+```Console
 [username@es1 ~]$ spack list mpi
 ==> 21 packages.
 compiz       mpifileutils  mpix-launch-swift  r-rmpi        vampirtrace
@@ -190,7 +201,8 @@ mpich        mpir          py-mpi4py          umpire
 ```
 
 インストールしたソフトウェア一覧は`find`サブコマンドで確認できます。
-```
+
+```Console
 [username@es1 ~]$ spack find
 ==> 49 installed packages
 -- linux-centos7-haswell / gcc@4.8.5 ----------------------------
@@ -199,7 +211,8 @@ autoconf@2.69    gdbm@1.18.1          libxml2@2.9.9  readline@8.0
 ```
 
 インストールしたソフトウェアのハッシュ、依存関係は`find`サブコマンドに`-dl`オプションを指定することで確認できます。
-```
+
+```Console
 [username@es1 ~]$ spack find -dl openmpi
 -- linux-centos7-skylake_avx512 / gcc@7.4.0 ---------------------
 6pxjftg openmpi@3.1.1
@@ -214,7 +227,8 @@ pkmj6e7             zlib@1.2.11
 ```
 
 特定のソフトウェアの詳細情報を確認するには、`info`サブコマンドを使用します。
-```
+
+```Console
 [username@es1 ~]$ spack info openmpi
 AutotoolsPackage:   openmpi
 
@@ -225,7 +239,8 @@ Description:
 ```
 
 特定ソフトウェアの、インストール可能なバージョン一覧は`versions`サブコマンドで確認できます。
-```
+
+```Console
 [username@es1 ~]$ spack versions openmpi
 ==> Safe versions (already checksummed):
   develop  3.0.3  2.1.1   1.10.5  1.8.5  1.7.2  1.5.5  1.4.2  1.2.8  1.1.5
@@ -244,18 +259,56 @@ Description:
 
 Spackでインストールしたソフトウェアは`spack load`コマンドで使用可能です。
 ABCIが提供するモジュール同様に、ロードして使用できます。
-```
+
+```Console
 [username@es1 ~]$ spack load xxxxx
 ```
+
 `spack load`はソフトウェアを使用するための`PATH`、`MANPATH`、`CPATH`、`LD_LIBRARY_PATH`等の環境変数を設定します。
 
 不要になった場合は、`spack unload`します。
-```
+
+```Console
 [username@es1 ~]$ spack unload xxxxx
 ```
 
 
-## ソフトウェア導入事例 {#example-software-installation}
+### ソフトウェア環境の定義と利用 {#using-environments}
+
+Spackにはソフトウェアパッケージを「環境」という単位でグルーピングする機能があります。
+環境ごとにソフトウェアをバージョンや依存関係を変えてインストールすることができ、環境を切り替えることで一括して使用するソフトウェアを変えることができます。
+
+まず`spack env create`でSpack環境を構築します。ここで別のSpack環境名を指定することで複数のSpack環境を作成することが可能です。
+
+```Console
+[username@es1 ~]$ spack env create myenv
+```
+
+`spack env activate`で作ったSpack環境を有効にします。`-p`をつけることで現在有効になっているSpack環境名をプロンプトに表示することができます。有効にした環境にソフトウェアをインストールしていきます。
+
+```Console
+[username@es1 ~]$ spack env activate -p myenv
+[myenv] [username@es1 ~]$ spack install xxxxx
+```
+
+`spack env deactivate`でSpack環境を無効にします。別の環境を使う場合、その環境を`spack env activate`します。
+
+```Console
+[myenv] [username@es1 ~]$ spack env deactivate
+[username@es1 ~]$
+```
+
+`spack env list`で作成済みのSpack環境の一覧を表示することが可能です。
+
+```Console
+[username@es1 ~]$ spack env list
+==> 2 environments
+    myenv
+    another_env
+```
+
+
+## 利用事例 {#example-of-use}
 
 ### CUDA-aware OpenMPI {#cuda-aware-openmpi}
 
@@ -266,7 +319,8 @@ ABCIでは、CUDA-aware OpenMPIをモジュールで提供していますが、�
 
 CUDA 10.1.243を使用するOpenMPI 3.1.1をインストールする場合の例です。
 GPUを搭載する計算ノード上で作業を行います。
-```
+
+```Console
 [username@g0001 ~]$ spack install cuda@10.1.243
 [username@g0001 ~]$ spack install openmpi@3.1.1 +cuda schedulers=sge fabrics=auto ^cuda@10.1.243
 [username@g0001 ~]$ spack find --paths openmpi@3.1.1
@@ -275,6 +329,7 @@ GPUを搭載する計算ノード上で作業を行います。
 openmpi@3.1.1  ${SPACK_ROOT}/opt/spack/linux-centos7-haswell/gcc-4.8.5/openmpi-3.1.1-4mmghhfuk5n7my7g3ko2zwzlo4wmoc5v
 [username@g0001 ~]$ echo "btl_openib_warn_default_gid_prefix = 0" >> ${SPACK_ROOT}/opt/spack/linux-centos7-haswell/gcc-4.8.5/openmpi-3.1.1-4mmghhfuk5n7my7g3ko2zwzlo4wmoc5v/etc/openmpi-mca-params.conf
 ```
+
 1行目では、ABCIが提供するCUDAを使用するよう、CUDAのバージョン`10.1.243`をインストールします。
 2行目では、[このページ](../appendix/installed-software.md#open-mpi)と同様の設定で、OpenMPIをインストールしています。
 インストールオプションの意味は以下の通りです。
@@ -289,7 +344,8 @@ openmpi@3.1.1  ${SPACK_ROOT}/opt/spack/linux-centos7-haswell/gcc-4.8.5/openmpi-3
 
 Spackでは、同一ソフトウェアを異なる設定で複数インストールし、管理することができます。
 ここでは、CUDA 9.0.176.4を使用するOpenMPI 3.1.1を追加インストールします。
-```
+
+```Console
 [username@g0001 ~]$ spack install cuda@9.0.176.4
 [username@g0001 ~]$ spack install openmpi@3.1.1 +cuda schedulers=sge fabrics=auto ^cuda@9.0.176.4
 ```
@@ -299,19 +355,22 @@ Spackでは、同一ソフトウェアを異なる設定で複数インストー
 「CUDA 10.1.243を使用するOpenMPI 3.1.1」を使う場合の利用方法を説明します。
 
 `spack load`実行時にOpenMPIのバージョン並びにCUDAの依存関係を指定することで、特定のバージョンを利用することが可能です。
-```
+
+```Console
 [username@es1 ~]$ spack load openmpi@3.1.1 ^cuda@10.1.243
 ```
 
 計算ノード上でプログラムをコンパイルする場合は、SpackでインストールしたOpenMPIを呼び出してからMPIを起動します。
-```
+
+```Console
 [username@g0001 ~]$ source ${HOME}/spack/share/spack/setup-env.sh
 [username@g0001 ~]$ spack load openmpi@3.1.1 ^cuda@10.1.243
 [username@g0001 ~]$ mpicc ...
 ```
 
 ジョブスクリプトでは、以下のように使用します。
-```
+
+```shell
 #!/bin/bash
 #$-l rt_F=2
 #$-j y
@@ -328,7 +387,8 @@ mpiexec ${MPIOPTS} YOUR_PROGRAM
 ```
 
 不要になった場合は、バージョン並びに依存関係を指定してアンインストールします。
-```
+
+```Console
 [username@es1 ~]$ spack uninstall openmpi@3.1.1 ^cuda@10.1.243
 ```
 
@@ -340,14 +400,16 @@ CUDA-aware MVAPICH2を使用する場合は、以下を参考にSpackでイン�
 
 GPUを搭載する計算ノード上で作業を行います。
 [OpenMPIと同様](#cuda-aware-openmpi)に、使用するCUDAをインストールしたのちに、CUDAオプション（`+cuda`）、通信ライブラリ（`fabrics=mrail`）、およびCUDAの依存関係（`^cuda@10.1.243`）を指定してMVAPICH2をインストールします。
-```
+
+```Console
 [username@g0001 ~]$ spack install cuda@10.1.243
 [username@g0001 ~]$ spack install mvapich2@2.3.2 +cuda fabrics=mrail ^cuda@10.1.243
 ```
 
 使い方もOpenMPIと同様に、インストールしたMVAPICH2をロードして使います。
 以下にジョブスクリプト例を示します。
-```
+
+```shell
 #!/bin/bash
 #$-l rt_F=2
 #$-j y
@@ -374,7 +436,8 @@ mpiexec ${MPIOPTS} YOUR_PROGRAM
 以下の例では、OpenMPI 2.1.6を使用して、MPIFileUtilsをインストールします。
 該当するOpenMPIをインストールした後で（1行目）、それへの依存を指定してMPIFileUtilsをインストールします（2行目）。
 [ABCIソフトウェアの登録](#adding-abci-software)にてpackages.yamlをコピーした場合、ABCIが提供するOpenMPI 2.1.6が使用されます。
-```
+
+```Console
 [username@es1 ~]$ spack install openmpi@2.1.6
 [username@es1 ~]$ spack install mpifileutils ^openmpi@2.1.6
 ```
@@ -383,7 +446,7 @@ mpiexec ${MPIOPTS} YOUR_PROGRAM
 MPIFileUtilsのモジュールをロードすると、`dbcast`などのプログラムへのパスがセットされます。
 以下にジョブスクリプト例を示します。
 
-```
+```shell
 #!/bin/bash
 #$-l rt_F=2
 #$-j y
@@ -399,3 +462,45 @@ DST_FILE=name_of_file
 
 mpiexec -n ${NMPIPROC} -map-by ppr:${NPPN}:node dbcast $SRC_FILE $DST_FILE
 ```
+
+
+### ソフトウェア環境からのSinguarityイメージの作成手順 {#build-singularity-image-from-environment}
+
+[ソフトウェア環境の定義と利用](#using-environments)で作成した環境を用いてSingurarityのイメージを作成することが可能です。
+ここではmyenvという名前のSpack環境を用いてCUDA-awareのOpenMPIをインストールし、Singularityイメージを作成する例を示します。
+
+```Console
+[username@es1 ~]$ spack env create myenv
+[username@es1 ~]$ spack activate -p myenv
+[myenv] [username@es1 ~]$ openmpi +cuda schedulers=sge fabrics=auto
+[username@es1 ~]$ cp -p ${HOME}/spack/var/spack/environments/myenv/spack.yaml .
+[username@es1 ~]$ vi spack.yaml
+```
+
+`spack.yaml`は以下にように編集します。
+
+```yaml
+# This is a Spack Environment file.
+#
+# It describes a set of packages to be installed, along with
+# configuration settings.
+spack:
+  # add package specs to the `specs` list
+  specs: [openmpi +cuda fabrics=auto schedulers=sge]
+  view: true                       # <- この行は削除
+
+  container:                       # <- 追加
+    images:                        # <- 追加
+      build: spack/centos7:0.16.0  # <- 追加
+      final: spack/centos7:0.16.0  # <- 追加
+    format: singularity            # <- 追加
+    strip: false                   # <- 追加
+```
+
+`spack containerize`を用いて、spack.yamlファイルからSingularityレシピファイル(myenv.def)を作成します。
+
+```Console
+[username@es1 ~]$ spack containerize > myenv.def
+```
+
+SigularityレシピファイルからSingularityイメージを作成する方法については、[Singularityイメージファイルの作成(build)](../09.md#build-a-singularity-image)をご参照ください。
