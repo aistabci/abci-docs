@@ -148,10 +148,6 @@ Description:	Ubuntu 18.04.5 LTS
     Container Library にアップロードしたコンテナイメージに対して、アクセス制御の設定はできません。つまり、ABCIの利用者であれば誰でもアクセス可能になりますので、アップロードするイメージが適切なものであるか十分に確認して下さい。
 
 
-### 現在の制約事項
-* アップロードしたコンテナイメージの一覧を取得することはできません。
-
-
 ### コンテナイメージの署名鍵の作成と登録
 
 Container Library へコンテナイメージをアップロードして、ABCI 内に公開する場合には、事前に鍵ペアを作成し、KeyStore に公開鍵を登録して下さい。コンテナイメージの作成者は、秘密鍵を用いてコンテナイメージに署名し、コンテナイメージの利用者は KeyStore に登録されている公開鍵を用いてその署名を検証することが可能です。
@@ -386,3 +382,40 @@ Container Library にアップロードされたコンテナイメージは、`s
 
 !!! note
     singularity の仕様により、コンテナイメージとして Tag 相当 (上例では latest) のイメージは削除可能ですが、それより上位のディレクトリ (helloworld) の削除は出来ません。
+
+### コンテナイメージ一覧表示
+
+Container Library にアップロードされたコンテナイメージの一覧を、`list_singularity_library` で表示することができます。
+コンテナイメージは`library://username/collection/container`という形式で表示されます。
+タグが付与されている場合はコンテナイメージの下行に`Tag`が表示されます。タグが付与されていない場合は代わりに`Unique ID`が表示されます。
+
+```
+[username@es1 ~]$ list_singularity_library
+library://username/collection1/container1
+    Tag: latest
+
+library://username/collection2/container2
+    Unique ID: sha256.xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+
+library://username/collection3/container3
+```
+
+!!! note
+    `Tag`も`Unique ID`も表示されない場合、そのコンテナにはコンテナイメージが存在しないことを意味します。
+
+また、`list_singularity_library` に`-v` オプションをつけることで、フィンガープリント(存在する場合)と、イメージサイズも併せて表示されます。
+
+```
+[username@es1 ~]$ list_singularity_library -v
+library://username/collection1/container1
+    Tag: latest
+    Image Size: 10.00 MB
+    Finger Prints: XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+
+library://username/collection2/container2
+    Unique ID: sha256.xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+    Image Size: 20.00 MB
+
+library://username/collection3/container3
+```
+
