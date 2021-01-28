@@ -39,37 +39,40 @@ Name: ABC Dataset
 # データセットの概要 (50文字以上)  *必須
 Description: This is a fictitious dataset ....
 
-# データセットに関するキーワード (object detection, vehicle, action recognition, earth observation, etc.)
-# 項目が1つであっても、下記のようなハイフンではじまるリスト形式で記入してください。
+# データセットに関するキーワード (object detection, vehicle, action recognition, earth observation, etc.)  *必須
+# 項目が1つであっても、下記のようなハイフンではじまるリスト形式で記入してください
 Keywords:
   - image processing
   - health
 
-# より詳細な情報を記した Web ページ　*必須
-#　本YAMLから生成する index.html に詳細を追記する場合は、以下の例のように https://<バケット名>.s3-website.abci.ai/ を記入して下さい。
-#  そうでなく、別のサイトに Web ページを用意する場合は、その URL を記入して下さい。
+# より詳細な情報を記した Web ページ　*任意
 UsageInfo: https://example-dataset.s3-website.abci.ai/
 
 # 配布方法
-#  EncodingFormat:  XML, CSV, GeoTIFF, etc.
-#  ContentURL: 公開データの URL　*必須
-Distribution: # (do not fill in this line)
+#   EncodingFormat: XML, CSV, GeoTIFF, etc.  *任意
+#   ContentURL: 公開データの URL　*必須
+Distribution:
   EncodingFormat: DICOM
-  ContentURL:  # 項目が1つであっても、下記のようなハイフンではじまるリスト形式で記入してください。
+  ContentURL:  # 項目が1つであっても、下記のようなハイフンではじまるリスト形式で記入してください
     - https://example-dataset.s3.abci.ai/abc.zip
 
 # 作成者
-#  ContactPoint: Email or URL のいずれかは必須
-Creator: # (do not fill in this line)
+#   Name: 組織名(または個人名)  *必須
+#   URL: 組織のWEBサイト(または個人のWEBサイト)  *任意
+#   ContactPoint:
+#     Email: 連絡先メールアドレス  *Email or URL のいずれか必要
+#     URL: 問い合わせ窓口のページ  *Email or URL のいずれか必要
+Creator:
   Name: ABC Team
   URL: https://example.com/about/
-  ContactPoint: # (do not fill in this line)
+  ContactPoint:
     Email: dataset@example.com
     URL: https://example.com/contact/
 
 # ライセンス
-#  Name: MIT License, CC-BY-SA 4.0, Custom License, etc.
-License: # (do not fill in this line)
+#   Name: MIT License, CC-BY-SA 4.0, Custom License, etc.  *必須
+#   URL: ライセンスが記述されているページのURL  *任意
+License:
   Name: Custom License
   URL: https://example.com/dataset/LISENCE.txt
 
@@ -87,6 +90,11 @@ DatePublished: 2020-04-19
 
 # 関連文献等の情報。項目が1つであっても、ContentURL と同じくハイフンを使ったリスト形式で記入してください。
 Citation: 
+- John, Doe. "Example Paper 1," presented at Example Conf., Los Angeles, CA, USA, Oct. 8-10, 2020.
+- John, Doe. "Example Paper 3," in 23rd Example Conf., London, U.K., Aug. 2015. [Online]. Available: https://example.com/papers/23-5.pdf
+
+# 詳細な説明や追加情報等  *任意
+#AdditionalInfo:
 ```
 
 データセットを公開しているバケットに、記入したYAMLファイルをアップロードして下さい。 `my_dataset_info.yaml` は違うファイル名でも問題ありません。
