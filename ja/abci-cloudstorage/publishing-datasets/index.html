@@ -1108,37 +1108,40 @@
 <span class="c1"># データセットの概要 (50文字以上)  *必須</span>
 <span class="nt">Description</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">This is a fictitious dataset ....</span>
 
-<span class="c1"># データセットに関するキーワード (object detection, vehicle, action recognition, earth observation, etc.)</span>
-<span class="c1"># 項目が1つであっても、下記のようなハイフンではじまるリスト形式で記入してください。</span>
+<span class="c1"># データセットに関するキーワード (object detection, vehicle, action recognition, earth observation, etc.)  *必須</span>
+<span class="c1"># 項目が1つであっても、下記のようなハイフンではじまるリスト形式で記入してください</span>
 <span class="nt">Keywords</span><span class="p">:</span>
   <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">image processing</span>
   <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">health</span>
 
-<span class="c1"># より詳細な情報を記した Web ページ　*必須</span>
-<span class="c1">#　本YAMLから生成する index.html に詳細を追記する場合は、以下の例のように https://&lt;バケット名&gt;.s3-website.abci.ai/ を記入して下さい。</span>
-<span class="c1">#  そうでなく、別のサイトに Web ページを用意する場合は、その URL を記入して下さい。</span>
+<span class="c1"># より詳細な情報を記した Web ページ　*任意</span>
 <span class="nt">UsageInfo</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">https://example-dataset.s3-website.abci.ai/</span>
 
 <span class="c1"># 配布方法</span>
-<span class="c1">#  EncodingFormat:  XML, CSV, GeoTIFF, etc.</span>
-<span class="c1">#  ContentURL: 公開データの URL　*必須</span>
-<span class="nt">Distribution</span><span class="p">:</span> <span class="c1"># (do not fill in this line)</span>
+<span class="c1">#   EncodingFormat: XML, CSV, GeoTIFF, etc.  *任意</span>
+<span class="c1">#   ContentURL: 公開データの URL　*必須</span>
+<span class="nt">Distribution</span><span class="p">:</span>
   <span class="nt">EncodingFormat</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">DICOM</span>
-  <span class="nt">ContentURL</span><span class="p">:</span>  <span class="c1"># 項目が1つであっても、下記のようなハイフンではじまるリスト形式で記入してください。</span>
+  <span class="nt">ContentURL</span><span class="p">:</span>  <span class="c1"># 項目が1つであっても、下記のようなハイフンではじまるリスト形式で記入してください</span>
     <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">https://example-dataset.s3.abci.ai/abc.zip</span>
 
 <span class="c1"># 作成者</span>
-<span class="c1">#  ContactPoint: Email or URL のいずれかは必須</span>
-<span class="nt">Creator</span><span class="p">:</span> <span class="c1"># (do not fill in this line)</span>
+<span class="c1">#   Name: 組織名(または個人名)  *必須</span>
+<span class="c1">#   URL: 組織のWEBサイト(または個人のWEBサイト)  *任意</span>
+<span class="c1">#   ContactPoint:</span>
+<span class="c1">#     Email: 連絡先メールアドレス  *Email or URL のいずれか必要</span>
+<span class="c1">#     URL: 問い合わせ窓口のページ  *Email or URL のいずれか必要</span>
+<span class="nt">Creator</span><span class="p">:</span>
   <span class="nt">Name</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">ABC Team</span>
   <span class="nt">URL</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">https://example.com/about/</span>
-  <span class="nt">ContactPoint</span><span class="p">:</span> <span class="c1"># (do not fill in this line)</span>
+  <span class="nt">ContactPoint</span><span class="p">:</span>
     <span class="nt">Email</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">dataset@example.com</span>
     <span class="nt">URL</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">https://example.com/contact/</span>
 
 <span class="c1"># ライセンス</span>
-<span class="c1">#  Name: MIT License, CC-BY-SA 4.0, Custom License, etc.</span>
-<span class="nt">License</span><span class="p">:</span> <span class="c1"># (do not fill in this line)</span>
+<span class="c1">#   Name: MIT License, CC-BY-SA 4.0, Custom License, etc.  *必須</span>
+<span class="c1">#   URL: ライセンスが記述されているページのURL  *任意</span>
+<span class="nt">License</span><span class="p">:</span>
   <span class="nt">Name</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">Custom License</span>
   <span class="nt">URL</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">https://example.com/dataset/LISENCE.txt</span>
 
@@ -1156,6 +1159,11 @@
 
 <span class="c1"># 関連文献等の情報。項目が1つであっても、ContentURL と同じくハイフンを使ったリスト形式で記入してください。</span>
 <span class="nt">Citation</span><span class="p">:</span> 
+<span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">John, Doe. &quot;Example Paper 1,&quot; presented at Example Conf., Los Angeles, CA, USA, Oct. 8-10, 2020.</span>
+<span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">John, Doe. &quot;Example Paper 3,&quot; in 23rd Example Conf., London, U.K., Aug. 2015. [Online]. Available</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">https://example.com/papers/23-5.pdf</span>
+
+<span class="c1"># 詳細な説明や追加情報等  *任意</span>
+<span class="c1">#AdditionalInfo:</span>
 </code></pre></div>
 
 

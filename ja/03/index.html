@@ -543,6 +543,13 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    予約ノードご利用時の注意
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -1474,6 +1481,13 @@
           <li class="md-nav__item">
   <a href="#_4" class="md-nav__link">
     予約ノードの使い方
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    予約ノードご利用時の注意
   </a>
   
 </li>
@@ -2512,7 +2526,7 @@ module load cuda/9.2/9.2.88.1
 </tr>
 <tr>
 <td align="left">-N <em>name</em></td>
-<td align="left">予約名を<em>name</em>で指定します。英数字およびアンダーバーのみ指定可能で、最大64文字まで指定できます。</td>
+<td align="left">予約名を<em>name</em>で指定します。英数字と記号<code>=+-_.</code>が指定可能で、最大64文字まで指定できます。ただし、先頭の文字に数字を指定することはできません。</td>
 </tr>
 <tr>
 <td align="left">-n <em>nnnode</em></td>
@@ -2626,6 +2640,34 @@ module load cuda/9.2/9.2.88.1
 <li>予約終了時刻になると実行中のジョブは強制終了されます。  </li>
 </ul>
 </div>
+<h3 id="_5">予約ノードご利用時の注意</h3>
+<p>予約は期間中の計算ノードの健全性を保証するものではありません。予約した計算ノードの利用中に一部が利用不可となることがありますので、以下の点をご確認ください。</p>
+<ul>
+<li>予約した計算ノードの利用可否状態は、<code>qrstat -ar ar_id</code> コマンドで確認できます。</li>
+<li>予約開始前日に一部の予約ノードが利用不可と表示される場合は、予約の取り消し・再度予約をご検討ください。</li>
+<li>予約期間中に計算ノードが利用不可となった場合などの時は、<a href="../contact/">お問い合わせ</a>のページをご覧の上、<a href="&#109;&#97;&#105;&#108;&#116;&#111;&#58;&#113;&#97;&#64;&#97;&#98;&#99;&#105;&#46;&#97;&#105;">&#113;&#97;&#64;&#97;&#98;&#99;&#105;&#46;&#97;&#105;</a> までご連絡ください。</li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<ul>
+<li>予約の取り消しは予約開始前日の午後9時までになります。</li>
+<li>計算ノードの空きが無い場合、予約の作成はできません。</li>
+<li>ハードウェア障害は適宜対応しております。予約開始前日より前の利用不可に対するお問い合わせはご遠慮願います。</li>
+<li>予約している計算ノード数変更や予約期間の延長の依頼は対応不可になります。</li>
+</ul>
+</div>
+<p>例) g0001は利用可能、g0002は利用不可</p>
+<div class="codehilite"><pre><span></span><code><span class="err">[username@es1 ~]$ qrsub -a 20180705 -d 7 -g grpname -n 2 -N &quot;Reserve_for_AI&quot; </span>
+<span class="err">Your advance reservation 12345 has been granted</span>
+<span class="err">[username@es1 ~]$ qrstat -ar 12345</span>
+<span class="err">(snip)</span>
+<span class="err">message                             reserved queue gpu@g0002 is disabled</span>
+<span class="err">message                             reserved queue gpu@g0002 is unknown</span>
+<span class="err">granted_parallel_environment        perack01</span>
+<span class="err">granted_slots_list                  gpu@g0001=80,gpu@g0002=80</span>
+</code></pre></div>
+
+
 <h2 id="accounting">課金</h2>
 <h3 id="on-demand-and-spot-services">On-demandおよびSpotサービス</h3>
 <p>On-demandおよびSpotサービスでは、ジョブ実行開始時にジョブが使用予定のABCIポイントを経過時間制限値を元に計算し、減算処理を実施します。ジョブ実行終了時に実際の経過時間を元にABCIポイントを再計算し、返却処理を実施します。</p>
@@ -2646,7 +2688,7 @@ module load cuda/9.2/9.2.88.1
 </ul>
 </div>
 <h3 id="reserved-service_1">Reservedサービス</h3>
-<p>Reservedサービスでは、予約完了時に予約期間を元にABCIポイントを計算し、減算処理を実施します。予約を取消しない限り、返却処理は実施しません。</p>
+<p>Reservedサービスでは、予約完了時に予約期間を元にABCIポイントを計算し、減算処理を実施します。予約の取り消しをしない限り、返却処理は実施されません。</p>
 <p>サービスごとの使用ABCIポイントの計算式は以下の通りです。</p>
 <blockquote>
 <p><a href="#job-services">サービス課金係数</a><br />

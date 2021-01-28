@@ -543,6 +543,13 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#cautions-for-using-reserved-node" class="md-nav__link">
+    Cautions for Using reserved node
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -1060,8 +1067,20 @@
 
 
   <li class="md-nav__item">
+    <a href="../abci-cloudstorage/publishing-datasets/" title="Publishing Datasets" class="md-nav__link">
+      Publishing Datasets
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
     <a href="../abci-cloudstorage/caution/" title="Caution for ABCI Cloud Storage" class="md-nav__link">
-       Caution for ABCI Cloud Storage
+      Caution for ABCI Cloud Storage
     </a>
   </li>
 
@@ -1450,6 +1469,13 @@
           <li class="md-nav__item">
   <a href="#how-to-use-reserved-node" class="md-nav__link">
     How to use reserved node
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#cautions-for-using-reserved-node" class="md-nav__link">
+    Cautions for Using reserved node
   </a>
   
 </li>
@@ -2425,23 +2451,23 @@ For more detail, use <code>man sge_accounting</code> command.</p>
 </tr>
 <tr>
 <td align="left">Start time of accept reservation</td>
-<td align="left">10:00a.m of 30 days ago</td>
+<td align="left">10:00 a.m. of 30 days ago</td>
 </tr>
 <tr>
 <td align="left">Closing time of accept reservation</td>
-<td align="left">9:00a.m of Start reservation of the day before</td>
+<td align="left">9:00 p.m. of Start reservation of the day before</td>
 </tr>
 <tr>
 <td align="left">Canceling reservation accept term</td>
-<td align="left">9:00a.m of Start reservation of the day before</td>
+<td align="left">9:00 p.m. of Start reservation of the day before</td>
 </tr>
 <tr>
 <td align="left">Reservation start time</td>
-<td align="left">10:00am of Reservation start day</td>
+<td align="left">10:00 a.m. of Reservation start day</td>
 </tr>
 <tr>
 <td align="left">Reservation end time</td>
-<td align="left">9:30am of Reservation end day</td>
+<td align="left">9:30 a.m. of Reservation end day</td>
 </tr>
 </tbody>
 </table>
@@ -2481,7 +2507,7 @@ For more detail, use <code>man sge_accounting</code> command.</p>
 </tr>
 <tr>
 <td align="left">-N <em>name</em></td>
-<td align="left">Specify reservation name. the reservation name can be specified following character: "A-Za-z0-9_" and maximum length is 64</td>
+<td align="left">Specify reservation name. The reservation name can be alphanumeric and special characters <code>=+-_.</code>. The maximum length is 64 characters. However, the first letter must not be a number.</td>
 </tr>
 <tr>
 <td align="left">-n <em>nnode</em></td>
@@ -2532,11 +2558,11 @@ For more detail, use <code>man sge_accounting</code> command.</p>
 </tr>
 <tr>
 <td align="left">start at</td>
-<td align="left">Start reservation date (start time is 10:00am at all time)</td>
+<td align="left">Start reservation date (start time is 10:00 a.m. at all time)</td>
 </tr>
 <tr>
 <td align="left">end at</td>
-<td align="left">End reservation date (end time is 9:30am at all time)</td>
+<td align="left">End reservation date (end time is 9:30 a.m. at all time)</td>
 </tr>
 <tr>
 <td align="left">duration</td>
@@ -2595,6 +2621,34 @@ For more detail, use <code>man sge_accounting</code> command.</p>
 <li>At reservation end time, running jobs are killed.</li>
 </ul>
 </div>
+<h3 id="cautions-for-using-reserved-node">Cautions for Using reserved node</h3>
+<p>Advance Reservation does not guarantee the health of the compute node for the duration. Some reserved compute nodes may become unavailable while they are in use. Please check the following points.</p>
+<ul>
+<li>To check the availability status of the reserved compute nodes, using the <code>qrstat -ar ar_id</code> command. </li>
+<li>If some reserved compute nodes appear unavailable status the day before the reservation start date, consider canceling the reservation and making the reservation again. </li>
+<li>For example, if the compute node becomes unavailable during the reservation period, please check <a href="../contact/">Contact</a> and contact <a href="&#109;&#97;&#105;&#108;&#116;&#111;&#58;&#113;&#97;&#64;&#97;&#98;&#99;&#105;&#46;&#97;&#105;">&#113;&#97;&#64;&#97;&#98;&#99;&#105;&#46;&#97;&#105;</a>.</li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<ul>
+<li>Reservation can be canceled by 9:00 p.m. of the day before the reservation starts.  </li>
+<li>Reservation cannot make when there is no free compute node.  </li>
+<li>Hardware failures are handled properly. Please refrain from inquiring about unavailability before the day before the reservation starts.  </li>
+<li>Requests to change the number of reserved compute nodes or to extend the reservation period can not be accepted.</li>
+</ul>
+</div>
+<p>Example) g0001 is available, g0002 is unavailable</p>
+<div class="codehilite"><pre><span></span><code><span class="err">[username@es1 ~]$ qrsub -a 20180705 -d 7 -g grpname -n 2 -N &quot;Reserve_for_AI&quot; </span>
+<span class="err">Your advance reservation 12345 has been granted</span>
+<span class="err">[username@es1 ~]$ qrstat -ar 12345</span>
+<span class="err">(snip)</span>
+<span class="err">message                             reserved queue gpu@g0002 is disabled</span>
+<span class="err">message                             reserved queue gpu@g0002 is unknown</span>
+<span class="err">granted_parallel_environment        perack01</span>
+<span class="err">granted_slots_list                  gpu@g0001=80,gpu@g0002=80</span>
+</code></pre></div>
+
+
 <h2 id="accounting">Accounting</h2>
 <h3 id="on-demand-and-spot-services">On-demand and Spot Services</h3>
 <p>In On-demand and Spot services, when starting a job, the ABCI point scheduled
