@@ -1,5 +1,12 @@
 # システム更新履歴
 
+## 2021-03-13
+
+| Add / Update / Delete | Software | Version | Previous version |
+|:--|:--|:--|:--|
+| Update | SingularityPRO | 3.5-4 | 3.5-6 |
+| Update | DDN Lustre | 2.10.7\_ddn14-1 | 2.12.6\_ddn13-1 |
+
 ## 2020-12-15
 
 | Add / Update / Delete | Software | Version | Previous version |
