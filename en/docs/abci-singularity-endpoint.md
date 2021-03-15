@@ -361,12 +361,12 @@ To delete a container image from Container Library, use `singularity delete`.
 
 ### Listing Container Images
 
-To list the container images uploaded to Container Library, use `list_singularity_library`.
+To list the container images uploaded to Container Library, use `list_singularity_images`.
 The container images are displayed in the URI format `library://username/collection/container`.
 If the container image has been tagged, `Tag` appears on the next line of the container image URI. If no tag is given, `Unique ID` is displayed instead.
 
 ```
-[username@es1 ~]$ list_singularity_library
+[username@es1 ~]$ list_singularity_images
 library://username/collection1/container1
     Tag: latest
 
@@ -379,10 +379,10 @@ library://username/collection3/container3
 !!! note
     If neither `Tag` nor `Unique ID` is displayed, it means that there is no container image in the container.
 
-You can also add option `-v` to `list_singularity_library` to display the fingerprint (if present) and image size.
+You can also add option `-v` to `list_singularity_images` to display the fingerprint (if present) and image size.
 
 ```
-[username@es1 ~]$ list_singularity_library -v
+[username@es1 ~]$ list_singularity_images -v
 library://username/collection1/container1
     Tag: latest
     Image Size: 10.00 MB
