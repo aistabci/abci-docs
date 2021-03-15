@@ -386,12 +386,12 @@ Container Library にアップロードされたコンテナイメージは、`s
 
 ### コンテナイメージ一覧表示
 
-Container Library にアップロードされたコンテナイメージの一覧を、`list_singularity_library` で表示することができます。
+Container Library にアップロードされたコンテナイメージの一覧を、`list_singularity_images` で表示することができます。
 コンテナイメージは`library://username/collection/container`のようなURIで表示されます。
 タグが付与されている場合はURIの次の行に`Tag`が表示されます。タグが付与されていない場合は代わりに`Unique ID`が表示されます。
 
 ```
-[username@es1 ~]$ list_singularity_library
+[username@es1 ~]$ list_singularity_images
 library://username/collection1/container1
     Tag: latest
 
@@ -404,10 +404,10 @@ library://username/collection3/container3
 !!! note
     `Tag`も`Unique ID`も表示されない場合、そのコンテナにはコンテナイメージが存在しないことを意味します。
 
-また、`list_singularity_library` に`-v` オプションをつけることで、フィンガープリント(存在する場合)と、イメージサイズも併せて表示されます。
+また、`list_singularity_images` に`-v` オプションをつけることで、フィンガープリント(存在する場合)と、イメージサイズも併せて表示されます。
 
 ```
-[username@es1 ~]$ list_singularity_library -v
+[username@es1 ~]$ list_singularity_images -v
 library://username/collection1/container1
     Tag: latest
     Image Size: 10.00 MB
