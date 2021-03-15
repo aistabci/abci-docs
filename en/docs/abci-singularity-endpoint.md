@@ -131,10 +131,6 @@ You can push your container images to Container Library and make those available
 !!! note
     There is no access control function for the container images pushed to Container Library. This means that anyone who uses ABCI will be able to access them, so make sure the container images are appropriate.
 
-### Current Restrictions
-
-* You cannot get a list of uploaded container images.
-
 ### Creating and Registering Signing Keys for a Container Image
 
 To push a container image to Container Library and publish it in ABCI, create a key pair and register the public key in Keystore.The author of the container image can sign the container image using the private key, and the user of the container image can verify the signature using the public key registered in Keystore.
@@ -357,5 +353,45 @@ To delete a container image from Container Library, use `singularity delete`.
 
 ```
 [username@es1 ~]$ singularity delete library://username/abci-lib/helloworld:latest
+```
+
+!!! note
+    You can delete container images such as `library://username/abci-lib/helloworld:latest`, which are associated with at least one tag or ID, but you can not delete container names such as `library://username/abci-lib/helloworld`.
+
+
+### Listing Container Images
+
+To list the container images uploaded to Container Library, use `list_singularity_library`.
+The container images are displayed in the URI format `library://username/collection/container`.
+If the container image has been tagged, `Tag` appears on the next line of the container image URI. If no tag is given, `Unique ID` is displayed instead.
+
+```
+[username@es1 ~]$ list_singularity_library
+library://username/collection1/container1
+    Tag: latest
+
+library://username/collection2/container2
+    Unique ID: sha256.xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+
+library://username/collection3/container3
+```
+
+!!! note
+    If neither `Tag` nor `Unique ID` is displayed, it means that there is no container image in the container.
+
+You can also add option `-v` to `list_singularity_library` to display the fingerprint (if present) and image size.
+
+```
+[username@es1 ~]$ list_singularity_library -v
+library://username/collection1/container1
+    Tag: latest
+    Image Size: 10.00 MB
+    Finger Prints: XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+
+library://username/collection2/container2
+    Unique ID: sha256.xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+    Image Size: 20.00 MB
+
+library://username/collection3/container3
 ```
 
