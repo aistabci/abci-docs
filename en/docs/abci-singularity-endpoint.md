@@ -354,11 +354,16 @@ To delete a container image from Container Library, use `singularity delete`.
 ```
 [username@es1 ~]$ singularity delete library://username/abci-lib/helloworld:latest
 ```
-### Display List of Container Images
+
+!!! note
+    You can delete container images such as `library://username/abci-lib/helloworld:latest`, which are associated with at least one tag or ID, but you can not delete container names such as `library://username/abci-lib/helloworld`.
+
+
+### Listing Container Images
 
 To list the container images uploaded to Container Library, use `list_singularity_library`.
-The container image is displayed in the format `library//username/collection/container`.
-If the container image has been tagged, `Tag` appears on the next line of the container image. If no tag is given, `Unique ID` is displayed instead.
+The container images are displayed in the URI format `library://username/collection/container`.
+If the container image has been tagged, `Tag` appears on the next line of the container image URI. If no tag is given, `Unique ID` is displayed instead.
 
 ```
 [username@es1 ~]$ list_singularity_library

@@ -381,13 +381,14 @@ Container Library にアップロードされたコンテナイメージは、`s
 ```
 
 !!! note
-    singularity の仕様により、コンテナイメージとして Tag 相当 (上例では latest) のイメージは削除可能ですが、それより上位のディレクトリ (helloworld) の削除は出来ません。
+    `library://username/abci-lib/helloworld:latest` のように、タグやIDを指定してコンテナイメージを削除することはできますが、`library://username/abci-lib/helloworld` のようにコンテナの名前そのものを削除することはできません。
+
 
 ### コンテナイメージ一覧表示
 
 Container Library にアップロードされたコンテナイメージの一覧を、`list_singularity_library` で表示することができます。
-コンテナイメージは`library://username/collection/container`という形式で表示されます。
-タグが付与されている場合はコンテナイメージの下行に`Tag`が表示されます。タグが付与されていない場合は代わりに`Unique ID`が表示されます。
+コンテナイメージは`library://username/collection/container`のようなURIで表示されます。
+タグが付与されている場合はURIの次の行に`Tag`が表示されます。タグが付与されていない場合は代わりに`Unique ID`が表示されます。
 
 ```
 [username@es1 ~]$ list_singularity_library
