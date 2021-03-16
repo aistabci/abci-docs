@@ -907,13 +907,6 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#current-restrictions" class="md-nav__link">
-    Current Restrictions
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
   <a href="#creating-and-registering-signing-keys-for-a-container-image" class="md-nav__link">
     Creating and Registering Signing Keys for a Container Image
   </a>
@@ -985,6 +978,13 @@
           <li class="md-nav__item">
   <a href="#deleting-container-images" class="md-nav__link">
     Deleting Container Images
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#listing-container-images" class="md-nav__link">
+    Listing Container Images
   </a>
   
 </li>
@@ -1233,13 +1233,6 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#current-restrictions" class="md-nav__link">
-    Current Restrictions
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
   <a href="#creating-and-registering-signing-keys-for-a-container-image" class="md-nav__link">
     Creating and Registering Signing Keys for a Container Image
   </a>
@@ -1311,6 +1304,13 @@
           <li class="md-nav__item">
   <a href="#deleting-container-images" class="md-nav__link">
     Deleting Container Images
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#listing-container-images" class="md-nav__link">
+    Listing Container Images
   </a>
   
 </li>
@@ -1451,10 +1451,6 @@
 <p class="admonition-title">Note</p>
 <p>There is no access control function for the container images pushed to Container Library. This means that anyone who uses ABCI will be able to access them, so make sure the container images are appropriate.</p>
 </div>
-<h3 id="current-restrictions">Current Restrictions</h3>
-<ul>
-<li>You cannot get a list of uploaded container images.</li>
-</ul>
 <h3 id="creating-and-registering-signing-keys-for-a-container-image">Creating and Registering Signing Keys for a Container Image</h3>
 <p>To push a container image to Container Library and publish it in ABCI, create a key pair and register the public key in Keystore.The author of the container image can sign the container image using the private key, and the user of the container image can verify the signature using the public key registered in Keystore.</p>
 <h4 id="creating-key-pairs">Creating Key Pairs</h4>
@@ -1690,6 +1686,44 @@ The following example validates the signature with the public key that is regist
 <h3 id="deleting-container-images">Deleting Container Images</h3>
 <p>To delete a container image from Container Library, use <code>singularity delete</code>.</p>
 <div class="codehilite"><pre><span></span><code><span class="err">[username@es1 ~]$ singularity delete library://username/abci-lib/helloworld:latest</span>
+</code></pre></div>
+
+
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>You can delete container images such as <code>library://username/abci-lib/helloworld:latest</code>, which are associated with at least one tag or ID, but you can not delete container names such as <code>library://username/abci-lib/helloworld</code>.</p>
+</div>
+<h3 id="listing-container-images">Listing Container Images</h3>
+<p>To list the container images uploaded to Container Library, use <code>list_singularity_images</code>.
+The container images are displayed in the URI format <code>library://username/collection/container</code>.
+If the container image has been tagged, <code>Tag</code> appears on the next line of the container image URI. If no tag is given, <code>Unique ID</code> is displayed instead.</p>
+<div class="codehilite"><pre><span></span><code><span class="o">[</span><span class="n">username@es1 ~</span><span class="o">]</span><span class="err">$</span><span class="w"> </span><span class="n">list_singularity_images</span><span class="w"></span>
+<span class="nl">library</span><span class="p">:</span><span class="o">//</span><span class="n">username</span><span class="o">/</span><span class="n">collection1</span><span class="o">/</span><span class="n">container1</span><span class="w"></span>
+<span class="w">    </span><span class="nl">Tag</span><span class="p">:</span><span class="w"> </span><span class="n">latest</span><span class="w"></span>
+
+<span class="nl">library</span><span class="p">:</span><span class="o">//</span><span class="n">username</span><span class="o">/</span><span class="n">collection2</span><span class="o">/</span><span class="n">container2</span><span class="w"></span>
+<span class="w">    </span><span class="k">Unique</span><span class="w"> </span><span class="nl">ID</span><span class="p">:</span><span class="w"> </span><span class="n">sha256</span><span class="p">.</span><span class="n">xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx</span><span class="w"></span>
+
+<span class="nl">library</span><span class="p">:</span><span class="o">//</span><span class="n">username</span><span class="o">/</span><span class="n">collection3</span><span class="o">/</span><span class="n">container3</span><span class="w"></span>
+</code></pre></div>
+
+
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>If neither <code>Tag</code> nor <code>Unique ID</code> is displayed, it means that there is no container image in the container.</p>
+</div>
+<p>You can also add option <code>-v</code> to <code>list_singularity_images</code> to display the fingerprint (if present) and image size.</p>
+<div class="codehilite"><pre><span></span><code><span class="o">[</span><span class="n">username@es1 ~</span><span class="o">]</span><span class="err">$</span><span class="w"> </span><span class="n">list_singularity_images</span><span class="w"> </span><span class="o">-</span><span class="n">v</span><span class="w"></span>
+<span class="nl">library</span><span class="p">:</span><span class="o">//</span><span class="n">username</span><span class="o">/</span><span class="n">collection1</span><span class="o">/</span><span class="n">container1</span><span class="w"></span>
+<span class="w">    </span><span class="nl">Tag</span><span class="p">:</span><span class="w"> </span><span class="n">latest</span><span class="w"></span>
+<span class="w">    </span><span class="nc">Image</span><span class="w"> </span><span class="k">Size</span><span class="err">:</span><span class="w"> </span><span class="mf">10.00</span><span class="w"> </span><span class="n">MB</span><span class="w"></span>
+<span class="w">    </span><span class="n">Finger</span><span class="w"> </span><span class="nl">Prints</span><span class="p">:</span><span class="w"> </span><span class="n">XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX</span><span class="w"></span>
+
+<span class="nl">library</span><span class="p">:</span><span class="o">//</span><span class="n">username</span><span class="o">/</span><span class="n">collection2</span><span class="o">/</span><span class="n">container2</span><span class="w"></span>
+<span class="w">    </span><span class="k">Unique</span><span class="w"> </span><span class="nl">ID</span><span class="p">:</span><span class="w"> </span><span class="n">sha256</span><span class="p">.</span><span class="n">xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx</span><span class="w"></span>
+<span class="w">    </span><span class="nc">Image</span><span class="w"> </span><span class="k">Size</span><span class="err">:</span><span class="w"> </span><span class="mf">20.00</span><span class="w"> </span><span class="n">MB</span><span class="w"></span>
+
+<span class="nl">library</span><span class="p">:</span><span class="o">//</span><span class="n">username</span><span class="o">/</span><span class="n">collection3</span><span class="o">/</span><span class="n">container3</span><span class="w"></span>
 </code></pre></div>
                 
                   

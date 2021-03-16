@@ -920,13 +920,6 @@
         
           <li class="md-nav__item">
   <a href="#_7" class="md-nav__link">
-    現在の制約事項
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_8" class="md-nav__link">
     コンテナイメージの署名鍵の作成と登録
   </a>
   
@@ -934,14 +927,14 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#_9" class="md-nav__link">
+  <a href="#_8" class="md-nav__link">
     鍵ペアの作成
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#_10" class="md-nav__link">
+  <a href="#_9" class="md-nav__link">
     鍵の一覧表示
   </a>
   
@@ -962,7 +955,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#_11" class="md-nav__link">
+  <a href="#_10" class="md-nav__link">
     鍵の削除
   </a>
   
@@ -974,29 +967,36 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#_12" class="md-nav__link">
+  <a href="#_11" class="md-nav__link">
     コンテナイメージのアップロード
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#_13" class="md-nav__link">
+  <a href="#_12" class="md-nav__link">
     コンテナイメージのダウンロード
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#_14" class="md-nav__link">
+  <a href="#_13" class="md-nav__link">
     コンテナイメージの検索
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#_15" class="md-nav__link">
+  <a href="#_14" class="md-nav__link">
     コンテナイメージの削除
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_15" class="md-nav__link">
+    コンテナイメージ一覧表示
   </a>
   
 </li>
@@ -1246,13 +1246,6 @@
         
           <li class="md-nav__item">
   <a href="#_7" class="md-nav__link">
-    現在の制約事項
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_8" class="md-nav__link">
     コンテナイメージの署名鍵の作成と登録
   </a>
   
@@ -1260,14 +1253,14 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#_9" class="md-nav__link">
+  <a href="#_8" class="md-nav__link">
     鍵ペアの作成
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#_10" class="md-nav__link">
+  <a href="#_9" class="md-nav__link">
     鍵の一覧表示
   </a>
   
@@ -1288,7 +1281,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#_11" class="md-nav__link">
+  <a href="#_10" class="md-nav__link">
     鍵の削除
   </a>
   
@@ -1300,29 +1293,36 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#_12" class="md-nav__link">
+  <a href="#_11" class="md-nav__link">
     コンテナイメージのアップロード
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#_13" class="md-nav__link">
+  <a href="#_12" class="md-nav__link">
     コンテナイメージのダウンロード
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#_14" class="md-nav__link">
+  <a href="#_13" class="md-nav__link">
     コンテナイメージの検索
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#_15" class="md-nav__link">
+  <a href="#_14" class="md-nav__link">
     コンテナイメージの削除
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_15" class="md-nav__link">
+    コンテナイメージ一覧表示
   </a>
   
 </li>
@@ -1476,13 +1476,9 @@
 <p class="admonition-title">Note</p>
 <p>Container Library にアップロードしたコンテナイメージに対して、アクセス制御の設定はできません。つまり、ABCIの利用者であれば誰でもアクセス可能になりますので、アップロードするイメージが適切なものであるか十分に確認して下さい。</p>
 </div>
-<h3 id="_7">現在の制約事項</h3>
-<ul>
-<li>アップロードしたコンテナイメージの一覧を取得することはできません。</li>
-</ul>
-<h3 id="_8">コンテナイメージの署名鍵の作成と登録</h3>
+<h3 id="_7">コンテナイメージの署名鍵の作成と登録</h3>
 <p>Container Library へコンテナイメージをアップロードして、ABCI 内に公開する場合には、事前に鍵ペアを作成し、KeyStore に公開鍵を登録して下さい。コンテナイメージの作成者は、秘密鍵を用いてコンテナイメージに署名し、コンテナイメージの利用者は KeyStore に登録されている公開鍵を用いてその署名を検証することが可能です。</p>
-<h4 id="_9">鍵ペアの作成</h4>
+<h4 id="_8">鍵ペアの作成</h4>
 <p><code>singularity key newpair</code> により鍵ペアを作成します。</p>
 <div class="codehilite"><pre><span></span><code>[<span class="n">username</span><span class="nv">@es1</span> ~]$ <span class="n">singularity</span> <span class="nb">key</span> <span class="n">newpair</span>
 <span class="n">Enter</span> <span class="n">your</span> <span class="nb">name</span> (<span class="nb">e</span>.<span class="n">g</span>., <span class="n">John</span> <span class="n">Doe</span>) : 
@@ -1526,7 +1522,7 @@
 </tr>
 </tbody>
 </table>
-<h4 id="_10">鍵の一覧表示</h4>
+<h4 id="_9">鍵の一覧表示</h4>
 <p><code>singularity key list</code> を実行すると、作成した鍵も含め、ローカルの鍵リングに入っている公開鍵の情報を確認できます。</p>
 <div class="codehilite"><pre><span></span><code><span class="err">[username@es1 ~]$ singularity key list</span>
 <span class="err">Public key listing (/home/username/.singularity/sypgp/pgp-public):</span>
@@ -1602,13 +1598,13 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA  RSA        <span class="m">4096</span>
 </code></pre></div>
 
 
-<h4 id="_11">鍵の削除</h4>
+<h4 id="_10">鍵の削除</h4>
 <p>自分の鍵リングに登録されている公開鍵は、<code>singularity key remove</code> に鍵のフィンガープリントを指定して削除することができます。Keystore に登録された公開鍵を削除することはできません。</p>
 <div class="codehilite"><pre><span></span><code><span class="err">[username@es1 ~]$ singularity key remove AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA</span>
 </code></pre></div>
 
 
-<h3 id="_12">コンテナイメージのアップロード</h3>
+<h3 id="_11">コンテナイメージのアップロード</h3>
 <p>Container Library にアップロードする前に、コンテナイメージに署名します。
 <code>singularity key list -s</code> で鍵の番号を確認し、<code>singularity sign</code> で署名します。
 <code>-k</code> オプションで鍵の番号を指定して下さい。以下の例では 2 番の鍵を使用して、<code>ubuntu.sif</code> へ署名しています。</p>
@@ -1664,7 +1660,7 @@ Signature created and applied to ./ubuntu.sif
 </code></pre></div>
 
 
-<h3 id="_13">コンテナイメージのダウンロード</h3>
+<h3 id="_12">コンテナイメージのダウンロード</h3>
 <p>Container Library にアップロードされたコンテナイメージは、以下のようにダウンロードできます。</p>
 <div class="codehilite"><pre><span></span><code><span class="err">[username@es1 ~]$ singularity pull library://username/abci-lib/ubuntu:latest</span>
 <span class="c">INFO:    Downloading library image</span>
@@ -1699,7 +1695,7 @@ Signature created and applied to ./ubuntu.sif
 <p class="admonition-title">Note</p>
 <p>検証に失敗した場合でもコンテナイメージを実行することはできますが、検証可能なコンテナイメージの使用を推奨します。</p>
 </div>
-<h3 id="_14">コンテナイメージの検索</h3>
+<h3 id="_13">コンテナイメージの検索</h3>
 <p>Container Library にアップロードされたコンテナイメージをキーワードで検索することができます。</p>
 <div class="codehilite"><pre><span></span><code><span class="o">[</span><span class="n">username@es1 ~</span><span class="o">]</span><span class="err">$</span><span class="w"> </span><span class="n">singularity</span><span class="w"> </span><span class="k">search</span><span class="w"> </span><span class="n">hello</span><span class="w"></span>
 <span class="k">No</span><span class="w"> </span><span class="n">users</span><span class="w"> </span><span class="k">found</span><span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="s1">&#39;hello&#39;</span><span class="w"></span>
@@ -1712,7 +1708,7 @@ Signature created and applied to ./ubuntu.sif
 </code></pre></div>
 
 
-<h3 id="_15">コンテナイメージの削除</h3>
+<h3 id="_14">コンテナイメージの削除</h3>
 <p>Container Library にアップロードされたコンテナイメージは、<code>singularity delete</code> で削除することができます。</p>
 <div class="codehilite"><pre><span></span><code><span class="err">[username@es1 ~]$ singularity delete library://username/abci-lib/helloworld:latest</span>
 </code></pre></div>
@@ -1720,8 +1716,40 @@ Signature created and applied to ./ubuntu.sif
 
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>singularity の仕様により、コンテナイメージとして Tag 相当 (上例では latest) のイメージは削除可能ですが、それより上位のディレクトリ (helloworld) の削除は出来ません。</p>
+<p><code>library://username/abci-lib/helloworld:latest</code> のように、タグやIDを指定してコンテナイメージを削除することはできますが、<code>library://username/abci-lib/helloworld</code> のようにコンテナの名前そのものを削除することはできません。</p>
 </div>
+<h3 id="_15">コンテナイメージ一覧表示</h3>
+<p>Container Library にアップロードされたコンテナイメージの一覧を、<code>list_singularity_images</code> で表示することができます。
+コンテナイメージは<code>library://username/collection/container</code>のようなURIで表示されます。
+タグが付与されている場合はURIの次の行に<code>Tag</code>が表示されます。タグが付与されていない場合は代わりに<code>Unique ID</code>が表示されます。</p>
+<div class="codehilite"><pre><span></span><code><span class="o">[</span><span class="n">username@es1 ~</span><span class="o">]</span><span class="err">$</span><span class="w"> </span><span class="n">list_singularity_images</span><span class="w"></span>
+<span class="nl">library</span><span class="p">:</span><span class="o">//</span><span class="n">username</span><span class="o">/</span><span class="n">collection1</span><span class="o">/</span><span class="n">container1</span><span class="w"></span>
+<span class="w">    </span><span class="nl">Tag</span><span class="p">:</span><span class="w"> </span><span class="n">latest</span><span class="w"></span>
+
+<span class="nl">library</span><span class="p">:</span><span class="o">//</span><span class="n">username</span><span class="o">/</span><span class="n">collection2</span><span class="o">/</span><span class="n">container2</span><span class="w"></span>
+<span class="w">    </span><span class="k">Unique</span><span class="w"> </span><span class="nl">ID</span><span class="p">:</span><span class="w"> </span><span class="n">sha256</span><span class="p">.</span><span class="n">xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx</span><span class="w"></span>
+
+<span class="nl">library</span><span class="p">:</span><span class="o">//</span><span class="n">username</span><span class="o">/</span><span class="n">collection3</span><span class="o">/</span><span class="n">container3</span><span class="w"></span>
+</code></pre></div>
+
+
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p><code>Tag</code>も<code>Unique ID</code>も表示されない場合、そのコンテナにはコンテナイメージが存在しないことを意味します。</p>
+</div>
+<p>また、<code>list_singularity_images</code> に<code>-v</code> オプションをつけることで、フィンガープリント(存在する場合)と、イメージサイズも併せて表示されます。</p>
+<div class="codehilite"><pre><span></span><code><span class="o">[</span><span class="n">username@es1 ~</span><span class="o">]</span><span class="err">$</span><span class="w"> </span><span class="n">list_singularity_images</span><span class="w"> </span><span class="o">-</span><span class="n">v</span><span class="w"></span>
+<span class="nl">library</span><span class="p">:</span><span class="o">//</span><span class="n">username</span><span class="o">/</span><span class="n">collection1</span><span class="o">/</span><span class="n">container1</span><span class="w"></span>
+<span class="w">    </span><span class="nl">Tag</span><span class="p">:</span><span class="w"> </span><span class="n">latest</span><span class="w"></span>
+<span class="w">    </span><span class="nc">Image</span><span class="w"> </span><span class="k">Size</span><span class="err">:</span><span class="w"> </span><span class="mf">10.00</span><span class="w"> </span><span class="n">MB</span><span class="w"></span>
+<span class="w">    </span><span class="n">Finger</span><span class="w"> </span><span class="nl">Prints</span><span class="p">:</span><span class="w"> </span><span class="n">XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX</span><span class="w"></span>
+
+<span class="nl">library</span><span class="p">:</span><span class="o">//</span><span class="n">username</span><span class="o">/</span><span class="n">collection2</span><span class="o">/</span><span class="n">container2</span><span class="w"></span>
+<span class="w">    </span><span class="k">Unique</span><span class="w"> </span><span class="nl">ID</span><span class="p">:</span><span class="w"> </span><span class="n">sha256</span><span class="p">.</span><span class="n">xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx</span><span class="w"></span>
+<span class="w">    </span><span class="nc">Image</span><span class="w"> </span><span class="k">Size</span><span class="err">:</span><span class="w"> </span><span class="mf">20.00</span><span class="w"> </span><span class="n">MB</span><span class="w"></span>
+
+<span class="nl">library</span><span class="p">:</span><span class="o">//</span><span class="n">username</span><span class="o">/</span><span class="n">collection3</span><span class="o">/</span><span class="n">container3</span><span class="w"></span>
+</code></pre></div>
                 
                   
                 
