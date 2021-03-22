@@ -48,6 +48,7 @@
     - [アクセス制御(1)](abci-cloudstorage/acl.md)
     - [アクセス制御(2)](abci-cloudstorage/policy.md)
     - [データセットの公開](abci-cloudstorage/publishing-datasets.md)
+  - [ABCI データセット](abci-datasets.md)
   - [ABCI Singularity エンドポイント](abci-singularity-endpoint.md)
   - [FAQ](faq.md)
   - [既知の問題](known-issues.md)
