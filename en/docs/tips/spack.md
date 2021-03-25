@@ -91,11 +91,23 @@ packages:
       modules:
       - cuda/10.2/10.2.89
 (snip)
+  openmpi:
+    externals:
+    - spec: openmpi@2.1.6%gcc@4.8.5
+      prefix: /apps/openmpi/2.1.6/gcc4.8.5
+    - spec: openmpi@2.1.6%gcc@7.4.0
+      prefix: /apps/openmpi/2.1.6/gcc7.4.0
+(snip)
 ```
 
 After you copy this file, when you let Spack install CUDA version 10.2.89, it use `cuda/10.2/10.2.89` environment module, instead of installing another copy of CUDA.
 `buildable: false` defined under CUDA section prohibits Spack to install other versions of CUDA specified here.
 If you let Spack install versions of CUDA which are not supported by ABCI, remove this directive.
+
+In the current Spack packages.yaml, CUDA-aware OpenMPI provided by ABCI cannot be configured due to a bug in the interpretation of dependencies. Therefore, `packages.yaml` provided by ABCI is set to use OpenMPI which is not CUDA-aware.
+If you try to install the same version of CUDA-aware OpenMPI which is configured in `packages.yaml`, it will be an error. Please install any version other than 2.1.6, 3.1.6, or 4.0.3, or comment out the relevant version from packages.yaml.
+
+Translated with www.DeepL.com/Translator (free version)
 
 Please refer to [the official document](https://spack.readthedocs.io/en/latest/build_settings.html) for detail about `packages.yaml`.
 
