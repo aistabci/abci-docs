@@ -6,7 +6,7 @@ ABCI Datasets is a catalog service of the datasets registered by ABCI users.  Th
 The registration procedure of your dataset is as follows.  Your dataset should be stored on [ABCI Cloud Storage](abci-cloudstorage.md) or other storage services including non-ABCI services.  In the former case, please publish your dataset by referencing [here](abci-cloudstorage/publishing-datasets.md).
 
 !!! note
-Before registering a dataset to the ABCI Datasets and publishing information of the dataset, please make sure if you have right to do so (e.g., You are an owner of the dataset). 
+    Before registering a dataset to the ABCI Datasets and publishing information of the dataset, please make sure if you have right to do so (e.g., You are an owner of the dataset). 
 
 
 ## 1. Dataset Registration {#registration}
