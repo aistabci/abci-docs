@@ -101,8 +101,10 @@ packages:
 CUDAセクションで`buildable: false`を指定することにより、Spackはここで指定しているバージョン以外のCUDAをインストールしなくなります。
 ABCIが提供していないバージョンのCUDAをSpackでインストールしたい場合は、この記述を削除してください。
 
-また現在のSpackの`packages.yaml`では依存関係の解釈に不具合があるため、ABCIが提供するCUDA-aware OpenMPIを設定する事は出来ません。そのためABCIが提供する`packages.yaml`ではCUDA-awareではないOpenMPIを使用するように設定しています。
-CUDA-awareではないOpenMPIが`pacakages.yaml`で設定されている場合は同じバージョンのCUDA-aware OpenMPIをSpackでインストールしようとするとエラーになるため、2.1.6, 3.1.6, 4.0.3以外のバージョンをインストールするか、`packages.yaml`から該当バージョンをコメントアウトしてご利用ください。
+現在のSpackでは`packages.yaml`内の依存関係の解釈に不具合があるため、ABCIが提供するCUDA-aware OpenMPIを登録する事は出来ません。
+そのためABCIが提供する`packages.yaml`では、CUDA-awareではないOpenMPIのみを登録しています。
+また、登録されているCUDA-awareではないOpenMPIと同じバージョンのCUDA-aware OpenMPIをインストールしようとすると、エラーになります。
+エラーを回避するには、`packages.yaml`に登録されていないバージョンをインストールするか、`packages.yaml`から該当バージョンを削除してご利用ください。
 
 `packages.yaml`ファイルの設定の詳細は[公式ドキュメント](https://spack.readthedocs.io/en/latest/build_settings.html)を参照ください。
 
