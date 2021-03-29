@@ -1,9 +1,9 @@
 
 # ABCI Datasets
 
-ABCI Datasets is a catalog service of the datasets registered by ABCI users.  The datasets are fully published or shared with limited users.  You can access the service from [here](https://datasets.abci.ai).
+ABCI Datasets is a catalog service of the datasets registered by ABCI users.  The datasets are fully published or shared with limited users.  You can access the service from [ABCI Datasets](https://datasets.abci.ai).
 
-The registration procedure of your dataset is as follows.  Your dataset should be stored on [ABCI Cloud Storage](abci-cloudstorage.md) or other storage services including non-ABCI services.  In the former case, please publish your dataset by referencing [here](abci-cloudstorage/publishing-datasets.md).
+The registration procedure of your dataset is as follows.  Your dataset should be stored on [ABCI Cloud Storage](abci-cloudstorage.md) or other storage services including non-ABCI services.  In the former case, please publish your dataset by referencing [Publishing Datasets](abci-cloudstorage/publishing-datasets.md).
 
 !!! note
     Before registering a dataset to the ABCI Datasets and publishing information of the dataset, please make sure if you have right to do so (e.g., You are an owner of the dataset). 
@@ -38,7 +38,7 @@ Distribution:
   ContentURL:  # Use a bullet list (block sequence) using "- ", even if there is only one item.
     - https://example-dataset.s3.abci.ai/abc1.zip
     - https://example-dataset.s3.abci.ai/abc2.zip
-    - 
+
 # Creator
 #   Name: Organization name (or individual name)  *Required
 #   URL: Organization website (or individual website)
