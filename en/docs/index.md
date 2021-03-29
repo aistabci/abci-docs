@@ -48,6 +48,8 @@ This User Guide describes the technical details of ABCI and how to use it. All u
     - [Access Control (1)](abci-cloudstorage/acl.md)
     - [Access Control (2)](abci-cloudstorage/policy.md)
     - [Publishing Datasets](abci-cloudstorage/publishing-datasets.md)
+    - [Caution for Using ABCI Cloud Storage](abci-cloudstorage/caution.md)
+  - [ABCI Datasets](abci-datasets.md)
   - [ABCI Singularity Endpoint](abci-singularity-endpoint.md)
   - [FAQ](faq.md)
   - [Known Issues](known-issues.md)
