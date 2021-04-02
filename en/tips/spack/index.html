@@ -1009,14 +1009,26 @@
 
 
   <li class="md-nav__item">
-    <a href="../../abci-cloudstorage/caution/" title="Caution for ABCI Cloud Storage" class="md-nav__link">
-      Caution for ABCI Cloud Storage
+    <a href="../../abci-cloudstorage/caution/" title="Caution" class="md-nav__link">
+      Caution
     </a>
   </li>
 
         
       </ul>
     </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../../abci-datasets/" title="ABCI Datasets" class="md-nav__link">
+      ABCI Datasets
+    </a>
   </li>
 
     
@@ -1099,13 +1111,13 @@
 
   <li class="md-nav__item md-nav__item--nested">
     
-      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-13" type="checkbox" id="nav-13">
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-14" type="checkbox" id="nav-14">
     
-    <label class="md-nav__link" for="nav-13">
+    <label class="md-nav__link" for="nav-14">
       Links
     </label>
     <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
-      <label class="md-nav__title" for="nav-13">
+      <label class="md-nav__title" for="nav-14">
         Links
       </label>
       <ul class="md-nav__list" data-md-scrollfix>
@@ -1469,12 +1481,23 @@ Copying this file to your environment lets Spack use installed CUDA, OpenMPI, MV
       <span class="nt">modules</span><span class="p">:</span>
       <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">cuda/10.2/10.2.89</span>
 <span class="l l-Scalar l-Scalar-Plain">(snip)</span>
+  <span class="l l-Scalar l-Scalar-Plain">openmpi</span><span class="p p-Indicator">:</span>
+    <span class="nt">externals</span><span class="p">:</span>
+    <span class="p p-Indicator">-</span> <span class="nt">spec</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">openmpi@2.1.6%gcc@4.8.5</span>
+      <span class="nt">prefix</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">/apps/openmpi/2.1.6/gcc4.8.5</span>
+    <span class="p p-Indicator">-</span> <span class="nt">spec</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">openmpi@2.1.6%gcc@7.4.0</span>
+      <span class="nt">prefix</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">/apps/openmpi/2.1.6/gcc7.4.0</span>
+<span class="l l-Scalar l-Scalar-Plain">(snip)</span>
 </code></pre></div>
 
 
 <p>After you copy this file, when you let Spack install CUDA version 10.2.89, it use <code>cuda/10.2/10.2.89</code> environment module, instead of installing another copy of CUDA.
 <code>buildable: false</code> defined under CUDA section prohibits Spack to install other versions of CUDA specified here.
 If you let Spack install versions of CUDA which are not supported by ABCI, remove this directive.</p>
+<p>Because of an interpretation bug of package dependencies in <code>packages.yaml</code> of the current Spack, CUDA-aware OpenMPI supported by ABCI can not be registered.
+Therefore, <code>packages.yaml</code> provided by ABCI is configured to register only non-CUDA-aware OpenMPI.
+Moreover, installing a CUDA-aware OpenMPI whose version is same as a version of a registered non-CUDA-aware OpenMPI will fail.
+To avoid the failure, you need to install a version which is not registered in <code>packages.yaml</code> or remove the corresponding version from <code>packages.yaml</code>.</p>
 <p>Please refer to <a href="https://spack.readthedocs.io/en/latest/build_settings.html">the official document</a> for detail about <code>packages.yaml</code>.</p>
 <h2 id="basic-of-spack">Basic of Spack</h2>
 <p>Here is the Spack basic usage.

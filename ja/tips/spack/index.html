@@ -1038,6 +1038,18 @@
 
 
   <li class="md-nav__item">
+    <a href="../../abci-datasets/" title="ABCI データセット" class="md-nav__link">
+      ABCI データセット
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
     <a href="../../abci-singularity-endpoint/" title="ABCI Singularity エンドポイント" class="md-nav__link">
       ABCI Singularity エンドポイント
     </a>
@@ -1111,13 +1123,13 @@
 
   <li class="md-nav__item md-nav__item--nested">
     
-      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-13" type="checkbox" id="nav-13">
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-14" type="checkbox" id="nav-14">
     
-    <label class="md-nav__link" for="nav-13">
+    <label class="md-nav__link" for="nav-14">
       リンク
     </label>
     <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
-      <label class="md-nav__title" for="nav-13">
+      <label class="md-nav__title" for="nav-14">
         リンク
       </label>
       <ul class="md-nav__list" data-md-scrollfix>
@@ -1478,12 +1490,23 @@ ABCIで提供するCUDA、OpenMPI、MVAPICH、cmake等の設定を記載した�
       <span class="nt">modules</span><span class="p">:</span>
       <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">cuda/10.2/10.2.89</span>
 <span class="l l-Scalar l-Scalar-Plain">(snip)</span>
+  <span class="l l-Scalar l-Scalar-Plain">openmpi</span><span class="p p-Indicator">:</span>
+    <span class="nt">externals</span><span class="p">:</span>
+    <span class="p p-Indicator">-</span> <span class="nt">spec</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">openmpi@2.1.6%gcc@4.8.5</span>
+      <span class="nt">prefix</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">/apps/openmpi/2.1.6/gcc4.8.5</span>
+    <span class="p p-Indicator">-</span> <span class="nt">spec</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">openmpi@2.1.6%gcc@7.4.0</span>
+      <span class="nt">prefix</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">/apps/openmpi/2.1.6/gcc7.4.0</span>
+<span class="l l-Scalar l-Scalar-Plain">(snip)</span>
 </code></pre></div>
 
 
 <p>このファイルを設置すると、例えば、SpackでCUDAのバージョン10.2.89のインストールを実行すると、実際にはインストールはされずに、SpackがEnvironment Modulesの<code>cuda/10.2/10.2.89</code>を使用するようになります。
 CUDAセクションで<code>buildable: false</code>を指定することにより、Spackはここで指定しているバージョン以外のCUDAをインストールしなくなります。
 ABCIが提供していないバージョンのCUDAをSpackでインストールしたい場合は、この記述を削除してください。</p>
+<p>現在のSpackでは<code>packages.yaml</code>内の依存関係の解釈に不具合があるため、ABCIが提供するCUDA-aware OpenMPIを登録する事は出来ません。
+そのためABCIが提供する<code>packages.yaml</code>では、CUDA-awareではないOpenMPIのみを登録しています。
+また、登録されているCUDA-awareではないOpenMPIと同じバージョンのCUDA-aware OpenMPIをインストールしようとすると、エラーになります。
+エラーを回避するには、<code>packages.yaml</code>に登録されていないバージョンをインストールするか、<code>packages.yaml</code>から該当バージョンを削除してご利用ください。</p>
 <p><code>packages.yaml</code>ファイルの設定の詳細は<a href="https://spack.readthedocs.io/en/latest/build_settings.html">公式ドキュメント</a>を参照ください。</p>
 <h2 id="basic-of-spack">Spack 基本操作</h2>
 <p>Spackの基本操作についてまとめます。

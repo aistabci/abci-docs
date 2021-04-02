@@ -847,14 +847,26 @@
 
 
   <li class="md-nav__item">
-    <a href="../caution/" title="Caution for ABCI Cloud Storage" class="md-nav__link">
-      Caution for ABCI Cloud Storage
+    <a href="../caution/" title="Caution" class="md-nav__link">
+      Caution
     </a>
   </li>
 
         
       </ul>
     </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../../abci-datasets/" title="ABCI Datasets" class="md-nav__link">
+      ABCI Datasets
+    </a>
   </li>
 
     
@@ -937,13 +949,13 @@
 
   <li class="md-nav__item md-nav__item--nested">
     
-      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-13" type="checkbox" id="nav-13">
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-14" type="checkbox" id="nav-14">
     
-    <label class="md-nav__link" for="nav-13">
+    <label class="md-nav__link" for="nav-14">
       Links
     </label>
     <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
-      <label class="md-nav__title" for="nav-13">
+      <label class="md-nav__title" for="nav-14">
         Links
       </label>
       <ul class="md-nav__list" data-md-scrollfix>
@@ -1086,91 +1098,7 @@
 
 <p>Since <code>--acl public-read</code> option enables public read access, the data can be accessed with URLs such as "https://example-dataset.s3.abci.ai/sensor1/0001.dat" by anyone from the outside of ABCI.</p>
 <h2 id="2-registration-application">2. Registration Application</h2>
-<p>Firstly, prepare a YAML file, which contains basic information about your dataset. Download <a href="https://datasets.abci.ai/dataset_info_template.yaml">the template file</a> and fill it out, referring to the following.</p>
-<div class="codehilite"><pre><span></span><code><span class="c1"># Your dataset name  *Required</span>
-<span class="nt">Name</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">ABC Dataset</span>
-
-<span class="c1"># Dataset description with more than 50 characters  *Required</span>
-<span class="nt">Description</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">This is a ... [ProjectPage](https://example.com/).</span>
-
-<span class="c1"># Related keywords (object detection, vehicle, action recognition, earth observation, etc.)  *Required</span>
-<span class="c1"># Use a bullet list (block sequence) using &quot;- &quot;, even if there is only one item.</span>
-<span class="nt">Keywords</span><span class="p">:</span>
-  <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">image processing</span>
-  <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">object detection</span>
-  <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">health</span>
-
-<span class="c1"># URL of your page providing more detailed information  *Optional</span>
-<span class="nt">UsageInfo</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">https://example-dataset.s3-website.abci.ai/</span>
-
-<span class="c1"># Downloadable form</span>
-<span class="c1">#   EncodingFormat:  XML, CSV, GeoTIFF, etc.  *Optional</span>
-<span class="c1">#   ContentURL: URLs of data or data list  *Required</span>
-<span class="nt">Distribution</span><span class="p">:</span>
-  <span class="nt">EncodingFormat</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">DICOM</span>
-  <span class="nt">ContentURL</span><span class="p">:</span>  <span class="c1"># Use a bullet list (block sequence) using &quot;- &quot;, even if there is only one item.</span>
-    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">https://example-dataset.s3.abci.ai/abc.zip</span>
-
-<span class="c1"># Creator</span>
-<span class="c1">#   Name: Organization name (or individual name)  *Required</span>
-<span class="c1">#   URL: Organization website (or individual website)  *Optional</span>
-<span class="c1">#   ContactPoint:</span>
-<span class="c1">#     Email: Contact point e-mail address  *At least, either Email or URL is required.</span>
-<span class="c1">#     URL: URL of a contact page  *At least, either Email or URL is required.</span>
-<span class="nt">Creator</span><span class="p">:</span>
-  <span class="nt">Name</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">ABC Team</span>
-  <span class="nt">ContactPoint</span><span class="p">:</span>
-    <span class="nt">Email</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">dataset@example.com</span>
-    <span class="nt">URL</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">https://example.com/contact/</span>
-
-<span class="c1"># License</span>
-<span class="c1">#   Name: MIT License, CC-BY-SA 4.0, Custom License, etc.  *Required</span>
-<span class="c1">#   URL: URL of the license page  *Optional</span>
-<span class="nt">License</span><span class="p">:</span>
-  <span class="nt">Name</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">Custom License</span>
-  <span class="nt">URL</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">https://example.com/dataset/LISENCE.txt</span>
-
-<span class="c1"># Version of the dataset  *Optional</span>
-<span class="nt">Version</span><span class="p">:</span> <span class="s">&quot;1.1b&quot;</span>
-
-<span class="c1"># Creation, update and publication dates of the dataset  *Optional</span>
-<span class="c1"># Use ISO 8601 format. The time portion is optional.</span>
-<span class="nt">DateCreated</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">2020-04-18</span>
-<span class="nt">DateModified</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">2020-04-20T22:30:10+09:00</span>
-<span class="nt">DatePublished</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">2020-04-19</span>
-
-<span class="c1"># Identifier, such as DOI  *Optional</span>
-<span class="c1">#Identifier: https://doi.org/10.1000/a0000</span>
-
-<span class="c1"># References  *Optional</span>
-<span class="c1"># Use a bullet list (block sequence) using &quot;- &quot;, even if there is only one item.</span>
-<span class="nt">Citation</span><span class="p">:</span>
-<span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">John, Doe. &quot;Example Paper 1,&quot; presented at Example Conf., Los Angeles, CA, USA, Oct. 8-10, 2020.</span>
-<span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">John, Doe. &quot;Example Paper 3,&quot; in 23rd Example Conf., London, U.K., Aug. 2015. [Online]. Available</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">https://example.com/papers/23-5.pdf</span>
-
-<span class="c1"># More detailed description or additional information  *Optional</span>
-<span class="c1">#AdditionalInfo:</span>
-</code></pre></div>
-
-
-<p>Next, upload the YAML file to the bucket where your dataset is stored:</p>
-<div class="codehilite"><pre><span></span><code><span class="err">[username@es1 ~]$ aws --endpoint-url https://s3.abci.ai s3 cp --acl public-read my_dataset_info.yaml s3://example-dataset/my_dataset_info.yaml</span>
-</code></pre></div>
-
-
-<p>Note that the file name of <code>my_dataset_info.yaml</code> is just an example.  You can use an arbitrary name.</p>
-<p>Finally, send an e-mail to <a href="&#109;&#97;&#105;&#108;&#116;&#111;&#58;&#97;&#98;&#99;&#105;&#45;&#97;&#112;&#112;&#108;&#105;&#99;&#97;&#116;&#105;&#111;&#110;&#45;&#109;&#108;&#64;&#97;&#105;&#115;&#116;&#46;&#103;&#111;&#46;&#106;&#112;">&#97;&#98;&#99;&#105;&#45;&#97;&#112;&#112;&#108;&#105;&#99;&#97;&#116;&#105;&#111;&#110;&#45;&#109;&#108;&#64;&#97;&#105;&#115;&#116;&#46;&#103;&#111;&#46;&#106;&#112;</a>, by using the following format.
-If you belong to multiple ABCI groups, please include the ABCI group that owns the bucket containing the dataset.</p>
-<div class="codehilite"><pre><span></span><code>Subject: Dataset Registration Application (&lt;YOUR DATASET NAME&gt;)
-
-Your name:
-ABCI group:
-Your e-mail address:
-URL to the YAML:
-</code></pre></div>
-
-
-<p>Once the registration is completed, the dataset will be listed on <a href="https://datasets.abci.ai/">https://datasets.abci.ai/</a>.</p>
+<p>Please register your published dataset to the ABCI Datasets by following <a href="../../abci-datasets/">this procedure</a>.</p>
                 
                   
                 
@@ -1207,13 +1135,13 @@ URL to the YAML:
           </a>
         
         
-          <a href="../caution/" title="Caution for ABCI Cloud Storage" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next">
+          <a href="../caution/" title="Caution" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next">
             <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
               <span class="md-flex__ellipsis">
                 <span class="md-footer-nav__direction">
                   Next
                 </span>
-                Caution for ABCI Cloud Storage
+                Caution
               </span>
             </div>
             <div class="md-flex__cell md-flex__cell--shrink">
