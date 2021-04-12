@@ -1,10 +1,100 @@
 # システム更新履歴
 
+## 2021-04-07
+
+| Add / Update / Delete | Software | Version | Previous version |
+|:--|:--|:--|:--|
+| Update | Univa Grid Engine | 8.6.17 | 8.6.6 |
+| Delete | intel | 2017.8.262 | |
+| Delete | intel | 2018.5.274 | |
+| Delete | intel | 2019.5.281 | |
+| Delete | pgi | 17.10 | |
+| Delete | pgi | 18.10 | |
+| Delete | pgi | 19.1  | |
+| Delete | pgi | 19.10 | |
+| Delete | pgi | 20.1  | |
+| Add    | pgi | 20.4  | |
+| Delete | NVIDIA HPC SDK | 20.9  | |
+| Add    | NVIDIA HPC SDK | 20.11 | |
+| Add    | NVIDIA HPC SDK | 21.2  | |
+| Delete | CUDA Toolkit | 10.0.130 | |
+| Add    | CUDA Toolkit | 11.0.3 | |
+| Add    | CUDA Toolkit | 11.1.1 | |
+| Add    | CUDA Toolkit | 11.2.2 | |
+| Add    | GCC | 9.3.0 | |
+| Update | Python | 2.7.18 | 2.7.15 |
+| Delete | Python | 3.4.8 | |
+| Delete | Python | 3.5.5 | |
+| Update | Python | 3.6.12 | 3.6.5  |
+| Update | Python | 3.7.X  | 3.7.6  |
+| Update | Python | 3.8.7  | 3.8.2  |
+| Delete | R | 3.5.0 | |
+| Delete | R | 3.6.3 | |
+| Add    | R | 4.0.4 | |
+| Delete | Go | 1.12 | |
+| Delete | Go | 1.13 | |
+| Add    | Go | 1.15 | |
+| Delete | Julia | 1.3 | |
+| Delete | Julia | 1.4 | |
+| Add    | Julia | 1.5 | |
+| Update | BeeOND | 7.2.1 | 7.2 |
+| Update | Scality S3 Connector | 7.4.8.1 | 7.4.8 |
+| Update | Docker | 19.03.15 | 17.12.0 |
+| Delete | Singularity | 2.6.1 | |
+| Update | SingularityPRO | 3.7-1 | 3.5-6 |
+| Update | Open MPI | 4.0.5 | 4.0.3 |
+| Delete | MVAPICH2 | 2.3.3 | |
+| Delete | MVAPICH2 | 2.3.4 | |
+| Add    | MVAPICH2 | 2.3.5 | |
+| Delete | MVAPICH2-GDR | 2.3.3 | |
+| Delete | MVAPICH2-GDR | 2.3.4 | |
+| Add    | MVAPICH2-GDR | 2.3.5 | |
+| Delete | intel-mpi | 2017.4 | |
+| Delete | intel-mpi | 2018.4 | |
+| Delete | intel-mpi | 2019.5 | |
+| Delete | cuDNN | 7.1.3 | |
+| Delete | cuDNN | 7.5.0 | |
+| Delete | cuDNN | 7.6.0 | |
+| Delete | cuDNN | 7.6.1 | |
+| Delete | cuDNN | 7.6.2 | |
+| Delete | cuDNN | 7.6.3 | |
+| Delete | cuDNN | 7.6.4 | |
+| Delete | cuDNN | 8.0.2 | |
+| Add    | cuDNN | 8.1.1 | |
+| Delete | NCCL | 2.3.4-1 | |
+| Delete | NCCL | 2.3.5-2 | |
+| Delete | NCCL | 2.4.2-1 | |
+| Delete | NCCL | 2.4.7-1 | |
+| Delete | NCCL | 2.8.3-1 | |
+| Add    | NCCL | 2.8.4-1 | |
+| Update | UCX | 1.8.0-1 | 1.7.0 |
+| Delete | intel-mkl | 2017.0.4 | |
+| Delete | intel-mkl | 2018.0.4 | |
+| Delete | intel-mkl | 2019.0.5 | |
+| Delete | aws-cli | 1.16.194 | |
+| Delete | aws-cli | 1.18 | |
+| Update | aws-cli | 2.1 | 2.0 |
+| Update | fuse-sshfs | 3.7.1 | 2.10 |
+| Update | s3fs-fuse | 1.87 | 1.85 |
+| Update | sregistry-cli | 0.2.36 | 0.2.31 |
+| Delete | intel-advisor | 2017.5 | |
+| Delete | intel-advisor | 2018.4 | |
+| Delete | intel-advisor | 2019.5 | |
+| Delete | intel-inspector | 2017.4 | |
+| Delete | intel-inspector | 2018.4 | |
+| Delete | intel-inspector | 2019.5 | |
+| Delete | intel-itac | 2017.0.4 | |
+| Delete | intel-itac | 2018.0.4 | |
+| Delete | intel-itac | 2019.0.5 | |
+| Delete | intel-vtune | 2017.6 | |
+| Delete | intel-vtune | 2018.4 | |
+| Delete | intel-vtune | 2019.6 | |
+
 ## 2021-03-13
 
 | Add / Update / Delete | Software | Version | Previous version |
 |:--|:--|:--|:--|
-| Update | SingularityPRO | 3.5-4 | 3.5-6 |
+| Update | SingularityPRO | 3.5-6 | 3.5-4 |
 | Update | DDN Lustre | 2.10.7\_ddn14-1 | 2.12.6\_ddn13-1 |
 
 ## 2020-12-15
