@@ -26,7 +26,7 @@
 | Delete | Python | 3.4.8 | |
 | Delete | Python | 3.5.5 | |
 | Update | Python | 3.6.12 | 3.6.5  |
-| Update | Python | 3.7.X  | 3.7.6  |
+| Update | Python | 3.7.10 | 3.7.6  |
 | Update | Python | 3.8.7  | 3.8.2  |
 | Delete | R | 3.5.0 | |
 | Delete | R | 3.6.3 | |
