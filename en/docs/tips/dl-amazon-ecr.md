@@ -2,9 +2,6 @@
 
 The container image in Amazon ECR can be easily obtained with ``singularity`` command of SingularityPRO.
 
-!!! note
-    refer to [Singularity Global Client](/tips/sregistry-cli/){:target="sregistry-cli"} when using Singularity 2.6.1.
-
 ## Usage {#usage}
 Load environment module to use SingularityPRO and Amazon ECR.
 
@@ -12,7 +9,7 @@ Load environment module to use SingularityPRO and Amazon ECR.
     This procedure assumes that you have completed [Register access token](/tips/awscli/#register-access-token){:target="aws_cli"} in [AWS CLI](/tips/awscli/){:target="aws_cli"}.
 
 ```
-[username@es1 ~]$ module load singularitypro/3.5 aws-cli/2.0
+[username@es1 ~]$ module load singularitypro aws-cli
 ```
 
 Set AWS authentication information in environment variable.

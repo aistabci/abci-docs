@@ -7,7 +7,7 @@ Singularity Global Client (``sregistry``コマンド）はSingularityで使用�
 事前に次の手順を実施することで``sregistry``コマンドをABCIで利用できます。
 
 ```
-[username@es1 ~]$ module load singularity/2.6.1 sregistry-cli/0.2.31
+[username@es1 ~]$ module load singularitypro python/3.6/3.6.12 sregistry-cli
 ```
 
 ```
@@ -62,7 +62,7 @@ actions:
 
 Singularity Global ClientとAmazon ECR利用に必要なモジュールの読み込みます。
 ```
-[username@es1 ~]$ module load singularity/2.6.1 sregistry-cli/0.2.31 aws-cli/1.16.194
+[username@es1 ~]$ module load singularitypro python/3.6/3.6.12 sregistry-cli aws-cli
 ```
 
 
@@ -99,7 +99,7 @@ aws://<repositoryName>:<imageTag>
 取得したイメージをインタラクティブジョブとして実行します。
 ```
 [username@es1 ~]$ qrsh -g grpname -l rt_F=1 -l h_rt=1:00:00
-[username@g0001 ~]$ module load singularity/2.6.1
+[username@g0001 ~]$ module load singularitypro
 [username@g0001 ~]$ singularity shell --nv ./mytensorflow.simg
 Singularity: Invoking an interactive shell within container...
 

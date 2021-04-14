@@ -14,11 +14,8 @@ The following describes the basic operations for using this service in ABCI. See
 In order to use this service, load the module of SingularityPRO as follows.
 
 ```
-[username@es1 ~]$ module load singularitypro/3.5
+[username@es1 ~]$ module load singularitypro
 ```
-
-!!! note
-    Singularity 2.6.1 does not support this service.
 
 ### Creating Access Token
 
@@ -43,13 +40,22 @@ To check that ABCI Singularity Endpoint (cloud.se.abci.local) is correctly confi
 
 ```
 [username@es1 ~]$ singularity remote list
-NAME         URI                  GLOBAL
-[ABCI]       cloud.se.abci.local  YES
-SylabsCloud  cloud.sylabs.io      YES
+Cloud Services Endpoints
+========================
+
+NAME         URI                  ACTIVE  GLOBAL  EXCLUSIVE
+ABCI         cloud.se.abci.local  YES     YES     NO
+SylabsCloud  cloud.sylabs.io      NO      YES     NO
+
+Keyservers
+==========
+
+URI                         GLOBAL  INSECURE  ORDER
+https://keys.se.abci.local  YES     NO        1*
+
+* Active cloud services keyserver
 [username@es1 ~]$
 ```
-
-The `ABCI` enclosed in "[ ]" is the current default endpoint.
 
 !!! note
     SylabsCloud is a public service endpoint operated by [Sylabs](https://sylabs.io/). It is available by signing in to <https://cloud.sylabs.io/> and obtaining an access token.
@@ -79,7 +85,7 @@ When you have created an access token again, use the above command to register i
 
 ## Remote Builder
 
-First, create a definition file to build a container image. The following example defines installation of additional packages to the container image and commands to be executed when the container image is run, based on Ubuntu container image from Docker Hub. For more information about definition files, see [Definition Files](https://repo.sylabs.io/c/0f6898986ad0b646b5ce6deba21781ac62cb7e0a86a5153bbb31732ee6593f43/guides/singularitypro35-user-guide/definition_files.html).
+First, create a definition file to build a container image. The following example defines installation of additional packages to the container image and commands to be executed when the container image is run, based on Ubuntu container image from Docker Hub. For more information about definition files, see [Definition Files](https://repo.sylabs.io/c/0f6898986ad0b646b5ce6deba21781ac62cb7e0a86a5153bbb31732ee6593f43/guides/singularitypro37-user-guide/definition_files.html).
 
 ```
 [username@es1 ~]$ vi ubuntu.def
@@ -116,7 +122,7 @@ You can run the container image with `singularity run` command as follows:
 
 ```
 [username@es1 ~]$ qrsh -g grpname -l rt_C.small=1 -l h_rt=1:00:00
-[username@g0001 ~]$ module load singularitypro/3.5
+[username@g0001 ~]$ module load singularitypro
 [username@g0001 ~]$ singularity run ubuntu.sif
 Description:	Ubuntu 18.04.5 LTS
 [username@g0001 ~]$ 

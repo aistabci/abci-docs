@@ -24,12 +24,8 @@ ABCI Singularity エンドポイントでは、ABCI 内部向けに Singularity 
 本サービスを利用するため、以下のように SingularityPRO のモジュールをロードして下さい。
 
 ```
-[username@es1 ~]$ module load singularitypro/3.5
+[username@es1 ~]$ module load singularitypro
 ```
-
-!!! note
-    Singularity 2.6.1 では本サービスを利用できません。
-
 
 ### アクセストークンの取得
 
@@ -60,13 +56,22 @@ just a moment, please...
 
 ```
 [username@es1 ~]$ singularity remote list
-NAME         URI                  GLOBAL
-[ABCI]       cloud.se.abci.local  YES
-SylabsCloud  cloud.sylabs.io      YES
+Cloud Services Endpoints
+========================
+
+NAME         URI                  ACTIVE  GLOBAL  EXCLUSIVE
+ABCI         cloud.se.abci.local  YES     YES     NO
+SylabsCloud  cloud.sylabs.io      NO      YES     NO
+
+Keyservers
+==========
+
+URI                         GLOBAL  INSECURE  ORDER
+https://keys.se.abci.local  YES     NO        1*
+
+* Active cloud services keyserver
 [username@es1 ~]$
 ```
-
-上記は "[]" で囲まれている `ABCI` が現在のデフォルトのエンドポイントであることを示しています。
 
 !!! note
     SylabsCloud は [Sylabs社](https://sylabs.io/) が運営するパブリックサービスのエンドポイントです。<https://cloud.sylabs.io/> にサインインし、アクセストークンを取得することで利用可能になります。
@@ -96,7 +101,7 @@ INFO:    API Key Verified!
 
 ## Remote Builder
 
-最初に、コンテナイメージをビルドするための定義ファイルを作成して下さい。以下の例では、Docker Hub から取得した Ubuntu のコンテナイメージをベースとして、追加パッケージのインストールと、コンテナを実行した時に実行されるコマンドを指定しています。定義ファイルの詳細については、[Definition Files](https://repo.sylabs.io/c/0f6898986ad0b646b5ce6deba21781ac62cb7e0a86a5153bbb31732ee6593f43/guides/singularitypro35-user-guide/definition_files.html) を参照して下さい。
+最初に、コンテナイメージをビルドするための定義ファイルを作成して下さい。以下の例では、Docker Hub から取得した Ubuntu のコンテナイメージをベースとして、追加パッケージのインストールと、コンテナを実行した時に実行されるコマンドを指定しています。定義ファイルの詳細については、[Definition Files](https://repo.sylabs.io/c/0f6898986ad0b646b5ce6deba21781ac62cb7e0a86a5153bbb31732ee6593f43/guides/singularitypro37-user-guide/definition_files.html) を参照して下さい。
 
 ```
 [username@es1 ~]$ vi ubuntu.def
@@ -133,7 +138,7 @@ INFO:    Build complete: ubuntu.sif
 
 ```
 [username@es1 ~]$ qrsh -g grpname -l rt_C.small=1 -l h_rt=1:00:00
-[username@g0001 ~]$ module load singularitypro/3.5
+[username@g0001 ~]$ module load singularitypro
 [username@g0001 ~]$ singularity run ubuntu.sif
 Description:	Ubuntu 18.04.5 LTS
 [username@g0001 ~]$ 
