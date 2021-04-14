@@ -1,4 +1,4 @@
-# NVIDIA GPU Cloud (NGC)
+# NVIDIA NGC
 
 [NVIDIA NGC](https://ngc.nvidia.com/) (hereinafter referred to as "NGC") provides Docker images for GPU-optimized deep learning framework containers and HPC application containers and NGC container registry to distribute them.
 ABCI allows users to execute NGC-provided Docker images easily by using [Singularity](09.md#singularity).
@@ -72,10 +72,10 @@ Build a Singularity image for TensorFlow on the interactive node.
 ```
 An image named ``tensorflow-19.06-py2.simg`` will be generated.
 
-**SingularityPRO 3.5**
+**SingularityPRO 3.7**
 
 ```
-[username@es1 ~]$ module load singularitypro/3.5
+[username@es1 ~]$ module load singularitypro/3.7
 [username@es1 ~]$ singularity pull docker://nvcr.io/nvidia/tensorflow:19.06-py2
 ```
 An image named ``tensorflow_19.06-py2.sif`` will be generated.
@@ -95,11 +95,11 @@ Start an interactive job with one full-node and run a sample program ``cnn_mnist
 {'loss': 0.10828217, 'global_step': 20000, 'accuracy': 0.9667}
 ```
 
-**SingularityPRO 3.5**
+**SingularityPRO 3.7**
 
 ```
 [username@es1 ~]$ qrsh -g grpname -l rt_F=1 -l h_rt=1:00:00
-[username@g0001 ~]$ module load singularitypro/3.5
+[username@g0001 ~]$ module load singularitypro/3.7
 [username@g0001 ~]$ wget https://raw.githubusercontent.com/tensorflow/tensorflow/v1.13.1/tensorflow/examples/tutorials/layers/cnn_mnist.py
 [username@g0001 ~]$ singularity run --nv tensorflow_19.06-py2.sif python cnn_mnist.py
 :
@@ -122,7 +122,7 @@ wget https://raw.githubusercontent.com/tensorflow/tensorflow/v1.13.1/tensorflow/
 singularity run --nv tensorflow-19.06-py2.simg python cnn_mnist.py
 ```
 
-**SingularityPRO 3.5**
+**SingularityPRO 3.7**
 
 ```
 #!/bin/sh
@@ -131,7 +131,7 @@ singularity run --nv tensorflow-19.06-py2.simg python cnn_mnist.py
 #$ -cwd
 
 source /etc/profile.d/modules.sh
-module load singularitypro/3.5
+module load singularitypro/3.7
 wget https://raw.githubusercontent.com/tensorflow/tensorflow/v1.13.1/tensorflow/examples/tutorials/layers/cnn_mni
 st.py
 singularity run --nv tensorflow_19.06-py2.sif python cnn_mnist.py
@@ -156,10 +156,10 @@ mpirun (Open MPI) 3.1.3
 Report bugs to http://www.open-mpi.org/community/help/
 ```
 
-**SingularityPRO 3.5**
+**SingularityPRO 3.7**
 
 ```
-[username@es1 ~] $ module load singularitypro/3.5
+[username@es1 ~] $ module load singularitypro/3.7
 [username@es1 ~] $ singularity exec tensorflow_19.06-py2.sif mpirun --version
 mpirun (Open MPI) 3.1.3
 
@@ -171,8 +171,8 @@ Next, check the available versions of Open MPI on the ABCI system.
 ```
 [username@es1 ~] $ module avail openmpi
 
--------------------------------------------- /apps/modules/modulefiles/mpi ---------------------------------------------
-openmpi/2.1.6(default) openmpi/3.1.6          openmpi/4.0.3
+------------------------------ /apps/modules/modulefiles/centos7/mpi -------------------------------
+openmpi/2.1.6          openmpi/3.1.6          openmpi/4.0.5(default)
 ```
 
 ``openmpi/3.1.6`` module seems to be suitable to run this image. In general, at least the major versions of both MPIs should be the same.
@@ -188,11 +188,11 @@ Start an interative job with two full-nodes, and load required environment modul
 [username@g0001 ~]$ module load singularity/2.6.1 openmpi/3.1.6
 ```
 
-**SingularityPRO 3.5**
+**SingularityPRO 3.7**
 
 ```
 [username@es1 ~]$ qrsh -g grpname -l rt_F=2 -l h_rt=1:00:00
-[username@g0001 ~]$ module load singularitypro/3.5 openmpi/3.1.6
+[username@g0001 ~]$ module load singularitypro/3.7 openmpi/3.1.6
 ```
 
 Each full-node has four GPUs, and you have eight GPUs in total.
@@ -223,7 +223,7 @@ INFO:tensorflow:loss = 1.8231221, step = 40 (0.154 sec)
 :
 ```
 
-**SingularityPRO 3.5**
+**SingularityPRO 3.7**
 
 ```
 [username@g0001 ~]$ wget https://raw.githubusercontent.com/horovod/horovod/v0.16.4/examples/tensorflow_mnist.py
@@ -264,7 +264,7 @@ wget https://raw.githubusercontent.com/horovod/horovod/v0.16.4/examples/tensorfl
 mpirun -np 8 -npernode 4 singularity run --nv tensorflow-19.06-py2.simg python tensorflow_mnist.py
 ```
 
-**SingularityPRO 3.5**
+**SingularityPRO 3.7**
 
 ```
 #!/bin/sh
@@ -273,7 +273,7 @@ mpirun -np 8 -npernode 4 singularity run --nv tensorflow-19.06-py2.simg python t
 #$ -cwd
 
 source /etc/profile.d/modules.sh
-module load singularitypro/3.5 openmpi/3.1.6
+module load singularitypro/3.7 openmpi/3.1.6
 wget https://raw.githubusercontent.com/horovod/horovod/v0.16.4/examples/tensorflow_mnist.py
 mpirun -np 8 -npernode 4 singularity run --nv tensorflow_19.06-py2.sif python tensorflow_mnist.py
 ```
@@ -321,10 +321,10 @@ In this case, you need to set two environment variables, ``SINGULARITY_DOCKER_US
 
 An image named ``chainer-4.0.0b1.simg`` will be generated.
 
-**SingularityPRO 3.5**
+**SingularityPRO 3.7**
 
 ```
-[username@es1 ~]$ module load singularitypro/3.5
+[username@es1 ~]$ module load singularitypro/3.7
 [username@es1 ~]$ export SINGULARITY_DOCKER_USERNAME='$oauthtoken'
 [username@es1 ~]$ export SINGULARITY_DOCKER_PASSWORD=<NGC API Key>
 [username@es1 ~]$ singularity pull docker://nvcr.io/partners/chainer:4.0.0b1
@@ -335,7 +335,7 @@ An image named ``chainer_4.0.0b1.sif`` will be generated.
 You can also specify ``--docker-login`` option to download images instead of environment variables.
 
 ```
-[username@es1 ~]$ module load singularitypro/3.5
+[username@es1 ~]$ module load singularitypro/3.7
 [username@es1 ~]$ singularity pull --disable-cache --docker-login docker://nvcr.io/partners/chainer:4.0.0b1
 Enter Docker Username: $oauthtoken
 Enter Docker Password: <NGC API Key>
@@ -361,11 +361,11 @@ epoch       main/loss   validation/main/loss  main/accuracy  validation/main/acc
 :
 ```
 
-**SingularityPRO 3.5**
+**SingularityPRO 3.7**
 
 ```
 [username@es1 ~]$ qrsh -g grpname -l rt_G.small=1 -l h_rt=1:00:00
-[username@g0001 ~]$ module load singularitypro/3.5
+[username@g0001 ~]$ module load singularitypro/3.7
 [username@g0001 ~]$ wget https://raw.githubusercontent.com/chainer/chainer/v4.0.0b1/examples/mnist/train_mnist.py
 [username@g0001 ~]$ singularity exec --nv chainer_4.0.0b1.sif python train_mnist.py -g 0
 :
