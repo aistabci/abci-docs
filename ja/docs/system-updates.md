@@ -7,89 +7,58 @@
 | Update | NVIDIA Tesla Driver | [460.32.03](https://docs.nvidia.com/datacenter/tesla/tesla-release-notes-460-32-03/index.html) | 440.33.01 |
 | Update | OFED | 5.0-2.1.8.0 | 4.4-1.0.0.0 |
 | Update | Univa Grid Engine | 8.6.17 | 8.6.6 |
-| Delete | intel | 2017.8.262 | |
-| Delete | intel | 2018.5.274 | |
-| Delete | intel | 2019.5.281 | |
-| Delete | pgi | 17.10 | |
-| Delete | pgi | 18.10 | |
-| Delete | pgi | 19.1  | |
-| Delete | pgi | 19.10 | |
-| Delete | pgi | 20.1  | |
-| Add    | pgi | 20.4  | |
-| Delete | NVIDIA HPC SDK | 20.9  | |
-| Add    | NVIDIA HPC SDK | 20.11 | |
-| Add    | NVIDIA HPC SDK | 21.2  | |
-| Delete | CUDA Toolkit | 10.0.130 | |
-| Add    | CUDA Toolkit | 11.0.3 | |
-| Add    | CUDA Toolkit | 11.1.1 | |
-| Add    | CUDA Toolkit | 11.2.2 | |
-| Add    | GCC | 9.3.0 | |
-| Update | Python | 2.7.18 | 2.7.15 |
-| Delete | Python | 3.4.8 | |
-| Delete | Python | 3.5.5 | |
-| Update | Python | 3.6.12 | 3.6.5  |
-| Update | Python | 3.7.10 | 3.7.6  |
-| Update | Python | 3.8.7  | 3.8.2  |
-| Delete | R | 3.5.0 | |
-| Delete | R | 3.6.3 | |
-| Add    | R | 4.0.4 | |
-| Delete | Go | 1.12 | |
-| Delete | Go | 1.13 | |
-| Add    | Go | 1.15 | |
-| Delete | Julia | 1.3 | |
-| Delete | Julia | 1.4 | |
-| Add    | Julia | 1.5 | |
-| Update | BeeOND | 7.2.1 | 7.2 |
-| Update | Scality S3 Connector | 7.4.8.1 | 7.4.8 |
-| Update | Docker | 19.03.15 | 17.12.0 |
-| Delete | Singularity | 2.6.1 | |
 | Update | SingularityPRO | 3.7-1 | 3.5-6 |
-| Update | Open MPI | 4.0.5 | 4.0.3 |
-| Delete | MVAPICH2 | 2.3.3 | |
-| Delete | MVAPICH2 | 2.3.4 | |
-| Add    | MVAPICH2 | 2.3.5 | |
-| Delete | MVAPICH2-GDR | 2.3.3 | |
-| Delete | MVAPICH2-GDR | 2.3.4 | |
-| Add    | MVAPICH2-GDR | 2.3.5 | |
-| Delete | intel-mpi | 2017.4 | |
-| Delete | intel-mpi | 2018.4 | |
-| Delete | intel-mpi | 2019.5 | |
-| Delete | cuDNN | 7.1.3 | |
-| Delete | cuDNN | 7.5.0 | |
-| Delete | cuDNN | 7.6.0 | |
-| Delete | cuDNN | 7.6.1 | |
-| Delete | cuDNN | 7.6.2 | |
-| Delete | cuDNN | 7.6.3 | |
-| Delete | cuDNN | 7.6.4 | |
-| Delete | cuDNN | 8.0.2 | |
-| Add    | cuDNN | [8.1.1](https://docs.nvidia.com/deeplearning/cudnn/release-notes/rel_8.html#rel-811) | |
-| Delete | NCCL | 2.3.4-1 | |
-| Delete | NCCL | 2.3.5-2 | |
-| Delete | NCCL | 2.4.2-1 | |
-| Delete | NCCL | 2.4.7-1 | |
-| Delete | NCCL | 2.8.3-1 | |
-| Add    | NCCL | [2.8.4-1](https://docs.nvidia.com/deeplearning/nccl/release-notes/rel_2-8-4.html) | |
-| Delete | intel-mkl | 2017.0.4 | |
-| Delete | intel-mkl | 2018.0.4 | |
-| Delete | intel-mkl | 2019.0.5 | |
-| Delete | aws-cli | 1.16.194 | |
-| Delete | aws-cli | 1.18 | |
-| Update | aws-cli | 2.1 | 2.0 |
-| Update | fuse-sshfs | 3.7.1 | 2.10 |
-| Update | s3fs-fuse | 1.87 | 1.85 |
-| Update | sregistry-cli | 0.2.36 | 0.2.31 |
-| Delete | intel-advisor | 2017.5 | |
-| Delete | intel-advisor | 2018.4 | |
-| Delete | intel-advisor | 2019.5 | |
-| Delete | intel-inspector | 2017.4 | |
-| Delete | intel-inspector | 2018.4 | |
-| Delete | intel-inspector | 2019.5 | |
-| Delete | intel-itac | 2017.0.4 | |
-| Delete | intel-itac | 2018.0.4 | |
-| Delete | intel-itac | 2019.0.5 | |
-| Delete | intel-vtune | 2017.6 | |
-| Delete | intel-vtune | 2018.4 | |
-| Delete | intel-vtune | 2019.6 | |
+| Update | BeeOND | 7.2.1 | 7.2 |
+| Update | Docker | 19.03.15 | 17.12.0 |
+| Update | Scality S3 Connector | 7.4.8.1 | 7.4.8 |
+| Add | gcc | 9.3.0 | |
+| Add | pgi | 20.4 | |
+| Add | nvhpc | 20.11<br>21.2 | |
+| Add | cmake | 3.19 | |
+| Add | go | 1.15 | |
+| Add | julia | 1.5 | |
+| Add | lua | 5.3.6<br>5.4.2 | |
+| Add | python | 2.7.18<br>3.6.12<br>3.7.10<br>3.8.7 | |
+| Add | R | 4.0.4 | |
+| Add | CUDA | 11.0.3<br>11.1.1<br>11.2.2 | |
+| Add | cuDNN | [8.1.1](https://docs.nvidia.com/deeplearning/cudnn/release-notes/rel_8.html#rel-811) | |
+| Add | NCCL | [2.8.4-1](https://docs.nvidia.com/deeplearning/nccl/release-notes/rel_2-8-4.html) | |
+| Add | openmpi | 4.0.5 | |
+| Add | mvapich2-gdr | 2.3.5 | |
+| Add | mvapich2 | 2.3.5 | |
+| Add | hadoop | 3.3 | |
+| Add | spark | 3.0 | |
+| Add | aws-cli | 2.1 | |
+| Add | fuse-sshfs | 3.7.1 | |
+| Add | s3fs-fuse | 1.87 | |
+| Add | sregistry-cli | 0.2.36 | |
+| Delete | intel | 2017.8.262<br>2018.5.274<br>2019.5.281 | |
+| Delete | pgi | 17.10<br>18.10<br>19.1<br>19.10<br>20.1 | |
+| Delete | nvhpc | 20.9 | |
+| Delete | cmake | 3.16<br>3.17 | |
+| Delete | go | 1.12<br>1.13 | |
+| Delete | intel-advisor | 2017.5<br>2018.4<br>2019.5 | |
+| Delete | intel-inspector | 2017.4<br>2018.4<br>2019.5 | |
+| Delete | intel-itac | 2017.0.4<br>2018.0.4<br>2019.0.5 | |
+| Delete | intel-mkl | 2017.0.4<br>2018.0.4<br>2019.0.5 | |
+| Delete | intel-vtune | 2017.6<br>2018.4<br>2019.6 | |
+| Delete | julia | 1.3<br>1.4 | |
+| Delete | python | 2.7.15<br>3.4.8<br>3.5.5<br>3.7.6 | |
+| Delete | R | 3.5.0<br>3.6.3 | |
+| Delete | cuda | 10.0.130 | |
+| Delete | cudnn | 7.1.3<br>7.5.0<br>7.6.0<br>7.6.1<br>7.6.2<br>7.6.3<br>7.6.4<br>8.0.2 | |
+| Delete | nccl | 2.3.4-1<br>2.3.5-2<br>2.4.2-1<br>2.4.7-1<br>2.8.3-1 | |
+| Delete | intel-mpi | 2017.4<br>2018.4<br>2019.5 | |
+| Delete | openmpi | 4.0.3 | |
+| Delete | mvapich2-gdr | 2.3.3<br>2.3.4 | |
+| Delete | mvapich2 | 2.3.3<br>2.3.4 | |
+| Delete | hadoop | 2.9<br>2.10<br>3.1 | |
+| Delete | singularity | 2.6.1 | |
+| Delete | spark | 2.3<br>2.4 | |
+| Delete | aws-cli | 1.16.194<br>1.18<br>2.0 | |
+| Delete | fuse-sshfs | 2.10 | |
+| Delete | s3fs-fuse | 1.85 | |
+| Delete | sregistry-cli | 0.2.31 | |
 
 ## 2021-03-13
 
