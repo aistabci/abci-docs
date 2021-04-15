@@ -5,9 +5,6 @@
 
 ABCI Singularity エンドポイントでは、ABCI 内部向けに Singularity Container サービスを提供しています。このサービスは、SingularityPRO で用いるコンテナイメージをリモートビルドするための Remote Builder と、作成したコンテナイメージを保管・共有するための Container Library から成ります。ABCI 内部向けのサービスであるため、外部から直接アクセスすることはできません。
 
-!!! warning
-    Container Library は Experimental のサービスです。特に、64MB以上のコンテナイメージをアップロードできない問題があります。
-
 以下では、ABCI において本サービスを利用するための基本的な操作を説明します。詳細は Sylabs 社の[ドキュメント](https://sylabs.io/docs/)を参照下さい。
 
 <!-- 削除
@@ -94,12 +91,12 @@ INFO:    API Key Verified!
 アクセストークンを再取得した際にも、上記コマンドを再実行し、アクセストークンを再登録して下さい。既存のアクセストークンは上書きされます。
 
 !!! note
-    現在、アクセストークンの有効期限は1ヶ月に設定されています。期限が切れた場合には再度、取得と登録を実行して下さい。
+    現在、アクセストークンの有効期限は1年に設定されています。
 
 
 ## Remote Builder
 
-最初に、コンテナイメージをビルドするための定義ファイルを作成して下さい。以下の例では、Docker Hub から取得した Ubuntu のコンテナイメージをベースとして、追加パッケージのインストールと、コンテナを起動した際にコンテナが実行するコマンドを指定しています。定義ファイルの詳細については、[Definition Files](https://repo.sylabs.io/c/0f6898986ad0b646b5ce6deba21781ac62cb7e0a86a5153bbb31732ee6593f43/guides/singularitypro35-user-guide/definition_files.html) を参照して下さい。
+最初に、コンテナイメージをビルドするための定義ファイルを作成して下さい。以下の例では、Docker Hub から取得した Ubuntu のコンテナイメージをベースとして、追加パッケージのインストールと、コンテナを実行した時に実行されるコマンドを指定しています。定義ファイルの詳細については、[Definition Files](https://repo.sylabs.io/c/0f6898986ad0b646b5ce6deba21781ac62cb7e0a86a5153bbb31732ee6593f43/guides/singularitypro35-user-guide/definition_files.html) を参照して下さい。
 
 ```
 [username@es1 ~]$ vi ubuntu.def
@@ -151,11 +148,6 @@ Description:	Ubuntu 18.04.5 LTS
     Container Library にアップロードしたコンテナイメージに対して、アクセス制御の設定はできません。つまり、ABCIの利用者であれば誰でもアクセス可能になりますので、アップロードするイメージが適切なものであるか十分に確認して下さい。
 
 
-### 現在の制約事項
-* 64MiB以上のコンテナイメージをアップロードすることはできません。リモートビルドでコンテナイメージを作成することはできます。
-* アップロードしたコンテナイメージの一覧を取得することはできません。
-
-
 ### コンテナイメージの署名鍵の作成と登録
 
 Container Library へコンテナイメージをアップロードして、ABCI 内に公開する場合には、事前に鍵ペアを作成し、KeyStore に公開鍵を登録して下さい。コンテナイメージの作成者は、秘密鍵を用いてコンテナイメージに署名し、コンテナイメージの利用者は KeyStore に登録されている公開鍵を用いてその署名を検証することが可能です。
@@ -189,7 +181,7 @@ Generating Entity and OpenPGP Key Pair... done
 
 #### 鍵の一覧表示
 
-`singularity key list` を実行すると、作成した鍵情報を確認できます。
+`singularity key list` を実行すると、作成した鍵も含め、ローカルの鍵リングに入っている公開鍵の情報を確認できます。
 
 ```
 [username@es1 ~]$ singularity key list
@@ -387,3 +379,44 @@ Container Library にアップロードされたコンテナイメージは、`s
 ```
 [username@es1 ~]$ singularity delete library://username/abci-lib/helloworld:latest
 ```
+
+!!! note
+    `library://username/abci-lib/helloworld:latest` のように、タグやIDを指定してコンテナイメージを削除することはできますが、`library://username/abci-lib/helloworld` のようにコンテナの名前そのものを削除することはできません。
+
+
+### コンテナイメージ一覧表示
+
+Container Library にアップロードされたコンテナイメージの一覧を、`list_singularity_images` で表示することができます。
+コンテナイメージは`library://username/collection/container`のようなURIで表示されます。
+タグが付与されている場合はURIの次の行に`Tag`が表示されます。タグが付与されていない場合は代わりに`Unique ID`が表示されます。
+
+```
+[username@es1 ~]$ list_singularity_images
+library://username/collection1/container1
+    Tag: latest
+
+library://username/collection2/container2
+    Unique ID: sha256.xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+
+library://username/collection3/container3
+```
+
+!!! note
+    `Tag`も`Unique ID`も表示されない場合、そのコンテナにはコンテナイメージが存在しないことを意味します。
+
+また、`list_singularity_images` に`-v` オプションをつけることで、フィンガープリント(存在する場合)と、イメージサイズも併せて表示されます。
+
+```
+[username@es1 ~]$ list_singularity_images -v
+library://username/collection1/container1
+    Tag: latest
+    Image Size: 10.00 MB
+    Finger Prints: XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+
+library://username/collection2/container2
+    Unique ID: sha256.xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+    Image Size: 20.00 MB
+
+library://username/collection3/container3
+```
+
