@@ -4,6 +4,8 @@
 
 | Add / Update / Delete | Software | Version | Previous version |
 |:--|:--|:--|:--|
+| Update | NVIDIA Tesla Driver | [460.32.03](https://docs.nvidia.com/datacenter/tesla/tesla-release-notes-460-32-03/index.html) | 440.33.01 |
+| Update | OFED | 5.0-2.1.8.0 | 4.4-1.0.0.0 |
 | Update | Univa Grid Engine | 8.6.17 | 8.6.6 |
 | Delete | intel | 2017.8.262 | |
 | Delete | intel | 2018.5.274 | |
@@ -60,14 +62,13 @@
 | Delete | cuDNN | 7.6.3 | |
 | Delete | cuDNN | 7.6.4 | |
 | Delete | cuDNN | 8.0.2 | |
-| Add    | cuDNN | 8.1.1 | |
+| Add    | cuDNN | [8.1.1](https://docs.nvidia.com/deeplearning/cudnn/release-notes/rel_8.html#rel-811) | |
 | Delete | NCCL | 2.3.4-1 | |
 | Delete | NCCL | 2.3.5-2 | |
 | Delete | NCCL | 2.4.2-1 | |
 | Delete | NCCL | 2.4.7-1 | |
 | Delete | NCCL | 2.8.3-1 | |
-| Add    | NCCL | 2.8.4-1 | |
-| Update | UCX | 1.8.0-1 | 1.7.0 |
+| Add    | NCCL | [2.8.4-1](https://docs.nvidia.com/deeplearning/nccl/release-notes/rel_2-8-4.html) | |
 | Delete | intel-mkl | 2017.0.4 | |
 | Delete | intel-mkl | 2018.0.4 | |
 | Delete | intel-mkl | 2019.0.5 | |
