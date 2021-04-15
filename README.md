@@ -40,7 +40,7 @@ And, open 'http://127.0.0.1:8000/' using a web browser.
 To generate the static versions of documents:
 
 ```
-$ make -f site.mk build
+$ make build
 (static files are generated under site/ directory)
 ```
 
@@ -53,5 +53,5 @@ $ ghp-import -m "(specific message)" -c docs.abci.ai -r origin -b gh-pages -p si
 or, just run:
 
 ```
-$ make -f site.mk publish-head
+$ make publish-head
 ```
