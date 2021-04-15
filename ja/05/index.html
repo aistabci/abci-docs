@@ -1269,28 +1269,30 @@
 </table>
 <h2 id="use-cases">実行例</h2>
 <h3 id="load-modules">モジュールのロード</h3>
-<div class="codehilite"><pre><span></span><code><span class="err">[username@g0001 ~]$ module load cuda/10.0/10.0.130.1 cudnn/7.6/7.6.2</span>
+<div class="codehilite"><pre><span></span><code><span class="err">[username@g0001 ~]$ module load cuda/10.0/10.0.130.1 cudnn/7.6/7.6.5</span>
 </code></pre></div>
 
 
 <h3 id="list-loaded-modules">ロード済みのモジュールの一覧表示</h3>
 <div class="codehilite"><pre><span></span><code><span class="err">[username@g0001 ~]$ module list</span>
 <span class="err">Currently Loaded Modulefiles:</span>
-<span class="err">  1) cuda/10.0/10.0.130.1   2) cudnn/7.6/7.6.2</span>
+<span class="err">  1) cuda/10.0/10.0.130.1   2) cudnn/7.6/7.6.5</span>
 </code></pre></div>
 
 
 <h3 id="display-the-configuration-of-modules">モジュールの設定内容の表示</h3>
 <div class="codehilite"><pre><span></span><code><span class="o">[</span><span class="n">username@g0001 ~</span><span class="o">]</span><span class="err">$</span><span class="w"> </span><span class="k">module</span><span class="w"> </span><span class="n">show</span><span class="w"> </span><span class="n">cuda</span><span class="o">/</span><span class="mf">10.0</span><span class="o">/</span><span class="mf">10.0.130.1</span><span class="w"></span>
 <span class="c1">-------------------------------------------------------------------</span>
-<span class="o">/</span><span class="n">apps</span><span class="o">/</span><span class="n">modules</span><span class="o">/</span><span class="n">modulefiles</span><span class="o">/</span><span class="n">gpgpu</span><span class="o">/</span><span class="n">cuda</span><span class="o">/</span><span class="mf">10.0</span><span class="o">/</span><span class="mf">10.0.130.1</span><span class="err">:</span><span class="w"></span>
+<span class="o">/</span><span class="n">apps</span><span class="o">/</span><span class="n">modules</span><span class="o">/</span><span class="n">modulefiles</span><span class="o">/</span><span class="n">centos7</span><span class="o">/</span><span class="n">gpgpu</span><span class="o">/</span><span class="n">cuda</span><span class="o">/</span><span class="mf">10.0</span><span class="o">/</span><span class="mf">10.0.130.1</span><span class="err">:</span><span class="w"></span>
 
 <span class="k">module</span><span class="o">-</span><span class="n">whatis</span><span class="w">    </span><span class="n">cuda</span><span class="w"> </span><span class="mf">10.0.130.1</span><span class="w"></span>
 <span class="n">conflict</span><span class="w">     </span><span class="n">cuda</span><span class="w"></span>
 <span class="n">prepend</span><span class="o">-</span><span class="k">path</span><span class="w">     </span><span class="n">CUDA_HOME</span><span class="w"> </span><span class="o">/</span><span class="n">apps</span><span class="o">/</span><span class="n">cuda</span><span class="o">/</span><span class="mf">10.0.130.1</span><span class="w"></span>
 <span class="n">prepend</span><span class="o">-</span><span class="k">path</span><span class="w">     </span><span class="n">CUDA_PATH</span><span class="w"> </span><span class="o">/</span><span class="n">apps</span><span class="o">/</span><span class="n">cuda</span><span class="o">/</span><span class="mf">10.0.130.1</span><span class="w"></span>
 <span class="n">prepend</span><span class="o">-</span><span class="k">path</span><span class="w">     </span><span class="k">PATH</span><span class="w"> </span><span class="o">/</span><span class="n">apps</span><span class="o">/</span><span class="n">cuda</span><span class="o">/</span><span class="mf">10.0.130.1</span><span class="o">/</span><span class="n">bin</span><span class="w"></span>
+<span class="n">prepend</span><span class="o">-</span><span class="k">path</span><span class="w">     </span><span class="n">LD_LIBRARY_PATH</span><span class="w"> </span><span class="o">/</span><span class="n">apps</span><span class="o">/</span><span class="n">cuda</span><span class="o">/</span><span class="mf">10.0.130.1</span><span class="o">/</span><span class="n">extras</span><span class="o">/</span><span class="n">CUPTI</span><span class="o">/</span><span class="n">lib64</span><span class="w"></span>
 <span class="n">prepend</span><span class="o">-</span><span class="k">path</span><span class="w">     </span><span class="n">LD_LIBRARY_PATH</span><span class="w"> </span><span class="o">/</span><span class="n">apps</span><span class="o">/</span><span class="n">cuda</span><span class="o">/</span><span class="mf">10.0.130.1</span><span class="o">/</span><span class="n">lib64</span><span class="w"></span>
+<span class="n">prepend</span><span class="o">-</span><span class="k">path</span><span class="w">     </span><span class="n">CPATH</span><span class="w"> </span><span class="o">/</span><span class="n">apps</span><span class="o">/</span><span class="n">cuda</span><span class="o">/</span><span class="mf">10.0.130.1</span><span class="o">/</span><span class="n">extras</span><span class="o">/</span><span class="n">CUPTI</span><span class="o">/</span><span class="k">include</span><span class="w"></span>
 <span class="n">prepend</span><span class="o">-</span><span class="k">path</span><span class="w">     </span><span class="n">CPATH</span><span class="w"> </span><span class="o">/</span><span class="n">apps</span><span class="o">/</span><span class="n">cuda</span><span class="o">/</span><span class="mf">10.0.130.1</span><span class="o">/</span><span class="k">include</span><span class="w"></span>
 <span class="n">prepend</span><span class="o">-</span><span class="k">path</span><span class="w">     </span><span class="n">LIBRARY_PATH</span><span class="w"> </span><span class="o">/</span><span class="n">apps</span><span class="o">/</span><span class="n">cuda</span><span class="o">/</span><span class="mf">10.0.130.1</span><span class="o">/</span><span class="n">lib64</span><span class="w"></span>
 <span class="n">prepend</span><span class="o">-</span><span class="k">path</span><span class="w">     </span><span class="n">MANPATH</span><span class="w"> </span><span class="o">/</span><span class="n">apps</span><span class="o">/</span><span class="n">cuda</span><span class="o">/</span><span class="mf">10.0.130.1</span><span class="o">/</span><span class="n">doc</span><span class="o">/</span><span class="n">man</span><span class="w"></span>
@@ -1306,49 +1308,49 @@
 
 
 <h3 id="load-dependent-modules">依存関係のあるモジュールのロード</h3>
-<div class="codehilite"><pre><span></span><code><span class="err">[username@g0001 ~]$ module load cudnn/7.6/7.6.2</span>
-<span class="c">WARNING: cudnn/7.6/7.6.2 cannot be loaded due to missing prereq.</span>
-<span class="c">HINT: at least one of the following modules must be loaded first: cuda/9.0 cuda/9.2 cuda/10.0</span>
+<div class="codehilite"><pre><span></span><code><span class="err">[username@g0001 ~]$ module load cudnn/7.6/7.6.5</span>
+<span class="c">WARNING: cudnn/7.6/7.6.5 cannot be loaded due to missing prereq.</span>
+<span class="c">HINT: at least one of the following modules must be loaded first: cuda/9.0 cuda/9.2 cuda/10.0 cuda/10.1 cuda/10.2</span>
 </code></pre></div>
 
 
-<p>依存関係があるため、<code>cuda/9.0</code>、<code>cuda/9.2</code>、<code>cuda/10.0</code>のいずれかのモジュールを先にロードしないと<code>cudnn/7.6/7.6.2</code>をロードできません。</p>
+<p>依存関係があるため、<code>cuda/9.0</code>、<code>cuda/9.2</code>、<code>cuda/10.0</code>、<code>cuda/10.1</code>、<code>cuda/10.2</code>のいずれかのモジュールを先にロードしないと<code>cudnn/7.6/7.6.5</code>をロードできません。</p>
 <div class="codehilite"><pre><span></span><code><span class="err">[username@g0001 ~]$ module load cuda/10.0/10.0.130.1</span>
-<span class="err">[username@g0001 ~]$ module load cudnn/7.6/7.6.2</span>
+<span class="err">[username@g0001 ~]$ module load cudnn/7.6/7.6.5</span>
 </code></pre></div>
 
 
 <h3 id="load-exclusive-modules">排他関係にあるモジュールのロード</h3>
 <p>同一ライブラリの異なるバージョンのモジュールなど、排他関係にあるモジュールは同時に利用することはできません。</p>
 <div class="codehilite"><pre><span></span><code><span class="err">[username@g0001 ~]$ module load cuda/10.0/10.0.130.1</span>
-<span class="err">[username@g0001 ~]$ module load cuda/9.2/9.2.148.1</span>
-<span class="err">cuda/9.2/9.2.148.1(5):ERROR:150: Module &#39;cuda/9.2/9.2.148.1&#39; conflicts with the currently loaded module(s) &#39;cuda/10.0/10.0.130.1&#39;</span>
+<span class="err">[username@g0001 ~]$ module load cuda/10.2/10.2.89</span>
+<span class="err">cuda/10.2/10.2.89(7):ERROR:150: Module &#39;cuda/10.2/10.2.89&#39; conflicts with the currently loaded module(s) &#39;cuda/10.0/10.0.130.1&#39;</span>
 </code></pre></div>
 
 
 <h3 id="switch-modules">モジュールの切り替え</h3>
-<div class="codehilite"><pre><span></span><code><span class="err">[username@g0001 ~]$ module switch python/2.7/2.7.15 python/3.6/3.6.5</span>
+<div class="codehilite"><pre><span></span><code><span class="err">[username@g0001 ~]$ module switch python/2.7/2.7.18 python/3.6/3.6.12</span>
 </code></pre></div>
 
 
 <p>依存関係があると切り替えがうまくできない場合があります。</p>
 <div class="codehilite"><pre><span></span><code><span class="err">[username@g0001 ~]$ module load cuda/10.0/10.0.130.1</span>
-<span class="err">[username@g0001 ~]$ module load cudnn/7.6/7.6.2</span>
-<span class="err">[username@g0001 ~]$ module switch cuda/10.0/10.0.130.1 cuda/9.2/9.2.148.1</span>
+<span class="err">[username@g0001 ~]$ module load cudnn/7.6/7.6.5</span>
+<span class="err">[username@g0001 ~]$ module switch cuda/10.0/10.0.130.1 cuda/10.2/10.2.89</span>
 <span class="err">[username@g0001 ~]$ env | grep LD_LIBRARY_PATH</span>
-<span class="err">LD_LIBRARY_PATH=/apps/cudnn/7.6.2/cuda10.0/lib64:/apps/cuda/9.2.148.1/lib64</span>
+<span class="err">LD_LIBRARY_PATH=/apps/cudnn/7.6.5/cuda10.0/lib64:/apps/cuda/10.2.89/lib64:/apps/cuda/10.2.89/extras/CUPTI/lib64</span>
 </code></pre></div>
 
 
 <p>CUDA9.2と、CUDA10.0用のcuDNNがロードされた状態になっています。</p>
 <p>以下のように対象のモジュールに依存しているモジュールを事前にアンロード、切り替え後の再ロードする必要があります。</p>
 <div class="codehilite"><pre><span></span><code><span class="err">[username@g0001 ~]$ module load cuda/10.0/10.0.130.1</span>
-<span class="err">[username@g0001 ~]$ module load cudnn/7.6/7.6.2</span>
-<span class="err">[username@g0001 ~]$ module unload cudnn/7.6/7.6.2</span>
-<span class="err">[username@g0001 ~]$ module switch cuda/10.0/10.0.130.1 cuda/9.2/9.2.148.1</span>
-<span class="err">[username@g0001 ~]$ module load cudnn/7.6/7.6.2</span>
+<span class="err">[username@g0001 ~]$ module load cudnn/7.6/7.6.5</span>
+<span class="err">[username@g0001 ~]$ module unload cudnn/7.6/7.6.5</span>
+<span class="err">[username@g0001 ~]$ module switch cuda/10.0/10.0.130.1 cuda/10.2/10.2.89</span>
+<span class="err">[username@g0001 ~]$ module load cudnn/7.6/7.6.5</span>
 <span class="err">[username@g0001 ~]$ env | grep LD_LIBRARY_PATH</span>
-<span class="err">LD_LIBRARY_PATH=/apps/cudnn/7.6.2/cuda9.2/lib64:/apps/cuda/9.2.148.1/lib64</span>
+<span class="err">LD_LIBRARY_PATH=/apps/cudnn/7.6.5/cuda10.2/lib64:/apps/cuda/10.2.89/lib64:/apps/cuda/10.2.89/extras/CUPTI/lib64</span>
 </code></pre></div>
 
 

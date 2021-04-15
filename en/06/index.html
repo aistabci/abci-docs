@@ -1140,22 +1140,22 @@
 <div class="codehilite"><pre><span></span><code>$ module avail python
 
 -------------------------------- /apps/modules/modulefiles/devtools --------------------------------
-python/2.7/2.7.15 python/3.4/3.4.8  python/3.5/3.5.5  python/3.6/3.6.5
+python/2.7/2.7.18 python/3.6/3.6.12  python/3.7/3.7.10  python/3.8/3.8.7
 </code></pre></div>
 
 
 <p>To set up one of available versions with using <code>module</code> command:</p>
-<p>Example) Python 2.7.15:</p>
-<div class="codehilite"><pre><span></span><code>$ module load python/2.7/2.7.15
+<p>Example) Python 2.7.18:</p>
+<div class="codehilite"><pre><span></span><code>$ module load python/2.7/2.7.18
 $ python --version
-Python <span class="m">2</span>.7.15
+Python <span class="m">2</span>.7.18
 </code></pre></div>
 
 
-<p>Example) Python 3.6.5:</p>
-<div class="codehilite"><pre><span></span><code>$ module load python/3.6/3.6.5
+<p>Example) Python 3.6.12:</p>
+<div class="codehilite"><pre><span></span><code>$ module load python/3.6/3.6.12
 $ python3 --version
-Python <span class="m">3</span>.6.5
+Python <span class="m">3</span>.6.12
 </code></pre></div>
 
 
@@ -1171,11 +1171,13 @@ Each virtual environment has its own Python binary (which matches the version of
 <h3 id="virtualenv">virtualenv</h3>
 <p>Below are examples of executing <code>virtualenv</code>:</p>
 <p>Example) Creation of a virtual environment</p>
-<div class="codehilite"><pre><span></span><code><span class="err">[username@es1 ~]$ module load python/2.7/2.7.15</span>
+<div class="codehilite"><pre><span></span><code><span class="err">[username@es1 ~]$ module load python/2.7/2.7.18</span>
 <span class="err">[username@es1 ~]$ virtualenv env1</span>
-<span class="err">New python executable in /home/username/env1/bin/python2.7</span>
-<span class="err">Also creating executable in /home/username/env1/bin/python</span>
-<span class="err">Installing setuptools, pip, wheel...done.</span>
+<span class="err">created virtual environment CPython2.7.18.final.0-64 in 1862ms</span>
+<span class="err">  creator CPython2Posix(dest=/home/username/env1, clear=False, no_vcs_ignore=False, global=False)</span>
+<span class="err">  seeder FromAppData(download=False, pip=bundle, wheel=bundle, setuptools=bundle, via=copy, app_data_dir=/home/username/.local/share/virtualenv)</span>
+<span class="err">    added seed packages: pip==20.3.4, setuptools==44.1.1, wheel==0.36.2</span>
+<span class="err">  activators PythonActivator,CShellActivator,FishActivator,PowerShellActivator,BashActivator</span>
 </code></pre></div>
 
 
@@ -1203,7 +1205,7 @@ Each virtual environment has its own Python binary (which matches the version of
 <h3 id="venv">venv</h3>
 <p>Below are examples of executing <code>venv</code>:</p>
 <p>Example) Creation of a virtual environment</p>
-<div class="codehilite"><pre><span></span><code><span class="err">[username@es1 ~]$ module load python/3.6/3.6.5</span>
+<div class="codehilite"><pre><span></span><code><span class="err">[username@es1 ~]$ module load python/3.6/3.6.12</span>
 <span class="err">[username@es1 ~]$ python3 -m venv work</span>
 </code></pre></div>
 
@@ -1211,9 +1213,9 @@ Each virtual environment has its own Python binary (which matches the version of
 <p>Example) Activating a virtual environment</p>
 <div class="codehilite"><pre><span></span><code><span class="err">[username@es1 ~]$ source work/bin/activate</span>
 <span class="err">(work) [username@es1 ~]$ which python3</span>
-<span class="err">/fs3/home/username/work/bin/python3</span>
+<span class="err">~/work/bin/python3</span>
 <span class="err">(work) [username@es1 ~]$ which pip3</span>
-<span class="err">/fs3/home/username/work/bin/pip3</span>
+<span class="err">~/work/bin/pip3</span>
 </code></pre></div>
 
 

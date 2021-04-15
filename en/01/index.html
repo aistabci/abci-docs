@@ -1163,7 +1163,7 @@
                 
                 <h1 id="1-abci-system-overview">1. ABCI System Overview</h1>
 <h2 id="system-architecture">System Architecture</h2>
-<p>The ABCI system consists of 1,088 compute nodes with 4,352 NVIDIA V100 GPU accelerators and other computing resources, shared file systems and ABCI Cloud Storage with total capacity of approximately 40 PB, InfiniBand network that connects these elements at high speed, firewall, and so on. It also includes software to make the best use of these hardware. And, the ABCI system uses SINET5, the Science Information NETwork, to connect to the Internet at 100 Gbps.</p>
+<p>The ABCI system consists of 1,088 compute nodes with 4,352 NVIDIA V100 GPU accelerators and other computing resources, shared file systems and ABCI Cloud Storage with total capacity of approximately 47 PB, InfiniBand network that connects these elements at high speed, firewall, and so on. It also includes software to make the best use of these hardware. And, the ABCI system uses SINET5, the Science Information NETwork, to connect to the Internet at 100 Gbps.</p>
 <p><img alt="Screenshot" src="../img/abci_system_en.png" /></p>
 <p>The main specifications of the ABCI system are as follows:</p>
 <table>
@@ -1387,7 +1387,7 @@ The memory-intensive node is equipped with two Intel Xeon Gold 6132 Processors a
 </table>
 <p>To execute the program for the memory-intensive node, submit the program to the job management system as a batch job or an interactive job, as with the compute node.</p>
 <h2 id="storage-systems">Storage Systems</h2>
-<p>The ABCI system has three storage systems for storing large amounts of data used for AI and Big Data applications, and these are used to provide shared file systems and ABCI Cloud Storage. The total effective capacity is up to 40 PB.</p>
+<p>The ABCI system has five storage systems for storing large amounts of data used for AI and Big Data applications, and these are used to provide shared file systems and ABCI Cloud Storage. The total effective capacity is up to 47 PB.</p>
 <table>
 <thead>
 <tr>
@@ -1402,16 +1402,28 @@ The memory-intensive node is equipped with two Intel Xeon Gold 6132 Processors a
 <td align="left">1</td>
 <td align="left">DDN SFA 14KX x1<br>DDN SS9012 Enclosure x5</td>
 <td align="left">7.68 TB SAS SSD x185</td>
-<td align="left">Home area</td>
+<td align="left">Home area, Application area</td>
 </tr>
 <tr>
 <td align="left">2</td>
-<td align="left">DDN SFA 14KX x3<br>DDN SS8462 Enclosure x30</td>
-<td align="left">3.84 TB SAS SSD x216<br>12 TB NL-SAS HDD x2400</td>
-<td align="left">Group areas, Application area</td>
+<td align="left">DDN ES7990X x3<br>DDN SS9012 Enclosure x6</td>
+<td align="left">18 TB NL-SAS HDD x801</td>
+<td align="left">Group area</td>
 </tr>
 <tr>
 <td align="left">3</td>
+<td align="left">DDN NV400NVX x3</td>
+<td align="left">7.68 TB NVMe HDD x69</td>
+<td align="left">Fast data area</td>
+</tr>
+<tr>
+<td align="left">4</td>
+<td align="left">DDN SFA 14KX x3<br>DDN SS8462 Enclosure x30</td>
+<td align="left">3.84 TB SAS SSD x216<br>12 TB NL-SAS HDD x2400</td>
+<td align="left">Group areas</td>
+</tr>
+<tr>
+<td align="left">5</td>
 <td align="left">HPE Apollo 4510 Gen10 x24</td>
 <td align="left">12 TB SATA HDD x1440</td>
 <td align="left">ABCI Cloud Storage</td>
@@ -1438,6 +1450,13 @@ The memory-intensive node is equipped with two Intel Xeon Gold 6132 Processors a
 <td align="left">See <a href="../04/#home-area">Home Area</a></td>
 </tr>
 <tr>
+<td align="left">Group area</td>
+<td align="left">/groups</td>
+<td align="left">10.8PB</td>
+<td align="left">Lustre</td>
+<td align="left">See <a href="../04/#group-area">Group Area</a></td>
+</tr>
+<tr>
 <td align="left">Group area 1</td>
 <td align="left">/groups1</td>
 <td align="left">7.2 PB</td>
@@ -1459,16 +1478,9 @@ The memory-intensive node is equipped with two Intel Xeon Gold 6132 Processors a
 <td align="left">Reserved for special purposes</td>
 </tr>
 <tr>
-<td align="left">Application area</td>
-<td align="left">/apps</td>
-<td align="left">0.36 TB</td>
-<td align="left">GPFS</td>
-<td align="left">Area used by common software and data</td>
-</tr>
-<tr>
 <td align="left">ABCI Cloud Storage</td>
 <td align="left"></td>
-<td align="left">17 PB max.</td>
+<td align="left">13 PB max.</td>
 <td align="left"></td>
 <td align="left">See <a href="../abci-cloudstorage/">ABCI Cloud Storage</a></td>
 </tr>
@@ -1529,37 +1541,37 @@ The memory-intensive node is equipped with two Intel Xeon Gold 6132 Processors a
 <tr>
 <td align="left">Job Scheduler</td>
 <td align="left">Univa Grid Engine</td>
-<td align="left">8.6.6</td>
+<td align="left">8.6.17</td>
 </tr>
 <tr>
 <td align="left">Development Environment</td>
 <td align="left">Intel Parallel Studio XE Cluster Edition<br>(compilers and libraries)</td>
-<td align="left">2017 update 8 (2017.8.262)<br>2018 update 4 (2018.5.274)<br>2019 update 5 (2019.5.281)<br>2020 update 4 (2020.4.304)</td>
+<td align="left">2020 update 4 (2020.4.304)</td>
 </tr>
 <tr>
 <td align="left"></td>
 <td align="left">PGI Professional Edition</td>
-<td align="left">17.10<br>18.10<br>19.1<br>19.10<br>20.1</td>
+<td align="left">20.4</td>
 </tr>
 <tr>
 <td align="left"></td>
 <td align="left">NVIDIA HPC SDK</td>
-<td align="left">20.9</td>
+<td align="left">20.11<br>21.2</td>
 </tr>
 <tr>
 <td align="left"></td>
 <td align="left"><a href="../07/#cuda-toolkit">CUDA Toolkit</a></td>
-<td align="left">8.0.61.2<br>9.0.176.4<br>9.1.85.3<br>9.2.88.1<br>9.2.148.1<br>10.0.130<br>10.0.130.1<br>10.1.243<br>10.2.89</td>
+<td align="left">8.0.61.2<br>9.0.176.4<br>9.1.85.3<br>9.2.88.1<br>9.2.148.1<br>10.0.130.1<br>10.1.243<br>10.2.89<br>11.0.3<br>11.1.1<br>11.2.2</td>
 </tr>
 <tr>
 <td align="left"></td>
 <td align="left">GCC</td>
-<td align="left">4.8.5<br>7.4.0</td>
+<td align="left">4.8.5<br>7.4.0<br>9.3.0</td>
 </tr>
 <tr>
 <td align="left"></td>
 <td align="left"><a href="../06/">Python</a></td>
-<td align="left">2.7.15<br>3.4.8<br>3.5.5<br>3.6.5<br>3.7.6<br>3.8.2</td>
+<td align="left">2.7.18<br>3.6.12<br>3.7.10<br>3.8.7</td>
 </tr>
 <tr>
 <td align="left"></td>
@@ -1569,7 +1581,7 @@ The memory-intensive node is equipped with two Intel Xeon Gold 6132 Processors a
 <tr>
 <td align="left"></td>
 <td align="left">R</td>
-<td align="left">3.5.0<br>3.6.3</td>
+<td align="left">4.0.4</td>
 </tr>
 <tr>
 <td align="left"></td>
@@ -1594,12 +1606,12 @@ The memory-intensive node is equipped with two Intel Xeon Gold 6132 Processors a
 <tr>
 <td align="left"></td>
 <td align="left">Go</td>
-<td align="left">1.12<br>1.13<br>1.14</td>
+<td align="left">1.14<br>1.15</td>
 </tr>
 <tr>
 <td align="left"></td>
 <td align="left">Julia</td>
-<td align="left">1.0<br>1.3<br>1.4</td>
+<td align="left">1.0<br>1.5</td>
 </tr>
 <tr>
 <td align="left">File System</td>
@@ -1614,67 +1626,62 @@ The memory-intensive node is equipped with two Intel Xeon Gold 6132 Processors a
 <tr>
 <td align="left"></td>
 <td align="left"><a href="../04/#using-as-a-beeond-storage">BeeOND</a></td>
-<td align="left">7.2</td>
+<td align="left">7.2.1</td>
 </tr>
 <tr>
 <td align="left">Object Storage</td>
 <td align="left">Scality S3 Connector</td>
-<td align="left">7.4.8</td>
+<td align="left">7.4.8.1</td>
 </tr>
 <tr>
 <td align="left">Container</td>
 <td align="left"><a href="../09/#docker">Docker</a></td>
-<td align="left">17.12.0</td>
-</tr>
-<tr>
-<td align="left"></td>
-<td align="left"><a href="../09/#singularity">Singularity</a></td>
-<td align="left">2.6.1</td>
+<td align="left">19.03.15</td>
 </tr>
 <tr>
 <td align="left"></td>
 <td align="left"><a href="../09/#singularity">SingularityPRO</a></td>
-<td align="left">3.5-6</td>
+<td align="left">3.7-1</td>
 </tr>
 <tr>
 <td align="left">MPI</td>
 <td align="left"><a href="../08/#open-mpi">Open MPI</a></td>
-<td align="left">2.1.6<br>3.1.6<br>4.0.3</td>
+<td align="left">2.1.6<br>3.1.6<br>4.0.5</td>
 </tr>
 <tr>
 <td align="left"></td>
 <td align="left"><a href="../08/#mvapich2">MVAPICH2</a></td>
-<td align="left">2.3.3<br>2.3.4</td>
+<td align="left">2.3.5</td>
 </tr>
 <tr>
 <td align="left"></td>
 <td align="left"><a href="../08/#mvapich2-gdr">MVAPICH2-GDR</a></td>
-<td align="left">2.3.3<br>2.3.4</td>
+<td align="left">2.3.5</td>
 </tr>
 <tr>
 <td align="left"></td>
 <td align="left"><a href="../08/#intel-mpi">Intel MPI</a></td>
-<td align="left">2017.4<br>2018.4<br>2019.5<br>2019.9</td>
+<td align="left">2019.9</td>
 </tr>
 <tr>
 <td align="left">Library</td>
 <td align="left"><a href="../07/#cudnn">cuDNN</a></td>
-<td align="left">5.1.10<br>6.0.21<br>7.0.5<br>7.1.3<br>7.1.4<br>7.2.1<br>7.3.1<br>7.4.2<br>7.5.0<br>7.5.1<br>7.6.0<br>7.6.1<br>7.6.2<br>7.6.3<br>7.6.4<br>7.6.5<br>8.0.2<br>8.0.5</td>
+<td align="left">5.1.10<br>6.0.21<br>7.0.5<br>7.1.4<br>7.2.1<br>7.3.1<br>7.4.2<br>7.5.1<br>7.6.5<br>8.0.5<br>8.1.1</td>
 </tr>
 <tr>
 <td align="left"></td>
 <td align="left"><a href="../07/#nccl">NCCL</a></td>
-<td align="left">1.3.5-1<br>2.1.15-1<br>2.2.13-1<br>2.3.4-1<br>2.3.5-2<br>2.3.7-1<br>2.4.2-1<br>2.4.7-1<br>2.4.8-1<br>2.5.6-1<br>2.6.4-1<br>2.7.8-1<br>2.8.3-1</td>
+<td align="left">1.3.5-1<br>2.1.15-1<br>2.2.13-1<br>2.3.7-1<br>2.4.8-1<br>2.5.6-1<br>2.6.4-1<br>2.7.8-1<br>2.8.4-1</td>
 </tr>
 <tr>
 <td align="left"></td>
 <td align="left">gdrcopy</td>
-<td align="left">2.0</td>
+<td align="left">2.0-3</td>
 </tr>
 <tr>
 <td align="left"></td>
 <td align="left">UCX</td>
-<td align="left">1.7.0</td>
+<td align="left">1.8.0-1</td>
 </tr>
 <tr>
 <td align="left"></td>
@@ -1684,47 +1691,47 @@ The memory-intensive node is equipped with two Intel Xeon Gold 6132 Processors a
 <tr>
 <td align="left"></td>
 <td align="left">Intel MKL</td>
-<td align="left">2017.0.4<br>2018.0.4<br>2019.0.5<br>2020.0.4</td>
+<td align="left">2020.0.4</td>
 </tr>
 <tr>
 <td align="left">Utility</td>
 <td align="left">aws-cli</td>
-<td align="left">1.16.194<br>1.18<br>2.0</td>
+<td align="left">2.1</td>
 </tr>
 <tr>
 <td align="left"></td>
 <td align="left">fuse-sshfs</td>
-<td align="left">2.10</td>
+<td align="left">3.7.1</td>
 </tr>
 <tr>
 <td align="left"></td>
 <td align="left">s3fs-fuse</td>
-<td align="left">1.85</td>
+<td align="left">1.87</td>
 </tr>
 <tr>
 <td align="left"></td>
 <td align="left">sregistry-cli</td>
-<td align="left">0.2.31</td>
+<td align="left">0.2.36</td>
 </tr>
 <tr>
 <td align="left"></td>
 <td align="left">Intel VTune</td>
-<td align="left">2017.6<br>2018.4<br>2019.6<br>2020.3</td>
+<td align="left">2020.3</td>
 </tr>
 <tr>
 <td align="left"></td>
 <td align="left">Intel Trace Analyzer and Collector</td>
-<td align="left">2017.0.4<br>2018.0.4<br>2019.0.5<br>2020.0.3</td>
+<td align="left">2020.0.3</td>
 </tr>
 <tr>
 <td align="left"></td>
 <td align="left">Intel Inspector</td>
-<td align="left">2017.4<br>2018.4<br>2019.5<br>2020.3</td>
+<td align="left">2020.3</td>
 </tr>
 <tr>
 <td align="left"></td>
 <td align="left">Intel Advisor</td>
-<td align="left">2017.5<br>2018.4<br>2019.5<br>2020.3</td>
+<td align="left">2020.3</td>
 </tr>
 </tbody>
 </table>

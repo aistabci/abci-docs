@@ -442,6 +442,13 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#nvidia-hpc-sdk" class="md-nav__link">
+    NVIDIA HPC SDK
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#openmp" class="md-nav__link">
     OpenMP
   </a>
@@ -1089,6 +1096,13 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#nvidia-hpc-sdk" class="md-nav__link">
+    NVIDIA HPC SDK
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#openmp" class="md-nav__link">
     OpenMP
   </a>
@@ -1171,7 +1185,7 @@
 To use Intel Parallel Studio XE, set up user environment by the <code>module</code> command.
 If you set up with the <code>module</code> command in compute node, environment variables for compilation and execution are set automatically.</p>
 <p>Setting command for Intel Parallel Studio XE is following.</p>
-<div class="codehilite"><pre><span></span><code><span class="err">[username@g0001 ~]$ module load intel/2018.2.199</span>
+<div class="codehilite"><pre><span></span><code><span class="err">[username@g0001 ~]$ module load intel/2020.4.304</span>
 </code></pre></div>
 
 
@@ -1203,7 +1217,7 @@ If you set up with the <code>module</code> command in compute node, environment 
 To use PGI compiler, set up user environment by the <code>module</code> command.
 If you set up with the <code>module</code> command in compute node, environment variables for compilation and execution are set automatically.</p>
 <p>Setting command for PGI Compiler is following.</p>
-<div class="codehilite"><pre><span></span><code><span class="err">[username@g0001 ~]$ module load pgi/18.5</span>
+<div class="codehilite"><pre><span></span><code><span class="err">[username@g0001 ~]$ module load pgi/20.4</span>
 </code></pre></div>
 
 
@@ -1230,6 +1244,38 @@ If you set up with the <code>module</code> command in compute node, environment 
 </tr>
 </tbody>
 </table>
+<h2 id="nvidia-hpc-sdk">NVIDIA HPC SDK</h2>
+<p>NVIDIA HPC SDK is available on the ABCI System.
+To use NVIDIA HPC SDK, set up user environment by the <code>module</code> command.
+If you set up with the <code>module</code> command in compute node, environment variables for compilation and execution are set automatically.</p>
+<p>Setting command for NVIDIA HPC SDK is following.</p>
+<div class="codehilite"><pre><span></span><code><span class="err">[username@g0001 ~]$ module load nvhpc/21.2</span>
+</code></pre></div>
+
+
+<p>List of compile/link commands of NVIDIA HPC SDK</p>
+<table>
+<thead>
+<tr>
+<th align="left">Programing Language</th>
+<th align="left">command</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">Fortran</td>
+<td align="left">nvfortran</td>
+</tr>
+<tr>
+<td align="left">C</td>
+<td align="left">nvc</td>
+</tr>
+<tr>
+<td align="left">C++</td>
+<td align="left">nvc++</td>
+</tr>
+</tbody>
+</table>
 <h2 id="openmp">OpenMP</h2>
 <p>The compilers provided on the ABCI System support thread parallelization by OpenMP specifications.
 To activate the OpenMP specifications, specify the compile option as follows.</p>
@@ -1251,6 +1297,10 @@ To activate the OpenMP specifications, specify the compile option as follows.</p
 </tr>
 <tr>
 <td align="left">PGI</td>
+<td align="left">-mp</td>
+</tr>
+<tr>
+<td align="left">NVIDIA HPC SDK</td>
 <td align="left">-mp</td>
 </tr>
 </tbody>

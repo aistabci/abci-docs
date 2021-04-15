@@ -116,7 +116,7 @@
     <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
     <label class="md-overlay" data-md-component="overlay" for="__drawer"></label>
     
-      <a href="#nvidia-gpu-cloud-ngc" tabindex="0" class="md-skip">
+      <a href="#nvidia-ngc" tabindex="0" class="md-skip">
         Skip to content
       </a>
     
@@ -1307,7 +1307,7 @@
                   <a href="https://github.com/aistairc/abci-docs/edit/master/en/docs/ngc.md" title="Edit this page" class="md-icon md-content__icon">&#xE3C9;</a>
                 
                 
-                <h1 id="nvidia-gpu-cloud-ngc">NVIDIA GPU Cloud (NGC)</h1>
+                <h1 id="nvidia-ngc">NVIDIA NGC</h1>
 <p><a href="https://ngc.nvidia.com/">NVIDIA NGC</a> (hereinafter referred to as "NGC") provides Docker images for GPU-optimized deep learning framework containers and HPC application containers and NGC container registry to distribute them.
 ABCI allows users to execute NGC-provided Docker images easily by using <a href="../09/#singularity">Singularity</a>.</p>
 <p>In this page, we will explain the procedure to use Docker images registered in NGC container registry with ABCI.</p>
@@ -1359,8 +1359,8 @@ Then, you'll find:
 
 
 <p>An image named <code>tensorflow-19.06-py2.simg</code> will be generated.</p>
-<p><strong>SingularityPRO 3.5</strong></p>
-<div class="codehilite"><pre><span></span><code><span class="err">[username@es1 ~]$ module load singularitypro/3.5</span>
+<p><strong>SingularityPRO 3.7</strong></p>
+<div class="codehilite"><pre><span></span><code><span class="err">[username@es1 ~]$ module load singularitypro/3.7</span>
 <span class="err">[username@es1 ~]$ singularity pull docker://nvcr.io/nvidia/tensorflow:19.06-py2</span>
 </code></pre></div>
 
@@ -1378,9 +1378,9 @@ Then, you'll find:
 </code></pre></div>
 
 
-<p><strong>SingularityPRO 3.5</strong></p>
+<p><strong>SingularityPRO 3.7</strong></p>
 <div class="codehilite"><pre><span></span><code><span class="err">[username@es1 ~]$ qrsh -g grpname -l rt_F=1 -l h_rt=1:00:00</span>
-<span class="err">[username@g0001 ~]$ module load singularitypro/3.5</span>
+<span class="err">[username@g0001 ~]$ module load singularitypro/3.7</span>
 <span class="err">[username@g0001 ~]$ wget https://raw.githubusercontent.com/tensorflow/tensorflow/v1.13.1/tensorflow/examples/tutorials/layers/cnn_mnist.py</span>
 <span class="err">[username@g0001 ~]$ singularity run --nv tensorflow_19.06-py2.sif python cnn_mnist.py</span>
 <span class="err">:</span>
@@ -1410,7 +1410,7 @@ singularity run --nv tensorflow-19.06-py2.simg python cnn_mnist.py
 </code></pre></div>
 </td></tr></table>
 
-<p><strong>SingularityPRO 3.5</strong></p>
+<p><strong>SingularityPRO 3.7</strong></p>
 <table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
  2
  3
@@ -1426,7 +1426,7 @@ singularity run --nv tensorflow-19.06-py2.simg python cnn_mnist.py
 <span class="c1">#$ -cwd</span>
 
 <span class="nb">source</span> /etc/profile.d/modules.sh
-module load singularitypro/3.5
+module load singularitypro/3.7
 wget https://raw.githubusercontent.com/tensorflow/tensorflow/v1.13.1/tensorflow/examples/tutorials/layers/cnn_mni
 st.py
 singularity run --nv tensorflow_19.06-py2.sif python cnn_mnist.py
@@ -1447,8 +1447,8 @@ TensorFlow image, which you used for <a href="#single-node-run">Single-node Run<
 </code></pre></div>
 
 
-<p><strong>SingularityPRO 3.5</strong></p>
-<div class="codehilite"><pre><span></span><code><span class="o">[</span><span class="n">username@es1 ~</span><span class="o">]</span><span class="w"> </span><span class="err">$</span><span class="w"> </span><span class="k">module</span><span class="w"> </span><span class="k">load</span><span class="w"> </span><span class="n">singularitypro</span><span class="o">/</span><span class="mf">3.5</span><span class="w"></span>
+<p><strong>SingularityPRO 3.7</strong></p>
+<div class="codehilite"><pre><span></span><code><span class="o">[</span><span class="n">username@es1 ~</span><span class="o">]</span><span class="w"> </span><span class="err">$</span><span class="w"> </span><span class="k">module</span><span class="w"> </span><span class="k">load</span><span class="w"> </span><span class="n">singularitypro</span><span class="o">/</span><span class="mf">3.7</span><span class="w"></span>
 <span class="o">[</span><span class="n">username@es1 ~</span><span class="o">]</span><span class="w"> </span><span class="err">$</span><span class="w"> </span><span class="n">singularity</span><span class="w"> </span><span class="k">exec</span><span class="w"> </span><span class="n">tensorflow_19</span><span class="mf">.06</span><span class="o">-</span><span class="n">py2</span><span class="p">.</span><span class="n">sif</span><span class="w"> </span><span class="n">mpirun</span><span class="w"> </span><span class="c1">--version</span>
 <span class="n">mpirun</span><span class="w"> </span><span class="p">(</span><span class="k">Open</span><span class="w"> </span><span class="n">MPI</span><span class="p">)</span><span class="w"> </span><span class="mf">3.1.3</span><span class="w"></span>
 
@@ -1459,8 +1459,8 @@ TensorFlow image, which you used for <a href="#single-node-run">Single-node Run<
 <p>Next, check the available versions of Open MPI on the ABCI system.</p>
 <div class="codehilite"><pre><span></span><code><span class="o">[</span><span class="n">username@es1 ~</span><span class="o">]</span><span class="w"> </span><span class="err">$</span><span class="w"> </span><span class="k">module</span><span class="w"> </span><span class="n">avail</span><span class="w"> </span><span class="n">openmpi</span><span class="w"></span>
 
-<span class="c1">-------------------------------------------- /apps/modules/modulefiles/mpi ---------------------------------------------</span>
-<span class="n">openmpi</span><span class="o">/</span><span class="mf">2.1.6</span><span class="p">(</span><span class="k">default</span><span class="p">)</span><span class="w"> </span><span class="n">openmpi</span><span class="o">/</span><span class="mf">3.1.6</span><span class="w">          </span><span class="n">openmpi</span><span class="o">/</span><span class="mf">4.0.3</span><span class="w"></span>
+<span class="c1">------------------------------ /apps/modules/modulefiles/centos7/mpi -------------------------------</span>
+<span class="n">openmpi</span><span class="o">/</span><span class="mf">2.1.6</span><span class="w">          </span><span class="n">openmpi</span><span class="o">/</span><span class="mf">3.1.6</span><span class="w">          </span><span class="n">openmpi</span><span class="o">/</span><span class="mf">4.0.5</span><span class="p">(</span><span class="k">default</span><span class="p">)</span><span class="w"></span>
 </code></pre></div>
 
 
@@ -1473,9 +1473,9 @@ TensorFlow image, which you used for <a href="#single-node-run">Single-node Run<
 </code></pre></div>
 
 
-<p><strong>SingularityPRO 3.5</strong></p>
+<p><strong>SingularityPRO 3.7</strong></p>
 <div class="codehilite"><pre><span></span><code><span class="err">[username@es1 ~]$ qrsh -g grpname -l rt_F=2 -l h_rt=1:00:00</span>
-<span class="err">[username@g0001 ~]$ module load singularitypro/3.5 openmpi/3.1.6</span>
+<span class="err">[username@g0001 ~]$ module load singularitypro/3.7 openmpi/3.1.6</span>
 </code></pre></div>
 
 
@@ -1505,7 +1505,7 @@ In this case, you run four processes on each full-node in parallel, that means e
 </code></pre></div>
 
 
-<p><strong>SingularityPRO 3.5</strong></p>
+<p><strong>SingularityPRO 3.7</strong></p>
 <div class="codehilite"><pre><span></span><code><span class="err">[username@g0001 ~]$ wget https://raw.githubusercontent.com/horovod/horovod/v0.16.4/examples/tensorflow_mnist.py</span>
 <span class="err">[username@g0001 ~]$ mpirun -np 8 -npernode 4 singularity run --nv tensorflow_19.06-py2.sif python tensorflow_mnist.py</span>
 <span class="err">:</span>
@@ -1551,7 +1551,7 @@ mpirun -np <span class="m">8</span> -npernode <span class="m">4</span> singulari
 </code></pre></div>
 </td></tr></table>
 
-<p><strong>SingularityPRO 3.5</strong></p>
+<p><strong>SingularityPRO 3.7</strong></p>
 <table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1
 2
 3
@@ -1566,7 +1566,7 @@ mpirun -np <span class="m">8</span> -npernode <span class="m">4</span> singulari
 <span class="c1">#$ -cwd</span>
 
 <span class="nb">source</span> /etc/profile.d/modules.sh
-module load singularitypro/3.5 openmpi/3.1.6
+module load singularitypro/3.7 openmpi/3.1.6
 wget https://raw.githubusercontent.com/horovod/horovod/v0.16.4/examples/tensorflow_mnist.py
 mpirun -np <span class="m">8</span> -npernode <span class="m">4</span> singularity run --nv tensorflow_19.06-py2.sif python tensorflow_mnist.py
 </code></pre></div>
@@ -1604,8 +1604,8 @@ In this case, you need to set two environment variables, <code>SINGULARITY_DOCKE
 
 
 <p>An image named <code>chainer-4.0.0b1.simg</code> will be generated.</p>
-<p><strong>SingularityPRO 3.5</strong></p>
-<div class="codehilite"><pre><span></span><code><span class="err">[username@es1 ~]$ module load singularitypro/3.5</span>
+<p><strong>SingularityPRO 3.7</strong></p>
+<div class="codehilite"><pre><span></span><code><span class="err">[username@es1 ~]$ module load singularitypro/3.7</span>
 <span class="err">[username@es1 ~]$ export SINGULARITY_DOCKER_USERNAME=&#39;$oauthtoken&#39;</span>
 <span class="err">[username@es1 ~]$ export SINGULARITY_DOCKER_PASSWORD=&lt;NGC API Key&gt;</span>
 <span class="err">[username@es1 ~]$ singularity pull docker://nvcr.io/partners/chainer:4.0.0b1</span>
@@ -1614,7 +1614,7 @@ In this case, you need to set two environment variables, <code>SINGULARITY_DOCKE
 
 <p>An image named <code>chainer_4.0.0b1.sif</code> will be generated.</p>
 <p>You can also specify <code>--docker-login</code> option to download images instead of environment variables.</p>
-<div class="codehilite"><pre><span></span><code><span class="err">[username@es1 ~]$ module load singularitypro/3.5</span>
+<div class="codehilite"><pre><span></span><code><span class="err">[username@es1 ~]$ module load singularitypro/3.7</span>
 <span class="err">[username@es1 ~]$ singularity pull --disable-cache --docker-login docker://nvcr.io/partners/chainer:4.0.0b1</span>
 <span class="err">Enter Docker Username: $oauthtoken</span>
 <span class="err">Enter Docker Password: &lt;NGC API Key&gt;</span>
@@ -1638,9 +1638,9 @@ In this case, you need to set two environment variables, <code>SINGULARITY_DOCKE
 </code></pre></div>
 
 
-<p><strong>SingularityPRO 3.5</strong></p>
+<p><strong>SingularityPRO 3.7</strong></p>
 <div class="codehilite"><pre><span></span><code><span class="err">[username@es1 ~]$ qrsh -g grpname -l rt_G.small=1 -l h_rt=1:00:00</span>
-<span class="err">[username@g0001 ~]$ module load singularitypro/3.5</span>
+<span class="err">[username@g0001 ~]$ module load singularitypro/3.7</span>
 <span class="err">[username@g0001 ~]$ wget https://raw.githubusercontent.com/chainer/chainer/v4.0.0b1/examples/mnist/train_mnist.py</span>
 <span class="err">[username@g0001 ~]$ singularity exec --nv chainer_4.0.0b1.sif python train_mnist.py -g 0</span>
 <span class="err">:</span>

@@ -1118,19 +1118,19 @@
 <p>To use one of these libraries, it is necessary to configure the user environment in advance using the <code>module</code> command.
 If you run the <code>module</code> command in an interactive node, environment variables for compilation are set automatically.
 If you run the <code>module</code> command in a compute node, environment variables both for compilation and execution are set automatically.</p>
-<div class="codehilite"><pre><span></span><code><span class="err">[username@es1 ~]$ module load openmpi/2.1.6</span>
+<div class="codehilite"><pre><span></span><code><span class="err">[username@es1 ~]$ module load openmpi/4.0.5</span>
 </code></pre></div>
 
 
-<div class="codehilite"><pre><span></span><code><span class="err">[username@es1 ~]$ module load mvapich/mvapich2-gdr/2.3</span>
+<div class="codehilite"><pre><span></span><code><span class="err">[username@es1 ~]$ module load mvapich/mvapich2-gdr/2.3.5</span>
 </code></pre></div>
 
 
-<div class="codehilite"><pre><span></span><code><span class="err">[username@es1 ~]$ module load mvapich/mvapich2/2.3</span>
+<div class="codehilite"><pre><span></span><code><span class="err">[username@es1 ~]$ module load mvapich/mvapich2/2.3.5</span>
 </code></pre></div>
 
 
-<div class="codehilite"><pre><span></span><code><span class="err">[username@es1 ~]$ module load intel-mpi/2018.2.199</span>
+<div class="codehilite"><pre><span></span><code><span class="err">[username@es1 ~]$ module load intel-mpi/2019.9</span>
 </code></pre></div>
 
 
@@ -1142,19 +1142,55 @@ If you run the <code>module</code> command in a compute node, environment variab
 <th align="left">openmpi/</th>
 <th align="left">Compiler version</th>
 <th align="left">w/o CUDA</th>
-<th align="left">cuda8.0 *1</th>
-<th align="left">cuda9.0 *1</th>
-<th align="left">cuda9.1 *1</th>
-<th align="left">cuda9.2 *1</th>
-<th align="left">cuda10.0 *1</th>
-<th align="left">cuda10.1 *1</th>
-<th align="left">cuda10.2 *1</th>
+<th align="left">cuda8.0<sup id="fnref:1"><a class="footnote-ref" href="#fn:1">1</a></sup></th>
+<th align="left">cuda9.0<sup id="fnref2:1"><a class="footnote-ref" href="#fn:1">1</a></sup></th>
+<th align="left">cuda9.1<sup id="fnref3:1"><a class="footnote-ref" href="#fn:1">1</a></sup></th>
+<th align="left">cuda9.2<sup id="fnref4:1"><a class="footnote-ref" href="#fn:1">1</a></sup></th>
+<th align="left">cuda10.0<sup id="fnref5:1"><a class="footnote-ref" href="#fn:1">1</a></sup></th>
+<th align="left">cuda10.1<sup id="fnref6:1"><a class="footnote-ref" href="#fn:1">1</a></sup></th>
+<th align="left">cuda10.2<sup id="fnref7:1"><a class="footnote-ref" href="#fn:1">1</a></sup></th>
+<th align="left">cuda11.0<sup id="fnref8:1"><a class="footnote-ref" href="#fn:1">1</a></sup></th>
+<th align="left">cuda11.1<sup id="fnref9:1"><a class="footnote-ref" href="#fn:1">1</a></sup></th>
+<th align="left">cuda11.2<sup id="fnref10:1"><a class="footnote-ref" href="#fn:1">1</a></sup></th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td align="left">2.1.6</td>
-<td align="left">GCC 4.8.5</td>
+<td align="left">gcc/4.8.5</td>
+<td align="left">Yes</td>
+<td align="left">Yes</td>
+<td align="left">Yes</td>
+<td align="left">Yes</td>
+<td align="left">Yes</td>
+<td align="left">Yes</td>
+<td align="left">Yes</td>
+<td align="left">Yes</td>
+<td align="left">Yes</td>
+<td align="left">Yes</td>
+<td align="left">Yes</td>
+</tr>
+<tr>
+<td align="left">2.1.6</td>
+<td align="left">gcc/7.4.0</td>
+<td align="left">Yes</td>
+<td align="left">-</td>
+<td align="left">-</td>
+<td align="left">-</td>
+<td align="left">Yes</td>
+<td align="left">Yes</td>
+<td align="left">Yes</td>
+<td align="left">Yes</td>
+<td align="left">Yes</td>
+<td align="left">Yes</td>
+<td align="left">Yes</td>
+</tr>
+<tr>
+<td align="left">2.1.6</td>
+<td align="left">gcc/9.3.0</td>
+<td align="left">Yes</td>
+<td align="left">Yes</td>
+<td align="left">Yes</td>
 <td align="left">Yes</td>
 <td align="left">Yes</td>
 <td align="left">Yes</td>
@@ -1166,35 +1202,14 @@ If you run the <code>module</code> command in a compute node, environment variab
 </tr>
 <tr>
 <td align="left">2.1.6</td>
-<td align="left">GCC 7.4.0</td>
-<td align="left">Yes</td>
-<td align="left">-</td>
-<td align="left">-</td>
-<td align="left">-</td>
+<td align="left">pgi/20.4</td>
 <td align="left">Yes</td>
 <td align="left">Yes</td>
 <td align="left">Yes</td>
 <td align="left">Yes</td>
-</tr>
-<tr>
-<td align="left">2.1.6</td>
-<td align="left">PGI 17.10</td>
 <td align="left">Yes</td>
-<td align="left">-</td>
-<td align="left">-</td>
-<td align="left">-</td>
 <td align="left">Yes</td>
-<td align="left">-</td>
-<td align="left">-</td>
-<td align="left">-</td>
-</tr>
-<tr>
-<td align="left">2.1.6</td>
-<td align="left">PGI 18.10</td>
 <td align="left">Yes</td>
-<td align="left">-</td>
-<td align="left">-</td>
-<td align="left">-</td>
 <td align="left">Yes</td>
 <td align="left">Yes</td>
 <td align="left">Yes</td>
@@ -1202,35 +1217,29 @@ If you run the <code>module</code> command in a compute node, environment variab
 </tr>
 <tr>
 <td align="left">2.1.6</td>
-<td align="left">PGI 19.10</td>
-<td align="left">Yes</td>
-<td align="left">-</td>
-<td align="left">-</td>
-<td align="left">-</td>
-<td align="left">-</td>
-<td align="left">-</td>
+<td align="left">nvhpc/20.11</td>
 <td align="left">Yes</td>
 <td align="left">Yes</td>
-</tr>
-<tr>
-<td align="left">3.1.6</td>
-<td align="left">GCC 4.8.5</td>
 <td align="left">Yes</td>
-<td align="left">-</td>
-<td align="left">-</td>
-<td align="left">-</td>
+<td align="left">Yes</td>
+<td align="left">Yes</td>
+<td align="left">Yes</td>
+<td align="left">Yes</td>
 <td align="left">Yes</td>
 <td align="left">Yes</td>
 <td align="left">Yes</td>
 <td align="left">Yes</td>
 </tr>
 <tr>
-<td align="left">3.1.6</td>
-<td align="left">GCC 7.4.0</td>
+<td align="left">2.1.6</td>
+<td align="left">nvhpc/21.2</td>
 <td align="left">Yes</td>
-<td align="left">-</td>
-<td align="left">-</td>
-<td align="left">-</td>
+<td align="left">Yes</td>
+<td align="left">Yes</td>
+<td align="left">Yes</td>
+<td align="left">Yes</td>
+<td align="left">Yes</td>
+<td align="left">Yes</td>
 <td align="left">Yes</td>
 <td align="left">Yes</td>
 <td align="left">Yes</td>
@@ -1238,291 +1247,228 @@ If you run the <code>module</code> command in a compute node, environment variab
 </tr>
 <tr>
 <td align="left">3.1.6</td>
-<td align="left">PGI 17.10</td>
+<td align="left">gcc/4.8.5</td>
 <td align="left">Yes</td>
 <td align="left">-</td>
 <td align="left">-</td>
 <td align="left">-</td>
-<td align="left">-</td>
-<td align="left">-</td>
-<td align="left">-</td>
-<td align="left">-</td>
+<td align="left">Yes</td>
+<td align="left">Yes</td>
+<td align="left">Yes</td>
+<td align="left">Yes</td>
+<td align="left">Yes</td>
+<td align="left">Yes</td>
+<td align="left">Yes</td>
 </tr>
 <tr>
 <td align="left">3.1.6</td>
-<td align="left">PGI 18.10</td>
+<td align="left">gcc/7.4.0</td>
 <td align="left">Yes</td>
 <td align="left">-</td>
 <td align="left">-</td>
 <td align="left">-</td>
-<td align="left">-</td>
-<td align="left">-</td>
-<td align="left">-</td>
-<td align="left">-</td>
+<td align="left">Yes</td>
+<td align="left">Yes</td>
+<td align="left">Yes</td>
+<td align="left">Yes</td>
+<td align="left">Yes</td>
+<td align="left">Yes</td>
+<td align="left">Yes</td>
 </tr>
 <tr>
 <td align="left">3.1.6</td>
-<td align="left">PGI 19.10</td>
+<td align="left">gcc/9.3.0</td>
 <td align="left">Yes</td>
 <td align="left">-</td>
 <td align="left">-</td>
 <td align="left">-</td>
-<td align="left">-</td>
-<td align="left">-</td>
-<td align="left">-</td>
-<td align="left">-</td>
+<td align="left">Yes</td>
+<td align="left">Yes</td>
+<td align="left">Yes</td>
+<td align="left">Yes</td>
+<td align="left">Yes</td>
+<td align="left">Yes</td>
+<td align="left">Yes</td>
 </tr>
 <tr>
 <td align="left">3.1.6</td>
-<td align="left">PGI 20.1</td>
+<td align="left">pgi/20.4</td>
 <td align="left">Yes</td>
 <td align="left">-</td>
 <td align="left">-</td>
 <td align="left">-</td>
-<td align="left">-</td>
-<td align="left">-</td>
-<td align="left">-</td>
-<td align="left">-</td>
-</tr>
-<tr>
-<td align="left">4.0.3</td>
-<td align="left">GCC 4.8.5</td>
 <td align="left">Yes</td>
-<td align="left">-</td>
-<td align="left">-</td>
-<td align="left">-</td>
+<td align="left">Yes</td>
+<td align="left">Yes</td>
 <td align="left">Yes</td>
 <td align="left">Yes</td>
 <td align="left">Yes</td>
 <td align="left">Yes</td>
 </tr>
 <tr>
-<td align="left">4.0.3</td>
-<td align="left">GCC 7.4.0</td>
+<td align="left">3.1.6</td>
+<td align="left">nvhpc/20.11</td>
 <td align="left">Yes</td>
 <td align="left">-</td>
 <td align="left">-</td>
 <td align="left">-</td>
+<td align="left">Yes</td>
+<td align="left">Yes</td>
+<td align="left">Yes</td>
 <td align="left">Yes</td>
 <td align="left">Yes</td>
 <td align="left">Yes</td>
 <td align="left">Yes</td>
 </tr>
 <tr>
-<td align="left">4.0.3</td>
-<td align="left">PGI 17.10</td>
+<td align="left">3.1.6</td>
+<td align="left">nvhpc/21.2</td>
 <td align="left">Yes</td>
 <td align="left">-</td>
 <td align="left">-</td>
 <td align="left">-</td>
-<td align="left">-</td>
-<td align="left">-</td>
-<td align="left">-</td>
-<td align="left">-</td>
+<td align="left">Yes</td>
+<td align="left">Yes</td>
+<td align="left">Yes</td>
+<td align="left">Yes</td>
+<td align="left">Yes</td>
+<td align="left">Yes</td>
+<td align="left">Yes</td>
 </tr>
 <tr>
-<td align="left">4.0.3</td>
-<td align="left">PGI 18.10</td>
+<td align="left">4.0.5</td>
+<td align="left">gcc/4.8.5</td>
 <td align="left">Yes</td>
 <td align="left">-</td>
 <td align="left">-</td>
 <td align="left">-</td>
-<td align="left">-</td>
-<td align="left">-</td>
-<td align="left">-</td>
-<td align="left">-</td>
+<td align="left">Yes</td>
+<td align="left">Yes</td>
+<td align="left">Yes</td>
+<td align="left">Yes</td>
+<td align="left">Yes</td>
+<td align="left">Yes</td>
+<td align="left">Yes</td>
 </tr>
 <tr>
-<td align="left">4.0.3</td>
-<td align="left">PGI 19.10</td>
+<td align="left">4.0.5</td>
+<td align="left">gcc/7.4.0</td>
 <td align="left">Yes</td>
 <td align="left">-</td>
 <td align="left">-</td>
 <td align="left">-</td>
-<td align="left">-</td>
-<td align="left">-</td>
-<td align="left">-</td>
-<td align="left">-</td>
+<td align="left">Yes</td>
+<td align="left">Yes</td>
+<td align="left">Yes</td>
+<td align="left">Yes</td>
+<td align="left">Yes</td>
+<td align="left">Yes</td>
+<td align="left">Yes</td>
 </tr>
 <tr>
-<td align="left">4.0.3</td>
-<td align="left">PGI 20.1</td>
+<td align="left">4.0.5</td>
+<td align="left">gcc/9.3.0</td>
 <td align="left">Yes</td>
 <td align="left">-</td>
 <td align="left">-</td>
 <td align="left">-</td>
+<td align="left">Yes</td>
+<td align="left">Yes</td>
+<td align="left">Yes</td>
+<td align="left">Yes</td>
+<td align="left">Yes</td>
+<td align="left">Yes</td>
+<td align="left">Yes</td>
+</tr>
+<tr>
+<td align="left">4.0.5</td>
+<td align="left">pgi/20.4</td>
+<td align="left">Yes</td>
 <td align="left">-</td>
 <td align="left">-</td>
 <td align="left">-</td>
+<td align="left">Yes</td>
+<td align="left">Yes</td>
+<td align="left">Yes</td>
+<td align="left">Yes</td>
+<td align="left">Yes</td>
+<td align="left">Yes</td>
+<td align="left">Yes</td>
+</tr>
+<tr>
+<td align="left">4.0.5</td>
+<td align="left">nvhpc/20.11</td>
+<td align="left">Yes</td>
 <td align="left">-</td>
+<td align="left">-</td>
+<td align="left">-</td>
+<td align="left">Yes</td>
+<td align="left">Yes</td>
+<td align="left">Yes</td>
+<td align="left">Yes</td>
+<td align="left">Yes</td>
+<td align="left">Yes</td>
+<td align="left">Yes</td>
+</tr>
+<tr>
+<td align="left">4.0.5</td>
+<td align="left">nvhpc/21.2</td>
+<td align="left">Yes</td>
+<td align="left">-</td>
+<td align="left">-</td>
+<td align="left">-</td>
+<td align="left">Yes</td>
+<td align="left">Yes</td>
+<td align="left">Yes</td>
+<td align="left">Yes</td>
+<td align="left">Yes</td>
+<td align="left">Yes</td>
+<td align="left">Yes</td>
 </tr>
 </tbody>
 </table>
-<p>*1 CUDA-aware versions</p>
 <h2 id="mvapich2">MVAPICH2</h2>
 <table>
 <thead>
 <tr>
 <th align="left">mvapich/mvapich2/</th>
 <th align="left">Compiler version</th>
-<th align="left">w/o CUDA</th>
-<th align="left">cuda8.0 *1</th>
-<th align="left">cuda9.0 *1</th>
-<th align="left">cuda9.1 *1</th>
-<th align="left">cuda9.2 *1</th>
-<th align="left">cuda10.0 *1</th>
-<th align="left">cuda10.1 *1</th>
-<th align="left">cuda10.2 *1</th>
+<th align="left">Support</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td align="left">2.3.3</td>
-<td align="left">GCC 4.8.5</td>
-<td align="left">Yes</td>
-<td align="left">Yes</td>
-<td align="left">Yes</td>
-<td align="left">Yes</td>
-<td align="left">Yes</td>
-<td align="left">Yes</td>
-<td align="left">Yes</td>
+<td align="left">2.3.5</td>
+<td align="left">gcc/4.8.5</td>
 <td align="left">Yes</td>
 </tr>
 <tr>
-<td align="left">2.3.3</td>
-<td align="left">GCC 7.4.0</td>
-<td align="left">Yes</td>
-<td align="left">-</td>
-<td align="left">-</td>
-<td align="left">-</td>
-<td align="left">Yes</td>
-<td align="left">Yes</td>
-<td align="left">Yes</td>
+<td align="left">2.3.5</td>
+<td align="left">gcc/7.4.0</td>
 <td align="left">Yes</td>
 </tr>
 <tr>
-<td align="left">2.3.3</td>
-<td align="left">PGI 17.10</td>
-<td align="left">Yes</td>
-<td align="left">-</td>
-<td align="left">-</td>
-<td align="left">-</td>
-<td align="left">Yes</td>
-<td align="left">-</td>
-<td align="left">-</td>
-<td align="left">-</td>
-</tr>
-<tr>
-<td align="left">2.3.3</td>
-<td align="left">PGI 18.10</td>
-<td align="left">Yes</td>
-<td align="left">-</td>
-<td align="left">-</td>
-<td align="left">-</td>
-<td align="left">Yes</td>
-<td align="left">Yes</td>
-<td align="left">Yes</td>
+<td align="left">2.3.5</td>
+<td align="left">gcc/9.3.0</td>
 <td align="left">Yes</td>
 </tr>
 <tr>
-<td align="left">2.3.3</td>
-<td align="left">PGI 19.10</td>
-<td align="left">Yes</td>
-<td align="left">-</td>
-<td align="left">-</td>
-<td align="left">-</td>
-<td align="left">-</td>
-<td align="left">-</td>
-<td align="left">Yes</td>
+<td align="left">2.3.5</td>
+<td align="left">pgi/20.4</td>
 <td align="left">Yes</td>
 </tr>
 <tr>
-<td align="left">2.3.3</td>
-<td align="left">PGI 20.1</td>
+<td align="left">2.3.5</td>
+<td align="left">nvhpc/20.11</td>
 <td align="left">Yes</td>
-<td align="left">-</td>
-<td align="left">-</td>
-<td align="left">-</td>
-<td align="left">-</td>
-<td align="left">-</td>
-<td align="left">-</td>
-<td align="left">-</td>
 </tr>
 <tr>
-<td align="left">2.3.4</td>
-<td align="left">GCC 4.8.5</td>
+<td align="left">2.3.5</td>
+<td align="left">nvhpc/21.2</td>
 <td align="left">Yes</td>
-<td align="left">-</td>
-<td align="left">-</td>
-<td align="left">-</td>
-<td align="left">-</td>
-<td align="left">-</td>
-<td align="left">-</td>
-<td align="left">-</td>
-</tr>
-<tr>
-<td align="left">2.3.4</td>
-<td align="left">GCC 7.4.0</td>
-<td align="left">Yes</td>
-<td align="left">-</td>
-<td align="left">-</td>
-<td align="left">-</td>
-<td align="left">-</td>
-<td align="left">-</td>
-<td align="left">-</td>
-<td align="left">-</td>
-</tr>
-<tr>
-<td align="left">2.3.4</td>
-<td align="left">PGI 17.10</td>
-<td align="left">Yes</td>
-<td align="left">-</td>
-<td align="left">-</td>
-<td align="left">-</td>
-<td align="left">-</td>
-<td align="left">-</td>
-<td align="left">-</td>
-<td align="left">-</td>
-</tr>
-<tr>
-<td align="left">2.3.4</td>
-<td align="left">PGI 18.10</td>
-<td align="left">Yes</td>
-<td align="left">-</td>
-<td align="left">-</td>
-<td align="left">-</td>
-<td align="left">-</td>
-<td align="left">-</td>
-<td align="left">-</td>
-<td align="left">-</td>
-</tr>
-<tr>
-<td align="left">2.3.4</td>
-<td align="left">PGI 19.10</td>
-<td align="left">Yes</td>
-<td align="left">-</td>
-<td align="left">-</td>
-<td align="left">-</td>
-<td align="left">-</td>
-<td align="left">-</td>
-<td align="left">-</td>
-<td align="left">-</td>
-</tr>
-<tr>
-<td align="left">2.3.4</td>
-<td align="left">PGI 20.1</td>
-<td align="left">Yes</td>
-<td align="left">-</td>
-<td align="left">-</td>
-<td align="left">-</td>
-<td align="left">-</td>
-<td align="left">-</td>
-<td align="left">-</td>
-<td align="left">-</td>
 </tr>
 </tbody>
 </table>
-<p>*1 CUDA-aware versions</p>
 <h2 id="mvapich2-gdr">MVAPICH2-GDR</h2>
 <table>
 <thead>
@@ -1536,28 +1482,19 @@ If you run the <code>module</code> command in a compute node, environment variab
 <th align="left">cuda10.0</th>
 <th align="left">cuda10.1</th>
 <th align="left">cuda10.2</th>
+<th align="left">cuda11.0</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td align="left">2.3.3</td>
-<td align="left">GCC 4.8.5</td>
-<td align="left">-</td>
-<td align="left">-</td>
-<td align="left">-</td>
-<td align="left">Yes</td>
-<td align="left">Yes</td>
-<td align="left">Yes</td>
-<td align="left">-</td>
-</tr>
-<tr>
-<td align="left">2.3.4</td>
-<td align="left">GCC 4.8.5</td>
+<td align="left">2.3.5</td>
+<td align="left">gcc/4.8.5</td>
 <td align="left">-</td>
 <td align="left">-</td>
 <td align="left">-</td>
 <td align="left">-</td>
-<td align="left">Yes</td>
+<td align="left">-</td>
+<td align="left">-</td>
 <td align="left">Yes</td>
 <td align="left">Yes</td>
 </tr>
@@ -1577,23 +1514,19 @@ If you run the <code>module</code> command in a compute node, environment variab
 </thead>
 <tbody>
 <tr>
-<td align="left">2017.4</td>
-<td align="left">Yes</td>
-</tr>
-<tr>
-<td align="left">2018.4</td>
-<td align="left">Yes</td>
-</tr>
-<tr>
-<td align="left">2019.5</td>
-<td align="left">Yes</td>
-</tr>
-<tr>
 <td align="left">2019.9</td>
 <td align="left">Yes</td>
 </tr>
 </tbody>
 </table>
+<div class="footnote">
+<hr />
+<ol>
+<li id="fn:1">
+<p>CUDA-aware versions&#160;<a class="footnote-backref" href="#fnref:1" title="Jump back to footnote 1 in the text">&#8617;</a><a class="footnote-backref" href="#fnref2:1" title="Jump back to footnote 1 in the text">&#8617;</a><a class="footnote-backref" href="#fnref3:1" title="Jump back to footnote 1 in the text">&#8617;</a><a class="footnote-backref" href="#fnref4:1" title="Jump back to footnote 1 in the text">&#8617;</a><a class="footnote-backref" href="#fnref5:1" title="Jump back to footnote 1 in the text">&#8617;</a><a class="footnote-backref" href="#fnref6:1" title="Jump back to footnote 1 in the text">&#8617;</a><a class="footnote-backref" href="#fnref7:1" title="Jump back to footnote 1 in the text">&#8617;</a><a class="footnote-backref" href="#fnref8:1" title="Jump back to footnote 1 in the text">&#8617;</a><a class="footnote-backref" href="#fnref9:1" title="Jump back to footnote 1 in the text">&#8617;</a><a class="footnote-backref" href="#fnref10:1" title="Jump back to footnote 1 in the text">&#8617;</a></p>
+</li>
+</ol>
+</div>
                 
                   
                 

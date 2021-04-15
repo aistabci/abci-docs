@@ -1144,7 +1144,7 @@
 <p>これらのライブラリを利用するためには、事前に<code>module</code>コマンドを用いて利用環境を設定する必要があります。<code>module</code>コマンドを用いると、<code>PATH</code>などの実行用環境変数や、ヘッダファイルやライブラリのサーチパスなどのコンパイル用環境変数を自動的に設定できます。</p>
 <div class="codehilite"><pre><span></span><code><span class="err">[username@g0001 ~]$ module load cuda/10.0/10.0.130.1</span>
 <span class="err">[username@g0001 ~]$ module load cudnn/7.4/7.4.2</span>
-<span class="err">[username@g0001 ~]$ module load nccl/2.4/2.4.7-1</span>
+<span class="err">[username@g0001 ~]$ module load nccl/2.4/2.4.8-1</span>
 </code></pre></div>
 
 
@@ -1280,7 +1280,7 @@
 <td align="left">cuda/10.0</td>
 <td align="left">10.0.130</td>
 <td align="left">Yes</td>
-<td align="left">Yes</td>
+<td align="left">-</td>
 </tr>
 <tr>
 <td align="left">cuda/10.0</td>
@@ -1312,32 +1312,75 @@
 <td align="left">Yes</td>
 <td align="left">Yes</td>
 </tr>
+<tr>
+<td align="left">cuda/11.0</td>
+<td align="left">11.0.2</td>
+<td align="left">Yes</td>
+<td align="left">-</td>
+</tr>
+<tr>
+<td align="left">cuda/11.0</td>
+<td align="left">11.0.3</td>
+<td align="left">Yes</td>
+<td align="left">Yes</td>
+</tr>
+<tr>
+<td align="left">cuda/11.1</td>
+<td align="left">11.1.0</td>
+<td align="left">Yes</td>
+<td align="left">-</td>
+</tr>
+<tr>
+<td align="left">cuda/11.1</td>
+<td align="left">11.1.1</td>
+<td align="left">Yes</td>
+<td align="left">Yes</td>
+</tr>
+<tr>
+<td align="left">cuda/11.2</td>
+<td align="left">11.2.0</td>
+<td align="left">Yes</td>
+<td align="left">-</td>
+</tr>
+<tr>
+<td align="left">cuda/11.2</td>
+<td align="left">11.2.1</td>
+<td align="left">Yes</td>
+<td align="left">-</td>
+</tr>
+<tr>
+<td align="left">cuda/11.2</td>
+<td align="left">11.2.2</td>
+<td align="left">Yes</td>
+<td align="left">Yes</td>
+</tr>
 </tbody>
 </table>
 <h2 id="cudnn">cuDNN</h2>
 <!--
-| Version | cuda/8.0 | cuda/9.0 | cuda/9.1 | cuda/9.2 | cuda/10.0 | cuda/10.1 | cuda/10.2 |
-|:--|:--|:--|:--|:--|:--|:--|:--|
-| 5.1.10 | Yes | -   | -   | -   | -   | -   | -   |
-| 6.0.21 | Yes | -   | -   | -   | -   | -   | -   |
-| 7.0.5  | Yes | Yes | Yes | -   | -   | -   | -   |
-| 7.1.3  | Yes | Yes | Yes | -   | -   | -   | -   |
-| 7.1.4  | -   | Yes | -   | Yes | -   | -   | -   |
-| 7.2.1  | \*1 | Yes | -   | Yes | -   | -   | -   |
-| 7.3.0  | -   | \*1 | -   | -   | \*1 | -   | -   |
-| 7.3.1  | -   | Yes | -   | Yes | Yes | -   | -   |
-| 7.4.1  | -   | \*1 | -   | \*1 | \*1 | -   | -   |
-| 7.4.2  | -   | Yes | -   | Yes | Yes | -   | -   |
-| 7.5.0  | -   | Yes | -   | Yes | Yes | Yes | -   |
-| 7.5.1  | -   | Yes | -   | Yes | Yes | Yes | -   |
-| 7.6.0  | -   | Yes | -   | Yes | Yes | Yes | -   |
-| 7.6.1  | -   | Yes | -   | Yes | Yes | Yes | -   |
-| 7.6.2  | -   | Yes | -   | Yes | Yes | Yes | -   |
-| 7.6.3  | -   | Yes | -   | Yes | Yes | Yes | -   |
-| 7.6.4  | -   | Yes | -   | Yes | Yes | Yes | -   |
-| 7.6.5  | -   | Yes | -   | Yes | Yes | Yes | Yes |
-| 8.0.2  | -   | -   | -   | -   | -   | Yes | Yes |
-| 8.0.5  | -   | -   | -   | -   | -   | Yes | Yes |
+| Version | cuda/8.0 | cuda/9.0 | cuda/9.1 | cuda/9.2 | cuda/10.0 | cuda/10.1 | cuda/10.2 | cuda/11.0 | cuda/11.1 | cuda/11.2 |
+|:--|:--|:--|:--|:--|:--|:--|:--|:--|:--|:--|
+| 5.1.10 | Yes | -   | -   | -   | -   | -   | -   | -   | -   | -   |
+| 6.0.21 | Yes | -   | -   | -   | -   | -   | -   | -   | -   | -   |
+| 7.0.5  | Yes | Yes | Yes | -   | -   | -   | -   | -   | -   | -   |
+| 7.1.3  | Yes | Yes | Yes | -   | -   | -   | -   | -   | -   | -   |
+| 7.1.4  | -   | Yes | -   | Yes | -   | -   | -   | -   | -   | -   |
+| 7.2.1  | \*1 | Yes | -   | Yes | -   | -   | -   | -   | -   | -   |
+| 7.3.0  | -   | \*1 | -   | -   | \*1 | -   | -   | -   | -   | -   |
+| 7.3.1  | -   | Yes | -   | Yes | Yes | -   | -   | -   | -   | -   |
+| 7.4.1  | -   | \*1 | -   | \*1 | \*1 | -   | -   | -   | -   | -   |
+| 7.4.2  | -   | Yes | -   | Yes | Yes | -   | -   | -   | -   | -   |
+| 7.5.0  | -   | Yes | -   | Yes | Yes | Yes | -   | -   | -   | -   |
+| 7.5.1  | -   | Yes | -   | Yes | Yes | Yes | -   | -   | -   | -   |
+| 7.6.0  | -   | Yes | -   | Yes | Yes | Yes | -   | -   | -   | -   |
+| 7.6.1  | -   | Yes | -   | Yes | Yes | Yes | -   | -   | -   | -   |
+| 7.6.2  | -   | Yes | -   | Yes | Yes | Yes | -   | -   | -   | -   |
+| 7.6.3  | -   | Yes | -   | Yes | Yes | Yes | -   | -   | -   | -   |
+| 7.6.4  | -   | Yes | -   | Yes | Yes | Yes | -   | -   | -   | -   |
+| 7.6.5  | -   | Yes | -   | Yes | Yes | Yes | Yes | -   | -   | -   |
+| 8.0.2  | -   | -   | -   | -   | -   | Yes | Yes | -   | -   | -   |
+| 8.0.5  | -   | -   | -   | -   | -   | Yes | Yes | Yes | Yes | -   |
+| 8.1.1  | -   | -   | -   | -   | -   | -   | Yes | Yes | Yes | Yes |
 
 \*1 Installed, but modules are not provided
 \*2 Installed, but not yet supported
@@ -1354,12 +1397,18 @@
 <th align="left">cuda/10.0</th>
 <th align="left">cuda/10.1</th>
 <th align="left">cuda/10.2</th>
+<th align="left">cuda/11.0</th>
+<th align="left">cuda/11.1</th>
+<th align="left">cuda/11.2</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td align="left">5.1.10</td>
 <td align="left">Yes</td>
+<td align="left">-</td>
+<td align="left">-</td>
+<td align="left">-</td>
 <td align="left">-</td>
 <td align="left">-</td>
 <td align="left">-</td>
@@ -1376,6 +1425,9 @@
 <td align="left">-</td>
 <td align="left">-</td>
 <td align="left">-</td>
+<td align="left">-</td>
+<td align="left">-</td>
+<td align="left">-</td>
 </tr>
 <tr>
 <td align="left">7.0.5</td>
@@ -1385,13 +1437,6 @@
 <td align="left">-</td>
 <td align="left">-</td>
 <td align="left">-</td>
-<td align="left">-</td>
-</tr>
-<tr>
-<td align="left">7.1.3</td>
-<td align="left">Yes</td>
-<td align="left">Yes</td>
-<td align="left">Yes</td>
 <td align="left">-</td>
 <td align="left">-</td>
 <td align="left">-</td>
@@ -1406,6 +1451,9 @@
 <td align="left">-</td>
 <td align="left">-</td>
 <td align="left">-</td>
+<td align="left">-</td>
+<td align="left">-</td>
+<td align="left">-</td>
 </tr>
 <tr>
 <td align="left">7.2.1</td>
@@ -1416,9 +1464,15 @@
 <td align="left">-</td>
 <td align="left">-</td>
 <td align="left">-</td>
+<td align="left">-</td>
+<td align="left">-</td>
+<td align="left">-</td>
 </tr>
 <tr>
 <td align="left">7.3.0</td>
+<td align="left">-</td>
+<td align="left">-</td>
+<td align="left">-</td>
 <td align="left">-</td>
 <td align="left">-</td>
 <td align="left">-</td>
@@ -1436,9 +1490,15 @@
 <td align="left">Yes</td>
 <td align="left">-</td>
 <td align="left">-</td>
+<td align="left">-</td>
+<td align="left">-</td>
+<td align="left">-</td>
 </tr>
 <tr>
 <td align="left">7.4.1</td>
+<td align="left">-</td>
+<td align="left">-</td>
+<td align="left">-</td>
 <td align="left">-</td>
 <td align="left">-</td>
 <td align="left">-</td>
@@ -1456,15 +1516,8 @@
 <td align="left">Yes</td>
 <td align="left">-</td>
 <td align="left">-</td>
-</tr>
-<tr>
-<td align="left">7.5.0</td>
 <td align="left">-</td>
-<td align="left">Yes</td>
 <td align="left">-</td>
-<td align="left">Yes</td>
-<td align="left">Yes</td>
-<td align="left">Yes</td>
 <td align="left">-</td>
 </tr>
 <tr>
@@ -1476,55 +1529,8 @@
 <td align="left">Yes</td>
 <td align="left">Yes</td>
 <td align="left">-</td>
-</tr>
-<tr>
-<td align="left">7.6.0</td>
 <td align="left">-</td>
-<td align="left">Yes</td>
 <td align="left">-</td>
-<td align="left">Yes</td>
-<td align="left">Yes</td>
-<td align="left">Yes</td>
-<td align="left">-</td>
-</tr>
-<tr>
-<td align="left">7.6.1</td>
-<td align="left">-</td>
-<td align="left">Yes</td>
-<td align="left">-</td>
-<td align="left">Yes</td>
-<td align="left">Yes</td>
-<td align="left">Yes</td>
-<td align="left">-</td>
-</tr>
-<tr>
-<td align="left">7.6.2</td>
-<td align="left">-</td>
-<td align="left">Yes</td>
-<td align="left">-</td>
-<td align="left">Yes</td>
-<td align="left">Yes</td>
-<td align="left">Yes</td>
-<td align="left">-</td>
-</tr>
-<tr>
-<td align="left">7.6.3</td>
-<td align="left">-</td>
-<td align="left">Yes</td>
-<td align="left">-</td>
-<td align="left">Yes</td>
-<td align="left">Yes</td>
-<td align="left">Yes</td>
-<td align="left">-</td>
-</tr>
-<tr>
-<td align="left">7.6.4</td>
-<td align="left">-</td>
-<td align="left">Yes</td>
-<td align="left">-</td>
-<td align="left">Yes</td>
-<td align="left">Yes</td>
-<td align="left">Yes</td>
 <td align="left">-</td>
 </tr>
 <tr>
@@ -1536,16 +1542,9 @@
 <td align="left">Yes</td>
 <td align="left">Yes</td>
 <td align="left">Yes</td>
-</tr>
-<tr>
-<td align="left">8.0.2</td>
 <td align="left">-</td>
 <td align="left">-</td>
 <td align="left">-</td>
-<td align="left">-</td>
-<td align="left">-</td>
-<td align="left">Yes</td>
-<td align="left">Yes</td>
 </tr>
 <tr>
 <td align="left">8.0.5</td>
@@ -1556,28 +1555,45 @@
 <td align="left">-</td>
 <td align="left">Yes</td>
 <td align="left">Yes</td>
+<td align="left">Yes</td>
+<td align="left">Yes</td>
+<td align="left">-</td>
+</tr>
+<tr>
+<td align="left">8.1.1</td>
+<td align="left">-</td>
+<td align="left">-</td>
+<td align="left">-</td>
+<td align="left">-</td>
+<td align="left">-</td>
+<td align="left">-</td>
+<td align="left">Yes</td>
+<td align="left">Yes</td>
+<td align="left">Yes</td>
+<td align="left">Yes</td>
 </tr>
 </tbody>
 </table>
 <h2 id="nccl">NCCL</h2>
 <!--
-| Version | cuda/8.0 | cuda/9.0 | cuda/9.1 | cuda/9.2 | cuda/10.0 | cuda/10.1 | cuda/10.2 |
-|:--|:--|:--|:--|:--|:--|:--|:--|
-| 1.3.5-1  | Yes | Yes | Yes | Yes | Yes | -   | -   |
-| 2.0.5-3  | \*1 | \*1 | -   | -   | -   | -   | -   |
-| 2.1.15-1 | Yes | Yes | Yes | -   | -   | -   | -   |
-| 2.2.12-1 | \*1 | \*1 | -   | \*1 | -   | -   | -   |
-| 2.2.13-1 | Yes | Yes | -   | Yes | -   | -   | -   |
-| 2.3.4-1  | -   | Yes | -   | Yes | Yes | -   | -   |
-| 2.3.5-2  | -   | Yes | -   | Yes | Yes | -   | -   |
-| 2.3.7-1  | -   | Yes | -   | Yes | Yes | -   | -   |
-| 2.4.2-1  | -   | -   | -   | Yes | Yes | Yes | -   |
-| 2.4.7-1  | -   | -   | -   | Yes | Yes | Yes | -   |
-| 2.4.8-1  | -   | -   | -   | Yes | Yes | Yes | -   |
-| 2.5.6-1  | -   | Yes | -   | -   | Yes | Yes | Yes |
-| 2.6.4-1  | -   | -   | -   | -   | Yes | Yes | Yes |
-| 2.7.8-1  | -   | -   | -   | -   | -   | Yes | Yes |
-| 2.8.3-1  | -   | -   | -   | -   | -   | Yes | Yes |
+| Version | cuda/8.0 | cuda/9.0 | cuda/9.1 | cuda/9.2 | cuda/10.0 | cuda/10.1 | cuda/10.2 | cuda/11.0 | cuda/11.1 | cuda/11.2 |
+|:--|:--|:--|:--|:--|:--|:--|:--|:--|:--|:--|
+| 1.3.5-1  | Yes | Yes | Yes | Yes | Yes | -   | -   | -   | -   | -   |
+| 2.0.5-3  | \*1 | \*1 | -   | -   | -   | -   | -   | -   | -   | -   |
+| 2.1.15-1 | Yes | Yes | Yes | -   | -   | -   | -   | -   | -   | -   |
+| 2.2.12-1 | \*1 | \*1 | -   | \*1 | -   | -   | -   | -   | -   | -   |
+| 2.2.13-1 | Yes | Yes | -   | Yes | -   | -   | -   | -   | -   | -   |
+| 2.3.4-1  | -   | Yes | -   | Yes | Yes | -   | -   | -   | -   | -   |
+| 2.3.5-2  | -   | Yes | -   | Yes | Yes | -   | -   | -   | -   | -   |
+| 2.3.7-1  | -   | Yes | -   | Yes | Yes | -   | -   | -   | -   | -   |
+| 2.4.2-1  | -   | -   | -   | Yes | Yes | Yes | -   | -   | -   | -   |
+| 2.4.7-1  | -   | -   | -   | Yes | Yes | Yes | -   | -   | -   | -   |
+| 2.4.8-1  | -   | -   | -   | Yes | Yes | Yes | -   | -   | -   | -   |
+| 2.5.6-1  | -   | Yes | -   | -   | Yes | Yes | Yes | -   | -   | -   |
+| 2.6.4-1  | -   | -   | -   | -   | Yes | Yes | Yes | -   | -   | -   |
+| 2.7.8-1  | -   | -   | -   | -   | -   | Yes | Yes | Yes | Yes | -   |
+| 2.8.3-1  | -   | -   | -   | -   | -   | Yes | Yes | Yes | Yes | Yes |
+| 2.8.4-1  | -   | -   | -   | -   | -   | -   | Yes | Yes | Yes | Yes |
 
 \*1 Installed, but modules are not provided
 \*2 Installed, but not yet supported
@@ -1594,6 +1610,9 @@
 <th align="left">cuda/10.0</th>
 <th align="left">cuda/10.1</th>
 <th align="left">cuda/10.2</th>
+<th align="left">cuda/11.0</th>
+<th align="left">cuda/11.1</th>
+<th align="left">cuda/11.2</th>
 </tr>
 </thead>
 <tbody>
@@ -1606,13 +1625,6 @@
 <td align="left">Yes</td>
 <td align="left">-</td>
 <td align="left">-</td>
-</tr>
-<tr>
-<td align="left">2.0.5-3</td>
-<td align="left">-</td>
-<td align="left">-</td>
-<td align="left">-</td>
-<td align="left">-</td>
 <td align="left">-</td>
 <td align="left">-</td>
 <td align="left">-</td>
@@ -1622,13 +1634,6 @@
 <td align="left">Yes</td>
 <td align="left">Yes</td>
 <td align="left">Yes</td>
-<td align="left">-</td>
-<td align="left">-</td>
-<td align="left">-</td>
-<td align="left">-</td>
-</tr>
-<tr>
-<td align="left">2.2.12-1</td>
 <td align="left">-</td>
 <td align="left">-</td>
 <td align="left">-</td>
@@ -1646,24 +1651,7 @@
 <td align="left">-</td>
 <td align="left">-</td>
 <td align="left">-</td>
-</tr>
-<tr>
-<td align="left">2.3.4-1</td>
 <td align="left">-</td>
-<td align="left">Yes</td>
-<td align="left">-</td>
-<td align="left">Yes</td>
-<td align="left">Yes</td>
-<td align="left">-</td>
-<td align="left">-</td>
-</tr>
-<tr>
-<td align="left">2.3.5-2</td>
-<td align="left">-</td>
-<td align="left">Yes</td>
-<td align="left">-</td>
-<td align="left">Yes</td>
-<td align="left">Yes</td>
 <td align="left">-</td>
 <td align="left">-</td>
 </tr>
@@ -1676,25 +1664,8 @@
 <td align="left">Yes</td>
 <td align="left">-</td>
 <td align="left">-</td>
-</tr>
-<tr>
-<td align="left">2.4.2-1</td>
 <td align="left">-</td>
 <td align="left">-</td>
-<td align="left">-</td>
-<td align="left">Yes</td>
-<td align="left">Yes</td>
-<td align="left">Yes</td>
-<td align="left">-</td>
-</tr>
-<tr>
-<td align="left">2.4.7-1</td>
-<td align="left">-</td>
-<td align="left">-</td>
-<td align="left">-</td>
-<td align="left">Yes</td>
-<td align="left">Yes</td>
-<td align="left">Yes</td>
 <td align="left">-</td>
 </tr>
 <tr>
@@ -1706,6 +1677,9 @@
 <td align="left">Yes</td>
 <td align="left">Yes</td>
 <td align="left">-</td>
+<td align="left">-</td>
+<td align="left">-</td>
+<td align="left">-</td>
 </tr>
 <tr>
 <td align="left">2.5.6-1</td>
@@ -1716,6 +1690,9 @@
 <td align="left">Yes</td>
 <td align="left">Yes</td>
 <td align="left">Yes</td>
+<td align="left">-</td>
+<td align="left">-</td>
+<td align="left">-</td>
 </tr>
 <tr>
 <td align="left">2.6.4-1</td>
@@ -1726,6 +1703,9 @@
 <td align="left">Yes</td>
 <td align="left">Yes</td>
 <td align="left">Yes</td>
+<td align="left">-</td>
+<td align="left">-</td>
+<td align="left">-</td>
 </tr>
 <tr>
 <td align="left">2.7.8-1</td>
@@ -1736,14 +1716,20 @@
 <td align="left">-</td>
 <td align="left">Yes</td>
 <td align="left">Yes</td>
+<td align="left">Yes</td>
+<td align="left">Yes</td>
+<td align="left">-</td>
 </tr>
 <tr>
-<td align="left">2.8.3-1</td>
+<td align="left">2.8.4-1</td>
 <td align="left">-</td>
 <td align="left">-</td>
 <td align="left">-</td>
 <td align="left">-</td>
 <td align="left">-</td>
+<td align="left">-</td>
+<td align="left">Yes</td>
+<td align="left">Yes</td>
 <td align="left">Yes</td>
 <td align="left">Yes</td>
 </tr>
@@ -1761,11 +1747,17 @@
 <th align="left">cuda/10.0</th>
 <th align="left">cuda/10.1</th>
 <th align="left">cuda/10.2</th>
+<th align="left">cuda/11.0</th>
+<th align="left">cuda/11.1</th>
+<th align="left">cuda/11.2</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td align="left">2.0</td>
+<td align="left">Yes</td>
+<td align="left">Yes</td>
+<td align="left">Yes</td>
 <td align="left">Yes</td>
 <td align="left">Yes</td>
 <td align="left">Yes</td>
@@ -1801,7 +1793,7 @@
 </tbody>
 </table>
 <p>インタラクティブ利用時の実行例:</p>
-<div class="codehilite"><pre><span></span><code><span class="err">[username@es1 ~]$ qrsh -g grpname -l rt_F=1 -l h_rt=1:00:00 -v GPU_COMPUTE_MODE=1 /bin/bash</span>
+<div class="codehilite"><pre><span></span><code><span class="err">[username@es1 ~]$ qrsh -g grpname -l rt_F=1 -l h_rt=1:00:00 -v GPU_COMPUTE_MODE=1</span>
 </code></pre></div>
 
 

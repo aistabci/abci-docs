@@ -1175,7 +1175,7 @@
                 
                 <h1 id="1-abci">1. ABCIシステムの概要</h1>
 <h2 id="system-architecture">システム全体概要</h2>
-<p>ABCIシステムは、合計4,352基のNVIDIA V100 GPUアクセラレーターを備えた1,088台の計算ノードを始めとする計算リソース、合算で約40 PBの容量を有する共有ファイルシステム及びABCIクラウドストレージ、これらを高速に結合するInfiniBandネットワーク、ファイアウォールなどからなるハードウェアと、これらを最大限活用するためのソフトウェアから構成されます。また、ABCIシステムは学術情報ネットワークSINET5を利用して、100 Gbpsでインターネットに接続しています。</p>
+<p>ABCIシステムは、合計4,352基のNVIDIA V100 GPUアクセラレーターを備えた1,088台の計算ノードを始めとする計算リソース、合算で約47 PBの容量を有する共有ファイルシステム及びABCIクラウドストレージ、これらを高速に結合するInfiniBandネットワーク、ファイアウォールなどからなるハードウェアと、これらを最大限活用するためのソフトウェアから構成されます。また、ABCIシステムは学術情報ネットワークSINET5を利用して、100 Gbpsでインターネットに接続しています。</p>
 <p><img alt="Screenshot" src="../img/abci_system_ja.png" /> </p>
 <p>ABCIシステムの主要な諸元は以下のとおりです。</p>
 <table>
@@ -1398,7 +1398,7 @@ Intel Xeon Gold 6148プロセッサーを2基搭載し、384 GiBのメインメ�
 </table>
 <p>メモリインテンシブノード向けのプログラムを実行するには、計算ノードと同様に、バッチジョブもしくはインタラクティブジョブとしてジョブ管理システムに処理を依頼します。</p>
 <h2 id="storage-systems">ストレージシステム</h2>
-<p>ABCIシステムは、人工知能やビッグデータ応用に用いる大容量データを格納するためのストレージシステムを3基備えており、これらを用いて共有ファイルシステム及びABCIクラウドストレージを提供しています。合算で最大40 PBの実効容量があります。</p>
+<p>ABCIシステムは、人工知能やビッグデータ応用に用いる大容量データを格納するためのストレージシステムを5基備えており、これらを用いて共有ファイルシステム及びABCIクラウドストレージを提供しています。合算で最大47 PBの実効容量があります。</p>
 <table>
 <thead>
 <tr>
@@ -1413,16 +1413,28 @@ Intel Xeon Gold 6148プロセッサーを2基搭載し、384 GiBのメインメ�
 <td align="left">1</td>
 <td align="left">DDN SFA 14KX x1<br>DDN SS9012エンクロージャ x5</td>
 <td align="left">7.68 TB SAS SSD x185</td>
-<td align="left">ホーム領域</td>
+<td align="left">ホーム領域、アプリケーション領域</td>
 </tr>
 <tr>
 <td align="left">2</td>
-<td align="left">DDN SFA 14KX x3<br>DDN SS8462エンクロージャ x30</td>
-<td align="left">3.84 TB SAS SSD x216<br>12 TB NL-SAS HDD x2400</td>
-<td align="left">グループ領域、アプリケーション領域</td>
+<td align="left">DDN ES7990X x3<br>DDN SS9012エンクロージャ x6</td>
+<td align="left">18 TB NL-SAS HDD x801</td>
+<td align="left">グループ領域</td>
 </tr>
 <tr>
 <td align="left">3</td>
+<td align="left">DDN NV400NVX x3</td>
+<td align="left">7.68 TB NVMe HDD x69</td>
+<td align="left">高速データ領域</td>
+</tr>
+<tr>
+<td align="left">4</td>
+<td align="left">DDN SFA 14KX x3<br>DDN SS8462エンクロージャ x30</td>
+<td align="left">3.84 TB SAS SSD x216<br>12 TB NL-SAS HDD x2400</td>
+<td align="left">グループ領域</td>
+</tr>
+<tr>
+<td align="left">5</td>
 <td align="left">HPE Apollo 4510 Gen10 x24</td>
 <td align="left">12 TB SATA HDD x1440</td>
 <td align="left">ABCIクラウドストレージ</td>
@@ -1449,37 +1461,37 @@ Intel Xeon Gold 6148プロセッサーを2基搭載し、384 GiBのメインメ�
 <td align="left"><a href="../04/#home-area">ホーム領域</a>を参照</td>
 </tr>
 <tr>
+<td align="left">グループ領域</td>
+<td align="left">/groups</td>
+<td align="left">10.8PB</td>
+<td align="left">Lustre</td>
+<td align="left"><a href="../04/#group-area">グループ領域</a>を参照</td>
+</tr>
+<tr>
 <td align="left">グループ領域1</td>
-<td align="left">/groups1</td>
+<td align="left">/fs1</td>
 <td align="left">7.2 PB</td>
 <td align="left">GPFS</td>
 <td align="left"><a href="../04/#group-area">グループ領域</a>を参照</td>
 </tr>
 <tr>
 <td align="left">グループ領域2</td>
-<td align="left">/groups2</td>
+<td align="left">/fs2</td>
 <td align="left">7.2 PB</td>
 <td align="left">GPFS</td>
 <td align="left"><a href="../04/#group-area">グループ領域</a>を参照</td>
 </tr>
 <tr>
 <td align="left">グループ領域3</td>
-<td align="left">/groups3</td>
+<td align="left">/fs3</td>
 <td align="left">7.2 PB</td>
 <td align="left">GPFS</td>
 <td align="left">特定用途に予約済みの領域</td>
 </tr>
 <tr>
-<td align="left">アプリケーション領域</td>
-<td align="left">/apps</td>
-<td align="left">0.36 PB</td>
-<td align="left">GPFS</td>
-<td align="left">共通ソフトウェア・データ等で利用する領域</td>
-</tr>
-<tr>
 <td align="left">ABCIクラウドストレージ</td>
 <td align="left"></td>
-<td align="left">最大17 PB</td>
+<td align="left">最大13 PB</td>
 <td align="left"></td>
 <td align="left"><a href="../abci-cloudstorage/">ABCIクラウドストレージ</a>を参照</td>
 </tr>
@@ -1526,9 +1538,9 @@ Intel Xeon Gold 6148プロセッサーを2基搭載し、384 GiBのメインメ�
 <table>
 <thead>
 <tr>
-<th align="left">項目</th>
-<th align="left">ソフトウェア</th>
-<th align="left">バージョン</th>
+<th align="left">Category</th>
+<th align="left">Software</th>
+<th align="left">Version</th>
 </tr>
 </thead>
 <tbody>
@@ -1538,39 +1550,39 @@ Intel Xeon Gold 6148プロセッサーを2基搭載し、384 GiBのメインメ�
 <td align="left">7.5</td>
 </tr>
 <tr>
-<td align="left">ジョブスケジューラ</td>
+<td align="left">Job Scheduler</td>
 <td align="left">Univa Grid Engine</td>
-<td align="left">8.6.6</td>
+<td align="left">8.6.17</td>
 </tr>
 <tr>
-<td align="left">開発環境</td>
+<td align="left">Development Environment</td>
 <td align="left">Intel Parallel Studio XE Cluster Edition<br>(compilers and libraries)</td>
-<td align="left">2017 update 8 (2017.8.262)<br>2018 update 4 (2018.5.274)<br>2019 update 5 (2019.5.281)<br>2020 update 4 (2020.4.304)</td>
+<td align="left">2020 update 4 (2020.4.304)</td>
 </tr>
 <tr>
 <td align="left"></td>
 <td align="left">PGI Professional Edition</td>
-<td align="left">17.10<br>18.10<br>19.1<br>19.10<br>20.1</td>
+<td align="left">20.4</td>
 </tr>
 <tr>
 <td align="left"></td>
 <td align="left">NVIDIA HPC SDK</td>
-<td align="left">20.9</td>
+<td align="left">20.11<br>21.2</td>
 </tr>
 <tr>
 <td align="left"></td>
 <td align="left"><a href="../07/#cuda-toolkit">CUDA Toolkit</a></td>
-<td align="left">8.0.61.2<br>9.0.176.4<br>9.1.85.3<br>9.2.88.1<br>9.2.148.1<br>10.0.130<br>10.0.130.1<br>10.1.243<br>10.2.89</td>
+<td align="left">8.0.61.2<br>9.0.176.4<br>9.1.85.3<br>9.2.88.1<br>9.2.148.1<br>10.0.130.1<br>10.1.243<br>10.2.89<br>11.0.3<br>11.1.1<br>11.2.2</td>
 </tr>
 <tr>
 <td align="left"></td>
 <td align="left">GCC</td>
-<td align="left">4.8.5<br>7.4.0</td>
+<td align="left">4.8.5<br>7.4.0<br>9.3.0</td>
 </tr>
 <tr>
 <td align="left"></td>
 <td align="left"><a href="../06/">Python</a></td>
-<td align="left">2.7.15<br>3.4.8<br>3.5.5<br>3.6.5<br>3.7.6<br>3.8.2</td>
+<td align="left">2.7.18<br>3.6.12<br>3.7.10<br>3.8.7</td>
 </tr>
 <tr>
 <td align="left"></td>
@@ -1580,7 +1592,7 @@ Intel Xeon Gold 6148プロセッサーを2基搭載し、384 GiBのメインメ�
 <tr>
 <td align="left"></td>
 <td align="left">R</td>
-<td align="left">3.5.0<br>3.6.3</td>
+<td align="left">4.0.4</td>
 </tr>
 <tr>
 <td align="left"></td>
@@ -1605,15 +1617,15 @@ Intel Xeon Gold 6148プロセッサーを2基搭載し、384 GiBのメインメ�
 <tr>
 <td align="left"></td>
 <td align="left">Go</td>
-<td align="left">1.12<br>1.13<br>1.14</td>
+<td align="left">1.14<br>1.15</td>
 </tr>
 <tr>
 <td align="left"></td>
 <td align="left">Julia</td>
-<td align="left">1.0<br>1.3<br>1.4</td>
+<td align="left">1.0<br>1.5</td>
 </tr>
 <tr>
-<td align="left">ファイルシステム</td>
+<td align="left">File System</td>
 <td align="left"><a href="../04/#home-area">DDN Lustre</a></td>
 <td align="left">2.12.6_ddn13-1</td>
 </tr>
@@ -1625,67 +1637,62 @@ Intel Xeon Gold 6148プロセッサーを2基搭載し、384 GiBのメインメ�
 <tr>
 <td align="left"></td>
 <td align="left"><a href="../04/#using-as-a-beeond-storage">BeeOND</a></td>
-<td align="left">7.2</td>
+<td align="left">7.2.1</td>
 </tr>
 <tr>
-<td align="left">オブジェクトストレージ</td>
+<td align="left">Object Storage</td>
 <td align="left">Scality S3 Connector</td>
-<td align="left">7.4.8</td>
+<td align="left">7.4.8.1</td>
 </tr>
 <tr>
-<td align="left">コンテナ</td>
+<td align="left">Container</td>
 <td align="left"><a href="../09/#docker">Docker</a></td>
-<td align="left">17.12.0</td>
-</tr>
-<tr>
-<td align="left"></td>
-<td align="left"><a href="../09/#singularity">Singularity</a></td>
-<td align="left">2.6.1</td>
+<td align="left">19.03.15</td>
 </tr>
 <tr>
 <td align="left"></td>
 <td align="left"><a href="../09/#singularity">SingularityPRO</a></td>
-<td align="left">3.5-6</td>
+<td align="left">3.7-1</td>
 </tr>
 <tr>
 <td align="left">MPI</td>
 <td align="left"><a href="../08/#open-mpi">Open MPI</a></td>
-<td align="left">2.1.6<br>3.1.6<br>4.0.3</td>
+<td align="left">2.1.6<br>3.1.6<br>4.0.5</td>
 </tr>
 <tr>
 <td align="left"></td>
 <td align="left"><a href="../08/#mvapich2">MVAPICH2</a></td>
-<td align="left">2.3.3<br>2.3.4</td>
+<td align="left">2.3.5</td>
 </tr>
 <tr>
 <td align="left"></td>
 <td align="left"><a href="../08/#mvapich2-gdr">MVAPICH2-GDR</a></td>
-<td align="left">2.3.3<br>2.3.4</td>
+<td align="left">2.3.5</td>
 </tr>
 <tr>
 <td align="left"></td>
 <td align="left"><a href="../08/#intel-mpi">Intel MPI</a></td>
-<td align="left">2017.4<br>2018.4<br>2019.5<br>2019.9</td>
+<td align="left">2019.9</td>
 </tr>
 <tr>
-<td align="left">ライブラリ</td>
+<td align="left">Library</td>
 <td align="left"><a href="../07/#cudnn">cuDNN</a></td>
-<td align="left">5.1.10<br>6.0.21<br>7.0.5<br>7.1.3<br>7.1.4<br>7.2.1<br>7.3.1<br>7.4.2<br>7.5.0<br>7.5.1<br>7.6.0<br>7.6.1<br>7.6.2<br>7.6.3<br>7.6.4<br>7.6.5<br>8.0.2<br>8.0.5</td>
+<td align="left">5.1.10<br>6.0.21<br>7.0.5<br>7.1.4<br>7.2.1<br>7.3.1<br>7.4.2<br>7.5.1<br>7.6.5<br>8.0.5<br>8.1.1</td>
 </tr>
 <tr>
 <td align="left"></td>
 <td align="left"><a href="../07/#nccl">NCCL</a></td>
-<td align="left">1.3.5-1<br>2.1.15-1<br>2.2.13-1<br>2.3.4-1<br>2.3.5-2<br>2.3.7-1<br>2.4.2-1<br>2.4.7-1<br>2.4.8-1<br>2.5.6-1<br>2.6.4-1<br>2.7.8-1<br>2.8.3-1</td>
+<td align="left">1.3.5-1<br>2.1.15-1<br>2.2.13-1<br>2.3.7-1<br>2.4.8-1<br>2.5.6-1<br>2.6.4-1<br>2.7.8-1<br>2.8.4-1</td>
 </tr>
 <tr>
 <td align="left"></td>
 <td align="left">gdrcopy</td>
-<td align="left">2.0</td>
+<td align="left">2.0-3</td>
 </tr>
 <tr>
 <td align="left"></td>
 <td align="left">UCX</td>
-<td align="left">1.7.0</td>
+<td align="left">1.8.0-1</td>
 </tr>
 <tr>
 <td align="left"></td>
@@ -1695,47 +1702,47 @@ Intel Xeon Gold 6148プロセッサーを2基搭載し、384 GiBのメインメ�
 <tr>
 <td align="left"></td>
 <td align="left">Intel MKL</td>
-<td align="left">2017.0.4<br>2018.0.4<br>2019.0.5<br>2020.0.4</td>
+<td align="left">2020.0.4</td>
 </tr>
 <tr>
-<td align="left">ユーティリティ</td>
+<td align="left">Utility</td>
 <td align="left">aws-cli</td>
-<td align="left">1.16.194<br>1.18<br>2.0</td>
+<td align="left">2.1</td>
 </tr>
 <tr>
 <td align="left"></td>
 <td align="left">fuse-sshfs</td>
-<td align="left">2.10</td>
+<td align="left">3.7.1</td>
 </tr>
 <tr>
 <td align="left"></td>
 <td align="left">s3fs-fuse</td>
-<td align="left">1.85</td>
+<td align="left">1.87</td>
 </tr>
 <tr>
 <td align="left"></td>
 <td align="left">sregistry-cli</td>
-<td align="left">0.2.31</td>
+<td align="left">0.2.36</td>
 </tr>
 <tr>
 <td align="left"></td>
 <td align="left">Intel VTune</td>
-<td align="left">2017.6<br>2018.4<br>2019.6<br>2020.3</td>
+<td align="left">2020.3</td>
 </tr>
 <tr>
 <td align="left"></td>
 <td align="left">Intel Trace Analyzer and Collector</td>
-<td align="left">2017.0.4<br>2018.0.4<br>2019.0.5<br>2020.0.3</td>
+<td align="left">2020.0.3</td>
 </tr>
 <tr>
 <td align="left"></td>
 <td align="left">Intel Inspector</td>
-<td align="left">2017.4<br>2018.4<br>2019.5<br>2020.3</td>
+<td align="left">2020.3</td>
 </tr>
 <tr>
 <td align="left"></td>
 <td align="left">Intel Advisor</td>
-<td align="left">2017.5<br>2018.4<br>2019.5<br>2020.3</td>
+<td align="left">2020.3</td>
 </tr>
 </tbody>
 </table>

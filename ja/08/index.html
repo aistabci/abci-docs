@@ -1130,68 +1130,79 @@
 <p>利用するためには事前に<code>module</code>コマンドを用いて利用環境を設定する必要があります。
 インタラクティブノードで<code>module</code>コマンドを用いると、コンパイル用環境変数（ヘッダファイルおよびライブラリのサーチパス）が自動で設定されます。
 計算ノードで<code>module</code>コマンドを用いると、コンパイル用環境変数に加え、実行用環境変数も自動で設定されます。</p>
-<div class="codehilite"><pre><span></span><code><span class="err">[username@es1 ~]$ module load openmpi/2.1.6</span>
+<div class="codehilite"><pre><span></span><code><span class="err">[username@es1 ~]$ module load openmpi/4.0.5</span>
 </code></pre></div>
 
 
-<div class="codehilite"><pre><span></span><code><span class="err">[username@es1 ~]$ module load mvapich/mvapich2-gdr/2.3</span>
+<div class="codehilite"><pre><span></span><code><span class="err">[username@es1 ~]$ module load mvapich/mvapich2-gdr/2.3.5</span>
 </code></pre></div>
 
 
-<div class="codehilite"><pre><span></span><code><span class="err">[username@es1 ~]$ module load mvapich/mvapich2/2.3</span>
+<div class="codehilite"><pre><span></span><code><span class="err">[username@es1 ~]$ module load mvapich/mvapich2/2.3.5</span>
 </code></pre></div>
 
 
-<div class="codehilite"><pre><span></span><code><span class="err">[username@es1 ~]$ module load intel-mpi/2018.2.199</span>
+<div class="codehilite"><pre><span></span><code><span class="err">[username@es1 ~]$ module load intel-mpi/2019.9</span>
 </code></pre></div>
 
 
 <p>以下では、ABCIシステムに導入されているMPIのバージョン一覧を示します。</p>
 <h2 id="open-mpi">Open MPI</h2>
-<!--
-| openmpi/ | Compiler version | w/o CUDA | cuda8.0 \*1 | cuda9.0 \*1 | cuda9.1 \*1 | cuda9.2 \*1 | cuda10.0 \*1 | cuda10.1 \*1 | cuda10.2 \*1 |
-|:--|:--|:--|:--|:--|:--|:--|:--|:--|:--|
-| 2.1.6  | GCC 4.8.5 | Yes | Yes | Yes | Yes | Yes | Yes | Yes | Yes |
-| 2.1.6  | GCC 7.4.0 | Yes | -   | -   | -   | Yes | Yes | Yes | Yes |
-| 2.1.6  | PGI 17.10 | Yes | -   | -   | -   | Yes | -   | -   | -   |
-| 2.1.6  | PGI 18.10 | Yes | -   | -   | -   | Yes | Yes | Yes | Yes |
-| 2.1.6  | PGI 19.10 | Yes | -   | -   | -   | -   | -   | Yes | Yes |
-| 2.1.6  | PGI 20.1  | -   | -   | -   | -   | -   | -   | -   | -   |
-| 3.1.6  | GCC 4.8.5 | Yes | -   | -   | -   | Yes | Yes | Yes | Yes |
-| 3.1.6  | GCC 7.4.0 | Yes | -   | -   | -   | Yes | Yes | Yes | Yes |
-| 3.1.6  | PGI 17.10 | Yes | -   | -   | -   | -   | -   | -   | -   |
-| 3.1.6  | PGI 18.10 | Yes | -   | -   | -   | -   | -   | -   | -   |
-| 3.1.6  | PGI 19.10 | Yes | -   | -   | -   | -   | -   | -   | -   |
-| 3.1.6  | PGI 20.1  | Yes | -   | -   | -   | -   | -   | -   | -   |
-| 4.0.3  | GCC 4.8.5 | Yes | -   | -   | -   | Yes | Yes | Yes | Yes |
-| 4.0.3  | GCC 7.4.0 | Yes | -   | -   | -   | Yes | Yes | Yes | Yes |
-| 4.0.3  | PGI 17.10 | Yes | -   | -   | -   | -   | -   | -   | -   |
-| 4.0.3  | PGI 18.10 | Yes | -   | -   | -   | -   | -   | -   | -   |
-| 4.0.3  | PGI 19.10 | Yes | -   | -   | -   | -   | -   | -   | -   |
-| 4.0.3  | PGI 20.1  | Yes | -   | -   | -   | -   | -   | -   | -   |
-
-\*2 Installed, but modules are not provided
--->
-
 <table>
 <thead>
 <tr>
 <th align="left">openmpi/</th>
 <th align="left">Compiler version</th>
 <th align="left">w/o CUDA</th>
-<th align="left">cuda8.0 *1</th>
-<th align="left">cuda9.0 *1</th>
-<th align="left">cuda9.1 *1</th>
-<th align="left">cuda9.2 *1</th>
-<th align="left">cuda10.0 *1</th>
-<th align="left">cuda10.1 *1</th>
-<th align="left">cuda10.2 *1</th>
+<th align="left">cuda8.0<sup id="fnref:1"><a class="footnote-ref" href="#fn:1">1</a></sup></th>
+<th align="left">cuda9.0<sup id="fnref2:1"><a class="footnote-ref" href="#fn:1">1</a></sup></th>
+<th align="left">cuda9.1<sup id="fnref3:1"><a class="footnote-ref" href="#fn:1">1</a></sup></th>
+<th align="left">cuda9.2<sup id="fnref4:1"><a class="footnote-ref" href="#fn:1">1</a></sup></th>
+<th align="left">cuda10.0<sup id="fnref5:1"><a class="footnote-ref" href="#fn:1">1</a></sup></th>
+<th align="left">cuda10.1<sup id="fnref6:1"><a class="footnote-ref" href="#fn:1">1</a></sup></th>
+<th align="left">cuda10.2<sup id="fnref7:1"><a class="footnote-ref" href="#fn:1">1</a></sup></th>
+<th align="left">cuda11.0<sup id="fnref8:1"><a class="footnote-ref" href="#fn:1">1</a></sup></th>
+<th align="left">cuda11.1<sup id="fnref9:1"><a class="footnote-ref" href="#fn:1">1</a></sup></th>
+<th align="left">cuda11.2<sup id="fnref10:1"><a class="footnote-ref" href="#fn:1">1</a></sup></th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td align="left">2.1.6</td>
-<td align="left">GCC 4.8.5</td>
+<td align="left">gcc/4.8.5</td>
+<td align="left">Yes</td>
+<td align="left">Yes</td>
+<td align="left">Yes</td>
+<td align="left">Yes</td>
+<td align="left">Yes</td>
+<td align="left">Yes</td>
+<td align="left">Yes</td>
+<td align="left">Yes</td>
+<td align="left">Yes</td>
+<td align="left">Yes</td>
+<td align="left">Yes</td>
+</tr>
+<tr>
+<td align="left">2.1.6</td>
+<td align="left">gcc/7.4.0</td>
+<td align="left">Yes</td>
+<td align="left">-</td>
+<td align="left">-</td>
+<td align="left">-</td>
+<td align="left">Yes</td>
+<td align="left">Yes</td>
+<td align="left">Yes</td>
+<td align="left">Yes</td>
+<td align="left">Yes</td>
+<td align="left">Yes</td>
+<td align="left">Yes</td>
+</tr>
+<tr>
+<td align="left">2.1.6</td>
+<td align="left">gcc/9.3.0</td>
+<td align="left">Yes</td>
+<td align="left">Yes</td>
+<td align="left">Yes</td>
 <td align="left">Yes</td>
 <td align="left">Yes</td>
 <td align="left">Yes</td>
@@ -1203,35 +1214,14 @@
 </tr>
 <tr>
 <td align="left">2.1.6</td>
-<td align="left">GCC 7.4.0</td>
-<td align="left">Yes</td>
-<td align="left">-</td>
-<td align="left">-</td>
-<td align="left">-</td>
+<td align="left">pgi/20.4</td>
 <td align="left">Yes</td>
 <td align="left">Yes</td>
 <td align="left">Yes</td>
 <td align="left">Yes</td>
-</tr>
-<tr>
-<td align="left">2.1.6</td>
-<td align="left">PGI 17.10</td>
 <td align="left">Yes</td>
-<td align="left">-</td>
-<td align="left">-</td>
-<td align="left">-</td>
 <td align="left">Yes</td>
-<td align="left">-</td>
-<td align="left">-</td>
-<td align="left">-</td>
-</tr>
-<tr>
-<td align="left">2.1.6</td>
-<td align="left">PGI 18.10</td>
 <td align="left">Yes</td>
-<td align="left">-</td>
-<td align="left">-</td>
-<td align="left">-</td>
 <td align="left">Yes</td>
 <td align="left">Yes</td>
 <td align="left">Yes</td>
@@ -1239,35 +1229,29 @@
 </tr>
 <tr>
 <td align="left">2.1.6</td>
-<td align="left">PGI 19.10</td>
-<td align="left">Yes</td>
-<td align="left">-</td>
-<td align="left">-</td>
-<td align="left">-</td>
-<td align="left">-</td>
-<td align="left">-</td>
+<td align="left">nvhpc/20.11</td>
 <td align="left">Yes</td>
 <td align="left">Yes</td>
-</tr>
-<tr>
-<td align="left">3.1.6</td>
-<td align="left">GCC 4.8.5</td>
 <td align="left">Yes</td>
-<td align="left">-</td>
-<td align="left">-</td>
-<td align="left">-</td>
+<td align="left">Yes</td>
+<td align="left">Yes</td>
+<td align="left">Yes</td>
+<td align="left">Yes</td>
 <td align="left">Yes</td>
 <td align="left">Yes</td>
 <td align="left">Yes</td>
 <td align="left">Yes</td>
 </tr>
 <tr>
-<td align="left">3.1.6</td>
-<td align="left">GCC 7.4.0</td>
+<td align="left">2.1.6</td>
+<td align="left">nvhpc/21.2</td>
 <td align="left">Yes</td>
-<td align="left">-</td>
-<td align="left">-</td>
-<td align="left">-</td>
+<td align="left">Yes</td>
+<td align="left">Yes</td>
+<td align="left">Yes</td>
+<td align="left">Yes</td>
+<td align="left">Yes</td>
+<td align="left">Yes</td>
 <td align="left">Yes</td>
 <td align="left">Yes</td>
 <td align="left">Yes</td>
@@ -1275,279 +1259,228 @@
 </tr>
 <tr>
 <td align="left">3.1.6</td>
-<td align="left">PGI 17.10</td>
+<td align="left">gcc/4.8.5</td>
 <td align="left">Yes</td>
 <td align="left">-</td>
 <td align="left">-</td>
 <td align="left">-</td>
-<td align="left">-</td>
-<td align="left">-</td>
-<td align="left">-</td>
-<td align="left">-</td>
+<td align="left">Yes</td>
+<td align="left">Yes</td>
+<td align="left">Yes</td>
+<td align="left">Yes</td>
+<td align="left">Yes</td>
+<td align="left">Yes</td>
+<td align="left">Yes</td>
 </tr>
 <tr>
 <td align="left">3.1.6</td>
-<td align="left">PGI 18.10</td>
+<td align="left">gcc/7.4.0</td>
 <td align="left">Yes</td>
 <td align="left">-</td>
 <td align="left">-</td>
 <td align="left">-</td>
-<td align="left">-</td>
-<td align="left">-</td>
-<td align="left">-</td>
-<td align="left">-</td>
+<td align="left">Yes</td>
+<td align="left">Yes</td>
+<td align="left">Yes</td>
+<td align="left">Yes</td>
+<td align="left">Yes</td>
+<td align="left">Yes</td>
+<td align="left">Yes</td>
 </tr>
 <tr>
 <td align="left">3.1.6</td>
-<td align="left">PGI 19.10</td>
+<td align="left">gcc/9.3.0</td>
 <td align="left">Yes</td>
 <td align="left">-</td>
 <td align="left">-</td>
 <td align="left">-</td>
-<td align="left">-</td>
-<td align="left">-</td>
-<td align="left">-</td>
-<td align="left">-</td>
-</tr>
-<tr>
-<td align="left">4.0.3</td>
-<td align="left">GCC 4.8.5</td>
 <td align="left">Yes</td>
-<td align="left">-</td>
-<td align="left">-</td>
-<td align="left">-</td>
+<td align="left">Yes</td>
+<td align="left">Yes</td>
 <td align="left">Yes</td>
 <td align="left">Yes</td>
 <td align="left">Yes</td>
 <td align="left">Yes</td>
 </tr>
 <tr>
-<td align="left">4.0.3</td>
-<td align="left">GCC 7.4.0</td>
+<td align="left">3.1.6</td>
+<td align="left">pgi/20.4</td>
 <td align="left">Yes</td>
 <td align="left">-</td>
 <td align="left">-</td>
 <td align="left">-</td>
+<td align="left">Yes</td>
+<td align="left">Yes</td>
+<td align="left">Yes</td>
 <td align="left">Yes</td>
 <td align="left">Yes</td>
 <td align="left">Yes</td>
 <td align="left">Yes</td>
 </tr>
 <tr>
-<td align="left">4.0.3</td>
-<td align="left">PGI 17.10</td>
+<td align="left">3.1.6</td>
+<td align="left">nvhpc/20.11</td>
 <td align="left">Yes</td>
 <td align="left">-</td>
 <td align="left">-</td>
 <td align="left">-</td>
-<td align="left">-</td>
-<td align="left">-</td>
-<td align="left">-</td>
-<td align="left">-</td>
+<td align="left">Yes</td>
+<td align="left">Yes</td>
+<td align="left">Yes</td>
+<td align="left">Yes</td>
+<td align="left">Yes</td>
+<td align="left">Yes</td>
+<td align="left">Yes</td>
 </tr>
 <tr>
-<td align="left">4.0.3</td>
-<td align="left">PGI 18.10</td>
+<td align="left">3.1.6</td>
+<td align="left">nvhpc/21.2</td>
 <td align="left">Yes</td>
 <td align="left">-</td>
 <td align="left">-</td>
 <td align="left">-</td>
-<td align="left">-</td>
-<td align="left">-</td>
-<td align="left">-</td>
-<td align="left">-</td>
+<td align="left">Yes</td>
+<td align="left">Yes</td>
+<td align="left">Yes</td>
+<td align="left">Yes</td>
+<td align="left">Yes</td>
+<td align="left">Yes</td>
+<td align="left">Yes</td>
 </tr>
 <tr>
-<td align="left">4.0.3</td>
-<td align="left">PGI 19.10</td>
+<td align="left">4.0.5</td>
+<td align="left">gcc/4.8.5</td>
 <td align="left">Yes</td>
 <td align="left">-</td>
 <td align="left">-</td>
 <td align="left">-</td>
-<td align="left">-</td>
-<td align="left">-</td>
-<td align="left">-</td>
-<td align="left">-</td>
+<td align="left">Yes</td>
+<td align="left">Yes</td>
+<td align="left">Yes</td>
+<td align="left">Yes</td>
+<td align="left">Yes</td>
+<td align="left">Yes</td>
+<td align="left">Yes</td>
 </tr>
 <tr>
-<td align="left">4.0.3</td>
-<td align="left">PGI 20.1</td>
+<td align="left">4.0.5</td>
+<td align="left">gcc/7.4.0</td>
 <td align="left">Yes</td>
 <td align="left">-</td>
 <td align="left">-</td>
 <td align="left">-</td>
+<td align="left">Yes</td>
+<td align="left">Yes</td>
+<td align="left">Yes</td>
+<td align="left">Yes</td>
+<td align="left">Yes</td>
+<td align="left">Yes</td>
+<td align="left">Yes</td>
+</tr>
+<tr>
+<td align="left">4.0.5</td>
+<td align="left">gcc/9.3.0</td>
+<td align="left">Yes</td>
 <td align="left">-</td>
 <td align="left">-</td>
 <td align="left">-</td>
+<td align="left">Yes</td>
+<td align="left">Yes</td>
+<td align="left">Yes</td>
+<td align="left">Yes</td>
+<td align="left">Yes</td>
+<td align="left">Yes</td>
+<td align="left">Yes</td>
+</tr>
+<tr>
+<td align="left">4.0.5</td>
+<td align="left">pgi/20.4</td>
+<td align="left">Yes</td>
 <td align="left">-</td>
+<td align="left">-</td>
+<td align="left">-</td>
+<td align="left">Yes</td>
+<td align="left">Yes</td>
+<td align="left">Yes</td>
+<td align="left">Yes</td>
+<td align="left">Yes</td>
+<td align="left">Yes</td>
+<td align="left">Yes</td>
+</tr>
+<tr>
+<td align="left">4.0.5</td>
+<td align="left">nvhpc/20.11</td>
+<td align="left">Yes</td>
+<td align="left">-</td>
+<td align="left">-</td>
+<td align="left">-</td>
+<td align="left">Yes</td>
+<td align="left">Yes</td>
+<td align="left">Yes</td>
+<td align="left">Yes</td>
+<td align="left">Yes</td>
+<td align="left">Yes</td>
+<td align="left">Yes</td>
+</tr>
+<tr>
+<td align="left">4.0.5</td>
+<td align="left">nvhpc/21.2</td>
+<td align="left">Yes</td>
+<td align="left">-</td>
+<td align="left">-</td>
+<td align="left">-</td>
+<td align="left">Yes</td>
+<td align="left">Yes</td>
+<td align="left">Yes</td>
+<td align="left">Yes</td>
+<td align="left">Yes</td>
+<td align="left">Yes</td>
+<td align="left">Yes</td>
 </tr>
 </tbody>
 </table>
-<p>*1 CUDA-aware versions</p>
 <h2 id="mvapich2">MVAPICH2</h2>
 <table>
 <thead>
 <tr>
 <th align="left">mvapich/mvapich2/</th>
 <th align="left">Compiler version</th>
-<th align="left">w/o CUDA</th>
-<th align="left">cuda8.0 *1</th>
-<th align="left">cuda9.0 *1</th>
-<th align="left">cuda9.1 *1</th>
-<th align="left">cuda9.2 *1</th>
-<th align="left">cuda10.0 *1</th>
-<th align="left">cuda10.1 *1</th>
-<th align="left">cuda10.2 *1</th>
+<th align="left">Support</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td align="left">2.3.3</td>
-<td align="left">GCC 4.8.5</td>
-<td align="left">Yes</td>
-<td align="left">Yes</td>
-<td align="left">Yes</td>
-<td align="left">Yes</td>
-<td align="left">Yes</td>
-<td align="left">Yes</td>
-<td align="left">Yes</td>
+<td align="left">2.3.5</td>
+<td align="left">gcc/4.8.5</td>
 <td align="left">Yes</td>
 </tr>
 <tr>
-<td align="left">2.3.3</td>
-<td align="left">GCC 7.4.0</td>
-<td align="left">Yes</td>
-<td align="left">-</td>
-<td align="left">-</td>
-<td align="left">-</td>
-<td align="left">Yes</td>
-<td align="left">Yes</td>
-<td align="left">Yes</td>
+<td align="left">2.3.5</td>
+<td align="left">gcc/7.4.0</td>
 <td align="left">Yes</td>
 </tr>
 <tr>
-<td align="left">2.3.3</td>
-<td align="left">PGI 17.10</td>
-<td align="left">Yes</td>
-<td align="left">-</td>
-<td align="left">-</td>
-<td align="left">-</td>
-<td align="left">Yes</td>
-<td align="left">-</td>
-<td align="left">-</td>
-<td align="left">-</td>
-</tr>
-<tr>
-<td align="left">2.3.3</td>
-<td align="left">PGI 18.10</td>
-<td align="left">Yes</td>
-<td align="left">-</td>
-<td align="left">-</td>
-<td align="left">-</td>
-<td align="left">Yes</td>
-<td align="left">Yes</td>
-<td align="left">Yes</td>
+<td align="left">2.3.5</td>
+<td align="left">gcc/9.3.0</td>
 <td align="left">Yes</td>
 </tr>
 <tr>
-<td align="left">2.3.3</td>
-<td align="left">PGI 19.10</td>
-<td align="left">Yes</td>
-<td align="left">-</td>
-<td align="left">-</td>
-<td align="left">-</td>
-<td align="left">-</td>
-<td align="left">-</td>
-<td align="left">Yes</td>
+<td align="left">2.3.5</td>
+<td align="left">pgi/20.4</td>
 <td align="left">Yes</td>
 </tr>
 <tr>
-<td align="left">2.3.3</td>
-<td align="left">PGI 20.1</td>
+<td align="left">2.3.5</td>
+<td align="left">nvhpc/20.11</td>
 <td align="left">Yes</td>
-<td align="left">-</td>
-<td align="left">-</td>
-<td align="left">-</td>
-<td align="left">-</td>
-<td align="left">-</td>
-<td align="left">-</td>
-<td align="left">-</td>
 </tr>
 <tr>
-<td align="left">2.3.4</td>
-<td align="left">GCC 4.8.5</td>
+<td align="left">2.3.5</td>
+<td align="left">nvhpc/21.2</td>
 <td align="left">Yes</td>
-<td align="left">-</td>
-<td align="left">-</td>
-<td align="left">-</td>
-<td align="left">-</td>
-<td align="left">-</td>
-<td align="left">-</td>
-<td align="left">-</td>
-</tr>
-<tr>
-<td align="left">2.3.4</td>
-<td align="left">GCC 7.4.0</td>
-<td align="left">Yes</td>
-<td align="left">-</td>
-<td align="left">-</td>
-<td align="left">-</td>
-<td align="left">-</td>
-<td align="left">-</td>
-<td align="left">-</td>
-<td align="left">-</td>
-</tr>
-<tr>
-<td align="left">2.3.4</td>
-<td align="left">PGI 17.10</td>
-<td align="left">Yes</td>
-<td align="left">-</td>
-<td align="left">-</td>
-<td align="left">-</td>
-<td align="left">-</td>
-<td align="left">-</td>
-<td align="left">-</td>
-<td align="left">-</td>
-</tr>
-<tr>
-<td align="left">2.3.4</td>
-<td align="left">PGI 18.10</td>
-<td align="left">Yes</td>
-<td align="left">-</td>
-<td align="left">-</td>
-<td align="left">-</td>
-<td align="left">-</td>
-<td align="left">-</td>
-<td align="left">-</td>
-<td align="left">-</td>
-</tr>
-<tr>
-<td align="left">2.3.4</td>
-<td align="left">PGI 19.10</td>
-<td align="left">Yes</td>
-<td align="left">-</td>
-<td align="left">-</td>
-<td align="left">-</td>
-<td align="left">-</td>
-<td align="left">-</td>
-<td align="left">-</td>
-<td align="left">-</td>
-</tr>
-<tr>
-<td align="left">2.3.4</td>
-<td align="left">PGI 20.1</td>
-<td align="left">Yes</td>
-<td align="left">-</td>
-<td align="left">-</td>
-<td align="left">-</td>
-<td align="left">-</td>
-<td align="left">-</td>
-<td align="left">-</td>
-<td align="left">-</td>
 </tr>
 </tbody>
 </table>
-<p>*1 CUDA-aware versions</p>
 <h2 id="mvapich2-gdr">MVAPICH2-GDR</h2>
 <table>
 <thead>
@@ -1561,28 +1494,19 @@
 <th align="left">cuda10.0</th>
 <th align="left">cuda10.1</th>
 <th align="left">cuda10.2</th>
+<th align="left">cuda11.0</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td align="left">2.3.3</td>
-<td align="left">GCC 4.8.5</td>
-<td align="left">-</td>
-<td align="left">-</td>
-<td align="left">-</td>
-<td align="left">Yes</td>
-<td align="left">Yes</td>
-<td align="left">Yes</td>
-<td align="left">-</td>
-</tr>
-<tr>
-<td align="left">2.3.4</td>
-<td align="left">GCC 4.8.5</td>
+<td align="left">2.3.5</td>
+<td align="left">gcc/4.8.5</td>
 <td align="left">-</td>
 <td align="left">-</td>
 <td align="left">-</td>
 <td align="left">-</td>
-<td align="left">Yes</td>
+<td align="left">-</td>
+<td align="left">-</td>
 <td align="left">Yes</td>
 <td align="left">Yes</td>
 </tr>
@@ -1593,17 +1517,6 @@
 <p>PGI 対応の MVAPICH2-GDR 2.3.3、2.3.4 が必要な場合、ユーザーサポートまでご連絡ください。</p>
 </div>
 <h2 id="intel-mpi">Intel MPI</h2>
-<!--
-| intel-mpi/ | |
-|:--|:--|
-| 2017.8.262 | \*1 |
-| 2018.2.199 | Yes |
-| 2018.3.222 | \*1 |
-| 2019.3.199 | \*1 |
-
-\*1 Installed, but modules are not provided
--->
-
 <table>
 <thead>
 <tr>
@@ -1613,23 +1526,19 @@
 </thead>
 <tbody>
 <tr>
-<td align="left">2017.4</td>
-<td align="left">Yes</td>
-</tr>
-<tr>
-<td align="left">2018.4</td>
-<td align="left">Yes</td>
-</tr>
-<tr>
-<td align="left">2019.5</td>
-<td align="left">Yes</td>
-</tr>
-<tr>
 <td align="left">2019.9</td>
 <td align="left">Yes</td>
 </tr>
 </tbody>
 </table>
+<div class="footnote">
+<hr />
+<ol>
+<li id="fn:1">
+<p>CUDA-aware versions&#160;<a class="footnote-backref" href="#fnref:1" title="Jump back to footnote 1 in the text">&#8617;</a><a class="footnote-backref" href="#fnref2:1" title="Jump back to footnote 1 in the text">&#8617;</a><a class="footnote-backref" href="#fnref3:1" title="Jump back to footnote 1 in the text">&#8617;</a><a class="footnote-backref" href="#fnref4:1" title="Jump back to footnote 1 in the text">&#8617;</a><a class="footnote-backref" href="#fnref5:1" title="Jump back to footnote 1 in the text">&#8617;</a><a class="footnote-backref" href="#fnref6:1" title="Jump back to footnote 1 in the text">&#8617;</a><a class="footnote-backref" href="#fnref7:1" title="Jump back to footnote 1 in the text">&#8617;</a><a class="footnote-backref" href="#fnref8:1" title="Jump back to footnote 1 in the text">&#8617;</a><a class="footnote-backref" href="#fnref9:1" title="Jump back to footnote 1 in the text">&#8617;</a><a class="footnote-backref" href="#fnref10:1" title="Jump back to footnote 1 in the text">&#8617;</a></p>
+</li>
+</ol>
+</div>
                 
                   
                 
