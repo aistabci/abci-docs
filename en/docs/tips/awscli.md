@@ -15,9 +15,9 @@ This page describes installation of AWS command line interface (awscli below) an
 
 ## Register access token
 
-register your AWS access token
+Register your AWS access token.
 ```
-[username@es1 testdir]$  aws configure
+[username@es1 testdir]$ aws configure
 AWS Access Key ID [None]: 
 AWS Secret Access Key [None]: 
 Default region name [None]: 
@@ -26,7 +26,7 @@ Default output format [None]:
 
 ## command example
 
-* Creates an S3 bucket.
+* Creates an S3 bucket
 ```
 [username@es1 testdir]$ aws s3 mb s3://abci-access-test
 make_bucket: abci-access-test
