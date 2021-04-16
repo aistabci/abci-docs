@@ -1179,7 +1179,7 @@
 <ul>
 <li>Login to the interactive node, and launch <code>vncserver</code> for initial settings </li>
 </ul>
-<div class="codehilite"><pre><span></span><code><span class="o">[</span><span class="n">username@es1 ~</span><span class="o">]</span><span class="w"> </span><span class="err">$</span><span class="w"> </span><span class="n">vncserver</span><span class="w"></span>
+<div class="codehilite"><pre><span></span><code><span class="o">[</span><span class="n">username@es1 ~</span><span class="o">]</span><span class="err">$</span><span class="w"> </span><span class="n">vncserver</span><span class="w"></span>
 <span class="n">You</span><span class="w"> </span><span class="n">will</span><span class="w"> </span><span class="n">require</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="n">password</span><span class="w"> </span><span class="k">to</span><span class="w"> </span><span class="n">access</span><span class="w"> </span><span class="n">your</span><span class="w"> </span><span class="n">desktops</span><span class="p">.</span><span class="w"></span>
 
 <span class="nl">Password</span><span class="p">:</span><span class="w"></span>
@@ -1198,7 +1198,7 @@
 <ul>
 <li>Stop VNC server</li>
 </ul>
-<div class="codehilite"><pre><span></span><code><span class="err">[username@g0001 ~] vncserver -kill :1</span>
+<div class="codehilite"><pre><span></span><code><span class="err">[username@es1 ~]$ vncserver -kill :1</span>
 </code></pre></div>
 
 
@@ -1268,19 +1268,19 @@ In general, you can connect to the VNC server using a port with the display numb
 <h4 id="create-an-ssh-tunnel">Create an SSH tunnel</h4>
 <p>To connect to the VNC server by using Port 5901 of your computer, you need to create an SSH tunnel between <code>localhost:5901</code> and  <code>g0001.abci.local:5901</code>.</p>
 <p>If you have OpenSSH 7.3 or later, you can create an SSH tunnel with the following command:</p>
-<div class="codehilite"><pre><span></span><code><span class="err">[user@localmachine] $ ssh -N -L 5901:g0001.abci.local:5901 -J %r@as.abci.ai username@es</span>
+<div class="codehilite"><pre><span></span><code><span class="err">[user@localmachine]$ ssh -N -L 5901:g0001.abci.local:5901 -J %r@as.abci.ai username@es</span>
 </code></pre></div>
 
 
 <p>If you cannot use ProxyJump, you can also create one with the following command:</p>
-<div class="codehilite"><pre><span></span><code><span class="err">[user@localmachine] $ ssh -L 10022:es:22 -l username as.abci.ai</span>
-<span class="err">[user@localmachine] $ ssh -p 10022 -N -L 5901:g0001.abci.local:5901 -l username localhost</span>
+<div class="codehilite"><pre><span></span><code><span class="err">[user@localmachine]$ ssh -L 10022:es:22 -l username as.abci.ai</span>
+<span class="err">[user@localmachine]$ ssh -p 10022 -N -L 5901:g0001.abci.local:5901 -l username localhost</span>
 </code></pre></div>
 
 
 <h4 id="launch-vnc-client">Launch VNC client</h4>
 <p>In macOS, VNC client is integrated in Finder. So, you can connect to the VNC server by the following command:</p>
-<div class="codehilite"><pre><span></span><code><span class="err">[user@localmachine] $ open vnc://localhost:5901/</span>
+<div class="codehilite"><pre><span></span><code><span class="err">[user@localmachine]$ open vnc://localhost:5901/</span>
 </code></pre></div>
 
 
@@ -1328,11 +1328,10 @@ In the example of Tiger VNC client, hostname and port number are connected by ":
 <span class="n">X</span><span class="w"> </span><span class="n">DISPLAY</span><span class="w"> </span><span class="err">#</span><span class="w">     </span><span class="n">PROCESS</span><span class="w"> </span><span class="n">ID</span><span class="w"></span>
 <span class="err">:</span><span class="mi">1</span><span class="w">              </span><span class="mi">5081</span><span class="w"></span>
 
-<span class="o">[</span><span class="n">username@g0001 ~</span><span class="o">]</span><span class="w"> </span>
-<span class="o">[</span><span class="n">username@g0001 ~</span><span class="o">]</span><span class="w"> </span><span class="n">vncserver</span><span class="w"> </span><span class="o">-</span><span class="k">kill</span><span class="w"> </span><span class="err">:</span><span class="mi">1</span><span class="w"></span>
+<span class="o">[</span><span class="n">username@g0001 ~</span><span class="o">]</span><span class="err">$</span><span class="w"> </span><span class="n">vncserver</span><span class="w"> </span><span class="o">-</span><span class="k">kill</span><span class="w"> </span><span class="err">:</span><span class="mi">1</span><span class="w"></span>
 <span class="n">Killing</span><span class="w"> </span><span class="n">Xvnc</span><span class="w"> </span><span class="n">process</span><span class="w"> </span><span class="n">ID</span><span class="w"> </span><span class="n">XXXXXX</span><span class="w"></span>
-<span class="o">[</span><span class="n">username@g0001 ~</span><span class="o">]</span><span class="w"> </span><span class="k">exit</span><span class="w"></span>
-<span class="o">[</span><span class="n">username@es1 ~</span><span class="o">]</span><span class="w"></span>
+<span class="o">[</span><span class="n">username@g0001 ~</span><span class="o">]</span><span class="err">$</span><span class="w"> </span><span class="k">exit</span><span class="w"></span>
+<span class="o">[</span><span class="n">username@es1 ~</span><span class="o">]</span><span class="err">$</span><span class="w"></span>
 </code></pre></div>
                 
                   

@@ -1067,17 +1067,13 @@
                 
                 <h1 id="download-container-image-from-amazon-ecr">Download container image from Amazon ECR</h1>
 <p>The container image in Amazon ECR can be easily obtained with <code>singularity</code> command of SingularityPRO.</p>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>refer to <a href="/tips/sregistry-cli/" target="sregistry-cli">Singularity Global Client</a> when using Singularity 2.6.1.</p>
-</div>
 <h2 id="usage">Usage</h2>
 <p>Load environment module to use SingularityPRO and Amazon ECR.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>This procedure assumes that you have completed <a href="/tips/awscli/#register-access-token" target="aws_cli">Register access token</a> in <a href="/tips/awscli/" target="aws_cli">AWS CLI</a>.</p>
 </div>
-<div class="codehilite"><pre><span></span><code><span class="err">[username@es1 ~]$ module load singularitypro/3.5 aws-cli/2.0</span>
+<div class="codehilite"><pre><span></span><code><span class="err">[username@es1 ~]$ module load singularitypro aws-cli</span>
 </code></pre></div>
 
 

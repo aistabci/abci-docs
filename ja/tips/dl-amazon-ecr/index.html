@@ -1079,17 +1079,13 @@
                 
                 <h1 id="amazon-ecr">Amazon ECR からコンテナ取得</h1>
 <p>SingularityPRO では、Amazon ECR からコンテナイメージを <code>singularity</code> コマンドを使って簡単にダウンロードすることが可能です。</p>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>Singularity 2.6.1 を利用する場合は、<a href="/tips/sregistry-cli/" target="sregistry-cli">Singularity Global Clientの利用</a> を参照してください。</p>
-</div>
 <h2 id="usage">利用方法</h2>
 <p>SingularityPRO と Amazon ECR の利用に必要なモジュールを読み込みます。</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p><a href="/tips/awscli/" target="aws_cli">AWS CLIの利用</a>の<a href="/tips/awscli/#_2" target="aws_cli">アクセストークンの登録手順</a>を完了していることを前提としています。</p>
 </div>
-<div class="codehilite"><pre><span></span><code><span class="err">[username@es1 ~]$ module load singularitypro/3.5 aws-cli/2.0</span>
+<div class="codehilite"><pre><span></span><code><span class="err">[username@es1 ~]$ module load singularitypro aws-cli</span>
 </code></pre></div>
 
 

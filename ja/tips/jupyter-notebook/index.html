@@ -1218,12 +1218,12 @@
 <h2 id="using-pip-install">pipインストールによる利用手順</h2>
 <p>ここでは、Jupyter Notebookをpipでインストールして利用する手順を説明します。</p>
 <h3 id="install-by-pip">インストール</h3>
-<p>計算ノードを一台占有し、Python仮想環境を作成し、<code>pip</code>で<code>tensorflow-gpu</code>と<code>jupyter</code>をインストールします。</p>
+<p>計算ノードを一台占有し、Python仮想環境を作成し、<code>pip</code>で<code>tensorflow</code>と<code>jupyter</code>をインストールします。</p>
 <div class="codehilite"><pre><span></span><code><span class="err">[username@es1 ~]$ qrsh -g grpname -l rt_F=1 -l h_rt=1:00:00</span>
-<span class="err">[username@g0001 ~]$ module load python/3.6/3.6.5 cuda/10.0/10.0.130.1 cudnn/7.4/7.4.2</span>
+<span class="err">[username@g0001 ~]$ module load python/3.6/3.6.12 cuda/11.0/11.0.3 cudnn/8.1/8.1.1 gcc/7.4.0</span>
 <span class="err">[username@g0001 ~]$ python3 -m venv ~/jupyter_env</span>
 <span class="err">[username@g0001 ~]$ source ~/jupyter_env/bin/activate</span>
-<span class="err">(jupyter_env) [username@g0001 ~]$ pip3 install tensorflow-gpu jupyter numpy==1.16.4</span>
+<span class="err">(jupyter_env) [username@g0001 ~]$ pip3 install tensorflow jupyter numpy</span>
 </code></pre></div>
 
 
@@ -1233,7 +1233,7 @@
 </div>
 <p>次回以降は、以下のようにモジュールの読み込みと<code>~/jupyter_env</code>のアクティベートだけで済みます。</p>
 <div class="codehilite"><pre><span></span><code><span class="err">[username@es1 ~]$ qrsh -g grpname -l rt_F=1 -l h_rt=1:00:00</span>
-<span class="err">[username@g0001 ~]$ module load python/3.6/3.6.5 cuda/10.0/10.0.130.1 cudnn/7.4/7.4.2</span>
+<span class="err">[username@g0001 ~]$ module load python/3.6/3.6.12 cuda/11.0/11.0.3 cudnn/8.1/8.1.1 gcc/7.4.0</span>
 <span class="err">[username@g0001 ~]$ source ~/jupyter_env/bin/activate</span>
 </code></pre></div>
 
@@ -1298,24 +1298,7 @@ http://127.0.0.1:8888/?token=<i>token_string</i>
 <p>pipインストールの代わりに、Jupyter Notebookがインストールされたコンテナイメージを利用することもできます。例えば、<a href="../../ngc/">NGC</a>で提供されているTensorFlowのDockerイメージには、TensorFlowだけではなくJupyter Notebookもインストールされています。</p>
 <h3 id="build-a-container-image">コンテナイメージの生成</h3>
 <p>コンテナイメージを取得します。ここでは、NGCが提供しているDockerイメージ(<code>nvcr.io/nvidia/tensorflow:19.07-py3</code>)を利用します。</p>
-<p><strong>Singularity 2.6</strong></p>
-<div class="codehilite"><pre><span></span><code><span class="err">[username@es1 ~]$ module load singularity/2.6.1</span>
-<span class="err">[username@es1 ~]$ singularity pull docker://nvcr.io/nvidia/tensorflow:19.07-py3</span>
-<span class="err">Docker image path: nvcr.io/nvidia/tensorflow:19.07-py3</span>
-<span class="err">Cache folder set to /home/username/.singularity/docker</span>
-<span class="c">Importing: base Singularity environment</span>
-<span class="err">:</span>
-<span class="err">(snip)</span>
-<span class="err">:</span>
-<span class="err">Building Singularity image...</span>
-<span class="err">Singularity container built: ./tensorflow-19.07-py3.simg</span>
-<span class="err">Cleaning up...</span>
-<span class="err">Done. Container is at: ./tensorflow-19.07-py3.simg</span>
-</code></pre></div>
-
-
-<p><strong>SingularityPRO 3.5</strong></p>
-<div class="codehilite"><pre><span></span><code><span class="err">[username@es1 ~]$ module load singularitypro/3.5</span>
+<div class="codehilite"><pre><span></span><code><span class="err">[username@es1 ~]$ module load singularitypro</span>
 <span class="err">[username@es1 ~]$ singularity pull docker://nvcr.io/nvidia/tensorflow:19.07-py3</span>
 <span class="c">INFO:    Converting OCI blobs to SIF format</span>
 <span class="c">INFO:    Starting build...</span>
@@ -1338,36 +1321,8 @@ http://127.0.0.1:8888/?token=<i>token_string</i>
 
 
 <p>続いて、以下のようにコンテナイメージの中のJupyter Notebookを起動します。</p>
-<p><strong>Singularity 2.6</strong></p>
 <div class="codehilite"><pre>
-[username@g0001 ~]$ module load singularity/2.6.1
-[username@g0001 ~]$ singularity run --nv ./tensorflow-19.07-py3.simg jupyter notebook --ip=`hostname` --port=8888 --no-browser
-
-================
-== TensorFlow ==
-================
-
-NVIDIA Release 19.07 (build 7332442)
-TensorFlow Version 1.14.0
-
-Container image Copyright (c) 2019, NVIDIA CORPORATION.  All rights reserved.
-Copyright 2017-2019 The TensorFlow Authors.  All rights reserved.
-
-:
-(snip)
-:
-[I 19:56:19.585 NotebookApp] Use Control-C to stop this server and shut down all kernels (twice to skip confirmation).
-[C 19:56:19.593 NotebookApp]
-
-    To access the notebook, open this file in a browser:
-        file:///home/username/.local/share/jupyter/runtime/nbserver-xxxxxx-open.html
-    Or copy and paste one of these URLs:
-        http://hostname:8888/?token=<i>token_string</i>
-</pre></div>
-
-<p><strong>SingularityPRO 3.5</strong></p>
-<div class="codehilite"><pre>
-[username@g0001 ~]$ module load singularitypro/3.5
+[username@g0001 ~]$ module load singularitypro
 [username@g0001 ~]$ singularity run --nv ./tensorflow_19.07-py3.sif jupyter notebook --ip=`hostname` --port=8888 --no-browser
 
 ================

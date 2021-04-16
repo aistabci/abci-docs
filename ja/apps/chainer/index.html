@@ -565,29 +565,23 @@
     <ul class="md-nav__list" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#using-chainer" class="md-nav__link">
-    Chainer の利用
+  <a href="#precondition" class="md-nav__link">
+    前提
   </a>
   
-    <nav class="md-nav">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
+</li>
+      
+        <li class="md-nav__item">
   <a href="#installation" class="md-nav__link">
     導入方法
   </a>
   
 </li>
-        
-          <li class="md-nav__item">
-  <a href="#_1" class="md-nav__link">
+      
+        <li class="md-nav__item">
+  <a href="#run" class="md-nav__link">
     実行方法
   </a>
-  
-</li>
-        
-      </ul>
-    </nav>
   
 </li>
       
@@ -1072,29 +1066,23 @@
     <ul class="md-nav__list" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#using-chainer" class="md-nav__link">
-    Chainer の利用
+  <a href="#precondition" class="md-nav__link">
+    前提
   </a>
   
-    <nav class="md-nav">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
+</li>
+      
+        <li class="md-nav__item">
   <a href="#installation" class="md-nav__link">
     導入方法
   </a>
   
 </li>
-        
-          <li class="md-nav__item">
-  <a href="#_1" class="md-nav__link">
+      
+        <li class="md-nav__item">
+  <a href="#run" class="md-nav__link">
     実行方法
   </a>
-  
-</li>
-        
-      </ul>
-    </nav>
   
 </li>
       
@@ -1118,120 +1106,44 @@
                 
                 
                 <h1 id="chainer">Chainer</h1>
-<p>ここでは、<a href="https://chainer.org/">Chainer</a>をpipでインストールして利用する手順を説明します。具体的には、Chainerをインストールして実行する手順を示します。</p>
-<p>動作確認は2019年11月30日に行っています。</p>
-<p>Chainerのバージョンは以下の通りです。</p>
-<table>
-<thead>
-<tr>
-<th align="left">使用ライブラリ</th>
-<th align="left">動作確認済みバージョン</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td align="left">chainer</td>
-<td align="left">6.6.0</td>
-</tr>
-<tr>
-<td align="left">cupy-cuda100</td>
-<td align="left">6.6.0</td>
-</tr>
-</tbody>
-</table>
-<p>本ドキュメントで使用する、ABCIが提供するモジュールとそのバージョンは以下の通りです。</p>
-<table>
-<thead>
-<tr>
-<th align="left">使用モジュール</th>
-<th align="left">動作確認済みバージョン</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td align="left">python</td>
-<td align="left">3.6.5</td>
-</tr>
-<tr>
-<td align="left">cuda</td>
-<td align="left">10.0.130.1</td>
-</tr>
-<tr>
-<td align="left">cudnn</td>
-<td align="left">7.6.4</td>
-</tr>
-<tr>
-<td align="left">nccl</td>
-<td align="left">2.4.8-1</td>
-</tr>
-</tbody>
-</table>
-<p>本ドキュメントで使用する環境変数一覧は以下の通りです。</p>
-<table>
-<thead>
-<tr>
-<th align="left">環境変数</th>
-<th align="left">説明</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td align="left">HOME</td>
-<td align="left">ユーザのホームディレクトリ</td>
-</tr>
-<tr>
-<td align="left">WORK</td>
-<td align="left">プログラムの実行ディレクトリ</td>
-</tr>
-</tbody>
-</table>
-<h2 id="using-chainer">Chainer の利用</h2>
-<h3 id="installation">導入方法</h3>
-<p>計算ノードを一台占有し、Python仮想環境<code>$HOME/venv/chainer</code>を作成し、<code>pip</code>で<code>chainer</code>と<code>cupy-cuda</code>をインストールします。</p>
+<p>ここでは、<a href="https://chainer.org/">Chainer</a>をpipで導入して実行する手順を説明します。</p>
+<h2 id="precondition">前提</h2>
+<ul>
+<li><code>grpname</code>はご自身のABCI利用グループ名に置き換えてください</li>
+<li><a href="/06/#python-virtual-environments" target="python-virtual-enviroments">Python仮想環境</a>はインタラクティブノードと各計算ノードで参照&gt;できるよう、<a href="/04/#home-area" target="home-area">ホーム領域</a>または<a href="/04/#group-area" target="group-area">グループ領域</a>に作成してくだ&gt;さい</li>
+<li>サンプルプログラムはインタラクティブノードと各計算ノードで参照できるよう、<a href="/04/#home-area" target="home-area">ホーム領域</a>または<a href="/04/#group-area" target="group-area">グループ領域</a>に保存してください</li>
+</ul>
+<h2 id="installation">導入方法</h2>
+<p><a href="/06/#venv" target="python_venv">venv</a>モジュールでPython仮想環境を作成し、作成したPython仮想環境へChainerを<a href="/06/#pip" target="pip">pip</a>で導入する手順です。</p>
+<div class="codehilite"><pre><span></span><code><span class="err">[username@es1 ~]$ qrsh -g grpname -l rt_G.small=1 -l h_rt=1:00:00</span>
+<span class="err">[username@g0001 ~]$ module load python/3.6/3.6.12 cuda/11.2/11.2.2 cudnn/8.1/8.1.1 openmpi/4.0.5</span>
+<span class="err">[username@g0001 ~]$ python3 -m venv ~/venv/chainer</span>
+<span class="err">[username@g0001 ~]$ source ~/venv/chainer/bin/activate</span>
+<span class="err">(chainer) [username@g0001 ~]$ pip3 install --upgrade pip setuptools</span>
+<span class="err">(chainer) [username@g0001 ~]$ pip3 install numpy==1.17 cupy-cuda112==8.6.0 chainer==7.7.0 mpi4py==3.0.3</span>
+</code></pre></div>
+
+
+<p>次回以降は、次のようにモジュールの読み込みとPython環境のアクティベートだけでChainerを使用できます。</p>
+<div class="codehilite"><pre><span></span><code><span class="err">[username@g0001 ~]$ module load python/3.6/3.6.12 cuda/11.2/11.2.2 cudnn/8.1/8.1.1 openmpi/4.0.5</span>
+<span class="err">[username@g0001 ~]$ source ~/venv/chainer/bin/activate</span>
+</code></pre></div>
+
+
+<h2 id="run">実行方法</h2>
+<p>Chainerサンプルプログラムの1つである<a href="http://yann.lecun.com/exdb/mnist/">mnist</a>の実行方法をインタラクティブジョブとバッチジョブそれぞれの場合で示します。</p>
+<p><strong>インタラクティブジョブとして実行</strong></p>
 <div class="codehilite"><pre><span></span><code><span class="err">[username@es1 ~]$ qrsh -g grpname -l rt_F=1 -l h_rt=1:00:00</span>
-<span class="err">[username@g0001 ~]$ module load python/3.6/3.6.5</span>
-<span class="err">[username@g0001 ~]$ module load cuda/10.0/10.0.130.1</span>
-<span class="err">[username@g0001 ~]$ module load cudnn/7.6/7.6.4</span>
-<span class="err">[username@g0001 ~]$ python3 -m venv $HOME/venv/chainer</span>
-<span class="err">[username@g0001 ~]$ source $HOME/venv/chainer/bin/activate</span>
-<span class="err">(chainer) [username@g0001 ~]$ pip3 install --upgrade pip</span>
-<span class="err">(chainer) [username@g0001 ~]$ pip3 install --upgrade setuptools</span>
-<span class="err">(chainer) [username@g0001 ~]$ pip3 install cupy-cuda100==6.6.0 chainer==6.6.0 mpi4py matplotlib</span>
-<span class="err">(chainer) [username@g0001 ~]$ exit</span>
-<span class="err">[username@es1 ~]$</span>
+<span class="err">[username@g0001 ~]$ wget https://raw.githubusercontent.com/chainer/chainer/master/examples/chainermn/mnist/train_mnist.py</span>
+<span class="err">[username@g0001 ~]$ module load python/3.6/3.6.12 cuda/11.2/11.2.2 cudnn/8.1/8.1.1 openmpi/4.0.5</span>
+<span class="err">[username@g0001 ~]$ source ~/venv/chainer/bin/activate</span>
+<span class="err">(chainer) [username@g0001 ~]$ python3 train_mnist.py</span>
 </code></pre></div>
 
 
-<p>次回以降は、以下のようにモジュールの読み込みとPython環境のアクティベートだけでChainerを利用できます。</p>
-<div class="codehilite"><pre><span></span><code><span class="err">[username@es1 ~]$ qrsh -g grpname -l rt_F=1 -l h_rt=1:00:00</span>
-<span class="err">[username@g0001 ~]$ module load python/3.6/3.6.5</span>
-<span class="err">[username@g0001 ~]$ module load cuda/10.0/10.0.130.1</span>
-<span class="err">[username@g0001 ~]$ module load cudnn/7.6/7.6.4</span>
-<span class="err">[username@g0001 ~]$ source $HOME/venv/chainer/bin/activate</span>
-</code></pre></div>
-
-
-<h3 id="_1">実行方法</h3>
-<p>ここでは、Chainerのサンプルプログラムの1つである<a href="http://yann.lecun.com/exdb/mnist/">mnist</a>を用いて実行方法を説明します。</p>
-<p>まず、サンプルプログラムをダウンロードします。</p>
-<div class="codehilite"><pre><span></span><code>[username@es1 ~]$ mkdir -p <span class="cp">${</span><span class="n">WORK</span><span class="cp">}</span>
-[username@es1 ~]$ cd <span class="cp">${</span><span class="n">WORK</span><span class="cp">}</span>
-[username@es1 ~]$ wget https://raw.githubusercontent.com/chainer/chainer/master/examples/chainermn/mnist/train_mnist.py
-</code></pre></div>
-
-
-<p>計算ノードを一台占有し、導入したChainerの利用環境を設定し、<code>train_mnist.py</code>を実行します。</p>
-<div class="codehilite"><pre><span></span><code><span class="err">[username@es1 ~]$ qrsh -g grpname -l rt_F=1 -l h_rt=1:00:00</span>
-<span class="err">[username@g0001 ~]$ module load python/3.6/3.6.5</span>
-<span class="err">[username@g0001 ~]$ module load cuda/10.0/10.0.130.1</span>
-<span class="err">[username@g0001 ~]$ module load cudnn/7.6/7.6.4</span>
-<span class="err">[username@g0001 ~]$ source $HOME/venv/chainer/bin/activate</span>
-<span class="err">(pytorch) [username@g0001 ~]$ cd $WORK</span>
-<span class="err">(pytorch) [username@g0001 ~]$ python3 ./train_mnist.py</span>
-</code></pre></div>
-
-
-<p>バッチ利用時のジョブスクリプトでも同様のことができます。以下では、2ノード内のそれぞれ4GPUを使用して実行しています。</p>
+<p><strong>バッチジョブとして実行</strong></p>
+<p>この例では、計8つのGPUを利用して分散学習します。計算ノード2台を使用し、計算ノード1台あたり4つのGPUを使用しています。</p>
+<p>次のジョブスクリプトを <code>run.sh</code> ファイルとして保存します。</p>
 <table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
  2
  3
@@ -1251,18 +1163,14 @@
 17
 18
 19
-20
-21
-22</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><code><span class="ch">#!/bin/sh</span>
+20</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><code><span class="ch">#!/bin/sh</span>
 <span class="c1">#$ -l rt_F=2</span>
 <span class="c1">#$ -l h_rt=1:23:45</span>
 <span class="c1">#$ -cwd</span>
 
 <span class="nb">source</span> /etc/profile.d/modules.sh
-module load python/3.6/3.6.5
-module load cuda/10.0/10.0.130.1
-module load cudnn/7.6/7.6.4
-<span class="nb">source</span> <span class="si">${</span><span class="nv">HOME</span><span class="si">}</span>/venv/chainer/bin/activate
+module load python/3.6/3.6.12 cuda/11.2/11.2.2 cudnn/8.1/8.1.1 openmpi/4.0.5
+<span class="nb">source</span> ~/venv/chainer/bin/activate
 
 <span class="nv">NUM_NODES</span><span class="o">=</span><span class="si">${</span><span class="nv">NHOSTS</span><span class="si">}</span>
 <span class="nv">NUM_GPUS_PER_NODE</span><span class="o">=</span><span class="m">4</span>
@@ -1278,22 +1186,22 @@ deactivate
 </code></pre></div>
 </td></tr></table>
 
-<p>本スクリプト内で使用する環境変数ならびにmpirunの引数は以下の通りです。</p>
+<p>ジョブスクリプト内で使用する変数ならびにmpirunの引数は以下の通りです。</p>
 <table>
 <thead>
 <tr>
-<th align="left">環境変数</th>
+<th align="left">変数</th>
 <th align="left">説明</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td align="left">NUM_NODES</td>
-<td align="left">ジョブで使用するノード数(rt_Fで指定した数が入ります)</td>
+<td align="left">ジョブで使用するノード数</td>
 </tr>
 <tr>
 <td align="left">NUM_GPU_PRE_NODE</td>
-<td align="left">1ノード内で使用するGPU数(計算ノードに4GPU搭載しているため4を指定)</td>
+<td align="left">1ノード内で使用するGPU数</td>
 </tr>
 <tr>
 <td align="left">NUM_PROCS</td>
@@ -1323,9 +1231,9 @@ deactivate
 </tr>
 </tbody>
 </table>
-<p>qsubコマンドでジョブ実行します。</p>
-<div class="codehilite"><pre><span></span><code><span class="err">[username@es1 ~]$ cd $WORK</span>
-<span class="err">[username@es1 ~]$ qsub -g grpname submit.sh</span>
+<p>バッチジョブ実行のため、ジョブスクリプト <code>run.sh</code> をqsubコマンドでバッチジョブとして投入します。</p>
+<div class="codehilite"><pre><span></span><code><span class="err">[username@es1 ~]$ qsub -g grpname run.sh</span>
+<span class="err">Your job 1234567 (&#39;run.sh&#39;) has been submitted</span>
 </code></pre></div>
                 
                   

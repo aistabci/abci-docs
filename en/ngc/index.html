@@ -1352,15 +1352,7 @@ Then, you'll find:
 
 <h3 id="build-a-singularity-image">Build a Singularity image</h3>
 <p>Build a Singularity image for TensorFlow on the interactive node.</p>
-<p><strong>Singularity 2.6</strong></p>
-<div class="codehilite"><pre><span></span><code><span class="err">[username@es1 ~]$ module load singularity/2.6.1</span>
-<span class="err">[username@es1 ~]$ singularity pull docker://nvcr.io/nvidia/tensorflow:19.06-py2</span>
-</code></pre></div>
-
-
-<p>An image named <code>tensorflow-19.06-py2.simg</code> will be generated.</p>
-<p><strong>SingularityPRO 3.7</strong></p>
-<div class="codehilite"><pre><span></span><code><span class="err">[username@es1 ~]$ module load singularitypro/3.7</span>
+<div class="codehilite"><pre><span></span><code><span class="err">[username@es1 ~]$ module load singularitypro</span>
 <span class="err">[username@es1 ~]$ singularity pull docker://nvcr.io/nvidia/tensorflow:19.06-py2</span>
 </code></pre></div>
 
@@ -1368,19 +1360,8 @@ Then, you'll find:
 <p>An image named <code>tensorflow_19.06-py2.sif</code> will be generated.</p>
 <h3 id="run-a-singularity-image">Run a Singularity image</h3>
 <p>Start an interactive job with one full-node and run a sample program <code>cnn_mnist.py</code>.</p>
-<p><strong>Singularity 2.6</strong></p>
 <div class="codehilite"><pre><span></span><code><span class="err">[username@es1 ~]$ qrsh -g grpname -l rt_F=1 -l h_rt=1:00:00</span>
-<span class="err">[username@g0001 ~]$ module load singularity/2.6.1</span>
-<span class="err">[username@g0001 ~]$ wget https://raw.githubusercontent.com/tensorflow/tensorflow/v1.13.1/tensorflow/examples/tutorials/layers/cnn_mnist.py</span>
-<span class="err">[username@g0001 ~]$ singularity run --nv tensorflow-19.06-py2.simg python cnn_mnist.py</span>
-<span class="err">:</span>
-<span class="err">{&#39;loss&#39;: 0.10828217, &#39;global_step&#39;: 20000, &#39;accuracy&#39;: 0.9667}</span>
-</code></pre></div>
-
-
-<p><strong>SingularityPRO 3.7</strong></p>
-<div class="codehilite"><pre><span></span><code><span class="err">[username@es1 ~]$ qrsh -g grpname -l rt_F=1 -l h_rt=1:00:00</span>
-<span class="err">[username@g0001 ~]$ module load singularitypro/3.7</span>
+<span class="err">[username@g0001 ~]$ module load singularitypro</span>
 <span class="err">[username@g0001 ~]$ wget https://raw.githubusercontent.com/tensorflow/tensorflow/v1.13.1/tensorflow/examples/tutorials/layers/cnn_mnist.py</span>
 <span class="err">[username@g0001 ~]$ singularity run --nv tensorflow_19.06-py2.sif python cnn_mnist.py</span>
 <span class="err">:</span>
@@ -1389,28 +1370,6 @@ Then, you'll find:
 
 
 <p>You can do the same thing with a batch job.</p>
-<p><strong>Singularity 2.6</strong></p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1
-2
-3
-4
-5
-6
-7
-8
-9</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><code><span class="ch">#!/bin/sh</span>
-<span class="c1">#$ -l rt_F=1</span>
-<span class="c1">#$ -j y</span>
-<span class="c1">#$ -cwd</span>
-
-<span class="nb">source</span> /etc/profile.d/modules.sh
-module load singularity/2.6.1
-wget https://raw.githubusercontent.com/tensorflow/tensorflow/v1.13.1/tensorflow/examples/tutorials/layers/cnn_mnist.py
-singularity run --nv tensorflow-19.06-py2.simg python cnn_mnist.py
-</code></pre></div>
-</td></tr></table>
-
-<p><strong>SingularityPRO 3.7</strong></p>
 <table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
  2
  3
@@ -1426,7 +1385,7 @@ singularity run --nv tensorflow-19.06-py2.simg python cnn_mnist.py
 <span class="c1">#$ -cwd</span>
 
 <span class="nb">source</span> /etc/profile.d/modules.sh
-module load singularitypro/3.7
+module load singularitypro
 wget https://raw.githubusercontent.com/tensorflow/tensorflow/v1.13.1/tensorflow/examples/tutorials/layers/cnn_mni
 st.py
 singularity run --nv tensorflow_19.06-py2.sif python cnn_mnist.py
@@ -1438,17 +1397,7 @@ singularity run --nv tensorflow_19.06-py2.sif python cnn_mnist.py
 TensorFlow image, which you used for <a href="#single-node-run">Single-node Run</a>, also supports multi-node run.</p>
 <h3 id="identify-mpi-version">Identify MPI version</h3>
 <p>First, check the version of MPI installed into the TensorFlow image.</p>
-<p><strong>Singularity 2.6</strong></p>
-<div class="codehilite"><pre><span></span><code><span class="o">[</span><span class="n">username@es1 ~</span><span class="o">]</span><span class="w"> </span><span class="err">$</span><span class="w"> </span><span class="k">module</span><span class="w"> </span><span class="k">load</span><span class="w"> </span><span class="n">singularity</span><span class="o">/</span><span class="mf">2.6.1</span><span class="w"></span>
-<span class="o">[</span><span class="n">username@es1 ~</span><span class="o">]</span><span class="w"> </span><span class="err">$</span><span class="w"> </span><span class="n">singularity</span><span class="w"> </span><span class="k">exec</span><span class="w"> </span><span class="n">tensorflow</span><span class="o">-</span><span class="mf">19.06</span><span class="o">-</span><span class="n">py2</span><span class="p">.</span><span class="n">simg</span><span class="w"> </span><span class="n">mpirun</span><span class="w"> </span><span class="c1">--version</span>
-<span class="n">mpirun</span><span class="w"> </span><span class="p">(</span><span class="k">Open</span><span class="w"> </span><span class="n">MPI</span><span class="p">)</span><span class="w"> </span><span class="mf">3.1.3</span><span class="w"></span>
-
-<span class="n">Report</span><span class="w"> </span><span class="n">bugs</span><span class="w"> </span><span class="k">to</span><span class="w"> </span><span class="nl">http</span><span class="p">:</span><span class="o">//</span><span class="n">www</span><span class="p">.</span><span class="k">open</span><span class="o">-</span><span class="n">mpi</span><span class="p">.</span><span class="n">org</span><span class="o">/</span><span class="n">community</span><span class="o">/</span><span class="n">help</span><span class="o">/</span><span class="w"></span>
-</code></pre></div>
-
-
-<p><strong>SingularityPRO 3.7</strong></p>
-<div class="codehilite"><pre><span></span><code><span class="o">[</span><span class="n">username@es1 ~</span><span class="o">]</span><span class="w"> </span><span class="err">$</span><span class="w"> </span><span class="k">module</span><span class="w"> </span><span class="k">load</span><span class="w"> </span><span class="n">singularitypro</span><span class="o">/</span><span class="mf">3.7</span><span class="w"></span>
+<div class="codehilite"><pre><span></span><code><span class="o">[</span><span class="n">username@es1 ~</span><span class="o">]</span><span class="w"> </span><span class="err">$</span><span class="w"> </span><span class="k">module</span><span class="w"> </span><span class="k">load</span><span class="w"> </span><span class="n">singularitypro</span><span class="w"></span>
 <span class="o">[</span><span class="n">username@es1 ~</span><span class="o">]</span><span class="w"> </span><span class="err">$</span><span class="w"> </span><span class="n">singularity</span><span class="w"> </span><span class="k">exec</span><span class="w"> </span><span class="n">tensorflow_19</span><span class="mf">.06</span><span class="o">-</span><span class="n">py2</span><span class="p">.</span><span class="n">sif</span><span class="w"> </span><span class="n">mpirun</span><span class="w"> </span><span class="c1">--version</span>
 <span class="n">mpirun</span><span class="w"> </span><span class="p">(</span><span class="k">Open</span><span class="w"> </span><span class="n">MPI</span><span class="p">)</span><span class="w"> </span><span class="mf">3.1.3</span><span class="w"></span>
 
@@ -1459,7 +1408,7 @@ TensorFlow image, which you used for <a href="#single-node-run">Single-node Run<
 <p>Next, check the available versions of Open MPI on the ABCI system.</p>
 <div class="codehilite"><pre><span></span><code><span class="o">[</span><span class="n">username@es1 ~</span><span class="o">]</span><span class="w"> </span><span class="err">$</span><span class="w"> </span><span class="k">module</span><span class="w"> </span><span class="n">avail</span><span class="w"> </span><span class="n">openmpi</span><span class="w"></span>
 
-<span class="c1">------------------------------ /apps/modules/modulefiles/centos7/mpi -------------------------------</span>
+<span class="c1">-------------------------------------------- /apps/modules/modulefiles/mpi ---------------------------------------------</span>
 <span class="n">openmpi</span><span class="o">/</span><span class="mf">2.1.6</span><span class="w">          </span><span class="n">openmpi</span><span class="o">/</span><span class="mf">3.1.6</span><span class="w">          </span><span class="n">openmpi</span><span class="o">/</span><span class="mf">4.0.5</span><span class="p">(</span><span class="k">default</span><span class="p">)</span><span class="w"></span>
 </code></pre></div>
 
@@ -1467,45 +1416,13 @@ TensorFlow image, which you used for <a href="#single-node-run">Single-node Run<
 <p><code>openmpi/3.1.6</code> module seems to be suitable to run this image. In general, at least the major versions of both MPIs should be the same.</p>
 <h3 id="run-a-singularity-image-with-mpi">Run a Singularity image with MPI</h3>
 <p>Start an interative job with two full-nodes, and load required environment modules.</p>
-<p><strong>Singularity 2.6</strong></p>
 <div class="codehilite"><pre><span></span><code><span class="err">[username@es1 ~]$ qrsh -g grpname -l rt_F=2 -l h_rt=1:00:00</span>
-<span class="err">[username@g0001 ~]$ module load singularity/2.6.1 openmpi/3.1.6</span>
-</code></pre></div>
-
-
-<p><strong>SingularityPRO 3.7</strong></p>
-<div class="codehilite"><pre><span></span><code><span class="err">[username@es1 ~]$ qrsh -g grpname -l rt_F=2 -l h_rt=1:00:00</span>
-<span class="err">[username@g0001 ~]$ module load singularitypro/3.7 openmpi/3.1.6</span>
+<span class="err">[username@g0001 ~]$ module load singularitypro openmpi/3.1.6</span>
 </code></pre></div>
 
 
 <p>Each full-node has four GPUs, and you have eight GPUs in total.
 In this case, you run four processes on each full-node in parallel, that means eight processes in total, so as to execute the sample program <code>tensorflow_mnist.py</code>.</p>
-<p><strong>Singularity 2.6</strong></p>
-<div class="codehilite"><pre><span></span><code><span class="err">[username@g0001 ~]$ wget https://raw.githubusercontent.com/horovod/horovod/v0.16.4/examples/tensorflow_mnist.py</span>
-<span class="err">[username@g0001 ~]$ mpirun -np 8 -npernode 4 singularity run --nv tensorflow-19.06-py2.simg python tensorflow_mnist.py</span>
-<span class="err">:</span>
-<span class="c">INFO:tensorflow:loss = 2.1563044, step = 30 (0.153 sec)</span>
-<span class="c">INFO:tensorflow:loss = 2.1480849, step = 30 (0.153 sec)</span>
-<span class="c">INFO:tensorflow:loss = 2.1783454, step = 30 (0.152 sec)</span>
-<span class="c">INFO:tensorflow:loss = 2.1527252, step = 30 (0.152 sec)</span>
-<span class="c">INFO:tensorflow:loss = 2.1556997, step = 30 (0.152 sec)</span>
-<span class="c">INFO:tensorflow:loss = 2.1814752, step = 30 (0.153 sec)</span>
-<span class="c">INFO:tensorflow:loss = 2.190885, step = 30 (0.153 sec)</span>
-<span class="c">INFO:tensorflow:loss = 2.1524186, step = 30 (0.153 sec)</span>
-<span class="c">INFO:tensorflow:loss = 1.7863444, step = 40 (0.153 sec)</span>
-<span class="c">INFO:tensorflow:loss = 1.7349662, step = 40 (0.153 sec)</span>
-<span class="c">INFO:tensorflow:loss = 1.8009219, step = 40 (0.153 sec)</span>
-<span class="c">INFO:tensorflow:loss = 1.7753524, step = 40 (0.154 sec)</span>
-<span class="c">INFO:tensorflow:loss = 1.7744101, step = 40 (0.154 sec)</span>
-<span class="c">INFO:tensorflow:loss = 1.7266351, step = 40 (0.154 sec)</span>
-<span class="c">INFO:tensorflow:loss = 1.7221795, step = 40 (0.154 sec)</span>
-<span class="c">INFO:tensorflow:loss = 1.8231221, step = 40 (0.154 sec)</span>
-<span class="err">:</span>
-</code></pre></div>
-
-
-<p><strong>SingularityPRO 3.7</strong></p>
 <div class="codehilite"><pre><span></span><code><span class="err">[username@g0001 ~]$ wget https://raw.githubusercontent.com/horovod/horovod/v0.16.4/examples/tensorflow_mnist.py</span>
 <span class="err">[username@g0001 ~]$ mpirun -np 8 -npernode 4 singularity run --nv tensorflow_19.06-py2.sif python tensorflow_mnist.py</span>
 <span class="err">:</span>
@@ -1530,7 +1447,6 @@ In this case, you run four processes on each full-node in parallel, that means e
 
 
 <p>You can do the same thing with a batch job.</p>
-<p><strong>Singularity 2.6</strong></p>
 <table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1
 2
 3
@@ -1545,28 +1461,7 @@ In this case, you run four processes on each full-node in parallel, that means e
 <span class="c1">#$ -cwd</span>
 
 <span class="nb">source</span> /etc/profile.d/modules.sh
-module load singularity/2.6.1 openmpi/3.1.6
-wget https://raw.githubusercontent.com/horovod/horovod/v0.16.4/examples/tensorflow_mnist.py
-mpirun -np <span class="m">8</span> -npernode <span class="m">4</span> singularity run --nv tensorflow-19.06-py2.simg python tensorflow_mnist.py
-</code></pre></div>
-</td></tr></table>
-
-<p><strong>SingularityPRO 3.7</strong></p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1
-2
-3
-4
-5
-6
-7
-8
-9</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><code><span class="ch">#!/bin/sh</span>
-<span class="c1">#$ -l rt_F=2</span>
-<span class="c1">#$ -j y</span>
-<span class="c1">#$ -cwd</span>
-
-<span class="nb">source</span> /etc/profile.d/modules.sh
-module load singularitypro/3.7 openmpi/3.1.6
+module load singularitypro openmpi/3.1.6
 wget https://raw.githubusercontent.com/horovod/horovod/v0.16.4/examples/tensorflow_mnist.py
 mpirun -np <span class="m">8</span> -npernode <span class="m">4</span> singularity run --nv tensorflow_19.06-py2.sif python tensorflow_mnist.py
 </code></pre></div>
@@ -1595,17 +1490,7 @@ mpirun -np <span class="m">8</span> -npernode <span class="m">4</span> singulari
 </ul>
 <p>Build a Singularity image for Chainer on the interactive node.
 In this case, you need to set two environment variables, <code>SINGULARITY_DOCKER_USERNAME</code> and <code>SINGULARITY_DOCKER_PASSWORD</code> for downloading images from NGC container registry.</p>
-<p><strong>Singularity 2.6</strong></p>
-<div class="codehilite"><pre><span></span><code><span class="err">[username@es1 ~]$ module load singularity/2.6.1</span>
-<span class="err">[username@es1 ~]$ export SINGULARITY_DOCKER_USERNAME=&#39;$oauthtoken&#39;</span>
-<span class="err">[username@es1 ~]$ export SINGULARITY_DOCKER_PASSWORD=&lt;NGC API Key&gt;</span>
-<span class="err">[username@es1 ~]$ singularity pull docker://nvcr.io/partners/chainer:4.0.0b1</span>
-</code></pre></div>
-
-
-<p>An image named <code>chainer-4.0.0b1.simg</code> will be generated.</p>
-<p><strong>SingularityPRO 3.7</strong></p>
-<div class="codehilite"><pre><span></span><code><span class="err">[username@es1 ~]$ module load singularitypro/3.7</span>
+<div class="codehilite"><pre><span></span><code><span class="err">[username@es1 ~]$ module load singularitypro</span>
 <span class="err">[username@es1 ~]$ export SINGULARITY_DOCKER_USERNAME=&#39;$oauthtoken&#39;</span>
 <span class="err">[username@es1 ~]$ export SINGULARITY_DOCKER_PASSWORD=&lt;NGC API Key&gt;</span>
 <span class="err">[username@es1 ~]$ singularity pull docker://nvcr.io/partners/chainer:4.0.0b1</span>
@@ -1614,7 +1499,7 @@ In this case, you need to set two environment variables, <code>SINGULARITY_DOCKE
 
 <p>An image named <code>chainer_4.0.0b1.sif</code> will be generated.</p>
 <p>You can also specify <code>--docker-login</code> option to download images instead of environment variables.</p>
-<div class="codehilite"><pre><span></span><code><span class="err">[username@es1 ~]$ module load singularitypro/3.7</span>
+<div class="codehilite"><pre><span></span><code><span class="err">[username@es1 ~]$ module load singularitypro</span>
 <span class="err">[username@es1 ~]$ singularity pull --disable-cache --docker-login docker://nvcr.io/partners/chainer:4.0.0b1</span>
 <span class="err">Enter Docker Username: $oauthtoken</span>
 <span class="err">Enter Docker Password: &lt;NGC API Key&gt;</span>
@@ -1623,24 +1508,8 @@ In this case, you need to set two environment variables, <code>SINGULARITY_DOCKE
 
 <h3 id="run-a-singularity-image_1">Run a Singularity image</h3>
 <p>You can run the resulted image, just as same as freely available images.</p>
-<p><strong>Singularity 2.6</strong></p>
 <div class="codehilite"><pre><span></span><code><span class="err">[username@es1 ~]$ qrsh -g grpname -l rt_G.small=1 -l h_rt=1:00:00</span>
-<span class="err">[username@g0001 ~]$ module load singularity/2.6.1</span>
-<span class="err">[username@g0001 ~]$ wget https://raw.githubusercontent.com/chainer/chainer/v4.0.0b1/examples/mnist/train_mnist.py</span>
-<span class="err">[username@g0001 ~]$ singularity exec --nv chainer-4.0.0b1.simg python train_mnist.py -g 0</span>
-<span class="err">:</span>
-<span class="err">epoch       main/loss   validation/main/loss  main/accuracy  validation/main/accuracy  elapsed_time</span>
-<span class="err">1           0.192916    0.103601              0.9418         0.967                     9.05948</span>
-<span class="err">2           0.0748937   0.0690557             0.977333       0.9784                    10.951</span>
-<span class="err">3           0.0507463   0.0666913             0.983682       0.9804                    12.8735</span>
-<span class="err">4           0.0353792   0.0878195             0.988432       0.9748                    14.7425</span>
-<span class="err">:</span>
-</code></pre></div>
-
-
-<p><strong>SingularityPRO 3.7</strong></p>
-<div class="codehilite"><pre><span></span><code><span class="err">[username@es1 ~]$ qrsh -g grpname -l rt_G.small=1 -l h_rt=1:00:00</span>
-<span class="err">[username@g0001 ~]$ module load singularitypro/3.7</span>
+<span class="err">[username@g0001 ~]$ module load singularitypro</span>
 <span class="err">[username@g0001 ~]$ wget https://raw.githubusercontent.com/chainer/chainer/v4.0.0b1/examples/mnist/train_mnist.py</span>
 <span class="err">[username@g0001 ~]$ singularity exec --nv chainer_4.0.0b1.sif python train_mnist.py -g 0</span>
 <span class="err">:</span>

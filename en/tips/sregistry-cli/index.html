@@ -1083,7 +1083,7 @@
 <p>Singularity Global Client (<code>sregistry</code> command) is software for managing images used in Singularity. It can also be used to get images from the registry.</p>
 <h2 id="usage">Usage</h2>
 <p>The sregistry command can be used with ABCI by performing the following procedure in advance.</p>
-<div class="codehilite"><pre><span></span><code><span class="err">[username@es1 ~]$ module load singularity/2.6.1 sregistry-cli/0.2.31</span>
+<div class="codehilite"><pre><span></span><code><span class="err">[username@es1 ~]$ module load singularitypro python/3.6/3.6.12 sregistry-cli</span>
 </code></pre></div>
 
 
@@ -1134,7 +1134,7 @@ For details, please refer to the page about the registry you want to use from <a
 <p>This procedure assumes that you have completed <a href="/tips/awscli/#register-access-token" target="aws_cli">Register access token</a> in <a href="/tips/awscli/" target="aws_cli">AWS CLI</a>.</p>
 </div>
 <p>Load modules necessary for using Singularity Global Client and Amazon ECR.</p>
-<div class="codehilite"><pre><span></span><code><span class="err">[username@es1 ~]$ module load singularity/2.6.1 sregistry-cli/0.2.31 aws-cli/1.16.194</span>
+<div class="codehilite"><pre><span></span><code><span class="err">[username@es1 ~]$ module load singularitypro python/3.6/3.6.12 sregistry-cli aws-cli</span>
 </code></pre></div>
 
 
@@ -1168,7 +1168,7 @@ For details, please refer to the page about the registry you want to use from <a
 </ul>
 <p>Execute pulled image as interactive job.</p>
 <div class="codehilite"><pre><span></span><code><span class="o">[</span><span class="n">username@es1 ~</span><span class="o">]</span><span class="err">$</span><span class="w"> </span><span class="n">qrsh</span><span class="w"> </span><span class="o">-</span><span class="n">g</span><span class="w"> </span><span class="n">grpname</span><span class="w"> </span><span class="o">-</span><span class="n">l</span><span class="w"> </span><span class="n">rt_F</span><span class="o">=</span><span class="mi">1</span><span class="w"> </span><span class="o">-</span><span class="n">l</span><span class="w"> </span><span class="n">h_rt</span><span class="o">=</span><span class="mi">1</span><span class="err">:</span><span class="mi">00</span><span class="err">:</span><span class="mi">00</span><span class="w"></span>
-<span class="o">[</span><span class="n">username@g0001 ~</span><span class="o">]</span><span class="err">$</span><span class="w"> </span><span class="k">module</span><span class="w"> </span><span class="k">load</span><span class="w"> </span><span class="n">singularity</span><span class="o">/</span><span class="mf">2.6.1</span><span class="w"></span>
+<span class="o">[</span><span class="n">username@g0001 ~</span><span class="o">]</span><span class="err">$</span><span class="w"> </span><span class="k">module</span><span class="w"> </span><span class="k">load</span><span class="w"> </span><span class="n">singularitypro</span><span class="w"></span>
 <span class="o">[</span><span class="n">username@g0001 ~</span><span class="o">]</span><span class="err">$</span><span class="w"> </span><span class="n">singularity</span><span class="w"> </span><span class="n">shell</span><span class="w"> </span><span class="c1">--nv ./mytensorflow.simg</span>
 <span class="nl">Singularity</span><span class="p">:</span><span class="w"> </span><span class="n">Invoking</span><span class="w"> </span><span class="n">an</span><span class="w"> </span><span class="n">interactive</span><span class="w"> </span><span class="n">shell</span><span class="w"> </span><span class="k">within</span><span class="w"> </span><span class="n">container</span><span class="p">...</span><span class="w"></span>
 
