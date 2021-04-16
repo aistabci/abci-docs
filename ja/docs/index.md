@@ -30,6 +30,7 @@
     - [Chainer](apps/chainer.md)
     - [その他](apps/others.md)
   - Tips:
+    - [NVIDIA NGC](tips/ngc.md)
     - [リモートデスクトップの利用](tips/remote-desktop.md)
     - [AWS CLIの利用](tips/awscli.md)
     - [Tera Termの利用](tips/tera-term.md)
@@ -39,7 +40,6 @@
     - [Spackによるソフトウェア管理](tips/spack.md)
     - [データセットの利用](tips/datasets.md)
     - [Amazon ECR からコンテナ取得](tips/dl-amazon-ecr.md)
-  - [NVIDIA NGC](ngc.md)
   - ABCI クラウドストレージ:
     - [概要](abci-cloudstorage.md)
     - [アカウントとアクセスキー](abci-cloudstorage/cs-account.md)

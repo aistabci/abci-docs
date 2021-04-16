@@ -98,7 +98,7 @@ Jupyter Notebookの使い方は、[Jupyter Notebook Documentation](https://jupyt
 
 ## Singularityを用いた利用手順 {#using-singularity}
 
-pipインストールの代わりに、Jupyter Notebookがインストールされたコンテナイメージを利用することもできます。例えば、[NGC](../ngc.md)で提供されているTensorFlowのDockerイメージには、TensorFlowだけではなくJupyter Notebookもインストールされています。
+pipインストールの代わりに、Jupyter Notebookがインストールされたコンテナイメージを利用することもできます。例えば、[NVIDIA NGC](ngc.md)で提供されているTensorFlowのDockerイメージには、TensorFlowだけではなくJupyter Notebookもインストールされています。
 
 ### コンテナイメージの生成 {#build-a-container-image}
 

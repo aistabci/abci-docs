@@ -99,7 +99,7 @@ Jupyter Notebook will be terminated by the following steps:
 
 ## Using Singularity
 
-Instead of installing pip, you can also use a container image with Jupyter Notebook installed. For example, the TensorFlow Docker image provided in [NGC](../ngc.md) has Jupyter Notebook installed as well as TensorFlow.
+Instead of installing pip, you can also use a container image with Jupyter Notebook installed. For example, the TensorFlow Docker image provided in [NVIDIA NGC](ngc.md) has Jupyter Notebook installed as well as TensorFlow.
 
 ### Build a container image
 
