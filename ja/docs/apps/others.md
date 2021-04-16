@@ -1,3 +1,7 @@
+# その他
+
+## Deep Learning Frameworks
+
 ABCIシステムでディープラーニングフレームワークを利用する場合、
 利用者がホーム領域またはグループ領域にインストールする必要があります。
 ディープラーニングフレームワークのインストール方法は以下の通りです。
@@ -9,68 +13,80 @@ ABCIシステムでディープラーニングフレームワークを利用す�
 ```
 INSTALL_DIR : インストールディレクトリのパス
 
-[username@g0001 ~]$ cd INSTALL_DIR
-[username@g0001 ~]$ module load python/2.7/2.7.15 cuda/9.1/9.1.85.3 cudnn/7.0/7.0.5
+[username@g0001 ~]$ cd $INSTALL_DIR
+[username@g0001 ~]$ module load cuda/10.2/10.2.89 cudnn/7.6/7.6.5
 [username@g0001 ~]$ git clone https://github.com/BVLC/caffe
 [username@g0001 ~]$ cd caffe
 [username@g0001 caffe]$ cp Makefile.config.example Makefile.config
 [username@g0001 caffe]$ vi Makefile.config
-[username@g0001 caffe]$ make all 2>&1 > log_make-all.txt
-[username@g0001 caffe]$ make test 2>&1 > log_make-test.txt
-[username@g0001 caffe]$ make runtest 2>&1 > log_make-runtest.txt
-[username@g0001 caffe]$ pip install -r python/requirements.txt
-[username@g0001 caffe]$ make pycaffe
-[username@g0001 caffe]$ make distibute
-```
+(snip)
+[username@g0001 caffe]$ diff -u Makefile.config.example Makefile.config
+--- Makefile.config.example     2021-04-14 14:54:32.000000000 +0900
++++ Makefile.config     2021-04-14 15:00:58.000000000 +0900
+@@ -2,7 +2,7 @@
+ # Contributions simplifying and improving our build system are welcome!
 
-### Caffe2
+ # cuDNN acceleration switch (uncomment to build with cuDNN).
+-# USE_CUDNN := 1
++USE_CUDNN := 1
 
-[Caffe2](https://caffe2.ai/)のインストール方法は以下を参照ください。
+ # CPU-only switch (uncomment to build without GPU support).
+ # CPU_ONLY := 1
+@@ -27,7 +27,7 @@
+ # CUSTOM_CXX := g++
 
-```
-INSTALL_DIR : インストールディレクトリのパス
+ # CUDA directory contains bin/ and lib/ directories that we need.
+-CUDA_DIR := /usr/local/cuda
++CUDA_DIR := $(CUDA_HOME)
+ # On Ubuntu 14.04, if cuda tools are installed via
+ # "sudo apt-get install nvidia-cuda-toolkit" then use this instead:
+ # CUDA_DIR := /usr
+@@ -36,9 +36,7 @@
+ # For CUDA < 6.0, comment the *_50 through *_61 lines for compatibility.
+ # For CUDA < 8.0, comment the *_60 and *_61 lines for compatibility.
+ # For CUDA >= 9.0, comment the *_20 and *_21 lines for compatibility.
+-CUDA_ARCH := -gencode arch=compute_20,code=sm_20 \
+-               -gencode arch=compute_20,code=sm_21 \
+-               -gencode arch=compute_30,code=sm_30 \
++CUDA_ARCH := -gencode arch=compute_30,code=sm_30 \
+                -gencode arch=compute_35,code=sm_35 \
+                -gencode arch=compute_50,code=sm_50 \
+                -gencode arch=compute_52,code=sm_52 \
+@@ -50,7 +48,7 @@
+ # atlas for ATLAS (default)
+ # mkl for MKL
+ # open for OpenBlas
+-BLAS := atlas
++BLAS := open
+ # Custom (MKL/ATLAS/OpenBLAS) include and lib directories.
+ # Leave commented to accept the defaults for your choice of BLAS
+ # (which should work)!
+@@ -69,7 +67,7 @@
+ # NOTE: this is required only if you will compile the python interface.
+ # We need to be able to find Python.h and numpy/arrayobject.h.
+ PYTHON_INCLUDE := /usr/include/python2.7 \
+-               /usr/lib/python2.7/dist-packages/numpy/core/include
++               /usr/lib64/python2.7/site-packages/numpy/core/include
+ # Anaconda Python distribution is quite popular. Include path:
+ # Verify anaconda location, sometimes it's in root.
+ # ANACONDA_HOME := $(HOME)/anaconda
+@@ -83,7 +81,7 @@
+ #                 /usr/lib/python3.5/dist-packages/numpy/core/include
 
-[username@g0001 ~]$ export PREFIX=INSTALL_DIR
-[username@g0001 ~]$ module load python/3.6/3.6.5 cuda/9.1/9.1.85.3 cudnn/7.0/7.0.5 nccl/2.1/2.1.15-1
-[username@g0001 ~]$ git clone https://github.com/gflags/gflags.git
-[username@g0001 ~]$ mkdir gflags/build && cd gflags/build
-[username@g0001 build]$ cmake3 -DBUILD_SHARED_LIBS=ON -DCMAKE_CXX_FLAGS='-fPIC' -DCMAKE_INSTALL_PREFIX=$PREFIX .. 
-[username@g0001 build]$ make -j 8 2>&1 | tee make.log 
-[username@g0001 build]$ make install 2>&1 | tee make_install.log
-[username@g0001 build]$ cd 
+ # We need to be able to find libpythonX.X.so or .dylib.
+-PYTHON_LIB := /usr/lib
++PYTHON_LIB := /usr/lib64
+ # PYTHON_LIB := $(ANACONDA_HOME)/lib
 
-[username@g0001 ~]$ git clone https://github.com/google/glog
-[username@g0001 ~]$ cd glog
-[username@g0001 glog]$ sh autogen.sh
-[username@g0001 glog]$ CXXFLAGS="-fPIC -I$PREFIX/include" LDFLAGS="-L$PREFIX/lib" ./configure --prefix=$PREFIX 2>&1 | tee configure.log
-[username@g0001 glog]$ make -j 8 2>&1 | tee make.log
-[username@g0001 glog]$ make install 2>&1 | tee make_install.log
-[username@g0001 glog]$ cd 
-
-[username@g0001 ~]$ pip3 install future graphviz hypothesis jupyter matplotlib numpy protobuf pydot python-nvd3 pyyaml requests scikit-image scipy six --prefix=$PREFIX
-[username@g0001 ~]$ export CUDNN_INCLUDE_DIR=$CUDNN_HOME/include
-[username@g0001 ~]$ export CUDNN_LIBRARY=$CUDNN_HOME/lib64/libcudnn.so.7.0.5
-[username@g0001 ~]$ export NCCL_INCLUDE_DIR=$NCCL_HOME/include
-[username@g0001 ~]$ export NCCL_LIBRARY=$NCCL_HOME/lib/libnccl.so.2.1.15
-[username@g0001 ~]$ git clone --recursive https://github.com/pytorch/pytorch.git
-[username@g0001 ~]$ cd pytorch && git submodule update --init
-[username@g0001 pytorch]$ mkdir build && cd build
-[username@g0001 build]$ cmake3 -DPYTHON_INCLUDE_DIR=/apps/python/3.6.5/include/python3.6m -DPYTHON_EXECUTABLE=/apps/python/3.6.5/bin/python3 -DPYTHON_LIBRARY=/apps/python/3.6.5/lib -DNCCL_INCLUDE_DIR=$NCCL_INCLUDE_DIR -DNCCL_LIBRARY=$NCCL_LIBRARY -DUSE_OPENCV=ON -DCMAKE_INSTALL_PREFIX=INSTALL_DIR .
-[username@g0001 build]$ make install 2>&1 | tee make_install.log
-```
-
-### TensorFlow
-
-[TensorFlow](https://www.tensorflow.org/)のインストール方法は以下を参照ください。
-
-```
-NEW_VENV : インストールするPython仮想環境、またはディレクトリパス
-
-[username@g0001 ~]$ module load python/3.6/3.6.5 cuda/9.0/9.0.176.4 cudnn/7.2/7.2.1
-[username@g0001 ~]$ export LD_LIBRARY_PATH=$CUDA_HOME/extras/CUPTI/lib64:$LD_LIBRARY_PATH
-[username@g0001 ~]$ python3 -m venv NEW_VENV
-[username@g0001 ~]$ source NEW_VENV/bin/activate
-(NEW_VENV) [username@g0001 ~]$ pip3 install tensorflow-gpu
+ # Homebrew installs numpy in a non standard path (keg only)
+[username@g0001 caffe]$ make all 2>&1 | tee make_all.log
+[username@g0001 caffe]$ make test 2>&1 | tee make_test.log
+[username@g0001 caffe]$ make runtest 2>&1 | tee make_runtest.log
+[username@g0001 caffe]$ virtualenv $INSTALL_DIR
+[username@g0001 caffe]$ source $INSTALL_DIR/bin/activate
+(caffe) [username@g0001 caffe]$ pip install -r python/requirements.txt
+(caffe) [username@g0001 caffe]$ make pycaffe 2>&1 | tee make_pycaffe.log
+(caffe) [username@g0001 caffe]$ make distibute 2>&1 | tee make_distribute.log
 ```
 
 ### Theano
@@ -85,29 +101,13 @@ NEW_VENV : インストールするPython仮想環境、またはディレクト
 
 ```
 INSTALL_DIR : インストールディレクトリのパス
-INSTALL_DIR_OPENBLAS : インストールディレクトリのパス
 
-[username@g0001 ~]$ module load cuda/9.1/9.1.85.3
-[username@g0001 ~]$ git clone https://github.com/xianyi/OpenBLAS.git
-[username@g0001 ~]$ make TARGET=HASWELL NO_AFFINITY=1 USE_OPENMP=1 > log_make_20180621-00.txt 2>&1
-[username@g0001 ~]$ make install PREFIX=INSTALL_DIR_OPENBLAS > log_make_inst_20180621-00.txt  2>&1
-[username@g0001 ~]$ export LD_LIBRARY_PATH=INSTALL_DIR_OPENBLAS/lib:$LD_LIBRARY_PATH
-[username@g0001 ~]$ git clone https://github.com/torch/distro.git ./torch --recursive
-[username@g0001 ~]$ export TORCH_NVCC_FLAGS="-D__CUDA_NO_HALF_OPERATORS__"
-[username@g0001 ~]$ TORCH_LUA_VERSION=LUA51 PREFIX=INSTALL_DIR ./install.sh
-```
-
-### PyTorch
-
-[PyTorch](https://pytorch.org/)のインストール方法は以下を参照ください。
-
-```
-NEW_VENV : インストールするPython仮想環境、またはディレクトリパス
-
-[username@g0001 ~]$ module load python/3.6/3.6.5 cuda/9.1/9.1.85.3
-[username@g0001 ~]$ python3 -m venv NEW_VENV
-[username@g0001 ~]$ source NEW_VENV/bin/activate
-(NEW_VENV) [username@g0001 ~]$ pip3 install torch torchvision
+[username@g0001 ~]$ mkdir $INSTALL_DIR
+[username@g0001 ~]$ git clone https://github.com/torch/distro.git ~/torch --recursive
+[username@g0001 ~]$ cd ~/torch
+[username@g0001 torch]$ module load cuda/9.2/9.2.148.1
+[username@g0001 torch]$ export TORCH_NVCC_FLAGS="-D__CUDA_NO_HALF_OPERATORS__"
+[username@g0001 torch]$ ./install.sh 2>&1 | tee install.sh.log
 ```
 
 ### CNTK
@@ -115,49 +115,6 @@ NEW_VENV : インストールするPython仮想環境、またはディレクト
 [CNTK](https://www.microsoft.com/en-us/cognitive-toolkit/)のインストール方法は以下のページを参照ください。
 
 [How to install CNTK](https://www.microsoft.com/en-us/cognitive-toolkit/)
-
-### MXNet
-
-[MXNet](https://mxnet.apache.org/)のインストール方法は以下を参照ください。
-
-```
-NEW_VENV : インストールするPython仮想環境、またはディレクトリパス
-
-[username@g0001 ~]$ module load python/3.6/3.6.5 cuda/9.2/9.2.148.1
-[username@g0001 ~]$ python3 -m venv NEW_VENV
-[username@g0001 ~]$ source NEW_VENV/bin/activate
-(NEW_VENV) [username@g0001 ~]$ pip3 install mxnet-cu92
-```
-
-### Chainer
-
-[Chainer](https://chainer.org/)のインストール方法は以下を参照ください。
-
-```
-NEW_VENV : インストールするPython仮想環境、またはディレクトリパス
-
-[username@g0001 ~]$ module load python/3.6/3.6.5 cuda/9.1/9.1.85.3 cudnn/7.0/7.0.5
-[username@g0001 ~]$ python3 -m venv NEW_VENV
-[username@g0001 ~]$ source NEW_VENV/bin/activate
-(NEW_VENV) [username@g0001 ~]$ pip3 install cupy-cuda91 chainer
-```
-
-### Keras
-
-TensorFlowをバックエンドとして使う[Keras](https://keras.io/ja/)のインストール方法は以下を参照ください。
-
-```
-NEW_VENV : python virtual environment or path to be installed
-
-[username@g0001 ~]$ module load python/3.6/3.6.5 cuda/9.0/9.0.176.4 cudnn/7.2/7.2.1
-[username@g0001 ~]$ export LD_LIBRARY_PATH=$CUDA_HOME/extras/CUPTI/lib64:$LD_LIBRARY_PATH
-[username@g0001 ~]$ python3 -m venv NEW_VENV
-[username@g0001 ~]$ source NEW_VENV/bin/activate
-(NEW_VENV) [username@g0001 ~]$ pip3 install tensorflow-gpu
-(NEW_VENV) [username@g0001 ~]$ pip3 install keras
-```
-
-詳細は[Keras](https://keras.io/ja/)を参照してください。
 
 ## ビッグデータ解析フレームワーク
 
@@ -167,20 +124,19 @@ ABCIシステムではHadoopが利用可能です。 利用するためには事
 
 Hadoopの環境設定
 ```
-$ module load openjdk/1.8.0.131
-$ module load hadoop/2.9.1
+$ module load openjdk/1.8.0.242
+$ module load hadoop/3.3
 ```
 
 Hadoopの実行サンプル
 
 ```
 [username@es1 ~]$ qrsh -l rt_F=1 -l h_rt=1:00:00
-[username@g0001~]$ module load openjdk/1.8.0.131
-[username@g0001~]$ module load hadoop/2.9.1
-[username@g0001~]$ mkdir input
-[username@g0001~]$ cp /apps/hadoop/2.9.1/etc/hadoop/*.xml input
-[username@g0001~]$ hadoop jar /apps/hadoop/2.9.1/share/hadoop/mapreduce/hadoop-mapreduce-examples-2.9.1.jar grep input output 'dfs[a-z.]+'
-[username@g0001~]$ cat output/part-r-00000
+[username@g0001 ~]$ module load openjdk/1.8.0.242
+[username@g0001 ~]$ module load hadoop/3.3
+[username@g0001 ~]$ mkdir input
+[username@g0001 ~]$ cp $HADOOP_HOME/etc/hadoop/*.xml input
+[username@g0001 ~]$ hadoop jar $HADOOP_HOME/share/hadoop/mapreduce/hadoop-mapreduce-examples-3.3.0.jar grep input output 'dfs[a-z.]+'
+[username@g0001 ~]$ cat output/part-r-00000
 1       dfsadmin
 ```
-

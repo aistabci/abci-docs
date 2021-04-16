@@ -31,6 +31,7 @@ This User Guide describes the technical details of ABCI and how to use it. All u
     - [Chainer](apps/chainer.md)
     - [Others](apps/others.md)
   - Tips
+    - [NVIDIA NGC](tips/ngc.md)
     - [Remote Desktop](tips/remote-desktop.md)
     - [AWS CLI](tips/awscli.md)
     - [PuTTY](tips/putty.md)
@@ -39,7 +40,6 @@ This User Guide describes the technical details of ABCI and how to use it. All u
     - [Spack](tips/spack.md)
     - [Datasets](tips/datasets.md)
     - [Amazon ECR](tips/dl-amazon-ecr.md)
-  - [NVIDIA NGC](ngc.md)
   - ABCI Cloud Storage:
     - [Overview](abci-cloudstorage.md)
     - [Accounts and Access keys](abci-cloudstorage/cs-account.md)

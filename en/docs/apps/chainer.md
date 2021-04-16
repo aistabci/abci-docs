@@ -1,90 +1,52 @@
 # Chainer
 
 This section describes how to install and run [Chainer](https://chainer.org/) with pip.
-Specifically, here are the steps to install and execute the Chainer.
 
-Operational verification was done on November 30, 2019.
+### Precondition {#precondition}
 
-The version of Chainer is as follows
+- Replace `grpname` with your own ABCI group.
+- [The Python virtual environment](/06/#python-virtual-environments){:target="python-virtual-enviroments"} should be created in the [home](/04/#home-area){:target="home-area"} or [group](/04/#group-area){:target="group-area"} area so that it can be referenced by interactive nodes and each compute node.
+- The sample program should be saved in the [home](/04/#home-area){:target="home-area"} or [group](/04/#group-area){:target="group-area"} area so that it can be referenced by interactive nodes and each compute node.
 
-| Livrary | Version |
-| :-- | :-- |
-| chainer | 6.6.0 |
-| cupy-cuda100 | 6.6.0 |
+### Installation {#installation}
 
-The modules ABCI provide and their versions used in this document are as follows.
+Here are the steps to create a Python virtual environment and install Chainer into the Python virtual environment.
 
-| Module | Version |
-| :-- | :-- |
-| python  | 3.6.5      |
-| cuda    | 10.0.130.1 |
-| cudnn   | 7.6.4      |
-| nccl    | 2.4.8-1    |
+```
+[username@es1 ~]$ qrsh -g grpname -l rt_G.small=1 -l h_rt=1:00:00
+[username@g0001 ~]$ module load python/3.6/3.6.12 cuda/11.2/11.2.2 cudnn/8.1/8.1.1 openmpi/4.0.5
+[username@g0001 ~]$ python3 -m venv ~/venv/chainer
+[username@g0001 ~]$ source ~/venv/chainer/bin/activate
+(chainer) [username@g0001 ~]$ pip3 install --upgrade pip setuptools
+(chainer) [username@g0001 ~]$ pip3 install numpy==1.17 cupy-cuda112==8.6.0 chainer==7.7.0 mpi4py==3.0.3
+```
 
-The environment variables used in this document are as follows.
+With the installation, you can use Chainer next time you want to use it by simply loading the module and activating the Python virtual environment, as follows
 
-| Environment Variable | Detail |
-| :-- | :-- |
-| HOME | User home directory |
-| WORK | Program execution directory |
+```
+[username@g0001 ~]$ module load python/3.6/3.6.12 cuda/11.2/11.2.2 cudnn/8.1/8.1.1 openmpi/4.0.5
+[username@g0001 ~]$ source ~/venv/chainer/bin/activate
+```
 
-## Using Chainer { #using-chainer }
+## Execution {#run}
 
-### Installation { #installation }
+The following shows how to execute one of the Chainer sample program [mnist](http://yann.lecun.com/exdb/mnist/) in the case of an interactive job and a batch job.
 
-Create a Python virtual environment `$HOME/venv/chainer`, occupying one compute node, and install `chainer` and `cupy-cuda` with `pip`.
+**Run as an interactive job**
 
 ```
 [username@es1 ~]$ qrsh -g grpname -l rt_F=1 -l h_rt=1:00:00
-[username@g0001 ~]$ module load python/3.6/3.6.5
-[username@g0001 ~]$ module load cuda/10.0/10.0.130.1
-[username@g0001 ~]$ module load cudnn/7.6/7.6.4
-[username@g0001 ~]$ python3 -m venv $HOME/venv/chainer
-[username@g0001 ~]$ source $HOME/venv/chainer/bin/activate
-(chainer) [username@g0001 ~]$ pip3 install --upgrade pip
-(chainer) [username@g0001 ~]$ pip3 install --upgrade setuptools
-(chainer) [username@g0001 ~]$ pip3 install cupy-cuda100==6.6.0 chainer==6.6.0 mpi4py matplotlib
-(chainer) [username@g0001 ~]$ exit
-[username@es1 ~]$
+[username@g0001 ~]$ wget https://raw.githubusercontent.com/chainer/chainer/master/examples/chainermn/mnist/train_mnist.py
+[username@g0001 ~]$ module load python/3.6/3.6.12 cuda/11.2/11.2.2 cudnn/8.1/8.1.1 openmpi/4.0.5
+[username@g0001 ~]$ source ~/venv/chainer/bin/activate
+(chainer) [username@g0001 ~]$ python3 train_mnist.py
 ```
 
-From now on, you can use Chainer by simply loading the module and activating the Python environment, as shown below.
+**Run as a batch job**
 
-```
-[username@es1 ~]$ qrsh -g grpname -l rt_F=1 -l h_rt=1:00:00
-[username@g0001 ~]$ module load python/3.6/3.6.5
-[username@g0001 ~]$ module load cuda/10.0/10.0.130.1
-[username@g0001 ~]$ module load cudnn/7.6/7.6.4
-[username@g0001 ~]$ source $HOME/venv/chainer/bin/activate
-```
+In this example, a total of 8 GPUs are used for distributed learning. 2 compute nodes are used, with 4 GPUs per compute node.
 
-### Execution
-
-In this section, we describe how to execute one of the Chainer sample programs, [mnist](http://yann.lecun.com/exdb/mnist/).
-
-First, download the sample program.
-
-```
-[username@es1 ~]$ mkdir -p ${WORK}
-[username@es1 ~]$ cd ${WORK}
-[username@es1 ~]$ wget https://raw.githubusercontent.com/chainer/chainer/master/examples/chainermn/mnist/train_mnist.py
-```
-
-Next, occupy a single compute node and activate the installed Chainer execution environment.
-Once activated, you can run `train_mnist.py`.
-
-```
-[username@es1 ~]$ qrsh -g grpname -l rt_F=1 -l h_rt=1:00:00
-[username@g0001 ~]$ module load python/3.6/3.6.5
-[username@g0001 ~]$ module load cuda/10.0/10.0.130.1
-[username@g0001 ~]$ module load cudnn/7.6/7.6.4
-[username@g0001 ~]$ source $HOME/venv/chainer/bin/activate
-(pytorch) [username@g0001 ~]$ cd $WORK
-(pytorch) [username@g0001 ~]$ python3 ./train_mnist.py
-```
-
-The same can be done for batch job scripts.
-The job is done using 4 GPUs in each of the 2 nodes.
+Save the following job script as a `run.sh` file.
 
 ```
 #!/bin/sh
@@ -93,10 +55,8 @@ The job is done using 4 GPUs in each of the 2 nodes.
 #$ -cwd
 
 source /etc/profile.d/modules.sh
-module load python/3.6/3.6.5
-module load cuda/10.0/10.0.130.1
-module load cudnn/7.6/7.6.4
-source ${HOME}/venv/chainer/bin/activate
+module load python/3.6/3.6.12 cuda/11.2/11.2.2 cudnn/8.1/8.1.1 openmpi/4.0.5
+source ~/venv/chainer/bin/activate
 
 NUM_NODES=${NHOSTS}
 NUM_GPUS_PER_NODE=4
@@ -111,12 +71,12 @@ mpirun ${MPIOPTS} ${APP}
 deactivate
 ```
 
-The environment variables and arguments of mpirun used in this script are as follows.
+The variables and arguments of mpirun used in this script are as follows.
 
-| environment variables | description |
+| variables | description |
 | :-- | :-- |
-| NUM_NODES | The number of nodes used in the job. (The value specified by rt_F) |
-| NUM_GPU_PRE_NODE | The number of GPUs used in one node. (Since the computation node is equipped with 4 GPUs, the value of 4 is specified) |
+| NUM_NODES | The number of nodes used in the job. |
+| NUM_GPU_PRE_NODE | The number of GPUs used in one node. |
 | NUM_PROCS | The number of processes to be used by the program. |
 | MPIOPTS | The options passed to mpirun. |
 
@@ -125,12 +85,9 @@ The environment variables and arguments of mpirun used in this script are as fol
 | -np *NUM* | Specifies the number of processes (*NUM*) to be used by the program. |
 | -map-by ppr:*NUM*:node | Specify the number of processes (*NUM*) to be placed on each node. |
 
-Save the above script as a `submit.sh` file and submit the job with the qsub command.
+Submit a saved job script `run.sh` as a batch job with the qsub command.
 
 ```
-[username@es1 ~]$ cd $WORK
-[username@es1 ~]$ qsub -g grpname submit.sh
+[username@es1 ~]$ qsub -g grpname run.sh
+Your job 1234567 ('run.sh') has been submitted
 ```
-
-
-
