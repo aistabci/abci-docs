@@ -13,7 +13,10 @@
         <meta name="description" content="ABCI User Guide, English version">
       
       
-        <link rel="canonical" href="https://docs.abci.ai/en/ngc/">
+        <script>var anchor=window.location.hash.substr(1);location.href="../tips/ngc/"+(anchor?"#"+anchor:"")</script>
+        <meta http-equiv="refresh" content="0; url=../tips/ngc/">
+        <meta name="robots" content="noindex">
+        <link rel="canonical" href="../tips/ngc/">
       
       
         <meta name="author" content="AIST">
@@ -42,7 +45,7 @@
     
     
       
-        <title>NVIDIA NGC - ABCI User Guide</title>
+        <title>Ngc - ABCI User Guide</title>
       
     
     
@@ -116,10 +119,6 @@
     <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
     <label class="md-overlay" data-md-component="overlay" for="__drawer"></label>
     
-      <a href="#nvidia-ngc" tabindex="0" class="md-skip">
-        Skip to content
-      </a>
-    
     
       <header class="md-header" data-md-component="header">
   <nav class="md-header-nav md-grid">
@@ -142,7 +141,7 @@
             </span>
             <span class="md-header-nav__topic">
               
-                NVIDIA NGC
+                Ngc
               
             </span>
           
@@ -584,6 +583,18 @@
 
 
   <li class="md-nav__item">
+    <a href="../tips/ngc/" title="NVIDIA NGC" class="md-nav__link">
+      NVIDIA NGC
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
     <a href="../tips/remote-desktop/" title="Remote Desktop" class="md-nav__link">
       Remote Desktop
     </a>
@@ -683,188 +694,16 @@
       
       
 
-  
-
-
-  <li class="md-nav__item md-nav__item--active">
-    
-    <input class="md-toggle md-nav__toggle" data-md-toggle="toc" type="checkbox" id="__toc">
-    
-      
-    
-    
-      <label class="md-nav__link md-nav__link--active" for="__toc">
-        NVIDIA NGC
-      </label>
-    
-    <a href="./" title="NVIDIA NGC" class="md-nav__link md-nav__link--active">
-      NVIDIA NGC
-    </a>
-    
-      
-<nav class="md-nav md-nav--secondary">
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">Table of contents</label>
-    <ul class="md-nav__list" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#prerequisites" class="md-nav__link">
-    Prerequisites
-  </a>
-  
-    <nav class="md-nav">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#ngc-container-registry" class="md-nav__link">
-    NGC Container Registry
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#ngc-website" class="md-nav__link">
-    NGC Website
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#single-node-run" class="md-nav__link">
-    Single-node Run
-  </a>
-  
-    <nav class="md-nav">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#identify-image-url" class="md-nav__link">
-    Identify Image URL
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#build-a-singularity-image" class="md-nav__link">
-    Build a Singularity image
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#run-a-singularity-image" class="md-nav__link">
-    Run a Singularity image
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#multiple-node-run" class="md-nav__link">
-    Multiple-node Run
-  </a>
-  
-    <nav class="md-nav">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#identify-mpi-version" class="md-nav__link">
-    Identify MPI version
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#run-a-singularity-image-with-mpi" class="md-nav__link">
-    Run a Singularity image with MPI
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#using-locked-images" class="md-nav__link">
-    Using Locked Images
-  </a>
-  
-    <nav class="md-nav">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#identify-locked-image-url" class="md-nav__link">
-    Identify Locked Image URL
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#build-a-singularity-image-for-a-locked-ngc-image" class="md-nav__link">
-    Build a Singularity image for a locked NGC image
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#run-a-singularity-image_1" class="md-nav__link">
-    Run a Singularity image
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#reference" class="md-nav__link">
-    Reference
-  </a>
-  
-</li>
-      
-      
-      
-      
-      
-    </ul>
-  
-</nav>
-    
-  </li>
-
-    
-      
-      
-      
-
 
   <li class="md-nav__item md-nav__item--nested">
     
-      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-6" type="checkbox" id="nav-6">
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-5" type="checkbox" id="nav-5">
     
-    <label class="md-nav__link" for="nav-6">
+    <label class="md-nav__link" for="nav-5">
       ABCI Cloud Storage
     </label>
     <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
-      <label class="md-nav__title" for="nav-6">
+      <label class="md-nav__title" for="nav-5">
         ABCI Cloud Storage
       </label>
       <ul class="md-nav__list" data-md-scrollfix>
@@ -1062,13 +901,13 @@
 
   <li class="md-nav__item md-nav__item--nested">
     
-      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-14" type="checkbox" id="nav-14">
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-13" type="checkbox" id="nav-13">
     
-    <label class="md-nav__link" for="nav-14">
+    <label class="md-nav__link" for="nav-13">
       Links
     </label>
     <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
-      <label class="md-nav__title" for="nav-14">
+      <label class="md-nav__title" for="nav-13">
         Links
       </label>
       <ul class="md-nav__list" data-md-scrollfix>
@@ -1146,159 +985,6 @@
               </div>
             
             
-              <div class="md-sidebar md-sidebar--secondary" data-md-component="toc">
-                <div class="md-sidebar__scrollwrap">
-                  <div class="md-sidebar__inner">
-                    
-<nav class="md-nav md-nav--secondary">
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">Table of contents</label>
-    <ul class="md-nav__list" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#prerequisites" class="md-nav__link">
-    Prerequisites
-  </a>
-  
-    <nav class="md-nav">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#ngc-container-registry" class="md-nav__link">
-    NGC Container Registry
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#ngc-website" class="md-nav__link">
-    NGC Website
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#single-node-run" class="md-nav__link">
-    Single-node Run
-  </a>
-  
-    <nav class="md-nav">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#identify-image-url" class="md-nav__link">
-    Identify Image URL
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#build-a-singularity-image" class="md-nav__link">
-    Build a Singularity image
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#run-a-singularity-image" class="md-nav__link">
-    Run a Singularity image
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#multiple-node-run" class="md-nav__link">
-    Multiple-node Run
-  </a>
-  
-    <nav class="md-nav">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#identify-mpi-version" class="md-nav__link">
-    Identify MPI version
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#run-a-singularity-image-with-mpi" class="md-nav__link">
-    Run a Singularity image with MPI
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#using-locked-images" class="md-nav__link">
-    Using Locked Images
-  </a>
-  
-    <nav class="md-nav">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#identify-locked-image-url" class="md-nav__link">
-    Identify Locked Image URL
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#build-a-singularity-image-for-a-locked-ngc-image" class="md-nav__link">
-    Build a Singularity image for a locked NGC image
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#run-a-singularity-image_1" class="md-nav__link">
-    Run a Singularity image
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#reference" class="md-nav__link">
-    Reference
-  </a>
-  
-</li>
-      
-      
-      
-      
-      
-    </ul>
-  
-</nav>
-                  </div>
-                </div>
-              </div>
-            
           
           <div class="md-content">
             <article class="md-content__inner md-typeset">
@@ -1307,228 +993,9 @@
                   <a href="https://github.com/aistairc/abci-docs/edit/master/en/docs/ngc.md" title="Edit this page" class="md-icon md-content__icon">&#xE3C9;</a>
                 
                 
-                <h1 id="nvidia-ngc">NVIDIA NGC</h1>
-<p><a href="https://ngc.nvidia.com/">NVIDIA NGC</a> (hereinafter referred to as "NGC") provides Docker images for GPU-optimized deep learning framework containers and HPC application containers and NGC container registry to distribute them.
-ABCI allows users to execute NGC-provided Docker images easily by using <a href="../09/#singularity">Singularity</a>.</p>
-<p>In this page, we will explain the procedure to use Docker images registered in NGC container registry with ABCI.</p>
-<h2 id="prerequisites">Prerequisites</h2>
-<h3 id="ngc-container-registry">NGC Container Registry</h3>
-<p>Each Docker image of NGC container registry is specified by the following format:</p>
-<div class="codehilite"><pre><span></span><code><span class="err">nvcr.io/&lt;namespace&gt;/&lt;repo_name&gt;:&lt;repo_tag&gt;</span>
-</code></pre></div>
-
-
-<p>When using with Singularity, each image is referenced first with the URL schema <code>docker://</code> as like:</p>
-<div class="codehilite"><pre><span></span><code><span class="c">docker://nvcr.io/&lt;namespace&gt;/&lt;repo_name&gt;:&lt;repo_tag&gt;</span>
-</code></pre></div>
-
-
-<h3 id="ngc-website">NGC Website</h3>
-<p><a href="https://ngc.nvidia.com/">NGC Website</a> is the portal for browsing the contents of the NGC container registry, generating NGC API keys, and so on.</p>
-<p>Most of the docker images provided by the NGC container registry are freely available, but some are 'locked' and required that you have an NGC account and an API key to access them. Below are examples of both cases.</p>
-<ul>
-<li>Freely available image: <a href="https://ngc.nvidia.com/catalog/containers/nvidia:tensorflow">https://ngc.nvidia.com/catalog/containers/nvidia:tensorflow</a></li>
-<li>Locked image: <a href="https://ngc.nvidia.com/catalog/containers/partners:chainer">https://ngc.nvidia.com/catalog/containers/partners:chainer</a></li>
-</ul>
-<p>If you do not have signed in with an NGC account, you can neither see the information such as <code>pull</code> command to use locked images, nor generate an API key.</p>
-<p>In the following instructions, we will use freely available images. To use locked images, we will explain later (<a href="#using-locked-images">Using Locked Images</a>).</p>
-<p>See <a href="https://docs.nvidia.com/ngc/ngc-getting-started-guide/index.html">NGC Getting Started Guide</a> for more details on NGC Website.</p>
-<h2 id="single-node-run">Single-node Run</h2>
-<p>Using TensorFlow as an example, we will explain how to run Docker images provided by NGC container registry.</p>
-<h3 id="identify-image-url">Identify Image URL</h3>
-<p>First, you need to find the URL for TensorFlow image via NGC Website.</p>
-<p>Open <a href="https://ngc.nvidia.com/">https://ngc.nvidia.com/</a> with your browser, and input "tensorflow" to the search form "Search Containers".
-Then, you'll find:
-<a href="https://ngc.nvidia.com/catalog/containers/nvidia:tensorflow">https://ngc.nvidia.com/catalog/containers/nvidia:tensorflow</a></p>
-<p>In this page, you will see the <code>pull</code> command for using TensorFlow image on Docker:</p>
-<div class="codehilite"><pre><span></span><code><span class="err">docker pull nvcr.io/nvidia/tensorflow:19.06-py2</span>
-</code></pre></div>
-
-
-<p>As we mentioned at <a href="#ngc-container-registry">NGC Container Registry</a>, when using with Singularity, this image can be specified by the following URL:</p>
-<div class="codehilite"><pre><span></span><code><span class="c">docker://nvcr.io/nvidia/tensorflow:19.06-py2</span>
-</code></pre></div>
-
-
-<h3 id="build-a-singularity-image">Build a Singularity image</h3>
-<p>Build a Singularity image for TensorFlow on the interactive node.</p>
-<div class="codehilite"><pre><span></span><code><span class="err">[username@es1 ~]$ module load singularitypro</span>
-<span class="err">[username@es1 ~]$ singularity pull docker://nvcr.io/nvidia/tensorflow:19.06-py2</span>
-</code></pre></div>
-
-
-<p>An image named <code>tensorflow_19.06-py2.sif</code> will be generated.</p>
-<h3 id="run-a-singularity-image">Run a Singularity image</h3>
-<p>Start an interactive job with one full-node and run a sample program <code>cnn_mnist.py</code>.</p>
-<div class="codehilite"><pre><span></span><code><span class="err">[username@es1 ~]$ qrsh -g grpname -l rt_F=1 -l h_rt=1:00:00</span>
-<span class="err">[username@g0001 ~]$ module load singularitypro</span>
-<span class="err">[username@g0001 ~]$ wget https://raw.githubusercontent.com/tensorflow/tensorflow/v1.13.1/tensorflow/examples/tutorials/layers/cnn_mnist.py</span>
-<span class="err">[username@g0001 ~]$ singularity run --nv tensorflow_19.06-py2.sif python cnn_mnist.py</span>
-<span class="err">:</span>
-<span class="err">{&#39;loss&#39;: 0.102341905, &#39;global_step&#39;: 20000, &#39;accuracy&#39;: 0.9696}</span>
-</code></pre></div>
-
-
-<p>You can do the same thing with a batch job.</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
- 2
- 3
- 4
- 5
- 6
- 7
- 8
- 9
-10</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><code><span class="ch">#!/bin/sh</span>
-<span class="c1">#$ -l rt_F=1</span>
-<span class="c1">#$ -j y</span>
-<span class="c1">#$ -cwd</span>
-
-<span class="nb">source</span> /etc/profile.d/modules.sh
-module load singularitypro
-wget https://raw.githubusercontent.com/tensorflow/tensorflow/v1.13.1/tensorflow/examples/tutorials/layers/cnn_mni
-st.py
-singularity run --nv tensorflow_19.06-py2.sif python cnn_mnist.py
-</code></pre></div>
-</td></tr></table>
-
-<h2 id="multiple-node-run">Multiple-node Run</h2>
-<p>Some of NGC container images support multiple-node run with using MPI.
-TensorFlow image, which you used for <a href="#single-node-run">Single-node Run</a>, also supports multi-node run.</p>
-<h3 id="identify-mpi-version">Identify MPI version</h3>
-<p>First, check the version of MPI installed into the TensorFlow image.</p>
-<div class="codehilite"><pre><span></span><code><span class="o">[</span><span class="n">username@es1 ~</span><span class="o">]</span><span class="w"> </span><span class="err">$</span><span class="w"> </span><span class="k">module</span><span class="w"> </span><span class="k">load</span><span class="w"> </span><span class="n">singularitypro</span><span class="w"></span>
-<span class="o">[</span><span class="n">username@es1 ~</span><span class="o">]</span><span class="w"> </span><span class="err">$</span><span class="w"> </span><span class="n">singularity</span><span class="w"> </span><span class="k">exec</span><span class="w"> </span><span class="n">tensorflow_19</span><span class="mf">.06</span><span class="o">-</span><span class="n">py2</span><span class="p">.</span><span class="n">sif</span><span class="w"> </span><span class="n">mpirun</span><span class="w"> </span><span class="c1">--version</span>
-<span class="n">mpirun</span><span class="w"> </span><span class="p">(</span><span class="k">Open</span><span class="w"> </span><span class="n">MPI</span><span class="p">)</span><span class="w"> </span><span class="mf">3.1.3</span><span class="w"></span>
-
-<span class="n">Report</span><span class="w"> </span><span class="n">bugs</span><span class="w"> </span><span class="k">to</span><span class="w"> </span><span class="nl">http</span><span class="p">:</span><span class="o">//</span><span class="n">www</span><span class="p">.</span><span class="k">open</span><span class="o">-</span><span class="n">mpi</span><span class="p">.</span><span class="n">org</span><span class="o">/</span><span class="n">community</span><span class="o">/</span><span class="n">help</span><span class="o">/</span><span class="w"></span>
-</code></pre></div>
-
-
-<p>Next, check the available versions of Open MPI on the ABCI system.</p>
-<div class="codehilite"><pre><span></span><code><span class="o">[</span><span class="n">username@es1 ~</span><span class="o">]</span><span class="w"> </span><span class="err">$</span><span class="w"> </span><span class="k">module</span><span class="w"> </span><span class="n">avail</span><span class="w"> </span><span class="n">openmpi</span><span class="w"></span>
-
-<span class="c1">-------------------------------------------- /apps/modules/modulefiles/mpi ---------------------------------------------</span>
-<span class="n">openmpi</span><span class="o">/</span><span class="mf">2.1.6</span><span class="w">          </span><span class="n">openmpi</span><span class="o">/</span><span class="mf">3.1.6</span><span class="w">          </span><span class="n">openmpi</span><span class="o">/</span><span class="mf">4.0.5</span><span class="p">(</span><span class="k">default</span><span class="p">)</span><span class="w"></span>
-</code></pre></div>
-
-
-<p><code>openmpi/3.1.6</code> module seems to be suitable to run this image. In general, at least the major versions of both MPIs should be the same.</p>
-<h3 id="run-a-singularity-image-with-mpi">Run a Singularity image with MPI</h3>
-<p>Start an interative job with two full-nodes, and load required environment modules.</p>
-<div class="codehilite"><pre><span></span><code><span class="err">[username@es1 ~]$ qrsh -g grpname -l rt_F=2 -l h_rt=1:00:00</span>
-<span class="err">[username@g0001 ~]$ module load singularitypro openmpi/3.1.6</span>
-</code></pre></div>
-
-
-<p>Each full-node has four GPUs, and you have eight GPUs in total.
-In this case, you run four processes on each full-node in parallel, that means eight processes in total, so as to execute the sample program <code>tensorflow_mnist.py</code>.</p>
-<div class="codehilite"><pre><span></span><code><span class="err">[username@g0001 ~]$ wget https://raw.githubusercontent.com/horovod/horovod/v0.16.4/examples/tensorflow_mnist.py</span>
-<span class="err">[username@g0001 ~]$ mpirun -np 8 -npernode 4 singularity run --nv tensorflow_19.06-py2.sif python tensorflow_mnist.py</span>
-<span class="err">:</span>
-<span class="c">INFO:tensorflow:loss = 2.227471, step = 30 (0.151 sec)</span>
-<span class="c">INFO:tensorflow:loss = 2.2297306, step = 30 (0.152 sec)</span>
-<span class="c">INFO:tensorflow:loss = 2.2236195, step = 30 (0.151 sec)</span>
-<span class="c">INFO:tensorflow:loss = 2.2085133, step = 30 (0.152 sec)</span>
-<span class="c">INFO:tensorflow:loss = 2.2206438, step = 30 (0.152 sec)</span>
-<span class="c">INFO:tensorflow:loss = 2.2315774, step = 30 (0.152 sec)</span>
-<span class="c">INFO:tensorflow:loss = 2.2195148, step = 30 (0.152 sec)</span>
-<span class="c">INFO:tensorflow:loss = 2.2279806, step = 30 (0.152 sec)</span>
-<span class="c">INFO:tensorflow:loss = 2.0452738, step = 40 (0.152 sec)</span>
-<span class="c">INFO:tensorflow:loss = 2.0309064, step = 40 (0.152 sec)</span>
-<span class="c">INFO:tensorflow:loss = 2.0354269, step = 40 (0.152 sec)</span>
-<span class="c">INFO:tensorflow:loss = 2.0014856, step = 40 (0.152 sec)</span>
-<span class="c">INFO:tensorflow:loss = 2.0149295, step = 40 (0.153 sec)</span>
-<span class="c">INFO:tensorflow:loss = 2.0528066, step = 40 (0.153 sec)</span>
-<span class="c">INFO:tensorflow:loss = 1.962772, step = 40 (0.153 sec)</span>
-<span class="c">INFO:tensorflow:loss = 2.0659132, step = 40 (0.153 sec)</span>
-<span class="err">:</span>
-</code></pre></div>
-
-
-<p>You can do the same thing with a batch job.</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1
-2
-3
-4
-5
-6
-7
-8
-9</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><code><span class="ch">#!/bin/sh</span>
-<span class="c1">#$ -l rt_F=2</span>
-<span class="c1">#$ -j y</span>
-<span class="c1">#$ -cwd</span>
-
-<span class="nb">source</span> /etc/profile.d/modules.sh
-module load singularitypro openmpi/3.1.6
-wget https://raw.githubusercontent.com/horovod/horovod/v0.16.4/examples/tensorflow_mnist.py
-mpirun -np <span class="m">8</span> -npernode <span class="m">4</span> singularity run --nv tensorflow_19.06-py2.sif python tensorflow_mnist.py
-</code></pre></div>
-</td></tr></table>
-
-<h2 id="using-locked-images">Using Locked Images</h2>
-<p>Using Chainer as an example, we will explain how to run locked Docker images provided by NGC container registry.</p>
-<h3 id="identify-locked-image-url">Identify Locked Image URL</h3>
-<p>First, you need to find the URL for Chainer image via NGC Website.</p>
-<p>Open <a href="https://ngc.nvidia.com/">https://ngc.nvidia.com/</a> with your browser, sign in with an NGC account, and input "chainer" to the search form "Search Containers". Then, you'll find:
-<a href="https://ngc.nvidia.com/catalog/containers/partners:chainer">https://ngc.nvidia.com/catalog/containers/partners:chainer</a></p>
-<p>In this page, you will see the <code>pull</code> command for using Chainer image on Docker (you must sign in with an NGC account):</p>
-<div class="codehilite"><pre><span></span><code><span class="err">docker pull nvcr.io/partners/chainer:4.0.0b1</span>
-</code></pre></div>
-
-
-<p>When using with Singularity, this image can be specified by the following URL:</p>
-<div class="codehilite"><pre><span></span><code><span class="c">docker://nvcr.io/partners/chainer:4.0.0b1</span>
-</code></pre></div>
-
-
-<h3 id="build-a-singularity-image-for-a-locked-ngc-image">Build a Singularity image for a locked NGC image</h3>
-<p>To build an image, an NGC API key is required. Follow the following procedure to generate an API key:</p>
-<ul>
-<li><a href="https://docs.nvidia.com/ngc/ngc-getting-started-guide/index.html#generating-api-key">Generating Your NGC API Key</a></li>
-</ul>
-<p>Build a Singularity image for Chainer on the interactive node.
-In this case, you need to set two environment variables, <code>SINGULARITY_DOCKER_USERNAME</code> and <code>SINGULARITY_DOCKER_PASSWORD</code> for downloading images from NGC container registry.</p>
-<div class="codehilite"><pre><span></span><code><span class="err">[username@es1 ~]$ module load singularitypro</span>
-<span class="err">[username@es1 ~]$ export SINGULARITY_DOCKER_USERNAME=&#39;$oauthtoken&#39;</span>
-<span class="err">[username@es1 ~]$ export SINGULARITY_DOCKER_PASSWORD=&lt;NGC API Key&gt;</span>
-<span class="err">[username@es1 ~]$ singularity pull docker://nvcr.io/partners/chainer:4.0.0b1</span>
-</code></pre></div>
-
-
-<p>An image named <code>chainer_4.0.0b1.sif</code> will be generated.</p>
-<p>You can also specify <code>--docker-login</code> option to download images instead of environment variables.</p>
-<div class="codehilite"><pre><span></span><code><span class="err">[username@es1 ~]$ module load singularitypro</span>
-<span class="err">[username@es1 ~]$ singularity pull --disable-cache --docker-login docker://nvcr.io/partners/chainer:4.0.0b1</span>
-<span class="err">Enter Docker Username: $oauthtoken</span>
-<span class="err">Enter Docker Password: &lt;NGC API Key&gt;</span>
-</code></pre></div>
-
-
-<h3 id="run-a-singularity-image_1">Run a Singularity image</h3>
-<p>You can run the resulted image, just as same as freely available images.</p>
-<div class="codehilite"><pre><span></span><code><span class="err">[username@es1 ~]$ qrsh -g grpname -l rt_G.small=1 -l h_rt=1:00:00</span>
-<span class="err">[username@g0001 ~]$ module load singularitypro</span>
-<span class="err">[username@g0001 ~]$ wget https://raw.githubusercontent.com/chainer/chainer/v4.0.0b1/examples/mnist/train_mnist.py</span>
-<span class="err">[username@g0001 ~]$ singularity exec --nv chainer_4.0.0b1.sif python train_mnist.py -g 0</span>
-<span class="err">:</span>
-<span class="err">epoch       main/loss   validation/main/loss  main/accuracy  validation/main/accuracy  elapsed_time</span>
-<span class="err">1           0.191976    0.0931192             0.942517       0.9712            18.7328</span>
-<span class="err">2           0.0755601   0.0837004             0.9761         0.9737            20.6419</span>
-<span class="err">3           0.0496073   0.0689045             0.984266       0.9802            22.5383</span>
-<span class="err">4           0.0343888   0.0705739             0.988798       0.9796            24.4332</span>
-<span class="err">:</span>
-</code></pre></div>
-
-
-<h2 id="reference">Reference</h2>
-<ol>
-<li><a href="https://docs.nvidia.com/ngc/ngc-getting-started-guide/index.html">NGC Getting Started Guide</a></li>
-<li><a href="https://docs.nvidia.com/ngc/ngc-user-guide/index.html">NGC Container User Guide</a></li>
-<li><a href="https://docs.nvidia.com/ngc/ngc-user-guide/singularity.html">Running NGC Containers Using Singularity</a></li>
-<li><a href="https://blogs.nvidia.com/blog/2019/06/17/abci-adopts-ngc/">ABCI Adopts NGC for Easy Access to Deep Learning Frameworks | NVIDIA Blog</a></li>
-</ol>
+                  <h1>Ngc</h1>
+                
+                
                 
                   
                 
@@ -1546,41 +1013,6 @@ In this case, you need to set two environment variables, <code>SINGULARITY_DOCKE
       
         
 <footer class="md-footer">
-  
-    <div class="md-footer-nav">
-      <nav class="md-footer-nav__inner md-grid">
-        
-          <a href="../tips/dl-amazon-ecr/" title="Amazon ECR" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev">
-            <div class="md-flex__cell md-flex__cell--shrink">
-              <i class="md-icon md-icon--arrow-back md-footer-nav__button"></i>
-            </div>
-            <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
-              <span class="md-flex__ellipsis">
-                <span class="md-footer-nav__direction">
-                  Previous
-                </span>
-                Amazon ECR
-              </span>
-            </div>
-          </a>
-        
-        
-          <a href="../abci-cloudstorage/" title="Overview" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next">
-            <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
-              <span class="md-flex__ellipsis">
-                <span class="md-footer-nav__direction">
-                  Next
-                </span>
-                Overview
-              </span>
-            </div>
-            <div class="md-flex__cell md-flex__cell--shrink">
-              <i class="md-icon md-icon--arrow-forward md-footer-nav__button"></i>
-            </div>
-          </a>
-        
-      </nav>
-    </div>
   
   <div class="md-footer-meta md-typeset">
     <div class="md-footer-meta__inner md-grid">

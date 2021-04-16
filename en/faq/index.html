@@ -584,6 +584,18 @@
 
 
   <li class="md-nav__item">
+    <a href="../tips/ngc/" title="NVIDIA NGC" class="md-nav__link">
+      NVIDIA NGC
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
     <a href="../tips/remote-desktop/" title="Remote Desktop" class="md-nav__link">
       Remote Desktop
     </a>
@@ -684,27 +696,15 @@
       
 
 
-  <li class="md-nav__item">
-    <a href="../ngc/" title="NVIDIA NGC" class="md-nav__link">
-      NVIDIA NGC
-    </a>
-  </li>
-
-    
-      
-      
-      
-
-
   <li class="md-nav__item md-nav__item--nested">
     
-      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-6" type="checkbox" id="nav-6">
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-5" type="checkbox" id="nav-5">
     
-    <label class="md-nav__link" for="nav-6">
+    <label class="md-nav__link" for="nav-5">
       ABCI Cloud Storage
     </label>
     <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
-      <label class="md-nav__title" for="nav-6">
+      <label class="md-nav__title" for="nav-5">
         ABCI Cloud Storage
       </label>
       <ul class="md-nav__list" data-md-scrollfix>
@@ -1017,13 +1017,13 @@
 
   <li class="md-nav__item md-nav__item--nested">
     
-      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-14" type="checkbox" id="nav-14">
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-13" type="checkbox" id="nav-13">
     
-    <label class="md-nav__link" for="nav-14">
+    <label class="md-nav__link" for="nav-13">
       Links
     </label>
     <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
-      <label class="md-nav__title" for="nav-14">
+      <label class="md-nav__title" for="nav-13">
         Links
       </label>
       <ul class="md-nav__list" data-md-scrollfix>
@@ -1229,25 +1229,17 @@
 <p>Generally, any file systems have their own block size, and even the smallest file consumes the capacity of the block size.</p>
 <p>ABCI sets the block size of the group area to 128 KB and the block size of the home area to 4 KB. For this reason, if a large number of small files are created in the group area, usage efficiency will be reduced. For example, if you want to create a file that is less than 4KB in the group area, you need about 32 times the capacity of the home area.</p>
 <h2 id="q-singularity-cannot-use-container-registries-that-require-authentication">Q. Singularity cannot use container registries that require authentication</h2>
-<p>Singularity version 2.6 and SingularityPRO version 3.5 have a function equivalent to <code>docker login</code> that provides authentication information with environment variables.</p>
-<div class="codehilite"><pre><span></span><code><span class="o">[</span>username@es ~<span class="o">]</span>$ <span class="nb">export</span> <span class="nv">SINGULARITY_DOCKER_USERNAME</span><span class="o">=</span><span class="s1">&#39;username&#39;</span>
-<span class="o">[</span>username@es ~<span class="o">]</span>$ <span class="nb">export</span> <span class="nv">SINGULARITY_DOCKER_PASSWORD</span><span class="o">=</span><span class="s1">&#39;password&#39;</span>
-<span class="o">[</span>username@es ~<span class="o">]</span>$ singularity pull docker://myregistry.azurecr.io/namespace/repo_name:repo_tag
+<p>SingularityPRO has a function equivalent to <code>docker login</code> that provides authentication information with environment variables.</p>
+<div class="codehilite"><pre><span></span><code><span class="o">[</span>username@es1 ~<span class="o">]</span>$ <span class="nb">export</span> <span class="nv">SINGULARITY_DOCKER_USERNAME</span><span class="o">=</span><span class="s1">&#39;username&#39;</span>
+<span class="o">[</span>username@es1 ~<span class="o">]</span>$ <span class="nb">export</span> <span class="nv">SINGULARITY_DOCKER_PASSWORD</span><span class="o">=</span><span class="s1">&#39;password&#39;</span>
+<span class="o">[</span>username@es1 ~<span class="o">]</span>$ singularity pull docker://myregistry.azurecr.io/namespace/repo_name:repo_tag
 </code></pre></div>
 
 
-<p>For more information on Singularity version 2.6 authentication, see below.</p>
+<p>For more information on SingularityPRO authentication, see below.</p>
 <ul>
-<li><a href="https://www.sylabs.io/guides/2.6/user-guide/">Singularity 2.6 User Guide</a><ul>
-<li><a href="https://sylabs.io/guides/2.6/user-guide/singularity_and_docker.html#how-do-i-specify-my-docker-image">How do I specify my Docker image?</a></li>
-<li><a href="https://sylabs.io/guides/2.6/user-guide/singularity_and_docker.html#custom-authentication">Custom Authentication</a>  </li>
-</ul>
-</li>
-</ul>
-<p>For more information on SingularityPRO version 3.5 authentication, see below.</p>
-<ul>
-<li><a href="https://repo.sylabs.io/c/0f6898986ad0b646b5ce6deba21781ac62cb7e0a86a5153bbb31732ee6593f43/guides/singularitypro35-user-guide/">SingularityPRO 3.5 User Guide</a><ul>
-<li><a href="https://repo.sylabs.io/c/0f6898986ad0b646b5ce6deba21781ac62cb7e0a86a5153bbb31732ee6593f43/guides/singularitypro35-user-guide/singularity_and_docker.html?highlight=support%20docker%20oci#making-use-of-private-images-from-private-registries">Making use of private images from Private Registries</a></li>
+<li><a href="https://repo.sylabs.io/c/0f6898986ad0b646b5ce6deba21781ac62cb7e0a86a5153bbb31732ee6593f43/guides/singularitypro37-user-guide/">SingularityPRO 3.7 User Guide</a><ul>
+<li><a href="https://repo.sylabs.io/c/0f6898986ad0b646b5ce6deba21781ac62cb7e0a86a5153bbb31732ee6593f43/guides/singularitypro37-user-guide/singularity_and_docker.html?highlight=support%20docker%20oci#making-use-of-private-images-from-private-registries">Making use of private images from Private Registries</a></li>
 </ul>
 </li>
 </ul>
@@ -1259,7 +1251,6 @@
 
 
 <p>By preparing the following shell script, it can be executed using Singularity. This technique can be used not only for NGC CLI but also for general use.</p>
-<p><strong>Singularity 2.6</strong></p>
 <table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1
 2
 3
@@ -1267,22 +1258,7 @@
 5
 6</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><code><span class="ch">#!/bin/sh</span>
 <span class="nb">source</span> /etc/profile.d/modules.sh
-module load singularity/2.6.1
-
-<span class="nv">NGC_HOME</span><span class="o">=</span><span class="nv">$HOME</span>/ngc
-singularity <span class="nb">exec</span> <span class="nv">$NGC_HOME</span>/ubuntu-18.04.simg <span class="nv">$NGC_HOME</span>/ngc <span class="nv">$@</span>
-</code></pre></div>
-</td></tr></table>
-
-<p><strong>SingularityPRO 3.5</strong></p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1
-2
-3
-4
-5
-6</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><code><span class="ch">#!/bin/sh</span>
-<span class="nb">source</span> /etc/profile.d/modules.sh
-module load singularitypro/3.5
+module load singularitypro
 
 <span class="nv">NGC_HOME</span><span class="o">=</span><span class="nv">$HOME</span>/ngc
 singularity <span class="nb">exec</span> <span class="nv">$NGC_HOME</span>/ubuntu-18.04.simg <span class="nv">$NGC_HOME</span>/ngc <span class="nv">$@</span>
@@ -1325,23 +1301,24 @@ Currently Loaded Modulefiles:
 </code></pre></div>
 
 
-<p>For the combination where CUDA-aware MPI is not provided (<code>cuda/10.0/10.0.130.1</code>, <code>openmpi/3.1.3</code>), the environment setup will fail and <code>openmpi</code> module will not be loaded:</p>
-<div class="codehilite"><pre><span></span><code>$ module load cuda/10.0/10.0.130.1
-$ module load openmpi/3.1.3
+<p>For the combination where CUDA-aware MPI is not provided (<code>cuda/9.1/9.1.85.3</code>, <code>openmpi/3.1.6</code>), the environment setup will fail and <code>openmpi</code> module will not be loaded:</p>
+<div class="codehilite"><pre><span></span><code>$ module load cuda/9.1/9.1.85.3
+$ module load openmpi/3.1.6
 ERROR: loaded cuda module is not supported.
-WARINING: openmpi/3.1.3 is supported only host version
+WARNING: openmpi/3.1.6 cannot be loaded due to missing prereq.
+HINT: at least one of the following modules must be loaded first: cuda/9.2/9.2.88.1 cuda/9.2/9.2.148.1 cuda/10.0/10.0.130.1 cuda/10.1/10.1.243 cuda/10.2/10.2.89 cuda/11.0/11.0.3 cuda/11.1/11.1.1 cuda/11.2/11.2.2
 $ module list
 Currently Loaded Modulefiles:
-  <span class="m">1</span><span class="o">)</span> cuda/10.0/10.0.130.1
+  <span class="m">1</span><span class="o">)</span> cuda/9.1/9.1.85.3
 </code></pre></div>
 
 
 <p>On the other hand, there are cases where CUDA-aware version of Open MPI is not necessary, such as when you want to use Open MPI just for parallelization by Horovod. In this case, you can use a newer version of Open MPI that does not support CUDA-aware functions by loading <code>openmpi</code> module first.</p>
-<div class="codehilite"><pre><span></span><code>$ module load openmpi/3.1.3
-$ module load cuda/10.0/10.0.130.1
+<div class="codehilite"><pre><span></span><code>$ module load openmpi/3.1.6
+$ module load cuda/9.1/9.1.85.3
 module list
 Currently Loaded Modulefiles:
-  <span class="m">1</span><span class="o">)</span> openmpi/3.1.3          <span class="m">2</span><span class="o">)</span> cuda/10.0/10.0.130.1
+  <span class="m">1</span><span class="o">)</span> openmpi/3.1.6       <span class="m">2</span><span class="o">)</span> cuda/9.1/9.1.85.3
 </code></pre></div>
 
 
@@ -1381,9 +1358,9 @@ Please also refer to the procedure in <a href="../02/#general-method">Login usin
 
 <p>The problem can be avoided by adding <code>/usr/sbin</code> to PATH like this:</p>
 <p>Example)</p>
-<div class="codehilite"><pre><span></span><code><span class="err">[username@g0001~]$ PATH=&quot;$PATH:/usr/sbin&quot; </span>
-<span class="err">[username@g0001~]$ module load singularitypro/3.5</span>
-<span class="err">[username@g0001~]$ singularity run --nv docker://caffe2ai/caffe2:latest</span>
+<div class="codehilite"><pre><span></span><code><span class="err">[username@g0001 ~]$ export PATH=&quot;$PATH:/usr/sbin&quot; </span>
+<span class="err">[username@g0001 ~]$ module load singularitypro</span>
+<span class="err">[username@g0001 ~]$ singularity run --nv docker://caffe2ai/caffe2:latest</span>
 </code></pre></div>
 
 
