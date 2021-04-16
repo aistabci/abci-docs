@@ -18,24 +18,18 @@ ABCI sets the block size of the group area to 128 KB and the block size of the h
 
 ## Q. Singularity cannot use container registries that require authentication
 
-Singularity version 2.6 and SingularityPRO version 3.5 have a function equivalent to ``docker login`` that provides authentication information with environment variables.
+SingularityPRO has a function equivalent to ``docker login`` that provides authentication information with environment variables.
 
 ```shell
-[username@es ~]$ export SINGULARITY_DOCKER_USERNAME='username'
-[username@es ~]$ export SINGULARITY_DOCKER_PASSWORD='password'
-[username@es ~]$ singularity pull docker://myregistry.azurecr.io/namespace/repo_name:repo_tag
+[username@es1 ~]$ export SINGULARITY_DOCKER_USERNAME='username'
+[username@es1 ~]$ export SINGULARITY_DOCKER_PASSWORD='password'
+[username@es1 ~]$ singularity pull docker://myregistry.azurecr.io/namespace/repo_name:repo_tag
 ```
 
-For more information on Singularity version 2.6 authentication, see below.
+For more information on SingularityPRO authentication, see below.
 
-* [Singularity 2.6 User Guide](https://www.sylabs.io/guides/2.6/user-guide/)
-    * [How do I specify my Docker image?](https://sylabs.io/guides/2.6/user-guide/singularity_and_docker.html#how-do-i-specify-my-docker-image)
-    * [Custom Authentication](https://sylabs.io/guides/2.6/user-guide/singularity_and_docker.html#custom-authentication)  
-
-For more information on SingularityPRO version 3.5 authentication, see below.
-
-* [SingularityPRO 3.5 User Guide](https://repo.sylabs.io/c/0f6898986ad0b646b5ce6deba21781ac62cb7e0a86a5153bbb31732ee6593f43/guides/singularitypro35-user-guide/)
-    * [Making use of private images from Private Registries](https://repo.sylabs.io/c/0f6898986ad0b646b5ce6deba21781ac62cb7e0a86a5153bbb31732ee6593f43/guides/singularitypro35-user-guide/singularity_and_docker.html?highlight=support%20docker%20oci#making-use-of-private-images-from-private-registries)
+* [SingularityPRO 3.7 User Guide](https://repo.sylabs.io/c/0f6898986ad0b646b5ce6deba21781ac62cb7e0a86a5153bbb31732ee6593f43/guides/singularitypro37-user-guide/)
+    * [Making use of private images from Private Registries](https://repo.sylabs.io/c/0f6898986ad0b646b5ce6deba21781ac62cb7e0a86a5153bbb31732ee6593f43/guides/singularitypro37-user-guide/singularity_and_docker.html?highlight=support%20docker%20oci#making-use-of-private-images-from-private-registries)
 
 ## Q. NGC CLI cannot be executed
 
@@ -48,23 +42,10 @@ ImportError: /lib64/libc.so.6: version `GLIBC_2.18' not found (required by /tmp/
 
 By preparing the following shell script, it can be executed using Singularity. This technique can be used not only for NGC CLI but also for general use.
 
-**Singularity 2.6**
-
 ```
 #!/bin/sh
 source /etc/profile.d/modules.sh
-module load singularity/2.6.1
-
-NGC_HOME=$HOME/ngc
-singularity exec $NGC_HOME/ubuntu-18.04.simg $NGC_HOME/ngc $@
-```
-
-**SingularityPRO 3.5**
-
-```
-#!/bin/sh
-source /etc/profile.d/modules.sh
-module load singularitypro/3.5
+module load singularitypro
 
 NGC_HOME=$HOME/ngc
 singularity exec $NGC_HOME/ubuntu-18.04.simg $NGC_HOME/ngc $@
@@ -113,26 +94,27 @@ Currently Loaded Modulefiles:
   1) cuda/10.0/10.0.130.1   2) openmpi/2.1.6
 ```
 
-For the combination where CUDA-aware MPI is not provided (`cuda/10.0/10.0.130.1`, `openmpi/3.1.3`), the environment setup will fail and `openmpi` module will not be loaded:
+For the combination where CUDA-aware MPI is not provided (`cuda/9.1/9.1.85.3`, `openmpi/3.1.6`), the environment setup will fail and `openmpi` module will not be loaded:
 
 ```
-$ module load cuda/10.0/10.0.130.1
-$ module load openmpi/3.1.3
+$ module load cuda/9.1/9.1.85.3
+$ module load openmpi/3.1.6
 ERROR: loaded cuda module is not supported.
-WARINING: openmpi/3.1.3 is supported only host version
+WARNING: openmpi/3.1.6 cannot be loaded due to missing prereq.
+HINT: at least one of the following modules must be loaded first: cuda/9.2/9.2.88.1 cuda/9.2/9.2.148.1 cuda/10.0/10.0.130.1 cuda/10.1/10.1.243 cuda/10.2/10.2.89 cuda/11.0/11.0.3 cuda/11.1/11.1.1 cuda/11.2/11.2.2
 $ module list
 Currently Loaded Modulefiles:
-  1) cuda/10.0/10.0.130.1
+  1) cuda/9.1/9.1.85.3
 ```
 
 On the other hand, there are cases where CUDA-aware version of Open MPI is not necessary, such as when you want to use Open MPI just for parallelization by Horovod. In this case, you can use a newer version of Open MPI that does not support CUDA-aware functions by loading `openmpi` module first.
 
 ```
-$ module load openmpi/3.1.3
-$ module load cuda/10.0/10.0.130.1
+$ module load openmpi/3.1.6
+$ module load cuda/9.1/9.1.85.3
 module list
 Currently Loaded Modulefiles:
-  1) openmpi/3.1.3          2) cuda/10.0/10.0.130.1
+  1) openmpi/3.1.6       2) cuda/9.1/9.1.85.3
 ```
 
 !!! note
@@ -181,9 +163,9 @@ The problem can be avoided by adding `/usr/sbin` to PATH like this:
 
 Example)
 ```
-[username@g0001~]$ PATH="$PATH:/usr/sbin" 
-[username@g0001~]$ module load singularitypro/3.5
-[username@g0001~]$ singularity run --nv docker://caffe2ai/caffe2:latest
+[username@g0001 ~]$ export PATH="$PATH:/usr/sbin" 
+[username@g0001 ~]$ module load singularitypro
+[username@g0001 ~]$ singularity run --nv docker://caffe2ai/caffe2:latest
 ```
 
 ## Q. How can I find the job ID?

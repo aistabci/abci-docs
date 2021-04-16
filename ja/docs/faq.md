@@ -18,24 +18,18 @@ ABCIでは、グループ領域のブロックサイズは128KB、ホーム領�
 
 ## Q. 認証が必要なコンテナレジストリをSingularityで利用できない
 
-Singularity version 2.6およびSingularityPRO version 3.5には``docker login``相当の機能として、環境変数で認証情報を与える機能があります。
+SingularityPROには``docker login``相当の機能として、環境変数で認証情報を与える機能があります。
 
 ```shell
-[username@es ~]$ export SINGULARITY_DOCKER_USERNAME='username'
-[username@es ~]$ export SINGULARITY_DOCKER_PASSWORD='password'
-[username@es ~]$ singularity pull docker://myregistry.azurecr.io/namespace/repo_name:repo_tag
+[username@es1 ~]$ export SINGULARITY_DOCKER_USERNAME='username'
+[username@es1 ~]$ export SINGULARITY_DOCKER_PASSWORD='password'
+[username@es1 ~]$ singularity pull docker://myregistry.azurecr.io/namespace/repo_name:repo_tag
 ```
 
-Singularity version 2.6の認証に関する詳細は、以下をご参照ください。
+SingularityPRO の認証に関する詳細は、以下をご参照ください。
 
-* [Singularity 2.6 User Guide](https://www.sylabs.io/guides/2.6/user-guide/)  
-    * [How do I specify my Docker image?](https://sylabs.io/guides/2.6/user-guide/singularity_and_docker.html#how-do-i-specify-my-docker-image)
-    * [Custom Authentication](https://sylabs.io/guides/2.6/user-guide/singularity_and_docker.html#custom-authentication)
-
-SingularityPRO version 3.5の認証に関する詳細は、以下をご参照ください。
-
-* [SingularityPRO 3.5 User Guide](https://repo.sylabs.io/c/0f6898986ad0b646b5ce6deba21781ac62cb7e0a86a5153bbb31732ee6593f43/guides/singularitypro35-user-guide/)
-    * [Making use of private images from Private Registries](https://repo.sylabs.io/c/0f6898986ad0b646b5ce6deba21781ac62cb7e0a86a5153bbb31732ee6593f43/guides/singularitypro35-user-guide/singularity_and_docker.html?highlight=support%20docker%20oci#making-use-of-private-images-from-private-registries)
+* [SingularityPRO 3.7 User Guide](https://repo.sylabs.io/c/0f6898986ad0b646b5ce6deba21781ac62cb7e0a86a5153bbb31732ee6593f43/guides/singularitypro37-user-guide/)
+    * [Making use of private images from Private Registries](https://repo.sylabs.io/c/0f6898986ad0b646b5ce6deba21781ac62cb7e0a86a5153bbb31732ee6593f43/guides/singularitypro37-user-guide/singularity_and_docker.html?highlight=support%20docker%20oci#making-use-of-private-images-from-private-registries)
 
 ## Q. NGC CLIが実行できない
 
@@ -48,23 +42,10 @@ ImportError: /lib64/libc.so.6: version `GLIBC_2.18' not found (required by /tmp/
 
 以下のようなシェルスクリプトを用意することで、Singularityを使って実行させることができます。NGC CLIに限らず、一般的に使えるテクニックです。
 
-**Singularity 2.6**
-
 ```
 #!/bin/sh
 source /etc/profile.d/modules.sh
-module load singularity/2.6.1
-
-NGC_HOME=$HOME/ngc
-singularity exec $NGC_HOME/ubuntu-18.04.simg $NGC_HOME/ngc $@
-```
-
-**SingularityPRO 3.5**
-
-```
-#!/bin/sh
-source /etc/profile.d/modules.sh
-module load singularitypro/3.5
+module load singularitypro
 
 NGC_HOME=$HOME/ngc
 singularity exec $NGC_HOME/ubuntu-18.04.simg $NGC_HOME/ngc $@
@@ -114,26 +95,27 @@ Currently Loaded Modulefiles:
   1) cuda/10.0/10.0.130.1   2) openmpi/2.1.6
 ```
 
-CUDA対応版MPIが提供されていない組み合わせ(`cuda/10.0/10.0.130.1`, `openmpi/3.1.3`)では環境設定に失敗し、`openmpi`モジュールはロードされません。
+CUDA対応版MPIが提供されていない組み合わせ(`cuda/9.1/9.1.85.3`, `openmpi/3.1.6`)では環境設定に失敗し、`openmpi`モジュールはロードされません。
 
 ```
-$ module load cuda/10.0/10.0.130.1
-$ module load openmpi/3.1.3
+$ module load cuda/9.1/9.1.85.3
+$ module load openmpi/3.1.6
 ERROR: loaded cuda module is not supported.
-WARINING: openmpi/3.1.3 is supported only host version
+WARNING: openmpi/3.1.6 cannot be loaded due to missing prereq.
+HINT: at least one of the following modules must be loaded first: cuda/9.2/9.2.88.1 cuda/9.2/9.2.148.1 cuda/10.0/10.0.130.1 cuda/10.1/10.1.243 cuda/10.2/10.2.89 cuda/11.0/11.0.3 cuda/11.1/11.1.1 cuda/11.2/11.2.2
 $ module list
 Currently Loaded Modulefiles:
-  1) cuda/10.0/10.0.130.1
+  1) cuda/9.1/9.1.85.3
 ```
 
 一方、Horovodによる並列化のためにOpen MPIが使いたいなど、Open MPIのCUDA版機能が不要な場合もあります。この場合は、先に`openmpi`モジュールをロードすることで、より新しいバージョンのCUDA非対応版Open MPIを利用できます。
 
 ```
-$ module load openmpi/3.1.3
-$ module load cuda/10.0/10.0.130.1
+$ module load openmpi/3.1.6
+$ module load cuda/9.1/9.1.85.3
 module list
 Currently Loaded Modulefiles:
-  1) openmpi/3.1.3          2) cuda/10.0/10.0.130.1
+  1) openmpi/3.1.6       2) cuda/9.1/9.1.85.3
 ```
 
 !!! note
@@ -187,9 +169,9 @@ FATAL:   While making image from oci registry: while building SIF from layers: u
 
 実行例）
 ```
-[username@g0001~]$ PATH="$PATH:/usr/sbin" 
-[username@g0001~]$ module load singularitypro/3.5
-[username@g0001~]$ singularity run --nv docker://caffe2ai/caffe2:latest
+[username@g0001 ~]$ export PATH="$PATH:/usr/sbin"
+[username@g0001 ~]$ module load singularitypro
+[username@g0001 ~]$ singularity run --nv docker://caffe2ai/caffe2:latest
 ```
 
 ## Q. ジョブ ID を調べるには？ {#q-how-can-i-find-the-job-id}
