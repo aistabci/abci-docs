@@ -1,11 +1,71 @@
 # システム更新履歴
 
+## 2021-04-07
+
+| Add / Update / Delete | Software | Version | Previous version |
+|:--|:--|:--|:--|
+| Update | NVIDIA Tesla Driver | [460.32.03](https://docs.nvidia.com/datacenter/tesla/tesla-release-notes-460-32-03/index.html) | 440.33.01 |
+| Update | OFED | 5.0-2.1.8.0 | 4.4-1.0.0.0 |
+| Update | Univa Grid Engine | 8.6.17 | 8.6.6 |
+| Update | SingularityPRO | 3.7-1 | 3.5-6 |
+| Update | BeeOND | 7.2.1 | 7.2 |
+| Update | Docker | 19.03.15 | 17.12.0 |
+| Update | Scality S3 Connector | 7.4.8.1 | 7.4.8 |
+| Add | gcc | 9.3.0 | |
+| Add | pgi | 20.4 | |
+| Add | nvhpc | 20.11<br>21.2 | |
+| Add | cmake | 3.19 | |
+| Add | go | 1.15 | |
+| Add | julia | 1.5 | |
+| Add | lua | 5.3.6<br>5.4.2 | |
+| Add | python | 2.7.18<br>3.6.12<br>3.7.10<br>3.8.7 | |
+| Add | R | 4.0.4 | |
+| Add | CUDA | 11.0.3<br>11.1.1<br>11.2.2 | |
+| Add | cuDNN | [8.1.1](https://docs.nvidia.com/deeplearning/cudnn/release-notes/rel_8.html#rel-811) | |
+| Add | NCCL | [2.8.4-1](https://docs.nvidia.com/deeplearning/nccl/release-notes/rel_2-8-4.html) | |
+| Add | openmpi | 4.0.5 | |
+| Add | mvapich2-gdr | 2.3.5 | |
+| Add | mvapich2 | 2.3.5 | |
+| Add | hadoop | 3.3 | |
+| Add | spark | 3.0 | |
+| Add | aws-cli | 2.1 | |
+| Add | fuse-sshfs | 3.7.1 | |
+| Add | s3fs-fuse | 1.87 | |
+| Add | sregistry-cli | 0.2.36 | |
+| Delete | intel | 2017.8.262<br>2018.5.274<br>2019.5.281 | |
+| Delete | pgi | 17.10<br>18.10<br>19.1<br>19.10<br>20.1 | |
+| Delete | nvhpc | 20.9 | |
+| Delete | cmake | 3.16<br>3.17 | |
+| Delete | go | 1.12<br>1.13 | |
+| Delete | intel-advisor | 2017.5<br>2018.4<br>2019.5 | |
+| Delete | intel-inspector | 2017.4<br>2018.4<br>2019.5 | |
+| Delete | intel-itac | 2017.0.4<br>2018.0.4<br>2019.0.5 | |
+| Delete | intel-mkl | 2017.0.4<br>2018.0.4<br>2019.0.5 | |
+| Delete | intel-vtune | 2017.6<br>2018.4<br>2019.6 | |
+| Delete | julia | 1.3<br>1.4 | |
+| Delete | python | 2.7.15<br>3.4.8<br>3.5.5<br>3.7.6 | |
+| Delete | R | 3.5.0<br>3.6.3 | |
+| Delete | cuda | 10.0.130 | |
+| Delete | cudnn | 7.1.3<br>7.5.0<br>7.6.0<br>7.6.1<br>7.6.2<br>7.6.3<br>7.6.4<br>8.0.2 | |
+| Delete | nccl | 2.3.4-1<br>2.3.5-2<br>2.4.2-1<br>2.4.7-1<br>2.8.3-1 | |
+| Delete | intel-mpi | 2017.4<br>2018.4<br>2019.5 | |
+| Delete | openmpi | 4.0.3 | |
+| Delete | mvapich2-gdr | 2.3.3<br>2.3.4 | |
+| Delete | mvapich2 | 2.3.3<br>2.3.4 | |
+| Delete | hadoop | 2.9<br>2.10<br>3.1 | |
+| Delete | singularity | 2.6.1 | |
+| Delete | spark | 2.3<br>2.4 | |
+| Delete | aws-cli | 1.16.194<br>1.18<br>2.0 | |
+| Delete | fuse-sshfs | 2.10 | |
+| Delete | s3fs-fuse | 1.85 | |
+| Delete | sregistry-cli | 0.2.31 | |
+
 ## 2021-03-13
 
 | Add / Update / Delete | Software | Version | Previous version |
 |:--|:--|:--|:--|
-| Update | SingularityPRO | 3.5-4 | 3.5-6 |
-| Update | DDN Lustre | 2.10.7\_ddn14-1 | 2.12.6\_ddn13-1 |
+| Update | SingularityPRO | 3.5-6 | 3.5-4 |
+| Update | DDN Lustre | 2.12.6\_ddn13-1 | 2.10.7\_ddn14-1 |
 
 ## 2020-12-15
 

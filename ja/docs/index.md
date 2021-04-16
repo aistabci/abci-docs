@@ -30,6 +30,7 @@
     - [Chainer](apps/chainer.md)
     - [その他](apps/others.md)
   - Tips:
+    - [NVIDIA NGC](tips/ngc.md)
     - [リモートデスクトップの利用](tips/remote-desktop.md)
     - [AWS CLIの利用](tips/awscli.md)
     - [Tera Termの利用](tips/tera-term.md)
@@ -39,7 +40,6 @@
     - [Spackによるソフトウェア管理](tips/spack.md)
     - [データセットの利用](tips/datasets.md)
     - [Amazon ECR からコンテナ取得](tips/dl-amazon-ecr.md)
-  - [NVIDIA NGC](ngc.md)
   - ABCI クラウドストレージ:
     - [概要](abci-cloudstorage.md)
     - [アカウントとアクセスキー](abci-cloudstorage/cs-account.md)
@@ -48,6 +48,8 @@
     - [アクセス制御(1)](abci-cloudstorage/acl.md)
     - [アクセス制御(2)](abci-cloudstorage/policy.md)
     - [データセットの公開](abci-cloudstorage/publishing-datasets.md)
+    - [ご利用時の注意](abci-cloudstorage/caution.md)
+  - [ABCI データセット](abci-datasets.md)
   - [ABCI Singularity エンドポイント](abci-singularity-endpoint.md)
   - [FAQ](faq.md)
   - [既知の問題](known-issues.md)

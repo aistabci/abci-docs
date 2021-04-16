@@ -16,35 +16,38 @@
 
 ```
 [username@es1 ~]$ qrsh -g grpname -l rt_G.small=1 -l h_rt=1:00:00
-[username@g0001 ~]$ module load python/3.6/3.6.5 cuda/10.0/10.0.130.1 cudnn/7.6/7.6.5
+[username@g0001 ~]$ module load python/3.6/3.6.12 cuda/11.0/11.0.3 cudnn/8.1/8.1.1
 [username@g0001 ~]$ python3 -m venv ~/venv/tensorflow
 [username@g0001 ~]$ source ~/venv/tensorflow/bin/activate
 (tensorflow) [username@g0001 ~]$ pip3 install --upgrade pip setuptools
-(tensorflow) [username@g0001 ~]$ pip3 install tensorflow-gpu==1.15
+(tensorflow) [username@g0001 ~]$ pip3 install tensorflow==2.4.1
 ```
 
 次回以降は、次のようにモジュールの読み込みとPython仮想環境のアクティベートだけでTensorFlowを使用できます。
+
 ```
-[username@g0001 ~]$ module load python/3.6/3.6.5 cuda/10.0/10.0.130.1 cudnn/7.6/7.6.5
+[username@g0001 ~]$ module load python/3.6/3.6.12 cuda/11.0/11.0.3 cudnn/8.1/8.1.1
 [username@g0001 ~]$ source ~/venv/tensorflow/bin/activate
 ```
 
 ### 実行方法 {#run}
 
-TensorFlowサンプルプログラム `fully_connected_feeds.py` 実行方法をインタラクティブジョブとバッチジョブそれぞれの場合で示します。
+TensorFlowサンプルプログラム `train.py` 実行方法をインタラクティブジョブとバッチジョブそれぞれの場合で示します。
 
 **インタラクティブジョブとして実行**
+
 ```
 [username@es1 ~]$ qrsh -g grpname -l rt_G.small=1 -l h_rt=1:00:00
-[username@g0001 ~]$ module load python/3.6/3.6.5 cuda/10.0/10.0.130.1 cudnn/7.6/7.6.5
+[username@g0001 ~]$ module load python/3.6/3.6.12 cuda/11.0/11.0.3 cudnn/8.1/8.1.1
 [username@g0001 ~]$ source ~/venv/tensorflow/bin/activate
-(tensorflow) [username@g0001 ~]$ curl -L -O https://raw.githubusercontent.com/tensorflow/tensorflow/master/tensorflow/examples/tutorials/mnist/fully_connected_feed.py
-(tensorflow) [username@g0001 ~]$ python3 fully_connected_feed.py
+(tensorflow) [username@g0001 ~]$ git clone https://github.com/tensorflow/tensorflow.git
+(tensorflow) [username@g0001 ~]$ python3 tensorflow/tensorflow/examples/speech_commands/train.py --how_many_training_steps 1000,500
 ```
 
 **バッチジョブとして実行**
 
 次のジョブスクリプトを `run.sh` ファイルとして保存します。
+
 ```
 #!/bin/sh
 
@@ -53,14 +56,15 @@ TensorFlowサンプルプログラム `fully_connected_feeds.py` 実行方法を
 #$ -cwd
 
 source /etc/profile.d/modules.sh
-module load python/3.6/3.6.5 cuda/10.0/10.0.130.1 cudnn/7.6/7.6.5
+module load python/3.6/3.6.12 cuda/11.0/11.0.3 cudnn/8.1/8.1.1
 source ~/venv/tensorflow/bin/activate
-curl -L -O https://raw.githubusercontent.com/tensorflow/tensorflow/master/tensorflow/examples/tutorials/mnist/fully_connected_feed.py
-python3 fully_connected_feed.py
+git clone https://github.com/tensorflow/tensorflow.git
+python3 tensorflow/tensorflow/examples/speech_commands/train.py --how_many_training_steps 1000,500
 deactivate
 ```
 
 バッチジョブ実行のため、ジョブスクリプト `run.sh` をqsubコマンドでバッチジョブとして投入します。
+
 ```
 [username@es1 ~]$ qsub -g grpname run.sh
 Your job 1234567 ('run.sh') has been submitted
@@ -80,33 +84,35 @@ Your job 1234567 ('run.sh') has been submitted
 
 ```
 [username@es1 ~]$ qrsh -g grpname -l rt_G.small=1 -l h_rt=1:00:00
-[username@g0001 ~]$ module load python/3.6/3.6.5 cuda/10.0/10.0.130.1 cudnn/7.6/7.6.5 nccl/2.5/2.5.6-1 openmpi/2.1.6 gcc/7.4.0
+[username@g0001 ~]$ module load python/3.6/3.6.12 cuda/11.0/11.0.3 cudnn/8.1/8.1.1 nccl/2.8/2.8.4-1 gcc/7.4.0 openmpi/4.0.5
 [username@g0001 ~]$ python3 -m venv ~/venv/tensorflow+horovod
 [username@g0001 ~]$ source ~/venv/tensorflow+horovod/bin/activate
 (tensorflow+horovod) [username@g0001 ~]$ pip3 install --upgrade pip setuptools
-(tensorflow+horovod) [username@g0001 ~]$ pip3 install tensorflow-gpu==1.15
-(tensorflow+horovod) [username@g0001 ~]$ HOROVOD_WITH_TENSORFLOW=1 HOROVOD_GPU_OPERATIONS=NCCL HOROVOD_NCCL_HOME=$NCCL_HOME pip3 install --no-cache-dir horovod
+(tensorflow+horovod) [username@g0001 ~]$ pip3 install tensorflow==2.4.1
+(tensorflow+horovod) [username@g0001 ~]$ HOROVOD_WITH_TENSORFLOW=1 HOROVOD_GPU_OPERATIONS=NCCL HOROVOD_NCCL_HOME=$NCCL_HOME pip3 install --no-cache-dir horovod==0.21.3
 ```
 
 次回以降は、次のようにモジュールの読み込みとPython仮想環境のアクティベートだけでTensorFlowとHorovodを使用できます。
+
 ```
-[username@g0001 ~]$ module load python/3.6/3.6.5 cuda/10.0/10.0.130.1 cudnn/7.6/7.6.5 nccl/2.5/2.5.6-1 openmpi/2.1.6 gcc/7.4.0
+[username@g0001 ~]$ module load python/3.6/3.6.12 cuda/11.0/11.0.3 cudnn/8.1/8.1.1 nccl/2.8/2.8.4-1 gcc/7.4.0 openmpi/4.0.5
 [username@g0001 ~]$ source ~/venv/tensorflow+horovod/bin/activate
 ```
 
 ### 実行方法 {#run-with-horovod}
 
-Horovodを利用するTensorFlowサンプルプログラム `tensorflow_mnist.py` で分散学習する方法をインタラクティブジョブとバッチジョブそれぞれの場合で示します。
+Horovodを利用するTensorFlowサンプルプログラム `tensorflow2_mnist.py` で分散学習する方法をインタラクティブジョブとバッチジョブそれぞれの場合で示します。
 
 **インタラクティブジョブとして実行**
 
 この例では、インタラクティブノードの4つのGPUを利用して分散学習します。
+
 ```
 [username@es1 ~]$ qrsh -g grpname -l rt_G.large=1 -l h_rt=1:00:00
-[username@g0001 ~]$ module load python/3.6/3.6.5 cuda/10.0/10.0.130.1 cudnn/7.6/7.6.5 nccl/2.5/2.5.6-1 openmpi/2.1.6 gcc/7.4.0
+[username@g0001 ~]$ module load python/3.6/3.6.12 cuda/11.0/11.0.3 cudnn/8.1/8.1.1 nccl/2.8/2.8.4-1 gcc/7.4.0 openmpi/4.0.5
 [username@g0001 ~]$ source ~/venv/tensorflow+horovod/bin/activate
-(tensorflow+horovod) [username@g0001 ~]$ git clone -b v0.20.0 https://github.com/horovod/horovod.git
-(tensorflow+horovod) [username@g0001 ~]$ mpirun -np 4 -map-by ppr:4:node python3 horovod/examples/tensorflow_mnist.py
+(tensorflow+horovod) [username@g0001 ~]$ git clone -b v0.21.3 https://github.com/horovod/horovod.git
+(tensorflow+horovod) [username@g0001 ~]$ mpirun -np 4 -map-by ppr:4:node python3 horovod/examples/tensorflow2/tensorflow2_mnist.py
 ```
 
 **バッチジョブとして実行**
@@ -114,18 +120,19 @@ Horovodを利用するTensorFlowサンプルプログラム `tensorflow_mnist.py
 この例では、計8つのGPUを利用して分散学習します。計算ノード2台を使用し、計算ノード1台あたり4つのGPUを使用しています。
 
 次のジョブスクリプトを `run.sh` ファイルとして保存します。
+
 ```
-#!/bin/sh -x
+#!/bin/sh
 
 #$ -l rt_F=2
 #$ -j y
 #$ -cwd
 
 source /etc/profile.d/modules.sh
-module load python/3.6/3.6.5 cuda/10.0/10.0.130.1 cudnn/7.6/7.6.5 nccl/2.5/2.5.6-1 openmpi/2.1.6 gcc/7.4.0
+module load python/3.6/3.6.12 cuda/11.0/11.0.3 cudnn/8.1/8.1.1 nccl/2.8/2.8.4-1 gcc/7.4.0 openmpi/4.0.5
 source ~/venv/tensorflow+horovod/bin/activate
 
-git clone -b v0.20.0 https://github.com/horovod/horovod.git
+git clone -b v0.21.3 https://github.com/horovod/horovod.git
 
 NUM_NODES=${NHOSTS}
 NUM_GPUS_PER_NODE=4
@@ -134,12 +141,13 @@ NUM_PROCS=$(expr ${NUM_NODES} \* ${NUM_GPUS_PER_NODE})
 
 MPIOPTS="-np ${NUM_PROCS} -map-by ppr:${NUM_GPUS_PER_NODE}:node"
 
-mpirun ${MPIOPTS} python3 horovod/examples/tensorflow_mnist.py
+mpirun ${MPIOPTS} python3 horovod/examples/tensorflow2/tensorflow2_mnist.py
 
 deactivate
 ```
 
 バッチジョブ実行のため、ジョブスクリプト `run.sh` をqsubコマンドでバッチジョブとして投入します。
+
 ```
 [username@es1 ~]$ qsub -g grpname run.sh
 Your job 1234567 ('run.sh') has been submitted
