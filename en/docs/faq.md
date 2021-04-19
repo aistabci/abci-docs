@@ -252,40 +252,46 @@ g0001: g0001.abci.local
 g0002: g0002.abci.local
 ```
 
-## Q. What is the new ABCI Group area and data migration?
+## Q. What are the new ABCI Group area and data migration?
 
-We are going to explain the ABCI Group area in FY2021 for ABCI users using `/groups[1-2]/gAA50NNN` .
+In FY2021, we will have a data migration for the Group Area storage.
 
-The new area ( `/groups/gAA50NNN` ) have been available since April 7th for ABCI users using `/groups[1-2]/gAA50NNN` (old area).
-Both new and old area is accessible from all interactive nodes and all compute nodes.
+The existing group area (The **Old Area**) will not be accessible from the coming new computing resources.
+Therefore we need to create a new group area (The **New Area**) and migrate all the data stored in the **Old Area** to the **New Area**.
+The data copy is managed by the operating team, so the users do not have to take care of the copy process.
 
-Data in the old area will be migrated to the new area in the future.
-The data migration is scheduled in the order of /groups2, /groups1, /fs3, and it will be completed in about one year.
+A user group who are using the **Old Area** `/groups[1-2]/gAA50NNN` had been also allocated the **New Area** at `/groups/gAA50NNN`.
+Both the **Old and New Area** are accessible from all the existing interactive nodes and computing nodes.
 
-Here is more detailed information.
+**(0) Basic Strategy**
+
+* The ABCI operating team will copy all the files in the **Old Area** to the **New Area** behind the scene. It will take one year to finish the copy process for all the user groups.
+* While the users can keep using the **Old Area**, we would like to ask the users to use the **New Area** as much as possible for performance reasons.
+* When the copying process finishes, the operating team will switch the reference from the **Old Area** to the **New Area**.
 
 **(1) The new area /groups/gAA50NNN**
 
-* A quota that is twice the value of the old area is set in the new area. This is a temporary increase until the data migration is completed.
-* The files in the old area will be copied to `/groups/gAA50NNN/migrate_from_SFA_GPFS/` in the new area.
-* As the data migration progresses, the files in the old area will be copied to the new area, but you cannot access them until the data migration is completed. Please note that the quota usage will increase, although the files cannot be accessed.
-* After the data migration is completed, the original quota value will be restored (a grace period will be provided).
+* The files in the **Old Area** will be copied to the **New Area** `/groups/gAA50NNN/migrated_from_SFA_GPFS/`. Note that the users cannot access the copied data until the migration finishes.
+* The area other than the folder in the **New Area** can be freely used.
+* The storage quota for the **New Area** is set to be twice of the **Old Area**. This is a temporal treatment. After the migration, the quota will be reset, after a grace period.
+* During the copy, the users will see an increase in the quota usage, but it is not harmful.
 
 **(2) The old area /groups[1-2]/gAA50NNN**
 
 **1. During the data migration**
 
-* Since the administrator will perform the data migration, it seems that the data migration is automatically performed by the system from the user's point of view.
-* During the data migration, you can read, write and delete files in the old area.
-* In order to reduce the amount of the data migration, please do not put new files in the old area as much as possible. Please delete unnecessary files in the old area as much as possible.  It doesn't matter as much as you can.  (This restriction will be removed after the data migration is completed.)
+* During the data migration, the users can read, write and delete files in the **Old Area**.
+* In order to reduce the amount of the data to be moved, please do not put new files in the **Old Area** as much as possible.
+* Consider deleting unnecessary files in the **Old Area** as much as possible.
 
 **2. At the end of the data migration**
 
-* At the end of the data migration, there will be several days of period while you cannot access the old area.
-* During that period, you can R/W and delete files in the new area.
-* The system administrator will change the symbolic link so that you can access the migrated data in the new area with the same path `/groups[1-2]/gAA50NNN` as before.
+* At the end of the data migration, there will be a period of several days where you cannot access the **Old area**.
+* During that period, you can R/W and delete files in the **New Area**.
+* After the period, the copied data in **New Area** will become available. The reference to the **Old Area** will be redirected to the copied folder.
 
 **3. After the data migration is completed**
 
-* You can access the migrated data in the new area  with the same path `/groups [1-2]/gAA50NNN` as before.
-* The files in the old area will be copied to `/groups/gAA50NNN/migrate_from_SFA_GPFS/` in the new area.
+* You can access the migrated data in the **New Area** with the same path `/groups[1-2]/gAA50NNN` as before.
+* The files in the **Old Area** are copied to `/groups/gAA50NNN/migrate_from_SFA_GPFS/` in the **New Area**.
+
