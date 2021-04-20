@@ -62,7 +62,7 @@ geometry=2000x1200
 * On-demand、ノード専有で1ノード確保してログインします。
 
 ```
-[username@g0001 ~]$ qrsh -g grpname -l rt_F=1 -l h_rt=1:00:00
+[username@es1 ~]$ qrsh -g grpname -l rt_F=1 -l h_rt=1:00:00
 ```
 
 * vncserverを起動します。
