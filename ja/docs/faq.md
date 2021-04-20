@@ -302,4 +302,6 @@ g0002: g0002.abci.local
 **3.データ移行完了後**
 
 * 旧領域に置かれていたデータは、従来と同じパス`/groups[1-2]/gAA50NNN`でアクセス可能です。
-* データ移行完了後、`/groups[1-2]/gAA50NNN`は、新領域`/groups/gAA50NNN/migrated_from_SFA_GPFS/`へのシンボリックリンクで実現されます。
+* このパス`/groups[1-2]/gAA50NNN`は、新領域の`/groups/gAA50NNN/migrated_from_SFA_GPFS/`へのシンボリックリンクで実現されます。
+* データ移行完了後、旧領域上の`/groups[1-2]/gAA50NNN`にはアクセスできなくなります。
+
