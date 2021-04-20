@@ -273,8 +273,7 @@ Both the **Old and New Area** are accessible from all the existing interactive n
 
 * The files in the **Old Area** will be copied to the **New Area** `/groups/gAA50NNN/migrated_from_SFA_GPFS/`. Note that the users cannot access the copied data until the migration finishes.
 * The area other than the folder in the **New Area** can be freely used.
-* The storage quota for the **New Area** is set to be twice of the **Old Area**. This is a temporal treatment. After the migration, the quota will be reset, after a grace period.
-* During the copy, the users will see an increase in the quota usage, but it is not harmful.
+* Disk usage will increase as data is copied. For this reason, the amount of the group disk for the **New Area** is set to be twice of the **Old Area**. This is a temporal treatment. After the migration, the amount will be reset, after a grace period.
 
 **(2) The old area /groups[1-2]/gAA50NNN**
 
@@ -286,12 +285,12 @@ Both the **Old and New Area** are accessible from all the existing interactive n
 
 **2. At the end of the data migration**
 
-* At the end of the data migration, there will be a period of several days where you cannot access the **Old area**.
-* During that period, you can R/W and delete files in the **New Area**.
+* At the end of the data migration, there will be a period of several days where you cannot access the **Old area** `/groups[1-2]/gAA50NNN` and the **New area** `/groups/gAA50NNN/migrated_from_SFA_GPFS/`.
+* During that period, you can read, write and delete files in the **New Area**.
 * After the period, the copied data in **New Area** will become available. The reference to the **Old Area** will be redirected to the copied folder.
 
 **3. After the data migration is completed**
 
 * You can access the migrated data in the **New Area** with the same path `/groups[1-2]/gAA50NNN` as before.
 * The files in the **Old Area** are copied to `/groups/gAA50NNN/migrate_from_SFA_GPFS/` in the **New Area**.
-
+* You cannot access `/groups[1-2]/gAA50NNN` in the **Old area**.
