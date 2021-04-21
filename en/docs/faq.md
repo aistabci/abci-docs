@@ -272,7 +272,7 @@ Both the **Old and New Area** are accessible from all the existing interactive n
 ### The new area /groups/gAA50NNN
 
 * The files in the **Old Area** will be copied to the **New Area** `/groups/gAA50NNN/migrated_from_SFA_GPFS/`. Note that the users cannot access the copied data until the migration finishes.
-* The area other than the folder in the **New Area** can be freely used.
+* The area other than the directory in the **New Area** can be freely used.
 * Disk usage will increase as data is copied. For this reason, the storage quota for the **New Area** is set to be twice the value applied for in the ABCI User Portal. This is a temporal treatment. After the migration, the quota will be reset, after a grace period.
 
 ### The old area /groups[1-2]/gAA50NNN
@@ -287,7 +287,7 @@ Both the **Old and New Area** are accessible from all the existing interactive n
 
 * At the end of the data migration, there will be a period of several days where you cannot access the **Old area** `/groups[1-2]/gAA50NNN` and the **New area** `/groups/gAA50NNN/migrated_from_SFA_GPFS/`.
 * During that period, you can read, write and delete files in the **New Area**.
-* After the period, the copied data in **New Area** will become available. The reference to the **Old Area** will be redirected to the copied folder.
+* After the period, the copied data in **New Area** will become available. The reference to the **Old Area** will be redirected to the copied directory.
 
 
 #### After the data migration is completed
