@@ -254,14 +254,18 @@ g0002: g0002.abci.local
 
 ## Q. What are the new group area and data migration?
 
-In FY2021, we will have a data migration for the Group Area storage.
+In FY2021, we expanded the storage system. Refer to [Storage Systems](https://docs.abci.ai/en/01/#storage-systems) for details.
+As the storage system is expanded, the configuration of the group area will be changed.
+We will migrate data from the group area that was used in FY2020 to the new group area.
 
-The existing group area (The **Old Area**) will not be accessible from the coming new computing resources.
+The existing group area (The **Old Area**) will not be accessible from the coming new computing resources (The Compute Node (A)).
 Therefore we need to create a new group area (The **New Area**) and migrate all the data stored in the **Old Area** to the **New Area**.
 The data copy is managed by the operating team, so the users do not have to take care of the copy process.
 
 A user group who are using the **Old Area** `/groups[1-2]/gAA50NNN` had been also allocated the **New Area** at `/groups/gAA50NNN`.
 Both the **Old and New Area** are accessible from all the existing interactive nodes and computing nodes.
+
+For the groups newly created in FY2021, only new areas will be allocated, so data migration will not be performed.
 
 ### Basic Strategy
 
@@ -282,6 +286,7 @@ Both the **Old and New Area** are accessible from all the existing interactive n
 * During the data migration, the users can read, write and delete files in the **Old Area**.
 * In order to reduce the amount of the data to be moved, please do not put new files in the **Old Area** as much as possible.
 * Consider deleting unnecessary files in the **Old Area** as much as possible.
+* As usual, the storage quota applied on the ABCI User Portal is set as the quota of the **Old Area**. You can apply for an increase or decrease in the quota from the ABCI User Portal.
 
 #### At the end of the data migration
 
@@ -294,4 +299,4 @@ Both the **Old and New Area** are accessible from all the existing interactive n
 
 * You can access the migrated data in the **New Area** with the same path `/groups[1-2]/gAA50NNN` as before.
 * The files in the **Old Area** are copied to `/groups/gAA50NNN/migrate_from_SFA_GPFS/` in the **New Area**.
-* You cannot access `/groups[1-2]/gAA50NNN` in the **Old area**.
+* You cannot access `/groups[1-2]/gAA50NNN` in the **Old Area**.
