@@ -286,7 +286,7 @@ For the groups newly created in FY2021, only new areas will be allocated, so dat
 * During the data migration, the users can read, write and delete files in the **Old Area**.
 * In order to reduce the amount of the data to be moved, please do not put new files in the **Old Area** as much as possible.
 * Consider deleting unnecessary files in the **Old Area** as much as possible.
-* As same as before, the storage quota applied in the ABCI User Portal is set as the the limit of the storage usage of the **Old Area**. You can apply new quota value in the ABCI User Portal.
+* As usual, the storage quota applied in the ABCI User Portal is set as the the limit of the storage usage of the **Old Area**. As usual, you can increase or decrease the quota value by applying a new quota value in the ABCI User Portal.
 
 #### At the end of the data migration
 
@@ -297,6 +297,6 @@ For the groups newly created in FY2021, only new areas will be allocated, so dat
 
 #### After the data migration is completed
 
-* You can access the migrated data in the **New Area** with the same path `/groups[1-2]/gAA50NNN` as before since the operator changes the symbolic link.
+* You can access the migrated data in the **New Area** with the same path `/groups[1-2]/gAA50NNN` as before. It is achieved by changing the symbolic link.
 * The files in the **Old Area** are copied to `/groups/gAA50NNN/migrate_from_SFA_GPFS/` in the **New Area**.
 * You cannot access `/groups[1-2]/gAA50NNN` in the **Old Area**.
