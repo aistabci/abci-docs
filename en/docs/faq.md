@@ -259,13 +259,13 @@ As the storage system is expanded, the configuration of the group area will be c
 All the data in the existing group area used in FY2020 are going to be migrated into a new group area in FY2021.
 
 The existing group area (The **Old Area**) will not be accessible from the coming new computing resources (The Compute Node (A)).
-Therefore we need to create a new group area (The **New Area**) and migrate all the data stored in the **Old Area** to the **New Area**.
+Therefore we need to create a new group area (The **New Area**), which is accessible from the Compute Node (A), and migrate all the data stored in the **Old Area** to the **New Area**.
 The data copy is managed by the operating team, so the users do not have to take care of the copy process.
 
 A user group who are using the **Old Area** `/groups[1-2]/gAA50NNN` had been also allocated the **New Area** at `/groups/gAA50NNN`.
-Both the **Old and New Area** are accessible from all the interactive nodes and all the existing computing nodes (The Compute Node (V)).
+Both the **Old and New Area** are accessible from all the interactive nodes and all the existing computing nodes (The Compute Node (V)). The **New Area** is accessible from the Compute Node (A).
 
-For the groups newly created in FY2021, only new areas will be allocated, so data migration will not be performed.
+For the groups newly created in FY2021, only **New Area** will be allocated, so data migration will not be performed.
 
 ### Basic Strategy
 
