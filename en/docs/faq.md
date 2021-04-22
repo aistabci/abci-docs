@@ -265,7 +265,7 @@ The data copy is managed by the operating team, so the users do not have to take
 A user group who are using the **Old Area** `/groups[1-2]/gAA50NNN` had been also allocated the **New Area** at `/groups/gAA50NNN`.
 Both the **Old and New Area** are accessible from all the interactive nodes and all the existing computing nodes (The Compute Node (V)). 
 
-For the groups newly created in FY2021, only **New Area** will be allocated, so data migration will not be performed.
+For the groups newly created in FY2021, only **New Area** will be allocated, so it is not a target of data migration. As results, it is not affected by data migration.  
 
 ### Basic Strategy
 
