@@ -251,3 +251,52 @@ Example)
 g0001: g0001.abci.local
 g0002: g0002.abci.local
 ```
+
+## Q. What are the new group area and data migration?
+
+In FY2021, we expanded the storage system. Refer to [Storage Systems](https://docs.abci.ai/en/01/#storage-systems) for details.
+As the storage system is expanded, the configuration of the group area will be changed.
+All the data in the existing group area used in FY2020 are going to be migrated into a new group area in FY2021.
+
+The existing group area (The **Old Area**) will not be accessible from the coming new computing resources (The Compute Node (A)).
+Therefore we need to create a new group area (The **New Area**), which is accessible from the Compute Node (A), and migrate all the data stored in the **Old Area** to the **New Area**.
+The data copy is managed by the operating team, so the users do not have to take care of the copy process.
+
+A user group who are using the **Old Area** `/groups[1-2]/gAA50NNN` had been also allocated the **New Area** at `/groups/gAA50NNN`.
+Both the **Old and New Area** are accessible from all the interactive nodes and all the existing computing nodes (The Compute Node (V)). 
+
+For the groups newly created in FY2021, only **New Area** will be allocated, so it is not a target of data migration. As results, it is not affected by data migration.  
+
+### Basic Strategy
+
+* The ABCI operating team will copy all the files in the **Old Area** to the **New Area** behind the scene. It will take one year to finish the copy process for all the user groups.
+* The users can keep using the **Old Area** during the data migration, we would like to ask the users to use the **New Area** as much as possible in order to reduce the amount of the data to be migrated.
+* When the copying process finishes, the operating team will switch the reference from the **Old Area** to the **New Area** by changing the symbolic link.
+
+### The new area /groups/gAA50NNN
+
+* The files in the **Old Area** will be copied to the **New Area** `/groups/gAA50NNN/migrated_from_SFA_GPFS/`. Note that the users cannot access the copied data under that directory until the migration finishes.
+* The area other than that directory in the **New Area** can be freely used.
+* Disk usage will increase as data is copied. For this reason, the limit of the storage usage for the **New Area** is set to be twice the quota value, which is the group disk quantity value applied in the ABCI User Portal. This is a temporal treatment. After the migration,  the limit of the storage usage is set to the same value as the quota value in the ABCI User Portal, after a grace period.
+
+### The old area /groups[1-2]/gAA50NNN
+
+#### During the data migration
+
+* During the data migration, the users can read, write and delete files in the **Old Area**.
+* In order to reduce the amount of the data to be moved, please do not put new files in the **Old Area** as much as possible.
+* Consider deleting unnecessary files in the **Old Area** as much as possible.
+* As usual, the quota value applied in the ABCI User Portal is set as the the limit of the storage usage of the **Old Area**. As usual, you can increase or decrease the quota value by applying a new quota value in the ABCI User Portal.
+
+#### At the end of the data migration
+
+* At the end of the data migration, there will be a period of several days where you cannot access the **Old area** `/groups[1-2]/gAA50NNN` and the **New area** `/groups/gAA50NNN/migrated_from_SFA_GPFS/`.
+* During that period, you can read, write and delete files in the **New Area**.
+* After the period, the copied data in **New Area** will become available. The reference to the **Old Area** will be redirected to the copied directory.
+
+
+#### After the data migration is completed
+
+* You can access the migrated data in the **New Area** with the same path `/groups[1-2]/gAA50NNN` as before. It is achieved by changing the symbolic link.
+* The files in the **Old Area** are copied to `/groups/gAA50NNN/migrate_from_SFA_GPFS/` in the **New Area**.
+* You cannot access `/groups[1-2]/gAA50NNN` in the **Old Area**.
