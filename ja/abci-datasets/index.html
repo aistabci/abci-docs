@@ -1181,11 +1181,9 @@
 <span class="c1">#AdditionalInfo:</span>
 </code></pre></div>
 
-
 <p>次に、記入したYAMLファイルをABCIクラウドストレージにアップロードします。ABCIクラウドストレージにデータセット本体を保存している場合は同じバケットに、そうでない場合はバケットを作成した上でアップロードして下さい。 <code>my_dataset_info.yaml</code> は違うファイル名でも問題ありません。</p>
-<div class="codehilite"><pre><span></span><code><span class="err">[username@es1 ~]$ aws --endpoint-url https://s3.abci.ai s3 cp --acl public-read my_dataset_info.yaml s3://example-dataset/my_dataset_info.yaml</span>
+<div class="codehilite"><pre><span></span><code><span class="o">[</span><span class="n">username@es1 ~</span><span class="o">]</span><span class="err">$</span><span class="w"> </span><span class="n">aws</span><span class="w"> </span><span class="c1">--endpoint-url https://s3.abci.ai s3 cp --acl public-read my_dataset_info.yaml s3://example-dataset/my_dataset_info.yaml</span>
 </code></pre></div>
-
 
 <p>最後に、<a href="&#109;&#97;&#105;&#108;&#116;&#111;&#58;&#97;&#98;&#99;&#105;&#45;&#97;&#112;&#112;&#108;&#105;&#99;&#97;&#116;&#105;&#111;&#110;&#45;&#109;&#108;&#64;&#97;&#105;&#115;&#116;&#46;&#103;&#111;&#46;&#106;&#112;">&#97;&#98;&#99;&#105;&#45;&#97;&#112;&#112;&#108;&#105;&#99;&#97;&#116;&#105;&#111;&#110;&#45;&#109;&#108;&#64;&#97;&#105;&#115;&#116;&#46;&#103;&#111;&#46;&#106;&#112;</a> に登録申請を行います。以下のフォーマットでご連絡下さい。複数のABCIグループに所属している場合、データセット本体、あるいは記入したYAMLファイルが保存されたバケットを所有しているABCIグループを記載して下さい。</p>
 <div class="codehilite"><pre><span></span><code>Subject: データセットの登録(&lt;データセット名&gt;)
@@ -1195,7 +1193,6 @@ ABCIグループ:
 申請者のメールアドレス: 
 アップロードしたYAMLファイルのURL: 
 </code></pre></div>
-
 
 <p>登録が完了したデータセットは <a href="https://datasets.abci.ai/">https://datasets.abci.ai/</a> に一覧表示されます。</p>
 <h2 id="update">2. 登録情報の更新</h2>

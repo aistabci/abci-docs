@@ -963,6 +963,67 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#q-what-are-the-new-group-area-and-data-migration" class="md-nav__link">
+    Q. グループ領域のデータ移行について知りたい
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    基本的な方針
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#groupsgaa50nnn" class="md-nav__link">
+    新領域/groups/gAA50NNNについて
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#groups1-2gaa50nnn" class="md-nav__link">
+    旧領域/groups[1-2]/gAA50NNNについて
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    データ移行中
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    データ移行完了確認のための期間
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    データ移行完了後
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
       
       
       
@@ -1210,6 +1271,67 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#q-what-are-the-new-group-area-and-data-migration" class="md-nav__link">
+    Q. グループ領域のデータ移行について知りたい
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    基本的な方針
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#groupsgaa50nnn" class="md-nav__link">
+    新領域/groups/gAA50NNNについて
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#groups1-2gaa50nnn" class="md-nav__link">
+    旧領域/groups[1-2]/gAA50NNNについて
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    データ移行中
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    データ移行完了確認のための期間
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    データ移行完了後
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
       
       
       
@@ -1235,7 +1357,6 @@
 <div class="codehilite"><pre><span></span><code>$ stty -ixon
 </code></pre></div>
 
-
 <p>インタラクティブノードにログインした状態で実行しても同等の効果があります。</p>
 <h2 id="q">Q. グループ領域が実サイズ以上に消費されてしまう</h2>
 <p>一般にファイルシステムにはブロックサイズがあり、どんなに小さいファイルであってもブロックサイズ分の容量を消費します。</p>
@@ -1247,7 +1368,6 @@
 <span class="o">[</span>username@es1 ~<span class="o">]</span>$ singularity pull docker://myregistry.azurecr.io/namespace/repo_name:repo_tag
 </code></pre></div>
 
-
 <p>SingularityPRO の認証に関する詳細は、以下をご参照ください。</p>
 <ul>
 <li><a href="https://repo.sylabs.io/c/0f6898986ad0b646b5ce6deba21781ac62cb7e0a86a5153bbb31732ee6593f43/guides/singularitypro37-user-guide/">SingularityPRO 3.7 User Guide</a><ul>
@@ -1257,18 +1377,17 @@
 </ul>
 <h2 id="q-ngc-cli">Q. NGC CLIが実行できない</h2>
 <p>ABCI上で、<a href="https://docs.nvidia.com/ngc/ngc-catalog-cli-user-guide/index.html">NGC Catalog CLI</a>を実行すると、以下のエラーメッセージが出て実行できません。これはNGC CLIがUbuntu 14.04以降用にビルドされているためです。</p>
-<div class="codehilite"><pre><span></span><code><span class="c">ImportError: /lib64/libc.so.6: version `GLIBC_2.18&#39; not found (required by /tmp/_MEIxvHq8h/libstdc++.so.6)</span>
-<span class="err">[89261] Failed to execute script ngc</span>
+<div class="codehilite"><pre><span></span><code>ImportError: /lib64/libc.so.6: version `GLIBC_2.18&#39; not found (required by /tmp/_MEIxvHq8h/libstdc++.so.6)
+[89261] Failed to execute script ngc
 </code></pre></div>
 
-
 <p>以下のようなシェルスクリプトを用意することで、Singularityを使って実行させることができます。NGC CLIに限らず、一般的に使えるテクニックです。</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1
-2
-3
-4
-5
-6</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><code><span class="ch">#!/bin/sh</span>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span>
+<span class="normal">6</span></pre></div></td><td class="code"><div class="codehilite"><pre><span></span><code><span class="ch">#!/bin/sh</span>
 <span class="nb">source</span> /etc/profile.d/modules.sh
 module load singularitypro
 
@@ -1276,26 +1395,23 @@ module load singularitypro
 singularity <span class="nb">exec</span> <span class="nv">$NGC_HOME</span>/ubuntu-18.04.simg <span class="nv">$NGC_HOME</span>/ngc <span class="nv">$@</span>
 </code></pre></div>
 </td></tr></table>
-
 <h2 id="q_1">Q. 複数の計算ノードを割り当て、それぞれの計算ノードで異なる処理をさせたい</h2>
 <p><code>qrsh</code>や<code>qsub</code>で<code>-l rt_F=N</code>オプションを与えると、N個の計算ノードを割り当てることができます。割り当てられた計算ノードでそれぞれ異なる処理をさせたい場合にもMPIが使えます。</p>
-<div class="codehilite"><pre><span></span><code>$ module load openmpi/2.1.6
-$ mpirun -hostfile <span class="nv">$SGE_JOB_HOSTLIST</span> -np <span class="m">1</span> command1 : -np <span class="m">1</span> command2 : ... : -np1 commandN
+<div class="codehilite"><pre><span></span><code><span class="o">$</span> <span class="n">module</span> <span class="nb">load</span> <span class="n">openmpi</span><span class="o">/</span><span class="mf">2.1</span><span class="o">.</span><span class="mi">6</span>
+<span class="o">$</span> <span class="n">mpirun</span> <span class="o">-</span><span class="n">hostfile</span> <span class="o">$</span><span class="n">SGE_JOB_HOSTLIST</span> <span class="o">-</span><span class="n">np</span> <span class="mi">1</span> <span class="n">command1</span> <span class="p">:</span> <span class="o">-</span><span class="n">np</span> <span class="mi">1</span> <span class="n">command2</span> <span class="p">:</span> <span class="o">...</span> <span class="p">:</span> <span class="o">-</span><span class="n">np1</span> <span class="n">commandN</span>
 </code></pre></div>
-
 
 <h2 id="q-ssh">Q. SSHのセッションが閉じられてしまうのを回避したい</h2>
 <p>SSHでABCIに無事接続したしばらく後に、SSHのセッションが閉じられてしまうことがあります。このような場合は、SSHクライアントとサーバ間でKeepAliveの通信をすることで回避できる場合があります。</p>
 <p>KeepAliveを適用するには、利用者の端末でシステムのssh設定ファイル(/etc/ssh/ssh_config)、またはユーザ毎の設定ファイル(~/.ssh/config)に、オプション ServerAliveInterval を60秒程度で設定してください。</p>
-<div class="codehilite"><pre><span></span><code><span class="err">[username@userpc ~]$ vi ~/.ssh/config</span>
-<span class="err">[username@userpc ~]$ cat ~/.ssh/config</span>
-<span class="err">(snip)</span>
-<span class="err">Host as.abci.ai</span>
-<span class="err">   ServerAliveInterval 60</span>
-<span class="err">(snip)</span>
-<span class="err">[username@userpc ~]$</span>
+<div class="codehilite"><pre><span></span><code><span class="o">[</span><span class="n">username@userpc ~</span><span class="o">]</span><span class="err">$</span><span class="w"> </span><span class="n">vi</span><span class="w"> </span><span class="o">~/</span><span class="p">.</span><span class="n">ssh</span><span class="o">/</span><span class="n">config</span><span class="w"></span>
+<span class="o">[</span><span class="n">username@userpc ~</span><span class="o">]</span><span class="err">$</span><span class="w"> </span><span class="n">cat</span><span class="w"> </span><span class="o">~/</span><span class="p">.</span><span class="n">ssh</span><span class="o">/</span><span class="n">config</span><span class="w"></span>
+<span class="p">(</span><span class="n">snip</span><span class="p">)</span><span class="w"></span>
+<span class="k">Host</span><span class="w"> </span><span class="k">as</span><span class="p">.</span><span class="n">abci</span><span class="p">.</span><span class="n">ai</span><span class="w"></span>
+<span class="w">   </span><span class="n">ServerAliveInterval</span><span class="w"> </span><span class="mi">60</span><span class="w"></span>
+<span class="p">(</span><span class="n">snip</span><span class="p">)</span><span class="w"></span>
+<span class="o">[</span><span class="n">username@userpc ~</span><span class="o">]</span><span class="err">$</span><span class="w"></span>
 </code></pre></div>
-
 
 <div class="admonition note">
 <p class="admonition-title">Note</p>
@@ -1305,34 +1421,31 @@ $ mpirun -hostfile <span class="nv">$SGE_JOB_HOSTLIST</span> -np <span class="m"
 <p>ABCIではCUDA対応版Open MPIとCUDA非対応版Open MPIを提供しており、提供の状況は、<a href="../08/#open-mpi">MPIの利用</a>で確認できます。</p>
 <p>ABCIが提供するEnvironment Modulesでは、事前に<code>cuda</code>モジュールがロードされている場合に限り、<code>openmpi</code>モジュールのロード時にCUDA対応版Open MPIの環境設定を試みます。</p>
 <p>したがって、CUDA対応版MPIが提供されている組み合わせ(<code>cuda/10.0/10.0.130.1</code>, <code>openmpi/2.1.6</code>)では環境設定に成功します。</p>
-<div class="codehilite"><pre><span></span><code>$ module load cuda/10.0/10.0.130.1
-$ module load openmpi/2.1.6
-$ module list
-Currently Loaded Modulefiles:
-  <span class="m">1</span><span class="o">)</span> cuda/10.0/10.0.130.1   <span class="m">2</span><span class="o">)</span> openmpi/2.1.6
+<div class="codehilite"><pre><span></span><code><span class="o">$</span> <span class="n">module</span> <span class="nb">load</span> <span class="n">cuda</span><span class="o">/</span><span class="mf">10.0</span><span class="o">/</span><span class="mf">10.0</span><span class="o">.</span><span class="mf">130.1</span>
+<span class="o">$</span> <span class="n">module</span> <span class="nb">load</span> <span class="n">openmpi</span><span class="o">/</span><span class="mf">2.1</span><span class="o">.</span><span class="mi">6</span>
+<span class="o">$</span> <span class="n">module</span> <span class="n">list</span>
+<span class="n">Currently</span> <span class="n">Loaded</span> <span class="n">Modulefiles</span><span class="p">:</span>
+  <span class="mi">1</span><span class="p">)</span> <span class="n">cuda</span><span class="o">/</span><span class="mf">10.0</span><span class="o">/</span><span class="mf">10.0</span><span class="o">.</span><span class="mf">130.1</span>   <span class="mi">2</span><span class="p">)</span> <span class="n">openmpi</span><span class="o">/</span><span class="mf">2.1</span><span class="o">.</span><span class="mi">6</span>
 </code></pre></div>
-
 
 <p>CUDA対応版MPIが提供されていない組み合わせ(<code>cuda/9.1/9.1.85.3</code>, <code>openmpi/3.1.6</code>)では環境設定に失敗し、<code>openmpi</code>モジュールはロードされません。</p>
-<div class="codehilite"><pre><span></span><code>$ module load cuda/9.1/9.1.85.3
-$ module load openmpi/3.1.6
-ERROR: loaded cuda module is not supported.
-WARNING: openmpi/3.1.6 cannot be loaded due to missing prereq.
-HINT: at least one of the following modules must be loaded first: cuda/9.2/9.2.88.1 cuda/9.2/9.2.148.1 cuda/10.0/10.0.130.1 cuda/10.1/10.1.243 cuda/10.2/10.2.89 cuda/11.0/11.0.3 cuda/11.1/11.1.1 cuda/11.2/11.2.2
-$ module list
-Currently Loaded Modulefiles:
-  <span class="m">1</span><span class="o">)</span> cuda/9.1/9.1.85.3
+<div class="codehilite"><pre><span></span><code><span class="o">$</span> <span class="n">module</span> <span class="nb">load</span> <span class="n">cuda</span><span class="o">/</span><span class="mf">9.1</span><span class="o">/</span><span class="mf">9.1</span><span class="o">.</span><span class="mf">85.3</span>
+<span class="o">$</span> <span class="n">module</span> <span class="nb">load</span> <span class="n">openmpi</span><span class="o">/</span><span class="mf">3.1</span><span class="o">.</span><span class="mi">6</span>
+<span class="n">ERROR</span><span class="p">:</span> <span class="n">loaded</span> <span class="n">cuda</span> <span class="n">module</span> <span class="k">is</span> <span class="ow">not</span> <span class="n">supported</span><span class="o">.</span>
+<span class="n">WARNING</span><span class="p">:</span> <span class="n">openmpi</span><span class="o">/</span><span class="mf">3.1</span><span class="o">.</span><span class="mi">6</span> <span class="n">cannot</span> <span class="n">be</span> <span class="n">loaded</span> <span class="n">due</span> <span class="n">to</span> <span class="n">missing</span> <span class="n">prereq</span><span class="o">.</span>
+<span class="n">HINT</span><span class="p">:</span> <span class="n">at</span> <span class="n">least</span> <span class="n">one</span> <span class="n">of</span> <span class="n">the</span> <span class="n">following</span> <span class="n">modules</span> <span class="n">must</span> <span class="n">be</span> <span class="n">loaded</span> <span class="n">first</span><span class="p">:</span> <span class="n">cuda</span><span class="o">/</span><span class="mf">9.2</span><span class="o">/</span><span class="mf">9.2</span><span class="o">.</span><span class="mf">88.1</span> <span class="n">cuda</span><span class="o">/</span><span class="mf">9.2</span><span class="o">/</span><span class="mf">9.2</span><span class="o">.</span><span class="mf">148.1</span> <span class="n">cuda</span><span class="o">/</span><span class="mf">10.0</span><span class="o">/</span><span class="mf">10.0</span><span class="o">.</span><span class="mf">130.1</span> <span class="n">cuda</span><span class="o">/</span><span class="mf">10.1</span><span class="o">/</span><span class="mf">10.1</span><span class="o">.</span><span class="mi">243</span> <span class="n">cuda</span><span class="o">/</span><span class="mf">10.2</span><span class="o">/</span><span class="mf">10.2</span><span class="o">.</span><span class="mi">89</span> <span class="n">cuda</span><span class="o">/</span><span class="mf">11.0</span><span class="o">/</span><span class="mf">11.0</span><span class="o">.</span><span class="mi">3</span> <span class="n">cuda</span><span class="o">/</span><span class="mf">11.1</span><span class="o">/</span><span class="mf">11.1</span><span class="o">.</span><span class="mi">1</span> <span class="n">cuda</span><span class="o">/</span><span class="mf">11.2</span><span class="o">/</span><span class="mf">11.2</span><span class="o">.</span><span class="mi">2</span>
+<span class="o">$</span> <span class="n">module</span> <span class="n">list</span>
+<span class="n">Currently</span> <span class="n">Loaded</span> <span class="n">Modulefiles</span><span class="p">:</span>
+  <span class="mi">1</span><span class="p">)</span> <span class="n">cuda</span><span class="o">/</span><span class="mf">9.1</span><span class="o">/</span><span class="mf">9.1</span><span class="o">.</span><span class="mf">85.3</span>
 </code></pre></div>
-
 
 <p>一方、Horovodによる並列化のためにOpen MPIが使いたいなど、Open MPIのCUDA版機能が不要な場合もあります。この場合は、先に<code>openmpi</code>モジュールをロードすることで、より新しいバージョンのCUDA非対応版Open MPIを利用できます。</p>
-<div class="codehilite"><pre><span></span><code>$ module load openmpi/3.1.6
-$ module load cuda/9.1/9.1.85.3
-module list
-Currently Loaded Modulefiles:
-  <span class="m">1</span><span class="o">)</span> openmpi/3.1.6       <span class="m">2</span><span class="o">)</span> cuda/9.1/9.1.85.3
+<div class="codehilite"><pre><span></span><code><span class="o">$</span> <span class="n">module</span> <span class="nb">load</span> <span class="n">openmpi</span><span class="o">/</span><span class="mf">3.1</span><span class="o">.</span><span class="mi">6</span>
+<span class="o">$</span> <span class="n">module</span> <span class="nb">load</span> <span class="n">cuda</span><span class="o">/</span><span class="mf">9.1</span><span class="o">/</span><span class="mf">9.1</span><span class="o">.</span><span class="mf">85.3</span>
+<span class="n">module</span> <span class="n">list</span>
+<span class="n">Currently</span> <span class="n">Loaded</span> <span class="n">Modulefiles</span><span class="p">:</span>
+  <span class="mi">1</span><span class="p">)</span> <span class="n">openmpi</span><span class="o">/</span><span class="mf">3.1</span><span class="o">.</span><span class="mi">6</span>       <span class="mi">2</span><span class="p">)</span> <span class="n">cuda</span><span class="o">/</span><span class="mf">9.1</span><span class="o">/</span><span class="mf">9.1</span><span class="o">.</span><span class="mf">85.3</span>
 </code></pre></div>
-
 
 <div class="admonition note">
 <p class="admonition-title">Note</p>
@@ -1350,11 +1463,9 @@ ABCIシステム利用環境の<a href="../02/#general-method">SSHクライア�
     ProxyCommand ssh -W %h:%p -l username -i /path/identity_file as.abci.ai
 </code></pre></div>
 
-
 <p>ローカルPCの3000番ポートをvws1サーバの3000/tcpポートに転送するSSHトンネルを作成します。</p>
 <div class="codehilite"><pre><span></span><code><span class="o">[</span>username@userpc ~<span class="o">]</span>$ ssh -L <span class="m">3000</span>:vws1:3000 es.abci.local
 </code></pre></div>
-
 
 <p>ブラウザで<code>http://localhost:3000/</code>にアクセスします。</p>
 <div class="admonition note">
@@ -1374,37 +1485,32 @@ ABCIシステム利用環境の<a href="../02/#general-method">SSHクライア�
 <span class="n">FATAL</span><span class="o">:</span>   <span class="n">While</span> <span class="n">making</span> <span class="n">image</span> <span class="n">from</span> <span class="n">oci</span> <span class="n">registry</span><span class="o">:</span> <span class="k">while</span> <span class="n">building</span> <span class="n">SIF</span> <span class="n">from</span> <span class="n">layers</span><span class="o">:</span> <span class="n">unable</span> <span class="n">to</span> <span class="n">create</span> <span class="k">new</span> <span class="n">build</span><span class="o">:</span> <span class="k">while</span> <span class="n">searching</span> <span class="k">for</span> <span class="n">mksquashfs</span><span class="o">:</span> <span class="n">exec</span><span class="o">:</span> <span class="s2">&quot;mksquashfs&quot;</span><span class="o">:</span> <span class="n">executable</span> <span class="n">file</span> <span class="n">not</span> <span class="n">found</span> <span class="k">in</span> <span class="n">$PATH</span>
 </code></pre></div>
 
-
 <p>これは、以下のように、<code>/usr/sbin</code> にパスを通すことで回避できます。 </p>
 <p>実行例）</p>
-<div class="codehilite"><pre><span></span><code><span class="err">[username@g0001 ~]$ export PATH=&quot;$PATH:/usr/sbin&quot;</span>
-<span class="err">[username@g0001 ~]$ module load singularitypro</span>
-<span class="err">[username@g0001 ~]$ singularity run --nv docker://caffe2ai/caffe2:latest</span>
+<div class="codehilite"><pre><span></span><code><span class="p">[</span><span class="n">username</span><span class="err">@</span><span class="n">g0001</span> <span class="o">~</span><span class="p">]</span><span class="o">$</span> <span class="k">export</span> <span class="n">PATH</span><span class="o">=</span><span class="s2">&quot;$PATH:/usr/sbin&quot;</span>
+<span class="p">[</span><span class="n">username</span><span class="err">@</span><span class="n">g0001</span> <span class="o">~</span><span class="p">]</span><span class="o">$</span> <span class="n">module</span> <span class="nb">load</span> <span class="n">singularitypro</span>
+<span class="p">[</span><span class="n">username</span><span class="err">@</span><span class="n">g0001</span> <span class="o">~</span><span class="p">]</span><span class="o">$</span> <span class="n">singularity</span> <span class="n">run</span> <span class="o">--</span><span class="n">nv</span> <span class="n">docker</span><span class="p">:</span><span class="o">//</span><span class="n">caffe2ai</span><span class="o">/</span><span class="n">caffe2</span><span class="p">:</span><span class="n">latest</span>
 </code></pre></div>
-
 
 <h2 id="q-how-can-i-find-the-job-id">Q. ジョブ ID を調べるには？</h2>
 <p><code>qsub</code> コマンドを使ってバッチジョブを投入した場合は、コマンドがジョブ ID を出力しています。</p>
-<div class="codehilite"><pre><span></span><code><span class="err">[username@es1 ~]$ qsub -g grpname test.sh</span>
-<span class="err">Your job 1000001 (&quot;test.sh&quot;) has been submitted</span>
+<div class="codehilite"><pre><span></span><code><span class="o">[</span><span class="n">username@es1 ~</span><span class="o">]</span><span class="err">$</span><span class="w"> </span><span class="n">qsub</span><span class="w"> </span><span class="o">-</span><span class="n">g</span><span class="w"> </span><span class="n">grpname</span><span class="w"> </span><span class="n">test</span><span class="p">.</span><span class="n">sh</span><span class="w"></span>
+<span class="n">Your</span><span class="w"> </span><span class="n">job</span><span class="w"> </span><span class="mi">1000001</span><span class="w"> </span><span class="p">(</span><span class="ss">&quot;test.sh&quot;</span><span class="p">)</span><span class="w"> </span><span class="n">has</span><span class="w"> </span><span class="n">been</span><span class="w"> </span><span class="n">submitted</span><span class="w"></span>
 </code></pre></div>
-
 
 <p><code>qrsh</code> を使っている場合は、環境変数 JOB_ID の値を見ることで確認できます。この変数は、qsub (バッチジョブ) の場合でも利用可能です。</p>
-<div class="codehilite"><pre><span></span><code><span class="err">[username@es1 ~]$ qrsh -g grpname -l rt_C.small=1 -l h_rt=1:00:00</span>
-<span class="err">[username@g0001 ~]$ echo $JOB_ID</span>
-<span class="err">1000002</span>
-<span class="err">[username@g0001 ~]$</span>
+<div class="codehilite"><pre><span></span><code><span class="o">[</span><span class="n">username@es1 ~</span><span class="o">]</span><span class="err">$</span><span class="w"> </span><span class="n">qrsh</span><span class="w"> </span><span class="o">-</span><span class="n">g</span><span class="w"> </span><span class="n">grpname</span><span class="w"> </span><span class="o">-</span><span class="n">l</span><span class="w"> </span><span class="n">rt_C</span><span class="p">.</span><span class="n">small</span><span class="o">=</span><span class="mi">1</span><span class="w"> </span><span class="o">-</span><span class="n">l</span><span class="w"> </span><span class="n">h_rt</span><span class="o">=</span><span class="mi">1</span><span class="err">:</span><span class="mi">00</span><span class="err">:</span><span class="mi">00</span><span class="w"></span>
+<span class="o">[</span><span class="n">username@g0001 ~</span><span class="o">]</span><span class="err">$</span><span class="w"> </span><span class="n">echo</span><span class="w"> </span><span class="err">$</span><span class="n">JOB_ID</span><span class="w"></span>
+<span class="mi">1000002</span><span class="w"></span>
+<span class="o">[</span><span class="n">username@g0001 ~</span><span class="o">]</span><span class="err">$</span><span class="w"></span>
 </code></pre></div>
-
 
 <p>すでに投入済みのジョブに付与されているジョブ ID を確認するには、<code>qstat</code> コマンドを使ってください。</p>
-<div class="codehilite"><pre><span></span><code><span class="err">[username@es1 ~]$ qstat</span>
-<span class="err">job-ID     prior   name       user         state submit/start at     queue                          jclass                         slots ja-task-ID</span>
-<span class="err">------------------------------------------------------------------------------------------------------------------------------------------------</span>
-<span class="err">   1000003 0.00000 test.sh username   qw    08/01/2020 13:05:30</span>
+<div class="codehilite"><pre><span></span><code><span class="k">[</span><span class="c">username@es1 ~</span><span class="k">]</span><span class="c">$ qstat</span>
+<span class="c">job</span><span class="nb">-</span><span class="c">ID     prior   name       user         state submit/start at     queue                          jclass                         slots ja</span><span class="nb">-</span><span class="c">task</span><span class="nb">-</span><span class="c">ID</span>
+<span class="nb">------------------------------------------------------------------------------------------------------------------------------------------------</span><span class="c"></span>
+<span class="c">   1000003 0</span><span class="nt">.</span><span class="c">00000 test</span><span class="nt">.</span><span class="c">sh username   qw    08/01/2020 13:05:30</span>
 </code></pre></div>
-
 
 <p>対象のジョブがすでに完了している場合は、<code>qacct -j</code> を使ってジョブ ID を調べます。<code>-b</code> や <code>-e</code> オプションが、対象範囲を限定するために役に立ちます。qacct(1) man ページ (インタラクティブノードで <code>man qacct</code>) で使い方を確認できます。下記の例は、完了したジョブのうち、2020年 9月 1日 以降に開始されていたものを出力しています。<code>jobnumber</code> がジョブ ID です。</p>
 <div class="codehilite"><pre><span></span><code><span class="o">[</span><span class="n">username@es1 ~</span><span class="o">]</span><span class="err">$</span><span class="w"> </span><span class="n">qacct</span><span class="w"> </span><span class="o">-</span><span class="n">j</span><span class="w"> </span><span class="o">-</span><span class="n">b</span><span class="w"> </span><span class="mi">202009010000</span><span class="w"></span>
@@ -1447,16 +1553,57 @@ ABCIシステム利用環境の<a href="../02/#general-method">SSHクライア�
 <span class="err">:</span><span class="w"></span>
 </code></pre></div>
 
-
 <h2 id="q_4">Q. 割り当てられた全計算ノードでコマンドを並列に実行したい</h2>
 <p>ABCIでは、割り当てられた全計算ノードで並列にLinuxコマンドを実行する<code>ugedsh</code>コマンドを用意しています。
 <code>ugedsh</code>コマンドの引数で指定したコマンドは、各ノードで1回ずつ実行されます。</p>
 <p>実行例) </p>
-<div class="codehilite"><pre><span></span><code><span class="err">[username@es1 ~]$ qrsh -g grpname -l rt_F=2</span>
-<span class="err">[username@g0001 ~]$ ugedsh hostname</span>
-<span class="c">g0001: g0001.abci.local</span>
-<span class="c">g0002: g0002.abci.local</span>
+<div class="codehilite"><pre><span></span><code><span class="o">[</span><span class="n">username@es1 ~</span><span class="o">]</span><span class="err">$</span><span class="w"> </span><span class="n">qrsh</span><span class="w"> </span><span class="o">-</span><span class="n">g</span><span class="w"> </span><span class="n">grpname</span><span class="w"> </span><span class="o">-</span><span class="n">l</span><span class="w"> </span><span class="n">rt_F</span><span class="o">=</span><span class="mi">2</span><span class="w"></span>
+<span class="o">[</span><span class="n">username@g0001 ~</span><span class="o">]</span><span class="err">$</span><span class="w"> </span><span class="n">ugedsh</span><span class="w"> </span><span class="n">hostname</span><span class="w"></span>
+<span class="nl">g0001</span><span class="p">:</span><span class="w"> </span><span class="n">g0001</span><span class="p">.</span><span class="n">abci</span><span class="p">.</span><span class="k">local</span><span class="w"></span>
+<span class="nl">g0002</span><span class="p">:</span><span class="w"> </span><span class="n">g0002</span><span class="p">.</span><span class="n">abci</span><span class="p">.</span><span class="k">local</span><span class="w"></span>
 </code></pre></div>
+
+<h2 id="q-what-are-the-new-group-area-and-data-migration">Q. グループ領域のデータ移行について知りたい</h2>
+<p>2021年度に、ストレージシステムの増強を行いました。詳細は<a href="https://docs.abci.ai/ja/01/#storage-systems">ストレージシステム</a>を参照ください。
+ストレージシステムの増強に伴い、グループ領域の構成変更を行います。具体的には、2020年度まで使用していたグループ領域から新しいグループ領域へのデータ移行を行います。</p>
+<p>2020年度まで使用していたグループ領域(以降、<strong>旧領域</strong>)は、新規増設予定の計算資源(計算ノード(A))からアクセスできません。
+このため、新たに計算ノード(A)からアクセス可能なグループ領域(以降、<strong>新領域</strong>)を作成し、そちらへの移行を行います。
+データの移行は運用側で行いますので、利用者が作業をする必要はありません。</p>
+<p>2020年度まで<strong>旧領域</strong><code>/groups[1-2]/gAA50NNN</code>を使用していた利用者には、4月から新しく<strong>新領域</strong><code>/groups/gAA50NNN</code>を割り当てています。
+<strong>旧領域、新領域</strong>ともにすべてのインタラクティブノードとすべての既存の計算ノード(計算ノード(V))からアクセス可能です。</p>
+<p>なお、2021年度に新規に作成されたABCIグループについては、<strong>新領域</strong>のみが割り当てられるためデータ移行の対象ではなく、データ移行の影響を受けません。</p>
+<p>次にデータ移行について説明します。</p>
+<h3 id="_1">基本的な方針</h3>
+<ul>
+<li>旧領域のデータを新領域に運用側がバックグラウンドでコピーします。全利用者データのコピー完了までには1年間かかる予定です。</li>
+<li>利用者は、コピー中も旧領域をそのまま使えますが、可能な限り新領域を利用してください。</li>
+<li>コピー完了後、シンボリックリンクの切り替えによって旧領域への参照を新領域への参照に書き換えます。</li>
+</ul>
+<h3 id="groupsgaa50nnn">新領域/groups/gAA50NNNについて</h3>
+<ul>
+<li>旧領域のデータを新領域の<code>/groups/gAA50NNN/migrated_from_SFA_GPFS/</code>にコピーします。ただし、データ移行完了までは利用者が新領域のこのディレクトリにアクセスすることはできません。</li>
+<li>新領域のこのディレクトリ以外は自由に使用できます。</li>
+<li>データコピーにともないディスク使用量が増加します。このため、移行期間中は、利用者ポータルで申請したグループディスク量(以降、クォータ値)の2倍の値を、新領域のディスク使用量上限値に設定します。移行完了後、一定の猶予期間を設けて、新領域のディスク使用量上限値を、クォータ値と同じ値に設定します。</li>
+</ul>
+<h3 id="groups1-2gaa50nnn">旧領域/groups[1-2]/gAA50NNNについて</h3>
+<h4 id="_2">データ移行中</h4>
+<ul>
+<li>データ移行中は、利用者は自由に旧領域に読み込み/書き込み/ファイルの削除が可能です。</li>
+<li>ただし、データ移行のコストが増大するため、可能な限り新領域を利用してください。</li>
+<li>また、データ移行コスト削減のため、可能なかぎり不要なファイルは削除してください。</li>
+<li>従来どおり、利用者ポータルで申請したグループディスク量(クォータ値)が、旧領域のディスク使用量上限値として設定されています。従来通り、利用者ポータルからクォータ値の増減を申請可能です。</li>
+</ul>
+<h4 id="_3">データ移行完了確認のための期間</h4>
+<ul>
+<li>データ移行後、データ移行完了の確認のために、旧領域に置かれていたデータが、旧領域としても新領域としても参照できない期間が数日発生する予定です。</li>
+<li>この期間、利用者は自由に新領域に読み込み/書き込み/ファイルの削除が可能です。</li>
+</ul>
+<h4 id="_4">データ移行完了後</h4>
+<ul>
+<li>旧領域に置かれていたデータは、従来と同じパス<code>/groups[1-2]/gAA50NNN</code>でアクセス可能になります。</li>
+<li>このパス<code>/groups[1-2]/gAA50NNN</code>は、新領域の<code>/groups/gAA50NNN/migrated_from_SFA_GPFS/</code>へのシンボリックリンクで実現されます。</li>
+<li>データ移行完了後、旧領域上の<code>/groups[1-2]/gAA50NNN</code>にはアクセスできなくなります。</li>
+</ul>
                 
                   
                 

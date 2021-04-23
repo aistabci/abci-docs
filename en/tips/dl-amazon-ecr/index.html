@@ -1073,20 +1073,17 @@
 <p class="admonition-title">Note</p>
 <p>This procedure assumes that you have completed <a href="/tips/awscli/#register-access-token" target="aws_cli">Register access token</a> in <a href="/tips/awscli/" target="aws_cli">AWS CLI</a>.</p>
 </div>
-<div class="codehilite"><pre><span></span><code><span class="err">[username@es1 ~]$ module load singularitypro aws-cli</span>
+<div class="codehilite"><pre><span></span><code><span class="p">[</span><span class="n">username</span><span class="err">@</span><span class="n">es1</span> <span class="o">~</span><span class="p">]</span><span class="o">$</span> <span class="n">module</span> <span class="nb">load</span> <span class="n">singularitypro</span> <span class="n">aws</span><span class="o">-</span><span class="n">cli</span>
 </code></pre></div>
-
 
 <p>Set AWS authentication information in environment variable.</p>
 <div class="codehilite"><pre><span></span><code>$ <span class="nb">export</span> <span class="nv">SINGULARITY_DOCKER_USERNAME</span><span class="o">=</span>AWS
 $ <span class="nb">export</span> <span class="nv">SINGULARITY_DOCKER_PASSWORD</span><span class="o">=</span><span class="sb">`</span>aws ecr get-login-password<span class="sb">`</span>
 </code></pre></div>
 
-
 <p>Set URL of repository in shell variable.</p>
-<div class="codehilite"><pre><span></span><code><span class="err">[username@es1 ~]$ repositoryUrl=`aws ecr describe-repositories --repository-names TEST/SAMPLE | jq -r &#39;.repositories[0].repositoryUri&#39;`</span>
+<div class="codehilite"><pre><span></span><code><span class="o">[</span><span class="n">username@es1 ~</span><span class="o">]</span><span class="err">$</span><span class="w"> </span><span class="n">repositoryUrl</span><span class="o">=</span><span class="err">`</span><span class="n">aws</span><span class="w"> </span><span class="n">ecr</span><span class="w"> </span><span class="k">describe</span><span class="o">-</span><span class="n">repositories</span><span class="w"> </span><span class="c1">--repository-names TEST/SAMPLE | jq -r &#39;.repositories[0].repositoryUri&#39;`</span>
 </code></pre></div>
-
 
 <p>Get container image.</p>
 <div class="codehilite"><pre><span></span><code>[username@es1 ~]$ singularity pull docker://<span class="cp">${</span><span class="n">repositoryUrl</span><span class="cp">}</span>

@@ -1054,36 +1054,31 @@ If you are running a job that uses multiple nodes, you will be able to login to 
 ...
 </code></pre></div>
 
-
 <p>When the job starts running, check the compute nodes assigned with the <code>qstat</code> command.</p>
-<div class="codehilite"><pre><span></span><code><span class="err">[username@es1 ~]$ qstat -j 12345 | grep exec_host_list</span>
-<span class="err">exec_host_list        1:    g0001:80, g0002:80</span>
+<div class="codehilite"><pre><span></span><code><span class="o">[</span><span class="n">username@es1 ~</span><span class="o">]</span><span class="err">$</span><span class="w"> </span><span class="n">qstat</span><span class="w"> </span><span class="o">-</span><span class="n">j</span><span class="w"> </span><span class="mi">12345</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="n">grep</span><span class="w"> </span><span class="n">exec_host_list</span><span class="w"></span>
+<span class="n">exec_host_list</span><span class="w">        </span><span class="mi">1</span><span class="err">:</span><span class="w">    </span><span class="nl">g0001</span><span class="p">:</span><span class="mi">80</span><span class="p">,</span><span class="w"> </span><span class="nl">g0002</span><span class="p">:</span><span class="mi">80</span><span class="w"></span>
 </code></pre></div>
-
 
 <p>As mentioned above, it was confirmed that <code>g0001</code> and<code>g0002</code> were assigned.</p>
 <p>Next, login from the interactive node to the compute node (<code>es1</code> -&gt; <code>g0001</code>) using the port number specified in the option.</p>
-<div class="codehilite"><pre><span></span><code><span class="err">[username@es1 ~]$ ssh -p 2299 g0001</span>
-<span class="err">[username@g0001 ~]$ </span>
+<div class="codehilite"><pre><span></span><code><span class="o">[</span><span class="n">username@es1 ~</span><span class="o">]</span><span class="err">$</span><span class="w"> </span><span class="n">ssh</span><span class="w"> </span><span class="o">-</span><span class="n">p</span><span class="w"> </span><span class="mi">2299</span><span class="w"> </span><span class="n">g0001</span><span class="w"></span>
+<span class="o">[</span><span class="n">username@g0001 ~</span><span class="o">]</span><span class="err">$</span><span class="w"> </span>
 </code></pre></div>
-
 
 <p>And, you are also able to login to each other between compute nodes (<code>g0001</code> -&gt; <code>g0002</code>).</p>
-<div class="codehilite"><pre><span></span><code><span class="err">[username@g0001 ~]$ ssh -p 2299 g0002</span>
-<span class="err">[username@g0002 ~]$</span>
+<div class="codehilite"><pre><span></span><code><span class="o">[</span><span class="n">username@g0001 ~</span><span class="o">]</span><span class="err">$</span><span class="w"> </span><span class="n">ssh</span><span class="w"> </span><span class="o">-</span><span class="n">p</span><span class="w"> </span><span class="mi">2299</span><span class="w"> </span><span class="n">g0002</span><span class="w"></span>
+<span class="o">[</span><span class="n">username@g0002 ~</span><span class="o">]</span><span class="err">$</span><span class="w"></span>
 </code></pre></div>
-
 
 <p><code>qrsh</code> command can also be executed with <code>-l USE_SSH=1</code> option.</p>
-<div class="codehilite"><pre><span></span><code><span class="err">[username@es1 ~]$ qrsh -g grpname -l rt_F=1 -l USE_SSH=1 -v SSH_PORT=2299</span>
-<span class="err">[username@g0001 ~]$ hostname -s</span>
-<span class="err">g0001</span>
+<div class="codehilite"><pre><span></span><code><span class="o">[</span><span class="n">username@es1 ~</span><span class="o">]</span><span class="err">$</span><span class="w"> </span><span class="n">qrsh</span><span class="w"> </span><span class="o">-</span><span class="n">g</span><span class="w"> </span><span class="n">grpname</span><span class="w"> </span><span class="o">-</span><span class="n">l</span><span class="w"> </span><span class="n">rt_F</span><span class="o">=</span><span class="mi">1</span><span class="w"> </span><span class="o">-</span><span class="n">l</span><span class="w"> </span><span class="n">USE_SSH</span><span class="o">=</span><span class="mi">1</span><span class="w"> </span><span class="o">-</span><span class="n">v</span><span class="w"> </span><span class="n">SSH_PORT</span><span class="o">=</span><span class="mi">2299</span><span class="w"></span>
+<span class="o">[</span><span class="n">username@g0001 ~</span><span class="o">]</span><span class="err">$</span><span class="w"> </span><span class="n">hostname</span><span class="w"> </span><span class="o">-</span><span class="n">s</span><span class="w"></span>
+<span class="n">g0001</span><span class="w"></span>
 </code></pre></div>
 
-
 <p>Next, login the interactive node to the compute node with using another terminal.</p>
-<div class="codehilite"><pre><span></span><code><span class="err">[username@es1 ~]$ ssh -p 2299 g0001</span>
-<span class="err">[username@g0001 ~]$ </span>
+<div class="codehilite"><pre><span></span><code><span class="o">[</span><span class="n">username@es1 ~</span><span class="o">]</span><span class="err">$</span><span class="w"> </span><span class="n">ssh</span><span class="w"> </span><span class="o">-</span><span class="n">p</span><span class="w"> </span><span class="mi">2299</span><span class="w"> </span><span class="n">g0001</span><span class="w"></span>
+<span class="o">[</span><span class="n">username@g0001 ~</span><span class="o">]</span><span class="err">$</span><span class="w"> </span>
 </code></pre></div>
                 
                   

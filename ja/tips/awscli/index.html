@@ -1128,9 +1128,8 @@
 <p>ABCIからAWSを利用するためには、利用者ごとにAWSコマンドラインインターフェイス（以下、awscli）をインストールする必要があります。ここでは、awscliのインストールと各種利用方法を記載します。</p>
 <h2 id="awsawscli">AWSコマンドラインインターフェイス(awscli)のインストール</h2>
 <p>pipでインストールします。</p>
-<div class="codehilite"><pre><span></span><code><span class="err">[username@es1 testdir]$ pip install awscli</span>
+<div class="codehilite"><pre><span></span><code><span class="o">[</span><span class="n">username@es1 testdir</span><span class="o">]</span><span class="err">$</span><span class="w"> </span><span class="n">pip</span><span class="w"> </span><span class="n">install</span><span class="w"> </span><span class="n">awscli</span><span class="w"></span>
 </code></pre></div>
-
 
 <h2 id="_2">アクセストークンの登録</h2>
 <p>入手済みのAWSアクセスキーを登録します。</p>
@@ -1141,34 +1140,30 @@
 <span class="k">Default</span><span class="w"> </span><span class="k">output</span><span class="w"> </span><span class="nf">format</span><span class="w"> </span><span class="o">[</span><span class="n">None</span><span class="o">]</span><span class="err">:</span><span class="w"></span>
 </code></pre></div>
 
-
 <h2 id="_3">各種操作例</h2>
 <p>ここでは、awscli の各種操作方法を説明します。</p>
 <ul>
 <li>バケットの作成</li>
 </ul>
-<div class="codehilite"><pre><span></span><code><span class="err">[username@es1 testdir]$ aws s3 mb s3://abci-access-test</span>
-<span class="c">make_bucket: abci-access-test</span>
+<div class="codehilite"><pre><span></span><code><span class="o">[</span><span class="n">username@es1 testdir</span><span class="o">]</span><span class="err">$</span><span class="w"> </span><span class="n">aws</span><span class="w"> </span><span class="n">s3</span><span class="w"> </span><span class="n">mb</span><span class="w"> </span><span class="nl">s3</span><span class="p">:</span><span class="o">//</span><span class="n">abci</span><span class="o">-</span><span class="n">access</span><span class="o">-</span><span class="n">test</span><span class="w"></span>
+<span class="nl">make_bucket</span><span class="p">:</span><span class="w"> </span><span class="n">abci</span><span class="o">-</span><span class="n">access</span><span class="o">-</span><span class="n">test</span><span class="w"></span>
 </code></pre></div>
-
 
 <ul>
 <li>ローカルのファイルをバケットに保存</li>
 </ul>
-<div class="codehilite"><pre><span></span><code><span class="err">[username@es1 testdir]$ ls -la 1gb.dat </span>
-<span class="err">-rw-r--r-- 1 username grpname 1073741824 Nov  7 11:27 1gb.dat</span>
-<span class="err">[username@es1 testdir]$ aws s3 cp 1gb.dat s3://abci-access-test</span>
-<span class="c">upload: ./1gb.dat to s3://abci-access-test/1gb.dat</span>
+<div class="codehilite"><pre><span></span><code><span class="p">[</span><span class="n">username</span><span class="err">@</span><span class="n">es1</span> <span class="n">testdir</span><span class="p">]</span><span class="o">$</span> <span class="n">ls</span> <span class="o">-</span><span class="n">la</span> <span class="mi">1</span><span class="n">gb</span><span class="o">.</span><span class="n">dat</span> 
+<span class="o">-</span><span class="n">rw</span><span class="o">-</span><span class="n">r</span><span class="o">--</span><span class="n">r</span><span class="o">--</span> <span class="mi">1</span> <span class="n">username</span> <span class="n">grpname</span> <span class="mi">1073741824</span> <span class="n">Nov</span>  <span class="mi">7</span> <span class="mi">11</span><span class="p">:</span><span class="mi">27</span> <span class="mi">1</span><span class="n">gb</span><span class="o">.</span><span class="n">dat</span>
+<span class="p">[</span><span class="n">username</span><span class="err">@</span><span class="n">es1</span> <span class="n">testdir</span><span class="p">]</span><span class="o">$</span> <span class="n">aws</span> <span class="n">s3</span> <span class="n">cp</span> <span class="mi">1</span><span class="n">gb</span><span class="o">.</span><span class="n">dat</span> <span class="n">s3</span><span class="p">:</span><span class="o">//</span><span class="n">abci</span><span class="o">-</span><span class="n">access</span><span class="o">-</span><span class="n">test</span>
+<span class="n">upload</span><span class="p">:</span> <span class="o">./</span><span class="mi">1</span><span class="n">gb</span><span class="o">.</span><span class="n">dat</span> <span class="n">to</span> <span class="n">s3</span><span class="p">:</span><span class="o">//</span><span class="n">abci</span><span class="o">-</span><span class="n">access</span><span class="o">-</span><span class="n">test</span><span class="o">/</span><span class="mi">1</span><span class="n">gb</span><span class="o">.</span><span class="n">dat</span>
 </code></pre></div>
-
 
 <ul>
 <li>バケット内のファイルを表示(ls) </li>
 </ul>
-<div class="codehilite"><pre><span></span><code><span class="err">[username@es1 testdir]$ aws s3 ls s3://abci-access-test </span>
-<span class="err">2018-11-09 10:13:56 1073741824 1gb.dat</span>
+<div class="codehilite"><pre><span></span><code><span class="o">[</span><span class="n">username@es1 testdir</span><span class="o">]</span><span class="err">$</span><span class="w"> </span><span class="n">aws</span><span class="w"> </span><span class="n">s3</span><span class="w"> </span><span class="n">ls</span><span class="w"> </span><span class="nl">s3</span><span class="p">:</span><span class="o">//</span><span class="n">abci</span><span class="o">-</span><span class="n">access</span><span class="o">-</span><span class="n">test</span><span class="w"> </span>
+<span class="mi">2018</span><span class="o">-</span><span class="mi">11</span><span class="o">-</span><span class="mi">09</span><span class="w"> </span><span class="mi">10</span><span class="err">:</span><span class="mi">13</span><span class="err">:</span><span class="mi">56</span><span class="w"> </span><span class="mi">1073741824</span><span class="w"> </span><span class="mi">1</span><span class="n">gb</span><span class="p">.</span><span class="n">dat</span><span class="w"></span>
 </code></pre></div>
-
 
 <ul>
 <li>バケット内のファイルを削除(rm)</li>
@@ -1178,62 +1173,57 @@
 <span class="o">[</span><span class="n">username@es1 testdir</span><span class="o">]</span><span class="err">$</span><span class="w"> </span><span class="n">ls</span><span class="w"> </span><span class="o">-</span><span class="n">l</span><span class="w"> </span><span class="n">dir</span><span class="o">-</span><span class="n">test</span><span class="o">/</span><span class="w"></span>
 <span class="n">total</span><span class="w"> </span><span class="mi">2097152</span><span class="w"></span>
 
-<span class="o">-</span><span class="n">rw</span><span class="o">-</span><span class="n">r</span><span class="c1">--r-- 1 username grpname   1073741824 Nov  9 10:16 1gb.dat.1</span>
+<span class="o">-</span><span class="n">rw</span><span class="o">-</span><span class="n">r</span><span class="o">--</span><span class="n">r</span><span class="o">--</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="n">username</span><span class="w"> </span><span class="n">grpname</span><span class="w">   </span><span class="mi">1073741824</span><span class="w"> </span><span class="n">Nov</span><span class="w">  </span><span class="mi">9</span><span class="w"> </span><span class="mi">10</span><span class="err">:</span><span class="mi">16</span><span class="w"> </span><span class="mi">1</span><span class="n">gb</span><span class="p">.</span><span class="n">dat</span><span class="mf">.1</span><span class="w"></span>
 <span class="o">-</span><span class="n">rw</span><span class="o">-</span><span class="n">r</span><span class="c1">--r-- 1 username grpname   1073741824 Nov  9 10:17 1gb.dat.2</span>
 </code></pre></div>
-
 
 <ul>
 <li>ディレクトリを含むファイルごとバケットにアップロード(sync)</li>
 </ul>
-<div class="codehilite"><pre><span></span><code><span class="err">[username@es1 testdir]$ aws s3 sync dir-test s3://abci-access-test/dir-test</span>
-<span class="c">upload: dir-test/1gb.dat.2 to s3://abci-access-test/dir-test/1gb.dat.2</span>
-<span class="c">upload: dir-test/1gb.dat.1 to s3://abci-access-test/dir-test/1gb.dat.1</span>
+<div class="codehilite"><pre><span></span><code><span class="p">[</span><span class="n">username</span><span class="err">@</span><span class="n">es1</span> <span class="n">testdir</span><span class="p">]</span><span class="o">$</span> <span class="n">aws</span> <span class="n">s3</span> <span class="n">sync</span> <span class="n">dir</span><span class="o">-</span><span class="n">test</span> <span class="n">s3</span><span class="p">:</span><span class="o">//</span><span class="n">abci</span><span class="o">-</span><span class="n">access</span><span class="o">-</span><span class="n">test</span><span class="o">/</span><span class="n">dir</span><span class="o">-</span><span class="n">test</span>
+<span class="n">upload</span><span class="p">:</span> <span class="n">dir</span><span class="o">-</span><span class="n">test</span><span class="o">/</span><span class="mi">1</span><span class="n">gb</span><span class="o">.</span><span class="n">dat</span><span class="o">.</span><span class="mi">2</span> <span class="n">to</span> <span class="n">s3</span><span class="p">:</span><span class="o">//</span><span class="n">abci</span><span class="o">-</span><span class="n">access</span><span class="o">-</span><span class="n">test</span><span class="o">/</span><span class="n">dir</span><span class="o">-</span><span class="n">test</span><span class="o">/</span><span class="mi">1</span><span class="n">gb</span><span class="o">.</span><span class="n">dat</span><span class="o">.</span><span class="mi">2</span>
+<span class="n">upload</span><span class="p">:</span> <span class="n">dir</span><span class="o">-</span><span class="n">test</span><span class="o">/</span><span class="mi">1</span><span class="n">gb</span><span class="o">.</span><span class="n">dat</span><span class="o">.</span><span class="mi">1</span> <span class="n">to</span> <span class="n">s3</span><span class="p">:</span><span class="o">//</span><span class="n">abci</span><span class="o">-</span><span class="n">access</span><span class="o">-</span><span class="n">test</span><span class="o">/</span><span class="n">dir</span><span class="o">-</span><span class="n">test</span><span class="o">/</span><span class="mi">1</span><span class="n">gb</span><span class="o">.</span><span class="n">dat</span><span class="o">.</span><span class="mi">1</span>
 </code></pre></div>
-
 
 <ul>
 <li>バケット内でディレクトリを含むファイルごとコピー(sync)</li>
 </ul>
-<div class="codehilite"><pre><span></span><code><span class="err">[username@es1 testdir]$ aws s3 sync s3://abci-access-test/dir-test s3://abci-access-test/dir-test2</span>
-<span class="c">copy: s3://abci-access-test/dir-test/1gb.dat.1 to s3://abci-access-test/dir-test2/1gb.dat.1</span>
-<span class="c">copy: s3://abci-access-test/dir-test/1gb.dat.2 to s3://abci-access-test/dir-test2/1gb.dat.2</span>
-<span class="err">[username@es1 testdir]$ aws s3 ls s3://abci-access-test/dir-test2/</span>
-<span class="err">2018-11-09 10:20:05 1073741824 1gb.dat.1</span>
-<span class="err">2018-11-09 10:20:06 1073741824 1gb.dat.2</span>
+<div class="codehilite"><pre><span></span><code><span class="o">[</span><span class="n">username@es1 testdir</span><span class="o">]</span><span class="err">$</span><span class="w"> </span><span class="n">aws</span><span class="w"> </span><span class="n">s3</span><span class="w"> </span><span class="n">sync</span><span class="w"> </span><span class="nl">s3</span><span class="p">:</span><span class="o">//</span><span class="n">abci</span><span class="o">-</span><span class="n">access</span><span class="o">-</span><span class="n">test</span><span class="o">/</span><span class="n">dir</span><span class="o">-</span><span class="n">test</span><span class="w"> </span><span class="nl">s3</span><span class="p">:</span><span class="o">//</span><span class="n">abci</span><span class="o">-</span><span class="n">access</span><span class="o">-</span><span class="n">test</span><span class="o">/</span><span class="n">dir</span><span class="o">-</span><span class="n">test2</span><span class="w"></span>
+<span class="nl">copy</span><span class="p">:</span><span class="w"> </span><span class="nl">s3</span><span class="p">:</span><span class="o">//</span><span class="n">abci</span><span class="o">-</span><span class="n">access</span><span class="o">-</span><span class="n">test</span><span class="o">/</span><span class="n">dir</span><span class="o">-</span><span class="n">test</span><span class="o">/</span><span class="mi">1</span><span class="n">gb</span><span class="p">.</span><span class="n">dat</span><span class="mf">.1</span><span class="w"> </span><span class="k">to</span><span class="w"> </span><span class="nl">s3</span><span class="p">:</span><span class="o">//</span><span class="n">abci</span><span class="o">-</span><span class="n">access</span><span class="o">-</span><span class="n">test</span><span class="o">/</span><span class="n">dir</span><span class="o">-</span><span class="n">test2</span><span class="o">/</span><span class="mi">1</span><span class="n">gb</span><span class="p">.</span><span class="n">dat</span><span class="mf">.1</span><span class="w"></span>
+<span class="nl">copy</span><span class="p">:</span><span class="w"> </span><span class="nl">s3</span><span class="p">:</span><span class="o">//</span><span class="n">abci</span><span class="o">-</span><span class="n">access</span><span class="o">-</span><span class="n">test</span><span class="o">/</span><span class="n">dir</span><span class="o">-</span><span class="n">test</span><span class="o">/</span><span class="mi">1</span><span class="n">gb</span><span class="p">.</span><span class="n">dat</span><span class="mf">.2</span><span class="w"> </span><span class="k">to</span><span class="w"> </span><span class="nl">s3</span><span class="p">:</span><span class="o">//</span><span class="n">abci</span><span class="o">-</span><span class="n">access</span><span class="o">-</span><span class="n">test</span><span class="o">/</span><span class="n">dir</span><span class="o">-</span><span class="n">test2</span><span class="o">/</span><span class="mi">1</span><span class="n">gb</span><span class="p">.</span><span class="n">dat</span><span class="mf">.2</span><span class="w"></span>
+<span class="o">[</span><span class="n">username@es1 testdir</span><span class="o">]</span><span class="err">$</span><span class="w"> </span><span class="n">aws</span><span class="w"> </span><span class="n">s3</span><span class="w"> </span><span class="n">ls</span><span class="w"> </span><span class="nl">s3</span><span class="p">:</span><span class="o">//</span><span class="n">abci</span><span class="o">-</span><span class="n">access</span><span class="o">-</span><span class="n">test</span><span class="o">/</span><span class="n">dir</span><span class="o">-</span><span class="n">test2</span><span class="o">/</span><span class="w"></span>
+<span class="mi">2018</span><span class="o">-</span><span class="mi">11</span><span class="o">-</span><span class="mi">09</span><span class="w"> </span><span class="mi">10</span><span class="err">:</span><span class="mi">20</span><span class="err">:</span><span class="mi">05</span><span class="w"> </span><span class="mi">1073741824</span><span class="w"> </span><span class="mi">1</span><span class="n">gb</span><span class="p">.</span><span class="n">dat</span><span class="mf">.1</span><span class="w"></span>
+<span class="mi">2018</span><span class="o">-</span><span class="mi">11</span><span class="o">-</span><span class="mi">09</span><span class="w"> </span><span class="mi">10</span><span class="err">:</span><span class="mi">20</span><span class="err">:</span><span class="mi">06</span><span class="w"> </span><span class="mi">1073741824</span><span class="w"> </span><span class="mi">1</span><span class="n">gb</span><span class="p">.</span><span class="n">dat</span><span class="mf">.2</span><span class="w"></span>
 </code></pre></div>
-
 
 <ul>
 <li>バケットからディレクトリを含むファイルごとダウンロード(sync)</li>
 </ul>
-<div class="codehilite"><pre><span></span><code><span class="err">[username@es1 testdir]$ aws s3 sync s3://abci-access-test/dir-test2 dir-test2</span>
-<span class="c">download: s3://abci-access-test/dir-test2/1gb.dat.2 to dir-test2/1gb.dat.2</span>
-<span class="c">download: s3://abci-access-test/dir-test2/1gb.dat.1 to dir-test2/1gb.dat.1</span>
-<span class="err">[username@es1 testdir]$ ls -l dir-test2</span>
-<span class="err">total 2097152</span>
-<span class="err">-rw-r--r-- 1 username grpname 1073741824 Nov  9 10:20 1gb.dat.1</span>
-<span class="err">-rw-r--r-- 1 username grpname 1073741824 Nov  9 10:20 1gb.dat.2</span>
+<div class="codehilite"><pre><span></span><code><span class="p">[</span><span class="n">username</span><span class="err">@</span><span class="n">es1</span> <span class="n">testdir</span><span class="p">]</span><span class="o">$</span> <span class="n">aws</span> <span class="n">s3</span> <span class="n">sync</span> <span class="n">s3</span><span class="p">:</span><span class="o">//</span><span class="n">abci</span><span class="o">-</span><span class="n">access</span><span class="o">-</span><span class="n">test</span><span class="o">/</span><span class="n">dir</span><span class="o">-</span><span class="n">test2</span> <span class="n">dir</span><span class="o">-</span><span class="n">test2</span>
+<span class="n">download</span><span class="p">:</span> <span class="n">s3</span><span class="p">:</span><span class="o">//</span><span class="n">abci</span><span class="o">-</span><span class="n">access</span><span class="o">-</span><span class="n">test</span><span class="o">/</span><span class="n">dir</span><span class="o">-</span><span class="n">test2</span><span class="o">/</span><span class="mi">1</span><span class="n">gb</span><span class="o">.</span><span class="n">dat</span><span class="o">.</span><span class="mi">2</span> <span class="n">to</span> <span class="n">dir</span><span class="o">-</span><span class="n">test2</span><span class="o">/</span><span class="mi">1</span><span class="n">gb</span><span class="o">.</span><span class="n">dat</span><span class="o">.</span><span class="mi">2</span>
+<span class="n">download</span><span class="p">:</span> <span class="n">s3</span><span class="p">:</span><span class="o">//</span><span class="n">abci</span><span class="o">-</span><span class="n">access</span><span class="o">-</span><span class="n">test</span><span class="o">/</span><span class="n">dir</span><span class="o">-</span><span class="n">test2</span><span class="o">/</span><span class="mi">1</span><span class="n">gb</span><span class="o">.</span><span class="n">dat</span><span class="o">.</span><span class="mi">1</span> <span class="n">to</span> <span class="n">dir</span><span class="o">-</span><span class="n">test2</span><span class="o">/</span><span class="mi">1</span><span class="n">gb</span><span class="o">.</span><span class="n">dat</span><span class="o">.</span><span class="mi">1</span>
+<span class="p">[</span><span class="n">username</span><span class="err">@</span><span class="n">es1</span> <span class="n">testdir</span><span class="p">]</span><span class="o">$</span> <span class="n">ls</span> <span class="o">-</span><span class="n">l</span> <span class="n">dir</span><span class="o">-</span><span class="n">test2</span>
+<span class="n">total</span> <span class="mi">2097152</span>
+<span class="o">-</span><span class="n">rw</span><span class="o">-</span><span class="n">r</span><span class="o">--</span><span class="n">r</span><span class="o">--</span> <span class="mi">1</span> <span class="n">username</span> <span class="n">grpname</span> <span class="mi">1073741824</span> <span class="n">Nov</span>  <span class="mi">9</span> <span class="mi">10</span><span class="p">:</span><span class="mi">20</span> <span class="mi">1</span><span class="n">gb</span><span class="o">.</span><span class="n">dat</span><span class="o">.</span><span class="mi">1</span>
+<span class="o">-</span><span class="n">rw</span><span class="o">-</span><span class="n">r</span><span class="o">--</span><span class="n">r</span><span class="o">--</span> <span class="mi">1</span> <span class="n">username</span> <span class="n">grpname</span> <span class="mi">1073741824</span> <span class="n">Nov</span>  <span class="mi">9</span> <span class="mi">10</span><span class="p">:</span><span class="mi">20</span> <span class="mi">1</span><span class="n">gb</span><span class="o">.</span><span class="n">dat</span><span class="o">.</span><span class="mi">2</span>
 </code></pre></div>
-
 
 <ul>
 <li>バケット内のディレクトリを含むファイルごと削除</li>
 </ul>
-<div class="codehilite"><pre><span></span><code><span class="err">[username@es1 testdir]$ aws s3 rm --recursive s3://abci-access-test/dir-test</span>
-<span class="c">delete: s3://abci-access-test/dir-test/1gb.dat.2</span>
-<span class="c">delete: s3://abci-access-test/dir-test/1gb.dat.1</span>
-<span class="err">[username@es1 testdir]$ aws s3 rm --recursive s3://abci-access-test/dir-test2</span>
-<span class="c">delete: s3://abci-access-test/dir-test2/1gb.dat.2</span>
-<span class="c">delete: s3://abci-access-test/dir-test2/1gb.dat.1</span>
+<div class="codehilite"><pre><span></span><code><span class="o">[</span><span class="n">username@es1 testdir</span><span class="o">]</span><span class="err">$</span><span class="w"> </span><span class="n">aws</span><span class="w"> </span><span class="n">s3</span><span class="w"> </span><span class="n">rm</span><span class="w"> </span><span class="o">--</span><span class="k">recursive</span><span class="w"> </span><span class="nl">s3</span><span class="p">:</span><span class="o">//</span><span class="n">abci</span><span class="o">-</span><span class="n">access</span><span class="o">-</span><span class="n">test</span><span class="o">/</span><span class="n">dir</span><span class="o">-</span><span class="n">test</span><span class="w"></span>
+<span class="k">delete</span><span class="err">:</span><span class="w"> </span><span class="nl">s3</span><span class="p">:</span><span class="o">//</span><span class="n">abci</span><span class="o">-</span><span class="n">access</span><span class="o">-</span><span class="n">test</span><span class="o">/</span><span class="n">dir</span><span class="o">-</span><span class="n">test</span><span class="o">/</span><span class="mi">1</span><span class="n">gb</span><span class="p">.</span><span class="n">dat</span><span class="mf">.2</span><span class="w"></span>
+<span class="k">delete</span><span class="err">:</span><span class="w"> </span><span class="nl">s3</span><span class="p">:</span><span class="o">//</span><span class="n">abci</span><span class="o">-</span><span class="n">access</span><span class="o">-</span><span class="n">test</span><span class="o">/</span><span class="n">dir</span><span class="o">-</span><span class="n">test</span><span class="o">/</span><span class="mi">1</span><span class="n">gb</span><span class="p">.</span><span class="n">dat</span><span class="mf">.1</span><span class="w"></span>
+<span class="o">[</span><span class="n">username@es1 testdir</span><span class="o">]</span><span class="err">$</span><span class="w"> </span><span class="n">aws</span><span class="w"> </span><span class="n">s3</span><span class="w"> </span><span class="n">rm</span><span class="w"> </span><span class="o">--</span><span class="k">recursive</span><span class="w"> </span><span class="nl">s3</span><span class="p">:</span><span class="o">//</span><span class="n">abci</span><span class="o">-</span><span class="n">access</span><span class="o">-</span><span class="n">test</span><span class="o">/</span><span class="n">dir</span><span class="o">-</span><span class="n">test2</span><span class="w"></span>
+<span class="k">delete</span><span class="err">:</span><span class="w"> </span><span class="nl">s3</span><span class="p">:</span><span class="o">//</span><span class="n">abci</span><span class="o">-</span><span class="n">access</span><span class="o">-</span><span class="n">test</span><span class="o">/</span><span class="n">dir</span><span class="o">-</span><span class="n">test2</span><span class="o">/</span><span class="mi">1</span><span class="n">gb</span><span class="p">.</span><span class="n">dat</span><span class="mf">.2</span><span class="w"></span>
+<span class="k">delete</span><span class="err">:</span><span class="w"> </span><span class="nl">s3</span><span class="p">:</span><span class="o">//</span><span class="n">abci</span><span class="o">-</span><span class="n">access</span><span class="o">-</span><span class="n">test</span><span class="o">/</span><span class="n">dir</span><span class="o">-</span><span class="n">test2</span><span class="o">/</span><span class="mi">1</span><span class="n">gb</span><span class="p">.</span><span class="n">dat</span><span class="mf">.1</span><span class="w"></span>
 </code></pre></div>
-
 
 <ul>
 <li>バケットを削除</li>
 </ul>
-<div class="codehilite"><pre><span></span><code><span class="err">[username@es1 testdir]$ aws s3 rb s3://abci-access-test</span>
-<span class="c">remove_bucket: abci-access-test</span>
+<div class="codehilite"><pre><span></span><code><span class="o">[</span><span class="n">username@es1 testdir</span><span class="o">]</span><span class="err">$</span><span class="w"> </span><span class="n">aws</span><span class="w"> </span><span class="n">s3</span><span class="w"> </span><span class="n">rb</span><span class="w"> </span><span class="nl">s3</span><span class="p">:</span><span class="o">//</span><span class="n">abci</span><span class="o">-</span><span class="n">access</span><span class="o">-</span><span class="n">test</span><span class="w"></span>
+<span class="nl">remove_bucket</span><span class="p">:</span><span class="w"> </span><span class="n">abci</span><span class="o">-</span><span class="n">access</span><span class="o">-</span><span class="n">test</span><span class="w"></span>
 </code></pre></div>
                 
                   

@@ -1155,10 +1155,9 @@ CSEの説明は、<a href="https://docs.aws.amazon.com/AmazonS3/latest/dev/Using
 <h2 id="_3">暗号化を有効にしたバケットの作成</h2>
 <p>SSE を有効にしたバケットを作るには、awsコマンドではなく、ABCI環境に用意されている create-encrypted-bucket コマンドを実行します。
 例えば、'dataset-s0001' というバケットを作る場合は以下のように実行します。</p>
-<div class="codehilite"><pre><span></span><code><span class="err">[username@es1 ~]$ create-encrypted-bucket --endpoint-url https://s3.abci.ai s3://dataset-s0001</span>
-<span class="err">create-encrypted-bucket Success.</span>
+<div class="codehilite"><pre><span></span><code><span class="o">[</span><span class="n">username@es1 ~</span><span class="o">]</span><span class="err">$</span><span class="w"> </span><span class="k">create</span><span class="o">-</span><span class="n">encrypted</span><span class="o">-</span><span class="n">bucket</span><span class="w"> </span><span class="o">--</span><span class="n">endpoint</span><span class="o">-</span><span class="n">url</span><span class="w"> </span><span class="nl">https</span><span class="p">:</span><span class="o">//</span><span class="n">s3</span><span class="p">.</span><span class="n">abci</span><span class="p">.</span><span class="n">ai</span><span class="w"> </span><span class="nl">s3</span><span class="p">:</span><span class="o">//</span><span class="n">dataset</span><span class="o">-</span><span class="n">s0001</span><span class="w"></span>
+<span class="k">create</span><span class="o">-</span><span class="n">encrypted</span><span class="o">-</span><span class="n">bucket</span><span class="w"> </span><span class="n">Success</span><span class="p">.</span><span class="w"></span>
 </code></pre></div>
-
 
 <div class="admonition note">
 <p class="admonition-title">Note</p>
@@ -1172,16 +1171,15 @@ CSEの説明は、<a href="https://docs.aws.amazon.com/AmazonS3/latest/dev/Using
 <p>SSEを有効にしたバケットかどうかを判別するには、オブジェクトのメタデータを確認する必要があるため、空のバケットでは確認できません。空の場合は、なにかオブジェクトを1つ作成してください。</p>
 <p>確認は <code>aws s3api head-object</code> で行います。
 以下では、dataset-s0001 バケットにアップロードした cat.jpg というオブジェクトのメタデータを確認しています。 <code>"ServerSideEncryption": "AES256"</code> という情報が含まれているため、dataset-s0001 は暗号化を有効にしたバケットであるといえます。この情報が含まれていない場合は、暗号化が有効でないバケットであることを示しています。</p>
-<div class="codehilite"><pre><span></span><code><span class="err">[username@es1 ~]$ aws --endpoint-url https://s3.abci.ai s3api head-object --bucket dataset-s0001 --key cat.jpg</span>
-<span class="err">{</span>
-<span class="err">    &quot;LastModified&quot;: &quot;Tue, 30 Jul 2019 09:34:18 GMT&quot;,</span>
-<span class="err">    &quot;ContentLength&quot;: 1048576,</span>
-<span class="err">    &quot;ETag&quot;: &quot;\&quot;c951191fe4fa27c0d054a8456c6c20d1\&quot;&quot;,</span>
-<span class="err">    &quot;ServerSideEncryption&quot;: &quot;AES256&quot;,</span>
-<span class="err">    &quot;Metadata&quot;: {}</span>
-<span class="err">}</span>
+<div class="codehilite"><pre><span></span><code><span class="o">[</span><span class="n">username@es1 ~</span><span class="o">]</span><span class="err">$</span><span class="w"> </span><span class="n">aws</span><span class="w"> </span><span class="o">--</span><span class="n">endpoint</span><span class="o">-</span><span class="n">url</span><span class="w"> </span><span class="nl">https</span><span class="p">:</span><span class="o">//</span><span class="n">s3</span><span class="p">.</span><span class="n">abci</span><span class="p">.</span><span class="n">ai</span><span class="w"> </span><span class="n">s3api</span><span class="w"> </span><span class="n">head</span><span class="o">-</span><span class="k">object</span><span class="w"> </span><span class="o">--</span><span class="n">bucket</span><span class="w"> </span><span class="n">dataset</span><span class="o">-</span><span class="n">s0001</span><span class="w"> </span><span class="o">--</span><span class="k">key</span><span class="w"> </span><span class="n">cat</span><span class="p">.</span><span class="n">jpg</span><span class="w"></span>
+<span class="err">{</span><span class="w"></span>
+<span class="w">    </span><span class="ss">&quot;LastModified&quot;</span><span class="err">:</span><span class="w"> </span><span class="ss">&quot;Tue, 30 Jul 2019 09:34:18 GMT&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="ss">&quot;ContentLength&quot;</span><span class="err">:</span><span class="w"> </span><span class="mi">1048576</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="ss">&quot;ETag&quot;</span><span class="err">:</span><span class="w"> </span><span class="ss">&quot;\&quot;</span><span class="n">c951191fe4fa27c0d054a8456c6c20d1</span><span class="err">\</span><span class="ss">&quot;&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="ss">&quot;ServerSideEncryption&quot;</span><span class="err">:</span><span class="w"> </span><span class="ss">&quot;AES256&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="ss">&quot;Metadata&quot;</span><span class="err">:</span><span class="w"> </span><span class="err">{}</span><span class="w"></span>
+<span class="err">}</span><span class="w"></span>
 </code></pre></div>
-
 
 <!-- CSE? -->
                 

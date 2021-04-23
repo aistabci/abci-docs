@@ -1370,10 +1370,9 @@ Enter passphrase for key '/path/identity_file': <- Enter passphrase
 </pre></div>
 
 <p>Successfully logged in, the following message is shown on your terminal.</p>
-<div class="codehilite"><pre><span></span><code><span class="err">Welcome to ABCI access server.</span>
-<span class="err">Please press any key if you disconnect this session.</span>
+<div class="codehilite"><pre><span></span><code><span class="nv">Welcome</span> <span class="nv">to</span> <span class="nv">ABCI</span> <span class="nv">access</span> <span class="nv">server</span>.
+<span class="nv">Please</span> <span class="nv">press</span> <span class="nv">any</span> <span class="nv">key</span> <span class="k">if</span> <span class="nv">you</span> <span class="k">disconnect</span> <span class="nv">this</span> <span class="nv">session</span>.
 </code></pre></div>
-
 
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
@@ -1388,7 +1387,6 @@ Enter passphrase for key '/path/identity_file': <- Enter passphrase
 <span class="s">Enter passphrase for key &#39;</span><span class="o">/</span><span class="n">path</span><span class="o">/</span><span class="n">identity_file</span><span class="s">&#39;</span><span class="err">: &lt;- Enter passphrase</span>
 <span class="p">[</span><span class="n">username</span><span class="o">@</span><span class="n">es1</span> <span class="o">~</span><span class="p">]</span><span class="o">$</span>
 </code></pre></div>
-
 
 <h4 id="proxyjump">ProxyJump</h4>
 <p>You can log in to an interactive node with a single command using ProxyJump, which was introduced in OpenSSH version 7.3. ProxyJump can be used in Windows Subsystem for Linux (WSL) environment as well.</p>
@@ -1429,7 +1427,6 @@ Host <i>as.abci.ai</i>
 <span class="n">local</span><span class="o">-</span><span class="n">file</span>    <span class="m">100</span>% <span class="o">|***********************|</span>  <span class="n">file</span><span class="o">-</span><span class="n">size</span>  <span class="n">transfer</span><span class="o">-</span><span class="n">time</span>
 </code></pre></div>
 
-
 <p>If you have OpenSSH 7.3 or later and already added the configuration to your <code>$HOME/.ssh/config</code> as described at <a href="#proxyjump">ProxyJump</a>, you can directly run the <code>scp</code> (<code>sftp</code>) command.</p>
 <div class="codehilite"><pre>
 [yourpc ~]$ scp local-file <i>abci</i>:remote-dir
@@ -1447,7 +1444,6 @@ To change your password, use the <code>passwd</code> command.</p>
 <span class="n">Retype</span> <span class="n">new</span> <span class="n">password</span><span class="o">:</span> <span class="o">&lt;-</span> <span class="n">Enter</span> <span class="n">the</span> <span class="n">new</span> <span class="n">password</span> <span class="n">again</span>
 <span class="n">passwd</span><span class="o">:</span> <span class="n">all</span> <span class="n">authentication</span> <span class="n">tokens</span> <span class="n">updated</span> <span class="n">successfully.</span>
 </code></pre></div>
-
 
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
@@ -1467,7 +1463,6 @@ The change become valid from the next login.
 It will take 10 minutes to update the login shell.</p>
 <div class="codehilite"><pre><span></span><code><span class="err">$</span><span class="w"> </span><span class="n">chsh</span><span class="w"> </span><span class="o">[</span><span class="n">option</span><span class="o">]</span><span class="w"> </span><span class="o">&lt;</span><span class="n">new_shell</span><span class="o">&gt;</span><span class="w"></span>
 </code></pre></div>
-
 
 <table>
 <thead>
@@ -1491,7 +1486,6 @@ It will take 10 minutes to update the login shell.</p>
 <div class="codehilite"><pre><span></span><code><span class="p">[</span><span class="n">username</span><span class="o">@</span><span class="n">es1</span> <span class="o">~</span><span class="p">]</span><span class="o">$</span> <span class="n">chsh</span> <span class="o">-</span><span class="n">s</span> <span class="o">/</span><span class="n">bin</span><span class="o">/</span><span class="n">tcsh</span>
 <span class="n">Password</span> <span class="n">for</span> <span class="n">username</span><span class="o">@</span><span class="n">ABCI.LOCAL</span><span class="o">:</span> <span class="o">&lt;-</span> <span class="n">Enter</span> <span class="n">password</span>
 </code></pre></div>
-
 
 <p>When you login to the ABCI system, user environment is automatically set. If you need to customize environment variables such as <code>PATH</code> or <code>LD_LIBRARY_PATH</code>, edit a user configuration file in the following table.</p>
 <table>
@@ -1525,12 +1519,11 @@ It will take 10 minutes to update the login shell.</p>
 <p>To display ABCI point usage and limitation, use the <code>show_point</code> command.
 When your ABCI point usage ratio will reach 100%, a new job cannot be submitted, and queued jobs will become error state at the beginning. (Any running jobs are not affected.)</p>
 <p>Example) Display ABCI point information.</p>
-<div class="codehilite"><pre><span></span><code><span class="err">[username@es1 ~]$ show_point</span>
-<span class="err">Group                 Disk            CloudStorage                    Used           Point   Used%</span>
-<span class="err">grpname                  5                  0.0124             12,345.6789         100,000      12</span>
-<span class="err">  `- username          -                         -                  0.1234               -       0</span>
+<div class="codehilite"><pre><span></span><code><span class="o">[</span><span class="n">username@es1 ~</span><span class="o">]</span><span class="err">$</span><span class="w"> </span><span class="n">show_point</span><span class="w"></span>
+<span class="k">Group</span><span class="w">                 </span><span class="k">Disk</span><span class="w">            </span><span class="n">CloudStorage</span><span class="w">                    </span><span class="n">Used</span><span class="w">           </span><span class="n">Point</span><span class="w">   </span><span class="n">Used</span><span class="o">%</span><span class="w"></span>
+<span class="n">grpname</span><span class="w">                  </span><span class="mi">5</span><span class="w">                  </span><span class="mf">0.0124</span><span class="w">             </span><span class="mi">12</span><span class="p">,</span><span class="mf">345.6789</span><span class="w">         </span><span class="mi">100</span><span class="p">,</span><span class="mi">000</span><span class="w">      </span><span class="mi">12</span><span class="w"></span>
+<span class="w">  </span><span class="err">`</span><span class="o">-</span><span class="w"> </span><span class="n">username</span><span class="w">          </span><span class="o">-</span><span class="w">                         </span><span class="o">-</span><span class="w">                  </span><span class="mf">0.1234</span><span class="w">               </span><span class="o">-</span><span class="w">       </span><span class="mi">0</span><span class="w"></span>
 </code></pre></div>
-
 
 <table>
 <thead>
@@ -1580,7 +1573,6 @@ use the <code>show_quota</code> command</p>
 <span class="w">  </span><span class="o">/</span><span class="n">groups1</span><span class="o">/</span><span class="n">grpname</span><span class="w">                  </span><span class="mi">1</span><span class="p">,</span><span class="mi">024</span><span class="w">            </span><span class="mi">2</span><span class="p">,</span><span class="mi">048</span><span class="w">         </span><span class="mi">123</span><span class="p">,</span><span class="mi">456</span><span class="w"></span>
 </code></pre></div>
 
-
 <table>
 <thead>
 <tr>
@@ -1610,18 +1602,17 @@ use the <code>show_quota</code> command</p>
 <h2 id="checking-abci-cloud-storage-usage">Checking ABCI Cloud Storage Usage</h2>
 <p>To display your ABCI Cloud Storage usage, use the <code>show_cs_usage</code> command</p>
 <p>Example) Show the latest information of ABCI Cloud Storage for ABCI group grpname.</p>
-<div class="codehilite"><pre><span></span><code><span class="err">[username@es1 ~]$ show_cs_usage</span>
-<span class="err">Cloud Storage Usage for ABCI groups</span>
-<span class="err">Date           Group                   used(GiB)</span>
-<span class="err">2020/01/13     grpname                       162</span>
+<div class="codehilite"><pre><span></span><code><span class="o">[</span><span class="n">username@es1 ~</span><span class="o">]</span><span class="err">$</span><span class="w"> </span><span class="n">show_cs_usage</span><span class="w"></span>
+<span class="n">Cloud</span><span class="w"> </span><span class="n">Storage</span><span class="w"> </span><span class="k">Usage</span><span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="n">ABCI</span><span class="w"> </span><span class="n">groups</span><span class="w"></span>
+<span class="nc">Date</span><span class="w">           </span><span class="k">Group</span><span class="w">                   </span><span class="n">used</span><span class="p">(</span><span class="n">GiB</span><span class="p">)</span><span class="w"></span>
+<span class="mi">2020</span><span class="o">/</span><span class="mi">01</span><span class="o">/</span><span class="mi">13</span><span class="w">     </span><span class="n">grpname</span><span class="w">                       </span><span class="mi">162</span><span class="w"></span>
 </code></pre></div>
 
-
 <p>Example) Specify the date with -d yyyymmdd for ABCI group grpname. </p>
-<div class="codehilite"><pre><span></span><code><span class="err">[username@es1 ~]$ show_cs_usage -d 20191217</span>
-<span class="err">Cloud Storage Usage for ABCI groups</span>
-<span class="err">Date           Group                   used(GiB)</span>
-<span class="err">2019/12/17     grpname                       124</span>
+<div class="codehilite"><pre><span></span><code><span class="o">[</span><span class="n">username@es1 ~</span><span class="o">]</span><span class="err">$</span><span class="w"> </span><span class="n">show_cs_usage</span><span class="w"> </span><span class="o">-</span><span class="n">d</span><span class="w"> </span><span class="mi">20191217</span><span class="w"></span>
+<span class="n">Cloud</span><span class="w"> </span><span class="n">Storage</span><span class="w"> </span><span class="k">Usage</span><span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="n">ABCI</span><span class="w"> </span><span class="n">groups</span><span class="w"></span>
+<span class="nc">Date</span><span class="w">           </span><span class="k">Group</span><span class="w">                   </span><span class="n">used</span><span class="p">(</span><span class="n">GiB</span><span class="p">)</span><span class="w"></span>
+<span class="mi">2019</span><span class="o">/</span><span class="mi">12</span><span class="o">/</span><span class="mi">17</span><span class="w">     </span><span class="n">grpname</span><span class="w">                       </span><span class="mi">124</span><span class="w"></span>
 </code></pre></div>
                 
                   

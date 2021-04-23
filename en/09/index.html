@@ -1196,9 +1196,8 @@
 <p><a href="https://www.sylabs.io/singularity/">Singularity</a> is available on the ABCI System.
 Available version is SingularityPRO 3.7.
 To use Singularity, set up user environment by the <code>module</code> command.</p>
-<div class="codehilite"><pre><span></span><code><span class="err">[username@g0001 ~]$ module load singularitypro</span>
+<div class="codehilite"><pre><span></span><code><span class="p">[</span><span class="n">username</span><span class="err">@</span><span class="n">g0001</span> <span class="o">~</span><span class="p">]</span><span class="o">$</span> <span class="n">module</span> <span class="nb">load</span> <span class="n">singularitypro</span>
 </code></pre></div>
-
 
 <p>More comprehensive user guide for Singularity will be found:</p>
 <ul>
@@ -1209,15 +1208,14 @@ To use Singularity, set up user environment by the <code>module</code> command.<
 <p>Singularity container image can be stored as a file.
 This procedure shows how to create a Singularity image file using pull.</p>
 <p>Example) Create a Singularity image file using <code>pull</code></p>
-<div class="codehilite"><pre><span></span><code><span class="err">[username@es1 ~]$ module load singularitypro</span>
-<span class="err">[username@es1 ~]$ singularity pull caffe2.img docker://caffe2ai/caffe2:latest</span>
-<span class="c">INFO:    Converting OCI blobs to SIF format</span>
-<span class="c">INFO:    Starting build...</span>
-<span class="err">...</span>
-<span class="err">[username@es1 ~]$ ls caffe2.img</span>
-<span class="err">caffe2.img</span>
+<div class="codehilite"><pre><span></span><code><span class="p">[</span><span class="n">username</span><span class="err">@</span><span class="n">es1</span> <span class="o">~</span><span class="p">]</span><span class="o">$</span> <span class="n">module</span> <span class="nb">load</span> <span class="n">singularitypro</span>
+<span class="p">[</span><span class="n">username</span><span class="err">@</span><span class="n">es1</span> <span class="o">~</span><span class="p">]</span><span class="o">$</span> <span class="n">singularity</span> <span class="n">pull</span> <span class="n">caffe2</span><span class="o">.</span><span class="n">img</span> <span class="n">docker</span><span class="p">:</span><span class="o">//</span><span class="n">caffe2ai</span><span class="o">/</span><span class="n">caffe2</span><span class="p">:</span><span class="n">latest</span>
+<span class="n">INFO</span><span class="p">:</span>    <span class="n">Converting</span> <span class="n">OCI</span> <span class="n">blobs</span> <span class="n">to</span> <span class="n">SIF</span> <span class="n">format</span>
+<span class="n">INFO</span><span class="p">:</span>    <span class="n">Starting</span> <span class="n">build</span><span class="o">...</span>
+<span class="o">...</span>
+<span class="p">[</span><span class="n">username</span><span class="err">@</span><span class="n">es1</span> <span class="o">~</span><span class="p">]</span><span class="o">$</span> <span class="n">ls</span> <span class="n">caffe2</span><span class="o">.</span><span class="n">img</span>
+<span class="n">caffe2</span><span class="o">.</span><span class="n">img</span>
 </code></pre></div>
-
 
 <h3 id="create-a-singularity-image-build">Create a Singularity image (build)</h3>
 <p>In the SingularityPRO environment of the ABCI system, you can build container image files using <code>fakeroot</code> option.</p>
@@ -1226,61 +1224,69 @@ This procedure shows how to create a Singularity image file using pull.</p>
 <p>In the SingularityPRO environment, you can also build container image file using remote build. See <a href="../abci-singularity-endpoint/">ABCI Singularity Endpoint</a> for more information.</p>
 </div>
 <p>Example) Create a Singularity image file using <code>build</code></p>
-<div class="codehilite"><pre><span></span><code><span class="err">[username@es1 ~]$ module load singularitypro</span>
-<span class="err">[username@es1 ~]$ singularity build --fakeroot ubuntu.sif ubuntu.def</span>
-<span class="c">INFO:    Starting build...</span>
-<span class="err">(snip)</span>
-<span class="c">INFO:    Creating SIF file...</span>
-<span class="c">INFO:    Build complete: ubuntu.sif</span>
-<span class="err">[username@es1 singularity]$</span>
-</code></pre></div>
+<div class="codehilite"><pre><span></span><code><span class="p">[</span><span class="n">username</span><span class="err">@</span><span class="n">es1</span> <span class="o">~</span><span class="p">]</span><span class="n">$</span> <span class="k">module</span> <span class="n">load</span> <span class="n">singularitypro</span>
+<span class="p">[</span><span class="n">username</span><span class="err">@</span><span class="n">es1</span> <span class="o">~</span><span class="p">]</span><span class="n">$</span> <span class="n">cat</span> <span class="n">ubuntu</span><span class="p">.</span><span class="n">def</span>
+<span class="nl">Bootstrap</span><span class="p">:</span> <span class="n">docker</span>
+<span class="nl">From</span><span class="p">:</span> <span class="nl">ubuntu</span><span class="p">:</span><span class="mf">18.04</span>
 
+<span class="nf">%post</span>
+    <span class="n">apt</span><span class="o">-</span><span class="n">get</span> <span class="n">update</span>
+    <span class="n">apt</span><span class="o">-</span><span class="n">get</span> <span class="n">install</span> <span class="o">-</span><span class="n">y</span> <span class="n">lsb</span><span class="o">-</span><span class="n">release</span>
+
+<span class="nf">%runscript</span>
+    <span class="n">lsb_release</span> <span class="o">-</span><span class="n">d</span>
+
+<span class="p">[</span><span class="n">username</span><span class="err">@</span><span class="n">es1</span> <span class="o">~</span><span class="p">]</span><span class="n">$</span> <span class="n">singularity</span> <span class="n">build</span> <span class="o">--</span><span class="n">fakeroot</span> <span class="n">ubuntu</span><span class="p">.</span><span class="n">sif</span> <span class="n">ubuntu</span><span class="p">.</span><span class="n">def</span>
+<span class="nl">INFO</span><span class="p">:</span>    <span class="n">Starting</span> <span class="n">build</span><span class="p">...</span>
+<span class="p">(</span><span class="n">snip</span><span class="p">)</span>
+<span class="nl">INFO</span><span class="p">:</span>    <span class="n">Creating</span> <span class="n">SIF</span> <span class="n">file</span><span class="p">...</span>
+<span class="nl">INFO</span><span class="p">:</span>    <span class="n">Build</span> <span class="nl">complete</span><span class="p">:</span> <span class="n">ubuntu</span><span class="p">.</span><span class="n">sif</span>
+<span class="p">[</span><span class="n">username</span><span class="err">@</span><span class="n">es1</span> <span class="n">singularity</span><span class="p">]</span><span class="n">$</span>
+</code></pre></div>
 
 <p>If the output destination of the image file (ubuntunt.sif) is set to the group area (/groups1, /groups2) in the above command, an error occurs. In this case, it is possible to avoid the problem by executing the <code>newgrp</code> command after checking the ownership group of the image destination group area with <code>id</code> command as follows.
 In the example below, <code>gaa00000</code> is the owning group of the image destination group area.</p>
-<div class="codehilite"><pre><span></span><code><span class="err">[username@es1 groupname]$ id -a</span>
-<span class="err">uid=0000(aaa00000aa) gid=0000(aaa00000aa) groups=0000(aaa00000aa),00000(gaa00000)</span>
-<span class="err">[username@es1 groupname]$ newgrp gaa00000</span>
+<div class="codehilite"><pre><span></span><code><span class="o">[</span><span class="n">username@es1 groupname</span><span class="o">]</span><span class="err">$</span><span class="w"> </span><span class="n">id</span><span class="w"> </span><span class="o">-</span><span class="n">a</span><span class="w"></span>
+<span class="n">uid</span><span class="o">=</span><span class="mi">0000</span><span class="p">(</span><span class="n">aaa00000aa</span><span class="p">)</span><span class="w"> </span><span class="n">gid</span><span class="o">=</span><span class="mi">0000</span><span class="p">(</span><span class="n">aaa00000aa</span><span class="p">)</span><span class="w"> </span><span class="n">groups</span><span class="o">=</span><span class="mi">0000</span><span class="p">(</span><span class="n">aaa00000aa</span><span class="p">),</span><span class="mi">00000</span><span class="p">(</span><span class="n">gaa00000</span><span class="p">)</span><span class="w"></span>
+<span class="o">[</span><span class="n">username@es1 groupname</span><span class="o">]</span><span class="err">$</span><span class="w"> </span><span class="n">newgrp</span><span class="w"> </span><span class="n">gaa00000</span><span class="w"></span>
 </code></pre></div>
-
 
 <h3 id="running-a-container-with-singularity">Running a container with Singularity</h3>
 <p>When you use Singularity, you need to start Singularity container using <code>singularity run</code> command in job script.
 To run an image file in a container, specify the image file as an argument to the <code>singularity run</code> command.
 You can also use the <code>singularity run</code> command to run a container image published in Docker Hub.</p>
 <p>Example) Run a container with a Singularity image file in an interactive job</p>
-<div class="codehilite"><pre><span></span><code><span class="err">[username@es1 ~]$ qrsh -g grpname -l rt_G.small=1 -l h_rt=1:00:00</span>
-<span class="err">[username@es1 ~]$ module load singularitypro</span>
-<span class="err">[username@es1 ~]$ singularity run ./caffe2.img</span>
+<div class="codehilite"><pre><span></span><code><span class="p">[</span><span class="n">username</span><span class="err">@</span><span class="n">es1</span> <span class="o">~</span><span class="p">]</span><span class="o">$</span> <span class="n">qrsh</span> <span class="o">-</span><span class="n">g</span> <span class="n">grpname</span> <span class="o">-</span><span class="n">l</span> <span class="n">rt_G</span><span class="o">.</span><span class="n">small</span><span class="o">=</span><span class="mi">1</span> <span class="o">-</span><span class="n">l</span> <span class="n">h_rt</span><span class="o">=</span><span class="mi">1</span><span class="p">:</span><span class="mi">00</span><span class="p">:</span><span class="mi">00</span>
+<span class="p">[</span><span class="n">username</span><span class="err">@</span><span class="n">es1</span> <span class="o">~</span><span class="p">]</span><span class="o">$</span> <span class="n">module</span> <span class="nb">load</span> <span class="n">singularitypro</span>
+<span class="p">[</span><span class="n">username</span><span class="err">@</span><span class="n">es1</span> <span class="o">~</span><span class="p">]</span><span class="o">$</span> <span class="n">singularity</span> <span class="n">run</span> <span class="o">./</span><span class="n">caffe2</span><span class="o">.</span><span class="n">img</span>
 </code></pre></div>
-
 
 <p>Example) Run a container with a Singularity image file in a batch job</p>
-<div class="codehilite"><pre><span></span><code><span class="o">[</span><span class="n">username@es1 ~</span><span class="o">]</span><span class="err">$</span><span class="w"> </span><span class="n">cat</span><span class="w"> </span><span class="n">job</span><span class="p">.</span><span class="n">sh</span><span class="w"></span>
-<span class="p">(</span><span class="n">snip</span><span class="p">)</span><span class="w"></span>
-<span class="n">source</span><span class="w"> </span><span class="o">/</span><span class="n">etc</span><span class="o">/</span><span class="n">profile</span><span class="p">.</span><span class="n">d</span><span class="o">/</span><span class="n">modules</span><span class="p">.</span><span class="n">sh</span><span class="w"></span>
-<span class="k">module</span><span class="w"> </span><span class="k">load</span><span class="w"> </span><span class="n">singularitypro</span><span class="w"> </span><span class="n">openmpi</span><span class="o">/</span><span class="mf">3.1.6</span><span class="w"></span>
+<div class="codehilite"><pre><span></span><code><span class="p">[</span><span class="n">username</span><span class="err">@</span><span class="n">es1</span> <span class="o">~</span><span class="p">]</span><span class="o">$</span> <span class="n">cat</span> <span class="n">job</span><span class="o">.</span><span class="n">sh</span>
+<span class="c1">#!/bin/sh</span>
+<span class="c1">#$-l rt_F=1</span>
+<span class="c1">#$-j y</span>
+<span class="n">source</span> <span class="o">/</span><span class="n">etc</span><span class="o">/</span><span class="n">profile</span><span class="o">.</span><span class="n">d</span><span class="o">/</span><span class="n">modules</span><span class="o">.</span><span class="n">sh</span>
+<span class="n">module</span> <span class="nb">load</span> <span class="n">singularitypro</span> <span class="n">openmpi</span><span class="o">/</span><span class="mf">3.1</span><span class="o">.</span><span class="mi">6</span>
 
-<span class="n">mpiexec</span><span class="w"> </span><span class="o">-</span><span class="n">n</span><span class="w"> </span><span class="mi">4</span><span class="w"> </span><span class="n">singularity</span><span class="w"> </span><span class="k">exec</span><span class="w"> </span><span class="c1">--nv ./caffe2.img \</span>
-<span class="w">    </span><span class="n">python</span><span class="w"> </span><span class="n">sample</span><span class="p">.</span><span class="n">py</span><span class="w"></span>
+<span class="n">mpiexec</span> <span class="o">-</span><span class="n">n</span> <span class="mi">4</span> <span class="n">singularity</span> <span class="n">exec</span> <span class="o">--</span><span class="n">nv</span> <span class="o">./</span><span class="n">caffe2</span><span class="o">.</span><span class="n">img</span> \
+    <span class="n">python</span> <span class="n">sample</span><span class="o">.</span><span class="n">py</span>
 
-<span class="o">[</span><span class="n">username@es1 ~</span><span class="o">]</span><span class="err">$</span><span class="w"> </span><span class="n">qsub</span><span class="w"> </span><span class="o">-</span><span class="n">g</span><span class="w"> </span><span class="n">grpname</span><span class="w"> </span><span class="n">job</span><span class="p">.</span><span class="n">sh</span><span class="w"></span>
+<span class="p">[</span><span class="n">username</span><span class="err">@</span><span class="n">es1</span> <span class="o">~</span><span class="p">]</span><span class="o">$</span> <span class="n">qsub</span> <span class="o">-</span><span class="n">g</span> <span class="n">grpname</span> <span class="n">job</span><span class="o">.</span><span class="n">sh</span>
 </code></pre></div>
-
 
 <p>Example) Run a container image published in Docker Hub</p>
 <p>The following sample executes a Singularity container using caffe2 container image published in Docker Hub.
 <code>python sample.py</code> is executed in the container started by <code>singularity run</code> command.
 The container image is downloaded at the first startup and cached in home area.
 The second and subsequent times startup is faster by using cached data.</p>
-<div class="codehilite"><pre><span></span><code><span class="err">[username@es1 ~]$ qrsh -g grpname -l rt_F=1 -l h_rt=1:00:00</span>
-<span class="err">[username@g0001 ~]$ module load singularitypro</span>
-<span class="err">[username@g0001 ~]$ singularity run --nv docker://caffe2ai/caffe2:latest</span>
-<span class="err">...</span>
-<span class="err">Singularity&gt; python sample.py</span>
-<span class="err">True</span>
+<div class="codehilite"><pre><span></span><code><span class="p">[</span><span class="n">username</span><span class="err">@</span><span class="n">es1</span> <span class="o">~</span><span class="p">]</span><span class="o">$</span> <span class="n">qrsh</span> <span class="o">-</span><span class="n">g</span> <span class="n">grpname</span> <span class="o">-</span><span class="n">l</span> <span class="n">rt_F</span><span class="o">=</span><span class="mi">1</span> <span class="o">-</span><span class="n">l</span> <span class="n">h_rt</span><span class="o">=</span><span class="mi">1</span><span class="p">:</span><span class="mi">00</span><span class="p">:</span><span class="mi">00</span>
+<span class="p">[</span><span class="n">username</span><span class="err">@</span><span class="n">g0001</span> <span class="o">~</span><span class="p">]</span><span class="o">$</span> <span class="n">module</span> <span class="nb">load</span> <span class="n">singularitypro</span>
+<span class="p">[</span><span class="n">username</span><span class="err">@</span><span class="n">g0001</span> <span class="o">~</span><span class="p">]</span><span class="o">$</span> <span class="n">singularity</span> <span class="n">run</span> <span class="o">--</span><span class="n">nv</span> <span class="n">docker</span><span class="p">:</span><span class="o">//</span><span class="n">caffe2ai</span><span class="o">/</span><span class="n">caffe2</span><span class="p">:</span><span class="n">latest</span>
+<span class="o">...</span>
+<span class="n">Singularity</span><span class="o">&gt;</span> <span class="n">python</span> <span class="n">sample</span><span class="o">.</span><span class="n">py</span>
+<span class="n">True</span>
 </code></pre></div>
-
 
 <h3 id="build-singularity-image-from-dockerfile">Build Singularity image from Dockerfile</h3>
 <p>On ABCI, you cannot build a Singularity image directly from Dockerfile.
@@ -1288,32 +1294,31 @@ If you have only Dockerfile, you have two ways to build a Singularity image on A
 <h4 id="via-docker-hub">Via Docker Hub</h4>
 <p>Build a Docker container image from Dockerfile on a system having Docker execution environment, and upload the image to Docker Hub. You can use the Docker container image on ABCI.</p>
 <p>Following example shows how to build <a href="https://github.com/NVIDIA/DeepLearningExamples/tree/master/PyTorch/Detection/SSD">SSD300 v1.1 image</a> developed by NVIDIA from Dockerfile and upload it to Docker Hub.</p>
-<div class="codehilite"><pre><span></span><code>[user@pc ~]$ git clone https://github.com/NVIDIA/DeepLearningExamples
-[user@pc ~]$ cd DeepLearningExamples/PyTorch/Detection/SSD
-[user@pc SSD]$ cat Dockerfile
-ARG FROM_IMAGE_NAME=nvcr.io/nvidia/pytorch:20.06-py3
-FROM <span class="cp">${</span><span class="n">FROM_IMAGE_NAME</span><span class="cp">}</span>
+<div class="codehilite"><pre><span></span><code><span class="p">[</span><span class="n">user</span><span class="err">@</span><span class="n">pc</span> <span class="o">~</span><span class="p">]</span><span class="o">$</span> <span class="n">git</span> <span class="n">clone</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">github</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">NVIDIA</span><span class="o">/</span><span class="n">DeepLearningExamples</span>
+<span class="p">[</span><span class="n">user</span><span class="err">@</span><span class="n">pc</span> <span class="o">~</span><span class="p">]</span><span class="o">$</span> <span class="n">cd</span> <span class="n">DeepLearningExamples</span><span class="o">/</span><span class="n">PyTorch</span><span class="o">/</span><span class="n">Detection</span><span class="o">/</span><span class="n">SSD</span>
+<span class="p">[</span><span class="n">user</span><span class="err">@</span><span class="n">pc</span> <span class="n">SSD</span><span class="p">]</span><span class="o">$</span> <span class="n">cat</span> <span class="n">Dockerfile</span>
+<span class="n">ARG</span> <span class="n">FROM_IMAGE_NAME</span><span class="o">=</span><span class="n">nvcr</span><span class="o">.</span><span class="n">io</span><span class="o">/</span><span class="n">nvidia</span><span class="o">/</span><span class="n">pytorch</span><span class="p">:</span><span class="mf">20.06</span><span class="o">-</span><span class="n">py3</span>
+<span class="n">FROM</span> <span class="o">$</span><span class="p">{</span><span class="n">FROM_IMAGE_NAME</span><span class="p">}</span>
 
-# Set working directory
-WORKDIR /workspace
+<span class="c1"># Set working directory</span>
+<span class="n">WORKDIR</span> <span class="o">/</span><span class="n">workspace</span>
 
-ENV PYTHONPATH &quot;<span class="cp">${</span><span class="n">PYTHONPATH</span><span class="cp">}</span>:/workspace&quot;
+<span class="n">ENV</span> <span class="n">PYTHONPATH</span> <span class="s2">&quot;${PYTHONPATH}:/workspace&quot;</span>
 
-COPY requirements.txt .
-RUN pip install --no-cache-dir git+https://github.com/NVIDIA/dllogger.git#egg=dllogger
-RUN pip install -r requirements.txt
-RUN python3 -m pip install pycocotools==2.0.0
+<span class="n">COPY</span> <span class="n">requirements</span><span class="o">.</span><span class="n">txt</span> <span class="o">.</span>
+<span class="n">RUN</span> <span class="n">pip</span> <span class="n">install</span> <span class="o">--</span><span class="n">no</span><span class="o">-</span><span class="n">cache</span><span class="o">-</span><span class="n">dir</span> <span class="n">git</span><span class="o">+</span><span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">github</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">NVIDIA</span><span class="o">/</span><span class="n">dllogger</span><span class="o">.</span><span class="n">git</span><span class="c1">#egg=dllogger</span>
+<span class="n">RUN</span> <span class="n">pip</span> <span class="n">install</span> <span class="o">-</span><span class="n">r</span> <span class="n">requirements</span><span class="o">.</span><span class="n">txt</span>
+<span class="n">RUN</span> <span class="n">python3</span> <span class="o">-</span><span class="n">m</span> <span class="n">pip</span> <span class="n">install</span> <span class="n">pycocotools</span><span class="o">==</span><span class="mf">2.0</span><span class="o">.</span><span class="mi">0</span>
 
-# Copy SSD code
-COPY ./setup.py .
-COPY ./csrc ./csrc
-RUN pip install .
+<span class="c1"># Copy SSD code</span>
+<span class="n">COPY</span> <span class="o">./</span><span class="n">setup</span><span class="o">.</span><span class="n">py</span> <span class="o">.</span>
+<span class="n">COPY</span> <span class="o">./</span><span class="n">csrc</span> <span class="o">./</span><span class="n">csrc</span>
+<span class="n">RUN</span> <span class="n">pip</span> <span class="n">install</span> <span class="o">.</span>
 
-COPY . .
-[user@pc SSD]$ docker build -t user/docker_name .
-[user@pc SSD]$ docker login <span class="err">&amp;&amp;</span> docker push user/docker_name
+<span class="n">COPY</span> <span class="o">.</span> <span class="o">.</span>
+<span class="p">[</span><span class="n">user</span><span class="err">@</span><span class="n">pc</span> <span class="n">SSD</span><span class="p">]</span><span class="o">$</span> <span class="n">docker</span> <span class="n">build</span> <span class="o">-</span><span class="n">t</span> <span class="n">user</span><span class="o">/</span><span class="n">docker_name</span> <span class="o">.</span>
+<span class="p">[</span><span class="n">user</span><span class="err">@</span><span class="n">pc</span> <span class="n">SSD</span><span class="p">]</span><span class="o">$</span> <span class="n">docker</span> <span class="n">login</span> <span class="o">&amp;&amp;</span> <span class="n">docker</span> <span class="n">push</span> <span class="n">user</span><span class="o">/</span><span class="n">docker_name</span>
 </code></pre></div>
-
 
 <p>To run the built image on ABCI, please refer to <a href="#running-a-container-with-singularity">Running a container with Singularity</a></p>
 <h4 id="convert-dockerfile-to-singularity-recipe">Convert Dockerfile to Singularity recipe</h4>
@@ -1325,12 +1330,11 @@ You can manually convert Dockerfile, but using <a href="https://singularityhub.g
 If <code>singularity build</code> fails when the generated Singularity recipe file is used, modify the recipe file manually.</p>
 </div>
 <p>Example procedure for installing Singularity Python)</p>
-<div class="codehilite"><pre><span></span><code><span class="err">[username@es1 ~]$ module load python/3.6/3.6.12</span>
-<span class="err">[username@es1 ~]$ python3 -m venv work</span>
-<span class="err">[username@es1 ~]$ source work/bin/activate</span>
-<span class="err">(work) [username@es1 ~]$ pip3 install spython</span>
+<div class="codehilite"><pre><span></span><code><span class="p">[</span><span class="n">username</span><span class="err">@</span><span class="n">es1</span> <span class="o">~</span><span class="p">]</span><span class="o">$</span> <span class="n">module</span> <span class="nb">load</span> <span class="n">python</span><span class="o">/</span><span class="mf">3.6</span><span class="o">/</span><span class="mf">3.6</span><span class="o">.</span><span class="mi">12</span>
+<span class="p">[</span><span class="n">username</span><span class="err">@</span><span class="n">es1</span> <span class="o">~</span><span class="p">]</span><span class="o">$</span> <span class="n">python3</span> <span class="o">-</span><span class="n">m</span> <span class="n">venv</span> <span class="n">work</span>
+<span class="p">[</span><span class="n">username</span><span class="err">@</span><span class="n">es1</span> <span class="o">~</span><span class="p">]</span><span class="o">$</span> <span class="n">source</span> <span class="n">work</span><span class="o">/</span><span class="n">bin</span><span class="o">/</span><span class="n">activate</span>
+<span class="p">(</span><span class="n">work</span><span class="p">)</span> <span class="p">[</span><span class="n">username</span><span class="err">@</span><span class="n">es1</span> <span class="o">~</span><span class="p">]</span><span class="o">$</span> <span class="n">pip3</span> <span class="n">install</span> <span class="n">spython</span>
 </code></pre></div>
-
 
 <p>Following example shows how to convert Dockerfile of <a href="https://github.com/NVIDIA/DeepLearningExamples/tree/master/PyTorch/Detection/SSD">SSD300 v1.1 image</a> developed by NVIDIA using Singularity Python and modify the generated Singularity recipe (ssd.def) so that it can correctly generate a Singularity image.</p>
 <p>Just converting Dockerfile results in a built time error.
@@ -1339,13 +1343,13 @@ To avoid the problem, this example modifies the Singularity recipe as described 
 <li>Files in WORKDIR will not be copied =&gt; Set the copy destination to the absolute path of WORKDIR</li>
 <li>No path to pip =&gt; Add a setting to take over environment variables available in Docker image</li>
 </ul>
-<div class="codehilite"><pre><span></span><code><span class="p">[</span><span class="n">username</span><span class="err">@</span><span class="n">es1</span> <span class="o">~</span><span class="p">]</span><span class="err">$</span> <span class="k">module</span> <span class="n">load</span> <span class="n">python</span><span class="o">/</span><span class="mf">3.6</span><span class="o">/</span><span class="mf">3.6.12</span>
-<span class="p">[</span><span class="n">username</span><span class="err">@</span><span class="n">es1</span> <span class="o">~</span><span class="p">]</span><span class="err">$</span> <span class="n">source</span> <span class="n">work</span><span class="o">/</span><span class="n">bin</span><span class="o">/</span><span class="n">activate</span>
-<span class="p">(</span><span class="n">work</span><span class="p">)</span> <span class="p">[</span><span class="n">username</span><span class="err">@</span><span class="n">es1</span> <span class="o">~</span><span class="p">]</span><span class="err">$</span> <span class="n">git</span> <span class="n">clone</span> <span class="nl">https</span><span class="p">:</span><span class="c1">//github.com/NVIDIA/DeepLearningExamples</span>
-<span class="p">(</span><span class="n">work</span><span class="p">)</span> <span class="p">[</span><span class="n">username</span><span class="err">@</span><span class="n">es1</span> <span class="o">~</span><span class="p">]</span><span class="err">$</span> <span class="n">cd</span> <span class="n">DeepLearningExamples</span><span class="o">/</span><span class="n">PyTorch</span><span class="o">/</span><span class="n">Detection</span><span class="o">/</span><span class="n">SSD</span>
-<span class="p">(</span><span class="n">work</span><span class="p">)</span> <span class="p">[</span><span class="n">username</span><span class="err">@</span><span class="n">es1</span> <span class="n">SSD</span><span class="p">]</span><span class="err">$</span> <span class="n">spython</span> <span class="n">recipe</span> <span class="n">Dockerfile</span> <span class="n">ssd</span><span class="p">.</span><span class="n">def</span>
-<span class="p">(</span><span class="n">work</span><span class="p">)</span> <span class="p">[</span><span class="n">username</span><span class="err">@</span><span class="n">es1</span> <span class="n">SSD</span><span class="p">]</span><span class="err">$</span> <span class="n">cp</span> <span class="o">-</span><span class="n">p</span> <span class="n">ssd</span><span class="p">.</span><span class="n">def</span> <span class="n">ssd_org</span><span class="p">.</span><span class="n">def</span>
-<span class="p">(</span><span class="n">work</span><span class="p">)</span> <span class="p">[</span><span class="n">username</span><span class="err">@</span><span class="n">es1</span> <span class="n">SSD</span><span class="p">]</span><span class="err">$</span> <span class="n">vi</span> <span class="n">ssd</span><span class="p">.</span><span class="n">def</span>
+<div class="codehilite"><pre><span></span><code><span class="p">[</span><span class="n">username</span><span class="err">@</span><span class="n">es1</span> <span class="o">~</span><span class="p">]</span><span class="n">$</span> <span class="k">module</span> <span class="n">load</span> <span class="n">python</span><span class="o">/</span><span class="mf">3.6</span><span class="o">/</span><span class="mf">3.6.12</span>
+<span class="p">[</span><span class="n">username</span><span class="err">@</span><span class="n">es1</span> <span class="o">~</span><span class="p">]</span><span class="n">$</span> <span class="n">source</span> <span class="n">work</span><span class="o">/</span><span class="n">bin</span><span class="o">/</span><span class="n">activate</span>
+<span class="p">(</span><span class="n">work</span><span class="p">)</span> <span class="p">[</span><span class="n">username</span><span class="err">@</span><span class="n">es1</span> <span class="o">~</span><span class="p">]</span><span class="n">$</span> <span class="n">git</span> <span class="n">clone</span> <span class="nl">https</span><span class="p">:</span><span class="c1">//github.com/NVIDIA/DeepLearningExamples</span>
+<span class="p">(</span><span class="n">work</span><span class="p">)</span> <span class="p">[</span><span class="n">username</span><span class="err">@</span><span class="n">es1</span> <span class="o">~</span><span class="p">]</span><span class="n">$</span> <span class="n">cd</span> <span class="n">DeepLearningExamples</span><span class="o">/</span><span class="n">PyTorch</span><span class="o">/</span><span class="n">Detection</span><span class="o">/</span><span class="n">SSD</span>
+<span class="p">(</span><span class="n">work</span><span class="p">)</span> <span class="p">[</span><span class="n">username</span><span class="err">@</span><span class="n">es1</span> <span class="n">SSD</span><span class="p">]</span><span class="n">$</span> <span class="n">spython</span> <span class="n">recipe</span> <span class="n">Dockerfile</span> <span class="n">ssd</span><span class="p">.</span><span class="n">def</span>
+<span class="p">(</span><span class="n">work</span><span class="p">)</span> <span class="p">[</span><span class="n">username</span><span class="err">@</span><span class="n">es1</span> <span class="n">SSD</span><span class="p">]</span><span class="n">$</span> <span class="n">cp</span> <span class="o">-</span><span class="n">p</span> <span class="n">ssd</span><span class="p">.</span><span class="n">def</span> <span class="n">ssd_org</span><span class="p">.</span><span class="n">def</span>
+<span class="p">(</span><span class="n">work</span><span class="p">)</span> <span class="p">[</span><span class="n">username</span><span class="err">@</span><span class="n">es1</span> <span class="n">SSD</span><span class="p">]</span><span class="n">$</span> <span class="n">vi</span> <span class="n">ssd</span><span class="p">.</span><span class="n">def</span>
 <span class="nl">Bootstrap</span><span class="p">:</span> <span class="n">docker</span>
 <span class="nl">From</span><span class="p">:</span> <span class="n">nvcr</span><span class="p">.</span><span class="n">io</span><span class="o">/</span><span class="n">nvidia</span><span class="o">/</span><span class="nl">pytorch</span><span class="p">:</span><span class="mf">20.06</span><span class="o">-</span><span class="n">py3</span>
 <span class="nl">Stage</span><span class="p">:</span> <span class="n">spython</span><span class="o">-</span><span class="n">base</span>
@@ -1381,7 +1385,6 @@ To avoid the problem, this example modifies the Singularity recipe as described 
 <span class="n">exec</span> <span class="o">/</span><span class="n">bin</span><span class="o">/</span><span class="n">bash</span> <span class="s">&quot;$@&quot;</span>
 </code></pre></div>
 
-
 <p>To create a Singularity image from the generated recipe file on ABCI, please refer to <a href="#create-a-singularity-image-build">Create a Singularity image (build)</a>.</p>
 <h2 id="docker">Docker</h2>
 <p>In the ABCI System, job can be executed on Docker container.
@@ -1409,11 +1412,10 @@ When you use Docker, you need to set up user environment by the <code>module</co
 <p>Docker container can not be used on memory-intensive node in the ABCI system.</p>
 </div>
 <p>The available Docker image can be referred by <code>show_docker_images</code> command.</p>
-<div class="codehilite"><pre><span></span><code><span class="err">[username@es1 ~]$ show_docker_images</span>
-<span class="err">REPOSITORY                TAG             IMAGE ID     CREATED       SIZE</span>
-<span class="c">jcm:5000/dhub/ubuntu      latest          113a43faa138 3 weeks ago   81.2MB</span>
+<div class="codehilite"><pre><span></span><code><span class="o">[</span><span class="n">username@es1 ~</span><span class="o">]</span><span class="err">$</span><span class="w"> </span><span class="n">show_docker_images</span><span class="w"></span>
+<span class="n">REPOSITORY</span><span class="w">                </span><span class="n">TAG</span><span class="w">             </span><span class="nc">IMAGE</span><span class="w"> </span><span class="n">ID</span><span class="w">     </span><span class="n">CREATED</span><span class="w">       </span><span class="k">SIZE</span><span class="w"></span>
+<span class="nl">jcm</span><span class="p">:</span><span class="mi">5000</span><span class="o">/</span><span class="n">dhub</span><span class="o">/</span><span class="n">ubuntu</span><span class="w">      </span><span class="n">latest</span><span class="w">          </span><span class="mi">113</span><span class="n">a43faa138</span><span class="w"> </span><span class="mi">3</span><span class="w"> </span><span class="n">weeks</span><span class="w"> </span><span class="n">ago</span><span class="w">   </span><span class="mf">81.2</span><span class="n">MB</span><span class="w"></span>
 </code></pre></div>
-
 
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
@@ -1432,12 +1434,10 @@ When you use Docker, you need to set up user environment by the <code>module</co
 <span class="n">python3</span><span class="w"> </span><span class="p">.</span><span class="o">/</span><span class="n">sample</span><span class="p">.</span><span class="n">py</span><span class="w"></span>
 </code></pre></div>
 
-
 <p>Example) Submission of job script using Docker</p>
-<div class="codehilite"><pre><span></span><code><span class="err">[username@es1 ~]$ qsub run.sh</span>
-<span class="err">Your job 12345 (&quot;run.sh&quot;) has been submitted</span>
+<div class="codehilite"><pre><span></span><code><span class="o">[</span><span class="n">username@es1 ~</span><span class="o">]</span><span class="err">$</span><span class="w"> </span><span class="n">qsub</span><span class="w"> </span><span class="o">-</span><span class="n">g</span><span class="w"> </span><span class="n">grpname</span><span class="w"> </span><span class="n">run</span><span class="p">.</span><span class="n">sh</span><span class="w"></span>
+<span class="n">Your</span><span class="w"> </span><span class="n">job</span><span class="w"> </span><span class="mi">12345</span><span class="w"> </span><span class="p">(</span><span class="ss">&quot;run.sh&quot;</span><span class="p">)</span><span class="w"> </span><span class="n">has</span><span class="w"> </span><span class="n">been</span><span class="w"> </span><span class="n">submitted</span><span class="w"></span>
 </code></pre></div>
-
 
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>

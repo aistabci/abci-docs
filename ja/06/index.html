@@ -1155,21 +1155,18 @@
 python/2.7/2.7.18 python/3.6/3.6.12  python/3.7/3.7.10  python/3.8/3.8.7
 </code></pre></div>
 
-
 <p>以下のように利用環境を設定することで利用可能になります。</p>
 <p>例) Python 2.7.18を利用する場合:</p>
-<div class="codehilite"><pre><span></span><code>$ module load python/2.7/2.7.18
-$ python --version
-Python <span class="m">2</span>.7.18
+<div class="codehilite"><pre><span></span><code><span class="o">$</span> <span class="n">module</span> <span class="nb">load</span> <span class="n">python</span><span class="o">/</span><span class="mf">2.7</span><span class="o">/</span><span class="mf">2.7</span><span class="o">.</span><span class="mi">18</span>
+<span class="o">$</span> <span class="n">python</span> <span class="o">--</span><span class="n">version</span>
+<span class="n">Python</span> <span class="mf">2.7</span><span class="o">.</span><span class="mi">18</span>
 </code></pre></div>
-
 
 <p>例) Python 3.6.12を利用する場合:</p>
-<div class="codehilite"><pre><span></span><code>$ module load python/3.6/3.6.12
-$ python3 --version
-Python <span class="m">3</span>.6.12
+<div class="codehilite"><pre><span></span><code><span class="o">$</span> <span class="n">module</span> <span class="nb">load</span> <span class="n">python</span><span class="o">/</span><span class="mf">3.6</span><span class="o">/</span><span class="mf">3.6</span><span class="o">.</span><span class="mi">12</span>
+<span class="o">$</span> <span class="n">python3</span> <span class="o">--</span><span class="n">version</span>
+<span class="n">Python</span> <span class="mf">3.6</span><span class="o">.</span><span class="mi">12</span>
 </code></pre></div>
-
 
 <div class="admonition note">
 <p class="admonition-title">Note</p>
@@ -1185,71 +1182,62 @@ Python <span class="m">3</span>.6.12
 <h3 id="virtualenv">virtualenv</h3>
 <p><code>virtualenv</code>の使用例を以下に示します。</p>
 <p>例) 仮想環境の作成</p>
-<div class="codehilite"><pre><span></span><code><span class="err">[username@es1 ~]$ module load python/2.7/2.7.18</span>
-<span class="err">[username@es1 ~]$ virtualenv env1</span>
-<span class="err">created virtual environment CPython2.7.18.final.0-64 in 1862ms</span>
-<span class="err">  creator CPython2Posix(dest=/home/username/env1, clear=False, no_vcs_ignore=False, global=False)</span>
-<span class="err">  seeder FromAppData(download=False, pip=bundle, wheel=bundle, setuptools=bundle, via=copy, app_data_dir=/home/username/.local/share/virtualenv)</span>
-<span class="err">    added seed packages: pip==20.3.4, setuptools==44.1.1, wheel==0.36.2</span>
-<span class="err">  activators PythonActivator,CShellActivator,FishActivator,PowerShellActivator,BashActivator</span>
+<div class="codehilite"><pre><span></span><code><span class="p">[</span><span class="n">username</span><span class="err">@</span><span class="n">es1</span> <span class="o">~</span><span class="p">]</span><span class="o">$</span> <span class="n">module</span> <span class="nb">load</span> <span class="n">python</span><span class="o">/</span><span class="mf">2.7</span><span class="o">/</span><span class="mf">2.7</span><span class="o">.</span><span class="mi">18</span>
+<span class="p">[</span><span class="n">username</span><span class="err">@</span><span class="n">es1</span> <span class="o">~</span><span class="p">]</span><span class="o">$</span> <span class="n">virtualenv</span> <span class="n">env1</span>
+<span class="n">created</span> <span class="n">virtual</span> <span class="n">environment</span> <span class="n">CPython2</span><span class="o">.</span><span class="mf">7.18</span><span class="o">.</span><span class="n">final</span><span class="o">.</span><span class="mi">0</span><span class="o">-</span><span class="mi">64</span> <span class="ow">in</span> <span class="mi">1862</span><span class="n">ms</span>
+  <span class="n">creator</span> <span class="n">CPython2Posix</span><span class="p">(</span><span class="n">dest</span><span class="o">=/</span><span class="n">home</span><span class="o">/</span><span class="n">username</span><span class="o">/</span><span class="n">env1</span><span class="p">,</span> <span class="n">clear</span><span class="o">=</span><span class="n">False</span><span class="p">,</span> <span class="n">no_vcs_ignore</span><span class="o">=</span><span class="n">False</span><span class="p">,</span> <span class="n">global</span><span class="o">=</span><span class="n">False</span><span class="p">)</span>
+  <span class="n">seeder</span> <span class="n">FromAppData</span><span class="p">(</span><span class="n">download</span><span class="o">=</span><span class="n">False</span><span class="p">,</span> <span class="n">pip</span><span class="o">=</span><span class="n">bundle</span><span class="p">,</span> <span class="n">wheel</span><span class="o">=</span><span class="n">bundle</span><span class="p">,</span> <span class="n">setuptools</span><span class="o">=</span><span class="n">bundle</span><span class="p">,</span> <span class="n">via</span><span class="o">=</span><span class="n">copy</span><span class="p">,</span> <span class="n">app_data_dir</span><span class="o">=/</span><span class="n">home</span><span class="o">/</span><span class="n">username</span><span class="o">/.</span><span class="n">local</span><span class="o">/</span><span class="n">share</span><span class="o">/</span><span class="n">virtualenv</span><span class="p">)</span>
+    <span class="n">added</span> <span class="nb">seed</span> <span class="n">packages</span><span class="p">:</span> <span class="n">pip</span><span class="o">==</span><span class="mf">20.3</span><span class="o">.</span><span class="mi">4</span><span class="p">,</span> <span class="n">setuptools</span><span class="o">==</span><span class="mf">44.1</span><span class="o">.</span><span class="mi">1</span><span class="p">,</span> <span class="n">wheel</span><span class="o">==</span><span class="mf">0.36</span><span class="o">.</span><span class="mi">2</span>
+  <span class="n">activators</span> <span class="n">PythonActivator</span><span class="p">,</span><span class="n">CShellActivator</span><span class="p">,</span><span class="n">FishActivator</span><span class="p">,</span><span class="n">PowerShellActivator</span><span class="p">,</span><span class="n">BashActivator</span>
 </code></pre></div>
-
 
 <p>例) 仮想環境の有効化</p>
-<div class="codehilite"><pre><span></span><code><span class="err">[username@es1 ~]$ source env1/bin/activate</span>
-<span class="err">(env1) [username@es1 ~]$</span>
-<span class="err">(env1) [username@es1 ~]$ which python</span>
-<span class="err">~/env1/bin/python</span>
-<span class="err">(env1) [username@es1 ~]$ which pip</span>
-<span class="err">~/env1/bin/pip</span>
+<div class="codehilite"><pre><span></span><code><span class="o">[</span><span class="n">username@es1 ~</span><span class="o">]</span><span class="err">$</span><span class="w"> </span><span class="n">source</span><span class="w"> </span><span class="n">env1</span><span class="o">/</span><span class="n">bin</span><span class="o">/</span><span class="n">activate</span><span class="w"></span>
+<span class="p">(</span><span class="n">env1</span><span class="p">)</span><span class="w"> </span><span class="o">[</span><span class="n">username@es1 ~</span><span class="o">]</span><span class="err">$</span><span class="w"></span>
+<span class="p">(</span><span class="n">env1</span><span class="p">)</span><span class="w"> </span><span class="o">[</span><span class="n">username@es1 ~</span><span class="o">]</span><span class="err">$</span><span class="w"> </span><span class="n">which</span><span class="w"> </span><span class="n">python</span><span class="w"></span>
+<span class="o">~/</span><span class="n">env1</span><span class="o">/</span><span class="n">bin</span><span class="o">/</span><span class="n">python</span><span class="w"></span>
+<span class="p">(</span><span class="n">env1</span><span class="p">)</span><span class="w"> </span><span class="o">[</span><span class="n">username@es1 ~</span><span class="o">]</span><span class="err">$</span><span class="w"> </span><span class="n">which</span><span class="w"> </span><span class="n">pip</span><span class="w"></span>
+<span class="o">~/</span><span class="n">env1</span><span class="o">/</span><span class="n">bin</span><span class="o">/</span><span class="n">pip</span><span class="w"></span>
 </code></pre></div>
-
 
 <p>例) 仮想環境へ<code>numpy</code>をインストール</p>
-<div class="codehilite"><pre><span></span><code><span class="err">(env1) [username@es1 ~]$ pip install numpy</span>
+<div class="codehilite"><pre><span></span><code><span class="p">(</span><span class="n">env1</span><span class="p">)</span><span class="w"> </span><span class="o">[</span><span class="n">username@es1 ~</span><span class="o">]</span><span class="err">$</span><span class="w"> </span><span class="n">pip</span><span class="w"> </span><span class="n">install</span><span class="w"> </span><span class="n">numpy</span><span class="w"></span>
 </code></pre></div>
-
 
 <p>例) 仮想環境の無効化</p>
-<div class="codehilite"><pre><span></span><code><span class="err">(env1) [username@es1 ~]$ deactivate</span>
-<span class="err">[username@es1 ~]$</span>
+<div class="codehilite"><pre><span></span><code><span class="p">(</span><span class="n">env1</span><span class="p">)</span><span class="w"> </span><span class="o">[</span><span class="n">username@es1 ~</span><span class="o">]</span><span class="err">$</span><span class="w"> </span><span class="n">deactivate</span><span class="w"></span>
+<span class="o">[</span><span class="n">username@es1 ~</span><span class="o">]</span><span class="err">$</span><span class="w"></span>
 </code></pre></div>
-
 
 <h3 id="venv">venv</h3>
 <p><code>venv</code>モジュールの使用例を以下に示します。</p>
 <p>例) 仮想環境の作成</p>
-<div class="codehilite"><pre><span></span><code><span class="err">[username@es1 ~]$ module load python/3.6/3.6.12</span>
-<span class="err">[username@es1 ~]$ python3 -m venv work</span>
+<div class="codehilite"><pre><span></span><code><span class="p">[</span><span class="n">username</span><span class="err">@</span><span class="n">es1</span> <span class="o">~</span><span class="p">]</span><span class="o">$</span> <span class="n">module</span> <span class="nb">load</span> <span class="n">python</span><span class="o">/</span><span class="mf">3.6</span><span class="o">/</span><span class="mf">3.6</span><span class="o">.</span><span class="mi">12</span>
+<span class="p">[</span><span class="n">username</span><span class="err">@</span><span class="n">es1</span> <span class="o">~</span><span class="p">]</span><span class="o">$</span> <span class="n">python3</span> <span class="o">-</span><span class="n">m</span> <span class="n">venv</span> <span class="n">work</span>
 </code></pre></div>
-
 
 <p>例) 仮想環境の有効化</p>
-<div class="codehilite"><pre><span></span><code><span class="err">[username@es1 ~]$ source work/bin/activate</span>
-<span class="err">(work) [username@es1 ~]$ which python3</span>
-<span class="err">~/work/bin/python3</span>
-<span class="err">(work) [username@es1 ~]$ which pip3</span>
-<span class="err">~/work/bin/pip3</span>
+<div class="codehilite"><pre><span></span><code><span class="o">[</span><span class="n">username@es1 ~</span><span class="o">]</span><span class="err">$</span><span class="w"> </span><span class="n">source</span><span class="w"> </span><span class="k">work</span><span class="o">/</span><span class="n">bin</span><span class="o">/</span><span class="n">activate</span><span class="w"></span>
+<span class="p">(</span><span class="k">work</span><span class="p">)</span><span class="w"> </span><span class="o">[</span><span class="n">username@es1 ~</span><span class="o">]</span><span class="err">$</span><span class="w"> </span><span class="n">which</span><span class="w"> </span><span class="n">python3</span><span class="w"></span>
+<span class="o">~/</span><span class="k">work</span><span class="o">/</span><span class="n">bin</span><span class="o">/</span><span class="n">python3</span><span class="w"></span>
+<span class="p">(</span><span class="k">work</span><span class="p">)</span><span class="w"> </span><span class="o">[</span><span class="n">username@es1 ~</span><span class="o">]</span><span class="err">$</span><span class="w"> </span><span class="n">which</span><span class="w"> </span><span class="n">pip3</span><span class="w"></span>
+<span class="o">~/</span><span class="k">work</span><span class="o">/</span><span class="n">bin</span><span class="o">/</span><span class="n">pip3</span><span class="w"></span>
 </code></pre></div>
-
 
 <p>例) 仮想環境へ<code>numpy</code>をインストール</p>
-<div class="codehilite"><pre><span></span><code><span class="err">(work) [username@es1 ~]$ pip3 install numpy</span>
+<div class="codehilite"><pre><span></span><code><span class="p">(</span><span class="k">work</span><span class="p">)</span><span class="w"> </span><span class="o">[</span><span class="n">username@es1 ~</span><span class="o">]</span><span class="err">$</span><span class="w"> </span><span class="n">pip3</span><span class="w"> </span><span class="n">install</span><span class="w"> </span><span class="n">numpy</span><span class="w"></span>
 </code></pre></div>
-
 
 <p>例) 仮想環境の無効化</p>
-<div class="codehilite"><pre><span></span><code><span class="err">(work) [username@es1 ~]$ deactivate</span>
-<span class="err">[username@es1 ~]$</span>
+<div class="codehilite"><pre><span></span><code><span class="p">(</span><span class="k">work</span><span class="p">)</span><span class="w"> </span><span class="o">[</span><span class="n">username@es1 ~</span><span class="o">]</span><span class="err">$</span><span class="w"> </span><span class="n">deactivate</span><span class="w"></span>
+<span class="o">[</span><span class="n">username@es1 ~</span><span class="o">]</span><span class="err">$</span><span class="w"></span>
 </code></pre></div>
-
 
 <h2 id="pip">pip</h2>
 <p><a href="https://pip.pypa.io/en/stable/">pip</a>はPythonのパッケージ管理ツールです。
 利用者は、<code>pip</code>コマンドを用いることで容易にPythonソフトウェアのリポジトリ<a href="https://pypi.org/">the Python Pakcage Index (PyPI)</a>からPythonパッケージをインストールできます。</p>
 <div class="codehilite"><pre><span></span><code><span class="err">$</span><span class="w"> </span><span class="n">pip</span><span class="w"> </span><span class="o">&lt;</span><span class="n">sub</span><span class="o">-</span><span class="n">command</span><span class="o">&gt;</span><span class="w"> </span><span class="o">[</span><span class="n">options</span><span class="o">]</span><span class="w"></span>
 </code></pre></div>
-
 
 <table>
 <thead>
