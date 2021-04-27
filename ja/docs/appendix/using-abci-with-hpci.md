@@ -5,7 +5,7 @@
 
 ## インタラクティブノードへのログイン {#login-to-interactive-node}
 
-ABCIシステムのフロントエンドであるインタラクティブノード (代表ホスト名：*es*) にログインするには、代理証明書を利用してHPCI 向けアクセスサーバ (ホスト名：*hpci.abci.ai*) にログインして、更に`ssh`コマンドを用いてインタラクティブノードにログインする必要があります。なお本章では、ABCIのサーバ名はフォントをイタリックで表記します。
+ABCIシステムのフロントエンドであるインタラクティブノード (代表ホスト名：*es*もしくは*es-a*) にログインするには、代理証明書を利用してHPCI 向けアクセスサーバ (ホスト名：*hpci.abci.ai*) にログインして、更に`ssh`コマンドを用いてインタラクティブノードにログインする必要があります。なお本章では、ABCIのサーバ名はフォントをイタリックで表記します。
 
 ### Linux / macOSなどの環境 {#linux-macos-environment}
 
@@ -55,7 +55,7 @@ HPCI向けアクセスサーバ用ホーム領域の使用状況と割り当て�
 
 ```
 [username@hpci1 ~]$ quota
-Disk quotas for user axa01004ti (uid 1004):
+Disk quotas for user username (uid 1000):
      Filesystem  blocks   quota   limit   grace   files   quota   limit   grace
       /dev/sdb2      48  104857600 104857600              10       0       0
 ```

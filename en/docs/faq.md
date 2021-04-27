@@ -14,7 +14,7 @@ Executing while logged in to the interactive node has the same effect.
 
 Generally, any file systems have their own block size, and even the smallest file consumes the capacity of the block size.
 
-ABCI sets the block size of the group area to 128 KB and the block size of the home area to 4 KB. For this reason, if a large number of small files are created in the group area, usage efficiency will be reduced. For example, if you want to create a file that is less than 4KB in the group area, you need about 32 times the capacity of the home area.
+ABCI sets the block size of the group area 1,2,3 to 128 KB and the block size of the home area and group area to 4 KB. For this reason, if a large number of small files are created in the group area 1,2,3 , usage efficiency will be reduced. For example, if you want to create a file that is less than 4KB in the group area, you need about 32 times the capacity of the home area.
 
 ## Q. Singularity cannot use container registries that require authentication
 
@@ -53,7 +53,7 @@ singularity exec $NGC_HOME/ubuntu-18.04.simg $NGC_HOME/ngc $@
 
 ## Q. I want to assign multiple compute nodes and have each compute node perform different processing
 
-If you give `-l rt_F=N` option to `qrsh` or `qsub`, you can assign N compute nodes. You can also use MPI if you want to perform different processing on each assigned compute node.
+If you give `-l rt_F=N` or `-l rt_AF=N` option to `qrsh` or `qsub`, you can assign N compute nodes. You can also use MPI if you want to perform different processing on each assigned compute node.
 
 ```
 $ module load openmpi/2.1.6

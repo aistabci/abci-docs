@@ -1,5 +1,9 @@
 # システム更新履歴
 
+## 2021-05-10
+
+* NVIDIA A100 を搭載した計算ノードの追加に伴い、修正しました。
+
 ## 2021-04-07
 
 | Add / Update / Delete | Software | Version | Previous version |

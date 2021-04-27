@@ -1,6 +1,6 @@
 # Appendix. SSH Access to Compute Nodes
 
-If you run a job with the resource type `rt_F`, you can enable SSH login to the compute nodes by specifying options when running `qrsh` or `qsub` command.
+If you run a job with the resource type `rt_F` and `rt_AF`, you can enable SSH login to the compute nodes by specifying options when running `qrsh` or `qsub` command.
 
 | Option | Description |
 |:--|:--|
