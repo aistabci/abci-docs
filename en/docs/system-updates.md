@@ -1,5 +1,9 @@
 # System Updates
 
+## 2021-05-10
+
+* Fixed as a Compute Nodes with NVIDIA A100 was added.
+
 ## 2021-04-07
 
 | Add / Update / Delete | Software | Version | Previous version |

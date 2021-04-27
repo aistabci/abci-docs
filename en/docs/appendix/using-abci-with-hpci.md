@@ -5,7 +5,7 @@
 
 ## Login to Interactive Node
 
-To login to the interactive node (*es*) as frontend, you need to login to the access server (*hpci.abci.ai*) with proxy certificate and then to login to the interactive node with the `ssh` command.
+To login to the interactive node (*es* , *es-a*) as frontend, you need to login to the access server (*hpci.abci.ai*) with proxy certificate and then to login to the interactive node with the `ssh` command.
 
 ### Linux / macOS Environment
 
@@ -54,7 +54,7 @@ use the `quota` command.
 
 ```
 [username@hpci1 ~]$ quota
-Disk quotas for user axa01004ti (uid 1004):
+Disk quotas for user username (uid 1000):
      Filesystem  blocks   quota   limit   grace   files   quota   limit   grace
       /dev/sdb2      48  104857600 104857600              10       0       0
 ```
