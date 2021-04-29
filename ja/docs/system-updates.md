@@ -2,7 +2,12 @@
 
 ## 2021-05-10
 
-* NVIDIA A100 を搭載した計算ノードの追加に伴い、修正しました。
+| Add / Update / Delete | Software | Version | Previous version |
+|:--|:--|:--|:--|
+| Add | cuDNN | [8.2.0](https://docs.nvidia.com/deeplearning/cudnn/release-notes/rel_8.html#rel-820) | |
+| Add | NCCL | [2.9.6-1](https://docs.nvidia.com/deeplearning/nccl/release-notes/rel_2-9-6.html) | |
+
+* NVIDIA A100 を搭載した計算ノード(A)の追加に伴い、ドキュメントを修正しました。
 
 ## 2021-04-07
 

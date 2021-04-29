@@ -2,7 +2,12 @@
 
 ## 2021-05-10
 
-* Fixed as a Compute Nodes with NVIDIA A100 was added.
+| Add / Update / Delete | Software | Version | Previous version |
+|:--|:--|:--|:--|
+| Add | cuDNN | [8.2.0](https://docs.nvidia.com/deeplearning/cudnn/release-notes/rel_8.html#rel-820) | |
+| Add | NCCL | [2.9.6-1](https://docs.nvidia.com/deeplearning/nccl/release-notes/rel_2-9-6.html) | |
+
+* The documentation has been revised with the addition of a compute node (A) with NVIDIA A100.
 
 ## 2021-04-07
 
