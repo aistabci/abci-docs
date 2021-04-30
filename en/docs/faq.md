@@ -168,6 +168,18 @@ Example)
 [username@g0001 ~]$ singularity run --nv docker://caffe2ai/caffe2:latest
 ```
 
+## Q. I get an error due to insufficient disk space, when I ran the singularity build/pull on the compute node. {#q-insufficient-disk-space-for-singularity-build}
+
+The `singularity build` and `pull` commands use `/tmp` as the location to create temporary files.
+When you build a large container on the compute node, it may cause an error due to insufficient space in `/tmp`.
+
+If you get an error due to insufficient space, set the `SINGULARITY_TMPDIR` environment variable to use the local storage as shown below:
+
+```
+[username@g0001 ~]$ SINGULARITY_TMPDIR=$SGE_LOCALDIR singularity pull docker://nvcr.io/nvidia/tensorflow:20.12-tf1-py3
+```
+
+
 ## Q. How can I find the job ID?
 
 When you submit a batch job using the `qsub` command, the command outputs the job ID.

@@ -174,6 +174,17 @@ FATAL:   While making image from oci registry: while building SIF from layers: u
 [username@g0001 ~]$ singularity run --nv docker://caffe2ai/caffe2:latest
 ```
 
+## Q. 計算ノードでsingularity build/pullすると容量不足でエラーになる {#q-insufficient-disk-space-for-singularity-build}
+
+singularity build/pull コマンドは一時ファイルの作成場所として `/tmp` を使用します。
+大きなコンテナを計算ノード上でsingularity build/pullする際に `/tmp` の容量が足りずエラーになる場合があります。
+容量が足りずエラーになる場合は、次のようにローカルスクラッチを使用するよう`SINGULARITY_TMPDIR`環境変数を設定してください。
+
+```
+[username@g0001 ~]$ SINGULARITY_TMPDIR=$SGE_LOCALDIR singularity pull docker://nvcr.io/nvidia/tensorflow:20.12-tf1-py3
+```
+
+
 ## Q. ジョブ ID を調べるには？ {#q-how-can-i-find-the-job-id}
 
 `qsub` コマンドを使ってバッチジョブを投入した場合は、コマンドがジョブ ID を出力しています。
