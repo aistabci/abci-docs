@@ -6,17 +6,17 @@
 
 このユーザガイドは、ABCIの技術的詳細や利用方法について説明しています。ABCIを利用する方は是非ご一読ください。ABCIシステムについての理解を深めるのに役立ちます。
 
-  - 利用手引き:
-    - [1. ABCIシステムの概要](01.md)
-    - [2. ABCIシステム利用環境](02.md)
-    - [3. ジョブ実行環境](03.md)
-    - [4. ストレージ](04.md)
-    - [5. Environment Modules](05.md)
-    - [6. Python](06.md)
-    - [7. GPU](07.md)
-    - [8. MPI](08.md)
-    - [9. Linuxコンテナ](09.md)
-    - [10. プログラム開発環境](10.md)
+  - [ABCIシステムの概要](01.md)
+  - [ABCIシステム利用環境](02.md)
+  - [ジョブ実行環境](03.md)
+  - [ストレージ](04.md)
+  - [Environment Modules](05.md)
+  - [Python](06.md)
+  - [GPU](07.md)
+  - [MPI](08.md)
+  - [Linuxコンテナ](09.md)
+  - [プログラム開発環境](10.md)
+  - 付録:
     - [付録. インストール済みソフトウェアの構成](appendix/installed-software.md)
     - [付録. HPCIによるABCIシステム利用](appendix/using-abci-with-hpci.md)
     - [付録. 外部ネットワークとの通信](appendix/external-networks.md)

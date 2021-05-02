@@ -6,18 +6,18 @@
 
 This User Guide describes the technical details of ABCI and how to use it. All users who use ABCI are strongly recommended to read this document, as it is helpful to gain better understanding of the system.
 
-  - User Guide:
-    - [1. ABCI System Overview](01.md)
-    - [2. ABCI System User Environment](02.md)
-    - [3. Job Execution Environment](03.md)
-    - [4. Storage](04.md)
-    - [5. Environment Modules](05.md)
-    - [6. Python](06.md)
-    - [7. GPU](07.md)
-    - [8. MPI](08.md)
-    - [9. Linux Containers](09.md)
-    - [10. Software Development Environment](10.md)
-    - [11. Application Framework](11.md)
+  - [ABCI System Overview](01.md)
+  - [ABCI System User Environment](02.md)
+  - [Job Execution Environment](03.md)
+  - [Storage](04.md)
+  - [Environment Modules](05.md)
+  - [Python](06.md)
+  - [GPU](07.md)
+  - [MPI](08.md)
+  - [Linux Containers](09.md)
+  - [Software Development Environment](10.md)
+  - [Application Framework](11.md)
+  - Appendix:
     - [Appendix. Configuration of Installed Software](appendix/installed-software.md)
     - [Appendix. Using ABCI with HPCI](appendix/using-abci-with-hpci.md)
     - [Appendix. Communications with External Networks](appendix/external-networks.md)
