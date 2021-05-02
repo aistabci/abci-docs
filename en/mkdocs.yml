@@ -1,10 +1,10 @@
-site_name: ABCI User Guide
-site_description: ABCI User Guide, English version
+site_name: ABCI 2.0 User Guide
+site_description: ABCI 2.0 User Guide, English version
 site_author: AIST
 site_url: https://docs.abci.ai/en/
 repo_url: https://github.com/aistairc/abci-docs
 edit_uri: edit/master/en/docs/
-copyright: 'Copyright &copy; 2018 National Institute of Advanced Industrial Science and Technology (AIST)'
+copyright: 'Copyright &copy; 2021 National Institute of Advanced Industrial Science and Technology (AIST)'
 google_analytics:
   - 'UA-118371652-2'
   - 'auto'
