@@ -57,8 +57,10 @@ The ABCI system has two types of computational resources, [compute node](system-
 
 | Resource type | Resource type name | Description | Assigned physical CPU core | Number of assigned GPU | Memory (GiB) | Local storage (GB) | Resource type charge coefficient |
 |:--|:--|:--|:--|:--|:--|:--|:--|
-| Full | rt\_AF | node-exclusive | 72 | 8 | 480 | 1590(local scratch)<br>1850(BeeOND Storage, Persistent Local Scratch (Reserved only)) | 3.00 |
+| Full | rt\_AF | node-exclusive | 72 | 8 | 480 | 3440[^1] | 3.00 |
 | AG.small | rt\_AG.small | node-sharing<br>with GPU | 9 | 1 | 60 | 390 | 0.50 |
+
+[^1]: The sum of /local1 (1590 GB) and /local2 (1850 GB).
 
 #### Memory-intensive Node
 
@@ -184,7 +186,7 @@ In addition, the following options can be used as extended options:
 | Option | Description |
 |:--|:--|
 | -l USE\_SSH=*1*<br>-v SSH\_PORT=*port* | Enable SSH login to the compute nodes. See [SSH Access to Compute Nodes](appendix/ssh-access.md) for details. |
-| -l USE\_BEEOND=*1*<br>-v BEEOND\_METADATA\_SERVER=*num*<br>-v BEEOND\_STORAGE\_SERVER=*num* | Submit a job with using BeeGFS On Demand (BeeOND). See [Using as a BeeOND storage](storage.md#using-as-a-beeond-storage) for details. |
+| -l USE\_BEEOND=*1*<br>-v BEEOND\_METADATA\_SERVER=*num*<br>-v BEEOND\_STORAGE\_SERVER=*num* | Submit a job with using BeeGFS On Demand (BeeOND). See [Using as a BeeOND storage](storage.md#beeond-storage) for details. |
 | -v GPU\_COMPUTE\_MODE=*mode* | Change GPU Compute Mode. See [Changing GPU Compute Mode](gpu.md#changing-gpu-compute-mode) for details. |
 | -l docker<br>-l docker\_images | Submit a job with a Docker container. See [Docker](containers.md#docker) for details. |
 

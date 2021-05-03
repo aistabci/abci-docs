@@ -87,24 +87,24 @@ stripe_count:  4 stripe_size:   1048576 stripe_offset: 10
 
 ABCIシステムでは、計算ノード(V)に1.6 TBのNVMe SSD x 1、計算ノード(A)に2.0 TBのNVMe SSD x 2、メモリインテンシブノードに1.9 TBのSATA 3.0 SSD x 1が搭載されています。このローカルストレージには2通りの利用方法を選択できます。
 
-- ノードに閉じたスクラッチI/O領域としての利用（*ローカルスクラッチ利用*、*永続ローカルスクラッチ (Reserved専用)*）。
-- 複数の計算ノードのローカルストレージにまたがった分散共有ファイルシステムを構成して利用する（*BeeONDストレージ利用*）。
+- ノードに閉じたスクラッチI/O領域としての利用（*ローカルスクラッチ*、*永続ローカルスクラッチ (Reserved専用)*）。
+- 複数の計算ノードのローカルストレージにまたがった分散共有ファイルシステムを構成して利用（*BeeONDストレージ*）。
 
 各種ノードと使用できるローカルストレージの利用方法は以下表のとおりです。
 
 | ローカルストレージ | 計算ノード | メモリインテンシブノード |
 |:---|:--:|:--:|
-| ローカルスクラッチ利用 | ok | ok |
-| BeeONDストレージ利用 | ok | - |
-| 永続ローカルスクラッチ (Reserved専用)利用 | ok | - |
+| ローカルスクラッチ | ok | ok |
+| BeeONDストレージ | ok | - |
+| 永続ローカルスクラッチ (Reserved専用) | ok | - |
 
-### ローカルスクラッチ利用 {#using-as-a-local-scratch}
+### ローカルスクラッチ {#local-scratch}
 
 計算ノードとメモリインテンシブノードのローカルストレージは、ジョブ投入時に特別なオプションを指定することなくローカルスクラッチとして利用できます。
 なお、ローカルストレージとして利用できる容量は、指定した[ジョブ実行リソース](job-execution.md#job-execution-resource)によって異なります。
-ローカルストレージへのパスはジョブ毎に異なり、[環境変数](job-execution.md#environment-variables)SGE_LOCALDIRを利用してアクセスすることができます。
+ローカルストレージへのパスはジョブ毎に異なり、[環境変数](job-execution.md#environment-variables)`SGE_LOCALDIR`を利用してアクセスすることができます。
 
-例）ジョブスクリプトの例(use_local_storage.sh)
+例）ジョブスクリプトの例(use\_local\_storage.sh)
 
 ```bash
 #!/bin/bash
@@ -123,7 +123,7 @@ cp -rp $SGE_LOCALDIR/foo.txt $HOME/test/foo.txt
 [username@es1 ~]$ qsub -g grpname use_local_storage.sh
 ```
 
-例）use_local_storage.sh 実行後の状態
+例）use\_local\_storage.sh 実行後の状態
 
 ```
 [username@es1 ~]$ ls $HOME/test/
@@ -133,11 +133,15 @@ foo.txt    <- スクリプト内で明示的にコピーしたファイルのみ
 !!! warning
     `$SGE_LOCALDIR`以下に作成したファイルはジョブ実行終了時に削除されるため、必要なファイルは`cp`コマンドなどを用いてジョブスクリプト内でホーム領域またはグループ領域にコピーをしてください。
 
-### 永続ローカルスクラッチ (Reserved専用)利用 {#using-as-a-reserved-persistent-local-scratch}
+!!! note
+    rt\_AF では`$SGE_LOCALDIR`だけではなく、`/local2`以下も利用できます。ジョブ実行終了時に削除されるのは同様です。
 
-Reservedサービスでは、計算ノードのローカルストレージに、ジョブ毎に削除されない永続領域を使用可能です。この領域はReservedサービス開始時に作成され、Reservedサービス終了時に削除されます。
+### 永続ローカルスクラッチ (Reserved専用) {#persistent-local-scratch}
 
-例）ジョブスクリプトの例(use_reserved_storage_write.sh)
+本機能は、Reservedサービス専用です。Reservedサービスでは、計算ノードのローカルストレージに、ジョブ毎に削除されない永続領域を使用可能です。この領域はReservedサービス開始時に作成され、Reservedサービス終了時に削除されます。
+永続ローカルスクラッチは、[環境変数](job-execution.md#environment-variables)`SGE_ARDIR`を利用してアクセスすることができます。
+
+例）ジョブスクリプトの例 (use\_reserved\_storage\_write.sh)
 
 ```bash
 #!/bin/bash
@@ -155,7 +159,7 @@ echo test2 > $SGE_ARDIR/bar.txt
 [username@es1 ~]$ qsub -g grpname -ar 12345 use_reserved_storage_write.sh
 ```
 
-例）ジョブスクリプトの例(use_reserved_storage_read.sh)
+例）ジョブスクリプトの例 (use\_reserved\_storage\_read.sh)
 
 ```bash
 #!/bin/bash
@@ -177,9 +181,11 @@ cat $SGE_ARDIR/bar.txt
     `$SGE_ARDIR`以下に作成したファイルはReservedサービス終了時に削除されるため、必要なファイルは`cp`コマンドなどを用いてジョブにてホーム領域またはグループ領域にコピーをしてください。
 
 !!! warning
-    計算ノード(A)では、NVMe SSD が2つ搭載されており、ローカルスクラッチ利用向けのローカルストレージと永続ローカルスクラッチ(Reserved専用)利用向けのローカルストレージは別々に用意されています。
-    計算ノード(V)では、NVMe SSD が1つしか搭載されていないため、ローカルスクラッチ利用向けのローカルストレージと永続ローカルスクラッチ(Reserved専用)向けのローカルストレージは同一のストレージです。永続ローカルスクラッチ(Reserved専用)を利用する場合は、使用量に注意してください。
-### BeeONDストレージ利用 {#using-as-a-beeond-storage}
+    計算ノード(A)では、NVMe SSD が2つ搭載されており、永続ローカルスクラッチは`/local2`を使用します。ローカルスクラッチと永続ローカルスクラッチが同一のストレージに割り当てられる場合があります。
+    計算ノード(V)では、NVMe SSD が1つしか搭載されていないため、ローカルスクラッチと永続ローカルスクラッチは同一のストレージとなり、必ず容量を共有します。
+	いずれの場合も、永続ローカルスクラッチを利用する場合には使用量に注意してください。
+
+### BeeONDストレージとしての利用 {#beeond-storage}
 
 BeeGFS On Demand (BeeOND) を使用することで、ジョブに割り当てられた計算ノードのローカルストレージを集約し、一時的な分散共有ファイルシステムとして使用可能です。
 BeeOND を利用するジョブを投入するときは、`-l USE_BEEOND=1`オプションを指定してジョブを実行してください。
@@ -187,7 +193,7 @@ BeeOND を利用するジョブを投入するときは、`-l USE_BEEOND=1`オ�
 
 作成された分散共有ファイルシステム領域には、[環境変数](job-execution.md#environment-variables)SGE_BEEONDDIRを利用してアクセスすることができます。
 
-例）ジョブスクリプトの例(use_beeond.sh)
+例）ジョブスクリプトの例 (use\_beeond.sh)
 
 ```bash
 #!/bin/bash
@@ -207,7 +213,7 @@ cp -rp $SGE_BEEONDDIR/foo.txt $HOME/test/foo.txt
 [username@es1 ~]$ qsub -g grpname use_beeond.sh
 ```
 
-例）use_beeond.sh 実行後の状態
+例）use\_beeond.sh 実行後の状態
 
 ```
 [username@es1 ~]$ ls $HOME/test/
@@ -218,8 +224,8 @@ foo.txt    <- スクリプト内で明示的にコピーしたファイルのみ
     `$SGE_BEEONDDIR`以下に作成したファイルはジョブ実行終了時に削除されるため、必要なファイルは`cp`コマンドなどを用いてジョブスクリプト内でホーム領域またはグループ領域にコピーをしてください。
 
 !!! warning
-    計算ノード(A)では、NVMe SSD が2つ搭載されており、ローカルスクラッチ利用向けのローカルストレージとBeeONDストレージ利用向けのローカルストレージは別々に用意されています。
-    計算ノード(V)では、NVMe SSD が1つしか搭載されていないため、ローカルスクラッチ利用向けのローカルストレージとBeeONDストレージ利用向けのローカルストレージは同一のストレージです。
+    計算ノード(A)では、NVMe SSD が2つ搭載されており、BeeONDストレージは`/local2`を使用します。
+    計算ノード(V)では、NVMe SSD が1つしか搭載されていないため、ローカルスクラッチとBeeONDストレージは同一のストレージを使用し、必ず容量を共有します。
 
 #### [高度な設定] BeeONDサーバ数変更 {#advanced-option-configure-beeond-servers}
 

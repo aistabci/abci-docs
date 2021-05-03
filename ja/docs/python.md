@@ -1,4 +1,4 @@
-# 6. Python
+# Python
 
 ## 利用できるPythonのバージョン {#available-python-versions}
 

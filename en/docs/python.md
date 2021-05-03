@@ -1,4 +1,4 @@
-# 6. Python
+# Python
 
 ## Available Python versions
 

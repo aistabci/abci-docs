@@ -2,7 +2,7 @@
 
 ## ABCIアカウントの取得 {#getting-an-account}
 
-### テーマとABCIグループ {#themes-and-groups}
+### ABCIの利用申請 {#application-for-use-of-abci}
 ABCIを利用するためには、[「ご利用の流れ」](https://abci.ai/ja/how_to_use/)に掲載された利用規定（約款または規約）に従い、研究・開発テーマを決定し、[ABCI利用ポータル](https://portal.abci.ai/user/project_register_app.php) から「ABCI利用申請」を提出します。ABCI申請受付担当は利用規定に基づいて審査し、要件が満たされている場合に、申請されたABCIグループを作成し、申請者に採択された旨を通知します。申請者が通知を受け取ったら、利用開始となります。
 
 利用料金は、[料金表](https://abci.ai/ja/how_to_use/tariffs.html)を確認の上、ABCIポイントを購入することで支払いいただきます。ABCIポイントはABCIグループごとに購入してください。申請時には、ABCIポイントを 1,000ポイント以上購入する必要があります。
