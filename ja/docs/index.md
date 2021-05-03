@@ -1,22 +1,25 @@
 # はじめに
 
-[AI橋渡しクラウド（AI Bridging Cloud Infrastructure、以下「ABCI」という）](https://abci.ai/ja/)は、[国立研究開発法人 産業技術総合研究所](https://www.aist.go.jp/)が構築・運用する、AI技術開発・橋渡しのためのオープンな計算インフラストラクチャです。ABCIは、2018年8月に本格運用を開始しました。
+[AI橋渡しクラウド（AI Bridging Cloud Infrastructure、以下「ABCI」という）](https://abci.ai/ja/)は、[国立研究開発法人 産業技術総合研究所](https://www.aist.go.jp/)が構築・運用する、AI技術開発・橋渡しのためのオープンな計算インフラストラクチャです。ABCIは、2018年8月に本格運用を開始し、2021年5月にABCI 2.0にアップグレードされました。
+
+!!! note
+    本書では、単純のために *ABCI 2.0* のことを以降 *ABCI* と呼びます。
 
 ![ABCI Overview](img/abci_dc.jpg)
 
 このユーザガイドは、ABCIの技術的詳細や利用方法について説明しています。ABCIを利用する方は是非ご一読ください。ABCIシステムについての理解を深めるのに役立ちます。
 
-  - 利用手引き:
-    - [1. ABCIシステムの概要](01.md)
-    - [2. ABCIシステム利用環境](02.md)
-    - [3. ジョブ実行環境](03.md)
-    - [4. ストレージ](04.md)
-    - [5. Environment Modules](05.md)
-    - [6. Python](06.md)
-    - [7. GPU](07.md)
-    - [8. MPI](08.md)
-    - [9. Linuxコンテナ](09.md)
-    - [10. プログラム開発環境](10.md)
+  - [ABCIシステムの概要](system-overview.md)
+  - [ABCIの利用開始](getting-started.md)
+  - [ジョブ実行](job-execution.md)
+  - [ストレージ](storage.md)
+  - [Environment Modules](environment-modules.md)
+  - [Python](python.md)
+  - [GPU](gpu.md)
+  - [MPI](mpi.md)
+  - [コンテナ](containers.md)
+  - [開発ツール](development-tools.md)
+  - 付録:
     - [付録. インストール済みソフトウェアの構成](appendix/installed-software.md)
     - [付録. HPCIによるABCIシステム利用](appendix/using-abci-with-hpci.md)
     - [付録. 外部ネットワークとの通信](appendix/external-networks.md)

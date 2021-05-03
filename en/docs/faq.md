@@ -80,7 +80,7 @@ Host as.abci.ai
 
 ## Q. I want to use a newer version of Open MPI
 
-ABCI offers CUDA-aware and CUDA non-aware versions of Open MPI, and you can check the availability provided by [Using MPI](08.md#open-mpi).
+ABCI offers CUDA-aware and CUDA non-aware versions of Open MPI, and you can check the availability provided by [Open MPI](mpi.md#open-mpi).
 
 The Environment Modules provided by ABCI will attempt to configure CUDA-aware Open MPI environment when loading `openmpi` module only if `cuda` module has been loaded beforehand.
 
@@ -129,7 +129,7 @@ You can access it by following the procedure below.
 
 You need to set up SSH tunnel.
 The following example, written in `$HOME/.ssh/config` on your PC, sets up the SSH tunnel connection to ABCI internal servers through as.abci.ai by using ProxyCommand.
-Please also refer to the procedure in [Login using an SSH Client::General method](./02.md#general-method) in ABCI System User Environment.
+Please also refer to the procedure in [Login using an SSH Client::General method](getting-started.md#general-method) in ABCI System User Environment.
 
 ```shell
 Host *.abci.local

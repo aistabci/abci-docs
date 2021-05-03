@@ -61,7 +61,7 @@ Next, start Jupyter Notebook as follows:
 
 ### Generate an SSH tunnel
 
-Assume that the local PC port 100022 has been transferred to the interactive node (*es*) according to the procedure in [Login using an SSH Client::General method](../02.md#general-method) in ABCI System User Environment.
+Assume that the local PC port 100022 has been transferred to the interactive node (*es*) according to the procedure in [Login using an SSH Client::General method](../getting-started.md#general-method) in ABCI System User Environment.
 
 Next, create an SSH tunnel that forwards port 8888 on the local PC to port 8888 on the compute node. For "*g0001*", specify the host name of the compute node confirmed when starting Jupyter Notebook.
 

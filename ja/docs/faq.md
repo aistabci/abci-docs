@@ -81,7 +81,7 @@ Host as.abci.ai
 
 ## Q. Open MPIの新しいバージョンが使いたい
 
-ABCIではCUDA対応版Open MPIとCUDA非対応版Open MPIを提供しており、提供の状況は、[MPIの利用](08.md#open-mpi)で確認できます。
+ABCIではCUDA対応版Open MPIとCUDA非対応版Open MPIを提供しており、提供の状況は、[Open MPI](mpi.md#open-mpi)で確認できます。
 
 ABCIが提供するEnvironment Modulesでは、事前に`cuda`モジュールがロードされている場合に限り、`openmpi`モジュールのロード時にCUDA対応版Open MPIの環境設定を試みます。
 
@@ -128,7 +128,7 @@ ABCI内部サーバ`vws1`の3000/tcpポートで動作していますので、�
 
 SSHトンネルの設定をしてください。
 以下の例では、ローカルPCの`$HOME/.ssh/config`に、ProxyCommandを用いてas.abci.ai経由でABCI内部サーバにSSHトンネル接続する設定をしています。
-ABCIシステム利用環境の[SSHクライアントによるログイン::一般的なログイン方法](./02.md#general-method)も参考にしてください。
+ABCIシステム利用環境の[SSHクライアントによるログイン::一般的なログイン方法](getting-started.md#general-method)も参考にしてください。
 
 ```shell
 Host *.abci.local
