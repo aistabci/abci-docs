@@ -12,7 +12,7 @@
   - [ABCIシステムの概要](01.md)
   - [ABCIシステム利用環境](02.md)
   - [ジョブ実行環境](03.md)
-  - [ストレージ](04.md)
+  - [ストレージ](storage.md)
   - [Environment Modules](environment-modules.md)
   - [Python](python.md)
   - [GPU](gpu.md)
