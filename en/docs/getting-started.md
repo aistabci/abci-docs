@@ -2,7 +2,7 @@
 
 ## Getting an ABCI account {#getting-an-account}
 
-### Themes and ABCI groups {#themes-and-groups}
+### Application for use of ABCI
 To use an ABCI account, determine the research and development theme according to the agreements of use (rules or regulations) posted in the "Application Procedure", and submit a new "ABCI Application" on the ABCI User Portal. The ABCI application will be reviewed based on the terms of use, and if requirements are met, an ABCI group for which the application was made will be created and the applicant will be notified that the application has been adopted. After receiving notification, the applicant may start using the account.
 
 Please refer to the price list in [ABCI USAGE FEES](https://abci.ai/en/how_to_use/tariffs.html) and purchase ABCI points to pay the usage fee. Please purchase ABCI points for each ABCI group. At the time of application, a minimum of 1,000 ABCI points must be purchased.
