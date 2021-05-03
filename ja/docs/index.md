@@ -18,7 +18,7 @@
   - [GPU](07.md)
   - [MPI](08.md)
   - [Linuxコンテナ](09.md)
-  - [プログラム開発環境](10.md)
+  - [開発ツール](development-tools.md)
   - 付録:
     - [付録. インストール済みソフトウェアの構成](appendix/installed-software.md)
     - [付録. HPCIによるABCIシステム利用](appendix/using-abci-with-hpci.md)

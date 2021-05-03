@@ -18,8 +18,7 @@ This User Guide describes the technical details of ABCI and how to use it. All u
   - [GPU](07.md)
   - [MPI](08.md)
   - [Linux Containers](09.md)
-  - [Software Development Environment](10.md)
-  - [Application Framework](11.md)
+  - [Development Tools](development-tools.md)
   - Appendix:
     - [Appendix. Configuration of Installed Software](appendix/installed-software.md)
     - [Appendix. Using ABCI with HPCI](appendix/using-abci-with-hpci.md)
