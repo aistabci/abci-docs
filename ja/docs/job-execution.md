@@ -56,8 +56,10 @@ ABCIシステムには、[計算ノード](system-overview.md#compute-node)と[�
 
 | 資源タイプ | 資源タイプ名 | 説明 | 割り当て物理CPUコア数 | 割り当てGPU数 | メモリ (GiB) | ローカルストレージ (GB) | 資源タイプ課金係数 |
 |:--|:--|:--|:--|:--|:--|:--|:--|
-| Full | rt\_AF | ノード占有 | 72 | 8 | 480 | 1590(ローカルスクラッチ)<br>1850(BeeONDストレージ、永続ローカルスクラッチ (Reserved専用)) | 3.00 |
+| Full | rt\_AF | ノード占有 | 72 | 8 | 480 | 3440[^1] | 3.00 |
 | AG.small | rt\_AG.small | ノード共有<br>GPU利用 | 9 | 1 | 60 | 390 | 0.50 |
+
+[^1]: /local1 (1590 GB) と /local2 (1850 GB) の合算。
 
 #### メモリインテンシブノード {#memory-intensive-node}
 
@@ -184,7 +186,7 @@ Reservedサービスでは、インタラクティブジョブ、バッチジョ
 | オプション | 説明 |
 |:--|:--|
 | -l USE\_SSH=*1*<br>-v SSH\_PORT=*port* | 計算ノードへのSSHログインを有効にする。詳細は[計算ノードへのSSHアクセス](appendix/ssh-access.md)を参照。 |
-| -l USE\_BEEOND=*1*<br>-v BEEOND\_METADATA\_SERVER=*num*<br>-v BEEOND\_STORAGE\_SERVER=*num* | BeeGFS On Demand (BeeOND)を利用するジョブの投入。詳細は[BeeONDストレージ利用](storage.md#using-as-a-beeond-storage)を参照。 |
+| -l USE\_BEEOND=*1*<br>-v BEEOND\_METADATA\_SERVER=*num*<br>-v BEEOND\_STORAGE\_SERVER=*num* | BeeGFS On Demand (BeeOND)を利用するジョブの投入。詳細は[BeeONDストレージ利用](storage.md#beeond-storage)を参照。 |
 | -v GPU\_COMPUTE\_MODE=*mode* | 計算ノードのGPU Compute Modeの変更。詳細は[GPU Compute Modeの変更](gpu.md#changing-gpu-compute-mode)を参照。 |
 | -l docker<br>-l docker\_images | Dockerを利用するジョブの投入。詳細は[Docker](containers.md#docker)を参照。 |
 

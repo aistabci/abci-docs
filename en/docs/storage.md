@@ -87,8 +87,8 @@ To find the path to your group area, use the `show_quota` command. For details, 
 
 In ABCI System, a 1.6 TB NVMe SSD x1 is installed into each compute node (V), a 2.0 TB NVMe SSD x2 are installed into each compute node (A) and a 1.9 TB SATA 3.0 SSD x1 is installed into each memory-intensive node. There are two ways to utilize these storages as follows:
 
-* Using as a local scratch of a node (*Using as a local scratch*, *Using as a persistent local scratch (Reserved only)*).
-* Using as a distributed shared file system, which consists of multiple NVMe storages in multiple compute nodes (*Using as a BeeOND storage*).
+* Using as a local scratch of a node (*Local scratch*, *Persistent local scratch (Reserved only)*).
+* Using as a distributed shared file system, which consists of multiple NVMe storages in multiple compute nodes (*BeeOND storage*).
 
 The follwing table shows how to utilize local storage by two types of node.
 
@@ -98,13 +98,13 @@ The follwing table shows how to utilize local storage by two types of node.
 | using as a BeeOND storage | ok | - |
 | using as a Persistent Local scratch (Reserved only) | ok | - |
 
-### Using as a local scratch
+### Local scratch
 
 You can use local storages attached to compute or memory-intensive nodes on which your jobs are running as temporal local scratch without specifying any additional options.
 Note that the amount of the local storage you can use is determined by "Resource type". For more detail on "Resource type", please refer to [Job Execution Resource](job-execution.md#job-execution-resource).
 The local storage path is different for each job and you can access to local storage by using [environment variables](job-execution.md#environment-variables) `SGE_LOCALDIR`.
 
-Example) sample of job script (use_local_storage.sh)
+Example) sample of job script (use\_local\_storage.sh)
 
 ```bash
 #!/bin/bash
@@ -123,7 +123,7 @@ Example) Submitting a job
 [username@es1 ~]$ qsub -g grpname use_local_storage.sh
 ```
 
-Example) Status after execution of use_local_storage.sh
+Example) Status after execution of use\_local\_storage.sh
 
 ```
 [username@es1 ~]$ ls $HOME/test/
@@ -131,13 +131,17 @@ foo.txt    <- The file remain only when it is copied explicitly in script.
 ```
 
 !!! warning
-    The file stored under `$SGE_LOCALDIR` directory is removed when job finished. The required files need to be moved to Home area or Group area in job script using `cp` command.
+    The files stored under `$SGE_LOCALDIR` directory are removed when the job finished. The required files need to be moved to Home area or Group area in a job script using `cp` command.
 
-### Using as a persistent local scratch (Reserved only)
+!!! note
+    In `rt_AF`, not only `$SGE_LOCALDIR` but also`/local2` can be used as a local scratch. The files stored under `/local2` are removed as well when the job finished.
 
+### Persistent local scratch (Reserved only) {#persistent-local-scratch}
+
+This function is for the Reserved service only.
 The Reserved service allows the local storage of the compute node to have persistent space that is not deleted on a per-job basis. This space is created when the Reserved service starts and is removed when the Reserved service ends.
 
-Example) sample of job script (use_reserved_storage_write.sh)
+Example) sample of job script (use\_reserved\_storage\_write.sh)
 
 ```bash
 #!/bin/bash
@@ -155,7 +159,7 @@ Example) Submitting a job
 [username@es1 ~]$ qsub -g grpname -ar 12345 use_reserved_storage_write.sh
 ```
 
-Example) sample of job script (use_reserved_storage_read.sh)
+Example) sample of job script (use\_reserved\_storage\_read.sh)
 
 ```bash
 #!/bin/bash
@@ -176,11 +180,11 @@ Example) Submitting a job
     The files created under `$SGE_ARDIR` will be deleted when the Reserved service is finished, so the necessary files should be copied to the home area or group area using `cp` command etc.
 
 !!! warning
-    The compute node (A) contains two NVMe SSDs with separate local storage for local scratch and persistent local scratch (Reserved only).
-    Since the compute node (V) contains only one NVMe SSD, the local storage for local scratch usage and the local storage for persistent local scratch (Reserved only) usage are the same storage.
-    Pay attention to usage when using persistent local scratch (Reserved only).
+    Compute node (A) has two NVMe SSDs and persistent local scratch uses `/local2`. Local scratch and persistent local scratch may be assigned to the same storage.
+    Compute node (V) has only one NVMe SSD, so local scratch and persistent local scratch are always assigned to the same storage and share its capacity.
+    In both cases, pay attention to usage when using persistent local scratch.
 
-### Using as a BeeOND storage
+### BeeOND storage
 
 By using the BeeGFS On Demand (BeeOND), you can aggregate local storages attached to compute nodes on which your job is running to use as a temporal distributed shared file system.
 To use BeeOND, you need to submit job with `-l USE_BEEOND=1` option.
@@ -188,7 +192,7 @@ And you need to specify `-l rt_F` or `-l rt_AF` option in this case, because nod
 
 The created distributed shared file system area can be accessed using [Environment Variables](job-execution.md#environment-variables).
 
-Example) sample of job script (use_beeond.sh)
+Example) sample of job script (use\_beeond.sh)
 
 ```bash
 #!/bin/bash
@@ -208,7 +212,7 @@ Example) Submitting a job
 [username@es1 ~]$ qsub -g grpname use_beeond.sh
 ```
 
-Example) Status after execution of use_beeond.sh
+Example) Status after execution of use\_beeond.sh
 
 ```
 [username@es1 ~]$ ls $HOME/test/
@@ -219,8 +223,8 @@ foo.txt    <- The file remain only when it is copied explicitly in script.
     The file stored under `$SGE_BEEONDDIR` directory is removed when job finished. The required files need to be moved to Home area or Group area in job script using `cp` command.
 
 !!! warning
-    The compute node (A) contains two NVMe SSDs with separate local storage for local scratch and BeeOND storage.
-    Since the compute node (V) has only one NVMe SSD, the local storage for local scratch usage and the local storage for BeeOND storage usage are the same storage.
+    Compute node (A) has two NVMe SSDs and BeeOND storage uses `/local2`.
+    Compute node (V) has only one NVMe SSD, so local scratch and BeeOND storage are always assigned to the same storage and share its capacity.
 
 #### [Advanced Option] Configure BeeOND Servers
 

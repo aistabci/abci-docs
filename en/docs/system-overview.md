@@ -200,7 +200,7 @@ The software available on the ABCI system is shown below.
 | | Spark | 3.0 | 3.0 |
 | File System | [DDN Lustre](storage.md#home-area) | 2.12.6\_ddn13-1 | 2.12.6\_ddn13-1 |
 | | [DDN GRIDScaler](storage.md#group-area) | 4.2.3-20 | - |
-| | [BeeOND](storage.md#using-as-a-beeond-storage) | 7.2.1 | 7.2.1 |
+| | [BeeOND](storage.md#beeond-storage) | 7.2.1 | 7.2.1 |
 | Object Storage | Scality S3 Connector | 7.4.8.1 | 7.4.8.1 |
 | Container | [Docker](containers.md#docker) | 19.03.15 | 19.03.15 |
 | | [SingularityPRO](containers.md#singularity) | 3.7-1 | 3.7-1 |
