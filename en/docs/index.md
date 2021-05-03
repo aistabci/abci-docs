@@ -15,7 +15,7 @@ This User Guide describes the technical details of ABCI and how to use it. All u
   - [Storage](04.md)
   - [Environment Modules](05.md)
   - [Python](06.md)
-  - [GPU](07.md)
+  - [GPU](gpu.md)
   - [MPI](mpi.md)
   - [Containers](containers.md)
   - [Development Tools](development-tools.md)
