@@ -139,6 +139,7 @@ foo.txt    <- スクリプト内で明示的にコピーしたファイルのみ
 ### 永続ローカルスクラッチ (Reserved専用) {#persistent-local-scratch}
 
 本機能は、Reservedサービス専用です。Reservedサービスでは、計算ノードのローカルストレージに、ジョブ毎に削除されない永続領域を使用可能です。この領域はReservedサービス開始時に作成され、Reservedサービス終了時に削除されます。
+永続ローカルスクラッチは、[環境変数](job-execution.md#environment-variables)`SGE_ARDIR`を利用してアクセスすることができます。
 
 例）ジョブスクリプトの例 (use\_reserved\_storage\_write.sh)
 

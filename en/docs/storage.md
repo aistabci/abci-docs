@@ -140,6 +140,7 @@ foo.txt    <- The file remain only when it is copied explicitly in script.
 
 This function is for the Reserved service only.
 The Reserved service allows the local storage of the compute node to have persistent space that is not deleted on a per-job basis. This space is created when the Reserved service starts and is removed when the Reserved service ends.
+The persistent local storage can be accessed by using [environment variables](job-execution.md#environment-variables) `SGE_LOCALDIR`.
 
 Example) sample of job script (use\_reserved\_storage\_write.sh)
 
