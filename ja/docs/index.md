@@ -10,7 +10,7 @@
 このユーザガイドは、ABCIの技術的詳細や利用方法について説明しています。ABCIを利用する方は是非ご一読ください。ABCIシステムについての理解を深めるのに役立ちます。
 
   - [ABCIシステムの概要](01.md)
-  - [ABCIシステム利用環境](02.md)
+  - [ABCIの利用開始](getting-started.md)
   - [ジョブ実行](job-execution.md)
   - [ストレージ](storage.md)
   - [Environment Modules](environment-modules.md)

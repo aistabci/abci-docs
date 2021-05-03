@@ -10,7 +10,7 @@
 This User Guide describes the technical details of ABCI and how to use it. All users who use ABCI are strongly recommended to read this document, as it is helpful to gain better understanding of the system.
 
   - [ABCI System Overview](01.md)
-  - [ABCI System User Environment](02.md)
+  - [Getting Started ABCI](getting-started.md)
   - [Job Execution](job-execution.md)
   - [Storage](storage.md)
   - [Environment Modules](environment-modules.md)

@@ -11,7 +11,7 @@ google_analytics:
 nav:
   - 'Introduction': 'index.md'
   - 'ABCI System Overview': '01.md'
-  - 'ABCI System User Environment': '02.md'
+  - 'Getting Started ABCI': 'getting-started.md'
   - 'Job Execution': 'job-execution.md'
   - 'Storage': 'storage.md'
   - 'Environment Modules': 'environment-modules.md'

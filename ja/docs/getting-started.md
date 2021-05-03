@@ -1,0 +1,296 @@
+# ABCIの利用開始
+
+## ABCIアカウントの取得 {#getting-an-account}
+
+### テーマとABCIグループ {#themes-and-groups}
+ABCIを利用するためには、[「ご利用の流れ」](https://abci.ai/ja/how_to_use/)に掲載された利用規定（約款または規約）に従い、研究・開発テーマを決定し、[ABCI利用ポータル](https://portal.abci.ai/user/project_register_app.php) から「ABCI利用申請」を提出します。ABCI申請受付担当は利用規定に基づいて審査し、要件が満たされている場合に、申請されたABCIグループを作成し、申請者に採択された旨を通知します。申請者が通知を受け取ったら、利用開始となります。
+
+利用料金は、[料金表](https://abci.ai/ja/how_to_use/tariffs.html)を確認の上、ABCIポイントを購入することで支払いいただきます。ABCIポイントはABCIグループごとに購入してください。申請時には、ABCIポイントを 1,000ポイント以上購入する必要があります。
+
+### ABCIアカウントの種類 {#account-type}
+ABCIアカウントには、「利用責任者」「利用管理者」「利用者」の3種類があります。ABCIシステムを利用するには、「利用責任者」が [ABCI利用ポータル](https://portal.abci.ai/user/project_register_app.php) から「利用グループ申請」を行い、ABCIアカウントを取得する必要があります。
+詳細は [ABCI利用ポータル利用手引き](https://docs.abci.ai/portal/ja/) を参照してください。
+
+!!! note
+    - 「利用責任者」自身にもABCIアカウントが発行されます。
+    - 「利用責任者」は [ABCI利用ポータル](https://portal.abci.ai/user/) にて「利用者」を「利用管理者」に変更することが可能です。
+    - 「利用責任者」と「利用管理者」は、ABCIグループに「利用管理者」もしくは「利用者」を追加することが可能です。
+    - 「利用責任者」と「利用管理者」は、ABCIグループの「利用責任者」を変更することが可能です。
+
+### ABCIアカウントの一意性 {#account-uniqueness}
+原則として、1人の方は1つのABCIアカウントを利用ください。例えば、会社で1つのABCIアカウントを取得し、複数の社員が共有して使い回すことは認められません。
+一方で1人の方が複数の法人に所属している場合は複数のABCIアカウントを取得することができます。この場合、それぞれの法人に対応するABCIアカウントを使い分ける必要があります。
+
+### 複数のABCIグループに所属する場合 {#multi-titled-person}
+1人の方が1つの法人の中で複数のテーマに同時に取り組んでいる場合、1人で複数のABCIアカウントをそれぞれ取得するのではなく、1つのABCIアカウントで複数のABCIグループに所属することになります。この場合、その利用目的に応じてABCIグループを使い分ける必要があります。どのABCIグループを利用すべきか不明の場合は、ABCIグループの「利用責任者」または「利用管理者」へお問い合わせください。自分が所属しているABCIグループの「利用責任者」または「利用管理者」は、[ABCI利用ポータル](https://portal.abci.ai/user/) へログイン後の最初の画面に表示されます。
+
+ご利用料金をどのABCIグループが負担するかに関わるため、ABCIグループの「利用責任者」または「利用管理者」の指示に従い、適切なABCIグループを利用ください。
+
+
+
+## インタラクティブノードへの接続 {#connecting-to-interactive-node}
+
+ABCIシステムのフロントエンドであるインタラクティブノード(計算ノード(V)向けホスト名: *es*、計算ノード(A)向けホスト名: *es-a*)に接続するには、二段階のSSH公開鍵認証による接続を行います。
+
+1. SSH公開鍵認証を用いてアクセスサーバ(ホスト名: *as.abci.ai*)にログインして、ローカルPCとインタラクティブノードの間にSSHポートフォワーディングによるトンネリング（以下「SSHトンネル」という）を作成
+2. SSHトンネルを介して、SSH公開鍵認証を用いてインタラクティブノード(*es*もしくは*es-a*)にログイン
+
+なお本章では、ABCIのサーバ名は *イタリック* で表記します。
+
+### 前提 {#prerequisites}
+
+インタラクティブノードに接続するには、以下が必要になります。
+
+* SSHクライアント。Linux、macOSを含むUNIX系OS、Windows 10 version 1803 (April 2018 Update)以降など、ほとんどのPCには、デフォルトでSSHクライアントがインストールされています。インストールされているかどうかを確認するには、コマンドラインから``ssh``コマンドを実行してください。
+* 安全なSSH公開鍵・秘密鍵ペアの生成。ABCIで利用可能な鍵ペアは以下のとおりです。
+	* RSA鍵 (2048bit以上)
+	* ECDSA鍵 (256bit、384bit、または521bit)
+	* Ed25519鍵
+* SSH公開鍵の登録。[ABCI利用ポータル](https://portal.abci.ai/user/)にてSSH公開鍵の登録を事前に行ってください。登録方法は、[SSH公開鍵の登録](https://docs.abci.ai/portal/ja/02/#23)を参照してください。
+
+!!! note
+    SSHクライアントとして、Tera TermやPuTTYを利用する場合は、[Tera Termの利用](tips/tera-term.md)、[PuTTYの利用](tips/putty.md)を参照。
+
+### SSHクライアントによるログイン {#login-using-an-ssh-client}
+
+以下では、SSHクライアントを用いて、(1) アクセスサーバでSSHトンネルの作成後にインタラクティブノードにログインする方法と、(2) OpenSSH 7.3以降で実装されたProxyJumpを使ったより簡便なログイン方法、を説明します。
+
+#### 一般的なログイン方法 {#general-method}
+
+以下のコマンドでアクセスサーバ(*as.abci.ai*)にログインし、SSHトンネルを作成します。
+
+インタラクティブノード(V)向け
+<div class="codehilite"><pre>
+[yourpc ~]$ ssh -i /path/identity_file -L 10022:<i>es</i>:22 -l username <i>as.abci.ai</i>
+The authenticity of host 'as.abci.ai (0.0.0.1)' can't be established.
+RSA key fingerprint is XX:XX:XX:XX:XX:XX:XX:XX:XX:XX:XX:XX:XX:XX:XX:XX. <- 初回ログイン時のみ表示
+Are you sure you want to continue connecting (yes/no)?  <- yesを入力
+Warning: Permanently added ‘XX.XX.XX.XX' (RSA) to the list of known hosts.
+Enter passphrase for key '/path/identity_file': <- パスフレーズ入力
+</pre></div>
+
+インタラクティブノード(A)向け
+<div class="codehilite"><pre>
+[yourpc ~]$ ssh -i /path/identity_file -L 10022:<i>es-a</i>:22 -l username <i>as.abci.ai</i>
+The authenticity of host 'as.abci.ai (0.0.0.1)' can't be established.
+RSA key fingerprint is XX:XX:XX:XX:XX:XX:XX:XX:XX:XX:XX:XX:XX:XX:XX:XX. <- 初回ログイン時のみ表示
+Are you sure you want to continue connecting (yes/no)?  <- yesを入力
+Warning: Permanently added ‘XX.XX.XX.XX' (RSA) to the list of known hosts.
+Enter passphrase for key '/path/identity_file': <- パスフレーズ入力
+</pre></div>
+
+アクセスサーバへのログインが成功すると、ターミナル上に下記のメッセージが表示されます。
+
+```
+Welcome to ABCI access server.
+Please press any key if you disconnect this session.
+```
+
+!!! warning
+    上記状態で何らかのキーを入力するとSSH接続が切断されてしますので注意してください。
+
+続いて、別のターミナルを起動し、SSHトンネルを用いてインタラクティブノードにログインします。
+
+```
+[yourpc ~]$ ssh -i /path/identity_file -p 10022 -l username localhost
+The authenticity of host 'localhost (127.0.0.1)' can't be established.
+RSA key fingerprint is XX:XX:XX:XX:XX:XX:XX:XX:XX:XX:XX:XX:XX:XX:XX:XX. <- 初回ログイン時のみ表示
+Are you sure you want to continue connecting (yes/no)? <- yesを入力
+Warning: Permanently added 'localhost' (RSA) to the list of known hosts.
+Enter passphrase for key '-i /path/identity_file': <- パスフレーズ入力
+[username@es1 ~]$
+```
+
+#### ProxyJumpの使用 {#proxyjump}
+
+ここではOpenSSH 7.3で実装されたProxyJumpを使ったログイン方法を説明します。Windows Subsystem for Linux (WSL)でも同様のログイン方法が使えます。
+
+まずローカルPCの``$HOME/.ssh/config``に以下の記述を行います。
+
+<div class="codehilite"><pre>
+Host <i>abci</i>
+     HostName <i>es</i>
+     User username
+     ProxyJump %r@<i>as.abci.ai</i>
+     IdentityFile /path/to/identity_file
+
+Host <i>abci-a</i>
+     HostName <i>es-a</i>
+     User username
+     ProxyJump %r@<i>as.abci.ai</i>
+     IdentityFile /path/to/identity_file
+
+Host <i>as.abci.ai</i>
+     IdentityFile /path/to/identity_file
+</pre></div>
+
+以降は、以下のコマンドのみでログインできます。
+
+<div class="codehilite"><pre>
+[yourpc ~]$ ssh <i>abci</i>
+</pre></div>
+
+Windows 10 バージョン 1803 以降に標準でバンドルされている OpenSSH_for_Windows_7.7p1 では ProxyJump が機能しないため、代わりに ProxyCommand を使用してください。以下に ProxyCommand を使った config ファイルの例を示します。ssh.exe は絶対パスで記述して下さい。
+
+<div class="codehilite"><pre>
+Host <i>abci</i>
+     HostName <i>es</i>
+     User username
+     ProxyCommand C:\WINDOWS\System32\OpenSSH\ssh.exe -W %h:%p %r@<i>as.abci.ai</i>
+     IdentityFile C:\path\to\identity_file
+
+Host <i>abci-a</i>
+     HostName <i>es-a</i>
+     User username
+     ProxyCommand C:\WINDOWS\System32\OpenSSH\ssh.exe -W %h:%p %r@<i>as.abci.ai</i>
+     IdentityFile C:\path\to\identity_file
+
+Host <i>as.abci.ai</i>
+     IdentityFile C:\path\to\identity_file
+</pre></div>
+
+## インタラクティブノードへのファイル転送 {#file-transfer-to-interactive-node}
+
+ローカルPCとABCIシステム間でファイル転送をするには、`scp`(`sftp`)コマンドを利用します。この場合もSSHトンネルを介して行う必要があります。
+
+SSHトンネルの設定後、以下のように実行します。
+
+```
+[yourpc ~]$ scp -i /path/identity_file -P 10022 local-file username@localhost:remote-dir
+Enter passphrase for key: <- パスフレーズを入力
+    
+local-file    100% |***********************|  file-size  transfer-time
+```
+
+ProxyJumpが使える場合は、SSHトンネルを明示的に設定する必要はありません。[ProxyJumpの使用](#proxyjump)で説明したとおり``$HOME/.ssh/config``の設定がしてあれば、直接`scp` (`sftp`)コマンドでファイル転送が行えます。
+
+<div class="codehilite"><pre>
+[yourpc ~]$ scp local-file <i>abci</i>:remote-dir
+</pre></div>
+
+## パスワード変更 {#changing-password}
+
+ABCIシステムのパスワードはLDAPで管理されています。 SSHログインではパスワードは使用しませんが、
+[ABCI利用ポータル](https://portal.abci.ai/user/)へのログイン、ログインシェルの変更の際にパスワードが必要になります。
+パスワードを変更する場合は、`passwd`コマンドを使用します。
+
+```
+[username@es1 ~]$ passwd
+Changing password for user username.
+Current Password: <- 現在のパスワードを入力
+New password: <- 新しいパスワードを入力
+Retype new password: <- 新しいパスワードを再度入力
+passwd: all authentication tokens updated successfully.
+```
+
+!!! warning
+    パスワード規約は以下の通りです。
+
+    - 15文字以上のランダムに並べた文字列を指定してください。例えばLinuxの辞書に登録されている単語は使用できません。文字をランダムに選ぶ方法として、パスワード作成用のソフトウェアを用いるなどして、自動的に生成することを推奨します。
+    - 英大文字[A-Z]、英小文字[a-z]、数字[0-9]、記号の4種類をすべて使用してください。
+    - 使用可能な記号は次の33種類です。
+      (空白) ! " # $ % & ' ( ) * + , - . / : ; < = > ? @ [ \ ] ^ _ ` { | } ~
+    - 全角文字は使用できません。
+
+## ログインシェル {#login-shell}
+
+ABCIシステムのデフォルトログインシェルは、bashが設定されています。
+ログインシェルは`chsh`コマンドを使用してtcshもしくはzshに変更することができます。
+ログインシェルの変更は次回ログインから有効となります。また、ログインシェルの反映には10分程度時間がかかります。
+
+```
+$ chsh [options] <new_shell>
+```
+
+| オプション | 説明 |
+|:--|:--|
+| -l | 利用可能なログインシェル一覧を表示する |
+| -s *new_shell* | ログインシェルを*new_shell*に変更する |
+
+例) ログインシェルを tcsh に変更する。
+
+```
+[username@es1 ~]$ chsh -s /bin/tcsh
+Password for username@ABCI.LOCAL: <- パスワードを入力
+```
+
+ABCIシステムへログインすると、ABCIシステムを利用するための環境設定が自動で設定されます。環境変数`PATH`や環境変数`LD_LIBRARY_PATH`等をカスタマイズする場合は、以下に示す個人用設定ファイルに設定してください。
+
+| ログインシェル  | 個人用設定ファイル |
+|:--|:--|
+| bash  |  $HOME/.bash_profile |
+| tcsh  |  $HOME/.cshrc |
+| zsh   |  $HOME/.zshrc |
+
+!!! warning
+    設定ファイルに環境変数`PATH`にパスを追加する際は、環境変数`PATH`の最後に追加してください。先頭に追加した場合、システムを正常に使用できなくなる恐れがあります。
+
+個人用設定ファイルのオリジナル（雛形）は`/etc/skel`配下に格納しています。
+
+## ABCIポイントの確認 {#checking-abci-point}
+
+ABCIポイントの使用状況と購入数を確認するには、`show_point`コマンドを利用します。
+ABCIポイント消費率が100%を超える見込みの場合、新規ジョブ投入が行えず、投入済みジョブは実行開始時にエラーになります（実行中ジョブは影響を受けません）。
+
+例) ABCIポイントを確認する。
+
+```
+[username@es1 ~]$ show_point
+Group                 Disk            CloudStorage                    Used           Point   Used%
+grpname                  5                  0.0124             12,345.6789         100,000      12
+  `- username          -                         -                  0.1234               -       0
+```
+
+| 項目  | 説明 |
+|:--|:--|
+| Group | ABCI利用グループ名 |
+| Disk  | グループ領域割当量(TB) |
+| CloudStorage | ABCIクラウドストレージの ABCIポイント使用量 |
+| Used  | ABCIポイント使用量 |
+| Point | ABCIポイント購入量 |
+| Used% | ABCIポイント消費率 |
+
+## ディスククォータの確認 {#checking-disk-quota}
+
+ホーム領域およびグループ領域の使用状況と割り当て量を表示するには、
+`show_quota`コマンドを利用します。
+
+例) ディスククォータを確認する。
+
+```
+[username@es1 ~]$ show_quota
+Disk quotas for user username
+  Directory                     used(GiB)       limit(GiB)          nfiles
+  /home                               100              200           1,234
+
+Disk quotas for ABCI group grpname
+  Directory                     used(GiB)       limit(GiB)          nfiles
+  /groups/grpname                   1,024            2,048         123,456
+```
+
+| 項目  | 説明 |
+|:--|:--|
+| Directory  | 領域種別 |
+| used(GiB)  | ディスク使用量 |
+| limit(GiB) | ディスク上限値 |
+| nfiles     | ファイル数 |
+
+## ABCI クラウドストレージ利用状況の確認 {#checking-cloud-storage-usage}
+
+ABCI クラウドストレージの使用状況表示するには、`show_cs_usage` コマンドを利用します。
+
+例1) オプション指定なしで、所属するABCIグループ grpname の直近の利用状態を確認できます。
+```
+[username@es1 ~]$ show_cs_usage
+Cloud Storage Usage for ABCI groups
+Date           Group                   used(GiB)
+2020/01/13     grpname                       162
+```
+
+例2) オプション -d で日付を指定できます。日付の書式は、 yyyymmdd で指定してください。(ABCIグループは grpname)
+```
+[username@es1 ~]$ show_cs_usage -d 20191217
+Cloud Storage Usage for ABCI groups
+Date           Group                   used(GiB)
+2019/12/17     grpname                       124
+```

@@ -11,7 +11,7 @@ google_analytics:
 nav:
   - 'はじめに': 'index.md'
   - 'ABCIシステムの概要': '01.md'
-  - 'ABCIシステム利用環境': '02.md'
+  - 'ABCIの利用開始': 'getting-started.md'
   - 'ジョブ実行': 'job-execution.md'
   - 'ストレージ': 'storage.md'
   - 'Environment Modules': 'environment-modules.md'
