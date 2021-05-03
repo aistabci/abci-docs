@@ -17,7 +17,7 @@ This User Guide describes the technical details of ABCI and how to use it. All u
   - [Python](06.md)
   - [GPU](07.md)
   - [MPI](08.md)
-  - [Linux Containers](09.md)
+  - [Containers](containers.md)
   - [Development Tools](development-tools.md)
   - Appendix:
     - [Appendix. Configuration of Installed Software](appendix/installed-software.md)

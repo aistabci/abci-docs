@@ -519,4 +519,4 @@ Create a Singularity recipe file (myenv.def) from `spack.yaml` using `spack cont
 [username@es1 ~]$ spack containerize > myenv.def
 ```
 
-To create a Singularity image from the generated recipe file on ABCI, please refer to [Create a Singularity image (build)](../09.md#create-a-singularity-image-build).
+To create a Singularity image from the generated recipe file on ABCI, please refer to [Create a Singularity image (build)](../containers.md#create-a-singularity-image-build).
