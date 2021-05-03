@@ -80,3 +80,22 @@ markdown_extensions:
   - codehilite
   - attr_list
   - footnotes
+plugins:
+  - redirects:
+      redirect_maps:
+        '01.md': 'system-overview.md'
+        '02.md': 'getting-started.md'
+        '03.md': 'job-execution.md'
+        '04.md': 'storage.md'
+        '05.md': 'environment-modules.md'
+        '06.md': 'python.md'
+        '07.md': 'gpu.md'
+        '08.md': 'mpi.md'
+        '09.md': 'containers.md'
+        '10.md': 'development-tools.md'
+        '11.md': 'apps/index.md'
+        '12.md': 'tips/remote-desktop.md'
+        '13.md': 'tips/awscli.md'
+        'appendix1.md': 'appendix/installed-software.md'
+        'appendix2.md': 'appendix/using-abci-with-hpci.md'
+        'ngc.md': 'tips/ngc.md'

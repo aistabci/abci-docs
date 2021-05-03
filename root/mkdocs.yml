@@ -22,4 +22,7 @@ theme:
     tabs: false
 markdown_extensions:
   - admonition
-plugins: []
+plugins:
+  - redirects:
+      redirect_maps:
+        'index.md': 'https://docs.abci.ai/ja/'

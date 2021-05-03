@@ -12,4 +12,7 @@ theme:
   palette:
     primary: 'blue'
     accent: 'blue'
-plugins: []
+plugins:
+  - redirects:
+      redirect_maps:
+        'index.md': 'https://docs.abci.ai/portal/ja/'

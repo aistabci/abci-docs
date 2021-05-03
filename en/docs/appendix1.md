@@ -1,1 +1,0 @@
-redirect: ../appendix/installed-software/
