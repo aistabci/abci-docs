@@ -14,7 +14,7 @@ This User Guide describes the technical details of ABCI and how to use it. All u
   - [Job Execution Environment](03.md)
   - [Storage](04.md)
   - [Environment Modules](05.md)
-  - [Python](06.md)
+  - [Python](python.md)
   - [GPU](gpu.md)
   - [MPI](mpi.md)
   - [Containers](containers.md)

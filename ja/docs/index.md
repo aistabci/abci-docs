@@ -14,7 +14,7 @@
   - [ジョブ実行環境](03.md)
   - [ストレージ](04.md)
   - [Environment Modules](05.md)
-  - [Python](06.md)
+  - [Python](python.md)
   - [GPU](gpu.md)
   - [MPI](mpi.md)
   - [コンテナ](containers.md)
