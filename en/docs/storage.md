@@ -2,7 +2,7 @@
 
 ## Home Area
 
-Home area is the disk area of the Lustre file system shared by interactive and compute nodes, and is available to all ABCI users by default. The disk quota is limited to 200GiB.
+Home area is the disk area of the Lustre file system shared by interactive and compute nodes, and is available to all ABCI users by default. The disk quota is limited to 200 GiB.
 
 !!! warning
     In Home area, there is an upper limit on the number of files that can be created under one directory.
@@ -81,7 +81,7 @@ stripe_count:  4 stripe_size:   1048576 stripe_offset: 10
 Group area is the disk area of the Lustre file system shared by interactive and compute nodes. Group area 1,2,3 is the GPFS file system disk space shared by the interactive nodes and each compute node (V).
 To use Group area, "Usage Manager" of the group needs to apply "Add group disk" via [ABCI User Portal](https://portal.abci.ai/user/). Regarding how to add group disk, please refer to [Disk Addition Request](https://docs.abci.ai/portal/en/03/#352-disk-addition-request) in the [ABCI Portal Guide](https://docs.abci.ai/portal/en/).
 
-To find the path to your group area, use the `show_quota` command. For details, see [Checking Disk Quota](02.md#checking-disk-quota).
+To find the path to your group area, use the `show_quota` command. For details, see [Checking Disk Quota](getting-started.md#checking-disk-quota).
 
 ## Local Storage
 
@@ -101,8 +101,8 @@ The follwing table shows how to utilize local storage by two types of node.
 ### Using as a local scratch
 
 You can use local storages attached to compute or memory-intensive nodes on which your jobs are running as temporal local scratch without specifying any additional options.
-Note that the amount of the local storage you can use is determined by "Resource type". For more detail on "Resource type", please refer to [Job Execution Resource](03.md#job-execution-resource).
-The local storage path is different for each job and you can access to local storage by using [environment variables](03.md#environment-variables) `SGE_LOCALDIR`.
+Note that the amount of the local storage you can use is determined by "Resource type". For more detail on "Resource type", please refer to [Job Execution Resource](job-execution.md#job-execution-resource).
+The local storage path is different for each job and you can access to local storage by using [environment variables](job-execution.md#environment-variables) `SGE_LOCALDIR`.
 
 Example) sample of job script (use_local_storage.sh)
 
@@ -186,7 +186,7 @@ By using the BeeGFS On Demand (BeeOND), you can aggregate local storages attache
 To use BeeOND, you need to submit job with `-l USE_BEEOND=1` option.
 And you need to specify `-l rt_F` or `-l rt_AF` option in this case, because node must be exclusively allocated to job.
 
-The created distributed shared file system area can be accessed using [Environment Variables](03.md#environment-variables).
+The created distributed shared file system area can be accessed using [Environment Variables](job-execution.md#environment-variables).
 
 Example) sample of job script (use_beeond.sh)
 

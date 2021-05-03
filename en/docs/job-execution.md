@@ -41,7 +41,7 @@ The following describes the available resource types first, followed by the rest
 
 ### Available Resource Types
 
-The ABCI system has two types of computational resources, [compute node](01.md#compute-node) and [memory-intensive node](01.md#memory-intensive-node), each of which has the following resource types:
+The ABCI system has two types of computational resources, [compute node](system-overview.md#compute-node) and [memory-intensive node](system-overview.md#memory-intensive-node), each of which has the following resource types:
 
 #### Compute Node (V)
 

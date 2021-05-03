@@ -10,7 +10,7 @@ google_analytics:
   - 'auto'
 nav:
   - 'はじめに': 'index.md'
-  - 'ABCIシステムの概要': '01.md'
+  - 'ABCIシステムの概要': 'system-overview.md'
   - 'ABCIの利用開始': 'getting-started.md'
   - 'ジョブ実行': 'job-execution.md'
   - 'ストレージ': 'storage.md'

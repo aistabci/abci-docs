@@ -40,7 +40,7 @@ ABCIシステムでは、計算リソースを論理的に分割した資源タ�
 
 ### 利用可能な資源タイプ {#available-resource-types}
 
-ABCIシステムには、[計算ノード](01.md#compute-node)と[メモリインテンシブノード](01.md#memory-intensive-node)の2種類の計算リソースがあり、それぞれについて次のように資源タイプが用意されています。
+ABCIシステムには、[計算ノード](system-overview.md#compute-node)と[メモリインテンシブノード](system-overview.md#memory-intensive-node)の2種類の計算リソースがあり、それぞれについて次のように資源タイプが用意されています。
 
 #### 計算ノード(V) {#compute-node-v}
 

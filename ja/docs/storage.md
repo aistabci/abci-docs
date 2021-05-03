@@ -81,7 +81,7 @@ stripe_count:  4 stripe_size:   1048576 stripe_offset: 10
 
 グループ領域は、インタラクティブノードおよび各計算ノードで共有されたLustreファイルシステムのディスク領域です。また、グループ領域1〜3は、インタラクティブノードおよび各計算ノード(V)で共有されたGPFSファイルシステムのディスク領域です。[ABCI利用ポータル](https://portal.abci.ai/user/)から利用管理者権限でグループディスク追加申請を行うことで利用可能になります。追加申請方法については、[ABCI利用ポータル利用手引き](https://docs.abci.ai/portal/ja/)の[ディスク追加申請](https://docs.abci.ai/portal/ja/03/#352)をご参照ください。
 
-グループ領域のパスを確認するには、`show_quota` コマンドを実行してください。コマンドの説明については [ディスククォータの確認](02.md#checking-disk-quota) を参照してください。
+グループ領域のパスを確認するには、`show_quota` コマンドを実行してください。コマンドの説明については [ディスククォータの確認](getting-started.md#checking-disk-quota) を参照してください。
 
 ## ローカルストレージ {#local-storage}
 
@@ -101,8 +101,8 @@ ABCIシステムでは、計算ノード(V)に1.6 TBのNVMe SSD x 1、計算ノ�
 ### ローカルスクラッチ利用 {#using-as-a-local-scratch}
 
 計算ノードとメモリインテンシブノードのローカルストレージは、ジョブ投入時に特別なオプションを指定することなくローカルスクラッチとして利用できます。
-なお、ローカルストレージとして利用できる容量は、指定した[ジョブ実行リソース](03.md#job-execution-resource)によって異なります。
-ローカルストレージへのパスはジョブ毎に異なり、[環境変数](03.md#environment-variables)SGE_LOCALDIRを利用してアクセスすることができます。
+なお、ローカルストレージとして利用できる容量は、指定した[ジョブ実行リソース](job-execution.md#job-execution-resource)によって異なります。
+ローカルストレージへのパスはジョブ毎に異なり、[環境変数](job-execution.md#environment-variables)SGE_LOCALDIRを利用してアクセスすることができます。
 
 例）ジョブスクリプトの例(use_local_storage.sh)
 
@@ -185,7 +185,7 @@ BeeGFS On Demand (BeeOND) を使用することで、ジョブに割り当てら
 BeeOND を利用するジョブを投入するときは、`-l USE_BEEOND=1`オプションを指定してジョブを実行してください。
 また、BeeONDを利用する場合はノードを占有する必要があるため、`-l rt_F`オプションもしくは`-l rt_AF`オプションを指定する必要もあります。
 
-作成された分散共有ファイルシステム領域には、[環境変数](03.md#environment-variables)SGE_BEEONDDIRを利用してアクセスすることができます。
+作成された分散共有ファイルシステム領域には、[環境変数](job-execution.md#environment-variables)SGE_BEEONDDIRを利用してアクセスすることができます。
 
 例）ジョブスクリプトの例(use_beeond.sh)
 
