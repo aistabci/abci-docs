@@ -9,8 +9,6 @@ google_analytics:
 nav: []
 theme:
   name: 'material'
-  logo:
-    icon: 'cloud'
   palette:
     primary: 'blue'
     accent: 'blue'

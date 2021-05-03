@@ -25,7 +25,7 @@ You can clone the repository to your local environment and run the builtin devel
 
 ```
 $ pip install mkdocs
-$ pip install "mkdocs-material<5"
+$ pip install "mkdocs-material"
 $ pip install ghp-import # for deployment to GitHub pages
 $ git clone https://github.com/aistairc/abci-docs.git
 $ cd abci-docs
