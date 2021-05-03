@@ -16,7 +16,7 @@
   - [Environment Modules](05.md)
   - [Python](06.md)
   - [GPU](07.md)
-  - [MPI](08.md)
+  - [MPI](mpi.md)
   - [コンテナ](containers.md)
   - [開発ツール](development-tools.md)
   - 付録:

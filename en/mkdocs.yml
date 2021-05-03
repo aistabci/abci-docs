@@ -17,7 +17,7 @@ nav:
   - 'Environment Modules': '05.md'
   - 'Python': '06.md'
   - 'GPU': '07.md'
-  - 'MPI': '08.md'
+  - 'MPI': 'mpi.md'
   - 'Containers': 'containers.md'
   - 'Development Tools': 'development-tools.md'
   - 'Appendix':

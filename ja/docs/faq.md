@@ -81,7 +81,7 @@ Host as.abci.ai
 
 ## Q. Open MPIの新しいバージョンが使いたい
 
-ABCIではCUDA対応版Open MPIとCUDA非対応版Open MPIを提供しており、提供の状況は、[MPIの利用](08.md#open-mpi)で確認できます。
+ABCIではCUDA対応版Open MPIとCUDA非対応版Open MPIを提供しており、提供の状況は、[Open MPI](mpi.md#open-mpi)で確認できます。
 
 ABCIが提供するEnvironment Modulesでは、事前に`cuda`モジュールがロードされている場合に限り、`openmpi`モジュールのロード時にCUDA対応版Open MPIの環境設定を試みます。
 
