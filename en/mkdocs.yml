@@ -77,9 +77,8 @@ theme:
   language: 'en'
   palette:
     primary: 'red'
-    accent: 'red'
-  feature:
-    tabs: false
+  features:
+    - toc.integrate
 markdown_extensions:
   - admonition
   - codehilite

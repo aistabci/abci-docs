@@ -72,9 +72,8 @@ theme:
   language: 'ja'
   palette:
     primary: 'red'
-    accent: 'red'
-  feature:
-    tabs: false
+  features:
+    - toc.integrate
 extra:
   alternate:
     - name: 'English'

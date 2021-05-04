@@ -17,9 +17,6 @@ theme:
   logo: 'img/logo.png'
   palette:
     primary: 'red'
-    accent: 'red'
-  feature:
-    tabs: false
 markdown_extensions:
   - admonition
 plugins:
