@@ -65,7 +65,6 @@ nav:
     - 'ABCI利用ポータル手引き': 'https://docs.abci.ai/portal/ja/'
     - 'ABCI利用ポータル(利用申請)': 'https://portal.abci.ai/user/project_register_app.php?lang=ja'
     - 'ABCI利用ポータル(ログイン)':  'https://portal.abci.ai/user/login.php?lang=ja'
-  - 'English version': 'https://docs.abci.ai/en/'
 theme:
   name: 'material'
   favicon: 'img/favicon.png'
@@ -76,6 +75,12 @@ theme:
     accent: 'red'
   feature:
     tabs: false
+extra:
+  alternate:
+    - name: 'English'
+      link: 'https://docs.abci.ai/en/'
+    - name: '日本語'
+      link: 'https://docs.abci.ai/ja/'
 markdown_extensions:
   - admonition
   - codehilite

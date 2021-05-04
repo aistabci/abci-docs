@@ -64,7 +64,12 @@ nav:
     - 'ABCI User Portal Guide': 'https://docs.abci.ai/portal/en/'
     - 'ABCI User Portal (Registration)': 'https://portal.abci.ai/user/project_register_app.php?lang=en'
     - 'ABCI User Portal (Login)':  'https://portal.abci.ai/user/login.php?lang=en'
-  - 'Japanese version': 'https://docs.abci.ai/ja/'
+extra:
+  alternate:
+    - name: 'English'
+      link: 'https://docs.abci.ai/en/'
+    - name: '日本語'
+      link: 'https://docs.abci.ai/ja/'
 theme:
   name: 'material'
   favicon: 'img/favicon.png'
