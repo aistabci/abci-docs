@@ -85,6 +85,8 @@ markdown_extensions:
   - attr_list
   - footnotes
 plugins:
+  - search:
+      lang: en
   - redirects:
       redirect_maps:
         '01.md': 'system-overview.md'
