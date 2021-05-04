@@ -9,9 +9,9 @@ google_analytics:
 nav: []
 theme:
   name: 'material'
-  logo:
-    icon: 'cloud'
   palette:
     primary: 'blue'
-    accent: 'blue'
-plugins: []
+plugins:
+  - redirects:
+      redirect_maps:
+        'index.md': 'https://docs.abci.ai/portal/ja/'

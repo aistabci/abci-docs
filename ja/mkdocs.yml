@@ -63,9 +63,8 @@ nav:
   - 'リンク':
     - 'ABCI Webページ': 'https://abci.ai/ja/'
     - 'ABCI利用ポータル手引き': 'https://docs.abci.ai/portal/ja/'
-    - 'ABCI利用ポータル(利用申請)': 'https://portal.abci.ai/user/project_register_app.php?lang=ja'
-    - 'ABCI利用ポータル(ログイン)':  'https://portal.abci.ai/user/login.php?lang=ja'
-  - 'English version': 'https://docs.abci.ai/en/'
+    - 'ABCI利用ポータル (利用申請)': 'https://portal.abci.ai/user/project_register_app.php?lang=ja'
+    - 'ABCI利用ポータル (ログイン)':  'https://portal.abci.ai/user/login.php?lang=ja'
 theme:
   name: 'material'
   favicon: 'img/favicon.png'
@@ -73,11 +72,37 @@ theme:
   language: 'ja'
   palette:
     primary: 'red'
-    accent: 'red'
-  feature:
-    tabs: false
+  features:
+    - toc.integrate
+extra:
+  alternate:
+    - name: 'English'
+      link: 'https://docs.abci.ai/en/'
+    - name: '日本語'
+      link: 'https://docs.abci.ai/ja/'
 markdown_extensions:
   - admonition
   - codehilite
   - attr_list
   - footnotes
+plugins:
+  - search:
+      lang: ja
+  - redirects:
+      redirect_maps:
+        '01.md': 'system-overview.md'
+        '02.md': 'getting-started.md'
+        '03.md': 'job-execution.md'
+        '04.md': 'storage.md'
+        '05.md': 'environment-modules.md'
+        '06.md': 'python.md'
+        '07.md': 'gpu.md'
+        '08.md': 'mpi.md'
+        '09.md': 'containers.md'
+        '10.md': 'development-tools.md'
+        '11.md': 'apps/index.md'
+        '12.md': 'tips/remote-desktop.md'
+        '13.md': 'tips/awscli.md'
+        'appendix1.md': 'appendix/installed-software.md'
+        'appendix2.md': 'appendix/using-abci-with-hpci.md'
+        'ngc.md': 'tips/ngc.md'
