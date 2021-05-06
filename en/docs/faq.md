@@ -312,3 +312,27 @@ For the groups newly created in FY2021, only **New Area** will be allocated, so 
 * You can access the migrated data in the **New Area** with the same path `/groups[1-2]/gAA50NNN` as before. It is achieved by changing the symbolic link.
 * The files in the **Old Area** are copied to `/groups/gAA50NNN/migrate_from_SFA_GPFS/` in the **New Area**.
 * You cannot access `/groups[1-2]/gAA50NNN` in the **Old Area**.
+
+
+## Q. How to use ABCI 1.0 Environment Modules
+
+ABCI was upgraded in May 2021.
+Due to the upgrade, the Environment Modules as of FY2020 (The **ABCI 1.0 Environment Modules**) is installed as `/apps/modules-abci-1.0`.
+If you want to use the ABCI 1.0 Environment Modules, set the `MODULE_HOME` environment variable as follows and load the configuration file.
+
+Please not that the ABCI 1.0 Environment Modules is not eligible for the ABCI System support.
+
+sh, bash:
+
+```
+export MODULE_HOME=/apps/modules-abci-1.0
+. ${MODULE_HOME}/etc/profile.d/modules.sh
+```
+
+ch, tcsh:
+
+```
+setenv MODULE_HOME /apps/modules-abci-1.0
+source ${MODULE_HOME}/etc/profile.d/modules.csh
+```
+
