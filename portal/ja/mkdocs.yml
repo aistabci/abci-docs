@@ -4,21 +4,20 @@ site_author: AIST
 site_url: https://docs.abci.ai/portal/ja/
 repo_url: https://github.com/aistairc/abci-docs
 edit_uri: edit/master/portal/ja/docs/
-copyright: 'Copyright &copy; 2018 National Institute of Advanced Industrial Science and Technology (AIST)'
+copyright: 'Copyright &copy; 2021 National Institute of Advanced Industrial Science and Technology (AIST)'
 google_analytics:
   - 'UA-118371652-2'
   - 'auto'
 nav:
   - 'はじめに': 'index.md'
-  - '1. 利用グループ新規申請': '01.md'   
+  - '1. 利用グループ新規申請': '01.md'
   - '2. 利用者ポータル': '02.md'
   - '3. 利用管理者権限': '03.md'
   - 'リンク':
     - 'ABCI Webページ': 'https://abci.ai/ja/'
     - 'ABCI利用者手引き': 'https://docs.abci.ai/ja/'
-    - 'ABCI利用ポータル(利用申請)': 'https://portal.abci.ai/user/project_register_app.php?lang=ja'
-    - 'ABCI利用ポータル(ログイン)':  'https://portal.abci.ai/user/login.php?lang=ja'
-  - 'English version': 'https://docs.abci.ai/portal/en/'
+    - 'ABCI利用ポータル (利用申請)': 'https://portal.abci.ai/user/project_register_app.php?lang=ja'
+    - 'ABCI利用ポータル (ログイン)':  'https://portal.abci.ai/user/login.php?lang=ja'
 theme:
   name: 'material'
   favicon: 'img/favicon.png'
@@ -26,10 +25,18 @@ theme:
   language: 'ja'
   palette:
     primary: 'blue'
-    accent: 'blue'
-  feature:
-    tabs: false
+  features:
+    - toc.integrate
+extra:
+  alternate:
+    - name: 'English'
+      link: 'https://docs.abci.ai/portal/en/'
+    - name: '日本語'
+      link: 'https://docs.abci.ai/portal/ja/'
 markdown_extensions:
   - admonition
   - codehilite
   - attr_list
+plugins:
+  - search:
+      lang: ja

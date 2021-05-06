@@ -80,7 +80,7 @@ Host as.abci.ai
 
 ## Q. I want to use a newer version of Open MPI
 
-ABCI offers CUDA-aware and CUDA non-aware versions of Open MPI, and you can check the availability provided by [Using MPI](08.md#open-mpi).
+ABCI offers CUDA-aware and CUDA non-aware versions of Open MPI, and you can check the availability provided by [Open MPI](mpi.md#open-mpi).
 
 The Environment Modules provided by ABCI will attempt to configure CUDA-aware Open MPI environment when loading `openmpi` module only if `cuda` module has been loaded beforehand.
 
@@ -129,7 +129,7 @@ You can access it by following the procedure below.
 
 You need to set up SSH tunnel.
 The following example, written in `$HOME/.ssh/config` on your PC, sets up the SSH tunnel connection to ABCI internal servers through as.abci.ai by using ProxyCommand.
-Please also refer to the procedure in [Login using an SSH Client::General method](./02.md#general-method) in ABCI System User Environment.
+Please also refer to the procedure in [Login using an SSH Client::General method](getting-started.md#general-method) in ABCI System User Environment.
 
 ```shell
 Host *.abci.local
@@ -167,6 +167,18 @@ Example)
 [username@g0001 ~]$ module load singularitypro
 [username@g0001 ~]$ singularity run --nv docker://caffe2ai/caffe2:latest
 ```
+
+## Q. I get an error due to insufficient disk space, when I ran the singularity build/pull on the compute node. {#q-insufficient-disk-space-for-singularity-build}
+
+The `singularity build` and `pull` commands use `/tmp` as the location to create temporary files.
+When you build a large container on the compute node, it may cause an error due to insufficient space in `/tmp`.
+
+If you get an error due to insufficient space, set the `SINGULARITY_TMPDIR` environment variable to use the local storage as shown below:
+
+```
+[username@g0001 ~]$ SINGULARITY_TMPDIR=$SGE_LOCALDIR singularity pull docker://nvcr.io/nvidia/tensorflow:20.12-tf1-py3
+```
+
 
 ## Q. How can I find the job ID?
 

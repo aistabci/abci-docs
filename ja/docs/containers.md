@@ -1,4 +1,4 @@
-# 9. Linuxコンテナ
+# コンテナ
 
 ## Singularity
 

@@ -4,7 +4,7 @@ ABCIでは、Amazon Simple Storage Service (Amazon S3) 互換インターフェ�
 
 ABCIクラウドストレージには、ABCIで提供する他のストレージサービスにない次の特徴があります。
 
-- Amazon S3 互換インタフェースを提供:  
+- Amazon S3 互換インタフェースを提供:
 
     ABCI利用者は、Amazon S3と互換性のあるインタフェースを用いて、本ストレージ内で一意であるバケットの下にオブジェクトとしてデータを格納します。AWS Command Line Interface（AWS CLI）や s3cmd のような S3 互換クライアントを使用できます。boto を使ってクライアントツールを作ることもできます（ただし、一部サポートされていないAPIがあります）。AWS CLI の使用例は後述します。
 
@@ -18,7 +18,7 @@ ABCIクラウドストレージには、ABCIで提供する他のストレージ
 
 利用を開始するには、各ABCIグループの利用管理者からの申請が必要です。[ABCI利用ポータル](https://portal.abci.ai/user/)から申請を行ってください。利用管理者でない場合は、所属グループの利用管理者にお問い合わせください。ABCI利用ポータルの操作方法に関しては、[こちら](https://docs.abci.ai/portal/ja/)をご参照ください。
 
-ABCIクラウドストレージでは、ABCIグループが所有するバケットに入っているデータ量に応じて、1日ごとにABCIポイントが差し引かれます。なお、データ転送量やAPIの呼び出し回数による課金は行っていません。[show_cs_usage](02.md#check-cloud-storage-usage) を使ってクラウドラウドストレージに保存したデータ量を確認できます。ABCIクラウドストレージのABCIポイントの計算式は以下の通りです。
+ABCIクラウドストレージでは、ABCIグループが所有するバケットに入っているデータ量に応じて、1日ごとにABCIポイントが差し引かれます。なお、データ転送量やAPIの呼び出し回数による課金は行っていません。[show_cs_usage](getting-started.md#check-cloud-storage-usage) を使ってクラウドラウドストレージに保存したデータ量を確認できます。ABCIクラウドストレージのABCIポイントの計算式は以下の通りです。
 
 <div class="codehilite"><pre>
 ABCI point = ABCI Cloud Storage の使用量

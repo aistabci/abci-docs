@@ -1,4 +1,4 @@
-# 3. Job Execution Environment
+# Job Execution
 
 ## Job Services
 
@@ -41,9 +41,9 @@ The following describes the available resource types first, followed by the rest
 
 ### Available Resource Types
 
-The ABCI system has two types of computational resources, [compute node](01.md#compute-node) and [memory-intensive node](01.md#memory-intensive-node), each of which has the following resource types:
+The ABCI system has two types of computational resources, [compute node](system-overview.md#compute-node) and [memory-intensive node](system-overview.md#memory-intensive-node), each of which has the following resource types:
 
-#### Compute Node(V)
+#### Compute Node (V)
 
 | Resource type | Resource type name | Description | Assigned physical CPU core | Number of assigned GPU | Memory (GiB) | Local storage (GB) | Resource type charge coefficient |
 |:--|:--|:--|:--|:--|:--|:--|:--|
@@ -53,12 +53,14 @@ The ABCI system has two types of computational resources, [compute node](01.md#c
 | C.large | rt\_C.large | node-sharing<br>CPU only | 20 | 0 | 120 | 720 | 0.60 |
 | C.small | rt\_C.small | node-sharing<br>CPU only | 5 | 0 | 30 | 180 | 0.20 |
 
-#### Compute Node(A)
+#### Compute Node (A)
 
 | Resource type | Resource type name | Description | Assigned physical CPU core | Number of assigned GPU | Memory (GiB) | Local storage (GB) | Resource type charge coefficient |
 |:--|:--|:--|:--|:--|:--|:--|:--|
-| Full | rt\_AF | node-exclusive | 72 | 8 | 480 | 1590(local scratch)<br>1850(BeeOND Storage、Reserved Service Storage) | 3.00 |
+| Full | rt\_AF | node-exclusive | 72 | 8 | 480 | 3440[^1] | 3.00 |
 | AG.small | rt\_AG.small | node-sharing<br>with GPU | 9 | 1 | 60 | 390 | 0.50 |
+
+[^1]: The sum of /local1 (1590 GB) and /local2 (1850 GB).
 
 #### Memory-intensive Node
 
@@ -83,7 +85,7 @@ The available resource type and number of nodes for each service are as follows.
 |           | rt\_G.small | 1 |
 |           | rt\_C.large | 1 |
 |           | rt\_C.small | 1 |
-|           | rt\_AF      | 1-64 |
+|           | rt\_AF      | 1-4 |
 |           | rt\_AG.small| 1 |
 |           | rt\_M.large | 1 |
 |           | rt\_M.small | 1 |
@@ -92,7 +94,7 @@ The available resource type and number of nodes for each service are as follows.
 |           | rt\_G.small | 1 |
 |           | rt\_C.large | 1 |
 |           | rt\_C.small | 1 |
-|           | rt\_AF      | 1-4 |
+|           | rt\_AF      | 1-64 |
 |           | rt\_AG.small| 1 |
 |           | rt\_M.large | 1 |
 |           | rt\_M.small | 1 |
@@ -125,8 +127,8 @@ In addition, when executing a job that uses multiple nodes in On-demand or Spot 
 | Service | max value of node-hour |
 |:--|--:|
 | On-demand                                     |   12 nodes &middot; hours |
-| Spot(Compute Node(V), Memory-Intensive Node)  | 2304 nodes &middot; hours |
-| Spot(Compute Node(A))                         |  288 nodes &middot; hours |
+| Spot: Compute Node (V), Memory-Intensive Node | 2304 nodes &middot; hours |
+| Spot: Compute Node (A)                        |  288 nodes &middot; hours |
 
 ### Limitation on the number of job submissions and executions
 
@@ -184,9 +186,9 @@ In addition, the following options can be used as extended options:
 | Option | Description |
 |:--|:--|
 | -l USE\_SSH=*1*<br>-v SSH\_PORT=*port* | Enable SSH login to the compute nodes. See [SSH Access to Compute Nodes](appendix/ssh-access.md) for details. |
-| -l USE\_BEEOND=*1*<br>-v BEEOND\_METADATA\_SERVER=*num*<br>-v BEEOND\_STORAGE\_SERVER=*num* | Submit a job with using BeeGFS On Demand (BeeOND). See [Using as a BeeOND storage](04.md#using-as-a-beeond-storage) for details. |
-| -v GPU\_COMPUTE\_MODE=*mode* | Change GPU Compute Mode. See [Changing GPU Compute Mode](07.md#changing-gpu-compute-mode) for details. |
-| -l docker<br>-l docker\_images | Submit a job with a Docker container. See [Docker](09.md#docker) for details. |
+| -l USE\_BEEOND=*1*<br>-v BEEOND\_METADATA\_SERVER=*num*<br>-v BEEOND\_STORAGE\_SERVER=*num* | Submit a job with using BeeGFS On Demand (BeeOND). See [Using as a BeeOND storage](storage.md#beeond-storage) for details. |
+| -v GPU\_COMPUTE\_MODE=*mode* | Change GPU Compute Mode. See [Changing GPU Compute Mode](gpu.md#changing-gpu-compute-mode) for details. |
+| -l docker<br>-l docker\_images | Submit a job with a Docker container. See [Docker](containers.md#docker) for details. |
 
 ## Interactive Jobs
 
@@ -455,8 +457,8 @@ In the case of Reserved service, job execution can be scheduled by reserving com
 
 The maximum number of nodes and the node-time product that can be reserved for this service is "Maximum reserved nodes per reservation" and "Maximum reserved node time per reservtation" in the following table. In addition, in this service, the user can only execute jobs with the maximum number of reserved nodes. Note that there is an upper limit on "Maximum number of nodes can be reserved at once per system" for the entire system, so you may only be able to make reservations that fall below "Maximum reserved nodes per reservation" or you may not be able to make reservations. [Each resource types](#available-resource-types) are available for reserved compute nodes.
 
-| Item | Description(Compute Node(V)) | Description(Compute Node(A)) |
-|:--|:--|
+| Item | Description: Compute Node (V) | Description: Compute Node (A) |
+|:--|:--|:--|
 | Minimum reservation days | 1 day | 1 day |
 | Maximum reservation days | 30 days | 30 days |
 | Maximum number of nodes can be reserved at once per system | 442 nodes | 50 nodes |

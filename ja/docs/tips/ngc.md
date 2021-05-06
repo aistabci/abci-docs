@@ -1,6 +1,6 @@
 # NVIDIA NGC
 
-[NVIDIA NGC](https://ngc.nvidia.com/)（以下、NGCという）は、GPUに最適化されたディープラーニングフレームワークコンテナやHPCアプリケーションコンテナのDockerイメージと、それらを配布するためのNGCコンテナレジストリを提供しています。ABCIでは、[Singularity](../09.md#singularity)を利用することで、NGCが提供するDockerイメージを簡便に実行することができます。
+[NVIDIA NGC](https://ngc.nvidia.com/)（以下、NGCという）は、GPUに最適化されたディープラーニングフレームワークコンテナやHPCアプリケーションコンテナのDockerイメージと、それらを配布するためのNGCコンテナレジストリを提供しています。ABCIでは、[Singularity](../containers.md#singularity)を利用することで、NGCが提供するDockerイメージを簡便に実行することができます。
 
 ここでは、NGCコンテナレジストリに登録されているDockerイメージをABCIで利用する手順について説明します。
 

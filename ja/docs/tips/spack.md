@@ -515,4 +515,4 @@ spack:
 [username@es1 ~]$ spack containerize > myenv.def
 ```
 
-SigularityレシピファイルからSingularityイメージを作成する方法については、[Singularityイメージファイルの作成(build)](../09.md#build-a-singularity-image)をご参照ください。
+SigularityレシピファイルからSingularityイメージを作成する方法については、[Singularityイメージファイルの作成(build)](../containers.md#build-a-singularity-image)をご参照ください。

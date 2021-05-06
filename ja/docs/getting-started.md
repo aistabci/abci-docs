@@ -1,11 +1,11 @@
-# 2. ABCIシステム利用環境
+# ABCIの利用開始
 
 ## ABCIアカウントの取得 {#getting-an-account}
 
-### テーマとABCIグループ {#themes-and-groups}
-ABCIを利用するためには、[「ご利用の流れ」](https://abci.ai/ja/how_to_use/)に掲載された利用規定（約款または規約）に従い、研究・開発テーマを決定し、[ABCI利用ポータル](https://portal.abci.ai/user/project_register_app.php) から「ABCI利用申請」を提出します。ABCI申請受付担当は利用規定に基いて審査し、要件が満たされている場合に、申請されたABCIグループを作成し、申請者に採択された旨を通知します。申請者が通知を受け取ったら、利用開始となります。
+### ABCIの利用申請 {#application-for-use-of-abci}
+ABCIを利用するためには、[「ご利用の流れ」](https://abci.ai/ja/how_to_use/)に掲載された利用規定（約款または規約）に従い、研究・開発テーマを決定し、[ABCI利用ポータル](https://portal.abci.ai/user/project_register_app.php) から「ABCI利用申請」を提出します。ABCI申請受付担当は利用規定に基づいて審査し、要件が満たされている場合に、申請されたABCIグループを作成し、申請者に採択された旨を通知します。申請者が通知を受け取ったら、利用開始となります。
 
-ご利用料金は[料金表](https://abci.ai/ja/how_to_use/tariffs.html)をご覧の上、ABCIポイントを購入することでお支払いいただきます。ABCIポイントはABCIグループごとに購入ください。申請時には、ABCIポイントを 1,000ポイント以上購入する必要があります。
+利用料金は、[料金表](https://abci.ai/ja/how_to_use/tariffs.html)を確認の上、ABCIポイントを購入することで支払いいただきます。ABCIポイントはABCIグループごとに購入してください。申請時には、ABCIポイントを 1,000ポイント以上購入する必要があります。
 
 ### ABCIアカウントの種類 {#account-type}
 ABCIアカウントには、「利用責任者」「利用管理者」「利用者」の3種類があります。ABCIシステムを利用するには、「利用責任者」が [ABCI利用ポータル](https://portal.abci.ai/user/project_register_app.php) から「利用グループ申請」を行い、ABCIアカウントを取得する必要があります。

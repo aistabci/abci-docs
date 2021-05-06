@@ -1,4 +1,4 @@
-# 9. Linux Containers
+# Containers
 
 ## Singularity
 

@@ -1,26 +1,26 @@
-site_name: ABCI User Guide
-site_description: ABCI User Guide, English version
+site_name: ABCI 2.0 User Guide
+site_description: ABCI 2.0 User Guide, English version
 site_author: AIST
 site_url: https://docs.abci.ai/en/
 repo_url: https://github.com/aistairc/abci-docs
 edit_uri: edit/master/en/docs/
-copyright: 'Copyright &copy; 2018 National Institute of Advanced Industrial Science and Technology (AIST)'
+copyright: 'Copyright &copy; 2021 National Institute of Advanced Industrial Science and Technology (AIST)'
 google_analytics:
   - 'UA-118371652-2'
   - 'auto'
 nav:
   - 'Introduction': 'index.md'
-  - 'User Guide':
-    - '1. ABCI System Overview': '01.md'
-    - '2. ABCI System User Environment': '02.md'
-    - '3. Job Execution Environment': '03.md'
-    - '4. Storage': '04.md'
-    - '5. Environment Modules': '05.md'
-    - '6. Python': '06.md'
-    - '7. GPU': '07.md'
-    - '8. MPI': '08.md'
-    - '9. Linux Containers': '09.md'
-    - '10. Software Development Environment': '10.md'
+  - 'ABCI System Overview': 'system-overview.md'
+  - 'Getting Started ABCI': 'getting-started.md'
+  - 'Job Execution': 'job-execution.md'
+  - 'Storage': 'storage.md'
+  - 'Environment Modules': 'environment-modules.md'
+  - 'Python': 'python.md'
+  - 'GPU': 'gpu.md'
+  - 'MPI': 'mpi.md'
+  - 'Containers': 'containers.md'
+  - 'Development Tools': 'development-tools.md'
+  - 'Appendix':
     - 'Appendix. Configuration of Installed Software': 'appendix/installed-software.md'
     - 'Appendix. Using ABCI with HPCI': 'appendix/using-abci-with-hpci.md'
     - 'Appendix. Communications with External Networks': 'appendix/external-networks.md'
@@ -64,7 +64,12 @@ nav:
     - 'ABCI User Portal Guide': 'https://docs.abci.ai/portal/en/'
     - 'ABCI User Portal (Registration)': 'https://portal.abci.ai/user/project_register_app.php?lang=en'
     - 'ABCI User Portal (Login)':  'https://portal.abci.ai/user/login.php?lang=en'
-  - 'Japanese version': 'https://docs.abci.ai/ja/'
+extra:
+  alternate:
+    - name: 'English'
+      link: 'https://docs.abci.ai/en/'
+    - name: '日本語'
+      link: 'https://docs.abci.ai/ja/'
 theme:
   name: 'material'
   favicon: 'img/favicon.png'
@@ -72,11 +77,31 @@ theme:
   language: 'en'
   palette:
     primary: 'red'
-    accent: 'red'
-  feature:
-    tabs: false
+  features:
+    - toc.integrate
 markdown_extensions:
   - admonition
   - codehilite
   - attr_list
   - footnotes
+plugins:
+  - search:
+      lang: en
+  - redirects:
+      redirect_maps:
+        '01.md': 'system-overview.md'
+        '02.md': 'getting-started.md'
+        '03.md': 'job-execution.md'
+        '04.md': 'storage.md'
+        '05.md': 'environment-modules.md'
+        '06.md': 'python.md'
+        '07.md': 'gpu.md'
+        '08.md': 'mpi.md'
+        '09.md': 'containers.md'
+        '10.md': 'development-tools.md'
+        '11.md': 'apps/index.md'
+        '12.md': 'tips/remote-desktop.md'
+        '13.md': 'tips/awscli.md'
+        'appendix1.md': 'appendix/installed-software.md'
+        'appendix2.md': 'appendix/using-abci-with-hpci.md'
+        'ngc.md': 'tips/ngc.md'

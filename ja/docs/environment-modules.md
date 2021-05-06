@@ -1,39 +1,39 @@
-# 5. Environment Modules
+# Environment Modules
 
-The ABCI system offers various development environments, MPIs, libraries, utilities, etc. listed in [Software](01.md#software). And, users can use these software in combination as *module*s.
+ABCIでは、[ソフトウェア](system-overview.md#software)で挙げた、さまざまな開発環境、MPI、ライブラリ、ユーティリティ等を提供しています。利用者はこれらのソフトウェアを「モジュール」として、組み合わせて利用できます。
 
-[Environment Modules](http://modules.sourceforge.net/) allows users to configure their environment settings, flexibly and dynamically, required to use these *module*s.
+[Environment Modules](http://modules.sourceforge.net/)は、これらのモジュールを利用するのに必要な環境設定を柔軟かつ動的に行う機能を提供します。
 
-## Usage
+## 利用方法 {#usage}
 
-Users can configure their environment using the `module` command:
+利用者は、`module`コマンドを用いて環境の設定を行えます。
 
 ```
 $ module [options] <sub-command> [sub-command options]
 ```
 
-The following is a list of sub-commands.
+以下にサブコマンドの一覧を示します。
 
-| Sub-command | Description |
+| サブコマンド | 説明 |
 |:--|:--|
-| list | List loaded modules |
-| avail | List all available modules |
-| show *module* | Display the configuration of "*module*" |
-| load *module* | Load a module named "*module*" into the environment |
-| unload *module* | Unload a module named "*module*" from the environment |
-| switch *moduleA* *moduleB* | Switch loaded "*moduleA*" with "*moduleB*" |
-| purge | Unload all loaded modules (Initialize) |
-| help *module* | Print the usage of "*module*" |
+| list | ロード済みのモジュールの一覧表示 |
+| avail | 利用可能なモジュールの一覧表示 |
+| show *module* | *module*の設定内容の表示 |
+| load *module* | *module*のロード |
+| unload *module* | *module*のアンロード |
+| switch *moduleA* *moduleB* | モジュールの切り替え（*moduleA*を*moduleB*に置き換える） |
+| purge | ロード済みのすべてのモジュールをアンロード（初期化） |
+| help *module* | *module*の使用方法の表示 |
 
-## Use cases
+## 実行例 {#use-cases}
 
-### Loading modules
+### モジュールのロード {#load-modules}
 
 ```
 [username@g0001 ~]$ module load cuda/10.0/10.0.130.1 cudnn/7.6/7.6.5
 ```
 
-### List loaded modules
+### ロード済みのモジュールの一覧表示 {#list-loaded-modules}
 
 ```
 [username@g0001 ~]$ module list
@@ -41,7 +41,7 @@ Currently Loaded Modulefiles:
   1) cuda/10.0/10.0.130.1   2) cudnn/7.6/7.6.5
 ```
 
-### Display the configuration of modules
+### モジュールの設定内容の表示 {#display-the-configuration-of-modules}
 
 ```
 [username@g0001 ~]$ module show cuda/10.0/10.0.130.1
@@ -62,7 +62,7 @@ prepend-path	 MANPATH /apps/cuda/10.0.130.1/doc/man
 -------------------------------------------------------------------
 ```
 
-### Unload all loaded modules (Initialize)
+### ロード済みのすべてのモジュールをアンロード（初期化） {#unload-all-loaded-modules-initialize}
 
 ```
 [username@g0001 ~]$ module purge
@@ -70,7 +70,7 @@ prepend-path	 MANPATH /apps/cuda/10.0.130.1/doc/man
 No Modulefiles Currently Loaded.
 ```
 
-### Load dependent modules
+### 依存関係のあるモジュールのロード {#load-dependent-modules}
 
 ```
 [username@g0001 ~]$ module load cudnn/7.6/7.6.5
@@ -78,16 +78,16 @@ WARNING: cudnn/7.6/7.6.5 cannot be loaded due to missing prereq.
 HINT: at least one of the following modules must be loaded first: cuda/9.0 cuda/9.2 cuda/10.0 cuda/10.1 cuda/10.2
 ```
 
-Due to dependencies, you will not be able to load `cudnn/7.6/7.6.5` without loading either `cuda/9.0`, `cuda/9.2`, `cuda/10.0`, `cuda/10.1`, or `cuda/10.2` module first.
+依存関係があるため、`cuda/9.0`、`cuda/9.2`、`cuda/10.0`、`cuda/10.1`、`cuda/10.2`のいずれかのモジュールを先にロードしないと`cudnn/7.6/7.6.5`をロードできません。
 
 ```
 [username@g0001 ~]$ module load cuda/10.0/10.0.130.1
 [username@g0001 ~]$ module load cudnn/7.6/7.6.5
 ```
 
-### Load exclusive modules
+### 排他関係にあるモジュールのロード {#load-exclusive-modules}
 
-Modules that are in an exclusive relationship, such as modules of different versions of the same library, cannot be used at the same time.
+同一ライブラリの異なるバージョンのモジュールなど、排他関係にあるモジュールは同時に利用することはできません。
 
 ```
 [username@g0001 ~]$ module load cuda/10.0/10.0.130.1
@@ -95,14 +95,14 @@ Modules that are in an exclusive relationship, such as modules of different vers
 cuda/10.2/10.2.89(7):ERROR:150: Module 'cuda/10.2/10.2.89' conflicts with the currently loaded module(s) 'cuda/10.0/10.0.130.1'
 ```
 
-### Switch modules
+### モジュールの切り替え {#switch-modules}
 
 ```
 [username@g0001 ~]$ module load python/2.7/2.7.18
 [username@g0001 ~]$ module switch python/2.7/2.7.18 python/3.6/3.6.12
 ```
 
-Switching may not be successful if there are dependencies.
+依存関係があると切り替えがうまくできない場合があります。
 
 ```
 [username@g0001 ~]$ module load cuda/10.0/10.0.130.1
@@ -112,9 +112,9 @@ Switching may not be successful if there are dependencies.
 LD_LIBRARY_PATH=/apps/cudnn/7.6.5/cuda10.0/lib64:/apps/cuda/10.2.89/lib64:/apps/cuda/10.2.89/extras/CUPTI/lib64
 ```
 
-CUDA10.2 and cuDNN for CUDA10.0 are loaded.
+CUDA10.2と、CUDA10.0用のcuDNNがロードされた状態になっています。
 
-As shown below, it is necessary to unload modules that depend on the target module in advance and reload them after switching.
+以下のように対象のモジュールに依存しているモジュールを事前にアンロード、切り替え後の再ロードする必要があります。
 
 ```
 [username@g0001 ~]$ module load cuda/10.0/10.0.130.1
@@ -126,18 +126,18 @@ As shown below, it is necessary to unload modules that depend on the target modu
 LD_LIBRARY_PATH=/apps/cudnn/7.6.5/cuda10.2/lib64:/apps/cuda/10.2.89/lib64:/apps/cuda/10.2.89/extras/CUPTI/lib64
 ```
 
-## Usage in a job script
+## ジョブスクリプトでの利用方法 {#usage-in-a-job-script}
 
-When using the `module` command in a job script for a batch job, it is necessary to add initial settings as follows.
+バッチ利用時のジョブスクリプトで`module`コマンドを利用する場合には、以下のように初期設定を加える必要があります。
 
-sh, bash:
+sh, bashの場合:
 
 ```
 source /etc/profile.d/modules.sh
 module load cuda/10.0/10.0.130.1
 ```
 
-csh, tcsh:
+csh, tcshの場合:
 
 ```
 source /etc/profile.d/modules.csh
