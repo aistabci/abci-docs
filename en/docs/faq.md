@@ -317,7 +317,7 @@ For the groups newly created in FY2021, only **New Area** will be allocated, so 
 ## Q. How to use ABCI 1.0 Environment Modules
 
 ABCI was upgraded in May 2021.
-Due to the upgrade, the Environment Modules as of FY2020 (The **ABCI 1.0 Environment Modules**) is installed as `/apps/modules-abci-1.0`.
+Due to the upgrade, the Environment Modules as of FY2020 (The **ABCI 1.0 Environment Modules**) is installed in the `/apps/modules-abci-1.0` directory.
 If you want to use the ABCI 1.0 Environment Modules, set the `MODULE_HOME` environment variable as follows and load the configuration file.
 
 Please not that the ABCI 1.0 Environment Modules is not eligible for the ABCI System support.
