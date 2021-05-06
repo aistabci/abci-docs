@@ -319,13 +319,13 @@ g0002: g0002.abci.local
 * データ移行完了後、旧領域上の`/groups[1-2]/gAA50NNN`にはアクセスできなくなります。
 
 
-## Q. ABCI 1.0 Environment Modules を利用したい
+## Q. ABCI 1.0 Environment Modulesを利用したい {#q-how-to-use-abci-10-environment-modules}
 
 ABCIは、2021年5月にABCI 2.0にアップグレードされました。
 このアップグレードにともない、2020年度時点のEnvironment Modules(以降、**ABCI 1.0 Environment Modules**)を`/apps/modules-abci-1.0`としてインストールしました。
 ABCI 1.0 Environment Modulesを利用したい場合は、以下のように`MODULE_HOME`環境変数を設定し、設定ファイルを読み込んでください。
 
-なお、ABCI 1.0 Environment Modulesはサポート対象外ですのでご了承ください。
+なお、ABCI 1.0 Environment Modulesはサポート対象外です。あらかじめご了承ください。
 
 sh, bashの場合:
 
