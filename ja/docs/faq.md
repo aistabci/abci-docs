@@ -318,3 +318,26 @@ g0002: g0002.abci.local
 * このパス`/groups[1-2]/gAA50NNN`は、新領域の`/groups/gAA50NNN/migrated_from_SFA_GPFS/`へのシンボリックリンクで実現されます。
 * データ移行完了後、旧領域上の`/groups[1-2]/gAA50NNN`にはアクセスできなくなります。
 
+
+## Q. ABCI 1.0 Environment Modulesを利用したい {#q-how-to-use-abci-10-environment-modules}
+
+ABCIは、2021年5月にABCI 2.0にアップグレードされました。
+このアップグレードにともない、2020年度時点のEnvironment Modules(以降、**ABCI 1.0 Environment Modules**)を`/apps/modules-abci-1.0`としてインストールしました。
+ABCI 1.0 Environment Modulesを利用したい場合は、以下のように`MODULE_HOME`環境変数を設定し、設定ファイルを読み込んでください。
+
+なお、ABCI 1.0 Environment Modulesはサポート対象外です。あらかじめご了承ください。
+
+sh, bashの場合:
+
+```
+export MODULE_HOME=/apps/modules-abci-1.0
+. ${MODULE_HOME}/etc/profile.d/modules.sh
+```
+
+csh, tcshの場合:
+
+```
+setenv MODULE_HOME /apps/modules-abci-1.0
+source ${MODULE_HOME}/etc/profile.d/modules.csh
+```
+
