@@ -1,0 +1,1487 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="ABCI 2.0 User Guide, English version">
+      
+      
+      
+        <meta name="author" content="AIST">
+      
+      
+        <link rel="canonical" href="https://docs.abci.ai/en/containers/">
+      
+      <link rel="icon" href="../img/favicon.png">
+      <meta name="generator" content="mkdocs-1.1.2, mkdocs-material-7.1.3">
+    
+    
+      
+        <title>Containers - ABCI 2.0 User Guide</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.e35208c4.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.ef6f36e2.min.css">
+        
+          
+          
+          <meta name="theme-color" content="#ef5552">
+        
+      
+    
+    
+    
+      
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700%7CRoboto+Mono&display=fallback">
+        <style>:root{--md-text-font-family:"Roboto";--md-code-font-family:"Roboto Mono"}</style>
+      
+    
+    
+    
+    
+      
+        
+<script>window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)},ga.l=+new Date,ga("create","UA-118371652-2","auto"),ga("set","anonymizeIp",!0),ga("send","pageview"),document.addEventListener("DOMContentLoaded",function(){document.forms.search&&document.forms.search.query.addEventListener("blur",function(){var e;this.value&&(e=document.location.pathname,ga("send","pageview",e+"?q="+this.value))}),"undefined"!=typeof location$&&location$.subscribe(function(e){ga("send","pageview",e.pathname)})})</script>
+<script async src="https://www.google-analytics.com/analytics.js"></script>
+      
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="" data-md-color-primary="red" data-md-color-accent="">
+  
+    
+    <script>function __prefix(e){return new URL("..",location).pathname+"."+e}function __get(e,t=localStorage){return JSON.parse(t.getItem(__prefix(e)))}</script>
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#containers" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+      <header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href=".." title="ABCI 2.0 User Guide" class="md-header__button md-logo" aria-label="ABCI 2.0 User Guide" data-md-component="logo">
+      
+  <img src="../img/logo.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            ABCI 2.0 User Guide
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Containers
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+      <div class="md-header__option">
+        <div class="md-select">
+          
+          <button class="md-header__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m12.87 15.07-2.54-2.51.03-.03A17.52 17.52 0 0 0 14.07 6H17V4h-7V2H8v2H1v2h11.17C11.5 7.92 10.44 9.75 9 11.35 8.07 10.32 7.3 9.19 6.69 8h-2c.73 1.63 1.73 3.17 2.98 4.56l-5.09 5.02L4 19l5-5 3.11 3.11.76-2.04M18.5 10h-2L12 22h2l1.12-3h4.75L21 22h2l-4.5-12m-2.62 7 1.62-4.33L19.12 17h-3.24z"/></svg>
+          </button>
+          <div class="md-select__inner">
+            <ul class="md-select__list">
+              
+                <li class="md-select__item">
+                  <a href="https://docs.abci.ai/en/" hreflang="" class="md-select__link">
+                    English
+                  </a>
+                </li>
+                
+                <li class="md-select__item">
+                  <a href="https://docs.abci.ai/ja/" hreflang="" class="md-select__link">
+                    日本語
+                  </a>
+                </li>
+                
+            </ul>
+          </div>
+        </div>
+      </div>
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+      </label>
+      
+<div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" data-md-state="active" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+      </label>
+      <button type="reset" class="md-search__icon md-icon" aria-label="Clear" tabindex="-1">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"/></svg>
+      </button>
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        
+<a href="https://github.com/aistairc/abci-docs/" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+      </div>
+    
+  </nav>
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+<nav class="md-nav md-nav--primary md-nav--integrated" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="ABCI 2.0 User Guide" class="md-nav__button md-logo" aria-label="ABCI 2.0 User Guide" data-md-component="logo">
+      
+  <img src="../img/logo.png" alt="logo">
+
+    </a>
+    ABCI 2.0 User Guide
+  </label>
+  
+    <div class="md-nav__source">
+      
+<a href="https://github.com/aistairc/abci-docs/" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        Introduction
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../system-overview/" class="md-nav__link">
+        ABCI System Overview
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../getting-started/" class="md-nav__link">
+        Getting Started ABCI
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../job-execution/" class="md-nav__link">
+        Job Execution
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../storage/" class="md-nav__link">
+        Storage
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../environment-modules/" class="md-nav__link">
+        Environment Modules
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../python/" class="md-nav__link">
+        Python
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../gpu/" class="md-nav__link">
+        GPU
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../mpi/" class="md-nav__link">
+        MPI
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          Containers
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        Containers
+      </a>
+      
+        
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#singularity" class="md-nav__link">
+    Singularity
+  </a>
+  
+    <nav class="md-nav" aria-label="Singularity">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#create-a-singularity-image-pull" class="md-nav__link">
+    Create a Singularity image (pull)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#create-a-singularity-image-build" class="md-nav__link">
+    Create a Singularity image (build)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#running-a-container-with-singularity" class="md-nav__link">
+    Running a container with Singularity
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#build-singularity-image-from-dockerfile" class="md-nav__link">
+    Build Singularity image from Dockerfile
+  </a>
+  
+    <nav class="md-nav" aria-label="Build Singularity image from Dockerfile">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#via-docker-hub" class="md-nav__link">
+    Via Docker Hub
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#convert-dockerfile-to-singularity-recipe" class="md-nav__link">
+    Convert Dockerfile to Singularity recipe
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#docker" class="md-nav__link">
+    Docker
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../development-tools/" class="md-nav__link">
+        Development Tools
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_12" type="checkbox" id="__nav_12" >
+      
+      <label class="md-nav__link" for="__nav_12">
+        Appendix
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Appendix" data-md-level="1">
+        <label class="md-nav__title" for="__nav_12">
+          <span class="md-nav__icon md-icon"></span>
+          Appendix
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../appendix/installed-software/" class="md-nav__link">
+        Appendix. Configuration of Installed Software
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../appendix/using-abci-with-hpci/" class="md-nav__link">
+        Appendix. Using ABCI with HPCI
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../appendix/external-networks/" class="md-nav__link">
+        Appendix. Communications with External Networks
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../appendix/ssh-access/" class="md-nav__link">
+        Appendix. SSH Access to Compute Nodes
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_13" type="checkbox" id="__nav_13" >
+      
+      <label class="md-nav__link" for="__nav_13">
+        Applications
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Applications" data-md-level="1">
+        <label class="md-nav__title" for="__nav_13">
+          <span class="md-nav__icon md-icon"></span>
+          Applications
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../apps/" class="md-nav__link">
+        Overview
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../apps/tensorflow/" class="md-nav__link">
+        TensorFlow
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../apps/tensorflow-keras/" class="md-nav__link">
+        TensorFlow Keras
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../apps/pytorch/" class="md-nav__link">
+        PyTorch
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../apps/mxnet/" class="md-nav__link">
+        MXNet
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../apps/chainer/" class="md-nav__link">
+        Chainer
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../apps/others/" class="md-nav__link">
+        Others
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_14" type="checkbox" id="__nav_14" >
+      
+      <label class="md-nav__link" for="__nav_14">
+        Tips
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Tips" data-md-level="1">
+        <label class="md-nav__title" for="__nav_14">
+          <span class="md-nav__icon md-icon"></span>
+          Tips
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../tips/ngc/" class="md-nav__link">
+        NVIDIA NGC
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../tips/remote-desktop/" class="md-nav__link">
+        Remote Desktop
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../tips/awscli/" class="md-nav__link">
+        AWS CLI
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../tips/putty/" class="md-nav__link">
+        PuTTY
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../tips/jupyter-notebook/" class="md-nav__link">
+        Jupyter Notebook
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../tips/sregistry-cli/" class="md-nav__link">
+        Singularity Global Client
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../tips/spack/" class="md-nav__link">
+        Spack
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../tips/datasets/" class="md-nav__link">
+        Datasets
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../tips/dl-amazon-ecr/" class="md-nav__link">
+        Amazon ECR
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_15" type="checkbox" id="__nav_15" >
+      
+      <label class="md-nav__link" for="__nav_15">
+        ABCI Cloud Storage
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="ABCI Cloud Storage" data-md-level="1">
+        <label class="md-nav__title" for="__nav_15">
+          <span class="md-nav__icon md-icon"></span>
+          ABCI Cloud Storage
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../abci-cloudstorage/" class="md-nav__link">
+        Overview
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../abci-cloudstorage/cs-account/" class="md-nav__link">
+        Accounts and Access keys
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../abci-cloudstorage/usage/" class="md-nav__link">
+        Usage
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../abci-cloudstorage/encryption/" class="md-nav__link">
+        Data encryption
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../abci-cloudstorage/acl/" class="md-nav__link">
+        Access Control (1) 
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../abci-cloudstorage/policy/" class="md-nav__link">
+        Access Control (2) 
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../abci-cloudstorage/publishing-datasets/" class="md-nav__link">
+        Publishing Datasets
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../abci-cloudstorage/caution/" class="md-nav__link">
+        Caution
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../abci-datasets/" class="md-nav__link">
+        ABCI Datasets
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../abci-singularity-endpoint/" class="md-nav__link">
+        ABCI Singularity Endpoint
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../faq/" class="md-nav__link">
+        FAQ
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../known-issues/" class="md-nav__link">
+        Known Issues
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../system-updates/" class="md-nav__link">
+        System Updates
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="https://abci.ai/en/about_abci/info.html" class="md-nav__link">
+        Operation Status
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../contact/" class="md-nav__link">
+        Contact
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_23" type="checkbox" id="__nav_23" >
+      
+      <label class="md-nav__link" for="__nav_23">
+        Links
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Links" data-md-level="1">
+        <label class="md-nav__title" for="__nav_23">
+          <span class="md-nav__icon md-icon"></span>
+          Links
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="https://abci.ai/" class="md-nav__link">
+        ABCI Web page
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="https://docs.abci.ai/portal/en/" class="md-nav__link">
+        ABCI User Portal Guide
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="https://portal.abci.ai/user/project_register_app.php?lang=en" class="md-nav__link">
+        ABCI User Portal (Registration)
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="https://portal.abci.ai/user/login.php?lang=en" class="md-nav__link">
+        ABCI User Portal (Login)
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+          
+          <div class="md-content" data-md-component="content">
+            <article class="md-content__inner md-typeset">
+              
+                
+                  <a href="https://github.com/aistairc/abci-docs/edit/master/en/docs/containers.md" title="Edit this page" class="md-content__button md-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75L3 17.25z"/></svg>
+                  </a>
+                
+                
+                <h1 id="containers">Containers</h1>
+<h2 id="singularity">Singularity</h2>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>We have stopped offering Singularity 2.6 at the end of March 2021.</p>
+</div>
+<p><a href="https://www.sylabs.io/singularity/">Singularity</a> is available on the ABCI System.
+Available version is SingularityPRO 3.7.
+To use Singularity, set up user environment by the <code>module</code> command.</p>
+<div class="codehilite"><pre><span></span><code><span class="p">[</span><span class="n">username</span><span class="err">@</span><span class="n">g0001</span> <span class="o">~</span><span class="p">]</span><span class="o">$</span> <span class="n">module</span> <span class="nb">load</span> <span class="n">singularitypro</span>
+</code></pre></div>
+
+<p>More comprehensive user guide for Singularity will be found:</p>
+<ul>
+<li><a href="https://repo.sylabs.io/c/0f6898986ad0b646b5ce6deba21781ac62cb7e0a86a5153bbb31732ee6593f43/guides/singularitypro37-user-guide/">SingularityPRO User Guide</a></li>
+</ul>
+<p>To run NGC-provided Docker images on ABCI by using Singularity: <a href="../tips/ngc/">NVIDIA NGC</a></p>
+<h3 id="create-a-singularity-image-pull">Create a Singularity image (pull)</h3>
+<p>Singularity container image can be stored as a file.
+This procedure shows how to create a Singularity image file using pull.</p>
+<p>Example) Create a Singularity image file using <code>pull</code></p>
+<div class="codehilite"><pre><span></span><code><span class="p">[</span><span class="n">username</span><span class="err">@</span><span class="n">es1</span> <span class="o">~</span><span class="p">]</span><span class="o">$</span> <span class="n">module</span> <span class="nb">load</span> <span class="n">singularitypro</span>
+<span class="p">[</span><span class="n">username</span><span class="err">@</span><span class="n">es1</span> <span class="o">~</span><span class="p">]</span><span class="o">$</span> <span class="n">singularity</span> <span class="n">pull</span> <span class="n">caffe2</span><span class="o">.</span><span class="n">img</span> <span class="n">docker</span><span class="p">:</span><span class="o">//</span><span class="n">caffe2ai</span><span class="o">/</span><span class="n">caffe2</span><span class="p">:</span><span class="n">latest</span>
+<span class="n">INFO</span><span class="p">:</span>    <span class="n">Converting</span> <span class="n">OCI</span> <span class="n">blobs</span> <span class="n">to</span> <span class="n">SIF</span> <span class="n">format</span>
+<span class="n">INFO</span><span class="p">:</span>    <span class="n">Starting</span> <span class="n">build</span><span class="o">...</span>
+<span class="o">...</span>
+<span class="p">[</span><span class="n">username</span><span class="err">@</span><span class="n">es1</span> <span class="o">~</span><span class="p">]</span><span class="o">$</span> <span class="n">ls</span> <span class="n">caffe2</span><span class="o">.</span><span class="n">img</span>
+<span class="n">caffe2</span><span class="o">.</span><span class="n">img</span>
+</code></pre></div>
+
+<h3 id="create-a-singularity-image-build">Create a Singularity image (build)</h3>
+<p>In the SingularityPRO environment of the ABCI system, you can build container image files using <code>fakeroot</code> option.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>In the SingularityPRO environment, you can also build container image file using remote build. See <a href="../abci-singularity-endpoint/">ABCI Singularity Endpoint</a> for more information.</p>
+</div>
+<p>Example) Create a Singularity image file using <code>build</code></p>
+<div class="codehilite"><pre><span></span><code><span class="p">[</span><span class="n">username</span><span class="err">@</span><span class="n">es1</span> <span class="o">~</span><span class="p">]</span><span class="n">$</span> <span class="k">module</span> <span class="n">load</span> <span class="n">singularitypro</span>
+<span class="p">[</span><span class="n">username</span><span class="err">@</span><span class="n">es1</span> <span class="o">~</span><span class="p">]</span><span class="n">$</span> <span class="n">cat</span> <span class="n">ubuntu</span><span class="p">.</span><span class="n">def</span>
+<span class="nl">Bootstrap</span><span class="p">:</span> <span class="n">docker</span>
+<span class="nl">From</span><span class="p">:</span> <span class="nl">ubuntu</span><span class="p">:</span><span class="mf">18.04</span>
+
+<span class="nf">%post</span>
+    <span class="n">apt</span><span class="o">-</span><span class="n">get</span> <span class="n">update</span>
+    <span class="n">apt</span><span class="o">-</span><span class="n">get</span> <span class="n">install</span> <span class="o">-</span><span class="n">y</span> <span class="n">lsb</span><span class="o">-</span><span class="n">release</span>
+
+<span class="nf">%runscript</span>
+    <span class="n">lsb_release</span> <span class="o">-</span><span class="n">d</span>
+
+<span class="p">[</span><span class="n">username</span><span class="err">@</span><span class="n">es1</span> <span class="o">~</span><span class="p">]</span><span class="n">$</span> <span class="n">singularity</span> <span class="n">build</span> <span class="o">--</span><span class="n">fakeroot</span> <span class="n">ubuntu</span><span class="p">.</span><span class="n">sif</span> <span class="n">ubuntu</span><span class="p">.</span><span class="n">def</span>
+<span class="nl">INFO</span><span class="p">:</span>    <span class="n">Starting</span> <span class="n">build</span><span class="p">...</span>
+<span class="p">(</span><span class="n">snip</span><span class="p">)</span>
+<span class="nl">INFO</span><span class="p">:</span>    <span class="n">Creating</span> <span class="n">SIF</span> <span class="n">file</span><span class="p">...</span>
+<span class="nl">INFO</span><span class="p">:</span>    <span class="n">Build</span> <span class="nl">complete</span><span class="p">:</span> <span class="n">ubuntu</span><span class="p">.</span><span class="n">sif</span>
+<span class="p">[</span><span class="n">username</span><span class="err">@</span><span class="n">es1</span> <span class="n">singularity</span><span class="p">]</span><span class="n">$</span>
+</code></pre></div>
+
+<p>If the output destination of the image file (ubuntunt.sif) is set to the group area (/groups1, /groups2) in the above command, an error occurs. In this case, it is possible to avoid the problem by executing the <code>newgrp</code> command after checking the ownership group of the image destination group area with <code>id</code> command as follows.
+In the example below, <code>gaa00000</code> is the owning group of the image destination group area.</p>
+<div class="codehilite"><pre><span></span><code><span class="o">[</span><span class="n">username@es1 groupname</span><span class="o">]</span><span class="err">$</span><span class="w"> </span><span class="n">id</span><span class="w"> </span><span class="o">-</span><span class="n">a</span><span class="w"></span>
+<span class="n">uid</span><span class="o">=</span><span class="mi">0000</span><span class="p">(</span><span class="n">aaa00000aa</span><span class="p">)</span><span class="w"> </span><span class="n">gid</span><span class="o">=</span><span class="mi">0000</span><span class="p">(</span><span class="n">aaa00000aa</span><span class="p">)</span><span class="w"> </span><span class="n">groups</span><span class="o">=</span><span class="mi">0000</span><span class="p">(</span><span class="n">aaa00000aa</span><span class="p">),</span><span class="mi">00000</span><span class="p">(</span><span class="n">gaa00000</span><span class="p">)</span><span class="w"></span>
+<span class="o">[</span><span class="n">username@es1 groupname</span><span class="o">]</span><span class="err">$</span><span class="w"> </span><span class="n">newgrp</span><span class="w"> </span><span class="n">gaa00000</span><span class="w"></span>
+</code></pre></div>
+
+<h3 id="running-a-container-with-singularity">Running a container with Singularity</h3>
+<p>When you use Singularity, you need to start Singularity container using <code>singularity run</code> command in job script.
+To run an image file in a container, specify the image file as an argument to the <code>singularity run</code> command.
+You can also use the <code>singularity run</code> command to run a container image published in Docker Hub.</p>
+<p>Example) Run a container with a Singularity image file in an interactive job</p>
+<div class="codehilite"><pre><span></span><code><span class="p">[</span><span class="n">username</span><span class="err">@</span><span class="n">es1</span> <span class="o">~</span><span class="p">]</span><span class="o">$</span> <span class="n">qrsh</span> <span class="o">-</span><span class="n">g</span> <span class="n">grpname</span> <span class="o">-</span><span class="n">l</span> <span class="n">rt_G</span><span class="o">.</span><span class="n">small</span><span class="o">=</span><span class="mi">1</span> <span class="o">-</span><span class="n">l</span> <span class="n">h_rt</span><span class="o">=</span><span class="mi">1</span><span class="p">:</span><span class="mi">00</span><span class="p">:</span><span class="mi">00</span>
+<span class="p">[</span><span class="n">username</span><span class="err">@</span><span class="n">es1</span> <span class="o">~</span><span class="p">]</span><span class="o">$</span> <span class="n">module</span> <span class="nb">load</span> <span class="n">singularitypro</span>
+<span class="p">[</span><span class="n">username</span><span class="err">@</span><span class="n">es1</span> <span class="o">~</span><span class="p">]</span><span class="o">$</span> <span class="n">singularity</span> <span class="n">run</span> <span class="o">./</span><span class="n">caffe2</span><span class="o">.</span><span class="n">img</span>
+</code></pre></div>
+
+<p>Example) Run a container with a Singularity image file in a batch job</p>
+<div class="codehilite"><pre><span></span><code><span class="p">[</span><span class="n">username</span><span class="err">@</span><span class="n">es1</span> <span class="o">~</span><span class="p">]</span><span class="o">$</span> <span class="n">cat</span> <span class="n">job</span><span class="o">.</span><span class="n">sh</span>
+<span class="c1">#!/bin/sh</span>
+<span class="c1">#$-l rt_F=1</span>
+<span class="c1">#$-j y</span>
+<span class="n">source</span> <span class="o">/</span><span class="n">etc</span><span class="o">/</span><span class="n">profile</span><span class="o">.</span><span class="n">d</span><span class="o">/</span><span class="n">modules</span><span class="o">.</span><span class="n">sh</span>
+<span class="n">module</span> <span class="nb">load</span> <span class="n">singularitypro</span> <span class="n">openmpi</span><span class="o">/</span><span class="mf">3.1</span><span class="o">.</span><span class="mi">6</span>
+
+<span class="n">mpiexec</span> <span class="o">-</span><span class="n">n</span> <span class="mi">4</span> <span class="n">singularity</span> <span class="n">exec</span> <span class="o">--</span><span class="n">nv</span> <span class="o">./</span><span class="n">caffe2</span><span class="o">.</span><span class="n">img</span> \
+    <span class="n">python</span> <span class="n">sample</span><span class="o">.</span><span class="n">py</span>
+
+<span class="p">[</span><span class="n">username</span><span class="err">@</span><span class="n">es1</span> <span class="o">~</span><span class="p">]</span><span class="o">$</span> <span class="n">qsub</span> <span class="o">-</span><span class="n">g</span> <span class="n">grpname</span> <span class="n">job</span><span class="o">.</span><span class="n">sh</span>
+</code></pre></div>
+
+<p>Example) Run a container image published in Docker Hub</p>
+<p>The following sample executes a Singularity container using caffe2 container image published in Docker Hub.
+<code>python sample.py</code> is executed in the container started by <code>singularity run</code> command.
+The container image is downloaded at the first startup and cached in home area.
+The second and subsequent times startup is faster by using cached data.</p>
+<div class="codehilite"><pre><span></span><code><span class="p">[</span><span class="n">username</span><span class="err">@</span><span class="n">es1</span> <span class="o">~</span><span class="p">]</span><span class="o">$</span> <span class="n">qrsh</span> <span class="o">-</span><span class="n">g</span> <span class="n">grpname</span> <span class="o">-</span><span class="n">l</span> <span class="n">rt_F</span><span class="o">=</span><span class="mi">1</span> <span class="o">-</span><span class="n">l</span> <span class="n">h_rt</span><span class="o">=</span><span class="mi">1</span><span class="p">:</span><span class="mi">00</span><span class="p">:</span><span class="mi">00</span>
+<span class="p">[</span><span class="n">username</span><span class="err">@</span><span class="n">g0001</span> <span class="o">~</span><span class="p">]</span><span class="o">$</span> <span class="n">module</span> <span class="nb">load</span> <span class="n">singularitypro</span>
+<span class="p">[</span><span class="n">username</span><span class="err">@</span><span class="n">g0001</span> <span class="o">~</span><span class="p">]</span><span class="o">$</span> <span class="n">singularity</span> <span class="n">run</span> <span class="o">--</span><span class="n">nv</span> <span class="n">docker</span><span class="p">:</span><span class="o">//</span><span class="n">caffe2ai</span><span class="o">/</span><span class="n">caffe2</span><span class="p">:</span><span class="n">latest</span>
+<span class="o">...</span>
+<span class="n">Singularity</span><span class="o">&gt;</span> <span class="n">python</span> <span class="n">sample</span><span class="o">.</span><span class="n">py</span>
+<span class="n">True</span>
+</code></pre></div>
+
+<h3 id="build-singularity-image-from-dockerfile">Build Singularity image from Dockerfile</h3>
+<p>On ABCI, you cannot build a Singularity image directly from Dockerfile.
+If you have only Dockerfile, you have two ways to build a Singularity image on ABCI.</p>
+<h4 id="via-docker-hub">Via Docker Hub</h4>
+<p>Build a Docker container image from Dockerfile on a system having Docker execution environment, and upload the image to Docker Hub. You can use the Docker container image on ABCI.</p>
+<p>Following example shows how to build <a href="https://github.com/NVIDIA/DeepLearningExamples/tree/master/PyTorch/Detection/SSD">SSD300 v1.1 image</a> developed by NVIDIA from Dockerfile and upload it to Docker Hub.</p>
+<div class="codehilite"><pre><span></span><code><span class="p">[</span><span class="n">user</span><span class="err">@</span><span class="n">pc</span> <span class="o">~</span><span class="p">]</span><span class="o">$</span> <span class="n">git</span> <span class="n">clone</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">github</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">NVIDIA</span><span class="o">/</span><span class="n">DeepLearningExamples</span>
+<span class="p">[</span><span class="n">user</span><span class="err">@</span><span class="n">pc</span> <span class="o">~</span><span class="p">]</span><span class="o">$</span> <span class="n">cd</span> <span class="n">DeepLearningExamples</span><span class="o">/</span><span class="n">PyTorch</span><span class="o">/</span><span class="n">Detection</span><span class="o">/</span><span class="n">SSD</span>
+<span class="p">[</span><span class="n">user</span><span class="err">@</span><span class="n">pc</span> <span class="n">SSD</span><span class="p">]</span><span class="o">$</span> <span class="n">cat</span> <span class="n">Dockerfile</span>
+<span class="n">ARG</span> <span class="n">FROM_IMAGE_NAME</span><span class="o">=</span><span class="n">nvcr</span><span class="o">.</span><span class="n">io</span><span class="o">/</span><span class="n">nvidia</span><span class="o">/</span><span class="n">pytorch</span><span class="p">:</span><span class="mf">20.06</span><span class="o">-</span><span class="n">py3</span>
+<span class="n">FROM</span> <span class="o">$</span><span class="p">{</span><span class="n">FROM_IMAGE_NAME</span><span class="p">}</span>
+
+<span class="c1"># Set working directory</span>
+<span class="n">WORKDIR</span> <span class="o">/</span><span class="n">workspace</span>
+
+<span class="n">ENV</span> <span class="n">PYTHONPATH</span> <span class="s2">&quot;${PYTHONPATH}:/workspace&quot;</span>
+
+<span class="n">COPY</span> <span class="n">requirements</span><span class="o">.</span><span class="n">txt</span> <span class="o">.</span>
+<span class="n">RUN</span> <span class="n">pip</span> <span class="n">install</span> <span class="o">--</span><span class="n">no</span><span class="o">-</span><span class="n">cache</span><span class="o">-</span><span class="n">dir</span> <span class="n">git</span><span class="o">+</span><span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">github</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">NVIDIA</span><span class="o">/</span><span class="n">dllogger</span><span class="o">.</span><span class="n">git</span><span class="c1">#egg=dllogger</span>
+<span class="n">RUN</span> <span class="n">pip</span> <span class="n">install</span> <span class="o">-</span><span class="n">r</span> <span class="n">requirements</span><span class="o">.</span><span class="n">txt</span>
+<span class="n">RUN</span> <span class="n">python3</span> <span class="o">-</span><span class="n">m</span> <span class="n">pip</span> <span class="n">install</span> <span class="n">pycocotools</span><span class="o">==</span><span class="mf">2.0</span><span class="o">.</span><span class="mi">0</span>
+
+<span class="c1"># Copy SSD code</span>
+<span class="n">COPY</span> <span class="o">./</span><span class="n">setup</span><span class="o">.</span><span class="n">py</span> <span class="o">.</span>
+<span class="n">COPY</span> <span class="o">./</span><span class="n">csrc</span> <span class="o">./</span><span class="n">csrc</span>
+<span class="n">RUN</span> <span class="n">pip</span> <span class="n">install</span> <span class="o">.</span>
+
+<span class="n">COPY</span> <span class="o">.</span> <span class="o">.</span>
+<span class="p">[</span><span class="n">user</span><span class="err">@</span><span class="n">pc</span> <span class="n">SSD</span><span class="p">]</span><span class="o">$</span> <span class="n">docker</span> <span class="n">build</span> <span class="o">-</span><span class="n">t</span> <span class="n">user</span><span class="o">/</span><span class="n">docker_name</span> <span class="o">.</span>
+<span class="p">[</span><span class="n">user</span><span class="err">@</span><span class="n">pc</span> <span class="n">SSD</span><span class="p">]</span><span class="o">$</span> <span class="n">docker</span> <span class="n">login</span> <span class="o">&amp;&amp;</span> <span class="n">docker</span> <span class="n">push</span> <span class="n">user</span><span class="o">/</span><span class="n">docker_name</span>
+</code></pre></div>
+
+<p>To run the built image on ABCI, please refer to <a href="#running-a-container-with-singularity">Running a container with Singularity</a></p>
+<h4 id="convert-dockerfile-to-singularity-recipe">Convert Dockerfile to Singularity recipe</h4>
+<p>By converting Dockerfile to Singularity recipe, you can build a Singularity container image which provides the same functionality defined in the Dockerfile on ABCI.
+You can manually convert Dockerfile, but using <a href="https://singularityhub.github.io/singularity-cli/">Singularity Python</a> helps the conversion.</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>The conversion of Singularity Python is not perfect.
+If <code>singularity build</code> fails when the generated Singularity recipe file is used, modify the recipe file manually.</p>
+</div>
+<p>Example procedure for installing Singularity Python)</p>
+<div class="codehilite"><pre><span></span><code><span class="p">[</span><span class="n">username</span><span class="err">@</span><span class="n">es1</span> <span class="o">~</span><span class="p">]</span><span class="o">$</span> <span class="n">module</span> <span class="nb">load</span> <span class="n">python</span><span class="o">/</span><span class="mf">3.6</span><span class="o">/</span><span class="mf">3.6</span><span class="o">.</span><span class="mi">12</span>
+<span class="p">[</span><span class="n">username</span><span class="err">@</span><span class="n">es1</span> <span class="o">~</span><span class="p">]</span><span class="o">$</span> <span class="n">python3</span> <span class="o">-</span><span class="n">m</span> <span class="n">venv</span> <span class="n">work</span>
+<span class="p">[</span><span class="n">username</span><span class="err">@</span><span class="n">es1</span> <span class="o">~</span><span class="p">]</span><span class="o">$</span> <span class="n">source</span> <span class="n">work</span><span class="o">/</span><span class="n">bin</span><span class="o">/</span><span class="n">activate</span>
+<span class="p">(</span><span class="n">work</span><span class="p">)</span> <span class="p">[</span><span class="n">username</span><span class="err">@</span><span class="n">es1</span> <span class="o">~</span><span class="p">]</span><span class="o">$</span> <span class="n">pip3</span> <span class="n">install</span> <span class="n">spython</span>
+</code></pre></div>
+
+<p>Following example shows how to convert Dockerfile of <a href="https://github.com/NVIDIA/DeepLearningExamples/tree/master/PyTorch/Detection/SSD">SSD300 v1.1 image</a> developed by NVIDIA using Singularity Python and modify the generated Singularity recipe (ssd.def) so that it can correctly generate a Singularity image.</p>
+<p>Just converting Dockerfile results in a built time error.
+To avoid the problem, this example modifies the Singularity recipe as described below.</p>
+<ul>
+<li>Files in WORKDIR will not be copied =&gt; Set the copy destination to the absolute path of WORKDIR</li>
+<li>No path to pip =&gt; Add a setting to take over environment variables available in Docker image</li>
+</ul>
+<div class="codehilite"><pre><span></span><code><span class="p">[</span><span class="n">username</span><span class="err">@</span><span class="n">es1</span> <span class="o">~</span><span class="p">]</span><span class="n">$</span> <span class="k">module</span> <span class="n">load</span> <span class="n">python</span><span class="o">/</span><span class="mf">3.6</span><span class="o">/</span><span class="mf">3.6.12</span>
+<span class="p">[</span><span class="n">username</span><span class="err">@</span><span class="n">es1</span> <span class="o">~</span><span class="p">]</span><span class="n">$</span> <span class="n">source</span> <span class="n">work</span><span class="o">/</span><span class="n">bin</span><span class="o">/</span><span class="n">activate</span>
+<span class="p">(</span><span class="n">work</span><span class="p">)</span> <span class="p">[</span><span class="n">username</span><span class="err">@</span><span class="n">es1</span> <span class="o">~</span><span class="p">]</span><span class="n">$</span> <span class="n">git</span> <span class="n">clone</span> <span class="nl">https</span><span class="p">:</span><span class="c1">//github.com/NVIDIA/DeepLearningExamples</span>
+<span class="p">(</span><span class="n">work</span><span class="p">)</span> <span class="p">[</span><span class="n">username</span><span class="err">@</span><span class="n">es1</span> <span class="o">~</span><span class="p">]</span><span class="n">$</span> <span class="n">cd</span> <span class="n">DeepLearningExamples</span><span class="o">/</span><span class="n">PyTorch</span><span class="o">/</span><span class="n">Detection</span><span class="o">/</span><span class="n">SSD</span>
+<span class="p">(</span><span class="n">work</span><span class="p">)</span> <span class="p">[</span><span class="n">username</span><span class="err">@</span><span class="n">es1</span> <span class="n">SSD</span><span class="p">]</span><span class="n">$</span> <span class="n">spython</span> <span class="n">recipe</span> <span class="n">Dockerfile</span> <span class="n">ssd</span><span class="p">.</span><span class="n">def</span>
+<span class="p">(</span><span class="n">work</span><span class="p">)</span> <span class="p">[</span><span class="n">username</span><span class="err">@</span><span class="n">es1</span> <span class="n">SSD</span><span class="p">]</span><span class="n">$</span> <span class="n">cp</span> <span class="o">-</span><span class="n">p</span> <span class="n">ssd</span><span class="p">.</span><span class="n">def</span> <span class="n">ssd_org</span><span class="p">.</span><span class="n">def</span>
+<span class="p">(</span><span class="n">work</span><span class="p">)</span> <span class="p">[</span><span class="n">username</span><span class="err">@</span><span class="n">es1</span> <span class="n">SSD</span><span class="p">]</span><span class="n">$</span> <span class="n">vi</span> <span class="n">ssd</span><span class="p">.</span><span class="n">def</span>
+<span class="nl">Bootstrap</span><span class="p">:</span> <span class="n">docker</span>
+<span class="nl">From</span><span class="p">:</span> <span class="n">nvcr</span><span class="p">.</span><span class="n">io</span><span class="o">/</span><span class="n">nvidia</span><span class="o">/</span><span class="nl">pytorch</span><span class="p">:</span><span class="mf">20.06</span><span class="o">-</span><span class="n">py3</span>
+<span class="nl">Stage</span><span class="p">:</span> <span class="n">spython</span><span class="o">-</span><span class="n">base</span>
+
+<span class="nf">%files</span>
+<span class="n">requirements</span><span class="p">.</span><span class="n">txt</span> <span class="o">/</span><span class="n">workspace</span>                     <span class="o">&lt;-</span> <span class="n">Change</span> <span class="n">path</span>
+<span class="p">.</span><span class="o">/</span><span class="n">setup</span><span class="p">.</span><span class="n">py</span> <span class="o">/</span><span class="n">workspace</span>                           <span class="o">&lt;-</span> <span class="n">Change</span> <span class="n">path</span>
+<span class="p">.</span><span class="o">/</span><span class="n">csrc</span> <span class="o">/</span><span class="n">workspace</span><span class="o">/</span><span class="n">csrc</span>                          <span class="o">&lt;-</span> <span class="n">Change</span> <span class="n">path</span>
+<span class="p">.</span> <span class="o">/</span><span class="n">workspace</span>                                    <span class="o">&lt;-</span> <span class="n">Change</span> <span class="n">path</span>
+<span class="nf">%post</span>
+<span class="n">FROM_IMAGE_NAME</span><span class="o">=</span><span class="n">nvcr</span><span class="p">.</span><span class="n">io</span><span class="o">/</span><span class="n">nvidia</span><span class="o">/</span><span class="nl">pytorch</span><span class="p">:</span><span class="mf">20.06</span><span class="o">-</span><span class="n">py3</span>
+<span class="p">.</span> <span class="o">/</span><span class="p">.</span><span class="n">singularity</span><span class="p">.</span><span class="n">d</span><span class="o">/</span><span class="n">env</span><span class="o">/</span><span class="mi">10</span><span class="o">-</span><span class="n">docker2singularity</span><span class="p">.</span><span class="n">sh</span>  <span class="o">&lt;-</span> <span class="n">Add</span>
+
+<span class="cp"># Set working directory</span>
+<span class="n">cd</span> <span class="o">/</span><span class="n">workspace</span>
+
+<span class="n">PYTHONPATH</span><span class="o">=</span><span class="s">&quot;${PYTHONPATH}:/workspace&quot;</span>
+
+<span class="n">pip</span> <span class="n">install</span> <span class="o">--</span><span class="n">no</span><span class="o">-</span><span class="n">cache</span><span class="o">-</span><span class="n">dir</span> <span class="n">git</span><span class="o">+</span><span class="nl">https</span><span class="p">:</span><span class="c1">//github.com/NVIDIA/dllogger.git#egg=dllogger</span>
+<span class="n">pip</span> <span class="n">install</span> <span class="o">-</span><span class="n">r</span> <span class="n">requirements</span><span class="p">.</span><span class="n">txt</span>
+<span class="n">python3</span> <span class="o">-</span><span class="n">m</span> <span class="n">pip</span> <span class="n">install</span> <span class="n">pycocotools</span><span class="o">==</span><span class="mf">2.0.0</span>
+
+<span class="cp"># Copy SSD code</span>
+<span class="n">pip</span> <span class="n">install</span> <span class="p">.</span>
+
+<span class="nf">%environment</span>
+<span class="k">export</span> <span class="n">PYTHONPATH</span><span class="o">=</span><span class="s">&quot;${PYTHONPATH}:/workspace&quot;</span>
+<span class="nf">%runscript</span>
+<span class="n">cd</span> <span class="o">/</span><span class="n">workspace</span>
+<span class="n">exec</span> <span class="o">/</span><span class="n">bin</span><span class="o">/</span><span class="n">bash</span> <span class="s">&quot;$@&quot;</span>
+<span class="nf">%startscript</span>
+<span class="n">cd</span> <span class="o">/</span><span class="n">workspace</span>
+<span class="n">exec</span> <span class="o">/</span><span class="n">bin</span><span class="o">/</span><span class="n">bash</span> <span class="s">&quot;$@&quot;</span>
+</code></pre></div>
+
+<p>To create a Singularity image from the generated recipe file on ABCI, please refer to <a href="#create-a-singularity-image-build">Create a Singularity image (build)</a>.</p>
+<h2 id="docker">Docker</h2>
+<p>In the ABCI System, job can be executed on Docker container.
+When you use Docker, you need to set up user environment by the <code>module</code> command and specify <code>-l docker</code> option and <code>-l docker_image</code> option at job submission.</p>
+<table>
+<thead>
+<tr>
+<th align="left">option</th>
+<th align="left">description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">-l docker</td>
+<td align="left">job is executed on Docker container</td>
+</tr>
+<tr>
+<td align="left">-l docker_images</td>
+<td align="left">specify using Docker image</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Docker container can not be used on memory-intensive node in the ABCI system.</p>
+</div>
+<p>The available Docker image can be referred by <code>show_docker_images</code> command.</p>
+<div class="codehilite"><pre><span></span><code><span class="o">[</span><span class="n">username@es1 ~</span><span class="o">]</span><span class="err">$</span><span class="w"> </span><span class="n">show_docker_images</span><span class="w"></span>
+<span class="n">REPOSITORY</span><span class="w">                </span><span class="n">TAG</span><span class="w">             </span><span class="nc">IMAGE</span><span class="w"> </span><span class="n">ID</span><span class="w">     </span><span class="n">CREATED</span><span class="w">       </span><span class="k">SIZE</span><span class="w"></span>
+<span class="nl">jcm</span><span class="p">:</span><span class="mi">5000</span><span class="o">/</span><span class="n">dhub</span><span class="o">/</span><span class="n">ubuntu</span><span class="w">      </span><span class="n">latest</span><span class="w">          </span><span class="mi">113</span><span class="n">a43faa138</span><span class="w"> </span><span class="mi">3</span><span class="w"> </span><span class="n">weeks</span><span class="w"> </span><span class="n">ago</span><span class="w">   </span><span class="mf">81.2</span><span class="n">MB</span><span class="w"></span>
+</code></pre></div>
+
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>In the ABCI System, Users can use only Docker images provided in the system.</p>
+</div>
+<p>Example) job script using Docker</p>
+<p>The following job script executes <code>python3 ./sample.py</code> on Docker container.</p>
+<div class="codehilite"><pre><span></span><code><span class="o">[</span><span class="n">username@es1 ~</span><span class="o">]</span><span class="err">$</span><span class="w"> </span><span class="n">cat</span><span class="w"> </span><span class="n">run</span><span class="p">.</span><span class="n">sh</span><span class="w"></span>
+<span class="err">#!</span><span class="o">/</span><span class="n">bin</span><span class="o">/</span><span class="n">sh</span><span class="w"></span>
+<span class="err">#$</span><span class="o">-</span><span class="n">cwd</span><span class="w"></span>
+<span class="err">#$</span><span class="o">-</span><span class="n">j</span><span class="w"> </span><span class="n">y</span><span class="w"></span>
+<span class="err">#$</span><span class="o">-</span><span class="n">l</span><span class="w"> </span><span class="n">rt_F</span><span class="o">=</span><span class="mi">1</span><span class="w"></span>
+<span class="err">#$</span><span class="o">-</span><span class="n">l</span><span class="w"> </span><span class="n">docker</span><span class="o">=</span><span class="mi">1</span><span class="w"></span>
+<span class="err">#$</span><span class="o">-</span><span class="n">l</span><span class="w"> </span><span class="n">docker_images</span><span class="o">=</span><span class="ss">&quot;*jcm:5000/dhub/ubuntu*&quot;</span><span class="w"></span>
+
+<span class="n">python3</span><span class="w"> </span><span class="p">.</span><span class="o">/</span><span class="n">sample</span><span class="p">.</span><span class="n">py</span><span class="w"></span>
+</code></pre></div>
+
+<p>Example) Submission of job script using Docker</p>
+<div class="codehilite"><pre><span></span><code><span class="o">[</span><span class="n">username@es1 ~</span><span class="o">]</span><span class="err">$</span><span class="w"> </span><span class="n">qsub</span><span class="w"> </span><span class="o">-</span><span class="n">g</span><span class="w"> </span><span class="n">grpname</span><span class="w"> </span><span class="n">run</span><span class="p">.</span><span class="n">sh</span><span class="w"></span>
+<span class="n">Your</span><span class="w"> </span><span class="n">job</span><span class="w"> </span><span class="mi">12345</span><span class="w"> </span><span class="p">(</span><span class="ss">&quot;run.sh&quot;</span><span class="p">)</span><span class="w"> </span><span class="n">has</span><span class="w"> </span><span class="n">been</span><span class="w"> </span><span class="n">submitted</span><span class="w"></span>
+</code></pre></div>
+
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Docker container is only available on a node-exclusive job.</p>
+</div>
+                
+              
+              
+                
+
+
+              
+            </article>
+          </div>
+        </div>
+        
+      </main>
+      
+        
+<footer class="md-footer">
+  
+    <nav class="md-footer__inner md-grid" aria-label="Footer">
+      
+        <a href="../mpi/" class="md-footer__link md-footer__link--prev" rel="prev">
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+          </div>
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              MPI
+            </div>
+          </div>
+        </a>
+      
+      
+        <a href="../development-tools/" class="md-footer__link md-footer__link--next" rel="next">
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              Development Tools
+            </div>
+          </div>
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4z"/></svg>
+          </div>
+        </a>
+      
+    </nav>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-footer-copyright">
+        
+          <div class="md-footer-copyright__highlight">
+            Copyright &copy; 2021 National Institute of Advanced Industrial Science and Technology (AIST)
+          </div>
+        
+        Made with
+        <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+          Material for MkDocs
+        </a>
+        
+      </div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    <script id="__config" type="application/json">{"base": "..", "features": ["toc.integrate"], "translations": {"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing"}, "search": "../assets/javascripts/workers/search.fe42c31b.min.js", "version": null}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.4ea5477f.min.js"></script>
+      
+    
+  </body>
+</html>

@@ -1,0 +1,2679 @@
+
+<!doctype html>
+<html lang="ja" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="ABCI 2.0 User Guide, Japanese version">
+      
+      
+      
+        <meta name="author" content="AIST">
+      
+      
+        <link rel="canonical" href="https://docs.abci.ai/ja/job-execution/">
+      
+      <link rel="icon" href="../img/favicon.png">
+      <meta name="generator" content="mkdocs-1.1.2, mkdocs-material-7.1.3">
+    
+    
+      
+        <title>ジョブ実行 - ABCI 2.0 User Guide</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.e35208c4.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.ef6f36e2.min.css">
+        
+          
+          
+          <meta name="theme-color" content="#ef5552">
+        
+      
+    
+    
+    
+      
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700%7CRoboto+Mono&display=fallback">
+        <style>:root{--md-text-font-family:"Roboto";--md-code-font-family:"Roboto Mono"}</style>
+      
+    
+    
+    
+    
+      
+        
+<script>window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)},ga.l=+new Date,ga("create","UA-118371652-2","auto"),ga("set","anonymizeIp",!0),ga("send","pageview"),document.addEventListener("DOMContentLoaded",function(){document.forms.search&&document.forms.search.query.addEventListener("blur",function(){var e;this.value&&(e=document.location.pathname,ga("send","pageview",e+"?q="+this.value))}),"undefined"!=typeof location$&&location$.subscribe(function(e){ga("send","pageview",e.pathname)})})</script>
+<script async src="https://www.google-analytics.com/analytics.js"></script>
+      
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="" data-md-color-primary="red" data-md-color-accent="">
+  
+    
+    <script>function __prefix(e){return new URL("..",location).pathname+"."+e}function __get(e,t=localStorage){return JSON.parse(t.getItem(__prefix(e)))}</script>
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#_1" class="md-skip">
+          コンテンツにスキップ
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+      <header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="ヘッダー">
+    <a href=".." title="ABCI 2.0 User Guide" class="md-header__button md-logo" aria-label="ABCI 2.0 User Guide" data-md-component="logo">
+      
+  <img src="../img/logo.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            ABCI 2.0 User Guide
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              ジョブ実行
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+      <div class="md-header__option">
+        <div class="md-select">
+          
+          <button class="md-header__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m12.87 15.07-2.54-2.51.03-.03A17.52 17.52 0 0 0 14.07 6H17V4h-7V2H8v2H1v2h11.17C11.5 7.92 10.44 9.75 9 11.35 8.07 10.32 7.3 9.19 6.69 8h-2c.73 1.63 1.73 3.17 2.98 4.56l-5.09 5.02L4 19l5-5 3.11 3.11.76-2.04M18.5 10h-2L12 22h2l1.12-3h4.75L21 22h2l-4.5-12m-2.62 7 1.62-4.33L19.12 17h-3.24z"/></svg>
+          </button>
+          <div class="md-select__inner">
+            <ul class="md-select__list">
+              
+                <li class="md-select__item">
+                  <a href="https://docs.abci.ai/en/" hreflang="" class="md-select__link">
+                    English
+                  </a>
+                </li>
+                
+                <li class="md-select__item">
+                  <a href="https://docs.abci.ai/ja/" hreflang="" class="md-select__link">
+                    日本語
+                  </a>
+                </li>
+                
+            </ul>
+          </div>
+        </div>
+      </div>
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+      </label>
+      
+<div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="検索" placeholder="検索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" data-md-state="active" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+      </label>
+      <button type="reset" class="md-search__icon md-icon" aria-label="クリア" tabindex="-1">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"/></svg>
+      </button>
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            検索を初期化
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        
+<a href="https://github.com/aistairc/abci-docs/" title="リポジトリへ" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+      </div>
+    
+  </nav>
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+<nav class="md-nav md-nav--primary md-nav--integrated" aria-label="ナビゲーション" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="ABCI 2.0 User Guide" class="md-nav__button md-logo" aria-label="ABCI 2.0 User Guide" data-md-component="logo">
+      
+  <img src="../img/logo.png" alt="logo">
+
+    </a>
+    ABCI 2.0 User Guide
+  </label>
+  
+    <div class="md-nav__source">
+      
+<a href="https://github.com/aistairc/abci-docs/" title="リポジトリへ" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        はじめに
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../system-overview/" class="md-nav__link">
+        ABCIシステムの概要
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../getting-started/" class="md-nav__link">
+        ABCIの利用開始
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          ジョブ実行
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        ジョブ実行
+      </a>
+      
+        
+<nav class="md-nav md-nav--secondary" aria-label="目次">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目次
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#job-services" class="md-nav__link">
+    ジョブサービス
+  </a>
+  
+    <nav class="md-nav" aria-label="ジョブサービス">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#on-demand-service" class="md-nav__link">
+    On-demandサービス
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#spot-service" class="md-nav__link">
+    Spotサービス
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#reserved-service" class="md-nav__link">
+    Reservedサービス
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#job-execution-resource" class="md-nav__link">
+    ジョブ実行リソース
+  </a>
+  
+    <nav class="md-nav" aria-label="ジョブ実行リソース">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#available-resource-types" class="md-nav__link">
+    利用可能な資源タイプ
+  </a>
+  
+    <nav class="md-nav" aria-label="利用可能な資源タイプ">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#compute-node-v" class="md-nav__link">
+    計算ノード(V)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#compute-node-a" class="md-nav__link">
+    計算ノード(A)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#memory-intensive-node" class="md-nav__link">
+    メモリインテンシブノード
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#number-of-nodes-available-at-the-same-time" class="md-nav__link">
+    同時に利用可能なノード数
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#elapsed-time-and-node-time-product-limits" class="md-nav__link">
+    経過時間およびノード時間積の制限
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#limitation-on-the-number-of-job-submissions-and-executions" class="md-nav__link">
+    ジョブ投入数および実行数の制限
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#execution-priority" class="md-nav__link">
+    実行優先度
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#job-execution-options" class="md-nav__link">
+    ジョブ実行オプション
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#interactive-jobs" class="md-nav__link">
+    インタラクティブジョブ
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#batch-jobs" class="md-nav__link">
+    バッチジョブ
+  </a>
+  
+    <nav class="md-nav" aria-label="バッチジョブ">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#submit-a-batch-job" class="md-nav__link">
+    バッチジョブの投入
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#show-the-status-of-batch-jobs" class="md-nav__link">
+    バッチジョブの状態の確認
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#delete-a-batch-job" class="md-nav__link">
+    バッチジョブの削除
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#stdout-and-stderr-of-batch-jobs" class="md-nav__link">
+    バッチジョブの標準出力と標準エラー出力
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#report-batch-job-accounting" class="md-nav__link">
+    バッチジョブの統計情報出力
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#environment-variables" class="md-nav__link">
+    環境変数
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#advance-reservation" class="md-nav__link">
+    事前予約
+  </a>
+  
+    <nav class="md-nav" aria-label="事前予約">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#make-a-reservation" class="md-nav__link">
+    予約の実行
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#show-the-status-of-reservations" class="md-nav__link">
+    予約状態の確認
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#cancel-a-reservation" class="md-nav__link">
+    予約の取り消し
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#how-to-use-reserved-node" class="md-nav__link">
+    予約ノードの使い方
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#cautions-for-using-reserved-node" class="md-nav__link">
+    予約ノードご利用時の注意
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#accounting" class="md-nav__link">
+    課金
+  </a>
+  
+    <nav class="md-nav" aria-label="課金">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#on-demand-and-spot-services" class="md-nav__link">
+    On-demandおよびSpotサービス
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#reserved-service_1" class="md-nav__link">
+    Reservedサービス
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../storage/" class="md-nav__link">
+        ストレージ
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../environment-modules/" class="md-nav__link">
+        Environment Modules
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../python/" class="md-nav__link">
+        Python
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../gpu/" class="md-nav__link">
+        GPU
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../mpi/" class="md-nav__link">
+        MPI
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../containers/" class="md-nav__link">
+        コンテナ
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../development-tools/" class="md-nav__link">
+        開発ツール
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_12" type="checkbox" id="__nav_12" >
+      
+      <label class="md-nav__link" for="__nav_12">
+        付録
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="付録" data-md-level="1">
+        <label class="md-nav__title" for="__nav_12">
+          <span class="md-nav__icon md-icon"></span>
+          付録
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../appendix/installed-software/" class="md-nav__link">
+        付録. インストール済みソフトウェアの構成
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../appendix/using-abci-with-hpci/" class="md-nav__link">
+        付録. HPCIによるABCIシステム利用
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../appendix/external-networks/" class="md-nav__link">
+        付録. 外部ネットワークとの通信
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../appendix/ssh-access/" class="md-nav__link">
+        付録. 計算ノードへのSSHアクセス
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_13" type="checkbox" id="__nav_13" >
+      
+      <label class="md-nav__link" for="__nav_13">
+        各種アプリケーション
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="各種アプリケーション" data-md-level="1">
+        <label class="md-nav__title" for="__nav_13">
+          <span class="md-nav__icon md-icon"></span>
+          各種アプリケーション
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../apps/" class="md-nav__link">
+        概要
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../apps/tensorflow/" class="md-nav__link">
+        TensorFlow
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../apps/tensorflow-keras/" class="md-nav__link">
+        TensorFlow Keras
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../apps/pytorch/" class="md-nav__link">
+        PyTorch
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../apps/mxnet/" class="md-nav__link">
+        MXNet
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../apps/chainer/" class="md-nav__link">
+        Chainer
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../apps/others/" class="md-nav__link">
+        その他
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_14" type="checkbox" id="__nav_14" >
+      
+      <label class="md-nav__link" for="__nav_14">
+        Tips
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Tips" data-md-level="1">
+        <label class="md-nav__title" for="__nav_14">
+          <span class="md-nav__icon md-icon"></span>
+          Tips
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../tips/ngc/" class="md-nav__link">
+        NVIDIA NGC
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../tips/remote-desktop/" class="md-nav__link">
+        リモートデスクトップの利用
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../tips/awscli/" class="md-nav__link">
+        AWS CLIの利用
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../tips/tera-term/" class="md-nav__link">
+        Tera Termの利用
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../tips/putty/" class="md-nav__link">
+        PuTTYの利用
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../tips/jupyter-notebook/" class="md-nav__link">
+        Jupyter Notebookの利用
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../tips/sregistry-cli/" class="md-nav__link">
+        Singularity Global Clientの利用
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../tips/spack/" class="md-nav__link">
+        Spackによるソフトウェア管理
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../tips/datasets/" class="md-nav__link">
+        データセットの利用
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../tips/dl-amazon-ecr/" class="md-nav__link">
+        Amazon ECR からコンテナ取得
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_15" type="checkbox" id="__nav_15" >
+      
+      <label class="md-nav__link" for="__nav_15">
+        ABCI クラウドストレージ
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="ABCI クラウドストレージ" data-md-level="1">
+        <label class="md-nav__title" for="__nav_15">
+          <span class="md-nav__icon md-icon"></span>
+          ABCI クラウドストレージ
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../abci-cloudstorage/" class="md-nav__link">
+        概要
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../abci-cloudstorage/cs-account/" class="md-nav__link">
+        アカウントとアクセスキー
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../abci-cloudstorage/usage/" class="md-nav__link">
+        使い方
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../abci-cloudstorage/encryption/" class="md-nav__link">
+        データの暗号化
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../abci-cloudstorage/acl/" class="md-nav__link">
+        アクセス制御(1)
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../abci-cloudstorage/policy/" class="md-nav__link">
+        アクセス制御(2)
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../abci-cloudstorage/publishing-datasets/" class="md-nav__link">
+        データセットの公開
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../abci-cloudstorage/caution/" class="md-nav__link">
+        ご利用時の注意
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../abci-datasets/" class="md-nav__link">
+        ABCI データセット
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../abci-singularity-endpoint/" class="md-nav__link">
+        ABCI Singularity エンドポイント
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../faq/" class="md-nav__link">
+        FAQ
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../known-issues/" class="md-nav__link">
+        既知の問題
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../system-updates/" class="md-nav__link">
+        システム更新履歴
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="https://abci.ai/ja/about_abci/info.html" class="md-nav__link">
+        運転状況
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../contact/" class="md-nav__link">
+        お問い合わせ
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_23" type="checkbox" id="__nav_23" >
+      
+      <label class="md-nav__link" for="__nav_23">
+        リンク
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="リンク" data-md-level="1">
+        <label class="md-nav__title" for="__nav_23">
+          <span class="md-nav__icon md-icon"></span>
+          リンク
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="https://abci.ai/ja/" class="md-nav__link">
+        ABCI Webページ
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="https://docs.abci.ai/portal/ja/" class="md-nav__link">
+        ABCI利用ポータル手引き
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="https://portal.abci.ai/user/project_register_app.php?lang=ja" class="md-nav__link">
+        ABCI利用ポータル (利用申請)
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="https://portal.abci.ai/user/login.php?lang=ja" class="md-nav__link">
+        ABCI利用ポータル (ログイン)
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+          
+          <div class="md-content" data-md-component="content">
+            <article class="md-content__inner md-typeset">
+              
+                
+                  <a href="https://github.com/aistairc/abci-docs/edit/master/ja/docs/job-execution.md" title="編集" class="md-content__button md-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75L3 17.25z"/></svg>
+                  </a>
+                
+                
+                <h1 id="_1">ジョブ実行</h1>
+<h2 id="job-services">ジョブサービス</h2>
+<p>ABCIシステムでは、以下のジョブサービスが利用可能です。</p>
+<table>
+<thead>
+<tr>
+<th align="left">サービス名</th>
+<th align="left">説明</th>
+<th align="left">サービス課金係数</th>
+<th align="left">利用形態</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">On-demand</td>
+<td align="left">インタラクティブジョブの実行サービス</td>
+<td align="left">1.0</td>
+<td align="left">インタラクティブジョブ</td>
+</tr>
+<tr>
+<td align="left">Spot</td>
+<td align="left">バッチジョブの実行サービス</td>
+<td align="left">1.0</td>
+<td align="left">バッチジョブ</td>
+</tr>
+<tr>
+<td align="left">Reserved</td>
+<td align="left">事前予約型ジョブサービス</td>
+<td align="left">1.5</td>
+<td align="left">事前予約</td>
+</tr>
+</tbody>
+</table>
+<p>各ジョブサービスで利用可能なジョブ実行リソース、制限事項等については、<a href="#job-execution-resource">ジョブ実行リソース</a>を参照してください。また、課金については、<a href="#accounting">課金</a>を参照してください。</p>
+<h3 id="on-demand-service">On-demandサービス</h3>
+<p>プログラムのコンパイルやデバッグ、対話的なアプリケーション、可視化ソフトウェアの実行に適したインタラクティブジョブの実行サービスです。</p>
+<p>利用方法は<a href="#interactive-jobs">インタラクティブジョブ</a>、インタラクティブジョブの実行オプションの詳細は<a href="#job-execution-options">ジョブ実行オプション</a>をそれぞれ参照してください。</p>
+<h3 id="spot-service">Spotサービス</h3>
+<p>対話的な処理の必要がないアプリケーションの実行に適したバッチジョブの実行サービスです。On-demandサービスに比べてより長時間のジョブや、より並列度の高いジョブの実行が可能です。</p>
+<p>利用方法は<a href="#batch-jobs">バッチジョブ</a>、バッチジョブの実行オプションの詳細は<a href="#job-execution-options">ジョブ実行オプション</a>をそれぞれ参照してください。</p>
+<h3 id="reserved-service">Reservedサービス</h3>
+<p>計算リソースを日単位で事前に予約して利用できるサービスです。On-demandおよびSpotサービスの混雑の影響を受けることなく、計画的なジョブ実行が可能となります。また、経過時間およびノード時間積の制限がないため、より長時間のジョブ実行が可能です。</p>
+<p>Reservedサービスでは、まず事前予約を行って予約ID (AR-ID)を取得し、この予約IDを用いてインタラクティブジョブやバッチジョブの実行を行います。</p>
+<p>予約方法は<a href="#advance-reservation">事前予約</a>を参照してください。インタラクティブジョブやバッチジョブの利用方法、実行オプションはOn-demandおよびSpotサービスと共通です。</p>
+<h2 id="job-execution-resource">ジョブ実行リソース</h2>
+<p>ABCIシステムでは、計算リソースを論理的に分割した資源タイプを利用して、ジョブサービスにシステムリソースを割り当てます。On-demand、Spot、Reservedのいずれのサービスを利用する場合も、利用者は利用したい資源タイプとその数量を指定して、ジョブの投入/実行、計算ノードの予約を行います。</p>
+<p>以下では、まず利用可能な資源タイプについて解説し、続いて同時に利用可能な資源量、経過時間およびノード時間積、ジョブ投入数および実行数に関する制限事項等を説明します。</p>
+<h3 id="available-resource-types">利用可能な資源タイプ</h3>
+<p>ABCIシステムには、<a href="../system-overview/#compute-node">計算ノード</a>と<a href="../system-overview/#memory-intensive-node">メモリインテンシブノード</a>の2種類の計算リソースがあり、それぞれについて次のように資源タイプが用意されています。</p>
+<h4 id="compute-node-v">計算ノード(V)</h4>
+<table>
+<thead>
+<tr>
+<th align="left">資源タイプ</th>
+<th align="left">資源タイプ名</th>
+<th align="left">説明</th>
+<th align="left">割り当て物理CPUコア数</th>
+<th align="left">割り当てGPU数</th>
+<th align="left">メモリ (GiB)</th>
+<th align="left">ローカルストレージ (GB)</th>
+<th align="left">資源タイプ課金係数</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">Full</td>
+<td align="left">rt_F</td>
+<td align="left">ノード占有</td>
+<td align="left">40</td>
+<td align="left">4</td>
+<td align="left">360</td>
+<td align="left">1440</td>
+<td align="left">1.00</td>
+</tr>
+<tr>
+<td align="left">G.large</td>
+<td align="left">rt_G.large</td>
+<td align="left">ノード共有<br>GPU利用</td>
+<td align="left">20</td>
+<td align="left">4</td>
+<td align="left">240</td>
+<td align="left">720</td>
+<td align="left">0.90</td>
+</tr>
+<tr>
+<td align="left">G.small</td>
+<td align="left">rt_G.small</td>
+<td align="left">ノード共有<br>GPU利用</td>
+<td align="left">5</td>
+<td align="left">1</td>
+<td align="left">60</td>
+<td align="left">180</td>
+<td align="left">0.30</td>
+</tr>
+<tr>
+<td align="left">C.large</td>
+<td align="left">rt_C.large</td>
+<td align="left">ノード共有<br>CPUのみ利用</td>
+<td align="left">20</td>
+<td align="left">0</td>
+<td align="left">120</td>
+<td align="left">720</td>
+<td align="left">0.60</td>
+</tr>
+<tr>
+<td align="left">C.small</td>
+<td align="left">rt_C.small</td>
+<td align="left">ノード共有<br>CPUのみ利用</td>
+<td align="left">5</td>
+<td align="left">0</td>
+<td align="left">30</td>
+<td align="left">180</td>
+<td align="left">0.20</td>
+</tr>
+</tbody>
+</table>
+<h4 id="compute-node-a">計算ノード(A)</h4>
+<table>
+<thead>
+<tr>
+<th align="left">資源タイプ</th>
+<th align="left">資源タイプ名</th>
+<th align="left">説明</th>
+<th align="left">割り当て物理CPUコア数</th>
+<th align="left">割り当てGPU数</th>
+<th align="left">メモリ (GiB)</th>
+<th align="left">ローカルストレージ (GB)</th>
+<th align="left">資源タイプ課金係数</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">Full</td>
+<td align="left">rt_AF</td>
+<td align="left">ノード占有</td>
+<td align="left">72</td>
+<td align="left">8</td>
+<td align="left">480</td>
+<td align="left">3440<sup id="fnref:1"><a class="footnote-ref" href="#fn:1">1</a></sup></td>
+<td align="left">3.00</td>
+</tr>
+<tr>
+<td align="left">AG.small</td>
+<td align="left">rt_AG.small</td>
+<td align="left">ノード共有<br>GPU利用</td>
+<td align="left">9</td>
+<td align="left">1</td>
+<td align="left">60</td>
+<td align="left">390</td>
+<td align="left">0.50</td>
+</tr>
+</tbody>
+</table>
+<h4 id="memory-intensive-node">メモリインテンシブノード</h4>
+<table>
+<thead>
+<tr>
+<th align="left">資源タイプ</th>
+<th align="left">資源タイプ名</th>
+<th align="left">説明</th>
+<th align="left">割り当て物理CPUコア数</th>
+<th align="left">割り当てGPU数</th>
+<th align="left">メモリ (GiB)</th>
+<th align="left">ローカルストレージ (GB)</th>
+<th align="left">資源タイプ課金係数</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">M.large</td>
+<td align="left">rt_M.large</td>
+<td align="left">ノード共有<br>CPUのみ利用</td>
+<td align="left">8</td>
+<td align="left">-</td>
+<td align="left">800</td>
+<td align="left">480</td>
+<td align="left">0.40</td>
+</tr>
+<tr>
+<td align="left">M.small</td>
+<td align="left">rt_M.small</td>
+<td align="left">ノード共有<br>CPUのみ利用</td>
+<td align="left">4</td>
+<td align="left">-</td>
+<td align="left">400</td>
+<td align="left">240</td>
+<td align="left">0.20</td>
+</tr>
+</tbody>
+</table>
+<p>複数ノードを使用するジョブを実行する場合は、計算ノードを占有する資源タイプ<code>rt_F</code>もしくは<code>rt_AF</code>を指定してください。メモリインテンシブノードでは複数ノードを使用するジョブを実行することはできません。</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>ノード共有の資源タイプでは、ジョブのプロセス情報は同一ノードで実行されている他のジョブから参照可能になります。
+他のジョブから参照させたくない場合、資源タイプ<code>rt_F</code>もしくは<code>rt_AF</code>を指定しノード占有でジョブを実行してください。</p>
+</div>
+<h3 id="number-of-nodes-available-at-the-same-time">同時に利用可能なノード数</h3>
+<p>ジョブサービスごとに利用可能な資源タイプとノード数の組み合わせを以下に示します。同時に複数ノードを利用する場合は、資源タイプ<code>rt_F</code>もしくは<code>rt_AF</code>を指定する必要があります。</p>
+<table>
+<thead>
+<tr>
+<th align="left">サービス名</th>
+<th align="left">資源タイプ名</th>
+<th align="right">ノード数</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">On-demand</td>
+<td align="left">rt_F</td>
+<td align="right">1-32</td>
+</tr>
+<tr>
+<td align="left"></td>
+<td align="left">rt_G.large</td>
+<td align="right">1</td>
+</tr>
+<tr>
+<td align="left"></td>
+<td align="left">rt_G.small</td>
+<td align="right">1</td>
+</tr>
+<tr>
+<td align="left"></td>
+<td align="left">rt_C.large</td>
+<td align="right">1</td>
+</tr>
+<tr>
+<td align="left"></td>
+<td align="left">rt_C.small</td>
+<td align="right">1</td>
+</tr>
+<tr>
+<td align="left"></td>
+<td align="left">rt_AF</td>
+<td align="right">1-4</td>
+</tr>
+<tr>
+<td align="left"></td>
+<td align="left">rt_AG.small</td>
+<td align="right">1</td>
+</tr>
+<tr>
+<td align="left"></td>
+<td align="left">rt_M.large</td>
+<td align="right">1</td>
+</tr>
+<tr>
+<td align="left"></td>
+<td align="left">rt_M.small</td>
+<td align="right">1</td>
+</tr>
+<tr>
+<td align="left">Spot</td>
+<td align="left">rt_F</td>
+<td align="right">1-512</td>
+</tr>
+<tr>
+<td align="left"></td>
+<td align="left">rt_G.large</td>
+<td align="right">1</td>
+</tr>
+<tr>
+<td align="left"></td>
+<td align="left">rt_G.small</td>
+<td align="right">1</td>
+</tr>
+<tr>
+<td align="left"></td>
+<td align="left">rt_C.large</td>
+<td align="right">1</td>
+</tr>
+<tr>
+<td align="left"></td>
+<td align="left">rt_C.small</td>
+<td align="right">1</td>
+</tr>
+<tr>
+<td align="left"></td>
+<td align="left">rt_AF</td>
+<td align="right">1-64</td>
+</tr>
+<tr>
+<td align="left"></td>
+<td align="left">rt_AG.small</td>
+<td align="right">1</td>
+</tr>
+<tr>
+<td align="left"></td>
+<td align="left">rt_M.large</td>
+<td align="right">1</td>
+</tr>
+<tr>
+<td align="left"></td>
+<td align="left">rt_M.small</td>
+<td align="right">1</td>
+</tr>
+<tr>
+<td align="left">Reserved</td>
+<td align="left">rt_F</td>
+<td align="right">1-予約ノード数</td>
+</tr>
+<tr>
+<td align="left"></td>
+<td align="left">rt_G.large</td>
+<td align="right">1</td>
+</tr>
+<tr>
+<td align="left"></td>
+<td align="left">rt_G.small</td>
+<td align="right">1</td>
+</tr>
+<tr>
+<td align="left"></td>
+<td align="left">rt_C.large</td>
+<td align="right">1</td>
+</tr>
+<tr>
+<td align="left"></td>
+<td align="left">rt_C.small</td>
+<td align="right">1</td>
+</tr>
+<tr>
+<td align="left"></td>
+<td align="left">rt_AF</td>
+<td align="right">1-予約ノード数</td>
+</tr>
+<tr>
+<td align="left"></td>
+<td align="left">rt_AG.small</td>
+<td align="right">1</td>
+</tr>
+</tbody>
+</table>
+<h3 id="elapsed-time-and-node-time-product-limits">経過時間およびノード時間積の制限</h3>
+<p>ジョブサービス、資源タイプに応じて、ジョブの経過時間制限 (実行可能時間の制限) があります。上限値およびデフォルト値を以下に示します。</p>
+<table>
+<thead>
+<tr>
+<th align="left">サービス名</th>
+<th align="left">資源タイプ名</th>
+<th align="left">経過時間制限 (上限値/デフォルト)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">On-demand</td>
+<td align="left">rt_F, rt_AF</td>
+<td align="left">12:00:00/1:00:00</td>
+</tr>
+<tr>
+<td align="left"></td>
+<td align="left">rt_G.large, rt_C.large, rt_M.large</td>
+<td align="left">12:00:00/1:00:00</td>
+</tr>
+<tr>
+<td align="left"></td>
+<td align="left">rt_G.small, rt_C.small, rt_AG.small, rt_M.small</td>
+<td align="left">12:00:00/1:00:00</td>
+</tr>
+<tr>
+<td align="left">Spot</td>
+<td align="left">rt_F, rt_AF</td>
+<td align="left">72:00:00/1:00:00</td>
+</tr>
+<tr>
+<td align="left"></td>
+<td align="left">rt_G.large, rt_C.large, rt_M.large, rt_M.small</td>
+<td align="left">72:00:00/1:00:00</td>
+</tr>
+<tr>
+<td align="left"></td>
+<td align="left">rt_G.small, rt_C.small, rt_AG.small</td>
+<td align="left">168:00:00/1:00:00</td>
+</tr>
+<tr>
+<td align="left">Reserved</td>
+<td align="left">rt_F, rt_AF</td>
+<td align="left">無制限</td>
+</tr>
+<tr>
+<td align="left"></td>
+<td align="left">rt_G.large, rt_C.large</td>
+<td align="left">無制限</td>
+</tr>
+<tr>
+<td align="left"></td>
+<td align="left">rt_G.small, rt_C.small, rt_AG.small</td>
+<td align="left">無制限</td>
+</tr>
+</tbody>
+</table>
+<p>また、On-demandおよびSpotサービスで、複数ノードを使用するジョブを実行する場合には、ノード時間積（使用ノード数 &times; 実行時間）に以下の制限があります。</p>
+<table>
+<thead>
+<tr>
+<th align="left">サービス名</th>
+<th align="right">ノード時間積の最大値</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">On-demand</td>
+<td align="right">12 nodes &middot; hours</td>
+</tr>
+<tr>
+<td align="left">Spot(計算ノード(V), メモリインテンシブノード)</td>
+<td align="right">2304 nodes &middot; hours</td>
+</tr>
+<tr>
+<td align="left">Spot(計算ノード(A))</td>
+<td align="right">288 nodes &middot; hours</td>
+</tr>
+</tbody>
+</table>
+<h3 id="limitation-on-the-number-of-job-submissions-and-executions">ジョブ投入数および実行数の制限</h3>
+<p>1ユーザが同時に投入・実行できるジョブ数に以下の制限があります。
+予約ノードに投入されたジョブもOn-demandやSpotのジョブと同様にジョブ数のカウントに含まれ、本制約を受けます。</p>
+<table>
+<thead>
+<tr>
+<th align="left">制限項目</th>
+<th align="left">制限値</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">1ユーザあたりの同時投入可能ジョブ数</td>
+<td align="left">1000</td>
+</tr>
+<tr>
+<td align="left">1ユーザあたりの同時実行ジョブ数</td>
+<td align="left">200</td>
+</tr>
+<tr>
+<td align="left">1アレイジョブあたりの最大投入可能タスク数</td>
+<td align="left">75000</td>
+</tr>
+</tbody>
+</table>
+<h3 id="execution-priority">実行優先度</h3>
+<p>各ジョブサービスでは、実行時にPOSIX優先度を指定できます。指定可能な優先度の値は以下のとおりです。</p>
+<table>
+<thead>
+<tr>
+<th align="left">サービス名</th>
+<th align="left">優先度</th>
+<th align="left">説明</th>
+<th align="left">POSIX優先度課金係数</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">On-demand</td>
+<td align="left">-450</td>
+<td align="left">既定 (変更不可)</td>
+<td align="left">1.0</td>
+</tr>
+<tr>
+<td align="left">Spot</td>
+<td align="left">-500</td>
+<td align="left">既定</td>
+<td align="left">1.0</td>
+</tr>
+<tr>
+<td align="left"></td>
+<td align="left">-400</td>
+<td align="left">優先実行</td>
+<td align="left">1.5</td>
+</tr>
+<tr>
+<td align="left">Reserved</td>
+<td align="left">-500</td>
+<td align="left">既定 (変更不可)</td>
+<td align="left">NA</td>
+</tr>
+</tbody>
+</table>
+<p>On-demandサービスでは、優先度は<code>-450</code>に固定されており変更できません。</p>
+<p>Spotサービスでは、<code>-400</code>を指定することで他のジョブより優先的に実行できます。ただし、POSIX優先度課金係数に応じた課金が行われます。</p>
+<p>Reservedサービスでは、インタラクティブジョブ、バッチジョブのいずれの場合も優先度は<code>-500</code>に固定されており変更できません。</p>
+<h2 id="job-execution-options">ジョブ実行オプション</h2>
+<p>インタラクティブジョブの実行には<code>qrsh</code>コマンド、バッチジョブの実行には<code>qsub</code>コマンドをそれぞれ使用します。</p>
+<p><code>qrsh</code>、<code>qsub</code>コマンドに共通する、主要なオプションを以下に示します。</p>
+<table>
+<thead>
+<tr>
+<th align="left">オプション</th>
+<th align="left">説明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">-g <em>group</em></td>
+<td align="left">ABCI利用グループを<em>group</em>で指定します。</td>
+</tr>
+<tr>
+<td align="left">-l <em>resource_type</em>=<em>num</em></td>
+<td align="left">資源タイプ<em>resource_type</em>と、その個数<em>num</em>を指定します。本オプションは指定必須です。</td>
+</tr>
+<tr>
+<td align="left">-l h_rt=[<em>HH:MM:</em>]<em>SS</em></td>
+<td align="left">経過時間制限値を指定します。[<em>HH:MM:</em>]<em>SS</em>で指定することができます。ジョブの実行時間が指定した時間を超過した場合、ジョブは強制終了されます。</td>
+</tr>
+<tr>
+<td align="left">-N <em>name</em></td>
+<td align="left">ジョブ名を<em>name</em>で指定します。デフォルトは、ジョブスクリプト名です。</td>
+</tr>
+<tr>
+<td align="left">-o <em>stdout_name</em></td>
+<td align="left">標準出力名を<em>stdout_name</em>で指定します。</td>
+</tr>
+<tr>
+<td align="left">-p <em>priority</em></td>
+<td align="left">SpotサービスでPOSIX優先度を<em>priority</em>で指定します。</td>
+</tr>
+<tr>
+<td align="left">-e <em>stderr_name</em></td>
+<td align="left">標準エラー出力名を<em>stderr_name</em>で指定します。</td>
+</tr>
+<tr>
+<td align="left">-j y</td>
+<td align="left">標準エラー出力を標準出力にマージします。</td>
+</tr>
+<tr>
+<td align="left">-m a</td>
+<td align="left">ジョブが実行中止された場合にメールを送信します。</td>
+</tr>
+<tr>
+<td align="left">-m b</td>
+<td align="left">ジョブ実行開始時にメールを送信します。</td>
+</tr>
+<tr>
+<td align="left">-m e</td>
+<td align="left">ジョブ実行終了時にメールを送信します。</td>
+</tr>
+<tr>
+<td align="left">-t <em>n</em>[<em>-m</em>[<em>:s</em>]]</td>
+<td align="left">アレイジョブのタスクIDを<em>n</em>[<em>-m</em>[<em>:s</em>]]で指定します。<em>n</em>は開始番号、<em>m</em>は終了番号、<em>s</em>はステップサイズを表します。</td>
+</tr>
+<tr>
+<td align="left">-hold_jid <em>job_id</em></td>
+<td align="left">依存関係にあるジョブIDを<em>job_id</em>で指定します。指定された依存ジョブが終了するまでジョブは実行開始されません。<code>qrsh</code>コマンドにて使用する場合、引数にコマンドを指定した場合のみ利用可能です。</td>
+</tr>
+<tr>
+<td align="left">-ar <em>ar_id</em></td>
+<td align="left">予約した計算ノードを利用する際に予約ID(AR-ID)を<em>ar_id</em>で指定します。</td>
+</tr>
+</tbody>
+</table>
+<p>この他、拡張オプションとして以下のオプションが使用可能です。</p>
+<table>
+<thead>
+<tr>
+<th align="left">オプション</th>
+<th align="left">説明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">-l USE_SSH=<em>1</em><br>-v SSH_PORT=<em>port</em></td>
+<td align="left">計算ノードへのSSHログインを有効にする。詳細は<a href="../appendix/ssh-access/">計算ノードへのSSHアクセス</a>を参照。</td>
+</tr>
+<tr>
+<td align="left">-l USE_BEEOND=<em>1</em><br>-v BEEOND_METADATA_SERVER=<em>num</em><br>-v BEEOND_STORAGE_SERVER=<em>num</em></td>
+<td align="left">BeeGFS On Demand (BeeOND)を利用するジョブの投入。詳細は<a href="../storage/#beeond-storage">BeeONDストレージ利用</a>を参照。</td>
+</tr>
+<tr>
+<td align="left">-v GPU_COMPUTE_MODE=<em>mode</em></td>
+<td align="left">計算ノードのGPU Compute Modeの変更。詳細は<a href="../gpu/#changing-gpu-compute-mode">GPU Compute Modeの変更</a>を参照。</td>
+</tr>
+<tr>
+<td align="left">-l docker<br>-l docker_images</td>
+<td align="left">Dockerを利用するジョブの投入。詳細は<a href="../containers/#docker">Docker</a>を参照。</td>
+</tr>
+</tbody>
+</table>
+<h2 id="interactive-jobs">インタラクティブジョブ</h2>
+<p>インタラクティブジョブを実行するには、<code>qrsh</code>コマンドを使用します。</p>
+<div class="codehilite"><pre><span></span><code><span class="err">$</span><span class="w"> </span><span class="n">qrsh</span><span class="w"> </span><span class="o">-</span><span class="n">g</span><span class="w"> </span><span class="k">group</span><span class="w"> </span><span class="o">-</span><span class="n">l</span><span class="w"> </span><span class="n">resource_type</span><span class="o">=</span><span class="n">num</span><span class="w"> </span><span class="o">[</span><span class="n">options</span><span class="o">]</span><span class="w"></span>
+</code></pre></div>
+
+<p>例) インタラクティブジョブを実行 (On-demandサービス)</p>
+<div class="codehilite"><pre><span></span><code><span class="o">[</span><span class="n">username@es1 ~</span><span class="o">]</span><span class="err">$</span><span class="w"> </span><span class="n">qrsh</span><span class="w"> </span><span class="o">-</span><span class="n">g</span><span class="w"> </span><span class="n">grpname</span><span class="w"> </span><span class="o">-</span><span class="n">l</span><span class="w"> </span><span class="n">rt_F</span><span class="o">=</span><span class="mi">1</span><span class="w"> </span><span class="o">-</span><span class="n">l</span><span class="w"> </span><span class="n">h_rt</span><span class="o">=</span><span class="mi">1</span><span class="err">:</span><span class="mi">00</span><span class="err">:</span><span class="mi">00</span><span class="w"></span>
+<span class="o">[</span><span class="n">username@g0001 ~</span><span class="o">]</span><span class="err">$</span><span class="w"> </span>
+</code></pre></div>
+
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>On-demandサービスでは、インタラクティブジョブ実行時にABCIポイントが不足している場合、ジョブの実行に失敗します。</p>
+</div>
+<p>X Window を利用するアプリケーションを実行するには、
+まずインタラクティブノードへのログイン時に、X11転送を有効（<code>-X</code>もしくは<code>-Y</code>オプションを指定）にします。</p>
+<div class="codehilite"><pre><span></span><code>[yourpc ~]$ ssh -XC -p 10022 -l username localhost
+</code></pre></div>
+
+<p>次にインタラクティブジョブ実行時に、引数に<code>-pty yes -display $DISPLAY -v TERM /bin/bash</code>を指定します。</p>
+<div class="codehilite"><pre><span></span><code><span class="p">[</span><span class="n">username</span><span class="o">@</span><span class="n">es1</span> <span class="o">~</span><span class="p">]</span><span class="o">$</span> <span class="n">qrsh</span> <span class="o">-</span><span class="n">g</span> <span class="n">grpname</span> <span class="o">-</span><span class="n">l</span> <span class="n">rt_F</span><span class="o">=</span><span class="m">1</span> <span class="o">-</span><span class="n">l</span> <span class="n">h_rt</span><span class="o">=</span><span class="m">1</span><span class="o">:</span><span class="m">00</span><span class="o">:</span><span class="m">00</span> <span class="o">-</span><span class="n">pty</span> <span class="n">yes</span> <span class="o">-</span><span class="n">display</span> <span class="o">$</span><span class="n">DISPLAY</span> <span class="o">-</span><span class="n">v</span> <span class="n">TERM</span> <span class="o">/</span><span class="n">bin</span><span class="o">/</span><span class="n">bash</span>
+<span class="p">[</span><span class="n">username</span><span class="o">@</span><span class="n">g0001</span> <span class="o">~</span><span class="p">]</span><span class="o">$</span> <span class="n">xterm</span> <span class="o">&lt;-</span> <span class="n">Xアプリケーションを起動</span>
+</code></pre></div>
+
+<h2 id="batch-jobs">バッチジョブ</h2>
+<p>ABCIシステムでバッチジョブを実行する場合、実行するプログラムとは別にジョブスクリプトを作成します。
+ジョブスクリプトには利用する資源タイプ名、経過時間制限値などの資源などのジョブ実行オプションを記述した上で、
+実行するコマンド列を記載します。</p>
+<div class="codehilite"><pre><span></span><code><span class="ch">#!/bin/bash</span>
+
+<span class="c1">#$ -l rt_F=1</span>
+<span class="c1">#$ -l h_rt=1:23:45</span>
+<span class="c1">#$ -j y</span>
+<span class="c1">#$ -cwd</span>
+
+<span class="o">[</span>Environment Modules の初期化<span class="o">]</span>
+<span class="o">[</span>Environment Modules の設定<span class="o">]</span>
+<span class="o">[</span>プログラムの実行<span class="o">]</span>
+</code></pre></div>
+
+<p>例) CUDAを利用したプログラムを実行するジョブスクリプト例</p>
+<div class="codehilite"><pre><span></span><code><span class="ch">#!/bin/bash</span>
+
+<span class="c1">#$-l rt_F=1</span>
+<span class="c1">#$-j y</span>
+<span class="c1">#$-cwd</span>
+
+<span class="nb">source</span> /etc/profile.d/modules.sh
+module load cuda/9.2/9.2.88.1
+./a.out
+</code></pre></div>
+
+<h3 id="submit-a-batch-job">バッチジョブの投入</h3>
+<p>バッチジョブを実行するには、<code>qsub</code>コマンドを使用します。</p>
+<div class="codehilite"><pre><span></span><code><span class="err">$</span><span class="w"> </span><span class="n">qsub</span><span class="w"> </span><span class="o">-</span><span class="n">g</span><span class="w"> </span><span class="k">group</span><span class="w"> </span><span class="o">[</span><span class="n">options</span><span class="o">]</span><span class="w"> </span><span class="n">script_name</span><span class="w"></span>
+</code></pre></div>
+
+<p>例) ジョブスクリプトrun.shをバッチジョブとして投入 (Spotサービス)</p>
+<div class="codehilite"><pre><span></span><code><span class="o">[</span><span class="n">username@es1 ~</span><span class="o">]</span><span class="err">$</span><span class="w"> </span><span class="n">qsub</span><span class="w"> </span><span class="o">-</span><span class="n">g</span><span class="w"> </span><span class="n">grpname</span><span class="w"> </span><span class="n">run</span><span class="p">.</span><span class="n">sh</span><span class="w"></span>
+<span class="n">Your</span><span class="w"> </span><span class="n">job</span><span class="w"> </span><span class="mi">12345</span><span class="w"> </span><span class="p">(</span><span class="ss">&quot;run.sh&quot;</span><span class="p">)</span><span class="w"> </span><span class="n">has</span><span class="w"> </span><span class="n">been</span><span class="w"> </span><span class="n">submitted</span><span class="w"></span>
+</code></pre></div>
+
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p><code>-g</code>オプションは、ジョブスクリプト内には指定できません。</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Spotサービスでは、バッチジョブ投入時にABCIポイントが不足している場合、バッチジョブの投入に失敗します。</p>
+</div>
+<h3 id="show-the-status-of-batch-jobs">バッチジョブの状態の確認</h3>
+<p>バッチジョブを状態を確認するには、<code>qstat</code>コマンドを利用します。</p>
+<div class="codehilite"><pre><span></span><code><span class="err">$</span><span class="w"> </span><span class="n">qstat</span><span class="w"> </span><span class="o">[</span><span class="n">options</span><span class="o">]</span><span class="w"></span>
+</code></pre></div>
+
+<p><code>qstat</code>コマンドの主要なオプションを以下に示します。</p>
+<table>
+<thead>
+<tr>
+<th align="left">オプション</th>
+<th align="left">説明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">-r</td>
+<td align="left">ジョブのリソース情報を表示します。</td>
+</tr>
+<tr>
+<td align="left">-j</td>
+<td align="left">ジョブに関する追加情報を表示します。</td>
+</tr>
+</tbody>
+</table>
+<p>例)</p>
+<div class="codehilite"><pre><span></span><code><span class="k">[</span><span class="c">username@es1 ~</span><span class="k">]</span><span class="c">$ qstat</span>
+<span class="c">job</span><span class="nb">-</span><span class="c">ID     prior   name       user         state submit/start at     queue                          jclass                         slots ja</span><span class="nb">-</span><span class="c">task</span><span class="nb">-</span><span class="c">ID</span>
+<span class="nb">------------------------------------------------------------------------------------------------------------------------------------------------</span><span class="c"></span>
+<span class="c">     12345 0</span><span class="nt">.</span><span class="c">25586 run</span><span class="nt">.</span><span class="c">sh     username     r     06/27/2018 21:14:49 gpu@g0001                                                        80</span>
+</code></pre></div>
+
+<table>
+<thead>
+<tr>
+<th align="left">項目</th>
+<th align="left">説明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">job-ID</td>
+<td align="left">ジョブID</td>
+</tr>
+<tr>
+<td align="left">prior</td>
+<td align="left">ジョブ優先度</td>
+</tr>
+<tr>
+<td align="left">name</td>
+<td align="left">ジョブ名</td>
+</tr>
+<tr>
+<td align="left">user</td>
+<td align="left">ジョブのオーナー</td>
+</tr>
+<tr>
+<td align="left">state</td>
+<td align="left">ジョブ状態 (r: 実行中、qw: 待機中、d: 削除中、E: エラー状態)</td>
+</tr>
+<tr>
+<td align="left">submit/start at</td>
+<td align="left">ジョブ投入/開始時刻</td>
+</tr>
+<tr>
+<td align="left">queue</td>
+<td align="left">キュー名</td>
+</tr>
+<tr>
+<td align="left">jclass</td>
+<td align="left">ジョブクラス名</td>
+</tr>
+<tr>
+<td align="left">slots</td>
+<td align="left">ジョブスロット数 (ノード数 x 80)</td>
+</tr>
+<tr>
+<td align="left">ja-task-ID</td>
+<td align="left">アレイジョブのタスクID</td>
+</tr>
+</tbody>
+</table>
+<h3 id="delete-a-batch-job">バッチジョブの削除</h3>
+<p>バッチジョブを削除するには、<code>qdel</code>コマンドを利用します。</p>
+<div class="codehilite"><pre><span></span><code>$ qdel job_id
+</code></pre></div>
+
+<p>例) バッチジョブを削除</p>
+<div class="codehilite"><pre><span></span><code><span class="k">[</span><span class="c">username@es1 ~</span><span class="k">]</span><span class="c">$ qstat</span>
+<span class="c">job</span><span class="nb">-</span><span class="c">ID     prior   name       user         state submit/start at     queue                          jclass                         slots ja</span><span class="nb">-</span><span class="c">task</span><span class="nb">-</span><span class="c">ID</span>
+<span class="nb">------------------------------------------------------------------------------------------------------------------------------------------------</span><span class="c"></span>
+<span class="c">     12345 0</span><span class="nt">.</span><span class="c">25586 run</span><span class="nt">.</span><span class="c">sh     username     r     06/27/2018 21:14:49 gpu@g0001                                                        80</span>
+<span class="k">[</span><span class="c">username@es1 ~</span><span class="k">]</span><span class="c">$ qdel 12345</span>
+<span class="c">username has registered the job 12345 for deletion</span>
+</code></pre></div>
+
+<h3 id="stdout-and-stderr-of-batch-jobs">バッチジョブの標準出力と標準エラー出力</h3>
+<p>バッチジョブの標準出力ファイルと標準エラー出力ファイルは、ジョブ実行ディレクトリもしくは、
+ジョブ投入時に指定されたファイルに出力されます。
+標準出力ファイルにはジョブ実行中の標準出力、標準エラー出力ファイルにはジョブ実行中のエラーメッセージが出力されます。
+ジョブ投入時に、標準出力ファイル、標準エラー出力ファイルを指定しなかった場合は、以下のファイルに出力されます。</p>
+<ul>
+<li><em>JOB_NAME</em>.o<em>JOB_ID</em>  ---  標準出力ファイル</li>
+<li><em>JOB_NAME</em>.e<em>JOB_ID</em>  ---  標準エラー出力ファイル</li>
+</ul>
+<p>例）ジョブ名がrun.sh、ジョブIDが<code>12345</code>の場合</p>
+<ul>
+<li>標準出力ファイル名：run.sh.o12345</li>
+<li>標準エラー出力ファイル名：run.sh.e12345</li>
+</ul>
+<h3 id="report-batch-job-accounting">バッチジョブの統計情報出力</h3>
+<p>バッチジョブの統計情報を出力するには、<code>qacct</code>コマンドを利用します。</p>
+<div class="codehilite"><pre><span></span><code><span class="err">$</span><span class="w"> </span><span class="n">qacct</span><span class="w"> </span><span class="o">[</span><span class="n">options</span><span class="o">]</span><span class="w"></span>
+</code></pre></div>
+
+<p><code>qacct</code>コマンドの主要なオプションを以下に示します。</p>
+<table>
+<thead>
+<tr>
+<th align="left">オプション</th>
+<th align="left">説明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">-g <em>group</em></td>
+<td align="left"><em>group</em>のジョブに関する情報を表示します。</td>
+</tr>
+<tr>
+<td align="left">-j <em>job_id</em></td>
+<td align="left"><em>job_id</em>のジョブに関する情報を表示します。</td>
+</tr>
+<tr>
+<td align="left">-t <em>n</em>[<em>-m</em>[<em>:s</em>]]</td>
+<td align="left">アレイジョブのタスクIDを<em>n</em>[<em>-m</em>[<em>:s</em>]]で指定します。指定されたタスクIDにマッチするジョブの情報のみ表示されます。本オプションは-jオプションを指定した場合のみ使用可能です。</td>
+</tr>
+</tbody>
+</table>
+<p>例) バッチジョブの統計情報を参照</p>
+<div class="codehilite"><pre><span></span><code><span class="p">[</span><span class="n">username</span><span class="err">@</span><span class="n">es1</span> <span class="o">~</span><span class="p">]</span><span class="o">$</span> <span class="n">qacct</span> <span class="o">-</span><span class="n">j</span> <span class="mi">12345</span>
+<span class="o">==============================================================</span>
+<span class="n">qname</span>        <span class="n">gpu</span>
+<span class="n">hostname</span>     <span class="n">g0001</span>
+<span class="n">group</span>        <span class="n">group</span> 
+<span class="n">owner</span>        <span class="n">username</span>
+<span class="n">project</span>      <span class="n">group</span> 
+<span class="n">department</span>   <span class="n">group</span>
+<span class="n">jobname</span>      <span class="n">run</span><span class="o">.</span><span class="n">sh</span>
+<span class="n">jobnumber</span>    <span class="mi">12345</span>
+<span class="n">taskid</span>       <span class="n">undefined</span>
+<span class="n">account</span>      <span class="n">username</span>
+<span class="n">priority</span>     <span class="mi">0</span>
+<span class="n">cwd</span>          <span class="n">NONE</span>
+<span class="n">submit_host</span>  <span class="n">es1</span><span class="o">.</span><span class="n">abci</span><span class="o">.</span><span class="n">local</span>
+<span class="n">submit_cmd</span>   <span class="o">/</span><span class="n">home</span><span class="o">/</span><span class="n">system</span><span class="o">/</span><span class="n">uge</span><span class="o">/</span><span class="n">latest</span><span class="o">/</span><span class="n">bin</span><span class="o">/</span><span class="n">lx</span><span class="o">-</span><span class="n">amd64</span><span class="o">/</span><span class="n">qsub</span> <span class="o">-</span><span class="n">P</span> <span class="n">username</span> <span class="o">-</span><span class="n">l</span> <span class="n">h_rt</span><span class="o">=</span><span class="mi">600</span> <span class="o">-</span><span class="n">l</span> <span class="n">rt_F</span><span class="o">=</span><span class="mi">1</span>
+<span class="n">qsub_time</span>    <span class="mi">07</span><span class="o">/</span><span class="mi">01</span><span class="o">/</span><span class="mi">2018</span> <span class="mi">11</span><span class="p">:</span><span class="mi">55</span><span class="p">:</span><span class="mf">14.706</span>
+<span class="n">start_time</span>   <span class="mi">07</span><span class="o">/</span><span class="mi">01</span><span class="o">/</span><span class="mi">2018</span> <span class="mi">11</span><span class="p">:</span><span class="mi">55</span><span class="p">:</span><span class="mf">18.170</span>
+<span class="n">end_time</span>     <span class="mi">07</span><span class="o">/</span><span class="mi">01</span><span class="o">/</span><span class="mi">2018</span> <span class="mi">11</span><span class="p">:</span><span class="mi">55</span><span class="p">:</span><span class="mf">18.190</span>
+<span class="n">granted_pe</span>   <span class="n">perack17</span>
+<span class="n">slots</span>        <span class="mi">80</span>
+<span class="n">failed</span>       <span class="mi">0</span>
+<span class="n">deleted_by</span>   <span class="n">NONE</span>
+<span class="n">exit_status</span>  <span class="mi">0</span>
+<span class="n">ru_wallclock</span> <span class="mf">0.020</span>
+<span class="n">ru_utime</span>     <span class="mf">0.010</span>
+<span class="n">ru_stime</span>     <span class="mf">0.013</span>
+<span class="n">ru_maxrss</span>    <span class="mi">6480</span>
+<span class="n">ru_ixrss</span>     <span class="mi">0</span>
+<span class="n">ru_ismrss</span>    <span class="mi">0</span>
+<span class="n">ru_idrss</span>     <span class="mi">0</span>
+<span class="n">ru_isrss</span>     <span class="mi">0</span>
+<span class="n">ru_minflt</span>    <span class="mi">1407</span>
+<span class="n">ru_majflt</span>    <span class="mi">0</span>
+<span class="n">ru_nswap</span>     <span class="mi">0</span>
+<span class="n">ru_inblock</span>   <span class="mi">0</span>
+<span class="n">ru_oublock</span>   <span class="mi">8</span>
+<span class="n">ru_msgsnd</span>    <span class="mi">0</span>
+<span class="n">ru_msgrcv</span>    <span class="mi">0</span>
+<span class="n">ru_nsignals</span>  <span class="mi">0</span>
+<span class="n">ru_nvcsw</span>     <span class="mi">13</span>
+<span class="n">ru_nivcsw</span>    <span class="mi">1</span>
+<span class="n">wallclock</span>    <span class="mf">3.768</span>
+<span class="n">cpu</span>          <span class="mf">0.022</span>
+<span class="n">mem</span>          <span class="mf">0.000</span>
+<span class="n">io</span>           <span class="mf">0.000</span>
+<span class="n">iow</span>          <span class="mf">0.000</span>
+<span class="n">ioops</span>        <span class="mi">0</span>
+<span class="n">maxvmem</span>      <span class="mf">0.000</span>
+<span class="n">maxrss</span>       <span class="mf">0.000</span>
+<span class="n">maxpss</span>       <span class="mf">0.000</span>
+<span class="n">arid</span>         <span class="n">undefined</span>
+<span class="n">jc_name</span>      <span class="n">NONE</span>
+</code></pre></div>
+
+<p>主な表示項目は以下の通りです。
+その他項目の詳細は<code>man sge_accounting</code>を参照ください。</p>
+<table>
+<thead>
+<tr>
+<th align="left">項目</th>
+<th align="left">説明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">jobnunmber</td>
+<td align="left">ジョブID</td>
+</tr>
+<tr>
+<td align="left">taskid</td>
+<td align="left">アレイジョブのタスクID</td>
+</tr>
+<tr>
+<td align="left">qsub_time</td>
+<td align="left">ジョブの実行投入時刻</td>
+</tr>
+<tr>
+<td align="left">start_time</td>
+<td align="left">ジョブの実行開始時刻</td>
+</tr>
+<tr>
+<td align="left">end_time</td>
+<td align="left">ジョブの実行終了時刻</td>
+</tr>
+<tr>
+<td align="left">failed</td>
+<td align="left">ジョブスケジューラのジョブ終了コード</td>
+</tr>
+<tr>
+<td align="left">exit_status</td>
+<td align="left">ジョブの終了ステータス</td>
+</tr>
+<tr>
+<td align="left">wallclock</td>
+<td align="left">ジョブの実行時間(前後処理を含む)</td>
+</tr>
+</tbody>
+</table>
+<h3 id="environment-variables">環境変数</h3>
+<p>ジョブ実行中に、ジョブスクリプトもしくはコマンドラインで利用できる環境変数は以下の通りです。</p>
+<table>
+<thead>
+<tr>
+<th align="left">環境変数</th>
+<th align="left">説明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">ENVIRONMENT</td>
+<td align="left">ジョブの場合、"BATCH"が割り当てられる</td>
+</tr>
+<tr>
+<td align="left">JOB_ID</td>
+<td align="left">ジョブID</td>
+</tr>
+<tr>
+<td align="left">JOB_NAME</td>
+<td align="left">ジョブ名</td>
+</tr>
+<tr>
+<td align="left">JOB_SCRIPT</td>
+<td align="left">ジョブスクリプト名</td>
+</tr>
+<tr>
+<td align="left">NHOSTS</td>
+<td align="left">ジョブに割り当てられたホスト数</td>
+</tr>
+<tr>
+<td align="left">PE_HOSTFILE</td>
+<td align="left">ジョブに割り当てられたホスト、スロット、キュー名が記載されたファイルへのパス</td>
+</tr>
+<tr>
+<td align="left">RESTARTED</td>
+<td align="left">ジョブが再実行された場合は1、それ以外は0</td>
+</tr>
+<tr>
+<td align="left">SGE_ARDIR</td>
+<td align="left">Reservedサービスに割り当てられたローカルストレージへのパス</td>
+</tr>
+<tr>
+<td align="left">SGE_BEEONDDIR</td>
+<td align="left">BeeONDストレージ利用時に割り当てられたBeeONDストレージへのパス</td>
+</tr>
+<tr>
+<td align="left">SGE_JOB_HOSTLIST</td>
+<td align="left">ジョブに割り当てられたホストが記載されたファイルへのパス</td>
+</tr>
+<tr>
+<td align="left">SGE_LOCALDIR</td>
+<td align="left">ジョブに割り当てられたローカルストレージへのパス</td>
+</tr>
+<tr>
+<td align="left">SGE_O_WORKDIR</td>
+<td align="left">ジョブ投入時の作業ディレクトリへのパス</td>
+</tr>
+<tr>
+<td align="left">SGE_TASK_ID</td>
+<td align="left">アレイジョブのタスクID(アレイジョブでない場合は"undefined")</td>
+</tr>
+<tr>
+<td align="left">SGE_TASK_FIRST</td>
+<td align="left">アレイジョブの最初のタスクID</td>
+</tr>
+<tr>
+<td align="left">SGE_TASK_LAST</td>
+<td align="left">アレイジョブの最後のタスクID</td>
+</tr>
+<tr>
+<td align="left">SGE_TASK_STEPSIZE</td>
+<td align="left">アレイジョブのステップサイズ</td>
+</tr>
+</tbody>
+</table>
+<h2 id="advance-reservation">事前予約</h2>
+<p>Reservedサービスでは、計算ノードを事前に予約して計画的なジョブ実行が可能となります。</p>
+<p>本サービスで予約可能なノード数およびノード時間積は、以下表の「1予約あたりの最大予約ノード数」、「1予約あたりの最大予約ノード時間積」が上限です。また、本サービスでは、利用者は予約ノード数を上限とするジョブしか実行できません。なお、システム全体で「システムあたりの最大同時予約可能ノード数」に上限があるため、「1予約あたりの最大予約ノード数」を下回る予約しかできない場合や、予約自体ができない場合があります。予約した計算ノードにて<a href="#available-resource-types">各資源タイプ</a>が利用可能です。</p>
+<table>
+<thead>
+<tr>
+<th align="left">項目</th>
+<th align="left">計算ノード(V)向け説明</th>
+<th align="left">計算ノード(A)向け説明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">最小予約日数</td>
+<td align="left">1日</td>
+<td align="left">1日</td>
+</tr>
+<tr>
+<td align="left">最大予約日数</td>
+<td align="left">30日</td>
+<td align="left">30日</td>
+</tr>
+<tr>
+<td align="left">システムあたりの最大同時予約可能ノード数</td>
+<td align="left">442ノード</td>
+<td align="left">50ノード</td>
+</tr>
+<tr>
+<td align="left">1予約あたりの最大予約ノード数</td>
+<td align="left">32ノード</td>
+<td align="left">16ノード</td>
+</tr>
+<tr>
+<td align="left">1予約あたりの最大予約ノード時間積</td>
+<td align="left">12,288ノード時間積</td>
+<td align="left">6,144ノード時間積</td>
+</tr>
+<tr>
+<td align="left">予約受付開始時刻</td>
+<td align="left">30日前の午前10時</td>
+<td align="left">30日前の午前10時</td>
+</tr>
+<tr>
+<td align="left">予約受付締切時刻</td>
+<td align="left">予約開始前日の午後9時</td>
+<td align="left">予約開始前日の午後9時</td>
+</tr>
+<tr>
+<td align="left">予約取消受付期間</td>
+<td align="left">予約開始前日の午後9時</td>
+<td align="left">予約開始前日の午後9時</td>
+</tr>
+<tr>
+<td align="left">予約開始時刻</td>
+<td align="left">予約開始日の午前10時</td>
+<td align="left">予約開始日の午前10時</td>
+</tr>
+<tr>
+<td align="left">予約終了時刻</td>
+<td align="left">予約終了日の午前9時30分</td>
+<td align="left">予約終了日の午前9時30分</td>
+</tr>
+</tbody>
+</table>
+<h3 id="make-a-reservation">予約の実行</h3>
+<p>計算ノードを予約するには、<a href="https://portal.abci.ai/user/">ABCI利用ポータル</a>もしくは<code>qrsub</code>コマンドを使用します。</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>計算ノードの予約は、利用責任者もしくは利用管理者のみが実施できます。</p>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>ABCI利用ポータルでは、計算ノード(A)の予約はできません。</p>
+</div>
+<div class="codehilite"><pre><span></span><code>$ qrsub options
+</code></pre></div>
+
+<table>
+<thead>
+<tr>
+<th align="left">オプション</th>
+<th align="left">説明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">-a <em>YYYYMMDD</em></td>
+<td align="left">予約開始日を<em>YYYYMMDD</em>で指定します。</td>
+</tr>
+<tr>
+<td align="left">-d <em>days</em></td>
+<td align="left">予約日数を<em>days</em>で指定します。 -eオプションとは排他です。</td>
+</tr>
+<tr>
+<td align="left">-e <em>YYYYMMDD</em></td>
+<td align="left">予約終了日を<em>YYYYMMDD</em>指定します。-dオプションとは排他です。</td>
+</tr>
+<tr>
+<td align="left">-g <em>group</em></td>
+<td align="left">ABCI利用グループを<em>group</em>で指定します。</td>
+</tr>
+<tr>
+<td align="left">-N <em>name</em></td>
+<td align="left">予約名を<em>name</em>で指定します。英数字と記号<code>=+-_.</code>が指定可能で、最大64文字まで指定できます。ただし、先頭の文字に数字を指定することはできません。</td>
+</tr>
+<tr>
+<td align="left">-n <em>nnnode</em></td>
+<td align="left">予約するノード数を<em>nnnode</em>で指定します。</td>
+</tr>
+<tr>
+<td align="left">-l <em>resource_type</em></td>
+<td align="left">予約する資源タイプを<em>resource_type</em>で指定します。 省略した場合は、rt_F が指定されたとみなします。</td>
+</tr>
+</tbody>
+</table>
+<p>例) 2018年7月5日から1週間 (7日間) 計算ノード(V)4台を予約</p>
+<div class="codehilite"><pre><span></span><code><span class="o">[</span><span class="n">username@es1 ~</span><span class="o">]</span><span class="err">$</span><span class="w"> </span><span class="n">qrsub</span><span class="w"> </span><span class="o">-</span><span class="n">a</span><span class="w"> </span><span class="mi">20180705</span><span class="w"> </span><span class="o">-</span><span class="n">d</span><span class="w"> </span><span class="mi">7</span><span class="w"> </span><span class="o">-</span><span class="n">g</span><span class="w"> </span><span class="n">grpname</span><span class="w"> </span><span class="o">-</span><span class="n">n</span><span class="w"> </span><span class="mi">4</span><span class="w"> </span><span class="o">-</span><span class="n">N</span><span class="w"> </span><span class="ss">&quot;Reserve_for_AI&quot;</span><span class="w"></span>
+<span class="n">Your</span><span class="w"> </span><span class="n">advance</span><span class="w"> </span><span class="n">reservation</span><span class="w"> </span><span class="mi">12345</span><span class="w"> </span><span class="n">has</span><span class="w"> </span><span class="n">been</span><span class="w"> </span><span class="n">granted</span><span class="w"></span>
+</code></pre></div>
+
+<p>例) 2021年7月5日から1週間 (7日間) 計算ノード(A)4台を予約</p>
+<div class="codehilite"><pre><span></span><code><span class="o">[</span><span class="n">username@es1 ~</span><span class="o">]</span><span class="err">$</span><span class="w"> </span><span class="n">qrsub</span><span class="w"> </span><span class="o">-</span><span class="n">a</span><span class="w"> </span><span class="mi">20210705</span><span class="w"> </span><span class="o">-</span><span class="n">d</span><span class="w"> </span><span class="mi">7</span><span class="w"> </span><span class="o">-</span><span class="n">g</span><span class="w"> </span><span class="n">grpname</span><span class="w"> </span><span class="o">-</span><span class="n">n</span><span class="w"> </span><span class="mi">4</span><span class="w"> </span><span class="o">-</span><span class="n">N</span><span class="w"> </span><span class="ss">&quot;Reserve_for_AI&quot;</span><span class="w"> </span><span class="o">-</span><span class="n">l</span><span class="w"> </span><span class="n">rt_AF</span><span class="w"></span>
+<span class="n">Your</span><span class="w"> </span><span class="n">advance</span><span class="w"> </span><span class="n">reservation</span><span class="w"> </span><span class="mi">12345</span><span class="w"> </span><span class="n">has</span><span class="w"> </span><span class="n">been</span><span class="w"> </span><span class="n">granted</span><span class="w"></span>
+</code></pre></div>
+
+<p>計算ノードの予約が完了した時点でABCIポイントを消費します。</p>
+<h3 id="show-the-status-of-reservations">予約状態の確認</h3>
+<p>予約状態を確認するには、<a href="https://portal.abci.ai/user/">ABCI利用ポータル</a>もしくは<code>qrstat</code>コマンドを使用します。</p>
+<p>例)</p>
+<div class="codehilite"><pre><span></span><code><span class="k">[</span><span class="c">username@es1 ~</span><span class="k">]</span><span class="c">$ qrstat</span>
+<span class="c">ar</span><span class="nb">-</span><span class="c">id      name       owner        state start at             end at               duration    sr</span>
+<span class="nb">----------------------------------------------------------------------------------------------------</span><span class="c"></span>
+<span class="c">     12345 Reserve_fo root         w     07/05/2018 10:00:00  07/12/2018 09:30:00  167:30:00    false</span>
+</code></pre></div>
+
+<table>
+<thead>
+<tr>
+<th align="left">項目</th>
+<th align="left">説明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">ar-id</td>
+<td align="left">予約ID (AR-ID)</td>
+</tr>
+<tr>
+<td align="left">name</td>
+<td align="left">予約名</td>
+</tr>
+<tr>
+<td align="left">owner</td>
+<td align="left">常にrootと表示</td>
+</tr>
+<tr>
+<td align="left">state</td>
+<td align="left">予約状態</td>
+</tr>
+<tr>
+<td align="left">start at</td>
+<td align="left">予約開始日 (予約開始時刻は常に午前10時)</td>
+</tr>
+<tr>
+<td align="left">end at</td>
+<td align="left">予約終了日 (予約終了時刻は常に午前9時30分)</td>
+</tr>
+<tr>
+<td align="left">duration</td>
+<td align="left">予約期間 (hhh:mm:ss)</td>
+</tr>
+<tr>
+<td align="left">sr</td>
+<td align="left">常にfalseと表示</td>
+</tr>
+</tbody>
+</table>
+<p>システムあたりの予約可能ノード数を確認するには、<a href="https://portal.abci.ai/user/">ABCI利用ポータル</a>もしくは<code>qrstat</code>コマンドの<code>--available</code>オプションを使用します。</p>
+<p>計算ノード(V)の予約可能ノード数の確認</p>
+<div class="codehilite"><pre><span></span><code><span class="o">[</span><span class="n">username@es1 ~</span><span class="o">]</span><span class="err">$</span><span class="w"> </span><span class="n">qrstat</span><span class="w"> </span><span class="o">--</span><span class="n">available</span><span class="w"></span>
+<span class="mi">06</span><span class="o">/</span><span class="mi">27</span><span class="o">/</span><span class="mi">2018</span><span class="w">  </span><span class="mi">441</span><span class="w"></span>
+<span class="mi">07</span><span class="o">/</span><span class="mi">05</span><span class="o">/</span><span class="mi">2018</span><span class="w">  </span><span class="mi">432</span><span class="w"></span>
+<span class="mi">07</span><span class="o">/</span><span class="mi">06</span><span class="o">/</span><span class="mi">2018</span><span class="w">  </span><span class="mi">434</span><span class="w"></span>
+</code></pre></div>
+
+<p>計算ノード(A)の予約可能ノード数の確認</p>
+<div class="codehilite"><pre><span></span><code><span class="o">[</span><span class="n">username@es1 ~</span><span class="o">]</span><span class="err">$</span><span class="w"> </span><span class="n">qrstat</span><span class="w"> </span><span class="o">--</span><span class="n">available</span><span class="w"> </span><span class="o">-</span><span class="n">l</span><span class="w"> </span><span class="n">rt_AF</span><span class="w"></span>
+<span class="mi">06</span><span class="o">/</span><span class="mi">27</span><span class="o">/</span><span class="mi">2021</span><span class="w">   </span><span class="mi">41</span><span class="w"></span>
+<span class="mi">07</span><span class="o">/</span><span class="mi">05</span><span class="o">/</span><span class="mi">2021</span><span class="w">   </span><span class="mi">32</span><span class="w"></span>
+<span class="mi">07</span><span class="o">/</span><span class="mi">06</span><span class="o">/</span><span class="mi">2021</span><span class="w">   </span><span class="mi">34</span><span class="w"></span>
+</code></pre></div>
+
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>計算ノードが予約されていない日付は表示されません。</p>
+</div>
+<h3 id="cancel-a-reservation">予約の取り消し</h3>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>予約の取り消しは利用責任者もしくは利用管理者のみが実施できます。</p>
+</div>
+<p>予約を取り消すには、<a href="https://portal.abci.ai/user/">ABCI利用ポータル</a>もしくは<code>qrdel</code>コマンドを使用します。<code>qrdel</code>コマンドでの予約取り消しは、「,(カンマ)」区切りのリストとして複数指定できます。指定したar_idの中に1つでも存在しない予約ID、もしくは削除権限のない予約IDが指定されている場合は、エラーとなり削除は実行されません。</p>
+<p>例) 予約を取り消し</p>
+<div class="codehilite"><pre><span></span><code><span class="o">[</span><span class="n">username@es1 ~</span><span class="o">]</span><span class="err">$</span><span class="w"> </span><span class="n">qrdel</span><span class="w"> </span><span class="mi">12345</span><span class="p">,</span><span class="mi">12346</span><span class="w"></span>
+</code></pre></div>
+
+<h3 id="how-to-use-reserved-node">予約ノードの使い方</h3>
+<p>予約した計算ノードには、<code>-ar</code>オプションにて予約IDを指定してジョブを投入します。</p>
+<p>例) 予約ID<code>12345</code>で予約された計算ノードでインタラクティブジョブを実行</p>
+<div class="codehilite"><pre><span></span><code><span class="o">[</span><span class="n">username@es1 ~</span><span class="o">]</span><span class="err">$</span><span class="w"> </span><span class="n">qrsh</span><span class="w"> </span><span class="o">-</span><span class="n">g</span><span class="w"> </span><span class="n">grpname</span><span class="w"> </span><span class="o">-</span><span class="n">ar</span><span class="w"> </span><span class="mi">12345</span><span class="w"> </span><span class="o">-</span><span class="n">l</span><span class="w"> </span><span class="n">rt_F</span><span class="o">=</span><span class="mi">1</span><span class="w"> </span><span class="o">-</span><span class="n">l</span><span class="w"> </span><span class="n">h_rt</span><span class="o">=</span><span class="mi">1</span><span class="err">:</span><span class="mi">00</span><span class="err">:</span><span class="mi">00</span><span class="w"></span>
+<span class="o">[</span><span class="n">username@g0001 ~</span><span class="o">]</span><span class="err">$</span><span class="w"> </span>
+</code></pre></div>
+
+<p>例) ジョブスクリプトrun.shを予約ID<code>12345</code>で予約された計算ノードにバッチジョブとして投入</p>
+<div class="codehilite"><pre><span></span><code><span class="o">[</span><span class="n">username@es1 ~</span><span class="o">]</span><span class="err">$</span><span class="w"> </span><span class="n">qsub</span><span class="w"> </span><span class="o">-</span><span class="n">g</span><span class="w"> </span><span class="n">grpname</span><span class="w"> </span><span class="o">-</span><span class="n">ar</span><span class="w"> </span><span class="mi">12345</span><span class="w"> </span><span class="n">run</span><span class="p">.</span><span class="n">sh</span><span class="w"></span>
+<span class="n">Your</span><span class="w"> </span><span class="n">job</span><span class="w"> </span><span class="mi">12345</span><span class="w"> </span><span class="p">(</span><span class="ss">&quot;run.sh&quot;</span><span class="p">)</span><span class="w"> </span><span class="n">has</span><span class="w"> </span><span class="n">been</span><span class="w"> </span><span class="n">submitted</span><span class="w"></span>
+</code></pre></div>
+
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<ul>
+<li>予約作成時に指定したABCIグループを指定する必要があります。</li>
+<li>バッチジョブは予約作成直後から投入できますが、予約開始時刻になるまで実行されません。  </li>
+<li>予約開始時刻前に投入したバッチジョブは<code>qdel</code>コマンドで削除できます。  </li>
+<li>予約開始時刻前に予約を削除した場合、当該予約に投入されていたバッチジョブは削除されます。  </li>
+<li>予約終了時刻になると実行中のジョブは強制終了されます。  </li>
+</ul>
+</div>
+<h3 id="cautions-for-using-reserved-node">予約ノードご利用時の注意</h3>
+<p>予約は期間中の計算ノードの健全性を保証するものではありません。予約した計算ノードの利用中に一部が利用不可となることがありますので、以下の点をご確認ください。</p>
+<ul>
+<li>予約した計算ノードの利用可否状態は、<code>qrstat -ar ar_id</code> コマンドで確認できます。</li>
+<li>予約開始前日に一部の予約ノードが利用不可と表示される場合は、予約の取り消し・再度予約をご検討ください。</li>
+<li>予約期間中に計算ノードが利用不可となった場合などの時は、<a href="../contact/">お問い合わせ</a>のページをご覧の上、<a href="&#109;&#97;&#105;&#108;&#116;&#111;&#58;&#113;&#97;&#64;&#97;&#98;&#99;&#105;&#46;&#97;&#105;">&#113;&#97;&#64;&#97;&#98;&#99;&#105;&#46;&#97;&#105;</a> までご連絡ください。</li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<ul>
+<li>予約の取り消しは予約開始前日の午後9時までになります。</li>
+<li>計算ノードの空きが無い場合、予約の作成はできません。</li>
+<li>ハードウェア障害は適宜対応しております。予約開始前日より前の利用不可に対するお問い合わせはご遠慮願います。</li>
+<li>予約している計算ノード数変更や予約期間の延長の依頼は対応不可になります。</li>
+</ul>
+</div>
+<p>例) g0001は利用可能、g0002は利用不可</p>
+<div class="codehilite"><pre><span></span><code><span class="o">[</span><span class="n">username@es1 ~</span><span class="o">]</span><span class="err">$</span><span class="w"> </span><span class="n">qrsub</span><span class="w"> </span><span class="o">-</span><span class="n">a</span><span class="w"> </span><span class="mi">20180705</span><span class="w"> </span><span class="o">-</span><span class="n">d</span><span class="w"> </span><span class="mi">7</span><span class="w"> </span><span class="o">-</span><span class="n">g</span><span class="w"> </span><span class="n">grpname</span><span class="w"> </span><span class="o">-</span><span class="n">n</span><span class="w"> </span><span class="mi">2</span><span class="w"> </span><span class="o">-</span><span class="n">N</span><span class="w"> </span><span class="ss">&quot;Reserve_for_AI&quot;</span><span class="w"> </span>
+<span class="n">Your</span><span class="w"> </span><span class="n">advance</span><span class="w"> </span><span class="n">reservation</span><span class="w"> </span><span class="mi">12345</span><span class="w"> </span><span class="n">has</span><span class="w"> </span><span class="n">been</span><span class="w"> </span><span class="n">granted</span><span class="w"></span>
+<span class="o">[</span><span class="n">username@es1 ~</span><span class="o">]</span><span class="err">$</span><span class="w"> </span><span class="n">qrstat</span><span class="w"> </span><span class="o">-</span><span class="n">ar</span><span class="w"> </span><span class="mi">12345</span><span class="w"></span>
+<span class="p">(</span><span class="n">snip</span><span class="p">)</span><span class="w"></span>
+<span class="n">message</span><span class="w">                             </span><span class="n">reserved</span><span class="w"> </span><span class="n">queue</span><span class="w"> </span><span class="n">gpu</span><span class="nv">@g0002</span><span class="w"> </span><span class="k">is</span><span class="w"> </span><span class="n">disabled</span><span class="w"></span>
+<span class="n">message</span><span class="w">                             </span><span class="n">reserved</span><span class="w"> </span><span class="n">queue</span><span class="w"> </span><span class="n">gpu</span><span class="nv">@g0002</span><span class="w"> </span><span class="k">is</span><span class="w"> </span><span class="k">unknown</span><span class="w"></span>
+<span class="n">granted_parallel_environment</span><span class="w">        </span><span class="n">perack01</span><span class="w"></span>
+<span class="n">granted_slots_list</span><span class="w">                  </span><span class="n">gpu</span><span class="nv">@g0001</span><span class="o">=</span><span class="mi">80</span><span class="p">,</span><span class="n">gpu</span><span class="nv">@g0002</span><span class="o">=</span><span class="mi">80</span><span class="w"></span>
+</code></pre></div>
+
+<h2 id="accounting">課金</h2>
+<h3 id="on-demand-and-spot-services">On-demandおよびSpotサービス</h3>
+<p>On-demandおよびSpotサービスでは、ジョブ実行開始時にジョブが使用予定のABCIポイントを経過時間制限値を元に計算し、減算処理を実施します。ジョブ実行終了時に実際の経過時間を元にABCIポイントを再計算し、返却処理を実施します。</p>
+<p>サービスごとの使用ABCIポイントの計算式は以下の通りです。</p>
+<blockquote>
+<p><a href="#job-services">サービス課金係数</a><br />
+&times; <a href="#available-resource-types">資源タイプ課金係数</a><br />
+&times; <a href="#execution-priority">POSIX 優先度課金係数</a><br />
+&times; 資源タイプ個数<br />
+&times; max(経過時間[秒], 最低経過時間[秒])<br />
+&div; 3600</p>
+</blockquote>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<ul>
+<li>小数点5位以下は切り捨てられます。</li>
+<li>最低経過時間より短い経過時間ジョブを実行した場合、ABCIポイントは最低経過時間を元に計算されます。</li>
+</ul>
+</div>
+<h3 id="reserved-service_1">Reservedサービス</h3>
+<p>Reservedサービスでは、予約完了時に予約期間を元にABCIポイントを計算し、減算処理を実施します。予約の取り消しをしない限り、返却処理は実施されません。</p>
+<p>サービスごとの使用ABCIポイントの計算式は以下の通りです。</p>
+<blockquote>
+<p><a href="#job-services">サービス課金係数</a><br />
+&times; 予約ノード数<br />
+&times; 予約日数<br />
+&times; 24</p>
+</blockquote>
+<div class="footnote">
+<hr />
+<ol>
+<li id="fn:1">
+<p>/local1 (1590 GB) と /local2 (1850 GB) の合算。&#160;<a class="footnote-backref" href="#fnref:1" title="Jump back to footnote 1 in the text">&#8617;</a></p>
+</li>
+</ol>
+</div>
+                
+              
+              
+                
+
+
+              
+            </article>
+          </div>
+        </div>
+        
+      </main>
+      
+        
+<footer class="md-footer">
+  
+    <nav class="md-footer__inner md-grid" aria-label="フッター">
+      
+        <a href="../getting-started/" class="md-footer__link md-footer__link--prev" rel="prev">
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+          </div>
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                前
+              </span>
+              ABCIの利用開始
+            </div>
+          </div>
+        </a>
+      
+      
+        <a href="../storage/" class="md-footer__link md-footer__link--next" rel="next">
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                次
+              </span>
+              ストレージ
+            </div>
+          </div>
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4z"/></svg>
+          </div>
+        </a>
+      
+    </nav>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-footer-copyright">
+        
+          <div class="md-footer-copyright__highlight">
+            Copyright &copy; 2021 National Institute of Advanced Industrial Science and Technology (AIST)
+          </div>
+        
+        Made with
+        <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+          Material for MkDocs
+        </a>
+        
+      </div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    <script id="__config" type="application/json">{"base": "..", "features": ["toc.integrate"], "translations": {"clipboard.copy": "\u30af\u30ea\u30c3\u30d7\u30dc\u30fc\u30c9\u3078\u30b3\u30d4\u30fc", "clipboard.copied": "\u30b3\u30d4\u30fc\u3057\u307e\u3057\u305f", "search.config.lang": "ja", "search.config.pipeline": "trimmer, stemmer", "search.config.separator": "[\\s\\-\u3000\u3001\u3002\uff0c\uff0e]+", "search.placeholder": "\u691c\u7d22", "search.result.placeholder": "\u691c\u7d22\u30ad\u30fc\u30ef\u30fc\u30c9\u3092\u5165\u529b\u3057\u3066\u304f\u3060\u3055\u3044", "search.result.none": "\u4f55\u3082\u898b\u3064\u304b\u308a\u307e\u305b\u3093\u3067\u3057\u305f", "search.result.one": "1\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.other": "#\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.more.one": "\u3053\u306e\u30da\u30fc\u30b8\u5185\u306b\u3082\u30461\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.more.other": "\u3053\u306e\u30da\u30fc\u30b8\u5185\u306b\u3042\u3068#\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.term.missing": "\u691c\u7d22\u306b\u542b\u307e\u308c\u306a\u3044"}, "search": "../assets/javascripts/workers/search.fe42c31b.min.js", "version": null}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.4ea5477f.min.js"></script>
+      
+    
+  </body>
+</html>

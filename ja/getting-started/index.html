@@ -1,0 +1,1631 @@
+
+<!doctype html>
+<html lang="ja" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="ABCI 2.0 User Guide, Japanese version">
+      
+      
+      
+        <meta name="author" content="AIST">
+      
+      
+        <link rel="canonical" href="https://docs.abci.ai/ja/getting-started/">
+      
+      <link rel="icon" href="../img/favicon.png">
+      <meta name="generator" content="mkdocs-1.1.2, mkdocs-material-7.1.3">
+    
+    
+      
+        <title>ABCIの利用開始 - ABCI 2.0 User Guide</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.e35208c4.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.ef6f36e2.min.css">
+        
+          
+          
+          <meta name="theme-color" content="#ef5552">
+        
+      
+    
+    
+    
+      
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700%7CRoboto+Mono&display=fallback">
+        <style>:root{--md-text-font-family:"Roboto";--md-code-font-family:"Roboto Mono"}</style>
+      
+    
+    
+    
+    
+      
+        
+<script>window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)},ga.l=+new Date,ga("create","UA-118371652-2","auto"),ga("set","anonymizeIp",!0),ga("send","pageview"),document.addEventListener("DOMContentLoaded",function(){document.forms.search&&document.forms.search.query.addEventListener("blur",function(){var e;this.value&&(e=document.location.pathname,ga("send","pageview",e+"?q="+this.value))}),"undefined"!=typeof location$&&location$.subscribe(function(e){ga("send","pageview",e.pathname)})})</script>
+<script async src="https://www.google-analytics.com/analytics.js"></script>
+      
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="" data-md-color-primary="red" data-md-color-accent="">
+  
+    
+    <script>function __prefix(e){return new URL("..",location).pathname+"."+e}function __get(e,t=localStorage){return JSON.parse(t.getItem(__prefix(e)))}</script>
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#abci" class="md-skip">
+          コンテンツにスキップ
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+      <header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="ヘッダー">
+    <a href=".." title="ABCI 2.0 User Guide" class="md-header__button md-logo" aria-label="ABCI 2.0 User Guide" data-md-component="logo">
+      
+  <img src="../img/logo.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            ABCI 2.0 User Guide
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              ABCIの利用開始
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+      <div class="md-header__option">
+        <div class="md-select">
+          
+          <button class="md-header__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m12.87 15.07-2.54-2.51.03-.03A17.52 17.52 0 0 0 14.07 6H17V4h-7V2H8v2H1v2h11.17C11.5 7.92 10.44 9.75 9 11.35 8.07 10.32 7.3 9.19 6.69 8h-2c.73 1.63 1.73 3.17 2.98 4.56l-5.09 5.02L4 19l5-5 3.11 3.11.76-2.04M18.5 10h-2L12 22h2l1.12-3h4.75L21 22h2l-4.5-12m-2.62 7 1.62-4.33L19.12 17h-3.24z"/></svg>
+          </button>
+          <div class="md-select__inner">
+            <ul class="md-select__list">
+              
+                <li class="md-select__item">
+                  <a href="https://docs.abci.ai/en/" hreflang="" class="md-select__link">
+                    English
+                  </a>
+                </li>
+                
+                <li class="md-select__item">
+                  <a href="https://docs.abci.ai/ja/" hreflang="" class="md-select__link">
+                    日本語
+                  </a>
+                </li>
+                
+            </ul>
+          </div>
+        </div>
+      </div>
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+      </label>
+      
+<div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="検索" placeholder="検索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" data-md-state="active" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+      </label>
+      <button type="reset" class="md-search__icon md-icon" aria-label="クリア" tabindex="-1">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"/></svg>
+      </button>
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            検索を初期化
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        
+<a href="https://github.com/aistairc/abci-docs/" title="リポジトリへ" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+      </div>
+    
+  </nav>
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+<nav class="md-nav md-nav--primary md-nav--integrated" aria-label="ナビゲーション" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="ABCI 2.0 User Guide" class="md-nav__button md-logo" aria-label="ABCI 2.0 User Guide" data-md-component="logo">
+      
+  <img src="../img/logo.png" alt="logo">
+
+    </a>
+    ABCI 2.0 User Guide
+  </label>
+  
+    <div class="md-nav__source">
+      
+<a href="https://github.com/aistairc/abci-docs/" title="リポジトリへ" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        はじめに
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../system-overview/" class="md-nav__link">
+        ABCIシステムの概要
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          ABCIの利用開始
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        ABCIの利用開始
+      </a>
+      
+        
+<nav class="md-nav md-nav--secondary" aria-label="目次">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目次
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#getting-an-account" class="md-nav__link">
+    ABCIアカウントの取得
+  </a>
+  
+    <nav class="md-nav" aria-label="ABCIアカウントの取得">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#application-for-use-of-abci" class="md-nav__link">
+    ABCIの利用申請
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#account-type" class="md-nav__link">
+    ABCIアカウントの種類
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#account-uniqueness" class="md-nav__link">
+    ABCIアカウントの一意性
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#multi-titled-person" class="md-nav__link">
+    複数のABCIグループに所属する場合
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#connecting-to-interactive-node" class="md-nav__link">
+    インタラクティブノードへの接続
+  </a>
+  
+    <nav class="md-nav" aria-label="インタラクティブノードへの接続">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#prerequisites" class="md-nav__link">
+    前提
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#login-using-an-ssh-client" class="md-nav__link">
+    SSHクライアントによるログイン
+  </a>
+  
+    <nav class="md-nav" aria-label="SSHクライアントによるログイン">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#general-method" class="md-nav__link">
+    一般的なログイン方法
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#proxyjump" class="md-nav__link">
+    ProxyJumpの使用
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#file-transfer-to-interactive-node" class="md-nav__link">
+    インタラクティブノードへのファイル転送
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#changing-password" class="md-nav__link">
+    パスワード変更
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#login-shell" class="md-nav__link">
+    ログインシェル
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#checking-abci-point" class="md-nav__link">
+    ABCIポイントの確認
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#checking-disk-quota" class="md-nav__link">
+    ディスククォータの確認
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#checking-cloud-storage-usage" class="md-nav__link">
+    ABCI クラウドストレージ利用状況の確認
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../job-execution/" class="md-nav__link">
+        ジョブ実行
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../storage/" class="md-nav__link">
+        ストレージ
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../environment-modules/" class="md-nav__link">
+        Environment Modules
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../python/" class="md-nav__link">
+        Python
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../gpu/" class="md-nav__link">
+        GPU
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../mpi/" class="md-nav__link">
+        MPI
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../containers/" class="md-nav__link">
+        コンテナ
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../development-tools/" class="md-nav__link">
+        開発ツール
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_12" type="checkbox" id="__nav_12" >
+      
+      <label class="md-nav__link" for="__nav_12">
+        付録
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="付録" data-md-level="1">
+        <label class="md-nav__title" for="__nav_12">
+          <span class="md-nav__icon md-icon"></span>
+          付録
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../appendix/installed-software/" class="md-nav__link">
+        付録. インストール済みソフトウェアの構成
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../appendix/using-abci-with-hpci/" class="md-nav__link">
+        付録. HPCIによるABCIシステム利用
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../appendix/external-networks/" class="md-nav__link">
+        付録. 外部ネットワークとの通信
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../appendix/ssh-access/" class="md-nav__link">
+        付録. 計算ノードへのSSHアクセス
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_13" type="checkbox" id="__nav_13" >
+      
+      <label class="md-nav__link" for="__nav_13">
+        各種アプリケーション
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="各種アプリケーション" data-md-level="1">
+        <label class="md-nav__title" for="__nav_13">
+          <span class="md-nav__icon md-icon"></span>
+          各種アプリケーション
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../apps/" class="md-nav__link">
+        概要
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../apps/tensorflow/" class="md-nav__link">
+        TensorFlow
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../apps/tensorflow-keras/" class="md-nav__link">
+        TensorFlow Keras
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../apps/pytorch/" class="md-nav__link">
+        PyTorch
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../apps/mxnet/" class="md-nav__link">
+        MXNet
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../apps/chainer/" class="md-nav__link">
+        Chainer
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../apps/others/" class="md-nav__link">
+        その他
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_14" type="checkbox" id="__nav_14" >
+      
+      <label class="md-nav__link" for="__nav_14">
+        Tips
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Tips" data-md-level="1">
+        <label class="md-nav__title" for="__nav_14">
+          <span class="md-nav__icon md-icon"></span>
+          Tips
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../tips/ngc/" class="md-nav__link">
+        NVIDIA NGC
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../tips/remote-desktop/" class="md-nav__link">
+        リモートデスクトップの利用
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../tips/awscli/" class="md-nav__link">
+        AWS CLIの利用
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../tips/tera-term/" class="md-nav__link">
+        Tera Termの利用
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../tips/putty/" class="md-nav__link">
+        PuTTYの利用
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../tips/jupyter-notebook/" class="md-nav__link">
+        Jupyter Notebookの利用
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../tips/sregistry-cli/" class="md-nav__link">
+        Singularity Global Clientの利用
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../tips/spack/" class="md-nav__link">
+        Spackによるソフトウェア管理
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../tips/datasets/" class="md-nav__link">
+        データセットの利用
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../tips/dl-amazon-ecr/" class="md-nav__link">
+        Amazon ECR からコンテナ取得
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_15" type="checkbox" id="__nav_15" >
+      
+      <label class="md-nav__link" for="__nav_15">
+        ABCI クラウドストレージ
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="ABCI クラウドストレージ" data-md-level="1">
+        <label class="md-nav__title" for="__nav_15">
+          <span class="md-nav__icon md-icon"></span>
+          ABCI クラウドストレージ
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../abci-cloudstorage/" class="md-nav__link">
+        概要
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../abci-cloudstorage/cs-account/" class="md-nav__link">
+        アカウントとアクセスキー
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../abci-cloudstorage/usage/" class="md-nav__link">
+        使い方
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../abci-cloudstorage/encryption/" class="md-nav__link">
+        データの暗号化
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../abci-cloudstorage/acl/" class="md-nav__link">
+        アクセス制御(1)
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../abci-cloudstorage/policy/" class="md-nav__link">
+        アクセス制御(2)
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../abci-cloudstorage/publishing-datasets/" class="md-nav__link">
+        データセットの公開
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../abci-cloudstorage/caution/" class="md-nav__link">
+        ご利用時の注意
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../abci-datasets/" class="md-nav__link">
+        ABCI データセット
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../abci-singularity-endpoint/" class="md-nav__link">
+        ABCI Singularity エンドポイント
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../faq/" class="md-nav__link">
+        FAQ
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../known-issues/" class="md-nav__link">
+        既知の問題
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../system-updates/" class="md-nav__link">
+        システム更新履歴
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="https://abci.ai/ja/about_abci/info.html" class="md-nav__link">
+        運転状況
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../contact/" class="md-nav__link">
+        お問い合わせ
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_23" type="checkbox" id="__nav_23" >
+      
+      <label class="md-nav__link" for="__nav_23">
+        リンク
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="リンク" data-md-level="1">
+        <label class="md-nav__title" for="__nav_23">
+          <span class="md-nav__icon md-icon"></span>
+          リンク
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="https://abci.ai/ja/" class="md-nav__link">
+        ABCI Webページ
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="https://docs.abci.ai/portal/ja/" class="md-nav__link">
+        ABCI利用ポータル手引き
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="https://portal.abci.ai/user/project_register_app.php?lang=ja" class="md-nav__link">
+        ABCI利用ポータル (利用申請)
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="https://portal.abci.ai/user/login.php?lang=ja" class="md-nav__link">
+        ABCI利用ポータル (ログイン)
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+          
+          <div class="md-content" data-md-component="content">
+            <article class="md-content__inner md-typeset">
+              
+                
+                  <a href="https://github.com/aistairc/abci-docs/edit/master/ja/docs/getting-started.md" title="編集" class="md-content__button md-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75L3 17.25z"/></svg>
+                  </a>
+                
+                
+                <h1 id="abci">ABCIの利用開始</h1>
+<h2 id="getting-an-account">ABCIアカウントの取得</h2>
+<h3 id="application-for-use-of-abci">ABCIの利用申請</h3>
+<p>ABCIを利用するためには、<a href="https://abci.ai/ja/how_to_use/">「ご利用の流れ」</a>に掲載された利用規定（約款または規約）に従い、研究・開発テーマを決定し、<a href="https://portal.abci.ai/user/project_register_app.php">ABCI利用ポータル</a> から「ABCI利用申請」を提出します。ABCI申請受付担当は利用規定に基づいて審査し、要件が満たされている場合に、申請されたABCIグループを作成し、申請者に採択された旨を通知します。申請者が通知を受け取ったら、利用開始となります。</p>
+<p>利用料金は、<a href="https://abci.ai/ja/how_to_use/tariffs.html">料金表</a>を確認の上、ABCIポイントを購入することで支払いいただきます。ABCIポイントはABCIグループごとに購入してください。申請時には、ABCIポイントを 1,000ポイント以上購入する必要があります。</p>
+<h3 id="account-type">ABCIアカウントの種類</h3>
+<p>ABCIアカウントには、「利用責任者」「利用管理者」「利用者」の3種類があります。ABCIシステムを利用するには、「利用責任者」が <a href="https://portal.abci.ai/user/project_register_app.php">ABCI利用ポータル</a> から「利用グループ申請」を行い、ABCIアカウントを取得する必要があります。
+詳細は <a href="https://docs.abci.ai/portal/ja/">ABCI利用ポータル利用手引き</a> を参照してください。</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<ul>
+<li>「利用責任者」自身にもABCIアカウントが発行されます。</li>
+<li>「利用責任者」は <a href="https://portal.abci.ai/user/">ABCI利用ポータル</a> にて「利用者」を「利用管理者」に変更することが可能です。</li>
+<li>「利用責任者」と「利用管理者」は、ABCIグループに「利用管理者」もしくは「利用者」を追加することが可能です。</li>
+<li>「利用責任者」と「利用管理者」は、ABCIグループの「利用責任者」を変更することが可能です。</li>
+</ul>
+</div>
+<h3 id="account-uniqueness">ABCIアカウントの一意性</h3>
+<p>原則として、1人の方は1つのABCIアカウントを利用ください。例えば、会社で1つのABCIアカウントを取得し、複数の社員が共有して使い回すことは認められません。
+一方で1人の方が複数の法人に所属している場合は複数のABCIアカウントを取得することができます。この場合、それぞれの法人に対応するABCIアカウントを使い分ける必要があります。</p>
+<h3 id="multi-titled-person">複数のABCIグループに所属する場合</h3>
+<p>1人の方が1つの法人の中で複数のテーマに同時に取り組んでいる場合、1人で複数のABCIアカウントをそれぞれ取得するのではなく、1つのABCIアカウントで複数のABCIグループに所属することになります。この場合、その利用目的に応じてABCIグループを使い分ける必要があります。どのABCIグループを利用すべきか不明の場合は、ABCIグループの「利用責任者」または「利用管理者」へお問い合わせください。自分が所属しているABCIグループの「利用責任者」または「利用管理者」は、<a href="https://portal.abci.ai/user/">ABCI利用ポータル</a> へログイン後の最初の画面に表示されます。</p>
+<p>ご利用料金をどのABCIグループが負担するかに関わるため、ABCIグループの「利用責任者」または「利用管理者」の指示に従い、適切なABCIグループを利用ください。</p>
+<h2 id="connecting-to-interactive-node">インタラクティブノードへの接続</h2>
+<p>ABCIシステムのフロントエンドであるインタラクティブノード(計算ノード(V)向けホスト名: <em>es</em>、計算ノード(A)向けホスト名: <em>es-a</em>)に接続するには、二段階のSSH公開鍵認証による接続を行います。</p>
+<ol>
+<li>SSH公開鍵認証を用いてアクセスサーバ(ホスト名: <em>as.abci.ai</em>)にログインして、ローカルPCとインタラクティブノードの間にSSHポートフォワーディングによるトンネリング（以下「SSHトンネル」という）を作成</li>
+<li>SSHトンネルを介して、SSH公開鍵認証を用いてインタラクティブノード(<em>es</em>もしくは<em>es-a</em>)にログイン</li>
+</ol>
+<p>なお本章では、ABCIのサーバ名は <em>イタリック</em> で表記します。</p>
+<h3 id="prerequisites">前提</h3>
+<p>インタラクティブノードに接続するには、以下が必要になります。</p>
+<ul>
+<li>SSHクライアント。Linux、macOSを含むUNIX系OS、Windows 10 version 1803 (April 2018 Update)以降など、ほとんどのPCには、デフォルトでSSHクライアントがインストールされています。インストールされているかどうかを確認するには、コマンドラインから<code>ssh</code>コマンドを実行してください。</li>
+<li>安全なSSH公開鍵・秘密鍵ペアの生成。ABCIで利用可能な鍵ペアは以下のとおりです。<ul>
+<li>RSA鍵 (2048bit以上)</li>
+<li>ECDSA鍵 (256bit、384bit、または521bit)</li>
+<li>Ed25519鍵</li>
+</ul>
+</li>
+<li>SSH公開鍵の登録。<a href="https://portal.abci.ai/user/">ABCI利用ポータル</a>にてSSH公開鍵の登録を事前に行ってください。登録方法は、<a href="https://docs.abci.ai/portal/ja/02/#23">SSH公開鍵の登録</a>を参照してください。</li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>SSHクライアントとして、Tera TermやPuTTYを利用する場合は、<a href="../tips/tera-term/">Tera Termの利用</a>、<a href="../tips/putty/">PuTTYの利用</a>を参照。</p>
+</div>
+<h3 id="login-using-an-ssh-client">SSHクライアントによるログイン</h3>
+<p>以下では、SSHクライアントを用いて、(1) アクセスサーバでSSHトンネルの作成後にインタラクティブノードにログインする方法と、(2) OpenSSH 7.3以降で実装されたProxyJumpを使ったより簡便なログイン方法、を説明します。</p>
+<h4 id="general-method">一般的なログイン方法</h4>
+<p>以下のコマンドでアクセスサーバ(<em>as.abci.ai</em>)にログインし、SSHトンネルを作成します。</p>
+<p>インタラクティブノード(V)向け</p>
+<div class="codehilite"><pre>
+[yourpc ~]$ ssh -i /path/identity_file -L 10022:<i>es</i>:22 -l username <i>as.abci.ai</i>
+The authenticity of host 'as.abci.ai (0.0.0.1)' can't be established.
+RSA key fingerprint is XX:XX:XX:XX:XX:XX:XX:XX:XX:XX:XX:XX:XX:XX:XX:XX. <- 初回ログイン時のみ表示
+Are you sure you want to continue connecting (yes/no)?  <- yesを入力
+Warning: Permanently added ‘XX.XX.XX.XX' (RSA) to the list of known hosts.
+Enter passphrase for key '/path/identity_file': <- パスフレーズ入力
+</pre></div>
+
+<p>インタラクティブノード(A)向け</p>
+<div class="codehilite"><pre>
+[yourpc ~]$ ssh -i /path/identity_file -L 10022:<i>es-a</i>:22 -l username <i>as.abci.ai</i>
+The authenticity of host 'as.abci.ai (0.0.0.1)' can't be established.
+RSA key fingerprint is XX:XX:XX:XX:XX:XX:XX:XX:XX:XX:XX:XX:XX:XX:XX:XX. <- 初回ログイン時のみ表示
+Are you sure you want to continue connecting (yes/no)?  <- yesを入力
+Warning: Permanently added ‘XX.XX.XX.XX' (RSA) to the list of known hosts.
+Enter passphrase for key '/path/identity_file': <- パスフレーズ入力
+</pre></div>
+
+<p>アクセスサーバへのログインが成功すると、ターミナル上に下記のメッセージが表示されます。</p>
+<div class="codehilite"><pre><span></span><code><span class="nv">Welcome</span> <span class="nv">to</span> <span class="nv">ABCI</span> <span class="nv">access</span> <span class="nv">server</span>.
+<span class="nv">Please</span> <span class="nv">press</span> <span class="nv">any</span> <span class="nv">key</span> <span class="k">if</span> <span class="nv">you</span> <span class="k">disconnect</span> <span class="nv">this</span> <span class="nv">session</span>.
+</code></pre></div>
+
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>上記状態で何らかのキーを入力するとSSH接続が切断されてしますので注意してください。</p>
+</div>
+<p>続いて、別のターミナルを起動し、SSHトンネルを用いてインタラクティブノードにログインします。</p>
+<div class="codehilite"><pre><span></span><code><span class="p">[</span><span class="n">yourpc</span> <span class="o">~</span><span class="p">]</span><span class="o">$</span> <span class="n">ssh</span> <span class="o">-</span><span class="n">i</span> <span class="o">/</span><span class="n">path</span><span class="o">/</span><span class="n">identity_file</span> <span class="o">-</span><span class="n">p</span> <span class="m">10022</span> <span class="o">-</span><span class="n">l</span> <span class="n">username</span> <span class="n">localhost</span>
+<span class="n">The</span> <span class="n">authenticity</span> <span class="n">of</span> <span class="n">host</span> <span class="s">&#39;localhost (127.0.0.1)&#39;</span> <span class="n">can</span><span class="s">&#39;t be established.</span>
+<span class="s">RSA key fingerprint is XX:XX:XX:XX:XX:XX:XX:XX:XX:XX:XX:XX:XX:XX:XX:XX. &lt;- 初回ログイン時のみ表示</span>
+<span class="s">Are you sure you want to continue connecting (yes/no)? &lt;- yesを入力</span>
+<span class="s">Warning: Permanently added &#39;</span><span class="n">localhost</span><span class="s">&#39; (RSA) to the list of known hosts.</span>
+<span class="s">Enter passphrase for key &#39;</span><span class="o">-</span><span class="n">i</span> <span class="o">/</span><span class="n">path</span><span class="o">/</span><span class="n">identity_file</span><span class="s">&#39;</span><span class="err">: &lt;- パスフレーズ入力</span>
+<span class="p">[</span><span class="n">username</span><span class="o">@</span><span class="n">es1</span> <span class="o">~</span><span class="p">]</span><span class="o">$</span>
+</code></pre></div>
+
+<h4 id="proxyjump">ProxyJumpの使用</h4>
+<p>ここではOpenSSH 7.3で実装されたProxyJumpを使ったログイン方法を説明します。Windows Subsystem for Linux (WSL)でも同様のログイン方法が使えます。</p>
+<p>まずローカルPCの<code>$HOME/.ssh/config</code>に以下の記述を行います。</p>
+<div class="codehilite"><pre>
+Host <i>abci</i>
+     HostName <i>es</i>
+     User username
+     ProxyJump %r@<i>as.abci.ai</i>
+     IdentityFile /path/to/identity_file
+
+Host <i>abci-a</i>
+     HostName <i>es-a</i>
+     User username
+     ProxyJump %r@<i>as.abci.ai</i>
+     IdentityFile /path/to/identity_file
+
+Host <i>as.abci.ai</i>
+     IdentityFile /path/to/identity_file
+</pre></div>
+
+<p>以降は、以下のコマンドのみでログインできます。</p>
+<div class="codehilite"><pre>
+[yourpc ~]$ ssh <i>abci</i>
+</pre></div>
+
+<p>Windows 10 バージョン 1803 以降に標準でバンドルされている OpenSSH_for_Windows_7.7p1 では ProxyJump が機能しないため、代わりに ProxyCommand を使用してください。以下に ProxyCommand を使った config ファイルの例を示します。ssh.exe は絶対パスで記述して下さい。</p>
+<div class="codehilite"><pre>
+Host <i>abci</i>
+     HostName <i>es</i>
+     User username
+     ProxyCommand C:\WINDOWS\System32\OpenSSH\ssh.exe -W %h:%p %r@<i>as.abci.ai</i>
+     IdentityFile C:\path\to\identity_file
+
+Host <i>abci-a</i>
+     HostName <i>es-a</i>
+     User username
+     ProxyCommand C:\WINDOWS\System32\OpenSSH\ssh.exe -W %h:%p %r@<i>as.abci.ai</i>
+     IdentityFile C:\path\to\identity_file
+
+Host <i>as.abci.ai</i>
+     IdentityFile C:\path\to\identity_file
+</pre></div>
+
+<h2 id="file-transfer-to-interactive-node">インタラクティブノードへのファイル転送</h2>
+<p>ローカルPCとABCIシステム間でファイル転送をするには、<code>scp</code>(<code>sftp</code>)コマンドを利用します。この場合もSSHトンネルを介して行う必要があります。</p>
+<p>SSHトンネルの設定後、以下のように実行します。</p>
+<div class="codehilite"><pre><span></span><code><span class="p">[</span><span class="n">yourpc</span> <span class="o">~</span><span class="p">]</span><span class="o">$</span> <span class="n">scp</span> <span class="o">-</span><span class="n">i</span> <span class="o">/</span><span class="n">path</span><span class="o">/</span><span class="n">identity_file</span> <span class="o">-</span><span class="n">P</span> <span class="m">10022</span> <span class="n">local</span><span class="o">-</span><span class="n">file</span> <span class="n">username</span><span class="o">@</span><span class="n">localhost</span><span class="o">:</span><span class="n">remote</span><span class="o">-</span><span class="n">dir</span>
+<span class="n">Enter</span> <span class="n">passphrase</span> <span class="n">for</span> <span class="n">key</span><span class="o">:</span> <span class="o">&lt;-</span> パスフレーズを入力
+
+<span class="n">local</span><span class="o">-</span><span class="n">file</span>    <span class="m">100</span>% <span class="o">|***********************|</span>  <span class="n">file</span><span class="o">-</span><span class="n">size</span>  <span class="n">transfer</span><span class="o">-</span><span class="n">time</span>
+</code></pre></div>
+
+<p>ProxyJumpが使える場合は、SSHトンネルを明示的に設定する必要はありません。<a href="#proxyjump">ProxyJumpの使用</a>で説明したとおり<code>$HOME/.ssh/config</code>の設定がしてあれば、直接<code>scp</code> (<code>sftp</code>)コマンドでファイル転送が行えます。</p>
+<div class="codehilite"><pre>
+[yourpc ~]$ scp local-file <i>abci</i>:remote-dir
+</pre></div>
+
+<h2 id="changing-password">パスワード変更</h2>
+<p>ABCIシステムのパスワードはLDAPで管理されています。 SSHログインではパスワードは使用しませんが、
+<a href="https://portal.abci.ai/user/">ABCI利用ポータル</a>へのログイン、ログインシェルの変更の際にパスワードが必要になります。
+パスワードを変更する場合は、<code>passwd</code>コマンドを使用します。</p>
+<div class="codehilite"><pre><span></span><code><span class="p">[</span><span class="n">username</span><span class="o">@</span><span class="n">es1</span> <span class="o">~</span><span class="p">]</span><span class="o">$</span> <span class="n">passwd</span>
+<span class="n">Changing</span> <span class="n">password</span> <span class="n">for</span> <span class="n">user</span> <span class="n">username.</span>
+<span class="n">Current</span> <span class="n">Password</span><span class="o">:</span> <span class="o">&lt;-</span> 現在のパスワードを入力
+<span class="n">New</span> <span class="n">password</span><span class="o">:</span> <span class="o">&lt;-</span> 新しいパスワードを入力
+<span class="n">Retype</span> <span class="n">new</span> <span class="n">password</span><span class="o">:</span> <span class="o">&lt;-</span> 新しいパスワードを再度入力
+<span class="n">passwd</span><span class="o">:</span> <span class="n">all</span> <span class="n">authentication</span> <span class="n">tokens</span> <span class="n">updated</span> <span class="n">successfully.</span>
+</code></pre></div>
+
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>パスワード規約は以下の通りです。</p>
+<ul>
+<li>15文字以上のランダムに並べた文字列を指定してください。例えばLinuxの辞書に登録されている単語は使用できません。文字をランダムに選ぶ方法として、パスワード作成用のソフトウェアを用いるなどして、自動的に生成することを推奨します。</li>
+<li>英大文字[A-Z]、英小文字[a-z]、数字[0-9]、記号の4種類をすべて使用してください。</li>
+<li>使用可能な記号は次の33種類です。
+  (空白) ! " # $ % &amp; ' ( ) * + , - . / : ; &lt; = &gt; ? @ [ \ ] ^ _ ` { | } ~</li>
+<li>全角文字は使用できません。</li>
+</ul>
+</div>
+<h2 id="login-shell">ログインシェル</h2>
+<p>ABCIシステムのデフォルトログインシェルは、bashが設定されています。
+ログインシェルは<code>chsh</code>コマンドを使用してtcshもしくはzshに変更することができます。
+ログインシェルの変更は次回ログインから有効となります。また、ログインシェルの反映には10分程度時間がかかります。</p>
+<div class="codehilite"><pre><span></span><code><span class="err">$</span><span class="w"> </span><span class="n">chsh</span><span class="w"> </span><span class="o">[</span><span class="n">options</span><span class="o">]</span><span class="w"> </span><span class="o">&lt;</span><span class="n">new_shell</span><span class="o">&gt;</span><span class="w"></span>
+</code></pre></div>
+
+<table>
+<thead>
+<tr>
+<th align="left">オプション</th>
+<th align="left">説明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">-l</td>
+<td align="left">利用可能なログインシェル一覧を表示する</td>
+</tr>
+<tr>
+<td align="left">-s <em>new_shell</em></td>
+<td align="left">ログインシェルを<em>new_shell</em>に変更する</td>
+</tr>
+</tbody>
+</table>
+<p>例) ログインシェルを tcsh に変更する。</p>
+<div class="codehilite"><pre><span></span><code><span class="p">[</span><span class="n">username</span><span class="o">@</span><span class="n">es1</span> <span class="o">~</span><span class="p">]</span><span class="o">$</span> <span class="n">chsh</span> <span class="o">-</span><span class="n">s</span> <span class="o">/</span><span class="n">bin</span><span class="o">/</span><span class="n">tcsh</span>
+<span class="n">Password</span> <span class="n">for</span> <span class="n">username</span><span class="o">@</span><span class="n">ABCI.LOCAL</span><span class="o">:</span> <span class="o">&lt;-</span> パスワードを入力
+</code></pre></div>
+
+<p>ABCIシステムへログインすると、ABCIシステムを利用するための環境設定が自動で設定されます。環境変数<code>PATH</code>や環境変数<code>LD_LIBRARY_PATH</code>等をカスタマイズする場合は、以下に示す個人用設定ファイルに設定してください。</p>
+<table>
+<thead>
+<tr>
+<th align="left">ログインシェル</th>
+<th align="left">個人用設定ファイル</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">bash</td>
+<td align="left">$HOME/.bash_profile</td>
+</tr>
+<tr>
+<td align="left">tcsh</td>
+<td align="left">$HOME/.cshrc</td>
+</tr>
+<tr>
+<td align="left">zsh</td>
+<td align="left">$HOME/.zshrc</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>設定ファイルに環境変数<code>PATH</code>にパスを追加する際は、環境変数<code>PATH</code>の最後に追加してください。先頭に追加した場合、システムを正常に使用できなくなる恐れがあります。</p>
+</div>
+<p>個人用設定ファイルのオリジナル（雛形）は<code>/etc/skel</code>配下に格納しています。</p>
+<h2 id="checking-abci-point">ABCIポイントの確認</h2>
+<p>ABCIポイントの使用状況と購入数を確認するには、<code>show_point</code>コマンドを利用します。
+ABCIポイント消費率が100%を超える見込みの場合、新規ジョブ投入が行えず、投入済みジョブは実行開始時にエラーになります（実行中ジョブは影響を受けません）。</p>
+<p>例) ABCIポイントを確認する。</p>
+<div class="codehilite"><pre><span></span><code><span class="o">[</span><span class="n">username@es1 ~</span><span class="o">]</span><span class="err">$</span><span class="w"> </span><span class="n">show_point</span><span class="w"></span>
+<span class="k">Group</span><span class="w">                 </span><span class="k">Disk</span><span class="w">            </span><span class="n">CloudStorage</span><span class="w">                    </span><span class="n">Used</span><span class="w">           </span><span class="n">Point</span><span class="w">   </span><span class="n">Used</span><span class="o">%</span><span class="w"></span>
+<span class="n">grpname</span><span class="w">                  </span><span class="mi">5</span><span class="w">                  </span><span class="mf">0.0124</span><span class="w">             </span><span class="mi">12</span><span class="p">,</span><span class="mf">345.6789</span><span class="w">         </span><span class="mi">100</span><span class="p">,</span><span class="mi">000</span><span class="w">      </span><span class="mi">12</span><span class="w"></span>
+<span class="w">  </span><span class="err">`</span><span class="o">-</span><span class="w"> </span><span class="n">username</span><span class="w">          </span><span class="o">-</span><span class="w">                         </span><span class="o">-</span><span class="w">                  </span><span class="mf">0.1234</span><span class="w">               </span><span class="o">-</span><span class="w">       </span><span class="mi">0</span><span class="w"></span>
+</code></pre></div>
+
+<table>
+<thead>
+<tr>
+<th align="left">項目</th>
+<th align="left">説明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">Group</td>
+<td align="left">ABCI利用グループ名</td>
+</tr>
+<tr>
+<td align="left">Disk</td>
+<td align="left">グループ領域割当量(TB)</td>
+</tr>
+<tr>
+<td align="left">CloudStorage</td>
+<td align="left">ABCIクラウドストレージの ABCIポイント使用量</td>
+</tr>
+<tr>
+<td align="left">Used</td>
+<td align="left">ABCIポイント使用量</td>
+</tr>
+<tr>
+<td align="left">Point</td>
+<td align="left">ABCIポイント購入量</td>
+</tr>
+<tr>
+<td align="left">Used%</td>
+<td align="left">ABCIポイント消費率</td>
+</tr>
+</tbody>
+</table>
+<h2 id="checking-disk-quota">ディスククォータの確認</h2>
+<p>ホーム領域およびグループ領域の使用状況と割り当て量を表示するには、
+<code>show_quota</code>コマンドを利用します。</p>
+<p>例) ディスククォータを確認する。</p>
+<div class="codehilite"><pre><span></span><code><span class="o">[</span><span class="n">username@es1 ~</span><span class="o">]</span><span class="err">$</span><span class="w"> </span><span class="n">show_quota</span><span class="w"></span>
+<span class="k">Disk</span><span class="w"> </span><span class="n">quotas</span><span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="k">user</span><span class="w"> </span><span class="n">username</span><span class="w"></span>
+<span class="w">  </span><span class="n">Directory</span><span class="w">                     </span><span class="n">used</span><span class="p">(</span><span class="n">GiB</span><span class="p">)</span><span class="w">       </span><span class="k">limit</span><span class="p">(</span><span class="n">GiB</span><span class="p">)</span><span class="w">          </span><span class="n">nfiles</span><span class="w"></span>
+<span class="w">  </span><span class="o">/</span><span class="n">home</span><span class="w">                               </span><span class="mi">100</span><span class="w">              </span><span class="mi">200</span><span class="w">           </span><span class="mi">1</span><span class="p">,</span><span class="mi">234</span><span class="w"></span>
+
+<span class="k">Disk</span><span class="w"> </span><span class="n">quotas</span><span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="n">ABCI</span><span class="w"> </span><span class="k">group</span><span class="w"> </span><span class="n">grpname</span><span class="w"></span>
+<span class="w">  </span><span class="n">Directory</span><span class="w">                     </span><span class="n">used</span><span class="p">(</span><span class="n">GiB</span><span class="p">)</span><span class="w">       </span><span class="k">limit</span><span class="p">(</span><span class="n">GiB</span><span class="p">)</span><span class="w">          </span><span class="n">nfiles</span><span class="w"></span>
+<span class="w">  </span><span class="o">/</span><span class="n">groups</span><span class="o">/</span><span class="n">grpname</span><span class="w">                   </span><span class="mi">1</span><span class="p">,</span><span class="mi">024</span><span class="w">            </span><span class="mi">2</span><span class="p">,</span><span class="mi">048</span><span class="w">         </span><span class="mi">123</span><span class="p">,</span><span class="mi">456</span><span class="w"></span>
+</code></pre></div>
+
+<table>
+<thead>
+<tr>
+<th align="left">項目</th>
+<th align="left">説明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">Directory</td>
+<td align="left">領域種別</td>
+</tr>
+<tr>
+<td align="left">used(GiB)</td>
+<td align="left">ディスク使用量</td>
+</tr>
+<tr>
+<td align="left">limit(GiB)</td>
+<td align="left">ディスク上限値</td>
+</tr>
+<tr>
+<td align="left">nfiles</td>
+<td align="left">ファイル数</td>
+</tr>
+</tbody>
+</table>
+<h2 id="checking-cloud-storage-usage">ABCI クラウドストレージ利用状況の確認</h2>
+<p>ABCI クラウドストレージの使用状況表示するには、<code>show_cs_usage</code> コマンドを利用します。</p>
+<p>例1) オプション指定なしで、所属するABCIグループ grpname の直近の利用状態を確認できます。</p>
+<div class="codehilite"><pre><span></span><code><span class="o">[</span><span class="n">username@es1 ~</span><span class="o">]</span><span class="err">$</span><span class="w"> </span><span class="n">show_cs_usage</span><span class="w"></span>
+<span class="n">Cloud</span><span class="w"> </span><span class="n">Storage</span><span class="w"> </span><span class="k">Usage</span><span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="n">ABCI</span><span class="w"> </span><span class="n">groups</span><span class="w"></span>
+<span class="nc">Date</span><span class="w">           </span><span class="k">Group</span><span class="w">                   </span><span class="n">used</span><span class="p">(</span><span class="n">GiB</span><span class="p">)</span><span class="w"></span>
+<span class="mi">2020</span><span class="o">/</span><span class="mi">01</span><span class="o">/</span><span class="mi">13</span><span class="w">     </span><span class="n">grpname</span><span class="w">                       </span><span class="mi">162</span><span class="w"></span>
+</code></pre></div>
+
+<p>例2) オプション -d で日付を指定できます。日付の書式は、 yyyymmdd で指定してください。(ABCIグループは grpname)</p>
+<div class="codehilite"><pre><span></span><code><span class="o">[</span><span class="n">username@es1 ~</span><span class="o">]</span><span class="err">$</span><span class="w"> </span><span class="n">show_cs_usage</span><span class="w"> </span><span class="o">-</span><span class="n">d</span><span class="w"> </span><span class="mi">20191217</span><span class="w"></span>
+<span class="n">Cloud</span><span class="w"> </span><span class="n">Storage</span><span class="w"> </span><span class="k">Usage</span><span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="n">ABCI</span><span class="w"> </span><span class="n">groups</span><span class="w"></span>
+<span class="nc">Date</span><span class="w">           </span><span class="k">Group</span><span class="w">                   </span><span class="n">used</span><span class="p">(</span><span class="n">GiB</span><span class="p">)</span><span class="w"></span>
+<span class="mi">2019</span><span class="o">/</span><span class="mi">12</span><span class="o">/</span><span class="mi">17</span><span class="w">     </span><span class="n">grpname</span><span class="w">                       </span><span class="mi">124</span><span class="w"></span>
+</code></pre></div>
+                
+              
+              
+                
+
+
+              
+            </article>
+          </div>
+        </div>
+        
+      </main>
+      
+        
+<footer class="md-footer">
+  
+    <nav class="md-footer__inner md-grid" aria-label="フッター">
+      
+        <a href="../system-overview/" class="md-footer__link md-footer__link--prev" rel="prev">
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+          </div>
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                前
+              </span>
+              ABCIシステムの概要
+            </div>
+          </div>
+        </a>
+      
+      
+        <a href="../job-execution/" class="md-footer__link md-footer__link--next" rel="next">
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                次
+              </span>
+              ジョブ実行
+            </div>
+          </div>
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4z"/></svg>
+          </div>
+        </a>
+      
+    </nav>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-footer-copyright">
+        
+          <div class="md-footer-copyright__highlight">
+            Copyright &copy; 2021 National Institute of Advanced Industrial Science and Technology (AIST)
+          </div>
+        
+        Made with
+        <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+          Material for MkDocs
+        </a>
+        
+      </div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    <script id="__config" type="application/json">{"base": "..", "features": ["toc.integrate"], "translations": {"clipboard.copy": "\u30af\u30ea\u30c3\u30d7\u30dc\u30fc\u30c9\u3078\u30b3\u30d4\u30fc", "clipboard.copied": "\u30b3\u30d4\u30fc\u3057\u307e\u3057\u305f", "search.config.lang": "ja", "search.config.pipeline": "trimmer, stemmer", "search.config.separator": "[\\s\\-\u3000\u3001\u3002\uff0c\uff0e]+", "search.placeholder": "\u691c\u7d22", "search.result.placeholder": "\u691c\u7d22\u30ad\u30fc\u30ef\u30fc\u30c9\u3092\u5165\u529b\u3057\u3066\u304f\u3060\u3055\u3044", "search.result.none": "\u4f55\u3082\u898b\u3064\u304b\u308a\u307e\u305b\u3093\u3067\u3057\u305f", "search.result.one": "1\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.other": "#\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.more.one": "\u3053\u306e\u30da\u30fc\u30b8\u5185\u306b\u3082\u30461\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.more.other": "\u3053\u306e\u30da\u30fc\u30b8\u5185\u306b\u3042\u3068#\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.term.missing": "\u691c\u7d22\u306b\u542b\u307e\u308c\u306a\u3044"}, "search": "../assets/javascripts/workers/search.fe42c31b.min.js", "version": null}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.4ea5477f.min.js"></script>
+      
+    
+  </body>
+</html>

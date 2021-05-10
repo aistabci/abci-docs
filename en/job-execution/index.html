@@ -1,0 +1,2664 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="ABCI 2.0 User Guide, English version">
+      
+      
+      
+        <meta name="author" content="AIST">
+      
+      
+        <link rel="canonical" href="https://docs.abci.ai/en/job-execution/">
+      
+      <link rel="icon" href="../img/favicon.png">
+      <meta name="generator" content="mkdocs-1.1.2, mkdocs-material-7.1.3">
+    
+    
+      
+        <title>Job Execution - ABCI 2.0 User Guide</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.e35208c4.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.ef6f36e2.min.css">
+        
+          
+          
+          <meta name="theme-color" content="#ef5552">
+        
+      
+    
+    
+    
+      
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700%7CRoboto+Mono&display=fallback">
+        <style>:root{--md-text-font-family:"Roboto";--md-code-font-family:"Roboto Mono"}</style>
+      
+    
+    
+    
+    
+      
+        
+<script>window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)},ga.l=+new Date,ga("create","UA-118371652-2","auto"),ga("set","anonymizeIp",!0),ga("send","pageview"),document.addEventListener("DOMContentLoaded",function(){document.forms.search&&document.forms.search.query.addEventListener("blur",function(){var e;this.value&&(e=document.location.pathname,ga("send","pageview",e+"?q="+this.value))}),"undefined"!=typeof location$&&location$.subscribe(function(e){ga("send","pageview",e.pathname)})})</script>
+<script async src="https://www.google-analytics.com/analytics.js"></script>
+      
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="" data-md-color-primary="red" data-md-color-accent="">
+  
+    
+    <script>function __prefix(e){return new URL("..",location).pathname+"."+e}function __get(e,t=localStorage){return JSON.parse(t.getItem(__prefix(e)))}</script>
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#job-execution" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+      <header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href=".." title="ABCI 2.0 User Guide" class="md-header__button md-logo" aria-label="ABCI 2.0 User Guide" data-md-component="logo">
+      
+  <img src="../img/logo.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            ABCI 2.0 User Guide
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Job Execution
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+      <div class="md-header__option">
+        <div class="md-select">
+          
+          <button class="md-header__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m12.87 15.07-2.54-2.51.03-.03A17.52 17.52 0 0 0 14.07 6H17V4h-7V2H8v2H1v2h11.17C11.5 7.92 10.44 9.75 9 11.35 8.07 10.32 7.3 9.19 6.69 8h-2c.73 1.63 1.73 3.17 2.98 4.56l-5.09 5.02L4 19l5-5 3.11 3.11.76-2.04M18.5 10h-2L12 22h2l1.12-3h4.75L21 22h2l-4.5-12m-2.62 7 1.62-4.33L19.12 17h-3.24z"/></svg>
+          </button>
+          <div class="md-select__inner">
+            <ul class="md-select__list">
+              
+                <li class="md-select__item">
+                  <a href="https://docs.abci.ai/en/" hreflang="" class="md-select__link">
+                    English
+                  </a>
+                </li>
+                
+                <li class="md-select__item">
+                  <a href="https://docs.abci.ai/ja/" hreflang="" class="md-select__link">
+                    日本語
+                  </a>
+                </li>
+                
+            </ul>
+          </div>
+        </div>
+      </div>
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+      </label>
+      
+<div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" data-md-state="active" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+      </label>
+      <button type="reset" class="md-search__icon md-icon" aria-label="Clear" tabindex="-1">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"/></svg>
+      </button>
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        
+<a href="https://github.com/aistairc/abci-docs/" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+      </div>
+    
+  </nav>
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+<nav class="md-nav md-nav--primary md-nav--integrated" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="ABCI 2.0 User Guide" class="md-nav__button md-logo" aria-label="ABCI 2.0 User Guide" data-md-component="logo">
+      
+  <img src="../img/logo.png" alt="logo">
+
+    </a>
+    ABCI 2.0 User Guide
+  </label>
+  
+    <div class="md-nav__source">
+      
+<a href="https://github.com/aistairc/abci-docs/" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        Introduction
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../system-overview/" class="md-nav__link">
+        ABCI System Overview
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../getting-started/" class="md-nav__link">
+        Getting Started ABCI
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          Job Execution
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        Job Execution
+      </a>
+      
+        
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#job-services" class="md-nav__link">
+    Job Services
+  </a>
+  
+    <nav class="md-nav" aria-label="Job Services">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#on-demand-service" class="md-nav__link">
+    On-demand Service
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#spot-service" class="md-nav__link">
+    Spot Service
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#reserved-service" class="md-nav__link">
+    Reserved Service
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#job-execution-resource" class="md-nav__link">
+    Job Execution Resource
+  </a>
+  
+    <nav class="md-nav" aria-label="Job Execution Resource">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#available-resource-types" class="md-nav__link">
+    Available Resource Types
+  </a>
+  
+    <nav class="md-nav" aria-label="Available Resource Types">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#compute-node-v" class="md-nav__link">
+    Compute Node (V)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#compute-node-a" class="md-nav__link">
+    Compute Node (A)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#memory-intensive-node" class="md-nav__link">
+    Memory-intensive Node
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#number-of-nodes-available-at-the-same-time" class="md-nav__link">
+    Number of nodes available at the same time
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#elapsed-time-and-node-time-product-limits" class="md-nav__link">
+    Elapsed time and node-time product limits
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#limitation-on-the-number-of-job-submissions-and-executions" class="md-nav__link">
+    Limitation on the number of job submissions and executions
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#execution-priority" class="md-nav__link">
+    Execution Priority
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#job-execution-options" class="md-nav__link">
+    Job Execution Options
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#interactive-jobs" class="md-nav__link">
+    Interactive Jobs
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#batch-jobs" class="md-nav__link">
+    Batch Jobs
+  </a>
+  
+    <nav class="md-nav" aria-label="Batch Jobs">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#submit-a-batch-job" class="md-nav__link">
+    Submit a batch job
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#show-the-status-of-batch-jobs" class="md-nav__link">
+    Show the status of batch jobs
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#delete-a-batch-job" class="md-nav__link">
+    Delete a batch job
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#stdout-and-stderr-of-batch-jobs" class="md-nav__link">
+    Stdout and Stderr of Batch Jobs
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#report-batch-job-accounting" class="md-nav__link">
+    Report batch job accounting
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#environment-variables" class="md-nav__link">
+    Environment Variables
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#advance-reservation" class="md-nav__link">
+    Advance Reservation
+  </a>
+  
+    <nav class="md-nav" aria-label="Advance Reservation">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#make-a-reservation" class="md-nav__link">
+    Make a reservation
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#show-the-status-of-reservations" class="md-nav__link">
+    Show the status of reservations
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#cancel-a-reservation" class="md-nav__link">
+    Cancel a reservation
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#how-to-use-reserved-node" class="md-nav__link">
+    How to use reserved node
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#cautions-for-using-reserved-node" class="md-nav__link">
+    Cautions for Using reserved node
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#accounting" class="md-nav__link">
+    Accounting
+  </a>
+  
+    <nav class="md-nav" aria-label="Accounting">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#on-demand-and-spot-services" class="md-nav__link">
+    On-demand and Spot Services
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#reserved-service_1" class="md-nav__link">
+    Reserved Service
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../storage/" class="md-nav__link">
+        Storage
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../environment-modules/" class="md-nav__link">
+        Environment Modules
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../python/" class="md-nav__link">
+        Python
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../gpu/" class="md-nav__link">
+        GPU
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../mpi/" class="md-nav__link">
+        MPI
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../containers/" class="md-nav__link">
+        Containers
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../development-tools/" class="md-nav__link">
+        Development Tools
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_12" type="checkbox" id="__nav_12" >
+      
+      <label class="md-nav__link" for="__nav_12">
+        Appendix
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Appendix" data-md-level="1">
+        <label class="md-nav__title" for="__nav_12">
+          <span class="md-nav__icon md-icon"></span>
+          Appendix
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../appendix/installed-software/" class="md-nav__link">
+        Appendix. Configuration of Installed Software
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../appendix/using-abci-with-hpci/" class="md-nav__link">
+        Appendix. Using ABCI with HPCI
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../appendix/external-networks/" class="md-nav__link">
+        Appendix. Communications with External Networks
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../appendix/ssh-access/" class="md-nav__link">
+        Appendix. SSH Access to Compute Nodes
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_13" type="checkbox" id="__nav_13" >
+      
+      <label class="md-nav__link" for="__nav_13">
+        Applications
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Applications" data-md-level="1">
+        <label class="md-nav__title" for="__nav_13">
+          <span class="md-nav__icon md-icon"></span>
+          Applications
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../apps/" class="md-nav__link">
+        Overview
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../apps/tensorflow/" class="md-nav__link">
+        TensorFlow
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../apps/tensorflow-keras/" class="md-nav__link">
+        TensorFlow Keras
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../apps/pytorch/" class="md-nav__link">
+        PyTorch
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../apps/mxnet/" class="md-nav__link">
+        MXNet
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../apps/chainer/" class="md-nav__link">
+        Chainer
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../apps/others/" class="md-nav__link">
+        Others
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_14" type="checkbox" id="__nav_14" >
+      
+      <label class="md-nav__link" for="__nav_14">
+        Tips
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Tips" data-md-level="1">
+        <label class="md-nav__title" for="__nav_14">
+          <span class="md-nav__icon md-icon"></span>
+          Tips
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../tips/ngc/" class="md-nav__link">
+        NVIDIA NGC
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../tips/remote-desktop/" class="md-nav__link">
+        Remote Desktop
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../tips/awscli/" class="md-nav__link">
+        AWS CLI
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../tips/putty/" class="md-nav__link">
+        PuTTY
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../tips/jupyter-notebook/" class="md-nav__link">
+        Jupyter Notebook
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../tips/sregistry-cli/" class="md-nav__link">
+        Singularity Global Client
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../tips/spack/" class="md-nav__link">
+        Spack
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../tips/datasets/" class="md-nav__link">
+        Datasets
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../tips/dl-amazon-ecr/" class="md-nav__link">
+        Amazon ECR
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_15" type="checkbox" id="__nav_15" >
+      
+      <label class="md-nav__link" for="__nav_15">
+        ABCI Cloud Storage
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="ABCI Cloud Storage" data-md-level="1">
+        <label class="md-nav__title" for="__nav_15">
+          <span class="md-nav__icon md-icon"></span>
+          ABCI Cloud Storage
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../abci-cloudstorage/" class="md-nav__link">
+        Overview
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../abci-cloudstorage/cs-account/" class="md-nav__link">
+        Accounts and Access keys
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../abci-cloudstorage/usage/" class="md-nav__link">
+        Usage
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../abci-cloudstorage/encryption/" class="md-nav__link">
+        Data encryption
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../abci-cloudstorage/acl/" class="md-nav__link">
+        Access Control (1) 
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../abci-cloudstorage/policy/" class="md-nav__link">
+        Access Control (2) 
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../abci-cloudstorage/publishing-datasets/" class="md-nav__link">
+        Publishing Datasets
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../abci-cloudstorage/caution/" class="md-nav__link">
+        Caution
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../abci-datasets/" class="md-nav__link">
+        ABCI Datasets
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../abci-singularity-endpoint/" class="md-nav__link">
+        ABCI Singularity Endpoint
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../faq/" class="md-nav__link">
+        FAQ
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../known-issues/" class="md-nav__link">
+        Known Issues
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../system-updates/" class="md-nav__link">
+        System Updates
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="https://abci.ai/en/about_abci/info.html" class="md-nav__link">
+        Operation Status
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../contact/" class="md-nav__link">
+        Contact
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_23" type="checkbox" id="__nav_23" >
+      
+      <label class="md-nav__link" for="__nav_23">
+        Links
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Links" data-md-level="1">
+        <label class="md-nav__title" for="__nav_23">
+          <span class="md-nav__icon md-icon"></span>
+          Links
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="https://abci.ai/" class="md-nav__link">
+        ABCI Web page
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="https://docs.abci.ai/portal/en/" class="md-nav__link">
+        ABCI User Portal Guide
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="https://portal.abci.ai/user/project_register_app.php?lang=en" class="md-nav__link">
+        ABCI User Portal (Registration)
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="https://portal.abci.ai/user/login.php?lang=en" class="md-nav__link">
+        ABCI User Portal (Login)
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+          
+          <div class="md-content" data-md-component="content">
+            <article class="md-content__inner md-typeset">
+              
+                
+                  <a href="https://github.com/aistairc/abci-docs/edit/master/en/docs/job-execution.md" title="Edit this page" class="md-content__button md-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75L3 17.25z"/></svg>
+                  </a>
+                
+                
+                <h1 id="job-execution">Job Execution</h1>
+<h2 id="job-services">Job Services</h2>
+<p>The following job services are available in the ABCI System.</p>
+<table>
+<thead>
+<tr>
+<th align="left">Service name</th>
+<th align="left">Description</th>
+<th align="left">Service charge coefficient</th>
+<th align="left">Job style</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">On-demand</td>
+<td align="left">Job service of interactive execution</td>
+<td align="left">1.0</td>
+<td align="left">Interactive</td>
+</tr>
+<tr>
+<td align="left">Spot</td>
+<td align="left">Job service of batch execution</td>
+<td align="left">1.0</td>
+<td align="left">Batch</td>
+</tr>
+<tr>
+<td align="left">Reserved</td>
+<td align="left">Job service of reservation</td>
+<td align="left">1.5</td>
+<td align="left">Batch/Interactive</td>
+</tr>
+</tbody>
+</table>
+<p>For the job execution resources available for each job service and the restrictions, see <a href="#job-execution-resource">Job Execution Resources</a>. Also, for accounting, see <a href="#accounting">Accounting</a>.</p>
+<h3 id="on-demand-service">On-demand Service</h3>
+<p>On-demand service is an interactive job execution service suitable for compiling and debugging programs, interactive applications, and running visualization software.</p>
+<p>See <a href="#interactive-jobs">Interactive Jobs</a> for usage, and <a href="#job-execution-options">Job Execution Options</a> for details on interactive job execution options.</p>
+<h3 id="spot-service">Spot Service</h3>
+<p>Spot Service is a batch job execution service suitable for executing applications that do not require interactive processing. It is possible to execute jobs that take longer or have a higher degree of parallelism than On-demand service.</p>
+<p>See <a href="#batch-jobs">Batch Jobs</a> for usage, and <a href="#job-execution-options">Job Execution Options</a> for details on batch job execution options.</p>
+<h3 id="reserved-service">Reserved Service</h3>
+<p>Reserved service is a service that allows you to reserve and use computational resources on a daily basis in advance. It allows planned job execution without being affected by the congenstions of On-demand and Spot services. In addition, since there are no restrictions on elapsed time and node-time product, it is possible to execute jobs for a longer period of time.</p>
+<p>In Reserved service, you first make a reservation in advance to obtain a reservation ID (AR-ID), and then use this reservation ID to execute interactive jobs and batch jobs.</p>
+<p>See <a href="#advance-reservation">Advance Reservation</a> for the reservation method. The usage and execution options for interactive jobs and batch jobs are the same as for On-demand and Spot services.</p>
+<h2 id="job-execution-resource">Job Execution Resource</h2>
+<p>The ABCI System allocates system resources to jobs using resource type that means logical partition of compute nodes.
+When using any of the On-demand, Spot, and Reserved services, you need to specify the resource type and its quantity that you want to use, submit or execute jobs, and reserves compute nodes.</p>
+<p>The following describes the available resource types first, followed by the restrictions on the amount of resources available at the same time, elapsed time and node-time product, job submissions and executions, and so on.</p>
+<h3 id="available-resource-types">Available Resource Types</h3>
+<p>The ABCI system has two types of computational resources, <a href="../system-overview/#compute-node">compute node</a> and <a href="../system-overview/#memory-intensive-node">memory-intensive node</a>, each of which has the following resource types:</p>
+<h4 id="compute-node-v">Compute Node (V)</h4>
+<table>
+<thead>
+<tr>
+<th align="left">Resource type</th>
+<th align="left">Resource type name</th>
+<th align="left">Description</th>
+<th align="left">Assigned physical CPU core</th>
+<th align="left">Number of assigned GPU</th>
+<th align="left">Memory (GiB)</th>
+<th align="left">Local storage (GB)</th>
+<th align="left">Resource type charge coefficient</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">Full</td>
+<td align="left">rt_F</td>
+<td align="left">node-exclusive</td>
+<td align="left">40</td>
+<td align="left">4</td>
+<td align="left">360</td>
+<td align="left">1440</td>
+<td align="left">1.00</td>
+</tr>
+<tr>
+<td align="left">G.large</td>
+<td align="left">rt_G.large</td>
+<td align="left">node-sharing<br>with GPU</td>
+<td align="left">20</td>
+<td align="left">4</td>
+<td align="left">240</td>
+<td align="left">720</td>
+<td align="left">0.90</td>
+</tr>
+<tr>
+<td align="left">G.small</td>
+<td align="left">rt_G.small</td>
+<td align="left">node-sharing<br>with GPU</td>
+<td align="left">5</td>
+<td align="left">1</td>
+<td align="left">60</td>
+<td align="left">180</td>
+<td align="left">0.30</td>
+</tr>
+<tr>
+<td align="left">C.large</td>
+<td align="left">rt_C.large</td>
+<td align="left">node-sharing<br>CPU only</td>
+<td align="left">20</td>
+<td align="left">0</td>
+<td align="left">120</td>
+<td align="left">720</td>
+<td align="left">0.60</td>
+</tr>
+<tr>
+<td align="left">C.small</td>
+<td align="left">rt_C.small</td>
+<td align="left">node-sharing<br>CPU only</td>
+<td align="left">5</td>
+<td align="left">0</td>
+<td align="left">30</td>
+<td align="left">180</td>
+<td align="left">0.20</td>
+</tr>
+</tbody>
+</table>
+<h4 id="compute-node-a">Compute Node (A)</h4>
+<table>
+<thead>
+<tr>
+<th align="left">Resource type</th>
+<th align="left">Resource type name</th>
+<th align="left">Description</th>
+<th align="left">Assigned physical CPU core</th>
+<th align="left">Number of assigned GPU</th>
+<th align="left">Memory (GiB)</th>
+<th align="left">Local storage (GB)</th>
+<th align="left">Resource type charge coefficient</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">Full</td>
+<td align="left">rt_AF</td>
+<td align="left">node-exclusive</td>
+<td align="left">72</td>
+<td align="left">8</td>
+<td align="left">480</td>
+<td align="left">3440<sup id="fnref:1"><a class="footnote-ref" href="#fn:1">1</a></sup></td>
+<td align="left">3.00</td>
+</tr>
+<tr>
+<td align="left">AG.small</td>
+<td align="left">rt_AG.small</td>
+<td align="left">node-sharing<br>with GPU</td>
+<td align="left">9</td>
+<td align="left">1</td>
+<td align="left">60</td>
+<td align="left">390</td>
+<td align="left">0.50</td>
+</tr>
+</tbody>
+</table>
+<h4 id="memory-intensive-node">Memory-intensive Node</h4>
+<table>
+<thead>
+<tr>
+<th align="left">Resource type</th>
+<th align="left">Resource type name</th>
+<th align="left">Description</th>
+<th align="left">Assigned physical CPU core</th>
+<th align="left">Number of assigned GPU</th>
+<th align="left">Memory (GiB)</th>
+<th align="left">Local storage (GB)</th>
+<th align="left">Resource type charge coefficient</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">M.large</td>
+<td align="left">rt_M.large</td>
+<td align="left">node-sharing<br>CPU only</td>
+<td align="left">8</td>
+<td align="left">-</td>
+<td align="left">800</td>
+<td align="left">480</td>
+<td align="left">0.40</td>
+</tr>
+<tr>
+<td align="left">M.small</td>
+<td align="left">rt_M.small</td>
+<td align="left">node-sharing<br>CPU only</td>
+<td align="left">4</td>
+<td align="left">-</td>
+<td align="left">400</td>
+<td align="left">240</td>
+<td align="left">0.20</td>
+</tr>
+</tbody>
+</table>
+<p>When you execute a job using multiple nodes, you need to specify resource type <code>rt_F</code> or <code>rt_AF</code> for node-exclusive. The memory-intensive node is not available for using multiple nodes.</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>On node-sharing job, the job process information can be seen from other jobs executed on the same nodes. If you want to hide your job process information, specify resource type <code>rt_F</code> or <code>rt_AF</code> and execute a node-exclusive job.</p>
+</div>
+<h3 id="number-of-nodes-available-at-the-same-time">Number of nodes available at the same time</h3>
+<p>The available resource type and number of nodes for each service are as follows. When you execute a job using multiple nodes, you need to specify resource type <code>rt_F</code> or <code>rt_AF</code>.</p>
+<table>
+<thead>
+<tr>
+<th align="left">Service</th>
+<th align="left">Resource type name</th>
+<th align="right">Number of nodes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">On-demand</td>
+<td align="left">rt_F</td>
+<td align="right">1-32</td>
+</tr>
+<tr>
+<td align="left"></td>
+<td align="left">rt_G.large</td>
+<td align="right">1</td>
+</tr>
+<tr>
+<td align="left"></td>
+<td align="left">rt_G.small</td>
+<td align="right">1</td>
+</tr>
+<tr>
+<td align="left"></td>
+<td align="left">rt_C.large</td>
+<td align="right">1</td>
+</tr>
+<tr>
+<td align="left"></td>
+<td align="left">rt_C.small</td>
+<td align="right">1</td>
+</tr>
+<tr>
+<td align="left"></td>
+<td align="left">rt_AF</td>
+<td align="right">1-4</td>
+</tr>
+<tr>
+<td align="left"></td>
+<td align="left">rt_AG.small</td>
+<td align="right">1</td>
+</tr>
+<tr>
+<td align="left"></td>
+<td align="left">rt_M.large</td>
+<td align="right">1</td>
+</tr>
+<tr>
+<td align="left"></td>
+<td align="left">rt_M.small</td>
+<td align="right">1</td>
+</tr>
+<tr>
+<td align="left">Spot</td>
+<td align="left">rt_F</td>
+<td align="right">1-512</td>
+</tr>
+<tr>
+<td align="left"></td>
+<td align="left">rt_G.large</td>
+<td align="right">1</td>
+</tr>
+<tr>
+<td align="left"></td>
+<td align="left">rt_G.small</td>
+<td align="right">1</td>
+</tr>
+<tr>
+<td align="left"></td>
+<td align="left">rt_C.large</td>
+<td align="right">1</td>
+</tr>
+<tr>
+<td align="left"></td>
+<td align="left">rt_C.small</td>
+<td align="right">1</td>
+</tr>
+<tr>
+<td align="left"></td>
+<td align="left">rt_AF</td>
+<td align="right">1-64</td>
+</tr>
+<tr>
+<td align="left"></td>
+<td align="left">rt_AG.small</td>
+<td align="right">1</td>
+</tr>
+<tr>
+<td align="left"></td>
+<td align="left">rt_M.large</td>
+<td align="right">1</td>
+</tr>
+<tr>
+<td align="left"></td>
+<td align="left">rt_M.small</td>
+<td align="right">1</td>
+</tr>
+<tr>
+<td align="left">Reserved</td>
+<td align="left">rt_F</td>
+<td align="right">1-(number of reserved nodes)</td>
+</tr>
+<tr>
+<td align="left"></td>
+<td align="left">rt_G.large</td>
+<td align="right">1</td>
+</tr>
+<tr>
+<td align="left"></td>
+<td align="left">rt_G.small</td>
+<td align="right">1</td>
+</tr>
+<tr>
+<td align="left"></td>
+<td align="left">rt_C.large</td>
+<td align="right">1</td>
+</tr>
+<tr>
+<td align="left"></td>
+<td align="left">rt_C.small</td>
+<td align="right">1</td>
+</tr>
+<tr>
+<td align="left"></td>
+<td align="left">rt_AF</td>
+<td align="right">1-(number of reserved nodes)</td>
+</tr>
+<tr>
+<td align="left"></td>
+<td align="left">rt_AG.small</td>
+<td align="right">1</td>
+</tr>
+</tbody>
+</table>
+<h3 id="elapsed-time-and-node-time-product-limits">Elapsed time and node-time product limits</h3>
+<p>There is an elapsed time limit (executable time limit) for jobs depending on the job service and resource type. The upper limit and default values are shown below.</p>
+<table>
+<thead>
+<tr>
+<th align="left">Service</th>
+<th align="left">Resource type name</th>
+<th align="left">Limit of elapsed time (upper limit/default)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">On-demand</td>
+<td align="left">rt_F, rt_AF</td>
+<td align="left">12:00:00/1:00:00</td>
+</tr>
+<tr>
+<td align="left"></td>
+<td align="left">rt_G.large, rt_C.large, rt_M.large</td>
+<td align="left">12:00:00/1:00:00</td>
+</tr>
+<tr>
+<td align="left"></td>
+<td align="left">rt_G.small, rt_C.small, rt_AG.small, rt_M.small</td>
+<td align="left">12:00:00/1:00:00</td>
+</tr>
+<tr>
+<td align="left">Spot</td>
+<td align="left">rt_F, rt_AF</td>
+<td align="left">72:00:00/1:00:00</td>
+</tr>
+<tr>
+<td align="left"></td>
+<td align="left">rt_G.large, rt_C.large, rt_M.large, rt_M.small</td>
+<td align="left">72:00:00/1:00:00</td>
+</tr>
+<tr>
+<td align="left"></td>
+<td align="left">rt_G.small, rt_C.small, rt_AG.small</td>
+<td align="left">168:00:00/1:00:00</td>
+</tr>
+<tr>
+<td align="left">Reserved</td>
+<td align="left">rt_F, rt_AF</td>
+<td align="left">unlimited</td>
+</tr>
+<tr>
+<td align="left"></td>
+<td align="left">rt_G.large, rt_C.large</td>
+<td align="left">unlimited</td>
+</tr>
+<tr>
+<td align="left"></td>
+<td align="left">rt_G.small, rt_C.small, rt_AG.small</td>
+<td align="left">unlimited</td>
+</tr>
+</tbody>
+</table>
+<p>In addition, when executing a job that uses multiple nodes in On-demand or Spot services, there are the following restrictions on the node-time product (execution time &times; number of used nodes).</p>
+<table>
+<thead>
+<tr>
+<th align="left">Service</th>
+<th align="right">max value of node-hour</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">On-demand</td>
+<td align="right">12 nodes &middot; hours</td>
+</tr>
+<tr>
+<td align="left">Spot: Compute Node (V), Memory-Intensive Node</td>
+<td align="right">2304 nodes &middot; hours</td>
+</tr>
+<tr>
+<td align="left">Spot: Compute Node (A)</td>
+<td align="right">288 nodes &middot; hours</td>
+</tr>
+</tbody>
+</table>
+<h3 id="limitation-on-the-number-of-job-submissions-and-executions">Limitation on the number of job submissions and executions</h3>
+<p>The job limit of submission and execution for the job service are as follows. 
+The number of the submitted jobs to the reserved node is included in the number of unfinished/running jobs as well as other On-demand/Spot jobs and are affected by the limit.</p>
+<table>
+<thead>
+<tr>
+<th align="left">Limitations</th>
+<th align="left">Limits</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">The maximum number of tasks within an array job</td>
+<td align="left">75000</td>
+</tr>
+<tr>
+<td align="left">The maximum number of any user's unfinished jobs at the same time</td>
+<td align="left">1000</td>
+</tr>
+<tr>
+<td align="left">The maximum number of any user's running jobs at the same time</td>
+<td align="left">200</td>
+</tr>
+</tbody>
+</table>
+<h3 id="execution-priority">Execution Priority</h3>
+<p>Each job service allows you to specify a priority when running a job, as follows:</p>
+<table>
+<thead>
+<tr>
+<th align="left">Service</th>
+<th align="left">Description</th>
+<th align="left">POSIX priority</th>
+<th align="left">POSIX priority coefficient</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">On-demand</td>
+<td align="left">-450</td>
+<td align="left">default (unchangable)</td>
+<td align="left">1.0</td>
+</tr>
+<tr>
+<td align="left">Spot</td>
+<td align="left">-500</td>
+<td align="left">default</td>
+<td align="left">1.0</td>
+</tr>
+<tr>
+<td align="left"></td>
+<td align="left">-400</td>
+<td align="left">high priority</td>
+<td align="left">1.5</td>
+</tr>
+<tr>
+<td align="left">Reserved</td>
+<td align="left">-500</td>
+<td align="left">default (unchangable)</td>
+<td align="left">NA</td>
+</tr>
+</tbody>
+</table>
+<p>In On-demand service, the priority is fixed at <code>-450</code> and cannot be changed.</p>
+<p>In Spot service, you can specify <code>-400</code> to your job, so as to execute it in higher priority to other jobs. However, you will be charged according to the POSIX priority coefficient.</p>
+<p>In Reserved service, the priority is fixed at <code>-500</code> and cannot be changed for both interactive and batch jobs.</p>
+<h2 id="job-execution-options">Job Execution Options</h2>
+<p>Use <code>qrsh</code> command to run interactive jobs and the <code>qsub</code> command to run batch jobs.</p>
+<p>The major options of the <code>qrsh</code> and the <code>qsub</code> commands are follows.</p>
+<table>
+<thead>
+<tr>
+<th align="left">Option</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">-g <em>group</em></td>
+<td align="left">Specify ABCI user group</td>
+</tr>
+<tr>
+<td align="left">-l <em>resource_type</em>=<em>number</em></td>
+<td align="left">Specify resource type (mandatory)</td>
+</tr>
+<tr>
+<td align="left">-l h_rt=[<em>HH:MM:</em>]<em>SS</em></td>
+<td align="left">Specify elapsed time by [<em>HH:MM:</em>]<em>SS</em>. When execution time of job exceed specified time, job is rejected.</td>
+</tr>
+<tr>
+<td align="left">-N <em>name</em></td>
+<td align="left">Specify job name. default is name of job script.</td>
+</tr>
+<tr>
+<td align="left">-o <em>stdout_name</em></td>
+<td align="left">Specify standard output stream of job</td>
+</tr>
+<tr>
+<td align="left">-p <em>priority</em></td>
+<td align="left">Specify POSIX priority for Spot service</td>
+</tr>
+<tr>
+<td align="left">-e <em>stderr_name</em></td>
+<td align="left">Specify standard error stream of job</td>
+</tr>
+<tr>
+<td align="left">-j y</td>
+<td align="left">Specify standard error stream is merged into standard output stream</td>
+</tr>
+<tr>
+<td align="left">-m a</td>
+<td align="left">Mail is sent when job is aborted</td>
+</tr>
+<tr>
+<td align="left">-m b</td>
+<td align="left">Mail is sent when job is started</td>
+</tr>
+<tr>
+<td align="left">-m e</td>
+<td align="left">Mail is sent when job is finished</td>
+</tr>
+<tr>
+<td align="left">-t <em>start</em>[<em>-end</em>[<em>:step</em>]]</td>
+<td align="left">Specify task ID of array job. The suboption is <em>start_number</em>[-<em>end_number</em>[<em>:step_size</em>]]</td>
+</tr>
+<tr>
+<td align="left">-hold_jid <em>job_id</em></td>
+<td align="left">Specify job ID having dependency. The submitted job is not executed until dependent job finished. When this option is used by <code>qrsh</code> command, the command must be specified as an argument.</td>
+</tr>
+<tr>
+<td align="left">-ar <em>ar_id</em></td>
+<td align="left">Specify reserved ID (AR-ID), when using reserved compute node</td>
+</tr>
+</tbody>
+</table>
+<p>In addition, the following options can be used as extended options:</p>
+<table>
+<thead>
+<tr>
+<th align="left">Option</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">-l USE_SSH=<em>1</em><br>-v SSH_PORT=<em>port</em></td>
+<td align="left">Enable SSH login to the compute nodes. See <a href="../appendix/ssh-access/">SSH Access to Compute Nodes</a> for details.</td>
+</tr>
+<tr>
+<td align="left">-l USE_BEEOND=<em>1</em><br>-v BEEOND_METADATA_SERVER=<em>num</em><br>-v BEEOND_STORAGE_SERVER=<em>num</em></td>
+<td align="left">Submit a job with using BeeGFS On Demand (BeeOND). See <a href="../storage/#beeond-storage">Using as a BeeOND storage</a> for details.</td>
+</tr>
+<tr>
+<td align="left">-v GPU_COMPUTE_MODE=<em>mode</em></td>
+<td align="left">Change GPU Compute Mode. See <a href="../gpu/#changing-gpu-compute-mode">Changing GPU Compute Mode</a> for details.</td>
+</tr>
+<tr>
+<td align="left">-l docker<br>-l docker_images</td>
+<td align="left">Submit a job with a Docker container. See <a href="../containers/#docker">Docker</a> for details.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="interactive-jobs">Interactive Jobs</h2>
+<p>To run an interactive job, use the <code>qrsh</code> command.</p>
+<div class="codehilite"><pre><span></span><code><span class="err">$</span><span class="w"> </span><span class="n">qrsh</span><span class="w"> </span><span class="o">-</span><span class="n">g</span><span class="w"> </span><span class="k">group</span><span class="w"> </span><span class="o">-</span><span class="n">l</span><span class="w"> </span><span class="n">resource_type</span><span class="o">=</span><span class="n">number</span><span class="w"> </span><span class="o">[</span><span class="n">option</span><span class="o">]</span><span class="w"></span>
+</code></pre></div>
+
+<p>Example) Executing an interactive job (On-demand service)</p>
+<div class="codehilite"><pre><span></span><code><span class="o">[</span><span class="n">username@es1 ~</span><span class="o">]</span><span class="err">$</span><span class="w"> </span><span class="n">qrsh</span><span class="w"> </span><span class="o">-</span><span class="n">g</span><span class="w"> </span><span class="n">grpname</span><span class="w"> </span><span class="o">-</span><span class="n">l</span><span class="w"> </span><span class="n">rt_F</span><span class="o">=</span><span class="mi">1</span><span class="w"> </span><span class="o">-</span><span class="n">l</span><span class="w"> </span><span class="n">h_rt</span><span class="o">=</span><span class="mi">1</span><span class="err">:</span><span class="mi">00</span><span class="err">:</span><span class="mi">00</span><span class="w"></span>
+<span class="o">[</span><span class="n">username@g0001 ~</span><span class="o">]</span><span class="err">$</span><span class="w"> </span>
+</code></pre></div>
+
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>If ABCI point is insufficient when executing an interactive job with On-demand service, the execution is failed.</p>
+</div>
+<p>To execute an application using X-Window, first you need to login with the X forwading option (-X or -Y option) as follows:</p>
+<div class="codehilite"><pre><span></span><code>[yourpc ~]$ ssh -XC -p 10022 -l username localhost
+</code></pre></div>
+
+<p>After that, run an interactive job with specifying <code>-pty yes -display $DISPLAY -v TERM /bin/bash</code>:</p>
+<div class="codehilite"><pre><span></span><code><span class="p">[</span><span class="n">username</span><span class="o">@</span><span class="n">es1</span> <span class="o">~</span><span class="p">]</span><span class="o">$</span> <span class="n">qrsh</span> <span class="o">-</span><span class="n">g</span> <span class="n">grpname</span> <span class="o">-</span><span class="n">l</span> <span class="n">rt_F</span><span class="o">=</span><span class="m">1</span> <span class="o">-</span><span class="n">l</span> <span class="n">h_rt</span><span class="o">=</span><span class="m">1</span><span class="o">:</span><span class="m">00</span><span class="o">:</span><span class="m">00</span> <span class="o">-</span><span class="n">pty</span> <span class="n">yes</span> <span class="o">-</span><span class="n">display</span> <span class="o">$</span><span class="n">DISPLAY</span> <span class="o">-</span><span class="n">v</span> <span class="n">TERM</span> <span class="o">/</span><span class="n">bin</span><span class="o">/</span><span class="n">bash</span>
+<span class="p">[</span><span class="n">username</span><span class="o">@</span><span class="n">g0001</span> <span class="o">~</span><span class="p">]</span><span class="o">$</span> <span class="n">xterm</span> <span class="o">&lt;-</span> <span class="n">execute</span> <span class="n">X</span> <span class="n">application</span>
+</code></pre></div>
+
+<h2 id="batch-jobs">Batch Jobs</h2>
+<p>To run a batch job on the ABCI System, you need to make a job script in addition to execution program.
+The job script is described job execute option, such as resource type, elapsed time limit, etc., and executing command sequence.</p>
+<div class="codehilite"><pre><span></span><code><span class="ch">#!/bin/bash</span>
+
+<span class="c1">#$ -l rt_F=1</span>
+<span class="c1">#$ -l h_rt=1:23:45</span>
+<span class="c1">#$ -j y</span>
+<span class="c1">#$ -cwd</span>
+
+<span class="o">[</span>Initialization of Environment Modules<span class="o">]</span>
+<span class="o">[</span>Setting of Environment Modules<span class="o">]</span>
+<span class="o">[</span>Executing program<span class="o">]</span>
+</code></pre></div>
+
+<p>Example) Sample job script executing program with CUDA</p>
+<div class="codehilite"><pre><span></span><code><span class="ch">#!/bin/bash</span>
+
+<span class="c1">#$-l rt_F=1</span>
+<span class="c1">#$-j y</span>
+<span class="c1">#$-cwd</span>
+
+<span class="nb">source</span> /etc/profile.d/modules.sh
+module load cuda/9.2/9.2.88.1
+./a.out
+</code></pre></div>
+
+<h3 id="submit-a-batch-job">Submit a batch job</h3>
+<p>To submit a batch job, use the <code>qsub</code> command.</p>
+<div class="codehilite"><pre><span></span><code><span class="err">$</span><span class="w"> </span><span class="n">qsub</span><span class="w"> </span><span class="o">-</span><span class="n">g</span><span class="w"> </span><span class="k">group</span><span class="w"> </span><span class="o">[</span><span class="n">option</span><span class="o">]</span><span class="w"> </span><span class="n">job_script</span><span class="w"></span>
+</code></pre></div>
+
+<p>Example) Submission job script run.sh as a batch job (Spot service)</p>
+<div class="codehilite"><pre><span></span><code><span class="o">[</span><span class="n">username@es1 ~</span><span class="o">]</span><span class="err">$</span><span class="w"> </span><span class="n">qsub</span><span class="w"> </span><span class="o">-</span><span class="n">g</span><span class="w"> </span><span class="n">grpname</span><span class="w"> </span><span class="n">run</span><span class="p">.</span><span class="n">sh</span><span class="w"></span>
+<span class="n">Your</span><span class="w"> </span><span class="n">job</span><span class="w"> </span><span class="mi">12345</span><span class="w"> </span><span class="p">(</span><span class="ss">&quot;run.sh&quot;</span><span class="p">)</span><span class="w"> </span><span class="n">has</span><span class="w"> </span><span class="n">been</span><span class="w"> </span><span class="n">submitted</span><span class="w"></span>
+</code></pre></div>
+
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>The <code>-g</code> option cannot specify in job script.</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>If ABCI point is insufficient when executing a batch job with Spot service, the execution is failed.</p>
+</div>
+<h3 id="show-the-status-of-batch-jobs">Show the status of batch jobs</h3>
+<p>To show the current status of batch jobs, use the <code>qstat</code> command.</p>
+<div class="codehilite"><pre><span></span><code><span class="err">$</span><span class="w"> </span><span class="n">qstat</span><span class="w"> </span><span class="o">[</span><span class="n">option</span><span class="o">]</span><span class="w"></span>
+</code></pre></div>
+
+<p>The major options of the <code>qstat</code> command are follows.</p>
+<table>
+<thead>
+<tr>
+<th align="left">Option</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">-r</td>
+<td align="left">Display resource information about job</td>
+</tr>
+<tr>
+<td align="left">-j</td>
+<td align="left">Display additional information about job</td>
+</tr>
+</tbody>
+</table>
+<p>Example)</p>
+<div class="codehilite"><pre><span></span><code><span class="k">[</span><span class="c">username@es1 ~</span><span class="k">]</span><span class="c">$ qstat</span>
+<span class="c">job</span><span class="nb">-</span><span class="c">ID     prior   name       user         state submit/start at     queue                          jclass                         slots ja</span><span class="nb">-</span><span class="c">task</span><span class="nb">-</span><span class="c">ID</span>
+<span class="nb">------------------------------------------------------------------------------------------------------------------------------------------------</span><span class="c"></span>
+<span class="c">     12345 0</span><span class="nt">.</span><span class="c">25586 run</span><span class="nt">.</span><span class="c">sh     username     r     06/27/2018 21:14:49 gpu@g0001                                                        80</span>
+</code></pre></div>
+
+<table>
+<thead>
+<tr>
+<th align="left">Field</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">job-ID</td>
+<td align="left">Job ID</td>
+</tr>
+<tr>
+<td align="left">prior</td>
+<td align="left">Job priority</td>
+</tr>
+<tr>
+<td align="left">name</td>
+<td align="left">Job name</td>
+</tr>
+<tr>
+<td align="left">user</td>
+<td align="left">Job owner</td>
+</tr>
+<tr>
+<td align="left">state</td>
+<td align="left">Job status (r: running, qw: waiting, d: delete, E: error)</td>
+</tr>
+<tr>
+<td align="left">submit/start at</td>
+<td align="left">Job submission/start time</td>
+</tr>
+<tr>
+<td align="left">queue</td>
+<td align="left">Queue name</td>
+</tr>
+<tr>
+<td align="left">jclass</td>
+<td align="left">Job class name</td>
+</tr>
+<tr>
+<td align="left">slots</td>
+<td align="left">Number of job slot (number of node x 80)</td>
+</tr>
+<tr>
+<td align="left">ja-task-ID</td>
+<td align="left">Task ID of array job</td>
+</tr>
+</tbody>
+</table>
+<h3 id="delete-a-batch-job">Delete a batch job</h3>
+<p>To delete a batch job, use the <code>qdel</code> command.</p>
+<div class="codehilite"><pre><span></span><code>$ qdel job_ID
+</code></pre></div>
+
+<p>Example) Delete a batch job</p>
+<div class="codehilite"><pre><span></span><code><span class="k">[</span><span class="c">username@es1 ~</span><span class="k">]</span><span class="c">$ qstat</span>
+<span class="c">job</span><span class="nb">-</span><span class="c">ID     prior   name       user         state submit/start at     queue                          jclass                         slots ja</span><span class="nb">-</span><span class="c">task</span><span class="nb">-</span><span class="c">ID</span>
+<span class="nb">------------------------------------------------------------------------------------------------------------------------------------------------</span><span class="c"></span>
+<span class="c">     12345 0</span><span class="nt">.</span><span class="c">25586 run</span><span class="nt">.</span><span class="c">sh     username     r     06/27/2018 21:14:49 gpu@g0001                                                        80</span>
+<span class="k">[</span><span class="c">username@es1 ~</span><span class="k">]</span><span class="c">$ qdel 12345</span>
+<span class="c">username has registered the job 12345 for deletion</span>
+</code></pre></div>
+
+<h3 id="stdout-and-stderr-of-batch-jobs">Stdout and Stderr of Batch Jobs</h3>
+<p>Standard output file and standard error output file are written to job execution directory, or to files specified at job submission.
+Standard output generated during a job execution is written to a standard output file and error messages generated during the
+job execution to a standard error output file if no standard output and standard err output files are specified at job submission,
+the following files are generated for output.</p>
+<ul>
+<li><em>JOB_NAME</em>.o<em>JOB_ID</em>  ---  Standard output file</li>
+<li><em>JOB_NAME</em>.e<em>JOB_ID</em>  ---  Standard error output file</li>
+</ul>
+<h3 id="report-batch-job-accounting">Report batch job accounting</h3>
+<p>To report batch job accounting, use the <code>qacct</code> command.</p>
+<div class="codehilite"><pre><span></span><code><span class="err">$</span><span class="w"> </span><span class="n">qacct</span><span class="w"> </span><span class="o">[</span><span class="n">options</span><span class="o">]</span><span class="w"></span>
+</code></pre></div>
+
+<p>The major options of the <code>qacct</code> command are follows.</p>
+<table>
+<thead>
+<tr>
+<th align="left">Option</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">-g <em>group</em></td>
+<td align="left">Display accounting information of jobs owend by <em>group</em></td>
+</tr>
+<tr>
+<td align="left">-j <em>job_id</em></td>
+<td align="left">Display accounting information of <em>job_id</em></td>
+</tr>
+<tr>
+<td align="left">-t <em>n</em>[<em>-m</em>[<em>:s</em>]]</td>
+<td align="left">Specify task ID of array job. Suboption is <em>start_number</em>[-<em>end_number</em>[<em>:step_size</em>]]. Only available with the -j option.</td>
+</tr>
+</tbody>
+</table>
+<p>Example) Report batch job accounting</p>
+<div class="codehilite"><pre><span></span><code><span class="p">[</span><span class="n">username</span><span class="err">@</span><span class="n">es1</span> <span class="o">~</span><span class="p">]</span><span class="o">$</span> <span class="n">qacct</span> <span class="o">-</span><span class="n">j</span> <span class="mi">12345</span>
+<span class="o">==============================================================</span>
+<span class="n">qname</span>        <span class="n">gpu</span>
+<span class="n">hostname</span>     <span class="n">g0001</span>
+<span class="n">group</span>        <span class="n">group</span> 
+<span class="n">owner</span>        <span class="n">username</span>
+<span class="n">project</span>      <span class="n">group</span> 
+<span class="n">department</span>   <span class="n">group</span>
+<span class="n">jobname</span>      <span class="n">run</span><span class="o">.</span><span class="n">sh</span>
+<span class="n">jobnumber</span>    <span class="mi">12345</span>
+<span class="n">taskid</span>       <span class="n">undefined</span>
+<span class="n">account</span>      <span class="n">username</span>
+<span class="n">priority</span>     <span class="mi">0</span>
+<span class="n">cwd</span>          <span class="n">NONE</span>
+<span class="n">submit_host</span>  <span class="n">es1</span><span class="o">.</span><span class="n">abci</span><span class="o">.</span><span class="n">local</span>
+<span class="n">submit_cmd</span>   <span class="o">/</span><span class="n">home</span><span class="o">/</span><span class="n">system</span><span class="o">/</span><span class="n">uge</span><span class="o">/</span><span class="n">latest</span><span class="o">/</span><span class="n">bin</span><span class="o">/</span><span class="n">lx</span><span class="o">-</span><span class="n">amd64</span><span class="o">/</span><span class="n">qsub</span> <span class="o">-</span><span class="n">P</span> <span class="n">username</span> <span class="o">-</span><span class="n">l</span> <span class="n">h_rt</span><span class="o">=</span><span class="mi">600</span> <span class="o">-</span><span class="n">l</span> <span class="n">rt_F</span><span class="o">=</span><span class="mi">1</span>
+<span class="n">qsub_time</span>    <span class="mi">07</span><span class="o">/</span><span class="mi">01</span><span class="o">/</span><span class="mi">2018</span> <span class="mi">11</span><span class="p">:</span><span class="mi">55</span><span class="p">:</span><span class="mf">14.706</span>
+<span class="n">start_time</span>   <span class="mi">07</span><span class="o">/</span><span class="mi">01</span><span class="o">/</span><span class="mi">2018</span> <span class="mi">11</span><span class="p">:</span><span class="mi">55</span><span class="p">:</span><span class="mf">18.170</span>
+<span class="n">end_time</span>     <span class="mi">07</span><span class="o">/</span><span class="mi">01</span><span class="o">/</span><span class="mi">2018</span> <span class="mi">11</span><span class="p">:</span><span class="mi">55</span><span class="p">:</span><span class="mf">18.190</span>
+<span class="n">granted_pe</span>   <span class="n">perack17</span>
+<span class="n">slots</span>        <span class="mi">80</span>
+<span class="n">failed</span>       <span class="mi">0</span>
+<span class="n">deleted_by</span>   <span class="n">NONE</span>
+<span class="n">exit_status</span>  <span class="mi">0</span>
+<span class="n">ru_wallclock</span> <span class="mf">0.020</span>
+<span class="n">ru_utime</span>     <span class="mf">0.010</span>
+<span class="n">ru_stime</span>     <span class="mf">0.013</span>
+<span class="n">ru_maxrss</span>    <span class="mi">6480</span>
+<span class="n">ru_ixrss</span>     <span class="mi">0</span>
+<span class="n">ru_ismrss</span>    <span class="mi">0</span>
+<span class="n">ru_idrss</span>     <span class="mi">0</span>
+<span class="n">ru_isrss</span>     <span class="mi">0</span>
+<span class="n">ru_minflt</span>    <span class="mi">1407</span>
+<span class="n">ru_majflt</span>    <span class="mi">0</span>
+<span class="n">ru_nswap</span>     <span class="mi">0</span>
+<span class="n">ru_inblock</span>   <span class="mi">0</span>
+<span class="n">ru_oublock</span>   <span class="mi">8</span>
+<span class="n">ru_msgsnd</span>    <span class="mi">0</span>
+<span class="n">ru_msgrcv</span>    <span class="mi">0</span>
+<span class="n">ru_nsignals</span>  <span class="mi">0</span>
+<span class="n">ru_nvcsw</span>     <span class="mi">13</span>
+<span class="n">ru_nivcsw</span>    <span class="mi">1</span>
+<span class="n">wallclock</span>    <span class="mf">3.768</span>
+<span class="n">cpu</span>          <span class="mf">0.022</span>
+<span class="n">mem</span>          <span class="mf">0.000</span>
+<span class="n">io</span>           <span class="mf">0.000</span>
+<span class="n">iow</span>          <span class="mf">0.000</span>
+<span class="n">ioops</span>        <span class="mi">0</span>
+<span class="n">maxvmem</span>      <span class="mf">0.000</span>
+<span class="n">maxrss</span>       <span class="mf">0.000</span>
+<span class="n">maxpss</span>       <span class="mf">0.000</span>
+<span class="n">arid</span>         <span class="n">undefined</span>
+<span class="n">jc_name</span>      <span class="n">NONE</span>
+</code></pre></div>
+
+<p>The major fields of accounting information are follows.
+For more detail, use <code>man sge_accounting</code> command.</p>
+<table>
+<thead>
+<tr>
+<th align="left">Field</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">jobnunmber</td>
+<td align="left">Job ID</td>
+</tr>
+<tr>
+<td align="left">taskid</td>
+<td align="left">Task ID of array job</td>
+</tr>
+<tr>
+<td align="left">qsub_time</td>
+<td align="left">Job submission time</td>
+</tr>
+<tr>
+<td align="left">start_time</td>
+<td align="left">Job start time</td>
+</tr>
+<tr>
+<td align="left">end_time</td>
+<td align="left">Job end time</td>
+</tr>
+<tr>
+<td align="left">failed</td>
+<td align="left">Job end code managed by job scheduler</td>
+</tr>
+<tr>
+<td align="left">exit_status</td>
+<td align="left">Job end status</td>
+</tr>
+<tr>
+<td align="left">wallclock</td>
+<td align="left">Job running time (including pre/post process)</td>
+</tr>
+</tbody>
+</table>
+<h3 id="environment-variables">Environment Variables</h3>
+<p>During job execution, the following environment variables are available for the executing job script/binary.</p>
+<table>
+<thead>
+<tr>
+<th align="left">Variable Name</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">ENVIRONMENT</td>
+<td align="left">Univa Grid Engine fills in BATCH to identify it as an Univa Grid Engine job submitted with qsub.</td>
+</tr>
+<tr>
+<td align="left">JOB_ID</td>
+<td align="left">Job ID</td>
+</tr>
+<tr>
+<td align="left">JOB_NAME</td>
+<td align="left">Name of the Univa Grid Engine job.</td>
+</tr>
+<tr>
+<td align="left">JOB_SCRIPT</td>
+<td align="left">Name of the script, which is currently executed</td>
+</tr>
+<tr>
+<td align="left">NHOSTS</td>
+<td align="left">The number of hosts on which this parallel job is executed</td>
+</tr>
+<tr>
+<td align="left">PE_HOSTFILE</td>
+<td align="left">The absolute path includes hosts, slots and queue name</td>
+</tr>
+<tr>
+<td align="left">RESTARTED</td>
+<td align="left">Indicates if the job was restarted (1) or if it is the first run (0)</td>
+</tr>
+<tr>
+<td align="left">SGE_ARDIR</td>
+<td align="left">Path to the local storage assigned to the reserved service</td>
+</tr>
+<tr>
+<td align="left">SGE_BEEONDDIR</td>
+<td align="left">Path to BeeOND storage allocated when BeeOND storage is utilized</td>
+</tr>
+<tr>
+<td align="left">SGE_JOB_HOSTLIST</td>
+<td align="left">The absolute path includes only hosts assigned by Univa Grid Engine</td>
+</tr>
+<tr>
+<td align="left">SGE_LOCALDIR</td>
+<td align="left">The local storage path assigned by Univa Grid Engine</td>
+</tr>
+<tr>
+<td align="left">SGE_O_WORKDIR</td>
+<td align="left">The working directory path of the job submitter</td>
+</tr>
+<tr>
+<td align="left">SGE_TASK_ID</td>
+<td align="left">Task number of the array job task the job represents (If is not an array task, the variable contains undefined)</td>
+</tr>
+<tr>
+<td align="left">SGE_TASK_FIRST</td>
+<td align="left">Task number of the first array job task</td>
+</tr>
+<tr>
+<td align="left">SGE_TASK_LAST</td>
+<td align="left">Task number of the last array job task</td>
+</tr>
+<tr>
+<td align="left">SGE_TASK_STEPSIZE</td>
+<td align="left">Step size of the array job</td>
+</tr>
+</tbody>
+</table>
+<h2 id="advance-reservation">Advance Reservation</h2>
+<p>In the case of Reserved service, job execution can be scheduled by reserving compute node in advance.</p>
+<p>The maximum number of nodes and the node-time product that can be reserved for this service is "Maximum reserved nodes per reservation" and "Maximum reserved node time per reservtation" in the following table. In addition, in this service, the user can only execute jobs with the maximum number of reserved nodes. Note that there is an upper limit on "Maximum number of nodes can be reserved at once per system" for the entire system, so you may only be able to make reservations that fall below "Maximum reserved nodes per reservation" or you may not be able to make reservations. <a href="#available-resource-types">Each resource types</a> are available for reserved compute nodes.</p>
+<table>
+<thead>
+<tr>
+<th align="left">Item</th>
+<th align="left">Description: Compute Node (V)</th>
+<th align="left">Description: Compute Node (A)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">Minimum reservation days</td>
+<td align="left">1 day</td>
+<td align="left">1 day</td>
+</tr>
+<tr>
+<td align="left">Maximum reservation days</td>
+<td align="left">30 days</td>
+<td align="left">30 days</td>
+</tr>
+<tr>
+<td align="left">Maximum number of nodes can be reserved at once per system</td>
+<td align="left">442 nodes</td>
+<td align="left">50 nodes</td>
+</tr>
+<tr>
+<td align="left">Maximum reserved nodes per reservation</td>
+<td align="left">32 nodes</td>
+<td align="left">16 nodes</td>
+</tr>
+<tr>
+<td align="left">Maximum reserved node time per reservtation</td>
+<td align="left">12,288 node x hour</td>
+<td align="left">6,144 node x hour</td>
+</tr>
+<tr>
+<td align="left">Start time of accept reservation</td>
+<td align="left">10:00 a.m. of 30 days ago</td>
+<td align="left">10:00 a.m. of 30 days ago</td>
+</tr>
+<tr>
+<td align="left">Closing time of accept reservation</td>
+<td align="left">9:00 p.m. of Start reservation of the day before</td>
+<td align="left">9:00 p.m. of Start reservation of the day before</td>
+</tr>
+<tr>
+<td align="left">Canceling reservation accept term</td>
+<td align="left">9:00 p.m. of Start reservation of the day before</td>
+<td align="left">9:00 p.m. of Start reservation of the day before</td>
+</tr>
+<tr>
+<td align="left">Reservation start time</td>
+<td align="left">10:00 a.m. of Reservation start day</td>
+<td align="left">10:00 a.m. of Reservation start day</td>
+</tr>
+<tr>
+<td align="left">Reservation end time</td>
+<td align="left">9:30 a.m. of Reservation end day</td>
+<td align="left">9:30 a.m. of Reservation end day</td>
+</tr>
+</tbody>
+</table>
+<h3 id="make-a-reservation">Make a reservation</h3>
+<p>To make a reservation compute node, use <code>qrsub</code> command or the ABCI User Portal .</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Making reservation of compute node is permitted to a responsible person or a manager.</p>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>You cannot reserve a compute node (A) in the ABCI usage portal.</p>
+</div>
+<div class="codehilite"><pre><span></span><code>$ qrsub options
+</code></pre></div>
+
+<table>
+<thead>
+<tr>
+<th align="left">Option</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">-a <em>YYYYMMDD</em></td>
+<td align="left">Specify start reservation date (format: YYYYMMDD)</td>
+</tr>
+<tr>
+<td align="left">-d <em>days</em></td>
+<td align="left">Specify reservation day. exclusive with -e option</td>
+</tr>
+<tr>
+<td align="left">-e <em>YYYYMMDD</em></td>
+<td align="left">Specify end reservation date (format: YYYYMMDD). exclusive with -d option</td>
+</tr>
+<tr>
+<td align="left">-g <em>group</em></td>
+<td align="left">Specify ABCI UserGroup</td>
+</tr>
+<tr>
+<td align="left">-N <em>name</em></td>
+<td align="left">Specify reservation name. The reservation name can be alphanumeric and special characters <code>=+-_.</code>. The maximum length is 64 characters. However, the first letter must not be a number.</td>
+</tr>
+<tr>
+<td align="left">-n <em>nnode</em></td>
+<td align="left">Specify the number of nodes.</td>
+</tr>
+<tr>
+<td align="left">-l <em>resource_type</em></td>
+<td align="left">Specifies the resource type to reserve. ( default: rt_F )</td>
+</tr>
+</tbody>
+</table>
+<p>Example) Make a reservation 4 compute nodes(V) from 2018/07/05 to 1 week (7 days)</p>
+<div class="codehilite"><pre><span></span><code><span class="o">[</span><span class="n">username@es1 ~</span><span class="o">]</span><span class="err">$</span><span class="w"> </span><span class="n">qrsub</span><span class="w"> </span><span class="o">-</span><span class="n">a</span><span class="w"> </span><span class="mi">20180705</span><span class="w"> </span><span class="o">-</span><span class="n">d</span><span class="w"> </span><span class="mi">7</span><span class="w"> </span><span class="o">-</span><span class="n">g</span><span class="w"> </span><span class="n">grpname</span><span class="w"> </span><span class="o">-</span><span class="n">n</span><span class="w"> </span><span class="mi">4</span><span class="w"> </span><span class="o">-</span><span class="n">N</span><span class="w"> </span><span class="ss">&quot;Reserve_for_AI&quot;</span><span class="w"></span>
+<span class="n">Your</span><span class="w"> </span><span class="n">advance</span><span class="w"> </span><span class="n">reservation</span><span class="w"> </span><span class="mi">12345</span><span class="w"> </span><span class="n">has</span><span class="w"> </span><span class="n">been</span><span class="w"> </span><span class="n">granted</span><span class="w"></span>
+</code></pre></div>
+
+<p>The ABCI points are consumed when complete reservation.</p>
+<p>Example) Make a reservation 4 compute nodes(A) from 2021/07/05 to 1 week (7 days)</p>
+<div class="codehilite"><pre><span></span><code><span class="o">[</span><span class="n">username@es1 ~</span><span class="o">]</span><span class="err">$</span><span class="w"> </span><span class="n">qrsub</span><span class="w"> </span><span class="o">-</span><span class="n">a</span><span class="w"> </span><span class="mi">20210705</span><span class="w"> </span><span class="o">-</span><span class="n">d</span><span class="w"> </span><span class="mi">7</span><span class="w"> </span><span class="o">-</span><span class="n">g</span><span class="w"> </span><span class="n">grpname</span><span class="w"> </span><span class="o">-</span><span class="n">n</span><span class="w"> </span><span class="mi">4</span><span class="w"> </span><span class="o">-</span><span class="n">N</span><span class="w"> </span><span class="ss">&quot;Reserve_for_AI&quot;</span><span class="w"> </span><span class="o">-</span><span class="n">l</span><span class="w"> </span><span class="n">rt_AF</span><span class="w"></span>
+<span class="n">Your</span><span class="w"> </span><span class="n">advance</span><span class="w"> </span><span class="n">reservation</span><span class="w"> </span><span class="mi">12345</span><span class="w"> </span><span class="n">has</span><span class="w"> </span><span class="n">been</span><span class="w"> </span><span class="n">granted</span><span class="w"></span>
+</code></pre></div>
+
+<h3 id="show-the-status-of-reservations">Show the status of reservations</h3>
+<p>To show the current status of reservations, use the <code>qrstat</code> command or the ABCI User Portal.</p>
+<p>Example)</p>
+<div class="codehilite"><pre><span></span><code><span class="k">[</span><span class="c">username@es1 ~</span><span class="k">]</span><span class="c">$ qrstat</span>
+<span class="c">ar</span><span class="nb">-</span><span class="c">id      name       owner        state start at             end at               duration    sr</span>
+<span class="nb">----------------------------------------------------------------------------------------------------</span><span class="c"></span>
+<span class="c">     12345 Reserve_fo root         w     07/05/2018 10:00:00  07/12/2018 09:30:00  167:30:00    false</span>
+</code></pre></div>
+
+<table>
+<thead>
+<tr>
+<th align="left">Field</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">ar-id</td>
+<td align="left">Reservation ID (AR-ID)</td>
+</tr>
+<tr>
+<td align="left">name</td>
+<td align="left">Reserve name</td>
+</tr>
+<tr>
+<td align="left">owner</td>
+<td align="left"><code>root</code> is always displayed</td>
+</tr>
+<tr>
+<td align="left">state</td>
+<td align="left">Status of reservation</td>
+</tr>
+<tr>
+<td align="left">start at</td>
+<td align="left">Start reservation date (start time is 10:00 a.m. at all time)</td>
+</tr>
+<tr>
+<td align="left">end at</td>
+<td align="left">End reservation date (end time is 9:30 a.m. at all time)</td>
+</tr>
+<tr>
+<td align="left">duration</td>
+<td align="left">Reservation term (hhh:mm:ss)</td>
+</tr>
+<tr>
+<td align="left">sr</td>
+<td align="left"><code>false</code> is always displayed</td>
+</tr>
+</tbody>
+</table>
+<p>If you want to show the number of nodes that can be reserved, you need to access User Portal, or use<code>qrstat</code> command with <code>--available</code> option.</p>
+<p>Checking the Number of Reservable Nodes for Compute Nodes(V)</p>
+<div class="codehilite"><pre><span></span><code><span class="o">[</span><span class="n">username@es1 ~</span><span class="o">]</span><span class="err">$</span><span class="w"> </span><span class="n">qrstat</span><span class="w"> </span><span class="o">--</span><span class="n">available</span><span class="w"></span>
+<span class="mi">06</span><span class="o">/</span><span class="mi">27</span><span class="o">/</span><span class="mi">2018</span><span class="w">  </span><span class="mi">441</span><span class="w"></span>
+<span class="mi">07</span><span class="o">/</span><span class="mi">05</span><span class="o">/</span><span class="mi">2018</span><span class="w">  </span><span class="mi">432</span><span class="w"></span>
+<span class="mi">07</span><span class="o">/</span><span class="mi">06</span><span class="o">/</span><span class="mi">2018</span><span class="w">  </span><span class="mi">434</span><span class="w"></span>
+</code></pre></div>
+
+<p>Checking the Number of Reservable Nodes for Compute Nodes(A)</p>
+<div class="codehilite"><pre><span></span><code><span class="o">[</span><span class="n">username@es1 ~</span><span class="o">]</span><span class="err">$</span><span class="w"> </span><span class="n">qrstat</span><span class="w"> </span><span class="o">--</span><span class="n">available</span><span class="w"> </span><span class="o">-</span><span class="n">l</span><span class="w"> </span><span class="n">rt_AF</span><span class="w"></span>
+<span class="mi">06</span><span class="o">/</span><span class="mi">27</span><span class="o">/</span><span class="mi">2021</span><span class="w">   </span><span class="mi">41</span><span class="w"></span>
+<span class="mi">07</span><span class="o">/</span><span class="mi">05</span><span class="o">/</span><span class="mi">2021</span><span class="w">   </span><span class="mi">32</span><span class="w"></span>
+<span class="mi">07</span><span class="o">/</span><span class="mi">06</span><span class="o">/</span><span class="mi">2021</span><span class="w">   </span><span class="mi">34</span><span class="w"></span>
+</code></pre></div>
+
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The no reservation day is not printed.</p>
+</div>
+<h3 id="cancel-a-reservation">Cancel a reservation</h3>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Canceling reservation is permitted to a responsible person or a manager.</p>
+</div>
+<p>To cancel a reservation, use the <code>qrdel</code> command or the ABCI User Portal. When canceling reservation with qrdel command, multiple reservation IDs can be specified as comma separated list. If you specify a reservation ID that does not exist or a reservation ID that you do not have deletion permission for, an error occurs and any reservations are not canceled.</p>
+<p>Example) Cancel a reservation</p>
+<div class="codehilite"><pre><span></span><code><span class="o">[</span><span class="n">username@es1 ~</span><span class="o">]</span><span class="err">$</span><span class="w"> </span><span class="n">qrdel</span><span class="w"> </span><span class="mi">12345</span><span class="p">,</span><span class="mi">12346</span><span class="w"></span>
+</code></pre></div>
+
+<h3 id="how-to-use-reserved-node">How to use reserved node</h3>
+<p>To run a job using reserved compute nodes, specify reservation ID with the <code>-ar</code> option.</p>
+<p>Example) Execute an interactive job on compute node reserved with reservation ID <code>12345</code>.</p>
+<div class="codehilite"><pre><span></span><code><span class="o">[</span><span class="n">username@es1 ~</span><span class="o">]</span><span class="err">$</span><span class="w"> </span><span class="n">qrsh</span><span class="w"> </span><span class="o">-</span><span class="n">g</span><span class="w"> </span><span class="n">grpname</span><span class="w"> </span><span class="o">-</span><span class="n">ar</span><span class="w"> </span><span class="mi">12345</span><span class="w"> </span><span class="o">-</span><span class="n">l</span><span class="w"> </span><span class="n">rt_F</span><span class="o">=</span><span class="mi">1</span><span class="w"> </span><span class="o">-</span><span class="n">l</span><span class="w"> </span><span class="n">h_rt</span><span class="o">=</span><span class="mi">1</span><span class="err">:</span><span class="mi">00</span><span class="err">:</span><span class="mi">00</span><span class="w"></span>
+<span class="o">[</span><span class="n">username@g0001 ~</span><span class="o">]</span><span class="err">$</span><span class="w"> </span>
+</code></pre></div>
+
+<p>Example) Submit a batch job on compute node reserved with reservation ID <code>12345</code>.</p>
+<div class="codehilite"><pre><span></span><code><span class="o">[</span><span class="n">username@es1 ~</span><span class="o">]</span><span class="err">$</span><span class="w"> </span><span class="n">qsub</span><span class="w"> </span><span class="o">-</span><span class="n">g</span><span class="w"> </span><span class="n">grpname</span><span class="w"> </span><span class="o">-</span><span class="n">ar</span><span class="w"> </span><span class="mi">12345</span><span class="w"> </span><span class="n">run</span><span class="p">.</span><span class="n">sh</span><span class="w"></span>
+<span class="n">Your</span><span class="w"> </span><span class="n">job</span><span class="w"> </span><span class="mi">12345</span><span class="w"> </span><span class="p">(</span><span class="ss">&quot;run.sh&quot;</span><span class="p">)</span><span class="w"> </span><span class="n">has</span><span class="w"> </span><span class="n">been</span><span class="w"> </span><span class="n">submitted</span><span class="w"></span>
+</code></pre></div>
+
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<ul>
+<li>You must specify ABCI group that you specified when making reservation.</li>
+<li>The batch job can be submitted immediately after making reservation, until reservation start time.</li>
+<li>The batch job submitted before resevation start time can be deleted with <code>qdel</code> command.</li>
+<li>If a reservation is deleted before reservation start time, batch jobs submitted to the reservation will be deleted.</li>
+<li>At reservation end time, running jobs are killed.</li>
+</ul>
+</div>
+<h3 id="cautions-for-using-reserved-node">Cautions for Using reserved node</h3>
+<p>Advance Reservation does not guarantee the health of the compute node for the duration. Some reserved compute nodes may become unavailable while they are in use. Please check the following points.</p>
+<ul>
+<li>To check the availability status of the reserved compute nodes, using the <code>qrstat -ar ar_id</code> command. </li>
+<li>If some reserved compute nodes appear unavailable status the day before the reservation start date, consider canceling the reservation and making the reservation again. </li>
+<li>For example, if the compute node becomes unavailable during the reservation period, please check <a href="../contact/">Contact</a> and contact <a href="&#109;&#97;&#105;&#108;&#116;&#111;&#58;&#113;&#97;&#64;&#97;&#98;&#99;&#105;&#46;&#97;&#105;">&#113;&#97;&#64;&#97;&#98;&#99;&#105;&#46;&#97;&#105;</a>.</li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<ul>
+<li>Reservation can be canceled by 9:00 p.m. of the day before the reservation starts.  </li>
+<li>Reservation cannot make when there is no free compute node.  </li>
+<li>Hardware failures are handled properly. Please refrain from inquiring about unavailability before the day before the reservation starts.  </li>
+<li>Requests to change the number of reserved compute nodes or to extend the reservation period can not be accepted.</li>
+</ul>
+</div>
+<p>Example) g0001 is available, g0002 is unavailable</p>
+<div class="codehilite"><pre><span></span><code><span class="o">[</span><span class="n">username@es1 ~</span><span class="o">]</span><span class="err">$</span><span class="w"> </span><span class="n">qrsub</span><span class="w"> </span><span class="o">-</span><span class="n">a</span><span class="w"> </span><span class="mi">20180705</span><span class="w"> </span><span class="o">-</span><span class="n">d</span><span class="w"> </span><span class="mi">7</span><span class="w"> </span><span class="o">-</span><span class="n">g</span><span class="w"> </span><span class="n">grpname</span><span class="w"> </span><span class="o">-</span><span class="n">n</span><span class="w"> </span><span class="mi">2</span><span class="w"> </span><span class="o">-</span><span class="n">N</span><span class="w"> </span><span class="ss">&quot;Reserve_for_AI&quot;</span><span class="w"> </span>
+<span class="n">Your</span><span class="w"> </span><span class="n">advance</span><span class="w"> </span><span class="n">reservation</span><span class="w"> </span><span class="mi">12345</span><span class="w"> </span><span class="n">has</span><span class="w"> </span><span class="n">been</span><span class="w"> </span><span class="n">granted</span><span class="w"></span>
+<span class="o">[</span><span class="n">username@es1 ~</span><span class="o">]</span><span class="err">$</span><span class="w"> </span><span class="n">qrstat</span><span class="w"> </span><span class="o">-</span><span class="n">ar</span><span class="w"> </span><span class="mi">12345</span><span class="w"></span>
+<span class="p">(</span><span class="n">snip</span><span class="p">)</span><span class="w"></span>
+<span class="n">message</span><span class="w">                             </span><span class="n">reserved</span><span class="w"> </span><span class="n">queue</span><span class="w"> </span><span class="n">gpu</span><span class="nv">@g0002</span><span class="w"> </span><span class="k">is</span><span class="w"> </span><span class="n">disabled</span><span class="w"></span>
+<span class="n">message</span><span class="w">                             </span><span class="n">reserved</span><span class="w"> </span><span class="n">queue</span><span class="w"> </span><span class="n">gpu</span><span class="nv">@g0002</span><span class="w"> </span><span class="k">is</span><span class="w"> </span><span class="k">unknown</span><span class="w"></span>
+<span class="n">granted_parallel_environment</span><span class="w">        </span><span class="n">perack01</span><span class="w"></span>
+<span class="n">granted_slots_list</span><span class="w">                  </span><span class="n">gpu</span><span class="nv">@g0001</span><span class="o">=</span><span class="mi">80</span><span class="p">,</span><span class="n">gpu</span><span class="nv">@g0002</span><span class="o">=</span><span class="mi">80</span><span class="w"></span>
+</code></pre></div>
+
+<h2 id="accounting">Accounting</h2>
+<h3 id="on-demand-and-spot-services">On-demand and Spot Services</h3>
+<p>In On-demand and Spot services, when starting a job, the ABCI point scheduled
+for job is calculated by limited value of elapsed time, and subtract processing is executed.
+When a job finishes, the ABCI point is calculated again by actual elapsed time, and repayment process is executed.</p>
+<p>The calculation formula of ABCI point for using On-demand and Spot services is as follows:</p>
+<blockquote>
+<p><a href="#job-services">Service charge coefficient</a><br />
+&times; <a href="#available-resource-types">Resource type charge coefficient</a><br />
+&times; <a href="#execution-priority">POSIX priority charge coefficient</a><br />
+&times; Number of resource type<br />
+&times; max(Elapsed time[sec], Minimum Elapsed time[sec])<br />
+&div; 3600</p>
+</blockquote>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<ul>
+<li>The five and under decimal places is rounding off.</li>
+<li>If the elapsed time of job execution is less than the minimum elapsed time, ABCI point calculated based on the minimum elapsed time.</li>
+</ul>
+</div>
+<h3 id="reserved-service_1">Reserved Service</h3>
+<p>In Reserved service, when completing a reservation, the ABCI point is calculated by
+a period of reservation, end subtract processing is executed.
+The repayment process is not executed unless reservation is cancelled.</p>
+<p>The calculation formula of ABCI point for using Reserved service is follows:</p>
+<blockquote>
+<p>Service charge coefficient<br />
+&times; number of reserved nodes<br />
+&times; number of reserved days<br />
+&times; 24</p>
+</blockquote>
+<div class="footnote">
+<hr />
+<ol>
+<li id="fn:1">
+<p>The sum of /local1 (1590 GB) and /local2 (1850 GB).&#160;<a class="footnote-backref" href="#fnref:1" title="Jump back to footnote 1 in the text">&#8617;</a></p>
+</li>
+</ol>
+</div>
+                
+              
+              
+                
+
+
+              
+            </article>
+          </div>
+        </div>
+        
+      </main>
+      
+        
+<footer class="md-footer">
+  
+    <nav class="md-footer__inner md-grid" aria-label="Footer">
+      
+        <a href="../getting-started/" class="md-footer__link md-footer__link--prev" rel="prev">
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+          </div>
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              Getting Started ABCI
+            </div>
+          </div>
+        </a>
+      
+      
+        <a href="../storage/" class="md-footer__link md-footer__link--next" rel="next">
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              Storage
+            </div>
+          </div>
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4z"/></svg>
+          </div>
+        </a>
+      
+    </nav>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-footer-copyright">
+        
+          <div class="md-footer-copyright__highlight">
+            Copyright &copy; 2021 National Institute of Advanced Industrial Science and Technology (AIST)
+          </div>
+        
+        Made with
+        <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+          Material for MkDocs
+        </a>
+        
+      </div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    <script id="__config" type="application/json">{"base": "..", "features": ["toc.integrate"], "translations": {"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing"}, "search": "../assets/javascripts/workers/search.fe42c31b.min.js", "version": null}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.4ea5477f.min.js"></script>
+      
+    
+  </body>
+</html>

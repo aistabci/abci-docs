@@ -1,0 +1,1619 @@
+
+<!doctype html>
+<html lang="ja" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="ABCI 2.0 User Guide, Japanese version">
+      
+      
+      
+        <meta name="author" content="AIST">
+      
+      
+        <link rel="canonical" href="https://docs.abci.ai/ja/storage/">
+      
+      <link rel="icon" href="../img/favicon.png">
+      <meta name="generator" content="mkdocs-1.1.2, mkdocs-material-7.1.3">
+    
+    
+      
+        <title>ストレージ - ABCI 2.0 User Guide</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.e35208c4.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.ef6f36e2.min.css">
+        
+          
+          
+          <meta name="theme-color" content="#ef5552">
+        
+      
+    
+    
+    
+      
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700%7CRoboto+Mono&display=fallback">
+        <style>:root{--md-text-font-family:"Roboto";--md-code-font-family:"Roboto Mono"}</style>
+      
+    
+    
+    
+    
+      
+        
+<script>window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)},ga.l=+new Date,ga("create","UA-118371652-2","auto"),ga("set","anonymizeIp",!0),ga("send","pageview"),document.addEventListener("DOMContentLoaded",function(){document.forms.search&&document.forms.search.query.addEventListener("blur",function(){var e;this.value&&(e=document.location.pathname,ga("send","pageview",e+"?q="+this.value))}),"undefined"!=typeof location$&&location$.subscribe(function(e){ga("send","pageview",e.pathname)})})</script>
+<script async src="https://www.google-analytics.com/analytics.js"></script>
+      
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="" data-md-color-primary="red" data-md-color-accent="">
+  
+    
+    <script>function __prefix(e){return new URL("..",location).pathname+"."+e}function __get(e,t=localStorage){return JSON.parse(t.getItem(__prefix(e)))}</script>
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#_1" class="md-skip">
+          コンテンツにスキップ
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+      <header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="ヘッダー">
+    <a href=".." title="ABCI 2.0 User Guide" class="md-header__button md-logo" aria-label="ABCI 2.0 User Guide" data-md-component="logo">
+      
+  <img src="../img/logo.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            ABCI 2.0 User Guide
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              ストレージ
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+      <div class="md-header__option">
+        <div class="md-select">
+          
+          <button class="md-header__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m12.87 15.07-2.54-2.51.03-.03A17.52 17.52 0 0 0 14.07 6H17V4h-7V2H8v2H1v2h11.17C11.5 7.92 10.44 9.75 9 11.35 8.07 10.32 7.3 9.19 6.69 8h-2c.73 1.63 1.73 3.17 2.98 4.56l-5.09 5.02L4 19l5-5 3.11 3.11.76-2.04M18.5 10h-2L12 22h2l1.12-3h4.75L21 22h2l-4.5-12m-2.62 7 1.62-4.33L19.12 17h-3.24z"/></svg>
+          </button>
+          <div class="md-select__inner">
+            <ul class="md-select__list">
+              
+                <li class="md-select__item">
+                  <a href="https://docs.abci.ai/en/" hreflang="" class="md-select__link">
+                    English
+                  </a>
+                </li>
+                
+                <li class="md-select__item">
+                  <a href="https://docs.abci.ai/ja/" hreflang="" class="md-select__link">
+                    日本語
+                  </a>
+                </li>
+                
+            </ul>
+          </div>
+        </div>
+      </div>
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+      </label>
+      
+<div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="検索" placeholder="検索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" data-md-state="active" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+      </label>
+      <button type="reset" class="md-search__icon md-icon" aria-label="クリア" tabindex="-1">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"/></svg>
+      </button>
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            検索を初期化
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        
+<a href="https://github.com/aistairc/abci-docs/" title="リポジトリへ" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+      </div>
+    
+  </nav>
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+<nav class="md-nav md-nav--primary md-nav--integrated" aria-label="ナビゲーション" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="ABCI 2.0 User Guide" class="md-nav__button md-logo" aria-label="ABCI 2.0 User Guide" data-md-component="logo">
+      
+  <img src="../img/logo.png" alt="logo">
+
+    </a>
+    ABCI 2.0 User Guide
+  </label>
+  
+    <div class="md-nav__source">
+      
+<a href="https://github.com/aistairc/abci-docs/" title="リポジトリへ" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        はじめに
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../system-overview/" class="md-nav__link">
+        ABCIシステムの概要
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../getting-started/" class="md-nav__link">
+        ABCIの利用開始
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../job-execution/" class="md-nav__link">
+        ジョブ実行
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          ストレージ
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        ストレージ
+      </a>
+      
+        
+<nav class="md-nav md-nav--secondary" aria-label="目次">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目次
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#home-area" class="md-nav__link">
+    ホーム領域
+  </a>
+  
+    <nav class="md-nav" aria-label="ホーム領域">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#advanced-option-file-striping" class="md-nav__link">
+    [高度な設定] ストライプ機能
+  </a>
+  
+    <nav class="md-nav" aria-label="[高度な設定] ストライプ機能">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#how-to-set-up-file-striping" class="md-nav__link">
+    ストライプ機能の設定方法
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#how-to-display-file-striping-settings" class="md-nav__link">
+    ストライプ機能の表示方法
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#group-area" class="md-nav__link">
+    グループ領域
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#local-storage" class="md-nav__link">
+    ローカルストレージ
+  </a>
+  
+    <nav class="md-nav" aria-label="ローカルストレージ">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#local-scratch" class="md-nav__link">
+    ローカルスクラッチ
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#persistent-local-scratch" class="md-nav__link">
+    永続ローカルスクラッチ (Reserved専用)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#beeond-storage" class="md-nav__link">
+    BeeONDストレージ
+  </a>
+  
+    <nav class="md-nav" aria-label="BeeONDストレージ">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#advanced-option-configure-beeond-servers" class="md-nav__link">
+    [高度な設定] BeeONDサーバ数変更
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#advanced-option-file-striping_1" class="md-nav__link">
+    [高度な設定] ストライプ機能
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../environment-modules/" class="md-nav__link">
+        Environment Modules
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../python/" class="md-nav__link">
+        Python
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../gpu/" class="md-nav__link">
+        GPU
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../mpi/" class="md-nav__link">
+        MPI
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../containers/" class="md-nav__link">
+        コンテナ
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../development-tools/" class="md-nav__link">
+        開発ツール
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_12" type="checkbox" id="__nav_12" >
+      
+      <label class="md-nav__link" for="__nav_12">
+        付録
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="付録" data-md-level="1">
+        <label class="md-nav__title" for="__nav_12">
+          <span class="md-nav__icon md-icon"></span>
+          付録
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../appendix/installed-software/" class="md-nav__link">
+        付録. インストール済みソフトウェアの構成
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../appendix/using-abci-with-hpci/" class="md-nav__link">
+        付録. HPCIによるABCIシステム利用
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../appendix/external-networks/" class="md-nav__link">
+        付録. 外部ネットワークとの通信
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../appendix/ssh-access/" class="md-nav__link">
+        付録. 計算ノードへのSSHアクセス
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_13" type="checkbox" id="__nav_13" >
+      
+      <label class="md-nav__link" for="__nav_13">
+        各種アプリケーション
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="各種アプリケーション" data-md-level="1">
+        <label class="md-nav__title" for="__nav_13">
+          <span class="md-nav__icon md-icon"></span>
+          各種アプリケーション
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../apps/" class="md-nav__link">
+        概要
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../apps/tensorflow/" class="md-nav__link">
+        TensorFlow
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../apps/tensorflow-keras/" class="md-nav__link">
+        TensorFlow Keras
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../apps/pytorch/" class="md-nav__link">
+        PyTorch
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../apps/mxnet/" class="md-nav__link">
+        MXNet
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../apps/chainer/" class="md-nav__link">
+        Chainer
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../apps/others/" class="md-nav__link">
+        その他
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_14" type="checkbox" id="__nav_14" >
+      
+      <label class="md-nav__link" for="__nav_14">
+        Tips
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Tips" data-md-level="1">
+        <label class="md-nav__title" for="__nav_14">
+          <span class="md-nav__icon md-icon"></span>
+          Tips
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../tips/ngc/" class="md-nav__link">
+        NVIDIA NGC
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../tips/remote-desktop/" class="md-nav__link">
+        リモートデスクトップの利用
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../tips/awscli/" class="md-nav__link">
+        AWS CLIの利用
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../tips/tera-term/" class="md-nav__link">
+        Tera Termの利用
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../tips/putty/" class="md-nav__link">
+        PuTTYの利用
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../tips/jupyter-notebook/" class="md-nav__link">
+        Jupyter Notebookの利用
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../tips/sregistry-cli/" class="md-nav__link">
+        Singularity Global Clientの利用
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../tips/spack/" class="md-nav__link">
+        Spackによるソフトウェア管理
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../tips/datasets/" class="md-nav__link">
+        データセットの利用
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../tips/dl-amazon-ecr/" class="md-nav__link">
+        Amazon ECR からコンテナ取得
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_15" type="checkbox" id="__nav_15" >
+      
+      <label class="md-nav__link" for="__nav_15">
+        ABCI クラウドストレージ
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="ABCI クラウドストレージ" data-md-level="1">
+        <label class="md-nav__title" for="__nav_15">
+          <span class="md-nav__icon md-icon"></span>
+          ABCI クラウドストレージ
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../abci-cloudstorage/" class="md-nav__link">
+        概要
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../abci-cloudstorage/cs-account/" class="md-nav__link">
+        アカウントとアクセスキー
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../abci-cloudstorage/usage/" class="md-nav__link">
+        使い方
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../abci-cloudstorage/encryption/" class="md-nav__link">
+        データの暗号化
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../abci-cloudstorage/acl/" class="md-nav__link">
+        アクセス制御(1)
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../abci-cloudstorage/policy/" class="md-nav__link">
+        アクセス制御(2)
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../abci-cloudstorage/publishing-datasets/" class="md-nav__link">
+        データセットの公開
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../abci-cloudstorage/caution/" class="md-nav__link">
+        ご利用時の注意
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../abci-datasets/" class="md-nav__link">
+        ABCI データセット
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../abci-singularity-endpoint/" class="md-nav__link">
+        ABCI Singularity エンドポイント
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../faq/" class="md-nav__link">
+        FAQ
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../known-issues/" class="md-nav__link">
+        既知の問題
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../system-updates/" class="md-nav__link">
+        システム更新履歴
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="https://abci.ai/ja/about_abci/info.html" class="md-nav__link">
+        運転状況
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../contact/" class="md-nav__link">
+        お問い合わせ
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_23" type="checkbox" id="__nav_23" >
+      
+      <label class="md-nav__link" for="__nav_23">
+        リンク
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="リンク" data-md-level="1">
+        <label class="md-nav__title" for="__nav_23">
+          <span class="md-nav__icon md-icon"></span>
+          リンク
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="https://abci.ai/ja/" class="md-nav__link">
+        ABCI Webページ
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="https://docs.abci.ai/portal/ja/" class="md-nav__link">
+        ABCI利用ポータル手引き
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="https://portal.abci.ai/user/project_register_app.php?lang=ja" class="md-nav__link">
+        ABCI利用ポータル (利用申請)
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="https://portal.abci.ai/user/login.php?lang=ja" class="md-nav__link">
+        ABCI利用ポータル (ログイン)
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+          
+          <div class="md-content" data-md-component="content">
+            <article class="md-content__inner md-typeset">
+              
+                
+                  <a href="https://github.com/aistairc/abci-docs/edit/master/ja/docs/storage.md" title="編集" class="md-content__button md-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75L3 17.25z"/></svg>
+                  </a>
+                
+                
+                <h1 id="_1">ストレージ</h1>
+<h2 id="home-area">ホーム領域</h2>
+<p>ホーム領域は、インタラクティブノードおよび各計算ノードで共有されたLustreファイルシステムのディスク領域です。すべての利用者がデフォルトで利用可能です。ディスククォータは200GiBに設定されています。</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>ホーム領域では、1ディレクトリ配下に作成できるファイル数に上限があります。上限値はディレクトリ配下のファイル名の長さに依存し、約4百万〜12百万個です。
+上限値を超えてファイルを作成しようとした場合、"No space left on device" のエラーメッセージが出力されファイル作成に失敗します。</p>
+</div>
+<h3 id="advanced-option-file-striping">[高度な設定] ストライプ機能</h3>
+<p>ホーム領域は並列ファイルシステムで構成されています。並列ファイルシステムでは、ファイルのデータはストレージを構成する複数のディスクに分散して格納されます。ホーム領域では、この分散方式として、ラウンドロビン分散（デフォルト）とストライプ分散が使用可能です。以下では、ストライプ機能の設定方法を説明します。</p>
+<h4 id="how-to-set-up-file-striping">ストライプ機能の設定方法</h4>
+<p>ストライプ機能の設定は、<code>lfs setstripe</code>コマンドで行います。 <code>lfs setstripe</code>コマンドでは、データを分散させるストライプパターン（ストライプサイズや範囲）を指定することができます。</p>
+<div class="codehilite"><pre><span></span><code><span class="err">$</span><span class="w"> </span><span class="n">lfs</span><span class="w"> </span><span class="n">setstripe</span><span class="w">  </span><span class="o">[</span><span class="n">options</span><span class="o">]</span><span class="w"> </span><span class="o">&lt;</span><span class="n">dirname</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="n">filename</span><span class="o">&gt;</span><span class="w"></span>
+</code></pre></div>
+
+<table>
+<thead>
+<tr>
+<th align="center">オプション</th>
+<th align="left">説明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="center">-S</td>
+<td align="left">ストライプサイズを設定。-S #k, -S #m, -S #gとすることで、サイズをKiB,MiB,GiBで設定可能。</td>
+</tr>
+<tr>
+<td align="center">-i</td>
+<td align="left">ファイル書き込みを開始するOSTインデックスを指定。 -1とした場合、ファイル書き込みを開始するOSTはランダム。本システムでは、OSTインデックスは 0 から 17 を指定可能です。</td>
+</tr>
+<tr>
+<td align="center">-c</td>
+<td align="left">ストライプカウントを設定。 -1とした場合、すべてのOSTに書き込みを実行。</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition tips">
+<p class="admonition-title">Tips</p>
+<p>OSTインデックスは、<code>lfs df</code>コマンドの OST:#の値 や<code>lfs osts</code>コマンドの左端の値で確認可能です。</p>
+</div>
+<p>例）ストライプパターンを持った新規ファイルの作成</p>
+<div class="codehilite"><pre><span></span><code><span class="o">[</span><span class="n">username@es1 work</span><span class="o">]</span><span class="err">$</span><span class="w"> </span><span class="n">lfs</span><span class="w"> </span><span class="n">setstripe</span><span class="w"> </span><span class="o">-</span><span class="n">S</span><span class="w"> </span><span class="mi">1</span><span class="n">m</span><span class="w"> </span><span class="o">-</span><span class="n">i</span><span class="w"> </span><span class="mi">10</span><span class="w"> </span><span class="o">-</span><span class="n">c</span><span class="w"> </span><span class="mi">4</span><span class="w"> </span><span class="n">stripe</span><span class="o">-</span><span class="k">file</span><span class="w"></span>
+<span class="o">[</span><span class="n">username@es1 work</span><span class="o">]</span><span class="err">$</span><span class="w"> </span><span class="n">ls</span><span class="w"></span>
+<span class="n">stripe</span><span class="o">-</span><span class="k">file</span><span class="w"></span>
+</code></pre></div>
+
+<p>例) ディレクトリに対して、ストライプパターンを設定</p>
+<div class="codehilite"><pre><span></span><code><span class="o">[</span><span class="n">username@es1 work</span><span class="o">]</span><span class="err">$</span><span class="w"> </span><span class="n">mkdir</span><span class="w"> </span><span class="n">stripe</span><span class="o">-</span><span class="n">dir</span><span class="w"></span>
+<span class="o">[</span><span class="n">username@es1 work</span><span class="o">]</span><span class="err">$</span><span class="w"> </span><span class="n">lfs</span><span class="w"> </span><span class="n">setstripe</span><span class="w"> </span><span class="o">-</span><span class="n">S</span><span class="w"> </span><span class="mi">1</span><span class="n">m</span><span class="w"> </span><span class="o">-</span><span class="n">i</span><span class="w"> </span><span class="mi">10</span><span class="w"> </span><span class="o">-</span><span class="n">c</span><span class="w"> </span><span class="mi">4</span><span class="w"> </span><span class="n">stripe</span><span class="o">-</span><span class="n">dir</span><span class="w"></span>
+</code></pre></div>
+
+<h4 id="how-to-display-file-striping-settings">ストライプ機能の表示方法</h4>
+<p>ファイルやディレクトリのストライプパターンの情報を表示する場合は、<code>lfs getstripe</code>コマンドで行います。</p>
+<div class="codehilite"><pre><span></span><code>$ lfs getstripe &lt;dirname <span class="p">|</span> filename&gt;
+</code></pre></div>
+
+<p>例) ファイルの設定表示例</p>
+<div class="codehilite"><pre><span></span><code><span class="o">[</span><span class="n">username@es1 work</span><span class="o">]</span><span class="err">$</span><span class="w"> </span><span class="n">lfs</span><span class="w"> </span><span class="n">getstripe</span><span class="w"> </span><span class="n">stripe</span><span class="o">-</span><span class="k">file</span><span class="w"></span>
+<span class="n">stripe</span><span class="o">-</span><span class="k">file</span><span class="w"></span>
+<span class="nl">lmm_stripe_count</span><span class="p">:</span><span class="w">  </span><span class="mi">4</span><span class="w"></span>
+<span class="nl">lmm_stripe_size</span><span class="p">:</span><span class="w">   </span><span class="mi">1048576</span><span class="w"></span>
+<span class="nl">lmm_pattern</span><span class="p">:</span><span class="w">       </span><span class="mi">1</span><span class="w"></span>
+<span class="nl">lmm_layout_gen</span><span class="p">:</span><span class="w">    </span><span class="mi">0</span><span class="w"></span>
+<span class="nl">lmm_stripe_offset</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="w"></span>
+<span class="w">        </span><span class="n">obdidx</span><span class="w">           </span><span class="n">objid</span><span class="w">           </span><span class="n">objid</span><span class="w">           </span><span class="k">group</span><span class="w"></span>
+<span class="w">            </span><span class="mi">10</span><span class="w">         </span><span class="mi">3024641</span><span class="w">       </span><span class="mh">0x2e2701</span><span class="w">                </span><span class="mi">0</span><span class="w"></span>
+<span class="w">            </span><span class="mi">11</span><span class="w">         </span><span class="mi">3026034</span><span class="w">       </span><span class="mh">0x2e2c72</span><span class="w">                </span><span class="mi">0</span><span class="w"></span>
+<span class="w">            </span><span class="mi">12</span><span class="w">         </span><span class="mi">3021952</span><span class="w">       </span><span class="mh">0x2e1c80</span><span class="w">                </span><span class="mi">0</span><span class="w"></span>
+<span class="w">            </span><span class="mi">13</span><span class="w">         </span><span class="mi">3019616</span><span class="w">       </span><span class="mh">0x2e1360</span><span class="w">                </span><span class="mi">0</span><span class="w"></span>
+</code></pre></div>
+
+<p>例) ディレクトリの設定表示例</p>
+<div class="codehilite"><pre><span></span><code><span class="o">[</span><span class="n">username@es1 work</span><span class="o">]</span><span class="err">$</span><span class="w"> </span><span class="n">lfs</span><span class="w"> </span><span class="n">getstripe</span><span class="w"> </span><span class="n">stripe</span><span class="o">-</span><span class="n">dir</span><span class="w"></span>
+<span class="n">stripe</span><span class="o">-</span><span class="n">dir</span><span class="w"></span>
+<span class="nl">stripe_count</span><span class="p">:</span><span class="w">  </span><span class="mi">4</span><span class="w"> </span><span class="nl">stripe_size</span><span class="p">:</span><span class="w">   </span><span class="mi">1048576</span><span class="w"> </span><span class="nl">stripe_offset</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="w"></span>
+</code></pre></div>
+
+<h2 id="group-area">グループ領域</h2>
+<p>グループ領域は、インタラクティブノードおよび各計算ノードで共有されたLustreファイルシステムのディスク領域です。また、グループ領域1〜3は、インタラクティブノードおよび各計算ノード(V)で共有されたGPFSファイルシステムのディスク領域です。<a href="https://portal.abci.ai/user/">ABCI利用ポータル</a>から利用管理者権限でグループディスク追加申請を行うことで利用可能になります。追加申請方法については、<a href="https://docs.abci.ai/portal/ja/">ABCI利用ポータル利用手引き</a>の<a href="https://docs.abci.ai/portal/ja/03/#352">ディスク追加申請</a>をご参照ください。</p>
+<p>グループ領域のパスを確認するには、<code>show_quota</code> コマンドを実行してください。コマンドの説明については <a href="../getting-started/#checking-disk-quota">ディスククォータの確認</a> を参照してください。</p>
+<h2 id="local-storage">ローカルストレージ</h2>
+<p>ABCIシステムでは、計算ノード(V)に1.6 TBのNVMe SSD x 1、計算ノード(A)に2.0 TBのNVMe SSD x 2、メモリインテンシブノードに1.9 TBのSATA 3.0 SSD x 1が搭載されています。これらローカルストレージは次のように利用できます。</p>
+<ul>
+<li>ノードに閉じたスクラッチ領域として利用する（<em>ローカルスクラッチ</em>、<em>永続ローカルスクラッチ (Reserved専用)</em>）。</li>
+<li>複数の計算ノードのローカルストレージにまたがる分散共有ファイルシステムを構成して利用する（<em>BeeONDストレージ</em>）。</li>
+</ul>
+<p>ただし、ノード毎にサポートしている利用方法が異なっています。以下の対応表を確認してください。</p>
+<table>
+<thead>
+<tr>
+<th align="left">ローカルストレージの利用方法</th>
+<th align="center">計算ノード（VおよびA）</th>
+<th align="center">メモリインテンシブノード</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">ローカルスクラッチ</td>
+<td align="center">ok</td>
+<td align="center">ok</td>
+</tr>
+<tr>
+<td align="left">BeeONDストレージ</td>
+<td align="center">ok</td>
+<td align="center">-</td>
+</tr>
+<tr>
+<td align="left">永続ローカルスクラッチ (Reserved専用)</td>
+<td align="center">ok</td>
+<td align="center">-</td>
+</tr>
+</tbody>
+</table>
+<h3 id="local-scratch">ローカルスクラッチ</h3>
+<p>計算ノードとメモリインテンシブノードのローカルストレージは、ジョブ投入時に特別なオプションを指定することなくローカルスクラッチとして利用できます。
+なお、ローカルストレージとして利用できる容量は、指定した<a href="../job-execution/#job-execution-resource">ジョブ実行リソース</a>によって異なります。
+ローカルストレージへのパスはジョブ毎に異なり、<a href="../job-execution/#environment-variables">環境変数</a><code>SGE_LOCALDIR</code>を利用してアクセスすることができます。</p>
+<p>例）ジョブスクリプトの例(use_local_storage.sh)</p>
+<div class="codehilite"><pre><span></span><code><span class="ch">#!/bin/bash</span>
+
+<span class="c1">#$-l rt_F=1</span>
+<span class="c1">#$-cwd</span>
+
+<span class="nb">echo</span> test1 &gt; <span class="nv">$SGE_LOCALDIR</span>/foo.txt
+<span class="nb">echo</span> test2 &gt; <span class="nv">$SGE_LOCALDIR</span>/bar.txt
+cp -rp <span class="nv">$SGE_LOCALDIR</span>/foo.txt <span class="nv">$HOME</span>/test/foo.txt
+</code></pre></div>
+
+<p>例）ジョブの投入</p>
+<div class="codehilite"><pre><span></span><code><span class="o">[</span><span class="n">username@es1 ~</span><span class="o">]</span><span class="err">$</span><span class="w"> </span><span class="n">qsub</span><span class="w"> </span><span class="o">-</span><span class="n">g</span><span class="w"> </span><span class="n">grpname</span><span class="w"> </span><span class="n">use_local_storage</span><span class="p">.</span><span class="n">sh</span><span class="w"></span>
+</code></pre></div>
+
+<p>例）use_local_storage.sh 実行後の状態</p>
+<div class="codehilite"><pre><span></span><code><span class="p">[</span><span class="n">username</span><span class="o">@</span><span class="n">es1</span> <span class="o">~</span><span class="p">]</span><span class="o">$</span> <span class="n">ls</span> <span class="o">$</span><span class="n">HOME</span><span class="o">/</span><span class="n">test</span><span class="o">/</span>
+<span class="n">foo.txt</span>    <span class="o">&lt;-</span> スクリプト内で明示的にコピーしたファイルのみが残る。
+</code></pre></div>
+
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p><code>$SGE_LOCALDIR</code>以下に作成したファイルはジョブ実行終了時に削除されるため、必要なファイルは<code>cp</code>コマンドなどを用いてジョブスクリプト内でホーム領域またはグループ領域にコピーをしてください。</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>rt_AF では<code>$SGE_LOCALDIR</code>だけではなく、<code>/local2</code>以下も利用できます。ジョブ実行終了時に削除されるのは同様です。</p>
+</div>
+<h3 id="persistent-local-scratch">永続ローカルスクラッチ (Reserved専用)</h3>
+<p>本機能は、Reservedサービス専用です。Reservedサービスでは、計算ノードのローカルストレージに、ジョブ毎に削除されない永続領域を使用可能です。この領域はReservedサービス開始時に作成され、Reservedサービス終了時に削除されます。
+永続ローカルスクラッチは、<a href="../job-execution/#environment-variables">環境変数</a><code>SGE_ARDIR</code>を利用してアクセスすることができます。</p>
+<p>例）ジョブスクリプトの例 (use_reserved_storage_write.sh)</p>
+<div class="codehilite"><pre><span></span><code><span class="ch">#!/bin/bash</span>
+
+<span class="c1">#$-l rt_F=1</span>
+<span class="c1">#$-cwd</span>
+
+<span class="nb">echo</span> test1 &gt; <span class="nv">$SGE_ARDIR</span>/foo.txt
+<span class="nb">echo</span> test2 &gt; <span class="nv">$SGE_ARDIR</span>/bar.txt
+</code></pre></div>
+
+<p>例）ジョブの投入</p>
+<div class="codehilite"><pre><span></span><code><span class="o">[</span><span class="n">username@es1 ~</span><span class="o">]</span><span class="err">$</span><span class="w"> </span><span class="n">qsub</span><span class="w"> </span><span class="o">-</span><span class="n">g</span><span class="w"> </span><span class="n">grpname</span><span class="w"> </span><span class="o">-</span><span class="n">ar</span><span class="w"> </span><span class="mi">12345</span><span class="w"> </span><span class="n">use_reserved_storage_write</span><span class="p">.</span><span class="n">sh</span><span class="w"></span>
+</code></pre></div>
+
+<p>例）ジョブスクリプトの例 (use_reserved_storage_read.sh)</p>
+<div class="codehilite"><pre><span></span><code><span class="ch">#!/bin/bash</span>
+
+<span class="c1">#$-l rt_F=1</span>
+<span class="c1">#$-cwd</span>
+
+cat <span class="nv">$SGE_ARDIR</span>/foo.txt
+cat <span class="nv">$SGE_ARDIR</span>/bar.txt
+</code></pre></div>
+
+<p>例）ジョブの投入</p>
+<div class="codehilite"><pre><span></span><code><span class="o">[</span><span class="n">username@es1 ~</span><span class="o">]</span><span class="err">$</span><span class="w"> </span><span class="n">qsub</span><span class="w"> </span><span class="o">-</span><span class="n">g</span><span class="w"> </span><span class="n">grpname</span><span class="w"> </span><span class="o">-</span><span class="n">ar</span><span class="w"> </span><span class="mi">12345</span><span class="w"> </span><span class="n">use_reserved_storage_read</span><span class="p">.</span><span class="n">sh</span><span class="w"></span>
+</code></pre></div>
+
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p><code>$SGE_ARDIR</code>以下に作成したファイルはReservedサービス終了時に削除されるため、必要なファイルは<code>cp</code>コマンドなどを用いてジョブにてホーム領域またはグループ領域にコピーをしてください。</p>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>計算ノード(A)では、NVMe SSD が2つ搭載されており、永続ローカルスクラッチは<code>/local2</code>を使用します。ローカルスクラッチと永続ローカルスクラッチが同一のストレージに割り当てられる場合があり、その場合は容量を共有します。
+計算ノード(V)では、NVMe SSD が1つしか搭載されていないため、ローカルスクラッチと永続ローカルスクラッチは同一のストレージとなり、必ず容量を共有します。
+いずれの場合も、永続ローカルスクラッチを利用する場合には使用量に注意してください。</p>
+</div>
+<h3 id="beeond-storage">BeeONDストレージ</h3>
+<p>BeeGFS On Demand (BeeOND) を使用することで、ジョブに割り当てられた計算ノードのローカルストレージを集約し、一時的な分散共有ファイルシステムとして使用可能です。
+BeeOND を利用するジョブを投入するときは、<code>-l USE_BEEOND=1</code>オプションを指定してジョブを実行してください。
+また、BeeONDを利用する場合はノードを占有する必要があるため、<code>-l rt_F</code>オプションもしくは<code>-l rt_AF</code>オプションを指定する必要もあります。</p>
+<p>作成された分散共有ファイルシステム領域には、<a href="../job-execution/#environment-variables">環境変数</a>SGE_BEEONDDIRを利用してアクセスすることができます。</p>
+<p>例）ジョブスクリプトの例 (use_beeond.sh)</p>
+<div class="codehilite"><pre><span></span><code><span class="ch">#!/bin/bash</span>
+
+<span class="c1">#$-l rt_F=2</span>
+<span class="c1">#$-l USE_BEEOND=1</span>
+<span class="c1">#$-cwd</span>
+
+<span class="nb">echo</span> test1 &gt; <span class="nv">$SGE_BEEONDDIR</span>/foo.txt
+<span class="nb">echo</span> test2 &gt; <span class="nv">$SGE_BEEONDDIR</span>/bar.txt
+cp -rp <span class="nv">$SGE_BEEONDDIR</span>/foo.txt <span class="nv">$HOME</span>/test/foo.txt
+</code></pre></div>
+
+<p>例）ジョブの投入</p>
+<div class="codehilite"><pre><span></span><code><span class="o">[</span><span class="n">username@es1 ~</span><span class="o">]</span><span class="err">$</span><span class="w"> </span><span class="n">qsub</span><span class="w"> </span><span class="o">-</span><span class="n">g</span><span class="w"> </span><span class="n">grpname</span><span class="w"> </span><span class="n">use_beeond</span><span class="p">.</span><span class="n">sh</span><span class="w"></span>
+</code></pre></div>
+
+<p>例）use_beeond.sh 実行後の状態</p>
+<div class="codehilite"><pre><span></span><code><span class="p">[</span><span class="n">username</span><span class="o">@</span><span class="n">es1</span> <span class="o">~</span><span class="p">]</span><span class="o">$</span> <span class="n">ls</span> <span class="o">$</span><span class="n">HOME</span><span class="o">/</span><span class="n">test</span><span class="o">/</span>
+<span class="n">foo.txt</span>    <span class="o">&lt;-</span> スクリプト内で明示的にコピーしたファイルのみが残る。
+</code></pre></div>
+
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p><code>$SGE_BEEONDDIR</code>以下に作成したファイルはジョブ実行終了時に削除されるため、必要なファイルは<code>cp</code>コマンドなどを用いてジョブスクリプト内でホーム領域またはグループ領域にコピーをしてください。</p>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>計算ノード(A)では、NVMe SSD が2つ搭載されており、BeeONDストレージは<code>/local2</code>を使用します。
+計算ノード(V)では、NVMe SSD が1つしか搭載されていないため、ローカルスクラッチとBeeONDストレージは同一のストレージを使用し、必ず容量を共有します。</p>
+</div>
+<h4 id="advanced-option-configure-beeond-servers">[高度な設定] BeeONDサーバ数変更</h4>
+<p>BeeONDファイルシステム領域は、ファイルの実体を格納するストレージサービスを提供する計算ノード（ストレージサーバ）、ファイルのメタデータを格納するメタデータサービスを提供する計算ノード（メタデータサーバ）により構成されます。
+ABCIのBeeONDではストレージサーバ数、メタデータサーバ数を変更することができます。</p>
+<p>メタデータサーバ数・ストレージサーバ数のデフォルトの設定は以下の通りです。</p>
+<table>
+<thead>
+<tr>
+<th align="center">設定項目</th>
+<th align="right">デフォルト値</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="center">メタデータサーバ数</td>
+<td align="right">1</td>
+</tr>
+<tr>
+<td align="center">ストレージサーバ数</td>
+<td align="right">ジョブの要求ノード数</td>
+</tr>
+</tbody>
+</table>
+<p>それぞれの数を変更するときには、ジョブスクリプトで次の環境変数を設定します。この環境変数はジョブ投入時に定義されている必要があり、ジョブスクリプト中で変更しても反映されません。サーバ数がジョブの要求ノード数よりも小さい場合、割り当てられた計算ノードから名前順に選択されます。</p>
+<table>
+<thead>
+<tr>
+<th align="left">環境変数</th>
+<th align="left">説明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">BEEOND_METADATA_SERVER</td>
+<td align="left">メタデータサーバ数を整数で指定</td>
+</tr>
+<tr>
+<td align="left">BEEOND_STORAGE_SERVER</td>
+<td align="left">ストレージサーバ数を整数で指定</td>
+</tr>
+</tbody>
+</table>
+<p>以下の例では、メタデータサーバ数2、ストレージサーバ数4でBeeONDファイルシステム領域を構成する例です。<code>beegfs-df</code>で構成を確認しています。</p>
+<p>例）ジョブスクリプトの例(use_beeond.sh)</p>
+<div class="codehilite"><pre><span></span><code><span class="ch">#!/bin/bash</span>
+
+<span class="c1">#$-l rt_F=8</span>
+<span class="c1">#$-l USE_BEEOND=1</span>
+<span class="c1">#$-v BEEOND_METADATA_SERVER=2</span>
+<span class="c1">#$-v BEEOND_STORAGE_SERVER=4</span>
+<span class="c1">#$-cwd</span>
+
+beegfs-df -p /beeond
+</code></pre></div>
+
+<p>出力例</p>
+<div class="codehilite"><pre><span></span><code>METADATA SERVERS:
+TargetID   Cap. Pool        Total         Free    %      ITotal       IFree    %
+========   =========        =====         ====    =      ======       =====    =
+       1      normal    1489.7GiB    1322.7GiB  89%      149.0M      149.0M 100%
+       2      normal    1489.7GiB    1322.7GiB  89%      149.0M      149.0M 100%
+
+STORAGE TARGETS:
+TargetID   Cap. Pool        Total         Free    %      ITotal       IFree    %
+========   =========        =====         ====    =      ======       =====    =
+       1      normal    1489.7GiB    1322.7GiB  89%      149.0M      149.0M 100%
+       2      normal    1489.7GiB    1322.7GiB  89%      149.0M      149.0M 100%
+       3      normal    1489.7GiB    1322.7GiB  89%      149.0M      149.0M 100%
+       4      normal    1489.7GiB    1322.7GiB  89%      149.0M      149.0M 100%
+</code></pre></div>
+
+<h4 id="advanced-option-file-striping_1">[高度な設定] ストライプ機能</h4>
+<p>BeeONDファイルシステム領域では、ファイルのデータはファイルシステムを構成する複数のストレージサーバに分散して格納されます。ABCIのBeeONDではストライプ分散の設定を変更することができます。</p>
+<p>ストライプ分散のデフォルトの設定は次の通りです。</p>
+<table>
+<thead>
+<tr>
+<th align="center">設定項目</th>
+<th align="right">デフォルト値</th>
+<th align="left">説明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="center">ストライプサイズ</td>
+<td align="right">512 KB</td>
+<td align="left">ファイルの分割サイズ</td>
+</tr>
+<tr>
+<td align="center">ストライプカウント</td>
+<td align="right">4</td>
+<td align="left">分割したファイル断片を格納するストレージサーバの数</td>
+</tr>
+</tbody>
+</table>
+<p>ファイル単位、またはディレクトリ単位でストライプ分散の設定を行えます。ストライプ分散の設定は<code>beegfs-ctl</code>で行えます。</p>
+<p>以下の例では<code>/beeond/data</code>ディレクトリ以下のストライプ設定を、ストライプカウント8、ストライプサイズ4MBに設定しています。</p>
+<p>例）ジョブスクリプトの例(use_beeond.sh)</p>
+<div class="codehilite"><pre><span></span><code><span class="ch">#!/bin/bash</span>
+
+<span class="c1">#$-l rt_F=8</span>
+<span class="c1">#$-l USE_BEEOND=1</span>
+<span class="c1">#$-cwd</span>
+
+<span class="nv">BEEOND_DIR</span><span class="o">=</span>/beeond/data
+mkdir <span class="si">${</span><span class="nv">BEEOND_DIR</span><span class="si">}</span>
+beegfs-ctl --setpattern --numtargets<span class="o">=</span><span class="m">8</span> --chunksize<span class="o">=</span>4M --mount<span class="o">=</span>/beeond <span class="si">${</span><span class="nv">BEEOND_DIR</span><span class="si">}</span>
+beegfs-ctl --mount<span class="o">=</span>/beeond --getentryinfo <span class="si">${</span><span class="nv">BEEOND_DIR</span><span class="si">}</span>
+</code></pre></div>
+
+<p>出力例</p>
+<div class="codehilite"><pre><span></span><code>New chunksize: 4194304
+New number of storage targets: 8
+
+EntryID: 0-5D36F5EC-1
+Metadata node: gXXXX.abci.local [ID: 1]
+Stripe pattern details:
++ Type: RAID0
++ Chunksize: 4M
++ Number of storage targets: desired: 8
++ Storage Pool: 1 (Default)
+</code></pre></div>
+                
+              
+              
+                
+
+
+              
+            </article>
+          </div>
+        </div>
+        
+      </main>
+      
+        
+<footer class="md-footer">
+  
+    <nav class="md-footer__inner md-grid" aria-label="フッター">
+      
+        <a href="../job-execution/" class="md-footer__link md-footer__link--prev" rel="prev">
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+          </div>
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                前
+              </span>
+              ジョブ実行
+            </div>
+          </div>
+        </a>
+      
+      
+        <a href="../environment-modules/" class="md-footer__link md-footer__link--next" rel="next">
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                次
+              </span>
+              Environment Modules
+            </div>
+          </div>
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4z"/></svg>
+          </div>
+        </a>
+      
+    </nav>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-footer-copyright">
+        
+          <div class="md-footer-copyright__highlight">
+            Copyright &copy; 2021 National Institute of Advanced Industrial Science and Technology (AIST)
+          </div>
+        
+        Made with
+        <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+          Material for MkDocs
+        </a>
+        
+      </div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    <script id="__config" type="application/json">{"base": "..", "features": ["toc.integrate"], "translations": {"clipboard.copy": "\u30af\u30ea\u30c3\u30d7\u30dc\u30fc\u30c9\u3078\u30b3\u30d4\u30fc", "clipboard.copied": "\u30b3\u30d4\u30fc\u3057\u307e\u3057\u305f", "search.config.lang": "ja", "search.config.pipeline": "trimmer, stemmer", "search.config.separator": "[\\s\\-\u3000\u3001\u3002\uff0c\uff0e]+", "search.placeholder": "\u691c\u7d22", "search.result.placeholder": "\u691c\u7d22\u30ad\u30fc\u30ef\u30fc\u30c9\u3092\u5165\u529b\u3057\u3066\u304f\u3060\u3055\u3044", "search.result.none": "\u4f55\u3082\u898b\u3064\u304b\u308a\u307e\u305b\u3093\u3067\u3057\u305f", "search.result.one": "1\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.other": "#\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.more.one": "\u3053\u306e\u30da\u30fc\u30b8\u5185\u306b\u3082\u30461\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.more.other": "\u3053\u306e\u30da\u30fc\u30b8\u5185\u306b\u3042\u3068#\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.term.missing": "\u691c\u7d22\u306b\u542b\u307e\u308c\u306a\u3044"}, "search": "../assets/javascripts/workers/search.fe42c31b.min.js", "version": null}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.4ea5477f.min.js"></script>
+      
+    
+  </body>
+</html>

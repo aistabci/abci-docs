@@ -1,0 +1,1619 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="ABCI 2.0 User Guide, English version">
+      
+      
+      
+        <meta name="author" content="AIST">
+      
+      
+        <link rel="canonical" href="https://docs.abci.ai/en/getting-started/">
+      
+      <link rel="icon" href="../img/favicon.png">
+      <meta name="generator" content="mkdocs-1.1.2, mkdocs-material-7.1.3">
+    
+    
+      
+        <title>Getting Started ABCI - ABCI 2.0 User Guide</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.e35208c4.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.ef6f36e2.min.css">
+        
+          
+          
+          <meta name="theme-color" content="#ef5552">
+        
+      
+    
+    
+    
+      
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700%7CRoboto+Mono&display=fallback">
+        <style>:root{--md-text-font-family:"Roboto";--md-code-font-family:"Roboto Mono"}</style>
+      
+    
+    
+    
+    
+      
+        
+<script>window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)},ga.l=+new Date,ga("create","UA-118371652-2","auto"),ga("set","anonymizeIp",!0),ga("send","pageview"),document.addEventListener("DOMContentLoaded",function(){document.forms.search&&document.forms.search.query.addEventListener("blur",function(){var e;this.value&&(e=document.location.pathname,ga("send","pageview",e+"?q="+this.value))}),"undefined"!=typeof location$&&location$.subscribe(function(e){ga("send","pageview",e.pathname)})})</script>
+<script async src="https://www.google-analytics.com/analytics.js"></script>
+      
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="" data-md-color-primary="red" data-md-color-accent="">
+  
+    
+    <script>function __prefix(e){return new URL("..",location).pathname+"."+e}function __get(e,t=localStorage){return JSON.parse(t.getItem(__prefix(e)))}</script>
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#getting-started-abci" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+      <header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href=".." title="ABCI 2.0 User Guide" class="md-header__button md-logo" aria-label="ABCI 2.0 User Guide" data-md-component="logo">
+      
+  <img src="../img/logo.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            ABCI 2.0 User Guide
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Getting Started ABCI
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+      <div class="md-header__option">
+        <div class="md-select">
+          
+          <button class="md-header__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m12.87 15.07-2.54-2.51.03-.03A17.52 17.52 0 0 0 14.07 6H17V4h-7V2H8v2H1v2h11.17C11.5 7.92 10.44 9.75 9 11.35 8.07 10.32 7.3 9.19 6.69 8h-2c.73 1.63 1.73 3.17 2.98 4.56l-5.09 5.02L4 19l5-5 3.11 3.11.76-2.04M18.5 10h-2L12 22h2l1.12-3h4.75L21 22h2l-4.5-12m-2.62 7 1.62-4.33L19.12 17h-3.24z"/></svg>
+          </button>
+          <div class="md-select__inner">
+            <ul class="md-select__list">
+              
+                <li class="md-select__item">
+                  <a href="https://docs.abci.ai/en/" hreflang="" class="md-select__link">
+                    English
+                  </a>
+                </li>
+                
+                <li class="md-select__item">
+                  <a href="https://docs.abci.ai/ja/" hreflang="" class="md-select__link">
+                    日本語
+                  </a>
+                </li>
+                
+            </ul>
+          </div>
+        </div>
+      </div>
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+      </label>
+      
+<div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" data-md-state="active" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+      </label>
+      <button type="reset" class="md-search__icon md-icon" aria-label="Clear" tabindex="-1">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"/></svg>
+      </button>
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        
+<a href="https://github.com/aistairc/abci-docs/" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+      </div>
+    
+  </nav>
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+<nav class="md-nav md-nav--primary md-nav--integrated" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="ABCI 2.0 User Guide" class="md-nav__button md-logo" aria-label="ABCI 2.0 User Guide" data-md-component="logo">
+      
+  <img src="../img/logo.png" alt="logo">
+
+    </a>
+    ABCI 2.0 User Guide
+  </label>
+  
+    <div class="md-nav__source">
+      
+<a href="https://github.com/aistairc/abci-docs/" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        Introduction
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../system-overview/" class="md-nav__link">
+        ABCI System Overview
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          Getting Started ABCI
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        Getting Started ABCI
+      </a>
+      
+        
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#getting-an-account" class="md-nav__link">
+    Getting an ABCI account
+  </a>
+  
+    <nav class="md-nav" aria-label="Getting an ABCI account">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#application-for-use-of-abci" class="md-nav__link">
+    Application for use of ABCI
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#account-type" class="md-nav__link">
+    Types of ABCI accounts
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#account-uniqueness" class="md-nav__link">
+    Uniqueness of the ABCI account
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#multi-titled-person" class="md-nav__link">
+    Persons belonging to multiple ABCI groups
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#connecting-to-interactive-node" class="md-nav__link">
+    Connecting to Interactive Node
+  </a>
+  
+    <nav class="md-nav" aria-label="Connecting to Interactive Node">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#prerequisites" class="md-nav__link">
+    Prerequisites
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#login-using-an-ssh-client" class="md-nav__link">
+    Login using an SSH Client
+  </a>
+  
+    <nav class="md-nav" aria-label="Login using an SSH Client">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#general-method" class="md-nav__link">
+    General method
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#proxyjump" class="md-nav__link">
+    ProxyJump
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#file-transfer-to-interactive-node" class="md-nav__link">
+    File Transfer to Interactive Node
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#changing-password" class="md-nav__link">
+    Changing Password
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#login-shell" class="md-nav__link">
+    Login Shell
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#checking-abci-point" class="md-nav__link">
+    Checking ABCI Point
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#checking-disk-quota" class="md-nav__link">
+    Checking Disk Quota
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#checking-abci-cloud-storage-usage" class="md-nav__link">
+    Checking ABCI Cloud Storage Usage
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../job-execution/" class="md-nav__link">
+        Job Execution
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../storage/" class="md-nav__link">
+        Storage
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../environment-modules/" class="md-nav__link">
+        Environment Modules
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../python/" class="md-nav__link">
+        Python
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../gpu/" class="md-nav__link">
+        GPU
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../mpi/" class="md-nav__link">
+        MPI
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../containers/" class="md-nav__link">
+        Containers
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../development-tools/" class="md-nav__link">
+        Development Tools
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_12" type="checkbox" id="__nav_12" >
+      
+      <label class="md-nav__link" for="__nav_12">
+        Appendix
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Appendix" data-md-level="1">
+        <label class="md-nav__title" for="__nav_12">
+          <span class="md-nav__icon md-icon"></span>
+          Appendix
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../appendix/installed-software/" class="md-nav__link">
+        Appendix. Configuration of Installed Software
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../appendix/using-abci-with-hpci/" class="md-nav__link">
+        Appendix. Using ABCI with HPCI
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../appendix/external-networks/" class="md-nav__link">
+        Appendix. Communications with External Networks
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../appendix/ssh-access/" class="md-nav__link">
+        Appendix. SSH Access to Compute Nodes
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_13" type="checkbox" id="__nav_13" >
+      
+      <label class="md-nav__link" for="__nav_13">
+        Applications
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Applications" data-md-level="1">
+        <label class="md-nav__title" for="__nav_13">
+          <span class="md-nav__icon md-icon"></span>
+          Applications
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../apps/" class="md-nav__link">
+        Overview
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../apps/tensorflow/" class="md-nav__link">
+        TensorFlow
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../apps/tensorflow-keras/" class="md-nav__link">
+        TensorFlow Keras
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../apps/pytorch/" class="md-nav__link">
+        PyTorch
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../apps/mxnet/" class="md-nav__link">
+        MXNet
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../apps/chainer/" class="md-nav__link">
+        Chainer
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../apps/others/" class="md-nav__link">
+        Others
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_14" type="checkbox" id="__nav_14" >
+      
+      <label class="md-nav__link" for="__nav_14">
+        Tips
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Tips" data-md-level="1">
+        <label class="md-nav__title" for="__nav_14">
+          <span class="md-nav__icon md-icon"></span>
+          Tips
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../tips/ngc/" class="md-nav__link">
+        NVIDIA NGC
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../tips/remote-desktop/" class="md-nav__link">
+        Remote Desktop
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../tips/awscli/" class="md-nav__link">
+        AWS CLI
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../tips/putty/" class="md-nav__link">
+        PuTTY
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../tips/jupyter-notebook/" class="md-nav__link">
+        Jupyter Notebook
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../tips/sregistry-cli/" class="md-nav__link">
+        Singularity Global Client
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../tips/spack/" class="md-nav__link">
+        Spack
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../tips/datasets/" class="md-nav__link">
+        Datasets
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../tips/dl-amazon-ecr/" class="md-nav__link">
+        Amazon ECR
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_15" type="checkbox" id="__nav_15" >
+      
+      <label class="md-nav__link" for="__nav_15">
+        ABCI Cloud Storage
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="ABCI Cloud Storage" data-md-level="1">
+        <label class="md-nav__title" for="__nav_15">
+          <span class="md-nav__icon md-icon"></span>
+          ABCI Cloud Storage
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../abci-cloudstorage/" class="md-nav__link">
+        Overview
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../abci-cloudstorage/cs-account/" class="md-nav__link">
+        Accounts and Access keys
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../abci-cloudstorage/usage/" class="md-nav__link">
+        Usage
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../abci-cloudstorage/encryption/" class="md-nav__link">
+        Data encryption
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../abci-cloudstorage/acl/" class="md-nav__link">
+        Access Control (1) 
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../abci-cloudstorage/policy/" class="md-nav__link">
+        Access Control (2) 
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../abci-cloudstorage/publishing-datasets/" class="md-nav__link">
+        Publishing Datasets
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../abci-cloudstorage/caution/" class="md-nav__link">
+        Caution
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../abci-datasets/" class="md-nav__link">
+        ABCI Datasets
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../abci-singularity-endpoint/" class="md-nav__link">
+        ABCI Singularity Endpoint
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../faq/" class="md-nav__link">
+        FAQ
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../known-issues/" class="md-nav__link">
+        Known Issues
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../system-updates/" class="md-nav__link">
+        System Updates
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="https://abci.ai/en/about_abci/info.html" class="md-nav__link">
+        Operation Status
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../contact/" class="md-nav__link">
+        Contact
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_23" type="checkbox" id="__nav_23" >
+      
+      <label class="md-nav__link" for="__nav_23">
+        Links
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Links" data-md-level="1">
+        <label class="md-nav__title" for="__nav_23">
+          <span class="md-nav__icon md-icon"></span>
+          Links
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="https://abci.ai/" class="md-nav__link">
+        ABCI Web page
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="https://docs.abci.ai/portal/en/" class="md-nav__link">
+        ABCI User Portal Guide
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="https://portal.abci.ai/user/project_register_app.php?lang=en" class="md-nav__link">
+        ABCI User Portal (Registration)
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="https://portal.abci.ai/user/login.php?lang=en" class="md-nav__link">
+        ABCI User Portal (Login)
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+          
+          <div class="md-content" data-md-component="content">
+            <article class="md-content__inner md-typeset">
+              
+                
+                  <a href="https://github.com/aistairc/abci-docs/edit/master/en/docs/getting-started.md" title="Edit this page" class="md-content__button md-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75L3 17.25z"/></svg>
+                  </a>
+                
+                
+                <h1 id="getting-started-abci">Getting Started ABCI</h1>
+<h2 id="getting-an-account">Getting an ABCI account</h2>
+<h3 id="application-for-use-of-abci">Application for use of ABCI</h3>
+<p>To use an ABCI account, determine the research and development theme according to the agreements of use (rules or regulations) posted in the "Application Procedure", and submit a new "ABCI Application" on the ABCI User Portal. The ABCI application will be reviewed based on the terms of use, and if requirements are met, an ABCI group for which the application was made will be created and the applicant will be notified that the application has been adopted. After receiving notification, the applicant may start using the account.</p>
+<p>Please refer to the price list in <a href="https://abci.ai/en/how_to_use/tariffs.html">ABCI USAGE FEES</a> and purchase ABCI points to pay the usage fee. Please purchase ABCI points for each ABCI group. At the time of application, a minimum of 1,000 ABCI points must be purchased.</p>
+<h3 id="account-type">Types of ABCI accounts</h3>
+<p>There are three types of ABCI accounts: "Responsible Person", "Usage Manager", "User".
+To use the ABCI system, the "Responsible Person" must submit a new "ABCI application" on the <a href="https://portal.abci.ai/user/project_register_app.php?lang=en">ABCI User Portal</a> and obtain an ABCI group and one or more ABCI accounts. See the <a href="https://docs.abci.ai/portal/en/">ABCI Portal Guide</a> for more details.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<ul>
+<li>An ABCI account will also be issued to the "Responsible Person".</li>
+<li>The "Responsible Person" can change "User" to "Usage Manager" on the <a href="https://portal.abci.ai/user/">ABCI User Portal</a>.</li>
+<li>The "Responsible Person" and "Usage Manager" can add "Usage Managers" or "Users" to the ABCI group.</li>
+<li>The "Responsible Person" and "Usage Manager" can change the "Responsible Person" of the ABCI group.</li>
+</ul>
+</div>
+<h3 id="account-uniqueness">Uniqueness of the ABCI account</h3>
+<p>As a general rule, each person should have a unique ABCI account. For example, it is not allowed that a company gets one ABCI account with use shared among more than one employees. On the other hand, if one person belongs to multiple corporations, that person may obtain multiple ABCI accounts. In such cases, the ABCI account corresponding to each corporation must be used appropriately.</p>
+<h3 id="multi-titled-person">Persons belonging to multiple ABCI groups</h3>
+<p>If one person is working on more than one themes in one corporation at the same time, instead of that person acquiring multiple ABCI accounts, such a person will belong to multiple ABCI groups with one ABCI account. In such cases, each ABCI group must be used appropriately according to the purpose of use. When unsure of which ABCI group to use, please contact the "Responsible Person" or "Usage Manager" of the ABCI group. The "Responsible Person" or "Usage Manager" of the ABCI group to which you belong will be displayed on the first screen after logging in to the <a href="https://portal.abci.ai/user/">ABCI User Portal</a>.</p>
+<p>Since usage determines which ABCI group bears the usage fee, please use the appropriate ABCI group according to the instructions of the "Responsible Person" or "Usage Manager" of the ABCI group.</p>
+<h2 id="connecting-to-interactive-node">Connecting to Interactive Node</h2>
+<p>To connect to the interactive node (<em>es</em>(for Compute Node (V)), <em>es-a</em>(for Compute Node (A))), the ABCI frontend, two-step SSH public key authentication is required.</p>
+<ol>
+<li>Login to the access server (<em>as.abci.ai</em>) with SSH public key authentication, so as to create an <em>SSH tunnel</em> between your computer and <em>es</em>.</li>
+<li>Login to the interactive node (<em>es</em> or <em>es-a</em>) with SSH public key authentication via the SSH tunnel.</li>
+</ol>
+<p>In this document, ABCI server names are written in <em>italics</em>.</p>
+<h3 id="prerequisites">Prerequisites</h3>
+<p>To connect to the interactive node, you will need the following in advance:</p>
+<ul>
+<li>An SSH client. Your computer most likely has an SSH client installed by default. If your computer is a UNIX-like system such as Linux and macOS, or Windows 10 version 1803 (April 2018 Update) or later, it should have an SSH client. You can also check for an SSH client, just by typing <code>ssh</code> at the command line.</li>
+<li>A secure SSH public/private key pair. ABCI only accepts the following public keys:<ul>
+<li>RSA keys, at least 2048bits</li>
+<li>ECDSA keys, 256, 384, and 521bits</li>
+<li>Ed25519 keys</li>
+</ul>
+</li>
+<li>Registration of SSH public keys. Your first need to register your SSH public key on <a href="https://portal.abci.ai/user/">ABCI User Portal</a>. The instruction will be found at <a href="https://docs.abci.ai/portal/en/02/#23-register-public-key">Register Public Key</a>.</li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>If you would like to use PuTTY as an SSH client, please read <a href="../tips/putty/">PuTTY</a>.</p>
+</div>
+<h3 id="login-using-an-ssh-client">Login using an SSH Client</h3>
+<p>In this section, we will describe two methods to login to the interactive node using a SSH client. The first one is creating an SSH tunnel on the access server first and connecting the interactive node via this tunnel next. The second one, much easier method, is connecting directly to the interactive node using ProxyJump implemented in OpenSSH 7.3 or later.</p>
+<h4 id="general-method">General method</h4>
+<p>Login to the access server (<em>as.abci.ai</em>) with following command:</p>
+<p>Interactive Node (V)</p>
+<div class="codehilite"><pre>
+[yourpc ~]$ ssh -i /path/identity_file -L 10022:<i>es</i>:22 -l username <i>as.abci.ai</i>
+The authenticity of host 'as.abci.ai (0.0.0.1)' can't be established.
+RSA key fingerprint is XX:XX:XX:XX:XX:XX:XX:XX:XX:XX:XX:XX:XX:XX:XX:XX. <- Display only at the first login
+Are you sure you want to continue connecting (yes/no)? <- Enter "yes"
+Warning: Permanently added 'XX.XX.XX.XX' (RSA) to the list of known hosts.
+Enter passphrase for key '/path/identity_file': <- Enter passphrase
+</pre></div>
+
+<p>Interactive Node (A)</p>
+<div class="codehilite"><pre>
+[yourpc ~]$ ssh -i /path/identity_file -L 10022:<i>es-a</i>:22 -l username <i>as.abci.ai</i>
+The authenticity of host 'as.abci.ai (0.0.0.1)' can't be established.
+RSA key fingerprint is XX:XX:XX:XX:XX:XX:XX:XX:XX:XX:XX:XX:XX:XX:XX:XX. <- Display only at the first login
+Are you sure you want to continue connecting (yes/no)?  <- yesを入力
+Warning: Permanently added ‘XX.XX.XX.XX' (RSA) to the list of known hosts.
+Enter passphrase for key '/path/identity_file': <- Enter "yes"
+</pre></div>
+
+<p>Successfully logged in, the following message is shown on your terminal.</p>
+<div class="codehilite"><pre><span></span><code><span class="nv">Welcome</span> <span class="nv">to</span> <span class="nv">ABCI</span> <span class="nv">access</span> <span class="nv">server</span>.
+<span class="nv">Please</span> <span class="nv">press</span> <span class="nv">any</span> <span class="nv">key</span> <span class="k">if</span> <span class="nv">you</span> <span class="k">disconnect</span> <span class="nv">this</span> <span class="nv">session</span>.
+</code></pre></div>
+
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Be aware! The SSH session will be disconnected if you press any key.</p>
+</div>
+<p>Launch another terminal and login to the interactive node using the SSH tunnel:</p>
+<div class="codehilite"><pre><span></span><code><span class="p">[</span><span class="n">yourpc</span> <span class="o">~</span><span class="p">]</span><span class="o">$</span> <span class="n">ssh</span> <span class="o">-</span><span class="n">i</span> <span class="o">/</span><span class="n">path</span><span class="o">/</span><span class="n">identity_file</span> <span class="o">-</span><span class="n">p</span> <span class="m">10022</span> <span class="o">-</span><span class="n">l</span> <span class="n">username</span> <span class="n">localhost</span>
+<span class="n">The</span> <span class="n">authenticity</span> <span class="n">of</span> <span class="n">host</span> <span class="s">&#39;localhost (127.0.0.1)&#39;</span> <span class="n">can</span><span class="s">&#39;t be established.</span>
+<span class="s">RSA key fingerprint is XX:XX:XX:XX:XX:XX:XX:XX:XX:XX:XX:XX:XX:XX:XX:XX. &lt;- Display only at the first login</span>
+<span class="s">Are you sure you want to continue connecting (yes/no)? &lt;- Enter &quot;yes&quot;</span>
+<span class="s">Warning: Permanently added &#39;</span><span class="n">localhost</span><span class="s">&#39; (RSA) to the list of known hosts.</span>
+<span class="s">Enter passphrase for key &#39;</span><span class="o">/</span><span class="n">path</span><span class="o">/</span><span class="n">identity_file</span><span class="s">&#39;</span><span class="err">: &lt;- Enter passphrase</span>
+<span class="p">[</span><span class="n">username</span><span class="o">@</span><span class="n">es1</span> <span class="o">~</span><span class="p">]</span><span class="o">$</span>
+</code></pre></div>
+
+<h4 id="proxyjump">ProxyJump</h4>
+<p>You can log in to an interactive node with a single command using ProxyJump, which was introduced in OpenSSH version 7.3. ProxyJump can be used in Windows Subsystem for Linux (WSL) environment as well.</p>
+<p>First, add the following configuration to your <code>$HOME/.ssh/config</code>:</p>
+<div class="codehilite"><pre>
+Host <i>abci</i>
+     HostName <i>es</i>
+     User username
+     ProxyJump %r@<i>as.abci.ai</i>
+     IdentityFile /path/to/identity_file
+
+Host <i>abci-a</i>
+     HostName <i>es-a</i>
+     User username
+     ProxyJump %r@<i>as.abci.ai</i>
+     IdentityFile /path/to/identity_file
+
+Host <i>as.abci.ai</i>
+     IdentityFile /path/to/identity_file
+</pre></div>
+
+<p>After that, you can log in with the following command only:</p>
+<div class="codehilite"><pre>
+[yourpc ~]$ ssh <i>abci</i>
+</pre></div>
+
+<p>ProxyJump does not work with OpenSSH_for_Windows_7.7p1 which is bundled with Windows 10 version 1803 and later. Use ProxyCommand instead. The following is an example of a config file using ProxyCommand. Please specify the absolute path for <code>ssh.exe</code>.</p>
+<div class="codehilite"><pre>
+Host <i>abci</i>
+     HostName <i>es</i>
+     User username
+     ProxyCommand C:\WINDOWS\System32\OpenSSH\ssh.exe -W %h:%p %r@<i>as.abci.ai</i>
+     IdentityFile C:\path\to\identity_file
+
+Host <i>abci-a</i>
+     HostName <i>es-a</i>
+     User username
+     ProxyCommand C:\WINDOWS\System32\OpenSSH\ssh.exe -W %h:%p %r@<i>as.abci.ai</i>
+     IdentityFile C:\path\to\identity_file
+
+Host <i>as.abci.ai</i>
+     IdentityFile C:\path\to\identity_file
+</pre></div>
+
+<h2 id="file-transfer-to-interactive-node">File Transfer to Interactive Node</h2>
+<p>When you transfer files between your computer and the ABCI system, create an SSH tunnel and run the <code>scp</code> (<code>sftp</code>) command.</p>
+<div class="codehilite"><pre><span></span><code><span class="p">[</span><span class="n">yourpc</span> <span class="o">~</span><span class="p">]</span><span class="o">$</span> <span class="n">scp</span> <span class="o">-</span><span class="n">P</span> <span class="m">10022</span> <span class="n">local</span><span class="o">-</span><span class="n">file</span> <span class="n">username</span><span class="o">@</span><span class="n">localhost</span><span class="o">:</span><span class="n">remote</span><span class="o">-</span><span class="n">dir</span>
+<span class="n">Enter</span> <span class="n">passphrase</span> <span class="n">for</span> <span class="n">key</span><span class="o">:</span> <span class="o">&lt;-</span> <span class="n">Enter</span> <span class="n">passphrase</span>
+
+<span class="n">local</span><span class="o">-</span><span class="n">file</span>    <span class="m">100</span>% <span class="o">|***********************|</span>  <span class="n">file</span><span class="o">-</span><span class="n">size</span>  <span class="n">transfer</span><span class="o">-</span><span class="n">time</span>
+</code></pre></div>
+
+<p>If you have OpenSSH 7.3 or later and already added the configuration to your <code>$HOME/.ssh/config</code> as described at <a href="#proxyjump">ProxyJump</a>, you can directly run the <code>scp</code> (<code>sftp</code>) command.</p>
+<div class="codehilite"><pre>
+[yourpc ~]$ scp local-file <i>abci</i>:remote-dir
+</pre></div>
+
+<h2 id="changing-password">Changing Password</h2>
+<p>The user accounts of the ABCI system are managed by the LDAP.
+You do not need your password to login via SSH,
+but you will need your password when you use the User Portal and change the login shell.
+To change your password, use the <code>passwd</code> command.</p>
+<div class="codehilite"><pre><span></span><code><span class="p">[</span><span class="n">username</span><span class="o">@</span><span class="n">es1</span> <span class="o">~</span><span class="p">]</span><span class="o">$</span> <span class="n">passwd</span>
+<span class="n">Changing</span> <span class="n">password</span> <span class="n">for</span> <span class="n">user</span> <span class="n">username.</span>
+<span class="n">Current</span> <span class="n">Password</span><span class="o">:</span> <span class="o">&lt;-</span> <span class="n">Enter</span> <span class="n">the</span> <span class="n">current</span> <span class="n">password</span>
+<span class="n">New</span> <span class="n">password</span><span class="o">:</span> <span class="o">&lt;-</span> <span class="n">Enter</span> <span class="n">the</span> <span class="n">new</span> <span class="n">password</span>
+<span class="n">Retype</span> <span class="n">new</span> <span class="n">password</span><span class="o">:</span> <span class="o">&lt;-</span> <span class="n">Enter</span> <span class="n">the</span> <span class="n">new</span> <span class="n">password</span> <span class="n">again</span>
+<span class="n">passwd</span><span class="o">:</span> <span class="n">all</span> <span class="n">authentication</span> <span class="n">tokens</span> <span class="n">updated</span> <span class="n">successfully.</span>
+</code></pre></div>
+
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Password policies are as follows:</p>
+<ul>
+<li>Specify a character string with more than 15 characters arranged randomly. For example, words in Linux dictionary cannot be used. We recommend generating it automatically by using password creation software.</li>
+<li>Should contain all character types of lower-case letters, upper-case letters, numeric characters, and special characters.</li>
+<li>As special charaters, the following 33 types of characters can be used: (blank) ! " # $ % &amp; ' ( ) * + , - . / : ; &lt; = &gt; ? @ [ \ ] ^ _ ` { | } ~</li>
+<li>Do not contain multi-byte characters.</li>
+</ul>
+</div>
+<h2 id="login-shell">Login Shell</h2>
+<p>GNU bash is the login shell be default on the ABCI system.
+The tcsh and zsh are available as a login shell.
+To change the login shell, use the <code>chsh</code> command.
+The change become valid from the next login.
+It will take 10 minutes to update the login shell.</p>
+<div class="codehilite"><pre><span></span><code><span class="err">$</span><span class="w"> </span><span class="n">chsh</span><span class="w"> </span><span class="o">[</span><span class="n">option</span><span class="o">]</span><span class="w"> </span><span class="o">&lt;</span><span class="n">new_shell</span><span class="o">&gt;</span><span class="w"></span>
+</code></pre></div>
+
+<table>
+<thead>
+<tr>
+<th align="left">Option</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">-l</td>
+<td align="left">Display the list of available shells.</td>
+</tr>
+<tr>
+<td align="left">-s <em>new_shell</em></td>
+<td align="left">Change the login shell.</td>
+</tr>
+</tbody>
+</table>
+<p>Example) Change the current login shell into tcsh</p>
+<div class="codehilite"><pre><span></span><code><span class="p">[</span><span class="n">username</span><span class="o">@</span><span class="n">es1</span> <span class="o">~</span><span class="p">]</span><span class="o">$</span> <span class="n">chsh</span> <span class="o">-</span><span class="n">s</span> <span class="o">/</span><span class="n">bin</span><span class="o">/</span><span class="n">tcsh</span>
+<span class="n">Password</span> <span class="n">for</span> <span class="n">username</span><span class="o">@</span><span class="n">ABCI.LOCAL</span><span class="o">:</span> <span class="o">&lt;-</span> <span class="n">Enter</span> <span class="n">password</span>
+</code></pre></div>
+
+<p>When you login to the ABCI system, user environment is automatically set. If you need to customize environment variables such as <code>PATH</code> or <code>LD_LIBRARY_PATH</code>, edit a user configuration file in the following table.</p>
+<table>
+<thead>
+<tr>
+<th align="left">Login shell</th>
+<th align="left">User configuration file</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">bash</td>
+<td align="left">$HOME/.bash_profile</td>
+</tr>
+<tr>
+<td align="left">tcsh</td>
+<td align="left">$HOME/.cshrc</td>
+</tr>
+<tr>
+<td align="left">zsh</td>
+<td align="left">$HOME/.zshrc</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Make sure to add a new path at the end of <code>PATH</code>. If you add the new path to the beginning, you may not use the system properly.</p>
+</div>
+<p>The original user configuration files (templates) are stored in /etc/skel.</p>
+<h2 id="checking-abci-point">Checking ABCI Point</h2>
+<p>To display ABCI point usage and limitation, use the <code>show_point</code> command.
+When your ABCI point usage ratio will reach 100%, a new job cannot be submitted, and queued jobs will become error state at the beginning. (Any running jobs are not affected.)</p>
+<p>Example) Display ABCI point information.</p>
+<div class="codehilite"><pre><span></span><code><span class="o">[</span><span class="n">username@es1 ~</span><span class="o">]</span><span class="err">$</span><span class="w"> </span><span class="n">show_point</span><span class="w"></span>
+<span class="k">Group</span><span class="w">                 </span><span class="k">Disk</span><span class="w">            </span><span class="n">CloudStorage</span><span class="w">                    </span><span class="n">Used</span><span class="w">           </span><span class="n">Point</span><span class="w">   </span><span class="n">Used</span><span class="o">%</span><span class="w"></span>
+<span class="n">grpname</span><span class="w">                  </span><span class="mi">5</span><span class="w">                  </span><span class="mf">0.0124</span><span class="w">             </span><span class="mi">12</span><span class="p">,</span><span class="mf">345.6789</span><span class="w">         </span><span class="mi">100</span><span class="p">,</span><span class="mi">000</span><span class="w">      </span><span class="mi">12</span><span class="w"></span>
+<span class="w">  </span><span class="err">`</span><span class="o">-</span><span class="w"> </span><span class="n">username</span><span class="w">          </span><span class="o">-</span><span class="w">                         </span><span class="o">-</span><span class="w">                  </span><span class="mf">0.1234</span><span class="w">               </span><span class="o">-</span><span class="w">       </span><span class="mi">0</span><span class="w"></span>
+</code></pre></div>
+
+<table>
+<thead>
+<tr>
+<th align="left">Item</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">Group</td>
+<td align="left">ABCI group name</td>
+</tr>
+<tr>
+<td align="left">Disk</td>
+<td align="left">Disk assignment (TB)</td>
+</tr>
+<tr>
+<td align="left">CloudStorage</td>
+<td align="left">ABCI point usage of ABCI Cloud Storage</td>
+</tr>
+<tr>
+<td align="left">Used</td>
+<td align="left">ABCI point usage</td>
+</tr>
+<tr>
+<td align="left">Point</td>
+<td align="left">ABCI point limit</td>
+</tr>
+<tr>
+<td align="left">Used%</td>
+<td align="left">ABCI point usage ratio</td>
+</tr>
+</tbody>
+</table>
+<h2 id="checking-disk-quota">Checking Disk Quota</h2>
+<p>To display your disk usage and quota about home area and group area,
+use the <code>show_quota</code> command</p>
+<p>Example) Display disk information.</p>
+<div class="codehilite"><pre><span></span><code><span class="o">[</span><span class="n">username@es1 ~</span><span class="o">]</span><span class="err">$</span><span class="w"> </span><span class="n">show_quota</span><span class="w"></span>
+<span class="k">Disk</span><span class="w"> </span><span class="n">quotas</span><span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="k">user</span><span class="w"> </span><span class="n">username</span><span class="w"></span>
+<span class="w">  </span><span class="n">Directory</span><span class="w">                     </span><span class="n">used</span><span class="p">(</span><span class="n">GiB</span><span class="p">)</span><span class="w">       </span><span class="k">limit</span><span class="p">(</span><span class="n">GiB</span><span class="p">)</span><span class="w">          </span><span class="n">nfiles</span><span class="w"></span>
+<span class="w">  </span><span class="o">/</span><span class="n">home</span><span class="w">                               </span><span class="mi">100</span><span class="w">              </span><span class="mi">200</span><span class="w">           </span><span class="mi">1</span><span class="p">,</span><span class="mi">234</span><span class="w"></span>
+
+<span class="k">Disk</span><span class="w"> </span><span class="n">quotas</span><span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="n">ABCI</span><span class="w"> </span><span class="k">group</span><span class="w"> </span><span class="n">grpname</span><span class="w"></span>
+<span class="w">  </span><span class="n">Directory</span><span class="w">                     </span><span class="n">used</span><span class="p">(</span><span class="n">GiB</span><span class="p">)</span><span class="w">       </span><span class="k">limit</span><span class="p">(</span><span class="n">GiB</span><span class="p">)</span><span class="w">          </span><span class="n">nfiles</span><span class="w"></span>
+<span class="w">  </span><span class="o">/</span><span class="n">groups</span><span class="o">/</span><span class="n">grpname</span><span class="w">                   </span><span class="mi">1</span><span class="p">,</span><span class="mi">024</span><span class="w">            </span><span class="mi">2</span><span class="p">,</span><span class="mi">048</span><span class="w">         </span><span class="mi">123</span><span class="p">,</span><span class="mi">456</span><span class="w"></span>
+</code></pre></div>
+
+<table>
+<thead>
+<tr>
+<th align="left">Item</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">Directory</td>
+<td align="left">Assignment directory</td>
+</tr>
+<tr>
+<td align="left">used(GiB)</td>
+<td align="left">Disk usage</td>
+</tr>
+<tr>
+<td align="left">limit(GiB)</td>
+<td align="left">Disk quota limit</td>
+</tr>
+<tr>
+<td align="left">nfiles</td>
+<td align="left">Number of files</td>
+</tr>
+</tbody>
+</table>
+<h2 id="checking-abci-cloud-storage-usage">Checking ABCI Cloud Storage Usage</h2>
+<p>To display your ABCI Cloud Storage usage, use the <code>show_cs_usage</code> command</p>
+<p>Example) Show the latest information of ABCI Cloud Storage for ABCI group grpname.</p>
+<div class="codehilite"><pre><span></span><code><span class="o">[</span><span class="n">username@es1 ~</span><span class="o">]</span><span class="err">$</span><span class="w"> </span><span class="n">show_cs_usage</span><span class="w"></span>
+<span class="n">Cloud</span><span class="w"> </span><span class="n">Storage</span><span class="w"> </span><span class="k">Usage</span><span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="n">ABCI</span><span class="w"> </span><span class="n">groups</span><span class="w"></span>
+<span class="nc">Date</span><span class="w">           </span><span class="k">Group</span><span class="w">                   </span><span class="n">used</span><span class="p">(</span><span class="n">GiB</span><span class="p">)</span><span class="w"></span>
+<span class="mi">2020</span><span class="o">/</span><span class="mi">01</span><span class="o">/</span><span class="mi">13</span><span class="w">     </span><span class="n">grpname</span><span class="w">                       </span><span class="mi">162</span><span class="w"></span>
+</code></pre></div>
+
+<p>Example) Specify the date with -d yyyymmdd for ABCI group grpname. </p>
+<div class="codehilite"><pre><span></span><code><span class="o">[</span><span class="n">username@es1 ~</span><span class="o">]</span><span class="err">$</span><span class="w"> </span><span class="n">show_cs_usage</span><span class="w"> </span><span class="o">-</span><span class="n">d</span><span class="w"> </span><span class="mi">20191217</span><span class="w"></span>
+<span class="n">Cloud</span><span class="w"> </span><span class="n">Storage</span><span class="w"> </span><span class="k">Usage</span><span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="n">ABCI</span><span class="w"> </span><span class="n">groups</span><span class="w"></span>
+<span class="nc">Date</span><span class="w">           </span><span class="k">Group</span><span class="w">                   </span><span class="n">used</span><span class="p">(</span><span class="n">GiB</span><span class="p">)</span><span class="w"></span>
+<span class="mi">2019</span><span class="o">/</span><span class="mi">12</span><span class="o">/</span><span class="mi">17</span><span class="w">     </span><span class="n">grpname</span><span class="w">                       </span><span class="mi">124</span><span class="w"></span>
+</code></pre></div>
+                
+              
+              
+                
+
+
+              
+            </article>
+          </div>
+        </div>
+        
+      </main>
+      
+        
+<footer class="md-footer">
+  
+    <nav class="md-footer__inner md-grid" aria-label="Footer">
+      
+        <a href="../system-overview/" class="md-footer__link md-footer__link--prev" rel="prev">
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+          </div>
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              ABCI System Overview
+            </div>
+          </div>
+        </a>
+      
+      
+        <a href="../job-execution/" class="md-footer__link md-footer__link--next" rel="next">
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              Job Execution
+            </div>
+          </div>
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4z"/></svg>
+          </div>
+        </a>
+      
+    </nav>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-footer-copyright">
+        
+          <div class="md-footer-copyright__highlight">
+            Copyright &copy; 2021 National Institute of Advanced Industrial Science and Technology (AIST)
+          </div>
+        
+        Made with
+        <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+          Material for MkDocs
+        </a>
+        
+      </div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    <script id="__config" type="application/json">{"base": "..", "features": ["toc.integrate"], "translations": {"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing"}, "search": "../assets/javascripts/workers/search.fe42c31b.min.js", "version": null}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.4ea5477f.min.js"></script>
+      
+    
+  </body>
+</html>
