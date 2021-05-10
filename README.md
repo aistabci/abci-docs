@@ -24,10 +24,10 @@ This repository consists of the following [MkDocs](https://www.mkdocs.org/) docu
 You can clone the repository to your local environment and run the builtin development server.
 
 ```
-$ pip install mkdocs
-$ pip install mkdocs-material
-$ pip install mkdocs-redirects
-$ pip install ghp-import # for deployment to GitHub pages
+$ pip3 install mkdocs
+$ pip3 install mkdocs-material
+$ pip3 install mkdocs-redirects
+$ pip3 install ghp-import # for deployment to GitHub pages
 $ git clone https://github.com/aistairc/abci-docs.git
 $ cd abci-docs
 $ cd root/ or ja/ or en/
