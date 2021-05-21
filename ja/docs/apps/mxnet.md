@@ -105,7 +105,7 @@ Horovodを利用するMXNetサンプルプログラム `mxnet_train.py` で分�
 
 **インタラクティブジョブとして実行**
 
-この例では、インタラクティブノードの4つのGPUを利用して分散学習します。
+この例では、計算ノードの4つのGPUを利用して分散学習します。
 
 ```
 [username@es1 ~]$ qrsh -g grpname -l rt_G.large=1 -l h_rt=1:00:00

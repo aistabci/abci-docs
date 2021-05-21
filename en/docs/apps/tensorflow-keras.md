@@ -105,7 +105,7 @@ The following shows how to execute a sample program `tensorflow2_keras_mnist.py`
 
 **Run as an interactive job**
 
-In this example, using 4 GPUs in an interactive node for distributed learning.
+In this example, using 4 GPUs in a compute node for distributed learning.
 
 ```
 [username@es1 ~]$ qrsh -g grpname -l rt_G.large=1 -l h_rt=1:00:00
