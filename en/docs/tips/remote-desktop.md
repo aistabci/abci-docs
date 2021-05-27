@@ -7,7 +7,7 @@ This page describes how to enable Remote Desktop on ABCI with VNC (Virtual Netwo
 * Login to the interactive node, and launch ``vncserver`` for initial settings 
 
 ```
-[username@es1 ~] $ vncserver
+[username@es1 ~]$ vncserver
 You will require a password to access your desktops.
 
 Password:
@@ -25,7 +25,7 @@ Log file is /home/username/.vnc/es4.abci.local:1.log
 * Stop VNC server
 
 ```
-[username@g0001 ~] vncserver -kill :1
+[username@es1 ~]$ vncserver -kill :1
 ```
 
 * Edit some configuration files
@@ -93,14 +93,14 @@ To connect to the VNC server by using Port 5901 of your computer, you need to cr
 If you have OpenSSH 7.3 or later, you can create an SSH tunnel with the following command:
 
 ```
-[user@localmachine] $ ssh -N -L 5901:g0001.abci.local:5901 -J %r@as.abci.ai username@es
+[user@localmachine]$ ssh -N -L 5901:g0001.abci.local:5901 -J %r@as.abci.ai username@es
 ```
 
 If you cannot use ProxyJump, you can also create one with the following command:
 
 ```
-[user@localmachine] $ ssh -L 10022:es:22 -l username as.abci.ai
-[user@localmachine] $ ssh -p 10022 -N -L 5901:g0001.abci.local:5901 -l username localhost
+[user@localmachine]$ ssh -L 10022:es:22 -l username as.abci.ai
+[user@localmachine]$ ssh -p 10022 -N -L 5901:g0001.abci.local:5901 -l username localhost
 ```
 
 #### Launch VNC client
@@ -108,7 +108,7 @@ If you cannot use ProxyJump, you can also create one with the following command:
 In macOS, VNC client is integrated in Finder. So, you can connect to the VNC server by the following command:
 
 ```
-[user@localmachine] $ open vnc://localhost:5901/
+[user@localmachine]$ open vnc://localhost:5901/
 ```
 
 If not using macOS, you need to install a VNC client separately and configure it to connect to the VNC server.
@@ -146,9 +146,8 @@ TigerVNC server sessions:
 X DISPLAY #     PROCESS ID
 :1              5081
 
-[username@g0001 ~] 
-[username@g0001 ~] vncserver -kill :1
+[username@g0001 ~]$ vncserver -kill :1
 Killing Xvnc process ID XXXXXX
-[username@g0001 ~] exit
-[username@es1 ~]
+[username@g0001 ~]$ exit
+[username@es1 ~]$
 ```

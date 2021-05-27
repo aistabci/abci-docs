@@ -1,41 +1,25 @@
 # ABCI Singularity エンドポイント
 
-
 ## 概要
 
 ABCI Singularity エンドポイントでは、ABCI 内部向けに Singularity Container サービスを提供しています。このサービスは、SingularityPRO で用いるコンテナイメージをリモートビルドするための Remote Builder と、作成したコンテナイメージを保管・共有するための Container Library から成ります。ABCI 内部向けのサービスであるため、外部から直接アクセスすることはできません。
 
 以下では、ABCI において本サービスを利用するための基本的な操作を説明します。詳細は Sylabs 社の[ドキュメント](https://sylabs.io/docs/)を参照下さい。
 
-<!-- 削除
-!!! tip
-    SingularityPRO 3.5 を使って、[ローカルビルドで作成](09.md#build-a-singularity-image)することもできます。
-
-!!! note
-    ABCI 内部向けのサービスであり、外部から直接アクセスすることはできません。
- -->
-
-
 ## 事前準備
-
 
 ### モジュールのロード
 
 本サービスを利用するため、以下のように SingularityPRO のモジュールをロードして下さい。
 
 ```
-[username@es1 ~]$ module load singularitypro/3.5
+[username@es1 ~]$ module load singularitypro
 ```
-
-!!! note
-    Singularity 2.6.1 では本サービスを利用できません。
-
 
 ### アクセストークンの取得
 
 最初に、本サービスの認証に必要なアクセストークンを取得します。
-<!--ABCI の利用者は誰でも取得することができます。-->
-インタラクティブノードで `get_singularity_token` コマンドを実行して下さい。発行には ABCI のパスワード (利用者ポータルへのログインに使用するパスワード) の入力が必要です。<!--計算ノードやメモリインテンシブノードでも実行できます。-->
+インタラクティブノードで `get_singularity_token` コマンドを実行して下さい。発行には ABCI のパスワード (利用者ポータルへのログインに使用するパスワード) の入力が必要です。
 
 ```
 [username@es1 ~]$ get_singularity_token
@@ -47,12 +31,7 @@ just a moment, please...
 取得したアクセストークンは、この後の登録に必要になりますので、安全なところに控えておいて下さい。
 
 !!! note
-    アクセストークンは、非常に長い１行の文字列で作られているため、途中に改行などが入らないよう注意して下さい。
-
-<!--
-!!! warning
-    現時点では、一度発行したアクセストークン(後述)を無効化することはできません。-->
-
+    アクセストークンは、非常に長い1行の文字列で作られているため、途中に改行などが入らないよう注意して下さい。
 
 ### リモートエンドポイントの設定確認
 
@@ -60,19 +39,28 @@ just a moment, please...
 
 ```
 [username@es1 ~]$ singularity remote list
-NAME         URI                  GLOBAL
-[ABCI]       cloud.se.abci.local  YES
-SylabsCloud  cloud.sylabs.io      YES
+Cloud Services Endpoints
+========================
+
+NAME         URI                  ACTIVE  GLOBAL  EXCLUSIVE
+ABCI         cloud.se.abci.local  YES     YES     NO
+SylabsCloud  cloud.sylabs.io      NO      YES     NO
+
+Keyservers
+==========
+
+URI                         GLOBAL  INSECURE  ORDER
+https://keys.se.abci.local  YES     NO        1*
+
+* Active cloud services keyserver
 [username@es1 ~]$
 ```
 
-上記は "[]" で囲まれている `ABCI` が現在のデフォルトのエンドポイントであることを示しています。
-
 !!! note
-    SylabsCloud は [Sylabs社](https://sylabs.io/) が運営するパブリックサービスのエンドポイントです。<https://cloud.sylabs.io/> にサインインし、アクセストークンを取得することで利用可能になります。
+    SylabsCloud は [Sylabs](https://sylabs.io/) が運営するパブリックサービスのエンドポイントです。<https://cloud.sylabs.io/> にサインインし、アクセストークンを取得することで利用可能になります。
  
 !!! note
-    Singularity のコンテナイメージは、Singularity Global Client を用いて取得することも可能です。詳細は[こちら](tips/sregistry-cli.md)を参照下さい。
+    Singularity のコンテナイメージは、Singularity Global Client を用いて取得することも可能です。詳細は[Singularity Global Clientの利用](tips/sregistry-cli.md)を参照して下さい。
 
 
 ### アクセストークンの登録
@@ -96,7 +84,7 @@ INFO:    API Key Verified!
 
 ## Remote Builder
 
-最初に、コンテナイメージをビルドするための定義ファイルを作成して下さい。以下の例では、Docker Hub から取得した Ubuntu のコンテナイメージをベースとして、追加パッケージのインストールと、コンテナを実行した時に実行されるコマンドを指定しています。定義ファイルの詳細については、[Definition Files](https://repo.sylabs.io/c/0f6898986ad0b646b5ce6deba21781ac62cb7e0a86a5153bbb31732ee6593f43/guides/singularitypro35-user-guide/definition_files.html) を参照して下さい。
+最初に、コンテナイメージをビルドするための定義ファイルを作成して下さい。以下の例では、Docker Hub から取得した Ubuntu のコンテナイメージをベースとして、追加パッケージのインストールと、コンテナを実行した時に実行されるコマンドを指定しています。定義ファイルの詳細については、[Definition Files](https://repo.sylabs.io/c/0f6898986ad0b646b5ce6deba21781ac62cb7e0a86a5153bbb31732ee6593f43/guides/singularitypro37-user-guide/definition_files.html) を参照して下さい。
 
 ```
 [username@es1 ~]$ vi ubuntu.def
@@ -133,7 +121,7 @@ INFO:    Build complete: ubuntu.sif
 
 ```
 [username@es1 ~]$ qrsh -g grpname -l rt_C.small=1 -l h_rt=1:00:00
-[username@g0001 ~]$ module load singularitypro/3.5
+[username@g0001 ~]$ module load singularitypro
 [username@g0001 ~]$ singularity run ubuntu.sif
 Description:	Ubuntu 18.04.5 LTS
 [username@g0001 ~]$ 

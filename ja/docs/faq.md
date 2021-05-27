@@ -14,28 +14,22 @@ $ stty -ixon
 
 一般にファイルシステムにはブロックサイズがあり、どんなに小さいファイルであってもブロックサイズ分の容量を消費します。
 
-ABCIでは、グループ領域のブロックサイズは128KB、ホーム領域のブロックサイズは4KBとしています。このため、グループ領域に小さいファイルを大量に作ると利用効率が下がります。例えば、4KB未満のファイルを作る場合には、ホーム領域の約32倍の容量が必要になります。
+ABCIでは、グループ領域1〜3のブロックサイズは128KB、ホーム領域、グループ領域のブロックサイズは4KBとしています。このため、グループ領域1〜3に小さいファイルを大量に作ると利用効率が下がります。例えば、4KB未満のファイルを作る場合には、ホーム領域の約32倍の容量が必要になります。
 
 ## Q. 認証が必要なコンテナレジストリをSingularityで利用できない
 
-Singularity version 2.6およびSingularityPRO version 3.5には``docker login``相当の機能として、環境変数で認証情報を与える機能があります。
+SingularityPROには``docker login``相当の機能として、環境変数で認証情報を与える機能があります。
 
 ```shell
-[username@es ~]$ export SINGULARITY_DOCKER_USERNAME='username'
-[username@es ~]$ export SINGULARITY_DOCKER_PASSWORD='password'
-[username@es ~]$ singularity pull docker://myregistry.azurecr.io/namespace/repo_name:repo_tag
+[username@es1 ~]$ export SINGULARITY_DOCKER_USERNAME='username'
+[username@es1 ~]$ export SINGULARITY_DOCKER_PASSWORD='password'
+[username@es1 ~]$ singularity pull docker://myregistry.azurecr.io/namespace/repo_name:repo_tag
 ```
 
-Singularity version 2.6の認証に関する詳細は、以下をご参照ください。
+SingularityPRO の認証に関する詳細は、以下をご参照ください。
 
-* [Singularity 2.6 User Guide](https://www.sylabs.io/guides/2.6/user-guide/)  
-    * [How do I specify my Docker image?](https://sylabs.io/guides/2.6/user-guide/singularity_and_docker.html#how-do-i-specify-my-docker-image)
-    * [Custom Authentication](https://sylabs.io/guides/2.6/user-guide/singularity_and_docker.html#custom-authentication)
-
-SingularityPRO version 3.5の認証に関する詳細は、以下をご参照ください。
-
-* [SingularityPRO 3.5 User Guide](https://repo.sylabs.io/c/0f6898986ad0b646b5ce6deba21781ac62cb7e0a86a5153bbb31732ee6593f43/guides/singularitypro35-user-guide/)
-    * [Making use of private images from Private Registries](https://repo.sylabs.io/c/0f6898986ad0b646b5ce6deba21781ac62cb7e0a86a5153bbb31732ee6593f43/guides/singularitypro35-user-guide/singularity_and_docker.html?highlight=support%20docker%20oci#making-use-of-private-images-from-private-registries)
+* [SingularityPRO 3.7 User Guide](https://repo.sylabs.io/c/0f6898986ad0b646b5ce6deba21781ac62cb7e0a86a5153bbb31732ee6593f43/guides/singularitypro37-user-guide/)
+    * [Making use of private images from Private Registries](https://repo.sylabs.io/c/0f6898986ad0b646b5ce6deba21781ac62cb7e0a86a5153bbb31732ee6593f43/guides/singularitypro37-user-guide/singularity_and_docker.html?highlight=support%20docker%20oci#making-use-of-private-images-from-private-registries)
 
 ## Q. NGC CLIが実行できない
 
@@ -48,23 +42,10 @@ ImportError: /lib64/libc.so.6: version `GLIBC_2.18' not found (required by /tmp/
 
 以下のようなシェルスクリプトを用意することで、Singularityを使って実行させることができます。NGC CLIに限らず、一般的に使えるテクニックです。
 
-**Singularity 2.6**
-
 ```
 #!/bin/sh
 source /etc/profile.d/modules.sh
-module load singularity/2.6.1
-
-NGC_HOME=$HOME/ngc
-singularity exec $NGC_HOME/ubuntu-18.04.simg $NGC_HOME/ngc $@
-```
-
-**SingularityPRO 3.5**
-
-```
-#!/bin/sh
-source /etc/profile.d/modules.sh
-module load singularitypro/3.5
+module load singularitypro
 
 NGC_HOME=$HOME/ngc
 singularity exec $NGC_HOME/ubuntu-18.04.simg $NGC_HOME/ngc $@
@@ -72,7 +53,7 @@ singularity exec $NGC_HOME/ubuntu-18.04.simg $NGC_HOME/ngc $@
 
 ## Q. 複数の計算ノードを割り当て、それぞれの計算ノードで異なる処理をさせたい
 
-`qrsh`や`qsub`で`-l rt_F=N`オプションを与えると、N個の計算ノードを割り当てることができます。割り当てられた計算ノードでそれぞれ異なる処理をさせたい場合にもMPIが使えます。
+`qrsh`や`qsub`で`-l rt_F=N`オプションもしくは`-l rt_AF=N`オプションを与えると、N個の計算ノードを割り当てることができます。割り当てられた計算ノードでそれぞれ異なる処理をさせたい場合にもMPIが使えます。
 
 ```
 $ module load openmpi/2.1.6
@@ -100,7 +81,7 @@ Host as.abci.ai
 
 ## Q. Open MPIの新しいバージョンが使いたい
 
-ABCIではCUDA対応版Open MPIとCUDA非対応版Open MPIを提供しており、提供の状況は、[MPIの利用](08.md#open-mpi)で確認できます。
+ABCIではCUDA対応版Open MPIとCUDA非対応版Open MPIを提供しており、提供の状況は、[Open MPI](mpi.md#open-mpi)で確認できます。
 
 ABCIが提供するEnvironment Modulesでは、事前に`cuda`モジュールがロードされている場合に限り、`openmpi`モジュールのロード時にCUDA対応版Open MPIの環境設定を試みます。
 
@@ -114,26 +95,27 @@ Currently Loaded Modulefiles:
   1) cuda/10.0/10.0.130.1   2) openmpi/2.1.6
 ```
 
-CUDA対応版MPIが提供されていない組み合わせ(`cuda/10.0/10.0.130.1`, `openmpi/3.1.3`)では環境設定に失敗し、`openmpi`モジュールはロードされません。
+CUDA対応版MPIが提供されていない組み合わせ(`cuda/9.1/9.1.85.3`, `openmpi/3.1.6`)では環境設定に失敗し、`openmpi`モジュールはロードされません。
 
 ```
-$ module load cuda/10.0/10.0.130.1
-$ module load openmpi/3.1.3
+$ module load cuda/9.1/9.1.85.3
+$ module load openmpi/3.1.6
 ERROR: loaded cuda module is not supported.
-WARINING: openmpi/3.1.3 is supported only host version
+WARNING: openmpi/3.1.6 cannot be loaded due to missing prereq.
+HINT: at least one of the following modules must be loaded first: cuda/9.2/9.2.88.1 cuda/9.2/9.2.148.1 cuda/10.0/10.0.130.1 cuda/10.1/10.1.243 cuda/10.2/10.2.89 cuda/11.0/11.0.3 cuda/11.1/11.1.1 cuda/11.2/11.2.2
 $ module list
 Currently Loaded Modulefiles:
-  1) cuda/10.0/10.0.130.1
+  1) cuda/9.1/9.1.85.3
 ```
 
 一方、Horovodによる並列化のためにOpen MPIが使いたいなど、Open MPIのCUDA版機能が不要な場合もあります。この場合は、先に`openmpi`モジュールをロードすることで、より新しいバージョンのCUDA非対応版Open MPIを利用できます。
 
 ```
-$ module load openmpi/3.1.3
-$ module load cuda/10.0/10.0.130.1
+$ module load openmpi/3.1.6
+$ module load cuda/9.1/9.1.85.3
 module list
 Currently Loaded Modulefiles:
-  1) openmpi/3.1.3          2) cuda/10.0/10.0.130.1
+  1) openmpi/3.1.6       2) cuda/9.1/9.1.85.3
 ```
 
 !!! note
@@ -146,7 +128,7 @@ ABCI内部サーバ`vws1`の3000/tcpポートで動作していますので、�
 
 SSHトンネルの設定をしてください。
 以下の例では、ローカルPCの`$HOME/.ssh/config`に、ProxyCommandを用いてas.abci.ai経由でABCI内部サーバにSSHトンネル接続する設定をしています。
-ABCIシステム利用環境の[SSHクライアントによるログイン::一般的なログイン方法](./02.md#general-method)も参考にしてください。
+ABCIシステム利用環境の[SSHクライアントによるログイン::一般的なログイン方法](getting-started.md#general-method)も参考にしてください。
 
 ```shell
 Host *.abci.local
@@ -187,10 +169,21 @@ FATAL:   While making image from oci registry: while building SIF from layers: u
 
 実行例）
 ```
-[username@g0001~]$ PATH="$PATH:/usr/sbin" 
-[username@g0001~]$ module load singularitypro/3.5
-[username@g0001~]$ singularity run --nv docker://caffe2ai/caffe2:latest
+[username@g0001 ~]$ export PATH="$PATH:/usr/sbin"
+[username@g0001 ~]$ module load singularitypro
+[username@g0001 ~]$ singularity run --nv docker://caffe2ai/caffe2:latest
 ```
+
+## Q. 計算ノードでsingularity build/pullすると容量不足でエラーになる {#q-insufficient-disk-space-for-singularity-build}
+
+singularity build/pull コマンドは一時ファイルの作成場所として `/tmp` を使用します。
+大きなコンテナを計算ノード上でsingularity build/pullする際に `/tmp` の容量が足りずエラーになる場合があります。
+容量が足りずエラーになる場合は、次のようにローカルスクラッチを使用するよう`SINGULARITY_TMPDIR`環境変数を設定してください。
+
+```
+[username@g0001 ~]$ SINGULARITY_TMPDIR=$SGE_LOCALDIR singularity pull docker://nvcr.io/nvidia/tensorflow:20.12-tf1-py3
+```
+
 
 ## Q. ジョブ ID を調べるには？ {#q-how-can-i-find-the-job-id}
 
@@ -275,3 +268,76 @@ ABCIでは、割り当てられた全計算ノードで並列にLinuxコマン�
 g0001: g0001.abci.local
 g0002: g0002.abci.local
 ```
+
+
+## Q. グループ領域のデータ移行について知りたい {#q-what-are-the-new-group-area-and-data-migration}
+
+2021年度に、ストレージシステムの増強を行いました。詳細は[ストレージシステム](https://docs.abci.ai/ja/01/#storage-systems)を参照ください。
+ストレージシステムの増強に伴い、グループ領域の構成変更を行います。具体的には、2020年度まで使用していたグループ領域から新しいグループ領域へのデータ移行を行います。
+
+2020年度まで使用していたグループ領域(以降、**旧領域**)は、新規増設予定の計算資源(計算ノード(A))からアクセスできません。
+このため、新たに計算ノード(A)からアクセス可能なグループ領域(以降、**新領域**)を作成し、そちらへの移行を行います。
+データの移行は運用側で行いますので、利用者が作業をする必要はありません。
+
+2020年度まで**旧領域**`/groups[1-2]/gAA50NNN`を使用していた利用者には、4月から新しく**新領域**`/groups/gAA50NNN`を割り当てています。
+**旧領域、新領域**ともにすべてのインタラクティブノードとすべての既存の計算ノード(計算ノード(V))からアクセス可能です。
+
+なお、2021年度に新規に作成されたABCIグループについては、**新領域**のみが割り当てられるためデータ移行の対象ではなく、データ移行の影響を受けません。
+
+次にデータ移行について説明します。
+
+### 基本的な方針
+
+* 旧領域のデータを新領域に運用側がバックグラウンドでコピーします。全利用者データのコピー完了までには1年間かかる予定です。
+* 利用者は、コピー中も旧領域をそのまま使えますが、可能な限り新領域を利用してください。
+* コピー完了後、シンボリックリンクの切り替えによって旧領域への参照を新領域への参照に書き換えます。
+
+### 新領域/groups/gAA50NNNについて
+
+* 旧領域のデータを新領域の`/groups/gAA50NNN/migrated_from_SFA_GPFS/`にコピーします。ただし、データ移行完了までは利用者が新領域のこのディレクトリにアクセスすることはできません。
+* 新領域のこのディレクトリ以外は自由に使用できます。
+* データコピーにともないディスク使用量が増加します。このため、移行期間中は、利用者ポータルで申請したグループディスク量(以降、クォータ値)の2倍の値を、新領域のディスク使用量上限値に設定します。移行完了後、一定の猶予期間を設けて、新領域のディスク使用量上限値を、クォータ値と同じ値に設定します。
+
+### 旧領域/groups[1-2]/gAA50NNNについて
+
+#### データ移行中
+
+* データ移行中は、利用者は自由に旧領域に読み込み/書き込み/ファイルの削除が可能です。
+* ただし、データ移行のコストが増大するため、可能な限り新領域を利用してください。
+* また、データ移行コスト削減のため、可能なかぎり不要なファイルは削除してください。
+* 従来どおり、利用者ポータルで申請したグループディスク量(クォータ値)が、旧領域のディスク使用量上限値として設定されています。従来通り、利用者ポータルからクォータ値の増減を申請可能です。
+
+#### データ移行完了確認のための期間
+
+* データ移行後、データ移行完了の確認のために、旧領域に置かれていたデータが、旧領域としても新領域としても参照できない期間が数日発生する予定です。
+* この期間、利用者は自由に新領域に読み込み/書き込み/ファイルの削除が可能です。
+
+#### データ移行完了後
+
+* 旧領域に置かれていたデータは、従来と同じパス`/groups[1-2]/gAA50NNN`でアクセス可能になります。
+* このパス`/groups[1-2]/gAA50NNN`は、新領域の`/groups/gAA50NNN/migrated_from_SFA_GPFS/`へのシンボリックリンクで実現されます。
+* データ移行完了後、旧領域上の`/groups[1-2]/gAA50NNN`にはアクセスできなくなります。
+
+
+## Q. ABCI 1.0 Environment Modulesを利用したい {#q-how-to-use-abci-10-environment-modules}
+
+ABCIは、2021年5月にABCI 2.0にアップグレードされました。
+このアップグレードにともない、2020年度時点のEnvironment Modules(以降、**ABCI 1.0 Environment Modules**)を`/apps/modules-abci-1.0`としてインストールしました。
+ABCI 1.0 Environment Modulesを利用したい場合は、以下のように`MODULE_HOME`環境変数を設定し、設定ファイルを読み込んでください。
+
+なお、ABCI 1.0 Environment Modulesはサポート対象外です。あらかじめご了承ください。
+
+sh, bashの場合:
+
+```
+export MODULE_HOME=/apps/modules-abci-1.0
+. ${MODULE_HOME}/etc/profile.d/modules.sh
+```
+
+csh, tcshの場合:
+
+```
+setenv MODULE_HOME /apps/modules-abci-1.0
+source ${MODULE_HOME}/etc/profile.d/modules.csh
+```
+

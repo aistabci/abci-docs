@@ -24,9 +24,10 @@ This repository consists of the following [MkDocs](https://www.mkdocs.org/) docu
 You can clone the repository to your local environment and run the builtin development server.
 
 ```
-$ pip install mkdocs
-$ pip install "mkdocs-material<5"
-$ pip install ghp-import # for deployment to GitHub pages
+$ pip3 install mkdocs
+$ pip3 install mkdocs-material
+$ pip3 install mkdocs-redirects
+$ pip3 install ghp-import # for deployment to GitHub pages
 $ git clone https://github.com/aistairc/abci-docs.git
 $ cd abci-docs
 $ cd root/ or ja/ or en/
@@ -40,7 +41,7 @@ And, open 'http://127.0.0.1:8000/' using a web browser.
 To generate the static versions of documents:
 
 ```
-$ make -f site.mk build
+$ make build
 (static files are generated under site/ directory)
 ```
 
@@ -53,5 +54,5 @@ $ ghp-import -m "(specific message)" -c docs.abci.ai -r origin -b gh-pages -p si
 or, just run:
 
 ```
-$ make -f site.mk publish-head
+$ make publish-head
 ```

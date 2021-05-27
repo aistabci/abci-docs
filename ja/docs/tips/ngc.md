@@ -1,6 +1,6 @@
 # NVIDIA NGC
 
-[NVIDIA NGC](https://ngc.nvidia.com/)（以下、NGCという）は、GPUに最適化されたディープラーニングフレームワークコンテナやHPCアプリケーションコンテナのDockerイメージと、それらを配布するためのNGCコンテナレジストリを提供しています。ABCIでは、[Singularity](09.md#singularity)を利用することで、NGCが提供するDockerイメージを簡便に実行することができます。
+[NVIDIA NGC](https://ngc.nvidia.com/)（以下、NGCという）は、GPUに最適化されたディープラーニングフレームワークコンテナやHPCアプリケーションコンテナのDockerイメージと、それらを配布するためのNGCコンテナレジストリを提供しています。ABCIでは、[Singularity](../containers.md#singularity)を利用することで、NGCが提供するDockerイメージを簡便に実行することができます。
 
 ここでは、NGCコンテナレジストリに登録されているDockerイメージをABCIで利用する手順について説明します。
 
@@ -60,18 +60,8 @@ docker://nvcr.io/nvidia/tensorflow:19.06-py2
 
 インタラクティブノード上でTensorFlowのSingularityイメージを生成します。
 
-**Singularity 2.6**
-
 ```
-[username@es1 ~]$ module load singularity/2.6.1
-[username@es1 ~]$ singularity pull docker://nvcr.io/nvidia/tensorflow:19.06-py2
-```
-``tensorflow-19.06-py2.simg``という名前のイメージファイルが生成されます。
-
-**SingularityPRO 3.5**
-
-```
-[username@es1 ~]$ module load singularitypro/3.5
+[username@es1 ~]$ module load singularitypro
 [username@es1 ~]$ singularity pull docker://nvcr.io/nvidia/tensorflow:19.06-py2
 ```
 ``tensorflow_19.06-py2.sif``という名前のイメージファイルが生成されます。
@@ -81,22 +71,9 @@ docker://nvcr.io/nvidia/tensorflow:19.06-py2
 
 1ノード占有でインタラクティブジョブを起動し、サンプルプログラム cnn_mnist.py を実行します。
 
-**Singularity 2.6**
-
 ```
 [username@es1 ~]$ qrsh -g grpname -l rt_F=1 -l h_rt=1:00:00
-[username@g0001 ~]$ module load singularity/2.6.1
-[username@g0001 ~]$ wget https://raw.githubusercontent.com/tensorflow/tensorflow/v1.13.1/tensorflow/examples/tutorials/layers/cnn_mnist.py
-[username@g0001 ~]$ singularity run --nv tensorflow-19.06-py2.simg python cnn_mnist.py
-:
-{'loss': 0.10828217, 'global_step': 20000, 'accuracy': 0.9667}
-```
-
-**SingularityPRO 3.5**
-
-```
-[username@es1 ~]$ qrsh -g grpname -l rt_F=1 -l h_rt=1:00:00
-[username@g0001 ~]$ module load singularitypro/3.5
+[username@g0001 ~]$ module load singularitypro
 [username@g0001 ~]$ wget https://raw.githubusercontent.com/tensorflow/tensorflow/v1.13.1/tensorflow/examples/tutorials/layers/cnn_mnist.py
 [username@g0001 ~]$ singularity run --nv tensorflow_19.06-py2.sif python cnn_mnist.py
 :
@@ -105,8 +82,6 @@ docker://nvcr.io/nvidia/tensorflow:19.06-py2
 
 バッチジョブでも同様に実行できます。
 
-**Singularity 2.6**
-
 ```
 #!/bin/sh
 #$ -l rt_F=1
@@ -114,21 +89,7 @@ docker://nvcr.io/nvidia/tensorflow:19.06-py2
 #$ -cwd
 
 source /etc/profile.d/modules.sh
-module load singularity/2.6.1
-wget https://raw.githubusercontent.com/tensorflow/tensorflow/v1.13.1/tensorflow/examples/tutorials/layers/cnn_mnist.py
-singularity run --nv tensorflow-19.06-py2.simg python cnn_mnist.py
-```
-
-**SingularityPRO 3.5**
-
-```
-#!/bin/sh
-#$ -l rt_F=1
-#$ -j y
-#$ -cwd
-
-source /etc/profile.d/modules.sh
-module load singularitypro/3.5
+module load singularitypro
 wget https://raw.githubusercontent.com/tensorflow/tensorflow/v1.13.1/tensorflow/examples/tutorials/layers/cnn_mnist.py
 singularity run --nv tensorflow_19.06-py2.sif python cnn_mnist.py
 ```
@@ -141,21 +102,9 @@ NGCのコンテナイメージのうち一部は、MPIでの並列実行に対�
 
 TensorFlowイメージにインストールされているMPIのバージョンを確認します。
 
-**Singularity 2.6**
-
 ```
-[username@es1 ~] $ module load singularity/2.6.1
-[username@es1 ~] $ singularity exec tensorflow-19.06-py2.simg mpirun --version
-mpirun (Open MPI) 3.1.3
-
-Report bugs to http://www.open-mpi.org/community/help/
-```
-
-**SingularityPRO 3.5**
-
-```
-[username@es1 ~] $ module load singularitypro/3.5
-[username@es1 ~] $ singularity exec tensorflow_19.06-py2.sif mpirun --version
+[username@es1 ~]$ module load singularitypro
+[username@es1 ~]$ singularity exec tensorflow_19.06-py2.sif mpirun --version
 mpirun (Open MPI) 3.1.3
 
 Report bugs to http://www.open-mpi.org/community/help/
@@ -164,10 +113,10 @@ Report bugs to http://www.open-mpi.org/community/help/
 次にABCIで利用できるOpen MPIのバージョンを確認します。
 
 ```
-[username@es1 ~] $ module avail openmpi
+[username@es1 ~]$ module avail openmpi
 
 -------------------------------------------- /apps/modules/modulefiles/mpi ---------------------------------------------
-openmpi/2.1.6(default) openmpi/3.1.6          openmpi/4.0.3
+openmpi/2.1.6          openmpi/3.1.6          openmpi/4.0.5(default)
 ```
 
 ``openmpi/3.1.6`` を使うのが適当のようです。少なくともメジャーバージョンが一致している必要があります。
@@ -176,48 +125,12 @@ openmpi/2.1.6(default) openmpi/3.1.6          openmpi/4.0.3
 
 2ノード占有でインタラクティブジョブを起動し、必要なモジュールを読み込みます。
 
-**Singularity 2.6**
-
 ```
 [username@es1 ~]$ qrsh -g grpname -l rt_F=2 -l h_rt=1:00:00
-[username@g0001 ~]$ module load singularity/2.6.1 openmpi/3.1.6
-```
-
-**SingularityPRO 3.5**
-
-```
-[username@es1 ~]$ qrsh -g grpname -l rt_F=2 -l h_rt=1:00:00
-[username@g0001 ~]$ module load singularitypro/3.5 openmpi/3.1.6
+[username@g0001 ~]$ module load singularitypro openmpi/3.1.6
 ```
 
 1ノードあたり4基のGPUがあり、2ノード占有では計8基のGPUが使えることになります。この場合、8個のプロセスをノードあたり4個ずつ並列に起動し、サンプルプログラム tensorflow_mnist.py を実行します。
-
-**Singularity 2.6**
-
-```
-[username@g0001 ~]$ wget https://raw.githubusercontent.com/horovod/horovod/v0.16.4/examples/tensorflow_mnist.py
-[username@g0001 ~]$ mpirun -np 8 -npernode 4 singularity run --nv tensorflow-19.06-py2.simg python tensorflow_mnist.py
-:
-INFO:tensorflow:loss = 2.1563044, step = 30 (0.153 sec)
-INFO:tensorflow:loss = 2.1480849, step = 30 (0.153 sec)
-INFO:tensorflow:loss = 2.1783454, step = 30 (0.152 sec)
-INFO:tensorflow:loss = 2.1527252, step = 30 (0.152 sec)
-INFO:tensorflow:loss = 2.1556997, step = 30 (0.152 sec)
-INFO:tensorflow:loss = 2.1814752, step = 30 (0.153 sec)
-INFO:tensorflow:loss = 2.190885, step = 30 (0.153 sec)
-INFO:tensorflow:loss = 2.1524186, step = 30 (0.153 sec)
-INFO:tensorflow:loss = 1.7863444, step = 40 (0.153 sec)
-INFO:tensorflow:loss = 1.7349662, step = 40 (0.153 sec)
-INFO:tensorflow:loss = 1.8009219, step = 40 (0.153 sec)
-INFO:tensorflow:loss = 1.7753524, step = 40 (0.154 sec)
-INFO:tensorflow:loss = 1.7744101, step = 40 (0.154 sec)
-INFO:tensorflow:loss = 1.7266351, step = 40 (0.154 sec)
-INFO:tensorflow:loss = 1.7221795, step = 40 (0.154 sec)
-INFO:tensorflow:loss = 1.8231221, step = 40 (0.154 sec)
-:
-```
-
-**SingularityPRO 3.5**
 
 ```
 [username@g0001 ~]$ wget https://raw.githubusercontent.com/horovod/horovod/v0.16.4/examples/tensorflow_mnist.py
@@ -241,10 +154,9 @@ INFO:tensorflow:loss = 1.962772, step = 40 (0.153 sec)
 INFO:tensorflow:loss = 2.0659132, step = 40 (0.153 sec)
 :
 ```
+
 バッチジョブでも同様に実行できます。
 
-**Singularity 2.6**
-
 ```
 #!/bin/sh
 #$ -l rt_F=2
@@ -252,21 +164,7 @@ INFO:tensorflow:loss = 2.0659132, step = 40 (0.153 sec)
 #$ -cwd
 
 source /etc/profile.d/modules.sh
-module load singularity/2.6.1 openmpi/3.1.6
-wget https://raw.githubusercontent.com/horovod/horovod/v0.16.4/examples/tensorflow_mnist.py
-mpirun -np 8 -npernode 4 singularity run --nv tensorflow-19.06-py2.simg python tensorflow_mnist.py
-```
-
-**SingularityPRO 3.5**
-
-```
-#!/bin/sh
-#$ -l rt_F=2
-#$ -j y
-#$ -cwd
-
-source /etc/profile.d/modules.sh
-module load singularitypro/3.5 openmpi/3.1.6
+module load singularitypro openmpi/3.1.6
 wget https://raw.githubusercontent.com/horovod/horovod/v0.16.4/examples/tensorflow_mnist.py
 mpirun -np 8 -npernode 4 singularity run --nv tensorflow_19.06-py2.sif python tensorflow_mnist.py
 ```
@@ -297,21 +195,8 @@ docker://nvcr.io/partners/chainer:4.0.0b1
 
 インタラクティブノード上でSingularityイメージを生成します。Dockerイメージのダウンロードには、環境変数``SINGULARITY_DOCKER_USERNAME``, ``SINGULARITY_DOCKER_PASSWORD``の設定が必要です。
 
-**Singularity 2.6**
-
 ```
-[username@es1 ~]$ module load singularity/2.6.1
-[username@es1 ~]$ export SINGULARITY_DOCKER_USERNAME='$oauthtoken'
-[username@es1 ~]$ export SINGULARITY_DOCKER_PASSWORD=<NGC API Key>
-[username@es1 ~]$ singularity pull docker://nvcr.io/partners/chainer:4.0.0b1
-```
-
-``chainer-4.0.0b1.simg``という名前のイメージファイルが生成されます。
-
-**SingularityPRO 3.5**
-
-```
-[username@es1 ~]$ module load singularitypro/3.5
+[username@es1 ~]$ module load singularitypro
 [username@es1 ~]$ export SINGULARITY_DOCKER_USERNAME='$oauthtoken'
 [username@es1 ~]$ export SINGULARITY_DOCKER_PASSWORD=<NGC API Key>
 [username@es1 ~]$ singularity pull docker://nvcr.io/partners/chainer:4.0.0b1
@@ -322,7 +207,7 @@ docker://nvcr.io/partners/chainer:4.0.0b1
 環境変数の代わりに``--docker-login``オプションを指定してイメージをダウンロードすることも可能です。
 
 ```
-[username@es1 ~]$ module load singularitypro/3.5
+[username@es1 ~]$ module load singularitypro
 [username@es1 ~]$ singularity pull --disable-cache --docker-login docker://nvcr.io/partners/chainer:4.0.0b1
 Enter Docker Username: $oauthtoken
 Enter Docker Password: <NGC API Key>
@@ -332,27 +217,9 @@ Enter Docker Password: <NGC API Key>
 
 通常のSingularityイメージと同じ手順で実行できます。
 
-**Singularity 2.6**
-
 ```
 [username@es1 ~]$ qrsh -g grpname -l rt_G.small=1 -l h_rt=1:00:00
-[username@g0001 ~]$ module load singularity/2.6.1
-[username@g0001 ~]$ wget https://raw.githubusercontent.com/chainer/chainer/v4.0.0b1/examples/mnist/train_mnist.py
-[username@g0001 ~]$ singularity exec --nv chainer-4.0.0b1.simg python train_mnist.py -g 0
-:
-epoch       main/loss   validation/main/loss  main/accuracy  validation/main/accuracy  elapsed_time
-1           0.192916    0.103601              0.9418         0.967                     9.05948
-2           0.0748937   0.0690557             0.977333       0.9784                    10.951
-3           0.0507463   0.0666913             0.983682       0.9804                    12.8735
-4           0.0353792   0.0878195             0.988432       0.9748                    14.7425
-:
-```
-
-**SingularityPRO 3.5**
-
-```
-[username@es1 ~]$ qrsh -g grpname -l rt_G.small=1 -l h_rt=1:00:00
-[username@g0001 ~]$ module load singularitypro/3.5
+[username@g0001 ~]$ module load singularitypro
 [username@g0001 ~]$ wget https://raw.githubusercontent.com/chainer/chainer/v4.0.0b1/examples/mnist/train_mnist.py
 [username@g0001 ~]$ singularity exec --nv chainer_4.0.0b1.sif python train_mnist.py -g 0
 :

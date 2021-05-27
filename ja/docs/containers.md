@@ -1,50 +1,33 @@
-# 9. Linuxコンテナ
+# コンテナ
 
 ## Singularity
 
 !!! warning
-    Singularity 2.6 は3月末に提供を停止します。
+    Singularity 2.6 は2021年3月末に提供を停止しました。
 
 ABCIシステムでは[Singularity](https://www.sylabs.io/singularity/)が利用可能です。
-利用可能なバージョンはSingularity version 2.6とSingularityPRO 3.5となります。
+利用可能なバージョンはSingularityPRO 3.7となります。
 利用するためには事前に`module`コマンドを用いて利用環境を設定する必要があります。
 
-**Singularity 2.6**
 ```
-[username@g0001~]$ module load singularity/2.6.1
-```
-**SingularityPRO 3.5**
-```
-[username@g0001~]$ module load singularitypro/3.5
+[username@g0001 ~]$ module load singularitypro
 ```
 
 より網羅的なユーザガイドは、以下にあります。
 
-* [Singularity 2.6 User Guide](https://www.sylabs.io/guides/2.6/user-guide/)
-* [SingularityPRO 3.5 User Guide](https://repo.sylabs.io/c/0f6898986ad0b646b5ce6deba21781ac62cb7e0a86a5153bbb31732ee6593f43/guides/singularitypro35-user-guide/)
+* [SingularityPRO User Guide](https://repo.sylabs.io/c/0f6898986ad0b646b5ce6deba21781ac62cb7e0a86a5153bbb31732ee6593f43/guides/singularitypro37-user-guide/)
 
-Singularityを用いて、NGCが提供するDockerイメージをABCIで実行する方法は、[NVIDIA NGC](ngc.md) で説明しています。
+Singularityを用いて、NGCが提供するDockerイメージをABCIで実行する方法は、[NVIDIA NGC](tips/ngc.md) で説明しています。
 
-### Singularityイメージファイルの作成(pull) {#create-a-singularity-image}
+### Singularityイメージファイルの作成(pull) {#create-a-singularity-image-pull}
 
 Singularityコンテナイメージはファイルとして保存することが可能です。
 ここでは、`pull`を用いたSingularityイメージファイルの作成手順を示します。
 
 pullによるSingularityイメージファイルの作成例）
 
-**Singularity 2.6**
 ```
-[username@es1 ~]$ module load singularity/2.6.1
-[username@es1 ~]$ singularity pull --name caffe2.img docker://caffe2ai/caffe2:latest
-Docker image path: index.docker.io/caffe2ai/caffe2:latest
-Cache folder set to /fs3/home/username/.singularity/docker
-...
-[username@es1 ~]$ ls caffe2.img
-caffe2.img
-```
-**SingularityPRO 3.5**
-```
-[username@es1 ~]$ module load singularitypro/3.5
+[username@es1 ~]$ module load singularitypro
 [username@es1 ~]$ singularity pull caffe2.img docker://caffe2ai/caffe2:latest
 INFO:    Converting OCI blobs to SIF format
 INFO:    Starting build...
@@ -53,21 +36,28 @@ INFO:    Starting build...
 caffe2.img
 ```
 
-### Singularityイメージファイルの作成(build) {#build-a-singularity-image}
+### Singularityイメージファイルの作成(build) {#create-a-singularity-image-build}
 
-ABCIシステムのSingularityPRO 3.5環境では`fakeroot`オプションを使用することによりbuildを使ったイメージ構築が可能です。
+ABCIシステムのSingularityPRO環境では`fakeroot`オプションを使用することによりbuildを使ったイメージ構築が可能です。
 
 !!! note
-    SingularityPRO 3.5環境ではリモートビルドも利用可能です。詳細は[こちら](abci-singularity-endpoint.md)を参照下さい。
-
-!!! warning
-    Singularity 2.6環境ではrecipeファイルを用いたイメージのbuildは実行できません。 利用者自身でカスタムしたコンテナイメージを利用したい場合は、 ABCIの環境(Singularity、フレームワーク、MPIのバージョン等)に合わせたユーザ環境で イメージを作成後、イメージファイルをABCI上に転送する必要があります。
+    SingularityPRO環境ではリモートビルドも利用可能です。詳細は[ABCI Singularity エンドポイント](abci-singularity-endpoint.md)を参照して下さい。
 
 buildによるSingularityイメージファイルの作成例）
 
-**SingularityPRO 3.5**
 ```
-[username@es1 ~]$ module load singularitypro/3.5
+[username@es1 ~]$ module load singularitypro
+[username@es1 ~]$ cat ubuntu.def
+Bootstrap: docker
+From: ubuntu:18.04
+
+%post
+    apt-get update
+    apt-get install -y lsb-release
+
+%runscript
+    lsb_release -d
+
 [username@es1 ~]$ singularity build --fakeroot ubuntu.sif ubuntu.def
 INFO:    Starting build...
 (snip)
@@ -76,7 +66,7 @@ INFO:    Build complete: ubuntu.sif
 [username@es1 singularity]$
 ```
 
-なお、 上記コマンドにおいてイメージファイル(ubuntu.sif)の出力先をグループ領域(/groups1, /groups2)にするとエラーが発生します。その場合、singularityコマンドを実行する前に以下のように`id`コマンドでイメージ出力先グループ領域の所有グループを確認の上、`newgrp`コマンドを実施いただくことで回避可能です。
+なお、上記コマンドにおいてイメージファイル(ubuntu.sif)の出力先をグループ領域(/groups1, /groups2)にするとエラーが発生します。その場合、singularityコマンドを実行する前に以下のように`id`コマンドでイメージ出力先グループ領域の所有グループを確認の上、`newgrp`コマンドを実施いただくことで回避可能です。
 下記例の`gaa00000`の箇所がイメージ出力先グループ領域の所有グループとなります。
 
 ```
@@ -93,45 +83,26 @@ Singularityを利用する場合、ジョブ中に`singularity run`コマンド�
 
 インタラクティブジョブにおけるSingularityイメージファイルを使用したコンテナの実行例）
 
-**Singularity 2.6**
 ```
 [username@es1 ~]$ qrsh -g grpname -l rt_G.small=1 -l h_rt=1:00:00
-[username@g0001 ~]$ module load singularity/2.6.1
-[username@g0001 ~]$ singularity run ./caffe2.img
-```
-**SingularityPRO 3.5**
-```
-[username@es1 ~]$ qrsh -g grpname -l rt_G.small=1 -l h_rt=1:00:00
-[username@g0001 ~]$ module load singularitypro/3.5
+[username@g0001 ~]$ module load singularitypro
 [username@g0001 ~]$ singularity run ./caffe2.img
 ```
 
 バッチジョブにおけるSingularityイメージファイルを使用したコンテナの実行例）
 
-**Singularity 2.6**
 ```
 [username@es1 ~]$ cat job.sh
-(snip)
+#!/bin/sh
+#$-l rt_F=1
+#$-j y
 source /etc/profile.d/modules.sh
-module load singularity/2.6.1 openmpi/3.1.6
+module load singularitypro openmpi/3.1.6
 
 mpiexec -n 4 singularity exec --nv ./caffe2.img \
     python sample.py
 
-[username@es1 ~]$ qsub -g grpname ./job.sh
-```
-
-**SingularityPRO 3.5**
-```
-[username@es1 ~]$ cat job.sh
-(snip)
-source /etc/profile.d/modules.sh
-module load singularitypro/3.5 openmpi/3.1.6
-
-mpiexec -n 4 singularity exec --nv ./caffe2.img \
-    python sample.py
-
-[username@es1 ~]$ qsub -g grpname ./job.sh
+[username@es1 ~]$ qsub -g grpname job.sh
 ```
 
 Docker Hubで公開されているコンテナイメージの実行例）
@@ -141,35 +112,21 @@ Docker Hubで公開されているコンテナイメージの実行例）
 コンテナイメージは初回起動時にダウンロードされ、ホーム領域にキャッシングされます。
 2回目以降の起動はキャッシュされたデータを使用することで起動が高速化されます。
 
-**Singularity 2.6**
 ```
 [username@es1 ~]$ qrsh -g grpname -l rt_F=1 -l h_rt=1:00:00
-[username@g0001~]$ module load singularity/2.6.1
-[username@g0001~]$ singularity run --nv docker://caffe2ai/caffe2:latest
-Docker image path: index.docker.io/caffe2ai/caffe2:latest
-Cache folder set to /fs3/home/username/.singularity/docker
-Creating container runtime...
-...
-[username@g0001~]$ python sample.py
-True
-```
-
-**SingularityPRO 3.5**
-```
-[username@es1 ~]$ qrsh -g grpname -l rt_F=1 -l h_rt=1:00:00
-[username@g0001~]$ module load singularitypro/3.5
-[username@g0001~]$ singularity run --nv docker://caffe2ai/caffe2:latest
+[username@g0001 ~]$ module load singularitypro
+[username@g0001 ~]$ singularity run --nv docker://caffe2ai/caffe2:latest
 ...
 Singularity> python sample.py
 True
 ```
 
-### DockerfileからのSingularityイメージファイルの作成方法 {#build-image-from-dockerfile}
+### DockerfileからのSingularityイメージファイルの作成方法 {#build-singularity-image-from-dockerfile}
 
 Singularityでは、Dockerfileから直接Singularityで利用できるコンテナイメージを作成できません。
 Dockerfileしかない場合には、次の2通りの方法にて、ABCIシステム上のSingularityで利用できるコンテナイメージを作成できます。
 
-#### Docker Hubを経由 {#build-via-dockerhub}
+#### Docker Hubを経由 {#via-docker-hub}
 
 Dockerの実行環境があるシステム上でDockerfileからDockerコンテナイメージを作成し、Docker Hubにアップロードすることで、作成したDockerコンテナイメージをABCIシステム上で利用することができるようになります。
 
@@ -204,19 +161,19 @@ COPY . .
 
 作成したDockerコンテナイメージをABCI上で起動する方法については[コンテナの実行](#running-a-container-with-singularity)をご参照ください。
 
-#### DockerfileをSingularity recipeファイルに変換 {#build-by-singularity-recipe}
+#### DockerfileをSingularity recipeファイルに変換 {#convert-dockerfile-to-singularity-recipe}
 
 DockerfileをSingularity recipeファイルに変換することで、ABCIシステム上でSingularityコンテナイメージを作成できます。
 変換には[Singularity Python](https://singularityhub.github.io/singularity-cli/)を使うことができます。
 
-!!!warning
+!!! warning
     Singularity Pythonを使うことでDockerfileとSingularity recipeファイルの相互変換を行うことができますが、完璧ではありません。
     変換されたSingularity recipeファイルにて`singularity build`に失敗する場合は、手動でrecipeファイルを修正してください。
 
 Singularity Pythonのインストール例）
 
 ```
-[username@es1 ~]$ module load python/3.6/3.6.5
+[username@es1 ~]$ module load python/3.6/3.6.12
 [username@es1 ~]$ python3 -m venv work
 [username@es1 ~]$ source work/bin/activate
 (work) [username@es1 ~]$ pip3 install spython
@@ -230,7 +187,7 @@ Dockerfileから変換しただけでは次の2点の問題が発生するため
 - pipにパスが通らない => %postセクションにDockerイメージの環境変数を引き継ぐ設定を追加
 
 ```
-[username@es1 ~]$ module load python/3.6/3.6.5
+[username@es1 ~]$ module load python/3.6/3.6.12
 [username@es1 ~]$ source work/bin/activate
 (work) [username@es1 ~]$ git clone https://github.com/NVIDIA/DeepLearningExamples
 (work) [username@es1 ~]$ cd DeepLearningExamples/PyTorch/Detection/SSD
@@ -300,7 +257,7 @@ jcm:5000/dhub/ubuntu      latest          113a43faa138 3 weeks ago   81.2MB
 
 Dockerジョブのジョブスクリプト例）
 
-以下のジョブスクリプトでは`python3 ./test.py`がDockerコンテナ上で実行されます。
+以下のジョブスクリプトでは`python3 ./sample.py`がDockerコンテナ上で実行されます。
 
 ```
 [username@es1 ~]$ cat run.sh
@@ -317,7 +274,7 @@ python3 ./sample.py
 Dockerジョブの投入例）
 
 ```
-[username@es1 ~]$ qsub run.sh
+[username@es1 ~]$ qsub -g grpname run.sh
 Your job 12345 ("run.sh") has been submitted
 ```
 

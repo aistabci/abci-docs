@@ -88,11 +88,23 @@ packages:
       modules:
       - cuda/10.2/10.2.89
 (snip)
+  openmpi:
+    externals:
+    - spec: openmpi@2.1.6%gcc@4.8.5
+      prefix: /apps/openmpi/2.1.6/gcc4.8.5
+    - spec: openmpi@2.1.6%gcc@7.4.0
+      prefix: /apps/openmpi/2.1.6/gcc7.4.0
+(snip)
 ```
 
 このファイルを設置すると、例えば、SpackでCUDAのバージョン10.2.89のインストールを実行すると、実際にはインストールはされずに、SpackがEnvironment Modulesの`cuda/10.2/10.2.89`を使用するようになります。
 CUDAセクションで`buildable: false`を指定することにより、Spackはここで指定しているバージョン以外のCUDAをインストールしなくなります。
 ABCIが提供していないバージョンのCUDAをSpackでインストールしたい場合は、この記述を削除してください。
+
+現在のSpackでは`packages.yaml`内の依存関係の解釈に不具合があるため、ABCIが提供するCUDA-aware OpenMPIを登録する事は出来ません。
+そのためABCIが提供する`packages.yaml`では、CUDA-awareではないOpenMPIのみを登録しています。
+また、登録されているCUDA-awareではないOpenMPIと同じバージョンのCUDA-aware OpenMPIをインストールしようとすると、エラーになります。
+エラーを回避するには、`packages.yaml`に登録されていないバージョンをインストールするか、`packages.yaml`から該当バージョンを削除してご利用ください。
 
 `packages.yaml`ファイルの設定の詳細は[公式ドキュメント](https://spack.readthedocs.io/en/latest/build_settings.html)を参照ください。
 
@@ -503,4 +515,4 @@ spack:
 [username@es1 ~]$ spack containerize > myenv.def
 ```
 
-SigularityレシピファイルからSingularityイメージを作成する方法については、[Singularityイメージファイルの作成(build)](../09.md#build-a-singularity-image)をご参照ください。
+SigularityレシピファイルからSingularityイメージを作成する方法については、[Singularityイメージファイルの作成(build)](../containers.md#build-a-singularity-image)をご参照ください。

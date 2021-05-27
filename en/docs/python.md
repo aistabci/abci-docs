@@ -1,4 +1,4 @@
-# 6. Python
+# Python
 
 ## Available Python versions
 
@@ -10,25 +10,25 @@ To show available Python versions with using `module` command:
 $ module avail python
 
 -------------------------------- /apps/modules/modulefiles/devtools --------------------------------
-python/2.7/2.7.15 python/3.4/3.4.8  python/3.5/3.5.5  python/3.6/3.6.5
+python/2.7/2.7.18 python/3.6/3.6.12  python/3.7/3.7.10  python/3.8/3.8.7
 ```
 
 To set up one of available versions with using `module` command:
 
-Example) Python 2.7.15:
+Example) Python 2.7.18:
 
 ```
-$ module load python/2.7/2.7.15
+$ module load python/2.7/2.7.18
 $ python --version
-Python 2.7.15
+Python 2.7.18
 ```
 
-Example) Python 3.6.5:
+Example) Python 3.6.12:
 
 ```
-$ module load python/3.6/3.6.5
+$ module load python/3.6/3.6.12
 $ python3 --version
-Python 3.6.5
+Python 3.6.12
 ```
 
 !!! note
@@ -50,11 +50,13 @@ Below are examples of executing `virtualenv`:
 Example) Creation of a virtual environment
 
 ```
-[username@es1 ~]$ module load python/2.7/2.7.15
+[username@es1 ~]$ module load python/2.7/2.7.18
 [username@es1 ~]$ virtualenv env1
-New python executable in /home/username/env1/bin/python2.7
-Also creating executable in /home/username/env1/bin/python
-Installing setuptools, pip, wheel...done.
+created virtual environment CPython2.7.18.final.0-64 in 1862ms
+  creator CPython2Posix(dest=/home/username/env1, clear=False, no_vcs_ignore=False, global=False)
+  seeder FromAppData(download=False, pip=bundle, wheel=bundle, setuptools=bundle, via=copy, app_data_dir=/home/username/.local/share/virtualenv)
+    added seed packages: pip==20.3.4, setuptools==44.1.1, wheel==0.36.2
+  activators PythonActivator,CShellActivator,FishActivator,PowerShellActivator,BashActivator
 ```
 
 Example) Activating a virtual environment
@@ -88,7 +90,7 @@ Below are examples of executing `venv`:
 Example) Creation of a virtual environment
 
 ```
-[username@es1 ~]$ module load python/3.6/3.6.5
+[username@es1 ~]$ module load python/3.6/3.6.12
 [username@es1 ~]$ python3 -m venv work
 ```
 
@@ -97,9 +99,9 @@ Example) Activating a virtual environment
 ```
 [username@es1 ~]$ source work/bin/activate
 (work) [username@es1 ~]$ which python3
-/fs3/home/username/work/bin/python3
+~/work/bin/python3
 (work) [username@es1 ~]$ which pip3
-/fs3/home/username/work/bin/pip3
+~/work/bin/pip3
 ```
 
 Example) Installing `numpy` to a virtual environment

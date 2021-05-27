@@ -7,7 +7,7 @@ Singularity Global Client (``sregistry`` command) is software for managing image
 The sregistry command can be used with ABCI by performing the following procedure in advance.
 
 ```
-[username@es1 ~]$ module load singularity/2.6.1 sregistry-cli/0.2.31
+[username@es1 ~]$ module load singularitypro python/3.6/3.6.12 sregistry-cli
 ```
 
 ```
@@ -62,7 +62,7 @@ As an execution example, the following shows the procedure for pull the latest-g
 
 Load modules necessary for using Singularity Global Client and Amazon ECR.
 ```
-[username@es1 ~]$ module load singularity/2.6.1 sregistry-cli/0.2.31 aws-cli/1.16.194
+[username@es1 ~]$ module load singularitypro python/3.6/3.6.12 sregistry-cli aws-cli
 ```
 
 
@@ -98,7 +98,7 @@ aws://<repositoryName>:<imageTag>
 Execute pulled image as interactive job.
 ```
 [username@es1 ~]$ qrsh -g grpname -l rt_F=1 -l h_rt=1:00:00
-[username@g0001 ~]$ module load singularity/2.6.1
+[username@g0001 ~]$ module load singularitypro
 [username@g0001 ~]$ singularity shell --nv ./mytensorflow.simg
 Singularity: Invoking an interactive shell within container...
 

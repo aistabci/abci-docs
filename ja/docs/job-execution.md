@@ -1,4 +1,4 @@
-# 3. ジョブ実行環境
+# ジョブ実行
 
 ## ジョブサービス {#job-services}
 
@@ -40,9 +40,9 @@ ABCIシステムでは、計算リソースを論理的に分割した資源タ�
 
 ### 利用可能な資源タイプ {#available-resource-types}
 
-ABCIシステムには、[計算ノード](01.md#compute-node)と[メモリインテンシブノード](01.md#memory-intensive-node)の2種類の計算リソースがあり、それぞれについて次のように資源タイプが用意されています。
+ABCIシステムには、[計算ノード](system-overview.md#compute-node)と[メモリインテンシブノード](system-overview.md#memory-intensive-node)の2種類の計算リソースがあり、それぞれについて次のように資源タイプが用意されています。
 
-#### 計算ノード {#compute-node}
+#### 計算ノード(V) {#compute-node-v}
 
 | 資源タイプ | 資源タイプ名 | 説明 | 割り当て物理CPUコア数 | 割り当てGPU数 | メモリ (GiB) | ローカルストレージ (GB) | 資源タイプ課金係数 |
 |:--|:--|:--|:--|:--|:--|:--|:--|
@@ -52,6 +52,15 @@ ABCIシステムには、[計算ノード](01.md#compute-node)と[メモリイ�
 | C.large | rt\_C.large | ノード共有<br>CPUのみ利用 | 20 | 0 | 120 | 720 | 0.60 |
 | C.small | rt\_C.small | ノード共有<br>CPUのみ利用 | 5 | 0 | 30 | 180 | 0.20 |
 
+#### 計算ノード(A) {#compute-node-a}
+
+| 資源タイプ | 資源タイプ名 | 説明 | 割り当て物理CPUコア数 | 割り当てGPU数 | メモリ (GiB) | ローカルストレージ (GB) | 資源タイプ課金係数 |
+|:--|:--|:--|:--|:--|:--|:--|:--|
+| Full | rt\_AF | ノード占有 | 72 | 8 | 480 | 3440[^1] | 3.00 |
+| AG.small | rt\_AG.small | ノード共有<br>GPU利用 | 9 | 1 | 60 | 390 | 0.50 |
+
+[^1]: /local1 (1590 GB) と /local2 (1850 GB) の合算。
+
 #### メモリインテンシブノード {#memory-intensive-node}
 
 | 資源タイプ | 資源タイプ名 | 説明 | 割り当て物理CPUコア数 | 割り当てGPU数 | メモリ (GiB) | ローカルストレージ (GB) | 資源タイプ課金係数 |
@@ -59,62 +68,69 @@ ABCIシステムには、[計算ノード](01.md#compute-node)と[メモリイ�
 | M.large | rt\_M.large | ノード共有<br>CPUのみ利用 | 8 | \- | 800 | 480 | 0.40 | 
 | M.small | rt\_M.small | ノード共有<br>CPUのみ利用 | 4 | \- | 400 | 240 | 0.20 | 
 
-複数ノードを使用するジョブを実行する場合は、計算ノードを占有する資源タイプ`rt_F`を指定してください。メモリインテンシブノードでは複数ノードを使用するジョブを実行することはできません。
+複数ノードを使用するジョブを実行する場合は、計算ノードを占有する資源タイプ`rt_F`もしくは`rt_AF`を指定してください。メモリインテンシブノードでは複数ノードを使用するジョブを実行することはできません。
 
 !!! warning
     ノード共有の資源タイプでは、ジョブのプロセス情報は同一ノードで実行されている他のジョブから参照可能になります。
-    他のジョブから参照させたくない場合、資源タイプ`rt_F`を指定しノード占有でジョブを実行してください。
+    他のジョブから参照させたくない場合、資源タイプ`rt_F`もしくは`rt_AF`を指定しノード占有でジョブを実行してください。
 
-### 同時に利用可能なノード数
+### 同時に利用可能なノード数 {#number-of-nodes-available-at-the-same-time}
 
-ジョブサービスごとに利用可能な資源タイプとノード数の組み合わせを以下に示します。同時に複数ノードを利用する場合は、資源タイプ`rt_F`を指定する必要があります。
+ジョブサービスごとに利用可能な資源タイプとノード数の組み合わせを以下に示します。同時に複数ノードを利用する場合は、資源タイプ`rt_F`もしくは`rt_AF`を指定する必要があります。
 
 | サービス名 | 資源タイプ名 | ノード数 |
 |:--|:--|--:|
-| On-demand | rt\_F       | 1–32 |
+| On-demand | rt\_F       | 1-32 |
 |           | rt\_G.large | 1 |
 |           | rt\_G.small | 1 |
 |           | rt\_C.large | 1 |
 |           | rt\_C.small | 1 |
+|           | rt\_AF      | 1-4 |
+|           | rt\_AG.small| 1 |
 |           | rt\_M.large | 1 |
 |           | rt\_M.small | 1 |
-| Spot      | rt\_F       | 1–512 |
+| Spot      | rt\_F       | 1-512 |
 |           | rt\_G.large | 1 |
 |           | rt\_G.small | 1 |
 |           | rt\_C.large | 1 |
 |           | rt\_C.small | 1 |
+|           | rt\_AF      | 1-64 |
+|           | rt\_AG.small| 1 |
 |           | rt\_M.large | 1 |
 |           | rt\_M.small | 1 |
-| Reserved  | rt\_F       | 1–予約ノード数 |
+| Reserved  | rt\_F       | 1-予約ノード数 |
 |           | rt\_G.large | 1 |
 |           | rt\_G.small | 1 |
 |           | rt\_C.large | 1 |
 |           | rt\_C.small | 1 |
+|           | rt\_AF      | 1-予約ノード数 |
+|           | rt\_AG.small| 1 |
 
-### 経過時間およびノード時間積の制限
+### 経過時間およびノード時間積の制限 {#elapsed-time-and-node-time-product-limits}
 
 ジョブサービス、資源タイプに応じて、ジョブの経過時間制限 (実行可能時間の制限) があります。上限値およびデフォルト値を以下に示します。
 
 | サービス名 | 資源タイプ名 | 経過時間制限 (上限値/デフォルト) |
 |:--|:--|:--|
-| On-demand | rt\_F | 12:00:00/1:00:00 |
+| On-demand | rt\_F, rt\_AF | 12:00:00/1:00:00 |
 |           | rt\_G.large, rt\_C.large, rt\_M.large | 12:00:00/1:00:00 |
-|           | rt\_G.small, rt\_C.small, rt\_M.small | 12:00:00/1:00:00 |
-| Spot      | rt\_F | 72:00:00/1:00:00 |
+|           | rt\_G.small, rt\_C.small, rt\_AG.small, rt\_M.small | 12:00:00/1:00:00 |
+| Spot      | rt\_F, rt\_AF | 72:00:00/1:00:00 |
 |           | rt\_G.large, rt\_C.large, rt\_M.large, rt\_M.small | 72:00:00/1:00:00 |
-|           | rt\_G.small, rt\_C.small | 168:00:00/1:00:00 |
-| Reserved  | rt\_F | 無制限 |
+|           | rt\_G.small, rt\_C.small, rt\_AG.small | 168:00:00/1:00:00 |
+| Reserved  | rt\_F, rt\_AF | 無制限 |
 |           | rt\_G.large, rt\_C.large | 無制限 |
-|           | rt\_G.small, rt\_C.small | 無制限 |
+|           | rt\_G.small, rt\_C.small, rt\_AG.small | 無制限 |
 
 また、On-demandおよびSpotサービスで、複数ノードを使用するジョブを実行する場合には、ノード時間積（使用ノード数 &times; 実行時間）に以下の制限があります。
 
 | サービス名 | ノード時間積の最大値 |
 |:--|--:|
-| On-demand |   12 nodes &middot; hours |
-| Spot      | 2304 nodes &middot; hours |
+| On-demand                                     |   12 nodes &middot; hours |
+| Spot(計算ノード(V), メモリインテンシブノード) | 2304 nodes &middot; hours |
+| Spot(計算ノード(A))                           |  288 nodes &middot; hours |
 
-### ジョブ投入数および実行数の制限
+### ジョブ投入数および実行数の制限 {#limitation-on-the-number-of-job-submissions-and-executions}
 
 1ユーザが同時に投入・実行できるジョブ数に以下の制限があります。
 予約ノードに投入されたジョブもOn-demandやSpotのジョブと同様にジョブ数のカウントに含まれ、本制約を受けます。
@@ -170,9 +186,9 @@ Reservedサービスでは、インタラクティブジョブ、バッチジョ
 | オプション | 説明 |
 |:--|:--|
 | -l USE\_SSH=*1*<br>-v SSH\_PORT=*port* | 計算ノードへのSSHログインを有効にする。詳細は[計算ノードへのSSHアクセス](appendix/ssh-access.md)を参照。 |
-| -l USE\_BEEOND=*1*<br>-v BEEOND\_METADATA\_SERVER=*num*<br>-v BEEOND\_STORAGE\_SERVER=*num* | BeeGFS On Demand (BeeOND)を利用するジョブの投入。詳細は[BeeONDストレージ利用](04.md#using-as-a-beeond-storage)を参照。 |
-| -v GPU\_COMPUTE\_MODE=*mode* | 計算ノードのGPU Compute Modeの変更。詳細は[GPU Compute Modeの変更](07.md#changing-gpu-compute-mode)を参照。 |
-| -l docker<br>-l docker\_images | Dockerを利用するジョブの投入。詳細は[Docker](09.md#docker)を参照。 |
+| -l USE\_BEEOND=*1*<br>-v BEEOND\_METADATA\_SERVER=*num*<br>-v BEEOND\_STORAGE\_SERVER=*num* | BeeGFS On Demand (BeeOND)を利用するジョブの投入。詳細は[BeeONDストレージ利用](storage.md#beeond-storage)を参照。 |
+| -v GPU\_COMPUTE\_MODE=*mode* | 計算ノードのGPU Compute Modeの変更。詳細は[GPU Compute Modeの変更](gpu.md#changing-gpu-compute-mode)を参照。 |
+| -l docker<br>-l docker\_images | Dockerを利用するジョブの投入。詳細は[Docker](containers.md#docker)を参照。 |
 
 ## インタラクティブジョブ {#interactive-jobs}
 
@@ -365,7 +381,7 @@ account      username
 priority     0
 cwd          NONE
 submit_host  es1.abci.local
-submit_cmd   /bb/system/uge/latest/bin/lx-amd64/qsub -P username -l h_rt=600 -l rt_F=1
+submit_cmd   /home/system/uge/latest/bin/lx-amd64/qsub -P username -l h_rt=600 -l rt_F=1
 qsub_time    07/01/2018 11:55:14.706
 start_time   07/01/2018 11:55:18.170
 end_time     07/01/2018 11:55:18.190
@@ -432,6 +448,8 @@ jc_name      NONE
 | NHOSTS | ジョブに割り当てられたホスト数 |
 | PE\_HOSTFILE | ジョブに割り当てられたホスト、スロット、キュー名が記載されたファイルへのパス |
 | RESTARTED | ジョブが再実行された場合は1、それ以外は0 |
+| SGE\_ARDIR | Reservedサービスに割り当てられたローカルストレージへのパス |
+| SGE\_BEEONDDIR | BeeONDストレージ利用時に割り当てられたBeeONDストレージへのパス |
 | SGE\_JOB\_HOSTLIST | ジョブに割り当てられたホストが記載されたファイルへのパス |
 | SGE\_LOCALDIR | ジョブに割り当てられたローカルストレージへのパス |
 | SGE\_O\_WORKDIR | ジョブ投入時の作業ディレクトリへのパス |
@@ -444,27 +462,30 @@ jc_name      NONE
 
 Reservedサービスでは、計算ノードを事前に予約して計画的なジョブ実行が可能となります。
 
-本サービスで予約可能なノード数およびノード時間積は、以下表の「1予約あたりの最大予約ノード数」、「1予約あたりの最大予約ノード時間積」が上限です。また、本サービスでは、利用者は予約ノード数 (最大32ノード) を上限とするジョブしか実行できません。なお、システム全体で「システムあたりの最大同時予約可能ノード数」に上限があるため、「1予約あたりの最大予約ノード数」を下回る予約しかできない場合や、予約自体ができない場合があります。予約した計算ノードにて[各資源タイプ](#available-resource-types)が利用可能です。
+本サービスで予約可能なノード数およびノード時間積は、以下表の「1予約あたりの最大予約ノード数」、「1予約あたりの最大予約ノード時間積」が上限です。また、本サービスでは、利用者は予約ノード数を上限とするジョブしか実行できません。なお、システム全体で「システムあたりの最大同時予約可能ノード数」に上限があるため、「1予約あたりの最大予約ノード数」を下回る予約しかできない場合や、予約自体ができない場合があります。予約した計算ノードにて[各資源タイプ](#available-resource-types)が利用可能です。
 
-| 項目 | 説明 |
-|:--|:--|
-| 最小予約日数 | 1日 |
-| 最大予約日数 | 30日 |
-| システムあたりの最大同時予約可能ノード数 | 442ノード |
-| 1予約あたりの最大予約ノード数 | 32ノード |
-| 1予約あたりの最大予約ノード時間積 | 12,288ノード時間積 |
-| 予約受付開始時刻 | 30日前の午前10時 |
-| 予約受付締切時刻 | 予約開始前日の午後9時 |
-| 予約取消受付期間 | 予約開始前日の午後9時 |
-| 予約開始時刻 | 予約開始日の午前10時 |
-| 予約終了時刻 | 予約終了日の午前9時30分 |
+| 項目 | 計算ノード(V)向け説明 | 計算ノード(A)向け説明|
+|:--|:--|:--|
+| 最小予約日数 | 1日 | 1日 |
+| 最大予約日数 | 30日 | 30日 |
+| システムあたりの最大同時予約可能ノード数 | 442ノード | 50ノード |
+| 1予約あたりの最大予約ノード数 | 32ノード | 16ノード |
+| 1予約あたりの最大予約ノード時間積 | 12,288ノード時間積 | 6,144ノード時間積 |
+| 予約受付開始時刻 | 30日前の午前10時 | 30日前の午前10時 |
+| 予約受付締切時刻 | 予約開始前日の午後9時 | 予約開始前日の午後9時 |
+| 予約取消受付期間 | 予約開始前日の午後9時 | 予約開始前日の午後9時 |
+| 予約開始時刻 | 予約開始日の午前10時 | 予約開始日の午前10時 |
+| 予約終了時刻 | 予約終了日の午前9時30分 | 予約終了日の午前9時30分 |
 
 ### 予約の実行 {#make-a-reservation}
+
+計算ノードを予約するには、[ABCI利用ポータル](https://portal.abci.ai/user/)もしくは`qrsub`コマンドを使用します。
 
 !!! warning
     計算ノードの予約は、利用責任者もしくは利用管理者のみが実施できます。
 
-計算ノードを予約するには、[ABCI利用ポータル](https://portal.abci.ai/user/)もしくは`qrsub`コマンドを使用します。
+!!! warning
+    ABCI利用ポータルでは、計算ノード(A)の予約はできません。
 
 ```
 $ qrsub options
@@ -478,11 +499,19 @@ $ qrsub options
 | -g *group* | ABCI利用グループを*group*で指定します。 |
 | -N *name* | 予約名を*name*で指定します。英数字と記号`=+-_.`が指定可能で、最大64文字まで指定できます。ただし、先頭の文字に数字を指定することはできません。 |
 | -n *nnnode* | 予約するノード数を*nnnode*で指定します。 |
+| -l *resource_type* | 予約する資源タイプを*resource_type*で指定します。 省略した場合は、rt_F が指定されたとみなします。|
 
-例) 2018年7月5日から1週間 (7日間) 計算ノード4台を予約
+例) 2018年7月5日から1週間 (7日間) 計算ノード(V)4台を予約
 
 ```
 [username@es1 ~]$ qrsub -a 20180705 -d 7 -g grpname -n 4 -N "Reserve_for_AI"
+Your advance reservation 12345 has been granted
+```
+
+例) 2021年7月5日から1週間 (7日間) 計算ノード(A)4台を予約
+
+```
+[username@es1 ~]$ qrsub -a 20210705 -d 7 -g grpname -n 4 -N "Reserve_for_AI" -l rt_AF
 Your advance reservation 12345 has been granted
 ```
 
@@ -514,11 +543,20 @@ ar-id      name       owner        state start at             end at            
 
 システムあたりの予約可能ノード数を確認するには、[ABCI利用ポータル](https://portal.abci.ai/user/)もしくは`qrstat`コマンドの`--available`オプションを使用します。
 
+計算ノード(V)の予約可能ノード数の確認
 ```
 [username@es1 ~]$ qrstat --available
 06/27/2018  441
 07/05/2018  432
 07/06/2018  434
+```
+
+計算ノード(A)の予約可能ノード数の確認
+```
+[username@es1 ~]$ qrstat --available -l rt_AF
+06/27/2021   41
+07/05/2021   32
+07/06/2021   34
 ```
 
 !!! note
@@ -537,7 +575,7 @@ ar-id      name       owner        state start at             end at            
 [username@es1 ~]$ qrdel 12345,12346
 ```
 
-### 予約ノードの使い方
+### 予約ノードの使い方 {#how-to-use-reserved-node}
 
 予約した計算ノードには、`-ar`オプションにて予約IDを指定してジョブを投入します。
 
@@ -562,7 +600,7 @@ Your job 12345 ("run.sh") has been submitted
     - 予約開始時刻前に予約を削除した場合、当該予約に投入されていたバッチジョブは削除されます。  
     - 予約終了時刻になると実行中のジョブは強制終了されます。  
 
-### 予約ノードご利用時の注意
+### 予約ノードご利用時の注意 {#cautions-for-using-reserved-node}
 
 予約は期間中の計算ノードの健全性を保証するものではありません。予約した計算ノードの利用中に一部が利用不可となることがありますので、以下の点をご確認ください。
 

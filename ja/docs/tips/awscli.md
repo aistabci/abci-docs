@@ -18,7 +18,7 @@ pipでインストールします。
 
 入手済みのAWSアクセスキーを登録します。
 ```
-[username@es1 testdir]$  aws configure
+[username@es1 testdir]$ aws configure
 AWS Access Key ID [None]: 
 AWS Secret Access Key [None]: 
 Default region name [None]: 

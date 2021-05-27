@@ -1,8 +1,8 @@
-# 2. ABCI System User Environment
+# Getting Started ABCI
 
 ## Getting an ABCI account {#getting-an-account}
 
-### Themes and ABCI groups {#themes-and-groups}
+### Application for use of ABCI
 To use an ABCI account, determine the research and development theme according to the agreements of use (rules or regulations) posted in the "Application Procedure", and submit a new "ABCI Application" on the ABCI User Portal. The ABCI application will be reviewed based on the terms of use, and if requirements are met, an ABCI group for which the application was made will be created and the applicant will be notified that the application has been adopted. After receiving notification, the applicant may start using the account.
 
 Please refer to the price list in [ABCI USAGE FEES](https://abci.ai/en/how_to_use/tariffs.html) and purchase ABCI points to pay the usage fee. Please purchase ABCI points for each ABCI group. At the time of application, a minimum of 1,000 ABCI points must be purchased.
@@ -27,10 +27,10 @@ Since usage determines which ABCI group bears the usage fee, please use the appr
 
 ## Connecting to Interactive Node
 
-To connect to the interactive node (*es*), the ABCI frontend, two-step SSH public key authentication is required.
+To connect to the interactive node (*es*(for Compute Node (V)), *es-a*(for Compute Node (A))), the ABCI frontend, two-step SSH public key authentication is required.
 
 1. Login to the access server (*as.abci.ai*) with SSH public key authentication, so as to create an *SSH tunnel* between your computer and *es*.
-2. Login to the interactive node (*es*) with SSH public key authentication via the SSH tunnel.
+2. Login to the interactive node (*es* or *es-a*) with SSH public key authentication via the SSH tunnel.
 
 In this document, ABCI server names are written in *italics*.
 
@@ -56,6 +56,7 @@ In this section, we will describe two methods to login to the interactive node u
 
 Login to the access server (*as.abci.ai*) with following command:
 
+Interactive Node (V)
 <div class="codehilite"><pre>
 [yourpc ~]$ ssh -i /path/identity_file -L 10022:<i>es</i>:22 -l username <i>as.abci.ai</i>
 The authenticity of host 'as.abci.ai (0.0.0.1)' can't be established.
@@ -63,6 +64,16 @@ RSA key fingerprint is XX:XX:XX:XX:XX:XX:XX:XX:XX:XX:XX:XX:XX:XX:XX:XX. <- Displ
 Are you sure you want to continue connecting (yes/no)? <- Enter "yes"
 Warning: Permanently added 'XX.XX.XX.XX' (RSA) to the list of known hosts.
 Enter passphrase for key '/path/identity_file': <- Enter passphrase
+</pre></div>
+
+Interactive Node (A)
+<div class="codehilite"><pre>
+[yourpc ~]$ ssh -i /path/identity_file -L 10022:<i>es-a</i>:22 -l username <i>as.abci.ai</i>
+The authenticity of host 'as.abci.ai (0.0.0.1)' can't be established.
+RSA key fingerprint is XX:XX:XX:XX:XX:XX:XX:XX:XX:XX:XX:XX:XX:XX:XX:XX. <- Display only at the first login
+Are you sure you want to continue connecting (yes/no)?  <- yesを入力
+Warning: Permanently added ‘XX.XX.XX.XX' (RSA) to the list of known hosts.
+Enter passphrase for key '/path/identity_file': <- Enter "yes"
 </pre></div>
 
 Successfully logged in, the following message is shown on your terminal.
@@ -98,10 +109,16 @@ Host <i>abci</i>
      HostName <i>es</i>
      User username
      ProxyJump %r@<i>as.abci.ai</i>
-     IdentityFile /path/identity_file
+     IdentityFile /path/to/identity_file
+
+Host <i>abci-a</i>
+     HostName <i>es-a</i>
+     User username
+     ProxyJump %r@<i>as.abci.ai</i>
+     IdentityFile /path/to/identity_file
 
 Host <i>as.abci.ai</i>
-     IdentityFile /path/identity_file
+     IdentityFile /path/to/identity_file
 </pre></div>
 
 After that, you can log in with the following command only:
@@ -115,6 +132,12 @@ ProxyJump does not work with OpenSSH_for_Windows_7.7p1 which is bundled with Win
 <div class="codehilite"><pre>
 Host <i>abci</i>
      HostName <i>es</i>
+     User username
+     ProxyCommand C:\WINDOWS\System32\OpenSSH\ssh.exe -W %h:%p %r@<i>as.abci.ai</i>
+     IdentityFile C:\path\to\identity_file
+
+Host <i>abci-a</i>
+     HostName <i>es-a</i>
      User username
      ProxyCommand C:\WINDOWS\System32\OpenSSH\ssh.exe -W %h:%p %r@<i>as.abci.ai</i>
      IdentityFile C:\path\to\identity_file
@@ -240,7 +263,7 @@ Disk quotas for user username
 
 Disk quotas for ABCI group grpname
   Directory                     used(GiB)       limit(GiB)          nfiles
-  /groups1/grpname                  1,024            2,048         123,456
+  /groups/grpname                   1,024            2,048         123,456
 ```
 
 | Item  | Description |

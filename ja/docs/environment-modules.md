@@ -1,6 +1,6 @@
-# 5. Environment Modules
+# Environment Modules
 
-ABCIでは、[ソフトウェア](01.md#software)で挙げた、さまざまな開発環境、MPI、ライブラリ、ユーティリティ等を提供しています。利用者はこれらのソフトウェアを「モジュール」として、組み合わせて利用できます。
+ABCIでは、[ソフトウェア](system-overview.md#software)で挙げた、さまざまな開発環境、MPI、ライブラリ、ユーティリティ等を提供しています。利用者はこれらのソフトウェアを「モジュール」として、組み合わせて利用できます。
 
 [Environment Modules](http://modules.sourceforge.net/)は、これらのモジュールを利用するのに必要な環境設定を柔軟かつ動的に行う機能を提供します。
 
@@ -30,7 +30,7 @@ $ module [options] <sub-command> [sub-command options]
 ### モジュールのロード {#load-modules}
 
 ```
-[username@g0001 ~]$ module load cuda/10.0/10.0.130.1 cudnn/7.6/7.6.2
+[username@g0001 ~]$ module load cuda/10.0/10.0.130.1 cudnn/7.6/7.6.5
 ```
 
 ### ロード済みのモジュールの一覧表示 {#list-loaded-modules}
@@ -38,7 +38,7 @@ $ module [options] <sub-command> [sub-command options]
 ```
 [username@g0001 ~]$ module list
 Currently Loaded Modulefiles:
-  1) cuda/10.0/10.0.130.1   2) cudnn/7.6/7.6.2
+  1) cuda/10.0/10.0.130.1   2) cudnn/7.6/7.6.5
 ```
 
 ### モジュールの設定内容の表示 {#display-the-configuration-of-modules}
@@ -46,14 +46,16 @@ Currently Loaded Modulefiles:
 ```
 [username@g0001 ~]$ module show cuda/10.0/10.0.130.1
 -------------------------------------------------------------------
-/apps/modules/modulefiles/gpgpu/cuda/10.0/10.0.130.1:
+/apps/modules/modulefiles/centos7/gpgpu/cuda/10.0/10.0.130.1:
 
 module-whatis	 cuda 10.0.130.1
 conflict	 cuda
 prepend-path	 CUDA_HOME /apps/cuda/10.0.130.1
 prepend-path	 CUDA_PATH /apps/cuda/10.0.130.1
 prepend-path	 PATH /apps/cuda/10.0.130.1/bin
+prepend-path	 LD_LIBRARY_PATH /apps/cuda/10.0.130.1/extras/CUPTI/lib64
 prepend-path	 LD_LIBRARY_PATH /apps/cuda/10.0.130.1/lib64
+prepend-path	 CPATH /apps/cuda/10.0.130.1/extras/CUPTI/include
 prepend-path	 CPATH /apps/cuda/10.0.130.1/include
 prepend-path	 LIBRARY_PATH /apps/cuda/10.0.130.1/lib64
 prepend-path	 MANPATH /apps/cuda/10.0.130.1/doc/man
@@ -71,16 +73,16 @@ No Modulefiles Currently Loaded.
 ### 依存関係のあるモジュールのロード {#load-dependent-modules}
 
 ```
-[username@g0001 ~]$ module load cudnn/7.6/7.6.2
-WARNING: cudnn/7.6/7.6.2 cannot be loaded due to missing prereq.
-HINT: at least one of the following modules must be loaded first: cuda/9.0 cuda/9.2 cuda/10.0
+[username@g0001 ~]$ module load cudnn/7.6/7.6.5
+WARNING: cudnn/7.6/7.6.5 cannot be loaded due to missing prereq.
+HINT: at least one of the following modules must be loaded first: cuda/9.0 cuda/9.2 cuda/10.0 cuda/10.1 cuda/10.2
 ```
 
-依存関係があるため、`cuda/9.0`、`cuda/9.2`、`cuda/10.0`のいずれかのモジュールを先にロードしないと`cudnn/7.6/7.6.2`をロードできません。
+依存関係があるため、`cuda/9.0`、`cuda/9.2`、`cuda/10.0`、`cuda/10.1`、`cuda/10.2`のいずれかのモジュールを先にロードしないと`cudnn/7.6/7.6.5`をロードできません。
 
 ```
 [username@g0001 ~]$ module load cuda/10.0/10.0.130.1
-[username@g0001 ~]$ module load cudnn/7.6/7.6.2
+[username@g0001 ~]$ module load cudnn/7.6/7.6.5
 ```
 
 ### 排他関係にあるモジュールのロード {#load-exclusive-modules}
@@ -89,38 +91,39 @@ HINT: at least one of the following modules must be loaded first: cuda/9.0 cuda/
 
 ```
 [username@g0001 ~]$ module load cuda/10.0/10.0.130.1
-[username@g0001 ~]$ module load cuda/9.2/9.2.148.1
-cuda/9.2/9.2.148.1(5):ERROR:150: Module 'cuda/9.2/9.2.148.1' conflicts with the currently loaded module(s) 'cuda/10.0/10.0.130.1'
+[username@g0001 ~]$ module load cuda/10.2/10.2.89
+cuda/10.2/10.2.89(7):ERROR:150: Module 'cuda/10.2/10.2.89' conflicts with the currently loaded module(s) 'cuda/10.0/10.0.130.1'
 ```
 
 ### モジュールの切り替え {#switch-modules}
 
 ```
-[username@g0001 ~]$ module switch python/2.7/2.7.15 python/3.6/3.6.5
+[username@g0001 ~]$ module load python/2.7/2.7.18
+[username@g0001 ~]$ module switch python/2.7/2.7.18 python/3.6/3.6.12
 ```
 
 依存関係があると切り替えがうまくできない場合があります。
 
 ```
 [username@g0001 ~]$ module load cuda/10.0/10.0.130.1
-[username@g0001 ~]$ module load cudnn/7.6/7.6.2
-[username@g0001 ~]$ module switch cuda/10.0/10.0.130.1 cuda/9.2/9.2.148.1
+[username@g0001 ~]$ module load cudnn/7.6/7.6.5
+[username@g0001 ~]$ module switch cuda/10.0/10.0.130.1 cuda/10.2/10.2.89
 [username@g0001 ~]$ env | grep LD_LIBRARY_PATH
-LD_LIBRARY_PATH=/apps/cudnn/7.6.2/cuda10.0/lib64:/apps/cuda/9.2.148.1/lib64
+LD_LIBRARY_PATH=/apps/cudnn/7.6.5/cuda10.0/lib64:/apps/cuda/10.2.89/lib64:/apps/cuda/10.2.89/extras/CUPTI/lib64
 ```
 
-CUDA9.2と、CUDA10.0用のcuDNNがロードされた状態になっています。
+CUDA10.2と、CUDA10.0用のcuDNNがロードされた状態になっています。
 
 以下のように対象のモジュールに依存しているモジュールを事前にアンロード、切り替え後の再ロードする必要があります。
 
 ```
 [username@g0001 ~]$ module load cuda/10.0/10.0.130.1
-[username@g0001 ~]$ module load cudnn/7.6/7.6.2
-[username@g0001 ~]$ module unload cudnn/7.6/7.6.2
-[username@g0001 ~]$ module switch cuda/10.0/10.0.130.1 cuda/9.2/9.2.148.1
-[username@g0001 ~]$ module load cudnn/7.6/7.6.2
+[username@g0001 ~]$ module load cudnn/7.6/7.6.5
+[username@g0001 ~]$ module unload cudnn/7.6/7.6.5
+[username@g0001 ~]$ module switch cuda/10.0/10.0.130.1 cuda/10.2/10.2.89
+[username@g0001 ~]$ module load cudnn/7.6/7.6.5
 [username@g0001 ~]$ env | grep LD_LIBRARY_PATH
-LD_LIBRARY_PATH=/apps/cudnn/7.6.2/cuda9.2/lib64:/apps/cuda/9.2.148.1/lib64
+LD_LIBRARY_PATH=/apps/cudnn/7.6.5/cuda10.2/lib64:/apps/cuda/10.2.89/lib64:/apps/cuda/10.2.89/extras/CUPTI/lib64
 ```
 
 ## ジョブスクリプトでの利用方法 {#usage-in-a-job-script}

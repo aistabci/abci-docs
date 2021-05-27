@@ -14,28 +14,22 @@ Executing while logged in to the interactive node has the same effect.
 
 Generally, any file systems have their own block size, and even the smallest file consumes the capacity of the block size.
 
-ABCI sets the block size of the group area to 128 KB and the block size of the home area to 4 KB. For this reason, if a large number of small files are created in the group area, usage efficiency will be reduced. For example, if you want to create a file that is less than 4KB in the group area, you need about 32 times the capacity of the home area.
+ABCI sets the block size of the group area 1,2,3 to 128 KB and the block size of the home area and group area to 4 KB. For this reason, if a large number of small files are created in the group area 1,2,3 , usage efficiency will be reduced. For example, if you want to create a file that is less than 4KB in the group area, you need about 32 times the capacity of the home area.
 
 ## Q. Singularity cannot use container registries that require authentication
 
-Singularity version 2.6 and SingularityPRO version 3.5 have a function equivalent to ``docker login`` that provides authentication information with environment variables.
+SingularityPRO has a function equivalent to ``docker login`` that provides authentication information with environment variables.
 
 ```shell
-[username@es ~]$ export SINGULARITY_DOCKER_USERNAME='username'
-[username@es ~]$ export SINGULARITY_DOCKER_PASSWORD='password'
-[username@es ~]$ singularity pull docker://myregistry.azurecr.io/namespace/repo_name:repo_tag
+[username@es1 ~]$ export SINGULARITY_DOCKER_USERNAME='username'
+[username@es1 ~]$ export SINGULARITY_DOCKER_PASSWORD='password'
+[username@es1 ~]$ singularity pull docker://myregistry.azurecr.io/namespace/repo_name:repo_tag
 ```
 
-For more information on Singularity version 2.6 authentication, see below.
+For more information on SingularityPRO authentication, see below.
 
-* [Singularity 2.6 User Guide](https://www.sylabs.io/guides/2.6/user-guide/)
-    * [How do I specify my Docker image?](https://sylabs.io/guides/2.6/user-guide/singularity_and_docker.html#how-do-i-specify-my-docker-image)
-    * [Custom Authentication](https://sylabs.io/guides/2.6/user-guide/singularity_and_docker.html#custom-authentication)  
-
-For more information on SingularityPRO version 3.5 authentication, see below.
-
-* [SingularityPRO 3.5 User Guide](https://repo.sylabs.io/c/0f6898986ad0b646b5ce6deba21781ac62cb7e0a86a5153bbb31732ee6593f43/guides/singularitypro35-user-guide/)
-    * [Making use of private images from Private Registries](https://repo.sylabs.io/c/0f6898986ad0b646b5ce6deba21781ac62cb7e0a86a5153bbb31732ee6593f43/guides/singularitypro35-user-guide/singularity_and_docker.html?highlight=support%20docker%20oci#making-use-of-private-images-from-private-registries)
+* [SingularityPRO 3.7 User Guide](https://repo.sylabs.io/c/0f6898986ad0b646b5ce6deba21781ac62cb7e0a86a5153bbb31732ee6593f43/guides/singularitypro37-user-guide/)
+    * [Making use of private images from Private Registries](https://repo.sylabs.io/c/0f6898986ad0b646b5ce6deba21781ac62cb7e0a86a5153bbb31732ee6593f43/guides/singularitypro37-user-guide/singularity_and_docker.html?highlight=support%20docker%20oci#making-use-of-private-images-from-private-registries)
 
 ## Q. NGC CLI cannot be executed
 
@@ -48,23 +42,10 @@ ImportError: /lib64/libc.so.6: version `GLIBC_2.18' not found (required by /tmp/
 
 By preparing the following shell script, it can be executed using Singularity. This technique can be used not only for NGC CLI but also for general use.
 
-**Singularity 2.6**
-
 ```
 #!/bin/sh
 source /etc/profile.d/modules.sh
-module load singularity/2.6.1
-
-NGC_HOME=$HOME/ngc
-singularity exec $NGC_HOME/ubuntu-18.04.simg $NGC_HOME/ngc $@
-```
-
-**SingularityPRO 3.5**
-
-```
-#!/bin/sh
-source /etc/profile.d/modules.sh
-module load singularitypro/3.5
+module load singularitypro
 
 NGC_HOME=$HOME/ngc
 singularity exec $NGC_HOME/ubuntu-18.04.simg $NGC_HOME/ngc $@
@@ -72,7 +53,7 @@ singularity exec $NGC_HOME/ubuntu-18.04.simg $NGC_HOME/ngc $@
 
 ## Q. I want to assign multiple compute nodes and have each compute node perform different processing
 
-If you give `-l rt_F=N` option to `qrsh` or `qsub`, you can assign N compute nodes. You can also use MPI if you want to perform different processing on each assigned compute node.
+If you give `-l rt_F=N` or `-l rt_AF=N` option to `qrsh` or `qsub`, you can assign N compute nodes. You can also use MPI if you want to perform different processing on each assigned compute node.
 
 ```
 $ module load openmpi/2.1.6
@@ -99,7 +80,7 @@ Host as.abci.ai
 
 ## Q. I want to use a newer version of Open MPI
 
-ABCI offers CUDA-aware and CUDA non-aware versions of Open MPI, and you can check the availability provided by [Using MPI](08.md#open-mpi).
+ABCI offers CUDA-aware and CUDA non-aware versions of Open MPI, and you can check the availability provided by [Open MPI](mpi.md#open-mpi).
 
 The Environment Modules provided by ABCI will attempt to configure CUDA-aware Open MPI environment when loading `openmpi` module only if `cuda` module has been loaded beforehand.
 
@@ -113,26 +94,27 @@ Currently Loaded Modulefiles:
   1) cuda/10.0/10.0.130.1   2) openmpi/2.1.6
 ```
 
-For the combination where CUDA-aware MPI is not provided (`cuda/10.0/10.0.130.1`, `openmpi/3.1.3`), the environment setup will fail and `openmpi` module will not be loaded:
+For the combination where CUDA-aware MPI is not provided (`cuda/9.1/9.1.85.3`, `openmpi/3.1.6`), the environment setup will fail and `openmpi` module will not be loaded:
 
 ```
-$ module load cuda/10.0/10.0.130.1
-$ module load openmpi/3.1.3
+$ module load cuda/9.1/9.1.85.3
+$ module load openmpi/3.1.6
 ERROR: loaded cuda module is not supported.
-WARINING: openmpi/3.1.3 is supported only host version
+WARNING: openmpi/3.1.6 cannot be loaded due to missing prereq.
+HINT: at least one of the following modules must be loaded first: cuda/9.2/9.2.88.1 cuda/9.2/9.2.148.1 cuda/10.0/10.0.130.1 cuda/10.1/10.1.243 cuda/10.2/10.2.89 cuda/11.0/11.0.3 cuda/11.1/11.1.1 cuda/11.2/11.2.2
 $ module list
 Currently Loaded Modulefiles:
-  1) cuda/10.0/10.0.130.1
+  1) cuda/9.1/9.1.85.3
 ```
 
 On the other hand, there are cases where CUDA-aware version of Open MPI is not necessary, such as when you want to use Open MPI just for parallelization by Horovod. In this case, you can use a newer version of Open MPI that does not support CUDA-aware functions by loading `openmpi` module first.
 
 ```
-$ module load openmpi/3.1.3
-$ module load cuda/10.0/10.0.130.1
+$ module load openmpi/3.1.6
+$ module load cuda/9.1/9.1.85.3
 module list
 Currently Loaded Modulefiles:
-  1) openmpi/3.1.3          2) cuda/10.0/10.0.130.1
+  1) openmpi/3.1.6       2) cuda/9.1/9.1.85.3
 ```
 
 !!! note
@@ -147,7 +129,7 @@ You can access it by following the procedure below.
 
 You need to set up SSH tunnel.
 The following example, written in `$HOME/.ssh/config` on your PC, sets up the SSH tunnel connection to ABCI internal servers through as.abci.ai by using ProxyCommand.
-Please also refer to the procedure in [Login using an SSH Client::General method](./02.md#general-method) in ABCI System User Environment.
+Please also refer to the procedure in [Login using an SSH Client::General method](getting-started.md#general-method) in ABCI System User Environment.
 
 ```shell
 Host *.abci.local
@@ -181,10 +163,22 @@ The problem can be avoided by adding `/usr/sbin` to PATH like this:
 
 Example)
 ```
-[username@g0001~]$ PATH="$PATH:/usr/sbin" 
-[username@g0001~]$ module load singularitypro/3.5
-[username@g0001~]$ singularity run --nv docker://caffe2ai/caffe2:latest
+[username@g0001 ~]$ export PATH="$PATH:/usr/sbin" 
+[username@g0001 ~]$ module load singularitypro
+[username@g0001 ~]$ singularity run --nv docker://caffe2ai/caffe2:latest
 ```
+
+## Q. I get an error due to insufficient disk space, when I ran the singularity build/pull on the compute node. {#q-insufficient-disk-space-for-singularity-build}
+
+The `singularity build` and `pull` commands use `/tmp` as the location to create temporary files.
+When you build a large container on the compute node, it may cause an error due to insufficient space in `/tmp`.
+
+If you get an error due to insufficient space, set the `SINGULARITY_TMPDIR` environment variable to use the local storage as shown below:
+
+```
+[username@g0001 ~]$ SINGULARITY_TMPDIR=$SGE_LOCALDIR singularity pull docker://nvcr.io/nvidia/tensorflow:20.12-tf1-py3
+```
+
 
 ## Q. How can I find the job ID?
 
@@ -269,3 +263,76 @@ Example)
 g0001: g0001.abci.local
 g0002: g0002.abci.local
 ```
+
+## Q. What are the new group area and data migration?
+
+In FY2021, we expanded the storage system. Refer to [Storage Systems](https://docs.abci.ai/en/01/#storage-systems) for details.
+As the storage system is expanded, the configuration of the group area will be changed.
+All the data in the existing group area used in FY2020 are going to be migrated into a new group area in FY2021.
+
+The existing group area (The **Old Area**) will not be accessible from the coming new computing resources (The Compute Node (A)).
+Therefore we need to create a new group area (The **New Area**), which is accessible from the Compute Node (A), and migrate all the data stored in the **Old Area** to the **New Area**.
+The data copy is managed by the operating team, so the users do not have to take care of the copy process.
+
+A user group who are using the **Old Area** `/groups[1-2]/gAA50NNN` had been also allocated the **New Area** at `/groups/gAA50NNN`.
+Both the **Old and New Area** are accessible from all the interactive nodes and all the existing computing nodes (The Compute Node (V)). 
+
+For the groups newly created in FY2021, only **New Area** will be allocated, so it is not a target of data migration. As results, it is not affected by data migration.  
+
+### Basic Strategy
+
+* The ABCI operating team will copy all the files in the **Old Area** to the **New Area** behind the scene. It will take one year to finish the copy process for all the user groups.
+* The users can keep using the **Old Area** during the data migration, we would like to ask the users to use the **New Area** as much as possible in order to reduce the amount of the data to be migrated.
+* When the copying process finishes, the operating team will switch the reference from the **Old Area** to the **New Area** by changing the symbolic link.
+
+### The new area /groups/gAA50NNN
+
+* The files in the **Old Area** will be copied to the **New Area** `/groups/gAA50NNN/migrated_from_SFA_GPFS/`. Note that the users cannot access the copied data under that directory until the migration finishes.
+* The area other than that directory in the **New Area** can be freely used.
+* Disk usage will increase as data is copied. For this reason, the limit of the storage usage for the **New Area** is set to be twice the quota value, which is the group disk quantity value applied in the ABCI User Portal. This is a temporal treatment. After the migration,  the limit of the storage usage is set to the same value as the quota value in the ABCI User Portal, after a grace period.
+
+### The old area /groups[1-2]/gAA50NNN
+
+#### During the data migration
+
+* During the data migration, the users can read, write and delete files in the **Old Area**.
+* In order to reduce the amount of the data to be moved, please do not put new files in the **Old Area** as much as possible.
+* Consider deleting unnecessary files in the **Old Area** as much as possible.
+* As usual, the quota value applied in the ABCI User Portal is set as the the limit of the storage usage of the **Old Area**. As usual, you can increase or decrease the quota value by applying a new quota value in the ABCI User Portal.
+
+#### At the end of the data migration
+
+* At the end of the data migration, there will be a period of several days where you cannot access the **Old area** `/groups[1-2]/gAA50NNN` and the **New area** `/groups/gAA50NNN/migrated_from_SFA_GPFS/`.
+* During that period, you can read, write and delete files in the **New Area**.
+* After the period, the copied data in **New Area** will become available. The reference to the **Old Area** will be redirected to the copied directory.
+
+
+#### After the data migration is completed
+
+* You can access the migrated data in the **New Area** with the same path `/groups[1-2]/gAA50NNN` as before. It is achieved by changing the symbolic link.
+* The files in the **Old Area** are copied to `/groups/gAA50NNN/migrate_from_SFA_GPFS/` in the **New Area**.
+* You cannot access `/groups[1-2]/gAA50NNN` in the **Old Area**.
+
+
+## Q. How to use ABCI 1.0 Environment Modules
+
+ABCI was upgraded in May 2021.
+Due to the upgrade, the Environment Modules as of FY2020 (The **ABCI 1.0 Environment Modules**) is installed in the `/apps/modules-abci-1.0` directory.
+If you want to use the ABCI 1.0 Environment Modules, set the `MODULE_HOME` environment variable as follows and load the configuration file.
+
+Please not that the ABCI 1.0 Environment Modules is not eligible for the ABCI System support.
+
+sh, bash:
+
+```
+export MODULE_HOME=/apps/modules-abci-1.0
+. ${MODULE_HOME}/etc/profile.d/modules.sh
+```
+
+ch, tcsh:
+
+```
+setenv MODULE_HOME /apps/modules-abci-1.0
+source ${MODULE_HOME}/etc/profile.d/modules.csh
+```
+

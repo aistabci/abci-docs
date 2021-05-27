@@ -1,4 +1,4 @@
-# 3. Job Execution Environment
+# Job Execution
 
 ## Job Services
 
@@ -41,9 +41,9 @@ The following describes the available resource types first, followed by the rest
 
 ### Available Resource Types
 
-The ABCI system has two types of computational resources, [compute node](01.md#compute-node) and [memory-intensive node](01.md#memory-intensive-node), each of which has the following resource types:
+The ABCI system has two types of computational resources, [compute node](system-overview.md#compute-node) and [memory-intensive node](system-overview.md#memory-intensive-node), each of which has the following resource types:
 
-#### Compute Node
+#### Compute Node (V)
 
 | Resource type | Resource type name | Description | Assigned physical CPU core | Number of assigned GPU | Memory (GiB) | Local storage (GB) | Resource type charge coefficient |
 |:--|:--|:--|:--|:--|:--|:--|:--|
@@ -53,6 +53,15 @@ The ABCI system has two types of computational resources, [compute node](01.md#c
 | C.large | rt\_C.large | node-sharing<br>CPU only | 20 | 0 | 120 | 720 | 0.60 |
 | C.small | rt\_C.small | node-sharing<br>CPU only | 5 | 0 | 30 | 180 | 0.20 |
 
+#### Compute Node (A)
+
+| Resource type | Resource type name | Description | Assigned physical CPU core | Number of assigned GPU | Memory (GiB) | Local storage (GB) | Resource type charge coefficient |
+|:--|:--|:--|:--|:--|:--|:--|:--|
+| Full | rt\_AF | node-exclusive | 72 | 8 | 480 | 3440[^1] | 3.00 |
+| AG.small | rt\_AG.small | node-sharing<br>with GPU | 9 | 1 | 60 | 390 | 0.50 |
+
+[^1]: The sum of /local1 (1590 GB) and /local2 (1850 GB).
+
 #### Memory-intensive Node
 
 | Resource type | Resource type name | Description | Assigned physical CPU core | Number of assigned GPU | Memory (GiB) | Local storage (GB) | Resource type charge coefficient |
@@ -60,36 +69,42 @@ The ABCI system has two types of computational resources, [compute node](01.md#c
 | M.large | rt\_M.large | node-sharing<br>CPU only | 8 | \- | 800 | 480 | 0.40 |
 | M.small | rt\_M.small | node-sharing<br>CPU only | 4 | \- | 400 | 240 | 0.20 |
 
-When you execute a job using multiple nodes, you need to specify resource type `rt_F` for node-exclusive. The memory-intensive node is not available for using multiple nodes.
+When you execute a job using multiple nodes, you need to specify resource type `rt_F` or `rt_AF` for node-exclusive. The memory-intensive node is not available for using multiple nodes.
 
 !!! warning
-    On node-sharing job, the job process information can be seen from other jobs executed on the same nodes. If you want to hide your job process information, specify resource type `rt_F` and execute a node-exclusive job.
+    On node-sharing job, the job process information can be seen from other jobs executed on the same nodes. If you want to hide your job process information, specify resource type `rt_F` or `rt_AF` and execute a node-exclusive job.
 
 ### Number of nodes available at the same time
 
-The available resource type and number of nodes for each service are as follows. When you execute a job using multiple nodes, you need to specify resource type `rt_F`.
+The available resource type and number of nodes for each service are as follows. When you execute a job using multiple nodes, you need to specify resource type `rt_F` or `rt_AF`.
 
 | Service | Resource type name | Number of nodes |
 |:--|:--|--:|
-| On-demand | rt\_F       | 1–32 |
+| On-demand | rt\_F       | 1-32 |
 |           | rt\_G.large | 1 |
 |           | rt\_G.small | 1 |
 |           | rt\_C.large | 1 |
 |           | rt\_C.small | 1 |
+|           | rt\_AF      | 1-4 |
+|           | rt\_AG.small| 1 |
 |           | rt\_M.large | 1 |
 |           | rt\_M.small | 1 |
-| Spot      | rt\_F       | 1–512 |
+| Spot      | rt\_F       | 1-512 |
 |           | rt\_G.large | 1 |
 |           | rt\_G.small | 1 |
 |           | rt\_C.large | 1 |
 |           | rt\_C.small | 1 |
+|           | rt\_AF      | 1-64 |
+|           | rt\_AG.small| 1 |
 |           | rt\_M.large | 1 |
 |           | rt\_M.small | 1 |
-| Reserved  | rt\_F       | 1–(number of reserved nodes) |
+| Reserved  | rt\_F       | 1-(number of reserved nodes) |
 |           | rt\_G.large | 1 |
 |           | rt\_G.small | 1 |
 |           | rt\_C.large | 1 |
 |           | rt\_C.small | 1 |
+|           | rt\_AF      | 1-(number of reserved nodes) |
+|           | rt\_AG.small| 1 |
 
 ### Elapsed time and node-time product limits
 
@@ -97,22 +112,23 @@ There is an elapsed time limit (executable time limit) for jobs depending on the
 
 | Service | Resource type name | Limit of elapsed time (upper limit/default) |
 |:--|:--|:--|
-| On-demand | rt\_F | 12:00:00/1:00:00 |
+| On-demand | rt\_F, rt\_AF | 12:00:00/1:00:00 |
 |           | rt\_G.large, rt\_C.large, rt\_M.large | 12:00:00/1:00:00 |
-|           | rt\_G.small, rt\_C.small, rt\_M.small | 12:00:00/1:00:00 |
-| Spot      | rt\_F | 72:00:00/1:00:00 |
+|           | rt\_G.small, rt\_C.small, rt\_AG.small, rt\_M.small | 12:00:00/1:00:00 |
+| Spot      | rt\_F, rt\_AF | 72:00:00/1:00:00 |
 |           | rt\_G.large, rt\_C.large, rt\_M.large, rt\_M.small | 72:00:00/1:00:00 |
-|           | rt\_G.small, rt\_C.small | 168:00:00/1:00:00 |
-| Reserved  | rt\_F | unlimited |
+|           | rt\_G.small, rt\_C.small, rt\_AG.small | 168:00:00/1:00:00 |
+| Reserved  | rt\_F, rt\_AF | unlimited |
 |           | rt\_G.large, rt\_C.large | unlimited |
-|           | rt\_G.small, rt\_C.small | unlimited |
+|           | rt\_G.small, rt\_C.small, rt\_AG.small | unlimited |
 
 In addition, when executing a job that uses multiple nodes in On-demand or Spot services, there are the following restrictions on the node-time product (execution time &times; number of used nodes).
 
 | Service | max value of node-hour |
 |:--|--:|
-| On-demand |   12 nodes &middot; hours |
-| Spot      | 2304 nodes &middot; hours |
+| On-demand                                     |   12 nodes &middot; hours |
+| Spot: Compute Node (V), Memory-Intensive Node | 2304 nodes &middot; hours |
+| Spot: Compute Node (A)                        |  288 nodes &middot; hours |
 
 ### Limitation on the number of job submissions and executions
 
@@ -170,9 +186,9 @@ In addition, the following options can be used as extended options:
 | Option | Description |
 |:--|:--|
 | -l USE\_SSH=*1*<br>-v SSH\_PORT=*port* | Enable SSH login to the compute nodes. See [SSH Access to Compute Nodes](appendix/ssh-access.md) for details. |
-| -l USE\_BEEOND=*1*<br>-v BEEOND\_METADATA\_SERVER=*num*<br>-v BEEOND\_STORAGE\_SERVER=*num* | Submit a job with using BeeGFS On Demand (BeeOND). See [Using as a BeeOND storage](04.md#using-as-a-beeond-storage) for details. |
-| -v GPU\_COMPUTE\_MODE=*mode* | Change GPU Compute Mode. See [Changing GPU Compute Mode](07.md#changing-gpu-compute-mode) for details. |
-| -l docker<br>-l docker\_images | Submit a job with a Docker container. See [Docker](09.md#docker) for details. |
+| -l USE\_BEEOND=*1*<br>-v BEEOND\_METADATA\_SERVER=*num*<br>-v BEEOND\_STORAGE\_SERVER=*num* | Submit a job with using BeeGFS On Demand (BeeOND). See [Using as a BeeOND storage](storage.md#beeond-storage) for details. |
+| -v GPU\_COMPUTE\_MODE=*mode* | Change GPU Compute Mode. See [Changing GPU Compute Mode](gpu.md#changing-gpu-compute-mode) for details. |
+| -l docker<br>-l docker\_images | Submit a job with a Docker container. See [Docker](containers.md#docker) for details. |
 
 ## Interactive Jobs
 
@@ -358,7 +374,7 @@ account      username
 priority     0
 cwd          NONE
 submit_host  es1.abci.local
-submit_cmd   /bb/system/uge/latest/bin/lx-amd64/qsub -P username -l h_rt=600 -l rt_F=1
+submit_cmd   /home/system/uge/latest/bin/lx-amd64/qsub -P username -l h_rt=600 -l rt_F=1
 qsub_time    07/01/2018 11:55:14.706
 start_time   07/01/2018 11:55:18.170
 end_time     07/01/2018 11:55:18.190
@@ -425,6 +441,8 @@ During job execution, the following environment variables are available for the 
 | NHOSTS              | The number of hosts on which this parallel job is executed |
 | PE\_HOSTFILE        | The absolute path includes hosts, slots and queue name |
 | RESTARTED           | Indicates if the job was restarted (1) or if it is the first run (0) |
+| SGE\_ARDIR          | Path to the local storage assigned to the reserved service |
+| SGE\_BEEONDDIR      | Path to BeeOND storage allocated when BeeOND storage is utilized |
 | SGE\_JOB_HOSTLIST   | The absolute path includes only hosts assigned by Univa Grid Engine |
 | SGE\_LOCALDIR       | The local storage path assigned by Univa Grid Engine |
 | SGE\_O\_WORKDIR     | The working directory path of the job submitter |
@@ -437,27 +455,30 @@ During job execution, the following environment variables are available for the 
 
 In the case of Reserved service, job execution can be scheduled by reserving compute node in advance.
 
-The maximum number of nodes and the node-time product that can be reserved for this service is "Maximum reserved nodes per reservation" and "Maximum reserved node time per reservtation" in the following table. In addition, in this service, the user can only execute jobs with the maximum number of reserved nodes (Up to 32 nodes). Note that there is an upper limit on "Maximum number of nodes can be reserved at once per system" for the entire system, so you may only be able to make reservations that fall below "Maximum reserved nodes per reservation" or you may not be able to make reservations. [Each resource types](#available-resource-types) are available for reserved compute nodes.
+The maximum number of nodes and the node-time product that can be reserved for this service is "Maximum reserved nodes per reservation" and "Maximum reserved node time per reservtation" in the following table. In addition, in this service, the user can only execute jobs with the maximum number of reserved nodes. Note that there is an upper limit on "Maximum number of nodes can be reserved at once per system" for the entire system, so you may only be able to make reservations that fall below "Maximum reserved nodes per reservation" or you may not be able to make reservations. [Each resource types](#available-resource-types) are available for reserved compute nodes.
 
-| Item | Description |
-|:--|:--|
-| Minimum reservation days | 1 day |
-| Maximum reservation days | 30 days |
-| Maximum number of nodes can be reserved at once per system | 442 nodes |
-| Maximum reserved nodes per reservation | 32 nodes |
-| Maximum reserved node time per reservtation | 12,288 node x hour |
-| Start time of accept reservation | 10:00 a.m. of 30 days ago |
-| Closing time of accept reservation | 9:00 p.m. of Start reservation of the day before |
-| Canceling reservation accept term | 9:00 p.m. of Start reservation of the day before |
-| Reservation start time | 10:00 a.m. of Reservation start day |
-| Reservation end time | 9:30 a.m. of Reservation end day |
+| Item | Description: Compute Node (V) | Description: Compute Node (A) |
+|:--|:--|:--|
+| Minimum reservation days | 1 day | 1 day |
+| Maximum reservation days | 30 days | 30 days |
+| Maximum number of nodes can be reserved at once per system | 442 nodes | 50 nodes |
+| Maximum reserved nodes per reservation | 32 nodes | 16 nodes |
+| Maximum reserved node time per reservtation | 12,288 node x hour | 6,144 node x hour |
+| Start time of accept reservation | 10:00 a.m. of 30 days ago | 10:00 a.m. of 30 days ago |
+| Closing time of accept reservation | 9:00 p.m. of Start reservation of the day before | 9:00 p.m. of Start reservation of the day before |
+| Canceling reservation accept term | 9:00 p.m. of Start reservation of the day before | 9:00 p.m. of Start reservation of the day before |
+| Reservation start time | 10:00 a.m. of Reservation start day | 10:00 a.m. of Reservation start day |
+| Reservation end time | 9:30 a.m. of Reservation end day | 9:30 a.m. of Reservation end day |
 
 ### Make a reservation
+
+To make a reservation compute node, use `qrsub` command or the ABCI User Portal .
 
 !!! warning
     Making reservation of compute node is permitted to a responsible person or a manager.
 
-To make a reservation compute node, use `qrsub` command or the ABCI User Portal .
+!!! warning
+    You cannot reserve a compute node (A) in the ABCI usage portal.
 
 ```
 $ qrsub options
@@ -471,15 +492,23 @@ $ qrsub options
 | -g *group* | Specify ABCI UserGroup |
 | -N *name* | Specify reservation name. The reservation name can be alphanumeric and special characters `=+-_.`. The maximum length is 64 characters. However, the first letter must not be a number. |
 | -n *nnode* | Specify the number of nodes. |
+| -l *resource_type* | Specifies the resource type to reserve. ( default: rt_F )|
 
-Example) Make a reservation 4 compute nodes from 2018/07/05 to 1 week (7 days)
+Example) Make a reservation 4 compute nodes(V) from 2018/07/05 to 1 week (7 days)
 
 ```
-[username@es1 ~]$ qrsub -a 20180705 -d 7 -g gxa50001 -n 4 -N "Reserve_for_AI"
+[username@es1 ~]$ qrsub -a 20180705 -d 7 -g grpname -n 4 -N "Reserve_for_AI"
 Your advance reservation 12345 has been granted
 ```
 
 The ABCI points are consumed when complete reservation.
+
+Example) Make a reservation 4 compute nodes(A) from 2021/07/05 to 1 week (7 days)
+
+```
+[username@es1 ~]$ qrsub -a 20210705 -d 7 -g grpname -n 4 -N "Reserve_for_AI" -l rt_AF
+Your advance reservation 12345 has been granted
+```
 
 ### Show the status of reservations
 
@@ -507,11 +536,20 @@ ar-id      name       owner        state start at             end at            
 
 If you want to show the number of nodes that can be reserved, you need to access User Portal, or use`qrstat` command with `--available` option.
 
+Checking the Number of Reservable Nodes for Compute Nodes(V)
 ```
 [username@es1 ~]$ qrstat --available
 06/27/2018  441
 07/05/2018  432
 07/06/2018  434
+```
+
+Checking the Number of Reservable Nodes for Compute Nodes(A)
+```
+[username@es1 ~]$ qrstat --available -l rt_AF
+06/27/2021   41
+07/05/2021   32
+07/06/2021   34
 ```
 
 !!! note

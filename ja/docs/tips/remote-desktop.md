@@ -6,12 +6,12 @@
 
 * ABCIにログインします。
 
-    ログインの方法は、[インタラクティブノードへのログイン](../02.md#login-to-interactive-node)を参照してください。
+ログインの方法は、[インタラクティブノードへのログイン](../getting-started.md#login-to-interactive-node)を参照してください。
 
 * vncserverを起動し、VNCサーバのパスワードなどの初期設定をします。
 
 ```
-[username@es1 ~] $ vncserver
+[username@es1 ~]$ vncserver
 You will require a password to access your desktops.
 
 Password:
@@ -29,7 +29,7 @@ Log file is /home/username/.vnc/es4.abci.local:1.log
 * 一旦終了します。
 
 ```
-[username@g0001 ~] vncserver -kill :1
+[username@es1 ~]$ vncserver -kill :1
 ```
 
 * 設定ファイルをいくつか修正します。
@@ -62,7 +62,7 @@ geometry=2000x1200
 * On-demand、ノード専有で1ノード確保してログインします。
 
 ```
-[username@g0001 ~]$ qrsh -g grpname -l rt_F=1 -l h_rt=1:00:00
+[username@es1 ~]$ qrsh -g grpname -l rt_F=1 -l h_rt=1:00:00
 ```
 
 * vncserverを起動します。
@@ -95,14 +95,14 @@ Linux、macOSを含むUNIX系OS、Windows 10 version 1803 (April 2018 Update)以
 ProxyJumpが利用可能なOpenSSH 7.3以降がインストールされている場合は、以下のように実行することでSSHトンネルを作成できます。
 
 ```
-[user@localmachine] $ ssh -N -L 5901:g0001.abci.local:5901 -J %r@as.abci.ai username@es
+[user@localmachine]$ ssh -N -L 5901:g0001.abci.local:5901 -J %r@as.abci.ai username@es
 ```
 
 ProxyJumpが利用できない場合は、以下のように実行すれば同様にSSHトンネルを作成できます。
 
 ```
-[user@localmachine] $ ssh -L 10022:es:22 -l username as.abci.ai
-[user@localmachine] $ ssh -p 10022 -N -L 5901:g0001.abci.local:5901 -l username localhost
+[user@localmachine]$ ssh -L 10022:es:22 -l username as.abci.ai
+[user@localmachine]$ ssh -p 10022 -N -L 5901:g0001.abci.local:5901 -l username localhost
 ```
 
 #### VNCクライアントの起動 {#launch-vnc-client}
@@ -110,7 +110,7 @@ ProxyJumpが利用できない場合は、以下のように実行すれば同�
 macOSでは、FinderにVNCクライアントが統合されているため、以下のコマンドで起動できます。
 
 ```
-[user@localmachine] $ open vnc://localhost:5901/
+[user@localmachine]$ open vnc://localhost:5901/
 ```
 
 macOS以外のOSでは、別途VNCクライアントをインストールする必要があります。
@@ -160,8 +160,8 @@ TigerVNC server sessions:
 X DISPLAY #     PROCESS ID
 :1              5081
 
-[username@g0001 ~] vncserver -kill :1
+[username@g0001 ~]$ vncserver -kill :1
 Killing Xvnc process ID XXXXXX
-[username@g0001 ~] exit
-[username@es1 ~]
+[username@g0001 ~]$ exit
+[username@es1 ~]$
 ```

@@ -4,7 +4,7 @@ site_author: AIST
 site_url: https://docs.abci.ai/portal/en/
 repo_url: https://github.com/aistairc/abci-docs
 edit_uri: edit/master/portal/en/docs/
-copyright: 'Copyright &copy; 2018 National Institute of Advanced Industrial Science and Technology (AIST)'
+copyright: 'Copyright &copy; 2021 National Institute of Advanced Industrial Science and Technology (AIST)'
 google_analytics:
   - 'UA-118371652-2'
   - 'auto'
@@ -18,7 +18,6 @@ nav:
     - 'ABCI User Guide': 'https://docs.abci.ai/en/'
     - 'ABCI User Portal (Registration)': 'https://portal.abci.ai/user/project_register_app.php?lang=en'
     - 'ABCI User Portal (Login)':  'https://portal.abci.ai/user/login.php?lang=en'
-  - 'Japanese version': 'https://docs.abci.ai/portal/ja/'
 theme:
   name: 'material'
   favicon: 'img/favicon.png'
@@ -26,8 +25,18 @@ theme:
   language: 'en'
   palette:
     primary: 'blue'
-    accent: 'blue'
+  features:
+    - toc.integrate
+extra:
+  alternate:
+    - name: 'English'
+      link: 'https://docs.abci.ai/portal/en/'
+    - name: '日本語'
+      link: 'https://docs.abci.ai/portal/ja/'
 markdown_extensions:
   - admonition
   - codehilite
   - attr_list
+plugins:
+  - search:
+      lang: ja
