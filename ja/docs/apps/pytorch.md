@@ -7,7 +7,7 @@
 ### 前提 {#precondition}
 
 - `grpname`はご自身のABCI利用グループ名に置き換えてください
-- [Python仮想環境](/06/#python-virtual-environments){:target="python-virtual-enviroments"}はインタラクティブノードと各計算ノードで参照できるよう、[ホーム領域](/04/#home-area){:target="home-area"}または[グループ領域](/04/#group-area){:target="group-area"}に作成してください
+- [Python仮想環境](/06/#python-virtual-environments){:target="python-virtual-environments"}はインタラクティブノードと各計算ノードで参照できるよう、[ホーム領域](/04/#home-area){:target="home-area"}または[グループ領域](/04/#group-area){:target="group-area"}に作成してください
 - サンプルプログラムはインタラクティブノードと各計算ノードで参照できるよう、[ホーム領域](/04/#home-area){:target="home-area"}または[グループ領域](/04/#group-area){:target="group-area"}に保存してください
 
 ### 導入方法 {#installation}
@@ -16,17 +16,17 @@
 
 ```
 [username@es1 ~]$ qrsh -g grpname -l rt_G.small=1 -l h_rt=1:00:00
-[username@g0001 ~]$ module load python/3.6/3.6.12 cuda/11.1/11.1.1
+[username@g0001 ~]$ module load gcc/9.3.0 python/3.8/3.8.7 cuda/11.1/11.1.1 cudnn/8.0/8.0.5
 [username@g0001 ~]$ python3 -m venv ~/venv/pytorch
 [username@g0001 ~]$ source ~/venv/pytorch/bin/activate
 (pytorch) [username@g0001 ~]$ pip3 install --upgrade pip setuptools
-(pytorch) [username@g0001 ~]$ pip3 install torch==1.8.1+cu111 torchvision==0.9.1+cu111 torchaudio==0.8.1 -f https://download.pytorch.org/whl/torch_stable.html
+(pytorch) [username@g0001 ~]$ pip3 install filelock torch==1.8.1+cu111 torchvision==0.9.1+cu111 torchaudio==0.8.1 -f https://download.pytorch.org/whl/torch_stable.html
 ```
 
 次回以降は、次のようにモジュールの読み込みとPython仮想環境のアクティベートだけでPyTorchを使用できます。
 
 ```
-[username@g0001 ~]$ module load python/3.6/3.6.12 cuda/11.1/11.1.1
+[username@g0001 ~]$ module load gcc/9.3.0 python/3.8/3.8.7 cuda/11.1/11.1.1 cudnn/8.0/8.0.5
 [username@g0001 ~]$ source ~/venv/pytorch/bin/activate
 ```
 
@@ -38,7 +38,7 @@ PyTorchサンプルプログラム `main.py` 実行方法をインタラクテ�
 
 ```
 [username@es1 ~]$ qrsh -g grpname -l rt_G.small=1 -l h_rt=1:00:00
-[username@g0001 ~]$ module load python/3.6/3.6.12 cuda/11.1/11.1.1
+[username@g0001 ~]$ module load gcc/9.3.0 python/3.8/3.8.7 cuda/11.1/11.1.1 cudnn/8.0/8.0.5
 [username@g0001 ~]$ source ~/venv/pytorch/bin/activate
 (pytorch) [username@g0001 ~]$ git clone https://github.com/pytorch/examples.git
 (pytorch) [username@g0001 ~]$ cd examples/mnist
@@ -49,7 +49,7 @@ PyTorchサンプルプログラム `main.py` 実行方法をインタラクテ�
 
 次のジョブスクリプトを `run.sh` ファイルとして保存します。
 
-```
+```shell
 #!/bin/sh
 
 #$ -l rt_G.small=1
@@ -57,7 +57,7 @@ PyTorchサンプルプログラム `main.py` 実行方法をインタラクテ�
 #$ -cwd
 
 source /etc/profile.d/modules.sh
-module load python/3.6/3.6.12 cuda/11.1/11.1.1
+module load gcc/9.3.0 python/3.8/3.8.7 cuda/11.1/11.1.1 cudnn/8.0/8.0.5
 source ~/venv/pytorch/bin/activate
 git clone https://github.com/pytorch/examples.git
 cd examples/mnist
@@ -77,7 +77,7 @@ Your job 1234567 ('run.sh') has been submitted
 ### 前提 {#precondition-with-horovod}
 
 - `grpname`はご自身のABCI利用グループ名に置き換えてください
-- [Python仮想環境](/06/#python-virtual-environments){:target="python-virtual-enviroments"}はインタラクティブノードと各計算ノードで参照できるよう、[ホーム領域](/04/#home-area){:target="home-area"}または[グループ領域](/04/#group-area){:target="group-area"}に作成してください
+- [Python仮想環境](/06/#python-virtual-environments){:target="python-virtual-environments"}はインタラクティブノードと各計算ノードで参照できるよう、[ホーム領域](/04/#home-area){:target="home-area"}または[グループ領域](/04/#group-area){:target="group-area"}に作成してください
 - サンプルプログラムはインタラクティブノードと各計算ノードで参照できるよう、[ホーム領域](/04/#home-area){:target="home-area"}または[グループ領域](/04/#group-area){:target="group-area"}に保存してください
 
 ### 導入方法 {#installation-with-horovod}
@@ -86,18 +86,18 @@ Your job 1234567 ('run.sh') has been submitted
 
 ```
 [username@es1 ~]$ qrsh -g grpname -l rt_G.small=1 -l h_rt=1:00:00
-[username@g0001 ~]$ module load python/3.6/3.6.12 cuda/11.1/11.1.1 nccl/2.8/2.8.4-1 gcc/7.4.0 openmpi/4.0.5
+[username@g0001 ~]$ module load gcc/9.3.0 python/3.8/3.8.7 openmpi/4.0.5 cuda/11.1/11.1.1 cudnn/8.0/8.0.5 nccl/2.8/2.8.4-1
 [username@g0001 ~]$ python3 -m venv ~/venv/pytorch+horovod
 [username@g0001 ~]$ source ~/venv/pytorch+horovod/bin/activate
 (pytorch+horovod) [username@g0001 ~]$ pip3 install --upgrade pip setuptools
-(pytorch+horovod) [username@g0001 ~]$ pip3 install torch==1.8.1+cu111 torchvision==0.9.1+cu111 torchaudio==0.8.1 -f https://download.pytorch.org/whl/torch_stable.html
-(pytorch+horovod) [username@g0001 ~]$ HOROVOD_WITH_PYTORCH=1 HOROVOD_GPU_OPERATIONS=NCCL HOROVOD_NCCL_HOME=$NCCL_HOME pip3 install --no-cache-dir horovod==0.21.3
+(pytorch+horovod) [username@g0001 ~]$ pip3 install filelock torch==1.8.1+cu111 torchvision==0.9.1+cu111 torchaudio==0.8.1 -f https://download.pytorch.org/whl/torch_stable.html
+(pytorch+horovod) [username@g0001 ~]$ HOROVOD_WITH_PYTORCH=1 HOROVOD_GPU_OPERATIONS=NCCL HOROVOD_NCCL_HOME=$NCCL_HOME HOROVOD_WITHOUT_GLOO=1 pip3 install --no-cache-dir horovod==0.22.0
 ```
 
 次回以降は、次のようにモジュールの読み込みとPython仮想環境のアクティベートだけでPyTorchとHorovodを使用できます。
 
 ```
-[username@g0001 ~]$ module load python/3.6/3.6.12 cuda/11.1/11.1.1 nccl/2.8/2.8.4-1 gcc/7.4.0 openmpi/4.0.5
+[username@g0001 ~]$ module load gcc/9.3.0 python/3.8/3.8.7 openmpi/4.0.5 cuda/11.1/11.1.1 cudnn/8.0/8.0.5 nccl/2.8/2.8.4-1
 [username@g0001 ~]$ source ~/venv/pytorch+horovod/bin/activate
 ```
 
@@ -111,9 +111,9 @@ Horovodを利用するPyTorchサンプルプログラム `pytorch_mnist.py` で�
 
 ```
 [username@es1 ~]$ qrsh -g grpname -l rt_G.large=1 -l h_rt=1:00:00
-[username@g0001 ~]$ module load python/3.6/3.6.12 cuda/11.1/11.1.1 nccl/2.8/2.8.4-1 gcc/7.4.0 openmpi/4.0.5
+[username@g0001 ~]$ module load gcc/9.3.0 python/3.8/3.8.7 openmpi/4.0.5 cuda/11.1/11.1.1 cudnn/8.0/8.0.5 nccl/2.8/2.8.4-1
 [username@g0001 ~]$ source ~/venv/pytorch+horovod/bin/activate
-(pytorch+horovod) [username@g0001 ~]$ git clone -b v0.21.3 https://github.com/horovod/horovod.git
+(pytorch+horovod) [username@g0001 ~]$ git clone -b v0.22.0 https://github.com/horovod/horovod.git
 (pytorch+horovod) [username@g0001 ~]$ mpirun -np 4 -map-by ppr:4:node -mca pml ob1 python3 horovod/examples/pytorch/pytorch_mnist.py
 ```
 
@@ -123,7 +123,7 @@ Horovodを利用するPyTorchサンプルプログラム `pytorch_mnist.py` で�
 
 次のジョブスクリプトを `run.sh` ファイルとして保存します。
 
-```
+```shell
 #!/bin/sh
 
 #$ -l rt_F=2
@@ -131,17 +131,15 @@ Horovodを利用するPyTorchサンプルプログラム `pytorch_mnist.py` で�
 #$ -cwd
 
 source /etc/profile.d/modules.sh
-module load python/3.6/3.6.12 cuda/11.1/11.1.1 nccl/2.8/2.8.4-1 gcc/7.4.0 openmpi/4.0.5
+module load gcc/9.3.0 python/3.8/3.8.7 openmpi/4.0.5 cuda/11.1/11.1.1 cudnn/8.0/8.0.5 nccl/2.8/2.8.4-1
 source ~/venv/pytorch+horovod/bin/activate
 
-git clone -b v0.21.3 https://github.com/horovod/horovod.git
+git clone -b v0.22.0 https://github.com/horovod/horovod.git
 
-NUM_NODES=${NHOSTS}
 NUM_GPUS_PER_NODE=4
-NUM_GPUS_PER_SOCKET=$(expr ${NUM_GPUS_PER_NODE} / 2)
-NUM_PROCS=$(expr ${NUM_NODES} \* ${NUM_GPUS_PER_NODE})
+NUM_PROCS=$(expr ${NHOSTS} \* ${NUM_GPUS_PER_NODE})
 
-MPIOPTS="-np ${NUM_PROCS} -map-by ppr:${NUM_GPUS_PER_NODE}:node -mca pml ob1 -mca btl ^openib -mca btl_tcp_if_include bond0"
+MPIOPTS="-np ${NUM_PROCS} -map-by ppr:${NUM_GPUS_PER_NODE}:node -mca pml ob1 -mca btl self,tcp -mca btl_tcp_if_include bond0"
 
 mpirun ${MPIOPTS} python3 horovod/examples/pytorch/pytorch_mnist.py
 
