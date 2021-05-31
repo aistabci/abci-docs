@@ -296,6 +296,8 @@
 [root@g0001 openmpi-4.0.3]# make install 2>&1 | tee make_install.log
 [root@g0001 openmpi-4.0.3]# echo "btl_openib_allow_ib = 1" >> $INSTALL_DIR/etc/openmpi-mca-params.conf
 [root@g0001 openmpi-4.0.3]# echo "btl_openib_warn_default_gid_prefix = 0" >> $INSTALL_DIR/etc/openmpi-mca-params.conf
+[root@g0001 openmpi-4.0.3]# echo "plm_rsh_no_tree_spawn = 1" >> $INSTALL_DIR/etc/openmpi-mca-params.conf
+[root@g0001 openmpi-4.0.3]# echo "plm_rsh_num_concurrent = 1088" >> $INSTALL_DIR/etc/openmpi-mca-params.conf
 ```
 
 #### CUDA 9.2.148.1
@@ -318,6 +320,8 @@
 [root@g0001 openmpi-4.0.3]# make install 2>&1 | tee make_install.log
 [root@g0001 openmpi-4.0.3]# echo "btl_openib_allow_ib = 1" >> $INSTALL_DIR/etc/openmpi-mca-params.conf
 [root@g0001 openmpi-4.0.3]# echo "btl_openib_warn_default_gid_prefix = 0" >> $INSTALL_DIR/etc/openmpi-mca-params.conf
+[root@g0001 openmpi-4.0.3]# echo "plm_rsh_no_tree_spawn = 1" >> $INSTALL_DIR/etc/openmpi-mca-params.conf
+[root@g0001 openmpi-4.0.3]# echo "plm_rsh_num_concurrent = 1088" >> $INSTALL_DIR/etc/openmpi-mca-params.conf
 ```
 
 #### CUDA 10.0.130.1
@@ -340,6 +344,8 @@
 [root@g0001 openmpi-4.0.3]# make install 2>&1 | tee make_install.log
 [root@g0001 openmpi-4.0.3]# echo "btl_openib_allow_ib = 1" >> $INSTALL_DIR/etc/openmpi-mca-params.conf
 [root@g0001 openmpi-4.0.3]# echo "btl_openib_warn_default_gid_prefix = 0" >> $INSTALL_DIR/etc/openmpi-mca-params.conf
+[root@g0001 openmpi-4.0.3]# echo "plm_rsh_no_tree_spawn = 1" >> $INSTALL_DIR/etc/openmpi-mca-params.conf
+[root@g0001 openmpi-4.0.3]# echo "plm_rsh_num_concurrent = 1088" >> $INSTALL_DIR/etc/openmpi-mca-params.conf
 ```
 
 #### CUDA 10.1.243
@@ -362,6 +368,8 @@
 [root@g0001 openmpi-4.0.3]# make install 2>&1 | tee make_install.log
 [root@g0001 openmpi-4.0.3]# echo "btl_openib_allow_ib = 1" >> $INSTALL_DIR/etc/openmpi-mca-params.conf
 [root@g0001 openmpi-4.0.3]# echo "btl_openib_warn_default_gid_prefix = 0" >> $INSTALL_DIR/etc/openmpi-mca-params.conf
+[root@g0001 openmpi-4.0.3]# echo "plm_rsh_no_tree_spawn = 1" >> $INSTALL_DIR/etc/openmpi-mca-params.conf
+[root@g0001 openmpi-4.0.3]# echo "plm_rsh_num_concurrent = 1088" >> $INSTALL_DIR/etc/openmpi-mca-params.conf
 ```
 
 #### CUDA 10.2.89
@@ -384,6 +392,8 @@
 [root@g0001 openmpi-4.0.3]# make install 2>&1 | tee make_install.log
 [root@g0001 openmpi-4.0.3]# echo "btl_openib_allow_ib = 1" >> $INSTALL_DIR/etc/openmpi-mca-params.conf
 [root@g0001 openmpi-4.0.3]# echo "btl_openib_warn_default_gid_prefix = 0" >> $INSTALL_DIR/etc/openmpi-mca-params.conf
+[root@g0001 openmpi-4.0.3]# echo "plm_rsh_no_tree_spawn = 1" >> $INSTALL_DIR/etc/openmpi-mca-params.conf
+[root@g0001 openmpi-4.0.3]# echo "plm_rsh_num_concurrent = 1088" >> $INSTALL_DIR/etc/openmpi-mca-params.conf
 ```
 
 ### Open MPI 2.1.6 (for PGI 17.10)
@@ -471,6 +481,8 @@
 [root@g0001 openmpi-4.0.3]# make install
 [root@g0001 openmpi-4.0.3]# echo "btl_openib_allow_ib = 1" >> $INSTALL_DIR/etc/openmpi-mca-params.conf
 [root@g0001 openmpi-4.0.3]# echo "btl_openib_warn_default_gid_prefix = 0" >> $INSTALL_DIR/etc/openmpi-mca-params.conf
+[root@g0001 openmpi-4.0.3]# echo "plm_rsh_no_tree_spawn = 1" >> $INSTALL_DIR/etc/openmpi-mca-params.conf
+[root@g0001 openmpi-4.0.3]# echo "plm_rsh_num_concurrent = 1088" >> $INSTALL_DIR/etc/openmpi-mca-params.conf
 ```
 
 ### Open MPI 2.1.6 (for PGI 18.10)
@@ -624,6 +636,8 @@
 [root@g0001 openmpi-4.0.3]# make install
 [root@g0001 openmpi-4.0.3]# echo "btl_openib_allow_ib = 1" >> $INSTALL_DIR/etc/openmpi-mca-params.conf
 [root@g0001 openmpi-4.0.3]# echo "btl_openib_warn_default_gid_prefix = 0" >> $INSTALL_DIR/etc/openmpi-mca-params.conf
+[root@g0001 openmpi-4.0.3]# echo "plm_rsh_no_tree_spawn = 1" >> $INSTALL_DIR/etc/openmpi-mca-params.conf
+[root@g0001 openmpi-4.0.3]# echo "plm_rsh_num_concurrent = 1088" >> $INSTALL_DIR/etc/openmpi-mca-params.conf
 ```
 
 ### Open MPI 2.1.6 (for PGI 19.10)
@@ -733,6 +747,8 @@
 [root@g0001 openmpi-4.0.3]# make install
 [root@g0001 openmpi-4.0.3]# echo "btl_openib_allow_ib = 1" >> $INSTALL_DIR/etc/openmpi-mca-params.conf
 [root@g0001 openmpi-4.0.3]# echo "btl_openib_warn_default_gid_prefix = 0" >> $INSTALL_DIR/etc/openmpi-mca-params.conf
+[root@g0001 openmpi-4.0.3]# echo "plm_rsh_no_tree_spawn = 1" >> $INSTALL_DIR/etc/openmpi-mca-params.conf
+[root@g0001 openmpi-4.0.3]# echo "plm_rsh_num_concurrent = 1088" >> $INSTALL_DIR/etc/openmpi-mca-params.conf
 ```
 
 ### Open MPI 3.1.6 (for PGI 20.1)
@@ -776,6 +792,8 @@
 [root@g0001 openmpi-4.0.3]# make install
 [root@g0001 openmpi-4.0.3]# echo "btl_openib_allow_ib = 1" >> $INSTALL_DIR/etc/openmpi-mca-params.conf
 [root@g0001 openmpi-4.0.3]# echo "btl_openib_warn_default_gid_prefix = 0" >> $INSTALL_DIR/etc/openmpi-mca-params.conf
+[root@g0001 openmpi-4.0.3]# echo "plm_rsh_no_tree_spawn = 1" >> $INSTALL_DIR/etc/openmpi-mca-params.conf
+[root@g0001 openmpi-4.0.3]# echo "plm_rsh_num_concurrent = 1088" >> $INSTALL_DIR/etc/openmpi-mca-params.conf
 ```
 
 ## MVAPICH2
