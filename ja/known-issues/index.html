@@ -1085,7 +1085,7 @@
 <td align="left">2021/05/17</td>
 <td align="left">Application</td>
 <td align="left">Open MPI 4.0.5にて、66ノード以上を使用したプログラム実行が異常終了することを確認しています。66ノード以上を使用する場合、MCAパラメータplm_rsh_no_tree_spawn trueおよびplm_rsh_num_concurrent $NHOSTSを指定してプログラムを実行してください。<BR><BR>$ mpirun -mca plm_rsh_no_tree_spawn true -mca plm_rsh_num_concurrent $NHOSTS ./a.out</td>
-<td align="left">2021/05/17</td>
+<td align="left">2021/05/31<br>対応完了。これらMCAパラメータのデフォルト値を変更しました。</td>
 </tr>
 <tr>
 <td align="left">2020/09/30</td>
