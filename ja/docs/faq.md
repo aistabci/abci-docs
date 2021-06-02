@@ -319,7 +319,7 @@ g0002: g0002.abci.local
 * データ移行完了後、旧領域上の`/groups[1-2]/gAA50NNN`にはアクセスできなくなります。
 
 
-## Q. 計算ノード(A)と計算ノード(V)の違いが知りたい
+## Q. 計算ノード(A)と計算ノード(V)の違いが知りたい {#q-what-is-the-difference-between-compute-node-A-and-compute-node-V}
 
 ABCIは、2021年5月にABCI 2.0にアップグレードされました。
 従来より提供していたNVIDIA V100搭載の計算ノード(V)に加えて、NVIDIA A100を搭載した計算ノード(A)が利用できるようになりました。
@@ -382,6 +382,16 @@ ABCIは、2021年5月にABCI 2.0にアップグレードされました。
 CUDA 10以前ではこのCompute Capability 8.0をサポートしていません。そのため、計算ノード(A)では、Compute Capability 8.0をサポートするCUDA 11を使用してください。
 
 
+### インタラクティブノード(A)
+
+ABCI 2.0では、計算ノード(A)向けのプログラム開発のためにインタラクティブノード(A)を提供しています。
+
+インタラクティブノード(A)は計算ノード(A)と同様のソフトウェア構成です。
+そのため、インタクティブノード(A)でビルドしたプログラムは計算ノード(V)での動作を保証しません。
+
+インタラクティブノード(A)についての詳細については、[インタラクティブノード](https://docs.abci.ai/ja/system-overview/#interactive-node) を参照してください。
+
+
 ### グループ領域
 
 計算ノード(A)からは旧領域(`/groups[1-2]/gAA50NNN`)にアクセスできません。
@@ -393,16 +403,6 @@ CUDA 10以前ではこのCompute Capability 8.0をサポートしていません
 この移行作業が完了した後は、旧領域のファイルは計算ノード(A)からも従来と同じパス`/groups[1-2]/gAA50NNN`でアクセスできるようになります。
 
 グループ領域のデータ移行については、FAQの [グループ領域のデータ移行について知りたい](https://docs.abci.ai/ja/faq/#q-what-are-the-new-group-area-and-data-migration) を参照してください。
-
-
-### インタラクティブノード(A)
-
-ABCI 2.0では、計算ノード(A)向けのプログラム開発のためにインタラクティブノード(A)を提供しています。
-
-インタラクティブノード(A)は計算ノード(A)と同様のソフトウェア構成です。
-そのため、インタクティブノード(A)でビルドしたプログラムは計算ノード(V)での動作を保証しません。
-
-インタラクティブノード(A)についての詳細については、[インタラクティブノード](https://docs.abci.ai/ja/system-overview/#interactive-node) を参照してください。
 
 
 ## Q. ABCI 1.0 Environment Modulesを利用したい {#q-how-to-use-abci-10-environment-modules}
