@@ -264,7 +264,7 @@ g0001: g0001.abci.local
 g0002: g0002.abci.local
 ```
 
-## Q. What are the new group area and data migration?
+## Q. What are the new group area and data migration? {#q-what-are-the-new-group-area-and-data-migration}
 
 In FY2021, we expanded the storage system. Refer to [Storage Systems](https://docs.abci.ai/en/01/#storage-systems) for details.
 As the storage system is expanded, the configuration of the group area will be changed.
@@ -312,6 +312,93 @@ For the groups newly created in FY2021, only **New Area** will be allocated, so 
 * You can access the migrated data in the **New Area** with the same path `/groups[1-2]/gAA50NNN` as before. It is achieved by changing the symbolic link.
 * The files in the **Old Area** are copied to `/groups/gAA50NNN/migrate_from_SFA_GPFS/` in the **New Area**.
 * You cannot access `/groups[1-2]/gAA50NNN` in the **Old Area**.
+
+
+## Q. What is the difference between Compute Node (A) and Compute Node (V) {# q-what-is-the-difference-between-compute-node-A-and-compute-node-V}
+
+ABCI was upgraded to ABCI 2.0 in May 2021.
+In addition to the previously provided Compute Node (V) with NVIDIA V100, the Compute Node (A) with NVIDIA A100 is currently available.
+
+This section describes the differences between the Compute Node (A) and the Compute Node (V), and points to note when using the Compute Node (A).
+
+### Resource type name
+
+The Resource type name is different between the Compute Node (A) and the Compute Node (V).
+
+The following Resource types are available for Compute Node (A).
+Specify the resource type name you want to use when submitting a job.
+
+Resource type | Resource type name | Assigned physical CPU core | Number of assigned GPU | Memory (GiB) |
+|:-|:-|:-|:-|:-|
+| Full | rt_AF | 72 | 8 | 480 |
+AG.small | rt_AG.small | 9 | 1 | 60 |
+
+For more detailed Resource types, see Available Resource types (job-execution.md#available-resource-types).
+
+
+### Fees
+
+Charges are different for Compute Node (A) and Compute Node (V).
+
+The table below shows the prices for batch and interactive jobs on Compute Node (A).
+
+| Resource type name | Fee (point/hour) |
+|:-|:-|
+| rt_AF | 3.0 |
+| rt_AG.small | 0.5 |
+
+The table below shows the reserving charges for Compute Node (A).
+
+| Resource type name | Fee (points/day) |
+|:-|:-|
+| rt_AF | 108 |
+| rt_AG.small | N/A |
+
+See [ABCI USAGE FEES](https://abci.ai/en/how_to_use/tariffs.html) for pricing details.
+
+
+### Operating System
+
+The Compute Node (A) and the Compute Node (V) have different Operating Systems. 
+
+| Node | Operating System |
+|:-|:-|
+| Compute Node (A) | Red Hat Enterprise Linux 8.2 |
+| Compute Node (V) | CentOS Linux 7.5 |
+
+Since the versions of libraries such as kernel and glibc are different, the operation is not guaranteed even if the program built for the Compute Node (V) is run on the Compute Node (A).
+
+Please rebuild the program for the Compute Node (A) using the Compute Node (A) or the Interactive Node (A) described later.
+
+
+### CUDA Version
+
+The NVIDIA A100 on the compute node (A) supports Compute Capability 8.0.
+
+CUDA 10 and earlier does not support this Compute Capability 8.0. Therefore, Compute Node (A) should use CUDA 11 with Compute Capability 8.0 support.
+
+
+### Interactive Node (A)
+
+ABCI 2.0 provides the Interactive Node (A) for program development for the Compute Node (A).
+
+The Interactive Node (A) has the same software configuration as the Compute Node (A).
+Therefore, the program built on the Interactive Node (A) does not guarantee the operation on the Compute Node (V).
+
+For more information on Interactive Node (A), see [Interactive Node](system-overview.md#interactive-node).
+
+
+### Group area
+
+The old area (`/groups[1-2]/gAA50NNN`) cannot be accessed from the Compute Node (A).
+
+If you want to use the file in the old area in the Compute Node (A), the user needs to copy the file to the home area or the new area (`/groups/gAA50NNN`).
+When copying files from the old area, use the Interactive Node (A), Interactive Node (V), or Compute Node (V).
+
+Since April 2021, we have been working on migrating files in the old area to the new area.
+After this migration work is completed, the files in the old area will be accessible from the Compute Node (A) with the same path `/groups[1-2]/gAA50NNN` as before.
+
+For information of Group area data migration, see the FAQ [Q. What are the new group area and data migration?](faq.md#q-what-are-the-new-group-area-and-data-migration).
 
 
 ## Q. How to use ABCI 1.0 Environment Modules
