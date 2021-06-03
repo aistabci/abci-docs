@@ -154,7 +154,7 @@ Host *.abci.local
 
 ## Q. ダウンロード済みのデータセットはありませんか?
 
-[こちら](tips/datasets.md)のページをご参照ください。
+[データセットの利用](tips/datasets.md)を参照してください。
 
 ## Q. バッチジョブでSingularity pullでのイメージファイル作成に失敗する
 
@@ -183,7 +183,6 @@ singularity build/pull コマンドは一時ファイルの作成場所として
 ```
 [username@g0001 ~]$ SINGULARITY_TMPDIR=$SGE_LOCALDIR singularity pull docker://nvcr.io/nvidia/tensorflow:20.12-tf1-py3
 ```
-
 
 ## Q. ジョブ ID を調べるには？ {#q-how-can-i-find-the-job-id}
 
@@ -269,6 +268,105 @@ g0001: g0001.abci.local
 g0002: g0002.abci.local
 ```
 
+## Q. 計算ノード(A)と計算ノード(V)の違いが知りたい {#q-what-is-the-difference-between-compute-node-A-and-compute-node-V}
+
+ABCIは、2021年5月にABCI 2.0にアップグレードされました。
+従来より提供していたNVIDIA V100搭載の計算ノード(V)に加えて、NVIDIA A100を搭載した計算ノード(A)が利用できるようになりました。
+
+ここでは計算ノード(A)と計算ノード(V)の違い、および、計算ノード(A)を利用する際の注意点などを説明します。
+
+### 資源タイプ名
+
+計算ノード(A)と計算ノード(V)では資源タイプ名が異なります。計算ノード(A)は、以下の資源タイプ名を指定することで利用できます。
+
+| 資源タイプ | 資源タイプ名 | 割り当て物理CPUコア数 | 割り当てGPU数 | メモリ(GiB) |
+|:--|:--|:--|:--|:--|
+| Full     | rt\_AF       | 72 | 8 | 480 |
+| AG.small | rt\_AG.small | 9  | 1 | 60  |
+
+より詳しい資源タイプについては、[利用可能な資源タイプ](job-execution.md#available-resource-types)を参照してください。
+
+### 課金
+
+[利用可能な資源タイプ](job-execution.md#available-resource-types)に示す通り、計算ノード(A)と計算ノード(V)では資源タイプ課金係数が異なります。このため、[課金](job-execution.md#accounting)に基づいて算出される、使用ABCIポイント数も異なります。
+
+計算ノード(A)利用時の使用ABCIポイント数は、以下の通りとなります。
+
+| [資源タイプ名](job-execution.md#available-resource-types)<br>[実行優先度](job-execution.md#execution-priority) | On-demandおよびSpotサービス<br>実行優先度: -500(既定)<br>(ポイント/時間) | On-demandおよびSpotサービス<br>実行優先度: -400<br>(ポイント/時間) | Reservedサービス<br>(ポイント/日) |
+|:--|:--|:--|:--|
+| rt\_AF       | 3.0 | 4.5  | 108 |
+| rt\_AG.small | 0.5 | 0.75 | NA  |
+
+### OS
+
+計算ノード(A)と計算ノード(V)ではOSが異なります。
+
+| 項目 | OS |
+|:--|:--|
+| 計算ノード(A) | Red Hat Enterprise Linux 8.2 |
+| 計算ノード(V) | CentOS Linux 7.5 |
+
+カーネルやglibcなどライブラリのバージョンも異なるため、計算ノード(V)向けにビルドしたプログラムをそのまま計算ノード(A)上で動かしても動作は保証されません。
+
+計算ノード(A)向けのプログラムは、計算ノード(A)や後述するインタラクティブノード(A)を使用してビルドしてください。
+
+### CUDA Version
+
+計算ノード(A)に搭載されているNVIDIA A100はCompute Capability 8.0をサポートしています。
+
+CUDA 10以前ではこのCompute Capability 8.0をサポートしていません。そのため、計算ノード(A)では、Compute Capability 8.0をサポートするCUDA 11を使用してください。
+
+!!! note
+    [Environment Modules](environment-modules.md)では、試験用にCUDA 10も利用可能としていますが、動作を保証するものではありません。
+
+### インタラクティブノード(A)
+
+ABCIでは、計算ノード(A)向けのプログラム開発の利便性のため、インタラクティブノード(A)を提供しています。
+インタラクティブノード(A)は、計算ノード(A)と同様のソフトウェア構成を有しています。
+このため、インタクティブノード(A)でビルドしたプログラムは計算ノード(V)での動作を保証しません。
+
+インタラクティブノードの使い分けについては以下を参照してください。
+
+| | インタラクティブノード(V) | インタラクティブノード(A) |
+|:--|:--|:--|
+| 利用者がログインできるか? | Yes | Yes |
+| 計算ノード(V)向けのプログラム開発が可能か? | Yes | No |
+| 計算ノード(A)向けのプログラム開発が可能か? | No | Yes |
+| 計算ノード(V)向けのジョブ投入が可能か? | Yes | Yes |
+| 計算ノード(A)向けのジョブ投入が可能か? | Yes | Yes |
+| グループ領域の旧領域にアクセス可能か? | Yes | Yes |
+
+インタラクティブノード(A)の詳細は、[インタラクティブノード](system-overview.md#interactive-node)を参照してください。
+
+### グループ領域
+
+計算ノード(A)からは旧領域(`/groups[1-2]/gAA50NNN`)にアクセスできません。
+
+旧領域にあるファイルを計算ノード(A)で利用したい場合は、事前に利用者がファイルをホーム領域や新領域(`/groups/gAA50NNN`)にコピーしておく必要があります。旧領域にあるファイルをコピーする場合は、インタラクティブノードおよび計算ノード(V)を利用してください。
+
+なお、2021年4月より旧領域のファイルを新領域へ移行する作業も進めています。グループ領域のデータ移行については、FAQの[グループ領域のデータ移行について知りたい](faq.md#q-what-are-the-new-group-area-and-data-migration)を参照してください。
+
+## Q. ABCI 1.0 Environment Modulesを利用したい {#q-how-to-use-abci-10-environment-modules}
+
+ABCIは、2021年5月にABCI 2.0にアップグレードされました。
+このアップグレードにともない、2020年度時点のEnvironment Modules(以降、**ABCI 1.0 Environment Modules**)を`/apps/modules-abci-1.0`としてインストールしました。
+ABCI 1.0 Environment Modulesを利用したい場合は、以下のように`MODULE_HOME`環境変数を設定し、設定ファイルを読み込んでください。
+
+なお、ABCI 1.0 Environment Modulesはサポート対象外です。あらかじめご了承ください。
+
+sh, bashの場合:
+
+```
+export MODULE_HOME=/apps/modules-abci-1.0
+. ${MODULE_HOME}/etc/profile.d/modules.sh
+```
+
+csh, tcshの場合:
+
+```
+setenv MODULE_HOME /apps/modules-abci-1.0
+source ${MODULE_HOME}/etc/profile.d/modules.csh
+```
 
 ## Q. グループ領域のデータ移行について知りたい {#q-what-are-the-new-group-area-and-data-migration}
 
@@ -317,113 +415,3 @@ g0002: g0002.abci.local
 * 旧領域に置かれていたデータは、従来と同じパス`/groups[1-2]/gAA50NNN`でアクセス可能になります。
 * このパス`/groups[1-2]/gAA50NNN`は、新領域の`/groups/gAA50NNN/migrated_from_SFA_GPFS/`へのシンボリックリンクで実現されます。
 * データ移行完了後、旧領域上の`/groups[1-2]/gAA50NNN`にはアクセスできなくなります。
-
-
-## Q. 計算ノード(A)と計算ノード(V)の違いが知りたい {#q-what-is-the-difference-between-compute-node-A-and-compute-node-V}
-
-ABCIは、2021年5月にABCI 2.0にアップグレードされました。
-従来より提供していたNVIDIA V100搭載の計算ノード(V)に加えて、NVIDIA A100を搭載した計算ノード(A)が利用できるようになりました。
-
-ここでは計算ノード(A)と計算ノード(V)の違い、および、計算ノード(A)を利用する際の注意点などを説明します。
-
-### 資源タイプ名
-
-計算ノード(A)と計算ノード(V)では資源タイプ名が異なります。
-
-計算ノード(A)には次の資源タイプを用意しています。
-ジョブ投入時に利用したい資源タイプ名を指定してください。
-
-| 資源タイプ | 資源タイプ名 | 割り当て物理CPUコア数 | 割り当てGPU数 | メモリ(GiB) |
-|:--|:--|:--|:--|:--|
-| Full | rt_AF      | 72 | 8 | 480 |
-| AG.small | rt_AG.small | 9 | 1 | 60 |
-
-より詳しい資源タイプについては、[利用可能な資源タイプ](job-execution.md#available-resource-types) を参照してください。
-
-### 料金
-
-計算ノード(A)と計算ノード(V)では料金が異なります。
-
-以下の表は計算ノード(A)における、バッチジョブおよびインタラクティブジョブの料金です。
-
-| 資源タイプ名 | 料金(ポイント/時間) |
-|:--|:--|
-| rt_AF | 3.0 |
-| rt_AG.small | 0.5  |
-
-以下の表は計算ノード(A)における、事前予約の料金です。
-
-| 資源タイプ名 | 料金(ポイント/日) |
-|:--|:--|
-| rt_AF | 108 |
-| rt_AG.small | NA  |
-
-料金の詳細については [ABCIサービス料金表](https://abci.ai/ja/how_to_use/tariffs.html) を参照してください。
-
-
-### OS
-
-計算ノード(A)と計算ノード(V)ではOSが異なります。
-
-| 項目 | OS |
-|:--|:--|
-| 計算ノード(A) | Red Hat Enterprise Linux 8.2 |
-| 計算ノード(V) | CentOS Linux 7.5 |
-
-カーネルやglibcなどライブラリのバージョンも異なるため、 計算ノード(V)向けにビルドしたプログラムを計算ノード(A)上で動かしても動作は保証されません。
-
-計算ノード(A)向けのプログラムは、計算ノード(A)や後述するインタラクティブノード(A)を使用してビルドしてください。
-
-
-### CUDA Version
-
-計算ノード(A)に搭載されているNVIDIA A100はCompute Capability 8.0をサポートしています。
-
-CUDA 10以前ではこのCompute Capability 8.0をサポートしていません。そのため、計算ノード(A)では、Compute Capability 8.0をサポートするCUDA 11を使用してください。
-
-
-### インタラクティブノード(A)
-
-ABCI 2.0では、計算ノード(A)向けのプログラム開発のためにインタラクティブノード(A)を提供しています。
-
-インタラクティブノード(A)は計算ノード(A)と同様のソフトウェア構成です。
-そのため、インタクティブノード(A)でビルドしたプログラムは計算ノード(V)での動作を保証しません。
-
-インタラクティブノード(A)についての詳細については、[インタラクティブノード](system-overview.md#interactive-node) を参照してください。
-
-
-### グループ領域
-
-計算ノード(A)からは旧領域(`/groups[1-2]/gAA50NNN`)にアクセスできません。
-
-旧領域にあるファイルを計算ノード(A)で利用したい場合は、利用者がファイルをホーム領域や新領域(`/groups/gAA50NNN`)にコピーする必要があります。
-旧領域からファイルをコピーする場合は、インタラクティブノード(A)、インタラクティブノード(V)および計算ノード(V)を利用してください。
-
-なお、2021年4月より旧領域のファイルを新領域へ移行する作業を行っています。
-この移行作業が完了した後は、旧領域のファイルは計算ノード(A)からも従来と同じパス`/groups[1-2]/gAA50NNN`でアクセスできるようになります。
-
-グループ領域のデータ移行については、FAQの [グループ領域のデータ移行について知りたい](faq.md#q-what-are-the-new-group-area-and-data-migration) を参照してください。
-
-
-## Q. ABCI 1.0 Environment Modulesを利用したい {#q-how-to-use-abci-10-environment-modules}
-
-ABCIは、2021年5月にABCI 2.0にアップグレードされました。
-このアップグレードにともない、2020年度時点のEnvironment Modules(以降、**ABCI 1.0 Environment Modules**)を`/apps/modules-abci-1.0`としてインストールしました。
-ABCI 1.0 Environment Modulesを利用したい場合は、以下のように`MODULE_HOME`環境変数を設定し、設定ファイルを読み込んでください。
-
-なお、ABCI 1.0 Environment Modulesはサポート対象外です。あらかじめご了承ください。
-
-sh, bashの場合:
-
-```
-export MODULE_HOME=/apps/modules-abci-1.0
-. ${MODULE_HOME}/etc/profile.d/modules.sh
-```
-
-csh, tcshの場合:
-
-```
-setenv MODULE_HOME /apps/modules-abci-1.0
-source ${MODULE_HOME}/etc/profile.d/modules.csh
-```
-
