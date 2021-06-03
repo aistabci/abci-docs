@@ -338,7 +338,7 @@ ABCIは、2021年5月にABCI 2.0にアップグレードされました。
 | Full | rt_AF      | 72 | 8 | 480 |
 | AG.small | rt_AG.small | 9 | 1 | 60 |
 
-より詳しい資源タイプについては、[利用可能な資源タイプ](https://docs.abci.ai/ja/job-execution/#available-resource-types) を参照してください。
+より詳しい資源タイプについては、[利用可能な資源タイプ](job-execution.md#available-resource-types) を参照してください。
 
 ### 料金
 
@@ -389,7 +389,7 @@ ABCI 2.0では、計算ノード(A)向けのプログラム開発のためにイ
 インタラクティブノード(A)は計算ノード(A)と同様のソフトウェア構成です。
 そのため、インタクティブノード(A)でビルドしたプログラムは計算ノード(V)での動作を保証しません。
 
-インタラクティブノード(A)についての詳細については、[インタラクティブノード](https://docs.abci.ai/ja/system-overview/#interactive-node) を参照してください。
+インタラクティブノード(A)についての詳細については、[インタラクティブノード](system-overview.md#interactive-node) を参照してください。
 
 
 ### グループ領域
@@ -402,7 +402,7 @@ ABCI 2.0では、計算ノード(A)向けのプログラム開発のためにイ
 なお、2021年4月より旧領域のファイルを新領域へ移行する作業を行っています。
 この移行作業が完了した後は、旧領域のファイルは計算ノード(A)からも従来と同じパス`/groups[1-2]/gAA50NNN`でアクセスできるようになります。
 
-グループ領域のデータ移行については、FAQの [グループ領域のデータ移行について知りたい](https://docs.abci.ai/ja/faq/#q-what-are-the-new-group-area-and-data-migration) を参照してください。
+グループ領域のデータ移行については、FAQの [グループ領域のデータ移行について知りたい](faq.md#q-what-are-the-new-group-area-and-data-migration) を参照してください。
 
 
 ## Q. ABCI 1.0 Environment Modulesを利用したい {#q-how-to-use-abci-10-environment-modules}
