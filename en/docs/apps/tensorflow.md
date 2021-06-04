@@ -132,7 +132,7 @@ source /etc/profile.d/modules.sh
 module load gcc/9.3.0 python/3.8/3.8.7 openmpi/4.0.5 cuda/11.0/11.0.3 cudnn/8.0/8.0.5 nccl/2.8/2.8.4-1
 source ~/venv/tensorflow+horovod/bin/activate
 
-git clone -b v0.21.3 https://github.com/horovod/horovod.git
+git clone -b v0.22.0 https://github.com/horovod/horovod.git
 
 NUM_GPUS_PER_NODE=4
 NUM_PROCS=$(expr ${NHOSTS} \* ${NUM_GPUS_PER_NODE})

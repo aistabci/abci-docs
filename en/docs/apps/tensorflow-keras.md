@@ -2,6 +2,10 @@
 
 This section describes how to install and run TensorFlow and Keras, and how to install TensorFlow, Keras and Horovod to perform distributed learning.
 
+!!! note
+    Starting with TensorFlow 2, Keras is included in TensorFlow. This means that installing TensorFlow 2 will also enable you to use Keras.
+    The TensorFlow and Keras installation steps described here are the same as the [TensorFlow](tensorflow.md) steps, except that the sample you run uses Keras.
+
 ## Running TensorFlow-Keras on a single node {#using}
 
 ### Precondition {#precondition}

@@ -2,6 +2,10 @@
 
 ここでは、TensorFlowとKerasをpipで導入して実行する手順を説明します。具体的には、TensorFlowとKerasを導入して実行する手順と、TensorFlow、KerasとHorovodを導入して分散学習を実行する手順を示します。
 
+!!! note
+    TensorFlow 2からKerasはTensorFlowに含まれるようになりました。これによりTensorFlow 2をインストールすることでKerasも使えるようになります。
+    ここで説明するTensorFlowおよびKerasのインストール手順は、実行するサンプルでKerasを使用することを除いて、[TensorFlow](tensorflow.md)のインストール手順と同じです。
+
 ## TensorFlow-Kerasの単体実行 {#using}
 
 ### 前提 {#precondition}
