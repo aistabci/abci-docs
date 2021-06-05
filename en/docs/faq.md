@@ -264,90 +264,81 @@ g0001: g0001.abci.local
 g0002: g0002.abci.local
 ```
 
-
-## Q. What is the difference between Compute Node (A) and Compute Node (V) {# q-what-is-the-difference-between-compute-node-A-and-compute-node-V}
+## Q. What is the difference between Compute Node (A) and Compute Node (V)
 
 ABCI was upgraded to ABCI 2.0 in May 2021.
-In addition to the previously provided Compute Node (V) with NVIDIA V100, the Compute Node (A) with NVIDIA A100 is currently available.
+In addition to the previously provided Compute Nodes (V) with NVIDIA V100, the Compute Nodes (A) with NVIDIA A100 are currently available.
 
 This section describes the differences between the Compute Node (A) and the Compute Node (V), and points to note when using the Compute Node (A).
 
 ### Resource type name
 
-The Resource type name is different between the Compute Node (A) and the Compute Node (V). Specify the following Resource type name when submitting a job.
+The Resource type name is different between the Compute Node (A) and the Compute Node (V). Compute Node (A) can be used by specifying the following Resource type name when submitting a job.
 
 Resource type | Resource type name | Assigned physical CPU core | Number of assigned GPU | Memory (GiB) |
 |:-|:-|:-|:-|:-|
 | Full | rt\_AF | 72 | 8 | 480 |
 | AG.small | rt\_AG.small | 9 | 1 | 60 |
 
-For more detailed Resource types, see [Available Resource types](job-execution.md#available-resource-types).
+For more detailed Resource types, see [Available Resource Types](job-execution.md#available-resource-types).
 
+### Accounting
 
-### Fees
+Compute Node (A) and Compute Node (V) have different Resource type charge coefficient, as described at [Available Resource types](job-execution.md#available-resource-types). Therefore, the number of ABCI points used, which are calculated based on [Accounting](job-execution.md#accounting), is also different.
 
-Compute Node (A) and Compute Node (V) have different Resource type billing unit price, as said [Available Resource types](job-execution.md#available-resource-types). Therefore, the ABCI points consumption, which are calculated based on the [Accounting](job-execution.md#accounting), is also different.
-
-The ABCI points for the Compute Node (A) is as follows.
+The number of ABCI points used when using the Compute Node (A) is as follows:
 
 | [Resource type name](job-execution.md#available-resource-types)<br>[Execution Priority](job-execution.md#execution-priority) | On-demand or Spot Service<br>Execution Priority: -500 (default)<br>(point/hour) | On-demand or Spot Service<br>Execution Priority: -400<br>(point/hour) | Reserved Service<br>(point/day) |
 |:-|:-|:-|:-|
 | rt\_AF | 3.0 | 4.5 | 108 |
 | rt\_AG.small | 0.5 | 0.75 | N/A |
 
-See [ABCI USAGE FEES](https://abci.ai/en/how_to_use/tariffs.html) for pricing details.
-
-
 ### Operating System
 
-The Compute Node (A) and the Compute Node (V) have different Operating Systems. 
+The Compute Node (A) and the Compute Node (V) use different Operating Systems.
 
 | Node | Operating System |
 |:-|:-|
 | Compute Node (A) | Red Hat Enterprise Linux 8.2 |
 | Compute Node (V) | CentOS Linux 7.5 |
 
-Since the versions of libraries such as kernel and glibc are different, the operation is not guaranteed even if the program built for the Compute Node (V) is run on the Compute Node (A) as it is.
+Since the versions of kernels and libraries such as `glibc` are different, the operation cannot be guaranteed when the program built for the Compute Node (V) is run on the Compute Node (A) as it is.
 
 Please rebuild the program for the Compute Node (A) using the Compute Node (A) or the Interactive Node (A) described later.
 
-
 ### CUDA Version
 
-The NVIDIA A100 on the compute node (A) supports Compute Capability 8.0.
+The NVIDIA A100 installed on the compute node (A) is Compute Capability 8.0 compliant.
 
-CUDA 10 and earlier does not support this Compute Capability 8.0. Therefore, Compute Node (A) should use CUDA 11 with Compute Capability 8.0 support.
+CUDA 10 and earlier does not support Compute Capability 8.0. Therefore, Compute Node (A) should use CUDA 11 or later that supports Compute Capability 8.0.
 
 !!! Note
-    [Environment Modules](environment-modules.md) also makes CUDA 10 available for testing, but its operation is not guaranteed.
-
+    [Environment Modules](environment-modules.md) makes CUDA 10 available for testing, but its operation is not guaranteed.
 
 ### Interactive Node (A)
 
-ABCI provides the Interactive Node (A) for the convenience of program development for the Compute Node (A). The Interactive Node (A) has the same software configuration as the Compute Node (A). Therefore, the program built on the Interactive Node (A) does not guarantee the operation on the Compute Node (V).
+ABCI provides the Interactive Nodes (A) with the same software configuration as the Compute Node (A) for the convenience of program development for the Compute Node (A). The program built on the Interactive Node (A) does not guarantee the operation on the Compute Node (V).
 
-Please refer to the following for the proper use of Interactive Nodes.
+Please refer to the following for the proper use of Interactive Nodes:
 
 | | Interactive Node (V) | Interactive Node (A) |
 |:-|:-:|:-:|
-| Log in | Yes | Yes |
-| Develop programs for Compute Node (V) | Yes | No |
-| Develop programs for Compute Node (A) | No | Yes |
-| Submit jobs for the Compute Node (V) | Yes | Yes |
-| Submit jobs for the Compute Node (A) | Yes | Yes |
-| Access to the old Group Area | Yes | Yes |
+| Can users log in? | Yes | Yes |
+| Can users develop programs for Compute Nodes (V)? | Yes | No |
+| Can users develop programs for Compute Nodes (A)? | No | Yes |
+| Can users submit jobs for Compute Nodes (A)? | Yes | Yes |
+| Can users submit jobs for Compute Nodes (A)? | Yes | Yes |
+| Can users access the old Group Area? | Yes | Yes |
 
-For more information of Interactive Node (A), see [Interactive Node](system-overview.md#interactive-node).
-
+For more information on Interactive Node (A), see [Interactive Node](system-overview.md#interactive-node).
 
 ### Group area
 
 The old area (`/groups[1-2]/gAA50NNN`) cannot be accessed from the Compute Node (A).
 
-If you want to use the file in the old area by the Compute Node (A), the user needs to copy the file to the home area or the new area (`/groups/gAA50NNN`) in advance. When copying files from the old area, please use the Interactive Nodes or the Compute Node (V).
+When using the files in the old area from the Compute Node (A), the user needs to copy the files to the home area or the new area (`/groups/gAA50NNN`) in advance. If you want to copy the files in the old area, please use the Interactive Nodes or the Compute Node (V).
 
-Since April 2021, we are also working on migrating files from the old area to the new area. For information of Group area data migration, see the FAQ [Q. What are the new group area and data migration?](faq.md#q-what-are-the-new-group-area-and-data-migration).
-
+Since April 2021, we are also working on migrating files from the old area to the new area. For information of Group area data migration, see this FAQ [Q. What are the new group area and data migration?](faq.md#q-what-are-the-new-group-area-and-data-migration).
 
 ## Q. How to use ABCI 1.0 Environment Modules
 
