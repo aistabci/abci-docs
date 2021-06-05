@@ -330,12 +330,12 @@ Please refer to the following for the proper use of Interactive Nodes.
 
 | | Interactive Node (V) | Interactive Node (A) |
 |:-|:-:|:-:|
-| Log in | &check; | &check; |
-| Develop programs for Compute Node (V) | &check; | &cross; |
-| Develop programs for Compute Node (A) | &cross; | &check; |
-| Submit jobs for the Compute Node (V) | &check; | &check; |
-| Submit jobs for the Compute Node (A) | &check; | &check; |
-| Access to the old Group Area | &check; | &check; |
+| Log in | Yes | Yes |
+| Develop programs for Compute Node (V) | Yes | No |
+| Develop programs for Compute Node (A) | No | Yes |
+| Submit jobs for the Compute Node (V) | Yes | Yes |
+| Submit jobs for the Compute Node (A) | Yes | Yes |
+| Access to the old Group Area | Yes | Yes |
 
 For more information of Interactive Node (A), see [Interactive Node](system-overview.md#interactive-node).
 
