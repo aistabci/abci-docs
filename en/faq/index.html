@@ -1010,6 +1010,68 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#q-what-is-the-difference-between-compute-node-a-and-compute-node-v" class="md-nav__link">
+    Q. What is the difference between Compute Node (A) and Compute Node (V)
+  </a>
+  
+    <nav class="md-nav" aria-label="Q. What is the difference between Compute Node (A) and Compute Node (V)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#resource-type-name" class="md-nav__link">
+    Resource type name
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#accounting" class="md-nav__link">
+    Accounting
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#operating-system" class="md-nav__link">
+    Operating System
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#cuda-version" class="md-nav__link">
+    CUDA Version
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#interactive-node-a" class="md-nav__link">
+    Interactive Node (A)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#group-area" class="md-nav__link">
+    Group area
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#q-how-to-use-abci-10-environment-modules" class="md-nav__link">
+    Q. How to use ABCI 1.0 Environment Modules
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#q-what-are-the-new-group-area-and-data-migration" class="md-nav__link">
     Q. What are the new group area and data migration?
   </a>
@@ -1067,13 +1129,6 @@
         
       </ul>
     </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#q-how-to-use-abci-10-environment-modules" class="md-nav__link">
-    Q. How to use ABCI 1.0 Environment Modules
-  </a>
   
 </li>
       
@@ -1360,7 +1415,7 @@ Please also refer to the procedure in <a href="../getting-started/#general-metho
 
 <p>You can access the service by opening <code>http://localhost:3000/</code> on your favorite browser.</p>
 <h2 id="q-are-there-any-pre-downloaded-datasets">Q. Are there any pre-downloaded datasets?</h2>
-<p>Please see <a href="../tips/datasets/">this page</a>.</p>
+<p>Please see <a href="../tips/datasets/">Datasets</a>.</p>
 <h2 id="q-image-file-creation-with-singularity-pull-fails-in-batch-job">Q. Image file creation with Singularity pull fails in batch job</h2>
 <p>When you try to create an image file with Singularity pull in a batch job, the mksquashfs executable file may not be found and the creation may fail.</p>
 <div class="codehilite"><pre><span></span><code><span class="n">INFO</span><span class="o">:</span>    <span class="n">Converting</span> <span class="n">OCI</span> <span class="n">blobs</span> <span class="n">to</span> <span class="n">SIF</span> <span class="n">format</span>
@@ -1452,6 +1507,160 @@ The command specified in the argument of the <code>ugedsh</code> command is exec
 <span class="nl">g0002</span><span class="p">:</span><span class="w"> </span><span class="n">g0002</span><span class="p">.</span><span class="n">abci</span><span class="p">.</span><span class="k">local</span><span class="w"></span>
 </code></pre></div>
 
+<h2 id="q-what-is-the-difference-between-compute-node-a-and-compute-node-v">Q. What is the difference between Compute Node (A) and Compute Node (V)</h2>
+<p>ABCI was upgraded to ABCI 2.0 in May 2021.
+In addition to the previously provided Compute Nodes (V) with NVIDIA V100, the Compute Nodes (A) with NVIDIA A100 are currently available.</p>
+<p>This section describes the differences between the Compute Node (A) and the Compute Node (V), and points to note when using the Compute Node (A).</p>
+<h3 id="resource-type-name">Resource type name</h3>
+<p>The Resource type name is different between the Compute Node (A) and the Compute Node (V). Compute Node (A) can be used by specifying the following Resource type name when submitting a job.</p>
+<table>
+<thead>
+<tr>
+<th align="left">Resource type</th>
+<th align="left">Resource type name</th>
+<th align="left">Assigned physical CPU core</th>
+<th align="left">Number of assigned GPU</th>
+<th align="left">Memory (GiB)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">Full</td>
+<td align="left">rt_AF</td>
+<td align="left">72</td>
+<td align="left">8</td>
+<td align="left">480</td>
+</tr>
+<tr>
+<td align="left">AG.small</td>
+<td align="left">rt_AG.small</td>
+<td align="left">9</td>
+<td align="left">1</td>
+<td align="left">60</td>
+</tr>
+</tbody>
+</table>
+<p>For more detailed Resource types, see <a href="../job-execution/#available-resource-types">Available Resource Types</a>.</p>
+<h3 id="accounting">Accounting</h3>
+<p>Compute Node (A) and Compute Node (V) have different Resource type charge coefficient, as described at <a href="../job-execution/#available-resource-types">Available Resource types</a>. Therefore, the number of ABCI points used, which are calculated based on <a href="../job-execution/#accounting">Accounting</a>, is also different.</p>
+<p>The number of ABCI points used when using the Compute Node (A) is as follows:</p>
+<table>
+<thead>
+<tr>
+<th align="left"><a href="../job-execution/#available-resource-types">Resource type name</a><br><a href="../job-execution/#execution-priority">Execution Priority</a></th>
+<th align="left">On-demand or Spot Service<br>Execution Priority: -500 (default)<br>(point/hour)</th>
+<th align="left">On-demand or Spot Service<br>Execution Priority: -400<br>(point/hour)</th>
+<th align="left">Reserved Service<br>(point/day)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">rt_AF</td>
+<td align="left">3.0</td>
+<td align="left">4.5</td>
+<td align="left">108</td>
+</tr>
+<tr>
+<td align="left">rt_AG.small</td>
+<td align="left">0.5</td>
+<td align="left">0.75</td>
+<td align="left">N/A</td>
+</tr>
+</tbody>
+</table>
+<h3 id="operating-system">Operating System</h3>
+<p>The Compute Node (A) and the Compute Node (V) use different Operating Systems.</p>
+<table>
+<thead>
+<tr>
+<th align="left">Node</th>
+<th align="left">Operating System</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">Compute Node (A)</td>
+<td align="left">Red Hat Enterprise Linux 8.2</td>
+</tr>
+<tr>
+<td align="left">Compute Node (V)</td>
+<td align="left">CentOS Linux 7.5</td>
+</tr>
+</tbody>
+</table>
+<p>Since the versions of kernels and libraries such as <code>glibc</code> are different, the operation cannot be guaranteed when the program built for the Compute Node (V) is run on the Compute Node (A) as it is.</p>
+<p>Please rebuild the program for the Compute Node (A) using the Compute Node (A) or the Interactive Node (A) described later.</p>
+<h3 id="cuda-version">CUDA Version</h3>
+<p>The NVIDIA A100 installed on the compute node (A) is Compute Capability 8.0 compliant.</p>
+<p>CUDA 10 and earlier does not support Compute Capability 8.0. Therefore, Compute Node (A) should use CUDA 11 or later that supports Compute Capability 8.0.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p><a href="../environment-modules/">Environment Modules</a> makes CUDA 10 available for testing, but its operation is not guaranteed.</p>
+</div>
+<h3 id="interactive-node-a">Interactive Node (A)</h3>
+<p>ABCI provides the Interactive Nodes (A) with the same software configuration as the Compute Node (A) for the convenience of program development for the Compute Node (A). The program built on the Interactive Node (A) does not guarantee the operation on the Compute Node (V).</p>
+<p>Please refer to the following for the proper use of Interactive Nodes:</p>
+<table>
+<thead>
+<tr>
+<th align="left"></th>
+<th align="center">Interactive Node (V)</th>
+<th align="center">Interactive Node (A)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">Can users log in?</td>
+<td align="center">Yes</td>
+<td align="center">Yes</td>
+</tr>
+<tr>
+<td align="left">Can users develop programs for Compute Nodes (V)?</td>
+<td align="center">Yes</td>
+<td align="center">No</td>
+</tr>
+<tr>
+<td align="left">Can users develop programs for Compute Nodes (A)?</td>
+<td align="center">No</td>
+<td align="center">Yes</td>
+</tr>
+<tr>
+<td align="left">Can users submit jobs for Compute Nodes (A)?</td>
+<td align="center">Yes</td>
+<td align="center">Yes</td>
+</tr>
+<tr>
+<td align="left">Can users submit jobs for Compute Nodes (A)?</td>
+<td align="center">Yes</td>
+<td align="center">Yes</td>
+</tr>
+<tr>
+<td align="left">Can users access the old Group Area?</td>
+<td align="center">Yes</td>
+<td align="center">Yes</td>
+</tr>
+</tbody>
+</table>
+<p>For more information on Interactive Node (A), see <a href="../system-overview/#interactive-node">Interactive Node</a>.</p>
+<h3 id="group-area">Group area</h3>
+<p>The old area (<code>/groups[1-2]/gAA50NNN</code>) cannot be accessed from the Compute Node (A).</p>
+<p>When using the files in the old area from the Compute Node (A), the user needs to copy the files to the home area or the new area (<code>/groups/gAA50NNN</code>) in advance. If you want to copy the files in the old area, please use the Interactive Nodes or the Compute Node (V).</p>
+<p>Since April 2021, we are also working on migrating files from the old area to the new area. For information of Group area data migration, see this FAQ <a href="./#q-what-are-the-new-group-area-and-data-migration">Q. What are the new group area and data migration?</a>.</p>
+<h2 id="q-how-to-use-abci-10-environment-modules">Q. How to use ABCI 1.0 Environment Modules</h2>
+<p>ABCI was upgraded in May 2021.
+Due to the upgrade, the Environment Modules as of FY2020 (The <strong>ABCI 1.0 Environment Modules</strong>) is installed in the <code>/apps/modules-abci-1.0</code> directory.
+If you want to use the ABCI 1.0 Environment Modules, set the <code>MODULE_HOME</code> environment variable as follows and load the configuration file.</p>
+<p>Please not that the ABCI 1.0 Environment Modules is not eligible for the ABCI System support.</p>
+<p>sh, bash:</p>
+<div class="codehilite"><pre><span></span><code><span class="k">export</span> <span class="n">MODULE_HOME</span><span class="o">=/</span><span class="n">apps</span><span class="o">/</span><span class="n">modules</span><span class="o">-</span><span class="n">abci</span><span class="o">-</span><span class="mf">1.0</span>
+<span class="o">.</span> <span class="o">$</span><span class="p">{</span><span class="n">MODULE_HOME</span><span class="p">}</span><span class="o">/</span><span class="n">etc</span><span class="o">/</span><span class="n">profile</span><span class="o">.</span><span class="n">d</span><span class="o">/</span><span class="n">modules</span><span class="o">.</span><span class="n">sh</span>
+</code></pre></div>
+
+<p>ch, tcsh:</p>
+<div class="codehilite"><pre><span></span><code>setenv MODULE_HOME /apps/modules-abci-1.0
+source <span class="cp">${</span><span class="n">MODULE_HOME</span><span class="cp">}</span>/etc/profile.d/modules.csh
+</code></pre></div>
+
 <h2 id="q-what-are-the-new-group-area-and-data-migration">Q. What are the new group area and data migration?</h2>
 <p>In FY2021, we expanded the storage system. Refer to <a href="https://docs.abci.ai/en/01/#storage-systems">Storage Systems</a> for details.
 As the storage system is expanded, the configuration of the group area will be changed.
@@ -1494,20 +1703,6 @@ Both the <strong>Old and New Area</strong> are accessible from all the interacti
 <li>The files in the <strong>Old Area</strong> are copied to <code>/groups/gAA50NNN/migrate_from_SFA_GPFS/</code> in the <strong>New Area</strong>.</li>
 <li>You cannot access <code>/groups[1-2]/gAA50NNN</code> in the <strong>Old Area</strong>.</li>
 </ul>
-<h2 id="q-how-to-use-abci-10-environment-modules">Q. How to use ABCI 1.0 Environment Modules</h2>
-<p>ABCI was upgraded in May 2021.
-Due to the upgrade, the Environment Modules as of FY2020 (The <strong>ABCI 1.0 Environment Modules</strong>) is installed in the <code>/apps/modules-abci-1.0</code> directory.
-If you want to use the ABCI 1.0 Environment Modules, set the <code>MODULE_HOME</code> environment variable as follows and load the configuration file.</p>
-<p>Please not that the ABCI 1.0 Environment Modules is not eligible for the ABCI System support.</p>
-<p>sh, bash:</p>
-<div class="codehilite"><pre><span></span><code><span class="k">export</span> <span class="n">MODULE_HOME</span><span class="o">=/</span><span class="n">apps</span><span class="o">/</span><span class="n">modules</span><span class="o">-</span><span class="n">abci</span><span class="o">-</span><span class="mf">1.0</span>
-<span class="o">.</span> <span class="o">$</span><span class="p">{</span><span class="n">MODULE_HOME</span><span class="p">}</span><span class="o">/</span><span class="n">etc</span><span class="o">/</span><span class="n">profile</span><span class="o">.</span><span class="n">d</span><span class="o">/</span><span class="n">modules</span><span class="o">.</span><span class="n">sh</span>
-</code></pre></div>
-
-<p>ch, tcsh:</p>
-<div class="codehilite"><pre><span></span><code>setenv MODULE_HOME /apps/modules-abci-1.0
-source <span class="cp">${</span><span class="n">MODULE_HOME</span><span class="cp">}</span>/etc/profile.d/modules.csh
-</code></pre></div>
                 
               
               

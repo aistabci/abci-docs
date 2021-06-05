@@ -1022,7 +1022,7 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#q-what-is-the-difference-between-compute-node-A-and-compute-node-V" class="md-nav__link">
+  <a href="#q-what-is-the-difference-between-compute-node-a-and-compute-node-v" class="md-nav__link">
     Q. 計算ノード(A)と計算ノード(V)の違いが知りたい
   </a>
   
@@ -1030,22 +1030,22 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#_1" class="md-nav__link">
+  <a href="#resource-type-name" class="md-nav__link">
     資源タイプ名
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#_2" class="md-nav__link">
+  <a href="#accounting" class="md-nav__link">
     課金
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#os" class="md-nav__link">
-    OS
+  <a href="#operating-system" class="md-nav__link">
+    Operating System
   </a>
   
 </li>
@@ -1058,14 +1058,14 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#a" class="md-nav__link">
+  <a href="#interactive-node-a" class="md-nav__link">
     インタラクティブノード(A)
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#_3" class="md-nav__link">
+  <a href="#group-area" class="md-nav__link">
     グループ領域
   </a>
   
@@ -1092,7 +1092,7 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#_4" class="md-nav__link">
+  <a href="#_1" class="md-nav__link">
     基本的な方針
   </a>
   
@@ -1114,21 +1114,21 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#_5" class="md-nav__link">
+  <a href="#_2" class="md-nav__link">
     データ移行中
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#_6" class="md-nav__link">
+  <a href="#_3" class="md-nav__link">
     データ移行完了確認のための期間
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#_7" class="md-nav__link">
+  <a href="#_4" class="md-nav__link">
     データ移行完了後
   </a>
   
@@ -1526,11 +1526,11 @@ ABCIシステム利用環境の<a href="../getting-started/#general-method">SSH�
 <span class="nl">g0002</span><span class="p">:</span><span class="w"> </span><span class="n">g0002</span><span class="p">.</span><span class="n">abci</span><span class="p">.</span><span class="k">local</span><span class="w"></span>
 </code></pre></div>
 
-<h2 id="q-what-is-the-difference-between-compute-node-A-and-compute-node-V">Q. 計算ノード(A)と計算ノード(V)の違いが知りたい</h2>
+<h2 id="q-what-is-the-difference-between-compute-node-a-and-compute-node-v">Q. 計算ノード(A)と計算ノード(V)の違いが知りたい</h2>
 <p>ABCIは、2021年5月にABCI 2.0にアップグレードされました。
 従来より提供していたNVIDIA V100搭載の計算ノード(V)に加えて、NVIDIA A100を搭載した計算ノード(A)が利用できるようになりました。</p>
 <p>ここでは計算ノード(A)と計算ノード(V)の違い、および、計算ノード(A)を利用する際の注意点などを説明します。</p>
-<h3 id="_1">資源タイプ名</h3>
+<h3 id="resource-type-name">資源タイプ名</h3>
 <p>計算ノード(A)と計算ノード(V)では資源タイプ名が異なります。計算ノード(A)は、以下の資源タイプ名を指定することで利用できます。</p>
 <table>
 <thead>
@@ -1560,7 +1560,7 @@ ABCIシステム利用環境の<a href="../getting-started/#general-method">SSH�
 </tbody>
 </table>
 <p>より詳しい資源タイプについては、<a href="../job-execution/#available-resource-types">利用可能な資源タイプ</a>を参照してください。</p>
-<h3 id="_2">課金</h3>
+<h3 id="accounting">課金</h3>
 <p><a href="../job-execution/#available-resource-types">利用可能な資源タイプ</a>に示す通り、計算ノード(A)と計算ノード(V)では資源タイプ課金係数が異なります。このため、<a href="../job-execution/#accounting">課金</a>に基づいて算出される、使用ABCIポイント数も異なります。</p>
 <p>計算ノード(A)利用時の使用ABCIポイント数は、以下の通りとなります。</p>
 <table>
@@ -1587,8 +1587,8 @@ ABCIシステム利用環境の<a href="../getting-started/#general-method">SSH�
 </tr>
 </tbody>
 </table>
-<h3 id="os">OS</h3>
-<p>計算ノード(A)と計算ノード(V)ではOSが異なります。</p>
+<h3 id="operating-system">Operating System</h3>
+<p>計算ノード(A)と計算ノード(V)では、使用しているOSが異なります。</p>
 <table>
 <thead>
 <tr>
@@ -1610,16 +1610,16 @@ ABCIシステム利用環境の<a href="../getting-started/#general-method">SSH�
 <p>カーネルやglibcなどライブラリのバージョンも異なるため、計算ノード(V)向けにビルドしたプログラムをそのまま計算ノード(A)上で動かしても動作は保証されません。</p>
 <p>計算ノード(A)向けのプログラムは、計算ノード(A)や後述するインタラクティブノード(A)を使用してビルドしてください。</p>
 <h3 id="cuda-version">CUDA Version</h3>
-<p>計算ノード(A)に搭載されているNVIDIA A100はCompute Capability 8.0をサポートしています。</p>
-<p>CUDA 10以前ではこのCompute Capability 8.0をサポートしていません。そのため、計算ノード(A)では、Compute Capability 8.0をサポートするCUDA 11を使用してください。</p>
+<p>計算ノード(A)に搭載されているNVIDIA A100はCompute Capability 8.0に準拠しています。</p>
+<p>CUDA 10以前ではCompute Capability 8.0をサポートしていません。そのため、計算ノード(A)では、Compute Capability 8.0をサポートするCUDA 11以降を使用してください。</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p><a href="../environment-modules/">Environment Modules</a>では、試験用にCUDA 10も利用可能としていますが、動作を保証するものではありません。</p>
 </div>
-<h3 id="a">インタラクティブノード(A)</h3>
+<h3 id="interactive-node-a">インタラクティブノード(A)</h3>
 <p>ABCIでは、計算ノード(A)向けのプログラム開発の利便性のため、インタラクティブノード(A)を提供しています。
 インタラクティブノード(A)は、計算ノード(A)と同様のソフトウェア構成を有しています。
-このため、インタクティブノード(A)でビルドしたプログラムは計算ノード(V)での動作を保証しません。</p>
+インタクティブノード(A)でビルドしたプログラムは、計算ノード(V)での動作を保証しません。</p>
 <p>インタラクティブノードの使い分けについては以下を参照してください。</p>
 <table>
 <thead>
@@ -1663,9 +1663,9 @@ ABCIシステム利用環境の<a href="../getting-started/#general-method">SSH�
 </tbody>
 </table>
 <p>インタラクティブノード(A)の詳細は、<a href="../system-overview/#interactive-node">インタラクティブノード</a>を参照してください。</p>
-<h3 id="_3">グループ領域</h3>
+<h3 id="group-area">グループ領域</h3>
 <p>計算ノード(A)からは旧領域(<code>/groups[1-2]/gAA50NNN</code>)にアクセスできません。</p>
-<p>旧領域にあるファイルを計算ノード(A)で利用したい場合は、事前に利用者がファイルをホーム領域や新領域(<code>/groups/gAA50NNN</code>)にコピーしておく必要があります。旧領域にあるファイルをコピーする場合は、インタラクティブノードおよび計算ノード(V)を利用してください。</p>
+<p>旧領域にあるファイルを計算ノード(A)で利用する場合は、事前に利用者がファイルをホーム領域や新領域(<code>/groups/gAA50NNN</code>)にコピーしておく必要があります。旧領域にあるファイルをコピーする場合は、インタラクティブノードおよび計算ノード(V)を利用してください。</p>
 <p>なお、2021年4月より旧領域のファイルを新領域へ移行する作業も進めています。グループ領域のデータ移行については、FAQの<a href="./#q-what-are-the-new-group-area-and-data-migration">グループ領域のデータ移行について知りたい</a>を参照してください。</p>
 <h2 id="q-how-to-use-abci-10-environment-modules">Q. ABCI 1.0 Environment Modulesを利用したい</h2>
 <p>ABCIは、2021年5月にABCI 2.0にアップグレードされました。
@@ -1692,7 +1692,7 @@ source <span class="cp">${</span><span class="n">MODULE_HOME</span><span class="
 <strong>旧領域、新領域</strong>ともにすべてのインタラクティブノードとすべての既存の計算ノード(計算ノード(V))からアクセス可能です。</p>
 <p>なお、2021年度に新規に作成されたABCIグループについては、<strong>新領域</strong>のみが割り当てられるためデータ移行の対象ではなく、データ移行の影響を受けません。</p>
 <p>次にデータ移行について説明します。</p>
-<h3 id="_4">基本的な方針</h3>
+<h3 id="_1">基本的な方針</h3>
 <ul>
 <li>旧領域のデータを新領域に運用側がバックグラウンドでコピーします。全利用者データのコピー完了までには1年間かかる予定です。</li>
 <li>利用者は、コピー中も旧領域をそのまま使えますが、可能な限り新領域を利用してください。</li>
@@ -1705,19 +1705,19 @@ source <span class="cp">${</span><span class="n">MODULE_HOME</span><span class="
 <li>データコピーにともないディスク使用量が増加します。このため、移行期間中は、利用者ポータルで申請したグループディスク量(以降、クォータ値)の2倍の値を、新領域のディスク使用量上限値に設定します。移行完了後、一定の猶予期間を設けて、新領域のディスク使用量上限値を、クォータ値と同じ値に設定します。</li>
 </ul>
 <h3 id="groups1-2gaa50nnn">旧領域/groups[1-2]/gAA50NNNについて</h3>
-<h4 id="_5">データ移行中</h4>
+<h4 id="_2">データ移行中</h4>
 <ul>
 <li>データ移行中は、利用者は自由に旧領域に読み込み/書き込み/ファイルの削除が可能です。</li>
 <li>ただし、データ移行のコストが増大するため、可能な限り新領域を利用してください。</li>
 <li>また、データ移行コスト削減のため、可能なかぎり不要なファイルは削除してください。</li>
 <li>従来どおり、利用者ポータルで申請したグループディスク量(クォータ値)が、旧領域のディスク使用量上限値として設定されています。従来通り、利用者ポータルからクォータ値の増減を申請可能です。</li>
 </ul>
-<h4 id="_6">データ移行完了確認のための期間</h4>
+<h4 id="_3">データ移行完了確認のための期間</h4>
 <ul>
 <li>データ移行後、データ移行完了の確認のために、旧領域に置かれていたデータが、旧領域としても新領域としても参照できない期間が数日発生する予定です。</li>
 <li>この期間、利用者は自由に新領域に読み込み/書き込み/ファイルの削除が可能です。</li>
 </ul>
-<h4 id="_7">データ移行完了後</h4>
+<h4 id="_4">データ移行完了後</h4>
 <ul>
 <li>旧領域に置かれていたデータは、従来と同じパス<code>/groups[1-2]/gAA50NNN</code>でアクセス可能になります。</li>
 <li>このパス<code>/groups[1-2]/gAA50NNN</code>は、新領域の<code>/groups/gAA50NNN/migrated_from_SFA_GPFS/</code>へのシンボリックリンクで実現されます。</li>
