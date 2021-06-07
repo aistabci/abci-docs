@@ -546,7 +546,7 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#using" class="md-nav__link">
+  <a href="#running-tensorflow-on-a-single-node" class="md-nav__link">
     Running TensorFlow on a single node
   </a>
   
@@ -568,7 +568,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#run" class="md-nav__link">
+  <a href="#execution" class="md-nav__link">
     Execution
   </a>
   
@@ -588,21 +588,21 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#precondition-with-horovod" class="md-nav__link">
+  <a href="#precondition_1" class="md-nav__link">
     Precondition
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#installation-with-horovod" class="md-nav__link">
+  <a href="#installation_1" class="md-nav__link">
     Installation
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#run-with-horovod" class="md-nav__link">
+  <a href="#execution_1" class="md-nav__link">
     Execution
   </a>
   
@@ -1153,7 +1153,7 @@
                 
                 <h1 id="tensorflow">TensorFlow</h1>
 <p>This section describes how to install and run TensorFlow and how to install Horovod to perform distributed learning.</p>
-<h2 id="using">Running TensorFlow on a single node</h2>
+<h2 id="running-tensorflow-on-a-single-node">Running TensorFlow on a single node</h2>
 <h3 id="precondition">Precondition</h3>
 <ul>
 <li>Replace <code>grpname</code> with your own ABCI group.</li>
@@ -1175,7 +1175,7 @@
 <span class="p">[</span><span class="n">username</span><span class="err">@</span><span class="n">g0001</span> <span class="o">~</span><span class="p">]</span><span class="o">$</span> <span class="n">source</span> <span class="o">~/</span><span class="n">venv</span><span class="o">/</span><span class="n">tensorflow</span><span class="o">/</span><span class="n">bin</span><span class="o">/</span><span class="n">activate</span>
 </code></pre></div>
 
-<h3 id="run">Execution</h3>
+<h3 id="execution">Execution</h3>
 <p>The following shows how to execute the TensorFlow sample program <code>train.py</code> in the case of an interactive job and a batch job.</p>
 <p><strong>Run as an interactive job</strong></p>
 <div class="codehilite"><pre><span></span><code><span class="p">[</span><span class="n">username</span><span class="err">@</span><span class="n">es1</span> <span class="o">~</span><span class="p">]</span><span class="o">$</span> <span class="n">qrsh</span> <span class="o">-</span><span class="n">g</span> <span class="n">grpname</span> <span class="o">-</span><span class="n">l</span> <span class="n">rt_G</span><span class="o">.</span><span class="n">small</span><span class="o">=</span><span class="mi">1</span> <span class="o">-</span><span class="n">l</span> <span class="n">h_rt</span><span class="o">=</span><span class="mi">1</span><span class="p">:</span><span class="mi">00</span><span class="p">:</span><span class="mi">00</span>
@@ -1207,13 +1207,13 @@ deactivate
 </code></pre></div>
 
 <h2 id="running-tensorflow-on-multiple-nodes">Running TensorFlow on multiple nodes</h2>
-<h3 id="precondition-with-horovod">Precondition</h3>
+<h3 id="precondition_1">Precondition</h3>
 <ul>
 <li>Replace <code>grpname</code> with your own ABCI group.</li>
 <li><a href="../../python/#python-virtual-environments" target="python-virtual-environments">The Python virtual environment</a> should be created in the <a href="../../storage/#home-area" target="home-area">home</a> or <a href="../../storage/#group-area" target="group-area">group</a> area so that it can be referenced by interactive nodes and each compute node.</li>
 <li>The sample program should be saved in the <a href="../../storage/#home-area" target="home-area">home</a> or <a href="../../storage/#group-area" target="group-area">group</a> area so that it can be referenced by interactive nodes and each compute node.</li>
 </ul>
-<h3 id="installation-with-horovod">Installation</h3>
+<h3 id="installation_1">Installation</h3>
 <p>Here are the steps to create a Python virtual environment and install TensorFlow and Horovod into the Python virtual environment.</p>
 <div class="codehilite"><pre><span></span><code><span class="p">[</span><span class="n">username</span><span class="err">@</span><span class="n">es1</span> <span class="o">~</span><span class="p">]</span><span class="o">$</span> <span class="n">qrsh</span> <span class="o">-</span><span class="n">g</span> <span class="n">grpname</span> <span class="o">-</span><span class="n">l</span> <span class="n">rt_G</span><span class="o">.</span><span class="n">small</span><span class="o">=</span><span class="mi">1</span> <span class="o">-</span><span class="n">l</span> <span class="n">h_rt</span><span class="o">=</span><span class="mi">1</span><span class="p">:</span><span class="mi">00</span><span class="p">:</span><span class="mi">00</span>
 <span class="p">[</span><span class="n">username</span><span class="err">@</span><span class="n">g0001</span> <span class="o">~</span><span class="p">]</span><span class="o">$</span> <span class="n">module</span> <span class="nb">load</span> <span class="n">gcc</span><span class="o">/</span><span class="mf">9.3</span><span class="o">.</span><span class="mi">0</span> <span class="n">python</span><span class="o">/</span><span class="mf">3.8</span><span class="o">/</span><span class="mf">3.8</span><span class="o">.</span><span class="mi">7</span> <span class="n">openmpi</span><span class="o">/</span><span class="mf">4.0</span><span class="o">.</span><span class="mi">5</span> <span class="n">cuda</span><span class="o">/</span><span class="mf">11.0</span><span class="o">/</span><span class="mf">11.0</span><span class="o">.</span><span class="mi">3</span> <span class="n">cudnn</span><span class="o">/</span><span class="mf">8.0</span><span class="o">/</span><span class="mf">8.0</span><span class="o">.</span><span class="mi">5</span> <span class="n">nccl</span><span class="o">/</span><span class="mf">2.8</span><span class="o">/</span><span class="mf">2.8</span><span class="o">.</span><span class="mi">4</span><span class="o">-</span><span class="mi">1</span>
@@ -1229,7 +1229,7 @@ deactivate
 <span class="p">[</span><span class="n">username</span><span class="err">@</span><span class="n">g0001</span> <span class="o">~</span><span class="p">]</span><span class="o">$</span> <span class="n">source</span> <span class="o">~/</span><span class="n">venv</span><span class="o">/</span><span class="n">tensorflow</span><span class="o">+</span><span class="n">horovod</span><span class="o">/</span><span class="n">bin</span><span class="o">/</span><span class="n">activate</span>
 </code></pre></div>
 
-<h3 id="run-with-horovod">Execution</h3>
+<h3 id="execution_1">Execution</h3>
 <p>The following shows how to execute a sample program <code>tensorflow2_mnist.py</code> of TensorFlow with Horovod for distributed learning.</p>
 <p><strong>Run as an interactive job</strong></p>
 <p>In this example, using 4 GPUs in a compute node for distributed learning.</p>
@@ -1253,7 +1253,7 @@ deactivate
 module load gcc/9.3.0 python/3.8/3.8.7 openmpi/4.0.5 cuda/11.0/11.0.3 cudnn/8.0/8.0.5 nccl/2.8/2.8.4-1
 <span class="nb">source</span> ~/venv/tensorflow+horovod/bin/activate
 
-git clone -b v0.21.3 https://github.com/horovod/horovod.git
+git clone -b v0.22.0 https://github.com/horovod/horovod.git
 
 <span class="nv">NUM_GPUS_PER_NODE</span><span class="o">=</span><span class="m">4</span>
 <span class="nv">NUM_PROCS</span><span class="o">=</span><span class="k">$(</span>expr <span class="si">${</span><span class="nv">NHOSTS</span><span class="si">}</span> <span class="se">\*</span> <span class="si">${</span><span class="nv">NUM_GPUS_PER_NODE</span><span class="si">}</span><span class="k">)</span>
