@@ -8,7 +8,7 @@
 - [Python仮想環境](../python.md#python-virtual-environments){:target="python-virtual-environments"}はインタラクティブノードと各計算ノードで参照できるよう、[ホーム領域](../storage.md#home-area){:target="home-area"}または[グループ領域](../storage.md#group-area){:target="group-area"}に作成してください
 - サンプルプログラムはインタラクティブノードと各計算ノードで参照できるよう、[ホーム領域](../storage.md#home-area){:target="home-area"}または[グループ領域](../storage.md#group-area){:target="group-area"}に保存してください
 
-## 導入方法 { #installation }
+## 導入方法 {#installation}
 
 [venv](../python.md#venv){:target="python_venv"}モジュールでPython仮想環境を作成し、作成したPython仮想環境へChainerを[pip](../python.md#pip){:target="pip"}で導入する手順です。
 
@@ -28,7 +28,7 @@
 [username@g0001 ~]$ source ~/venv/chainer/bin/activate
 ```
 
-## 実行方法 {#run}
+## 実行方法 {#execution}
 
 Chainerサンプルプログラムの1つである[mnist](http://yann.lecun.com/exdb/mnist/)の実行方法をインタラクティブジョブとバッチジョブそれぞれの場合で示します。
 

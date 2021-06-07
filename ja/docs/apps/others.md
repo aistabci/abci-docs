@@ -1,12 +1,12 @@
 # その他
 
-## Deep Learning Frameworks
+## Deep Learning Frameworks {#deep-learning-frameworks}
 
 ABCIシステムでディープラーニングフレームワークを利用する場合、
 利用者がホーム領域またはグループ領域にインストールする必要があります。
 ディープラーニングフレームワークのインストール方法は以下の通りです。
 
-### Caffe
+### Caffe {#caffe}
 
 [Caffe](http://caffe.berkeleyvision.org/)のインストール方法は以下を参照ください。
 
@@ -89,13 +89,13 @@ INSTALL_DIR : インストールディレクトリのパス
 (caffe) [username@g0001 caffe]$ make distibute 2>&1 | tee make_distribute.log
 ```
 
-### Theano
+### Theano {#theano}
 
 [Theano](http://deeplearning.net/software/theano/)のインストール方法は以下のページを参照ください。
 
 [How to install Theano](http://deeplearning.net/software/theano/)
 
-### Torch
+### Torch {#torch}
 
 [Torch](http://torch.ch/)のインストール方法は以下を参照ください。
 
@@ -110,15 +110,15 @@ INSTALL_DIR : インストールディレクトリのパス
 [username@g0001 torch]$ ./install.sh 2>&1 | tee install.sh.log
 ```
 
-### CNTK
+### CNTK {#cntk}
 
 [CNTK](https://www.microsoft.com/en-us/cognitive-toolkit/)のインストール方法は以下のページを参照ください。
 
 [How to install CNTK](https://www.microsoft.com/en-us/cognitive-toolkit/)
 
-## ビッグデータ解析フレームワーク
+## ビッグデータ解析フレームワーク {#big-data-analytics-frameworks}
 
-### Hadoop
+### Hadoop {#hadoop}
 
 ABCIシステムではHadoopが利用可能です。 利用するためには事前に`module`コマンドを用いて利用環境を設定する必要があります。 
 
