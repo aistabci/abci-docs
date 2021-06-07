@@ -2,15 +2,15 @@
 
 This section describes how to install and run MXNet and how to install Horovod to perform distributed learning.
 
-## Running MXNet on a single node {#using}
+## Running MXNet on a single node
 
-### Precondition {#precondition}
+### Precondition
 
 - Replace `grpname` with your own ABCI group.
 - [The Python virtual environment](../python.md#python-virtual-environments){:target="python-virtual-environments"} should be created in the [home](../storage.md#home-area){:target="home-area"} or [group](../storage.md#group-area){:target="group-area"} area so that it can be referenced by interactive nodes and each compute node.
 - The sample program should be saved in the [home](../storage.md#home-area){:target="home-area"} or [group](../storage.md#group-area){:target="group-area"} area so that it can be referenced by interactive nodes and each compute node.
 
-### Installation {#installation}
+### Installation
 
 Here are the steps to create a Python virtual environment and install MXNet into the Python virtual environment.
 
@@ -30,7 +30,7 @@ With the installation, you can use MXNet next time you want to use it by simply 
 [username@g0001 ~]$ source ~/venv/mxnet/bin/activate
 ```
 
-### Execution {#run}
+### Execution
 
 The following shows how to execute the MXNet sample program `mnist.py` in the case of an interactive job and a batch job.
 
@@ -70,15 +70,15 @@ Submit a saved job script `run.sh` as a batch job with the qsub command.
 Your job 1234567 ('run.sh') has been submitted
 ```
 
-## Running MXNet on multiple nodes {#using-with-horovod}
+## Running MXNet on multiple nodes
 
-### Precondition {#precondition-with-horovod}
+### Precondition
 
 - Replace `grpname` with your own ABCI group.
 - [The Python virtual environment](../python.md#python-virtual-environments){:target="python-virtual-environments"} should be created in [the home](../storage.md#home-area){:target="home-area"} or [group](../storage.md#group-area){:target="group-area"} area so that it can be referenced by interactive nodes and each compute node.
 - The sample program should be saved in the [home](../storage.md#home-area){:target="home-area"} or [group](../storage.md#group-area){:target="group-area"} area so that it can be referenced by interactive nodes and each compute node.
 
-### Installation {#installation-with-horovod}
+### Installation
 
 Here are the steps to create a Python virtual environment and install MXNet  and Horovod into the Python virtual environment.
 
@@ -99,7 +99,7 @@ With the installation, you can use MXNet and Horovod next time you want to use i
 [username@g0001 ~]$ source ~/venv/mxnet+horovod/bin/activate
 ```
 
-### Execution {#run-with-horovod}
+### Execution
 
 The following shows how to execute a sample program `mxnet2_train.py` of MXNet with Horovod for distributed learning.
 

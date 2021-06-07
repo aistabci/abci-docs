@@ -2,15 +2,19 @@
 
 This section describes how to install and run TensorFlow and Keras, and how to install TensorFlow, Keras and Horovod to perform distributed learning.
 
-## Running TensorFlow-Keras on a single node {#using}
+!!! note
+    Starting with TensorFlow 2, Keras is included in TensorFlow. This means that installing TensorFlow 2 will also enable you to use Keras.
+    The TensorFlow and Keras installation steps described here are the same as the [TensorFlow](tensorflow.md) steps, except that the sample you run uses Keras.
 
-### Precondition {#precondition}
+## Running TensorFlow-Keras on a single node
+
+### Precondition
 
 - Replace `grpname` with your own ABCI group.
 - [The Python virtual environment](../python.md#python-virtual-environments){:target="python-virtual-environments"} should be created in the [home](../storage.md#home-area){:target="home-area"} or [group](../storage.md#group-area){:target="group-area"} area so that it can be referenced by interactive nodes and each compute node.
 - The sample program should be saved in the [home](../storage.md#home-area){:target="home-area"} or [group](../storage.md#group-area){:target="group-area"} area so that it can be referenced by interactive nodes and each compute node.
 
-### Installation {#installation}
+### Installation
 
 Here are the steps to create a Python virtual environment and install TensorFlow and Keras into the Python virtual environment.
 
@@ -30,7 +34,7 @@ With the installation, you can use TensorFlow and Keras next time you want to us
 [username@g0001 ~]$ source ~/venv/tensorflow-keras/bin/activate
 ```
 
-### Execution {#run}
+### Execution
 
 The following shows how to execute the TensorFlow sample program `mnist_convnet.py` in the case of an interactive job and a batch job.
 
@@ -70,15 +74,15 @@ Submit a saved job script `run.sh` as a batch job with the qsub command.
 Your job 1234567 ('run.sh') has been submitted
 ```
 
-## Running TensorFlow on multiple nodes {#using-with-horovod}
+## Running TensorFlow on multiple nodes
 
-### Precondition {#precondition-with-horovod}
+### Precondition
 
 - Replace `grpname` with your own ABCI group.
 - [The Python virtual environment](../python.md#python-virtual-environments){:target="python-virtual-environments"} should be created in the [home](../storage.md#home-area){:target="home-area"} or [group](../storage.md#group-area){:target="group-area"} area so that it can be referenced by interactive nodes and each compute node.
 - The sample program should be saved in the [home](../storage.md#home-area){:target="home-area"} or [group](../storage.md#group-area){:target="group-area"} area so that it can be referenced by interactive nodes and each compute node.
 
-### Installation {#installation-with-horovod}
+### Installation
 
 Here are the steps to create a Python virtual environment and install TensorFlow, Keras and Horovod into the Python virtual environment.
 
@@ -99,7 +103,7 @@ With the installation, you can use TensorFlow, Keras and Horovod next time you w
 [username@g0001 ~]$ source ~/venv/tensorflow-keras+horovod/bin/activate
 ```
 
-### Execution {#run-with-horovod}
+### Execution
 
 The following shows how to execute a sample program `tensorflow2_keras_mnist.py` of TensorFlow with Horovod for distributed learning.
 

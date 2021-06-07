@@ -2,15 +2,15 @@
 
 This section describes how to install and run PyTorch and how to install Horovod to perform distributed learning.
 
-## Running PyTorch on a single node {#using}
+## Running PyTorch on a single node
 
-### Precondition {#precondition}
+### Precondition
 
 - Replace `grpname` with your own ABCI group.
 - [The Python virtual environment](../python.md#python-virtual-environments){:target="python-virtual-environments"} should be created in the [home](../storage.md#home-area){:target="home-area"} or [group](../storage.md#group-area){:target="group-area"} area so that it can be referenced by interactive nodes and each compute node.
 - The sample program should be saved in the [home](../storage.md#home-area){:target="home-area"} or [group](../storage.md#group-area){:target="group-area"} area so that it can be referenced by interactive nodes and each compute node.
 
-### Installation {#installation}
+### Installation
 
 Here are the steps to create a Python virtual environment and install PyTorch into the Python virtual environment.
 
@@ -30,7 +30,7 @@ With the installation, you can use PyTorch next time you want to use it by simpl
 [username@g0001 ~]$ source ~/venv/pytorch/bin/activate
 ```
 
-### Execution {#run}
+### Execution
 
 The following shows how to execute the PyTorch sample program `main.py` in the case of an interactive job and a batch job.
 
@@ -72,15 +72,15 @@ Submit a saved job script `run.sh` as a batch job with the qsub command.
 Your job 1234567 ('run.sh') has been submitted
 ```
 
-## Running PyTorch on multiple nodes {#using-with-horovod}
+## Running PyTorch on multiple nodes
 
-### Precondition {#precondition-with-horovod}
+### Precondition
 
 - Replace `grpname` with your own ABCI group.
 - [The Python virtual environment](../python.md#python-virtual-environments){:target="python-virtual-environments"} should be created in the [home](../storage.md#home-area){:target="home-area"} or [group](../storage.md#group-area){:target="group-area"} area so that it can be referenced by interactive nodes and each compute node.
 - The sample program should be saved in the [home](../storage.md#home-area){:target="home-area"} or [group](../storage.md#group-area){:target="group-area"} area so that it can be referenced by interactive nodes and each compute node.
 
-### Installation {#installation-with-horovod}
+### Installation
 
 Here are the steps to create a Python virtual environment and install PyTorch and Horovod into the Python virtual environment.
 
@@ -101,7 +101,7 @@ With the installation, you can use PyTorch and Horovod next time you want to use
 [username@g0001 ~]$ source ~/venv/pytorch+horovod/bin/activate
 ```
 
-### Execution {#run-with-horovod}
+### Execution
 
 The following shows how to execute a sample program `pytorch_mnist.py` of PyTorch with Horovod for distributed learning.
 
