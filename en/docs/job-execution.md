@@ -645,7 +645,7 @@ The calculation formula of ABCI point for using On-demand and Spot services is a
 In Reserved service, when completing a reservation, the ABCI point is calculated by
 a period of reservation, end subtract processing is executed.
 The repayment process is not executed unless reservation is cancelled.
-The points consumed by the reservation are counted as the consumption points of the person responsible for the use of the group.
+The points are counted as the usage points of the person responsible for the use of the group.
 
 The calculation formula of ABCI point for using Reserved service is follows:
 
