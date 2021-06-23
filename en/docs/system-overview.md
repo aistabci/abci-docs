@@ -4,7 +4,7 @@
 
 The ABCI system consists of 1,088 compute nodes with 4,352 NVIDIA V100 GPU accelerators, 120 compute nodes with 960 NVIDIA A100 GPU accelerators and other computing resources, shared file systems and ABCI Cloud Storage with total capacity of approximately 47 PB, InfiniBand network that connects these elements at high speed, firewall, and so on. It also includes software to make the best use of these hardware. And, the ABCI system uses SINET5, the Science Information NETwork, to connect to the Internet at 100 Gbps.
 
-[![ABCI System Overview](img/abci_system_en.png)](img/abci_system_en.png)
+[![ABCI System Overview](img/abci_system_en.svg)](img/abci_system_en.svg)
 
 The main specifications of the ABCI system are as follows:
 
@@ -139,7 +139,7 @@ The ABCI system has five storage systems for storing large amounts of data used 
 |:--|:--|:--|:--|
 | 1 | DDN SFA 14KX x1<br>DDN SS9012 Enclosure x5 | 7.68 TB SAS SSD x185 | Home area, Application area |
 | 2 | DDN ES7990X x3<br>DDN SS9012 Enclosure x6 | 18 TB NL-SAS HDD x801 | Group area |
-| 3 | DDN NV400NVX x3 | 7.68 TB NVMe HDD x69 | Fast data area |
+| 3 | DDN ES400NVX x3 | 7.68 TB NVMe HDD x69 | Fast data area |
 | 4 | DDN SFA 14KX x3<br>DDN SS8462 Enclosure x30 | 3.84 TB SAS SSD x216<br>12 TB NL-SAS HDD x2400 | Group areas |
 | 5 | HPE Apollo 4510 Gen10 x24 | 12 TB SATA HDD x1440 | ABCI Cloud Storage |
 
