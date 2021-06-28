@@ -11,8 +11,8 @@ The main specifications of the ABCI system are as follows:
 | Item | Total Performance and Capacity: Compute Node (V) | Total Performance and Capacity: Compute Node (A) | Total Performance and Capacity |
 |:--|:--|:--|:--|
 | Theoretical Peak Performance (FP64) | 37.2 PFLOPS | 19.3 PFLOPS | 56.6 PFLOPS |
-| Effective Performance by HPL | 19.88 PFLOPS[^1] | TBA | - |
-| Effective Performance per Power by HPL | 14.423 GFLOPS/Watt | TBA | - |
+| Effective Performance by HPL | 19.88 PFLOPS[^1] | 11.48 PFLOPS | 22.20 PFLOPS[^2] |
+| Effective Performance per Power by HPL | 14.423 GFLOPS/Watt | 21.91 GFLOPS/W | - |
 | Theoretical Peak Performance (FP32) | 75.0 PFLOPS | 151.0 PFLOPS | 226.0 PFLOPS |
 | Theoretical Peak Performance (FP16) | 550.6 PFLOPS | 300.8 PFLOPS | 851.5 PFLOPS |
 | Theoretical Peak Performance (INT8) | 261.1 POPS | 599.0 POPS | 860.1 POPS |
@@ -21,6 +21,7 @@ The main specifications of the ABCI system are as follows:
 | Total Capacity of Local Storage | 1,740 TB | 480 TB | 2,220 TB |
 
 [^1]: [https://www.top500.org/system/179393/](https://www.top500.org/system/179393/)
+[^2]: [https://www.top500.org/system/179954/](https://www.top500.org/system/179954/)
 
 ## Computing Resources
 
