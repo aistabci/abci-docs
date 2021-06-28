@@ -11,8 +11,8 @@ ABCIシステムの主要な諸元は以下のとおりです。
 | 項目 | 計算ノード(V) 合算性能・容量 | 計算ノード(A) 合算性能・容量 | 合算性能・容量 |
 |:--|:--|:--|:--|
 | 理論ピーク演算性能 (FP64) | 37.2 PFLOPS | 19.3 PFLOPS | 56.6 PFLOPS |
-| HPLによる実効性能 | 19.88 PFLOPS[^1] | TBA | - |
-| HPLによる電力あたりの実効性能 | 14.423 GFLOPS/Watt | TBA | - |
+| HPLによる実効性能 | 19.88 PFLOPS[^1] | 11.48 PFLOPS | 22.20 PFLOPS[^2] |
+| HPLによる電力あたりの実効性能 | 14.423 GFLOPS/Watt | 21.91 GFLOPS/W | - |
 | 理論ピーク演算性能 (FP32) | 75.0 PFLOPS | 151.0 PFLOPS | 226.0 PFLOPS |
 | 理論ピーク演算性能 (FP16) | 550.6 PFLOPS | 300.8 PFLOPS | 851.5 PFLOPS |
 | 理論ピーク演算性能 (INT8) | 261.1 POPS | 599.0 POPS | 860.1 POPS |
@@ -21,6 +21,7 @@ ABCIシステムの主要な諸元は以下のとおりです。
 | ローカルストレージの合算容量 | 1,740 TB | 480 TB | 2,220 TB |
 
 [^1]: [https://www.top500.org/system/179393/](https://www.top500.org/system/179393/)
+[^2]: [https://www.top500.org/system/179954/](https://www.top500.org/system/179954/)
 
 ## 計算リソース {#computing-resources}
 
