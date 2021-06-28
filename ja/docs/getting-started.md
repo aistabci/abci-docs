@@ -269,7 +269,8 @@ Total          1,101.0000    51.5000    10.5000          -          -          -
 |:--|:--|
 | Disk  | グループ領域のABCIポイント使用量 |
 | CloudStorage | ABCIクラウドストレージの ABCIポイント使用量 |
-| Job | On-demand、Spot、ReservedサービスでのABCIポイント使用量の合計値 |
+| Job | グループ所属全ユーザのOn-demand、Spot、ReservedサービスでのABCIポイント使用量の合計値 |
+| Total(行) | Disk、CloudStorage、JobでのABCIポイント使用量の合計値 |
 
 !!! note
     - ジョブサービスのABCIポイント使用の計算については、[課金](job-execution.md#accounting)を参照してください。

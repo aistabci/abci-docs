@@ -267,7 +267,8 @@ Total          1,101.0000    51.5000    10.5000          -          -          -
 |:--|:--|
 | Disk  | ABCI point usage of Disk |
 | CloudStorage | ABCI point usage of ABCI Cloud Storage |
-| Job  | Total ABCI point usage of On-demand, Spot, and Reserved Services |
+| Job  | Total ABCI point usage of On-demand, Spot, and Reserved Services for all users in the group |
+| Total(rows) | Total ABCI point usage of Disk, CloudStorage, and Job |
 
 !!! note
     - For information on calculating point consumption per service, see [Accounting](job-execution.md#accounting).
