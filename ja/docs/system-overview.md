@@ -12,7 +12,7 @@ ABCIシステムの主要な諸元は以下のとおりです。
 |:--|:--|:--|:--|
 | 理論ピーク演算性能 (FP64) | 37.2 PFLOPS | 19.3 PFLOPS | 56.6 PFLOPS |
 | HPLによる実効性能 | 19.88 PFLOPS[^1] | 11.48 PFLOPS | 22.20 PFLOPS[^2] |
-| HPLによる電力あたりの実効性能 | 14.423 GFLOPS/Watt | 21.91 GFLOPS/W | - |
+| HPLによる電力あたりの実効性能 | 14.423 GFLOPS/Watt | 21.89 GFLOPS/W | - |
 | 理論ピーク演算性能 (FP32) | 75.0 PFLOPS | 151.0 PFLOPS | 226.0 PFLOPS |
 | 理論ピーク演算性能 (FP16) | 550.6 PFLOPS | 300.8 PFLOPS | 851.5 PFLOPS |
 | 理論ピーク演算性能 (INT8) | 261.1 POPS | 599.0 POPS | 860.1 POPS |
