@@ -2,21 +2,21 @@
 
 This section describes how to install and run TensorFlow and how to install Horovod to perform distributed learning.
 
-## Running TensorFlow on a single node {#using}
+## Running TensorFlow on a single node
 
-### Precondition {#precondition}
+### Precondition
 
 - Replace `grpname` with your own ABCI group.
-- [The Python virtual environment](/06/#python-virtual-environments){:target="python-virtual-enviroments"} should be created in the [home](/04/#home-area){:target="home-area"} or [group](/04/#group-area){:target="group-area"} area so that it can be referenced by interactive nodes and each compute node.
-- The sample program should be saved in the [home](/04/#home-area){:target="home-area"} or [group](/04/#group-area){:target="group-area"} area so that it can be referenced by interactive nodes and each compute node.
+- [The Python virtual environment](../python.md#python-virtual-environments){:target="python-virtual-environments"} should be created in the [home](../storage.md#home-area){:target="home-area"} or [group](../storage.md#group-area){:target="group-area"} area so that it can be referenced by interactive nodes and each compute node.
+- The sample program should be saved in the [home](../storage.md#home-area){:target="home-area"} or [group](../storage.md#group-area){:target="group-area"} area so that it can be referenced by interactive nodes and each compute node.
 
-### Installation {#installation}
+### Installation
 
 Here are the steps to create a Python virtual environment and install TensorFlow into the Python virtual environment.
 
 ```
 [username@es1 ~]$ qrsh -g grpname -l rt_G.small=1 -l h_rt=1:00:00
-[username@g0001 ~]$ module load python/3.6/3.6.12 cuda/11.0/11.0.3 cudnn/8.1/8.1.1
+[username@g0001 ~]$ module load gcc/9.3.0 python/3.8/3.8.7 cuda/11.0/11.0.3 cudnn/8.0/8.0.5
 [username@g0001 ~]$ python3 -m venv ~/venv/tensorflow
 [username@g0001 ~]$ source ~/venv/tensorflow/bin/activate
 (tensorflow) [username@g0001 ~]$ pip3 install --upgrade pip setuptools
@@ -26,11 +26,11 @@ Here are the steps to create a Python virtual environment and install TensorFlow
 With the installation, you can use TensorFlow next time you want to use it by simply loading the module and activating the Python virtual environment, as follows
 
 ```
-[username@g0001 ~]$ module load python/3.6/3.6.12 cuda/11.0/11.0.3 cudnn/8.1/8.1.1
+[username@g0001 ~]$ module load gcc/9.3.0 python/3.8/3.8.7 cuda/11.0/11.0.3 cudnn/8.0/8.0.5
 [username@g0001 ~]$ source ~/venv/tensorflow/bin/activate
 ```
 
-### Execution {#run}
+### Execution
 
 The following shows how to execute the TensorFlow sample program `train.py` in the case of an interactive job and a batch job.
 
@@ -38,7 +38,7 @@ The following shows how to execute the TensorFlow sample program `train.py` in t
 
 ```
 [username@es1 ~]$ qrsh -g grpname -l rt_G.small=1 -l h_rt=1:00:00
-[username@g0001 ~]$ module load python/3.6/3.6.12 cuda/11.0/11.0.3 cudnn/8.1/8.1.1
+[username@g0001 ~]$ module load gcc/9.3.0 python/3.8/3.8.7 cuda/11.0/11.0.3 cudnn/8.0/8.0.5
 [username@g0001 ~]$ source ~/venv/tensorflow/bin/activate
 (tensorflow) [username@g0001 ~]$ git clone https://github.com/tensorflow/tensorflow.git
 (tensorflow) [username@g0001 ~]$ python3 tensorflow/tensorflow/examples/speech_commands/train.py --how_many_training_steps 1000,500
@@ -48,7 +48,7 @@ The following shows how to execute the TensorFlow sample program `train.py` in t
 
 Save the following job script as a `run.sh` file.
 
-```
+```shell
 #!/bin/sh
 
 #$ -l rt_G.small=1
@@ -56,7 +56,7 @@ Save the following job script as a `run.sh` file.
 #$ -cwd
 
 source /etc/profile.d/modules.sh
-module load python/3.6/3.6.12 cuda/11.0/11.0.3 cudnn/8.1/8.1.1
+module load gcc/9.3.0 python/3.8/3.8.7 cuda/11.0/11.0.3 cudnn/8.0/8.0.5
 source ~/venv/tensorflow/bin/activate
 git clone https://github.com/tensorflow/tensorflow.git
 python3 tensorflow/tensorflow/examples/speech_commands/train.py --how_many_training_steps 1000,500
@@ -72,47 +72,47 @@ Your job 1234567 ('run.sh') has been submitted
 
 ## Running TensorFlow on multiple nodes
 
-### Precondition {#precondition-with-horovod}
+### Precondition
 
 - Replace `grpname` with your own ABCI group.
-- [The Python virtual environment](/06/#python-virtual-environments){:target="python-virtual-enviroments"} should be created in the [home](/04/#home-area){:target="home-area"} or [group](/04/#group-area){:target="group-area"} area so that it can be referenced by interactive nodes and each compute node.
-- The sample program should be saved in the [home](/04/#home-area){:target="home-area"} or [group](/04/#group-area){:target="group-area"} area so that it can be referenced by interactive nodes and each compute node.
+- [The Python virtual environment](../python.md#python-virtual-environments){:target="python-virtual-environments"} should be created in the [home](../storage.md#home-area){:target="home-area"} or [group](../storage.md#group-area){:target="group-area"} area so that it can be referenced by interactive nodes and each compute node.
+- The sample program should be saved in the [home](../storage.md#home-area){:target="home-area"} or [group](../storage.md#group-area){:target="group-area"} area so that it can be referenced by interactive nodes and each compute node.
 
-### Installation {#installation-with-horovod}
+### Installation
 
 Here are the steps to create a Python virtual environment and install TensorFlow and Horovod into the Python virtual environment.
 
 ```
 [username@es1 ~]$ qrsh -g grpname -l rt_G.small=1 -l h_rt=1:00:00
-[username@g0001 ~]$ module load python/3.6/3.6.12 cuda/11.0/11.0.3 cudnn/8.1/8.1.1 nccl/2.8/2.8.4-1 gcc/7.4.0 openmpi/4.0.5
+[username@g0001 ~]$ module load gcc/9.3.0 python/3.8/3.8.7 openmpi/4.0.5 cuda/11.0/11.0.3 cudnn/8.0/8.0.5 nccl/2.8/2.8.4-1
 [username@g0001 ~]$ python3 -m venv ~/venv/tensorflow+horovod
 [username@g0001 ~]$ source ~/venv/tensorflow+horovod/bin/activate
 (tensorflow+horovod) [username@g0001 ~]$ pip3 install --upgrade pip setuptools
 (tensorflow+horovod) [username@g0001 ~]$ pip3 install tensorflow==2.4.1
-(tensorflow+horovod) [username@g0001 ~]$ HOROVOD_WITH_TENSORFLOW=1 HOROVOD_GPU_OPERATIONS=NCCL HOROVOD_NCCL_HOME=$NCCL_HOME pip3 install --no-cache-dir horovod==0.21.3
+(tensorflow+horovod) [username@g0001 ~]$ HOROVOD_WITH_TENSORFLOW=1 HOROVOD_GPU_OPERATIONS=NCCL HOROVOD_NCCL_HOME=$NCCL_HOME HOROVOD_WITHOUT_GLOO=1 pip3 install --no-cache-dir horovod==0.22.0
 ```
 
 With the installation, you can use TensorFlow and Horovod next time you want to use it by simply loading the module and activating the Python virtual environment, as follows.
 
 ```
-[username@g0001 ~]$ module load python/3.6/3.6.12 cuda/11.0/11.0.3 cudnn/8.1/8.1.1 nccl/2.8/2.8.4-1 gcc/7.4.0 openmpi/4.0.5
+[username@g0001 ~]$ module load gcc/9.3.0 python/3.8/3.8.7 openmpi/4.0.5 cuda/11.0/11.0.3 cudnn/8.0/8.0.5 nccl/2.8/2.8.4-1
 [username@g0001 ~]$ source ~/venv/tensorflow+horovod/bin/activate
 ```
 
-### Execution {#run-with-horovod}
+### Execution
 
 The following shows how to execute a sample program `tensorflow2_mnist.py` of TensorFlow with Horovod for distributed learning.
 
 **Run as an interactive job**
 
-In this example, using 4 GPUs in an interactive node for distributed learning.
+In this example, using 4 GPUs in a compute node for distributed learning.
 
 ```
 [username@es1 ~]$ qrsh -g grpname -l rt_G.large=1 -l h_rt=1:00:00
-[username@g0001 ~]$ module load python/3.6/3.6.12 cuda/11.0/11.0.3 cudnn/8.1/8.1.1 nccl/2.8/2.8.4-1 gcc/7.4.0 openmpi/4.0.5
+[username@g0001 ~]$ module load gcc/9.3.0 python/3.8/3.8.7 openmpi/4.0.5 cuda/11.0/11.0.3 cudnn/8.0/8.0.5 nccl/2.8/2.8.4-1
 [username@g0001 ~]$ source ~/venv/tensorflow+horovod/bin/activate
-(tensorflow+horovod) [username@g0001 ~]$ git clone -b v0.21.3 https://github.com/horovod/horovod.git
-(tensorflow+horovod) [username@g0001 ~]$ mpirun -np 4 -map-by ppr:4:node python3 horovod/examples/tensorflow2/tensorflow2_mnist.py
+(tensorflow+horovod) [username@g0001 ~]$ git clone -b v0.22.0 https://github.com/horovod/horovod.git
+(tensorflow+horovod) [username@g0001 ~]$ mpirun -np 4 -map-by ppr:4:node -mca pml ob1 python3 horovod/examples/tensorflow2/tensorflow2_mnist.py
 ```
 
 **Run as a batch job**
@@ -121,7 +121,7 @@ In this example, a total of 8 GPUs are used for distributed learning. 2 compute 
 
 Save the following job script as a `run.sh` file.
 
-```
+```shell
 #!/bin/sh
 
 #$ -l rt_F=2
@@ -129,17 +129,15 @@ Save the following job script as a `run.sh` file.
 #$ -cwd
 
 source /etc/profile.d/modules.sh
-module load python/3.6/3.6.12 cuda/11.0/11.0.3 cudnn/8.1/8.1.1 nccl/2.8/2.8.4-1 gcc/7.4.0 openmpi/4.0.5
+module load gcc/9.3.0 python/3.8/3.8.7 openmpi/4.0.5 cuda/11.0/11.0.3 cudnn/8.0/8.0.5 nccl/2.8/2.8.4-1
 source ~/venv/tensorflow+horovod/bin/activate
 
-git clone -b v0.21.3 https://github.com/horovod/horovod.git
+git clone -b v0.22.0 https://github.com/horovod/horovod.git
 
-NUM_NODES=${NHOSTS}
 NUM_GPUS_PER_NODE=4
-NUM_GPUS_PER_SOCKET=$(expr ${NUM_GPUS_PER_NODE} / 2)
-NUM_PROCS=$(expr ${NUM_NODES} \* ${NUM_GPUS_PER_NODE})
+NUM_PROCS=$(expr ${NHOSTS} \* ${NUM_GPUS_PER_NODE})
 
-MPIOPTS="-np ${NUM_PROCS} -map-by ppr:${NUM_GPUS_PER_NODE}:node"
+MPIOPTS="-np ${NUM_PROCS} -map-by ppr:${NUM_GPUS_PER_NODE}:node -mca pml ob1 -mca btl self,tcp -mca btl_tcp_if_include bond0"
 
 mpirun ${MPIOPTS} python3 horovod/examples/tensorflow2/tensorflow2_mnist.py
 

@@ -8,17 +8,17 @@ The ABCI system consists of 1,088 compute nodes with 4,352 NVIDIA V100 GPU accel
 
 The main specifications of the ABCI system are as follows:
 
-| Item | Total Performance and Capacity: Compute Node (V) | Total Performance and Capacity: Compute Node (A) |
-|:--|:--|:--|
-| Theoretical Peak Performance (FP64) | 37.2 PFLOPS | 19.3 PFLOPS |
-| Effective Performance by HPL | 19.88 PFLOPS[^1] | TBA |
-| Effective Performance per Power by HPL | 14.423 GFLOPS/Watt | TBA |
-| Theoretical Peak Performance (FP32) | 75.0 PFLOPS | 151.0 PFLOPS |
-| Theoretical Peak Performance (FP16/FP32 mixed precision) | 550.6 PFLOPS | 300.8 PFLOPS |
-| Theoretical Peak Performance (INT8) | 261.1 POPS | 599.0 POPS |
-| Total Memory Capacity | 476 TiB | 97.5 TiB |
-| Theoretical Peak Memory Bandwidth | 4.19 PB/s | 1.54 PB/s |
-| Total Capacity of Local Storage | 1,740 TB | 480 TB |
+| Item | Total Performance and Capacity: Compute Node (V) | Total Performance and Capacity: Compute Node (A) | Total Performance and Capacity |
+|:--|:--|:--|:--|
+| Theoretical Peak Performance (FP64) | 37.2 PFLOPS | 19.3 PFLOPS | 56.6 PFLOPS |
+| Effective Performance by HPL | 19.88 PFLOPS[^1] | TBA | - |
+| Effective Performance per Power by HPL | 14.423 GFLOPS/Watt | TBA | - |
+| Theoretical Peak Performance (FP32) | 75.0 PFLOPS | 151.0 PFLOPS | 226.0 PFLOPS |
+| Theoretical Peak Performance (FP16) | 550.6 PFLOPS | 300.8 PFLOPS | 851.5 PFLOPS |
+| Theoretical Peak Performance (INT8) | 261.1 POPS | 599.0 POPS | 860.1 POPS |
+| Total Memory Capacity | 476 TiB | 97.5 TiB | 573.5 TiB |
+| Theoretical Peak Memory Bandwidth | 4.19 PB/s | 1.54 PB/s | 5.73 PB/s |
+| Total Capacity of Local Storage | 1,740 TB | 480 TB | 2,220 TB |
 
 [^1]: [https://www.top500.org/system/179393/](https://www.top500.org/system/179393/)
 

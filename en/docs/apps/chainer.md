@@ -2,13 +2,13 @@
 
 This section describes how to install and run [Chainer](https://chainer.org/) with pip.
 
-### Precondition {#precondition}
+### Precondition
 
 - Replace `grpname` with your own ABCI group.
-- [The Python virtual environment](/06/#python-virtual-environments){:target="python-virtual-enviroments"} should be created in the [home](/04/#home-area){:target="home-area"} or [group](/04/#group-area){:target="group-area"} area so that it can be referenced by interactive nodes and each compute node.
-- The sample program should be saved in the [home](/04/#home-area){:target="home-area"} or [group](/04/#group-area){:target="group-area"} area so that it can be referenced by interactive nodes and each compute node.
+- [The Python virtual environment](../python.md#python-virtual-environments){:target="python-virtual-enviroments"} should be created in the [home](../storage.md#home-area){:target="home-area"} or [group](../storage.md#group-area){:target="group-area"} area so that it can be referenced by interactive nodes and each compute node.
+- The sample program should be saved in the [home](../storage.md#home-area){:target="home-area"} or [group](../storage.md#group-area){:target="group-area"} area so that it can be referenced by interactive nodes and each compute node.
 
-### Installation {#installation}
+### Installation
 
 Here are the steps to create a Python virtual environment and install Chainer into the Python virtual environment.
 
@@ -28,7 +28,7 @@ With the installation, you can use Chainer next time you want to use it by simpl
 [username@g0001 ~]$ source ~/venv/chainer/bin/activate
 ```
 
-## Execution {#run}
+## Execution
 
 The following shows how to execute one of the Chainer sample program [mnist](http://yann.lecun.com/exdb/mnist/) in the case of an interactive job and a batch job.
 

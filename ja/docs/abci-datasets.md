@@ -90,7 +90,7 @@ Citation:
 ```
 
 
-最後に、<abci-application-ml@aist.go.jp> に登録申請を行います。以下のフォーマットでご連絡下さい。複数のABCIグループに所属している場合、データセット本体、あるいは記入したYAMLファイルが保存されたバケットを所有しているABCIグループを記載して下さい。
+最後に、<M-abci-datasets-ml@aist.go.jp> に登録申請を行います。以下のフォーマットでご連絡下さい。複数のABCIグループに所属している場合、データセット本体、あるいは記入したYAMLファイルが保存されたバケットを所有しているABCIグループを記載して下さい。
 
 ```text
 Subject: データセットの登録(<データセット名>)
@@ -106,10 +106,10 @@ ABCIグループ:
 
 ## 2. 登録情報の更新 {#update}
 
-登録時にアップロードしたYAMLファイルを更新し、<abci-application-ml@aist.go.jp>  に登録情報の更新をご依頼下さい。
+登録時にアップロードしたYAMLファイルを更新し、<M-abci-datasets-ml@aist.go.jp>  に登録情報の更新をご依頼下さい。
 
 
 ## 3. 登録情報の削除 {#delete}
 
-登録時にアップロードしたYAMLファイルを削除し、<abci-application-ml@aist.go.jp>  に登録情報の削除をご依頼下さい。
+登録時にアップロードしたYAMLファイルを削除し、<M-abci-datasets-ml@aist.go.jp>  に登録情報の削除をご依頼下さい。
 

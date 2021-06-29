@@ -148,7 +148,7 @@ You can access the service by opening `http://localhost:3000/` on your favorite 
 
 ## Q. Are there any pre-downloaded datasets?
 
-Please see [this page](tips/datasets.md).
+Please see [Datasets](tips/datasets.md).
 
 ## Q. Image file creation with Singularity pull fails in batch job
 
@@ -264,7 +264,105 @@ g0001: g0001.abci.local
 g0002: g0002.abci.local
 ```
 
-## Q. What are the new group area and data migration?
+## Q. What is the difference between Compute Node (A) and Compute Node (V)
+
+ABCI was upgraded to ABCI 2.0 in May 2021.
+In addition to the previously provided Compute Nodes (V) with NVIDIA V100, the Compute Nodes (A) with NVIDIA A100 are currently available.
+
+This section describes the differences between the Compute Node (A) and the Compute Node (V), and points to note when using the Compute Node (A).
+
+### Resource type name
+
+The Resource type name is different between the Compute Node (A) and the Compute Node (V). Compute Node (A) can be used by specifying the following Resource type name when submitting a job.
+
+Resource type | Resource type name | Assigned physical CPU core | Number of assigned GPU | Memory (GiB) |
+|:-|:-|:-|:-|:-|
+| Full | rt\_AF | 72 | 8 | 480 |
+| AG.small | rt\_AG.small | 9 | 1 | 60 |
+
+For more detailed Resource types, see [Available Resource Types](job-execution.md#available-resource-types).
+
+### Accounting
+
+Compute Node (A) and Compute Node (V) have different Resource type charge coefficient, as described at [Available Resource types](job-execution.md#available-resource-types). Therefore, the number of ABCI points used, which are calculated based on [Accounting](job-execution.md#accounting), is also different.
+
+The number of ABCI points used when using the Compute Node (A) is as follows:
+
+| [Resource type name](job-execution.md#available-resource-types)<br>[Execution Priority](job-execution.md#execution-priority) | On-demand or Spot Service<br>Execution Priority: -500 (default)<br>(point/hour) | On-demand or Spot Service<br>Execution Priority: -400<br>(point/hour) | Reserved Service<br>(point/day) |
+|:-|:-|:-|:-|
+| rt\_AF | 3.0 | 4.5 | 108 |
+| rt\_AG.small | 0.5 | 0.75 | N/A |
+
+### Operating System
+
+The Compute Node (A) and the Compute Node (V) use different Operating Systems.
+
+| Node | Operating System |
+|:-|:-|
+| Compute Node (A) | Red Hat Enterprise Linux 8.2 |
+| Compute Node (V) | CentOS Linux 7.5 |
+
+Since the versions of kernels and libraries such as `glibc` are different, the operation cannot be guaranteed when the program built for the Compute Node (V) is run on the Compute Node (A) as it is.
+
+Please rebuild the program for the Compute Node (A) using the Compute Node (A) or the Interactive Node (A) described later.
+
+### CUDA Version
+
+The NVIDIA A100 installed on the compute node (A) is Compute Capability 8.0 compliant.
+
+CUDA 10 and earlier does not support Compute Capability 8.0. Therefore, Compute Node (A) should use CUDA 11 or later that supports Compute Capability 8.0.
+
+!!! Note
+    [Environment Modules](environment-modules.md) makes CUDA 10 available for testing, but its operation is not guaranteed.
+
+### Interactive Node (A)
+
+ABCI provides the Interactive Nodes (A) with the same software configuration as the Compute Node (A) for the convenience of program development for the Compute Node (A). The program built on the Interactive Node (A) does not guarantee the operation on the Compute Node (V).
+
+Please refer to the following for the proper use of Interactive Nodes:
+
+| | Interactive Node (V) | Interactive Node (A) |
+|:-|:-:|:-:|
+| Can users log in? | Yes | Yes |
+| Can users develop programs for Compute Nodes (V)? | Yes | No |
+| Can users develop programs for Compute Nodes (A)? | No | Yes |
+| Can users submit jobs for Compute Nodes (A)? | Yes | Yes |
+| Can users submit jobs for Compute Nodes (A)? | Yes | Yes |
+| Can users access the old Group Area? | Yes | Yes |
+
+For more information on Interactive Node (A), see [Interactive Node](system-overview.md#interactive-node).
+
+### Group area
+
+The old area (`/groups[1-2]/gAA50NNN`) cannot be accessed from the Compute Node (A).
+
+When using the files in the old area from the Compute Node (A), the user needs to copy the files to the home area or the new area (`/groups/gAA50NNN`) in advance. If you want to copy the files in the old area, please use the Interactive Nodes or the Compute Node (V).
+
+Since April 2021, we are also working on migrating files from the old area to the new area. For information of Group area data migration, see this FAQ [Q. What are the new group area and data migration?](faq.md#q-what-are-the-new-group-area-and-data-migration).
+
+## Q. How to use ABCI 1.0 Environment Modules
+
+ABCI was upgraded in May 2021.
+Due to the upgrade, the Environment Modules as of FY2020 (The **ABCI 1.0 Environment Modules**) is installed in the `/apps/modules-abci-1.0` directory.
+If you want to use the ABCI 1.0 Environment Modules, set the `MODULE_HOME` environment variable as follows and load the configuration file.
+
+Please not that the ABCI 1.0 Environment Modules is not eligible for the ABCI System support.
+
+sh, bash:
+
+```
+export MODULE_HOME=/apps/modules-abci-1.0
+. ${MODULE_HOME}/etc/profile.d/modules.sh
+```
+
+ch, tcsh:
+
+```
+setenv MODULE_HOME /apps/modules-abci-1.0
+source ${MODULE_HOME}/etc/profile.d/modules.csh
+```
+
+## Q. What are the new group area and data migration? {#q-what-are-the-new-group-area-and-data-migration}
 
 In FY2021, we expanded the storage system. Refer to [Storage Systems](https://docs.abci.ai/en/01/#storage-systems) for details.
 As the storage system is expanded, the configuration of the group area will be changed.
@@ -312,27 +410,3 @@ For the groups newly created in FY2021, only **New Area** will be allocated, so 
 * You can access the migrated data in the **New Area** with the same path `/groups[1-2]/gAA50NNN` as before. It is achieved by changing the symbolic link.
 * The files in the **Old Area** are copied to `/groups/gAA50NNN/migrate_from_SFA_GPFS/` in the **New Area**.
 * You cannot access `/groups[1-2]/gAA50NNN` in the **Old Area**.
-
-
-## Q. How to use ABCI 1.0 Environment Modules
-
-ABCI was upgraded in May 2021.
-Due to the upgrade, the Environment Modules as of FY2020 (The **ABCI 1.0 Environment Modules**) is installed in the `/apps/modules-abci-1.0` directory.
-If you want to use the ABCI 1.0 Environment Modules, set the `MODULE_HOME` environment variable as follows and load the configuration file.
-
-Please not that the ABCI 1.0 Environment Modules is not eligible for the ABCI System support.
-
-sh, bash:
-
-```
-export MODULE_HOME=/apps/modules-abci-1.0
-. ${MODULE_HOME}/etc/profile.d/modules.sh
-```
-
-ch, tcsh:
-
-```
-setenv MODULE_HOME /apps/modules-abci-1.0
-source ${MODULE_HOME}/etc/profile.d/modules.csh
-```
-
