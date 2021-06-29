@@ -1,5 +1,12 @@
 # システム更新履歴
 
+## 2021-06-30
+
+| Add / Update / Delete | Software | Version | Previous version |
+|:--|:--|:--|:--|
+| Add | cuDNN | [8.2.1](https://docs.nvidia.com/deeplearning/cudnn/release-notes/rel_8.html#rel-821) | |
+| Add | NCCL | [2.9.9-1](https://docs.nvidia.com/deeplearning/nccl/release-notes/rel_2-9-9.html) | |
+
 ## 2021-05-10
 
 | Add / Update / Delete | Software | Version | Previous version |
