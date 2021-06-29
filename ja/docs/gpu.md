@@ -105,6 +105,7 @@ ABCIシステムでは、NVIDIAが提供する以下のライブラリが利用�
 | 8.0.5  | -   | -   | -   | -   | -   | Yes | Yes | Yes | Yes | -   | -   |
 | 8.1.1  | -   | -   | -   | -   | -   | -   | Yes | Yes | Yes | Yes | -   |
 | 8.2.0  | -   | -   | -   | -   | -   | -   | Yes | Yes | Yes | Yes | Yes |
+| 8.2.1  | -   | -   | -   | -   | -   | -   | Yes | Yes | Yes | Yes | Yes |
 
 \*1 Installed, but modules are not provided
 \*2 Installed, but not yet supported
@@ -126,6 +127,7 @@ ABCIシステムでは、NVIDIAが提供する以下のライブラリが利用�
 | 8.0.5  | -   | -   | -   | -   | -   | Yes | Yes | Yes | Yes | -   |
 | 8.1.1  | -   | -   | -   | -   | -   | -   | Yes | Yes | Yes | Yes |
 | 8.2.0  | -   | -   | -   | -   | -   | -   | Yes | Yes | Yes | Yes |
+| 8.2.1  | -   | -   | -   | -   | -   | -   | Yes | Yes | Yes | Yes |
 
 計算ノード(A):
 
@@ -138,6 +140,7 @@ ABCIシステムでは、NVIDIAが提供する以下のライブラリが利用�
 | 8.0.5  | -   | Yes | Yes | Yes | Yes | -   |
 | 8.1.1  | -   | -   | Yes | Yes | Yes | Yes |
 | 8.2.0  | -   | -   | Yes | Yes | Yes | Yes |
+| 8.2.1  | -   | -   | Yes | Yes | Yes | Yes |
 
 ## NCCL
 
@@ -162,6 +165,7 @@ ABCIシステムでは、NVIDIAが提供する以下のライブラリが利用�
 | 2.8.4-1  | -   | -   | -   | -   | -   | -   | Yes | Yes | Yes | Yes | -   |
 | 2.8.4-1  | -   | -   | -   | -   | -   | -   | Yes | Yes | Yes | Yes | -   |
 | 2.9.6-1  | -   | -   | -   | -   | -   | -   | Yes | Yes | -   | -   | Yes |
+| 2.9.9-1  | -   | -   | -   | -   | -   | -   | Yes | Yes | -   | -   | Yes |
 
 \*1 Installed, but modules are not provided
 \*2 Installed, but not yet supported
@@ -181,6 +185,7 @@ ABCIシステムでは、NVIDIAが提供する以下のライブラリが利用�
 | 2.7.8-1  | -   | -   | -   | -   | -   | Yes | Yes | Yes | Yes | -   |
 | 2.8.4-1  | -   | -   | -   | -   | -   | -   | Yes | Yes | Yes | Yes |
 | 2.9.6-1  | -   | -   | -   | -   | -   | -   | Yes | Yes | -   | -   |
+| 2.9.9-1  | -   | -   | -   | -   | -   | -   | Yes | Yes | -   | -   |
 
 計算ノード(A):
 
@@ -193,6 +198,7 @@ ABCIシステムでは、NVIDIAが提供する以下のライブラリが利用�
 | 2.7.8-1  | -   | Yes | Yes | Yes | Yes | -   |
 | 2.8.4-1  | -   | -   | Yes | Yes | Yes | Yes |
 | 2.9.6-1  | -   | -   | Yes | Yes | -   | -   |
+| 2.9.9-1  | -   | -   | Yes | Yes | -   | -   |
 
 ## GDRCopy
 
