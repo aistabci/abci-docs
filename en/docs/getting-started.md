@@ -248,6 +248,33 @@ grpname                  5                  0.0124             12,345.6789      
 | Point | ABCI point limit |
 | Used% | ABCI point usage ratio |
 
+To display ABCI point usage per monthly, use the `show_point_history` command.
+
+Example) Display ABCI point usage per monthly.
+
+```
+[username@es1 ~]$ show_point_history -g grpname
+                      Apr        May        Jun        Jul        Aug        Sep        Oct        Nov        Dec        Jan        Feb        Mar          Total
+Disk           1,000.0000     0.0000     0.0000          -          -          -          -          -          -          -          -          -     1,000.0000
+CloudStorage       1.0000     1.5000     0.5000          -          -          -          -          -          -          -          -          -         2.0000
+Job              100.0000    50.0000    10.0000          -          -          -          -          -          -          -          -          -       160.0000
+  |- username1    60.0000    40.0000     5.0000          -          -          -          -          -          -          -          -          -       105.0000
+  `- username2    40.0000    10.0000     5.0000          -          -          -          -          -          -          -          -          -        55.0000
+Total          1,101.0000    51.5000    10.5000          -          -          -          -          -          -          -          -          -     1,162.0000
+```
+
+| Item | Description |
+|:--|:--|
+| Disk  | ABCI point usage of Disk |
+| CloudStorage | ABCI point usage of ABCI Cloud Storage |
+| Job  | Total ABCI point usage of On-demand, Spot, and Reserved Services for all users in the group |
+| Total(rows) | Total ABCI point usage of Disk, CloudStorage, and Job |
+
+!!! note
+    - For information on calculating point consumption per service, see [Accounting](job-execution.md#accounting).
+    - The point usage of the job of Spot/On-demand service which executed across months is counted in the month in which the job was submitted. The repayment process after the end of the job is also performed for the point usage of the month in which the job was submitted.
+    - The points usage of the Reserved service are counted in the month in which the reservation was made. If you cancel the reservation, it will be returned to the points used in the month you made the reservation.
+
 ## Checking Disk Quota
 
 To display your disk usage and quota about home area and group area,
