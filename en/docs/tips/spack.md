@@ -8,16 +8,11 @@ Using Spack on ABCI enables easily installing software which is not officially s
     We tested Spack using bash on Dec 3rd 2020, and we used Spack 0.16.0 which was the latest version at that time.
 
 !!! caution
-    Spack installs software packaged in its original format which is not compatible with packages
-    provided by any Linux distributions, such as `.deb` and `.rpm`.
-    Therefore, Spack is not a replacement of `yum` or `apt` system.
+    - Spack installs software packaged in its original format which is not compatible with packages provided by any Linux distributions, such as `.deb` and `.rpm`.  Therefore, Spack is not a replacement of `yum` or `apt` system.
 
-!!! caution
-    Spack installs software under a directory where Spack was installed.
-    Manage software installed by Sapck by yourself, for example, by uninstalling unused software, because Spack consumes large amount of disk space if you install many software.
+    - Spack installs software under a directory where Spack was installed.  Manage software installed by Sapck by yourself, for example, by uninstalling unused software, because Spack consumes large amount of disk space if you install many software.
 
-!!! caution
-    Operating systems of compute node (V) and compute node (A) are different, it is not possible to configure settings for both. Please select which computate node you wish to use. Please note that the examples in this document basically show results for compute node (V).
+    - Because of the difference of OS of Compute Node (V) and Compute Node (A), the instruction below for installing Spack enables you to use only one type of node.  Please select a node type you want to use Spack.  Please note that examples in this document show results on Compute Node (V).
 
 
 ## Setup Spack {#setup-spack}
@@ -59,7 +54,7 @@ Copying this file to your environment sets up GCC to be used in Spack.
 Compute Node (V)
 
 ```Console
-[username@es1 ~]$ cp /apps/spack/V100/compilers.yaml ${HOME}/.spack/linux/
+[username@es1 ~]$ cp /apps/spack/vnode/compilers.yaml ${HOME}/.spack/linux/
 [username@es1 ~]$ spack compiler list
 ==> Available compilers
 -- gcc centos7-x86_64 -------------------------------------------
@@ -68,8 +63,8 @@ gcc@7.4.0  gcc@4.8.5
 
 Compute Node (A)
 
-```
-[username@es-a1 ~]$ cp /apps/spack/A100/compilers.yaml ${HOME}/.spack/linux/
+```Console
+[username@es-a1 ~]$ cp /apps/spack/anode/compilers.yaml ${HOME}/.spack/linux/
 [username@es-a1 ~]:$ spack compiler list
 ==> Available compilers
 -- gcc rhel8-x86_64 ---------------------------------------------
@@ -91,13 +86,13 @@ Copying this file to your environment lets Spack use installed CUDA, OpenMPI, MV
 Compute Node (V)
 
 ```Console
-[username@es1 ~]$ cp /apps/spack/V100/packages.yaml ${HOME}/.spack/linux/
+[username@es1 ~]$ cp /apps/spack/vnode/packages.yaml ${HOME}/.spack/linux/
 ```
 
 Compute Node (A)
 
-```
-[username@es-a1 ~]$ cp /apps/spack/A100/packages.yaml ${HOME}/.spack/linux/
+```Console
+[username@es-a1 ~]$ cp /apps/spack/anode/packages.yaml ${HOME}/.spack/linux/
 ```
 
 
