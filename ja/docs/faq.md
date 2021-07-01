@@ -409,7 +409,7 @@ source ${MODULE_HOME}/etc/profile.d/modules.csh
 
 * /groups1 の利用者は、今後は下記のディレクトリ (以後、新領域と呼ぶ) に書き込みお願いします。読み/書き/ファイルの削除が可能なディレクトリです。
 	* /groups/gAA50NNN/	（4月から利用可能になっています。）
-* /fs3 の利用者は、7月中旬以降は、下記のディレクトリに書き込みお願いします。読み/書き/ファイルの削除が可能なディレクトリです。
+* /fs3 の利用者は、7月中旬以降は、下記のディレクトリ (以後、新領域と呼ぶ) に書き込みお願いします。読み/書き/ファイルの削除が可能なディレクトリです。
 	* /projects/d001/gAA50NNN/	（d001 利用者向けの領域で、7月中旬までに提供予定。）
 	* /projects/datarepository/gAA50NNN/	（d002 利用者向けの領域で、7月中旬までに提供予定。）
 * 旧領域に書き込みを行うプログラムをお持ちの方は、新領域へ書き込みするよう、プログラムを修正お願いいたします。
@@ -431,6 +431,8 @@ source ${MODULE_HOME}/etc/profile.d/modules.csh
 * 下記のディレクトリは、７月中旬以降に、読み/書き/ファイルの削除が可能になります。
 	* /projects/d001/gAA50NNN　（但し /projects/d001/gAA50NNN/migrated_from_SFA_GPFS/ は参照不可）
 	* /projects/datarepository/gAA50NNN　（但し /projects/datarepository/gAA50NNN/migrated_from_SFA_GPFS/ は参照不可）
+
+#### データ移行終了の確認の作業
 
 * /groups2 ではデータ移行終了の確認の作業の間、旧領域が参照不可になっていましたが、/groups1 と /fs3 のデータ移行では「旧領域が参照不可の期間」は発生しません。
 
