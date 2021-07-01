@@ -32,7 +32,7 @@ NGCコンテナレジストリのDockerイメージのうち、大半は自由�
 NGC Websiteで、NGCアカウントでサインインしていない状態では、後者のイメージを利用するためのPull Commandなど一部情報が閲覧できず、またAPI Keyを生成することもできません。
 以下では、自由に利用できるイメージを前提に説明を行います。[アクセス制限されたイメージの利用](#using-locked-images)については後述します。
 
-その他、NGC Websiteに関する詳細は[NGC Getting Started Guide](https://docs.nvidia.com/ngc/ngc-getting-started-guide/index.html)を参照してください。
+その他、NGC Websiteに関する詳細は[NGC Documentation](https://docs.nvidia.com/ngc/index.html)を参照してください。
 
 ## シングルノードでの実行 {#single-node-run}
 
@@ -47,13 +47,13 @@ TensorFlowのイメージをNGC Wbesiteで探します。ブラウザで "[https
 Dockerで利用する際のPull Commandが以下のように示されています。
 
 ```
-docker pull nvcr.io/nvidia/tensorflow:19.06-py2
+docker pull nvcr.io/nvidia/tensorflow:21.06-tf1-py3
 ```
 
 [NGCコンテナレジストリ](#ngc-container-registry)で説明したとおり、Singularityから利用する場合には、このイメージは以下のURLで指定できます。
 
 ```
-docker://nvcr.io/nvidia/tensorflow:19.06-py2
+docker://nvcr.io/nvidia/tensorflow:21.06-tf1-py3
 ```
 
 ### Singularityイメージの生成 {#build-a-singularity-image}
@@ -62,9 +62,9 @@ docker://nvcr.io/nvidia/tensorflow:19.06-py2
 
 ```
 [username@es1 ~]$ module load singularitypro
-[username@es1 ~]$ singularity pull docker://nvcr.io/nvidia/tensorflow:19.06-py2
+[username@es1 ~]$ singularity pull docker://nvcr.io/nvidia/tensorflow:21.06-tf1-py3
 ```
-``tensorflow_19.06-py2.sif``という名前のイメージファイルが生成されます。
+``tensorflow_21.06-tf1-py3.sif``という名前のイメージファイルが生成されます。
 
 
 ### Singularityイメージの実行 {#run-a-singularity-image}
@@ -74,15 +74,15 @@ docker://nvcr.io/nvidia/tensorflow:19.06-py2
 ```
 [username@es1 ~]$ qrsh -g grpname -l rt_F=1 -l h_rt=1:00:00
 [username@g0001 ~]$ module load singularitypro
-[username@g0001 ~]$ wget https://raw.githubusercontent.com/tensorflow/tensorflow/v1.13.1/tensorflow/examples/tutorials/layers/cnn_mnist.py
-[username@g0001 ~]$ singularity run --nv tensorflow_19.06-py2.sif python cnn_mnist.py
+[username@g0001 ~]$ wget https://raw.githubusercontent.com/tensorflow/tensorflow/v1.15.5/tensorflow/examples/tutorials/layers/cnn_mnist.py
+[username@g0001 ~]$ singularity run --nv tensorflow_21.06-tf1-py3.sif python cnn_mnist.py
 :
-{'loss': 0.102341905, 'global_step': 20000, 'accuracy': 0.9696}
+{'accuracy': 0.9703, 'loss': 0.10137254, 'global_step': 20000}
 ```
 
 バッチジョブでも同様に実行できます。
 
-```
+```shell
 #!/bin/sh
 #$ -l rt_F=1
 #$ -j y
@@ -90,8 +90,8 @@ docker://nvcr.io/nvidia/tensorflow:19.06-py2
 
 source /etc/profile.d/modules.sh
 module load singularitypro
-wget https://raw.githubusercontent.com/tensorflow/tensorflow/v1.13.1/tensorflow/examples/tutorials/layers/cnn_mnist.py
-singularity run --nv tensorflow_19.06-py2.sif python cnn_mnist.py
+wget https://raw.githubusercontent.com/tensorflow/tensorflow/v1.15.5/tensorflow/examples/tutorials/layers/cnn_mnist.py
+singularity run --nv tensorflow_21.06-tf1-py3.sif python cnn_mnist.py
 ```
 
 ## 複数ノードでの実行 {#multiple-node-run}
@@ -104,8 +104,8 @@ TensorFlowイメージにインストールされているMPIのバージョン�
 
 ```
 [username@es1 ~]$ module load singularitypro
-[username@es1 ~]$ singularity exec tensorflow_19.06-py2.sif mpirun --version
-mpirun (Open MPI) 3.1.3
+[username@es1 ~]$ singularity exec tensorflow_21.06-tf1-py3.sif mpirun --version
+mpirun (Open MPI) 4.1.1rc1
 
 Report bugs to http://www.open-mpi.org/community/help/
 ```
@@ -115,11 +115,11 @@ Report bugs to http://www.open-mpi.org/community/help/
 ```
 [username@es1 ~]$ module avail openmpi
 
--------------------------------------------- /apps/modules/modulefiles/mpi ---------------------------------------------
+-------------------- /apps/modules/modulefiles/centos7/mpi ---------------------
 openmpi/2.1.6          openmpi/3.1.6          openmpi/4.0.5(default)
 ```
 
-``openmpi/3.1.6`` を使うのが適当のようです。少なくともメジャーバージョンが一致している必要があります。
+``openmpi/4.0.5`` を使うのが適当のようです。少なくともメジャーバージョンが一致している必要があります。
 
 ### SingularityイメージのMPI実行 {#run-a-singularity-image-with-mpi}
 
@@ -127,46 +127,46 @@ openmpi/2.1.6          openmpi/3.1.6          openmpi/4.0.5(default)
 
 ```
 [username@es1 ~]$ qrsh -g grpname -l rt_F=2 -l h_rt=1:00:00
-[username@g0001 ~]$ module load singularitypro openmpi/3.1.6
+[username@g0001 ~]$ module load singularitypro openmpi/4.0.5
 ```
 
 1ノードあたり4基のGPUがあり、2ノード占有では計8基のGPUが使えることになります。この場合、8個のプロセスをノードあたり4個ずつ並列に起動し、サンプルプログラム tensorflow_mnist.py を実行します。
 
 ```
-[username@g0001 ~]$ wget https://raw.githubusercontent.com/horovod/horovod/v0.16.4/examples/tensorflow_mnist.py
-[username@g0001 ~]$ mpirun -np 8 -npernode 4 singularity run --nv tensorflow_19.06-py2.sif python tensorflow_mnist.py
+[username@g0001 ~]$ wget https://raw.githubusercontent.com/horovod/horovod/v0.22.1/examples/tensorflow/tensorflow_mnist.py
+[username@g0001 ~]$ mpirun -np 8 -npernode 4 singularity run --nv tensorflow_21.06-tf1-py3.sif python tensorflow_mnist.py
 :
-INFO:tensorflow:loss = 2.227471, step = 30 (0.151 sec)
-INFO:tensorflow:loss = 2.2297306, step = 30 (0.152 sec)
-INFO:tensorflow:loss = 2.2236195, step = 30 (0.151 sec)
-INFO:tensorflow:loss = 2.2085133, step = 30 (0.152 sec)
-INFO:tensorflow:loss = 2.2206438, step = 30 (0.152 sec)
-INFO:tensorflow:loss = 2.2315774, step = 30 (0.152 sec)
-INFO:tensorflow:loss = 2.2195148, step = 30 (0.152 sec)
-INFO:tensorflow:loss = 2.2279806, step = 30 (0.152 sec)
-INFO:tensorflow:loss = 2.0452738, step = 40 (0.152 sec)
-INFO:tensorflow:loss = 2.0309064, step = 40 (0.152 sec)
-INFO:tensorflow:loss = 2.0354269, step = 40 (0.152 sec)
-INFO:tensorflow:loss = 2.0014856, step = 40 (0.152 sec)
-INFO:tensorflow:loss = 2.0149295, step = 40 (0.153 sec)
-INFO:tensorflow:loss = 2.0528066, step = 40 (0.153 sec)
-INFO:tensorflow:loss = 1.962772, step = 40 (0.153 sec)
-INFO:tensorflow:loss = 2.0659132, step = 40 (0.153 sec)
+INFO:tensorflow:loss = 0.13635147, step = 30 (0.236 sec)
+INFO:tensorflow:loss = 0.16320482, step = 30 (0.236 sec)
+INFO:tensorflow:loss = 0.23524982, step = 30 (0.237 sec)
+INFO:tensorflow:loss = 0.1300551, step = 30 (0.236 sec)
+INFO:tensorflow:loss = 0.10259462, step = 30 (0.237 sec)
+INFO:tensorflow:loss = 0.04606852, step = 30 (0.237 sec)
+INFO:tensorflow:loss = 0.10536947, step = 30 (0.236 sec)
+INFO:tensorflow:loss = 0.09811305, step = 30 (0.237 sec)
+INFO:tensorflow:loss = 0.06823079, step = 40 (0.225 sec)
+INFO:tensorflow:loss = 0.0671196, step = 40 (0.225 sec)
+INFO:tensorflow:loss = 0.1545426, step = 40 (0.225 sec)
+INFO:tensorflow:loss = 0.13310829, step = 40 (0.225 sec)
+INFO:tensorflow:loss = 0.084449895, step = 40 (0.225 sec)
+INFO:tensorflow:loss = 0.10252285, step = 40 (0.225 sec)
+INFO:tensorflow:loss = 0.078794435, step = 40 (0.225 sec)
+INFO:tensorflow:loss = 0.17852336, step = 40 (0.225 sec)
 :
 ```
 
 バッチジョブでも同様に実行できます。
 
-```
+```shell
 #!/bin/sh
 #$ -l rt_F=2
 #$ -j y
 #$ -cwd
 
 source /etc/profile.d/modules.sh
-module load singularitypro openmpi/3.1.6
-wget https://raw.githubusercontent.com/horovod/horovod/v0.16.4/examples/tensorflow_mnist.py
-mpirun -np 8 -npernode 4 singularity run --nv tensorflow_19.06-py2.sif python tensorflow_mnist.py
+module load singularitypro openmpi/4.0.5
+wget https://raw.githubusercontent.com/horovod/horovod/v0.22.1/examples/tensorflow/tensorflow_mnist.py
+mpirun -np 8 -npernode 4 singularity run --nv tensorflow_21.06-tf1-py3.sif python tensorflow_mnist.py
 ```
 
 ## アクセス制限されたイメージの利用 {#using-locked-images}
@@ -191,7 +191,7 @@ docker://nvcr.io/partners/chainer:4.0.0b1
 
 イメージの生成には、NGC API Keyが必要です。下記の手順にしたがって生成してください。
 
-* [Generating Your NGC API Key](https://docs.nvidia.com/ngc/ngc-getting-started-guide/index.html#generating-api-key)
+* [Generating Your NGC API Key](https://docs.nvidia.com/ngc/ngc-overview/index.html#generating-api-key)
 
 インタラクティブノード上でSingularityイメージを生成します。Dockerイメージのダウンロードには、環境変数``SINGULARITY_DOCKER_USERNAME``, ``SINGULARITY_DOCKER_PASSWORD``の設定が必要です。
 
@@ -233,7 +233,7 @@ epoch       main/loss   validation/main/loss  main/accuracy  validation/main/acc
 
 ## 参考 {#reference}
 
-1. [NGC Getting Started Guide](https://docs.nvidia.com/ngc/ngc-getting-started-guide/index.html)
-1. [NGC Container User Guide](https://docs.nvidia.com/ngc/ngc-user-guide/index.html)
-1. [Running NGC Containers Using Singularity](https://docs.nvidia.com/ngc/ngc-user-guide/singularity.html)
+1. [NGC Documentation](https://docs.nvidia.com/ngc/index.html)
+1. [NGC Container User Guide for NGC Catalog](https://docs.nvidia.com/ngc/ngc-catalog-user-guide/index.html)
+1. [Running Singularity Containers](https://docs.nvidia.com/ngc/ngc-catalog-user-guide/index.html#singularity)
 1. [日本最速のスーパーコンピュータが NGC を採用し、ディープラーニング フレームワークの利用をより簡単に | NVIDIA](https://blogs.nvidia.co.jp/2019/06/19/abci-adopts-ngc/)
