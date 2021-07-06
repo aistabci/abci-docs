@@ -435,7 +435,7 @@ For the groups newly created in FY2021, only **New Area** will be allocated, so 
 #### Confirmation of data migration completion
 
 * In case for the data migration of /groups2/ , the **Old Area** was inaccessible during "The task of confirmation of data migration completion". 
-* In case for /groups1/ and /fs3/ , the "the Old Area inaccessible period" does not occur. 
+* In case for /groups1/ and /fs3/ , the **Old Area** will be set to "read-only" until the data migration is completed. 
 
 #### After the data migration is completed
 
