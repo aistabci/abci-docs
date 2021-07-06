@@ -2,6 +2,7 @@
 
 | date | category | content | status |
 |:--|:--|:--|:--|
+| 2021/07/06 | SingularityPRO | The remote build function is not available due to a failure of the Remote Builder service. | 2021/07/06<br/> Currently investigating the cause. | |
 | 2020/05/17 | Application | With Open MPI 4.0.5, a MPI program execution using 66 nodes or more will be failed. If you use 66 nodes or more, please set mca parameters plm_rsh_no_tree_spawn to true and plm_rsh_num_concurrent to $NHOSTS when invoking the executable.<BR><BR>$ mpirun -mca plm_rsh_no_tree_spawn true -mca plm_rsh_num_concurrent $NHOSTS ./a.out | 2021/05/31<br>close<br>Modified the default value of these mca parameters |
 | 2020/09/30 | SingularityPRO | SingularityPRO on ABCI has the following security issues. The issues affect on using SingularityPRO on the interactive nodes and in jobs that use resource types other than Full. Users are recommended to use SingularityPRO on Full resource type until it is updated.<BR><BR>[CVE-2020-25039](https://github.com/hpcng/singularity/security/advisories/GHSA-w6v2-qchm-grj7)<BR>[CVE-2020-25040](https://github.com/hpcng/singularity/security/advisories/GHSA-jv9c-w74q-6762) | 2020/10/09<br>close<br>Updated to the fixed version, 3.5-4 |
 | 2020/01/14 | Cloud Storage | The amount of object data is inconsistent, when the user of other groups put or delete objects in the bucket granted write permission by ACL. As a result, ABCI points to be consumed are not calculated correctly. | 2020/04/03<br>close<br>Updated to the fixed version |
