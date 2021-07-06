@@ -8,13 +8,11 @@ Using Spack on ABCI enables easily installing software which is not officially s
     We tested Spack using bash on Dec 3rd 2020, and we used Spack 0.16.0 which was the latest version at that time.
 
 !!! caution
-    Spack installs software packaged in its original format which is not compatible with packages
-    provided by any Linux distributions, such as `.deb` and `.rpm`.
-    Therefore, Spack is not a replacement of `yum` or `apt` system.
+    - Spack installs software packaged in its original format which is not compatible with packages provided by any Linux distributions, such as `.deb` and `.rpm`.  Therefore, Spack is not a replacement of `yum` or `apt` system.
 
-!!! caution
-    Spack installs software under a directory where Spack was installed.
-    Manage software installed by Sapck by yourself, for example, by uninstalling unused software, because Spack consumes large amount of disk space if you install many software.
+    - Spack installs software under a directory where Spack was installed.  Manage software installed by Sapck by yourself, for example, by uninstalling unused software, because Spack consumes large amount of disk space if you install many software.
+
+    - Because of the difference of OS of Compute Node (V) and Compute Node (A), the instruction below for installing Spack enables you to use only one type of node.  Please select a node type you want to use Spack.  Please note that examples in this document show results on Compute Node (V).
 
 
 ## Setup Spack {#setup-spack}
@@ -51,15 +49,28 @@ gcc@4.8.5  gcc@4.4.7
 ```
 
 ABCI provides a pre-configured compiler definition file for Spack, `compilers.yaml`.
-Copying this file to your environment sets up GCC 4.8.5 and 7.4.0 to be used in Spack.
+Copying this file to your environment sets up GCC to be used in Spack.
+
+Compute Node (V)
 
 ```Console
-[username@es1 ~]$ cp /apps/spack/compilers.yaml ${HOME}/.spack/linux/
+[username@es1 ~]$ cp /apps/spack/vnode/compilers.yaml ${HOME}/.spack/linux/
 [username@es1 ~]$ spack compiler list
 ==> Available compilers
 -- gcc centos7-x86_64 -------------------------------------------
 gcc@7.4.0  gcc@4.8.5
 ```
+
+Compute Node (A)
+
+```Console
+[username@es-a1 ~]$ cp /apps/spack/anode/compilers.yaml ${HOME}/.spack/linux/
+[username@es-a1 ~]:$ spack compiler list
+==> Available compilers
+-- gcc rhel8-x86_64 ---------------------------------------------
+gcc@9.3.0  gcc@8.3.1  gcc@7.4.0
+```
+
 
 
 #### Adding ABCI Software {#adding-abci-software}
@@ -72,9 +83,19 @@ Software referred by Spack can be defined in the configuration file `$HOME/.spac
 ABCI provides a pre-configured `packages.yaml` which defines mappings of Spack package and software installed on ABCI.
 Copying this file to your environment lets Spack use installed CUDA, OpenMPI, MVAPICH, cmake and etc.
 
+Compute Node (V)
+
 ```Console
-[username@es1 ~]$ cp /apps/spack/packages.yaml ${HOME}/.spack/linux/
+[username@es1 ~]$ cp /apps/spack/vnode/packages.yaml ${HOME}/.spack/linux/
 ```
+
+Compute Node (A)
+
+```Console
+[username@es-a1 ~]$ cp /apps/spack/anode/packages.yaml ${HOME}/.spack/linux/
+```
+
+
 
 packages.yaml (excerpt)
 
@@ -361,11 +382,11 @@ Line #4 edits a configuration file to turn off runtime warnings (optional).
 For this purpose, Line #3 checks the installation path of OpenMPI.
 
 Spack can manage variants of the same version of software.
-This is an example that you additionally install OpenMPI 3.1.1 that uses CUDA 9.0.176.4.
+This is an example that you additionally install OpenMPI 3.1.1 that uses CUDA 10.0.130.1.
 
 ```Console
-[username@g0001 ~]$ spack install cuda@9.0.176.4
-[username@g0001 ~]$ spack install openmpi@3.1.1 +cuda schedulers=sge fabrics=auto ^cuda@9.0.176.4
+[username@g0001 ~]$ spack install cuda@10.0.130.1
+[username@g0001 ~]$ spack install openmpi@3.1.1 +cuda schedulers=sge fabrics=auto ^cuda@10.0.130.1
 ```
 
 #### How to Use {#how-to-use}
