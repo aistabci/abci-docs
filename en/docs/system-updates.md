@@ -1,5 +1,11 @@
 # System Updates
 
+## 2021-07-06
+
+| Add / Update / Delete | Software | Version | Previous version |
+|:--|:--|:--|:--|
+| Update | SingularityPRO | 3.7-4 | 3.7-1 |
+
 ## 2021-06-30
 
 | Add / Update / Delete | Software | Version | Previous version |

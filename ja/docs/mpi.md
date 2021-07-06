@@ -61,19 +61,19 @@ ABCIシステムでは、以下のMPIを利用できます。
 | 2.1.6  | gcc/7.4.0     | Yes | Yes | Yes | Yes | Yes | Yes | Yes |
 | 2.1.6  | gcc/8.3.1     | Yes | Yes | Yes | Yes | Yes | Yes | Yes |
 | 2.1.6  | gcc/9.3.0     | Yes | -   | Yes | Yes | Yes | Yes | Yes |
-| 2.1.6  | pgi/20.4      | Yes | Yes | Yes | Yes | Yes | Yes | Yes |
+| 2.1.6  | pgi/20.4      | Yes | -   | -   | -   | Yes | Yes | Yes |
 | 2.1.6  | nvhpc/20.11   | Yes | Yes | Yes | Yes | Yes | Yes | Yes |
 | 2.1.6  | nvhpc/21.2    | Yes | Yes | Yes | Yes | Yes | Yes | Yes |
 | 3.1.6  | gcc/7.4.0     | Yes | Yes | Yes | Yes | Yes | Yes | Yes |
 | 3.1.6  | gcc/8.3.1     | Yes | Yes | Yes | Yes | Yes | Yes | Yes |
 | 3.1.6  | gcc/9.3.0     | Yes | Yes | Yes | Yes | Yes | Yes | Yes |
-| 3.1.6  | pgi/20.4      | Yes | Yes | Yes | Yes | Yes | Yes | Yes |
+| 3.1.6  | pgi/20.4      | Yes | -   | -   | -   | Yes | Yes | Yes |
 | 3.1.6  | nvhpc/20.11   | Yes | Yes | Yes | Yes | Yes | Yes | Yes |
 | 3.1.6  | nvhpc/21.2    | Yes | Yes | Yes | Yes | Yes | Yes | Yes |
 | 4.0.5  | gcc/7.4.0     | Yes | Yes | Yes | Yes | Yes | Yes | Yes |
 | 4.0.5  | gcc/8.3.1     | Yes | Yes | Yes | Yes | Yes | Yes | Yes |
 | 4.0.5  | gcc/9.3.0     | Yes | Yes | Yes | Yes | Yes | Yes | Yes |
-| 4.0.5  | pgi/20.4      | Yes | Yes | Yes | Yes | Yes | Yes | Yes |
+| 4.0.5  | pgi/20.4      | Yes | -   | -   | -   | Yes | Yes | Yes |
 | 4.0.5  | nvhpc/20.11   | Yes | Yes | Yes | Yes | Yes | Yes | Yes |
 | 4.0.5  | nvhpc/21.2    | Yes | Yes | Yes | Yes | Yes | Yes | Yes |
 
