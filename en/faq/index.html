@@ -927,7 +927,7 @@
       
         <li class="md-nav__item">
   <a href="#q-the-group-area-is-consumed-more-than-the-actual-size" class="md-nav__link">
-    Q. The group area is consumed more than the actual size
+    Q. The Group Area is consumed more than the actual size
   </a>
   
 </li>
@@ -1054,7 +1054,7 @@
         
           <li class="md-nav__item">
   <a href="#group-area" class="md-nav__link">
-    Group area
+    Group Area
   </a>
   
 </li>
@@ -1073,10 +1073,10 @@
       
         <li class="md-nav__item">
   <a href="#q-what-are-the-new-group-area-and-data-migration" class="md-nav__link">
-    Q. What are the new group area and data migration?
+    Q. What are the new Group Area and data migration?
   </a>
   
-    <nav class="md-nav" aria-label="Q. What are the new group area and data migration?">
+    <nav class="md-nav" aria-label="Q. What are the new Group Area and data migration?">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -1088,17 +1088,24 @@
         
           <li class="md-nav__item">
   <a href="#the-new-area-groupsgaa50nnn" class="md-nav__link">
-    The new area /groups/gAA50NNN
+    The New Area /groups/gAA50NNN
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#the-old-area-groups1-2gaa50nnn" class="md-nav__link">
-    The old area /groups[1-2]/gAA50NNN
+  <a href="#the-new-area-projects" class="md-nav__link">
+    The New Area /projects
   </a>
   
-    <nav class="md-nav" aria-label="The old area /groups[1-2]/gAA50NNN">
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#the-old-area-groups1-2gaa50nnn-and-fs3d001-2gaa50nnn" class="md-nav__link">
+    The Old Area /groups[1-2]/gAA50NNN and /fs3/d00[1-2]/gAA50NNN
+  </a>
+  
+    <nav class="md-nav" aria-label="The Old Area /groups[1-2]/gAA50NNN and /fs3/d00[1-2]/gAA50NNN">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -1109,8 +1116,22 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#at-the-end-of-the-data-migration" class="md-nav__link">
-    At the end of the data migration
+  <a href="#request-for-advance-preparation" class="md-nav__link">
+    Request for advance preparation
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#restrictions-for-the-users-during-the-data-migration" class="md-nav__link">
+    Restrictions for the users during the data migration
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#confirmation-of-data-migration-completion" class="md-nav__link">
+    Confirmation of data migration completion
   </a>
   
 </li>
@@ -1119,6 +1140,33 @@
   <a href="#after-the-data-migration-is-completed" class="md-nav__link">
     After the data migration is completed
   </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#group-disk-quota-value" class="md-nav__link">
+    Group disk quota value
+  </a>
+  
+    <nav class="md-nav" aria-label="Group disk quota value">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#increasing-the-quota-value" class="md-nav__link">
+    Increasing the quota value
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#decreasing-the-quota-value" class="md-nav__link">
+    Decreasing the quota value
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
         
@@ -1302,9 +1350,9 @@
 </code></pre></div>
 
 <p>Executing while logged in to the interactive node has the same effect.</p>
-<h2 id="q-the-group-area-is-consumed-more-than-the-actual-size">Q. The group area is consumed more than the actual size</h2>
+<h2 id="q-the-group-area-is-consumed-more-than-the-actual-size">Q. The Group Area is consumed more than the actual size</h2>
 <p>Generally, any file systems have their own block size, and even the smallest file consumes the capacity of the block size.</p>
-<p>ABCI sets the block size of the group area 1,2,3 to 128 KB and the block size of the home area and group area to 4 KB. For this reason, if a large number of small files are created in the group area 1,2,3 , usage efficiency will be reduced. For example, if you want to create a file that is less than 4KB in the group area, you need about 32 times the capacity of the home area.</p>
+<p>ABCI sets the block size of the Group Area 1,2,3 to 128 KB and the block size of the home area and Group Area to 4 KB. For this reason, if a large number of small files are created in the Group Area 1,2,3 , usage efficiency will be reduced. For example, if you want to create a file that is less than 4KB in the Group Area, you need about 32 times the capacity of the home area.</p>
 <h2 id="q-singularity-cannot-use-container-registries-that-require-authentication">Q. Singularity cannot use container registries that require authentication</h2>
 <p>SingularityPRO has a function equivalent to <code>docker login</code> that provides authentication information with environment variables.</p>
 <div class="codehilite"><pre><span></span><code><span class="o">[</span>username@es1 ~<span class="o">]</span>$ <span class="nb">export</span> <span class="nv">SINGULARITY_DOCKER_USERNAME</span><span class="o">=</span><span class="s1">&#39;username&#39;</span>
@@ -1642,10 +1690,10 @@ In addition to the previously provided Compute Nodes (V) with NVIDIA V100, the C
 </tbody>
 </table>
 <p>For more information on Interactive Node (A), see <a href="../system-overview/#interactive-node">Interactive Node</a>.</p>
-<h3 id="group-area">Group area</h3>
-<p>The old area (<code>/groups[1-2]/gAA50NNN</code>) cannot be accessed from the Compute Node (A).</p>
-<p>When using the files in the old area from the Compute Node (A), the user needs to copy the files to the home area or the new area (<code>/groups/gAA50NNN</code>) in advance. If you want to copy the files in the old area, please use the Interactive Nodes or the Compute Node (V).</p>
-<p>Since April 2021, we are also working on migrating files from the old area to the new area. For information of Group area data migration, see this FAQ <a href="./#q-what-are-the-new-group-area-and-data-migration">Q. What are the new group area and data migration?</a>.</p>
+<h3 id="group-area">Group Area</h3>
+<p>The <strong>Old Area</strong> (<code>/groups[1-2]/gAA50NNN</code>) cannot be accessed from the Compute Node (A).</p>
+<p>When using the files in the <strong>Old Area</strong> from the Compute Node (A), the user needs to copy the files to the home area or the <strong>New Area</strong> (<code>/groups/gAA50NNN</code>) in advance. If you want to copy the files in the <strong>Old Area</strong>, please use the Interactive Nodes or the Compute Node (V).</p>
+<p>Since April 2021, we are also working on migrating files from the <strong>Old Area</strong> to the <strong>New Area</strong>. For information of Group Area data migration, see this FAQ <a href="./#q-what-are-the-new-group-area-and-data-migration">Q. What are the new Group Area and data migration?</a>.</p>
 <h2 id="q-how-to-use-abci-10-environment-modules">Q. How to use ABCI 1.0 Environment Modules</h2>
 <p>ABCI was upgraded in May 2021.
 Due to the upgrade, the Environment Modules as of FY2020 (The <strong>ABCI 1.0 Environment Modules</strong>) is installed in the <code>/apps/modules-abci-1.0</code> directory.
@@ -1661,48 +1709,113 @@ If you want to use the ABCI 1.0 Environment Modules, set the <code>MODULE_HOME</
 source <span class="cp">${</span><span class="n">MODULE_HOME</span><span class="cp">}</span>/etc/profile.d/modules.csh
 </code></pre></div>
 
-<h2 id="q-what-are-the-new-group-area-and-data-migration">Q. What are the new group area and data migration?</h2>
+<h2 id="q-what-are-the-new-group-area-and-data-migration">Q. What are the new Group Area and data migration?</h2>
 <p>In FY2021, we expanded the storage system. Refer to <a href="https://docs.abci.ai/en/01/#storage-systems">Storage Systems</a> for details.
-As the storage system is expanded, the configuration of the group area will be changed.
-All the data in the existing group area used in FY2020 are going to be migrated into a new group area in FY2021.</p>
-<p>The existing group area (The <strong>Old Area</strong>) will not be accessible from the coming new computing resources (The Compute Node (A)).
-Therefore we need to create a new group area (The <strong>New Area</strong>), which is accessible from the Compute Node (A), and migrate all the data stored in the <strong>Old Area</strong> to the <strong>New Area</strong>.
+As the storage system is expanded, the configuration of the Group Area will be changed.
+All the data in the existing Group Area used in FY2020 are going to be migrated into a new Group Area in FY2021.</p>
+<p>The existing Group Area (The <strong>Old Area</strong>) will not be accessible from the coming new computing resources (The Compute Node (A)).
+Therefore we need to create a new Group Area (The <strong>New Area</strong>), which is accessible from the Compute Node (A), and migrate all the data stored in the <strong>Old Area</strong> to the <strong>New Area</strong>.
 The data copy is managed by the operating team, so the users do not have to take care of the copy process.</p>
-<p>A user group who are using the <strong>Old Area</strong> <code>/groups[1-2]/gAA50NNN</code> had been also allocated the <strong>New Area</strong> at <code>/groups/gAA50NNN</code>.
+<p>User groups who are using the <strong>Old Area</strong> <code>/groups[1-2]/gAA50NNN</code> had been also allocated the <strong>New Area</strong> at <code>/groups/gAA50NNN</code>.
+In addition, for some user groups using <strong>Old Area</strong> <code>/fs3/</code>, <strong>New Area</strong> <code>/projects/</code> will be allocated after mid-July. 
 Both the <strong>Old and New Area</strong> are accessible from all the interactive nodes and all the existing computing nodes (The Compute Node (V)). </p>
-<p>For the groups newly created in FY2021, only <strong>New Area</strong> will be allocated, so it is not a target of data migration. As results, it is not affected by data migration.  </p>
+<p>For the groups newly created in FY2021, only <strong>New Area</strong> will be allocated, so it is not a target of data migration. As results, it is not affected by data migration. </p>
 <h3 id="basic-strategy">Basic Strategy</h3>
 <ul>
-<li>The ABCI operating team will copy all the files in the <strong>Old Area</strong> to the <strong>New Area</strong> behind the scene. It will take one year to finish the copy process for all the user groups.</li>
-<li>The users can keep using the <strong>Old Area</strong> during the data migration, we would like to ask the users to use the <strong>New Area</strong> as much as possible in order to reduce the amount of the data to be migrated.</li>
-<li>When the copying process finishes, the operating team will switch the reference from the <strong>Old Area</strong> to the <strong>New Area</strong> by changing the symbolic link.</li>
+<li>The ABCI operating team will copy all the files in the <strong>Old Area</strong> to the <strong>New Area</strong> behind the scene. It will take one year to finish the copy process for all the user groups. </li>
+<li>Users can use the <strong>Old Area</strong> until August 10, 2021, but please use the <strong>New Area</strong> as much as possible. </li>
+<li>When the copying process finishes, the operating team will switch the reference from the <strong>Old Area</strong> to the <strong>New Area</strong> by changing the symbolic link. </li>
 </ul>
-<h3 id="the-new-area-groupsgaa50nnn">The new area /groups/gAA50NNN</h3>
+<h3 id="the-new-area-groupsgaa50nnn">The New Area /groups/gAA50NNN</h3>
 <ul>
 <li>The files in the <strong>Old Area</strong> will be copied to the <strong>New Area</strong> <code>/groups/gAA50NNN/migrated_from_SFA_GPFS/</code>. Note that the users cannot access the copied data under that directory until the migration finishes.</li>
 <li>The area other than that directory in the <strong>New Area</strong> can be freely used.</li>
 <li>Disk usage will increase as data is copied. For this reason, the limit of the storage usage for the <strong>New Area</strong> is set to be twice the quota value, which is the group disk quantity value applied in the ABCI User Portal. This is a temporal treatment. After the migration,  the limit of the storage usage is set to the same value as the quota value in the ABCI User Portal, after a grace period.</li>
 </ul>
-<h3 id="the-old-area-groups1-2gaa50nnn">The old area /groups[1-2]/gAA50NNN</h3>
+<h3 id="the-new-area-projects">The New Area /projects</h3>
+<ul>
+<li>Some users who used the <strong>Old Area <code>/fs3/</code></strong> will be assigned the <strong>New Area <code>/projects/</code></strong> after mid-July. Details will be announced later. </li>
+</ul>
+<h3 id="the-old-area-groups1-2gaa50nnn-and-fs3d001-2gaa50nnn">The Old Area /groups[1-2]/gAA50NNN and /fs3/d00[1-2]/gAA50NNN</h3>
 <h4 id="during-the-data-migration">During the data migration</h4>
 <ul>
-<li>During the data migration, the users can read, write and delete files in the <strong>Old Area</strong>.</li>
-<li>In order to reduce the amount of the data to be moved, please do not put new files in the <strong>Old Area</strong> as much as possible.</li>
-<li>Consider deleting unnecessary files in the <strong>Old Area</strong> as much as possible.</li>
-<li>As usual, the quota value applied in the ABCI User Portal is set as the the limit of the storage usage of the <strong>Old Area</strong>. As usual, you can increase or decrease the quota value by applying a new quota value in the ABCI User Portal.</li>
+<li>The user can read/write/delete files to the <strong>Old Area</strong> until August 10, 2021. It will be set to read-only after August 11. </li>
+<li>Users of the <strong>Old Area</strong> should make the <a href="./#request-for-advance-preparation">preparations in advance</a> described below. <ul>
+<li>Users of /groups2 need not to prepare in advance. </li>
+<li>Regarding data migration, as of July 2021, /groups2 has been completed, /groups1 is in progress, and /fs3 (provided only to some users) is scheduled to start around October. </li>
 </ul>
-<h4 id="at-the-end-of-the-data-migration">At the end of the data migration</h4>
+</li>
+<li>The Group disk amount (hereinafter referred to as the quota value) applied on the user portal by June 28, 2021 was set as the disk usage upper limit of <strong>Old Area</strong>. <ul>
+<li>Since June 28, the behavior of the change request for <a href="./#group-disk-quota-value">Group disk quota value</a> has been changed as described below. </li>
+</ul>
+</li>
+</ul>
+<h4 id="request-for-advance-preparation">Request for advance preparation</h4>
 <ul>
-<li>At the end of the data migration, there will be a period of several days where you cannot access the <strong>Old area</strong> <code>/groups[1-2]/gAA50NNN</code> and the <strong>New area</strong> <code>/groups/gAA50NNN/migrated_from_SFA_GPFS/</code>.</li>
-<li>During that period, you can read, write and delete files in the <strong>New Area</strong>.</li>
-<li>After the period, the copied data in <strong>New Area</strong> will become available. The reference to the <strong>Old Area</strong> will be redirected to the copied directory.</li>
+<li>For users of /groups1, please use the following directory (hereinafter referred to as the <strong>New Area</strong>) where you can read/write/delete files. <ul>
+<li>/groups/gAA50NNN/ (available since April)</li>
+</ul>
+</li>
+<li>For users of /fs3, please use the following directory (hereinafter referred to as the <strong>New Area</strong>) where you can read/write/delete files, after middle July. <ul>
+<li>/projects/d001/gAA50NNN/  (area for d001 users, scheduled to be provided by mid-July.)</li>
+<li>/projects/datarepository/gAA50NNN/    (area for d002 users, scheduled to be provided by mid-July.)</li>
+</ul>
+</li>
+<li>If you have a program that writes to the files in <strong>Old Area</strong>, please modify the program so that it writes into the <strong>New Area</strong> by Aug 11. </li>
+<li>If there are unnecessary files in the <strong>Old Area</strong>, please delete them by Aug 11. It doesn't matter as much as possible.</li>
+<li>See below for restrictions during data migration.</li>
+</ul>
+<h4 id="restrictions-for-the-users-during-the-data-migration">Restrictions for the users during the data migration</h4>
+<ul>
+<li>After August 11, you cannot write to the following directories, but you can read them as same as before. <ul>
+<li>/groups1/gAA50NNN/ </li>
+<li>/fs3/d00[1-2]/gAA50NNN/ </li>
+</ul>
+</li>
+<li>Files under the directories in the above <strong>Old Area</strong> will be migrated to the following directories. However, these directories cannot be referenced until the data migration is completed. <ul>
+<li>/groups/gAA50NNN/migrate_from_SFA_GPFS/ </li>
+<li>/projects/d001/gAA50NNN/migrate_from_SFA_GPFS/ </li>
+<li>/projects/datarepository/gAA50NNN/migrate_from_SFA_GPFS/ </li>
+</ul>
+</li>
+<li>Data migration is performed by the operators, so the user does not need to create a backup. </li>
+<li>During this period, the following directories can be read/written/deleted as before.<ul>
+<li>/groups/gAA50NNN  (Except the files in /groups/gAA50NNN/migrated_from_SFA_GPFS/ )</li>
+</ul>
+</li>
+<li>After middle of July, the following directories will be able to be read/written/deleted.<ul>
+<li>/projects/d001/gAA50NNN   (Except the files in /projects/d001/gAA50NNN/migrated_from_SFA_GPFS/ )</li>
+<li>/projects/datarepository/gAA50NNN (Except the files in /projects/datarepository/gAA50NNN/migrated_from_SFA_GPFS/ )</li>
+</ul>
+</li>
+</ul>
+<h4 id="confirmation-of-data-migration-completion">Confirmation of data migration completion</h4>
+<ul>
+<li>In case for the data migration of /groups2/ , the <strong>Old Area</strong> was inaccessible during "The task of confirmation of data migration completion". </li>
+<li>In case for /groups1/ and /fs3/ , the <strong>Old Area</strong> will be set to "read-only" until the data migration is completed. </li>
 </ul>
 <h4 id="after-the-data-migration-is-completed">After the data migration is completed</h4>
 <ul>
-<li>You can access the migrated data in the <strong>New Area</strong> with the same path <code>/groups[1-2]/gAA50NNN</code> as before. It is achieved by changing the symbolic link.</li>
-<li>The files in the <strong>Old Area</strong> are copied to <code>/groups/gAA50NNN/migrate_from_SFA_GPFS/</code> in the <strong>New Area</strong>.</li>
-<li>You cannot access <code>/groups[1-2]/gAA50NNN</code> in the <strong>Old Area</strong>.</li>
+<li>You can access the migrated data in the <strong>New Area</strong> with the same path <code>/groups[1-2]/gAA50NNN</code> as before. It is achieved by changing the symbolic link. </li>
+<li>The files in the <strong>Old Area</strong> are copied to <code>/groups/gAA50NNN/migrate_from_SFA_GPFS/</code> in the <strong>New Area</strong>. </li>
+<li>You cannot access <code>/groups[1-2]/gAA50NNN</code> in the <strong>Old Area</strong>. </li>
 </ul>
+<h4 id="group-disk-quota-value">Group disk quota value</h4>
+<h5 id="increasing-the-quota-value">Increasing the quota value</h5>
+<ul>
+<li>Even if you apply to increase the quota value, the usage upper limit of the <strong>Old Area</strong> will not be increased. </li>
+<li>The usage upper limit of the <strong>New Area</strong> (/groups/gAA50NNN) is set to "the value set at that time" or "twice of the new quota value", whichever is greater. </li>
+</ul>
+<h5 id="decreasing-the-quota-value">Decreasing the quota value</h5>
+<ul>
+<li>When you apply to decrease the quota value, it can be decreased only when the usage amount of the <strong>Old Area</strong> (shown as "used" with the show_quota command) is less than the new quota value. </li>
+<li>After application, the usage upper limit of the <strong>Old Area</strong> will be decreased to the same value as the quota value.</li>
+<li>The usage upper limit of the <strong>New Area</strong> will not be decreased. </li>
+</ul>
+<p>ABCI points consumed by using Group disks are calculated based on the quota value as before. </p>
+<p>After the data migration is completed, the users will have a period to organize the data in the <strong>New Area</strong>. 
+After the end of that period, the upper limit of the <strong>New Area</strong> will be set to the same value as the quota value. 
+We will announce you the end date of the period later. </p>
                 
               
               

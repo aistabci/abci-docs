@@ -1100,17 +1100,24 @@
         
           <li class="md-nav__item">
   <a href="#groupsgaa50nnn" class="md-nav__link">
-    新領域/groups/gAA50NNNについて
+    新領域 /groups/gAA50NNN について
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#groups1-2gaa50nnn" class="md-nav__link">
-    旧領域/groups[1-2]/gAA50NNNについて
+  <a href="#projects" class="md-nav__link">
+    新領域 /projects について
   </a>
   
-    <nav class="md-nav" aria-label="旧領域/groups[1-2]/gAA50NNNについて">
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#groups1-2gaa50nnn-fs3d001-2gaa50nnn" class="md-nav__link">
+    旧領域 /groups[1-2]/gAA50NNN および /fs3/d00[1-2]/gAA50NNN について
+  </a>
+  
+    <nav class="md-nav" aria-label="旧領域 /groups[1-2]/gAA50NNN および /fs3/d00[1-2]/gAA50NNN について">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -1121,16 +1128,57 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#request-for-advance-preparation" class="md-nav__link">
+    事前準備のお願い
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#_3" class="md-nav__link">
-    データ移行完了確認のための期間
+    データ移行中の利用者への制約
   </a>
   
 </li>
         
           <li class="md-nav__item">
   <a href="#_4" class="md-nav__link">
+    データ移行終了の確認の作業
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
     データ移行完了後
   </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#group-disk-quota-value" class="md-nav__link">
+    グループディスクのクォータ値
+  </a>
+  
+    <nav class="md-nav" aria-label="グループディスクのクォータ値">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    クォータ値の増量
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    クォータ値の減量
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
         
@@ -1688,41 +1736,107 @@ source <span class="cp">${</span><span class="n">MODULE_HOME</span><span class="
 <p>2020年度まで使用していたグループ領域(以降、<strong>旧領域</strong>)は、新規増設予定の計算資源(計算ノード(A))からアクセスできません。
 このため、新たに計算ノード(A)からアクセス可能なグループ領域(以降、<strong>新領域</strong>)を作成し、そちらへの移行を行います。
 データの移行は運用側で行いますので、利用者が作業をする必要はありません。</p>
-<p>2020年度まで<strong>旧領域</strong><code>/groups[1-2]/gAA50NNN</code>を使用していた利用者には、4月から新しく<strong>新領域</strong><code>/groups/gAA50NNN</code>を割り当てています。
-<strong>旧領域、新領域</strong>ともにすべてのインタラクティブノードとすべての既存の計算ノード(計算ノード(V))からアクセス可能です。</p>
+<p>2020年度まで<strong>旧領域</strong><code>/groups[1-2]/gAA50NNN/</code>を利用していたグループには、4月から新しく<strong>新領域</strong><code>/groups/gAA50NNN/</code>を割り当てています。
+また、<strong>旧領域</strong><code>/fs3/</code>を利用していた一部のグループには、7月中旬以降に<strong>新領域</strong><code>/projects/</code>を割り当てる予定です。
+<strong>旧領域</strong>、<strong>新領域</strong>ともにすべてのインタラクティブノードとすべての既存の計算ノード(計算ノード(V))からアクセス可能です。</p>
 <p>なお、2021年度に新規に作成されたABCIグループについては、<strong>新領域</strong>のみが割り当てられるためデータ移行の対象ではなく、データ移行の影響を受けません。</p>
 <p>次にデータ移行について説明します。</p>
 <h3 id="_1">基本的な方針</h3>
 <ul>
-<li>旧領域のデータを新領域に運用側がバックグラウンドでコピーします。全利用者データのコピー完了までには1年間かかる予定です。</li>
-<li>利用者は、コピー中も旧領域をそのまま使えますが、可能な限り新領域を利用してください。</li>
-<li>コピー完了後、シンボリックリンクの切り替えによって旧領域への参照を新領域への参照に書き換えます。</li>
+<li><strong>旧領域</strong>のデータを<strong>新領域</strong>に運用側がバックグラウンドでコピーします。全利用者データのコピー完了までには1年間かかる予定です。</li>
+<li>利用者は 2021年8月10日まで<strong>旧領域</strong>をそのまま使えますが、可能な限り<strong>新領域</strong>を利用してください。</li>
+<li>コピー完了後、シンボリックリンクの切り替えによって<strong>旧領域</strong>への参照を<strong>新領域</strong>への参照に書き換えます。</li>
 </ul>
-<h3 id="groupsgaa50nnn">新領域/groups/gAA50NNNについて</h3>
+<h3 id="groupsgaa50nnn">新領域 /groups/gAA50NNN について</h3>
 <ul>
-<li>旧領域のデータを新領域の<code>/groups/gAA50NNN/migrated_from_SFA_GPFS/</code>にコピーします。ただし、データ移行完了までは利用者が新領域のこのディレクトリにアクセスすることはできません。</li>
-<li>新領域のこのディレクトリ以外は自由に使用できます。</li>
-<li>データコピーにともないディスク使用量が増加します。このため、移行期間中は、利用者ポータルで申請したグループディスク量(以降、クォータ値)の2倍の値を、新領域のディスク使用量上限値に設定します。移行完了後、一定の猶予期間を設けて、新領域のディスク使用量上限値を、クォータ値と同じ値に設定します。</li>
+<li><strong>旧領域</strong>のデータを<strong>新領域</strong>の<code>/groups/gAA50NNN/migrated_from_SFA_GPFS/</code>にコピーします。ただし、データ移行完了までは利用者が<strong>新領域</strong>のこのディレクトリにアクセスすることはできません。</li>
+<li><strong>新領域</strong>のこのディレクトリ以外は自由に使用できます。</li>
+<li>データコピーにともないディスク使用量が増加します。このため、移行期間中は、利用者ポータルで申請したグループディスク量(以降、クォータ値)の2倍の値を、<strong>新領域</strong>のディスク使用量上限値に設定します。移行完了後、一定の猶予期間を設けて、<strong>新領域</strong>のディスク使用量上限値を、クォータ値と同じ値に設定します。</li>
 </ul>
-<h3 id="groups1-2gaa50nnn">旧領域/groups[1-2]/gAA50NNNについて</h3>
+<h3 id="projects">新領域 /projects について</h3>
+<ul>
+<li><strong>旧領域</strong><code>/fs3/</code>を利用していた一部の利用者には、7月中旬以降に<strong>新領域</strong><code>/projects/</code>を割り当てる予定です。詳細は追ってご連絡します。</li>
+</ul>
+<h3 id="groups1-2gaa50nnn-fs3d001-2gaa50nnn">旧領域 /groups[1-2]/gAA50NNN および /fs3/d00[1-2]/gAA50NNN について</h3>
 <h4 id="_2">データ移行中</h4>
 <ul>
-<li>データ移行中は、利用者は自由に旧領域に読み込み/書き込み/ファイルの削除が可能です。</li>
-<li>ただし、データ移行のコストが増大するため、可能な限り新領域を利用してください。</li>
-<li>また、データ移行コスト削減のため、可能なかぎり不要なファイルは削除してください。</li>
-<li>従来どおり、利用者ポータルで申請したグループディスク量(クォータ値)が、旧領域のディスク使用量上限値として設定されています。従来通り、利用者ポータルからクォータ値の増減を申請可能です。</li>
+<li>2021年8月10日まで<strong>旧領域</strong>への読み取り/書き込み/ファイルの削除が可能です。8月11日以降は読み取り専用となります。</li>
+<li><strong>旧領域</strong>の利用者は、後述の<a href="./#request-for-advance-preparation">事前準備</a>を実施してください。<ul>
+<li>/groups2 利用者は事前準備不要です。</li>
+<li>データ移行については、2021年7月現在、/groups2 が完了、/groups1 が実施中、/fs3 (一部の利用者にのみ提供) は10月頃開始予定です。</li>
 </ul>
-<h4 id="_3">データ移行完了確認のための期間</h4>
+</li>
+<li>2021年6月28日までに利用者ポータルで申請したグループディスク量(以後、クォータ値と呼ぶ)が、<strong>旧領域</strong>のディスク使用量上限値として設定されています。<ul>
+<li>6月28日以降、<a href="./#group-disk-quota-value">グループディスクのクォータ値</a>の変更申請の振る舞いが後述のとおり変更されました。</li>
+</ul>
+</li>
+</ul>
+<h4 id="request-for-advance-preparation">事前準備のお願い</h4>
 <ul>
-<li>データ移行後、データ移行完了の確認のために、旧領域に置かれていたデータが、旧領域としても新領域としても参照できない期間が数日発生する予定です。</li>
-<li>この期間、利用者は自由に新領域に読み込み/書き込み/ファイルの削除が可能です。</li>
+<li>/groups1 の利用者は、今後は下記のディレクトリ (以後、<strong>新領域</strong>と呼ぶ) に書き込みお願いします。ファイルの読み/書き/削除が可能なディレクトリです。<ul>
+<li>/groups/gAA50NNN/ (4月から利用可能になっています。)</li>
 </ul>
-<h4 id="_4">データ移行完了後</h4>
+</li>
+<li>/fs3 の利用者は、7月中旬以降は、下記のディレクトリ (以後、<strong>新領域</strong>と呼ぶ) に書き込みお願いします。ファイルの読み/書き/削除が可能なディレクトリです。<ul>
+<li>/projects/d001/gAA50NNN/  (d001 利用者向けの領域で、7月中旬までに提供予定。)</li>
+<li>/projects/datarepository/gAA50NNN/    (d002 利用者向けの領域で、7月中旬までに提供予定。)</li>
+</ul>
+</li>
+<li><strong>旧領域</strong>に書き込みを行うプログラムをお持ちの方は、<strong>新領域</strong>へ書き込みするよう、プログラムを修正お願いいたします。</li>
+<li>もしも<strong>旧領域</strong>に不要なファイルがありましたら、8月11日迄に削除してください。可能な範囲で構いません。</li>
+<li>データ移行中の制約は下記を参照ください。</li>
+</ul>
+<h4 id="_3">データ移行中の利用者への制約</h4>
 <ul>
-<li>旧領域に置かれていたデータは、従来と同じパス<code>/groups[1-2]/gAA50NNN</code>でアクセス可能になります。</li>
-<li>このパス<code>/groups[1-2]/gAA50NNN</code>は、新領域の<code>/groups/gAA50NNN/migrated_from_SFA_GPFS/</code>へのシンボリックリンクで実現されます。</li>
-<li>データ移行完了後、旧領域上の<code>/groups[1-2]/gAA50NNN</code>にはアクセスできなくなります。</li>
+<li>8/11 以降に、下記のディレクトリに書き込みできません。読み取りは従来通り可能です。<ul>
+<li>/groups1/gAA50NNN/ </li>
+<li>/fs3/d00[1-2]/gAA50NNN/ </li>
 </ul>
+</li>
+<li>上記の<strong>旧領域</strong>のディレクトリ以下のファイルは、下記のディレクトリへデータ移行されます。ただしこれらのディレクトリは、データ移行完了まで参照できません。<ul>
+<li>/groups/gAA50NNN/migrated_from_SFA_GPFS </li>
+<li>/projects/d001/gAA50NNN/migrated_from_SFA_GPFS </li>
+<li>/projects/datarepository/gAA50NNN/migrated_from_SFA_GPFS </li>
+</ul>
+</li>
+<li>データ移行は運用側が実施しますので、利用者がバックアップを作成する必要はありません。</li>
+<li>この期間、下記のディレクトリは、従来通りファイルの読み/書き/削除が可能です。<ul>
+<li>/groups/gAA50NNN　（ただし /groups/gAA50NNN/migrated_from_SFA_GPFS/ は参照不可）</li>
+</ul>
+</li>
+<li>下記のディレクトリは、７月中旬以降に、ファイルの読み/書き/削除が可能になります。<ul>
+<li>/projects/d001/gAA50NNN　（ただし /projects/d001/gAA50NNN/migrated_from_SFA_GPFS/ は参照不可）</li>
+<li>/projects/datarepository/gAA50NNN　（ただし /projects/datarepository/gAA50NNN/migrated_from_SFA_GPFS/ は参照不可）</li>
+</ul>
+</li>
+</ul>
+<h4 id="_4">データ移行終了の確認の作業</h4>
+<ul>
+<li>/groups2 ではデータ移行終了の確認の作業の間、「<strong>旧領域</strong>は参照不可」になっていましたが、/groups1 と /fs3 のデータ移行では、データ移行終了までの間「<strong>旧領域</strong>は読み取り専用」となります。</li>
+</ul>
+<h4 id="_5">データ移行完了後</h4>
+<ul>
+<li><strong>旧領域</strong>に置かれていたデータは、従来と同じパス<code>/groups[1-2]/gAA50NNN</code>でアクセス可能になります。</li>
+<li>このパス<code>/groups[1-2]/gAA50NNN</code>は、<strong>新領域</strong>の<code>/groups/gAA50NNN/migrated_from_SFA_GPFS/</code>へのシンボリックリンクで実現されます。</li>
+<li>データ移行完了後、<strong>旧領域</strong>上の<code>/groups[1-2]/gAA50NNN</code>にはアクセスできなくなります。</li>
+</ul>
+<h4 id="group-disk-quota-value">グループディスクのクォータ値</h4>
+<h5 id="_6">クォータ値の増量</h5>
+<ul>
+<li>クォータ値の増量を申請されても、<strong>旧領域</strong>の利用上限値は増えません。</li>
+<li><strong>新領域</strong>（/groups/gAA50NNN）の利用上限値は、「それまでに設定されていた値」と「新しいクォータ値の2倍」のいずれか多い方に設定されます。</li>
+</ul>
+<h5 id="_7">クォータ値の減量</h5>
+<ul>
+<li>クォータ値の減量を申請の場合は、<strong>旧領域</strong>の利用量(show_quotaコマンドで「used」と表示される値)が</li>
+<li>新しいクォータ値より少ない場合のみ、減量可能です。</li>
+<li>減量後に、<strong>旧領域</strong>の利用上限値はクォータ値と同じ値に設定され減量されます。</li>
+<li><strong>新領域</strong>の利用上限値は減りません。</li>
+</ul>
+<p>グループディスクの利用で消費する ABCI ポイントは従来同様、クォータ値をもとに計算されます。</p>
+<p>データ移行完了後、利用者による<strong>新領域</strong>のデータ整理のための期間を儲けます。
+その期間終了後は、<strong>新領域</strong>の利用上限値をクォータ値と同一に設定します。
+期間終了日は別途ご連絡いたします。</p>
                 
               
               

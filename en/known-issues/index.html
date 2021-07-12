@@ -1071,19 +1071,25 @@
 <tbody>
 <tr>
 <td align="left">2021/07/06</td>
-<td align="left">SingularityPRO</td>
+<td align="left">Singularity</td>
 <td align="left">The remote build function is not available due to a failure of the Remote Builder service.</td>
-<td align="left">2021/07/06<br> Currently investigating the cause.</td>
+<td align="left">2021/07/12<br> Currently investigating the cause.</td>
+</tr>
+<tr>
+<td align="left">2021/05/25</td>
+<td align="left">GPU</td>
+<td align="left">A known issue has been identified that when using the GPU repeatedly, the processes remain with status D or Z and GPU memory is not released. When you try to use that GPU after this symptom, subsequent processes will not run normally because the GPU memory has not been released normally. If you find this symptom, please contact us at <a href="&#109;&#97;&#105;&#108;&#116;&#111;&#58;&#113;&#97;&#64;&#97;&#98;&#99;&#105;&#46;&#97;&#105;">&#113;&#97;&#64;&#97;&#98;&#99;&#105;&#46;&#97;&#105;</a>.</td>
+<td align="left">2021/07/12<br>Currently investigating the cause.</td>
 </tr>
 <tr>
 <td align="left">2020/05/17</td>
-<td align="left">Application</td>
+<td align="left">MPI</td>
 <td align="left">With Open MPI 4.0.5, a MPI program execution using 66 nodes or more will be failed. If you use 66 nodes or more, please set mca parameters plm_rsh_no_tree_spawn to true and plm_rsh_num_concurrent to $NHOSTS when invoking the executable.<BR><BR>$ mpirun -mca plm_rsh_no_tree_spawn true -mca plm_rsh_num_concurrent $NHOSTS ./a.out</td>
 <td align="left">2021/05/31<br>close<br>Modified the default value of these mca parameters</td>
 </tr>
 <tr>
 <td align="left">2020/09/30</td>
-<td align="left">SingularityPRO</td>
+<td align="left">Singularity</td>
 <td align="left">SingularityPRO on ABCI has the following security issues. The issues affect on using SingularityPRO on the interactive nodes and in jobs that use resource types other than Full. Users are recommended to use SingularityPRO on Full resource type until it is updated.<BR><BR><a href="https://github.com/hpcng/singularity/security/advisories/GHSA-w6v2-qchm-grj7">CVE-2020-25039</a><BR><a href="https://github.com/hpcng/singularity/security/advisories/GHSA-jv9c-w74q-6762">CVE-2020-25040</a></td>
 <td align="left">2020/10/09<br>close<br>Updated to the fixed version, 3.5-4</td>
 </tr>
@@ -1101,7 +1107,7 @@
 </tr>
 <tr>
 <td align="left">2019/10/04</td>
-<td align="left">Application</td>
+<td align="left">MPI</td>
 <td align="left">MPI_Allreduce provided by MVAPICH2-GDR 2.3.2 raises floating point exceptions in the following combinations of nodes, GPUs and message sizes when reduction between GPU memories is conducted.<BR>Nodes: 28, GPU/Node: 4, Message size: 256KB<BR>Nodes: 30, GPU/Node: 4, Message size: 256KB<BR>Nodes: 33, GPU/Node: 4, Message size: 256KB<BR>Nodes: 34, GPU/Node: 4, Message size: 256KB</td>
 <td align="left">2020/04/21<br>close<br>Updated to the fixed version</td>
 </tr>
