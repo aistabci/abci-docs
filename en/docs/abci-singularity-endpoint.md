@@ -401,3 +401,47 @@ library://username/collection2/container2
 library://username/collection3/container3
 ```
 
+### Show Container Library Usage
+
+You can view Container Library usage with `show_container_library_usage`. You must enter the ABCI password (Password used to log in to ABCI User Portal) to show it.
+
+```
+[username@es1 ~]$ show_container_library_usage
+ABCI portal password :
+just a moment, please...
+used(MiB) limit(GiB) num_of_containers
+49.39     100.00     1
+
+```
+## Access Tokens
+
+### List access tokens
+
+You can list your access tokens with `list_singularity_tokens`. You must enter the ABCI password (Password used to log in to ABCI User Portal) to display it.
+
+```
+[username@es1 ~]$ list_singularity_tokens
+ABCI portal password :
+just a moment, please...
+
+Token ID: XXXXXXXXXXXXXXXXXXXXXXXX
+Issued at: 2020-12-21 18:20:47 JST
+Expires: 2021-12-21 18:20:47 JST
+
+Token ID: XXXXXXXXXXXXXXXXXXXXXXXX
+Issued at: 2020-12-23 15:59:02 JST
+Expires: 2021-12-23 15:59:02 JST
+
+```
+
+### Revoke the access token
+
+You can revoke the access token with `revoke_singularity_token`. Specify the Token ID you want to remove as an argument from the list of access tokens displayed in `list_singularity_tokens` command. You must enter the ABCI password (Password used to log in to ABCI User Portal) to revoke the access token.
+
+```
+[username@es1 ~]$ revoke_singularity_token <Token ID>
+ABCI portal password :
+just a moment, please...
+
+```
+
