@@ -410,7 +410,7 @@ library://username/collection3/container3
 
 ### Container Libraryの使用量表示
 
-Container Libraryの使用量を、`show_container_library_usage` で表示することができます。表示の際には ABCI のパスワード (利用者ポータルへのログインに使用するパスワード) の入力が必要です。
+Container Libraryの使用量を、`show_container_library_usage` で表示することができます。表示の際には ABCI のパスワードの入力が必要です。
 
 ```
 [username@es1 ~]$ show_container_library_usage
@@ -422,9 +422,11 @@ used(MiB) limit(GiB) num_of_containers
 ```
 ## アクセストークン
 
+ここでは、取得したアクセストークンに関するコマンドを説明します。
+
 ### アクセストークン一覧表示
 
-アクセストークンの一覧を、`list_singularity_tokens`で表示することができます。表示の際には ABCI のパスワード (利用者ポータルへのログインに使用するパスワード) の入力が必要です。
+アクセストークンの一覧を、`list_singularity_tokens`で表示することができます。表示の際には ABCI のパスワードの入力が必要です。
 
 ```
 [username@es1 ~]$ list_singularity_tokens
@@ -441,9 +443,9 @@ Expires: 2021-12-23 15:59:02 JST
 
 ```
 
-### アクセストークンの削除
+### アクセストークンの無効化
 
-取得したアクセストークンは、`revoke_singularity_token`で削除(無効化)することができます。`list_singularity_tokens`で表示されたアクセストークン一覧から、削除したい Token ID を引数として指定します。削除の際には ABCI のパスワード (利用者ポータルへのログインに使用するパスワード) の入力が必要です。
+取得したアクセストークンは、`revoke_singularity_token`で無効にすることができます。`list_singularity_tokens`で表示されたアクセストークン一覧から、無効にしたい Token ID を引数として指定します。無効化の際には ABCI のパスワードの入力が必要です。
 
 ```
 [username@es1 ~]$ revoke_singularity_token <Token ID>
