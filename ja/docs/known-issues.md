@@ -2,7 +2,7 @@
 
 | 日時 | カテゴリ | 内容 | 状況 |
 |:--|:--|:--|:--|
-| 2021/07/06 | Singularity | Remote Builderサービスの障害により、リモートビルド機能が利用できません。 | 2021/07/21<br>対応完了。Remote Builder サービス内で発生していた通信障害が解消されました。 |
+| 2021/07/06 | Singularity | Remote Builderサービスの障害により、リモートビルド機能が利用できません。 | 2021/07/12<br>現在、原因究明中 |
 | 2021/05/26 | GPU | 繰り返しGPUを使う場合にステータスがDまたはZでプロセスが残り、GPUメモリが解放されない現象が確認されています。その後にそのGPUを利用すると、GPUメモリが解放されていないため後続のプロセスが正常に実行されません。本事象を確認したら<qa@abci.ai>までご連絡ください。 | 2021/07/12<br>現在、原因究明中 |
 | 2021/05/17 | MPI | Open MPI 4.0.5にて、66ノード以上を使用したプログラム実行が異常終了することを確認しています。66ノード以上を使用する場合、MCAパラメータplm_rsh_no_tree_spawn trueおよびplm_rsh_num_concurrent $NHOSTSを指定してプログラムを実行してください。<BR><BR>$ mpirun -mca plm_rsh_no_tree_spawn true -mca plm_rsh_num_concurrent $NHOSTS ./a.out | 2021/05/31<br>対応完了。これらMCAパラメータのデフォルト値を変更しました。 |
 | 2020/09/30 | Singularity | 以下のセキュリティ問題が報告されています。インタラクティブノードや、Full以外の資源タイプでSingularityPROを使用する時に影響を受けます。更新するまでは、SingularityPROはFull計算タイプでご利用ください。<BR><BR>[CVE-2020-25039](https://github.com/hpcng/singularity/security/advisories/GHSA-w6v2-qchm-grj7)<BR>[CVE-2020-25040](https://github.com/hpcng/singularity/security/advisories/GHSA-jv9c-w74q-6762) | 2020/10/09<br>対応完了。問題が修正されている 3.5-4 へアップデートしました。 |
