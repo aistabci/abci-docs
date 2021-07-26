@@ -111,7 +111,7 @@ ABCIシステムの計算ノードは、計算ノード(V)と計算ノード(A)�
 | NVMe SSD | [Intel SSD DC P4510 2.0 TB u.2](https://ark.intel.com/content/www/us/en/ark/products/122580/intel-ssd-dc-p4510-series-2-0tb-2-5in-pcie-3-1-x4-3d2-tlc.html) | 2 |
 | Interconnect | InfiniBand HDR (200 Gbps) | 4 |
 
-参考: [計算ノード(V)のブロック図](img/compute-node-a-diagram.png)
+参考: [計算ノード(A)のブロック図](img/compute-node-a-diagram.png)
 
 ### メモリインテンシブノード {#memory-intensive-node}
 
