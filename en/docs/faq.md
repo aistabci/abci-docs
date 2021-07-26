@@ -429,13 +429,13 @@ For the groups newly created in FY2021, only **New Area** will be allocated, so 
 * After August 11, you cannot write to the following directories, but you can read them as same as before. 
 	* /groups1/gAA50NNN/ 
 	* /fs3/d00[1-2]/gAA50NNN/ 
-* Files under the directories in the above **Old Area** will be migrated to the following directories. However, these directories cannot be referenced until the data migration is completed. 
+* Files under the directories in the above **Old Area** will be migrated to the following directories. However, these directories cannot be referenced until the data migration is completed. As /fs3/d002 users have multiple migration sources, there are two migration destination directories, migrated_from_SFA_GPFS/ and migrated_from_SFA_GPFS3/ . 
 	* /groups/gAA50NNN/migrate_from_SFA_GPFS/ 
 	* /projects/d001/gAA50NNN/migrate_from_SFA_GPFS/ 
 	* /projects/datarepository/gAA50NNN/migrate_from_SFA_GPFS/ (migrated from /groups1/gAA50NNN of /fs3/d002/ users) 
 	* /projects/datarepository/gAA50NNN/migrated_from_SFA_GPFS3/ (migrated from /fs3/d002/gAA50NNN) 
 * Data migration is performed by the operators, so the user does not need to create a backup. 
-* During this period, the following directories can be read/written/deleted as before, except migrated_from_SFA_GPFS/ nor migrated_from_SFA_GPFS3/ .
+* During this period, the following directories can be read/written/deleted as before, except migrated_from_SFA_GPFS/ nor migrated_from_SFA_GPFS3/ . 
 	* /groups/gAA50NNN/ 
 	* /projects/d001/gAA50NNN/ 
 	* /projects/datarepository/gAA50NNN/ 

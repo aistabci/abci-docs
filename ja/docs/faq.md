@@ -433,10 +433,10 @@ source ${MODULE_HOME}/etc/profile.d/modules.csh
 
 #### データ移行中の利用者への制約 {#restrictions-for-the-users-during-the-data-migration}
 
-* 8/11 以降に、下記のディレクトリに書き込みできません。読み取りは従来通り可能です。
+* 8月11日以降に、下記のディレクトリに書き込みできません。読み取りは従来通り可能です。
 	* /groups1/gAA50NNN/ 
 	* /fs3/d00[1-2]/gAA50NNN/ 
-* 上記の**旧領域**のディレクトリ以下のファイルは、下記のディレクトリへデータ移行されます。ただしこれらのディレクトリは、データ移行完了まで参照できません。
+* 上記の**旧領域**のディレクトリ以下のファイルは、下記のディレクトリへデータ移行されます。ただしこれらのディレクトリは、データ移行完了まで参照できません。尚、/fs3/d002 利用者は移行元が複数あるため移行先のディレクトリを migrated_from_SFA_GPFS/ と migrated_from_SFA_GPFS3/ に分けています。
 	* /groups/gAA50NNN/migrated_from_SFA_GPFS/ 
 	* /projects/d001/gAA50NNN/migrated_from_SFA_GPFS/ 
 	* /projects/datarepository/gAA50NNN/migrated_from_SFA_GPFS/ (/fs3/d002/ 利用者の /groups1/gAA50NNN より移行) 
