@@ -96,7 +96,7 @@ The specifications of the compute node (V) are shown below:
 | NVMe SSD | [Intel SSD DC P4600 1.6 TB u.2](https://ark.intel.com/products/97005/Intel-SSD-DC-P4600-Series-1-6TB-2-5in-PCIe-3-1-x4-3D1-TLC-) | 1 |
 | Interconnect | InfiniBand EDR (100 Gbps) | 2 |
 
-Reference: [Block Diagram of Compute Node (V)](img/compute-node-v.png)
+Reference: [Block Diagram of Compute Node (V)](img/compute-node-v-diagram.png)
 
 #### Compute Node (A)
 
@@ -112,6 +112,8 @@ The specifications of the compute node (A) are shown below:
 | Memory | 32 GiB DDR4 3200 MHz RDIMM (ECC) | 16 |
 | NVMe SSD | [Intel SSD DC P4510 2.0 TB u.2](https://ark.intel.com/content/www/us/en/ark/products/122580/intel-ssd-dc-p4510-series-2-0tb-2-5in-pcie-3-1-x4-3d2-tlc.html) | 2 |
 | Interconnect | InfiniBand HDR (200 Gbps) | 4 |
+
+Reference: [Block Diagram of Compute Node (A)](img/compute-node-a-diagram.png)
 
 ### Memory-Intensive Node
 
