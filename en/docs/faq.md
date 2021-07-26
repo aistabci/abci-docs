@@ -381,17 +381,16 @@ For the groups newly created in FY2021, only **New Area** will be allocated, so 
 ### Basic Strategy
 
 * The ABCI operating team will copy all the files in the **Old Area** to the **New Area** behind the scene. It will take one year to finish the copy process for all the user groups. 
-<br/> The following command is executed for data migration. 
-```
-First time
-# rsync -avH /{Old Area}/gAA50NNN/ /groups/gAA50NNN/migrated_from_SFA_GPFS/ 
-```
-```
-Second time (for verification and confirmation)
-# rsync -avH --delete /{Old Area}/gAA50NNN/ /groups/gAA50NNN/migrated_from_SFA_GPFS/ 
-```
 * Users can use the **Old Area** until August 10, 2021, but please use the **New Area** as much as possible. 
 * When the copying process finishes, the operating team will switch the reference from the **Old Area** to the **New Area** by changing the symbolic link. 
+* The following command is executed for data migration. 
+```
+# rsync -avH /{Old Area}/gAA50NNN/ /groups/gAA50NNN/migrated_from_SFA_GPFS/ 
+```
+* The following command is executed for verification and confirmation after data migration. 
+```
+# rsync -avH --delete /{Old Area}/gAA50NNN/ /groups/gAA50NNN/migrated_from_SFA_GPFS/ 
+```
 
 ### The New Area /groups/gAA50NNN 
 
@@ -401,7 +400,7 @@ Second time (for verification and confirmation)
 
 ### The New Area /projects
 
-* For some users using the **Old Area** `/fs3/` , please use the **New Area** `/projects/` . Details will be described later. 
+* For some users using the **Old Area** `/fs3/` , please use the **New Area** `/projects/` . Details will be [described later](faq.md#restrictions-for-the-users-during-the-data-migration). 
 
 ### The Old Area /groups[1-2]/gAA50NNN and /fs3/d00[1-2]/gAA50NNN 
 
@@ -425,7 +424,7 @@ Second time (for verification and confirmation)
 * If there are unnecessary files in the **Old Area**, please delete them by Aug 11. It doesn't matter as much as possible.
 * See below for restrictions during data migration.
 
-#### Restrictions for the users during the data migration
+#### Restrictions for the users during the data migration {#restrictions-for-the-users-during-the-data-migration}
 
 * After August 11, you cannot write to the following directories, but you can read them as same as before. 
 	* /groups1/gAA50NNN/ 
@@ -436,11 +435,10 @@ Second time (for verification and confirmation)
 	* /projects/datarepository/gAA50NNN/migrate_from_SFA_GPFS/ (migrated from /groups1/gAA50NNN of /fs3/d002/ users) 
 	* /projects/datarepository/gAA50NNN/migrated_from_SFA_GPFS3/ (migrated from /fs3/d002/gAA50NNN) 
 * Data migration is performed by the operators, so the user does not need to create a backup. 
-* During this period, the following directories can be read/written/deleted as before.
-	* /groups/gAA50NNN	(Except the files in /groups/gAA50NNN/migrated_from_SFA_GPFS/ )
-* After middle of July, the following directories will be able to be read/written/deleted.
-	* /projects/d001/gAA50NNN	(Except the files in /projects/d001/gAA50NNN/migrated_from_SFA_GPFS/ )
-	* /projects/datarepository/gAA50NNN	(Except the files in /projects/datarepository/gAA50NNN/migrated_from_SFA_GPFS/ nor /projects/datarepository/gAA50NNN/migrated_from_SFA_GPFS3/ )
+* During this period, the following directories can be read/written/deleted as before, except migrated_from_SFA_GPFS/ nor migrated_from_SFA_GPFS3/ .
+	* /groups/gAA50NNN/ 
+	* /projects/d001/gAA50NNN/ 
+	* /projects/datarepository/gAA50NNN/ 
 
 #### Confirmation of data migration completion
 
