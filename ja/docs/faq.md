@@ -388,6 +388,15 @@ source ${MODULE_HOME}/etc/profile.d/modules.csh
 ### 基本的な方針
 
 * **旧領域**のデータを**新領域**に運用側がバックグラウンドでコピーします。全利用者データのコピー完了までには1年間かかる予定です。
+<br/>実行されるコマンドは以下の通りです。
+```
+1回目
+# rsync -avH /{Old Area}/gAA50NNN/  /groups/gAA50NNN/migrated_from_SFA_GPFS/
+```
+```
+2回目(検証・最終確認用)
+# rsync -avH --delete /{Old Area}/gAA50NNN/  /groups/gAA50NNN/migrated_from_SFA_GPFS/
+```
 * 利用者は 2021年8月10日まで**旧領域**をそのまま使えますが、可能な限り**新領域**を利用してください。
 * コピー完了後、シンボリックリンクの切り替えによって**旧領域**への参照を**新領域**への参照に書き換えます。
 
@@ -399,7 +408,7 @@ source ${MODULE_HOME}/etc/profile.d/modules.csh
 
 ### 新領域 /projects について
 
-* **旧領域**`/fs3/`を利用していた一部の利用者には、7月中旬以降に**新領域**`/projects/`を割り当てる予定です。詳細は追ってご連絡します。
+* **旧領域**`/fs3/`を利用していた一部の利用者様は、**新領域**`/projects/`をご利用ください。詳細は後述します。
 
 ### 旧領域 /groups[1-2]/gAA50NNN および /fs3/d00[1-2]/gAA50NNN について
 
@@ -416,11 +425,11 @@ source ${MODULE_HOME}/etc/profile.d/modules.csh
 
 * /groups1 の利用者は、今後は下記のディレクトリ (以後、**新領域**と呼ぶ) に書き込みお願いします。ファイルの読み/書き/削除が可能なディレクトリです。
 	* /groups/gAA50NNN/	(4月から利用可能になっています。)
-* /fs3 の利用者は、7月中旬以降は、下記のディレクトリ (以後、**新領域**と呼ぶ) に書き込みお願いします。ファイルの読み/書き/削除が可能なディレクトリです。
-	* /projects/d001/gAA50NNN/	(d001 利用者向けの領域で、7月中旬までに提供予定。)
-	* /projects/datarepository/gAA50NNN/	(d002 利用者向けの領域で、7月中旬までに提供予定。)
+* /fs3 の利用者は、今後は下記のディレクトリ (以後、**新領域**と呼ぶ) に書き込みお願いします。ファイルの読み/書き/削除が可能なディレクトリです。
+	* /projects/d001/gAA50NNN/	(d001 利用者向けの領域)
+	* /projects/datarepository/gAA50NNN/	(d002 利用者向けの領域)
 * **旧領域**に書き込みを行うプログラムをお持ちの方は、**新領域**へ書き込みするよう、プログラムを修正お願いいたします。
-* もしも**旧領域**に不要なファイルがありましたら、8月11日迄に削除してください。可能な範囲で構いません。
+* もしも**旧領域**に不要なファイルがありましたら、8月10日迄に削除してください。可能な範囲で構いません。
 * データ移行中の制約は下記を参照ください。
 
 #### データ移行中の利用者への制約
@@ -429,15 +438,15 @@ source ${MODULE_HOME}/etc/profile.d/modules.csh
 	* /groups1/gAA50NNN/ 
 	* /fs3/d00[1-2]/gAA50NNN/ 
 * 上記の**旧領域**のディレクトリ以下のファイルは、下記のディレクトリへデータ移行されます。ただしこれらのディレクトリは、データ移行完了まで参照できません。
-	* /groups/gAA50NNN/migrated_from_SFA_GPFS 
-	* /projects/d001/gAA50NNN/migrated_from_SFA_GPFS 
-	* /projects/datarepository/gAA50NNN/migrated_from_SFA_GPFS 
+	* /groups/gAA50NNN/migrated_from_SFA_GPFS/ 
+	* /projects/d001/gAA50NNN/migrated_from_SFA_GPFS/ 
+	* /projects/datarepository/gAA50NNN/migrated_from_SFA_GPFS/ (/fs3/d002/ 利用者の /groups1/gAA50NNN より移行) 
+	* /projects/datarepository/gAA50NNN/migrated_from_SFA_GPFS3/ (/fs3/d002/gAA50NNN より移行) 
 * データ移行は運用側が実施しますので、利用者がバックアップを作成する必要はありません。
 * この期間、下記のディレクトリは、従来通りファイルの読み/書き/削除が可能です。
 	* /groups/gAA50NNN　（ただし /groups/gAA50NNN/migrated_from_SFA_GPFS/ は参照不可）
-* 下記のディレクトリは、７月中旬以降に、ファイルの読み/書き/削除が可能になります。
 	* /projects/d001/gAA50NNN　（ただし /projects/d001/gAA50NNN/migrated_from_SFA_GPFS/ は参照不可）
-	* /projects/datarepository/gAA50NNN　（ただし /projects/datarepository/gAA50NNN/migrated_from_SFA_GPFS/ は参照不可）
+	* /projects/datarepository/gAA50NNN　（ただし /projects/datarepository/gAA50NNN/migrated_from_SFA_GPFS/ および /projects/datarepository/gAA50NNN/migrated_from_SFA_GPFS3/ は参照不可）
 
 #### データ移行終了の確認の作業
 
@@ -463,6 +472,7 @@ source ${MODULE_HOME}/etc/profile.d/modules.csh
 グループディスクの利用で消費する ABCI ポイントは従来同様、クォータ値をもとに計算されます。
 
 データ移行完了後、利用者による**新領域**のデータ整理のための期間を儲けます。
-その期間終了後は、**新領域**の利用上限値をクォータ値と同一に設定します。
-期間終了日は別途ご連絡いたします。
+その期間終了後は、**新領域**の利用上限値をクォータ値と同一に設定します。<br/>
+/groups2/ の利用者の皆様の整理期間は令和3年9月末日までです。10月以降にクォータ値を超えるデータが新領域に保存されている場合、書き込みができなくなります。不要なファイル(重複ファイルなど)を削除するか、利用量の追加申請を行ってください。</br>
+その他の旧領域の利用者様の整理期間は別途ご連絡いたします。
 

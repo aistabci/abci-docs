@@ -381,6 +381,15 @@ For the groups newly created in FY2021, only **New Area** will be allocated, so 
 ### Basic Strategy
 
 * The ABCI operating team will copy all the files in the **Old Area** to the **New Area** behind the scene. It will take one year to finish the copy process for all the user groups. 
+<br/> The following command is executed for data migration. 
+```
+First time
+# rsync -avH /{Old Area}/gAA50NNN/ /groups/gAA50NNN/migrated_from_SFA_GPFS/ 
+```
+```
+Second time (for verification and confirmation)
+# rsync -avH --delete /{Old Area}/gAA50NNN/ /groups/gAA50NNN/migrated_from_SFA_GPFS/ 
+```
 * Users can use the **Old Area** until August 10, 2021, but please use the **New Area** as much as possible. 
 * When the copying process finishes, the operating team will switch the reference from the **Old Area** to the **New Area** by changing the symbolic link. 
 
@@ -392,7 +401,7 @@ For the groups newly created in FY2021, only **New Area** will be allocated, so 
 
 ### The New Area /projects
 
-* Some users who used the **Old Area `/fs3/`** will be assigned the **New Area `/projects/`** after mid-July. Details will be announced later. 
+* For some users using the **Old Area** `/fs3/` , please use the **New Area** `/projects/` . Details will be described later. 
 
 ### The Old Area /groups[1-2]/gAA50NNN and /fs3/d00[1-2]/gAA50NNN 
 
@@ -424,13 +433,14 @@ For the groups newly created in FY2021, only **New Area** will be allocated, so 
 * Files under the directories in the above **Old Area** will be migrated to the following directories. However, these directories cannot be referenced until the data migration is completed. 
 	* /groups/gAA50NNN/migrate_from_SFA_GPFS/ 
 	* /projects/d001/gAA50NNN/migrate_from_SFA_GPFS/ 
-	* /projects/datarepository/gAA50NNN/migrate_from_SFA_GPFS/ 
+	* /projects/datarepository/gAA50NNN/migrate_from_SFA_GPFS/ (migrated from /groups1/gAA50NNN of /fs3/d002/ users) 
+	* /projects/datarepository/gAA50NNN/migrated_from_SFA_GPFS3/ (migrated from /fs3/d002/gAA50NNN) 
 * Data migration is performed by the operators, so the user does not need to create a backup. 
 * During this period, the following directories can be read/written/deleted as before.
 	* /groups/gAA50NNN	(Except the files in /groups/gAA50NNN/migrated_from_SFA_GPFS/ )
 * After middle of July, the following directories will be able to be read/written/deleted.
 	* /projects/d001/gAA50NNN	(Except the files in /projects/d001/gAA50NNN/migrated_from_SFA_GPFS/ )
-	* /projects/datarepository/gAA50NNN	(Except the files in /projects/datarepository/gAA50NNN/migrated_from_SFA_GPFS/ )
+	* /projects/datarepository/gAA50NNN	(Except the files in /projects/datarepository/gAA50NNN/migrated_from_SFA_GPFS/ nor /projects/datarepository/gAA50NNN/migrated_from_SFA_GPFS3/ )
 
 #### Confirmation of data migration completion
 
@@ -456,6 +466,7 @@ For the groups newly created in FY2021, only **New Area** will be allocated, so 
 ABCI points consumed by using Group disks are calculated based on the quota value as before. 
 
 After the data migration is completed, the users will have a period to organize the data in the **New Area**. 
-After the end of that period, the upper limit of the **New Area** will be set to the same value as the quota value. 
-We will announce you the end date of the period later. 
+After the end of that period, the upper limit of the **New Area** will be set to the same value as the quota value. <br/>
+The organization period for /groups2/ users is until the end of September 2021. If data exceeding the quota value is existed in the New Area after October, it will not be possible to write. Delete unnecessary files (duplicate files, etc.) or apply for additional quota. </br>
+We will announce separately about the organization period to users of the other Old Areas. 
 
