@@ -417,7 +417,7 @@ used(MiB) limit(GiB) num_of_containers
 
 This section describes the commands related to the obtained access token.
 
-### Listing access tokens
+### Listing Access Tokens
 
 You can list your access tokens with `list_singularity_tokens`. You must enter the ABCI password to display it.
 
@@ -436,7 +436,7 @@ Expires: 2021-12-23 15:59:02 JST
 
 ```
 
-### Revoking the access token
+### Revoking the Access Token
 
 You can revoke the access token with `revoke_singularity_token`. Specify the Token ID you want to remove as an argument from the list of access tokens displayed in `list_singularity_tokens` command. You must enter the ABCI password to revoke the access token.
 
