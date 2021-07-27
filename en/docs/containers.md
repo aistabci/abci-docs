@@ -232,7 +232,7 @@ exec /bin/bash "$@"
 
 To create a Singularity image from the generated recipe file on ABCI, please refer to [Create a Singularity image (build)](#create-a-singularity-image-build).
 
-### Singularity recipe file examples
+### Examples of Singularity recipe files
 
 This chapter shows examples of Singularity recipe files. See the [Singularity](#singularity) user guide for more information about the recipe file.
 
