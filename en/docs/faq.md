@@ -407,11 +407,11 @@ For the groups newly created in FY2021, only **New Area** will be allocated, so 
 #### During the data migration
 
 * The user can read/write/delete files to the **Old Area** until August 10, 2021. It will be set to read-only after August 11. 
-* Users of the **Old Area** should make the [preparations in advance](faq.md#request-for-advance-preparation) described below. 
+* Users of the **Old Area** should make the [preparations in advance](faq.md#request-for-advance-preparation) described later. 
 	* Users of /groups2 need not to prepare in advance. 
 	* Regarding data migration, as of July 2021, /groups2 has been completed, /groups1 is in progress, and /fs3 (provided only to some users) is scheduled to start around October. 
 * The Group disk amount (hereinafter referred to as the quota value) applied on the user portal by June 28, 2021 was set as the disk usage upper limit of **Old Area**. 
-	* Since June 28, the behavior of the change request for [Group disk quota value](faq.md#group-disk-quota-value) has been changed as described below. 
+	* Since June 28, the behavior of the change request for [Group disk quota value](faq.md#group-disk-quota-value) has been changed as described later. 
 
 #### Request for advance preparation
 
