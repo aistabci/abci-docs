@@ -236,7 +236,7 @@ To create a Singularity image from the generated recipe file on ABCI, please ref
 
 This chapter shows examples of Singularity recipe files. See the [Singularity](#singularity) user guide for more information about the recipe file.
 
-#### Include local files in the container image
+#### Including local files in the container image
 
 This is an example of compiling Open MPI and local program files (C language) into a container image.
 In this case, locate the Singularity recipe file (openmpi.def) and the program file (mpitest.c) in your home directory.
