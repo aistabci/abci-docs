@@ -372,17 +372,25 @@ The existing Group Area (The **Old Area**) will not be accessible from the comin
 Therefore we need to create a new Group Area (The **New Area**), which is accessible from the Compute Node (A), and migrate all the data stored in the **Old Area** to the **New Area**.
 The data copy is managed by the operating team, so the users do not have to take care of the copy process.
 
-User groups who are using the **Old Area** `/groups[1-2]/gAA50NNN` had been also allocated the **New Area** at `/groups/gAA50NNN`.
-In addition, for some user groups using **Old Area** `/fs3/`, **New Area** `/projects/` will be allocated after mid-July. 
-Both the **Old and New Area** are accessible from all the interactive nodes and all the existing computing nodes (The Compute Node (V)). 
+User groups who are using the **Old Area** `/groups[1-2]/gAA50NNN` has been also allocated the **New Area** at `/groups/gAA50NNN`.
+In addition, for some user groups using **Old Area** `/fs3/`, **New Area** `/projects/` has been allocated since mid July. 
+Both the **Old and New Area** are accessible from all the Interactive Nodes and the Compute Node (V). 
 
-For the groups newly created in FY2021, only **New Area** will be allocated, so it is not a target of data migration. As results, it is not affected by data migration. 
+!!! NOTE
+    For the groups newly created in FY2021, only **New Area** will be allocated, so it is not a target of data migration. As results, it is not affected by data migration. Please skip reading the following. 
+
+## for the **Old Area** `/groups2/gAANNN` Users
+
+The files in the **Old Area** `/groups2/gAA50NNN/` have already been migrated and are in the **Reorganization Period**. <br/>
+The **Reorganization Period** is until the end of September 2021. If data exceeding the quota value is existed in the **New Area** after October, it will not be possible to write. Delete unnecessary files (duplicate files, etc.) or apply for additional quota. 
+
+## for the **Old Area** `/groups1/gAA50NNN/` and the **Old Area** `/fs3/` Users
 
 ### Basic Strategy
 
 * The ABCI operating team will copy all the files in the **Old Area** to the **New Area** behind the scene. It will take one year to finish the copy process for all the user groups. 
 * Users can use the **Old Area** until August 10, 2021, but please use the **New Area** as much as possible. 
-* When the copying process finishes, the operating team will switch the reference from the **Old Area** to the **New Area** by changing the symbolic link. 
+* After the copy is completed, a symlink to the migration destination in the **New Area** will be created and you can refer to it with the same path as the **Old Area**. 
 * The following command is executed for data migration. 
 ```
 # rsync -avH /{Old Area}/gAA50NNN/ /groups/gAA50NNN/migrated_from_SFA_GPFS/ 
@@ -396,19 +404,18 @@ For the groups newly created in FY2021, only **New Area** will be allocated, so 
 
 * The files in the **Old Area** will be copied to the **New Area** `/groups/gAA50NNN/migrated_from_SFA_GPFS/`. Note that the users cannot access the copied data under that directory until the migration finishes.
 * The area other than that directory in the **New Area** can be freely used.
-* Disk usage will increase as data is copied. For this reason, the limit of the storage usage for the **New Area** is set to be twice the quota value, which is the group disk quantity value applied in the ABCI User Portal. This is a temporal treatment. After the migration,  the limit of the storage usage is set to the same value as the quota value in the ABCI User Portal, after a grace period.
+* Disk usage will increase as data is copied. For this reason, the limit of the storage usage for the **New Area** is set to be twice the quota value, which is the group disk quantity value applied in the ABCI User Portal. This is a temporal treatment. After the migration, the limit of the storage usage is set to the same value as the quota value in the ABCI User Portal, after the **Reorganization Period**. See [Group disk quota value](faq.md#group-disk-quota-value) for more detail. 
 
 ### The New Area /projects
 
 * For some users using the **Old Area** `/fs3/` , please use the **New Area** `/projects/` . Details will be [described later](faq.md#restrictions-for-the-users-during-the-data-migration). 
 
-### The Old Area /groups[1-2]/gAA50NNN and /fs3/d00[1-2]/gAA50NNN 
+### The Old Area /groups1/gAA50NNN and /fs3/d00[1-2]/gAA50NNN 
 
 #### During the data migration
 
 * The user can read/write/delete files to the **Old Area** until August 10, 2021. It will be set to read-only after August 11. 
 * Users of the **Old Area** should make the [preparations in advance](faq.md#request-for-advance-preparation) described later. 
-	* Users of /groups2 need not to prepare in advance. 
 	* Regarding data migration, as of July 2021, /groups2 has been completed, /groups1 is in progress, and /fs3 (provided only to some users) is scheduled to start around October. 
 * The Group disk amount (hereinafter referred to as the quota value) applied on the user portal by June 28, 2021 was set as the disk usage upper limit of **Old Area**. 
 	* Since June 28, the behavior of the change request for [Group disk quota value](faq.md#group-disk-quota-value) has been changed as described later. 
@@ -429,11 +436,18 @@ For the groups newly created in FY2021, only **New Area** will be allocated, so 
 * After August 11, you cannot write to the following directories, but you can read them as same as before. 
 	* /groups1/gAA50NNN/ 
 	* /fs3/d00[1-2]/gAA50NNN/ 
-* Files under the directories in the above **Old Area** will be migrated to the following directories. However, these directories cannot be referenced until the data migration is completed. As /fs3/d002 users have multiple migration sources, there are two migration destination directories, migrated_from_SFA_GPFS/ and migrated_from_SFA_GPFS3/ . 
-	* /groups/gAA50NNN/migrate_from_SFA_GPFS/ 
-	* /projects/d001/gAA50NNN/migrate_from_SFA_GPFS/ 
-	* /projects/datarepository/gAA50NNN/migrate_from_SFA_GPFS/ (migrated from /groups1/gAA50NNN of /fs3/d002/ users) 
-	* /projects/datarepository/gAA50NNN/migrated_from_SFA_GPFS3/ (migrated from /fs3/d002/gAA50NNN) 
+* Files under the directories in the above **Old Area** will be migrated to the following directories. However, these directories cannot be referenced until the data migration is completed. 
+
+	| Source | Destination | Remarks |
+	|:--|:--|:--|
+	| /groups1/gAA50NNN/ | /groups/gAA50NNN/migrated_from_SFA_GPFS/ | |
+	| /fs3/d001/gAA50NNN/ | /projects/d001/gAA50NNN/migrated_from_SFA_GPFS/ | |
+	| /groups1/gAA50NNN/ | /projects/datarepository/gAA50NNN/migrated_from_SFA_GPFS/ | * for /fs3/d002/ users' |
+	| /fs3/d002/gAA50NNN/ | /projects/datarepository/gAA50NNN/migrated_from_SFA_GPFS3/ | * |
+
+!!! NOTE
+    `*` As /fs3/d002 users have multiple migration sources, there are two migration destination directories, migrated_from_SFA_GPFS/ and migrated_from_SFA_GPFS3/ . 
+
 * Data migration is performed by the operators, so the user does not need to create a backup. 
 * During this period, the following directories can be read/written/deleted as before, except migrated_from_SFA_GPFS/ nor migrated_from_SFA_GPFS3/ . 
 	* /groups/gAA50NNN/ 
@@ -447,7 +461,7 @@ For the groups newly created in FY2021, only **New Area** will be allocated, so 
 
 #### After the data migration is completed
 
-* You can access the migrated data in the **New Area** with the same path `/groups[1-2]/gAA50NNN` as before. It is achieved by changing the symbolic link. 
+* A symlink to the migration destination in the **New Area** will be created and you can refer to it with the same path `/groups[1-2]/gAA50NNN` as the **Old Area**. 
 * The files in the **Old Area** are copied to `/groups/gAA50NNN/migrate_from_SFA_GPFS/` in the **New Area**. 
 * You cannot access `/groups[1-2]/gAA50NNN` in the **Old Area**. 
 
@@ -463,8 +477,8 @@ For the groups newly created in FY2021, only **New Area** will be allocated, so 
 
 ABCI points consumed by using Group disks are calculated based on the quota value as before. 
 
-After the data migration is completed, the users will have a period to organize the data in the **New Area**. 
+After the data migration is completed, the users will have a period to reorganize the data in the **New Area**. 
 After the end of that period, the upper limit of the **New Area** will be set to the same value as the quota value. <br/>
-The organization period for /groups2/ users is until the end of September 2021. If data exceeding the quota value is existed in the New Area after October, it will not be possible to write. Delete unnecessary files (duplicate files, etc.) or apply for additional quota. </br>
-We will announce separately about the organization period to users of the other Old Areas. 
+The *Reorganization Period** for /groups2/ users is until the end of September 2021. If data exceeding the quota value is existed in the New Area after October, it will not be possible to write. Delete unnecessary files (duplicate files, etc.) or apply for additional quota. </br>
+We will announce separately about the reorganization period to users of the other Old Areas. 
 
