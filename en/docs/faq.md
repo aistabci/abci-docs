@@ -403,13 +403,12 @@ The **Reorganization Period** is until the end of September 2021. If data exceed
 
 	| Source | Destination | Remarks |
 	|:--|:--|:--|
-	| /groups1/gAA50NNN/ | /groups/gAA50NNN/migrated_from_SFA_GPFS/ | |
-	| /fs3/d001/gAA50NNN/ | /projects/d001/gAA50NNN/migrated_from_SFA_GPFS/ | |
-	| /groups1/gAA50NNN/ | /projects/datarepository/gAA50NNN/migrated_from_SFA_GPFS/ | * for /fs3/d002/ users' |
-	| /fs3/d002/gAA50NNN/ | /projects/datarepository/gAA50NNN/migrated_from_SFA_GPFS3/ | * |
+	| `/groups1/gAA50NNN/` | `/groups/gAA50NNN/migrated_from_SFA_GPFS/` | |
+	| `/fs3/d001/gAA50NNN/` | `/projects/d001/gAA50NNN/migrated_from_SFA_GPFS/` | |
+	| `/groups1/gAA50NNN/` | `/projects/datarepository/gAA50NNN/migrated_from_SFA_GPFS/` | [^1] for `/fs3/d002/` users' |
+	| `/fs3/d002/gAA50NNN/` | `/projects/datarepository/gAA50NNN/migrated_from_SFA_GPFS3/` | [^1] |
 
-	!!! NOTE
-	    `*` As /fs3/d002 users have multiple migration sources, there are two migration destination directories, migrated_from_SFA_GPFS/ and migrated_from_SFA_GPFS3/ . 
+[^1]: As /fs3/d002 users have multiple migration sources, there are two migration destination directories, migrated_from_SFA_GPFS/ and migrated_from_SFA_GPFS3/ . 
 
 #### About the New Area 
 
@@ -434,19 +433,31 @@ The **Reorganization Period** is until the end of September 2021. If data exceed
 	* /projects/datarepository/gAA50NNN/	(area for d002 users, scheduled to be provided by mid-July.)
 * If you have a program that writes to the files in **Old Area**, please modify the program so that it writes into the **New Area** by Aug 11. 
 * If there are unnecessary files in the **Old Area**, please delete them by Aug 11. It doesn't matter as much as possible.
-* See below for restrictions during data migration.
 
-#### Restrictions for the users during the data migration {#restrictions-for-the-users-during-the-data-migration}
+#### Access rights for each directory in the group area during data migration
 
-* After August 11, you cannot write to the following directories, but you can read them as same as before. 
-	* /groups1/gAA50NNN/ 
-	* /fs3/d00[1-2]/gAA50NNN/ 
-* Files under the directories in the **Old Area** above will be migrated to the destination directories [mentioned above](faq.md#basic-strategy). However, the destination directories cannot be referenced until the data migration is completed. 
-* Data migration is performed by the operators, so the user does not need to create a backup. 
-* During this period, the following directories can be read/written/deleted as before, except the destination directories. 
-	* /groups/gAA50NNN/ 
-	* /projects/d001/gAA50NNN/ 
-	* /projects/datarepository/gAA50NNN/ 
+* For **Old Areas** before Aug 10, 2021
+
+	| Directories                                                  | Read   | Write  | Delete | Descriptions                     |
+	| --                                                           | --     | --     | --     | --                               |
+	| `/groups1/gAA50NNN/`                                         | Yes    | Yes    | Yes    | Old Area                         |
+	| `/fs3/d00[1-2]/gAA50NNN/`                                    | Yes    | Yes    | Yes    | Old Area                         |
+
+* For each directories after aug 11, 2021
+
+	| Directories                                                  | Read   | Write  | Delete | Descriptions                     |
+	| --                                                           | --     | --     | --     | --                               |
+	| `/groups/gAA50NNN/`                                          | Yes    | Yes    | Yes    | New Area                         |
+	| `/groups1/gAA50NNN/`                                         | Yes    | No     | No     | Old Area                         |
+	| `/fs3/d00[1-2]/gAA50NNN/`                                    | Yes    | No     | No     | Old Area                         |
+	| `/projects/d001/gAA50NNN/`                                   | Yes    | Yes    | Yes    | New Area for d001 users          |
+	| `/projects/datarepository/gAA50NNN/`                         | Yes    | Yes    | Yes    | New Area for d002 users          |
+	| `/groups/gAA50NNN/migrated_from_SFA_GPFS/`                   | No[^2] | No[^2] | No[^2] | Destination from /groups1/       |
+	| `/projects/d001/gAA50NNN/migrated_from_SFA_GPFS/`            | No[^2] | No[^2] | No[^2] | Destination from /fs3/d001/      |
+	| `/projects/datarepository/gAA50NNN/migrated_from_SFA_GPFS/`  | No[^2] | No[^2] | No[^2] | Destination from /groups1/ [^1]  |
+	| `/projects/datarepository/gAA50NNN/migrated_from_SFA_GPFS3/` | No[^2] | No[^2] | No[^2] | Destination from /fs3/d002/ [^1] |
+
+[^2]: until the data migration is complated. 
 
 #### Confirmation of data migration completion
 
