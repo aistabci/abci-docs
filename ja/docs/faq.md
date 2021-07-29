@@ -384,44 +384,49 @@ source ${MODULE_HOME}/etc/profile.d/modules.csh
 !!! NOTE
     2021年度に新規に作成されたABCIグループについては、**新領域**のみが割り当てられるためデータ移行の対象ではなく、データ移行の影響を受けません。以下は読み飛ばしてください。
 
-## **旧領域**`/groups2/gAA50NNN/` の利用者の皆様へ
+### 旧領域`/groups2/gAA50NNN/` の利用者の皆様へ
 
 **旧領域**`/groups2/gAA50NNN/` のファイルは既に移行作業が完了しており、**整理期間**に入っています。<br/>
 **整理期間**は2021年9月末日までです。10月以降にクォータ値を超えるデータが**新領域**に保存されている場合、書き込みができなくなります。不要なファイル(重複ファイルなど)を削除するか、利用量の追加申請を行ってください。
 
-## **旧領域**`/groups1/gAA50NNN/` および**旧領域**`/fs3/` の利用者の皆様へ
+### 旧領域`/groups1/gAA50NNN/` および旧領域`/fs3/` の利用者の皆様へ
 
-### 基本的な方針
+#### 基本的な方針 {#basic-strategy}
 
 * **旧領域**のデータを**新領域**に運用側がバックグラウンドでコピーします。全利用者データのコピー完了までには1年間かかる予定です。
 * 利用者は 2021年8月10日まで**旧領域**をそのまま使えますが、可能な限り**新領域**を利用してください。
 * コピー完了後、**新領域**内の移行先へのシンボリックリンクが作成され**旧領域**と同じパスによる参照が可能になります。
 * データ移行に用いられるコマンドは以下の通りです。
 ```
-# rsync -avH /{Old Area}/gAA50NNN/  /groups/gAA50NNN/migrated_from_SFA_GPFS/
+# rsync -avH /{Old Area}/gAA50NNN/  /{New Area}/gAA50NNN/migrated_from_SFA_GPFS/
 ```
 * データ移行後に確認のため以下のコマンドを実行します。
 ```
-# rsync -avH --delete /{Old Area}/gAA50NNN/  /groups/gAA50NNN/migrated_from_SFA_GPFS/
+# rsync -avH --delete /{Old Area}/gAA50NNN/  /{New Area}/gAA50NNN/migrated_from_SFA_GPFS/
 ```
+* データの移行先は以下の通りです。
 
-### 新領域 /groups/gAA50NNN について
+	|移行元|移行先|備考|
+	|:--|:--|:--|
+	| /groups1/gAA50NNN/ | /groups/gAA50NNN/migrated_from_SFA_GPFS/ | |
+	| /fs3/d001/gAA50NNN/ | /projects/d001/gAA50NNN/migrated_from_SFA_GPFS/ | |
+	| /groups1/gAA50NNN/ | /projects/datarepository/gAA50NNN/migrated_from_SFA_GPFS/ | * /fs3/d002/ 利用者 |
+	| /fs3/d002/gAA50NNN/ | /projects/datarepository/gAA50NNN/migrated_from_SFA_GPFS3/ | * |
 
-* **旧領域**のデータを**新領域**の`/groups/gAA50NNN/migrated_from_SFA_GPFS/`にコピーします。ただし、データ移行完了までは利用者が**新領域**のこのディレクトリにアクセスすることはできません。
-* **新領域**のこのディレクトリ以外は自由に使用できます。
+	!!! NOTE
+	    `*` /fs3/d002 利用者は移行元が複数あるため移行先のディレクトリを migrated_from_SFA_GPFS/ と migrated_from_SFA_GPFS3/ に別れています。
+
+#### 新領域について
+
+* データ移行完了までは利用者が**新領域**内の上記移行先ディレクトリにアクセスすることはできません。
+* 移行先のディレクトリ以外の**新領域**は自由に使用することができます。
 * データコピーにともないディスク使用量が増加します。このため、移行期間中は、利用者ポータルで申請したグループディスク量(以降、クォータ値)の2倍の値を、**新領域**のディスク使用量上限値に設定します。移行完了後、一定の**整理期間**を設けて、**新領域**のディスク使用量上限値を、クォータ値と同じ値に設定します。詳細は[グループディスクのクォータ値](faq.md#group-disk-quota-value)をご覧ください。
 
-### 新領域 /projects について
-
-* **旧領域**`/fs3/`を利用していた一部の利用者は、**新領域**`/projects/`をご利用ください。詳細は[後述](faq.md#restrictions-for-the-users-during-the-data-migration)します。
-
-### 旧領域 /groups1/gAA50NNN および /fs3/d00[1-2]/gAA50NNN について
-
-#### データ移行中
+#### 旧領域`/groups1/gAA50NNN` および `/fs3/d00[1-2]/gAA50NNN` について
 
 * 2021年8月10日まで**旧領域**への読み取り/書き込み/ファイルの削除が可能です。8月11日以降は読み取り専用となります。
 * **旧領域**の利用者は、後述の[事前準備](faq.md#request-for-advance-preparation)を実施してください。
-	* データ移行については、2021年7月現在、/groups2 が完了、/groups1 が実施中、/fs3 (一部の利用者にのみ提供) は10月頃開始予定です。
+	* データ移行については 2021年7月現在、/groups2 が完了、/groups1 が実施中、/fs3 (一部の利用者にのみ提供) は10月頃開始予定です。
 * 2021年6月28日までに利用者ポータルで申請したグループディスク量(以後、クォータ値と呼ぶ)が、**旧領域**のディスク使用量上限値として設定されています。
 	* 6月28日以降、[グループディスクのクォータ値](faq.md#group-disk-quota-value)の変更申請の振る舞いが後述の通り変更されました。
 
@@ -438,23 +443,12 @@ source ${MODULE_HOME}/etc/profile.d/modules.csh
 
 #### データ移行中の利用者への制約 {#restrictions-for-the-users-during-the-data-migration}
 
-* 8月11日以降に、下記のディレクトリに書き込みできません。読み取りは従来通り可能です。
+* 8月11日以降に、以下の**旧領域**に書き込みできなくなります。読み取りは従来通り可能です。
 	* /groups1/gAA50NNN/ 
 	* /fs3/d00[1-2]/gAA50NNN/ 
-* 上記の**旧領域**のディレクトリ以下のファイルは、下記のディレクトリへ移行されます。ただしこれらのディレクトリは、データ移行完了まで参照できません。
-
-	|移行元|移行先|備考|
-	|:--|:--|:--|
-	| /groups1/gAA50NNN/ | /groups/gAA50NNN/migrated_from_SFA_GPFS/ | |
-	| /fs3/d001/gAA50NNN/ | /projects/d001/gAA50NNN/migrated_from_SFA_GPFS/ | |
-	| /groups1/gAA50NNN/ | /projects/datarepository/gAA50NNN/migrated_from_SFA_GPFS/ | * /fs3/d002/ 利用者 |
-	| /fs3/d002/gAA50NNN/ | /projects/datarepository/gAA50NNN/migrated_from_SFA_GPFS3/ | * |
-
-!!! NOTE
-    `*` /fs3/d002 利用者は移行元が複数あるため移行先のディレクトリを migrated_from_SFA_GPFS/ と migrated_from_SFA_GPFS3/ に別れています。
-
+* 上記の**旧領域**のディレクトリ以下のファイルは、[前述](faq.md#basic-strategy)の移行先ディレクトリへコピーされます。ただし移行先のディレクトリは、データ移行完了まで参照できません。
 * データ移行は運用側が実施しますので、利用者がバックアップを作成する必要はありません。
-* この期間、下記のディレクトリは、従来通りファイルの読み/書き/削除が可能です。ただし、各ディレクトリ下にある migrated_from_SFA_GPFS/ および migrated_from_SFA_GPFS3/ は参照できません。
+* この期間、下記のディレクトリは、従来通りファイルの読み/書き/削除が可能です。ただし、各ディレクトリ下にある移行先ディレクトリは参照できません。
 	* /groups/gAA50NNN/ 
 	* /projects/d001/gAA50NNN/ 
 	* /projects/datarepository/gAA50NNN/ 
