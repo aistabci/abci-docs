@@ -381,14 +381,38 @@ Both the **Old and New Area** are accessible from all the Interactive Nodes and 
 
 ### for the Old Area `/groups2/gAANNN` Users
 
-The files in the **Old Area** `/groups2/gAA50NNN/` have already been migrated and are in the **Reorganization Period**. <br/>
-The **Reorganization Period** is until the end of September 2021. If data exceeding the quota value is existed in the **New Area** after October, it will not be possible to write. Delete unnecessary files (duplicate files, etc.) or apply for additional quota. 
+* The files in the **Old Area** `/groups2/gAA50NNN/` have been migrated on July 1st and are in the **Reorganization Period**. <br/>
+* Users should use the **New Area ** as much as possible. You can still use the path of **Old Area** `/groups2/gAA50NNN/`, but it is a symlink to the migration destination `/groups/gAA50NNN/migrated_from_SFA_GPFS/` in **New Area**. Please note that there is no longer data left in the **Old Area**. 
 
-### for the Old Area `/groups1/gAA50NNN/` and the Old Area `/fs3/` Users
+#### Access rights for each directory in the group area
+
+| Directories                                | Read | Write | Delete | Descriptions                         |
+| --                                         | --   | --    | --     | --                                   |
+| `/groups/gAA50NNN/`                        | Yes  | Yes   | Yes    | New Area                             |
+| `/groups2/gAA50NNN/`                       | Yes  | Yes   | Yes    | Symlink to the destination directory |
+| `/groups/gAA50NNN/migrated_from_SFA_GPFS/` | Yes  | Yes   | Yes    | Destination from the Old Area        |
+
+#### Reorganization Period
+
+* During the migration task, the data copied from the **Old Area** will increase rapidly, so it was set temporarily so that it can be used even if the quota value applied is exceeded to some extent. 
+* After the migration task is completed, it will be a **Reorganization Period** for deleting/merging duplicate data by copying the necessary files in advance by the user during the migration period. 
+* The **Reorganization Period** is until the end of September 2021. If data exceeding the quota value is existed in the **New Area** after October, it will not be possible to write. Delete unnecessary files (duplicate files, etc.) or apply for additional quota. 
+
+
+### for the Old Area `/groups1/gAA50NNN/` and the Old Area `/fs3/d00[1-2]/gAA50NNN/` Users
+
+#### Main differences the migration task between from the Old Area `/groups2/gAA50NNN/` and from the Old Area `/groups1/gAA50NNN/` or the Old Area `/fs3/d00[1-2]/gAA50NNN/`
+
+|  | Old Area /groups2/gAA50NNN/ | Old Area /groups1/gAA50NNN/ or Old Area /fs3/d00[1-2]/gAA50NNN/ |
+|:-- |:-- |:-- |
+|  Group disk quota value | During the migration period, twice of the group disk amount applied on the user portal (hereinafter referred to as the Quota Value) is set to the disk usage upper limit of **New Area** | There are many changes. See [Group Disk Quota Value](faq.md#group-disk-quota-value) below. |
+| Access rights of migration source | Possible to read/write/delete .<br /> However, inaccessible during the "The task of confirmation of data migration completion". | Read-only after August 12, 2021 |
+| Preparation for read-only support | Not required | Changing the target to write required by August 12 |
+| Confirmation of data migration completion | Inaccessible data in the Old Area | Unnecessary |
 
 #### Basic Strategy {#basic-strategy}
 
-* The ABCI operating team will copy all the files in the **Old Area** to the **New Area** behind the scene. It will take one year to finish the copy process for all the user groups. 
+* The ABCI operating team will copy all the files in the **Old Area** to the **New Area** behind the scene. The migration of all group data is scheduled to be completed by the end of FY2021. 
 * Users can use the **Old Area** until August 10, 2021, but please use the **New Area** as much as possible. 
 * After the copy is completed, a symlink to the migration destination in the **New Area** will be created and you can refer to it with the same path as the **Old Area**. 
 * The following command is executed for data migration. 
