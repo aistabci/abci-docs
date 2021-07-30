@@ -1061,6 +1061,40 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#container-library" class="md-nav__link">
+    Container Libraryの使用量表示
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_16" class="md-nav__link">
+    アクセストークン
+  </a>
+  
+    <nav class="md-nav" aria-label="アクセストークン">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_17" class="md-nav__link">
+    アクセストークン一覧表示
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_18" class="md-nav__link">
+    アクセストークンの無効化
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -1613,6 +1647,39 @@ Signature created and applied to ./ubuntu.sif
 <span class="w">    </span><span class="nc">Image</span><span class="w"> </span><span class="k">Size</span><span class="err">:</span><span class="w"> </span><span class="mf">20.00</span><span class="w"> </span><span class="n">MB</span><span class="w"></span>
 
 <span class="nl">library</span><span class="p">:</span><span class="o">//</span><span class="n">username</span><span class="o">/</span><span class="n">collection3</span><span class="o">/</span><span class="n">container3</span><span class="w"></span>
+</code></pre></div>
+
+<h3 id="container-library">Container Libraryの使用量表示</h3>
+<p>Container Libraryの使用量を、<code>show_container_library_usage</code> で表示することができます。表示の際には ABCI のパスワードの入力が必要です。</p>
+<div class="codehilite"><pre><span></span><code><span class="o">[</span><span class="n">username@es1 ~</span><span class="o">]</span><span class="err">$</span><span class="w"> </span><span class="n">show_container_library_usage</span><span class="w"></span>
+<span class="n">ABCI</span><span class="w"> </span><span class="n">portal</span><span class="w"> </span><span class="n">password</span><span class="w"> </span><span class="err">:</span><span class="w"></span>
+<span class="n">just</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="n">moment</span><span class="p">,</span><span class="w"> </span><span class="n">please</span><span class="p">...</span><span class="w"></span>
+<span class="n">used</span><span class="p">(</span><span class="n">MiB</span><span class="p">)</span><span class="w"> </span><span class="k">limit</span><span class="p">(</span><span class="n">GiB</span><span class="p">)</span><span class="w"> </span><span class="n">num_of_containers</span><span class="w"></span>
+<span class="mf">49.39</span><span class="w">     </span><span class="mf">100.00</span><span class="w">     </span><span class="mi">1</span><span class="w"></span>
+</code></pre></div>
+
+<h2 id="_16">アクセストークン</h2>
+<p>ここでは、取得したアクセストークンに関するコマンドを説明します。</p>
+<h3 id="_17">アクセストークン一覧表示</h3>
+<p>アクセストークンの一覧を、<code>list_singularity_tokens</code>で表示することができます。表示の際には ABCI のパスワードの入力が必要です。</p>
+<div class="codehilite"><pre><span></span><code><span class="o">[</span><span class="n">username@es1 ~</span><span class="o">]</span><span class="err">$</span><span class="w"> </span><span class="n">list_singularity_tokens</span><span class="w"></span>
+<span class="n">ABCI</span><span class="w"> </span><span class="n">portal</span><span class="w"> </span><span class="n">password</span><span class="w"> </span><span class="err">:</span><span class="w"></span>
+<span class="n">just</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="n">moment</span><span class="p">,</span><span class="w"> </span><span class="n">please</span><span class="p">...</span><span class="w"></span>
+
+<span class="n">Token</span><span class="w"> </span><span class="nl">ID</span><span class="p">:</span><span class="w"> </span><span class="n">XXXXXXXXXXXXXXXXXXXXXXXX</span><span class="w"></span>
+<span class="n">Issued</span><span class="w"> </span><span class="k">at</span><span class="err">:</span><span class="w"> </span><span class="mi">2020</span><span class="o">-</span><span class="mi">12</span><span class="o">-</span><span class="mi">21</span><span class="w"> </span><span class="mi">18</span><span class="err">:</span><span class="mi">20</span><span class="err">:</span><span class="mi">47</span><span class="w"> </span><span class="n">JST</span><span class="w"></span>
+<span class="nl">Expires</span><span class="p">:</span><span class="w"> </span><span class="mi">2021</span><span class="o">-</span><span class="mi">12</span><span class="o">-</span><span class="mi">21</span><span class="w"> </span><span class="mi">18</span><span class="err">:</span><span class="mi">20</span><span class="err">:</span><span class="mi">47</span><span class="w"> </span><span class="n">JST</span><span class="w"></span>
+
+<span class="n">Token</span><span class="w"> </span><span class="nl">ID</span><span class="p">:</span><span class="w"> </span><span class="n">XXXXXXXXXXXXXXXXXXXXXXXX</span><span class="w"></span>
+<span class="n">Issued</span><span class="w"> </span><span class="k">at</span><span class="err">:</span><span class="w"> </span><span class="mi">2020</span><span class="o">-</span><span class="mi">12</span><span class="o">-</span><span class="mi">23</span><span class="w"> </span><span class="mi">15</span><span class="err">:</span><span class="mi">59</span><span class="err">:</span><span class="mi">02</span><span class="w"> </span><span class="n">JST</span><span class="w"></span>
+<span class="nl">Expires</span><span class="p">:</span><span class="w"> </span><span class="mi">2021</span><span class="o">-</span><span class="mi">12</span><span class="o">-</span><span class="mi">23</span><span class="w"> </span><span class="mi">15</span><span class="err">:</span><span class="mi">59</span><span class="err">:</span><span class="mi">02</span><span class="w"> </span><span class="n">JST</span><span class="w"></span>
+</code></pre></div>
+
+<h3 id="_18">アクセストークンの無効化</h3>
+<p>取得したアクセストークンは、<code>revoke_singularity_token</code>で無効にすることができます。<code>list_singularity_tokens</code>で表示されたアクセストークン一覧から、無効にしたい Token ID を引数として指定します。無効化の際には ABCI のパスワードの入力が必要です。</p>
+<div class="codehilite"><pre><span></span><code><span class="o">[</span><span class="n">username@es1 ~</span><span class="o">]</span><span class="err">$</span><span class="w"> </span><span class="n">revoke_singularity_token</span><span class="w"> </span><span class="o">&lt;</span><span class="n">Token</span><span class="w"> </span><span class="n">ID</span><span class="o">&gt;</span><span class="w"></span>
+<span class="n">ABCI</span><span class="w"> </span><span class="n">portal</span><span class="w"> </span><span class="n">password</span><span class="w"> </span><span class="err">:</span><span class="w"></span>
+<span class="n">just</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="n">moment</span><span class="p">,</span><span class="w"> </span><span class="n">please</span><span class="p">...</span><span class="w"></span>
 </code></pre></div>
                 
               
