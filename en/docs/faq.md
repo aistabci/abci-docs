@@ -384,7 +384,7 @@ For the groups newly created in FY2021, only **New Area** will be allocated, so 
 ### for the Old Area `/groups2/gAANNN` Users
 
 * The files in the **Old Area** `/groups2/gAA50NNN/` have been migrated on July 1st and are in the **Reorganization Period**. <br/>
-* Users should use the **New Area ** as much as possible. You can still use the path of **Old Area** `/groups2/gAA50NNN/`, but it is a symlink to the migration destination `/groups/gAA50NNN/migrated_from_SFA_GPFS/` in **New Area**. Please note that there is no longer data left in the **Old Area**. 
+* From now on, only **New Area ** should be used. You can still use the same path as the **Old Area** `/groups2/gAA50NNN/`, but it is a symlink to the migration destination `/groups/gAA50NNN/migrated_from_SFA_GPFS/` in **New Area**. Please note that there is no longer data left in the **Old Area**. 
 
 #### Access rights for each directory in the group area
 
@@ -396,7 +396,7 @@ For the groups newly created in FY2021, only **New Area** will be allocated, so 
 
 #### Reorganization Period
 
-* During the migration task, the data copied from the **Old Area** will increase rapidly, so it was set temporarily so that it can be used even if the quota value applied is exceeded to some extent. 
+* During the migration task, the data copied from the **Old Area** will increase rapidly, so it was set temporarily to write to the **New Area** more than the requested quota value. 
 * After the migration task is completed, it will be a **Reorganization Period** for deleting/merging duplicate data by copying the necessary files in advance by the user during the migration period. 
 * The **Reorganization Period** is until the end of September 2021. If data exceeding the quota value is existed in the **New Area** after October, it will not be possible to write. Delete unnecessary files (duplicate files, etc.) or apply for additional quota. 
 
