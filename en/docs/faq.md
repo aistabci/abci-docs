@@ -376,8 +376,9 @@ User groups who are using the **Old Area** `/groups[1-2]/gAA50NNN` has been also
 In addition, for some user groups using **Old Area** `/fs3/`, **New Area** `/projects/` has been allocated since mid July. 
 Both the **Old and New Area** are accessible from all the Interactive Nodes and the Compute Node (V). 
 
-!!! NOTE
-    For the groups newly created in FY2021, only **New Area** will be allocated, so it is not a target of data migration. As results, it is not affected by data migration. Please skip reading the following. 
+### for the users of groups newly created in FY2021
+    For the groups newly created in FY2021, only **New Area** will be allocated, so it is not a target of data migration. As results, it is not affected by data migration. 
+
 
 ### for the Old Area `/groups2/gAANNN` Users
 
