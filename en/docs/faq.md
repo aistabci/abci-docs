@@ -377,7 +377,8 @@ In addition, for some user groups using **Old Area** `/fs3/`, **New Area** `/pro
 Both the **Old and New Area** are accessible from all the Interactive Nodes and the Compute Node (V). 
 
 ### for the users of groups newly created in FY2021
-    For the groups newly created in FY2021, only **New Area** will be allocated, so it is not a target of data migration. As results, it is not affected by data migration. 
+
+For the groups newly created in FY2021, only **New Area** will be allocated, so it is not a target of data migration. As results, it is not affected by data migration. 
 
 
 ### for the Old Area `/groups2/gAANNN` Users
