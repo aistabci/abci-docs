@@ -401,11 +401,11 @@ For the groups newly created in FY2021, only **New Area** will be allocated, so 
 * The **Reorganization Period** is until the end of September 2021. If data exceeding the quota value is existed in the **New Area** after October, it will not be possible to write. Delete unnecessary files (duplicate files, etc.) or apply for additional quota. 
 
 
-### for the Old Area `/groups1/gAA50NNN/` and the Old Area `/fs3/d00[1-2]/gAA50NNN/` Users
+### for the Old Area `/groups1/gAA50NNN/` or the Old Area `/fs3/d00[1-2]/gAA50NNN/` Users
 
 #### Main differences the migration task between from the Old Area `/groups2/gAA50NNN/` and from the Old Area `/groups1/gAA50NNN/` or the Old Area `/fs3/d00[1-2]/gAA50NNN/`
 
-|  | Old Area /groups2/gAA50NNN/ | Old Area /groups1/gAA50NNN/ or Old Area /fs3/d00[1-2]/gAA50NNN/ |
+|  | Old Area /groups2/gAA50NNN/ users | Old Area /groups1/gAA50NNN/ or Old Area /fs3/d00[1-2]/gAA50NNN/ users |
 |:-- |:-- |:-- |
 |  Group disk quota value | During the migration period, twice of the group disk amount applied on the user portal (hereinafter referred to as the Quota Value) is set to the disk usage upper limit of **New Area** | There are many changes. See [Group Disk Quota Value](faq.md#group-disk-quota-value) below. |
 | Access rights of migration source | Possible to read/write/delete .<br /> However, inaccessible during the "The task of confirmation of data migration completion". | Read-only after August 12, 2021 |
@@ -471,19 +471,20 @@ For the groups newly created in FY2021, only **New Area** will be allocated, so 
 
 * For each directories after aug 11, 2021
 
-	| Directories                                                  | Read   | Write  | Delete | Descriptions                     |
-	| --                                                           | --     | --     | --     | --                               |
-	| `/groups/gAA50NNN/`                                          | Yes    | Yes    | Yes    | New Area                         |
-	| `/groups1/gAA50NNN/`                                         | Yes    | No     | No     | Old Area                         |
-	| `/fs3/d00[1-2]/gAA50NNN/`                                    | Yes    | No     | No     | Old Area                         |
-	| `/projects/d001/gAA50NNN/`                                   | Yes    | Yes    | Yes    | New Area for d001 users          |
-	| `/projects/datarepository/gAA50NNN/`                         | Yes    | Yes    | Yes    | New Area for d002 users          |
-	| `/groups/gAA50NNN/migrated_from_SFA_GPFS/`                   | No[^2] | No[^2] | No[^2] | Destination from /groups1/       |
-	| `/projects/d001/gAA50NNN/migrated_from_SFA_GPFS/`            | No[^2] | No[^2] | No[^2] | Destination from /fs3/d001/      |
-	| `/projects/datarepository/gAA50NNN/migrated_from_SFA_GPFS/`  | No[^2] | No[^2] | No[^2] | Destination from /groups1/ [^1]  |
-	| `/projects/datarepository/gAA50NNN/migrated_from_SFA_GPFS3/` | No[^2] | No[^2] | No[^2] | Destination from /fs3/d002/ [^1] |
+	| Directories                                                  | Read    | Write   | Delete  | Descriptions                     |
+	| --                                                           | --      | --      | --      | --                               |
+	| `/groups/gAA50NNN/`                                          | Yes[^2] | Yes[^2] | Yes[^2] | New Area                         |
+	| `/groups1/gAA50NNN/`                                         | Yes     | No      | No      | Old Area                         |
+	| `/fs3/d00[1-2]/gAA50NNN/`                                    | Yes     | No      | No      | Old Area                         |
+	| `/projects/d001/gAA50NNN/`                                   | Yes[^2] | Yes[^2] | Yes[^2] | New Area for d001 users          |
+	| `/projects/datarepository/gAA50NNN/`                         | Yes[^2] | Yes[^2] | Yes[^2] | New Area for d002 users          |
+	| `/groups/gAA50NNN/migrated_from_SFA_GPFS/`                   | No[^3]  | No[^3]  | No[^3]  | Destination from /groups1/       |
+	| `/projects/d001/gAA50NNN/migrated_from_SFA_GPFS/`            | No[^3]  | No[^3]  | No[^3]  | Destination from /fs3/d001/      |
+	| `/projects/datarepository/gAA50NNN/migrated_from_SFA_GPFS/`  | No[^3]  | No[^3]  | No[^3]  | Destination from /groups1/ [^1]  |
+	| `/projects/datarepository/gAA50NNN/migrated_from_SFA_GPFS3/` | No[^3]  | No[^3]  | No[^3]  | Destination from /fs3/d002/ [^1] |
 
-[^2]: until the data migration is complated. 
+[^2]: except the Destination directories. 
+[^3]: until the data migration is complated. 
 
 #### Confirmation of data migration completion
 
