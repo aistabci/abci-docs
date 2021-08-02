@@ -409,7 +409,7 @@ For the groups newly created in FY2021, only **New Area** will be allocated, so 
 |:-- |:-- |:-- |
 |  Group disk quota value | During the migration period, twice of the group disk amount applied on the user portal (hereinafter referred to as the Quota Value) is set to the disk usage upper limit of **New Area** | There are many changes. See [Group Disk Quota Value](faq.md#group-disk-quota-value) below. |
 | Access rights of migration source | Possible to read/write/delete .<br /> However, inaccessible during the "The task of confirmation of data migration completion". | Read-only after August 12, 2021 |
-| Preparation for read-only support | Not required | Changing the target to write required by August 12 |
+| Preparation for read-only support | Not required | Changing the target to write required by August 10 |
 | Confirmation of data migration completion | Inaccessible data in the Old Area | Unnecessary |
 
 #### Basic Strategy {#basic-strategy}
