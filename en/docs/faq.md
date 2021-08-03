@@ -480,7 +480,7 @@ For the groups newly created in FY2021, only **New Area** will be allocated, so 
 	| `/projects/datarepository/gAA50NNN/`                         | Yes[^2] | Yes[^2] | Yes[^2] | New Area for d002 users          |
 	| `/groups/gAA50NNN/migrated_from_SFA_GPFS/`                   | No[^3]  | No[^3]  | No[^3]  | Destination from /groups1/       |
 	| `/projects/d001/gAA50NNN/migrated_from_SFA_GPFS/`            | No[^3]  | No[^3]  | No[^3]  | Destination from /fs3/d001/      |
-	| `/projects/datarepository/gAA50NNN/migrated_from_SFA_GPFS/`  | No[^3]  | No[^3]  | No[^3]  | Destination from /groups1/ [^1]  |
+	| `/projects/datarepository/gAA50NNN/migrated_from_SFA_GPFS/`  | No[^3]  | No[^3]  | No[^3]  | Destination from d002 users' /groups1/ [^1]  |
 	| `/projects/datarepository/gAA50NNN/migrated_from_SFA_GPFS3/` | No[^3]  | No[^3]  | No[^3]  | Destination from /fs3/d002/ [^1] |
 
 [^2]: except the Destination directories. 

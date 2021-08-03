@@ -487,7 +487,7 @@ source ${MODULE_HOME}/etc/profile.d/modules.csh
 	| `/projects/datarepository/gAA50NNN/`                         | Yes[^2]  | Yes[^2]  | Yes[^2] | d002利用者向けの新領域          |
 	| `/groups/gAA50NNN/migrated_from_SFA_GPFS/`                   | No[^3]   | No[^3]   | No[^3]  | 旧領域ファイルの移行先          |
 	| `/projects/d001/gAA50NNN/migrated_from_SFA_GPFS/`            | No[^3]   | No[^3]   | No[^3]  | /fs3/d001/gAA500NNNの移行先     |
-	| `/projects/datarepository/gAA50NNN/migrated_from_SFA_GPFS/`  | No[^3]   | No[^3]   | No[^3]  | /groups1/gAA500NNNの移行先[^1]  |
+	| `/projects/datarepository/gAA50NNN/migrated_from_SFA_GPFS/`  | No[^3]   | No[^3]   | No[^3]  | d002利用者の /groups1/gAA500NNNの移行先[^1]  |
 	| `/projects/datarepository/gAA50NNN/migrated_from_SFA_GPFS3/` | No[^3]   | No[^3]   | No[^3]  | /fs3/d002/gAA500NNNの移行先[^1] |
 
 [^2]: 移行先ディレクトリを除く。
