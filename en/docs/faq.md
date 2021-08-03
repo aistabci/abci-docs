@@ -376,17 +376,17 @@ User groups who are using the **Old Area** `/groups[1-2]/gAA50NNN` has been also
 In addition, for some user groups using **Old Area** `/fs3/`, **New Area** `/projects/` has been allocated since mid July. 
 Both the **Old and New Area** are accessible from all the Interactive Nodes and the Compute Node (V). 
 
-### for the users of groups newly created in FY2021
+### For the Users of Groups Newly Created in FY2021
 
 For the groups newly created in FY2021, only **New Area** will be allocated, so it is not a target of data migration. As results, it is not affected by data migration. 
 
 
-### for the Old Area `/groups2/gAANNN` Users
+### For the Old Area `/groups2/gAANNN` Users
 
 * The files in the **Old Area** `/groups2/gAA50NNN/` have been migrated on July 1st and are in the **Reorganization Period**. <br/>
 * From now on, only **New Area ** should be used. You can still use the same path as the **Old Area** `/groups2/gAA50NNN/`, but it is a symlink to the migration destination `/groups/gAA50NNN/migrated_from_SFA_GPFS/` in **New Area**. Please note that there is no longer data left in the **Old Area**. 
 
-#### Access rights for each directory in the group area
+#### Access Rights for Each Directory in the Group Area
 
 | Directories                                | Read | Write | Delete | Descriptions                         |
 | --                                         | --   | --    | --     | --                                   |
@@ -401,16 +401,16 @@ For the groups newly created in FY2021, only **New Area** will be allocated, so 
 * The **Reorganization Period** is until the end of September 2021. If data exceeding the quota value is existed in the **New Area** after October, it will not be possible to write. Delete unnecessary files (duplicate files, etc.) or apply for additional quota. 
 
 
-### for the Old Area `/groups1/gAA50NNN/` or the Old Area `/fs3/d00[1-2]/gAA50NNN/` Users
+### For the Old Area `/groups1/gAA50NNN/` or the Old Area `/fs3/d00[1-2]/gAA50NNN/` Users
 
-#### Main differences the migration task between from the Old Area `/groups2/gAA50NNN/` and from the Old Area `/groups1/gAA50NNN/` or the Old Area `/fs3/d00[1-2]/gAA50NNN/`
+#### Main Differences of the Data Migration Task between the Old Area `/groups2/gAA50NNN/` and the Old Area `/groups1/gAA50NNN/` or the Old Area `/fs3/d00[1-2]/gAA50NNN/`
 
 |  | Old Area /groups2/gAA50NNN/ users | Old Area /groups1/gAA50NNN/ or Old Area /fs3/d00[1-2]/gAA50NNN/ users |
 |:-- |:-- |:-- |
 |  Group disk quota value | During the migration period, twice of the group disk amount applied on the user portal (hereinafter referred to as the Quota Value) is set to the disk usage upper limit of **New Area** | There are many changes. See [Group Disk Quota Value](faq.md#group-disk-quota-value) below. |
 | Access rights of migration source | Possible to read/write/delete .<br /> However, inaccessible during the "The task of confirmation of data migration completion". | Read-only after August 12, 2021 |
 | Preparation for read-only support | Not required | Changing the target to write required by August 10 |
-| Confirmation of data migration completion | Inaccessible data in the Old Area | Unnecessary |
+| Confirmation of data migration completion | Inaccessible data in the Old Area | Not required |
 
 #### Basic Strategy {#basic-strategy}
 
@@ -450,7 +450,7 @@ For the groups newly created in FY2021, only **New Area** will be allocated, so 
 * The Group disk amount (hereinafter referred to as the quota value) applied on the user portal by June 28, 2021 was set as the disk usage upper limit of **Old Area**. 
 	* Since June 28, the behavior of the change request for [Group disk quota value](faq.md#group-disk-quota-value) has been changed as described later. 
 
-#### Request for advance preparation
+#### Request for Advance Preparation
 
 * For users of /groups1, please use the following directory (hereinafter referred to as the **New Area**) where you can read/write/delete files. 
 	* /groups/gAA50NNN/	(available since April)
@@ -460,7 +460,7 @@ For the groups newly created in FY2021, only **New Area** will be allocated, so 
 * If you have a program that writes to the files in **Old Area**, please modify the program so that it writes into the **New Area** by Aug 11. 
 * If there are unnecessary files in the **Old Area**, please delete them by Aug 11. It doesn't matter as much as possible.
 
-#### Access rights for each directory in the group area during data migration
+#### Access Rights for Each Directory in the Group Area during Data Migration
 
 * For **Old Areas** before Aug 10, 2021
 
@@ -486,23 +486,23 @@ For the groups newly created in FY2021, only **New Area** will be allocated, so 
 [^2]: except the Destination directories. 
 [^3]: until the data migration is complated. 
 
-#### Confirmation of data migration completion
+#### Confirmation of Data Migration Completion
 
 * In case for the data migration of /groups2/ , the **Old Area** was inaccessible during "The task of confirmation of data migration completion". 
 * In case for /groups1/ and /fs3/ , the **Old Area** will be set to "read-only" until the data migration is completed. 
 
-#### After the data migration is completed
+#### After the Data Migration is Completed
 
 * A symlink to the migration destination in the **New Area** will be created and you can refer to it with the same path `/groups[1-2]/gAA50NNN` as the **Old Area**. 
 * The files in the **Old Area** are copied to `/groups/gAA50NNN/migrate_from_SFA_GPFS/` in the **New Area**. 
 * You cannot access `/groups[1-2]/gAA50NNN` in the **Old Area**. 
 
-#### Group disk quota value
-##### Increasing the quota value
+#### Group Disk Quota Value
+##### Increasing the Quota Value
 * Even if you apply to increase the quota value, the usage upper limit of the **Old Area** will not be increased. 
 * The usage upper limit of the **New Area** (/groups/gAA50NNN) is set to "the value set at that time" or "twice of the new quota value", whichever is greater. 
 
-##### Decreasing the quota value
+##### Decreasing the Quota Value
 * When you apply to decrease the quota value, it can be decreased only when the usage amount of the **Old Area** (shown as "used" with the show_quota command) is less than the new quota value. 
 * After application, the usage upper limit of the **Old Area** will be decreased to the same value as the quota value.
 * The usage upper limit of the **New Area** will not be decreased. 
