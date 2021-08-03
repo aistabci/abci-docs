@@ -383,8 +383,10 @@ For the groups newly created in FY2021, only **New Area** will be allocated, so 
 
 ### For the Old Area `/groups2/gAANNN` Users
 
-* The files in the **Old Area** `/groups2/gAA50NNN/` have been migrated on July 1st and are in the **Reorganization Period**. <br/>
-* From now on, only **New Area ** should be used. You can still use the same path as the **Old Area** `/groups2/gAA50NNN/`, but it is a symlink to the migration destination `/groups/gAA50NNN/migrated_from_SFA_GPFS/` in **New Area**. Please note that there is no longer data left in the **Old Area**. 
+#### Migration task of the Old Area`/groups2/gAA50NNN/` has already been completed
+
+The files in the **Old Area** `/groups2/gAA50NNN/` have been migrated on July 1st and are in the **Reorganization Period**. <br/>
+From now on, only **New Area ** should be used. You can still use the same path as the **Old Area** `/groups2/gAA50NNN/`, but it is a symlink to the migration destination `/groups/gAA50NNN/migrated_from_SFA_GPFS/` in **New Area**. Please note that there is no longer data left in the **Old Area**. 
 
 #### Access Rights for Each Directory in the Group Area
 
@@ -407,7 +409,7 @@ For the groups newly created in FY2021, only **New Area** will be allocated, so 
 
 |  | Old Area /groups2/gAA50NNN/ users | Old Area /groups1/gAA50NNN/ or Old Area /fs3/d00[1-2]/gAA50NNN/ users |
 |:-- |:-- |:-- |
-|  Group disk quota value | During the migration period, twice of the group disk amount applied on the user portal (hereinafter referred to as the Quota Value) is set to the disk usage upper limit of **New Area** | There are many changes. See [Group Disk Quota Value](faq.md#group-disk-quota-value) below. |
+|  Group Disk Quota Value | During the migration period, twice of the group disk amount applied on the user portal (hereinafter referred to as the Quota Value) is set to the disk usage upper limit of **New Area** | See [Group Disk Quota Value](faq.md#group-disk-quota-value) . |
 | Access rights of migration source | Possible to read/write/delete .<br /> However, inaccessible during the "The task of confirmation of data migration completion". | Read-only after August 12, 2021 |
 | Preparation for read-only support | Not required | Changing the target to write required by August 10 |
 | Confirmation of data migration completion | Inaccessible data in the Old Area | Not required |
@@ -499,18 +501,18 @@ For the groups newly created in FY2021, only **New Area** will be allocated, so 
 
 #### Group Disk Quota Value
 ##### Increasing the Quota Value
-* Even if you apply to increase the quota value, the usage upper limit of the **Old Area** will not be increased. 
-* The usage upper limit of the **New Area** (/groups/gAA50NNN) is set to "the value set at that time" or "twice of the new quota value", whichever is greater. 
+* Even if you apply to increase the Quota Value, the usage upper limit of the **Old Area** will not be increased. 
+* The usage upper limit of the **New Area** (/groups/gAA50NNN) is set to "the value set at that time" or "twice of the new Quota Value", whichever is greater. 
 
 ##### Decreasing the Quota Value
-* When you apply to decrease the quota value, it can be decreased only when the usage amount of the **Old Area** (shown as "used" with the show_quota command) is less than the new quota value. 
-* After application, the usage upper limit of the **Old Area** will be decreased to the same value as the quota value.
+* When you apply to decrease the Quota Value, it can be decreased only when the usage amount of the **Old Area** (shown as "used" with the show_quota command) is less than the new Quota Value. 
+* After application, the usage upper limit of the **Old Area** will be decreased to the same value as the Quota Value.
 * The usage upper limit of the **New Area** will not be decreased. 
 
-ABCI points consumed by using Group disks are calculated based on the quota value as before. 
+ABCI points consumed by using Group disks are calculated based on the Quota Value as before. 
 
 After the data migration is completed, the users will have a period to reorganize the data in the **New Area**. 
-After the end of that period, the upper limit of the **New Area** will be set to the same value as the quota value. <br/>
-The *Reorganization Period** for /groups2/ users is until the end of September 2021. If data exceeding the quota value is existed in the New Area after October, it will not be possible to write. Delete unnecessary files (duplicate files, etc.) or apply for additional quota. </br>
+After the end of that period, the upper limit of the **New Area** will be set to the same value as the Quota Value. <br/>
+The *Reorganization Period** for /groups2/ users is until the end of September 2021. If data exceeding the Quota Value is existed in the New Area after October, it will not be possible to write. Delete unnecessary files (duplicate files, etc.) or apply for additional quota. </br>
 We will announce separately about the reorganization period to users of the other Old Areas. 
 
