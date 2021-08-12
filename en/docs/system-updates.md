@@ -1,5 +1,12 @@
 # System Updates
 
+## 2021-08-12
+
+| Add / Update / Delete | Software | Version | Previous version |
+|:--|:--|:--|:--|
+| Update | BeeOND | 7.2.3 | 7.2.1 |
+| Update | DDN Lustre | 2.12.5\_ddn13-1 | 2.12.6\_ddn13-1 |
+
 ## 2021-07-06
 
 | Add / Update / Delete | Software | Version | Previous version |
