@@ -197,12 +197,12 @@ ABCIシステムで利用可能なソフトウェア一覧を以下に示しま�
 | | Julia | 1.0<br>1.5 | 1.0<br>1.5 |
 | | Hadoop | 3.3 | 3.3 |
 | | Spark | 3.0 | 3.0 |
-| File System | [DDN Lustre](storage.md#home-area) | 2.12.6\_ddn13-1 | 2.12.6\_ddn13-1 |
+| File System | [DDN Lustre](storage.md#home-area) | 2.12.5\_ddn13-1 | 2.12.5\_ddn13-1 |
 | | [DDN GRIDScaler](storage.md#group-area) | 4.2.3-20 | - |
-| | [BeeOND](storage.md#beeond-storage) | 7.2.1 | 7.2.1 |
+| | [BeeOND](storage.md#beeond-storage) | 7.2.3 | 7.2.3 |
 | Object Storage | Scality S3 Connector | 7.4.8.1 | 7.4.8.1 |
 | Container | [Docker](containers.md#docker) | 19.03.15 | 19.03.15 |
-| | [SingularityPRO](containers.md#singularity) | 3.7-1 | 3.7-1 |
+| | [SingularityPRO](containers.md#singularity) | 3.7-4 | 3.7-4 |
 | MPI | [Open MPI](mpi.md#open-mpi) | 2.1.6<br>3.1.6<br>4.0.5 | 2.1.6<br>3.1.6<br>4.0.5 |
 | | [MVAPICH2](mpi.md#mvapich2) | 2.3.5 | 2.3.5 |
 | | [MVAPICH2-GDR](mpi.md#mvapich2-gdr) | 2.3.5 | - |
