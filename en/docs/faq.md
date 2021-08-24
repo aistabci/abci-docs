@@ -482,7 +482,7 @@ From now on, only **New Area ** should be used. You can still use the same path 
 	| `/groups2/gAA50NNN/`  | Yes  | Yes   | Yes    | `/groups/gAA50NNN/migrate_from_SFA_GPFS/`         |         |
 	| `/fs3/d001/gAA50NNN/` | Yes  | Yes   | Yes    | `/projects/d001/gAA50NNN/migrated_from_SFA_GPFS/` |         |
 	| `/fs3/d002/gAA50NNN/` | Yes  | Yes   | Yes    | `/projects/datarepository/gAA50NNN/migrated_from_SFA_GPFS3/` |  |
-	| `/groups1/gAA50NNN/`  | Yes  | Yes   | Yes    | `/projects/datarepository/gAA50NNN/migrated_from_SFA_GPFS/`  | [^1] `/fs3/d002/` User |
+	| `/groups1/gAA50NNN/`  | Yes  | Yes   | Yes    | `/projects/datarepository/gAA50NNN/migrated_from_SFA_GPFS/`  | for d002 users' [^1] |
 
 
 #### Reorganization Period

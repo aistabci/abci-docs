@@ -488,7 +488,7 @@ source ${MODULE_HOME}/etc/profile.d/modules.csh
 	| `/groups2/gAA50NNN/`  | Yes      | Yes      | Yes  | `/groups/gAA50NNN/migrated_from_SFA_GPFS/`                   |      |
 	| `/fs3/d001/gAA50NNN/` | Yes      | Yes      | Yes  | `/projects/d001/gAA50NNN/migrated_from_SFA_GPFS/`            |      |
 	| `/fs3/d002/gAA50NNN/` | Yes      | Yes      | Yes  | `/projects/datarepository/gAA50NNN/migrated_from_SFA_GPFS3/` |      |
-	| `/groups1/gAA50NNN/`  | Yes      | Yes      | Yes  | `/projects/datarepository/gAA50NNN/migrated_from_SFA_GPFS/`  | [^1] `/fs3/d002/`利用者 |
+	| `/groups1/gAA50NNN/`  | Yes      | Yes      | Yes  | `/projects/datarepository/gAA50NNN/migrated_from_SFA_GPFS/`  | d002 利用者 [^1] |
 
 
 #### 整理期間
