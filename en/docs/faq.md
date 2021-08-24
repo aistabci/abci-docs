@@ -373,7 +373,7 @@ Therefore we have created a new Group Area (the **New Area**), which is accessib
 The data migration is managed by the operation team, so the users need not to take care of the migration process.
 As of July 2021, `/groups2` has been completed, `/groups1` is in progress, and `/fs3` (provided to only som e users) is scheduled to start around October 2021. 
 
-User groups who are using the **Old Area** `/groups[1-2]/gAA50NNN/` until FY2020 have newly been allocated the New Area `/groups/gAA50NNN/` since April 2021, and some User groups who are using the **Old Area** `/fs3/` have been allocated the New Area `/projects/` since mid July.
+User groups who are using the **Old Area** `/groups[1-2]/gAA50NNN/` until FY2020 have newly been allocated the **New Area** `/groups/gAA50NNN/` since April 2021, and some User groups who are using the **Old Area** `/fs3/` have been allocated the **New Area** `/projects/` since mid July.
 Both the **Old Area** and the **New Area** are accessible from all the Interactive Nodes and Compute Nodes (V). 
 
 
