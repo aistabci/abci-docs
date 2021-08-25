@@ -340,11 +340,11 @@ ABCIでは、計算ノード(A)向けのプログラム開発の利便性のた�
 
 ### グループ領域 {#group-area}
 
-計算ノード(A)からは旧領域(`/groups[1-2]/gAA50NNN`)にアクセスできません。
+計算ノード(A)からは**旧領域**(`/groups[1-2]/gAA50NNN`)にアクセスできません。
 
-旧領域にあるファイルを計算ノード(A)で利用する場合は、事前に利用者がファイルをホーム領域や新領域(`/groups/gAA50NNN`)にコピーしておく必要があります。旧領域にあるファイルをコピーする場合は、インタラクティブノードおよび計算ノード(V)を利用してください。
+**旧領域**にあるファイルを計算ノード(A)で利用する場合は、事前に利用者がファイルをホーム領域や**新領域**(`/groups/gAA50NNN`)にコピーしておく必要があります。**旧領域**にあるファイルをコピーする場合は、インタラクティブノードおよび計算ノード(V)を利用してください。
 
-なお、2021年4月より旧領域のファイルを新領域へ移行する作業も進めています。グループ領域のデータ移行については、FAQの[グループ領域のデータ移行について知りたい](faq.md#q-what-are-the-new-group-area-and-data-migration)を参照してください。
+なお、2021年4月より**旧領域**のファイルを**新領域**へ移行する作業も進めています。グループ領域のデータ移行については、FAQの[グループ領域のデータ移行について知りたい](faq.md#q-what-are-the-new-group-area-and-data-migration)を参照してください。
 
 ## Q. ABCI 1.0 Environment Modulesを利用したい {#q-how-to-use-abci-10-environment-modules}
 
@@ -382,6 +382,9 @@ source ${MODULE_HOME}/etc/profile.d/modules.csh
 また、**旧領域**`/fs3/`を利用していた一部のグループには、2021年7月中旬に**新領域**`/projects/`を割り当てました。
 **旧領域**、**新領域**ともにすべてのインタラクティブノードと計算ノード(V)からアクセス可能です。
 
+尚、2021年8月11日以降、旧領域は読み取り専用となっております。
+
+
 ### 2021年度に利用開始した新規利用者の皆様へ
 
 2021年度に新規に作成されたABCIグループについては、**新領域**のみが割り当てられるためデータ移行の対象ではなく、データ移行の影響を受けません。
@@ -389,36 +392,23 @@ source ${MODULE_HOME}/etc/profile.d/modules.csh
 
 ### 旧領域`/groups2/gAA50NNN/` の利用者の皆様へ
 
-#### 旧領域`/groups2/gAA50NNN/` の移行作業は既に完了
-
-**旧領域**`/groups2/gAA50NNN/` のファイルは2021年7月1日に移行作業が完了しており、**整理期間**に入っています。<br/>
+**旧領域**`/groups2/gAA50NNN/` のファイルは2021年7月1日に移行作業が完了しており、[**整理期間**](faq.md#reorganization-period)に入っています。<br/>
 今後は**新領域**のみが利用可能です。**旧領域**`/groups2/gAA50NNN/` と同じパスもそのままご利用いただけますが、これは**新領域**内の移行先`/groups/gAA50NNN/migrated_from_SFA_GPFS/` へのシンボリックリンクであり、**旧領域**内にデータが残っている訳ではないことに注意してください。
-
-#### グループ領域の各ディレクトリのアクセス可否
-
-| ディレクトリ                               | 読み取り | 書き込み | 削除 | 説明                     |
-|:--                                         |:--       |:--       |:--   |:--                       |
-| `/groups/gAA50NNN/`                        | Yes      | Yes      | Yes  | 新領域                   |
-| `/groups2/gAA50NNN/`                       | Yes      | Yes      | Yes  | 新領域内の移行先への参照 |
-| `/groups/gAA50NNN/migrated_from_SFA_GPFS/` | Yes      | Yes      | Yes  | 旧領域ファイルの移行先   |
-
-#### 整理期間
-
-* 移行作業中は、**旧領域**からコピーされてくるデータが急増するため、申請されたクォータ値より多い量が**新領域**に書きこめるよう、一時的に設定されていました。
-* 移行作業完了後は、移行期間中に必要なファイルを利用者自身で事前にコピーしたなどで重複したデータを削除/統合するための**整理期間**となります。
-* **整理期間**は2021年9月末日までです。10月以降にクォータ値を超えるデータが**新領域**に保存されている場合、書き込みができなくなります。不要なファイル(重複ファイルなど)を削除するか、利用量の追加申請を行ってください。
 
 
 ### 旧領域`/groups1/gAA50NNN/` および 旧領域`/fs3/d00[1-2]/gAA50NNN/` の利用者の皆様へ
 
-#### 旧領域`/groups2/gAA50NNN/` の移行作業からの主な変更点
+**旧領域**`/groups2/gAA50NNN/` の移行作業からの主な変更点は以下の通りです。
 
 | | 旧領域 /groups2/gAA50NNN/ の利用者 | 旧領域 /groups1/gAA50NNN/ および 旧領域 /fs3/d00[1-2]/gAA50NNN/ の利用者 |
 |:-- |:-- |:-- |
 | グループディスクのクォータ値 | 移行期間中は、利用者ポータルで申請したグループディスク量 (以降、クォータ値) の2倍の値を、**新領域**のディスク使用量上限値に設定 | 後述の[グループディスクのクォータ値](faq.md#group-disk-quota-value)をご参照ください。 |
-| 移行元のアクセス権 | 読み/書き/削除可能<br/>但し、「データ移行終了の確認の作業」期間はアクセス不可 | 8月12日以降読み取り専用 |
-| 読み取り専用対応のための「事前準備」| 不要 | 8月10日までに書き込み先の変更が必要 |
+| 移行元のアクセス権 | 読み/書き/削除可能<br/>但し、「データ移行終了の確認の作業」期間はアクセス不可 | 8月11日以降読み取り専用 |
+| 読み取り専用対応のための事前準備 | 不要 | 8月10日までに書き込み先の変更が必要 |
 | データ移行終了の確認の作業 | 旧領域内のデータへアクセス不可 | 不要 |
+
+
+## Q. グループ領域のデータ移行状況について知りたい {#q-about-the-status-of-the-data-migration-task}
 
 #### 基本的な方針 {#basic-strategy}
 
@@ -448,50 +438,8 @@ source ${MODULE_HOME}/etc/profile.d/modules.csh
 * 2021年6月28日までに利用者ポータルで申請したグループディスク量(以後、クォータ値と呼ぶ)が、**旧領域**のディスク使用量上限値として設定されています。
 	* 2021年6月28日以降、[グループディスクのクォータ値](faq.md#group-disk-quota-value)の変更申請の振る舞いが後述の通り変更されました。
 
-#### グループ領域の各ディレクトリのアクセス可否
 
-* 2021年8月10日までの旧領域
-
-	| ディレクトリ              | 読み取り | 書き込み | 削除 | 説明                         |
-	|:--                        |:--       |:--       |:--   |:--                           |
-	| `/groups1/gAA50NNN/`      | Yes      | Yes      | Yes  | 旧領域                       |
-	| `/groups2/gAA50NNN/`      | Yes      | Yes      | Yes  | `/groups/gAA50NNN/migrated_from_SFA_GPFS/`への参照 |
-	| `/fs3/d00[1-2]/gAA50NNN/` | Yes      | Yes      | Yes  | 旧領域                       |
-
-* 2021年8月11日以降の各ディレクトリ
-
-	| ディレクトリ                                                 | 読み取り | 書き込み | 削除    | 説明                            |
-	|:--                                                           |:--       |:--       |:--      |:--                              |
-	| `/groups/gAA50NNN/`                                          | Yes[^2]  | Yes[^2]  | Yes[^2] | 新領域                          |
-	| `/groups1/gAA50NNN/`                                         | Yes      | No       | No      | 旧領域                          |
-	| `/groups2/gAA50NNN/`                                         | Yes      | Yes      | Yes     | `/groups/gAA50NNN/migrated_from_SFA_GPFS/`への参照 |
-	| `/fs3/d00[1-2]/gAA50NNN/`                                    | Yes      | No       | No      | 旧領域                          |
-	| `/projects/d001/gAA50NNN/`                                   | Yes[^2]  | Yes[^2]  | Yes[^2] | d001利用者向けの新領域          |
-	| `/projects/datarepository/gAA50NNN/`                         | Yes[^2]  | Yes[^2]  | Yes[^2] | d002利用者向けの新領域          |
-	| `/groups/gAA50NNN/migrated_from_SFA_GPFS/`                   | No[^3]   | No[^3]   | No[^3]  | `/groups1/gAA50NNN/`の移行先    |
-	| `/projects/d001/gAA50NNN/migrated_from_SFA_GPFS/`            | No[^3]   | No[^3]   | No[^3]  | `/fs3/d001/gAA500NNN`の移行先   |
-	| `/projects/datarepository/gAA50NNN/migrated_from_SFA_GPFS/`  | No[^3]   | No[^3]   | No[^3]  | d002利用者の`/groups1/gAA500NNN`の移行先[^1] |
-	| `/projects/datarepository/gAA50NNN/migrated_from_SFA_GPFS3/` | No[^3]   | No[^3]   | No[^3]  | `/fs3/d002/gAA500NNN`の移行先[^1] |
-[^2]: 移行先ディレクトリを除く。
-[^3]: データ移行完了まで。
-
-
-#### データ移行完了後
-
-* データ移行完了後、**旧領域**上の`/groups[1-2]/gAA50NNN`および`/fs3/d00[1-2]/gAA50NNN/`にはアクセスできなくなります。
-* これらのパスは、**新領域**内の移行先ディレクトリへのシンボリックリンクに置き換えられ、**旧領域**に置かれていたデータは従来と同じパスでアクセス可能になります。
-* 移行作業完了後の旧領域ディレクトリ
-
-	| ディレクトリ          | 読み取り | 書き込み | 削除 | 参照先                                                       | 備考 |
-	|:--                    |:--       |:--       |:--   |:--                                                           |:--   |
-	| `/groups1/gAA50NNN/`  | Yes      | Yes      | Yes  | `/groups/gAA50NNN/migrated_from_SFA_GPFS/`                   |      |
-	| `/groups2/gAA50NNN/`  | Yes      | Yes      | Yes  | `/groups/gAA50NNN/migrated_from_SFA_GPFS/`                   |      |
-	| `/fs3/d001/gAA50NNN/` | Yes      | Yes      | Yes  | `/projects/d001/gAA50NNN/migrated_from_SFA_GPFS/`            |      |
-	| `/fs3/d002/gAA50NNN/` | Yes      | Yes      | Yes  | `/projects/datarepository/gAA50NNN/migrated_from_SFA_GPFS3/` |      |
-	| `/groups1/gAA50NNN/`  | Yes      | Yes      | Yes  | `/projects/datarepository/gAA50NNN/migrated_from_SFA_GPFS/`  | d002 利用者 [^1] |
-
-
-#### 整理期間
+#### 整理期間 {#reorganization-period}
 
 データ移行完了後は、移行期間中に必要なファイルを利用者自身で事前にコピーしたなどで重複したデータを削除/統合するための**整理期間**となります。
 利用者は、この**整理期間**中にデータを整理してください。
@@ -528,4 +476,77 @@ source ${MODULE_HOME}/etc/profile.d/modules.csh
 
 * 移行作業終了後は**旧領域**が利用できなくなり、**整理期間**終了後は**新領域**の利用上限値がクォータ値と同じ値に戻されます。
 * グループディスクの利用で消費する ABCI ポイントは従来同様、クォータ値を基に計算されます。
+
+
+## Q. グループ領域にアクセスできません {#q-why-unable-to-access-the-files-in-the-group-area}
+
+アクセスできないグループ領域が**旧領域**の場合、原因は2つ考えられます。下記のどちらかに該当しないか確認してください。
+
+#### 計算ノード(A) からは旧領域にアクセスできません
+
+計算ノード(A) は**旧領域**に接続されていません。よって、**旧領域**のデータには一切アクセスすることができません。
+必要なデータは、**新領域**に移動またはコピーしてからご利用ください。
+詳細は[計算ノード(A)と計算ノード(V)の違いが知りたい](faq.md#q-what-is-the-difference-between-compute-node-a-and-compute-node-v)を参照してください。
+
+#### 旧領域は読み取り専用です
+
+**旧領域**(`/groups1/`および`/fs3/`)は2021年8月11日以降読み取り専用に設定しました。
+今後は**新領域**(`/groups/`または`/projects/`)をご利用ください。
+尚、移行作業が完了しますと、**旧領域**とおなじパスで移行先ディレクトリを参照するシンボリックリンクが作成されるので書き込みも可能になります。
+`/groups2/`は移行作業が既に完了しているので、現在は従来と同じパスで読み書きができるようになっています。
+
+
+## Q. グループ領域の各ディレクトリのアクセス可否について知りたい {#q-about-access-rights-for-each-directory-in-the-group-area}
+
+#### 2021年8月10日までの旧領域
+
+| ディレクトリ              | 読み取り | 書き込み | 削除 | 説明                         |
+|:--                        |:--       |:--       |:--   |:--                           |
+| `/groups1/gAA50NNN/`      | Yes      | Yes      | Yes  | 旧領域                       |
+| `/groups2/gAA50NNN/`      | Yes      | Yes      | Yes  | `/groups/gAA50NNN/migrated_from_SFA_GPFS/`への参照 |
+| `/fs3/d00[1-2]/gAA50NNN/` | Yes      | Yes      | Yes  | 旧領域                       |
+
+#### 2021年8月11日以降、移行作業完了までの各ディレクトリ
+
+| ディレクトリ                                                 | 読み取り | 書き込み | 削除    | 説明                            |
+|:--                                                           |:--       |:--       |:--      |:--                              |
+| `/groups/gAA50NNN/`                                          | Yes[^2]  | Yes[^2]  | Yes[^2] | 新領域                          |
+| `/groups1/gAA50NNN/`                                         | Yes      | No       | No      | 旧領域                          |
+| `/groups2/gAA50NNN/`                                         | Yes      | Yes      | Yes     | `/groups/gAA50NNN/migrated_from_SFA_GPFS/`への参照 |
+| `/fs3/d00[1-2]/gAA50NNN/`                                    | Yes      | No       | No      | 旧領域                          |
+| `/projects/d001/gAA50NNN/`                                   | Yes[^2]  | Yes[^2]  | Yes[^2] | d001利用者向けの新領域          |
+| `/projects/datarepository/gAA50NNN/`                         | Yes[^2]  | Yes[^2]  | Yes[^2] | d002利用者向けの新領域          |
+| `/groups/gAA50NNN/migrated_from_SFA_GPFS/`                   | No[^3]   | No[^3]   | No[^3]  | `/groups1/gAA50NNN/`の移行先    |
+| `/projects/d001/gAA50NNN/migrated_from_SFA_GPFS/`            | No[^3]   | No[^3]   | No[^3]  | `/fs3/d001/gAA500NNN`の移行先   |
+| `/projects/datarepository/gAA50NNN/migrated_from_SFA_GPFS/`  | No[^3]   | No[^3]   | No[^3]  | d002利用者の`/groups1/gAA500NNN`の移行先[^1] |
+| `/projects/datarepository/gAA50NNN/migrated_from_SFA_GPFS3/` | No[^3]   | No[^3]   | No[^3]  | `/fs3/d002/gAA500NNN`の移行先[^1] |
+[^2]: 移行先ディレクトリを除く。
+[^3]: データ移行完了まで。
+
+#### データ移行完了後の各ディレクトリ
+
+* データ移行完了後、**旧領域**上の`/groups[1-2]/gAA50NNN`および`/fs3/d00[1-2]/gAA50NNN/`にはアクセスできなくなります。
+* これらのパスは、**新領域**内の移行先ディレクトリへのシンボリックリンクに置き換えられ、**旧領域**に置かれていたデータは従来と同じパスでアクセス可能になります。
+* 移行作業完了後の旧領域パス
+
+| ディレクトリ          | 読み取り | 書き込み | 削除 | 参照先                                                       | 備考      |
+|:--                    |:--       |:--       |:--   |:--                                                           |:--        |
+| `/groups1/gAA50NNN/`  | Yes      | No       | No   | `/groups/gAA50NNN/migrated_from_SFA_GPFS/`                   | [^4]      |
+| `/groups2/gAA50NNN/`  | Yes      | Yes      | Yes  | `/groups/gAA50NNN/migrated_from_SFA_GPFS/`                   |           |
+| `/fs3/d001/gAA50NNN/` | Yes      | No       | No   | `/projects/d001/gAA50NNN/migrated_from_SFA_GPFS/`            | [^5]      |
+| `/fs3/d002/gAA50NNN/` | Yes      | No       | No   | `/projects/datarepository/gAA50NNN/migrated_from_SFA_GPFS3/` | [^5]      |
+| `/groups1/gAA50NNN/`  | Yes      | No       | No   | `/projects/datarepository/gAA50NNN/migrated_from_SFA_GPFS/`  | d002 利用者 [^1][^5] |
+[^4]: /groups1/ 内の全データが移行完了後に書き込み/削除が可能になります。
+[^5]: /fs3/ 内の全データが移行完了後に書き込み/削除が可能になります。
+
+* 移行作業完了後の新領域ディレクトリ
+
+| ディレクトリ                                                 | 読み取り | 書き込み | 削除 | 説明                              |
+|:--                                                           |:--       |:--       |:--   |:--                                |
+| `/groups/gAA50NNN/`                                          | Yes      | Yes      | Yes  | 新領域                            |
+| `/groups/gAA50NNN/migrated_from_SFA_GPFS/`                   | Yes      | Yes      | Yes  | 旧領域ファイルからの移行先        |
+| `/projects/datarepository/gAA50NNN/`                         | Yes      | Yes      | Yes  | d002利用者向けの新領域            |
+| `/projects/d001/gAA50NNN/migrated_from_SFA_GPFS/`            | Yes      | Yes      | Yes  | `/fs3/d001/gAA500NNN`の移行先     |
+| `/projects/datarepository/gAA50NNN/migrated_from_SFA_GPFS/`  | Yes      | Yes      | Yes  | d002利用者の`/groups1/gAA500NNN`の移行先[^1] |
+| `/projects/datarepository/gAA50NNN/migrated_from_SFA_GPFS3/` | Yes      | Yes      | Yes  | `/fs3/d002/gAA500NNN`の移行先[^1] |
 
