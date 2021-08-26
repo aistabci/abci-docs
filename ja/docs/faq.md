@@ -389,6 +389,7 @@ source ${MODULE_HOME}/etc/profile.d/modules.csh
 
 * **旧領域**のデータを**新領域**に運用側がバックグラウンドでコピーします。全利用者データのコピー完了は2021年度末の予定です。
 * コピー完了後、シンボリックリンクの切り替えによって**旧領域**への参照を**新領域**への参照に書き換えます。
+* コピー完了後、利用者へ移行が完了した旨をメールでお知らせします。
 
 データ移行に用いるコマンドは以下の通りです。
 
@@ -419,18 +420,6 @@ source ${MODULE_HOME}/etc/profile.d/modules.csh
 * このパス`/groups[1-2]/gAA50NNN`は、**新領域**の`/groups/gAA50NNN/migrated_from_SFA_GPFS/`へのシンボリックリンクで実現されます。
 * データ移行完了後、**旧領域**上の`/groups[1-2]/gAA50NNN`にはアクセスできなくなります。
 
-データの移行先は以下の通りです。**旧領域**`/groups[1-2]/gAA50NNN`および`/fs3/d00[1-2]/gAA50NNN`の利用者は移行先のディレクトリを利用してください。
-
-| 移行元                | 移行先                                                       | 備考           |
-|:--                    |:--                                                           |:--             |
-| `/groups1/gAA50NNN/`  | `/groups/gAA50NNN/migrated_from_SFA_GPFS/`                   |                |
-| `/groups2/gAA50NNN/`  | `/groups/gAA50NNN/migrated_from_SFA_GPFS/`                   |                |
-| `/fs3/d001/gAA50NNN/` | `/projects/d001/gAA50NNN/migrated_from_SFA_GPFS/`            |                |
-| `/fs3/d002/gAA50NNN/` | `/projects/datarepository/gAA50NNN/migrated_from_SFA_GPFS/`  | d002利用者[^1] |
-| `/fs3/d002/gAA50NNN/` | `/projects/datarepository/gAA50NNN/migrated_from_SFA_GPFS3/` | [^1]           |
-
-[^1]: /fs3/d002利用者は移行元が複数あるため移行先のディレクトリがmigrated_from_SFA_GPFS/とmigrated_from_SFA_GPFS3/に別れています。
-
 ### グループディスク量の変更申請の振る舞い
 
 2021年6月28日までは利用者ポータルで申請したグループディスク量を**旧領域**のディスク使用量上限値として設定していました。
@@ -455,7 +444,7 @@ source ${MODULE_HOME}/etc/profile.d/modules.csh
 **データ移行完了後、一定の猶予期間を設けて、新領域のディスク使用量上限値を、利用者ポータルで申請したグループディスク量と同じ値に戻します。**
 
 猶予期間は以下の通りです。猶予期間を過ぎた後、ディスク使用量上限値を超えるデータが**新領域**に保存されている場合、書き込みができなくなります。
-不要なファイルを削除するか、利用量の追加申請を行ってください。
+不要なファイルを削除するか、[ABCI利用者ポータル](https://portal.abci.ai/user/)から利用グループ管理の一覧画面を開き、グループディスクの追加申請を行ってください。
 
 | グループ領域         | 猶予期間          |
 | --                   | --                |
@@ -499,6 +488,7 @@ source ${MODULE_HOME}/etc/profile.d/modules.csh
 | `/projects/datarepository/gAA50NNN/migrated_from_SFA_GPFS/`  | No[^3]   | No[^3]   | No[^3]  | d002利用者の`/groups1/gAA500NNN`の移行先[^1] |
 | `/projects/datarepository/gAA50NNN/migrated_from_SFA_GPFS3/` | No[^3]   | No[^3]   | No[^3]  | `/fs3/d002/gAA500NNN`の移行先[^1] |
 
+[^1]: /fs3/d002利用者は移行元が複数あるため移行先のディレクトリがmigrated_from_SFA_GPFS/とmigrated_from_SFA_GPFS3/に別れています。
 [^2]: 移行先ディレクトリを除きます。
 [^3]: データ移行完了後にアクセス可能になります。
 
