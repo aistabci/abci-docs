@@ -470,27 +470,27 @@ We will announce separately about the **Reorganization Period** to users of the 
 * ABCI points consumed by using Group disks are calculated based on the Quota Value as before. 
 
 
-## Q. Why unable to access the files in the Group Area
+## Q. Why unable to access the files in the Old Group Area
 
 If the inaccessible files are in the **Old Area**, there are two possible causes. Please check if any of the following applies. 
 
-#### The Old Area cannot be accessed from the Compute Node (A)
+* The Old Area cannot be accessed from the Compute Node (A)
 
-The **Old Area ** is not mounted by Compute Node (A). Therefore, you cannot access the data in the **Old Area** at all.
-Please move or copy the necessary data to the **New Area** before using them. 
-See [What is the difference between Compute Node (A) and Compute Node (V)](faq.md # q-what-is-the-difference-between-compute-node-a-and-compute-node-v) for details. 
+	The **Old Area ** is not mounted by Compute Node (A). Therefore, you cannot access the data in the **Old Area** at all.
+	Please move or copy the necessary data to the **New Area** before using them. 
+	See ["What is the difference between Compute Node (A) and Compute Node (V)"](faq.md#q-what-is-the-difference-between-compute-node-a-and-compute-node-v) for details. 
 
-#### Old Area is read-only
+* The Old Area is read-only
 
-The **Old Area** (`/groups1/` and `/fs3/`) has been set to read-only since August 11, 2021.
-Please use **New Area** (`/groups/` or `/projects/`) from now on.
-When the migration task is completed, a symlink that refers to the migration destination directory with the same path as the **Old Area** will be created, so you can write to them. 
-Since the migration task for `/groups2/` has already been completed, it is now possible to read and write with the same path as before. 
+	The **Old Area** (`/groups1/` and `/fs3/`) has been set to read-only since August 11, 2021.
+	Please use **New Area** (`/groups/` or `/projects/`) from now on.<br/>
+	After the migration task is completed, a symlink that refers to the migration destination directory with the same path as the **Old Area** will be created, so you can write to them. 
+	Since the migration task for `/groups2/` has already been completed, it is now possible to read and write with the same path as before. 
 
 
 ## Q. About Access Rights for Each Directory in the Group Area
 
-#### For **Old Areas** before Aug 10, 2021
+#### The **Old Areas** before Aug 10, 2021
 
 | Directories               | Read   | Write  | Delete | Descriptions                                          |
 |:--                        |:--     |:--     |:--     |:--                                                    |
@@ -498,7 +498,7 @@ Since the migration task for `/groups2/` has already been completed, it is now p
 | `/groups2/gAA50NNN/`      | Yes    | Yes    | Yes    | Symlink to `/groups/gAA50NNN/migrated_from_SFA_GPFS/` |
 | `/fs3/d00[1-2]/gAA50NNN/` | Yes    | Yes    | Yes    | Old Area                                              |
 
-#### For each directories after aug 11, 2021
+#### Directories after Aug 11, 2021 until the Data Migration task is completed
 
 | Directories                                                  | Read    | Write   | Delete  | Descriptions                     |
 |:--                                                           |:--      |:--      |:--      |:--                               |
@@ -518,10 +518,10 @@ Since the migration task for `/groups2/` has already been completed, it is now p
 #### After the Data Migration
 
 * After the Data Migration is completed, you will not be able to access `/groups[1-2]/gAA50NNN` or `/fs3/d00[1-2]/gAA50NNN/` on the **Old Area**. 
-* These paths will be replaced with symlinks to the destination directories in the **New Area**, and the data located in the **Old Area** will be accessible with the same path as before. 
-* Accessibilities of the paths in **Old Area** after migration task is completed
+* These paths will be replaced with symlinks to the destination directory in the **New Area** after all the data in each **Old Area** has been migrated, making them accessible with the same path as before. 
+* Access Rights of the paths to **Old Area** after the Data Mmigration task is completed
 
-| Directory             | Read | Write | Delete | Reference to                                      | Remarks     |
+| Paths                 | Read | Write | Delete | Reference to                                      | Remarks     |
 |:--                    |:- -  |:--    |:--     |:--                                                |:--          |
 | `/groups1/gAA50NNN/`  | Yes  | No    | No     | `/groups/gAA50NNN/migrate_from_SFA_GPFS/`         | [^4]        |
 | `/groups2/gAA50NNN/`  | Yes  | Yes   | Yes    | `/groups/gAA50NNN/migrate_from_SFA_GPFS/`         |             |
@@ -531,7 +531,7 @@ Since the migration task for `/groups2/` has already been completed, it is now p
 [^4]: Write/Delete will be available after migration of all data from /groups1/ completed.
 [^5]: Write/Delete will be available after migration of all data from /fs3/ completed.
 
-* Accessibilities of the directories in **New Area** after migration task is completed
+* Access Rights of the directories in **New Area** after the Data Migration task is completed
 
 | Directories                                                  | Read | Write | Delete | Descriptions                           |
 |:--                                                           |:--   |:--    |:--     |:--                                     |
