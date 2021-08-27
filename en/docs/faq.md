@@ -442,11 +442,11 @@ In addition, For the groups newly created in FY2021, only **New Area** will be a
 * ABCI points consumed by using Group disks are calculated based on the Quota Value as before. 
 
 
-### Reorganization Period
+### After the Migratio Task {#reorganization-period}
 
 After the data migration is completed, it will be a **Reorganization Period** for deleting/merging duplicated data by copying the necessary files in advance by the user own during the migration period. Users should reorganize their data during this **Reorganization Period**.
 After the **Reorganization Period**, the usage upper limit of the **New Area** will be set to the same value as the quota value.<br/>
-The **Reorganization Period** for the `/groups2/` users is until the end of September 2021. If data exceeding the Quota Value exists in the **New Area** after October, it will not be possible to write. Delete unnecessary files (duplicated files, etc.) or apply for additional quota.<br/>
+The **Reorganization Period** for the `/groups2/` users is until the end of September 2021. If data exceeding the Quota Value exists in the **New Area** after October, it will not be possible to write. Delete unnecessary files (duplicated files, etc.) or open the list page of User Group Management from [ABCI User Portal](https://portal.abci.ai/user/?lang=en) and apply for Add Group Disk. <br/>
 We will announce separately about the **Reorganization Period** to users of the other **Old Areas**. 
 
 
