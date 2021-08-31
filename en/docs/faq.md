@@ -405,13 +405,13 @@ The following command is executed for verification and confirmation after data m
 ### The New Area /projects
 
 * Some users who used the **Old Area `/fs3/`** has been assigned the **New Area `/projects/`** in mid-July. 
-* The destination directories from **Old Area** `/fs3/d00[1-2]/gAA50NNN` are different from `/groups/gAA50NNN. See [Q. About Access Rights for Each Directory in the Group Area](faq.md#q-about-access-rights-for-each-directory-in-the-group-area) for detail about each destination directories. 
 
 ### The Old Area /groups[1-2]/gAA50NNN and /fs3/d00[1-2]/gAA50NNN 
 
 * The **Old Areas** `/groups1/gAA50NNN` and `/fs3/d00[1-2]/gAA50NNN` have been set to read-only after August 11, 2021. You should use the **New Area** from now on. 
 * After the Data Migration is completed, you will not be able to access `/groups[1-2]/gAA50NNN` or `/fs3/d00[1-2]/gAA50NNN/` on the **Old Area**. 
 * These paths will be replaced with symlinks to the destination directory in the **New Area** after all the data in each **Old Area** has been migrated, making them accessible with the same path as before. 
+* The destination directories from **Old Area** `/fs3/d00[1-2]/gAA50NNN` are different from `/groups/gAA50NNN. See [Q. About Access Rights for Each Directory in the Group Area](faq.md#q-about-access-rights-for-each-directory-in-the-group-area) for detail about each destination directories.
 
 
 ### Behavior of temporary changing about request of add or reduce Group Disk amount during data Migration period
@@ -454,26 +454,13 @@ With the expansion of the storage system in FY2021, we are migrating data from t
 | `/groups2/gAA50NNN/` | Completed in July 1, 2021 |
 | `/fs3`               | Start in Mid Oct, 2021    |
 
+## Q. How to write data to the Old Area
 
-## Q. Why unable to access the files in the Old Group Area
+The **Old Area** `/groups1` and `/fs3` used until FY 2020 were changed to read-only on August 11, 2021, to improve the efficiency of data migration. If you want to write data, please use `/groups` and `/projects` in the **New Area**.
 
-If the inaccessible files are in the **Old Area**, there are two possible causes. Please check if any of the following applies. 
+The data migration of the **Old Area** `/groups2` has been completed, and a symbolic link to the **New Area** has been set. Therefore, it is possible to write using the same path as before.
 
-* The Old Area cannot be accessed from the Compute Node (A)
-
-	The **Old Area ** is not mounted by Compute Node (A). Therefore, you cannot access the data in the **Old Area** at all.
-	Please move or copy the necessary data to the **New Area** before using them. 
-	See ["Q. What is the difference between Compute Node (A) and Compute Node (V)"](faq.md#q-what-is-the-difference-between-compute-node-a-and-compute-node-v) for details. 
-
-* The Old Area is read-only
-
-	The **Old Area** (`/groups1/` and `/fs3/`) has been set to read-only since August 11, 2021.
-	Please use **New Area** (`/groups/` or `/projects/`) from now on.<br/>
-	After the migration task is completed, a symlink that refers to the migration destination directory with the same path as the **Old Area** will be created, so you can write to them. 
-	Since the migration task for `/groups2/` has already been completed, it is now possible to read and write with the same path as before. 
-	See ["Q. What are the new Group Area and data migration?"](faq.md#q-what-are-the-new-group-area-and-data-migration) for details. 
-
-
+For more information on data migration, see [Q. What are the new Group Area and data migration?](faq.md#q-what-are-the-new-group-area-and-data-migration).
 
 ## Q. About Access Rights for Each Directory in the Group Area
 
@@ -491,6 +478,7 @@ The Access Rights for each directory in the Group Area during data migration tas
 | `/projects/d001/gAA50NNN/migrated_from_SFA_GPFS/`            | No[^3]  | No[^3]  | No[^3]  | Destination from `/fs3/d001/`    |
 | `/projects/datarepository/gAA50NNN/migrated_from_SFA_GPFS/`  | No[^3]  | No[^3]  | No[^3]  | Destination from d002 users' /groups1/gAA50NNN/ [^1] |
 | `/projects/datarepository/gAA50NNN/migrated_from_SFA_GPFS3/` | No[^3]  | No[^3]  | No[^3]  | Destination from /fs3/d002/gAA50NNN/ [^1] |
+
 [^1]: As /fs3/d002 users have multiple migration sources, there are two migration destination directories, migrated_from_SFA_GPFS/ and migrated_from_SFA_GPFS3/ . 
 [^2]: except the Destination directories. 
 [^3]: until the data migration is complated. 

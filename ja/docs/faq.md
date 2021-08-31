@@ -419,7 +419,7 @@ source ${MODULE_HOME}/etc/profile.d/modules.csh
 * データ移行完了後、**旧領域**に置かれていたデータは、従来と同じパス`/groups[1-2]/gAA50NNN`でアクセス可能になります。
 * このパス`/groups[1-2]/gAA50NNN`は、**新領域**の`/groups/gAA50NNN/migrated_from_SFA_GPFS/`へのシンボリックリンクで実現されます。
 * データ移行完了後、**旧領域**上の`/groups[1-2]/gAA50NNN`にはアクセスできなくなります。
-* 旧領域`/fs3/d00[1-2]/gAA50NNN`はデータ移行先のディレクトリ名が旧領域`/groups[1-2]/gAA50NNN`とは異なります。`/fs3/d00[1-2]/gAA50NNN`のデータ移行先のディレクトリ名については、[Q. データ移行中のグループ領域のアクセス権限が知りたい](faq.md#q-what-are-the-permissions-of-the-group-area-during-data-migration)を参照してください。
+* 旧領域`/fs3/d00[1-2]/gAA50NNN`はデータ移行先のディレクトリ名が旧領域`/groups[1-2]/gAA50NNN`とは異なります。`/fs3/d00[1-2]/gAA50NNN`のデータ移行先のディレクトリ名については、FAQの[データ移行中のグループ領域のアクセス権限が知りたい](faq.md#q-about-access-rights-for-each-directory-in-the-group-area)を参照してください。
 
 ### クォータ値と使用量上限値：データ移行中
 
@@ -466,16 +466,16 @@ source ${MODULE_HOME}/etc/profile.d/modules.csh
 | `/groups2/gAA50NNN/`    | 2021年7月1日に完了 |
 | `/fs3`                  | 2021年10月開始予定 |
 
-## Q. グループ領域にデータが書き込めないのはなぜですか?
+## Q. 旧領域にデータを書き込む方法が知りたい
 
-2020年度まで使用していたグループ領域(`/groups1`、`/fs3`)は、データ移行の効率化を図るため、2021年8月11日に**読み取り専用**に変更しました。
-データの書き込みを行いたい場合は、新しいグループ領域(`/groups`)を利用してください。
+2020年度まで使用していたグループ領域(**旧領域**)の`/groups1`、`/fs3`は、データ移行の効率化を図るため、2021年8月11日に**読み取り専用**に変更しました。
+データの書き込みを行いたい場合は、新しいグループ領域(**新領域**)の`/groups`、`/projects`を利用してください。
 
-なお、計算ノード(A)からは新しいグループ領域(`/groups`)のみアクセスできます。2020年度まで使用していたグループ領域(`/groups1`、`/groups2`、`/fs3`)はアクセスできません。
+なお、旧領域の`/groups2`についてはデータ移行が完了し、現在は**新領域**へのシンボリックリンクが設定されています。そのため、従来通りのパスで書き込みができるようになっています。
 
-データ移行については、 [Q. グループ領域のデータ移行について知りたい](faq.md#q-what-are-the-new-group-area-and-data-migration)を参照してください。
+データ移行については、 FAQの[グループ領域のデータ移行について知りたい](faq.md#q-what-are-the-new-group-area-and-data-migration)を参照してください。
 
-## Q. データ移行中のグループ領域のアクセス権限が知りたい {#q-what-are-the-permissions-of-the-group-area-during-data-migration}
+## Q. データ移行中のグループ領域のアクセス権限が知りたい {#q-about-access-rights-for-each-directory-in-the-group-area}
 
 データ移行中のグループ領域のアクセス権限は以下の通りです。
 
