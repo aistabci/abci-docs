@@ -414,24 +414,25 @@ The following command is executed for verification and confirmation after data m
 * The destination directories from **Old Area** `/fs3/d00[1-2]/gAA50NNN` are different from `/groups/gAA50NNN. See [Q. About Access Rights for Each Directory in the Group Area](faq.md#q-about-access-rights-for-each-directory-in-the-group-area) for detail about each destination directories.
 
 
-### Behavior of temporary changing about request of add or reduce Group Disk amount during data Migration period
+### the Quota Value and Upper Limit of the Group Disk Amount: During the Data Migration Task
 
-* Until June 27, 2021, the Group Disk amount applied on the User Portal (hereinafter referred to as the Quota Value) got be the upper limit of the disk usage of the **Old Area**, and twice of that value got be the upper limit of the disk usage of the **New Area**. After June 28, the behavior of the request to change the Quota Value of the Group Disk during the migration period has been changed as follows.
+Upper limit of the Group Disk amount used to be set to same value as applied in the User Portal (hereinafter referred to as the Quota Value), before the data migration task.
+After starting the data migration task, until June 27, 2021, the Quota Value got be the upper limit of the disk usage of the **Old Area**, and twice of that value got be the upper limit of the disk usage of the **New Area**.
+After June 28, 2021, the behavior of the request to change the Quota Value of the Group Disk during the migration period has been changed as follows. 
 
-	#### Increasing the Quota Value
-	* Even if you apply to increase the Quota Value, the usage upper limit of the **Old Area** will not be increased. 
-	* The usage upper limit of the **New Area** (/groups/gAA50NNN) is set to "the value set at that time" or "twice of the new Quota Value", whichever is greater. 
+#### Increasing the Quota Value
+* Even if you apply to increase the Quota Value, the usage upper limit of the **Old Area** will not be increased. 
+* The usage upper limit of the **New Area** (/groups/gAA50NNN) is set to "the value set at that time" or "twice of the new Quota Value", whichever is greater. 
 
-	#### Decreasing the Quota Value
-	* When you apply to decrease the Quota Value, it can be decreased only when the usage amount of the **Old Area** (shown as "used" with the show_quota command) is less than the new Quota Value. 
-	* After application, the usage upper limit of the **Old Area** will be decreased to the same value as the Quota Value.
-	* The usage upper limit of the **New Area** will not be decreased. 
+#### Decreasing the Quota Value
+* When you apply to decrease the Quota Value, it can be decreased only when the usage amount of the **Old Area** (shown as "used" with the show_quota command) is less than the new Quota Value. 
+* After application, the usage upper limit of the **Old Area** will be decreased to the same value as the Quota Value.
+* The usage upper limit of the **New Area** will not be decreased. 
 
-* After the migration task, the **Old Area** will no longer be available, and after the **Reorganization Period**, the usage limit of the **New Area** will be set back to the same value as the Quota Value. 
-* ABCI points consumed by using Group disks are calculated based on the Quota Value as before. 
+ABCI points consumed by using Group disks are calculated based on the Quota Value as before. 
 
 
-### About the upper limit of disk usage
+### the Quota Value and Upper Limit of the Group Disk Amount: After the Data Migration Task
 
 During the data migration task, the value twice the Group Disk amount applied on the User Portal is set as the upper limit of the disk usage of the **New Area**.  **After the data migration is completed, a certain Reorganization Period will be set to return the upper limit of the disk usage of the New Area to the same value as the Quota Value amount applied on the User Portal.** 
 
