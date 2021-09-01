@@ -467,11 +467,11 @@ With the expansion of the storage system in FY2021, we are migrating data from t
 
 ## Q. Why cannot I write data to the Old Area
 
-The **Old Area** `/groups1` and `/fs3` used until FY 2020 were changed to read-only on August 11, 2021, to improve the efficiency of data migration. If you want to write data, please use `/groups` and `/projects` in the **New Area**.
+The **Old Area** `/groups1` and `/fs3` used until FY 2020 were changed to read-only on August 11, 2021, to improve the efficiency of data migration. If you want to write data, please use `/groups` and `/projects` in the **New Area**. 
 
-The data migration of the **Old Area** `/groups2` has been completed, and a symbolic link to the **New Area** has been set. Therefore, it is possible to write using the same path as before.
+The data migration of the **Old Area** `/groups2` has been completed, and a symlink to the **New Area** has been set. Therefore, it is possible to write using the same path as before. 
 
-For more information on data migration, see [Q. What are the new Group Area and data migration?](faq.md#q-what-are-the-new-group-area-and-data-migration).
+For more information on data migration, see [Q. What are the new Group Area and data migration?](faq.md#q-what-are-the-new-group-area-and-data-migration). 
 
 ## Q. About Access Rights for Each Directory in the Group Area
 
