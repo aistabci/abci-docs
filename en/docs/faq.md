@@ -384,6 +384,17 @@ The following is about description of the data migration.
 
 * The ABCI operation team will copy all the files in the **Old Area** to the **New Area** in the background. The migration of all group data is scheduled to be completed by the end of FY2021. 
 * After the copy is completed, a symlink to the migration destination in the **New Area** will be created and you can refer to it with the same path as the **Old Area**. 
+* The sources and the destinations of data migration are as follows. 
+
+	| Source                | Destination                                                 | Remarks              |
+	|:--                    |:--                                                          |:--                   |
+	| `/groups1/gAA50NNN/`  | `/groups/gAA50NNN/migrated_from_SFA_GPFS/`                  |                      |
+	| `/groups2/gAA50NNN/`  | `/groups/gAA50NNN/migrated_from_SFA_GPFS/`                  | Completed            |
+	| `/fs3/d001/gAA50NNN/` | `/projects/d001/gAA50NNN/migrated_from_SFA_GPFS/`           |                      |
+	| `/groups1/gAA50NNN/`  | `/projects/datarepository/gAA50NNN/migrated_from_SFA_GPFS/` | for d002 users' [^1] |
+	| `/fs3/d002/gAA50NNN/` | `/projects/datarepository/gAA50NNN/migrated_from_SFA_GPFS3/` | [^1]                |
+[^1]: As /fs3/d002 users have multiple migration sources, there are two migration destination directories, migrated_from_SFA_GPFS/ and migrated_from_SFA_GPFS3/ . 
+
 * After completion, we will notify the user by email that the migration has been completed. 
 
 
@@ -396,25 +407,23 @@ The following command is executed for verification and confirmation after data m
 # rsync -avH --delete /{Old Area}/gAA50NNN/ /{New Area}/gAA50NNN/migrated_from_SFA_GPFS/ 
 ```
 
-### The New Area /groups/gAA50NNN 
+### The New Area
 
-* The files in the **Old Area** will be copied to the **New Area** `/groups/gAA50NNN/migrated_from_SFA_GPFS/`. Note that the users cannot access the copied data under that directory until the migration finishes.
-* The area other than the destination directory in the **New Area** can be freely used.
-* Disk usage will increase as data is copied. For this reason, the limit of the storage usage for the **New Area** is set to be twice the quota value, which is the group disk quantity value applied in the ABCI User Portal. This is a temporal treatment. After the migration, the limit of the storage usage is set to the same value as the quota value in the ABCI User Portal, after the grace period. 
+* The user cannot access to the above migration destination directory in the **New Area** until the data migration is completed. 
+* The area other than the destination directory in the **New Area** can be freely used. 
+* Disk usage will increase as data is copied. For this reason, the limit of the storage usage for the **New Area** is set to be twice the quota value, which is the group disk quantity value applied in the ABCI User Portal. This is a temporal treatment. After the migration, the limit of the storage usage is set to the same value as the quota value in the ABCI User Portal, after the certain grace period. 
 
-### The New Area /projects
-
-* Some users who used the **Old Area `/fs3/`** has been assigned the **New Area `/projects/`** in mid-July. 
 
 ### The Old Area /groups[1-2]/gAA50NNN and /fs3/d00[1-2]/gAA50NNN 
 
 * The **Old Areas** `/groups1/gAA50NNN` and `/fs3/d00[1-2]/gAA50NNN` have been set to read-only after August 11, 2021. You should use the **New Area** from now on. 
 * After the Data Migration is completed, you will not be able to access `/groups[1-2]/gAA50NNN` or `/fs3/d00[1-2]/gAA50NNN/` on the **Old Area**. 
 * These paths will be replaced with symlinks to the destination directory in the **New Area** after all the data in each **Old Area** has been migrated, making them accessible with the same path as before. 
-* The destination directories from **Old Area** `/fs3/d00[1-2]/gAA50NNN` are different from `/groups/gAA50NNN. See [Q. About Access Rights for Each Directory in the Group Area](faq.md#q-about-access-rights-for-each-directory-in-the-group-area) for detail about each destination directories.
 
 
-### The Quota Value and the Limit of the Storage Usage: During the Data Migration
+## Q. About the Quota Value and the Limit of the Storage Usage
+
+### During the Data Migration
 
 Before the data migration started, the limit of the storage usage (shown as "limit" with the show_quota command) has been set to the same value of the quota value, which is the group disk quantity value applied in the ABCI User Portal.
 After the data migration started, the relationship between the quota value and the the limit of the storage usage was changed.
@@ -427,17 +436,17 @@ After June 28, 2021, the relationship was changed as follows.
 
 #### Decreasing the Quota Value
 * When you apply to decrease the quota value, it can be decreased only when the usage amount of the **Old Area** (shown as "used" with the show_quota command) is less than the new quota value. 
-* After application, the limit of the storage usage of the **Old Area** will be decreased to the same value as the quota value.
+* After application, the limit of the storage usage of the **Old Area** will be decreased to the same value as the quota value. 
 * The limit of the storage usage of the **New Area** will not be decreased. 
 
 ABCI points consumed by using Group disks are calculated based on the quota value as before. 
 
 
-### The Quota Value and the Limit of the Storage Usage: After the Data Migration completed
+### After the Data Migration completed
 
 During the data migration task, the value twice or larger the quota value is set as the limit of the storage usage of the **New Area**.  **After the data migration is completed, the limit of the storage usage for the New Area is going to be set to the same value as the quota value after a grace period.** 
 
-The grace period is as follows. After the grace period, if data exceeding the quota value exists in the **New Area**, you cannot write onto the  **New Area**. Please delete unnecessary files (duplicated files, etc.) or apply to increase the quota value by accessing [ABCI User Portal](https://portal.abci.ai/user/?lang=en) and access "User Group Management".  
+The grace period is as follows. After the grace period, if data exceeding the quota value exists in the **New Area**, you cannot write onto the  **New Area**. Please delete unnecessary files (duplicated files, etc.) or apply to increase the quota value by accessing [ABCI User Portal](https://portal.abci.ai/user/?lang=en) and access "User Group Management". 
 
 | Group Area           | Grace Period        |
 |:--                   |:--                           |
@@ -456,7 +465,7 @@ With the expansion of the storage system in FY2021, we are migrating data from t
 | `/groups2/gAA50NNN/` | Completed in July 1, 2021 |
 | `/fs3`               | Start in Mid Oct, 2021    |
 
-## Q. How to write data to the Old Area
+## Q. Why cannot I write data to the Old Area
 
 The **Old Area** `/groups1` and `/fs3` used until FY 2020 were changed to read-only on August 11, 2021, to improve the efficiency of data migration. If you want to write data, please use `/groups` and `/projects` in the **New Area**.
 
