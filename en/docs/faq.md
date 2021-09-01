@@ -416,7 +416,7 @@ The following command is executed for verification and confirmation after data m
 
 ### the Quota Value and Upper Limit of the Group Disk Amount: During the Data Migration Task
 
-Upper limit of the Group Disk amount used to be set to same value as applied in the User Portal (hereinafter referred to as the Quota Value), before the data migration task.
+Upper limit of the Group Disk amount (shown as "limit" with the show_quota command) used to be set to same value as applied in the User Portal (hereinafter referred to as the Quota Value), before the data migration task.
 After starting the data migration task, until June 27, 2021, the Quota Value got be the upper limit of the disk usage of the **Old Area**, and twice of that value got be the upper limit of the disk usage of the **New Area**.
 After June 28, 2021, the behavior of the request to change the Quota Value of the Group Disk during the migration period has been changed as follows. 
 
@@ -426,7 +426,7 @@ After June 28, 2021, the behavior of the request to change the Quota Value of th
 
 #### Decreasing the Quota Value
 * When you apply to decrease the Quota Value, it can be decreased only when the usage amount of the **Old Area** (shown as "used" with the show_quota command) is less than the new Quota Value. 
-* After application, the usage upper limit of the **Old Area** will be decreased to the same value as the Quota Value.
+* After application, the usage upper limit of the **Old Area** will be decreased to the same value as the Quota Value. 
 * The usage upper limit of the **New Area** will not be decreased. 
 
 ABCI points consumed by using Group disks are calculated based on the Quota Value as before. 
