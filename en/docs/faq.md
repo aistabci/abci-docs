@@ -475,7 +475,7 @@ For more information on data migration, see [Q. What are the new Group Area and 
 
 ## Q. About Access Rights for Each Directory in the Group Area
 
-The Access Rights for each directory in the Group Area during data migration task are as follows. 
+#### The Access Rights for each directory in the Group Area during data migration
 
 | Directories                                                  | Read    | Write   | Delete  | Descriptions                     |
 |:--                                                           |:--      |:--      |:--      |:--                               |
@@ -493,4 +493,32 @@ The Access Rights for each directory in the Group Area during data migration tas
 [^1]: As /fs3/d002 users have multiple migration sources, there are two migration destination directories, migrated_from_SFA_GPFS/ and migrated_from_SFA_GPFS3/ . 
 [^2]: except the Destination directories. 
 [^3]: until the data migration is complated. 
+
+#### The Access Rights for each directory in the Group Area After data migration
+
+* After the Data Migration is completed, you will not be able to access `/groups[1-2]/gAA50NNN` or `/fs3/d00[1-2]/gAA50NNN/` on the **Old Area**. 
+* These paths will be replaced with symlinks to the destination directory in the **New Area** after all the data in each **Old Area** has been migrated, making them accessible with the same path as before. 
+* Access Rights of the paths to **Old Area** after the Data Mmigration task is completed
+
+| Paths                 | Read | Write | Delete | Reference to                                      | Remarks     |
+|:--                    |:- -  |:--    |:--     |:--                                                |:--          |
+| `/groups1/gAA50NNN/`  | Yes  | No    | No     | `/groups/gAA50NNN/migrate_from_SFA_GPFS/`         | [^4]        |
+| `/groups2/gAA50NNN/`  | Yes  | Yes   | Yes    | `/groups/gAA50NNN/migrate_from_SFA_GPFS/`         |             |
+| `/fs3/d001/gAA50NNN/` | Yes  | No    | No     | `/projects/d001/gAA50NNN/migrated_from_SFA_GPFS/` | [^5]        |
+| `/fs3/d002/gAA50NNN/` | Yes  | No    | No     | `/projects/datarepository/gAA50NNN/migrated_from_SFA_GPFS3/` | [^5] |
+| `/groups1/gAA50NNN/`  | Yes  | No    | No     | `/projects/datarepository/gAA50NNN/migrated_from_SFA_GPFS/`  | for d002 users' [^1][^5] |
+[^4]: Write/Delete will be available after migration of all data from /groups1/ completed.
+[^5]: Write/Delete will be available after migration of all data from /fs3/ completed.
+
+* Access Rights of the directories in **New Area** after the Data Migration task is completed
+
+| Directories                                                  | Read | Write | Delete | Descriptions                           |
+|:--                                                           |:--   |:--    |:--     |:--                                     |
+| `/groups/gAA50NNN/`                                          | Yes  | Yes   | Yes    | New Area                               |
+| `/groups/gAA50NNN/migrated_from_SFA_GPFS/`                   | Yes  | Yes   | Yes    | Destination from the Old Area          |
+| `/projects/d001/gAA50NNN/`                                   | Yes  | Yes   | Yes    | New Are for d001 users            |
+| `/projects/d001/gAA50NNN/migrated_from_SFA_GPFS/`            | Yes  | Yes   | Yes    | Destination from `/fs3/d001/gAA500NNN` |
+| `/projects/datarepository/gAA50NNN/`                         | Yes  | Yes   | Yes    | New Are for d002 users                 |
+| `/projects/datarepository/gAA50NNN/migrated_from_SFA_GPFS/`  | Yes  | Yes   | Yes    | Destination from `/groups1/gAA500NNN` for d002 users[^1] |
+| `/projects/datarepository/gAA50NNN/migrated_from_SFA_GPFS3/` | Yes  | Yes   | Yes    | Destination from `/fs3/d002/gAA500NNN`[^1] |
 

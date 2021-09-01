@@ -486,9 +486,9 @@ source ${MODULE_HOME}/etc/profile.d/modules.csh
 データ移行については、 FAQの[グループ領域のデータ移行について知りたい](faq.md#q-what-are-the-new-group-area-and-data-migration)を参照してください。
 
 
-## Q. データ移行中のグループ領域のアクセス権限が知りたい {#q-about-access-rights-for-each-directory-in-the-group-area}
+## Q. データ移行中とデータ移行完了後のグループ領域のアクセス権限が知りたい {#q-about-access-rights-for-each-directory-in-the-group-area}
 
-データ移行中のグループ領域のアクセス権限は以下の通りです。
+#### データ移行中のグループ領域の各ディレクトリ
 
 | ディレクトリ                                                 | 読み取り | 書き込み | 削除    | 説明                            |
 |:--                                                           |:--       |:--       |:--      |:--                              |
@@ -506,4 +506,32 @@ source ${MODULE_HOME}/etc/profile.d/modules.csh
 [^1]: /fs3/d002利用者は移行元が複数あるため移行先のディレクトリがmigrated_from_SFA_GPFS/とmigrated_from_SFA_GPFS3/に別れています。
 [^2]: 移行先ディレクトリを除きます。
 [^3]: データ移行完了後にアクセス可能になります。
+
+#### データ移行完了後のグループ領域の各ディレクトリ
+
+* データ移行完了後、**旧領域**上の`/groups[1-2]/gAA50NNN`および`/fs3/d00[1-2]/gAA50NNN/`にはアクセスできなくなります。
+* これらのパスは、それぞれの**旧領域**内の全データが移行完了後、**新領域**内の移行先ディレクトリへのシンボリックリンクに置き換えられ、従来と同じパスでアクセス可能になります。
+* 移行作業完了後の旧領域パス
+
+| パス                  | 読み取り | 書き込み | 削除 | 参照先                                                       | 備考      |
+|:--                    |:--       |:--       |:--   |:--                                                           |:--        |
+| `/groups1/gAA50NNN/`  | Yes      | No       | No   | `/groups/gAA50NNN/migrated_from_SFA_GPFS/`                   | [^4]      |
+| `/groups2/gAA50NNN/`  | Yes      | Yes      | Yes  | `/groups/gAA50NNN/migrated_from_SFA_GPFS/`                   |           |
+| `/fs3/d001/gAA50NNN/` | Yes      | No       | No   | `/projects/d001/gAA50NNN/migrated_from_SFA_GPFS/`            | [^5]      |
+| `/fs3/d002/gAA50NNN/` | Yes      | No       | No   | `/projects/datarepository/gAA50NNN/migrated_from_SFA_GPFS3/` | [^5]      |
+| `/groups1/gAA50NNN/`  | Yes      | No       | No   | `/projects/datarepository/gAA50NNN/migrated_from_SFA_GPFS/`  | d002 利用者 [^1][^5] |
+[^4]: /groups1/ 内の全データが移行完了後に書き込み/削除が可能になります。
+[^5]: /fs3/ 内の全データが移行完了後に書き込み/削除が可能になります。
+
+* 移行作業完了後の新領域ディレクトリ
+
+| ディレクトリ                                                 | 読み取り | 書き込み | 削除 | 説明                              |
+|:--                                                           |:--       |:--       |:--   |:--                                |
+| `/groups/gAA50NNN/`                                          | Yes      | Yes      | Yes  | 新領域                            |
+| `/groups/gAA50NNN/migrated_from_SFA_GPFS/`                   | Yes      | Yes      | Yes  | 旧領域ファイルからの移行先        |
+| `/projects/d001/gAA50NNN/`                                   | Yes      | Yes      | Yes  | d001利用者向けの新領域            |
+| `/projects/d001/gAA50NNN/migrated_from_SFA_GPFS/`            | Yes      | Yes      | Yes  | `/fs3/d001/gAA500NNN`の移行先     |
+| `/projects/datarepository/gAA50NNN/`                         | Yes      | Yes      | Yes  | d002利用者向けの新領域            |
+| `/projects/datarepository/gAA50NNN/migrated_from_SFA_GPFS/`  | Yes      | Yes      | Yes  | d002利用者の`/groups1/gAA500NNN`の移行先[^1] |
+| `/projects/datarepository/gAA50NNN/migrated_from_SFA_GPFS3/` | Yes      | Yes      | Yes  | `/fs3/d002/gAA500NNN`の移行先[^1] |
 
