@@ -400,7 +400,7 @@ The following command is executed for verification and confirmation after data m
 
 * The files in the **Old Area** will be copied to the **New Area** `/groups/gAA50NNN/migrated_from_SFA_GPFS/`. Note that the users cannot access the copied data under that directory until the migration finishes.
 * The area other than the destination directory in the **New Area** can be freely used.
-* Disk usage will increase as data is copied. For this reason, the limit of the storage usage for the **New Area** is set to be twice the quota value, which is the group disk quantity value applied in the ABCI User Portal. This is a temporal treatment. After the migration, the limit of the storage usage is set to the same value as the quota value in the ABCI User Portal, after the Reorganization Period. 
+* Disk usage will increase as data is copied. For this reason, the limit of the storage usage for the **New Area** is set to be twice the quota value, which is the group disk quantity value applied in the ABCI User Portal. This is a temporal treatment. After the migration, the limit of the storage usage is set to the same value as the quota value in the ABCI User Portal, after the grace period. 
 
 ### The New Area /projects
 
@@ -414,7 +414,7 @@ The following command is executed for verification and confirmation after data m
 * The destination directories from **Old Area** `/fs3/d00[1-2]/gAA50NNN` are different from `/groups/gAA50NNN. See [Q. About Access Rights for Each Directory in the Group Area](faq.md#q-about-access-rights-for-each-directory-in-the-group-area) for detail about each destination directories.
 
 
-### The Quota Value and the Limit of the Storage Usage: During the Data Migration Task
+### The Quota Value and the Limit of the Storage Usage: During the Data Migration
 
 Before the data migration started, the limit of the storage usage (shown as "limit" with the show_quota command) has been set to the same value of the quota value, which is the group disk quantity value applied in the ABCI User Portal.
 After the data migration started, the relationship between the quota value and the the limit of the storage usage was changed.
@@ -422,22 +422,22 @@ By June 27, 2021, the limit of the storage usage for the **New Area** is set to 
 After June 28, 2021, the relationship was changed as follows. 
 
 #### Increasing the Quota Value
-* Even if you apply to increase the Quota Value, the limit of the storage usage of the **Old Area** will not be increased. 
-* The limit of the storage usaget of the **New Area** (/groups/gAA50NNN) is set to "the value set at that time" or "twice of the new Quota Value", whichever is greater. 
+* Even if you apply to increase the quota value, the limit of the storage usage of the **Old Area** will not be increased. 
+* The limit of the storage usaget of the **New Area** (/groups/gAA50NNN) is set to "the value set at that time" or "twice of the new quota value", whichever is greater. 
 
 #### Decreasing the Quota Value
-* When you apply to decrease the Quota Value, it can be decreased only when the usage amount of the **Old Area** (shown as "used" with the show_quota command) is less than the new Quota Value. 
-* After application, the limit of the storage usage of the **Old Area** will be decreased to the same value as the Quota Value.
+* When you apply to decrease the quota value, it can be decreased only when the usage amount of the **Old Area** (shown as "used" with the show_quota command) is less than the new quota value. 
+* After application, the limit of the storage usage of the **Old Area** will be decreased to the same value as the quota value.
 * The limit of the storage usage of the **New Area** will not be decreased. 
 
-ABCI points consumed by using Group disks are calculated based on the Quota Value as before. 
+ABCI points consumed by using Group disks are calculated based on the quota value as before. 
 
 
-### The Quota Value and the Limit of the Storage Usage: After the Data Migration Task
+### The Quota Value and the Limit of the Storage Usage: After the Data Migration completed
 
-During the data migration task, the value twice or larger the quota value is set as the limit of the storage usage of the **New Area**.  **After the data migration is completed, the limit of the storage usage for the New Area  ("limit" shown in show_quota command) is going to be set to the same value as the quota value in the ABCI User Portal, after a grace period.** 
+During the data migration task, the value twice or larger the quota value is set as the limit of the storage usage of the **New Area**.  **After the data migration is completed, the limit of the storage usage for the New Area is going to be set to the same value as the quota value after a grace period.** 
 
-The grace period is as follows. After the grace period, if data exceeding the quota value exists in the **New Area**, it will not to be possible to write to the  **New Area**. Please delete unnecessary files (duplicated files, etc.) or apply to increase the quota value by accessing [ABCI User Portal](https://portal.abci.ai/user/?lang=en) and access "User Group Management".  
+The grace period is as follows. After the grace period, if data exceeding the quota value exists in the **New Area**, you cannot write onto the  **New Area**. Please delete unnecessary files (duplicated files, etc.) or apply to increase the quota value by accessing [ABCI User Portal](https://portal.abci.ai/user/?lang=en) and access "User Group Management".  
 
 | Group Area           | Grace Period        |
 |:--                   |:--                           |
