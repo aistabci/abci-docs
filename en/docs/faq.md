@@ -446,7 +446,7 @@ ABCI points consumed by using Group disks are calculated based on the quota valu
 
 During the data migration task, the value twice or larger the quota value is set as the limit of the storage usage of the **New Area**.  **After the data migration is completed, the limit of the storage usage for the New Area is going to be set to the same value as the quota value after a grace period.** 
 
-The grace period is as follows. After the grace period, if data exceeding the quota value exists in the **New Area**, you cannot write onto the  **New Area**. Please delete unnecessary files (duplicated files, etc.) or apply to increase the quota value by accessing [ABCI User Portal](https://portal.abci.ai/user/?lang=en) and access "User Group Management". 
+The grace period is as follows. After the grace period, if the usage amount of the **New Area** (shown as "used" with the show_quota command) is larger than the quota value, you cannot write onto the  **New Area**. Please delete unnecessary files (duplicated files, etc.) or apply to increase the quota value by accessing [ABCI User Portal](https://portal.abci.ai/user/?lang=en) and access "User Group Management". 
 
 | Group Area           | Grace Period        |
 |:--                   |:--                           |
