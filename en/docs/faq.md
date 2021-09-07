@@ -386,14 +386,15 @@ The following is about description of the data migration.
 * After the copy is completed, a symlink to the migration destination in the **New Area** will be created and you can refer to it with the same path as the **Old Area**. 
 * The sources and the destinations of data migration are as follows. 
 
-	| Source                | Destination                                                 | Remarks              |
-	|:--                    |:--                                                          |:--                   |
-  | `/groups1/gAA50NNN/`  | `/groups/gAA50NNN/migrated_from_SFA_GPFS/`<br>`/projects/datarepository/gAA50NNN/migrated_from_SFA_GPFS/`[^1] | <br>Destination from d002 users' /groups1/gAA50NNN/ |
-	| `/groups2/gAA50NNN/`  | `/groups/gAA50NNN/migrated_from_SFA_GPFS/`                  | Completed            |
-	| `/fs3/d001/gAA50NNN/` | `/projects/d001/gAA50NNN/migrated_from_SFA_GPFS/`           |                      |
-	| `/fs3/d002/gAA50NNN/` | `/projects/datarepository/gAA50NNN/migrated_from_SFA_GPFS3/`[^1] |                 |
+	| Source                               | Destination                                                      | Remarks   |
+	|:--                                   |:--                                                               |:--        |
+	| d002 users'<br/>`/groups1/gAA50NNN/` | `/projects/datarepository/gAA50NNN/migrated_from_SFA_GPFS/`[^1]  |           |
+	| others'<br/>`/groups1/gAA50NNN/`     | `/groups/gAA50NNN/migrated_from_SFA_GPFS/`                       |           |
+	| `/groups2/gAA50NNN/`                 | `/groups/gAA50NNN/migrated_from_SFA_GPFS/`                       | Completed |
+	| `/fs3/d001/gAA50NNN/`                | `/projects/d001/gAA50NNN/migrated_from_SFA_GPFS/`                |           |
+	| `/fs3/d002/gAA50NNN/`                | `/projects/datarepository/gAA50NNN/migrated_from_SFA_GPFS3/`[^1] |           |
 
-[^1]: As /fs3/d002 users have multiple migration sources, there are two migration destination directories, migrated_from_SFA_GPFS/ and migrated_from_SFA_GPFS3/ . 
+[^1]: As `/fs3/d002` users have multiple migration sources, there are two migration destination directories, `migrated_from_SFA_GPFS/` and `migrated_from_SFA_GPFS3/` . 
 
 * After completion, we will notify the user by email that the migration has been completed. 
 
@@ -499,13 +500,13 @@ For more information on data migration, see [Q. What are the new Group Area and 
 * These paths will be replaced with symlinks to the destination directory in the **New Area** after all the data in each **Old Area** has been migrated, making them accessible with the same path as before. 
 * Access Rights of the paths to **Old Area** after the Data Mmigration task is completed
 
-| Paths                 | Read | Write | Delete | Reference to                                      | Remarks     |
-|:--                    |:- -  |:--    |:--     |:--                                                |:--          |
-| `/groups1/gAA50NNN/`  | Yes  | No[^4]| No[^4] | `/groups/gAA50NNN/migrate_from_SFA_GPFS/`         |             |
-| `/groups2/gAA50NNN/`  | Yes  | Yes   | Yes    | `/groups/gAA50NNN/migrate_from_SFA_GPFS/`         |             |
-| `/fs3/d001/gAA50NNN/` | Yes  | No[^5]| No[^5] | `/projects/d001/gAA50NNN/migrated_from_SFA_GPFS/` |             |
-| `/fs3/d002/gAA50NNN/` | Yes  | No[^5]| No[^5] | `/projects/datarepository/gAA50NNN/migrated_from_SFA_GPFS3/`[^1] |  |
-| `/groups1/gAA50NNN/`  | Yes  | No[^5]| No[^5] | `/projects/datarepository/gAA50NNN/migrated_from_SFA_GPFS/`[^1]  | for d002 users' |
+| Paths                 | Read | Write | Delete | Reference to                                                     | Remarks         |
+|:--                    |:- -  |:--    |:--     |:--                                                               |:--              |
+| `/groups1/gAA50NNN/`  | Yes  | No[^4]| No[^4] | `/groups/gAA50NNN/migrate_from_SFA_GPFS/`                        |                 |
+| `/groups2/gAA50NNN/`  | Yes  | Yes   | Yes    | `/groups/gAA50NNN/migrate_from_SFA_GPFS/`                        |                 |
+| `/fs3/d001/gAA50NNN/` | Yes  | No[^5]| No[^5] | `/projects/d001/gAA50NNN/migrated_from_SFA_GPFS/`                |                 |
+| `/fs3/d002/gAA50NNN/` | Yes  | No[^5]| No[^5] | `/projects/datarepository/gAA50NNN/migrated_from_SFA_GPFS3/`[^1] |                 |
+| `/groups1/gAA50NNN/`  | Yes  | No[^4]| No[^4] | `/projects/datarepository/gAA50NNN/migrated_from_SFA_GPFS/`[^1]  | for d002 users' |
 
 [^4]: Write/Delete will be available after migration of all data from /groups1/ completed.
 [^5]: Write/Delete will be available after migration of all data from /fs3/ completed.
@@ -516,9 +517,9 @@ For more information on data migration, see [Q. What are the new Group Area and 
 |:--                                                               |:--   |:--    |:--     |:--                                     |
 | `/groups/gAA50NNN/`                                              | Yes  | Yes   | Yes    | New Area                               |
 | `/groups/gAA50NNN/migrated_from_SFA_GPFS/`                       | Yes  | Yes   | Yes    | Destination from the Old Area          |
-| `/projects/d001/gAA50NNN/`                                       | Yes  | Yes   | Yes    | New Are for d001 users            |
+| `/projects/d001/gAA50NNN/`                                       | Yes  | Yes   | Yes    | New Area for d001 users                |
 | `/projects/d001/gAA50NNN/migrated_from_SFA_GPFS/`                | Yes  | Yes   | Yes    | Destination from `/fs3/d001/gAA500NNN` |
-| `/projects/datarepository/gAA50NNN/`                             | Yes  | Yes   | Yes    | New Are for d002 users                 |
+| `/projects/datarepository/gAA50NNN/`                             | Yes  | Yes   | Yes    | New Area for d002 users                |
 | `/projects/datarepository/gAA50NNN/migrated_from_SFA_GPFS/`[^1]  | Yes  | Yes   | Yes    | Destination from `/groups1/gAA500NNN` for d002 users |
 | `/projects/datarepository/gAA50NNN/migrated_from_SFA_GPFS3/`[^1] | Yes  | Yes   | Yes    | Destination from `/fs3/d002/gAA500NNN` |
 

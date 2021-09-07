@@ -391,14 +391,15 @@ source ${MODULE_HOME}/etc/profile.d/modules.csh
 * コピー完了後、シンボリックリンクの切り替えによって**旧領域**への参照を**新領域**への参照に書き換えます。
 * **旧領域**のデータは下記の移行先ディレクトリにコピーされます。
 
-	| 移行元                | 移行先                                                       | 備考             |
-	|:--                    |:--                                                           |:--               |
-  | `/groups1/gAA50NNN/`  | `/groups/gAA50NNN/migrated_from_SFA_GPFS/`<br>`/projects/datarepository/gAA50NNN/migrated_from_SFA_GPFS/`[^1] | <br>d002利用者の`/groups1/gAA500NNN`の移行先 |
-	| `/groups2/gAA50NNN/`  | `/groups/gAA50NNN/migrated_from_SFA_GPFS/`                   | 移行作業完了     |
-	| `/fs3/d001/gAA50NNN/` | `/projects/d001/gAA50NNN/migrated_from_SFA_GPFS/`            |                  |
-	| `/fs3/d002/gAA50NNN/` | `/projects/datarepository/gAA50NNN/migrated_from_SFA_GPFS3/`[^1] |              |
+	| 移行元                                | 移行先                                                           | 備考         |
+	|:--                                    |:--                                                               |:--           |
+	| d002利用者の<br/>`/groups1/gAA50NNN/` | `/projects/datarepository/gAA50NNN/migrated_from_SFA_GPFS/`[^1]  |              |
+	| その他の<br/>`/groups1/gAA50NNN/`     | `/groups/gAA50NNN/migrated_from_SFA_GPFS/`                       |              |
+	| `/groups2/gAA50NNN/`                  | `/groups/gAA50NNN/migrated_from_SFA_GPFS/`                       | 移行作業完了 |
+	| `/fs3/d001/gAA50NNN/`                 | `/projects/d001/gAA50NNN/migrated_from_SFA_GPFS/`                |              |
+	| `/fs3/d002/gAA50NNN/`                 | `/projects/datarepository/gAA50NNN/migrated_from_SFA_GPFS3/`[^1] |              |
 
-[^1]: /fs3/d002利用者は移行元が複数あるため移行先のディレクトリがmigrated_from_SFA_GPFS/とmigrated_from_SFA_GPFS3/に別れています。
+[^1]: `/fs3/d002`利用者は移行元が複数あるため移行先のディレクトリが `migrated_from_SFA_GPFS/`と`migrated_from_SFA_GPFS3/`に別れています。
 
 * コピー完了後、利用者へ移行が完了した旨をメールでお知らせします。
 
@@ -514,11 +515,11 @@ source ${MODULE_HOME}/etc/profile.d/modules.csh
 
 | パス                  | 読み取り | 書き込み | 削除   | 参照先                                                           | 備考   |
 |:--                    |:--       |:--       |:--     |:--                                                               |:--     |
-| `/groups1/gAA50NNN/`  | Yes      | No[^4]   | No[^4] |  `/groups/gAA50NNN/migrated_from_SFA_GPFS/`                      |        |
+| `/groups1/gAA50NNN/`  | Yes      | No[^4]   | No[^4] | `/groups/gAA50NNN/migrated_from_SFA_GPFS/`                       |        |
 | `/groups2/gAA50NNN/`  | Yes      | Yes      | Yes    | `/groups/gAA50NNN/migrated_from_SFA_GPFS/`                       |        |
 | `/fs3/d001/gAA50NNN/` | Yes      | No[^5]   | No[^5] | `/projects/d001/gAA50NNN/migrated_from_SFA_GPFS/`                |        |
 | `/fs3/d002/gAA50NNN/` | Yes      | No[^5]   | No[^5] | `/projects/datarepository/gAA50NNN/migrated_from_SFA_GPFS3/`[^1] |        |
-| `/groups1/gAA50NNN/`  | Yes      | No[^5]   | No[^5] | `/projects/datarepository/gAA50NNN/migrated_from_SFA_GPFS/`[^1]  | d002利用者の`/groups1/gAA500NNN`の移行先 |
+| `/groups1/gAA50NNN/`  | Yes      | No[^4]   | No[^4] | `/projects/datarepository/gAA50NNN/migrated_from_SFA_GPFS/`[^1]  | d002利用者向け |
 
 [^4]: /groups1/ 内の全データが移行完了後に書き込み/削除が可能になります。
 [^5]: /fs3/ 内の全データが移行完了後に書き込み/削除が可能になります。
@@ -533,5 +534,5 @@ source ${MODULE_HOME}/etc/profile.d/modules.csh
 | `/projects/d001/gAA50NNN/migrated_from_SFA_GPFS/`                | Yes      | Yes      | Yes  | `/fs3/d001/gAA500NNN`の移行先     |
 | `/projects/datarepository/gAA50NNN/`                             | Yes      | Yes      | Yes  | d002利用者向けの新領域            |
 | `/projects/datarepository/gAA50NNN/migrated_from_SFA_GPFS/`[^1]  | Yes      | Yes      | Yes  | d002利用者の`/groups1/gAA500NNN`の移行先 |
-| `/projects/datarepository/gAA50NNN/migrated_from_SFA_GPFS3/`[^1] | Yes      | Yes      | Yes  | `/fs3/d002/gAA500NNN`の移行先 |
+| `/projects/datarepository/gAA50NNN/migrated_from_SFA_GPFS3/`[^1] | Yes      | Yes      | Yes  | `/fs3/d002/gAA500NNN`の移行先     |
 
