@@ -368,94 +368,158 @@ In FY2021, we expanded the storage system. Refer to [Storage Systems](https://do
 As the storage system is expanded, the configuration of the Group Area will be changed.
 All the data in the existing Group Area used in FY2020 are going to be migrated into a new Group Area in FY2021.
 
-The existing Group Area (The **Old Area**) will not be accessible from the coming new computing resources (The Compute Node (A)).
-Therefore we need to create a new Group Area (The **New Area**), which is accessible from the Compute Node (A), and migrate all the data stored in the **Old Area** to the **New Area**.
-The data copy is managed by the operating team, so the users do not have to take care of the copy process.
+The existing Group Area (the **Old Area**) is not accessible from the computing resources newly established in May 2021 (the Compute Node (A)).
+Therefore we have created a new Group Area (the **New Area**), which is accessible from the Compute Node (A), and are migrating all the data stored in the **Old Area** to the **New Area**.
+The data migration is managed by the operation team, so the users need not to take care of the migration process. 
 
-User groups who are using the **Old Area** `/groups[1-2]/gAA50NNN` had been also allocated the **New Area** at `/groups/gAA50NNN`.
-In addition, for some user groups using **Old Area** `/fs3/`, **New Area** `/projects/` will be allocated after mid-July. 
-Both the **Old and New Area** are accessible from all the interactive nodes and all the existing computing nodes (The Compute Node (V)). 
+User groups who are using the **Old Area** `/groups[1-2]/gAA50NNN/` until FY2020 have newly been allocated the **New Area** `/groups/gAA50NNN/` since April 2021, and some User groups who are using the **Old Area** `/fs3/` have been allocated the **New Area** `/projects/` since mid July.
+Both the **Old Area** and the **New Area** are accessible from all the Interactive Nodes and Compute Nodes (V). 
 
-For the groups newly created in FY2021, only **New Area** will be allocated, so it is not a target of data migration. As results, it is not affected by data migration. 
+In addition, for the groups newly created in FY2021, only **New Area** is allocated, so it is not a target of data migration. As results, it is not affected by data migration. 
+
+The following is about description of the data migration. 
+
 
 ### Basic Strategy
 
-* The ABCI operating team will copy all the files in the **Old Area** to the **New Area** behind the scene. It will take one year to finish the copy process for all the user groups. 
-* Users can use the **Old Area** until August 10, 2021, but please use the **New Area** as much as possible. 
-* When the copying process finishes, the operating team will switch the reference from the **Old Area** to the **New Area** by changing the symbolic link. 
+* The ABCI operation team will copy all the files in the **Old Area** to the **New Area** in the background. The migration of all group data is scheduled to be completed by the end of FY2021. 
+* After the copy is completed, a symlink to the migration destination in the **New Area** will be created and you can refer to it with the same path as the **Old Area**. 
+* The sources and the destinations of data migration are as follows. 
 
-### The New Area /groups/gAA50NNN 
+	| Source                               | Destination                                                      | Remarks   |
+	|:--                                   |:--                                                               |:--        |
+	| d002 users'<br/>`/groups1/gAA50NNN/` | `/projects/datarepository/gAA50NNN/migrated_from_SFA_GPFS/`[^1]  |           |
+	| others'<br/>`/groups1/gAA50NNN/`     | `/groups/gAA50NNN/migrated_from_SFA_GPFS/`                       |           |
+	| `/groups2/gAA50NNN/`                 | `/groups/gAA50NNN/migrated_from_SFA_GPFS/`                       | Completed |
+	| `/fs3/d001/gAA50NNN/`                | `/projects/d001/gAA50NNN/migrated_from_SFA_GPFS/`                |           |
+	| `/fs3/d002/gAA50NNN/`                | `/projects/datarepository/gAA50NNN/migrated_from_SFA_GPFS3/`[^1] |           |
 
-* The files in the **Old Area** will be copied to the **New Area** `/groups/gAA50NNN/migrated_from_SFA_GPFS/`. Note that the users cannot access the copied data under that directory until the migration finishes.
-* The area other than that directory in the **New Area** can be freely used.
-* Disk usage will increase as data is copied. For this reason, the limit of the storage usage for the **New Area** is set to be twice the quota value, which is the group disk quantity value applied in the ABCI User Portal. This is a temporal treatment. After the migration,  the limit of the storage usage is set to the same value as the quota value in the ABCI User Portal, after a grace period.
+[^1]: As `/fs3/d002` users have multiple migration sources, there are two migration destination directories, `migrated_from_SFA_GPFS/` and `migrated_from_SFA_GPFS3/` . 
 
-### The New Area /projects
+* After completion, we will notify the user by email that the migration has been completed. 
 
-* Some users who used the **Old Area `/fs3/`** will be assigned the **New Area `/projects/`** after mid-July. Details will be announced later. 
+
+The following command is executed for data migration. 
+```
+# rsync -avH /{Old Area}/gAA50NNN/ /{New Area}/gAA50NNN/migrated_from_SFA_GPFS/ 
+```
+The following command is executed for verification and confirmation after data migration. 
+```
+# rsync -avH --delete /{Old Area}/gAA50NNN/ /{New Area}/gAA50NNN/migrated_from_SFA_GPFS/ 
+```
+
+### The New Area
+
+* The user cannot access to the above migration destination directory in the **New Area** until the data migration is completed. 
+* The area other than the destination directory in the **New Area** can be freely used. 
+* Disk usage will increase as data is copied. For this reason, the limit of the storage usage for the **New Area** is set to be twice the quota value, which is the group disk quantity value applied in the ABCI User Portal. This is a temporal treatment. After the migration, the limit of the storage usage is set to the same value as the quota value in the ABCI User Portal, after the certain grace period. 
+
 
 ### The Old Area /groups[1-2]/gAA50NNN and /fs3/d00[1-2]/gAA50NNN 
 
-#### During the data migration
+* The **Old Areas** `/groups1/gAA50NNN` and `/fs3/d00[1-2]/gAA50NNN` have been set to read-only after August 11, 2021. You should use the **New Area** from now on. 
+* After the Data Migration is completed, you will not be able to access `/groups[1-2]/gAA50NNN` or `/fs3/d00[1-2]/gAA50NNN/` on the **Old Area**. 
+* These paths will be replaced with symlinks to the destination directory in the **New Area** after all the data in each **Old Area** has been migrated, making them accessible with the same path as before. 
 
-* The user can read/write/delete files to the **Old Area** until August 10, 2021. It will be set to read-only after August 11. 
-* Users of the **Old Area** should make the [preparations in advance](faq.md#request-for-advance-preparation) described below. 
-	* Users of /groups2 need not to prepare in advance. 
-	* Regarding data migration, as of July 2021, /groups2 has been completed, /groups1 is in progress, and /fs3 (provided only to some users) is scheduled to start around October. 
-* The Group disk amount (hereinafter referred to as the quota value) applied on the user portal by June 28, 2021 was set as the disk usage upper limit of **Old Area**. 
-	* Since June 28, the behavior of the change request for [Group disk quota value](faq.md#group-disk-quota-value) has been changed as described below. 
 
-#### Request for advance preparation
+## Q. About the Quota Value and the Limit of the Storage Usage
 
-* For users of /groups1, please use the following directory (hereinafter referred to as the **New Area**) where you can read/write/delete files. 
-	* /groups/gAA50NNN/	(available since April)
-* For users of /fs3, please use the following directory (hereinafter referred to as the **New Area**) where you can read/write/delete files, after middle July. 
-	* /projects/d001/gAA50NNN/	(area for d001 users, scheduled to be provided by mid-July.)
-	* /projects/datarepository/gAA50NNN/	(area for d002 users, scheduled to be provided by mid-July.)
-* If you have a program that writes to the files in **Old Area**, please modify the program so that it writes into the **New Area** by Aug 11. 
-* If there are unnecessary files in the **Old Area**, please delete them by Aug 11. It doesn't matter as much as possible.
-* See below for restrictions during data migration.
+### During the Data Migration
 
-#### Restrictions for the users during the data migration
+Before the data migration started, the limit of the storage usage (shown as "limit" with the show_quota command) has been set to the same value of the quota value, which is the group disk quantity value applied in the ABCI User Portal.
+After the data migration started, the relationship between the quota value and the the limit of the storage usage was changed.
+By June 27, 2021, the limit of the storage usage for the **New Area** is set to be twice the quota value. 
+After June 28, 2021, the relationship was changed as follows. 
 
-* After August 11, you cannot write to the following directories, but you can read them as same as before. 
-	* /groups1/gAA50NNN/ 
-	* /fs3/d00[1-2]/gAA50NNN/ 
-* Files under the directories in the above **Old Area** will be migrated to the following directories. However, these directories cannot be referenced until the data migration is completed. 
-	* /groups/gAA50NNN/migrate_from_SFA_GPFS/ 
-	* /projects/d001/gAA50NNN/migrate_from_SFA_GPFS/ 
-	* /projects/datarepository/gAA50NNN/migrate_from_SFA_GPFS/ 
-* Data migration is performed by the operators, so the user does not need to create a backup. 
-* During this period, the following directories can be read/written/deleted as before.
-	* /groups/gAA50NNN	(Except the files in /groups/gAA50NNN/migrated_from_SFA_GPFS/ )
-* After middle of July, the following directories will be able to be read/written/deleted.
-	* /projects/d001/gAA50NNN	(Except the files in /projects/d001/gAA50NNN/migrated_from_SFA_GPFS/ )
-	* /projects/datarepository/gAA50NNN	(Except the files in /projects/datarepository/gAA50NNN/migrated_from_SFA_GPFS/ )
+#### Increasing the Quota Value
+* Even if you apply to increase the quota value, the limit of the storage usage of the **Old Area** will not be increased. 
+* The limit of the storage usaget of the **New Area** (/groups/gAA50NNN) is set to "the value set at that time" or "twice of the new quota value", whichever is greater. 
 
-#### Confirmation of data migration completion
-
-* In case for the data migration of /groups2/ , the **Old Area** was inaccessible during "The task of confirmation of data migration completion". 
-* In case for /groups1/ and /fs3/ , the **Old Area** will be set to "read-only" until the data migration is completed. 
-
-#### After the data migration is completed
-
-* You can access the migrated data in the **New Area** with the same path `/groups[1-2]/gAA50NNN` as before. It is achieved by changing the symbolic link. 
-* The files in the **Old Area** are copied to `/groups/gAA50NNN/migrate_from_SFA_GPFS/` in the **New Area**. 
-* You cannot access `/groups[1-2]/gAA50NNN` in the **Old Area**. 
-
-#### Group disk quota value
-##### Increasing the quota value
-* Even if you apply to increase the quota value, the usage upper limit of the **Old Area** will not be increased. 
-* The usage upper limit of the **New Area** (/groups/gAA50NNN) is set to "the value set at that time" or "twice of the new quota value", whichever is greater. 
-
-##### Decreasing the quota value
+#### Decreasing the Quota Value
 * When you apply to decrease the quota value, it can be decreased only when the usage amount of the **Old Area** (shown as "used" with the show_quota command) is less than the new quota value. 
-* After application, the usage upper limit of the **Old Area** will be decreased to the same value as the quota value.
-* The usage upper limit of the **New Area** will not be decreased. 
+* After application, the limit of the storage usage of the **Old Area** will be decreased to the same value as the quota value. 
+* The limit of the storage usage of the **New Area** will not be decreased. 
 
 ABCI points consumed by using Group disks are calculated based on the quota value as before. 
 
-After the data migration is completed, the users will have a period to organize the data in the **New Area**. 
-After the end of that period, the upper limit of the **New Area** will be set to the same value as the quota value. 
-We will announce you the end date of the period later. 
+
+### After the Data Migration completed
+
+During the data migration task, the value twice or larger the quota value is set as the limit of the storage usage of the **New Area**.  **After the data migration is completed, the limit of the storage usage for the New Area is going to be set to the same value as the quota value after a grace period.** 
+
+The grace period is as follows. After the grace period, if the usage amount of the **New Area** (shown as "used" with the show_quota command) is larger than the quota value, you cannot write onto the  **New Area**. Please delete unnecessary files (duplicated files, etc.) or apply to increase the quota value by accessing [ABCI User Portal](https://portal.abci.ai/user/?lang=en) and access "User Group Management". 
+
+| Group Area           | Grace Period        |
+|:--                   |:--                           |
+| `/groups1/gAA50NNN/` | Set after the Migration task |
+| `/groups2/gAA50NNN/` | Until September 30, 2021     |
+| `/fs3/`              | Set after the Migration task |
+
+
+## Q. About the status of the Data Migration Task
+
+With the expansion of the storage system in FY2021, we are migrating data from the Group Area that was used until FY2020 to the New Group Area. As of August 2021, the migration status of the each Group Area is as follows. 
+
+| Group Area           | Status                    |
+|:--                   |:--                        |
+| `/groups1/gAA50NNN/` | in Progress               |
+| `/groups2/gAA50NNN/` | Completed in July 1, 2021 |
+| `/fs3`               | Start in Mid Oct, 2021    |
+
+## Q. Why cannot I write data to the Old Area
+
+The **Old Area** `/groups1` and `/fs3` used until FY 2020 were changed to read-only on August 11, 2021, to improve the efficiency of data migration. If you want to write data, please use `/groups` and `/projects` in the **New Area**. 
+
+The data migration of the **Old Area** `/groups2` has been completed, and a symlink to the **New Area** has been set. Therefore, it is possible to write using the same path as before. 
+
+For more information on data migration, see [Q. What are the new Group Area and data migration?](faq.md#q-what-are-the-new-group-area-and-data-migration). 
+
+## Q. About Access Rights for Each Directory in the Group Area
+
+#### The Access Rights for each directory in the Group Area during data migration
+
+| Directories                                                  | Read    | Write   | Delete  | Descriptions                     |
+|:--                                                           |:--      |:--      |:--      |:--                               |
+| `/groups/gAA50NNN/`                                          | Yes[^2] | Yes[^2] | Yes[^2] | New Area                         |
+| `/groups1/gAA50NNN/`                                         | Yes     | No      | No      | Old Area                         |
+| `/groups2/gAA50NNN/`                                         | Yes     | Yes     | Yes     | Symlink to `/groups/gAA50NNN/migrated_from_SFA_GPFS/` |
+| `/fs3/d00[1-2]/gAA50NNN/`                                    | Yes     | No      | No      | Old Area                         |
+| `/projects/d001/gAA50NNN/`                                   | Yes[^2] | Yes[^2] | Yes[^2] | New Area for d001 users          |
+| `/projects/datarepository/gAA50NNN/`                         | Yes[^2] | Yes[^2] | Yes[^2] | New Area for d002 users          |
+| `/groups/gAA50NNN/migrated_from_SFA_GPFS/`                   | No[^3]  | No[^3]  | No[^3]  | Destination from `/groups1/gAA50NNN/` |
+| `/projects/d001/gAA50NNN/migrated_from_SFA_GPFS/`            | No[^3]  | No[^3]  | No[^3]  | Destination from `/fs3/d001/`    |
+| `/projects/datarepository/gAA50NNN/migrated_from_SFA_GPFS/`[^1]  | No[^3]  | No[^3]  | No[^3]  | Destination from d002 users' /groups1/gAA50NNN/ |
+| `/projects/datarepository/gAA50NNN/migrated_from_SFA_GPFS3/`[^1] | No[^3]  | No[^3]  | No[^3]  | Destination from /fs3/d002/gAA50NNN/ |
+
+[^2]: except the Destination directories. 
+[^3]: until the data migration is complated. 
+
+#### The Access Rights for each directory in the Group Area After data migration
+
+* After the Data Migration is completed, you will not be able to access `/groups[1-2]/gAA50NNN` or `/fs3/d00[1-2]/gAA50NNN/` on the **Old Area**. 
+* These paths will be replaced with symlinks to the destination directory in the **New Area** after all the data in each **Old Area** has been migrated, making them accessible with the same path as before. 
+* Access Rights of the paths to **Old Area** after the Data Mmigration task is completed
+
+| Paths                 | Read | Write | Delete | Reference to                                                     | Remarks         |
+|:--                    |:- -  |:--    |:--     |:--                                                               |:--              |
+| `/groups1/gAA50NNN/`  | Yes  | No[^4]| No[^4] | `/groups/gAA50NNN/migrate_from_SFA_GPFS/`                        |                 |
+| `/groups2/gAA50NNN/`  | Yes  | Yes   | Yes    | `/groups/gAA50NNN/migrate_from_SFA_GPFS/`                        |                 |
+| `/fs3/d001/gAA50NNN/` | Yes  | No[^5]| No[^5] | `/projects/d001/gAA50NNN/migrated_from_SFA_GPFS/`                |                 |
+| `/fs3/d002/gAA50NNN/` | Yes  | No[^5]| No[^5] | `/projects/datarepository/gAA50NNN/migrated_from_SFA_GPFS3/`[^1] |                 |
+| `/groups1/gAA50NNN/`  | Yes  | No[^4]| No[^4] | `/projects/datarepository/gAA50NNN/migrated_from_SFA_GPFS/`[^1]  | for d002 users' |
+
+[^4]: Write/Delete will be available after migration of all data from /groups1/ completed.
+[^5]: Write/Delete will be available after migration of all data from /fs3/ completed.
+
+* Access Rights of the directories in **New Area** after the Data Migration task is completed
+
+| Directories                                                      | Read | Write | Delete | Descriptions                           |
+|:--                                                               |:--   |:--    |:--     |:--                                     |
+| `/groups/gAA50NNN/`                                              | Yes  | Yes   | Yes    | New Area                               |
+| `/groups/gAA50NNN/migrated_from_SFA_GPFS/`                       | Yes  | Yes   | Yes    | Destination from the Old Area          |
+| `/projects/d001/gAA50NNN/`                                       | Yes  | Yes   | Yes    | New Area for d001 users                |
+| `/projects/d001/gAA50NNN/migrated_from_SFA_GPFS/`                | Yes  | Yes   | Yes    | Destination from `/fs3/d001/gAA500NNN` |
+| `/projects/datarepository/gAA50NNN/`                             | Yes  | Yes   | Yes    | New Area for d002 users                |
+| `/projects/datarepository/gAA50NNN/migrated_from_SFA_GPFS/`[^1]  | Yes  | Yes   | Yes    | Destination from `/groups1/gAA500NNN` for d002 users |
+| `/projects/datarepository/gAA50NNN/migrated_from_SFA_GPFS3/`[^1] | Yes  | Yes   | Yes    | Destination from `/fs3/d002/gAA500NNN` |
 
