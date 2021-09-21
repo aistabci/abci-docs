@@ -8,7 +8,7 @@ This section describes how to use the `s3fs-fuse` module.
 
 An access key is required to use s3fs-fuse.
 
-Please refer to [the ABCI Portal Guide](https://docs.abci.ai/portal/ja/02/#282) for how to issue an access key.
+Please refer to [the ABCI Portal Guide](https://docs.abci.ai/portal/en/02/#282) for how to issue an access key.
 After issuing the access key, use the AWS CLI to set the access key. Please refer to [How to Use ABCI Cloud Storage](usage.md) for how to set the access key.
 
 Here, it is assumed that the access key is set in the `default` profile.
@@ -63,7 +63,7 @@ Use the `fusermount` command to unmount the bucket.
 [username@es1 ~]$ fusermount -u ~/s3fs_dir
 ```
 
-If you mount a bucket using `s3fs-fuse` in a job secured by the On-demand, Spot service, it will be automatically unmounted at the end of the job.
+If you mount a bucket using `s3fs-fuse` in a job obtained by the On-demand or Spot service, it will be automatically unmounted at the end of the job.
 However, if you mount the bucket using `s3fs-fuse` on the interactive node, it will not be unmounted automatically, so unmount it when you no longer need it.
 
 ## s3fs command options
