@@ -19,8 +19,8 @@ ABCI以外（手元のPC等）では、[こちら](https://github.com/aws/aws-cl
 ## 認証情報などの設定
 
 ABCIクラウドストレージへのアクセスは、ABCIアカウントとは別のクラウドストレージアカウントを用います。アカウントは複数持つことができ、それぞれにアクセスキー(アクセスキー ID とシークレットアクセスキーのペア)が対応しています。複数のABCIグループに所属しており、それぞれクラウドストレージを利用している場合は、それぞれのクラウドストレージアカウントが発行されます。初回は次のように、そのアクセスキーを AWS CLI に設定する作業が必要です。region name には、 `us-east-1` を設定してください。
-[username@es1 ~]$ aws configure
 ```
+[username@es1 ~]$ aws configure
 AWS Access Key ID [None]: ACCESS-KEY-ID
 AWS Secret Access Key [None]: SECRET-ACCESS-KEY
 Default region name [None]: us-east-1

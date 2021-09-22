@@ -52,6 +52,7 @@ nav:
     - 'Access Control (2) ': 'abci-cloudstorage/policy.md'
     - 'Publishing Datasets': 'abci-cloudstorage/publishing-datasets.md'
     - 'Caution': 'abci-cloudstorage/caution.md'
+    - 'Using s3fs-fuse': 'abci-cloudstorage/s3fs-usage.md'
   - 'ABCI Datasets': 'abci-datasets.md'
   - 'ABCI Singularity Endpoint': 'abci-singularity-endpoint.md'
   - 'FAQ': 'faq.md'
