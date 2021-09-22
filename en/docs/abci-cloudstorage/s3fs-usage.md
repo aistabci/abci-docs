@@ -8,7 +8,7 @@ This section describes how to use the `s3fs-fuse` module.
 
 An access key is required to use s3fs-fuse.
 
-Please refer to [the ABCI Portal Guide](https://docs.abci.ai/portal/en/02/#282) for how to issue an access key.
+Please refer to [the ABCI Portal Guide](https://docs.abci.ai/portal/en/02/#282-manage-access-key) for how to issue an access key.
 After issuing the access key, use the AWS CLI to set the access key. Please refer to [How to Use ABCI Cloud Storage](usage.md) for how to set the access key.
 
 Here, it is assumed that the access key is set in the `default` profile.
