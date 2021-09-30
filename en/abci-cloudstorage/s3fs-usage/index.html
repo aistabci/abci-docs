@@ -13,14 +13,14 @@
         <meta name="author" content="AIST">
       
       
-        <link rel="canonical" href="https://docs.abci.ai/en/tips/remote-desktop/">
+        <link rel="canonical" href="https://docs.abci.ai/en/abci-cloudstorage/s3fs-usage/">
       
       <link rel="icon" href="../../img/favicon.png">
       <meta name="generator" content="mkdocs-1.1.2, mkdocs-material-7.1.3">
     
     
       
-        <title>Remote Desktop - ABCI 2.0 User Guide</title>
+        <title>Using s3fs-fuse - ABCI 2.0 User Guide</title>
       
     
     
@@ -73,7 +73,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#remote-desktop" class="md-skip">
+        <a href="#using-s3fs-fuse" class="md-skip">
           Skip to content
         </a>
       
@@ -102,7 +102,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Remote Desktop
+              Using s3fs-fuse
             
           </span>
         </div>
@@ -590,14 +590,12 @@
 
   
   
-    
-  
   
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
       
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_14" type="checkbox" id="__nav_14" checked>
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_14" type="checkbox" id="__nav_14" >
       
       <label class="md-nav__link" for="__nav_14">
         Tips
@@ -615,8 +613,232 @@
   
   
     <li class="md-nav__item">
-      <a href="../ngc/" class="md-nav__link">
+      <a href="../../tips/ngc/" class="md-nav__link">
         NVIDIA NGC
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../tips/remote-desktop/" class="md-nav__link">
+        Remote Desktop
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../tips/awscli/" class="md-nav__link">
+        AWS CLI
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../tips/putty/" class="md-nav__link">
+        PuTTY
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../tips/jupyter-notebook/" class="md-nav__link">
+        Jupyter Notebook
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../tips/sregistry-cli/" class="md-nav__link">
+        Singularity Global Client
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../tips/spack/" class="md-nav__link">
+        Spack
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../tips/datasets/" class="md-nav__link">
+        Datasets
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../tips/dl-amazon-ecr/" class="md-nav__link">
+        Amazon ECR
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_15" type="checkbox" id="__nav_15" checked>
+      
+      <label class="md-nav__link" for="__nav_15">
+        ABCI Cloud Storage
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="ABCI Cloud Storage" data-md-level="1">
+        <label class="md-nav__title" for="__nav_15">
+          <span class="md-nav__icon md-icon"></span>
+          ABCI Cloud Storage
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../" class="md-nav__link">
+        Overview
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../cs-account/" class="md-nav__link">
+        Accounts and Access keys
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../usage/" class="md-nav__link">
+        Usage
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../encryption/" class="md-nav__link">
+        Data encryption
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../acl/" class="md-nav__link">
+        Access Control (1) 
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../policy/" class="md-nav__link">
+        Access Control (2) 
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../publishing-datasets/" class="md-nav__link">
+        Publishing Datasets
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../caution/" class="md-nav__link">
+        Caution
       </a>
     </li>
   
@@ -637,12 +859,12 @@
       
       
         <label class="md-nav__link md-nav__link--active" for="__toc">
-          Remote Desktop
+          Using s3fs-fuse
           <span class="md-nav__icon md-icon"></span>
         </label>
       
       <a href="./" class="md-nav__link md-nav__link--active">
-        Remote Desktop
+        Using s3fs-fuse
       </a>
       
         
@@ -660,62 +882,50 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#preparation" class="md-nav__link">
-    Preparation
+  <a href="#access-key" class="md-nav__link">
+    Access Key
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#start-vnc" class="md-nav__link">
-    Start VNC
+  <a href="#loading-module" class="md-nav__link">
+    Loading module
   </a>
-  
-    <nav class="md-nav" aria-label="Start VNC">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#using-an-ssh-client" class="md-nav__link">
-    Using an SSH Client
-  </a>
-  
-    <nav class="md-nav" aria-label="Using an SSH Client">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#create-an-ssh-tunnel" class="md-nav__link">
-    Create an SSH tunnel
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#launch-vnc-client" class="md-nav__link">
-    Launch VNC client
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#putty" class="md-nav__link">
-    PuTTY
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#stop-vnc" class="md-nav__link">
-    Stop VNC
+  <a href="#creating-bucket" class="md-nav__link">
+    Creating bucket
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#mounting-bucket" class="md-nav__link">
+    Mounting bucket
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#file-operations" class="md-nav__link">
+    File operations
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#unmounting-bucket" class="md-nav__link">
+    Unmounting bucket
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#s3fs-command-options" class="md-nav__link">
+    s3fs command options
   </a>
   
 </li>
@@ -724,228 +934,6 @@
   
 </nav>
       
-    </li>
-  
-
-          
-            
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../awscli/" class="md-nav__link">
-        AWS CLI
-      </a>
-    </li>
-  
-
-          
-            
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../putty/" class="md-nav__link">
-        PuTTY
-      </a>
-    </li>
-  
-
-          
-            
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../jupyter-notebook/" class="md-nav__link">
-        Jupyter Notebook
-      </a>
-    </li>
-  
-
-          
-            
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../sregistry-cli/" class="md-nav__link">
-        Singularity Global Client
-      </a>
-    </li>
-  
-
-          
-            
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../spack/" class="md-nav__link">
-        Spack
-      </a>
-    </li>
-  
-
-          
-            
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../datasets/" class="md-nav__link">
-        Datasets
-      </a>
-    </li>
-  
-
-          
-            
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../dl-amazon-ecr/" class="md-nav__link">
-        Amazon ECR
-      </a>
-    </li>
-  
-
-          
-        </ul>
-      </nav>
-    </li>
-  
-
-    
-      
-      
-      
-
-  
-  
-  
-    
-    <li class="md-nav__item md-nav__item--nested">
-      
-      
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_15" type="checkbox" id="__nav_15" >
-      
-      <label class="md-nav__link" for="__nav_15">
-        ABCI Cloud Storage
-        <span class="md-nav__icon md-icon"></span>
-      </label>
-      <nav class="md-nav" aria-label="ABCI Cloud Storage" data-md-level="1">
-        <label class="md-nav__title" for="__nav_15">
-          <span class="md-nav__icon md-icon"></span>
-          ABCI Cloud Storage
-        </label>
-        <ul class="md-nav__list" data-md-scrollfix>
-          
-            
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../abci-cloudstorage/" class="md-nav__link">
-        Overview
-      </a>
-    </li>
-  
-
-          
-            
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../abci-cloudstorage/cs-account/" class="md-nav__link">
-        Accounts and Access keys
-      </a>
-    </li>
-  
-
-          
-            
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../abci-cloudstorage/usage/" class="md-nav__link">
-        Usage
-      </a>
-    </li>
-  
-
-          
-            
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../abci-cloudstorage/encryption/" class="md-nav__link">
-        Data encryption
-      </a>
-    </li>
-  
-
-          
-            
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../abci-cloudstorage/acl/" class="md-nav__link">
-        Access Control (1) 
-      </a>
-    </li>
-  
-
-          
-            
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../abci-cloudstorage/policy/" class="md-nav__link">
-        Access Control (2) 
-      </a>
-    </li>
-  
-
-          
-            
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../abci-cloudstorage/publishing-datasets/" class="md-nav__link">
-        Publishing Datasets
-      </a>
-    </li>
-  
-
-          
-            
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../abci-cloudstorage/caution/" class="md-nav__link">
-        Caution
-      </a>
-    </li>
-  
-
-          
-            
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../abci-cloudstorage/s3fs-usage/" class="md-nav__link">
-        Using s3fs-fuse
-      </a>
     </li>
   
 
@@ -1151,161 +1139,87 @@
             <article class="md-content__inner md-typeset">
               
                 
-                  <a href="https://github.com/aistairc/abci-docs/edit/master/en/docs/tips/remote-desktop.md" title="Edit this page" class="md-content__button md-icon">
+                  <a href="https://github.com/aistairc/abci-docs/edit/master/en/docs/abci-cloudstorage/s3fs-usage.md" title="Edit this page" class="md-content__button md-icon">
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75L3 17.25z"/></svg>
                   </a>
                 
                 
-                <h1 id="remote-desktop">Remote Desktop</h1>
-<p>This page describes how to enable Remote Desktop on ABCI with VNC (Virtual Network Computing). By using Remote Desktop, you can use the GUI on compute nodes.</p>
-<h2 id="preparation">Preparation</h2>
-<ul>
-<li>Login to the interactive node, and launch <code>vncserver</code> for initial settings </li>
-</ul>
-<div class="codehilite"><pre><span></span><code><span class="o">[</span><span class="n">username@es1 ~</span><span class="o">]</span><span class="err">$</span><span class="w"> </span><span class="n">vncserver</span><span class="w"></span>
-<span class="n">You</span><span class="w"> </span><span class="n">will</span><span class="w"> </span><span class="n">require</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="n">password</span><span class="w"> </span><span class="k">to</span><span class="w"> </span><span class="n">access</span><span class="w"> </span><span class="n">your</span><span class="w"> </span><span class="n">desktops</span><span class="p">.</span><span class="w"></span>
-
-<span class="nl">Password</span><span class="p">:</span><span class="w"></span>
-<span class="nl">Verify</span><span class="p">:</span><span class="w"></span>
-<span class="n">Would</span><span class="w"> </span><span class="n">you</span><span class="w"> </span><span class="ow">like</span><span class="w"> </span><span class="k">to</span><span class="w"> </span><span class="n">enter</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="k">view</span><span class="o">-</span><span class="k">only</span><span class="w"> </span><span class="n">password</span><span class="w"> </span><span class="p">(</span><span class="n">y</span><span class="o">/</span><span class="n">n</span><span class="p">)</span><span class="vm">?</span><span class="w"> </span><span class="n">n</span><span class="w"></span>
-
-<span class="k">New</span><span class="w"> </span><span class="s1">&#39;es1.abci.local:1 (username)&#39;</span><span class="w"> </span><span class="n">desktop</span><span class="w"> </span><span class="k">is</span><span class="w"> </span><span class="n">es1</span><span class="p">.</span><span class="n">abci</span><span class="p">.</span><span class="k">local</span><span class="err">:</span><span class="mi">1</span><span class="w"></span>
-
-<span class="n">Creating</span><span class="w"> </span><span class="k">default</span><span class="w"> </span><span class="n">startup</span><span class="w"> </span><span class="n">script</span><span class="w"> </span><span class="o">/</span><span class="n">home</span><span class="o">/</span><span class="n">username</span><span class="o">/</span><span class="p">.</span><span class="n">vnc</span><span class="o">/</span><span class="n">xstartup</span><span class="w"></span>
-<span class="n">Creating</span><span class="w"> </span><span class="k">default</span><span class="w"> </span><span class="n">config</span><span class="w"> </span><span class="o">/</span><span class="n">home</span><span class="o">/</span><span class="n">username</span><span class="o">/</span><span class="p">.</span><span class="n">vnc</span><span class="o">/</span><span class="n">config</span><span class="w"></span>
-<span class="n">Starting</span><span class="w"> </span><span class="n">applications</span><span class="w"> </span><span class="n">specified</span><span class="w"> </span><span class="ow">in</span><span class="w"> </span><span class="o">/</span><span class="n">home</span><span class="o">/</span><span class="n">username</span><span class="o">/</span><span class="p">.</span><span class="n">vnc</span><span class="o">/</span><span class="n">xstartup</span><span class="w"></span>
-<span class="nf">Log</span><span class="w"> </span><span class="k">file</span><span class="w"> </span><span class="k">is</span><span class="w"> </span><span class="o">/</span><span class="n">home</span><span class="o">/</span><span class="n">username</span><span class="o">/</span><span class="p">.</span><span class="n">vnc</span><span class="o">/</span><span class="n">es4</span><span class="p">.</span><span class="n">abci</span><span class="p">.</span><span class="k">local</span><span class="err">:</span><span class="mf">1.</span><span class="nf">log</span><span class="w"></span>
+                <h1 id="using-s3fs-fuse">Using s3fs-fuse</h1>
+<p>ABCI provides an <code>s3fs-fuse</code> module that allows you to mount your ABCI Cloud Storage bucket as a local file system.
+This section describes how to use the <code>s3fs-fuse</code> module.</p>
+<h2 id="access-key">Access Key</h2>
+<p>An access key is required to use s3fs-fuse.</p>
+<p>Please refer to <a href="https://docs.abci.ai/portal/en/02/#282-manage-access-key">the ABCI Portal Guide</a> for how to issue an access key.
+After issuing the access key, use the AWS CLI to set the access key. Please refer to <a href="../usage/">How to Use ABCI Cloud Storage</a> for how to set the access key.</p>
+<p>Here, it is assumed that the access key is set in the <code>default</code> profile.</p>
+<h2 id="loading-module">Loading module</h2>
+<p>After logging in to the interactive node, load the <code>s3fs-fuse</code> module. Also load the <code>aws-cli</code> module to create a bucket and so on.</p>
+<div class="codehilite"><pre><span></span><code><span class="p">[</span><span class="n">username</span><span class="err">@</span><span class="n">es1</span> <span class="o">~</span><span class="p">]</span><span class="o">$</span> <span class="n">module</span> <span class="nb">load</span> <span class="n">aws</span><span class="o">-</span><span class="n">cli</span> <span class="n">s3fs</span><span class="o">-</span><span class="n">fuse</span>
 </code></pre></div>
 
-<ul>
-<li>Stop VNC server</li>
-</ul>
-<div class="codehilite"><pre><span></span><code><span class="o">[</span><span class="n">username@es1 ~</span><span class="o">]</span><span class="err">$</span><span class="w"> </span><span class="n">vncserver</span><span class="w"> </span><span class="o">-</span><span class="k">kill</span><span class="w"> </span><span class="err">:</span><span class="mi">1</span><span class="w"></span>
+<h2 id="creating-bucket">Creating bucket</h2>
+<p>Create a bucket for mounting.</p>
+<div class="codehilite"><pre><span></span><code><span class="o">[</span><span class="n">username@es1 ~</span><span class="o">]</span><span class="err">$</span><span class="w"> </span><span class="n">aws</span><span class="w"> </span><span class="o">--</span><span class="n">endpoint</span><span class="o">-</span><span class="n">url</span><span class="w"> </span><span class="nl">https</span><span class="p">:</span><span class="o">//</span><span class="n">s3</span><span class="p">.</span><span class="n">abci</span><span class="p">.</span><span class="n">ai</span><span class="w"> </span><span class="n">s3</span><span class="w"> </span><span class="n">mb</span><span class="w"> </span><span class="nl">s3</span><span class="p">:</span><span class="o">//</span><span class="n">s3fs</span><span class="o">-</span><span class="n">bucket</span><span class="w"></span>
+<span class="nl">make_bucket</span><span class="p">:</span><span class="w"> </span><span class="n">s3fs</span><span class="o">-</span><span class="n">bucket</span><span class="w"></span>
 </code></pre></div>
 
-<ul>
-<li>Edit some configuration files</li>
-</ul>
-<p>$HOME/.vnc/xstartup:</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">1</span>
-<span class="normal">2</span>
-<span class="normal">3</span>
-<span class="normal">4</span>
-<span class="normal">5</span>
-<span class="normal">6</span>
-<span class="normal">7</span>
-<span class="normal">8</span>
-<span class="normal">9</span></pre></div></td><td class="code"><div class="codehilite"><pre><span></span><code><span class="ch">#!/bin/sh</span>
-
-<span class="nb">unset</span> SESSION_MANAGER
-<span class="nb">unset</span> DBUS_SESSION_BUS_ADDRESS
-<span class="c1">#exec /etc/X11/xinit/xinitrc</span>
-
-xrdb <span class="nv">$HOME</span>/.Xresources
-
-startxfce4 <span class="p">&amp;</span>
-</code></pre></div>
-</td></tr></table>
-<p>You can change screen size to edit $HOME/.vnc/config if needed.</p>
-<div class="codehilite"><pre><span></span><code>geometry=2000x1200
+<h2 id="mounting-bucket">Mounting bucket</h2>
+<p>Create a mount point on the HOME directory and mount the <code>s3fs-bucket</code> bucket with the <code>s3fs</code> command.</p>
+<div class="codehilite"><pre><span></span><code><span class="o">[</span><span class="n">username@es1 ~</span><span class="o">]</span><span class="err">$</span><span class="w"> </span><span class="n">mkdir</span><span class="w"> </span><span class="n">s3fs_dir</span><span class="w"></span>
+<span class="o">[</span><span class="n">username@es1 ~</span><span class="o">]</span><span class="err">$</span><span class="w"> </span><span class="n">s3fs</span><span class="w"> </span><span class="n">s3fs</span><span class="o">-</span><span class="n">bucket</span><span class="w"> </span><span class="o">~/</span><span class="n">s3fs_dir</span><span class="w"> </span><span class="o">-</span><span class="n">o</span><span class="w"> </span><span class="n">url</span><span class="o">=</span><span class="nl">https</span><span class="p">:</span><span class="o">//</span><span class="n">s3</span><span class="p">.</span><span class="n">abci</span><span class="p">.</span><span class="n">ai</span><span class="o">/</span><span class="w"> </span><span class="o">-</span><span class="n">o</span><span class="w"> </span><span class="n">use_path_request_style</span><span class="w"></span>
 </code></pre></div>
 
-<ul>
-<li>Login to ABCI</li>
-</ul>
-<div class="codehilite"><pre><span></span><code><span class="o">[</span><span class="n">user@localmachine</span><span class="o">]</span><span class="err">$</span><span class="w"> </span><span class="n">ssh</span><span class="w"> </span><span class="o">-</span><span class="n">J</span><span class="w"> </span><span class="o">%</span><span class="n">r</span><span class="nv">@as</span><span class="p">.</span><span class="n">abci</span><span class="p">.</span><span class="n">ai</span><span class="w"> </span><span class="n">username</span><span class="nv">@es</span><span class="w"></span>
+<p>If you want to use an access key other than the <code>default</code> profile, specify the<code>-o profile = profile name</code> option.</p>
+<div class="codehilite"><pre><span></span><code><span class="o">[</span><span class="n">username@es1 ~</span><span class="o">]</span><span class="err">$</span><span class="w"> </span><span class="n">s3fs</span><span class="w"> </span><span class="n">s3fs</span><span class="o">-</span><span class="n">bucket</span><span class="w"> </span><span class="o">~/</span><span class="n">s3fs_dir</span><span class="w"> </span><span class="o">-</span><span class="n">o</span><span class="w"> </span><span class="n">url</span><span class="o">=</span><span class="nl">https</span><span class="p">:</span><span class="o">//</span><span class="n">s3</span><span class="p">.</span><span class="n">abci</span><span class="p">.</span><span class="n">ai</span><span class="o">/</span><span class="w"> </span><span class="o">-</span><span class="n">o</span><span class="w"> </span><span class="n">profile</span><span class="o">=</span><span class="n">aaa00000</span><span class="mf">.2</span><span class="w"> </span><span class="o">-</span><span class="n">o</span><span class="w"> </span><span class="n">use_path_request_style</span><span class="w"></span>
 </code></pre></div>
 
-<ul>
-<li>Login to a compute node which is assigned by UGE with ABCI On-demand service and resource type rt_F.</li>
-</ul>
-<div class="codehilite"><pre><span></span><code><span class="o">[</span><span class="n">username@es1 ~</span><span class="o">]</span><span class="err">$</span><span class="w"> </span><span class="n">qrsh</span><span class="w"> </span><span class="o">-</span><span class="n">g</span><span class="w"> </span><span class="n">grpname</span><span class="w"> </span><span class="o">-</span><span class="n">l</span><span class="w"> </span><span class="n">rt_F</span><span class="o">=</span><span class="mi">1</span><span class="w"> </span><span class="o">-</span><span class="n">l</span><span class="w"> </span><span class="n">h_rt</span><span class="o">=</span><span class="mi">1</span><span class="err">:</span><span class="mi">00</span><span class="err">:</span><span class="mi">00</span><span class="w"></span>
+<h2 id="file-operations">File operations</h2>
+<p>After mounting the bucket, you can add and remove objects from the bucket in the same way as you would with a file.</p>
+<div class="codehilite"><pre><span></span><code><span class="o">[</span><span class="n">username@es1 ~</span><span class="o">]</span><span class="err">$</span><span class="w"> </span><span class="n">cp</span><span class="w"> </span><span class="o">~/</span><span class="n">my</span><span class="o">-</span><span class="k">file</span><span class="w"> </span><span class="o">~/</span><span class="n">s3fs_dir</span><span class="o">/</span><span class="w"></span>
+<span class="o">[</span><span class="n">username@es1 ~</span><span class="o">]</span><span class="err">$</span><span class="w"> </span><span class="n">ls</span><span class="w"> </span><span class="o">~/</span><span class="n">s3fs_dir</span><span class="o">/</span><span class="n">my</span><span class="o">-</span><span class="k">file</span><span class="w"></span>
+<span class="o">[</span><span class="n">username@es1 ~</span><span class="o">]</span><span class="err">$</span><span class="w"> </span><span class="n">rm</span><span class="w"> </span><span class="o">~/</span><span class="n">s3fs_dir</span><span class="o">/</span><span class="n">my</span><span class="o">-</span><span class="k">file</span><span class="w"></span>
 </code></pre></div>
 
-<ul>
-<li>Launch <code>vncserver</code></li>
-</ul>
-<div class="codehilite"><pre><span></span><code><span class="o">[</span><span class="n">username@g0001 ~</span><span class="o">]</span><span class="err">$</span><span class="w"> </span><span class="n">vncserver</span><span class="w"></span>
-
-<span class="k">New</span><span class="w"> </span><span class="s1">&#39;g0001.abci.local:1 (username)&#39;</span><span class="w"> </span><span class="n">desktop</span><span class="w"> </span><span class="k">is</span><span class="w"> </span><span class="n">g0001</span><span class="p">.</span><span class="n">abci</span><span class="p">.</span><span class="k">local</span><span class="err">:</span><span class="mi">1</span><span class="w"></span>
-
-<span class="n">Starting</span><span class="w"> </span><span class="n">applications</span><span class="w"> </span><span class="n">specified</span><span class="w"> </span><span class="ow">in</span><span class="w"> </span><span class="o">/</span><span class="n">home</span><span class="o">/</span><span class="n">username</span><span class="o">/</span><span class="p">.</span><span class="n">vnc</span><span class="o">/</span><span class="n">xstartup</span><span class="w"></span>
-<span class="nf">Log</span><span class="w"> </span><span class="k">file</span><span class="w"> </span><span class="k">is</span><span class="w"> </span><span class="o">/</span><span class="n">home</span><span class="o">/</span><span class="n">username</span><span class="o">/</span><span class="p">.</span><span class="n">vnc</span><span class="o">/</span><span class="n">g0001</span><span class="p">.</span><span class="n">abci</span><span class="p">.</span><span class="k">local</span><span class="err">:</span><span class="mf">1.</span><span class="nf">log</span><span class="w"></span>
-
-<span class="o">[</span><span class="n">username@g0001 ~</span><span class="o">]</span><span class="err">$</span><span class="w"></span>
+<h2 id="unmounting-bucket">Unmounting bucket</h2>
+<p>Use the <code>fusermount</code> command to unmount the bucket.</p>
+<div class="codehilite"><pre><span></span><code><span class="o">[</span><span class="n">username@es1 ~</span><span class="o">]</span><span class="err">$</span><span class="w"> </span><span class="n">fusermount</span><span class="w"> </span><span class="o">-</span><span class="n">u</span><span class="w"> </span><span class="o">~/</span><span class="n">s3fs_dir</span><span class="w"></span>
 </code></pre></div>
 
-<p>g0001.abci.local:1 is the display name of the VNC server you launched. Port 5901 is assinged to the connection to this server.
-In general, you can connect to the VNC server using a port with the display number plus 5900. For example, port 5902 for :2, port 5903 for :3, and so on.</p>
-<h2 id="start-vnc">Start VNC</h2>
-<p>The following part explains how to start VNC separately for macOS and Windows.</p>
-<h3 id="using-an-ssh-client">Using an SSH Client</h3>
-<p>Your computer most likely has an SSH client installed by default. If your computer is a UNIX-like system such as Linux and macOS, or Windows 10 version 1803 (April 2018 Update) or later, it should have an SSH client. You can also check for an SSH client, just by typing <code>ssh</code> at the command line.</p>
-<h4 id="create-an-ssh-tunnel">Create an SSH tunnel</h4>
-<p>To connect to the VNC server by using Port 5901 of your computer, you need to create an SSH tunnel between <code>localhost:5901</code> and  <code>g0001.abci.local:5901</code>.</p>
-<p>If you have OpenSSH 7.3 or later, you can create an SSH tunnel with the following command:</p>
-<div class="codehilite"><pre><span></span><code><span class="o">[</span><span class="n">user@localmachine</span><span class="o">]</span><span class="err">$</span><span class="w"> </span><span class="n">ssh</span><span class="w"> </span><span class="o">-</span><span class="n">N</span><span class="w"> </span><span class="o">-</span><span class="n">L</span><span class="w"> </span><span class="mi">5901</span><span class="err">:</span><span class="n">g0001</span><span class="p">.</span><span class="n">abci</span><span class="p">.</span><span class="k">local</span><span class="err">:</span><span class="mi">5901</span><span class="w"> </span><span class="o">-</span><span class="n">J</span><span class="w"> </span><span class="o">%</span><span class="n">r</span><span class="nv">@as</span><span class="p">.</span><span class="n">abci</span><span class="p">.</span><span class="n">ai</span><span class="w"> </span><span class="n">username</span><span class="nv">@es</span><span class="w"></span>
-</code></pre></div>
-
-<p>If you cannot use ProxyJump, you can also create one with the following command:</p>
-<div class="codehilite"><pre><span></span><code><span class="o">[</span><span class="n">user@localmachine</span><span class="o">]</span><span class="err">$</span><span class="w"> </span><span class="n">ssh</span><span class="w"> </span><span class="o">-</span><span class="n">L</span><span class="w"> </span><span class="mi">10022</span><span class="err">:</span><span class="nl">es</span><span class="p">:</span><span class="mi">22</span><span class="w"> </span><span class="o">-</span><span class="n">l</span><span class="w"> </span><span class="n">username</span><span class="w"> </span><span class="k">as</span><span class="p">.</span><span class="n">abci</span><span class="p">.</span><span class="n">ai</span><span class="w"></span>
-<span class="o">[</span><span class="n">user@localmachine</span><span class="o">]</span><span class="err">$</span><span class="w"> </span><span class="n">ssh</span><span class="w"> </span><span class="o">-</span><span class="n">p</span><span class="w"> </span><span class="mi">10022</span><span class="w"> </span><span class="o">-</span><span class="n">N</span><span class="w"> </span><span class="o">-</span><span class="n">L</span><span class="w"> </span><span class="mi">5901</span><span class="err">:</span><span class="n">g0001</span><span class="p">.</span><span class="n">abci</span><span class="p">.</span><span class="k">local</span><span class="err">:</span><span class="mi">5901</span><span class="w"> </span><span class="o">-</span><span class="n">l</span><span class="w"> </span><span class="n">username</span><span class="w"> </span><span class="n">localhost</span><span class="w"></span>
-</code></pre></div>
-
-<h4 id="launch-vnc-client">Launch VNC client</h4>
-<p>In macOS, VNC client is integrated in Finder. So, you can connect to the VNC server by the following command:</p>
-<div class="codehilite"><pre><span></span><code><span class="o">[</span><span class="n">user@localmachine</span><span class="o">]</span><span class="err">$</span><span class="w"> </span><span class="k">open</span><span class="w"> </span><span class="nl">vnc</span><span class="p">:</span><span class="o">//</span><span class="nl">localhost</span><span class="p">:</span><span class="mi">5901</span><span class="o">/</span><span class="w"></span>
-</code></pre></div>
-
-<p>If not using macOS, you need to install a VNC client separately and configure it to connect to the VNC server.</p>
-<h3 id="putty">PuTTY</h3>
-<p>First, configure an SSH tunnel.</p>
-<p>Click [Change Settings...] and click [SSH] - [Tunnels].</p>
+<p>If you mount a bucket using <code>s3fs-fuse</code> in a job obtained by the On-demand or Spot service, it will be automatically unmounted at the end of the job.
+However, if you mount the bucket using <code>s3fs-fuse</code> on the interactive node, it will not be unmounted automatically, so unmount it when you no longer need it.</p>
+<h2 id="s3fs-command-options">s3fs command options</h2>
+<p>The options for the <code>s3fs</code> command are shown below. See the <code>man s3fs</code> or <a href="https://github.com/s3fs-fuse/s3fs-fuse">s3fs-fuse</a> website for more information.</p>
 <table>
 <thead>
 <tr>
-<th align="left">item</th>
-<th align="left">value</th>
+<th align="left">Option</th>
+<th align="left">Description</th>
+<th align="left">Example</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td align="left">sample image</td>
-<td align="left"><img src="vnc_portfw_putty_01.png"  width="480" title="putty:ssh tunnel" ></td>
+<td align="left">url</td>
+<td align="left">Endpoint URL used to connect.</td>
+<td align="left"><code>-o url=https://s3.abci.ai</code></td>
 </tr>
 <tr>
-<td align="left">local port</td>
-<td align="left">port number which you can use on your system. ex) 15901</td>
+<td align="left">profile</td>
+<td align="left">Profile name used for authentication.</td>
+<td align="left"><code>-o profile=aaa00000.2</code></td>
 </tr>
 <tr>
-<td align="left">remote host:port</td>
-<td align="left">hostname of compute node and port number of VNC server ex) g0123:5901)</td>
+<td align="left">dbglevel</td>
+<td align="left">Debug message level.</td>
+<td align="left"><code>-o dbglevel=info</code></td>
+</tr>
+<tr>
+<td align="left">curldb</td>
+<td align="left">Enabling libcurl debug messages.</td>
+<td align="left"><code>-o curldb</code></td>
 </tr>
 </tbody>
 </table>
-<p>Launch VNC client and connect to localhost and the port number which assigned by SSH port forwarding.
-In the example of Tiger VNC client, hostname and port number are connected by "::".</p>
-<div align="center">
-<img src="vnc_viewer_01.png" width="480" title="vncviewer"><br>
-</div>
-
-<p>Click [Accept] , enter your VNC password, then launch VNC viewer.</p>
-<h2 id="stop-vnc">Stop VNC</h2>
-<ul>
-<li>stop VNC service and exit compute node.</li>
-</ul>
-<div class="codehilite"><pre><span></span><code><span class="o">[</span><span class="n">username@g0001 ~</span><span class="o">]</span><span class="err">$</span><span class="w"> </span><span class="n">vncserver</span><span class="w"> </span><span class="o">-</span><span class="n">list</span><span class="w"></span>
-
-<span class="n">TigerVNC</span><span class="w"> </span><span class="n">server</span><span class="w"> </span><span class="nl">sessions</span><span class="p">:</span><span class="w"></span>
-
-<span class="n">X</span><span class="w"> </span><span class="n">DISPLAY</span><span class="w"> </span><span class="err">#</span><span class="w">     </span><span class="n">PROCESS</span><span class="w"> </span><span class="n">ID</span><span class="w"></span>
-<span class="err">:</span><span class="mi">1</span><span class="w">              </span><span class="mi">5081</span><span class="w"></span>
-
-<span class="o">[</span><span class="n">username@g0001 ~</span><span class="o">]</span><span class="err">$</span><span class="w"> </span><span class="n">vncserver</span><span class="w"> </span><span class="o">-</span><span class="k">kill</span><span class="w"> </span><span class="err">:</span><span class="mi">1</span><span class="w"></span>
-<span class="n">Killing</span><span class="w"> </span><span class="n">Xvnc</span><span class="w"> </span><span class="n">process</span><span class="w"> </span><span class="n">ID</span><span class="w"> </span><span class="n">XXXXXX</span><span class="w"></span>
-<span class="o">[</span><span class="n">username@g0001 ~</span><span class="o">]</span><span class="err">$</span><span class="w"> </span><span class="k">exit</span><span class="w"></span>
-<span class="o">[</span><span class="n">username@es1 ~</span><span class="o">]</span><span class="err">$</span><span class="w"></span>
-</code></pre></div>
                 
               
               
@@ -1324,7 +1238,7 @@ In the example of Tiger VNC client, hostname and port number are connected by ":
   
     <nav class="md-footer__inner md-grid" aria-label="Footer">
       
-        <a href="../ngc/" class="md-footer__link md-footer__link--prev" rel="prev">
+        <a href="../caution/" class="md-footer__link md-footer__link--prev" rel="prev">
           <div class="md-footer__button md-icon">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
           </div>
@@ -1333,19 +1247,19 @@ In the example of Tiger VNC client, hostname and port number are connected by ":
               <span class="md-footer__direction">
                 Previous
               </span>
-              NVIDIA NGC
+              Caution
             </div>
           </div>
         </a>
       
       
-        <a href="../awscli/" class="md-footer__link md-footer__link--next" rel="next">
+        <a href="../../abci-datasets/" class="md-footer__link md-footer__link--next" rel="next">
           <div class="md-footer__title">
             <div class="md-ellipsis">
               <span class="md-footer__direction">
                 Next
               </span>
-              AWS CLI
+              ABCI Datasets
             </div>
           </div>
           <div class="md-footer__button md-icon">

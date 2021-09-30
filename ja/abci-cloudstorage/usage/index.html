@@ -1007,6 +1007,18 @@
   
 
           
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../s3fs-usage/" class="md-nav__link">
+        s3fs-fuseの利用
+      </a>
+    </li>
+  
+
+          
         </ul>
       </nav>
     </li>
@@ -1226,9 +1238,9 @@
 
 <p>ABCI以外（手元のPC等）では、<a href="https://github.com/aws/aws-cli">こちら</a>よりAWS CLIを取得し、書かれている手順に従ってインストールしてください。</p>
 <h2 id="_2">認証情報などの設定</h2>
-<p>ABCIクラウドストレージへのアクセスは、ABCIアカウントとは別のクラウドストレージアカウントを用います。アカウントは複数持つことができ、それぞれにアクセスキー(アクセスキー ID とシークレットアクセスキーのペア)が対応しています。複数のABCIグループに所属しており、それぞれクラウドストレージを利用している場合は、それぞれのクラウドストレージアカウントが発行されます。初回は次のように、そのアクセスキーを AWS CLI に設定する作業が必要です。region name には、 <code>us-east-1</code> を設定してください。
-[username@es1 ~]$ aws configure</p>
-<div class="codehilite"><pre><span></span><code><span class="n">AWS</span><span class="w"> </span><span class="n">Access</span><span class="w"> </span><span class="k">Key</span><span class="w"> </span><span class="n">ID</span><span class="w"> </span><span class="o">[</span><span class="n">None</span><span class="o">]</span><span class="err">:</span><span class="w"> </span><span class="n">ACCESS</span><span class="o">-</span><span class="k">KEY</span><span class="o">-</span><span class="n">ID</span><span class="w"></span>
+<p>ABCIクラウドストレージへのアクセスは、ABCIアカウントとは別のクラウドストレージアカウントを用います。アカウントは複数持つことができ、それぞれにアクセスキー(アクセスキー ID とシークレットアクセスキーのペア)が対応しています。複数のABCIグループに所属しており、それぞれクラウドストレージを利用している場合は、それぞれのクラウドストレージアカウントが発行されます。初回は次のように、そのアクセスキーを AWS CLI に設定する作業が必要です。region name には、 <code>us-east-1</code> を設定してください。</p>
+<div class="codehilite"><pre><span></span><code><span class="o">[</span><span class="n">username@es1 ~</span><span class="o">]</span><span class="err">$</span><span class="w"> </span><span class="n">aws</span><span class="w"> </span><span class="n">configure</span><span class="w"></span>
+<span class="n">AWS</span><span class="w"> </span><span class="n">Access</span><span class="w"> </span><span class="k">Key</span><span class="w"> </span><span class="n">ID</span><span class="w"> </span><span class="o">[</span><span class="n">None</span><span class="o">]</span><span class="err">:</span><span class="w"> </span><span class="n">ACCESS</span><span class="o">-</span><span class="k">KEY</span><span class="o">-</span><span class="n">ID</span><span class="w"></span>
 <span class="n">AWS</span><span class="w"> </span><span class="n">Secret</span><span class="w"> </span><span class="n">Access</span><span class="w"> </span><span class="k">Key</span><span class="w"> </span><span class="o">[</span><span class="n">None</span><span class="o">]</span><span class="err">:</span><span class="w"> </span><span class="n">SECRET</span><span class="o">-</span><span class="n">ACCESS</span><span class="o">-</span><span class="k">KEY</span><span class="w"></span>
 <span class="k">Default</span><span class="w"> </span><span class="n">region</span><span class="w"> </span><span class="n">name</span><span class="w"> </span><span class="o">[</span><span class="n">None</span><span class="o">]</span><span class="err">:</span><span class="w"> </span><span class="n">us</span><span class="o">-</span><span class="n">east</span><span class="o">-</span><span class="mi">1</span><span class="w"></span>
 <span class="k">Default</span><span class="w"> </span><span class="k">output</span><span class="w"> </span><span class="nf">format</span><span class="w"> </span><span class="o">[</span><span class="n">None</span><span class="o">]</span><span class="err">:</span><span class="p">(</span><span class="n">入力不要</span><span class="p">)</span><span class="w"></span>
