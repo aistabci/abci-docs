@@ -16,9 +16,10 @@ ABCIクラウウドストレージサービスでは、ABCIグループ内のク
 
 サブグループの操作に用いる主なコマンドは以下の通りです。
 
-
 | コマンド | 説明 |
 | --       | --   |
+| aws iam get-group | サブグループに所属するクラウドストレージアカウントの一覧を表示する。 |
+| aws iam list-groups | サブグループの一覧を表示する。 |
 | aws iam create-group | サブグループを作成する。 |
 | aws iam delete-group | サブグループを削除する。 |
 | aws iam add-user-to-group | クラウドストレージアカウントをサブグループに追加する。 |
@@ -28,10 +29,78 @@ ABCIクラウウドストレージサービスでは、ABCIグループ内のク
 | aws iam list-attached-group-policies | サブグループに割り振られたアクセス制御ポリシーの一覧を表示する。 |
 | aws iam list-groups-for-user | クラウドストレージアカウントが所属するグループの一覧を表示する。 |
 
-例えば、サブグループを作成する場合は以下のように`aws iam create-group`コマンドに作成するグループの名前を指定します。
+例えば、サブグループの一覧を表示する場合は`aws iam list-groups`コマンドを使用します。
+デフォルトではmanaged-groupとdefault-sub-groupの2グループが表示されます。
+
+!!! note
+    managed-groupは管理のために運用側で用意したサブグループであり、利用者からは変更できません。
+
+```
+[username@es1 ~]$ aws --endpoint-url https://s3.abci.ai iam list-groups
+{
+    "Groups": [
+        {
+            "Path": "/abci/",
+            "GroupName": "managed-group",
+            "GroupId": "GRPES2SG5PLA6UYFHWYA0M6VCEXAMPLE",
+            "Arn": "arn:aws:iam::123456789012:group/abci/managed-group",
+            "CreateDate": "2020-04-01T02:04:45+00:00"
+        },
+        {
+            "Path": "/",
+            "GroupName": "default-sub-group",
+            "GroupId": "GRP0L1H8JX1Z9GUXBFHRMFIWJEXAMPLE",
+            "Arn": "arn:aws:iam::123456789012:group/default-sub-group",
+            "CreateDate": "2019-12-26T14:30:28+00:00"
+        }
+    ]
+}
+```
+
+`aws iam get-group`コマンドで、サブグループに所属するクラウドストレージアカウントの一覧を表示できます。
+
+```
+[username@es1 ~]$ aws --endpoint-url https://s3.abci.ai iam get-group --group-name default-sub-group
+{
+    "Users": [
+        {
+            "Path": "/",
+            "UserName": "aaa00000.1",
+            "UserId": "USRJY5ST1Z16OKRANCL9SZZGQEXAMPLE",
+            "Arn": "arn:aws:iam::123456789012:user/aaa00000.1",
+            "CreateDate": "2020-01-22T11:53:24+00:00"
+        }
+    ],
+    "Group": {
+        "Path": "/",
+        "GroupName": "default-sub-group",
+        "GroupId": "GRP0L1H8JX1Z9GUXBFHRMFIWJEXAMPLE",
+        "Arn": "arn:aws:iam::123456789012:group/default-sub-group",
+        "CreateDate": "2019-12-26T14:30:28+00:00"
+    }
+}
+```
+
+サブグループを作成する場合は以下のように`aws iam create-group`コマンドに作成するグループの名前を指定します。
 
 ```
 [username@es1 ~]$ aws --endpoint-url https://s3.abci.ai iam create-group --group-name custom-group
+{
+    "Group": {
+        "Path": "/",
+        "GroupName": "custom-group",
+        "GroupId": "GRPK7ONKO77EZKM7FVI3AFB8UEXAMPLE",
+        "Arn": "arn:aws:iam::123456789012:group/custom-group",
+        "CreateDate": "2021-10-13T10:53:24+00:00"
+    }
+}
+```
+
+サブグループを削除する場合は以下のように`aws iam delete-group`コマンドに削除するグループの名前を指定します。
+なお、サブグループを削除する場合はサブグループにアカウントが存在しないこと、かつ、ポリシーが割り当てられていないことを確認してください。
+
+```
+[username@es1 ~]$ aws --endpoint-url https://s3.abci.ai iam delete-group --group-name custom-group
 ```
 
 コマンドのオプションなど詳しい使い方については、各コマンドのヘルプ(`aws iam create-group help`など)を確認してください。
