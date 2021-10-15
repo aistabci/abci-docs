@@ -106,15 +106,8 @@ If you want to delete a subgroup, make sure that the account does not exist in t
 
 For detailed usage such as command options, check the help for each command (such as `aws iam create-group help`).
 
+
 ## Example 1: Limiting Bucket Access By Subgroups
-
-<!--
-ABCIグループ内にaaa00000.1、aaa00001.1という2つのクラウドストレージアカウントが作られており、sensor8というバケットがあるものとします。
-この例では、バケットsensor8に対してオブジェクトの読み取り専用サブグループおよび書き込み専用サブグループを作成し、クラウドストレージアカウントのサブグループをこれらに変更することでアクセス制御を行います。
-
-まずは、サブグループを作成します。サブグループの作成には`aws iam create-group`コマンドを使用します。
-オブジェクトの読み取り専用のサブグループを`sensor8-read-only-group`、書き込み専用のサブグループを`sensor8-write-only-group`としています。
--->
 
 It is assumed that two cloud storage accounts, aaa00000.1 and aaa00001.1, are created in the ABCI group and a sensor8 bucket exists.
 In this example, we will create read-only and write-only subgroups of the object for the sensor8 bucket, and change the account groups to these groups to control access.
@@ -148,7 +141,8 @@ The name of the read-only subgroup is `sensor8-read-only-group`, and the name of
 }
 ```
 
-Next, create a policy that only allows reading of objects for the sensor8 bucket. Prepare a JSON file with the following contents. The file name here is `sensor8-read-only.json`.
+Next, create a policy that only allows reading of objects for the sensor8 bucket.
+Prepare a JSON file with the following contents. The file name is `sensor8-read-only.json`.
 
 ```
 {
@@ -183,7 +177,8 @@ The policy name is `sensor8-read-only`.
 }
 ```
 
-Next, create a policy that only allows writing of objects for the sensor8 bucket. Prepare a JSON file with the following contents. The file name here is `sensor8-write-only.json`.
+Next, create a policy that only allows writing of objects for the sensor8 bucket.
+Prepare a JSON file with the following contents. The file name is `sensor8-write-only.json`.
 
 ```
 {
@@ -229,7 +224,7 @@ To attach a policy, use the `aws iam attach-group-policy` command.
 Finally, move the cloud storage accounts from the default-sub-group subgroup to the new subgroup.
 Here we will move account aaa00000.1 to the read-only group and aaa00001.1 to the write-only group.
 
-First, we will remove the account from the default-sub-group subgroup.
+To move the account, first remove the account from the default-sub-group subgroup.
 To remove an account from a subgroup, use the `aws iam remove-user-from-group` command.
 
 ```
@@ -249,13 +244,7 @@ This completes the move of the accounts to the subgroups.
 Now account aaa00000.1 will only be able to download objects in bucket sensor8, and aaa00001.1 will only be able to upload objects.
 
 
-
 ## Example 2: Limiting Bucket Access By Networks
-
-接続元IPアドレスによるアクセス制限を行う例として、ABCI内部ネットワーク(10.0.0.0/17)外のアクセスは拒否する設定をdefault-sub-groupに追加する方法を説明します。
-
-接続元IPアドレスによるアクセス制限を行う例として、AAA内部ネットワーク(192.168.0.0/16)外のアクセスは拒否する設定をサブグループDDDに追加する方法を説明します。
-以下の内容のJSONファイルを作成します。ファイル名は`deny-outside-aaa.json`とします。
 
 As an example of restricting access by connection source IP address, we will explain how to add a setting to the default-sub-group subgroup to deny access outside the ABCI internal network (10.0.0.0/17).
 Create a JSON file with the following contents. The file name is `deny-outside-abci.json`.
