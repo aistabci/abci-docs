@@ -1,7 +1,7 @@
 
 # Access Control (3) - Group -
 
-In the ABCI cloud storage service, a subgroup **default-sub-group** to which the accounts in the ABCI group belong is prepared in advance.
+In the ABCI cloud storage service, a subgroup of **default-sub-group**, which the accounts in the ABCI group belong to is prepared in advance.
 By setting a policy for this subgroup, you can control access to all accounts that belong to the subgroup.
 
 The default-sub-group can be freely changed by the administrator cloud storage account.
@@ -13,7 +13,7 @@ This section describes how to manage subgroups and access control using subgroup
 ## Managing subgroups
 
 Use the AWS CLI to manage subgroups.
-In addition, a cloud storage account for the administrator is required to manage the subgroup. If you do not have the authority, ask the person who has the storage account for the administrator, such as the user administrator of the group to which you belong, to set or grant the authority.
+In addition, a cloud storage account for the administrator is required to manage the subgroup. If you do not have the authority, ask the person who has the storage account for the administrator, such as the user administrator of the group which you belong to, to set or grant the authority.
 
 The main commands used to manage subgroups are:
 
