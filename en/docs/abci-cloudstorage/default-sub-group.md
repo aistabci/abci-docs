@@ -4,7 +4,7 @@
 In the ABCI cloud storage service, a subgroup **default-sub-group** to which the accounts in the ABCI group belong is prepared in advance.
 By setting a policy for this subgroup, you can control access to all accounts that belong to the subgroup.
 
-The default-sub-group can be freely changed by the administrator cloudd storage account.
+The default-sub-group can be freely changed by the administrator cloud storage account.
 By default, default-sub-group has full access to the cloud storage in the group.
 You can also create a subgroup separate from the default-sub-group and control access for each subgroup.
 
@@ -20,13 +20,13 @@ The main commands used to manage subgroups are:
 | Command | Description |
 | --       | --   |
 | aws iam get-group | Display a list of cloud storage accounts that belong to the subgroup. |
-| aws iam list-groups | Display a list of the subgroup. |
+| aws iam list-groups | Display a list of the subgroups. |
 | aws iam create-group | Create a new subgroup. |
 | aws iam delete-group | Delete the subgroup. |
 | aws iam add-user-to-group | Add a cloud storage account to the subgroup. |
 | aws iam remove-user-from-group | Remove a cloud storage account from the subgroup. |
-| aws iam attach-group-policy | Attach access control policies to the subgroups. |
-| aws iam detach-group-policy | Detach access control policies form the subgroup. |
+| aws iam attach-group-policy | Attach an access control policy to the subgroup. |
+| aws iam detach-group-policy | Detach an access control policy form the subgroup. |
 | aws iam list-attached-group-policies | Display a list of access control policies attached to the subgroup. |
 | aws iam list-groups-for-user | Display a list of groups to which the cloud storage account belongs. |
 
@@ -110,7 +110,7 @@ For detailed usage such as command options, check the help for each command (suc
 ## Example 1: Limiting Bucket Access By Subgroups
 
 It is assumed that two cloud storage accounts, aaa00000.1 and aaa00001.1, are created in the ABCI group and a sensor8 bucket exists.
-In this example, we will create read-only and write-only subgroups of the object for the sensor8 bucket, and change the account groups to these groups to control access.
+In this example, we will create read-only and write-only subgroups of the object for the sensor8 bucket, and move the account from the default-sub-group subgroup to the newly created subgroup in order to control access.
 
 First, we will create a subgroup. Use the `aws iam create-group` command to create a subgroup.
 The name of the read-only subgroup is `sensor8-read-only-group`, and the name of the write-only subgroup is `sensor8-write-only-group`.
