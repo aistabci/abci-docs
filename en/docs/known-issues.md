@@ -2,7 +2,7 @@
 
 | date | category | content | status |
 |:--|:--|:--|:--|
-| 2021/10/19 | MPI | In OpenMPI 3.1.6 on the compute node (V), MPI_Send/MPI_Recv blocks when the -mca pml cm flag is specified in the mpirun command. | OpenMPI 3 is already unsupported, so please use OpenMPI 4. |
+| 2021/10/19 | MPI | In OpenMPI 3.1.6 on the compute node (V), we have confirmed that when the -mca pml cm flag is specified in the mpirun command, processing stops and does not proceed in MPI_Send/MPI_Recv. | OpenMPI 3 is no longer supported, so please use OpenMPI 4. |
 | 2021/07/06 | Singularity | The remote build function is not available due to a failure of the Remote Builder service. | 2021/07/21<br> close.<br>Resolved a communication problem in Remote Builder service. |
 | 2021/05/25 | GPU | A known issue has been identified that when using the GPU repeatedly, the processes remain with status D or Z and GPU memory is not released. When you try to use that GPU after this symptom, subsequent processes will not run normally because the GPU memory has not been released normally. If you find this symptom, please contact us at <qa@abci.ai>. | 2021/07/12<br>Currently investigating the cause. |
 | 2020/05/17 | MPI | With Open MPI 4.0.5, a MPI program execution using 66 nodes or more will be failed. If you use 66 nodes or more, please set mca parameters plm_rsh_no_tree_spawn to true and plm_rsh_num_concurrent to $NHOSTS when invoking the executable.<BR><BR>$ mpirun -mca plm_rsh_no_tree_spawn true -mca plm_rsh_num_concurrent $NHOSTS ./a.out | 2021/05/31<br>close<br>Modified the default value of these mca parameters |
