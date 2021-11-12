@@ -480,6 +480,7 @@ Reservedサービスでは、計算ノードを事前に予約して計画的な
 ### 予約の実行 {#make-a-reservation}
 
 計算ノードを予約するには、[ABCI利用ポータル](https://portal.abci.ai/user/)もしくは`qrsub`コマンドを使用します。
+予約が完了すると、予約IDが発行されますので、予約した計算ノードを使用する際にこの予約IDを指定してください。
 
 !!! warning
     計算ノードの予約は、利用責任者もしくは利用管理者のみが実施できます。
@@ -516,6 +517,7 @@ Your advance reservation 12345 has been granted
 ```
 
 計算ノードの予約が完了した時点でABCIポイントを消費します。
+また、発行された予約IDは予約時に指定したABCIグループに所属するABCIアカウントでご利用いただけます。
 
 ### 予約状態の確認 {#show-the-status-of-reservations}
 
