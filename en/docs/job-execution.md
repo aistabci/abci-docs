@@ -478,7 +478,7 @@ To make a reservation compute node, use `qrsub` command or the ABCI User Portal 
     Making reservation of compute node is permitted to a responsible person or a manager.
 
 !!! warning
-    You cannot reserve a compute node (A) in the ABCI usage portal.
+    You cannot reserve a compute node (A) in the ABCI User Portal.
 
 ```
 $ qrsub options
