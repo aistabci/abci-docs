@@ -472,7 +472,8 @@ The maximum number of nodes and the node-time product that can be reserved for t
 
 ### Make a reservation
 
-To make a reservation compute node, use `qrsub` command or the ABCI User Portal .
+To make a reservation compute node, use `qrsub` command or the ABCI User Portal.
+When the reservation is completed, a reservation ID will be issued. Please specify this reservation ID when using the reserved node.
 
 !!! warning
     Making reservation of compute node is permitted to a responsible person or a manager.
@@ -501,14 +502,15 @@ Example) Make a reservation 4 compute nodes(V) from 2018/07/05 to 1 week (7 days
 Your advance reservation 12345 has been granted
 ```
 
-The ABCI points are consumed when complete reservation.
-
 Example) Make a reservation 4 compute nodes(A) from 2021/07/05 to 1 week (7 days)
 
 ```
 [username@es1 ~]$ qrsub -a 20210705 -d 7 -g grpname -n 4 -N "Reserve_for_AI" -l rt_AF
 Your advance reservation 12345 has been granted
 ```
+
+The ABCI points are consumed when complete reservation.
+In addition, the issued reservation ID can be used for the ABCI accounts belonging to the ABCI group specified at the time of reservation.
 
 ### Show the status of reservations
 
