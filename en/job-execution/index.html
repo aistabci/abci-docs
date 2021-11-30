@@ -2376,14 +2376,15 @@ For more detail, use <code>man sge_accounting</code> command.</p>
 </tbody>
 </table>
 <h3 id="make-a-reservation">Make a reservation</h3>
-<p>To make a reservation compute node, use <code>qrsub</code> command or the ABCI User Portal .</p>
+<p>To make a reservation compute node, use <code>qrsub</code> command or the ABCI User Portal.
+When the reservation is completed, a reservation ID will be issued. Please specify this reservation ID when using the reserved node.</p>
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
 <p>Making reservation of compute node is permitted to a responsible person or a manager.</p>
 </div>
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
-<p>You cannot reserve a compute node (A) in the ABCI usage portal.</p>
+<p>You cannot reserve a compute node (A) in the ABCI User Portal.</p>
 </div>
 <div class="codehilite"><pre><span></span><code>$ qrsub options
 </code></pre></div>
@@ -2431,12 +2432,13 @@ For more detail, use <code>man sge_accounting</code> command.</p>
 <span class="n">Your</span><span class="w"> </span><span class="n">advance</span><span class="w"> </span><span class="n">reservation</span><span class="w"> </span><span class="mi">12345</span><span class="w"> </span><span class="n">has</span><span class="w"> </span><span class="n">been</span><span class="w"> </span><span class="n">granted</span><span class="w"></span>
 </code></pre></div>
 
-<p>The ABCI points are consumed when complete reservation.</p>
 <p>Example) Make a reservation 4 compute nodes(A) from 2021/07/05 to 1 week (7 days)</p>
 <div class="codehilite"><pre><span></span><code><span class="o">[</span><span class="n">username@es1 ~</span><span class="o">]</span><span class="err">$</span><span class="w"> </span><span class="n">qrsub</span><span class="w"> </span><span class="o">-</span><span class="n">a</span><span class="w"> </span><span class="mi">20210705</span><span class="w"> </span><span class="o">-</span><span class="n">d</span><span class="w"> </span><span class="mi">7</span><span class="w"> </span><span class="o">-</span><span class="n">g</span><span class="w"> </span><span class="n">grpname</span><span class="w"> </span><span class="o">-</span><span class="n">n</span><span class="w"> </span><span class="mi">4</span><span class="w"> </span><span class="o">-</span><span class="n">N</span><span class="w"> </span><span class="ss">&quot;Reserve_for_AI&quot;</span><span class="w"> </span><span class="o">-</span><span class="n">l</span><span class="w"> </span><span class="n">rt_AF</span><span class="w"></span>
 <span class="n">Your</span><span class="w"> </span><span class="n">advance</span><span class="w"> </span><span class="n">reservation</span><span class="w"> </span><span class="mi">12345</span><span class="w"> </span><span class="n">has</span><span class="w"> </span><span class="n">been</span><span class="w"> </span><span class="n">granted</span><span class="w"></span>
 </code></pre></div>
 
+<p>The ABCI points are consumed when complete reservation.
+In addition, the issued reservation ID can be used for the ABCI accounts belonging to the ABCI group specified at the time of reservation.</p>
 <h3 id="show-the-status-of-reservations">Show the status of reservations</h3>
 <p>To show the current status of reservations, use the <code>qrstat</code> command or the ABCI User Portal.</p>
 <p>Example)</p>
