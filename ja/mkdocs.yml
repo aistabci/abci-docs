@@ -64,9 +64,9 @@ nav:
   - 'お問い合わせ': 'contact.md'
   - 'リンク':
     - 'ABCI Webページ': 'https://abci.ai/ja/'
-    - 'ABCI利用ポータル手引き': 'https://docs.abci.ai/portal/ja/'
-    - 'ABCI利用ポータル (利用申請)': 'https://portal.abci.ai/user/project_register_app.php?lang=ja'
-    - 'ABCI利用ポータル (ログイン)':  'https://portal.abci.ai/user/login.php?lang=ja'
+    - 'ABCI利用者ポータル手引き': 'https://docs.abci.ai/portal/ja/'
+    - 'ABCI利用者ポータル (利用申請)': 'https://portal.abci.ai/user/project_register_app.php?lang=ja'
+    - 'ABCI利用者ポータル (ログイン)':  'https://portal.abci.ai/user/login.php?lang=ja'
 theme:
   name: 'material'
   favicon: 'img/favicon.png'

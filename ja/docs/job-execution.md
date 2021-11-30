@@ -479,14 +479,14 @@ Reservedサービスでは、計算ノードを事前に予約して計画的な
 
 ### 予約の実行 {#make-a-reservation}
 
-計算ノードを予約するには、[ABCI利用ポータル](https://portal.abci.ai/user/)もしくは`qrsub`コマンドを使用します。
+計算ノードを予約するには、[ABCI利用者ポータル](https://portal.abci.ai/user/)もしくは`qrsub`コマンドを使用します。
 予約が完了すると、予約IDが発行されますので、予約した計算ノードを使用する際にこの予約IDを指定してください。
 
 !!! warning
     計算ノードの予約は、利用責任者もしくは利用管理者のみが実施できます。
 
 !!! warning
-    ABCI利用ポータルでは、計算ノード(A)の予約はできません。
+    ABCI利用者ポータルでは、計算ノード(A)の予約はできません。
 
 ```
 $ qrsub options
@@ -521,7 +521,7 @@ Your advance reservation 12345 has been granted
 
 ### 予約状態の確認 {#show-the-status-of-reservations}
 
-予約状態を確認するには、[ABCI利用ポータル](https://portal.abci.ai/user/)もしくは`qrstat`コマンドを使用します。
+予約状態を確認するには、[ABCI利用者ポータル](https://portal.abci.ai/user/)もしくは`qrstat`コマンドを使用します。
 
 例)
 
@@ -543,7 +543,7 @@ ar-id      name       owner        state start at             end at            
 | duration | 予約期間 (hhh:mm:ss) |
 | sr | 常にfalseと表示 |
 
-システムあたりの予約可能ノード数を確認するには、[ABCI利用ポータル](https://portal.abci.ai/user/)もしくは`qrstat`コマンドの`--available`オプションを使用します。
+システムあたりの予約可能ノード数を確認するには、[ABCI利用者ポータル](https://portal.abci.ai/user/)もしくは`qrstat`コマンドの`--available`オプションを使用します。
 
 計算ノード(V)の予約可能ノード数の確認
 ```
@@ -569,7 +569,7 @@ ar-id      name       owner        state start at             end at            
 !!! warning
     予約の取り消しは利用責任者もしくは利用管理者のみが実施できます。
 
-予約を取り消すには、[ABCI利用ポータル](https://portal.abci.ai/user/)もしくは`qrdel`コマンドを使用します。`qrdel`コマンドでの予約取り消しは、「,(カンマ)」区切りのリストとして複数指定できます。指定したar_idの中に1つでも存在しない予約ID、もしくは削除権限のない予約IDが指定されている場合は、エラーとなり削除は実行されません。
+予約を取り消すには、[ABCI利用者ポータル](https://portal.abci.ai/user/)もしくは`qrdel`コマンドを使用します。`qrdel`コマンドでの予約取り消しは、「,(カンマ)」区切りのリストとして複数指定できます。指定したar_idの中に1つでも存在しない予約ID、もしくは削除権限のない予約IDが指定されている場合は、エラーとなり削除は実行されません。
 
 例) 予約を取り消し
 
@@ -604,7 +604,7 @@ Your job 12345 ("run.sh") has been submitted
 
 ### 予約ノードご利用時の注意 {#cautions-for-using-reserved-node}
 
-予約は期間中の計算ノードの健全性を保証するものではありません。予約した計算ノードの利用中に一部が利用不可となることがありますので、以下の点をご確認ください。
+予約は期間中の計算ノードの可用性を保証するものではありません。予約した計算ノードの利用中に一部が利用不可となることがありますので、以下の点をご確認ください。
 
 * 予約した計算ノードの利用可否状態は、`qrstat -ar ar_id` コマンドで確認できます。
 * 予約開始前日に一部の予約ノードが利用不可と表示される場合は、予約の取り消し・再度予約をご検討ください。
