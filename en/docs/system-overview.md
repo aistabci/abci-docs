@@ -141,7 +141,7 @@ The ABCI system has five storage systems for storing large amounts of data used 
 | 1 | DDN SFA 14KX x1<br>DDN SS9012 Enclosure x5 | 7.68 TB SAS SSD x185 | Home area, Application area |
 | 2 | DDN ES7990X x3<br>DDN SS9012 Enclosure x6 | 18 TB NL-SAS HDD x801 | Group area |
 | 3 | DDN ES400NVX x3 | 7.68 TB NVMe HDD x69 | Fast data area |
-| 4 | DDN SFA 14KX x3<br>DDN SS8462 Enclosure x30 | 3.84 TB SAS SSD x216<br>12 TB NL-SAS HDD x2400 | Group areas |
+| 4 | DDN SFA 14KX x3<br>DDN SS8462 Enclosure x30 | 3.84 TB SAS SSD x216<br>12 TB NL-SAS HDD x2400 | Group areas, High speed data storage for short-time usage |
 | 5 | HPE Apollo 4510 Gen10 x24 | 12 TB SATA HDD x1440 | ABCI Cloud Storage |
 
 Below is a list of shared file systems and ABCI Cloud Storage provided by the ABCI system using the above storage systems.
@@ -155,6 +155,7 @@ Below is a list of shared file systems and ABCI Cloud Storage provided by the AB
 | Group area 3 | /groups3 | 7.2 PB | GPFS | Reserved for special purposes |
 | ABCI Cloud Storage | | 13 PB max. | | See [ABCI Cloud Storage](abci-cloudstorage.md) |
 | Fast data area | /bb | 0.3 PB | | Reserved area for the particular application |
+| High speed data storage for short-time usage | /scratch | 0.4 PB | Lustre | See [High speed data storage for short-time usage](storage.md#scratch-area) |
 
 Interactive nodes, compute nodes, and memory-intensive nodes mount the shared file systems, and users can access these file systems from common mount points.
 However, the group area 1,2,3 cannot be accessed from the compute node (A).

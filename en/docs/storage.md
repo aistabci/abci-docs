@@ -83,6 +83,24 @@ To use Group area, "Usage Manager" of the group needs to apply "Add group disk" 
 
 To find the path to your group area, use the `show_quota` command. For details, see [Checking Disk Quota](getting-started.md#checking-disk-quota).
 
+### High speed data storage for short-time usage {#scratch-area}
+
+The high speed data storage for short-time usage is lustre file system and available for all ABCI users.
+This storage is shared by interactive nodes and all V and A calculated nodes.
+The quota for every users is set in 10TiB. 
+
+The following directory is available for all users as a high speed data area.
+```
+/scratch/(ABCI account)
+```
+
+!!! warning
+    In case the free space on this stotrage becomes less than the prescribed values, the files and directorirs, directly in /scratch/(ABCI account)/, which has been equals or more than 40 days will deleted automatically.
+    So the deleted files will not be able to be recoverd, please back them up if you need. 
+
+!!! note
+    In case you need to store a large amount of files, we recommend to use the high speed data storage for short-time usage and make directory in /scratch/(ABCI account) and store the files in the directory.
+
 ## Local Storage
 
 In ABCI System, a 1.6 TB NVMe SSD x1 is installed into each compute node (V), a 2.0 TB NVMe SSD x2 are installed into each compute node (A) and a 1.9 TB SATA 3.0 SSD x1 is installed into each memory-intensive node. There are two ways to utilize these storages as follows:
