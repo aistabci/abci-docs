@@ -6,6 +6,8 @@
 |:--|:--|:--|:--|
 | Update | OFED | 5.1-0.6.6.0 | 5.0-2.1.8.0 |
 
+* Maximum reserved nodes per reservation of compute node (V) has been changed in the Reserved Service from 32 to 34.
+
 ## 2021-08-12
 
 | Add / Update / Delete | Software | Version | Previous version |

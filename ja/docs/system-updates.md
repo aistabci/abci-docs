@@ -6,6 +6,8 @@
 |:--|:--|:--|:--|
 | Update | OFED | 5.1-0.6.6.0 | 5.0-2.1.8.0 |
 
+* Reservedサービスにおいて計算ノード(V)の1予約あたりの最大予約ノード数が32から34に変更されました。
+
 ## 2021-08-12
 
 | Add / Update / Delete | Software | Version | Previous version |
