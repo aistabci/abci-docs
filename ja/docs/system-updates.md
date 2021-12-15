@@ -1,5 +1,16 @@
 # システム更新履歴
 
+## 2021-12-15
+
+| Add / Update / Delete | Software | Version | Previous version |
+|:--|:--|:--|:--|
+| Update | OFED | 5.1-0.6.6.0 | 5.0-2.1.8.0 |
+| Update | Scality S3 Connector | 7.4.9.3 | 7.4.8.4 |
+| Update | NVIDIA Tesla Driver | [470.57.02](https://docs.nvidia.com/datacenter/tesla/tesla-release-notes-470-57-02/index.html) | 460.32.03 |
+| Add | ffmpeg | 3.4.9<br>4.2.5 |  |
+
+* Reservedサービスにおいて計算ノード(V)の1予約あたりの最大予約ノード数が32から34に変更されました。
+
 ## 2021-08-12
 
 | Add / Update / Delete | Software | Version | Previous version |
