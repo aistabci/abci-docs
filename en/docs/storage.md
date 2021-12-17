@@ -83,9 +83,9 @@ To use Group area, "Usage Manager" of the group needs to apply "Add group disk" 
 
 To find the path to your group area, use the `show_quota` command. For details, see [Checking Disk Quota](getting-started.md#checking-disk-quota).
 
-### High speed data storage for short-time usage {#scratch-area}
+## Global scratch area {#scratch-area}
 
-The high speed data storage for short-time usage is lustre file system and available for all ABCI users.
+Global scratch area is lustre file system and available for all ABCI users.
 This storage is shared by interactive nodes and all V and A calculated nodes.
 The quota for every users is set in 10TiB. 
 
@@ -95,11 +95,64 @@ The following directory is available for all users as a high speed data area.
 ```
 
 !!! warning
-    In case the free space on this stotrage becomes less than the prescribed values, the files and directorirs, directly in /scratch/(ABCI account)/, which has been equals or more than 40 days will deleted automatically.
+    In case the free space on this stotrage becomes less than the prescribed values, the files and directories, directly in /scratch/(ABCI account)/, which has been 40 days old or more will be deleted automatically.
     So the deleted files will not be able to be recoverd, please back them up if you need. 
 
 !!! note
-    In case you need to store a large amount of files, we recommend to use the high speed data storage for short-time usage and make directory in /scratch/(ABCI account) and store the files in the directory.
+    In case you need to store a large amount of files, we recommend to use the Global scratch area, make directory in /scratch/(ABCI account) and store the files in the directory.
+
+###  [Advanced Option] Data on MDT(DoM) {#advanced-option-dom}
+
+In the global scratch area, Data on MDT (DoM) function allows data to be stored on the MDT of Lustre.
+The maximum component size that DoM can create on an MDT is 64 KiB.
+
+#### How to configure DoM Features {#how-to-set-up-dom}
+
+Use the ```lfs setstripe``` command to configure DoM features.
+
+```
+$ lfs setstripe [options] <dirname | filename>
+```
+
+| Option | Description |
+|:--:|:---|
+| -E | Set the layout size. -S #k, -S #m, -S #g allows you to set the size in KiB, MiB and GiB. |
+| -L | Set Layout Type. Specifying ```mdt``` enables DoM. |
+
+Example）Create a new file with DoM enabled
+
+```
+[username@es1 work]$ lfs setstripe -E 64k -L mdt -E -1 dom-file
+[username@es1 work]$ ls
+dom-file
+```
+
+Example）Configure DoM features for the directory
+
+```
+[username@es1 work]$ mkdir dom-dir
+[username@es1 work]$ lfs setstripe -E 64k -L mdt -E -1 dom-dir
+```
+
+!!! note
+    The data stored in the MDT is limited to 64 KiB. Data exceeding 64 KiB is stored in OST.
+
+You can also configure [File Striping](storage.md#advanced-option-file-striping) with the DoM feature.
+
+Example) Create a new file with DoM capabilities and stripe patterns
+
+```
+[username@es1 work]$ lfs setstripe -E 64k -L mdt -E -1 -S 1m -i 10 -c 4 dom-stripe-file
+[username@es1 work]$ ls
+dom-stripe-file
+```
+
+Example) Configure DoM features and stripe patterns for the directory
+
+```
+[username@es1 work]$ mkdir dom-stripe-dir
+[username@es1 work]$ lfs setstripe -E 64k -L mdt -E -1 -S 1m -i 10 -c 4 dom-stripe-dir
+```
 
 ## Local Storage
 

@@ -83,19 +83,74 @@ stripe_count:  4 stripe_size:   1048576 stripe_offset: 10
 
 グループ領域のパスを確認するには、`show_quota` コマンドを実行してください。コマンドの説明については [ディスククォータの確認](getting-started.md#checking-disk-quota) を参照してください。
 
-### 短期利用高速データ領域 {#scratch-area}
+## グローバルスクラッチ領域 {#scratch-area}
 
-短期利用高速データ領域は、利用者全員が利用可能な、インタラクティブノードおよび各計算ノードで共有されたLustreファイルシステムの短期利用向け高速ストレージです。ディスククォータは10TiBに設定されています。
+グローバルスクラッチ領域は、利用者全員が利用可能な、インタラクティブノードおよび各計算ノードで共有されたLustreファイルシステムの短期利用向け高速ストレージです。ディスククォータは10TiBに設定されています。
 各利用者は以下の領域を短期利用高速データ領域として利用することが可能です。
 ```
 /scratch/(ABCIアカウント名)
 ```
 
 !!! warning
-    短期利用高速データ領域は、ストレージ全体の空き容量が少なくなった場合に、作成から40日経過した /scratch/(ABCIアカウント名) 直下のファイルおよびディレクトリが自動的に削除されます。削除されたファイルおよびディレクトリについては復元することができませんので、必要に応じて事前にバックアップ願います。
+    グローバルスクラッチ領域は、クリーンアップ機能を備えています。
+    ストレージ全体の空き容量が少なくなった場合に、作成から40日経過した/scratch/(ABCIアカウント名) 直下のファイルおよびディレクトリを自動的に削除します。
+    削除されたファイルおよびディレクトリは復元できませんので、必要に応じて事前にバックアップしてください。
 
 !!! note
-    短期利用高速データ領域配下に大量のファイルを格納する場合は、/scratch/(ABCIアカウント名) 配下にディレクトリを作成の上、格納いただくことを推奨いたします。
+    グローバルスクラッチ領域配下に大量のファイルを格納する場合は、/scratch/(ABCIアカウント名) 配下にディレクトリを作成の上、格納することを推奨します。
+
+### [高度な設定] DoM(Data on MDT)機能 {#advanced-option-dom}
+
+グローバルスクラッチ領域ではDoM(Data on MDT)機能により、LustreのMDT上にデータを格納することが可能です。
+なお、DoMでMDT上に作成可能なコンポーネントサイズの最大値は 64KiB となります。
+
+#### DoM機能の設定方法 {#how-to-set-up-dom}
+
+DoM機能の設定は、```lfs setstripe```コマンドで行います。
+
+```
+$ lfs setstripe [options] <dirname | filename>
+```
+
+| オプション | 説明 |
+|:--:|:---|
+| -E | レイアウトサイズを設定。-S #k, -S #m, -S #gとすることで、サイズをKiB,MiB,GiBで設定可能です。 |
+| -L | レイアウトタイプを設定。mdt を指定することで、DoM が有効になります。 |
+
+例）DoM を有効にした新規ファイルの作成
+
+```
+[username@es1 work]$ lfs setstripe -E 64k -L mdt -E -1 dom-file
+[username@es1 work]$ ls
+dom-file
+```
+
+例）ディレクトリに対して、DoM 機能を設定
+
+```
+[username@es1 work]$ mkdir dom-dir
+[username@es1 work]$ lfs setstripe -E 64k -L mdt -E -1 dom-dir
+```
+
+!!! note
+    64KiB まで MDT にデータが格納されます。このとき、64KiB を超えたデータは OST に格納されます。
+
+また、DoM 機能と一緒に[ストライプ機能](storage.md#advanced-option-file-striping)を設定可能です。
+
+例）DoM 機能とストライプパターンを持った新規ファイルの作成
+
+```
+[username@es1 work]$ lfs setstripe -E 64k -L mdt -E -1 -S 1m -i 10 -c 4 dom-stripe-file
+[username@es1 work]$ ls
+dom-stripe-file
+```
+
+例）ディレクトリに対して、DoM 機能とストライプパターンを設定
+
+```
+[username@es1 work]$ mkdir dom-stripe-dir
+[username@es1 work]$ lfs setstripe -E 64k -L mdt -E -1 -S 1m -i 10 -c 4 dom-stripe-dir
+```
 
 ## ローカルストレージ {#local-storage}
 
