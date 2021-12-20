@@ -116,7 +116,7 @@ $ lfs setstripe [options] <dirname | filename>
 
 | Option | Description |
 |:--:|:---|
-| -E | Set the layout size. -S #k, -S #m, -S #g allows you to set the size in KiB, MiB and GiB. |
+| -E | Set the layout size. -E #k, -E #m, -E #g allows you to set the size in KiB, MiB and GiB. |
 | -L | Set Layout Type. Specifying ```mdt``` enables DoM. |
 
 Example）Create a new file with DoM enabled
