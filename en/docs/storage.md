@@ -13,6 +13,9 @@ Home area is the disk area of the Lustre file system shared by interactive and c
 
 Home area is provided by the Lustre file system. The Lustre file system distributes and stores file data onto multiple disks. On home area, you can choose two distribution methods which are Round-Robin (default) and Striping.
 
+!!! Tips
+    See [Configuring Lustre File Striping](https://wiki.lustre.org/Configuring_Lustre_File_Striping) for an overview of file striping feature.
+
 #### How to Set Up File Striping
 
 ```
@@ -93,18 +96,24 @@ The following directory is available for all users as a high speed data area.
 ```
 /scratch/(ABCI account)
 ```
+To examine the global scratch space quota, run `show_quota` command. For a description of the command, see [Checking Disk Quota](getting-started.md#checking-disk-quota).
 
 !!! warning
-    In case the free space on this stotrage becomes less than the prescribed values, the files and directories, directly in /scratch/(ABCI account)/, which has been 40 days old or more will be deleted automatically.
-    So the deleted files will not be able to be recoverd, please back them up if you need. 
+    The global scratch area has a cleanup function.<br>
+    When the usage of the file area or i-node area of /scratch exceeds 80%, delete candidates are selected based on the last reference time and creation date of files and directories directly under /scratch/(ABCI account), and the files/directories of the delete candidates are automatically deleted. Note that the last reference time and creation date of the files/directories under that directory are not taken into account.<br>
+    The first candidate to be deleted is the one whose last reference time is older than 40 days. If, after deleting the candidate, the utilization of/scratch is still over 80%, the next candidate to be deleted is one whose creation date is older than 40 days. Make a note of the file/directory creation time since it cannot be checked by the ls command.
 
 !!! note
     In case you need to store a large amount of files, we recommend to use the Global scratch area, make directory in /scratch/(ABCI account) and store the files in the directory.
 
 ###  [Advanced Option] Data on MDT(DoM) {#advanced-option-dom}
 
-In the global scratch area, Data on MDT (DoM) function allows data to be stored on the MDT of Lustre.
+In the global scratch area, Data on MDT (DoM) function allows data to be stored on the MDT(Server that stores metadata) of Lustre.
+The purpose of using DoM is to improve the performance of small files (64 KiB or less).
 The maximum component size that DoM can create on an MDT is 64 KiB.
+
+!!! Tips
+    See [Data on MDT](https://wiki.lustre.org/Data_on_MDT) for an overview of DoM.
 
 #### How to configure DoM Features {#how-to-set-up-dom}
 
@@ -117,6 +126,7 @@ $ lfs setstripe [options] <dirname | filename>
 | Option | Description |
 |:--:|:---|
 | -E | Set the layout size. -E #k, -E #m, -E #g allows you to set the size in KiB, MiB and GiB. |
+| -E | Set component offset. -E #k, -E #m, -E #g allows you to set the size in KiB, MiB and GiB. Also, -1 means eof. |
 | -L | Set Layout Type. Specifying ```mdt``` enables DoM. |
 
 Example）Create a new file with DoM enabled
