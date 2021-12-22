@@ -89,19 +89,19 @@ To find the path to your group area, use the `show_quota` command. For details, 
 ## Global scratch area {#scratch-area}
 
 Global scratch area is lustre file system and available for all ABCI users.
-This storage is shared by interactive nodes and all V and A calculated nodes.
+This storage is shared by interactive nodes and all Compute Nodes V and A.
 The quota for every users is set in 10TiB. 
 
 The following directory is available for all users as a high speed data area.
 ```
 /scratch/(ABCI account)
 ```
-To examine the global scratch space quota, run `show_quota` command. For a description of the command, see [Checking Disk Quota](getting-started.md#checking-disk-quota).
+To see the quota value of the global scratch area, issue `show_quota` command. For a description of the command, see [Checking Disk Quota](getting-started.md#checking-disk-quota).
 
 !!! warning
     The global scratch area has a cleanup function.<br>
-    When the usage of the file area or i-node area of /scratch exceeds 80%, delete candidates are selected based on the last reference time and creation date of files and directories directly under /scratch/(ABCI account), and the files/directories of the delete candidates are automatically deleted. Note that the last reference time and creation date of the files/directories under that directory are not taken into account.<br>
-    The first candidate to be deleted is the one whose last reference time is older than 40 days. If, after deleting the candidate, the utilization of/scratch is still over 80%, the next candidate to be deleted is one whose creation date is older than 40 days. Make a note of the file/directory creation time since it cannot be checked by the ls command.
+    When the usage of the file area or i-node area of /scratch exceeds 80%, delete candidates are selected based on the last access time and creation date of files and directories directly under /scratch/(ABCI account), and the files/directories of the delete candidates are automatically deleted. If a directory directly under /scratch/(ABCI account) becomes a candidate for deletion, all files/directories under that directory are deleted. Note that the last access time and creation date of the files/directories under that directory are not taken into account.<br>
+    The first candidate to be deleted is the one whose last access time is older than 40 days. If, after deleting the candidate, the utilization of/scratch is still over 80%, the next candidate to be deleted is one whose creation date is older than 40 days. Make a note of the file/directory creation time since it cannot be checked by the ls command.
 
 !!! note
     In case you need to store a large amount of files, we recommend to use the Global scratch area, make directory in /scratch/(ABCI account) and store the files in the directory.
@@ -125,7 +125,6 @@ $ lfs setstripe [options] <dirname | filename>
 
 | Option | Description |
 |:--:|:---|
-| -E | Set the layout size. -E #k, -E #m, -E #g allows you to set the size in KiB, MiB and GiB. |
 | -E | Set component offset. -E #k, -E #m, -E #g allows you to set the size in KiB, MiB and GiB. Also, -1 means eof. |
 | -L | Set Layout Type. Specifying ```mdt``` enables DoM. |
 
