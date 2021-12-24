@@ -120,13 +120,14 @@ $ lfs setstripe [options] <dirname | filename>
 
 | オプション | 説明 |
 |:--:|:---|
-| -E | コンポーネントのオフセットを設定。-E #k, -E #m, -E #gとすることで、サイズをKiB,MiB,GiBで設定可能です。<br>また、-1はeofを意味します。 |
+| -E | 部分ファイルの終端を示すオフセット。-E #k, -E #m, -E #gとすることで、サイズをKiB,MiB,GiBで設定可能です。<br>また、-1はeofを意味します。 |
 | -L | レイアウトタイプを設定。mdt を指定することで、DoM が有効になります。 |
 
 !!! note
     DoMが有効なファイルに対してDoMを無効にすることはできません。また、DoMが無効なファイルに対してDoMを有効にすることはできません。
 
-例）DoM を有効にした新規ファイルの作成
+例）DoM を有効にした新規ファイルの作成<br>
+64KiB までの部分ファイルのレイアウトをmdtに設定します。
 
 ```
 [username@es1 work]$ lfs setstripe -E 64k -L mdt -E -1 dom-file
@@ -155,7 +156,8 @@ mdt
 
 また、DoM 機能と一緒に[ストライプ機能](storage.md#advanced-option-file-striping)を設定可能です。
 
-例）DoM 機能とストライプパターンを持った新規ファイルの作成
+例）DoM 機能とストライプパターンを持った新規ファイルの作成<br>
+64KiBまでの部分ファイルのレイアウトをmdtに設定し、残りの部分についてストライプパターンを設定します。
 
 ```
 [username@es1 work]$ lfs setstripe -E 64k -L mdt -E -1 -S 1m -i -1 -c 4 dom-stripe-file

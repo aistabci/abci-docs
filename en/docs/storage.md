@@ -125,13 +125,14 @@ $ lfs setstripe [options] <dirname | filename>
 
 | Option | Description |
 |:--:|:---|
-| -E | Set component offset. -E #k, -E #m, -E #g allows you to set the size in KiB, MiB and GiB. Also, -1 means eof. |
+| -E | Specify the end offset of each component. -E #k, -E #m, -E #g allows you to set the size in KiB, MiB and GiB. Also, -1 means eof. |
 | -L | Set Layout Type. Specifying ```mdt``` enables DoM. |
 
 !!! note
     You cannot disable DoM for DoM-enabled files. Also, you cannot enable DoM for files with DoM disabled.
 
-Example）Create a new file with DoM enabled
+Example）Create a new file with DoM enabled<br>
+The first 64KiB of the file data is placed on the MDT and rest of file is placed  on  OST(s) with default striping.
 
 ```
 [username@es1 work]$ lfs setstripe -E 64k -L mdt -E -1 dom-file
