@@ -105,7 +105,7 @@ stripe_count:  4 stripe_size:   1048576 stripe_offset: 10
 
 ### [高度な設定] Data on MDT(DoM)機能 {#advanced-option-dom}
 
-グローバルスクラッチ領域ではData on MDT(DoM)機能を利用可能です。DoM機能を有効にすることにより、サイズの小さいファイル(本サービスでは64KiB以下)に対する性能向上を期待できます。デフォルトはDoM機能およびストライプ機能は無効であり、1ファイルにつき1つのOSTに格納される設定となっております。
+グローバルスクラッチ領域ではData on MDT(DoM)機能を利用可能です。DoM機能を有効にすることにより、サイズの小さいファイルアクセスにおける性能向上を期待できます。デフォルトはDoM機能およびストライプ機能は無効であり、1ファイルにつき1つのOSTに格納される設定となっております。
 
 !!! Tips
     DoMの概要については[Data on MDT](https://wiki.lustre.org/Data_on_MDT)を参照願います。
@@ -141,7 +141,7 @@ dom-file
 [username@es1 work]$ lfs setstripe -E 64k -L mdt -E -1 dom-dir
 ```
 
-例) DoM機能が有効になっているかを確認
+例) 保存されているファイルに対して、DoM機能が有効になっているかを確認
 
 ```
 [username@es1 work]$ lfs getstripe -I1 -L dom-file
@@ -151,7 +151,7 @@ mdt
 `mdt`と表示されればそのファイルはDoM機能が有効になっています。それ以外の表示の場合は無効です。
 
 !!! note
-    64KiB まで MDT にデータが格納されます。このとき、64KiB を超えたデータは OST に格納されます。
+    上記の例では 64KiB まで MDT にデータが格納されます。このとき、64KiB を超えたデータは OST に格納されます。
 
 また、DoM 機能と一緒に[ストライプ機能](storage.md#advanced-option-file-striping)を設定可能です。
 
@@ -163,7 +163,7 @@ mdt
 dom-stripe-file
 ```
 
-例）ディレクトリに対して、DoM 機能とストライプパターンを設定
+例）ディレクトリに対して、DoM 機能と OST に格納する部分データのストライプパターンを設定
 
 ```
 [username@es1 work]$ mkdir dom-stripe-dir
