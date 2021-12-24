@@ -109,7 +109,7 @@ To see the quota value of the global scratch area, issue `show_quota` command. F
 ###  [Advanced Option] Data on MDT(DoM) {#advanced-option-dom}
 
 The Data on MDT (DoM) function is available in the global scratch area.
-By enabling the DoM function, performance improvement can be expected for small files (under 64 KiB in ABCI).
+By enabling the DoM function, performance improvement can be expected for small-file access.
 Note that the DoM and Stripe features are disabled by default.
 
 !!! Tips
@@ -156,11 +156,11 @@ mdt
 If you see `mdt`, the DoM feature is enabled. It is not valid for any other display.
 
 !!! note
-    The data stored in the MDT is limited to 64 KiB. Data exceeding 64 KiB is stored in OST.
+    In the above example, the data stored in the MDT is limited to 64 KiB. Data exceeding 64 KiB is stored in OST(s).
 
 You can also configure [File Striping](storage.md#advanced-option-file-striping) with the DoM feature.
 
-Example) Create a new file with DoM capabilities and stripe patterns
+Example) Create a new file with DoM layout and a specific striping pattern for the rest data placed on OST(s).
 
 ```
 [username@es1 work]$ lfs setstripe -E 64k -L mdt -E -1 -S 1m -i -1 -c 4 dom-stripe-file
@@ -168,7 +168,7 @@ Example) Create a new file with DoM capabilities and stripe patterns
 dom-stripe-file
 ```
 
-Example) Configure DoM features and stripe patterns for the directory
+Example) Enable the DoM feature and set a striping pattern (for OST(s)) of the directory
 
 ```
 [username@es1 work]$ mkdir dom-stripe-dir
