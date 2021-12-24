@@ -98,16 +98,14 @@ stripe_count:  4 stripe_size:   1048576 stripe_offset: 10
 !!! warning
     グローバルスクラッチ領域は、クリーンアップ機能を備えています。<br>
     /scratchのファイル領域またはi-node領域の利用率が80%を超過した場合に、/scratch/(ABCIアカウント名) 直下のファイルおよびディレクトリの最終アクセス時間と作成日をもとに削除候補を選び、削除候補のファイル/ディレクトリを自動的に削除します。/scratch/(ABCIアカウント名) 直下のディレクトリが削除候補になった場合は、そのディレクトリ配下のすべてのファイル/ディレクトリが削除されます。そのディレクトリ配下のファイル/ディレクトリの最終アクセス時間と作成日は考慮されませんので、ご注意ください。<br>
-    最初の削除候補として、最終アクセス時間が40日を経過したものが選ばれます。その候補を削除した後に、まだ、/scratchの利用率が80%超過の場合は、作成日が40日を経過したものが次の削除候補として選ばれます。ファイル/ディレクトリの作成日はlsコマンドで調査できないため、ご自分で記録しておいてください。
+    最初の削除候補として、最終アクセス時間が40日を経過したものが選ばれます。その候補を削除した後に、まだ、/scratchの利用率が80%超過の場合は、作成日が40日を経過したものが次の削除候補として選ばれます。ファイル/ディレクトリの作成日はlsコマンドで確認できないため、利用者自身で控えるようにしてください。
 
 !!! note
-    グローバルスクラッチ領域配下に大量のファイルを格納する場合は、/scratch/(ABCIアカウント名) 配下にディレクトリを作成の上、格納することを推奨します。
+    グローバルスクラッチ領域配下に大量のファイルを格納する場合は、/scratch/(ABCIアカウント名) 配下にディレクトリを作成の上、格納するようにして下さい。
 
 ### [高度な設定] Data on MDT(DoM)機能 {#advanced-option-dom}
 
-グローバルスクラッチ領域ではData on MDT(DoM)機能により、LustreのMDT(メタデータを格納するサーバ)上にデータを格納することが可能です。
-DoMの使用目的は、サイズの小さい(64KiB以下)ファイルのパフォーマンス向上となります。
-なお、DoMでMDT上に作成可能なコンポーネントサイズの最大値は 64KiB となります。
+グローバルスクラッチ領域ではData on MDT(DoM)機能を利用可能です。DoM機能を有効にすることにより、サイズの小さいファイル(本サービスでは64KiB以下)に対する性能向上を期待できます。デフォルトはDoM機能およびストライプ機能は無効であり、1ファイルにつき1つのOSTに格納される設定となっております。
 
 !!! Tips
     DoMの概要については[Data on MDT](https://wiki.lustre.org/Data_on_MDT)を参照願います。
@@ -125,6 +123,9 @@ $ lfs setstripe [options] <dirname | filename>
 | -E | コンポーネントのオフセットを設定。-E #k, -E #m, -E #gとすることで、サイズをKiB,MiB,GiBで設定可能です。<br>また、-1はeofを意味します。 |
 | -L | レイアウトタイプを設定。mdt を指定することで、DoM が有効になります。 |
 
+!!! note
+    DoMが有効なファイルに対してDoMを無効にすることはできません。また、DoMが無効なファイルに対してDoMを有効にすることはできません。
+
 例）DoM を有効にした新規ファイルの作成
 
 ```
@@ -140,6 +141,15 @@ dom-file
 [username@es1 work]$ lfs setstripe -E 64k -L mdt -E -1 dom-dir
 ```
 
+例) DoM機能が有効になっているかを確認
+
+```
+[username@es1 work]$ lfs getstripe -I1 -L dom-file
+mdt
+
+```
+`mdt`と表示されればそのファイルはDoM機能が有効になっています。それ以外の表示の場合は無効です。
+
 !!! note
     64KiB まで MDT にデータが格納されます。このとき、64KiB を超えたデータは OST に格納されます。
 
@@ -148,7 +158,7 @@ dom-file
 例）DoM 機能とストライプパターンを持った新規ファイルの作成
 
 ```
-[username@es1 work]$ lfs setstripe -E 64k -L mdt -E -1 -S 1m -i 10 -c 4 dom-stripe-file
+[username@es1 work]$ lfs setstripe -E 64k -L mdt -E -1 -S 1m -i -1 -c 4 dom-stripe-file
 [username@es1 work]$ ls
 dom-stripe-file
 ```
@@ -157,7 +167,7 @@ dom-stripe-file
 
 ```
 [username@es1 work]$ mkdir dom-stripe-dir
-[username@es1 work]$ lfs setstripe -E 64k -L mdt -E -1 -S 1m -i 10 -c 4 dom-stripe-dir
+[username@es1 work]$ lfs setstripe -E 64k -L mdt -E -1 -S 1m -i -1 -c 4 dom-stripe-dir
 ```
 
 ## ローカルストレージ {#local-storage}
