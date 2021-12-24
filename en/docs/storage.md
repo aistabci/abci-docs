@@ -13,6 +13,9 @@ Home area is the disk area of the Lustre file system shared by interactive and c
 
 Home area is provided by the Lustre file system. The Lustre file system distributes and stores file data onto multiple disks. On home area, you can choose two distribution methods which are Round-Robin (default) and Striping.
 
+!!! Tips
+    See [Configuring Lustre File Striping](https://wiki.lustre.org/Configuring_Lustre_File_Striping) for an overview of file striping feature.
+
 #### How to Set Up File Striping
 
 ```
@@ -82,6 +85,95 @@ Group area is the disk area of the Lustre file system shared by interactive and 
 To use Group area, "Usage Manager" of the group needs to apply "Add group disk" via [ABCI User Portal](https://portal.abci.ai/user/). Regarding how to add group disk, please refer to [Disk Addition Request](https://docs.abci.ai/portal/en/03/#352-disk-addition-request) in the [ABCI Portal Guide](https://docs.abci.ai/portal/en/).
 
 To find the path to your group area, use the `show_quota` command. For details, see [Checking Disk Quota](getting-started.md#checking-disk-quota).
+
+## Global scratch area {#scratch-area}
+
+Global scratch area is lustre file system and available for all ABCI users.
+This storage is shared by interactive nodes and all Compute Nodes V and A.
+The quota for every users is set in 10TiB. 
+
+The following directory is available for all users as a high speed data area.
+```
+/scratch/(ABCI account)
+```
+To see the quota value of the global scratch area, issue `show_quota` command. For a description of the command, see [Checking Disk Quota](getting-started.md#checking-disk-quota).
+
+!!! warning
+    The global scratch area has a cleanup function.<br>
+    When the usage of the file area or i-node area of /scratch exceeds 80%, delete candidates are selected based on the last access time and creation date of files and directories directly under /scratch/(ABCI account), and the files/directories of the delete candidates are automatically deleted. If a directory directly under /scratch/(ABCI account) becomes a candidate for deletion, all files/directories under that directory are deleted. Note that the last access time and creation date of the files/directories under that directory are not taken into account.<br>
+    The first candidate to be deleted is the one whose last access time is older than 40 days. If, after deleting the candidate, the utilization of/scratch is still over 80%, the next candidate to be deleted is one whose creation date is older than 40 days. Make a note of the file/directory creation date since it cannot be checked by the ls command.
+
+!!! note
+    When storing a large number of files under the global scratch area, create a directory under /scratch/(ABCI account) and store the files in the directory.
+
+###  [Advanced Option] Data on MDT(DoM) {#advanced-option-dom}
+
+The Data on MDT (DoM) function is available in the global scratch area.
+By enabling the DoM function, performance improvement can be expected for small files (under 64 KiB in ABCI).
+Note that the DoM and Stripe features are disabled by default.
+
+!!! Tips
+    See [Data on MDT](https://wiki.lustre.org/Data_on_MDT) for an overview of DoM.
+
+#### How to configure DoM Features {#how-to-set-up-dom}
+
+Use the ```lfs setstripe``` command to configure DoM features.
+
+```
+$ lfs setstripe [options] <dirname | filename>
+```
+
+| Option | Description |
+|:--:|:---|
+| -E | Set component offset. -E #k, -E #m, -E #g allows you to set the size in KiB, MiB and GiB. Also, -1 means eof. |
+| -L | Set Layout Type. Specifying ```mdt``` enables DoM. |
+
+!!! note
+    You cannot disable DoM for DoM-enabled files. Also, you cannot enable DoM for files with DoM disabled.
+
+Example）Create a new file with DoM enabled
+
+```
+[username@es1 work]$ lfs setstripe -E 64k -L mdt -E -1 dom-file
+[username@es1 work]$ ls
+dom-file
+```
+
+Example）Configure DoM features for the directory
+
+```
+[username@es1 work]$ mkdir dom-dir
+[username@es1 work]$ lfs setstripe -E 64k -L mdt -E -1 dom-dir
+```
+
+Example) Checking if the file is DoM enabled
+
+```
+[username@es1 work]$ lfs getstripe -I1 -L dom-file
+mdt
+
+```
+If you see `mdt`, the DoM feature is enabled. It is not valid for any other display.
+
+!!! note
+    The data stored in the MDT is limited to 64 KiB. Data exceeding 64 KiB is stored in OST.
+
+You can also configure [File Striping](storage.md#advanced-option-file-striping) with the DoM feature.
+
+Example) Create a new file with DoM capabilities and stripe patterns
+
+```
+[username@es1 work]$ lfs setstripe -E 64k -L mdt -E -1 -S 1m -i -1 -c 4 dom-stripe-file
+[username@es1 work]$ ls
+dom-stripe-file
+```
+
+Example) Configure DoM features and stripe patterns for the directory
+
+```
+[username@es1 work]$ mkdir dom-stripe-dir
+[username@es1 work]$ lfs setstripe -E 64k -L mdt -E -1 -S 1m -i -1 -c 4 dom-stripe-dir
+```
 
 ## Local Storage
 

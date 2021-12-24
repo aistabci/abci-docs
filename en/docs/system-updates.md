@@ -10,6 +10,7 @@
 | Add | ffmpeg | 3.4.9<br>4.2.5 |  |
 
 * Maximum reserved nodes per reservation of compute node (V) has been changed in the Reserved Service from 32 to 34.
+* With the addition of the Global Scratch Area, we added [Global scratch area](storage.md#scratch-area) section.
 
 ## 2021-08-12
 
