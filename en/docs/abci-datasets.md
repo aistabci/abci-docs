@@ -88,7 +88,7 @@ Next, upload the YAML file to the ABCI Cloud Storage.  When the dataset is store
 [username@es1 ~]$ aws --endpoint-url https://s3.abci.ai s3 cp --acl public-read my_dataset_info.yaml s3://example-dataset/my_dataset_info.yaml
 ```
 
-Finally, send an e-mail to <M-abci-datasets-ml@aist.go.jp> as a registry application, by using the following format.  If you belong to multiple ABCI groups, please include the ABCI group that owns the bucket where the dataset is stored or the YAML file has been just uploaded.
+Finally, send an e-mail to <datasets@abci.ai> as a registry application, by using the following format.  If you belong to multiple ABCI groups, please include the ABCI group that owns the bucket where the dataset is stored or the YAML file has been just uploaded.
 
 ```text
 Subject: Dataset Registration Application (<YOUR DATASET NAME>)
@@ -103,9 +103,9 @@ Once the registration is accepted, the dataset will be listed on <https://datase
 
 ## 2. Update of Existing Registration
 
-Update the YAML file stored in the bucket of ABCI Cloud Storage, and then send the request to <M-abci-datasets-ml@aist.go.jp>.
+Update the YAML file stored in the bucket of ABCI Cloud Storage, and then send the request to <datasets@abci.ai>.
 
 
 ## 3. Delete of Existing Registration
 
-Delete the YAML file stored in the bucket of ABCI Cloud Storage, and then send the request to <M-abci-datasets-ml@aist.go.jp>.
+Delete the YAML file stored in the bucket of ABCI Cloud Storage, and then send the request to <datasets@abci.ai>.

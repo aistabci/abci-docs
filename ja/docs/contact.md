@@ -29,7 +29,7 @@ ABCIユーザサポートでは、以下のお問い合わせやご報告を受�
 ```
 
 !!! note
-    ABCIの利用申請はABCI利用ポータルで行えます。手順については [利用ポータルガイド](https://docs.abci.ai/portal/ja/01/) をご参照ください。申請手順、グループ管理、利用料金などに関する質問、大容量データの移行に関する相談等は <abci-application-ml@aist.go.jp> までお問い合わせください。
+    ABCIの利用申請はABCI利用者ポータルで行えます。手順については [ABCI利用者ポータルガイド](https://docs.abci.ai/portal/ja/01/) をご参照ください。申請手順、グループ管理、利用料金などに関する質問、大容量データの移行に関する相談等は <abci-application-ml@aist.go.jp> までお問い合わせください。
 
 !!! note
     セキュリティに関するご質問等は <abci-inquiry-ml@aist.go.jp> までお問い合わせください。セキュリティホワイトペーパーは、[こちら](https://abci.ai/ja/link/security.html) からダウンロードできます。

@@ -51,8 +51,10 @@ nav:
     - 'データの暗号化': 'abci-cloudstorage/encryption.md'
     - 'アクセス制御(1)': 'abci-cloudstorage/acl.md'
     - 'アクセス制御(2)': 'abci-cloudstorage/policy.md'
+    - 'アクセス制御(3)': 'abci-cloudstorage/default-sub-group.md'
     - 'データセットの公開': 'abci-cloudstorage/publishing-datasets.md'
     - 'ご利用時の注意': 'abci-cloudstorage/caution.md'
+    - 's3fs-fuseの利用': 'abci-cloudstorage/s3fs-usage.md'
   - 'ABCI データセット': 'abci-datasets.md'
   - 'ABCI Singularity エンドポイント': 'abci-singularity-endpoint.md'
   - 'FAQ': 'faq.md'
@@ -62,9 +64,9 @@ nav:
   - 'お問い合わせ': 'contact.md'
   - 'リンク':
     - 'ABCI Webページ': 'https://abci.ai/ja/'
-    - 'ABCI利用ポータル手引き': 'https://docs.abci.ai/portal/ja/'
-    - 'ABCI利用ポータル (利用申請)': 'https://portal.abci.ai/user/project_register_app.php?lang=ja'
-    - 'ABCI利用ポータル (ログイン)':  'https://portal.abci.ai/user/login.php?lang=ja'
+    - 'ABCI利用者ポータル手引き': 'https://docs.abci.ai/portal/ja/'
+    - 'ABCI利用者ポータル (利用申請)': 'https://portal.abci.ai/user/project_register_app.php?lang=ja'
+    - 'ABCI利用者ポータル (ログイン)':  'https://portal.abci.ai/user/login.php?lang=ja'
 theme:
   name: 'material'
   favicon: 'img/favicon.png'

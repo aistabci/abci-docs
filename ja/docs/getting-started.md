@@ -3,17 +3,17 @@
 ## ABCIアカウントの取得 {#getting-an-account}
 
 ### ABCIの利用申請 {#application-for-use-of-abci}
-ABCIを利用するためには、[「ご利用の流れ」](https://abci.ai/ja/how_to_use/)に掲載された利用規定（約款または規約）に従い、研究・開発テーマを決定し、[ABCI利用ポータル](https://portal.abci.ai/user/project_register_app.php) から「ABCI利用申請」を提出します。ABCI申請受付担当は利用規定に基づいて審査し、要件が満たされている場合に、申請されたABCIグループを作成し、申請者に採択された旨を通知します。申請者が通知を受け取ったら、利用開始となります。
+ABCIを利用するためには、[「ご利用の流れ」](https://abci.ai/ja/how_to_use/)に掲載された利用規定（約款または規約）に従い、研究・開発テーマを決定し、[ABCI利用者ポータル](https://portal.abci.ai/user/project_register_app.php) から「ABCI利用申請」を提出します。ABCI申請受付担当は利用規定に基づいて審査し、要件が満たされている場合に、申請されたABCIグループを作成し、申請者に採択された旨を通知します。申請者が通知を受け取ったら、利用開始となります。
 
 利用料金は、[料金表](https://abci.ai/ja/how_to_use/tariffs.html)を確認の上、ABCIポイントを購入することで支払いいただきます。ABCIポイントはABCIグループごとに購入してください。申請時には、ABCIポイントを 1,000ポイント以上購入する必要があります。
 
 ### ABCIアカウントの種類 {#account-type}
-ABCIアカウントには、「利用責任者」「利用管理者」「利用者」の3種類があります。ABCIシステムを利用するには、「利用責任者」が [ABCI利用ポータル](https://portal.abci.ai/user/project_register_app.php) から「利用グループ申請」を行い、ABCIアカウントを取得する必要があります。
-詳細は [ABCI利用ポータル利用手引き](https://docs.abci.ai/portal/ja/) を参照してください。
+ABCIアカウントには、「利用責任者」「利用管理者」「利用者」の3種類があります。ABCIシステムを利用するには、「利用責任者」が [ABCI利用者ポータル](https://portal.abci.ai/user/project_register_app.php) から「利用グループ申請」を行い、ABCIアカウントを取得する必要があります。
+詳細は [ABCI利用者ポータルガイド](https://docs.abci.ai/portal/ja/) を参照してください。
 
 !!! note
     - 「利用責任者」自身にもABCIアカウントが発行されます。
-    - 「利用責任者」は [ABCI利用ポータル](https://portal.abci.ai/user/) にて「利用者」を「利用管理者」に変更することが可能です。
+    - 「利用責任者」は [ABCI利用者ポータル](https://portal.abci.ai/user/) にて「利用者」を「利用管理者」に変更することが可能です。
     - 「利用責任者」と「利用管理者」は、ABCIグループに「利用管理者」もしくは「利用者」を追加することが可能です。
     - 「利用責任者」と「利用管理者」は、ABCIグループの「利用責任者」を変更することが可能です。
 
@@ -22,7 +22,7 @@ ABCIアカウントには、「利用責任者」「利用管理者」「利用�
 一方で1人の方が複数の法人に所属している場合は複数のABCIアカウントを取得することができます。この場合、それぞれの法人に対応するABCIアカウントを使い分ける必要があります。
 
 ### 複数のABCIグループに所属する場合 {#multi-titled-person}
-1人の方が1つの法人の中で複数のテーマに同時に取り組んでいる場合、1人で複数のABCIアカウントをそれぞれ取得するのではなく、1つのABCIアカウントで複数のABCIグループに所属することになります。この場合、その利用目的に応じてABCIグループを使い分ける必要があります。どのABCIグループを利用すべきか不明の場合は、ABCIグループの「利用責任者」または「利用管理者」へお問い合わせください。自分が所属しているABCIグループの「利用責任者」または「利用管理者」は、[ABCI利用ポータル](https://portal.abci.ai/user/) へログイン後の最初の画面に表示されます。
+1人の方が1つの法人の中で複数のテーマに同時に取り組んでいる場合、1人で複数のABCIアカウントをそれぞれ取得するのではなく、1つのABCIアカウントで複数のABCIグループに所属することになります。この場合、その利用目的に応じてABCIグループを使い分ける必要があります。どのABCIグループを利用すべきか不明の場合は、ABCIグループの「利用責任者」または「利用管理者」へお問い合わせください。自分が所属しているABCIグループの「利用責任者」または「利用管理者」は、[ABCI利用者ポータル](https://portal.abci.ai/user/) へログイン後の最初の画面に表示されます。
 
 ご利用料金をどのABCIグループが負担するかに関わるため、ABCIグループの「利用責任者」または「利用管理者」の指示に従い、適切なABCIグループを利用ください。
 
@@ -46,7 +46,7 @@ ABCIシステムのフロントエンドであるインタラクティブノー�
 	* RSA鍵 (2048bit以上)
 	* ECDSA鍵 (256bit、384bit、または521bit)
 	* Ed25519鍵
-* SSH公開鍵の登録。[ABCI利用ポータル](https://portal.abci.ai/user/)にてSSH公開鍵の登録を事前に行ってください。登録方法は、[SSH公開鍵の登録](https://docs.abci.ai/portal/ja/02/#23)を参照してください。
+* SSH公開鍵の登録。[ABCI利用者ポータル](https://portal.abci.ai/user/)にてSSH公開鍵の登録を事前に行ってください。登録方法は、[SSH公開鍵の登録](https://docs.abci.ai/portal/ja/02/#23)を参照してください。
 
 !!! note
     SSHクライアントとして、Tera TermやPuTTYを利用する場合は、[Tera Termの利用](tips/tera-term.md)、[PuTTYの利用](tips/putty.md)を参照。
@@ -113,6 +113,7 @@ Host <i>abci</i>
      User username
      ProxyJump %r@<i>as.abci.ai</i>
      IdentityFile /path/to/identity_file
+     HostKeyAlgorithms ssh-rsa
 
 Host <i>abci-a</i>
      HostName <i>es-a</i>
@@ -171,7 +172,7 @@ ProxyJumpが使える場合は、SSHトンネルを明示的に設定する必�
 ## パスワード変更 {#changing-password}
 
 ABCIシステムのパスワードはLDAPで管理されています。 SSHログインではパスワードは使用しませんが、
-[ABCI利用ポータル](https://portal.abci.ai/user/)へのログイン、ログインシェルの変更の際にパスワードが必要になります。
+[ABCI利用者ポータル](https://portal.abci.ai/user/)へのログイン、ログインシェルの変更の際にパスワードが必要になります。
 パスワードを変更する場合は、`passwd`コマンドを使用します。
 
 ```
@@ -249,6 +250,33 @@ grpname                  5                  0.0124             12,345.6789      
 | Used  | ABCIポイント使用量 |
 | Point | ABCIポイント購入量 |
 | Used% | ABCIポイント消費率 |
+
+月ごとのABCIポイントの使用状況を確認するには、`show_point_history`コマンドを利用します。
+
+例) ABCIポイントの月単位の使用状況を確認する。
+
+```
+[username@es1 ~]$ show_point_history -g grpname
+                      Apr        May        Jun        Jul        Aug        Sep        Oct        Nov        Dec        Jan        Feb        Mar          Total
+Disk           1,000.0000     0.0000     0.0000          -          -          -          -          -          -          -          -          -     1,000.0000
+CloudStorage       1.0000     1.5000     0.5000          -          -          -          -          -          -          -          -          -         2.0000
+Job              100.0000    50.0000    10.0000          -          -          -          -          -          -          -          -          -       160.0000
+  |- username1    60.0000    40.0000     5.0000          -          -          -          -          -          -          -          -          -       105.0000
+  `- username2    40.0000    10.0000     5.0000          -          -          -          -          -          -          -          -          -        55.0000
+Total          1,101.0000    51.5000    10.5000          -          -          -          -          -          -          -          -          -     1,162.0000
+```
+
+| 項目  | 説明 |
+|:--|:--|
+| Disk  | グループ領域のABCIポイント使用量 |
+| CloudStorage | ABCIクラウドストレージの ABCIポイント使用量 |
+| Job | グループ所属全ユーザのOn-demand、Spot、ReservedサービスでのABCIポイント使用量の合計値 |
+| Total(行) | Disk、CloudStorage、JobでのABCIポイント使用量の合計値 |
+
+!!! note
+    - ジョブサービスのABCIポイント使用の計算については、[課金](job-execution.md#accounting)を参照してください。
+    - On-demandおよびSpotサービスのジョブ実行から終了の間に月を跨ぐ場合、当該ジョブのポイント使用量は全てジョブを投入した月にてカウントします。ジョブ終了後の返却処理も、ジョブを投入した月の使用ポイントに対して実施されます。
+    - Reservedサービスの使用ポイントは、予約を作成した月にカウントします。予約を取り消した場合、予約を作成した月の使用ポイントから当該予約分のポイントが削減されます。
 
 ## ディスククォータの確認 {#checking-disk-quota}
 

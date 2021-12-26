@@ -34,7 +34,7 @@ If you do not have signed in with an NGC account, you can neither see the inform
 
 In the following instructions, we will use freely available images. To use locked images, we will explain later ([Using Locked Images](#using-locked-images)).
 
-See [NGC Getting Started Guide](https://docs.nvidia.com/ngc/ngc-getting-started-guide/index.html) for more details on NGC Website.
+See [NGC Documentation](https://docs.nvidia.com/ngc/index.html) for more details on NGC Website.
 
 ## Single-node Run {#single-node-run}
 
@@ -51,13 +51,13 @@ Then, you'll find:
 In this page, you will see the ``pull`` command for using TensorFlow image on Docker:
 
 ```
-docker pull nvcr.io/nvidia/tensorflow:19.06-py2
+docker pull nvcr.io/nvidia/tensorflow:21.06-tf1-py3
 ```
 
 As we mentioned at [NGC Container Registry](#ngc-container-registry), when using with Singularity, this image can be specified by the following URL:
 
 ```
-docker://nvcr.io/nvidia/tensorflow:19.06-py2
+docker://nvcr.io/nvidia/tensorflow:21.06-tf1-py3
 ```
 
 ### Build a Singularity image {#build-a-singularity-image}
@@ -66,9 +66,9 @@ Build a Singularity image for TensorFlow on the interactive node.
 
 ```
 [username@es1 ~]$ module load singularitypro
-[username@es1 ~]$ singularity pull docker://nvcr.io/nvidia/tensorflow:19.06-py2
+[username@es1 ~]$ singularity pull docker://nvcr.io/nvidia/tensorflow:21.06-tf1-py3
 ```
-An image named ``tensorflow_19.06-py2.sif`` will be generated.
+An image named ``tensorflow_21.06-tf1-py3.sif`` will be generated.
 
 ### Run a Singularity image {#run-a-singularity-image}
 
@@ -77,15 +77,15 @@ Start an interactive job with one full-node and run a sample program ``cnn_mnist
 ```
 [username@es1 ~]$ qrsh -g grpname -l rt_F=1 -l h_rt=1:00:00
 [username@g0001 ~]$ module load singularitypro
-[username@g0001 ~]$ wget https://raw.githubusercontent.com/tensorflow/tensorflow/v1.13.1/tensorflow/examples/tutorials/layers/cnn_mnist.py
-[username@g0001 ~]$ singularity run --nv tensorflow_19.06-py2.sif python cnn_mnist.py
+[username@g0001 ~]$ wget https://raw.githubusercontent.com/tensorflow/tensorflow/v1.15.5/tensorflow/examples/tutorials/layers/cnn_mnist.py
+[username@g0001 ~]$ singularity run --nv tensorflow_21.06-tf1-py3 python cnn_mnist.py
 :
-{'loss': 0.102341905, 'global_step': 20000, 'accuracy': 0.9696}
+{'accuracy': 0.9703, 'loss': 0.10137254, 'global_step': 20000}
 ```
 
 You can do the same thing with a batch job.
 
-```
+```shell
 #!/bin/sh
 #$ -l rt_F=1
 #$ -j y
@@ -93,9 +93,8 @@ You can do the same thing with a batch job.
 
 source /etc/profile.d/modules.sh
 module load singularitypro
-wget https://raw.githubusercontent.com/tensorflow/tensorflow/v1.13.1/tensorflow/examples/tutorials/layers/cnn_mni
-st.py
-singularity run --nv tensorflow_19.06-py2.sif python cnn_mnist.py
+wget https://raw.githubusercontent.com/tensorflow/tensorflow/v1.15.5/tensorflow/examples/tutorials/layers/cnn_mnist.py
+singularity run --nv tensorflow_21.06-tf1-py3.sif python cnn_mnist.py
 ```
 
 ## Multiple-node Run {#multiple-node-run}
@@ -109,8 +108,8 @@ First, check the version of MPI installed into the TensorFlow image.
 
 ```
 [username@es1 ~] $ module load singularitypro
-[username@es1 ~] $ singularity exec tensorflow_19.06-py2.sif mpirun --version
-mpirun (Open MPI) 3.1.3
+[username@es1 ~] $ singularity exec tensorflow_21.06-tf1-py3.sif mpirun --version
+mpirun (Open MPI) 4.1.1rc1
 
 Report bugs to http://www.open-mpi.org/community/help/
 ```
@@ -120,11 +119,11 @@ Next, check the available versions of Open MPI on the ABCI system.
 ```
 [username@es1 ~] $ module avail openmpi
 
--------------------------------------------- /apps/modules/modulefiles/mpi ---------------------------------------------
+-------------------- /apps/modules/modulefiles/centos7/mpi ---------------------
 openmpi/2.1.6          openmpi/3.1.6          openmpi/4.0.5(default)
 ```
 
-``openmpi/3.1.6`` module seems to be suitable to run this image. In general, at least the major versions of both MPIs should be the same.
+``openmpi/4.0.5`` module seems to be suitable to run this image. In general, at least the major versions of both MPIs should be the same.
 
 ### Run a Singularity image with MPI {#run-a-singularity-image-with-mpi}
 
@@ -132,47 +131,47 @@ Start an interative job with two full-nodes, and load required environment modul
 
 ```
 [username@es1 ~]$ qrsh -g grpname -l rt_F=2 -l h_rt=1:00:00
-[username@g0001 ~]$ module load singularitypro openmpi/3.1.6
+[username@g0001 ~]$ module load singularitypro openmpi/4.0.5
 ```
 
 Each full-node has four GPUs, and you have eight GPUs in total.
 In this case, you run four processes on each full-node in parallel, that means eight processes in total, so as to execute the sample program ``tensorflow_mnist.py``.
 
 ```
-[username@g0001 ~]$ wget https://raw.githubusercontent.com/horovod/horovod/v0.16.4/examples/tensorflow_mnist.py
-[username@g0001 ~]$ mpirun -np 8 -npernode 4 singularity run --nv tensorflow_19.06-py2.sif python tensorflow_mnist.py
+[username@g0001 ~]$ wget https://raw.githubusercontent.com/horovod/horovod/v0.22.1/examples/tensorflow/tensorflow_mnist.py
+[username@g0001 ~]$ mpirun -np 8 -npernode 4 singularity run --nv tensorflow_21.06-tf1-py3.sif python tensorflow_mnist.py
 :
-INFO:tensorflow:loss = 2.227471, step = 30 (0.151 sec)
-INFO:tensorflow:loss = 2.2297306, step = 30 (0.152 sec)
-INFO:tensorflow:loss = 2.2236195, step = 30 (0.151 sec)
-INFO:tensorflow:loss = 2.2085133, step = 30 (0.152 sec)
-INFO:tensorflow:loss = 2.2206438, step = 30 (0.152 sec)
-INFO:tensorflow:loss = 2.2315774, step = 30 (0.152 sec)
-INFO:tensorflow:loss = 2.2195148, step = 30 (0.152 sec)
-INFO:tensorflow:loss = 2.2279806, step = 30 (0.152 sec)
-INFO:tensorflow:loss = 2.0452738, step = 40 (0.152 sec)
-INFO:tensorflow:loss = 2.0309064, step = 40 (0.152 sec)
-INFO:tensorflow:loss = 2.0354269, step = 40 (0.152 sec)
-INFO:tensorflow:loss = 2.0014856, step = 40 (0.152 sec)
-INFO:tensorflow:loss = 2.0149295, step = 40 (0.153 sec)
-INFO:tensorflow:loss = 2.0528066, step = 40 (0.153 sec)
-INFO:tensorflow:loss = 1.962772, step = 40 (0.153 sec)
-INFO:tensorflow:loss = 2.0659132, step = 40 (0.153 sec)
+INFO:tensorflow:loss = 0.13635147, step = 30 (0.236 sec)
+INFO:tensorflow:loss = 0.16320482, step = 30 (0.236 sec)
+INFO:tensorflow:loss = 0.23524982, step = 30 (0.237 sec)
+INFO:tensorflow:loss = 0.1300551, step = 30 (0.236 sec)
+INFO:tensorflow:loss = 0.10259462, step = 30 (0.237 sec)
+INFO:tensorflow:loss = 0.04606852, step = 30 (0.237 sec)
+INFO:tensorflow:loss = 0.10536947, step = 30 (0.236 sec)
+INFO:tensorflow:loss = 0.09811305, step = 30 (0.237 sec)
+INFO:tensorflow:loss = 0.06823079, step = 40 (0.225 sec)
+INFO:tensorflow:loss = 0.0671196, step = 40 (0.225 sec)
+INFO:tensorflow:loss = 0.1545426, step = 40 (0.225 sec)
+INFO:tensorflow:loss = 0.13310829, step = 40 (0.225 sec)
+INFO:tensorflow:loss = 0.084449895, step = 40 (0.225 sec)
+INFO:tensorflow:loss = 0.10252285, step = 40 (0.225 sec)
+INFO:tensorflow:loss = 0.078794435, step = 40 (0.225 sec)
+INFO:tensorflow:loss = 0.17852336, step = 40 (0.225 sec)
 :
 ```
 
 You can do the same thing with a batch job.
 
-```
+```shell
 #!/bin/sh
 #$ -l rt_F=2
 #$ -j y
 #$ -cwd
 
 source /etc/profile.d/modules.sh
-module load singularitypro openmpi/3.1.6
-wget https://raw.githubusercontent.com/horovod/horovod/v0.16.4/examples/tensorflow_mnist.py
-mpirun -np 8 -npernode 4 singularity run --nv tensorflow_19.06-py2.sif python tensorflow_mnist.py
+module load singularitypro openmpi/4.0.5
+wget https://raw.githubusercontent.com/horovod/horovod/v0.22.1/examples/tensorflow/tensorflow_mnist.py
+mpirun -np 8 -npernode 4 singularity run --nv tensorflow_21.06-tf1-py3.sif python tensorflow_mnist.py
 ```
 
 ## Using Locked Images {#using-locked-images}
@@ -202,7 +201,7 @@ docker://nvcr.io/partners/chainer:4.0.0b1
 
 To build an image, an NGC API key is required. Follow the following procedure to generate an API key:
 
-* [Generating Your NGC API Key](https://docs.nvidia.com/ngc/ngc-getting-started-guide/index.html#generating-api-key)
+* [Generating Your NGC API Key](https://docs.nvidia.com/ngc/ngc-overview/index.html#generating-api-key)
 
 Build a Singularity image for Chainer on the interactive node.
 In this case, you need to set two environment variables, ``SINGULARITY_DOCKER_USERNAME`` and ``SINGULARITY_DOCKER_PASSWORD`` for downloading images from NGC container registry.
@@ -245,7 +244,7 @@ epoch       main/loss   validation/main/loss  main/accuracy  validation/main/acc
 
 ## Reference {#reference}
 
-1. [NGC Getting Started Guide](https://docs.nvidia.com/ngc/ngc-getting-started-guide/index.html)
-1. [NGC Container User Guide](https://docs.nvidia.com/ngc/ngc-user-guide/index.html)
-1. [Running NGC Containers Using Singularity](https://docs.nvidia.com/ngc/ngc-user-guide/singularity.html)
+1. [NGC Documentation](https://docs.nvidia.com/ngc/index.html)
+1. [NGC Container User Guide for NGC Catalog](https://docs.nvidia.com/ngc/ngc-catalog-user-guide/index.html)
+1. [Running Singularity Containers](https://docs.nvidia.com/ngc/ngc-catalog-user-guide/index.html#singularity)
 1. [ABCI Adopts NGC for Easy Access to Deep Learning Frameworks | NVIDIA Blog](https://blogs.nvidia.com/blog/2019/06/17/abci-adopts-ngc/)

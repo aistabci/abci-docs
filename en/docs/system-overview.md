@@ -4,15 +4,15 @@
 
 The ABCI system consists of 1,088 compute nodes with 4,352 NVIDIA V100 GPU accelerators, 120 compute nodes with 960 NVIDIA A100 GPU accelerators and other computing resources, shared file systems and ABCI Cloud Storage with total capacity of approximately 47 PB, InfiniBand network that connects these elements at high speed, firewall, and so on. It also includes software to make the best use of these hardware. And, the ABCI system uses SINET5, the Science Information NETwork, to connect to the Internet at 100 Gbps.
 
-[![ABCI System Overview](img/abci_system_en.png)](img/abci_system_en.png)
+[![ABCI System Overview](img/abci_system_en.svg)](img/abci_system_en.svg)
 
 The main specifications of the ABCI system are as follows:
 
 | Item | Total Performance and Capacity: Compute Node (V) | Total Performance and Capacity: Compute Node (A) | Total Performance and Capacity |
 |:--|:--|:--|:--|
 | Theoretical Peak Performance (FP64) | 37.2 PFLOPS | 19.3 PFLOPS | 56.6 PFLOPS |
-| Effective Performance by HPL | 19.88 PFLOPS[^1] | TBA | - |
-| Effective Performance per Power by HPL | 14.423 GFLOPS/Watt | TBA | - |
+| Effective Performance by HPL | 19.88 PFLOPS[^1] | 11.48 PFLOPS | 22.20 PFLOPS[^2] |
+| Effective Performance per Power by HPL | 14.423 GFLOPS/Watt | 21.89 GFLOPS/W | - |
 | Theoretical Peak Performance (FP32) | 75.0 PFLOPS | 151.0 PFLOPS | 226.0 PFLOPS |
 | Theoretical Peak Performance (FP16) | 550.6 PFLOPS | 300.8 PFLOPS | 851.5 PFLOPS |
 | Theoretical Peak Performance (INT8) | 261.1 POPS | 599.0 POPS | 860.1 POPS |
@@ -21,6 +21,7 @@ The main specifications of the ABCI system are as follows:
 | Total Capacity of Local Storage | 1,740 TB | 480 TB | 2,220 TB |
 
 [^1]: [https://www.top500.org/system/179393/](https://www.top500.org/system/179393/)
+[^2]: [https://www.top500.org/system/179954/](https://www.top500.org/system/179954/)
 
 ## Computing Resources
 
@@ -95,7 +96,7 @@ The specifications of the compute node (V) are shown below:
 | NVMe SSD | [Intel SSD DC P4600 1.6 TB u.2](https://ark.intel.com/products/97005/Intel-SSD-DC-P4600-Series-1-6TB-2-5in-PCIe-3-1-x4-3D1-TLC-) | 1 |
 | Interconnect | InfiniBand EDR (100 Gbps) | 2 |
 
-Reference: [Block Diagram of Compute Node (V)](img/compute-node-v.png)
+Reference: [Block Diagram of Compute Node (V)](img/compute-node-v-diagram.png)
 
 #### Compute Node (A)
 
@@ -112,7 +113,7 @@ The specifications of the compute node (A) are shown below:
 | NVMe SSD | [Intel SSD DC P4510 2.0 TB u.2](https://ark.intel.com/content/www/us/en/ark/products/122580/intel-ssd-dc-p4510-series-2-0tb-2-5in-pcie-3-1-x4-3d2-tlc.html) | 2 |
 | Interconnect | InfiniBand HDR (200 Gbps) | 4 |
 
-Reference: [Block Diagram of Compute Node (A)](img/compute-node-a.png)
+Reference: [Block Diagram of Compute Node (A)](img/compute-node-a-diagram.png)
 
 ### Memory-Intensive Node
 
@@ -139,7 +140,7 @@ The ABCI system has five storage systems for storing large amounts of data used 
 |:--|:--|:--|:--|
 | 1 | DDN SFA 14KX x1<br>DDN SS9012 Enclosure x5 | 7.68 TB SAS SSD x185 | Home area, Application area |
 | 2 | DDN ES7990X x3<br>DDN SS9012 Enclosure x6 | 18 TB NL-SAS HDD x801 | Group area |
-| 3 | DDN NV400NVX x3 | 7.68 TB NVMe HDD x69 | Fast data area |
+| 3 | DDN ES400NVX x3 | 7.68 TB NVMe HDD x69 | Fast data area |
 | 4 | DDN SFA 14KX x3<br>DDN SS8462 Enclosure x30 | 3.84 TB SAS SSD x216<br>12 TB NL-SAS HDD x2400 | Group areas |
 | 5 | HPE Apollo 4510 Gen10 x24 | 12 TB SATA HDD x1440 | ABCI Cloud Storage |
 
@@ -198,18 +199,18 @@ The software available on the ABCI system is shown below.
 | | Julia | 1.0<br>1.5 | 1.0<br>1.5 |
 | | Hadoop | 3.3 | 3.3 |
 | | Spark | 3.0 | 3.0 |
-| File System | [DDN Lustre](storage.md#home-area) | 2.12.6\_ddn13-1 | 2.12.6\_ddn13-1 |
+| File System | [DDN Lustre](storage.md#home-area) | 2.12.5\_ddn13-1 | 2.12.5\_ddn13-1 |
 | | [DDN GRIDScaler](storage.md#group-area) | 4.2.3-20 | - |
-| | [BeeOND](storage.md#beeond-storage) | 7.2.1 | 7.2.1 |
+| | [BeeOND](storage.md#beeond-storage) | 7.2.3 | 7.2.3 |
 | Object Storage | Scality S3 Connector | 7.4.8.1 | 7.4.8.1 |
 | Container | [Docker](containers.md#docker) | 19.03.15 | 19.03.15 |
-| | [SingularityPRO](containers.md#singularity) | 3.7-1 | 3.7-1 |
+| | [SingularityPRO](containers.md#singularity) | 3.7-4 | 3.7-4 |
 | MPI | [Open MPI](mpi.md#open-mpi) | 2.1.6<br>3.1.6<br>4.0.5 | 2.1.6<br>3.1.6<br>4.0.5 |
 | | [MVAPICH2](mpi.md#mvapich2) | 2.3.5 | 2.3.5 |
 | | [MVAPICH2-GDR](mpi.md#mvapich2-gdr) | 2.3.5 | - |
 | | [Intel MPI](mpi.md#intel-mpi) | 2019.9 | 2019.9 |
-| Library | [cuDNN](gpu.md#cudnn) | 5.1.10<br>6.0.21<br>7.0.5<br>7.1.4<br>7.2.1<br>7.3.1<br>7.4.2<br>7.5.1<br>7.6.5<br>8.0.5<br>8.1.1<br>8.2.0 | 7.3.1<br>7.4.2<br>7.5.1<br>7.6.5<br>8.0.5<br>8.1.1<br>8.2.0 |
-| | [NCCL](gpu.md#nccl) | 1.3.5-1<br>2.1.15-1<br>2.2.13-1<br>2.3.7-1<br>2.4.8-1<br>2.5.6-1<br>2.6.4-1<br>2.7.8-1<br>2.8.4-1<br>2.9.6-1 | 2.3.7-1<br>2.4.8-1<br>2.5.6-1<br>2.6.4-1<br>2.7.8-1<br>2.8.4-1<br>2.9.6-1 |
+| Library | [cuDNN](gpu.md#cudnn) | 5.1.10<br>6.0.21<br>7.0.5<br>7.1.4<br>7.2.1<br>7.3.1<br>7.4.2<br>7.5.1<br>7.6.5<br>8.0.5<br>8.1.1<br>8.2.0<br>8.2.1 | 7.3.1<br>7.4.2<br>7.5.1<br>7.6.5<br>8.0.5<br>8.1.1<br>8.2.0<br>8.2.1 |
+| | [NCCL](gpu.md#nccl) | 1.3.5-1<br>2.1.15-1<br>2.2.13-1<br>2.3.7-1<br>2.4.8-1<br>2.5.6-1<br>2.6.4-1<br>2.7.8-1<br>2.8.4-1<br>2.9.6-1<br>2.9.9-1 | 2.3.7-1<br>2.4.8-1<br>2.5.6-1<br>2.6.4-1<br>2.7.8-1<br>2.8.4-1<br>2.9.6-1<br>2.9.9-1 |
 | | gdrcopy | 2.0 | 2.1 |
 | | UCX | 1.7.0 | 1.9.0 |
 | | libfabric | 1.7.0-1 | 1.9.0rc1-1 |

@@ -1,5 +1,25 @@
 # システム更新履歴
 
+## 2021-08-12
+
+| Add / Update / Delete | Software | Version | Previous version |
+|:--|:--|:--|:--|
+| Update | BeeOND | 7.2.3 | 7.2.1 |
+| Update | DDN Lustre | 2.12.5\_ddn13-1 | 2.12.6\_ddn13-1 |
+
+## 2021-07-06
+
+| Add / Update / Delete | Software | Version | Previous version |
+|:--|:--|:--|:--|
+| Update | SingularityPRO | 3.7-4 | 3.7-1 |
+
+## 2021-06-30
+
+| Add / Update / Delete | Software | Version | Previous version |
+|:--|:--|:--|:--|
+| Add | cuDNN | [8.2.1](https://docs.nvidia.com/deeplearning/cudnn/release-notes/rel_8.html#rel-821) | |
+| Add | NCCL | [2.9.9-1](https://docs.nvidia.com/deeplearning/nccl/release-notes/rel_2-9-9.html) | |
+
 ## 2021-05-10
 
 | Add / Update / Delete | Software | Version | Previous version |

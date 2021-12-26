@@ -105,6 +105,7 @@ The following is a list of CUDA Toolkit, cuDNN, and NCCL that can be used with t
 | 8.0.5  | -   | -   | -   | -   | -   | Yes | Yes | Yes | Yes | -   | -   |
 | 8.1.1  | -   | -   | -   | -   | -   | -   | Yes | Yes | Yes | Yes | -   |
 | 8.2.0  | -   | -   | -   | -   | -   | -   | Yes | Yes | Yes | Yes | Yes |
+| 8.2.1  | -   | -   | -   | -   | -   | -   | Yes | Yes | Yes | Yes | Yes |
 
 \*1 Installed, but modules are not provided
 \*2 Installed, but not yet supported
@@ -127,6 +128,7 @@ Compute Node (V):
 | 8.0.5  | -   | -   | -   | -   | -   | Yes | Yes | Yes | Yes | -   |
 | 8.1.1  | -   | -   | -   | -   | -   | -   | Yes | Yes | Yes | Yes |
 | 8.2.0  | -   | -   | -   | -   | -   | -   | Yes | Yes | Yes | Yes |
+| 8.2.1  | -   | -   | -   | -   | -   | -   | Yes | Yes | Yes | Yes |
 
 Compute Node (A):
 
@@ -139,6 +141,7 @@ Compute Node (A):
 | 8.0.5  | -   | Yes | Yes | Yes | Yes | -   |
 | 8.1.1  | -   | -   | Yes | Yes | Yes | Yes |
 | 8.2.0  | -   | -   | Yes | Yes | Yes | Yes |
+| 8.2.1  | -   | -   | Yes | Yes | Yes | Yes |
 
 ## NCCL
 
@@ -162,6 +165,7 @@ Compute Node (A):
 | 2.8.3-1  | -   | -   | -   | -   | -   | Yes | Yes | Yes | Yes | Yes | -   |
 | 2.8.4-1  | -   | -   | -   | -   | -   | -   | Yes | Yes | Yes | Yes | -   |
 | 2.9.6-1  | -   | -   | -   | -   | -   | -   | Yes | Yes | -   | -   | Yes |
+| 2.9.9-1  | -   | -   | -   | -   | -   | -   | Yes | Yes | -   | -   | Yes |
 
 \*1 Installed, but modules are not provided
 \*2 Installed, but not yet supported
@@ -181,6 +185,7 @@ Compute Node (V):
 | 2.7.8-1  | -   | -   | -   | -   | -   | Yes | Yes | Yes | Yes | -   |
 | 2.8.4-1  | -   | -   | -   | -   | -   | -   | Yes | Yes | Yes | Yes |
 | 2.9.6-1  | -   | -   | -   | -   | -   | -   | Yes | Yes | -   | -   |
+| 2.9.9-1  | -   | -   | -   | -   | -   | -   | Yes | Yes | -   | -   |
 
 Compute Node (A):
 
@@ -193,6 +198,7 @@ Compute Node (A):
 | 2.7.8-1  | -   | Yes | Yes | Yes | Yes | -   |
 | 2.8.4-1  | -   | -   | Yes | Yes | Yes | Yes |
 | 2.9.6-1  | -   | -   | Yes | Yes | -   | -   |
+| 2.9.9-1  | -   | -   | Yes | Yes | -   | -   |
 
 ## GDRCopy
 

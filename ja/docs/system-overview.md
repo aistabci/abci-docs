@@ -4,15 +4,15 @@
 
 ABCIシステムは、合計4,352基のNVIDIA V100 GPUアクセラレーターを備えた1,088台の計算ノード(V)と合計960基のNVIDIA A100 GPUアクセラレーターを備えた120台の計算ノード(A)を始めとする計算リソース、合算で約47 PBの容量を有する共有ファイルシステム及びABCIクラウドストレージ、これらを高速に結合するInfiniBandネットワーク、ファイアウォールなどからなるハードウェアと、これらを最大限活用するためのソフトウェアから構成されます。また、ABCIシステムは学術情報ネットワークSINET5を利用して、100 Gbpsでインターネットに接続しています。
 
-[![ABCI System Overview](img/abci_system_ja.png)](img/abci_system_ja.png)
+[![ABCI System Overview](img/abci_system_ja.svg)](img/abci_system_ja.svg)
 
 ABCIシステムの主要な諸元は以下のとおりです。
 
 | 項目 | 計算ノード(V) 合算性能・容量 | 計算ノード(A) 合算性能・容量 | 合算性能・容量 |
 |:--|:--|:--|:--|
 | 理論ピーク演算性能 (FP64) | 37.2 PFLOPS | 19.3 PFLOPS | 56.6 PFLOPS |
-| HPLによる実効性能 | 19.88 PFLOPS[^1] | TBA | - |
-| HPLによる電力あたりの実効性能 | 14.423 GFLOPS/Watt | TBA | - |
+| HPLによる実効性能 | 19.88 PFLOPS[^1] | 11.48 PFLOPS | 22.20 PFLOPS[^2] |
+| HPLによる電力あたりの実効性能 | 14.423 GFLOPS/Watt | 21.89 GFLOPS/W | - |
 | 理論ピーク演算性能 (FP32) | 75.0 PFLOPS | 151.0 PFLOPS | 226.0 PFLOPS |
 | 理論ピーク演算性能 (FP16) | 550.6 PFLOPS | 300.8 PFLOPS | 851.5 PFLOPS |
 | 理論ピーク演算性能 (INT8) | 261.1 POPS | 599.0 POPS | 860.1 POPS |
@@ -21,6 +21,7 @@ ABCIシステムの主要な諸元は以下のとおりです。
 | ローカルストレージの合算容量 | 1,740 TB | 480 TB | 2,220 TB |
 
 [^1]: [https://www.top500.org/system/179393/](https://www.top500.org/system/179393/)
+[^2]: [https://www.top500.org/system/179954/](https://www.top500.org/system/179954/)
 
 ## 計算リソース {#computing-resources}
 
@@ -93,7 +94,7 @@ ABCIシステムの計算ノードは、計算ノード(V)と計算ノード(A)�
 | NVMe SSD | [Intel SSD DC P4600 1.6 TB u.2](https://ark.intel.com/products/97005/Intel-SSD-DC-P4600-Series-1-6TB-2-5in-PCIe-3-1-x4-3D1-TLC-) | 1 |
 | Interconnect | InfiniBand EDR (100 Gbps) | 2 |
 
-参考: [計算ノード(V)のブロック図](img/compute-node-v.png)
+参考: [計算ノード(V)のブロック図](img/compute-node-v-diagram.png)
 
 #### 計算ノード(A) {#compute-node-a}
 
@@ -110,7 +111,7 @@ ABCIシステムの計算ノードは、計算ノード(V)と計算ノード(A)�
 | NVMe SSD | [Intel SSD DC P4510 2.0 TB u.2](https://ark.intel.com/content/www/us/en/ark/products/122580/intel-ssd-dc-p4510-series-2-0tb-2-5in-pcie-3-1-x4-3d2-tlc.html) | 2 |
 | Interconnect | InfiniBand HDR (200 Gbps) | 4 |
 
-参考: [計算ノード(A)のブロック図](img/compute-node-a.png)
+参考: [計算ノード(A)のブロック図](img/compute-node-a-diagram.png)
 
 ### メモリインテンシブノード {#memory-intensive-node}
 
@@ -137,7 +138,7 @@ ABCIシステムは、人工知能やビッグデータ応用に用いる大容�
 |:--|:--|:--|:--|
 | 1 | DDN SFA 14KX x1<br>DDN SS9012エンクロージャ x5 | 7.68 TB SAS SSD x185 | ホーム領域、アプリケーション領域 |
 | 2 | DDN ES7990X x3<br>DDN SS9012エンクロージャ x6 | 18 TB NL-SAS HDD x801 | グループ領域 |
-| 3 | DDN NV400NVX x3 | 7.68 TB NVMe HDD x69 | 高速データ領域 |
+| 3 | DDN ES400NVX x3 | 7.68 TB NVMe HDD x69 | 高速データ領域 |
 | 4 | DDN SFA 14KX x3<br>DDN SS8462エンクロージャ x30 | 3.84 TB SAS SSD x216<br>12 TB NL-SAS HDD x2400 | グループ領域 |
 | 5 | HPE Apollo 4510 Gen10 x24 | 12 TB SATA HDD x1440 | ABCIクラウドストレージ |
 
@@ -196,18 +197,18 @@ ABCIシステムで利用可能なソフトウェア一覧を以下に示しま�
 | | Julia | 1.0<br>1.5 | 1.0<br>1.5 |
 | | Hadoop | 3.3 | 3.3 |
 | | Spark | 3.0 | 3.0 |
-| File System | [DDN Lustre](storage.md#home-area) | 2.12.6\_ddn13-1 | 2.12.6\_ddn13-1 |
+| File System | [DDN Lustre](storage.md#home-area) | 2.12.5\_ddn13-1 | 2.12.5\_ddn13-1 |
 | | [DDN GRIDScaler](storage.md#group-area) | 4.2.3-20 | - |
-| | [BeeOND](storage.md#beeond-storage) | 7.2.1 | 7.2.1 |
+| | [BeeOND](storage.md#beeond-storage) | 7.2.3 | 7.2.3 |
 | Object Storage | Scality S3 Connector | 7.4.8.1 | 7.4.8.1 |
 | Container | [Docker](containers.md#docker) | 19.03.15 | 19.03.15 |
-| | [SingularityPRO](containers.md#singularity) | 3.7-1 | 3.7-1 |
+| | [SingularityPRO](containers.md#singularity) | 3.7-4 | 3.7-4 |
 | MPI | [Open MPI](mpi.md#open-mpi) | 2.1.6<br>3.1.6<br>4.0.5 | 2.1.6<br>3.1.6<br>4.0.5 |
 | | [MVAPICH2](mpi.md#mvapich2) | 2.3.5 | 2.3.5 |
 | | [MVAPICH2-GDR](mpi.md#mvapich2-gdr) | 2.3.5 | - |
 | | [Intel MPI](mpi.md#intel-mpi) | 2019.9 | 2019.9 |
-| Library | [cuDNN](gpu.md#cudnn) | 5.1.10<br>6.0.21<br>7.0.5<br>7.1.4<br>7.2.1<br>7.3.1<br>7.4.2<br>7.5.1<br>7.6.5<br>8.0.5<br>8.1.1<br>8.2.0 | 7.3.1<br>7.4.2<br>7.5.1<br>7.6.5<br>8.0.5<br>8.1.1<br>8.2.0 |
-| | [NCCL](gpu.md#nccl) | 1.3.5-1<br>2.1.15-1<br>2.2.13-1<br>2.3.7-1<br>2.4.8-1<br>2.5.6-1<br>2.6.4-1<br>2.7.8-1<br>2.8.4-1<br>2.9.6-1 | 2.3.7-1<br>2.4.8-1<br>2.5.6-1<br>2.6.4-1<br>2.7.8-1<br>2.8.4-1<br>2.9.6-1 |
+| Library | [cuDNN](gpu.md#cudnn) | 5.1.10<br>6.0.21<br>7.0.5<br>7.1.4<br>7.2.1<br>7.3.1<br>7.4.2<br>7.5.1<br>7.6.5<br>8.0.5<br>8.1.1<br>8.2.0<br>8.2.1 | 7.3.1<br>7.4.2<br>7.5.1<br>7.6.5<br>8.0.5<br>8.1.1<br>8.2.0<br>8.2.1 |
+| | [NCCL](gpu.md#nccl) | 1.3.5-1<br>2.1.15-1<br>2.2.13-1<br>2.3.7-1<br>2.4.8-1<br>2.5.6-1<br>2.6.4-1<br>2.7.8-1<br>2.8.4-1<br>2.9.6-1<br>2.9.9-1 | 2.3.7-1<br>2.4.8-1<br>2.5.6-1<br>2.6.4-1<br>2.7.8-1<br>2.8.4-1<br>2.9.6-1<br>2.9.9-1 |
 | | gdrcopy | 2.0 | 2.1 |
 | | UCX | 1.7.0 | 1.9.0 |
 | | libfabric | 1.7.0-1 | 1.9.0rc1-1 |
