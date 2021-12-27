@@ -375,6 +375,39 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#scratch-area" class="md-nav__link">
+    Global scratch area
+  </a>
+  
+    <nav class="md-nav" aria-label="Global scratch area">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#advanced-option-dom" class="md-nav__link">
+    [Advanced Option] Data on MDT(DoM)
+  </a>
+  
+    <nav class="md-nav" aria-label="[Advanced Option] Data on MDT(DoM)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#how-to-set-up-dom" class="md-nav__link">
+    How to configure DoM Features
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#local-storage" class="md-nav__link">
     Local Storage
   </a>
@@ -1217,6 +1250,10 @@ If an attempt is made to create a file that exceeds the limit, an error message 
 </div>
 <h3 id="advanced-option-file-striping">[Advanced Option] File Striping</h3>
 <p>Home area is provided by the Lustre file system. The Lustre file system distributes and stores file data onto multiple disks. On home area, you can choose two distribution methods which are Round-Robin (default) and Striping.</p>
+<div class="admonition tips">
+<p class="admonition-title">Tips</p>
+<p>See <a href="https://wiki.lustre.org/Configuring_Lustre_File_Striping">Configuring Lustre File Striping</a> for an overview of file striping feature.</p>
+</div>
 <h4 id="how-to-set-up-file-striping">How to Set Up File Striping</h4>
 <div class="codehilite"><pre><span></span><code><span class="err">$</span><span class="w"> </span><span class="n">lfs</span><span class="w"> </span><span class="n">setstripe</span><span class="w">  </span><span class="o">[</span><span class="n">options</span><span class="o">]</span><span class="w"> </span><span class="o">&lt;</span><span class="n">dirname</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="n">filename</span><span class="o">&gt;</span><span class="w"></span>
 </code></pre></div>
@@ -1288,6 +1325,94 @@ If an attempt is made to create a file that exceeds the limit, an error message 
 <p>Group area is the disk area of the Lustre file system shared by interactive and compute nodes. Group area 1,2,3 is the GPFS file system disk space shared by the interactive nodes and each compute node (V).
 To use Group area, "Usage Manager" of the group needs to apply "Add group disk" via <a href="https://portal.abci.ai/user/">ABCI User Portal</a>. Regarding how to add group disk, please refer to <a href="https://docs.abci.ai/portal/en/03/#352-disk-addition-request">Disk Addition Request</a> in the <a href="https://docs.abci.ai/portal/en/">ABCI Portal Guide</a>.</p>
 <p>To find the path to your group area, use the <code>show_quota</code> command. For details, see <a href="../getting-started/#checking-disk-quota">Checking Disk Quota</a>.</p>
+<h2 id="scratch-area">Global scratch area</h2>
+<p>Global scratch area is lustre file system and available for all ABCI users.
+This storage is shared by interactive nodes and all Compute Nodes V and A.
+The quota for every users is set in 10TiB. </p>
+<p>The following directory is available for all users as a high speed data area.</p>
+<div class="codehilite"><pre><span></span><code>/scratch/(ABCI account)
+</code></pre></div>
+
+<p>To see the quota value of the global scratch area, issue <code>show_quota</code> command. For a description of the command, see <a href="../getting-started/#checking-disk-quota">Checking Disk Quota</a>.</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>The global scratch area has a cleanup function.<br>
+When the usage of the file area or i-node area of /scratch exceeds 80%, delete candidates are selected based on the last access time and creation date of files and directories directly under /scratch/(ABCI account), and the files/directories of the delete candidates are automatically deleted. If a directory directly under /scratch/(ABCI account) becomes a candidate for deletion, all files/directories under that directory are deleted. Note that the last access time and creation date of the files/directories under that directory are not taken into account.<br>
+The first candidate to be deleted is the one whose last access time is older than 40 days. If, after deleting the candidate, the utilization of/scratch is still over 80%, the next candidate to be deleted is one whose creation date is older than 40 days. Make a note of the file/directory creation date since it cannot be checked by the ls command.</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>When storing a large number of files under the global scratch area, create a directory under /scratch/(ABCI account) and store the files in the directory.</p>
+</div>
+<h3 id="advanced-option-dom">[Advanced Option] Data on MDT(DoM)</h3>
+<p>The Data on MDT (DoM) function is available in the global scratch area.
+By enabling the DoM function, performance improvement can be expected for small-file access.
+Note that the DoM and Stripe features are disabled by default.</p>
+<div class="admonition tips">
+<p class="admonition-title">Tips</p>
+<p>See <a href="https://wiki.lustre.org/Data_on_MDT">Data on MDT</a> for an overview of DoM.</p>
+</div>
+<h4 id="how-to-set-up-dom">How to configure DoM Features</h4>
+<p>Use the <code>lfs setstripe</code> command to configure DoM features.</p>
+<div class="codehilite"><pre><span></span><code><span class="err">$</span><span class="w"> </span><span class="n">lfs</span><span class="w"> </span><span class="n">setstripe</span><span class="w"> </span><span class="o">[</span><span class="n">options</span><span class="o">]</span><span class="w"> </span><span class="o">&lt;</span><span class="n">dirname</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="n">filename</span><span class="o">&gt;</span><span class="w"></span>
+</code></pre></div>
+
+<table>
+<thead>
+<tr>
+<th align="center">Option</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="center">-E</td>
+<td align="left">Specify the end offset of each component. -E #k, -E #m, -E #g allows you to set the size in KiB, MiB and GiB. Also, -1 means eof.</td>
+</tr>
+<tr>
+<td align="center">-L</td>
+<td align="left">Set Layout Type. Specifying <code>mdt</code> enables DoM.</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>You cannot disable DoM for DoM-enabled files. Also, you cannot enable DoM for files with DoM disabled.</p>
+</div>
+<p>Example）Create a new file with DoM enabled<br>
+The first 64KiB of the file data is placed on the MDT and rest of file is placed  on  OST(s) with default striping.</p>
+<div class="codehilite"><pre><span></span><code><span class="o">[</span><span class="n">username@es1 work</span><span class="o">]</span><span class="err">$</span><span class="w"> </span><span class="n">lfs</span><span class="w"> </span><span class="n">setstripe</span><span class="w"> </span><span class="o">-</span><span class="n">E</span><span class="w"> </span><span class="mi">64</span><span class="n">k</span><span class="w"> </span><span class="o">-</span><span class="n">L</span><span class="w"> </span><span class="n">mdt</span><span class="w"> </span><span class="o">-</span><span class="n">E</span><span class="w"> </span><span class="o">-</span><span class="mi">1</span><span class="w"> </span><span class="n">dom</span><span class="o">-</span><span class="k">file</span><span class="w"></span>
+<span class="o">[</span><span class="n">username@es1 work</span><span class="o">]</span><span class="err">$</span><span class="w"> </span><span class="n">ls</span><span class="w"></span>
+<span class="n">dom</span><span class="o">-</span><span class="k">file</span><span class="w"></span>
+</code></pre></div>
+
+<p>Example）Configure DoM features for the directory</p>
+<div class="codehilite"><pre><span></span><code><span class="o">[</span><span class="n">username@es1 work</span><span class="o">]</span><span class="err">$</span><span class="w"> </span><span class="n">mkdir</span><span class="w"> </span><span class="n">dom</span><span class="o">-</span><span class="n">dir</span><span class="w"></span>
+<span class="o">[</span><span class="n">username@es1 work</span><span class="o">]</span><span class="err">$</span><span class="w"> </span><span class="n">lfs</span><span class="w"> </span><span class="n">setstripe</span><span class="w"> </span><span class="o">-</span><span class="n">E</span><span class="w"> </span><span class="mi">64</span><span class="n">k</span><span class="w"> </span><span class="o">-</span><span class="n">L</span><span class="w"> </span><span class="n">mdt</span><span class="w"> </span><span class="o">-</span><span class="n">E</span><span class="w"> </span><span class="o">-</span><span class="mi">1</span><span class="w"> </span><span class="n">dom</span><span class="o">-</span><span class="n">dir</span><span class="w"></span>
+</code></pre></div>
+
+<p>Example) Checking if the file is DoM enabled</p>
+<div class="codehilite"><pre><span></span><code><span class="o">[</span><span class="n">username@es1 work</span><span class="o">]</span><span class="err">$</span><span class="w"> </span><span class="n">lfs</span><span class="w"> </span><span class="n">getstripe</span><span class="w"> </span><span class="o">-</span><span class="n">I1</span><span class="w"> </span><span class="o">-</span><span class="n">L</span><span class="w"> </span><span class="n">dom</span><span class="o">-</span><span class="k">file</span><span class="w"></span>
+<span class="n">mdt</span><span class="w"></span>
+</code></pre></div>
+
+<p>If you see <code>mdt</code>, the DoM feature is enabled. It is not valid for any other display.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>In the above example, the data stored in the MDT is limited to 64 KiB. Data exceeding 64 KiB is stored in OST(s).</p>
+</div>
+<p>You can also configure <a href="./#advanced-option-file-striping">File Striping</a> with the DoM feature.</p>
+<p>Example) Create a new file with DoM layout and a specific striping pattern for the rest data placed on OST(s).</p>
+<div class="codehilite"><pre><span></span><code><span class="o">[</span><span class="n">username@es1 work</span><span class="o">]</span><span class="err">$</span><span class="w"> </span><span class="n">lfs</span><span class="w"> </span><span class="n">setstripe</span><span class="w"> </span><span class="o">-</span><span class="n">E</span><span class="w"> </span><span class="mi">64</span><span class="n">k</span><span class="w"> </span><span class="o">-</span><span class="n">L</span><span class="w"> </span><span class="n">mdt</span><span class="w"> </span><span class="o">-</span><span class="n">E</span><span class="w"> </span><span class="o">-</span><span class="mi">1</span><span class="w"> </span><span class="o">-</span><span class="n">S</span><span class="w"> </span><span class="mi">1</span><span class="n">m</span><span class="w"> </span><span class="o">-</span><span class="n">i</span><span class="w"> </span><span class="o">-</span><span class="mi">1</span><span class="w"> </span><span class="o">-</span><span class="n">c</span><span class="w"> </span><span class="mi">4</span><span class="w"> </span><span class="n">dom</span><span class="o">-</span><span class="n">stripe</span><span class="o">-</span><span class="k">file</span><span class="w"></span>
+<span class="o">[</span><span class="n">username@es1 work</span><span class="o">]</span><span class="err">$</span><span class="w"> </span><span class="n">ls</span><span class="w"></span>
+<span class="n">dom</span><span class="o">-</span><span class="n">stripe</span><span class="o">-</span><span class="k">file</span><span class="w"></span>
+</code></pre></div>
+
+<p>Example) Enable the DoM feature and set a striping pattern (for OST(s)) of the directory</p>
+<div class="codehilite"><pre><span></span><code><span class="o">[</span><span class="n">username@es1 work</span><span class="o">]</span><span class="err">$</span><span class="w"> </span><span class="n">mkdir</span><span class="w"> </span><span class="n">dom</span><span class="o">-</span><span class="n">stripe</span><span class="o">-</span><span class="n">dir</span><span class="w"></span>
+<span class="o">[</span><span class="n">username@es1 work</span><span class="o">]</span><span class="err">$</span><span class="w"> </span><span class="n">lfs</span><span class="w"> </span><span class="n">setstripe</span><span class="w"> </span><span class="o">-</span><span class="n">E</span><span class="w"> </span><span class="mi">64</span><span class="n">k</span><span class="w"> </span><span class="o">-</span><span class="n">L</span><span class="w"> </span><span class="n">mdt</span><span class="w"> </span><span class="o">-</span><span class="n">E</span><span class="w"> </span><span class="o">-</span><span class="mi">1</span><span class="w"> </span><span class="o">-</span><span class="n">S</span><span class="w"> </span><span class="mi">1</span><span class="n">m</span><span class="w"> </span><span class="o">-</span><span class="n">i</span><span class="w"> </span><span class="o">-</span><span class="mi">1</span><span class="w"> </span><span class="o">-</span><span class="n">c</span><span class="w"> </span><span class="mi">4</span><span class="w"> </span><span class="n">dom</span><span class="o">-</span><span class="n">stripe</span><span class="o">-</span><span class="n">dir</span><span class="w"></span>
+</code></pre></div>
+
 <h2 id="local-storage">Local Storage</h2>
 <p>In ABCI System, a 1.6 TB NVMe SSD x1 is installed into each compute node (V), a 2.0 TB NVMe SSD x2 are installed into each compute node (A) and a 1.9 TB SATA 3.0 SSD x1 is installed into each memory-intensive node. There are two ways to utilize these storages as follows:</p>
 <ul>

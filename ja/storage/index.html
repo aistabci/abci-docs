@@ -375,6 +375,39 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#scratch-area" class="md-nav__link">
+    グローバルスクラッチ領域
+  </a>
+  
+    <nav class="md-nav" aria-label="グローバルスクラッチ領域">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#advanced-option-dom" class="md-nav__link">
+    [高度な設定] Data on MDT(DoM)機能
+  </a>
+  
+    <nav class="md-nav" aria-label="[高度な設定] Data on MDT(DoM)機能">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#how-to-set-up-dom" class="md-nav__link">
+    DoM機能の設定方法
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#local-storage" class="md-nav__link">
     ローカルストレージ
   </a>
@@ -1228,6 +1261,10 @@
 </div>
 <h3 id="advanced-option-file-striping">[高度な設定] ストライプ機能</h3>
 <p>ホーム領域は並列ファイルシステムで構成されています。並列ファイルシステムでは、ファイルのデータはストレージを構成する複数のディスクに分散して格納されます。ホーム領域では、この分散方式として、ラウンドロビン分散（デフォルト）とストライプ分散が使用可能です。以下では、ストライプ機能の設定方法を説明します。</p>
+<div class="admonition tips">
+<p class="admonition-title">Tips</p>
+<p>ストライプ機能の概要については<a href="https://wiki.lustre.org/Configuring_Lustre_File_Striping">Configuring Lustre File Striping</a>を参照願います。</p>
+</div>
 <h4 id="how-to-set-up-file-striping">ストライプ機能の設定方法</h4>
 <p>ストライプ機能の設定は、<code>lfs setstripe</code>コマンドで行います。 <code>lfs setstripe</code>コマンドでは、データを分散させるストライプパターン（ストライプサイズや範囲）を指定することができます。</p>
 <div class="codehilite"><pre><span></span><code><span class="err">$</span><span class="w"> </span><span class="n">lfs</span><span class="w"> </span><span class="n">setstripe</span><span class="w">  </span><span class="o">[</span><span class="n">options</span><span class="o">]</span><span class="w"> </span><span class="o">&lt;</span><span class="n">dirname</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="n">filename</span><span class="o">&gt;</span><span class="w"></span>
@@ -1299,6 +1336,91 @@
 <h2 id="group-area">グループ領域</h2>
 <p>グループ領域は、インタラクティブノードおよび各計算ノードで共有されたLustreファイルシステムのディスク領域です。また、グループ領域1〜3は、インタラクティブノードおよび各計算ノード(V)で共有されたGPFSファイルシステムのディスク領域です。<a href="https://portal.abci.ai/user/">ABCI利用者ポータル</a>から利用管理者権限でグループディスク追加申請を行うことで利用可能になります。追加申請方法については、<a href="https://docs.abci.ai/portal/ja/">ABCI利用者ポータルガイド</a>の<a href="https://docs.abci.ai/portal/ja/03/#352">ディスク追加申請</a>をご参照ください。</p>
 <p>グループ領域のパスを確認するには、<code>show_quota</code> コマンドを実行してください。コマンドの説明については <a href="../getting-started/#checking-disk-quota">ディスククォータの確認</a> を参照してください。</p>
+<h2 id="scratch-area">グローバルスクラッチ領域</h2>
+<p>グローバルスクラッチ領域は、利用者全員が利用可能な、インタラクティブノードおよび各計算ノードで共有されたLustreファイルシステムの短期利用向け高速ストレージです。ディスククォータは10TiBに設定されています。
+各利用者は以下の領域を短期利用高速データ領域として利用することが可能です。</p>
+<div class="codehilite"><pre><span></span><code>/scratch/(ABCIアカウント名)
+</code></pre></div>
+
+<p>グローバルスクラッチ領域のクォータを調査するには、<code>show_quota</code> コマンドを実行してください。コマンドの説明については <a href="../getting-started/#checking-disk-quota">ディスククォータの確認</a> を参照してください。</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>グローバルスクラッチ領域は、クリーンアップ機能を備えています。<br>
+/scratchのファイル領域またはi-node領域の利用率が80%を超過した場合に、/scratch/(ABCIアカウント名) 直下のファイルおよびディレクトリの最終アクセス時間と作成日をもとに削除候補を選び、削除候補のファイル/ディレクトリを自動的に削除します。/scratch/(ABCIアカウント名) 直下のディレクトリが削除候補になった場合は、そのディレクトリ配下のすべてのファイル/ディレクトリが削除されます。そのディレクトリ配下のファイル/ディレクトリの最終アクセス時間と作成日は考慮されませんので、ご注意ください。<br>
+最初の削除候補として、最終アクセス時間が40日を経過したものが選ばれます。その候補を削除した後に、まだ、/scratchの利用率が80%超過の場合は、作成日が40日を経過したものが次の削除候補として選ばれます。ファイル/ディレクトリの作成日はlsコマンドで確認できないため、利用者自身で控えるようにしてください。</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>グローバルスクラッチ領域配下に大量のファイルを格納する場合は、/scratch/(ABCIアカウント名) 配下にディレクトリを作成の上、格納するようにして下さい。</p>
+</div>
+<h3 id="advanced-option-dom">[高度な設定] Data on MDT(DoM)機能</h3>
+<p>グローバルスクラッチ領域ではData on MDT(DoM)機能を利用可能です。DoM機能を有効にすることにより、サイズの小さいファイルアクセスにおける性能向上を期待できます。デフォルトはDoM機能およびストライプ機能は無効であり、1ファイルにつき1つのOSTに格納される設定となっております。</p>
+<div class="admonition tips">
+<p class="admonition-title">Tips</p>
+<p>DoMの概要については<a href="https://wiki.lustre.org/Data_on_MDT">Data on MDT</a>を参照願います。</p>
+</div>
+<h4 id="how-to-set-up-dom">DoM機能の設定方法</h4>
+<p>DoM機能の設定は、<code>lfs setstripe</code>コマンドで行います。</p>
+<div class="codehilite"><pre><span></span><code><span class="err">$</span><span class="w"> </span><span class="n">lfs</span><span class="w"> </span><span class="n">setstripe</span><span class="w"> </span><span class="o">[</span><span class="n">options</span><span class="o">]</span><span class="w"> </span><span class="o">&lt;</span><span class="n">dirname</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="n">filename</span><span class="o">&gt;</span><span class="w"></span>
+</code></pre></div>
+
+<table>
+<thead>
+<tr>
+<th align="center">オプション</th>
+<th align="left">説明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="center">-E</td>
+<td align="left">部分ファイルの終端を示すオフセット。-E #k, -E #m, -E #gとすることで、サイズをKiB,MiB,GiBで設定可能です。<br>また、-1はeofを意味します。</td>
+</tr>
+<tr>
+<td align="center">-L</td>
+<td align="left">レイアウトタイプを設定。mdt を指定することで、DoM が有効になります。</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>DoMが有効なファイルに対してDoMを無効にすることはできません。また、DoMが無効なファイルに対してDoMを有効にすることはできません。</p>
+</div>
+<p>例）DoM を有効にした新規ファイルの作成<br>
+64KiB までの部分ファイルのレイアウトをmdtに設定します。</p>
+<div class="codehilite"><pre><span></span><code><span class="o">[</span><span class="n">username@es1 work</span><span class="o">]</span><span class="err">$</span><span class="w"> </span><span class="n">lfs</span><span class="w"> </span><span class="n">setstripe</span><span class="w"> </span><span class="o">-</span><span class="n">E</span><span class="w"> </span><span class="mi">64</span><span class="n">k</span><span class="w"> </span><span class="o">-</span><span class="n">L</span><span class="w"> </span><span class="n">mdt</span><span class="w"> </span><span class="o">-</span><span class="n">E</span><span class="w"> </span><span class="o">-</span><span class="mi">1</span><span class="w"> </span><span class="n">dom</span><span class="o">-</span><span class="k">file</span><span class="w"></span>
+<span class="o">[</span><span class="n">username@es1 work</span><span class="o">]</span><span class="err">$</span><span class="w"> </span><span class="n">ls</span><span class="w"></span>
+<span class="n">dom</span><span class="o">-</span><span class="k">file</span><span class="w"></span>
+</code></pre></div>
+
+<p>例）ディレクトリに対して、DoM 機能を設定</p>
+<div class="codehilite"><pre><span></span><code><span class="o">[</span><span class="n">username@es1 work</span><span class="o">]</span><span class="err">$</span><span class="w"> </span><span class="n">mkdir</span><span class="w"> </span><span class="n">dom</span><span class="o">-</span><span class="n">dir</span><span class="w"></span>
+<span class="o">[</span><span class="n">username@es1 work</span><span class="o">]</span><span class="err">$</span><span class="w"> </span><span class="n">lfs</span><span class="w"> </span><span class="n">setstripe</span><span class="w"> </span><span class="o">-</span><span class="n">E</span><span class="w"> </span><span class="mi">64</span><span class="n">k</span><span class="w"> </span><span class="o">-</span><span class="n">L</span><span class="w"> </span><span class="n">mdt</span><span class="w"> </span><span class="o">-</span><span class="n">E</span><span class="w"> </span><span class="o">-</span><span class="mi">1</span><span class="w"> </span><span class="n">dom</span><span class="o">-</span><span class="n">dir</span><span class="w"></span>
+</code></pre></div>
+
+<p>例) 保存されているファイルに対して、DoM機能が有効になっているかを確認</p>
+<div class="codehilite"><pre><span></span><code><span class="o">[</span><span class="n">username@es1 work</span><span class="o">]</span><span class="err">$</span><span class="w"> </span><span class="n">lfs</span><span class="w"> </span><span class="n">getstripe</span><span class="w"> </span><span class="o">-</span><span class="n">I1</span><span class="w"> </span><span class="o">-</span><span class="n">L</span><span class="w"> </span><span class="n">dom</span><span class="o">-</span><span class="k">file</span><span class="w"></span>
+<span class="n">mdt</span><span class="w"></span>
+</code></pre></div>
+
+<p><code>mdt</code>と表示されればそのファイルはDoM機能が有効になっています。それ以外の表示の場合は無効です。</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>上記の例では 64KiB まで MDT にデータが格納されます。このとき、64KiB を超えたデータは OST に格納されます。</p>
+</div>
+<p>また、DoM 機能と一緒に<a href="./#advanced-option-file-striping">ストライプ機能</a>を設定可能です。</p>
+<p>例）DoM 機能とストライプパターンを持った新規ファイルの作成<br>
+64KiBまでの部分ファイルのレイアウトをmdtに設定し、残りの部分についてストライプパターンを設定します。</p>
+<div class="codehilite"><pre><span></span><code><span class="o">[</span><span class="n">username@es1 work</span><span class="o">]</span><span class="err">$</span><span class="w"> </span><span class="n">lfs</span><span class="w"> </span><span class="n">setstripe</span><span class="w"> </span><span class="o">-</span><span class="n">E</span><span class="w"> </span><span class="mi">64</span><span class="n">k</span><span class="w"> </span><span class="o">-</span><span class="n">L</span><span class="w"> </span><span class="n">mdt</span><span class="w"> </span><span class="o">-</span><span class="n">E</span><span class="w"> </span><span class="o">-</span><span class="mi">1</span><span class="w"> </span><span class="o">-</span><span class="n">S</span><span class="w"> </span><span class="mi">1</span><span class="n">m</span><span class="w"> </span><span class="o">-</span><span class="n">i</span><span class="w"> </span><span class="o">-</span><span class="mi">1</span><span class="w"> </span><span class="o">-</span><span class="n">c</span><span class="w"> </span><span class="mi">4</span><span class="w"> </span><span class="n">dom</span><span class="o">-</span><span class="n">stripe</span><span class="o">-</span><span class="k">file</span><span class="w"></span>
+<span class="o">[</span><span class="n">username@es1 work</span><span class="o">]</span><span class="err">$</span><span class="w"> </span><span class="n">ls</span><span class="w"></span>
+<span class="n">dom</span><span class="o">-</span><span class="n">stripe</span><span class="o">-</span><span class="k">file</span><span class="w"></span>
+</code></pre></div>
+
+<p>例）ディレクトリに対して、DoM 機能と OST に格納する部分データのストライプパターンを設定</p>
+<div class="codehilite"><pre><span></span><code><span class="o">[</span><span class="n">username@es1 work</span><span class="o">]</span><span class="err">$</span><span class="w"> </span><span class="n">mkdir</span><span class="w"> </span><span class="n">dom</span><span class="o">-</span><span class="n">stripe</span><span class="o">-</span><span class="n">dir</span><span class="w"></span>
+<span class="o">[</span><span class="n">username@es1 work</span><span class="o">]</span><span class="err">$</span><span class="w"> </span><span class="n">lfs</span><span class="w"> </span><span class="n">setstripe</span><span class="w"> </span><span class="o">-</span><span class="n">E</span><span class="w"> </span><span class="mi">64</span><span class="n">k</span><span class="w"> </span><span class="o">-</span><span class="n">L</span><span class="w"> </span><span class="n">mdt</span><span class="w"> </span><span class="o">-</span><span class="n">E</span><span class="w"> </span><span class="o">-</span><span class="mi">1</span><span class="w"> </span><span class="o">-</span><span class="n">S</span><span class="w"> </span><span class="mi">1</span><span class="n">m</span><span class="w"> </span><span class="o">-</span><span class="n">i</span><span class="w"> </span><span class="o">-</span><span class="mi">1</span><span class="w"> </span><span class="o">-</span><span class="n">c</span><span class="w"> </span><span class="mi">4</span><span class="w"> </span><span class="n">dom</span><span class="o">-</span><span class="n">stripe</span><span class="o">-</span><span class="n">dir</span><span class="w"></span>
+</code></pre></div>
+
 <h2 id="local-storage">ローカルストレージ</h2>
 <p>ABCIシステムでは、計算ノード(V)に1.6 TBのNVMe SSD x 1、計算ノード(A)に2.0 TBのNVMe SSD x 2、メモリインテンシブノードに1.9 TBのSATA 3.0 SSD x 1が搭載されています。これらローカルストレージは次のように利用できます。</p>
 <ul>

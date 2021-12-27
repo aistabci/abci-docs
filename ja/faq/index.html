@@ -1130,8 +1130,8 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#groups1-2gaa50nnnfs3d001-2gaa50nnn" class="md-nav__link">
-    旧領域/groups[1-2]/gAA50NNNおよび/fs3/d00[1-2]/gAA50NNNについて
+  <a href="#fs3d001-2gaa50nnn" class="md-nav__link">
+    旧領域/fs3/d00[1-2]/gAA50NNNについて
   </a>
   
 </li>
@@ -1749,8 +1749,8 @@ ABCIシステム利用環境の<a href="../getting-started/#general-method">SSH�
 </table>
 <p>インタラクティブノード(A)の詳細は、<a href="../system-overview/#interactive-node">インタラクティブノード</a>を参照してください。</p>
 <h3 id="group-area">グループ領域</h3>
-<p>計算ノード(A)からは<strong>旧領域</strong>(<code>/groups[1-2]/gAA50NNN</code>)にアクセスできません。</p>
-<p><strong>旧領域</strong>にあるファイルを計算ノード(A)で利用する場合は、事前に利用者がファイルをホーム領域や<strong>新領域</strong>(<code>/groups/gAA50NNN</code>)にコピーしておく必要があります。<strong>旧領域</strong>にあるファイルをコピーする場合は、インタラクティブノードおよび計算ノード(V)を利用してください。</p>
+<p>計算ノード(A)からは<strong>旧領域</strong>(<code>/fs3/d00[1-2]/gAA50NNN</code>)にアクセスできません。</p>
+<p><strong>旧領域</strong>(<code>/fs3/d00[1-2]/gAA50NNN</code>)にあるファイルを計算ノード(A)で利用する場合は、事前に利用者がファイルをホーム領域や<strong>新領域</strong>(<code>/projects/*/gAA50NNN</code>)にコピーしておく必要があります。<strong>旧領域</strong>にあるファイルをコピーする場合は、インタラクティブノードおよび計算ノード(V)を利用してください。<strong>旧領域</strong>(<code>/groups[1-2]/gAA50NNN</code>)のファイルは移行作業が完了したため、計算ノード(A)から<strong>旧領域</strong>と同じパスでアクセスすることができます。</p>
 <p>なお、2021年4月より<strong>旧領域</strong>のファイルを<strong>新領域</strong>へ移行する作業も進めています。グループ領域のデータ移行については、FAQの<a href="./#q-what-are-the-new-group-area-and-data-migration">グループ領域のデータ移行について知りたい</a>を参照してください。</p>
 <h2 id="q-how-to-use-abci-10-environment-modules">Q. ABCI 1.0 Environment Modulesを利用したい</h2>
 <p>ABCIは、2021年5月にABCI 2.0にアップグレードされました。
@@ -1796,12 +1796,12 @@ source <span class="cp">${</span><span class="n">MODULE_HOME</span><span class="
 <tr>
 <td align="left">d002利用者の<br/><code>/groups1/gAA50NNN/</code></td>
 <td align="left"><code>/projects/datarepository/gAA50NNN/migrated_from_SFA_GPFS/</code><sup id="fnref8:1"><a class="footnote-ref" href="#fn:1">1</a></sup></td>
-<td align="left"></td>
+<td align="left">移行作業完了</td>
 </tr>
 <tr>
 <td align="left">その他の<br/><code>/groups1/gAA50NNN/</code></td>
 <td align="left"><code>/groups/gAA50NNN/migrated_from_SFA_GPFS/</code></td>
-<td align="left"></td>
+<td align="left">移行作業完了</td>
 </tr>
 <tr>
 <td align="left"><code>/groups2/gAA50NNN/</code></td>
@@ -1811,12 +1811,12 @@ source <span class="cp">${</span><span class="n">MODULE_HOME</span><span class="
 <tr>
 <td align="left"><code>/fs3/d001/gAA50NNN/</code></td>
 <td align="left"><code>/projects/d001/gAA50NNN/migrated_from_SFA_GPFS/</code></td>
-<td align="left"></td>
+<td align="left">移行中</td>
 </tr>
 <tr>
 <td align="left"><code>/fs3/d002/gAA50NNN/</code></td>
 <td align="left"><code>/projects/datarepository/gAA50NNN/migrated_from_SFA_GPFS3/</code><sup id="fnref7:1"><a class="footnote-ref" href="#fn:1">1</a></sup></td>
-<td align="left"></td>
+<td align="left">移行中</td>
 </tr>
 </tbody>
 </table>
@@ -1839,11 +1839,11 @@ source <span class="cp">${</span><span class="n">MODULE_HOME</span><span class="
 <li>移行先のディレクトリ以外の<strong>新領域</strong>は自由に使用することができます。</li>
 <li>データコピーにともないディスク使用量が増加します。このため、移行期間中は、利用者ポータルで申請したグループディスク量(以下、クォータ値)の2倍の値を、<strong>新領域</strong>のディスク使用量上限値に設定します。移行完了後、一定の猶予期間を設けて、<strong>新領域</strong>のディスク使用量上限値を、クォータ値と同じ値に設定します。</li>
 </ul>
-<h3 id="groups1-2gaa50nnnfs3d001-2gaa50nnn">旧領域/groups[1-2]/gAA50NNNおよび/fs3/d00[1-2]/gAA50NNNについて</h3>
+<h3 id="fs3d001-2gaa50nnn">旧領域/fs3/d00[1-2]/gAA50NNNについて</h3>
 <ul>
 <li>2021年8月11日以降、<strong>旧領域</strong>を読み取り専用に変更しました。データの保存には<strong>新領域</strong>を利用してください。</li>
-<li>データ移行完了後、<strong>旧領域</strong>上の<code>/groups[1-2]/gAA50NNN</code>および<code>/fs3/d00[1-2]/gAA50NNN/</code>にはアクセスできなくなります。</li>
-<li>これらのパスは、それぞれの<strong>旧領域</strong>内の全データが移行完了後、<strong>新領域</strong>内の移行先ディレクトリへのシンボリックリンクに置き換えられ、従来と同じパスでアクセス可能になります。</li>
+<li>データ移行完了後、<strong>旧領域</strong>上の<code>/fs3/d00[1-2]/gAA50NNN/</code>にはアクセスできなくなります。</li>
+<li>このパス<code>/fs3/d00[1-2]/gAA50NNN</code>は、<strong>旧領域</strong>内の全データが移行完了後、<strong>新領域</strong>内の移行先ディレクトリへのシンボリックリンクに置き換えられ、従来と同じパスでアクセス可能になります。</li>
 </ul>
 <h2 id="q-about-the-quota-value-and-the-limit-of-the-storage-usage">Q. クォータ値とディスク使用量上限値の関係が知りたい</h2>
 <h3 id="_3">データ移行中</h3>
@@ -1877,11 +1877,11 @@ source <span class="cp">${</span><span class="n">MODULE_HOME</span><span class="
 <tbody>
 <tr>
 <td><code>/groups1/gAA50NNN/</code></td>
-<td>移行完了後に設定</td>
+<td>近日中にお知らせ</td>
 </tr>
 <tr>
 <td><code>/groups2/gAA50NNN/</code></td>
-<td>2021年9月30日まで</td>
+<td>2021年9月30日に終了</td>
 </tr>
 <tr>
 <td><code>/fs3</code></td>
@@ -1902,22 +1902,22 @@ source <span class="cp">${</span><span class="n">MODULE_HOME</span><span class="
 <tbody>
 <tr>
 <td><code>/groups1/gAA50NNN/</code></td>
-<td>移行中</td>
+<td>2021年11月26日に完了</td>
 </tr>
 <tr>
 <td><code>/groups2/gAA50NNN/</code></td>
-<td>2021年7月1日に完了</td>
+<td>2021年 7月 1日に完了</td>
 </tr>
 <tr>
 <td><code>/fs3</code></td>
-<td>2021年10月開始予定</td>
+<td>移行中</td>
 </tr>
 </tbody>
 </table>
 <h2 id="q_6">Q. 旧領域にデータが書き込めません</h2>
-<p>2020年度まで使用していたグループ領域(<strong>旧領域</strong>)の<code>/groups1</code>、<code>/fs3</code>は、データ移行の効率化を図るため、2021年8月11日に<strong>読み取り専用</strong>に変更しました。
+<p>2020年度まで使用していたグループ領域(<strong>旧領域</strong>)の<code>/groups1</code>および<code>/groups2</code>についてはデータ移行が完了し、現在は<strong>新領域</strong>へのシンボリックリンクが設定されています。そのため、従来通りのパスで書き込みができるようになっています。</p>
+<p>なお、旧領域の<code>/fs3</code>は、データ移行の効率化を図るため、2021年8月11日に<strong>読み取り専用</strong>に変更しました。
 データの書き込みを行いたい場合は、新しいグループ領域(<strong>新領域</strong>)の<code>/groups</code>、<code>/projects</code>を利用してください。</p>
-<p>なお、旧領域の<code>/groups2</code>についてはデータ移行が完了し、現在は<strong>新領域</strong>へのシンボリックリンクが設定されています。そのため、従来通りのパスで書き込みができるようになっています。</p>
 <p>データ移行については、 FAQの<a href="./#q-what-are-the-new-group-area-and-data-migration">グループ領域のデータ移行について知りたい</a>を参照してください。</p>
 <h2 id="q-about-access-rights-for-each-directory-in-the-group-area">Q. データ移行中とデータ移行完了後のグループ領域のアクセス権限が知りたい</h2>
 <h4 id="_7">データ移行中のグループ領域の各ディレクトリ</h4>
@@ -1932,27 +1932,6 @@ source <span class="cp">${</span><span class="n">MODULE_HOME</span><span class="
 </tr>
 </thead>
 <tbody>
-<tr>
-<td align="left"><code>/groups/gAA50NNN/</code></td>
-<td align="left">Yes<sup id="fnref7:2"><a class="footnote-ref" href="#fn:2">2</a></sup></td>
-<td align="left">Yes<sup id="fnref8:2"><a class="footnote-ref" href="#fn:2">2</a></sup></td>
-<td align="left">Yes<sup id="fnref9:2"><a class="footnote-ref" href="#fn:2">2</a></sup></td>
-<td align="left">新領域</td>
-</tr>
-<tr>
-<td align="left"><code>/groups1/gAA50NNN/</code></td>
-<td align="left">Yes</td>
-<td align="left">No</td>
-<td align="left">No</td>
-<td align="left">旧領域</td>
-</tr>
-<tr>
-<td align="left"><code>/groups2/gAA50NNN/</code></td>
-<td align="left">Yes</td>
-<td align="left">Yes</td>
-<td align="left">Yes</td>
-<td align="left"><code>/groups/gAA50NNN/migrated_from_SFA_GPFS/</code>への参照</td>
-</tr>
 <tr>
 <td align="left"><code>/fs3/d00[1-2]/gAA50NNN/</code></td>
 <td align="left">Yes</td>
@@ -1973,13 +1952,6 @@ source <span class="cp">${</span><span class="n">MODULE_HOME</span><span class="
 <td align="left">Yes<sup id="fnref2:2"><a class="footnote-ref" href="#fn:2">2</a></sup></td>
 <td align="left">Yes<sup id="fnref3:2"><a class="footnote-ref" href="#fn:2">2</a></sup></td>
 <td align="left">d002利用者向けの新領域</td>
-</tr>
-<tr>
-<td align="left"><code>/groups/gAA50NNN/migrated_from_SFA_GPFS/</code></td>
-<td align="left">No<sup id="fnref10:3"><a class="footnote-ref" href="#fn:3">3</a></sup></td>
-<td align="left">No<sup id="fnref11:3"><a class="footnote-ref" href="#fn:3">3</a></sup></td>
-<td align="left">No<sup id="fnref12:3"><a class="footnote-ref" href="#fn:3">3</a></sup></td>
-<td align="left"><code>/groups1/gAA50NNN/</code>の移行先</td>
 </tr>
 <tr>
 <td align="left"><code>/projects/d001/gAA50NNN/migrated_from_SFA_GPFS/</code></td>
@@ -2023,15 +1995,7 @@ source <span class="cp">${</span><span class="n">MODULE_HOME</span><span class="
 </thead>
 <tbody>
 <tr>
-<td align="left"><code>/groups1/gAA50NNN/</code></td>
-<td align="left">Yes</td>
-<td align="left">No<sup id="fnref3:4"><a class="footnote-ref" href="#fn:4">4</a></sup></td>
-<td align="left">No<sup id="fnref4:4"><a class="footnote-ref" href="#fn:4">4</a></sup></td>
-<td align="left"><code>/groups/gAA50NNN/migrated_from_SFA_GPFS/</code></td>
-<td align="left"></td>
-</tr>
-<tr>
-<td align="left"><code>/groups2/gAA50NNN/</code></td>
+<td align="left"><code>/groups[1-2]/gAA50NNN/</code></td>
 <td align="left">Yes</td>
 <td align="left">Yes</td>
 <td align="left">Yes</td>
@@ -2136,13 +2100,13 @@ source <span class="cp">${</span><span class="n">MODULE_HOME</span><span class="
 <p><code>/fs3/d002</code>利用者は移行元が複数あるため移行先のディレクトリが <code>migrated_from_SFA_GPFS/</code>と<code>migrated_from_SFA_GPFS3/</code>に別れています。&#160;<a class="footnote-backref" href="#fnref:1" title="Jump back to footnote 1 in the text">&#8617;</a><a class="footnote-backref" href="#fnref2:1" title="Jump back to footnote 1 in the text">&#8617;</a><a class="footnote-backref" href="#fnref3:1" title="Jump back to footnote 1 in the text">&#8617;</a><a class="footnote-backref" href="#fnref4:1" title="Jump back to footnote 1 in the text">&#8617;</a><a class="footnote-backref" href="#fnref5:1" title="Jump back to footnote 1 in the text">&#8617;</a><a class="footnote-backref" href="#fnref6:1" title="Jump back to footnote 1 in the text">&#8617;</a><a class="footnote-backref" href="#fnref7:1" title="Jump back to footnote 1 in the text">&#8617;</a><a class="footnote-backref" href="#fnref8:1" title="Jump back to footnote 1 in the text">&#8617;</a></p>
 </li>
 <li id="fn:2">
-<p>移行先ディレクトリを除きます。&#160;<a class="footnote-backref" href="#fnref:2" title="Jump back to footnote 2 in the text">&#8617;</a><a class="footnote-backref" href="#fnref2:2" title="Jump back to footnote 2 in the text">&#8617;</a><a class="footnote-backref" href="#fnref3:2" title="Jump back to footnote 2 in the text">&#8617;</a><a class="footnote-backref" href="#fnref4:2" title="Jump back to footnote 2 in the text">&#8617;</a><a class="footnote-backref" href="#fnref5:2" title="Jump back to footnote 2 in the text">&#8617;</a><a class="footnote-backref" href="#fnref6:2" title="Jump back to footnote 2 in the text">&#8617;</a><a class="footnote-backref" href="#fnref7:2" title="Jump back to footnote 2 in the text">&#8617;</a><a class="footnote-backref" href="#fnref8:2" title="Jump back to footnote 2 in the text">&#8617;</a><a class="footnote-backref" href="#fnref9:2" title="Jump back to footnote 2 in the text">&#8617;</a></p>
+<p>移行先ディレクトリを除きます。&#160;<a class="footnote-backref" href="#fnref:2" title="Jump back to footnote 2 in the text">&#8617;</a><a class="footnote-backref" href="#fnref2:2" title="Jump back to footnote 2 in the text">&#8617;</a><a class="footnote-backref" href="#fnref3:2" title="Jump back to footnote 2 in the text">&#8617;</a><a class="footnote-backref" href="#fnref4:2" title="Jump back to footnote 2 in the text">&#8617;</a><a class="footnote-backref" href="#fnref5:2" title="Jump back to footnote 2 in the text">&#8617;</a><a class="footnote-backref" href="#fnref6:2" title="Jump back to footnote 2 in the text">&#8617;</a></p>
 </li>
 <li id="fn:3">
-<p>データ移行完了後にアクセス可能になります。&#160;<a class="footnote-backref" href="#fnref:3" title="Jump back to footnote 3 in the text">&#8617;</a><a class="footnote-backref" href="#fnref2:3" title="Jump back to footnote 3 in the text">&#8617;</a><a class="footnote-backref" href="#fnref3:3" title="Jump back to footnote 3 in the text">&#8617;</a><a class="footnote-backref" href="#fnref4:3" title="Jump back to footnote 3 in the text">&#8617;</a><a class="footnote-backref" href="#fnref5:3" title="Jump back to footnote 3 in the text">&#8617;</a><a class="footnote-backref" href="#fnref6:3" title="Jump back to footnote 3 in the text">&#8617;</a><a class="footnote-backref" href="#fnref7:3" title="Jump back to footnote 3 in the text">&#8617;</a><a class="footnote-backref" href="#fnref8:3" title="Jump back to footnote 3 in the text">&#8617;</a><a class="footnote-backref" href="#fnref9:3" title="Jump back to footnote 3 in the text">&#8617;</a><a class="footnote-backref" href="#fnref10:3" title="Jump back to footnote 3 in the text">&#8617;</a><a class="footnote-backref" href="#fnref11:3" title="Jump back to footnote 3 in the text">&#8617;</a><a class="footnote-backref" href="#fnref12:3" title="Jump back to footnote 3 in the text">&#8617;</a></p>
+<p>データ移行完了後にアクセス可能になります。&#160;<a class="footnote-backref" href="#fnref:3" title="Jump back to footnote 3 in the text">&#8617;</a><a class="footnote-backref" href="#fnref2:3" title="Jump back to footnote 3 in the text">&#8617;</a><a class="footnote-backref" href="#fnref3:3" title="Jump back to footnote 3 in the text">&#8617;</a><a class="footnote-backref" href="#fnref4:3" title="Jump back to footnote 3 in the text">&#8617;</a><a class="footnote-backref" href="#fnref5:3" title="Jump back to footnote 3 in the text">&#8617;</a><a class="footnote-backref" href="#fnref6:3" title="Jump back to footnote 3 in the text">&#8617;</a><a class="footnote-backref" href="#fnref7:3" title="Jump back to footnote 3 in the text">&#8617;</a><a class="footnote-backref" href="#fnref8:3" title="Jump back to footnote 3 in the text">&#8617;</a><a class="footnote-backref" href="#fnref9:3" title="Jump back to footnote 3 in the text">&#8617;</a></p>
 </li>
 <li id="fn:4">
-<p>/groups1/ 内の全データが移行完了後に書き込み/削除が可能になります。&#160;<a class="footnote-backref" href="#fnref:4" title="Jump back to footnote 4 in the text">&#8617;</a><a class="footnote-backref" href="#fnref2:4" title="Jump back to footnote 4 in the text">&#8617;</a><a class="footnote-backref" href="#fnref3:4" title="Jump back to footnote 4 in the text">&#8617;</a><a class="footnote-backref" href="#fnref4:4" title="Jump back to footnote 4 in the text">&#8617;</a></p>
+<p>/groups1/ 内の全データが移行完了後に書き込み/削除が可能になります。&#160;<a class="footnote-backref" href="#fnref:4" title="Jump back to footnote 4 in the text">&#8617;</a><a class="footnote-backref" href="#fnref2:4" title="Jump back to footnote 4 in the text">&#8617;</a></p>
 </li>
 <li id="fn:5">
 <p>/fs3/ 内の全データが移行完了後に書き込み/削除が可能になります。&#160;<a class="footnote-backref" href="#fnref:5" title="Jump back to footnote 5 in the text">&#8617;</a><a class="footnote-backref" href="#fnref2:5" title="Jump back to footnote 5 in the text">&#8617;</a><a class="footnote-backref" href="#fnref3:5" title="Jump back to footnote 5 in the text">&#8617;</a><a class="footnote-backref" href="#fnref4:5" title="Jump back to footnote 5 in the text">&#8617;</a></p>
