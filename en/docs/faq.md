@@ -449,11 +449,11 @@ During the data migration task, the value twice or larger the quota value is set
 
 The grace period is as follows. After the grace period, if the usage amount of the **New Area** (shown as "used" with the show_quota command) is larger than the quota value, you cannot write onto the  **New Area**. Please delete unnecessary files (duplicated files, etc.) or apply to increase the quota value by accessing [ABCI User Portal](https://portal.abci.ai/user/?lang=en) and access "User Group Management". 
 
-| Group Area           | Grace Period        |
-|:--                   |:--                           |
-| `/groups1/gAA50NNN/` | Comming soon...              |
-| `/groups2/gAA50NNN/` | Until September 30, 2021     |
-| `/fs3/`              | Set after the Migration task |
+| Group Area           | Grace Period             |
+|:--                   |:--                       |
+| `/groups1/gAA50NNN/` | Until February 28, 2022  |
+| `/groups2/gAA50NNN/` | Until September 30, 2021 |
+| `/fs3/`              | Until March 20, 2022     |
 
 
 ## Q. About the status of the Data Migration Task
