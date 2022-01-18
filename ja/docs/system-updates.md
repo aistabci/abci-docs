@@ -1,5 +1,12 @@
 # システム更新履歴
 
+## 2022-03-03 更新予定
+
+| Add / Update / Delete | Software | Version | Previous version |
+|:--|:--|:--|:--|
+| Delete | hadoop | 3.3 | |
+| Delete | spark | 3.0 | |
+
 ## 2021-12-15
 
 | Add / Update / Delete | Software | Version | Previous version |
