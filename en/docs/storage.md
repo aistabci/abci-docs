@@ -106,7 +106,7 @@ To see the quota value of the global scratch area, issue `show_quota` command. F
 !!! note
     When storing a large number of files under the global scratch area, create a directory under /scratch/(ABCI account) and store the files in the directory.
 
-## Checking creation date of file/directory {#checking-created-date}
+### Checking creation date of file/directory {#checking-created-date}
 
 To display creation date of files and directories directly under /scratch/(ABCI account),
 use the `show_quota` command
