@@ -98,10 +98,36 @@ stripe_count:  4 stripe_size:   1048576 stripe_offset: 10
 !!! warning
     グローバルスクラッチ領域は、クリーンアップ機能を備えています。<br>
     /scratchのファイル領域またはi-node領域の利用率が80%を超過した場合に、/scratch/(ABCIアカウント名) 直下のファイルおよびディレクトリの最終アクセス時間と作成日をもとに削除候補を選び、削除候補のファイル/ディレクトリを自動的に削除します。/scratch/(ABCIアカウント名) 直下のディレクトリが削除候補になった場合は、そのディレクトリ配下のすべてのファイル/ディレクトリが削除されます。そのディレクトリ配下のファイル/ディレクトリの最終アクセス時間と作成日は考慮されませんので、ご注意ください。<br>
-    最初の削除候補として、最終アクセス時間が40日を経過したものが選ばれます。その候補を削除した後に、まだ、/scratchの利用率が80%超過の場合は、作成日が40日を経過したものが次の削除候補として選ばれます。ファイル/ディレクトリの作成日はlsコマンドで確認できないため、利用者自身で控えるようにしてください。
+    最初の削除候補として、最終アクセス時間が40日を経過したものが選ばれます。その候補を削除した後に、まだ、/scratchの利用率が80%超過の場合は、作成日が40日を経過したものが次の削除候補として選ばれます。
 
 !!! note
     グローバルスクラッチ領域配下に大量のファイルを格納する場合は、/scratch/(ABCIアカウント名) 配下にディレクトリを作成の上、格納するようにして下さい。
+
+### ファイル/ディレクトリの作成日の確認 {#checking-created-date}
+
+/scratch/(ABCIアカウント名) 直下のファイルおよびディレクトリの作成日を表示するには、
+`show_scratch`コマンドを利用します。
+
+例) ファイル/ディレクトリの作成日を確認する。
+
+```
+[username@es1 ~]$ show_scratch
+                                                                     Last Updated: 2022/01/01 00:05
+Directory/File                                     created_date        valid_date    remained(days)
+/scratch/username/dir1                               2021/12/17        2022/01/26                25
+/scratch/username/dir2                               2021/12/18        2022/01/27                26
+/scratch/username/file1                              2021/12/19        2022/01/28                27
+Directories and files that have expired will be deleted soon.
+Before that, please backup and delete these files yourself.
+```
+
+| 項目  | 説明 |
+|:--|:--|
+| Directory/File | ディレクトリ名/ファイル名 |
+| created_date   | 作成日 |
+| valid_date     | 有効期限 |
+| remained(days) | 残り日数 |
+
 
 ### [高度な設定] Data on MDT(DoM)機能 {#advanced-option-dom}
 

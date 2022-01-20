@@ -101,10 +101,35 @@ To see the quota value of the global scratch area, issue `show_quota` command. F
 !!! warning
     The global scratch area has a cleanup function.<br>
     When the usage of the file area or i-node area of /scratch exceeds 80%, delete candidates are selected based on the last access time and creation date of files and directories directly under /scratch/(ABCI account), and the files/directories of the delete candidates are automatically deleted. If a directory directly under /scratch/(ABCI account) becomes a candidate for deletion, all files/directories under that directory are deleted. Note that the last access time and creation date of the files/directories under that directory are not taken into account.<br>
-    The first candidate to be deleted is the one whose last access time is older than 40 days. If, after deleting the candidate, the utilization of/scratch is still over 80%, the next candidate to be deleted is one whose creation date is older than 40 days. Make a note of the file/directory creation date since it cannot be checked by the ls command.
+    The first candidate to be deleted is the one whose last access time is older than 40 days. If, after deleting the candidate, the utilization of/scratch is still over 80%, the next candidate to be deleted is one whose creation date is older than 40 days.
 
 !!! note
     When storing a large number of files under the global scratch area, create a directory under /scratch/(ABCI account) and store the files in the directory.
+
+## Checking creation date of file/directory {#checking-created-date}
+
+To display creation date of files and directories directly under /scratch/(ABCI account),
+use the `show_quota` command
+
+Example) Display creation date.
+
+```
+[username@es1 ~]$ show_scratch
+                                                                     Last Updated: 2022/01/01 00:05
+Directory/File                                     created_date        valid_date    remained(days)
+/scratch/username/dir1                               2021/12/17        2022/01/26                25
+/scratch/username/dir2                               2021/12/18        2022/01/27                26
+/scratch/username/file1                              2021/12/19        2022/01/28                27
+Directories and files that have expired will be deleted soon.
+Before that, please backup and delete these files yourself.
+```
+
+| Item  | Description |
+|:-|:-|
+| Directory/File | files and directories name |
+| created_date   | creation date of files and directories |
+| valid_date     | valid date of files and directories |
+| remained(days) | number of remaining days |
 
 ###  [Advanced Option] Data on MDT(DoM) {#advanced-option-dom}
 
