@@ -1,5 +1,12 @@
 # System Updates
 
+## 2022-03-03 (future plans)
+
+| Add / Update / Delete | Software | Version | Previous version |
+|:--|:--|:--|:--|
+| Delete | hadoop | 3.3 | |
+| Delete | spark | 3.0 | |
+
 ## 2021-12-15
 
 | Add / Update / Delete | Software | Version | Previous version |
