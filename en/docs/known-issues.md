@@ -2,6 +2,7 @@
 
 | date | category | content | status |
 |:--|:--|:--|:--|
+| 2022/01/21 | Application | A known issue has been identified that the execution of vtune using intel-vtune/2020.3 module fails on the compute node (A). | 2022/01/21<br>The issue is expected to be resolved with a vtune update.<br>The update is scheduled for maintenance in April. |
 | 2021/12/17 | Application | A known issue has been identified that the execution of distributed deep learning using pytorch and NCCL fails on the compute node (A).<br>To avoid this issue, set the following environment variable in your job script.<br>NCCL_IB_DISABLE=1 | 2021/12/17<br>Currently investigating the cause. |
 | 2021/10/19 | MPI | In OpenMPI 3.1.6 on the compute node (V), we have confirmed that when the -mca pml cm flag is specified in the mpirun command, processing stops and does not proceed in MPI_Send/MPI_Recv. | OpenMPI 3 is no longer supported, so please use OpenMPI 4. |
 | 2021/07/06 | Singularity | The remote build function is not available due to a failure of the Remote Builder service. | 2021/07/21<br> close.<br>Resolved a communication problem in Remote Builder service. |
