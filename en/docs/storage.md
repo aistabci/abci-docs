@@ -129,8 +129,11 @@ Before that, please backup and delete these files yourself.
 |:-|:-|
 | Directory/File | files and directories name |
 | created_date   | creation date of files and directories |
-| valid_date     | period not a candidate for deletion (40 days from the creation date) |
+| valid_date     | valid date (The date of the 40th day from the creation date. After this date, it will be a candidate for deletion.) |
 | remained(days) | remaining days until it becomes a candidate for deletion |
+
+!!! note
+    The creation date is displayed by the `show_scratch` command after midnight the day after the files and directories are created.
 
 ###  [Advanced Option] Data on MDT(DoM) {#advanced-option-dom}
 

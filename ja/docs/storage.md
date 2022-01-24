@@ -128,9 +128,11 @@ Before that, please backup and delete these files yourself.
 |:--|:--|
 | Directory/File | ディレクトリ名/ファイル名 |
 | created_date   | ディレクトリ/ファイルの作成日 |
-| valid_date     | 削除候補とならない期間(作成日から40日) |
+| valid_date     | 有効期限（作成日から40日目の日付。この日を過ぎると削除候補となります。） |
 | remained(days) | 削除候補となるまでの残り日数 |
 
+!!! note
+    show_scratchコマンドによる作成日の表示は、ファイル/ディレクトリの作成の翌日0時以降となります。
 
 ### [高度な設定] Data on MDT(DoM)機能 {#advanced-option-dom}
 
