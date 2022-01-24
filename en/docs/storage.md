@@ -108,8 +108,9 @@ To see the quota value of the global scratch area, issue `show_quota` command. F
 
 ### Checking creation date of file/directory {#checking-created-date}
 
-To display creation date of files and directories directly under /scratch/(ABCI account),
-use the `show_quota` command
+Files and directories under the global scratch area are selected as candidates for deletion based on the last access time and creation date. However, you cannot check the creation date of files and directories with the ls command.
+
+We have prepared the `show_scratch` command to display the creation date of files and directories under the global scratch area. To check whether the file created in the global scratch area is a candidate for deletion, use the `show_scratch` command.
 
 Example) Display creation date.
 
@@ -128,8 +129,8 @@ Before that, please backup and delete these files yourself.
 |:-|:-|
 | Directory/File | files and directories name |
 | created_date   | creation date of files and directories |
-| valid_date     | valid date of files and directories |
-| remained(days) | number of remaining days |
+| valid_date     | period not a candidate for deletion (40 days from the creation date) |
+| remained(days) | remaining days until it becomes a candidate for deletion |
 
 ###  [Advanced Option] Data on MDT(DoM) {#advanced-option-dom}
 

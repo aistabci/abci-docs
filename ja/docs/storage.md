@@ -105,8 +105,11 @@ stripe_count:  4 stripe_size:   1048576 stripe_offset: 10
 
 ### ファイル/ディレクトリの作成日の確認 {#checking-created-date}
 
-/scratch/(ABCIアカウント名) 直下のファイルおよびディレクトリの作成日を表示するには、
-`show_scratch`コマンドを利用します。
+グローバルスクラッチ領域下のファイルおよびディレクトリは最終アクセス時間と作成日をもとに削除候補に選ばれます。
+しかし、ファイルおよびディレクトリの作成日はlsコマンドでは確認できません。
+
+グローバルスクラッチ領域下のファイルおよびディレクトリの作成日を確認するための`show_scratch`コマンドを用意しました。
+グローバルスクラッチ領域に作成したファイルが削除候補となっているかどうかの確認には`show_scratch`コマンドを使用してください。
 
 例) ファイル/ディレクトリの作成日を確認する。
 
@@ -124,9 +127,9 @@ Before that, please backup and delete these files yourself.
 | 項目  | 説明 |
 |:--|:--|
 | Directory/File | ディレクトリ名/ファイル名 |
-| created_date   | 作成日 |
-| valid_date     | 有効期限 |
-| remained(days) | 残り日数 |
+| created_date   | ディレクトリ/ファイルの作成日 |
+| valid_date     | 削除候補とならない期間(作成日から40日) |
+| remained(days) | 削除候補となるまでの残り日数 |
 
 
 ### [高度な設定] Data on MDT(DoM)機能 {#advanced-option-dom}
