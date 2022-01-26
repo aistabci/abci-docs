@@ -132,7 +132,7 @@ Before that, please backup and delete these files yourself.
 | remained(days) | 削除候補となるまでの残り日数 |
 
 !!! note
-    show_scratchコマンドによる作成日の表示は、ファイル/ディレクトリの作成の翌日0時以降となります。
+    ファイル/ディレクトリの作成、削除および名前の変更の反映は、ファイル/ディレクトリの変更の翌日0時以降となり、それまでは、変更前の情報が表示されます。
 
 ### [高度な設定] Data on MDT(DoM)機能 {#advanced-option-dom}
 

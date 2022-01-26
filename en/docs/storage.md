@@ -133,7 +133,7 @@ Before that, please backup and delete these files yourself.
 | remained(days) | remaining days until it becomes a candidate for deletion |
 
 !!! note
-    The creation date is displayed by the `show_scratch` command after midnight the day after the files and directories are created.
+    Files and directories creation, deletion, and renaming will be reflected after midnight the day after the files and directories change, and until then, the information before the change will be displayed.
 
 ###  [Advanced Option] Data on MDT(DoM) {#advanced-option-dom}
 
