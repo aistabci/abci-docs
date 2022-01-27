@@ -78,7 +78,7 @@ The following is a list of CUDA Toolkit, cuDNN, and NCCL that can be used with t
 | cuda/11.3 | 11.3.0     | Yes | -   | -   |
 | cuda/11.3 | 11.3.1     | Yes | Yes | Yes |
 | cuda/11.4 | 11.4.0     | Yes | -   | -   |
-| cuda/11.4 | 11.4.1     | Yes | -   | -   |
+| cuda/11.4 | 11.4.1     | Yes | Yes | Yes |
 | cuda/11.4 | 11.4.2     | Yes | Yes | Yes |
 | cuda/11.4 | 11.4.3     | Yes | -   | -   |
 | cuda/11.5 | 11.5.0     | Yes | -   | -   |
