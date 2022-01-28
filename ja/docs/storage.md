@@ -120,8 +120,9 @@ Directory/File                                     created_date        valid_dat
 /scratch/username/dir1                               2021/12/17        2022/01/26                25
 /scratch/username/dir2                               2021/12/18        2022/01/27                26
 /scratch/username/file1                              2021/12/19        2022/01/28                27
+/scratch/username/file2                              2021/11/20        2021/12/30                 0
 Directories and files that have expired will be deleted soon.
-Before that, please backup and delete these files yourself.
+If necessary, please backup.
 ```
 
 | 項目  | 説明 |
