@@ -75,8 +75,18 @@ The following is a list of CUDA Toolkit, cuDNN, and NCCL that can be used with t
 | cuda/11.2 | 11.2.0     | Yes | -   | -   |
 | cuda/11.2 | 11.2.1     | Yes | -   | -   |
 | cuda/11.2 | 11.2.2     | Yes | Yes | Yes |
+| cuda/11.3 | 11.3.0     | Yes | -   | -   |
+| cuda/11.3 | 11.3.1     | Yes | Yes | Yes |
+| cuda/11.4 | 11.4.0     | Yes | -   | -   |
+| cuda/11.4 | 11.4.1     | Yes | Yes | Yes |
+| cuda/11.4 | 11.4.2     | Yes | Yes | Yes |
+| cuda/11.4 | 11.4.3     | Yes | -   | -   |
+| cuda/11.5 | 11.5.0     | Yes | -   | -   |
+| cuda/11.5 | 11.5.1     | Yes | Yes[^2] | Yes[^2] |
+| cuda/11.6 | 11.6.0     | Yes | Yes[^2] | Yes[^2] |
 
 [^1]: Provided only for experimental use. NVIDIA A100 is supported on CUDA 11＋.
+[^2]: Provided only for experimental use. The NVIDIA Driver is not the version that corresponds to the CUDA release.
 
 ## cuDNN
 
@@ -113,35 +123,40 @@ The following is a list of CUDA Toolkit, cuDNN, and NCCL that can be used with t
 
 Compute Node (V):
 
-| Version | cuda/8.0 | cuda/9.0 | cuda/9.1 | cuda/9.2 | cuda/10.0 | cuda/10.1 | cuda/10.2 | cuda/11.0 | cuda/11.1 | cuda/11.2 |
-|:--|:--|:--|:--|:--|:--|:--|:--|:--|:--|:--|
-| 5.1.10 | Yes | -   | -   | -   | -   | -   | -   | -   | -   | -   |
-| 6.0.21 | Yes | -   | -   | -   | -   | -   | -   | -   | -   | -   |
-| 7.0.5  | Yes | Yes | Yes | -   | -   | -   | -   | -   | -   | -   |
-| 7.1.4  | -   | Yes | -   | Yes | -   | -   | -   | -   | -   | -   |
-| 7.2.1  | -   | Yes | -   | Yes | -   | -   | -   | -   | -   | -   |
-| 7.3.0  | -   | -   | -   | -   | -   | -   | -   | -   | -   | -   |
-| 7.3.1  | -   | Yes | -   | Yes | Yes | -   | -   | -   | -   | -   |
-| 7.4.2  | -   | Yes | -   | Yes | Yes | -   | -   | -   | -   | -   |
-| 7.5.1  | -   | Yes | -   | Yes | Yes | Yes | -   | -   | -   | -   |
-| 7.6.5  | -   | Yes | -   | Yes | Yes | Yes | Yes | -   | -   | -   |
-| 8.0.5  | -   | -   | -   | -   | -   | Yes | Yes | Yes | Yes | -   |
-| 8.1.1  | -   | -   | -   | -   | -   | -   | Yes | Yes | Yes | Yes |
-| 8.2.0  | -   | -   | -   | -   | -   | -   | Yes | Yes | Yes | Yes |
-| 8.2.1  | -   | -   | -   | -   | -   | -   | Yes | Yes | Yes | Yes |
+| Version | cuda/8.0 | cuda/9.0 | cuda/9.1 | cuda/9.2 | cuda/10.0 | cuda/10.1 | cuda/10.2 | cuda/11.0 | cuda/11.1 | cuda/11.2 | cuda/11.3 | cuda/11.4 | cuda/11.5[^2] | cuda/11.6[^2] |
+|:--|:--|:--|:--|:--|:--|:--|:--|:--|:--|:--|:--|:--|:--|:--|
+| 5.1.10 | Yes | -   | -   | -   | -   | -   | -   | -   | -   | -   | -   | -   | -   | -   |
+| 6.0.21 | Yes | -   | -   | -   | -   | -   | -   | -   | -   | -   | -   | -   | -   | -   |
+| 7.0.5  | Yes | Yes | Yes | -   | -   | -   | -   | -   | -   | -   | -   | -   | -   | -   |
+| 7.1.4  | -   | Yes | -   | Yes | -   | -   | -   | -   | -   | -   | -   | -   | -   | -   |
+| 7.2.1  | -   | Yes | -   | Yes | -   | -   | -   | -   | -   | -   | -   | -   | -   | -   |
+| 7.3.1  | -   | Yes | -   | Yes | Yes | -   | -   | -   | -   | -   | -   | -   | -   | -   |
+| 7.4.2  | -   | Yes | -   | Yes | Yes | -   | -   | -   | -   | -   | -   | -   | -   | -   |
+| 7.5.1  | -   | Yes | -   | Yes | Yes | Yes | -   | -   | -   | -   | -   | -   | -   | -   |
+| 7.6.5  | -   | Yes | -   | Yes | Yes | Yes | Yes | -   | -   | -   | -   | -   | -   | -   |
+| 8.0.5  | -   | -   | -   | -   | -   | Yes | Yes | Yes | Yes | -   | -   | -   | -   | -   |
+| 8.1.1  | -   | -   | -   | -   | -   | -   | Yes | Yes | Yes | Yes | -   | -   | -   | -   |
+| 8.2.0  | -   | -   | -   | -   | -   | -   | Yes | Yes | Yes | Yes | Yes | -   | -   | -   |
+| 8.2.1  | -   | -   | -   | -   | -   | -   | Yes | Yes | Yes | Yes | Yes | -   | -   | -   |
+| 8.2.2  | -   | -   | -   | -   | -   | -   | Yes | Yes | Yes | Yes | Yes | Yes | -   | -   |
+| 8.2.4  | -   | -   | -   | -   | -   | -   | Yes | Yes | Yes | Yes | Yes | Yes | -   | -   |
+| 8.3.2  | -   | -   | -   | -   | -   | -   | Yes | Yes | Yes | Yes | Yes | Yes | Yes | -   |
 
 Compute Node (A):
 
-| Version | cuda/10.0[^1] | cuda/10.1[^1] | cuda/10.2[^1] | cuda/11.0 | cuda/11.1 | cuda/11.2 |
-|:--|:--|:--|:--|:--|:--|:--|
-| 7.3.1  | Yes | -   | -   | -   | -   | -   |
-| 7.4.2  | Yes | -   | -   | -   | -   | -   |
-| 7.5.1  | Yes | Yes | -   | -   | -   | -   |
-| 7.6.5  | Yes | Yes | Yes | -   | -   | -   |
-| 8.0.5  | -   | Yes | Yes | Yes | Yes | -   |
-| 8.1.1  | -   | -   | Yes | Yes | Yes | Yes |
-| 8.2.0  | -   | -   | Yes | Yes | Yes | Yes |
-| 8.2.1  | -   | -   | Yes | Yes | Yes | Yes |
+| Version | cuda/10.0[^1] | cuda/10.1[^1] | cuda/10.2[^1] | cuda/11.0 | cuda/11.1 | cuda/11.2 | cuda/11.3 | cuda/11.4 | cuda/11.5[^2] | cuda/11.6[^2] |
+|:--|:--|:--|:--|:--|:--|:--|:--|:--|:--|:--|
+| 7.3.1  | Yes | -   | -   | -   | -   | -   | -   | -   | -   | -   |
+| 7.4.2  | Yes | -   | -   | -   | -   | -   | -   | -   | -   | -   |
+| 7.5.1  | Yes | Yes | -   | -   | -   | -   | -   | -   | -   | -   |
+| 7.6.5  | Yes | Yes | Yes | -   | -   | -   | -   | -   | -   | -   |
+| 8.0.5  | -   | Yes | Yes | Yes | Yes | -   | -   | -   | -   | -   |
+| 8.1.1  | -   | -   | Yes | Yes | Yes | Yes | -   | -   | -   | -   |
+| 8.2.0  | -   | -   | Yes | Yes | Yes | Yes | Yes | -   | -   | -   |
+| 8.2.1  | -   | -   | Yes | Yes | Yes | Yes | Yes | -   | -   | -   |
+| 8.2.2  | -   | -   | Yes | Yes | Yes | Yes | Yes | Yes | -   | -   |
+| 8.2.4  | -   | -   | Yes | Yes | Yes | Yes | Yes | Yes | -   | -   |
+| 8.3.2  | -   | -   | Yes | Yes | Yes | Yes | Yes | Yes | Yes | -   |
 
 ## NCCL
 
@@ -173,32 +188,37 @@ Compute Node (A):
 
 Compute Node (V):
 
-| Version | cuda/8.0 | cuda/9.0 | cuda/9.1 | cuda/9.2 | cuda/10.0 | cuda/10.1 | cuda/10.2 | cuda/11.0 | cuda/11.1 | cuda/11.2 |
-|:--|:--|:--|:--|:--|:--|:--|:--|:--|:--|:--|
-| 1.3.5-1  | Yes | Yes | Yes | Yes | Yes | -   | -   | -   | -   | -   |
-| 2.1.15-1 | Yes | Yes | Yes | -   | -   | -   | -   | -   | -   | -   |
-| 2.2.13-1 | Yes | Yes | -   | Yes | -   | -   | -   | -   | -   | -   |
-| 2.3.7-1  | -   | Yes | -   | Yes | Yes | -   | -   | -   | -   | -   |
-| 2.4.8-1  | -   | -   | -   | Yes | Yes | Yes | -   | -   | -   | -   |
-| 2.5.6-1  | -   | Yes | -   | -   | Yes | Yes | Yes | -   | -   | -   |
-| 2.6.4-1  | -   | -   | -   | -   | Yes | Yes | Yes | -   | -   | -   |
-| 2.7.8-1  | -   | -   | -   | -   | -   | Yes | Yes | Yes | Yes | -   |
-| 2.8.4-1  | -   | -   | -   | -   | -   | -   | Yes | Yes | Yes | Yes |
-| 2.9.6-1  | -   | -   | -   | -   | -   | -   | Yes | Yes | -   | -   |
-| 2.9.9-1  | -   | -   | -   | -   | -   | -   | Yes | Yes | -   | -   |
+| Version | cuda/8.0 | cuda/9.0 | cuda/9.1 | cuda/9.2 | cuda/10.0 | cuda/10.1 | cuda/10.2 | cuda/11.0 | cuda/11.1 | cuda/11.2 | cuda/11.3 | cuda/11.4 | cuda/11.5[^2] | cuda/11.6[^2] |
+|:--|:--|:--|:--|:--|:--|:--|:--|:--|:--|:--|:--|:--|:--|:--|
+| 1.3.5-1  | Yes | Yes | Yes | Yes | Yes | -   | -   | -   | -   | -   | -   | -   | -   | -   |
+| 2.1.15-1 | Yes | Yes | Yes | -   | -   | -   | -   | -   | -   | -   | -   | -   | -   | -   |
+| 2.2.13-1 | Yes | Yes | -   | Yes | -   | -   | -   | -   | -   | -   | -   | -   | -   | -   |
+| 2.3.7-1  | -   | Yes | -   | Yes | Yes | -   | -   | -   | -   | -   | -   | -   | -   | -   |
+| 2.4.8-1  | -   | -   | -   | Yes | Yes | Yes | -   | -   | -   | -   | -   | -   | -   | -   |
+| 2.5.6-1  | -   | Yes | -   | -   | Yes | Yes | Yes | -   | -   | -   | -   | -   | -   | -   |
+| 2.6.4-1  | -   | -   | -   | -   | Yes | Yes | Yes | -   | -   | -   | -   | -   | -   | -   |
+| 2.7.8-1  | -   | -   | -   | -   | -   | Yes | Yes | Yes | Yes | -   | -   | -   | -   | -   |
+| 2.8.4-1  | -   | -   | -   | -   | -   | -   | Yes | Yes | Yes | Yes | -   | -   | -   | -   |
+| 2.9.6-1  | -   | -   | -   | -   | -   | -   | Yes | Yes | -   | -   | -   | -   | -   | -   |
+| 2.9.9-1  | -   | -   | -   | -   | -   | -   | Yes | Yes | -   | -   | -   | -   | -   | -   |
+| 2.10.3-1 | -   | -   | -   | -   | -   | -   | Yes | Yes | -   | -   | -   | Yes | -   | -   |
+| 2.11.4-1 | -   | -   | -   | -   | -   | -   | Yes | Yes | -   | -   | -   | Yes | Yes | Yes |
 
 Compute Node (A):
 
-| Version | cuda/10.0[^1] | cuda/10.1[^1] | cuda/10.2[^1] | cuda/11.0 | cuda/11.1 | cuda/11.2 |
-|:--|:--|:--|:--|:--|:--|:--|
-| 2.3.7-1  | Yes | -   | -   | -   | -   | -   |
-| 2.4.8-1  | Yes | Yes | -   | -   | -   | -   |
-| 2.5.6-1  | Yes | Yes | Yes | -   | -   | -   |
-| 2.6.4-1  | Yes | Yes | Yes | -   | -   | -   |
-| 2.7.8-1  | -   | Yes | Yes | Yes | Yes | -   |
-| 2.8.4-1  | -   | -   | Yes | Yes | Yes | Yes |
-| 2.9.6-1  | -   | -   | Yes | Yes | -   | -   |
-| 2.9.9-1  | -   | -   | Yes | Yes | -   | -   |
+| Version | cuda/10.0[^1] | cuda/10.1[^1] | cuda/10.2[^1] | cuda/11.0 | cuda/11.1 | cuda/11.2 | cuda/11.3 | cuda/11.4 | cuda/11.5[^2] | cuda/11.6[^2] |
+|:--|:--|:--|:--|:--|:--|:--|:--|:--|:--|:--|
+| 2.3.7-1  | Yes | -   | -   | -   | -   | -   | -   | -   | -   | -   |
+| 2.4.8-1  | Yes | Yes | -   | -   | -   | -   | -   | -   | -   | -   |
+| 2.5.6-1  | Yes | Yes | Yes | -   | -   | -   | -   | -   | -   | -   |
+| 2.6.4-1  | Yes | Yes | Yes | -   | -   | -   | -   | -   | -   | -   |
+| 2.7.8-1  | -   | Yes | Yes | Yes | Yes | -   | -   | -   | -   | -   |
+| 2.8.4-1  | -   | -   | Yes | Yes | Yes | Yes | -   | -   | -   | -   |
+| 2.9.6-1  | -   | -   | Yes | Yes | -   | -   | -   | -   | -   | -   |
+| 2.9.9-1  | -   | -   | Yes | Yes | -   | -   | -   | -   | -   | -   |
+| 2.10.3-1 | -   | -   | Yes | Yes | -   | -   | -   | Yes | -   | -   |
+| 2.11.4-1 | -   | -   | Yes | Yes | -   | -   | -   | Yes | Yes | Yes |
+
 
 ## GDRCopy
 
