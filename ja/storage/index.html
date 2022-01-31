@@ -383,6 +383,13 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
+  <a href="#checking-created-date" class="md-nav__link">
+    ファイル/ディレクトリの作成日の確認
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#advanced-option-dom" class="md-nav__link">
     [高度な設定] Data on MDT(DoM)機能
   </a>
@@ -1347,11 +1354,58 @@
 <p class="admonition-title">Warning</p>
 <p>グローバルスクラッチ領域は、クリーンアップ機能を備えています。<br>
 /scratchのファイル領域またはi-node領域の利用率が80%を超過した場合に、/scratch/(ABCIアカウント名) 直下のファイルおよびディレクトリの最終アクセス時間と作成日をもとに削除候補を選び、削除候補のファイル/ディレクトリを自動的に削除します。/scratch/(ABCIアカウント名) 直下のディレクトリが削除候補になった場合は、そのディレクトリ配下のすべてのファイル/ディレクトリが削除されます。そのディレクトリ配下のファイル/ディレクトリの最終アクセス時間と作成日は考慮されませんので、ご注意ください。<br>
-最初の削除候補として、最終アクセス時間が40日を経過したものが選ばれます。その候補を削除した後に、まだ、/scratchの利用率が80%超過の場合は、作成日が40日を経過したものが次の削除候補として選ばれます。ファイル/ディレクトリの作成日はlsコマンドで確認できないため、利用者自身で控えるようにしてください。</p>
+最初の削除候補として、最終アクセス時間が40日を経過したものが選ばれます。その候補を削除した後に、まだ、/scratchの利用率が80%超過の場合は、作成日が40日を経過したものが次の削除候補として選ばれます。</p>
 </div>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>グローバルスクラッチ領域配下に大量のファイルを格納する場合は、/scratch/(ABCIアカウント名) 配下にディレクトリを作成の上、格納するようにして下さい。</p>
+</div>
+<h3 id="checking-created-date">ファイル/ディレクトリの作成日の確認</h3>
+<p>グローバルスクラッチ領域下のファイルおよびディレクトリは最終アクセス時間と作成日をもとに削除候補に選ばれます。
+しかし、ファイルおよびディレクトリの作成日はlsコマンドでは確認できません。</p>
+<p>グローバルスクラッチ領域下のファイルおよびディレクトリの作成日を確認するための<code>show_scratch</code>コマンドを用意しました。
+グローバルスクラッチ領域に作成したファイルが削除候補となっているかどうかの確認には<code>show_scratch</code>コマンドを使用してください。</p>
+<p>例) ファイル/ディレクトリの作成日を確認する。</p>
+<div class="codehilite"><pre><span></span><code><span class="o">[</span><span class="n">username@es1 ~</span><span class="o">]</span><span class="err">$</span><span class="w"> </span><span class="n">show_scratch</span><span class="w"></span>
+<span class="w">                                                                     </span><span class="k">Last</span><span class="w"> </span><span class="nl">Updated</span><span class="p">:</span><span class="w"> </span><span class="mi">2022</span><span class="o">/</span><span class="mi">01</span><span class="o">/</span><span class="mi">01</span><span class="w"> </span><span class="mi">00</span><span class="err">:</span><span class="mi">05</span><span class="w"></span>
+<span class="n">Directory</span><span class="o">/</span><span class="k">File</span><span class="w">                                     </span><span class="n">created_date</span><span class="w">        </span><span class="n">valid_date</span><span class="w">    </span><span class="n">remained</span><span class="p">(</span><span class="n">days</span><span class="p">)</span><span class="w"></span>
+<span class="o">/</span><span class="n">scratch</span><span class="o">/</span><span class="n">username</span><span class="o">/</span><span class="n">dir1</span><span class="w">                               </span><span class="mi">2021</span><span class="o">/</span><span class="mi">12</span><span class="o">/</span><span class="mi">17</span><span class="w">        </span><span class="mi">2022</span><span class="o">/</span><span class="mi">01</span><span class="o">/</span><span class="mi">26</span><span class="w">                </span><span class="mi">25</span><span class="w"></span>
+<span class="o">/</span><span class="n">scratch</span><span class="o">/</span><span class="n">username</span><span class="o">/</span><span class="n">dir2</span><span class="w">                               </span><span class="mi">2021</span><span class="o">/</span><span class="mi">12</span><span class="o">/</span><span class="mi">18</span><span class="w">        </span><span class="mi">2022</span><span class="o">/</span><span class="mi">01</span><span class="o">/</span><span class="mi">27</span><span class="w">                </span><span class="mi">26</span><span class="w"></span>
+<span class="o">/</span><span class="n">scratch</span><span class="o">/</span><span class="n">username</span><span class="o">/</span><span class="n">file1</span><span class="w">                              </span><span class="mi">2021</span><span class="o">/</span><span class="mi">12</span><span class="o">/</span><span class="mi">19</span><span class="w">        </span><span class="mi">2022</span><span class="o">/</span><span class="mi">01</span><span class="o">/</span><span class="mi">28</span><span class="w">                </span><span class="mi">27</span><span class="w"></span>
+<span class="o">/</span><span class="n">scratch</span><span class="o">/</span><span class="n">username</span><span class="o">/</span><span class="n">file2</span><span class="w">                              </span><span class="mi">2021</span><span class="o">/</span><span class="mi">11</span><span class="o">/</span><span class="mi">20</span><span class="w">        </span><span class="mi">2021</span><span class="o">/</span><span class="mi">12</span><span class="o">/</span><span class="mi">30</span><span class="w">                 </span><span class="mi">0</span><span class="w"></span>
+<span class="n">Directories</span><span class="w"> </span><span class="ow">and</span><span class="w"> </span><span class="n">files</span><span class="w"> </span><span class="n">that</span><span class="w"> </span><span class="n">have</span><span class="w"> </span><span class="n">expired</span><span class="w"> </span><span class="n">will</span><span class="w"> </span><span class="n">be</span><span class="w"> </span><span class="n">deleted</span><span class="w"> </span><span class="n">soon</span><span class="p">.</span><span class="w"></span>
+<span class="k">If</span><span class="w"> </span><span class="n">necessary</span><span class="p">,</span><span class="w"> </span><span class="n">please</span><span class="w"> </span><span class="k">backup</span><span class="p">.</span><span class="w"></span>
+</code></pre></div>
+
+<table>
+<thead>
+<tr>
+<th align="left">項目</th>
+<th align="left">説明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">Directory/File</td>
+<td align="left">ディレクトリ名/ファイル名</td>
+</tr>
+<tr>
+<td align="left">created_date</td>
+<td align="left">ディレクトリ/ファイルの作成日</td>
+</tr>
+<tr>
+<td align="left">valid_date</td>
+<td align="left">有効期限（作成日から40日目の日付。この日を過ぎると削除候補となります。）</td>
+</tr>
+<tr>
+<td align="left">remained(days)</td>
+<td align="left">削除候補となるまでの残り日数</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>ファイルおよびディレクトリの変更(作成、削除、改名)は、変更の翌日0時以降に<code>show_scratch</code>コマンドに反映されます。反映されるまで変更前の情報が表示されます。</p>
 </div>
 <h3 id="advanced-option-dom">[高度な設定] Data on MDT(DoM)機能</h3>
 <p>グローバルスクラッチ領域ではData on MDT(DoM)機能を利用可能です。DoM機能を有効にすることにより、サイズの小さいファイルアクセスにおける性能向上を期待できます。デフォルトはDoM機能およびストライプ機能は無効であり、1ファイルにつき1つのOSTに格納される設定となっております。</p>

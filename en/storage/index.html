@@ -383,6 +383,13 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
+  <a href="#checking-created-date" class="md-nav__link">
+    Checking creation date of file/directory
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#advanced-option-dom" class="md-nav__link">
     [Advanced Option] Data on MDT(DoM)
   </a>
@@ -1338,11 +1345,56 @@ The quota for every users is set in 10TiB. </p>
 <p class="admonition-title">Warning</p>
 <p>The global scratch area has a cleanup function.<br>
 When the usage of the file area or i-node area of /scratch exceeds 80%, delete candidates are selected based on the last access time and creation date of files and directories directly under /scratch/(ABCI account), and the files/directories of the delete candidates are automatically deleted. If a directory directly under /scratch/(ABCI account) becomes a candidate for deletion, all files/directories under that directory are deleted. Note that the last access time and creation date of the files/directories under that directory are not taken into account.<br>
-The first candidate to be deleted is the one whose last access time is older than 40 days. If, after deleting the candidate, the utilization of/scratch is still over 80%, the next candidate to be deleted is one whose creation date is older than 40 days. Make a note of the file/directory creation date since it cannot be checked by the ls command.</p>
+The first candidate to be deleted is the one whose last access time is older than 40 days. If, after deleting the candidate, the utilization of/scratch is still over 80%, the next candidate to be deleted is one whose creation date is older than 40 days.</p>
 </div>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>When storing a large number of files under the global scratch area, create a directory under /scratch/(ABCI account) and store the files in the directory.</p>
+</div>
+<h3 id="checking-created-date">Checking creation date of file/directory</h3>
+<p>Files and directories under the global scratch area are selected as candidates for deletion based on the last access time and creation date. However, you cannot check the creation date of files and directories with the ls command.</p>
+<p>We have prepared the <code>show_scratch</code> command to display the creation date of files and directories under the global scratch area. To check whether the file created in the global scratch area is a candidate for deletion, use the <code>show_scratch</code> command.</p>
+<p>Example) Display creation date.</p>
+<div class="codehilite"><pre><span></span><code><span class="o">[</span><span class="n">username@es1 ~</span><span class="o">]</span><span class="err">$</span><span class="w"> </span><span class="n">show_scratch</span><span class="w"></span>
+<span class="w">                                                                     </span><span class="k">Last</span><span class="w"> </span><span class="nl">Updated</span><span class="p">:</span><span class="w"> </span><span class="mi">2022</span><span class="o">/</span><span class="mi">01</span><span class="o">/</span><span class="mi">01</span><span class="w"> </span><span class="mi">00</span><span class="err">:</span><span class="mi">05</span><span class="w"></span>
+<span class="n">Directory</span><span class="o">/</span><span class="k">File</span><span class="w">                                     </span><span class="n">created_date</span><span class="w">        </span><span class="n">valid_date</span><span class="w">    </span><span class="n">remained</span><span class="p">(</span><span class="n">days</span><span class="p">)</span><span class="w"></span>
+<span class="o">/</span><span class="n">scratch</span><span class="o">/</span><span class="n">username</span><span class="o">/</span><span class="n">dir1</span><span class="w">                               </span><span class="mi">2021</span><span class="o">/</span><span class="mi">12</span><span class="o">/</span><span class="mi">17</span><span class="w">        </span><span class="mi">2022</span><span class="o">/</span><span class="mi">01</span><span class="o">/</span><span class="mi">26</span><span class="w">                </span><span class="mi">25</span><span class="w"></span>
+<span class="o">/</span><span class="n">scratch</span><span class="o">/</span><span class="n">username</span><span class="o">/</span><span class="n">dir2</span><span class="w">                               </span><span class="mi">2021</span><span class="o">/</span><span class="mi">12</span><span class="o">/</span><span class="mi">18</span><span class="w">        </span><span class="mi">2022</span><span class="o">/</span><span class="mi">01</span><span class="o">/</span><span class="mi">27</span><span class="w">                </span><span class="mi">26</span><span class="w"></span>
+<span class="o">/</span><span class="n">scratch</span><span class="o">/</span><span class="n">username</span><span class="o">/</span><span class="n">file1</span><span class="w">                              </span><span class="mi">2021</span><span class="o">/</span><span class="mi">12</span><span class="o">/</span><span class="mi">19</span><span class="w">        </span><span class="mi">2022</span><span class="o">/</span><span class="mi">01</span><span class="o">/</span><span class="mi">28</span><span class="w">                </span><span class="mi">27</span><span class="w"></span>
+<span class="o">/</span><span class="n">scratch</span><span class="o">/</span><span class="n">username</span><span class="o">/</span><span class="n">file2</span><span class="w">                              </span><span class="mi">2021</span><span class="o">/</span><span class="mi">11</span><span class="o">/</span><span class="mi">20</span><span class="w">        </span><span class="mi">2021</span><span class="o">/</span><span class="mi">12</span><span class="o">/</span><span class="mi">30</span><span class="w">                 </span><span class="mi">0</span><span class="w"></span>
+<span class="n">Directories</span><span class="w"> </span><span class="ow">and</span><span class="w"> </span><span class="n">files</span><span class="w"> </span><span class="n">that</span><span class="w"> </span><span class="n">have</span><span class="w"> </span><span class="n">expired</span><span class="w"> </span><span class="n">will</span><span class="w"> </span><span class="n">be</span><span class="w"> </span><span class="n">deleted</span><span class="w"> </span><span class="n">soon</span><span class="p">.</span><span class="w"></span>
+<span class="k">If</span><span class="w"> </span><span class="n">necessary</span><span class="p">,</span><span class="w"> </span><span class="n">please</span><span class="w"> </span><span class="k">backup</span><span class="p">.</span><span class="w"></span>
+</code></pre></div>
+
+<table>
+<thead>
+<tr>
+<th align="left">Item</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">Directory/File</td>
+<td align="left">files and directories name</td>
+</tr>
+<tr>
+<td align="left">created_date</td>
+<td align="left">creation date of files and directories</td>
+</tr>
+<tr>
+<td align="left">valid_date</td>
+<td align="left">valid date (The date of the 40th day from the creation date. After this date, it will be a candidate for deletion.)</td>
+</tr>
+<tr>
+<td align="left">remained(days)</td>
+<td align="left">remaining days until it becomes a candidate for deletion</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Files and directories changes (create, delete, rename) will be reflected in the <code>show_scratch</code> command after midnight the day after the change. The information before the change is displayed until it is reflected.</p>
 </div>
 <h3 id="advanced-option-dom">[Advanced Option] Data on MDT(DoM)</h3>
 <p>The Data on MDT (DoM) function is available in the global scratch area.
