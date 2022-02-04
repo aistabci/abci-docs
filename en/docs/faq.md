@@ -338,7 +338,9 @@ The **Old Area** (`/fs3/d00[1-2]/gAA50NNN`) cannot be accessed from the Compute 
 
 When using the files in the **Old Area** `/fs3/d00[1-2]/gAA50NNN` from the Compute Node (A), the user needs to copy the files to the home area or the **New Area** `/projects/*/gAA50NNN` in advance. If you want to copy the files in the **Old Area**, please use the Interactive Nodes or the Compute Node (V). The files in the **Old Area** `/groups[1-2]/gAA50NNN` have already been migrated, then you can access from the Compute Node (A). 
 
-Since April 2021, we are also working on migrating files from the **Old Area** to the **New Area**. For information of Group Area data migration, see this FAQ [Q. What are the new Group Area and data migration?](#q-what-are-the-new-group-area-and-data-migration).
+Please note that all the files in the **Old Areas** have been copied to the **New Areas**, but the symlink to the **Old Area** `/fs3/` has not been replaced yet, so please wait until the next maintenance. 
+
+For information of Group Area data migration, see this FAQ [Q. What are the new Group Area and data migration?](#q-what-are-the-new-group-area-and-data-migration).
 
 ## Q. How to use ABCI 1.0 Environment Modules
 
@@ -382,8 +384,8 @@ The following is about description of the data migration.
 
 ### Basic Strategy
 
-* The ABCI operation team will copy all the files in the **Old Area** to the **New Area** in the background. The migration of all group data is scheduled to be completed by the end of FY2021. 
-* After the copy is completed, a symlink to the migration destination in the **New Area** will be created and you can refer to it with the same path as the **Old Area**. 
+* The process of copying all data in **Old Area** to **New Area** has already been completed. 
+* **The path to the **Old Area** `/group1/` and `/group2/` has been replaced with a symlink to the copy destination in the **New Area**. Please wait for a while, as the replacement to the **Old Aea** `/fs3/` will be done during the next maintenance. 
 * The sources and the destinations of data migration are as follows. 
 
 	| Source                               | Destination                                                      | Remarks    |
@@ -410,14 +412,12 @@ The following command is executed for verification and confirmation after data m
 
 ### The New Area
 
-* The user cannot access to the above migration destination directory in the **New Area** until the data migration is completed. 
-* The area other than the destination directory in the **New Area** can be freely used. 
 * Disk usage will increase as data is copied. For this reason, the limit of the storage usage for the **New Area** is set to be twice the quota value, which is the group disk quantity value applied in the ABCI User Portal. This is a temporal treatment. After the migration, the limit of the storage usage is set to the same value as the quota value in the ABCI User Portal, after the certain grace period. 
 
 
 ### The Old Area /fs3/d00[1-2]/gAA50NNN 
 
-* The **Old Areas** `/groups1/gAA50NNN` and `/fs3/d00[1-2]/gAA50NNN` have been set to read-only after August 11, 2021. You should use the **New Area** from now on. 
+* The **Old Area** `/fs3/d00[1-2]/gAA50NNN` have been set to read-only after August 11, 2021. You should use the **New Area** from now on. 
 * After the Data Migration is completed, you will not be able to access `/groups[1-2]/gAA50NNN` or `/fs3/d00[1-2]/gAA50NNN/` on the **Old Area**. 
 * These paths will be replaced with symlinks to the destination directory in the **New Area** after all the data in each **Old Area** has been migrated, making them accessible with the same path as before. 
 
