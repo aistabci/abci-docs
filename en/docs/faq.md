@@ -338,7 +338,7 @@ The **Old Area** (`/fs3/d00[1-2]/gAA50NNN`) cannot be accessed from the Compute 
 
 When using the files in the **Old Area** `/fs3/d00[1-2]/gAA50NNN` from the Compute Node (A), the user needs to copy the files to the home area or the **New Area** `/projects/*/gAA50NNN` in advance. If you want to copy the files in the **Old Area**, please use the Interactive Nodes or the Compute Node (V). The files in the **Old Area** `/groups[1-2]/gAA50NNN` have already been migrated, then you can access from the Compute Node (A). 
 
-Since April 2021, we are also working on migrating files from the **Old Area** to the **New Area**. For information of Group Area data migration, see this FAQ [Q. What are the new Group Area and data migration?](faq.md#q-what-are-the-new-group-area-and-data-migration).
+Since April 2021, we are also working on migrating files from the **Old Area** to the **New Area**. For information of Group Area data migration, see this FAQ [Q. What are the new Group Area and data migration?](#q-what-are-the-new-group-area-and-data-migration).
 
 ## Q. How to use ABCI 1.0 Environment Modules
 
@@ -464,15 +464,15 @@ With the expansion of the storage system in FY2021, we are migrating data from t
 |:--                   |:--                        |
 | `/groups1/gAA50NNN/` | Completed in Nov 26, 2021 |
 | `/groups2/gAA50NNN/` | Completed in Jul 1, 2021  |
-| `/fs3`               | in Progress               |
+| `/fs3`               | Completed in Jan 25, 2022 |
 
 ## Q. Why cannot I write data to the Old Area
 
-The data migration of the **Old Area** used until FY 2020 `/groups1` and `/groups2` has been completed, and a symlink to the **New Area** has been set. Therefore, it is possible to write using the same path as before. 
+The data migration of the **Old Area** used until FY2020 `/groups1` and `/groups2` has been completed, and a symlinks to the **New Area** have been set, so you can write to the **New Area** using the same path as before. Therefore, you cannot access the GPFS file system allocated to the **Old Area** `/groups1` and `/groups2`. 
 
 The **Old Area** `/fs3` were changed to read-only on August 11, 2021, to improve the efficiency of data migration. If you want to write data, please use `/groups` and `/projects` in the **New Area**. 
 
-For more information on data migration, see [Q. What are the new Group Area and data migration?](faq.md#q-what-are-the-new-group-area-and-data-migration). 
+For more information on data migration, see [Q. What are the new Group Area and data migration?](#q-what-are-the-new-group-area-and-data-migration). 
 
 ## Q. About Access Rights for Each Directory in the Group Area
 
@@ -493,7 +493,7 @@ For more information on data migration, see [Q. What are the new Group Area and 
 
 #### The Access Rights for each directory in the Group Area After data migration
 
-* After the Data Migration is completed, you will not be able to access `/groups[1-2]/gAA50NNN` or `/fs3/d00[1-2]/gAA50NNN/` on the **Old Area**. 
+* After the Data Migration is completed, you cannot access the GPFS file system allocated to the **Old Area** `/groups[1-2]/gAA50NNN` and `/fs3/d00[1-2]/gAA50NNN/` . 
 * These paths will be replaced with symlinks to the destination directory in the **New Area** after all the data in each **Old Area** has been migrated, making them accessible with the same path as before. 
 * Access Rights of the paths to **Old Area** after the Data Mmigration task is completed
 
