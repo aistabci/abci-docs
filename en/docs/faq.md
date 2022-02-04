@@ -367,12 +367,10 @@ source ${MODULE_HOME}/etc/profile.d/modules.csh
 ## Q. What are the new Group Area and data migration? {#q-what-are-the-new-group-area-and-data-migration}
 
 In FY2021, we expanded the storage system. Refer to [Storage Systems](https://docs.abci.ai/en/01/#storage-systems) for details.
-As the storage system is expanded, the configuration of the Group Area will be changed.
-All the data in the existing Group Area used in FY2020 are going to be migrated into a new Group Area in FY2021.
+As the storage system is expanded, the configuration of the Group Area will be changed, and data was transferred from the group area used until FY2020 to the new group area. 
 
-The existing Group Area (the **Old Area**) is not accessible from the computing resources newly established in May 2021 (the Compute Node (A)).
-Therefore we have created a new Group Area (the **New Area**), which is accessible from the Compute Node (A), and are migrating all the data stored in the **Old Area** to the **New Area**.
-The data migration is managed by the operation team, so the users need not to take care of the migration process. 
+The existing Group Area (hereinafter referred to as **Old Area**) is not accessible from the computing resources newly established in May 2021 (the Compute Node (A)).
+Therefore, we have created a new Group Area (hereinafter referred to as **New Area**) that can be accessed from Compute Nodes (A), and they will be replaced with symlinks to the **New Area**. We have already completed the migration of `/groups1/` and `/groups2/` , and the transfer of `/fs3/` has also been completed, and it will only be replaced with a symbolic link in the next maintenance. 
 
 User groups who are using the **Old Area** `/groups[1-2]/gAA50NNN/` until FY2020 have newly been allocated the **New Area** `/groups/gAA50NNN/` since April 2021, and some User groups who are using the **Old Area** `/fs3/` have been allocated the **New Area** `/projects/` since mid July.
 Both the **Old Area** and the **New Area** are accessible from all the Interactive Nodes and Compute Nodes (V). 
@@ -384,8 +382,8 @@ The following is about description of the data migration.
 
 ### Basic Strategy
 
-* The process of copying all data in **Old Area** to **New Area** has already been completed. 
-* **The path to the **Old Area** `/group1/` and `/group2/` has been replaced with a symlink to the copy destination in the **New Area**. Please wait for a while, as the replacement to the **Old Aea** `/fs3/` will be done during the next maintenance. 
+* The process of copying all data in thev**Old Area** to the **New Area** has already been completed. 
+* The path to the **Old Area** `/group1s/` and `/groups2/` has been replaced with a symlink to the copy destination in the **New Area**. Please wait for a while, as the replacement to the **Old Aea** `/fs3/` will be done during the next maintenance. 
 * The sources and the destinations of data migration are as follows. 
 
 	| Source                               | Destination                                                      | Remarks    |
@@ -393,22 +391,11 @@ The following is about description of the data migration.
 	| d002 users'<br/>`/groups1/gAA50NNN/` | `/projects/datarepository/gAA50NNN/migrated_from_SFA_GPFS/`[^1]  | Completed  |
 	| others'<br/>`/groups1/gAA50NNN/`     | `/groups/gAA50NNN/migrated_from_SFA_GPFS/`                       | Completed  |
 	| `/groups2/gAA50NNN/`                 | `/groups/gAA50NNN/migrated_from_SFA_GPFS/`                       | Completed  |
-	| `/fs3/d001/gAA50NNN/`                | `/projects/d001/gAA50NNN/migrated_from_SFA_GPFS/`                | In progress |
-	| `/fs3/d002/gAA50NNN/`                | `/projects/datarepository/gAA50NNN/migrated_from_SFA_GPFS3/`[^1] | In progress |
+	| `/fs3/d001/gAA50NNN/`                | `/projects/d001/gAA50NNN/migrated_from_SFA_GPFS/`                | transferred |
+	| `/fs3/d002/gAA50NNN/`                | `/projects/datarepository/gAA50NNN/migrated_from_SFA_GPFS3/`[^1] | transferred |
 
 [^1]: As `/fs3/d002` users have multiple migration sources, there are two migration destination directories, `migrated_from_SFA_GPFS/` and `migrated_from_SFA_GPFS3/` . 
 
-* After completion, we will notify the user by email that the migration has been completed. 
-
-
-The following command is executed for data migration. 
-```
-# rsync -avH /{Old Area}/gAA50NNN/ /{New Area}/gAA50NNN/migrated_from_SFA_GPFS/ 
-```
-The following command is executed for verification and confirmation after data migration. 
-```
-# rsync -avH --delete /{Old Area}/gAA50NNN/ /{New Area}/gAA50NNN/migrated_from_SFA_GPFS/ 
-```
 
 ### The New Area
 
