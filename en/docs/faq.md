@@ -338,7 +338,7 @@ The **Old Area** (`/fs3/d00[1-2]/gAA50NNN`) cannot be accessed from the Compute 
 
 When using the files in the **Old Area** `/fs3/d00[1-2]/gAA50NNN` from the Compute Node (A), the user needs to copy the files to the home area or the **New Area** `/projects/*/gAA50NNN` in advance. If you want to copy the files in the **Old Area**, please use the Interactive Nodes or the Compute Node (V). The files in the **Old Area** `/groups[1-2]/gAA50NNN` have already been migrated, then you can access from the Compute Node (A). 
 
-Please note that all the files in the **Old Areas** have been copied to the **New Areas**, but the symlink to the **Old Area** `/fs3/` has not been replaced yet, so please wait until the next maintenance. 
+Please note that all the files in the **Old Areas** have been copied to the **New Areas**, but the symlink to the **Old Area** `/fs3/` has not been replaced yet, so please wait until the maintenance in early March 2022. 
 
 For information of Group Area data migration, see this FAQ [Q. What are the new Group Area and data migration?](#q-what-are-the-new-group-area-and-data-migration).
 
@@ -383,7 +383,7 @@ The following is about description of the data migration.
 ### Basic Strategy
 
 * The process of copying all data in thev**Old Area** to the **New Area** has already been completed. 
-* The path to the **Old Area** `/group1s/` and `/groups2/` has been replaced with a symlink to the copy destination in the **New Area**. Please wait for a while, as the replacement to the **Old Aea** `/fs3/` will be done during the next maintenance. 
+* The path to the **Old Area** `/group1s/` and `/groups2/` has been replaced with a symlink to the copy destination in the **New Area**. Please wait for a while, as the replacement to the **Old Aea** `/fs3/` will be done during the maintenance in early March 2022. 
 * The sources and the destinations of data migration are as follows. 
 
 	| Source                               | Destination                                                      | Remarks    |
@@ -406,7 +406,7 @@ The following is about description of the data migration.
 
 * The **Old Area** `/fs3/d00[1-2]/gAA50NNN` have been set to read-only after August 11, 2021. You should use the **New Area** from now on. 
 * After the Data Migration is completed, you will not be able to access `/groups[1-2]/gAA50NNN` or `/fs3/d00[1-2]/gAA50NNN/` on the **Old Area**. 
-* These paths will be replaced with symlinks to the destination directory in the **New Area** after all the data in each **Old Area** has been migrated, making them accessible with the same path as before. 
+* These paths will be replaced with symlinks to the destination directory in the maintenance in early March 2022, making them accessible with the same path as before. 
 
 
 ## Q. About the Quota Value and the Limit of the Storage Usage
@@ -489,10 +489,10 @@ For more information on data migration, see [Q. What are the new Group Area and 
 | `/groups[1-2]/gAA50NNN/` | Yes  | Yes   | Yes    | `/groups/gAA50NNN/migrate_from_SFA_GPFS/`                        |                 |
 | `/fs3/d001/gAA50NNN/`    | Yes  | No[^5]| No[^5] | `/projects/d001/gAA50NNN/migrated_from_SFA_GPFS/`                |                 |
 | `/fs3/d002/gAA50NNN/`    | Yes  | No[^5]| No[^5] | `/projects/datarepository/gAA50NNN/migrated_from_SFA_GPFS3/`[^1] |                 |
-| `/groups1/gAA50NNN/`     | Yes  | No[^4]| No[^4] | `/projects/datarepository/gAA50NNN/migrated_from_SFA_GPFS/`[^1]  | for d002 users' |
+| `/groups1/gAA50NNN/`     | Yes  | No[^5]| No[^5] | `/projects/datarepository/gAA50NNN/migrated_from_SFA_GPFS/`[^1]  | for d002 users' |
 
-[^4]: Write/Delete will be available after migration of all data from /groups1/ completed.
-[^5]: Write/Delete will be available after migration of all data from /fs3/ completed.
+[^4]: /groups1/ has been migrated and will be replaced by a symlink to the New Area, writable/deletable. 
+[^5]: It will be replaced by a symlink to the New Area that will be writable/deletable after maintenance in early March 2022. 
 
 * Access Rights of the directories in **New Area** after the Data Migration task is completed
 
