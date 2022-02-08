@@ -488,7 +488,7 @@ For more information on data migration, see [Q. What are the new Group Area and 
 
 * After the Data Migration is completed, you cannot access the GPFS file system allocated to the **Old Area** `/groups[1-2]/gAA50NNN` and `/fs3/d00[1-2]/gAA50NNN/` . 
 * These paths will be replaced with symlinks to the destination directory in the **New Area** after all the data in each **Old Area** has been migrated, making them accessible with the same path as before. 
-* Access Rights of the paths to **Old Area** after the Data Mmigration task is completed
+* Access Rights of the paths to **Old Area** after the Data Migration task is completed
 
 | Paths                    | Read | Write | Delete | Reference to                                                     | Remarks         |
 |:--                       |:- -  |:--    |:--     |:--                                                               |:--              |
