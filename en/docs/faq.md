@@ -377,8 +377,9 @@ User groups who are using the **Old Area** `/groups[1-2]/gAA50NNN/` until FY2020
 Both the **Old Area** and the **New Area** are accessible from all the Interactive Nodes and Compute Nodes (V), but the **Old Area** is not accessible from the  computing resources newly established in May 2021 (the Compute Nodes (A)). Therefore, we transfer the all data in the **Old Area** to the **New Area** that can be accessed from Compute Nodes (A), and they will be replaced with symlinks to the **New Area**.
 
 In addition, for the groups newly created in FY2021, only **New Area** is allocated, so it is not a target of data migration. As results, it is not affected by data migration. 
+
 * The process of copying all data in the **Old Area** to the **New Area** has already been completed. 
-* The path to the **Old Area** `/group1s/` and `/groups2/` has been replaced with a symlink to the copy destination in the **New Area**. 
+* The path to the **Old Area** `/groups1/` and `/groups2/` has been replaced with a symlink to the copy destination in the **New Area**. 
 * Please wait for a while, as the replacement to the **Old Aea** `/fs3/` will be done during the maintenance in early March 2022. 
 * The sources and the destinations of data migration are as follows. 
 
@@ -387,8 +388,8 @@ In addition, for the groups newly created in FY2021, only **New Area** is alloca
 	| d002 users'<br/>`/groups1/gAA50NNN/` | `/projects/datarepository/gAA50NNN/migrated_from_SFA_GPFS/`[^1]  | Completed  |
 	| others'<br/>`/groups1/gAA50NNN/`     | `/groups/gAA50NNN/migrated_from_SFA_GPFS/`                       | Completed  |
 	| `/groups2/gAA50NNN/`                 | `/groups/gAA50NNN/migrated_from_SFA_GPFS/`                       | Completed  |
-	| `/fs3/d001/gAA50NNN/`                | `/projects/d001/gAA50NNN/migrated_from_SFA_GPFS/`                | transferred |
-	| `/fs3/d002/gAA50NNN/`                | `/projects/datarepository/gAA50NNN/migrated_from_SFA_GPFS3/`[^1] | transferred |
+	| `/fs3/d001/gAA50NNN/`                | `/projects/d001/gAA50NNN/migrated_from_SFA_GPFS/`                | Transferred |
+	| `/fs3/d002/gAA50NNN/`                | `/projects/datarepository/gAA50NNN/migrated_from_SFA_GPFS3/`[^1] | Transferred |
 
 [^1]: As `/fs3/d002` users have multiple migration sources, there are two migration destination directories, `migrated_from_SFA_GPFS/` and `migrated_from_SFA_GPFS3/` . 
 
