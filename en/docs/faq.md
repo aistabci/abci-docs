@@ -450,7 +450,7 @@ The grace period is as follows. After the grace period, if the usage amount of t
 
 ## Q. About the status of the Data Migration Task
 
-With the expansion of the storage system in FY2021, we are migrating data from the Group Area that was used until FY2020 to the New Group Area. As of August 2021, the migration status of the each Group Area is as follows. 
+With the expansion of the storage system in FY2021, we are migrating data from the Group Area that was used until FY2020 to the New Group Area. As of February 2022, the migration status of the each Group Area is as follows. 
 
 | Group Area           | Status                    |
 |:--                   |:--                        |
