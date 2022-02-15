@@ -338,7 +338,7 @@ The **Old Area** (`/fs3/d00[1-2]/gAA50NNN`) cannot be accessed from the Compute 
 
 When using the files in the **Old Area** `/fs3/d00[1-2]/gAA50NNN` from the Compute Node (A), the user needs to copy the files to the home area or the **New Area** `/projects/*/gAA50NNN` in advance. If you want to copy the files in the **Old Area**, please use the Interactive Nodes or the Compute Node (V). The files in the **Old Area** `/groups[1-2]/gAA50NNN` have already been migrated, then you can access from the Compute Node (A). 
 
-Please note that all the files in the **Old Areas** have been copied to the **New Areas**, but the symlink to the **Old Area** `/fs3/` has not been replaced yet, so please wait until the maintenance in early March 2022. 
+Please note that all the files in the **Old Areas** have been transferred to the **New Areas**, but the symlink to the **Old Area** `/fs3/` has not been replaced yet, so please wait until the maintenance in early March 2022. 
 
 For information of Group Area data migration, see this FAQ [Q. What are the new Group Area and data migration?](#q-what-are-the-new-group-area-and-data-migration).
 
@@ -403,7 +403,7 @@ The following command is executed for verification and confirmation after data m
 
 ### The New Area
 
-* Disk usage will increase as data is copied. For this reason, the limit of the storage usage for the **New Area** is set to be twice the quota value, which is the group disk quantity value applied in the ABCI User Portal. This is a temporal treatment. After the migration, the limit of the storage usage is set to the same value as the quota value in the ABCI User Portal, after the certain [grace period](#after-the-data-migration-completed). 
+* Disk usage will increase as data transfer. For this reason, the limit of the storage usage for the **New Area** is set to be twice the quota value, which is the group disk quantity value applied in the ABCI User Portal. This is a temporal treatment. After the migration, the limit of the storage usage is set to the same value as the quota value in the ABCI User Portal, after the certain [grace period](#after-the-data-migration-completed). 
 
 
 ### The Old Area
@@ -466,7 +466,7 @@ The paths `/groups1` and `/groups2` have been set symlinks to the migraion desti
 
 The **Old Area** `/fs3` were changed to read-only on August 11, 2021, to improve the efficiency of data migration. If you want to write data, please use `/groups` and `/projects` in the **New Area**. 
 
-For more information on data migration, see [Q. What are the new Group Area and data migration?](#q-what-are-the-new-group-area-and-data-migration). 
+For more detail about data migration, see [Q. What are the new Group Area and data migration?](#q-what-are-the-new-group-area-and-data-migration). 
 
 ## Q. About Access Rights for Each Directory in the Group Area
 
