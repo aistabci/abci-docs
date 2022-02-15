@@ -369,14 +369,14 @@ source ${MODULE_HOME}/etc/profile.d/modules.csh
 In FY2021, we expanded the storage system. Refer to [Storage Systems](https://docs.abci.ai/en/01/#storage-systems) for details.
 As the storage system is expanded, the configuration of the Group Area will be changed, and data are going to be migrated from the group area used until FY2020 (hereinafter referred to as **Old Area**) to the new group area (hereinafter referred to as **New Area**). 
 
-User groups who are using the **Old Area** `/groups[1-2]/gAA50NNN/` until FY2020 have newly been allocated the **New Area** `/groups/gAA50NNN/` since April 2021, and some User groups who are using the **Old Area** `/fs3/` have been allocated the **New Area** `/projects/` since mid July. 
+User groups who are using the **Old Area** `/groups[1-2]/gAA50NNN/` until FY2020 have newly been allocated the **New Area** `/groups/gAA50NNN/` since April 2021, and some User groups who are using the **Old Area** `/fs3/` have been allocated the **New Area** `/projects/` since mid July 2021. 
 
 The **New Area** are accessible from all the Interactive Nodes and Compute Nodes, but the **Old Area** is not accessible from the computing resources newly established in May 2021 we call the Compute Nodes (A). Therefore, we transfer the all data in the **Old Area** to the **New Area** that can be accessed from Compute Nodes (A), and they will be replaced with symlinks to the destination directories in the **New Area**. 
 
 In addition, for the groups newly created in FY2021, only **New Area** is allocated, so it is not a target of data migration. As results, it is not affected by data migration. 
 
 !!! Note
-	The process of transferring all data from the **Old Area** to the **New Area** has already been completed.<br>
+	The process of transferring all data from the **Old Area** to the **New Area** has already been completed on January 25, 2022.<br>
 	The path to the **Old Area** `/groups1/` and `/groups2/` has been replaced with a symlink to the transfer destination in the **New Area**.<br>
 	The path to the **Old Area** `/fs3/` will be replaced with a symlink during the maintenance in early March 2022. 
 
