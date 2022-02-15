@@ -410,7 +410,7 @@ The following command is executed for verification and confirmation after data m
 
 * On August 11, 2021, the **Old Area** was set to read-only. Also, on January 25, 2022, all data transferring from the **Old Area** was completed. You should use the **New Area** from now on. 
 * The path `/groups[1-2]/gAA50NNN` has been replaced by a symlink to the migration destination, so the GPFS file system assigned to the **Old Area** cannot be accessed. 
-* The setting of the symlink of the path `/fs3/d00[1-2]/gAA50NNN` is scheduled for maintenance in early March 2022. Thereafter, the GPFS file system allocated to the **Old Area** will no longer be accessible. 
+* The setting of the symlink of the path `/fs3/d00[1-2]/gAA50NNN` is scheduled for maintenance in early March 2022. After the maintenance, the GPFS file system allocated to the **Old Area** will no longer be accessible. 
 * Once the symlink setting is completed, the same path as before will be accessible. 
 
 
