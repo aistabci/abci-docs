@@ -378,7 +378,7 @@ In addition, for the groups newly created in FY2021, only **New Area** is alloca
 !!! Note
 	The process of transferring all data from the **Old Area** to the **New Area** has already been completed on January 25, 2022.<br>
 	The path to the **Old Area** `/groups1/` and `/groups2/` has been replaced with a symlink to the transfer destination in the **New Area**.<br>
-	The path to the **Old Area** `/fs3/` will be replaced with a symlink during the maintenance in early March 2022. 
+	The path to the **Old Area** `/fs3/` will be replaced with a symlink to the transfer destination in the **New Area** during the maintenance in early March 2022. 
 
 The sources and the destinations of data migration are as follows. 
 
