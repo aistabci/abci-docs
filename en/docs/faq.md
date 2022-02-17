@@ -369,7 +369,7 @@ source ${MODULE_HOME}/etc/profile.d/modules.csh
 In FY2021, we expanded the storage system. Refer to [Storage Systems](https://docs.abci.ai/en/01/#storage-systems) for details.
 As the storage system is expanded, the configuration of the Group Area has been changed, and data are being migrated from the Group Area used until FY2020 (hereinafter referred to as **Old Area**) to the new Group Area (hereinafter referred to as **New Area**). 
 
-The **New Area** is accessible from all the Compute Nodes and Interactive Nodes, but the **Old Area** is not accessible from the computing resources newly established in May 2021 we call the [Compute Nodes (A)](#q-what-is-the-difference-between-compute-node-a-and-compute-node-v). Therefore, we transfer the all data in the **Old Area** to the **New Area** that can be accessed from Compute Nodes (A), and the source paths, were mounted to the **Old Areas** will be replaced with symlinks to the destination directories in the **New Areas**. 
+The **New Area** is accessible from all the Compute Nodes and Interactive Nodes, but the **Old Area** is not accessible from the computing resources newly established in May 2021 we call the [Compute Nodes (A)](#q-what-is-the-difference-between-compute-node-a-and-compute-node-v). Therefore, we transfer the all data in the **Old Area** to the **New Area** that can be accessed from Compute Nodes (A). Then the source paths, were allocated to the **Old Areas** will be replaced with symlinks to the destination directories in the **New Areas**, so that it can be accessed at the same path as the **Old Area**. 
 
 User groups who are using the **Old Area** `/groups[1-2]/gAA50NNN/` until FY2020 have newly been allocated the **New Area** `/groups/gAA50NNN/` since April 2021, and some User groups who are using the **Old Area** `/fs3/` have been allocated the **New Area** `/projects/` since mid July 2021. 
 
@@ -408,8 +408,9 @@ The following command is executed for verification and confirmation after data m
 
 ### The Old Area
 
-* On August 11, 2021, the **Old Area** was set to read-only. Also, on January 25, 2022, all data transferring from the **Old Area** was completed. You should use the **New Area** from now on. 
-* The path `/groups[1-2]/gAA50NNN` has been replaced by a symlink to the migration destination, so the GPFS file system assigned to the **Old Area** cannot be accessed. 
+* On August 11, 2021, the **Old Area** was set to read-only. 
+* On January 25, 2022, all data transferring from the **Old Area** was completed. You should use the **New Area** from now on. 
+* The path `/groups[1-2]/gAA50NNN` on the GPFS file system that was assigned to the **Old Area** cannot be accessible. 
 * The setting of the symlink of the path `/fs3/d00[1-2]/gAA50NNN` is scheduled for maintenance in early March 2022. After the maintenance, the GPFS file system allocated to the **Old Area** will no longer be accessible. 
 * Once the symlink setting is completed, the same path as before will be accessible. 
 
