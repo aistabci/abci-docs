@@ -399,7 +399,7 @@ source ${MODULE_HOME}/etc/profile.d/modules.csh
 
 [^1]: `/fs3/d002`利用者は移行元が複数あるため移行先のディレクトリが `migrated_from_SFA_GPFS/`と`migrated_from_SFA_GPFS3/`に別れています。
 
-データ移行作業には以下のコマンドを実行しました。。
+データ移行作業には以下のコマンドを実行しました。
 
 ```
 # rsync -avH /{Old Area}/gAA50NNN/  /{New Area}/gAA50NNN/migrated_from_SFA_GPFS/
