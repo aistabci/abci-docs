@@ -461,7 +461,7 @@ With the expansion of the storage system in FY2021, we are migrating data from t
 
 ## Q. Why cannot I write data to the Old Area
 
-The data migration from the **Old Area** `/groups1` and `/groups2` that ware used until FY2020 have been completed. 
+The data migration from the **Old Area** `/groups1` and `/groups2` that have been used until FY2020 are completed. 
 Therefore, you cannot access the GPFS file system allocated to the **Old Area** `/groups1` and `/groups2`. 
 The paths `/groups1` and `/groups2` have been set symlinks to the migraion destination, so you can write to the **New Area** using the same path as before. 
 
