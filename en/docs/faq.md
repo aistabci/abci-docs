@@ -392,11 +392,11 @@ The sources and the destinations of data migration are as follows.
 
 [^1]: As `/fs3/d002` users have multiple migration sources, there are two migration destination directories, `migrated_from_SFA_GPFS/` and `migrated_from_SFA_GPFS3/` . 
 
-The following command is executed for data migration. 
+The following command has been executed for data migration. 
 ```
 # rsync -avH /{Old Area}/gAA50NNN/ /{New Area}/gAA50NNN/migrated_from_SFA_GPFS/ 
 ```
-The following command is executed for verification and confirmation after data migration. 
+The following command has been executed for verification and confirmation after data migration. 
 ```
 # rsync -avH --delete /{Old Area}/gAA50NNN/ /{New Area}/gAA50NNN/migrated_from_SFA_GPFS/ 
 ```
