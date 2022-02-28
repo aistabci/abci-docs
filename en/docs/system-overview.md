@@ -150,15 +150,17 @@ Below is a list of shared file systems and ABCI Cloud Storage provided by the AB
 |:--|:--|:--|:--|:--|
 | Home area | /home | 1.0 PB | Lustre | See [Home Area](storage.md#home-area) |
 | Group area | /groups | 10.8 PB | Lustre | See [Group Area](storage.md#group-area) |
-| Group area 1 | /groups1 | 7.2 PB | GPFS | See [Group Area](storage.md#group-area) |
-| Group area 2 | /groups2 | 7.2 PB | GPFS | See [Group Area](storage.md#group-area) |
-| Group area 3 | /groups3 | 7.2 PB | GPFS | Reserved for special purposes |
+| Group area 1[^3] | /groups1 | 7.2 PB | GPFS | See [Group Area](storage.md#group-area) |
+| Group area 2[^3] | /groups2 | 7.2 PB | GPFS | See [Group Area](storage.md#group-area) |
+| Group area 3[^3] | /groups3 | 7.2 PB | GPFS | Reserved for special purposes |
 | ABCI Cloud Storage | | 13 PB max. | | See [ABCI Cloud Storage](abci-cloudstorage.md) |
 | Fast data area | /bb | 0.3 PB | | Reserved area for the particular application |
 | Global scratch area | /scratch | 0.4 PB | Lustre | See [Global scratch area](storage.md#scratch-area) |
 
+[^3]: Group area 1,2, and 3 will be terminate service in FY2021.
+
 Interactive nodes, compute nodes, and memory-intensive nodes mount the shared file systems, and users can access these file systems from common mount points.
-However, the group area 1,2,3 cannot be accessed from the compute node (A).
+However, the Group area 1,2, and 3[^3] cannot be accessed from the Compute Node (A).
 
 Besides this, these nodes each have local storage that can be used as a local scratch area. The list is shown below.
 
