@@ -12,6 +12,9 @@
 
 ホーム領域は並列ファイルシステムで構成されています。並列ファイルシステムでは、ファイルのデータはストレージを構成する複数のディスクに分散して格納されます。ホーム領域では、この分散方式として、ラウンドロビン分散（デフォルト）とストライプ分散が使用可能です。以下では、ストライプ機能の設定方法を説明します。
 
+!!! Tips
+    ストライプ機能の概要については[Configuring Lustre File Striping](https://wiki.lustre.org/Configuring_Lustre_File_Striping)を参照願います。
+
 #### ストライプ機能の設定方法 {#how-to-set-up-file-striping}
 
 ストライプ機能の設定は、```lfs setstripe```コマンドで行います。 ```lfs setstripe```コマンドでは、データを分散させるストライプパターン（ストライプサイズや範囲）を指定することができます。
@@ -79,9 +82,127 @@ stripe_count:  4 stripe_size:   1048576 stripe_offset: 10
 
 ## グループ領域 {#group-area}
 
-グループ領域は、インタラクティブノードおよび各計算ノードで共有されたLustreファイルシステムのディスク領域です。また、グループ領域1〜3は、インタラクティブノードおよび各計算ノード(V)で共有されたGPFSファイルシステムのディスク領域です。[ABCI利用者ポータル](https://portal.abci.ai/user/)から利用管理者権限でグループディスク追加申請を行うことで利用可能になります。追加申請方法については、[ABCI利用者ポータルガイド](https://docs.abci.ai/portal/ja/)の[ディスク追加申請](https://docs.abci.ai/portal/ja/03/#352)をご参照ください。
+グループ領域は、インタラクティブノードおよび各計算ノードで共有されたLustreファイルシステムのディスク領域です。[ABCI利用者ポータル](https://portal.abci.ai/user/)から利用管理者権限でグループディスク追加申請を行うことで利用可能になります。追加申請方法については、[ABCI利用者ポータルガイド](https://docs.abci.ai/portal/ja/)の[ディスク追加申請](https://docs.abci.ai/portal/ja/03/#352)をご参照ください。
 
 グループ領域のパスを確認するには、`show_quota` コマンドを実行してください。コマンドの説明については [ディスククォータの確認](getting-started.md#checking-disk-quota) を参照してください。
+
+## グローバルスクラッチ領域 {#scratch-area}
+
+グローバルスクラッチ領域は、利用者全員が利用可能な、インタラクティブノードおよび各計算ノードで共有されたLustreファイルシステムの短期利用向け高速ストレージです。ディスククォータは10TiBに設定されています。
+各利用者は以下の領域を短期利用高速データ領域として利用することが可能です。
+```
+/scratch/(ABCIアカウント名)
+```
+グローバルスクラッチ領域のクォータを調査するには、`show_quota` コマンドを実行してください。コマンドの説明については [ディスククォータの確認](getting-started.md#checking-disk-quota) を参照してください。
+
+!!! warning
+    グローバルスクラッチ領域は、クリーンアップ機能を備えています。<br>
+    /scratchのファイル領域またはi-node領域の利用率が80%を超過した場合に、/scratch/(ABCIアカウント名) 直下のファイルおよびディレクトリの最終アクセス時間と作成日をもとに削除候補を選び、削除候補のファイル/ディレクトリを自動的に削除します。/scratch/(ABCIアカウント名) 直下のディレクトリが削除候補になった場合は、そのディレクトリ配下のすべてのファイル/ディレクトリが削除されます。そのディレクトリ配下のファイル/ディレクトリの最終アクセス時間と作成日は考慮されませんので、ご注意ください。<br>
+    最初の削除候補として、最終アクセス時間が40日を経過したものが選ばれます。その候補を削除した後に、まだ、/scratchの利用率が80%超過の場合は、作成日が40日を経過したものが次の削除候補として選ばれます。
+
+!!! note
+    グローバルスクラッチ領域配下に大量のファイルを格納する場合は、/scratch/(ABCIアカウント名) 配下にディレクトリを作成の上、格納するようにして下さい。
+
+### ファイル/ディレクトリの作成日の確認 {#checking-created-date}
+
+グローバルスクラッチ領域下のファイルおよびディレクトリは最終アクセス時間と作成日をもとに削除候補に選ばれます。
+しかし、ファイルおよびディレクトリの作成日はlsコマンドでは確認できません。
+
+グローバルスクラッチ領域下のファイルおよびディレクトリの作成日を確認するための`show_scratch`コマンドを用意しました。
+グローバルスクラッチ領域に作成したファイルが削除候補となっているかどうかの確認には`show_scratch`コマンドを使用してください。
+
+例) ファイル/ディレクトリの作成日を確認する。
+
+```
+[username@es1 ~]$ show_scratch
+                                                                     Last Updated: 2022/01/01 00:05
+Directory/File                                     created_date        valid_date    remained(days)
+/scratch/username/dir1                               2021/12/17        2022/01/26                25
+/scratch/username/dir2                               2021/12/18        2022/01/27                26
+/scratch/username/file1                              2021/12/19        2022/01/28                27
+/scratch/username/file2                              2021/11/20        2021/12/30                 0
+Directories and files that have expired will be deleted soon.
+If necessary, please backup.
+```
+
+| 項目  | 説明 |
+|:--|:--|
+| Directory/File | ディレクトリ名/ファイル名 |
+| created_date   | ディレクトリ/ファイルの作成日 |
+| valid_date     | 有効期限（作成日から40日目の日付。この日を過ぎると削除候補となります。） |
+| remained(days) | 削除候補となるまでの残り日数 |
+
+!!! note
+    ファイルおよびディレクトリの変更(作成、削除、改名)は、変更の翌日0時以降に`show_scratch`コマンドに反映されます。反映されるまで変更前の情報が表示されます。
+
+### [高度な設定] Data on MDT(DoM)機能 {#advanced-option-dom}
+
+グローバルスクラッチ領域ではData on MDT(DoM)機能を利用可能です。DoM機能を有効にすることにより、サイズの小さいファイルアクセスにおける性能向上を期待できます。デフォルトはDoM機能およびストライプ機能は無効であり、1ファイルにつき1つのOSTに格納される設定となっております。
+
+!!! Tips
+    DoMの概要については[Data on MDT](https://wiki.lustre.org/Data_on_MDT)を参照願います。
+
+#### DoM機能の設定方法 {#how-to-set-up-dom}
+
+DoM機能の設定は、```lfs setstripe```コマンドで行います。
+
+```
+$ lfs setstripe [options] <dirname | filename>
+```
+
+| オプション | 説明 |
+|:--:|:---|
+| -E | 部分ファイルの終端を示すオフセット。-E #k, -E #m, -E #gとすることで、サイズをKiB,MiB,GiBで設定可能です。<br>また、-1はeofを意味します。 |
+| -L | レイアウトタイプを設定。mdt を指定することで、DoM が有効になります。 |
+
+!!! note
+    DoMが有効なファイルに対してDoMを無効にすることはできません。また、DoMが無効なファイルに対してDoMを有効にすることはできません。
+
+例）DoM を有効にした新規ファイルの作成<br>
+64KiB までの部分ファイルのレイアウトをmdtに設定します。
+
+```
+[username@es1 work]$ lfs setstripe -E 64k -L mdt -E -1 dom-file
+[username@es1 work]$ ls
+dom-file
+```
+
+例）ディレクトリに対して、DoM 機能を設定
+
+```
+[username@es1 work]$ mkdir dom-dir
+[username@es1 work]$ lfs setstripe -E 64k -L mdt -E -1 dom-dir
+```
+
+例) 保存されているファイルに対して、DoM機能が有効になっているかを確認
+
+```
+[username@es1 work]$ lfs getstripe -I1 -L dom-file
+mdt
+
+```
+`mdt`と表示されればそのファイルはDoM機能が有効になっています。それ以外の表示の場合は無効です。
+
+!!! note
+    上記の例では 64KiB まで MDT にデータが格納されます。このとき、64KiB を超えたデータは OST に格納されます。
+
+また、DoM 機能と一緒に[ストライプ機能](storage.md#advanced-option-file-striping)を設定可能です。
+
+例）DoM 機能とストライプパターンを持った新規ファイルの作成<br>
+64KiBまでの部分ファイルのレイアウトをmdtに設定し、残りの部分についてストライプパターンを設定します。
+
+```
+[username@es1 work]$ lfs setstripe -E 64k -L mdt -E -1 -S 1m -i -1 -c 4 dom-stripe-file
+[username@es1 work]$ ls
+dom-stripe-file
+```
+
+例）ディレクトリに対して、DoM 機能と OST に格納する部分データのストライプパターンを設定
+
+```
+[username@es1 work]$ mkdir dom-stripe-dir
+[username@es1 work]$ lfs setstripe -E 64k -L mdt -E -1 -S 1m -i -1 -c 4 dom-stripe-dir
+```
 
 ## ローカルストレージ {#local-storage}
 

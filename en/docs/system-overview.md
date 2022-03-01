@@ -141,7 +141,7 @@ The ABCI system has five storage systems for storing large amounts of data used 
 | 1 | DDN SFA 14KX x1<br>DDN SS9012 Enclosure x5 | 7.68 TB SAS SSD x185 | Home area, Application area |
 | 2 | DDN ES7990X x3<br>DDN SS9012 Enclosure x6 | 18 TB NL-SAS HDD x801 | Group area |
 | 3 | DDN ES400NVX x3 | 7.68 TB NVMe HDD x69 | Fast data area |
-| 4 | DDN SFA 14KX x3<br>DDN SS8462 Enclosure x30 | 3.84 TB SAS SSD x216<br>12 TB NL-SAS HDD x2400 | Group areas |
+| 4 | DDN SFA 14KX x3<br>DDN SS8462 Enclosure x30 | 3.84 TB SAS SSD x216<br>12 TB NL-SAS HDD x2400 | Group areas, Global scratch area |
 | 5 | HPE Apollo 4510 Gen10 x24 | 12 TB SATA HDD x1440 | ABCI Cloud Storage |
 
 Below is a list of shared file systems and ABCI Cloud Storage provided by the ABCI system using the above storage systems.
@@ -150,14 +150,17 @@ Below is a list of shared file systems and ABCI Cloud Storage provided by the AB
 |:--|:--|:--|:--|:--|
 | Home area | /home | 1.0 PB | Lustre | See [Home Area](storage.md#home-area) |
 | Group area | /groups | 10.8 PB | Lustre | See [Group Area](storage.md#group-area) |
-| Group area 1 | /groups1 | 7.2 PB | GPFS | See [Group Area](storage.md#group-area) |
-| Group area 2 | /groups2 | 7.2 PB | GPFS | See [Group Area](storage.md#group-area) |
-| Group area 3 | /groups3 | 7.2 PB | GPFS | Reserved for special purposes |
+| Group area 1[^3] | /groups1 | 7.2 PB | GPFS | See [Group Area](storage.md#group-area) |
+| Group area 2[^3] | /groups2 | 7.2 PB | GPFS | See [Group Area](storage.md#group-area) |
+| Group area 3[^3] | /groups3 | 7.2 PB | GPFS | Reserved for special purposes |
 | ABCI Cloud Storage | | 13 PB max. | | See [ABCI Cloud Storage](abci-cloudstorage.md) |
 | Fast data area | /bb | 0.3 PB | | Reserved area for the particular application |
+| Global scratch area | /scratch | 0.4 PB | Lustre | See [Global scratch area](storage.md#scratch-area) |
+
+[^3]: Group area 1,2, and 3 will be terminate service in FY2021.
 
 Interactive nodes, compute nodes, and memory-intensive nodes mount the shared file systems, and users can access these file systems from common mount points.
-However, the group area 1,2,3 cannot be accessed from the compute node (A).
+However, the Group area 1,2, and 3[^3] cannot be accessed from the Compute Node (A).
 
 Besides this, these nodes each have local storage that can be used as a local scratch area. The list is shown below.
 
@@ -178,7 +181,7 @@ The software available on the ABCI system is shown below.
 | OS | CentOS | 7.5 | - |
 | OS | Red Hat Enterprise Linux | - | 8.2 |
 | Job Scheduler | Univa Grid Engine | 8.6.17 | 8.6.17 |
-| Development Environment | [CUDA Toolkit](gpu.md#cuda-toolkit) | 8.0.61.2<br>9.0.176.4<br>9.1.85.3<br>9.2.88.1<br>9.2.148.1<br>10.0.130.1<br>10.1.243<br>10.2.89<br>11.0.3<br>11.1.1<br>11.2.2 | 10.0.130.1<br>10.1.243<br>10.2.89<br>11.0.3<br>11.1.1<br>11.2.2 |
+| Development Environment | [CUDA Toolkit](gpu.md#cuda-toolkit) | 8.0.61.2<br>9.0.176.4<br>9.1.85.3<br>9.2.88.1<br>9.2.148.1<br>10.0.130.1<br>10.1.243<br>10.2.89<br>11.0.3<br>11.1.1<br>11.2.2<br>11.3.1<br>11.4.1<br>11.4.2<br>11.5.1<br>11.6.0 | 10.0.130.1<br>10.1.243<br>10.2.89<br>11.0.3<br>11.1.1<br>11.2.2<br>11.3.1<br>11.4.1<br>11.4.2<br>11.5.1<br>11.6.0 |
 | | NVIDIA HPC SDK | 20.11<br>21.2 | 20.11<br>21.2 |
 | | PGI Professional Edition | 20.4 | 20.4 |
 | | Intel Parallel Studio XE Cluster Edition<br>(compilers and libraries) | 2020 update 4 (2020.4.304) | 2020 update 4 (2020.4.304) |
@@ -209,8 +212,8 @@ The software available on the ABCI system is shown below.
 | | [MVAPICH2](mpi.md#mvapich2) | 2.3.5 | 2.3.5 |
 | | [MVAPICH2-GDR](mpi.md#mvapich2-gdr) | 2.3.5 | - |
 | | [Intel MPI](mpi.md#intel-mpi) | 2019.9 | 2019.9 |
-| Library | [cuDNN](gpu.md#cudnn) | 5.1.10<br>6.0.21<br>7.0.5<br>7.1.4<br>7.2.1<br>7.3.1<br>7.4.2<br>7.5.1<br>7.6.5<br>8.0.5<br>8.1.1<br>8.2.0<br>8.2.1 | 7.3.1<br>7.4.2<br>7.5.1<br>7.6.5<br>8.0.5<br>8.1.1<br>8.2.0<br>8.2.1 |
-| | [NCCL](gpu.md#nccl) | 1.3.5-1<br>2.1.15-1<br>2.2.13-1<br>2.3.7-1<br>2.4.8-1<br>2.5.6-1<br>2.6.4-1<br>2.7.8-1<br>2.8.4-1<br>2.9.6-1<br>2.9.9-1 | 2.3.7-1<br>2.4.8-1<br>2.5.6-1<br>2.6.4-1<br>2.7.8-1<br>2.8.4-1<br>2.9.6-1<br>2.9.9-1 |
+| Library | [cuDNN](gpu.md#cudnn) | 5.1.10<br>6.0.21<br>7.0.5<br>7.1.4<br>7.2.1<br>7.3.1<br>7.4.2<br>7.5.1<br>7.6.5<br>8.0.5<br>8.1.1<br>8.2.0<br>8.2.1<br>8.2.2<br>8.2.4<br>8.3.2 | 7.3.1<br>7.4.2<br>7.5.1<br>7.6.5<br>8.0.5<br>8.1.1<br>8.2.0<br>8.2.1<br>8.2.2<br>8.2.4<br>8.3.2 |
+| | [NCCL](gpu.md#nccl) | 1.3.5-1<br>2.1.15-1<br>2.2.13-1<br>2.3.7-1<br>2.4.8-1<br>2.5.6-1<br>2.6.4-1<br>2.7.8-1<br>2.8.4-1<br>2.9.6-1<br>2.9.9-1<br>2.10.3-1<br>2.11.4-1 | 2.3.7-1<br>2.4.8-1<br>2.5.6-1<br>2.6.4-1<br>2.7.8-1<br>2.8.4-1<br>2.9.6-1<br>2.9.9-1<br>2.10.3-1<br>2.11.4-1 |
 | | gdrcopy | 2.0 | 2.1 |
 | | UCX | 1.7.0 | 1.9.0 |
 | | libfabric | 1.7.0-1 | 1.9.0rc1-1 |

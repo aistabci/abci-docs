@@ -139,7 +139,7 @@ ABCIシステムは、人工知能やビッグデータ応用に用いる大容�
 | 1 | DDN SFA 14KX x1<br>DDN SS9012エンクロージャ x5 | 7.68 TB SAS SSD x185 | ホーム領域、アプリケーション領域 |
 | 2 | DDN ES7990X x3<br>DDN SS9012エンクロージャ x6 | 18 TB NL-SAS HDD x801 | グループ領域 |
 | 3 | DDN ES400NVX x3 | 7.68 TB NVMe HDD x69 | 高速データ領域 |
-| 4 | DDN SFA 14KX x3<br>DDN SS8462エンクロージャ x30 | 3.84 TB SAS SSD x216<br>12 TB NL-SAS HDD x2400 | グループ領域 |
+| 4 | DDN SFA 14KX x3<br>DDN SS8462エンクロージャ x30 | 3.84 TB SAS SSD x216<br>12 TB NL-SAS HDD x2400 | グループ領域、グローバルスクラッチ領域 |
 | 5 | HPE Apollo 4510 Gen10 x24 | 12 TB SATA HDD x1440 | ABCIクラウドストレージ |
 
 上記のストレージシステムを用いて、ABCIシステムが提供している共有ファイルシステム及びABCIクラウドストレージの一覧を以下に示します。
@@ -148,14 +148,17 @@ ABCIシステムは、人工知能やビッグデータ応用に用いる大容�
 |:--|:--|:--|:--|:--|
 | ホーム領域 | /home | 1.0 PB | Lustre | [ホーム領域](storage.md#home-area)を参照 |
 | グループ領域 | /groups | 10.8 PB | Lustre | [グループ領域](storage.md#group-area)を参照 |
-| グループ領域1 | /fs1 | 7.2 PB | GPFS | [グループ領域](storage.md#group-area)を参照 |
-| グループ領域2 | /fs2 | 7.2 PB | GPFS | [グループ領域](storage.md#group-area)を参照 |
-| グループ領域3 | /fs3 | 7.2 PB | GPFS | 特定用途に予約済みの領域 |
+| グループ領域1[^3] | /fs1 | 7.2 PB | GPFS | [グループ領域](storage.md#group-area)を参照 |
+| グループ領域2[^3] | /fs2 | 7.2 PB | GPFS | [グループ領域](storage.md#group-area)を参照 |
+| グループ領域3[^3] | /fs3 | 7.2 PB | GPFS | 特定用途に予約済みの領域 |
 | ABCIクラウドストレージ | | 最大13 PB | | [ABCIクラウドストレージ](abci-cloudstorage.md)を参照 |
 | 高速データ領域 | /bb | 0.3 PB | Lustre | 特定用途に予約済みの領域 |
+| グローバルスクラッチ領域 | /scratch | 0.4 PB | Lustre | [グローバルスクラッチ領域](storage.md#scratch-area)を参照 |
+
+[^3]: グループ領域1～3は 2021年度中に順次廃止されます。
 
 インタラクティブノード、計算ノード、メモリインテンシブノードは、共有ファイルシステムをマウントしており、利用者は共通のマウントポイントからこれらのファイルシステムにアクセスすることができます。
-但し、グループ領域1〜3は、計算ノード(A)からはアクセスできません。
+但し、グループ領域1〜3[^3]は、計算ノード(A)からはアクセスできません。
 
 これ以外に、これらのノードはそれぞれローカルスクラッチ領域として利用可能なローカルストレージを搭載しています。以下に一覧を示します。
 
@@ -176,7 +179,7 @@ ABCIシステムで利用可能なソフトウェア一覧を以下に示しま�
 | OS | CentOS | 7.5 | - |
 | OS | Red Hat Enterprise Linux | - | 8.2 |
 | Job Scheduler | Univa Grid Engine | 8.6.17 | 8.6.17 |
-| Development Environment | [CUDA Toolkit](gpu.md#cuda-toolkit) | 8.0.61.2<br>9.0.176.4<br>9.1.85.3<br>9.2.88.1<br>9.2.148.1<br>10.0.130.1<br>10.1.243<br>10.2.89<br>11.0.3<br>11.1.1<br>11.2.2 | 10.0.130.1<br>10.1.243<br>10.2.89<br>11.0.3<br>11.1.1<br>11.2.2 |
+| Development Environment | [CUDA Toolkit](gpu.md#cuda-toolkit) | 8.0.61.2<br>9.0.176.4<br>9.1.85.3<br>9.2.88.1<br>9.2.148.1<br>10.0.130.1<br>10.1.243<br>10.2.89<br>11.0.3<br>11.1.1<br>11.2.2<br>11.3.1<br>11.4.1<br>11.4.2<br>11.5.1<br>11.6.0 | 10.0.130.1<br>10.1.243<br>10.2.89<br>11.0.3<br>11.1.1<br>11.2.2<br>11.3.1<br>11.4.1<br>11.4.2<br>11.5.1<br>11.6.0 |
 | | NVIDIA HPC SDK | 20.11<br>21.2 | 20.11<br>21.2 |
 | | PGI Professional Edition | 20.4 | 20.4 |
 | | Intel Parallel Studio XE Cluster Edition<br>(compilers and libraries) | 2020 update 4 (2020.4.304) | 2020 update 4 (2020.4.304) |
@@ -207,8 +210,8 @@ ABCIシステムで利用可能なソフトウェア一覧を以下に示しま�
 | | [MVAPICH2](mpi.md#mvapich2) | 2.3.5 | 2.3.5 |
 | | [MVAPICH2-GDR](mpi.md#mvapich2-gdr) | 2.3.5 | - |
 | | [Intel MPI](mpi.md#intel-mpi) | 2019.9 | 2019.9 |
-| Library | [cuDNN](gpu.md#cudnn) | 5.1.10<br>6.0.21<br>7.0.5<br>7.1.4<br>7.2.1<br>7.3.1<br>7.4.2<br>7.5.1<br>7.6.5<br>8.0.5<br>8.1.1<br>8.2.0<br>8.2.1 | 7.3.1<br>7.4.2<br>7.5.1<br>7.6.5<br>8.0.5<br>8.1.1<br>8.2.0<br>8.2.1 |
-| | [NCCL](gpu.md#nccl) | 1.3.5-1<br>2.1.15-1<br>2.2.13-1<br>2.3.7-1<br>2.4.8-1<br>2.5.6-1<br>2.6.4-1<br>2.7.8-1<br>2.8.4-1<br>2.9.6-1<br>2.9.9-1 | 2.3.7-1<br>2.4.8-1<br>2.5.6-1<br>2.6.4-1<br>2.7.8-1<br>2.8.4-1<br>2.9.6-1<br>2.9.9-1 |
+| Library | [cuDNN](gpu.md#cudnn) | 5.1.10<br>6.0.21<br>7.0.5<br>7.1.4<br>7.2.1<br>7.3.1<br>7.4.2<br>7.5.1<br>7.6.5<br>8.0.5<br>8.1.1<br>8.2.0<br>8.2.1<br>8.2.2<br>8.2.4<br>8.3.2 | 7.3.1<br>7.4.2<br>7.5.1<br>7.6.5<br>8.0.5<br>8.1.1<br>8.2.0<br>8.2.1<br>8.2.2<br>8.2.4<br>8.3.2 |
+| | [NCCL](gpu.md#nccl) | 1.3.5-1<br>2.1.15-1<br>2.2.13-1<br>2.3.7-1<br>2.4.8-1<br>2.5.6-1<br>2.6.4-1<br>2.7.8-1<br>2.8.4-1<br>2.9.6-1<br>2.9.9-1<br>2.10.3-1<br>2.11.4-1 | 2.3.7-1<br>2.4.8-1<br>2.5.6-1<br>2.6.4-1<br>2.7.8-1<br>2.8.4-1<br>2.9.6-1<br>2.9.9-1<br>2.10.3-1<br>2.11.4-1 |
 | | gdrcopy | 2.0 | 2.1 |
 | | UCX | 1.7.0 | 1.9.0 |
 | | libfabric | 1.7.0-1 | 1.9.0rc1-1 |

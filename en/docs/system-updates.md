@@ -1,5 +1,32 @@
 # System Updates
 
+## 2022-03-03 (future plans)
+
+| Add / Update / Delete | Software | Version | Previous version |
+|:--|:--|:--|:--|
+| Delete | hadoop | 3.3 | |
+| Delete | spark | 3.0 | |
+
+## 2022-01-27
+
+| Add / Update / Delete | Software | Version | Previous version |
+|:--|:--|:--|:--|
+| Add | CUDA  | 11.3.1<br>11.4.1<br>11.4.2<br>11.5.1<br>11.6.0 | |
+| Add | cuDNN | 8.2.2<br>8.2.4<br>8.3.2 | |
+| Add | NCCL  | 2.10.3-1<br>2.11.4-1 | |
+
+## 2021-12-15
+
+| Add / Update / Delete | Software | Version | Previous version |
+|:--|:--|:--|:--|
+| Update | OFED | 5.1-0.6.6.0 | 5.0-2.1.8.0 |
+| Update | Scality S3 Connector | 7.4.9.3 | 7.4.8.4 |
+| Update | NVIDIA Tesla Driver | [470.57.02](https://docs.nvidia.com/datacenter/tesla/tesla-release-notes-470-57-02/index.html) | 460.32.03 |
+| Add | ffmpeg | 3.4.9<br>4.2.5 |  |
+
+* Maximum reserved nodes per reservation of compute node (V) has been changed in the Reserved Service from 32 to 34.
+* With the addition of the Global Scratch Area, we added [Global scratch area](storage.md#scratch-area) section.
+
 ## 2021-08-12
 
 | Add / Update / Delete | Software | Version | Previous version |

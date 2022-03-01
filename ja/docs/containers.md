@@ -15,7 +15,7 @@ ABCIシステムでは[Singularity](https://www.sylabs.io/singularity/)が利用
 
 より網羅的なユーザガイドは、以下にあります。
 
-* [SingularityPRO User Guide](https://repo.sylabs.io/c/0f6898986ad0b646b5ce6deba21781ac62cb7e0a86a5153bbb31732ee6593f43/guides/singularitypro37-user-guide/)
+* [SingularityPRO User Guide](https://repo.sylabs.io/guides/pro-3.7/user-guide/) (英文)
 
 Singularityを用いて、NGCが提供するDockerイメージをABCIで実行する方法は、[NVIDIA NGC](tips/ngc.md) で説明しています。
 
