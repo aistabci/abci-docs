@@ -2,9 +2,9 @@
 
 ## 2022-04-11 (future update)
 
-* Maximum reserved node time per reservtation of compute node (V) will be changed in the Reserved Service from 12,288 to 13,056.
+* Maximum reserved node time per reservation of compute node (V) will be changed in the Reserved Service from 12,288 to 13,056.
 * Maximum reserved nodes per reservation of compute node (A) will be changed in the Reserved Service from 16 to 18.
-* Maximum reserved node time per reservtation of compute node (A) will be changed in the Reserved Service from 6,144 to 6,912.
+* Maximum reserved node time per reservation of compute node (A) will be changed in the Reserved Service from 6,144 to 6,912.
 
 ## 2022-03-03 
 
