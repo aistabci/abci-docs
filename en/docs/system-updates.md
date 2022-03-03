@@ -12,8 +12,8 @@
 |:--|:--|:--|:--|
 | Delete | hadoop | 3.3 | |
 | Delete | spark | 3.0 | |
-| Update | DDN Lustre | 2.12.6_ddn58-1 | 2.12.5_ddn13-1 |
-| Update | OFED(Compute Node(A)) | 5.2-1.0.4.0 | 5.1-0.6.6.0 |
+| Update | DDN Lustre (Compute Node(A)) | 2.12.6_ddn58-1 | 2.12.5_ddn13-1 |
+| Update | OFED (Compute Node(A)) | 5.2-1.0.4.0 | 5.1-0.6.6.0 |
 
 ## 2022-01-27
 
