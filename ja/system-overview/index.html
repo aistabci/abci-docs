@@ -1570,24 +1570,10 @@ Intel Xeon Gold 6148プロセッサーを2基搭載し、384 GiBのメインメ�
 <td align="left"><a href="../storage/#group-area">グループ領域</a>を参照</td>
 </tr>
 <tr>
-<td align="left">グループ領域1<sup id="fnref4:3"><a class="footnote-ref" href="#fn:3">3</a></sup></td>
-<td align="left">/fs1</td>
-<td align="left">7.2 PB</td>
-<td align="left">GPFS</td>
-<td align="left"><a href="../storage/#group-area">グループ領域</a>を参照</td>
-</tr>
-<tr>
-<td align="left">グループ領域2<sup id="fnref3:3"><a class="footnote-ref" href="#fn:3">3</a></sup></td>
-<td align="left">/fs2</td>
-<td align="left">7.2 PB</td>
-<td align="left">GPFS</td>
-<td align="left"><a href="../storage/#group-area">グループ領域</a>を参照</td>
-</tr>
-<tr>
-<td align="left">グループ領域3<sup id="fnref2:3"><a class="footnote-ref" href="#fn:3">3</a></sup></td>
-<td align="left">/fs3</td>
-<td align="left">7.2 PB</td>
-<td align="left">GPFS</td>
+<td align="left">グループ領域</td>
+<td align="left">/projects</td>
+<td align="left">21.6 PB</td>
+<td align="left">Lustre</td>
 <td align="left">特定用途に予約済みの領域</td>
 </tr>
 <tr>
@@ -1613,8 +1599,7 @@ Intel Xeon Gold 6148プロセッサーを2基搭載し、384 GiBのメインメ�
 </tr>
 </tbody>
 </table>
-<p>インタラクティブノード、計算ノード、メモリインテンシブノードは、共有ファイルシステムをマウントしており、利用者は共通のマウントポイントからこれらのファイルシステムにアクセスすることができます。
-但し、グループ領域1〜3<sup id="fnref:3"><a class="footnote-ref" href="#fn:3">3</a></sup>は、計算ノード(A)からはアクセスできません。</p>
+<p>インタラクティブノード、計算ノード、メモリインテンシブノードは、共有ファイルシステムをマウントしており、利用者は共通のマウントポイントからこれらのファイルシステムにアクセスすることができます。</p>
 <p>これ以外に、これらのノードはそれぞれローカルスクラッチ領域として利用可能なローカルストレージを搭載しています。以下に一覧を示します。</p>
 <table>
 <thead>
@@ -1824,7 +1809,7 @@ Intel Xeon Gold 6148プロセッサーを2基搭載し、384 GiBのメインメ�
 <td align="left">File System</td>
 <td align="left"><a href="../storage/#home-area">DDN Lustre</a></td>
 <td align="left">2.12.5_ddn13-1</td>
-<td align="left">2.12.5_ddn13-1</td>
+<td align="left">2.12.6_ddn58-1</td>
 </tr>
 <tr>
 <td align="left"></td>
@@ -1950,9 +1935,6 @@ Intel Xeon Gold 6148プロセッサーを2基搭載し、384 GiBのメインメ�
 </li>
 <li id="fn:2">
 <p><a href="https://www.top500.org/system/179954/">https://www.top500.org/system/179954/</a>&#160;<a class="footnote-backref" href="#fnref:2" title="Jump back to footnote 2 in the text">&#8617;</a></p>
-</li>
-<li id="fn:3">
-<p>グループ領域1～3は 2021年度中に順次廃止されます。&#160;<a class="footnote-backref" href="#fnref:3" title="Jump back to footnote 3 in the text">&#8617;</a><a class="footnote-backref" href="#fnref2:3" title="Jump back to footnote 3 in the text">&#8617;</a><a class="footnote-backref" href="#fnref3:3" title="Jump back to footnote 3 in the text">&#8617;</a><a class="footnote-backref" href="#fnref4:3" title="Jump back to footnote 3 in the text">&#8617;</a></p>
 </li>
 </ol>
 </div>

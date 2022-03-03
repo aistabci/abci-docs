@@ -1088,13 +1088,6 @@
   
 </li>
         
-          <li class="md-nav__item">
-  <a href="#group-area" class="md-nav__link">
-    グループ領域
-  </a>
-  
-</li>
-        
       </ul>
     </nav>
   
@@ -1189,36 +1182,9 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#q-why-cannot-i-write-data-to-the-old-area" class="md-nav__link">
-    Q. 旧領域にデータが書き込めません
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
   <a href="#q-about-access-rights-for-each-directory-in-the-group-area" class="md-nav__link">
-    Q. データ移行中とデータ移行完了後のグループ領域のアクセス権限が知りたい
+    Q. グループ領域のアクセス権限が知りたい
   </a>
-  
-    <nav class="md-nav" aria-label="Q. データ移行中とデータ移行完了後のグループ領域のアクセス権限が知りたい">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#the-access-rights-for-each-directory-in-the-group-area-during-data-migration" class="md-nav__link">
-    データ移行中のグループ領域の各ディレクトリ
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#the-access-rights-for-each-directory-in-the-group-area-after-data-migration" class="md-nav__link">
-    データ移行完了後のグループ領域の各ディレクトリ
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
   
 </li>
       
@@ -1733,19 +1699,9 @@ ABCIシステム利用環境の<a href="../getting-started/#general-method">SSH�
 <td align="left">Yes</td>
 <td align="left">Yes</td>
 </tr>
-<tr>
-<td align="left">グループ領域の旧領域にアクセス可能か?</td>
-<td align="left">Yes</td>
-<td align="left">Yes</td>
-</tr>
 </tbody>
 </table>
 <p>インタラクティブノード(A)の詳細は、<a href="../system-overview/#interactive-node">インタラクティブノード</a>を参照してください。</p>
-<h3 id="group-area">グループ領域</h3>
-<p>計算ノード(A)からは<strong>旧領域</strong>(<code>/fs3/d00[1-2]/gAA50NNN</code>)にアクセスできません。</p>
-<p><strong>旧領域</strong>(<code>/fs3/d00[1-2]/gAA50NNN</code>)にあるファイルを計算ノード(A)で利用する場合は、事前に利用者がファイルをホーム領域や<strong>新領域</strong>(<code>/projects/*/gAA50NNN</code>)にコピーしておく必要があります。<strong>旧領域</strong>にあるファイルをコピーする場合は、インタラクティブノードまたは計算ノード(V)を利用してください。<strong>旧領域</strong>(<code>/groups[1-2]/gAA50NNN</code>)のファイルは移行作業が完了したため、計算ノード(A)からも<strong>旧領域</strong>と同じパスでアクセスすることができます。</p>
-<p>なお、<strong>旧領域</strong>のファイルを<strong>新領域</strong>へ移行する作業はすべてのコピーが完了し、2022年3月上旬のメンテナンスで <strong>旧領域</strong>(<code>/fs3/</code>)をシンボリックリンクに置き換える作業を残すのみとなりました。</p>
-<p>グループ領域のデータ移行については、FAQの<a href="#q-what-are-the-new-group-area-and-data-migration">グループ領域のデータ移行について知りたい</a>を参照してください。</p>
 <h2 id="q-how-to-use-abci-10-environment-modules">Q. ABCI 1.0 Environment Modulesを利用したい</h2>
 <p>ABCIは、2021年5月にABCI 2.0にアップグレードされました。
 このアップグレードにともない、2020年度時点のEnvironment Modules(以下、<strong>ABCI 1.0 Environment Modules</strong>)を<code>/apps/modules-abci-1.0</code>としてインストールしました。
@@ -1764,15 +1720,14 @@ source <span class="cp">${</span><span class="n">MODULE_HOME</span><span class="
 <h2 id="q-what-are-the-new-group-area-and-data-migration">Q. グループ領域のデータ移行について知りたい</h2>
 <p>2021年度に、ストレージシステムの増強を行いました。詳細は<a href="https://docs.abci.ai/ja/01/#storage-systems">ストレージシステム</a>を参照ください。
 ストレージシステムの増強にともないグループ領域の構成を変更し、2020年度まで使用していたグループ領域(以下、<strong>旧領域</strong>)のデータを新しいグループ領域(以下、<strong>新領域</strong>)へ移行しました。</p>
-<p>2021年5月に新規導入された計算資源(<a href="#q-what-is-the-difference-between-compute-node-a-and-compute-node-v">計算ノード(A)</a>)からは<strong>旧領域</strong>にアクセスすることができません。このため、<strong>旧領域</strong>上のデータを計算ノード(A)を含むすべての計算ノードおよびインタラクティブノードからアクセス可能な<strong>新領域</strong>にコピーしました。その後、<strong>旧領域</strong>と同じパスでアクセスできるように、<strong>新領域</strong>内の移行先へのシンボリックリンクに置き換えています。</p>
+<p>2021年5月に新規導入された計算資源(<a href="#q-what-is-the-difference-between-compute-node-a-and-compute-node-v">計算ノード(A)</a>)からは<strong>旧領域</strong>にアクセスすることができません。このため、<strong>旧領域</strong>上のデータを計算ノード(A)を含むすべての計算ノードおよびインタラクティブノードからアクセス可能な<strong>新領域</strong>にコピーしました。その後、<strong>旧領域</strong>と同じパスでアクセスできるように、従来のパスは<strong>新領域</strong>内の移行先へのシンボリックリンクに置き換えられました。</p>
 <p>2020年度まで<strong>旧領域</strong><code>/groups[1-2]/gAA50NNN/</code>を利用していたグループには、4月から新しく<strong>新領域</strong><code>/groups/gAA50NNN/</code>を割り当てています。
 また、<strong>旧領域</strong><code>/fs3/</code>を利用していた一部のグループには、2021年7月中旬から<strong>新領域</strong><code>/projects/</code>を割り当てています。</p>
 <p>なお、2021年度以降に新規に作成されたABCIグループについては、<strong>新領域</strong>のみが割り当てられるためデータ移行の対象ではなく、データ移行の影響を受けません。</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p><strong>旧領域</strong>の全データを<strong>新領域</strong>にコピーする作業は2022年1月25日に完了しました。<br>
-<strong>旧領域</strong><code>/groups1/</code>および<code>/groups2/</code>へのパスは<strong>新領域</strong>内の移行先ディレクトリへのシンボリックリンクに置き換わっています。<br>
-<strong>旧領域</strong><code>/fs3/</code>へのパスは2022年3月上旬のメンテナンス中に<strong>新領域</strong>内の移行先ディレクトリへのシンボリックリンクに置き換えられます。</p>
+<p><strong>旧領域</strong>から<strong>新領域</strong>へのデータ移行は2022年3月3日に完了しました。<br>
+<strong>旧領域</strong><code>/groups1/</code>、<code>/groups2/</code>および<code>/fs3/</code>へのパスは<strong>新領域</strong>内の移行先ディレクトリへのシンボリックリンクに置き換わっています。</p>
 </div>
 <p><strong>旧領域</strong>のデータは下記の移行先ディレクトリにコピーしました。</p>
 <table>
@@ -1786,7 +1741,7 @@ source <span class="cp">${</span><span class="n">MODULE_HOME</span><span class="
 <tbody>
 <tr>
 <td align="left">d002利用者の<br/><code>/groups1/gAA50NNN/</code></td>
-<td align="left"><code>/projects/datarepository/gAA50NNN/migrated_from_SFA_GPFS/</code><sup id="fnref8:1"><a class="footnote-ref" href="#fn:1">1</a></sup></td>
+<td align="left"><code>/projects/datarepository/gAA50NNN/migrated_from_SFA_GPFS/</code><sup id="fnref6:1"><a class="footnote-ref" href="#fn:1">1</a></sup></td>
 <td align="left">移行作業完了</td>
 </tr>
 <tr>
@@ -1802,12 +1757,12 @@ source <span class="cp">${</span><span class="n">MODULE_HOME</span><span class="
 <tr>
 <td align="left"><code>/fs3/d001/gAA50NNN/</code></td>
 <td align="left"><code>/projects/d001/gAA50NNN/migrated_from_SFA_GPFS/</code></td>
-<td align="left">コピー完了</td>
+<td align="left">移行作業完了</td>
 </tr>
 <tr>
 <td align="left"><code>/fs3/d002/gAA50NNN/</code></td>
-<td align="left"><code>/projects/datarepository/gAA50NNN/migrated_from_SFA_GPFS3/</code><sup id="fnref7:1"><a class="footnote-ref" href="#fn:1">1</a></sup></td>
-<td align="left">コピー完了</td>
+<td align="left"><code>/projects/datarepository/gAA50NNN/migrated_from_SFA_GPFS3/</code><sup id="fnref5:1"><a class="footnote-ref" href="#fn:1">1</a></sup></td>
+<td align="left">移行作業完了</td>
 </tr>
 </tbody>
 </table>
@@ -1825,11 +1780,10 @@ source <span class="cp">${</span><span class="n">MODULE_HOME</span><span class="
 </ul>
 <h3 id="_2">旧領域について</h3>
 <ul>
-<li>2021年8月11日、<strong>旧領域</strong>を読み取り専用に変更しました。</li>
-<li>2022年1月25日、<strong>旧領域</strong>のすべてのデータコピーが完了しました。データの保存には<strong>新領域</strong>を利用してください。</li>
-<li><strong>旧領域</strong>に割り当てられていたGPFSファイルシステム上の<code>/groups[1-2]/gAA50NNN</code>にはアクセスできません。</li>
-<li><code>/fs3/d00[1-2]/gAA50NNN</code>へのシンボリックリンクの設定は、2022年3月上旬のメンテナンスでの実施を予定しています。シンボリックリンク設定後は、<strong>旧領域</strong>に割り当てられていたGPFSファイルシステムにはアクセスできなくなります。</li>
-<li>シンボリックリンクの設定が完了すると、従来と同じパスでアクセス可能になります。</li>
+<li>2022年3月3日、<strong>旧領域</strong>から<strong>新領域</strong>へのデータ移行が完了しました。</li>
+<li>データ移行の完了にともない、<strong>旧領域</strong>に割り当てられていたGPFSファイルシステム上の<code>/groups[1-2]/gAA50NNN</code>および<code>/fs3/d00[1-2]/gAA50NNN</code>にはアクセスできません。</li>
+<li><strong>旧領域</strong>に割り当てられていた場所は、<strong>新領域</strong>内の移行先へのシンボリックリンクに置き換えられているので、従来と同じパスでアクセスできます。</li>
+<li>データの保存には新領域を利用してください。</li>
 </ul>
 <h2 id="q-about-the-quota-value-and-the-limit-of-the-storage-usage">Q. クォータ値とディスク使用量上限値の関係が知りたい</h2>
 <h3 id="_3">データ移行中</h3>
@@ -1863,7 +1817,7 @@ source <span class="cp">${</span><span class="n">MODULE_HOME</span><span class="
 <tbody>
 <tr>
 <td><code>/groups1/gAA50NNN/</code></td>
-<td>2022年2月28日まで</td>
+<td>2022年2月28日に終了</td>
 </tr>
 <tr>
 <td><code>/groups2/gAA50NNN/</code></td>
@@ -1876,8 +1830,7 @@ source <span class="cp">${</span><span class="n">MODULE_HOME</span><span class="
 </tbody>
 </table>
 <h2 id="q-sbout-the-status-of-the-data-migration-task">Q. グループ領域のデータ移行状況が知りたい</h2>
-<p>2021年度のストレージシステムの増強にともない、2020年度まで使用していたグループ領域から新しいグループ領域へのデータ移行を行っています。
-2022年2月現在、グループ領域の移行状況は以下の通りです。</p>
+<p>2022年3月3日、2020年度まで使用していたグループ領域から新しいグループ領域へのデータ移行は完了しました。</p>
 <table>
 <thead>
 <tr>
@@ -1896,79 +1849,15 @@ source <span class="cp">${</span><span class="n">MODULE_HOME</span><span class="
 </tr>
 <tr>
 <td><code>/fs3</code></td>
-<td>2022年 1月25日にコピー完了</td>
+<td>2022年 3月 3日に完了</td>
 </tr>
 </tbody>
 </table>
-<h2 id="q-why-cannot-i-write-data-to-the-old-area">Q. 旧領域にデータが書き込めません</h2>
-<p>2020年度まで使用していたグループ領域(<strong>旧領域</strong>)の<code>/groups1</code>および<code>/groups2</code>についてはデータ移行が完了しました。
-このため、<strong>旧領域</strong><code>/groups1</code>および<code>/groups2</code>に割り当てられていた GPFS ファイルシステムにアクセスすることはできません。
-<code>/groups1</code>および<code>/groups2</code>は、新領域へのシンボリックリンクが設定されており、従来通りのパスで書き込みができます。</p>
-<p>なお、<strong>旧領域</strong>の<code>/fs3</code>は、データ移行の効率化を図るため、2021年8月11日に<strong>読み取り専用</strong>に変更しました。
-データの書き込みを行いたい場合は、新しいグループ領域(<strong>新領域</strong>)の<code>/groups</code>、<code>/projects</code>を利用してください。</p>
-<p>データ移行については、 FAQの<a href="#q-what-are-the-new-group-area-and-data-migration">グループ領域のデータ移行について知りたい</a>を参照してください。</p>
-<h2 id="q-about-access-rights-for-each-directory-in-the-group-area">Q. データ移行中とデータ移行完了後のグループ領域のアクセス権限が知りたい</h2>
-<h4 id="the-access-rights-for-each-directory-in-the-group-area-during-data-migration">データ移行中のグループ領域の各ディレクトリ</h4>
-<table>
-<thead>
-<tr>
-<th align="left">ディレクトリ</th>
-<th align="left">読み取り</th>
-<th align="left">書き込み</th>
-<th align="left">削除</th>
-<th align="left">説明</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td align="left"><code>/fs3/d00[1-2]/gAA50NNN/</code></td>
-<td align="left">Yes</td>
-<td align="left">No<sup id="fnref5:2"><a class="footnote-ref" href="#fn:2">2</a></sup></td>
-<td align="left">No<sup id="fnref6:2"><a class="footnote-ref" href="#fn:2">2</a></sup></td>
-<td align="left">旧領域</td>
-</tr>
-<tr>
-<td align="left"><code>/projects/d001/gAA50NNN/</code></td>
-<td align="left">Yes</td>
-<td align="left">Yes</td>
-<td align="left">Yes</td>
-<td align="left">d001利用者向けの新領域</td>
-</tr>
-<tr>
-<td align="left"><code>/projects/datarepository/gAA50NNN/</code></td>
-<td align="left">Yes</td>
-<td align="left">Yes</td>
-<td align="left">Yes</td>
-<td align="left">d002利用者向けの新領域</td>
-</tr>
-<tr>
-<td align="left"><code>/projects/d001/gAA50NNN/migrated_from_SFA_GPFS/</code></td>
-<td align="left">Yes</td>
-<td align="left">Yes</td>
-<td align="left">Yes</td>
-<td align="left"><code>/fs3/d001/gAA500NNN</code>の移行先</td>
-</tr>
-<tr>
-<td align="left"><code>/projects/datarepository/gAA50NNN/migrated_from_SFA_GPFS/</code><sup id="fnref6:1"><a class="footnote-ref" href="#fn:1">1</a></sup></td>
-<td align="left">Yes</td>
-<td align="left">Yes</td>
-<td align="left">Yes</td>
-<td align="left">d002利用者の<code>/groups1/gAA500NNN</code>の移行先</td>
-</tr>
-<tr>
-<td align="left"><code>/projects/datarepository/gAA50NNN/migrated_from_SFA_GPFS3/</code><sup id="fnref5:1"><a class="footnote-ref" href="#fn:1">1</a></sup></td>
-<td align="left">Yes</td>
-<td align="left">Yes</td>
-<td align="left">Yes</td>
-<td align="left"><code>/fs3/d002/gAA500NNN</code>の移行先</td>
-</tr>
-</tbody>
-</table>
-<h4 id="the-access-rights-for-each-directory-in-the-group-area-after-data-migration">データ移行完了後のグループ領域の各ディレクトリ</h4>
+<h2 id="q-about-access-rights-for-each-directory-in-the-group-area">Q. グループ領域のアクセス権限が知りたい</h2>
 <ul>
-<li>データ移行完了後、<strong>旧領域</strong><code>/groups[1-2]/gAA50NNN</code>および<code>/fs3/d00[1-2]/gAA50NNN/</code>に割り当てられていた GPFS ファイルシステムにはアクセスできなくなります。</li>
-<li>これらのパスは、それぞれの<strong>旧領域</strong>内の全データが移行完了後、<strong>新領域</strong>内の移行先ディレクトリへのシンボリックリンクに置き換えられ、従来と同じパスでアクセス可能になります。</li>
-<li>移行作業完了後の<strong>旧領域</strong>パスのアクセス権</li>
+<li>データ移行が完了したため、<strong>旧領域</strong><code>/groups[1-2]/gAA50NNN</code>および<code>/fs3/d00[1-2]/gAA50NNN/</code>に割り当てられていた GPFS ファイルシステムにはアクセスできません。</li>
+<li>これらのパスは、それぞれの<strong>旧領域</strong>内の全データが移行完了後、<strong>新領域</strong>内の移行先ディレクトリへのシンボリックリンクに置き換えられ、従来と同じパスでアクセス可能です。</li>
+<li>移行作業完了後、<strong>旧領域</strong>からシンボリックリンクに置き換えられたパスのアクセス権</li>
 </ul>
 <table>
 <thead>
@@ -1993,16 +1882,16 @@ source <span class="cp">${</span><span class="n">MODULE_HOME</span><span class="
 <tr>
 <td align="left"><code>/fs3/d001/gAA50NNN/</code></td>
 <td align="left">Yes</td>
-<td align="left">No<sup id="fnref3:2"><a class="footnote-ref" href="#fn:2">2</a></sup></td>
-<td align="left">No<sup id="fnref4:2"><a class="footnote-ref" href="#fn:2">2</a></sup></td>
+<td align="left">Yes</td>
+<td align="left">Yes</td>
 <td align="left"><code>/projects/d001/gAA50NNN/migrated_from_SFA_GPFS/</code></td>
 <td align="left"></td>
 </tr>
 <tr>
 <td align="left"><code>/fs3/d002/gAA50NNN/</code></td>
 <td align="left">Yes</td>
-<td align="left">No<sup id="fnref:2"><a class="footnote-ref" href="#fn:2">2</a></sup></td>
-<td align="left">No<sup id="fnref2:2"><a class="footnote-ref" href="#fn:2">2</a></sup></td>
+<td align="left">Yes</td>
+<td align="left">Yes</td>
 <td align="left"><code>/projects/datarepository/gAA50NNN/migrated_from_SFA_GPFS3/</code><sup id="fnref4:1"><a class="footnote-ref" href="#fn:1">1</a></sup></td>
 <td align="left"></td>
 </tr>
@@ -2085,10 +1974,7 @@ source <span class="cp">${</span><span class="n">MODULE_HOME</span><span class="
 <hr />
 <ol>
 <li id="fn:1">
-<p><code>/fs3/d002</code>利用者は移行元が複数あるため移行先のディレクトリが <code>migrated_from_SFA_GPFS/</code>と<code>migrated_from_SFA_GPFS3/</code>に別れています。&#160;<a class="footnote-backref" href="#fnref:1" title="Jump back to footnote 1 in the text">&#8617;</a><a class="footnote-backref" href="#fnref2:1" title="Jump back to footnote 1 in the text">&#8617;</a><a class="footnote-backref" href="#fnref3:1" title="Jump back to footnote 1 in the text">&#8617;</a><a class="footnote-backref" href="#fnref4:1" title="Jump back to footnote 1 in the text">&#8617;</a><a class="footnote-backref" href="#fnref5:1" title="Jump back to footnote 1 in the text">&#8617;</a><a class="footnote-backref" href="#fnref6:1" title="Jump back to footnote 1 in the text">&#8617;</a><a class="footnote-backref" href="#fnref7:1" title="Jump back to footnote 1 in the text">&#8617;</a><a class="footnote-backref" href="#fnref8:1" title="Jump back to footnote 1 in the text">&#8617;</a></p>
-</li>
-<li id="fn:2">
-<p>2022年3月上旬のメンテナンス後に書き込み/削除が可能な新領域へのシンボリックリンクに置き換わります。&#160;<a class="footnote-backref" href="#fnref:2" title="Jump back to footnote 2 in the text">&#8617;</a><a class="footnote-backref" href="#fnref2:2" title="Jump back to footnote 2 in the text">&#8617;</a><a class="footnote-backref" href="#fnref3:2" title="Jump back to footnote 2 in the text">&#8617;</a><a class="footnote-backref" href="#fnref4:2" title="Jump back to footnote 2 in the text">&#8617;</a><a class="footnote-backref" href="#fnref5:2" title="Jump back to footnote 2 in the text">&#8617;</a><a class="footnote-backref" href="#fnref6:2" title="Jump back to footnote 2 in the text">&#8617;</a></p>
+<p><code>/fs3/d002</code>利用者は移行元が複数あるため移行先のディレクトリが <code>migrated_from_SFA_GPFS/</code>と<code>migrated_from_SFA_GPFS3/</code>に別れています。&#160;<a class="footnote-backref" href="#fnref:1" title="Jump back to footnote 1 in the text">&#8617;</a><a class="footnote-backref" href="#fnref2:1" title="Jump back to footnote 1 in the text">&#8617;</a><a class="footnote-backref" href="#fnref3:1" title="Jump back to footnote 1 in the text">&#8617;</a><a class="footnote-backref" href="#fnref4:1" title="Jump back to footnote 1 in the text">&#8617;</a><a class="footnote-backref" href="#fnref5:1" title="Jump back to footnote 1 in the text">&#8617;</a><a class="footnote-backref" href="#fnref6:1" title="Jump back to footnote 1 in the text">&#8617;</a></p>
 </li>
 </ol>
 </div>
