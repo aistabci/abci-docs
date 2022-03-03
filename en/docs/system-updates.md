@@ -14,7 +14,8 @@
 | Delete | spark | 3.0 | |
 | Update | DDN Lustre (Compute Node (A)) | 2.12.6_ddn58-1 | 2.12.5_ddn13-1 |
 | Update | OFED (Compute Node (A)) | 5.2-1.0.4.0 | 5.1-0.6.6.0 |
-One of [known issues](https://docs.abci.ai/en/known-issues/) has been resolved in this update.
+
+* One of [known issues](https://docs.abci.ai/en/known-issues/) has been resolved in this update.
 
 ## 2022-01-27
 
