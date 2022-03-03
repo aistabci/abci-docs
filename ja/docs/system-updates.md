@@ -15,7 +15,7 @@
 | Update | DDN Lustre (計算ノード(A)) | 2.12.6_ddn58-1 | 2.12.5_ddn13-1 |
 | Update | OFED (計算ノード(A)) | 5.2-1.0.4.0 | 5.1-0.6.6.0 |
 
-* 今回の更新で解消される[既知の問題](https://docs.abci.ai/ja/known-issues/)があります。
+* 今回の更新で解消される[既知の問題](known-issues.md)があります。
 
 ## 2022-01-27
 
