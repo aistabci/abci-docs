@@ -85,6 +85,35 @@ Group area is the disk area of the Lustre file system shared by interactive and 
 
 To find the path to your group area, use the `show_quota` command. For details, see [Checking Disk Quota](getting-started.md#checking-disk-quota).
 
+### How to check inode usage
+
+The Group Area consists of multiple storage areas, and the MDT to which the ABCI group belongs is determined by the last digit of the ABCI group name.
+
+|  Last digit of your ABCI group name  |  The MDT to which it belongs |
+|  :----: |  :----:  |
+|  0 or 5  |  MDT:0  |
+|  1 or 6  |  MDT:1  |
+|  2 or 7  |  MDT:2  |
+|  3 or 8  |  MDT:3  |
+|  4 or 9  |  MDT:4  |
+
+The MDT stores inode information for a file, but there is an upper limit on the number of inodes that can be stored per MDT.
+You can see how much inodes are currently used for each MDT with the `lfs df -i`.
+The `IUse% `entry in the`/groups [MDT:?] `line in the output of the command is the percentage of the inode used in each MDT.<br>
+In the following example, the inode utilization for MDT:0 is 30%.
+
+````
+[username@es1 ~]$ lfs df -i /groups
+UUID                      Inodes       IUsed       IFree IUse% Mounted on
+groups-MDT0000_UUID   3110850464   904313344  2206537120  30% /groups[MDT:0]
+groups-MDT0001_UUID   3110850464  2778144306   332706158  90% /groups[MDT:1]
+groups-MDT0002_UUID   3110850464   935143862  2175706602  31% /groups[MDT:2]
+groups-MDT0003_UUID   3110850464  1356224703  1754625761  44% /groups[MDT:3]
+groups-MDT0004_UUID   3110850464   402932004  2707918460  13% /groups[MDT:4]
+groups-MDT0005_UUID   3110850464         433  3110850031   1% /groups[MDT:5]
+(snip)
+````
+
 ## Global scratch area {#scratch-area}
 
 Global scratch area is lustre file system and available for all ABCI users.

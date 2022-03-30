@@ -525,31 +525,3 @@ source ${MODULE_HOME}/etc/profile.d/modules.csh
 | `/projects/datarepository/gAA50NNN/migrated_from_SFA_GPFS/`[^1]  | Yes      | Yes      | Yes  | d002利用者の`/groups1/gAA500NNN`の移行先 |
 | `/projects/datarepository/gAA50NNN/migrated_from_SFA_GPFS3/`[^1] | Yes      | Yes      | Yes  | `/fs3/d002/gAA500NNN`の移行先     |
 
-## Q. グループ領域のinodeの使用状況を確認したい {#q-i-want-to-check-inode-usage-of-the-group-area}
-
-グループ領域は、複数のストレージ領域から構成されており、ABCIグループ毎に属しているMDTが決められています。ABCIグループが属しているMDTはABCIグループの下一桁の数字によって決められています。
-
-|  ABCIグループの下一桁  |  属しているMDT |
-|  :----: |  :----:  |
-|  0 または 5  |  MDT:0  |
-|  1 または 6  |  MDT:1  |
-|  2 または 7  |  MDT:2  |
-|  3 または 8  |  MDT:3  |
-|  4 または 9  |  MDT:4  |
-
-MDTではファイルのinode情報を格納していますが、MDT毎に格納できるinode数の上限があり、各MDTで現在どの程度inodeが使用されているかは`lfs df -i` コマンドで確認することが可能です。
-コマンドの出力結果のうち、`/groups[MDT:?]`の行に記載されている`IUse%`の項目が各MDTにおけるinodeの使用率となります。<br>
-以下の例の場合、MDT:0 の inode使用率は 30% となります。
-
-````
-[username@es1 ~]$ lfs df -i /groups
-UUID                      Inodes       IUsed       IFree IUse% Mounted on
-groups-MDT0000_UUID   3110850464   904313344  2206537120  30% /groups[MDT:0]
-groups-MDT0001_UUID   3110850464  2778144306   332706158  90% /groups[MDT:1]
-groups-MDT0002_UUID   3110850464   935143862  2175706602  31% /groups[MDT:2]
-groups-MDT0003_UUID   3110850464  1356224703  1754625761  44% /groups[MDT:3]
-groups-MDT0004_UUID   3110850464   402932004  2707918460  13% /groups[MDT:4]
-groups-MDT0005_UUID   3110850464         433  3110850031   1% /groups[MDT:5]
-(snip)
-````
-
