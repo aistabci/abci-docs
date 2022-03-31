@@ -5,9 +5,6 @@ site_url: https://docs.abci.ai/en/
 repo_url: https://github.com/aistairc/abci-docs
 edit_uri: edit/master/en/docs/
 copyright: 'Copyright &copy; 2021 National Institute of Advanced Industrial Science and Technology (AIST)'
-google_analytics:
-  - 'UA-118371652-2'
-  - 'auto'
 nav:
   - 'Introduction': 'index.md'
   - 'ABCI System Overview': 'system-overview.md'
@@ -81,6 +78,7 @@ theme:
     primary: 'red'
   features:
     - toc.integrate
+  custom_dir: overrides
 markdown_extensions:
   - admonition
   - codehilite
