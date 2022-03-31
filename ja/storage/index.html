@@ -48,12 +48,10 @@
     
     
       
-        
-<script>window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)},ga.l=+new Date,ga("create","UA-118371652-2","auto"),ga("set","anonymizeIp",!0),ga("send","pageview"),document.addEventListener("DOMContentLoaded",function(){document.forms.search&&document.forms.search.query.addEventListener("blur",function(){var e;this.value&&(e=document.location.pathname,ga("send","pageview",e+"?q="+this.value))}),"undefined"!=typeof location$&&location$.subscribe(function(e){ga("send","pageview",e.pathname)})})</script>
-<script async src="https://www.google-analytics.com/analytics.js"></script>
-      
     
     
+  <script defer data-domain="docs.abci.ai" src="https://analytics.abci.ai/js/plausible.js"></script>
+
   </head>
   
   
@@ -371,6 +369,19 @@
   <a href="#group-area" class="md-nav__link">
     グループ領域
   </a>
+  
+    <nav class="md-nav" aria-label="グループ領域">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#how-to-check-inode-usage" class="md-nav__link">
+    inode使用率の確認方法
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -1343,6 +1354,32 @@
 <h2 id="group-area">グループ領域</h2>
 <p>グループ領域は、インタラクティブノードおよび各計算ノードで共有されたLustreファイルシステムのディスク領域です。<a href="https://portal.abci.ai/user/">ABCI利用者ポータル</a>から利用管理者権限でグループディスク追加申請を行うことで利用可能になります。追加申請方法については、<a href="https://docs.abci.ai/portal/ja/">ABCI利用者ポータルガイド</a>の<a href="https://docs.abci.ai/portal/ja/03/#352">ディスク追加申請</a>をご参照ください。</p>
 <p>グループ領域のパスを確認するには、<code>show_quota</code> コマンドを実行してください。コマンドの説明については <a href="../getting-started/#checking-disk-quota">ディスククォータの確認</a> を参照してください。</p>
+<h3 id="how-to-check-inode-usage">inode使用率の確認方法</h3>
+<p>MDTではファイルのinode情報を格納していますが、MDT毎に格納できるinode数の上限があり、各MDTで現在どの程度inodeが使用されているかは<code>lfs df -i</code> コマンドで確認
+することが可能です。
+コマンドの出力結果のうち、<code>/groups[MDT:?]</code>の行に記載されている<code>IUse%</code>の項目が各MDTにおけるinodeの使用率となります。<br>
+以下の例の場合、MDT:0 の inode使用率は 30% となります。</p>
+<div class="codehilite"><pre><span></span><code><span class="o">[</span><span class="n">username@es1 ~</span><span class="o">]</span><span class="err">$</span><span class="w"> </span><span class="n">lfs</span><span class="w"> </span><span class="n">df</span><span class="w"> </span><span class="o">-</span><span class="n">i</span><span class="w"> </span><span class="o">/</span><span class="n">groups</span><span class="w"></span>
+<span class="n">UUID</span><span class="w">                      </span><span class="n">Inodes</span><span class="w">       </span><span class="n">IUsed</span><span class="w">       </span><span class="n">IFree</span><span class="w"> </span><span class="n">IUse</span><span class="o">%</span><span class="w"> </span><span class="n">Mounted</span><span class="w"> </span><span class="k">on</span><span class="w"></span>
+<span class="n">groups</span><span class="o">-</span><span class="n">MDT0000_UUID</span><span class="w">   </span><span class="mi">3110850464</span><span class="w">   </span><span class="mi">904313344</span><span class="w">  </span><span class="mi">2206537120</span><span class="w">  </span><span class="mi">30</span><span class="o">%</span><span class="w"> </span><span class="o">/</span><span class="n">groups</span><span class="o">[</span><span class="n">MDT:0</span><span class="o">]</span><span class="w"></span>
+<span class="n">groups</span><span class="o">-</span><span class="n">MDT0001_UUID</span><span class="w">   </span><span class="mi">3110850464</span><span class="w">  </span><span class="mi">2778144306</span><span class="w">   </span><span class="mi">332706158</span><span class="w">  </span><span class="mi">90</span><span class="o">%</span><span class="w"> </span><span class="o">/</span><span class="n">groups</span><span class="o">[</span><span class="n">MDT:1</span><span class="o">]</span><span class="w"></span>
+<span class="n">groups</span><span class="o">-</span><span class="n">MDT0002_UUID</span><span class="w">   </span><span class="mi">3110850464</span><span class="w">   </span><span class="mi">935143862</span><span class="w">  </span><span class="mi">2175706602</span><span class="w">  </span><span class="mi">31</span><span class="o">%</span><span class="w"> </span><span class="o">/</span><span class="n">groups</span><span class="o">[</span><span class="n">MDT:2</span><span class="o">]</span><span class="w"></span>
+<span class="n">groups</span><span class="o">-</span><span class="n">MDT0003_UUID</span><span class="w">   </span><span class="mi">3110850464</span><span class="w">  </span><span class="mi">1356224703</span><span class="w">  </span><span class="mi">1754625761</span><span class="w">  </span><span class="mi">44</span><span class="o">%</span><span class="w"> </span><span class="o">/</span><span class="n">groups</span><span class="o">[</span><span class="n">MDT:3</span><span class="o">]</span><span class="w"></span>
+<span class="n">groups</span><span class="o">-</span><span class="n">MDT0004_UUID</span><span class="w">   </span><span class="mi">3110850464</span><span class="w">   </span><span class="mi">402932004</span><span class="w">  </span><span class="mi">2707918460</span><span class="w">  </span><span class="mi">13</span><span class="o">%</span><span class="w"> </span><span class="o">/</span><span class="n">groups</span><span class="o">[</span><span class="n">MDT:4</span><span class="o">]</span><span class="w"></span>
+<span class="n">groups</span><span class="o">-</span><span class="n">MDT0005_UUID</span><span class="w">   </span><span class="mi">3110850464</span><span class="w">         </span><span class="mi">433</span><span class="w">  </span><span class="mi">3110850031</span><span class="w">   </span><span class="mi">1</span><span class="o">%</span><span class="w"> </span><span class="o">/</span><span class="n">groups</span><span class="o">[</span><span class="n">MDT:5</span><span class="o">]</span><span class="w"></span>
+<span class="p">(</span><span class="n">snip</span><span class="p">)</span><span class="w"></span>
+</code></pre></div>
+
+<p>なお、ABCIグループが使用しているMDTは以下のコマンドで確認することができます。</p>
+<div class="codehilite"><pre><span></span><code><span class="o">[</span><span class="n">username@es1 ~</span><span class="o">]</span><span class="err">$</span><span class="w"> </span><span class="n">ls</span><span class="w"> </span><span class="o">-</span><span class="n">d</span><span class="w"> </span><span class="o">/</span><span class="n">groups</span><span class="o">/</span><span class="vm">?</span><span class="o">/</span><span class="p">(</span><span class="n">ABCIグループ名</span><span class="p">)</span><span class="w"></span>
+<span class="o">/</span><span class="n">groups</span><span class="o">/</span><span class="p">(</span><span class="n">MDT番号</span><span class="p">)</span><span class="o">/</span><span class="p">(</span><span class="n">ABCIグループ名</span><span class="p">)</span><span class="w"></span>
+</code></pre></div>
+
+<p>以下の例の場合、MDT:0を使用しています。</p>
+<div class="codehilite"><pre><span></span><code><span class="o">[</span><span class="n">username@es1 ~</span><span class="o">]</span><span class="err">$</span><span class="w"> </span><span class="n">ls</span><span class="w"> </span><span class="o">-</span><span class="n">d</span><span class="w"> </span><span class="o">/</span><span class="n">groups</span><span class="o">/</span><span class="vm">?</span><span class="o">/</span><span class="n">gaa00000</span><span class="w"></span>
+<span class="o">/</span><span class="n">groups</span><span class="o">/</span><span class="mi">0</span><span class="o">/</span><span class="n">gaa00000</span><span class="w"></span>
+</code></pre></div>
+
 <h2 id="scratch-area">グローバルスクラッチ領域</h2>
 <p>グローバルスクラッチ領域は、利用者全員が利用可能な、インタラクティブノードおよび各計算ノードで共有されたLustreファイルシステムの短期利用向け高速ストレージです。ディスククォータは10TiBに設定されています。
 各利用者は以下の領域を短期利用高速データ領域として利用することが可能です。</p>

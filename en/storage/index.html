@@ -48,12 +48,10 @@
     
     
       
-        
-<script>window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)},ga.l=+new Date,ga("create","UA-118371652-2","auto"),ga("set","anonymizeIp",!0),ga("send","pageview"),document.addEventListener("DOMContentLoaded",function(){document.forms.search&&document.forms.search.query.addEventListener("blur",function(){var e;this.value&&(e=document.location.pathname,ga("send","pageview",e+"?q="+this.value))}),"undefined"!=typeof location$&&location$.subscribe(function(e){ga("send","pageview",e.pathname)})})</script>
-<script async src="https://www.google-analytics.com/analytics.js"></script>
-      
     
     
+  <script defer data-domain="docs.abci.ai" src="https://analytics.abci.ai/js/plausible.js"></script>
+
   </head>
   
   
@@ -371,6 +369,19 @@
   <a href="#group-area" class="md-nav__link">
     Group Area
   </a>
+  
+    <nav class="md-nav" aria-label="Group Area">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#how-to-check-inode-usage" class="md-nav__link">
+    How to check inode usage
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -1331,6 +1342,32 @@ If an attempt is made to create a file that exceeds the limit, an error message 
 <h2 id="group-area">Group Area</h2>
 <p>Group area is the disk area of the Lustre file system shared by interactive and compute nodes. To use Group area, "Usage Manager" of the group needs to apply "Add group disk" via <a href="https://portal.abci.ai/user/">ABCI User Portal</a>. Regarding how to add group disk, please refer to <a href="https://docs.abci.ai/portal/en/03/#352-disk-addition-request">Disk Addition Request</a> in the <a href="https://docs.abci.ai/portal/en/">ABCI Portal Guide</a>.</p>
 <p>To find the path to your group area, use the <code>show_quota</code> command. For details, see <a href="../getting-started/#checking-disk-quota">Checking Disk Quota</a>.</p>
+<h3 id="how-to-check-inode-usage">How to check inode usage</h3>
+<p>The MDT stores inode information for a file, but there is an upper limit on the number of inodes that can be stored per MDT.
+You can see how much inodes are currently used for each MDT with the <code>lfs df -i</code>.
+The <code>IUse%</code>entry in the<code>/groups [MDT:?]</code>line in the output of the command is the percentage of the inode used in each MDT.<br>
+In the following example, the inode utilization for MDT:0 is 30%.</p>
+<div class="codehilite"><pre><span></span><code><span class="o">[</span><span class="n">username@es1 ~</span><span class="o">]</span><span class="err">$</span><span class="w"> </span><span class="n">lfs</span><span class="w"> </span><span class="n">df</span><span class="w"> </span><span class="o">-</span><span class="n">i</span><span class="w"> </span><span class="o">/</span><span class="n">groups</span><span class="w"></span>
+<span class="n">UUID</span><span class="w">                      </span><span class="n">Inodes</span><span class="w">       </span><span class="n">IUsed</span><span class="w">       </span><span class="n">IFree</span><span class="w"> </span><span class="n">IUse</span><span class="o">%</span><span class="w"> </span><span class="n">Mounted</span><span class="w"> </span><span class="k">on</span><span class="w"></span>
+<span class="n">groups</span><span class="o">-</span><span class="n">MDT0000_UUID</span><span class="w">   </span><span class="mi">3110850464</span><span class="w">   </span><span class="mi">904313344</span><span class="w">  </span><span class="mi">2206537120</span><span class="w">  </span><span class="mi">30</span><span class="o">%</span><span class="w"> </span><span class="o">/</span><span class="n">groups</span><span class="o">[</span><span class="n">MDT:0</span><span class="o">]</span><span class="w"></span>
+<span class="n">groups</span><span class="o">-</span><span class="n">MDT0001_UUID</span><span class="w">   </span><span class="mi">3110850464</span><span class="w">  </span><span class="mi">2778144306</span><span class="w">   </span><span class="mi">332706158</span><span class="w">  </span><span class="mi">90</span><span class="o">%</span><span class="w"> </span><span class="o">/</span><span class="n">groups</span><span class="o">[</span><span class="n">MDT:1</span><span class="o">]</span><span class="w"></span>
+<span class="n">groups</span><span class="o">-</span><span class="n">MDT0002_UUID</span><span class="w">   </span><span class="mi">3110850464</span><span class="w">   </span><span class="mi">935143862</span><span class="w">  </span><span class="mi">2175706602</span><span class="w">  </span><span class="mi">31</span><span class="o">%</span><span class="w"> </span><span class="o">/</span><span class="n">groups</span><span class="o">[</span><span class="n">MDT:2</span><span class="o">]</span><span class="w"></span>
+<span class="n">groups</span><span class="o">-</span><span class="n">MDT0003_UUID</span><span class="w">   </span><span class="mi">3110850464</span><span class="w">  </span><span class="mi">1356224703</span><span class="w">  </span><span class="mi">1754625761</span><span class="w">  </span><span class="mi">44</span><span class="o">%</span><span class="w"> </span><span class="o">/</span><span class="n">groups</span><span class="o">[</span><span class="n">MDT:3</span><span class="o">]</span><span class="w"></span>
+<span class="n">groups</span><span class="o">-</span><span class="n">MDT0004_UUID</span><span class="w">   </span><span class="mi">3110850464</span><span class="w">   </span><span class="mi">402932004</span><span class="w">  </span><span class="mi">2707918460</span><span class="w">  </span><span class="mi">13</span><span class="o">%</span><span class="w"> </span><span class="o">/</span><span class="n">groups</span><span class="o">[</span><span class="n">MDT:4</span><span class="o">]</span><span class="w"></span>
+<span class="n">groups</span><span class="o">-</span><span class="n">MDT0005_UUID</span><span class="w">   </span><span class="mi">3110850464</span><span class="w">         </span><span class="mi">433</span><span class="w">  </span><span class="mi">3110850031</span><span class="w">   </span><span class="mi">1</span><span class="o">%</span><span class="w"> </span><span class="o">/</span><span class="n">groups</span><span class="o">[</span><span class="n">MDT:5</span><span class="o">]</span><span class="w"></span>
+<span class="p">(</span><span class="n">snip</span><span class="p">)</span><span class="w"></span>
+</code></pre></div>
+
+<p>You can check MDT No. used by your ABCI group with the following command.</p>
+<div class="codehilite"><pre><span></span><code><span class="o">[</span><span class="n">username@es1 ~</span><span class="o">]</span><span class="err">$</span><span class="w"> </span><span class="n">ls</span><span class="w"> </span><span class="o">-</span><span class="n">d</span><span class="w"> </span><span class="o">/</span><span class="n">groups</span><span class="o">/</span><span class="vm">?</span><span class="o">/</span><span class="p">(</span><span class="n">ABCI</span><span class="w"> </span><span class="k">group</span><span class="w"> </span><span class="n">name</span><span class="p">)</span><span class="w"></span>
+<span class="o">/</span><span class="n">groups</span><span class="o">/</span><span class="p">(</span><span class="n">MDT</span><span class="w"> </span><span class="k">No</span><span class="p">.)</span><span class="o">/</span><span class="p">(</span><span class="n">ABCI</span><span class="w"> </span><span class="k">group</span><span class="w"> </span><span class="n">name</span><span class="p">)</span><span class="w"></span>
+</code></pre></div>
+
+<p>In the following example, the ABCI group uses MDT:0.</p>
+<div class="codehilite"><pre><span></span><code><span class="o">[</span><span class="n">username@es1 ~</span><span class="o">]</span><span class="err">$</span><span class="w"> </span><span class="n">ls</span><span class="w"> </span><span class="o">-</span><span class="n">d</span><span class="w"> </span><span class="o">/</span><span class="n">groups</span><span class="o">/</span><span class="vm">?</span><span class="o">/</span><span class="n">gaa00000</span><span class="w"></span>
+<span class="o">/</span><span class="n">groups</span><span class="o">/</span><span class="mi">0</span><span class="o">/</span><span class="n">gaa00000</span><span class="w"></span>
+</code></pre></div>
+
 <h2 id="scratch-area">Global scratch area</h2>
 <p>Global scratch area is lustre file system and available for all ABCI users.
 This storage is shared by interactive nodes and all Compute Nodes V and A.

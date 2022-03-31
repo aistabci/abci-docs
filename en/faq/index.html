@@ -48,12 +48,10 @@
     
     
       
-        
-<script>window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)},ga.l=+new Date,ga("create","UA-118371652-2","auto"),ga("set","anonymizeIp",!0),ga("send","pageview"),document.addEventListener("DOMContentLoaded",function(){document.forms.search&&document.forms.search.query.addEventListener("blur",function(){var e;this.value&&(e=document.location.pathname,ga("send","pageview",e+"?q="+this.value))}),"undefined"!=typeof location$&&location$.subscribe(function(e){ga("send","pageview",e.pathname)})})</script>
-<script async src="https://www.google-analytics.com/analytics.js"></script>
-      
     
     
+  <script defer data-domain="docs.abci.ai" src="https://analytics.abci.ai/js/plausible.js"></script>
+
   </head>
   
   
@@ -1093,87 +1091,6 @@
     Q. What are the new Group Area and data migration?
   </a>
   
-    <nav class="md-nav" aria-label="Q. What are the new Group Area and data migration?">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#the-new-area" class="md-nav__link">
-    The New Area
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#the-old-area" class="md-nav__link">
-    The Old Area
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#q-about-the-quota-value-and-the-limit-of-the-storage-usage" class="md-nav__link">
-    Q. About the Quota Value and the Limit of the Storage Usage
-  </a>
-  
-    <nav class="md-nav" aria-label="Q. About the Quota Value and the Limit of the Storage Usage">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#during-the-data-migration" class="md-nav__link">
-    During the Data Migration
-  </a>
-  
-    <nav class="md-nav" aria-label="During the Data Migration">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#increasing-the-quota-value" class="md-nav__link">
-    Increasing the Quota Value
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#decreasing-the-quota-value" class="md-nav__link">
-    Decreasing the Quota Value
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#after-the-data-migration-completed" class="md-nav__link">
-    After the Data Migration completed
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#q-about-the-status-of-the-data-migration-task" class="md-nav__link">
-    Q. About the status of the Data Migration Task
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#q-about-access-rights-for-each-directory-in-the-group-area" class="md-nav__link">
-    Q. About Access Rights for Each Directory in the Group Area
-  </a>
-  
 </li>
       
     </ul>
@@ -1698,252 +1615,32 @@ source <span class="cp">${</span><span class="n">MODULE_HOME</span><span class="
 
 <h2 id="q-what-are-the-new-group-area-and-data-migration">Q. What are the new Group Area and data migration?</h2>
 <p>In FY2021, we expanded the storage system. Refer to <a href="https://docs.abci.ai/en/01/#storage-systems">Storage Systems</a> for details.
-As the storage system is expanded, the configuration of the Group Area has been changed, and data are being migrated from the Group Area used until FY2020 (hereinafter referred to as <strong>Old Area</strong>) to the new Group Area (hereinafter referred to as <strong>New Area</strong>). </p>
-<p>The <strong>New Area</strong> is accessible from all the Compute Nodes and Interactive Nodes, but the <strong>Old Area</strong> is not accessible from the computing resources newly established in May 2021 we call the <a href="#q-what-is-the-difference-between-compute-node-a-and-compute-node-v">Compute Nodes (A)</a>. Therefore, we transfer the all data in the <strong>Old Area</strong> to the <strong>New Area</strong> that can be accessed from Compute Nodes (A). Then the source paths, were allocated to the <strong>Old Areas</strong> will be replaced with symlinks to the destination directories in the <strong>New Areas</strong>, so that it can be accessed at the same path as the <strong>Old Area</strong>. </p>
-<p>User groups who are using the <strong>Old Area</strong> <code>/groups[1-2]/gAA50NNN/</code> until FY2020 have newly been allocated the <strong>New Area</strong> <code>/groups/gAA50NNN/</code> since April 2021, and some User groups who are using the <strong>Old Area</strong> <code>/fs3/</code> have been allocated the <strong>New Area</strong> <code>/projects/</code> since mid July 2021. </p>
-<p>In addition, for the groups newly created in FY2021, only <strong>New Area</strong> is allocated, so it is not a target of data migration. As results, it is not affected by data migration. </p>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>The migration process of all data from the <strong>Old Area</strong> to the <strong>New Area</strong> has already been completed on March 3, 2022.<br>
-The paths to the <strong>Old Area</strong> <code>/groups1/</code>, <code>/groups2/</code>, and <code>/fs3/</code> have been replaced with symlinks to the transfer destination in the <strong>New Area</strong>. </p>
-</div>
+As the storage system is expanded, the configuration of the Group Area has been changed, and data have been migrated from the Group Area used until FY2020 (hereinafter referred to as <strong>Old Area</strong>) to the new Group Area (hereinafter referred to as <strong>New Area</strong>). </p>
+<p>The all data in the <strong>Old Area</strong> have been transferred to the <strong>New Area</strong>, then the source paths, were allocated to the <strong>Old Areas</strong> have been replaced with symlinks to the destination directories in the <strong>New Areas</strong>, so that it can be accessed at the same path as the <strong>Old Area</strong>.  </p>
 <p>The sources and the destinations of data migration are as follows. </p>
 <table>
 <thead>
 <tr>
 <th align="left">Source</th>
 <th align="left">Destination</th>
-<th align="left">Remarks</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td align="left">d002 users'<br/><code>/groups1/gAA50NNN/</code></td>
-<td align="left"><code>/projects/datarepository/gAA50NNN/migrated_from_SFA_GPFS/</code><sup id="fnref6:1"><a class="footnote-ref" href="#fn:1">1</a></sup></td>
-<td align="left">Completed</td>
-</tr>
-<tr>
-<td align="left">others'<br/><code>/groups1/gAA50NNN/</code></td>
-<td align="left"><code>/groups/gAA50NNN/migrated_from_SFA_GPFS/</code></td>
-<td align="left">Completed</td>
-</tr>
-<tr>
-<td align="left"><code>/groups2/gAA50NNN/</code></td>
-<td align="left"><code>/groups/gAA50NNN/migrated_from_SFA_GPFS/</code></td>
-<td align="left">Completed</td>
-</tr>
-<tr>
-<td align="left"><code>/fs3/d001/gAA50NNN/</code></td>
-<td align="left"><code>/projects/d001/gAA50NNN/migrated_from_SFA_GPFS/</code></td>
-<td align="left">Completed</td>
-</tr>
-<tr>
-<td align="left"><code>/fs3/d002/gAA50NNN/</code></td>
-<td align="left"><code>/projects/datarepository/gAA50NNN/migrated_from_SFA_GPFS3/</code><sup id="fnref5:1"><a class="footnote-ref" href="#fn:1">1</a></sup></td>
-<td align="left">Completed</td>
-</tr>
-</tbody>
-</table>
-<p>The following command has been executed for data migration. </p>
-<div class="codehilite"><pre><span></span><code># rsync -avH /{Old Area}/gAA50NNN/ /{New Area}/gAA50NNN/migrated_from_SFA_GPFS/ 
-</code></pre></div>
-
-<p>The following command has been executed for verification and confirmation after data migration. </p>
-<div class="codehilite"><pre><span></span><code># rsync -avH --delete /{Old Area}/gAA50NNN/ /{New Area}/gAA50NNN/migrated_from_SFA_GPFS/ 
-</code></pre></div>
-
-<h3 id="the-new-area">The New Area</h3>
-<ul>
-<li>Disk usage will increase as data transfer. For this reason, the limit of the storage usage for the <strong>New Area</strong> is set to be twice the quota value, which is the group disk quantity value applied in the ABCI User Portal. This is a temporal treatment. After the migration, the limit of the storage usage is set to the same value as the quota value in the ABCI User Portal, after the certain <a href="#after-the-data-migration-completed">grace period</a>. </li>
-</ul>
-<h3 id="the-old-area">The Old Area</h3>
-<ul>
-<li>The migration process of all data from the <strong>Old Area</strong> to the <strong>New Area</strong> has already been completed on March 3, 2022. </li>
-<li>The paths <code>/groups[1-2]/gAA50NNN</code> and <code>/fs3/d00[1-2]/gAA50NNN</code> on the GPFS file system that were assigned to the <strong>Old Area</strong> cannot be accessible. </li>
-<li>These paths have been replaced with the symlinks, and the same paths as before are accessible. </li>
-<li>You should use the <strong>New Area</strong> from now on. </li>
-</ul>
-<h2 id="q-about-the-quota-value-and-the-limit-of-the-storage-usage">Q. About the Quota Value and the Limit of the Storage Usage</h2>
-<h3 id="during-the-data-migration">During the Data Migration</h3>
-<p>Before the data migration started, the limit of the storage usage (shown as "limit" with the show_quota command) has been set to the same value of the quota value, which is the group disk quantity value applied in the ABCI User Portal.
-After the data migration started, the relationship between the quota value and the the limit of the storage usage was changed.
-By June 27, 2021, the limit of the storage usage for the <strong>New Area</strong> is set to be twice the quota value. 
-After June 28, 2021, the relationship was changed as follows. </p>
-<h4 id="increasing-the-quota-value">Increasing the Quota Value</h4>
-<ul>
-<li>Even if you apply to increase the quota value, the limit of the storage usage of the <strong>Old Area</strong> will not be increased. </li>
-<li>The limit of the storage usaget of the <strong>New Area</strong> (/groups/gAA50NNN) is set to "the value set at that time" or "twice of the new quota value", whichever is greater. </li>
-</ul>
-<h4 id="decreasing-the-quota-value">Decreasing the Quota Value</h4>
-<ul>
-<li>When you apply to decrease the quota value, it can be decreased only when the usage amount of the <strong>Old Area</strong> (shown as "used" with the show_quota command) is less than the new quota value. </li>
-<li>After application, the limit of the storage usage of the <strong>Old Area</strong> will be decreased to the same value as the quota value. </li>
-<li>The limit of the storage usage of the <strong>New Area</strong> will not be decreased. </li>
-</ul>
-<p>ABCI points consumed by using Group disks are calculated based on the quota value as before. </p>
-<h3 id="after-the-data-migration-completed">After the Data Migration completed</h3>
-<p>During the data migration task, the value twice or larger the quota value is set as the limit of the storage usage of the <strong>New Area</strong>.  <strong>After the data migration is completed, the limit of the storage usage for the New Area is going to be set to the same value as the quota value after a grace period.</strong> </p>
-<p>The grace period is as follows. After the grace period, if the usage amount of the <strong>New Area</strong> (shown as "used" with the show_quota command) is larger than the quota value, you cannot write onto the  <strong>New Area</strong>. Please merge duplicated files and purge unnecessary files, or apply to increase the quota value by accessing <a href="https://portal.abci.ai/user/?lang=en">ABCI User Portal</a> and access "User Group Management". </p>
-<table>
-<thead>
-<tr>
-<th align="left">Group Area</th>
-<th align="left">Grace Period</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td align="left"><code>/groups1/gAA50NNN/</code></td>
-<td align="left">Until February 28, 2022</td>
-</tr>
-<tr>
-<td align="left"><code>/groups2/gAA50NNN/</code></td>
-<td align="left">Until September 30, 2021</td>
-</tr>
-<tr>
-<td align="left"><code>/fs3/</code></td>
-<td align="left">Until March 20, 2022</td>
-</tr>
-</tbody>
-</table>
-<h2 id="q-about-the-status-of-the-data-migration-task">Q. About the status of the Data Migration Task</h2>
-<p>With the expansion of the storage system in FY2021, we are migrating data from the Group Area that was used until FY2020 to the New Group Area. As of February 2022, the migration status of the each Group Area is as follows. </p>
-<table>
-<thead>
-<tr>
-<th align="left">Group Area</th>
-<th align="left">Status</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td align="left"><code>/groups1/gAA50NNN/</code></td>
-<td align="left">Completed in Nov 26, 2021</td>
-</tr>
-<tr>
-<td align="left"><code>/groups2/gAA50NNN/</code></td>
-<td align="left">Completed in Jul 1, 2021</td>
-</tr>
-<tr>
-<td align="left"><code>/fs3</code></td>
-<td align="left">Completed in Mar 3, 2022</td>
-</tr>
-</tbody>
-</table>
-<h2 id="q-about-access-rights-for-each-directory-in-the-group-area">Q. About Access Rights for Each Directory in the Group Area</h2>
-<ul>
-<li>GPFS file systems assigned to the <strong>Old Areas</strong> <code>/groups[1-2]/gAA50NNN</code> and <code>/fs3/d00[1-2]/gAA50NNN/</code> are no longer accessible because data migration has been completed. </li>
-<li>These paths have been replaced with symlinks to the destination directories in the <strong>New Areas</strong> after all data in the respective <strong>Old Areas</strong> have been migrated, and the same paths as before are accessible. </li>
-<li>Access Rights of the paths replaced with symlinks from <strong>Old Areas</strong> after the Data Migration task is completed</li>
-</ul>
-<table>
-<thead>
-<tr>
-<th align="left">Paths</th>
-<th align="left">Read</th>
-<th align="left">Write</th>
-<th align="left">Delete</th>
-<th align="left">Reference to</th>
-<th align="left">Remarks</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td align="left"><code>/groups[1-2]/gAA50NNN/</code></td>
-<td align="left">Yes</td>
-<td align="left">Yes</td>
-<td align="left">Yes</td>
-<td align="left"><code>/groups/gAA50NNN/migrated_from_SFA_GPFS/</code></td>
-<td align="left"></td>
-</tr>
-<tr>
-<td align="left"><code>/fs3/d001/gAA50NNN/</code></td>
-<td align="left">Yes</td>
-<td align="left">Yes</td>
-<td align="left">Yes</td>
-<td align="left"><code>/projects/d001/gAA50NNN/migrated_from_SFA_GPFS/</code></td>
-<td align="left"></td>
-</tr>
-<tr>
-<td align="left"><code>/fs3/d002/gAA50NNN/</code></td>
-<td align="left">Yes</td>
-<td align="left">Yes</td>
-<td align="left">Yes</td>
-<td align="left"><code>/projects/datarepository/gAA50NNN/migrated_from_SFA_GPFS3/</code><sup id="fnref4:1"><a class="footnote-ref" href="#fn:1">1</a></sup></td>
-<td align="left"></td>
-</tr>
-<tr>
-<td align="left"><code>/groups1/gAA50NNN/</code></td>
-<td align="left">Yes</td>
-<td align="left">Yes</td>
-<td align="left">Yes</td>
-<td align="left"><code>/projects/datarepository/gAA50NNN/migrated_from_SFA_GPFS/</code><sup id="fnref3:1"><a class="footnote-ref" href="#fn:1">1</a></sup></td>
-<td align="left">for d002 users'</td>
-</tr>
-</tbody>
-</table>
-<ul>
-<li>Access Rights of the directories in <strong>New Area</strong> after the Data Migration task is completed</li>
-</ul>
-<table>
-<thead>
-<tr>
-<th align="left">Directories</th>
-<th align="left">Read</th>
-<th align="left">Write</th>
-<th align="left">Delete</th>
-<th align="left">Descriptions</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td align="left"><code>/groups/gAA50NNN/</code></td>
-<td align="left">Yes</td>
-<td align="left">Yes</td>
-<td align="left">Yes</td>
-<td align="left">New Area</td>
-</tr>
-<tr>
-<td align="left"><code>/groups/gAA50NNN/migrated_from_SFA_GPFS/</code></td>
-<td align="left">Yes</td>
-<td align="left">Yes</td>
-<td align="left">Yes</td>
-<td align="left">Destination from the Old Area</td>
-</tr>
-<tr>
-<td align="left"><code>/projects/d001/gAA50NNN/</code></td>
-<td align="left">Yes</td>
-<td align="left">Yes</td>
-<td align="left">Yes</td>
-<td align="left">New Area for d001 users</td>
-</tr>
-<tr>
-<td align="left"><code>/projects/d001/gAA50NNN/migrated_from_SFA_GPFS/</code></td>
-<td align="left">Yes</td>
-<td align="left">Yes</td>
-<td align="left">Yes</td>
-<td align="left">Destination from <code>/fs3/d001/gAA500NNN</code></td>
-</tr>
-<tr>
-<td align="left"><code>/projects/datarepository/gAA50NNN/</code></td>
-<td align="left">Yes</td>
-<td align="left">Yes</td>
-<td align="left">Yes</td>
-<td align="left">New Area for d002 users</td>
-</tr>
-<tr>
+<td align="left">d002 users'<br/><code>/groups[1-2]/gAA50NNN/</code></td>
 <td align="left"><code>/projects/datarepository/gAA50NNN/migrated_from_SFA_GPFS/</code><sup id="fnref2:1"><a class="footnote-ref" href="#fn:1">1</a></sup></td>
-<td align="left">Yes</td>
-<td align="left">Yes</td>
-<td align="left">Yes</td>
-<td align="left">Destination from <code>/groups1/gAA500NNN</code> for d002 users</td>
 </tr>
 <tr>
+<td align="left">others'<br/><code>/groups[1-2]/gAA50NNN/</code></td>
+<td align="left"><code>/groups/gAA50NNN/migrated_from_SFA_GPFS/</code></td>
+</tr>
+<tr>
+<td align="left"><code>/fs3/d001/gAA50NNN/</code></td>
+<td align="left"><code>/projects/d001/gAA50NNN/migrated_from_SFA_GPFS/</code></td>
+</tr>
+<tr>
+<td align="left"><code>/fs3/d002/gAA50NNN/</code></td>
 <td align="left"><code>/projects/datarepository/gAA50NNN/migrated_from_SFA_GPFS3/</code><sup id="fnref:1"><a class="footnote-ref" href="#fn:1">1</a></sup></td>
-<td align="left">Yes</td>
-<td align="left">Yes</td>
-<td align="left">Yes</td>
-<td align="left">Destination from <code>/fs3/d002/gAA500NNN</code></td>
 </tr>
 </tbody>
 </table>
@@ -1951,7 +1648,7 @@ After June 28, 2021, the relationship was changed as follows. </p>
 <hr />
 <ol>
 <li id="fn:1">
-<p>As <code>/fs3/d002</code> users have multiple migration sources, there are two migration destination directories, <code>migrated_from_SFA_GPFS/</code> and <code>migrated_from_SFA_GPFS3/</code> .&#160;<a class="footnote-backref" href="#fnref:1" title="Jump back to footnote 1 in the text">&#8617;</a><a class="footnote-backref" href="#fnref2:1" title="Jump back to footnote 1 in the text">&#8617;</a><a class="footnote-backref" href="#fnref3:1" title="Jump back to footnote 1 in the text">&#8617;</a><a class="footnote-backref" href="#fnref4:1" title="Jump back to footnote 1 in the text">&#8617;</a><a class="footnote-backref" href="#fnref5:1" title="Jump back to footnote 1 in the text">&#8617;</a><a class="footnote-backref" href="#fnref6:1" title="Jump back to footnote 1 in the text">&#8617;</a></p>
+<p>As <code>/fs3/d002</code> users have multiple migration sources, there are two migration destination directories, <code>migrated_from_SFA_GPFS/</code> and <code>migrated_from_SFA_GPFS3/</code> .&#160;<a class="footnote-backref" href="#fnref:1" title="Jump back to footnote 1 in the text">&#8617;</a><a class="footnote-backref" href="#fnref2:1" title="Jump back to footnote 1 in the text">&#8617;</a></p>
 </li>
 </ol>
 </div>
