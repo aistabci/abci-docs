@@ -1,6 +1,14 @@
 # System Updates
 
-## 2022-04-11 (future update)
+## 2022-04-06 (future update)
+
+| Add / Update / Delete | Software | Version | Previous version |
+|:--|:--|:--|:--|
+| Update | Scality S3 Connector | 8.5.2.2 | 7.4.9.3 |
+| Update | SingularityPRO | 3.9-4 | 3.7-4 |
+| Add | Singularity CLI | 0.0.4 | |
+| Update | DDN Lustre (Compute Node (V)) | 2.12.6_ddn58-1 | 2.12.5_ddn13-1 |
+| Update | OFED (Compute Node (V)) | 5.2-1.0.4.0 | 5.0-2.1.8.0 |
 
 * Maximum reserved node time per reservation of compute node (V) will be changed in the Reserved Service from 12,288 to 13,056.
 * Maximum reserved nodes per reservation of compute node (A) will be changed in the Reserved Service from 16 to 18.

@@ -1,6 +1,14 @@
 # システム更新履歴
 
-## 2022-04-11 更新予定
+## 2022-04-06 更新予定
+
+| Add / Update / Delete | Software | Version | Previous version |
+|:--|:--|:--|:--|
+| Update | Scality S3 Connector | 8.5.2.2 | 7.4.9.3 |
+| Update | SingularityPRO | 3.9-4 | 3.7-4 |
+| Add | Singularity CLI | 0.0.4 | |
+| Update | DDN Lustre (計算ノード(V)) | 2.12.6_ddn58-1 | 2.12.5_ddn13-1 |
+| Update | OFED (計算ノード(V)) | 5.2-1.0.4.0 | 5.0-2.1.8.0 |
 
 * Reservedサービスにおいて計算ノード(V)の1予約あたりの最大予約ノード時間積を12,288から13,056に変更予定です。
 * Reservedサービスにおいて計算ノード(A)の1予約あたりの最大予約ノード数を16から18に変更予定です。
