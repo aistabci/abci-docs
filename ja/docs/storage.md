@@ -88,16 +88,6 @@ stripe_count:  4 stripe_size:   1048576 stripe_offset: 10
 
 ### inode使用率の確認方法 {#how-to-check-inode-usage}
 
-グループ領域は、複数のストレージ領域から構成されており、ABCIグループ毎に属しているMDTが決められています。ABCIグループが属しているMDTはABCIグループ名の下一桁の数字によって決められています。
-
-|  ABCIグループ名の下一桁  |  属しているMDT |
-|  :----: |  :----:  |
-|  0 または 5  |  MDT:0  |
-|  1 または 6  |  MDT:1  |
-|  2 または 7  |  MDT:2  |
-|  3 または 8  |  MDT:3  |
-|  4 または 9  |  MDT:4  |
-
 MDTではファイルのinode情報を格納していますが、MDT毎に格納できるinode数の上限があり、各MDTで現在どの程度inodeが使用されているかは`lfs df -i` コマンドで確認
 することが可能です。
 コマンドの出力結果のうち、`/groups[MDT:?]`の行に記載されている`IUse%`の項目が各MDTにおけるinodeの使用率となります。<br>
@@ -113,6 +103,17 @@ groups-MDT0003_UUID   3110850464  1356224703  1754625761  44% /groups[MDT:3]
 groups-MDT0004_UUID   3110850464   402932004  2707918460  13% /groups[MDT:4]
 groups-MDT0005_UUID   3110850464         433  3110850031   1% /groups[MDT:5]
 (snip)
+````
+
+なお、ABCIグループが使用しているMDTは以下のコマンドで確認することができます。
+````
+[username@es1 ~]$ ls -d /groups/?/(ABCIグループ名)
+/groups/(MDT番号)/(ABCIグループ名)
+````
+以下の例の場合、MDT:0を使用しています。
+````
+[username@es1 ~]$ ls -d /groups/?/gaa00000
+/groups/0/gaa00000
 ````
 
 ## グローバルスクラッチ領域 {#scratch-area}
