@@ -365,123 +365,14 @@ source ${MODULE_HOME}/etc/profile.d/modules.csh
 2021年度に、ストレージシステムの増強を行いました。詳細は[ストレージシステム](https://docs.abci.ai/ja/01/#storage-systems)を参照ください。
 ストレージシステムの増強にともないグループ領域の構成を変更し、2020年度まで使用していたグループ領域(以下、**旧領域**)のデータを新しいグループ領域(以下、**新領域**)へ移行しました。
 
-2021年5月に新規導入された計算資源([計算ノード(A)](#q-what-is-the-difference-between-compute-node-a-and-compute-node-v))からは**旧領域**にアクセスすることができません。このため、**旧領域**上のデータを計算ノード(A)を含むすべての計算ノードおよびインタラクティブノードからアクセス可能な**新領域**にコピーしました。その後、**旧領域**と同じパスでアクセスできるように、従来のパスは**新領域**内の移行先へのシンボリックリンクに置き換えられました。
+**旧領域**内のデータは下記の移行先ディレクトリにコピーされ、従来のパスでアクセスできるように、移行元に割り当てられていたパスは**新領域**内の移行先へのシンボリックリンクに置き換えられました。
 
-2020年度まで**旧領域**`/groups[1-2]/gAA50NNN/`を利用していたグループには、4月から新しく**新領域**`/groups/gAA50NNN/`を割り当てています。
-また、**旧領域**`/fs3/`を利用していた一部のグループには、2021年7月中旬から**新領域**`/projects/`を割り当てています。
-
-なお、2021年度以降に新規に作成されたABCIグループについては、**新領域**のみが割り当てられるためデータ移行の対象ではなく、データ移行の影響を受けません。
-
-!!! Note
-	**旧領域**から**新領域**へのデータ移行は2022年3月3日に完了しました。<br>
-	**旧領域**`/groups1/`、`/groups2/`および`/fs3/`へのパスは**新領域**内の移行先ディレクトリへのシンボリックリンクに置き換わっています。
-
-**旧領域**のデータは下記の移行先ディレクトリにコピーしました。
-
-| 移行元                                | 移行先                                                           | 備考         |
-|:--                                    |:--                                                               |:--           |
-| d002利用者の<br/>`/groups1/gAA50NNN/` | `/projects/datarepository/gAA50NNN/migrated_from_SFA_GPFS/`[^1]  | 移行作業完了 |
-| その他の<br/>`/groups1/gAA50NNN/`     | `/groups/gAA50NNN/migrated_from_SFA_GPFS/`                       | 移行作業完了 |
-| `/groups2/gAA50NNN/`                  | `/groups/gAA50NNN/migrated_from_SFA_GPFS/`                       | 移行作業完了 |
-| `/fs3/d001/gAA50NNN/`                 | `/projects/d001/gAA50NNN/migrated_from_SFA_GPFS/`                | 移行作業完了 |
-| `/fs3/d002/gAA50NNN/`                 | `/projects/datarepository/gAA50NNN/migrated_from_SFA_GPFS3/`[^1] | 移行作業完了 |
+| 移行元                                | 移行先                                                           |
+|:--                                    |:--                                                               |
+| d002利用者の<br/>`/groups[1-2]/gAA50NNN/` | `/projects/datarepository/gAA50NNN/migrated_from_SFA_GPFS/`[^1]  |
+| その他の<br/>`/groups[1-2]/gAA50NNN/` | `/groups/gAA50NNN/migrated_from_SFA_GPFS/`                       |
+| `/fs3/d001/gAA50NNN/`                 | `/projects/d001/gAA50NNN/migrated_from_SFA_GPFS/`                |
+| `/fs3/d002/gAA50NNN/`                 | `/projects/datarepository/gAA50NNN/migrated_from_SFA_GPFS3/`[^1] |
 
 [^1]: `/fs3/d002`利用者は移行元が複数あるため移行先のディレクトリが `migrated_from_SFA_GPFS/`と`migrated_from_SFA_GPFS3/`に別れています。
-
-データ移行作業には以下のコマンドを実行しました。
-
-```
-# rsync -avH /{Old Area}/gAA50NNN/  /{New Area}/gAA50NNN/migrated_from_SFA_GPFS/
-```
-
-データ移行後に確認のため以下のコマンドを実行しました。
-
-```
-# rsync -avH --delete /{Old Area}/gAA50NNN/  /{New Area}/gAA50NNN/migrated_from_SFA_GPFS/
-```
-
-### 新領域について
-
-* データコピーにともないディスク使用量が増加します。このため、移行期間中は、利用者ポータルで申請したグループディスク量(以下、クォータ値)の2倍の値を、**新領域**のディスク使用量上限値に設定しています。移行完了後、一定の[猶予期間](#after-the-data-migration-completed)を設けて、**新領域**のディスク使用量上限値を、クォータ値と同じ値に設定します。
-
-
-### 旧領域について
-
-* 2022年3月3日、**旧領域**から**新領域**へのデータ移行が完了しました。
-* データ移行の完了にともない、**旧領域**に割り当てられていたGPFSファイルシステム上の`/groups[1-2]/gAA50NNN`および`/fs3/d00[1-2]/gAA50NNN`にはアクセスできません。
-* **旧領域**に割り当てられていた場所は、**新領域**内の移行先へのシンボリックリンクに置き換えられているので、従来と同じパスでアクセスできます。
-* データの保存には新領域を利用してください。
-
-
-## Q. クォータ値とディスク使用量上限値の関係が知りたい {#q-about-the-quota-value-and-the-limit-of-the-storage-usage}
-
-### データ移行中
-
-データ移行前は、クォータ値(利用者ポータルで申請したグループディスク量)とディスク使用量上限値(show_quotaコマンドで「limit」と表示される値)は同一に設定されていましたが、データ移行開始後に変更しました。
-2021年6月27日まではクォータ値を**旧領域**のディスク使用量上限値として設定し、クォータ値の2倍の値を**新領域**のディスク使用量上限値として設定していました。
-2021年6月28日以降、クォータ値の変更申請と**旧領域**のディスク使用量上限値の関係を以下のとおり変更しました。
-
-#### クォータ値の増量申請
-
-* クォータ値の増量を申請しても、**旧領域**のディスク使用量上限値は増えません。
-* **新領域**(/groups/gAA50NNN)のディスク使用量上限値は、「それまでに設定されていた値」と「新しいグループディスク量の2倍」のいずれか多い方に設定されます。
-
-#### クォータ値の減量申請
-
-* クォータ値の減量を申請した場合は、**旧領域**の利用量(show_quotaコマンドで「used」と表示される値)が新しいクォータ値より少ない場合のみ減量できます。
-* クォータ値の減量申請が受理された後、**旧領域**のディスク使用量上限値はクォータ値と同じ値に設定されます。
-* **新領域**のディスク使用量上限値は減りません。
-
-グループディスクの利用で消費するABCIポイントは従来同様、クォータ値（利用者ポータルで申請したグループディスク量）をもとに計算されます。
-
-### データ移行完了後 {#after-the-data-migration-completed}
-
-データ移行期間中は、クォータ値（利用者ポータルで申請したグループディスク量）の2倍（またはそれ以上の）値を、**新領域**のディスク使用量上限値に設定していました。
-**データ移行完了後、一定の猶予期間を設けて、新領域のディスク使用量上限値を、クォータ値と同じ値に戻します。**
-
-猶予期間は以下の通りです。猶予期間を過ぎた後、**新領域**の利用量(show_quotaコマンドで「used」と表示される値)がクォータ値より多い場合、書き込みができなくなります。
-不要なファイルを削除するか、[ABCI利用者ポータル](https://portal.abci.ai/user/)から「利用グループ管理」の一覧画面を開き、「グループディスクの追加申請」を行ってください。
-
-| グループ領域         | 猶予期間            |
-| --                   | --                  |
-| `/groups1/gAA50NNN/` | 2022年2月28日に終了 |
-| `/groups2/gAA50NNN/` | 2021年9月30日に終了 |
-| `/fs3`               | 2022年3月20日まで   |
-
-
-## Q. グループ領域のデータ移行状況が知りたい {#q-sbout-the-status-of-the-data-migration-task}
-
-2022年3月3日、2020年度まで使用していたグループ領域から新しいグループ領域へのデータ移行は完了しました。
-
-| グループ領域         | 状況                 |
-| --                   | --                   |
-| `/groups1/gAA50NNN/` | 2021年11月26日に完了 |
-| `/groups2/gAA50NNN/` | 2021年 7月 1日に完了 |
-| `/fs3`               | 2022年 3月 3日に完了 |
-
-
-## Q. グループ領域のアクセス権限が知りたい {#q-about-access-rights-for-each-directory-in-the-group-area}
-
-* データ移行が完了したため、**旧領域**`/groups[1-2]/gAA50NNN`および`/fs3/d00[1-2]/gAA50NNN/`に割り当てられていた GPFS ファイルシステムにはアクセスできません。
-* これらのパスは、それぞれの**旧領域**内の全データが移行完了後、**新領域**内の移行先ディレクトリへのシンボリックリンクに置き換えられ、従来と同じパスでアクセス可能です。
-* 移行作業完了後、**旧領域**からシンボリックリンクに置き換えられたパスのアクセス権
-
-| パス                     | 読み取り | 書き込み | 削除 | 参照先                                                           | 備考 |
-|:--                       |:--       |:--       |:--   |:--                                                               |:--   |
-| `/groups[1-2]/gAA50NNN/` | Yes      | Yes      | Yes  | `/groups/gAA50NNN/migrated_from_SFA_GPFS/`                       |      |
-| `/fs3/d001/gAA50NNN/`    | Yes      | Yes      | Yes  | `/projects/d001/gAA50NNN/migrated_from_SFA_GPFS/`                |      |
-| `/fs3/d002/gAA50NNN/`    | Yes      | Yes      | Yes  | `/projects/datarepository/gAA50NNN/migrated_from_SFA_GPFS3/`[^1] |      |
-| `/groups1/gAA50NNN/`     | Yes      | Yes      | Yes  | `/projects/datarepository/gAA50NNN/migrated_from_SFA_GPFS/`[^1]  | d002利用者向け |
-
-* 移行作業完了後の**新領域**ディレクトリのアクセス権
-
-| ディレクトリ                                                     | 読み取り | 書き込み | 削除 | 説明                          |
-|:--                                                               |:--       |:--       |:--   |:--                            |
-| `/groups/gAA50NNN/`                                              | Yes      | Yes      | Yes  | 新領域                        |
-| `/groups/gAA50NNN/migrated_from_SFA_GPFS/`                       | Yes      | Yes      | Yes  | 旧領域ファイルからの移行先    |
-| `/projects/d001/gAA50NNN/`                                       | Yes      | Yes      | Yes  | d001利用者向けの新領域        |
-| `/projects/d001/gAA50NNN/migrated_from_SFA_GPFS/`                | Yes      | Yes      | Yes  | `/fs3/d001/gAA500NNN`の移行先 |
-| `/projects/datarepository/gAA50NNN/`                             | Yes      | Yes      | Yes  | d002利用者向けの新領域        |
-| `/projects/datarepository/gAA50NNN/migrated_from_SFA_GPFS/`[^1]  | Yes      | Yes      | Yes  | d002利用者の`/groups1/gAA500NNN`の移行先 |
-| `/projects/datarepository/gAA50NNN/migrated_from_SFA_GPFS3/`[^1] | Yes      | Yes      | Yes  | `/fs3/d002/gAA500NNN`の移行先 |
 
