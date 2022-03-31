@@ -6,7 +6,7 @@
 |:--|:--|:--|:--|
 | Update | Scality S3 Connector | 8.5.2.2 | 7.4.9.3 |
 | Update | SingularityPRO | 3.9-4 | 3.7-4 |
-| Add | Singularity CLI | 0.0.4 | |
+| Add | Singularity Enterprise CLI | 0.0.4 | |
 | Update | DDN Lustre (Compute Node (V)) | 2.12.6_ddn58-1 | 2.12.5_ddn13-1 |
 | Update | OFED (Compute Node (V)) | 5.2-1.0.4.0 | 5.0-2.1.8.0 |
 
