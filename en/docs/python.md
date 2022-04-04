@@ -117,6 +117,11 @@ Example) Deactivating a virtual environment
 [username@es1 ~]$
 ```
 
+!!! note
+    Since the OS and software configuration are different between compute nodes (V) and compute nodes (A),thus the virtual environment built in compute node (V) is not be available for compute node (A) in most cases.
+    Similarly, the virtual environment built on compute node (A) is not be available on compute node (V) in most cases.<br>
+    Therefore, please note that the virtual environment for compute nodes (V) should be built on compute node(V)(or interactive node (es)) and the virtual environment for compute node (A) should be built on the compute node (A) (or interactive node (es-a)).
+
 ## pip
 
 [pip](https://pip.pypa.io/en/stable/) in the package management system for Python. You can use pip to install packages from [the Python Pakcage Index (PyPI)](https://pypi.org/), a repository of Python software.

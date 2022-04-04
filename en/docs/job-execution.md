@@ -451,6 +451,9 @@ During job execution, the following environment variables are available for the 
 | SGE\_TASK\_LAST     | Task number of the last array job task |
 | SGE\_TASK\_STEPSIZE | Step size of the array job |
 
+!!! warning
+    Environment variables JOB\_ID and SGE\_TASK\_ID are reserved variables in the job scheduler and should not be changed in the job because they may affect the job scheduler's behavior.
+
 ## Advance Reservation
 
 In the case of Reserved service, job execution can be scheduled by reserving compute node in advance.
