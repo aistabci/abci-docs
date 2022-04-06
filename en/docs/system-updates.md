@@ -6,8 +6,8 @@
 |:--|:--|:--|:--|
 | Update | Scality S3 Connector | 8.5.2.2 | 7.4.9.3 |
 | Update | SingularityPRO | 3.9-4 | 3.7-4 |
-| Update | DDN Lustre (計算ノード(V)) | 2.12.6_ddn58-1 | 2.12.5_ddn13-1 |
-| Update | OFED (計算ノード(V)) | 5.2-1.0.4.0 | 5.0-2.1.8.0 |
+| Update | DDN Lustre (Compute node (V)) | 2.12.6_ddn58-1 | 2.12.5_ddn13-1 |
+| Update | OFED (Compute node (V)) | 5.2-1.0.4.0 | 5.0-2.1.8.0 |
 | Update | gcc | 11.2.0 | 9.3.0 |
 | Delete | gcc | 7.4.0 | |
 | Update | intel | 2022.0.2 | 2020.4.304 |
@@ -46,6 +46,7 @@
 | Update | fuse-sshfs | 3.7.2 | 3.7.1 |
 | Update | f3fs-fuse | 1.91 | 1.87 |
 | Delete | sregistory-cli | 0.2.36 | |
+| Update | NVIDIA Tesla Driver | [510.47.03](https://docs.nvidia.com/datacenter/tesla/tesla-release-notes-517-47-03/index.html) | 470.57.02 |
 
 * Maximum reserved node time per reservation of compute node (V) is changed in the Reserved Service from 12,288 to 13,056.
 * Maximum reserved nodes per reservation of compute node (A) is changed in the Reserved Service from 16 to 18.

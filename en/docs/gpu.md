@@ -24,9 +24,9 @@ The following is a list of CUDA Toolkit, cuDNN, and NCCL that can be used with t
 | cuda/9.0 | 9.0.176.1   | Yes | Yes | -   |
 | cuda/9.1 | 9.1.85.3    | Yes | Yes | -   |
 | cuda/9.2 | 9.2.148.1   | Yes | Yes | -   |
-| cuda/10.0 | 10.0.130.1 | Yes | Yes | Yes |
-| cuda/10.1 | 10.1.243   | Yes | Yes | Yes |
-| cuda/10.2 | 10.2.89    | Yes | Yes | Yes |
+| cuda/10.0 | 10.0.130.1 | Yes | Yes | Yes[^1] |
+| cuda/10.1 | 10.1.243   | Yes | Yes | Yes[^1] |
+| cuda/10.2 | 10.2.89    | Yes | Yes | Yes[^1] |
 | cuda/11.0 | 11.0.3     | Yes | Yes | Yes |
 | cuda/11.1 | 11.1.1     | Yes | Yes | Yes |
 | cuda/11.2 | 11.2.2     | Yes | Yes | Yes |
@@ -34,6 +34,8 @@ The following is a list of CUDA Toolkit, cuDNN, and NCCL that can be used with t
 | cuda/11.4 | 11.4.4     | Yes | Yes | Yes |
 | cuda/11.5 | 11.5.2     | Yes | Yes | Yes |
 | cuda/11.6 | 11.6.2     | Yes | Yes | Yes |
+
+[^1]: Provided only for experimental use. NVIDIA A100 is supported on CUDA 11＋.
 
 ## cuDNN
 
@@ -55,7 +57,7 @@ Compute Node (V):
 
 Compute Node (A):
 
-| Version | cuda/10.0 | cuda/10.1 | cuda/10.2 | cuda/11.0 | cuda/11.1 | cuda/11.2 | cuda/11.3 | cuda/11.4 | cuda/11.5 | cuda/11.6 |
+| Version | cuda/10.0[^1] | cuda/10.1[^1] | cuda/10.2[^1] | cuda/11.0 | cuda/11.1 | cuda/11.2 | cuda/11.3 | cuda/11.4 | cuda/11.5 | cuda/11.6 |
 |:--|:--|:--|:--|:--|:--|:--|:--|:--|:--|:--|
 | 7.3.1  | Yes | -   | -   | -   | -   | -   | -   | -   | -   | -   |
 | 7.4.2  | Yes | -   | -   | -   | -   | -   | -   | -   | -   | -   |
@@ -84,7 +86,7 @@ Compute Node (V):
 
 Compute Node (A):
 
-| Version | cuda/9.2 | cuda/10.0 | cuda/10.1 | cuda/10.2 | cuda/11.0 | cuda/11.1 | cuda/11.2 | cuda/11.3 | cuda/11.4 | cuda/11.5 | cuda/11.6 |
+| Version | cuda/9.2[^1] | cuda/10.0[^1] | cuda/10.1[^1] | cuda/10.2[^1] | cuda/11.0 | cuda/11.1 | cuda/11.2 | cuda/11.3 | cuda/11.4 | cuda/11.5 | cuda/11.6 |
 |:--|:--|:--|:--|:--|:--|:--|:--|:--|:--|:--|:--|
 | 2.4.8-1  | Yes | Yes | Yes | -   | -   | -   | -   | -   | -   | -   | -   |
 | 2.5.6-1  | -   | Yes | Yes | Yes | -   | -   | -   | -   | -   | -   | -   |

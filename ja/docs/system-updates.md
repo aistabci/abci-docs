@@ -46,6 +46,7 @@
 | Update | fuse-sshfs | 3.7.2 | 3.7.1 |
 | Update | f3fs-fuse | 1.91 | 1.87 |
 | Delete | sregistory-cli | 0.2.36 | |
+| Update | NVIDIA Tesla Driver | [510.47.03](https://docs.nvidia.com/datacenter/tesla/tesla-release-notes-517-47-03/index.html) | 470.57.02 |
 
 * Reservedサービスにおいて計算ノード(V)の1予約あたりの最大予約ノード時間積を12,288から13,056に変更しました。
 * Reservedサービスにおいて計算ノード(A)の1予約あたりの最大予約ノード数を16から18に変更しました。
