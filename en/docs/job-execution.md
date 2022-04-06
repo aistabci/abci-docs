@@ -452,7 +452,7 @@ During job execution, the following environment variables are available for the 
 | SGE\_TASK\_STEPSIZE | Step size of the array job |
 
 !!! warning
-    Environment variables JOB\_ID and SGE\_TASK\_ID are reserved variables in the job scheduler and should not be changed in the job because they may affect the job scheduler's behavior.
+    Do not change these environment variables in a job because they are reserved by the job scheduler and may affect the job scheduler's behavior.
 
 ## Advance Reservation
 
@@ -465,8 +465,8 @@ The maximum number of nodes and the node-time product that can be reserved for t
 | Minimum reservation days | 1 day | 1 day |
 | Maximum reservation days | 30 days | 30 days |
 | Maximum number of nodes can be reserved at once per system | 442 nodes | 50 nodes |
-| Maximum reserved nodes per reservation | 34 nodes | 16 nodes |
-| Maximum reserved node time per reservation | 12,288 node x hour | 6,144 node x hour |
+| Maximum reserved nodes per reservation | 34 nodes | 18 nodes |
+| Maximum reserved node time per reservation | 13,056 node x hour | 6,912 node x hour |
 | Start time of accept reservation | 10:00 a.m. of 30 days ago | 10:00 a.m. of 30 days ago |
 | Closing time of accept reservation | 9:00 p.m. of Start reservation of the day before | 9:00 p.m. of Start reservation of the day before |
 | Canceling reservation accept term | 9:00 p.m. of Start reservation of the day before | 9:00 p.m. of Start reservation of the day before |

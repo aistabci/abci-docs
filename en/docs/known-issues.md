@@ -2,7 +2,7 @@
 
 | date | category | content | status |
 |:--|:--|:--|:--|
-| 2022/04/06 | Job | After the last maintenance, we have confirmed that the reservations that had been acquired before the maintenance has been erased. | We are currently investigating this issue and please do not use the reservation which will start after the next maintenance period until the incident is resolved. |
+| 2022/04/06 | Job | Because of a job scheduler problem, we have confirmed that the reserved service reservation disappears when the system stops. <br> Please refrain from making reservations for the post-maintenance period until the incident is resolved. | 2022/04/06 <br> Problem is being fixed. |
 | 2022/01/21 | Application | A known issue has been identified that the execution of vtune using intel-vtune/2020.3 module fails on the compute node (A). | 2022/01/21<br>The issue is expected to be resolved with Intel VTune update.<br>The update is scheduled for maintenance in April. |
 | 2021/12/17 | Application | A known issue has been identified that the execution of distributed deep learning using pytorch and NCCL fails on the compute node (A).<br>To avoid this issue, set the following environment variable in your job script.<br>NCCL_IB_DISABLE=1 | 2022/03/03<br>Close. An update to OFED has resolved the issue. |
 | 2021/10/19 | MPI | In OpenMPI 3.1.6 on the compute node (V), we have confirmed that when the -mca pml cm flag is specified in the mpirun command, processing stops and does not proceed in MPI_Send/MPI_Recv. | OpenMPI 3 is no longer supported, so please use OpenMPI 4. |
