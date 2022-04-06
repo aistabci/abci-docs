@@ -189,6 +189,7 @@ In addition, the following options can be used as extended options:
 | -l USE\_BEEOND=*1*<br>-v BEEOND\_METADATA\_SERVER=*num*<br>-v BEEOND\_STORAGE\_SERVER=*num* | Submit a job with using BeeGFS On Demand (BeeOND). See [Using as a BeeOND storage](storage.md#beeond-storage) for details. |
 | -v GPU\_COMPUTE\_MODE=*mode* | Change GPU Compute Mode. See [Changing GPU Compute Mode](gpu.md#changing-gpu-compute-mode) for details. |
 | -l docker<br>-l docker\_images | Submit a job with a Docker container. See [Docker](containers.md#docker) for details. |
+| -l USE_EXTRA_NETWORK=1 | To allow a calculation node assigned to a job not to be a minimum hop configuration. If this option is specified for a job with a short execution time, depending on the availability of computing resources, the job may be started earlier than when it was not specified, but communication performance may deteriorate. |
 
 ## Interactive Jobs
 

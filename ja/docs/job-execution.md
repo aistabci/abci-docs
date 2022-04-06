@@ -189,6 +189,7 @@ Reservedサービスでは、インタラクティブジョブ、バッチジョ
 | -l USE\_BEEOND=*1*<br>-v BEEOND\_METADATA\_SERVER=*num*<br>-v BEEOND\_STORAGE\_SERVER=*num* | BeeGFS On Demand (BeeOND)を利用するジョブの投入。詳細は[BeeONDストレージ利用](storage.md#beeond-storage)を参照。 |
 | -v GPU\_COMPUTE\_MODE=*mode* | 計算ノードのGPU Compute Modeの変更。詳細は[GPU Compute Modeの変更](gpu.md#changing-gpu-compute-mode)を参照。 |
 | -l docker<br>-l docker\_images | Dockerを利用するジョブの投入。詳細は[Docker](containers.md#docker)を参照。 |
+| -l USE_EXTRA_NETWORK=1 | ジョブに割り当てる計算ノードが最小ホップ構成とならないことを許容する。<br>実行時間が短いジョブで本オプションを指定した場合、計算資源の空き状況によっては未指定時より早くジョブを開始できる場合があるが、通信性能が劣化する可能性がある。 |
 
 ## インタラクティブジョブ {#interactive-jobs}
 
