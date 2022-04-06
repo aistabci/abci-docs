@@ -24,6 +24,7 @@
 | Update | intel-itac | 2021.5.0 | 2020.0.3 |
 | Update | intel-mkl | 2022.0.0 | 2020.0.4 |
 | Update | intel-vtune | 2022.0.0 | 2020.3 |
+| Add | python | 3.10.4 | |
 | Update | python | 3.7.13 | 3.7.10 |
 | Update | python | 3.8.13 | 3.8.7 |
 | Delete | python | 3.6.12 | |
