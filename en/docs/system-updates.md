@@ -51,6 +51,7 @@
 * Maximum reserved node time per reservation of compute node (V) is changed in the Reserved Service from 12,288 to 13,056.
 * Maximum reserved nodes per reservation of compute node (A) is changed in the Reserved Service from 16 to 18.
 * Maximum reserved node time per reservation of compute node (A) is changed in the Reserved Service from 6,144 to 6,912.
+* The installation of Singularity Enterprise CLI has been postponed.
 
 ## 2022-03-03 
 
