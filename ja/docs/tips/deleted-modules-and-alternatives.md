@@ -1,12 +1,23 @@
 
 # 2022年度に提供を停止したモジュールとその代替手段 
 
-* 2022年度の開始にあたり、ABCIで提供しているモジュールの再構成を行なった。
-* 再構成にあたり、サポートが終了したソフトウェアをEnvironment Modulesから削除した。
-* 削除したモジュールは以下の通り
-  * nvhpc(NVidia HPC SDKが正式名称), lua, mvapich2, cuda-aware-mpi, hadoop, spark, sregistry-cli
-* ここでは削除したモジュールをSingularityコンテナとして実行する方法、および、ホームディレクトリ下にインストールして利用する方法を説明する。
-* インストールパスは適宜変更すること。
+2022年度の開始にあたり、ABCIで提供しているモジュールの再構成を行いました。
+再構成によりサポートが終了したソフトウェアをEnvironment Modulesから削除しました。
+
+削除したモジュールは以下の通りです。
+
+|                                                         | モジュール名  |
+| ------------------------------------------------------- | ------------- |
+| [NVIDIA HPC SDK](#nvidia-hpc-sdk)                       | nvhpc         |
+| [Lua](#lua)                                             | lua           |
+| [MVAPICH2](#mvapich2)                                   | mvapich2      |
+| [CUDA-aware Open MPI](#cuda-aware-open-mpi)             | openmpi       |
+| [Apache Hadoop](#apache-hadoop)                         | hadoop        |
+| [Apache Spark](#apache-spark)                           | spark         |
+| [Singularity Global Client](#singularity-global-client) | sregistry-cli |
+
+ここでは削除したモジュールをSingularityコンテナとして実行する方法、および、ホームディレクトリ下にインストールして利用する方法を説明します。
+インストールパスは適宜変更してください。
 
 <!--
 - curlなのかwgetなのか統一するべき、ここではwgetを使う.
@@ -15,11 +26,11 @@
 - PATHを設定するところまでやろう。
 -->
 
-## NVIDIA HPC SDK
+## NVIDIA HPC SDK {#nvidia-hpc-sdk}
 
-* NVIDIA HPC SDKはNVIDIA NGCで提供されているイメージが利用できる。
-* Singularityを利用してCUDAプログラムのビルドおよび実行例を示す。
-* コンテナイメージのバージョンは適宜変更すること。
+NVIDIA HPC SDKはNVIDIA NGCで提供されている[コンテナ](https://catalog.ngc.nvidia.com/orgs/nvidia/containers/nvhpc)を利用します。
+Singularityを使用してCUDAプログラムのビルドおよび実行手順を説明します。
+なお、コンテナイメージのバージョンは適宜変更してください。
 
 <!-- 22.3 がでてるcuda 11.6, 11.0, 10.2用のイメージがある.-->
 
@@ -27,7 +38,7 @@
 
 ```
 [username@es1 ~]$ module load singularitypro
-[username@es1 ~]$ singularity pull docker://nvcr.io/nvidia/nvhpc:22.1-devel-cuda11.5-ubuntu20.04
+[username@es1 ~]$ singularity pull docker://nvcr.io/nvidia/nvhpc:22.3-devel-cuda11.6-ubuntu20.04
 ```
 
 CUDAプログラムのビルド:
@@ -39,7 +50,6 @@ CUDAサンプルっぽいのだけど、どこで用意するのかの指示が�
 
 ```
 [username@es1 ~]$ ls
-nvhpc_22.1-devel-cuda11.5-ubuntu20.04.sif 
 [username@es1 ~]$ singularity shell --nv nvhpc_22.1-devel-cuda11.5-ubuntu20.04.sif
 Singularity> export CUDA_PATH=/opt/nvidia/hpc_sdk/Linux_x86_64/22.1/cuda
 Singularity> make
@@ -52,16 +62,15 @@ Singularity> make
  -->
 
 ```
-[username@es1 ~]$ singularity pull docker://nvcr.io/nvidia/nvhpc:22.1-runtime-cuda11.5-ubuntu20.04
+[username@es1 ~]$ singularity pull docker://nvcr.io/nvidia/nvhpc:22.3-runtime-cuda11.6-ubuntu20.04
 [username@es1 ~]$ ls
-nvhpc_22.1-devel-cuda11.5-ubuntu20.04.sif nvhpc_22.1-runtime-cuda11.5-ubuntu20.04.sif
 [username@es1 ~]$ singularity run --nv nvhpc_22.1-runtime-cuda11.5-ubuntu20.04.sif bandwidthTest
 ```
 
-## Lua
+## Lua {#lua}
 
-* Luaはソースからビルドして利用できる。
-* インストール先はどう指定する?
+Luaはソースからインストールして利用します。
+ここでは `$HOME/apps/lua` 以下にインストールします。
 
 ```
 [username@es1 ~]$ wget http://www.lua.org/ftp/lua-5.4.4.tar.gz
@@ -72,10 +81,10 @@ nvhpc_22.1-devel-cuda11.5-ubuntu20.04.sif nvhpc_22.1-runtime-cuda11.5-ubuntu20.0
 Lua 5.4.4  Copyright (C) 1994-2022 Lua.org, PUC-Rio
 ```
 
-## MVAPICH2
+## MVAPICH2 {#mvapich2}
 
-* MVAPICH2はソースからビルドして利用できる。
-* ここでは `$HOME/apps/mvapich2` 以下にインストールする。
+MVAPICH2はソースからインストールして利用します。
+ここでは `$HOME/apps/mvapich2` 以下にインストールします。
 
 ```
 [username@es1 ~]$ wget http://mvapich.cse.ohio-state.edu/download/mvapich/mv2/mvapich2-2.3.6.tar.gz
@@ -86,11 +95,11 @@ Lua 5.4.4  Copyright (C) 1994-2022 Lua.org, PUC-Rio
 [username@es1 ~]$ make install
 ```
 
-## CUDA-aware Open MPI
+## CUDA-aware Open MPI {#cuda-aware-open-mpi}
 
-* CUDA-aware Open MPIはソースからビルドして利用できる。
-* ここでは `$HOME/apps/openmpi` 以下にインストールする。
-* 利用したいCUDAバージョンは適宜変更すること。ここではcuda 11.6を使用する。 
+CUDA-aware Open MPIはソースからインストールして利用します。
+ここでは `$HOME/apps/openmpi` 以下にインストールします。
+利用したいCUDAバージョンは適宜変更してください。ここではCUDA 11.6を使用します。
 
 <!-- 
 - cuda 11.6でいいかね?
@@ -106,10 +115,10 @@ Lua 5.4.4  Copyright (C) 1994-2022 Lua.org, PUC-Rio
 [username@es1 ~]$ make install
 ```
 
-## Apache Hadoop
+## Apache Hadoop {#apache-hadoop}
 
-* Apache Hadoopはビルド済みのバイナリをダウンロードし利用する。
-* ここでは `$HOME/apps/hadoop` 以下にインストールする。
+Apache Hadoopはビルド済みのバイナリをダウンロードし利用します。
+ここでは `$HOME/apps/hadoop` 以下にインストールします。
 
 <!--
 - PATHを使う方法に変更する。
@@ -123,10 +132,10 @@ Lua 5.4.4  Copyright (C) 1994-2022 Lua.org, PUC-Rio
 [username@es1 ~]$ bin/hadoop version
 ```
 
-## Apache Spark
+## Apache Spark {#apache-spark}
 
-* Apache Sparkはビルド済みのバイナリをダウンロードし利用する。
-* ここでは `$HOME/apps/spark` 以下にインストールする。
+Apache Sparkはビルド済みのバイナリをダウンロードし利用します。
+ここでは `$HOME/apps/spark` 以下にインストールします。
 
 ```
 [username@es1 ~]$ wget https://downloads.apache.org/spark/spark-3.2.1/spark-3.2.1-bin-hadoop3.2.tgz
@@ -135,12 +144,10 @@ Lua 5.4.4  Copyright (C) 1994-2022 Lua.org, PUC-Rio
 [username@es1 ~]$ ./bin/run-example SparkPi 10
 ```
 
-## Singularity Global Client
+## Singularity Global Client {#singularity-global-client}
 
-sregistry-cli
-
-* Singularity Global Clientはpipコマンドでインストールする
-* 仮想環境を `$HOME/venv/sregistry` に作成しSingularity Global Clientをインストールする。
+Singularity Global Clientはpipコマンドでインストールし利用します。
+ここでは仮想環境を `$HOME/venv/sregistry` に作成しSingularity Global Clientをインストールします。
 
 <!--
 - sregistry pullする際に umask 0022 する方法を説明する?
