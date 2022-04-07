@@ -44,7 +44,7 @@ g0001.abci.local
 
 Next, start Jupyter Notebook as follows:
 
-<div class="codehilite"><pre>
+```
 (jupyter_env) [username@g0001 ~]$ jupyter notebook --ip=`hostname` --port=8888 --no-browser
 :
 (snip)
@@ -55,9 +55,9 @@ Next, start Jupyter Notebook as follows:
     To access the notebook, open this file in a browser:
         file:///home/username/.local/share/jupyter/runtime/nbserver-xxxxxx-open.html
     Or copy and paste one of these URLs:
-        http://g0001.abci.local:8888/?token=<i>token_string</i>
-     or http://127.0.0.1:8888/?token=<i>token_string</i>
-</pre></div>
+        http://g0001.abci.local:8888/?token=token_string
+     or http://127.0.0.1:8888/?token=token_string
+```
 
 ### Generate an SSH tunnel
 
@@ -65,17 +65,17 @@ Assume that the local PC port 100022 has been transferred to the interactive nod
 
 Next, create an SSH tunnel that forwards port 8888 on the local PC to port 8888 on the compute node. For "*g0001*", specify the host name of the compute node confirmed when starting Jupyter Notebook.
 
-<div class="codehilite"><pre>
-[yourpc ~]$ ssh -N -L 8888:<i>g0001</i>:8888 -l username -i /path/identity_file -p 10022 localhost
-</pre></div>
+```
+[yourpc ~]$ ssh -N -L 8888:g0001:8888 -l username -i /path/identity_file -p 10022 localhost
+```
 
 ### Connect to Jupyter Notebook
 
 Open the following URL in a browser. For "*token_string*", specify the one displayed when starting Jupyter Notebook.
 
-<div class="codehilite"><pre>
-http://127.0.0.1:8888/?token=<i>token_string</i>
-</pre></div>
+```
+http://127.0.0.1:8888/?token=token_string
+```
 
 To check the operation, when the dashboard screen of Jupyter Notebook is displayed in the browser, create a new Python3 Notebook from the `New` button and execute it as follows.
 
@@ -131,7 +131,7 @@ g0001.abci.local
 
 Next, start Jupyter Notebook in the container image as shown below:
 
-<div class="codehilite"><pre>
+```
 [username@g0001 ~]$ module load singularitypro
 [username@g0001 ~]$ singularity run --nv ./tensorflow_19.07-py3.sif jupyter notebook --ip=`hostname` --port=8888 --no-browser
 
@@ -155,8 +155,8 @@ Copyright 2017-2019 The TensorFlow Authors.  All rights reserved.
     To access the notebook, open this file in a browser:
         file:///home/username/.local/share/jupyter/runtime/nbserver-xxxxxx-open.html
     Or copy and paste one of these URLs:
-        http://hostname:8888/?token=<i>token_string</i>
-</pre></div>
+        http://hostname:8888/?token=token_string
+```
 
 The subsequent steps are the same as for [Using Pip Install](using-pip-install).
 

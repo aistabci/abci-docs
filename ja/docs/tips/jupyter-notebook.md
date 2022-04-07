@@ -43,7 +43,7 @@ g0001.abci.local
 
 続いて、以下のようにJupyter Notebookを起動します。
 
-<div class="codehilite"><pre>
+```
 (jupyter_env) [username@g0001 ~]$ jupyter notebook --ip=`hostname` --port=8888 --no-browser
 :
 (snip)
@@ -54,9 +54,9 @@ g0001.abci.local
     To access the notebook, open this file in a browser:
         file:///home/username/.local/share/jupyter/runtime/nbserver-xxxxxx-open.html
     Or copy and paste one of these URLs:
-        http://g0001.abci.local:8888/?token=<i>token_string</i>
-     or http://127.0.0.1:8888/?token=<i>token_string</i>
-</pre></div>
+        http://g0001.abci.local:8888/?token=token_string
+     or http://127.0.0.1:8888/?token=token_string
+```
 
 ### SSHトンネルの作成 {#generate-an-ssh-tunnel}
 
@@ -64,17 +64,17 @@ ABCIシステム利用環境の[SSHクライアントによるログイン::一�
 
 次に、ローカルPCの8888番ポートを計算ノードの8888番ポートに転送するSSHトンネルを作成します。「*g0001*」は、Jupyter Notebookの起動の際に確認した計算ノードのホスト名を指定してください。
 
-<div class="codehilite"><pre>
-[yourpc ~]$ ssh -N -L 8888:<i>g0001</i>:8888 -l username -i /path/identity_file -p 10022 localhost
-</pre></div>
+```
+[yourpc ~]$ ssh -N -L 8888:g0001:8888 -l username -i /path/identity_file -p 10022 localhost
+```
 
 ### Jupyter Notebookへの接続 {#connect-to-jupyter-notebook}
 
 ブラウザで以下のURLを開きます。「*token_string*」は、Jupyter Notebookの起動の際に表示されたものを指定してください。
 
-<div class="codehilite"><pre>
-http://127.0.0.1:8888/?token=<i>token_string</i>
-</pre></div>
+```
+http://127.0.0.1:8888/?token=token_string
+```
 
 動作確認するには、ブラウザにJupyter Notebookのダッシュボード画面が表示されたら、`New`ボタンから新しいPython3 Notebookを作成し、以下のように実行します。
 
@@ -130,7 +130,7 @@ g0001.abci.local
 
 続いて、以下のようにコンテナイメージの中のJupyter Notebookを起動します。
 
-<div class="codehilite"><pre>
+```
 [username@g0001 ~]$ module load singularitypro
 [username@g0001 ~]$ singularity run --nv ./tensorflow_19.07-py3.sif jupyter notebook --ip=`hostname` --port=8888 --no-browser
                                                                                                                           
@@ -153,8 +153,8 @@ Copyright 2017-2019 The TensorFlow Authors.  All rights reserved.
     To access the notebook, open this file in a browser:
         file:///home/username/.local/share/jupyter/runtime/nbserver-xxxxxx-open.html
     Or copy and paste one of these URLs:
-        http://hostname:8888/?token=<i>token_string</i>
-</pre></div>
+        http://hostname:8888/?token=token_string
+```
 
 以降の手順はpipインストールの場合と共通です。
 
