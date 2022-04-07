@@ -1176,6 +1176,11 @@ python/2.7/2.7.18 python/3.6/3.6.12  python/3.7/3.7.10  python/3.8/3.8.7
 <p>On ABCI, <code>virtualenv</code> and <code>venv</code> modules provide support for creating lightweight "virtual environments" with their own site directories, optionally isolated from system site directories.
 Each virtual environment has its own Python binary (which matches the version of the binary that was used to create this environment) and can have its own independent set of installed Python packages in its site directories.</p>
 <p>Creating virtual environments, we use <code>virtualenv</code> for Python 2 and <code>venv</code> for Python 3, respectively.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The Python virtual environment is not compatible between compute nodes (V) and compute nodes (A) because the compute nodes (V) and compute nodes (A) have different OS and software configurations.
+Therefore, the virtual environment used in the compute node (V) must be built in the compute node (V) (or interactive node (es)), and the environment used in the compute node(A) must be built in the compute node (A) (or interactive node (es-a)).</p>
+</div>
 <h3 id="virtualenv">virtualenv</h3>
 <p>Below are examples of executing <code>virtualenv</code>:</p>
 <p>Example) Creation of a virtual environment</p>

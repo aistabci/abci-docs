@@ -1283,24 +1283,22 @@ To use the ABCI system, the "Responsible Person" must submit a new "ABCI applica
 <h4 id="general-method">General method</h4>
 <p>Login to the access server (<em>as.abci.ai</em>) with following command:</p>
 <p>Interactive Node (V)</p>
-<div class="codehilite"><pre>
-[yourpc ~]$ ssh -i /path/identity_file -L 10022:<i>es</i>:22 -l username <i>as.abci.ai</i>
-The authenticity of host 'as.abci.ai (0.0.0.1)' can't be established.
-RSA key fingerprint is XX:XX:XX:XX:XX:XX:XX:XX:XX:XX:XX:XX:XX:XX:XX:XX. <- Display only at the first login
-Are you sure you want to continue connecting (yes/no)? <- Enter "yes"
-Warning: Permanently added 'XX.XX.XX.XX' (RSA) to the list of known hosts.
-Enter passphrase for key '/path/identity_file': <- Enter passphrase
-</pre></div>
+<div class="codehilite"><pre><span></span><code><span class="p">[</span><span class="n">yourpc</span> <span class="o">~</span><span class="p">]</span><span class="o">$</span> <span class="n">ssh</span> <span class="o">-</span><span class="n">i</span> <span class="o">/</span><span class="n">path</span><span class="o">/</span><span class="n">identity_file</span> <span class="o">-</span><span class="n">L</span> <span class="m">10022</span><span class="o">:</span><span class="n">es</span><span class="o">:</span><span class="m">22</span> <span class="o">-</span><span class="n">l</span> <span class="n">username</span> <span class="n">as.abci.ai</span>
+<span class="n">The</span> <span class="n">authenticity</span> <span class="n">of</span> <span class="n">host</span> <span class="s">&#39;as.abci.ai (0.0.0.1)&#39;</span> <span class="n">can</span><span class="s">&#39;t be established.</span>
+<span class="s">RSA key fingerprint is XX:XX:XX:XX:XX:XX:XX:XX:XX:XX:XX:XX:XX:XX:XX:XX. &lt;- Display only at the first login</span>
+<span class="s">Are you sure you want to continue connecting (yes/no)? &lt;- Enter &quot;yes&quot;</span>
+<span class="s">Warning: Permanently added &#39;</span><span class="n">XX.XX.XX.XX</span><span class="s">&#39; (RSA) to the list of known hosts.</span>
+<span class="s">Enter passphrase for key &#39;</span><span class="o">/</span><span class="n">path</span><span class="o">/</span><span class="n">identity_file</span><span class="s">&#39;</span><span class="err">: &lt;- Enter passphrase</span>
+</code></pre></div>
 
 <p>Interactive Node (A)</p>
-<div class="codehilite"><pre>
-[yourpc ~]$ ssh -i /path/identity_file -L 10022:<i>es-a</i>:22 -l username <i>as.abci.ai</i>
-The authenticity of host 'as.abci.ai (0.0.0.1)' can't be established.
-RSA key fingerprint is XX:XX:XX:XX:XX:XX:XX:XX:XX:XX:XX:XX:XX:XX:XX:XX. <- Display only at the first login
-Are you sure you want to continue connecting (yes/no)?  <- yesを入力
-Warning: Permanently added ‘XX.XX.XX.XX' (RSA) to the list of known hosts.
-Enter passphrase for key '/path/identity_file': <- Enter "yes"
-</pre></div>
+<div class="codehilite"><pre><span></span><code><span class="p">[</span><span class="n">yourpc</span> <span class="o">~</span><span class="p">]</span><span class="o">$</span> <span class="n">ssh</span> <span class="o">-</span><span class="n">i</span> <span class="o">/</span><span class="n">path</span><span class="o">/</span><span class="n">identity_file</span> <span class="o">-</span><span class="n">L</span> <span class="m">10022</span><span class="o">:</span><span class="n">es</span><span class="o">-</span><span class="n">a</span><span class="o">:</span><span class="m">22</span> <span class="o">-</span><span class="n">l</span> <span class="n">username</span> <span class="n">as.abci.ai</span>
+<span class="n">The</span> <span class="n">authenticity</span> <span class="n">of</span> <span class="n">host</span> <span class="s">&#39;as.abci.ai (0.0.0.1)&#39;</span> <span class="n">can</span><span class="s">&#39;t be established.</span>
+<span class="s">RSA key fingerprint is XX:XX:XX:XX:XX:XX:XX:XX:XX:XX:XX:XX:XX:XX:XX:XX. &lt;- Display only at the first login</span>
+<span class="s">Are you sure you want to continue connecting (yes/no)?  &lt;- yesを入力</span>
+<span class="s">Warning: Permanently added ‘XX.XX.XX.XX&#39;</span> <span class="p">(</span><span class="n">RSA</span><span class="p">)</span> <span class="n">to</span> <span class="n">the</span> <span class="n">list</span> <span class="n">of</span> <span class="n">known</span> <span class="n">hosts.</span>
+<span class="n">Enter</span> <span class="n">passphrase</span> <span class="n">for</span> <span class="n">key</span> <span class="s">&#39;/path/identity_file&#39;</span><span class="o">:</span> <span class="o">&lt;-</span> <span class="n">Enter</span> <span class="s">&quot;yes&quot;</span>
+</code></pre></div>
 
 <p>Successfully logged in, the following message is shown on your terminal.</p>
 <div class="codehilite"><pre><span></span><code><span class="nv">Welcome</span> <span class="nv">to</span> <span class="nv">ABCI</span> <span class="nv">access</span> <span class="nv">server</span>.
@@ -1324,46 +1322,43 @@ Enter passphrase for key '/path/identity_file': <- Enter "yes"
 <h4 id="proxyjump">ProxyJump</h4>
 <p>You can log in to an interactive node with a single command using ProxyJump, which was introduced in OpenSSH version 7.3. ProxyJump can be used in Windows Subsystem for Linux (WSL) environment as well.</p>
 <p>First, add the following configuration to your <code>$HOME/.ssh/config</code>:</p>
-<div class="codehilite"><pre>
-Host <i>abci</i>
-     HostName <i>es</i>
-     User username
-     ProxyJump %r@<i>as.abci.ai</i>
-     IdentityFile /path/to/identity_file
-     HostKeyAlgorithms ssh-rsa
+<div class="codehilite"><pre><span></span><code><span class="k">Host</span><span class="w"> </span><span class="n">abci</span><span class="w"></span>
+<span class="w">     </span><span class="n">HostName</span><span class="w"> </span><span class="n">es</span><span class="w"></span>
+<span class="w">     </span><span class="k">User</span><span class="w"> </span><span class="n">username</span><span class="w"></span>
+<span class="w">     </span><span class="n">ProxyJump</span><span class="w"> </span><span class="o">%</span><span class="n">r</span><span class="nv">@as</span><span class="p">.</span><span class="n">abci</span><span class="p">.</span><span class="n">ai</span><span class="w"></span>
+<span class="w">     </span><span class="n">IdentityFile</span><span class="w"> </span><span class="o">/</span><span class="k">path</span><span class="o">/</span><span class="k">to</span><span class="o">/</span><span class="n">identity_file</span><span class="w"></span>
+<span class="w">     </span><span class="n">HostKeyAlgorithms</span><span class="w"> </span><span class="n">ssh</span><span class="o">-</span><span class="n">rsa</span><span class="w"></span>
 
-Host <i>abci-a</i>
-     HostName <i>es-a</i>
-     User username
-     ProxyJump %r@<i>as.abci.ai</i>
-     IdentityFile /path/to/identity_file
+<span class="k">Host</span><span class="w"> </span><span class="n">abci</span><span class="o">-</span><span class="n">a</span><span class="w"></span>
+<span class="w">     </span><span class="n">HostName</span><span class="w"> </span><span class="n">es</span><span class="o">-</span><span class="n">a</span><span class="w"></span>
+<span class="w">     </span><span class="k">User</span><span class="w"> </span><span class="n">username</span><span class="w"></span>
+<span class="w">     </span><span class="n">ProxyJump</span><span class="w"> </span><span class="o">%</span><span class="n">r</span><span class="nv">@as</span><span class="p">.</span><span class="n">abci</span><span class="p">.</span><span class="n">ai</span><span class="w"></span>
+<span class="w">     </span><span class="n">IdentityFile</span><span class="w"> </span><span class="o">/</span><span class="k">path</span><span class="o">/</span><span class="k">to</span><span class="o">/</span><span class="n">identity_file</span><span class="w"></span>
 
-Host <i>as.abci.ai</i>
-     IdentityFile /path/to/identity_file
-</pre></div>
+<span class="k">Host</span><span class="w"> </span><span class="k">as</span><span class="p">.</span><span class="n">abci</span><span class="p">.</span><span class="n">ai</span><span class="w"></span>
+<span class="w">     </span><span class="n">IdentityFile</span><span class="w"> </span><span class="o">/</span><span class="k">path</span><span class="o">/</span><span class="k">to</span><span class="o">/</span><span class="n">identity_file</span><span class="w"></span>
+</code></pre></div>
 
 <p>After that, you can log in with the following command only:</p>
-<div class="codehilite"><pre>
-[yourpc ~]$ ssh <i>abci</i>
-</pre></div>
+<div class="codehilite"><pre><span></span><code>[yourpc ~]$ ssh abci
+</code></pre></div>
 
 <p>ProxyJump does not work with OpenSSH_for_Windows_7.7p1 which is bundled with Windows 10 version 1803 and later. Use ProxyCommand instead. The following is an example of a config file using ProxyCommand. Please specify the absolute path for <code>ssh.exe</code>.</p>
-<div class="codehilite"><pre>
-Host <i>abci</i>
-     HostName <i>es</i>
-     User username
-     ProxyCommand C:\WINDOWS\System32\OpenSSH\ssh.exe -W %h:%p %r@<i>as.abci.ai</i>
-     IdentityFile C:\path\to\identity_file
+<div class="codehilite"><pre><span></span><code><span class="k">Host</span><span class="w"> </span><span class="n">abci</span><span class="w"></span>
+<span class="w">     </span><span class="n">HostName</span><span class="w"> </span><span class="n">es</span><span class="w"></span>
+<span class="w">     </span><span class="k">User</span><span class="w"> </span><span class="n">username</span><span class="w"></span>
+<span class="w">     </span><span class="n">ProxyCommand</span><span class="w"> </span><span class="nl">C</span><span class="p">:</span><span class="err">\</span><span class="n">WINDOWS</span><span class="err">\</span><span class="n">System32</span><span class="err">\</span><span class="n">OpenSSH</span><span class="err">\</span><span class="n">ssh</span><span class="p">.</span><span class="n">exe</span><span class="w"> </span><span class="o">-</span><span class="n">W</span><span class="w"> </span><span class="o">%</span><span class="nl">h</span><span class="p">:</span><span class="o">%</span><span class="n">p</span><span class="w"> </span><span class="o">%</span><span class="n">r</span><span class="nv">@as</span><span class="p">.</span><span class="n">abci</span><span class="p">.</span><span class="n">ai</span><span class="w"></span>
+<span class="w">     </span><span class="n">IdentityFile</span><span class="w"> </span><span class="nl">C</span><span class="p">:</span><span class="err">\</span><span class="k">path</span><span class="err">\</span><span class="k">to</span><span class="err">\</span><span class="n">identity_file</span><span class="w"></span>
 
-Host <i>abci-a</i>
-     HostName <i>es-a</i>
-     User username
-     ProxyCommand C:\WINDOWS\System32\OpenSSH\ssh.exe -W %h:%p %r@<i>as.abci.ai</i>
-     IdentityFile C:\path\to\identity_file
+<span class="k">Host</span><span class="w"> </span><span class="n">abci</span><span class="o">-</span><span class="n">a</span><span class="w"></span>
+<span class="w">     </span><span class="n">HostName</span><span class="w"> </span><span class="n">es</span><span class="o">-</span><span class="n">a</span><span class="w"></span>
+<span class="w">     </span><span class="k">User</span><span class="w"> </span><span class="n">username</span><span class="w"></span>
+<span class="w">     </span><span class="n">ProxyCommand</span><span class="w"> </span><span class="nl">C</span><span class="p">:</span><span class="err">\</span><span class="n">WINDOWS</span><span class="err">\</span><span class="n">System32</span><span class="err">\</span><span class="n">OpenSSH</span><span class="err">\</span><span class="n">ssh</span><span class="p">.</span><span class="n">exe</span><span class="w"> </span><span class="o">-</span><span class="n">W</span><span class="w"> </span><span class="o">%</span><span class="nl">h</span><span class="p">:</span><span class="o">%</span><span class="n">p</span><span class="w"> </span><span class="o">%</span><span class="n">r</span><span class="nv">@as</span><span class="p">.</span><span class="n">abci</span><span class="p">.</span><span class="n">ai</span><span class="w"></span>
+<span class="w">     </span><span class="n">IdentityFile</span><span class="w"> </span><span class="nl">C</span><span class="p">:</span><span class="err">\</span><span class="k">path</span><span class="err">\</span><span class="k">to</span><span class="err">\</span><span class="n">identity_file</span><span class="w"></span>
 
-Host <i>as.abci.ai</i>
-     IdentityFile C:\path\to\identity_file
-</pre></div>
+<span class="k">Host</span><span class="w"> </span><span class="k">as</span><span class="p">.</span><span class="n">abci</span><span class="p">.</span><span class="n">ai</span><span class="w"></span>
+<span class="w">     </span><span class="n">IdentityFile</span><span class="w"> </span><span class="nl">C</span><span class="p">:</span><span class="err">\</span><span class="k">path</span><span class="err">\</span><span class="k">to</span><span class="err">\</span><span class="n">identity_file</span><span class="w"></span>
+</code></pre></div>
 
 <h2 id="file-transfer-to-interactive-node">File Transfer to Interactive Node</h2>
 <p>When you transfer files between your computer and the ABCI system, create an SSH tunnel and run the <code>scp</code> (<code>sftp</code>) command.</p>
@@ -1374,9 +1369,8 @@ Host <i>as.abci.ai</i>
 </code></pre></div>
 
 <p>If you have OpenSSH 7.3 or later and already added the configuration to your <code>$HOME/.ssh/config</code> as described at <a href="#proxyjump">ProxyJump</a>, you can directly run the <code>scp</code> (<code>sftp</code>) command.</p>
-<div class="codehilite"><pre>
-[yourpc ~]$ scp local-file <i>abci</i>:remote-dir
-</pre></div>
+<div class="codehilite"><pre><span></span><code>[yourpc ~]$ scp local-file abci:remote-dir
+</code></pre></div>
 
 <h2 id="changing-password">Changing Password</h2>
 <p>The user accounts of the ABCI system are managed by the LDAP.
@@ -1397,7 +1391,7 @@ To change your password, use the <code>passwd</code> command.</p>
 <ul>
 <li>Specify a character string with more than 15 characters arranged randomly. For example, words in Linux dictionary cannot be used. We recommend generating it automatically by using password creation software.</li>
 <li>Should contain all character types of lower-case letters, upper-case letters, numeric characters, and special characters.</li>
-<li>As special charaters, the following 33 types of characters can be used: (blank) ! " # $ % &amp; ' ( ) * + , - . / : ; &lt; = &gt; ? @ [ \ ] ^ _ ` { | } ~</li>
+<li>As special characters, the following 33 types of characters can be used: (blank) ! " # $ % &amp; ' ( ) * + , - . / : ; &lt; = &gt; ? @ [ \ ] ^ _ ` { | } ~</li>
 <li>Do not contain multi-byte characters.</li>
 </ul>
 </div>

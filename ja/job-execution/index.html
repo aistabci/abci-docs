@@ -1943,6 +1943,10 @@
 <td align="left">-l docker<br>-l docker_images</td>
 <td align="left">Dockerを利用するジョブの投入。詳細は<a href="../containers/#docker">Docker</a>を参照。</td>
 </tr>
+<tr>
+<td align="left">-l USE_EXTRA_NETWORK=1</td>
+<td align="left">ジョブに割り当てる計算ノードが最小ホップ構成とならないことを許容する。<br>実行時間が短いジョブで本オプションを指定した場合、計算資源の空き状況によっては未指定時より早くジョブを開始できる場合があるが、通信性能が劣化する可能性がある。</td>
+</tr>
 </tbody>
 </table>
 <h2 id="interactive-jobs">インタラクティブジョブ</h2>
@@ -2328,6 +2332,10 @@ module load cuda/9.2/9.2.88.1
 </tr>
 </tbody>
 </table>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>上記の環境変数については、ジョブスケジューラで予約された変数であり、ジョブスケジューラの動作に影響を与える可能性があるためジョブの中で変更しないようにしてください。</p>
+</div>
 <h2 id="advance-reservation">事前予約</h2>
 <p>Reservedサービスでは、計算ノードを事前に予約して計画的なジョブ実行が可能となります。</p>
 <p>本サービスで予約可能なノード数およびノード時間積は、以下表の「1予約あたりの最大予約ノード数」、「1予約あたりの最大予約ノード時間積」が上限です。また、本サービスでは、利用者は予約ノード数を上限とするジョブしか実行できません。なお、システム全体で「システムあたりの最大同時予約可能ノード数」に上限があるため、「1予約あたりの最大予約ノード数」を下回る予約しかできない場合や、予約自体ができない場合があります。予約した計算ノードにて<a href="#available-resource-types">各資源タイプ</a>が利用可能です。</p>
@@ -2358,12 +2366,12 @@ module load cuda/9.2/9.2.88.1
 <tr>
 <td align="left">1予約あたりの最大予約ノード数</td>
 <td align="left">34ノード</td>
-<td align="left">16ノード</td>
+<td align="left">18ノード</td>
 </tr>
 <tr>
 <td align="left">1予約あたりの最大予約ノード時間積</td>
-<td align="left">12,288ノード時間積</td>
-<td align="left">6,144ノード時間積</td>
+<td align="left">13,056ノード時間積</td>
+<td align="left">6,912ノード時間積</td>
 </tr>
 <tr>
 <td align="left">予約受付開始時刻</td>

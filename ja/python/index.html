@@ -1190,6 +1190,11 @@ python/2.7/2.7.18 python/3.6/3.6.12  python/3.7/3.7.10  python/3.8/3.8.7
 それぞれの仮想環境には、固有の (仮想環境を作成するのに使ったバイナリのバージョンと同一の) Pythonバイナリがあり、
 仮想環境ごとのsiteディレクトリに独立したPythonパッケージ群をインストールできます。</p>
 <p>仮想環境を構築するには、Python 2系では<code>virtualenv</code>、Python 3系では<code>venv</code>モジュールをそれぞれ利用します。</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>計算ノード(V)と計算ノード(A)ではOSおよびソフトウェア構成が異なるため、Python仮想環境に互換性はありません。<br>
+ そのため、計算ノード(V)で使用する仮想環境は計算ノード(V)(またはインタラクティブノード(es))で、計算ノード(A)で使用する環境は計算ノード(A)(またはインタラクティブノード(es-a))で構築する必要があります。</p>
+</div>
 <h3 id="virtualenv">virtualenv</h3>
 <p><code>virtualenv</code>の使用例を以下に示します。</p>
 <p>例) 仮想環境の作成</p>

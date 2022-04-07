@@ -1226,33 +1226,30 @@
 </code></pre></div>
 
 <p>続いて、以下のようにJupyter Notebookを起動します。</p>
-<div class="codehilite"><pre>
-(jupyter_env) [username@g0001 ~]$ jupyter notebook --ip=`hostname` --port=8888 --no-browser
-:
-(snip)
-:
-[I 20:41:12.082 NotebookApp] Use Control-C to stop this server and shut down all kernels (twice to skip confirmation).
-[C 20:41:12.090 NotebookApp]
+<div class="codehilite"><pre><span></span><code><span class="p">(</span><span class="n">jupyter_env</span><span class="p">)</span> <span class="err">[</span><span class="n">username</span><span class="nv">@g0001</span> <span class="o">~</span><span class="err">]</span><span class="n">$</span> <span class="n">jupyter</span> <span class="n">notebook</span> <span class="o">--</span><span class="n">ip</span><span class="o">=</span><span class="n n-Quoted">`hostname`</span> <span class="o">--</span><span class="k">port</span><span class="o">=</span><span class="mi">8888</span> <span class="o">--</span><span class="k">no</span><span class="o">-</span><span class="n">browser</span>
+<span class="o">:</span>
+<span class="p">(</span><span class="n">snip</span><span class="p">)</span>
+<span class="o">:</span>
+<span class="err">[</span><span class="n">I</span> <span class="mi">20</span><span class="o">:</span><span class="mi">41</span><span class="o">:</span><span class="mf">12.082</span> <span class="n">NotebookApp</span><span class="err">]</span> <span class="k">Use</span> <span class="n">Control</span><span class="o">-</span><span class="n">C</span> <span class="k">to</span> <span class="k">stop</span> <span class="n">this</span> <span class="k">server</span> <span class="k">and</span> <span class="n">shut</span> <span class="n">down</span> <span class="k">all</span> <span class="n">kernels</span> <span class="p">(</span><span class="n">twice</span> <span class="k">to</span> <span class="k">skip</span> <span class="n">confirmation</span><span class="p">).</span>
+<span class="err">[</span><span class="n">C</span> <span class="mi">20</span><span class="o">:</span><span class="mi">41</span><span class="o">:</span><span class="mf">12.090</span> <span class="n">NotebookApp</span><span class="err">]</span>
 
-    To access the notebook, open this file in a browser:
-        file:///home/username/.local/share/jupyter/runtime/nbserver-xxxxxx-open.html
-    Or copy and paste one of these URLs:
-        http://g0001.abci.local:8888/?token=<i>token_string</i>
-     or http://127.0.0.1:8888/?token=<i>token_string</i>
-</pre></div>
+    <span class="k">To</span> <span class="n">access</span> <span class="n">the</span> <span class="n">notebook</span><span class="p">,</span> <span class="k">open</span> <span class="n">this</span> <span class="k">file</span> <span class="k">in</span> <span class="n">a</span> <span class="n">browser</span><span class="o">:</span>
+        <span class="k">file</span><span class="o">:///</span><span class="n">home</span><span class="o">/</span><span class="n">username</span><span class="o">/</span><span class="p">.</span><span class="k">local</span><span class="o">/</span><span class="k">share</span><span class="o">/</span><span class="n">jupyter</span><span class="o">/</span><span class="n">runtime</span><span class="o">/</span><span class="n">nbserver</span><span class="o">-</span><span class="n">xxxxxx</span><span class="o">-</span><span class="k">open</span><span class="p">.</span><span class="n">html</span>
+    <span class="k">Or</span> <span class="n">copy</span> <span class="k">and</span> <span class="n">paste</span> <span class="k">one</span> <span class="k">of</span> <span class="n">these</span> <span class="n">URLs</span><span class="o">:</span>
+        <span class="n">http</span><span class="o">://</span><span class="n">g0001</span><span class="p">.</span><span class="n">abci</span><span class="p">.</span><span class="k">local</span><span class="o">:</span><span class="mi">8888</span><span class="o">/</span><span class="nv">?</span><span class="n">token</span><span class="o">=</span><span class="n">token_string</span>
+     <span class="k">or</span> <span class="n">http</span><span class="o">://</span><span class="mf">127.0.0.1</span><span class="o">:</span><span class="mi">8888</span><span class="o">/</span><span class="nv">?</span><span class="n">token</span><span class="o">=</span><span class="n">token_string</span>
+</code></pre></div>
 
 <h3 id="generate-an-ssh-tunnel">SSHトンネルの作成</h3>
 <p>ABCIシステム利用環境の<a href="../../getting-started/#general-method">SSHクライアントによるログイン::一般的なログイン方法</a>の手順に従い、ローカルPCの10022番ポートがインタラクティブノード(<em>es</em>)に転送されているものとします。</p>
 <p>次に、ローカルPCの8888番ポートを計算ノードの8888番ポートに転送するSSHトンネルを作成します。「<em>g0001</em>」は、Jupyter Notebookの起動の際に確認した計算ノードのホスト名を指定してください。</p>
-<div class="codehilite"><pre>
-[yourpc ~]$ ssh -N -L 8888:<i>g0001</i>:8888 -l username -i /path/identity_file -p 10022 localhost
-</pre></div>
+<div class="codehilite"><pre><span></span><code>[yourpc ~]$ ssh -N -L 8888:g0001:8888 -l username -i /path/identity_file -p 10022 localhost
+</code></pre></div>
 
 <h3 id="connect-to-jupyter-notebook">Jupyter Notebookへの接続</h3>
 <p>ブラウザで以下のURLを開きます。「<em>token_string</em>」は、Jupyter Notebookの起動の際に表示されたものを指定してください。</p>
-<div class="codehilite"><pre>
-http://127.0.0.1:8888/?token=<i>token_string</i>
-</pre></div>
+<div class="codehilite"><pre><span></span><code>http://127.0.0.1:8888/?token=token_string
+</code></pre></div>
 
 <p>動作確認するには、ブラウザにJupyter Notebookのダッシュボード画面が表示されたら、<code>New</code>ボタンから新しいPython3 Notebookを作成し、以下のように実行します。</p>
 <div class="codehilite"><pre><span></span><code><span class="kn">import</span> <span class="nn">tensorflow</span>
@@ -1294,31 +1291,30 @@ http://127.0.0.1:8888/?token=<i>token_string</i>
 </code></pre></div>
 
 <p>続いて、以下のようにコンテナイメージの中のJupyter Notebookを起動します。</p>
-<div class="codehilite"><pre>
-[username@g0001 ~]$ module load singularitypro
-[username@g0001 ~]$ singularity run --nv ./tensorflow_19.07-py3.sif jupyter notebook --ip=`hostname` --port=8888 --no-browser
+<div class="codehilite"><pre><span></span><code><span class="err">[</span><span class="n">username</span><span class="nv">@g0001</span> <span class="o">~</span><span class="err">]</span><span class="n">$</span> <span class="n">module</span> <span class="k">load</span> <span class="n">singularitypro</span>
+<span class="err">[</span><span class="n">username</span><span class="nv">@g0001</span> <span class="o">~</span><span class="err">]</span><span class="n">$</span> <span class="n">singularity</span> <span class="n">run</span> <span class="o">--</span><span class="n">nv</span> <span class="p">.</span><span class="o">/</span><span class="n">tensorflow_19</span><span class="mf">.07</span><span class="o">-</span><span class="n">py3</span><span class="p">.</span><span class="n">sif</span> <span class="n">jupyter</span> <span class="n">notebook</span> <span class="o">--</span><span class="n">ip</span><span class="o">=</span><span class="n n-Quoted">`hostname`</span> <span class="o">--</span><span class="k">port</span><span class="o">=</span><span class="mi">8888</span> <span class="o">--</span><span class="k">no</span><span class="o">-</span><span class="n">browser</span>
 
-================
-== TensorFlow ==
-================
+<span class="o">================</span>
+<span class="o">==</span> <span class="n">TensorFlow</span> <span class="o">==</span>
+<span class="o">================</span>
 
-NVIDIA Release 19.07 (build 7332442)
-TensorFlow Version 1.14.0
+<span class="n">NVIDIA</span> <span class="k">Release</span> <span class="mf">19.07</span> <span class="p">(</span><span class="n">build</span> <span class="mi">7332442</span><span class="p">)</span>
+<span class="n">TensorFlow</span> <span class="n">Version</span> <span class="mf">1.14.0</span>
 
-Container image Copyright (c) 2019, NVIDIA CORPORATION.  All rights reserved.
-Copyright 2017-2019 The TensorFlow Authors.  All rights reserved.
+<span class="n">Container</span> <span class="n">image</span> <span class="n">Copyright</span> <span class="p">(</span><span class="n">c</span><span class="p">)</span> <span class="mi">2019</span><span class="p">,</span> <span class="n">NVIDIA</span> <span class="n">CORPORATION</span><span class="p">.</span>  <span class="k">All</span> <span class="n">rights</span> <span class="n">reserved</span><span class="p">.</span>
+<span class="n">Copyright</span> <span class="mi">2017</span><span class="o">-</span><span class="mi">2019</span> <span class="n">The</span> <span class="n">TensorFlow</span> <span class="n">Authors</span><span class="p">.</span>  <span class="k">All</span> <span class="n">rights</span> <span class="n">reserved</span><span class="p">.</span>
 
-:
-(snip)
-:
-[I 13:40:14.131 NotebookApp] Use Control-C to stop this server and shut down all kernels (twice to skip confirmation).
-[C 13:40:14.138 NotebookApp]
+<span class="o">:</span>
+<span class="p">(</span><span class="n">snip</span><span class="p">)</span>
+<span class="o">:</span>
+<span class="err">[</span><span class="n">I</span> <span class="mi">13</span><span class="o">:</span><span class="mi">40</span><span class="o">:</span><span class="mf">14.131</span> <span class="n">NotebookApp</span><span class="err">]</span> <span class="k">Use</span> <span class="n">Control</span><span class="o">-</span><span class="n">C</span> <span class="k">to</span> <span class="k">stop</span> <span class="n">this</span> <span class="k">server</span> <span class="k">and</span> <span class="n">shut</span> <span class="n">down</span> <span class="k">all</span> <span class="n">kernels</span> <span class="p">(</span><span class="n">twice</span> <span class="k">to</span> <span class="k">skip</span> <span class="n">confirmation</span><span class="p">).</span>
+<span class="err">[</span><span class="n">C</span> <span class="mi">13</span><span class="o">:</span><span class="mi">40</span><span class="o">:</span><span class="mf">14.138</span> <span class="n">NotebookApp</span><span class="err">]</span>
 
-    To access the notebook, open this file in a browser:
-        file:///home/username/.local/share/jupyter/runtime/nbserver-xxxxxx-open.html
-    Or copy and paste one of these URLs:
-        http://hostname:8888/?token=<i>token_string</i>
-</pre></div>
+    <span class="k">To</span> <span class="n">access</span> <span class="n">the</span> <span class="n">notebook</span><span class="p">,</span> <span class="k">open</span> <span class="n">this</span> <span class="k">file</span> <span class="k">in</span> <span class="n">a</span> <span class="n">browser</span><span class="o">:</span>
+        <span class="k">file</span><span class="o">:///</span><span class="n">home</span><span class="o">/</span><span class="n">username</span><span class="o">/</span><span class="p">.</span><span class="k">local</span><span class="o">/</span><span class="k">share</span><span class="o">/</span><span class="n">jupyter</span><span class="o">/</span><span class="n">runtime</span><span class="o">/</span><span class="n">nbserver</span><span class="o">-</span><span class="n">xxxxxx</span><span class="o">-</span><span class="k">open</span><span class="p">.</span><span class="n">html</span>
+    <span class="k">Or</span> <span class="n">copy</span> <span class="k">and</span> <span class="n">paste</span> <span class="k">one</span> <span class="k">of</span> <span class="n">these</span> <span class="n">URLs</span><span class="o">:</span>
+        <span class="n">http</span><span class="o">://</span><span class="n">hostname</span><span class="o">:</span><span class="mi">8888</span><span class="o">/</span><span class="nv">?</span><span class="n">token</span><span class="o">=</span><span class="n">token_string</span>
+</code></pre></div>
 
 <p>以降の手順はpipインストールの場合と共通です。</p>
 <ul>

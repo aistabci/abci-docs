@@ -1174,16 +1174,14 @@
 <p>ABCIシステムのフロントエンドであるインタラクティブノード (代表ホスト名：<em>es</em>もしくは<em>es-a</em>) にログインするには、代理証明書を利用してHPCI 向けアクセスサーバ (ホスト名：<em>hpci.abci.ai</em>) にログインして、更に<code>ssh</code>コマンドを用いてインタラクティブノードにログインする必要があります。なお本章では、ABCIのサーバ名はフォントをイタリックで表記します。</p>
 <h3 id="linux-macos-environment">Linux / macOSなどの環境</h3>
 <p><code>gsissh</code>コマンドでHPCI向けアクセスサーバ(<em>hpci.abci.ai</em>)にログインします。</p>
-<div class="codehilite"><pre>
-[yourpc ~]$ gsissh -p 2222 <i>hpci.abci.ai</i>
-[username@hpci1 ~]$
-</pre></div>
+<div class="codehilite"><pre><span></span><code><span class="o">[</span><span class="n">yourpc ~</span><span class="o">]</span><span class="err">$</span><span class="w"> </span><span class="n">gsissh</span><span class="w"> </span><span class="o">-</span><span class="n">p</span><span class="w"> </span><span class="mi">2222</span><span class="w"> </span><span class="n">hpci</span><span class="p">.</span><span class="n">abci</span><span class="p">.</span><span class="n">ai</span><span class="w"></span>
+<span class="o">[</span><span class="n">username@hpci1 ~</span><span class="o">]</span><span class="err">$</span><span class="w"></span>
+</code></pre></div>
 
 <p>HPCI向けアクセスサーバにログイン後、<code>ssh</code>コマンドを用いてインタラクティブノードにログインします。</p>
-<div class="codehilite"><pre>
-[username@hpci1 ~]$ ssh <i>es</i>
-[username@es1 ~]$
-</pre></div>
+<div class="codehilite"><pre><span></span><code><span class="o">[</span><span class="n">username@hpci1 ~</span><span class="o">]</span><span class="err">$</span><span class="w"> </span><span class="n">ssh</span><span class="w"> </span><span class="n">es</span><span class="w"></span>
+<span class="o">[</span><span class="n">username@es1 ~</span><span class="o">]</span><span class="err">$</span><span class="w"></span>
+</code></pre></div>
 
 <h3 id="windows-environment-gsi-sshterm">Windows環境 (GSI-SSHTerm)</h3>
 <p>インタラクティブノードへのログインは、以下手順で実施します。</p>
@@ -1193,20 +1191,18 @@
 <li><code>ssh</code>コマンドを用いてインタラクティブノードへログイン</li>
 </ol>
 <p>HPCI向けアクセスサーバにログイン後、<code>ssh</code>コマンドを用いてインタラクティブノードにログインします。</p>
-<div class="codehilite"><pre>
-[username@hpci1 ~]$ ssh <i>es</i>
-[username@es1 ~]$
-</pre></div>
+<div class="codehilite"><pre><span></span><code><span class="o">[</span><span class="n">username@hpci1 ~</span><span class="o">]</span><span class="err">$</span><span class="w"> </span><span class="n">ssh</span><span class="w"> </span><span class="n">es</span><span class="w"></span>
+<span class="o">[</span><span class="n">username@es1 ~</span><span class="o">]</span><span class="err">$</span><span class="w"></span>
+</code></pre></div>
 
 <h2 id="file-transfer-to-interactive-node">インタラクティブノードへのファイル転送</h2>
 <p>HPCI向けアクセスサーバではホーム領域が共有されていません。
 そのため、インタラクティブノードへファイル転送をする場合、
 一旦HPCI向けアクセスサーバ(ホスト名：<em>hpci.abci.ai</em>)へファイル転送し、
 さらにインタラクティブノードへ<code>scp</code>(<code>sftp</code>)コマンドで転送してください。</p>
-<div class="codehilite"><pre>
-[username@hpci1 ~]$ scp local-file username@<i>es</i>:remote-dir
-local-file    100% |***********************|  file-size  transfer-time
-</pre></div>
+<div class="codehilite"><pre><span></span><code><span class="o">[</span><span class="n">username@hpci1 ~</span><span class="o">]</span><span class="err">$</span><span class="w"> </span><span class="n">scp</span><span class="w"> </span><span class="k">local</span><span class="o">-</span><span class="k">file</span><span class="w"> </span><span class="n">username</span><span class="nv">@es</span><span class="err">:</span><span class="n">remote</span><span class="o">-</span><span class="n">dir</span><span class="w"></span>
+<span class="k">local</span><span class="o">-</span><span class="k">file</span><span class="w">    </span><span class="mi">100</span><span class="o">%</span><span class="w"> </span><span class="o">|***********************|</span><span class="w">  </span><span class="k">file</span><span class="o">-</span><span class="k">size</span><span class="w">  </span><span class="n">transfer</span><span class="o">-</span><span class="nc">time</span><span class="w"></span>
+</code></pre></div>
 
 <p>HPCI向けアクセスサーバ用ホーム領域の使用状況と割り当て量を表示するには、
 <code>quota</code>コマンドを利用します。</p>

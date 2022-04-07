@@ -1162,16 +1162,14 @@
 <p>To login to the interactive node (<em>es</em> , <em>es-a</em>) as frontend, you need to login to the access server (<em>hpci.abci.ai</em>) with proxy certificate and then to login to the interactive node with the <code>ssh</code> command.</p>
 <h3 id="linux-macos-environment">Linux / macOS Environment</h3>
 <p>Login to the access server for HPCI (<em>hpci.abci.ai</em>) with the <code>gsissh</code> command.</p>
-<div class="codehilite"><pre>
-yourpc$ gsissh -p 2222 <i>hpci.abci.ai</i>
-[username@hpci1 ~]$
-</pre></div>
+<div class="codehilite"><pre><span></span><code><span class="n">yourpc</span><span class="err">$</span><span class="w"> </span><span class="n">gsissh</span><span class="w"> </span><span class="o">-</span><span class="n">p</span><span class="w"> </span><span class="mi">2222</span><span class="w"> </span><span class="n">hpci</span><span class="p">.</span><span class="n">abci</span><span class="p">.</span><span class="n">ai</span><span class="w"></span>
+<span class="o">[</span><span class="n">username@hpci1 ~</span><span class="o">]</span><span class="err">$</span><span class="w"></span>
+</code></pre></div>
 
 <p>After login to the access server for HPCI, login to the interactive node with the <code>ssh</code> command.</p>
-<div class="codehilite"><pre>
-[username@hpci1 ~]$ ssh <i>es</i>
-[username@es1 ~]$
-</pre></div>
+<div class="codehilite"><pre><span></span><code><span class="o">[</span><span class="n">username@hpci1 ~</span><span class="o">]</span><span class="err">$</span><span class="w"> </span><span class="n">ssh</span><span class="w"> </span><span class="n">es</span><span class="w"></span>
+<span class="o">[</span><span class="n">username@es1 ~</span><span class="o">]</span><span class="err">$</span><span class="w"></span>
+</code></pre></div>
 
 <h3 id="windows-environment-gsi-sshterm">Windows Environment (GSI-SSHTerm)</h3>
 <p>To login to the interactive node, the following procedure is necessary.</p>
@@ -1180,20 +1178,18 @@ yourpc$ gsissh -p 2222 <i>hpci.abci.ai</i>
 <li>Enter the access server for HPCI (<em>hpci.abci.ai</em>) and login</li>
 <li>Login to the interactive node with the <code>ssh</code> command</li>
 </ol>
-<p>After login to the accesss server for HPCI, login to the interactive node with the <code>ssh</code> command.</p>
-<div class="codehilite"><pre>
-[username@hpci1 ~]$ ssh <i>es</i>
-[username@es1 ~]$
-</pre></div>
+<p>After login to the access server for HPCI, login to the interactive node with the <code>ssh</code> command.</p>
+<div class="codehilite"><pre><span></span><code><span class="o">[</span><span class="n">username@hpci1 ~</span><span class="o">]</span><span class="err">$</span><span class="w"> </span><span class="n">ssh</span><span class="w"> </span><span class="n">es</span><span class="w"></span>
+<span class="o">[</span><span class="n">username@es1 ~</span><span class="o">]</span><span class="err">$</span><span class="w"></span>
+</code></pre></div>
 
 <h2 id="file-transfer-to-interactive-node">File Transfer to Interactive Node</h2>
 <p>The home area is not shared on the access server for HPCI.
 So, when transferring files between your PC and the ABCI system,
 transfer them to the access server (<em>hpci.abci.ai</em>) once, and then transfer them to the interactive node with the <code>scp</code> (<code>sftp</code>) command.</p>
-<div class="codehilite"><pre>
-[username@hpci1 ~]$ scp local-file username@<i>es</i>:remote-dir
-local-file    100% |***********************|  file-size  transfer-time
-</pre></div>
+<div class="codehilite"><pre><span></span><code><span class="o">[</span><span class="n">username@hpci1 ~</span><span class="o">]</span><span class="err">$</span><span class="w"> </span><span class="n">scp</span><span class="w"> </span><span class="k">local</span><span class="o">-</span><span class="k">file</span><span class="w"> </span><span class="n">username</span><span class="nv">@es</span><span class="err">:</span><span class="n">remote</span><span class="o">-</span><span class="n">dir</span><span class="w"></span>
+<span class="k">local</span><span class="o">-</span><span class="k">file</span><span class="w">    </span><span class="mi">100</span><span class="o">%</span><span class="w"> </span><span class="o">|***********************|</span><span class="w">  </span><span class="k">file</span><span class="o">-</span><span class="k">size</span><span class="w">  </span><span class="n">transfer</span><span class="o">-</span><span class="nc">time</span><span class="w"></span>
+</code></pre></div>
 
 <p>To display disk usage and quota about home area on the access server for HPCI,
 use the <code>quota</code> command.</p>

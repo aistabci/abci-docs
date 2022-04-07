@@ -1931,6 +1931,10 @@ The number of the submitted jobs to the reserved node is included in the number 
 <td align="left">-l docker<br>-l docker_images</td>
 <td align="left">Submit a job with a Docker container. See <a href="../containers/#docker">Docker</a> for details.</td>
 </tr>
+<tr>
+<td align="left">-l USE_EXTRA_NETWORK=1</td>
+<td align="left">To allow a calculation node assigned to a job not to be a minimum hop configuration. If this option is specified for a job with a short execution time, depending on the availability of computing resources, the job may be started earlier than when it was not specified, but communication performance may deteriorate.</td>
+</tr>
 </tbody>
 </table>
 <h2 id="interactive-jobs">Interactive Jobs</h2>
@@ -2309,6 +2313,10 @@ For more detail, use <code>man sge_accounting</code> command.</p>
 </tr>
 </tbody>
 </table>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Do not change these environment variables in a job because they are reserved by the job scheduler and may affect the job scheduler's behavior.</p>
+</div>
 <h2 id="advance-reservation">Advance Reservation</h2>
 <p>In the case of Reserved service, job execution can be scheduled by reserving compute node in advance.</p>
 <p>The maximum number of nodes and the node-time product that can be reserved for this service is "Maximum reserved nodes per reservation" and "Maximum reserved node time per reservation" in the following table. In addition, in this service, the user can only execute jobs with the maximum number of reserved nodes. Note that there is an upper limit on "Maximum number of nodes can be reserved at once per system" for the entire system, so you may only be able to make reservations that fall below "Maximum reserved nodes per reservation" or you may not be able to make reservations. <a href="#available-resource-types">Each resource types</a> are available for reserved compute nodes.</p>
@@ -2339,12 +2347,12 @@ For more detail, use <code>man sge_accounting</code> command.</p>
 <tr>
 <td align="left">Maximum reserved nodes per reservation</td>
 <td align="left">34 nodes</td>
-<td align="left">16 nodes</td>
+<td align="left">18 nodes</td>
 </tr>
 <tr>
 <td align="left">Maximum reserved node time per reservation</td>
-<td align="left">12,288 node x hour</td>
-<td align="left">6,144 node x hour</td>
+<td align="left">13,056 node x hour</td>
+<td align="left">6,912 node x hour</td>
 </tr>
 <tr>
 <td align="left">Start time of accept reservation</td>
