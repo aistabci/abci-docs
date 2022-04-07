@@ -43,6 +43,10 @@ Each virtual environment has its own Python binary (which matches the version of
 
 Creating virtual environments, we use `virtualenv` for Python 2 and `venv` for Python 3, respectively.
 
+!!! note
+    The Python virtual environment is not compatible between compute nodes (V) and compute nodes (A) because the compute nodes (V) and compute nodes (A) have different OS and software configurations.
+    Therefore, the virtual environment used in the compute node (V) must be built in the compute node (V) (or interactive node (es)), and the environment used in the compute node(A) must be built in the compute node (A) (or interactive node (es-a)).
+
 ### virtualenv
 
 Below are examples of executing `virtualenv`:
