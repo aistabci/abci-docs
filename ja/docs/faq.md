@@ -338,25 +338,31 @@ ABCIでは、計算ノード(A)向けのプログラム開発の利便性のた�
 インタラクティブノード(A)の詳細は、[インタラクティブノード](system-overview.md#interactive-node)を参照してください。
 
 
-## Q. ABCI 1.0 Environment Modulesを利用したい {#q-how-to-use-abci-10-environment-modules}
+## Q. 過去のABCI Environment Modulesを利用したい {#q-how-to-use-previous-abci-environment-modules}
 
-ABCIは、2021年5月にABCI 2.0にアップグレードされました。
-このアップグレードにともない、2020年度時点のEnvironment Modules(以下、**ABCI 1.0 Environment Modules**)を`/apps/modules-abci-1.0`としてインストールしました。
-ABCI 1.0 Environment Modulesを利用したい場合は、以下のように`MODULE_HOME`環境変数を設定し、設定ファイルを読み込んでください。
+ABCIでは、過去のEnvironment Modulesを提供しています。
+各年度でのEnvironment Modulesを以下にインストールしていますので、使用したい年度のパスを`MODULE_HOME`環境変数に設定し、設定ファイルを読み込んでください。
 
-なお、ABCI 1.0 Environment Modulesはサポート対象外です。あらかじめご了承ください。
+なお、これら過去のEnvironment Modulesはサポート対象外です。あらかじめご了承ください。
+
+| バージョン | インストールパス              |
+| ---------- | ----------------------------- |
+| 2020年度版 | `/apps/modules-abci-1.0`      |
+| 2021年度版 | `/apps/modules-abci-2.0-2021` |
+
+以下は2021年度版Environment Modulesを利用する例です。
 
 sh, bashの場合:
 
 ```
-export MODULE_HOME=/apps/modules-abci-1.0
+export MODULE_HOME=/apps/modules-abci-2.0-2021
 . ${MODULE_HOME}/etc/profile.d/modules.sh
 ```
 
 csh, tcshの場合:
 
 ```
-setenv MODULE_HOME /apps/modules-abci-1.0
+setenv MODULE_HOME /apps/modules-abci-2.0-2021
 source ${MODULE_HOME}/etc/profile.d/modules.csh
 ```
 
