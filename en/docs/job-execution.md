@@ -455,7 +455,7 @@ During job execution, the following environment variables are available for the 
 
 In the case of Reserved service, job execution can be scheduled by reserving compute node in advance.
 
-The maximum number of nodes and the node-time product that can be reserved for this service is "Maximum reserved nodes per reservation" and "Maximum reserved node time per reservtation" in the following table. In addition, in this service, the user can only execute jobs with the maximum number of reserved nodes. Note that there is an upper limit on "Maximum number of nodes can be reserved at once per system" for the entire system, so you may only be able to make reservations that fall below "Maximum reserved nodes per reservation" or you may not be able to make reservations. [Each resource types](#available-resource-types) are available for reserved compute nodes.
+The maximum number of nodes and the node-time product that can be reserved for this service is "Maximum reserved nodes per reservation" and "Maximum reserved node time per reservation" in the following table. In addition, in this service, the user can only execute jobs with the maximum number of reserved nodes. Note that there is an upper limit on "Maximum number of nodes can be reserved at once per system" for the entire system, so you may only be able to make reservations that fall below "Maximum reserved nodes per reservation" or you may not be able to make reservations. [Each resource types](#available-resource-types) are available for reserved compute nodes.
 
 | Item | Description: Compute Node (V) | Description: Compute Node (A) |
 |:--|:--|:--|
@@ -463,7 +463,7 @@ The maximum number of nodes and the node-time product that can be reserved for t
 | Maximum reservation days | 30 days | 30 days |
 | Maximum number of nodes can be reserved at once per system | 442 nodes | 50 nodes |
 | Maximum reserved nodes per reservation | 34 nodes | 16 nodes |
-| Maximum reserved node time per reservtation | 12,288 node x hour | 6,144 node x hour |
+| Maximum reserved node time per reservation | 12,288 node x hour | 6,144 node x hour |
 | Start time of accept reservation | 10:00 a.m. of 30 days ago | 10:00 a.m. of 30 days ago |
 | Closing time of accept reservation | 9:00 p.m. of Start reservation of the day before | 9:00 p.m. of Start reservation of the day before |
 | Canceling reservation accept term | 9:00 p.m. of Start reservation of the day before | 9:00 p.m. of Start reservation of the day before |

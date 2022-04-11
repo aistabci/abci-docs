@@ -1,11 +1,21 @@
 # System Updates
 
-## 2022-03-03 (future plans)
+## 2022-04-11 (future update)
+
+* Maximum reserved node time per reservation of compute node (V) will be changed in the Reserved Service from 12,288 to 13,056.
+* Maximum reserved nodes per reservation of compute node (A) will be changed in the Reserved Service from 16 to 18.
+* Maximum reserved node time per reservation of compute node (A) will be changed in the Reserved Service from 6,144 to 6,912.
+
+## 2022-03-03 
 
 | Add / Update / Delete | Software | Version | Previous version |
 |:--|:--|:--|:--|
 | Delete | hadoop | 3.3 | |
 | Delete | spark | 3.0 | |
+| Update | DDN Lustre (Compute Node (A)) | 2.12.6_ddn58-1 | 2.12.5_ddn13-1 |
+| Update | OFED (Compute Node (A)) | 5.2-1.0.4.0 | 5.1-0.6.6.0 |
+
+* One of [known issues](known-issues.md) has been resolved in this update.
 
 ## 2022-01-27
 

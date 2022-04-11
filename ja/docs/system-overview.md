@@ -148,17 +148,13 @@ ABCIシステムは、人工知能やビッグデータ応用に用いる大容�
 |:--|:--|:--|:--|:--|
 | ホーム領域 | /home | 1.0 PB | Lustre | [ホーム領域](storage.md#home-area)を参照 |
 | グループ領域 | /groups | 10.8 PB | Lustre | [グループ領域](storage.md#group-area)を参照 |
-| グループ領域1[^3] | /fs1 | 7.2 PB | GPFS | [グループ領域](storage.md#group-area)を参照 |
-| グループ領域2[^3] | /fs2 | 7.2 PB | GPFS | [グループ領域](storage.md#group-area)を参照 |
-| グループ領域3[^3] | /fs3 | 7.2 PB | GPFS | 特定用途に予約済みの領域 |
+| グループ領域 | /projects | 21.6 PB | Lustre | 特定用途に予約済みの領域 |
 | ABCIクラウドストレージ | | 最大13 PB | | [ABCIクラウドストレージ](abci-cloudstorage.md)を参照 |
 | 高速データ領域 | /bb | 0.3 PB | Lustre | 特定用途に予約済みの領域 |
 | グローバルスクラッチ領域 | /scratch | 0.4 PB | Lustre | [グローバルスクラッチ領域](storage.md#scratch-area)を参照 |
 
-[^3]: グループ領域1～3は 2021年度中に順次廃止されます。
 
 インタラクティブノード、計算ノード、メモリインテンシブノードは、共有ファイルシステムをマウントしており、利用者は共通のマウントポイントからこれらのファイルシステムにアクセスすることができます。
-但し、グループ領域1〜3[^3]は、計算ノード(A)からはアクセスできません。
 
 これ以外に、これらのノードはそれぞれローカルスクラッチ領域として利用可能なローカルストレージを搭載しています。以下に一覧を示します。
 
@@ -200,7 +196,7 @@ ABCIシステムで利用可能なソフトウェア一覧を以下に示しま�
 | | Julia | 1.0<br>1.5 | 1.0<br>1.5 |
 | | Hadoop | 3.3 | 3.3 |
 | | Spark | 3.0 | 3.0 |
-| File System | [DDN Lustre](storage.md#home-area) | 2.12.5\_ddn13-1 | 2.12.5\_ddn13-1 |
+| File System | [DDN Lustre](storage.md#home-area) | 2.12.5\_ddn13-1 | 2.12.6\_ddn58-1 |
 | | [DDN GRIDScaler](storage.md#group-area) | 4.2.3-20 | - |
 | | [BeeOND](storage.md#beeond-storage) | 7.2.3 | 7.2.3 |
 | Object Storage | Scality S3 Connector | 7.4.8.1 | 7.4.8.1 |
