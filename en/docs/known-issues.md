@@ -2,6 +2,7 @@
 
 | date | category | content | status |
 |:--|:--|:--|:--|
+| 2022/04/06 | Singularity | Among the Singularity Endpoint features, the remote build function is not available. Please do not use it.<br>Failure phenomenon:<br> When remote build (build --remote) is executed on the client side, the response from the Remote Builder is lost and the client is in a waiting state.<br>Alternative:<br> For the remote build function, please use Singularity's fakeroot as an alternative. | 2022/04/06 <br> Among the Singularity endpoint functions, Library and Keystore functions are available. Please use them. |
 | 2022/04/06 | Job | Because of a job scheduler problem, we have confirmed that the reserved service reservation disappears when the system stops. <br> Please refrain from making reservations for the post-maintenance period until the incident is resolved. | 2022/04/06 <br> Problem is being fixed. |
 | 2022/01/21 | Application | A known issue has been identified that the execution of vtune using intel-vtune/2020.3 module fails on the compute node (A). | 2022/04/06<br>This issue has been resolved with an Intel VTune update. |
 | 2021/12/17 | Application | A known issue has been identified that the execution of distributed deep learning using pytorch and NCCL fails on the compute node (A).<br>To avoid this issue, set the following environment variable in your job script.<br>NCCL_IB_DISABLE=1 | 2022/03/03<br>Close. An update to OFED has resolved the issue. |
