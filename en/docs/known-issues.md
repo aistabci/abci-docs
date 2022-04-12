@@ -2,7 +2,9 @@
 
 | date | category | content | status |
 |:--|:--|:--|:--|
-| 2022/01/21 | Application | A known issue has been identified that the execution of vtune using intel-vtune/2020.3 module fails on the compute node (A). | 2022/01/21<br>The issue is expected to be resolved with Intel VTune update.<br>The update is scheduled for maintenance in April. |
+| 2022/04/06 | Singularity | A known issue has been identified that the remote build feature of Singularity endpoints is not available.<br> As an alternative, please use the --fakeroot option to create container images.<br> Note that the Library and Keystore functions of Singularity endpoints are currently available. | 2022/04/06 <br> The issue is being investigated. |
+| 2022/04/06 | Job | Because of a job scheduler problem, we have confirmed that the reserved service reservation disappears when the system stops. <br> Please refrain from making reservations for the post-maintenance period until the incident is resolved. | 2022/04/06 <br> Problem is being fixed. |
+| 2022/01/21 | Application | A known issue has been identified that the execution of vtune using intel-vtune/2020.3 module fails on the compute node (A). | 2022/04/06<br>This issue has been resolved with an Intel VTune update. |
 | 2021/12/17 | Application | A known issue has been identified that the execution of distributed deep learning using pytorch and NCCL fails on the compute node (A).<br>To avoid this issue, set the following environment variable in your job script.<br>NCCL_IB_DISABLE=1 | 2022/03/03<br>Close. An update to OFED has resolved the issue. |
 | 2021/10/19 | MPI | In OpenMPI 3.1.6 on the compute node (V), we have confirmed that when the -mca pml cm flag is specified in the mpirun command, processing stops and does not proceed in MPI_Send/MPI_Recv. | OpenMPI 3 is no longer supported, so please use OpenMPI 4. |
 | 2021/07/06 | Singularity | The remote build function is not available due to a failure of the Remote Builder service. | 2021/07/21<br> close.<br>Resolved a communication problem in Remote Builder service. |

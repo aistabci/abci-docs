@@ -332,25 +332,31 @@ Please refer to the following for the proper use of Interactive Nodes:
 For more information on Interactive Node (A), see [Interactive Node](system-overview.md#interactive-node).
 
 
-## Q. How to use ABCI 1.0 Environment Modules
+## Q. How to use previous ABCI Environment Modules
 
-ABCI was upgraded in May 2021.
-Due to the upgrade, the Environment Modules as of FY2020 (The **ABCI 1.0 Environment Modules**) is installed in the `/apps/modules-abci-1.0` directory.
-If you want to use the ABCI 1.0 Environment Modules, set the `MODULE_HOME` environment variable as follows and load the configuration file.
+ABCI provides previous ABCI Environment Modules.
+ABCI Environment Modules for each year are installed below, so set the path of the year you want to use in the `MODULE_HOME` environment variable and load the configuration file.
 
-Please not that the ABCI 1.0 Environment Modules is not eligible for the ABCI System support.
+Please note that previous ABCI Environment Modules is not eligible for the ABCI System support.
+
+| ABCI Environment Modules | Installed Path                |
+| ------------------------ | ----------------------------- |
+| 2020 version             | `/apps/modules-abci-1.0`      |
+| 2021 version             | `/apps/modules-abci-2.0-2021` |
+
+The following is an example of using the 2021 version of ABCI Environment Modules.
 
 sh, bash:
 
 ```
-export MODULE_HOME=/apps/modules-abci-1.0
+export MODULE_HOME=/apps/modules-abci-2.0-2021
 . ${MODULE_HOME}/etc/profile.d/modules.sh
 ```
 
 ch, tcsh:
 
 ```
-setenv MODULE_HOME /apps/modules-abci-1.0
+setenv MODULE_HOME /apps/modules-abci-2.0-2021
 source ${MODULE_HOME}/etc/profile.d/modules.csh
 ```
 
