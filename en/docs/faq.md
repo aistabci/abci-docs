@@ -337,7 +337,7 @@ For more information on Interactive Node (A), see [Interactive Node](system-over
 ABCI provides previous ABCI Environment Modules.
 ABCI Environment Modules for each year are installed below, so set the path of the year you want to use in the `MODULE_HOME` environment variable and load the configuration file.
 
-Please not that previous ABCI Environment Modules is not eligible for the ABCI System support.
+Please note that previous ABCI Environment Modules is not eligible for the ABCI System support.
 
 | ABCI Environment Modules | Installed Path                |
 | ------------------------ | ----------------------------- |
