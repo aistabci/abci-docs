@@ -53,6 +53,7 @@
 * Maximum reserved node time per reservation of compute node (A) is changed in the Reserved Service from 6,144 to 6,912.
 * The installation of Singularity Enterprise CLI has been postponed.
 * One of [known issues](known-issues.md) has been resolved in this update.
+* We have reconfigured the Environment Modules. If you would like to use modules prior to FY2021, please refer to the FAQ ([How to use previous ABCI Environment Modules](faq.md#q-how-to-use-previous-abci-environment-modules)).
 
 ## 2022-03-03 
 

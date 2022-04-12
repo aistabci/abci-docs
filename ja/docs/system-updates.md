@@ -53,6 +53,7 @@
 * Reservedサービスにおいて計算ノード(A)の1予約あたりの最大予約ノード時間積を6,144から6,912に変更しました。
 * Singularity Enterprise CLIについては、都合により導入を見送りました。
 * 今回の更新で解消される[既知の問題](known-issues.md)があります。
+* Environment Modulesの再構成を行いました。2021年度以前のモジュールを利用したい場合はFAQ([過去のABCI Environment Modulesを利用したい](faq.md#q-how-to-use-previous-abci-environment-modules))を参照してください。
 
 ## 2022-03-03 
 
