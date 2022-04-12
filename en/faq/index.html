@@ -1080,8 +1080,8 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#q-how-to-use-abci-10-environment-modules" class="md-nav__link">
-    Q. How to use ABCI 1.0 Environment Modules
+  <a href="#q-how-to-use-previous-abci-environment-modules" class="md-nav__link">
+    Q. How to use previous ABCI Environment Modules
   </a>
   
 </li>
@@ -1598,18 +1598,36 @@ In addition to the previously provided Compute Nodes (V) with NVIDIA V100, the C
 </tbody>
 </table>
 <p>For more information on Interactive Node (A), see <a href="../system-overview/#interactive-node">Interactive Node</a>.</p>
-<h2 id="q-how-to-use-abci-10-environment-modules">Q. How to use ABCI 1.0 Environment Modules</h2>
-<p>ABCI was upgraded in May 2021.
-Due to the upgrade, the Environment Modules as of FY2020 (The <strong>ABCI 1.0 Environment Modules</strong>) is installed in the <code>/apps/modules-abci-1.0</code> directory.
-If you want to use the ABCI 1.0 Environment Modules, set the <code>MODULE_HOME</code> environment variable as follows and load the configuration file.</p>
-<p>Please not that the ABCI 1.0 Environment Modules is not eligible for the ABCI System support.</p>
+<h2 id="q-how-to-use-previous-abci-environment-modules">Q. How to use previous ABCI Environment Modules</h2>
+<p>ABCI provides previous ABCI Environment Modules.
+ABCI Environment Modules for each year are installed below, so set the path of the year you want to use in the <code>MODULE_HOME</code> environment variable and load the configuration file.</p>
+<p>Please note that previous ABCI Environment Modules is not eligible for the ABCI System support.</p>
+<table>
+<thead>
+<tr>
+<th>ABCI Environment Modules</th>
+<th>Installed Path</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>2020 version</td>
+<td><code>/apps/modules-abci-1.0</code></td>
+</tr>
+<tr>
+<td>2021 version</td>
+<td><code>/apps/modules-abci-2.0-2021</code></td>
+</tr>
+</tbody>
+</table>
+<p>The following is an example of using the 2021 version of ABCI Environment Modules.</p>
 <p>sh, bash:</p>
-<div class="codehilite"><pre><span></span><code><span class="k">export</span> <span class="n">MODULE_HOME</span><span class="o">=/</span><span class="n">apps</span><span class="o">/</span><span class="n">modules</span><span class="o">-</span><span class="n">abci</span><span class="o">-</span><span class="mf">1.0</span>
+<div class="codehilite"><pre><span></span><code><span class="k">export</span> <span class="n">MODULE_HOME</span><span class="o">=/</span><span class="n">apps</span><span class="o">/</span><span class="n">modules</span><span class="o">-</span><span class="n">abci</span><span class="o">-</span><span class="mf">2.0</span><span class="o">-</span><span class="mi">2021</span>
 <span class="o">.</span> <span class="o">$</span><span class="p">{</span><span class="n">MODULE_HOME</span><span class="p">}</span><span class="o">/</span><span class="n">etc</span><span class="o">/</span><span class="n">profile</span><span class="o">.</span><span class="n">d</span><span class="o">/</span><span class="n">modules</span><span class="o">.</span><span class="n">sh</span>
 </code></pre></div>
 
 <p>ch, tcsh:</p>
-<div class="codehilite"><pre><span></span><code>setenv MODULE_HOME /apps/modules-abci-1.0
+<div class="codehilite"><pre><span></span><code>setenv MODULE_HOME /apps/modules-abci-2.0-2021
 source <span class="cp">${</span><span class="n">MODULE_HOME</span><span class="cp">}</span>/etc/profile.d/modules.csh
 </code></pre></div>
 

@@ -1092,8 +1092,8 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#q-how-to-use-abci-10-environment-modules" class="md-nav__link">
-    Q. ABCI 1.0 Environment Modulesを利用したい
+  <a href="#q-how-to-use-previous-abci-environment-modules" class="md-nav__link">
+    Q. 過去のABCI Environment Modulesを利用したい
   </a>
   
 </li>
@@ -1619,18 +1619,36 @@ ABCIシステム利用環境の<a href="../getting-started/#general-method">SSH�
 </tbody>
 </table>
 <p>インタラクティブノード(A)の詳細は、<a href="../system-overview/#interactive-node">インタラクティブノード</a>を参照してください。</p>
-<h2 id="q-how-to-use-abci-10-environment-modules">Q. ABCI 1.0 Environment Modulesを利用したい</h2>
-<p>ABCIは、2021年5月にABCI 2.0にアップグレードされました。
-このアップグレードにともない、2020年度時点のEnvironment Modules(以下、<strong>ABCI 1.0 Environment Modules</strong>)を<code>/apps/modules-abci-1.0</code>としてインストールしました。
-ABCI 1.0 Environment Modulesを利用したい場合は、以下のように<code>MODULE_HOME</code>環境変数を設定し、設定ファイルを読み込んでください。</p>
-<p>なお、ABCI 1.0 Environment Modulesはサポート対象外です。あらかじめご了承ください。</p>
+<h2 id="q-how-to-use-previous-abci-environment-modules">Q. 過去のABCI Environment Modulesを利用したい</h2>
+<p>ABCIでは、過去のEnvironment Modulesを提供しています。
+各年度でのEnvironment Modulesを以下にインストールしていますので、使用したい年度のパスを<code>MODULE_HOME</code>環境変数に設定し、設定ファイルを読み込んでください。</p>
+<p>なお、これら過去のEnvironment Modulesはサポート対象外です。あらかじめご了承ください。</p>
+<table>
+<thead>
+<tr>
+<th>バージョン</th>
+<th>インストールパス</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>2020年度版</td>
+<td><code>/apps/modules-abci-1.0</code></td>
+</tr>
+<tr>
+<td>2021年度版</td>
+<td><code>/apps/modules-abci-2.0-2021</code></td>
+</tr>
+</tbody>
+</table>
+<p>以下は2021年度版Environment Modulesを利用する例です。</p>
 <p>sh, bashの場合:</p>
-<div class="codehilite"><pre><span></span><code><span class="k">export</span> <span class="n">MODULE_HOME</span><span class="o">=/</span><span class="n">apps</span><span class="o">/</span><span class="n">modules</span><span class="o">-</span><span class="n">abci</span><span class="o">-</span><span class="mf">1.0</span>
+<div class="codehilite"><pre><span></span><code><span class="k">export</span> <span class="n">MODULE_HOME</span><span class="o">=/</span><span class="n">apps</span><span class="o">/</span><span class="n">modules</span><span class="o">-</span><span class="n">abci</span><span class="o">-</span><span class="mf">2.0</span><span class="o">-</span><span class="mi">2021</span>
 <span class="o">.</span> <span class="o">$</span><span class="p">{</span><span class="n">MODULE_HOME</span><span class="p">}</span><span class="o">/</span><span class="n">etc</span><span class="o">/</span><span class="n">profile</span><span class="o">.</span><span class="n">d</span><span class="o">/</span><span class="n">modules</span><span class="o">.</span><span class="n">sh</span>
 </code></pre></div>
 
 <p>csh, tcshの場合:</p>
-<div class="codehilite"><pre><span></span><code>setenv MODULE_HOME /apps/modules-abci-1.0
+<div class="codehilite"><pre><span></span><code>setenv MODULE_HOME /apps/modules-abci-2.0-2021
 source <span class="cp">${</span><span class="n">MODULE_HOME</span><span class="cp">}</span>/etc/profile.d/modules.csh
 </code></pre></div>
 
