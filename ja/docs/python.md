@@ -4,13 +4,13 @@
 
 ABCIシステムでは[Python](https://www.python.org/)を利用可能です。
 
-利用できるPythonのバージョンは`module`コマンドで確認できます。
+利用できるPythonのバージョンは`module avail`コマンドで確認できます。
 
 ```
-$ module avail python
+[username@es1 ~]$ module avail python
 
--------------------------------- /apps/modules/modulefiles/devtools --------------------------------
-python/2.7/2.7.18 python/3.6/3.6.12  python/3.7/3.7.10  python/3.8/3.8.7
+------------------ /apps/modules/modulefiles/centos7/devtools ------------------
+python/2.7/2.7.18  python/3.10/3.10.4 python/3.7/3.7.13  python/3.8/3.8.13
 ```
 
 以下のように利用環境を設定することで利用可能になります。
@@ -18,17 +18,28 @@ python/2.7/2.7.18 python/3.6/3.6.12  python/3.7/3.7.10  python/3.8/3.8.7
 例) Python 2.7.18を利用する場合:
 
 ```
-$ module load python/2.7/2.7.18
-$ python --version
+[username@es1 ~]$ module load python/2.7/2.7.18
+[username@es1 ~]$ python --version
 Python 2.7.18
 ```
 
-例) Python 3.6.12を利用する場合:
+例) Python 3.8.13を利用する場合:
+
+計算ノード(V)環境の場合、`gcc/11.2.0`モジュールを先にロードしてください。
 
 ```
-$ module load python/3.6/3.6.12
-$ python3 --version
-Python 3.6.12
+[username@es1 ~]$ module load gcc/11.2.0
+[username@es1 ~]$ module load python/3.8/3.8.13
+[username@es1 ~]$ python3 --version
+Python 3.8.13
+```
+
+なお、計算ノード(A)環境の場合、gccモジュールのロードは不要です。
+
+```
+[username@es-a1 ~]$ module load python/3.8/3.8.13
+[username@es-a1 ~]$ python3 --version
+Python 3.8.13
 ```
 
 !!! note
@@ -96,7 +107,7 @@ created virtual environment CPython2.7.18.final.0-64 in 1862ms
 例) 仮想環境の作成
 
 ```
-[username@es1 ~]$ module load python/3.6/3.6.12
+[username@es1 ~]$ module load gcc/11.2.0 python/3.8/3.8.13
 [username@es1 ~]$ python3 -m venv work
 ```
 
