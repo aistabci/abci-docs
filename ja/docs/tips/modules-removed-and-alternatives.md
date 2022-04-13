@@ -2,7 +2,7 @@
 # 提供を終了したモジュールとその代替手段
 
 2022年度の開始にあたり、ABCIで提供しているモジュールの再構成を行いました。
-再構成によりサポートが終了したソフトウェアをEnvironment Modulesから削除しています。
+再構成によりサポートが終了したソフトウェアを最新のEnvironment Modulesから削除しています。
 
 なお、過去のEnvironment Modulesは別途提供していますので、削除したモジュールを利用したい場合はFAQ [過去のABCI Environment Modulesを利用したい](../faq.md#q-how-to-use-previous-abci-environment-modules)を参考に設定を行なってください。
 

@@ -2,7 +2,7 @@
 # Modules removed and alternatives
 
 At the start of FY2022, we reconfigured the modules provided by ABCI.
-Software that is no longer supported due to reconfiguration has been removed from Environment Modules.
+Software that is no longer supported due to reconfiguration has been removed from the latest Environment Modules.
 
 If you want to use the removed modules, please refer to the FAQ [How to use previous ABCI Environment Modules](../faq.md#q-how-to-use-previous-abci-environment-modules).
 
