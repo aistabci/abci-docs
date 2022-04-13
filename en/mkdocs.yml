@@ -40,6 +40,7 @@ nav:
     - 'Spack': 'tips/spack.md'
     - 'Datasets': 'tips/datasets.md'
     - 'Amazon ECR': 'tips/dl-amazon-ecr.md'
+    - 'Modules removed and alternatives': 'tips/modules-removed-and-alternatives.md'
   - 'ABCI Cloud Storage':
     - 'Overview': 'abci-cloudstorage.md'
     - 'Accounts and Access keys': 'abci-cloudstorage/cs-account.md'

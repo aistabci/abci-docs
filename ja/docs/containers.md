@@ -433,6 +433,10 @@ INFO:    Build complete: h2o4gpuPy.sif
 
 ## Docker
 
+!!! warning
+    2022年度の運用において、Dockerコンテナ上でのジョブ実行機能のサポートを廃止する予定です。コンテナを使用したい場合は、Singularityコンテナをジョブ内でご利用ください。
+    また、ABCIが提供しているDockerイメージのメンテナンスも併せて終了します。
+
 ABCIシステムではDockerコンテナ上でのジョブ実行が可能です。
 Dockerを利用する場合、ジョブ投入時に`-l docker`オプションと`-l docker_images`オプションを指定する必要があります。
 
