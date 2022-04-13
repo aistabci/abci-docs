@@ -1,8 +1,10 @@
 
-# 2022年度に提供を廃止したモジュールとその代替手段
+# 提供を終了したモジュールとその代替手段
 
 2022年度の開始にあたり、ABCIで提供しているモジュールの再構成を行いました。
 再構成によりサポートが終了したソフトウェアをEnvironment Modulesから削除しています。
+
+なお、過去のEnvironment Modulesは別途提供していますので、削除したモジュールを利用したい場合はFAQ [過去のABCI Environment Modulesを利用したい](../faq.md#q-how-to-use-previous-abci-environment-modules)を参考に設定を行なってください。
 
 ここでは削除したモジュールをSingularityコンテナとして実行する方法、および、ホームディレクトリ下にインストールして利用する方法を説明します。
 本文中のインストールパスは適宜変更してください。
@@ -18,6 +20,8 @@
 | [Apache Hadoop](#apache-hadoop)                         | hadoop        |
 | [Apache Spark](#apache-spark)                           | spark         |
 | [Singularity Global Client](#singularity-global-client) | sregistry-cli |
+
+また、[Spack](https://spack.io)を使用して独自にソフトウェアをインストール、管理することもできます。Spackの利用については[Spackによるソフトウェア管理](spack.md)を参照してください。
 
 ## NVIDIA HPC SDK {#nvidia-hpc-sdk}
 

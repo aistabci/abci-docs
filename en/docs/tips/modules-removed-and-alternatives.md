@@ -1,8 +1,10 @@
 
-# Modules removed in FY2022 and alternatives
+# Modules removed and alternatives
 
 At the start of FY2022, we reconfigured the modules provided by ABCI.
 Software that is no longer supported due to reconfiguration has been removed from Environment Modules.
+
+If you want to use the removed modules, please refer to the FAQ [How to use previous ABCI Environment Modules](../faq.md#q-how-to-use-previous-abci-environment-modules).
 
 This section describes how to execute the removed module as a Singularity container, and how to install and use it under your home directory.
 Please change the installation path in the text as appropriate.
@@ -19,6 +21,7 @@ The removed modules are as follows.
 | [Apache Spark](#apache-spark)                           | spark         |
 | [Singularity Global Client](#singularity-global-client) | sregistry-cli |
 
+You can also use [Spack](https://spack.io) to install and manage your own software; see [Software Management by Spack](spack.md) for more information on using Spack.
 
 ## NVIDIA HPC SDK {#nvidia-hpc-sdk}
 

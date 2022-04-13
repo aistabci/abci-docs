@@ -41,7 +41,7 @@ nav:
     - 'Spackによるソフトウェア管理': 'tips/spack.md'
     - 'データセットの利用': 'tips/datasets.md'
     - 'Amazon ECR からコンテナ取得': 'tips/dl-amazon-ecr.md'
-    - '2022年度に提供を停止したモジュールとその代替手段': 'tips/modules-removed-and-alternatives.md'
+    - '提供を終了したモジュールとその代替手段': 'tips/modules-removed-and-alternatives.md'
   - 'ABCI クラウドストレージ':
     - '概要': 'abci-cloudstorage.md'
     - 'アカウントとアクセスキー': 'abci-cloudstorage/cs-account.md'
