@@ -1,0 +1,1447 @@
+
+<!doctype html>
+<html lang="ja" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="ABCI 2.0 User Guide, Japanese version">
+      
+      
+      
+        <meta name="author" content="AIST">
+      
+      
+        <link rel="canonical" href="https://docs.abci.ai/ja/tips/modules-removed-and-alternatives/">
+      
+      <link rel="icon" href="../../img/favicon.png">
+      <meta name="generator" content="mkdocs-1.1.2, mkdocs-material-7.1.3">
+    
+    
+      
+        <title>提供を終了したモジュールとその代替手段 - ABCI 2.0 User Guide</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.e35208c4.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.ef6f36e2.min.css">
+        
+          
+          
+          <meta name="theme-color" content="#ef5552">
+        
+      
+    
+    
+    
+      
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700%7CRoboto+Mono&display=fallback">
+        <style>:root{--md-text-font-family:"Roboto";--md-code-font-family:"Roboto Mono"}</style>
+      
+    
+    
+    
+    
+      
+    
+    
+  <script defer data-domain="docs.abci.ai" src="https://analytics.abci.ai/js/plausible.js"></script>
+
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="" data-md-color-primary="red" data-md-color-accent="">
+  
+    
+    <script>function __prefix(e){return new URL("../..",location).pathname+"."+e}function __get(e,t=localStorage){return JSON.parse(t.getItem(__prefix(e)))}</script>
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#_1" class="md-skip">
+          コンテンツにスキップ
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+      <header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="ヘッダー">
+    <a href="../.." title="ABCI 2.0 User Guide" class="md-header__button md-logo" aria-label="ABCI 2.0 User Guide" data-md-component="logo">
+      
+  <img src="../../img/logo.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            ABCI 2.0 User Guide
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              提供を終了したモジュールとその代替手段
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+      <div class="md-header__option">
+        <div class="md-select">
+          
+          <button class="md-header__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m12.87 15.07-2.54-2.51.03-.03A17.52 17.52 0 0 0 14.07 6H17V4h-7V2H8v2H1v2h11.17C11.5 7.92 10.44 9.75 9 11.35 8.07 10.32 7.3 9.19 6.69 8h-2c.73 1.63 1.73 3.17 2.98 4.56l-5.09 5.02L4 19l5-5 3.11 3.11.76-2.04M18.5 10h-2L12 22h2l1.12-3h4.75L21 22h2l-4.5-12m-2.62 7 1.62-4.33L19.12 17h-3.24z"/></svg>
+          </button>
+          <div class="md-select__inner">
+            <ul class="md-select__list">
+              
+                <li class="md-select__item">
+                  <a href="https://docs.abci.ai/en/" hreflang="" class="md-select__link">
+                    English
+                  </a>
+                </li>
+                
+                <li class="md-select__item">
+                  <a href="https://docs.abci.ai/ja/" hreflang="" class="md-select__link">
+                    日本語
+                  </a>
+                </li>
+                
+            </ul>
+          </div>
+        </div>
+      </div>
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+      </label>
+      
+<div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="検索" placeholder="検索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" data-md-state="active" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+      </label>
+      <button type="reset" class="md-search__icon md-icon" aria-label="クリア" tabindex="-1">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"/></svg>
+      </button>
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            検索を初期化
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        
+<a href="https://github.com/aistairc/abci-docs/" title="リポジトリへ" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+      </div>
+    
+  </nav>
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+<nav class="md-nav md-nav--primary md-nav--integrated" aria-label="ナビゲーション" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="ABCI 2.0 User Guide" class="md-nav__button md-logo" aria-label="ABCI 2.0 User Guide" data-md-component="logo">
+      
+  <img src="../../img/logo.png" alt="logo">
+
+    </a>
+    ABCI 2.0 User Guide
+  </label>
+  
+    <div class="md-nav__source">
+      
+<a href="https://github.com/aistairc/abci-docs/" title="リポジトリへ" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        はじめに
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../system-overview/" class="md-nav__link">
+        ABCIシステムの概要
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../getting-started/" class="md-nav__link">
+        ABCIの利用開始
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../job-execution/" class="md-nav__link">
+        ジョブ実行
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../storage/" class="md-nav__link">
+        ストレージ
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../environment-modules/" class="md-nav__link">
+        Environment Modules
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../python/" class="md-nav__link">
+        Python
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../gpu/" class="md-nav__link">
+        GPU
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../mpi/" class="md-nav__link">
+        MPI
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../containers/" class="md-nav__link">
+        コンテナ
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../development-tools/" class="md-nav__link">
+        開発ツール
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_12" type="checkbox" id="__nav_12" >
+      
+      <label class="md-nav__link" for="__nav_12">
+        付録
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="付録" data-md-level="1">
+        <label class="md-nav__title" for="__nav_12">
+          <span class="md-nav__icon md-icon"></span>
+          付録
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../appendix/installed-software/" class="md-nav__link">
+        付録. インストール済みソフトウェアの構成
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../appendix/using-abci-with-hpci/" class="md-nav__link">
+        付録. HPCIによるABCIシステム利用
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../appendix/external-networks/" class="md-nav__link">
+        付録. 外部ネットワークとの通信
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../appendix/ssh-access/" class="md-nav__link">
+        付録. 計算ノードへのSSHアクセス
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_13" type="checkbox" id="__nav_13" >
+      
+      <label class="md-nav__link" for="__nav_13">
+        各種アプリケーション
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="各種アプリケーション" data-md-level="1">
+        <label class="md-nav__title" for="__nav_13">
+          <span class="md-nav__icon md-icon"></span>
+          各種アプリケーション
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../apps/" class="md-nav__link">
+        概要
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../apps/tensorflow/" class="md-nav__link">
+        TensorFlow
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../apps/tensorflow-keras/" class="md-nav__link">
+        TensorFlow Keras
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../apps/pytorch/" class="md-nav__link">
+        PyTorch
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../apps/mxnet/" class="md-nav__link">
+        MXNet
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../apps/chainer/" class="md-nav__link">
+        Chainer
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../apps/others/" class="md-nav__link">
+        その他
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_14" type="checkbox" id="__nav_14" checked>
+      
+      <label class="md-nav__link" for="__nav_14">
+        Tips
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Tips" data-md-level="1">
+        <label class="md-nav__title" for="__nav_14">
+          <span class="md-nav__icon md-icon"></span>
+          Tips
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ngc/" class="md-nav__link">
+        NVIDIA NGC
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../remote-desktop/" class="md-nav__link">
+        リモートデスクトップの利用
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../awscli/" class="md-nav__link">
+        AWS CLIの利用
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../tera-term/" class="md-nav__link">
+        Tera Termの利用
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../putty/" class="md-nav__link">
+        PuTTYの利用
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../jupyter-notebook/" class="md-nav__link">
+        Jupyter Notebookの利用
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../sregistry-cli/" class="md-nav__link">
+        Singularity Global Clientの利用
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../spack/" class="md-nav__link">
+        Spackによるソフトウェア管理
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../datasets/" class="md-nav__link">
+        データセットの利用
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../dl-amazon-ecr/" class="md-nav__link">
+        Amazon ECR からコンテナ取得
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          提供を終了したモジュールとその代替手段
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        提供を終了したモジュールとその代替手段
+      </a>
+      
+        
+<nav class="md-nav md-nav--secondary" aria-label="目次">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目次
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#nvidia-hpc-sdk" class="md-nav__link">
+    NVIDIA HPC SDK
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#lua" class="md-nav__link">
+    Lua
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#mvapich2" class="md-nav__link">
+    MVAPICH2
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#cuda-aware-open-mpi" class="md-nav__link">
+    CUDA-aware Open MPI
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#apache-hadoop" class="md-nav__link">
+    Apache Hadoop
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#apache-spark" class="md-nav__link">
+    Apache Spark
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#singularity-global-client" class="md-nav__link">
+    Singularity Global Client
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_15" type="checkbox" id="__nav_15" >
+      
+      <label class="md-nav__link" for="__nav_15">
+        ABCI クラウドストレージ
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="ABCI クラウドストレージ" data-md-level="1">
+        <label class="md-nav__title" for="__nav_15">
+          <span class="md-nav__icon md-icon"></span>
+          ABCI クラウドストレージ
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../abci-cloudstorage/" class="md-nav__link">
+        概要
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../abci-cloudstorage/cs-account/" class="md-nav__link">
+        アカウントとアクセスキー
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../abci-cloudstorage/usage/" class="md-nav__link">
+        使い方
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../abci-cloudstorage/encryption/" class="md-nav__link">
+        データの暗号化
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../abci-cloudstorage/acl/" class="md-nav__link">
+        アクセス制御(1)
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../abci-cloudstorage/policy/" class="md-nav__link">
+        アクセス制御(2)
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../abci-cloudstorage/default-sub-group/" class="md-nav__link">
+        アクセス制御(3)
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../abci-cloudstorage/publishing-datasets/" class="md-nav__link">
+        データセットの公開
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../abci-cloudstorage/caution/" class="md-nav__link">
+        ご利用時の注意
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../abci-cloudstorage/s3fs-usage/" class="md-nav__link">
+        s3fs-fuseの利用
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../abci-datasets/" class="md-nav__link">
+        ABCI データセット
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../abci-singularity-endpoint/" class="md-nav__link">
+        ABCI Singularity エンドポイント
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../faq/" class="md-nav__link">
+        FAQ
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../known-issues/" class="md-nav__link">
+        既知の問題
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../system-updates/" class="md-nav__link">
+        システム更新履歴
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="https://abci.ai/ja/about_abci/info.html" class="md-nav__link">
+        運転状況
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../contact/" class="md-nav__link">
+        お問い合わせ
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_23" type="checkbox" id="__nav_23" >
+      
+      <label class="md-nav__link" for="__nav_23">
+        リンク
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="リンク" data-md-level="1">
+        <label class="md-nav__title" for="__nav_23">
+          <span class="md-nav__icon md-icon"></span>
+          リンク
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="https://abci.ai/ja/" class="md-nav__link">
+        ABCI Webページ
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="https://docs.abci.ai/portal/ja/" class="md-nav__link">
+        ABCI利用者ポータル手引き
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="https://portal.abci.ai/user/project_register_app.php?lang=ja" class="md-nav__link">
+        ABCI利用者ポータル (利用申請)
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="https://portal.abci.ai/user/login.php?lang=ja" class="md-nav__link">
+        ABCI利用者ポータル (ログイン)
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+          
+          <div class="md-content" data-md-component="content">
+            <article class="md-content__inner md-typeset">
+              
+                
+                  <a href="https://github.com/aistairc/abci-docs/edit/master/ja/docs/tips/modules-removed-and-alternatives.md" title="編集" class="md-content__button md-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75L3 17.25z"/></svg>
+                  </a>
+                
+                
+                <h1 id="_1">提供を終了したモジュールとその代替手段</h1>
+<p>2022年度の開始にあたり、ABCIで提供しているモジュールの再構成を行いました。
+再構成によりサポートが終了したソフトウェアを最新のEnvironment Modulesから削除しています。</p>
+<p>なお、過去のEnvironment Modulesは別途提供していますので、削除したモジュールを利用したい場合はFAQ <a href="../../faq/#q-how-to-use-previous-abci-environment-modules">過去のABCI Environment Modulesを利用したい</a>を参考に設定を行なってください。</p>
+<p>ここでは削除したモジュールをSingularityコンテナとして実行する方法、および、ホームディレクトリ下にインストールして利用する方法を説明します。
+本文中のインストールパスは適宜変更してください。</p>
+<p>2022年度に削除したモジュールは以下の通りです。</p>
+<table>
+<thead>
+<tr>
+<th>ソフトウェア</th>
+<th>モジュール名</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="#nvidia-hpc-sdk">NVIDIA HPC SDK</a></td>
+<td>nvhpc</td>
+</tr>
+<tr>
+<td><a href="#lua">Lua</a></td>
+<td>lua</td>
+</tr>
+<tr>
+<td><a href="#mvapich2">MVAPICH2</a></td>
+<td>mvapich2</td>
+</tr>
+<tr>
+<td><a href="#cuda-aware-open-mpi">CUDA-aware Open MPI</a></td>
+<td>openmpi</td>
+</tr>
+<tr>
+<td><a href="#apache-hadoop">Apache Hadoop</a></td>
+<td>hadoop</td>
+</tr>
+<tr>
+<td><a href="#apache-spark">Apache Spark</a></td>
+<td>spark</td>
+</tr>
+<tr>
+<td><a href="#singularity-global-client">Singularity Global Client</a></td>
+<td>sregistry-cli</td>
+</tr>
+</tbody>
+</table>
+<p>また、<a href="https://spack.io">Spack</a>を使用して独自にソフトウェアをインストール、管理することもできます。Spackの利用については<a href="../spack/">Spackによるソフトウェア管理</a>を参照してください。</p>
+<h2 id="nvidia-hpc-sdk">NVIDIA HPC SDK</h2>
+<p>NVIDIA HPC SDKはNVIDIA NGCで提供されている<a href="https://catalog.ngc.nvidia.com/orgs/nvidia/containers/nvhpc">コンテナ</a>を利用します。</p>
+<p>Singularityを使用してコンテナを作成し、作成したコンテナを使ってCUDAプログラムのビルドおよび実行を行う方法を説明します。
+なお、コンテナイメージのバージョンは適宜変更してください。</p>
+<p>まず、開発用コンテナをダウンロードします。</p>
+<div class="codehilite"><pre><span></span><code><span class="p">[</span><span class="n">username</span><span class="err">@</span><span class="n">es1</span> <span class="o">~</span><span class="p">]</span><span class="o">$</span> <span class="n">module</span> <span class="nb">load</span> <span class="n">singularitypro</span>
+<span class="p">[</span><span class="n">username</span><span class="err">@</span><span class="n">es1</span> <span class="o">~</span><span class="p">]</span><span class="o">$</span> <span class="n">singularity</span> <span class="n">pull</span> <span class="n">docker</span><span class="p">:</span><span class="o">//</span><span class="n">nvcr</span><span class="o">.</span><span class="n">io</span><span class="o">/</span><span class="n">nvidia</span><span class="o">/</span><span class="n">nvhpc</span><span class="p">:</span><span class="mf">22.3</span><span class="o">-</span><span class="n">devel</span><span class="o">-</span><span class="n">cuda11</span><span class="o">.</span><span class="mi">6</span><span class="o">-</span><span class="n">ubuntu20</span><span class="o">.</span><span class="mi">04</span>
+</code></pre></div>
+
+<p>次に、サンプルプログラムをビルドします。
+サンプルプログラムはコンテナ内の<code>/opt/nvidia/hpc_sdk/Linux_x86_64/22.3/examples/CUDA-Fortran/SDK/bandwidthTest</code>をホームディレクトリにコピーして使用します。</p>
+<div class="codehilite"><pre><span></span><code><span class="p">[</span><span class="n">username</span><span class="err">@</span><span class="n">es1</span> <span class="o">~</span><span class="p">]</span><span class="o">$</span> <span class="n">singularity</span> <span class="n">shell</span> <span class="o">--</span><span class="n">nv</span> <span class="n">nvhpc_22</span><span class="o">.</span><span class="mi">3</span><span class="o">-</span><span class="n">devel</span><span class="o">-</span><span class="n">cuda11</span><span class="o">.</span><span class="mi">6</span><span class="o">-</span><span class="n">ubuntu20</span><span class="o">.</span><span class="mf">04.</span><span class="n">sif</span>
+<span class="n">Singularity</span><span class="o">&gt;</span> <span class="k">export</span> <span class="n">CUDA_HOME</span><span class="o">=/</span><span class="n">opt</span><span class="o">/</span><span class="n">nvidia</span><span class="o">/</span><span class="n">hpc_sdk</span><span class="o">/</span><span class="n">Linux_x86_64</span><span class="o">/</span><span class="mf">22.3</span><span class="o">/</span><span class="n">cuda</span>
+<span class="n">Singularity</span><span class="o">&gt;</span> <span class="k">export</span> <span class="n">CUDA_PATH</span><span class="o">=/</span><span class="n">opt</span><span class="o">/</span><span class="n">nvidia</span><span class="o">/</span><span class="n">hpc_sdk</span><span class="o">/</span><span class="n">Linux_x86_64</span><span class="o">/</span><span class="mf">22.3</span><span class="o">/</span><span class="n">cuda</span>
+<span class="n">Singularity</span><span class="o">&gt;</span> <span class="n">cp</span> <span class="o">-</span><span class="n">r</span> <span class="o">/</span><span class="n">opt</span><span class="o">/</span><span class="n">nvidia</span><span class="o">/</span><span class="n">hpc_sdk</span><span class="o">/</span><span class="n">Linux_x86_64</span><span class="o">/</span><span class="mf">22.3</span><span class="o">/</span><span class="n">examples</span><span class="o">/</span><span class="n">CUDA</span><span class="o">-</span><span class="n">Fortran</span><span class="o">/</span><span class="n">SDK</span><span class="o">/</span><span class="n">bandwidthTest</span> <span class="o">./</span>
+<span class="n">Singularity</span><span class="o">&gt;</span> <span class="n">cd</span> <span class="n">bandwidthTest</span><span class="o">/</span>
+<span class="n">Singularity</span><span class="o">&gt;</span> <span class="n">make</span> <span class="n">build</span>
+</code></pre></div>
+
+<p>最後に、実行用コンテナをダウンロードし、ビルドしたプログラムを実行します。</p>
+<div class="codehilite"><pre><span></span><code><span class="o">[</span><span class="n">username@es1 ~</span><span class="o">]</span><span class="err">$</span><span class="w"> </span><span class="n">singularity</span><span class="w"> </span><span class="n">pull</span><span class="w"> </span><span class="nl">docker</span><span class="p">:</span><span class="o">//</span><span class="n">nvcr</span><span class="p">.</span><span class="n">io</span><span class="o">/</span><span class="n">nvidia</span><span class="o">/</span><span class="nl">nvhpc</span><span class="p">:</span><span class="mf">22.3</span><span class="o">-</span><span class="n">runtime</span><span class="o">-</span><span class="n">cuda11</span><span class="mf">.6</span><span class="o">-</span><span class="n">ubuntu20</span><span class="mf">.04</span><span class="w"></span>
+<span class="o">[</span><span class="n">username@es1 ~</span><span class="o">]</span><span class="err">$</span><span class="w"> </span><span class="n">ls</span><span class="w"> </span><span class="n">bandwidthTest</span><span class="o">/</span><span class="w"></span>
+<span class="n">Makefile</span><span class="w">  </span><span class="n">bandwidthTest</span><span class="p">.</span><span class="n">cuf</span><span class="w">  </span><span class="n">bandwidthTest</span><span class="p">.</span><span class="k">out</span><span class="w"></span>
+<span class="o">[</span><span class="n">username@es1 ~</span><span class="o">]</span><span class="err">$</span><span class="w"> </span><span class="n">singularity</span><span class="w"> </span><span class="n">run</span><span class="w"> </span><span class="c1">--nv nvhpc_22.3-runtime-cuda11.6-ubuntu20.04.sif bandwidthTest/bandwidthTest.out</span>
+</code></pre></div>
+
+<h2 id="lua">Lua</h2>
+<p>Luaはソースからインストールして利用します。
+ここでは <code>$HOME/apps/lua</code> 以下にインストールします。</p>
+<div class="codehilite"><pre><span></span><code><span class="p">[</span><span class="n">username</span><span class="err">@</span><span class="n">es1</span> <span class="o">~</span><span class="p">]</span><span class="o">$</span> <span class="n">wget</span> <span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="n">www</span><span class="o">.</span><span class="n">lua</span><span class="o">.</span><span class="n">org</span><span class="o">/</span><span class="n">ftp</span><span class="o">/</span><span class="n">lua</span><span class="o">-</span><span class="mf">5.4</span><span class="o">.</span><span class="mf">4.</span><span class="n">tar</span><span class="o">.</span><span class="n">gz</span>
+<span class="p">[</span><span class="n">username</span><span class="err">@</span><span class="n">es1</span> <span class="o">~</span><span class="p">]</span><span class="o">$</span> <span class="n">tar</span> <span class="n">xzf</span> <span class="n">lua</span><span class="o">-</span><span class="mf">5.4</span><span class="o">.</span><span class="mf">4.</span><span class="n">tar</span><span class="o">.</span><span class="n">gz</span>
+<span class="p">[</span><span class="n">username</span><span class="err">@</span><span class="n">es1</span> <span class="o">~</span><span class="p">]</span><span class="o">$</span> <span class="n">cd</span> <span class="n">lua</span><span class="o">-</span><span class="mf">5.4</span><span class="o">.</span><span class="mi">4</span>
+<span class="p">[</span><span class="n">username</span><span class="err">@</span><span class="n">es1</span> <span class="o">~</span><span class="p">]</span><span class="o">$</span> <span class="n">make</span> <span class="o">&amp;&amp;</span> <span class="n">make</span> <span class="n">install</span> <span class="n">INSTALL_TOP</span><span class="o">=$</span><span class="n">HOME</span><span class="o">/</span><span class="n">apps</span><span class="o">/</span><span class="n">lua</span>
+<span class="p">[</span><span class="n">username</span><span class="err">@</span><span class="n">es1</span> <span class="o">~</span><span class="p">]</span><span class="o">$</span> <span class="k">export</span> <span class="n">PATH</span><span class="o">=$</span><span class="n">HOME</span><span class="o">/</span><span class="n">apps</span><span class="o">/</span><span class="n">lua</span><span class="o">/</span><span class="n">bin</span><span class="p">:</span><span class="o">$</span><span class="n">PATH</span>
+<span class="p">[</span><span class="n">username</span><span class="err">@</span><span class="n">es1</span> <span class="o">~</span><span class="p">]</span><span class="o">$</span> <span class="n">lua</span> <span class="o">-</span><span class="n">v</span>
+<span class="n">Lua</span> <span class="mf">5.4</span><span class="o">.</span><span class="mi">4</span>  <span class="n">Copyright</span> <span class="p">(</span><span class="n">C</span><span class="p">)</span> <span class="mi">1994</span><span class="o">-</span><span class="mi">2022</span> <span class="n">Lua</span><span class="o">.</span><span class="n">org</span><span class="p">,</span> <span class="n">PUC</span><span class="o">-</span><span class="n">Rio</span>
+</code></pre></div>
+
+<h2 id="mvapich2">MVAPICH2</h2>
+<p>MVAPICH2はソースからインストールして利用します。
+ここでは <code>$HOME/apps/mvapich2</code> 以下にインストールします。</p>
+<div class="codehilite"><pre><span></span><code><span class="p">[</span><span class="n">username</span><span class="err">@</span><span class="n">es1</span> <span class="o">~</span><span class="p">]</span><span class="o">$</span> <span class="n">wget</span> <span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="n">mvapich</span><span class="o">.</span><span class="n">cse</span><span class="o">.</span><span class="n">ohio</span><span class="o">-</span><span class="n">state</span><span class="o">.</span><span class="n">edu</span><span class="o">/</span><span class="n">download</span><span class="o">/</span><span class="n">mvapich</span><span class="o">/</span><span class="n">mv2</span><span class="o">/</span><span class="n">mvapich2</span><span class="o">-</span><span class="mf">2.3</span><span class="o">.</span><span class="mf">7.</span><span class="n">tar</span><span class="o">.</span><span class="n">gz</span>
+<span class="p">[</span><span class="n">username</span><span class="err">@</span><span class="n">es1</span> <span class="o">~</span><span class="p">]</span><span class="o">$</span> <span class="n">tar</span> <span class="n">xzf</span> <span class="n">mvapich2</span><span class="o">-</span><span class="mf">2.3</span><span class="o">.</span><span class="mf">7.</span><span class="n">tar</span><span class="o">.</span><span class="n">gz</span>
+<span class="p">[</span><span class="n">username</span><span class="err">@</span><span class="n">es1</span> <span class="o">~</span><span class="p">]</span><span class="o">$</span> <span class="n">cd</span> <span class="n">mvapich2</span><span class="o">-</span><span class="mf">2.3</span><span class="o">.</span><span class="mi">7</span>
+<span class="p">[</span><span class="n">username</span><span class="err">@</span><span class="n">es1</span> <span class="o">~</span><span class="p">]</span><span class="o">$</span> <span class="o">./</span><span class="n">configure</span> <span class="o">--</span><span class="n">prefix</span><span class="o">=$</span><span class="n">HOME</span><span class="o">/</span><span class="n">apps</span><span class="o">/</span><span class="n">mvapich2</span>
+<span class="p">[</span><span class="n">username</span><span class="err">@</span><span class="n">es1</span> <span class="o">~</span><span class="p">]</span><span class="o">$</span> <span class="n">make</span> <span class="o">-</span><span class="n">j8</span>
+<span class="p">[</span><span class="n">username</span><span class="err">@</span><span class="n">es1</span> <span class="o">~</span><span class="p">]</span><span class="o">$</span> <span class="n">make</span> <span class="n">install</span>
+<span class="p">[</span><span class="n">username</span><span class="err">@</span><span class="n">es1</span> <span class="o">~</span><span class="p">]</span><span class="o">$</span> <span class="k">export</span> <span class="n">PATH</span><span class="o">=$</span><span class="n">HOME</span><span class="o">/</span><span class="n">apps</span><span class="o">/</span><span class="n">mvapich2</span><span class="o">/</span><span class="n">bin</span><span class="p">:</span><span class="o">$</span><span class="n">PATH</span>
+<span class="p">[</span><span class="n">username</span><span class="err">@</span><span class="n">es1</span> <span class="o">~</span><span class="p">]</span><span class="o">$</span> <span class="n">mpicc</span> <span class="o">--</span><span class="n">version</span>
+<span class="n">gcc</span> <span class="p">(</span><span class="n">GCC</span><span class="p">)</span> <span class="mf">4.8</span><span class="o">.</span><span class="mi">5</span> <span class="mi">20150623</span> <span class="p">(</span><span class="n">Red</span> <span class="n">Hat</span> <span class="mf">4.8</span><span class="o">.</span><span class="mi">5</span><span class="o">-</span><span class="mi">28</span><span class="p">)</span>
+<span class="n">Copyright</span> <span class="p">(</span><span class="n">C</span><span class="p">)</span> <span class="mi">2015</span> <span class="n">Free</span> <span class="n">Software</span> <span class="n">Foundation</span><span class="p">,</span> <span class="n">Inc</span><span class="o">.</span>
+<span class="n">This</span> <span class="k">is</span> <span class="n">free</span> <span class="n">software</span><span class="p">;</span> <span class="n">see</span> <span class="n">the</span> <span class="n">source</span> <span class="k">for</span> <span class="n">copying</span> <span class="n">conditions</span><span class="o">.</span>  <span class="n">There</span> <span class="k">is</span> <span class="n">NO</span>
+<span class="n">warranty</span><span class="p">;</span> <span class="ow">not</span> <span class="n">even</span> <span class="k">for</span> <span class="n">MERCHANTABILITY</span> <span class="ow">or</span> <span class="n">FITNESS</span> <span class="n">FOR</span> <span class="n">A</span> <span class="n">PARTICULAR</span> <span class="n">PURPOSE</span><span class="o">.</span>
+</code></pre></div>
+
+<h2 id="cuda-aware-open-mpi">CUDA-aware Open MPI</h2>
+<p>CUDA-aware Open MPIはソースからインストールして利用します。
+ここでは <code>$HOME/apps/openmpi</code> 以下にインストールします。
+利用したいCUDAバージョンは適宜変更してください。ここではCUDA 11.6を使用します。</p>
+<div class="codehilite"><pre><span></span><code><span class="p">[</span><span class="n">username</span><span class="err">@</span><span class="n">es1</span> <span class="o">~</span><span class="p">]</span><span class="o">$</span> <span class="n">wget</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">download</span><span class="o">.</span><span class="n">open</span><span class="o">-</span><span class="n">mpi</span><span class="o">.</span><span class="n">org</span><span class="o">/</span><span class="n">release</span><span class="o">/</span><span class="n">open</span><span class="o">-</span><span class="n">mpi</span><span class="o">/</span><span class="n">v4</span><span class="o">.</span><span class="mi">1</span><span class="o">/</span><span class="n">openmpi</span><span class="o">-</span><span class="mf">4.1</span><span class="o">.</span><span class="mf">3.</span><span class="n">tar</span><span class="o">.</span><span class="n">gz</span>
+<span class="p">[</span><span class="n">username</span><span class="err">@</span><span class="n">es1</span> <span class="o">~</span><span class="p">]</span><span class="o">$</span> <span class="n">tar</span> <span class="n">xvf</span> <span class="n">openmpi</span><span class="o">-</span><span class="mf">4.1</span><span class="o">.</span><span class="mf">3.</span><span class="n">tar</span><span class="o">.</span><span class="n">gz</span>
+<span class="p">[</span><span class="n">username</span><span class="err">@</span><span class="n">es1</span> <span class="o">~</span><span class="p">]</span><span class="o">$</span> <span class="n">module</span> <span class="nb">load</span> <span class="n">gcc</span><span class="o">/</span><span class="mf">11.2</span><span class="o">.</span><span class="mi">0</span> <span class="n">cuda</span><span class="o">/</span><span class="mf">11.6</span>
+<span class="p">[</span><span class="n">username</span><span class="err">@</span><span class="n">es1</span> <span class="o">~</span><span class="p">]</span><span class="o">$</span> <span class="n">cd</span> <span class="n">openmpi</span><span class="o">-</span><span class="mf">4.1</span><span class="o">.</span><span class="mi">3</span><span class="o">/</span>
+<span class="p">[</span><span class="n">username</span><span class="err">@</span><span class="n">es1</span> <span class="o">~</span><span class="p">]</span><span class="o">$</span> <span class="o">./</span><span class="n">configure</span> <span class="o">--</span><span class="n">prefix</span><span class="o">=$</span><span class="n">HOME</span><span class="o">/</span><span class="n">apps</span><span class="o">/</span><span class="n">openmpi</span> <span class="o">--</span><span class="n">enable</span><span class="o">-</span><span class="n">mpi</span><span class="o">-</span><span class="n">thread</span><span class="o">-</span><span class="n">multiple</span> <span class="o">--</span><span class="n">with</span><span class="o">-</span><span class="n">cuda</span><span class="o">=$</span><span class="n">CUDA_HOME</span> <span class="o">--</span><span class="n">enable</span><span class="o">-</span><span class="n">orterun</span><span class="o">-</span><span class="n">prefix</span><span class="o">-</span><span class="n">by</span><span class="o">-</span><span class="n">default</span> <span class="o">--</span><span class="n">with</span><span class="o">-</span><span class="n">sge</span>
+<span class="p">[</span><span class="n">username</span><span class="err">@</span><span class="n">es1</span> <span class="o">~</span><span class="p">]</span><span class="o">$</span> <span class="n">make</span> <span class="o">-</span><span class="n">j8</span>
+<span class="p">[</span><span class="n">username</span><span class="err">@</span><span class="n">es1</span> <span class="o">~</span><span class="p">]</span><span class="o">$</span> <span class="n">make</span> <span class="n">install</span>
+<span class="p">[</span><span class="n">username</span><span class="err">@</span><span class="n">es1</span> <span class="o">~</span><span class="p">]</span><span class="o">$</span> <span class="k">export</span> <span class="n">PATH</span><span class="o">=$</span><span class="n">HOME</span><span class="o">/</span><span class="n">apps</span><span class="o">/</span><span class="n">openmpi</span><span class="o">/</span><span class="n">bin</span><span class="p">:</span><span class="o">$</span><span class="n">PATH</span>
+<span class="p">[</span><span class="n">username</span><span class="err">@</span><span class="n">es1</span> <span class="o">~</span><span class="p">]</span><span class="o">$</span> <span class="n">mpicc</span> <span class="o">--</span><span class="n">version</span>
+<span class="n">gcc</span> <span class="p">(</span><span class="n">GCC</span><span class="p">)</span> <span class="mf">11.2</span><span class="o">.</span><span class="mi">0</span>
+<span class="n">Copyright</span> <span class="p">(</span><span class="n">C</span><span class="p">)</span> <span class="mi">2021</span> <span class="n">Free</span> <span class="n">Software</span> <span class="n">Foundation</span><span class="p">,</span> <span class="n">Inc</span><span class="o">.</span>
+<span class="n">This</span> <span class="k">is</span> <span class="n">free</span> <span class="n">software</span><span class="p">;</span> <span class="n">see</span> <span class="n">the</span> <span class="n">source</span> <span class="k">for</span> <span class="n">copying</span> <span class="n">conditions</span><span class="o">.</span>  <span class="n">There</span> <span class="k">is</span> <span class="n">NO</span>
+<span class="n">warranty</span><span class="p">;</span> <span class="ow">not</span> <span class="n">even</span> <span class="k">for</span> <span class="n">MERCHANTABILITY</span> <span class="ow">or</span> <span class="n">FITNESS</span> <span class="n">FOR</span> <span class="n">A</span> <span class="n">PARTICULAR</span> <span class="n">PURPOSE</span><span class="o">.</span>
+<span class="p">[</span><span class="n">username</span><span class="err">@</span><span class="n">es1</span> <span class="o">~</span><span class="p">]</span><span class="o">$</span> <span class="n">ompi_info</span> <span class="o">--</span><span class="n">parsable</span> <span class="o">--</span><span class="n">all</span> <span class="o">|</span> <span class="n">grep</span> <span class="n">mpi_built_with_cuda_support</span><span class="p">:</span><span class="n">value</span>
+<span class="n">mca</span><span class="p">:</span><span class="n">mpi</span><span class="p">:</span><span class="n">base</span><span class="p">:</span><span class="n">param</span><span class="p">:</span><span class="n">mpi_built_with_cuda_support</span><span class="p">:</span><span class="n">value</span><span class="p">:</span><span class="bp">true</span>
+</code></pre></div>
+
+<h2 id="apache-hadoop">Apache Hadoop</h2>
+<p>Apache Hadoopはビルド済みのバイナリをダウンロードし利用します。
+ここでは <code>$HOME/apps/hadoop</code> 以下にインストールします。</p>
+<div class="codehilite"><pre><span></span><code><span class="p">[</span><span class="n">username</span><span class="err">@</span><span class="n">es1</span> <span class="o">~</span><span class="p">]</span><span class="o">$</span> <span class="n">wget</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">dlcdn</span><span class="o">.</span><span class="n">apache</span><span class="o">.</span><span class="n">org</span><span class="o">/</span><span class="n">hadoop</span><span class="o">/</span><span class="n">common</span><span class="o">/</span><span class="n">hadoop</span><span class="o">-</span><span class="mf">3.3</span><span class="o">.</span><span class="mi">2</span><span class="o">/</span><span class="n">hadoop</span><span class="o">-</span><span class="mf">3.3</span><span class="o">.</span><span class="mf">2.</span><span class="n">tar</span><span class="o">.</span><span class="n">gz</span>
+<span class="p">[</span><span class="n">username</span><span class="err">@</span><span class="n">es1</span> <span class="o">~</span><span class="p">]</span><span class="o">$</span> <span class="n">mkdir</span> <span class="o">$</span><span class="n">HOME</span><span class="o">/</span><span class="n">apps</span><span class="o">/</span><span class="n">hadoop</span>
+<span class="p">[</span><span class="n">username</span><span class="err">@</span><span class="n">es1</span> <span class="o">~</span><span class="p">]</span><span class="o">$</span> <span class="n">tar</span> <span class="n">xzf</span> <span class="n">hadoop</span><span class="o">-</span><span class="mf">3.3</span><span class="o">.</span><span class="mf">2.</span><span class="n">tar</span><span class="o">.</span><span class="n">gz</span> <span class="o">-</span><span class="n">C</span> <span class="o">$</span><span class="n">HOME</span><span class="o">/</span><span class="n">apps</span><span class="o">/</span><span class="n">hadoop</span> <span class="o">--</span><span class="n">strip</span><span class="o">-</span><span class="n">components</span> <span class="mi">1</span>
+<span class="p">[</span><span class="n">username</span><span class="err">@</span><span class="n">es1</span> <span class="o">~</span><span class="p">]</span><span class="o">$</span> <span class="k">export</span> <span class="n">PATH</span><span class="o">=$</span><span class="n">HOME</span><span class="o">/</span><span class="n">apps</span><span class="o">/</span><span class="n">hadoop</span><span class="o">/</span><span class="n">bin</span><span class="p">:</span><span class="o">$</span><span class="n">PATH</span>
+<span class="p">[</span><span class="n">username</span><span class="err">@</span><span class="n">es1</span> <span class="o">~</span><span class="p">]</span><span class="o">$</span> <span class="k">export</span> <span class="n">HADOOP_HOME</span><span class="o">=$</span><span class="n">HOME</span><span class="o">/</span><span class="n">apps</span><span class="o">/</span><span class="n">hadoop</span>
+<span class="p">[</span><span class="n">username</span><span class="err">@</span><span class="n">es1</span> <span class="o">~</span><span class="p">]</span><span class="o">$</span> <span class="n">module</span> <span class="nb">load</span> <span class="n">openjdk</span><span class="o">/</span><span class="mf">11.0</span><span class="o">.</span><span class="mf">14.1</span><span class="o">.</span><span class="mi">1</span>
+<span class="p">[</span><span class="n">username</span><span class="err">@</span><span class="n">es1</span> <span class="o">~</span><span class="p">]</span><span class="o">$</span> <span class="n">hadoop</span> <span class="n">version</span>
+<span class="n">Hadoop</span> <span class="mf">3.3</span><span class="o">.</span><span class="mi">2</span>
+<span class="n">Source</span> <span class="n">code</span> <span class="n">repository</span> <span class="n">git</span><span class="err">@</span><span class="n">github</span><span class="o">.</span><span class="n">com</span><span class="p">:</span><span class="n">apache</span><span class="o">/</span><span class="n">hadoop</span><span class="o">.</span><span class="n">git</span> <span class="o">-</span><span class="n">r</span> <span class="mi">0</span><span class="n">bcb014209e219273cb6fd4152df7df713cbac61</span>
+<span class="n">Compiled</span> <span class="n">by</span> <span class="n">chao</span> <span class="n">on</span> <span class="mi">2022</span><span class="o">-</span><span class="mi">02</span><span class="o">-</span><span class="mi">21</span><span class="n">T18</span><span class="p">:</span><span class="mi">39</span><span class="n">Z</span>
+<span class="n">Compiled</span> <span class="n">with</span> <span class="n">protoc</span> <span class="mf">3.7</span><span class="o">.</span><span class="mi">1</span>
+<span class="n">From</span> <span class="n">source</span> <span class="n">with</span> <span class="n">checksum</span> <span class="mi">4</span><span class="n">b40fff8bb27201ba07b6fa5651217fb</span>
+</code></pre></div>
+
+<h2 id="apache-spark">Apache Spark</h2>
+<p>Apache Sparkはビルド済みのバイナリをダウンロードし利用します。
+ここでは <code>$HOME/apps/spark</code> 以下にインストールします。</p>
+<div class="codehilite"><pre><span></span><code><span class="p">[</span><span class="n">username</span><span class="err">@</span><span class="n">es1</span> <span class="o">~</span><span class="p">]</span><span class="o">$</span> <span class="n">wget</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">downloads</span><span class="o">.</span><span class="n">apache</span><span class="o">.</span><span class="n">org</span><span class="o">/</span><span class="n">spark</span><span class="o">/</span><span class="n">spark</span><span class="o">-</span><span class="mf">3.2</span><span class="o">.</span><span class="mi">1</span><span class="o">/</span><span class="n">spark</span><span class="o">-</span><span class="mf">3.2</span><span class="o">.</span><span class="mi">1</span><span class="o">-</span><span class="n">bin</span><span class="o">-</span><span class="n">hadoop3</span><span class="o">.</span><span class="mf">2.</span><span class="n">tgz</span>
+<span class="p">[</span><span class="n">username</span><span class="err">@</span><span class="n">es1</span> <span class="o">~</span><span class="p">]</span><span class="o">$</span> <span class="n">mkdir</span> <span class="o">$</span><span class="n">HOME</span><span class="o">/</span><span class="n">apps</span><span class="o">/</span><span class="n">spark</span>
+<span class="p">[</span><span class="n">username</span><span class="err">@</span><span class="n">es1</span> <span class="o">~</span><span class="p">]</span><span class="o">$</span> <span class="n">tar</span> <span class="n">xf</span> <span class="n">spark</span><span class="o">-</span><span class="mf">3.2</span><span class="o">.</span><span class="mi">1</span><span class="o">-</span><span class="n">bin</span><span class="o">-</span><span class="n">hadoop3</span><span class="o">.</span><span class="mf">2.</span><span class="n">tgz</span> <span class="o">-</span><span class="n">C</span> <span class="o">$</span><span class="n">HOME</span><span class="o">/</span><span class="n">apps</span><span class="o">/</span><span class="n">spark</span> <span class="o">--</span><span class="n">strip</span><span class="o">-</span><span class="n">components</span> <span class="mi">1</span>
+<span class="p">[</span><span class="n">username</span><span class="err">@</span><span class="n">es1</span> <span class="o">~</span><span class="p">]</span><span class="o">$</span> <span class="k">export</span> <span class="n">PATH</span><span class="o">=$</span><span class="n">HOME</span><span class="o">/</span><span class="n">apps</span><span class="o">/</span><span class="n">spark</span><span class="o">/</span><span class="n">bin</span><span class="p">:</span><span class="o">$</span><span class="n">PATH</span>
+<span class="p">[</span><span class="n">username</span><span class="err">@</span><span class="n">es1</span> <span class="o">~</span><span class="p">]</span><span class="o">$</span> <span class="k">export</span> <span class="n">SPARK_HOME</span><span class="o">=$</span><span class="n">HOME</span><span class="o">/</span><span class="n">apps</span><span class="o">/</span><span class="n">spark</span>
+<span class="p">[</span><span class="n">username</span><span class="err">@</span><span class="n">es1</span> <span class="o">~</span><span class="p">]</span><span class="o">$</span> <span class="n">module</span> <span class="nb">load</span> <span class="n">openjdk</span><span class="o">/</span><span class="mf">11.0</span><span class="o">.</span><span class="mf">14.1</span><span class="o">.</span><span class="mi">1</span>
+<span class="p">[</span><span class="n">username</span><span class="err">@</span><span class="n">es1</span> <span class="o">~</span><span class="p">]</span><span class="o">$</span> <span class="n">spark</span><span class="o">-</span><span class="n">submit</span> <span class="o">--</span><span class="n">version</span>
+<span class="n">WARNING</span><span class="p">:</span> <span class="n">An</span> <span class="n">illegal</span> <span class="n">reflective</span> <span class="n">access</span> <span class="n">operation</span> <span class="n">has</span> <span class="n">occurred</span>
+<span class="n">WARNING</span><span class="p">:</span> <span class="n">Illegal</span> <span class="n">reflective</span> <span class="n">access</span> <span class="n">by</span> <span class="n">org</span><span class="o">.</span><span class="n">apache</span><span class="o">.</span><span class="n">spark</span><span class="o">.</span><span class="n">unsafe</span><span class="o">.</span><span class="n">Platform</span> <span class="p">(</span><span class="n">file</span><span class="p">:</span><span class="o">/</span><span class="n">home</span><span class="o">/</span><span class="n">aaa10126pn</span><span class="o">/</span><span class="n">apps</span><span class="o">/</span><span class="n">spark</span><span class="o">/</span><span class="n">jars</span><span class="o">/</span><span class="n">spark</span><span class="o">-</span><span class="n">unsafe_2</span><span class="o">.</span><span class="mi">12</span><span class="o">-</span><span class="mf">3.2</span><span class="o">.</span><span class="mf">1.j</span><span class="n">ar</span><span class="p">)</span> <span class="n">to</span> <span class="n">constructor</span> <span class="n">java</span><span class="o">.</span><span class="n">nio</span><span class="o">.</span><span class="n">DirectByteBuffer</span><span class="p">(</span><span class="n">long</span><span class="p">,</span><span class="nb nb-Type">int</span><span class="p">)</span>
+<span class="n">WARNING</span><span class="p">:</span> <span class="n">Please</span> <span class="n">consider</span> <span class="n">reporting</span> <span class="n">this</span> <span class="n">to</span> <span class="n">the</span> <span class="n">maintainers</span> <span class="n">of</span> <span class="n">org</span><span class="o">.</span><span class="n">apache</span><span class="o">.</span><span class="n">spark</span><span class="o">.</span><span class="n">unsafe</span><span class="o">.</span><span class="n">Platform</span>
+<span class="n">WARNING</span><span class="p">:</span> <span class="n">Use</span> <span class="o">--</span><span class="n">illegal</span><span class="o">-</span><span class="n">access</span><span class="o">=</span><span class="n">warn</span> <span class="n">to</span> <span class="n">enable</span> <span class="n">warnings</span> <span class="n">of</span> <span class="n">further</span> <span class="n">illegal</span> <span class="n">reflective</span> <span class="n">access</span> <span class="n">operations</span>
+<span class="n">WARNING</span><span class="p">:</span> <span class="n">All</span> <span class="n">illegal</span> <span class="n">access</span> <span class="n">operations</span> <span class="n">will</span> <span class="n">be</span> <span class="n">denied</span> <span class="ow">in</span> <span class="n">a</span> <span class="n">future</span> <span class="n">release</span>
+<span class="n">Welcome</span> <span class="n">to</span>
+      <span class="n">____</span>              <span class="n">__</span>
+     <span class="o">/</span> <span class="n">__</span><span class="o">/</span><span class="n">__</span>  <span class="n">___</span> <span class="n">_____</span><span class="o">/</span> <span class="o">/</span><span class="n">__</span>
+    <span class="n">_</span>\ \<span class="o">/</span> <span class="n">_</span> \<span class="o">/</span> <span class="n">_</span> <span class="err">`</span><span class="o">/</span> <span class="n">__</span><span class="o">/</span>  <span class="s1">&#39;_/</span>
+   <span class="o">/</span><span class="n">___</span><span class="o">/</span> <span class="o">.</span><span class="n">__</span><span class="o">/</span>\<span class="n">_</span><span class="p">,</span><span class="n">_</span><span class="o">/</span><span class="n">_</span><span class="o">/</span> <span class="o">/</span><span class="n">_</span><span class="o">/</span>\<span class="n">_</span>\   <span class="n">version</span> <span class="mf">3.2</span><span class="o">.</span><span class="mi">1</span>
+      <span class="o">/</span><span class="n">_</span><span class="o">/</span>
+
+<span class="n">Using</span> <span class="n">Scala</span> <span class="n">version</span> <span class="mf">2.12</span><span class="o">.</span><span class="mi">15</span><span class="p">,</span> <span class="n">OpenJDK</span> <span class="mi">64</span><span class="o">-</span><span class="n">Bit</span> <span class="n">Server</span> <span class="n">VM</span><span class="p">,</span> <span class="mf">11.0</span><span class="o">.</span><span class="mf">14.1</span>
+<span class="n">Branch</span> <span class="n">HEAD</span>
+<span class="n">Compiled</span> <span class="n">by</span> <span class="n">user</span> <span class="n">hgao</span> <span class="n">on</span> <span class="mi">2022</span><span class="o">-</span><span class="mi">01</span><span class="o">-</span><span class="mi">20</span><span class="n">T19</span><span class="p">:</span><span class="mi">26</span><span class="p">:</span><span class="mi">14</span><span class="n">Z</span>
+<span class="n">Revision</span> <span class="mi">4</span><span class="n">f25b3f71238a00508a356591553f2dfa89f8290</span>
+<span class="n">Url</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">github</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">apache</span><span class="o">/</span><span class="n">spark</span>
+<span class="n">Type</span> <span class="o">--</span><span class="n">help</span> <span class="k">for</span> <span class="n">more</span> <span class="n">information</span><span class="o">.</span>
+</code></pre></div>
+
+<h2 id="singularity-global-client">Singularity Global Client</h2>
+<p>Singularity Global Clientはpipコマンドでインストールし利用します。
+ここでは仮想環境を <code>$HOME/venv/sregistry</code> に作成しSingularity Global Clientをインストールします。</p>
+<div class="codehilite"><pre><span></span><code><span class="p">[</span><span class="n">username</span><span class="err">@</span><span class="n">es1</span> <span class="o">~</span><span class="p">]</span><span class="o">$</span> <span class="n">module</span> <span class="nb">load</span> <span class="n">module</span> <span class="nb">load</span> <span class="n">gcc</span><span class="o">/</span><span class="mf">11.2</span><span class="o">.</span><span class="mi">0</span> <span class="n">python</span><span class="o">/</span><span class="mf">3.8</span> <span class="n">singularitypro</span>
+<span class="p">[</span><span class="n">username</span><span class="err">@</span><span class="n">es1</span> <span class="o">~</span><span class="p">]</span><span class="o">$</span> <span class="n">python3</span> <span class="o">-</span><span class="n">m</span> <span class="n">venv</span> <span class="n">venv</span><span class="o">/</span><span class="n">sregistry</span>
+<span class="p">[</span><span class="n">username</span><span class="err">@</span><span class="n">es1</span> <span class="o">~</span><span class="p">]</span><span class="o">$</span> <span class="n">source</span> <span class="n">venv</span><span class="o">/</span><span class="n">sregistry</span><span class="o">/</span><span class="n">bin</span><span class="o">/</span><span class="n">activate</span>
+<span class="p">(</span><span class="n">sregistry</span><span class="p">)</span> <span class="p">[</span><span class="n">username</span><span class="err">@</span><span class="n">es1</span> <span class="o">~</span><span class="p">]</span><span class="o">$</span> <span class="n">pip3</span> <span class="n">install</span> <span class="o">--</span><span class="n">upgrade</span> <span class="n">pip</span> <span class="n">setuptools</span>
+<span class="p">(</span><span class="n">sregistry</span><span class="p">)</span> <span class="p">[</span><span class="n">username</span><span class="err">@</span><span class="n">es1</span> <span class="o">~</span><span class="p">]</span><span class="o">$</span> <span class="n">pip3</span> <span class="n">install</span> <span class="n">sregistry</span><span class="p">[</span><span class="n">all</span><span class="p">]</span>
+</code></pre></div>
+
+<p>また、<code>sregistry pull</code>を実行する際に<code>umask 0022</code>を実行してください。
+デフォルトの<code>umask 0027</code>で<code>sregister pull</code>したコンテナは、権限が足りず実行に失敗する場合があるためです。</p>
+<div class="codehilite"><pre><span></span><code><span class="p">(</span><span class="n">sregistry</span><span class="p">)</span><span class="w"> </span><span class="o">[</span><span class="n">username@es1 ~</span><span class="o">]</span><span class="err">$</span><span class="w"> </span><span class="n">umask</span><span class="w"> </span><span class="mi">0022</span><span class="w"></span>
+<span class="p">(</span><span class="n">sregistry</span><span class="p">)</span><span class="w"> </span><span class="o">[</span><span class="n">username@es1 ~</span><span class="o">]</span><span class="err">$</span><span class="w"> </span><span class="n">sregistry</span><span class="w"> </span><span class="n">pull</span><span class="w"> </span><span class="nl">docker</span><span class="p">:</span><span class="o">//</span><span class="n">alpine</span><span class="w"></span>
+<span class="p">(</span><span class="n">sregistry</span><span class="p">)</span><span class="w"> </span><span class="o">[</span><span class="n">username@es1 ~</span><span class="o">]</span><span class="err">$</span><span class="w"> </span><span class="n">umask</span><span class="w"> </span><span class="mi">0027</span><span class="w"></span>
+<span class="p">(</span><span class="n">sregistry</span><span class="p">)</span><span class="w"> </span><span class="o">[</span><span class="n">username@es1 ~</span><span class="o">]</span><span class="err">$</span><span class="w"> </span><span class="n">singularity</span><span class="w"> </span><span class="k">exec</span><span class="w"> </span><span class="err">`</span><span class="n">sregistry</span><span class="w"> </span><span class="k">get</span><span class="w"> </span><span class="n">alpine</span><span class="err">`</span><span class="w"> </span><span class="n">uname</span><span class="w"> </span><span class="o">-</span><span class="n">a</span><span class="w"></span>
+<span class="n">Linux</span><span class="w"> </span><span class="n">es1</span><span class="p">.</span><span class="n">abci</span><span class="p">.</span><span class="k">local</span><span class="w"> </span><span class="mf">3.10.0</span><span class="o">-</span><span class="mf">862.</span><span class="n">el7</span><span class="p">.</span><span class="n">x86_64</span><span class="w"> </span><span class="n">#1</span><span class="w"> </span><span class="n">SMP</span><span class="w"> </span><span class="n">Fri</span><span class="w"> </span><span class="n">Apr</span><span class="w"> </span><span class="mi">20</span><span class="w"> </span><span class="mi">16</span><span class="err">:</span><span class="mi">44</span><span class="err">:</span><span class="mi">24</span><span class="w"> </span><span class="n">UTC</span><span class="w"> </span><span class="mi">2018</span><span class="w"> </span><span class="n">x86_64</span><span class="w"> </span><span class="n">Linux</span><span class="w"></span>
+</code></pre></div>
+                
+              
+              
+                
+
+
+              
+            </article>
+          </div>
+        </div>
+        
+      </main>
+      
+        
+<footer class="md-footer">
+  
+    <nav class="md-footer__inner md-grid" aria-label="フッター">
+      
+        <a href="../dl-amazon-ecr/" class="md-footer__link md-footer__link--prev" rel="prev">
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+          </div>
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                前
+              </span>
+              Amazon ECR からコンテナ取得
+            </div>
+          </div>
+        </a>
+      
+      
+        <a href="../../abci-cloudstorage/" class="md-footer__link md-footer__link--next" rel="next">
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                次
+              </span>
+              概要
+            </div>
+          </div>
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4z"/></svg>
+          </div>
+        </a>
+      
+    </nav>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-footer-copyright">
+        
+          <div class="md-footer-copyright__highlight">
+            Copyright &copy; 2021 National Institute of Advanced Industrial Science and Technology (AIST)
+          </div>
+        
+        Made with
+        <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+          Material for MkDocs
+        </a>
+        
+      </div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    <script id="__config" type="application/json">{"base": "../..", "features": ["toc.integrate"], "translations": {"clipboard.copy": "\u30af\u30ea\u30c3\u30d7\u30dc\u30fc\u30c9\u3078\u30b3\u30d4\u30fc", "clipboard.copied": "\u30b3\u30d4\u30fc\u3057\u307e\u3057\u305f", "search.config.lang": "ja", "search.config.pipeline": "trimmer, stemmer", "search.config.separator": "[\\s\\-\u3000\u3001\u3002\uff0c\uff0e]+", "search.placeholder": "\u691c\u7d22", "search.result.placeholder": "\u691c\u7d22\u30ad\u30fc\u30ef\u30fc\u30c9\u3092\u5165\u529b\u3057\u3066\u304f\u3060\u3055\u3044", "search.result.none": "\u4f55\u3082\u898b\u3064\u304b\u308a\u307e\u305b\u3093\u3067\u3057\u305f", "search.result.one": "1\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.other": "#\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.more.one": "\u3053\u306e\u30da\u30fc\u30b8\u5185\u306b\u3082\u30461\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.more.other": "\u3053\u306e\u30da\u30fc\u30b8\u5185\u306b\u3042\u3068#\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.term.missing": "\u691c\u7d22\u306b\u542b\u307e\u308c\u306a\u3044"}, "search": "../../assets/javascripts/workers/search.fe42c31b.min.js", "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.4ea5477f.min.js"></script>
+      
+    
+  </body>
+</html>

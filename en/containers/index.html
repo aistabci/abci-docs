@@ -842,6 +842,18 @@
   
 
           
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../tips/modules-removed-and-alternatives/" class="md-nav__link">
+        Modules removed and alternatives
+      </a>
+    </li>
+  
+
+          
         </ul>
       </nav>
     </li>
@@ -1579,6 +1591,11 @@ In this case, you will have a Singularity recipe file (h2o4gpuPy.def) and a vali
 </code></pre></div>
 
 <h2 id="docker">Docker</h2>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>We plan to discontinue support for the ability to run jobs on Docker containers in FY2022 operations. If you wish to use containers, please use Singularity containers in your jobs.
+We will also discontinue maintenance of the Docker images we provide. </p>
+</div>
 <p>In the ABCI System, job can be executed on Docker container.
 When you use Docker, you need to set up user environment by the <code>module</code> command and specify <code>-l docker</code> option and <code>-l docker_image</code> option at job submission.</p>
 <table>

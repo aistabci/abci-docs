@@ -854,6 +854,18 @@
   
 
           
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../tips/modules-removed-and-alternatives/" class="md-nav__link">
+        提供を終了したモジュールとその代替手段
+      </a>
+    </li>
+  
+
+          
         </ul>
       </nav>
     </li>
@@ -1595,6 +1607,11 @@ buildに成功すると、コンテナイメージ(h2o4gpuPy.sif)が生成され
 </code></pre></div>
 
 <h2 id="docker">Docker</h2>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>2022年度の運用において、Dockerコンテナ上でのジョブ実行機能のサポートを廃止する予定です。コンテナを使用したい場合は、Singularityコンテナをジョブ内でご利用ください。
+また、ABCIが提供しているDockerイメージのメンテナンスも併せて終了します。</p>
+</div>
 <p>ABCIシステムではDockerコンテナ上でのジョブ実行が可能です。
 Dockerを利用する場合、ジョブ投入時に<code>-l docker</code>オプションと<code>-l docker_images</code>オプションを指定する必要があります。</p>
 <table>
