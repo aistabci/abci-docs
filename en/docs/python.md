@@ -4,7 +4,7 @@
 
 [Python](https://www.python.org/) is available on the ABCI System.
 
-To show available Python versions with using `module avail` command:
+To show available Python versions with using `module` command:
 
 ```
 [username@es1 ~]$ module avail python
@@ -23,23 +23,23 @@ Example) Python 2.7.18:
 Python 2.7.18
 ```
 
-Example) Python 3.8.13:
+Example) Python 3.10.4:
 
-For Compute (V) environment, load the `gcc/11.2.0` module first.
+When using Python 3.8 or higher in the compute node (V) environment, load the `gcc/11.2.0` module before the python module.
 
 ```
 [username@es1 ~]$ module load gcc/11.2.0
-[username@es1 ~]$ module load python/3.8/3.8.13
+[username@es1 ~]$ module load python/3.10/3.10.4
 [username@es1 ~]$ python3 --version
-Python 3.8.13
+Python 3.10.4
 ```
 
-For Compute (A) environment, it is not necessary to load the gcc module.
+For the compute node (A) environment, it is not necessary to load the gcc module.
 
 ```
-[username@es-a1 ~]$ module load python/3.8/3.8.13
+[username@es-a1 ~]$ module load python/3.10/3.10.4
 [username@es-a1 ~]$ python3 --version
-Python 3.8.13
+Python 3.10.4
 ```
 
 !!! note
@@ -70,7 +70,7 @@ Example) Creation of a virtual environment
 created virtual environment CPython2.7.18.final.0-64 in 1862ms
   creator CPython2Posix(dest=/home/username/env1, clear=False, no_vcs_ignore=False, global=False)
   seeder FromAppData(download=False, pip=bundle, wheel=bundle, setuptools=bundle, via=copy, app_data_dir=/home/username/.local/share/virtualenv)
-    added seed packages: pip==20.3.4, setuptools==44.1.1, wheel==0.36.2
+    added seed packages: pip==20.3.4, setuptools==44.1.1, wheel==0.37.0
   activators PythonActivator,CShellActivator,FishActivator,PowerShellActivator,BashActivator
 ```
 
@@ -105,7 +105,7 @@ Below are examples of executing `venv`:
 Example) Creation of a virtual environment
 
 ```
-[username@es1 ~]$ module load gcc/11.2.0 python/3.8/3.8.13
+[username@es1 ~]$ module load gcc/11.2.0 python/3.10/3.10.4
 [username@es1 ~]$ python3 -m venv work
 ```
 
