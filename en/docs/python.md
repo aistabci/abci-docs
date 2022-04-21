@@ -25,7 +25,7 @@ Python 2.7.18
 
 Example) Python 3.10.4:
 
-When using Python 3.8 or higher in the compute node (V) environment, load the `gcc/11.2.0` module before the python module.
+When using Python 3.7 or higher in the compute node (V) environment, load the `gcc/11.2.0` module before the python module.
 
 ```
 [username@es1 ~]$ module load gcc/11.2.0
