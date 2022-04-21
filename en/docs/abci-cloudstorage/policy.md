@@ -2,9 +2,6 @@
 
 Other than ACL, Access Control Policy is also available to define permisson for ABCI Cloud Storage account. Access Control Policy can control accessibility in different ways from the ones ACL offers. To use Access Control Policy, Usage Managers Account is necessary. If your ABCI Cloud Storage account is Users Account, ask Usage Managers to change the accessibility or to grant you appropreate permission.
 
-!!! note
-    Access control policies cannot be applied to buckets or objects. Therefore, there may be the cases that you need to set Access Control Policy to all ABCI Cloud Storage accounts within a group.
-
 ## Default Permission 
 
 Default setting grants all ABCI Cloud Storage accounts full-control permission to object of the group. 
@@ -12,7 +9,7 @@ Default setting grants all ABCI Cloud Storage accounts full-control permission t
 In case you use default setting, additional policy settings mentioned below is unnecessary. When detailed and complexed setting, such as granting specific ABCI Cloud Storage account only read permission, granting permission to only limited ABCI Cloud Storage accounts, are neeeded, the following instructions are helpful. 
 
 
-## Setting Policy
+## Setting User Policy {#config-user-policy}
 
 <!--  Once "default-sub-group" is introdued, default access permision can be changed  -->
 
@@ -22,7 +19,7 @@ General conditions are following.
 - Ruling order does not matter, and Deny is prioritized over Allow. Even Denys in otner policy has priority.
 - Although capital letters are available for the name of policies (i.e. names specified by '--policy-name'), it is highly recommended that you use small letters of alphabets and numbers and hyphen(0x2d).
 
-For policy setting, access permissions are written in JSON format. In order to define what to allow, what to deny and judgement condistions, combinations of Effect, Action, Resource and Condition are used.
+For user policy setting, access permissions are written in JSON format. In order to define what to allow, what to deny and judgement condistions, combinations of Effect, Action, Resource and Condition are used.
 
 For Effect, 'Allow' and 'Deny' are available to define rules.
 
@@ -114,7 +111,7 @@ Condition element can be omitted if it is unnecessary.
 }
 ```
 
-The following examples show how to control access by policy.
+The following examples show how to control access by user policy.
 
 ### Example 1:  Limiting Bucket Access By Accounts
 
@@ -230,3 +227,52 @@ Secondly, register this policy to ABCI Cloud Storage. The follwing example appli
 ```
 
 By default setting, because no IP address limitation is defined, any ABCI Cloud Storage accounts to which the policy shown above is not applied has no limitation, regardless of sources' IP addresses. In order to list accounts in ABCI Cloud Storage, execute the command 'aws --endpoint-url https://s3.abci.ai iam list-users.'
+
+
+## Setting Bucket Policy
+
+For bucket policy setting, access permissions are written in JSON format. In order to define what to allow, what to deny and judgement condistions, combinations of Effect, Action, Resource and Principal are used.
+
+For Effect, Action and Resource, please refer to [Setting User Policy](policy.md#config-user-policy).
+
+Principal defines accessible ABCI Cloud Storage account. Wildcards are available.
+
+!!! note
+    Condition is not supported in bucket policy. Therefore, for example, it is not possible to set conditions such as IP address limitation.
+
+### Example 1:  Limiting Bucket Access By Accounts
+
+Four ABCI Cloud Storage accounts, aaa00000.1, aaa000001.1, aaa00002.1 and aaa00003.1, are created, for example, and there is a bucket whose name is 'sensor8'.Now we are showing how to allow only two users, aaa00000.1 and aaa00001.1, to access the bucket.
+
+Firstly, create a .json file whose name is 'sensor8.json', for example, as following. The name of a .json file can be arbitrary.
+
+```
+{
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Effect": "Deny",
+            "Action": "s3:*",
+            "Resource": ["arn:aws:s3:::sensor8", "arn:aws:s3:::sensor8/*"],
+            "Principal": {
+                "AWS": [
+                    "user/aaa00002.1",
+                    "user/aaa00003.1"
+                ]
+            }
+        }
+    ]
+}
+```
+
+It defines the policy that doesn't allow aaa00002.1 and aaa00003.1 to access the bucket.Because 'Deny' has priority, any other 'Allow' will be skipped.
+
+Apply the policy to the bucket, sensor8.
+
+```
+[username@es1 ~]$ aws --endpoint-url https://s3.abci.ai s3api put-bucket-policy --bucket sensor8 --policy file://sensor8.json
+```
+
+By applying the above rules, aaa00002.1 and aaa00003.1 can no longer access the bucket 'sensor8.' aaa00000.1 and aaa00001.1 can still access.
+
+To clarify the bucket to which the policy is applied, execute the command `aws --endpoint-url https://s3.abci.ai s3api get-bucket-policy --bucket sensor8`.
