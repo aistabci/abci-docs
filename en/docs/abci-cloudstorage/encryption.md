@@ -7,7 +7,7 @@ There are two typical encryptions for cloud storages. The one is Client-Side Enc
 
 Data is encrypted when it is stored in disks after uploading to ABCI Cloud Storage. Encrypted data is decryped after retrieving data from the disk. Then the data will be downloaded. Thus, data are decrypted while transferring through the routes though, communications are encrypted by TLS with specifying 'https://s3.abci.ai' as an endpoint.
 
-Amazon S3 provides SSE shown in the table below. ABCI Cloud Storage provides SSE functionality equivalent to SSE-S3. However, it is technically slightly different from SSE-S3 provided by Amazon S3, so that APIs available for Amazon S3 don't work for ABCI Cloud Storage. Neither SSE-C nor SSE KMS are available for ABCI Cloud Storage.
+Amazon S3 provides SSE shown in the table below. ABCI Cloud Storage provides SSE functionality equivalent to SSE-S3. However, SSE-C and SSE-KMS are not available for ABCI Cloud Storage.
 
 | SSE Type | Description |
 | :-- | :-- |
@@ -24,7 +24,7 @@ For detailed information, see [Protecting Data Using Client-Side Encryption](htt
 | CSE-KMS | Encryption with key registered to Key Management Service |
 
 
-## Create Buckets with Encryption
+## Enable Default Bucket Encryption
 
 To enable SSE for a bucket, run `aws s3api put-bucket-encryption`. Note that the bucket must be created beforehand.
 The following example shows how to enable SSE for a bucket 'dataset-s0001'.
@@ -45,13 +45,13 @@ The following example shows how to enable SSE for a bucket 'dataset-s0001'.
     The above is encrypted when storing the object on the server using the key stored on the storage side (decrypted when reading), it is not encrypted with information unique to the transmission request such as access key.
 
 !!! note
-    There is no way to later enable encryption for buckets that do not have encryption enabled.
+    There is no change to the encryption of the objects that existed in the bucket before default encryption was enabled.
 
 
 ## Confirm a bucket with activated SSE
 
-To confirm if a bucket is activated SSE, run 、`aws s3api get-bucket-encryption`.
-The following example screens show bucket 'dataset-s0001' with SSE enabled. The bucket is activated encryption because the string `"SSEAlgorithm": "AES256"` is listed. Unless the string is listed, the bucket is without encryption.
+To confirm if a bucket is activated SSE, run `aws s3api get-bucket-encryption`.
+The following example screens show bucket 'dataset-s0001' with SSE enabled. The bucket is activated default encryption because the string `"SSEAlgorithm": "AES256"` is listed. Unless the string is listed, the bucket is without default encryption.
 
 ```
 [username@es1 ~]$ aws --endpoint-url https://s3.abci.ai s3api get-bucket-encryption --bucket dataset-s0001
@@ -70,7 +70,7 @@ The following example screens show bucket 'dataset-s0001' with SSE enabled. The 
 ```
 
 In addition, you can run `aws s3api head-object` to confirm if object encryption is activated.
-The following example screens meta data of 'cat.jpg' uploaded to the bucket 'dataset-s0001.' The object is uploaded with activated encryption because the string "ServerSideEncryption": "AES256" is listed.
+The following example screens meta data of 'cat.jpg' uploaded to the bucket 'dataset-s0001.' The object is uploaded with activated encryption because the string `"ServerSideEncryption": "AES256"` is listed.
 
 ```
 [username@es1 ~]$ aws --endpoint-url https://s3.abci.ai s3api head-object --bucket dataset-s0001 --key cat.jpg
