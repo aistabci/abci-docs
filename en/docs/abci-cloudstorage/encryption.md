@@ -26,12 +26,19 @@ For detailed information, see [Protecting Data Using Client-Side Encryption](htt
 
 ## Create Buckets with Encryption
 
-To create buckets with activated SSE, use create-encrypted-bucket provided by ABCI system instead of using the aws commands.
-The following example shows how to create a bucket 'dataset-s0001'.
+To enable SSE for a bucket, run `aws s3api put-bucket-encryption`. Note that the bucket must be created beforehand.
+The following example shows how to enable SSE for a bucket 'dataset-s0001'.
 
 ```
-[username@es1 ~]$ create-encrypted-bucket --endpoint-url https://s3.abci.ai s3://dataset-s0001
-create-encrypted-bucket Success.
+[username@es1 ~]$ aws --endpoint-url https://s3.abci.ai s3api put-bucket-encryption --bucket dataset-s0001 --server-side-encryption-configuration '{
+    "Rules": [
+        {
+            "ApplyServerSideEncryptionByDefault": {
+                "SSEAlgorithm": "AES256"
+            }
+        }
+    ]
+}'
 ```
 
 !!! note
@@ -43,10 +50,27 @@ create-encrypted-bucket Success.
 
 ## Confirm a bucket with activated SSE
 
-To confirm if a bucket is created with activated SSE, there should be objects in the bucket because meta data of objects is necessary. Thus, if the bucket is empty, create an object.
+To confirm if a bucket is activated SSE, run 、`aws s3api get-bucket-encryption`.
+The following example screens show bucket 'dataset-s0001' with SSE enabled. The bucket is activated encryption because the string `"SSEAlgorithm": "AES256"` is listed. Unless the string is listed, the bucket is without encryption.
 
-To confirm, run the `aws s3api head-object`.
-The following example screens meta data of 'cat.jpg' uploaded to the bucket 'dataset-s0001.' The bucket is created with activated encryption because the string "ServerSideEncryption": "AES256" is listed. Unless the string is listed, the bucket is without encryption.
+```
+[username@es1 ~]$ aws --endpoint-url https://s3.abci.ai s3api get-bucket-encryption --bucket dataset-s0001
+{
+    "ServerSideEncryptionConfiguration": {
+        "Rules": [
+            {
+                "ApplyServerSideEncryptionByDefault": {
+                    "SSEAlgorithm": "AES256"
+                },
+                "BucketKeyEnabled": false
+            }
+        ]
+    }
+}
+```
+
+In addition, you can run `aws s3api head-object` to confirm if object encryption is activated.
+The following example screens meta data of 'cat.jpg' uploaded to the bucket 'dataset-s0001.' The object is uploaded with activated encryption because the string "ServerSideEncryption": "AES256" is listed.
 
 ```
 [username@es1 ~]$ aws --endpoint-url https://s3.abci.ai s3api head-object --bucket dataset-s0001 --key cat.jpg

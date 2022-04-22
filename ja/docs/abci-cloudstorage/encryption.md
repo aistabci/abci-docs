@@ -26,12 +26,19 @@ CSEの説明は、[Protecting Data Using Client-Side Encryption](https://docs.aw
 
 ## 暗号化を有効にしたバケットの作成
 
-SSE を有効にしたバケットを作るには、awsコマンドではなく、ABCI環境に用意されている create-encrypted-bucket コマンドを実行します。
-例えば、'dataset-s0001' というバケットを作る場合は以下のように実行します。
+バケットの SSE を有効化するには、`aws s3api put-bucket-encryption` を実行します。なお、バケットはあらかじめ作成しておく必要があります。
+例えば、'dataset-s0001' というバケットで SSE を有効化する場合は以下のように実行します。
 
 ```
-[username@es1 ~]$ create-encrypted-bucket --endpoint-url https://s3.abci.ai s3://dataset-s0001
-create-encrypted-bucket Success.
+[username@es1 ~]$ aws --endpoint-url https://s3.abci.ai s3api put-bucket-encryption --bucket dataset-s0001 --server-side-encryption-configuration '{
+    "Rules": [
+        {
+            "ApplyServerSideEncryptionByDefault": {
+                "SSEAlgorithm": "AES256"
+            }
+        }
+    ]
+}'
 ```
 
 !!! note
@@ -43,10 +50,28 @@ create-encrypted-bucket Success.
 
 ## 暗号化を有効にしたバケットかどうかの判別
 
-SSEを有効にしたバケットかどうかを判別するには、オブジェクトのメタデータを確認する必要があるため、空のバケットでは確認できません。空の場合は、なにかオブジェクトを1つ作成してください。
+SSEを有効にしたバケットかどうかを判別するには、`aws s3api get-bucket-encryption` を実行します。
 
-確認は `aws s3api head-object` で行います。
-以下では、dataset-s0001 バケットにアップロードした cat.jpg というオブジェクトのメタデータを確認しています。 `"ServerSideEncryption": "AES256"` という情報が含まれているため、dataset-s0001 は暗号化を有効にしたバケットであるといえます。この情報が含まれていない場合は、暗号化が有効でないバケットであることを示しています。
+以下では、dataset-s0001 バケットでSSEが有効になっているかを確認しています。 `"SSEAlgorithm": "AES256"` という情報が含まれているため、dataset-s0001 は暗号化を有効にしたバケットであるといえます。この情報が含まれていない場合は、暗号化が有効でないバケットであることを示しています。
+
+```
+[username@es1 ~]$ aws --endpoint-url https://s3.abci.ai s3api get-bucket-encryption --bucket dataset-s0001
+{
+    "ServerSideEncryptionConfiguration": {
+        "Rules": [
+            {
+                "ApplyServerSideEncryptionByDefault": {
+                    "SSEAlgorithm": "AES256"
+                },
+                "BucketKeyEnabled": false
+            }
+        ]
+    }
+}
+```
+
+また、`aws s3api head-object` を実行すると、オブジェクトの暗号化が有効かどうかを確認できます。
+以下では、dataset-s0001 バケットにアップロードした cat.jpg というオブジェクトのメタデータを確認しています。 `"ServerSideEncryption": "AES256"` という情報が含まれている場合は、オブジェクトの暗号化が有効になっています。
 
 ```
 [username@es1 ~]$ aws --endpoint-url https://s3.abci.ai s3api head-object --bucket dataset-s0001 --key cat.jpg
