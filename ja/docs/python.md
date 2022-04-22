@@ -7,10 +7,10 @@ ABCIシステムでは[Python](https://www.python.org/)を利用可能です。
 利用できるPythonのバージョンは`module`コマンドで確認できます。
 
 ```
-$ module avail python
+[username@es1 ~]$ module avail python
 
--------------------------------- /apps/modules/modulefiles/devtools --------------------------------
-python/2.7/2.7.18 python/3.6/3.6.12  python/3.7/3.7.10  python/3.8/3.8.7
+------------------ /apps/modules/modulefiles/centos7/devtools ------------------
+python/2.7/2.7.18  python/3.10/3.10.4 python/3.7/3.7.13  python/3.8/3.8.13
 ```
 
 以下のように利用環境を設定することで利用可能になります。
@@ -18,17 +18,28 @@ python/2.7/2.7.18 python/3.6/3.6.12  python/3.7/3.7.10  python/3.8/3.8.7
 例) Python 2.7.18を利用する場合:
 
 ```
-$ module load python/2.7/2.7.18
-$ python --version
+[username@es1 ~]$ module load python/2.7/2.7.18
+[username@es1 ~]$ python --version
 Python 2.7.18
 ```
 
-例) Python 3.6.12を利用する場合:
+例) Python 3.10.4を利用する場合:
+
+計算ノード(V)環境でPython 3.7以上を利用する場合、`gcc/11.2.0`モジュールをpythonモジュールより先にロードしてください。
 
 ```
-$ module load python/3.6/3.6.12
-$ python3 --version
-Python 3.6.12
+[username@es1 ~]$ module load gcc/11.2.0
+[username@es1 ~]$ module load python/3.10/3.10.4
+[username@es1 ~]$ python3 --version
+Python 3.10.4
+```
+
+なお、計算ノード(A)環境の場合、gccモジュールのロードは不要です。
+
+```
+[username@es-a1 ~]$ module load python/3.10/3.10.4
+[username@es-a1 ~]$ python3 --version
+Python 3.10.4
 ```
 
 !!! note
@@ -61,7 +72,7 @@ ABCIが提供する`virtualenv`や`venv`を使って、軽量な仮想環境を�
 created virtual environment CPython2.7.18.final.0-64 in 1862ms
   creator CPython2Posix(dest=/home/username/env1, clear=False, no_vcs_ignore=False, global=False)
   seeder FromAppData(download=False, pip=bundle, wheel=bundle, setuptools=bundle, via=copy, app_data_dir=/home/username/.local/share/virtualenv)
-    added seed packages: pip==20.3.4, setuptools==44.1.1, wheel==0.36.2
+    added seed packages: pip==20.3.4, setuptools==44.1.1, wheel==0.37.0
   activators PythonActivator,CShellActivator,FishActivator,PowerShellActivator,BashActivator
 ```
 
@@ -96,7 +107,7 @@ created virtual environment CPython2.7.18.final.0-64 in 1862ms
 例) 仮想環境の作成
 
 ```
-[username@es1 ~]$ module load python/3.6/3.6.12
+[username@es1 ~]$ module load gcc/11.2.0 python/3.10/3.10.4
 [username@es1 ~]$ python3 -m venv work
 ```
 
