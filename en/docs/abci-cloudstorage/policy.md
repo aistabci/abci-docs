@@ -1,6 +1,6 @@
 # Access Control (2) - Policy -
 
-Other than ACL, Access Control Policy is also available to define permisson for ABCI Cloud Storage account. Access Control Policy can control accessibility in different ways from the ones ACL offers. To use Access Control Policy, Usage Managers Account is necessary. If your ABCI Cloud Storage account is Users Account, ask Usage Managers to change the accessibility or to grant you appropreate permission.
+Other than ACL, Access Control Policy is also available to define permisson for ABCI Cloud Storage account and bucket. Access Control Policy can control accessibility in different ways from the ones ACL offers. To use Access Control Policy, Usage Managers Account is necessary. If your ABCI Cloud Storage account is Users Account, ask Usage Managers to change the accessibility or to grant you appropreate permission.
 
 ## Default Permission 
 
@@ -12,6 +12,8 @@ In case you use default setting, additional policy settings mentioned below is u
 ## Setting User Policy {#config-user-policy}
 
 <!--  Once "default-sub-group" is introdued, default access permision can be changed  -->
+
+User Policy sets access control policies for ABCI Cloud Storage account. User Policy can control accessibility on a per ABCI Cloud Storage account basis.
 
 General conditions are following.
 
@@ -231,6 +233,7 @@ By default setting, because no IP address limitation is defined, any ABCI Cloud 
 
 ## Setting Bucket Policy
 
+Bucket Policy sets access control policies for bucket. Bucket Policy can control accessibility on a per-bucket basis.
 For bucket policy setting, access permissions are written in JSON format. In order to define what to allow, what to deny and judgement condistions, combinations of Effect, Action, Resource and Principal are used.
 
 For Effect, Action and Resource, please refer to [Setting User Policy](policy.md#config-user-policy).

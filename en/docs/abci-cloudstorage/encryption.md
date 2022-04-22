@@ -26,6 +26,7 @@ For detailed information, see [Protecting Data Using Client-Side Encryption](htt
 
 ## Enable Default Bucket Encryption
 
+You can set the default encryption befavior for a bucket. If you enable SSE for a bucket, all objects will have encryption when stored in the bucket.
 To enable SSE for a bucket, run `aws s3api put-bucket-encryption`. Note that the bucket must be created beforehand.
 The following example shows how to enable SSE for a bucket 'dataset-s0001'.
 
