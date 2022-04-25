@@ -1,12 +1,21 @@
 # Containers
 
+ABCI allows users to create an application execution environment using Singularity containers.
+This allows users to create their own customized environments or build and compute equivalent environments on ABCI based on container images officially distributed by external organizations.
+
+For example, the [NGC Catalog](https://catalog.ngc.nvidia.com/) provides container images of various deep learning frameworks, CUDA and HPC environments.
+See [NVIDIA NGC](https://docs.abci.ai/ja/tips/ngc/)for tips on how to use the NGC Catalog with ABCI.
+
+You can also use newer versions of the AWS CLI by using the [AWS CLI Container](https://hub.docker.com/r/amazon/aws-cli) published on Docker Hub.
+Other versions of [TensorFlow](https://hub.docker.com/r/tensorflow/tensorflow/) and [PyTorch](https://hub.docker.com/r/pytorch/) published on the Docker Hub pytorch) and [Python](https://hub.docker.com/_/python), which are not installed on ABCI. However, do not use untrusted container images.
+
 ## Singularity
 
 !!! warning
     We have stopped offering Singularity 2.6 at the end of March 2021.
 
 [Singularity](https://www.sylabs.io/singularity/) is available on the ABCI System.
-Available version is SingularityPRO 3.7.
+Available version is SingularityPRO 3.9.
 To use Singularity, set up user environment by the `module` command.
 
 ```
@@ -15,7 +24,7 @@ To use Singularity, set up user environment by the `module` command.
 
 More comprehensive user guide for Singularity will be found:
 
-* [SingularityPRO User Guide](https://repo.sylabs.io/guides/pro-3.7/user-guide/)
+* [SingularityPRO User Guide](https://repo.sylabs.io/guides/pro-3.9/user-guide/)
 
 To run NGC-provided Docker images on ABCI by using Singularity: [NVIDIA NGC](tips/ngc.md)
 

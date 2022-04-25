@@ -1,12 +1,24 @@
 # コンテナ
 
+ABCIではSingularityコンテナを利用してアプリケーション実行環境を作成できます。
+これにより、利用者自身でカスタマイズした環境を作成したり、外部機関によって公式に配布されているコンテナイメージをもとにABCI上に同等の環境を構築し、計算することができます。
+
+例えば、[NGC Catalog](https://catalog.ngc.nvidia.com/)からは各種の深層学習フレームワーク、CUDAやHPC環境がセットアップされたコンテナイメージを利用できます。
+NGC CatalogのABCIでの使い方はTipsの[NVIDIA NGC](https://docs.abci.ai/ja/tips/ngc/)を参照してください。
+
+また、Docker Hubで公開されている[AWS CLIコンテナ](https://hub.docker.com/r/amazon/aws-cli)を用いることで、新しいバージョンのAWS CLIを利用することができます。
+他にもDocker Hubに公開されている[TensorFlow](https://hub.docker.com/r/tensorflow/tensorflow/)や[PyTorch](https://hub.docker.com/r/pytorch/pytorch)やABCIにインストールされていないバージョンの[Python](https://hub.docker.com/_/python)などのコンテナを利用することもできます。ただし、信頼できないコンテナイメージは利用しないでください。
+
+
 ## Singularity
 
+<!--
 !!! warning
     Singularity 2.6 は2021年3月末に提供を停止しました。
+-->
 
 ABCIシステムでは[Singularity](https://www.sylabs.io/singularity/)が利用可能です。
-利用可能なバージョンはSingularityPRO 3.7となります。
+利用可能なバージョンはSingularityPRO 3.9となります。
 利用するためには事前に`module`コマンドを用いて利用環境を設定する必要があります。
 
 ```
@@ -15,7 +27,7 @@ ABCIシステムでは[Singularity](https://www.sylabs.io/singularity/)が利用
 
 より網羅的なユーザガイドは、以下にあります。
 
-* [SingularityPRO User Guide](https://repo.sylabs.io/guides/pro-3.7/user-guide/) (英文)
+* [SingularityPRO User Guide](https://repo.sylabs.io/guides/pro-3.9/user-guide/) (英文)
 
 Singularityを用いて、NGCが提供するDockerイメージをABCIで実行する方法は、[NVIDIA NGC](tips/ngc.md) で説明しています。
 
