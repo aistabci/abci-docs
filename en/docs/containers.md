@@ -11,9 +11,6 @@ Other versions of [TensorFlow](https://hub.docker.com/r/tensorflow/tensorflow/) 
 
 ## Singularity
 
-!!! warning
-    We have stopped offering Singularity 2.6 at the end of March 2021.
-
 [Singularity](https://www.sylabs.io/singularity/) is available on the ABCI System.
 Available version is SingularityPRO 3.9.
 To use Singularity, set up user environment by the `module` command.

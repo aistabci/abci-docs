@@ -12,11 +12,6 @@ NGC CatalogのABCIでの使い方はTipsの[NVIDIA NGC](https://docs.abci.ai/ja/
 
 ## Singularity
 
-<!--
-!!! warning
-    Singularity 2.6 は2021年3月末に提供を停止しました。
--->
-
 ABCIシステムでは[Singularity](https://www.sylabs.io/singularity/)が利用可能です。
 利用可能なバージョンはSingularityPRO 3.9となります。
 利用するためには事前に`module`コマンドを用いて利用環境を設定する必要があります。
