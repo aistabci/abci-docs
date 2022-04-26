@@ -1,5 +1,5 @@
 
-# Data encryption
+# Data Encryption
 
 ## Outline of Encryption
 
@@ -24,7 +24,7 @@ For detailed information, see [Protecting Data Using Client-Side Encryption](htt
 | CSE-KMS | Encryption with key registered to Key Management Service |
 
 
-## Enable Default Bucket Encryption
+## Enabling Default Bucket Encryption
 
 You can set the default encryption befavior for a bucket. If you enable SSE for a bucket, all objects will have encryption when stored in the bucket.
 To enable SSE for a bucket, run `aws s3api put-bucket-encryption`. Note that the bucket must be created beforehand.
@@ -49,7 +49,7 @@ The following example shows how to enable SSE for a bucket 'dataset-s0001'.
     There is no change to the encryption of the objects that existed in the bucket before default encryption was enabled.
 
 
-## Confirm a bucket with activated SSE
+## Confirming Default Bucket Encryption
 
 To confirm if a bucket is activated SSE, run `aws s3api get-bucket-encryption`.
 The following example screens show bucket 'dataset-s0001' with SSE enabled. The bucket is activated default encryption because the string `"SSEAlgorithm": "AES256"` is listed. Unless the string is listed, the bucket is without default encryption.

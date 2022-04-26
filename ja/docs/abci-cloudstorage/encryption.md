@@ -24,7 +24,7 @@ CSEの説明は、[Protecting Data Using Client-Side Encryption](https://docs.aw
 | CSE-KMS | Key Management Service に登録された鍵を用いて暗号化 |
 
 
-## バケットのデフォルト暗号化の有効化
+## バケットのデフォルト暗号化を有効にする
 
 バケットに対してデフォルトの暗号化動作を設定することができます。バケットの SSE を有効にした場合、全てのオブジェクトでバケットに保存される際に暗号化が行われます。
 バケットの SSE を有効化するには、`aws s3api put-bucket-encryption` を実行します。なお、バケットはあらかじめ作成しておく必要があります。

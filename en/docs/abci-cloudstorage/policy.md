@@ -1,6 +1,6 @@
 # Access Control (2) - Policy -
 
-Other than ACL, Access Control Policy is also available to define permisson for ABCI Cloud Storage account and bucket. Access Control Policy can control accessibility in different ways from the ones ACL offers. To use Access Control Policy, Usage Managers Account is necessary. If your ABCI Cloud Storage account is Users Account, ask Usage Managers to change the accessibility or to grant you appropreate permission.
+Other than ACL, Access Control Policy is also available to define permission for ABCI Cloud Storage account and bucket. Access Control Policy can control accessibility in different ways from the ones ACL offers. To use Access Control Policy, Usage Managers Account is necessary. If your ABCI Cloud Storage account is Users Account, ask Usage Managers to change the accessibility or to grant you appropriate permission.
 
 ## Default Permission 
 
@@ -21,7 +21,7 @@ General conditions are following.
 - Ruling order does not matter, and Deny is prioritized over Allow. Even Denys in otner policy has priority.
 - Although capital letters are available for the name of policies (i.e. names specified by '--policy-name'), it is highly recommended that you use small letters of alphabets and numbers and hyphen(0x2d).
 
-For user policy setting, access permissions are written in JSON format. In order to define what to allow, what to deny and judgement condistions, combinations of Effect, Action, Resource and Condition are used.
+For user policy setting, access permissions are written in JSON format. In order to define what to allow, what to deny and judgement conditions, combinations of Effect, Action, Resource and Condition are used.
 
 For Effect, 'Allow' and 'Deny' are available to define rules.
 
@@ -234,7 +234,7 @@ By default setting, because no IP address limitation is defined, any ABCI Cloud 
 ## Setting Bucket Policy
 
 Bucket Policy sets access control policies for bucket. Bucket Policy can control accessibility on a per-bucket basis.
-For bucket policy setting, access permissions are written in JSON format. In order to define what to allow, what to deny and judgement condistions, combinations of Effect, Action, Resource and Principal are used.
+For bucket policy setting, access permissions are written in JSON format. In order to define what to allow, what to deny and judgement conditions, combinations of Effect, Action, Resource and Principal are used.
 
 For Effect, Action and Resource, please refer to [Setting User Policy](policy.md#config-user-policy).
 
