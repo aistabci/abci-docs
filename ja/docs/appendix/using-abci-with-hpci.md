@@ -11,17 +11,17 @@ ABCIシステムのフロントエンドであるインタラクティブノー�
 
 `gsissh`コマンドでHPCI向けアクセスサーバ(*hpci.abci.ai*)にログインします。
 
-<div class="codehilite"><pre>
-[yourpc ~]$ gsissh -p 2222 <i>hpci.abci.ai</i>
+```
+[yourpc ~]$ gsissh -p 2222 hpci.abci.ai
 [username@hpci1 ~]$
-</pre></div>
+```
 
 HPCI向けアクセスサーバにログイン後、`ssh`コマンドを用いてインタラクティブノードにログインします。
 
-<div class="codehilite"><pre>
-[username@hpci1 ~]$ ssh <i>es</i>
+```
+[username@hpci1 ~]$ ssh es
 [username@es1 ~]$
-</pre></div>
+```
 
 ### Windows環境 (GSI-SSHTerm) {#windows-environment-gsi-sshterm}
 
@@ -33,10 +33,10 @@ HPCI向けアクセスサーバにログイン後、`ssh`コマンドを用い�
 
 HPCI向けアクセスサーバにログイン後、`ssh`コマンドを用いてインタラクティブノードにログインします。
 
-<div class="codehilite"><pre>
-[username@hpci1 ~]$ ssh <i>es</i>
+```
+[username@hpci1 ~]$ ssh es
 [username@es1 ~]$
-</pre></div>
+```
 
 ## インタラクティブノードへのファイル転送 {#file-transfer-to-interactive-node}
 
@@ -45,10 +45,10 @@ HPCI向けアクセスサーバではホーム領域が共有されていませ�
 一旦HPCI向けアクセスサーバ(ホスト名：*hpci.abci.ai*)へファイル転送し、
 さらにインタラクティブノードへ`scp`(`sftp`)コマンドで転送してください。
 
-<div class="codehilite"><pre>
-[username@hpci1 ~]$ scp local-file username@<i>es</i>:remote-dir
+```
+[username@hpci1 ~]$ scp local-file username@es:remote-dir
 local-file    100% |***********************|  file-size  transfer-time
-</pre></div>
+```
 
 HPCI向けアクセスサーバ用ホーム領域の使用状況と割り当て量を表示するには、
 `quota`コマンドを利用します。

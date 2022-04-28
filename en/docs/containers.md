@@ -429,6 +429,10 @@ Example) running the container
 
 ## Docker
 
+!!! warning
+    We plan to discontinue support for the ability to run jobs on Docker containers in FY2022 operations. If you wish to use containers, please use Singularity containers in your jobs.
+    We will also discontinue maintenance of the Docker images we provide. 
+
 In the ABCI System, job can be executed on Docker container.
 When you use Docker, you need to set up user environment by the `module` command and specify `-l docker` option and `-l docker_image` option at job submission.
 

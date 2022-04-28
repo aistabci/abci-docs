@@ -1,10 +1,61 @@
 # System Updates
 
-## 2022-04-11 (future update)
+## 2022-04-06
 
-* Maximum reserved node time per reservation of compute node (V) will be changed in the Reserved Service from 12,288 to 13,056.
-* Maximum reserved nodes per reservation of compute node (A) will be changed in the Reserved Service from 16 to 18.
-* Maximum reserved node time per reservation of compute node (A) will be changed in the Reserved Service from 6,144 to 6,912.
+| Add / Update / Delete | Software | Version | Previous version |
+|:--|:--|:--|:--|
+| Update | Scality S3 Connector | 8.5.2.2 | 7.4.9.3 |
+| Update | SingularityPRO | 3.9-4 | 3.7-4 |
+| Update | DDN Lustre (Compute node (V)) | 2.12.6_ddn58-1 | 2.12.5_ddn13-1 |
+| Update | OFED (Compute node (V)) | 5.2-1.0.4.0 | 5.0-2.1.8.0 |
+| Update | gcc | 11.2.0 | 9.3.0 |
+| Delete | gcc | 7.4.0 | |
+| Update | intel | 2022.0.2 | 2020.4.304 |
+| Delete | nvhpc | 20.11<br>21.2 | |
+| Delete | openjdk | 1.7.0.171 | |
+| Update | openjdk | 1.8.0.322 | 1.8.0.242 |
+| Update | openjdk | 11.0.14.1.1 | 11.0.6.10 |
+| Update | openjdk | 17.0.2.0.8 | 15.0.2.0.7 |
+| Delete | lua | 5.3.6<br>5.4.2 | |
+| Delete | julia | 1.0 | |
+| Update | julia | 1.6.6 | 1.5 |
+| Update | intel-advisor | 2022.0 | 2020.3 |
+| Update | intel-inspector | 2022.0 | 2020.3 |
+| Update | intel-itac | 2021.5.0 | 2020.0.3 |
+| Update | intel-mkl | 2022.0.0 | 2020.0.4 |
+| Update | intel-vtune | 2022.0.0 | 2020.3 |
+| Add | python | 3.10.4 | |
+| Update | python | 3.7.13 | 3.7.10 |
+| Update | python | 3.8.13 | 3.8.7 |
+| Delete | python | 3.6.12 | |
+| Update | R | 4.1.3 | 4.0.4 |
+| Delete | cuda | 8.0.61.2<br>9.2.88.1<br>11.4.1<br>11.6.0 | |
+| Update | cuda | 11.4.4 | 11.4.1 |
+| Update | cuda | 11.5.2 | 11.5.1 |
+| Update | cuda | 11.6.2 | 11.6.0 |
+| Delete | cudnn | 5.1.10<br>6.0.21<br>8.2.0<br>8.2.1<br>8.2.2 | |
+| Update | cudnn | 8.3.3 | 8.3.2 |
+| Delete | nccl | 1.3.5-1<br>2.1.15-1<br>2.2.13-1<br>2.3.7-1<br>2.9.6-1<br> | |
+| Add | nccl | 2.12.7-1 | |
+| Update | gdrcopy | 2.3 | 2.0 |
+| Update | intel-mpi | 2021.5 | 2019.9 |
+| Add | openmpi | 4.1.3 | |
+| Delete | openmpi | 2.1.6 | |
+| Delete | openmpi | 3.1.6 | |
+| Update | aws-cli | 2.4 | 2.1 |
+| Update | fuse-sshfs | 3.7.2 | 3.7.1 |
+| Update | f3fs-fuse | 1.91 | 1.87 |
+| Delete | sregistory-cli | 0.2.36 | |
+| Update | NVIDIA Tesla Driver | [510.47.03](https://docs.nvidia.com/datacenter/tesla/tesla-release-notes-517-47-03/index.html) | 470.57.02 |
+
+* Maximum reserved node time per reservation of compute node (V) is changed in the Reserved Service from 12,288 to 13,056.
+* Maximum reserved nodes per reservation of compute node (A) is changed in the Reserved Service from 16 to 18.
+* Maximum reserved node time per reservation of compute node (A) is changed in the Reserved Service from 6,144 to 6,912.
+* The installation of Singularity Enterprise CLI has been postponed.
+* One of [known issues](known-issues.md) has been resolved in this update.
+* We have reconfigured the Environment Modules. If you would like to use modules prior to FY2021, please refer to the FAQ ([How to use previous ABCI Environment Modules](faq.md#q-how-to-use-previous-abci-environment-modules)).
+* Due to the reconfiguration of the Environment Modules, some modules have been removed. For more information, please refer to the [Modules removed and alternatives](tips/modules-removed-and-alternatives.md).
+
 
 ## 2022-03-03 
 
