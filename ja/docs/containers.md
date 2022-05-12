@@ -6,9 +6,13 @@ ABCIではSingularityコンテナを利用してアプリケーション実行�
 例えば、[NGC Catalog](https://catalog.ngc.nvidia.com/)からは各種の深層学習フレームワーク、CUDAやHPC環境がセットアップされたコンテナイメージを利用できます。
 NGC CatalogのABCIでの使い方はTipsの[NVIDIA NGC](https://docs.abci.ai/ja/tips/ngc/)を参照してください。
 
-また、Docker Hubで公開されている[AWS CLIコンテナ](https://hub.docker.com/r/amazon/aws-cli)を用いることで、新しいバージョンのAWS CLIを利用することができます。
-他にもDocker Hubに公開されている[TensorFlow](https://hub.docker.com/r/tensorflow/tensorflow/)や[PyTorch](https://hub.docker.com/r/pytorch/pytorch)やABCIにインストールされていないバージョンの[Python](https://hub.docker.com/_/python)などのコンテナを利用することもできます。ただし、信頼できないコンテナイメージは利用しないでください。
+また、Docker Hubの公式リポジトリおよび検証済みリポジトリから、最新のソフトウェアがインストールされたコンテナイメージをダウンロードして使用することもできます。ただし、信頼できないコンテナイメージは使用しないように注意してください。
+以下はDocker Hubで公開されているコンテナイメージの例です。
 
+* [AWS CLI](https://hub.docker.com/r/amazon/aws-cli)
+* [TensorFlow](https://hub.docker.com/r/tensorflow/tensorflow)
+* [PyTorch](https://hub.docker.com/r/pytorch/pytorch)
+* [Python](https://hub.docker.com/_/python)
 
 ## Singularity
 

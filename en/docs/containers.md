@@ -6,8 +6,14 @@ This allows users to create their own customized environments or build and compu
 For example, the [NGC Catalog](https://catalog.ngc.nvidia.com/) provides container images of various deep learning frameworks, CUDA and HPC environments.
 See [NVIDIA NGC](https://docs.abci.ai/ja/tips/ngc/)for tips on how to use the NGC Catalog with ABCI.
 
-You can also use newer versions of the AWS CLI by using the [AWS CLI Container](https://hub.docker.com/r/amazon/aws-cli) published on Docker Hub.
-Other versions of [TensorFlow](https://hub.docker.com/r/tensorflow/tensorflow/) and [PyTorch](https://hub.docker.com/r/pytorch/) published on the Docker Hub pytorch) and [Python](https://hub.docker.com/_/python), which are not installed on ABCI. However, do not use untrusted container images.
+You can also download container images on which the latest software is installed from official or verified repositories on Docker Hub.
+However, be aware not to use untrusted container images.
+The followings are examples.
+
+* [AWS CLI](https://hub.docker.com/r/amazon/aws-cli)
+* [TensorFlow](https://hub.docker.com/r/tensorflow/tensorflow)
+* [PyTorch](https://hub.docker.com/r/pytorch/pytorch)
+* [Python](https://hub.docker.com/_/python)
 
 ## Singularity
 
