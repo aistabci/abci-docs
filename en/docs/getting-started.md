@@ -43,13 +43,11 @@ To connect to the interactive node, you will need the following in advance:
 	* RSA keys, at least 2048bits
 	* ECDSA keys, 256, 384, and 521bits
 	* Ed25519 keys
+* SSH protocol version. Only SSH protocol version 2 is supported.
 * Registration of SSH public keys. Your first need to register your SSH public key on [ABCI User Portal](https://portal.abci.ai/user/). The instruction will be found at [Register Public Key](https://docs.abci.ai/portal/en/02/#23-register-public-key).
 
 !!! note
     If you would like to use PuTTY as an SSH client, please read [PuTTY](tips/putty.md).
-
-!!! note
-    Access to interactive nodes supports SSH version 2.
 
 ### Login using an SSH Client
 

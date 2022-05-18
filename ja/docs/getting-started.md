@@ -46,13 +46,11 @@ ABCIシステムのフロントエンドであるインタラクティブノー�
 	* RSA鍵 (2048bit以上)
 	* ECDSA鍵 (256bit、384bit、または521bit)
 	* Ed25519鍵
+* プロトコルバージョン。SSHプロトコルバージョン2のみサポートしています。
 * SSH公開鍵の登録。[ABCI利用者ポータル](https://portal.abci.ai/user/)にてSSH公開鍵の登録を事前に行ってください。登録方法は、[SSH公開鍵の登録](https://docs.abci.ai/portal/ja/02/#23)を参照してください。
 
 !!! note
     SSHクライアントとして、Tera TermやPuTTYを利用する場合は、[Tera Termの利用](tips/tera-term.md)、[PuTTYの利用](tips/putty.md)を参照。
-
-!!! note
-    インタラクティブノードへのアクセスはSSHバージョン2をサポートしています。
 
 ### SSHクライアントによるログイン {#login-using-an-ssh-client}
 
