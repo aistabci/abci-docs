@@ -51,6 +51,9 @@ ABCIシステムのフロントエンドであるインタラクティブノー�
 !!! note
     SSHクライアントとして、Tera TermやPuTTYを利用する場合は、[Tera Termの利用](tips/tera-term.md)、[PuTTYの利用](tips/putty.md)を参照。
 
+!!! note
+    インタラクティブノードへのアクセスはSSHバージョン2をサポートしています。
+
 ### SSHクライアントによるログイン {#login-using-an-ssh-client}
 
 以下では、SSHクライアントを用いて、(1) アクセスサーバでSSHトンネルの作成後にインタラクティブノードにログインする方法と、(2) OpenSSH 7.3以降で実装されたProxyJumpを使ったより簡便なログイン方法、を説明します。

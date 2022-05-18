@@ -48,6 +48,9 @@ To connect to the interactive node, you will need the following in advance:
 !!! note
     If you would like to use PuTTY as an SSH client, please read [PuTTY](tips/putty.md).
 
+!!! note
+    Access to interactive nodes supports SSH version 2.
+
 ### Login using an SSH Client
 
 In this section, we will describe two methods to login to the interactive node using a SSH client. The first one is creating an SSH tunnel on the access server first and connecting the interactive node via this tunnel next. The second one, much easier method, is connecting directly to the interactive node using ProxyJump implemented in OpenSSH 7.3 or later.
