@@ -41,12 +41,13 @@ ABCIシステムのフロントエンドであるインタラクティブノー�
 
 インタラクティブノードに接続するには、以下が必要になります。
 
-* SSHクライアント。Linux、macOSを含むUNIX系OS、Windows 10 version 1803 (April 2018 Update)以降など、ほとんどのPCには、デフォルトでSSHクライアントがインストールされています。インストールされているかどうかを確認するには、コマンドラインから``ssh``コマンドを実行してください。
-* 安全なSSH公開鍵・秘密鍵ペアの生成。ABCIで利用可能な鍵ペアは以下のとおりです。
+* SSHクライアント: Linux、macOSを含むUNIX系OS、Windows 10 version 1803 (April 2018 Update)以降など、ほとんどのPCには、デフォルトでSSHクライアントがインストールされています。インストールされているかどうかを確認するには、コマンドラインから``ssh``コマンドを実行してください。
+* SSHプロトコルバージョン: SSHプロトコルバージョン2のみサポートしています。
+* 安全なSSH公開鍵・秘密鍵ペアの生成: ABCIで利用可能な鍵ペアは以下のとおりです。
 	* RSA鍵 (2048bit以上)
 	* ECDSA鍵 (256bit、384bit、または521bit)
 	* Ed25519鍵
-* SSH公開鍵の登録。[ABCI利用者ポータル](https://portal.abci.ai/user/)にてSSH公開鍵の登録を事前に行ってください。登録方法は、[SSH公開鍵の登録](https://docs.abci.ai/portal/ja/02/#23)を参照してください。
+* SSH公開鍵の登録: [ABCI利用者ポータル](https://portal.abci.ai/user/)にてSSH公開鍵の登録を事前に行ってください。登録方法は、[SSH公開鍵の登録](https://docs.abci.ai/portal/ja/02/#23)を参照してください。
 
 !!! note
     SSHクライアントとして、Tera TermやPuTTYを利用する場合は、[Tera Termの利用](tips/tera-term.md)、[PuTTYの利用](tips/putty.md)を参照。
