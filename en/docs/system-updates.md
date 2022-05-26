@@ -1,5 +1,14 @@
 # System Updates
 
+## 2022-05-26 
+
+* Product renamed following acquisition of Univa by Altair.
+
+| Add / Update / Delete | Software | Current | Previous |
+|:--|:--|:--|:--|
+| Update | Rename on the documents | Altair Grid Engine | Univa Grid Engine |
+| Update | Rename on the documents | AGE | UGE |
+
 ## 2022-04-11 (future update)
 
 * Maximum reserved node time per reservation of compute node (V) will be changed in the Reserved Service from 12,288 to 13,056.

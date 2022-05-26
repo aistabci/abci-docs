@@ -374,7 +374,7 @@ Line #2 installs OpenMPI 3.1.1 as the same configuration with [this page](../app
 Meanings of the installation options are as follows.
 
 - `+cuda`: Build with CUDA support
-- `schedulers=sge`: Specify how to invoke MPI processes.  You have to specify `sge` as ABCI uses Univa Grid Engine which is compatible with SGE.
+- `schedulers=sge`: Specify how to invoke MPI processes.  You have to specify `sge` as ABCI uses Altair Grid Engine which is compatible with SGE.
 - `fabrics=auto`: Specify a communication library.
 - `^cuda@10.1.243`: Specify a CUDA to be used.  `^` is used to specify software dependency.
 

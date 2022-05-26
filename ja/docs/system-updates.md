@@ -1,5 +1,14 @@
 # システム更新履歴
 
+## 2022-05-26 
+
+* Univa 社の Altair 社による買収に伴い製品名を変更。
+
+| Add / Update / Delete | Software | Current | Previous |
+|:--|:--|:--|:--|
+| Update | 製品名を変更 | Altair Grid Engine | Univa Grid Engine |
+| Update | 製品名を変更 | AGE | UGE |
+
 ## 2022-04-11 更新予定
 
 * Reservedサービスにおいて計算ノード(V)の1予約あたりの最大予約ノード時間積を12,288から13,056に変更予定です。
