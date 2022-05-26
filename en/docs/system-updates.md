@@ -2,7 +2,7 @@
 
 ## 2022-05-26 
 
-* Product renamed following acquisition of Univa by Altair.
+* Product names documented in this User Guide have been renamed to reflect the acquisition of Univa by Altair.
 
 | Current | Previous |
 |:--|:--|
