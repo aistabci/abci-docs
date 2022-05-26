@@ -64,7 +64,6 @@
 * One of [known issues](known-issues.md) has been resolved in this update.
 * We have reconfigured the Environment Modules. If you would like to use modules prior to FY2021, please refer to the FAQ ([How to use previous ABCI Environment Modules](faq.md#q-how-to-use-previous-abci-environment-modules)).
 * Due to the reconfiguration of the Environment Modules, some modules have been removed. For more information, please refer to the [Modules removed and alternatives](tips/modules-removed-and-alternatives.md).
->>>>>>> master
 
 
 ## 2022-03-03 
