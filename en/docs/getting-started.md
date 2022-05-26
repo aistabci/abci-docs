@@ -57,24 +57,26 @@ In this section, we will describe two methods to login to the interactive node u
 Login to the access server (*as.abci.ai*) with following command:
 
 Interactive Node (V)
-<div class="codehilite"><pre>
-[yourpc ~]$ ssh -i /path/identity_file -L 10022:<i>es</i>:22 -l username <i>as.abci.ai</i>
+
+```
+[yourpc ~]$ ssh -i /path/identity_file -L 10022:es:22 -l username as.abci.ai
 The authenticity of host 'as.abci.ai (0.0.0.1)' can't be established.
 RSA key fingerprint is XX:XX:XX:XX:XX:XX:XX:XX:XX:XX:XX:XX:XX:XX:XX:XX. <- Display only at the first login
 Are you sure you want to continue connecting (yes/no)? <- Enter "yes"
 Warning: Permanently added 'XX.XX.XX.XX' (RSA) to the list of known hosts.
 Enter passphrase for key '/path/identity_file': <- Enter passphrase
-</pre></div>
+```
 
 Interactive Node (A)
-<div class="codehilite"><pre>
-[yourpc ~]$ ssh -i /path/identity_file -L 10022:<i>es-a</i>:22 -l username <i>as.abci.ai</i>
+
+```
+[yourpc ~]$ ssh -i /path/identity_file -L 10022:es-a:22 -l username as.abci.ai
 The authenticity of host 'as.abci.ai (0.0.0.1)' can't be established.
 RSA key fingerprint is XX:XX:XX:XX:XX:XX:XX:XX:XX:XX:XX:XX:XX:XX:XX:XX. <- Display only at the first login
 Are you sure you want to continue connecting (yes/no)?  <- yesを入力
 Warning: Permanently added ‘XX.XX.XX.XX' (RSA) to the list of known hosts.
 Enter passphrase for key '/path/identity_file': <- Enter "yes"
-</pre></div>
+```
 
 Successfully logged in, the following message is shown on your terminal.
 
@@ -104,48 +106,48 @@ You can log in to an interactive node with a single command using ProxyJump, whi
 
 First, add the following configuration to your ``$HOME/.ssh/config``:
 
-<div class="codehilite"><pre>
-Host <i>abci</i>
-     HostName <i>es</i>
+```
+Host abci
+     HostName es
      User username
-     ProxyJump %r@<i>as.abci.ai</i>
+     ProxyJump %r@as.abci.ai
      IdentityFile /path/to/identity_file
      HostKeyAlgorithms ssh-rsa
 
-Host <i>abci-a</i>
-     HostName <i>es-a</i>
+Host abci-a
+     HostName es-a
      User username
-     ProxyJump %r@<i>as.abci.ai</i>
+     ProxyJump %r@as.abci.ai
      IdentityFile /path/to/identity_file
 
-Host <i>as.abci.ai</i>
+Host as.abci.ai
      IdentityFile /path/to/identity_file
-</pre></div>
+```
 
 After that, you can log in with the following command only:
 
-<div class="codehilite"><pre>
-[yourpc ~]$ ssh <i>abci</i>
-</pre></div>
+```
+[yourpc ~]$ ssh abci
+```
 
 ProxyJump does not work with OpenSSH_for_Windows_7.7p1 which is bundled with Windows 10 version 1803 and later. Use ProxyCommand instead. The following is an example of a config file using ProxyCommand. Please specify the absolute path for `ssh.exe`.
 
-<div class="codehilite"><pre>
-Host <i>abci</i>
-     HostName <i>es</i>
+```
+Host abci
+     HostName es
      User username
-     ProxyCommand C:\WINDOWS\System32\OpenSSH\ssh.exe -W %h:%p %r@<i>as.abci.ai</i>
+     ProxyCommand C:\WINDOWS\System32\OpenSSH\ssh.exe -W %h:%p %r@as.abci.ai
      IdentityFile C:\path\to\identity_file
 
-Host <i>abci-a</i>
-     HostName <i>es-a</i>
+Host abci-a
+     HostName es-a
      User username
-     ProxyCommand C:\WINDOWS\System32\OpenSSH\ssh.exe -W %h:%p %r@<i>as.abci.ai</i>
+     ProxyCommand C:\WINDOWS\System32\OpenSSH\ssh.exe -W %h:%p %r@as.abci.ai
      IdentityFile C:\path\to\identity_file
 
-Host <i>as.abci.ai</i>
+Host as.abci.ai
      IdentityFile C:\path\to\identity_file
-</pre></div>
+```
 
 ## File Transfer to Interactive Node
 
@@ -160,9 +162,9 @@ local-file    100% |***********************|  file-size  transfer-time
 
 If you have OpenSSH 7.3 or later and already added the configuration to your ``$HOME/.ssh/config`` as described at [ProxyJump](#proxyjump), you can directly run the `scp` (`sftp`) command.
 
-<div class="codehilite"><pre>
-[yourpc ~]$ scp local-file <i>abci</i>:remote-dir
-</pre></div>
+```
+[yourpc ~]$ scp local-file abci:remote-dir
+```
 
 ## Changing Password
 
@@ -185,7 +187,7 @@ passwd: all authentication tokens updated successfully.
 
     - Specify a character string with more than 15 characters arranged randomly. For example, words in Linux dictionary cannot be used. We recommend generating it automatically by using password creation software.
     - Should contain all character types of lower-case letters, upper-case letters, numeric characters, and special characters.
-	- As special charaters, the following 33 types of characters can be used: (blank) ! " # $ % & ' ( ) * + , - . / : ; < = > ? @ [ \ ] ^ _ ` { | } ~
+	- As special characters, the following 33 types of characters can be used: (blank) ! " # $ % & ' ( ) * + , - . / : ; < = > ? @ [ \ ] ^ _ ` { | } ~
     - Do not contain multi-byte characters.
 
 ## Login Shell
