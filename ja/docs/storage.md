@@ -86,6 +86,36 @@ stripe_count:  4 stripe_size:   1048576 stripe_offset: 10
 
 グループ領域のパスを確認するには、`show_quota` コマンドを実行してください。コマンドの説明については [ディスククォータの確認](getting-started.md#checking-disk-quota) を参照してください。
 
+### inode使用率の確認方法 {#how-to-check-inode-usage}
+
+MDTではファイルのinode情報を格納していますが、MDT毎に格納できるinode数の上限があり、各MDTで現在どの程度inodeが使用されているかは`lfs df -i` コマンドで確認
+することが可能です。
+コマンドの出力結果のうち、`/groups[MDT:?]`の行に記載されている`IUse%`の項目が各MDTにおけるinodeの使用率となります。<br>
+以下の例の場合、MDT:0 の inode使用率は 30% となります。
+
+````
+[username@es1 ~]$ lfs df -i /groups
+UUID                      Inodes       IUsed       IFree IUse% Mounted on
+groups-MDT0000_UUID   3110850464   904313344  2206537120  30% /groups[MDT:0]
+groups-MDT0001_UUID   3110850464  2778144306   332706158  90% /groups[MDT:1]
+groups-MDT0002_UUID   3110850464   935143862  2175706602  31% /groups[MDT:2]
+groups-MDT0003_UUID   3110850464  1356224703  1754625761  44% /groups[MDT:3]
+groups-MDT0004_UUID   3110850464   402932004  2707918460  13% /groups[MDT:4]
+groups-MDT0005_UUID   3110850464         433  3110850031   1% /groups[MDT:5]
+(snip)
+````
+
+なお、ABCIグループが使用しているMDTは以下のコマンドで確認することができます。
+````
+[username@es1 ~]$ ls -d /groups/?/(ABCIグループ名)
+/groups/(MDT番号)/(ABCIグループ名)
+````
+以下の例の場合、MDT:0を使用しています。
+````
+[username@es1 ~]$ ls -d /groups/?/gaa00000
+/groups/0/gaa00000
+````
+
 ## グローバルスクラッチ領域 {#scratch-area}
 
 グローバルスクラッチ領域は、利用者全員が利用可能な、インタラクティブノードおよび各計算ノードで共有されたLustreファイルシステムの短期利用向け高速ストレージです。ディスククォータは10TiBに設定されています。

@@ -11,17 +11,17 @@ To login to the interactive node (*es* , *es-a*) as frontend, you need to login 
 
 Login to the access server for HPCI (*hpci.abci.ai*) with the `gsissh` command.
 
-<div class="codehilite"><pre>
-yourpc$ gsissh -p 2222 <i>hpci.abci.ai</i>
+```
+yourpc$ gsissh -p 2222 hpci.abci.ai
 [username@hpci1 ~]$
-</pre></div>
+```
 
 After login to the access server for HPCI, login to the interactive node with the `ssh` command.
 
-<div class="codehilite"><pre>
-[username@hpci1 ~]$ ssh <i>es</i>
+```
+[username@hpci1 ~]$ ssh es
 [username@es1 ~]$
-</pre></div>
+```
 
 ### Windows Environment (GSI-SSHTerm)
 
@@ -31,12 +31,12 @@ To login to the interactive node, the following procedure is necessary.
 2. Enter the access server for HPCI (*hpci.abci.ai*) and login
 3. Login to the interactive node with the `ssh` command
 
-After login to the accesss server for HPCI, login to the interactive node with the `ssh` command.
+After login to the access server for HPCI, login to the interactive node with the `ssh` command.
 
-<div class="codehilite"><pre>
-[username@hpci1 ~]$ ssh <i>es</i>
+```
+[username@hpci1 ~]$ ssh es
 [username@es1 ~]$
-</pre></div>
+```
 
 ## File Transfer to Interactive Node
 
@@ -44,10 +44,10 @@ The home area is not shared on the access server for HPCI.
 So, when transferring files between your PC and the ABCI system,
 transfer them to the access server (*hpci.abci.ai*) once, and then transfer them to the interactive node with the `scp` (`sftp`) command.
 
-<div class="codehilite"><pre>
-[username@hpci1 ~]$ scp local-file username@<i>es</i>:remote-dir
+```
+[username@hpci1 ~]$ scp local-file username@es:remote-dir
 local-file    100% |***********************|  file-size  transfer-time
-</pre></div>
+```
 
 To display disk usage and quota about home area on the access server for HPCI,
 use the `quota` command.
