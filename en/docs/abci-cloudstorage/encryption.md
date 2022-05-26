@@ -23,6 +23,10 @@ For detailed information, see [Protecting Data Using Client-Side Encryption](htt
 | CSE-C | Encryption with key managed on client side by user. |
 | CSE-KMS | Encryption with key registered to Key Management Service |
 
+!!! note
+    ABCI provides a create-encrypted-bucket command to create SSE-enabled buckets, but the create-encrypted-bucket command will be discontinued around August 2022.
+     Buckets previously created with the create-encrypted-bucket command can still be used. Deletion and configuration reference can be performed using the aws-cli command.
+
 
 ## Enabling Default Bucket Encryption
 

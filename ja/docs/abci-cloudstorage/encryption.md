@@ -23,6 +23,10 @@ CSEの説明は、[Protecting Data Using Client-Side Encryption](https://docs.aw
 | CSE-C | ユーザーがクライアント側で管理している鍵を用いて暗号化 |
 | CSE-KMS | Key Management Service に登録された鍵を用いて暗号化 |
 
+!!! note
+    ABCI では SSE を有効にしたバケットを作成する create-encrypted-bucket コマンドを用意していますが、create-encrypted-bucket コマンドは2022年8月ごろに提供を終了する予定です。
+    以前に create-encrypted-bucket コマンドで作成したバケットはそのまま利用可能です。削除や設定の参照は aws-cli のコマンドで操作できます。
+
 
 ## バケットのデフォルト暗号化を有効にする
 

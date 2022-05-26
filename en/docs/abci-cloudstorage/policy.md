@@ -1,6 +1,6 @@
 # Access Control (2) - Policy -
 
-Other than ACL, Access Control Policy is also available to define permission for ABCI Cloud Storage account and bucket. Access Control Policy can control accessibility in different ways from the ones ACL offers. To use Access Control Policy, Usage Managers Account is necessary. If your ABCI Cloud Storage account is Users Account, ask Usage Managers to change the accessibility or to grant you appropriate permission.
+Other than ACL, Access Control Policy is also available to define permission for ABCI Cloud Storage account and bucket. Access Control Policy can control accessibility in different ways from the ones ACL offers. To use Access Control Policy for ABCI Cloud Storage account, Usage Managers Account is necessary. If your ABCI Cloud Storage account is Users Account, ask Usage Managers to change the accessibility or to grant you appropriate permission.
 
 ## Default Permission 
 
@@ -247,7 +247,16 @@ Principal defines accessible ABCI Cloud Storage account. Wildcards are available
 
 Four ABCI Cloud Storage accounts, aaa00000.1, aaa000001.1, aaa00002.1 and aaa00003.1, are created, for example, and there is a bucket whose name is 'sensor8'.Now we are showing how to allow only two users, aaa00000.1 and aaa00001.1, to access the bucket.
 
-Firstly, create a .json file whose name is 'sensor8.json', for example, as following. The name of a .json file can be arbitrary.
+Firstly, execute the command `aws iam get-user` to obtain the Arn values for users aaa0000002.1 and aaa0000003.1 whose access is to be denied. To execute the command `aws iam get-user`, Usage Managers Account is necessary.
+
+```
+[username@es1 ~]$ aws --endpoint-url https://s3.abci.ai iam get-user --user-name aaa00002.1 --query User.Arn
+"arn:aws:iam::123456789012:user/aaa00002.1"
+[username@es1 ~]$ aws --endpoint-url https://s3.abci.ai iam get-user --user-name aaa00003.1 --query User.Arn
+"arn:aws:iam::123456789012:user/aaa00003.1"
+```
+
+Secondly, create a .json file whose name is 'sensor8.json', for example, as following. The name of a .json file can be arbitrary.
 
 ```
 {
@@ -259,8 +268,8 @@ Firstly, create a .json file whose name is 'sensor8.json', for example, as follo
             "Resource": ["arn:aws:s3:::sensor8", "arn:aws:s3:::sensor8/*"],
             "Principal": {
                 "AWS": [
-                    "user/aaa00002.1",
-                    "user/aaa00003.1"
+                    "arn:aws:iam::123456789012:user/aaa00002.1",
+                    "arn:aws:iam::123456789012:user/aaa00003.1"
                 ]
             }
         }
