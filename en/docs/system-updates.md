@@ -4,10 +4,10 @@
 
 * Product renamed following acquisition of Univa by Altair.
 
-| Add / Update / Delete | Software | Current | Previous |
-|:--|:--|:--|:--|
-| Update | Rename on the documents | Altair Grid Engine | Univa Grid Engine |
-| Update | Rename on the documents | AGE | UGE |
+| Current | Previous |
+|:--|:--|
+| Altair Grid Engine | Univa Grid Engine |
+| AGE | UGE |
 
 ## 2022-04-11 (future update)
 

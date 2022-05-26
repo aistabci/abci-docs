@@ -2,12 +2,12 @@
 
 ## 2022-05-26 
 
-* Univa 社の Altair 社による買収に伴い製品名を変更。
+* Altair社によるUniva社の買収に伴い製品名を変更しました。
 
-| Add / Update / Delete | Software | Current | Previous |
-|:--|:--|:--|:--|
-| Update | 製品名を変更 | Altair Grid Engine | Univa Grid Engine |
-| Update | 製品名を変更 | AGE | UGE |
+| Current | Previous |
+|:--|:--|
+| Altair Grid Engine | Univa Grid Engine |
+| AGE | UGE |
 
 ## 2022-04-11 更新予定
 
