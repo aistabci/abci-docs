@@ -7,7 +7,7 @@
 
 SSE機能を利用すると、データがサーバーに送られた後、ディスクに保存される前に暗号化が行われます。データを取得する時には、ディスクから取り出された後に復号化が行われ、サーバーからデータが送られてきます。SSEでは、送信経路上ではデータが復号化されていますが、ABCIクラウドストレージでは、エンドポイントに https://s3.abci.ai を指定することでTLSによる通信の暗号化が別途行われます。
 
-Amazon S3 では以下のような SSE が提供されていますが、ABCIクラウドストレージでは、SSE-S3 に相当する SSE を提供しています。ただし、SSE-C と SSE-KMS はABCIクラウドストレージでは利用できません。
+Amazon S3 では以下のような SSE が提供されていますが、ABCIクラウドストレージでは、SSE-S3 に相当する SSE を提供しています。SSE-C と SSE-KMS はABCIクラウドストレージでは利用できません。
 
 | SSEの種類 | 説明 |
 | :-- | :-- |
@@ -24,8 +24,8 @@ CSEの説明は、[Protecting Data Using Client-Side Encryption](https://docs.aw
 | CSE-KMS | Key Management Service に登録された鍵を用いて暗号化 |
 
 !!! note
-    ABCI では SSE を有効にしたバケットを作成する create-encrypted-bucket コマンドを用意していますが、create-encrypted-bucket コマンドは2022年8月ごろに提供を終了する予定です。
-    以前に create-encrypted-bucket コマンドで作成したバケットはそのまま利用可能です。削除や設定の参照は aws-cli のコマンドで操作できます。
+    ABCI クラウドストレージでは運用開始より、SSE を有効にしたバケットを作成する create-encrypted-bucket コマンドを提供してきましたが、create-encrypted-bucket コマンドは2022年8月を目処に提供を終了する予定です。
+    以前に create-encrypted-bucket コマンドで作成したバケットはそのまま利用可能です。削除や設定の参照は aws-cli コマンドで行うことができます。
 
 
 ## バケットのデフォルト暗号化を有効にする
