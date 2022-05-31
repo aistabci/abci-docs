@@ -370,7 +370,7 @@ openmpi@3.1.1  ${SPACK_ROOT}/opt/spack/linux-centos7-haswell/gcc-4.8.5/openmpi-3
 インストールオプションの意味は以下の通りです。
 
 - `+cuda`: CUDAを有効にしてビルドします。
-- `schedulers=sge`: MPIプロセスを起動する手段を指定しています。ABCIではSGE互換のUGEを使っているため、sgeを指定します。
+- `schedulers=sge`: MPIプロセスを起動する手段を指定しています。ABCIではSGE互換のAGEを使っているため、sgeを指定します。
 - `fabrics=auto`: 通信ライブラリを選択します。この例では自動判別としています。
 - `^cuda@10.1.243`: 使用するCUDAを指定します。`^`は依存するソフトウェアを指定するときに使います。
 

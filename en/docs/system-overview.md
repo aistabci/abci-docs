@@ -176,7 +176,7 @@ The software available on the ABCI system is shown below.
 |:--|:--|:--|:--|
 | OS | CentOS | 7.5 | - |
 | OS | Red Hat Enterprise Linux | - | 8.2 |
-| Job Scheduler | Univa Grid Engine | 8.6.17 | 8.6.17 |
+| Job Scheduler | Altair Grid Engine | 8.6.17 | 8.6.17 |
 | Development Environment | [CUDA Toolkit](gpu.md#cuda-toolkit) | 9.0.176.4<br>9.1.85.3<br>9.2.148.1<br>10.0.130.1<br>10.1.243<br>10.2.89<br>11.0.3<br>11.1.1<br>11.2.2<br>11.3.1<br>11.4.4<br>11.5.2<br>11.6.2 | 10.0.130.1<br>10.1.243<br>10.2.89<br>11.0.3<br>11.1.1<br>11.2.2<br>11.3.1<br>11.4.4<br>11.5.2<br>11.6.2 |
 | | PGI Professional Edition | 20.4 | 20.4 |
 | | Intel OneAPI<br>(compilers and libraries) | 2022.0.2 | 2022.0.2 |
@@ -184,7 +184,7 @@ The software available on the ABCI system is shown below.
 | | Intel Trace Analyzer and Collector | 2021.5.0 | 2021.5.0 |
 | | Intel Inspector | 2022.0 | 2022.0 |
 | | Intel Advisor | 2022.0 | 2022.0 |
-| | GCC | 4.8.5<br>11.2.0 | 8.3.1<br>11.2.0 |
+| | GCC | 4.8.5<br>9.3.0<br>11.2.0 | 8.3.1<br>9.3.0<br>11.2.0 |
 | | cmake | 3.22.3 | 3.22.3 |
 | | [Python](python.md) | 2.7.18<br>3.7.13<br>3.8.13<br>3.10.4 | 2.7.18<br>3.7.13<br>3.8.13<br>3.10.4 |
 | | Ruby | 2.0.0.648-33 | 2.5.5-105 |
@@ -201,8 +201,8 @@ The software available on the ABCI system is shown below.
 | | [SingularityPRO](containers.md#singularity) | 3.9-4 | 3.9-4 |
 | MPI | [Open MPI](mpi.md#open-mpi) | 4.0.5<br>4.1.3 | 4.0.5<br>4.1.3 |
 | | [Intel MPI](mpi.md#intel-mpi) | 2021.5 | 2021.5 |
-| Library | [cuDNN](gpu.md#cudnn) | 7.0.5<br>7.1.4<br>7.2.1<br>7.3.1<br>7.4.2<br>7.5.1<br>7.6.5<br>8.0.5<br>8.1.1<br>8.2.4<br>8.3.3 | 7.3.1<br>7.4.2<br>7.5.1<br>7.6.5<br>8.0.5<br>8.1.1<br>8.2.4<br>8.3.3 |
-| | [NCCL](gpu.md#nccl) | 2.4.8-1<br>2.5.6-1<br>2.6.4-1<br>2.7.8-1<br>2.8.4-1<br>2.9.9-1<br>2.10.3-1<br>2.11.4-1<br>2.12.7-1 | 2.4.8-1<br>2.5.6-1<br>2.6.4-1<br>2.7.8-1<br>2.8.4-1<br>2.9.9-1<br>2.10.3-1<br>2.11.4-1<br>2.12.7-1 |
+| Library | [cuDNN](gpu.md#cudnn) | 7.0.5<br>7.1.4<br>7.2.1<br>7.3.1<br>7.4.2<br>7.5.1<br>7.6.5<br>8.0.5<br>8.1.1<br>8.2.4<br>8.3.3<br>8.4.0 | 7.3.1<br>7.4.2<br>7.5.1<br>7.6.5<br>8.0.5<br>8.1.1<br>8.2.4<br>8.3.3<br>8.4.0 |
+| | [NCCL](gpu.md#nccl) | 2.4.8-1<br>2.5.6-1<br>2.6.4-1<br>2.7.8-1<br>2.8.4-1<br>2.9.9-1<br>2.10.3-1<br>2.11.4-1<br>2.12.10-1 | 2.4.8-1<br>2.5.6-1<br>2.6.4-1<br>2.7.8-1<br>2.8.4-1<br>2.9.9-1<br>2.10.3-1<br>2.11.4-1<br>2.12.10-1 |
 | | gdrcopy | 2.3 | 2.3 |
 | | UCX | 1.10 | 1.11 |
 | | libfabric | 1.7.0-1 | 1.9.0rc1-1 |

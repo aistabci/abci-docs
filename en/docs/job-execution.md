@@ -435,17 +435,17 @@ During job execution, the following environment variables are available for the 
 
 | Variable Name | Description |
 |:--|:--|
-| ENVIRONMENT         | Univa Grid Engine fills in BATCH to identify it as an Univa Grid Engine job submitted with qsub. |
+| ENVIRONMENT         | Altair Grid Engine fills in BATCH to identify it as an Altair Grid Engine job submitted with qsub. |
 | JOB\_ID             | Job ID |
-| JOB\_NAME           | Name of the Univa Grid Engine job. |
+| JOB\_NAME           | Name of the Altair Grid Engine job. |
 | JOB\_SCRIPT         | Name of the script, which is currently executed |
 | NHOSTS              | The number of hosts on which this parallel job is executed |
 | PE\_HOSTFILE        | The absolute path includes hosts, slots and queue name |
 | RESTARTED           | Indicates if the job was restarted (1) or if it is the first run (0) |
 | SGE\_ARDIR          | Path to the local storage assigned to the reserved service |
 | SGE\_BEEONDDIR      | Path to BeeOND storage allocated when BeeOND storage is utilized |
-| SGE\_JOB_HOSTLIST   | The absolute path includes only hosts assigned by Univa Grid Engine |
-| SGE\_LOCALDIR       | The local storage path assigned by Univa Grid Engine |
+| SGE\_JOB_HOSTLIST   | The absolute path includes only hosts assigned by Altair Grid Engine |
+| SGE\_LOCALDIR       | The local storage path assigned by Altair Grid Engine |
 | SGE\_O\_WORKDIR     | The working directory path of the job submitter |
 | SGE\_TASK\_ID       | Task number of the array job task the job represents (If is not an array task, the variable contains undefined) |
 | SGE\_TASK\_FIRST    | Task number of the first array job task |
