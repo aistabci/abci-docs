@@ -9,6 +9,16 @@
 | Altair Grid Engine | Univa Grid Engine |
 | AGE | UGE |
 
+## 2022-05-10
+
+| Add / Update / Delete | Software | Version   | Previous version |
+| --------------------- | -------- | --------- | ---------------- |
+| Add                   | gcc      | 9.3.0     |                  |
+| Add                   | cudnn    | 8.4.0     |                  |
+| Update                | nccl     | 2.12.10-1 | 2.12.7-1         |
+
+* Deleted `gcc/9.3.0` module has been restored to the current environment modules.
+
 ## 2022-04-06
 
 | Add / Update / Delete | Software | Version | Previous version |

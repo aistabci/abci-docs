@@ -26,9 +26,11 @@ Compute Node (V):
 | openmpi/ | Compiler version | w/o CUDA |
 |:--|:--|:--|
 | 4.0.5  | gcc/4.8.5     | Yes |
+| 4.0.5  | gcc/9.3.0     | Yes |
 | 4.0.5  | gcc/11.2.0    | Yes |
 | 4.0.5  | pgi/20.4      | Yes |
 | 4.1.3  | gcc/4.8.5     | Yes |
+| 4.1.3  | gcc/9.3.0     | Yes |
 | 4.1.3  | gcc/11.2.0    | Yes |
 | 4.1.3  | pgi/20.4      | Yes |
 
@@ -37,9 +39,11 @@ Compute Node (A):
 | openmpi/ | Compiler version | w/o CUDA |
 |:--|:--|:--|
 | 4.0.5  | gcc/8.3.1     | Yes |
+| 4.0.5  | gcc/9.3.0     | Yes |
 | 4.0.5  | gcc/11.2.0    | Yes |
 | 4.0.5  | pgi/20.4      | Yes |
 | 4.1.3  | gcc/8.3.1     | Yes |
+| 4.1.3  | gcc/9.3.0     | Yes |
 | 4.1.3  | gcc/11.2.0    | Yes |
 | 4.1.3  | pgi/20.4      | Yes |
 
