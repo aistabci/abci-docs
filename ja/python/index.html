@@ -1186,7 +1186,7 @@
 </code></pre></div>
 
 <p>例) Python 3.10.4を利用する場合:</p>
-<p>計算ノード(V)環境でPython 3.7以上を利用する場合、<code>gcc/11.2.0</code>モジュールをpythonモジュールより先にロードしてください。</p>
+<p>計算ノード(V)環境でPython 3.7以上を利用する場合、<code>gcc/9.3.0</code>または<code>gcc/11.2.0</code>モジュールをpythonモジュールより先にロードしてください。</p>
 <div class="codehilite"><pre><span></span><code><span class="p">[</span><span class="n">username</span><span class="err">@</span><span class="n">es1</span> <span class="o">~</span><span class="p">]</span><span class="o">$</span> <span class="n">module</span> <span class="nb">load</span> <span class="n">gcc</span><span class="o">/</span><span class="mf">11.2</span><span class="o">.</span><span class="mi">0</span>
 <span class="p">[</span><span class="n">username</span><span class="err">@</span><span class="n">es1</span> <span class="o">~</span><span class="p">]</span><span class="o">$</span> <span class="n">module</span> <span class="nb">load</span> <span class="n">python</span><span class="o">/</span><span class="mf">3.10</span><span class="o">/</span><span class="mf">3.10</span><span class="o">.</span><span class="mi">4</span>
 <span class="p">[</span><span class="n">username</span><span class="err">@</span><span class="n">es1</span> <span class="o">~</span><span class="p">]</span><span class="o">$</span> <span class="n">python3</span> <span class="o">--</span><span class="n">version</span>

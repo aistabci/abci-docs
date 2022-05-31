@@ -1277,14 +1277,15 @@ To use the ABCI system, the "Responsible Person" must submit a new "ABCI applica
 <h3 id="prerequisites">Prerequisites</h3>
 <p>To connect to the interactive node, you will need the following in advance:</p>
 <ul>
-<li>An SSH client. Your computer most likely has an SSH client installed by default. If your computer is a UNIX-like system such as Linux and macOS, or Windows 10 version 1803 (April 2018 Update) or later, it should have an SSH client. You can also check for an SSH client, just by typing <code>ssh</code> at the command line.</li>
-<li>A secure SSH public/private key pair. ABCI only accepts the following public keys:<ul>
+<li>SSH client: Your computer most likely has an SSH client installed by default. If your computer is a UNIX-like system such as Linux and macOS, or Windows 10 version 1803 (April 2018 Update) or later, it should have an SSH client. You can also check for an SSH client, just by typing <code>ssh</code> at the command line.</li>
+<li>SSH protocol version: Only SSH protocol version 2 is supported.</li>
+<li>A secure SSH public/private key pair: ABCI only accepts the following public keys:<ul>
 <li>RSA keys, at least 2048bits</li>
 <li>ECDSA keys, 256, 384, and 521bits</li>
 <li>Ed25519 keys</li>
 </ul>
 </li>
-<li>Registration of SSH public keys. Your first need to register your SSH public key on <a href="https://portal.abci.ai/user/">ABCI User Portal</a>. The instruction will be found at <a href="https://docs.abci.ai/portal/en/02/#23-register-public-key">Register Public Key</a>.</li>
+<li>Registration of SSH public keys: Your first need to register your SSH public key on <a href="https://portal.abci.ai/user/">ABCI User Portal</a>. The instruction will be found at <a href="https://docs.abci.ai/portal/en/02/#23-register-public-key">Register Public Key</a>.</li>
 </ul>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
