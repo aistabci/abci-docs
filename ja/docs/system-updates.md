@@ -1,5 +1,14 @@
 # システム更新履歴
 
+## 2022-05-26 
+
+* Altair社によるUniva社の買収に伴い本ユーザーガイド内に記載されている製品名を変更しました。
+
+| Current | Previous |
+|:--|:--|
+| Altair Grid Engine | Univa Grid Engine |
+| AGE | UGE |
+
 ## 2022-05-10
 
 | Add / Update / Delete | Software | Version   | Previous version |
@@ -9,7 +18,6 @@
 | Update                | nccl     | 2.12.10-1 | 2.12.7-1         |
 
 * ABCIの更新に伴い削除していた`gcc/9.3.0`モジュールを現在のEnvironment Modulesに戻しました。
-
 
 ## 2022-04-06
 

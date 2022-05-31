@@ -1,5 +1,14 @@
 # System Updates
 
+## 2022-05-26 
+
+* Product names documented in this User Guide have been renamed to reflect the acquisition of Univa by Altair.
+
+| Current | Previous |
+|:--|:--|
+| Altair Grid Engine | Univa Grid Engine |
+| AGE | UGE |
+
 ## 2022-05-10
 
 | Add / Update / Delete | Software | Version   | Previous version |

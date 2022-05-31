@@ -174,7 +174,7 @@ ABCIシステムで利用可能なソフトウェア一覧を以下に示しま�
 |:--|:--|:--|:--|
 | OS | CentOS | 7.5 | - |
 | OS | Red Hat Enterprise Linux | - | 8.2 |
-| Job Scheduler | Univa Grid Engine | 8.6.17 | 8.6.17 |
+| Job Scheduler | Altair Grid Engine | 8.6.17 | 8.6.17 |
 | Development Environment | [CUDA Toolkit](gpu.md#cuda-toolkit) | 9.0.176.4<br>9.1.85.3<br>9.2.148.1<br>10.0.130.1<br>10.1.243<br>10.2.89<br>11.0.3<br>11.1.1<br>11.2.2<br>11.3.1<br>11.4.4<br>11.5.2<br>11.6.2 | 10.0.130.1<br>10.1.243<br>10.2.89<br>11.0.3<br>11.1.1<br>11.2.2<br>11.3.1<br>11.4.4<br>11.5.2<br>11.6.2 |
 | | PGI Professional Edition | 20.4 | 20.4 |
 | | Intel OneAPI<br>(compilers and libraries) | 2022.0.2 | 2022.0.2 |
