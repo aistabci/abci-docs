@@ -7,7 +7,7 @@ There are two typical encryptions for cloud storages. The one is Client-Side Enc
 
 Data is encrypted when it is stored in disks after uploading to ABCI Cloud Storage. Encrypted data is decryped after retrieving data from the disk. Then the data will be downloaded. Thus, data are decrypted while transferring through the routes though, communications are encrypted by TLS with specifying 'https://s3.abci.ai' as an endpoint.
 
-Amazon S3 provides SSE shown in the table below. ABCI Cloud Storage provides SSE functionality equivalent to SSE-S3. However, SSE-C and SSE-KMS are not available for ABCI Cloud Storage.
+Amazon S3 provides SSE shown in the table below. ABCI Cloud Storage provides SSE functionality equivalent to SSE-S3. SSE-C and SSE-KMS are not available for ABCI Cloud Storage.
 
 | SSE Type | Description |
 | :-- | :-- |
@@ -24,8 +24,8 @@ For detailed information, see [Protecting Data Using Client-Side Encryption](htt
 | CSE-KMS | Encryption with key registered to Key Management Service |
 
 !!! note
-    ABCI provides a create-encrypted-bucket command to create SSE-enabled buckets, but the create-encrypted-bucket command will be discontinued around August 2022.
-     Buckets previously created with the create-encrypted-bucket command can still be used. Deletion and configuration reference can be performed using the aws-cli command.
+    Since the start of operation, ABCI Cloud Storage has provided the create-encrypted-bucket command to create a bucket with activated enabled, but the create-encrypted-bucket command is scheduled to be discontinued by August 2022.
+    Buckets previously created with the create-encrypted-bucket command can still be used. You can delete buckets or refer configuration with the aws-cli command.
 
 
 ## Enabling Default Bucket Encryption

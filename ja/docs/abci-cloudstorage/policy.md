@@ -9,11 +9,9 @@
 デフォルトのまま使う場合には、以降に説明するポリシーの追加設定を行う必要はありません。特定のクラウドストレージアカウントを読み取りしかできないようする、あるバケットにアクセスできるのは一部のクラウドストレージアカウントだけにするなど、細かい制御が必要な場合には、以下を参考にポリシーを設定してください。
 
 
-## ユーザーポリシーの設定 {#config-user-policy}
+## バケットポリシーの設定 {#config-bucket-policy}
 
-<!--  デフォルトサブグループが導入されたら、デフォルトのアクセス権限を変更できる  -->
-
-ユーザーポリシーではクラウドストレージアカウントに対してアクセス制御ポリシーを設定します。これにより、クラウドストレージアカウント単位でアクセス制御が可能です。
+バケットポリシーではバケットに対してアクセス制御ポリシーを設定します。これにより、バケット単位でアクセス制御が可能です。
 
 まず最初に、共通の注意点を挙げます。
 
@@ -21,7 +19,7 @@
 - 順番に関係なく、DenyルールがAllowルールよりも優先されます。同一ポリシー内でなくとも、別のポリシーにDenyルールがあればそれが優先されます。
 - ポリシーの名前(--policy-nameに指定する名前)は、大文字を用いてもエラーにはなりませんが、問題になるケースがあるため、小文字英字と数字、およびハイフン(0x2d)で構成してください。
 
-ユーザーポリシーの設定では、JSON形式でアクセス許可の定義を書きます。Effect, Action, Resource, Condition の組み合わせにより、何を許可するか、何を拒否するか、どのような条件で判定するかなどを記述します。
+バケットポリシーの設定では、JSON形式でアクセス許可の定義を書きます。Effect, Action, Resource, Principal の組み合わせにより、何を許可するか、何を拒否するかなどを記述します。
 
 Effect には、"Allow" または "Deny" が設定できます。許可するルールなのか、拒否するルールなのかを記します。
 
@@ -75,6 +73,78 @@ Action には、どのようなリクエスト(動作)に対する制限なの�
 -->
 
 Resource には、アクセス対象となるリソースを記述します。例えば、`arn:aws:s3:::sensor8` は、sensor8 という名前のバケットを示しています。その中のオブジェクトは、`arn:aws:s3:::sensor8/test.dat` のように記します。ワイルドカード (`*`) も使うことができます。
+
+Principal には、アクセス権を設定するユーザーを記述します。ワイルドカード (`*`) を指定してインターネット上の誰からでもアクセスできる（パブリックアクセス）設定を行うこともできます。
+
+!!! caution
+    誰からでも読み取りアクセスができる設定を行う場合は、下記をよくお読みいただき、データを公開することが適切であるかご確認の上、設定をお願いします。
+    
+    * [ABCI約款・規約](https://abci.ai/ja/how_to_use/)
+    * [ABCIクラウドストレージ規約](https://abci.ai/ja/how_to_use/data/cloudstorage-agreement.pdf)
+
+!!! caution
+    第三者によって意図しない利用がなされる恐れがありますので、誰からでも書き込みアクセスができる設定はしないでください。
+
+!!! note
+    バケットポリシーでは Condition がサポートされていません。そのため、例えば接続元IPアドレスによるアクセス制限といった条件を設定できません。
+
+### 例1：バケットにアクセスできるアカウントを限定する
+
+グループ内に aaa00000.1、aaa00001.1、aaa00002.1、aaa00003.1 という4人のクラウドストレージアカウントが作られており、sensor8 というバケットがあるものとします。ここでは、そこにアクセスできるユーザーを、aaa00000.1 と aaa00001.1 の 2人に限定する方法を説明します。
+
+アクセスを拒否するユーザー aaa00002.1 と aaa00003.1 の Arn の値を `aws iam get-user` で確認します。`aws iam get-user` を実行するには管理者用のクラウドストレージアカウントが必要です。
+
+```
+[username@es1 ~]$ aws --endpoint-url https://s3.abci.ai iam get-user --user-name aaa00002.1 --query User.Arn
+"arn:aws:iam::123456789012:user/aaa00002.1"
+[username@es1 ~]$ aws --endpoint-url https://s3.abci.ai iam get-user --user-name aaa00003.1 --query User.Arn
+"arn:aws:iam::123456789012:user/aaa00003.1"
+```
+
+以下の内容の sensor8.json というファイルを作成します。説明上、sensor8.json としますが、任意のファイル名を使うことができます。
+
+```
+{
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Effect": "Deny",
+            "Action": "s3:*",
+            "Resource": ["arn:aws:s3:::sensor8", "arn:aws:s3:::sensor8/*"],
+            "Principal": {
+                "AWS": [
+                    "arn:aws:iam::123456789012:user/aaa00002.1",
+                    "arn:aws:iam::123456789012:user/aaa00003.1"
+                ]
+            }
+        }
+    ]
+}
+```
+
+上記では aaa00002.1 と aaa00003.1 が sensor8 にアクセスを禁止するポリシーを定義しています。
+Denyルールが優先されるため、他のポリシーで aaa00002.1 と aaa00003.1 に対して Allowルールが適用されていたとしても、本ポリシーを適用することでアクセスを禁止することができます。
+
+本ポリシーを制限したいバケット、すなわち sensor8 に適用します。
+
+```
+[username@es1 ~]$ aws --endpoint-url https://s3.abci.ai s3api put-bucket-policy --bucket sensor8 --policy file://sensor8.json
+```
+
+上記により aaa00002.1 と aaa00003.1 は、sensor8 バケットにアクセスできなくなります。aaa00000.1 と aaa00001.1 は、これまで通りアクセスできます。
+
+バケットに適用されたポリシーを確認する場合は、`aws --endpoint-url https://s3.abci.ai s3api get-bucket-policy --bucket sensor8` を実行してください。
+
+
+## ユーザーポリシーの設定 {#config-user-policy}
+
+<!--  デフォルトサブグループが導入されたら、デフォルトのアクセス権限を変更できる  -->
+
+ユーザーポリシーではクラウドストレージアカウントに対してアクセス制御ポリシーを設定します。これにより、クラウドストレージアカウント単位でアクセス制御が可能です。
+
+ユーザーポリシーの設定では、JSON形式でアクセス許可の定義を書きます。Effect, Action, Resource, Condition の組み合わせにより、何を許可するか、何を拒否するか、どのような条件で判定するかなどを記述します。
+
+Effect, Action, Resource については[バケットポリシーの設定](policy.md#config-bucket-policy)を参照してください。
 
 Condition には、条件演算子と条件キーを記述します。
 
@@ -230,63 +300,3 @@ Arn の値は、クラウドストレージアカウントへの適用時に必�
 ```
 
 デフォルトでは、接続元IPアドレスによる制限がないため、本ポリシーを適用していないアカウントは接続元の制限なくアクセスができる状態です。グループ内のクラウドストレージアカウントをリストするには、`aws --endpoint-url https://s3.abci.ai iam list-users` を実行してください。
-
-
-## バケットポリシーの設定
-
-バケットポリシーではバケットに対してアクセス制御ポリシーを設定します。これにより、バケット単位でアクセス制御が可能です。
-バケットポリシーの設定では、JSON形式でアクセス許可の定義を書きます。Effect, Action, Resource, Principal の組み合わせにより、何を許可するか、何を拒否するかなどを記述します。
-
-Effect, Action, Resource については[ユーザーポリシーの設定](policy.md#config-user-policy)を参照してください。
-
-Principal には、アクセス権を設定するユーザーを記述します。ワイルドカード (`*`) も使うことができます。
-
-!!! note
-    バケットポリシーでは Condition がサポートされていません。そのため、例えば接続元IPアドレスによるアクセス制限といった条件を設定できません。
-
-### 例1：バケットにアクセスできるアカウントを限定する
-
-グループ内に aaa00000.1、aaa00001.1、aaa00002.1、aaa00003.1 という4人のクラウドストレージアカウントが作られており、sensor8 というバケットがあるものとします。ここでは、そこにアクセスできるユーザーを、aaa00000.1 と aaa00001.1 の 2人に限定する方法を説明します。
-
-アクセスを拒否するユーザー aaa00002.1 と aaa00003.1 の Arn の値を `aws iam get-user` で確認します。`aws iam get-user` を実行するには管理者用のクラウドストレージアカウントが必要です。
-
-```
-[username@es1 ~]$ aws --endpoint-url https://s3.abci.ai iam get-user --user-name aaa00002.1 --query User.Arn
-"arn:aws:iam::123456789012:user/aaa00002.1"
-[username@es1 ~]$ aws --endpoint-url https://s3.abci.ai iam get-user --user-name aaa00003.1 --query User.Arn
-"arn:aws:iam::123456789012:user/aaa00003.1"
-```
-
-以下の内容の sensor8.json というファイルを作成します。説明上、sensor8.json としますが、任意のファイル名を使うことができます。
-
-```
-{
-    "Version": "2012-10-17",
-    "Statement": [
-        {
-            "Effect": "Deny",
-            "Action": "s3:*",
-            "Resource": ["arn:aws:s3:::sensor8", "arn:aws:s3:::sensor8/*"],
-            "Principal": {
-                "AWS": [
-                    "arn:aws:iam::123456789012:user/aaa00002.1",
-                    "arn:aws:iam::123456789012:user/aaa00003.1"
-                ]
-            }
-        }
-    ]
-}
-```
-
-上記では aaa00002.1 と aaa00003.1 が sensor8 にアクセスを禁止するポリシーを定義しています。
-Denyルールが優先されるため、他のポリシーで aaa00002.1 と aaa00003.1 に対して Allowルールが適用されていたとしても、本ポリシーを適用することでアクセスを禁止することができます。
-
-本ポリシーを制限したいバケット、すなわち sensor8 に適用します。
-
-```
-[username@es1 ~]$ aws --endpoint-url https://s3.abci.ai s3api put-bucket-policy --bucket sensor8 --policy file://sensor8.json
-```
-
-上記により aaa00002.1 と aaa00003.1 は、sensor8 バケットにアクセスできなくなります。aaa00000.1 と aaa00001.1 は、これまで通りアクセスできます。
-
-バケットに適用されたポリシーを確認する場合は、`aws --endpoint-url https://s3.abci.ai s3api get-bucket-policy --bucket sensor8` を実行してください。
