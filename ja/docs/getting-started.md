@@ -41,12 +41,13 @@ ABCIシステムのフロントエンドであるインタラクティブノー�
 
 インタラクティブノードに接続するには、以下が必要になります。
 
-* SSHクライアント。Linux、macOSを含むUNIX系OS、Windows 10 version 1803 (April 2018 Update)以降など、ほとんどのPCには、デフォルトでSSHクライアントがインストールされています。インストールされているかどうかを確認するには、コマンドラインから``ssh``コマンドを実行してください。
-* 安全なSSH公開鍵・秘密鍵ペアの生成。ABCIで利用可能な鍵ペアは以下のとおりです。
+* SSHクライアント: Linux、macOSを含むUNIX系OS、Windows 10 version 1803 (April 2018 Update)以降など、ほとんどのPCには、デフォルトでSSHクライアントがインストールされています。インストールされているかどうかを確認するには、コマンドラインから``ssh``コマンドを実行してください。
+* SSHプロトコルバージョン: SSHプロトコルバージョン2のみサポートしています。
+* 安全なSSH公開鍵・秘密鍵ペアの生成: ABCIで利用可能な鍵ペアは以下のとおりです。
 	* RSA鍵 (2048bit以上)
 	* ECDSA鍵 (256bit、384bit、または521bit)
 	* Ed25519鍵
-* SSH公開鍵の登録。[ABCI利用者ポータル](https://portal.abci.ai/user/)にてSSH公開鍵の登録を事前に行ってください。登録方法は、[SSH公開鍵の登録](https://docs.abci.ai/portal/ja/02/#23)を参照してください。
+* SSH公開鍵の登録: [ABCI利用者ポータル](https://portal.abci.ai/user/)にてSSH公開鍵の登録を事前に行ってください。登録方法は、[SSH公開鍵の登録](https://docs.abci.ai/portal/ja/02/#23)を参照してください。
 
 !!! note
     SSHクライアントとして、Tera TermやPuTTYを利用する場合は、[Tera Termの利用](tips/tera-term.md)、[PuTTYの利用](tips/putty.md)を参照。
@@ -60,24 +61,27 @@ ABCIシステムのフロントエンドであるインタラクティブノー�
 以下のコマンドでアクセスサーバ(*as.abci.ai*)にログインし、SSHトンネルを作成します。
 
 インタラクティブノード(V)向け
-<div class="codehilite"><pre>
-[yourpc ~]$ ssh -i /path/identity_file -L 10022:<i>es</i>:22 -l username <i>as.abci.ai</i>
+
+```
+[yourpc ~]$ ssh -i /path/identity_file -L 10022:es:22 -l username as.abci.ai
 The authenticity of host 'as.abci.ai (0.0.0.1)' can't be established.
 RSA key fingerprint is XX:XX:XX:XX:XX:XX:XX:XX:XX:XX:XX:XX:XX:XX:XX:XX. <- 初回ログイン時のみ表示
 Are you sure you want to continue connecting (yes/no)?  <- yesを入力
 Warning: Permanently added ‘XX.XX.XX.XX' (RSA) to the list of known hosts.
 Enter passphrase for key '/path/identity_file': <- パスフレーズ入力
-</pre></div>
+```
 
 インタラクティブノード(A)向け
-<div class="codehilite"><pre>
-[yourpc ~]$ ssh -i /path/identity_file -L 10022:<i>es-a</i>:22 -l username <i>as.abci.ai</i>
+
+```
+[yourpc ~]$ ssh -i /path/identity_file -L 10022:es-a:22 -l username as.abci.ai
 The authenticity of host 'as.abci.ai (0.0.0.1)' can't be established.
 RSA key fingerprint is XX:XX:XX:XX:XX:XX:XX:XX:XX:XX:XX:XX:XX:XX:XX:XX. <- 初回ログイン時のみ表示
 Are you sure you want to continue connecting (yes/no)?  <- yesを入力
 Warning: Permanently added ‘XX.XX.XX.XX' (RSA) to the list of known hosts.
 Enter passphrase for key '/path/identity_file': <- パスフレーズ入力
-</pre></div>
+```
+
 
 アクセスサーバへのログインが成功すると、ターミナル上に下記のメッセージが表示されます。
 
@@ -107,48 +111,48 @@ Enter passphrase for key '-i /path/identity_file': <- パスフレーズ入力
 
 まずローカルPCの``$HOME/.ssh/config``に以下の記述を行います。
 
-<div class="codehilite"><pre>
-Host <i>abci</i>
-     HostName <i>es</i>
+```
+Host abci
+     HostName es
      User username
-     ProxyJump %r@<i>as.abci.ai</i>
+     ProxyJump %r@as.abci.ai
      IdentityFile /path/to/identity_file
      HostKeyAlgorithms ssh-rsa
 
-Host <i>abci-a</i>
-     HostName <i>es-a</i>
+Host abci-a
+     HostName es-a
      User username
-     ProxyJump %r@<i>as.abci.ai</i>
+     ProxyJump %r@as.abci.ai
      IdentityFile /path/to/identity_file
 
-Host <i>as.abci.ai</i>
+Host as.abci.ai
      IdentityFile /path/to/identity_file
-</pre></div>
+```
 
 以降は、以下のコマンドのみでログインできます。
 
-<div class="codehilite"><pre>
-[yourpc ~]$ ssh <i>abci</i>
-</pre></div>
+```
+[yourpc ~]$ ssh abci
+```
 
 Windows 10 バージョン 1803 以降に標準でバンドルされている OpenSSH_for_Windows_7.7p1 では ProxyJump が機能しないため、代わりに ProxyCommand を使用してください。以下に ProxyCommand を使った config ファイルの例を示します。ssh.exe は絶対パスで記述して下さい。
 
-<div class="codehilite"><pre>
-Host <i>abci</i>
-     HostName <i>es</i>
+```
+Host abci
+     HostName es
      User username
-     ProxyCommand C:\WINDOWS\System32\OpenSSH\ssh.exe -W %h:%p %r@<i>as.abci.ai</i>
+     ProxyCommand C:\WINDOWS\System32\OpenSSH\ssh.exe -W %h:%p %r@as.abci.ai
      IdentityFile C:\path\to\identity_file
 
-Host <i>abci-a</i>
-     HostName <i>es-a</i>
+Host abci-a
+     HostName es-a
      User username
-     ProxyCommand C:\WINDOWS\System32\OpenSSH\ssh.exe -W %h:%p %r@<i>as.abci.ai</i>
+     ProxyCommand C:\WINDOWS\System32\OpenSSH\ssh.exe -W %h:%p %r@as.abci.ai
      IdentityFile C:\path\to\identity_file
 
-Host <i>as.abci.ai</i>
+Host as.abci.ai
      IdentityFile C:\path\to\identity_file
-</pre></div>
+```
 
 ## インタラクティブノードへのファイル転送 {#file-transfer-to-interactive-node}
 
@@ -165,9 +169,9 @@ local-file    100% |***********************|  file-size  transfer-time
 
 ProxyJumpが使える場合は、SSHトンネルを明示的に設定する必要はありません。[ProxyJumpの使用](#proxyjump)で説明したとおり``$HOME/.ssh/config``の設定がしてあれば、直接`scp` (`sftp`)コマンドでファイル転送が行えます。
 
-<div class="codehilite"><pre>
-[yourpc ~]$ scp local-file <i>abci</i>:remote-dir
-</pre></div>
+```
+[yourpc ~]$ scp local-file abci:remote-dir
+```
 
 ## パスワード変更 {#changing-password}
 

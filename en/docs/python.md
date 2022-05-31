@@ -7,10 +7,10 @@
 To show available Python versions with using `module` command:
 
 ```
-$ module avail python
+[username@es1 ~]$ module avail python
 
--------------------------------- /apps/modules/modulefiles/devtools --------------------------------
-python/2.7/2.7.18 python/3.6/3.6.12  python/3.7/3.7.10  python/3.8/3.8.7
+------------------ /apps/modules/modulefiles/centos7/devtools ------------------
+python/2.7/2.7.18  python/3.10/3.10.4 python/3.7/3.7.13  python/3.8/3.8.13
 ```
 
 To set up one of available versions with using `module` command:
@@ -18,17 +18,28 @@ To set up one of available versions with using `module` command:
 Example) Python 2.7.18:
 
 ```
-$ module load python/2.7/2.7.18
-$ python --version
+[username@es1 ~]$ module load python/2.7/2.7.18
+[username@es1 ~]$ python --version
 Python 2.7.18
 ```
 
-Example) Python 3.6.12:
+Example) Python 3.10.4:
+
+When using Python 3.7 or higher in the compute node (V) environment, load the `gcc/9.3.0` or the `gcc/11.2.0` module before the python module.
 
 ```
-$ module load python/3.6/3.6.12
-$ python3 --version
-Python 3.6.12
+[username@es1 ~]$ module load gcc/11.2.0
+[username@es1 ~]$ module load python/3.10/3.10.4
+[username@es1 ~]$ python3 --version
+Python 3.10.4
+```
+
+For the compute node (A) environment, it is not necessary to load the gcc module.
+
+```
+[username@es-a1 ~]$ module load python/3.10/3.10.4
+[username@es-a1 ~]$ python3 --version
+Python 3.10.4
 ```
 
 !!! note
@@ -43,6 +54,10 @@ Each virtual environment has its own Python binary (which matches the version of
 
 Creating virtual environments, we use `virtualenv` for Python 2 and `venv` for Python 3, respectively.
 
+!!! note
+    The Python virtual environment is not compatible between compute nodes (V) and compute nodes (A) because the compute nodes (V) and compute nodes (A) have different OS and software configurations.
+    Therefore, the virtual environment used in the compute node (V) must be built in the compute node (V) (or interactive node (es)), and the environment used in the compute node(A) must be built in the compute node (A) (or interactive node (es-a)).
+
 ### virtualenv
 
 Below are examples of executing `virtualenv`:
@@ -55,7 +70,7 @@ Example) Creation of a virtual environment
 created virtual environment CPython2.7.18.final.0-64 in 1862ms
   creator CPython2Posix(dest=/home/username/env1, clear=False, no_vcs_ignore=False, global=False)
   seeder FromAppData(download=False, pip=bundle, wheel=bundle, setuptools=bundle, via=copy, app_data_dir=/home/username/.local/share/virtualenv)
-    added seed packages: pip==20.3.4, setuptools==44.1.1, wheel==0.36.2
+    added seed packages: pip==20.3.4, setuptools==44.1.1, wheel==0.37.0
   activators PythonActivator,CShellActivator,FishActivator,PowerShellActivator,BashActivator
 ```
 
@@ -90,7 +105,7 @@ Below are examples of executing `venv`:
 Example) Creation of a virtual environment
 
 ```
-[username@es1 ~]$ module load python/3.6/3.6.12
+[username@es1 ~]$ module load gcc/11.2.0 python/3.10/3.10.4
 [username@es1 ~]$ python3 -m venv work
 ```
 
