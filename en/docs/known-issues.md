@@ -2,7 +2,7 @@
 
 | date | category | content | status |
 |:--|:--|:--|:--|
-| 2022/05/09 | FileSystem | When multiple threads of a user program request the `fallocate` for the same file at almost the same time, if the timing is unlucky, a deadlock will occur in the exclusion control, the process will not proceed, and the I/O of the Lustre file system will be stopped and the Home area is inaccessible.  | Waiting for fixes. |
+| 2022/05/09 | FileSystem | When multiple threads issue `fallocate` system calls to the same file on the Lustre file system, almost simultaneously, a deadlock may occur depending on the unlucky timing.<br>This problem has been confirmed to cause the Home area to become inaccessible. | Waiting for fixes. |
 | 2022/04/06 | Singularity | A known issue has been identified that the remote build feature of Singularity endpoints is not available.<br> As an alternative, please use the --fakeroot option to create container images.<br> Note that the Library and Keystore functions of Singularity endpoints are currently available. | 2022/04/14 <br> close.<br>The remote build feature failure has been cleared. |
 | 2022/04/06 | Job | Because of a job scheduler problem, we have confirmed that the reserved service reservation disappears when the system stops. <br> Please refrain from making reservations for the post-maintenance period until the incident is resolved. | 2022/04/06 <br> Waiting for fixes. |
 | 2022/01/21 | Application | A known issue has been identified that the execution of vtune using intel-vtune/2020.3 module fails on the compute node (A). | 2022/04/06<br>This issue has been resolved with an Intel VTune update. |
