@@ -1116,6 +1116,12 @@
 </thead>
 <tbody>
 <tr>
+<td align="left">2022/05/09</td>
+<td align="left">FileSystem</td>
+<td align="left">Lustreファイルシステムにおいて、複数のスレッドが同一のファイルにほぼ同時に <code>fallocate</code> システムコールを発行した場合に、タイミングによりデッドロックが発生することを確認しています。<br>この問題によりホーム領域がアクセス不可となる現象が確認されています。</td>
+<td align="left">修正のリリース待ち。</td>
+</tr>
+<tr>
 <td align="left">2022/04/06</td>
 <td align="left">Singularity</td>
 <td align="left">Remote Builderサービスの障害により、Singularity エンドポイントのリモートビルド機能が利用できません。<br> コンテナイメージの作成は、<code>--fakeroot</code> オプションをご利用ください。<br> なお、Singularity エンドポイントの Library,  Keystore 機能は利用可能です。</td>
