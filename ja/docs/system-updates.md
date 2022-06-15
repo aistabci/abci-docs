@@ -9,6 +9,10 @@
 | Update | openjdk | 11.0.15.0.9 | 11.0.14.1.1 |
 | Update | openjdk | 17.0.3.0.7 | 17.0.2.0.8 |
 | Update | DDN Lustre | 2.12.8_ddn10 | 2.12.6_ddn58-1 |
+| Update | Singularity Enterprise | 2.x | 1.x |
+
+* 予約および待ち状態のジョブは引き継がれません。ジョブの再投入・予約の再作成をメンテナンス後に実施お願いします。
+* 今回の修正で解消される[「既知の問題」](known-issues.md)があります。
 
 ## 2022-05-26 
 
