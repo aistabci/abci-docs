@@ -9,6 +9,10 @@
 | Update | openjdk | 11.0.15.0.9 | 11.0.14.1.1 |
 | Update | openjdk | 17.0.3.0.7 | 17.0.2.0.8 |
 | Update | DDN Lustre | 2.12.8_ddn10 | 2.12.6_ddn58-1 |
+| Update | Singularity Enterprise | 2.x | 1.x |
+
+* AGE reservations and jobs in the waiting state will not be taken over. Please resubmit after maintenance. 
+* There are [Known Issues](known-issues.md) that will be resolved with this fix. 
 
 ## 2022-05-26 
 
