@@ -1,5 +1,22 @@
 # Storage
 
+ABCI has the following five types of storage. 
+
+* [Home Area](#home-area)
+* [Group Area](#group-area)
+* [Global scratch area](#scratch-area)
+* [Local Storage](#local-storage)
+	* [Local scratch](#local-scratch)
+	* [Persistent local scratch](#persistent-local-scratch) (Reserved only)
+	* [BeeOND storage](#beeond-storage)
+* [ABCI Cloud Storage](. /abci-cloudstorage/)
+
+!!! Warning
+    Except for the Local Storage, resources are shared by all users. Please keep the following in mind when using shared resources. 
+
+    * Avoid excessive I/O load as it may cause inconvenience to other users, and avoid performing I/O benchmarking, etc. 
+    * Creating a large number of small files (approx. 4MB or less) consumes a large amount of i-node area; please try to avoid large i-node consumption. 
+
 ## Home Area
 
 Home area is the disk area of the Lustre file system shared by interactive and compute nodes, and is available to all ABCI users by default. The disk quota is limited to 200 GiB.
