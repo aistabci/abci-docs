@@ -11,7 +11,7 @@
 | Update | DDN Lustre | 2.12.8_ddn10 | 2.12.6_ddn58-1 |
 | Update | Singularity Enterprise | 2.x | 1.x |
 
-* AGE reservations and jobs in the waiting state will not be taken over. Please resubmit after maintenance. 
+* AGE reservations and jobs in the waiting state will not be taken over. Please resubmit jobs and recreate reservations after maintenance. 
 * There are [Known Issues](known-issues.md) that will be resolved with this fix. 
 
 ## 2022-05-26 
