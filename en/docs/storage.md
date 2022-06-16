@@ -9,7 +9,7 @@ ABCI has the following five types of storage.
 	* [Local scratch](#local-scratch)
 	* [Persistent local scratch](#persistent-local-scratch) (Reserved only)
 	* [BeeOND storage](#beeond-storage)
-* [ABCI Cloud Storage](. /abci-cloudstorage/)
+* [ABCI Cloud Storage](abci-cloudstorage.md)
 
 !!! Warning
     Except for the Local Storage, resources are shared by all users. Please keep the following in mind when using shared resources. 

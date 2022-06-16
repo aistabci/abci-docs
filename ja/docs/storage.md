@@ -9,7 +9,7 @@ ABCIで利用可能なストレージは、下記の5種類です。
 	* [ローカルスクラッチ](#local-scratch)
 	* [永続ローカルスクラッチ](#persistent-local-scratch) (Reserved専用)
 	* [BeeONDストレージ](#beeond-storage)
-* [ABCIクラウドストレージ](../abci-cloudstorage/)
+* [ABCIクラウドストレージ](abci-cloudstorage.md)
 
 !!! Warning
     ローカルストレージ以外は、利用者全員による共有の資源です。共有の資源については、下記に留意して利用してください。
