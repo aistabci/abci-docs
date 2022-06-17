@@ -12,17 +12,8 @@ Communications between ABCI and external services/servers are restricted. The pe
 
 Especially, for the outbound (Compute nodes -> external) communications which are not currently permitted, we will consider granting a permission for a certain period of time on application basis.
 
-To discuss communication permission, please contact Contact [ABCI Support](. /contact.md).
+For further information, please contact [ABCI support](../contact.md) of your request for communication permission. 
 
-When you contact us, please provide us with the following information to consider permission for communication.
+Provide us with the following information to consider permission for communication: purpose of communication, hostname of the server, role, administrator, IP address, port number, and documents (URL, etc.) explaining the purpose of communication. Please understand that we may ask you to provide additional information.
 
-* Name of the destination, IP address/hostname, role, and administrator (or legal entity that manages the server).
-* Port number of the destination.
-* Purpose of communication.
-* Document or URL, etc. explaining that the server name and port number are necessary to achieve the purpose.
-
-Please understand that we may ask for additional information.
-
-After the consultation is complete, the responsible person of the ABCI Group should submit a request for permission to communicate to ABCI support. Or, please attach a document showing that you have received approval from the responsible person of the ABCI Group, and also attach the responsible person of the ABCI Group to the CC before submitting the application. <br>
-
-[Click here to contact us...](.. /contact.md)
+Requests for permission to communicate should be made by the responsible person of the ABCI Group to [ABCI support](. /contact.md). Or, please forward the e-mail approved by the responsible person of the ABCI Group and send the application to [ABCI support](. /contact.md) via e-mail with cc: responsible person of the ABCI Group.
