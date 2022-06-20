@@ -1,18 +1,21 @@
 # システム更新履歴
 
-## 2022-06-21 更新予定 {#2022-06-21}
+## 2022-06-21
 
 | Add / Update / Delete | Software | Version | Previous version |
 |:--|:--|:--|:--|
+| Add    | cuda    | 11.7.0 | |
+| Update | nccl    | 2.12.12-1 | 2.12.10-1 |
 | Update | Altair Grid Engine | 8.6.19 | 8.6.17 |
 | Update | openjdk | 1.8.0.332 | 1.8.0.322 |
-| Update | openjdk | 11.0.15.0.9 | 11.0.14.1.1 |
+| Update | openjdk | 11.0.15.0.9(計算ノード(V))<br>11.0.15.0.10(計算ノード(A)) | 11.0.14.1.1 |
 | Update | openjdk | 17.0.3.0.7 | 17.0.2.0.8 |
 | Update | DDN Lustre | 2.12.8_ddn10 | 2.12.6_ddn58-1 |
 | Update | Singularity Enterprise | 2.x | 1.x |
 
 * 予約および待ち状態のジョブは引き継がれません。ジョブの再投入・予約の再作成をメンテナンス後に実施お願いします。
 * 今回の修正で解消される[「既知の問題」](known-issues.md)があります。
+* R(4.1.3)について、--enable-R-shlib を指定して再インストールしております。
 
 ## 2022-05-26 
 

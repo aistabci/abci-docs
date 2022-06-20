@@ -176,8 +176,8 @@ The software available on the ABCI system is shown below.
 |:--|:--|:--|:--|
 | OS | CentOS | 7.5 | - |
 | OS | Red Hat Enterprise Linux | - | 8.2 |
-| Job Scheduler | Altair Grid Engine | 8.6.17 | 8.6.17 |
-| Development Environment | [CUDA Toolkit](gpu.md#cuda-toolkit) | 9.0.176.4<br>9.1.85.3<br>9.2.148.1<br>10.0.130.1<br>10.1.243<br>10.2.89<br>11.0.3<br>11.1.1<br>11.2.2<br>11.3.1<br>11.4.4<br>11.5.2<br>11.6.2 | 10.0.130.1<br>10.1.243<br>10.2.89<br>11.0.3<br>11.1.1<br>11.2.2<br>11.3.1<br>11.4.4<br>11.5.2<br>11.6.2 |
+| Job Scheduler | Altair Grid Engine | 8.6.19 | 8.6.19 |
+| Development Environment | [CUDA Toolkit](gpu.md#cuda-toolkit) | 9.0.176.4<br>9.1.85.3<br>9.2.148.1<br>10.0.130.1<br>10.1.243<br>10.2.89<br>11.0.3<br>11.1.1<br>11.2.2<br>11.3.1<br>11.4.4<br>11.5.2<br>11.6.2<br>11.7.0 | 10.0.130.1<br>10.1.243<br>10.2.89<br>11.0.3<br>11.1.1<br>11.2.2<br>11.3.1<br>11.4.4<br>11.5.2<br>11.6.2<br>11.7.0 |
 | | PGI Professional Edition | 20.4 | 20.4 |
 | | Intel OneAPI<br>(compilers and libraries) | 2022.0.2 | 2022.0.2 |
 | | Intel VTune | 2022.0.0 | 2022.0.0 |
@@ -189,12 +189,12 @@ The software available on the ABCI system is shown below.
 | | [Python](python.md) | 2.7.18<br>3.7.13<br>3.8.13<br>3.10.4 | 2.7.18<br>3.7.13<br>3.8.13<br>3.10.4 |
 | | Ruby | 2.0.0.648-33 | 2.5.5-105 |
 | | R | 4.1.3 | 4.1.3 |
-| | Java | 1.8.0.322<br>11.0.14.1.1 | 1.8.0.322<br>11.0.14.1.1<br>17.0.2.0.8 |
+| | Java | 1.8.0.332<br>11.0.15.0.9 | 1.8.0.332<br>11.0.15.0.10<br>17.0.3.0.7 |
 | | Scala | 2.12.6 | 2.10.6 |
 | | Perl | 5.16.3 | 5.26.3 |
 | | Go | 1.18 | 1.18 |
 | | Julia | 1.6 | 1.6 |
-| File System | [DDN Lustre](storage.md#home-area) | 2.12.6\_ddn58-1 | 2.12.6\_ddn58-1 |
+| File System | [DDN Lustre](storage.md#home-area) | 2.12.8\_ddn10 | 2.12.8\_ddn10 |
 | | [BeeOND](storage.md#beeond-storage) | 7.2.3 | 7.2.3 |
 | Object Storage | Scality S3 Connector | 8.5.2 | 8.5.2 |
 | Container | [Docker](containers.md#docker) | 19.03.15 | 19.03.15 |
@@ -202,7 +202,7 @@ The software available on the ABCI system is shown below.
 | MPI | [Open MPI](mpi.md#open-mpi) | 4.0.5<br>4.1.3 | 4.0.5<br>4.1.3 |
 | | [Intel MPI](mpi.md#intel-mpi) | 2021.5 | 2021.5 |
 | Library | [cuDNN](gpu.md#cudnn) | 7.0.5<br>7.1.4<br>7.2.1<br>7.3.1<br>7.4.2<br>7.5.1<br>7.6.5<br>8.0.5<br>8.1.1<br>8.2.4<br>8.3.3<br>8.4.0 | 7.3.1<br>7.4.2<br>7.5.1<br>7.6.5<br>8.0.5<br>8.1.1<br>8.2.4<br>8.3.3<br>8.4.0 |
-| | [NCCL](gpu.md#nccl) | 2.4.8-1<br>2.5.6-1<br>2.6.4-1<br>2.7.8-1<br>2.8.4-1<br>2.9.9-1<br>2.10.3-1<br>2.11.4-1<br>2.12.10-1 | 2.4.8-1<br>2.5.6-1<br>2.6.4-1<br>2.7.8-1<br>2.8.4-1<br>2.9.9-1<br>2.10.3-1<br>2.11.4-1<br>2.12.10-1 |
+| | [NCCL](gpu.md#nccl) | 2.4.8-1<br>2.5.6-1<br>2.6.4-1<br>2.7.8-1<br>2.8.4-1<br>2.9.9-1<br>2.10.3-1<br>2.11.4-1<br>2.12.12-1 | 2.4.8-1<br>2.5.6-1<br>2.6.4-1<br>2.7.8-1<br>2.8.4-1<br>2.9.9-1<br>2.10.3-1<br>2.11.4-1<br>2.12.12-1 |
 | | gdrcopy | 2.3 | 2.3 |
 | | UCX | 1.10 | 1.11 |
 | | libfabric | 1.7.0-1 | 1.9.0rc1-1 |
