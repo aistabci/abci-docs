@@ -13,7 +13,7 @@
 | Update | DDN Lustre | 2.12.8_ddn10 | 2.12.6_ddn58-1 |
 
 * Altair Grid Engine has been updated. The job queue and job reservations are not preserved. Please resubmit your batch job(s). Please recreate your reservation(s). 
-* There are [Known Issues](known-issues.md) that will be resolved with this fix. 
+* Some of [Known Issues](known-issues.md) have been resolved in this update.
 * Reinstalled R (4.1.3) with --enable-R-shlib enabled.
 * The update of Singularity Endpoint has been postponed.
 
