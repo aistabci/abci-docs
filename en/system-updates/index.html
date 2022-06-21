@@ -984,7 +984,7 @@
       
         <li class="md-nav__item">
   <a href="#2022-06-21" class="md-nav__link">
-    2022-06-21 (future update)
+    2022-06-21
   </a>
   
 </li>
@@ -1454,7 +1454,7 @@
                 
                 
                 <h1 id="system-updates">System Updates</h1>
-<h2 id="2022-06-21">2022-06-21 (future update)</h2>
+<h2 id="2022-06-21">2022-06-21</h2>
 <table>
 <thead>
 <tr>
@@ -1466,9 +1466,21 @@
 </thead>
 <tbody>
 <tr>
+<td align="left">Add</td>
+<td align="left">cuda</td>
+<td align="left">11.7.0</td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="left">Update</td>
+<td align="left">nccl</td>
+<td align="left">2.12.12-1</td>
+<td align="left">2.12.10-1</td>
+</tr>
+<tr>
 <td align="left">Update</td>
 <td align="left">Altair Grid Engine</td>
-<td align="left">8.6.19</td>
+<td align="left">8.6.19_C121_1</td>
 <td align="left">8.6.17</td>
 </tr>
 <tr>
@@ -1480,7 +1492,7 @@
 <tr>
 <td align="left">Update</td>
 <td align="left">openjdk</td>
-<td align="left">11.0.15.0.9</td>
+<td align="left">11.0.15.0.9(Compute Node (V))<br>11.0.15.0.10(Compute Node (A))</td>
 <td align="left">11.0.14.1.1</td>
 </tr>
 <tr>
@@ -1495,17 +1507,13 @@
 <td align="left">2.12.8_ddn10</td>
 <td align="left">2.12.6_ddn58-1</td>
 </tr>
-<tr>
-<td align="left">Update</td>
-<td align="left">Singularity Enterprise</td>
-<td align="left">2.x</td>
-<td align="left">1.x</td>
-</tr>
 </tbody>
 </table>
 <ul>
-<li>The job queue and job reservations are not preserved. Please resubmit your batch job(s). Please recreate your reservation(s). </li>
-<li>There are <a href="../known-issues/">Known Issues</a> that will be resolved with this fix. </li>
+<li>Altair Grid Engine has been updated. The job queue and job reservations are not preserved. Please resubmit your batch job(s). Please recreate your reservation(s). </li>
+<li>Some of <a href="../known-issues/">Known Issues</a> have been resolved in this update.</li>
+<li>Reinstalled R (4.1.3) with --enable-R-shlib enabled.</li>
+<li>The update of Singularity Endpoint has been postponed.</li>
 </ul>
 <h2 id="2022-05-26">2022-05-26</h2>
 <ul>

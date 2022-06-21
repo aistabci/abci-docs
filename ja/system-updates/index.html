@@ -996,7 +996,7 @@
       
         <li class="md-nav__item">
   <a href="#2022-06-21" class="md-nav__link">
-    2022-06-21 更新予定
+    2022-06-21
   </a>
   
 </li>
@@ -1466,7 +1466,7 @@
                 
                 
                 <h1 id="_1">システム更新履歴</h1>
-<h2 id="2022-06-21">2022-06-21 更新予定</h2>
+<h2 id="2022-06-21">2022-06-21</h2>
 <table>
 <thead>
 <tr>
@@ -1478,9 +1478,21 @@
 </thead>
 <tbody>
 <tr>
+<td align="left">Add</td>
+<td align="left">cuda</td>
+<td align="left">11.7.0</td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="left">Update</td>
+<td align="left">nccl</td>
+<td align="left">2.12.12-1</td>
+<td align="left">2.12.10-1</td>
+</tr>
+<tr>
 <td align="left">Update</td>
 <td align="left">Altair Grid Engine</td>
-<td align="left">8.6.19</td>
+<td align="left">8.6.19_C121_1</td>
 <td align="left">8.6.17</td>
 </tr>
 <tr>
@@ -1492,7 +1504,7 @@
 <tr>
 <td align="left">Update</td>
 <td align="left">openjdk</td>
-<td align="left">11.0.15.0.9</td>
+<td align="left">11.0.15.0.9(計算ノード(V))<br>11.0.15.0.10(計算ノード(A))</td>
 <td align="left">11.0.14.1.1</td>
 </tr>
 <tr>
@@ -1507,17 +1519,13 @@
 <td align="left">2.12.8_ddn10</td>
 <td align="left">2.12.6_ddn58-1</td>
 </tr>
-<tr>
-<td align="left">Update</td>
-<td align="left">Singularity Enterprise</td>
-<td align="left">2.x</td>
-<td align="left">1.x</td>
-</tr>
 </tbody>
 </table>
 <ul>
-<li>予約および待ち状態のジョブは引き継がれません。ジョブの再投入・予約の再作成をメンテナンス後に実施お願いします。</li>
+<li>Altair Grid Engineのアップデートにより予約およびジョブは削除されました。ジョブの再投入・予約の再作成をお願いします。</li>
 <li>今回の修正で解消される<a href="../known-issues/">「既知の問題」</a>があります。</li>
+<li>R(4.1.3)について、--enable-R-shlib を有効にして再インストールしております。</li>
+<li>Singularityエンドポイントについては、都合によりアップデートを見送りました。</li>
 </ul>
 <h2 id="2022-05-26">2022-05-26</h2>
 <ul>
