@@ -11,11 +11,11 @@
 | Update | openjdk | 11.0.15.0.9(Compute Node (V))<br>11.0.15.0.10(Compute Node (A)) | 11.0.14.1.1 |
 | Update | openjdk | 17.0.3.0.7 | 17.0.2.0.8 |
 | Update | DDN Lustre | 2.12.8_ddn10 | 2.12.6_ddn58-1 |
-| Update | Singularity Enterprise | 2.x | 1.x |
 
 * Altair Grid Engine has been updated. The job queue and job reservations are not preserved. Please resubmit your batch job(s). Please recreate your reservation(s). 
 * There are [Known Issues](known-issues.md) that will be resolved with this fix. 
 * Reinstalled R (4.1.3) with --enable-R-shlib enabled.
+* The update of Singularity Enterprise has been postponed.
 
 ## 2022-05-26 
 
