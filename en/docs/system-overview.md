@@ -199,6 +199,7 @@ The software available on the ABCI system is shown below.
 | Object Storage | Scality S3 Connector | 8.5.2 | 8.5.2 |
 | Container | [Docker](containers.md#docker) | 19.03.15 | 19.03.15 |
 | | [SingularityPRO](containers.md#singularity) | 3.9-4 | 3.9-4 |
+| | Singularity Endpoint | 1.1.14-0(Builder)<br>1.0.6-0(Consent)<br>1.9.3-0(Keyserver)<br>1.0.17-0(Library)<br>1.0.10-0(Token) | 1.1.14-0(Builder)<br>1.0.6-0(Consent)<br>1.9.3-0(Keyserver)<br>1.0.17-0(Library)<br>1.0.10-0(Token) |
 | MPI | [Open MPI](mpi.md#open-mpi) | 4.0.5<br>4.1.3 | 4.0.5<br>4.1.3 |
 | | [Intel MPI](mpi.md#intel-mpi) | 2021.5 | 2021.5 |
 | Library | [cuDNN](gpu.md#cudnn) | 7.0.5<br>7.1.4<br>7.2.1<br>7.3.1<br>7.4.2<br>7.5.1<br>7.6.5<br>8.0.5<br>8.1.1<br>8.2.4<br>8.3.3<br>8.4.0 | 7.3.1<br>7.4.2<br>7.5.1<br>7.6.5<br>8.0.5<br>8.1.1<br>8.2.4<br>8.3.3<br>8.4.0 |

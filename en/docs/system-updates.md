@@ -15,7 +15,7 @@
 * Altair Grid Engine has been updated. The job queue and job reservations are not preserved. Please resubmit your batch job(s). Please recreate your reservation(s). 
 * There are [Known Issues](known-issues.md) that will be resolved with this fix. 
 * Reinstalled R (4.1.3) with --enable-R-shlib enabled.
-* The update of Singularity Enterprise has been postponed.
+* The update of Singularity Endpoint has been postponed.
 
 ## 2022-05-26 
 
