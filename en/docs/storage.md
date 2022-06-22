@@ -11,11 +11,14 @@ ABCI has the following five types of storage.
 	* [BeeOND storage](#beeond-storage)
 * [ABCI Cloud Storage](abci-cloudstorage.md)
 
-!!! Warning
-    Except for the Local Storage, resources are shared by all users. Please keep the following in mind when using shared resources. 
+!!! Tips
+    Such as Home Area or Group Area, other than Local Storage, are resources shared by all users. Excessive I/O load or unnecessary access will not only cause inconvenience to other users but also slow down the execution speed of your own jobs. Please keep the following points in mind when using each storage space. 
 
-    * Avoid excessive I/O load as it may cause inconvenience to other users, and avoid performing I/O benchmarking, etc. 
-    * Please try to avoid large inode consumption. 
+	* For data that does not require persistence, such as intermediate data, we recommend that you refrain from creating files and use memory. 
+	* Proactively utilize scratch areas that can be accessed at high speed. It is recommended that files that will be accessed many times during job execution be staged (temporarily copied) to a Local scratch. 
+	* Creating and accessing large numbers of small files on a shared file system is not recommended. It is recommended to use scratch space or combine multiple files into one larger file and then access them. For example, consider using HDF5, WebDataset, etc. 
+	* Refrain from opening/closing the same file unnecessarily and repeatedly within a single job. 
+	* Please consult us in advance if you intend to create more than a hundred million files in a short period of time. 
 
 ## Home Area
 
