@@ -25,4 +25,4 @@ Please understand that we may ask for additional information.
 
 After the consultation is complete, the responsible person of the ABCI Group should submit a request for permission to communicate to ABCI support. Or, please attach a document showing that you have received approval from the responsible person of the ABCI Group, and also attach the responsible person of the ABCI Group to the CC before submitting the application. <br>
 
-[Click here to contact us...](../contact.md)
+Please [contact](../contact.md) us for application procedures. 
