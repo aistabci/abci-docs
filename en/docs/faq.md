@@ -173,6 +173,10 @@ Example)
 The `singularity build` and `pull` commands use `/tmp` as the location to create temporary files.
 When you build a large container on the compute node, it may cause an error due to insufficient space in `/tmp`.
 
+```
+FATAL:   While making image from oci registry: error fetching image to cache: while building SIF from layers: conveyor failed to get: writing blob: write /tmp/0123456789.1.gpu/bundle-temp-0123456789/oci-put-blob0123456789: no space left on device
+```
+
 If you get an error due to insufficient space, set the `SINGULARITY_TMPDIR` environment variable to use the local storage as shown below:
 
 ```
