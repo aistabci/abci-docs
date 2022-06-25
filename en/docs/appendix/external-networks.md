@@ -23,6 +23,6 @@ Please provide the following information, as it is necessary for us to review yo
 
 Please understand that we may ask for additional information. 
 
-After the consultation is complete, the responsible person of the ABCI Group should submit a request for permission to communicate to ABCI support. Or, please attach a document showing that you have received approval from the responsible person of the ABCI Group, and also add the responsible person to the cc of your email. <br>
+After the consultation is complete, the responsible person of the ABCI Group should submit a request for permission to communicate to ABCI support. Or, please attach a document showing that you have received approval from the responsible person of the ABCI Group, and also add the responsible person to the cc of your email. 
 
 Please [contact](../contact.md) us for application procedures. 
