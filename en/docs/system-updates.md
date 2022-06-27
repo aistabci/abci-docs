@@ -1,5 +1,10 @@
 # System Updates
 
+## 2022-06-24
+
+* Changed the job execution option for change GPU Compute Mode to EXCLUSIVE_PROCESS mode from `-v GPU_COMPUTE_MODE=1` to `-v GPU_COMPUTE_MODE=3`. For more information, please refer to the [Changing GPU Compute Mode](gpu.md#changing-gpu-compute-mode).
+
+
 ## 2022-06-21
 
 | Add / Update / Delete | Software | Version | Previous version |
