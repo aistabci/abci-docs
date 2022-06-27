@@ -180,7 +180,10 @@ singularity build/pull コマンドは一時ファイルの作成場所として
 大きなコンテナを計算ノード上でsingularity build/pullする際に `/tmp` の容量が足りずエラーになる場合があります。
 
 ```
-FATAL:   While making image from oci registry: error fetching image to cache: while building SIF from layers: conveyor failed to get: writing blob: write /tmp/0123456789.1.gpu/bundle-temp-0123456789/oci-put-blob0123456789: no space left on device
+FATAL:   While making image from oci registry: error fetching image to cache: 
+while building SIF from layers: conveyor failed to get: writing blob: write 
+/tmp/0123456789.1.gpu/bundle-temp-0123456789/oci-put-blob0123456789: 
+no space left on device
 ```
 
 容量が足りずエラーになる場合は、次のようにローカルスクラッチを使用するよう`SINGULARITY_TMPDIR`環境変数を設定してください。
