@@ -1423,8 +1423,14 @@ ABCIシステム利用環境の<a href="../getting-started/#general-method">SSH�
 
 <h2 id="q-insufficient-disk-space-for-singularity-build">Q. 計算ノードでsingularity build/pullすると容量不足でエラーになる</h2>
 <p>singularity build/pull コマンドは一時ファイルの作成場所として <code>/tmp</code> を使用します。
-大きなコンテナを計算ノード上でsingularity build/pullする際に <code>/tmp</code> の容量が足りずエラーになる場合があります。
-容量が足りずエラーになる場合は、次のようにローカルスクラッチを使用するよう<code>SINGULARITY_TMPDIR</code>環境変数を設定してください。</p>
+大きなコンテナを計算ノード上でsingularity build/pullする際に <code>/tmp</code> の容量が足りずエラーになる場合があります。</p>
+<div class="codehilite"><pre><span></span><code><span class="n">FATAL</span><span class="o">:</span>   <span class="n">While</span> <span class="n">making</span> <span class="n">image</span> <span class="n">from</span> <span class="n">oci</span> <span class="n">registry</span><span class="o">:</span> <span class="n">error</span> <span class="n">fetching</span> <span class="n">image</span> <span class="n">to</span> <span class="n">cache</span><span class="o">:</span> 
+<span class="k">while</span> <span class="n">building</span> <span class="n">SIF</span> <span class="n">from</span> <span class="n">layers</span><span class="o">:</span> <span class="n">conveyor</span> <span class="n">failed</span> <span class="n">to</span> <span class="kd">get</span><span class="o">:</span> <span class="n">writing</span> <span class="n">blob</span><span class="o">:</span> <span class="n">write</span> 
+<span class="sr">/tmp/0123456789.1.gpu/bundle-temp-0123456789/</span><span class="n">oci</span><span class="o">-</span><span class="n">put</span><span class="o">-</span><span class="n">blob0123456789</span><span class="o">:</span> 
+<span class="n">no</span> <span class="n">space</span> <span class="n">left</span> <span class="n">on</span> <span class="n">device</span>
+</code></pre></div>
+
+<p>容量が足りずエラーになる場合は、次のようにローカルスクラッチを使用するよう<code>SINGULARITY_TMPDIR</code>環境変数を設定してください。</p>
 <div class="codehilite"><pre><span></span><code><span class="o">[</span><span class="n">username@g0001 ~</span><span class="o">]</span><span class="err">$</span><span class="w"> </span><span class="n">SINGULARITY_TMPDIR</span><span class="o">=</span><span class="err">$</span><span class="n">SGE_LOCALDIR</span><span class="w"> </span><span class="n">singularity</span><span class="w"> </span><span class="n">pull</span><span class="w"> </span><span class="nl">docker</span><span class="p">:</span><span class="o">//</span><span class="n">nvcr</span><span class="p">.</span><span class="n">io</span><span class="o">/</span><span class="n">nvidia</span><span class="o">/</span><span class="nl">tensorflow</span><span class="p">:</span><span class="mf">20.12</span><span class="o">-</span><span class="n">tf1</span><span class="o">-</span><span class="n">py3</span><span class="w"></span>
 </code></pre></div>
 
