@@ -1253,12 +1253,14 @@ ABCI allows users to execute NGC-provided Docker images easily by using <a href=
 <h2 id="prerequisites">Prerequisites</h2>
 <h3 id="ngc-container-registry">NGC Container Registry</h3>
 <p>Each Docker image of NGC container registry is specified by the following format:</p>
-<div class="codehilite"><pre><span></span><code>nvcr.io/&lt;namespace&gt;/&lt;repo_name&gt;:&lt;repo_tag&gt;
+<div class="codehilite"><pre><span></span><code><span class="err">nvcr.io/&lt;namespace&gt;/&lt;repo_name&gt;:&lt;repo_tag&gt;</span>
 </code></pre></div>
 
+
 <p>When using with Singularity, each image is referenced first with the URL schema <code>docker://</code> as like:</p>
-<div class="codehilite"><pre><span></span><code>docker://nvcr.io/&lt;namespace&gt;/&lt;repo_name&gt;:&lt;repo_tag&gt;
+<div class="codehilite"><pre><span></span><code><span class="c">docker://nvcr.io/&lt;namespace&gt;/&lt;repo_name&gt;:&lt;repo_tag&gt;</span>
 </code></pre></div>
+
 
 <h3 id="ngc-website">NGC Website</h3>
 <p><a href="https://ngc.nvidia.com/">NGC Website</a> is the portal for browsing the contents of the NGC container registry, generating NGC API keys, and so on.</p>
@@ -1278,29 +1280,33 @@ ABCI allows users to execute NGC-provided Docker images easily by using <a href=
 Then, you'll find:
 <a href="https://ngc.nvidia.com/catalog/containers/nvidia:tensorflow">https://ngc.nvidia.com/catalog/containers/nvidia:tensorflow</a></p>
 <p>In this page, you will see the <code>pull</code> command for using TensorFlow image on Docker:</p>
-<div class="codehilite"><pre><span></span><code>docker pull nvcr.io/nvidia/tensorflow:21.06-tf1-py3
+<div class="codehilite"><pre><span></span><code><span class="err">docker pull nvcr.io/nvidia/tensorflow:21.06-tf1-py3</span>
 </code></pre></div>
 
+
 <p>As we mentioned at <a href="#ngc-container-registry">NGC Container Registry</a>, when using with Singularity, this image can be specified by the following URL:</p>
-<div class="codehilite"><pre><span></span><code>docker://nvcr.io/nvidia/tensorflow:21.06-tf1-py3
+<div class="codehilite"><pre><span></span><code><span class="c">docker://nvcr.io/nvidia/tensorflow:21.06-tf1-py3</span>
 </code></pre></div>
+
 
 <h3 id="build-a-singularity-image">Build a Singularity image</h3>
 <p>Build a Singularity image for TensorFlow on the interactive node.</p>
-<div class="codehilite"><pre><span></span><code><span class="p">[</span><span class="n">username</span><span class="err">@</span><span class="n">es1</span> <span class="o">~</span><span class="p">]</span><span class="o">$</span> <span class="n">module</span> <span class="nb">load</span> <span class="n">singularitypro</span>
-<span class="p">[</span><span class="n">username</span><span class="err">@</span><span class="n">es1</span> <span class="o">~</span><span class="p">]</span><span class="o">$</span> <span class="n">singularity</span> <span class="n">pull</span> <span class="n">docker</span><span class="p">:</span><span class="o">//</span><span class="n">nvcr</span><span class="o">.</span><span class="n">io</span><span class="o">/</span><span class="n">nvidia</span><span class="o">/</span><span class="n">tensorflow</span><span class="p">:</span><span class="mf">21.06</span><span class="o">-</span><span class="n">tf1</span><span class="o">-</span><span class="n">py3</span>
+<div class="codehilite"><pre><span></span><code><span class="err">[username@es1 ~]$ module load singularitypro</span>
+<span class="err">[username@es1 ~]$ singularity pull docker://nvcr.io/nvidia/tensorflow:21.06-tf1-py3</span>
 </code></pre></div>
+
 
 <p>An image named <code>tensorflow_21.06-tf1-py3.sif</code> will be generated.</p>
 <h3 id="run-a-singularity-image">Run a Singularity image</h3>
 <p>Start an interactive job with one full-node and run a sample program <code>cnn_mnist.py</code>.</p>
-<div class="codehilite"><pre><span></span><code><span class="p">[</span><span class="n">username</span><span class="err">@</span><span class="n">es1</span> <span class="o">~</span><span class="p">]</span><span class="o">$</span> <span class="n">qrsh</span> <span class="o">-</span><span class="n">g</span> <span class="n">grpname</span> <span class="o">-</span><span class="n">l</span> <span class="n">rt_F</span><span class="o">=</span><span class="mi">1</span> <span class="o">-</span><span class="n">l</span> <span class="n">h_rt</span><span class="o">=</span><span class="mi">1</span><span class="p">:</span><span class="mi">00</span><span class="p">:</span><span class="mi">00</span>
-<span class="p">[</span><span class="n">username</span><span class="err">@</span><span class="n">g0001</span> <span class="o">~</span><span class="p">]</span><span class="o">$</span> <span class="n">module</span> <span class="nb">load</span> <span class="n">singularitypro</span>
-<span class="p">[</span><span class="n">username</span><span class="err">@</span><span class="n">g0001</span> <span class="o">~</span><span class="p">]</span><span class="o">$</span> <span class="n">wget</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">raw</span><span class="o">.</span><span class="n">githubusercontent</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">tensorflow</span><span class="o">/</span><span class="n">tensorflow</span><span class="o">/</span><span class="n">v1</span><span class="o">.</span><span class="mf">15.5</span><span class="o">/</span><span class="n">tensorflow</span><span class="o">/</span><span class="n">examples</span><span class="o">/</span><span class="n">tutorials</span><span class="o">/</span><span class="n">layers</span><span class="o">/</span><span class="n">cnn_mnist</span><span class="o">.</span><span class="n">py</span>
-<span class="p">[</span><span class="n">username</span><span class="err">@</span><span class="n">g0001</span> <span class="o">~</span><span class="p">]</span><span class="o">$</span> <span class="n">singularity</span> <span class="n">run</span> <span class="o">--</span><span class="n">nv</span> <span class="n">tensorflow_21</span><span class="o">.</span><span class="mi">06</span><span class="o">-</span><span class="n">tf1</span><span class="o">-</span><span class="n">py3</span> <span class="n">python</span> <span class="n">cnn_mnist</span><span class="o">.</span><span class="n">py</span>
-<span class="p">:</span>
-<span class="p">{</span><span class="s1">&#39;accuracy&#39;</span><span class="p">:</span> <span class="mf">0.9703</span><span class="p">,</span> <span class="s1">&#39;loss&#39;</span><span class="p">:</span> <span class="mf">0.10137254</span><span class="p">,</span> <span class="s1">&#39;global_step&#39;</span><span class="p">:</span> <span class="mi">20000</span><span class="p">}</span>
+<div class="codehilite"><pre><span></span><code><span class="err">[username@es1 ~]$ qrsh -g grpname -l rt_F=1 -l h_rt=1:00:00</span>
+<span class="err">[username@g0001 ~]$ module load singularitypro</span>
+<span class="err">[username@g0001 ~]$ wget https://raw.githubusercontent.com/tensorflow/tensorflow/v1.15.5/tensorflow/examples/tutorials/layers/cnn_mnist.py</span>
+<span class="err">[username@g0001 ~]$ singularity run --nv tensorflow_21.06-tf1-py3 python cnn_mnist.py</span>
+<span class="err">:</span>
+<span class="err">{&#39;accuracy&#39;: 0.9703, &#39;loss&#39;: 0.10137254, &#39;global_step&#39;: 20000}</span>
 </code></pre></div>
+
 
 <p>You can do the same thing with a batch job.</p>
 <div class="codehilite"><pre><span></span><code><span class="ch">#!/bin/sh</span>
@@ -1314,55 +1320,60 @@ wget https://raw.githubusercontent.com/tensorflow/tensorflow/v1.15.5/tensorflow/
 singularity run --nv tensorflow_21.06-tf1-py3.sif python cnn_mnist.py
 </code></pre></div>
 
+
 <h2 id="multiple-node-run">Multiple-node Run</h2>
 <p>Some of NGC container images support multiple-node run with using MPI.
 TensorFlow image, which you used for <a href="#single-node-run">Single-node Run</a>, also supports multi-node run.</p>
 <h3 id="identify-mpi-version">Identify MPI version</h3>
 <p>First, check the version of MPI installed into the TensorFlow image.</p>
-<div class="codehilite"><pre><span></span><code><span class="p">[</span><span class="n">username</span><span class="err">@</span><span class="n">es1</span> <span class="o">~</span><span class="p">]</span> <span class="o">$</span> <span class="n">module</span> <span class="nb">load</span> <span class="n">singularitypro</span>
-<span class="p">[</span><span class="n">username</span><span class="err">@</span><span class="n">es1</span> <span class="o">~</span><span class="p">]</span> <span class="o">$</span> <span class="n">singularity</span> <span class="n">exec</span> <span class="n">tensorflow_21</span><span class="o">.</span><span class="mi">06</span><span class="o">-</span><span class="n">tf1</span><span class="o">-</span><span class="n">py3</span><span class="o">.</span><span class="n">sif</span> <span class="n">mpirun</span> <span class="o">--</span><span class="n">version</span>
-<span class="n">mpirun</span> <span class="p">(</span><span class="n">Open</span> <span class="n">MPI</span><span class="p">)</span> <span class="mf">4.1</span><span class="o">.</span><span class="mi">1</span><span class="n">rc1</span>
+<div class="codehilite"><pre><span></span><code><span class="o">[</span><span class="n">username@es1 ~</span><span class="o">]</span><span class="w"> </span><span class="err">$</span><span class="w"> </span><span class="k">module</span><span class="w"> </span><span class="k">load</span><span class="w"> </span><span class="n">singularitypro</span><span class="w"></span>
+<span class="o">[</span><span class="n">username@es1 ~</span><span class="o">]</span><span class="w"> </span><span class="err">$</span><span class="w"> </span><span class="n">singularity</span><span class="w"> </span><span class="k">exec</span><span class="w"> </span><span class="n">tensorflow_21</span><span class="mf">.06</span><span class="o">-</span><span class="n">tf1</span><span class="o">-</span><span class="n">py3</span><span class="p">.</span><span class="n">sif</span><span class="w"> </span><span class="n">mpirun</span><span class="w"> </span><span class="c1">--version</span>
+<span class="n">mpirun</span><span class="w"> </span><span class="p">(</span><span class="k">Open</span><span class="w"> </span><span class="n">MPI</span><span class="p">)</span><span class="w"> </span><span class="mf">4.1.1</span><span class="n">rc1</span><span class="w"></span>
 
-<span class="n">Report</span> <span class="n">bugs</span> <span class="n">to</span> <span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="n">www</span><span class="o">.</span><span class="n">open</span><span class="o">-</span><span class="n">mpi</span><span class="o">.</span><span class="n">org</span><span class="o">/</span><span class="n">community</span><span class="o">/</span><span class="n">help</span><span class="o">/</span>
+<span class="n">Report</span><span class="w"> </span><span class="n">bugs</span><span class="w"> </span><span class="k">to</span><span class="w"> </span><span class="nl">http</span><span class="p">:</span><span class="o">//</span><span class="n">www</span><span class="p">.</span><span class="k">open</span><span class="o">-</span><span class="n">mpi</span><span class="p">.</span><span class="n">org</span><span class="o">/</span><span class="n">community</span><span class="o">/</span><span class="n">help</span><span class="o">/</span><span class="w"></span>
 </code></pre></div>
+
 
 <p>Next, check the available versions of Open MPI on the ABCI system.</p>
 <div class="codehilite"><pre><span></span><code><span class="o">[</span><span class="n">username@es1 ~</span><span class="o">]</span><span class="w"> </span><span class="err">$</span><span class="w"> </span><span class="k">module</span><span class="w"> </span><span class="n">avail</span><span class="w"> </span><span class="n">openmpi</span><span class="w"></span>
 
-<span class="o">--------------------</span><span class="w"> </span><span class="o">/</span><span class="n">apps</span><span class="o">/</span><span class="n">modules</span><span class="o">/</span><span class="n">modulefiles</span><span class="o">/</span><span class="n">centos7</span><span class="o">/</span><span class="n">mpi</span><span class="w"> </span><span class="o">---------------------</span><span class="w"></span>
+<span class="c1">-------------------- /apps/modules/modulefiles/centos7/mpi ---------------------</span>
 <span class="n">openmpi</span><span class="o">/</span><span class="mf">2.1.6</span><span class="w">          </span><span class="n">openmpi</span><span class="o">/</span><span class="mf">3.1.6</span><span class="w">          </span><span class="n">openmpi</span><span class="o">/</span><span class="mf">4.0.5</span><span class="p">(</span><span class="k">default</span><span class="p">)</span><span class="w"></span>
 </code></pre></div>
+
 
 <p><code>openmpi/4.0.5</code> module seems to be suitable to run this image. In general, at least the major versions of both MPIs should be the same.</p>
 <h3 id="run-a-singularity-image-with-mpi">Run a Singularity image with MPI</h3>
 <p>Start an interative job with two full-nodes, and load required environment modules.</p>
-<div class="codehilite"><pre><span></span><code><span class="p">[</span><span class="n">username</span><span class="err">@</span><span class="n">es1</span> <span class="o">~</span><span class="p">]</span><span class="o">$</span> <span class="n">qrsh</span> <span class="o">-</span><span class="n">g</span> <span class="n">grpname</span> <span class="o">-</span><span class="n">l</span> <span class="n">rt_F</span><span class="o">=</span><span class="mi">2</span> <span class="o">-</span><span class="n">l</span> <span class="n">h_rt</span><span class="o">=</span><span class="mi">1</span><span class="p">:</span><span class="mi">00</span><span class="p">:</span><span class="mi">00</span>
-<span class="p">[</span><span class="n">username</span><span class="err">@</span><span class="n">g0001</span> <span class="o">~</span><span class="p">]</span><span class="o">$</span> <span class="n">module</span> <span class="nb">load</span> <span class="n">singularitypro</span> <span class="n">openmpi</span><span class="o">/</span><span class="mf">4.0</span><span class="o">.</span><span class="mi">5</span>
+<div class="codehilite"><pre><span></span><code><span class="err">[username@es1 ~]$ qrsh -g grpname -l rt_F=2 -l h_rt=1:00:00</span>
+<span class="err">[username@g0001 ~]$ module load singularitypro openmpi/4.0.5</span>
 </code></pre></div>
+
 
 <p>Each full-node has four GPUs, and you have eight GPUs in total.
 In this case, you run four processes on each full-node in parallel, that means eight processes in total, so as to execute the sample program <code>tensorflow_mnist.py</code>.</p>
-<div class="codehilite"><pre><span></span><code><span class="o">[</span><span class="n">username@g0001 ~</span><span class="o">]</span><span class="err">$</span><span class="w"> </span><span class="n">wget</span><span class="w"> </span><span class="nl">https</span><span class="p">:</span><span class="o">//</span><span class="n">raw</span><span class="p">.</span><span class="n">githubusercontent</span><span class="p">.</span><span class="n">com</span><span class="o">/</span><span class="n">horovod</span><span class="o">/</span><span class="n">horovod</span><span class="o">/</span><span class="n">v0</span><span class="mf">.22.1</span><span class="o">/</span><span class="n">examples</span><span class="o">/</span><span class="n">tensorflow</span><span class="o">/</span><span class="n">tensorflow_mnist</span><span class="p">.</span><span class="n">py</span><span class="w"></span>
-<span class="o">[</span><span class="n">username@g0001 ~</span><span class="o">]</span><span class="err">$</span><span class="w"> </span><span class="n">mpirun</span><span class="w"> </span><span class="o">-</span><span class="n">np</span><span class="w"> </span><span class="mi">8</span><span class="w"> </span><span class="o">-</span><span class="n">npernode</span><span class="w"> </span><span class="mi">4</span><span class="w"> </span><span class="n">singularity</span><span class="w"> </span><span class="n">run</span><span class="w"> </span><span class="o">--</span><span class="n">nv</span><span class="w"> </span><span class="n">tensorflow_21</span><span class="mf">.06</span><span class="o">-</span><span class="n">tf1</span><span class="o">-</span><span class="n">py3</span><span class="p">.</span><span class="n">sif</span><span class="w"> </span><span class="n">python</span><span class="w"> </span><span class="n">tensorflow_mnist</span><span class="p">.</span><span class="n">py</span><span class="w"></span>
-<span class="err">:</span><span class="w"></span>
-<span class="nl">INFO</span><span class="p">:</span><span class="nl">tensorflow</span><span class="p">:</span><span class="n">loss</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">0.13635147</span><span class="p">,</span><span class="w"> </span><span class="n">step</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">30</span><span class="w"> </span><span class="p">(</span><span class="mf">0.236</span><span class="w"> </span><span class="n">sec</span><span class="p">)</span><span class="w"></span>
-<span class="nl">INFO</span><span class="p">:</span><span class="nl">tensorflow</span><span class="p">:</span><span class="n">loss</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">0.16320482</span><span class="p">,</span><span class="w"> </span><span class="n">step</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">30</span><span class="w"> </span><span class="p">(</span><span class="mf">0.236</span><span class="w"> </span><span class="n">sec</span><span class="p">)</span><span class="w"></span>
-<span class="nl">INFO</span><span class="p">:</span><span class="nl">tensorflow</span><span class="p">:</span><span class="n">loss</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">0.23524982</span><span class="p">,</span><span class="w"> </span><span class="n">step</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">30</span><span class="w"> </span><span class="p">(</span><span class="mf">0.237</span><span class="w"> </span><span class="n">sec</span><span class="p">)</span><span class="w"></span>
-<span class="nl">INFO</span><span class="p">:</span><span class="nl">tensorflow</span><span class="p">:</span><span class="n">loss</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">0.1300551</span><span class="p">,</span><span class="w"> </span><span class="n">step</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">30</span><span class="w"> </span><span class="p">(</span><span class="mf">0.236</span><span class="w"> </span><span class="n">sec</span><span class="p">)</span><span class="w"></span>
-<span class="nl">INFO</span><span class="p">:</span><span class="nl">tensorflow</span><span class="p">:</span><span class="n">loss</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">0.10259462</span><span class="p">,</span><span class="w"> </span><span class="n">step</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">30</span><span class="w"> </span><span class="p">(</span><span class="mf">0.237</span><span class="w"> </span><span class="n">sec</span><span class="p">)</span><span class="w"></span>
-<span class="nl">INFO</span><span class="p">:</span><span class="nl">tensorflow</span><span class="p">:</span><span class="n">loss</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">0.04606852</span><span class="p">,</span><span class="w"> </span><span class="n">step</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">30</span><span class="w"> </span><span class="p">(</span><span class="mf">0.237</span><span class="w"> </span><span class="n">sec</span><span class="p">)</span><span class="w"></span>
-<span class="nl">INFO</span><span class="p">:</span><span class="nl">tensorflow</span><span class="p">:</span><span class="n">loss</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">0.10536947</span><span class="p">,</span><span class="w"> </span><span class="n">step</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">30</span><span class="w"> </span><span class="p">(</span><span class="mf">0.236</span><span class="w"> </span><span class="n">sec</span><span class="p">)</span><span class="w"></span>
-<span class="nl">INFO</span><span class="p">:</span><span class="nl">tensorflow</span><span class="p">:</span><span class="n">loss</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">0.09811305</span><span class="p">,</span><span class="w"> </span><span class="n">step</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">30</span><span class="w"> </span><span class="p">(</span><span class="mf">0.237</span><span class="w"> </span><span class="n">sec</span><span class="p">)</span><span class="w"></span>
-<span class="nl">INFO</span><span class="p">:</span><span class="nl">tensorflow</span><span class="p">:</span><span class="n">loss</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">0.06823079</span><span class="p">,</span><span class="w"> </span><span class="n">step</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">40</span><span class="w"> </span><span class="p">(</span><span class="mf">0.225</span><span class="w"> </span><span class="n">sec</span><span class="p">)</span><span class="w"></span>
-<span class="nl">INFO</span><span class="p">:</span><span class="nl">tensorflow</span><span class="p">:</span><span class="n">loss</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">0.0671196</span><span class="p">,</span><span class="w"> </span><span class="n">step</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">40</span><span class="w"> </span><span class="p">(</span><span class="mf">0.225</span><span class="w"> </span><span class="n">sec</span><span class="p">)</span><span class="w"></span>
-<span class="nl">INFO</span><span class="p">:</span><span class="nl">tensorflow</span><span class="p">:</span><span class="n">loss</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">0.1545426</span><span class="p">,</span><span class="w"> </span><span class="n">step</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">40</span><span class="w"> </span><span class="p">(</span><span class="mf">0.225</span><span class="w"> </span><span class="n">sec</span><span class="p">)</span><span class="w"></span>
-<span class="nl">INFO</span><span class="p">:</span><span class="nl">tensorflow</span><span class="p">:</span><span class="n">loss</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">0.13310829</span><span class="p">,</span><span class="w"> </span><span class="n">step</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">40</span><span class="w"> </span><span class="p">(</span><span class="mf">0.225</span><span class="w"> </span><span class="n">sec</span><span class="p">)</span><span class="w"></span>
-<span class="nl">INFO</span><span class="p">:</span><span class="nl">tensorflow</span><span class="p">:</span><span class="n">loss</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">0.084449895</span><span class="p">,</span><span class="w"> </span><span class="n">step</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">40</span><span class="w"> </span><span class="p">(</span><span class="mf">0.225</span><span class="w"> </span><span class="n">sec</span><span class="p">)</span><span class="w"></span>
-<span class="nl">INFO</span><span class="p">:</span><span class="nl">tensorflow</span><span class="p">:</span><span class="n">loss</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">0.10252285</span><span class="p">,</span><span class="w"> </span><span class="n">step</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">40</span><span class="w"> </span><span class="p">(</span><span class="mf">0.225</span><span class="w"> </span><span class="n">sec</span><span class="p">)</span><span class="w"></span>
-<span class="nl">INFO</span><span class="p">:</span><span class="nl">tensorflow</span><span class="p">:</span><span class="n">loss</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">0.078794435</span><span class="p">,</span><span class="w"> </span><span class="n">step</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">40</span><span class="w"> </span><span class="p">(</span><span class="mf">0.225</span><span class="w"> </span><span class="n">sec</span><span class="p">)</span><span class="w"></span>
-<span class="nl">INFO</span><span class="p">:</span><span class="nl">tensorflow</span><span class="p">:</span><span class="n">loss</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">0.17852336</span><span class="p">,</span><span class="w"> </span><span class="n">step</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">40</span><span class="w"> </span><span class="p">(</span><span class="mf">0.225</span><span class="w"> </span><span class="n">sec</span><span class="p">)</span><span class="w"></span>
-<span class="err">:</span><span class="w"></span>
+<div class="codehilite"><pre><span></span><code><span class="err">[username@g0001 ~]$ wget https://raw.githubusercontent.com/horovod/horovod/v0.22.1/examples/tensorflow/tensorflow_mnist.py</span>
+<span class="err">[username@g0001 ~]$ mpirun -np 8 -npernode 4 singularity run --nv tensorflow_21.06-tf1-py3.sif python tensorflow_mnist.py</span>
+<span class="err">:</span>
+<span class="c">INFO:tensorflow:loss = 0.13635147, step = 30 (0.236 sec)</span>
+<span class="c">INFO:tensorflow:loss = 0.16320482, step = 30 (0.236 sec)</span>
+<span class="c">INFO:tensorflow:loss = 0.23524982, step = 30 (0.237 sec)</span>
+<span class="c">INFO:tensorflow:loss = 0.1300551, step = 30 (0.236 sec)</span>
+<span class="c">INFO:tensorflow:loss = 0.10259462, step = 30 (0.237 sec)</span>
+<span class="c">INFO:tensorflow:loss = 0.04606852, step = 30 (0.237 sec)</span>
+<span class="c">INFO:tensorflow:loss = 0.10536947, step = 30 (0.236 sec)</span>
+<span class="c">INFO:tensorflow:loss = 0.09811305, step = 30 (0.237 sec)</span>
+<span class="c">INFO:tensorflow:loss = 0.06823079, step = 40 (0.225 sec)</span>
+<span class="c">INFO:tensorflow:loss = 0.0671196, step = 40 (0.225 sec)</span>
+<span class="c">INFO:tensorflow:loss = 0.1545426, step = 40 (0.225 sec)</span>
+<span class="c">INFO:tensorflow:loss = 0.13310829, step = 40 (0.225 sec)</span>
+<span class="c">INFO:tensorflow:loss = 0.084449895, step = 40 (0.225 sec)</span>
+<span class="c">INFO:tensorflow:loss = 0.10252285, step = 40 (0.225 sec)</span>
+<span class="c">INFO:tensorflow:loss = 0.078794435, step = 40 (0.225 sec)</span>
+<span class="c">INFO:tensorflow:loss = 0.17852336, step = 40 (0.225 sec)</span>
+<span class="err">:</span>
 </code></pre></div>
+
 
 <p>You can do the same thing with a batch job.</p>
 <div class="codehilite"><pre><span></span><code><span class="ch">#!/bin/sh</span>
@@ -1376,6 +1387,7 @@ wget https://raw.githubusercontent.com/horovod/horovod/v0.22.1/examples/tensorfl
 mpirun -np <span class="m">8</span> -npernode <span class="m">4</span> singularity run --nv tensorflow_21.06-tf1-py3.sif python tensorflow_mnist.py
 </code></pre></div>
 
+
 <h2 id="using-locked-images">Using Locked Images</h2>
 <p>Using Chainer as an example, we will explain how to run locked Docker images provided by NGC container registry.</p>
 <h3 id="identify-locked-image-url">Identify Locked Image URL</h3>
@@ -1383,12 +1395,14 @@ mpirun -np <span class="m">8</span> -npernode <span class="m">4</span> singulari
 <p>Open <a href="https://ngc.nvidia.com/">https://ngc.nvidia.com/</a> with your browser, sign in with an NGC account, and input "chainer" to the search form "Search Containers". Then, you'll find:
 <a href="https://ngc.nvidia.com/catalog/containers/partners:chainer">https://ngc.nvidia.com/catalog/containers/partners:chainer</a></p>
 <p>In this page, you will see the <code>pull</code> command for using Chainer image on Docker (you must sign in with an NGC account):</p>
-<div class="codehilite"><pre><span></span><code>docker pull nvcr.io/partners/chainer:4.0.0b1
+<div class="codehilite"><pre><span></span><code><span class="err">docker pull nvcr.io/partners/chainer:4.0.0b1</span>
 </code></pre></div>
 
+
 <p>When using with Singularity, this image can be specified by the following URL:</p>
-<div class="codehilite"><pre><span></span><code>docker://nvcr.io/partners/chainer:4.0.0b1
+<div class="codehilite"><pre><span></span><code><span class="c">docker://nvcr.io/partners/chainer:4.0.0b1</span>
 </code></pre></div>
+
 
 <h3 id="build-a-singularity-image-for-a-locked-ngc-image">Build a Singularity image for a locked NGC image</h3>
 <p>To build an image, an NGC API key is required. Follow the following procedure to generate an API key:</p>
@@ -1397,34 +1411,37 @@ mpirun -np <span class="m">8</span> -npernode <span class="m">4</span> singulari
 </ul>
 <p>Build a Singularity image for Chainer on the interactive node.
 In this case, you need to set two environment variables, <code>SINGULARITY_DOCKER_USERNAME</code> and <code>SINGULARITY_DOCKER_PASSWORD</code> for downloading images from NGC container registry.</p>
-<div class="codehilite"><pre><span></span><code><span class="p">[</span><span class="n">username</span><span class="err">@</span><span class="n">es1</span> <span class="o">~</span><span class="p">]</span><span class="o">$</span> <span class="n">module</span> <span class="nb">load</span> <span class="n">singularitypro</span>
-<span class="p">[</span><span class="n">username</span><span class="err">@</span><span class="n">es1</span> <span class="o">~</span><span class="p">]</span><span class="o">$</span> <span class="k">export</span> <span class="n">SINGULARITY_DOCKER_USERNAME</span><span class="o">=</span><span class="s1">&#39;$oauthtoken&#39;</span>
-<span class="p">[</span><span class="n">username</span><span class="err">@</span><span class="n">es1</span> <span class="o">~</span><span class="p">]</span><span class="o">$</span> <span class="k">export</span> <span class="n">SINGULARITY_DOCKER_PASSWORD</span><span class="o">=&lt;</span><span class="n">NGC</span> <span class="n">API</span> <span class="n">Key</span><span class="o">&gt;</span>
-<span class="p">[</span><span class="n">username</span><span class="err">@</span><span class="n">es1</span> <span class="o">~</span><span class="p">]</span><span class="o">$</span> <span class="n">singularity</span> <span class="n">pull</span> <span class="n">docker</span><span class="p">:</span><span class="o">//</span><span class="n">nvcr</span><span class="o">.</span><span class="n">io</span><span class="o">/</span><span class="n">partners</span><span class="o">/</span><span class="n">chainer</span><span class="p">:</span><span class="mf">4.0</span><span class="o">.</span><span class="mi">0</span><span class="n">b1</span>
+<div class="codehilite"><pre><span></span><code><span class="err">[username@es1 ~]$ module load singularitypro</span>
+<span class="err">[username@es1 ~]$ export SINGULARITY_DOCKER_USERNAME=&#39;$oauthtoken&#39;</span>
+<span class="err">[username@es1 ~]$ export SINGULARITY_DOCKER_PASSWORD=&lt;NGC API Key&gt;</span>
+<span class="err">[username@es1 ~]$ singularity pull docker://nvcr.io/partners/chainer:4.0.0b1</span>
 </code></pre></div>
+
 
 <p>An image named <code>chainer_4.0.0b1.sif</code> will be generated.</p>
 <p>You can also specify <code>--docker-login</code> option to download images instead of environment variables.</p>
-<div class="codehilite"><pre><span></span><code><span class="p">[</span><span class="n">username</span><span class="err">@</span><span class="n">es1</span> <span class="o">~</span><span class="p">]</span><span class="o">$</span> <span class="n">module</span> <span class="nb">load</span> <span class="n">singularitypro</span>
-<span class="p">[</span><span class="n">username</span><span class="err">@</span><span class="n">es1</span> <span class="o">~</span><span class="p">]</span><span class="o">$</span> <span class="n">singularity</span> <span class="n">pull</span> <span class="o">--</span><span class="n">disable</span><span class="o">-</span><span class="n">cache</span> <span class="o">--</span><span class="n">docker</span><span class="o">-</span><span class="n">login</span> <span class="n">docker</span><span class="p">:</span><span class="o">//</span><span class="n">nvcr</span><span class="o">.</span><span class="n">io</span><span class="o">/</span><span class="n">partners</span><span class="o">/</span><span class="n">chainer</span><span class="p">:</span><span class="mf">4.0</span><span class="o">.</span><span class="mi">0</span><span class="n">b1</span>
-<span class="n">Enter</span> <span class="n">Docker</span> <span class="n">Username</span><span class="p">:</span> <span class="o">$</span><span class="n">oauthtoken</span>
-<span class="n">Enter</span> <span class="n">Docker</span> <span class="n">Password</span><span class="p">:</span> <span class="o">&lt;</span><span class="n">NGC</span> <span class="n">API</span> <span class="n">Key</span><span class="o">&gt;</span>
+<div class="codehilite"><pre><span></span><code><span class="err">[username@es1 ~]$ module load singularitypro</span>
+<span class="err">[username@es1 ~]$ singularity pull --disable-cache --docker-login docker://nvcr.io/partners/chainer:4.0.0b1</span>
+<span class="err">Enter Docker Username: $oauthtoken</span>
+<span class="err">Enter Docker Password: &lt;NGC API Key&gt;</span>
 </code></pre></div>
+
 
 <h3 id="run-a-singularity-image_1">Run a Singularity image</h3>
 <p>You can run the resulted image, just as same as freely available images.</p>
-<div class="codehilite"><pre><span></span><code><span class="p">[</span><span class="n">username</span><span class="err">@</span><span class="n">es1</span> <span class="o">~</span><span class="p">]</span><span class="o">$</span> <span class="n">qrsh</span> <span class="o">-</span><span class="n">g</span> <span class="n">grpname</span> <span class="o">-</span><span class="n">l</span> <span class="n">rt_G</span><span class="o">.</span><span class="n">small</span><span class="o">=</span><span class="mi">1</span> <span class="o">-</span><span class="n">l</span> <span class="n">h_rt</span><span class="o">=</span><span class="mi">1</span><span class="p">:</span><span class="mi">00</span><span class="p">:</span><span class="mi">00</span>
-<span class="p">[</span><span class="n">username</span><span class="err">@</span><span class="n">g0001</span> <span class="o">~</span><span class="p">]</span><span class="o">$</span> <span class="n">module</span> <span class="nb">load</span> <span class="n">singularitypro</span>
-<span class="p">[</span><span class="n">username</span><span class="err">@</span><span class="n">g0001</span> <span class="o">~</span><span class="p">]</span><span class="o">$</span> <span class="n">wget</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">raw</span><span class="o">.</span><span class="n">githubusercontent</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">chainer</span><span class="o">/</span><span class="n">chainer</span><span class="o">/</span><span class="n">v4</span><span class="o">.</span><span class="mf">0.0</span><span class="n">b1</span><span class="o">/</span><span class="n">examples</span><span class="o">/</span><span class="n">mnist</span><span class="o">/</span><span class="n">train_mnist</span><span class="o">.</span><span class="n">py</span>
-<span class="p">[</span><span class="n">username</span><span class="err">@</span><span class="n">g0001</span> <span class="o">~</span><span class="p">]</span><span class="o">$</span> <span class="n">singularity</span> <span class="n">exec</span> <span class="o">--</span><span class="n">nv</span> <span class="n">chainer_4</span><span class="o">.</span><span class="mf">0.0</span><span class="n">b1</span><span class="o">.</span><span class="n">sif</span> <span class="n">python</span> <span class="n">train_mnist</span><span class="o">.</span><span class="n">py</span> <span class="o">-</span><span class="n">g</span> <span class="mi">0</span>
-<span class="p">:</span>
-<span class="n">epoch</span>       <span class="n">main</span><span class="o">/</span><span class="n">loss</span>   <span class="n">validation</span><span class="o">/</span><span class="n">main</span><span class="o">/</span><span class="n">loss</span>  <span class="n">main</span><span class="o">/</span><span class="n">accuracy</span>  <span class="n">validation</span><span class="o">/</span><span class="n">main</span><span class="o">/</span><span class="n">accuracy</span>  <span class="n">elapsed_time</span>
-<span class="mi">1</span>           <span class="mf">0.191976</span>    <span class="mf">0.0931192</span>             <span class="mf">0.942517</span>       <span class="mf">0.9712</span>            <span class="mf">18.7328</span>
-<span class="mi">2</span>           <span class="mf">0.0755601</span>   <span class="mf">0.0837004</span>             <span class="mf">0.9761</span>         <span class="mf">0.9737</span>            <span class="mf">20.6419</span>
-<span class="mi">3</span>           <span class="mf">0.0496073</span>   <span class="mf">0.0689045</span>             <span class="mf">0.984266</span>       <span class="mf">0.9802</span>            <span class="mf">22.5383</span>
-<span class="mi">4</span>           <span class="mf">0.0343888</span>   <span class="mf">0.0705739</span>             <span class="mf">0.988798</span>       <span class="mf">0.9796</span>            <span class="mf">24.4332</span>
-<span class="p">:</span>
+<div class="codehilite"><pre><span></span><code><span class="err">[username@es1 ~]$ qrsh -g grpname -l rt_G.small=1 -l h_rt=1:00:00</span>
+<span class="err">[username@g0001 ~]$ module load singularitypro</span>
+<span class="err">[username@g0001 ~]$ wget https://raw.githubusercontent.com/chainer/chainer/v4.0.0b1/examples/mnist/train_mnist.py</span>
+<span class="err">[username@g0001 ~]$ singularity exec --nv chainer_4.0.0b1.sif python train_mnist.py -g 0</span>
+<span class="err">:</span>
+<span class="err">epoch       main/loss   validation/main/loss  main/accuracy  validation/main/accuracy  elapsed_time</span>
+<span class="err">1           0.191976    0.0931192             0.942517       0.9712            18.7328</span>
+<span class="err">2           0.0755601   0.0837004             0.9761         0.9737            20.6419</span>
+<span class="err">3           0.0496073   0.0689045             0.984266       0.9802            22.5383</span>
+<span class="err">4           0.0343888   0.0705739             0.988798       0.9796            24.4332</span>
+<span class="err">:</span>
 </code></pre></div>
+
 
 <h2 id="reference">Reference</h2>
 <ol>

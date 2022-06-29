@@ -1140,31 +1140,36 @@
 ...
 </code></pre></div>
 
+
 <p>ジョブの実行が開始されたら、<code>qstat</code>コマンドで割り当てられた計算ノードを確認します。</p>
-<div class="codehilite"><pre><span></span><code><span class="o">[</span><span class="n">username@es1 ~</span><span class="o">]</span><span class="err">$</span><span class="w"> </span><span class="n">qstat</span><span class="w"> </span><span class="o">-</span><span class="n">j</span><span class="w"> </span><span class="mi">12345</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="n">grep</span><span class="w"> </span><span class="n">exec_host_list</span><span class="w"></span>
-<span class="n">exec_host_list</span><span class="w">        </span><span class="mi">1</span><span class="err">:</span><span class="w">    </span><span class="nl">g0001</span><span class="p">:</span><span class="mi">80</span><span class="p">,</span><span class="w"> </span><span class="nl">g0002</span><span class="p">:</span><span class="mi">80</span><span class="w"></span>
+<div class="codehilite"><pre><span></span><code><span class="err">[username@es1 ~]$ qstat -j 12345 | grep exec_host_list</span>
+<span class="err">exec_host_list        1:    g0001:80, g0002:80</span>
 </code></pre></div>
+
 
 <p><code>g0001</code>と<code>g0002</code>が割り当てられたことが確認できました。</p>
 <p>次にインタラクティブノードから計算ノード（<code>es1</code>→<code>g0001</code>）に、オプションで指定したポート番号を用いてSSHログインします。</p>
-<div class="codehilite"><pre><span></span><code><span class="o">[</span><span class="n">username@es1 ~</span><span class="o">]</span><span class="err">$</span><span class="w"> </span><span class="n">ssh</span><span class="w"> </span><span class="o">-</span><span class="n">p</span><span class="w"> </span><span class="mi">2299</span><span class="w"> </span><span class="n">g0001</span><span class="w"></span>
-<span class="o">[</span><span class="n">username@g0001 ~</span><span class="o">]</span><span class="err">$</span><span class="w"> </span>
+<div class="codehilite"><pre><span></span><code><span class="err">[username@es1 ~]$ ssh -p 2299 g0001</span>
+<span class="err">[username@g0001 ~]$ </span>
 </code></pre></div>
+
 
 <p>ジョブに割り当てられた計算ノード間（<code>g0001</code>→<code>g0002</code>）でSSHログインする際も同様です。</p>
-<div class="codehilite"><pre><span></span><code><span class="o">[</span><span class="n">username@g0001 ~</span><span class="o">]</span><span class="err">$</span><span class="w"> </span><span class="n">ssh</span><span class="w"> </span><span class="o">-</span><span class="n">p</span><span class="w"> </span><span class="mi">2299</span><span class="w"> </span><span class="n">g0002</span><span class="w"></span>
-<span class="o">[</span><span class="n">username@g0002 ~</span><span class="o">]</span><span class="err">$</span><span class="w"></span>
+<div class="codehilite"><pre><span></span><code><span class="err">[username@g0001 ~]$ ssh -p 2299 g0002</span>
+<span class="err">[username@g0002 ~]$</span>
 </code></pre></div>
+
 
 <p><code>qrsh</code>コマンドも同様に<code>-l USE_SSH=1</code>オプションを指定して実行することができます。</p>
-<div class="codehilite"><pre><span></span><code><span class="o">[</span><span class="n">username@es1 ~</span><span class="o">]</span><span class="err">$</span><span class="w"> </span><span class="n">qrsh</span><span class="w"> </span><span class="o">-</span><span class="n">g</span><span class="w"> </span><span class="n">grpname</span><span class="w"> </span><span class="o">-</span><span class="n">l</span><span class="w"> </span><span class="n">rt_F</span><span class="o">=</span><span class="mi">1</span><span class="w"> </span><span class="o">-</span><span class="n">l</span><span class="w"> </span><span class="n">USE_SSH</span><span class="o">=</span><span class="mi">1</span><span class="w"> </span><span class="o">-</span><span class="n">v</span><span class="w"> </span><span class="n">SSH_PORT</span><span class="o">=</span><span class="mi">2299</span><span class="w"></span>
-<span class="o">[</span><span class="n">username@g0001 ~</span><span class="o">]</span><span class="err">$</span><span class="w"> </span><span class="n">hostname</span><span class="w"> </span><span class="o">-</span><span class="n">s</span><span class="w"></span>
-<span class="n">g0001</span><span class="w"></span>
+<div class="codehilite"><pre><span></span><code><span class="err">[username@es1 ~]$ qrsh -g grpname -l rt_F=1 -l USE_SSH=1 -v SSH_PORT=2299</span>
+<span class="err">[username@g0001 ~]$ hostname -s</span>
+<span class="err">g0001</span>
 </code></pre></div>
 
+
 <p>別のターミナルからSSHログインします。</p>
-<div class="codehilite"><pre><span></span><code><span class="o">[</span><span class="n">username@es1 ~</span><span class="o">]</span><span class="err">$</span><span class="w"> </span><span class="n">ssh</span><span class="w"> </span><span class="o">-</span><span class="n">p</span><span class="w"> </span><span class="mi">2299</span><span class="w"> </span><span class="n">g0001</span><span class="w"></span>
-<span class="o">[</span><span class="n">username@g0001 ~</span><span class="o">]</span><span class="err">$</span><span class="w"> </span>
+<div class="codehilite"><pre><span></span><code><span class="err">[username@es1 ~]$ ssh -p 2299 g0001</span>
+<span class="err">[username@g0001 ~]$ </span>
 </code></pre></div>
                 
               

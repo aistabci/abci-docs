@@ -1176,36 +1176,42 @@ After issuing the access key, use the AWS CLI to set the access key. Please refe
 <p>Here, it is assumed that the access key is set in the <code>default</code> profile.</p>
 <h2 id="loading-module">Loading module</h2>
 <p>After logging in to the interactive node, load the <code>s3fs-fuse</code> module. Also load the <code>aws-cli</code> module to create a bucket and so on.</p>
-<div class="codehilite"><pre><span></span><code><span class="p">[</span><span class="n">username</span><span class="err">@</span><span class="n">es1</span> <span class="o">~</span><span class="p">]</span><span class="o">$</span> <span class="n">module</span> <span class="nb">load</span> <span class="n">aws</span><span class="o">-</span><span class="n">cli</span> <span class="n">s3fs</span><span class="o">-</span><span class="n">fuse</span>
+<div class="codehilite"><pre><span></span><code><span class="err">[username@es1 ~]$ module load aws-cli s3fs-fuse</span>
 </code></pre></div>
+
 
 <h2 id="creating-bucket">Creating bucket</h2>
 <p>Create a bucket for mounting.</p>
-<div class="codehilite"><pre><span></span><code><span class="o">[</span><span class="n">username@es1 ~</span><span class="o">]</span><span class="err">$</span><span class="w"> </span><span class="n">aws</span><span class="w"> </span><span class="o">--</span><span class="n">endpoint</span><span class="o">-</span><span class="n">url</span><span class="w"> </span><span class="nl">https</span><span class="p">:</span><span class="o">//</span><span class="n">s3</span><span class="p">.</span><span class="n">abci</span><span class="p">.</span><span class="n">ai</span><span class="w"> </span><span class="n">s3</span><span class="w"> </span><span class="n">mb</span><span class="w"> </span><span class="nl">s3</span><span class="p">:</span><span class="o">//</span><span class="n">s3fs</span><span class="o">-</span><span class="n">bucket</span><span class="w"></span>
-<span class="nl">make_bucket</span><span class="p">:</span><span class="w"> </span><span class="n">s3fs</span><span class="o">-</span><span class="n">bucket</span><span class="w"></span>
+<div class="codehilite"><pre><span></span><code><span class="err">[username@es1 ~]$ aws --endpoint-url https://s3.abci.ai s3 mb s3://s3fs-bucket</span>
+<span class="c">make_bucket: s3fs-bucket</span>
 </code></pre></div>
+
 
 <h2 id="mounting-bucket">Mounting bucket</h2>
 <p>Create a mount point on the HOME directory and mount the <code>s3fs-bucket</code> bucket with the <code>s3fs</code> command.</p>
-<div class="codehilite"><pre><span></span><code><span class="o">[</span><span class="n">username@es1 ~</span><span class="o">]</span><span class="err">$</span><span class="w"> </span><span class="n">mkdir</span><span class="w"> </span><span class="n">s3fs_dir</span><span class="w"></span>
-<span class="o">[</span><span class="n">username@es1 ~</span><span class="o">]</span><span class="err">$</span><span class="w"> </span><span class="n">s3fs</span><span class="w"> </span><span class="n">s3fs</span><span class="o">-</span><span class="n">bucket</span><span class="w"> </span><span class="o">~/</span><span class="n">s3fs_dir</span><span class="w"> </span><span class="o">-</span><span class="n">o</span><span class="w"> </span><span class="n">url</span><span class="o">=</span><span class="nl">https</span><span class="p">:</span><span class="o">//</span><span class="n">s3</span><span class="p">.</span><span class="n">abci</span><span class="p">.</span><span class="n">ai</span><span class="o">/</span><span class="w"> </span><span class="o">-</span><span class="n">o</span><span class="w"> </span><span class="n">use_path_request_style</span><span class="w"></span>
+<div class="codehilite"><pre><span></span><code><span class="err">[username@es1 ~]$ mkdir s3fs_dir</span>
+<span class="err">[username@es1 ~]$ s3fs s3fs-bucket ~/s3fs_dir -o url=https://s3.abci.ai/ -o use_path_request_style</span>
 </code></pre></div>
 
+
 <p>If you want to use an access key other than the <code>default</code> profile, specify the<code>-o profile = profile name</code> option.</p>
-<div class="codehilite"><pre><span></span><code><span class="o">[</span><span class="n">username@es1 ~</span><span class="o">]</span><span class="err">$</span><span class="w"> </span><span class="n">s3fs</span><span class="w"> </span><span class="n">s3fs</span><span class="o">-</span><span class="n">bucket</span><span class="w"> </span><span class="o">~/</span><span class="n">s3fs_dir</span><span class="w"> </span><span class="o">-</span><span class="n">o</span><span class="w"> </span><span class="n">url</span><span class="o">=</span><span class="nl">https</span><span class="p">:</span><span class="o">//</span><span class="n">s3</span><span class="p">.</span><span class="n">abci</span><span class="p">.</span><span class="n">ai</span><span class="o">/</span><span class="w"> </span><span class="o">-</span><span class="n">o</span><span class="w"> </span><span class="n">profile</span><span class="o">=</span><span class="n">aaa00000</span><span class="mf">.2</span><span class="w"> </span><span class="o">-</span><span class="n">o</span><span class="w"> </span><span class="n">use_path_request_style</span><span class="w"></span>
+<div class="codehilite"><pre><span></span><code><span class="err">[username@es1 ~]$ s3fs s3fs-bucket ~/s3fs_dir -o url=https://s3.abci.ai/ -o profile=aaa00000.2 -o use_path_request_style</span>
 </code></pre></div>
+
 
 <h2 id="file-operations">File operations</h2>
 <p>After mounting the bucket, you can add and remove objects from the bucket in the same way as you would with a file.</p>
-<div class="codehilite"><pre><span></span><code><span class="o">[</span><span class="n">username@es1 ~</span><span class="o">]</span><span class="err">$</span><span class="w"> </span><span class="n">cp</span><span class="w"> </span><span class="o">~/</span><span class="n">my</span><span class="o">-</span><span class="k">file</span><span class="w"> </span><span class="o">~/</span><span class="n">s3fs_dir</span><span class="o">/</span><span class="w"></span>
-<span class="o">[</span><span class="n">username@es1 ~</span><span class="o">]</span><span class="err">$</span><span class="w"> </span><span class="n">ls</span><span class="w"> </span><span class="o">~/</span><span class="n">s3fs_dir</span><span class="o">/</span><span class="n">my</span><span class="o">-</span><span class="k">file</span><span class="w"></span>
-<span class="o">[</span><span class="n">username@es1 ~</span><span class="o">]</span><span class="err">$</span><span class="w"> </span><span class="n">rm</span><span class="w"> </span><span class="o">~/</span><span class="n">s3fs_dir</span><span class="o">/</span><span class="n">my</span><span class="o">-</span><span class="k">file</span><span class="w"></span>
+<div class="codehilite"><pre><span></span><code><span class="err">[username@es1 ~]$ cp ~/my-file ~/s3fs_dir/</span>
+<span class="err">[username@es1 ~]$ ls ~/s3fs_dir/my-file</span>
+<span class="err">[username@es1 ~]$ rm ~/s3fs_dir/my-file</span>
 </code></pre></div>
+
 
 <h2 id="unmounting-bucket">Unmounting bucket</h2>
 <p>Use the <code>fusermount</code> command to unmount the bucket.</p>
-<div class="codehilite"><pre><span></span><code><span class="o">[</span><span class="n">username@es1 ~</span><span class="o">]</span><span class="err">$</span><span class="w"> </span><span class="n">fusermount</span><span class="w"> </span><span class="o">-</span><span class="n">u</span><span class="w"> </span><span class="o">~/</span><span class="n">s3fs_dir</span><span class="w"></span>
+<div class="codehilite"><pre><span></span><code><span class="err">[username@es1 ~]$ fusermount -u ~/s3fs_dir</span>
 </code></pre></div>
+
 
 <p>If you mount a bucket using <code>s3fs-fuse</code> in a job obtained by the On-demand or Spot service, it will be automatically unmounted at the end of the job.
 However, if you mount the bucket using <code>s3fs-fuse</code> on the interactive node, it will not be unmounted automatically, so unmount it when you no longer need it.</p>

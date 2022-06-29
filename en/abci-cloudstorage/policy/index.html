@@ -1342,63 +1342,68 @@
 </table>
 <p>Here is an example.
 Condition element can be omitted if it is unnecessary.</p>
-<div class="codehilite"><pre><span></span><code>{
-    &quot;Version&quot;: &quot;2012-10-17&quot;,
-    &quot;Statement&quot;: [
-        {
-            &quot;Effect&quot;: &quot;Deny&quot;,
-            &quot;Action&quot;: &quot;s3:*&quot;,
-            &quot;Resource&quot;: &quot;*&quot;,
-            &quot;Condition&quot;: {&quot;StringLike&quot;: {&quot;aws:UserAgent&quot; : &quot;aws-cli*&quot;}}
-        }
-    ]
-}
+<div class="codehilite"><pre><span></span><code><span class="err">{</span>
+<span class="err">    &quot;Version&quot;: &quot;2012-10-17&quot;,</span>
+<span class="err">    &quot;Statement&quot;: [</span>
+<span class="err">        {</span>
+<span class="err">            &quot;Effect&quot;: &quot;Deny&quot;,</span>
+<span class="err">            &quot;Action&quot;: &quot;s3:*&quot;,</span>
+<span class="err">            &quot;Resource&quot;: &quot;*&quot;,</span>
+<span class="err">            &quot;Condition&quot;: {&quot;StringLike&quot;: {&quot;aws:UserAgent&quot; : &quot;aws-cli*&quot;}}</span>
+<span class="err">        }</span>
+<span class="err">    ]</span>
+<span class="err">}</span>
 </code></pre></div>
+
 
 <p>The following examples show how to control access by policy.</p>
 <h3 id="example-1-limiting-bucket-access-by-accounts">Example 1:  Limiting Bucket Access By Accounts</h3>
 <p>Four ABCI Cloud Storage accounts, aaa00000.1, aaa000001.1, aaa00002.1 and aaa00003.1, are created, for example, and there is a bucket whose name is 'sensor8'.Now we are showing how to allow only two users, aaa00000.1 and aaa00001.1, to access the bucket.</p>
 <p>Firstly, create a .json file whose name is 'sensor8.json', for example, as following. The name of a .json file can be arbitrary.</p>
-<div class="codehilite"><pre><span></span><code>{
-    &quot;Version&quot;: &quot;2012-10-17&quot;,
-    &quot;Statement&quot;: [
-        {
-            &quot;Effect&quot;: &quot;Deny&quot;,
-            &quot;Action&quot;: &quot;s3:*&quot;,
-            &quot;Resource&quot;: [&quot;arn:aws:s3:::sensor8&quot;, &quot;arn:aws:s3:::sensor8/*&quot;],
-            &quot;Condition&quot; : { &quot;StringNotEquals&quot; : { &quot;aws:username&quot; :
-                [&quot;aaa00002.1&quot;, &quot;aaa00003.1&quot;]}}
-        }
-    ]
-}
+<div class="codehilite"><pre><span></span><code><span class="err">{</span>
+<span class="err">    &quot;Version&quot;: &quot;2012-10-17&quot;,</span>
+<span class="err">    &quot;Statement&quot;: [</span>
+<span class="err">        {</span>
+<span class="err">            &quot;Effect&quot;: &quot;Deny&quot;,</span>
+<span class="err">            &quot;Action&quot;: &quot;s3:*&quot;,</span>
+<span class="err">            &quot;Resource&quot;: [&quot;arn:aws:s3:::sensor8&quot;, &quot;arn:aws:s3:::sensor8/*&quot;],</span>
+<span class="err">            &quot;Condition&quot; : { &quot;StringNotEquals&quot; : { &quot;aws:username&quot; :</span>
+<span class="err">                [&quot;aaa00002.1&quot;, &quot;aaa00003.1&quot;]}}</span>
+<span class="err">        }</span>
+<span class="err">    ]</span>
+<span class="err">}</span>
 </code></pre></div>
+
 
 <p>It defines the policy that doesn't allow aaa00002.1 and aaa00003.1 to access the bucket.Because 'Deny' has priority, any other 'Allow' will be skipped.</p>
 <p>Secondly, register this policy to ABCI Cloud Storage.</p>
-<div class="codehilite"><pre><span></span><code><span class="o">[</span><span class="n">username@es1 ~</span><span class="o">]</span><span class="err">$</span><span class="w"> </span><span class="n">aws</span><span class="w"> </span><span class="o">--</span><span class="n">endpoint</span><span class="o">-</span><span class="n">url</span><span class="w"> </span><span class="nl">https</span><span class="p">:</span><span class="o">//</span><span class="n">s3</span><span class="p">.</span><span class="n">abci</span><span class="p">.</span><span class="n">ai</span><span class="w"> </span><span class="n">iam</span><span class="w"> </span><span class="k">create</span><span class="o">-</span><span class="n">policy</span><span class="w"> </span><span class="o">--</span><span class="n">policy</span><span class="o">-</span><span class="n">name</span><span class="w"> </span><span class="n">sensor8policy</span><span class="w"> </span><span class="o">--</span><span class="n">policy</span><span class="o">-</span><span class="n">document</span><span class="w"> </span><span class="k">file</span><span class="err">:</span><span class="o">//</span><span class="n">sensor8</span><span class="p">.</span><span class="n">json</span><span class="w"></span>
-<span class="err">{</span><span class="w"></span>
-<span class="w">    </span><span class="ss">&quot;Policy&quot;</span><span class="err">:</span><span class="w"> </span><span class="err">{</span><span class="w"></span>
-<span class="w">        </span><span class="ss">&quot;PolicyName&quot;</span><span class="err">:</span><span class="w"> </span><span class="ss">&quot;sensor8policy&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">        </span><span class="ss">&quot;CreateDate&quot;</span><span class="err">:</span><span class="w"> </span><span class="ss">&quot;2019-07-30T06:22:47Z&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">        </span><span class="ss">&quot;AttachmentCount&quot;</span><span class="err">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"></span>
-<span class="w">        </span><span class="ss">&quot;IsAttachable&quot;</span><span class="err">:</span><span class="w"> </span><span class="k">true</span><span class="p">,</span><span class="w"></span>
-<span class="w">        </span><span class="ss">&quot;PolicyId&quot;</span><span class="err">:</span><span class="w"> </span><span class="ss">&quot;51OFYS8BQEFTP68KT4I63AAZYHNBPHHA&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">        </span><span class="ss">&quot;DefaultVersionId&quot;</span><span class="err">:</span><span class="w"> </span><span class="ss">&quot;v1&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">        </span><span class="ss">&quot;Path&quot;</span><span class="err">:</span><span class="w"> </span><span class="ss">&quot;/&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">        </span><span class="ss">&quot;Arn&quot;</span><span class="err">:</span><span class="w"> </span><span class="ss">&quot;arn:aws:iam::123456789012:policy/sensor8policy&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">        </span><span class="ss">&quot;UpdateDate&quot;</span><span class="err">:</span><span class="w"> </span><span class="ss">&quot;2019-07-30T06:22:47Z&quot;</span><span class="w"></span>
-<span class="w">    </span><span class="err">}</span><span class="w"></span>
-<span class="err">}</span><span class="w"></span>
+<div class="codehilite"><pre><span></span><code><span class="err">[username@es1 ~]$ aws --endpoint-url https://s3.abci.ai iam create-policy --policy-name sensor8policy --policy-document file://sensor8.json</span>
+<span class="err">{</span>
+<span class="err">    &quot;Policy&quot;: {</span>
+<span class="err">        &quot;PolicyName&quot;: &quot;sensor8policy&quot;,</span>
+<span class="err">        &quot;CreateDate&quot;: &quot;2019-07-30T06:22:47Z&quot;,</span>
+<span class="err">        &quot;AttachmentCount&quot;: 0,</span>
+<span class="err">        &quot;IsAttachable&quot;: true,</span>
+<span class="err">        &quot;PolicyId&quot;: &quot;51OFYS8BQEFTP68KT4I63AAZYHNBPHHA&quot;,</span>
+<span class="err">        &quot;DefaultVersionId&quot;: &quot;v1&quot;,</span>
+<span class="err">        &quot;Path&quot;: &quot;/&quot;,</span>
+<span class="err">        &quot;Arn&quot;: &quot;arn:aws:iam::123456789012:policy/sensor8policy&quot;,</span>
+<span class="err">        &quot;UpdateDate&quot;: &quot;2019-07-30T06:22:47Z&quot;</span>
+<span class="err">    }</span>
+<span class="err">}</span>
 </code></pre></div>
+
 
 <p>The name of policy registered to ABCI Cloud Storage is 'sensor8policy' that includes what are written in 'sensor8.json' in the current working directory.
 Take a memo and keep the value of 'Arn' which is necessary in the next step.</p>
 <p>iLastly, apply the policy to the ABCI Cloud Storage accounts, aaa00002.1 and aaa00003.1.</p>
-<div class="codehilite"><pre><span></span><code><span class="o">[</span><span class="n">username@es1 ~</span><span class="o">]</span><span class="err">$</span><span class="w"> </span><span class="n">aws</span><span class="w"> </span><span class="c1">--endpoint-url https://s3.abci.ai iam attach-user-policy --policy-arn arn:aws:iam::123456789012:policy/sensor8policy --user-name aaa00002.1</span>
+<div class="codehilite"><pre><span></span><code><span class="err">[username@es1 ~]$ aws --endpoint-url https://s3.abci.ai iam attach-user-policy --policy-arn arn:aws:iam::123456789012:policy/sensor8policy --user-name aaa00002.1</span>
 </code></pre></div>
 
-<div class="codehilite"><pre><span></span><code><span class="o">[</span><span class="n">username@es1 ~</span><span class="o">]</span><span class="err">$</span><span class="w"> </span><span class="n">aws</span><span class="w"> </span><span class="c1">--endpoint-url https://s3.abci.ai iam attach-user-policy --policy-arn arn:aws:iam::123456789012:policy/sensor8policy --user-name aaa00003.1</span>
+
+<div class="codehilite"><pre><span></span><code><span class="err">[username@es1 ~]$ aws --endpoint-url https://s3.abci.ai iam attach-user-policy --policy-arn arn:aws:iam::123456789012:policy/sensor8policy --user-name aaa00003.1</span>
 </code></pre></div>
+
 
 <p>To clarify the ABCI Cloud Storage accounts to which the policy is applied, execute the command 'aws --endpoint-url https://s3.abci.ai iam list-attached-user-policies --user-name aaa00002.1.'</p>
 <p>By applying the above rules, aaa00002.1 and aaa00003.1 can no longer access the bucket 'sensor8.' aaa00000.1 and aaa00001.1 can still access.</p>
@@ -1406,46 +1411,49 @@ Take a memo and keep the value of 'Arn' which is necessary in the next step.</p>
 <h3 id="example-2-limiting-bucket-access-by-hosts">Example 2:  Limiting Bucket Access By Hosts</h3>
 <p>The example below shows how to limit access from certain hosts. In the example, any access from hosts other than either external host whose IP address is 203.0.113.2 or internal network whose IP address range is 10.0.0.0/17 is denied.</p>
 <p>Firstly, create 'src-ip-pc.json' as following.</p>
-<div class="codehilite"><pre><span></span><code>{
-    &quot;Version&quot;: &quot;2012-10-17&quot;,
-    &quot;Statement&quot;: [
-        {
-            &quot;Effect&quot;: &quot;Deny&quot;,
-            &quot;Action&quot;: &quot;s3:*&quot;,
-            &quot;Resource&quot;: &quot;*&quot;,
-            &quot;Condition&quot;: {
-                &quot;NotIpAddress&quot;: {
-                    &quot;aws:SourceIp&quot;: [
-                        &quot;10.0.0.0/17&quot;,
-                        &quot;203.0.113.2/32&quot;
-                    ]
-                }
-            }
-        }
-    ]
-}
+<div class="codehilite"><pre><span></span><code><span class="err">{</span>
+<span class="err">    &quot;Version&quot;: &quot;2012-10-17&quot;,</span>
+<span class="err">    &quot;Statement&quot;: [</span>
+<span class="err">        {</span>
+<span class="err">            &quot;Effect&quot;: &quot;Deny&quot;,</span>
+<span class="err">            &quot;Action&quot;: &quot;s3:*&quot;,</span>
+<span class="err">            &quot;Resource&quot;: &quot;*&quot;,</span>
+<span class="err">            &quot;Condition&quot;: {</span>
+<span class="err">                &quot;NotIpAddress&quot;: {</span>
+<span class="err">                    &quot;aws:SourceIp&quot;: [</span>
+<span class="err">                        &quot;10.0.0.0/17&quot;,</span>
+<span class="err">                        &quot;203.0.113.2/32&quot;</span>
+<span class="err">                    ]</span>
+<span class="err">                }</span>
+<span class="err">            }</span>
+<span class="err">        }</span>
+<span class="err">    ]</span>
+<span class="err">}</span>
 </code></pre></div>
+
 
 <p>Secondly, register this policy to ABCI Cloud Storage.</p>
-<div class="codehilite"><pre><span></span><code><span class="o">[</span><span class="n">username@es1 ~</span><span class="o">]</span><span class="err">$</span><span class="w"> </span><span class="n">aws</span><span class="w"> </span><span class="o">--</span><span class="n">endpoint</span><span class="o">-</span><span class="n">url</span><span class="w"> </span><span class="nl">https</span><span class="p">:</span><span class="o">//</span><span class="n">s3</span><span class="p">.</span><span class="n">abci</span><span class="p">.</span><span class="n">ai</span><span class="w"> </span><span class="n">iam</span><span class="w"> </span><span class="k">create</span><span class="o">-</span><span class="n">policy</span><span class="w"> </span><span class="o">--</span><span class="n">policy</span><span class="o">-</span><span class="n">name</span><span class="w"> </span><span class="n">src</span><span class="o">-</span><span class="n">ip</span><span class="o">-</span><span class="n">pc</span><span class="w"> </span><span class="o">--</span><span class="n">policy</span><span class="o">-</span><span class="n">document</span><span class="w"> </span><span class="k">file</span><span class="err">:</span><span class="o">//</span><span class="n">src</span><span class="o">-</span><span class="n">ip</span><span class="o">-</span><span class="n">pc</span><span class="p">.</span><span class="n">json</span><span class="w"></span>
-<span class="err">{</span><span class="w"></span>
-<span class="w">    </span><span class="ss">&quot;Policy&quot;</span><span class="err">:</span><span class="w"> </span><span class="err">{</span><span class="w"></span>
-<span class="w">        </span><span class="ss">&quot;PolicyName&quot;</span><span class="err">:</span><span class="w"> </span><span class="ss">&quot;src-ip-pc&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">        </span><span class="ss">&quot;CreateDate&quot;</span><span class="err">:</span><span class="w"> </span><span class="ss">&quot;2019-08-08T13:24:54Z&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">        </span><span class="ss">&quot;AttachmentCount&quot;</span><span class="err">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"></span>
-<span class="w">        </span><span class="ss">&quot;IsAttachable&quot;</span><span class="err">:</span><span class="w"> </span><span class="k">true</span><span class="p">,</span><span class="w"></span>
-<span class="w">        </span><span class="ss">&quot;PolicyId&quot;</span><span class="err">:</span><span class="w"> </span><span class="ss">&quot;K9B9SFWR0JL4GSY8Z1K2441VJERSC2Q7&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">        </span><span class="ss">&quot;DefaultVersionId&quot;</span><span class="err">:</span><span class="w"> </span><span class="ss">&quot;v1&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">        </span><span class="ss">&quot;Path&quot;</span><span class="err">:</span><span class="w"> </span><span class="ss">&quot;/&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">        </span><span class="ss">&quot;Arn&quot;</span><span class="err">:</span><span class="w"> </span><span class="ss">&quot;arn:aws:iam::123456789012:policy/src-ip-pc&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">        </span><span class="ss">&quot;UpdateDate&quot;</span><span class="err">:</span><span class="w"> </span><span class="ss">&quot;2019-08-08T13:24:54Z&quot;</span><span class="w"></span>
-<span class="w">    </span><span class="err">}</span><span class="w"></span>
-<span class="err">}</span><span class="w"></span>
+<div class="codehilite"><pre><span></span><code><span class="err">[username@es1 ~]$ aws --endpoint-url https://s3.abci.ai iam create-policy --policy-name src-ip-pc --policy-document file://src-ip-pc.json</span>
+<span class="err">{</span>
+<span class="err">    &quot;Policy&quot;: {</span>
+<span class="err">        &quot;PolicyName&quot;: &quot;src-ip-pc&quot;,</span>
+<span class="err">        &quot;CreateDate&quot;: &quot;2019-08-08T13:24:54Z&quot;,</span>
+<span class="err">        &quot;AttachmentCount&quot;: 0,</span>
+<span class="err">        &quot;IsAttachable&quot;: true,</span>
+<span class="err">        &quot;PolicyId&quot;: &quot;K9B9SFWR0JL4GSY8Z1K2441VJERSC2Q7&quot;,</span>
+<span class="err">        &quot;DefaultVersionId&quot;: &quot;v1&quot;,</span>
+<span class="err">        &quot;Path&quot;: &quot;/&quot;,</span>
+<span class="err">        &quot;Arn&quot;: &quot;arn:aws:iam::123456789012:policy/src-ip-pc&quot;,</span>
+<span class="err">        &quot;UpdateDate&quot;: &quot;2019-08-08T13:24:54Z&quot;</span>
+<span class="err">    }</span>
+<span class="err">}</span>
 </code></pre></div>
 
+
 <p>Secondly, register this policy to ABCI Cloud Storage. The follwing example applies the policy to ABCI Cloud Storage account 'aaa00004.1.' The value of 'ARN' had been shown already when registering the policy though, it can also be listed by executing the command 'aws --endpoint-url https://s3.abci.ai iam list-policies.'</p>
-<div class="codehilite"><pre><span></span><code><span class="o">[</span><span class="n">username@es1 ~</span><span class="o">]</span><span class="err">$</span><span class="w"> </span><span class="n">aws</span><span class="w"> </span><span class="c1">--endpoint-url https://s3.abci.ai iam attach-user-policy --policy-arn arn:aws:iam::123456789012:policy/src-ip-pc --user-name aaa00004.1</span>
+<div class="codehilite"><pre><span></span><code><span class="err">[username@es1 ~]$ aws --endpoint-url https://s3.abci.ai iam attach-user-policy --policy-arn arn:aws:iam::123456789012:policy/src-ip-pc --user-name aaa00004.1</span>
 </code></pre></div>
+
 
 <p>By default setting, because no IP address limitation is defined, any ABCI Cloud Storage accounts to which the policy shown above is not applied has no limitation, regardless of sources' IP addresses. In order to list accounts in ABCI Cloud Storage, execute the command 'aws --endpoint-url https://s3.abci.ai iam list-users.'</p>
                 

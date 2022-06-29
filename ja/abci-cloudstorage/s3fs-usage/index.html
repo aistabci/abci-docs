@@ -1189,36 +1189,42 @@
 <h2 id="_2">モジュールのロード</h2>
 <p>インタラクティブノードにログイン後、<code>s3fs-fuse</code>モジュールをロードします。
 バケットの作成などを行うため、<code>aws-cli</code>のモジュールも合わせてロードします。</p>
-<div class="codehilite"><pre><span></span><code><span class="p">[</span><span class="n">username</span><span class="err">@</span><span class="n">es1</span> <span class="o">~</span><span class="p">]</span><span class="o">$</span> <span class="n">module</span> <span class="nb">load</span> <span class="n">aws</span><span class="o">-</span><span class="n">cli</span> <span class="n">s3fs</span><span class="o">-</span><span class="n">fuse</span>
+<div class="codehilite"><pre><span></span><code><span class="err">[username@es1 ~]$ module load aws-cli s3fs-fuse</span>
 </code></pre></div>
+
 
 <h2 id="_3">バケットの作成</h2>
 <p>マウントするためのバケットを作成します。</p>
-<div class="codehilite"><pre><span></span><code><span class="o">[</span><span class="n">username@es1 ~</span><span class="o">]</span><span class="err">$</span><span class="w"> </span><span class="n">aws</span><span class="w"> </span><span class="o">--</span><span class="n">endpoint</span><span class="o">-</span><span class="n">url</span><span class="w"> </span><span class="nl">https</span><span class="p">:</span><span class="o">//</span><span class="n">s3</span><span class="p">.</span><span class="n">abci</span><span class="p">.</span><span class="n">ai</span><span class="w"> </span><span class="n">s3</span><span class="w"> </span><span class="n">mb</span><span class="w"> </span><span class="nl">s3</span><span class="p">:</span><span class="o">//</span><span class="n">s3fs</span><span class="o">-</span><span class="n">bucket</span><span class="w"></span>
-<span class="nl">make_bucket</span><span class="p">:</span><span class="w"> </span><span class="n">s3fs</span><span class="o">-</span><span class="n">bucket</span><span class="w"></span>
+<div class="codehilite"><pre><span></span><code><span class="err">[username@es1 ~]$ aws --endpoint-url https://s3.abci.ai s3 mb s3://s3fs-bucket</span>
+<span class="c">make_bucket: s3fs-bucket</span>
 </code></pre></div>
+
 
 <h2 id="_4">バケットをマウントする</h2>
 <p>マウントポイントをHOMEディレクトリ上に作成し、先ほど作成した<code>s3fs-bucket</code>バケットを<code>s3fs</code>コマンドでマウントします。</p>
-<div class="codehilite"><pre><span></span><code><span class="o">[</span><span class="n">username@es1 ~</span><span class="o">]</span><span class="err">$</span><span class="w"> </span><span class="n">mkdir</span><span class="w"> </span><span class="n">s3fs_dir</span><span class="w"></span>
-<span class="o">[</span><span class="n">username@es1 ~</span><span class="o">]</span><span class="err">$</span><span class="w"> </span><span class="n">s3fs</span><span class="w"> </span><span class="n">s3fs</span><span class="o">-</span><span class="n">bucket</span><span class="w"> </span><span class="o">~/</span><span class="n">s3fs_dir</span><span class="w"> </span><span class="o">-</span><span class="n">o</span><span class="w"> </span><span class="n">url</span><span class="o">=</span><span class="nl">https</span><span class="p">:</span><span class="o">//</span><span class="n">s3</span><span class="p">.</span><span class="n">abci</span><span class="p">.</span><span class="n">ai</span><span class="o">/</span><span class="w"> </span><span class="o">-</span><span class="n">o</span><span class="w"> </span><span class="n">use_path_request_style</span><span class="w"></span>
+<div class="codehilite"><pre><span></span><code><span class="err">[username@es1 ~]$ mkdir s3fs_dir</span>
+<span class="err">[username@es1 ~]$ s3fs s3fs-bucket ~/s3fs_dir -o url=https://s3.abci.ai/ -o use_path_request_style</span>
 </code></pre></div>
 
+
 <p><code>default</code>プロファイル以外のアクセスキーを使いたい場合は<code>-o profile=プロファイル名</code>オプションを指定します。</p>
-<div class="codehilite"><pre><span></span><code><span class="o">[</span><span class="n">username@es1 ~</span><span class="o">]</span><span class="err">$</span><span class="w"> </span><span class="n">s3fs</span><span class="w"> </span><span class="n">s3fs</span><span class="o">-</span><span class="n">bucket</span><span class="w"> </span><span class="o">~/</span><span class="n">s3fs_dir</span><span class="w"> </span><span class="o">-</span><span class="n">o</span><span class="w"> </span><span class="n">url</span><span class="o">=</span><span class="nl">https</span><span class="p">:</span><span class="o">//</span><span class="n">s3</span><span class="p">.</span><span class="n">abci</span><span class="p">.</span><span class="n">ai</span><span class="o">/</span><span class="w"> </span><span class="o">-</span><span class="n">o</span><span class="w"> </span><span class="n">profile</span><span class="o">=</span><span class="n">aaa00000</span><span class="mf">.2</span><span class="w"> </span><span class="o">-</span><span class="n">o</span><span class="w"> </span><span class="n">use_path_request_style</span><span class="w"></span>
+<div class="codehilite"><pre><span></span><code><span class="err">[username@es1 ~]$ s3fs s3fs-bucket ~/s3fs_dir -o url=https://s3.abci.ai/ -o profile=aaa00000.2 -o use_path_request_style</span>
 </code></pre></div>
+
 
 <h2 id="_5">ファイル操作</h2>
 <p>バケットをマウントした後は、ファイル操作と同じ方法でバケットへオブジェクトの追加、削除が行えます。</p>
-<div class="codehilite"><pre><span></span><code><span class="o">[</span><span class="n">username@es1 ~</span><span class="o">]</span><span class="err">$</span><span class="w"> </span><span class="n">cp</span><span class="w"> </span><span class="o">~/</span><span class="n">my</span><span class="o">-</span><span class="k">file</span><span class="w"> </span><span class="o">~/</span><span class="n">s3fs_dir</span><span class="o">/</span><span class="w"></span>
-<span class="o">[</span><span class="n">username@es1 ~</span><span class="o">]</span><span class="err">$</span><span class="w"> </span><span class="n">ls</span><span class="w"> </span><span class="o">~/</span><span class="n">s3fs_dir</span><span class="o">/</span><span class="n">my</span><span class="o">-</span><span class="k">file</span><span class="w"></span>
-<span class="o">[</span><span class="n">username@es1 ~</span><span class="o">]</span><span class="err">$</span><span class="w"> </span><span class="n">rm</span><span class="w"> </span><span class="o">~/</span><span class="n">s3fs_dir</span><span class="o">/</span><span class="n">my</span><span class="o">-</span><span class="k">file</span><span class="w"></span>
+<div class="codehilite"><pre><span></span><code><span class="err">[username@es1 ~]$ cp ~/my-file ~/s3fs_dir/</span>
+<span class="err">[username@es1 ~]$ ls ~/s3fs_dir/my-file</span>
+<span class="err">[username@es1 ~]$ rm ~/s3fs_dir/my-file</span>
 </code></pre></div>
+
 
 <h2 id="_6">バケットをアンマウントする</h2>
 <p>バケットをアンマウントするには<code>fusermount</code>コマンドを使用します。</p>
-<div class="codehilite"><pre><span></span><code><span class="o">[</span><span class="n">username@es1 ~</span><span class="o">]</span><span class="err">$</span><span class="w"> </span><span class="n">fusermount</span><span class="w"> </span><span class="o">-</span><span class="n">u</span><span class="w"> </span><span class="o">~/</span><span class="n">s3fs_dir</span><span class="w"></span>
+<div class="codehilite"><pre><span></span><code><span class="err">[username@es1 ~]$ fusermount -u ~/s3fs_dir</span>
 </code></pre></div>
+
 
 <p>On-demand、Spotサービスで確保したジョブ内で<code>s3fs-fuse</code>を使用してバケットをマウントした場合、ジョブの終了時に自動でアンマウントされます。ただし、インタラクティブノード上で<code>s3fs-fuse</code>を利用してバケットをマウントした場合は、自動でアンマウントされないため、不要になったらアンマウントしてください。</p>
 <h2 id="s3fs">s3fsコマンドオプション</h2>

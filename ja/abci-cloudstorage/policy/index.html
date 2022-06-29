@@ -1354,64 +1354,69 @@
 </table>
 <p>フォーマットについては、以下の例を参考にしてください。
 Condition要素は、必要なければ省略可能です。</p>
-<div class="codehilite"><pre><span></span><code>{
-    &quot;Version&quot;: &quot;2012-10-17&quot;,
-    &quot;Statement&quot;: [
-        {
-            &quot;Effect&quot;: &quot;Deny&quot;,
-            &quot;Action&quot;: &quot;s3:*&quot;,
-            &quot;Resource&quot;: &quot;*&quot;,
-            &quot;Condition&quot;: {&quot;StringLike&quot;: {&quot;aws:UserAgent&quot; : &quot;aws-cli*&quot;}}
-        }
-    ]
-}
+<div class="codehilite"><pre><span></span><code><span class="err">{</span>
+<span class="err">    &quot;Version&quot;: &quot;2012-10-17&quot;,</span>
+<span class="err">    &quot;Statement&quot;: [</span>
+<span class="err">        {</span>
+<span class="err">            &quot;Effect&quot;: &quot;Deny&quot;,</span>
+<span class="err">            &quot;Action&quot;: &quot;s3:*&quot;,</span>
+<span class="err">            &quot;Resource&quot;: &quot;*&quot;,</span>
+<span class="err">            &quot;Condition&quot;: {&quot;StringLike&quot;: {&quot;aws:UserAgent&quot; : &quot;aws-cli*&quot;}}</span>
+<span class="err">        }</span>
+<span class="err">    ]</span>
+<span class="err">}</span>
 </code></pre></div>
+
 
 <p>以降ではいくつか例を挙げて、ポリシーによるアクセス制御の方法を説明します。</p>
 <h3 id="1">例1：バケットにアクセスできるアカウントを限定する</h3>
 <p>グループ内に aaa00000.1、aaa00001.1、aaa00002.1、aaa00003.1 という4人のクラウドストレージアカウントが作られており、sensor8 というバケットがあるものとします。今回、そこにアクセスできるユーザーを、aaa00000.1 と aaa00001.1 の 2人に限定する方法を説明します。</p>
 <p>以下の内容の sensor8.json というファイルを作成します。説明上、sensor8.json としますが、任意のファイル名を使うことができます。</p>
-<div class="codehilite"><pre><span></span><code>{
-    &quot;Version&quot;: &quot;2012-10-17&quot;,
-    &quot;Statement&quot;: [
-        {
-            &quot;Effect&quot;: &quot;Deny&quot;,
-            &quot;Action&quot;: &quot;s3:*&quot;,
-            &quot;Resource&quot;: [&quot;arn:aws:s3:::sensor8&quot;, &quot;arn:aws:s3:::sensor8/*&quot;],
-            &quot;Condition&quot; : { &quot;StringNotEquals&quot; : { &quot;aws:username&quot; :
-                [&quot;aaa00002.1&quot;, &quot;aaa00003.1&quot;]}}
-        }
-    ]
-}
+<div class="codehilite"><pre><span></span><code><span class="err">{</span>
+<span class="err">    &quot;Version&quot;: &quot;2012-10-17&quot;,</span>
+<span class="err">    &quot;Statement&quot;: [</span>
+<span class="err">        {</span>
+<span class="err">            &quot;Effect&quot;: &quot;Deny&quot;,</span>
+<span class="err">            &quot;Action&quot;: &quot;s3:*&quot;,</span>
+<span class="err">            &quot;Resource&quot;: [&quot;arn:aws:s3:::sensor8&quot;, &quot;arn:aws:s3:::sensor8/*&quot;],</span>
+<span class="err">            &quot;Condition&quot; : { &quot;StringNotEquals&quot; : { &quot;aws:username&quot; :</span>
+<span class="err">                [&quot;aaa00002.1&quot;, &quot;aaa00003.1&quot;]}}</span>
+<span class="err">        }</span>
+<span class="err">    ]</span>
+<span class="err">}</span>
 </code></pre></div>
+
 
 <p>上記では aaa00002.1 と aaa00003.1 が sensor8 にアクセスを禁止するポリシーを定義しています。
 Denyルールが優先されるため、他のポリシーで aaa00002.1 と aaa00003.1 に対して Allowルールが適用されていたとしても、本ポリシーを適用することでアクセスを禁止することができます。</p>
 <p>本ポリシーをクラウドストレージに登録します。</p>
-<div class="codehilite"><pre><span></span><code><span class="o">[</span><span class="n">username@es1 ~</span><span class="o">]</span><span class="err">$</span><span class="w"> </span><span class="n">aws</span><span class="w"> </span><span class="o">--</span><span class="n">endpoint</span><span class="o">-</span><span class="n">url</span><span class="w"> </span><span class="nl">https</span><span class="p">:</span><span class="o">//</span><span class="n">s3</span><span class="p">.</span><span class="n">abci</span><span class="p">.</span><span class="n">ai</span><span class="w"> </span><span class="n">iam</span><span class="w"> </span><span class="k">create</span><span class="o">-</span><span class="n">policy</span><span class="w"> </span><span class="o">--</span><span class="n">policy</span><span class="o">-</span><span class="n">name</span><span class="w"> </span><span class="n">sensor8policy</span><span class="w"> </span><span class="o">--</span><span class="n">policy</span><span class="o">-</span><span class="n">document</span><span class="w"> </span><span class="k">file</span><span class="err">:</span><span class="o">//</span><span class="n">sensor8</span><span class="p">.</span><span class="n">json</span><span class="w"></span>
-<span class="err">{</span><span class="w"></span>
-<span class="w">    </span><span class="ss">&quot;Policy&quot;</span><span class="err">:</span><span class="w"> </span><span class="err">{</span><span class="w"></span>
-<span class="w">        </span><span class="ss">&quot;PolicyName&quot;</span><span class="err">:</span><span class="w"> </span><span class="ss">&quot;sensor8policy&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">        </span><span class="ss">&quot;CreateDate&quot;</span><span class="err">:</span><span class="w"> </span><span class="ss">&quot;2019-07-30T06:22:47Z&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">        </span><span class="ss">&quot;AttachmentCount&quot;</span><span class="err">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"></span>
-<span class="w">        </span><span class="ss">&quot;IsAttachable&quot;</span><span class="err">:</span><span class="w"> </span><span class="k">true</span><span class="p">,</span><span class="w"></span>
-<span class="w">        </span><span class="ss">&quot;PolicyId&quot;</span><span class="err">:</span><span class="w"> </span><span class="ss">&quot;51OFYS8BQEFTP68KT4I63AAZYHNBPHHA&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">        </span><span class="ss">&quot;DefaultVersionId&quot;</span><span class="err">:</span><span class="w"> </span><span class="ss">&quot;v1&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">        </span><span class="ss">&quot;Path&quot;</span><span class="err">:</span><span class="w"> </span><span class="ss">&quot;/&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">        </span><span class="ss">&quot;Arn&quot;</span><span class="err">:</span><span class="w"> </span><span class="ss">&quot;arn:aws:iam::123456789012:policy/sensor8policy&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">        </span><span class="ss">&quot;UpdateDate&quot;</span><span class="err">:</span><span class="w"> </span><span class="ss">&quot;2019-07-30T06:22:47Z&quot;</span><span class="w"></span>
-<span class="w">    </span><span class="err">}</span><span class="w"></span>
-<span class="err">}</span><span class="w"></span>
+<div class="codehilite"><pre><span></span><code><span class="err">[username@es1 ~]$ aws --endpoint-url https://s3.abci.ai iam create-policy --policy-name sensor8policy --policy-document file://sensor8.json</span>
+<span class="err">{</span>
+<span class="err">    &quot;Policy&quot;: {</span>
+<span class="err">        &quot;PolicyName&quot;: &quot;sensor8policy&quot;,</span>
+<span class="err">        &quot;CreateDate&quot;: &quot;2019-07-30T06:22:47Z&quot;,</span>
+<span class="err">        &quot;AttachmentCount&quot;: 0,</span>
+<span class="err">        &quot;IsAttachable&quot;: true,</span>
+<span class="err">        &quot;PolicyId&quot;: &quot;51OFYS8BQEFTP68KT4I63AAZYHNBPHHA&quot;,</span>
+<span class="err">        &quot;DefaultVersionId&quot;: &quot;v1&quot;,</span>
+<span class="err">        &quot;Path&quot;: &quot;/&quot;,</span>
+<span class="err">        &quot;Arn&quot;: &quot;arn:aws:iam::123456789012:policy/sensor8policy&quot;,</span>
+<span class="err">        &quot;UpdateDate&quot;: &quot;2019-07-30T06:22:47Z&quot;</span>
+<span class="err">    }</span>
+<span class="err">}</span>
 </code></pre></div>
+
 
 <p>カレントディレクトリの sensor8.json の内容を sensor8policy という名前で登録しています。
 Arn の値は、クラウドストレージアカウントへの適用時に必要になるので、控えておいてください。</p>
 <p>本ポリシーを制限したいクラウドストレージアカウント、すなわち aaa00002.1 と aaa00003.1 に適用します。</p>
-<div class="codehilite"><pre><span></span><code><span class="o">[</span><span class="n">username@es1 ~</span><span class="o">]</span><span class="err">$</span><span class="w"> </span><span class="n">aws</span><span class="w"> </span><span class="c1">--endpoint-url https://s3.abci.ai iam attach-user-policy --policy-arn arn:aws:iam::123456789012:policy/sensor8policy --user-name aaa00002.1</span>
+<div class="codehilite"><pre><span></span><code><span class="err">[username@es1 ~]$ aws --endpoint-url https://s3.abci.ai iam attach-user-policy --policy-arn arn:aws:iam::123456789012:policy/sensor8policy --user-name aaa00002.1</span>
 </code></pre></div>
 
-<div class="codehilite"><pre><span></span><code><span class="o">[</span><span class="n">username@es1 ~</span><span class="o">]</span><span class="err">$</span><span class="w"> </span><span class="n">aws</span><span class="w"> </span><span class="c1">--endpoint-url https://s3.abci.ai iam attach-user-policy --policy-arn arn:aws:iam::123456789012:policy/sensor8policy --user-name aaa00003.1</span>
+
+<div class="codehilite"><pre><span></span><code><span class="err">[username@es1 ~]$ aws --endpoint-url https://s3.abci.ai iam attach-user-policy --policy-arn arn:aws:iam::123456789012:policy/sensor8policy --user-name aaa00003.1</span>
 </code></pre></div>
+
 
 <p><code>--policy-arn</code>に指定するポリシーのARNは、ポリシーを登録した時に出力されていますが、 <code>aws --endpoint-url https://s3.abci.ai iam list-policies</code> を実行して確認することもできます。</p>
 <p>上記の登録により aaa00002.1 と aaa00003.1 は、sensor8 バケットにアクセスできなくなりました。aaa00000.1 と aaa00001.1 は、これまで通りアクセスできます。</p>
@@ -1419,46 +1424,49 @@ Arn の値は、クラウドストレージアカウントへの適用時に必�
 <h3 id="2">例2：バケットにアクセスできるホストを限定する</h3>
 <p>接続元IPアドレスによるアクセス制限を行う例として、ABCI内部ネットワーク(10.0.0.0/17)からのアクセスと外部ホスト 203.0.113.2 からのアクセスのどちらでもない場合に、アクセスを拒否する設定を行う方法を説明します。</p>
 <p>以下の内容のポリシーを定義した src-ip-pc.json というファイルを作成します。</p>
-<div class="codehilite"><pre><span></span><code>{
-    &quot;Version&quot;: &quot;2012-10-17&quot;,
-    &quot;Statement&quot;: [
-        {
-            &quot;Effect&quot;: &quot;Deny&quot;,
-            &quot;Action&quot;: &quot;s3:*&quot;,
-            &quot;Resource&quot;: &quot;*&quot;,
-            &quot;Condition&quot;: {
-                &quot;NotIpAddress&quot;: {
-                    &quot;aws:SourceIp&quot;: [
-                        &quot;10.0.0.0/17&quot;,
-                        &quot;203.0.113.2/32&quot;
-                    ]
-                }
-            }
-        }
-    ]
-}
+<div class="codehilite"><pre><span></span><code><span class="err">{</span>
+<span class="err">    &quot;Version&quot;: &quot;2012-10-17&quot;,</span>
+<span class="err">    &quot;Statement&quot;: [</span>
+<span class="err">        {</span>
+<span class="err">            &quot;Effect&quot;: &quot;Deny&quot;,</span>
+<span class="err">            &quot;Action&quot;: &quot;s3:*&quot;,</span>
+<span class="err">            &quot;Resource&quot;: &quot;*&quot;,</span>
+<span class="err">            &quot;Condition&quot;: {</span>
+<span class="err">                &quot;NotIpAddress&quot;: {</span>
+<span class="err">                    &quot;aws:SourceIp&quot;: [</span>
+<span class="err">                        &quot;10.0.0.0/17&quot;,</span>
+<span class="err">                        &quot;203.0.113.2/32&quot;</span>
+<span class="err">                    ]</span>
+<span class="err">                }</span>
+<span class="err">            }</span>
+<span class="err">        }</span>
+<span class="err">    ]</span>
+<span class="err">}</span>
 </code></pre></div>
+
 
 <p>このポリシーをクラウドストレージに登録します。</p>
-<div class="codehilite"><pre><span></span><code><span class="o">[</span><span class="n">username@es1 ~</span><span class="o">]</span><span class="err">$</span><span class="w"> </span><span class="n">aws</span><span class="w"> </span><span class="o">--</span><span class="n">endpoint</span><span class="o">-</span><span class="n">url</span><span class="w"> </span><span class="nl">https</span><span class="p">:</span><span class="o">//</span><span class="n">s3</span><span class="p">.</span><span class="n">abci</span><span class="p">.</span><span class="n">ai</span><span class="w"> </span><span class="n">iam</span><span class="w"> </span><span class="k">create</span><span class="o">-</span><span class="n">policy</span><span class="w"> </span><span class="o">--</span><span class="n">policy</span><span class="o">-</span><span class="n">name</span><span class="w"> </span><span class="n">src</span><span class="o">-</span><span class="n">ip</span><span class="o">-</span><span class="n">pc</span><span class="w"> </span><span class="o">--</span><span class="n">policy</span><span class="o">-</span><span class="n">document</span><span class="w"> </span><span class="k">file</span><span class="err">:</span><span class="o">//</span><span class="n">src</span><span class="o">-</span><span class="n">ip</span><span class="o">-</span><span class="n">pc</span><span class="p">.</span><span class="n">json</span><span class="w"></span>
-<span class="err">{</span><span class="w"></span>
-<span class="w">    </span><span class="ss">&quot;Policy&quot;</span><span class="err">:</span><span class="w"> </span><span class="err">{</span><span class="w"></span>
-<span class="w">        </span><span class="ss">&quot;PolicyName&quot;</span><span class="err">:</span><span class="w"> </span><span class="ss">&quot;src-ip-pc&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">        </span><span class="ss">&quot;CreateDate&quot;</span><span class="err">:</span><span class="w"> </span><span class="ss">&quot;2019-08-08T13:24:54Z&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">        </span><span class="ss">&quot;AttachmentCount&quot;</span><span class="err">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"></span>
-<span class="w">        </span><span class="ss">&quot;IsAttachable&quot;</span><span class="err">:</span><span class="w"> </span><span class="k">true</span><span class="p">,</span><span class="w"></span>
-<span class="w">        </span><span class="ss">&quot;PolicyId&quot;</span><span class="err">:</span><span class="w"> </span><span class="ss">&quot;K9B9SFWR0JL4GSY8Z1K2441VJERSC2Q7&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">        </span><span class="ss">&quot;DefaultVersionId&quot;</span><span class="err">:</span><span class="w"> </span><span class="ss">&quot;v1&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">        </span><span class="ss">&quot;Path&quot;</span><span class="err">:</span><span class="w"> </span><span class="ss">&quot;/&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">        </span><span class="ss">&quot;Arn&quot;</span><span class="err">:</span><span class="w"> </span><span class="ss">&quot;arn:aws:iam::123456789012:policy/src-ip-pc&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">        </span><span class="ss">&quot;UpdateDate&quot;</span><span class="err">:</span><span class="w"> </span><span class="ss">&quot;2019-08-08T13:24:54Z&quot;</span><span class="w"></span>
-<span class="w">    </span><span class="err">}</span><span class="w"></span>
-<span class="err">}</span><span class="w"></span>
+<div class="codehilite"><pre><span></span><code><span class="err">[username@es1 ~]$ aws --endpoint-url https://s3.abci.ai iam create-policy --policy-name src-ip-pc --policy-document file://src-ip-pc.json</span>
+<span class="err">{</span>
+<span class="err">    &quot;Policy&quot;: {</span>
+<span class="err">        &quot;PolicyName&quot;: &quot;src-ip-pc&quot;,</span>
+<span class="err">        &quot;CreateDate&quot;: &quot;2019-08-08T13:24:54Z&quot;,</span>
+<span class="err">        &quot;AttachmentCount&quot;: 0,</span>
+<span class="err">        &quot;IsAttachable&quot;: true,</span>
+<span class="err">        &quot;PolicyId&quot;: &quot;K9B9SFWR0JL4GSY8Z1K2441VJERSC2Q7&quot;,</span>
+<span class="err">        &quot;DefaultVersionId&quot;: &quot;v1&quot;,</span>
+<span class="err">        &quot;Path&quot;: &quot;/&quot;,</span>
+<span class="err">        &quot;Arn&quot;: &quot;arn:aws:iam::123456789012:policy/src-ip-pc&quot;,</span>
+<span class="err">        &quot;UpdateDate&quot;: &quot;2019-08-08T13:24:54Z&quot;</span>
+<span class="err">    }</span>
+<span class="err">}</span>
 </code></pre></div>
 
+
 <p>次に、グループ内の各クラウドストレージアカウントに本ポリシーを適用していきます。以下の例ではクラウドストレージアカウント aaa00004.1 にポリシーを適用しています。ポリシーのARNは、ポリシーを登録した時に出力されていますが、aws --endpoint-url https://s3.abci.ai iam list-policies を実行して確認することもできます。</p>
-<div class="codehilite"><pre><span></span><code><span class="o">[</span><span class="n">username@es1 ~</span><span class="o">]</span><span class="err">$</span><span class="w"> </span><span class="n">aws</span><span class="w"> </span><span class="c1">--endpoint-url https://s3.abci.ai iam attach-user-policy --policy-arn arn:aws:iam::123456789012:policy/src-ip-pc --user-name aaa00004.1</span>
+<div class="codehilite"><pre><span></span><code><span class="err">[username@es1 ~]$ aws --endpoint-url https://s3.abci.ai iam attach-user-policy --policy-arn arn:aws:iam::123456789012:policy/src-ip-pc --user-name aaa00004.1</span>
 </code></pre></div>
+
 
 <p>デフォルトでは、接続元IPアドレスによる制限がないため、本ポリシーを適用していないアカウントは接続元の制限なくアクセスができる状態です。グループ内のクラウドストレージアカウントをリストするには、<code>aws --endpoint-url https://s3.abci.ai iam list-users</code> を実行してください。</p>
                 

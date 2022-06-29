@@ -1966,10 +1966,12 @@
 <div class="codehilite"><pre><span></span><code><span class="err">$</span><span class="w"> </span><span class="n">qrsh</span><span class="w"> </span><span class="o">-</span><span class="n">g</span><span class="w"> </span><span class="k">group</span><span class="w"> </span><span class="o">-</span><span class="n">l</span><span class="w"> </span><span class="n">resource_type</span><span class="o">=</span><span class="n">num</span><span class="w"> </span><span class="o">[</span><span class="n">options</span><span class="o">]</span><span class="w"></span>
 </code></pre></div>
 
+
 <p>例) インタラクティブジョブを実行 (On-demandサービス)</p>
-<div class="codehilite"><pre><span></span><code><span class="o">[</span><span class="n">username@es1 ~</span><span class="o">]</span><span class="err">$</span><span class="w"> </span><span class="n">qrsh</span><span class="w"> </span><span class="o">-</span><span class="n">g</span><span class="w"> </span><span class="n">grpname</span><span class="w"> </span><span class="o">-</span><span class="n">l</span><span class="w"> </span><span class="n">rt_F</span><span class="o">=</span><span class="mi">1</span><span class="w"> </span><span class="o">-</span><span class="n">l</span><span class="w"> </span><span class="n">h_rt</span><span class="o">=</span><span class="mi">1</span><span class="err">:</span><span class="mi">00</span><span class="err">:</span><span class="mi">00</span><span class="w"></span>
-<span class="o">[</span><span class="n">username@g0001 ~</span><span class="o">]</span><span class="err">$</span><span class="w"> </span>
+<div class="codehilite"><pre><span></span><code><span class="err">[username@es1 ~]$ qrsh -g grpname -l rt_F=1 -l h_rt=1:00:00</span>
+<span class="err">[username@g0001 ~]$ </span>
 </code></pre></div>
+
 
 <div class="admonition note">
 <p class="admonition-title">Note</p>
@@ -1977,13 +1979,15 @@
 </div>
 <p>X Window を利用するアプリケーションを実行するには、
 まずインタラクティブノードへのログイン時に、X11転送を有効（<code>-X</code>もしくは<code>-Y</code>オプションを指定）にします。</p>
-<div class="codehilite"><pre><span></span><code>[yourpc ~]$ ssh -XC -p 10022 -l username localhost
+<div class="codehilite"><pre><span></span><code><span class="err">[yourpc ~]$ ssh -XC -p 10022 -l username localhost</span>
 </code></pre></div>
+
 
 <p>次にインタラクティブジョブ実行時に、引数に<code>-pty yes -display $DISPLAY -v TERM /bin/bash</code>を指定します。</p>
 <div class="codehilite"><pre><span></span><code><span class="p">[</span><span class="n">username</span><span class="o">@</span><span class="n">es1</span> <span class="o">~</span><span class="p">]</span><span class="o">$</span> <span class="n">qrsh</span> <span class="o">-</span><span class="n">g</span> <span class="n">grpname</span> <span class="o">-</span><span class="n">l</span> <span class="n">rt_F</span><span class="o">=</span><span class="m">1</span> <span class="o">-</span><span class="n">l</span> <span class="n">h_rt</span><span class="o">=</span><span class="m">1</span><span class="o">:</span><span class="m">00</span><span class="o">:</span><span class="m">00</span> <span class="o">-</span><span class="n">pty</span> <span class="n">yes</span> <span class="o">-</span><span class="n">display</span> <span class="o">$</span><span class="n">DISPLAY</span> <span class="o">-</span><span class="n">v</span> <span class="n">TERM</span> <span class="o">/</span><span class="n">bin</span><span class="o">/</span><span class="n">bash</span>
 <span class="p">[</span><span class="n">username</span><span class="o">@</span><span class="n">g0001</span> <span class="o">~</span><span class="p">]</span><span class="o">$</span> <span class="n">xterm</span> <span class="o">&lt;-</span> <span class="n">Xアプリケーションを起動</span>
 </code></pre></div>
+
 
 <h2 id="batch-jobs">バッチジョブ</h2>
 <p>ABCIシステムでバッチジョブを実行する場合、実行するプログラムとは別にジョブスクリプトを作成します。
@@ -2001,6 +2005,7 @@
 <span class="o">[</span>プログラムの実行<span class="o">]</span>
 </code></pre></div>
 
+
 <p>例) CUDAを利用したプログラムを実行するジョブスクリプト例</p>
 <div class="codehilite"><pre><span></span><code><span class="ch">#!/bin/bash</span>
 
@@ -2013,15 +2018,18 @@ module load cuda/9.2/9.2.88.1
 ./a.out
 </code></pre></div>
 
+
 <h3 id="submit-a-batch-job">バッチジョブの投入</h3>
 <p>バッチジョブを実行するには、<code>qsub</code>コマンドを使用します。</p>
 <div class="codehilite"><pre><span></span><code><span class="err">$</span><span class="w"> </span><span class="n">qsub</span><span class="w"> </span><span class="o">-</span><span class="n">g</span><span class="w"> </span><span class="k">group</span><span class="w"> </span><span class="o">[</span><span class="n">options</span><span class="o">]</span><span class="w"> </span><span class="n">script_name</span><span class="w"></span>
 </code></pre></div>
 
+
 <p>例) ジョブスクリプトrun.shをバッチジョブとして投入 (Spotサービス)</p>
-<div class="codehilite"><pre><span></span><code><span class="o">[</span><span class="n">username@es1 ~</span><span class="o">]</span><span class="err">$</span><span class="w"> </span><span class="n">qsub</span><span class="w"> </span><span class="o">-</span><span class="n">g</span><span class="w"> </span><span class="n">grpname</span><span class="w"> </span><span class="n">run</span><span class="p">.</span><span class="n">sh</span><span class="w"></span>
-<span class="n">Your</span><span class="w"> </span><span class="n">job</span><span class="w"> </span><span class="mi">12345</span><span class="w"> </span><span class="p">(</span><span class="ss">&quot;run.sh&quot;</span><span class="p">)</span><span class="w"> </span><span class="n">has</span><span class="w"> </span><span class="n">been</span><span class="w"> </span><span class="n">submitted</span><span class="w"></span>
+<div class="codehilite"><pre><span></span><code><span class="err">[username@es1 ~]$ qsub -g grpname run.sh</span>
+<span class="err">Your job 12345 (&quot;run.sh&quot;) has been submitted</span>
 </code></pre></div>
+
 
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
@@ -2035,6 +2043,7 @@ module load cuda/9.2/9.2.88.1
 <p>バッチジョブを状態を確認するには、<code>qstat</code>コマンドを利用します。</p>
 <div class="codehilite"><pre><span></span><code><span class="err">$</span><span class="w"> </span><span class="n">qstat</span><span class="w"> </span><span class="o">[</span><span class="n">options</span><span class="o">]</span><span class="w"></span>
 </code></pre></div>
+
 
 <p><code>qstat</code>コマンドの主要なオプションを以下に示します。</p>
 <table>
@@ -2056,11 +2065,12 @@ module load cuda/9.2/9.2.88.1
 </tbody>
 </table>
 <p>例)</p>
-<div class="codehilite"><pre><span></span><code><span class="k">[</span><span class="c">username@es1 ~</span><span class="k">]</span><span class="c">$ qstat</span>
-<span class="c">job</span><span class="nb">-</span><span class="c">ID     prior   name       user         state submit/start at     queue                          jclass                         slots ja</span><span class="nb">-</span><span class="c">task</span><span class="nb">-</span><span class="c">ID</span>
-<span class="nb">------------------------------------------------------------------------------------------------------------------------------------------------</span><span class="c"></span>
-<span class="c">     12345 0</span><span class="nt">.</span><span class="c">25586 run</span><span class="nt">.</span><span class="c">sh     username     r     06/27/2018 21:14:49 gpu@g0001                                                        80</span>
+<div class="codehilite"><pre><span></span><code><span class="err">[username@es1 ~]$ qstat</span>
+<span class="err">job-ID     prior   name       user         state submit/start at     queue                          jclass                         slots ja-task-ID</span>
+<span class="err">------------------------------------------------------------------------------------------------------------------------------------------------</span>
+<span class="err">     12345 0.25586 run.sh     username     r     06/27/2018 21:14:49 gpu@g0001                                                        80</span>
 </code></pre></div>
+
 
 <table>
 <thead>
@@ -2117,14 +2127,16 @@ module load cuda/9.2/9.2.88.1
 <div class="codehilite"><pre><span></span><code>$ qdel job_id
 </code></pre></div>
 
+
 <p>例) バッチジョブを削除</p>
-<div class="codehilite"><pre><span></span><code><span class="k">[</span><span class="c">username@es1 ~</span><span class="k">]</span><span class="c">$ qstat</span>
-<span class="c">job</span><span class="nb">-</span><span class="c">ID     prior   name       user         state submit/start at     queue                          jclass                         slots ja</span><span class="nb">-</span><span class="c">task</span><span class="nb">-</span><span class="c">ID</span>
-<span class="nb">------------------------------------------------------------------------------------------------------------------------------------------------</span><span class="c"></span>
-<span class="c">     12345 0</span><span class="nt">.</span><span class="c">25586 run</span><span class="nt">.</span><span class="c">sh     username     r     06/27/2018 21:14:49 gpu@g0001                                                        80</span>
-<span class="k">[</span><span class="c">username@es1 ~</span><span class="k">]</span><span class="c">$ qdel 12345</span>
-<span class="c">username has registered the job 12345 for deletion</span>
+<div class="codehilite"><pre><span></span><code><span class="err">[username@es1 ~]$ qstat</span>
+<span class="err">job-ID     prior   name       user         state submit/start at     queue                          jclass                         slots ja-task-ID</span>
+<span class="err">------------------------------------------------------------------------------------------------------------------------------------------------</span>
+<span class="err">     12345 0.25586 run.sh     username     r     06/27/2018 21:14:49 gpu@g0001                                                        80</span>
+<span class="err">[username@es1 ~]$ qdel 12345</span>
+<span class="err">username has registered the job 12345 for deletion</span>
 </code></pre></div>
+
 
 <h3 id="stdout-and-stderr-of-batch-jobs">バッチジョブの標準出力と標準エラー出力</h3>
 <p>バッチジョブの標準出力ファイルと標準エラー出力ファイルは、ジョブ実行ディレクトリもしくは、
@@ -2144,6 +2156,7 @@ module load cuda/9.2/9.2.88.1
 <p>バッチジョブの統計情報を出力するには、<code>qacct</code>コマンドを利用します。</p>
 <div class="codehilite"><pre><span></span><code><span class="err">$</span><span class="w"> </span><span class="n">qacct</span><span class="w"> </span><span class="o">[</span><span class="n">options</span><span class="o">]</span><span class="w"></span>
 </code></pre></div>
+
 
 <p><code>qacct</code>コマンドの主要なオプションを以下に示します。</p>
 <table>
@@ -2169,60 +2182,61 @@ module load cuda/9.2/9.2.88.1
 </tbody>
 </table>
 <p>例) バッチジョブの統計情報を参照</p>
-<div class="codehilite"><pre><span></span><code><span class="p">[</span><span class="n">username</span><span class="err">@</span><span class="n">es1</span> <span class="o">~</span><span class="p">]</span><span class="o">$</span> <span class="n">qacct</span> <span class="o">-</span><span class="n">j</span> <span class="mi">12345</span>
-<span class="o">==============================================================</span>
-<span class="n">qname</span>        <span class="n">gpu</span>
-<span class="n">hostname</span>     <span class="n">g0001</span>
-<span class="n">group</span>        <span class="n">group</span> 
-<span class="n">owner</span>        <span class="n">username</span>
-<span class="n">project</span>      <span class="n">group</span> 
-<span class="n">department</span>   <span class="n">group</span>
-<span class="n">jobname</span>      <span class="n">run</span><span class="o">.</span><span class="n">sh</span>
-<span class="n">jobnumber</span>    <span class="mi">12345</span>
-<span class="n">taskid</span>       <span class="n">undefined</span>
-<span class="n">account</span>      <span class="n">username</span>
-<span class="n">priority</span>     <span class="mi">0</span>
-<span class="n">cwd</span>          <span class="n">NONE</span>
-<span class="n">submit_host</span>  <span class="n">es1</span><span class="o">.</span><span class="n">abci</span><span class="o">.</span><span class="n">local</span>
-<span class="n">submit_cmd</span>   <span class="o">/</span><span class="n">home</span><span class="o">/</span><span class="n">system</span><span class="o">/</span><span class="n">uge</span><span class="o">/</span><span class="n">latest</span><span class="o">/</span><span class="n">bin</span><span class="o">/</span><span class="n">lx</span><span class="o">-</span><span class="n">amd64</span><span class="o">/</span><span class="n">qsub</span> <span class="o">-</span><span class="n">P</span> <span class="n">username</span> <span class="o">-</span><span class="n">l</span> <span class="n">h_rt</span><span class="o">=</span><span class="mi">600</span> <span class="o">-</span><span class="n">l</span> <span class="n">rt_F</span><span class="o">=</span><span class="mi">1</span>
-<span class="n">qsub_time</span>    <span class="mi">07</span><span class="o">/</span><span class="mi">01</span><span class="o">/</span><span class="mi">2018</span> <span class="mi">11</span><span class="p">:</span><span class="mi">55</span><span class="p">:</span><span class="mf">14.706</span>
-<span class="n">start_time</span>   <span class="mi">07</span><span class="o">/</span><span class="mi">01</span><span class="o">/</span><span class="mi">2018</span> <span class="mi">11</span><span class="p">:</span><span class="mi">55</span><span class="p">:</span><span class="mf">18.170</span>
-<span class="n">end_time</span>     <span class="mi">07</span><span class="o">/</span><span class="mi">01</span><span class="o">/</span><span class="mi">2018</span> <span class="mi">11</span><span class="p">:</span><span class="mi">55</span><span class="p">:</span><span class="mf">18.190</span>
-<span class="n">granted_pe</span>   <span class="n">perack17</span>
-<span class="n">slots</span>        <span class="mi">80</span>
-<span class="n">failed</span>       <span class="mi">0</span>
-<span class="n">deleted_by</span>   <span class="n">NONE</span>
-<span class="n">exit_status</span>  <span class="mi">0</span>
-<span class="n">ru_wallclock</span> <span class="mf">0.020</span>
-<span class="n">ru_utime</span>     <span class="mf">0.010</span>
-<span class="n">ru_stime</span>     <span class="mf">0.013</span>
-<span class="n">ru_maxrss</span>    <span class="mi">6480</span>
-<span class="n">ru_ixrss</span>     <span class="mi">0</span>
-<span class="n">ru_ismrss</span>    <span class="mi">0</span>
-<span class="n">ru_idrss</span>     <span class="mi">0</span>
-<span class="n">ru_isrss</span>     <span class="mi">0</span>
-<span class="n">ru_minflt</span>    <span class="mi">1407</span>
-<span class="n">ru_majflt</span>    <span class="mi">0</span>
-<span class="n">ru_nswap</span>     <span class="mi">0</span>
-<span class="n">ru_inblock</span>   <span class="mi">0</span>
-<span class="n">ru_oublock</span>   <span class="mi">8</span>
-<span class="n">ru_msgsnd</span>    <span class="mi">0</span>
-<span class="n">ru_msgrcv</span>    <span class="mi">0</span>
-<span class="n">ru_nsignals</span>  <span class="mi">0</span>
-<span class="n">ru_nvcsw</span>     <span class="mi">13</span>
-<span class="n">ru_nivcsw</span>    <span class="mi">1</span>
-<span class="n">wallclock</span>    <span class="mf">3.768</span>
-<span class="n">cpu</span>          <span class="mf">0.022</span>
-<span class="n">mem</span>          <span class="mf">0.000</span>
-<span class="n">io</span>           <span class="mf">0.000</span>
-<span class="n">iow</span>          <span class="mf">0.000</span>
-<span class="n">ioops</span>        <span class="mi">0</span>
-<span class="n">maxvmem</span>      <span class="mf">0.000</span>
-<span class="n">maxrss</span>       <span class="mf">0.000</span>
-<span class="n">maxpss</span>       <span class="mf">0.000</span>
-<span class="n">arid</span>         <span class="n">undefined</span>
-<span class="n">jc_name</span>      <span class="n">NONE</span>
+<div class="codehilite"><pre><span></span><code><span class="err">[username@es1 ~]$ qacct -j 12345</span>
+<span class="err">==============================================================</span>
+<span class="err">qname        gpu</span>
+<span class="err">hostname     g0001</span>
+<span class="err">group        group </span>
+<span class="err">owner        username</span>
+<span class="err">project      group </span>
+<span class="err">department   group</span>
+<span class="err">jobname      run.sh</span>
+<span class="err">jobnumber    12345</span>
+<span class="err">taskid       undefined</span>
+<span class="err">account      username</span>
+<span class="err">priority     0</span>
+<span class="err">cwd          NONE</span>
+<span class="err">submit_host  es1.abci.local</span>
+<span class="err">submit_cmd   /home/system/uge/latest/bin/lx-amd64/qsub -P username -l h_rt=600 -l rt_F=1</span>
+<span class="err">qsub_time    07/01/2018 11:55:14.706</span>
+<span class="err">start_time   07/01/2018 11:55:18.170</span>
+<span class="err">end_time     07/01/2018 11:55:18.190</span>
+<span class="err">granted_pe   perack17</span>
+<span class="err">slots        80</span>
+<span class="err">failed       0</span>
+<span class="err">deleted_by   NONE</span>
+<span class="err">exit_status  0</span>
+<span class="err">ru_wallclock 0.020</span>
+<span class="err">ru_utime     0.010</span>
+<span class="err">ru_stime     0.013</span>
+<span class="err">ru_maxrss    6480</span>
+<span class="err">ru_ixrss     0</span>
+<span class="err">ru_ismrss    0</span>
+<span class="err">ru_idrss     0</span>
+<span class="err">ru_isrss     0</span>
+<span class="err">ru_minflt    1407</span>
+<span class="err">ru_majflt    0</span>
+<span class="err">ru_nswap     0</span>
+<span class="err">ru_inblock   0</span>
+<span class="err">ru_oublock   8</span>
+<span class="err">ru_msgsnd    0</span>
+<span class="err">ru_msgrcv    0</span>
+<span class="err">ru_nsignals  0</span>
+<span class="err">ru_nvcsw     13</span>
+<span class="err">ru_nivcsw    1</span>
+<span class="err">wallclock    3.768</span>
+<span class="err">cpu          0.022</span>
+<span class="err">mem          0.000</span>
+<span class="err">io           0.000</span>
+<span class="err">iow          0.000</span>
+<span class="err">ioops        0</span>
+<span class="err">maxvmem      0.000</span>
+<span class="err">maxrss       0.000</span>
+<span class="err">maxpss       0.000</span>
+<span class="err">arid         undefined</span>
+<span class="err">jc_name      NONE</span>
 </code></pre></div>
+
 
 <p>主な表示項目は以下の通りです。
 その他項目の詳細は<code>man sge_accounting</code>を参照ください。</p>
@@ -2426,6 +2440,7 @@ module load cuda/9.2/9.2.88.1
 <div class="codehilite"><pre><span></span><code>$ qrsub options
 </code></pre></div>
 
+
 <table>
 <thead>
 <tr>
@@ -2465,25 +2480,28 @@ module load cuda/9.2/9.2.88.1
 </tbody>
 </table>
 <p>例) 2018年7月5日から1週間 (7日間) 計算ノード(V)4台を予約</p>
-<div class="codehilite"><pre><span></span><code><span class="o">[</span><span class="n">username@es1 ~</span><span class="o">]</span><span class="err">$</span><span class="w"> </span><span class="n">qrsub</span><span class="w"> </span><span class="o">-</span><span class="n">a</span><span class="w"> </span><span class="mi">20180705</span><span class="w"> </span><span class="o">-</span><span class="n">d</span><span class="w"> </span><span class="mi">7</span><span class="w"> </span><span class="o">-</span><span class="n">g</span><span class="w"> </span><span class="n">grpname</span><span class="w"> </span><span class="o">-</span><span class="n">n</span><span class="w"> </span><span class="mi">4</span><span class="w"> </span><span class="o">-</span><span class="n">N</span><span class="w"> </span><span class="ss">&quot;Reserve_for_AI&quot;</span><span class="w"></span>
-<span class="n">Your</span><span class="w"> </span><span class="n">advance</span><span class="w"> </span><span class="n">reservation</span><span class="w"> </span><span class="mi">12345</span><span class="w"> </span><span class="n">has</span><span class="w"> </span><span class="n">been</span><span class="w"> </span><span class="n">granted</span><span class="w"></span>
+<div class="codehilite"><pre><span></span><code><span class="err">[username@es1 ~]$ qrsub -a 20180705 -d 7 -g grpname -n 4 -N &quot;Reserve_for_AI&quot;</span>
+<span class="err">Your advance reservation 12345 has been granted</span>
 </code></pre></div>
 
+
 <p>例) 2021年7月5日から1週間 (7日間) 計算ノード(A)4台を予約</p>
-<div class="codehilite"><pre><span></span><code><span class="o">[</span><span class="n">username@es1 ~</span><span class="o">]</span><span class="err">$</span><span class="w"> </span><span class="n">qrsub</span><span class="w"> </span><span class="o">-</span><span class="n">a</span><span class="w"> </span><span class="mi">20210705</span><span class="w"> </span><span class="o">-</span><span class="n">d</span><span class="w"> </span><span class="mi">7</span><span class="w"> </span><span class="o">-</span><span class="n">g</span><span class="w"> </span><span class="n">grpname</span><span class="w"> </span><span class="o">-</span><span class="n">n</span><span class="w"> </span><span class="mi">4</span><span class="w"> </span><span class="o">-</span><span class="n">N</span><span class="w"> </span><span class="ss">&quot;Reserve_for_AI&quot;</span><span class="w"> </span><span class="o">-</span><span class="n">l</span><span class="w"> </span><span class="n">rt_AF</span><span class="w"></span>
-<span class="n">Your</span><span class="w"> </span><span class="n">advance</span><span class="w"> </span><span class="n">reservation</span><span class="w"> </span><span class="mi">12345</span><span class="w"> </span><span class="n">has</span><span class="w"> </span><span class="n">been</span><span class="w"> </span><span class="n">granted</span><span class="w"></span>
+<div class="codehilite"><pre><span></span><code><span class="err">[username@es1 ~]$ qrsub -a 20210705 -d 7 -g grpname -n 4 -N &quot;Reserve_for_AI&quot; -l rt_AF</span>
+<span class="err">Your advance reservation 12345 has been granted</span>
 </code></pre></div>
+
 
 <p>計算ノードの予約が完了した時点でABCIポイントを消費します。
 また、発行された予約IDは予約時に指定したABCIグループに所属するABCIアカウントでご利用いただけます。</p>
 <h3 id="show-the-status-of-reservations">予約状態の確認</h3>
 <p>予約状態を確認するには、<a href="https://portal.abci.ai/user/">ABCI利用者ポータル</a>もしくは<code>qrstat</code>コマンドを使用します。</p>
 <p>例)</p>
-<div class="codehilite"><pre><span></span><code><span class="k">[</span><span class="c">username@es1 ~</span><span class="k">]</span><span class="c">$ qrstat</span>
-<span class="c">ar</span><span class="nb">-</span><span class="c">id      name       owner        state start at             end at               duration    sr</span>
-<span class="nb">----------------------------------------------------------------------------------------------------</span><span class="c"></span>
-<span class="c">     12345 Reserve_fo root         w     07/05/2018 10:00:00  07/12/2018 09:30:00  167:30:00    false</span>
+<div class="codehilite"><pre><span></span><code><span class="err">[username@es1 ~]$ qrstat</span>
+<span class="err">ar-id      name       owner        state start at             end at               duration    sr</span>
+<span class="err">----------------------------------------------------------------------------------------------------</span>
+<span class="err">     12345 Reserve_fo root         w     07/05/2018 10:00:00  07/12/2018 09:30:00  167:30:00    false</span>
 </code></pre></div>
+
 
 <table>
 <thead>
@@ -2529,18 +2547,20 @@ module load cuda/9.2/9.2.88.1
 </table>
 <p>システムあたりの予約可能ノード数を確認するには、<a href="https://portal.abci.ai/user/">ABCI利用者ポータル</a>もしくは<code>qrstat</code>コマンドの<code>--available</code>オプションを使用します。</p>
 <p>計算ノード(V)の予約可能ノード数の確認</p>
-<div class="codehilite"><pre><span></span><code><span class="o">[</span><span class="n">username@es1 ~</span><span class="o">]</span><span class="err">$</span><span class="w"> </span><span class="n">qrstat</span><span class="w"> </span><span class="o">--</span><span class="n">available</span><span class="w"></span>
-<span class="mi">06</span><span class="o">/</span><span class="mi">27</span><span class="o">/</span><span class="mi">2018</span><span class="w">  </span><span class="mi">441</span><span class="w"></span>
-<span class="mi">07</span><span class="o">/</span><span class="mi">05</span><span class="o">/</span><span class="mi">2018</span><span class="w">  </span><span class="mi">432</span><span class="w"></span>
-<span class="mi">07</span><span class="o">/</span><span class="mi">06</span><span class="o">/</span><span class="mi">2018</span><span class="w">  </span><span class="mi">434</span><span class="w"></span>
+<div class="codehilite"><pre><span></span><code><span class="err">[username@es1 ~]$ qrstat --available</span>
+<span class="err">06/27/2018  441</span>
+<span class="err">07/05/2018  432</span>
+<span class="err">07/06/2018  434</span>
 </code></pre></div>
 
+
 <p>計算ノード(A)の予約可能ノード数の確認</p>
-<div class="codehilite"><pre><span></span><code><span class="o">[</span><span class="n">username@es1 ~</span><span class="o">]</span><span class="err">$</span><span class="w"> </span><span class="n">qrstat</span><span class="w"> </span><span class="o">--</span><span class="n">available</span><span class="w"> </span><span class="o">-</span><span class="n">l</span><span class="w"> </span><span class="n">rt_AF</span><span class="w"></span>
-<span class="mi">06</span><span class="o">/</span><span class="mi">27</span><span class="o">/</span><span class="mi">2021</span><span class="w">   </span><span class="mi">41</span><span class="w"></span>
-<span class="mi">07</span><span class="o">/</span><span class="mi">05</span><span class="o">/</span><span class="mi">2021</span><span class="w">   </span><span class="mi">32</span><span class="w"></span>
-<span class="mi">07</span><span class="o">/</span><span class="mi">06</span><span class="o">/</span><span class="mi">2021</span><span class="w">   </span><span class="mi">34</span><span class="w"></span>
+<div class="codehilite"><pre><span></span><code><span class="err">[username@es1 ~]$ qrstat --available -l rt_AF</span>
+<span class="err">06/27/2021   41</span>
+<span class="err">07/05/2021   32</span>
+<span class="err">07/06/2021   34</span>
 </code></pre></div>
+
 
 <div class="admonition note">
 <p class="admonition-title">Note</p>
@@ -2553,20 +2573,23 @@ module load cuda/9.2/9.2.88.1
 </div>
 <p>予約を取り消すには、<a href="https://portal.abci.ai/user/">ABCI利用者ポータル</a>もしくは<code>qrdel</code>コマンドを使用します。<code>qrdel</code>コマンドでの予約取り消しは、「,(カンマ)」区切りのリストとして複数指定できます。指定したar_idの中に1つでも存在しない予約ID、もしくは削除権限のない予約IDが指定されている場合は、エラーとなり削除は実行されません。</p>
 <p>例) 予約を取り消し</p>
-<div class="codehilite"><pre><span></span><code><span class="o">[</span><span class="n">username@es1 ~</span><span class="o">]</span><span class="err">$</span><span class="w"> </span><span class="n">qrdel</span><span class="w"> </span><span class="mi">12345</span><span class="p">,</span><span class="mi">12346</span><span class="w"></span>
+<div class="codehilite"><pre><span></span><code><span class="err">[username@es1 ~]$ qrdel 12345,12346</span>
 </code></pre></div>
+
 
 <h3 id="how-to-use-reserved-node">予約ノードの使い方</h3>
 <p>予約した計算ノードには、<code>-ar</code>オプションにて予約IDを指定してジョブを投入します。</p>
 <p>例) 予約ID<code>12345</code>で予約された計算ノードでインタラクティブジョブを実行</p>
-<div class="codehilite"><pre><span></span><code><span class="o">[</span><span class="n">username@es1 ~</span><span class="o">]</span><span class="err">$</span><span class="w"> </span><span class="n">qrsh</span><span class="w"> </span><span class="o">-</span><span class="n">g</span><span class="w"> </span><span class="n">grpname</span><span class="w"> </span><span class="o">-</span><span class="n">ar</span><span class="w"> </span><span class="mi">12345</span><span class="w"> </span><span class="o">-</span><span class="n">l</span><span class="w"> </span><span class="n">rt_F</span><span class="o">=</span><span class="mi">1</span><span class="w"> </span><span class="o">-</span><span class="n">l</span><span class="w"> </span><span class="n">h_rt</span><span class="o">=</span><span class="mi">1</span><span class="err">:</span><span class="mi">00</span><span class="err">:</span><span class="mi">00</span><span class="w"></span>
-<span class="o">[</span><span class="n">username@g0001 ~</span><span class="o">]</span><span class="err">$</span><span class="w"> </span>
+<div class="codehilite"><pre><span></span><code><span class="err">[username@es1 ~]$ qrsh -g grpname -ar 12345 -l rt_F=1 -l h_rt=1:00:00</span>
+<span class="err">[username@g0001 ~]$ </span>
 </code></pre></div>
 
+
 <p>例) ジョブスクリプトrun.shを予約ID<code>12345</code>で予約された計算ノードにバッチジョブとして投入</p>
-<div class="codehilite"><pre><span></span><code><span class="o">[</span><span class="n">username@es1 ~</span><span class="o">]</span><span class="err">$</span><span class="w"> </span><span class="n">qsub</span><span class="w"> </span><span class="o">-</span><span class="n">g</span><span class="w"> </span><span class="n">grpname</span><span class="w"> </span><span class="o">-</span><span class="n">ar</span><span class="w"> </span><span class="mi">12345</span><span class="w"> </span><span class="n">run</span><span class="p">.</span><span class="n">sh</span><span class="w"></span>
-<span class="n">Your</span><span class="w"> </span><span class="n">job</span><span class="w"> </span><span class="mi">12345</span><span class="w"> </span><span class="p">(</span><span class="ss">&quot;run.sh&quot;</span><span class="p">)</span><span class="w"> </span><span class="n">has</span><span class="w"> </span><span class="n">been</span><span class="w"> </span><span class="n">submitted</span><span class="w"></span>
+<div class="codehilite"><pre><span></span><code><span class="err">[username@es1 ~]$ qsub -g grpname -ar 12345 run.sh</span>
+<span class="err">Your job 12345 (&quot;run.sh&quot;) has been submitted</span>
 </code></pre></div>
+
 
 <div class="admonition note">
 <p class="admonition-title">Note</p>
@@ -2595,15 +2618,16 @@ module load cuda/9.2/9.2.88.1
 </ul>
 </div>
 <p>例) g0001は利用可能、g0002は利用不可</p>
-<div class="codehilite"><pre><span></span><code><span class="o">[</span><span class="n">username@es1 ~</span><span class="o">]</span><span class="err">$</span><span class="w"> </span><span class="n">qrsub</span><span class="w"> </span><span class="o">-</span><span class="n">a</span><span class="w"> </span><span class="mi">20180705</span><span class="w"> </span><span class="o">-</span><span class="n">d</span><span class="w"> </span><span class="mi">7</span><span class="w"> </span><span class="o">-</span><span class="n">g</span><span class="w"> </span><span class="n">grpname</span><span class="w"> </span><span class="o">-</span><span class="n">n</span><span class="w"> </span><span class="mi">2</span><span class="w"> </span><span class="o">-</span><span class="n">N</span><span class="w"> </span><span class="ss">&quot;Reserve_for_AI&quot;</span><span class="w"> </span>
-<span class="n">Your</span><span class="w"> </span><span class="n">advance</span><span class="w"> </span><span class="n">reservation</span><span class="w"> </span><span class="mi">12345</span><span class="w"> </span><span class="n">has</span><span class="w"> </span><span class="n">been</span><span class="w"> </span><span class="n">granted</span><span class="w"></span>
-<span class="o">[</span><span class="n">username@es1 ~</span><span class="o">]</span><span class="err">$</span><span class="w"> </span><span class="n">qrstat</span><span class="w"> </span><span class="o">-</span><span class="n">ar</span><span class="w"> </span><span class="mi">12345</span><span class="w"></span>
-<span class="p">(</span><span class="n">snip</span><span class="p">)</span><span class="w"></span>
-<span class="n">message</span><span class="w">                             </span><span class="n">reserved</span><span class="w"> </span><span class="n">queue</span><span class="w"> </span><span class="n">gpu</span><span class="nv">@g0002</span><span class="w"> </span><span class="k">is</span><span class="w"> </span><span class="n">disabled</span><span class="w"></span>
-<span class="n">message</span><span class="w">                             </span><span class="n">reserved</span><span class="w"> </span><span class="n">queue</span><span class="w"> </span><span class="n">gpu</span><span class="nv">@g0002</span><span class="w"> </span><span class="k">is</span><span class="w"> </span><span class="k">unknown</span><span class="w"></span>
-<span class="n">granted_parallel_environment</span><span class="w">        </span><span class="n">perack01</span><span class="w"></span>
-<span class="n">granted_slots_list</span><span class="w">                  </span><span class="n">gpu</span><span class="nv">@g0001</span><span class="o">=</span><span class="mi">80</span><span class="p">,</span><span class="n">gpu</span><span class="nv">@g0002</span><span class="o">=</span><span class="mi">80</span><span class="w"></span>
+<div class="codehilite"><pre><span></span><code><span class="err">[username@es1 ~]$ qrsub -a 20180705 -d 7 -g grpname -n 2 -N &quot;Reserve_for_AI&quot; </span>
+<span class="err">Your advance reservation 12345 has been granted</span>
+<span class="err">[username@es1 ~]$ qrstat -ar 12345</span>
+<span class="err">(snip)</span>
+<span class="err">message                             reserved queue gpu@g0002 is disabled</span>
+<span class="err">message                             reserved queue gpu@g0002 is unknown</span>
+<span class="err">granted_parallel_environment        perack01</span>
+<span class="err">granted_slots_list                  gpu@g0001=80,gpu@g0002=80</span>
 </code></pre></div>
+
 
 <h2 id="accounting">課金</h2>
 <h3 id="on-demand-and-spot-services">On-demandおよびSpotサービス</h3>

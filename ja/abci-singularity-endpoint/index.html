@@ -1319,17 +1319,19 @@
 <h2 id="_2">事前準備</h2>
 <h3 id="_3">モジュールのロード</h3>
 <p>本サービスを利用するため、以下のように SingularityPRO のモジュールをロードして下さい。</p>
-<div class="codehilite"><pre><span></span><code><span class="p">[</span><span class="n">username</span><span class="err">@</span><span class="n">es1</span> <span class="o">~</span><span class="p">]</span><span class="o">$</span> <span class="n">module</span> <span class="nb">load</span> <span class="n">singularitypro</span>
+<div class="codehilite"><pre><span></span><code><span class="err">[username@es1 ~]$ module load singularitypro</span>
 </code></pre></div>
+
 
 <h3 id="_4">アクセストークンの取得</h3>
 <p>最初に、本サービスの認証に必要なアクセストークンを取得します。
 インタラクティブノードで <code>get_singularity_token</code> コマンドを実行して下さい。発行には ABCI のパスワード (利用者ポータルへのログインに使用するパスワード) の入力が必要です。</p>
-<div class="codehilite"><pre><span></span><code><span class="o">[</span><span class="n">username@es1 ~</span><span class="o">]</span><span class="err">$</span><span class="w"> </span><span class="n">get_singularity_token</span><span class="w"></span>
-<span class="n">ABCI</span><span class="w"> </span><span class="n">portal</span><span class="w"> </span><span class="n">password</span><span class="w"> </span><span class="err">:</span><span class="w"></span>
-<span class="n">just</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="n">moment</span><span class="p">,</span><span class="w"> </span><span class="n">please</span><span class="p">...</span><span class="w"></span>
-<span class="w">  </span><span class="p">(</span><span class="n">The</span><span class="w"> </span><span class="n">generated</span><span class="w"> </span><span class="n">access</span><span class="w"> </span><span class="n">token</span><span class="w"> </span><span class="n">will</span><span class="w"> </span><span class="n">be</span><span class="w"> </span><span class="n">displayed</span><span class="p">.)</span><span class="w"></span>
+<div class="codehilite"><pre><span></span><code><span class="err">[username@es1 ~]$ get_singularity_token</span>
+<span class="err">ABCI portal password :</span>
+<span class="err">just a moment, please...</span>
+<span class="err">  (The generated access token will be displayed.)</span>
 </code></pre></div>
+
 
 <p>取得したアクセストークンは、この後の登録に必要になりますので、安全なところに控えておいて下さい。</p>
 <div class="admonition note">
@@ -1356,6 +1358,7 @@
 <span class="o">[</span><span class="n">username@es1 ~</span><span class="o">]</span><span class="err">$</span><span class="w"></span>
 </code></pre></div>
 
+
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>SylabsCloud は <a href="https://sylabs.io/">Sylabs</a> が運営するパブリックサービスのエンドポイントです。<a href="https://cloud.sylabs.io/">https://cloud.sylabs.io/</a> にサインインし、アクセストークンを取得することで利用可能になります。</p>
@@ -1366,13 +1369,14 @@
 </div>
 <h3 id="_6">アクセストークンの登録</h3>
 <p>ABCI Singularity エンドポイントに対して、<code>singularity remote login</code> を実行し、先に取得したアクセストークンを入力し、自身の SingularityPRO の設定ファイルに登録します。</p>
-<div class="codehilite"><pre><span></span><code><span class="o">[</span><span class="n">username@es1 ~</span><span class="o">]</span><span class="err">$</span><span class="w"> </span><span class="n">singularity</span><span class="w"> </span><span class="n">remote</span><span class="w"> </span><span class="n">login</span><span class="w"> </span><span class="n">ABCI</span><span class="w"></span>
-<span class="nl">INFO</span><span class="p">:</span><span class="w">    </span><span class="n">Authenticating</span><span class="w"> </span><span class="k">with</span><span class="w"> </span><span class="nl">remote</span><span class="p">:</span><span class="w"> </span><span class="n">ABCI</span><span class="w"></span>
-<span class="n">Generate</span><span class="w"> </span><span class="n">an</span><span class="w"> </span><span class="n">API</span><span class="w"> </span><span class="k">Key</span><span class="w"> </span><span class="k">at</span><span class="w"> </span><span class="nl">https</span><span class="p">:</span><span class="o">//</span><span class="n">cloud</span><span class="p">.</span><span class="n">se</span><span class="p">.</span><span class="n">abci</span><span class="p">.</span><span class="k">local</span><span class="o">/</span><span class="n">auth</span><span class="o">/</span><span class="n">tokens</span><span class="p">,</span><span class="w"> </span><span class="ow">and</span><span class="w"> </span><span class="n">paste</span><span class="w"> </span><span class="nl">here</span><span class="p">:</span><span class="w"></span>
-<span class="n">API</span><span class="w"> </span><span class="k">Key</span><span class="err">:</span><span class="w"></span>
-<span class="nl">INFO</span><span class="p">:</span><span class="w">    </span><span class="n">API</span><span class="w"> </span><span class="k">Key</span><span class="w"> </span><span class="n">Verified</span><span class="err">!</span><span class="w"></span>
-<span class="o">[</span><span class="n">username@es1 ~</span><span class="o">]</span><span class="err">$</span><span class="w"></span>
+<div class="codehilite"><pre><span></span><code><span class="err">[username@es1 ~]$ singularity remote login ABCI</span>
+<span class="c">INFO:    Authenticating with remote: ABCI</span>
+<span class="err">Generate an API Key at https://cloud.se.abci.local/auth/tokens, and paste here:</span>
+<span class="err">API Key:</span>
+<span class="c">INFO:    API Key Verified!</span>
+<span class="err">[username@es1 ~]$</span>
 </code></pre></div>
+
 
 <p>アクセストークンを再取得した際にも、上記コマンドを再実行し、アクセストークンを再登録して下さい。既存のアクセストークンは上書きされます。</p>
 <div class="admonition note">
@@ -1381,8 +1385,8 @@
 </div>
 <h2 id="remote-builder">Remote Builder</h2>
 <p>最初に、コンテナイメージをビルドするための定義ファイルを作成して下さい。以下の例では、Docker Hub から取得した Ubuntu のコンテナイメージをベースとして、追加パッケージのインストールと、コンテナを実行した時に実行されるコマンドを指定しています。定義ファイルの詳細については、<a href="https://repo.sylabs.io/c/0f6898986ad0b646b5ce6deba21781ac62cb7e0a86a5153bbb31732ee6593f43/guides/singularitypro37-user-guide/definition_files.html">Definition Files</a> を参照して下さい。</p>
-<div class="codehilite"><pre><span></span><code><span class="p">[</span><span class="n">username</span><span class="err">@</span><span class="n">es1</span> <span class="o">~</span><span class="p">]</span><span class="n">$</span> <span class="n">vi</span> <span class="n">ubuntu</span><span class="p">.</span><span class="n">def</span>
-<span class="p">[</span><span class="n">username</span><span class="err">@</span><span class="n">es1</span> <span class="o">~</span><span class="p">]</span><span class="n">$</span> <span class="n">cat</span> <span class="n">ubuntu</span><span class="p">.</span><span class="n">def</span>
+<div class="codehilite"><pre><span></span><code><span class="p">[</span><span class="n">username</span><span class="err">@</span><span class="n">es1</span> <span class="o">~</span><span class="p">]</span><span class="err">$</span> <span class="n">vi</span> <span class="n">ubuntu</span><span class="p">.</span><span class="n">def</span>
+<span class="p">[</span><span class="n">username</span><span class="err">@</span><span class="n">es1</span> <span class="o">~</span><span class="p">]</span><span class="err">$</span> <span class="n">cat</span> <span class="n">ubuntu</span><span class="p">.</span><span class="n">def</span>
 <span class="nl">Bootstrap</span><span class="p">:</span> <span class="n">docker</span>
 <span class="nl">From</span><span class="p">:</span> <span class="nl">ubuntu</span><span class="p">:</span><span class="mf">18.04</span>
 
@@ -1393,29 +1397,32 @@
 <span class="nf">%runscript</span>
     <span class="n">lsb_release</span> <span class="o">-</span><span class="n">d</span>
 
-<span class="p">[</span><span class="n">username</span><span class="err">@</span><span class="n">es1</span> <span class="o">~</span><span class="p">]</span><span class="n">$</span> 
+<span class="p">[</span><span class="n">username</span><span class="err">@</span><span class="n">es1</span> <span class="o">~</span><span class="p">]</span><span class="err">$</span> 
 </code></pre></div>
+
 
 <p>次に、<code>singularity build</code> コマンドに <code>--remote</code> を指定して、ubuntu.def の内容からコンテナイメージ ubuntu.sif をリモートビルドで作成して下さい。</p>
-<div class="codehilite"><pre><span></span><code><span class="o">[</span><span class="n">username@es1 ~</span><span class="o">]</span><span class="err">$</span><span class="w"> </span><span class="n">singularity</span><span class="w"> </span><span class="n">build</span><span class="w"> </span><span class="o">--</span><span class="n">remote</span><span class="w"> </span><span class="n">ubuntu</span><span class="p">.</span><span class="n">sif</span><span class="w"> </span><span class="n">ubuntu</span><span class="p">.</span><span class="n">def</span><span class="w"></span>
-<span class="nl">INFO</span><span class="p">:</span><span class="w">    </span><span class="n">Remote</span><span class="w"> </span><span class="ss">&quot;default&quot;</span><span class="w"> </span><span class="n">added</span><span class="p">.</span><span class="w"></span>
-<span class="nl">INFO</span><span class="p">:</span><span class="w">    </span><span class="n">Authenticating</span><span class="w"> </span><span class="k">with</span><span class="w"> </span><span class="nl">remote</span><span class="p">:</span><span class="w"> </span><span class="k">default</span><span class="w"></span>
-<span class="nl">INFO</span><span class="p">:</span><span class="w">    </span><span class="n">API</span><span class="w"> </span><span class="k">Key</span><span class="w"> </span><span class="n">Verified</span><span class="err">!</span><span class="w"></span>
-<span class="nl">INFO</span><span class="p">:</span><span class="w">    </span><span class="n">Remote</span><span class="w"> </span><span class="ss">&quot;default&quot;</span><span class="w"> </span><span class="n">now</span><span class="w"> </span><span class="ow">in</span><span class="w"> </span><span class="k">use</span><span class="p">.</span><span class="w"></span>
-<span class="nl">INFO</span><span class="p">:</span><span class="w">    </span><span class="n">Starting</span><span class="w"> </span><span class="n">build</span><span class="p">...</span><span class="w"></span>
-<span class="err">:</span><span class="w"></span>
-<span class="err">:</span><span class="w"></span>
-<span class="nl">INFO</span><span class="p">:</span><span class="w">    </span><span class="n">Build</span><span class="w"> </span><span class="nl">complete</span><span class="p">:</span><span class="w"> </span><span class="n">ubuntu</span><span class="p">.</span><span class="n">sif</span><span class="w"></span>
-<span class="o">[</span><span class="n">username@es1 ~</span><span class="o">]</span><span class="err">$</span><span class="w"> </span>
+<div class="codehilite"><pre><span></span><code><span class="err">[username@es1 ~]$ singularity build --remote ubuntu.sif ubuntu.def</span>
+<span class="c">INFO:    Remote &quot;default&quot; added.</span>
+<span class="c">INFO:    Authenticating with remote: default</span>
+<span class="c">INFO:    API Key Verified!</span>
+<span class="c">INFO:    Remote &quot;default&quot; now in use.</span>
+<span class="c">INFO:    Starting build...</span>
+<span class="err">:</span>
+<span class="err">:</span>
+<span class="c">INFO:    Build complete: ubuntu.sif</span>
+<span class="err">[username@es1 ~]$ </span>
 </code></pre></div>
 
+
 <p>動作確認として <code>singularity run</code> でコンテナイメージを起動する例を以下に示します。定義ファイル内で指定した <code>lsb_release -d</code> が実行され、その結果が出力されています。</p>
-<div class="codehilite"><pre><span></span><code><span class="p">[</span><span class="n">username</span><span class="err">@</span><span class="n">es1</span> <span class="o">~</span><span class="p">]</span><span class="o">$</span> <span class="n">qrsh</span> <span class="o">-</span><span class="n">g</span> <span class="n">grpname</span> <span class="o">-</span><span class="n">l</span> <span class="n">rt_C</span><span class="o">.</span><span class="n">small</span><span class="o">=</span><span class="mi">1</span> <span class="o">-</span><span class="n">l</span> <span class="n">h_rt</span><span class="o">=</span><span class="mi">1</span><span class="p">:</span><span class="mi">00</span><span class="p">:</span><span class="mi">00</span>
-<span class="p">[</span><span class="n">username</span><span class="err">@</span><span class="n">g0001</span> <span class="o">~</span><span class="p">]</span><span class="o">$</span> <span class="n">module</span> <span class="nb">load</span> <span class="n">singularitypro</span>
-<span class="p">[</span><span class="n">username</span><span class="err">@</span><span class="n">g0001</span> <span class="o">~</span><span class="p">]</span><span class="o">$</span> <span class="n">singularity</span> <span class="n">run</span> <span class="n">ubuntu</span><span class="o">.</span><span class="n">sif</span>
-<span class="n">Description</span><span class="p">:</span>    <span class="n">Ubuntu</span> <span class="mf">18.04</span><span class="o">.</span><span class="mi">5</span> <span class="n">LTS</span>
-<span class="p">[</span><span class="n">username</span><span class="err">@</span><span class="n">g0001</span> <span class="o">~</span><span class="p">]</span><span class="o">$</span> 
+<div class="codehilite"><pre><span></span><code><span class="err">[username@es1 ~]$ qrsh -g grpname -l rt_C.small=1 -l h_rt=1:00:00</span>
+<span class="err">[username@g0001 ~]$ module load singularitypro</span>
+<span class="err">[username@g0001 ~]$ singularity run ubuntu.sif</span>
+<span class="c">Description:    Ubuntu 18.04.5 LTS</span>
+<span class="err">[username@g0001 ~]$ </span>
 </code></pre></div>
+
 
 <h2 id="container-library-experimental">Container Library (Experimental)</h2>
 <p>作成したコンテナイメージを Container Library にアップロードし、他の ABCI 利用者に公開することができます。1人あたり、合計 100GiB までアップロードして保存することができます。</p>
@@ -1436,6 +1443,7 @@
 <span class="n">Would</span> <span class="n">you</span> <span class="nb">like</span> <span class="nb">to</span> <span class="nb">push</span> <span class="n">it</span> <span class="nb">to</span> <span class="n">the</span> <span class="n">keystore</span>? [<span class="n">Y</span>,<span class="n">n</span>] 
 <span class="n">Generating</span> <span class="n">Entity</span> <span class="o">and</span> <span class="n">OpenPGP</span> <span class="n">Key</span> <span class="nb">Pair</span>... <span class="nb">done</span>
 </code></pre></div>
+
 
 <p>各入力値の説明は以下のとおりです。</p>
 <table>
@@ -1470,18 +1478,19 @@
 </table>
 <h4 id="_9">鍵の一覧表示</h4>
 <p><code>singularity key list</code> を実行すると、作成した鍵も含め、ローカルの鍵リングに入っている公開鍵の情報を確認できます。</p>
-<div class="codehilite"><pre><span></span><code><span class="o">[</span><span class="n">username@es1 ~</span><span class="o">]</span><span class="err">$</span><span class="w"> </span><span class="n">singularity</span><span class="w"> </span><span class="k">key</span><span class="w"> </span><span class="n">list</span><span class="w"></span>
-<span class="k">Public</span><span class="w"> </span><span class="k">key</span><span class="w"> </span><span class="n">listing</span><span class="w"> </span><span class="p">(</span><span class="o">/</span><span class="n">home</span><span class="o">/</span><span class="n">username</span><span class="o">/</span><span class="p">.</span><span class="n">singularity</span><span class="o">/</span><span class="n">sypgp</span><span class="o">/</span><span class="n">pgp</span><span class="o">-</span><span class="k">public</span><span class="p">)</span><span class="err">:</span><span class="w"></span>
-<span class="err">:</span><span class="w"></span>
-<span class="err">:</span><span class="w"></span>
-<span class="w">   </span><span class="o">--------</span><span class="w"></span>
-<span class="mi">7</span><span class="p">)</span><span class="w"> </span><span class="nl">U</span><span class="p">:</span><span class="w"> </span><span class="n">username</span><span class="w"> </span><span class="p">(</span><span class="n">comment</span><span class="p">)</span><span class="w"> </span><span class="o">&lt;</span><span class="n">username</span><span class="o">&gt;</span><span class="w"></span>
-<span class="w">   </span><span class="nl">C</span><span class="p">:</span><span class="w"> </span><span class="mi">2020</span><span class="o">-</span><span class="mi">06</span><span class="o">-</span><span class="mi">15</span><span class="w"> </span><span class="mi">03</span><span class="err">:</span><span class="mi">40</span><span class="err">:</span><span class="mi">05</span><span class="w"> </span><span class="o">+</span><span class="mi">0900</span><span class="w"> </span><span class="n">JST</span><span class="w"></span>
-<span class="w">   </span><span class="nl">F</span><span class="p">:</span><span class="w"> </span><span class="n">XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX</span><span class="w"></span>
-<span class="w">   </span><span class="nl">L</span><span class="p">:</span><span class="w"> </span><span class="mi">4096</span><span class="w"></span>
-<span class="w">   </span><span class="o">--------</span><span class="w"></span>
-<span class="o">[</span><span class="n">username@es1 ~</span><span class="o">]</span><span class="err">$</span><span class="w"></span>
+<div class="codehilite"><pre><span></span><code><span class="err">[username@es1 ~]$ singularity key list</span>
+<span class="err">Public key listing (/home/username/.singularity/sypgp/pgp-public):</span>
+<span class="err">:</span>
+<span class="err">:</span>
+<span class="err">   --------</span>
+<span class="err">7) U: username (comment) &lt;username&gt;</span>
+<span class="err">   C: 2020-06-15 03:40:05 +0900 JST</span>
+<span class="err">   F: XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX</span>
+<span class="err">   L: 4096</span>
+<span class="err">   --------</span>
+<span class="err">[username@es1 ~]$</span>
 </code></pre></div>
+
 
 <p>Keystore に登録されている鍵情報を取得するには、<code>singularity key search -l</code> に ABCIアカウント名を指定します。</p>
 <div class="codehilite"><pre><span></span><code><span class="o">[</span><span class="n">username@es1 ~</span><span class="o">]</span><span class="err">$</span><span class="w"> </span><span class="n">singularity</span><span class="w"> </span><span class="k">key</span><span class="w"> </span><span class="k">search</span><span class="w"> </span><span class="o">-</span><span class="n">l</span><span class="w"> </span><span class="n">username</span><span class="w"></span>
@@ -1493,19 +1502,21 @@
 <span class="o">[</span><span class="n">username@es1 ~</span><span class="o">]</span><span class="err">$</span><span class="w"></span>
 </code></pre></div>
 
+
 <h4 id="keystore">Keystore への公開鍵の登録</h4>
 <p>鍵ペアの作成時に、Keystore へのアップロードを指定しなかった場合、あとからアップロードすることもできます。</p>
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
 <p>Keystore に登録した公開鍵を削除することはできません。</p>
 </div>
-<div class="codehilite"><pre><span></span><code><span class="o">[</span><span class="n">username@es1 ~</span><span class="o">]</span><span class="err">$</span><span class="w"> </span><span class="n">singularity</span><span class="w"> </span><span class="k">key</span><span class="w"> </span><span class="n">list</span><span class="w"></span>
-<span class="mi">0</span><span class="p">)</span><span class="w"> </span><span class="nl">U</span><span class="p">:</span><span class="w"> </span><span class="n">username</span><span class="w"> </span><span class="p">(</span><span class="n">comment</span><span class="p">)</span><span class="w"> </span><span class="n">username</span><span class="w"></span>
-<span class="w">   </span><span class="nl">C</span><span class="p">:</span><span class="w"> </span><span class="mi">2020</span><span class="o">-</span><span class="mi">08</span><span class="o">-</span><span class="mi">08</span><span class="w"> </span><span class="mi">04</span><span class="err">:</span><span class="mi">28</span><span class="err">:</span><span class="mi">35</span><span class="w"> </span><span class="o">+</span><span class="mi">0900</span><span class="w"> </span><span class="n">JST</span><span class="w"></span>
-<span class="w">   </span><span class="nl">F</span><span class="p">:</span><span class="w"> </span><span class="n">ZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZ</span><span class="w"></span>
-<span class="w">   </span><span class="nl">L</span><span class="p">:</span><span class="w"> </span><span class="mi">4096</span><span class="w"></span>
-<span class="w">   </span><span class="c1">--------</span>
+<div class="codehilite"><pre><span></span><code><span class="err">[username@es1 ~]$ singularity key list</span>
+<span class="err">0) U: username (comment) username</span>
+<span class="err">   C: 2020-08-08 04:28:35 +0900 JST</span>
+<span class="err">   F: ZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZ</span>
+<span class="err">   L: 4096</span>
+<span class="err">   --------</span>
 </code></pre></div>
+
 
 <p>この 0 番の公開鍵をアップロードするには、<code>F:</code> のところに表示されているフィンガープリントを <code>singularity key push</code> に指定します。</p>
 <div class="codehilite"><pre><span></span><code><span class="o">[</span><span class="n">username@es1 ~</span><span class="o">]</span><span class="err">$</span><span class="w"> </span><span class="n">singularity</span><span class="w"> </span><span class="k">key</span><span class="w"> </span><span class="n">push</span><span class="w"> </span><span class="n">ZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZ</span><span class="w"></span>
@@ -1517,6 +1528,7 @@
 <span class="n">FINGERPRINT</span><span class="w">                               </span><span class="n">ALGORITHM</span><span class="w">  </span><span class="n">BITS</span><span class="w">  </span><span class="n">CREATION</span><span class="w"> </span><span class="nc">DATE</span><span class="w">                  </span><span class="n">EXPIRATION</span><span class="w"> </span><span class="nc">DATE</span><span class="w">  </span><span class="n">STATUS</span><span class="w">     </span><span class="n">NAME</span><span class="o">/</span><span class="n">EMAIL</span><span class="w"></span>
 <span class="n">ZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZ</span><span class="w">  </span><span class="n">RSA</span><span class="w">        </span><span class="mi">4096</span><span class="w">  </span><span class="mi">2020</span><span class="o">-</span><span class="mi">06</span><span class="o">-</span><span class="mi">15</span><span class="w"> </span><span class="mi">03</span><span class="err">:</span><span class="mi">40</span><span class="err">:</span><span class="mi">05</span><span class="w"> </span><span class="o">+</span><span class="mi">0900</span><span class="w"> </span><span class="n">JST</span><span class="w">  </span><span class="o">[</span><span class="n">ultimate</span><span class="o">]</span><span class="w">       </span><span class="o">[</span><span class="n">enabled</span><span class="o">]</span><span class="w">  </span><span class="n">username</span><span class="w"> </span><span class="p">(</span><span class="n">comment</span><span class="p">)</span><span class="w"> </span><span class="o">&lt;</span><span class="n">username</span><span class="o">&gt;</span><span class="w"></span>
 </code></pre></div>
+
 
 <h4 id="keystore_1">Keystore に登録されている公開鍵の取得</h4>
 <p>Keystore に登録されている公開鍵は、ダウンロードして自分の鍵リングに保存することができます。以下の例では、username2 で検索して見つけた公開鍵をダウンロードして、保存しています。鍵につけられたコメントにマッチする文字列を指定して検索することもできます。<code>singularity key pull</code> には、フィンガープリントを指定します。</p>
@@ -1539,10 +1551,12 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA  RSA        <span class="m">4096</span>
 <span class="o">[</span>username@es1 ~<span class="o">]</span>$
 </code></pre></div>
 
+
 <h4 id="_10">鍵の削除</h4>
 <p>自分の鍵リングに登録されている公開鍵は、<code>singularity key remove</code> に鍵のフィンガープリントを指定して削除することができます。Keystore に登録された公開鍵を削除することはできません。</p>
-<div class="codehilite"><pre><span></span><code><span class="o">[</span><span class="n">username@es1 ~</span><span class="o">]</span><span class="err">$</span><span class="w"> </span><span class="n">singularity</span><span class="w"> </span><span class="k">key</span><span class="w"> </span><span class="n">remove</span><span class="w"> </span><span class="n">AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA</span><span class="w"></span>
+<div class="codehilite"><pre><span></span><code><span class="err">[username@es1 ~]$ singularity key remove AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA</span>
 </code></pre></div>
+
 
 <h3 id="_11">コンテナイメージのアップロード</h3>
 <p>Container Library にアップロードする前に、コンテナイメージに署名します。
@@ -1563,6 +1577,7 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA  RSA        <span class="m">4096</span>
 Enter key passphrase : 
 Signature created and applied to ./ubuntu.sif
 </code></pre></div>
+
 
 <p>Container Library におけるコンテナイメージの場所は、<code>library://username/collection/container:tag</code> という形式の URI で表されます。下記の各構成要素の説明を参照し、アップロード先となる URI を決定してください。</p>
 <table>
@@ -1592,24 +1607,27 @@ Signature created and applied to ./ubuntu.sif
 </tbody>
 </table>
 <p>コレクション名を <code>abci-lib</code>、 コンテナイメージ名を <code>ubuntu</code>、タグとして <code>latest</code> を指定してアップロードする例を以下に示します。</p>
-<div class="codehilite"><pre><span></span><code><span class="o">[</span><span class="n">username@es1 ~</span><span class="o">]</span><span class="err">$</span><span class="w"> </span><span class="n">singularity</span><span class="w"> </span><span class="n">push</span><span class="w"> </span><span class="n">ubuntu</span><span class="p">.</span><span class="n">sif</span><span class="w"> </span><span class="nl">library</span><span class="p">:</span><span class="o">//</span><span class="n">username</span><span class="o">/</span><span class="n">abci</span><span class="o">-</span><span class="n">lib</span><span class="o">/</span><span class="nl">ubuntu</span><span class="p">:</span><span class="n">latest</span><span class="w"></span>
-<span class="nl">INFO</span><span class="p">:</span><span class="w">    </span><span class="n">Container</span><span class="w"> </span><span class="k">is</span><span class="w"> </span><span class="n">trusted</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">run</span><span class="w"> </span><span class="s1">&#39;singularity key list&#39;</span><span class="w"> </span><span class="k">to</span><span class="w"> </span><span class="n">list</span><span class="w"> </span><span class="n">your</span><span class="w"> </span><span class="n">trusted</span><span class="w"> </span><span class="n">keys</span><span class="w"></span>
-<span class="w"> </span><span class="mf">35.36</span><span class="w"> </span><span class="n">MiB</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="mf">35.36</span><span class="w"> </span><span class="n">MiB</span><span class="w"> </span><span class="o">[</span><span class="n">===========================================================================================================================================================================================================</span><span class="o">]</span><span class="w"> </span><span class="mf">100.00</span><span class="o">%</span><span class="w"> </span><span class="mf">182.68</span><span class="w"> </span><span class="n">MiB</span><span class="o">/</span><span class="n">s</span><span class="w"> </span><span class="mi">0</span><span class="n">s</span><span class="w"></span>
-<span class="o">[</span><span class="n">username@es1 ~</span><span class="o">]</span><span class="err">$</span><span class="w"></span>
+<div class="codehilite"><pre><span></span><code><span class="err">[username@es1 ~]$ singularity push ubuntu.sif library://username/abci-lib/ubuntu:latest</span>
+<span class="c">INFO:    Container is trusted - run &#39;singularity key list&#39; to list your trusted keys</span>
+<span class="c"> 35.36 MiB / 35.36 MiB [===========================================================================================================================================================================================================] 100.00% 182.68 MiB/s 0s</span>
+<span class="err">[username@es1 ~]$</span>
 </code></pre></div>
+
 
 <h3 id="_12">コンテナイメージのダウンロード</h3>
 <p>Container Library にアップロードされたコンテナイメージは、以下のようにダウンロードできます。</p>
-<div class="codehilite"><pre><span></span><code><span class="p">[</span><span class="n">username</span><span class="err">@</span><span class="n">es1</span> <span class="o">~</span><span class="p">]</span><span class="o">$</span> <span class="n">singularity</span> <span class="n">pull</span> <span class="n">library</span><span class="p">:</span><span class="o">//</span><span class="n">username</span><span class="o">/</span><span class="n">abci</span><span class="o">-</span><span class="n">lib</span><span class="o">/</span><span class="n">ubuntu</span><span class="p">:</span><span class="n">latest</span>
-<span class="n">INFO</span><span class="p">:</span>    <span class="n">Downloading</span> <span class="n">library</span> <span class="n">image</span>
- <span class="mf">35.37</span> <span class="n">MiB</span> <span class="o">/</span> <span class="mf">35.37</span> <span class="n">MiB</span> <span class="p">[</span><span class="o">=============================================================================================================================================================================================================</span><span class="p">]</span> <span class="mf">100.00</span><span class="o">%</span> <span class="mf">353.47</span> <span class="n">MiB</span><span class="o">/</span><span class="n">s</span> <span class="mi">0</span><span class="n">s</span>
-<span class="n">INFO</span><span class="p">:</span>    <span class="n">Download</span> <span class="n">complete</span><span class="p">:</span> <span class="n">ubuntu_latest</span><span class="o">.</span><span class="n">sif</span>
-<span class="p">[</span><span class="n">username</span><span class="err">@</span><span class="n">es1</span> <span class="o">~</span><span class="p">]</span><span class="o">$</span>
+<div class="codehilite"><pre><span></span><code><span class="err">[username@es1 ~]$ singularity pull library://username/abci-lib/ubuntu:latest</span>
+<span class="c">INFO:    Downloading library image</span>
+<span class="c"> 35.37 MiB / 35.37 MiB [=============================================================================================================================================================================================================] 100.00% 353.47 MiB/s 0s</span>
+<span class="c">INFO:    Download complete: ubuntu_latest.sif</span>
+<span class="err">[username@es1 ~]$</span>
 </code></pre></div>
+
 
 <p>署名が検証できない場合は、以下のような WARNING メッセージが出力されますが、ダウンロードは行われます。</p>
 <div class="codehilite"><pre><span></span><code><span class="n">WARNING</span><span class="o">:</span> <span class="n">Skipping</span> <span class="n">container</span> <span class="n">verification</span>
 </code></pre></div>
+
 
 <p>ダウンロードした後に <code>singularity verify</code> を使って署名を検証することもできます。
 以下の例では、Keystore に登録されている公開鍵で署名が検証されています。自分の鍵リングに登録されている公開鍵で検証された場合は、<code>REMOTE</code> ではなく <code>LOCAL</code> と出力されます。検証できなかった場合は WARNING メッセージが出力されます。</p>
@@ -1619,12 +1637,13 @@ Signature created and applied to ./ubuntu.sif
 <span class="o">[</span><span class="n">REMOTE</span><span class="o">]</span><span class="w">  </span><span class="nl">Fingerprint</span><span class="p">:</span><span class="w"> </span><span class="n">BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB</span><span class="w"></span>
 <span class="n">Objects</span><span class="w"> </span><span class="nl">verified</span><span class="p">:</span><span class="w"></span>
 <span class="n">ID</span><span class="w">  </span><span class="o">|</span><span class="k">GROUP</span><span class="w">   </span><span class="o">|</span><span class="n">LINK</span><span class="w">    </span><span class="o">|</span><span class="n">TYPE</span><span class="w"></span>
-<span class="o">------------------------------------------------</span><span class="w"></span>
+<span class="c1">------------------------------------------------</span>
 <span class="mi">1</span><span class="w">   </span><span class="o">|</span><span class="mi">1</span><span class="w">       </span><span class="o">|</span><span class="k">NONE</span><span class="w">    </span><span class="o">|</span><span class="n">Def</span><span class="p">.</span><span class="k">FILE</span><span class="w"></span>
 <span class="mi">2</span><span class="w">   </span><span class="o">|</span><span class="mi">1</span><span class="w">       </span><span class="o">|</span><span class="k">NONE</span><span class="w">    </span><span class="o">|</span><span class="n">JSON</span><span class="p">.</span><span class="n">Generic</span><span class="w"></span>
 <span class="mi">3</span><span class="w">   </span><span class="o">|</span><span class="mi">1</span><span class="w">       </span><span class="o">|</span><span class="k">NONE</span><span class="w">    </span><span class="o">|</span><span class="n">FS</span><span class="w"></span>
 <span class="n">Container</span><span class="w"> </span><span class="nl">verified</span><span class="p">:</span><span class="w"> </span><span class="n">ubuntu_latest</span><span class="p">.</span><span class="n">sif</span><span class="w"></span>
 </code></pre></div>
+
 
 <div class="admonition note">
 <p class="admonition-title">Note</p>
@@ -1642,10 +1661,12 @@ Signature created and applied to ./ubuntu.sif
 <span class="w">        </span><span class="nl">Tags</span><span class="p">:</span><span class="w"> </span><span class="n">latest</span><span class="w"></span>
 </code></pre></div>
 
+
 <h3 id="_14">コンテナイメージの削除</h3>
 <p>Container Library にアップロードされたコンテナイメージは、<code>singularity delete</code> で削除することができます。</p>
-<div class="codehilite"><pre><span></span><code><span class="o">[</span><span class="n">username@es1 ~</span><span class="o">]</span><span class="err">$</span><span class="w"> </span><span class="n">singularity</span><span class="w"> </span><span class="k">delete</span><span class="w"> </span><span class="nl">library</span><span class="p">:</span><span class="o">//</span><span class="n">username</span><span class="o">/</span><span class="n">abci</span><span class="o">-</span><span class="n">lib</span><span class="o">/</span><span class="nl">helloworld</span><span class="p">:</span><span class="n">latest</span><span class="w"></span>
+<div class="codehilite"><pre><span></span><code><span class="err">[username@es1 ~]$ singularity delete library://username/abci-lib/helloworld:latest</span>
 </code></pre></div>
+
 
 <div class="admonition note">
 <p class="admonition-title">Note</p>
@@ -1665,6 +1686,7 @@ Signature created and applied to ./ubuntu.sif
 <span class="nl">library</span><span class="p">:</span><span class="o">//</span><span class="n">username</span><span class="o">/</span><span class="n">collection3</span><span class="o">/</span><span class="n">container3</span><span class="w"></span>
 </code></pre></div>
 
+
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p><code>Tag</code>も<code>Unique ID</code>も表示されない場合、そのコンテナにはコンテナイメージが存在しないことを意味します。</p>
@@ -1683,14 +1705,16 @@ Signature created and applied to ./ubuntu.sif
 <span class="nl">library</span><span class="p">:</span><span class="o">//</span><span class="n">username</span><span class="o">/</span><span class="n">collection3</span><span class="o">/</span><span class="n">container3</span><span class="w"></span>
 </code></pre></div>
 
+
 <h3 id="container-library">Container Libraryの使用量表示</h3>
 <p>Container Libraryの使用量を、<code>show_container_library_usage</code> で表示することができます。表示の際には ABCI のパスワードの入力が必要です。</p>
-<div class="codehilite"><pre><span></span><code><span class="o">[</span><span class="n">username@es1 ~</span><span class="o">]</span><span class="err">$</span><span class="w"> </span><span class="n">show_container_library_usage</span><span class="w"></span>
-<span class="n">ABCI</span><span class="w"> </span><span class="n">portal</span><span class="w"> </span><span class="n">password</span><span class="w"> </span><span class="err">:</span><span class="w"></span>
-<span class="n">just</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="n">moment</span><span class="p">,</span><span class="w"> </span><span class="n">please</span><span class="p">...</span><span class="w"></span>
-<span class="n">used</span><span class="p">(</span><span class="n">MiB</span><span class="p">)</span><span class="w"> </span><span class="k">limit</span><span class="p">(</span><span class="n">GiB</span><span class="p">)</span><span class="w"> </span><span class="n">num_of_containers</span><span class="w"></span>
-<span class="mf">49.39</span><span class="w">     </span><span class="mf">100.00</span><span class="w">     </span><span class="mi">1</span><span class="w"></span>
+<div class="codehilite"><pre><span></span><code><span class="err">[username@es1 ~]$ show_container_library_usage</span>
+<span class="err">ABCI portal password :</span>
+<span class="err">just a moment, please...</span>
+<span class="err">used(MiB) limit(GiB) num_of_containers</span>
+<span class="err">49.39     100.00     1</span>
 </code></pre></div>
+
 
 <h2 id="_16">アクセストークン</h2>
 <p>ここでは、取得したアクセストークンに関するコマンドを説明します。</p>
@@ -1709,11 +1733,12 @@ Signature created and applied to ./ubuntu.sif
 <span class="nl">Expires</span><span class="p">:</span><span class="w"> </span><span class="mi">2021</span><span class="o">-</span><span class="mi">12</span><span class="o">-</span><span class="mi">23</span><span class="w"> </span><span class="mi">15</span><span class="err">:</span><span class="mi">59</span><span class="err">:</span><span class="mi">02</span><span class="w"> </span><span class="n">JST</span><span class="w"></span>
 </code></pre></div>
 
+
 <h3 id="_18">アクセストークンの無効化</h3>
 <p>取得したアクセストークンは、<code>revoke_singularity_token</code>で無効にすることができます。<code>list_singularity_tokens</code>で表示されたアクセストークン一覧から、無効にしたい Token ID を引数として指定します。無効化の際には ABCI のパスワードの入力が必要です。</p>
-<div class="codehilite"><pre><span></span><code><span class="o">[</span><span class="n">username@es1 ~</span><span class="o">]</span><span class="err">$</span><span class="w"> </span><span class="n">revoke_singularity_token</span><span class="w"> </span><span class="o">&lt;</span><span class="n">Token</span><span class="w"> </span><span class="n">ID</span><span class="o">&gt;</span><span class="w"></span>
-<span class="n">ABCI</span><span class="w"> </span><span class="n">portal</span><span class="w"> </span><span class="n">password</span><span class="w"> </span><span class="err">:</span><span class="w"></span>
-<span class="n">just</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="n">moment</span><span class="p">,</span><span class="w"> </span><span class="n">please</span><span class="p">...</span><span class="w"></span>
+<div class="codehilite"><pre><span></span><code><span class="err">[username@es1 ~]$ revoke_singularity_token &lt;Token ID&gt;</span>
+<span class="err">ABCI portal password :</span>
+<span class="err">just a moment, please...</span>
 </code></pre></div>
                 
               

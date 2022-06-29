@@ -1307,16 +1307,18 @@
 <h2 id="preparation">Preparation</h2>
 <h3 id="loading-environment-module">Loading environment module</h3>
 <p>In order to use this service, load the module of SingularityPRO as follows.</p>
-<div class="codehilite"><pre><span></span><code><span class="p">[</span><span class="n">username</span><span class="err">@</span><span class="n">es1</span> <span class="o">~</span><span class="p">]</span><span class="o">$</span> <span class="n">module</span> <span class="nb">load</span> <span class="n">singularitypro</span>
+<div class="codehilite"><pre><span></span><code><span class="err">[username@es1 ~]$ module load singularitypro</span>
 </code></pre></div>
+
 
 <h3 id="creating-access-token">Creating Access Token</h3>
 <p>You need to obtain an access token to authenticate your requests. The access token can be created by using the <code>get_singularity_token</code> command on the interactive node with your ABCI password, which is used to log in to ABCI User Portal.</p>
-<div class="codehilite"><pre><span></span><code><span class="o">[</span><span class="n">username@es1 ~</span><span class="o">]</span><span class="err">$</span><span class="w"> </span><span class="n">get_singularity_token</span><span class="w"></span>
-<span class="n">ABCI</span><span class="w"> </span><span class="n">portal</span><span class="w"> </span><span class="n">password</span><span class="w"> </span><span class="err">:</span><span class="w"></span>
-<span class="n">just</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="n">moment</span><span class="p">,</span><span class="w"> </span><span class="n">please</span><span class="p">...</span><span class="w"></span>
-<span class="w">  </span><span class="p">(</span><span class="n">The</span><span class="w"> </span><span class="n">generated</span><span class="w"> </span><span class="n">access</span><span class="w"> </span><span class="n">token</span><span class="w"> </span><span class="n">will</span><span class="w"> </span><span class="n">be</span><span class="w"> </span><span class="n">displayed</span><span class="p">.)</span><span class="w"></span>
+<div class="codehilite"><pre><span></span><code><span class="err">[username@es1 ~]$ get_singularity_token</span>
+<span class="err">ABCI portal password :</span>
+<span class="err">just a moment, please...</span>
+<span class="err">  (The generated access token will be displayed.)</span>
 </code></pre></div>
+
 
 <p>Keep your access token in a safe place for a later registration step.</p>
 <div class="admonition note">
@@ -1343,6 +1345,7 @@
 <span class="o">[</span><span class="n">username@es1 ~</span><span class="o">]</span><span class="err">$</span><span class="w"></span>
 </code></pre></div>
 
+
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>SylabsCloud is a public service endpoint operated by <a href="https://sylabs.io/">Sylabs</a>. It is available by signing in to <a href="https://cloud.sylabs.io/">https://cloud.sylabs.io/</a> and obtaining an access token.</p>
@@ -1353,13 +1356,14 @@
 </div>
 <h3 id="registering-access-token">Registering Access Token</h3>
 <p>To register the access token obtained above with your configuration, use <code>singularity remote login</code>command for ABCI Singularity Endpoint.</p>
-<div class="codehilite"><pre><span></span><code><span class="o">[</span><span class="n">username@es1 ~</span><span class="o">]</span><span class="err">$</span><span class="w"> </span><span class="n">singularity</span><span class="w"> </span><span class="n">remote</span><span class="w"> </span><span class="n">login</span><span class="w"> </span><span class="n">ABCI</span><span class="w"></span>
-<span class="nl">INFO</span><span class="p">:</span><span class="w">    </span><span class="n">Authenticating</span><span class="w"> </span><span class="k">with</span><span class="w"> </span><span class="nl">remote</span><span class="p">:</span><span class="w"> </span><span class="n">ABCI</span><span class="w"></span>
-<span class="n">Generate</span><span class="w"> </span><span class="n">an</span><span class="w"> </span><span class="n">API</span><span class="w"> </span><span class="k">Key</span><span class="w"> </span><span class="k">at</span><span class="w"> </span><span class="nl">https</span><span class="p">:</span><span class="o">//</span><span class="n">cloud</span><span class="p">.</span><span class="n">se</span><span class="p">.</span><span class="n">abci</span><span class="p">.</span><span class="k">local</span><span class="o">/</span><span class="n">auth</span><span class="o">/</span><span class="n">tokens</span><span class="p">,</span><span class="w"> </span><span class="ow">and</span><span class="w"> </span><span class="n">paste</span><span class="w"> </span><span class="nl">here</span><span class="p">:</span><span class="w"></span>
-<span class="n">API</span><span class="w"> </span><span class="k">Key</span><span class="err">:</span><span class="w"></span>
-<span class="nl">INFO</span><span class="p">:</span><span class="w">    </span><span class="n">API</span><span class="w"> </span><span class="k">Key</span><span class="w"> </span><span class="n">Verified</span><span class="err">!</span><span class="w"></span>
-<span class="o">[</span><span class="n">username@es1 ~</span><span class="o">]</span><span class="err">$</span><span class="w"></span>
+<div class="codehilite"><pre><span></span><code><span class="err">[username@es1 ~]$ singularity remote login ABCI</span>
+<span class="c">INFO:    Authenticating with remote: ABCI</span>
+<span class="err">Generate an API Key at https://cloud.se.abci.local/auth/tokens, and paste here:</span>
+<span class="err">API Key:</span>
+<span class="c">INFO:    API Key Verified!</span>
+<span class="err">[username@es1 ~]$</span>
 </code></pre></div>
+
 
 <p>When you have created an access token again, use the above command to register it. The old access token is overwritten by the new one.</p>
 <div class="admonition note">
@@ -1368,8 +1372,8 @@
 </div>
 <h2 id="remote-builder">Remote Builder</h2>
 <p>First, create a definition file to build a container image. The following example defines installation of additional packages to the container image and commands to be executed when the container image is run, based on Ubuntu container image from Docker Hub. For more information about definition files, see <a href="https://repo.sylabs.io/c/0f6898986ad0b646b5ce6deba21781ac62cb7e0a86a5153bbb31732ee6593f43/guides/singularitypro37-user-guide/definition_files.html">Definition Files</a>.</p>
-<div class="codehilite"><pre><span></span><code><span class="p">[</span><span class="n">username</span><span class="err">@</span><span class="n">es1</span> <span class="o">~</span><span class="p">]</span><span class="n">$</span> <span class="n">vi</span> <span class="n">ubuntu</span><span class="p">.</span><span class="n">def</span>
-<span class="p">[</span><span class="n">username</span><span class="err">@</span><span class="n">es1</span> <span class="o">~</span><span class="p">]</span><span class="n">$</span> <span class="n">cat</span> <span class="n">ubuntu</span><span class="p">.</span><span class="n">def</span>
+<div class="codehilite"><pre><span></span><code><span class="p">[</span><span class="n">username</span><span class="err">@</span><span class="n">es1</span> <span class="o">~</span><span class="p">]</span><span class="err">$</span> <span class="n">vi</span> <span class="n">ubuntu</span><span class="p">.</span><span class="n">def</span>
+<span class="p">[</span><span class="n">username</span><span class="err">@</span><span class="n">es1</span> <span class="o">~</span><span class="p">]</span><span class="err">$</span> <span class="n">cat</span> <span class="n">ubuntu</span><span class="p">.</span><span class="n">def</span>
 <span class="nl">Bootstrap</span><span class="p">:</span> <span class="n">docker</span>
 <span class="nl">From</span><span class="p">:</span> <span class="nl">ubuntu</span><span class="p">:</span><span class="mf">18.04</span>
 
@@ -1380,29 +1384,32 @@
 <span class="nf">%runscript</span>
     <span class="n">lsb_release</span> <span class="o">-</span><span class="n">d</span>
 
-<span class="p">[</span><span class="n">username</span><span class="err">@</span><span class="n">es1</span> <span class="o">~</span><span class="p">]</span><span class="n">$</span> 
+<span class="p">[</span><span class="n">username</span><span class="err">@</span><span class="n">es1</span> <span class="o">~</span><span class="p">]</span><span class="err">$</span> 
 </code></pre></div>
+
 
 <p>Next, to create the container image "ubuntu.sif" by Remote Build with "ubuntu.def", specify <code>--remote</code> to the command <code>singularity build</code>.</p>
-<div class="codehilite"><pre><span></span><code><span class="o">[</span><span class="n">username@es1 ~</span><span class="o">]</span><span class="err">$</span><span class="w"> </span><span class="n">singularity</span><span class="w"> </span><span class="n">build</span><span class="w"> </span><span class="o">--</span><span class="n">remote</span><span class="w"> </span><span class="n">ubuntu</span><span class="p">.</span><span class="n">sif</span><span class="w"> </span><span class="n">ubuntu</span><span class="p">.</span><span class="n">def</span><span class="w"></span>
-<span class="nl">INFO</span><span class="p">:</span><span class="w">    </span><span class="n">Remote</span><span class="w"> </span><span class="ss">&quot;default&quot;</span><span class="w"> </span><span class="n">added</span><span class="p">.</span><span class="w"></span>
-<span class="nl">INFO</span><span class="p">:</span><span class="w">    </span><span class="n">Authenticating</span><span class="w"> </span><span class="k">with</span><span class="w"> </span><span class="nl">remote</span><span class="p">:</span><span class="w"> </span><span class="k">default</span><span class="w"></span>
-<span class="nl">INFO</span><span class="p">:</span><span class="w">    </span><span class="n">API</span><span class="w"> </span><span class="k">Key</span><span class="w"> </span><span class="n">Verified</span><span class="err">!</span><span class="w"></span>
-<span class="nl">INFO</span><span class="p">:</span><span class="w">    </span><span class="n">Remote</span><span class="w"> </span><span class="ss">&quot;default&quot;</span><span class="w"> </span><span class="n">now</span><span class="w"> </span><span class="ow">in</span><span class="w"> </span><span class="k">use</span><span class="p">.</span><span class="w"></span>
-<span class="nl">INFO</span><span class="p">:</span><span class="w">    </span><span class="n">Starting</span><span class="w"> </span><span class="n">build</span><span class="p">...</span><span class="w"></span>
-<span class="err">:</span><span class="w"></span>
-<span class="err">:</span><span class="w"></span>
-<span class="nl">INFO</span><span class="p">:</span><span class="w">    </span><span class="n">Build</span><span class="w"> </span><span class="nl">complete</span><span class="p">:</span><span class="w"> </span><span class="n">ubuntu</span><span class="p">.</span><span class="n">sif</span><span class="w"></span>
-<span class="o">[</span><span class="n">username@es1 ~</span><span class="o">]</span><span class="err">$</span><span class="w"> </span>
+<div class="codehilite"><pre><span></span><code><span class="err">[username@es1 ~]$ singularity build --remote ubuntu.sif ubuntu.def</span>
+<span class="c">INFO:    Remote &quot;default&quot; added.</span>
+<span class="c">INFO:    Authenticating with remote: default</span>
+<span class="c">INFO:    API Key Verified!</span>
+<span class="c">INFO:    Remote &quot;default&quot; now in use.</span>
+<span class="c">INFO:    Starting build...</span>
+<span class="err">:</span>
+<span class="err">:</span>
+<span class="c">INFO:    Build complete: ubuntu.sif</span>
+<span class="err">[username@es1 ~]$ </span>
 </code></pre></div>
 
+
 <p>You can run the container image with <code>singularity run</code> command as follows:</p>
-<div class="codehilite"><pre><span></span><code><span class="p">[</span><span class="n">username</span><span class="err">@</span><span class="n">es1</span> <span class="o">~</span><span class="p">]</span><span class="o">$</span> <span class="n">qrsh</span> <span class="o">-</span><span class="n">g</span> <span class="n">grpname</span> <span class="o">-</span><span class="n">l</span> <span class="n">rt_C</span><span class="o">.</span><span class="n">small</span><span class="o">=</span><span class="mi">1</span> <span class="o">-</span><span class="n">l</span> <span class="n">h_rt</span><span class="o">=</span><span class="mi">1</span><span class="p">:</span><span class="mi">00</span><span class="p">:</span><span class="mi">00</span>
-<span class="p">[</span><span class="n">username</span><span class="err">@</span><span class="n">g0001</span> <span class="o">~</span><span class="p">]</span><span class="o">$</span> <span class="n">module</span> <span class="nb">load</span> <span class="n">singularitypro</span>
-<span class="p">[</span><span class="n">username</span><span class="err">@</span><span class="n">g0001</span> <span class="o">~</span><span class="p">]</span><span class="o">$</span> <span class="n">singularity</span> <span class="n">run</span> <span class="n">ubuntu</span><span class="o">.</span><span class="n">sif</span>
-<span class="n">Description</span><span class="p">:</span>    <span class="n">Ubuntu</span> <span class="mf">18.04</span><span class="o">.</span><span class="mi">5</span> <span class="n">LTS</span>
-<span class="p">[</span><span class="n">username</span><span class="err">@</span><span class="n">g0001</span> <span class="o">~</span><span class="p">]</span><span class="o">$</span> 
+<div class="codehilite"><pre><span></span><code><span class="err">[username@es1 ~]$ qrsh -g grpname -l rt_C.small=1 -l h_rt=1:00:00</span>
+<span class="err">[username@g0001 ~]$ module load singularitypro</span>
+<span class="err">[username@g0001 ~]$ singularity run ubuntu.sif</span>
+<span class="c">Description:    Ubuntu 18.04.5 LTS</span>
+<span class="err">[username@g0001 ~]$ </span>
 </code></pre></div>
+
 
 <p>The <code>lsb_release -d</code> command specified in the definition file is executed and the result is printed.</p>
 <h2 id="container-library-experimental">Container Library (Experimental)</h2>
@@ -1424,6 +1431,7 @@
 <span class="n">Would</span> <span class="n">you</span> <span class="nb">like</span> <span class="nb">to</span> <span class="nb">push</span> <span class="n">it</span> <span class="nb">to</span> <span class="n">the</span> <span class="n">keystore</span>? [<span class="n">Y</span>,<span class="n">n</span>] 
 <span class="n">Generating</span> <span class="n">Entity</span> <span class="o">and</span> <span class="n">OpenPGP</span> <span class="n">Key</span> <span class="nb">Pair</span>... <span class="nb">done</span>
 </code></pre></div>
+
 
 <p>Each input value is described as follows:</p>
 <table>
@@ -1458,18 +1466,19 @@
 </table>
 <h4 id="listing-keys">Listing Keys</h4>
 <p>To retrieve information about the public keys in your local keyring, including ones you created, use <code>singularity key list</code>.</p>
-<div class="codehilite"><pre><span></span><code><span class="o">[</span><span class="n">username@es1 ~</span><span class="o">]</span><span class="err">$</span><span class="w"> </span><span class="n">singularity</span><span class="w"> </span><span class="k">key</span><span class="w"> </span><span class="n">list</span><span class="w"></span>
-<span class="k">Public</span><span class="w"> </span><span class="k">key</span><span class="w"> </span><span class="n">listing</span><span class="w"> </span><span class="p">(</span><span class="o">/</span><span class="n">home</span><span class="o">/</span><span class="n">username</span><span class="o">/</span><span class="p">.</span><span class="n">singularity</span><span class="o">/</span><span class="n">sypgp</span><span class="o">/</span><span class="n">pgp</span><span class="o">-</span><span class="k">public</span><span class="p">)</span><span class="err">:</span><span class="w"></span>
-<span class="err">:</span><span class="w"></span>
-<span class="err">:</span><span class="w"></span>
-<span class="w">   </span><span class="o">--------</span><span class="w"></span>
-<span class="mi">7</span><span class="p">)</span><span class="w"> </span><span class="nl">U</span><span class="p">:</span><span class="w"> </span><span class="n">username</span><span class="w"> </span><span class="p">(</span><span class="n">comment</span><span class="p">)</span><span class="w"> </span><span class="o">&lt;</span><span class="n">username</span><span class="o">&gt;</span><span class="w"></span>
-<span class="w">   </span><span class="nl">C</span><span class="p">:</span><span class="w"> </span><span class="mi">2020</span><span class="o">-</span><span class="mi">06</span><span class="o">-</span><span class="mi">15</span><span class="w"> </span><span class="mi">03</span><span class="err">:</span><span class="mi">40</span><span class="err">:</span><span class="mi">05</span><span class="w"> </span><span class="o">+</span><span class="mi">0900</span><span class="w"> </span><span class="n">JST</span><span class="w"></span>
-<span class="w">   </span><span class="nl">F</span><span class="p">:</span><span class="w"> </span><span class="n">XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX</span><span class="w"></span>
-<span class="w">   </span><span class="nl">L</span><span class="p">:</span><span class="w"> </span><span class="mi">4096</span><span class="w"></span>
-<span class="w">   </span><span class="o">--------</span><span class="w"></span>
-<span class="o">[</span><span class="n">username@es1 ~</span><span class="o">]</span><span class="err">$</span><span class="w"></span>
+<div class="codehilite"><pre><span></span><code><span class="err">[username@es1 ~]$ singularity key list</span>
+<span class="err">Public key listing (/home/username/.singularity/sypgp/pgp-public):</span>
+<span class="err">:</span>
+<span class="err">:</span>
+<span class="err">   --------</span>
+<span class="err">7) U: username (comment) &lt;username&gt;</span>
+<span class="err">   C: 2020-06-15 03:40:05 +0900 JST</span>
+<span class="err">   F: XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX</span>
+<span class="err">   L: 4096</span>
+<span class="err">   --------</span>
+<span class="err">[username@es1 ~]$</span>
 </code></pre></div>
+
 
 <p>To retrieve key information registered in Keystore, specify the ABCI account in <code>singularity key search -l</code>.</p>
 <div class="codehilite"><pre><span></span><code><span class="o">[</span><span class="n">username@es1 ~</span><span class="o">]</span><span class="err">$</span><span class="w"> </span><span class="n">singularity</span><span class="w"> </span><span class="k">key</span><span class="w"> </span><span class="k">search</span><span class="w"> </span><span class="o">-</span><span class="n">l</span><span class="w"> </span><span class="n">username</span><span class="w"></span>
@@ -1481,19 +1490,21 @@
 <span class="o">[</span><span class="n">username@es1 ~</span><span class="o">]</span><span class="err">$</span><span class="w"></span>
 </code></pre></div>
 
+
 <h4 id="registering-a-public-key-in-keystore">Registering a Public Key in Keystore</h4>
 <p>If you did not specify the option to upload a public key to Keystore, you can upload it later.</p>
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
 <p>Public keys registered in Keystore cannot be deleted.</p>
 </div>
-<div class="codehilite"><pre><span></span><code><span class="o">[</span><span class="n">username@es1 ~</span><span class="o">]</span><span class="err">$</span><span class="w"> </span><span class="n">singularity</span><span class="w"> </span><span class="k">key</span><span class="w"> </span><span class="n">list</span><span class="w"></span>
-<span class="mi">0</span><span class="p">)</span><span class="w"> </span><span class="nl">U</span><span class="p">:</span><span class="w"> </span><span class="n">username</span><span class="w"> </span><span class="p">(</span><span class="n">comment</span><span class="p">)</span><span class="w"> </span><span class="n">username</span><span class="w"></span>
-<span class="w">   </span><span class="nl">C</span><span class="p">:</span><span class="w"> </span><span class="mi">2020</span><span class="o">-</span><span class="mi">08</span><span class="o">-</span><span class="mi">08</span><span class="w"> </span><span class="mi">04</span><span class="err">:</span><span class="mi">28</span><span class="err">:</span><span class="mi">35</span><span class="w"> </span><span class="o">+</span><span class="mi">0900</span><span class="w"> </span><span class="n">JST</span><span class="w"></span>
-<span class="w">   </span><span class="nl">F</span><span class="p">:</span><span class="w"> </span><span class="n">ZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZ</span><span class="w"></span>
-<span class="w">   </span><span class="nl">L</span><span class="p">:</span><span class="w"> </span><span class="mi">4096</span><span class="w"></span>
-<span class="w">   </span><span class="c1">--------</span>
+<div class="codehilite"><pre><span></span><code><span class="err">[username@es1 ~]$ singularity key list</span>
+<span class="err">0) U: username (comment) username</span>
+<span class="err">   C: 2020-08-08 04:28:35 +0900 JST</span>
+<span class="err">   F: ZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZ</span>
+<span class="err">   L: 4096</span>
+<span class="err">   --------</span>
 </code></pre></div>
+
 
 <p>To upload this public key number 0, specify the fingerprint shown in <code>F</code> as the <code>singularity key push</code>.</p>
 <div class="codehilite"><pre><span></span><code><span class="o">[</span><span class="n">username@es1 ~</span><span class="o">]</span><span class="err">$</span><span class="w"> </span><span class="n">singularity</span><span class="w"> </span><span class="k">key</span><span class="w"> </span><span class="n">push</span><span class="w"> </span><span class="n">ZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZ</span><span class="w"></span>
@@ -1505,6 +1516,7 @@
 <span class="n">FINGERPRINT</span><span class="w">                               </span><span class="n">ALGORITHM</span><span class="w">  </span><span class="n">BITS</span><span class="w">  </span><span class="n">CREATION</span><span class="w"> </span><span class="nc">DATE</span><span class="w">                  </span><span class="n">EXPIRATION</span><span class="w"> </span><span class="nc">DATE</span><span class="w">  </span><span class="n">STATUS</span><span class="w">     </span><span class="n">NAME</span><span class="o">/</span><span class="n">EMAIL</span><span class="w"></span>
 <span class="n">ZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZ</span><span class="w">  </span><span class="n">RSA</span><span class="w">        </span><span class="mi">4096</span><span class="w">  </span><span class="mi">2020</span><span class="o">-</span><span class="mi">06</span><span class="o">-</span><span class="mi">15</span><span class="w"> </span><span class="mi">03</span><span class="err">:</span><span class="mi">40</span><span class="err">:</span><span class="mi">05</span><span class="w"> </span><span class="o">+</span><span class="mi">0900</span><span class="w"> </span><span class="n">JST</span><span class="w">  </span><span class="o">[</span><span class="n">ultimate</span><span class="o">]</span><span class="w">       </span><span class="o">[</span><span class="n">enabled</span><span class="o">]</span><span class="w">  </span><span class="n">username</span><span class="w"> </span><span class="p">(</span><span class="n">comment</span><span class="p">)</span><span class="w"> </span><span class="o">&lt;</span><span class="n">username</span><span class="o">&gt;</span><span class="w"></span>
 </code></pre></div>
+
 
 <h4 id="getting-public-keys-registered-in-keystore">Getting Public Keys Registered in Keystore</h4>
 <p>Public keys registered in Keystore can be downloaded and stored in your keyring. The following example downloads and saves the public key found by searching for username2. You can also search for a string that matches the comment attached to the key. The last parameter of <code>singularity key pull AAAA....</code> is a fingerprint to specify which public key to download.</p>
@@ -1527,10 +1539,12 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA  RSA        <span class="m">4096</span>
 <span class="o">[</span>username@es1 ~<span class="o">]</span>$
 </code></pre></div>
 
+
 <h4 id="deleting-keys">Deleting Keys</h4>
 <p>You can remove a public key from your keyring by specifying a key fingerprint using <code>singularity key remove</code> command. Public keys registered in Keystore cannot be deleted.</p>
-<div class="codehilite"><pre><span></span><code><span class="o">[</span><span class="n">username@es1 ~</span><span class="o">]</span><span class="err">$</span><span class="w"> </span><span class="n">singularity</span><span class="w"> </span><span class="k">key</span><span class="w"> </span><span class="n">remove</span><span class="w"> </span><span class="n">AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA</span><span class="w"></span>
+<div class="codehilite"><pre><span></span><code><span class="err">[username@es1 ~]$ singularity key remove AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA</span>
 </code></pre></div>
+
 
 <h3 id="uploading-container-images">Uploading Container Images</h3>
 <p>Before uploading a container image to Container Library, sign the container image.
@@ -1551,6 +1565,7 @@ The following example uses the second key to sign <code>ubuntu.sif</code>.</p>
 Enter key passphrase : 
 Signature created and applied to ./ubuntu.sif
 </code></pre></div>
+
 
 <p>The location of container images in Container Library is represented by a URI <code>library://username/collection/container:tag</code>. Refer to the description of each component below to determine the URI.</p>
 <table>
@@ -1580,24 +1595,27 @@ Signature created and applied to ./ubuntu.sif
 </tbody>
 </table>
 <p>Here is an example of uploading the container image <code>ubuntu</code>, specifying the collection name <code>abci-lib</code> and the tag name <code>latest</code>:</p>
-<div class="codehilite"><pre><span></span><code><span class="o">[</span><span class="n">username@es1 ~</span><span class="o">]</span><span class="err">$</span><span class="w"> </span><span class="n">singularity</span><span class="w"> </span><span class="n">push</span><span class="w"> </span><span class="n">ubuntu</span><span class="p">.</span><span class="n">sif</span><span class="w"> </span><span class="nl">library</span><span class="p">:</span><span class="o">//</span><span class="n">username</span><span class="o">/</span><span class="n">abci</span><span class="o">-</span><span class="n">lib</span><span class="o">/</span><span class="nl">ubuntu</span><span class="p">:</span><span class="n">latest</span><span class="w"></span>
-<span class="nl">INFO</span><span class="p">:</span><span class="w">    </span><span class="n">Container</span><span class="w"> </span><span class="k">is</span><span class="w"> </span><span class="n">trusted</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">run</span><span class="w"> </span><span class="s1">&#39;singularity key list&#39;</span><span class="w"> </span><span class="k">to</span><span class="w"> </span><span class="n">list</span><span class="w"> </span><span class="n">your</span><span class="w"> </span><span class="n">trusted</span><span class="w"> </span><span class="n">keys</span><span class="w"></span>
-<span class="w"> </span><span class="mf">35.36</span><span class="w"> </span><span class="n">MiB</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="mf">35.36</span><span class="w"> </span><span class="n">MiB</span><span class="w"> </span><span class="o">[</span><span class="n">===========================================================================================================================================================================================================</span><span class="o">]</span><span class="w"> </span><span class="mf">100.00</span><span class="o">%</span><span class="w"> </span><span class="mf">182.68</span><span class="w"> </span><span class="n">MiB</span><span class="o">/</span><span class="n">s</span><span class="w"> </span><span class="mi">0</span><span class="n">s</span><span class="w"></span>
-<span class="o">[</span><span class="n">username@es1 ~</span><span class="o">]</span><span class="err">$</span><span class="w"></span>
+<div class="codehilite"><pre><span></span><code><span class="err">[username@es1 ~]$ singularity push ubuntu.sif library://username/abci-lib/ubuntu:latest</span>
+<span class="c">INFO:    Container is trusted - run &#39;singularity key list&#39; to list your trusted keys</span>
+<span class="c"> 35.36 MiB / 35.36 MiB [===========================================================================================================================================================================================================] 100.00% 182.68 MiB/s 0s</span>
+<span class="err">[username@es1 ~]$</span>
 </code></pre></div>
+
 
 <h3 id="downloading-container-images">Downloading Container Images</h3>
 <p>The container image uploaded to Container Library can be downloaded as follows:</p>
-<div class="codehilite"><pre><span></span><code><span class="p">[</span><span class="n">username</span><span class="err">@</span><span class="n">es1</span> <span class="o">~</span><span class="p">]</span><span class="o">$</span> <span class="n">singularity</span> <span class="n">pull</span> <span class="n">library</span><span class="p">:</span><span class="o">//</span><span class="n">username</span><span class="o">/</span><span class="n">abci</span><span class="o">-</span><span class="n">lib</span><span class="o">/</span><span class="n">ubuntu</span><span class="p">:</span><span class="n">latest</span>
-<span class="n">INFO</span><span class="p">:</span>    <span class="n">Downloading</span> <span class="n">library</span> <span class="n">image</span>
- <span class="mf">35.37</span> <span class="n">MiB</span> <span class="o">/</span> <span class="mf">35.37</span> <span class="n">MiB</span> <span class="p">[</span><span class="o">=============================================================================================================================================================================================================</span><span class="p">]</span> <span class="mf">100.00</span><span class="o">%</span> <span class="mf">353.47</span> <span class="n">MiB</span><span class="o">/</span><span class="n">s</span> <span class="mi">0</span><span class="n">s</span>
-<span class="n">INFO</span><span class="p">:</span>    <span class="n">Download</span> <span class="n">complete</span><span class="p">:</span> <span class="n">ubuntu_latest</span><span class="o">.</span><span class="n">sif</span>
-<span class="p">[</span><span class="n">username</span><span class="err">@</span><span class="n">es1</span> <span class="o">~</span><span class="p">]</span><span class="o">$</span>
+<div class="codehilite"><pre><span></span><code><span class="err">[username@es1 ~]$ singularity pull library://username/abci-lib/ubuntu:latest</span>
+<span class="c">INFO:    Downloading library image</span>
+<span class="c"> 35.37 MiB / 35.37 MiB [=============================================================================================================================================================================================================] 100.00% 353.47 MiB/s 0s</span>
+<span class="c">INFO:    Download complete: ubuntu_latest.sif</span>
+<span class="err">[username@es1 ~]$</span>
 </code></pre></div>
+
 
 <p>If the signature cannot be verified, you will see a warning message similar to the following, but the download will continue.</p>
 <div class="codehilite"><pre><span></span><code><span class="n">WARNING</span><span class="o">:</span> <span class="n">Skipping</span> <span class="n">container</span> <span class="n">verification</span>
 </code></pre></div>
+
 
 <p>You can also use <code>singularity verify</code> to verify the signature after downloading it. 
 The following example validates the signature with the public key that is registered in Keystore. The output is <code>LOCAL</code> rather than <code>REMOTE</code> if it is verified with the public key registered in your keyring. If it cannot be verified, a WARNING message is printed.</p>
@@ -1607,12 +1625,13 @@ The following example validates the signature with the public key that is regist
 <span class="o">[</span><span class="n">REMOTE</span><span class="o">]</span><span class="w">  </span><span class="nl">Fingerprint</span><span class="p">:</span><span class="w"> </span><span class="n">BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB</span><span class="w"></span>
 <span class="n">Objects</span><span class="w"> </span><span class="nl">verified</span><span class="p">:</span><span class="w"></span>
 <span class="n">ID</span><span class="w">  </span><span class="o">|</span><span class="k">GROUP</span><span class="w">   </span><span class="o">|</span><span class="n">LINK</span><span class="w">    </span><span class="o">|</span><span class="n">TYPE</span><span class="w"></span>
-<span class="o">------------------------------------------------</span><span class="w"></span>
+<span class="c1">------------------------------------------------</span>
 <span class="mi">1</span><span class="w">   </span><span class="o">|</span><span class="mi">1</span><span class="w">       </span><span class="o">|</span><span class="k">NONE</span><span class="w">    </span><span class="o">|</span><span class="n">Def</span><span class="p">.</span><span class="k">FILE</span><span class="w"></span>
 <span class="mi">2</span><span class="w">   </span><span class="o">|</span><span class="mi">1</span><span class="w">       </span><span class="o">|</span><span class="k">NONE</span><span class="w">    </span><span class="o">|</span><span class="n">JSON</span><span class="p">.</span><span class="n">Generic</span><span class="w"></span>
 <span class="mi">3</span><span class="w">   </span><span class="o">|</span><span class="mi">1</span><span class="w">       </span><span class="o">|</span><span class="k">NONE</span><span class="w">    </span><span class="o">|</span><span class="n">FS</span><span class="w"></span>
 <span class="n">Container</span><span class="w"> </span><span class="nl">verified</span><span class="p">:</span><span class="w"> </span><span class="n">ubuntu_latest</span><span class="p">.</span><span class="n">sif</span><span class="w"></span>
 </code></pre></div>
+
 
 <div class="admonition note">
 <p class="admonition-title">Note</p>
@@ -1630,10 +1649,12 @@ The following example validates the signature with the public key that is regist
 <span class="w">        </span><span class="nl">Tags</span><span class="p">:</span><span class="w"> </span><span class="n">latest</span><span class="w"></span>
 </code></pre></div>
 
+
 <h3 id="deleting-container-images">Deleting Container Images</h3>
 <p>To delete a container image from Container Library, use <code>singularity delete</code>.</p>
-<div class="codehilite"><pre><span></span><code><span class="o">[</span><span class="n">username@es1 ~</span><span class="o">]</span><span class="err">$</span><span class="w"> </span><span class="n">singularity</span><span class="w"> </span><span class="k">delete</span><span class="w"> </span><span class="nl">library</span><span class="p">:</span><span class="o">//</span><span class="n">username</span><span class="o">/</span><span class="n">abci</span><span class="o">-</span><span class="n">lib</span><span class="o">/</span><span class="nl">helloworld</span><span class="p">:</span><span class="n">latest</span><span class="w"></span>
+<div class="codehilite"><pre><span></span><code><span class="err">[username@es1 ~]$ singularity delete library://username/abci-lib/helloworld:latest</span>
 </code></pre></div>
+
 
 <div class="admonition note">
 <p class="admonition-title">Note</p>
@@ -1653,6 +1674,7 @@ If the container image has been tagged, <code>Tag</code> appears on the next lin
 <span class="nl">library</span><span class="p">:</span><span class="o">//</span><span class="n">username</span><span class="o">/</span><span class="n">collection3</span><span class="o">/</span><span class="n">container3</span><span class="w"></span>
 </code></pre></div>
 
+
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>If neither <code>Tag</code> nor <code>Unique ID</code> is displayed, it means that there is no container image in the container.</p>
@@ -1671,14 +1693,16 @@ If the container image has been tagged, <code>Tag</code> appears on the next lin
 <span class="nl">library</span><span class="p">:</span><span class="o">//</span><span class="n">username</span><span class="o">/</span><span class="n">collection3</span><span class="o">/</span><span class="n">container3</span><span class="w"></span>
 </code></pre></div>
 
+
 <h3 id="viewing-container-library-usage">Viewing Container Library Usage</h3>
 <p>You can view Container Library usage with <code>show_container_library_usage</code>. You must enter the ABCI password to show it.</p>
-<div class="codehilite"><pre><span></span><code><span class="o">[</span><span class="n">username@es1 ~</span><span class="o">]</span><span class="err">$</span><span class="w"> </span><span class="n">show_container_library_usage</span><span class="w"></span>
-<span class="n">ABCI</span><span class="w"> </span><span class="n">portal</span><span class="w"> </span><span class="n">password</span><span class="w"> </span><span class="err">:</span><span class="w"></span>
-<span class="n">just</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="n">moment</span><span class="p">,</span><span class="w"> </span><span class="n">please</span><span class="p">...</span><span class="w"></span>
-<span class="n">used</span><span class="p">(</span><span class="n">MiB</span><span class="p">)</span><span class="w"> </span><span class="k">limit</span><span class="p">(</span><span class="n">GiB</span><span class="p">)</span><span class="w"> </span><span class="n">num_of_containers</span><span class="w"></span>
-<span class="mf">49.39</span><span class="w">     </span><span class="mf">100.00</span><span class="w">     </span><span class="mi">1</span><span class="w"></span>
+<div class="codehilite"><pre><span></span><code><span class="err">[username@es1 ~]$ show_container_library_usage</span>
+<span class="err">ABCI portal password :</span>
+<span class="err">just a moment, please...</span>
+<span class="err">used(MiB) limit(GiB) num_of_containers</span>
+<span class="err">49.39     100.00     1</span>
 </code></pre></div>
+
 
 <h2 id="access-tokens">Access Tokens</h2>
 <p>This section describes the commands related to the obtained access token.</p>
@@ -1697,11 +1721,12 @@ If the container image has been tagged, <code>Tag</code> appears on the next lin
 <span class="nl">Expires</span><span class="p">:</span><span class="w"> </span><span class="mi">2021</span><span class="o">-</span><span class="mi">12</span><span class="o">-</span><span class="mi">23</span><span class="w"> </span><span class="mi">15</span><span class="err">:</span><span class="mi">59</span><span class="err">:</span><span class="mi">02</span><span class="w"> </span><span class="n">JST</span><span class="w"></span>
 </code></pre></div>
 
+
 <h3 id="revoking-the-access-token">Revoking the Access Token</h3>
 <p>You can revoke the access token with <code>revoke_singularity_token</code>. Specify the Token ID you want to remove as an argument from the list of access tokens displayed in <code>list_singularity_tokens</code> command. You must enter the ABCI password to revoke the access token.</p>
-<div class="codehilite"><pre><span></span><code><span class="o">[</span><span class="n">username@es1 ~</span><span class="o">]</span><span class="err">$</span><span class="w"> </span><span class="n">revoke_singularity_token</span><span class="w"> </span><span class="o">&lt;</span><span class="n">Token</span><span class="w"> </span><span class="n">ID</span><span class="o">&gt;</span><span class="w"></span>
-<span class="n">ABCI</span><span class="w"> </span><span class="n">portal</span><span class="w"> </span><span class="n">password</span><span class="w"> </span><span class="err">:</span><span class="w"></span>
-<span class="n">just</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="n">moment</span><span class="p">,</span><span class="w"> </span><span class="n">please</span><span class="p">...</span><span class="w"></span>
+<div class="codehilite"><pre><span></span><code><span class="err">[username@es1 ~]$ revoke_singularity_token &lt;Token ID&gt;</span>
+<span class="err">ABCI portal password :</span>
+<span class="err">just a moment, please...</span>
 </code></pre></div>
                 
               

@@ -1188,9 +1188,10 @@ For detailed information, see <a href="https://docs.aws.amazon.com/AmazonS3/late
 <h2 id="create-buckets-with-encryption">Create Buckets with Encryption</h2>
 <p>To create buckets with activated SSE, use create-encrypted-bucket provided by ABCI system instead of using the aws commands.
 The following example shows how to create a bucket 'dataset-s0001'.</p>
-<div class="codehilite"><pre><span></span><code><span class="o">[</span><span class="n">username@es1 ~</span><span class="o">]</span><span class="err">$</span><span class="w"> </span><span class="k">create</span><span class="o">-</span><span class="n">encrypted</span><span class="o">-</span><span class="n">bucket</span><span class="w"> </span><span class="o">--</span><span class="n">endpoint</span><span class="o">-</span><span class="n">url</span><span class="w"> </span><span class="nl">https</span><span class="p">:</span><span class="o">//</span><span class="n">s3</span><span class="p">.</span><span class="n">abci</span><span class="p">.</span><span class="n">ai</span><span class="w"> </span><span class="nl">s3</span><span class="p">:</span><span class="o">//</span><span class="n">dataset</span><span class="o">-</span><span class="n">s0001</span><span class="w"></span>
-<span class="k">create</span><span class="o">-</span><span class="n">encrypted</span><span class="o">-</span><span class="n">bucket</span><span class="w"> </span><span class="n">Success</span><span class="p">.</span><span class="w"></span>
+<div class="codehilite"><pre><span></span><code><span class="err">[username@es1 ~]$ create-encrypted-bucket --endpoint-url https://s3.abci.ai s3://dataset-s0001</span>
+<span class="err">create-encrypted-bucket Success.</span>
 </code></pre></div>
+
 
 <div class="admonition note">
 <p class="admonition-title">Note</p>
@@ -1204,15 +1205,16 @@ The following example shows how to create a bucket 'dataset-s0001'.</p>
 <p>To confirm if a bucket is created with activated SSE, there should be objects in the bucket because meta data of objects is necessary. Thus, if the bucket is empty, create an object.</p>
 <p>To confirm, run the <code>aws s3api head-object</code>.
 The following example screens meta data of 'cat.jpg' uploaded to the bucket 'dataset-s0001.' The bucket is created with activated encryption because the string "ServerSideEncryption": "AES256" is listed. Unless the string is listed, the bucket is without encryption.</p>
-<div class="codehilite"><pre><span></span><code><span class="o">[</span><span class="n">username@es1 ~</span><span class="o">]</span><span class="err">$</span><span class="w"> </span><span class="n">aws</span><span class="w"> </span><span class="o">--</span><span class="n">endpoint</span><span class="o">-</span><span class="n">url</span><span class="w"> </span><span class="nl">https</span><span class="p">:</span><span class="o">//</span><span class="n">s3</span><span class="p">.</span><span class="n">abci</span><span class="p">.</span><span class="n">ai</span><span class="w"> </span><span class="n">s3api</span><span class="w"> </span><span class="n">head</span><span class="o">-</span><span class="k">object</span><span class="w"> </span><span class="o">--</span><span class="n">bucket</span><span class="w"> </span><span class="n">dataset</span><span class="o">-</span><span class="n">s0001</span><span class="w"> </span><span class="o">--</span><span class="k">key</span><span class="w"> </span><span class="n">cat</span><span class="p">.</span><span class="n">jpg</span><span class="w"></span>
-<span class="err">{</span><span class="w"></span>
-<span class="w">    </span><span class="ss">&quot;LastModified&quot;</span><span class="err">:</span><span class="w"> </span><span class="ss">&quot;Tue, 30 Jul 2019 09:34:18 GMT&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">    </span><span class="ss">&quot;ContentLength&quot;</span><span class="err">:</span><span class="w"> </span><span class="mi">1048576</span><span class="p">,</span><span class="w"></span>
-<span class="w">    </span><span class="ss">&quot;ETag&quot;</span><span class="err">:</span><span class="w"> </span><span class="ss">&quot;\&quot;</span><span class="n">c951191fe4fa27c0d054a8456c6c20d1</span><span class="err">\</span><span class="ss">&quot;&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">    </span><span class="ss">&quot;ServerSideEncryption&quot;</span><span class="err">:</span><span class="w"> </span><span class="ss">&quot;AES256&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">    </span><span class="ss">&quot;Metadata&quot;</span><span class="err">:</span><span class="w"> </span><span class="err">{}</span><span class="w"></span>
-<span class="err">}</span><span class="w"></span>
+<div class="codehilite"><pre><span></span><code><span class="err">[username@es1 ~]$ aws --endpoint-url https://s3.abci.ai s3api head-object --bucket dataset-s0001 --key cat.jpg</span>
+<span class="err">{</span>
+<span class="err">    &quot;LastModified&quot;: &quot;Tue, 30 Jul 2019 09:34:18 GMT&quot;,</span>
+<span class="err">    &quot;ContentLength&quot;: 1048576,</span>
+<span class="err">    &quot;ETag&quot;: &quot;\&quot;c951191fe4fa27c0d054a8456c6c20d1\&quot;&quot;,</span>
+<span class="err">    &quot;ServerSideEncryption&quot;: &quot;AES256&quot;,</span>
+<span class="err">    &quot;Metadata&quot;: {}</span>
+<span class="err">}</span>
 </code></pre></div>
+
 
 <!-- CSE? -->
                 

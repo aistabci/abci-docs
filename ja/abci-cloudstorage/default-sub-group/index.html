@@ -1216,66 +1216,70 @@
 <p class="admonition-title">Note</p>
 <p>managed-groupは管理のために運用側で用意したサブグループであり、利用者からは変更できません。</p>
 </div>
-<div class="codehilite"><pre><span></span><code><span class="o">[</span><span class="n">username@es1 ~</span><span class="o">]</span><span class="err">$</span><span class="w"> </span><span class="n">aws</span><span class="w"> </span><span class="o">--</span><span class="n">endpoint</span><span class="o">-</span><span class="n">url</span><span class="w"> </span><span class="nl">https</span><span class="p">:</span><span class="o">//</span><span class="n">s3</span><span class="p">.</span><span class="n">abci</span><span class="p">.</span><span class="n">ai</span><span class="w"> </span><span class="n">iam</span><span class="w"> </span><span class="n">list</span><span class="o">-</span><span class="n">groups</span><span class="w"></span>
-<span class="err">{</span><span class="w"></span>
-<span class="w">    </span><span class="ss">&quot;Groups&quot;</span><span class="err">:</span><span class="w"> </span><span class="o">[</span><span class="n"></span>
-<span class="n">        {</span>
-<span class="n">            &quot;Path&quot;: &quot;/abci/&quot;,</span>
-<span class="n">            &quot;GroupName&quot;: &quot;managed-group&quot;,</span>
-<span class="n">            &quot;GroupId&quot;: &quot;GRPES2SG5PLA6UYFHWYA0M6VCEXAMPLE&quot;,</span>
-<span class="n">            &quot;Arn&quot;: &quot;arn:aws:iam::123456789012:group/abci/managed-group&quot;,</span>
-<span class="n">            &quot;CreateDate&quot;: &quot;2020-04-01T02:04:45+00:00&quot;</span>
-<span class="n">        },</span>
-<span class="n">        {</span>
-<span class="n">            &quot;Path&quot;: &quot;/&quot;,</span>
-<span class="n">            &quot;GroupName&quot;: &quot;default-sub-group&quot;,</span>
-<span class="n">            &quot;GroupId&quot;: &quot;GRP0L1H8JX1Z9GUXBFHRMFIWJEXAMPLE&quot;,</span>
-<span class="n">            &quot;Arn&quot;: &quot;arn:aws:iam::123456789012:group/default-sub-group&quot;,</span>
-<span class="n">            &quot;CreateDate&quot;: &quot;2019-12-26T14:30:28+00:00&quot;</span>
-<span class="n">        }</span>
-<span class="n">    </span><span class="o">]</span><span class="w"></span>
-<span class="err">}</span><span class="w"></span>
+<div class="codehilite"><pre><span></span><code><span class="err">[username@es1 ~]$ aws --endpoint-url https://s3.abci.ai iam list-groups</span>
+<span class="err">{</span>
+<span class="err">    &quot;Groups&quot;: [</span>
+<span class="err">        {</span>
+<span class="err">            &quot;Path&quot;: &quot;/abci/&quot;,</span>
+<span class="err">            &quot;GroupName&quot;: &quot;managed-group&quot;,</span>
+<span class="err">            &quot;GroupId&quot;: &quot;GRPES2SG5PLA6UYFHWYA0M6VCEXAMPLE&quot;,</span>
+<span class="err">            &quot;Arn&quot;: &quot;arn:aws:iam::123456789012:group/abci/managed-group&quot;,</span>
+<span class="err">            &quot;CreateDate&quot;: &quot;2020-04-01T02:04:45+00:00&quot;</span>
+<span class="err">        },</span>
+<span class="err">        {</span>
+<span class="err">            &quot;Path&quot;: &quot;/&quot;,</span>
+<span class="err">            &quot;GroupName&quot;: &quot;default-sub-group&quot;,</span>
+<span class="err">            &quot;GroupId&quot;: &quot;GRP0L1H8JX1Z9GUXBFHRMFIWJEXAMPLE&quot;,</span>
+<span class="err">            &quot;Arn&quot;: &quot;arn:aws:iam::123456789012:group/default-sub-group&quot;,</span>
+<span class="err">            &quot;CreateDate&quot;: &quot;2019-12-26T14:30:28+00:00&quot;</span>
+<span class="err">        }</span>
+<span class="err">    ]</span>
+<span class="err">}</span>
 </code></pre></div>
+
 
 <p><code>aws iam get-group</code>コマンドで、サブグループに所属するクラウドストレージアカウントの一覧を表示できます。</p>
-<div class="codehilite"><pre><span></span><code><span class="o">[</span><span class="n">username@es1 ~</span><span class="o">]</span><span class="err">$</span><span class="w"> </span><span class="n">aws</span><span class="w"> </span><span class="o">--</span><span class="n">endpoint</span><span class="o">-</span><span class="n">url</span><span class="w"> </span><span class="nl">https</span><span class="p">:</span><span class="o">//</span><span class="n">s3</span><span class="p">.</span><span class="n">abci</span><span class="p">.</span><span class="n">ai</span><span class="w"> </span><span class="n">iam</span><span class="w"> </span><span class="k">get</span><span class="o">-</span><span class="k">group</span><span class="w"> </span><span class="o">--</span><span class="k">group</span><span class="o">-</span><span class="n">name</span><span class="w"> </span><span class="k">default</span><span class="o">-</span><span class="n">sub</span><span class="o">-</span><span class="k">group</span><span class="w"></span>
-<span class="err">{</span><span class="w"></span>
-<span class="w">    </span><span class="ss">&quot;Users&quot;</span><span class="err">:</span><span class="w"> </span><span class="o">[</span><span class="n"></span>
-<span class="n">        {</span>
-<span class="n">            &quot;Path&quot;: &quot;/&quot;,</span>
-<span class="n">            &quot;UserName&quot;: &quot;aaa00000.1&quot;,</span>
-<span class="n">            &quot;UserId&quot;: &quot;USRJY5ST1Z16OKRANCL9SZZGQEXAMPLE&quot;,</span>
-<span class="n">            &quot;Arn&quot;: &quot;arn:aws:iam::123456789012:user/aaa00000.1&quot;,</span>
-<span class="n">            &quot;CreateDate&quot;: &quot;2020-01-22T11:53:24+00:00&quot;</span>
-<span class="n">        }</span>
-<span class="n">    </span><span class="o">]</span><span class="p">,</span><span class="w"></span>
-<span class="w">    </span><span class="ss">&quot;Group&quot;</span><span class="err">:</span><span class="w"> </span><span class="err">{</span><span class="w"></span>
-<span class="w">        </span><span class="ss">&quot;Path&quot;</span><span class="err">:</span><span class="w"> </span><span class="ss">&quot;/&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">        </span><span class="ss">&quot;GroupName&quot;</span><span class="err">:</span><span class="w"> </span><span class="ss">&quot;default-sub-group&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">        </span><span class="ss">&quot;GroupId&quot;</span><span class="err">:</span><span class="w"> </span><span class="ss">&quot;GRP0L1H8JX1Z9GUXBFHRMFIWJEXAMPLE&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">        </span><span class="ss">&quot;Arn&quot;</span><span class="err">:</span><span class="w"> </span><span class="ss">&quot;arn:aws:iam::123456789012:group/default-sub-group&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">        </span><span class="ss">&quot;CreateDate&quot;</span><span class="err">:</span><span class="w"> </span><span class="ss">&quot;2019-12-26T14:30:28+00:00&quot;</span><span class="w"></span>
-<span class="w">    </span><span class="err">}</span><span class="w"></span>
-<span class="err">}</span><span class="w"></span>
+<div class="codehilite"><pre><span></span><code><span class="err">[username@es1 ~]$ aws --endpoint-url https://s3.abci.ai iam get-group --group-name default-sub-group</span>
+<span class="err">{</span>
+<span class="err">    &quot;Users&quot;: [</span>
+<span class="err">        {</span>
+<span class="err">            &quot;Path&quot;: &quot;/&quot;,</span>
+<span class="err">            &quot;UserName&quot;: &quot;aaa00000.1&quot;,</span>
+<span class="err">            &quot;UserId&quot;: &quot;USRJY5ST1Z16OKRANCL9SZZGQEXAMPLE&quot;,</span>
+<span class="err">            &quot;Arn&quot;: &quot;arn:aws:iam::123456789012:user/aaa00000.1&quot;,</span>
+<span class="err">            &quot;CreateDate&quot;: &quot;2020-01-22T11:53:24+00:00&quot;</span>
+<span class="err">        }</span>
+<span class="err">    ],</span>
+<span class="err">    &quot;Group&quot;: {</span>
+<span class="err">        &quot;Path&quot;: &quot;/&quot;,</span>
+<span class="err">        &quot;GroupName&quot;: &quot;default-sub-group&quot;,</span>
+<span class="err">        &quot;GroupId&quot;: &quot;GRP0L1H8JX1Z9GUXBFHRMFIWJEXAMPLE&quot;,</span>
+<span class="err">        &quot;Arn&quot;: &quot;arn:aws:iam::123456789012:group/default-sub-group&quot;,</span>
+<span class="err">        &quot;CreateDate&quot;: &quot;2019-12-26T14:30:28+00:00&quot;</span>
+<span class="err">    }</span>
+<span class="err">}</span>
 </code></pre></div>
 
+
 <p>サブグループを作成する場合は以下のように<code>aws iam create-group</code>コマンドに作成するグループの名前を指定します。</p>
-<div class="codehilite"><pre><span></span><code><span class="o">[</span><span class="n">username@es1 ~</span><span class="o">]</span><span class="err">$</span><span class="w"> </span><span class="n">aws</span><span class="w"> </span><span class="o">--</span><span class="n">endpoint</span><span class="o">-</span><span class="n">url</span><span class="w"> </span><span class="nl">https</span><span class="p">:</span><span class="o">//</span><span class="n">s3</span><span class="p">.</span><span class="n">abci</span><span class="p">.</span><span class="n">ai</span><span class="w"> </span><span class="n">iam</span><span class="w"> </span><span class="k">create</span><span class="o">-</span><span class="k">group</span><span class="w"> </span><span class="o">--</span><span class="k">group</span><span class="o">-</span><span class="n">name</span><span class="w"> </span><span class="n">custom</span><span class="o">-</span><span class="k">group</span><span class="w"></span>
-<span class="err">{</span><span class="w"></span>
-<span class="w">    </span><span class="ss">&quot;Group&quot;</span><span class="err">:</span><span class="w"> </span><span class="err">{</span><span class="w"></span>
-<span class="w">        </span><span class="ss">&quot;Path&quot;</span><span class="err">:</span><span class="w"> </span><span class="ss">&quot;/&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">        </span><span class="ss">&quot;GroupName&quot;</span><span class="err">:</span><span class="w"> </span><span class="ss">&quot;custom-group&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">        </span><span class="ss">&quot;GroupId&quot;</span><span class="err">:</span><span class="w"> </span><span class="ss">&quot;GRPK7ONKO77EZKM7FVI3AFB8UEXAMPLE&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">        </span><span class="ss">&quot;Arn&quot;</span><span class="err">:</span><span class="w"> </span><span class="ss">&quot;arn:aws:iam::123456789012:group/custom-group&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">        </span><span class="ss">&quot;CreateDate&quot;</span><span class="err">:</span><span class="w"> </span><span class="ss">&quot;2021-10-13T10:53:24+00:00&quot;</span><span class="w"></span>
-<span class="w">    </span><span class="err">}</span><span class="w"></span>
-<span class="err">}</span><span class="w"></span>
+<div class="codehilite"><pre><span></span><code><span class="err">[username@es1 ~]$ aws --endpoint-url https://s3.abci.ai iam create-group --group-name custom-group</span>
+<span class="err">{</span>
+<span class="err">    &quot;Group&quot;: {</span>
+<span class="err">        &quot;Path&quot;: &quot;/&quot;,</span>
+<span class="err">        &quot;GroupName&quot;: &quot;custom-group&quot;,</span>
+<span class="err">        &quot;GroupId&quot;: &quot;GRPK7ONKO77EZKM7FVI3AFB8UEXAMPLE&quot;,</span>
+<span class="err">        &quot;Arn&quot;: &quot;arn:aws:iam::123456789012:group/custom-group&quot;,</span>
+<span class="err">        &quot;CreateDate&quot;: &quot;2021-10-13T10:53:24+00:00&quot;</span>
+<span class="err">    }</span>
+<span class="err">}</span>
 </code></pre></div>
+
 
 <p>サブグループを削除する場合は以下のように<code>aws iam delete-group</code>コマンドに削除するグループの名前を指定します。
 なお、サブグループを削除する場合はサブグループにアカウントが存在しないこと、かつ、ポリシーが割り当てられていないことを確認してください。</p>
-<div class="codehilite"><pre><span></span><code><span class="o">[</span><span class="n">username@es1 ~</span><span class="o">]</span><span class="err">$</span><span class="w"> </span><span class="n">aws</span><span class="w"> </span><span class="c1">--endpoint-url https://s3.abci.ai iam delete-group --group-name custom-group</span>
+<div class="codehilite"><pre><span></span><code><span class="err">[username@es1 ~]$ aws --endpoint-url https://s3.abci.ai iam delete-group --group-name custom-group</span>
 </code></pre></div>
+
 
 <p>コマンドのオプションなど詳しい使い方については、各コマンドのヘルプ(<code>aws iam create-group help</code>など)を確認してください。</p>
 <h2 id="example-1-limiting-bucket-access-by-subgroups">例1: オブジェクトの読み書きをサブグループごとに設定する</h2>
@@ -1283,156 +1287,168 @@
 この例では、バケットsensor8に対してオブジェクトの読み取り専用サブグループおよび書き込み専用サブグループを作成し、クラウドストレージアカウントのサブグループをこれらに変更することでアクセス制御を行います。</p>
 <p>まず、サブグループを作成します。サブグループの作成には<code>aws iam create-group</code>コマンドを使用します。
 オブジェクトの読み取り専用のサブグループを<code>sensor8-read-only-group</code>、書き込み専用のサブグループを<code>sensor8-write-only-group</code>としています。</p>
-<div class="codehilite"><pre><span></span><code><span class="o">[</span><span class="n">username@es1 ~</span><span class="o">]</span><span class="err">$</span><span class="w"> </span><span class="n">aws</span><span class="w"> </span><span class="o">--</span><span class="n">endpoint</span><span class="o">-</span><span class="n">url</span><span class="w"> </span><span class="nl">https</span><span class="p">:</span><span class="o">//</span><span class="n">s3</span><span class="p">.</span><span class="n">abci</span><span class="p">.</span><span class="n">ai</span><span class="w"> </span><span class="n">iam</span><span class="w"> </span><span class="k">create</span><span class="o">-</span><span class="k">group</span><span class="w"> </span><span class="o">--</span><span class="k">group</span><span class="o">-</span><span class="n">name</span><span class="w"> </span><span class="n">sensor8</span><span class="o">-</span><span class="k">read</span><span class="o">-</span><span class="k">only</span><span class="o">-</span><span class="k">group</span><span class="w"></span>
-<span class="err">{</span><span class="w"></span>
-<span class="w">    </span><span class="ss">&quot;Group&quot;</span><span class="err">:</span><span class="w"> </span><span class="err">{</span><span class="w"></span>
-<span class="w">        </span><span class="ss">&quot;Path&quot;</span><span class="err">:</span><span class="w"> </span><span class="ss">&quot;/&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">        </span><span class="ss">&quot;GroupName&quot;</span><span class="err">:</span><span class="w"> </span><span class="ss">&quot;sensor8-read-only-group&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">        </span><span class="ss">&quot;GroupId&quot;</span><span class="err">:</span><span class="w"> </span><span class="ss">&quot;GRP1P4AHW7GT7NDH3VNADCOGSEXAMPLE&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">        </span><span class="ss">&quot;Arn&quot;</span><span class="err">:</span><span class="w"> </span><span class="ss">&quot;arn:aws:iam::123456789012:group/sensor8-read-only-group&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">        </span><span class="ss">&quot;CreateDate&quot;</span><span class="err">:</span><span class="w"> </span><span class="ss">&quot;2021-10-13T09:51:04+00:00&quot;</span><span class="w"></span>
-<span class="w">    </span><span class="err">}</span><span class="w"></span>
-<span class="err">}</span><span class="w"></span>
+<div class="codehilite"><pre><span></span><code><span class="err">[username@es1 ~]$ aws --endpoint-url https://s3.abci.ai iam create-group --group-name sensor8-read-only-group</span>
+<span class="err">{</span>
+<span class="err">    &quot;Group&quot;: {</span>
+<span class="err">        &quot;Path&quot;: &quot;/&quot;,</span>
+<span class="err">        &quot;GroupName&quot;: &quot;sensor8-read-only-group&quot;,</span>
+<span class="err">        &quot;GroupId&quot;: &quot;GRP1P4AHW7GT7NDH3VNADCOGSEXAMPLE&quot;,</span>
+<span class="err">        &quot;Arn&quot;: &quot;arn:aws:iam::123456789012:group/sensor8-read-only-group&quot;,</span>
+<span class="err">        &quot;CreateDate&quot;: &quot;2021-10-13T09:51:04+00:00&quot;</span>
+<span class="err">    }</span>
+<span class="err">}</span>
 </code></pre></div>
 
-<div class="codehilite"><pre><span></span><code><span class="o">[</span><span class="n">username@es1 ~</span><span class="o">]</span><span class="err">$</span><span class="w"> </span><span class="n">aws</span><span class="w"> </span><span class="o">--</span><span class="n">endpoint</span><span class="o">-</span><span class="n">url</span><span class="w"> </span><span class="nl">https</span><span class="p">:</span><span class="o">//</span><span class="n">s3</span><span class="p">.</span><span class="n">abci</span><span class="p">.</span><span class="n">ai</span><span class="w"> </span><span class="n">iam</span><span class="w"> </span><span class="k">create</span><span class="o">-</span><span class="k">group</span><span class="w"> </span><span class="o">--</span><span class="k">group</span><span class="o">-</span><span class="n">name</span><span class="w"> </span><span class="n">sensor8</span><span class="o">-</span><span class="k">write</span><span class="o">-</span><span class="k">only</span><span class="o">-</span><span class="k">group</span><span class="w"></span>
-<span class="err">{</span><span class="w"></span>
-<span class="w">    </span><span class="ss">&quot;Group&quot;</span><span class="err">:</span><span class="w"> </span><span class="err">{</span><span class="w"></span>
-<span class="w">        </span><span class="ss">&quot;Path&quot;</span><span class="err">:</span><span class="w"> </span><span class="ss">&quot;/&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">        </span><span class="ss">&quot;GroupName&quot;</span><span class="err">:</span><span class="w"> </span><span class="ss">&quot;sensor8-write-only-group&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">        </span><span class="ss">&quot;GroupId&quot;</span><span class="err">:</span><span class="w"> </span><span class="ss">&quot;GRPYSWMCP4RFXPVK8QOVZ3S0REXAMPLE&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">        </span><span class="ss">&quot;Arn&quot;</span><span class="err">:</span><span class="w"> </span><span class="ss">&quot;arn:aws:iam::123456789012:group/sensor8-write-only-group&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">        </span><span class="ss">&quot;CreateDate&quot;</span><span class="err">:</span><span class="w"> </span><span class="ss">&quot;2021-10-13T09:51:43+00:00&quot;</span><span class="w"></span>
-<span class="w">    </span><span class="err">}</span><span class="w"></span>
-<span class="err">}</span><span class="w"></span>
+
+<div class="codehilite"><pre><span></span><code><span class="err">[username@es1 ~]$ aws --endpoint-url https://s3.abci.ai iam create-group --group-name sensor8-write-only-group</span>
+<span class="err">{</span>
+<span class="err">    &quot;Group&quot;: {</span>
+<span class="err">        &quot;Path&quot;: &quot;/&quot;,</span>
+<span class="err">        &quot;GroupName&quot;: &quot;sensor8-write-only-group&quot;,</span>
+<span class="err">        &quot;GroupId&quot;: &quot;GRPYSWMCP4RFXPVK8QOVZ3S0REXAMPLE&quot;,</span>
+<span class="err">        &quot;Arn&quot;: &quot;arn:aws:iam::123456789012:group/sensor8-write-only-group&quot;,</span>
+<span class="err">        &quot;CreateDate&quot;: &quot;2021-10-13T09:51:43+00:00&quot;</span>
+<span class="err">    }</span>
+<span class="err">}</span>
 </code></pre></div>
+
 
 <p>次に、バケットsensor8に対してオブジェクトの読み取りのみ許可するポリシーを作成します。以下の内容のJSONファイルを用意してください。ファイル名はここでは<code>sensor8-read-only.json</code>とします。</p>
-<div class="codehilite"><pre><span></span><code>{
-    &quot;Version&quot;: &quot;2012-10-17&quot;,
-    &quot;Statement&quot;: [
-        {
-            &quot;Effect&quot;: &quot;Allow&quot;,
-            &quot;Action&quot;: &quot;s3:GetObject&quot;,
-            &quot;Resource&quot;: &quot;arn:aws:s3:::sensor8/*&quot;
-        }
-    ]
-}
+<div class="codehilite"><pre><span></span><code><span class="err">{</span>
+<span class="err">    &quot;Version&quot;: &quot;2012-10-17&quot;,</span>
+<span class="err">    &quot;Statement&quot;: [</span>
+<span class="err">        {</span>
+<span class="err">            &quot;Effect&quot;: &quot;Allow&quot;,</span>
+<span class="err">            &quot;Action&quot;: &quot;s3:GetObject&quot;,</span>
+<span class="err">            &quot;Resource&quot;: &quot;arn:aws:s3:::sensor8/*&quot;</span>
+<span class="err">        }</span>
+<span class="err">    ]</span>
+<span class="err">}</span>
 </code></pre></div>
+
 
 <p>JSONファイルを用意したら<code>aws iam create-policy</code>コマンドを使用しポリシーを作成します。
 ポリシー名は<code>sensor8-read-only</code>としています。</p>
-<div class="codehilite"><pre><span></span><code><span class="o">[</span><span class="n">username@es1 ~</span><span class="o">]</span><span class="err">$</span><span class="w"> </span><span class="n">aws</span><span class="w"> </span><span class="o">--</span><span class="n">endpoint</span><span class="o">-</span><span class="n">url</span><span class="w"> </span><span class="nl">https</span><span class="p">:</span><span class="o">//</span><span class="n">s3</span><span class="p">.</span><span class="n">abci</span><span class="p">.</span><span class="n">ai</span><span class="w"> </span><span class="n">iam</span><span class="w"> </span><span class="k">create</span><span class="o">-</span><span class="n">policy</span><span class="w"> </span><span class="o">--</span><span class="n">policy</span><span class="o">-</span><span class="n">name</span><span class="w"> </span><span class="n">sensor8</span><span class="o">-</span><span class="k">read</span><span class="o">-</span><span class="k">only</span><span class="w"> </span><span class="o">--</span><span class="n">policy</span><span class="o">-</span><span class="n">document</span><span class="w"> </span><span class="k">file</span><span class="err">:</span><span class="o">//</span><span class="n">sensor8</span><span class="o">-</span><span class="k">read</span><span class="o">-</span><span class="k">only</span><span class="p">.</span><span class="n">json</span><span class="w"></span>
-<span class="err">{</span><span class="w"></span>
-<span class="w">    </span><span class="ss">&quot;Policy&quot;</span><span class="err">:</span><span class="w"> </span><span class="err">{</span><span class="w"></span>
-<span class="w">        </span><span class="ss">&quot;PolicyName&quot;</span><span class="err">:</span><span class="w"> </span><span class="ss">&quot;sensor8-read-only&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">        </span><span class="ss">&quot;PolicyId&quot;</span><span class="err">:</span><span class="w"> </span><span class="ss">&quot;PLCYI1ZEME36PS9E9G4NIBP2ZEXAMPLE&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">        </span><span class="ss">&quot;Arn&quot;</span><span class="err">:</span><span class="w"> </span><span class="ss">&quot;arn:aws:iam::123456789012:policy/sensor8-read-only&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">        </span><span class="ss">&quot;Path&quot;</span><span class="err">:</span><span class="w"> </span><span class="ss">&quot;/&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">        </span><span class="ss">&quot;DefaultVersionId&quot;</span><span class="err">:</span><span class="w"> </span><span class="ss">&quot;v1&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">        </span><span class="ss">&quot;AttachmentCount&quot;</span><span class="err">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"></span>
-<span class="w">        </span><span class="ss">&quot;IsAttachable&quot;</span><span class="err">:</span><span class="w"> </span><span class="k">true</span><span class="p">,</span><span class="w"></span>
-<span class="w">        </span><span class="ss">&quot;CreateDate&quot;</span><span class="err">:</span><span class="w"> </span><span class="ss">&quot;2021-10-13T10:06:41+00:00&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">        </span><span class="ss">&quot;UpdateDate&quot;</span><span class="err">:</span><span class="w"> </span><span class="ss">&quot;2021-10-13T10:06:41+00:00&quot;</span><span class="w"></span>
-<span class="w">    </span><span class="err">}</span><span class="w"></span>
-<span class="err">}</span><span class="w"></span>
+<div class="codehilite"><pre><span></span><code><span class="err">[username@es1 ~]$ aws --endpoint-url https://s3.abci.ai iam create-policy --policy-name sensor8-read-only --policy-document file://sensor8-read-only.json</span>
+<span class="err">{</span>
+<span class="err">    &quot;Policy&quot;: {</span>
+<span class="err">        &quot;PolicyName&quot;: &quot;sensor8-read-only&quot;,</span>
+<span class="err">        &quot;PolicyId&quot;: &quot;PLCYI1ZEME36PS9E9G4NIBP2ZEXAMPLE&quot;,</span>
+<span class="err">        &quot;Arn&quot;: &quot;arn:aws:iam::123456789012:policy/sensor8-read-only&quot;,</span>
+<span class="err">        &quot;Path&quot;: &quot;/&quot;,</span>
+<span class="err">        &quot;DefaultVersionId&quot;: &quot;v1&quot;,</span>
+<span class="err">        &quot;AttachmentCount&quot;: 0,</span>
+<span class="err">        &quot;IsAttachable&quot;: true,</span>
+<span class="err">        &quot;CreateDate&quot;: &quot;2021-10-13T10:06:41+00:00&quot;,</span>
+<span class="err">        &quot;UpdateDate&quot;: &quot;2021-10-13T10:06:41+00:00&quot;</span>
+<span class="err">    }</span>
+<span class="err">}</span>
 </code></pre></div>
 
+
 <p>次に、バケットsensor8に対してオブジェクトの書き込みのみ許可するポリシーを作成します。以下の内容のJSONファイルを用意してください。ファイル名はここでは<code>sensor8-write-only.json</code>とします。</p>
-<div class="codehilite"><pre><span></span><code>{
-    &quot;Version&quot;: &quot;2012-10-17&quot;,
-    &quot;Statement&quot;: [
-        {
-            &quot;Effect&quot;: &quot;Allow&quot;,
-            &quot;Action&quot;: &quot;s3:PutObject&quot;,
-            &quot;Resource&quot;: &quot;arn:aws:s3:::sensor8/*&quot;
-        }
-    ]
-}
+<div class="codehilite"><pre><span></span><code><span class="err">{</span>
+<span class="err">    &quot;Version&quot;: &quot;2012-10-17&quot;,</span>
+<span class="err">    &quot;Statement&quot;: [</span>
+<span class="err">        {</span>
+<span class="err">            &quot;Effect&quot;: &quot;Allow&quot;,</span>
+<span class="err">            &quot;Action&quot;: &quot;s3:PutObject&quot;,</span>
+<span class="err">            &quot;Resource&quot;: &quot;arn:aws:s3:::sensor8/*&quot;</span>
+<span class="err">        }</span>
+<span class="err">    ]</span>
+<span class="err">}</span>
 </code></pre></div>
+
 
 <p>JSONファイルを用意したら<code>aws iam create-policy</code>コマンドを使用しポリシーを作成します。
 ポリシー名は<code>sensor8-write-only</code>としています。</p>
-<div class="codehilite"><pre><span></span><code><span class="o">[</span><span class="n">username@es1 ~</span><span class="o">]</span><span class="err">$</span><span class="w"> </span><span class="n">aws</span><span class="w"> </span><span class="o">--</span><span class="n">endpoint</span><span class="o">-</span><span class="n">url</span><span class="w"> </span><span class="nl">https</span><span class="p">:</span><span class="o">//</span><span class="n">s3</span><span class="p">.</span><span class="n">abci</span><span class="p">.</span><span class="n">ai</span><span class="w"> </span><span class="n">iam</span><span class="w"> </span><span class="k">create</span><span class="o">-</span><span class="n">policy</span><span class="w"> </span><span class="o">--</span><span class="n">policy</span><span class="o">-</span><span class="n">name</span><span class="w"> </span><span class="n">sensor8</span><span class="o">-</span><span class="k">write</span><span class="o">-</span><span class="k">only</span><span class="w"> </span><span class="o">--</span><span class="n">policy</span><span class="o">-</span><span class="n">document</span><span class="w"> </span><span class="k">file</span><span class="err">:</span><span class="o">//</span><span class="n">sensor8</span><span class="o">-</span><span class="k">write</span><span class="o">-</span><span class="k">only</span><span class="p">.</span><span class="n">json</span><span class="w"></span>
-<span class="err">{</span><span class="w"></span>
-<span class="w">    </span><span class="ss">&quot;Policy&quot;</span><span class="err">:</span><span class="w"> </span><span class="err">{</span><span class="w"></span>
-<span class="w">        </span><span class="ss">&quot;PolicyName&quot;</span><span class="err">:</span><span class="w"> </span><span class="ss">&quot;sensor8-write-only&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">        </span><span class="ss">&quot;PolicyId&quot;</span><span class="err">:</span><span class="w"> </span><span class="ss">&quot;PLCYA88HTRZ7N0D5VASY2LSJ8EXAMPLE&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">        </span><span class="ss">&quot;Arn&quot;</span><span class="err">:</span><span class="w"> </span><span class="ss">&quot;arn:aws:iam::123456789012:policy/sensor8-write-only&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">        </span><span class="ss">&quot;Path&quot;</span><span class="err">:</span><span class="w"> </span><span class="ss">&quot;/&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">        </span><span class="ss">&quot;DefaultVersionId&quot;</span><span class="err">:</span><span class="w"> </span><span class="ss">&quot;v1&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">        </span><span class="ss">&quot;AttachmentCount&quot;</span><span class="err">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"></span>
-<span class="w">        </span><span class="ss">&quot;IsAttachable&quot;</span><span class="err">:</span><span class="w"> </span><span class="k">true</span><span class="p">,</span><span class="w"></span>
-<span class="w">        </span><span class="ss">&quot;CreateDate&quot;</span><span class="err">:</span><span class="w"> </span><span class="ss">&quot;2021-10-13T10:11:36+00:00&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">        </span><span class="ss">&quot;UpdateDate&quot;</span><span class="err">:</span><span class="w"> </span><span class="ss">&quot;2021-10-13T10:11:36+00:00&quot;</span><span class="w"></span>
-<span class="w">    </span><span class="err">}</span><span class="w"></span>
-<span class="err">}</span><span class="w"></span>
+<div class="codehilite"><pre><span></span><code><span class="err">[username@es1 ~]$ aws --endpoint-url https://s3.abci.ai iam create-policy --policy-name sensor8-write-only --policy-document file://sensor8-write-only.json</span>
+<span class="err">{</span>
+<span class="err">    &quot;Policy&quot;: {</span>
+<span class="err">        &quot;PolicyName&quot;: &quot;sensor8-write-only&quot;,</span>
+<span class="err">        &quot;PolicyId&quot;: &quot;PLCYA88HTRZ7N0D5VASY2LSJ8EXAMPLE&quot;,</span>
+<span class="err">        &quot;Arn&quot;: &quot;arn:aws:iam::123456789012:policy/sensor8-write-only&quot;,</span>
+<span class="err">        &quot;Path&quot;: &quot;/&quot;,</span>
+<span class="err">        &quot;DefaultVersionId&quot;: &quot;v1&quot;,</span>
+<span class="err">        &quot;AttachmentCount&quot;: 0,</span>
+<span class="err">        &quot;IsAttachable&quot;: true,</span>
+<span class="err">        &quot;CreateDate&quot;: &quot;2021-10-13T10:11:36+00:00&quot;,</span>
+<span class="err">        &quot;UpdateDate&quot;: &quot;2021-10-13T10:11:36+00:00&quot;</span>
+<span class="err">    }</span>
+<span class="err">}</span>
 </code></pre></div>
+
 
 <p>サブグループとポリシーを作成した後、それぞれのサブグループにポリシーを割り当てます。
 ポリシーを割り当てるには<code>aws iam attach-group-policy</code>コマンドを使用します。</p>
-<div class="codehilite"><pre><span></span><code><span class="o">[</span><span class="n">username@es1 ~</span><span class="o">]</span><span class="err">$</span><span class="w"> </span><span class="n">aws</span><span class="w"> </span><span class="o">--</span><span class="n">endpoint</span><span class="o">-</span><span class="n">url</span><span class="w"> </span><span class="nl">https</span><span class="p">:</span><span class="o">//</span><span class="n">s3</span><span class="p">.</span><span class="n">abci</span><span class="p">.</span><span class="n">ai</span><span class="w"> </span><span class="n">iam</span><span class="w"> </span><span class="n">attach</span><span class="o">-</span><span class="k">group</span><span class="o">-</span><span class="n">policy</span><span class="w"> </span><span class="o">--</span><span class="k">group</span><span class="o">-</span><span class="n">name</span><span class="w"> </span><span class="n">sensor8</span><span class="o">-</span><span class="k">read</span><span class="o">-</span><span class="k">only</span><span class="o">-</span><span class="k">group</span><span class="w"> </span><span class="o">--</span><span class="n">policy</span><span class="o">-</span><span class="n">arn</span><span class="w"> </span><span class="nl">arn</span><span class="p">:</span><span class="nl">aws</span><span class="p">:</span><span class="nl">iam</span><span class="p">:</span><span class="err">:</span><span class="mi">123456789012</span><span class="err">:</span><span class="n">policy</span><span class="o">/</span><span class="n">sensor8</span><span class="o">-</span><span class="k">read</span><span class="o">-</span><span class="k">only</span><span class="w"></span>
-<span class="o">[</span><span class="n">username@es1 ~</span><span class="o">]</span><span class="err">$</span><span class="w"> </span><span class="n">aws</span><span class="w"> </span><span class="c1">--endpoint-url https://s3.abci.ai iam attach-group-policy --group-name sensor8-write-only-group --policy-arn arn:aws:iam::123456789012:policy/sensor8-write-only</span>
+<div class="codehilite"><pre><span></span><code><span class="err">[username@es1 ~]$ aws --endpoint-url https://s3.abci.ai iam attach-group-policy --group-name sensor8-read-only-group --policy-arn arn:aws:iam::123456789012:policy/sensor8-read-only</span>
+<span class="err">[username@es1 ~]$ aws --endpoint-url https://s3.abci.ai iam attach-group-policy --group-name sensor8-write-only-group --policy-arn arn:aws:iam::123456789012:policy/sensor8-write-only</span>
 </code></pre></div>
+
 
 <p>最後に、クラウドストレージアカウントをサブグループdefault-sub-groupから新しいサブグループに移動します。
 ここではaaa00000.1を読み込み専用グループに、aaa00001.1を書き込み専用グループに移動します。</p>
 <p>アカウントの移動にあたって、まず、default-sub-groupからアカウントを外します。
 サブグループからアカウントを外すには、<code>aws iam remove-user-from-group</code>コマンドを使用します。</p>
-<div class="codehilite"><pre><span></span><code><span class="o">[</span><span class="n">username@es1 ~</span><span class="o">]</span><span class="err">$</span><span class="w"> </span><span class="n">aws</span><span class="w"> </span><span class="o">--</span><span class="n">endpoint</span><span class="o">-</span><span class="n">url</span><span class="w"> </span><span class="nl">https</span><span class="p">:</span><span class="o">//</span><span class="n">s3</span><span class="p">.</span><span class="n">abci</span><span class="p">.</span><span class="n">ai</span><span class="w"> </span><span class="n">iam</span><span class="w"> </span><span class="n">remove</span><span class="o">-</span><span class="k">user</span><span class="o">-</span><span class="k">from</span><span class="o">-</span><span class="k">group</span><span class="w"> </span><span class="o">--</span><span class="k">user</span><span class="o">-</span><span class="n">name</span><span class="w"> </span><span class="n">aaa00000</span><span class="mf">.1</span><span class="w"> </span><span class="o">--</span><span class="k">group</span><span class="o">-</span><span class="n">name</span><span class="w"> </span><span class="k">default</span><span class="o">-</span><span class="n">sub</span><span class="o">-</span><span class="k">group</span><span class="w"></span>
-<span class="o">[</span><span class="n">username@es1 ~</span><span class="o">]</span><span class="err">$</span><span class="w"> </span><span class="n">aws</span><span class="w"> </span><span class="c1">--endpoint-url https://s3.abci.ai iam remove-user-from-group --user-name aaa00001.1 --group-name default-sub-group</span>
+<div class="codehilite"><pre><span></span><code><span class="err">[username@es1 ~]$ aws --endpoint-url https://s3.abci.ai iam remove-user-from-group --user-name aaa00000.1 --group-name default-sub-group</span>
+<span class="err">[username@es1 ~]$ aws --endpoint-url https://s3.abci.ai iam remove-user-from-group --user-name aaa00001.1 --group-name default-sub-group</span>
 </code></pre></div>
+
 
 <p>サブグループからアカウントを外した後、新しいサブグループにアカウントを追加します。
 アカウントをサブグループに追加するには、<code>aws iam add-user-to-group</code>コマンドを使用します。</p>
-<div class="codehilite"><pre><span></span><code><span class="o">[</span><span class="n">username@es1 ~</span><span class="o">]</span><span class="err">$</span><span class="w"> </span><span class="n">aws</span><span class="w"> </span><span class="o">--</span><span class="n">endpoint</span><span class="o">-</span><span class="n">url</span><span class="w"> </span><span class="nl">https</span><span class="p">:</span><span class="o">//</span><span class="n">s3</span><span class="p">.</span><span class="n">abci</span><span class="p">.</span><span class="n">ai</span><span class="w"> </span><span class="n">iam</span><span class="w"> </span><span class="k">add</span><span class="o">-</span><span class="k">user</span><span class="o">-</span><span class="k">to</span><span class="o">-</span><span class="k">group</span><span class="w"> </span><span class="o">--</span><span class="k">user</span><span class="o">-</span><span class="n">name</span><span class="w"> </span><span class="n">aaa00000</span><span class="mf">.1</span><span class="w"> </span><span class="o">--</span><span class="k">group</span><span class="o">-</span><span class="n">name</span><span class="w"> </span><span class="n">sensor8</span><span class="o">-</span><span class="k">read</span><span class="o">-</span><span class="k">only</span><span class="o">-</span><span class="k">group</span><span class="w"></span>
-<span class="o">[</span><span class="n">username@es1 ~</span><span class="o">]</span><span class="err">$</span><span class="w"> </span><span class="n">aws</span><span class="w"> </span><span class="c1">--endpoint-url https://s3.abci.ai iam add-user-to-group --user-name aaa00001.1 --group-name sensor8-write-only-group</span>
+<div class="codehilite"><pre><span></span><code><span class="err">[username@es1 ~]$ aws --endpoint-url https://s3.abci.ai iam add-user-to-group --user-name aaa00000.1 --group-name sensor8-read-only-group</span>
+<span class="err">[username@es1 ~]$ aws --endpoint-url https://s3.abci.ai iam add-user-to-group --user-name aaa00001.1 --group-name sensor8-write-only-group</span>
 </code></pre></div>
+
 
 <p>以上で、アカウントのサブグループへの移動が完了しました。
 これにより、アカウントaaa00000.1はバケットsensor8内のオブジェクトをダウンロードのみできるようになり、aaa00001.1はオブジェクトのアップロードのみできるようになります。</p>
 <h2 id="example-2-limiting-bucket-access-by-networks">例2: バケットにアクセスできるネットワークを限定する</h2>
 <p>接続元IPアドレスによるアクセス制限を行う例として、ABCI内部ネットワーク(10.0.0.0/17)外のアクセスは拒否する設定をdefault-sub-groupに追加する方法を説明します。</p>
 <p>以下の内容のJSONファイルを作成します。ファイル名は<code>deny-outside-abci.json</code>とします。</p>
-<div class="codehilite"><pre><span></span><code>{
-    &quot;Version&quot;: &quot;2012-10-17&quot;,
-    &quot;Statement&quot;: [
-        {
-            &quot;Effect&quot;: &quot;Deny&quot;,
-            &quot;Action&quot;: &quot;s3:*&quot;,
-            &quot;Resource&quot;: &quot;*&quot;,
-            &quot;Condition&quot;: {
-                &quot;NotIpAddress&quot;: {
-                    &quot;aws:SourceIp&quot;: [
-                        &quot;10.0.0.0/17&quot;
-                    ]
-                }
-            }
-        }
-    ]
-}
+<div class="codehilite"><pre><span></span><code><span class="err">{</span>
+<span class="err">    &quot;Version&quot;: &quot;2012-10-17&quot;,</span>
+<span class="err">    &quot;Statement&quot;: [</span>
+<span class="err">        {</span>
+<span class="err">            &quot;Effect&quot;: &quot;Deny&quot;,</span>
+<span class="err">            &quot;Action&quot;: &quot;s3:*&quot;,</span>
+<span class="err">            &quot;Resource&quot;: &quot;*&quot;,</span>
+<span class="err">            &quot;Condition&quot;: {</span>
+<span class="err">                &quot;NotIpAddress&quot;: {</span>
+<span class="err">                    &quot;aws:SourceIp&quot;: [</span>
+<span class="err">                        &quot;10.0.0.0/17&quot;</span>
+<span class="err">                    ]</span>
+<span class="err">                }</span>
+<span class="err">            }</span>
+<span class="err">        }</span>
+<span class="err">    ]</span>
+<span class="err">}</span>
 </code></pre></div>
+
 
 <p>JSONファイルを用意したら<code>aws iam create-policy</code>コマンドを使用しポリシーを作成します。</p>
-<div class="codehilite"><pre><span></span><code><span class="o">[</span><span class="n">username@es1 ~</span><span class="o">]</span><span class="err">$</span><span class="w"> </span><span class="n">aws</span><span class="w"> </span><span class="o">--</span><span class="n">endpoint</span><span class="o">-</span><span class="n">url</span><span class="w"> </span><span class="nl">https</span><span class="p">:</span><span class="o">//</span><span class="n">s3</span><span class="p">.</span><span class="n">abci</span><span class="p">.</span><span class="n">ai</span><span class="w"> </span><span class="n">iam</span><span class="w"> </span><span class="k">create</span><span class="o">-</span><span class="n">policy</span><span class="w"> </span><span class="o">--</span><span class="n">policy</span><span class="o">-</span><span class="n">name</span><span class="w"> </span><span class="k">deny</span><span class="o">-</span><span class="n">outside</span><span class="o">-</span><span class="n">abci</span><span class="w"> </span><span class="o">--</span><span class="n">policy</span><span class="o">-</span><span class="n">document</span><span class="w"> </span><span class="k">file</span><span class="err">:</span><span class="o">//</span><span class="k">deny</span><span class="o">-</span><span class="n">outside</span><span class="o">-</span><span class="n">abci</span><span class="p">.</span><span class="n">json</span><span class="w"></span>
-<span class="err">{</span><span class="w"></span>
-<span class="w">    </span><span class="ss">&quot;Policy&quot;</span><span class="err">:</span><span class="w"> </span><span class="err">{</span><span class="w"></span>
-<span class="w">        </span><span class="ss">&quot;PolicyName&quot;</span><span class="err">:</span><span class="w"> </span><span class="ss">&quot;deny-outside-abci&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">        </span><span class="ss">&quot;PolicyId&quot;</span><span class="err">:</span><span class="w"> </span><span class="ss">&quot;PLCYRASJDBNC4TCO8WDA6QKKEEXAMPLE&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">        </span><span class="ss">&quot;Arn&quot;</span><span class="err">:</span><span class="w"> </span><span class="ss">&quot;arn:aws:iam::123456789012:policy/deny-outside-abci&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">        </span><span class="ss">&quot;Path&quot;</span><span class="err">:</span><span class="w"> </span><span class="ss">&quot;/&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">        </span><span class="ss">&quot;DefaultVersionId&quot;</span><span class="err">:</span><span class="w"> </span><span class="ss">&quot;v1&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">        </span><span class="ss">&quot;AttachmentCount&quot;</span><span class="err">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"></span>
-<span class="w">        </span><span class="ss">&quot;IsAttachable&quot;</span><span class="err">:</span><span class="w"> </span><span class="k">true</span><span class="p">,</span><span class="w"></span>
-<span class="w">        </span><span class="ss">&quot;CreateDate&quot;</span><span class="err">:</span><span class="w"> </span><span class="ss">&quot;2021-10-13T10:51:31+00:00&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">        </span><span class="ss">&quot;UpdateDate&quot;</span><span class="err">:</span><span class="w"> </span><span class="ss">&quot;2021-10-13T10:51:31+00:00&quot;</span><span class="w"></span>
-<span class="w">    </span><span class="err">}</span><span class="w"></span>
-<span class="err">}</span><span class="w"></span>
+<div class="codehilite"><pre><span></span><code><span class="err">[username@es1 ~]$ aws --endpoint-url https://s3.abci.ai iam create-policy --policy-name deny-outside-abci --policy-document file://deny-outside-abci.json</span>
+<span class="err">{</span>
+<span class="err">    &quot;Policy&quot;: {</span>
+<span class="err">        &quot;PolicyName&quot;: &quot;deny-outside-abci&quot;,</span>
+<span class="err">        &quot;PolicyId&quot;: &quot;PLCYRASJDBNC4TCO8WDA6QKKEEXAMPLE&quot;,</span>
+<span class="err">        &quot;Arn&quot;: &quot;arn:aws:iam::123456789012:policy/deny-outside-abci&quot;,</span>
+<span class="err">        &quot;Path&quot;: &quot;/&quot;,</span>
+<span class="err">        &quot;DefaultVersionId&quot;: &quot;v1&quot;,</span>
+<span class="err">        &quot;AttachmentCount&quot;: 0,</span>
+<span class="err">        &quot;IsAttachable&quot;: true,</span>
+<span class="err">        &quot;CreateDate&quot;: &quot;2021-10-13T10:51:31+00:00&quot;,</span>
+<span class="err">        &quot;UpdateDate&quot;: &quot;2021-10-13T10:51:31+00:00&quot;</span>
+<span class="err">    }</span>
+<span class="err">}</span>
 </code></pre></div>
 
+
 <p>次に、サブグループdefault-sub-groupに作成したポリシーを割り当てます。</p>
-<div class="codehilite"><pre><span></span><code><span class="o">[</span><span class="n">username@es1 ~</span><span class="o">]</span><span class="err">$</span><span class="w"> </span><span class="n">aws</span><span class="w"> </span><span class="c1">--endpoint-url https://s3.abci.ai iam attach-group-policy --group-name default-sub-group --policy-arn arn:aws:iam::123456789012:policy/deny-outside-abci</span>
+<div class="codehilite"><pre><span></span><code><span class="err">[username@es1 ~]$ aws --endpoint-url https://s3.abci.ai iam attach-group-policy --group-name default-sub-group --policy-arn arn:aws:iam::123456789012:policy/deny-outside-abci</span>
 </code></pre></div>
+
 
 <p>これによりグループ内のクラウドストレージアカウントは、ABCI内部からしかクラウドストレージにアクセスできなくなります。</p>
                 

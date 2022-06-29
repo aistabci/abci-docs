@@ -1171,10 +1171,11 @@
 <li><a href="https://github.com/NVIDIA/gdrcopy">GDRCopy: A fast GPU memory copy library based on NVIDIA GPUDirect RDMA technology</a></li>
 </ul>
 <p>これらのライブラリを利用するためには、事前に<code>module</code>コマンドを用いて利用環境を設定する必要があります。<code>module</code>コマンドを用いると、<code>PATH</code>などの実行用環境変数や、ヘッダファイルやライブラリのサーチパスなどのコンパイル用環境変数を自動的に設定できます。</p>
-<div class="codehilite"><pre><span></span><code><span class="p">[</span><span class="n">username</span><span class="err">@</span><span class="n">g0001</span> <span class="o">~</span><span class="p">]</span><span class="o">$</span> <span class="n">module</span> <span class="nb">load</span> <span class="n">cuda</span><span class="o">/</span><span class="mf">10.0</span><span class="o">/</span><span class="mf">10.0</span><span class="o">.</span><span class="mf">130.1</span>
-<span class="p">[</span><span class="n">username</span><span class="err">@</span><span class="n">g0001</span> <span class="o">~</span><span class="p">]</span><span class="o">$</span> <span class="n">module</span> <span class="nb">load</span> <span class="n">cudnn</span><span class="o">/</span><span class="mf">7.4</span><span class="o">/</span><span class="mf">7.4</span><span class="o">.</span><span class="mi">2</span>
-<span class="p">[</span><span class="n">username</span><span class="err">@</span><span class="n">g0001</span> <span class="o">~</span><span class="p">]</span><span class="o">$</span> <span class="n">module</span> <span class="nb">load</span> <span class="n">nccl</span><span class="o">/</span><span class="mf">2.4</span><span class="o">/</span><span class="mf">2.4</span><span class="o">.</span><span class="mi">8</span><span class="o">-</span><span class="mi">1</span>
+<div class="codehilite"><pre><span></span><code><span class="err">[username@g0001 ~]$ module load cuda/10.0/10.0.130.1</span>
+<span class="err">[username@g0001 ~]$ module load cudnn/7.4/7.4.2</span>
+<span class="err">[username@g0001 ~]$ module load nccl/2.4/2.4.8-1</span>
 </code></pre></div>
+
 
 <p>以下では、ABCIシステムで利用可能なCUDA Toolkit、cuDNN、NCCLの一覧を示します。</p>
 <h2 id="cuda-toolkit">CUDA Toolkit</h2>
@@ -2115,8 +2116,9 @@
 </tbody>
 </table>
 <p>インタラクティブ利用時の実行例:</p>
-<div class="codehilite"><pre><span></span><code><span class="o">[</span><span class="n">username@es1 ~</span><span class="o">]</span><span class="err">$</span><span class="w"> </span><span class="n">qrsh</span><span class="w"> </span><span class="o">-</span><span class="n">g</span><span class="w"> </span><span class="n">grpname</span><span class="w"> </span><span class="o">-</span><span class="n">l</span><span class="w"> </span><span class="n">rt_F</span><span class="o">=</span><span class="mi">1</span><span class="w"> </span><span class="o">-</span><span class="n">l</span><span class="w"> </span><span class="n">h_rt</span><span class="o">=</span><span class="mi">1</span><span class="err">:</span><span class="mi">00</span><span class="err">:</span><span class="mi">00</span><span class="w"> </span><span class="o">-</span><span class="n">v</span><span class="w"> </span><span class="n">GPU_COMPUTE_MODE</span><span class="o">=</span><span class="mi">1</span><span class="w"></span>
+<div class="codehilite"><pre><span></span><code><span class="err">[username@es1 ~]$ qrsh -g grpname -l rt_F=1 -l h_rt=1:00:00 -v GPU_COMPUTE_MODE=1</span>
 </code></pre></div>
+
 
 <p>バッチ利用時の実行例:</p>
 <div class="codehilite"><pre><span></span><code><span class="ch">#!/bin/bash</span>
@@ -2128,6 +2130,7 @@
 <span class="c1">#$ -v GPU_COMPUTE_MODE=1</span>
 /usr/bin/nvidia-smi
 </code></pre></div>
+
 
 <div class="footnote">
 <hr />

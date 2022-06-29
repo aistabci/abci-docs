@@ -1270,6 +1270,30 @@
                 
                 
                 <h1 id="storage">Storage</h1>
+<p>ABCI has the following five types of storage. </p>
+<ul>
+<li><a href="#home-area">Home Area</a></li>
+<li><a href="#group-area">Group Area</a></li>
+<li><a href="#scratch-area">Global scratch area</a></li>
+<li><a href="#local-storage">Local Storage</a><ul>
+<li><a href="#local-scratch">Local scratch</a></li>
+<li><a href="#persistent-local-scratch">Persistent local scratch</a> (Reserved only)</li>
+<li><a href="#beeond-storage">BeeOND storage</a></li>
+</ul>
+</li>
+<li><a href="../abci-cloudstorage/">ABCI Cloud Storage</a></li>
+</ul>
+<div class="admonition tips">
+<p class="admonition-title">Tips</p>
+<p>Such as Home Area or Group Area, other than Local Storage, are resources shared by all users. Excessive I/O load or unnecessary access will not only cause inconvenience to other users but also slow down the execution speed of your own jobs. Please keep the following points in mind when using each storage space. </p>
+<ul>
+<li>For data that does not require persistence, such as intermediate data, we recommend that you refrain from creating files and use memory. </li>
+<li>Proactively utilize scratch areas that can be accessed at high speed. It is recommended that files that will be accessed many times during job execution be staged (temporarily copied) to a Local scratch. </li>
+<li>Creating and accessing large numbers of small files on a shared file system is not recommended. It is recommended to use scratch space or combine multiple files into one larger file and then access them. For example, consider using HDF5, WebDataset, etc. </li>
+<li>Refrain from opening/closing the same file unnecessarily and repeatedly within a single job. </li>
+<li>Please consult us in advance if you intend to create more than a hundred million files in a short period of time. </li>
+</ul>
+</div>
 <h2 id="home-area">Home Area</h2>
 <p>Home area is the disk area of the Lustre file system shared by interactive and compute nodes, and is available to all ABCI users by default. The disk quota is limited to 200 GiB.</p>
 <div class="admonition warning">
@@ -1287,6 +1311,7 @@ If an attempt is made to create a file that exceeds the limit, an error message 
 <h4 id="how-to-set-up-file-striping">How to Set Up File Striping</h4>
 <div class="codehilite"><pre><span></span><code><span class="err">$</span><span class="w"> </span><span class="n">lfs</span><span class="w"> </span><span class="n">setstripe</span><span class="w">  </span><span class="o">[</span><span class="n">options</span><span class="o">]</span><span class="w"> </span><span class="o">&lt;</span><span class="n">dirname</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="n">filename</span><span class="o">&gt;</span><span class="w"></span>
 </code></pre></div>
+
 
 <table>
 <thead>
@@ -1315,41 +1340,46 @@ If an attempt is made to create a file that exceeds the limit, an error message 
 <p>To display  OST index, use the <code>lfs df</code> or <code>lfs osts</code> command</p>
 </div>
 <p>Example) Set a stripe pattern #1. (Creating a new file with a specific stripe pattern.)</p>
-<div class="codehilite"><pre><span></span><code><span class="o">[</span><span class="n">username@es1 work</span><span class="o">]</span><span class="err">$</span><span class="w"> </span><span class="n">lfs</span><span class="w"> </span><span class="n">setstripe</span><span class="w"> </span><span class="o">-</span><span class="n">S</span><span class="w"> </span><span class="mi">1</span><span class="n">m</span><span class="w"> </span><span class="o">-</span><span class="n">i</span><span class="w"> </span><span class="mi">10</span><span class="w"> </span><span class="o">-</span><span class="n">c</span><span class="w"> </span><span class="mi">4</span><span class="w"> </span><span class="n">stripe</span><span class="o">-</span><span class="k">file</span><span class="w"></span>
-<span class="o">[</span><span class="n">username@es1 work</span><span class="o">]</span><span class="err">$</span><span class="w"> </span><span class="n">ls</span><span class="w"></span>
-<span class="n">stripe</span><span class="o">-</span><span class="k">file</span><span class="w"></span>
+<div class="codehilite"><pre><span></span><code><span class="err">[username@es1 work]$ lfs setstripe -S 1m -i 10 -c 4 stripe-file</span>
+<span class="err">[username@es1 work]$ ls</span>
+<span class="err">stripe-file</span>
 </code></pre></div>
 
+
 <p>Example) Set a stripe pattern #2. (Setting up a stripe pattern to a directory.)</p>
-<div class="codehilite"><pre><span></span><code><span class="o">[</span><span class="n">username@es1 work</span><span class="o">]</span><span class="err">$</span><span class="w"> </span><span class="n">mkdir</span><span class="w"> </span><span class="n">stripe</span><span class="o">-</span><span class="n">dir</span><span class="w"></span>
-<span class="o">[</span><span class="n">username@es1 work</span><span class="o">]</span><span class="err">$</span><span class="w"> </span><span class="n">lfs</span><span class="w"> </span><span class="n">setstripe</span><span class="w"> </span><span class="o">-</span><span class="n">S</span><span class="w"> </span><span class="mi">1</span><span class="n">m</span><span class="w"> </span><span class="o">-</span><span class="n">i</span><span class="w"> </span><span class="mi">10</span><span class="w"> </span><span class="o">-</span><span class="n">c</span><span class="w"> </span><span class="mi">4</span><span class="w"> </span><span class="n">stripe</span><span class="o">-</span><span class="n">dir</span><span class="w"></span>
+<div class="codehilite"><pre><span></span><code><span class="err">[username@es1 work]$ mkdir stripe-dir</span>
+<span class="err">[username@es1 work]$ lfs setstripe -S 1m -i 10 -c 4 stripe-dir</span>
 </code></pre></div>
+
 
 <h4 id="how-to-display-file-striping-settings">How to Display File Striping Settings</h4>
 <p>To display the stripe pattern of a specified file or directory, use the lfs getstripe command.</p>
 <div class="codehilite"><pre><span></span><code>$ lfs getstripe &lt;dirname <span class="p">|</span> filename&gt;
 </code></pre></div>
 
+
 <p>Example) Display stripe settings #1. (Displaying the stripe pattern of a file.)</p>
-<div class="codehilite"><pre><span></span><code><span class="o">[</span><span class="n">username@es1 work</span><span class="o">]</span><span class="err">$</span><span class="w"> </span><span class="n">lfs</span><span class="w"> </span><span class="n">getstripe</span><span class="w"> </span><span class="n">stripe</span><span class="o">-</span><span class="k">file</span><span class="w"></span>
-<span class="n">stripe</span><span class="o">-</span><span class="k">file</span><span class="w"></span>
-<span class="nl">lmm_stripe_count</span><span class="p">:</span><span class="w">  </span><span class="mi">4</span><span class="w"></span>
-<span class="nl">lmm_stripe_size</span><span class="p">:</span><span class="w">   </span><span class="mi">1048576</span><span class="w"></span>
-<span class="nl">lmm_pattern</span><span class="p">:</span><span class="w">       </span><span class="mi">1</span><span class="w"></span>
-<span class="nl">lmm_layout_gen</span><span class="p">:</span><span class="w">    </span><span class="mi">0</span><span class="w"></span>
-<span class="nl">lmm_stripe_offset</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="w"></span>
-<span class="w">        </span><span class="n">obdidx</span><span class="w">           </span><span class="n">objid</span><span class="w">           </span><span class="n">objid</span><span class="w">           </span><span class="k">group</span><span class="w"></span>
-<span class="w">            </span><span class="mi">10</span><span class="w">         </span><span class="mi">3024641</span><span class="w">       </span><span class="mh">0x2e2701</span><span class="w">                </span><span class="mi">0</span><span class="w"></span>
-<span class="w">            </span><span class="mi">11</span><span class="w">         </span><span class="mi">3026034</span><span class="w">       </span><span class="mh">0x2e2c72</span><span class="w">                </span><span class="mi">0</span><span class="w"></span>
-<span class="w">            </span><span class="mi">12</span><span class="w">         </span><span class="mi">3021952</span><span class="w">       </span><span class="mh">0x2e1c80</span><span class="w">                </span><span class="mi">0</span><span class="w"></span>
-<span class="w">            </span><span class="mi">13</span><span class="w">         </span><span class="mi">3019616</span><span class="w">       </span><span class="mh">0x2e1360</span><span class="w">                </span><span class="mi">0</span><span class="w"></span>
+<div class="codehilite"><pre><span></span><code><span class="err">[username@es1 work]$ lfs getstripe stripe-file</span>
+<span class="err">stripe-file</span>
+<span class="c">lmm_stripe_count:  4</span>
+<span class="c">lmm_stripe_size:   1048576</span>
+<span class="c">lmm_pattern:       1</span>
+<span class="c">lmm_layout_gen:    0</span>
+<span class="c">lmm_stripe_offset: 10</span>
+<span class="c">        obdidx           objid           objid           group</span>
+<span class="c">            10         3024641       0x2e2701                0</span>
+<span class="c">            11         3026034       0x2e2c72                0</span>
+<span class="c">            12         3021952       0x2e1c80                0</span>
+<span class="c">            13         3019616       0x2e1360                0</span>
 </code></pre></div>
 
+
 <p>Example) Display stripe settings #2. (Displaying the stripe pattern of a directory.)</p>
-<div class="codehilite"><pre><span></span><code><span class="o">[</span><span class="n">username@es1 work</span><span class="o">]</span><span class="err">$</span><span class="w"> </span><span class="n">lfs</span><span class="w"> </span><span class="n">getstripe</span><span class="w"> </span><span class="n">stripe</span><span class="o">-</span><span class="n">dir</span><span class="w"></span>
-<span class="n">stripe</span><span class="o">-</span><span class="n">dir</span><span class="w"></span>
-<span class="nl">stripe_count</span><span class="p">:</span><span class="w">  </span><span class="mi">4</span><span class="w"> </span><span class="nl">stripe_size</span><span class="p">:</span><span class="w">   </span><span class="mi">1048576</span><span class="w"> </span><span class="nl">stripe_offset</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="w"></span>
+<div class="codehilite"><pre><span></span><code><span class="err">[username@es1 work]$ lfs getstripe stripe-dir</span>
+<span class="err">stripe-dir</span>
+<span class="c">stripe_count:  4 stripe_size:   1048576 stripe_offset: 10</span>
 </code></pre></div>
+
 
 <h2 id="group-area">Group Area</h2>
 <p>Group area is the disk area of the Lustre file system shared by interactive and compute nodes. To use Group area, "Usage Manager" of the group needs to apply "Add group disk" via <a href="https://portal.abci.ai/user/">ABCI User Portal</a>. Regarding how to add group disk, please refer to <a href="https://docs.abci.ai/portal/en/03/#352-disk-addition-request">Disk Addition Request</a> in the <a href="https://docs.abci.ai/portal/en/">ABCI Portal Guide</a>.</p>
@@ -1359,40 +1389,44 @@ If an attempt is made to create a file that exceeds the limit, an error message 
 You can see how much inodes are currently used for each MDT with the <code>lfs df -i</code>.
 The <code>IUse%</code>entry in the<code>/groups [MDT:?]</code>line in the output of the command is the percentage of the inode used in each MDT.<br>
 In the following example, the inode utilization for MDT:0 is 30%.</p>
-<div class="codehilite"><pre><span></span><code><span class="o">[</span><span class="n">username@es1 ~</span><span class="o">]</span><span class="err">$</span><span class="w"> </span><span class="n">lfs</span><span class="w"> </span><span class="n">df</span><span class="w"> </span><span class="o">-</span><span class="n">i</span><span class="w"> </span><span class="o">/</span><span class="n">groups</span><span class="w"></span>
-<span class="n">UUID</span><span class="w">                      </span><span class="n">Inodes</span><span class="w">       </span><span class="n">IUsed</span><span class="w">       </span><span class="n">IFree</span><span class="w"> </span><span class="n">IUse</span><span class="o">%</span><span class="w"> </span><span class="n">Mounted</span><span class="w"> </span><span class="k">on</span><span class="w"></span>
-<span class="n">groups</span><span class="o">-</span><span class="n">MDT0000_UUID</span><span class="w">   </span><span class="mi">3110850464</span><span class="w">   </span><span class="mi">904313344</span><span class="w">  </span><span class="mi">2206537120</span><span class="w">  </span><span class="mi">30</span><span class="o">%</span><span class="w"> </span><span class="o">/</span><span class="n">groups</span><span class="o">[</span><span class="n">MDT:0</span><span class="o">]</span><span class="w"></span>
-<span class="n">groups</span><span class="o">-</span><span class="n">MDT0001_UUID</span><span class="w">   </span><span class="mi">3110850464</span><span class="w">  </span><span class="mi">2778144306</span><span class="w">   </span><span class="mi">332706158</span><span class="w">  </span><span class="mi">90</span><span class="o">%</span><span class="w"> </span><span class="o">/</span><span class="n">groups</span><span class="o">[</span><span class="n">MDT:1</span><span class="o">]</span><span class="w"></span>
-<span class="n">groups</span><span class="o">-</span><span class="n">MDT0002_UUID</span><span class="w">   </span><span class="mi">3110850464</span><span class="w">   </span><span class="mi">935143862</span><span class="w">  </span><span class="mi">2175706602</span><span class="w">  </span><span class="mi">31</span><span class="o">%</span><span class="w"> </span><span class="o">/</span><span class="n">groups</span><span class="o">[</span><span class="n">MDT:2</span><span class="o">]</span><span class="w"></span>
-<span class="n">groups</span><span class="o">-</span><span class="n">MDT0003_UUID</span><span class="w">   </span><span class="mi">3110850464</span><span class="w">  </span><span class="mi">1356224703</span><span class="w">  </span><span class="mi">1754625761</span><span class="w">  </span><span class="mi">44</span><span class="o">%</span><span class="w"> </span><span class="o">/</span><span class="n">groups</span><span class="o">[</span><span class="n">MDT:3</span><span class="o">]</span><span class="w"></span>
-<span class="n">groups</span><span class="o">-</span><span class="n">MDT0004_UUID</span><span class="w">   </span><span class="mi">3110850464</span><span class="w">   </span><span class="mi">402932004</span><span class="w">  </span><span class="mi">2707918460</span><span class="w">  </span><span class="mi">13</span><span class="o">%</span><span class="w"> </span><span class="o">/</span><span class="n">groups</span><span class="o">[</span><span class="n">MDT:4</span><span class="o">]</span><span class="w"></span>
-<span class="n">groups</span><span class="o">-</span><span class="n">MDT0005_UUID</span><span class="w">   </span><span class="mi">3110850464</span><span class="w">         </span><span class="mi">433</span><span class="w">  </span><span class="mi">3110850031</span><span class="w">   </span><span class="mi">1</span><span class="o">%</span><span class="w"> </span><span class="o">/</span><span class="n">groups</span><span class="o">[</span><span class="n">MDT:5</span><span class="o">]</span><span class="w"></span>
-<span class="p">(</span><span class="n">snip</span><span class="p">)</span><span class="w"></span>
+<div class="codehilite"><pre><span></span><code><span class="err">[username@es1 ~]$ lfs df -i /groups</span>
+<span class="err">UUID                      Inodes       IUsed       IFree IUse% Mounted on</span>
+<span class="err">groups-MDT0000_UUID   3110850464   904313344  2206537120  30% /groups[MDT:0]</span>
+<span class="err">groups-MDT0001_UUID   3110850464  2778144306   332706158  90% /groups[MDT:1]</span>
+<span class="err">groups-MDT0002_UUID   3110850464   935143862  2175706602  31% /groups[MDT:2]</span>
+<span class="err">groups-MDT0003_UUID   3110850464  1356224703  1754625761  44% /groups[MDT:3]</span>
+<span class="err">groups-MDT0004_UUID   3110850464   402932004  2707918460  13% /groups[MDT:4]</span>
+<span class="err">groups-MDT0005_UUID   3110850464         433  3110850031   1% /groups[MDT:5]</span>
+<span class="err">(snip)</span>
 </code></pre></div>
+
 
 <p>You can check MDT No. used by your ABCI group with the following command.</p>
-<div class="codehilite"><pre><span></span><code><span class="o">[</span><span class="n">username@es1 ~</span><span class="o">]</span><span class="err">$</span><span class="w"> </span><span class="n">ls</span><span class="w"> </span><span class="o">-</span><span class="n">d</span><span class="w"> </span><span class="o">/</span><span class="n">groups</span><span class="o">/</span><span class="vm">?</span><span class="o">/</span><span class="p">(</span><span class="n">ABCI</span><span class="w"> </span><span class="k">group</span><span class="w"> </span><span class="n">name</span><span class="p">)</span><span class="w"></span>
-<span class="o">/</span><span class="n">groups</span><span class="o">/</span><span class="p">(</span><span class="n">MDT</span><span class="w"> </span><span class="k">No</span><span class="p">.)</span><span class="o">/</span><span class="p">(</span><span class="n">ABCI</span><span class="w"> </span><span class="k">group</span><span class="w"> </span><span class="n">name</span><span class="p">)</span><span class="w"></span>
+<div class="codehilite"><pre><span></span><code><span class="err">[username@es1 ~]$ ls -d /groups/?/(ABCI group name)</span>
+<span class="err">/groups/(MDT No.)/(ABCI group name)</span>
 </code></pre></div>
 
+
 <p>In the following example, the ABCI group uses MDT:0.</p>
-<div class="codehilite"><pre><span></span><code><span class="o">[</span><span class="n">username@es1 ~</span><span class="o">]</span><span class="err">$</span><span class="w"> </span><span class="n">ls</span><span class="w"> </span><span class="o">-</span><span class="n">d</span><span class="w"> </span><span class="o">/</span><span class="n">groups</span><span class="o">/</span><span class="vm">?</span><span class="o">/</span><span class="n">gaa00000</span><span class="w"></span>
-<span class="o">/</span><span class="n">groups</span><span class="o">/</span><span class="mi">0</span><span class="o">/</span><span class="n">gaa00000</span><span class="w"></span>
+<div class="codehilite"><pre><span></span><code><span class="err">[username@es1 ~]$ ls -d /groups/?/gaa00000</span>
+<span class="err">/groups/0/gaa00000</span>
 </code></pre></div>
+
 
 <h2 id="scratch-area">Global scratch area</h2>
 <p>Global scratch area is lustre file system and available for all ABCI users.
 This storage is shared by interactive nodes and all Compute Nodes V and A.
 The quota for every users is set in 10TiB. </p>
 <p>The following directory is available for all users as a high speed data area.</p>
-<div class="codehilite"><pre><span></span><code>/scratch/(ABCI account)
+<div class="codehilite"><pre><span></span><code><span class="err">/scratch/(ABCI account)</span>
 </code></pre></div>
+
 
 <p>To see the quota value of the global scratch area, issue <code>show_quota</code> command. For a description of the command, see <a href="../getting-started/#checking-disk-quota">Checking Disk Quota</a>.</p>
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
 <p>The global scratch area has a cleanup function.<br>
-When the usage of the file area or i-node area of /scratch exceeds 80%, delete candidates are selected based on the last access time and creation date of files and directories directly under /scratch/(ABCI account), and the files/directories of the delete candidates are automatically deleted. If a directory directly under /scratch/(ABCI account) becomes a candidate for deletion, all files/directories under that directory are deleted. Note that the last access time and creation date of the files/directories under that directory are not taken into account.<br>
+When the usage of the file area or inode area of /scratch exceeds 80%, delete candidates are selected based on the last access time and creation date of files and directories directly under /scratch/(ABCI account), and the files/directories of the delete candidates are automatically deleted. If a directory directly under /scratch/(ABCI account) becomes a candidate for deletion, all files/directories under that directory are deleted. Note that the last access time and creation date of the files/directories under that directory are not taken into account.<br>
 The first candidate to be deleted is the one whose last access time is older than 40 days. If, after deleting the candidate, the utilization of/scratch is still over 80%, the next candidate to be deleted is one whose creation date is older than 40 days.</p>
 </div>
 <div class="admonition note">
@@ -1403,16 +1437,17 @@ The first candidate to be deleted is the one whose last access time is older tha
 <p>Files and directories under the global scratch area are selected as candidates for deletion based on the last access time and creation date. However, you cannot check the creation date of files and directories with the ls command.</p>
 <p>We have prepared the <code>show_scratch</code> command to display the creation date of files and directories under the global scratch area. To check whether the file created in the global scratch area is a candidate for deletion, use the <code>show_scratch</code> command.</p>
 <p>Example) Display creation date.</p>
-<div class="codehilite"><pre><span></span><code><span class="o">[</span><span class="n">username@es1 ~</span><span class="o">]</span><span class="err">$</span><span class="w"> </span><span class="n">show_scratch</span><span class="w"></span>
-<span class="w">                                                                     </span><span class="k">Last</span><span class="w"> </span><span class="nl">Updated</span><span class="p">:</span><span class="w"> </span><span class="mi">2022</span><span class="o">/</span><span class="mi">01</span><span class="o">/</span><span class="mi">01</span><span class="w"> </span><span class="mi">00</span><span class="err">:</span><span class="mi">05</span><span class="w"></span>
-<span class="n">Directory</span><span class="o">/</span><span class="k">File</span><span class="w">                                     </span><span class="n">created_date</span><span class="w">        </span><span class="n">valid_date</span><span class="w">    </span><span class="n">remained</span><span class="p">(</span><span class="n">days</span><span class="p">)</span><span class="w"></span>
-<span class="o">/</span><span class="n">scratch</span><span class="o">/</span><span class="n">username</span><span class="o">/</span><span class="n">dir1</span><span class="w">                               </span><span class="mi">2021</span><span class="o">/</span><span class="mi">12</span><span class="o">/</span><span class="mi">17</span><span class="w">        </span><span class="mi">2022</span><span class="o">/</span><span class="mi">01</span><span class="o">/</span><span class="mi">26</span><span class="w">                </span><span class="mi">25</span><span class="w"></span>
-<span class="o">/</span><span class="n">scratch</span><span class="o">/</span><span class="n">username</span><span class="o">/</span><span class="n">dir2</span><span class="w">                               </span><span class="mi">2021</span><span class="o">/</span><span class="mi">12</span><span class="o">/</span><span class="mi">18</span><span class="w">        </span><span class="mi">2022</span><span class="o">/</span><span class="mi">01</span><span class="o">/</span><span class="mi">27</span><span class="w">                </span><span class="mi">26</span><span class="w"></span>
-<span class="o">/</span><span class="n">scratch</span><span class="o">/</span><span class="n">username</span><span class="o">/</span><span class="n">file1</span><span class="w">                              </span><span class="mi">2021</span><span class="o">/</span><span class="mi">12</span><span class="o">/</span><span class="mi">19</span><span class="w">        </span><span class="mi">2022</span><span class="o">/</span><span class="mi">01</span><span class="o">/</span><span class="mi">28</span><span class="w">                </span><span class="mi">27</span><span class="w"></span>
-<span class="o">/</span><span class="n">scratch</span><span class="o">/</span><span class="n">username</span><span class="o">/</span><span class="n">file2</span><span class="w">                              </span><span class="mi">2021</span><span class="o">/</span><span class="mi">11</span><span class="o">/</span><span class="mi">20</span><span class="w">        </span><span class="mi">2021</span><span class="o">/</span><span class="mi">12</span><span class="o">/</span><span class="mi">30</span><span class="w">                 </span><span class="mi">0</span><span class="w"></span>
-<span class="n">Directories</span><span class="w"> </span><span class="ow">and</span><span class="w"> </span><span class="n">files</span><span class="w"> </span><span class="n">that</span><span class="w"> </span><span class="n">have</span><span class="w"> </span><span class="n">expired</span><span class="w"> </span><span class="n">will</span><span class="w"> </span><span class="n">be</span><span class="w"> </span><span class="n">deleted</span><span class="w"> </span><span class="n">soon</span><span class="p">.</span><span class="w"></span>
-<span class="k">If</span><span class="w"> </span><span class="n">necessary</span><span class="p">,</span><span class="w"> </span><span class="n">please</span><span class="w"> </span><span class="k">backup</span><span class="p">.</span><span class="w"></span>
+<div class="codehilite"><pre><span></span><code><span class="err">[username@es1 ~]$ show_scratch</span>
+<span class="err">                                                                     Last Updated: 2022/01/01 00:05</span>
+<span class="err">Directory/File                                     created_date        valid_date    remained(days)</span>
+<span class="err">/scratch/username/dir1                               2021/12/17        2022/01/26                25</span>
+<span class="err">/scratch/username/dir2                               2021/12/18        2022/01/27                26</span>
+<span class="err">/scratch/username/file1                              2021/12/19        2022/01/28                27</span>
+<span class="err">/scratch/username/file2                              2021/11/20        2021/12/30                 0</span>
+<span class="err">Directories and files that have expired will be deleted soon.</span>
+<span class="err">If necessary, please backup.</span>
 </code></pre></div>
+
 
 <table>
 <thead>
@@ -1457,6 +1492,7 @@ Note that the DoM and Stripe features are disabled by default.</p>
 <div class="codehilite"><pre><span></span><code><span class="err">$</span><span class="w"> </span><span class="n">lfs</span><span class="w"> </span><span class="n">setstripe</span><span class="w"> </span><span class="o">[</span><span class="n">options</span><span class="o">]</span><span class="w"> </span><span class="o">&lt;</span><span class="n">dirname</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="n">filename</span><span class="o">&gt;</span><span class="w"></span>
 </code></pre></div>
 
+
 <table>
 <thead>
 <tr>
@@ -1481,20 +1517,23 @@ Note that the DoM and Stripe features are disabled by default.</p>
 </div>
 <p>Example）Create a new file with DoM enabled<br>
 The first 64KiB of the file data is placed on the MDT and rest of file is placed  on  OST(s) with default striping.</p>
-<div class="codehilite"><pre><span></span><code><span class="o">[</span><span class="n">username@es1 work</span><span class="o">]</span><span class="err">$</span><span class="w"> </span><span class="n">lfs</span><span class="w"> </span><span class="n">setstripe</span><span class="w"> </span><span class="o">-</span><span class="n">E</span><span class="w"> </span><span class="mi">64</span><span class="n">k</span><span class="w"> </span><span class="o">-</span><span class="n">L</span><span class="w"> </span><span class="n">mdt</span><span class="w"> </span><span class="o">-</span><span class="n">E</span><span class="w"> </span><span class="o">-</span><span class="mi">1</span><span class="w"> </span><span class="n">dom</span><span class="o">-</span><span class="k">file</span><span class="w"></span>
-<span class="o">[</span><span class="n">username@es1 work</span><span class="o">]</span><span class="err">$</span><span class="w"> </span><span class="n">ls</span><span class="w"></span>
-<span class="n">dom</span><span class="o">-</span><span class="k">file</span><span class="w"></span>
+<div class="codehilite"><pre><span></span><code><span class="err">[username@es1 work]$ lfs setstripe -E 64k -L mdt -E -1 dom-file</span>
+<span class="err">[username@es1 work]$ ls</span>
+<span class="err">dom-file</span>
 </code></pre></div>
+
 
 <p>Example）Configure DoM features for the directory</p>
-<div class="codehilite"><pre><span></span><code><span class="o">[</span><span class="n">username@es1 work</span><span class="o">]</span><span class="err">$</span><span class="w"> </span><span class="n">mkdir</span><span class="w"> </span><span class="n">dom</span><span class="o">-</span><span class="n">dir</span><span class="w"></span>
-<span class="o">[</span><span class="n">username@es1 work</span><span class="o">]</span><span class="err">$</span><span class="w"> </span><span class="n">lfs</span><span class="w"> </span><span class="n">setstripe</span><span class="w"> </span><span class="o">-</span><span class="n">E</span><span class="w"> </span><span class="mi">64</span><span class="n">k</span><span class="w"> </span><span class="o">-</span><span class="n">L</span><span class="w"> </span><span class="n">mdt</span><span class="w"> </span><span class="o">-</span><span class="n">E</span><span class="w"> </span><span class="o">-</span><span class="mi">1</span><span class="w"> </span><span class="n">dom</span><span class="o">-</span><span class="n">dir</span><span class="w"></span>
+<div class="codehilite"><pre><span></span><code><span class="err">[username@es1 work]$ mkdir dom-dir</span>
+<span class="err">[username@es1 work]$ lfs setstripe -E 64k -L mdt -E -1 dom-dir</span>
 </code></pre></div>
 
+
 <p>Example) Checking if the file is DoM enabled</p>
-<div class="codehilite"><pre><span></span><code><span class="o">[</span><span class="n">username@es1 work</span><span class="o">]</span><span class="err">$</span><span class="w"> </span><span class="n">lfs</span><span class="w"> </span><span class="n">getstripe</span><span class="w"> </span><span class="o">-</span><span class="n">I1</span><span class="w"> </span><span class="o">-</span><span class="n">L</span><span class="w"> </span><span class="n">dom</span><span class="o">-</span><span class="k">file</span><span class="w"></span>
-<span class="n">mdt</span><span class="w"></span>
+<div class="codehilite"><pre><span></span><code><span class="err">[username@es1 work]$ lfs getstripe -I1 -L dom-file</span>
+<span class="err">mdt</span>
 </code></pre></div>
+
 
 <p>If you see <code>mdt</code>, the DoM feature is enabled. It is not valid for any other display.</p>
 <div class="admonition note">
@@ -1503,15 +1542,17 @@ The first 64KiB of the file data is placed on the MDT and rest of file is placed
 </div>
 <p>You can also configure <a href="./#advanced-option-file-striping">File Striping</a> with the DoM feature.</p>
 <p>Example) Create a new file with DoM layout and a specific striping pattern for the rest data placed on OST(s).</p>
-<div class="codehilite"><pre><span></span><code><span class="o">[</span><span class="n">username@es1 work</span><span class="o">]</span><span class="err">$</span><span class="w"> </span><span class="n">lfs</span><span class="w"> </span><span class="n">setstripe</span><span class="w"> </span><span class="o">-</span><span class="n">E</span><span class="w"> </span><span class="mi">64</span><span class="n">k</span><span class="w"> </span><span class="o">-</span><span class="n">L</span><span class="w"> </span><span class="n">mdt</span><span class="w"> </span><span class="o">-</span><span class="n">E</span><span class="w"> </span><span class="o">-</span><span class="mi">1</span><span class="w"> </span><span class="o">-</span><span class="n">S</span><span class="w"> </span><span class="mi">1</span><span class="n">m</span><span class="w"> </span><span class="o">-</span><span class="n">i</span><span class="w"> </span><span class="o">-</span><span class="mi">1</span><span class="w"> </span><span class="o">-</span><span class="n">c</span><span class="w"> </span><span class="mi">4</span><span class="w"> </span><span class="n">dom</span><span class="o">-</span><span class="n">stripe</span><span class="o">-</span><span class="k">file</span><span class="w"></span>
-<span class="o">[</span><span class="n">username@es1 work</span><span class="o">]</span><span class="err">$</span><span class="w"> </span><span class="n">ls</span><span class="w"></span>
-<span class="n">dom</span><span class="o">-</span><span class="n">stripe</span><span class="o">-</span><span class="k">file</span><span class="w"></span>
+<div class="codehilite"><pre><span></span><code><span class="err">[username@es1 work]$ lfs setstripe -E 64k -L mdt -E -1 -S 1m -i -1 -c 4 dom-stripe-file</span>
+<span class="err">[username@es1 work]$ ls</span>
+<span class="err">dom-stripe-file</span>
 </code></pre></div>
 
+
 <p>Example) Enable the DoM feature and set a striping pattern (for OST(s)) of the directory</p>
-<div class="codehilite"><pre><span></span><code><span class="o">[</span><span class="n">username@es1 work</span><span class="o">]</span><span class="err">$</span><span class="w"> </span><span class="n">mkdir</span><span class="w"> </span><span class="n">dom</span><span class="o">-</span><span class="n">stripe</span><span class="o">-</span><span class="n">dir</span><span class="w"></span>
-<span class="o">[</span><span class="n">username@es1 work</span><span class="o">]</span><span class="err">$</span><span class="w"> </span><span class="n">lfs</span><span class="w"> </span><span class="n">setstripe</span><span class="w"> </span><span class="o">-</span><span class="n">E</span><span class="w"> </span><span class="mi">64</span><span class="n">k</span><span class="w"> </span><span class="o">-</span><span class="n">L</span><span class="w"> </span><span class="n">mdt</span><span class="w"> </span><span class="o">-</span><span class="n">E</span><span class="w"> </span><span class="o">-</span><span class="mi">1</span><span class="w"> </span><span class="o">-</span><span class="n">S</span><span class="w"> </span><span class="mi">1</span><span class="n">m</span><span class="w"> </span><span class="o">-</span><span class="n">i</span><span class="w"> </span><span class="o">-</span><span class="mi">1</span><span class="w"> </span><span class="o">-</span><span class="n">c</span><span class="w"> </span><span class="mi">4</span><span class="w"> </span><span class="n">dom</span><span class="o">-</span><span class="n">stripe</span><span class="o">-</span><span class="n">dir</span><span class="w"></span>
+<div class="codehilite"><pre><span></span><code><span class="err">[username@es1 work]$ mkdir dom-stripe-dir</span>
+<span class="err">[username@es1 work]$ lfs setstripe -E 64k -L mdt -E -1 -S 1m -i -1 -c 4 dom-stripe-dir</span>
 </code></pre></div>
+
 
 <h2 id="local-storage">Local Storage</h2>
 <p>In ABCI System, a 1.6 TB NVMe SSD x1 is installed into each compute node (V), a 2.0 TB NVMe SSD x2 are installed into each compute node (A) and a 1.9 TB SATA 3.0 SSD x1 is installed into each memory-intensive node. There are two ways to utilize these storages as follows:</p>
@@ -1561,14 +1602,17 @@ The local storage path is different for each job and you can access to local sto
 cp -rp <span class="nv">$SGE_LOCALDIR</span>/foo.txt <span class="nv">$HOME</span>/test/foo.txt
 </code></pre></div>
 
+
 <p>Example) Submitting a job</p>
-<div class="codehilite"><pre><span></span><code><span class="o">[</span><span class="n">username@es1 ~</span><span class="o">]</span><span class="err">$</span><span class="w"> </span><span class="n">qsub</span><span class="w"> </span><span class="o">-</span><span class="n">g</span><span class="w"> </span><span class="n">grpname</span><span class="w"> </span><span class="n">use_local_storage</span><span class="p">.</span><span class="n">sh</span><span class="w"></span>
+<div class="codehilite"><pre><span></span><code><span class="err">[username@es1 ~]$ qsub -g grpname use_local_storage.sh</span>
 </code></pre></div>
+
 
 <p>Example) Status after execution of use_local_storage.sh</p>
 <div class="codehilite"><pre><span></span><code><span class="p">[</span><span class="n">username</span><span class="o">@</span><span class="n">es1</span> <span class="o">~</span><span class="p">]</span><span class="o">$</span> <span class="n">ls</span> <span class="o">$</span><span class="n">HOME</span><span class="o">/</span><span class="n">test</span><span class="o">/</span>
 <span class="n">foo.txt</span>    <span class="o">&lt;-</span> <span class="n">The</span> <span class="n">file</span> <span class="n">remain</span> <span class="n">only</span> <span class="n">when</span> <span class="n">it</span> <span class="n">is</span> <span class="n">copied</span> <span class="n">explicitly</span> <span class="n">in</span> <span class="n">script.</span>
 </code></pre></div>
+
 
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
@@ -1592,9 +1636,11 @@ The persistent local storage can be accessed by using <a href="../job-execution/
 <span class="nb">echo</span> test2 &gt; <span class="nv">$SGE_ARDIR</span>/bar.txt
 </code></pre></div>
 
+
 <p>Example) Submitting a job</p>
-<div class="codehilite"><pre><span></span><code><span class="o">[</span><span class="n">username@es1 ~</span><span class="o">]</span><span class="err">$</span><span class="w"> </span><span class="n">qsub</span><span class="w"> </span><span class="o">-</span><span class="n">g</span><span class="w"> </span><span class="n">grpname</span><span class="w"> </span><span class="o">-</span><span class="n">ar</span><span class="w"> </span><span class="mi">12345</span><span class="w"> </span><span class="n">use_reserved_storage_write</span><span class="p">.</span><span class="n">sh</span><span class="w"></span>
+<div class="codehilite"><pre><span></span><code><span class="err">[username@es1 ~]$ qsub -g grpname -ar 12345 use_reserved_storage_write.sh</span>
 </code></pre></div>
+
 
 <p>Example) sample of job script (use_reserved_storage_read.sh)</p>
 <div class="codehilite"><pre><span></span><code><span class="ch">#!/bin/bash</span>
@@ -1606,9 +1652,11 @@ cat <span class="nv">$SGE_ARDIR</span>/foo.txt
 cat <span class="nv">$SGE_ARDIR</span>/bar.txt
 </code></pre></div>
 
+
 <p>Example) Submitting a job</p>
-<div class="codehilite"><pre><span></span><code><span class="o">[</span><span class="n">username@es1 ~</span><span class="o">]</span><span class="err">$</span><span class="w"> </span><span class="n">qsub</span><span class="w"> </span><span class="o">-</span><span class="n">g</span><span class="w"> </span><span class="n">grpname</span><span class="w"> </span><span class="o">-</span><span class="n">ar</span><span class="w"> </span><span class="mi">12345</span><span class="w"> </span><span class="n">use_reserved_storage_read</span><span class="p">.</span><span class="n">sh</span><span class="w"></span>
+<div class="codehilite"><pre><span></span><code><span class="err">[username@es1 ~]$ qsub -g grpname -ar 12345 use_reserved_storage_read.sh</span>
 </code></pre></div>
+
 
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
@@ -1637,14 +1685,17 @@ And you need to specify <code>-l rt_F</code> or <code>-l rt_AF</code> option in 
 cp -rp <span class="nv">$SGE_BEEONDDIR</span>/foo.txt <span class="nv">$HOME</span>/test/foo.txt
 </code></pre></div>
 
+
 <p>Example) Submitting a job</p>
-<div class="codehilite"><pre><span></span><code><span class="o">[</span><span class="n">username@es1 ~</span><span class="o">]</span><span class="err">$</span><span class="w"> </span><span class="n">qsub</span><span class="w"> </span><span class="o">-</span><span class="n">g</span><span class="w"> </span><span class="n">grpname</span><span class="w"> </span><span class="n">use_beeond</span><span class="p">.</span><span class="n">sh</span><span class="w"></span>
+<div class="codehilite"><pre><span></span><code><span class="err">[username@es1 ~]$ qsub -g grpname use_beeond.sh</span>
 </code></pre></div>
+
 
 <p>Example) Status after execution of use_beeond.sh</p>
 <div class="codehilite"><pre><span></span><code><span class="p">[</span><span class="n">username</span><span class="o">@</span><span class="n">es1</span> <span class="o">~</span><span class="p">]</span><span class="o">$</span> <span class="n">ls</span> <span class="o">$</span><span class="n">HOME</span><span class="o">/</span><span class="n">test</span><span class="o">/</span>
 <span class="n">foo.txt</span>    <span class="o">&lt;-</span> <span class="n">The</span> <span class="n">file</span> <span class="n">remain</span> <span class="n">only</span> <span class="n">when</span> <span class="n">it</span> <span class="n">is</span> <span class="n">copied</span> <span class="n">explicitly</span> <span class="n">in</span> <span class="n">script.</span>
 </code></pre></div>
+
 
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
@@ -1708,21 +1759,23 @@ Compute node (V) has only one NVMe SSD, so local scratch and BeeOND storage are 
 beegfs-df -p /beeond
 </code></pre></div>
 
-<p>Example output</p>
-<div class="codehilite"><pre><span></span><code>METADATA SERVERS:
-TargetID   Cap. Pool        Total         Free    %      ITotal       IFree    %
-========   =========        =====         ====    =      ======       =====    =
-       1      normal    1489.7GiB    1322.7GiB  89%      149.0M      149.0M 100%
-       2      normal    1489.7GiB    1322.7GiB  89%      149.0M      149.0M 100%
 
-STORAGE TARGETS:
-TargetID   Cap. Pool        Total         Free    %      ITotal       IFree    %
-========   =========        =====         ====    =      ======       =====    =
-       1      normal    1489.7GiB    1322.7GiB  89%      149.0M      149.0M 100%
-       2      normal    1489.7GiB    1322.7GiB  89%      149.0M      149.0M 100%
-       3      normal    1489.7GiB    1322.7GiB  89%      149.0M      149.0M 100%
-       4      normal    1489.7GiB    1322.7GiB  89%      149.0M      149.0M 100%
+<p>Example output</p>
+<div class="codehilite"><pre><span></span><code><span class="n">METADATA</span> <span class="n">SERVERS</span><span class="p">:</span>
+<span class="n">TargetID</span>   <span class="n">Cap</span><span class="p">.</span> <span class="n">Pool</span>        <span class="n">Total</span>         <span class="k">Free</span>    <span class="o">%</span>      <span class="n">ITotal</span>       <span class="n">IFree</span>    <span class="o">%</span>
+<span class="o">========</span>   <span class="o">=========</span>        <span class="o">=====</span>         <span class="o">====</span>    <span class="o">=</span>      <span class="o">======</span>       <span class="o">=====</span>    <span class="o">=</span>
+       <span class="mi">1</span>      <span class="n">normal</span>    <span class="mi">1489</span><span class="p">.</span><span class="mi">7</span><span class="n">GiB</span>    <span class="mi">1322</span><span class="p">.</span><span class="mi">7</span><span class="n">GiB</span>  <span class="mi">89</span><span class="o">%</span>      <span class="mi">149</span><span class="p">.</span><span class="mi">0</span><span class="n">M</span>      <span class="mi">149</span><span class="p">.</span><span class="mi">0</span><span class="n">M</span> <span class="mi">100</span><span class="o">%</span>
+       <span class="mi">2</span>      <span class="n">normal</span>    <span class="mi">1489</span><span class="p">.</span><span class="mi">7</span><span class="n">GiB</span>    <span class="mi">1322</span><span class="p">.</span><span class="mi">7</span><span class="n">GiB</span>  <span class="mi">89</span><span class="o">%</span>      <span class="mi">149</span><span class="p">.</span><span class="mi">0</span><span class="n">M</span>      <span class="mi">149</span><span class="p">.</span><span class="mi">0</span><span class="n">M</span> <span class="mi">100</span><span class="o">%</span>
+
+<span class="k">STORAGE</span> <span class="n">TARGETS</span><span class="p">:</span>
+<span class="n">TargetID</span>   <span class="n">Cap</span><span class="p">.</span> <span class="n">Pool</span>        <span class="n">Total</span>         <span class="k">Free</span>    <span class="o">%</span>      <span class="n">ITotal</span>       <span class="n">IFree</span>    <span class="o">%</span>
+<span class="o">========</span>   <span class="o">=========</span>        <span class="o">=====</span>         <span class="o">====</span>    <span class="o">=</span>      <span class="o">======</span>       <span class="o">=====</span>    <span class="o">=</span>
+       <span class="mi">1</span>      <span class="n">normal</span>    <span class="mi">1489</span><span class="p">.</span><span class="mi">7</span><span class="n">GiB</span>    <span class="mi">1322</span><span class="p">.</span><span class="mi">7</span><span class="n">GiB</span>  <span class="mi">89</span><span class="o">%</span>      <span class="mi">149</span><span class="p">.</span><span class="mi">0</span><span class="n">M</span>      <span class="mi">149</span><span class="p">.</span><span class="mi">0</span><span class="n">M</span> <span class="mi">100</span><span class="o">%</span>
+       <span class="mi">2</span>      <span class="n">normal</span>    <span class="mi">1489</span><span class="p">.</span><span class="mi">7</span><span class="n">GiB</span>    <span class="mi">1322</span><span class="p">.</span><span class="mi">7</span><span class="n">GiB</span>  <span class="mi">89</span><span class="o">%</span>      <span class="mi">149</span><span class="p">.</span><span class="mi">0</span><span class="n">M</span>      <span class="mi">149</span><span class="p">.</span><span class="mi">0</span><span class="n">M</span> <span class="mi">100</span><span class="o">%</span>
+       <span class="mi">3</span>      <span class="n">normal</span>    <span class="mi">1489</span><span class="p">.</span><span class="mi">7</span><span class="n">GiB</span>    <span class="mi">1322</span><span class="p">.</span><span class="mi">7</span><span class="n">GiB</span>  <span class="mi">89</span><span class="o">%</span>      <span class="mi">149</span><span class="p">.</span><span class="mi">0</span><span class="n">M</span>      <span class="mi">149</span><span class="p">.</span><span class="mi">0</span><span class="n">M</span> <span class="mi">100</span><span class="o">%</span>
+       <span class="mi">4</span>      <span class="n">normal</span>    <span class="mi">1489</span><span class="p">.</span><span class="mi">7</span><span class="n">GiB</span>    <span class="mi">1322</span><span class="p">.</span><span class="mi">7</span><span class="n">GiB</span>  <span class="mi">89</span><span class="o">%</span>      <span class="mi">149</span><span class="p">.</span><span class="mi">0</span><span class="n">M</span>      <span class="mi">149</span><span class="p">.</span><span class="mi">0</span><span class="n">M</span> <span class="mi">100</span><span class="o">%</span>
 </code></pre></div>
+
 
 <h4 id="advanced-option-file-striping_1">[Advanced Option] File Striping</h4>
 <p>Files are split into small chunks and stored in multiple storage servers in a BeeOND partition.  Users can change file striping configuration of BeeOND.</p>
@@ -1763,17 +1816,18 @@ beegfs-ctl --setpattern --numtargets<span class="o">=</span><span class="m">8</s
 beegfs-ctl --mount<span class="o">=</span>/beeond --getentryinfo <span class="si">${</span><span class="nv">BEEOND_DIR</span><span class="si">}</span>
 </code></pre></div>
 
-<p>Output example</p>
-<div class="codehilite"><pre><span></span><code>New chunksize: 4194304
-New number of storage targets: 8
 
-EntryID: 0-5D36F5EC-1
-Metadata node: gXXXX.abci.local [ID: 1]
-Stripe pattern details:
-+ Type: RAID0
-+ Chunksize: 4M
-+ Number of storage targets: desired: 8
-+ Storage Pool: 1 (Default)
+<p>Output example</p>
+<div class="codehilite"><pre><span></span><code><span class="k">New</span> <span class="n">chunksize</span><span class="p">:</span> <span class="mi">4194304</span>
+<span class="k">New</span> <span class="nb">number</span> <span class="k">of</span> <span class="k">storage</span> <span class="n">targets</span><span class="p">:</span> <span class="mi">8</span>
+
+<span class="n">EntryID</span><span class="p">:</span> <span class="mi">0</span><span class="o">-</span><span class="mi">5</span><span class="n">D36F5EC</span><span class="o">-</span><span class="mi">1</span>
+<span class="n">Metadata</span> <span class="n">node</span><span class="p">:</span> <span class="n">gXXXX</span><span class="p">.</span><span class="n">abci</span><span class="p">.</span><span class="k">local</span> <span class="p">[</span><span class="n">ID</span><span class="p">:</span> <span class="mi">1</span><span class="p">]</span>
+<span class="n">Stripe</span> <span class="n">pattern</span> <span class="n">details</span><span class="p">:</span>
+<span class="o">+</span> <span class="k">Type</span><span class="p">:</span> <span class="n">RAID0</span>
+<span class="o">+</span> <span class="n">Chunksize</span><span class="p">:</span> <span class="mi">4</span><span class="n">M</span>
+<span class="o">+</span> <span class="nb">Number</span> <span class="k">of</span> <span class="k">storage</span> <span class="n">targets</span><span class="p">:</span> <span class="n">desired</span><span class="p">:</span> <span class="mi">8</span>
+<span class="o">+</span> <span class="k">Storage</span> <span class="n">Pool</span><span class="p">:</span> <span class="mi">1</span> <span class="p">(</span><span class="k">Default</span><span class="p">)</span>
 </code></pre></div>
                 
               
