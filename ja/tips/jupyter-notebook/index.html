@@ -1210,24 +1210,22 @@
 <p>ここでは、Jupyter Notebookをpipでインストールして利用する手順を説明します。</p>
 <h3 id="install-by-pip">インストール</h3>
 <p>計算ノードを一台占有し、Python仮想環境を作成し、<code>pip</code>で<code>tensorflow</code>と<code>jupyter</code>をインストールします。</p>
-<div class="codehilite"><pre><span></span><code><span class="err">[username@es1 ~]$ qrsh -g grpname -l rt_F=1 -l h_rt=1:00:00</span>
-<span class="err">[username@g0001 ~]$ module load python/3.6/3.6.12 cuda/11.0/11.0.3 cudnn/8.1/8.1.1 gcc/7.4.0</span>
-<span class="err">[username@g0001 ~]$ python3 -m venv ~/jupyter_env</span>
-<span class="err">[username@g0001 ~]$ source ~/jupyter_env/bin/activate</span>
-<span class="err">(jupyter_env) [username@g0001 ~]$ pip3 install tensorflow jupyter numpy</span>
+<div class="codehilite"><pre><span></span><code><span class="p">[</span><span class="n">username</span><span class="err">@</span><span class="n">es1</span> <span class="o">~</span><span class="p">]</span><span class="o">$</span> <span class="n">qrsh</span> <span class="o">-</span><span class="n">g</span> <span class="n">grpname</span> <span class="o">-</span><span class="n">l</span> <span class="n">rt_F</span><span class="o">=</span><span class="mi">1</span> <span class="o">-</span><span class="n">l</span> <span class="n">h_rt</span><span class="o">=</span><span class="mi">1</span><span class="p">:</span><span class="mi">00</span><span class="p">:</span><span class="mi">00</span>
+<span class="p">[</span><span class="n">username</span><span class="err">@</span><span class="n">g0001</span> <span class="o">~</span><span class="p">]</span><span class="o">$</span> <span class="n">module</span> <span class="nb">load</span> <span class="n">python</span><span class="o">/</span><span class="mf">3.6</span><span class="o">/</span><span class="mf">3.6</span><span class="o">.</span><span class="mi">12</span> <span class="n">cuda</span><span class="o">/</span><span class="mf">11.0</span><span class="o">/</span><span class="mf">11.0</span><span class="o">.</span><span class="mi">3</span> <span class="n">cudnn</span><span class="o">/</span><span class="mf">8.1</span><span class="o">/</span><span class="mf">8.1</span><span class="o">.</span><span class="mi">1</span> <span class="n">gcc</span><span class="o">/</span><span class="mf">7.4</span><span class="o">.</span><span class="mi">0</span>
+<span class="p">[</span><span class="n">username</span><span class="err">@</span><span class="n">g0001</span> <span class="o">~</span><span class="p">]</span><span class="o">$</span> <span class="n">python3</span> <span class="o">-</span><span class="n">m</span> <span class="n">venv</span> <span class="o">~/</span><span class="n">jupyter_env</span>
+<span class="p">[</span><span class="n">username</span><span class="err">@</span><span class="n">g0001</span> <span class="o">~</span><span class="p">]</span><span class="o">$</span> <span class="n">source</span> <span class="o">~/</span><span class="n">jupyter_env</span><span class="o">/</span><span class="n">bin</span><span class="o">/</span><span class="n">activate</span>
+<span class="p">(</span><span class="n">jupyter_env</span><span class="p">)</span> <span class="p">[</span><span class="n">username</span><span class="err">@</span><span class="n">g0001</span> <span class="o">~</span><span class="p">]</span><span class="o">$</span> <span class="n">pip3</span> <span class="n">install</span> <span class="n">tensorflow</span> <span class="n">jupyter</span> <span class="n">numpy</span>
 </code></pre></div>
-
 
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>この例では<code>~/jupyter_env</code>ディレクトリの中にインストールしています。</p>
 </div>
 <p>次回以降は、以下のようにモジュールの読み込みと<code>~/jupyter_env</code>のアクティベートだけで済みます。</p>
-<div class="codehilite"><pre><span></span><code><span class="err">[username@es1 ~]$ qrsh -g grpname -l rt_F=1 -l h_rt=1:00:00</span>
-<span class="err">[username@g0001 ~]$ module load python/3.6/3.6.12 cuda/11.0/11.0.3 cudnn/8.1/8.1.1 gcc/7.4.0</span>
-<span class="err">[username@g0001 ~]$ source ~/jupyter_env/bin/activate</span>
+<div class="codehilite"><pre><span></span><code><span class="p">[</span><span class="n">username</span><span class="err">@</span><span class="n">es1</span> <span class="o">~</span><span class="p">]</span><span class="o">$</span> <span class="n">qrsh</span> <span class="o">-</span><span class="n">g</span> <span class="n">grpname</span> <span class="o">-</span><span class="n">l</span> <span class="n">rt_F</span><span class="o">=</span><span class="mi">1</span> <span class="o">-</span><span class="n">l</span> <span class="n">h_rt</span><span class="o">=</span><span class="mi">1</span><span class="p">:</span><span class="mi">00</span><span class="p">:</span><span class="mi">00</span>
+<span class="p">[</span><span class="n">username</span><span class="err">@</span><span class="n">g0001</span> <span class="o">~</span><span class="p">]</span><span class="o">$</span> <span class="n">module</span> <span class="nb">load</span> <span class="n">python</span><span class="o">/</span><span class="mf">3.6</span><span class="o">/</span><span class="mf">3.6</span><span class="o">.</span><span class="mi">12</span> <span class="n">cuda</span><span class="o">/</span><span class="mf">11.0</span><span class="o">/</span><span class="mf">11.0</span><span class="o">.</span><span class="mi">3</span> <span class="n">cudnn</span><span class="o">/</span><span class="mf">8.1</span><span class="o">/</span><span class="mf">8.1</span><span class="o">.</span><span class="mi">1</span> <span class="n">gcc</span><span class="o">/</span><span class="mf">7.4</span><span class="o">.</span><span class="mi">0</span>
+<span class="p">[</span><span class="n">username</span><span class="err">@</span><span class="n">g0001</span> <span class="o">~</span><span class="p">]</span><span class="o">$</span> <span class="n">source</span> <span class="o">~/</span><span class="n">jupyter_env</span><span class="o">/</span><span class="n">bin</span><span class="o">/</span><span class="n">activate</span>
 </code></pre></div>
-
 
 <div class="admonition note">
 <p class="admonition-title">Note</p>
@@ -1235,46 +1233,41 @@
 </div>
 <h3 id="start-jupyter-notebook">Jupyter Notebookの起動</h3>
 <p>あとで必要となるため、計算ノードのホスト名を確認しておきます。</p>
-<div class="codehilite"><pre><span></span><code><span class="err">(jupyter_env) [username@g0001 ~]$ hostname</span>
-<span class="err">g0001.abci.local</span>
+<div class="codehilite"><pre><span></span><code><span class="p">(</span><span class="n">jupyter_env</span><span class="p">)</span><span class="w"> </span><span class="o">[</span><span class="n">username@g0001 ~</span><span class="o">]</span><span class="err">$</span><span class="w"> </span><span class="n">hostname</span><span class="w"></span>
+<span class="n">g0001</span><span class="p">.</span><span class="n">abci</span><span class="p">.</span><span class="k">local</span><span class="w"></span>
 </code></pre></div>
-
 
 <p>続いて、以下のようにJupyter Notebookを起動します。</p>
-<div class="codehilite"><pre><span></span><code><span class="p">(</span><span class="n">jupyter_env</span><span class="p">)</span> <span class="p">[</span><span class="n">username</span><span class="o">@</span><span class="n">g0001</span> <span class="o">~</span><span class="p">]</span><span class="err">$</span> <span class="n">jupyter</span> <span class="n">notebook</span> <span class="o">--</span><span class="n">ip</span><span class="o">=</span><span class="ss">`hostname`</span> <span class="o">--</span><span class="n">port</span><span class="o">=</span><span class="mi">8888</span> <span class="o">--</span><span class="n">no</span><span class="o">-</span><span class="n">browser</span>
-<span class="p">:</span>
+<div class="codehilite"><pre><span></span><code><span class="p">(</span><span class="n">jupyter_env</span><span class="p">)</span> <span class="err">[</span><span class="n">username</span><span class="nv">@g0001</span> <span class="o">~</span><span class="err">]</span><span class="n">$</span> <span class="n">jupyter</span> <span class="n">notebook</span> <span class="o">--</span><span class="n">ip</span><span class="o">=</span><span class="n n-Quoted">`hostname`</span> <span class="o">--</span><span class="k">port</span><span class="o">=</span><span class="mi">8888</span> <span class="o">--</span><span class="k">no</span><span class="o">-</span><span class="n">browser</span>
+<span class="o">:</span>
 <span class="p">(</span><span class="n">snip</span><span class="p">)</span>
-<span class="p">:</span>
-<span class="p">[</span><span class="n">I</span> <span class="mi">20</span><span class="p">:</span><span class="mi">41</span><span class="p">:</span><span class="mi">12</span><span class="p">.</span><span class="mi">082</span> <span class="n">NotebookApp</span><span class="p">]</span> <span class="k">Use</span> <span class="n">Control</span><span class="o">-</span><span class="n">C</span> <span class="k">to</span> <span class="n">stop</span> <span class="n">this</span> <span class="n">server</span> <span class="k">and</span> <span class="n">shut</span> <span class="n">down</span> <span class="k">all</span> <span class="nf">kernels</span> <span class="p">(</span><span class="n">twice</span> <span class="k">to</span> <span class="n">skip</span> <span class="n">confirmation</span><span class="p">).</span>
-<span class="p">[</span><span class="n">C</span> <span class="mi">20</span><span class="p">:</span><span class="mi">41</span><span class="p">:</span><span class="mi">12</span><span class="p">.</span><span class="mi">090</span> <span class="n">NotebookApp</span><span class="p">]</span>
+<span class="o">:</span>
+<span class="err">[</span><span class="n">I</span> <span class="mi">20</span><span class="o">:</span><span class="mi">41</span><span class="o">:</span><span class="mf">12.082</span> <span class="n">NotebookApp</span><span class="err">]</span> <span class="k">Use</span> <span class="n">Control</span><span class="o">-</span><span class="n">C</span> <span class="k">to</span> <span class="k">stop</span> <span class="n">this</span> <span class="k">server</span> <span class="k">and</span> <span class="n">shut</span> <span class="n">down</span> <span class="k">all</span> <span class="n">kernels</span> <span class="p">(</span><span class="n">twice</span> <span class="k">to</span> <span class="k">skip</span> <span class="n">confirmation</span><span class="p">).</span>
+<span class="err">[</span><span class="n">C</span> <span class="mi">20</span><span class="o">:</span><span class="mi">41</span><span class="o">:</span><span class="mf">12.090</span> <span class="n">NotebookApp</span><span class="err">]</span>
 
-    <span class="k">To</span> <span class="n">access</span> <span class="n">the</span> <span class="n">notebook</span><span class="p">,</span> <span class="n">open</span> <span class="n">this</span> <span class="n">file</span> <span class="k">in</span> <span class="n">a</span> <span class="n">browser</span><span class="p">:</span>
-        <span class="n">file</span><span class="p">:</span><span class="o">///</span><span class="n">home</span><span class="o">/</span><span class="n">username</span><span class="o">/</span><span class="p">.</span><span class="n">local</span><span class="o">/</span><span class="n">share</span><span class="o">/</span><span class="n">jupyter</span><span class="o">/</span><span class="n">runtime</span><span class="o">/</span><span class="n">nbserver</span><span class="o">-</span><span class="n">xxxxxx</span><span class="o">-</span><span class="n">open</span><span class="p">.</span><span class="n">html</span>
-    <span class="k">Or</span> <span class="n">copy</span> <span class="k">and</span> <span class="n">paste</span> <span class="n">one</span> <span class="n">of</span> <span class="n">these</span> <span class="n">URLs</span><span class="p">:</span>
-        <span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="n">g0001</span><span class="p">.</span><span class="n">abci</span><span class="p">.</span><span class="n">local</span><span class="p">:</span><span class="mi">8888</span><span class="o">/?</span><span class="n">token</span><span class="o">=</span><span class="n">token_string</span>
-     <span class="k">or</span> <span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="mi">127</span><span class="p">.</span><span class="mi">0</span><span class="p">.</span><span class="mi">0</span><span class="p">.</span><span class="mi">1</span><span class="p">:</span><span class="mi">8888</span><span class="o">/?</span><span class="n">token</span><span class="o">=</span><span class="n">token_string</span>
+    <span class="k">To</span> <span class="n">access</span> <span class="n">the</span> <span class="n">notebook</span><span class="p">,</span> <span class="k">open</span> <span class="n">this</span> <span class="k">file</span> <span class="k">in</span> <span class="n">a</span> <span class="n">browser</span><span class="o">:</span>
+        <span class="k">file</span><span class="o">:///</span><span class="n">home</span><span class="o">/</span><span class="n">username</span><span class="o">/</span><span class="p">.</span><span class="k">local</span><span class="o">/</span><span class="k">share</span><span class="o">/</span><span class="n">jupyter</span><span class="o">/</span><span class="n">runtime</span><span class="o">/</span><span class="n">nbserver</span><span class="o">-</span><span class="n">xxxxxx</span><span class="o">-</span><span class="k">open</span><span class="p">.</span><span class="n">html</span>
+    <span class="k">Or</span> <span class="n">copy</span> <span class="k">and</span> <span class="n">paste</span> <span class="k">one</span> <span class="k">of</span> <span class="n">these</span> <span class="n">URLs</span><span class="o">:</span>
+        <span class="n">http</span><span class="o">://</span><span class="n">g0001</span><span class="p">.</span><span class="n">abci</span><span class="p">.</span><span class="k">local</span><span class="o">:</span><span class="mi">8888</span><span class="o">/</span><span class="nv">?</span><span class="n">token</span><span class="o">=</span><span class="n">token_string</span>
+     <span class="k">or</span> <span class="n">http</span><span class="o">://</span><span class="mf">127.0.0.1</span><span class="o">:</span><span class="mi">8888</span><span class="o">/</span><span class="nv">?</span><span class="n">token</span><span class="o">=</span><span class="n">token_string</span>
 </code></pre></div>
-
 
 <h3 id="generate-an-ssh-tunnel">SSHトンネルの作成</h3>
 <p>ABCIシステム利用環境の<a href="../../getting-started/#general-method">SSHクライアントによるログイン::一般的なログイン方法</a>の手順に従い、ローカルPCの10022番ポートがインタラクティブノード(<em>es</em>)に転送されているものとします。</p>
 <p>次に、ローカルPCの8888番ポートを計算ノードの8888番ポートに転送するSSHトンネルを作成します。「<em>g0001</em>」は、Jupyter Notebookの起動の際に確認した計算ノードのホスト名を指定してください。</p>
-<div class="codehilite"><pre><span></span><code><span class="err">[yourpc ~]$ ssh -N -L 8888:g0001:8888 -l username -i /path/identity_file -p 10022 localhost</span>
+<div class="codehilite"><pre><span></span><code>[yourpc ~]$ ssh -N -L 8888:g0001:8888 -l username -i /path/identity_file -p 10022 localhost
 </code></pre></div>
-
 
 <h3 id="connect-to-jupyter-notebook">Jupyter Notebookへの接続</h3>
 <p>ブラウザで以下のURLを開きます。「<em>token_string</em>」は、Jupyter Notebookの起動の際に表示されたものを指定してください。</p>
-<div class="codehilite"><pre><span></span><code><span class="c">http://127.0.0.1:8888/?token=token_string</span>
+<div class="codehilite"><pre><span></span><code>http://127.0.0.1:8888/?token=token_string
 </code></pre></div>
-
 
 <p>動作確認するには、ブラウザにJupyter Notebookのダッシュボード画面が表示されたら、<code>New</code>ボタンから新しいPython3 Notebookを作成し、以下のように実行します。</p>
 <div class="codehilite"><pre><span></span><code><span class="kn">import</span> <span class="nn">tensorflow</span>
-<span class="k">print</span><span class="p">(</span><span class="n">tensorflow</span><span class="o">.</span><span class="n">__version__</span><span class="p">)</span>
-<span class="k">print</span><span class="p">(</span><span class="n">tensorflow</span><span class="o">.</span><span class="n">test</span><span class="o">.</span><span class="n">is_gpu_available</span><span class="p">())</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">tensorflow</span><span class="o">.</span><span class="n">__version__</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">tensorflow</span><span class="o">.</span><span class="n">test</span><span class="o">.</span><span class="n">is_gpu_available</span><span class="p">())</span>
 </code></pre></div>
-
 
 <p><code>is_gpu_available()</code>は、cuDNNライブラリを認識できない場合もFalseを返します。</p>
 <p>Jupyter Notebookの使い方は、<a href="https://jupyter-notebook.readthedocs.io/en/stable/examples/Notebook/Notebook%20Basics.html">Jupyter Notebook Documentation</a>を参照してください。</p>
@@ -1289,54 +1282,51 @@
 <p>pipインストールの代わりに、Jupyter Notebookがインストールされたコンテナイメージを利用することもできます。例えば、<a href="../ngc/">NVIDIA NGC</a>で提供されているTensorFlowのDockerイメージには、TensorFlowだけではなくJupyter Notebookもインストールされています。</p>
 <h3 id="build-a-container-image">コンテナイメージの生成</h3>
 <p>コンテナイメージを取得します。ここでは、NGCが提供しているDockerイメージ(<code>nvcr.io/nvidia/tensorflow:19.07-py3</code>)を利用します。</p>
-<div class="codehilite"><pre><span></span><code><span class="err">[username@es1 ~]$ module load singularitypro</span>
-<span class="err">[username@es1 ~]$ singularity pull docker://nvcr.io/nvidia/tensorflow:19.07-py3</span>
-<span class="c">INFO:    Converting OCI blobs to SIF format</span>
-<span class="c">INFO:    Starting build...</span>
-<span class="err">Getting image source signatures</span>
-<span class="err">Copying blob 5b7339215d1d done</span>
-<span class="err">:</span>
-<span class="err">(snip)</span>
-<span class="err">:</span>
-<span class="c">INFO:    Creating SIF file...</span>
-<span class="c">INFO:    Build complete: tensorflow_19.07-py3.sif</span>
+<div class="codehilite"><pre><span></span><code><span class="p">[</span><span class="n">username</span><span class="err">@</span><span class="n">es1</span> <span class="o">~</span><span class="p">]</span><span class="o">$</span> <span class="n">module</span> <span class="nb">load</span> <span class="n">singularitypro</span>
+<span class="p">[</span><span class="n">username</span><span class="err">@</span><span class="n">es1</span> <span class="o">~</span><span class="p">]</span><span class="o">$</span> <span class="n">singularity</span> <span class="n">pull</span> <span class="n">docker</span><span class="p">:</span><span class="o">//</span><span class="n">nvcr</span><span class="o">.</span><span class="n">io</span><span class="o">/</span><span class="n">nvidia</span><span class="o">/</span><span class="n">tensorflow</span><span class="p">:</span><span class="mf">19.07</span><span class="o">-</span><span class="n">py3</span>
+<span class="n">INFO</span><span class="p">:</span>    <span class="n">Converting</span> <span class="n">OCI</span> <span class="n">blobs</span> <span class="n">to</span> <span class="n">SIF</span> <span class="n">format</span>
+<span class="n">INFO</span><span class="p">:</span>    <span class="n">Starting</span> <span class="n">build</span><span class="o">...</span>
+<span class="n">Getting</span> <span class="n">image</span> <span class="n">source</span> <span class="n">signatures</span>
+<span class="n">Copying</span> <span class="n">blob</span> <span class="mi">5</span><span class="n">b7339215d1d</span> <span class="n">done</span>
+<span class="p">:</span>
+<span class="p">(</span><span class="n">snip</span><span class="p">)</span>
+<span class="p">:</span>
+<span class="n">INFO</span><span class="p">:</span>    <span class="n">Creating</span> <span class="n">SIF</span> <span class="n">file</span><span class="o">...</span>
+<span class="n">INFO</span><span class="p">:</span>    <span class="n">Build</span> <span class="n">complete</span><span class="p">:</span> <span class="n">tensorflow_19</span><span class="o">.</span><span class="mi">07</span><span class="o">-</span><span class="n">py3</span><span class="o">.</span><span class="n">sif</span>
 </code></pre></div>
-
 
 <h3 id="start-jupyter-notebook_1">Jupyter Notebookの起動</h3>
 <p>計算ノードを一台占有します。あとで必要となるため、計算ノードのホスト名を確認しておきます。</p>
-<div class="codehilite"><pre><span></span><code><span class="err">[username@es1 ~]$ qrsh -g grpname -l rt_F=1 -l h_rt=1:00:00</span>
-<span class="err">[username@g0001 ~]$ hostname</span>
-<span class="err">g0001.abci.local</span>
+<div class="codehilite"><pre><span></span><code><span class="o">[</span><span class="n">username@es1 ~</span><span class="o">]</span><span class="err">$</span><span class="w"> </span><span class="n">qrsh</span><span class="w"> </span><span class="o">-</span><span class="n">g</span><span class="w"> </span><span class="n">grpname</span><span class="w"> </span><span class="o">-</span><span class="n">l</span><span class="w"> </span><span class="n">rt_F</span><span class="o">=</span><span class="mi">1</span><span class="w"> </span><span class="o">-</span><span class="n">l</span><span class="w"> </span><span class="n">h_rt</span><span class="o">=</span><span class="mi">1</span><span class="err">:</span><span class="mi">00</span><span class="err">:</span><span class="mi">00</span><span class="w"></span>
+<span class="o">[</span><span class="n">username@g0001 ~</span><span class="o">]</span><span class="err">$</span><span class="w"> </span><span class="n">hostname</span><span class="w"></span>
+<span class="n">g0001</span><span class="p">.</span><span class="n">abci</span><span class="p">.</span><span class="k">local</span><span class="w"></span>
 </code></pre></div>
 
-
 <p>続いて、以下のようにコンテナイメージの中のJupyter Notebookを起動します。</p>
-<div class="codehilite"><pre><span></span><code><span class="p">[</span><span class="n">username</span><span class="o">@</span><span class="n">g0001</span> <span class="o">~</span><span class="p">]</span><span class="err">$</span> <span class="n">module</span> <span class="k">load</span> <span class="n">singularitypro</span>
-<span class="p">[</span><span class="n">username</span><span class="o">@</span><span class="n">g0001</span> <span class="o">~</span><span class="p">]</span><span class="err">$</span> <span class="n">singularity</span> <span class="n">run</span> <span class="o">--</span><span class="n">nv</span> <span class="p">.</span><span class="o">/</span><span class="n">tensorflow_19</span><span class="p">.</span><span class="mi">07</span><span class="o">-</span><span class="n">py3</span><span class="p">.</span><span class="n">sif</span> <span class="n">jupyter</span> <span class="n">notebook</span> <span class="o">--</span><span class="n">ip</span><span class="o">=</span><span class="ss">`hostname`</span> <span class="o">--</span><span class="n">port</span><span class="o">=</span><span class="mi">8888</span> <span class="o">--</span><span class="n">no</span><span class="o">-</span><span class="n">browser</span>
+<div class="codehilite"><pre><span></span><code><span class="err">[</span><span class="n">username</span><span class="nv">@g0001</span> <span class="o">~</span><span class="err">]</span><span class="n">$</span> <span class="n">module</span> <span class="k">load</span> <span class="n">singularitypro</span>
+<span class="err">[</span><span class="n">username</span><span class="nv">@g0001</span> <span class="o">~</span><span class="err">]</span><span class="n">$</span> <span class="n">singularity</span> <span class="n">run</span> <span class="o">--</span><span class="n">nv</span> <span class="p">.</span><span class="o">/</span><span class="n">tensorflow_19</span><span class="mf">.07</span><span class="o">-</span><span class="n">py3</span><span class="p">.</span><span class="n">sif</span> <span class="n">jupyter</span> <span class="n">notebook</span> <span class="o">--</span><span class="n">ip</span><span class="o">=</span><span class="n n-Quoted">`hostname`</span> <span class="o">--</span><span class="k">port</span><span class="o">=</span><span class="mi">8888</span> <span class="o">--</span><span class="k">no</span><span class="o">-</span><span class="n">browser</span>
 
 <span class="o">================</span>
 <span class="o">==</span> <span class="n">TensorFlow</span> <span class="o">==</span>
 <span class="o">================</span>
 
-<span class="n">NVIDIA</span> <span class="k">Release</span> <span class="mi">19</span><span class="p">.</span><span class="mi">07</span> <span class="p">(</span><span class="n">build</span> <span class="mi">7332442</span><span class="p">)</span>
-<span class="n">TensorFlow</span> <span class="n">Version</span> <span class="mi">1</span><span class="p">.</span><span class="mi">14</span><span class="p">.</span><span class="mi">0</span>
+<span class="n">NVIDIA</span> <span class="k">Release</span> <span class="mf">19.07</span> <span class="p">(</span><span class="n">build</span> <span class="mi">7332442</span><span class="p">)</span>
+<span class="n">TensorFlow</span> <span class="n">Version</span> <span class="mf">1.14.0</span>
 
-<span class="n">Container</span> <span class="n">image</span> <span class="nf">Copyright</span> <span class="p">(</span><span class="n">c</span><span class="p">)</span> <span class="mi">2019</span><span class="p">,</span> <span class="n">NVIDIA</span> <span class="n">CORPORATION</span><span class="p">.</span>  <span class="k">All</span> <span class="n">rights</span> <span class="n">reserved</span><span class="p">.</span>
+<span class="n">Container</span> <span class="n">image</span> <span class="n">Copyright</span> <span class="p">(</span><span class="n">c</span><span class="p">)</span> <span class="mi">2019</span><span class="p">,</span> <span class="n">NVIDIA</span> <span class="n">CORPORATION</span><span class="p">.</span>  <span class="k">All</span> <span class="n">rights</span> <span class="n">reserved</span><span class="p">.</span>
 <span class="n">Copyright</span> <span class="mi">2017</span><span class="o">-</span><span class="mi">2019</span> <span class="n">The</span> <span class="n">TensorFlow</span> <span class="n">Authors</span><span class="p">.</span>  <span class="k">All</span> <span class="n">rights</span> <span class="n">reserved</span><span class="p">.</span>
 
-<span class="p">:</span>
+<span class="o">:</span>
 <span class="p">(</span><span class="n">snip</span><span class="p">)</span>
-<span class="p">:</span>
-<span class="p">[</span><span class="n">I</span> <span class="mi">13</span><span class="p">:</span><span class="mi">40</span><span class="p">:</span><span class="mi">14</span><span class="p">.</span><span class="mi">131</span> <span class="n">NotebookApp</span><span class="p">]</span> <span class="k">Use</span> <span class="n">Control</span><span class="o">-</span><span class="n">C</span> <span class="k">to</span> <span class="n">stop</span> <span class="n">this</span> <span class="n">server</span> <span class="k">and</span> <span class="n">shut</span> <span class="n">down</span> <span class="k">all</span> <span class="nf">kernels</span> <span class="p">(</span><span class="n">twice</span> <span class="k">to</span> <span class="n">skip</span> <span class="n">confirmation</span><span class="p">).</span>
-<span class="p">[</span><span class="n">C</span> <span class="mi">13</span><span class="p">:</span><span class="mi">40</span><span class="p">:</span><span class="mi">14</span><span class="p">.</span><span class="mi">138</span> <span class="n">NotebookApp</span><span class="p">]</span>
+<span class="o">:</span>
+<span class="err">[</span><span class="n">I</span> <span class="mi">13</span><span class="o">:</span><span class="mi">40</span><span class="o">:</span><span class="mf">14.131</span> <span class="n">NotebookApp</span><span class="err">]</span> <span class="k">Use</span> <span class="n">Control</span><span class="o">-</span><span class="n">C</span> <span class="k">to</span> <span class="k">stop</span> <span class="n">this</span> <span class="k">server</span> <span class="k">and</span> <span class="n">shut</span> <span class="n">down</span> <span class="k">all</span> <span class="n">kernels</span> <span class="p">(</span><span class="n">twice</span> <span class="k">to</span> <span class="k">skip</span> <span class="n">confirmation</span><span class="p">).</span>
+<span class="err">[</span><span class="n">C</span> <span class="mi">13</span><span class="o">:</span><span class="mi">40</span><span class="o">:</span><span class="mf">14.138</span> <span class="n">NotebookApp</span><span class="err">]</span>
 
-    <span class="k">To</span> <span class="n">access</span> <span class="n">the</span> <span class="n">notebook</span><span class="p">,</span> <span class="n">open</span> <span class="n">this</span> <span class="n">file</span> <span class="k">in</span> <span class="n">a</span> <span class="n">browser</span><span class="p">:</span>
-        <span class="n">file</span><span class="p">:</span><span class="o">///</span><span class="n">home</span><span class="o">/</span><span class="n">username</span><span class="o">/</span><span class="p">.</span><span class="n">local</span><span class="o">/</span><span class="n">share</span><span class="o">/</span><span class="n">jupyter</span><span class="o">/</span><span class="n">runtime</span><span class="o">/</span><span class="n">nbserver</span><span class="o">-</span><span class="n">xxxxxx</span><span class="o">-</span><span class="n">open</span><span class="p">.</span><span class="n">html</span>
-    <span class="k">Or</span> <span class="n">copy</span> <span class="k">and</span> <span class="n">paste</span> <span class="n">one</span> <span class="n">of</span> <span class="n">these</span> <span class="n">URLs</span><span class="p">:</span>
-        <span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="n">hostname</span><span class="p">:</span><span class="mi">8888</span><span class="o">/?</span><span class="n">token</span><span class="o">=</span><span class="n">token_string</span>
+    <span class="k">To</span> <span class="n">access</span> <span class="n">the</span> <span class="n">notebook</span><span class="p">,</span> <span class="k">open</span> <span class="n">this</span> <span class="k">file</span> <span class="k">in</span> <span class="n">a</span> <span class="n">browser</span><span class="o">:</span>
+        <span class="k">file</span><span class="o">:///</span><span class="n">home</span><span class="o">/</span><span class="n">username</span><span class="o">/</span><span class="p">.</span><span class="k">local</span><span class="o">/</span><span class="k">share</span><span class="o">/</span><span class="n">jupyter</span><span class="o">/</span><span class="n">runtime</span><span class="o">/</span><span class="n">nbserver</span><span class="o">-</span><span class="n">xxxxxx</span><span class="o">-</span><span class="k">open</span><span class="p">.</span><span class="n">html</span>
+    <span class="k">Or</span> <span class="n">copy</span> <span class="k">and</span> <span class="n">paste</span> <span class="k">one</span> <span class="k">of</span> <span class="n">these</span> <span class="n">URLs</span><span class="o">:</span>
+        <span class="n">http</span><span class="o">://</span><span class="n">hostname</span><span class="o">:</span><span class="mi">8888</span><span class="o">/</span><span class="nv">?</span><span class="n">token</span><span class="o">=</span><span class="n">token_string</span>
 </code></pre></div>
-
 
 <p>以降の手順はpipインストールの場合と共通です。</p>
 <ul>

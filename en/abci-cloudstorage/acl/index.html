@@ -1321,45 +1321,40 @@ regular ID-&gt;<span class="s2">&quot;ID&quot;</span>: <span class="s2">&quot;1a
 <span class="o">}</span>
 </code></pre></div>
 
-
 <p>Then the source sets ACL of the object as shown below. To grant 'read', use option '--grant-read' and specify the grantee's ID.</p>
-<div class="codehilite"><pre><span></span><code><span class="err">[username@es1 ~]$ aws --endpoint-url https://s3.abci.ai s3api put-object-acl --grant-read id=1a2bc03fa4ee5ba678b90cc1a234f5f67f890f1f2341fa56a78901234cc5fad6 --bucket test-share --key test/testdata</span>
+<div class="codehilite"><pre><span></span><code><span class="o">[</span><span class="n">username@es1 ~</span><span class="o">]</span><span class="err">$</span><span class="w"> </span><span class="n">aws</span><span class="w"> </span><span class="c1">--endpoint-url https://s3.abci.ai s3api put-object-acl --grant-read id=1a2bc03fa4ee5ba678b90cc1a234f5f67f890f1f2341fa56a78901234cc5fad6 --bucket test-share --key test/testdata</span>
 </code></pre></div>
-
 
 <p>Confirm if it has been done successfully. As shown below, the Grants element indentifies 'gaa11111' as a grantee with permission 'READ'.</p>
-<div class="codehilite"><pre><span></span><code><span class="err">[username@es1 ~]$ aws --endpoint-url https://s3.abci.ai s3api get-object-acl --bucket test-share --key test/testdata</span>
-<span class="err">{</span>
-<span class="err">    &quot;Owner&quot;: {</span>
-<span class="err">        &quot;DisplayName&quot;: &quot;gaa00000&quot;,</span>
-<span class="err">        &quot;ID&quot;: &quot;f12d0fa66ea4df5418c0c6234fd5eb3a9f4409bf50b5a58983a30be8f9a42bda&quot;</span>
-<span class="err">    },</span>
-<span class="err">    &quot;Grants&quot;: [</span>
-<span class="err">        {</span>
-<span class="err">            &quot;Grantee&quot;: {</span>
-<span class="err">                &quot;DisplayName&quot;: &quot;gaa11111&quot;,</span>
-<span class="err">                &quot;ID&quot;: &quot;1a2bc03fa4ee5ba678b90cc1a234f5f67f890f1f2341fa56a78901234cc5fad6&quot;,</span>
-<span class="err">                &quot;Type&quot;: &quot;CanonicalUser&quot;</span>
-<span class="err">            },</span>
-<span class="err">            &quot;Permission&quot;: &quot;READ&quot;</span>
-<span class="err">        }</span>
-<span class="err">    ]</span>
-<span class="err">}</span>
+<div class="codehilite"><pre><span></span><code><span class="o">[</span><span class="n">username@es1 ~</span><span class="o">]</span><span class="err">$</span><span class="w"> </span><span class="n">aws</span><span class="w"> </span><span class="o">--</span><span class="n">endpoint</span><span class="o">-</span><span class="n">url</span><span class="w"> </span><span class="nl">https</span><span class="p">:</span><span class="o">//</span><span class="n">s3</span><span class="p">.</span><span class="n">abci</span><span class="p">.</span><span class="n">ai</span><span class="w"> </span><span class="n">s3api</span><span class="w"> </span><span class="k">get</span><span class="o">-</span><span class="k">object</span><span class="o">-</span><span class="n">acl</span><span class="w"> </span><span class="o">--</span><span class="n">bucket</span><span class="w"> </span><span class="n">test</span><span class="o">-</span><span class="n">share</span><span class="w"> </span><span class="o">--</span><span class="k">key</span><span class="w"> </span><span class="n">test</span><span class="o">/</span><span class="n">testdata</span><span class="w"></span>
+<span class="err">{</span><span class="w"></span>
+<span class="w">    </span><span class="ss">&quot;Owner&quot;</span><span class="err">:</span><span class="w"> </span><span class="err">{</span><span class="w"></span>
+<span class="w">        </span><span class="ss">&quot;DisplayName&quot;</span><span class="err">:</span><span class="w"> </span><span class="ss">&quot;gaa00000&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">        </span><span class="ss">&quot;ID&quot;</span><span class="err">:</span><span class="w"> </span><span class="ss">&quot;f12d0fa66ea4df5418c0c6234fd5eb3a9f4409bf50b5a58983a30be8f9a42bda&quot;</span><span class="w"></span>
+<span class="w">    </span><span class="err">}</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="ss">&quot;Grants&quot;</span><span class="err">:</span><span class="w"> </span><span class="o">[</span><span class="n"></span>
+<span class="n">        {</span>
+<span class="n">            &quot;Grantee&quot;: {</span>
+<span class="n">                &quot;DisplayName&quot;: &quot;gaa11111&quot;,</span>
+<span class="n">                &quot;ID&quot;: &quot;1a2bc03fa4ee5ba678b90cc1a234f5f67f890f1f2341fa56a78901234cc5fad6&quot;,</span>
+<span class="n">                &quot;Type&quot;: &quot;CanonicalUser&quot;</span>
+<span class="n">            },</span>
+<span class="n">            &quot;Permission&quot;: &quot;READ&quot;</span>
+<span class="n">        }</span>
+<span class="n">    </span><span class="o">]</span><span class="w"></span>
+<span class="err">}</span><span class="w"></span>
 </code></pre></div>
-
 
 <p>By setting ACL to private as following, user can retrieve default ACL setting.</p>
-<div class="codehilite"><pre><span></span><code><span class="err">[username@es1 ~]$ aws --endpoint-url https://s3.abci.ai s3api put-object-acl --acl private --bucket test-share --key test/testdata</span>
+<div class="codehilite"><pre><span></span><code><span class="o">[</span><span class="n">username@es1 ~</span><span class="o">]</span><span class="err">$</span><span class="w"> </span><span class="n">aws</span><span class="w"> </span><span class="c1">--endpoint-url https://s3.abci.ai s3api put-object-acl --acl private --bucket test-share --key test/testdata</span>
 </code></pre></div>
-
 
 <p>When a user not belonging to your ABCI group puts objects on your bucket, your ABCI group is charged for them.</p>
 <h3 id="open-to-all-accounts-on-abci-cloud-storage">Open to All Accounts on ABCI Cloud Storage</h3>
 <p>In order to open a object to all accounts on ABCI Cloud Storage, specify <code>authenticated-read</code> for <code>--acl</code>.
 The following example opens the object 'dataset.txt' under the bucket 'gaa00000-bucket-2' to the public.</p>
-<div class="codehilite"><pre><span></span><code><span class="err">[username@es1 ~]$ aws --endpoint-url https://s3.abci.ai s3api put-object-acl --acl authenticated-read  --bucket gaa00000-bucket-2 --key dataset.txt</span>
+<div class="codehilite"><pre><span></span><code><span class="o">[</span><span class="n">username@es1 ~</span><span class="o">]</span><span class="err">$</span><span class="w"> </span><span class="n">aws</span><span class="w"> </span><span class="c1">--endpoint-url https://s3.abci.ai s3api put-object-acl --acl authenticated-read  --bucket gaa00000-bucket-2 --key dataset.txt</span>
 </code></pre></div>
-
 
 <p>When adding an object to a bucket by running the <code>aws s3api put-object</code>, acl setting mentioned above can be done simultaneously. See the help that is shown by <code>aws s3api put-object help</code>.</p>
 <h3 id="public-access">Public Access</h3>
@@ -1415,57 +1410,55 @@ The following example opens the object 'dataset.txt' under the bucket 'gaa00000-
 </tbody>
 </table>
 <p>Configure 'public-read' with 'put-bucket-acl'. To check the current configuration, run the command <code>get-bucket-acl</code>. Make sure that the grantee with URI "http://acs.amazonaws.com/groups/global/AllUsers" meaning public is added and permission 'READ' is given to it.</p>
-<div class="codehilite"><pre><span></span><code><span class="err">[username@es1 ~]$ aws --endpoint-url https://s3.abci.ai s3api put-bucket-acl --acl public-read --bucket test-pub</span>
-<span class="err">[username@es1 ~]$ aws --endpoint-url https://s3.abci.ai s3api get-bucket-acl --bucket test-pub</span>
-<span class="err">{</span>
-<span class="err">    &quot;Owner&quot;: {</span>
-<span class="err">        &quot;DisplayName&quot;: &quot;gxx00000&quot;,</span>
-<span class="err">        &quot;ID&quot;: &quot;f12d0fa66ea4df5418c0c6234fd5eb3a9f4409bf50b5a58983a30be8f9a42bda&quot;</span>
-<span class="err">    },</span>
-<span class="err">    &quot;Grants&quot;: [</span>
-<span class="err">        {</span>
-<span class="err">            &quot;Grantee&quot;: {</span>
-<span class="err">                &quot;DisplayName&quot;: &quot;gxx00000&quot;,</span>
-<span class="err">                &quot;ID&quot;: &quot;f12d0fa66ea4df5418c0c6234fd5eb3a9f4409bf50b5a58983a30be8f9a42bda&quot;,</span>
-<span class="err">                &quot;Type&quot;: &quot;CanonicalUser&quot;</span>
-<span class="err">            },</span>
-<span class="err">            &quot;Permission&quot;: &quot;FULL_CONTROL&quot;</span>
-<span class="err">        },</span>
-<span class="err">        {</span>
-<span class="err">            &quot;Grantee&quot;: {</span>
-<span class="err">                &quot;Type&quot;: &quot;Group&quot;,</span>
-<span class="err">                &quot;URI&quot;: &quot;http://acs.amazonaws.com/groups/global/AllUsers&quot;</span>
-<span class="err">            },</span>
-<span class="err">            &quot;Permission&quot;: &quot;READ&quot;</span>
-<span class="err">        }</span>
-<span class="err">    ]</span>
-<span class="err">}</span>
+<div class="codehilite"><pre><span></span><code><span class="o">[</span><span class="n">username@es1 ~</span><span class="o">]</span><span class="err">$</span><span class="w"> </span><span class="n">aws</span><span class="w"> </span><span class="o">--</span><span class="n">endpoint</span><span class="o">-</span><span class="n">url</span><span class="w"> </span><span class="nl">https</span><span class="p">:</span><span class="o">//</span><span class="n">s3</span><span class="p">.</span><span class="n">abci</span><span class="p">.</span><span class="n">ai</span><span class="w"> </span><span class="n">s3api</span><span class="w"> </span><span class="n">put</span><span class="o">-</span><span class="n">bucket</span><span class="o">-</span><span class="n">acl</span><span class="w"> </span><span class="o">--</span><span class="n">acl</span><span class="w"> </span><span class="k">public</span><span class="o">-</span><span class="k">read</span><span class="w"> </span><span class="o">--</span><span class="n">bucket</span><span class="w"> </span><span class="n">test</span><span class="o">-</span><span class="n">pub</span><span class="w"></span>
+<span class="o">[</span><span class="n">username@es1 ~</span><span class="o">]</span><span class="err">$</span><span class="w"> </span><span class="n">aws</span><span class="w"> </span><span class="o">--</span><span class="n">endpoint</span><span class="o">-</span><span class="n">url</span><span class="w"> </span><span class="nl">https</span><span class="p">:</span><span class="o">//</span><span class="n">s3</span><span class="p">.</span><span class="n">abci</span><span class="p">.</span><span class="n">ai</span><span class="w"> </span><span class="n">s3api</span><span class="w"> </span><span class="k">get</span><span class="o">-</span><span class="n">bucket</span><span class="o">-</span><span class="n">acl</span><span class="w"> </span><span class="o">--</span><span class="n">bucket</span><span class="w"> </span><span class="n">test</span><span class="o">-</span><span class="n">pub</span><span class="w"></span>
+<span class="err">{</span><span class="w"></span>
+<span class="w">    </span><span class="ss">&quot;Owner&quot;</span><span class="err">:</span><span class="w"> </span><span class="err">{</span><span class="w"></span>
+<span class="w">        </span><span class="ss">&quot;DisplayName&quot;</span><span class="err">:</span><span class="w"> </span><span class="ss">&quot;gxx00000&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">        </span><span class="ss">&quot;ID&quot;</span><span class="err">:</span><span class="w"> </span><span class="ss">&quot;f12d0fa66ea4df5418c0c6234fd5eb3a9f4409bf50b5a58983a30be8f9a42bda&quot;</span><span class="w"></span>
+<span class="w">    </span><span class="err">}</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="ss">&quot;Grants&quot;</span><span class="err">:</span><span class="w"> </span><span class="o">[</span><span class="n"></span>
+<span class="n">        {</span>
+<span class="n">            &quot;Grantee&quot;: {</span>
+<span class="n">                &quot;DisplayName&quot;: &quot;gxx00000&quot;,</span>
+<span class="n">                &quot;ID&quot;: &quot;f12d0fa66ea4df5418c0c6234fd5eb3a9f4409bf50b5a58983a30be8f9a42bda&quot;,</span>
+<span class="n">                &quot;Type&quot;: &quot;CanonicalUser&quot;</span>
+<span class="n">            },</span>
+<span class="n">            &quot;Permission&quot;: &quot;FULL_CONTROL&quot;</span>
+<span class="n">        },</span>
+<span class="n">        {</span>
+<span class="n">            &quot;Grantee&quot;: {</span>
+<span class="n">                &quot;Type&quot;: &quot;Group&quot;,</span>
+<span class="n">                &quot;URI&quot;: &quot;http://acs.amazonaws.com/groups/global/AllUsers&quot;</span>
+<span class="n">            },</span>
+<span class="n">            &quot;Permission&quot;: &quot;READ&quot;</span>
+<span class="n">        }</span>
+<span class="n">    </span><span class="o">]</span><span class="w"></span>
+<span class="err">}</span><span class="w"></span>
 </code></pre></div>
-
 
 <p>To confirm if it works properly, access https://test-pub.s3.abci.ai by any internet browser.  If using Firefox, an XML including the list of objects will be shown.</p>
 <p>The example following shows how to stop opening to the public and retrieve default setting.
 Confirm that the grantee added before is deleted and the permission of the ABCI group is 'FULL_CONTROL'.</p>
-<div class="codehilite"><pre><span></span><code><span class="err">[username@es1 ~]$ aws --endpoint-url https://s3.abci.ai s3api put-bucket-acl --acl private --bucket test-pub</span>
-<span class="err">[username@es1 ~]$ aws --endpoint-url https://s3.abci.ai s3api get-bucket-acl --bucket test-pub</span>
-<span class="err">{</span>
-<span class="err">    &quot;Owner&quot;: {</span>
-<span class="err">        &quot;DisplayName&quot;: &quot;gxx00000&quot;,</span>
-<span class="err">        &quot;ID&quot;: &quot;f12d0fa66ea4df5418c0c6234fd5eb3a9f4409bf50b5a58983a30be8f9a42bda&quot;</span>
-<span class="err">    },</span>
-<span class="err">    &quot;Grants&quot;: [</span>
-<span class="err">        {</span>
-<span class="err">            &quot;Grantee&quot;: {</span>
-<span class="err">                &quot;DisplayName&quot;: &quot;gxx00000&quot;,</span>
-<span class="err">                &quot;ID&quot;: &quot;f12d0fa66ea4df5418c0c6234fd5eb3a9f4409bf50b5a58983a30be8f9a42bda&quot;,</span>
-<span class="err">                &quot;Type&quot;: &quot;CanonicalUser&quot;</span>
-<span class="err">            },</span>
-<span class="err">            &quot;Permission&quot;: &quot;FULL_CONTROL&quot;</span>
-<span class="err">        }</span>
-<span class="err">    ]</span>
-<span class="err">}</span>
+<div class="codehilite"><pre><span></span><code><span class="o">[</span><span class="n">username@es1 ~</span><span class="o">]</span><span class="err">$</span><span class="w"> </span><span class="n">aws</span><span class="w"> </span><span class="o">--</span><span class="n">endpoint</span><span class="o">-</span><span class="n">url</span><span class="w"> </span><span class="nl">https</span><span class="p">:</span><span class="o">//</span><span class="n">s3</span><span class="p">.</span><span class="n">abci</span><span class="p">.</span><span class="n">ai</span><span class="w"> </span><span class="n">s3api</span><span class="w"> </span><span class="n">put</span><span class="o">-</span><span class="n">bucket</span><span class="o">-</span><span class="n">acl</span><span class="w"> </span><span class="o">--</span><span class="n">acl</span><span class="w"> </span><span class="n">private</span><span class="w"> </span><span class="o">--</span><span class="n">bucket</span><span class="w"> </span><span class="n">test</span><span class="o">-</span><span class="n">pub</span><span class="w"></span>
+<span class="o">[</span><span class="n">username@es1 ~</span><span class="o">]</span><span class="err">$</span><span class="w"> </span><span class="n">aws</span><span class="w"> </span><span class="o">--</span><span class="n">endpoint</span><span class="o">-</span><span class="n">url</span><span class="w"> </span><span class="nl">https</span><span class="p">:</span><span class="o">//</span><span class="n">s3</span><span class="p">.</span><span class="n">abci</span><span class="p">.</span><span class="n">ai</span><span class="w"> </span><span class="n">s3api</span><span class="w"> </span><span class="k">get</span><span class="o">-</span><span class="n">bucket</span><span class="o">-</span><span class="n">acl</span><span class="w"> </span><span class="o">--</span><span class="n">bucket</span><span class="w"> </span><span class="n">test</span><span class="o">-</span><span class="n">pub</span><span class="w"></span>
+<span class="err">{</span><span class="w"></span>
+<span class="w">    </span><span class="ss">&quot;Owner&quot;</span><span class="err">:</span><span class="w"> </span><span class="err">{</span><span class="w"></span>
+<span class="w">        </span><span class="ss">&quot;DisplayName&quot;</span><span class="err">:</span><span class="w"> </span><span class="ss">&quot;gxx00000&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">        </span><span class="ss">&quot;ID&quot;</span><span class="err">:</span><span class="w"> </span><span class="ss">&quot;f12d0fa66ea4df5418c0c6234fd5eb3a9f4409bf50b5a58983a30be8f9a42bda&quot;</span><span class="w"></span>
+<span class="w">    </span><span class="err">}</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="ss">&quot;Grants&quot;</span><span class="err">:</span><span class="w"> </span><span class="o">[</span><span class="n"></span>
+<span class="n">        {</span>
+<span class="n">            &quot;Grantee&quot;: {</span>
+<span class="n">                &quot;DisplayName&quot;: &quot;gxx00000&quot;,</span>
+<span class="n">                &quot;ID&quot;: &quot;f12d0fa66ea4df5418c0c6234fd5eb3a9f4409bf50b5a58983a30be8f9a42bda&quot;,</span>
+<span class="n">                &quot;Type&quot;: &quot;CanonicalUser&quot;</span>
+<span class="n">            },</span>
+<span class="n">            &quot;Permission&quot;: &quot;FULL_CONTROL&quot;</span>
+<span class="n">        }</span>
+<span class="n">    </span><span class="o">]</span><span class="w"></span>
+<span class="err">}</span><span class="w"></span>
 </code></pre></div>
-
 
 <h4 id="public-objects">Public Objects</h4>
 <p>By applying the standard ACL 'public-read' to an object, the object is opened to public. The following example shows the detail.</p>
@@ -1488,55 +1481,54 @@ Confirm that the grantee added before is deleted and the permission of the ABCI 
 </tbody>
 </table>
 <p>Configure 'public-read' with 'put-object-acl'. To check the current configuration, run the command <code>get-object-acl</code>. Make sure that the grantee with URI "http://acs.amazonaws.com/groups/global/AllUsers" meaning public is added and permission 'READ' is given to it.</p>
-<div class="codehilite"><pre><span></span><code><span class="err">[username@es1 ~]$ aws --endpoint-url https://s3.abci.ai s3api put-object-acl --bucket test-pub2 --acl public-read --key test/test.txt</span>
-<span class="err">[username@es1 ~]$ aws --endpoint-url https://s3.abci.ai s3api get-object-acl--bucket test-pub2 --key test/test.txt</span>
-<span class="err">{</span>
-<span class="err">    &quot;Owner&quot;: {</span>
-<span class="err">        &quot;DisplayName&quot;: &quot;gxx00000&quot;,</span>
-<span class="err">        &quot;ID&quot;: &quot;f12d0fa66ea4df5418c0c6234fd5eb3a9f4409bf50b5a58983a30be8f9a42bda&quot; </span>
-<span class="err">    },</span>
-<span class="err">    &quot;Grants&quot;: [</span>
-<span class="err">        {</span>
-<span class="err">            &quot;Grantee&quot;: {</span>
-<span class="err">                &quot;DisplayName&quot;: &quot;gxx00000&quot;,</span>
-<span class="err">                &quot;ID&quot;: &quot;f12d0fa66ea4df5418c0c6234fd5eb3a9f4409bf50b5a58983a30be8f9a42bda&quot;,</span>
-<span class="err">                &quot;Type&quot;: &quot;CanonicalUser&quot; </span>
-<span class="err">            },</span>
-<span class="err">            &quot;Permission&quot;: &quot;FULL_CONTROL&quot; </span>
-<span class="err">        },</span>
-<span class="err">        {</span>
-<span class="err">            &quot;Grantee&quot;: {</span>
-<span class="err">                &quot;Type&quot;: &quot;Group&quot;,</span>
-<span class="err">                &quot;URI&quot;: &quot;http://acs.amazonaws.com/groups/global/AllUsers&quot; </span>
-<span class="err">            },</span>
-<span class="err">            &quot;Permission&quot;: &quot;READ&quot; </span>
-<span class="err">        }</span>
-<span class="err">    ]</span>
-<span class="err">}</span>
+<div class="codehilite"><pre><span></span><code><span class="o">[</span><span class="n">username@es1 ~</span><span class="o">]</span><span class="err">$</span><span class="w"> </span><span class="n">aws</span><span class="w"> </span><span class="o">--</span><span class="n">endpoint</span><span class="o">-</span><span class="n">url</span><span class="w"> </span><span class="nl">https</span><span class="p">:</span><span class="o">//</span><span class="n">s3</span><span class="p">.</span><span class="n">abci</span><span class="p">.</span><span class="n">ai</span><span class="w"> </span><span class="n">s3api</span><span class="w"> </span><span class="n">put</span><span class="o">-</span><span class="k">object</span><span class="o">-</span><span class="n">acl</span><span class="w"> </span><span class="o">--</span><span class="n">bucket</span><span class="w"> </span><span class="n">test</span><span class="o">-</span><span class="n">pub2</span><span class="w"> </span><span class="o">--</span><span class="n">acl</span><span class="w"> </span><span class="k">public</span><span class="o">-</span><span class="k">read</span><span class="w"> </span><span class="o">--</span><span class="k">key</span><span class="w"> </span><span class="n">test</span><span class="o">/</span><span class="n">test</span><span class="p">.</span><span class="n">txt</span><span class="w"></span>
+<span class="o">[</span><span class="n">username@es1 ~</span><span class="o">]</span><span class="err">$</span><span class="w"> </span><span class="n">aws</span><span class="w"> </span><span class="o">--</span><span class="n">endpoint</span><span class="o">-</span><span class="n">url</span><span class="w"> </span><span class="nl">https</span><span class="p">:</span><span class="o">//</span><span class="n">s3</span><span class="p">.</span><span class="n">abci</span><span class="p">.</span><span class="n">ai</span><span class="w"> </span><span class="n">s3api</span><span class="w"> </span><span class="k">get</span><span class="o">-</span><span class="k">object</span><span class="o">-</span><span class="n">acl</span><span class="o">--</span><span class="n">bucket</span><span class="w"> </span><span class="n">test</span><span class="o">-</span><span class="n">pub2</span><span class="w"> </span><span class="o">--</span><span class="k">key</span><span class="w"> </span><span class="n">test</span><span class="o">/</span><span class="n">test</span><span class="p">.</span><span class="n">txt</span><span class="w"></span>
+<span class="err">{</span><span class="w"></span>
+<span class="w">    </span><span class="ss">&quot;Owner&quot;</span><span class="err">:</span><span class="w"> </span><span class="err">{</span><span class="w"></span>
+<span class="w">        </span><span class="ss">&quot;DisplayName&quot;</span><span class="err">:</span><span class="w"> </span><span class="ss">&quot;gxx00000&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">        </span><span class="ss">&quot;ID&quot;</span><span class="err">:</span><span class="w"> </span><span class="ss">&quot;f12d0fa66ea4df5418c0c6234fd5eb3a9f4409bf50b5a58983a30be8f9a42bda&quot;</span><span class="w"> </span>
+<span class="w">    </span><span class="err">}</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="ss">&quot;Grants&quot;</span><span class="err">:</span><span class="w"> </span><span class="o">[</span><span class="n"></span>
+<span class="n">        {</span>
+<span class="n">            &quot;Grantee&quot;: {</span>
+<span class="n">                &quot;DisplayName&quot;: &quot;gxx00000&quot;,</span>
+<span class="n">                &quot;ID&quot;: &quot;f12d0fa66ea4df5418c0c6234fd5eb3a9f4409bf50b5a58983a30be8f9a42bda&quot;,</span>
+<span class="n">                &quot;Type&quot;: &quot;CanonicalUser&quot; </span>
+<span class="n">            },</span>
+<span class="n">            &quot;Permission&quot;: &quot;FULL_CONTROL&quot; </span>
+<span class="n">        },</span>
+<span class="n">        {</span>
+<span class="n">            &quot;Grantee&quot;: {</span>
+<span class="n">                &quot;Type&quot;: &quot;Group&quot;,</span>
+<span class="n">                &quot;URI&quot;: &quot;http://acs.amazonaws.com/groups/global/AllUsers&quot; </span>
+<span class="n">            },</span>
+<span class="n">            &quot;Permission&quot;: &quot;READ&quot; </span>
+<span class="n">        }</span>
+<span class="n">    </span><span class="o">]</span><span class="w"></span>
+<span class="err">}</span><span class="w"></span>
 </code></pre></div>
-
 
 <p>To confirm if it works properly, access https://test-pub2.s3.abci.ai/test/test.txt by any internet browser. If using Firefox, a list of objects will be shown.</p>
 <p>The example following shows how to stop opening to the public and retrieve default setting.
 Confirm that the grantee added before is deleted and the permission of the ABCI group is 'FULL_CONTROL'.</p>
-<div class="codehilite"><pre><span></span><code><span class="err">[username@es1 ~]$ aws --endpoint-url https://s3.abci.ai s3api put-object-acl --acl private --bucket  test-pub2 --key test/test.txt</span>
-<span class="err">[username@es1 ~]$ aws --endpoint-url https://s3.abci.ai s3api get-object-acl --bucket test-pub2 --key test/test.txt</span>
-<span class="err">{</span>
-<span class="err">    &quot;Owner&quot;: {</span>
-<span class="err">        &quot;DisplayName&quot;: &quot;gxx00000&quot;,</span>
-<span class="err">        &quot;ID&quot;: &quot;f12d0fa66ea4df5418c0c6234fd5eb3a9f4409bf50b5a58983a30be8f9a42bda&quot;</span>
-<span class="err">    },</span>
-<span class="err">    &quot;Grants&quot;: [</span>
-<span class="err">        {</span>
-<span class="err">            &quot;Grantee&quot;: {</span>
-<span class="err">                &quot;DisplayName&quot;: &quot;gxx00000&quot;,</span>
-<span class="err">                &quot;ID&quot;: &quot;f12d0fa66ea4df5418c0c6234fd5eb3a9f4409bf50b5a58983a30be8f9a42bda&quot;,</span>
-<span class="err">                &quot;Type&quot;: &quot;CanonicalUser&quot;</span>
-<span class="err">            },</span>
-<span class="err">            &quot;Permission&quot;: &quot;FULL_CONTROL&quot;</span>
-<span class="err">        }</span>
-<span class="err">    ]</span>
-<span class="err">}</span>
+<div class="codehilite"><pre><span></span><code><span class="o">[</span><span class="n">username@es1 ~</span><span class="o">]</span><span class="err">$</span><span class="w"> </span><span class="n">aws</span><span class="w"> </span><span class="o">--</span><span class="n">endpoint</span><span class="o">-</span><span class="n">url</span><span class="w"> </span><span class="nl">https</span><span class="p">:</span><span class="o">//</span><span class="n">s3</span><span class="p">.</span><span class="n">abci</span><span class="p">.</span><span class="n">ai</span><span class="w"> </span><span class="n">s3api</span><span class="w"> </span><span class="n">put</span><span class="o">-</span><span class="k">object</span><span class="o">-</span><span class="n">acl</span><span class="w"> </span><span class="o">--</span><span class="n">acl</span><span class="w"> </span><span class="n">private</span><span class="w"> </span><span class="o">--</span><span class="n">bucket</span><span class="w">  </span><span class="n">test</span><span class="o">-</span><span class="n">pub2</span><span class="w"> </span><span class="o">--</span><span class="k">key</span><span class="w"> </span><span class="n">test</span><span class="o">/</span><span class="n">test</span><span class="p">.</span><span class="n">txt</span><span class="w"></span>
+<span class="o">[</span><span class="n">username@es1 ~</span><span class="o">]</span><span class="err">$</span><span class="w"> </span><span class="n">aws</span><span class="w"> </span><span class="o">--</span><span class="n">endpoint</span><span class="o">-</span><span class="n">url</span><span class="w"> </span><span class="nl">https</span><span class="p">:</span><span class="o">//</span><span class="n">s3</span><span class="p">.</span><span class="n">abci</span><span class="p">.</span><span class="n">ai</span><span class="w"> </span><span class="n">s3api</span><span class="w"> </span><span class="k">get</span><span class="o">-</span><span class="k">object</span><span class="o">-</span><span class="n">acl</span><span class="w"> </span><span class="o">--</span><span class="n">bucket</span><span class="w"> </span><span class="n">test</span><span class="o">-</span><span class="n">pub2</span><span class="w"> </span><span class="o">--</span><span class="k">key</span><span class="w"> </span><span class="n">test</span><span class="o">/</span><span class="n">test</span><span class="p">.</span><span class="n">txt</span><span class="w"></span>
+<span class="err">{</span><span class="w"></span>
+<span class="w">    </span><span class="ss">&quot;Owner&quot;</span><span class="err">:</span><span class="w"> </span><span class="err">{</span><span class="w"></span>
+<span class="w">        </span><span class="ss">&quot;DisplayName&quot;</span><span class="err">:</span><span class="w"> </span><span class="ss">&quot;gxx00000&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">        </span><span class="ss">&quot;ID&quot;</span><span class="err">:</span><span class="w"> </span><span class="ss">&quot;f12d0fa66ea4df5418c0c6234fd5eb3a9f4409bf50b5a58983a30be8f9a42bda&quot;</span><span class="w"></span>
+<span class="w">    </span><span class="err">}</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="ss">&quot;Grants&quot;</span><span class="err">:</span><span class="w"> </span><span class="o">[</span><span class="n"></span>
+<span class="n">        {</span>
+<span class="n">            &quot;Grantee&quot;: {</span>
+<span class="n">                &quot;DisplayName&quot;: &quot;gxx00000&quot;,</span>
+<span class="n">                &quot;ID&quot;: &quot;f12d0fa66ea4df5418c0c6234fd5eb3a9f4409bf50b5a58983a30be8f9a42bda&quot;,</span>
+<span class="n">                &quot;Type&quot;: &quot;CanonicalUser&quot;</span>
+<span class="n">            },</span>
+<span class="n">            &quot;Permission&quot;: &quot;FULL_CONTROL&quot;</span>
+<span class="n">        }</span>
+<span class="n">    </span><span class="o">]</span><span class="w"></span>
+<span class="err">}</span><span class="w"></span>
 </code></pre></div>
                 
               

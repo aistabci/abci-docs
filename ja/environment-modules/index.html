@@ -1211,7 +1211,6 @@
 <div class="codehilite"><pre><span></span><code><span class="err">$</span><span class="w"> </span><span class="k">module</span><span class="w"> </span><span class="o">[</span><span class="n">options</span><span class="o">]</span><span class="w"> </span><span class="o">&lt;</span><span class="n">sub</span><span class="o">-</span><span class="n">command</span><span class="o">&gt;</span><span class="w"> </span><span class="o">[</span><span class="n">sub-command options</span><span class="o">]</span><span class="w"></span>
 </code></pre></div>
 
-
 <p>以下にサブコマンドの一覧を示します。</p>
 <table>
 <thead>
@@ -1257,20 +1256,18 @@
 </table>
 <h2 id="use-cases">実行例</h2>
 <h3 id="load-modules">モジュールのロード</h3>
-<div class="codehilite"><pre><span></span><code><span class="err">[username@g0001 ~]$ module load cuda/10.0/10.0.130.1 cudnn/7.6/7.6.5</span>
+<div class="codehilite"><pre><span></span><code><span class="p">[</span><span class="n">username</span><span class="err">@</span><span class="n">g0001</span> <span class="o">~</span><span class="p">]</span><span class="o">$</span> <span class="n">module</span> <span class="nb">load</span> <span class="n">cuda</span><span class="o">/</span><span class="mf">10.0</span><span class="o">/</span><span class="mf">10.0</span><span class="o">.</span><span class="mf">130.1</span> <span class="n">cudnn</span><span class="o">/</span><span class="mf">7.6</span><span class="o">/</span><span class="mf">7.6</span><span class="o">.</span><span class="mi">5</span>
 </code></pre></div>
-
 
 <h3 id="list-loaded-modules">ロード済みのモジュールの一覧表示</h3>
-<div class="codehilite"><pre><span></span><code><span class="err">[username@g0001 ~]$ module list</span>
-<span class="err">Currently Loaded Modulefiles:</span>
-<span class="err">  1) cuda/10.0/10.0.130.1   2) cudnn/7.6/7.6.5</span>
+<div class="codehilite"><pre><span></span><code><span class="o">[</span><span class="n">username@g0001 ~</span><span class="o">]</span><span class="err">$</span><span class="w"> </span><span class="k">module</span><span class="w"> </span><span class="n">list</span><span class="w"></span>
+<span class="n">Currently</span><span class="w"> </span><span class="n">Loaded</span><span class="w"> </span><span class="nl">Modulefiles</span><span class="p">:</span><span class="w"></span>
+<span class="w">  </span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="n">cuda</span><span class="o">/</span><span class="mf">10.0</span><span class="o">/</span><span class="mf">10.0.130.1</span><span class="w">   </span><span class="mi">2</span><span class="p">)</span><span class="w"> </span><span class="n">cudnn</span><span class="o">/</span><span class="mf">7.6</span><span class="o">/</span><span class="mf">7.6.5</span><span class="w"></span>
 </code></pre></div>
-
 
 <h3 id="display-the-configuration-of-modules">モジュールの設定内容の表示</h3>
 <div class="codehilite"><pre><span></span><code><span class="o">[</span><span class="n">username@g0001 ~</span><span class="o">]</span><span class="err">$</span><span class="w"> </span><span class="k">module</span><span class="w"> </span><span class="n">show</span><span class="w"> </span><span class="n">cuda</span><span class="o">/</span><span class="mf">10.0</span><span class="o">/</span><span class="mf">10.0.130.1</span><span class="w"></span>
-<span class="c1">-------------------------------------------------------------------</span>
+<span class="o">-------------------------------------------------------------------</span><span class="w"></span>
 <span class="o">/</span><span class="n">apps</span><span class="o">/</span><span class="n">modules</span><span class="o">/</span><span class="n">modulefiles</span><span class="o">/</span><span class="n">centos7</span><span class="o">/</span><span class="n">gpgpu</span><span class="o">/</span><span class="n">cuda</span><span class="o">/</span><span class="mf">10.0</span><span class="o">/</span><span class="mf">10.0.130.1</span><span class="err">:</span><span class="w"></span>
 
 <span class="k">module</span><span class="o">-</span><span class="n">whatis</span><span class="w">    </span><span class="n">cuda</span><span class="w"> </span><span class="mf">10.0.130.1</span><span class="w"></span>
@@ -1287,73 +1284,64 @@
 <span class="c1">-------------------------------------------------------------------</span>
 </code></pre></div>
 
-
 <h3 id="unload-all-loaded-modules-initialize">ロード済みのすべてのモジュールをアンロード（初期化）</h3>
-<div class="codehilite"><pre><span></span><code><span class="err">[username@g0001 ~]$ module purge</span>
-<span class="err">[username@g0001 ~]$ module list</span>
-<span class="err">No Modulefiles Currently Loaded.</span>
+<div class="codehilite"><pre><span></span><code><span class="o">[</span><span class="n">username@g0001 ~</span><span class="o">]</span><span class="err">$</span><span class="w"> </span><span class="k">module</span><span class="w"> </span><span class="n">purge</span><span class="w"></span>
+<span class="o">[</span><span class="n">username@g0001 ~</span><span class="o">]</span><span class="err">$</span><span class="w"> </span><span class="k">module</span><span class="w"> </span><span class="n">list</span><span class="w"></span>
+<span class="k">No</span><span class="w"> </span><span class="n">Modulefiles</span><span class="w"> </span><span class="n">Currently</span><span class="w"> </span><span class="n">Loaded</span><span class="p">.</span><span class="w"></span>
 </code></pre></div>
-
 
 <h3 id="load-dependent-modules">依存関係のあるモジュールのロード</h3>
-<div class="codehilite"><pre><span></span><code><span class="err">[username@g0001 ~]$ module load cudnn/7.6/7.6.5</span>
-<span class="c">WARNING: cudnn/7.6/7.6.5 cannot be loaded due to missing prereq.</span>
-<span class="c">HINT: at least one of the following modules must be loaded first: cuda/9.0 cuda/9.2 cuda/10.0 cuda/10.1 cuda/10.2</span>
+<div class="codehilite"><pre><span></span><code><span class="p">[</span><span class="n">username</span><span class="err">@</span><span class="n">g0001</span> <span class="o">~</span><span class="p">]</span><span class="o">$</span> <span class="n">module</span> <span class="nb">load</span> <span class="n">cudnn</span><span class="o">/</span><span class="mf">7.6</span><span class="o">/</span><span class="mf">7.6</span><span class="o">.</span><span class="mi">5</span>
+<span class="n">WARNING</span><span class="p">:</span> <span class="n">cudnn</span><span class="o">/</span><span class="mf">7.6</span><span class="o">/</span><span class="mf">7.6</span><span class="o">.</span><span class="mi">5</span> <span class="n">cannot</span> <span class="n">be</span> <span class="n">loaded</span> <span class="n">due</span> <span class="n">to</span> <span class="n">missing</span> <span class="n">prereq</span><span class="o">.</span>
+<span class="n">HINT</span><span class="p">:</span> <span class="n">at</span> <span class="n">least</span> <span class="n">one</span> <span class="n">of</span> <span class="n">the</span> <span class="n">following</span> <span class="n">modules</span> <span class="n">must</span> <span class="n">be</span> <span class="n">loaded</span> <span class="n">first</span><span class="p">:</span> <span class="n">cuda</span><span class="o">/</span><span class="mf">9.0</span> <span class="n">cuda</span><span class="o">/</span><span class="mf">9.2</span> <span class="n">cuda</span><span class="o">/</span><span class="mf">10.0</span> <span class="n">cuda</span><span class="o">/</span><span class="mf">10.1</span> <span class="n">cuda</span><span class="o">/</span><span class="mf">10.2</span>
 </code></pre></div>
-
 
 <p>依存関係があるため、<code>cuda/9.0</code>、<code>cuda/9.2</code>、<code>cuda/10.0</code>、<code>cuda/10.1</code>、<code>cuda/10.2</code>のいずれかのモジュールを先にロードしないと<code>cudnn/7.6/7.6.5</code>をロードできません。</p>
-<div class="codehilite"><pre><span></span><code><span class="err">[username@g0001 ~]$ module load cuda/10.0/10.0.130.1</span>
-<span class="err">[username@g0001 ~]$ module load cudnn/7.6/7.6.5</span>
+<div class="codehilite"><pre><span></span><code><span class="p">[</span><span class="n">username</span><span class="err">@</span><span class="n">g0001</span> <span class="o">~</span><span class="p">]</span><span class="o">$</span> <span class="n">module</span> <span class="nb">load</span> <span class="n">cuda</span><span class="o">/</span><span class="mf">10.0</span><span class="o">/</span><span class="mf">10.0</span><span class="o">.</span><span class="mf">130.1</span>
+<span class="p">[</span><span class="n">username</span><span class="err">@</span><span class="n">g0001</span> <span class="o">~</span><span class="p">]</span><span class="o">$</span> <span class="n">module</span> <span class="nb">load</span> <span class="n">cudnn</span><span class="o">/</span><span class="mf">7.6</span><span class="o">/</span><span class="mf">7.6</span><span class="o">.</span><span class="mi">5</span>
 </code></pre></div>
-
 
 <h3 id="load-exclusive-modules">排他関係にあるモジュールのロード</h3>
 <p>同一ライブラリの異なるバージョンのモジュールなど、排他関係にあるモジュールは同時に利用することはできません。</p>
-<div class="codehilite"><pre><span></span><code><span class="err">[username@g0001 ~]$ module load cuda/10.0/10.0.130.1</span>
-<span class="err">[username@g0001 ~]$ module load cuda/10.2/10.2.89</span>
-<span class="err">cuda/10.2/10.2.89(7):ERROR:150: Module &#39;cuda/10.2/10.2.89&#39; conflicts with the currently loaded module(s) &#39;cuda/10.0/10.0.130.1&#39;</span>
+<div class="codehilite"><pre><span></span><code><span class="p">[</span><span class="n">username</span><span class="err">@</span><span class="n">g0001</span> <span class="o">~</span><span class="p">]</span><span class="o">$</span> <span class="n">module</span> <span class="nb">load</span> <span class="n">cuda</span><span class="o">/</span><span class="mf">10.0</span><span class="o">/</span><span class="mf">10.0</span><span class="o">.</span><span class="mf">130.1</span>
+<span class="p">[</span><span class="n">username</span><span class="err">@</span><span class="n">g0001</span> <span class="o">~</span><span class="p">]</span><span class="o">$</span> <span class="n">module</span> <span class="nb">load</span> <span class="n">cuda</span><span class="o">/</span><span class="mf">10.2</span><span class="o">/</span><span class="mf">10.2</span><span class="o">.</span><span class="mi">89</span>
+<span class="n">cuda</span><span class="o">/</span><span class="mf">10.2</span><span class="o">/</span><span class="mf">10.2</span><span class="o">.</span><span class="mi">89</span><span class="p">(</span><span class="mi">7</span><span class="p">):</span><span class="n">ERROR</span><span class="p">:</span><span class="mi">150</span><span class="p">:</span> <span class="n">Module</span> <span class="s1">&#39;cuda/10.2/10.2.89&#39;</span> <span class="n">conflicts</span> <span class="n">with</span> <span class="n">the</span> <span class="n">currently</span> <span class="n">loaded</span> <span class="n">module</span><span class="p">(</span><span class="n">s</span><span class="p">)</span> <span class="s1">&#39;cuda/10.0/10.0.130.1&#39;</span>
 </code></pre></div>
-
 
 <h3 id="switch-modules">モジュールの切り替え</h3>
-<div class="codehilite"><pre><span></span><code><span class="err">[username@g0001 ~]$ module load python/2.7/2.7.18</span>
-<span class="err">[username@g0001 ~]$ module switch python/2.7/2.7.18 python/3.6/3.6.12</span>
+<div class="codehilite"><pre><span></span><code><span class="p">[</span><span class="n">username</span><span class="err">@</span><span class="n">g0001</span> <span class="o">~</span><span class="p">]</span><span class="o">$</span> <span class="n">module</span> <span class="nb">load</span> <span class="n">python</span><span class="o">/</span><span class="mf">2.7</span><span class="o">/</span><span class="mf">2.7</span><span class="o">.</span><span class="mi">18</span>
+<span class="p">[</span><span class="n">username</span><span class="err">@</span><span class="n">g0001</span> <span class="o">~</span><span class="p">]</span><span class="o">$</span> <span class="n">module</span> <span class="n">switch</span> <span class="n">python</span><span class="o">/</span><span class="mf">2.7</span><span class="o">/</span><span class="mf">2.7</span><span class="o">.</span><span class="mi">18</span> <span class="n">python</span><span class="o">/</span><span class="mf">3.6</span><span class="o">/</span><span class="mf">3.6</span><span class="o">.</span><span class="mi">12</span>
 </code></pre></div>
-
 
 <p>依存関係があると切り替えがうまくできない場合があります。</p>
-<div class="codehilite"><pre><span></span><code><span class="err">[username@g0001 ~]$ module load cuda/10.0/10.0.130.1</span>
-<span class="err">[username@g0001 ~]$ module load cudnn/7.6/7.6.5</span>
-<span class="err">[username@g0001 ~]$ module switch cuda/10.0/10.0.130.1 cuda/10.2/10.2.89</span>
-<span class="err">[username@g0001 ~]$ env | grep LD_LIBRARY_PATH</span>
-<span class="err">LD_LIBRARY_PATH=/apps/cudnn/7.6.5/cuda10.0/lib64:/apps/cuda/10.2.89/lib64:/apps/cuda/10.2.89/extras/CUPTI/lib64</span>
+<div class="codehilite"><pre><span></span><code><span class="p">[</span><span class="n">username</span><span class="err">@</span><span class="n">g0001</span> <span class="o">~</span><span class="p">]</span><span class="o">$</span> <span class="n">module</span> <span class="nb">load</span> <span class="n">cuda</span><span class="o">/</span><span class="mf">10.0</span><span class="o">/</span><span class="mf">10.0</span><span class="o">.</span><span class="mf">130.1</span>
+<span class="p">[</span><span class="n">username</span><span class="err">@</span><span class="n">g0001</span> <span class="o">~</span><span class="p">]</span><span class="o">$</span> <span class="n">module</span> <span class="nb">load</span> <span class="n">cudnn</span><span class="o">/</span><span class="mf">7.6</span><span class="o">/</span><span class="mf">7.6</span><span class="o">.</span><span class="mi">5</span>
+<span class="p">[</span><span class="n">username</span><span class="err">@</span><span class="n">g0001</span> <span class="o">~</span><span class="p">]</span><span class="o">$</span> <span class="n">module</span> <span class="n">switch</span> <span class="n">cuda</span><span class="o">/</span><span class="mf">10.0</span><span class="o">/</span><span class="mf">10.0</span><span class="o">.</span><span class="mf">130.1</span> <span class="n">cuda</span><span class="o">/</span><span class="mf">10.2</span><span class="o">/</span><span class="mf">10.2</span><span class="o">.</span><span class="mi">89</span>
+<span class="p">[</span><span class="n">username</span><span class="err">@</span><span class="n">g0001</span> <span class="o">~</span><span class="p">]</span><span class="o">$</span> <span class="n">env</span> <span class="o">|</span> <span class="n">grep</span> <span class="n">LD_LIBRARY_PATH</span>
+<span class="n">LD_LIBRARY_PATH</span><span class="o">=/</span><span class="n">apps</span><span class="o">/</span><span class="n">cudnn</span><span class="o">/</span><span class="mf">7.6</span><span class="o">.</span><span class="mi">5</span><span class="o">/</span><span class="n">cuda10</span><span class="o">.</span><span class="mi">0</span><span class="o">/</span><span class="n">lib64</span><span class="p">:</span><span class="o">/</span><span class="n">apps</span><span class="o">/</span><span class="n">cuda</span><span class="o">/</span><span class="mf">10.2</span><span class="o">.</span><span class="mi">89</span><span class="o">/</span><span class="n">lib64</span><span class="p">:</span><span class="o">/</span><span class="n">apps</span><span class="o">/</span><span class="n">cuda</span><span class="o">/</span><span class="mf">10.2</span><span class="o">.</span><span class="mi">89</span><span class="o">/</span><span class="n">extras</span><span class="o">/</span><span class="n">CUPTI</span><span class="o">/</span><span class="n">lib64</span>
 </code></pre></div>
-
 
 <p>CUDA10.2と、CUDA10.0用のcuDNNがロードされた状態になっています。</p>
 <p>以下のように対象のモジュールに依存しているモジュールを事前にアンロード、切り替え後の再ロードする必要があります。</p>
-<div class="codehilite"><pre><span></span><code><span class="err">[username@g0001 ~]$ module load cuda/10.0/10.0.130.1</span>
-<span class="err">[username@g0001 ~]$ module load cudnn/7.6/7.6.5</span>
-<span class="err">[username@g0001 ~]$ module unload cudnn/7.6/7.6.5</span>
-<span class="err">[username@g0001 ~]$ module switch cuda/10.0/10.0.130.1 cuda/10.2/10.2.89</span>
-<span class="err">[username@g0001 ~]$ module load cudnn/7.6/7.6.5</span>
-<span class="err">[username@g0001 ~]$ env | grep LD_LIBRARY_PATH</span>
-<span class="err">LD_LIBRARY_PATH=/apps/cudnn/7.6.5/cuda10.2/lib64:/apps/cuda/10.2.89/lib64:/apps/cuda/10.2.89/extras/CUPTI/lib64</span>
+<div class="codehilite"><pre><span></span><code><span class="p">[</span><span class="n">username</span><span class="err">@</span><span class="n">g0001</span> <span class="o">~</span><span class="p">]</span><span class="o">$</span> <span class="n">module</span> <span class="nb">load</span> <span class="n">cuda</span><span class="o">/</span><span class="mf">10.0</span><span class="o">/</span><span class="mf">10.0</span><span class="o">.</span><span class="mf">130.1</span>
+<span class="p">[</span><span class="n">username</span><span class="err">@</span><span class="n">g0001</span> <span class="o">~</span><span class="p">]</span><span class="o">$</span> <span class="n">module</span> <span class="nb">load</span> <span class="n">cudnn</span><span class="o">/</span><span class="mf">7.6</span><span class="o">/</span><span class="mf">7.6</span><span class="o">.</span><span class="mi">5</span>
+<span class="p">[</span><span class="n">username</span><span class="err">@</span><span class="n">g0001</span> <span class="o">~</span><span class="p">]</span><span class="o">$</span> <span class="n">module</span> <span class="n">unload</span> <span class="n">cudnn</span><span class="o">/</span><span class="mf">7.6</span><span class="o">/</span><span class="mf">7.6</span><span class="o">.</span><span class="mi">5</span>
+<span class="p">[</span><span class="n">username</span><span class="err">@</span><span class="n">g0001</span> <span class="o">~</span><span class="p">]</span><span class="o">$</span> <span class="n">module</span> <span class="n">switch</span> <span class="n">cuda</span><span class="o">/</span><span class="mf">10.0</span><span class="o">/</span><span class="mf">10.0</span><span class="o">.</span><span class="mf">130.1</span> <span class="n">cuda</span><span class="o">/</span><span class="mf">10.2</span><span class="o">/</span><span class="mf">10.2</span><span class="o">.</span><span class="mi">89</span>
+<span class="p">[</span><span class="n">username</span><span class="err">@</span><span class="n">g0001</span> <span class="o">~</span><span class="p">]</span><span class="o">$</span> <span class="n">module</span> <span class="nb">load</span> <span class="n">cudnn</span><span class="o">/</span><span class="mf">7.6</span><span class="o">/</span><span class="mf">7.6</span><span class="o">.</span><span class="mi">5</span>
+<span class="p">[</span><span class="n">username</span><span class="err">@</span><span class="n">g0001</span> <span class="o">~</span><span class="p">]</span><span class="o">$</span> <span class="n">env</span> <span class="o">|</span> <span class="n">grep</span> <span class="n">LD_LIBRARY_PATH</span>
+<span class="n">LD_LIBRARY_PATH</span><span class="o">=/</span><span class="n">apps</span><span class="o">/</span><span class="n">cudnn</span><span class="o">/</span><span class="mf">7.6</span><span class="o">.</span><span class="mi">5</span><span class="o">/</span><span class="n">cuda10</span><span class="o">.</span><span class="mi">2</span><span class="o">/</span><span class="n">lib64</span><span class="p">:</span><span class="o">/</span><span class="n">apps</span><span class="o">/</span><span class="n">cuda</span><span class="o">/</span><span class="mf">10.2</span><span class="o">.</span><span class="mi">89</span><span class="o">/</span><span class="n">lib64</span><span class="p">:</span><span class="o">/</span><span class="n">apps</span><span class="o">/</span><span class="n">cuda</span><span class="o">/</span><span class="mf">10.2</span><span class="o">.</span><span class="mi">89</span><span class="o">/</span><span class="n">extras</span><span class="o">/</span><span class="n">CUPTI</span><span class="o">/</span><span class="n">lib64</span>
 </code></pre></div>
-
 
 <h2 id="usage-in-a-job-script">ジョブスクリプトでの利用方法</h2>
 <p>バッチ利用時のジョブスクリプトで<code>module</code>コマンドを利用する場合には、以下のように初期設定を加える必要があります。</p>
 <p>sh, bashの場合:</p>
-<div class="codehilite"><pre><span></span><code><span class="err">source /etc/profile.d/modules.sh</span>
-<span class="err">module load cuda/10.0/10.0.130.1</span>
+<div class="codehilite"><pre><span></span><code><span class="n">source</span> <span class="o">/</span><span class="n">etc</span><span class="o">/</span><span class="n">profile</span><span class="o">.</span><span class="n">d</span><span class="o">/</span><span class="n">modules</span><span class="o">.</span><span class="n">sh</span>
+<span class="n">module</span> <span class="nb">load</span> <span class="n">cuda</span><span class="o">/</span><span class="mf">10.0</span><span class="o">/</span><span class="mf">10.0</span><span class="o">.</span><span class="mf">130.1</span>
 </code></pre></div>
 
-
 <p>csh, tcshの場合:</p>
-<div class="codehilite"><pre><span></span><code><span class="err">source /etc/profile.d/modules.csh</span>
-<span class="err">module load cuda/10.0/10.0.130.1</span>
+<div class="codehilite"><pre><span></span><code><span class="n">source</span> <span class="o">/</span><span class="n">etc</span><span class="o">/</span><span class="n">profile</span><span class="o">.</span><span class="n">d</span><span class="o">/</span><span class="n">modules</span><span class="o">.</span><span class="n">csh</span>
+<span class="n">module</span> <span class="nb">load</span> <span class="n">cuda</span><span class="o">/</span><span class="mf">10.0</span><span class="o">/</span><span class="mf">10.0</span><span class="o">.</span><span class="mf">130.1</span>
 </code></pre></div>
                 
               
