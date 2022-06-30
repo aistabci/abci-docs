@@ -1,5 +1,22 @@
 # システム更新履歴
 
+## 2022-06-21
+
+| Add / Update / Delete | Software | Version | Previous version |
+|:--|:--|:--|:--|
+| Add    | cuda    | 11.7.0 | |
+| Update | nccl    | 2.12.12-1 | 2.12.10-1 |
+| Update | Altair Grid Engine | 8.6.19_C121_1 | 8.6.17 |
+| Update | openjdk | 1.8.0.332 | 1.8.0.322 |
+| Update | openjdk | 11.0.15.0.9(計算ノード(V))<br>11.0.15.0.10(計算ノード(A)) | 11.0.14.1.1 |
+| Update | openjdk | 17.0.3.0.7 | 17.0.2.0.8 |
+| Update | DDN Lustre | 2.12.8_ddn10 | 2.12.6_ddn58-1 |
+
+* Altair Grid Engineのアップデートにより予約およびジョブは削除されました。ジョブの再投入・予約の再作成をお願いします。
+* 今回の修正で解消される[「既知の問題」](known-issues.md)があります。
+* R(4.1.3)について、--enable-R-shlib を有効にして再インストールしております。
+* Singularityエンドポイントについては、都合によりアップデートを見送りました。
+
 ## 2022-05-26 
 
 * Altair社によるUniva社の買収に伴い本ユーザーガイド内に記載されている製品名を変更しました。

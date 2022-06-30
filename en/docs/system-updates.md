@@ -1,5 +1,22 @@
 # System Updates
 
+## 2022-06-21
+
+| Add / Update / Delete | Software | Version | Previous version |
+|:--|:--|:--|:--|
+| Add    | cuda    | 11.7.0 | |
+| Update | nccl    | 2.12.12-1 | 2.12.10-1 |
+| Update | Altair Grid Engine | 8.6.19_C121_1 | 8.6.17 |
+| Update | openjdk | 1.8.0.332 | 1.8.0.322 |
+| Update | openjdk | 11.0.15.0.9(Compute Node (V))<br>11.0.15.0.10(Compute Node (A)) | 11.0.14.1.1 |
+| Update | openjdk | 17.0.3.0.7 | 17.0.2.0.8 |
+| Update | DDN Lustre | 2.12.8_ddn10 | 2.12.6_ddn58-1 |
+
+* Altair Grid Engine has been updated. The job queue and job reservations are not preserved. Please resubmit your batch job(s). Please recreate your reservation(s). 
+* Some of [Known Issues](known-issues.md) have been resolved in this update.
+* Reinstalled R (4.1.3) with --enable-R-shlib enabled.
+* The update of Singularity Endpoint has been postponed.
+
 ## 2022-05-26 
 
 * Product names documented in this User Guide have been renamed to reflect the acquisition of Univa by Altair.
