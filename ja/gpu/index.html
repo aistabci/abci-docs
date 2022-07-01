@@ -2105,17 +2105,17 @@
 <td align="left">DEFAULTモード。<br>1つのGPUを複数のプロセスから同時に利用できます。</td>
 </tr>
 <tr>
-<td align="left">-v GPU_COMPUTE_MODE=1</td>
-<td align="left">EXCLUSIVE_PROCESSモード。<br>1つのGPUを1プロセスのみが利用できます。1プロセスから複数スレッドの利用は可能です。</td>
-</tr>
-<tr>
 <td align="left">-v GPU_COMPUTE_MODE=2</td>
 <td align="left">PROHIBITEDモード。<br>GPUへのプロセス割り当てを禁止します。</td>
+</tr>
+<tr>
+<td align="left">-v GPU_COMPUTE_MODE=3</td>
+<td align="left">EXCLUSIVE_PROCESSモード。<br>1つのGPUを1プロセスのみが利用できます。1プロセスから複数スレッドの利用は可能です。</td>
 </tr>
 </tbody>
 </table>
 <p>インタラクティブ利用時の実行例:</p>
-<div class="codehilite"><pre><span></span><code><span class="o">[</span><span class="n">username@es1 ~</span><span class="o">]</span><span class="err">$</span><span class="w"> </span><span class="n">qrsh</span><span class="w"> </span><span class="o">-</span><span class="n">g</span><span class="w"> </span><span class="n">grpname</span><span class="w"> </span><span class="o">-</span><span class="n">l</span><span class="w"> </span><span class="n">rt_F</span><span class="o">=</span><span class="mi">1</span><span class="w"> </span><span class="o">-</span><span class="n">l</span><span class="w"> </span><span class="n">h_rt</span><span class="o">=</span><span class="mi">1</span><span class="err">:</span><span class="mi">00</span><span class="err">:</span><span class="mi">00</span><span class="w"> </span><span class="o">-</span><span class="n">v</span><span class="w"> </span><span class="n">GPU_COMPUTE_MODE</span><span class="o">=</span><span class="mi">1</span><span class="w"></span>
+<div class="codehilite"><pre><span></span><code><span class="o">[</span><span class="n">username@es1 ~</span><span class="o">]</span><span class="err">$</span><span class="w"> </span><span class="n">qrsh</span><span class="w"> </span><span class="o">-</span><span class="n">g</span><span class="w"> </span><span class="n">grpname</span><span class="w"> </span><span class="o">-</span><span class="n">l</span><span class="w"> </span><span class="n">rt_F</span><span class="o">=</span><span class="mi">1</span><span class="w"> </span><span class="o">-</span><span class="n">l</span><span class="w"> </span><span class="n">h_rt</span><span class="o">=</span><span class="mi">1</span><span class="err">:</span><span class="mi">00</span><span class="err">:</span><span class="mi">00</span><span class="w"> </span><span class="o">-</span><span class="n">v</span><span class="w"> </span><span class="n">GPU_COMPUTE_MODE</span><span class="o">=</span><span class="mi">3</span><span class="w"></span>
 </code></pre></div>
 
 <p>バッチ利用時の実行例:</p>
@@ -2125,7 +2125,7 @@
 <span class="c1">#$ -l h_rt=1:00:00</span>
 <span class="c1">#$ -j y</span>
 <span class="c1">#$ -cwd</span>
-<span class="c1">#$ -v GPU_COMPUTE_MODE=1</span>
+<span class="c1">#$ -v GPU_COMPUTE_MODE=3</span>
 /usr/bin/nvidia-smi
 </code></pre></div>
 
