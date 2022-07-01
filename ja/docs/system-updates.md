@@ -1,5 +1,9 @@
 # システム更新履歴
 
+## 2022-06-24
+
+* GPU Compute ModeをEXCLUSIVE_PROCESSモードに変更するジョブ実行オプションを `-v GPU_COMPUTE_MODE=1` から `-v GPU_COMPUTE_MODE=3` に変更しました。詳しくは、[GPU Compute Modeの変更](gpu.md#changing-gpu-compute-mode)を参照してください。
+
 ## 2022-06-21
 
 | Add / Update / Delete | Software | Version | Previous version |

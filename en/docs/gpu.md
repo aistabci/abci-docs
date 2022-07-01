@@ -122,13 +122,13 @@ You can change GPU Compute Mode by using `-v GPU_COMPUTE_MODE=num` option. The f
 | Option | Description |
 |:--|:--|
 |-v GPU\_COMPUTE\_MODE=0 | DEFAULT mode.<br>Multiple contexts are allowed per device. |
-|-v GPU\_COMPUTE\_MODE=1 | EXCLUSIVE\_PROCESS mode.<br>Only one context is allowed per device, usable from multiple threads at a time. |
 |-v GPU\_COMPUTE\_MODE=2 | PROHIBITED mode.<br>No contexts are allowed per device (no compute apps). |
+|-v GPU\_COMPUTE\_MODE=3 | EXCLUSIVE\_PROCESS mode.<br>Only one context is allowed per device, usable from multiple threads at a time. |
 
 Execution example in an interactive job:
 
 ```
-[username@es1 ~]$ qrsh -g grpname -l rt_F=1 -l h_rt=1:00:00 -v GPU_COMPUTE_MODE=1
+[username@es1 ~]$ qrsh -g grpname -l rt_F=1 -l h_rt=1:00:00 -v GPU_COMPUTE_MODE=3
 ```
 
 Execution example in a batch job:
@@ -140,6 +140,6 @@ Execution example in a batch job:
 #$ -l h_rt=1:00:00
 #$ -j y
 #$ -cwd
-#$ -v GPU_COMPUTE_MODE=1
+#$ -v GPU_COMPUTE_MODE=3
 /usr/bin/nvidia-smi
 ```
