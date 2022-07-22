@@ -3,9 +3,9 @@
 
 ## 暗号化機能の概要
 
-クラウド向けのストレージにおいては、一般的に、クライアント側で暗号化する CSE（Client-Side Encryption）とサーバ側で暗号化する SSE（Server-Side Encryption）があります。SSEはストレージ側での機能提供が必要であり、ABCIクラウドストレージではSSE機能をサポートしています。
+クラウド向けのストレージにおいては、一般的に、クライアント側で暗号化する Client-Side Encryption (CSE) とサーバ側で暗号化する Server-Side Encryption (SSE) があります。SSEはストレージ側での機能提供が必要であり、ABCIクラウドストレージではSSE機能をサポートしています。
 
-SSE機能を利用すると、データがサーバーに送られた後、ディスクに保存される前に暗号化が行われます。データを取得する時には、ディスクから取り出された後に復号化が行われ、サーバーからデータが送られてきます。SSEでは、送信経路上ではデータが復号化されていますが、ABCIクラウドストレージでは、エンドポイントに https://s3.abci.ai を指定することでTLSによる通信の暗号化が別途行われます。
+SSE機能を利用すると、データがサーバーに送られた後、ディスクに保存される前に暗号化が行われます。データを取得する時には、ディスクから取り出された後に復号化が行われ、サーバーからデータが送られてきます。SSEでは、送信経路上ではデータが復号化されていますが、ABCIクラウドストレージでは、エンドポイントに `https://s3.abci.ai` を指定することでTLSによる通信の暗号化が別途行われます。
 
 Amazon S3 では以下のような SSE が提供されていますが、ABCIクラウドストレージでは、SSE-S3 に相当する SSE を提供しています。SSE-C と SSE-KMS はABCIクラウドストレージでは利用できません。
 
@@ -30,9 +30,9 @@ CSEの説明は、[Protecting Data Using Client-Side Encryption](https://docs.aw
 
 ## バケットのデフォルト暗号化を有効にする
 
-バケットに対してデフォルトの暗号化動作を設定することができます。バケットの SSE を有効にした場合、全てのオブジェクトでバケットに保存される際に暗号化が行われます。
-バケットの SSE を有効化するには、`aws s3api put-bucket-encryption` を実行します。なお、バケットはあらかじめ作成しておく必要があります。
-例えば、'dataset-s0001' というバケットで SSE を有効化する場合は以下のように実行します。
+バケットに対してデフォルトの暗号化動作を設定することができます。バケットのデフォルト暗号化を有効にした場合、全てのオブジェクトでバケットに保存される際に暗号化が行われます。
+バケットのデフォルト暗号化を有効にするには、`aws s3api put-bucket-encryption` を実行します。なお、バケットはあらかじめ作成しておく必要があります。
+例えば、`dataset-s0001` というバケットでデフォルト暗号化を有効化する場合は以下のように実行します。
 
 ```
 [username@es1 ~]$ aws --endpoint-url https://s3.abci.ai s3api put-bucket-encryption --bucket dataset-s0001 --server-side-encryption-configuration '{
@@ -47,7 +47,7 @@ CSEの説明は、[Protecting Data Using Client-Side Encryption](https://docs.aw
 ```
 
 !!! note
-    ストレージ側が保持する鍵を用いて、サーバー上でオブジェクトを保存する時に暗号化（読み出す時には復号化）するもので、アクセスキーなど送信リクエスト固有の情報で暗号化するものではありません。
+    バケットのデフォルト暗号化機能は、ストレージ側が保持する鍵を用いて、サーバー上でオブジェクトを保存する時に暗号化（読み出す時には復号化）するもので、アクセスキーなど送信リクエスト固有の情報で暗号化するものではありません。
 
 !!! note
     デフォルト暗号化が有効にされる前にバケットに存在していたオブジェクトは暗号化されません。
@@ -55,9 +55,10 @@ CSEの説明は、[Protecting Data Using Client-Side Encryption](https://docs.aw
 
 ## デフォルト暗号化を有効にしたバケットかどうかの判別
 
-SSEを有効にしたバケットかどうかを判別するには、`aws s3api get-bucket-encryption` を実行します。
+デフォルト暗号化を有効にしたバケットかどうかを判別するには、`aws s3api get-bucket-encryption` を実行します。
 
-以下では、dataset-s0001 バケットでSSEが有効になっているかを確認しています。 `"SSEAlgorithm": "AES256"` という情報が含まれているため、dataset-s0001 はデフォルト暗号化を有効にしたバケットであるといえます。この情報が含まれていない場合は、デフォルト暗号化が有効でないバケットであることを示しています。
+以下では、`dataset-s0001` バケットのデフォルト暗号化が有効かどうかを確認しています。
+`aws s3api get-bucket-encryption` コマンドの出力に、`"SSEAlgorithm": "AES256"` が含まれていればバケットのデフォルト暗号化は有効です。この情報が含まれていない場合、バケットのデフォルト暗号化は有効ではありません。
 
 ```
 [username@es1 ~]$ aws --endpoint-url https://s3.abci.ai s3api get-bucket-encryption --bucket dataset-s0001
@@ -75,8 +76,9 @@ SSEを有効にしたバケットかどうかを判別するには、`aws s3api 
 }
 ```
 
-また、`aws s3api head-object` を実行すると、オブジェクトの暗号化が有効かどうかを確認できます。
-以下では、dataset-s0001 バケットにアップロードした cat.jpg というオブジェクトのメタデータを確認しています。 `"ServerSideEncryption": "AES256"` という情報が含まれている場合は、オブジェクトの暗号化が有効になっています。
+また、`aws s3api head-object` を実行すると、オブジェクトのメタデータとともに、オブジェクトの暗号化が有効かどうかを確認できます。
+以下では、`dataset-s0001` バケットにアップロードした `cat.jpg` というオブジェクトの暗号化が有効かどうかを確認しています。
+`aws s3api head-object` コマンドの出力に、`"ServerSideEncryption": "AES256"` が含まれている場合は、オブジェクトの暗号化が有効となっています。
 
 ```
 [username@es1 ~]$ aws --endpoint-url https://s3.abci.ai s3api head-object --bucket dataset-s0001 --key cat.jpg
