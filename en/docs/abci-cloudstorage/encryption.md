@@ -5,7 +5,7 @@
 
 There are two typical encryptions for cloud storages. The one is Client-Side Encryption (CSE) and another one is Server-Side Encryption (SSE). SSE needs to provide functionality from storage side. The ABCI Cloud Storage supports SSE.
 
-Data is encrypted when it is stored in disks after uploading to ABCI Cloud Storage. Encrypted data is decryped after retrieving data from the disk. Then the data will be downloaded. Thus, data are decrypted while transferring through the routes though, communications are encrypted by TLS with specifying `https://s3.abci.ai` as an endpoint.
+Data is encrypted when it is stored in disks after uploading to ABCI Cloud Storage. Encrypted data is decrypted after retrieving data from the disk. Then the data will be downloaded. Thus, data are decrypted while transferring through the routes though, communications are encrypted by TLS with specifying `https://s3.abci.ai` as an endpoint.
 
 Amazon S3 provides SSE shown in the table below. ABCI Cloud Storage provides SSE functionality equivalent to SSE-S3. SSE-C and SSE-KMS are not available for ABCI Cloud Storage.
 
@@ -13,7 +13,7 @@ Amazon S3 provides SSE shown in the table below. ABCI Cloud Storage provides SSE
 | :-- | :-- |
 | SSE-S3 | Encryption with key managed on storage side. |
 | SSE-C | Encryption with key included to request by user. |
-| SSE-KMS | Encryption with key registerd to Key Management Service. |
+| SSE-KMS | Encryption with key registered to Key Management Service. |
 
 CSE is available for ABCI Cloud Storage. However, ABCI doesn't offer Key Management Service (KMS), so users should be careful.
 For detailed information, see [Protecting Data Using Client-Side Encryption](https://docs.aws.amazon.com/AmazonS3/latest/dev/UsingClientSideEncryption.html).
@@ -30,7 +30,7 @@ For detailed information, see [Protecting Data Using Client-Side Encryption](htt
 
 ## Enabling Default Bucket Encryption
 
-You can set the default encryption befavior for a bucket. If you enable default encryption for a bucket, all objects will have encryption when stored in the bucket.
+You can set the default encryption behavior for a bucket. If you enable default encryption for a bucket, all objects will have encryption when stored in the bucket.
 To enable default encryption for a bucket, run `aws s3api put-bucket-encryption`. Note that the bucket must be created beforehand.
 The following example shows how to enable default encryption for a bucket `dataset-s0001`.
 
