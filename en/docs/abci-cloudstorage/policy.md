@@ -75,6 +75,7 @@ Action:
 Resouce defines accessible resources. For example, 'arn:aws:s3:::sensor8' means the bucket 'sensor8.' The object in the bucket is written as 'arn:aws:s3:::sensor8/test.dat.' Wildcards are available.
 
 Principal defines accessible ABCI Cloud Storage account. Using a wildcard can grant access to anyone on the internet. 
+Note that NotPrincipal is not supported.
 
 !!! caution
     Before you grant read access to everyone in the world, please read the following agreements carefully, and make sure it is appropriate to do so.
