@@ -32,6 +32,7 @@ nav:
     - 'Others': 'apps/others.md'
   - 'Tips':
     - 'NVIDIA NGC': 'tips/ngc.md'
+    - 'SHARP': 'tips/sharp.md'
     - 'Remote Desktop': 'tips/remote-desktop.md'
     - 'AWS CLI': 'tips/awscli.md'
     - 'PuTTY': 'tips/putty.md'
