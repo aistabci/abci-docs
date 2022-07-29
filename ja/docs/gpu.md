@@ -123,13 +123,13 @@ ABCIシステムでは、NVIDIAが提供する以下のライブラリが利用�
 | オプション | 説明 |
 |:--|:--|
 |-v GPU\_COMPUTE\_MODE=0 | DEFAULTモード。<br>1つのGPUを複数のプロセスから同時に利用できます。 |
-|-v GPU\_COMPUTE\_MODE=1 | EXCLUSIVE\_PROCESSモード。<br>1つのGPUを1プロセスのみが利用できます。1プロセスから複数スレッドの利用は可能です。 |
 |-v GPU\_COMPUTE\_MODE=2 | PROHIBITEDモード。<br>GPUへのプロセス割り当てを禁止します。 |
+|-v GPU\_COMPUTE\_MODE=3 | EXCLUSIVE\_PROCESSモード。<br>1つのGPUを1プロセスのみが利用できます。1プロセスから複数スレッドの利用は可能です。 |
 
 インタラクティブ利用時の実行例:
 
 ```
-[username@es1 ~]$ qrsh -g grpname -l rt_F=1 -l h_rt=1:00:00 -v GPU_COMPUTE_MODE=1
+[username@es1 ~]$ qrsh -g grpname -l rt_F=1 -l h_rt=1:00:00 -v GPU_COMPUTE_MODE=3
 ```
 
 バッチ利用時の実行例:
@@ -141,6 +141,6 @@ ABCIシステムでは、NVIDIAが提供する以下のライブラリが利用�
 #$ -l h_rt=1:00:00
 #$ -j y
 #$ -cwd
-#$ -v GPU_COMPUTE_MODE=1
+#$ -v GPU_COMPUTE_MODE=3
 /usr/bin/nvidia-smi
 ```
