@@ -3,7 +3,7 @@
 
 ## Outline of Encryption
 
-There are two typical encryptions for cloud storages. The one is Client-Side Encryption (CSE) and another one is Server-Side Encryption (SSE). SSE needs to provide functionality from storage side. The ABCI Cloud Storage supports SSE.
+There are two typical encryptions for cloud storages. The one is Client-Side Encryption (CSE) and another one is Server-Side Encryption (SSE). SSE needs to provide functionality from storage side. The ABCI Cloud Storage supports SSE. In addition, ABCI Cloud Storage supports CSE (except for KMS (Key Management Service)).
 
 Data is encrypted when it is stored in disks after uploading to ABCI Cloud Storage. Encrypted data is decryped after retrieving data from the disk. Then the data will be downloaded. Thus, data are decrypted while transferring through the routes though, communications are encrypted by TLS with specifying 'https://s3.abci.ai' as an endpoint.
 
@@ -24,7 +24,8 @@ For detailed information, see [Protecting Data Using Client-Side Encryption](htt
 | CSE-KMS | Encryption with key registered to Key Management Service |
 
 !!! note
-    Since the start of operation, ABCI Cloud Storage has provided the create-encrypted-bucket command to create a bucket with activated enabled, but the create-encrypted-bucket command is scheduled to be discontinued by August 2022.
+    Since the start of operation, ABCI Cloud Storage has provided the create-encrypted-bucket command to create an SSE-enabled bucket, but the create-encrypted-bucket command is scheduled to be discontinued by August 2022.
+    After August, please use the aws-cli command instead of the create-encrypted-bucket command.
     Buckets previously created with the create-encrypted-bucket command can still be used. You can delete buckets or refer configuration with the aws-cli command.
 
 
@@ -50,7 +51,7 @@ The following example shows how to enable SSE for a bucket 'dataset-s0001'.
     The above is encrypted when storing the object on the server using the key stored on the storage side (decrypted when reading), it is not encrypted with information unique to the transmission request such as access key.
 
 !!! note
-    There is no change to the encryption of the objects that existed in the bucket before default encryption was enabled.
+    Objects, which existed in the bucket before the bucket's default encryption was enabled, are not encrypted.
 
 
 ## Confirming Default Bucket Encryption

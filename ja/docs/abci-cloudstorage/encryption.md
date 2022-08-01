@@ -3,7 +3,7 @@
 
 ## 暗号化機能の概要
 
-クラウド向けのストレージにおいては、一般的に、クライアント側で暗号化する CSE（Client-Side Encryption）とサーバ側で暗号化する SSE（Server-Side Encryption）があります。SSEはストレージ側での機能提供が必要であり、ABCIクラウドストレージではSSE機能をサポートしています。
+クラウド向けのストレージにおいては、一般的に、クライアント側で暗号化する CSE（Client-Side Encryption）とサーバ側で暗号化する SSE（Server-Side Encryption）があります。SSEはストレージ側での機能提供が必要であり、ABCIクラウドストレージではSSE機能をサポートしています。また、ABCIクラウドストレージではCSEの機能（ただしKMS(Key Management Service)を除く）が利用可能です。
 
 SSE機能を利用すると、データがサーバーに送られた後、ディスクに保存される前に暗号化が行われます。データを取得する時には、ディスクから取り出された後に復号化が行われ、サーバーからデータが送られてきます。SSEでは、送信経路上ではデータが復号化されていますが、ABCIクラウドストレージでは、エンドポイントに https://s3.abci.ai を指定することでTLSによる通信の暗号化が別途行われます。
 
@@ -25,6 +25,7 @@ CSEの説明は、[Protecting Data Using Client-Side Encryption](https://docs.aw
 
 !!! note
     ABCI クラウドストレージでは運用開始より、SSE を有効にしたバケットを作成する create-encrypted-bucket コマンドを提供してきましたが、create-encrypted-bucket コマンドは2022年8月を目処に提供を終了する予定です。
+    8月より後は、create-encrypted-bucket コマンドの代わりに、aws-cliコマンドを利用ください。
     以前に create-encrypted-bucket コマンドで作成したバケットはそのまま利用可能です。削除や設定の参照は aws-cli コマンドで行うことができます。
 
 
