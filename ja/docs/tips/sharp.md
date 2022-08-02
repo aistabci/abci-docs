@@ -2,7 +2,7 @@
 # SHARPの利用
 
 ABCIの計算ノード(A)ではScalable Hierarchical Aggregation and Reduction Protocol (SHARP)&trade;が利用可能です。
-SHARPの利用により、MPIや機械学習における集団演算のパフォーマンスを向上させ、集団演算をCPUやGPUからネットワークにオフロードし、エンドポイント間でデータを何度も送信する必要がなくなります。
+SHARPの利用により、集団演算をCPUやGPUからネットワークにオフロードし、エンドポイント間でのデータ転送が削減されるため、MPIや機械学習における集団演算のパフォーマンス向上が期待できます。
 
 
 ## NVIDIA NCCLでSHARPを利用する
