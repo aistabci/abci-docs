@@ -1,13 +1,13 @@
 
 # SHARPの利用
 
-ABCIではScalable Hierarchical Aggregation and Reduction Protocol (SHARP)&trade;を提供しています。
+ABCIの計算ノード(A)ではScalable Hierarchical Aggregation and Reduction Protocol (SHARP)&trade;が利用可能です。
 SHARPの利用により、MPIや機械学習における集団演算のパフォーマンスを向上させ、集団演算をCPUやGPUからネットワークにオフロードし、エンドポイント間でデータを何度も送信する必要がなくなります。
 
 
 ## NVIDIA NCCLでSHARPを利用する
 
-NVIDIA NCCLでSHARPを利用することができます。NVIDIA NCCLでSHARPを利用するには、NCCL-SHARPプラグインを使用します。
+NVIDIA NCCLでSHARPを利用するには、NCCL-SHARPプラグインを使用します。
 
 ABCIでは計算ノード(A)向けにNCCL-SHARPプラグインをモジュールとして提供しています。
 プラグインは、NCCLのバージョンごとに対応するモジュールが変更になります。プラグインとNCCLの対応は以下の表を参照してください。
