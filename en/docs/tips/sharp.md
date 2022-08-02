@@ -1,9 +1,9 @@
 
 # Using SHARP
 
-ABCI provides Scalable Hierarchical Aggregation and Reduction Protocol (SHARP)&trade;.
+Scalable Hierarchical Aggregation and Reduction Protocol (SHARP)&trade; is available on the ABCI Compute Node (A).
 
-Using SHARP improves the performance of collective operations in MPI and machine learning, offloading collective operations from the CPU or GPU to the network, and eliminating the need to repeatedly send data between endpoints.
+Using SHARP may improve the performance of collective operations in MPI and machine learning, due to offloading collective operations from the CPU or GPU to the network, and reduction of data transfer between endpoints.
 
 
 ## Using SHARP with NVIDIA NCCL
