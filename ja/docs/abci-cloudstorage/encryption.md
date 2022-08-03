@@ -3,7 +3,7 @@
 
 ## 暗号化機能の概要
 
-クラウド向けのストレージにおいては、一般的に、クライアント側で暗号化する Client-Side Encryption (CSE) とサーバ側で暗号化する Server-Side Encryption (SSE) があります。SSEはストレージ側での機能提供が必要であり、ABCIクラウドストレージではSSE機能をサポートしています。また、ABCIクラウドストレージではCSEの機能（ただしKMS(Key Management Service)を除く）が利用可能です。
+クラウド向けのストレージにおいては、一般的に、クライアント側で暗号化する Client-Side Encryption (CSE) とサーバ側で暗号化する Server-Side Encryption (SSE) があります。SSEはストレージ側での機能提供が必要であり、ABCIクラウドストレージではSSE機能をサポートしています。
 
 SSE機能を利用すると、データがサーバーに送られた後、ディスクに保存される前に暗号化が行われます。データを取得する時には、ディスクから取り出された後に復号化が行われ、サーバーからデータが送られてきます。SSEでは、送信経路上ではデータが復号化されていますが、ABCIクラウドストレージでは、エンドポイントに `https://s3.abci.ai` を指定することでTLSによる通信の暗号化が別途行われます。
 
@@ -15,8 +15,11 @@ Amazon S3 では以下のような SSE が提供されていますが、ABCIク�
 | SSE-C | ユーザーがリクエストに含めた鍵を用いて暗号化 |
 | SSE-KMS | Key Management Service に登録された鍵を用いて暗号化 |
 
-一方、ABCIクラウドストレージではCSEの利用は可能です。ただし、ABCIではKMS(Key Management Service)を提供していませんので、ご注意ください。
-CSEの説明は、[Protecting Data Using Client-Side Encryption](https://docs.aws.amazon.com/AmazonS3/latest/dev/UsingClientSideEncryption.html) などをご参照ください。
+CSEはデータの暗号化および復号を利用者が行い、暗号化されたデータをABCIクラウドストレージに保存します。
+ABCIクラウドストレージではCSEを利用できます。
+
+ただし、ABCIクラウドストレージではKey Management Service(KMS)を提供していないため、KMSに保存されている暗号キーを利用してのCSEは利用できません。
+CSEの詳しい説明は、[Protecting Data Using Client-Side Encryption](https://docs.aws.amazon.com/AmazonS3/latest/dev/UsingClientSideEncryption.html) をご参照ください。
 
 | CSEの種類 | 説明 |
 | :-- | :-- |
