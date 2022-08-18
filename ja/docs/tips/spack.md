@@ -80,7 +80,7 @@ Spackはソフトウェアの依存関係を解決して、依存するソフト
 ディスクスペースの浪費となりますので、ABCIが提供するソフトウェアは、Spackから*参照する*ように設定することをお勧めします。
 
 Spackが参照するソフトウェアの設定は`$HOME/.spack/linux/packages.yaml`に定義します。
-ABCIで提供するCUDA、OpenMPI、MVAPICH、cmake等の設定を記載した設定ファイル(packages.yaml)をユーザ環境にコピーすることでABCIのソフトウェアを*参照する*ことができます。
+ABCIで提供するCUDA、OpenMPI、cmake等の設定を記載した設定ファイル(packages.yaml)をユーザ環境にコピーすることでABCIのソフトウェアを*参照する*ことができます。
 
 計算ノード(V)
 
@@ -123,11 +123,6 @@ packages:
 このファイルを設置すると、例えば、SpackでCUDAのバージョン10.2.89のインストールを実行すると、実際にはインストールはされずに、SpackがEnvironment Modulesの`cuda/10.2/10.2.89`を使用するようになります。
 CUDAセクションで`buildable: false`を指定することにより、Spackはここで指定しているバージョン以外のCUDAをインストールしなくなります。
 ABCIが提供していないバージョンのCUDAをSpackでインストールしたい場合は、この記述を削除してください。
-
-現在のSpackでは`packages.yaml`内の依存関係の解釈に不具合があるため、ABCIが提供するCUDA-aware OpenMPIを登録する事は出来ません。
-そのためABCIが提供する`packages.yaml`では、CUDA-awareではないOpenMPIのみを登録しています。
-また、登録されているCUDA-awareではないOpenMPIと同じバージョンのCUDA-aware OpenMPIをインストールしようとすると、エラーになります。
-エラーを回避するには、`packages.yaml`に登録されていないバージョンをインストールするか、`packages.yaml`から該当バージョンを削除してご利用ください。
 
 `packages.yaml`ファイルの設定の詳細は[公式ドキュメント](https://spack.readthedocs.io/en/latest/build_settings.html)を参照ください。
 
@@ -347,9 +342,6 @@ Spackにはソフトウェアパッケージを「環境」という単位でグ
 
 ### CUDA-aware OpenMPI {#cuda-aware-openmpi}
 
-ABCIでは、CUDA-aware OpenMPIをモジュールで提供していますが、全てのコンパイラ、CUDA、OpenMPIの組み合わせで提供しているわけではありません（[参考](https://docs.abci.ai/ja/08/#open-mpi)）。
-使用したい組み合わせがモジュール提供されていない場合は、Spackでインストールするのが簡単です。
-
 #### インストール方法 {#how-to-install}
 
 CUDA 10.1.243を使用するOpenMPI 3.1.1をインストールする場合の例です。
@@ -366,7 +358,7 @@ openmpi@3.1.1  ${SPACK_ROOT}/opt/spack/linux-centos7-haswell/gcc-4.8.5/openmpi-3
 ```
 
 1行目では、ABCIが提供するCUDAを使用するよう、CUDAのバージョン`10.1.243`をインストールします。
-2行目では、[このページ](../appendix/installed-software.md#open-mpi)と同様の設定で、OpenMPIをインストールしています。
+2行目では、[インストール済みソフトウェアの構成](../appendix/installed-software.md#open-mpi)と同様の設定で、OpenMPIをインストールしています。
 インストールオプションの意味は以下の通りです。
 
 - `+cuda`: CUDAを有効にしてビルドします。
@@ -430,18 +422,17 @@ mpiexec ${MPIOPTS} YOUR_PROGRAM
 
 ### CUDA-aware MVAPICH2 {#cuda-aware-mvapich2}
 
-ABCIが提供するMVAPICH2モジュールはCUDA対応していません。
 CUDA-aware MVAPICH2を使用する場合は、以下を参考にSpackでインストールしてください。
 
 GPUを搭載する計算ノード上で作業を行います。
-[OpenMPIと同様](#cuda-aware-openmpi)に、使用するCUDAをインストールしたのちに、CUDAオプション（`+cuda`）、通信ライブラリ（`fabrics=mrail`）、およびCUDAの依存関係（`^cuda@10.1.243`）を指定してMVAPICH2をインストールします。
+上述した[CUDA-aware OpenMPI](#cuda-aware-openmpi)と同様に、使用するCUDAをインストールしたのちに、CUDAオプション（`+cuda`）、通信ライブラリ（`fabrics=mrail`）、およびCUDAの依存関係（`^cuda@10.1.243`）を指定してMVAPICH2をインストールします。
 
 ```Console
 [username@g0001 ~]$ spack install cuda@10.1.243
 [username@g0001 ~]$ spack install mvapich2@2.3.2 +cuda fabrics=mrail ^cuda@10.1.243
 ```
 
-使い方もOpenMPIと同様に、インストールしたMVAPICH2をロードして使います。
+使い方もCUDA-aware OpenMPIと同様に、インストールしたMVAPICH2をロードして使います。
 以下にジョブスクリプト例を示します。
 
 ```shell
