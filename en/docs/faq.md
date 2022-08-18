@@ -10,12 +10,6 @@ $ stty -ixon
 
 Executing while logged in to the interactive node has the same effect.
 
-## Q. The Group Area is consumed more than the actual size
-
-Generally, any file systems have their own block size, and even the smallest file consumes the capacity of the block size.
-
-ABCI sets the block size of the Group Area 1,2,3 to 128 KB and the block size of the home area and Group Area to 4 KB. For this reason, if a large number of small files are created in the Group Area 1,2,3 , usage efficiency will be reduced. For example, if you want to create a file that is less than 4KB in the Group Area, you need about 32 times the capacity of the home area.
-
 ## Q. Singularity cannot use container registries that require authentication
 
 SingularityPRO has a function equivalent to ``docker login`` that provides authentication information with environment variables.
@@ -31,32 +25,13 @@ For more information on SingularityPRO authentication, see below.
 * [SingularityPRO 3.7 User Guide](https://repo.sylabs.io/c/0f6898986ad0b646b5ce6deba21781ac62cb7e0a86a5153bbb31732ee6593f43/guides/singularitypro37-user-guide/)
     * [Making use of private images from Private Registries](https://repo.sylabs.io/c/0f6898986ad0b646b5ce6deba21781ac62cb7e0a86a5153bbb31732ee6593f43/guides/singularitypro37-user-guide/singularity_and_docker.html?highlight=support%20docker%20oci#making-use-of-private-images-from-private-registries)
 
-## Q. NGC CLI cannot be executed
-
-When running [NGC Catalog CLI](https://docs.nvidia.com/ngc/ngc-catalog-cli-user-guide/index.html) on ABCI, the following error message appears and execution is not possible. This is because the NGC CLI is built for Ubuntu 14.04 and later.
-
-```
-ImportError: /lib64/libc.so.6: version `GLIBC_2.18' not found (required by /tmp/_MEIxvHq8h/libstdc++.so.6)
-[89261] Failed to execute script ngc
-```
-
-By preparing the following shell script, it can be executed using Singularity. This technique can be used not only for NGC CLI but also for general use.
-
-```
-#!/bin/sh
-source /etc/profile.d/modules.sh
-module load singularitypro
-
-NGC_HOME=$HOME/ngc
-singularity exec $NGC_HOME/ubuntu-18.04.simg $NGC_HOME/ngc $@
-```
 
 ## Q. I want to assign multiple compute nodes and have each compute node perform different processing
 
 If you give `-l rt_F=N` or `-l rt_AF=N` option to `qrsh` or `qsub`, you can assign N compute nodes. You can also use MPI if you want to perform different processing on each assigned compute node.
 
 ```
-$ module load openmpi/2.1.6
+$ module load openmpi/4.1.3
 $ mpirun -hostfile $SGE_JOB_HOSTLIST -np 1 command1 : -np 1 command2 : ... : -np1 commandN
 ```
 
@@ -77,49 +52,6 @@ Host as.abci.ai
 
 !!! note
     The default value of ServerAliveInterval is 0 (no KeepAlive).
-
-## Q. I want to use a newer version of Open MPI
-
-ABCI offers CUDA-aware and CUDA non-aware versions of Open MPI, and you can check the availability provided by [Open MPI](mpi.md#open-mpi).
-
-The Environment Modules provided by ABCI will attempt to configure CUDA-aware Open MPI environment when loading `openmpi` module only if `cuda` module has been loaded beforehand.
-
-For the combination where CUDA-aware MPI is provided (`cuda/10.0/10.0.130.1`, `openmpi/2.1.6`), therefore, the environment settings will succeed:
-
-```
-$ module load cuda/10.0/10.0.130.1
-$ module load openmpi/2.1.6
-$ module list
-Currently Loaded Modulefiles:
-  1) cuda/10.0/10.0.130.1   2) openmpi/2.1.6
-```
-
-For the combination where CUDA-aware MPI is not provided (`cuda/9.1/9.1.85.3`, `openmpi/3.1.6`), the environment setup will fail and `openmpi` module will not be loaded:
-
-```
-$ module load cuda/9.1/9.1.85.3
-$ module load openmpi/3.1.6
-ERROR: loaded cuda module is not supported.
-WARNING: openmpi/3.1.6 cannot be loaded due to missing prereq.
-HINT: at least one of the following modules must be loaded first: cuda/9.2/9.2.88.1 cuda/9.2/9.2.148.1 cuda/10.0/10.0.130.1 cuda/10.1/10.1.243 cuda/10.2/10.2.89 cuda/11.0/11.0.3 cuda/11.1/11.1.1 cuda/11.2/11.2.2
-$ module list
-Currently Loaded Modulefiles:
-  1) cuda/9.1/9.1.85.3
-```
-
-On the other hand, there are cases where CUDA-aware version of Open MPI is not necessary, such as when you want to use Open MPI just for parallelization by Horovod. In this case, you can use a newer version of Open MPI that does not support CUDA-aware functions by loading `openmpi` module first.
-
-```
-$ module load openmpi/3.1.6
-$ module load cuda/9.1/9.1.85.3
-module list
-Currently Loaded Modulefiles:
-  1) openmpi/3.1.6       2) cuda/9.1/9.1.85.3
-```
-
-!!! note
-    The functions of CUDA-aware versions of Open MPI can be found on the Open MPI site:
-    [FAQ: Running CUDA-aware Open MPI](https://www.open-mpi.org/faq/?category=runcuda)
 
 ## Q. I want to know how ABCI job execution environment is congested
 

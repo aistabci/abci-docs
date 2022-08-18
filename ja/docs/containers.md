@@ -77,7 +77,7 @@ INFO:    Build complete: ubuntu.sif
 [username@es1 singularity]$
 ```
 
-なお、上記コマンドにおいてイメージファイル(ubuntu.sif)の出力先をグループ領域(/groups1, /groups2)にするとエラーが発生します。その場合、singularityコマンドを実行する前に以下のように`id`コマンドでイメージ出力先グループ領域の所有グループを確認の上、`newgrp`コマンドを実施いただくことで回避可能です。
+なお、上記コマンドにおいてイメージファイル(ubuntu.sif)の出力先をグループ領域にするとエラーが発生します。その場合、singularityコマンドを実行する前に以下のように`id`コマンドでイメージ出力先グループ領域の所有グループを確認の上、`newgrp`コマンドを実施いただくことで回避可能です。
 下記例の`gaa00000`の箇所がイメージ出力先グループ領域の所有グループとなります。
 
 ```
@@ -108,7 +108,7 @@ Singularityを利用する場合、ジョブ中に`singularity run`コマンド�
 #$-l rt_F=1
 #$-j y
 source /etc/profile.d/modules.sh
-module load singularitypro openmpi/3.1.6
+module load singularitypro openmpi/4.0.5
 
 mpiexec -n 4 singularity exec --nv ./caffe2.img \
     python sample.py
@@ -184,7 +184,7 @@ DockerfileをSingularity recipeファイルに変換することで、ABCIシス
 Singularity Pythonのインストール例）
 
 ```
-[username@es1 ~]$ module load python/3.6/3.6.12
+[username@es1 ~]$ module load gcc/9.3.0 python/3.10
 [username@es1 ~]$ python3 -m venv work
 [username@es1 ~]$ source work/bin/activate
 (work) [username@es1 ~]$ pip3 install spython
@@ -195,10 +195,9 @@ Singularity Pythonのインストール例）
 Dockerfileから変換しただけでは次の2点の問題が発生するため、それぞれの対処が必要となります。
 
 - WORKDIRにファイルがコピーされない => コピー先をWORKDIRの絶対パスに設定
-- pipにパスが通らない => %postセクションにDockerイメージの環境変数を引き継ぐ設定を追加
 
 ```
-[username@es1 ~]$ module load python/3.6/3.6.12
+[username@es1 ~]$ module load gcc/9.3.0 python/3.10
 [username@es1 ~]$ source work/bin/activate
 (work) [username@es1 ~]$ git clone https://github.com/NVIDIA/DeepLearningExamples
 (work) [username@es1 ~]$ cd DeepLearningExamples/PyTorch/Detection/SSD
@@ -206,37 +205,38 @@ Dockerfileから変換しただけでは次の2点の問題が発生するため
 (work) [username@es1 SSD]$ cp -p ssd.def ssd_org.def
 (work) [username@es1 SSD]$ vi ssd.def
 Bootstrap: docker
-From: nvcr.io/nvidia/pytorch:20.06-py3
+From: nvcr.io/nvidia/pytorch:21.05-py3
 Stage: spython-base
 
 %files
-requirements.txt /workspace                     <- コピー先を相対パス（.）から絶対パスに変更
-./setup.py /workspace                           <- コピー先を相対パス（.）から絶対パスに変更
-./csrc /workspace/csrc                          <- コピー先を相対パス（.）から絶対パスに変更
-. /workspace                                    <- コピー先を相対パス（.）から絶対パスに変更
+requirements.txt /workspace/ssd/  #<- WORKDIR以下にコピー
+. /workspace/ssd/                 #<- WORKDIR以下にコピー
 %post
-FROM_IMAGE_NAME=nvcr.io/nvidia/pytorch:20.06-py3
-. /.singularity.d/env/10-docker2singularity.sh  <- 追加
+FROM_IMAGE_NAME=nvcr.io/nvidia/pytorch:21.05-py3
 
 # Set working directory
-cd /workspace
+cd /workspace/ssd
 
-PYTHONPATH="${PYTHONPATH}:/workspace"
-
+# Install nv-cocoapi
+COCOAPI_VERSION=2.0+nv0.6.0
+export COCOAPI_TAG=$(echo ${COCOAPI_VERSION} | sed 's/^.*+n//') \
+&& pip install --no-cache-dir pybind11                             \
+&& pip install --no-cache-dir git+https://github.com/NVIDIA/cocoapi.git@${COCOAPI_TAG}#subdirectory=PythonAPI
+# Install dllogger
 pip install --no-cache-dir git+https://github.com/NVIDIA/dllogger.git#egg=dllogger
+
+# Install requirements
 pip install -r requirements.txt
 python3 -m pip install pycocotools==2.0.0
-
-# Copy SSD code
-pip install .
+mkdir models #<- main.py実行時に必要なため追加
 
 %environment
-export PYTHONPATH="${PYTHONPATH}:/workspace"
+export COCOAPI_VERSION=2.0+nv0.6.0
 %runscript
-cd /workspace
+cd /workspace/ssd
 exec /bin/bash "$@"
 %startscript
-cd /workspace
+cd /workspace/ssd
 exec /bin/bash "$@"
 ```
 

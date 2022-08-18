@@ -116,10 +116,10 @@ Report bugs to http://www.open-mpi.org/community/help/
 [username@es1 ~]$ module avail openmpi
 
 -------------------- /apps/modules/modulefiles/centos7/mpi ---------------------
-openmpi/2.1.6          openmpi/3.1.6          openmpi/4.0.5(default)
+openmpi/4.0.5          openmpi/4.1.3(default)
 ```
 
-``openmpi/4.0.5`` を使うのが適当のようです。少なくともメジャーバージョンが一致している必要があります。
+``openmpi/4.1.3``を使うのが適当のようです。少なくともメジャーバージョンが一致している必要があります。
 
 ### SingularityイメージのMPI実行 {#run-a-singularity-image-with-mpi}
 
@@ -127,7 +127,7 @@ openmpi/2.1.6          openmpi/3.1.6          openmpi/4.0.5(default)
 
 ```
 [username@es1 ~]$ qrsh -g grpname -l rt_F=2 -l h_rt=1:00:00
-[username@g0001 ~]$ module load singularitypro openmpi/4.0.5
+[username@g0001 ~]$ module load singularitypro openmpi/4.1.3
 ```
 
 1ノードあたり4基のGPUがあり、2ノード占有では計8基のGPUが使えることになります。この場合、8個のプロセスをノードあたり4個ずつ並列に起動し、サンプルプログラム tensorflow_mnist.py を実行します。
@@ -164,7 +164,7 @@ INFO:tensorflow:loss = 0.17852336, step = 40 (0.225 sec)
 #$ -cwd
 
 source /etc/profile.d/modules.sh
-module load singularitypro openmpi/4.0.5
+module load singularitypro openmpi/4.1.3
 wget https://raw.githubusercontent.com/horovod/horovod/v0.22.1/examples/tensorflow/tensorflow_mnist.py
 mpirun -np 8 -npernode 4 singularity run --nv tensorflow_21.06-tf1-py3.sif python tensorflow_mnist.py
 ```
