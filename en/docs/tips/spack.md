@@ -81,7 +81,7 @@ As it is a waste of disk space, we recommend to configure Spack to *refer to* so
 
 Software referred by Spack can be defined in the configuration file `$HOME/.spack/linux/packages.yaml`.
 ABCI provides a pre-configured `packages.yaml` which defines mappings of Spack package and software installed on ABCI.
-Copying this file to your environment lets Spack use installed CUDA, OpenMPI, MVAPICH, cmake and etc.
+Copying this file to your environment lets Spack use installed CUDA, OpenMPI, cmake and etc.
 
 Compute Node (V)
 
@@ -124,11 +124,6 @@ packages:
 After you copy this file, when you let Spack install CUDA version 10.2.89, it use `cuda/10.2/10.2.89` environment module, instead of installing another copy of CUDA.
 `buildable: false` defined under CUDA section prohibits Spack to install other versions of CUDA specified here.
 If you let Spack install versions of CUDA which are not supported by ABCI, remove this directive.
-
-Because of an interpretation bug of package dependencies in `packages.yaml` of the current Spack, CUDA-aware OpenMPI supported by ABCI can not be registered.
-Therefore, `packages.yaml` provided by ABCI is configured to register only non-CUDA-aware OpenMPI.
-Moreover, installing a CUDA-aware OpenMPI whose version is same as a version of a registered non-CUDA-aware OpenMPI will fail.
-To avoid the failure, you need to install a version which is not registered in `packages.yaml` or remove the corresponding version from `packages.yaml`.
 
 Please refer to [the official document](https://spack.readthedocs.io/en/latest/build_settings.html) for detail about `packages.yaml`.
 
@@ -351,9 +346,6 @@ Use `spack env list` to display the list of created Spack environments.
 
 ### CUDA-aware OpenMPI {#cuda-aware-openmpi}
 
-ABCI provides software modules of CUDA-aware OpenMPI, however, they do not support all the combinations of compilers, CUDA and OpenMPI versions ([Reference](https://docs.abci.ai/en/08/#open-mpi)).
-It is easy to use Spack to install unsupported versions of CUDA-aware OpenMPI.
-
 #### How to Install {#how-to-install}
 
 This is an example of installing OpenMPI 3.1.1 that uses CUDA 10.1.243.
@@ -370,7 +362,7 @@ openmpi@3.1.1  ${SPACK_ROOT}/opt/spack/linux-centos7-haswell/gcc-4.8.5/openmpi-3
 ```
 
 Line #1 installs CUDA version `10.1.243` so that Spack uses a CUDA provided by ABCI.
-Line #2 installs OpenMPI 3.1.1 as the same configuration with [this page](../appendix/installed-software.md#open-mpi).
+Line #2 installs OpenMPI 3.1.1 as the same configuration with [Configuration of Installed Software](../appendix/installed-software.md#open-mpi).
 Meanings of the installation options are as follows.
 
 - `+cuda`: Build with CUDA support
@@ -433,7 +425,6 @@ If you no more use the OpenMPI, you can uninstall it by specifying the version a
 
 ### CUDA-aware MVAPICH2 {#cuda-aware-mvapich2}
 
-MVAPICH2 modules provided by ABCI does not support CUDA.
 If you want to use CUDA-aware MVAPICH2, install by yourself referring to the documents below.
 
 You have to use a compute node to build CUDA-aware MVAPICH2.
