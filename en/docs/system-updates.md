@@ -1,5 +1,13 @@
 # System Updates
 
+## 2022-08-30
+
+| Add / Update / Delete | Software | Version | Previous version |
+|:--|:--|:--|:--|
+| Update | cuda | 11.7.1 | 11.7.0 |
+| Add    | cudnn | 8.5.0 | |
+| Add    | nccl | 2.13.4-1<br>2.14.3-1 | |
+
 ## 2022-06-24
 
 * Changed the job execution option for change GPU Compute Mode to EXCLUSIVE_PROCESS mode from `-v GPU_COMPUTE_MODE=1` to `-v GPU_COMPUTE_MODE=3`. For more information, please refer to the [Changing GPU Compute Mode](gpu.md#changing-gpu-compute-mode).

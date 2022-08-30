@@ -1,5 +1,13 @@
 # システム更新履歴
 
+## 2022-08-30
+
+| Add / Update / Delete | Software | Version | Previous version |
+|:--|:--|:--|:--|
+| Update | cuda | 11.7.1 | 11.7.0 |
+| Add    | cudnn | 8.5.0 | |
+| Add    | nccl | 2.13.4-1<br>2.14.3-1 | |
+
 ## 2022-06-24
 
 * GPU Compute ModeをEXCLUSIVE_PROCESSモードに変更するジョブ実行オプションを `-v GPU_COMPUTE_MODE=1` から `-v GPU_COMPUTE_MODE=3` に変更しました。詳しくは、[GPU Compute Modeの変更](gpu.md#changing-gpu-compute-mode)を参照してください。
