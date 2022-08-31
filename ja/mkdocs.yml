@@ -32,6 +32,7 @@ nav:
     - 'その他': 'apps/others.md'
   - 'Tips':
     - 'NVIDIA NGC': 'tips/ngc.md'
+    - 'SHARPの利用': 'tips/sharp.md'
     - 'リモートデスクトップの利用': 'tips/remote-desktop.md'
     - 'AWS CLIの利用': 'tips/awscli.md'
     - 'Tera Termの利用': 'tips/tera-term.md'
