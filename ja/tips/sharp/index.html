@@ -1,0 +1,1363 @@
+
+<!doctype html>
+<html lang="ja" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="ABCI 2.0 User Guide, Japanese version">
+      
+      
+      
+        <meta name="author" content="AIST">
+      
+      
+        <link rel="canonical" href="https://docs.abci.ai/ja/tips/sharp/">
+      
+      <link rel="icon" href="../../img/favicon.png">
+      <meta name="generator" content="mkdocs-1.1.2, mkdocs-material-7.1.3">
+    
+    
+      
+        <title>SHARPの利用 - ABCI 2.0 User Guide</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.e35208c4.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.ef6f36e2.min.css">
+        
+          
+          
+          <meta name="theme-color" content="#ef5552">
+        
+      
+    
+    
+    
+      
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700%7CRoboto+Mono&display=fallback">
+        <style>:root{--md-text-font-family:"Roboto";--md-code-font-family:"Roboto Mono"}</style>
+      
+    
+    
+    
+    
+      
+    
+    
+  <script defer data-domain="docs.abci.ai" src="https://analytics.abci.ai/js/plausible.js"></script>
+
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="" data-md-color-primary="red" data-md-color-accent="">
+  
+    
+    <script>function __prefix(e){return new URL("../..",location).pathname+"."+e}function __get(e,t=localStorage){return JSON.parse(t.getItem(__prefix(e)))}</script>
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#sharp" class="md-skip">
+          コンテンツにスキップ
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+      <header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="ヘッダー">
+    <a href="../.." title="ABCI 2.0 User Guide" class="md-header__button md-logo" aria-label="ABCI 2.0 User Guide" data-md-component="logo">
+      
+  <img src="../../img/logo.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            ABCI 2.0 User Guide
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              SHARPの利用
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+      <div class="md-header__option">
+        <div class="md-select">
+          
+          <button class="md-header__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m12.87 15.07-2.54-2.51.03-.03A17.52 17.52 0 0 0 14.07 6H17V4h-7V2H8v2H1v2h11.17C11.5 7.92 10.44 9.75 9 11.35 8.07 10.32 7.3 9.19 6.69 8h-2c.73 1.63 1.73 3.17 2.98 4.56l-5.09 5.02L4 19l5-5 3.11 3.11.76-2.04M18.5 10h-2L12 22h2l1.12-3h4.75L21 22h2l-4.5-12m-2.62 7 1.62-4.33L19.12 17h-3.24z"/></svg>
+          </button>
+          <div class="md-select__inner">
+            <ul class="md-select__list">
+              
+                <li class="md-select__item">
+                  <a href="https://docs.abci.ai/en/" hreflang="" class="md-select__link">
+                    English
+                  </a>
+                </li>
+                
+                <li class="md-select__item">
+                  <a href="https://docs.abci.ai/ja/" hreflang="" class="md-select__link">
+                    日本語
+                  </a>
+                </li>
+                
+            </ul>
+          </div>
+        </div>
+      </div>
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+      </label>
+      
+<div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="検索" placeholder="検索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" data-md-state="active" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+      </label>
+      <button type="reset" class="md-search__icon md-icon" aria-label="クリア" tabindex="-1">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"/></svg>
+      </button>
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            検索を初期化
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        
+<a href="https://github.com/aistairc/abci-docs/" title="リポジトリへ" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+      </div>
+    
+  </nav>
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+<nav class="md-nav md-nav--primary md-nav--integrated" aria-label="ナビゲーション" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="ABCI 2.0 User Guide" class="md-nav__button md-logo" aria-label="ABCI 2.0 User Guide" data-md-component="logo">
+      
+  <img src="../../img/logo.png" alt="logo">
+
+    </a>
+    ABCI 2.0 User Guide
+  </label>
+  
+    <div class="md-nav__source">
+      
+<a href="https://github.com/aistairc/abci-docs/" title="リポジトリへ" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        はじめに
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../system-overview/" class="md-nav__link">
+        ABCIシステムの概要
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../getting-started/" class="md-nav__link">
+        ABCIの利用開始
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../job-execution/" class="md-nav__link">
+        ジョブ実行
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../storage/" class="md-nav__link">
+        ストレージ
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../environment-modules/" class="md-nav__link">
+        Environment Modules
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../python/" class="md-nav__link">
+        Python
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../gpu/" class="md-nav__link">
+        GPU
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../mpi/" class="md-nav__link">
+        MPI
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../containers/" class="md-nav__link">
+        コンテナ
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../development-tools/" class="md-nav__link">
+        開発ツール
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_12" type="checkbox" id="__nav_12" >
+      
+      <label class="md-nav__link" for="__nav_12">
+        付録
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="付録" data-md-level="1">
+        <label class="md-nav__title" for="__nav_12">
+          <span class="md-nav__icon md-icon"></span>
+          付録
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../appendix/installed-software/" class="md-nav__link">
+        付録. インストール済みソフトウェアの構成
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../appendix/using-abci-with-hpci/" class="md-nav__link">
+        付録. HPCIによるABCIシステム利用
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../appendix/external-networks/" class="md-nav__link">
+        付録. 外部ネットワークとの通信
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../appendix/ssh-access/" class="md-nav__link">
+        付録. 計算ノードへのSSHアクセス
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_13" type="checkbox" id="__nav_13" >
+      
+      <label class="md-nav__link" for="__nav_13">
+        各種アプリケーション
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="各種アプリケーション" data-md-level="1">
+        <label class="md-nav__title" for="__nav_13">
+          <span class="md-nav__icon md-icon"></span>
+          各種アプリケーション
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../apps/" class="md-nav__link">
+        概要
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../apps/tensorflow/" class="md-nav__link">
+        TensorFlow
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../apps/tensorflow-keras/" class="md-nav__link">
+        TensorFlow Keras
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../apps/pytorch/" class="md-nav__link">
+        PyTorch
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../apps/mxnet/" class="md-nav__link">
+        MXNet
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../apps/chainer/" class="md-nav__link">
+        Chainer
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../apps/others/" class="md-nav__link">
+        その他
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_14" type="checkbox" id="__nav_14" checked>
+      
+      <label class="md-nav__link" for="__nav_14">
+        Tips
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Tips" data-md-level="1">
+        <label class="md-nav__title" for="__nav_14">
+          <span class="md-nav__icon md-icon"></span>
+          Tips
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ngc/" class="md-nav__link">
+        NVIDIA NGC
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          SHARPの利用
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        SHARPの利用
+      </a>
+      
+        
+<nav class="md-nav md-nav--secondary" aria-label="目次">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目次
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#nvidia-ncclsharp" class="md-nav__link">
+    NVIDIA NCCLでSHARPを利用する
+  </a>
+  
+    <nav class="md-nav" aria-label="NVIDIA NCCLでSHARPを利用する">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#nccl-tests" class="md-nav__link">
+    nccl-testsを使用した例
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../remote-desktop/" class="md-nav__link">
+        リモートデスクトップの利用
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../awscli/" class="md-nav__link">
+        AWS CLIの利用
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../tera-term/" class="md-nav__link">
+        Tera Termの利用
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../putty/" class="md-nav__link">
+        PuTTYの利用
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../jupyter-notebook/" class="md-nav__link">
+        Jupyter Notebookの利用
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../sregistry-cli/" class="md-nav__link">
+        Singularity Global Clientの利用
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../spack/" class="md-nav__link">
+        Spackによるソフトウェア管理
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../datasets/" class="md-nav__link">
+        データセットの利用
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../dl-amazon-ecr/" class="md-nav__link">
+        Amazon ECR からコンテナ取得
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../modules-removed-and-alternatives/" class="md-nav__link">
+        提供を終了したモジュールとその代替手段
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_15" type="checkbox" id="__nav_15" >
+      
+      <label class="md-nav__link" for="__nav_15">
+        ABCI クラウドストレージ
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="ABCI クラウドストレージ" data-md-level="1">
+        <label class="md-nav__title" for="__nav_15">
+          <span class="md-nav__icon md-icon"></span>
+          ABCI クラウドストレージ
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../abci-cloudstorage/" class="md-nav__link">
+        概要
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../abci-cloudstorage/cs-account/" class="md-nav__link">
+        アカウントとアクセスキー
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../abci-cloudstorage/usage/" class="md-nav__link">
+        使い方
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../abci-cloudstorage/encryption/" class="md-nav__link">
+        データの暗号化
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../abci-cloudstorage/acl/" class="md-nav__link">
+        アクセス制御(1)
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../abci-cloudstorage/policy/" class="md-nav__link">
+        アクセス制御(2)
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../abci-cloudstorage/default-sub-group/" class="md-nav__link">
+        アクセス制御(3)
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../abci-cloudstorage/publishing-datasets/" class="md-nav__link">
+        データセットの公開
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../abci-cloudstorage/caution/" class="md-nav__link">
+        ご利用時の注意
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../abci-cloudstorage/s3fs-usage/" class="md-nav__link">
+        s3fs-fuseの利用
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../abci-datasets/" class="md-nav__link">
+        ABCI データセット
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../abci-singularity-endpoint/" class="md-nav__link">
+        ABCI Singularity エンドポイント
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../faq/" class="md-nav__link">
+        FAQ
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../known-issues/" class="md-nav__link">
+        既知の問題
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../system-updates/" class="md-nav__link">
+        システム更新履歴
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="https://abci.ai/ja/about_abci/info.html" class="md-nav__link">
+        運転状況
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../contact/" class="md-nav__link">
+        お問い合わせ
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_23" type="checkbox" id="__nav_23" >
+      
+      <label class="md-nav__link" for="__nav_23">
+        リンク
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="リンク" data-md-level="1">
+        <label class="md-nav__title" for="__nav_23">
+          <span class="md-nav__icon md-icon"></span>
+          リンク
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="https://abci.ai/ja/" class="md-nav__link">
+        ABCI Webページ
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="https://docs.abci.ai/portal/ja/" class="md-nav__link">
+        ABCI利用者ポータル手引き
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="https://portal.abci.ai/user/project_register_app.php?lang=ja" class="md-nav__link">
+        ABCI利用者ポータル (利用申請)
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="https://portal.abci.ai/user/login.php?lang=ja" class="md-nav__link">
+        ABCI利用者ポータル (ログイン)
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+          
+          <div class="md-content" data-md-component="content">
+            <article class="md-content__inner md-typeset">
+              
+                
+                  <a href="https://github.com/aistairc/abci-docs/edit/master/ja/docs/tips/sharp.md" title="編集" class="md-content__button md-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75L3 17.25z"/></svg>
+                  </a>
+                
+                
+                <h1 id="sharp">SHARPの利用</h1>
+<p>ABCIの計算ノード(A)ではScalable Hierarchical Aggregation and Reduction Protocol (SHARP)&trade;が利用可能です。
+SHARPの利用により、集団演算をCPUやGPUからネットワークにオフロードし、エンドポイント間でのデータ転送が削減されるため、MPIや機械学習における集団演算のパフォーマンス向上が期待できます。</p>
+<h2 id="nvidia-ncclsharp">NVIDIA NCCLでSHARPを利用する</h2>
+<p>NVIDIA NCCLでSHARPを利用するには、NCCL-SHARPプラグインを使用します。</p>
+<p>ABCIでは計算ノード(A)向けにNCCL-SHARPプラグインをモジュールとして提供しています。
+プラグインは、NCCLのバージョンごとに対応するモジュールが変更になります。プラグインとNCCLの対応は以下の表を参照してください。</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>NCCL-SHARPプラグインは試験的に提供しており、性能および動作を保証しているものではありません。</p>
+</div>
+<table>
+<thead>
+<tr>
+<th>NCCL SHARPプラグインモジュール</th>
+<th>NCCLバージョン</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>nccl-rdma-sharp-plugins/v2.1.x-5f238fb</code></td>
+<td>2.8、2.9、2.10、2.11</td>
+</tr>
+<tr>
+<td><code>nccl-rdma-sharp-plugins/v2.2.x-5e6ed3e</code></td>
+<td>2.12</td>
+</tr>
+</tbody>
+</table>
+<p>NCCLでSHARPを使用するには、CUDA、NCCL、およびNCCL SHARPプラグインモジュールをロードし、次の環境変数を設定します。</p>
+<div class="codehilite"><pre><span></span><code><span class="p">[</span><span class="n">username</span><span class="err">@</span><span class="n">es</span><span class="o">-</span><span class="n">a1</span> <span class="o">~</span><span class="p">]</span> <span class="n">module</span> <span class="nb">load</span> <span class="n">cuda</span><span class="o">/</span><span class="mf">11.0</span> <span class="n">nccl</span><span class="o">/</span><span class="mf">2.8</span> <span class="n">nccl</span><span class="o">-</span><span class="n">rdma</span><span class="o">-</span><span class="n">sharp</span><span class="o">-</span><span class="n">plugins</span><span class="o">/</span><span class="n">v2</span><span class="o">.</span><span class="mf">1.</span><span class="n">x</span><span class="o">-</span><span class="mi">5</span><span class="n">f238fb</span>
+</code></pre></div>
+
+<ul>
+<li><code>NCCL_COLLNET_ENABLE=1</code></li>
+<li><code>SHARP_COLL_LOCK_ON_COMM_INIT=1</code></li>
+<li><code>SHARP_COLL_NUM_COLL_GROUP_RESOURCE_ALLOC_THRESHOLD=0</code></li>
+<li>(任意) <code>SHARP_COLL_LOG_LEVEL=3</code></li>
+</ul>
+<h3 id="nccl-tests">nccl-testsを使用した例</h3>
+<p><a href="https://github.com/NVIDIA/nccl-tests">nccl-tests</a>を使い、NCCLでSHARPを有効にする例を以下に示します。</p>
+<p>まず、nccl-testsをダウンロードし、MPIサポートを有効にした上でビルドします。</p>
+<div class="codehilite"><pre><span></span><code><span class="p">[</span><span class="n">username</span><span class="err">@</span><span class="n">es</span><span class="o">-</span><span class="n">a1</span> <span class="o">~</span><span class="p">]</span> <span class="n">module</span> <span class="nb">load</span> <span class="n">openmpi</span><span class="o">/</span><span class="mf">4.1</span><span class="o">.</span><span class="mi">3</span> <span class="n">cuda</span><span class="o">/</span><span class="mf">11.0</span> <span class="n">nccl</span><span class="o">/</span><span class="mf">2.8</span>
+<span class="p">[</span><span class="n">username</span><span class="err">@</span><span class="n">es</span><span class="o">-</span><span class="n">a1</span> <span class="o">~</span><span class="p">]</span> <span class="n">git</span> <span class="n">clone</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">github</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">NVIDIA</span><span class="o">/</span><span class="n">nccl</span><span class="o">-</span><span class="n">tests</span><span class="o">.</span><span class="n">git</span>
+<span class="p">[</span><span class="n">username</span><span class="err">@</span><span class="n">es</span><span class="o">-</span><span class="n">a1</span> <span class="o">~</span><span class="p">]</span> <span class="n">cd</span> <span class="n">nccl</span><span class="o">-</span><span class="n">tests</span>
+<span class="p">[</span><span class="n">username</span><span class="err">@</span><span class="n">es</span><span class="o">-</span><span class="n">a1</span> <span class="o">~</span><span class="p">]</span> <span class="n">make</span> <span class="n">MPI</span><span class="o">=</span><span class="mi">1</span> <span class="n">MPI_HOME</span><span class="o">=$</span><span class="p">{</span><span class="n">OMPI_HOME</span><span class="p">}</span> <span class="n">CUDA_HOME</span><span class="o">=$</span><span class="p">{</span><span class="n">CUDA_HOME</span><span class="p">}</span> <span class="n">NCCL_HOME</span><span class="o">=$</span><span class="p">{</span><span class="n">NCCL_HOME</span><span class="p">}</span>
+</code></pre></div>
+
+<p>ビルド後、<code>build</code>ディレクトリ下にバイナリが生成されますので、<code>mpirun</code>を使用してバイナリを実行します。</p>
+<div class="codehilite"><pre><span></span><code><span class="p">[</span><span class="n">username</span><span class="err">@</span><span class="n">es</span><span class="o">-</span><span class="n">a1</span> <span class="o">~</span><span class="p">]</span> <span class="n">qrsh</span> <span class="o">-</span><span class="n">g</span> <span class="n">group</span> <span class="o">-</span><span class="n">l</span> <span class="n">rt_AF</span><span class="o">=</span><span class="mi">2</span> <span class="o">-</span><span class="n">l</span> <span class="n">h_rt</span><span class="o">=</span><span class="mi">01</span><span class="p">:</span><span class="mi">00</span><span class="p">:</span><span class="mi">00</span>
+<span class="p">[</span><span class="n">username</span><span class="err">@</span><span class="n">a0000</span> <span class="o">~</span><span class="p">]</span> <span class="n">module</span> <span class="nb">load</span> <span class="n">openmpi</span><span class="o">/</span><span class="mf">4.1</span><span class="o">.</span><span class="mi">3</span> <span class="n">cuda</span><span class="o">/</span><span class="mf">11.0</span> <span class="n">nccl</span><span class="o">/</span><span class="mf">2.8</span> <span class="n">nccl</span><span class="o">-</span><span class="n">rdma</span><span class="o">-</span><span class="n">sharp</span><span class="o">-</span><span class="n">plugins</span><span class="o">/</span><span class="n">v2</span><span class="o">.</span><span class="mf">1.</span><span class="n">x</span><span class="o">-</span><span class="mi">5</span><span class="n">f238fb</span>
+<span class="p">[</span><span class="n">username</span><span class="err">@</span><span class="n">a0000</span> <span class="o">~</span><span class="p">]</span> <span class="n">cd</span> <span class="n">nccl</span><span class="o">-</span><span class="n">tests</span>
+<span class="p">[</span><span class="n">username</span><span class="err">@</span><span class="n">a0000</span> <span class="o">~</span><span class="p">]</span> <span class="n">mpirun</span> <span class="o">-</span><span class="n">np</span> <span class="mi">16</span> <span class="o">-</span><span class="n">map</span><span class="o">-</span><span class="n">by</span> <span class="n">ppr</span><span class="p">:</span><span class="mi">8</span><span class="p">:</span><span class="n">node</span> \
+<span class="o">-</span><span class="n">x</span> <span class="n">UCX_TLS</span><span class="o">=</span><span class="n">dc</span><span class="p">,</span><span class="n">shm</span><span class="p">,</span><span class="bp">self</span> \
+<span class="o">-</span><span class="n">x</span> <span class="n">LD_LIBRARY_PATH</span><span class="o">=$</span><span class="p">{</span><span class="n">LD_LIBRARY_PATH</span><span class="p">}</span> \
+<span class="o">-</span><span class="n">x</span> <span class="n">NCCL_COLLNET_ENABLE</span><span class="o">=</span><span class="mi">1</span> \
+<span class="o">-</span><span class="n">x</span> <span class="n">SHARP_COLL_LOCK_ON_COMM_INIT</span><span class="o">=</span><span class="mi">1</span> \
+<span class="o">-</span><span class="n">x</span> <span class="n">SHARP_COLL_NUM_COLL_GROUP_RESOURCE_ALLOC_THRESHOLD</span><span class="o">=</span><span class="mi">0</span> \
+<span class="o">-</span><span class="n">x</span> <span class="n">SHARP_COLL_LOG_LEVEL</span><span class="o">=</span><span class="mi">3</span> \
+<span class="o">./</span><span class="n">build</span><span class="o">/</span><span class="n">all_reduce_perf</span> <span class="o">-</span><span class="n">b</span> <span class="mi">8</span> <span class="o">-</span><span class="n">e</span> <span class="mi">2</span><span class="n">G</span> <span class="o">-</span><span class="n">f</span> <span class="mi">2</span> <span class="o">-</span><span class="n">g</span> <span class="mi">1</span> <span class="o">-</span><span class="n">w</span> <span class="mi">50</span> <span class="o">-</span><span class="n">n</span> <span class="mi">50</span>
+
+<span class="c1"># nThread 1 nGpus 1 minBytes 8 maxBytes 2147483648 step: 2(factor) warmup iters: 50 iters: 50 validation: 1 </span>
+<span class="c1">#</span>
+<span class="c1"># Using devices</span>
+<span class="c1">#   Rank  0 Pid 2916721 on      a0000 device  0 [0x27] NVIDIA A100-SXM4-40GB</span>
+<span class="c1">#   Rank  1 Pid 2916722 on      a0000 device  1 [0x2a] NVIDIA A100-SXM4-40GB</span>
+<span class="c1">#   Rank  2 Pid 2916723 on      a0000 device  2 [0x51] NVIDIA A100-SXM4-40GB</span>
+<span class="c1">#   Rank  3 Pid 2916724 on      a0000 device  3 [0x57] NVIDIA A100-SXM4-40GB</span>
+<span class="c1">#   Rank  4 Pid 2916725 on      a0000 device  4 [0x9e] NVIDIA A100-SXM4-40GB</span>
+<span class="c1">#   Rank  5 Pid 2916726 on      a0000 device  5 [0xa4] NVIDIA A100-SXM4-40GB</span>
+<span class="c1">#   Rank  6 Pid 2916727 on      a0000 device  6 [0xc7] NVIDIA A100-SXM4-40GB</span>
+<span class="c1">#   Rank  7 Pid 2916728 on      a0000 device  7 [0xca] NVIDIA A100-SXM4-40GB</span>
+<span class="c1">#   Rank  8 Pid 3868300 on      a0001 device  0 [0x27] NVIDIA A100-SXM4-40GB</span>
+<span class="c1">#   Rank  9 Pid 3868301 on      a0001 device  1 [0x2a] NVIDIA A100-SXM4-40GB</span>
+<span class="c1">#   Rank 10 Pid 3868302 on      a0001 device  2 [0x51] NVIDIA A100-SXM4-40GB</span>
+<span class="c1">#   Rank 11 Pid 3868303 on      a0001 device  3 [0x57] NVIDIA A100-SXM4-40GB</span>
+<span class="c1">#   Rank 12 Pid 3868304 on      a0001 device  4 [0x9e] NVIDIA A100-SXM4-40GB</span>
+<span class="c1">#   Rank 13 Pid 3868305 on      a0001 device  5 [0xa4] NVIDIA A100-SXM4-40GB</span>
+<span class="c1">#   Rank 14 Pid 3868306 on      a0001 device  6 [0xc7] NVIDIA A100-SXM4-40GB</span>
+<span class="c1">#   Rank 15 Pid 3868307 on      a0001 device  7 [0xca] NVIDIA A100-SXM4-40GB</span>
+<span class="p">[</span><span class="n">a0000</span><span class="p">:</span><span class="mi">0</span><span class="p">:</span><span class="mi">2916721</span> <span class="o">-</span> <span class="n">context</span><span class="o">.</span><span class="n">c</span><span class="p">:</span><span class="mi">589</span><span class="p">]</span> <span class="n">INFO</span> <span class="n">job</span> <span class="p">(</span><span class="n">ID</span><span class="p">:</span> <span class="mi">2838387367436317</span><span class="p">)</span> <span class="n">resource</span> <span class="n">request</span> <span class="n">quota</span><span class="p">:</span> <span class="p">(</span> <span class="n">osts</span><span class="p">:</span><span class="mi">0</span> <span class="n">user_data_per_ost</span><span class="p">:</span><span class="mi">0</span> <span class="n">max_groups</span><span class="p">:</span><span class="mi">0</span> <span class="n">max_qps</span><span class="p">:</span><span class="mi">1</span> <span class="n">max_group_channels</span><span class="p">:</span><span class="mi">1</span><span class="p">,</span> <span class="n">num_trees</span><span class="p">:</span><span class="mi">1</span><span class="p">)</span>
+<span class="p">[</span><span class="n">a0000</span><span class="p">:</span><span class="mi">0</span><span class="p">:</span><span class="mi">2916721</span> <span class="o">-</span> <span class="n">context</span><span class="o">.</span><span class="n">c</span><span class="p">:</span><span class="mi">759</span><span class="p">]</span> <span class="n">INFO</span> <span class="n">tree_info</span><span class="p">:</span> <span class="n">type</span><span class="p">:</span><span class="n">LLT</span> <span class="n">tree</span> <span class="n">idx</span><span class="p">:</span><span class="mi">0</span> <span class="n">treeID</span><span class="p">:</span><span class="mh">0x0</span> <span class="n">caps</span><span class="p">:</span><span class="mh">0x6</span> <span class="n">quota</span><span class="p">:</span> <span class="p">(</span> <span class="n">osts</span><span class="p">:</span><span class="mi">167</span> <span class="n">user_data_per_ost</span><span class="p">:</span><span class="mi">1024</span> <span class="n">max_groups</span><span class="p">:</span><span class="mi">167</span> <span class="n">max_qps</span><span class="p">:</span><span class="mi">1</span> <span class="n">max_group_channels</span><span class="p">:</span><span class="mi">1</span><span class="p">)</span>
+<span class="o">--</span><span class="p">(</span><span class="n">snip</span><span class="p">)</span><span class="o">--</span>
+<span class="c1">#</span>
+<span class="c1">#                                                       out-of-place                       in-place          </span>
+<span class="c1">#       size         count      type   redop     time   algbw   busbw  error     time   algbw   busbw  error</span>
+<span class="c1">#        (B)    (elements)                       (us)  (GB/s)  (GB/s)            (us)  (GB/s)  (GB/s)       </span>
+           <span class="mi">8</span>             <span class="mi">2</span>     <span class="nb nb-Type">float</span>     <span class="n">sum</span>    <span class="mf">22.54</span>    <span class="mf">0.00</span>    <span class="mf">0.00</span>  <span class="mf">4e-07</span>    <span class="mf">24.94</span>    <span class="mf">0.00</span>    <span class="mf">0.00</span>  <span class="mf">4e-07</span>
+          <span class="mi">16</span>             <span class="mi">4</span>     <span class="nb nb-Type">float</span>     <span class="n">sum</span>    <span class="mf">23.66</span>    <span class="mf">0.00</span>    <span class="mf">0.00</span>  <span class="mf">4e-07</span>    <span class="mf">24.72</span>    <span class="mf">0.00</span>    <span class="mf">0.00</span>  <span class="mf">1e-07</span>
+          <span class="mi">32</span>             <span class="mi">8</span>     <span class="nb nb-Type">float</span>     <span class="n">sum</span>    <span class="mf">24.62</span>    <span class="mf">0.00</span>    <span class="mf">0.00</span>  <span class="mf">1e-07</span>    <span class="mf">23.51</span>    <span class="mf">0.00</span>    <span class="mf">0.00</span>  <span class="mf">1e-07</span>
+          <span class="mi">64</span>            <span class="mi">16</span>     <span class="nb nb-Type">float</span>     <span class="n">sum</span>    <span class="mf">24.10</span>    <span class="mf">0.00</span>    <span class="mf">0.00</span>  <span class="mf">1e-07</span>    <span class="mf">23.54</span>    <span class="mf">0.00</span>    <span class="mf">0.01</span>  <span class="mf">1e-07</span>
+         <span class="mi">128</span>            <span class="mi">32</span>     <span class="nb nb-Type">float</span>     <span class="n">sum</span>    <span class="mf">22.98</span>    <span class="mf">0.01</span>    <span class="mf">0.01</span>  <span class="mf">1e-07</span>    <span class="mf">22.58</span>    <span class="mf">0.01</span>    <span class="mf">0.01</span>  <span class="mf">1e-07</span>
+         <span class="mi">256</span>            <span class="mi">64</span>     <span class="nb nb-Type">float</span>     <span class="n">sum</span>    <span class="mf">24.35</span>    <span class="mf">0.01</span>    <span class="mf">0.02</span>  <span class="mf">1e-07</span>    <span class="mf">24.08</span>    <span class="mf">0.01</span>    <span class="mf">0.02</span>  <span class="mf">1e-07</span>
+         <span class="mi">512</span>           <span class="mi">128</span>     <span class="nb nb-Type">float</span>     <span class="n">sum</span>    <span class="mf">25.48</span>    <span class="mf">0.02</span>    <span class="mf">0.04</span>  <span class="mf">1e-07</span>    <span class="mf">25.99</span>    <span class="mf">0.02</span>    <span class="mf">0.04</span>  <span class="mf">1e-07</span>
+        <span class="mi">1024</span>           <span class="mi">256</span>     <span class="nb nb-Type">float</span>     <span class="n">sum</span>    <span class="mf">34.96</span>    <span class="mf">0.03</span>    <span class="mf">0.05</span>  <span class="mf">4e-07</span>    <span class="mf">35.66</span>    <span class="mf">0.03</span>    <span class="mf">0.05</span>  <span class="mf">4e-07</span>
+        <span class="mi">2048</span>           <span class="mi">512</span>     <span class="nb nb-Type">float</span>     <span class="n">sum</span>    <span class="mf">35.83</span>    <span class="mf">0.06</span>    <span class="mf">0.11</span>  <span class="mf">4e-07</span>    <span class="mf">34.95</span>    <span class="mf">0.06</span>    <span class="mf">0.11</span>  <span class="mf">4e-07</span>
+        <span class="mi">4096</span>          <span class="mi">1024</span>     <span class="nb nb-Type">float</span>     <span class="n">sum</span>    <span class="mf">35.33</span>    <span class="mf">0.12</span>    <span class="mf">0.22</span>  <span class="mf">5e-07</span>    <span class="mf">34.38</span>    <span class="mf">0.12</span>    <span class="mf">0.22</span>  <span class="mf">5e-07</span>
+        <span class="mi">8192</span>          <span class="mi">2048</span>     <span class="nb nb-Type">float</span>     <span class="n">sum</span>    <span class="mf">37.07</span>    <span class="mf">0.22</span>    <span class="mf">0.41</span>  <span class="mf">5e-07</span>    <span class="mf">35.50</span>    <span class="mf">0.23</span>    <span class="mf">0.43</span>  <span class="mf">5e-07</span>
+       <span class="mi">16384</span>          <span class="mi">4096</span>     <span class="nb nb-Type">float</span>     <span class="n">sum</span>    <span class="mf">39.64</span>    <span class="mf">0.41</span>    <span class="mf">0.77</span>  <span class="mf">5e-07</span>    <span class="mf">39.44</span>    <span class="mf">0.42</span>    <span class="mf">0.78</span>  <span class="mf">5e-07</span>
+       <span class="mi">32768</span>          <span class="mi">8192</span>     <span class="nb nb-Type">float</span>     <span class="n">sum</span>    <span class="mf">45.63</span>    <span class="mf">0.72</span>    <span class="mf">1.35</span>  <span class="mf">5e-07</span>    <span class="mf">44.35</span>    <span class="mf">0.74</span>    <span class="mf">1.39</span>  <span class="mf">5e-07</span>
+       <span class="mi">65536</span>         <span class="mi">16384</span>     <span class="nb nb-Type">float</span>     <span class="n">sum</span>    <span class="mf">52.22</span>    <span class="mf">1.26</span>    <span class="mf">2.35</span>  <span class="mf">5e-07</span>    <span class="mf">50.17</span>    <span class="mf">1.31</span>    <span class="mf">2.45</span>  <span class="mf">5e-07</span>
+      <span class="mi">131072</span>         <span class="mi">32768</span>     <span class="nb nb-Type">float</span>     <span class="n">sum</span>    <span class="mf">63.21</span>    <span class="mf">2.07</span>    <span class="mf">3.89</span>  <span class="mf">5e-07</span>    <span class="mf">59.93</span>    <span class="mf">2.19</span>    <span class="mf">4.10</span>  <span class="mf">5e-07</span>
+      <span class="mi">262144</span>         <span class="mi">65536</span>     <span class="nb nb-Type">float</span>     <span class="n">sum</span>    <span class="mf">78.91</span>    <span class="mf">3.32</span>    <span class="mf">6.23</span>  <span class="mf">5e-07</span>    <span class="mf">77.77</span>    <span class="mf">3.37</span>    <span class="mf">6.32</span>  <span class="mf">5e-07</span>
+      <span class="mi">524288</span>        <span class="mi">131072</span>     <span class="nb nb-Type">float</span>     <span class="n">sum</span>    <span class="mf">118.5</span>    <span class="mf">4.43</span>    <span class="mf">8.30</span>  <span class="mf">5e-07</span>    <span class="mf">117.8</span>    <span class="mf">4.45</span>    <span class="mf">8.34</span>  <span class="mf">5e-07</span>
+     <span class="mi">1048576</span>        <span class="mi">262144</span>     <span class="nb nb-Type">float</span>     <span class="n">sum</span>    <span class="mf">177.0</span>    <span class="mf">5.93</span>   <span class="mf">11.11</span>  <span class="mf">5e-07</span>    <span class="mf">174.8</span>    <span class="mf">6.00</span>   <span class="mf">11.25</span>  <span class="mf">5e-07</span>
+     <span class="mi">2097152</span>        <span class="mi">524288</span>     <span class="nb nb-Type">float</span>     <span class="n">sum</span>    <span class="mf">215.2</span>    <span class="mf">9.75</span>   <span class="mf">18.28</span>  <span class="mf">5e-07</span>    <span class="mf">215.7</span>    <span class="mf">9.72</span>   <span class="mf">18.23</span>  <span class="mf">5e-07</span>
+     <span class="mi">4194304</span>       <span class="mi">1048576</span>     <span class="nb nb-Type">float</span>     <span class="n">sum</span>    <span class="mf">275.5</span>   <span class="mf">15.22</span>   <span class="mf">28.55</span>  <span class="mf">5e-07</span>    <span class="mf">275.3</span>   <span class="mf">15.24</span>   <span class="mf">28.57</span>  <span class="mf">5e-07</span>
+     <span class="mi">8388608</span>       <span class="mi">2097152</span>     <span class="nb nb-Type">float</span>     <span class="n">sum</span>    <span class="mf">387.0</span>   <span class="mf">21.67</span>   <span class="mf">40.64</span>  <span class="mf">5e-07</span>    <span class="mf">382.6</span>   <span class="mf">21.92</span>   <span class="mf">41.11</span>  <span class="mf">5e-07</span>
+    <span class="mi">16777216</span>       <span class="mi">4194304</span>     <span class="nb nb-Type">float</span>     <span class="n">sum</span>    <span class="mf">549.8</span>   <span class="mf">30.51</span>   <span class="mf">57.21</span>  <span class="mf">5e-07</span>    <span class="mf">548.9</span>   <span class="mf">30.56</span>   <span class="mf">57.30</span>  <span class="mf">5e-07</span>
+    <span class="mi">33554432</span>       <span class="mi">8388608</span>     <span class="nb nb-Type">float</span>     <span class="n">sum</span>    <span class="mf">870.1</span>   <span class="mf">38.56</span>   <span class="mf">72.31</span>  <span class="mf">5e-07</span>    <span class="mf">866.8</span>   <span class="mf">38.71</span>   <span class="mf">72.58</span>  <span class="mf">5e-07</span>
+    <span class="mi">67108864</span>      <span class="mi">16777216</span>     <span class="nb nb-Type">float</span>     <span class="n">sum</span>   <span class="mf">1491.4</span>   <span class="mf">45.00</span>   <span class="mf">84.37</span>  <span class="mf">5e-07</span>   <span class="mf">1487.8</span>   <span class="mf">45.11</span>   <span class="mf">84.58</span>  <span class="mf">5e-07</span>
+   <span class="mi">134217728</span>      <span class="mi">33554432</span>     <span class="nb nb-Type">float</span>     <span class="n">sum</span>   <span class="mf">2587.4</span>   <span class="mf">51.87</span>   <span class="mf">97.26</span>  <span class="mf">5e-07</span>   <span class="mf">2581.4</span>   <span class="mf">51.99</span>   <span class="mf">97.49</span>  <span class="mf">5e-07</span>
+   <span class="mi">268435456</span>      <span class="mi">67108864</span>     <span class="nb nb-Type">float</span>     <span class="n">sum</span>   <span class="mf">5207.5</span>   <span class="mf">51.55</span>   <span class="mf">96.65</span>  <span class="mf">5e-07</span>   <span class="mf">5194.4</span>   <span class="mf">51.68</span>   <span class="mf">96.90</span>  <span class="mf">5e-07</span>
+   <span class="mi">536870912</span>     <span class="mi">134217728</span>     <span class="nb nb-Type">float</span>     <span class="n">sum</span>   <span class="mf">9979.3</span>   <span class="mf">53.80</span>  <span class="mf">100.87</span>  <span class="mf">5e-07</span>   <span class="mf">9930.5</span>   <span class="mf">54.06</span>  <span class="mf">101.37</span>  <span class="mf">5e-07</span>
+  <span class="mi">1073741824</span>     <span class="mi">268435456</span>     <span class="nb nb-Type">float</span>     <span class="n">sum</span>    <span class="mi">19340</span>   <span class="mf">55.52</span>  <span class="mf">104.10</span>  <span class="mf">5e-07</span>    <span class="mi">19335</span>   <span class="mf">55.53</span>  <span class="mf">104.13</span>  <span class="mf">5e-07</span>
+  <span class="mi">2147483648</span>     <span class="mi">536870912</span>     <span class="nb nb-Type">float</span>     <span class="n">sum</span>    <span class="mi">38180</span>   <span class="mf">56.25</span>  <span class="mf">105.46</span>  <span class="mf">5e-07</span>    <span class="mi">38163</span>   <span class="mf">56.27</span>  <span class="mf">105.51</span>  <span class="mf">5e-07</span>
+<span class="c1"># Out of bounds values : 0 OK</span>
+<span class="c1"># Avg bus bandwidth    : 29.0317 </span>
+<span class="c1">#</span>
+</code></pre></div>
+                
+              
+              
+                
+
+
+              
+            </article>
+          </div>
+        </div>
+        
+      </main>
+      
+        
+<footer class="md-footer">
+  
+    <nav class="md-footer__inner md-grid" aria-label="フッター">
+      
+        <a href="../ngc/" class="md-footer__link md-footer__link--prev" rel="prev">
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+          </div>
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                前
+              </span>
+              NVIDIA NGC
+            </div>
+          </div>
+        </a>
+      
+      
+        <a href="../remote-desktop/" class="md-footer__link md-footer__link--next" rel="next">
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                次
+              </span>
+              リモートデスクトップの利用
+            </div>
+          </div>
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4z"/></svg>
+          </div>
+        </a>
+      
+    </nav>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-footer-copyright">
+        
+          <div class="md-footer-copyright__highlight">
+            Copyright &copy; 2021 National Institute of Advanced Industrial Science and Technology (AIST)
+          </div>
+        
+        Made with
+        <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+          Material for MkDocs
+        </a>
+        
+      </div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    <script id="__config" type="application/json">{"base": "../..", "features": ["toc.integrate"], "translations": {"clipboard.copy": "\u30af\u30ea\u30c3\u30d7\u30dc\u30fc\u30c9\u3078\u30b3\u30d4\u30fc", "clipboard.copied": "\u30b3\u30d4\u30fc\u3057\u307e\u3057\u305f", "search.config.lang": "ja", "search.config.pipeline": "trimmer, stemmer", "search.config.separator": "[\\s\\-\u3000\u3001\u3002\uff0c\uff0e]+", "search.placeholder": "\u691c\u7d22", "search.result.placeholder": "\u691c\u7d22\u30ad\u30fc\u30ef\u30fc\u30c9\u3092\u5165\u529b\u3057\u3066\u304f\u3060\u3055\u3044", "search.result.none": "\u4f55\u3082\u898b\u3064\u304b\u308a\u307e\u305b\u3093\u3067\u3057\u305f", "search.result.one": "1\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.other": "#\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.more.one": "\u3053\u306e\u30da\u30fc\u30b8\u5185\u306b\u3082\u30461\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.more.other": "\u3053\u306e\u30da\u30fc\u30b8\u5185\u306b\u3042\u3068#\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.term.missing": "\u691c\u7d22\u306b\u542b\u307e\u308c\u306a\u3044"}, "search": "../../assets/javascripts/workers/search.fe42c31b.min.js", "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.4ea5477f.min.js"></script>
+      
+    
+  </body>
+</html>

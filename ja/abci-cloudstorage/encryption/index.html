@@ -623,6 +623,18 @@
   
   
     <li class="md-nav__item">
+      <a href="../../tips/sharp/" class="md-nav__link">
+        SHARPの利用
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../../tips/remote-desktop/" class="md-nav__link">
         リモートデスクトップの利用
       </a>
@@ -852,14 +864,14 @@
       
         <li class="md-nav__item">
   <a href="#_3" class="md-nav__link">
-    暗号化を有効にしたバケットの作成
+    バケットのデフォルト暗号化を有効にする
   </a>
   
 </li>
       
         <li class="md-nav__item">
   <a href="#_4" class="md-nav__link">
-    暗号化を有効にしたバケットかどうかの判別
+    デフォルト暗号化を有効にしたバケットかどうかの判別
   </a>
   
 </li>
@@ -1152,9 +1164,9 @@
                 
                 <h1 id="_1">データの暗号化</h1>
 <h2 id="_2">暗号化機能の概要</h2>
-<p>クラウド向けのストレージにおいては、一般的に、クライアント側で暗号化する CSE（Client-Side Encryption）とサーバ側で暗号化する SSE（Server-Side Encryption）があります。SSEはストレージ側での機能提供が必要であり、ABCIクラウドストレージではSSE機能をサポートしています。</p>
-<p>SSE機能を利用すると、データがサーバーに送られた後、ディスクに保存される前に暗号化が行われます。データを取得する時には、ディスクから取り出された後に復号化が行われ、サーバーからデータが送られてきます。SSEでは、送信経路上ではデータが復号化されていますが、ABCIクラウドストレージでは、エンドポイントに https://s3.abci.ai を指定することでTLSによる通信の暗号化が別途行われます。</p>
-<p>Amazon S3 では以下のような SSE が提供されていますが、ABCIクラウドストレージでは、SSE-S3 に相当する SSE を提供しています。ただし、Amazon S3 の SSE-S3 と厳密には異なるため、同じ API を用いた操作はできません。また、SSE-C と SSE-KMS もABCIクラウドストレージでは利用できません。</p>
+<p>クラウド向けのストレージにおいては、一般的に、クライアント側で暗号化する Client-Side Encryption (CSE) とサーバ側で暗号化する Server-Side Encryption (SSE) があります。SSEはストレージ側での機能提供が必要であり、ABCIクラウドストレージではSSE機能をサポートしています。</p>
+<p>SSE機能を利用すると、データがストレージサーバに送られた後、ディスクに保存される前に暗号化が行われます。データを取得する時には、ディスクから取り出された後に復号化が行われ、ストレージサーバからデータが送られてきます。SSEでは、送信経路上ではデータが復号化されていますが、ABCIクラウドストレージでは、エンドポイントに <code>https://s3.abci.ai</code> を指定することでTLSによる通信の暗号化が別途行われます。</p>
+<p>Amazon S3 では以下のような SSE が提供されていますが、ABCIクラウドストレージでは、SSE-S3 に相当する SSE を提供しています。SSE-C と SSE-KMS はABCIクラウドストレージでは利用できません。</p>
 <table>
 <thead>
 <tr>
@@ -1169,7 +1181,7 @@
 </tr>
 <tr>
 <td align="left">SSE-C</td>
-<td align="left">ユーザーがリクエストに含めた鍵を用いて暗号化</td>
+<td align="left">ユーザがリクエストに含めた鍵を用いて暗号化</td>
 </tr>
 <tr>
 <td align="left">SSE-KMS</td>
@@ -1177,8 +1189,10 @@
 </tr>
 </tbody>
 </table>
-<p>一方、ABCIクラウドストレージではCSEの利用は可能です。ただし、ABCIではKMS(Key Management Service)を提供していませんので、ご注意ください。
-CSEの説明は、<a href="https://docs.aws.amazon.com/AmazonS3/latest/dev/UsingClientSideEncryption.html">Protecting Data Using Client-Side Encryption</a> などをご参照ください。</p>
+<p>CSEはデータの暗号化および復号を利用者が行い、暗号化されたデータをABCIクラウドストレージに保存します。
+ABCIクラウドストレージではCSEを利用できます。</p>
+<p>ただし、ABCIクラウドストレージではKey Management Service(KMS)を提供していないため、KMSに保存されている暗号キーを利用してのCSEは利用できません。
+CSEの詳しい説明は、<a href="https://docs.aws.amazon.com/AmazonS3/latest/dev/UsingClientSideEncryption.html">Protecting Data Using Client-Side Encryption</a> をご参照ください。</p>
 <table>
 <thead>
 <tr>
@@ -1189,7 +1203,7 @@ CSEの説明は、<a href="https://docs.aws.amazon.com/AmazonS3/latest/dev/Using
 <tbody>
 <tr>
 <td align="left">CSE-C</td>
-<td align="left">ユーザーがクライアント側で管理している鍵を用いて暗号化</td>
+<td align="left">ユーザがクライアント側で管理している鍵を用いて暗号化</td>
 </tr>
 <tr>
 <td align="left">CSE-KMS</td>
@@ -1197,25 +1211,57 @@ CSEの説明は、<a href="https://docs.aws.amazon.com/AmazonS3/latest/dev/Using
 </tr>
 </tbody>
 </table>
-<h2 id="_3">暗号化を有効にしたバケットの作成</h2>
-<p>SSE を有効にしたバケットを作るには、awsコマンドではなく、ABCI環境に用意されている create-encrypted-bucket コマンドを実行します。
-例えば、'dataset-s0001' というバケットを作る場合は以下のように実行します。</p>
-<div class="codehilite"><pre><span></span><code><span class="o">[</span><span class="n">username@es1 ~</span><span class="o">]</span><span class="err">$</span><span class="w"> </span><span class="k">create</span><span class="o">-</span><span class="n">encrypted</span><span class="o">-</span><span class="n">bucket</span><span class="w"> </span><span class="o">--</span><span class="n">endpoint</span><span class="o">-</span><span class="n">url</span><span class="w"> </span><span class="nl">https</span><span class="p">:</span><span class="o">//</span><span class="n">s3</span><span class="p">.</span><span class="n">abci</span><span class="p">.</span><span class="n">ai</span><span class="w"> </span><span class="nl">s3</span><span class="p">:</span><span class="o">//</span><span class="n">dataset</span><span class="o">-</span><span class="n">s0001</span><span class="w"></span>
-<span class="k">create</span><span class="o">-</span><span class="n">encrypted</span><span class="o">-</span><span class="n">bucket</span><span class="w"> </span><span class="n">Success</span><span class="p">.</span><span class="w"></span>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>ABCI クラウドストレージでは運用開始より、SSE を有効にしたバケットを作成する create-encrypted-bucket コマンドを提供してきましたが、create-encrypted-bucket コマンドは2022年8月を目処に提供を終了する予定です。
+8月より後は、create-encrypted-bucket コマンドの代わりに、aws-cli コマンドを利用ください。
+以前に create-encrypted-bucket コマンドで作成したバケットはそのまま利用可能です。削除や設定の参照は aws-cli コマンドで行うことができます。</p>
+</div>
+<h2 id="_3">バケットのデフォルト暗号化を有効にする</h2>
+<p>バケットに対してデフォルトの暗号化動作を設定することができます。バケットのデフォルト暗号化を有効にした場合、全てのオブジェクトでバケットに保存される際に暗号化が行われます。
+バケットのデフォルト暗号化を有効にするには、<code>aws s3api put-bucket-encryption</code> を実行します。なお、バケットはあらかじめ作成しておく必要があります。
+例えば、<code>dataset-s0001</code> というバケットでデフォルト暗号化を有効化する場合は以下のように実行します。</p>
+<div class="codehilite"><pre><span></span><code><span class="o">[</span><span class="n">username@es1 ~</span><span class="o">]</span><span class="err">$</span><span class="w"> </span><span class="n">aws</span><span class="w"> </span><span class="o">--</span><span class="n">endpoint</span><span class="o">-</span><span class="n">url</span><span class="w"> </span><span class="nl">https</span><span class="p">:</span><span class="o">//</span><span class="n">s3</span><span class="p">.</span><span class="n">abci</span><span class="p">.</span><span class="n">ai</span><span class="w"> </span><span class="n">s3api</span><span class="w"> </span><span class="n">put</span><span class="o">-</span><span class="n">bucket</span><span class="o">-</span><span class="n">encryption</span><span class="w"> </span><span class="o">--</span><span class="n">bucket</span><span class="w"> </span><span class="n">dataset</span><span class="o">-</span><span class="n">s0001</span><span class="w"> </span><span class="o">--</span><span class="n">server</span><span class="o">-</span><span class="n">side</span><span class="o">-</span><span class="n">encryption</span><span class="o">-</span><span class="n">configuration</span><span class="w"> </span><span class="s1">&#39;{</span>
+<span class="s1">    &quot;Rules&quot;: [</span>
+<span class="s1">        {</span>
+<span class="s1">            &quot;ApplyServerSideEncryptionByDefault&quot;: {</span>
+<span class="s1">                &quot;SSEAlgorithm&quot;: &quot;AES256&quot;</span>
+<span class="s1">            }</span>
+<span class="s1">        }</span>
+<span class="s1">    ]</span>
+<span class="s1">}&#39;</span><span class="w"></span>
 </code></pre></div>
 
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>ストレージ側が保持する鍵を用いて、サーバー上でオブジェクトを保存する時に暗号化（読み出す時には復号化）するもので、アクセスキーなど送信リクエスト固有の情報で暗号化するものではありません。</p>
+<p>バケットのデフォルト暗号化機能は、ストレージ側が保持する鍵を用いて、ストレージサーバ上でオブジェクトを保存する時に暗号化（読み出す時には復号化）するもので、アクセスキーなど送信リクエスト固有の情報で暗号化するものではありません。</p>
 </div>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>暗号化を有効にしていないバケットに対して、後から暗号化を有効にする方法は提供されていません。</p>
+<p>デフォルト暗号化が有効にされる前にバケットに存在していたオブジェクトは暗号化されません。</p>
 </div>
-<h2 id="_4">暗号化を有効にしたバケットかどうかの判別</h2>
-<p>SSEを有効にしたバケットかどうかを判別するには、オブジェクトのメタデータを確認する必要があるため、空のバケットでは確認できません。空の場合は、なにかオブジェクトを1つ作成してください。</p>
-<p>確認は <code>aws s3api head-object</code> で行います。
-以下では、dataset-s0001 バケットにアップロードした cat.jpg というオブジェクトのメタデータを確認しています。 <code>"ServerSideEncryption": "AES256"</code> という情報が含まれているため、dataset-s0001 は暗号化を有効にしたバケットであるといえます。この情報が含まれていない場合は、暗号化が有効でないバケットであることを示しています。</p>
+<h2 id="_4">デフォルト暗号化を有効にしたバケットかどうかの判別</h2>
+<p>デフォルト暗号化を有効にしたバケットかどうかを判別するには、<code>aws s3api get-bucket-encryption</code> を実行します。</p>
+<p>以下では、<code>dataset-s0001</code> バケットのデフォルト暗号化が有効かどうかを確認しています。
+<code>aws s3api get-bucket-encryption</code> コマンドの出力に、<code>"SSEAlgorithm": "AES256"</code> が含まれていればバケットのデフォルト暗号化は有効です。この情報が含まれていない場合、バケットのデフォルト暗号化は有効ではありません。</p>
+<div class="codehilite"><pre><span></span><code><span class="o">[</span><span class="n">username@es1 ~</span><span class="o">]</span><span class="err">$</span><span class="w"> </span><span class="n">aws</span><span class="w"> </span><span class="o">--</span><span class="n">endpoint</span><span class="o">-</span><span class="n">url</span><span class="w"> </span><span class="nl">https</span><span class="p">:</span><span class="o">//</span><span class="n">s3</span><span class="p">.</span><span class="n">abci</span><span class="p">.</span><span class="n">ai</span><span class="w"> </span><span class="n">s3api</span><span class="w"> </span><span class="k">get</span><span class="o">-</span><span class="n">bucket</span><span class="o">-</span><span class="n">encryption</span><span class="w"> </span><span class="o">--</span><span class="n">bucket</span><span class="w"> </span><span class="n">dataset</span><span class="o">-</span><span class="n">s0001</span><span class="w"></span>
+<span class="err">{</span><span class="w"></span>
+<span class="w">    </span><span class="ss">&quot;ServerSideEncryptionConfiguration&quot;</span><span class="err">:</span><span class="w"> </span><span class="err">{</span><span class="w"></span>
+<span class="w">        </span><span class="ss">&quot;Rules&quot;</span><span class="err">:</span><span class="w"> </span><span class="o">[</span><span class="n"></span>
+<span class="n">            {</span>
+<span class="n">                &quot;ApplyServerSideEncryptionByDefault&quot;: {</span>
+<span class="n">                    &quot;SSEAlgorithm&quot;: &quot;AES256&quot;</span>
+<span class="n">                },</span>
+<span class="n">                &quot;BucketKeyEnabled&quot;: false</span>
+<span class="n">            }</span>
+<span class="n">        </span><span class="o">]</span><span class="w"></span>
+<span class="w">    </span><span class="err">}</span><span class="w"></span>
+<span class="err">}</span><span class="w"></span>
+</code></pre></div>
+
+<p>また、<code>aws s3api head-object</code> を実行すると、オブジェクトのメタデータとともに、オブジェクトの暗号化が有効かどうかを確認できます。
+以下では、<code>dataset-s0001</code> バケットにアップロードした <code>cat.jpg</code> というオブジェクトの暗号化が有効かどうかを確認しています。
+<code>aws s3api head-object</code> コマンドの出力に、<code>"ServerSideEncryption": "AES256"</code> が含まれている場合は、オブジェクトの暗号化が有効となっています。</p>
 <div class="codehilite"><pre><span></span><code><span class="o">[</span><span class="n">username@es1 ~</span><span class="o">]</span><span class="err">$</span><span class="w"> </span><span class="n">aws</span><span class="w"> </span><span class="o">--</span><span class="n">endpoint</span><span class="o">-</span><span class="n">url</span><span class="w"> </span><span class="nl">https</span><span class="p">:</span><span class="o">//</span><span class="n">s3</span><span class="p">.</span><span class="n">abci</span><span class="p">.</span><span class="n">ai</span><span class="w"> </span><span class="n">s3api</span><span class="w"> </span><span class="n">head</span><span class="o">-</span><span class="k">object</span><span class="w"> </span><span class="o">--</span><span class="n">bucket</span><span class="w"> </span><span class="n">dataset</span><span class="o">-</span><span class="n">s0001</span><span class="w"> </span><span class="o">--</span><span class="k">key</span><span class="w"> </span><span class="n">cat</span><span class="p">.</span><span class="n">jpg</span><span class="w"></span>
 <span class="err">{</span><span class="w"></span>
 <span class="w">    </span><span class="ss">&quot;LastModified&quot;</span><span class="err">:</span><span class="w"> </span><span class="ss">&quot;Tue, 30 Jul 2019 09:34:18 GMT&quot;</span><span class="p">,</span><span class="w"></span>
