@@ -4,9 +4,9 @@
 
 | Add / Update / Delete | Software | Version | Previous version |
 |:--|:--|:--|:--|
-| Update | cuda | 11.7.1 | 11.7.0 |
-| Add    | cudnn | 8.5.0 | |
-| Add    | nccl | 2.13.4-1<br>2.14.3-1 | |
+| Add | cuda | 11.7.1 | |
+| Add | cudnn | 8.5.0 | |
+| Add | nccl | 2.13.4-1<br>2.14.3-1 | |
 
 ## 2022-06-24
 

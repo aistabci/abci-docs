@@ -34,7 +34,7 @@ ABCIシステムでは、NVIDIAが提供する以下のライブラリが利用�
 | cuda/11.4     | 11.4.4        | Yes                   | Yes                           | Yes                           |
 | cuda/11.5     | 11.5.2        | Yes                   | Yes                           | Yes                           |
 | cuda/11.6     | 11.6.2        | Yes                   | Yes                           | Yes                           |
-| cuda/11.7     | 11.7.1        | Yes                   | Yes                           | Yes                           |
+| cuda/11.7     | 11.7.0<br>11.7.1 | Yes                   | Yes                           | Yes                           |
 
 [^1]: 試験用に提供しています。NVIDIA A100は、CUDA 11以降でサポートされます。
 

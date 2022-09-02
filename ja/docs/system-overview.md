@@ -62,7 +62,7 @@ Intel Xeon Gold 6148プロセッサーを2基搭載し、384 GiBのメインメ�
 |:--|:--|:--|
 | CPU | [Intel Xeon Gold 6148 Processor 2.4 GHz, 20 Cores (40 Threads)](https://ark.intel.com/products/120489/Intel-Xeon-Gold-6148-Processor-27-5M-Cache-2-40-GHz-) | 2 |
 | Memory | 32 GiB DDR4 2666 MHz RDIMM (ECC) | 12 |
-| SSD | SAS-SSD 3.2 TB | 4 |
+| SSD | SAS-SSD 3.2 TB | 4 |cuda
 | Interconnect | InfiniBand EDR (100 Gbps) | 2 |
 | | 10GBASE-SR | 2 |
 
@@ -175,7 +175,7 @@ ABCIシステムで利用可能なソフトウェア一覧を以下に示しま�
 | OS | CentOS | 7.5 | - |
 | OS | Red Hat Enterprise Linux | - | 8.2 |
 | Job Scheduler | Altair Grid Engine | 8.6.19_C121_1 | 8.6.19_C121_1 |
-| Development Environment | [CUDA Toolkit](gpu.md#cuda-toolkit) | 9.0.176.4<br>9.1.85.3<br>9.2.148.1<br>10.0.130.1<br>10.1.243<br>10.2.89<br>11.0.3<br>11.1.1<br>11.2.2<br>11.3.1<br>11.4.4<br>11.5.2<br>11.6.2<br>11.7.1 | 10.0.130.1<br>10.1.243<br>10.2.89<br>11.0.3<br>11.1.1<br>11.2.2<br>11.3.1<br>11.4.4<br>11.5.2<br>11.6.2<br>11.7.1 |
+| Development Environment | [CUDA Toolkit](gpu.md#cuda-toolkit) | 9.0.176.4<br>9.1.85.3<br>9.2.148.1<br>10.0.130.1<br>10.1.243<br>10.2.89<br>11.0.3<br>11.1.1<br>11.2.2<br>11.3.1<br>11.4.4<br>11.5.2<br>11.6.2<br>11.7.0<br>11.7.1 | 10.0.130.1<br>10.1.243<br>10.2.89<br>11.0.3<br>11.1.1<br>11.2.2<br>11.3.1<br>11.4.4<br>11.5.2<br>11.6.2<br>11.7.0<br>11.7.1 |
 | | PGI Professional Edition | 20.4 | 20.4 |
 | | Intel OneAPI<br>(compilers and libraries) | 2022.0.2 | 2022.0.2 |
 | | Intel VTune | 2022.0.0 | 2022.0.0 |
