@@ -1,12 +1,18 @@
 # System Updates
 
-## 2022-08-30
+## 2022-09-02
 
 | Add / Update / Delete | Software | Version | Previous version |
 |:--|:--|:--|:--|
 | Add | cuda | 11.7.1 | |
 | Add | cudnn | 8.5.0 | |
 | Add | nccl | 2.13.4-1<br>2.14.3-1 | |
+
+## 2022-07-29
+
+| Add / Update / Delete | Software | Version | Previous version |
+|:--|:--|:--|:--|
+| Update | cudnn | 8.4.1 | 8.4.0 |
 
 ## 2022-06-24
 
