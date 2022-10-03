@@ -121,6 +121,9 @@ Currently Loaded Modulefiles:
     The functions of CUDA-aware versions of Open MPI can be found on the Open MPI site:
     [FAQ: Running CUDA-aware Open MPI](https://www.open-mpi.org/faq/?category=runcuda)
 
+!!! note
+    At the start of FY2022, CUDA-aware Open MPI has been removed. Please see [Modules removed and alternatives](tips/modules-removed-and-alternatives.md).
+
 ## Q. I want to know how ABCI job execution environment is congested
 
 ABCI operates a web service that visualizes job congestion status as well as utilization of compute nodes, power consumption of the whole datacenter, PUE, cooling facility, etc.

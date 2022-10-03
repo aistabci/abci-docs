@@ -121,6 +121,9 @@ Currently Loaded Modulefiles:
 !!! note
     CUDA対応版の機能はOpen MPIのサイトで確認できます: [FAQ: Running CUDA-aware Open MPI](https://www.open-mpi.org/faq/?category=runcuda)
 
+!!! note
+    2022年度よりCUDA対応版Open MPIの提供は終了しました。[提供を終了したモジュールとその代替手段](tips/modules-removed-and-alternatives.md)を参照してください。
+
 ## Q. ジョブの混雑状況を知りたい
 
 ジョブの混雑状況に加え、計算ノードの利用状況、データセンター全体の消費電力やPUE、冷却設備の稼働状況等を可視化するWebサービスを動作させています。
