@@ -412,11 +412,11 @@ beeond-cpを利用する場合、`USE_SSH=1`オプションを指定し計算ノ
 #$-cwd
 
 export PARALLEL_SSH="ssh -p 2222"
-export BEEOND_DIR="/beeond"
+export src_dir=/path/to/data
 
-beeond-cp stagein -n ${SGE_JOB_HOSTLIST} -g ${src_dir} -l ${BEEOND_DIR}
+beeond-cp stagein -n ${SGE_JOB_HOSTLIST} -g ${src_dir} -l ${SGE_BEEONDDIR}
 (計算処理)
-beeond-cp stageout -n ${SGE_JOB_HOSTLIST} -g ${src_dir} -l ${BEEOND_DIR}
+beeond-cp stageout -n ${SGE_JOB_HOSTLIST} -g ${src_dir} -l ${SGE_BEEONDDIR}
 ```
 
 
