@@ -399,8 +399,9 @@ foo.txt    <- The file remain only when it is copied explicitly in script.
     Compute node (A) has two NVMe SSDs and BeeOND storage uses `/local2`.
     Compute node (V) has only one NVMe SSD, so local scratch and BeeOND storage are always assigned to the same storage and share its capacity.
 
-BeeGFS allows data to be staged in and out of the BeeOND storage in parallel using the beeond-cp command. It can be used by specifying the port as in the following script.
+BeeGFS allows data to be staged in and out of the BeeOND storage in parallel using the beeond-cp command. To use beeond-cp, specify the `USE_SSH=1` option to enable SSH login to the compute nodes, and then specify the ssh command and port number in the `PARALLEL_SSH` environment variable.
 
+Example) sample of job script (use beeond-cp)
 ```
 #!/bin/bash
 #$-l rt_F=4
@@ -411,11 +412,11 @@ BeeGFS allows data to be staged in and out of the BeeOND storage in parallel usi
 #$-cwd
 
 export PARALLEL_SSH="ssh -p 2222"
-export BEEOND_DIR="/beeond"
+export src_dir=/path/to/data
 
-beeond-cp stagein -n ${SGE_JOB_HOSTLIST} -g ${src_dir} -l ${BEEOND_DIR}
+beeond-cp stagein -n ${SGE_JOB_HOSTLIST} -g ${src_dir} -l ${SGE_BEEONDDIR}
 (main process)
-beeond-cp stageout -n ${SGE_JOB_HOSTLIST} -g ${src_dir} -l ${BEEOND_DIR}
+beeond-cp stageout -n ${SGE_JOB_HOSTLIST} -g ${src_dir} -l ${SGE_BEEONDDIR}d
 ```
 
 
