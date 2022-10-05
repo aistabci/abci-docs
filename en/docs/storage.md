@@ -414,7 +414,7 @@ export PARALLEL_SSH="ssh -p 2222"
 export BEEOND_DIR="/beeond"
 
 beeond-cp stagein -n ${SGE_JOB_HOSTLIST} -g ${src_dir} -l ${BEEOND_DIR}
-(計算処理)
+(main process)
 beeond-cp stageout -n ${SGE_JOB_HOSTLIST} -g ${src_dir} -l ${BEEOND_DIR}
 ```
 
