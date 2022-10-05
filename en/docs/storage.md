@@ -399,6 +399,28 @@ foo.txt    <- The file remain only when it is copied explicitly in script.
     Compute node (A) has two NVMe SSDs and BeeOND storage uses `/local2`.
     Compute node (V) has only one NVMe SSD, so local scratch and BeeOND storage are always assigned to the same storage and share its capacity.
 
+BeeGFS allows data to be staged in and out of the BeeOND storage in parallel using the beeond-cp command. To use beeond-cp, specify the `USE_SSH=1` option to enable SSH login to the compute nodes, and then specify the ssh command and port number in the `PARALLEL_SSH` environment variable.
+
+Example) sample of job script (use beeond-cp)
+```
+#!/bin/bash
+#$-l rt_F=4
+#$-l USE_BEEOND=1
+#$-l USE_SSH=1
+#$-v SSH_PORT=2222
+#$-j y
+#$-cwd
+
+export PARALLEL_SSH="ssh -p 2222"
+export src_dir=/path/to/data
+
+beeond-cp stagein -n ${SGE_JOB_HOSTLIST} -g ${src_dir} -l ${SGE_BEEONDDIR}
+(main process)
+beeond-cp stageout -n ${SGE_JOB_HOSTLIST} -g ${src_dir} -l ${SGE_BEEONDDIR}d
+```
+
+
+
 #### [Advanced Option] Configure BeeOND Servers
 
 A BeeOND filesystem partition consists of two kinds of services running on compute nodes: one is storage service which stores files, and the other is metadata service which stores file matadata.  Each service runs on compute nodes.  We refer to a compute node which runs storage service as a storage server and a compute node which runs metadata service as a metadata server.  Users can specify number of storage servers and metadata servers.
