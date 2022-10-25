@@ -34,7 +34,7 @@ The following is a list of CUDA Toolkit, cuDNN, and NCCL that can be used with t
 | cuda/11.4     | 11.4.4        | Yes                   | Yes                           | Yes                           |
 | cuda/11.5     | 11.5.2        | Yes                   | Yes                           | Yes                           |
 | cuda/11.6     | 11.6.2        | Yes                   | Yes                           | Yes                           |
-| cuda/11.7     | 11.7.0        | Yes                   | Yes                           | Yes                           |
+| cuda/11.7     | 11.7.0<br>11.7.1 | Yes                   | Yes                           | Yes                           |
 
 [^1]: Provided only for experimental use. NVIDIA A100 is supported on CUDA 11＋.
 
@@ -55,7 +55,8 @@ Compute Node (V):
 | 8.1.1   | -        | -        | -        | -        | -         | -         | Yes       | Yes       | Yes       | Yes       | -         | -         | -         | -         | -         |
 | 8.2.4   | -        | -        | -        | -        | -         | -         | Yes       | Yes       | Yes       | Yes       | Yes       | Yes       | -         | -         | -         |
 | 8.3.3   | -        | -        | -        | -        | -         | -         | Yes       | Yes       | Yes       | Yes       | Yes       | Yes       | Yes       | Yes       | -         |
-| 8.4.0   | -        | -        | -        | -        | -         | -         | Yes       | Yes       | Yes       | Yes       | Yes       | Yes       | Yes       | Yes       | -         |
+| 8.4.1   | -        | -        | -        | -        | -         | -         | Yes       | Yes       | Yes       | Yes       | Yes       | Yes       | Yes       | Yes       | Yes       |
+| 8.5.0   | -        | -        | -        | -        | -         | -         | Yes       | Yes       | Yes       | Yes       | Yes       | Yes       | Yes       | Yes       | Yes       |
 
 Compute Node (A):
 
@@ -69,7 +70,8 @@ Compute Node (A):
 | 8.1.1   | -             | -             | Yes           | Yes       | Yes       | Yes       | -         | -         | -         | -         | -         |
 | 8.2.4   | -             | -             | Yes           | Yes       | Yes       | Yes       | Yes       | Yes       | -         | -         | -         |
 | 8.3.3   | -             | -             | Yes           | Yes       | Yes       | Yes       | Yes       | Yes       | Yes       | Yes       | -         |
-| 8.4.0   | -             | -             | Yes           | Yes       | Yes       | Yes       | Yes       | Yes       | Yes       | Yes       | -         |
+| 8.4.1   | -             | -             | Yes           | Yes       | Yes       | Yes       | Yes       | Yes       | Yes       | Yes       | Yes       |
+| 8.5.0   | -             | -             | Yes           | Yes       | Yes       | Yes       | Yes       | Yes       | Yes       | Yes       | Yes       |
 
 ## NCCL
 
@@ -86,6 +88,8 @@ Compute Node (V):
 | 2.10.3-1  | -        | -        | -        | -        | -         | -         | Yes       | Yes       | -         | -         | -         | Yes       | -         | -         | -         |
 | 2.11.4-1  | -        | -        | -        | -        | -         | -         | Yes       | Yes       | -         | -         | -         | Yes       | Yes       | Yes       | -         |
 | 2.12.12-1 | -        | -        | -        | -        | -         | -         | Yes       | Yes       | -         | -         | -         | -         | -         | Yes       | -         |
+| 2.13.4-1  | -        | -        | -        | -        | -         | -         | Yes       | Yes       | -         | -         | -         | -         | -         | -         | Yes       |
+| 2.14.3-1  | -        | -        | -        | -        | -         | -         | Yes       | Yes       | -         | -         | -         | -         | -         | -         | Yes       |
 
 Compute Node (A):
 
@@ -100,6 +104,8 @@ Compute Node (A):
 | 2.10.3-1  | -             | -             | Yes           | Yes       | -         | -         | -         | Yes       | -         | -         | -         |
 | 2.11.4-1  | -             | -             | Yes           | Yes       | -         | -         | -         | Yes       | Yes       | Yes       | -         |
 | 2.12.12-1 | -             | -             | Yes           | Yes       | -         | -         | -         | -         | -         | Yes       | -         |
+| 2.13.4-1  | -             | -             | Yes           | Yes       | -         | -         | -         | -         | -         | -         | Yes       |
+| 2.14.3-1  | -             | -             | Yes           | Yes       | -         | -         | -         | -         | -         | -         | Yes       |
 
 ## GDRCopy
 
