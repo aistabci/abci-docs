@@ -62,7 +62,7 @@ Intel Xeon Gold 6148プロセッサーを2基搭載し、384 GiBのメインメ�
 |:--|:--|:--|
 | CPU | [Intel Xeon Gold 6148 Processor 2.4 GHz, 20 Cores (40 Threads)](https://ark.intel.com/products/120489/Intel-Xeon-Gold-6148-Processor-27-5M-Cache-2-40-GHz-) | 2 |
 | Memory | 32 GiB DDR4 2666 MHz RDIMM (ECC) | 12 |
-| SSD | SAS-SSD 3.2 TB | 4 |cuda
+| SSD | SAS-SSD 3.2 TB | 4 |
 | Interconnect | InfiniBand EDR (100 Gbps) | 2 |
 | | 10GBASE-SR | 2 |
 
