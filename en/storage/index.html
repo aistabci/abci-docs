@@ -1691,6 +1691,37 @@ cp -rp <span class="nv">$SGE_BEEONDDIR</span>/foo.txt <span class="nv">$HOME</sp
 <p>Compute node (A) has two NVMe SSDs and BeeOND storage uses <code>/local2</code>.
 Compute node (V) has only one NVMe SSD, so local scratch and BeeOND storage are always assigned to the same storage and share its capacity.</p>
 </div>
+<p>BeeGFS allows data to be staged in and out of the BeeOND storage in parallel using the beeond-cp command. To use beeond-cp, specify the <code>USE_SSH=1</code> option to enable SSH login to the compute nodes, and then specify the ssh command and port number in the <code>PARALLEL_SSH</code> environment variable.</p>
+<p>Example) sample of job script (use beeond-cp)</p>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span></pre></div></td><td class="code"><div class="codehilite"><pre><span></span><code><span class="ch">#!/bin/bash</span>
+<span class="c1">#$-l rt_F=4</span>
+<span class="c1">#$-l USE_BEEOND=1</span>
+<span class="c1">#$-l USE_SSH=1</span>
+<span class="c1">#$-v SSH_PORT=2222</span>
+<span class="c1">#$-j y</span>
+<span class="c1">#$-cwd</span>
+
+<span class="nb">export</span> <span class="nv">PARALLEL_SSH</span><span class="o">=</span><span class="s2">&quot;ssh -p 2222&quot;</span>
+<span class="nb">export</span> <span class="nv">src_dir</span><span class="o">=</span>/path/to/data
+
+beeond-cp stagein -n <span class="si">${</span><span class="nv">SGE_JOB_HOSTLIST</span><span class="si">}</span> -g <span class="si">${</span><span class="nv">src_dir</span><span class="si">}</span> -l <span class="si">${</span><span class="nv">SGE_BEEONDDIR</span><span class="si">}</span>
+<span class="o">(</span>main process<span class="o">)</span>
+beeond-cp stageout -n <span class="si">${</span><span class="nv">SGE_JOB_HOSTLIST</span><span class="si">}</span> -g <span class="si">${</span><span class="nv">src_dir</span><span class="si">}</span> -l <span class="si">${</span><span class="nv">SGE_BEEONDDIR</span><span class="si">}</span>d
+</code></pre></div>
+</td></tr></table>
 <h4 id="advanced-option-configure-beeond-servers">[Advanced Option] Configure BeeOND Servers</h4>
 <p>A BeeOND filesystem partition consists of two kinds of services running on compute nodes: one is storage service which stores files, and the other is metadata service which stores file matadata.  Each service runs on compute nodes.  We refer to a compute node which runs storage service as a storage server and a compute node which runs metadata service as a metadata server.  Users can specify number of storage servers and metadata servers.</p>
 <p>The default values for counts of metadata server and storage server are as follows.</p>

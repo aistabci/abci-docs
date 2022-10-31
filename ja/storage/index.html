@@ -449,10 +449,10 @@
         
           <li class="md-nav__item">
   <a href="#beeond-storage" class="md-nav__link">
-    BeeONDストレージ
+    BeeGFS領域
   </a>
   
-    <nav class="md-nav" aria-label="BeeONDストレージ">
+    <nav class="md-nav" aria-label="BeeGFS領域">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -1666,7 +1666,7 @@ cat <span class="nv">$SGE_ARDIR</span>/bar.txt
 計算ノード(V)では、NVMe SSD が1つしか搭載されていないため、ローカルスクラッチと永続ローカルスクラッチは同一のストレージとなり、必ず容量を共有します。
 いずれの場合も、永続ローカルスクラッチを利用する場合には使用量に注意してください。</p>
 </div>
-<h3 id="beeond-storage">BeeONDストレージ</h3>
+<h3 id="beeond-storage">BeeGFS領域</h3>
 <p>BeeGFS On Demand (BeeOND) を使用することで、ジョブに割り当てられた計算ノードのローカルストレージを集約し、一時的な分散共有ファイルシステムとして使用可能です。
 BeeOND を利用するジョブを投入するときは、<code>-l USE_BEEOND=1</code>オプションを指定してジョブを実行してください。
 また、BeeONDを利用する場合はノードを占有する必要があるため、<code>-l rt_F</code>オプションもしくは<code>-l rt_AF</code>オプションを指定する必要もあります。</p>
@@ -1698,11 +1698,43 @@ cp -rp <span class="nv">$SGE_BEEONDDIR</span>/foo.txt <span class="nv">$HOME</sp
 </div>
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
-<p>計算ノード(A)では、NVMe SSD が2つ搭載されており、BeeONDストレージは<code>/local2</code>を使用します。
-計算ノード(V)では、NVMe SSD が1つしか搭載されていないため、ローカルスクラッチとBeeONDストレージは同一のストレージを使用し、必ず容量を共有します。</p>
+<p>計算ノード(A)では、NVMe SSD が2つ搭載されており、BeeGFS領域は<code>/local2</code>を使用します。
+計算ノード(V)では、NVMe SSD が1つしか搭載されていないため、ローカルスクラッチとBeeGFS領域は同一のストレージを使用し、必ず容量を共有します。</p>
 </div>
+<p>BeeONDではbeeond-cpコマンドを利用して、BeeONDファイルシステム領域に並列にデータをステージイン、ステージアウトする事が可能です。
+beeond-cpを利用する場合、<code>USE_SSH=1</code>オプションを指定し計算ノードへのSSHログインを有効にしたあと、<code>PARALLEL_SSH</code>環境変数にsshコマンドとポート番号を指定してください。
+以下はbeeond-cpを使用する例です。</p>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span></pre></div></td><td class="code"><div class="codehilite"><pre><span></span><code><span class="ch">#!/bin/bash</span>
+<span class="c1">#$-l rt_F=4</span>
+<span class="c1">#$-l USE_BEEOND=1</span>
+<span class="c1">#$-l USE_SSH=1</span>
+<span class="c1">#$-v SSH_PORT=2222</span>
+<span class="c1">#$-j y</span>
+<span class="c1">#$-cwd</span>
+
+<span class="nb">export</span> <span class="nv">PARALLEL_SSH</span><span class="o">=</span><span class="s2">&quot;ssh -p 2222&quot;</span>
+<span class="nb">export</span> <span class="nv">src_dir</span><span class="o">=</span>/path/to/data
+
+beeond-cp stagein -n <span class="si">${</span><span class="nv">SGE_JOB_HOSTLIST</span><span class="si">}</span> -g <span class="si">${</span><span class="nv">src_dir</span><span class="si">}</span> -l <span class="si">${</span><span class="nv">SGE_BEEONDDIR</span><span class="si">}</span>
+<span class="o">(</span>計算処理<span class="o">)</span>
+beeond-cp stageout -n <span class="si">${</span><span class="nv">SGE_JOB_HOSTLIST</span><span class="si">}</span> -g <span class="si">${</span><span class="nv">src_dir</span><span class="si">}</span> -l <span class="si">${</span><span class="nv">SGE_BEEONDDIR</span><span class="si">}</span>
+</code></pre></div>
+</td></tr></table>
 <h4 id="advanced-option-configure-beeond-servers">[高度な設定] BeeONDサーバ数変更</h4>
-<p>BeeONDファイルシステム領域は、ファイルの実体を格納するストレージサービスを提供する計算ノード（ストレージサーバ）、ファイルのメタデータを格納するメタデータサービスを提供する計算ノード（メタデータサーバ）により構成されます。
+<p>BeeGFS領域は、ファイルの実体を格納するストレージサービスを提供する計算ノード（ストレージサーバ）、ファイルのメタデータを格納するメタデータサービスを提供する計算ノード（メタデータサーバ）により構成されます。
 ABCIのBeeONDではストレージサーバ数、メタデータサーバ数を変更することができます。</p>
 <p>メタデータサーバ数・ストレージサーバ数のデフォルトの設定は以下の通りです。</p>
 <table>
@@ -1742,7 +1774,7 @@ ABCIのBeeONDではストレージサーバ数、メタデータサーバ数を�
 </tr>
 </tbody>
 </table>
-<p>以下の例では、メタデータサーバ数2、ストレージサーバ数4でBeeONDファイルシステム領域を構成する例です。<code>beegfs-df</code>で構成を確認しています。</p>
+<p>以下の例では、メタデータサーバ数2、ストレージサーバ数4でBeeGFS領域を構成する例です。<code>beegfs-df</code>で構成を確認しています。</p>
 <p>例）ジョブスクリプトの例(use_beeond.sh)</p>
 <div class="codehilite"><pre><span></span><code><span class="ch">#!/bin/bash</span>
 
@@ -1772,7 +1804,7 @@ TargetID   Cap. Pool        Total         Free    %      ITotal       IFree    %
 </code></pre></div>
 
 <h4 id="advanced-option-file-striping_1">[高度な設定] ストライプ機能</h4>
-<p>BeeONDファイルシステム領域では、ファイルのデータはファイルシステムを構成する複数のストレージサーバに分散して格納されます。ABCIのBeeONDではストライプ分散の設定を変更することができます。</p>
+<p>BeeGFS領域では、ファイルのデータはファイルシステムを構成する複数のストレージサーバに分散して格納されます。ABCIのBeeONDではストライプ分散の設定を変更することができます。</p>
 <p>ストライプ分散のデフォルトの設定は次の通りです。</p>
 <table>
 <thead>
