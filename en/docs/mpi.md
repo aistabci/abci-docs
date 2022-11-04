@@ -11,7 +11,7 @@ If you run the `module` command in an interactive node, environment variables fo
 If you run the `module` command in a compute node, environment variables both for compilation and execution are set automatically.
 
 ```
-[username@es1 ~]$ module load hpcx/2.11
+[username@es-a1 ~]$ module load hpcx/2.11
 ```
 
 ```
@@ -68,6 +68,8 @@ See the table below for compatibility between HPC-X and NCCL.
 | 2.11 | 2.8、2.9、2.10、2.11 |
 
 For information on how to use SHARP and the NCCL-SHARP plug-in, see [Using SHARP](tips/sharp.md).
+
+For more information about NVIDIA HPC-X, please refer to [the official documentation](https://docs.nvidia.com/networking/category/hpcx).
 
 ## Open MPI
 

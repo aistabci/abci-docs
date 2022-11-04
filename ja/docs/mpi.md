@@ -11,7 +11,7 @@ ABCIシステムでは、以下のMPIを利用できます。
 計算ノードで`module`コマンドを用いると、コンパイル用環境変数に加え、実行用環境変数も自動で設定されます。
 
 ```
-[username@es1 ~]$ module load hpcx/2.11
+[username@es-a1 ~]$ module load hpcx/2.11
 ```
 
 ```
@@ -67,6 +67,8 @@ NVIDIA HPC-XではNCCL-SHARPプラグインを提供しています。
 | 2.11 | 2.8、2.9、2.10、2.11 |
 
 SHARPおよびNCCL-SHARPプラグインの使用方法については[SHARPの利用](tips/sharp.md)を参照してください。
+
+NVIDIA HPC-Xについて、より詳しい情報は[公式ドキュメント](https://docs.nvidia.com/networking/category/hpcx)を参照してください。
 
 ## Open MPI
 
