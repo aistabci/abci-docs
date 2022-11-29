@@ -78,7 +78,7 @@ INFO:    Build complete: ubuntu.sif
 [username@es1 singularity]$
 ```
 
-If the output destination of the image file (ubuntunt.sif) is set to the group area (/groups1, /groups2) in the above command, an error occurs. In this case, it is possible to avoid the problem by executing the `newgrp` command after checking the ownership group of the image destination group area with `id` command as follows.
+If the output destination of the image file (ubuntunt.sif) is set to the group area in the above command, an error occurs. In this case, it is possible to avoid the problem by executing the `newgrp` command after checking the ownership group of the image destination group area with `id` command as follows.
 In the example below, `gaa00000` is the owning group of the image destination group area.
 
 ```
@@ -109,7 +109,7 @@ Example) Run a container with a Singularity image file in a batch job
 #$-l rt_F=1
 #$-j y
 source /etc/profile.d/modules.sh
-module load singularitypro openmpi/3.1.6
+module load singularitypro openmpi/4.0.5
 
 mpiexec -n 4 singularity exec --nv ./caffe2.img \
     python sample.py
@@ -185,7 +185,7 @@ You can manually convert Dockerfile, but using [Singularity Python](https://sing
 Example procedure for installing Singularity Python)
 
 ```
-[username@es1 ~]$ module load python/3.6/3.6.12
+[username@es1 ~]$ module load gcc/9.3.0 python/3.10
 [username@es1 ~]$ python3 -m venv work
 [username@es1 ~]$ source work/bin/activate
 (work) [username@es1 ~]$ pip3 install spython
@@ -200,7 +200,7 @@ To avoid the problem, this example modifies the Singularity recipe as described 
 - No path to pip => Add a setting to take over environment variables available in Docker image
 
 ```
-[username@es1 ~]$ module load python/3.6/3.6.12
+[username@es1 ~]$ module load gcc/9.3.0 python/3.10
 [username@es1 ~]$ source work/bin/activate
 (work) [username@es1 ~]$ git clone https://github.com/NVIDIA/DeepLearningExamples
 (work) [username@es1 ~]$ cd DeepLearningExamples/PyTorch/Detection/SSD
@@ -208,37 +208,38 @@ To avoid the problem, this example modifies the Singularity recipe as described 
 (work) [username@es1 SSD]$ cp -p ssd.def ssd_org.def
 (work) [username@es1 SSD]$ vi ssd.def
 Bootstrap: docker
-From: nvcr.io/nvidia/pytorch:20.06-py3
+From: nvcr.io/nvidia/pytorch:21.05-py3
 Stage: spython-base
 
 %files
-requirements.txt /workspace                     <- Change path
-./setup.py /workspace                           <- Change path
-./csrc /workspace/csrc                          <- Change path
-. /workspace                                    <- Change path
+requirements.txt /workspace/ssd/  #<- copy to WORKDIR directory.
+. /workspace/ssd/                 #<- copy to WORKDIR directory.
 %post
-FROM_IMAGE_NAME=nvcr.io/nvidia/pytorch:20.06-py3
-. /.singularity.d/env/10-docker2singularity.sh  <- Add
+FROM_IMAGE_NAME=nvcr.io/nvidia/pytorch:21.05-py3
 
 # Set working directory
-cd /workspace
+cd /workspace/ssd
 
-PYTHONPATH="${PYTHONPATH}:/workspace"
-
+# Install nv-cocoapi
+COCOAPI_VERSION=2.0+nv0.6.0
+export COCOAPI_TAG=$(echo ${COCOAPI_VERSION} | sed 's/^.*+n//') \
+&& pip install --no-cache-dir pybind11                             \
+&& pip install --no-cache-dir git+https://github.com/NVIDIA/cocoapi.git@${COCOAPI_TAG}#subdirectory=PythonAPI
+# Install dllogger
 pip install --no-cache-dir git+https://github.com/NVIDIA/dllogger.git#egg=dllogger
+
+# Install requirements
 pip install -r requirements.txt
 python3 -m pip install pycocotools==2.0.0
-
-# Copy SSD code
-pip install .
+mkdir models #<- Requires to run main.py
 
 %environment
-export PYTHONPATH="${PYTHONPATH}:/workspace"
+export COCOAPI_VERSION=2.0+nv0.6.0
 %runscript
-cd /workspace
+cd /workspace/ssd
 exec /bin/bash "$@"
 %startscript
-cd /workspace
+cd /workspace/ssd
 exec /bin/bash "$@"
 ```
 

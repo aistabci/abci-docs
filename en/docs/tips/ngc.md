@@ -120,10 +120,10 @@ Next, check the available versions of Open MPI on the ABCI system.
 [username@es1 ~] $ module avail openmpi
 
 -------------------- /apps/modules/modulefiles/centos7/mpi ---------------------
-openmpi/2.1.6          openmpi/3.1.6          openmpi/4.0.5(default)
+openmpi/4.0.5          openmpi/4.1.3(default)
 ```
 
-``openmpi/4.0.5`` module seems to be suitable to run this image. In general, at least the major versions of both MPIs should be the same.
+``openmpi/4.1.3`` module seems to be suitable to run this image. In general, at least the major versions of both MPIs should be the same.
 
 ### Run a Singularity image with MPI {#run-a-singularity-image-with-mpi}
 
@@ -131,7 +131,7 @@ Start an interative job with two full-nodes, and load required environment modul
 
 ```
 [username@es1 ~]$ qrsh -g grpname -l rt_F=2 -l h_rt=1:00:00
-[username@g0001 ~]$ module load singularitypro openmpi/4.0.5
+[username@g0001 ~]$ module load singularitypro openmpi/4.1.3
 ```
 
 Each full-node has four GPUs, and you have eight GPUs in total.

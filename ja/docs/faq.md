@@ -10,12 +10,6 @@ $ stty -ixon
 
 インタラクティブノードにログインした状態で実行しても同等の効果があります。
 
-## Q. グループ領域が実サイズ以上に消費されてしまう
-
-一般にファイルシステムにはブロックサイズがあり、どんなに小さいファイルであってもブロックサイズ分の容量を消費します。
-
-ABCIでは、グループ領域1〜3のブロックサイズは128KB、ホーム領域、グループ領域のブロックサイズは4KBとしています。このため、グループ領域1〜3に小さいファイルを大量に作ると利用効率が下がります。例えば、4KB未満のファイルを作る場合には、ホーム領域の約32倍の容量が必要になります。
-
 ## Q. 認証が必要なコンテナレジストリをSingularityで利用できない
 
 SingularityPROには``docker login``相当の機能として、環境変数で認証情報を与える機能があります。
@@ -31,32 +25,13 @@ SingularityPRO の認証に関する詳細は、以下をご参照ください�
 * [SingularityPRO 3.7 User Guide](https://repo.sylabs.io/c/0f6898986ad0b646b5ce6deba21781ac62cb7e0a86a5153bbb31732ee6593f43/guides/singularitypro37-user-guide/)
     * [Making use of private images from Private Registries](https://repo.sylabs.io/c/0f6898986ad0b646b5ce6deba21781ac62cb7e0a86a5153bbb31732ee6593f43/guides/singularitypro37-user-guide/singularity_and_docker.html?highlight=support%20docker%20oci#making-use-of-private-images-from-private-registries)
 
-## Q. NGC CLIが実行できない
-
-ABCI上で、[NGC Catalog CLI](https://docs.nvidia.com/ngc/ngc-catalog-cli-user-guide/index.html)を実行すると、以下のエラーメッセージが出て実行できません。これはNGC CLIがUbuntu 14.04以降用にビルドされているためです。
-
-```
-ImportError: /lib64/libc.so.6: version `GLIBC_2.18' not found (required by /tmp/_MEIxvHq8h/libstdc++.so.6)
-[89261] Failed to execute script ngc
-```
-
-以下のようなシェルスクリプトを用意することで、Singularityを使って実行させることができます。NGC CLIに限らず、一般的に使えるテクニックです。
-
-```
-#!/bin/sh
-source /etc/profile.d/modules.sh
-module load singularitypro
-
-NGC_HOME=$HOME/ngc
-singularity exec $NGC_HOME/ubuntu-18.04.simg $NGC_HOME/ngc $@
-```
 
 ## Q. 複数の計算ノードを割り当て、それぞれの計算ノードで異なる処理をさせたい
 
 `qrsh`や`qsub`で`-l rt_F=N`オプションもしくは`-l rt_AF=N`オプションを与えると、N個の計算ノードを割り当てることができます。割り当てられた計算ノードでそれぞれ異なる処理をさせたい場合にもMPIが使えます。
 
 ```
-$ module load openmpi/2.1.6
+$ module load openmpi/4.1.3
 $ mpirun -hostfile $SGE_JOB_HOSTLIST -np 1 command1 : -np 1 command2 : ... : -np1 commandN
 ```
 
@@ -78,48 +53,6 @@ Host as.abci.ai
 
 !!! note
     ServerAliveInterval の初期値は 0 (KeepAliveなし)です。
-
-## Q. Open MPIの新しいバージョンが使いたい
-
-ABCIではCUDA対応版Open MPIとCUDA非対応版Open MPIを提供しており、提供の状況は、[Open MPI](mpi.md#open-mpi)で確認できます。
-
-ABCIが提供するEnvironment Modulesでは、事前に`cuda`モジュールがロードされている場合に限り、`openmpi`モジュールのロード時にCUDA対応版Open MPIの環境設定を試みます。
-
-したがって、CUDA対応版MPIが提供されている組み合わせ(`cuda/10.0/10.0.130.1`, `openmpi/2.1.6`)では環境設定に成功します。
-
-```
-$ module load cuda/10.0/10.0.130.1
-$ module load openmpi/2.1.6
-$ module list
-Currently Loaded Modulefiles:
-  1) cuda/10.0/10.0.130.1   2) openmpi/2.1.6
-```
-
-CUDA対応版MPIが提供されていない組み合わせ(`cuda/9.1/9.1.85.3`, `openmpi/3.1.6`)では環境設定に失敗し、`openmpi`モジュールはロードされません。
-
-```
-$ module load cuda/9.1/9.1.85.3
-$ module load openmpi/3.1.6
-ERROR: loaded cuda module is not supported.
-WARNING: openmpi/3.1.6 cannot be loaded due to missing prereq.
-HINT: at least one of the following modules must be loaded first: cuda/9.2/9.2.88.1 cuda/9.2/9.2.148.1 cuda/10.0/10.0.130.1 cuda/10.1/10.1.243 cuda/10.2/10.2.89 cuda/11.0/11.0.3 cuda/11.1/11.1.1 cuda/11.2/11.2.2
-$ module list
-Currently Loaded Modulefiles:
-  1) cuda/9.1/9.1.85.3
-```
-
-一方、Horovodによる並列化のためにOpen MPIが使いたいなど、Open MPIのCUDA版機能が不要な場合もあります。この場合は、先に`openmpi`モジュールをロードすることで、より新しいバージョンのCUDA非対応版Open MPIを利用できます。
-
-```
-$ module load openmpi/3.1.6
-$ module load cuda/9.1/9.1.85.3
-module list
-Currently Loaded Modulefiles:
-  1) openmpi/3.1.6       2) cuda/9.1/9.1.85.3
-```
-
-!!! note
-    CUDA対応版の機能はOpen MPIのサイトで確認できます: [FAQ: Running CUDA-aware Open MPI](https://www.open-mpi.org/faq/?category=runcuda)
 
 ## Q. ジョブの混雑状況を知りたい
 
