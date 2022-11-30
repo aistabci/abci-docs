@@ -984,13 +984,6 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#q" class="md-nav__link">
-    Q. グループ領域が実サイズ以上に消費されてしまう
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
   <a href="#q-singularity" class="md-nav__link">
     Q. 認証が必要なコンテナレジストリをSingularityで利用できない
   </a>
@@ -998,14 +991,7 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#q-ngc-cli" class="md-nav__link">
-    Q. NGC CLIが実行できない
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#q_1" class="md-nav__link">
+  <a href="#q" class="md-nav__link">
     Q. 複数の計算ノードを割り当て、それぞれの計算ノードで異なる処理をさせたい
   </a>
   
@@ -1019,21 +1005,14 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#q-open-mpi" class="md-nav__link">
-    Q. Open MPIの新しいバージョンが使いたい
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#q_2" class="md-nav__link">
+  <a href="#q_1" class="md-nav__link">
     Q. ジョブの混雑状況を知りたい
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#q_3" class="md-nav__link">
+  <a href="#q_2" class="md-nav__link">
     Q. ダウンロード済みのデータセットはありませんか?
   </a>
   
@@ -1061,7 +1040,7 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#q_4" class="md-nav__link">
+  <a href="#q_3" class="md-nav__link">
     Q. 割り当てられた全計算ノードでコマンドを並列に実行したい
   </a>
   
@@ -1299,9 +1278,6 @@
 </code></pre></div>
 
 <p>インタラクティブノードにログインした状態で実行しても同等の効果があります。</p>
-<h2 id="q">Q. グループ領域が実サイズ以上に消費されてしまう</h2>
-<p>一般にファイルシステムにはブロックサイズがあり、どんなに小さいファイルであってもブロックサイズ分の容量を消費します。</p>
-<p>ABCIでは、グループ領域1〜3のブロックサイズは128KB、ホーム領域、グループ領域のブロックサイズは4KBとしています。このため、グループ領域1〜3に小さいファイルを大量に作ると利用効率が下がります。例えば、4KB未満のファイルを作る場合には、ホーム領域の約32倍の容量が必要になります。</p>
 <h2 id="q-singularity">Q. 認証が必要なコンテナレジストリをSingularityで利用できない</h2>
 <p>SingularityPROには<code>docker login</code>相当の機能として、環境変数で認証情報を与える機能があります。</p>
 <div class="codehilite"><pre><span></span><code><span class="o">[</span>username@es1 ~<span class="o">]</span>$ <span class="nb">export</span> <span class="nv">SINGULARITY_DOCKER_USERNAME</span><span class="o">=</span><span class="s1">&#39;username&#39;</span>
@@ -1316,29 +1292,9 @@
 </ul>
 </li>
 </ul>
-<h2 id="q-ngc-cli">Q. NGC CLIが実行できない</h2>
-<p>ABCI上で、<a href="https://docs.nvidia.com/ngc/ngc-catalog-cli-user-guide/index.html">NGC Catalog CLI</a>を実行すると、以下のエラーメッセージが出て実行できません。これはNGC CLIがUbuntu 14.04以降用にビルドされているためです。</p>
-<div class="codehilite"><pre><span></span><code>ImportError: /lib64/libc.so.6: version `GLIBC_2.18&#39; not found (required by /tmp/_MEIxvHq8h/libstdc++.so.6)
-[89261] Failed to execute script ngc
-</code></pre></div>
-
-<p>以下のようなシェルスクリプトを用意することで、Singularityを使って実行させることができます。NGC CLIに限らず、一般的に使えるテクニックです。</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">1</span>
-<span class="normal">2</span>
-<span class="normal">3</span>
-<span class="normal">4</span>
-<span class="normal">5</span>
-<span class="normal">6</span></pre></div></td><td class="code"><div class="codehilite"><pre><span></span><code><span class="ch">#!/bin/sh</span>
-<span class="nb">source</span> /etc/profile.d/modules.sh
-module load singularitypro
-
-<span class="nv">NGC_HOME</span><span class="o">=</span><span class="nv">$HOME</span>/ngc
-singularity <span class="nb">exec</span> <span class="nv">$NGC_HOME</span>/ubuntu-18.04.simg <span class="nv">$NGC_HOME</span>/ngc <span class="nv">$@</span>
-</code></pre></div>
-</td></tr></table>
-<h2 id="q_1">Q. 複数の計算ノードを割り当て、それぞれの計算ノードで異なる処理をさせたい</h2>
+<h2 id="q">Q. 複数の計算ノードを割り当て、それぞれの計算ノードで異なる処理をさせたい</h2>
 <p><code>qrsh</code>や<code>qsub</code>で<code>-l rt_F=N</code>オプションもしくは<code>-l rt_AF=N</code>オプションを与えると、N個の計算ノードを割り当てることができます。割り当てられた計算ノードでそれぞれ異なる処理をさせたい場合にもMPIが使えます。</p>
-<div class="codehilite"><pre><span></span><code><span class="o">$</span> <span class="n">module</span> <span class="nb">load</span> <span class="n">openmpi</span><span class="o">/</span><span class="mf">2.1</span><span class="o">.</span><span class="mi">6</span>
+<div class="codehilite"><pre><span></span><code><span class="o">$</span> <span class="n">module</span> <span class="nb">load</span> <span class="n">openmpi</span><span class="o">/</span><span class="mf">4.1</span><span class="o">.</span><span class="mi">3</span>
 <span class="o">$</span> <span class="n">mpirun</span> <span class="o">-</span><span class="n">hostfile</span> <span class="o">$</span><span class="n">SGE_JOB_HOSTLIST</span> <span class="o">-</span><span class="n">np</span> <span class="mi">1</span> <span class="n">command1</span> <span class="p">:</span> <span class="o">-</span><span class="n">np</span> <span class="mi">1</span> <span class="n">command2</span> <span class="p">:</span> <span class="o">...</span> <span class="p">:</span> <span class="o">-</span><span class="n">np1</span> <span class="n">commandN</span>
 </code></pre></div>
 
@@ -1358,41 +1314,7 @@ singularity <span class="nb">exec</span> <span class="nv">$NGC_HOME</span>/ubunt
 <p class="admonition-title">Note</p>
 <p>ServerAliveInterval の初期値は 0 (KeepAliveなし)です。</p>
 </div>
-<h2 id="q-open-mpi">Q. Open MPIの新しいバージョンが使いたい</h2>
-<p>ABCIではCUDA対応版Open MPIとCUDA非対応版Open MPIを提供しており、提供の状況は、<a href="../mpi/#open-mpi">Open MPI</a>で確認できます。</p>
-<p>ABCIが提供するEnvironment Modulesでは、事前に<code>cuda</code>モジュールがロードされている場合に限り、<code>openmpi</code>モジュールのロード時にCUDA対応版Open MPIの環境設定を試みます。</p>
-<p>したがって、CUDA対応版MPIが提供されている組み合わせ(<code>cuda/10.0/10.0.130.1</code>, <code>openmpi/2.1.6</code>)では環境設定に成功します。</p>
-<div class="codehilite"><pre><span></span><code><span class="o">$</span> <span class="n">module</span> <span class="nb">load</span> <span class="n">cuda</span><span class="o">/</span><span class="mf">10.0</span><span class="o">/</span><span class="mf">10.0</span><span class="o">.</span><span class="mf">130.1</span>
-<span class="o">$</span> <span class="n">module</span> <span class="nb">load</span> <span class="n">openmpi</span><span class="o">/</span><span class="mf">2.1</span><span class="o">.</span><span class="mi">6</span>
-<span class="o">$</span> <span class="n">module</span> <span class="n">list</span>
-<span class="n">Currently</span> <span class="n">Loaded</span> <span class="n">Modulefiles</span><span class="p">:</span>
-  <span class="mi">1</span><span class="p">)</span> <span class="n">cuda</span><span class="o">/</span><span class="mf">10.0</span><span class="o">/</span><span class="mf">10.0</span><span class="o">.</span><span class="mf">130.1</span>   <span class="mi">2</span><span class="p">)</span> <span class="n">openmpi</span><span class="o">/</span><span class="mf">2.1</span><span class="o">.</span><span class="mi">6</span>
-</code></pre></div>
-
-<p>CUDA対応版MPIが提供されていない組み合わせ(<code>cuda/9.1/9.1.85.3</code>, <code>openmpi/3.1.6</code>)では環境設定に失敗し、<code>openmpi</code>モジュールはロードされません。</p>
-<div class="codehilite"><pre><span></span><code><span class="o">$</span> <span class="n">module</span> <span class="nb">load</span> <span class="n">cuda</span><span class="o">/</span><span class="mf">9.1</span><span class="o">/</span><span class="mf">9.1</span><span class="o">.</span><span class="mf">85.3</span>
-<span class="o">$</span> <span class="n">module</span> <span class="nb">load</span> <span class="n">openmpi</span><span class="o">/</span><span class="mf">3.1</span><span class="o">.</span><span class="mi">6</span>
-<span class="n">ERROR</span><span class="p">:</span> <span class="n">loaded</span> <span class="n">cuda</span> <span class="n">module</span> <span class="k">is</span> <span class="ow">not</span> <span class="n">supported</span><span class="o">.</span>
-<span class="n">WARNING</span><span class="p">:</span> <span class="n">openmpi</span><span class="o">/</span><span class="mf">3.1</span><span class="o">.</span><span class="mi">6</span> <span class="n">cannot</span> <span class="n">be</span> <span class="n">loaded</span> <span class="n">due</span> <span class="n">to</span> <span class="n">missing</span> <span class="n">prereq</span><span class="o">.</span>
-<span class="n">HINT</span><span class="p">:</span> <span class="n">at</span> <span class="n">least</span> <span class="n">one</span> <span class="n">of</span> <span class="n">the</span> <span class="n">following</span> <span class="n">modules</span> <span class="n">must</span> <span class="n">be</span> <span class="n">loaded</span> <span class="n">first</span><span class="p">:</span> <span class="n">cuda</span><span class="o">/</span><span class="mf">9.2</span><span class="o">/</span><span class="mf">9.2</span><span class="o">.</span><span class="mf">88.1</span> <span class="n">cuda</span><span class="o">/</span><span class="mf">9.2</span><span class="o">/</span><span class="mf">9.2</span><span class="o">.</span><span class="mf">148.1</span> <span class="n">cuda</span><span class="o">/</span><span class="mf">10.0</span><span class="o">/</span><span class="mf">10.0</span><span class="o">.</span><span class="mf">130.1</span> <span class="n">cuda</span><span class="o">/</span><span class="mf">10.1</span><span class="o">/</span><span class="mf">10.1</span><span class="o">.</span><span class="mi">243</span> <span class="n">cuda</span><span class="o">/</span><span class="mf">10.2</span><span class="o">/</span><span class="mf">10.2</span><span class="o">.</span><span class="mi">89</span> <span class="n">cuda</span><span class="o">/</span><span class="mf">11.0</span><span class="o">/</span><span class="mf">11.0</span><span class="o">.</span><span class="mi">3</span> <span class="n">cuda</span><span class="o">/</span><span class="mf">11.1</span><span class="o">/</span><span class="mf">11.1</span><span class="o">.</span><span class="mi">1</span> <span class="n">cuda</span><span class="o">/</span><span class="mf">11.2</span><span class="o">/</span><span class="mf">11.2</span><span class="o">.</span><span class="mi">2</span>
-<span class="o">$</span> <span class="n">module</span> <span class="n">list</span>
-<span class="n">Currently</span> <span class="n">Loaded</span> <span class="n">Modulefiles</span><span class="p">:</span>
-  <span class="mi">1</span><span class="p">)</span> <span class="n">cuda</span><span class="o">/</span><span class="mf">9.1</span><span class="o">/</span><span class="mf">9.1</span><span class="o">.</span><span class="mf">85.3</span>
-</code></pre></div>
-
-<p>一方、Horovodによる並列化のためにOpen MPIが使いたいなど、Open MPIのCUDA版機能が不要な場合もあります。この場合は、先に<code>openmpi</code>モジュールをロードすることで、より新しいバージョンのCUDA非対応版Open MPIを利用できます。</p>
-<div class="codehilite"><pre><span></span><code><span class="o">$</span> <span class="n">module</span> <span class="nb">load</span> <span class="n">openmpi</span><span class="o">/</span><span class="mf">3.1</span><span class="o">.</span><span class="mi">6</span>
-<span class="o">$</span> <span class="n">module</span> <span class="nb">load</span> <span class="n">cuda</span><span class="o">/</span><span class="mf">9.1</span><span class="o">/</span><span class="mf">9.1</span><span class="o">.</span><span class="mf">85.3</span>
-<span class="n">module</span> <span class="n">list</span>
-<span class="n">Currently</span> <span class="n">Loaded</span> <span class="n">Modulefiles</span><span class="p">:</span>
-  <span class="mi">1</span><span class="p">)</span> <span class="n">openmpi</span><span class="o">/</span><span class="mf">3.1</span><span class="o">.</span><span class="mi">6</span>       <span class="mi">2</span><span class="p">)</span> <span class="n">cuda</span><span class="o">/</span><span class="mf">9.1</span><span class="o">/</span><span class="mf">9.1</span><span class="o">.</span><span class="mf">85.3</span>
-</code></pre></div>
-
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>CUDA対応版の機能はOpen MPIのサイトで確認できます: <a href="https://www.open-mpi.org/faq/?category=runcuda">FAQ: Running CUDA-aware Open MPI</a></p>
-</div>
-<h2 id="q_2">Q. ジョブの混雑状況を知りたい</h2>
+<h2 id="q_1">Q. ジョブの混雑状況を知りたい</h2>
 <p>ジョブの混雑状況に加え、計算ノードの利用状況、データセンター全体の消費電力やPUE、冷却設備の稼働状況等を可視化するWebサービスを動作させています。
 ABCI内部サーバ<code>vws1</code>の3000/tcpポートで動作していますので、以下の通りにアクセスできます。</p>
 <p>SSHトンネルの設定をしてください。
@@ -1418,7 +1340,7 @@ ABCIシステム利用環境の<a href="../getting-started/#general-method">SSH�
 <li><a href="https://abciug.abci.ai/abci%e5%88%a9%e7%94%a8%e3%81%ae%e8%b1%86%e7%9f%a5%e8%ad%98/abci%e3%81%ae%e7%a9%ba%e3%83%8e%e3%83%bc%e3%83%89%e6%95%b0%e3%82%92%e8%aa%bf%e3%81%b9%e3%82%8b_i16">ABCIの空ノード数を調べる</a></li>
 </ul>
 </div>
-<h2 id="q_3">Q. ダウンロード済みのデータセットはありませんか?</h2>
+<h2 id="q_2">Q. ダウンロード済みのデータセットはありませんか?</h2>
 <p><a href="../tips/datasets/">データセットの利用</a>を参照してください。</p>
 <h2 id="q-singularity-pull">Q. バッチジョブでSingularity pullでのイメージファイル作成に失敗する</h2>
 <p>バッチジョブでSingularity pullでのイメージファイルを作成しようとした際に、mksquashfs の実行ファイルが見つからず作成に失敗することがあります。</p>
@@ -1507,7 +1429,7 @@ ABCIシステム利用環境の<a href="../getting-started/#general-method">SSH�
 <span class="err">:</span><span class="w"></span>
 </code></pre></div>
 
-<h2 id="q_4">Q. 割り当てられた全計算ノードでコマンドを並列に実行したい</h2>
+<h2 id="q_3">Q. 割り当てられた全計算ノードでコマンドを並列に実行したい</h2>
 <p>ABCIでは、割り当てられた全計算ノードで並列にLinuxコマンドを実行する<code>ugedsh</code>コマンドを用意しています。
 <code>ugedsh</code>コマンドの引数で指定したコマンドは、各ノードで1回ずつ実行されます。</p>
 <p>実行例) </p>

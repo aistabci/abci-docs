@@ -437,13 +437,6 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#nvidia-hpc-sdk" class="md-nav__link">
-    NVIDIA HPC SDK
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
   <a href="#openmp" class="md-nav__link">
     OpenMP
   </a>
@@ -1232,7 +1225,7 @@
 計算ノードで<code>module</code>コマンドを用いて利用環境を設定すると、コンパイル用環境変数に
 ヘッダファイルおよびライブラリのサーチパスが自動で設定され、実行用環境変数も自動で設定されます。</p>
 <p>Intel Parallel Studio XEの環境設定:</p>
-<div class="codehilite"><pre><span></span><code><span class="p">[</span><span class="n">username</span><span class="err">@</span><span class="n">g0001</span> <span class="o">~</span><span class="p">]</span><span class="o">$</span> <span class="n">module</span> <span class="nb">load</span> <span class="n">intel</span><span class="o">/</span><span class="mf">2020.4</span><span class="o">.</span><span class="mi">304</span>
+<div class="codehilite"><pre><span></span><code><span class="p">[</span><span class="n">username</span><span class="err">@</span><span class="n">g0001</span> <span class="o">~</span><span class="p">]</span><span class="o">$</span> <span class="n">module</span> <span class="nb">load</span> <span class="n">intel</span><span class="o">/</span><span class="mf">2022.0</span><span class="o">.</span><span class="mi">2</span>
 </code></pre></div>
 
 <p>コンパイル/リンクコマンド一覧:</p>
@@ -1290,37 +1283,6 @@
 </tr>
 </tbody>
 </table>
-<h2 id="nvidia-hpc-sdk">NVIDIA HPC SDK</h2>
-<p>ABCIシステムではNVIDIA HPC SDKが利用可能です。
-利用するためには事前に<code>module</code>コマンドを用いて利用環境を設定する必要があります。
-計算ノードで<code>module</code>コマンドを用いて利用環境を設定すると、コンパイル用環境変数にヘッダファイルおよびライブラリのサーチパスが自動で設定され、実行用環境変数も自動で設定されます。</p>
-<p>NVIDIA HPC SDKの環境設定:</p>
-<div class="codehilite"><pre><span></span><code><span class="p">[</span><span class="n">username</span><span class="err">@</span><span class="n">g0001</span> <span class="o">~</span><span class="p">]</span><span class="o">$</span> <span class="n">module</span> <span class="nb">load</span> <span class="n">nvhpc</span><span class="o">/</span><span class="mf">21.2</span>
-</code></pre></div>
-
-<p>コンパイル/リンクコマンド一覧:</p>
-<table>
-<thead>
-<tr>
-<th align="left">言語処理系</th>
-<th align="left">コマンド</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td align="left">Fortran</td>
-<td align="left">nvfortran</td>
-</tr>
-<tr>
-<td align="left">C</td>
-<td align="left">nvc</td>
-</tr>
-<tr>
-<td align="left">C++</td>
-<td align="left">nvc++</td>
-</tr>
-</tbody>
-</table>
 <h2 id="openmp">OpenMP</h2>
 <p>ABCIシステムで用意されているコンパイラは、OpenMPを用いたスレッド並列化機能が実装されています。
 OpenMPを有効化する場合、コンパイル/リンク時に以下のようにオプションを指定する必要があります。</p>
@@ -1342,10 +1304,6 @@ OpenMPを有効化する場合、コンパイル/リンク時に以下のよう�
 </tr>
 <tr>
 <td align="left">PGI</td>
-<td align="left">-mp</td>
-</tr>
-<tr>
-<td align="left">NVIDIA HPC SDK</td>
 <td align="left">-mp</td>
 </tr>
 </tbody>

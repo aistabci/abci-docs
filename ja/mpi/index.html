@@ -386,6 +386,26 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#nvidia-hpc-x" class="md-nav__link">
+    NVIDIA HPC-X
+  </a>
+  
+    <nav class="md-nav" aria-label="NVIDIA HPC-X">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    使用方法
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#open-mpi" class="md-nav__link">
     Open MPI
   </a>
@@ -1156,12 +1176,16 @@
                 <h1 id="mpi">MPI</h1>
 <p>ABCIシステムでは、以下のMPIを利用できます。</p>
 <ul>
+<li><a href="https://developer.nvidia.com/networking/hpc-x">NVIDIA HPC-X</a></li>
 <li><a href="https://www.open-mpi.org/">Open MPI</a></li>
 <li><a href="https://software.intel.com/en-us/intel-mpi-library">Intel MPI</a></li>
 </ul>
 <p>利用するためには事前に<code>module</code>コマンドを用いて利用環境を設定する必要があります。
 インタラクティブノードで<code>module</code>コマンドを用いると、コンパイル用環境変数（ヘッダファイルおよびライブラリのサーチパス）が自動で設定されます。
 計算ノードで<code>module</code>コマンドを用いると、コンパイル用環境変数に加え、実行用環境変数も自動で設定されます。</p>
+<div class="codehilite"><pre><span></span><code><span class="p">[</span><span class="n">username</span><span class="err">@</span><span class="n">es</span><span class="o">-</span><span class="n">a1</span> <span class="o">~</span><span class="p">]</span><span class="o">$</span> <span class="n">module</span> <span class="nb">load</span> <span class="n">hpcx</span><span class="o">/</span><span class="mf">2.11</span>
+</code></pre></div>
+
 <div class="codehilite"><pre><span></span><code><span class="p">[</span><span class="n">username</span><span class="err">@</span><span class="n">es1</span> <span class="o">~</span><span class="p">]</span><span class="o">$</span> <span class="n">module</span> <span class="nb">load</span> <span class="n">openmpi</span><span class="o">/</span><span class="mf">4.0</span><span class="o">.</span><span class="mi">5</span>
 </code></pre></div>
 
@@ -1169,6 +1193,82 @@
 </code></pre></div>
 
 <p>以下では、ABCIシステムに導入されているMPIのバージョン一覧を示します。</p>
+<h2 id="nvidia-hpc-x">NVIDIA HPC-X</h2>
+<p>計算ノード(A):</p>
+<table>
+<thead>
+<tr>
+<th align="left">Module Version</th>
+<th align="left">MPI Version</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">2.11</td>
+<td align="left">4.1.4rc1</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>計算ノード(V)向けのNVIDIA HPC-Xは現在提供していません。</p>
+</div>
+<h3 id="_1">使用方法</h3>
+<p>ここでは、NVIDIA HPC-Xモジュールの使用方法を説明します。</p>
+<p>ABCIで提供しているHPC-Xモジュールには以下の種類があります。用途に応じてモジュールを読み込んでください。</p>
+<table>
+<thead>
+<tr>
+<th align="left">モジュール名</th>
+<th align="left">説明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">hpcx</td>
+<td align="left">標準</td>
+</tr>
+<tr>
+<td align="left">hpcx-mt</td>
+<td align="left">マルチスレッド対応</td>
+</tr>
+<tr>
+<td align="left">hpcx-debug</td>
+<td align="left">デバッグ用</td>
+</tr>
+<tr>
+<td align="left">hpcx-prof</td>
+<td align="left">プロファイリング用</td>
+</tr>
+</tbody>
+</table>
+<p>また、ジョブ内で<code>mpirun</code>、<code>mpiexec</code>コマンドを実行する際には<code>-hostfile</code>オプションにホストファイルを指定します。
+ホストファイルは<code>SGE_JOB_HOSTLIST</code>環境変数に設定されています。</p>
+<div class="codehilite"><pre><span></span><code><span class="p">[</span><span class="n">username</span><span class="err">@</span><span class="n">es</span><span class="o">-</span><span class="n">a1</span> <span class="o">~</span><span class="p">]</span><span class="o">$</span> <span class="n">qrsh</span> <span class="o">-</span><span class="n">g</span> <span class="n">groupname</span> <span class="o">-</span><span class="n">l</span> <span class="n">rt_AF</span><span class="o">=</span><span class="mi">2</span> <span class="o">-</span><span class="n">l</span> <span class="n">h_rt</span><span class="o">=</span><span class="mi">01</span><span class="p">:</span><span class="mi">00</span><span class="p">:</span><span class="mi">0</span>
+<span class="p">[</span><span class="n">username</span><span class="err">@</span><span class="n">a0000</span> <span class="o">~</span><span class="p">]</span><span class="o">$</span> <span class="n">module</span> <span class="nb">load</span> <span class="n">hpcx</span><span class="o">/</span><span class="mf">2.11</span>
+<span class="p">[</span><span class="n">username</span><span class="err">@</span><span class="n">a0000</span> <span class="o">~</span><span class="p">]</span><span class="o">$</span> <span class="n">mpirun</span> <span class="o">-</span><span class="n">np</span> <span class="mi">2</span> <span class="o">-</span><span class="n">map</span><span class="o">-</span><span class="n">by</span> <span class="n">ppr</span><span class="p">:</span><span class="mi">1</span><span class="p">:</span><span class="n">node</span> <span class="o">-</span><span class="n">hostfile</span> <span class="o">$</span><span class="n">SGE_JOB_HOSTLIST</span> <span class="o">./</span><span class="n">hello_c</span>
+<span class="n">Hello</span><span class="p">,</span> <span class="n">world</span><span class="p">,</span> <span class="n">I</span> <span class="n">am</span> <span class="mi">0</span> <span class="n">of</span> <span class="mi">2</span><span class="p">,</span> <span class="p">(</span><span class="n">Open</span> <span class="n">MPI</span> <span class="n">v4</span><span class="o">.</span><span class="mf">1.4</span><span class="n">rc1</span><span class="p">,</span> <span class="n">package</span><span class="p">:</span> <span class="n">Open</span> <span class="n">MPI</span> <span class="n">root</span><span class="err">@</span><span class="n">hpc</span><span class="o">-</span><span class="n">kernel</span><span class="o">-</span><span class="mi">03</span> <span class="n">Distribution</span><span class="p">,</span> <span class="n">ident</span><span class="p">:</span> <span class="mf">4.1</span><span class="o">.</span><span class="mi">4</span><span class="n">rc1</span><span class="p">,</span> <span class="n">repo</span> <span class="n">rev</span><span class="p">:</span> <span class="n">v4</span><span class="o">.</span><span class="mf">1.4</span><span class="n">rc1</span><span class="p">,</span> <span class="n">Unreleased</span> <span class="n">developer</span> <span class="n">copy</span><span class="p">,</span> <span class="mi">135</span><span class="p">)</span>
+<span class="n">Hello</span><span class="p">,</span> <span class="n">world</span><span class="p">,</span> <span class="n">I</span> <span class="n">am</span> <span class="mi">1</span> <span class="n">of</span> <span class="mi">2</span><span class="p">,</span> <span class="p">(</span><span class="n">Open</span> <span class="n">MPI</span> <span class="n">v4</span><span class="o">.</span><span class="mf">1.4</span><span class="n">rc1</span><span class="p">,</span> <span class="n">package</span><span class="p">:</span> <span class="n">Open</span> <span class="n">MPI</span> <span class="n">root</span><span class="err">@</span><span class="n">hpc</span><span class="o">-</span><span class="n">kernel</span><span class="o">-</span><span class="mi">03</span> <span class="n">Distribution</span><span class="p">,</span> <span class="n">ident</span><span class="p">:</span> <span class="mf">4.1</span><span class="o">.</span><span class="mi">4</span><span class="n">rc1</span><span class="p">,</span> <span class="n">repo</span> <span class="n">rev</span><span class="p">:</span> <span class="n">v4</span><span class="o">.</span><span class="mf">1.4</span><span class="n">rc1</span><span class="p">,</span> <span class="n">Unreleased</span> <span class="n">developer</span> <span class="n">copy</span><span class="p">,</span> <span class="mi">135</span><span class="p">)</span>
+</code></pre></div>
+
+<p>NVIDIA HPC-XではNCCL-SHARPプラグインを提供しています。
+プラグインはHPC-Xのバージョンごとに対応するNCCLのバージョンが異なります。HPC-XとNCCLの対応は以下の表を参照してください。</p>
+<table>
+<thead>
+<tr>
+<th align="left">HPC-Xバージョン</th>
+<th align="left">NCCL バージョン</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">2.11</td>
+<td align="left">2.8、2.9、2.10、2.11</td>
+</tr>
+</tbody>
+</table>
+<p>SHARPおよびNCCL-SHARPプラグインの使用方法については<a href="../tips/sharp/">SHARPの利用</a>を参照してください。</p>
+<p>NVIDIA HPC-Xについて、より詳しい情報は<a href="https://docs.nvidia.com/networking/category/hpcx">公式ドキュメント</a>を参照してください。</p>
 <h2 id="open-mpi">Open MPI</h2>
 <p>計算ノード(V):</p>
 <table>

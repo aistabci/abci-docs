@@ -386,6 +386,26 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#nvidia-hpc-x" class="md-nav__link">
+    NVIDIA HPC-X
+  </a>
+  
+    <nav class="md-nav" aria-label="NVIDIA HPC-X">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#using-hpc-x" class="md-nav__link">
+    Using HPC-X
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#open-mpi" class="md-nav__link">
     Open MPI
   </a>
@@ -1144,12 +1164,16 @@
                 <h1 id="mpi">MPI</h1>
 <p>The following MPIs can be used with the ABCI system.</p>
 <ul>
+<li><a href="https://developer.nvidia.com/networking/hpc-x">NVIDIA HPC-X</a></li>
 <li><a href="https://www.open-mpi.org/">Open MPI</a></li>
 <li><a href="https://software.intel.com/en-us/intel-mpi-library">Intel MPI</a></li>
 </ul>
 <p>To use one of these libraries, it is necessary to configure the user environment in advance using the <code>module</code> command.
 If you run the <code>module</code> command in an interactive node, environment variables for compilation are set automatically.
 If you run the <code>module</code> command in a compute node, environment variables both for compilation and execution are set automatically.</p>
+<div class="codehilite"><pre><span></span><code><span class="p">[</span><span class="n">username</span><span class="err">@</span><span class="n">es</span><span class="o">-</span><span class="n">a1</span> <span class="o">~</span><span class="p">]</span><span class="o">$</span> <span class="n">module</span> <span class="nb">load</span> <span class="n">hpcx</span><span class="o">/</span><span class="mf">2.11</span>
+</code></pre></div>
+
 <div class="codehilite"><pre><span></span><code><span class="p">[</span><span class="n">username</span><span class="err">@</span><span class="n">es1</span> <span class="o">~</span><span class="p">]</span><span class="o">$</span> <span class="n">module</span> <span class="nb">load</span> <span class="n">openmpi</span><span class="o">/</span><span class="mf">4.0</span><span class="o">.</span><span class="mi">5</span>
 </code></pre></div>
 
@@ -1157,6 +1181,83 @@ If you run the <code>module</code> command in a compute node, environment variab
 </code></pre></div>
 
 <p>The following is a list MPI versions installed in the ABCI system.</p>
+<h2 id="nvidia-hpc-x">NVIDIA HPC-X</h2>
+<p>Compute Node (A):</p>
+<table>
+<thead>
+<tr>
+<th align="left">Module Version</th>
+<th align="left">MPI Version</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">2.11</td>
+<td align="left">4.1.4rc1</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>NVIDIA HPC-X for Compute Node (V) is not currently provided.</p>
+</div>
+<h3 id="using-hpc-x">Using HPC-X</h3>
+<p>This section describes how to use the NVIDIA HPC-X module.</p>
+<p>ABCI provides the following types of HPC-X modules.Please load the module according to your application.</p>
+<table>
+<thead>
+<tr>
+<th align="left">Module Name</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">hpcx</td>
+<td align="left">Standard</td>
+</tr>
+<tr>
+<td align="left">hpcx-mt</td>
+<td align="left">Multi-Threading support</td>
+</tr>
+<tr>
+<td align="left">hpcx-debug</td>
+<td align="left">for debug</td>
+</tr>
+<tr>
+<td align="left">hpcx-prof</td>
+<td align="left">for profiling</td>
+</tr>
+</tbody>
+</table>
+<p>When executing the <code>mpirun</code> and <code>mpiexec</code> commands in a job, a host file is also specified in the <code>-hostfile</code> option.
+The host file is set in the <code>$SGE_JOB_HOSTLIST</code> environment variable.</p>
+<div class="codehilite"><pre><span></span><code><span class="p">[</span><span class="n">username</span><span class="err">@</span><span class="n">es</span><span class="o">-</span><span class="n">a1</span> <span class="o">~</span><span class="p">]</span><span class="o">$</span> <span class="n">qrsh</span> <span class="o">-</span><span class="n">g</span> <span class="n">groupname</span> <span class="o">-</span><span class="n">l</span> <span class="n">rt_AF</span><span class="o">=</span><span class="mi">2</span> <span class="o">-</span><span class="n">l</span> <span class="n">h_rt</span><span class="o">=</span><span class="mi">01</span><span class="p">:</span><span class="mi">00</span><span class="p">:</span><span class="mi">0</span>
+<span class="p">[</span><span class="n">username</span><span class="err">@</span><span class="n">a0000</span> <span class="o">~</span><span class="p">]</span><span class="o">$</span> <span class="n">module</span> <span class="nb">load</span> <span class="n">hpcx</span><span class="o">/</span><span class="mf">2.11</span>
+<span class="p">[</span><span class="n">username</span><span class="err">@</span><span class="n">a0000</span> <span class="o">~</span><span class="p">]</span><span class="o">$</span> <span class="n">mpirun</span> <span class="o">-</span><span class="n">np</span> <span class="mi">2</span> <span class="o">-</span><span class="n">map</span><span class="o">-</span><span class="n">by</span> <span class="n">ppr</span><span class="p">:</span><span class="mi">1</span><span class="p">:</span><span class="n">node</span> <span class="o">-</span><span class="n">hostfile</span> <span class="o">$</span><span class="n">SGE_JOB_HOSTLIST</span> <span class="o">./</span><span class="n">hello_c</span>
+<span class="n">Hello</span><span class="p">,</span> <span class="n">world</span><span class="p">,</span> <span class="n">I</span> <span class="n">am</span> <span class="mi">0</span> <span class="n">of</span> <span class="mi">2</span><span class="p">,</span> <span class="p">(</span><span class="n">Open</span> <span class="n">MPI</span> <span class="n">v4</span><span class="o">.</span><span class="mf">1.4</span><span class="n">rc1</span><span class="p">,</span> <span class="n">package</span><span class="p">:</span> <span class="n">Open</span> <span class="n">MPI</span> <span class="n">root</span><span class="err">@</span><span class="n">hpc</span><span class="o">-</span><span class="n">kernel</span><span class="o">-</span><span class="mi">03</span> <span class="n">Distribution</span><span class="p">,</span> <span class="n">ident</span><span class="p">:</span> <span class="mf">4.1</span><span class="o">.</span><span class="mi">4</span><span class="n">rc1</span><span class="p">,</span> <span class="n">repo</span> <span class="n">rev</span><span class="p">:</span> <span class="n">v4</span><span class="o">.</span><span class="mf">1.4</span><span class="n">rc1</span><span class="p">,</span> <span class="n">Unreleased</span> <span class="n">developer</span> <span class="n">copy</span><span class="p">,</span> <span class="mi">135</span><span class="p">)</span>
+<span class="n">Hello</span><span class="p">,</span> <span class="n">world</span><span class="p">,</span> <span class="n">I</span> <span class="n">am</span> <span class="mi">1</span> <span class="n">of</span> <span class="mi">2</span><span class="p">,</span> <span class="p">(</span><span class="n">Open</span> <span class="n">MPI</span> <span class="n">v4</span><span class="o">.</span><span class="mf">1.4</span><span class="n">rc1</span><span class="p">,</span> <span class="n">package</span><span class="p">:</span> <span class="n">Open</span> <span class="n">MPI</span> <span class="n">root</span><span class="err">@</span><span class="n">hpc</span><span class="o">-</span><span class="n">kernel</span><span class="o">-</span><span class="mi">03</span> <span class="n">Distribution</span><span class="p">,</span> <span class="n">ident</span><span class="p">:</span> <span class="mf">4.1</span><span class="o">.</span><span class="mi">4</span><span class="n">rc1</span><span class="p">,</span> <span class="n">repo</span> <span class="n">rev</span><span class="p">:</span> <span class="n">v4</span><span class="o">.</span><span class="mf">1.4</span><span class="n">rc1</span><span class="p">,</span> <span class="n">Unreleased</span> <span class="n">developer</span> <span class="n">copy</span><span class="p">,</span> <span class="mi">135</span><span class="p">)</span>
+</code></pre></div>
+
+<p>NVIDIA HPC-X provides the NCCL-SHARP plug-in.
+The plug-in supports different versions of NCCL for different versions of HPC-X.
+See the table below for compatibility between HPC-X and NCCL.</p>
+<table>
+<thead>
+<tr>
+<th align="left">HPC-X Version</th>
+<th align="left">NCCL Version</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">2.11</td>
+<td align="left">2.8、2.9、2.10、2.11</td>
+</tr>
+</tbody>
+</table>
+<p>For information on how to use SHARP and the NCCL-SHARP plug-in, see <a href="../tips/sharp/">Using SHARP</a>.</p>
+<p>For more information about NVIDIA HPC-X, please refer to <a href="https://docs.nvidia.com/networking/category/hpcx">the official documentation</a>.</p>
 <h2 id="open-mpi">Open MPI</h2>
 <p>Compute Node (V):</p>
 <table>

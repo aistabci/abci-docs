@@ -1288,7 +1288,7 @@ This procedure shows how to create a Singularity image file using pull.</p>
 <span class="p">[</span><span class="n">username</span><span class="err">@</span><span class="n">es1</span> <span class="n">singularity</span><span class="p">]</span><span class="n">$</span>
 </code></pre></div>
 
-<p>If the output destination of the image file (ubuntunt.sif) is set to the group area (/groups1, /groups2) in the above command, an error occurs. In this case, it is possible to avoid the problem by executing the <code>newgrp</code> command after checking the ownership group of the image destination group area with <code>id</code> command as follows.
+<p>If the output destination of the image file (ubuntunt.sif) is set to the group area in the above command, an error occurs. In this case, it is possible to avoid the problem by executing the <code>newgrp</code> command after checking the ownership group of the image destination group area with <code>id</code> command as follows.
 In the example below, <code>gaa00000</code> is the owning group of the image destination group area.</p>
 <div class="codehilite"><pre><span></span><code><span class="o">[</span><span class="n">username@es1 groupname</span><span class="o">]</span><span class="err">$</span><span class="w"> </span><span class="n">id</span><span class="w"> </span><span class="o">-</span><span class="n">a</span><span class="w"></span>
 <span class="n">uid</span><span class="o">=</span><span class="mi">0000</span><span class="p">(</span><span class="n">aaa00000aa</span><span class="p">)</span><span class="w"> </span><span class="n">gid</span><span class="o">=</span><span class="mi">0000</span><span class="p">(</span><span class="n">aaa00000aa</span><span class="p">)</span><span class="w"> </span><span class="n">groups</span><span class="o">=</span><span class="mi">0000</span><span class="p">(</span><span class="n">aaa00000aa</span><span class="p">),</span><span class="mi">00000</span><span class="p">(</span><span class="n">gaa00000</span><span class="p">)</span><span class="w"></span>
@@ -1311,7 +1311,7 @@ You can also use the <code>singularity run</code> command to run a container ima
 <span class="c1">#$-l rt_F=1</span>
 <span class="c1">#$-j y</span>
 <span class="n">source</span> <span class="o">/</span><span class="n">etc</span><span class="o">/</span><span class="n">profile</span><span class="o">.</span><span class="n">d</span><span class="o">/</span><span class="n">modules</span><span class="o">.</span><span class="n">sh</span>
-<span class="n">module</span> <span class="nb">load</span> <span class="n">singularitypro</span> <span class="n">openmpi</span><span class="o">/</span><span class="mf">3.1</span><span class="o">.</span><span class="mi">6</span>
+<span class="n">module</span> <span class="nb">load</span> <span class="n">singularitypro</span> <span class="n">openmpi</span><span class="o">/</span><span class="mf">4.0</span><span class="o">.</span><span class="mi">5</span>
 
 <span class="n">mpiexec</span> <span class="o">-</span><span class="n">n</span> <span class="mi">4</span> <span class="n">singularity</span> <span class="n">exec</span> <span class="o">--</span><span class="n">nv</span> <span class="o">./</span><span class="n">caffe2</span><span class="o">.</span><span class="n">img</span> \
     <span class="n">python</span> <span class="n">sample</span><span class="o">.</span><span class="n">py</span>
@@ -1374,7 +1374,7 @@ You can manually convert Dockerfile, but using <a href="https://singularityhub.g
 If <code>singularity build</code> fails when the generated Singularity recipe file is used, modify the recipe file manually.</p>
 </div>
 <p>Example procedure for installing Singularity Python)</p>
-<div class="codehilite"><pre><span></span><code><span class="p">[</span><span class="n">username</span><span class="err">@</span><span class="n">es1</span> <span class="o">~</span><span class="p">]</span><span class="o">$</span> <span class="n">module</span> <span class="nb">load</span> <span class="n">python</span><span class="o">/</span><span class="mf">3.6</span><span class="o">/</span><span class="mf">3.6</span><span class="o">.</span><span class="mi">12</span>
+<div class="codehilite"><pre><span></span><code><span class="p">[</span><span class="n">username</span><span class="err">@</span><span class="n">es1</span> <span class="o">~</span><span class="p">]</span><span class="o">$</span> <span class="n">module</span> <span class="nb">load</span> <span class="n">gcc</span><span class="o">/</span><span class="mf">9.3</span><span class="o">.</span><span class="mi">0</span> <span class="n">python</span><span class="o">/</span><span class="mf">3.10</span>
 <span class="p">[</span><span class="n">username</span><span class="err">@</span><span class="n">es1</span> <span class="o">~</span><span class="p">]</span><span class="o">$</span> <span class="n">python3</span> <span class="o">-</span><span class="n">m</span> <span class="n">venv</span> <span class="n">work</span>
 <span class="p">[</span><span class="n">username</span><span class="err">@</span><span class="n">es1</span> <span class="o">~</span><span class="p">]</span><span class="o">$</span> <span class="n">source</span> <span class="n">work</span><span class="o">/</span><span class="n">bin</span><span class="o">/</span><span class="n">activate</span>
 <span class="p">(</span><span class="n">work</span><span class="p">)</span> <span class="p">[</span><span class="n">username</span><span class="err">@</span><span class="n">es1</span> <span class="o">~</span><span class="p">]</span><span class="o">$</span> <span class="n">pip3</span> <span class="n">install</span> <span class="n">spython</span>
@@ -1387,7 +1387,7 @@ To avoid the problem, this example modifies the Singularity recipe as described 
 <li>Files in WORKDIR will not be copied =&gt; Set the copy destination to the absolute path of WORKDIR</li>
 <li>No path to pip =&gt; Add a setting to take over environment variables available in Docker image</li>
 </ul>
-<div class="codehilite"><pre><span></span><code><span class="p">[</span><span class="n">username</span><span class="err">@</span><span class="n">es1</span> <span class="o">~</span><span class="p">]</span><span class="n">$</span> <span class="k">module</span> <span class="n">load</span> <span class="n">python</span><span class="o">/</span><span class="mf">3.6</span><span class="o">/</span><span class="mf">3.6.12</span>
+<div class="codehilite"><pre><span></span><code><span class="p">[</span><span class="n">username</span><span class="err">@</span><span class="n">es1</span> <span class="o">~</span><span class="p">]</span><span class="n">$</span> <span class="k">module</span> <span class="n">load</span> <span class="n">gcc</span><span class="o">/</span><span class="mf">9.3.0</span> <span class="n">python</span><span class="o">/</span><span class="mf">3.10</span>
 <span class="p">[</span><span class="n">username</span><span class="err">@</span><span class="n">es1</span> <span class="o">~</span><span class="p">]</span><span class="n">$</span> <span class="n">source</span> <span class="n">work</span><span class="o">/</span><span class="n">bin</span><span class="o">/</span><span class="n">activate</span>
 <span class="p">(</span><span class="n">work</span><span class="p">)</span> <span class="p">[</span><span class="n">username</span><span class="err">@</span><span class="n">es1</span> <span class="o">~</span><span class="p">]</span><span class="n">$</span> <span class="n">git</span> <span class="n">clone</span> <span class="nl">https</span><span class="p">:</span><span class="c1">//github.com/NVIDIA/DeepLearningExamples</span>
 <span class="p">(</span><span class="n">work</span><span class="p">)</span> <span class="p">[</span><span class="n">username</span><span class="err">@</span><span class="n">es1</span> <span class="o">~</span><span class="p">]</span><span class="n">$</span> <span class="n">cd</span> <span class="n">DeepLearningExamples</span><span class="o">/</span><span class="n">PyTorch</span><span class="o">/</span><span class="n">Detection</span><span class="o">/</span><span class="n">SSD</span>
@@ -1395,37 +1395,38 @@ To avoid the problem, this example modifies the Singularity recipe as described 
 <span class="p">(</span><span class="n">work</span><span class="p">)</span> <span class="p">[</span><span class="n">username</span><span class="err">@</span><span class="n">es1</span> <span class="n">SSD</span><span class="p">]</span><span class="n">$</span> <span class="n">cp</span> <span class="o">-</span><span class="n">p</span> <span class="n">ssd</span><span class="p">.</span><span class="n">def</span> <span class="n">ssd_org</span><span class="p">.</span><span class="n">def</span>
 <span class="p">(</span><span class="n">work</span><span class="p">)</span> <span class="p">[</span><span class="n">username</span><span class="err">@</span><span class="n">es1</span> <span class="n">SSD</span><span class="p">]</span><span class="n">$</span> <span class="n">vi</span> <span class="n">ssd</span><span class="p">.</span><span class="n">def</span>
 <span class="nl">Bootstrap</span><span class="p">:</span> <span class="n">docker</span>
-<span class="nl">From</span><span class="p">:</span> <span class="n">nvcr</span><span class="p">.</span><span class="n">io</span><span class="o">/</span><span class="n">nvidia</span><span class="o">/</span><span class="nl">pytorch</span><span class="p">:</span><span class="mf">20.06</span><span class="o">-</span><span class="n">py3</span>
+<span class="nl">From</span><span class="p">:</span> <span class="n">nvcr</span><span class="p">.</span><span class="n">io</span><span class="o">/</span><span class="n">nvidia</span><span class="o">/</span><span class="nl">pytorch</span><span class="p">:</span><span class="mf">21.05</span><span class="o">-</span><span class="n">py3</span>
 <span class="nl">Stage</span><span class="p">:</span> <span class="n">spython</span><span class="o">-</span><span class="n">base</span>
 
 <span class="nf">%files</span>
-<span class="n">requirements</span><span class="p">.</span><span class="n">txt</span> <span class="o">/</span><span class="n">workspace</span>                     <span class="o">&lt;-</span> <span class="n">Change</span> <span class="n">path</span>
-<span class="p">.</span><span class="o">/</span><span class="n">setup</span><span class="p">.</span><span class="n">py</span> <span class="o">/</span><span class="n">workspace</span>                           <span class="o">&lt;-</span> <span class="n">Change</span> <span class="n">path</span>
-<span class="p">.</span><span class="o">/</span><span class="n">csrc</span> <span class="o">/</span><span class="n">workspace</span><span class="o">/</span><span class="n">csrc</span>                          <span class="o">&lt;-</span> <span class="n">Change</span> <span class="n">path</span>
-<span class="p">.</span> <span class="o">/</span><span class="n">workspace</span>                                    <span class="o">&lt;-</span> <span class="n">Change</span> <span class="n">path</span>
+<span class="n">requirements</span><span class="p">.</span><span class="n">txt</span> <span class="o">/</span><span class="n">workspace</span><span class="o">/</span><span class="n">ssd</span><span class="o">/</span>  <span class="err">#</span><span class="o">&lt;-</span> <span class="n">copy</span> <span class="n">to</span> <span class="n">WORKDIR</span> <span class="n">directory</span><span class="p">.</span>
+<span class="p">.</span> <span class="o">/</span><span class="n">workspace</span><span class="o">/</span><span class="n">ssd</span><span class="o">/</span>                 <span class="err">#</span><span class="o">&lt;-</span> <span class="n">copy</span> <span class="n">to</span> <span class="n">WORKDIR</span> <span class="n">directory</span><span class="p">.</span>
 <span class="nf">%post</span>
-<span class="n">FROM_IMAGE_NAME</span><span class="o">=</span><span class="n">nvcr</span><span class="p">.</span><span class="n">io</span><span class="o">/</span><span class="n">nvidia</span><span class="o">/</span><span class="nl">pytorch</span><span class="p">:</span><span class="mf">20.06</span><span class="o">-</span><span class="n">py3</span>
-<span class="p">.</span> <span class="o">/</span><span class="p">.</span><span class="n">singularity</span><span class="p">.</span><span class="n">d</span><span class="o">/</span><span class="n">env</span><span class="o">/</span><span class="mi">10</span><span class="o">-</span><span class="n">docker2singularity</span><span class="p">.</span><span class="n">sh</span>  <span class="o">&lt;-</span> <span class="n">Add</span>
+<span class="n">FROM_IMAGE_NAME</span><span class="o">=</span><span class="n">nvcr</span><span class="p">.</span><span class="n">io</span><span class="o">/</span><span class="n">nvidia</span><span class="o">/</span><span class="nl">pytorch</span><span class="p">:</span><span class="mf">21.05</span><span class="o">-</span><span class="n">py3</span>
 
 <span class="cp"># Set working directory</span>
-<span class="n">cd</span> <span class="o">/</span><span class="n">workspace</span>
+<span class="n">cd</span> <span class="o">/</span><span class="n">workspace</span><span class="o">/</span><span class="n">ssd</span>
 
-<span class="n">PYTHONPATH</span><span class="o">=</span><span class="s">&quot;${PYTHONPATH}:/workspace&quot;</span>
-
+<span class="cp"># Install nv-cocoapi</span>
+<span class="n">COCOAPI_VERSION</span><span class="o">=</span><span class="mf">2.0</span><span class="o">+</span><span class="n">nv0</span><span class="mf">.6.0</span>
+<span class="k">export</span> <span class="n">COCOAPI_TAG</span><span class="o">=</span><span class="n">$</span><span class="p">(</span><span class="n">echo</span> <span class="n">$</span><span class="p">{</span><span class="n">COCOAPI_VERSION</span><span class="p">}</span> <span class="o">|</span> <span class="n">sed</span> <span class="err">&#39;</span><span class="n">s</span><span class="o">/^</span><span class="p">.</span><span class="o">*+</span><span class="n">n</span><span class="c1">//&#39;) \</span>
+<span class="c1">&amp;&amp; pip install --no-cache-dir pybind11                             \</span>
+<span class="c1">&amp;&amp; pip install --no-cache-dir git+https://github.com/NVIDIA/cocoapi.git@${COCOAPI_TAG}#subdirectory=PythonAPI</span>
+<span class="cp"># Install dllogger</span>
 <span class="n">pip</span> <span class="n">install</span> <span class="o">--</span><span class="n">no</span><span class="o">-</span><span class="n">cache</span><span class="o">-</span><span class="n">dir</span> <span class="n">git</span><span class="o">+</span><span class="nl">https</span><span class="p">:</span><span class="c1">//github.com/NVIDIA/dllogger.git#egg=dllogger</span>
+
+<span class="cp"># Install requirements</span>
 <span class="n">pip</span> <span class="n">install</span> <span class="o">-</span><span class="n">r</span> <span class="n">requirements</span><span class="p">.</span><span class="n">txt</span>
 <span class="n">python3</span> <span class="o">-</span><span class="n">m</span> <span class="n">pip</span> <span class="n">install</span> <span class="n">pycocotools</span><span class="o">==</span><span class="mf">2.0.0</span>
-
-<span class="cp"># Copy SSD code</span>
-<span class="n">pip</span> <span class="n">install</span> <span class="p">.</span>
+<span class="n">mkdir</span> <span class="n">models</span> <span class="err">#</span><span class="o">&lt;-</span> <span class="n">Requires</span> <span class="n">to</span> <span class="n">run</span> <span class="n">main</span><span class="p">.</span><span class="n">py</span>
 
 <span class="nf">%environment</span>
-<span class="k">export</span> <span class="n">PYTHONPATH</span><span class="o">=</span><span class="s">&quot;${PYTHONPATH}:/workspace&quot;</span>
+<span class="k">export</span> <span class="n">COCOAPI_VERSION</span><span class="o">=</span><span class="mf">2.0</span><span class="o">+</span><span class="n">nv0</span><span class="mf">.6.0</span>
 <span class="nf">%runscript</span>
-<span class="n">cd</span> <span class="o">/</span><span class="n">workspace</span>
+<span class="n">cd</span> <span class="o">/</span><span class="n">workspace</span><span class="o">/</span><span class="n">ssd</span>
 <span class="n">exec</span> <span class="o">/</span><span class="n">bin</span><span class="o">/</span><span class="n">bash</span> <span class="s">&quot;$@&quot;</span>
 <span class="nf">%startscript</span>
-<span class="n">cd</span> <span class="o">/</span><span class="n">workspace</span>
+<span class="n">cd</span> <span class="o">/</span><span class="n">workspace</span><span class="o">/</span><span class="n">ssd</span>
 <span class="n">exec</span> <span class="o">/</span><span class="n">bin</span><span class="o">/</span><span class="n">bash</span> <span class="s">&quot;$@&quot;</span>
 </code></pre></div>
 

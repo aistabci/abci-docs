@@ -972,22 +972,8 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#q-the-group-area-is-consumed-more-than-the-actual-size" class="md-nav__link">
-    Q. The Group Area is consumed more than the actual size
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
   <a href="#q-singularity-cannot-use-container-registries-that-require-authentication" class="md-nav__link">
     Q. Singularity cannot use container registries that require authentication
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#q-ngc-cli-cannot-be-executed" class="md-nav__link">
-    Q. NGC CLI cannot be executed
   </a>
   
 </li>
@@ -1002,13 +988,6 @@
         <li class="md-nav__item">
   <a href="#q-i-want-to-avoid-to-close-ssh-session-unexpectedly" class="md-nav__link">
     Q. I want to avoid to close SSH session unexpectedly
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#q-i-want-to-use-a-newer-version-of-open-mpi" class="md-nav__link">
-    Q. I want to use a newer version of Open MPI
   </a>
   
 </li>
@@ -1287,9 +1266,6 @@
 </code></pre></div>
 
 <p>Executing while logged in to the interactive node has the same effect.</p>
-<h2 id="q-the-group-area-is-consumed-more-than-the-actual-size">Q. The Group Area is consumed more than the actual size</h2>
-<p>Generally, any file systems have their own block size, and even the smallest file consumes the capacity of the block size.</p>
-<p>ABCI sets the block size of the Group Area 1,2,3 to 128 KB and the block size of the home area and Group Area to 4 KB. For this reason, if a large number of small files are created in the Group Area 1,2,3 , usage efficiency will be reduced. For example, if you want to create a file that is less than 4KB in the Group Area, you need about 32 times the capacity of the home area.</p>
 <h2 id="q-singularity-cannot-use-container-registries-that-require-authentication">Q. Singularity cannot use container registries that require authentication</h2>
 <p>SingularityPRO has a function equivalent to <code>docker login</code> that provides authentication information with environment variables.</p>
 <div class="codehilite"><pre><span></span><code><span class="o">[</span>username@es1 ~<span class="o">]</span>$ <span class="nb">export</span> <span class="nv">SINGULARITY_DOCKER_USERNAME</span><span class="o">=</span><span class="s1">&#39;username&#39;</span>
@@ -1304,29 +1280,9 @@
 </ul>
 </li>
 </ul>
-<h2 id="q-ngc-cli-cannot-be-executed">Q. NGC CLI cannot be executed</h2>
-<p>When running <a href="https://docs.nvidia.com/ngc/ngc-catalog-cli-user-guide/index.html">NGC Catalog CLI</a> on ABCI, the following error message appears and execution is not possible. This is because the NGC CLI is built for Ubuntu 14.04 and later.</p>
-<div class="codehilite"><pre><span></span><code>ImportError: /lib64/libc.so.6: version `GLIBC_2.18&#39; not found (required by /tmp/_MEIxvHq8h/libstdc++.so.6)
-[89261] Failed to execute script ngc
-</code></pre></div>
-
-<p>By preparing the following shell script, it can be executed using Singularity. This technique can be used not only for NGC CLI but also for general use.</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">1</span>
-<span class="normal">2</span>
-<span class="normal">3</span>
-<span class="normal">4</span>
-<span class="normal">5</span>
-<span class="normal">6</span></pre></div></td><td class="code"><div class="codehilite"><pre><span></span><code><span class="ch">#!/bin/sh</span>
-<span class="nb">source</span> /etc/profile.d/modules.sh
-module load singularitypro
-
-<span class="nv">NGC_HOME</span><span class="o">=</span><span class="nv">$HOME</span>/ngc
-singularity <span class="nb">exec</span> <span class="nv">$NGC_HOME</span>/ubuntu-18.04.simg <span class="nv">$NGC_HOME</span>/ngc <span class="nv">$@</span>
-</code></pre></div>
-</td></tr></table>
 <h2 id="q-i-want-to-assign-multiple-compute-nodes-and-have-each-compute-node-perform-different-processing">Q. I want to assign multiple compute nodes and have each compute node perform different processing</h2>
 <p>If you give <code>-l rt_F=N</code> or <code>-l rt_AF=N</code> option to <code>qrsh</code> or <code>qsub</code>, you can assign N compute nodes. You can also use MPI if you want to perform different processing on each assigned compute node.</p>
-<div class="codehilite"><pre><span></span><code><span class="o">$</span> <span class="n">module</span> <span class="nb">load</span> <span class="n">openmpi</span><span class="o">/</span><span class="mf">2.1</span><span class="o">.</span><span class="mi">6</span>
+<div class="codehilite"><pre><span></span><code><span class="o">$</span> <span class="n">module</span> <span class="nb">load</span> <span class="n">openmpi</span><span class="o">/</span><span class="mf">4.1</span><span class="o">.</span><span class="mi">3</span>
 <span class="o">$</span> <span class="n">mpirun</span> <span class="o">-</span><span class="n">hostfile</span> <span class="o">$</span><span class="n">SGE_JOB_HOSTLIST</span> <span class="o">-</span><span class="n">np</span> <span class="mi">1</span> <span class="n">command1</span> <span class="p">:</span> <span class="o">-</span><span class="n">np</span> <span class="mi">1</span> <span class="n">command2</span> <span class="p">:</span> <span class="o">...</span> <span class="p">:</span> <span class="o">-</span><span class="n">np1</span> <span class="n">commandN</span>
 </code></pre></div>
 
@@ -1345,41 +1301,6 @@ singularity <span class="nb">exec</span> <span class="nv">$NGC_HOME</span>/ubunt
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>The default value of ServerAliveInterval is 0 (no KeepAlive).</p>
-</div>
-<h2 id="q-i-want-to-use-a-newer-version-of-open-mpi">Q. I want to use a newer version of Open MPI</h2>
-<p>ABCI offers CUDA-aware and CUDA non-aware versions of Open MPI, and you can check the availability provided by <a href="../mpi/#open-mpi">Open MPI</a>.</p>
-<p>The Environment Modules provided by ABCI will attempt to configure CUDA-aware Open MPI environment when loading <code>openmpi</code> module only if <code>cuda</code> module has been loaded beforehand.</p>
-<p>For the combination where CUDA-aware MPI is provided (<code>cuda/10.0/10.0.130.1</code>, <code>openmpi/2.1.6</code>), therefore, the environment settings will succeed:</p>
-<div class="codehilite"><pre><span></span><code><span class="o">$</span> <span class="n">module</span> <span class="nb">load</span> <span class="n">cuda</span><span class="o">/</span><span class="mf">10.0</span><span class="o">/</span><span class="mf">10.0</span><span class="o">.</span><span class="mf">130.1</span>
-<span class="o">$</span> <span class="n">module</span> <span class="nb">load</span> <span class="n">openmpi</span><span class="o">/</span><span class="mf">2.1</span><span class="o">.</span><span class="mi">6</span>
-<span class="o">$</span> <span class="n">module</span> <span class="n">list</span>
-<span class="n">Currently</span> <span class="n">Loaded</span> <span class="n">Modulefiles</span><span class="p">:</span>
-  <span class="mi">1</span><span class="p">)</span> <span class="n">cuda</span><span class="o">/</span><span class="mf">10.0</span><span class="o">/</span><span class="mf">10.0</span><span class="o">.</span><span class="mf">130.1</span>   <span class="mi">2</span><span class="p">)</span> <span class="n">openmpi</span><span class="o">/</span><span class="mf">2.1</span><span class="o">.</span><span class="mi">6</span>
-</code></pre></div>
-
-<p>For the combination where CUDA-aware MPI is not provided (<code>cuda/9.1/9.1.85.3</code>, <code>openmpi/3.1.6</code>), the environment setup will fail and <code>openmpi</code> module will not be loaded:</p>
-<div class="codehilite"><pre><span></span><code><span class="o">$</span> <span class="n">module</span> <span class="nb">load</span> <span class="n">cuda</span><span class="o">/</span><span class="mf">9.1</span><span class="o">/</span><span class="mf">9.1</span><span class="o">.</span><span class="mf">85.3</span>
-<span class="o">$</span> <span class="n">module</span> <span class="nb">load</span> <span class="n">openmpi</span><span class="o">/</span><span class="mf">3.1</span><span class="o">.</span><span class="mi">6</span>
-<span class="n">ERROR</span><span class="p">:</span> <span class="n">loaded</span> <span class="n">cuda</span> <span class="n">module</span> <span class="k">is</span> <span class="ow">not</span> <span class="n">supported</span><span class="o">.</span>
-<span class="n">WARNING</span><span class="p">:</span> <span class="n">openmpi</span><span class="o">/</span><span class="mf">3.1</span><span class="o">.</span><span class="mi">6</span> <span class="n">cannot</span> <span class="n">be</span> <span class="n">loaded</span> <span class="n">due</span> <span class="n">to</span> <span class="n">missing</span> <span class="n">prereq</span><span class="o">.</span>
-<span class="n">HINT</span><span class="p">:</span> <span class="n">at</span> <span class="n">least</span> <span class="n">one</span> <span class="n">of</span> <span class="n">the</span> <span class="n">following</span> <span class="n">modules</span> <span class="n">must</span> <span class="n">be</span> <span class="n">loaded</span> <span class="n">first</span><span class="p">:</span> <span class="n">cuda</span><span class="o">/</span><span class="mf">9.2</span><span class="o">/</span><span class="mf">9.2</span><span class="o">.</span><span class="mf">88.1</span> <span class="n">cuda</span><span class="o">/</span><span class="mf">9.2</span><span class="o">/</span><span class="mf">9.2</span><span class="o">.</span><span class="mf">148.1</span> <span class="n">cuda</span><span class="o">/</span><span class="mf">10.0</span><span class="o">/</span><span class="mf">10.0</span><span class="o">.</span><span class="mf">130.1</span> <span class="n">cuda</span><span class="o">/</span><span class="mf">10.1</span><span class="o">/</span><span class="mf">10.1</span><span class="o">.</span><span class="mi">243</span> <span class="n">cuda</span><span class="o">/</span><span class="mf">10.2</span><span class="o">/</span><span class="mf">10.2</span><span class="o">.</span><span class="mi">89</span> <span class="n">cuda</span><span class="o">/</span><span class="mf">11.0</span><span class="o">/</span><span class="mf">11.0</span><span class="o">.</span><span class="mi">3</span> <span class="n">cuda</span><span class="o">/</span><span class="mf">11.1</span><span class="o">/</span><span class="mf">11.1</span><span class="o">.</span><span class="mi">1</span> <span class="n">cuda</span><span class="o">/</span><span class="mf">11.2</span><span class="o">/</span><span class="mf">11.2</span><span class="o">.</span><span class="mi">2</span>
-<span class="o">$</span> <span class="n">module</span> <span class="n">list</span>
-<span class="n">Currently</span> <span class="n">Loaded</span> <span class="n">Modulefiles</span><span class="p">:</span>
-  <span class="mi">1</span><span class="p">)</span> <span class="n">cuda</span><span class="o">/</span><span class="mf">9.1</span><span class="o">/</span><span class="mf">9.1</span><span class="o">.</span><span class="mf">85.3</span>
-</code></pre></div>
-
-<p>On the other hand, there are cases where CUDA-aware version of Open MPI is not necessary, such as when you want to use Open MPI just for parallelization by Horovod. In this case, you can use a newer version of Open MPI that does not support CUDA-aware functions by loading <code>openmpi</code> module first.</p>
-<div class="codehilite"><pre><span></span><code><span class="o">$</span> <span class="n">module</span> <span class="nb">load</span> <span class="n">openmpi</span><span class="o">/</span><span class="mf">3.1</span><span class="o">.</span><span class="mi">6</span>
-<span class="o">$</span> <span class="n">module</span> <span class="nb">load</span> <span class="n">cuda</span><span class="o">/</span><span class="mf">9.1</span><span class="o">/</span><span class="mf">9.1</span><span class="o">.</span><span class="mf">85.3</span>
-<span class="n">module</span> <span class="n">list</span>
-<span class="n">Currently</span> <span class="n">Loaded</span> <span class="n">Modulefiles</span><span class="p">:</span>
-  <span class="mi">1</span><span class="p">)</span> <span class="n">openmpi</span><span class="o">/</span><span class="mf">3.1</span><span class="o">.</span><span class="mi">6</span>       <span class="mi">2</span><span class="p">)</span> <span class="n">cuda</span><span class="o">/</span><span class="mf">9.1</span><span class="o">/</span><span class="mf">9.1</span><span class="o">.</span><span class="mf">85.3</span>
-</code></pre></div>
-
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>The functions of CUDA-aware versions of Open MPI can be found on the Open MPI site:
-<a href="https://www.open-mpi.org/faq/?category=runcuda">FAQ: Running CUDA-aware Open MPI</a></p>
 </div>
 <h2 id="q-i-want-to-know-how-abci-job-execution-environment-is-congested">Q. I want to know how ABCI job execution environment is congested</h2>
 <p>ABCI operates a web service that visualizes job congestion status as well as utilization of compute nodes, power consumption of the whole datacenter, PUE, cooling facility, etc.

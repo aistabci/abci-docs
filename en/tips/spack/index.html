@@ -1373,7 +1373,7 @@ Spack, by default, installs another copies of software which is already supporte
 As it is a waste of disk space, we recommend to configure Spack to <em>refer to</em> software supported by ABCI.</p>
 <p>Software referred by Spack can be defined in the configuration file <code>$HOME/.spack/linux/packages.yaml</code>.
 ABCI provides a pre-configured <code>packages.yaml</code> which defines mappings of Spack package and software installed on ABCI.
-Copying this file to your environment lets Spack use installed CUDA, OpenMPI, MVAPICH, cmake and etc.</p>
+Copying this file to your environment lets Spack use installed CUDA, OpenMPI, cmake and etc.</p>
 <p>Compute Node (V)</p>
 <div class="codehilite"><pre><span></span><code><span class="gp">[username@es1 ~]$ </span>cp /apps/spack/vnode/packages.yaml <span class="si">${</span><span class="nv">HOME</span><span class="si">}</span>/.spack/linux/
 </code></pre></div>
@@ -1407,10 +1407,6 @@ Copying this file to your environment lets Spack use installed CUDA, OpenMPI, MV
 <p>After you copy this file, when you let Spack install CUDA version 10.2.89, it use <code>cuda/10.2/10.2.89</code> environment module, instead of installing another copy of CUDA.
 <code>buildable: false</code> defined under CUDA section prohibits Spack to install other versions of CUDA specified here.
 If you let Spack install versions of CUDA which are not supported by ABCI, remove this directive.</p>
-<p>Because of an interpretation bug of package dependencies in <code>packages.yaml</code> of the current Spack, CUDA-aware OpenMPI supported by ABCI can not be registered.
-Therefore, <code>packages.yaml</code> provided by ABCI is configured to register only non-CUDA-aware OpenMPI.
-Moreover, installing a CUDA-aware OpenMPI whose version is same as a version of a registered non-CUDA-aware OpenMPI will fail.
-To avoid the failure, you need to install a version which is not registered in <code>packages.yaml</code> or remove the corresponding version from <code>packages.yaml</code>.</p>
 <p>Please refer to <a href="https://spack.readthedocs.io/en/latest/build_settings.html">the official document</a> for detail about <code>packages.yaml</code>.</p>
 <h2 id="basic-of-spack">Basic of Spack</h2>
 <p>Here is the Spack basic usage.
@@ -1575,8 +1571,6 @@ To switch to another environment, type <code>spack env activate</code> to activa
 
 <h2 id="example-of-use">Example of Use</h2>
 <h3 id="cuda-aware-openmpi">CUDA-aware OpenMPI</h3>
-<p>ABCI provides software modules of CUDA-aware OpenMPI, however, they do not support all the combinations of compilers, CUDA and OpenMPI versions (<a href="https://docs.abci.ai/en/08/#open-mpi">Reference</a>).
-It is easy to use Spack to install unsupported versions of CUDA-aware OpenMPI.</p>
 <h4 id="how-to-install">How to Install</h4>
 <p>This is an example of installing OpenMPI 3.1.1 that uses CUDA 10.1.243.
 You have to use a compute node to install it.</p>
@@ -1590,7 +1584,7 @@ You have to use a compute node to install it.</p>
 </code></pre></div>
 
 <p>Line #1 installs CUDA version <code>10.1.243</code> so that Spack uses a CUDA provided by ABCI.
-Line #2 installs OpenMPI 3.1.1 as the same configuration with <a href="../../appendix/installed-software/#open-mpi">this page</a>.
+Line #2 installs OpenMPI 3.1.1 as the same configuration with <a href="../../appendix/installed-software/#open-mpi">Configuration of Installed Software</a>.
 Meanings of the installation options are as follows.</p>
 <ul>
 <li><code>+cuda</code>: Build with CUDA support</li>
@@ -1639,8 +1633,7 @@ mpiexec <span class="si">${</span><span class="nv">MPIOPTS</span><span class="si
 </code></pre></div>
 
 <h3 id="cuda-aware-mvapich2">CUDA-aware MVAPICH2</h3>
-<p>MVAPICH2 modules provided by ABCI does not support CUDA.
-If you want to use CUDA-aware MVAPICH2, install by yourself referring to the documents below.</p>
+<p>If you want to use CUDA-aware MVAPICH2, install by yourself referring to the documents below.</p>
 <p>You have to use a compute node to build CUDA-aware MVAPICH2.
 As with <a href="#cuda-aware-openmpi">OpenMPI</a> above, you first install CUDA and then install MVAPICH2 by enabling CUDA (<code>+cuda</code>) and specifying a communication library (<code>fabrics=mrail</code>) and CUDA dependency (<code>^cuda@10.1.243</code>).</p>
 <div class="codehilite"><pre><span></span><code><span class="gp">[username@g0001 ~]$ </span>spack install cuda@10.1.243
