@@ -9,23 +9,22 @@ Jupyter Notebookは、コードの記述とその結果の取得を、ブラウ�
 ### インストール {#install-by-pip}
 
 計算ノードを一台占有し、Python仮想環境を作成し、`pip`で`tensorflow`と`jupyter`をインストールします。
+この例では`~/jupyter_env`ディレクトリの中にインストールしています。
 
 ```
 [username@es1 ~]$ qrsh -g grpname -l rt_F=1 -l h_rt=1:00:00
-[username@g0001 ~]$ module load python/3.6/3.6.12 cuda/11.0/11.0.3 cudnn/8.1/8.1.1 gcc/7.4.0
+[username@g0001 ~]$ module load gcc/9.3.0 python/3.10 cuda/11.2 cudnn/8.1
 [username@g0001 ~]$ python3 -m venv ~/jupyter_env
 [username@g0001 ~]$ source ~/jupyter_env/bin/activate
-(jupyter_env) [username@g0001 ~]$ pip3 install tensorflow jupyter numpy
+(jupyter_env) [username@g0001 ~]$ python3 -m pip install --upgrade pip
+(jupyter_env) [username@g0001 ~]$ python3 -m pip install tensorflow jupyter numpy
 ```
-
-!!! note
-    この例では`~/jupyter_env`ディレクトリの中にインストールしています。
 
 次回以降は、以下のようにモジュールの読み込みと`~/jupyter_env`のアクティベートだけで済みます。
 
 ```
 [username@es1 ~]$ qrsh -g grpname -l rt_F=1 -l h_rt=1:00:00
-[username@g0001 ~]$ module load python/3.6/3.6.12 cuda/11.0/11.0.3 cudnn/8.1/8.1.1 gcc/7.4.0
+[username@g0001 ~]$ module load gcc/9.3.0 python/3.10 cuda/11.2 cudnn/8.1
 [username@g0001 ~]$ source ~/jupyter_env/bin/activate
 ```
 
@@ -81,10 +80,8 @@ http://127.0.0.1:8888/?token=token_string
 ```
 import tensorflow
 print(tensorflow.__version__)
-print(tensorflow.test.is_gpu_available())
+print(tensorflow.config.list_physical_devices('GPU'))
 ```
-
-``is_gpu_available()``は、cuDNNライブラリを認識できない場合もFalseを返します。
 
 Jupyter Notebookの使い方は、[Jupyter Notebook Documentation](https://jupyter-notebook.readthedocs.io/en/stable/examples/Notebook/Notebook%20Basics.html)を参照してください。
 
@@ -92,9 +89,9 @@ Jupyter Notebookの使い方は、[Jupyter Notebook Documentation](https://jupyt
 
 以下の手順で終了します。
 
-* (ローカルPC) ダッシュボード画面の`Quit`ボタンで終了
-* (ローカルPC) 8888番ポートを転送していたSSHトンネル接続を`Control-C`で終了
-* (計算ノード) `jupyter`プログラムが終了していない場合は、`Control-C`で終了
+1. (ローカルPC) ダッシュボード画面の`Quit`ボタンで終了する
+2. (ローカルPC) 8888番ポートを転送していたSSHトンネル接続を`Control-C`で終了する
+3. (計算ノード) `jupyter`プログラムが終了していない場合は、`Control-C`で終了する
 
 ## Singularityを用いた利用手順 {#using-singularity}
 
@@ -106,16 +103,15 @@ pipインストールの代わりに、Jupyter Notebookがインストールさ�
 
 ```
 [username@es1 ~]$ module load singularitypro
-[username@es1 ~]$ singularity pull docker://nvcr.io/nvidia/tensorflow:19.07-py3
+[username@es1 ~]$ singularity pull docker://nvcr.io/nvidia/tensorflow:22.07-tf2-py3
 INFO:    Converting OCI blobs to SIF format
 INFO:    Starting build...
 Getting image source signatures
-Copying blob 5b7339215d1d done
+Copying blob a1d578e9bd9d done
 :
 (snip)
 :
 INFO:    Creating SIF file...
-INFO:    Build complete: tensorflow_19.07-py3.sif
 ```
 
 ### Jupyter Notebookの起動 {#start-jupyter-notebook_1}
@@ -132,23 +128,23 @@ g0001.abci.local
 
 ```
 [username@g0001 ~]$ module load singularitypro
-[username@g0001 ~]$ singularity run --nv ./tensorflow_19.07-py3.sif jupyter notebook --ip=`hostname` --port=8888 --no-browser
-                                                                                                                          
+[username@g0001 ~]$ singularity run --nv ./tensorflow_22.07-tf2-py3.sif jupyter notebook --ip=`hostname` --port=8888 --no-browser
+
 ================
 == TensorFlow ==
 ================
 
-NVIDIA Release 19.07 (build 7332442)
-TensorFlow Version 1.14.0
+NVIDIA Release 22.07-tf2 (build 41650896)
+TensorFlow Version 2.9.1
 
-Container image Copyright (c) 2019, NVIDIA CORPORATION.  All rights reserved.
-Copyright 2017-2019 The TensorFlow Authors.  All rights reserved.
+Container image Copyright (c) 2022, NVIDIA CORPORATION & AFFILIATES. All rights reserved.
+Copyright 2017-2022 The TensorFlow Authors.  All rights reserved.
 
 :
 (snip)
 :
-[I 13:40:14.131 NotebookApp] Use Control-C to stop this server and shut down all kernels (twice to skip confirmation).
-[C 13:40:14.138 NotebookApp]
+[I 17:34:25.645 NotebookApp] Use Control-C to stop this server and shut down all kernels (twice to skip confirmation).
+[C 17:34:25.654 NotebookApp]
 
     To access the notebook, open this file in a browser:
         file:///home/username/.local/share/jupyter/runtime/nbserver-xxxxxx-open.html

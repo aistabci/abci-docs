@@ -98,8 +98,8 @@ cuda/10.2/10.2.89(7):ERROR:150: Module 'cuda/10.2/10.2.89' conflicts with the cu
 ### モジュールの切り替え {#switch-modules}
 
 ```
-[username@g0001 ~]$ module load python/2.7/2.7.18
-[username@g0001 ~]$ module switch python/2.7/2.7.18 python/3.6/3.6.12
+[username@g0001 ~]$ module load cuda/10.2/10.2.89
+[username@g0001 ~]$ module switch cuda/10.2/10.2.89 cuda/11.0/11.0.3
 ```
 
 依存関係があると切り替えがうまくできない場合があります。
