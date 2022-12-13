@@ -1,5 +1,12 @@
 # System Updates
 
+## 2022-12-13
+
+| Add / Update / Delete | Software | Version | Previous version |
+|:--|:--|:--|:--|
+| Update | SingularityPRO | 3.9-8 | 3.9-4 |
+| Update | Singularity Endpoint | 1.7.2 | 1.2.5 |
+
 ## 2022-10-25
 
 | Add / Update / Delete | Software | Version | Previous version |
