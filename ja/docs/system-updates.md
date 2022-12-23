@@ -1,6 +1,6 @@
 # システム更新履歴
 
-## 2022-12-15
+## 2022-12-23
 
 | Add / Update / Delete | Software | Version | Previous version |
 |:--|:--|:--|:--|
