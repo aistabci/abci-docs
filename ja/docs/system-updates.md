@@ -1,5 +1,13 @@
 # システム更新履歴
 
+## 2022-12-23
+
+| Add / Update / Delete | Software | Version | Previous version |
+|:--|:--|:--|:--|
+| Add | cuda | 12.0.0 | |
+| Add | cudnn | 8.7.0 | |
+| Add | nccl | 2.16.2-1 | |
+
 ## 2022-12-13
 
 | Add / Update / Delete | Software | Version | Previous version |
