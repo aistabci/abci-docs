@@ -1,5 +1,20 @@
 # System Updates
 
+## 2022-12-23
+
+| Add / Update / Delete | Software | Version | Previous version |
+|:--|:--|:--|:--|
+| Add | cuda | 12.0.0 | |
+| Add | cudnn | 8.7.0 | |
+| Add | nccl | 2.16.2-1 | |
+
+## 2022-12-13
+
+| Add / Update / Delete | Software | Version | Previous version |
+|:--|:--|:--|:--|
+| Update | SingularityPRO | 3.9-8 | 3.9-4 |
+| Update | Singularity Endpoint | 1.7.2 | 1.2.5 |
+
 ## 2022-10-25
 
 | Add / Update / Delete | Software | Version | Previous version |
