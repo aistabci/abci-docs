@@ -196,7 +196,7 @@ ABCIシステムで利用可能なソフトウェア一覧を以下に示しま�
 | | [BeeOND](storage.md#beeond-storage) | 7.2.3 | 7.2.3 |
 | Object Storage | Scality S3 Connector | 8.5.2 | 8.5.2 |
 | Container | [Docker](containers.md#docker) | 19.03.15 | 19.03.15 |
-| | [SingularityPRO](containers.md#singularity) | 3.9-8 | 3.9-8 |
+| | [SingularityPRO](containers.md#singularity) | 3.9-9 | 3.9-9 |
 | | Singularity Endpoint | 1.7.2 | 1.7.2 |
 | MPI | [Open MPI](mpi.md#open-mpi) | 4.0.5<br>4.1.3 | 4.0.5<br>4.1.3 |
 | | [Intel MPI](mpi.md#intel-mpi) | 2021.5 | 2021.5 |
