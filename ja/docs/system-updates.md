@@ -1,5 +1,11 @@
 # システム更新履歴
 
+## 2023-01-05
+
+| Add / Update / Delete | Software | Version | Previous version |
+|:--|:--|:--|:--|
+| Update | SingularityPRO | 3.9-9 | 3.9-8 |
+
 ## 2022-12-23
 
 | Add / Update / Delete | Software | Version | Previous version |
