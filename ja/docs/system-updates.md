@@ -4,13 +4,13 @@
 
 | Add / Update / Delete | Software | Version | Previous version |
 |:--|:--|:--|:--|
-| Update | intel | 2022.3.1 | 2022.0.2 |
+| Update | intel | 2022.2.1 | 2022.0.2 |
 | Update | intel-advisor | 2022.3.1 | 2022.0 |
 | Update | intel-inspector | 2022.3.1 | 2022.0 |
 | Update | intel-itac | 2021.7.1 | 2021.5.0 |
-| Update | intel-mkl | 2022.2.1 | 2022.0.0 |
+| Update | intel-mkl | 2022.0.2 | 2022.0.0 |
 | Update | intel-vtune | 2022.4.1 | 2022.0.0 |
-| Update | intel-mpi | 2021.7.1 | 2021.5 |
+| Update | intel-mpi | 2021.7 | 2021.5 |
 
 * OneAPIの以前のバージョンでコンパイルしたモジュールについては、脆弱性が含まれている可能性があるため、新しいバージョンで再度コンパイルをお願いします。
 
