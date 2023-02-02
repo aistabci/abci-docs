@@ -2,7 +2,7 @@
 
 | date | category | content | status |
 |:--|:--|:--|:--|
-| 2023/01/31 | Application | The Intel OneAPI has been found to be vulnerable, so the commands(icpx,icpc) have been disabled. | 2023/02/03<br>Close. The vulnerability has been fixed by updating the OneAPI. Please note that modules copied with the previous version may contain vulnerabilities, so please recompile with the new version. |
+| 2023/01/31 | Application | The Intel OneAPI has been found to be vulnerable, so the commands(icpx,icpc) have been disabled. | 2023/02/03<br>Close. Updated the OneAPI to a fixed version. Please note that modules copied with the previous version may contain vulnerabilities, so please recompile with the new version. |
 | 2022/12/23 | Application | We have confirmed that the `cudnnConvolutionForward` function fails when using cuDNN 8.7.0 with CUDA 10.2 in the Compute Node (A). | We have confirmed that cuDNN 8.7.0 is available in CUDA 11.x. Please use CUDA 11.x when using cuDNN 8.7.0 in the Compute Node (A). |
 | 2022/12/13 | Singularity Endpoint | After maintenance on December 13, due to a failure in some Singularity Endpoint features (pull and Remote Build), the Singularity Endpoint is no longer operational. | 2023/01/05<br>close<br>This issue has been resolved with a SingularityPRO update. |
 | 2022/06/13 | Job | The following problems happened during 2022/06/11 21:00 and 06/13 09:48.<br> &bull; A new batch job on Compute Node (A)(V) failed to execute. <br> &bull; All of the reservations for Compute Node (A)(V) disappeared. <br>Please resubmit your batch job(s). Please recreate your reservation(s). | 2022/06/22<br> close. |
