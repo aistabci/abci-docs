@@ -1,5 +1,19 @@
 # System Updates
 
+## 2023-02-03
+
+| Add / Update / Delete | Software | Version | Previous version |
+|:--|:--|:--|:--|
+| Update | intel | 2022.2.1 | 2022.0.2 |
+| Update | intel-advisor | 2022.3.1 | 2022.0 |
+| Update | intel-inspector | 2022.3.1 | 2022.0 |
+| Update | intel-itac | 2021.7.1 | 2021.5.0 |
+| Update | intel-mkl | 2022.0.2 | 2022.0.0 |
+| Update | intel-vtune | 2022.4.1 | 2022.0.0 |
+| Update | intel-mpi | 2021.7 | 2021.5 |
+
+* Programs compiled with previous version of the Intel oneAPI may contain vulnerabilities, so please recompile with the newer version.
+
 ## 2023-01-05
 
 | Add / Update / Delete | Software | Version | Previous version |

@@ -177,11 +177,11 @@ ABCIシステムで利用可能なソフトウェア一覧を以下に示しま�
 | Job Scheduler | Altair Grid Engine | 8.6.19_C121_1 | 8.6.19_C121_1 |
 | Development Environment | [CUDA Toolkit](gpu.md#cuda-toolkit) | 9.0.176.4<br>9.1.85.3<br>9.2.148.1<br>10.0.130.1<br>10.1.243<br>10.2.89<br>11.0.3<br>11.1.1<br>11.2.2<br>11.3.1<br>11.4.4<br>11.5.2<br>11.6.2<br>11.7.0<br>11.7.1<br>11.8.0<br>12.0.0 | 10.0.130.1<br>10.1.243<br>10.2.89<br>11.0.3<br>11.1.1<br>11.2.2<br>11.3.1<br>11.4.4<br>11.5.2<br>11.6.2<br>11.7.0<br>11.7.1<br>11.8.0<br>12.0.0 |
 | | PGI Professional Edition | 20.4 | 20.4 |
-| | Intel OneAPI<br>(compilers and libraries) | 2022.0.2 | 2022.0.2 |
-| | Intel VTune | 2022.0.0 | 2022.0.0 |
-| | Intel Trace Analyzer and Collector | 2021.5.0 | 2021.5.0 |
-| | Intel Inspector | 2022.0 | 2022.0 |
-| | Intel Advisor | 2022.0 | 2022.0 |
+| | Intel oneAPI<br>(compilers and libraries) | 2022.2.1 | 2022.2.1 |
+| | Intel VTune | 2022.4.1 | 2022.4.1 |
+| | Intel Trace Analyzer and Collector | 2021.7.1 | 2021.7.1 |
+| | Intel Inspector | 2022.3.1 | 2022.3.1 |
+| | Intel Advisor | 2022.3.1 | 2022.3.1 |
 | | GCC | 4.8.5<br>9.3.0<br>11.2.0 | 8.3.1<br>9.3.0<br>11.2.0 |
 | | cmake | 3.22.3 | 3.22.3 |
 | | [Python](python.md) | 2.7.18<br>3.7.13<br>3.8.13<br>3.10.4 | 2.7.18<br>3.7.13<br>3.8.13<br>3.10.4 |
@@ -199,13 +199,13 @@ ABCIシステムで利用可能なソフトウェア一覧を以下に示しま�
 | | [SingularityPRO](containers.md#singularity) | 3.9-9 | 3.9-9 |
 | | Singularity Endpoint | 1.7.2 | 1.7.2 |
 | MPI | [Open MPI](mpi.md#open-mpi) | 4.0.5<br>4.1.3 | 4.0.5<br>4.1.3 |
-| | [Intel MPI](mpi.md#intel-mpi) | 2021.5 | 2021.5 |
+| | [Intel MPI](mpi.md#intel-mpi) | 2021.7 | 2021.7 |
 | Library | [cuDNN](gpu.md#cudnn) | 7.0.5<br>7.1.4<br>7.2.1<br>7.3.1<br>7.4.2<br>7.5.1<br>7.6.5<br>8.0.5<br>8.1.1<br>8.2.4<br>8.3.3<br>8.4.1<br>8.5.0<br>8.6.0<br>8.7.0 | 7.3.1<br>7.4.2<br>7.5.1<br>7.6.5<br>8.0.5<br>8.1.1<br>8.2.4<br>8.3.3<br>8.4.1<br>8.5.0<br>8.6.0<br>8.7.0 |
 | | [NCCL](gpu.md#nccl) | 2.4.8-1<br>2.5.6-1<br>2.6.4-1<br>2.7.8-1<br>2.8.4-1<br>2.9.9-1<br>2.10.3-1<br>2.11.4-1<br>2.12.12-1<br>2.13.4-1<br>2.14.3-1<br>2.15.5-1<br>2.16.2-1 | 2.4.8-1<br>2.5.6-1<br>2.6.4-1<br>2.7.8-1<br>2.8.4-1<br>2.9.9-1<br>2.10.3-1<br>2.11.4-1<br>2.12.12-1<br>2.13.4-1<br>2.14.3-1<br>2.15.5-1<br>2.16.2-1 |
 | | gdrcopy | 2.3 | 2.3 |
 | | UCX | 1.10 | 1.11 |
 | | libfabric | 1.7.0-1 | 1.9.0rc1-1 |
-| | Intel MKL | 2022.0.0 | 2022.0.0 |
+| | Intel MKL | 2022.0.2 | 2022.0.2 |
 | Utility | aws-cli | 2.4 | 2.4 |
 | | fuse-sshfs | 3.7.2 | 3.7.2 |
 | | s3fs-fuse | 1.91 | 1.91 |
