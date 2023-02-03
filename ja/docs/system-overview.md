@@ -177,7 +177,7 @@ ABCIシステムで利用可能なソフトウェア一覧を以下に示しま�
 | Job Scheduler | Altair Grid Engine | 8.6.19_C121_1 | 8.6.19_C121_1 |
 | Development Environment | [CUDA Toolkit](gpu.md#cuda-toolkit) | 9.0.176.4<br>9.1.85.3<br>9.2.148.1<br>10.0.130.1<br>10.1.243<br>10.2.89<br>11.0.3<br>11.1.1<br>11.2.2<br>11.3.1<br>11.4.4<br>11.5.2<br>11.6.2<br>11.7.0<br>11.7.1<br>11.8.0<br>12.0.0 | 10.0.130.1<br>10.1.243<br>10.2.89<br>11.0.3<br>11.1.1<br>11.2.2<br>11.3.1<br>11.4.4<br>11.5.2<br>11.6.2<br>11.7.0<br>11.7.1<br>11.8.0<br>12.0.0 |
 | | PGI Professional Edition | 20.4 | 20.4 |
-| | Intel OneAPI<br>(compilers and libraries) | 2022.2.1 | 2022.2.1 |
+| | Intel oneAPI<br>(compilers and libraries) | 2022.2.1 | 2022.2.1 |
 | | Intel VTune | 2022.4.1 | 2022.4.1 |
 | | Intel Trace Analyzer and Collector | 2021.7.1 | 2021.7.1 |
 | | Intel Inspector | 2022.3.1 | 2022.3.1 |

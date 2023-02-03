@@ -12,7 +12,7 @@
 | Update | intel-vtune | 2022.4.1 | 2022.0.0 |
 | Update | intel-mpi | 2021.7 | 2021.5 |
 
-* Modules compiled with previous version of the OneAPI may contain vulnerabilities, so please recompile with the newer version.
+* Programs compiled with previous version of the oneAPI may contain vulnerabilities, so please recompile with the newer version.
 
 ## 2023-01-05
 
