@@ -278,18 +278,19 @@ Your job 12345 ("run.sh") has been submitted
 ### Job submission error
 
 If the batch job submission is successful, the exit status of the `qsub` command will be `0`.
-If it fails, it will be a non-zero value and the following error will occur.
+If it fails, it will be a non-zero value and an error message will appear.
 
-| Error message | Description |
-|:--|:--|
-| qsub: ERROR: error: ERROR! invalid option argument "*XXX*" | An invalid option was specified. Please check [Job Execution Options](#job-execution-options). |
-| Unable to run job: SIM0021: invalid option value: '*XXX*' | An invalid value was specified for the option. Please check [Job Execution Options](#job-execution-options). |
-| Unable to run job: job rejected: the requested project "*username*" does not exist. | ABCI group not specified. Specify the ABCI group using the `-g` option. |
-| Unable to run job: SIM4403: The amount of estimated consumed-point '*NNN*' is over remaining point. Try 'show_point' for point information. | ABCI points are insufficient. Please refer [Checking ABCI Point](getting-started.md#checking-abci-point) and check ABCI point usage. |
-| Unable to run job: Resource type is not specified. Specify resource type with '-l' option. | Resource type and quantity not specified. Please check [Job Execution Options](#job-execution-options) |
-| Unable to run job: SIM4702: Specified resource(*XXX*) is over limitation(*NNN*). | Requested resource exceeds limit. Please check [Number of nodes available at the same time](#number-of-nodes-available-at-the-same-time) and [Elapsed time and node-time product limits](#elapsed-time-and-node-time-product-limits). |
+The following is a part of the error messages.
+If you want to confirm for errors not listed in the following table, please [contact](./contact.md) ABCI Support.
 
-For other unknown errors, please check [Contact](./contact.md) and contact <qa@abci.ai>.
+| Error message | Exit status | Description |
+|:--|:--|:--|
+| qsub: ERROR: error: ERROR! invalid option argument "*XXX*" | 255 | An invalid option was specified. Please check [Job Execution Options](#job-execution-options). |
+| Unable to run job: SIM0021: invalid option value: '*XXX*' | 1 | An invalid value was specified for the option. Please check [Job Execution Options](#job-execution-options). |
+| Unable to run job: job rejected: the requested project "*username*" does not exist. | 1 | ABCI group not specified. Specify the ABCI group using the `-g` option. |
+| Unable to run job: SIM4403: The amount of estimated consumed-point '*NNN*' is over remaining point. Try 'show_point' for point information. | 1 | ABCI points are insufficient. Please refer [Checking ABCI Point](getting-started.md#checking-abci-point) and check ABCI point usage. |
+| Unable to run job: Resource type is not specified. Specify resource type with '-l' option. | 1 | Resource type and quantity not specified. Please check [Job Execution Options](#job-execution-options) |
+| Unable to run job: SIM4702: Specified resource(*XXX*) is over limitation(*NNN*). | 1 | Requested resource exceeds limit. Please check [Number of nodes available at the same time](#number-of-nodes-available-at-the-same-time) and [Elapsed time and node-time product limits](#elapsed-time-and-node-time-product-limits). |
 
 ### Show the status of batch jobs
 
