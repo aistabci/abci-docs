@@ -13,6 +13,7 @@
 | Update | intel-mpi | 2021.7 | 2021.5 |
 
 * Programs compiled with previous version of the Intel oneAPI may contain vulnerabilities, so please recompile with the newer version.
+* intel/2022.0.2 and before versions containing vulnerabilities have been deprecated.
 
 ## 2023-01-05
 

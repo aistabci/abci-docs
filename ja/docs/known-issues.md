@@ -2,6 +2,7 @@
 
 | 日時 | カテゴリ | 内容 | 状況 |
 |:--|:--|:--|:--|
+| 2023/02/06 | Application | Intel oneAPIの[脆弱性](https://www.intel.com/content/www/us/en/security-center/advisory/intel-sa-00773.html)対応のため、脆弱性のあるライブラリを格納しているディレクトリの実行権限を削除しました。 | 2023/02/06<br> 対応完了。脆弱性を含むintel/2022.0.2以前のバージョンは公開を停止しました。脆弱性が修正されたバージョンintel/2022.2.1をご利用ください。 |
 | 2023/01/31 | Application | Intel oneAPIにおいて[脆弱性](https://www.intel.com/content/www/us/en/security-center/advisory/intel-sa-00773.html)が確認されたため、コマンドicpx, icpcを利用不可に設定しております。 | 2023/02/03<br> 対応完了。Intel oneAPIの脆弱性を修正したバージョンへアップデートしました。<br>なお、以前のバージョンでコンパイルされたプログラムについては、脆弱性が含まれている可能性があるため、お手数ですが新しいバージョンで再度コンパイルをお願いします。バージョン番号は[システム更新履歴](system-updates.md#2023-02-03)を参照ください。 |
 | 2022/12/23 | Application | 計算ノード(A)環境において、cuDNN 8.7.0をCUDA 10.2で利用した場合に、`cudnnConvolutionForward`関数が失敗することを確認しています。| CUDA 11.xでcuDNN 8.7.0が利用できることを確認しています。計算ノード(A)環境でcuDNN 8.7.0を使用する場合はCUDA 11.xをご利用ください。|
 | 2022/12/13 | Singularity Endpoint | 12/13(火) メンテナンス作業後より、Singularityエンドポイントの一部機能(pullおよびRemote Build)の障害により、Singularityエンドポイントの運用を停止しております。 | 2023/01/05<br> 対応完了。SingularityPROのアップデートにより事象は解消しました。 |

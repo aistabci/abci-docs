@@ -2,6 +2,7 @@
 
 | date | category | content | status |
 |:--|:--|:--|:--|
+| 2023/02/06 | Application | Due to Intel oneAPI [vulnerability](https://www.intel.com/content/www/us/en/security-center/advisory/intel-sa-00773.html), the directory containing the vulnerable library has its execute permissions removed. | 2023/02/06<br>Close. intel/2022.0.2 and before versions containing vulnerabilities have been deprecated. Please use the version intel/2022.2.1 that fixes the vulnerability. |
 | 2023/01/31 | Application | The Intel oneAPI has been found to be [vulnerable](https://www.intel.com/content/www/us/en/security-center/advisory/intel-sa-00773.html), so the commands(icpx,icpc) have been disabled. | 2023/02/03<br>Close. Updated the Intel oneAPI to a fixed version. Please note that programs compiled with previous version may contain vulnerabilities, so please recompile with the new version. Refer to [System Updates](system-updates.md#2023-02-03) for the version number. |
 | 2022/12/23 | Application | We have confirmed that the `cudnnConvolutionForward` function fails when using cuDNN 8.7.0 with CUDA 10.2 in the Compute Node (A). | We have confirmed that cuDNN 8.7.0 is available in CUDA 11.x. Please use CUDA 11.x when using cuDNN 8.7.0 in the Compute Node (A). |
 | 2022/12/13 | Singularity Endpoint | After maintenance on December 13, due to a failure in some Singularity Endpoint features (pull and Remote Build), the Singularity Endpoint is no longer operational. | 2023/01/05<br>close<br>This issue has been resolved with a SingularityPRO update. |
