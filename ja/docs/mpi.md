@@ -19,7 +19,7 @@ ABCIシステムでは、以下のMPIを利用できます。
 ```
 
 ```
-[username@es1 ~]$ module load intel-mpi/2021.5
+[username@es1 ~]$ module load intel-mpi/2021.7
 ```
 
 以下では、ABCIシステムに導入されているMPIのバージョン一覧を示します。
@@ -102,4 +102,4 @@ NVIDIA HPC-Xについて、より詳しい情報は[公式ドキュメント](ht
 
 | intel-mpi/ | Compute Node (V) | Compute Node (A) |
 |:--|:--|:--|
-| 2021.5 | Yes | Yes |
+| 2021.7 | Yes | Yes |
