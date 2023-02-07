@@ -449,6 +449,13 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#job-submission-error" class="md-nav__link">
+    ジョブ投入時のエラー
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#show-the-status-of-batch-jobs" class="md-nav__link">
     バッチジョブの状態の確認
   </a>
@@ -2043,6 +2050,52 @@ module load cuda/9.2/9.2.88.1
 <p class="admonition-title">Note</p>
 <p>Spotサービスでは、バッチジョブ投入時にABCIポイントが不足している場合、バッチジョブの投入に失敗します。</p>
 </div>
+<h3 id="job-submission-error">ジョブ投入時のエラー</h3>
+<p>バッチジョブの投入に成功した場合、<code>qsub</code>コマンドの終了ステータスは<code>0</code>となります。
+失敗した場合は0以外の値となり、エラーメッセージが出力されます。</p>
+<p>以下はエラーメッセージの一部です。
+こちらにないエラーについて確認したい場合は、ABCIサポートまで<a href="../contact/">お問い合わせ</a>ください。</p>
+<table>
+<thead>
+<tr>
+<th align="left">エラーメッセージ</th>
+<th align="left">終了ステータス</th>
+<th align="left">説明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">qsub: ERROR: error: ERROR! invalid option argument "<em>XXX</em>"</td>
+<td align="left">255</td>
+<td align="left">オプション指定に誤りがあります。<a href="#job-execution-options">ジョブ実行オプション</a>を確認してください。</td>
+</tr>
+<tr>
+<td align="left">Unable to run job: SIM0021: invalid option value: '<em>XXX</em>'</td>
+<td align="left">1</td>
+<td align="left">オプションに指定した値に誤りがあります。<a href="#job-execution-options">ジョブ実行オプション</a>を確認してください。</td>
+</tr>
+<tr>
+<td align="left">Unable to run job: job rejected: the requested project "<em>username</em>" does not exist.</td>
+<td align="left">1</td>
+<td align="left">ABCIグループが指定されていません。<code>-g</code>オプションでABCIグループを指定してください。</td>
+</tr>
+<tr>
+<td align="left">Unable to run job: SIM4403: The amount of estimated consumed-point '<em>NNN</em>' is over remaining point. Try 'show_point' for point information.</td>
+<td align="left">1</td>
+<td align="left">ABCIポイントが不足しています。<a href="../getting-started/#checking-abci-point">ABCIポイントの確認</a>を参照の上、ABCIポイントの使用状況を確認してください。</td>
+</tr>
+<tr>
+<td align="left">Unable to run job: Resource type is not specified. Specify resource type with '-l' option.</td>
+<td align="left">1</td>
+<td align="left">資源タイプと個数が指定されていません。<a href="#job-execution-options">ジョブ実行オプション</a>を確認してください。</td>
+</tr>
+<tr>
+<td align="left">Unable to run job: SIM4702: Specified resource(<em>XXX</em>) is over limitation(<em>NNN</em>).</td>
+<td align="left">1</td>
+<td align="left">要求したリソースが制限を超過しています。制限値については<a href="#number-of-nodes-available-at-the-same-time">同時に利用可能なノード数</a>、<a href="#elapsed-time-and-node-time-product-limits">経過時間およびノード時間積の制限</a>を確認してください。</td>
+</tr>
+</tbody>
+</table>
 <h3 id="show-the-status-of-batch-jobs">バッチジョブの状態の確認</h3>
 <p>バッチジョブを状態を確認するには、<code>qstat</code>コマンドを利用します。</p>
 <div class="codehilite"><pre><span></span><code><span class="err">$</span><span class="w"> </span><span class="n">qstat</span><span class="w"> </span><span class="o">[</span><span class="n">options</span><span class="o">]</span><span class="w"></span>

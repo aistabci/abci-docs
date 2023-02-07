@@ -449,6 +449,13 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#job-submission-error" class="md-nav__link">
+    Job submission error
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#show-the-status-of-batch-jobs" class="md-nav__link">
     Show the status of batch jobs
   </a>
@@ -2029,6 +2036,52 @@ module load cuda/9.2/9.2.88.1
 <p class="admonition-title">Note</p>
 <p>If ABCI point is insufficient when executing a batch job with Spot service, the execution is failed.</p>
 </div>
+<h3 id="job-submission-error">Job submission error</h3>
+<p>If the batch job submission is successful, the exit status of the <code>qsub</code> command will be <code>0</code>.
+If it fails, it will be a non-zero value and an error message will appear.</p>
+<p>The following is a part of the error messages.
+If you want to confirm for errors not listed in the following table, please <a href="../contact/">contact</a> ABCI Support.</p>
+<table>
+<thead>
+<tr>
+<th align="left">Error message</th>
+<th align="left">Exit status</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">qsub: ERROR: error: ERROR! invalid option argument "<em>XXX</em>"</td>
+<td align="left">255</td>
+<td align="left">An invalid option was specified. Please check <a href="#job-execution-options">Job Execution Options</a>.</td>
+</tr>
+<tr>
+<td align="left">Unable to run job: SIM0021: invalid option value: '<em>XXX</em>'</td>
+<td align="left">1</td>
+<td align="left">An invalid value was specified for the option. Please check <a href="#job-execution-options">Job Execution Options</a>.</td>
+</tr>
+<tr>
+<td align="left">Unable to run job: job rejected: the requested project "<em>username</em>" does not exist.</td>
+<td align="left">1</td>
+<td align="left">ABCI group not specified. Specify the ABCI group using the <code>-g</code> option.</td>
+</tr>
+<tr>
+<td align="left">Unable to run job: SIM4403: The amount of estimated consumed-point '<em>NNN</em>' is over remaining point. Try 'show_point' for point information.</td>
+<td align="left">1</td>
+<td align="left">ABCI points are insufficient. Please refer <a href="../getting-started/#checking-abci-point">Checking ABCI Point</a> and check ABCI point usage.</td>
+</tr>
+<tr>
+<td align="left">Unable to run job: Resource type is not specified. Specify resource type with '-l' option.</td>
+<td align="left">1</td>
+<td align="left">Resource type and quantity not specified. Please check <a href="#job-execution-options">Job Execution Options</a></td>
+</tr>
+<tr>
+<td align="left">Unable to run job: SIM4702: Specified resource(<em>XXX</em>) is over limitation(<em>NNN</em>).</td>
+<td align="left">1</td>
+<td align="left">Requested resource exceeds limit. Please check <a href="#number-of-nodes-available-at-the-same-time">Number of nodes available at the same time</a> and <a href="#elapsed-time-and-node-time-product-limits">Elapsed time and node-time product limits</a>.</td>
+</tr>
+</tbody>
+</table>
 <h3 id="show-the-status-of-batch-jobs">Show the status of batch jobs</h3>
 <p>To show the current status of batch jobs, use the <code>qstat</code> command.</p>
 <div class="codehilite"><pre><span></span><code><span class="err">$</span><span class="w"> </span><span class="n">qstat</span><span class="w"> </span><span class="o">[</span><span class="n">option</span><span class="o">]</span><span class="w"></span>

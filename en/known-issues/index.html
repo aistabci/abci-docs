@@ -1118,8 +1118,8 @@
 <tr>
 <td align="left">2023/01/31</td>
 <td align="left">Application</td>
-<td align="left">The Intel oneAPI has been found to be <a href="https://www.intel.com/content/www/us/en/security-center/advisory/intel-sa-00773.html">vulnerable</a>, so the commands(icpx,icpc) have been disabled.</td>
-<td align="left">2023/02/03<br>Close. Updated the Intel oneAPI to a fixed version. Please note that programs compiled with previous version may contain vulnerabilities, so please recompile with the new version. Refer to <a href="../system-updates/#2023-02-03">System Updates</a> for the version number.</td>
+<td align="left">The Intel oneAPI has been found to be <a href="https://www.intel.com/content/www/us/en/security-center/advisory/intel-sa-00773.html">vulnerable</a>, so the commands(icpx,icpc) have been disabled.<br><br>2023/02/06<br>Removed the execute permission of the directory where the vulnerable Intel oneAPI was installed.</td>
+<td align="left">2023/02/03<br>Close. Updated the Intel oneAPI to a fixed version. Please note that programs compiled with previous version may contain vulnerabilities, so please recompile with the new version. Refer to <a href="../system-updates/#2023-02-03">System Updates</a> for the version number.<br><br>2023/02/06<br><code>intel/2022.0.2</code> and earlier Intel oneAPI modules containing vulnerabilities have been deprecated. Please use <code>intel/2022.2.1</code> module that fixes the vulnerability.<br>Programs compiled with previous version of the Intel oneAPI modules, which was deprecated on Feb 6, may no longer run, so please recompile with the newer version.</td>
 </tr>
 <tr>
 <td align="left">2022/12/23</td>
