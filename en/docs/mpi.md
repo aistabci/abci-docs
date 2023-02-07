@@ -19,7 +19,7 @@ If you run the `module` command in a compute node, environment variables both fo
 ```
 
 ```
-[username@es1 ~]$ module load intel-mpi/2021.5
+[username@es1 ~]$ module load intel-mpi/2021.7
 ```
 
 The following is a list MPI versions installed in the ABCI system.
@@ -103,4 +103,4 @@ Compute Node (A):
 
 | intel-mpi/ | Compute Node (V) | Compute Node (A) |
 |:--|:--|:--|
-| 2021.5 | Yes | Yes |
+| 2021.7 | Yes | Yes |
