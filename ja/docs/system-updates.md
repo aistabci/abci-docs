@@ -1,5 +1,16 @@
 # システム更新履歴
 
+## 2023-04-06 更新予定
+
+- 下記は2023年3月末日でサポートを終了します。
+    * Development Tools：Lua
+    * Deep Learning：Caffe, Caffe2, Theano, Chainer
+    * コンテナエンジン：Docker
+<br/>
+- inode上限値が設定されます。
+    * 2023年度4月からABCIグループ領域のinode使用個数について、上限値として2億個を設定します。
+    * inode使用個数の確認方法については [ディスククォータの確認](getting-started.md#checking-disk-quota)を参照ください。
+
 ## 2023-02-03
 
 | Add / Update / Delete | Software | Version | Previous version |
