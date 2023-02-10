@@ -284,7 +284,7 @@ Total          1,101.0000    51.5000    10.5000          -          -          -
 To display your disk/inodes usage and quota about home and group area,
 use the `show_quota` command as below;
 
-Example) Display disk information.
+Example) Display disk and inode quota
 
 ```
 [username@es1 ~]$ show_quota
@@ -306,9 +306,9 @@ Disk quotas for ABCI group grpname
 | used(nfiles) | Number of inodes |
 | limit(nfiles) | inode quota limit |
 
-In case "-" is displayed in the culumn for the inodes quota limit, the inode quota limit is not set.
+In case "-" is displayed in the culumn for the inodes quota limit, the number of inodes is unlimited.
 
-When the number of inodes(Disk usage) exceeds the inode(Disk) quota limit, the file or directory creation is failed with the following message.
+When the number of inodes (disk usage) exceeds the inode (disk) quota limit, the file or directory creation is failed with the following message.
 
 ```
 [username@es1 ~]$ touch quota_test

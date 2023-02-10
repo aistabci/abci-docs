@@ -287,7 +287,7 @@ Total          1,101.0000    51.5000    10.5000          -          -          -
 ホーム領域およびグループ領域の使用状況と割り当て量を表示するには、
 `show_quota`コマンドを利用します。
 
-例) ディスククォータをおよびinode数を確認する。
+例) ディスクおよびinodeクォータを確認する。
 
 ```
 [username@es1 ~]$ show_quota
@@ -306,12 +306,12 @@ Disk quotas for ABCI group grpname
 | Directory  | 領域種別 |
 | used(GiB)  | ディスク使用量 |
 | limit(GiB) | ディスク上限値 |
-| used(nfiles) | inode数使用個数 |
+| used(nfiles) | inode使用数 |
 | limit(nfiles) | inode数上限値 |
 
-なお、inode数上限値の欄に "-" が表示されている場合は、inode上限値は未設定（制限なし）です。
+なお、inode数上限値の欄に "-" が表示されている場合、inode使用数に制限はありません。
 
-また、inode使用個数がinode上限値を超過している場合に、またはディスク使用量がディスク上限値を超過している場合に、新規ファイル・ディレクトリの作成を試みると、下記のエラーメッセージで失敗します。
+inode使用数がinode数上限値を超過している、またはディスク使用量がディスク上限値を超過している場合、新規ファイル・ディレクトリの作成に失敗します。
 
 ```
 [username@es1 ~]$ touch quota_test
