@@ -2,7 +2,7 @@
 
 ## 2023-04-06 (future update) {#2023-04-06}
 
-* The following tools will out of support by 2023/03/31.
+* The following tools will no longer be supported on 2023/03/31.
     * Development Tools：Lua
     * Deep Learning Frameworks：Caffe, Caffe2, Theano, Chainer
     * Container Engine：Docker
