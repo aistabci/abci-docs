@@ -1,5 +1,16 @@
 # System Updates
 
+## 2023-04-06 (future update) {#2023-04-06}
+
+* The following tools will no longer be supported on 2023/03/31.
+    * Development Tools：Lua
+    * Deep Learning Frameworks：Caffe, Caffe2, Theano, Chainer
+    * Container Engine：Docker
+
+* The inode quota limit for groups area will be set.
+    * The inode quota limit for groups area will be set to 200 millions on April 2023.
+    * For more information about checking the number of inodes, please refer to the [Checking Disk Quota](getting-started.md#checking-disk-quota).
+
 ## 2023-02-03
 
 | Add / Update / Delete | Software | Version | Previous version |

@@ -287,17 +287,18 @@ Total          1,101.0000    51.5000    10.5000          -          -          -
 ホーム領域およびグループ領域の使用状況と割り当て量を表示するには、
 `show_quota`コマンドを利用します。
 
-例) ディスククォータを確認する。
+例) ディスクおよびinodeクォータを確認する。
 
 ```
 [username@es1 ~]$ show_quota
 Disk quotas for user username
-  Directory                     used(GiB)       limit(GiB)          nfiles
-  /home                               100              200           1,234
+  Directory                            used(GiB)        limit(GiB)      used(nfiles)     limit(nfiles)
+  /home                                      100               200             1,234                 -
+  /scratch/username                        1,234            10,240                 0                 -
 
 Disk quotas for ABCI group grpname
-  Directory                     used(GiB)       limit(GiB)          nfiles
-  /groups/grpname                   1,024            2,048         123,456
+  Directory                            used(GiB)        limit(GiB)      used(nfiles)     limit(nfiles)
+  /groups/grpname                          1,024             2,048           123,456       200,000,000
 ```
 
 | 項目  | 説明 |
@@ -305,7 +306,17 @@ Disk quotas for ABCI group grpname
 | Directory  | 領域種別 |
 | used(GiB)  | ディスク使用量 |
 | limit(GiB) | ディスク上限値 |
-| nfiles     | ファイル数 |
+| used(nfiles) | inode使用数 |
+| limit(nfiles) | inode数上限値 |
+
+なお、inode数上限値の欄に "-" が表示されている場合、inode使用数に制限はありません。
+
+inode使用数がinode数上限値を超過している、またはディスク使用量がディスク上限値を超過している場合、新規ファイル・ディレクトリの作成に失敗します。
+
+```
+[username@es1 ~]$ touch quota_test
+touch: cannot touch 'quota_test': Disk quota exceeded
+```
 
 ## ABCI クラウドストレージ利用状況の確認 {#checking-cloud-storage-usage}
 
