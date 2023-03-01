@@ -307,19 +307,3 @@ setenv MODULE_HOME /apps/modules-abci-2.0-2021
 source ${MODULE_HOME}/etc/profile.d/modules.csh
 ```
 
-## Q. グループ領域のデータ移行について知りたい {#q-what-are-the-new-group-area-and-data-migration}
-
-2021年度に、ストレージシステムの増強を行いました。詳細は[ストレージシステム](https://docs.abci.ai/ja/01/#storage-systems)を参照ください。
-ストレージシステムの増強にともないグループ領域の構成を変更し、2020年度まで使用していたグループ領域(以下、**旧領域**)のデータを新しいグループ領域(以下、**新領域**)へ移行しました。
-
-**旧領域**内のデータは下記の移行先ディレクトリにコピーされ、従来のパスでアクセスできるように、移行元に割り当てられていたパスは**新領域**内の移行先へのシンボリックリンクに置き換えられました。
-
-| 移行元                                | 移行先                                                           |
-|:--                                    |:--                                                               |
-| d002利用者の<br/>`/groups[1-2]/gAA50NNN/` | `/projects/datarepository/gAA50NNN/migrated_from_SFA_GPFS/`[^1]  |
-| その他の<br/>`/groups[1-2]/gAA50NNN/` | `/groups/gAA50NNN/migrated_from_SFA_GPFS/`                       |
-| `/fs3/d001/gAA50NNN/`                 | `/projects/d001/gAA50NNN/migrated_from_SFA_GPFS/`                |
-| `/fs3/d002/gAA50NNN/`                 | `/projects/datarepository/gAA50NNN/migrated_from_SFA_GPFS3/`[^1] |
-
-[^1]: `/fs3/d002`利用者は移行元が複数あるため移行先のディレクトリが `migrated_from_SFA_GPFS/`と`migrated_from_SFA_GPFS3/`に別れています。
-
