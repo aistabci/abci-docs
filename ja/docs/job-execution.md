@@ -277,6 +277,23 @@ Your job 12345 ("run.sh") has been submitted
 !!! note
     Spotサービスでは、バッチジョブ投入時にABCIポイントが不足している場合、バッチジョブの投入に失敗します。
 
+### ジョブ投入時のエラー {#job-submission-error}
+
+バッチジョブの投入に成功した場合、`qsub`コマンドの終了ステータスは`0`となります。
+失敗した場合は0以外の値となり、エラーメッセージが出力されます。
+
+以下はエラーメッセージの一部です。
+こちらにないエラーについて確認したい場合は、ABCIサポートまで[お問い合わせ](./contact.md)ください。
+
+| エラーメッセージ | 終了ステータス | 説明 |
+|:--|:--|:--|
+| qsub: ERROR: error: ERROR! invalid option argument "*XXX*" | 255 | オプション指定に誤りがあります。[ジョブ実行オプション](#job-execution-options)を確認してください。 |
+| Unable to run job: SIM0021: invalid option value: '*XXX*' | 1 | オプションに指定した値に誤りがあります。[ジョブ実行オプション](#job-execution-options)を確認してください。 |
+| Unable to run job: job rejected: the requested project "*username*" does not exist. | 1 | ABCIグループが指定されていません。`-g`オプションでABCIグループを指定してください。 |
+| Unable to run job: SIM4403: The amount of estimated consumed-point '*NNN*' is over remaining point. Try 'show_point' for point information. | 1 | ABCIポイントが不足しています。[ABCIポイントの確認](getting-started.md#checking-abci-point)を参照の上、ABCIポイントの使用状況を確認してください。 |
+| Unable to run job: Resource type is not specified. Specify resource type with '-l' option. | 1 | 資源タイプと個数が指定されていません。[ジョブ実行オプション](#job-execution-options)を確認してください。 |
+| Unable to run job: SIM4702: Specified resource(*XXX*) is over limitation(*NNN*). | 1 | 要求したリソースが制限を超過しています。制限値については[同時に利用可能なノード数](#number-of-nodes-available-at-the-same-time)、[経過時間およびノード時間積の制限](#elapsed-time-and-node-time-product-limits)を確認してください。 |
+
 ### バッチジョブの状態の確認 {#show-the-status-of-batch-jobs}
 
 バッチジョブを状態を確認するには、`qstat`コマンドを利用します。

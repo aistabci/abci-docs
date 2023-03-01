@@ -281,20 +281,21 @@ Total          1,101.0000    51.5000    10.5000          -          -          -
 
 ## Checking Disk Quota
 
-To display your disk usage and quota about home area and group area,
-use the `show_quota` command
+To display your disk/inodes usage and quota about home and group area,
+use the `show_quota` command as below;
 
-Example) Display disk information.
+Example) Display disk and inode quota
 
 ```
 [username@es1 ~]$ show_quota
 Disk quotas for user username
-  Directory                     used(GiB)       limit(GiB)          nfiles
-  /home                               100              200           1,234
+  Directory                            used(GiB)        limit(GiB)      used(nfiles)     limit(nfiles)
+  /home                                      100               200             1,234                 -
+  /scratch/username                        1,234            10,240                 0                 -
 
 Disk quotas for ABCI group grpname
-  Directory                     used(GiB)       limit(GiB)          nfiles
-  /groups/grpname                   1,024            2,048         123,456
+  Directory                            used(GiB)        limit(GiB)      used(nfiles)     limit(nfiles)
+  /groups/grpname                          1,024             2,048           123,456       200,000,000
 ```
 
 | Item  | Description |
@@ -302,7 +303,17 @@ Disk quotas for ABCI group grpname
 | Directory  | Assignment directory |
 | used(GiB)  | Disk usage |
 | limit(GiB) | Disk quota limit |
-| nfiles     | Number of files |
+| used(nfiles) | Number of inodes |
+| limit(nfiles) | inode quota limit |
+
+In case "-" is displayed in the culumn for the inodes quota limit, the number of inodes is unlimited.
+
+When the number of inodes (disk usage) exceeds the inode (disk) quota limit, the file or directory creation is failed with the following message.
+
+```
+[username@es1 ~]$ touch quota_test
+touch: cannot touch 'quota_test': Disk quota exceeded
+```
 
 ## Checking ABCI Cloud Storage Usage
 

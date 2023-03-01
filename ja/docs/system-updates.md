@@ -1,5 +1,32 @@
 # システム更新履歴
 
+## 2023-04-06 更新予定 {#2023-04-06}
+
+* 下記は2023年3月末日でサポートを終了します。
+    * Development Tools：Lua
+    * Deep Learning Frameworks：Caffe, Caffe2, Theano, Chainer
+    * コンテナエンジン：Docker
+
+* ABCIグループ領域のinode数上限値が設定されます。
+    * 2023年度4月からABCIグループ領域のinode使用数について、上限値として2億個を設定します。
+    * inode使用数の確認方法については [ディスククォータの確認](getting-started.md#checking-disk-quota)を参照ください。
+
+## 2023-02-03
+
+| Add / Update / Delete | Software | Version | Previous version |
+|:--|:--|:--|:--|
+| Update | intel | 2022.2.1 | 2022.0.2 |
+| Update | intel-advisor | 2022.3.1 | 2022.0 |
+| Update | intel-inspector | 2022.3.1 | 2022.0 |
+| Update | intel-itac | 2021.7.1 | 2021.5.0 |
+| Update | intel-mkl | 2022.0.2 | 2022.0.0 |
+| Update | intel-vtune | 2022.4.1 | 2022.0.0 |
+| Update | intel-mpi | 2021.7 | 2021.5 |
+
+* Intel oneAPIの以前のバージョンでコンパイルされたプログラムについては、脆弱性が含まれている可能性があるため、新しいバージョンで再度コンパイルをお願いします。
+* 脆弱性を含む`intel/2022.0.2`以前のIntel oneAPIモジュールは公開を停止しました。
+以前のバージョンでコンパイルされたプログラムについては、公開停止モジュールをリンクしている場合、稼働しなくなります。お手数ですが新しいバージョンで再度コンパイルをお願いします。
+
 ## 2023-01-05
 
 | Add / Update / Delete | Software | Version | Previous version |

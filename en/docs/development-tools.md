@@ -15,19 +15,19 @@ List of compile/link command of GCC:
 | | C | mpicc |
 | | C++ | mpic++ |
 
-## Intel Parallel Studio XE
+## Intel oneAPI
 
-Intel Parallel Studio XE is available on the ABCI System.
-To use Intel Parallel Studio XE, set up user environment by the `module` command.
+Intel oneAPI is available on the ABCI System.
+To use Intel oneAPI, set up user environment by the `module` command.
 If you set up with the `module` command in compute node, environment variables for compilation and execution are set automatically.
 
-Setting command for Intel Parallel Studio XE is following:
+Setting command for Intel oneAPI is following:
 
 ```
-[username@g0001 ~]$ module load intel/2022.0.2
+[username@g0001 ~]$ module load intel/2022.2.1
 ```
 
-List of compile/link commands of Intel Parallel Studio XE:
+List of compile/link commands of Intel oneAPI:
 
 | Programing Language | command |
 |:--|:--|
@@ -63,7 +63,7 @@ To activate the OpenMP specifications, specify the compile option as follows:
 | | Compile option |
 |:--|:--|
 | GCC | -fopenmp |
-| Intel Parallel Studio | -qopenmp |
+| Intel oneAPI | -qopenmp |
 | PGI | -mp |
 
 ## CUDA
