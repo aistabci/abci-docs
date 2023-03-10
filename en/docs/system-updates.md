@@ -11,6 +11,14 @@
     * The inode quota limit for groups area will be set to 200 millions on April 2023.
     * For more information about checking the number of inodes, please refer to the [Checking Disk Quota](getting-started.md#checking-disk-quota).
 
+## 2023-03-08
+
+| Add / Update / Delete | Software | Version | Previous version |
+|:--|:--|:--|:--|
+| Add | cuda | 12.1.0 | |
+| Add | cudnn | 8.8.0 | |
+| Add | nccl | 2.17.1-1 | |
+
 ## 2023-02-03
 
 | Add / Update / Delete | Software | Version | Previous version |

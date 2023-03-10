@@ -11,6 +11,14 @@
     * 2023年度4月からABCIグループ領域のinode使用数について、上限値として2億個を設定します。
     * inode使用数の確認方法については [ディスククォータの確認](getting-started.md#checking-disk-quota)を参照ください。
 
+## 2023-03-08
+
+| Add / Update / Delete | Software | Version | Previous version |
+|:--|:--|:--|:--|
+| Add | cuda | 12.1.0 | |
+| Add | cudnn | 8.8.0 | |
+| Add | nccl | 2.17.1-1 | |
+
 ## 2023-02-03
 
 | Add / Update / Delete | Software | Version | Previous version |
