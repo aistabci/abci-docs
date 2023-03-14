@@ -11,11 +11,19 @@
     * The inode quota limit for groups area will be set to 200 millions on April 2023.
     * For more information about checking the number of inodes, please refer to the [Checking Disk Quota](getting-started.md#checking-disk-quota).
  
-* Change the OS from CentOS 7 to Rocky Linux 8 for compute nodes (V) and interactive nodes (V).
-    * This change may require you to recompile your programs or rebuild the python environment.
+* Change the OS for compute nodes (V) and interactive nodes (V) from CentOS 7 to Rocky Linux 8.
+    * This change may require you to recompile your programs or rebuild the python virtual environment.
 
-* We are planning to update the Singularity endpoint.
+* Updates the ABCI Singularity endpoint.
     * With this update, you will need to recreate the access token.
+
+* ABCI User Portal Updates
+    * The following functions will be added to the Declaration regarding the applicability of specific categories.
+        * The "Declaration Concerning Applicability to Specified Categories" for "Japanese Students, etc." can be applied for from the ABCI User Portal.
+        * All users other than "Japanese Students, etc." and "Non-residents" can apply for the "Declaration Concerning Applicability to Specified Categories" from the ABCI User Portal. (Note: Users who have not applied for the "Declaration Concerning Applicability to Specified Categories" cannot use the ABCI.)
+    * The following functions will be added for public key operations.
+        * The ABCI group's responsible person/administrator can refer to the public key operation history of the ABCI group's users.
+        * When a user in the ABCI group registers or deletes a public key, a notification e-mail will be sent to the responsible person/administrator of the ABCI group. By default, no notification is sent.
 
 ## 2023-02-03
 
