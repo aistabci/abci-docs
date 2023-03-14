@@ -10,6 +10,12 @@
 * The inode quota limit for groups area will be set.
     * The inode quota limit for groups area will be set to 200 millions on April 2023.
     * For more information about checking the number of inodes, please refer to the [Checking Disk Quota](getting-started.md#checking-disk-quota).
+ 
+* Change the OS from CentOS 7 to Rocky Linux 8 for compute nodes (V) and interactive nodes (V).
+    * This change may require you to recompile your programs or rebuild the python environment.
+
+* We are planning to update the Singularity endpoint.
+    * With this update, you will need to recreate the access token.
 
 ## 2023-02-03
 

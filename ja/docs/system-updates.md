@@ -11,6 +11,12 @@
     * 2023年度4月からABCIグループ領域のinode使用数について、上限値として2億個を設定します。
     * inode使用数の確認方法については [ディスククォータの確認](getting-started.md#checking-disk-quota)を参照ください。
 
+* 計算ノード(V)とインタラクティブノード(V)について、OSをCentOS 7からRocky Linux 8へ変更します。
+    * 本変更に伴い、プログラムの再コンパイルやpython環境再構築が必要になる場合があります。
+
+* Singularity エンドポイントのアップデートを予定しております。
+    * 本アップデートに伴い、アクセストークンの再作成が必要となります。
+
 ## 2023-02-03
 
 | Add / Update / Delete | Software | Version | Previous version |
