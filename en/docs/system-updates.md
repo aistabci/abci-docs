@@ -14,7 +14,7 @@
 * Change the OS for compute nodes (V) and interactive nodes (V) from CentOS 7 to Rocky Linux 8.
     * This change may require you to recompile your programs or rebuild the python virtual environment.
 
-* Updates the ABCI Singularity endpoint.
+* Updates the ABCI Singularity Endpoint.
     * With this update, you will need to recreate the access token.
 
 * ABCI User Portal Updates
