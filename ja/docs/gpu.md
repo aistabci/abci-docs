@@ -62,7 +62,7 @@ ABCIシステムでは、NVIDIAが提供する以下のライブラリが利用�
 | 8.5.0   | -        | -        | -        | -        | -         | -         | Yes       | Yes       | Yes       | Yes       | Yes       | Yes       | Yes       | Yes       | Yes       | Yes       | -         | -         |
 | 8.6.0   | -        | -        | -        | -        | -         | -         | Yes       | Yes       | Yes       | Yes       | Yes       | Yes       | Yes       | Yes       | Yes       | Yes       | -         | -         |
 | 8.7.0   | -        | -        | -        | -        | -         | -         | Yes       | Yes       | Yes       | Yes       | Yes       | Yes       | Yes       | Yes       | Yes       | Yes       | -         | -         |
-| 8.8.0   | -        | -        | -        | -        | -         | -         | -         | Yes       | Yes       | Yes       | Yes       | Yes       | Yes       | Yes       | Yes       | Yes       | Yes       | -         |
+| 8.8.1   | -        | -        | -        | -        | -         | -         | -         | Yes       | Yes       | Yes       | Yes       | Yes       | Yes       | Yes       | Yes       | Yes       | Yes       | Yes       |
 
 計算ノード(A):
 
@@ -80,7 +80,7 @@ ABCIシステムでは、NVIDIAが提供する以下のライブラリが利用�
 | 8.5.0   | -             | -             | Yes           | Yes       | Yes       | Yes       | Yes       | Yes       | Yes       | Yes       | Yes       | Yes       | -         | -         |
 | 8.6.0   | -             | -             | Yes           | Yes       | Yes       | Yes       | Yes       | Yes       | Yes       | Yes       | Yes       | Yes       | -         | -         |
 | 8.7.0   | -             | -             | Yes           | Yes       | Yes       | Yes       | Yes       | Yes       | Yes       | Yes       | Yes       | Yes       | -         | -         |
-| 8.8.0   | -             | -             | -             | Yes       | Yes       | Yes       | Yes       | Yes       | Yes       | Yes       | Yes       | Yes       | Yes       | -         |
+| 8.8.1   | -             | -             | -             | Yes       | Yes       | Yes       | Yes       | Yes       | Yes       | Yes       | Yes       | Yes       | Yes       | Yes       |
 
 ## NCCL
 
