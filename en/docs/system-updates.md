@@ -1,6 +1,6 @@
 # System Updates
 
-## 2023-04-06 (future update) {#2023-04-06}
+## 2023-04-07 (future update) {#2023-04-07}
 
 * The following tools will no longer be supported on 2023/03/31.
     * Development Tools：Lua
