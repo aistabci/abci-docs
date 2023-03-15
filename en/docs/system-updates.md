@@ -3,7 +3,7 @@
 ## 2023-04-07 (future update) {#2023-04-06}
 
 * Change the OS for compute nodes (V) and interactive nodes (V) from ***CentOS 7*** to ***Rocky Linux 8***.
-    * This change requires you to recompile your programs or rebuild the python virtual environment.
+    * This change requires you to recompile your programs or rebuild the Python virtual environments.
 
 * The following tools will no longer be supported on 2023/03/31.
     * Development Tools：Lua
