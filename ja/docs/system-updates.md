@@ -6,8 +6,13 @@
     * 本変更に伴い、プログラムの再コンパイルやPython仮想環境の再構築が必要になります。
 
 * 下記は2023年3月末日でサポートを終了します。
+  終了したモジュールについては、コンテナイメージの利用もしくは、[過去のABCI Environment Modules](faq.md#q-how-to-use-previous-abci-environment-modules)をご利用ください。
+  詳しくは、Tipsの[提供を終了したモジュールとその代替手段](tips/modules-removed-and-alternatives.md)を参照してください。
+    * Compilers：PGI
     * Development Tools：Lua
     * Deep Learning Frameworks：Caffe, Caffe2, Theano, Chainer
+    * MPI：OpenMPI
+    * Utilities：fuse-sshfs
     * コンテナエンジン：Docker
 
 * ABCIグループ領域のinode数上限値が設定されます。

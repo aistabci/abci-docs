@@ -6,8 +6,13 @@
     * This change requires you to recompile your programs or rebuild the Python virtual environments.
 
 * The following tools will no longer be supported on 2023/03/31.
+  For modules that are no longer supported, please use container images or [previous ABCI Environment Modules](faq.md#q-how-to-use-previous-abci-environment-modules).
+  For more information, please refer to the [Modules removed and alternatives](tips/modules-removed-and-alternatives.md).
+    * Compilers：PGI
     * Development Tools：Lua
     * Deep Learning Frameworks：Caffe, Caffe2, Theano, Chainer
+    * MPI：OpenMPI
+    * Utilities：fuse-sshfs
     * Container Engine：Docker
 
 * The inode quota limit for groups area will be set.
