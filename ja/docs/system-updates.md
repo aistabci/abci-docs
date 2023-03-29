@@ -21,6 +21,10 @@
 
 * ABCI Singularity エンドポイントのアップデートを行います。
     * 本アップデートに伴い、アクセストークンの再作成が必要となります。
+    * 本アップデートに伴い、singularity enterpriseプラグインが利用可能となります。それに伴い重複する機能である以下のコマンドを廃止します。
+        * list_singularity_images
+        * list_singularity_tokens
+        * revoke_singualrity_token
 
 * ABCI利用者ポータルの更新
     * 特定類型該当性に関する申告書について、下記の機能が追加されます。

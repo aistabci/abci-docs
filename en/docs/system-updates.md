@@ -21,6 +21,10 @@
  
 * Updates the ABCI Singularity Endpoint.
     * With this update, you will need to recreate the access token.
+    * With this update, the singularity enterprise plug-in is available. As a result, the following overlapping functions are removed.
+        * list_singularity_images
+        * list_singularity_tokens
+        * revoke_singualrity_token
 
 * ABCI User Portal Updates
     * The following functions will be added to the Declaration regarding the applicability of specific categories.
