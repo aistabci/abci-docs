@@ -21,9 +21,8 @@
 
 * ABCI Singularity エンドポイントのアップデートを行います。
     * 本アップデートに伴い、アクセストークンの再作成が必要となります。
-    * 本アップデートに伴い、singularity enterpriseプラグインが利用可能となります。それに伴い重複する機能である以下のコマンドを廃止します。
+    * 本アップデートに伴い、SingularityPRO Enterpriseプラグインが利用可能となります。それに伴い重複する機能である以下のコマンドを廃止します。
         * list_singularity_images
-        * list_singularity_tokens
         * revoke_singualrity_token
 
 * ABCI利用者ポータルの更新
@@ -33,6 +32,31 @@
     * 公開鍵操作について、下記の機能が追加されます。
         * ABCIグループの利用責任者・管理者がABCIグループの利用者の公開鍵の操作履歴を参照できます。
         * ABCIグループに所属する利用者が公開鍵を登録・削除した際に、ABCIグループの利用責任者・管理者へ通知メールが送られます。デフォルトでは通知されません。
+
+| Add / Update / Delete | Software | Version | Previous version |
+|:--|:--|:--|:--|
+| Delete | gcc | 9.3.0 |  |
+| Update | intel | 2023.0.0 | 2022.2.1 |
+| Update | intel-advisor | 2023.0 | 2022.3.1 |
+| Update | intel-inspector | 2023.0 | 2022.3.1 |
+| Update | intel-itac | 2021.8.0 | 2021.7.1 |
+| Update | intel-mkl | 2023.0.0 | 2022.0.2 |
+| Update | intel-vtune | 2023.0.0 | 2022.4.1 |
+| Update | intel-mpi | 2021.8 | 2021.7 |
+| Delete | pgi | 20.4 | |
+| Update | cmake | 3.26.1 | 3.22.3 |
+| Update | go | 1.20 | 1.18 |
+| Update | julia | 1.8 | 1.6 |
+| Update | openjdk | 1.8.0.362 | 1.8.0.332 |
+| Update | openjdk | 11.0.18.0.10 | 11.0.15.0.9<br>11.0.15.0.10 |
+| Update | openjdk | 17.0.6.0.10 | 17.0.3.0.7 |
+| Update | R | 4.2.3 | 4.1.3 |
+| Delete | openmpi | 4.0.5 | |
+| Delete | openmpi | 4.1.3 | |
+| Update | aws-cli | 2.11 | 2.4 |
+| Delete | fuse-sshfs | 3.7.2 |  |
+| Update | SingularityPRO | 3.9-10 | 3.9-9 |
+| Update | Singularityエンドポイント | 2.1.5 | 1.7.2 |
 
 ## 2023-02-03
 
