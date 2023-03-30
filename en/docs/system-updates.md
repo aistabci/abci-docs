@@ -23,7 +23,7 @@
     * With this update, you will need to recreate the access token.
     * With this update, the SingularityPRO Enterprise Plugin is available. As a result, the following overlapping functions are removed.
         * list_singularity_images
-        * revoke_singualrity_token
+        * revoke_singularity_token
 
 * ABCI User Portal Updates
     * The following functions will be added to the Declaration regarding the applicability of specific categories.

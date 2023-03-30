@@ -23,7 +23,7 @@
     * 本アップデートに伴い、アクセストークンの再作成が必要となります。
     * 本アップデートに伴い、SingularityPRO Enterpriseプラグインが利用可能となります。それに伴い重複する機能である以下のコマンドを廃止します。
         * list_singularity_images
-        * revoke_singualrity_token
+        * revoke_singularity_token
 
 * ABCI利用者ポータルの更新
     * 特定類型該当性に関する申告書について、下記の機能が追加されます。
