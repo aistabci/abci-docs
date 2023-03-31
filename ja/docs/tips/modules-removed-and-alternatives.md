@@ -1,7 +1,7 @@
 
 # 提供を終了したモジュールとその代替手段
 
-2022年度の開始にあたり、ABCIで提供しているモジュールの再構成を行いました。
+2023年度の開始にあたり、ABCIで提供しているモジュールの再構成を行いました。
 再構成によりサポートが終了したソフトウェアを最新のEnvironment Modulesから削除しています。
 
 なお、過去のEnvironment Modulesは別途提供していますので、削除したモジュールを利用したい場合はFAQ [過去のABCI Environment Modulesを利用したい](../faq.md#q-how-to-use-previous-abci-environment-modules)を参考に設定を行なってください。
@@ -9,7 +9,17 @@
 ここでは削除したモジュールをSingularityコンテナとして実行する方法、および、ホームディレクトリ下にインストールして利用する方法を説明します。
 本文中のインストールパスは適宜変更してください。
 
-2022年度に削除したモジュールは以下の通りです。
+2023年度に削除したモジュールは以下の通りです。
+
+| ソフトウェア                                            | モジュール名  |
+| ------------------------------------------------------- | ------------- |
+| [PGI](#nvidia-hpc-sdk)                                  | pgi           |
+| [OpenMPI](#open-mpi)                                    | openmpi       |
+| SSHFS[^1]                                               | fuse-sshfs    |
+
+[^1]: 代替方法は現在提供していません。
+
+2022年度に削除したモジュール:
 
 | ソフトウェア                                            | モジュール名  |
 | ------------------------------------------------------- | ------------- |
@@ -24,6 +34,9 @@
 また、[Spack](https://spack.io)を使用して独自にソフトウェアをインストール、管理することもできます。Spackの利用については[Spackによるソフトウェア管理](spack.md)を参照してください。
 
 ## NVIDIA HPC SDK {#nvidia-hpc-sdk}
+
+!!! note
+      PGIコンパイラは現在NVIDIA HPC SDKに組み込まれています。PGIコンパイラを利用したい場合はNVIDIA HPC SDKをご利用ください。
 
 NVIDIA HPC SDKはNVIDIA NGCで提供されている[コンテナ](https://catalog.ngc.nvidia.com/orgs/nvidia/containers/nvhpc)を利用します。
 
@@ -89,6 +102,26 @@ MVAPICH2はソースからインストールして利用します。
 [username@es1 ~]$ mpicc --version
 gcc (GCC) 4.8.5 20150623 (Red Hat 4.8.5-28)
 Copyright (C) 2015 Free Software Foundation, Inc.
+This is free software; see the source for copying conditions.  There is NO
+warranty; not even for MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+```
+
+## Open MPI {#open-mpi}
+
+Open MPIはソースからインストールして利用します。
+ここでは `$HOME/apps/openmpi` 以下にインストールします。
+
+```
+[username@es1 ~]$ wget https://download.open-mpi.org/release/open-mpi/v4.1/openmpi-4.1.3.tar.gz
+[username@es1 ~]$ tar xvf openmpi-4.1.3.tar.gz
+[username@es1 ~]$ cd openmpi-4.1.3/
+[username@es1 ~]$ ./configure --prefix=$HOME/apps/openmpi --enable-mpi-thread-multiple --enable-orterun-prefix-by-default --with-sge
+[username@es1 ~]$ make -j8
+[username@es1 ~]$ make install
+[username@es1 ~]$ export PATH=$HOME/apps/openmpi/bin:$PATH
+[username@es1 ~]$ mpicc --version
+gcc (GCC) 8.5.0 20210514 (Red Hat 8.5.0-16)
+Copyright (C) 2018 Free Software Foundation, Inc.
 This is free software; see the source for copying conditions.  There is NO
 warranty; not even for MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 ```
