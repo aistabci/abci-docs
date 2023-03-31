@@ -6,8 +6,13 @@
     * This change requires you to recompile your programs or rebuild the Python virtual environments.
 
 * The following tools will no longer be supported on 2023/03/31.
+  For modules that are no longer supported, please use container images or [previous ABCI Environment Modules](faq.md#q-how-to-use-previous-abci-environment-modules).
+  For more information, please refer to the [Modules removed and alternatives](tips/modules-removed-and-alternatives.md).
+    * Compilers：PGI
     * Development Tools：Lua
     * Deep Learning Frameworks：Caffe, Caffe2, Theano, Chainer
+    * MPI：OpenMPI
+    * Utilities：fuse-sshfs
     * Container Engine：Docker
 
 * The inode quota limit for groups area will be set.
@@ -16,6 +21,9 @@
  
 * Updates the ABCI Singularity Endpoint.
     * With this update, you will need to recreate the access token.
+    * With this update, the SingularityPRO Enterprise Plugin is available. As a result, the following overlapping functions are removed.
+        * list_singularity_images
+        * revoke_singularity_token
 
 * ABCI User Portal Updates
     * The following functions will be added to the Declaration regarding the applicability of specific categories.
@@ -24,6 +32,31 @@
     * The following functions will be added for public key operations.
         * The ABCI group's responsible person/administrator can refer to the public key operation history of the ABCI group's users.
         * When a user in the ABCI group registers or deletes a public key, a notification e-mail will be sent to the responsible person/administrator of the ABCI group. By default, no notification is sent.
+
+| Add / Update / Delete | Software | Version | Previous version |
+|:--|:--|:--|:--|
+| Delete | gcc | 9.3.0 |  |
+| Update | intel | 2023.0.0 | 2022.2.1 |
+| Update | intel-advisor | 2023.0 | 2022.3.1 |
+| Update | intel-inspector | 2023.0 | 2022.3.1 |
+| Update | intel-itac | 2021.8.0 | 2021.7.1 |
+| Update | intel-mkl | 2023.0.0 | 2022.0.2 |
+| Update | intel-vtune | 2023.0.0 | 2022.4.1 |
+| Update | intel-mpi | 2021.8 | 2021.7 |
+| Delete | pgi | 20.4 | |
+| Update | cmake | 3.26.1 | 3.22.3 |
+| Update | go | 1.20 | 1.18 |
+| Update | julia | 1.8 | 1.6 |
+| Update | openjdk | 1.8.0.362 | 1.8.0.332 |
+| Update | openjdk | 11.0.18.0.10 | 11.0.15.0.9<br>11.0.15.0.10 |
+| Update | openjdk | 17.0.6.0.10 | 17.0.3.0.7 |
+| Update | R | 4.2.3 | 4.1.3 |
+| Delete | openmpi | 4.0.5 | |
+| Delete | openmpi | 4.1.3 | |
+| Update | aws-cli | 2.11 | 2.4 |
+| Delete | fuse-sshfs | 3.7.2 |  |
+| Update | SingularityPRO | 3.9-10 | 3.9-9 |
+| Update | Singularity Endpoint | 2.1.5 | 1.7.2 |
 
 ## 2023-03-08
 
