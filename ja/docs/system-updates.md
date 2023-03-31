@@ -58,6 +58,14 @@
 | Update | SingularityPRO | 3.9-10 | 3.9-9 |
 | Update | Singularityエンドポイント | 2.1.5 | 1.7.2 |
 
+## 2023-03-08
+
+| Add / Update / Delete | Software | Version | Previous version |
+|:--|:--|:--|:--|
+| Add | cuda | 12.1.0 | |
+| Add | cudnn | 8.8.1 | |
+| Add | nccl | 2.17.1-1 | |
+
 ## 2023-02-03
 
 | Add / Update / Delete | Software | Version | Previous version |
