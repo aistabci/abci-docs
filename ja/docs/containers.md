@@ -39,13 +39,17 @@ pullによるSingularityイメージファイルの作成例）
 
 ```
 [username@es1 ~]$ module load singularitypro
-[username@es1 ~]$ singularity pull caffe2.img docker://caffe2ai/caffe2:latest
+[username@es1 ~]$ export SINGULARITY_TMPDIR=/scratch/$USER
+[username@es1 ~]$ singularity pull tensorflow.img docker://tensorflow/tensorflow:latest
 INFO:    Converting OCI blobs to SIF format
 INFO:    Starting build...
 ...
-[username@es1 ~]$ ls caffe2.img
-caffe2.img
+[username@es1 ~]$ ls tensorflow.img
+tensorflow.img
 ```
+
+SINGULARITY_TMPDIR環境変数は`pull`や後述する`build`実行時の一時ファイルを作成する場所を指定します。
+詳しくはFAQ [singularity build/pullすると容量不足でエラーになる](faq.md#q-insufficient-disk-space-for-singularity-build)を参照してください。
 
 ### Singularityイメージファイルの作成(build) {#create-a-singularity-image-build}
 
@@ -60,7 +64,7 @@ buildによるSingularityイメージファイルの作成例）
 [username@es1 ~]$ module load singularitypro
 [username@es1 ~]$ cat ubuntu.def
 Bootstrap: docker
-From: ubuntu:18.04
+From: ubuntu:20.04
 
 %post
     apt-get update
@@ -69,6 +73,7 @@ From: ubuntu:18.04
 %runscript
     lsb_release -d
 
+[username@es1 ~]$ export SINGULARITY_TMPDIR=/scratch/$USER
 [username@es1 ~]$ singularity build --fakeroot ubuntu.sif ubuntu.def
 INFO:    Starting build...
 (snip)
@@ -97,7 +102,7 @@ Singularityを利用する場合、ジョブ中に`singularity run`コマンド�
 ```
 [username@es1 ~]$ qrsh -g grpname -l rt_G.small=1 -l h_rt=1:00:00
 [username@g0001 ~]$ module load singularitypro
-[username@g0001 ~]$ singularity run ./caffe2.img
+[username@g0001 ~]$ singularity run ./tensorflow.img
 ```
 
 バッチジョブにおけるSingularityイメージファイルを使用したコンテナの実行例）
@@ -105,20 +110,19 @@ Singularityを利用する場合、ジョブ中に`singularity run`コマンド�
 ```
 [username@es1 ~]$ cat job.sh
 #!/bin/sh
-#$-l rt_F=1
+#$-l rt_G.small=1
 #$-j y
 source /etc/profile.d/modules.sh
-module load singularitypro openmpi/4.0.5
+module load singularitypro
 
-mpiexec -n 4 singularity exec --nv ./caffe2.img \
-    python sample.py
+singularity run ./tensorflow.img
 
 [username@es1 ~]$ qsub -g grpname job.sh
 ```
 
 Docker Hubで公開されているコンテナイメージの実行例）
 
-以下の例はDocker Hubで公開されているcaffe2のコンテナイメージを使用しSingularityを実行しています。
+以下の例はDocker Hubで公開されているTensorFlowのコンテナイメージを使用しSingularityを実行しています。
 `singularity run`コマンドにより起動したSingularityコンテナ上で`python sample.py`が実行されます。
 コンテナイメージは初回起動時にダウンロードされ、ホーム領域にキャッシングされます。
 2回目以降の起動はキャッシュされたデータを使用することで起動が高速化されます。
@@ -126,7 +130,7 @@ Docker Hubで公開されているコンテナイメージの実行例）
 ```
 [username@es1 ~]$ qrsh -g grpname -l rt_F=1 -l h_rt=1:00:00
 [username@g0001 ~]$ module load singularitypro
-[username@g0001 ~]$ singularity run --nv docker://caffe2ai/caffe2:latest
+[username@g0001 ~]$ singularity run docker://tensorflow/tensorflow:latest
 ...
 Singularity> python sample.py
 True
@@ -184,7 +188,7 @@ DockerfileをSingularity recipeファイルに変換することで、ABCIシス
 Singularity Pythonのインストール例）
 
 ```
-[username@es1 ~]$ module load gcc/9.3.0 python/3.10
+[username@es1 ~]$ module load python/3.10
 [username@es1 ~]$ python3 -m venv work
 [username@es1 ~]$ source work/bin/activate
 (work) [username@es1 ~]$ pip3 install spython
@@ -197,7 +201,7 @@ Dockerfileから変換しただけでは次の2点の問題が発生するため
 - WORKDIRにファイルがコピーされない => コピー先をWORKDIRの絶対パスに設定
 
 ```
-[username@es1 ~]$ module load gcc/9.3.0 python/3.10
+[username@es1 ~]$ module load python/3.10
 [username@es1 ~]$ source work/bin/activate
 (work) [username@es1 ~]$ git clone https://github.com/NVIDIA/DeepLearningExamples
 (work) [username@es1 ~]$ cd DeepLearningExamples/PyTorch/Detection/SSD
@@ -245,7 +249,7 @@ Singularity recipeファイルからのコンテナイメージの作成方法�
 ### Singularity recipeファイル例
 
 ここでは、Singularityのrecipeファイルの例を示します。
-recipeファイルの詳細については[Singularity](#singularity)のユーザガイドを参照願います。
+recipeファイルの詳細については[Singularity](#singularity)のユーザガイドを参照してください。
 
 #### コンテナイメージ内にローカルファイルを組み込む場合
 
@@ -335,6 +339,7 @@ buildに成功すると、コンテナイメージ(openmpi.sif)が生成され�
 ```
 [username@es1 ~]$ qrsh -g grpname -l rt_G.small=1
 [username@g0001 ~]$ module load singularitypro
+[username@g0001 ~]$ export SINGULARITY_TMPDIR=$SGE_LOCALDIR
 [username@g0001 ~]$ singularity build --fakeroot openmpi.sif openmpi.def
 INFO:    Starting build...
 Getting image source signatures
@@ -423,6 +428,7 @@ buildに成功すると、コンテナイメージ(h2o4gpuPy.sif)が生成され
 ```
 [username@es1 ~]$ qrsh -g grpname -l rt_G.small=1
 [username@g0001 ~]$ module load singularitypro
+[username@g0001 ~]$ export SINGULARITY_TMPDIR=$SGE_LOCALDIR
 [username@g0001 ~]$ singularity build --fakeroot h2o4gpuPy.sif h2o4gpuPy.def
 INFO:    Starting build...
 Getting image source signatures
@@ -435,7 +441,7 @@ INFO:    Build complete: h2o4gpuPy.sif
 
 実行例
 ```
-[username@g0001 ~]$ module load singularitypro openmpi/4.0.5 cuda/10.2
+[username@g0001 ~]$ module load singularitypro cuda/10.2
 [username@g0001 ~]$ singularity exec --nv h2o4gpuPy.sif python3 h2o4gpu_sample.py
 [[1.  0.5]
  [1.  4. ]]
