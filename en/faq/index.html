@@ -1089,13 +1089,6 @@
   
 </li>
       
-        <li class="md-nav__item">
-  <a href="#q-what-are-the-new-group-area-and-data-migration" class="md-nav__link">
-    Q. What are the new Group Area and data migration?
-  </a>
-  
-</li>
-      
     </ul>
   
 </nav>
@@ -1581,46 +1574,6 @@ ABCI Environment Modules for each year are installed below, so set the path of t
 <div class="codehilite"><pre><span></span><code>setenv MODULE_HOME /apps/modules-abci-2.0-2021
 source <span class="cp">${</span><span class="n">MODULE_HOME</span><span class="cp">}</span>/etc/profile.d/modules.csh
 </code></pre></div>
-
-<h2 id="q-what-are-the-new-group-area-and-data-migration">Q. What are the new Group Area and data migration?</h2>
-<p>In FY2021, we expanded the storage system. Refer to <a href="https://docs.abci.ai/en/01/#storage-systems">Storage Systems</a> for details.
-As the storage system is expanded, the configuration of the Group Area has been changed, and data have been migrated from the Group Area used until FY2020 (hereinafter referred to as <strong>Old Area</strong>) to the new Group Area (hereinafter referred to as <strong>New Area</strong>). </p>
-<p>The all data in the <strong>Old Area</strong> have been transferred to the <strong>New Area</strong>, then the source paths, were allocated to the <strong>Old Areas</strong> have been replaced with symlinks to the destination directories in the <strong>New Areas</strong>, so that it can be accessed at the same path as the <strong>Old Area</strong>.  </p>
-<p>The sources and the destinations of data migration are as follows. </p>
-<table>
-<thead>
-<tr>
-<th align="left">Source</th>
-<th align="left">Destination</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td align="left">d002 users'<br/><code>/groups[1-2]/gAA50NNN/</code></td>
-<td align="left"><code>/projects/datarepository/gAA50NNN/migrated_from_SFA_GPFS/</code><sup id="fnref2:1"><a class="footnote-ref" href="#fn:1">1</a></sup></td>
-</tr>
-<tr>
-<td align="left">others'<br/><code>/groups[1-2]/gAA50NNN/</code></td>
-<td align="left"><code>/groups/gAA50NNN/migrated_from_SFA_GPFS/</code></td>
-</tr>
-<tr>
-<td align="left"><code>/fs3/d001/gAA50NNN/</code></td>
-<td align="left"><code>/projects/d001/gAA50NNN/migrated_from_SFA_GPFS/</code></td>
-</tr>
-<tr>
-<td align="left"><code>/fs3/d002/gAA50NNN/</code></td>
-<td align="left"><code>/projects/datarepository/gAA50NNN/migrated_from_SFA_GPFS3/</code><sup id="fnref:1"><a class="footnote-ref" href="#fn:1">1</a></sup></td>
-</tr>
-</tbody>
-</table>
-<div class="footnote">
-<hr />
-<ol>
-<li id="fn:1">
-<p>As <code>/fs3/d002</code> users have multiple migration sources, there are two migration destination directories, <code>migrated_from_SFA_GPFS/</code> and <code>migrated_from_SFA_GPFS3/</code> .&#160;<a class="footnote-backref" href="#fnref:1" title="Jump back to footnote 1 in the text">&#8617;</a><a class="footnote-backref" href="#fnref2:1" title="Jump back to footnote 1 in the text">&#8617;</a></p>
-</li>
-</ol>
-</div>
                 
               
               

@@ -1101,13 +1101,6 @@
   
 </li>
       
-        <li class="md-nav__item">
-  <a href="#q-what-are-the-new-group-area-and-data-migration" class="md-nav__link">
-    Q. グループ領域のデータ移行について知りたい
-  </a>
-  
-</li>
-      
     </ul>
   
 </nav>
@@ -1603,45 +1596,6 @@ ABCIシステム利用環境の<a href="../getting-started/#general-method">SSH�
 <div class="codehilite"><pre><span></span><code>setenv MODULE_HOME /apps/modules-abci-2.0-2021
 source <span class="cp">${</span><span class="n">MODULE_HOME</span><span class="cp">}</span>/etc/profile.d/modules.csh
 </code></pre></div>
-
-<h2 id="q-what-are-the-new-group-area-and-data-migration">Q. グループ領域のデータ移行について知りたい</h2>
-<p>2021年度に、ストレージシステムの増強を行いました。詳細は<a href="https://docs.abci.ai/ja/01/#storage-systems">ストレージシステム</a>を参照ください。
-ストレージシステムの増強にともないグループ領域の構成を変更し、2020年度まで使用していたグループ領域(以下、<strong>旧領域</strong>)のデータを新しいグループ領域(以下、<strong>新領域</strong>)へ移行しました。</p>
-<p><strong>旧領域</strong>内のデータは下記の移行先ディレクトリにコピーされ、従来のパスでアクセスできるように、移行元に割り当てられていたパスは<strong>新領域</strong>内の移行先へのシンボリックリンクに置き換えられました。</p>
-<table>
-<thead>
-<tr>
-<th align="left">移行元</th>
-<th align="left">移行先</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td align="left">d002利用者の<br/><code>/groups[1-2]/gAA50NNN/</code></td>
-<td align="left"><code>/projects/datarepository/gAA50NNN/migrated_from_SFA_GPFS/</code><sup id="fnref2:1"><a class="footnote-ref" href="#fn:1">1</a></sup></td>
-</tr>
-<tr>
-<td align="left">その他の<br/><code>/groups[1-2]/gAA50NNN/</code></td>
-<td align="left"><code>/groups/gAA50NNN/migrated_from_SFA_GPFS/</code></td>
-</tr>
-<tr>
-<td align="left"><code>/fs3/d001/gAA50NNN/</code></td>
-<td align="left"><code>/projects/d001/gAA50NNN/migrated_from_SFA_GPFS/</code></td>
-</tr>
-<tr>
-<td align="left"><code>/fs3/d002/gAA50NNN/</code></td>
-<td align="left"><code>/projects/datarepository/gAA50NNN/migrated_from_SFA_GPFS3/</code><sup id="fnref:1"><a class="footnote-ref" href="#fn:1">1</a></sup></td>
-</tr>
-</tbody>
-</table>
-<div class="footnote">
-<hr />
-<ol>
-<li id="fn:1">
-<p><code>/fs3/d002</code>利用者は移行元が複数あるため移行先のディレクトリが <code>migrated_from_SFA_GPFS/</code>と<code>migrated_from_SFA_GPFS3/</code>に別れています。&#160;<a class="footnote-backref" href="#fnref:1" title="Jump back to footnote 1 in the text">&#8617;</a><a class="footnote-backref" href="#fnref2:1" title="Jump back to footnote 1 in the text">&#8617;</a></p>
-</li>
-</ol>
-</div>
                 
               
               
