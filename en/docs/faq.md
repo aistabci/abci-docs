@@ -299,21 +299,3 @@ setenv MODULE_HOME /apps/modules-abci-2.0-2021
 source ${MODULE_HOME}/etc/profile.d/modules.csh
 ```
 
-## Q. What are the new Group Area and data migration?
-
-In FY2021, we expanded the storage system. Refer to [Storage Systems](https://docs.abci.ai/en/01/#storage-systems) for details.
-As the storage system is expanded, the configuration of the Group Area has been changed, and data have been migrated from the Group Area used until FY2020 (hereinafter referred to as **Old Area**) to the new Group Area (hereinafter referred to as **New Area**). 
-
-The all data in the **Old Area** have been transferred to the **New Area**, then the source paths, were allocated to the **Old Areas** have been replaced with symlinks to the destination directories in the **New Areas**, so that it can be accessed at the same path as the **Old Area**.  
-
-The sources and the destinations of data migration are as follows. 
-
-| Source                               | Destination                                                      |
-|:--                                   |:--                                                               |
-| d002 users'<br/>`/groups[1-2]/gAA50NNN/` | `/projects/datarepository/gAA50NNN/migrated_from_SFA_GPFS/`[^1]  |
-| others'<br/>`/groups[1-2]/gAA50NNN/` | `/groups/gAA50NNN/migrated_from_SFA_GPFS/`                       |
-| `/fs3/d001/gAA50NNN/`                | `/projects/d001/gAA50NNN/migrated_from_SFA_GPFS/`                |
-| `/fs3/d002/gAA50NNN/`                | `/projects/datarepository/gAA50NNN/migrated_from_SFA_GPFS3/`[^1] |
-
-[^1]: As `/fs3/d002` users have multiple migration sources, there are two migration destination directories, `migrated_from_SFA_GPFS/` and `migrated_from_SFA_GPFS3/` . 
-
