@@ -34,19 +34,23 @@ To run NGC-provided Docker images on ABCI by using Singularity: [NVIDIA NGC](tip
 ### Create a Singularity image (pull)
 
 Singularity container image can be stored as a file.
-This procedure shows how to create a Singularity image file using pull.
+This procedure shows how to create a Singularity image file using `pull`.
 
 Example) Create a Singularity image file using `pull`
 
 ```
 [username@es1 ~]$ module load singularitypro
-[username@es1 ~]$ singularity pull caffe2.img docker://caffe2ai/caffe2:latest
+[username@es1 ~]$ export SINGULARITY_TMPDIR=/scratch/$USER
+[username@es1 ~]$ singularity pull tensorflow.img docker://tensorflow/tensorflow:latest-gpu
 INFO:    Converting OCI blobs to SIF format
 INFO:    Starting build...
 ...
-[username@es1 ~]$ ls caffe2.img
-caffe2.img
+[username@es1 ~]$ ls tensorflow.img
+tensorflow.img
 ```
+
+The `SINGULARITY_TMPDIR` environment variable specifies the location where temporary files are created when the pull or build commands are executed.
+Please refer to the FAQ ["I get an error due to insufficient disk space, when I ran the singularity build/pull on the compute node."](faq.md#q-insufficient-disk-space-for-singularity-build) for more information.
 
 ### Create a Singularity image (build)
 
@@ -61,7 +65,7 @@ Example) Create a Singularity image file using `build`
 [username@es1 ~]$ module load singularitypro
 [username@es1 ~]$ cat ubuntu.def
 Bootstrap: docker
-From: ubuntu:18.04
+From: ubuntu:20.04
 
 %post
     apt-get update
@@ -70,6 +74,7 @@ From: ubuntu:18.04
 %runscript
     lsb_release -d
 
+[username@es1 ~]$ export SINGULARITY_TMPDIR=/scratch/$USER
 [username@es1 ~]$ singularity build --fakeroot ubuntu.sif ubuntu.def
 INFO:    Starting build...
 (snip)
@@ -96,9 +101,9 @@ You can also use the `singularity run` command to run a container image publishe
 Example) Run a container with a Singularity image file in an interactive job
 
 ```
-[username@es1 ~]$ qrsh -g grpname -l rt_G.small=1 -l h_rt=1:00:00
-[username@es1 ~]$ module load singularitypro
-[username@es1 ~]$ singularity run ./caffe2.img
+[username@es1 ~]$ qrsh -g grpname -l rt_F=1 -l h_rt=1:00:00
+[username@g0001 ~]$ module load singularitypro
+[username@g0001 ~]$ singularity run --nv ./tensorflow.img
 ```
 
 Example) Run a container with a Singularity image file in a batch job
@@ -109,28 +114,38 @@ Example) Run a container with a Singularity image file in a batch job
 #$-l rt_F=1
 #$-j y
 source /etc/profile.d/modules.sh
-module load singularitypro openmpi/4.0.5
+module load singularitypro
 
-mpiexec -n 4 singularity exec --nv ./caffe2.img \
-    python sample.py
+singularity run --nv ./tensorflow.img
 
 [username@es1 ~]$ qsub -g grpname job.sh
 ```
 
 Example) Run a container image published in Docker Hub
 
-The following sample executes a Singularity container using caffe2 container image published in Docker Hub.
-`python sample.py` is executed in the container started by `singularity run` command.
+The following sample executes a Singularity container using TensorFlow container image published in Docker Hub.
+`python3 sample.py` is executed in the container started by `singularity run` command.
 The container image is downloaded at the first startup and cached in home area.
 The second and subsequent times startup is faster by using cached data.
 
 ```
 [username@es1 ~]$ qrsh -g grpname -l rt_F=1 -l h_rt=1:00:00
 [username@g0001 ~]$ module load singularitypro
-[username@g0001 ~]$ singularity run --nv docker://caffe2ai/caffe2:latest
-...
-Singularity> python sample.py
-True
+[username@g0001 ~]$ export SINGULARITY_TMPDIR=$SGE_LOCALDIR
+[username@g0001 ~]$ singularity run --nv docker://tensorflow/tensorflow:latest-gpu
+
+________                               _______________
+___  __/__________________________________  ____/__  /________      __
+__  /  _  _ \_  __ \_  ___/  __ \_  ___/_  /_   __  /_  __ \_ | /| / /
+_  /   /  __/  / / /(__  )/ /_/ /  /   _  __/   _  / / /_/ /_ |/ |/ /
+/_/    \___//_/ /_//____/ \____//_/    /_/      /_/  \____/____/|__/
+
+
+You are running this container as user with ID 10000 and group 10000,
+which should map to the ID and group for your user on the Docker host. Great!
+
+/sbin/ldconfig.real: Can't create temporary cache file /etc/ld.so.cache~: Read-only file system
+Singularity> python3 sample.py
 ```
 
 ### Build Singularity image from Dockerfile
@@ -185,7 +200,7 @@ You can manually convert Dockerfile, but using [Singularity Python](https://sing
 Example procedure for installing Singularity Python)
 
 ```
-[username@es1 ~]$ module load gcc/9.3.0 python/3.10
+[username@es1 ~]$ module load python/3.10
 [username@es1 ~]$ python3 -m venv work
 [username@es1 ~]$ source work/bin/activate
 (work) [username@es1 ~]$ pip3 install spython
@@ -193,14 +208,12 @@ Example procedure for installing Singularity Python)
 
 Following example shows how to convert Dockerfile of [SSD300 v1.1 image](https://github.com/NVIDIA/DeepLearningExamples/tree/master/PyTorch/Detection/SSD) developed by NVIDIA using Singularity Python and modify the generated Singularity recipe (ssd.def) so that it can correctly generate a Singularity image.
 
-Just converting Dockerfile results in a built time error.
-To avoid the problem, this example modifies the Singularity recipe as described below.
+Modifications)
 
 - Files in WORKDIR will not be copied => Set the copy destination to the absolute path of WORKDIR
-- No path to pip => Add a setting to take over environment variables available in Docker image
 
 ```
-[username@es1 ~]$ module load gcc/9.3.0 python/3.10
+[username@es1 ~]$ module load python/3.10
 [username@es1 ~]$ source work/bin/activate
 (work) [username@es1 ~]$ git clone https://github.com/NVIDIA/DeepLearningExamples
 (work) [username@es1 ~]$ cd DeepLearningExamples/PyTorch/Detection/SSD
@@ -274,8 +287,8 @@ From: ubuntu:latest
 
     echo "Installing Open MPI"
     export OMPI_DIR=/opt/ompi
-    export OMPI_VERSION=4.0.5
-    export OMPI_URL="https://download.open-mpi.org/release/open-mpi/v4.0/openmpi-$OMPI_VERSION.tar.bz2"
+    export OMPI_VERSION=4.1.5
+    export OMPI_URL="https://download.open-mpi.org/release/open-mpi/v4.1/openmpi-$OMPI_VERSION.tar.bz2"
     mkdir -p /tmp/ompi
     mkdir -p /opt
     # Download
@@ -334,6 +347,7 @@ Use `singularity` command to build the container image. If successful, a contain
 ```
 [username@es1 ~]$ qrsh -g grpname -l rt_G.small=1
 [username@g0001 ~]$ module load singularitypro
+[username@g0001 ~]$ export SINGULARITY_TMPDIR=$SGE_LOCALDIR
 [username@g0001 ~]$ singularity build --fakeroot openmpi.sif openmpi.def
 INFO:    Starting build...
 Getting image source signatures
@@ -346,8 +360,8 @@ INFO:    Build complete: openmpi.sif
 
 Example) running the container
 ```
-[username@g0001 ~]$ module load singularitypro openmpi/4.0.5
-[username@g0001 ~]$ mpirun -np 4 -map-by node singularity exec openmpi.sif /opt/mpitest
+[username@g0001 ~]$ module load singularitypro hpcx/2.12
+[username@g0001 ~]$ mpirun -hostfile $SGE_JOB_HOSTLIST -np 4 -map-by node singularity exec openmpi.sif /opt/mpitest
 Hello, I am rank 2/4
 Hello, I am rank 3/4
 Hello, I am rank 0/4
@@ -421,6 +435,7 @@ Use `singularity` command to build the container image. If successful, a contain
 ```
 [username@es1 ~]$ qrsh -g grpname -l rt_G.small=1
 [username@g0001 ~]$ module load singularitypro
+[username@g0001 ~]$ export SINGULARITY_TMPDIR=$SGE_LOCALDIR
 [username@g0001 ~]$ singularity build --fakeroot h2o4gpuPy.sif h2o4gpuPy.def
 INFO:    Starting build...
 Getting image source signatures
@@ -433,7 +448,7 @@ INFO:    Build complete: h2o4gpuPy.sif
 
 Example) running the container
 ```
-[username@g0001 ~]$ module load singularitypro openmpi/4.0.5 cuda/10.2
+[username@g0001 ~]$ module load singularitypro cuda/10.2
 [username@g0001 ~]$ singularity exec --nv h2o4gpuPy.sif python3 h2o4gpu_sample.py
 [[1.  0.5]
  [1.  4. ]]

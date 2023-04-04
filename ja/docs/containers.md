@@ -40,7 +40,7 @@ pullによるSingularityイメージファイルの作成例）
 ```
 [username@es1 ~]$ module load singularitypro
 [username@es1 ~]$ export SINGULARITY_TMPDIR=/scratch/$USER
-[username@es1 ~]$ singularity pull tensorflow.img docker://tensorflow/tensorflow:latest
+[username@es1 ~]$ singularity pull tensorflow.img docker://tensorflow/tensorflow:latest-gpu
 INFO:    Converting OCI blobs to SIF format
 INFO:    Starting build...
 ...
@@ -58,7 +58,7 @@ ABCIシステムのSingularityPRO環境では`fakeroot`オプションを使用�
 !!! note
     SingularityPRO環境ではリモートビルドも利用可能です。詳細は[ABCI Singularity エンドポイント](abci-singularity-endpoint.md)を参照して下さい。
 
-buildによるSingularityイメージファイルの作成例）
+`build`によるSingularityイメージファイルの作成例）
 
 ```
 [username@es1 ~]$ module load singularitypro
@@ -100,9 +100,9 @@ Singularityを利用する場合、ジョブ中に`singularity run`コマンド�
 インタラクティブジョブにおけるSingularityイメージファイルを使用したコンテナの実行例）
 
 ```
-[username@es1 ~]$ qrsh -g grpname -l rt_G.small=1 -l h_rt=1:00:00
+[username@es1 ~]$ qrsh -g grpname -l rt_F=1 -l h_rt=1:00:00
 [username@g0001 ~]$ module load singularitypro
-[username@g0001 ~]$ singularity run ./tensorflow.img
+[username@g0001 ~]$ singularity run --nv ./tensorflow.img
 ```
 
 バッチジョブにおけるSingularityイメージファイルを使用したコンテナの実行例）
@@ -110,12 +110,12 @@ Singularityを利用する場合、ジョブ中に`singularity run`コマンド�
 ```
 [username@es1 ~]$ cat job.sh
 #!/bin/sh
-#$-l rt_G.small=1
+#$-l rt_F=1
 #$-j y
 source /etc/profile.d/modules.sh
 module load singularitypro
 
-singularity run ./tensorflow.img
+singularity exec --nv ./tensorflow.img python3 sample.py
 
 [username@es1 ~]$ qsub -g grpname job.sh
 ```
@@ -123,17 +123,28 @@ singularity run ./tensorflow.img
 Docker Hubで公開されているコンテナイメージの実行例）
 
 以下の例はDocker Hubで公開されているTensorFlowのコンテナイメージを使用しSingularityを実行しています。
-`singularity run`コマンドにより起動したSingularityコンテナ上で`python sample.py`が実行されます。
+`singularity run`コマンドにより起動したSingularityコンテナ上で`python3 sample.py`を実行します。
 コンテナイメージは初回起動時にダウンロードされ、ホーム領域にキャッシングされます。
 2回目以降の起動はキャッシュされたデータを使用することで起動が高速化されます。
 
 ```
 [username@es1 ~]$ qrsh -g grpname -l rt_F=1 -l h_rt=1:00:00
 [username@g0001 ~]$ module load singularitypro
-[username@g0001 ~]$ singularity run docker://tensorflow/tensorflow:latest
-...
-Singularity> python sample.py
-True
+[username@g0001 ~]$ export SINGULARITY_TMPDIR=$SGE_LOCALDIR
+[username@g0001 ~]$ singularity run --nv docker://tensorflow/tensorflow:latest-gpu
+
+________                               _______________
+___  __/__________________________________  ____/__  /________      __
+__  /  _  _ \_  __ \_  ___/  __ \_  ___/_  /_   __  /_  __ \_ | /| / /
+_  /   /  __/  / / /(__  )/ /_/ /  /   _  __/   _  / / /_/ /_ |/ |/ /
+/_/    \___//_/ /_//____/ \____//_/    /_/      /_/  \____/____/|__/
+
+
+You are running this container as user with ID 10000 and group 10000,
+which should map to the ID and group for your user on the Docker host. Great!
+
+/sbin/ldconfig.real: Can't create temporary cache file /etc/ld.so.cache~: Read-only file system
+Singularity> python3 sample.py
 ```
 
 ### DockerfileからのSingularityイメージファイルの作成方法 {#build-singularity-image-from-dockerfile}
@@ -196,7 +207,7 @@ Singularity Pythonのインストール例）
 
 以下の例では、NVIDIA社による[SSD300 v1.1モデル学習用コンテナイメージ](https://github.com/NVIDIA/DeepLearningExamples/tree/master/PyTorch/Detection/SSD)のDockerfileをSingularity recipeファイル（ssd.def）に変換し、正常にイメージを作成できるよう修正します。
 
-Dockerfileから変換しただけでは次の2点の問題が発生するため、それぞれの対処が必要となります。
+変更点)
 
 - WORKDIRにファイルがコピーされない => コピー先をWORKDIRの絶対パスに設定
 
@@ -276,8 +287,8 @@ From: ubuntu:latest
 
     echo "Installing Open MPI"
     export OMPI_DIR=/opt/ompi
-    export OMPI_VERSION=4.0.5
-    export OMPI_URL="https://download.open-mpi.org/release/open-mpi/v4.0/openmpi-$OMPI_VERSION.tar.bz2"
+    export OMPI_VERSION=4.1.5
+    export OMPI_URL="https://download.open-mpi.org/release/open-mpi/v4.1/openmpi-$OMPI_VERSION.tar.bz2"
     mkdir -p /tmp/ompi
     mkdir -p /opt
     # Download
@@ -350,10 +361,10 @@ INFO:    Build complete: openmpi.sif
 [username@g0001 ~]$
 ```
 
-実行例
+実行例)
 ```
-[username@g0001 ~]$ module load singularitypro openmpi/4.0.5
-[username@g0001 ~]$ mpirun -np 4 -map-by node singularity exec openmpi.sif /opt/mpitest
+[username@g0001 ~]$ module load singularitypro hpcx/2.12
+[username@g0001 ~]$ mpirun -hostfile $SGE_JOB_HOSTLIST -np 4 -map-by node singularity exec openmpi.sif /opt/mpitest
 Hello, I am rank 2/4
 Hello, I am rank 3/4
 Hello, I am rank 0/4
