@@ -15,6 +15,10 @@
     * Utilities：fuse-sshfs
     * Container Engine：Docker
 
+* The maximum number of nodes that can be reserved at the same time for each ABCI Group is set.
+	* The maximum number of the Compute Node (V) that can be reserved at the same time for each ABCI Group: 272 nodes
+	* The maximum number of the Compute Node (A) that can be reserved at the same time for each ABCI Group: 30 nodes
+
 * The inode quota limit for groups area will be set.
     * The inode quota limit for groups area will be set to 200 millions on April 2023.
     * For more information about checking the number of inodes, please refer to the [Checking Disk Quota](getting-started.md#checking-disk-quota).
