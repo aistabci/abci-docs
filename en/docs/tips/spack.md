@@ -5,13 +5,13 @@ By using Spack, you can easily install software packages by changing their versi
 Using Spack on ABCI enables easily installing software which is not officially supported by ABCI.
 
 !!! note
-    We tested Spack using bash on Dec 3rd 2020, and we used Spack 0.16.0 which was the latest version at that time.
+    We tested Spack using bash on March 31 2023, and we used Spack 0.19.1 which was the latest version at that time.
 
 !!! caution
     - Spack installs software packaged in its original format which is not compatible with packages provided by any Linux distributions, such as `.deb` and `.rpm`.  Therefore, Spack is not a replacement of `yum` or `apt` system.
 
     - Spack installs software under a directory where Spack was installed.  Manage software installed by Sapck by yourself, for example, by uninstalling unused software, because Spack consumes large amount of disk space if you install many software.
-
+    
     - Because of the difference of OS of Compute Node (V) and Compute Node (A), the instruction below for installing Spack enables you to use only one type of node.  Please select a node type you want to use Spack.  Please note that examples in this document show results on Compute Node (V).
 
 
@@ -24,7 +24,7 @@ You can install Spack by cloning from GitHub and checking out the version you wa
 ```Console
 [username@es1 ~]$ git clone https://github.com/spack/spack.git
 [username@es1 ~]$ cd ./spack
-[username@es1 ~/spack]$ git checkout v0.16.0
+[username@es1 ~/spack]$ git checkout v0.19.1
 ```
 
 After that, you can use Spack by loading a setup shell script.
@@ -68,7 +68,7 @@ Compute Node (A)
 [username@es-a1 ~]:$ spack compiler list
 ==> Available compilers
 -- gcc rhel8-x86_64 ---------------------------------------------
-gcc@9.3.0  gcc@8.3.1  gcc@7.4.0
+gcc@12.2.0  gcc@8.3.1
 ```
 
 
@@ -105,19 +105,17 @@ packages:
     buildable: false
     externals:
 (snip)
-    - spec: cuda@10.2.89%gcc@4.8.5
+    - spec: cuda@11.7.0%gcc@8.5.0
       modules:
-      - cuda/10.2/10.2.89
-    - spec: cuda@10.2.89%gcc@7.4.0
+      - cuda/11.7/11.7.0
+    - spec: cuda@11.7.0%gcc@12.2.0
       modules:
-      - cuda/10.2/10.2.89
+      - cuda/11.7/11.7.0
 (snip)
-  openmpi:
+  hpcx-mpi:
     externals:
-    - spec: openmpi@2.1.6%gcc@4.8.5
-      prefix: /apps/openmpi/2.1.6/gcc4.8.5
-    - spec: openmpi@2.1.6%gcc@7.4.0
-      prefix: /apps/openmpi/2.1.6/gcc7.4.0
+    - spec: hpcx@2.11%gcc@8.5.0
+      prefix: /apps/openmpi/2.11/gcc8.5.0
 (snip)
 ```
 
@@ -140,24 +138,22 @@ For detail, please refer to [the official document](https://spack.readthedocs.io
 ```Console
 [username@es1 ~]$ spack compiler list
 ==> Available compilers
--- gcc centos7-x86_64 -------------------------------------------
-gcc@7.4.0  gcc@4.8.5
+-- gcc rhel8-x86_64 ---------------------------------------------
+gcc@12.2.0  gcc@8.3.1
 ```
 
 `compiler info` sub-command shows the detail of a specific compiler.
 
 ```Console
-[username@es1 ~]$ spack compiler info gcc@4.8.5
-gcc@4.8.5:
-    paths:
-        cc = /usr/bin/gcc
-        cxx = /usr/bin/g++
-        f77 = /usr/bin/gfortran
-        fc = /usr/bin/gfortran
-    Extra rpaths:
-        /usr/lib/gcc/x86_64-redhat-linux/4.8.5
-    modules  = []
-    operating system  = centos7
+sername@es1 ~]$ spack compiler info gcc@8.5.0
+gcc@8.5.0:
+        paths:
+             cc = /usr/bin/gcc
+             cxx = /usr/bin/g++
+             f77 = /usr/bin/gfortran
+             fc = /usr/bin/gfortran
+        modules  = []
+        operating system  = rocky8
 ```
 
 ### Software Management Operations {#software-management-operations}
@@ -174,14 +170,14 @@ Refer to [Example Software Installation](#cuda-aware-openmpi) for options.
 If you want to install a specific version, use `@` to specify the version.
 
 ```Console
-[username@es1 ~]$ spack install openmpi@3.1.4 schedulers=sge fabrics=auto
+[username@es1 ~]$ spack install openmpi@4.1.3 schedulers=sge fabrics=auto
 ```
 
 The compiler to build the software can be specified by `%`.
 The following example use GCC 7.4.0 for building OpenMPI.
 
 ```Console
-[username@es1 ~]$ spack install openmpi@3.1.4 %gcc@7.4.0 schedulers=sge fabrics=auto
+[username@es1 ~]$ spack install openmpi@4.1.3 %gcc@12.2.0 schedulers=sge fabrics=auto
 ```
 
 #### Uninstall {#uninstall}
@@ -223,12 +219,16 @@ The following example uses `mpi` as the keyword.
 
 ```Console
 [username@es1 ~]$ spack list mpi
-==> 21 packages.
-compiz       mpifileutils  mpix-launch-swift  r-rmpi        vampirtrace
-fujitsu-mpi  mpilander     openmpi            rempi
-intel-mpi    mpileaks      pbmpi              spectrum-mpi
-mpibash      mpip          pnmpi              sst-dumpi
-mpich        mpir          py-mpi4py          umpire
+compiz                          intel-oneapi-mpi  mpir               r-rmpi
+cray-mpich                      mpi-bash          mpitrampoline      rempi
+exempi                          mpi-serial        mpiwrapper         rkt-compiler-lib
+fujitsu-mpi                     mpibind           mpix-launch-swift  spectrum-mpi
+hpcx-mpi                        mpich             openmpi            spiral-package-mpi
+intel-mpi                       mpifileutils      pbmpi              sst-dumpi
+intel-mpi-benchmarks            mpilander         phylobayesmpi      umpire
+intel-oneapi-compilers          mpileaks          pnmpi              vampirtrace
+intel-oneapi-compilers-classic  mpip              py-mpi4py          wi4mpi
+==> 36 packages
 ```
 
 `find` sub-command shows all the installed software.
@@ -236,7 +236,7 @@ mpich        mpir          py-mpi4py          umpire
 ```Console
 [username@es1 ~]$ spack find
 ==> 49 installed packages
--- linux-centos7-haswell / gcc@4.8.5 ----------------------------
+-- linux-rocky8-skylake_avx512 / gcc@8.5.0 ----------------------------
 autoconf@2.69    gdbm@1.18.1          libxml2@2.9.9  readline@8.0
 (snip)
 ```
@@ -245,15 +245,15 @@ Adding `-dl` option to `find` sub-command shows hashes and dependencies of insta
 
 ```Console
 [username@es1 ~]$ spack find -dl openmpi
--- linux-centos7-skylake_avx512 / gcc@7.4.0 ---------------------
-6pxjftg openmpi@3.1.1
-ahftjey     hwloc@1.11.11
-vf52amo         cuda@9.0.176.4
+-- linux-rocky8-skylake_avx512 / gcc@8.5.0 ---------------------
+6pxjftg openmpi@4.1.4
+ahftjey     hwloc@2.8.0
+vf52amo         cuda@11.8.0
 edtwt6g         libpciaccess@0.16
-bt74u75         libxml2@2.9.10
+bt74u75         libxml2@2.10.1
 qazxaa4             libiconv@1.16
-jb22kvg             xz@5.2.5
-pkmj6e7             zlib@1.2.11
+jb22kvg             xz@5.2.7
+pkmj6e7             zlib@1.2.13
 2dq7ece         numactl@2.0.14
 ```
 
@@ -274,15 +274,17 @@ Description:
 ```Console
 [username@es1 ~]$ spack versions openmpi
 ==> Safe versions (already checksummed):
-  develop  3.0.3  2.1.1   1.10.5  1.8.5  1.7.2  1.5.5  1.4.2  1.2.8  1.1.5
-  4.0.1    3.0.2  2.1.0   1.10.4  1.8.4  1.7.1  1.5.4  1.4.1  1.2.7  1.1.4
-  4.0.0    3.0.1  2.0.4   1.10.3  1.8.3  1.7    1.5.3  1.4    1.2.6  1.1.3
-  3.1.4    3.0.0  2.0.3   1.10.2  1.8.2  1.6.5  1.5.2  1.3.4  1.2.5  1.1.2
-  3.1.3    2.1.6  2.0.2   1.10.1  1.8.1  1.6.4  1.5.1  1.3.3  1.2.4  1.1.1
-  3.1.2    2.1.5  2.0.1   1.10.0  1.8    1.6.3  1.5    1.3.2  1.2.3  1.1
-  3.1.1    2.1.4  2.0.0   1.8.8   1.7.5  1.6.2  1.4.5  1.3.1  1.2.2  1.0.2
-  3.1.0    2.1.3  1.10.7  1.8.7   1.7.4  1.6.1  1.4.4  1.3    1.2.1  1.0.1
-  3.0.4    2.1.2  1.10.6  1.8.6   1.7.3  1.6    1.4.3  1.2.9  1.2    1.0
+  main   4.0.4  3.1.2  2.1.6  2.0.2   1.10.1  1.8.1  1.6.4  1.5.1  1.3.3  1.2.4  1.1.1
+  4.1.4  4.0.3  3.1.1  2.1.5  2.0.1   1.10.0  1.8    1.6.3  1.5    1.3.2  1.2.3  1.1
+  4.1.3  4.0.2  3.1.0  2.1.4  2.0.0   1.8.8   1.7.5  1.6.2  1.4.5  1.3.1  1.2.2  1.0.2
+  4.1.2  4.0.1  3.0.5  2.1.3  1.10.7  1.8.7   1.7.4  1.6.1  1.4.4  1.3    1.2.1  1.0.1
+  4.1.1  4.0.0  3.0.4  2.1.2  1.10.6  1.8.6   1.7.3  1.6    1.4.3  1.2.9  1.2    1.0
+  4.1.0  3.1.6  3.0.3  2.1.1  1.10.5  1.8.5   1.7.2  1.5.5  1.4.2  1.2.8  1.1.5
+  4.0.7  3.1.5  3.0.2  2.1.0  1.10.4  1.8.4   1.7.1  1.5.4  1.4.1  1.2.7  1.1.4
+  4.0.6  3.1.4  3.0.1  2.0.4  1.10.3  1.8.3   1.7    1.5.3  1.4    1.2.6  1.1.3
+  4.0.5  3.1.3  3.0.0  2.0.3  1.10.2  1.8.2   1.6.5  1.5.2  1.3.4  1.2.5  1.1.2
+==> Remote versions (not yet checksummed):
+  4.1.5
 ```
 
 
@@ -348,37 +350,37 @@ Use `spack env list` to display the list of created Spack environments.
 
 #### How to Install {#how-to-install}
 
-This is an example of installing OpenMPI 3.1.1 that uses CUDA 10.1.243.
+This is an example of installing OpenMPI 4.1.4 that uses CUDA 11.8.0.
 You have to use a compute node to install it.
 
 ```Console
-[username@g0001 ~]$ spack install cuda@10.1.243
-[username@g0001 ~]$ spack install openmpi@3.1.1 +cuda schedulers=sge fabrics=auto ^cuda@10.1.243
-[username@g0001 ~]$ spack find --paths openmpi@3.1.1
+[username@g0001 ~]$ spack install cuda@11.8.0
+[username@g0001 ~]$ spack install openmpi@4.1.4 +cuda schedulers=sge fabrics=auto ^cuda@11.8.0
+[username@g0001 ~]$ spack find --paths openmpi@4.1.4
 ==> 1 installed package
--- linux-centos7-haswell / gcc@4.8.5 ----------------------------
-openmpi@3.1.1  ${SPACK_ROOT}/opt/spack/linux-centos7-haswell/gcc-4.8.5/openmpi-3.1.1-4mmghhfuk5n7my7g3ko2zwzlo4wmoc5v
-[username@g0001 ~]$ echo "btl_openib_warn_default_gid_prefix = 0" >> ${SPACK_ROOT}/opt/spack/linux-centos7-haswell/gcc-4.8.5/openmpi-3.1.1-4mmghhfuk5n7my7g3ko2zwzlo4wmoc5v/etc/openmpi-mca-params.conf
+-- linux-rocky8-skylake_avx512 / gcc@8.5.0 ----------------------------
+openmpi@4.1.4  ${SPACK_ROOT}/opt/spack/linux-rocky8-skylake_avx512/gcc-8.5.0/openmpi-4.1.4-4mmghhfuk5n7my7g3ko2zwzlo4wmoc5v
+[username@g0001 ~]$ echo "btl_openib_warn_default_gid_prefix = 0" >> ${SPACK_ROOT}/opt/spack/linux-centos7-haswell/gcc-8.5.0/openmpi-4.1.4-4mmghhfuk5n7my7g3ko2zwzlo4wmoc5v/etc/openmpi-mca-params.conf
 ```
 
-Line #1 installs CUDA version `10.1.243` so that Spack uses a CUDA provided by ABCI.
-Line #2 installs OpenMPI 3.1.1 as the same configuration with [Configuration of Installed Software](../appendix/installed-software.md#open-mpi).
+Line #1 installs CUDA version `11.8.0` so that Spack uses a CUDA provided by ABCI.
+Line #2 installs OpenMPI 4.1.4 as the same configuration with [Configuration of Installed Software](../appendix/installed-software.md#open-mpi).
 Meanings of the installation options are as follows.
 
 - `+cuda`: Build with CUDA support
 - `schedulers=sge`: Specify how to invoke MPI processes.  You have to specify `sge` as ABCI uses Altair Grid Engine which is compatible with SGE.
 - `fabrics=auto`: Specify a communication library.
-- `^cuda@10.1.243`: Specify a CUDA to be used.  `^` is used to specify software dependency.
+- `^cuda@11.8.0`: Specify a CUDA to be used.  `^` is used to specify software dependency.
 
 Line #4 edits a configuration file to turn off runtime warnings (optional).
 For this purpose, Line #3 checks the installation path of OpenMPI.
 
 Spack can manage variants of the same version of software.
-This is an example that you additionally install OpenMPI 3.1.1 that uses CUDA 10.0.130.1.
+This is an example that you additionally install OpenMPI 4.1.3 that uses CUDA 11.7.0.
 
 ```Console
-[username@g0001 ~]$ spack install cuda@10.0.130.1
-[username@g0001 ~]$ spack install openmpi@3.1.1 +cuda schedulers=sge fabrics=auto ^cuda@10.0.130.1
+[username@g0001 ~]$ spack install cuda@11.7.0
+[username@g0001 ~]$ spack install openmpi@4.1.3 +cuda schedulers=sge fabrics=auto ^cuda@11.7.0
 ```
 
 #### How to Use {#how-to-use}
