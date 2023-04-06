@@ -18,6 +18,9 @@ ABCI Singularity エンドポイントでは、ABCI 内部向けに Singularity 
 
 ### アクセストークンの取得
 
+!!! note
+    ABCI Singularity エンドポイントのアップデートに伴い、2023年3月以前に取得したアクセストークンは使用できなくなりました。そのため、再度アクセストークンを取得後、アクセストークンの登録を実施してください。
+
 最初に、本サービスの認証に必要なアクセストークンを取得します。
 インタラクティブノードで `get_singularity_token` コマンドを実行して下さい。発行には ABCI のパスワード (利用者ポータルへのログインに使用するパスワード) の入力が必要です。
 
@@ -35,25 +38,25 @@ just a moment, please...
 
 ### リモートエンドポイントの設定確認
 
-`singularity remote list` を実行し、本サービスを提供している ABCI Singularity エンドポイント（cloud.se.abci.local）が、リモートエンドポイントとして正しく設定されていることを確認して下さい。
+`singularity remote list` を実行し、本サービスを提供している ABCI Singularity エンドポイント（cloud.se2.abci.local）が、リモートエンドポイントとして正しく設定されていることを確認して下さい。
 
 ```
 [username@es1 ~]$ singularity remote list
 Cloud Services Endpoints
 ========================
 
-NAME         URI                  ACTIVE  GLOBAL  EXCLUSIVE
-ABCI         cloud.se.abci.local  YES     YES     NO
-SylabsCloud  cloud.sylabs.io      NO      YES     NO
+NAME         URI                   ACTIVE  GLOBAL  EXCLUSIVE  INSECURE
+ABCI         cloud.se2.abci.local  YES     YES     NO         NO
+SylabsCloud  cloud.sylabs.io       NO      YES     NO         NO
 
 Keyservers
 ==========
 
-URI                         GLOBAL  INSECURE  ORDER
-https://keys.se.abci.local  YES     NO        1*
+URI                          GLOBAL  INSECURE  ORDER
+https://keys.se2.abci.local  YES     NO        1*
 
 * Active cloud services keyserver
-[username@es1 ~]$
+[username@es1 ~]$ 
 ```
 
 !!! note
@@ -69,10 +72,11 @@ ABCI Singularity エンドポイントに対して、`singularity remote login` 
 
 ```
 [username@es1 ~]$ singularity remote login ABCI
-INFO:    Authenticating with remote: ABCI
-Generate an API Key at https://cloud.se.abci.local/auth/tokens, and paste here:
-API Key:
-INFO:    API Key Verified!
+Generate an access token at https://cloud.se2.abci.local/auth/tokens, and paste it here.
+Token entered will be hidden for security.
+Access Token:
+INFO:    Access Token Verified!
+INFO:    Token stored in /home/username/.singularity/remote.yaml
 [username@es1 ~]$
 ```
 
@@ -106,10 +110,10 @@ From: ubuntu:18.04
 
 ```
 [username@es1 ~]$ singularity build --remote ubuntu.sif ubuntu.def
-INFO:    Remote "default" added.
-INFO:    Authenticating with remote: default
-INFO:    API Key Verified!
-INFO:    Remote "default" now in use.
+INFO:    Remote "cloud.se2.abci.local" added.
+INFO:    Access Token Verified!
+INFO:    Token stored in /root/.singularity/remote.yaml
+INFO:    Remote "cloud.se2.abci.local" now in use.
 INFO:    Starting build...
 :
 :
@@ -123,7 +127,7 @@ INFO:    Build complete: ubuntu.sif
 [username@es1 ~]$ qrsh -g grpname -l rt_C.small=1 -l h_rt=1:00:00
 [username@g0001 ~]$ module load singularitypro
 [username@g0001 ~]$ singularity run ubuntu.sif
-Description:	Ubuntu 18.04.5 LTS
+Description:    Ubuntu 18.04.6 LTS
 [username@g0001 ~]$ 
 ```
 
@@ -286,16 +290,16 @@ Enter key passphrase :
 Signature created and applied to ./ubuntu.sif
 ```
 
-Container Library におけるコンテナイメージの場所は、`library://username/collection/container:tag` という形式の URI で表されます。下記の各構成要素の説明を参照し、アップロード先となる URI を決定してください。
+Container Library におけるコンテナイメージの場所は、`library://username/collection/repository:tag` という形式の URI で表されます。下記の各構成要素の説明を参照し、アップロード先となる URI を決定してください。
 
 | 項目名 | 値 |
 | :-- | :-- |
 | username | 自分のABCIアカウント名を指定します。 |
 | collection | コレクション名を任意の文字列で指定します。 |
-| container | コンテナイメージ名を任意の文字列で指定します。 |
+| repository | リポジトリ名を任意の文字列で指定します。 |
 | tag | 同じコンテナイメージを識別するための文字列です。バージョンやリリース日、リビジョン番号や `latest` などの文字列で指定します。 |
 
-コレクション名を `abci-lib`、 コンテナイメージ名を `ubuntu`、タグとして `latest` を指定してアップロードする例を以下に示します。
+コレクション名を `abci-lib`、 リポジトリ名を `ubuntu`、タグとして `latest` を指定してアップロードする例を以下に示します。
 
 ```
 [username@es1 ~]$ singularity push ubuntu.sif library://username/abci-lib/ubuntu:latest
@@ -374,38 +378,34 @@ Container Library にアップロードされたコンテナイメージは、`s
 
 ### コンテナイメージ一覧表示
 
-Container Library にアップロードされたコンテナイメージの一覧を、`list_singularity_images` で表示することができます。
-コンテナイメージは`library://username/collection/container`のようなURIで表示されます。
-タグが付与されている場合はURIの次の行に`Tag`が表示されます。タグが付与されていない場合は代わりに`Unique ID`が表示されます。
+Container Library にアップロードされたコンテナイメージ一覧情報を表示することができます。
+コレクション名一覧は`singularity enterprise get col`で表示できます。その際、引数としてusernameを指定します。
 
 ```
-[username@es1 ~]$ list_singularity_images
-library://username/collection1/container1
-    Tag: latest
-
-library://username/collection2/container2
-    Unique ID: sha256.xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
-
-library://username/collection3/container3
+[username@es1 ~]$ singularity enterprise get col username
+ID                         Name            Num. Containers
+username/tensorflow-test tensorflow-test 1
+username/ubuntu-test     ubuntu-test     2
+[username@es1 ~]$
 ```
 
-!!! note
-    `Tag`も`Unique ID`も表示されない場合、そのコンテナにはコンテナイメージが存在しないことを意味します。
-
-また、`list_singularity_images` に`-v` オプションをつけることで、フィンガープリント(存在する場合)と、イメージサイズも併せて表示されます。
+コレクション内のリポジトリ一覧は`singularity enterprise get rep`で表示できます。その際、引数として`singularity enterprise get col`で表示されるIDを指定します。
 
 ```
-[username@es1 ~]$ list_singularity_images -v
-library://username/collection1/container1
-    Tag: latest
-    Image Size: 10.00 MB
-    Finger Prints: XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+[username@es1 ~]$ singularity enterprise get rep username/ubuntu-test
+ID                             Name    Description Images Tags Size      DownloadCount
+username/ubuntu-test/ubuntu    ubuntu              1      0     64.0 MiB 3
+username/ubuntu-test/ubuntu2   ubuntu2             1      0     67.0 MiB 5
+[username@es1 ~]$
+```
 
-library://username/collection2/container2
-    Unique ID: sha256.xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
-    Image Size: 20.00 MB
+コンテナイメージの情報は`singularity enterprise get img`で表示できます。その際、引数として`singularity enterprise get rep`で表示されるIDを指定します。
 
-library://username/collection3/container3
+```
+[username@es1 ~]$ singularity enterprise get img username/ubuntu-test/ubuntu2
+ID                                                                                                     Tags              Arch  Description Size      Signed Encrypted Uploaded
+username/ubuntu-test/ubuntu2:sha256.xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx   [20221118 latest] amd64              67.0 MiB true   false     true
+[username@es1 ~]$
 ```
 
 ### Container Libraryの使用量表示
@@ -416,10 +416,10 @@ Container Libraryの使用量を、`show_container_library_usage` で表示す�
 [username@es1 ~]$ show_container_library_usage
 ABCI portal password :
 just a moment, please...
-used(MiB) limit(GiB) num_of_containers
-49.39     100.00     1
-
+used(GiB) limit(GiB) num_of_repositories
+3         100        6
 ```
+
 ## アクセストークン
 
 ここでは、取得したアクセストークンに関するコマンドを説明します。
@@ -434,22 +434,20 @@ ABCI portal password :
 just a moment, please...
 
 Token ID: XXXXXXXXXXXXXXXXXXXXXXXX
-Issued at: 2020-12-21 18:20:47 JST
-Expires: 2021-12-21 18:20:47 JST
+Issued: Apr 5, 2023 at 6:55 pm JST
+Expires: Apr 4, 2024 at 6:55 pm JST
 
 Token ID: XXXXXXXXXXXXXXXXXXXXXXXX
-Issued at: 2020-12-23 15:59:02 JST
-Expires: 2021-12-23 15:59:02 JST
-
+Issued: Apr 6, 2023 at 12:14 pm JST
+Expires: Apr 5, 2024 at 12:14 pm JST
 ```
 
 ### アクセストークンの無効化
 
-取得したアクセストークンは、`revoke_singularity_token`で無効にすることができます。`list_singularity_tokens`で表示されたアクセストークン一覧から、無効にしたい Token ID を引数として指定します。無効化の際には ABCI のパスワードの入力が必要です。
+取得したアクセストークンは、`singularity enterprise delete token`で無効にすることができます。`list_singularity_tokens`で表示されたアクセストークン一覧から、無効にしたい Token ID を引数として指定します。
 
 ```
-[username@es1 ~]$ revoke_singularity_token <Token ID>
-ABCI portal password :
-just a moment, please...
-
+[username@es1 ~]$ singularity enterprise delete token <Token ID>
+INFO:    Revoking token XXXXXXXXXXXXXXXXXXXXXXXX
+[username@es1 list_singularity_tokens]$
 ```

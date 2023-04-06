@@ -2,7 +2,6 @@
 
 ## Overview
 
-
 ABCI Singularity Endpoint provides a singularity container service available within ABCI. This service consists of Remote Builder for remotely building container images using SingularityPRO and Container Library for storing and sharing the created container images. This service is available only within ABCI and cannot be accessed directly from outside of ABCI.
 
 The following describes the basic operations for using this service in ABCI. See Sylabs [Document](https://sylabs.io/docs/) for more information.
@@ -18,6 +17,9 @@ In order to use this service, load the module of SingularityPRO as follows.
 ```
 
 ### Creating Access Token
+
+!!! note
+    Due to an update to the ABCI Singularity endpoint, access tokens obtained before March 2023 are no longer available. Therefore, after obtaining the access token again, register the access token.
 
 You need to obtain an access token to authenticate your requests. The access token can be created by using the `get_singularity_token` command on the interactive node with your ABCI password, which is used to log in to ABCI User Portal.
 
@@ -36,22 +38,22 @@ Keep your access token in a safe place for a later registration step.
 
 ### Checking remote endpoint
 
-To check that ABCI Singularity Endpoint (cloud.se.abci.local) is correctly configured as a remote endpoint, use `singularity remote list ` command.
+To check that ABCI Singularity Endpoint (cloud.se2.abci.local) is correctly configured as a remote endpoint, use `singularity remote list ` command.
 
 ```
 [username@es1 ~]$ singularity remote list
 Cloud Services Endpoints
 ========================
 
-NAME         URI                  ACTIVE  GLOBAL  EXCLUSIVE
-ABCI         cloud.se.abci.local  YES     YES     NO
-SylabsCloud  cloud.sylabs.io      NO      YES     NO
+NAME         URI                   ACTIVE  GLOBAL  EXCLUSIVE  INSECURE
+ABCI         cloud.se2.abci.local  YES     YES     NO         NO
+SylabsCloud  cloud.sylabs.io       NO      YES     NO         NO
 
 Keyservers
 ==========
 
-URI                         GLOBAL  INSECURE  ORDER
-https://keys.se.abci.local  YES     NO        1*
+URI                          GLOBAL  INSECURE  ORDER
+https://keys.se2.abci.local  YES     NO        1*
 
 * Active cloud services keyserver
 [username@es1 ~]$
@@ -71,10 +73,11 @@ To register the access token obtained above with your configuration, use `singul
 
 ```
 [username@es1 ~]$ singularity remote login ABCI
-INFO:    Authenticating with remote: ABCI
-Generate an API Key at https://cloud.se.abci.local/auth/tokens, and paste here:
-API Key:
-INFO:    API Key Verified!
+Generate an access token at https://cloud.se2.abci.local/auth/tokens, and paste it here.
+Token entered will be hidden for security.
+Access Token:
+INFO:    Access Token Verified!
+INFO:    Token stored in /home/username/.singularity/remote.yaml
 [username@es1 ~]$
 ```
 
@@ -107,10 +110,10 @@ Next, to create the container image "ubuntu.sif" by Remote Build with "ubuntu.de
 
 ```
 [username@es1 ~]$ singularity build --remote ubuntu.sif ubuntu.def
-INFO:    Remote "default" added.
-INFO:    Authenticating with remote: default
-INFO:    API Key Verified!
-INFO:    Remote "default" now in use.
+INFO:    Remote "cloud.se2.abci.local" added.
+INFO:    Access Token Verified!
+INFO:    Token stored in /root/.singularity/remote.yaml
+INFO:    Remote "cloud.se2.abci.local" now in use.
 INFO:    Starting build...
 :
 :
@@ -124,7 +127,7 @@ You can run the container image with `singularity run` command as follows:
 [username@es1 ~]$ qrsh -g grpname -l rt_C.small=1 -l h_rt=1:00:00
 [username@g0001 ~]$ module load singularitypro
 [username@g0001 ~]$ singularity run ubuntu.sif
-Description:	Ubuntu 18.04.5 LTS
+Description:    Ubuntu 18.04.6 LTS
 [username@g0001 ~]$ 
 ```
 
@@ -281,13 +284,13 @@ Enter key passphrase :
 Signature created and applied to ./ubuntu.sif
 ```
 
-The location of container images in Container Library is represented by a URI `library://username/collection/container:tag`. Refer to the description of each component below to determine the URI.
+The location of container images in Container Library is represented by a URI `library://username/collection/repository:tag`. Refer to the description of each component below to determine the URI.
 
 | item | value |
 | :-- | :-- |
 | username | Specifies your ABCI account |
 | collection | Specify collection name as any string |
-| container | Specify the container image name as any string. |
+| repository | Specify the repository name as any string. |
 | tag | A string identifying the same container image. A string such as version, release date, revision number or `latest`. |
 
 Here is an example of uploading the container image `ubuntu`, specifying the collection name `abci-lib` and the tag name `latest`:
@@ -367,39 +370,34 @@ To delete a container image from Container Library, use `singularity delete`.
 
 ### Listing Container Images
 
-To list the container images uploaded to Container Library, use `list_singularity_images`.
-The container images are displayed in the URI format `library://username/collection/container`.
-If the container image has been tagged, `Tag` appears on the next line of the container image URI. If no tag is given, `Unique ID` is displayed instead.
+You can view container image list information uploaded to the Container Library.
+The collection name list can be viewed with `singularity enterprise get col`. Specify username as the argument.
 
 ```
-[username@es1 ~]$ list_singularity_images
-library://username/collection1/container1
-    Tag: latest
-
-library://username/collection2/container2
-    Unique ID: sha256.xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
-
-library://username/collection3/container3
+[username@es1 ~]$ singularity enterprise get col username
+ID                         Name            Num. Containers
+username/tensorflow-test tensorflow-test 1
+username/ubuntu-test     ubuntu-test     2
+[username@es1 ~]$
 ```
 
-!!! note
-    If neither `Tag` nor `Unique ID` is displayed, it means that there is no container image in the container.
-
-You can also add option `-v` to `list_singularity_images` to display the fingerprint (if present) and image size.
+The list of repositories in a collection can be viewed with `singularity enterprise get rep`. It takes an argument of the ID shown in `singularity enterprise get col`.
 
 ```
-[username@es1 ~]$ list_singularity_images -v
-library://username/collection1/container1
-    Tag: latest
-    Image Size: 10.00 MB
-    Finger Prints: XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
-
-library://username/collection2/container2
-    Unique ID: sha256.xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
-    Image Size: 20.00 MB
-
-library://username/collection3/container3
+[username@es1 ~]$ singularity enterprise get rep username/ubuntu-test
+ID                             Name    Description Images Tags Size      DownloadCount
+username/ubuntu-test/ubuntu    ubuntu              1      0     64.0 MiB 3
+username/ubuntu-test/ubuntu2   ubuntu2             1      0     67.0 MiB 5
+[username@es1 ~]$
 ```
+
+container image information can be viewed with `singularity enterprise get img`. where the argument is the ID that is displayed in `singularity enterprise get rep`.
+
+```
+[username@es1 ~]$ singularity enterprise get img username/ubuntu-test/ubuntu2
+ID                                                                                                     Tags              Arch  Description Size      Signed Encrypted Uploaded
+username/ubuntu-test/ubuntu2:sha256.xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx   [20221118 latest] amd64              67.0 MiB true   false     true
+[username@es1 ~]$
 
 ### Viewing Container Library Usage
 
@@ -409,10 +407,10 @@ You can view Container Library usage with `show_container_library_usage`. You mu
 [username@es1 ~]$ show_container_library_usage
 ABCI portal password :
 just a moment, please...
-used(MiB) limit(GiB) num_of_containers
-49.39     100.00     1
-
+used(GiB) limit(GiB) num_of_repositories
+3         100        6
 ```
+
 ## Access Tokens
 
 This section describes the commands related to the obtained access token.
@@ -427,23 +425,21 @@ ABCI portal password :
 just a moment, please...
 
 Token ID: XXXXXXXXXXXXXXXXXXXXXXXX
-Issued at: 2020-12-21 18:20:47 JST
-Expires: 2021-12-21 18:20:47 JST
+Issued: Apr 5, 2023 at 6:55 pm JST
+Expires: Apr 4, 2024 at 6:55 pm JST
 
 Token ID: XXXXXXXXXXXXXXXXXXXXXXXX
-Issued at: 2020-12-23 15:59:02 JST
-Expires: 2021-12-23 15:59:02 JST
-
+Issued: Apr 6, 2023 at 12:14 pm JST
+Expires: Apr 5, 2024 at 12:14 pm JST
 ```
 
 ### Revoking the Access Token
 
-You can revoke the access token with `revoke_singularity_token`. Specify the Token ID you want to remove as an argument from the list of access tokens displayed in `list_singularity_tokens` command. You must enter the ABCI password to revoke the access token.
+You can revoke the access token with `singularity enterprise delete token`. Specify the Token ID you want to remove as an argument from the list of access tokens displayed in `list_singularity_tokens` command.
 
 ```
-[username@es1 ~]$ revoke_singularity_token <Token ID>
-ABCI portal password :
-just a moment, please...
-
+[username@es1 ~]$ singularity enterprise delete token <Token ID>
+INFO:    Revoking token XXXXXXXXXXXXXXXXXXXXXXXX
+[username@es1 list_singularity_tokens]$
 ```
 

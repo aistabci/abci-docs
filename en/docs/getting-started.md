@@ -307,6 +307,7 @@ Disk quotas for ABCI group grpname
 | limit(nfiles) | inode quota limit |
 
 In case "-" is displayed in the culumn for the inodes quota limit, the number of inodes is unlimited.
+If the disk usage exceeds the disk limit, the column `used (GiB)` displays "*".
 
 When the number of inodes (disk usage) exceeds the inode (disk) quota limit, the file or directory creation is failed with the following message.
 
