@@ -371,7 +371,7 @@ To delete a container image from Container Library, use `singularity delete`.
 ### Listing Container Images
 
 You can view container image list information uploaded to the Container Library.
-The collection name list can be viewed with `singularity enterprise get col`. Specify username as the argument.
+The collection name list can be viewed with `singularity enterprise get col`. Specify ABCI account name as the argument.
 
 ```
 [username@es1 ~]$ singularity enterprise get col username

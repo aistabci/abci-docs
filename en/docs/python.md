@@ -17,20 +17,18 @@ To set up one of available versions with using `module` command:
 
 Example) Python 3.10.10:
 
+```
+[username@es1 ~]$ module load python/3.10/3.10.10
+[username@es1 ~]$ python3 --version
+Python 3.10.10
+```
+
 When using Python in the Memory-intensive Node environment, load the `gcc/12.2.0` module before the python module.
 
 ```
 [username@m01 ~]$ module load gcc/12.2.0
 [username@m01 ~]$ module load python/3.10/3.10.10
 [username@m01 ~]$ python3 --version
-Python 3.10.10
-```
-
-For the compute node (V) and compute node (A) environment, it is not necessary to load the gcc module.
-
-```
-[username@es-a1 ~]$ module load python/3.10/3.10.10
-[username@es-a1 ~]$ python3 --version
 Python 3.10.10
 ```
 

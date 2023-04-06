@@ -379,7 +379,7 @@ Container Library にアップロードされたコンテナイメージは、`s
 ### コンテナイメージ一覧表示
 
 Container Library にアップロードされたコンテナイメージ一覧情報を表示することができます。
-コレクション名一覧は`singularity enterprise get col`で表示できます。その際、引数としてusernameを指定します。
+コレクション名一覧は`singularity enterprise get col`で表示できます。その際、引数としてABCIアカウント名を指定します。
 
 ```
 [username@es1 ~]$ singularity enterprise get col username

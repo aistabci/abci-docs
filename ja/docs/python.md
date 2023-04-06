@@ -17,20 +17,18 @@ python/3.10/3.10.10 python/3.11/3.11.2
 
 例) Python 3.10.10を利用する場合:
 
-メモリインテンシブノード環境でPythonを利用する場合、`gcc/12.2.0`モジュールをpythonモジュールより先にロードしてください。
+```
+[username@es1 ~]$ module load python/3.10/3.10.10
+[username@es1 ~]$ python3 --version
+Python 3.10.10
+```
+
+なお、メモリインテンシブノード環境でPythonを利用する場合、`gcc/12.2.0`モジュールをpythonモジュールより先にロードしてください。
 
 ```
 [username@m01 ~]$ module load gcc/12.2.0
 [username@m01 ~]$ module load python/3.10/3.10.10
 [username@m01 ~]$ python3 --version
-Python 3.10.10
-```
-
-なお、計算ノード(V)、計算ノード(A)環境の場合、gccモジュールのロードは不要です。
-
-```
-[username@es-a1 ~]$ module load python/3.10/3.10.10
-[username@es-a1 ~]$ python3 --version
 Python 3.10.10
 ```
 
@@ -41,7 +39,7 @@ Python 3.10.10
 
 ABCIではシステム全体で使うPython実行環境に利用者が変更を加えることはできません。その代わりに、利用者はPython仮想環境を使って必要なモジュールを追加して利用することができます。
 
-ABCIが提供する`virtualenv`や`venv`を使って、軽量な仮想環境を作ることできます。
+ABCIが提供する`venv`を使って、軽量な仮想環境を作ることできます。
 このPython仮想環境には、仮想環境ごとのsiteディレクトリがあり、これはシステムのsiteディレクトリから分離させることができます。
 それぞれの仮想環境には、固有の (仮想環境を作成するのに使ったバイナリのバージョンと同一の) Pythonバイナリがあり、
 仮想環境ごとのsiteディレクトリに独立したPythonパッケージ群をインストールできます。

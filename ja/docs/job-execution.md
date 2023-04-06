@@ -252,7 +252,7 @@ ABCIシステムでバッチジョブを実行する場合、実行するプロ�
 #$-cwd
 
 source /etc/profile.d/modules.sh
-module load cuda/9.2/9.2.88.1
+module load cuda/10.2/10.2.89
 ./a.out
 ```
 
