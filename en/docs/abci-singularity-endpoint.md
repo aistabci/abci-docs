@@ -391,13 +391,14 @@ username/ubuntu-test/ubuntu2   ubuntu2             1      0     67.0 MiB 5
 [username@es1 ~]$
 ```
 
-container image information can be viewed with `singularity enterprise get img`. where the argument is the ID that is displayed in `singularity enterprise get rep`.
+Container image information can be viewed with `singularity enterprise get img`. It takes an argument of ID shown in `singularity enterprise get rep`.
 
 ```
 [username@es1 ~]$ singularity enterprise get img username/ubuntu-test/ubuntu2
 ID                                                                                                     Tags              Arch  Description Size      Signed Encrypted Uploaded
 username/ubuntu-test/ubuntu2:sha256.xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx   [20221118 latest] amd64              67.0 MiB true   false     true
 [username@es1 ~]$
+```
 
 ### Viewing Container Library Usage
 
