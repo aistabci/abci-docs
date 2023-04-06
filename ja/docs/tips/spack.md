@@ -471,9 +471,8 @@ mpiexec ${MPIOPTS} YOUR_PROGRAM
 [MPIFileUtils](https://hpc.github.io/mpifileutils/)は、MPIを用いたファイル転送ツールです。
 複数のライブラリに依存するため、マニュアルでインストールするのは面倒ですが、Spackを用いると簡単にインストールできます。
 
-以下の例では、OpenMPI 2.1.6を使用して、MPIFileUtilsをインストールします。
+以下の例では、OpenMPI 4.1.4を使用して、MPIFileUtilsをインストールします。
 該当するOpenMPIをインストールした後で（1行目）、それへの依存を指定してMPIFileUtilsをインストールします（2行目）。
-[ABCIソフトウェアの登録](#adding-abci-software)にてpackages.yamlをコピーした場合、ABCIが提供するOpenMPI 2.1.6が使用されます。
 
 ```Console
 [username@es1 ~]$ spack install openmpi@4.1.4

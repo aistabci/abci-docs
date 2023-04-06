@@ -174,7 +174,7 @@ If you want to install a specific version, use `@` to specify the version.
 ```
 
 The compiler to build the software can be specified by `%`.
-The following example use GCC 7.4.0 for building OpenMPI.
+The following example use GCC 12.2.0 for building OpenMPI.
 
 ```Console
 [username@es1 ~]$ spack install openmpi@4.1.3 %gcc@12.2.0 schedulers=sge fabrics=auto
@@ -385,18 +385,18 @@ This is an example that you additionally install OpenMPI 4.1.3 that uses CUDA 11
 
 #### How to Use {#how-to-use}
 
-This is an example of using "OpenMPI 3.1.1 that uses CUDA 10.1.243" installed above.
+This is an example of using "OpenMPI 4.1.4 that uses CUDA 11.8.0" installed above.
 Specify the version of OpenMPI and CUDA dependency to load the software.
 
 ```Console
-[username@es1 ~]$ spack load openmpi@3.1.1 ^cuda@10.1.243
+[username@es1 ~]$ spack load openmpi@4.1.4 ^cuda@11.8.0
 ```
 
 To build an MPI program using the above OpenMPI, you need to load OpenMPI installed by Spack .
 
 ```Console
 [username@g0001 ~]$ source ${HOME}/spack/share/spack/setup-env.sh
-[username@g0001 ~]$ spack load openmpi@3.1.1 ^cuda@10.1.243
+[username@g0001 ~]$ spack load openmpi@4.1.4 ^cuda@11.8.0
 [username@g0001 ~]$ mpicc ...
 ```
 
@@ -409,7 +409,7 @@ A job script that runs the built MPI program is as follows.
 #$-cwd
 
 source ${HOME}/spack/share/spack/setup-env.sh
-spack load openmpi@3.1.1 ^cuda@10.1.243
+spack load openmpi@4.1.4 ^cuda@11.8.0
 
 NUM_NODES=${NHOSTS}
 NUM_GPUS_PER_NODE=4
@@ -421,7 +421,7 @@ mpiexec ${MPIOPTS} YOUR_PROGRAM
 If you no more use the OpenMPI, you can uninstall it by specifying the version and dependencies.
 
 ```Console
-[username@es1 ~]$ spack uninstall openmpi@3.1.1 ^cuda@10.1.243
+[username@es1 ~]$ spack uninstall openmpi@4.1.4 ^cuda@11.8.0
 ```
 
 
@@ -430,11 +430,11 @@ If you no more use the OpenMPI, you can uninstall it by specifying the version a
 If you want to use CUDA-aware MVAPICH2, install by yourself referring to the documents below.
 
 You have to use a compute node to build CUDA-aware MVAPICH2.
-As with [OpenMPI](#cuda-aware-openmpi) above, you first install CUDA and then install MVAPICH2 by enabling CUDA (`+cuda`) and specifying a communication library (`fabrics=mrail`) and CUDA dependency (`^cuda@10.1.243`).
+As with [OpenMPI](#cuda-aware-openmpi) above, you first install CUDA and then install MVAPICH2 by enabling CUDA (`+cuda`) and specifying a communication library (`fabrics=mrail`) and CUDA dependency (`^cuda@11.8.0`).
 
 ```Console
-[username@g0001 ~]$ spack install cuda@10.1.243
-[username@g0001 ~]$ spack install mvapich2@2.3.2 +cuda fabrics=mrail ^cuda@10.1.243
+[username@g0001 ~]$ spack install cuda@11.8.0
+[username@g0001 ~]$ spack install mvapich2@2.3.7 +cuda fabrics=mrail ^cuda@11.8.0
 ```
 
 To use CUDA-aware MVAPICH2, as with OpenMPI, load modules of a CUDA and the installed MVAPICH2.
@@ -447,7 +447,7 @@ Here is a job script example.
 #$-cwd
 
 source ${HOME}/spack/share/spack/setup-env.sh
-spack load mvapich2@2.3.2 ^cuda@10.1.243
+spack load mvapich2@2.3.7 ^cuda@11.8.0
 
 NUM_NODES=${NHOSTS}
 NUM_GPUS_PER_NODE=4
@@ -464,16 +464,15 @@ mpiexec ${MPIOPTS} YOUR_PROGRAM
 [MPIFileUtils](https://hpc.github.io/mpifileutils/) a file transfer tool that uses MPI for communication between nodes.
 Although manually installing it is messy as it depends on many libraries, using Spack enables an easy install of MPIFileUtils.
 
-The following example installs MPIFileUtils that uses OpenMPI 2.1.6.
+The following example installs MPIFileUtils that uses OpenMPI 4.1.4.
 Line #1 installs OpenMPI, and Line #2 installs MPIFileUtils by specifying a dependency on OpenMPI.
-If you copied `packages.yaml` as described in [Adding ABCI Software](#adding-abci-software), OpenMPI 2.1.6 provided by ABCI is used.
 
 ```Console
-[username@es1 ~]$ spack install openmpi@2.1.6
-[username@es1 ~]$ spack install mpifileutils ^openmpi@2.1.6
+[username@es1 ~]$ spack install openmpi@4.1.4
+[username@es1 ~]$ spack install mpifileutils ^openmpi@4.1.4
 ```
 
-To use MPIFileUtils, you have to load modules of OpenMPI 2.1.6 and MPIFileUtils.
+To use MPIFileUtils, you have to load modules of OpenMPI 4.1.4 and MPIFileUtils.
 When you load MPIFileUtils module, PATH to program, such as `dbcast` is set.
 This is an example job script.
 
@@ -484,7 +483,7 @@ This is an example job script.
 #$-cwd
 
 source ${HOME}/spack/share/spack/setup-env.sh
-spack load mpifileutils@0.10.1 ^openmpi@2.1.6
+spack load mpifileutils@0.11.1 ^openmpi@4.1.4
 
 NPPN=5
 NMPIPROC=$(( $NHOSTS * $NPPN ))
@@ -521,8 +520,8 @@ spack:
 
   container:                       # <- Add this line
     images:                        # <- Add this line
-      build: spack/centos7:0.16.0  # <- Add this line
-      final: spack/centos7:0.16.0  # <- Add this line
+      build: spack/centos7:0.19.1  # <- Add this line
+      final: spack/centos7:0.19.1  # <- Add this line
     format: singularity            # <- Add this line
     strip: false                   # <- Add this line
 ```
