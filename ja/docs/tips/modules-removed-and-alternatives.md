@@ -126,6 +126,9 @@ This is free software; see the source for copying conditions.  There is NO
 warranty; not even for MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 ```
 
+また、Spackを利用してOpenMPIをインストールすることもできます。
+Spackを利用してOpenMPIをインストールする方法については、[Spack OpenMPI](spack.md#software-management-operations)のページを参照してください。
+
 ## CUDA-aware Open MPI {#cuda-aware-open-mpi}
 
 CUDA-aware Open MPIはソースからインストールして利用します。
@@ -149,6 +152,9 @@ warranty; not even for MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 [username@es1 ~]$ ompi_info --parsable --all | grep mpi_built_with_cuda_support:value
 mca:mpi:base:param:mpi_built_with_cuda_support:value:true
 ```
+
+また、Spackを利用してCUDA-aware OpenMPIをインストールすることもできます。
+Spackを利用してCUDA-aware OpenMPIをインストールする方法については、[Spack CUDA-aware OpenMPI](spack.md#cuda-aware-openmpi)のページを参照してください。
 
 ## Apache Hadoop {#apache-hadoop}
 
