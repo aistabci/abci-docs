@@ -73,7 +73,6 @@ From: ubuntu:20.04
 %runscript
     lsb_release -d
 
-[username@es1 ~]$ export SINGULARITY_TMPDIR=/scratch/$USER
 [username@es1 ~]$ singularity build --fakeroot ubuntu.sif ubuntu.def
 INFO:    Starting build...
 (snip)
@@ -220,33 +219,30 @@ Singularity Pythonのインストール例）
 (work) [username@es1 SSD]$ cp -p ssd.def ssd_org.def
 (work) [username@es1 SSD]$ vi ssd.def
 Bootstrap: docker
-From: nvcr.io/nvidia/pytorch:21.05-py3
+From: nvcr.io/nvidia/pytorch:22.10-py3
 Stage: spython-base
 
 %files
 requirements.txt /workspace/ssd/  #<- WORKDIR以下にコピー
 . /workspace/ssd/                 #<- WORKDIR以下にコピー
 %post
-FROM_IMAGE_NAME=nvcr.io/nvidia/pytorch:21.05-py3
+FROM_IMAGE_NAME=nvcr.io/nvidia/pytorch:22.10-py3
 
 # Set working directory
+mkdir -p /workspace/ssd
 cd /workspace/ssd
 
-# Install nv-cocoapi
-COCOAPI_VERSION=2.0+nv0.6.0
-export COCOAPI_TAG=$(echo ${COCOAPI_VERSION} | sed 's/^.*+n//') \
-&& pip install --no-cache-dir pybind11                             \
-&& pip install --no-cache-dir git+https://github.com/NVIDIA/cocoapi.git@${COCOAPI_TAG}#subdirectory=PythonAPI
-# Install dllogger
-pip install --no-cache-dir git+https://github.com/NVIDIA/dllogger.git#egg=dllogger
+# Copy the model files
 
-# Install requirements
-pip install -r requirements.txt
-python3 -m pip install pycocotools==2.0.0
+# Install python requirements
+pip install --no-cache-dir -r requirements.txt
 mkdir models #<- main.py実行時に必要なため追加
 
+CUDNN_V8_API_ENABLED=1
+TORCH_CUDNN_V8_API_ENABLED=1
 %environment
-export COCOAPI_VERSION=2.0+nv0.6.0
+export CUDNN_V8_API_ENABLED=1
+export TORCH_CUDNN_V8_API_ENABLED=1
 %runscript
 cd /workspace/ssd
 exec /bin/bash "$@"
@@ -350,7 +346,6 @@ buildに成功すると、コンテナイメージ(openmpi.sif)が生成され�
 ```
 [username@es1 ~]$ qrsh -g grpname -l rt_G.small=1
 [username@g0001 ~]$ module load singularitypro
-[username@g0001 ~]$ export SINGULARITY_TMPDIR=$SGE_LOCALDIR
 [username@g0001 ~]$ singularity build --fakeroot openmpi.sif openmpi.def
 INFO:    Starting build...
 Getting image source signatures
@@ -439,7 +434,6 @@ buildに成功すると、コンテナイメージ(h2o4gpuPy.sif)が生成され
 ```
 [username@es1 ~]$ qrsh -g grpname -l rt_G.small=1
 [username@g0001 ~]$ module load singularitypro
-[username@g0001 ~]$ export SINGULARITY_TMPDIR=$SGE_LOCALDIR
 [username@g0001 ~]$ singularity build --fakeroot h2o4gpuPy.sif h2o4gpuPy.def
 INFO:    Starting build...
 Getting image source signatures
