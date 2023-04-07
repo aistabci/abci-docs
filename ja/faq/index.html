@@ -521,18 +521,6 @@
   
   
     <li class="md-nav__item">
-      <a href="../apps/tensorflow-keras/" class="md-nav__link">
-        TensorFlow Keras
-      </a>
-    </li>
-  
-
-          
-            
-  
-  
-  
-    <li class="md-nav__item">
       <a href="../apps/pytorch/" class="md-nav__link">
         PyTorch
       </a>
@@ -547,30 +535,6 @@
     <li class="md-nav__item">
       <a href="../apps/mxnet/" class="md-nav__link">
         MXNet
-      </a>
-    </li>
-  
-
-          
-            
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../apps/chainer/" class="md-nav__link">
-        Chainer
-      </a>
-    </li>
-  
-
-          
-            
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../apps/others/" class="md-nav__link">
-        その他
       </a>
     </li>
   
@@ -1568,21 +1532,43 @@ ABCIシステム利用環境の<a href="../getting-started/#general-method">SSH�
 <p>ABCIでは、過去のEnvironment Modulesを提供しています。
 各年度でのEnvironment Modulesを以下にインストールしていますので、使用したい年度のパスを<code>MODULE_HOME</code>環境変数に設定し、設定ファイルを読み込んでください。</p>
 <p>なお、これら過去のEnvironment Modulesはサポート対象外です。あらかじめご了承ください。</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>2023年度に計算ノード(V)とインタラクティブノード(V)のOSをCentOS 7からRocky Linux 8に変更しました。
+これによりCentOS 7用の過去のEnvironment Modulesは新しい計算ノード(V)とインタラクティブノード(V)では動作しません。
+CentOS 7用の過去のEnvironment Modulesを利用したい場合は、メモリインテンシブノードをご利用ください。</p>
+</div>
 <table>
 <thead>
 <tr>
 <th>バージョン</th>
 <th>インストールパス</th>
+<th>計算ノード(V)</th>
+<th>計算ノード(A)</th>
+<th>メモリインテンシブノード</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td>2020年度版</td>
 <td><code>/apps/modules-abci-1.0</code></td>
+<td>-</td>
+<td>-</td>
+<td>Yes</td>
 </tr>
 <tr>
 <td>2021年度版</td>
 <td><code>/apps/modules-abci-2.0-2021</code></td>
+<td>-</td>
+<td>Yes</td>
+<td>Yes</td>
+</tr>
+<tr>
+<td>2022年度版</td>
+<td><code>/apps/modules-abci-2.0-2022</code></td>
+<td>-</td>
+<td>Yes</td>
+<td>Yes</td>
 </tr>
 </tbody>
 </table>

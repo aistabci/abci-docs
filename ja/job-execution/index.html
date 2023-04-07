@@ -814,18 +814,6 @@
   
   
     <li class="md-nav__item">
-      <a href="../apps/tensorflow-keras/" class="md-nav__link">
-        TensorFlow Keras
-      </a>
-    </li>
-  
-
-          
-            
-  
-  
-  
-    <li class="md-nav__item">
       <a href="../apps/pytorch/" class="md-nav__link">
         PyTorch
       </a>
@@ -840,30 +828,6 @@
     <li class="md-nav__item">
       <a href="../apps/mxnet/" class="md-nav__link">
         MXNet
-      </a>
-    </li>
-  
-
-          
-            
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../apps/chainer/" class="md-nav__link">
-        Chainer
-      </a>
-    </li>
-  
-
-          
-            
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../apps/others/" class="md-nav__link">
-        その他
       </a>
     </li>
   
@@ -2028,7 +1992,7 @@
 <span class="c1">#$-cwd</span>
 
 <span class="nb">source</span> /etc/profile.d/modules.sh
-module load cuda/9.2/9.2.88.1
+module load cuda/10.2/10.2.89
 ./a.out
 </code></pre></div>
 
@@ -2436,6 +2400,11 @@ module load cuda/9.2/9.2.88.1
 <td align="left">30日</td>
 </tr>
 <tr>
+<td align="left">ABCIグループあたりの最大同時予約可能ノード数</td>
+<td align="left">272ノード</td>
+<td align="left">30ノード</td>
+</tr>
+<tr>
 <td align="left">システムあたりの最大同時予約可能ノード数</td>
 <td align="left">442ノード</td>
 <td align="left">50ノード</td>
@@ -2483,10 +2452,6 @@ module load cuda/9.2/9.2.88.1
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
 <p>計算ノードの予約は、利用責任者もしくは利用管理者のみが実施できます。</p>
-</div>
-<div class="admonition warning">
-<p class="admonition-title">Warning</p>
-<p>ABCI利用者ポータルでは、計算ノード(A)の予約はできません。</p>
 </div>
 <div class="codehilite"><pre><span></span><code>$ qrsub options
 </code></pre></div>

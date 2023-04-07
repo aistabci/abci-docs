@@ -521,18 +521,6 @@
   
   
     <li class="md-nav__item">
-      <a href="../apps/tensorflow-keras/" class="md-nav__link">
-        TensorFlow Keras
-      </a>
-    </li>
-  
-
-          
-            
-  
-  
-  
-    <li class="md-nav__item">
       <a href="../apps/pytorch/" class="md-nav__link">
         PyTorch
       </a>
@@ -547,30 +535,6 @@
     <li class="md-nav__item">
       <a href="../apps/mxnet/" class="md-nav__link">
         MXNet
-      </a>
-    </li>
-  
-
-          
-            
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../apps/chainer/" class="md-nav__link">
-        Chainer
-      </a>
-    </li>
-  
-
-          
-            
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../apps/others/" class="md-nav__link">
-        Others
       </a>
     </li>
   
@@ -1323,6 +1287,10 @@
 </code></pre></div>
 
 <h3 id="creating-access-token">Creating Access Token</h3>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Due to an update to the ABCI Singularity endpoint, access tokens obtained before March 2023 are no longer available. Therefore, after obtaining the access token again, register the access token.</p>
+</div>
 <p>You need to obtain an access token to authenticate your requests. The access token can be created by using the <code>get_singularity_token</code> command on the interactive node with your ABCI password, which is used to log in to ABCI User Portal.</p>
 <div class="codehilite"><pre><span></span><code><span class="o">[</span><span class="n">username@es1 ~</span><span class="o">]</span><span class="err">$</span><span class="w"> </span><span class="n">get_singularity_token</span><span class="w"></span>
 <span class="n">ABCI</span><span class="w"> </span><span class="n">portal</span><span class="w"> </span><span class="n">password</span><span class="w"> </span><span class="err">:</span><span class="w"></span>
@@ -1336,20 +1304,20 @@
 <p>The access token is a very long single line of text, so be careful not to include unnecessary characters such as newlines.</p>
 </div>
 <h3 id="checking-remote-endpoint">Checking remote endpoint</h3>
-<p>To check that ABCI Singularity Endpoint (cloud.se.abci.local) is correctly configured as a remote endpoint, use <code>singularity remote list</code> command.</p>
+<p>To check that ABCI Singularity Endpoint (cloud.se2.abci.local) is correctly configured as a remote endpoint, use <code>singularity remote list</code> command.</p>
 <div class="codehilite"><pre><span></span><code><span class="o">[</span><span class="n">username@es1 ~</span><span class="o">]</span><span class="err">$</span><span class="w"> </span><span class="n">singularity</span><span class="w"> </span><span class="n">remote</span><span class="w"> </span><span class="n">list</span><span class="w"></span>
 <span class="n">Cloud</span><span class="w"> </span><span class="n">Services</span><span class="w"> </span><span class="n">Endpoints</span><span class="w"></span>
 <span class="o">========================</span><span class="w"></span>
 
-<span class="n">NAME</span><span class="w">         </span><span class="n">URI</span><span class="w">                  </span><span class="n">ACTIVE</span><span class="w">  </span><span class="k">GLOBAL</span><span class="w">  </span><span class="n">EXCLUSIVE</span><span class="w"></span>
-<span class="n">ABCI</span><span class="w">         </span><span class="n">cloud</span><span class="p">.</span><span class="n">se</span><span class="p">.</span><span class="n">abci</span><span class="p">.</span><span class="k">local</span><span class="w">  </span><span class="n">YES</span><span class="w">     </span><span class="n">YES</span><span class="w">     </span><span class="k">NO</span><span class="w"></span>
-<span class="n">SylabsCloud</span><span class="w">  </span><span class="n">cloud</span><span class="p">.</span><span class="n">sylabs</span><span class="p">.</span><span class="n">io</span><span class="w">      </span><span class="k">NO</span><span class="w">      </span><span class="n">YES</span><span class="w">     </span><span class="k">NO</span><span class="w"></span>
+<span class="n">NAME</span><span class="w">         </span><span class="n">URI</span><span class="w">                   </span><span class="n">ACTIVE</span><span class="w">  </span><span class="k">GLOBAL</span><span class="w">  </span><span class="n">EXCLUSIVE</span><span class="w">  </span><span class="n">INSECURE</span><span class="w"></span>
+<span class="n">ABCI</span><span class="w">         </span><span class="n">cloud</span><span class="p">.</span><span class="n">se2</span><span class="p">.</span><span class="n">abci</span><span class="p">.</span><span class="k">local</span><span class="w">  </span><span class="n">YES</span><span class="w">     </span><span class="n">YES</span><span class="w">     </span><span class="k">NO</span><span class="w">         </span><span class="k">NO</span><span class="w"></span>
+<span class="n">SylabsCloud</span><span class="w">  </span><span class="n">cloud</span><span class="p">.</span><span class="n">sylabs</span><span class="p">.</span><span class="n">io</span><span class="w">       </span><span class="k">NO</span><span class="w">      </span><span class="n">YES</span><span class="w">     </span><span class="k">NO</span><span class="w">         </span><span class="k">NO</span><span class="w"></span>
 
 <span class="n">Keyservers</span><span class="w"></span>
 <span class="o">==========</span><span class="w"></span>
 
-<span class="n">URI</span><span class="w">                         </span><span class="k">GLOBAL</span><span class="w">  </span><span class="n">INSECURE</span><span class="w">  </span><span class="k">ORDER</span><span class="w"></span>
-<span class="nl">https</span><span class="p">:</span><span class="o">//</span><span class="n">keys</span><span class="p">.</span><span class="n">se</span><span class="p">.</span><span class="n">abci</span><span class="p">.</span><span class="k">local</span><span class="w">  </span><span class="n">YES</span><span class="w">     </span><span class="k">NO</span><span class="w">        </span><span class="mi">1</span><span class="o">*</span><span class="w"></span>
+<span class="n">URI</span><span class="w">                          </span><span class="k">GLOBAL</span><span class="w">  </span><span class="n">INSECURE</span><span class="w">  </span><span class="k">ORDER</span><span class="w"></span>
+<span class="nl">https</span><span class="p">:</span><span class="o">//</span><span class="n">keys</span><span class="p">.</span><span class="n">se2</span><span class="p">.</span><span class="n">abci</span><span class="p">.</span><span class="k">local</span><span class="w">  </span><span class="n">YES</span><span class="w">     </span><span class="k">NO</span><span class="w">        </span><span class="mi">1</span><span class="o">*</span><span class="w"></span>
 
 <span class="o">*</span><span class="w"> </span><span class="n">Active</span><span class="w"> </span><span class="n">cloud</span><span class="w"> </span><span class="n">services</span><span class="w"> </span><span class="n">keyserver</span><span class="w"></span>
 <span class="o">[</span><span class="n">username@es1 ~</span><span class="o">]</span><span class="err">$</span><span class="w"></span>
@@ -1366,10 +1334,11 @@
 <h3 id="registering-access-token">Registering Access Token</h3>
 <p>To register the access token obtained above with your configuration, use <code>singularity remote login</code>command for ABCI Singularity Endpoint.</p>
 <div class="codehilite"><pre><span></span><code><span class="o">[</span><span class="n">username@es1 ~</span><span class="o">]</span><span class="err">$</span><span class="w"> </span><span class="n">singularity</span><span class="w"> </span><span class="n">remote</span><span class="w"> </span><span class="n">login</span><span class="w"> </span><span class="n">ABCI</span><span class="w"></span>
-<span class="nl">INFO</span><span class="p">:</span><span class="w">    </span><span class="n">Authenticating</span><span class="w"> </span><span class="k">with</span><span class="w"> </span><span class="nl">remote</span><span class="p">:</span><span class="w"> </span><span class="n">ABCI</span><span class="w"></span>
-<span class="n">Generate</span><span class="w"> </span><span class="n">an</span><span class="w"> </span><span class="n">API</span><span class="w"> </span><span class="k">Key</span><span class="w"> </span><span class="k">at</span><span class="w"> </span><span class="nl">https</span><span class="p">:</span><span class="o">//</span><span class="n">cloud</span><span class="p">.</span><span class="n">se</span><span class="p">.</span><span class="n">abci</span><span class="p">.</span><span class="k">local</span><span class="o">/</span><span class="n">auth</span><span class="o">/</span><span class="n">tokens</span><span class="p">,</span><span class="w"> </span><span class="ow">and</span><span class="w"> </span><span class="n">paste</span><span class="w"> </span><span class="nl">here</span><span class="p">:</span><span class="w"></span>
-<span class="n">API</span><span class="w"> </span><span class="k">Key</span><span class="err">:</span><span class="w"></span>
-<span class="nl">INFO</span><span class="p">:</span><span class="w">    </span><span class="n">API</span><span class="w"> </span><span class="k">Key</span><span class="w"> </span><span class="n">Verified</span><span class="err">!</span><span class="w"></span>
+<span class="n">Generate</span><span class="w"> </span><span class="n">an</span><span class="w"> </span><span class="n">access</span><span class="w"> </span><span class="n">token</span><span class="w"> </span><span class="k">at</span><span class="w"> </span><span class="nl">https</span><span class="p">:</span><span class="o">//</span><span class="n">cloud</span><span class="p">.</span><span class="n">se2</span><span class="p">.</span><span class="n">abci</span><span class="p">.</span><span class="k">local</span><span class="o">/</span><span class="n">auth</span><span class="o">/</span><span class="n">tokens</span><span class="p">,</span><span class="w"> </span><span class="ow">and</span><span class="w"> </span><span class="n">paste</span><span class="w"> </span><span class="n">it</span><span class="w"> </span><span class="n">here</span><span class="p">.</span><span class="w"></span>
+<span class="n">Token</span><span class="w"> </span><span class="n">entered</span><span class="w"> </span><span class="n">will</span><span class="w"> </span><span class="n">be</span><span class="w"> </span><span class="n">hidden</span><span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="n">security</span><span class="p">.</span><span class="w"></span>
+<span class="n">Access</span><span class="w"> </span><span class="nl">Token</span><span class="p">:</span><span class="w"></span>
+<span class="nl">INFO</span><span class="p">:</span><span class="w">    </span><span class="n">Access</span><span class="w"> </span><span class="n">Token</span><span class="w"> </span><span class="n">Verified</span><span class="err">!</span><span class="w"></span>
+<span class="nl">INFO</span><span class="p">:</span><span class="w">    </span><span class="n">Token</span><span class="w"> </span><span class="n">stored</span><span class="w"> </span><span class="ow">in</span><span class="w"> </span><span class="o">/</span><span class="n">home</span><span class="o">/</span><span class="n">username</span><span class="o">/</span><span class="p">.</span><span class="n">singularity</span><span class="o">/</span><span class="n">remote</span><span class="p">.</span><span class="n">yaml</span><span class="w"></span>
 <span class="o">[</span><span class="n">username@es1 ~</span><span class="o">]</span><span class="err">$</span><span class="w"></span>
 </code></pre></div>
 
@@ -1397,10 +1366,10 @@
 
 <p>Next, to create the container image "ubuntu.sif" by Remote Build with "ubuntu.def", specify <code>--remote</code> to the command <code>singularity build</code>.</p>
 <div class="codehilite"><pre><span></span><code><span class="o">[</span><span class="n">username@es1 ~</span><span class="o">]</span><span class="err">$</span><span class="w"> </span><span class="n">singularity</span><span class="w"> </span><span class="n">build</span><span class="w"> </span><span class="o">--</span><span class="n">remote</span><span class="w"> </span><span class="n">ubuntu</span><span class="p">.</span><span class="n">sif</span><span class="w"> </span><span class="n">ubuntu</span><span class="p">.</span><span class="n">def</span><span class="w"></span>
-<span class="nl">INFO</span><span class="p">:</span><span class="w">    </span><span class="n">Remote</span><span class="w"> </span><span class="ss">&quot;default&quot;</span><span class="w"> </span><span class="n">added</span><span class="p">.</span><span class="w"></span>
-<span class="nl">INFO</span><span class="p">:</span><span class="w">    </span><span class="n">Authenticating</span><span class="w"> </span><span class="k">with</span><span class="w"> </span><span class="nl">remote</span><span class="p">:</span><span class="w"> </span><span class="k">default</span><span class="w"></span>
-<span class="nl">INFO</span><span class="p">:</span><span class="w">    </span><span class="n">API</span><span class="w"> </span><span class="k">Key</span><span class="w"> </span><span class="n">Verified</span><span class="err">!</span><span class="w"></span>
-<span class="nl">INFO</span><span class="p">:</span><span class="w">    </span><span class="n">Remote</span><span class="w"> </span><span class="ss">&quot;default&quot;</span><span class="w"> </span><span class="n">now</span><span class="w"> </span><span class="ow">in</span><span class="w"> </span><span class="k">use</span><span class="p">.</span><span class="w"></span>
+<span class="nl">INFO</span><span class="p">:</span><span class="w">    </span><span class="n">Remote</span><span class="w"> </span><span class="ss">&quot;cloud.se2.abci.local&quot;</span><span class="w"> </span><span class="n">added</span><span class="p">.</span><span class="w"></span>
+<span class="nl">INFO</span><span class="p">:</span><span class="w">    </span><span class="n">Access</span><span class="w"> </span><span class="n">Token</span><span class="w"> </span><span class="n">Verified</span><span class="err">!</span><span class="w"></span>
+<span class="nl">INFO</span><span class="p">:</span><span class="w">    </span><span class="n">Token</span><span class="w"> </span><span class="n">stored</span><span class="w"> </span><span class="ow">in</span><span class="w"> </span><span class="o">/</span><span class="n">root</span><span class="o">/</span><span class="p">.</span><span class="n">singularity</span><span class="o">/</span><span class="n">remote</span><span class="p">.</span><span class="n">yaml</span><span class="w"></span>
+<span class="nl">INFO</span><span class="p">:</span><span class="w">    </span><span class="n">Remote</span><span class="w"> </span><span class="ss">&quot;cloud.se2.abci.local&quot;</span><span class="w"> </span><span class="n">now</span><span class="w"> </span><span class="ow">in</span><span class="w"> </span><span class="k">use</span><span class="p">.</span><span class="w"></span>
 <span class="nl">INFO</span><span class="p">:</span><span class="w">    </span><span class="n">Starting</span><span class="w"> </span><span class="n">build</span><span class="p">...</span><span class="w"></span>
 <span class="err">:</span><span class="w"></span>
 <span class="err">:</span><span class="w"></span>
@@ -1412,7 +1381,7 @@
 <div class="codehilite"><pre><span></span><code><span class="p">[</span><span class="n">username</span><span class="err">@</span><span class="n">es1</span> <span class="o">~</span><span class="p">]</span><span class="o">$</span> <span class="n">qrsh</span> <span class="o">-</span><span class="n">g</span> <span class="n">grpname</span> <span class="o">-</span><span class="n">l</span> <span class="n">rt_C</span><span class="o">.</span><span class="n">small</span><span class="o">=</span><span class="mi">1</span> <span class="o">-</span><span class="n">l</span> <span class="n">h_rt</span><span class="o">=</span><span class="mi">1</span><span class="p">:</span><span class="mi">00</span><span class="p">:</span><span class="mi">00</span>
 <span class="p">[</span><span class="n">username</span><span class="err">@</span><span class="n">g0001</span> <span class="o">~</span><span class="p">]</span><span class="o">$</span> <span class="n">module</span> <span class="nb">load</span> <span class="n">singularitypro</span>
 <span class="p">[</span><span class="n">username</span><span class="err">@</span><span class="n">g0001</span> <span class="o">~</span><span class="p">]</span><span class="o">$</span> <span class="n">singularity</span> <span class="n">run</span> <span class="n">ubuntu</span><span class="o">.</span><span class="n">sif</span>
-<span class="n">Description</span><span class="p">:</span>    <span class="n">Ubuntu</span> <span class="mf">18.04</span><span class="o">.</span><span class="mi">5</span> <span class="n">LTS</span>
+<span class="n">Description</span><span class="p">:</span>    <span class="n">Ubuntu</span> <span class="mf">18.04</span><span class="o">.</span><span class="mi">6</span> <span class="n">LTS</span>
 <span class="p">[</span><span class="n">username</span><span class="err">@</span><span class="n">g0001</span> <span class="o">~</span><span class="p">]</span><span class="o">$</span> 
 </code></pre></div>
 
@@ -1564,7 +1533,7 @@ Enter key passphrase :
 Signature created and applied to ./ubuntu.sif
 </code></pre></div>
 
-<p>The location of container images in Container Library is represented by a URI <code>library://username/collection/container:tag</code>. Refer to the description of each component below to determine the URI.</p>
+<p>The location of container images in Container Library is represented by a URI <code>library://username/collection/repository:tag</code>. Refer to the description of each component below to determine the URI.</p>
 <table>
 <thead>
 <tr>
@@ -1582,8 +1551,8 @@ Signature created and applied to ./ubuntu.sif
 <td align="left">Specify collection name as any string</td>
 </tr>
 <tr>
-<td align="left">container</td>
-<td align="left">Specify the container image name as any string.</td>
+<td align="left">repository</td>
+<td align="left">Specify the repository name as any string.</td>
 </tr>
 <tr>
 <td align="left">tag</td>
@@ -1652,35 +1621,28 @@ The following example validates the signature with the public key that is regist
 <p>You can delete container images such as <code>library://username/abci-lib/helloworld:latest</code>, which are associated with at least one tag or ID, but you can not delete container names such as <code>library://username/abci-lib/helloworld</code>.</p>
 </div>
 <h3 id="listing-container-images">Listing Container Images</h3>
-<p>To list the container images uploaded to Container Library, use <code>list_singularity_images</code>.
-The container images are displayed in the URI format <code>library://username/collection/container</code>.
-If the container image has been tagged, <code>Tag</code> appears on the next line of the container image URI. If no tag is given, <code>Unique ID</code> is displayed instead.</p>
-<div class="codehilite"><pre><span></span><code><span class="o">[</span><span class="n">username@es1 ~</span><span class="o">]</span><span class="err">$</span><span class="w"> </span><span class="n">list_singularity_images</span><span class="w"></span>
-<span class="nl">library</span><span class="p">:</span><span class="o">//</span><span class="n">username</span><span class="o">/</span><span class="n">collection1</span><span class="o">/</span><span class="n">container1</span><span class="w"></span>
-<span class="w">    </span><span class="nl">Tag</span><span class="p">:</span><span class="w"> </span><span class="n">latest</span><span class="w"></span>
-
-<span class="nl">library</span><span class="p">:</span><span class="o">//</span><span class="n">username</span><span class="o">/</span><span class="n">collection2</span><span class="o">/</span><span class="n">container2</span><span class="w"></span>
-<span class="w">    </span><span class="k">Unique</span><span class="w"> </span><span class="nl">ID</span><span class="p">:</span><span class="w"> </span><span class="n">sha256</span><span class="p">.</span><span class="n">xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx</span><span class="w"></span>
-
-<span class="nl">library</span><span class="p">:</span><span class="o">//</span><span class="n">username</span><span class="o">/</span><span class="n">collection3</span><span class="o">/</span><span class="n">container3</span><span class="w"></span>
+<p>You can view container image list information uploaded to the Container Library.
+The collection name list can be viewed with <code>singularity enterprise get col</code>. Specify ABCI account name as the argument.</p>
+<div class="codehilite"><pre><span></span><code><span class="o">[</span><span class="n">username@es1 ~</span><span class="o">]</span><span class="err">$</span><span class="w"> </span><span class="n">singularity</span><span class="w"> </span><span class="n">enterprise</span><span class="w"> </span><span class="k">get</span><span class="w"> </span><span class="n">col</span><span class="w"> </span><span class="n">username</span><span class="w"></span>
+<span class="n">ID</span><span class="w">                         </span><span class="n">Name</span><span class="w">            </span><span class="n">Num</span><span class="p">.</span><span class="w"> </span><span class="n">Containers</span><span class="w"></span>
+<span class="n">username</span><span class="o">/</span><span class="n">tensorflow</span><span class="o">-</span><span class="n">test</span><span class="w"> </span><span class="n">tensorflow</span><span class="o">-</span><span class="n">test</span><span class="w"> </span><span class="mi">1</span><span class="w"></span>
+<span class="n">username</span><span class="o">/</span><span class="n">ubuntu</span><span class="o">-</span><span class="n">test</span><span class="w">     </span><span class="n">ubuntu</span><span class="o">-</span><span class="n">test</span><span class="w">     </span><span class="mi">2</span><span class="w"></span>
+<span class="o">[</span><span class="n">username@es1 ~</span><span class="o">]</span><span class="err">$</span><span class="w"></span>
 </code></pre></div>
 
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>If neither <code>Tag</code> nor <code>Unique ID</code> is displayed, it means that there is no container image in the container.</p>
-</div>
-<p>You can also add option <code>-v</code> to <code>list_singularity_images</code> to display the fingerprint (if present) and image size.</p>
-<div class="codehilite"><pre><span></span><code><span class="o">[</span><span class="n">username@es1 ~</span><span class="o">]</span><span class="err">$</span><span class="w"> </span><span class="n">list_singularity_images</span><span class="w"> </span><span class="o">-</span><span class="n">v</span><span class="w"></span>
-<span class="nl">library</span><span class="p">:</span><span class="o">//</span><span class="n">username</span><span class="o">/</span><span class="n">collection1</span><span class="o">/</span><span class="n">container1</span><span class="w"></span>
-<span class="w">    </span><span class="nl">Tag</span><span class="p">:</span><span class="w"> </span><span class="n">latest</span><span class="w"></span>
-<span class="w">    </span><span class="nc">Image</span><span class="w"> </span><span class="k">Size</span><span class="err">:</span><span class="w"> </span><span class="mf">10.00</span><span class="w"> </span><span class="n">MB</span><span class="w"></span>
-<span class="w">    </span><span class="n">Finger</span><span class="w"> </span><span class="nl">Prints</span><span class="p">:</span><span class="w"> </span><span class="n">XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX</span><span class="w"></span>
+<p>The list of repositories in a collection can be viewed with <code>singularity enterprise get rep</code>. It takes an argument of the ID shown in <code>singularity enterprise get col</code>.</p>
+<div class="codehilite"><pre><span></span><code><span class="p">[</span><span class="n">username</span><span class="err">@</span><span class="n">es1</span> <span class="o">~</span><span class="p">]</span><span class="o">$</span> <span class="n">singularity</span> <span class="n">enterprise</span> <span class="n">get</span> <span class="n">rep</span> <span class="n">username</span><span class="o">/</span><span class="n">ubuntu</span><span class="o">-</span><span class="n">test</span>
+<span class="n">ID</span>                             <span class="n">Name</span>    <span class="n">Description</span> <span class="n">Images</span> <span class="n">Tags</span> <span class="n">Size</span>      <span class="n">DownloadCount</span>
+<span class="n">username</span><span class="o">/</span><span class="n">ubuntu</span><span class="o">-</span><span class="n">test</span><span class="o">/</span><span class="n">ubuntu</span>    <span class="n">ubuntu</span>              <span class="mi">1</span>      <span class="mi">0</span>     <span class="mf">64.0</span> <span class="n">MiB</span> <span class="mi">3</span>
+<span class="n">username</span><span class="o">/</span><span class="n">ubuntu</span><span class="o">-</span><span class="n">test</span><span class="o">/</span><span class="n">ubuntu2</span>   <span class="n">ubuntu2</span>             <span class="mi">1</span>      <span class="mi">0</span>     <span class="mf">67.0</span> <span class="n">MiB</span> <span class="mi">5</span>
+<span class="p">[</span><span class="n">username</span><span class="err">@</span><span class="n">es1</span> <span class="o">~</span><span class="p">]</span><span class="o">$</span>
+</code></pre></div>
 
-<span class="nl">library</span><span class="p">:</span><span class="o">//</span><span class="n">username</span><span class="o">/</span><span class="n">collection2</span><span class="o">/</span><span class="n">container2</span><span class="w"></span>
-<span class="w">    </span><span class="k">Unique</span><span class="w"> </span><span class="nl">ID</span><span class="p">:</span><span class="w"> </span><span class="n">sha256</span><span class="p">.</span><span class="n">xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx</span><span class="w"></span>
-<span class="w">    </span><span class="nc">Image</span><span class="w"> </span><span class="k">Size</span><span class="err">:</span><span class="w"> </span><span class="mf">20.00</span><span class="w"> </span><span class="n">MB</span><span class="w"></span>
-
-<span class="nl">library</span><span class="p">:</span><span class="o">//</span><span class="n">username</span><span class="o">/</span><span class="n">collection3</span><span class="o">/</span><span class="n">container3</span><span class="w"></span>
+<p>Container image information can be viewed with <code>singularity enterprise get img</code>. It takes an argument of ID shown in <code>singularity enterprise get rep</code>.</p>
+<div class="codehilite"><pre><span></span><code><span class="p">[</span><span class="n">username</span><span class="err">@</span><span class="n">es1</span> <span class="o">~</span><span class="p">]</span><span class="o">$</span> <span class="n">singularity</span> <span class="n">enterprise</span> <span class="n">get</span> <span class="n">img</span> <span class="n">username</span><span class="o">/</span><span class="n">ubuntu</span><span class="o">-</span><span class="n">test</span><span class="o">/</span><span class="n">ubuntu2</span>
+<span class="n">ID</span>                                                                                                     <span class="n">Tags</span>              <span class="n">Arch</span>  <span class="n">Description</span> <span class="n">Size</span>      <span class="n">Signed</span> <span class="n">Encrypted</span> <span class="n">Uploaded</span>
+<span class="n">username</span><span class="o">/</span><span class="n">ubuntu</span><span class="o">-</span><span class="n">test</span><span class="o">/</span><span class="n">ubuntu2</span><span class="p">:</span><span class="n">sha256</span><span class="o">.</span><span class="n">xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx</span>   <span class="p">[</span><span class="mi">20221118</span> <span class="n">latest</span><span class="p">]</span> <span class="n">amd64</span>              <span class="mf">67.0</span> <span class="n">MiB</span> <span class="bp">true</span>   <span class="bp">false</span>     <span class="bp">true</span>
+<span class="p">[</span><span class="n">username</span><span class="err">@</span><span class="n">es1</span> <span class="o">~</span><span class="p">]</span><span class="o">$</span>
 </code></pre></div>
 
 <h3 id="viewing-container-library-usage">Viewing Container Library Usage</h3>
@@ -1688,8 +1650,8 @@ If the container image has been tagged, <code>Tag</code> appears on the next lin
 <div class="codehilite"><pre><span></span><code><span class="o">[</span><span class="n">username@es1 ~</span><span class="o">]</span><span class="err">$</span><span class="w"> </span><span class="n">show_container_library_usage</span><span class="w"></span>
 <span class="n">ABCI</span><span class="w"> </span><span class="n">portal</span><span class="w"> </span><span class="n">password</span><span class="w"> </span><span class="err">:</span><span class="w"></span>
 <span class="n">just</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="n">moment</span><span class="p">,</span><span class="w"> </span><span class="n">please</span><span class="p">...</span><span class="w"></span>
-<span class="n">used</span><span class="p">(</span><span class="n">MiB</span><span class="p">)</span><span class="w"> </span><span class="k">limit</span><span class="p">(</span><span class="n">GiB</span><span class="p">)</span><span class="w"> </span><span class="n">num_of_containers</span><span class="w"></span>
-<span class="mf">49.39</span><span class="w">     </span><span class="mf">100.00</span><span class="w">     </span><span class="mi">1</span><span class="w"></span>
+<span class="n">used</span><span class="p">(</span><span class="n">GiB</span><span class="p">)</span><span class="w"> </span><span class="k">limit</span><span class="p">(</span><span class="n">GiB</span><span class="p">)</span><span class="w"> </span><span class="n">num_of_repositories</span><span class="w"></span>
+<span class="mi">3</span><span class="w">         </span><span class="mi">100</span><span class="w">        </span><span class="mi">6</span><span class="w"></span>
 </code></pre></div>
 
 <h2 id="access-tokens">Access Tokens</h2>
@@ -1701,19 +1663,19 @@ If the container image has been tagged, <code>Tag</code> appears on the next lin
 <span class="n">just</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="n">moment</span><span class="p">,</span><span class="w"> </span><span class="n">please</span><span class="p">...</span><span class="w"></span>
 
 <span class="n">Token</span><span class="w"> </span><span class="nl">ID</span><span class="p">:</span><span class="w"> </span><span class="n">XXXXXXXXXXXXXXXXXXXXXXXX</span><span class="w"></span>
-<span class="n">Issued</span><span class="w"> </span><span class="k">at</span><span class="err">:</span><span class="w"> </span><span class="mi">2020</span><span class="o">-</span><span class="mi">12</span><span class="o">-</span><span class="mi">21</span><span class="w"> </span><span class="mi">18</span><span class="err">:</span><span class="mi">20</span><span class="err">:</span><span class="mi">47</span><span class="w"> </span><span class="n">JST</span><span class="w"></span>
-<span class="nl">Expires</span><span class="p">:</span><span class="w"> </span><span class="mi">2021</span><span class="o">-</span><span class="mi">12</span><span class="o">-</span><span class="mi">21</span><span class="w"> </span><span class="mi">18</span><span class="err">:</span><span class="mi">20</span><span class="err">:</span><span class="mi">47</span><span class="w"> </span><span class="n">JST</span><span class="w"></span>
+<span class="nl">Issued</span><span class="p">:</span><span class="w"> </span><span class="n">Apr</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span><span class="w"> </span><span class="mi">2023</span><span class="w"> </span><span class="k">at</span><span class="w"> </span><span class="mi">6</span><span class="err">:</span><span class="mi">55</span><span class="w"> </span><span class="n">pm</span><span class="w"> </span><span class="n">JST</span><span class="w"></span>
+<span class="nl">Expires</span><span class="p">:</span><span class="w"> </span><span class="n">Apr</span><span class="w"> </span><span class="mi">4</span><span class="p">,</span><span class="w"> </span><span class="mi">2024</span><span class="w"> </span><span class="k">at</span><span class="w"> </span><span class="mi">6</span><span class="err">:</span><span class="mi">55</span><span class="w"> </span><span class="n">pm</span><span class="w"> </span><span class="n">JST</span><span class="w"></span>
 
 <span class="n">Token</span><span class="w"> </span><span class="nl">ID</span><span class="p">:</span><span class="w"> </span><span class="n">XXXXXXXXXXXXXXXXXXXXXXXX</span><span class="w"></span>
-<span class="n">Issued</span><span class="w"> </span><span class="k">at</span><span class="err">:</span><span class="w"> </span><span class="mi">2020</span><span class="o">-</span><span class="mi">12</span><span class="o">-</span><span class="mi">23</span><span class="w"> </span><span class="mi">15</span><span class="err">:</span><span class="mi">59</span><span class="err">:</span><span class="mi">02</span><span class="w"> </span><span class="n">JST</span><span class="w"></span>
-<span class="nl">Expires</span><span class="p">:</span><span class="w"> </span><span class="mi">2021</span><span class="o">-</span><span class="mi">12</span><span class="o">-</span><span class="mi">23</span><span class="w"> </span><span class="mi">15</span><span class="err">:</span><span class="mi">59</span><span class="err">:</span><span class="mi">02</span><span class="w"> </span><span class="n">JST</span><span class="w"></span>
+<span class="nl">Issued</span><span class="p">:</span><span class="w"> </span><span class="n">Apr</span><span class="w"> </span><span class="mi">6</span><span class="p">,</span><span class="w"> </span><span class="mi">2023</span><span class="w"> </span><span class="k">at</span><span class="w"> </span><span class="mi">12</span><span class="err">:</span><span class="mi">14</span><span class="w"> </span><span class="n">pm</span><span class="w"> </span><span class="n">JST</span><span class="w"></span>
+<span class="nl">Expires</span><span class="p">:</span><span class="w"> </span><span class="n">Apr</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span><span class="w"> </span><span class="mi">2024</span><span class="w"> </span><span class="k">at</span><span class="w"> </span><span class="mi">12</span><span class="err">:</span><span class="mi">14</span><span class="w"> </span><span class="n">pm</span><span class="w"> </span><span class="n">JST</span><span class="w"></span>
 </code></pre></div>
 
 <h3 id="revoking-the-access-token">Revoking the Access Token</h3>
-<p>You can revoke the access token with <code>revoke_singularity_token</code>. Specify the Token ID you want to remove as an argument from the list of access tokens displayed in <code>list_singularity_tokens</code> command. You must enter the ABCI password to revoke the access token.</p>
-<div class="codehilite"><pre><span></span><code><span class="o">[</span><span class="n">username@es1 ~</span><span class="o">]</span><span class="err">$</span><span class="w"> </span><span class="n">revoke_singularity_token</span><span class="w"> </span><span class="o">&lt;</span><span class="n">Token</span><span class="w"> </span><span class="n">ID</span><span class="o">&gt;</span><span class="w"></span>
-<span class="n">ABCI</span><span class="w"> </span><span class="n">portal</span><span class="w"> </span><span class="n">password</span><span class="w"> </span><span class="err">:</span><span class="w"></span>
-<span class="n">just</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="n">moment</span><span class="p">,</span><span class="w"> </span><span class="n">please</span><span class="p">...</span><span class="w"></span>
+<p>You can revoke the access token with <code>singularity enterprise delete token</code>. Specify the Token ID you want to remove as an argument from the list of access tokens displayed in <code>list_singularity_tokens</code> command.</p>
+<div class="codehilite"><pre><span></span><code><span class="o">[</span><span class="n">username@es1 ~</span><span class="o">]</span><span class="err">$</span><span class="w"> </span><span class="n">singularity</span><span class="w"> </span><span class="n">enterprise</span><span class="w"> </span><span class="k">delete</span><span class="w"> </span><span class="n">token</span><span class="w"> </span><span class="o">&lt;</span><span class="n">Token</span><span class="w"> </span><span class="n">ID</span><span class="o">&gt;</span><span class="w"></span>
+<span class="nl">INFO</span><span class="p">:</span><span class="w">    </span><span class="n">Revoking</span><span class="w"> </span><span class="n">token</span><span class="w"> </span><span class="n">XXXXXXXXXXXXXXXXXXXXXXXX</span><span class="w"></span>
+<span class="o">[</span><span class="n">username@es1 list_singularity_tokens</span><span class="o">]</span><span class="err">$</span><span class="w"></span>
 </code></pre></div>
                 
               

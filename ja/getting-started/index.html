@@ -684,18 +684,6 @@
   
   
     <li class="md-nav__item">
-      <a href="../apps/tensorflow-keras/" class="md-nav__link">
-        TensorFlow Keras
-      </a>
-    </li>
-  
-
-          
-            
-  
-  
-  
-    <li class="md-nav__item">
       <a href="../apps/pytorch/" class="md-nav__link">
         PyTorch
       </a>
@@ -710,30 +698,6 @@
     <li class="md-nav__item">
       <a href="../apps/mxnet/" class="md-nav__link">
         MXNet
-      </a>
-    </li>
-  
-
-          
-            
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../apps/chainer/" class="md-nav__link">
-        Chainer
-      </a>
-    </li>
-  
-
-          
-            
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../apps/others/" class="md-nav__link">
-        その他
       </a>
     </li>
   
@@ -1627,7 +1591,8 @@ ABCIポイント消費率が100%を超える見込みの場合、新規ジョブ
 </tr>
 </tbody>
 </table>
-<p>なお、inode数上限値の欄に "-" が表示されている場合、inode使用数に制限はありません。</p>
+<p>なお、inode数上限値の欄に "-" が表示されている場合、inode使用数に制限はありません。
+また、ディスク使用量がディスク上限値を超えている場合、ディスク使用量の欄に"*"が表示されます。</p>
 <p>inode使用数がinode数上限値を超過している、またはディスク使用量がディスク上限値を超過している場合、新規ファイル・ディレクトリの作成に失敗します。</p>
 <div class="codehilite"><pre><span></span><code><span class="o">[</span><span class="n">username@es1 ~</span><span class="o">]</span><span class="err">$</span><span class="w"> </span><span class="n">touch</span><span class="w"> </span><span class="n">quota_test</span><span class="w"></span>
 <span class="nl">touch</span><span class="p">:</span><span class="w"> </span><span class="n">cannot</span><span class="w"> </span><span class="n">touch</span><span class="w"> </span><span class="s1">&#39;quota_test&#39;</span><span class="err">:</span><span class="w"> </span><span class="k">Disk</span><span class="w"> </span><span class="n">quota</span><span class="w"> </span><span class="n">exceeded</span><span class="w"></span>

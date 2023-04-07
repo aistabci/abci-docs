@@ -814,18 +814,6 @@
   
   
     <li class="md-nav__item">
-      <a href="../apps/tensorflow-keras/" class="md-nav__link">
-        TensorFlow Keras
-      </a>
-    </li>
-  
-
-          
-            
-  
-  
-  
-    <li class="md-nav__item">
       <a href="../apps/pytorch/" class="md-nav__link">
         PyTorch
       </a>
@@ -840,30 +828,6 @@
     <li class="md-nav__item">
       <a href="../apps/mxnet/" class="md-nav__link">
         MXNet
-      </a>
-    </li>
-  
-
-          
-            
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../apps/chainer/" class="md-nav__link">
-        Chainer
-      </a>
-    </li>
-  
-
-          
-            
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../apps/others/" class="md-nav__link">
-        Others
       </a>
     </li>
   
@@ -2014,7 +1978,7 @@ The job script is described job execute option, such as resource type, elapsed t
 <span class="c1">#$-cwd</span>
 
 <span class="nb">source</span> /etc/profile.d/modules.sh
-module load cuda/9.2/9.2.88.1
+module load cuda/10.2/10.2.89
 ./a.out
 </code></pre></div>
 
@@ -2417,6 +2381,11 @@ For more detail, use <code>man sge_accounting</code> command.</p>
 <td align="left">30 days</td>
 </tr>
 <tr>
+<td align="left">Maximum number of nodes can be reserved at once per ABCI group</td>
+<td align="left">272 nodes</td>
+<td align="left">30 nodes</td>
+</tr>
+<tr>
 <td align="left">Maximum number of nodes can be reserved at once per system</td>
 <td align="left">442 nodes</td>
 <td align="left">50 nodes</td>
@@ -2464,10 +2433,6 @@ When the reservation is completed, a reservation ID will be issued. Please speci
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
 <p>Making reservation of compute node is permitted to a responsible person or a manager.</p>
-</div>
-<div class="admonition warning">
-<p class="admonition-title">Warning</p>
-<p>You cannot reserve a compute node (A) in the ABCI User Portal.</p>
 </div>
 <div class="codehilite"><pre><span></span><code>$ qrsub options
 </code></pre></div>

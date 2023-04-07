@@ -684,18 +684,6 @@
   
   
     <li class="md-nav__item">
-      <a href="../apps/tensorflow-keras/" class="md-nav__link">
-        TensorFlow Keras
-      </a>
-    </li>
-  
-
-          
-            
-  
-  
-  
-    <li class="md-nav__item">
       <a href="../apps/pytorch/" class="md-nav__link">
         PyTorch
       </a>
@@ -710,30 +698,6 @@
     <li class="md-nav__item">
       <a href="../apps/mxnet/" class="md-nav__link">
         MXNet
-      </a>
-    </li>
-  
-
-          
-            
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../apps/chainer/" class="md-nav__link">
-        Chainer
-      </a>
-    </li>
-  
-
-          
-            
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../apps/others/" class="md-nav__link">
-        Others
       </a>
     </li>
   
@@ -1615,7 +1579,8 @@ use the <code>show_quota</code> command as below;</p>
 </tr>
 </tbody>
 </table>
-<p>In case "-" is displayed in the culumn for the inodes quota limit, the number of inodes is unlimited.</p>
+<p>In case "-" is displayed in the culumn for the inodes quota limit, the number of inodes is unlimited.
+If the disk usage exceeds the disk limit, the column <code>used (GiB)</code> displays "*".</p>
 <p>When the number of inodes (disk usage) exceeds the inode (disk) quota limit, the file or directory creation is failed with the following message.</p>
 <div class="codehilite"><pre><span></span><code><span class="o">[</span><span class="n">username@es1 ~</span><span class="o">]</span><span class="err">$</span><span class="w"> </span><span class="n">touch</span><span class="w"> </span><span class="n">quota_test</span><span class="w"></span>
 <span class="nl">touch</span><span class="p">:</span><span class="w"> </span><span class="n">cannot</span><span class="w"> </span><span class="n">touch</span><span class="w"> </span><span class="s1">&#39;quota_test&#39;</span><span class="err">:</span><span class="w"> </span><span class="k">Disk</span><span class="w"> </span><span class="n">quota</span><span class="w"> </span><span class="n">exceeded</span><span class="w"></span>

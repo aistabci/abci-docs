@@ -488,13 +488,6 @@
   
 </li>
       
-        <li class="md-nav__item">
-  <a href="#docker" class="md-nav__link">
-    Docker
-  </a>
-  
-</li>
-      
     </ul>
   
 </nav>
@@ -649,18 +642,6 @@
   
   
     <li class="md-nav__item">
-      <a href="../apps/tensorflow-keras/" class="md-nav__link">
-        TensorFlow Keras
-      </a>
-    </li>
-  
-
-          
-            
-  
-  
-  
-    <li class="md-nav__item">
       <a href="../apps/pytorch/" class="md-nav__link">
         PyTorch
       </a>
@@ -675,30 +656,6 @@
     <li class="md-nav__item">
       <a href="../apps/mxnet/" class="md-nav__link">
         MXNet
-      </a>
-    </li>
-  
-
-          
-            
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../apps/chainer/" class="md-nav__link">
-        Chainer
-      </a>
-    </li>
-  
-
-          
-            
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../apps/others/" class="md-nav__link">
-        その他
       </a>
     </li>
   
@@ -1264,25 +1221,28 @@ NGC CatalogのABCIでの使い方はTipsの<a href="https://docs.abci.ai/ja/tips
 ここでは、<code>pull</code>を用いたSingularityイメージファイルの作成手順を示します。</p>
 <p>pullによるSingularityイメージファイルの作成例）</p>
 <div class="codehilite"><pre><span></span><code><span class="p">[</span><span class="n">username</span><span class="err">@</span><span class="n">es1</span> <span class="o">~</span><span class="p">]</span><span class="o">$</span> <span class="n">module</span> <span class="nb">load</span> <span class="n">singularitypro</span>
-<span class="p">[</span><span class="n">username</span><span class="err">@</span><span class="n">es1</span> <span class="o">~</span><span class="p">]</span><span class="o">$</span> <span class="n">singularity</span> <span class="n">pull</span> <span class="n">caffe2</span><span class="o">.</span><span class="n">img</span> <span class="n">docker</span><span class="p">:</span><span class="o">//</span><span class="n">caffe2ai</span><span class="o">/</span><span class="n">caffe2</span><span class="p">:</span><span class="n">latest</span>
+<span class="p">[</span><span class="n">username</span><span class="err">@</span><span class="n">es1</span> <span class="o">~</span><span class="p">]</span><span class="o">$</span> <span class="k">export</span> <span class="n">SINGULARITY_TMPDIR</span><span class="o">=/</span><span class="n">scratch</span><span class="o">/$</span><span class="n">USER</span>
+<span class="p">[</span><span class="n">username</span><span class="err">@</span><span class="n">es1</span> <span class="o">~</span><span class="p">]</span><span class="o">$</span> <span class="n">singularity</span> <span class="n">pull</span> <span class="n">tensorflow</span><span class="o">.</span><span class="n">img</span> <span class="n">docker</span><span class="p">:</span><span class="o">//</span><span class="n">tensorflow</span><span class="o">/</span><span class="n">tensorflow</span><span class="p">:</span><span class="n">latest</span><span class="o">-</span><span class="n">gpu</span>
 <span class="n">INFO</span><span class="p">:</span>    <span class="n">Converting</span> <span class="n">OCI</span> <span class="n">blobs</span> <span class="n">to</span> <span class="n">SIF</span> <span class="n">format</span>
 <span class="n">INFO</span><span class="p">:</span>    <span class="n">Starting</span> <span class="n">build</span><span class="o">...</span>
 <span class="o">...</span>
-<span class="p">[</span><span class="n">username</span><span class="err">@</span><span class="n">es1</span> <span class="o">~</span><span class="p">]</span><span class="o">$</span> <span class="n">ls</span> <span class="n">caffe2</span><span class="o">.</span><span class="n">img</span>
-<span class="n">caffe2</span><span class="o">.</span><span class="n">img</span>
+<span class="p">[</span><span class="n">username</span><span class="err">@</span><span class="n">es1</span> <span class="o">~</span><span class="p">]</span><span class="o">$</span> <span class="n">ls</span> <span class="n">tensorflow</span><span class="o">.</span><span class="n">img</span>
+<span class="n">tensorflow</span><span class="o">.</span><span class="n">img</span>
 </code></pre></div>
 
+<p>SINGULARITY_TMPDIR環境変数は<code>pull</code>や後述する<code>build</code>実行時の一時ファイルを作成する場所を指定します。
+詳しくはFAQ <a href="../faq/#q-insufficient-disk-space-for-singularity-build">singularity build/pullすると容量不足でエラーになる</a>を参照してください。</p>
 <h3 id="create-a-singularity-image-build">Singularityイメージファイルの作成(build)</h3>
 <p>ABCIシステムのSingularityPRO環境では<code>fakeroot</code>オプションを使用することによりbuildを使ったイメージ構築が可能です。</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>SingularityPRO環境ではリモートビルドも利用可能です。詳細は<a href="../abci-singularity-endpoint/">ABCI Singularity エンドポイント</a>を参照して下さい。</p>
 </div>
-<p>buildによるSingularityイメージファイルの作成例）</p>
+<p><code>build</code>によるSingularityイメージファイルの作成例）</p>
 <div class="codehilite"><pre><span></span><code><span class="p">[</span><span class="n">username</span><span class="err">@</span><span class="n">es1</span> <span class="o">~</span><span class="p">]</span><span class="n">$</span> <span class="k">module</span> <span class="n">load</span> <span class="n">singularitypro</span>
 <span class="p">[</span><span class="n">username</span><span class="err">@</span><span class="n">es1</span> <span class="o">~</span><span class="p">]</span><span class="n">$</span> <span class="n">cat</span> <span class="n">ubuntu</span><span class="p">.</span><span class="n">def</span>
 <span class="nl">Bootstrap</span><span class="p">:</span> <span class="n">docker</span>
-<span class="nl">From</span><span class="p">:</span> <span class="nl">ubuntu</span><span class="p">:</span><span class="mf">18.04</span>
+<span class="nl">From</span><span class="p">:</span> <span class="nl">ubuntu</span><span class="p">:</span><span class="mf">20.04</span>
 
 <span class="nf">%post</span>
     <span class="n">apt</span><span class="o">-</span><span class="n">get</span> <span class="n">update</span>
@@ -1311,9 +1271,9 @@ NGC CatalogのABCIでの使い方はTipsの<a href="https://docs.abci.ai/ja/tips
 イメージファイルをコンテナで実行する場合は<code>singularity run</code>コマンドの引数でイメージファイルを指定します。
 また、<code>singularity run</code>コマンドではDocker Hubで公開されているコンテナイメージを指定して実行することも可能です。</p>
 <p>インタラクティブジョブにおけるSingularityイメージファイルを使用したコンテナの実行例）</p>
-<div class="codehilite"><pre><span></span><code><span class="p">[</span><span class="n">username</span><span class="err">@</span><span class="n">es1</span> <span class="o">~</span><span class="p">]</span><span class="o">$</span> <span class="n">qrsh</span> <span class="o">-</span><span class="n">g</span> <span class="n">grpname</span> <span class="o">-</span><span class="n">l</span> <span class="n">rt_G</span><span class="o">.</span><span class="n">small</span><span class="o">=</span><span class="mi">1</span> <span class="o">-</span><span class="n">l</span> <span class="n">h_rt</span><span class="o">=</span><span class="mi">1</span><span class="p">:</span><span class="mi">00</span><span class="p">:</span><span class="mi">00</span>
+<div class="codehilite"><pre><span></span><code><span class="p">[</span><span class="n">username</span><span class="err">@</span><span class="n">es1</span> <span class="o">~</span><span class="p">]</span><span class="o">$</span> <span class="n">qrsh</span> <span class="o">-</span><span class="n">g</span> <span class="n">grpname</span> <span class="o">-</span><span class="n">l</span> <span class="n">rt_F</span><span class="o">=</span><span class="mi">1</span> <span class="o">-</span><span class="n">l</span> <span class="n">h_rt</span><span class="o">=</span><span class="mi">1</span><span class="p">:</span><span class="mi">00</span><span class="p">:</span><span class="mi">00</span>
 <span class="p">[</span><span class="n">username</span><span class="err">@</span><span class="n">g0001</span> <span class="o">~</span><span class="p">]</span><span class="o">$</span> <span class="n">module</span> <span class="nb">load</span> <span class="n">singularitypro</span>
-<span class="p">[</span><span class="n">username</span><span class="err">@</span><span class="n">g0001</span> <span class="o">~</span><span class="p">]</span><span class="o">$</span> <span class="n">singularity</span> <span class="n">run</span> <span class="o">./</span><span class="n">caffe2</span><span class="o">.</span><span class="n">img</span>
+<span class="p">[</span><span class="n">username</span><span class="err">@</span><span class="n">g0001</span> <span class="o">~</span><span class="p">]</span><span class="o">$</span> <span class="n">singularity</span> <span class="n">run</span> <span class="o">--</span><span class="n">nv</span> <span class="o">./</span><span class="n">tensorflow</span><span class="o">.</span><span class="n">img</span>
 </code></pre></div>
 
 <p>バッチジョブにおけるSingularityイメージファイルを使用したコンテナの実行例）</p>
@@ -1322,25 +1282,35 @@ NGC CatalogのABCIでの使い方はTipsの<a href="https://docs.abci.ai/ja/tips
 <span class="c1">#$-l rt_F=1</span>
 <span class="c1">#$-j y</span>
 <span class="n">source</span> <span class="o">/</span><span class="n">etc</span><span class="o">/</span><span class="n">profile</span><span class="o">.</span><span class="n">d</span><span class="o">/</span><span class="n">modules</span><span class="o">.</span><span class="n">sh</span>
-<span class="n">module</span> <span class="nb">load</span> <span class="n">singularitypro</span> <span class="n">openmpi</span><span class="o">/</span><span class="mf">4.0</span><span class="o">.</span><span class="mi">5</span>
+<span class="n">module</span> <span class="nb">load</span> <span class="n">singularitypro</span>
 
-<span class="n">mpiexec</span> <span class="o">-</span><span class="n">n</span> <span class="mi">4</span> <span class="n">singularity</span> <span class="n">exec</span> <span class="o">--</span><span class="n">nv</span> <span class="o">./</span><span class="n">caffe2</span><span class="o">.</span><span class="n">img</span> \
-    <span class="n">python</span> <span class="n">sample</span><span class="o">.</span><span class="n">py</span>
+<span class="n">singularity</span> <span class="n">exec</span> <span class="o">--</span><span class="n">nv</span> <span class="o">./</span><span class="n">tensorflow</span><span class="o">.</span><span class="n">img</span> <span class="n">python3</span> <span class="n">sample</span><span class="o">.</span><span class="n">py</span>
 
 <span class="p">[</span><span class="n">username</span><span class="err">@</span><span class="n">es1</span> <span class="o">~</span><span class="p">]</span><span class="o">$</span> <span class="n">qsub</span> <span class="o">-</span><span class="n">g</span> <span class="n">grpname</span> <span class="n">job</span><span class="o">.</span><span class="n">sh</span>
 </code></pre></div>
 
 <p>Docker Hubで公開されているコンテナイメージの実行例）</p>
-<p>以下の例はDocker Hubで公開されているcaffe2のコンテナイメージを使用しSingularityを実行しています。
-<code>singularity run</code>コマンドにより起動したSingularityコンテナ上で<code>python sample.py</code>が実行されます。
+<p>以下の例はDocker Hubで公開されているTensorFlowのコンテナイメージを使用しSingularityを実行しています。
+<code>singularity run</code>コマンドにより起動したSingularityコンテナ上で<code>python3 sample.py</code>を実行します。
 コンテナイメージは初回起動時にダウンロードされ、ホーム領域にキャッシングされます。
 2回目以降の起動はキャッシュされたデータを使用することで起動が高速化されます。</p>
 <div class="codehilite"><pre><span></span><code><span class="p">[</span><span class="n">username</span><span class="err">@</span><span class="n">es1</span> <span class="o">~</span><span class="p">]</span><span class="o">$</span> <span class="n">qrsh</span> <span class="o">-</span><span class="n">g</span> <span class="n">grpname</span> <span class="o">-</span><span class="n">l</span> <span class="n">rt_F</span><span class="o">=</span><span class="mi">1</span> <span class="o">-</span><span class="n">l</span> <span class="n">h_rt</span><span class="o">=</span><span class="mi">1</span><span class="p">:</span><span class="mi">00</span><span class="p">:</span><span class="mi">00</span>
 <span class="p">[</span><span class="n">username</span><span class="err">@</span><span class="n">g0001</span> <span class="o">~</span><span class="p">]</span><span class="o">$</span> <span class="n">module</span> <span class="nb">load</span> <span class="n">singularitypro</span>
-<span class="p">[</span><span class="n">username</span><span class="err">@</span><span class="n">g0001</span> <span class="o">~</span><span class="p">]</span><span class="o">$</span> <span class="n">singularity</span> <span class="n">run</span> <span class="o">--</span><span class="n">nv</span> <span class="n">docker</span><span class="p">:</span><span class="o">//</span><span class="n">caffe2ai</span><span class="o">/</span><span class="n">caffe2</span><span class="p">:</span><span class="n">latest</span>
-<span class="o">...</span>
-<span class="n">Singularity</span><span class="o">&gt;</span> <span class="n">python</span> <span class="n">sample</span><span class="o">.</span><span class="n">py</span>
-<span class="n">True</span>
+<span class="p">[</span><span class="n">username</span><span class="err">@</span><span class="n">g0001</span> <span class="o">~</span><span class="p">]</span><span class="o">$</span> <span class="k">export</span> <span class="n">SINGULARITY_TMPDIR</span><span class="o">=$</span><span class="n">SGE_LOCALDIR</span>
+<span class="p">[</span><span class="n">username</span><span class="err">@</span><span class="n">g0001</span> <span class="o">~</span><span class="p">]</span><span class="o">$</span> <span class="n">singularity</span> <span class="n">run</span> <span class="o">--</span><span class="n">nv</span> <span class="n">docker</span><span class="p">:</span><span class="o">//</span><span class="n">tensorflow</span><span class="o">/</span><span class="n">tensorflow</span><span class="p">:</span><span class="n">latest</span><span class="o">-</span><span class="n">gpu</span>
+
+<span class="n">________</span>                               <span class="n">_______________</span>
+<span class="n">___</span>  <span class="n">__</span><span class="o">/</span><span class="n">__________________________________</span>  <span class="n">____</span><span class="o">/</span><span class="n">__</span>  <span class="o">/</span><span class="n">________</span>      <span class="n">__</span>
+<span class="n">__</span>  <span class="o">/</span>  <span class="n">_</span>  <span class="n">_</span> \<span class="n">_</span>  <span class="n">__</span> \<span class="n">_</span>  <span class="n">___</span><span class="o">/</span>  <span class="n">__</span> \<span class="n">_</span>  <span class="n">___</span><span class="o">/</span><span class="n">_</span>  <span class="o">/</span><span class="n">_</span>   <span class="n">__</span>  <span class="o">/</span><span class="n">_</span>  <span class="n">__</span> \<span class="n">_</span> <span class="o">|</span> <span class="o">/|</span> <span class="o">/</span> <span class="o">/</span>
+<span class="n">_</span>  <span class="o">/</span>   <span class="o">/</span>  <span class="n">__</span><span class="o">/</span>  <span class="o">/</span> <span class="o">/</span> <span class="o">/</span><span class="p">(</span><span class="n">__</span>  <span class="p">)</span><span class="o">/</span> <span class="o">/</span><span class="n">_</span><span class="o">/</span> <span class="o">/</span>  <span class="o">/</span>   <span class="n">_</span>  <span class="n">__</span><span class="o">/</span>   <span class="n">_</span>  <span class="o">/</span> <span class="o">/</span> <span class="o">/</span><span class="n">_</span><span class="o">/</span> <span class="o">/</span><span class="n">_</span> <span class="o">|/</span> <span class="o">|/</span> <span class="o">/</span>
+<span class="o">/</span><span class="n">_</span><span class="o">/</span>    \<span class="n">___</span><span class="o">//</span><span class="n">_</span><span class="o">/</span> <span class="o">/</span><span class="n">_</span><span class="o">//</span><span class="n">____</span><span class="o">/</span> \<span class="n">____</span><span class="o">//</span><span class="n">_</span><span class="o">/</span>    <span class="o">/</span><span class="n">_</span><span class="o">/</span>      <span class="o">/</span><span class="n">_</span><span class="o">/</span>  \<span class="n">____</span><span class="o">/</span><span class="n">____</span><span class="o">/|</span><span class="n">__</span><span class="o">/</span>
+
+
+<span class="n">You</span> <span class="n">are</span> <span class="n">running</span> <span class="n">this</span> <span class="n">container</span> <span class="k">as</span> <span class="n">user</span> <span class="n">with</span> <span class="n">ID</span> <span class="mi">10000</span> <span class="ow">and</span> <span class="n">group</span> <span class="mi">10000</span><span class="p">,</span>
+<span class="n">which</span> <span class="n">should</span> <span class="n">map</span> <span class="n">to</span> <span class="n">the</span> <span class="n">ID</span> <span class="ow">and</span> <span class="n">group</span> <span class="k">for</span> <span class="n">your</span> <span class="n">user</span> <span class="n">on</span> <span class="n">the</span> <span class="n">Docker</span> <span class="n">host</span><span class="o">.</span> <span class="n">Great</span><span class="o">!</span>
+
+<span class="o">/</span><span class="n">sbin</span><span class="o">/</span><span class="n">ldconfig</span><span class="o">.</span><span class="n">real</span><span class="p">:</span> <span class="n">Can</span><span class="s1">&#39;t create temporary cache file /etc/ld.so.cache~: Read-only file system</span>
+<span class="n">Singularity</span><span class="o">&gt;</span> <span class="n">python3</span> <span class="n">sample</span><span class="o">.</span><span class="n">py</span>
 </code></pre></div>
 
 <h3 id="build-singularity-image-from-dockerfile">DockerfileからのSingularityイメージファイルの作成方法</h3>
@@ -1385,18 +1355,18 @@ Dockerfileしかない場合には、次の2通りの方法にて、ABCIシス�
 変換されたSingularity recipeファイルにて<code>singularity build</code>に失敗する場合は、手動でrecipeファイルを修正してください。</p>
 </div>
 <p>Singularity Pythonのインストール例）</p>
-<div class="codehilite"><pre><span></span><code><span class="p">[</span><span class="n">username</span><span class="err">@</span><span class="n">es1</span> <span class="o">~</span><span class="p">]</span><span class="o">$</span> <span class="n">module</span> <span class="nb">load</span> <span class="n">gcc</span><span class="o">/</span><span class="mf">9.3</span><span class="o">.</span><span class="mi">0</span> <span class="n">python</span><span class="o">/</span><span class="mf">3.10</span>
+<div class="codehilite"><pre><span></span><code><span class="p">[</span><span class="n">username</span><span class="err">@</span><span class="n">es1</span> <span class="o">~</span><span class="p">]</span><span class="o">$</span> <span class="n">module</span> <span class="nb">load</span> <span class="n">python</span><span class="o">/</span><span class="mf">3.10</span>
 <span class="p">[</span><span class="n">username</span><span class="err">@</span><span class="n">es1</span> <span class="o">~</span><span class="p">]</span><span class="o">$</span> <span class="n">python3</span> <span class="o">-</span><span class="n">m</span> <span class="n">venv</span> <span class="n">work</span>
 <span class="p">[</span><span class="n">username</span><span class="err">@</span><span class="n">es1</span> <span class="o">~</span><span class="p">]</span><span class="o">$</span> <span class="n">source</span> <span class="n">work</span><span class="o">/</span><span class="n">bin</span><span class="o">/</span><span class="n">activate</span>
 <span class="p">(</span><span class="n">work</span><span class="p">)</span> <span class="p">[</span><span class="n">username</span><span class="err">@</span><span class="n">es1</span> <span class="o">~</span><span class="p">]</span><span class="o">$</span> <span class="n">pip3</span> <span class="n">install</span> <span class="n">spython</span>
 </code></pre></div>
 
 <p>以下の例では、NVIDIA社による<a href="https://github.com/NVIDIA/DeepLearningExamples/tree/master/PyTorch/Detection/SSD">SSD300 v1.1モデル学習用コンテナイメージ</a>のDockerfileをSingularity recipeファイル（ssd.def）に変換し、正常にイメージを作成できるよう修正します。</p>
-<p>Dockerfileから変換しただけでは次の2点の問題が発生するため、それぞれの対処が必要となります。</p>
+<p>変更点)</p>
 <ul>
 <li>WORKDIRにファイルがコピーされない =&gt; コピー先をWORKDIRの絶対パスに設定</li>
 </ul>
-<div class="codehilite"><pre><span></span><code><span class="p">[</span><span class="n">username</span><span class="err">@</span><span class="n">es1</span> <span class="o">~</span><span class="p">]</span><span class="n">$</span> <span class="k">module</span> <span class="n">load</span> <span class="n">gcc</span><span class="o">/</span><span class="mf">9.3.0</span> <span class="n">python</span><span class="o">/</span><span class="mf">3.10</span>
+<div class="codehilite"><pre><span></span><code><span class="p">[</span><span class="n">username</span><span class="err">@</span><span class="n">es1</span> <span class="o">~</span><span class="p">]</span><span class="n">$</span> <span class="k">module</span> <span class="n">load</span> <span class="n">python</span><span class="o">/</span><span class="mf">3.10</span>
 <span class="p">[</span><span class="n">username</span><span class="err">@</span><span class="n">es1</span> <span class="o">~</span><span class="p">]</span><span class="n">$</span> <span class="n">source</span> <span class="n">work</span><span class="o">/</span><span class="n">bin</span><span class="o">/</span><span class="n">activate</span>
 <span class="p">(</span><span class="n">work</span><span class="p">)</span> <span class="p">[</span><span class="n">username</span><span class="err">@</span><span class="n">es1</span> <span class="o">~</span><span class="p">]</span><span class="n">$</span> <span class="n">git</span> <span class="n">clone</span> <span class="nl">https</span><span class="p">:</span><span class="c1">//github.com/NVIDIA/DeepLearningExamples</span>
 <span class="p">(</span><span class="n">work</span><span class="p">)</span> <span class="p">[</span><span class="n">username</span><span class="err">@</span><span class="n">es1</span> <span class="o">~</span><span class="p">]</span><span class="n">$</span> <span class="n">cd</span> <span class="n">DeepLearningExamples</span><span class="o">/</span><span class="n">PyTorch</span><span class="o">/</span><span class="n">Detection</span><span class="o">/</span><span class="n">SSD</span>
@@ -1404,33 +1374,30 @@ Dockerfileしかない場合には、次の2通りの方法にて、ABCIシス�
 <span class="p">(</span><span class="n">work</span><span class="p">)</span> <span class="p">[</span><span class="n">username</span><span class="err">@</span><span class="n">es1</span> <span class="n">SSD</span><span class="p">]</span><span class="n">$</span> <span class="n">cp</span> <span class="o">-</span><span class="n">p</span> <span class="n">ssd</span><span class="p">.</span><span class="n">def</span> <span class="n">ssd_org</span><span class="p">.</span><span class="n">def</span>
 <span class="p">(</span><span class="n">work</span><span class="p">)</span> <span class="p">[</span><span class="n">username</span><span class="err">@</span><span class="n">es1</span> <span class="n">SSD</span><span class="p">]</span><span class="n">$</span> <span class="n">vi</span> <span class="n">ssd</span><span class="p">.</span><span class="n">def</span>
 <span class="nl">Bootstrap</span><span class="p">:</span> <span class="n">docker</span>
-<span class="nl">From</span><span class="p">:</span> <span class="n">nvcr</span><span class="p">.</span><span class="n">io</span><span class="o">/</span><span class="n">nvidia</span><span class="o">/</span><span class="nl">pytorch</span><span class="p">:</span><span class="mf">21.05</span><span class="o">-</span><span class="n">py3</span>
+<span class="nl">From</span><span class="p">:</span> <span class="n">nvcr</span><span class="p">.</span><span class="n">io</span><span class="o">/</span><span class="n">nvidia</span><span class="o">/</span><span class="nl">pytorch</span><span class="p">:</span><span class="mf">22.10</span><span class="o">-</span><span class="n">py3</span>
 <span class="nl">Stage</span><span class="p">:</span> <span class="n">spython</span><span class="o">-</span><span class="n">base</span>
 
 <span class="nf">%files</span>
 <span class="n">requirements</span><span class="p">.</span><span class="n">txt</span> <span class="o">/</span><span class="n">workspace</span><span class="o">/</span><span class="n">ssd</span><span class="o">/</span>  <span class="err">#</span><span class="o">&lt;-</span> <span class="n">WORKDIR以下にコピー</span>
 <span class="p">.</span> <span class="o">/</span><span class="n">workspace</span><span class="o">/</span><span class="n">ssd</span><span class="o">/</span>                 <span class="err">#</span><span class="o">&lt;-</span> <span class="n">WORKDIR以下にコピー</span>
 <span class="nf">%post</span>
-<span class="n">FROM_IMAGE_NAME</span><span class="o">=</span><span class="n">nvcr</span><span class="p">.</span><span class="n">io</span><span class="o">/</span><span class="n">nvidia</span><span class="o">/</span><span class="nl">pytorch</span><span class="p">:</span><span class="mf">21.05</span><span class="o">-</span><span class="n">py3</span>
+<span class="n">FROM_IMAGE_NAME</span><span class="o">=</span><span class="n">nvcr</span><span class="p">.</span><span class="n">io</span><span class="o">/</span><span class="n">nvidia</span><span class="o">/</span><span class="nl">pytorch</span><span class="p">:</span><span class="mf">22.10</span><span class="o">-</span><span class="n">py3</span>
 
 <span class="cp"># Set working directory</span>
+<span class="n">mkdir</span> <span class="o">-</span><span class="n">p</span> <span class="o">/</span><span class="n">workspace</span><span class="o">/</span><span class="n">ssd</span>
 <span class="n">cd</span> <span class="o">/</span><span class="n">workspace</span><span class="o">/</span><span class="n">ssd</span>
 
-<span class="cp"># Install nv-cocoapi</span>
-<span class="n">COCOAPI_VERSION</span><span class="o">=</span><span class="mf">2.0</span><span class="o">+</span><span class="n">nv0</span><span class="mf">.6.0</span>
-<span class="k">export</span> <span class="n">COCOAPI_TAG</span><span class="o">=</span><span class="n">$</span><span class="p">(</span><span class="n">echo</span> <span class="n">$</span><span class="p">{</span><span class="n">COCOAPI_VERSION</span><span class="p">}</span> <span class="o">|</span> <span class="n">sed</span> <span class="err">&#39;</span><span class="n">s</span><span class="o">/^</span><span class="p">.</span><span class="o">*+</span><span class="n">n</span><span class="c1">//&#39;) \</span>
-<span class="c1">&amp;&amp; pip install --no-cache-dir pybind11                             \</span>
-<span class="c1">&amp;&amp; pip install --no-cache-dir git+https://github.com/NVIDIA/cocoapi.git@${COCOAPI_TAG}#subdirectory=PythonAPI</span>
-<span class="cp"># Install dllogger</span>
-<span class="n">pip</span> <span class="n">install</span> <span class="o">--</span><span class="n">no</span><span class="o">-</span><span class="n">cache</span><span class="o">-</span><span class="n">dir</span> <span class="n">git</span><span class="o">+</span><span class="nl">https</span><span class="p">:</span><span class="c1">//github.com/NVIDIA/dllogger.git#egg=dllogger</span>
+<span class="cp"># Copy the model files</span>
 
-<span class="cp"># Install requirements</span>
-<span class="n">pip</span> <span class="n">install</span> <span class="o">-</span><span class="n">r</span> <span class="n">requirements</span><span class="p">.</span><span class="n">txt</span>
-<span class="n">python3</span> <span class="o">-</span><span class="n">m</span> <span class="n">pip</span> <span class="n">install</span> <span class="n">pycocotools</span><span class="o">==</span><span class="mf">2.0.0</span>
+<span class="cp"># Install python requirements</span>
+<span class="n">pip</span> <span class="n">install</span> <span class="o">--</span><span class="n">no</span><span class="o">-</span><span class="n">cache</span><span class="o">-</span><span class="n">dir</span> <span class="o">-</span><span class="n">r</span> <span class="n">requirements</span><span class="p">.</span><span class="n">txt</span>
 <span class="n">mkdir</span> <span class="n">models</span> <span class="err">#</span><span class="o">&lt;-</span> <span class="n">main</span><span class="p">.</span><span class="n">py実行時に必要なため追加</span>
 
+<span class="n">CUDNN_V8_API_ENABLED</span><span class="o">=</span><span class="mi">1</span>
+<span class="n">TORCH_CUDNN_V8_API_ENABLED</span><span class="o">=</span><span class="mi">1</span>
 <span class="nf">%environment</span>
-<span class="k">export</span> <span class="n">COCOAPI_VERSION</span><span class="o">=</span><span class="mf">2.0</span><span class="o">+</span><span class="n">nv0</span><span class="mf">.6.0</span>
+<span class="k">export</span> <span class="n">CUDNN_V8_API_ENABLED</span><span class="o">=</span><span class="mi">1</span>
+<span class="k">export</span> <span class="n">TORCH_CUDNN_V8_API_ENABLED</span><span class="o">=</span><span class="mi">1</span>
 <span class="nf">%runscript</span>
 <span class="n">cd</span> <span class="o">/</span><span class="n">workspace</span><span class="o">/</span><span class="n">ssd</span>
 <span class="n">exec</span> <span class="o">/</span><span class="n">bin</span><span class="o">/</span><span class="n">bash</span> <span class="s">&quot;$@&quot;</span>
@@ -1442,7 +1409,7 @@ Dockerfileしかない場合には、次の2通りの方法にて、ABCIシス�
 <p>Singularity recipeファイルからのコンテナイメージの作成方法については、<a href="#create-a-singularity-image-build">Singularityイメージファイルの作成(build)</a>をご参照ください。</p>
 <h3 id="singularity-recipe">Singularity recipeファイル例</h3>
 <p>ここでは、Singularityのrecipeファイルの例を示します。
-recipeファイルの詳細については<a href="#singularity">Singularity</a>のユーザガイドを参照願います。</p>
+recipeファイルの詳細については<a href="#singularity">Singularity</a>のユーザガイドを参照してください。</p>
 <h4 id="_2">コンテナイメージ内にローカルファイルを組み込む場合</h4>
 <p>Open MPIおよびローカルのプログラムファイル(C言語)をコンパイルして、コンテナイメージに組み込む場合の例です。
 ここでは、Singularity recipeファイル(openmpi.def)とプログラムファイル(mpitest.c)をホームディレクトリに用意します。</p>
@@ -1465,8 +1432,8 @@ recipeファイルの詳細については<a href="#singularity">Singularity</a>
 
     <span class="n">echo</span> <span class="s">&quot;Installing Open MPI&quot;</span>
     <span class="k">export</span> <span class="n">OMPI_DIR</span><span class="o">=/</span><span class="n">opt</span><span class="o">/</span><span class="n">ompi</span>
-    <span class="k">export</span> <span class="n">OMPI_VERSION</span><span class="o">=</span><span class="mf">4.0.5</span>
-    <span class="k">export</span> <span class="n">OMPI_URL</span><span class="o">=</span><span class="s">&quot;https://download.open-mpi.org/release/open-mpi/v4.0/openmpi-$OMPI_VERSION.tar.bz2&quot;</span>
+    <span class="k">export</span> <span class="n">OMPI_VERSION</span><span class="o">=</span><span class="mf">4.1.5</span>
+    <span class="k">export</span> <span class="n">OMPI_URL</span><span class="o">=</span><span class="s">&quot;https://download.open-mpi.org/release/open-mpi/v4.1/openmpi-$OMPI_VERSION.tar.bz2&quot;</span>
     <span class="n">mkdir</span> <span class="o">-</span><span class="n">p</span> <span class="o">/</span><span class="n">tmp</span><span class="o">/</span><span class="n">ompi</span>
     <span class="n">mkdir</span> <span class="o">-</span><span class="n">p</span> <span class="o">/</span><span class="n">opt</span>
     <span class="cp"># Download</span>
@@ -1536,9 +1503,9 @@ buildに成功すると、コンテナイメージ(openmpi.sif)が生成され�
 <span class="p">[</span><span class="n">username</span><span class="err">@</span><span class="n">g0001</span> <span class="o">~</span><span class="p">]</span><span class="o">$</span>
 </code></pre></div>
 
-<p>実行例</p>
-<div class="codehilite"><pre><span></span><code><span class="p">[</span><span class="n">username</span><span class="err">@</span><span class="n">g0001</span> <span class="o">~</span><span class="p">]</span><span class="o">$</span> <span class="n">module</span> <span class="nb">load</span> <span class="n">singularitypro</span> <span class="n">openmpi</span><span class="o">/</span><span class="mf">4.0</span><span class="o">.</span><span class="mi">5</span>
-<span class="p">[</span><span class="n">username</span><span class="err">@</span><span class="n">g0001</span> <span class="o">~</span><span class="p">]</span><span class="o">$</span> <span class="n">mpirun</span> <span class="o">-</span><span class="n">np</span> <span class="mi">4</span> <span class="o">-</span><span class="n">map</span><span class="o">-</span><span class="n">by</span> <span class="n">node</span> <span class="n">singularity</span> <span class="n">exec</span> <span class="n">openmpi</span><span class="o">.</span><span class="n">sif</span> <span class="o">/</span><span class="n">opt</span><span class="o">/</span><span class="n">mpitest</span>
+<p>実行例)</p>
+<div class="codehilite"><pre><span></span><code><span class="p">[</span><span class="n">username</span><span class="err">@</span><span class="n">g0001</span> <span class="o">~</span><span class="p">]</span><span class="o">$</span> <span class="n">module</span> <span class="nb">load</span> <span class="n">singularitypro</span> <span class="n">hpcx</span><span class="o">/</span><span class="mf">2.12</span>
+<span class="p">[</span><span class="n">username</span><span class="err">@</span><span class="n">g0001</span> <span class="o">~</span><span class="p">]</span><span class="o">$</span> <span class="n">mpirun</span> <span class="o">-</span><span class="n">hostfile</span> <span class="o">$</span><span class="n">SGE_JOB_HOSTLIST</span> <span class="o">-</span><span class="n">np</span> <span class="mi">4</span> <span class="o">-</span><span class="n">map</span><span class="o">-</span><span class="n">by</span> <span class="n">node</span> <span class="n">singularity</span> <span class="n">exec</span> <span class="n">openmpi</span><span class="o">.</span><span class="n">sif</span> <span class="o">/</span><span class="n">opt</span><span class="o">/</span><span class="n">mpitest</span>
 <span class="n">Hello</span><span class="p">,</span> <span class="n">I</span> <span class="n">am</span> <span class="n">rank</span> <span class="mi">2</span><span class="o">/</span><span class="mi">4</span>
 <span class="n">Hello</span><span class="p">,</span> <span class="n">I</span> <span class="n">am</span> <span class="n">rank</span> <span class="mi">3</span><span class="o">/</span><span class="mi">4</span>
 <span class="n">Hello</span><span class="p">,</span> <span class="n">I</span> <span class="n">am</span> <span class="n">rank</span> <span class="mi">0</span><span class="o">/</span><span class="mi">4</span>
@@ -1619,75 +1586,12 @@ buildに成功すると、コンテナイメージ(h2o4gpuPy.sif)が生成され
 </code></pre></div>
 
 <p>実行例</p>
-<div class="codehilite"><pre><span></span><code><span class="p">[</span><span class="n">username</span><span class="err">@</span><span class="n">g0001</span> <span class="o">~</span><span class="p">]</span><span class="o">$</span> <span class="n">module</span> <span class="nb">load</span> <span class="n">singularitypro</span> <span class="n">openmpi</span><span class="o">/</span><span class="mf">4.0</span><span class="o">.</span><span class="mi">5</span> <span class="n">cuda</span><span class="o">/</span><span class="mf">10.2</span>
+<div class="codehilite"><pre><span></span><code><span class="p">[</span><span class="n">username</span><span class="err">@</span><span class="n">g0001</span> <span class="o">~</span><span class="p">]</span><span class="o">$</span> <span class="n">module</span> <span class="nb">load</span> <span class="n">singularitypro</span> <span class="n">cuda</span><span class="o">/</span><span class="mf">10.2</span>
 <span class="p">[</span><span class="n">username</span><span class="err">@</span><span class="n">g0001</span> <span class="o">~</span><span class="p">]</span><span class="o">$</span> <span class="n">singularity</span> <span class="n">exec</span> <span class="o">--</span><span class="n">nv</span> <span class="n">h2o4gpuPy</span><span class="o">.</span><span class="n">sif</span> <span class="n">python3</span> <span class="n">h2o4gpu_sample</span><span class="o">.</span><span class="n">py</span>
 <span class="p">[[</span><span class="mf">1.</span>  <span class="mf">0.5</span><span class="p">]</span>
  <span class="p">[</span><span class="mf">1.</span>  <span class="mf">4.</span> <span class="p">]]</span>
 <span class="p">[</span><span class="n">username</span><span class="err">@</span><span class="n">g0001</span> <span class="o">~</span><span class="p">]</span><span class="o">$</span>
 </code></pre></div>
-
-<h2 id="docker">Docker</h2>
-<div class="admonition warning">
-<p class="admonition-title">Warning</p>
-<p>2022年度の運用において、Dockerコンテナ上でのジョブ実行機能のサポートを廃止する予定です。コンテナを使用したい場合は、Singularityコンテナをジョブ内でご利用ください。
-また、ABCIが提供しているDockerイメージのメンテナンスも併せて終了します。</p>
-</div>
-<p>ABCIシステムではDockerコンテナ上でのジョブ実行が可能です。
-Dockerを利用する場合、ジョブ投入時に<code>-l docker</code>オプションと<code>-l docker_images</code>オプションを指定する必要があります。</p>
-<table>
-<thead>
-<tr>
-<th align="left">オプション</th>
-<th align="left">説明</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td align="left">-l docker</td>
-<td align="left">ジョブをDockerコンテナ上で実行します。</td>
-</tr>
-<tr>
-<td align="left">-l docker_images</td>
-<td align="left">利用するDockerイメージを指定します。</td>
-</tr>
-</tbody>
-</table>
-<div class="admonition warning">
-<p class="admonition-title">Warning</p>
-<p>ABCIシステムでは、メモリインテンシブノードではDockerを利用できません。</p>
-</div>
-<p>利用可能なDockerイメージは<code>show_docker_images</code>コマンドで参照可能です。</p>
-<div class="codehilite"><pre><span></span><code><span class="o">[</span><span class="n">username@es1 ~</span><span class="o">]</span><span class="err">$</span><span class="w"> </span><span class="n">show_docker_images</span><span class="w"></span>
-<span class="n">REPOSITORY</span><span class="w">                </span><span class="n">TAG</span><span class="w">             </span><span class="nc">IMAGE</span><span class="w"> </span><span class="n">ID</span><span class="w">     </span><span class="n">CREATED</span><span class="w">       </span><span class="k">SIZE</span><span class="w"></span>
-<span class="nl">jcm</span><span class="p">:</span><span class="mi">5000</span><span class="o">/</span><span class="n">dhub</span><span class="o">/</span><span class="n">ubuntu</span><span class="w">      </span><span class="n">latest</span><span class="w">          </span><span class="mi">113</span><span class="n">a43faa138</span><span class="w"> </span><span class="mi">3</span><span class="w"> </span><span class="n">weeks</span><span class="w"> </span><span class="n">ago</span><span class="w">   </span><span class="mf">81.2</span><span class="n">MB</span><span class="w"></span>
-</code></pre></div>
-
-<div class="admonition warning">
-<p class="admonition-title">Warning</p>
-<p>ABCIシステムでは、システム内で公開されているDockerイメージのみ利用可能です。</p>
-</div>
-<p>Dockerジョブのジョブスクリプト例）</p>
-<p>以下のジョブスクリプトでは<code>python3 ./sample.py</code>がDockerコンテナ上で実行されます。</p>
-<div class="codehilite"><pre><span></span><code><span class="o">[</span><span class="n">username@es1 ~</span><span class="o">]</span><span class="err">$</span><span class="w"> </span><span class="n">cat</span><span class="w"> </span><span class="n">run</span><span class="p">.</span><span class="n">sh</span><span class="w"></span>
-<span class="err">#!</span><span class="o">/</span><span class="n">bin</span><span class="o">/</span><span class="n">sh</span><span class="w"></span>
-<span class="err">#$</span><span class="o">-</span><span class="n">cwd</span><span class="w"></span>
-<span class="err">#$</span><span class="o">-</span><span class="n">j</span><span class="w"> </span><span class="n">y</span><span class="w"></span>
-<span class="err">#$</span><span class="o">-</span><span class="n">l</span><span class="w"> </span><span class="n">rt_F</span><span class="o">=</span><span class="mi">1</span><span class="w"></span>
-<span class="err">#$</span><span class="o">-</span><span class="n">l</span><span class="w"> </span><span class="n">docker</span><span class="o">=</span><span class="mi">1</span><span class="w"></span>
-<span class="err">#$</span><span class="o">-</span><span class="n">l</span><span class="w"> </span><span class="n">docker_images</span><span class="o">=</span><span class="ss">&quot;*jcm:5000/dhub/ubuntu*&quot;</span><span class="w"></span>
-
-<span class="n">python3</span><span class="w"> </span><span class="p">.</span><span class="o">/</span><span class="n">sample</span><span class="p">.</span><span class="n">py</span><span class="w"></span>
-</code></pre></div>
-
-<p>Dockerジョブの投入例）</p>
-<div class="codehilite"><pre><span></span><code><span class="o">[</span><span class="n">username@es1 ~</span><span class="o">]</span><span class="err">$</span><span class="w"> </span><span class="n">qsub</span><span class="w"> </span><span class="o">-</span><span class="n">g</span><span class="w"> </span><span class="n">grpname</span><span class="w"> </span><span class="n">run</span><span class="p">.</span><span class="n">sh</span><span class="w"></span>
-<span class="n">Your</span><span class="w"> </span><span class="n">job</span><span class="w"> </span><span class="mi">12345</span><span class="w"> </span><span class="p">(</span><span class="ss">&quot;run.sh&quot;</span><span class="p">)</span><span class="w"> </span><span class="n">has</span><span class="w"> </span><span class="n">been</span><span class="w"> </span><span class="n">submitted</span><span class="w"></span>
-</code></pre></div>
-
-<div class="admonition warning">
-<p class="admonition-title">Warning</p>
-<p>Dockerコンテナはノード占有ジョブでのみ利用可能です。</p>
-</div>
                 
               
               

@@ -521,18 +521,6 @@
   
   
     <li class="md-nav__item">
-      <a href="../../apps/tensorflow-keras/" class="md-nav__link">
-        TensorFlow Keras
-      </a>
-    </li>
-  
-
-          
-            
-  
-  
-  
-    <li class="md-nav__item">
       <a href="../../apps/pytorch/" class="md-nav__link">
         PyTorch
       </a>
@@ -547,30 +535,6 @@
     <li class="md-nav__item">
       <a href="../../apps/mxnet/" class="md-nav__link">
         MXNet
-      </a>
-    </li>
-  
-
-          
-            
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../apps/chainer/" class="md-nav__link">
-        Chainer
-      </a>
-    </li>
-  
-
-          
-            
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../apps/others/" class="md-nav__link">
-        その他
       </a>
     </li>
   
@@ -794,6 +758,13 @@
         <li class="md-nav__item">
   <a href="#mvapich2" class="md-nav__link">
     MVAPICH2
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#open-mpi" class="md-nav__link">
+    Open MPI
   </a>
   
 </li>
@@ -1191,12 +1162,35 @@
                 
                 
                 <h1 id="_1">提供を終了したモジュールとその代替手段</h1>
-<p>2022年度の開始にあたり、ABCIで提供しているモジュールの再構成を行いました。
+<p>2023年度の開始にあたり、ABCIで提供しているモジュールの再構成を行いました。
 再構成によりサポートが終了したソフトウェアを最新のEnvironment Modulesから削除しています。</p>
 <p>なお、過去のEnvironment Modulesは別途提供していますので、削除したモジュールを利用したい場合はFAQ <a href="../../faq/#q-how-to-use-previous-abci-environment-modules">過去のABCI Environment Modulesを利用したい</a>を参考に設定を行なってください。</p>
 <p>ここでは削除したモジュールをSingularityコンテナとして実行する方法、および、ホームディレクトリ下にインストールして利用する方法を説明します。
 本文中のインストールパスは適宜変更してください。</p>
-<p>2022年度に削除したモジュールは以下の通りです。</p>
+<p>2023年度に削除したモジュールは以下の通りです。</p>
+<table>
+<thead>
+<tr>
+<th>ソフトウェア</th>
+<th>モジュール名</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="#nvidia-hpc-sdk">PGI</a></td>
+<td>pgi</td>
+</tr>
+<tr>
+<td><a href="#open-mpi">OpenMPI</a></td>
+<td>openmpi</td>
+</tr>
+<tr>
+<td>SSHFS<sup id="fnref:1"><a class="footnote-ref" href="#fn:1">1</a></sup></td>
+<td>fuse-sshfs</td>
+</tr>
+</tbody>
+</table>
+<p>2022年度に削除したモジュール:</p>
 <table>
 <thead>
 <tr>
@@ -1237,6 +1231,10 @@
 </table>
 <p>また、<a href="https://spack.io">Spack</a>を使用して独自にソフトウェアをインストール、管理することもできます。Spackの利用については<a href="../spack/">Spackによるソフトウェア管理</a>を参照してください。</p>
 <h2 id="nvidia-hpc-sdk">NVIDIA HPC SDK</h2>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>PGIコンパイラは現在NVIDIA HPC SDKに組み込まれています。PGIコンパイラを利用したい場合はNVIDIA HPC SDKをご利用ください。</p>
+</div>
 <p>NVIDIA HPC SDKはNVIDIA NGCで提供されている<a href="https://catalog.ngc.nvidia.com/orgs/nvidia/containers/nvhpc">コンテナ</a>を利用します。</p>
 <p>Singularityを使用してコンテナを作成し、作成したコンテナを使ってCUDAプログラムのビルドおよび実行を行う方法を説明します。
 なお、コンテナイメージのバージョンは適宜変更してください。</p>
@@ -1291,6 +1289,25 @@
 <span class="n">warranty</span><span class="p">;</span> <span class="ow">not</span> <span class="n">even</span> <span class="k">for</span> <span class="n">MERCHANTABILITY</span> <span class="ow">or</span> <span class="n">FITNESS</span> <span class="n">FOR</span> <span class="n">A</span> <span class="n">PARTICULAR</span> <span class="n">PURPOSE</span><span class="o">.</span>
 </code></pre></div>
 
+<h2 id="open-mpi">Open MPI</h2>
+<p>Open MPIはソースからインストールして利用します。
+ここでは <code>$HOME/apps/openmpi</code> 以下にインストールします。</p>
+<div class="codehilite"><pre><span></span><code><span class="p">[</span><span class="n">username</span><span class="err">@</span><span class="n">es1</span> <span class="o">~</span><span class="p">]</span><span class="o">$</span> <span class="n">wget</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">download</span><span class="o">.</span><span class="n">open</span><span class="o">-</span><span class="n">mpi</span><span class="o">.</span><span class="n">org</span><span class="o">/</span><span class="n">release</span><span class="o">/</span><span class="n">open</span><span class="o">-</span><span class="n">mpi</span><span class="o">/</span><span class="n">v4</span><span class="o">.</span><span class="mi">1</span><span class="o">/</span><span class="n">openmpi</span><span class="o">-</span><span class="mf">4.1</span><span class="o">.</span><span class="mf">3.</span><span class="n">tar</span><span class="o">.</span><span class="n">gz</span>
+<span class="p">[</span><span class="n">username</span><span class="err">@</span><span class="n">es1</span> <span class="o">~</span><span class="p">]</span><span class="o">$</span> <span class="n">tar</span> <span class="n">xvf</span> <span class="n">openmpi</span><span class="o">-</span><span class="mf">4.1</span><span class="o">.</span><span class="mf">3.</span><span class="n">tar</span><span class="o">.</span><span class="n">gz</span>
+<span class="p">[</span><span class="n">username</span><span class="err">@</span><span class="n">es1</span> <span class="o">~</span><span class="p">]</span><span class="o">$</span> <span class="n">cd</span> <span class="n">openmpi</span><span class="o">-</span><span class="mf">4.1</span><span class="o">.</span><span class="mi">3</span><span class="o">/</span>
+<span class="p">[</span><span class="n">username</span><span class="err">@</span><span class="n">es1</span> <span class="o">~</span><span class="p">]</span><span class="o">$</span> <span class="o">./</span><span class="n">configure</span> <span class="o">--</span><span class="n">prefix</span><span class="o">=$</span><span class="n">HOME</span><span class="o">/</span><span class="n">apps</span><span class="o">/</span><span class="n">openmpi</span> <span class="o">--</span><span class="n">enable</span><span class="o">-</span><span class="n">mpi</span><span class="o">-</span><span class="n">thread</span><span class="o">-</span><span class="n">multiple</span> <span class="o">--</span><span class="n">enable</span><span class="o">-</span><span class="n">orterun</span><span class="o">-</span><span class="n">prefix</span><span class="o">-</span><span class="n">by</span><span class="o">-</span><span class="n">default</span> <span class="o">--</span><span class="n">with</span><span class="o">-</span><span class="n">sge</span>
+<span class="p">[</span><span class="n">username</span><span class="err">@</span><span class="n">es1</span> <span class="o">~</span><span class="p">]</span><span class="o">$</span> <span class="n">make</span> <span class="o">-</span><span class="n">j8</span>
+<span class="p">[</span><span class="n">username</span><span class="err">@</span><span class="n">es1</span> <span class="o">~</span><span class="p">]</span><span class="o">$</span> <span class="n">make</span> <span class="n">install</span>
+<span class="p">[</span><span class="n">username</span><span class="err">@</span><span class="n">es1</span> <span class="o">~</span><span class="p">]</span><span class="o">$</span> <span class="k">export</span> <span class="n">PATH</span><span class="o">=$</span><span class="n">HOME</span><span class="o">/</span><span class="n">apps</span><span class="o">/</span><span class="n">openmpi</span><span class="o">/</span><span class="n">bin</span><span class="p">:</span><span class="o">$</span><span class="n">PATH</span>
+<span class="p">[</span><span class="n">username</span><span class="err">@</span><span class="n">es1</span> <span class="o">~</span><span class="p">]</span><span class="o">$</span> <span class="n">mpicc</span> <span class="o">--</span><span class="n">version</span>
+<span class="n">gcc</span> <span class="p">(</span><span class="n">GCC</span><span class="p">)</span> <span class="mf">8.5</span><span class="o">.</span><span class="mi">0</span> <span class="mi">20210514</span> <span class="p">(</span><span class="n">Red</span> <span class="n">Hat</span> <span class="mf">8.5</span><span class="o">.</span><span class="mi">0</span><span class="o">-</span><span class="mi">16</span><span class="p">)</span>
+<span class="n">Copyright</span> <span class="p">(</span><span class="n">C</span><span class="p">)</span> <span class="mi">2018</span> <span class="n">Free</span> <span class="n">Software</span> <span class="n">Foundation</span><span class="p">,</span> <span class="n">Inc</span><span class="o">.</span>
+<span class="n">This</span> <span class="k">is</span> <span class="n">free</span> <span class="n">software</span><span class="p">;</span> <span class="n">see</span> <span class="n">the</span> <span class="n">source</span> <span class="k">for</span> <span class="n">copying</span> <span class="n">conditions</span><span class="o">.</span>  <span class="n">There</span> <span class="k">is</span> <span class="n">NO</span>
+<span class="n">warranty</span><span class="p">;</span> <span class="ow">not</span> <span class="n">even</span> <span class="k">for</span> <span class="n">MERCHANTABILITY</span> <span class="ow">or</span> <span class="n">FITNESS</span> <span class="n">FOR</span> <span class="n">A</span> <span class="n">PARTICULAR</span> <span class="n">PURPOSE</span><span class="o">.</span>
+</code></pre></div>
+
+<p>また、Spackを利用してOpenMPIをインストールすることもできます。
+Spackを利用してOpenMPIをインストールする方法については、<a href="../spack/#software-management-operations">Spack OpenMPI</a>のページを参照してください。</p>
 <h2 id="cuda-aware-open-mpi">CUDA-aware Open MPI</h2>
 <p>CUDA-aware Open MPIはソースからインストールして利用します。
 ここでは <code>$HOME/apps/openmpi</code> 以下にインストールします。
@@ -1312,6 +1329,8 @@
 <span class="n">mca</span><span class="p">:</span><span class="n">mpi</span><span class="p">:</span><span class="n">base</span><span class="p">:</span><span class="n">param</span><span class="p">:</span><span class="n">mpi_built_with_cuda_support</span><span class="p">:</span><span class="n">value</span><span class="p">:</span><span class="bp">true</span>
 </code></pre></div>
 
+<p>また、Spackを利用してCUDA-aware OpenMPIをインストールすることもできます。
+Spackを利用してCUDA-aware OpenMPIをインストールする方法については、<a href="../spack/#cuda-aware-openmpi">Spack CUDA-aware OpenMPI</a>のページを参照してください。</p>
 <h2 id="apache-hadoop">Apache Hadoop</h2>
 <p>Apache Hadoopはビルド済みのバイナリをダウンロードし利用します。
 ここでは <code>$HOME/apps/hadoop</code> 以下にインストールします。</p>
@@ -1377,6 +1396,15 @@
 <span class="p">(</span><span class="n">sregistry</span><span class="p">)</span><span class="w"> </span><span class="o">[</span><span class="n">username@es1 ~</span><span class="o">]</span><span class="err">$</span><span class="w"> </span><span class="n">singularity</span><span class="w"> </span><span class="k">exec</span><span class="w"> </span><span class="err">`</span><span class="n">sregistry</span><span class="w"> </span><span class="k">get</span><span class="w"> </span><span class="n">alpine</span><span class="err">`</span><span class="w"> </span><span class="n">uname</span><span class="w"> </span><span class="o">-</span><span class="n">a</span><span class="w"></span>
 <span class="n">Linux</span><span class="w"> </span><span class="n">es1</span><span class="p">.</span><span class="n">abci</span><span class="p">.</span><span class="k">local</span><span class="w"> </span><span class="mf">3.10.0</span><span class="o">-</span><span class="mf">862.</span><span class="n">el7</span><span class="p">.</span><span class="n">x86_64</span><span class="w"> </span><span class="n">#1</span><span class="w"> </span><span class="n">SMP</span><span class="w"> </span><span class="n">Fri</span><span class="w"> </span><span class="n">Apr</span><span class="w"> </span><span class="mi">20</span><span class="w"> </span><span class="mi">16</span><span class="err">:</span><span class="mi">44</span><span class="err">:</span><span class="mi">24</span><span class="w"> </span><span class="n">UTC</span><span class="w"> </span><span class="mi">2018</span><span class="w"> </span><span class="n">x86_64</span><span class="w"> </span><span class="n">Linux</span><span class="w"></span>
 </code></pre></div>
+
+<div class="footnote">
+<hr />
+<ol>
+<li id="fn:1">
+<p>代替方法は現在提供していません。&#160;<a class="footnote-backref" href="#fnref:1" title="Jump back to footnote 1 in the text">&#8617;</a></p>
+</li>
+</ol>
+</div>
                 
               
               
