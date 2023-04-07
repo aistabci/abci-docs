@@ -108,7 +108,7 @@ packages:
     - spec: cuda@11.7.1%gcc@8.5.0
       modules:
       - cuda/11.7/11.7.1
-    - spec: cuda@11.7.0%gcc@12.2.0
+    - spec: cuda@11.7.1%gcc@12.2.0
       modules:
       - cuda/11.7/11.7.1
 (snip)
@@ -158,7 +158,7 @@ gcc@8.5.0:
 
 ### Software Management Operations {#software-management-operations}
 
-#### Install {\#install-openmpi}
+#### Install {#install-openmpi}
 
 The default version of OpenMPI can be installed as follows.
 Refer to [Example Software Installation](#cuda-aware-openmpi) for options.
