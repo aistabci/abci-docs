@@ -107,12 +107,12 @@ packages:
     buildable: false
     externals:
 (snip)
-    - spec: cuda@11.7.0%gcc@8.5.0
+    - spec: cuda@11.7.1%gcc@8.5.0
       modules:
-      - cuda/11.7/11.7.0
-    - spec: cuda@11.7.0%gcc@12.2.0
+      - cuda/11.7/11.7.1
+    - spec: cuda@11.7.1%gcc@12.2.0
       modules:
-      - cuda/11.7/11.7.0
+      - cuda/11.7/11.7.1
 (snip)
   hpcx-mpi:
     externals:
@@ -121,14 +121,9 @@ packages:
 (snip)
 ```
 
-このファイルを設置すると、例えば、SpackでCUDAのバージョン11.7.0のインストールを実行すると、実際にはインストールはされずに、SpackがEnvironment Modulesの`cuda/11.7/11.7.0`を使用するようになります。
+このファイルを設置すると、例えば、SpackでCUDAのバージョン11.7.1のインストールを実行すると、実際にはインストールはされずに、SpackがEnvironment Modulesの`cuda/11.7/11.7.1`を使用するようになります。
 CUDAセクションで`buildable: false`を指定することにより、Spackはここで指定しているバージョン以外のCUDAをインストールしなくなります。
 ABCIが提供していないバージョンのCUDAをSpackでインストールしたい場合は、この記述を削除してください。
-
-現在のSpackでは`packages.yaml`内の依存関係の解釈に不具合があるため、ABCIが提供するCUDA-aware OpenMPIを登録する事は出来ません。
-そのためABCIが提供する`packages.yaml`では、CUDA-awareではないOpenMPIのみを登録しています。
-また、登録されているCUDA-awareではないOpenMPIと同じバージョンのCUDA-aware OpenMPIをインストールしようとすると、エラーになります。
-エラーを回避するには、`packages.yaml`に登録されていないバージョンをインストールするか、`packages.yaml`から該当バージョンを削除してご利用ください。
 
 `packages.yaml`ファイルの設定の詳細は[公式ドキュメント](https://spack.readthedocs.io/en/latest/build_settings.html)を参照ください。
 
@@ -165,7 +160,7 @@ gcc@8.5.0:
 
 ### ソフトウェア管理関連 {#software-management-operations}
 
-#### インストール {#install}
+#### インストール {\#install-openmpi}
 
 OpenMPIのSpack標準バージョンは、以下の通りにインストールできます。
 `schedulers=sge`と`fabrics=auto`の意味は[導入事例](#cuda-aware-openmpi)を参照ください。
@@ -352,9 +347,6 @@ Spackにはソフトウェアパッケージを「環境」という単位でグ
 
 ### CUDA-aware OpenMPI {#cuda-aware-openmpi}
 
-ABCIでは、CUDA-aware OpenMPIをモジュールで提供していますが、全てのコンパイラ、CUDA、OpenMPIの組み合わせで提供しているわけではありません（[参考](https://docs.abci.ai/ja/08/#open-mpi)）。
-使用したい組み合わせがモジュール提供されていない場合は、Spackでインストールするのが簡単です。
-
 #### インストール方法 {#how-to-install}
 
 CUDA 11.8.0を使用するOpenMPI 4.1.4をインストールする場合の例です。
@@ -371,7 +363,7 @@ openmpi@4.1.4  ${SPACK_ROOT}/opt/spack/linux-rocky8-skylake_avx512/gcc-8.5.0/ope
 ```
 
 1行目では、ABCIが提供するCUDAを使用するよう、CUDAのバージョン`11.8.0`をインストールします。
-2行目では、[このページ](../appendix/installed-software.md#open-mpi)と同様の設定で、OpenMPIをインストールしています。
+2行目では、[インストール済みソフトウェアの構成](../appendix/installed-software.md#open-mpi)と同様の設定で、OpenMPIをインストールしています。
 インストールオプションの意味は以下の通りです。
 
 - `+cuda`: CUDAを有効にしてビルドします。
@@ -383,11 +375,11 @@ openmpi@4.1.4  ${SPACK_ROOT}/opt/spack/linux-rocky8-skylake_avx512/gcc-8.5.0/ope
 そのため、3行目でOpenMPIがインストールされたパスを確認しています。
 
 Spackでは、同一ソフトウェアを異なる設定で複数インストールし、管理することができます。
-ここでは、CUDA 11.7.0を使用するOpenMPI 4.1.3を追加インストールします。
+ここでは、CUDA 11.7.1を使用するOpenMPI 4.1.3を追加インストールします。
 
 ```Console
-[username@g0001 ~]$ spack install cuda@11.7.0
-[username@g0001 ~]$ spack install openmpi@4.1.3 +cuda schedulers=sge fabrics=auto ^cuda@11.7.0
+[username@g0001 ~]$ spack install cuda@11.7.1
+[username@g0001 ~]$ spack install openmpi@4.1.3 +cuda schedulers=sge fabrics=auto ^cuda@11.7.1
 ```
 
 #### 使い方 {#how-to-use}
@@ -437,14 +429,14 @@ mpiexec ${MPIOPTS} YOUR_PROGRAM
 CUDA-aware MVAPICH2を使用する場合は、以下を参考にSpackでインストールしてください。
 
 GPUを搭載する計算ノード上で作業を行います。
-[OpenMPIと同様](#cuda-aware-openmpi)に、使用するCUDAをインストールしたのちに、CUDAオプション（`+cuda`）、通信ライブラリ（`fabrics=mrail`）、およびCUDAの依存関係（`^cuda@11.8.0`）を指定してMVAPICH2をインストールします。
+上述した[CUDA-aware OpenMPI](#cuda-aware-openmpi)に、使用するCUDAをインストールしたのちに、CUDAオプション（`+cuda`）、通信ライブラリ（`fabrics=mrail`）、およびCUDAの依存関係（`^cuda@11.8.0`）を指定してMVAPICH2をインストールします。
 
 ```Console
 [username@g0001 ~]$ spack install cuda@11.8.0
 [username@g0001 ~]$ spack install mvapich2@2.3.7 +cuda fabrics=mrail ^cuda@11.8.0
 ```
 
-使い方もOpenMPIと同様に、インストールしたMVAPICH2をロードして使います。
+使い方もCUDA-aware OpenMPIと同様に、インストールしたMVAPICH2をロードして使います。
 以下にジョブスクリプト例を示します。
 
 ```shell

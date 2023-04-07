@@ -105,12 +105,12 @@ packages:
     buildable: false
     externals:
 (snip)
-    - spec: cuda@11.7.0%gcc@8.5.0
+    - spec: cuda@11.7.1%gcc@8.5.0
       modules:
-      - cuda/11.7/11.7.0
+      - cuda/11.7/11.7.1
     - spec: cuda@11.7.0%gcc@12.2.0
       modules:
-      - cuda/11.7/11.7.0
+      - cuda/11.7/11.7.1
 (snip)
   hpcx-mpi:
     externals:
@@ -119,7 +119,7 @@ packages:
 (snip)
 ```
 
-After you copy this file, when you let Spack install CUDA version 10.2.89, it use `cuda/10.2/10.2.89` environment module, instead of installing another copy of CUDA.
+After you copy this file, when you let Spack install CUDA version 11.7.1, it use `cuda/11.7/11.7.1` environment module, instead of installing another copy of CUDA.
 `buildable: false` defined under CUDA section prohibits Spack to install other versions of CUDA specified here.
 If you let Spack install versions of CUDA which are not supported by ABCI, remove this directive.
 
@@ -158,7 +158,7 @@ gcc@8.5.0:
 
 ### Software Management Operations {#software-management-operations}
 
-#### Install {#install}
+#### Install {\#install-openmpi}
 
 The default version of OpenMPI can be installed as follows.
 Refer to [Example Software Installation](#cuda-aware-openmpi) for options.
@@ -376,11 +376,11 @@ Line #4 edits a configuration file to turn off runtime warnings (optional).
 For this purpose, Line #3 checks the installation path of OpenMPI.
 
 Spack can manage variants of the same version of software.
-This is an example that you additionally install OpenMPI 4.1.3 that uses CUDA 11.7.0.
+This is an example that you additionally install OpenMPI 4.1.3 that uses CUDA 11.7.1.
 
 ```Console
-[username@g0001 ~]$ spack install cuda@11.7.0
-[username@g0001 ~]$ spack install openmpi@4.1.3 +cuda schedulers=sge fabrics=auto ^cuda@11.7.0
+[username@g0001 ~]$ spack install cuda@11.7.1
+[username@g0001 ~]$ spack install openmpi@4.1.3 +cuda schedulers=sge fabrics=auto ^cuda@11.7.1
 ```
 
 #### How to Use {#how-to-use}
