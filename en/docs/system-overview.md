@@ -177,7 +177,7 @@ The software available on the ABCI system is shown below.
 | OS | Rocky Linux | 8.6 | - |
 | OS | Red Hat Enterprise Linux | - | 8.2 |
 | Job Scheduler | Altair Grid Engine | 8.6.19_C121_1 | 8.6.19_C121_1 |
-| Development Environment | [CUDA Toolkit](gpu.md#cuda-toolkit) | 10.2.89<br>11.0.3<br>11.1.1<br>11.2.2<br>11.3.1<br>11.4.4<br>11.5.2<br>11.6.2<br>11.7.0<br>11.7.1<br>11.8.0<br>12.0.0<br>12.1.0 | 10.0.130.1<br>10.1.243<br>10.2.89<br>11.0.3<br>11.1.1<br>11.2.2<br>11.3.1<br>11.4.4<br>11.5.2<br>11.6.2<br>11.7.1<br>11.8.0<br>12.0.0<br>12.1.0 |
+| Development Environment | [CUDA Toolkit](gpu.md#cuda-toolkit) | 10.2.89<br>11.0.3<br>11.1.1<br>11.2.2<br>11.3.1<br>11.4.4<br>11.5.2<br>11.6.2<br>11.7.0<br>11.7.1<br>11.8.0<br>12.0.0<br>12.1.0 | 10.2.89<br>11.0.3<br>11.1.1<br>11.2.2<br>11.3.1<br>11.4.4<br>11.5.2<br>11.6.2<br>11.7.1<br>11.8.0<br>12.0.0<br>12.1.0 |
 | | Intel oneAPI<br>(compilers and libraries) | 2023.0.0 | 2023.0.0 |
 | | Intel VTune | 2023.0.0 | 2023.0.0 |
 | | Intel Trace Analyzer and Collector | 2021.8.0 | 2021.8.0 |
