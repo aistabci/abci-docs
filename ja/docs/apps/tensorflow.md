@@ -16,17 +16,17 @@
 
 ```
 [username@es1 ~]$ qrsh -g grpname -l rt_G.small=1 -l h_rt=1:00:00
-[username@g0001 ~]$ module load gcc/9.3.0 python/3.8/3.8.7 cuda/11.0/11.0.3 cudnn/8.0/8.0.5
+[username@g0001 ~]$ module load python/3.11 cuda/11.8 cudnn/8.6
 [username@g0001 ~]$ python3 -m venv ~/venv/tensorflow
 [username@g0001 ~]$ source ~/venv/tensorflow/bin/activate
 (tensorflow) [username@g0001 ~]$ pip3 install --upgrade pip setuptools
-(tensorflow) [username@g0001 ~]$ pip3 install tensorflow==2.4.1
+(tensorflow) [username@g0001 ~]$ pip3 install tensorflow==2.12.0
 ```
 
 次回以降は、次のようにモジュールの読み込みとPython仮想環境のアクティベートだけでTensorFlowを使用できます。
 
 ```
-[username@g0001 ~]$ module load gcc/9.3.0 python/3.8/3.8.7 cuda/11.0/11.0.3 cudnn/8.0/8.0.5
+[username@g0001 ~]$ module load python/3.11 cuda/11.8 cudnn/8.6
 [username@g0001 ~]$ source ~/venv/tensorflow/bin/activate
 ```
 
@@ -38,7 +38,7 @@ TensorFlowサンプルプログラム `train.py` の実行方法をインタラ�
 
 ```
 [username@es1 ~]$ qrsh -g grpname -l rt_G.small=1 -l h_rt=1:00:00
-[username@g0001 ~]$ module load gcc/9.3.0 python/3.8/3.8.7 cuda/11.0/11.0.3 cudnn/8.0/8.0.5
+[username@g0001 ~]$ module load python/3.11 cuda/11.8 cudnn/8.6
 [username@g0001 ~]$ source ~/venv/tensorflow/bin/activate
 (tensorflow) [username@g0001 ~]$ git clone https://github.com/tensorflow/tensorflow.git
 (tensorflow) [username@g0001 ~]$ python3 tensorflow/tensorflow/examples/speech_commands/train.py --how_many_training_steps 1000,500
@@ -56,7 +56,7 @@ TensorFlowサンプルプログラム `train.py` の実行方法をインタラ�
 #$ -cwd
 
 source /etc/profile.d/modules.sh
-module load gcc/9.3.0 python/3.8/3.8.7 cuda/11.0/11.0.3 cudnn/8.0/8.0.5
+module load python/3.11 cuda/11.8 cudnn/8.6
 source ~/venv/tensorflow/bin/activate
 git clone https://github.com/tensorflow/tensorflow.git
 python3 tensorflow/tensorflow/examples/speech_commands/train.py --how_many_training_steps 1000,500
@@ -84,18 +84,18 @@ Your job 1234567 ('run.sh') has been submitted
 
 ```
 [username@es1 ~]$ qrsh -g grpname -l rt_G.small=1 -l h_rt=1:00:00
-[username@g0001 ~]$ module load gcc/9.3.0 python/3.8/3.8.7 openmpi/4.0.5 cuda/11.0/11.0.3 cudnn/8.0/8.0.5 nccl/2.8/2.8.4-1
+[username@g0001 ~]$ module load python/3.11 cuda/11.8 cudnn/8.6 nccl/2.16 hpcx-mt/2.12
 [username@g0001 ~]$ python3 -m venv ~/venv/tensorflow+horovod
 [username@g0001 ~]$ source ~/venv/tensorflow+horovod/bin/activate
 (tensorflow+horovod) [username@g0001 ~]$ pip3 install --upgrade pip setuptools
-(tensorflow+horovod) [username@g0001 ~]$ pip3 install tensorflow==2.4.1
-(tensorflow+horovod) [username@g0001 ~]$ HOROVOD_WITH_TENSORFLOW=1 HOROVOD_GPU_OPERATIONS=NCCL HOROVOD_NCCL_HOME=$NCCL_HOME HOROVOD_WITHOUT_GLOO=1 pip3 install --no-cache-dir horovod==0.22.0
+(tensorflow+horovod) [username@g0001 ~]$ pip3 install tensorflow==2.12.0
+(tensorflow+horovod) [username@g0001 ~]$ HOROVOD_NCCL_LINK=SHARED HOROVOD_WITH_TENSORFLOW=1 HOROVOD_GPU_OPERATIONS=NCCL HOROVOD_NCCL_HOME=$NCCL_HOME HOROVOD_WITHOUT_GLOO=1 pip3 install --no-cache-dir horovod==0.27.0
 ```
 
 次回以降は、次のようにモジュールの読み込みとPython仮想環境のアクティベートだけでTensorFlowとHorovodを使用できます。
 
 ```
-[username@g0001 ~]$ module load gcc/9.3.0 python/3.8/3.8.7 openmpi/4.0.5 cuda/11.0/11.0.3 cudnn/8.0/8.0.5 nccl/2.8/2.8.4-1
+[username@g0001 ~]$ module load python/3.11 cuda/11.8 cudnn/8.6 nccl/2.16 hpcx-mt/2.12
 [username@g0001 ~]$ source ~/venv/tensorflow+horovod/bin/activate
 ```
 
@@ -109,9 +109,10 @@ Horovodを利用するTensorFlowサンプルプログラム `tensorflow2_mnist.p
 
 ```
 [username@es1 ~]$ qrsh -g grpname -l rt_G.large=1 -l h_rt=1:00:00
-[username@g0001 ~]$ module load gcc/9.3.0 python/3.8/3.8.7 openmpi/4.0.5 cuda/11.0/11.0.3 cudnn/8.0/8.0.5 nccl/2.8/2.8.4-1
+[username@g0001 ~]$ module load python/3.11 cuda/11.8 cudnn/8.6 nccl/2.16 hpcx-mt/2.12
 [username@g0001 ~]$ source ~/venv/tensorflow+horovod/bin/activate
-(tensorflow+horovod) [username@g0001 ~]$ git clone -b v0.22.0 https://github.com/horovod/horovod.git
+(tensorflow+horovod) [username@g0001 ~]$ export XLA_FLAGS=--xla_gpu_cuda_data_dir=$CUDA_HOME
+(tensorflow+horovod) [username@g0001 ~]$ git clone -b v0.27.0 https://github.com/horovod/horovod.git
 (tensorflow+horovod) [username@g0001 ~]$ mpirun -np 4 -map-by ppr:4:node -mca pml ob1 python3 horovod/examples/tensorflow2/tensorflow2_mnist.py
 ```
 
@@ -129,15 +130,16 @@ Horovodを利用するTensorFlowサンプルプログラム `tensorflow2_mnist.p
 #$ -cwd
 
 source /etc/profile.d/modules.sh
-module load gcc/9.3.0 python/3.8/3.8.7 openmpi/4.0.5 cuda/11.0/11.0.3 cudnn/8.0/8.0.5 nccl/2.8/2.8.4-1
+module load python/3.11 cuda/11.8 cudnn/8.6 nccl/2.16 hpcx-mt/2.12
 source ~/venv/tensorflow+horovod/bin/activate
 
-git clone -b v0.22.0 https://github.com/horovod/horovod.git
+export XLA_FLAGS=--xla_gpu_cuda_data_dir=${CUDA_HOME}
+git clone -b v0.27.0 https://github.com/horovod/horovod.git
 
 NUM_GPUS_PER_NODE=4
 NUM_PROCS=$(expr ${NHOSTS} \* ${NUM_GPUS_PER_NODE})
 
-MPIOPTS="-np ${NUM_PROCS} -map-by ppr:${NUM_GPUS_PER_NODE}:node -mca pml ob1 -mca btl self,tcp -mca btl_tcp_if_include bond0"
+MPIOPTS="-hostfile $SGE_JOB_HOSTLIST -np ${NUM_PROCS} -map-by ppr:${NUM_GPUS_PER_NODE}:node -mca pml ob1 -mca btl self,tcp -mca btl_tcp_if_include bond0"
 
 mpirun ${MPIOPTS} python3 horovod/examples/tensorflow2/tensorflow2_mnist.py
 

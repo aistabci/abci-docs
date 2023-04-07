@@ -1,7 +1,7 @@
 
 # Modules removed and alternatives
 
-At the start of FY2022, we reconfigured the modules provided by ABCI.
+At the start of FY2023, we reconfigured the modules provided by ABCI.
 Software that is no longer supported due to reconfiguration has been removed from the latest Environment Modules.
 
 If you want to use the removed modules, please refer to the FAQ [How to use previous ABCI Environment Modules](../faq.md#q-how-to-use-previous-abci-environment-modules).
@@ -10,6 +10,16 @@ This section describes how to execute the removed module as a Singularity contai
 Please change the installation path in the text as appropriate.
 
 The removed modules are as follows.
+
+| Software                                                | Module        |
+| ------------------------------------------------------- | ------------- |
+| [PGI](#nvidia-hpc-sdk)                                  | pgi           |
+| [OpenMPI](#open-mpi)                                    | openmpi       |
+| SSHFS[^1]                                               | fuse-sshfs    |
+
+[^1]: Alternatives are not currently offered.
+
+Modules removed in FY2022:
 
 | Software                                                | Module        |
 | ------------------------------------------------------- | ------------- |
@@ -24,6 +34,9 @@ The removed modules are as follows.
 You can also use [Spack](https://spack.io) to install and manage your own software; see [Software Management by Spack](spack.md) for more information on using Spack.
 
 ## NVIDIA HPC SDK {#nvidia-hpc-sdk}
+
+!!! note
+      The PGI compiler is currently included in the NVIDIA HPC SDK; if you wish to use the PGI compiler, please use the NVIDIA HPC SDK.
 
 To use the NVIDIA HPC SDK, use [the container](https://catalog.ngc.nvidia.com/orgs/nvidia/containers/nvhpc) provided by NVIDIA NGC.
 
@@ -93,6 +106,30 @@ This is free software; see the source for copying conditions.  There is NO
 warranty; not even for MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 ```
 
+
+## Open MPI {#open-mpi}
+
+To use Open MPI, install from source.
+This section describes how to install under `$HOME/apps/openmpi`.
+
+```
+[username@es1 ~]$ wget https://download.open-mpi.org/release/open-mpi/v4.1/openmpi-4.1.3.tar.gz
+[username@es1 ~]$ tar xvf openmpi-4.1.3.tar.gz
+[username@es1 ~]$ cd openmpi-4.1.3/
+[username@es1 ~]$ ./configure --prefix=$HOME/apps/openmpi --enable-mpi-thread-multiple --with-cuda=$CUDA_HOME --enable-orterun-prefix-by-default --with-sge
+[username@es1 ~]$ make -j8
+[username@es1 ~]$ make install
+[username@es1 ~]$ export PATH=$HOME/apps/openmpi/bin:$PATH
+[username@es1 ~]$ mpicc --version
+gcc (GCC) 8.5.0 20210514 (Red Hat 8.5.0-16)
+Copyright (C) 2018 Free Software Foundation, Inc.
+This is free software; see the source for copying conditions.  There is NO
+warranty; not even for MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+```
+
+You can also install OpenMPI using Spack.
+For information on installing OpenMPI using Spack, please refer to the [Spack OpenMPI](spack.md#software-management-operations) page.
+
 ## CUDA-aware Open MPI {#cuda-aware-open-mpi}
 
 To use CUDA-aware Open MPI, install from source.
@@ -116,6 +153,9 @@ warranty; not even for MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 [username@es1 ~]$ ompi_info --parsable --all | grep mpi_built_with_cuda_support:value
 mca:mpi:base:param:mpi_built_with_cuda_support:value:true
 ```
+
+You can also install CUDA-aware OpenMPI using Spack.
+For information on installing CUDA-aware OpenMPI using Spack, please refer to the [Spack CUDA-aware OpenMPI](spack.md#cuda-aware-openmpi) page.
 
 ## Apache Hadoop {#apache-hadoop}
 
