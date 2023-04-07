@@ -278,10 +278,16 @@ ABCI Environment Modules for each year are installed below, so set the path of t
 
 Please note that previous ABCI Environment Modules is not eligible for the ABCI System support.
 
-| ABCI Environment Modules | Installed Path                |
-| ------------------------ | ----------------------------- |
-| 2020 version             | `/apps/modules-abci-1.0`      |
-| 2021 version             | `/apps/modules-abci-2.0-2021` |
+!!! note
+    In FY2023, we changed the operating system for the Compute Node (V) and the Interactive Node (V) from CentOS 7 to Rocky Linux 8.
+    As a result, the previous Environment Modules for CentOS 7 will not work on the new Compute Node (V) and the Interactive Node (V).
+    Please use the Memory-Intensive Node to use the previous Environment Modules for CentOS 7.
+
+| ABCI Environment Modules | Installed Path                | Compute Node (V) | Compute Node (A) | Memory-Intensive Node |
+| ------------------------ | ----------------------------- | ---------------- | ---------------- | --------------------- |
+| 2020 version             | `/apps/modules-abci-1.0`      | -                | -                | Yes                   |
+| 2021 version             | `/apps/modules-abci-2.0-2021` | -                | Yes              | Yes                   |
+| 2022 version             | `/apps/modules-abci-2.0-2022` | -                | Yes              | Yes                   |
 
 The following is an example of using the 2021 version of ABCI Environment Modules.
 
