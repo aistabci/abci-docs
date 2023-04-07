@@ -160,7 +160,7 @@ gcc@8.5.0:
 
 ### ソフトウェア管理関連 {#software-management-operations}
 
-#### インストール {\#install-openmpi}
+#### インストール {#install-openmpi}
 
 OpenMPIのSpack標準バージョンは、以下の通りにインストールできます。
 `schedulers=sge`と`fabrics=auto`の意味は[導入事例](#cuda-aware-openmpi)を参照ください。
