@@ -15,7 +15,7 @@
     * Utilities：fuse-sshfs
     * Container Engine：Docker
 
-* The maximum number of nodes that can be reserved at the same time for each ABCI Group is set.
+* The maximum number of nodes that can be reserved at the same time for each ABCI Group was set.
     * The maximum number of the Compute Node (V) that can be reserved at the same time for each ABCI Group: 272 nodes
     * The maximum number of the Compute Node (A) that can be reserved at the same time for each ABCI Group: 30 nodes
 
