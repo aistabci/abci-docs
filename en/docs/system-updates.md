@@ -1,11 +1,11 @@
 # System Updates
 
-## 2023-04-07 (future update) {#2023-04-06}
+## 2023-04-07 {#2023-04-07}
 
 * Change the OS for compute nodes (V) and interactive nodes (V) from ***CentOS 7*** to ***Rocky Linux 8***.
     * This change requires you to recompile your programs or rebuild the Python virtual environments.
 
-* The following tools will no longer be supported on 2023/03/31.
+* The following tools are no longer supported on 2023/03/31.
   For modules that are no longer supported, please use container images or [previous ABCI Environment Modules](faq.md#q-how-to-use-previous-abci-environment-modules).
   For more information, please refer to the [Modules removed and alternatives](tips/modules-removed-and-alternatives.md).
     * Compilers：PGI
@@ -15,31 +15,34 @@
     * Utilities：fuse-sshfs
     * Container Engine：Docker
 
-* The maximum number of nodes that can be reserved at the same time for each ABCI Group is set.
+* The maximum number of nodes that can be reserved at the same time for each ABCI Group was set.
     * The maximum number of the Compute Node (V) that can be reserved at the same time for each ABCI Group: 272 nodes
     * The maximum number of the Compute Node (A) that can be reserved at the same time for each ABCI Group: 30 nodes
 
-* The inode quota limit for groups area will be set.
-    * The inode quota limit for groups area will be set to 200 millions on April 2023.
+* The inode quota limit for groups area was set.
+    * The inode quota limit for groups area was set to 200 millions on April 2023.
     * For more information about checking the number of inodes, please refer to the [Checking Disk Quota](getting-started.md#checking-disk-quota).
  
 * Updates the ABCI Singularity Endpoint.
     * With this update, you will need to recreate the access token.
-    * With this update, the SingularityPRO Enterprise Plugin is available. As a result, the following overlapping functions are removed.
+    * With this update, the SingularityPRO Enterprise Plugin is available. As a result, the following overlapping functions have been removed.
         * list_singularity_images
         * revoke_singularity_token
 
 * ABCI User Portal Updates
-    * The following functions will be added to the Declaration regarding the applicability of specific categories.
+    * The following functions have been added to the Declaration regarding the applicability of specific categories.
         * The "Declaration Concerning Applicability to Specified Categories" for "Japanese Students, etc." can be applied for from the ABCI User Portal.
         * All users other than "Japanese Students, etc." and "Non-residents" can apply for the "Declaration Concerning Applicability to Specified Categories" from the ABCI User Portal. (Note: Users who have not applied for the "Declaration Concerning Applicability to Specified Categories" cannot use the ABCI.)
-    * The following functions will be added for public key operations.
+    * The following functions have been added for public key operations.
         * The ABCI group's responsible person/administrator can refer to the public key operation history of the ABCI group's users.
         * When a user in the ABCI group registers or deletes a public key, a notification e-mail will be sent to the responsible person/administrator of the ABCI group. By default, no notification is sent.
 
 | Add / Update / Delete | Software | Version | Previous version |
 |:--|:--|:--|:--|
-| Delete | gcc | 9.3.0 |  |
+| Delete | gcc | 9.3.0 | |
+| Delete | cuda | 9.0.176.1<br>9.1.85.3<br>9.2.148.1<br>10.0.130.1<br>10.1.243<br>11.7.0 | |
+| Delete | cudnn | 7.0.5<br>7.1.4<br>7.2.1<br>7.3.1<br>7.4.2<br>7.5.1 | |
+| Delete | nccl | 2.4.8-1 | |
 | Update | intel | 2023.0.0 | 2022.2.1 |
 | Update | intel-advisor | 2023.0 | 2022.3.1 |
 | Update | intel-inspector | 2023.0 | 2022.3.1 |
@@ -60,7 +63,9 @@
 | Update | aws-cli | 2.11 | 2.4 |
 | Delete | fuse-sshfs | 3.7.2 |  |
 | Update | SingularityPRO | 3.9-10 | 3.9-9 |
-| Update | Singularity Endpoint | 2.1.5 | 1.7.2 |
+| Update | Singularityエンドポイント | 2.1.5 | 1.7.2 |
+| Update | DDN Lustre | 2.12.8_ddn23 | 2.12.8_ddn10 |
+| Update | Scality S3 Connector | 7.10.6.7 | 7.10.2.2 |
 
 ## 2023-03-08
 

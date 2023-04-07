@@ -252,7 +252,7 @@ ABCIシステムでバッチジョブを実行する場合、実行するプロ�
 #$-cwd
 
 source /etc/profile.d/modules.sh
-module load cuda/9.2/9.2.88.1
+module load cuda/10.2/10.2.89
 ./a.out
 ```
 
@@ -506,9 +506,6 @@ Reservedサービスでは、計算ノードを事前に予約して計画的な
 
 !!! warning
     計算ノードの予約は、利用責任者もしくは利用管理者のみが実施できます。
-
-!!! warning
-    ABCI利用者ポータルでは、計算ノード(A)の予約はできません。
 
 ```
 $ qrsub options
