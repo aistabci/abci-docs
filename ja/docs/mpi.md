@@ -45,8 +45,8 @@ ABCIで提供しているHPC-Xモジュールには以下の種類がありま�
 [username@es1 ~]$ qrsh -g groupname -l rt_F=2 -l h_rt=01:00:0
 [username@g0001 ~]$ module load hpcx/2.12
 [username@g0001 ~]$ mpirun -np 2 -map-by ppr:1:node -hostfile $SGE_JOB_HOSTLIST ./hello_c
-Hello, world, I am 0 of 2, (Open MPI v4.1.4rc1, package: Open MPI root@hpc-kernel-03 Distribution, ident: 4.1.4rc1, repo rev: v4.1.4rc1, Unreleased developer copy, 135)
-Hello, world, I am 1 of 2, (Open MPI v4.1.4rc1, package: Open MPI root@hpc-kernel-03 Distribution, ident: 4.1.4rc1, repo rev: v4.1.4rc1, Unreleased developer copy, 135)
+Hello, world, I am 0 of 2, (Open MPI v4.1.5a1, package: Open MPI root@hpc-kernel-03 Distribution, ident: 4.1.5a1, repo rev: v4.1.4-2-g1c67bf1c6a, Unreleased developer copy, 144)
+Hello, world, I am 1 of 2, (Open MPI v4.1.5a1, package: Open MPI root@hpc-kernel-03 Distribution, ident: 4.1.5a1, repo rev: v4.1.4-2-g1c67bf1c6a, Unreleased developer copy, 144)
 ```
 
 NVIDIA HPC-XではNCCL-SHARPプラグインを提供しています。
