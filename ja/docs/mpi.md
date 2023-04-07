@@ -23,7 +23,7 @@ ABCIシステムでは、以下のMPIを利用できます。
 
 | Module Version | MPI Version |  Compute Node (V) | Compute Node (A) |
 | :-- | :-- | :-- | :-- |
-| 2.12 | 4.1.5a1 | Yes | Yes
+| 2.12 | 4.1.5a1 | Yes | Yes |
 
 ### 使用方法
 

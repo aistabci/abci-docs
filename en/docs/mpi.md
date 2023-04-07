@@ -23,7 +23,7 @@ The following is a list MPI versions installed in the ABCI system.
 
 | Module Version | MPI Version |  Compute Node (V) | Compute Node (A) |
 | :-- | :-- | :-- | :-- |
-| 2.12 | 4.1.5a1 | Yes | Yes
+| 2.12 | 4.1.5a1 | Yes | Yes |
 
 ### Using HPC-X
 
