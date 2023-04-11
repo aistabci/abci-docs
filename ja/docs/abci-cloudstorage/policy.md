@@ -89,52 +89,61 @@ Principal には、アクセス権を設定するユーザーを記述します�
 !!! note
     バケットポリシーでは Condition がサポートされていません。そのため、例えば接続元IPアドレスによるアクセス制限といった条件を設定できません。
 
-### 例1：バケットにアクセスできるアカウントを限定する
+### 例1：クロスアカウントのバケットのアクセスを許可する {#allowing-cross-account-bucket-access}
 
-グループ内に aaa00000.1、aaa00001.1、aaa00002.1、aaa00003.1 という4人のクラウドストレージアカウントが作られており、sensor8 というバケットがあるものとします。ここでは、そこにアクセスできるユーザーを、aaa00000.1 と aaa00001.1 の 2人に限定する方法を説明します。
+ABCIグループ間でバケットを共有する方法について説明します。
+この例では、グループAが所有する share-bucket というバケットをグループBに所属する bbb00000.1、bbb00001.1 という2人のクラウドストレージアカウントにアクセスを許可します。
 
-アクセスを拒否するユーザー aaa00002.1 と aaa00003.1 の Arn の値を `aws iam get-user` で確認します。`aws iam get-user` を実行するには管理者用のクラウドストレージアカウントが必要です。
+まず、アクセスを許可するアカウント bbb00000.1 と bbb00001.1 の Arn の値をグループBのユーザが `aws iam get-user` で確認します。
+`aws iam get-user` を実行するには管理者用のクラウドストレージアカウントが必要です。
 
 ```
-[username@es1 ~]$ aws --endpoint-url https://s3.abci.ai iam get-user --user-name aaa00002.1 --query User.Arn
-"arn:aws:iam::123456789012:user/aaa00002.1"
-[username@es1 ~]$ aws --endpoint-url https://s3.abci.ai iam get-user --user-name aaa00003.1 --query User.Arn
-"arn:aws:iam::123456789012:user/aaa00003.1"
+[username@es1 ~]$ aws --endpoint-url https://s3.abci.ai iam get-user --user-name bbb00000.1 --query User.Arn
+"arn:aws:iam::987654321098:user/bbb00000.1"
+[username@es1 ~]$ aws --endpoint-url https://s3.abci.ai iam get-user --user-name bbb00001.1 --query User.Arn
+"arn:aws:iam::987654321098:user/bbb00001.1"
 ```
 
-以下の内容の sensor8.json というファイルを作成します。説明上、sensor8.json としますが、任意のファイル名を使うことができます。
+次に、グループAのユーザが以下の内容の cross-access-pc.json というファイルを作成します。説明上、cross-access-pc.json としますが、任意のファイル名を使うことができます。
 
 ```
 {
     "Version": "2012-10-17",
     "Statement": [
         {
-            "Effect": "Deny",
-            "Action": "s3:*",
-            "Resource": ["arn:aws:s3:::sensor8", "arn:aws:s3:::sensor8/*"],
+            "Effect": "Allow",
             "Principal": {
                 "AWS": [
-                    "arn:aws:iam::123456789012:user/aaa00002.1",
-                    "arn:aws:iam::123456789012:user/aaa00003.1"
+                    "arn:aws:iam::987654321098:user/bbb00000.1",
+                    "arn:aws:iam::987654321098:user/bbb00001.1"
                 ]
-            }
+            },
+            "Action": [
+                "s3:List*",
+                "s3:Get*"
+            ],
+            "Resource": [
+                "arn:aws:s3:::share-bucket",
+                "arn:aws:s3:::share-bucket/*"
+            ]
         }
     ]
 }
 ```
 
-上記では aaa00002.1 と aaa00003.1 が sensor8 にアクセスを禁止するポリシーを定義しています。
-Denyルールが優先されるため、他のポリシーで aaa00002.1 と aaa00003.1 に対して Allowルールが適用されていたとしても、本ポリシーを適用することでアクセスを禁止することができます。
+上記では、bbb00000.1 と bbb00001.1 に share-bucket バケットに対する読み取り専用のアクセスを許可するポリシーを定義しています。
 
-本ポリシーを制限したいバケット、すなわち sensor8 に適用します。
+このポリシーを share-bucket バケットに適用します。
 
 ```
-[username@es1 ~]$ aws --endpoint-url https://s3.abci.ai s3api put-bucket-policy --bucket sensor8 --policy file://sensor8.json
+[username@es1 ~]$ aws --endpoint-url https://s3.abci.ai s3api put-bucket-policy --bucket share-bucket --policy file://cross-access-pc.json
 ```
 
-上記により aaa00002.1 と aaa00003.1 は、sensor8 バケットにアクセスできなくなります。aaa00000.1 と aaa00001.1 は、これまで通りアクセスできます。
+上記により bbb00000.1 と bbb00001.1 は、share-bucket バケットにアクセスできるようになります。
 
-バケットに適用されたポリシーを確認する場合は、`aws --endpoint-url https://s3.abci.ai s3api get-bucket-policy --bucket sensor8` を実行してください。
+バケットに適用されたポリシーを確認する場合は、`aws --endpoint-url https://s3.abci.ai s3api get-bucket-policy --bucket share-bucket` を実行してください。
+
+また、ポリシーを削除する場合は、`aws --endpoint-url https://s3.abci.ai s3api delete-bucket-policy --bucket share-bucket` を実行してください。
 
 
 ## ユーザーポリシーの設定 {#config-user-policy}
