@@ -6,7 +6,7 @@ ABCI Cloud Storage has unique capabilities.
 
 - Compatibility
 
-    Users store data into a globally unique bucket through the interface compatible with Amazon S3. Clients compartible with S3 such as AWS Command Line Interface (AWS CLI) and s3cmd are available. Users can also make client tools by using boto. Some APIs are not supported. The example of usage of AWS CLI is shown in another section.
+    Users store data into a globally unique bucket through the interface compatible with Amazon S3. Clients compatible with S3 such as AWS Command Line Interface (AWS CLI) and s3cmd are available. Users can also make client tools by using boto. Some APIs are not supported. The example of usage of AWS CLI is shown in another section.
     
 - Accessibility
 
@@ -22,12 +22,12 @@ For details of the operation, refer to [ABCI Portal Guide](https://docs.abci.ai/
 
 ABCI points based on the total size of objects in buckets owned by your ABCI group are subtracted from your ABCI group's each day. There is no charge for data transfer or API calls. Users can check the total size by [show_cs_usage](getting-started.md#check-cloud-storage-usage). The calculation formula of ABCI points for using ABCI Cloud Storage is as follows.
 
-<div class="codehilite"><pre>
+```
 ABCI point = the size of data stored in the storage of the previous day
-           &times; charge coefficient of ABCI Cloud Storage
-</pre></div>
+           × charge coefficient of ABCI Cloud Storage
+```
 
-As for charge coefficient of ABCI Cloud Storege, see [this page](https://abci.ai/en/how_to_use/tariffs.html).
+As for charge coefficient of ABCI Cloud Storage, see [this page](https://abci.ai/en/how_to_use/tariffs.html).
 
 | Page | Outline |
 |:--|:--|

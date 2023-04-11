@@ -20,10 +20,10 @@ ABCIクラウドストレージには、ABCIで提供する他のストレージ
 
 ABCIクラウドストレージでは、ABCIグループが所有するバケットに入っているデータ量に応じて、1日ごとにABCIポイントが差し引かれます。なお、データ転送量やAPIの呼び出し回数による課金は行っていません。[show_cs_usage](getting-started.md#check-cloud-storage-usage) を使ってクラウドラウドストレージに保存したデータ量を確認できます。ABCIクラウドストレージのABCIポイントの計算式は以下の通りです。
 
-<div class="codehilite"><pre>
+```
 ABCI point = ABCI Cloud Storage の使用量
-           &times; ABCI Cloud Storage の単価
-</pre></div>
+           × ABCI Cloud Storage の単価
+```
 
 ABCIクラウドストレージの単価は、[料金表](https://abci.ai/ja/how_to_use/tariffs.html) を確認してください。
 

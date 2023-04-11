@@ -15,17 +15,17 @@ ABCIシステムではGCCが利用可能です。
 | | C | mpicc |
 | | C++ | mpic++ |
 
-## Intel Parallel Studio XE
+## Intel oneAPI
 
-ABCIシステムではIntel Parallel Studio XEが利用可能です。
+ABCIシステムではIntel oneAPIが利用可能です。
 利用するためには事前に`module`コマンドを用いて利用環境を設定する必要があります。
 計算ノードで`module`コマンドを用いて利用環境を設定すると、コンパイル用環境変数に
 ヘッダファイルおよびライブラリのサーチパスが自動で設定され、実行用環境変数も自動で設定されます。
 
-Intel Parallel Studio XEの環境設定:
+Intel oneAPIの環境設定:
 
 ```
-[username@g0001 ~]$ module load intel/2020.4.304
+[username@g0001 ~]$ module load intel/2022.2.1
 ```
 
 コンパイル/リンクコマンド一覧:
@@ -57,26 +57,6 @@ PGIの環境設定:
 | C | pgcc |
 | C++ | pgc++ |
 
-## NVIDIA HPC SDK
-
-ABCIシステムではNVIDIA HPC SDKが利用可能です。
-利用するためには事前に`module`コマンドを用いて利用環境を設定する必要があります。
-計算ノードで`module`コマンドを用いて利用環境を設定すると、コンパイル用環境変数にヘッダファイルおよびライブラリのサーチパスが自動で設定され、実行用環境変数も自動で設定されます。
-
-NVIDIA HPC SDKの環境設定:
-
-```
-[username@g0001 ~]$ module load nvhpc/21.2
-```
-
-コンパイル/リンクコマンド一覧:
-
-| 言語処理系 | コマンド |
-|:--|:--|
-| Fortran | nvfortran |
-| C | nvc |
-| C++ | nvc++ |
-
 ## OpenMP
 
 ABCIシステムで用意されているコンパイラは、OpenMPを用いたスレッド並列化機能が実装されています。
@@ -85,9 +65,8 @@ OpenMPを有効化する場合、コンパイル/リンク時に以下のよう�
 | | オプション |
 |:--|:--|
 | GCC | -fopenmp |
-| Intel Parallel Studio | -qopenmp |
+| Intel oneAPI | -qopenmp |
 | PGI | -mp |
-| NVIDIA HPC SDK | -mp |
 
 ## CUDA
 

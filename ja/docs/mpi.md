@@ -2,9 +2,7 @@
 
 ABCIシステムでは、以下のMPIを利用できます。
 
-* [Open MPI](https://www.open-mpi.org/)
-* [MVAPICH2](http://mvapich.cse.ohio-state.edu/overview/#mv2)
-* [MVAPICH2-GDR](http://mvapich.cse.ohio-state.edu/overview/#mv2gdr)
+* [NVIDIA HPC-X](https://developer.nvidia.com/networking/hpc-x)
 * [Intel MPI](https://software.intel.com/en-us/intel-mpi-library)
 
 利用するためには事前に`module`コマンドを用いて利用環境を設定する必要があります。
@@ -12,99 +10,58 @@ ABCIシステムでは、以下のMPIを利用できます。
 計算ノードで`module`コマンドを用いると、コンパイル用環境変数に加え、実行用環境変数も自動で設定されます。
 
 ```
-[username@es1 ~]$ module load openmpi/4.0.5
+[username@es1 ~]$ module load hpcx/2.12
 ```
 
 ```
-[username@es1 ~]$ module load cuda/11.0 mvapich/mvapich2-gdr/2.3.5
-```
-
-```
-[username@es1 ~]$ module load mvapich/mvapich2/2.3.5
-```
-
-```
-[username@es1 ~]$ module load intel-mpi/2019.9
+[username@es1 ~]$ module load intel-mpi/2021.8
 ```
 
 以下では、ABCIシステムに導入されているMPIのバージョン一覧を示します。
 
-## Open MPI
+## NVIDIA HPC-X
 
-計算ノード(V):
+| Module Version | MPI Version |  Compute Node (V) | Compute Node (A) |
+| :-- | :-- | :-- | :-- |
+| 2.12 | 4.1.5a1 | Yes | Yes |
 
-| openmpi/ | Compiler version | w/o CUDA | cuda8.0 | cuda9.0 | cuda9.1 | cuda9.2 | cuda10.0 | cuda10.1 | cuda10.2 | cuda11.0 | cuda11.1 | cuda11.2 |
-|:--|:--|:--|:--|:--|:--|:--|:--|:--|:--|:--|:--|:--|
-| 2.1.6  | gcc/4.8.5     | Yes | Yes | Yes | Yes | Yes | Yes | Yes | Yes | Yes | Yes | Yes |
-| 2.1.6  | gcc/7.4.0     | Yes | -   | -   | -   | Yes | Yes | Yes | Yes | Yes | Yes | Yes |
-| 2.1.6  | gcc/9.3.0     | Yes | -   | -   | -   | -   | -   | Yes | Yes | Yes | Yes | Yes |
-| 2.1.6  | pgi/20.4      | Yes | Yes | Yes | Yes | Yes | Yes | Yes | Yes | Yes | Yes | Yes |
-| 2.1.6  | nvhpc/20.11   | Yes | Yes | Yes | Yes | Yes | Yes | Yes | Yes | Yes | Yes | Yes |
-| 2.1.6  | nvhpc/21.2    | Yes | Yes | Yes | Yes | Yes | Yes | Yes | Yes | Yes | Yes | Yes |
-| 3.1.6  | gcc/4.8.5     | Yes | -   | -   | -   | Yes | Yes | Yes | Yes | Yes | Yes | Yes |
-| 3.1.6  | gcc/7.4.0     | Yes | -   | -   | -   | Yes | Yes | Yes | Yes | Yes | Yes | Yes |
-| 3.1.6  | gcc/9.3.0     | Yes | -   | -   | -   | Yes | Yes | Yes | Yes | Yes | Yes | Yes |
-| 3.1.6  | pgi/20.4      | Yes | -   | -   | -   | Yes | Yes | Yes | Yes | Yes | Yes | Yes |
-| 3.1.6  | nvhpc/20.11   | Yes | -   | -   | -   | Yes | Yes | Yes | Yes | Yes | Yes | Yes |
-| 3.1.6  | nvhpc/21.2    | Yes | -   | -   | -   | Yes | Yes | Yes | Yes | Yes | Yes | Yes |
-| 4.0.5  | gcc/4.8.5     | Yes | -   | -   | -   | Yes | Yes | Yes | Yes | Yes | Yes | Yes |
-| 4.0.5  | gcc/7.4.0     | Yes | -   | -   | -   | Yes | Yes | Yes | Yes | Yes | Yes | Yes |
-| 4.0.5  | gcc/9.3.0     | Yes | -   | -   | -   | Yes | Yes | Yes | Yes | Yes | Yes | Yes |
-| 4.0.5  | pgi/20.4      | Yes | -   | -   | -   | Yes | Yes | Yes | Yes | Yes | Yes | Yes |
-| 4.0.5  | nvhpc/20.11   | Yes | -   | -   | -   | Yes | Yes | Yes | Yes | Yes | Yes | Yes |
-| 4.0.5  | nvhpc/21.2    | Yes | -   | -   | -   | Yes | Yes | Yes | Yes | Yes | Yes | Yes |
+### 使用方法
 
-計算ノード(A):
+ここでは、NVIDIA HPC-Xモジュールの使用方法を説明します。
 
-| openmpi/ | Compiler version | w/o CUDA | cuda10.0[^1] | cuda10.1[^1] | cuda10.2[^1] | cuda11.0 | cuda11.1 | cuda11.2 |
-|:--|:--|:--|:--|:--|:--|:--|:--|:--|
-| 2.1.6  | gcc/7.4.0     | Yes | Yes | Yes | Yes | Yes | Yes | Yes |
-| 2.1.6  | gcc/8.3.1     | Yes | Yes | Yes | Yes | Yes | Yes | Yes |
-| 2.1.6  | gcc/9.3.0     | Yes | -   | Yes | Yes | Yes | Yes | Yes |
-| 2.1.6  | pgi/20.4      | Yes | -   | -   | -   | Yes | Yes | Yes |
-| 2.1.6  | nvhpc/20.11   | Yes | Yes | Yes | Yes | Yes | Yes | Yes |
-| 2.1.6  | nvhpc/21.2    | Yes | Yes | Yes | Yes | Yes | Yes | Yes |
-| 3.1.6  | gcc/7.4.0     | Yes | Yes | Yes | Yes | Yes | Yes | Yes |
-| 3.1.6  | gcc/8.3.1     | Yes | Yes | Yes | Yes | Yes | Yes | Yes |
-| 3.1.6  | gcc/9.3.0     | Yes | Yes | Yes | Yes | Yes | Yes | Yes |
-| 3.1.6  | pgi/20.4      | Yes | -   | -   | -   | Yes | Yes | Yes |
-| 3.1.6  | nvhpc/20.11   | Yes | Yes | Yes | Yes | Yes | Yes | Yes |
-| 3.1.6  | nvhpc/21.2    | Yes | Yes | Yes | Yes | Yes | Yes | Yes |
-| 4.0.5  | gcc/7.4.0     | Yes | Yes | Yes | Yes | Yes | Yes | Yes |
-| 4.0.5  | gcc/8.3.1     | Yes | Yes | Yes | Yes | Yes | Yes | Yes |
-| 4.0.5  | gcc/9.3.0     | Yes | Yes | Yes | Yes | Yes | Yes | Yes |
-| 4.0.5  | pgi/20.4      | Yes | -   | -   | -   | Yes | Yes | Yes |
-| 4.0.5  | nvhpc/20.11   | Yes | Yes | Yes | Yes | Yes | Yes | Yes |
-| 4.0.5  | nvhpc/21.2    | Yes | Yes | Yes | Yes | Yes | Yes | Yes |
+ABCIで提供しているHPC-Xモジュールには以下の種類があります。用途に応じてモジュールを読み込んでください。
 
-[^1]: 試験用に提供しています。NVIDIA A100は、CUDA 11以降でサポートされます。
+| モジュール名 | 説明 |
+| :-- | :-- |
+| hpcx       | 標準  |
+| hpcx-mt    | マルチスレッド対応  |
+| hpcx-debug | デバッグ用          |
+| hpcx-prof  | プロファイリング用  |
 
-## MVAPICH2
+また、ジョブ内で`mpirun`、`mpiexec`コマンドを実行する際には`-hostfile`オプションにホストファイルを指定します。
+ホストファイルは`SGE_JOB_HOSTLIST`環境変数に設定されています。
 
-| mvapich/mvapich2/ | Compiler version | Compute Node (V) | Compute Node (A) |
-|:--|:--|:--|:--|
-| 2.3.5 | gcc/4.8.5     | Yes | -   |
-| 2.3.5 | gcc/7.4.0     | Yes | Yes |
-| 2.3.5 | gcc/8.3.1     | -   | Yes |
-| 2.3.5 | gcc/9.3.0     | Yes | Yes |
-| 2.3.5 | pgi/20.4      | Yes | Yes |
-| 2.3.5 | nvhpc/20.11   | Yes | Yes |
-| 2.3.5 | nvhpc/21.2    | Yes | Yes |
+```
+[username@es1 ~]$ qrsh -g groupname -l rt_F=2 -l h_rt=01:00:0
+[username@g0001 ~]$ module load hpcx/2.12
+[username@g0001 ~]$ mpirun -np 2 -map-by ppr:1:node -hostfile $SGE_JOB_HOSTLIST ./hello_c
+Hello, world, I am 0 of 2, (Open MPI v4.1.5a1, package: Open MPI root@hpc-kernel-03 Distribution, ident: 4.1.5a1, repo rev: v4.1.4-2-g1c67bf1c6a, Unreleased developer copy, 144)
+Hello, world, I am 1 of 2, (Open MPI v4.1.5a1, package: Open MPI root@hpc-kernel-03 Distribution, ident: 4.1.5a1, repo rev: v4.1.4-2-g1c67bf1c6a, Unreleased developer copy, 144)
+```
 
-## MVAPICH2-GDR
+NVIDIA HPC-XではNCCL-SHARPプラグインを提供しています。
+プラグインはHPC-Xのバージョンごとに対応するNCCLのバージョンが異なります。HPC-XとNCCLの対応は以下の表を参照してください。
 
-| mvapich/mvapich2-gdr/ | Compiler version | cuda10.0 | cuda10.1 | cuda10.2 | cuda11.0 |
-|:--|:--|:--|:--|:--|:--|
-| 2.3.5  | gcc/4.8.5 | -   | -   | Yes | Yes |
+| HPC-Xバージョン | NCCL バージョン |
+| :-- | :-- |
+| 2.12 | 2.12 |
 
-!!! note
-    計算ノード(A)では、現在 MVAPICH2-GDR を提供していません。
+SHARPおよびNCCL-SHARPプラグインの使用方法については[SHARPの利用](tips/sharp.md)を参照してください。
 
-!!! note
-    PGI 対応の MVAPICH2-GDR が必要な場合、ユーザーサポートまでご連絡ください。
+NVIDIA HPC-Xについて、より詳しい情報は[公式ドキュメント](https://docs.nvidia.com/networking/category/hpcx)を参照してください。
 
 ## Intel MPI
 
 | intel-mpi/ | Compute Node (V) | Compute Node (A) |
 |:--|:--|:--|
-| 2019.9 | Yes | Yes |
+| 2021.8 | Yes | Yes |

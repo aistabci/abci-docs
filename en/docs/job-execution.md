@@ -189,6 +189,7 @@ In addition, the following options can be used as extended options:
 | -l USE\_BEEOND=*1*<br>-v BEEOND\_METADATA\_SERVER=*num*<br>-v BEEOND\_STORAGE\_SERVER=*num* | Submit a job with using BeeGFS On Demand (BeeOND). See [Using as a BeeOND storage](storage.md#beeond-storage) for details. |
 | -v GPU\_COMPUTE\_MODE=*mode* | Change GPU Compute Mode. See [Changing GPU Compute Mode](gpu.md#changing-gpu-compute-mode) for details. |
 | -l docker<br>-l docker\_images | Submit a job with a Docker container. See [Docker](containers.md#docker) for details. |
+| -l USE_EXTRA_NETWORK=1 | To allow a calculation node assigned to a job not to be a minimum hop configuration. If this option is specified for a job with a short execution time, depending on the availability of computing resources, the job may be started earlier than when it was not specified, but communication performance may deteriorate. |
 
 ## Interactive Jobs
 
@@ -249,7 +250,7 @@ Example) Sample job script executing program with CUDA
 #$-cwd
 
 source /etc/profile.d/modules.sh
-module load cuda/9.2/9.2.88.1
+module load cuda/10.2/10.2.89
 ./a.out
 ```
 
@@ -273,6 +274,23 @@ Your job 12345 ("run.sh") has been submitted
 
 !!! note
     If ABCI point is insufficient when executing a batch job with Spot service, the execution is failed.
+
+### Job submission error
+
+If the batch job submission is successful, the exit status of the `qsub` command will be `0`.
+If it fails, it will be a non-zero value and an error message will appear.
+
+The following is a part of the error messages.
+If you want to confirm for errors not listed in the following table, please [contact](./contact.md) ABCI Support.
+
+| Error message | Exit status | Description |
+|:--|:--|:--|
+| qsub: ERROR: error: ERROR! invalid option argument "*XXX*" | 255 | An invalid option was specified. Please check [Job Execution Options](#job-execution-options). |
+| Unable to run job: SIM0021: invalid option value: '*XXX*' | 1 | An invalid value was specified for the option. Please check [Job Execution Options](#job-execution-options). |
+| Unable to run job: job rejected: the requested project "*username*" does not exist. | 1 | ABCI group not specified. Specify the ABCI group using the `-g` option. |
+| Unable to run job: SIM4403: The amount of estimated consumed-point '*NNN*' is over remaining point. Try 'show_point' for point information. | 1 | ABCI points are insufficient. Please refer [Checking ABCI Point](getting-started.md#checking-abci-point) and check ABCI point usage. |
+| Unable to run job: Resource type is not specified. Specify resource type with '-l' option. | 1 | Resource type and quantity not specified. Please check [Job Execution Options](#job-execution-options) |
+| Unable to run job: SIM4702: Specified resource(*XXX*) is over limitation(*NNN*). | 1 | Requested resource exceeds limit. Please check [Number of nodes available at the same time](#number-of-nodes-available-at-the-same-time) and [Elapsed time and node-time product limits](#elapsed-time-and-node-time-product-limits). |
 
 ### Show the status of batch jobs
 
@@ -434,22 +452,25 @@ During job execution, the following environment variables are available for the 
 
 | Variable Name | Description |
 |:--|:--|
-| ENVIRONMENT         | Univa Grid Engine fills in BATCH to identify it as an Univa Grid Engine job submitted with qsub. |
+| ENVIRONMENT         | Altair Grid Engine fills in BATCH to identify it as an Altair Grid Engine job submitted with qsub. |
 | JOB\_ID             | Job ID |
-| JOB\_NAME           | Name of the Univa Grid Engine job. |
+| JOB\_NAME           | Name of the Altair Grid Engine job. |
 | JOB\_SCRIPT         | Name of the script, which is currently executed |
 | NHOSTS              | The number of hosts on which this parallel job is executed |
 | PE\_HOSTFILE        | The absolute path includes hosts, slots and queue name |
 | RESTARTED           | Indicates if the job was restarted (1) or if it is the first run (0) |
 | SGE\_ARDIR          | Path to the local storage assigned to the reserved service |
 | SGE\_BEEONDDIR      | Path to BeeOND storage allocated when BeeOND storage is utilized |
-| SGE\_JOB_HOSTLIST   | The absolute path includes only hosts assigned by Univa Grid Engine |
-| SGE\_LOCALDIR       | The local storage path assigned by Univa Grid Engine |
+| SGE\_JOB_HOSTLIST   | The absolute path includes only hosts assigned by Altair Grid Engine |
+| SGE\_LOCALDIR       | The local storage path assigned by Altair Grid Engine |
 | SGE\_O\_WORKDIR     | The working directory path of the job submitter |
 | SGE\_TASK\_ID       | Task number of the array job task the job represents (If is not an array task, the variable contains undefined) |
 | SGE\_TASK\_FIRST    | Task number of the first array job task |
 | SGE\_TASK\_LAST     | Task number of the last array job task |
 | SGE\_TASK\_STEPSIZE | Step size of the array job |
+
+!!! warning
+    Do not change these environment variables in a job because they are reserved by the job scheduler and may affect the job scheduler's behavior.
 
 ## Advance Reservation
 
@@ -461,9 +482,10 @@ The maximum number of nodes and the node-time product that can be reserved for t
 |:--|:--|:--|
 | Minimum reservation days | 1 day | 1 day |
 | Maximum reservation days | 30 days | 30 days |
+| Maximum number of nodes can be reserved at once per ABCI group | 272 nodes | 30 nodes |
 | Maximum number of nodes can be reserved at once per system | 442 nodes | 50 nodes |
-| Maximum reserved nodes per reservation | 34 nodes | 16 nodes |
-| Maximum reserved node time per reservation | 12,288 node x hour | 6,144 node x hour |
+| Maximum reserved nodes per reservation | 34 nodes | 18 nodes |
+| Maximum reserved node time per reservation | 13,056 node x hour | 6,912 node x hour |
 | Start time of accept reservation | 10:00 a.m. of 30 days ago | 10:00 a.m. of 30 days ago |
 | Closing time of accept reservation | 9:00 p.m. of Start reservation of the day before | 9:00 p.m. of Start reservation of the day before |
 | Canceling reservation accept term | 9:00 p.m. of Start reservation of the day before | 9:00 p.m. of Start reservation of the day before |
@@ -477,9 +499,6 @@ When the reservation is completed, a reservation ID will be issued. Please speci
 
 !!! warning
     Making reservation of compute node is permitted to a responsible person or a manager.
-
-!!! warning
-    You cannot reserve a compute node (A) in the ABCI User Portal.
 
 ```
 $ qrsub options

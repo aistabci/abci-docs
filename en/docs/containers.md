@@ -1,12 +1,24 @@
 # Containers
 
+ABCI allows users to create an application execution environment using Singularity containers.
+This allows users to create their own customized environments or build and compute equivalent environments on ABCI based on container images officially distributed by external organizations.
+
+For example, the [NGC Catalog](https://catalog.ngc.nvidia.com/) provides container images of various deep learning frameworks, CUDA and HPC environments.
+See [NVIDIA NGC](https://docs.abci.ai/ja/tips/ngc/)for tips on how to use the NGC Catalog with ABCI.
+
+You can also download container images on which the latest software is installed from official or verified repositories on Docker Hub.
+However, be aware not to use untrusted container images.
+The followings are examples.
+
+* [AWS CLI](https://hub.docker.com/r/amazon/aws-cli)
+* [TensorFlow](https://hub.docker.com/r/tensorflow/tensorflow)
+* [PyTorch](https://hub.docker.com/r/pytorch/pytorch)
+* [Python](https://hub.docker.com/_/python)
+
 ## Singularity
 
-!!! warning
-    We have stopped offering Singularity 2.6 at the end of March 2021.
-
 [Singularity](https://www.sylabs.io/singularity/) is available on the ABCI System.
-Available version is SingularityPRO 3.7.
+Available version is SingularityPRO 3.9.
 To use Singularity, set up user environment by the `module` command.
 
 ```
@@ -15,26 +27,30 @@ To use Singularity, set up user environment by the `module` command.
 
 More comprehensive user guide for Singularity will be found:
 
-* [SingularityPRO User Guide](https://repo.sylabs.io/guides/pro-3.7/user-guide/)
+* [SingularityPRO User Guide](https://repo.sylabs.io/guides/pro-3.9/user-guide/)
 
 To run NGC-provided Docker images on ABCI by using Singularity: [NVIDIA NGC](tips/ngc.md)
 
 ### Create a Singularity image (pull)
 
 Singularity container image can be stored as a file.
-This procedure shows how to create a Singularity image file using pull.
+This procedure shows how to create a Singularity image file using `pull`.
 
 Example) Create a Singularity image file using `pull`
 
 ```
 [username@es1 ~]$ module load singularitypro
-[username@es1 ~]$ singularity pull caffe2.img docker://caffe2ai/caffe2:latest
+[username@es1 ~]$ export SINGULARITY_TMPDIR=/scratch/$USER
+[username@es1 ~]$ singularity pull tensorflow.img docker://tensorflow/tensorflow:latest-gpu
 INFO:    Converting OCI blobs to SIF format
 INFO:    Starting build...
 ...
-[username@es1 ~]$ ls caffe2.img
-caffe2.img
+[username@es1 ~]$ ls tensorflow.img
+tensorflow.img
 ```
+
+The `SINGULARITY_TMPDIR` environment variable specifies the location where temporary files are created when the pull or build commands are executed.
+Please refer to the FAQ ["I get an error due to insufficient disk space, when I ran the singularity build/pull on the compute node."](faq.md#q-insufficient-disk-space-for-singularity-build) for more information.
 
 ### Create a Singularity image (build)
 
@@ -49,7 +65,7 @@ Example) Create a Singularity image file using `build`
 [username@es1 ~]$ module load singularitypro
 [username@es1 ~]$ cat ubuntu.def
 Bootstrap: docker
-From: ubuntu:18.04
+From: ubuntu:20.04
 
 %post
     apt-get update
@@ -66,7 +82,7 @@ INFO:    Build complete: ubuntu.sif
 [username@es1 singularity]$
 ```
 
-If the output destination of the image file (ubuntunt.sif) is set to the group area (/groups1, /groups2) in the above command, an error occurs. In this case, it is possible to avoid the problem by executing the `newgrp` command after checking the ownership group of the image destination group area with `id` command as follows.
+If the output destination of the image file (ubuntunt.sif) is set to the group area in the above command, an error occurs. In this case, it is possible to avoid the problem by executing the `newgrp` command after checking the ownership group of the image destination group area with `id` command as follows.
 In the example below, `gaa00000` is the owning group of the image destination group area.
 
 ```
@@ -84,9 +100,9 @@ You can also use the `singularity run` command to run a container image publishe
 Example) Run a container with a Singularity image file in an interactive job
 
 ```
-[username@es1 ~]$ qrsh -g grpname -l rt_G.small=1 -l h_rt=1:00:00
-[username@es1 ~]$ module load singularitypro
-[username@es1 ~]$ singularity run ./caffe2.img
+[username@es1 ~]$ qrsh -g grpname -l rt_F=1 -l h_rt=1:00:00
+[username@g0001 ~]$ module load singularitypro
+[username@g0001 ~]$ singularity run --nv ./tensorflow.img
 ```
 
 Example) Run a container with a Singularity image file in a batch job
@@ -97,28 +113,38 @@ Example) Run a container with a Singularity image file in a batch job
 #$-l rt_F=1
 #$-j y
 source /etc/profile.d/modules.sh
-module load singularitypro openmpi/3.1.6
+module load singularitypro
 
-mpiexec -n 4 singularity exec --nv ./caffe2.img \
-    python sample.py
+singularity run --nv ./tensorflow.img
 
 [username@es1 ~]$ qsub -g grpname job.sh
 ```
 
 Example) Run a container image published in Docker Hub
 
-The following sample executes a Singularity container using caffe2 container image published in Docker Hub.
-`python sample.py` is executed in the container started by `singularity run` command.
+The following sample executes a Singularity container using TensorFlow container image published in Docker Hub.
+`python3 sample.py` is executed in the container started by `singularity run` command.
 The container image is downloaded at the first startup and cached in home area.
 The second and subsequent times startup is faster by using cached data.
 
 ```
 [username@es1 ~]$ qrsh -g grpname -l rt_F=1 -l h_rt=1:00:00
 [username@g0001 ~]$ module load singularitypro
-[username@g0001 ~]$ singularity run --nv docker://caffe2ai/caffe2:latest
-...
-Singularity> python sample.py
-True
+[username@g0001 ~]$ export SINGULARITY_TMPDIR=$SGE_LOCALDIR
+[username@g0001 ~]$ singularity run --nv docker://tensorflow/tensorflow:latest-gpu
+
+________                               _______________
+___  __/__________________________________  ____/__  /________      __
+__  /  _  _ \_  __ \_  ___/  __ \_  ___/_  /_   __  /_  __ \_ | /| / /
+_  /   /  __/  / / /(__  )/ /_/ /  /   _  __/   _  / / /_/ /_ |/ |/ /
+/_/    \___//_/ /_//____/ \____//_/    /_/      /_/  \____/____/|__/
+
+
+You are running this container as user with ID 10000 and group 10000,
+which should map to the ID and group for your user on the Docker host. Great!
+
+/sbin/ldconfig.real: Can't create temporary cache file /etc/ld.so.cache~: Read-only file system
+Singularity> python3 sample.py
 ```
 
 ### Build Singularity image from Dockerfile
@@ -173,7 +199,7 @@ You can manually convert Dockerfile, but using [Singularity Python](https://sing
 Example procedure for installing Singularity Python)
 
 ```
-[username@es1 ~]$ module load python/3.6/3.6.12
+[username@es1 ~]$ module load python/3.10
 [username@es1 ~]$ python3 -m venv work
 [username@es1 ~]$ source work/bin/activate
 (work) [username@es1 ~]$ pip3 install spython
@@ -181,14 +207,12 @@ Example procedure for installing Singularity Python)
 
 Following example shows how to convert Dockerfile of [SSD300 v1.1 image](https://github.com/NVIDIA/DeepLearningExamples/tree/master/PyTorch/Detection/SSD) developed by NVIDIA using Singularity Python and modify the generated Singularity recipe (ssd.def) so that it can correctly generate a Singularity image.
 
-Just converting Dockerfile results in a built time error.
-To avoid the problem, this example modifies the Singularity recipe as described below.
+Modifications)
 
 - Files in WORKDIR will not be copied => Set the copy destination to the absolute path of WORKDIR
-- No path to pip => Add a setting to take over environment variables available in Docker image
 
 ```
-[username@es1 ~]$ module load python/3.6/3.6.12
+[username@es1 ~]$ module load python/3.10
 [username@es1 ~]$ source work/bin/activate
 (work) [username@es1 ~]$ git clone https://github.com/NVIDIA/DeepLearningExamples
 (work) [username@es1 ~]$ cd DeepLearningExamples/PyTorch/Detection/SSD
@@ -196,37 +220,35 @@ To avoid the problem, this example modifies the Singularity recipe as described 
 (work) [username@es1 SSD]$ cp -p ssd.def ssd_org.def
 (work) [username@es1 SSD]$ vi ssd.def
 Bootstrap: docker
-From: nvcr.io/nvidia/pytorch:20.06-py3
+From: nvcr.io/nvidia/pytorch:22.10-py3
 Stage: spython-base
 
 %files
-requirements.txt /workspace                     <- Change path
-./setup.py /workspace                           <- Change path
-./csrc /workspace/csrc                          <- Change path
-. /workspace                                    <- Change path
+requirements.txt /workspace/ssd/  #<- copy to WORKDIR directory.
+. /workspace/ssd/                 #<- copy to WORKDIR directory.
 %post
-FROM_IMAGE_NAME=nvcr.io/nvidia/pytorch:20.06-py3
-. /.singularity.d/env/10-docker2singularity.sh  <- Add
+FROM_IMAGE_NAME=nvcr.io/nvidia/pytorch:22.10-py3
 
 # Set working directory
-cd /workspace
+mkdir -p /workspace/ssd
+cd /workspace/ssd
 
-PYTHONPATH="${PYTHONPATH}:/workspace"
+# Copy the model files
 
-pip install --no-cache-dir git+https://github.com/NVIDIA/dllogger.git#egg=dllogger
-pip install -r requirements.txt
-python3 -m pip install pycocotools==2.0.0
+# Install python requirements
+pip install --no-cache-dir -r requirements.txt
+mkdir models #<- #<- Requires to run main.py
 
-# Copy SSD code
-pip install .
-
+CUDNN_V8_API_ENABLED=1
+TORCH_CUDNN_V8_API_ENABLED=1
 %environment
-export PYTHONPATH="${PYTHONPATH}:/workspace"
+export CUDNN_V8_API_ENABLED=1
+export TORCH_CUDNN_V8_API_ENABLED=1
 %runscript
-cd /workspace
+cd /workspace/ssd
 exec /bin/bash "$@"
 %startscript
-cd /workspace
+cd /workspace/ssd
 exec /bin/bash "$@"
 ```
 
@@ -261,8 +283,8 @@ From: ubuntu:latest
 
     echo "Installing Open MPI"
     export OMPI_DIR=/opt/ompi
-    export OMPI_VERSION=4.0.5
-    export OMPI_URL="https://download.open-mpi.org/release/open-mpi/v4.0/openmpi-$OMPI_VERSION.tar.bz2"
+    export OMPI_VERSION=4.1.5
+    export OMPI_URL="https://download.open-mpi.org/release/open-mpi/v4.1/openmpi-$OMPI_VERSION.tar.bz2"
     mkdir -p /tmp/ompi
     mkdir -p /opt
     # Download
@@ -333,8 +355,8 @@ INFO:    Build complete: openmpi.sif
 
 Example) running the container
 ```
-[username@g0001 ~]$ module load singularitypro openmpi/4.0.5
-[username@g0001 ~]$ mpirun -np 4 -map-by node singularity exec openmpi.sif /opt/mpitest
+[username@g0001 ~]$ module load singularitypro hpcx/2.12
+[username@g0001 ~]$ mpirun -hostfile $SGE_JOB_HOSTLIST -np 4 -map-by node singularity exec openmpi.sif /opt/mpitest
 Hello, I am rank 2/4
 Hello, I am rank 3/4
 Hello, I am rank 0/4
@@ -420,59 +442,9 @@ INFO:    Build complete: h2o4gpuPy.sif
 
 Example) running the container
 ```
-[username@g0001 ~]$ module load singularitypro openmpi/4.0.5 cuda/10.2
+[username@g0001 ~]$ module load singularitypro cuda/10.2
 [username@g0001 ~]$ singularity exec --nv h2o4gpuPy.sif python3 h2o4gpu_sample.py
 [[1.  0.5]
  [1.  4. ]]
 [username@g0001 ~]$
 ```
-
-## Docker
-
-In the ABCI System, job can be executed on Docker container.
-When you use Docker, you need to set up user environment by the `module` command and specify `-l docker` option and `-l docker_image` option at job submission.
-
-| option | description |
-|:--|:--|
-| -l docker | job is executed on Docker container |
-| -l docker_images | specify using Docker image |
-
-!!! warning
-    Docker container can not be used on memory-intensive node in the ABCI system.
-
-The available Docker image can be referred by `show_docker_images` command.
-
-```
-[username@es1 ~]$ show_docker_images
-REPOSITORY                TAG             IMAGE ID     CREATED       SIZE
-jcm:5000/dhub/ubuntu      latest          113a43faa138 3 weeks ago   81.2MB
-```
-
-!!! warning
-    In the ABCI System, Users can use only Docker images provided in the system.
-
-Example) job script using Docker
-
-The following job script executes `python3 ./sample.py` on Docker container.
-
-```
-[username@es1 ~]$ cat run.sh
-#!/bin/sh
-#$-cwd
-#$-j y
-#$-l rt_F=1
-#$-l docker=1
-#$-l docker_images="*jcm:5000/dhub/ubuntu*"
-
-python3 ./sample.py
-```
-
-Example) Submission of job script using Docker
-
-```
-[username@es1 ~]$ qsub -g grpname run.sh
-Your job 12345 ("run.sh") has been submitted
-```
-
-!!! warning
-    Docker container is only available on a node-exclusive job.

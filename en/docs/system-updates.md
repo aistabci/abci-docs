@@ -1,10 +1,236 @@
 # System Updates
 
-## 2022-04-11 (future update)
+## 2023-04-07 {#2023-04-07}
 
-* Maximum reserved node time per reservation of compute node (V) will be changed in the Reserved Service from 12,288 to 13,056.
-* Maximum reserved nodes per reservation of compute node (A) will be changed in the Reserved Service from 16 to 18.
-* Maximum reserved node time per reservation of compute node (A) will be changed in the Reserved Service from 6,144 to 6,912.
+* Change the OS for compute nodes (V) and interactive nodes (V) from ***CentOS 7*** to ***Rocky Linux 8***.
+    * This change requires you to recompile your programs or rebuild the Python virtual environments.
+
+* The following tools are no longer supported on 2023/03/31.
+  For modules that are no longer supported, please use container images or [previous ABCI Environment Modules](faq.md#q-how-to-use-previous-abci-environment-modules).
+  For more information, please refer to the [Modules removed and alternatives](tips/modules-removed-and-alternatives.md).
+    * Compilers：PGI
+    * Development Tools：Lua
+    * Deep Learning Frameworks：Caffe, Caffe2, Theano, Chainer
+    * MPI：OpenMPI
+    * Utilities：fuse-sshfs
+    * Container Engine：Docker
+
+* The maximum number of nodes that can be reserved at the same time for each ABCI Group was set.
+    * The maximum number of the Compute Node (V) that can be reserved at the same time for each ABCI Group: 272 nodes
+    * The maximum number of the Compute Node (A) that can be reserved at the same time for each ABCI Group: 30 nodes
+
+* The inode quota limit for groups area was set.
+    * The inode quota limit for groups area was set to 200 millions on April 2023.
+    * For more information about checking the number of inodes, please refer to the [Checking Disk Quota](getting-started.md#checking-disk-quota).
+ 
+* Updates the ABCI Singularity Endpoint.
+    * With this update, you will need to recreate the access token.
+    * With this update, the SingularityPRO Enterprise Plugin is available. As a result, the following overlapping functions have been removed.
+        * list_singularity_images
+        * revoke_singularity_token
+
+* ABCI User Portal Updates
+    * The following functions have been added to the Declaration regarding the applicability of specific categories.
+        * The "Declaration Concerning Applicability to Specified Categories" for "Japanese Students, etc." can be applied for from the ABCI User Portal.
+        * All users other than "Japanese Students, etc." and "Non-residents" can apply for the "Declaration Concerning Applicability to Specified Categories" from the ABCI User Portal. (Note: Users who have not applied for the "Declaration Concerning Applicability to Specified Categories" cannot use the ABCI.)
+    * The following functions have been added for public key operations.
+        * The ABCI group's responsible person/administrator can refer to the public key operation history of the ABCI group's users.
+        * When a user in the ABCI group registers or deletes a public key, a notification e-mail will be sent to the responsible person/administrator of the ABCI group. By default, no notification is sent.
+
+| Add / Update / Delete | Software | Version | Previous version |
+|:--|:--|:--|:--|
+| Delete | gcc | 9.3.0 | |
+| Delete | cuda | 9.0.176.1<br>9.1.85.3<br>9.2.148.1<br>10.0.130.1<br>10.1.243<br>11.7.0 | |
+| Delete | cudnn | 7.0.5<br>7.1.4<br>7.2.1<br>7.3.1<br>7.4.2<br>7.5.1 | |
+| Delete | nccl | 2.4.8-1 | |
+| Update | intel | 2023.0.0 | 2022.2.1 |
+| Update | intel-advisor | 2023.0 | 2022.3.1 |
+| Update | intel-inspector | 2023.0 | 2022.3.1 |
+| Update | intel-itac | 2021.8.0 | 2021.7.1 |
+| Update | intel-mkl | 2023.0.0 | 2022.0.2 |
+| Update | intel-vtune | 2023.0.0 | 2022.4.1 |
+| Update | intel-mpi | 2021.8 | 2021.7 |
+| Delete | pgi | 20.4 | |
+| Update | cmake | 3.26.1 | 3.22.3 |
+| Update | go | 1.20 | 1.18 |
+| Update | julia | 1.8 | 1.6 |
+| Update | openjdk | 1.8.0.362 | 1.8.0.332 |
+| Update | openjdk | 11.0.18.0.10 | 11.0.15.0.9<br>11.0.15.0.10 |
+| Update | openjdk | 17.0.6.0.10 | 17.0.3.0.7 |
+| Update | R | 4.2.3 | 4.1.3 |
+| Delete | openmpi | 4.0.5 | |
+| Delete | openmpi | 4.1.3 | |
+| Update | aws-cli | 2.11 | 2.4 |
+| Delete | fuse-sshfs | 3.7.2 |  |
+| Update | SingularityPRO | 3.9-10 | 3.9-9 |
+| Update | Singularityエンドポイント | 2.1.5 | 1.7.2 |
+| Update | DDN Lustre | 2.12.8_ddn23 | 2.12.8_ddn10 |
+| Update | Scality S3 Connector | 7.10.6.7 | 7.10.2.2 |
+
+## 2023-03-08
+
+| Add / Update / Delete | Software | Version | Previous version |
+|:--|:--|:--|:--|
+| Add | cuda | 12.1.0 | |
+| Add | cudnn | 8.8.1 | |
+| Add | nccl | 2.17.1-1 | |
+
+## 2023-02-03
+
+| Add / Update / Delete | Software | Version | Previous version |
+|:--|:--|:--|:--|
+| Update | intel | 2022.2.1 | 2022.0.2 |
+| Update | intel-advisor | 2022.3.1 | 2022.0 |
+| Update | intel-inspector | 2022.3.1 | 2022.0 |
+| Update | intel-itac | 2021.7.1 | 2021.5.0 |
+| Update | intel-mkl | 2022.0.2 | 2022.0.0 |
+| Update | intel-vtune | 2022.4.1 | 2022.0.0 |
+| Update | intel-mpi | 2021.7 | 2021.5 |
+
+* Programs compiled with previous version of the Intel oneAPI may contain vulnerabilities, so please recompile with the newer version.
+* `intel/2022.0.2` and earlier Intel oneAPI modules containing vulnerabilities have been deprecated.
+Programs compiled with previous version of the Intel oneAPI modules, which was deprecated on Feb 6, may no longer run, so please recompile with the newer version.
+
+## 2023-01-05
+
+| Add / Update / Delete | Software | Version | Previous version |
+|:--|:--|:--|:--|
+| Update | SingularityPRO | 3.9-9 | 3.9-8 |
+
+## 2022-12-23
+
+| Add / Update / Delete | Software | Version | Previous version |
+|:--|:--|:--|:--|
+| Add | cuda | 12.0.0 | |
+| Add | cudnn | 8.7.0 | |
+| Add | nccl | 2.16.2-1 | |
+
+## 2022-12-13
+
+| Add / Update / Delete | Software | Version | Previous version |
+|:--|:--|:--|:--|
+| Update | SingularityPRO | 3.9-8 | 3.9-4 |
+| Update | Singularity Endpoint | 1.7.2 | 1.2.5 |
+
+## 2022-10-25
+
+| Add / Update / Delete | Software | Version | Previous version |
+|:--|:--|:--|:--|
+| Add | cuda | 11.8.0 | |
+| Add | cudnn | 8.6.0 | |
+| Add | nccl | 2.15.5-1 | |
+
+## 2022-09-02
+
+| Add / Update / Delete | Software | Version | Previous version |
+|:--|:--|:--|:--|
+| Add | cuda | 11.7.1 | |
+| Add | cudnn | 8.5.0 | |
+| Add | nccl | 2.13.4-1<br>2.14.3-1 | |
+
+## 2022-07-29
+
+| Add / Update / Delete | Software | Version | Previous version |
+|:--|:--|:--|:--|
+| Update | cudnn | 8.4.1 | 8.4.0 |
+
+## 2022-06-24
+
+* Changed the job execution option for change GPU Compute Mode to EXCLUSIVE_PROCESS mode from `-v GPU_COMPUTE_MODE=1` to `-v GPU_COMPUTE_MODE=3`. For more information, please refer to the [Changing GPU Compute Mode](gpu.md#changing-gpu-compute-mode).
+
+
+## 2022-06-21
+
+| Add / Update / Delete | Software | Version | Previous version |
+|:--|:--|:--|:--|
+| Add    | cuda    | 11.7.0 | |
+| Update | nccl    | 2.12.12-1 | 2.12.10-1 |
+| Update | Altair Grid Engine | 8.6.19_C121_1 | 8.6.17 |
+| Update | openjdk | 1.8.0.332 | 1.8.0.322 |
+| Update | openjdk | 11.0.15.0.9(Compute Node (V))<br>11.0.15.0.10(Compute Node (A)) | 11.0.14.1.1 |
+| Update | openjdk | 17.0.3.0.7 | 17.0.2.0.8 |
+| Update | DDN Lustre | 2.12.8_ddn10 | 2.12.6_ddn58-1 |
+
+* Altair Grid Engine has been updated. The job queue and job reservations are not preserved. Please resubmit your batch job(s). Please recreate your reservation(s). 
+* Some of [Known Issues](known-issues.md) have been resolved in this update.
+* Reinstalled R (4.1.3) with --enable-R-shlib enabled.
+* The update of Singularity Endpoint has been postponed.
+
+## 2022-05-26 
+
+* Product names documented in this User Guide have been renamed to reflect the acquisition of Univa by Altair.
+
+| Current | Previous |
+|:--|:--|
+| Altair Grid Engine | Univa Grid Engine |
+| AGE | UGE |
+
+## 2022-05-10
+
+| Add / Update / Delete | Software | Version   | Previous version |
+| --------------------- | -------- | --------- | ---------------- |
+| Add                   | gcc      | 9.3.0     |                  |
+| Add                   | cudnn    | 8.4.0     |                  |
+| Update                | nccl     | 2.12.10-1 | 2.12.7-1         |
+
+* Deleted `gcc/9.3.0` module has been restored to the current environment modules.
+
+## 2022-04-06
+
+| Add / Update / Delete | Software | Version | Previous version |
+|:--|:--|:--|:--|
+| Update | Scality S3 Connector | 8.5.2.2 | 7.4.9.3 |
+| Update | SingularityPRO | 3.9-4 | 3.7-4 |
+| Update | DDN Lustre (Compute node (V)) | 2.12.6_ddn58-1 | 2.12.5_ddn13-1 |
+| Update | OFED (Compute node (V)) | 5.2-1.0.4.0 | 5.0-2.1.8.0 |
+| Update | gcc | 11.2.0 | 9.3.0 |
+| Delete | gcc | 7.4.0 | |
+| Update | intel | 2022.0.2 | 2020.4.304 |
+| Delete | nvhpc | 20.11<br>21.2 | |
+| Delete | openjdk | 1.7.0.171 | |
+| Update | openjdk | 1.8.0.322 | 1.8.0.242 |
+| Update | openjdk | 11.0.14.1.1 | 11.0.6.10 |
+| Update | openjdk | 17.0.2.0.8 | 15.0.2.0.7 |
+| Delete | lua | 5.3.6<br>5.4.2 | |
+| Delete | julia | 1.0 | |
+| Update | julia | 1.6.6 | 1.5 |
+| Update | intel-advisor | 2022.0 | 2020.3 |
+| Update | intel-inspector | 2022.0 | 2020.3 |
+| Update | intel-itac | 2021.5.0 | 2020.0.3 |
+| Update | intel-mkl | 2022.0.0 | 2020.0.4 |
+| Update | intel-vtune | 2022.0.0 | 2020.3 |
+| Add | python | 3.10.4 | |
+| Update | python | 3.7.13 | 3.7.10 |
+| Update | python | 3.8.13 | 3.8.7 |
+| Delete | python | 3.6.12 | |
+| Update | R | 4.1.3 | 4.0.4 |
+| Delete | cuda | 8.0.61.2<br>9.2.88.1<br>11.4.1<br>11.6.0 | |
+| Update | cuda | 11.4.4 | 11.4.1 |
+| Update | cuda | 11.5.2 | 11.5.1 |
+| Update | cuda | 11.6.2 | 11.6.0 |
+| Delete | cudnn | 5.1.10<br>6.0.21<br>8.2.0<br>8.2.1<br>8.2.2 | |
+| Update | cudnn | 8.3.3 | 8.3.2 |
+| Delete | nccl | 1.3.5-1<br>2.1.15-1<br>2.2.13-1<br>2.3.7-1<br>2.9.6-1<br> | |
+| Add | nccl | 2.12.7-1 | |
+| Update | gdrcopy | 2.3 | 2.0 |
+| Update | intel-mpi | 2021.5 | 2019.9 |
+| Add | openmpi | 4.1.3 | |
+| Delete | openmpi | 2.1.6 | |
+| Delete | openmpi | 3.1.6 | |
+| Update | aws-cli | 2.4 | 2.1 |
+| Update | fuse-sshfs | 3.7.2 | 3.7.1 |
+| Update | f3fs-fuse | 1.91 | 1.87 |
+| Delete | sregistory-cli | 0.2.36 | |
+| Update | NVIDIA Tesla Driver | [510.47.03](https://docs.nvidia.com/datacenter/tesla/tesla-release-notes-517-47-03/index.html) | 470.57.02 |
+
+* Maximum reserved node time per reservation of compute node (V) is changed in the Reserved Service from 12,288 to 13,056.
+* Maximum reserved nodes per reservation of compute node (A) is changed in the Reserved Service from 16 to 18.
+* Maximum reserved node time per reservation of compute node (A) is changed in the Reserved Service from 6,144 to 6,912.
+* The installation of Singularity Enterprise CLI has been postponed.
+* One of [known issues](known-issues.md) has been resolved in this update.
+* We have reconfigured the Environment Modules. If you would like to use modules prior to FY2021, please refer to the FAQ ([How to use previous ABCI Environment Modules](faq.md#q-how-to-use-previous-abci-environment-modules)).
+* Due to the reconfiguration of the Environment Modules, some modules have been removed. For more information, please refer to the [Modules removed and alternatives](tips/modules-removed-and-alternatives.md).
+
 
 ## 2022-03-03 
 

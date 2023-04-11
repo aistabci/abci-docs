@@ -1,5 +1,25 @@
 # Storage
 
+ABCI has the following five types of storage. 
+
+* [Home Area](#home-area)
+* [Group Area](#group-area)
+* [Global scratch area](#scratch-area)
+* [Local Storage](#local-storage)
+	* [Local scratch](#local-scratch)
+	* [Persistent local scratch](#persistent-local-scratch) (Reserved only)
+	* [BeeOND storage](#beeond-storage)
+* [ABCI Cloud Storage](abci-cloudstorage.md)
+
+!!! Tips
+    Such as Home Area or Group Area, other than Local Storage, are resources shared by all users. Excessive I/O load or unnecessary access will not only cause inconvenience to other users but also slow down the execution speed of your own jobs. Please keep the following points in mind when using each storage space. 
+
+	* For data that does not require persistence, such as intermediate data, we recommend that you refrain from creating files and use memory. 
+	* Proactively utilize scratch areas that can be accessed at high speed. It is recommended that files that will be accessed many times during job execution be staged (temporarily copied) to a Local scratch. 
+	* Creating and accessing large numbers of small files on a shared file system is not recommended. It is recommended to use scratch space or combine multiple files into one larger file and then access them. For example, consider using HDF5, WebDataset, etc. 
+	* Refrain from opening/closing the same file unnecessarily and repeatedly within a single job. 
+	* Please consult us in advance if you intend to create more than a hundred million files in a short period of time. 
+
 ## Home Area
 
 Home area is the disk area of the Lustre file system shared by interactive and compute nodes, and is available to all ABCI users by default. The disk quota is limited to 200 GiB.
@@ -85,6 +105,36 @@ Group area is the disk area of the Lustre file system shared by interactive and 
 
 To find the path to your group area, use the `show_quota` command. For details, see [Checking Disk Quota](getting-started.md#checking-disk-quota).
 
+### How to check inode usage
+
+The MDT stores inode information for a file, but there is an upper limit on the number of inodes that can be stored per MDT.
+You can see how much inodes are currently used for each MDT with the `lfs df -i`.
+The `IUse% `entry in the`/groups [MDT:?] `line in the output of the command is the percentage of the inode used in each MDT.<br>
+In the following example, the inode utilization for MDT:0 is 30%.
+
+````
+[username@es1 ~]$ lfs df -i /groups
+UUID                      Inodes       IUsed       IFree IUse% Mounted on
+groups-MDT0000_UUID   3110850464   904313344  2206537120  30% /groups[MDT:0]
+groups-MDT0001_UUID   3110850464  2778144306   332706158  90% /groups[MDT:1]
+groups-MDT0002_UUID   3110850464   935143862  2175706602  31% /groups[MDT:2]
+groups-MDT0003_UUID   3110850464  1356224703  1754625761  44% /groups[MDT:3]
+groups-MDT0004_UUID   3110850464   402932004  2707918460  13% /groups[MDT:4]
+groups-MDT0005_UUID   3110850464         433  3110850031   1% /groups[MDT:5]
+(snip)
+````
+
+You can check MDT No. used by your ABCI group with the following command.
+````
+[username@es1 ~]$ ls -d /groups/?/(ABCI group name)
+/groups/(MDT No.)/(ABCI group name)
+````
+In the following example, the ABCI group uses MDT:0.
+````
+[username@es1 ~]$ ls -d /groups/?/gaa00000
+/groups/0/gaa00000
+````
+
 ## Global scratch area {#scratch-area}
 
 Global scratch area is lustre file system and available for all ABCI users.
@@ -99,7 +149,7 @@ To see the quota value of the global scratch area, issue `show_quota` command. F
 
 !!! warning
     The global scratch area has a cleanup function.<br>
-    When the usage of the file area or i-node area of /scratch exceeds 80%, delete candidates are selected based on the last access time and creation date of files and directories directly under /scratch/(ABCI account), and the files/directories of the delete candidates are automatically deleted. If a directory directly under /scratch/(ABCI account) becomes a candidate for deletion, all files/directories under that directory are deleted. Note that the last access time and creation date of the files/directories under that directory are not taken into account.<br>
+    When the usage of the file area or inode area of /scratch exceeds 80%, delete candidates are selected based on the last access time and creation date of files and directories directly under /scratch/(ABCI account), and the files/directories of the delete candidates are automatically deleted. If a directory directly under /scratch/(ABCI account) becomes a candidate for deletion, all files/directories under that directory are deleted. Note that the last access time and creation date of the files/directories under that directory are not taken into account.<br>
     The first candidate to be deleted is the one whose last access time is older than 40 days. If, after deleting the candidate, the utilization of/scratch is still over 80%, the next candidate to be deleted is one whose creation date is older than 40 days.
 
 !!! note
@@ -348,6 +398,28 @@ foo.txt    <- The file remain only when it is copied explicitly in script.
 !!! warning
     Compute node (A) has two NVMe SSDs and BeeOND storage uses `/local2`.
     Compute node (V) has only one NVMe SSD, so local scratch and BeeOND storage are always assigned to the same storage and share its capacity.
+
+BeeGFS allows data to be staged in and out of the BeeOND storage in parallel using the beeond-cp command. To use beeond-cp, specify the `USE_SSH=1` option to enable SSH login to the compute nodes, and then specify the ssh command and port number in the `PARALLEL_SSH` environment variable.
+
+Example) sample of job script (use beeond-cp)
+```
+#!/bin/bash
+#$-l rt_F=4
+#$-l USE_BEEOND=1
+#$-l USE_SSH=1
+#$-v SSH_PORT=2222
+#$-j y
+#$-cwd
+
+export PARALLEL_SSH="ssh -p 2222"
+export src_dir=/path/to/data
+
+beeond-cp stagein -n ${SGE_JOB_HOSTLIST} -g ${src_dir} -l ${SGE_BEEONDDIR}
+(main process)
+beeond-cp stageout -n ${SGE_JOB_HOSTLIST} -g ${src_dir} -l ${SGE_BEEONDDIR}d
+```
+
+
 
 #### [Advanced Option] Configure BeeOND Servers
 

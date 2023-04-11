@@ -38,12 +38,13 @@ In this document, ABCI server names are written in *italics*.
 
 To connect to the interactive node, you will need the following in advance:
 
-* An SSH client. Your computer most likely has an SSH client installed by default. If your computer is a UNIX-like system such as Linux and macOS, or Windows 10 version 1803 (April 2018 Update) or later, it should have an SSH client. You can also check for an SSH client, just by typing ``ssh`` at the command line.
-* A secure SSH public/private key pair. ABCI only accepts the following public keys:
+* SSH client: Your computer most likely has an SSH client installed by default. If your computer is a UNIX-like system such as Linux and macOS, or Windows 10 version 1803 (April 2018 Update) or later, it should have an SSH client. You can also check for an SSH client, just by typing ``ssh`` at the command line.
+* SSH protocol version: Only SSH protocol version 2 is supported.
+* A secure SSH public/private key pair: ABCI only accepts the following public keys:
 	* RSA keys, at least 2048bits
 	* ECDSA keys, 256, 384, and 521bits
 	* Ed25519 keys
-* Registration of SSH public keys. Your first need to register your SSH public key on [ABCI User Portal](https://portal.abci.ai/user/). The instruction will be found at [Register Public Key](https://docs.abci.ai/portal/en/02/#23-register-public-key).
+* Registration of SSH public keys: Your first need to register your SSH public key on [ABCI User Portal](https://portal.abci.ai/user/). The instruction will be found at [Register Public Key](https://docs.abci.ai/portal/en/02/#23-register-public-key).
 
 !!! note
     If you would like to use PuTTY as an SSH client, please read [PuTTY](tips/putty.md).
@@ -57,24 +58,26 @@ In this section, we will describe two methods to login to the interactive node u
 Login to the access server (*as.abci.ai*) with following command:
 
 Interactive Node (V)
-<div class="codehilite"><pre>
-[yourpc ~]$ ssh -i /path/identity_file -L 10022:<i>es</i>:22 -l username <i>as.abci.ai</i>
+
+```
+[yourpc ~]$ ssh -i /path/identity_file -L 10022:es:22 -l username as.abci.ai
 The authenticity of host 'as.abci.ai (0.0.0.1)' can't be established.
 RSA key fingerprint is XX:XX:XX:XX:XX:XX:XX:XX:XX:XX:XX:XX:XX:XX:XX:XX. <- Display only at the first login
 Are you sure you want to continue connecting (yes/no)? <- Enter "yes"
 Warning: Permanently added 'XX.XX.XX.XX' (RSA) to the list of known hosts.
 Enter passphrase for key '/path/identity_file': <- Enter passphrase
-</pre></div>
+```
 
 Interactive Node (A)
-<div class="codehilite"><pre>
-[yourpc ~]$ ssh -i /path/identity_file -L 10022:<i>es-a</i>:22 -l username <i>as.abci.ai</i>
+
+```
+[yourpc ~]$ ssh -i /path/identity_file -L 10022:es-a:22 -l username as.abci.ai
 The authenticity of host 'as.abci.ai (0.0.0.1)' can't be established.
 RSA key fingerprint is XX:XX:XX:XX:XX:XX:XX:XX:XX:XX:XX:XX:XX:XX:XX:XX. <- Display only at the first login
 Are you sure you want to continue connecting (yes/no)?  <- yesを入力
 Warning: Permanently added ‘XX.XX.XX.XX' (RSA) to the list of known hosts.
 Enter passphrase for key '/path/identity_file': <- Enter "yes"
-</pre></div>
+```
 
 Successfully logged in, the following message is shown on your terminal.
 
@@ -104,48 +107,48 @@ You can log in to an interactive node with a single command using ProxyJump, whi
 
 First, add the following configuration to your ``$HOME/.ssh/config``:
 
-<div class="codehilite"><pre>
-Host <i>abci</i>
-     HostName <i>es</i>
+```
+Host abci
+     HostName es
      User username
-     ProxyJump %r@<i>as.abci.ai</i>
+     ProxyJump %r@as.abci.ai
      IdentityFile /path/to/identity_file
      HostKeyAlgorithms ssh-rsa
 
-Host <i>abci-a</i>
-     HostName <i>es-a</i>
+Host abci-a
+     HostName es-a
      User username
-     ProxyJump %r@<i>as.abci.ai</i>
+     ProxyJump %r@as.abci.ai
      IdentityFile /path/to/identity_file
 
-Host <i>as.abci.ai</i>
+Host as.abci.ai
      IdentityFile /path/to/identity_file
-</pre></div>
+```
 
 After that, you can log in with the following command only:
 
-<div class="codehilite"><pre>
-[yourpc ~]$ ssh <i>abci</i>
-</pre></div>
+```
+[yourpc ~]$ ssh abci
+```
 
 ProxyJump does not work with OpenSSH_for_Windows_7.7p1 which is bundled with Windows 10 version 1803 and later. Use ProxyCommand instead. The following is an example of a config file using ProxyCommand. Please specify the absolute path for `ssh.exe`.
 
-<div class="codehilite"><pre>
-Host <i>abci</i>
-     HostName <i>es</i>
+```
+Host abci
+     HostName es
      User username
-     ProxyCommand C:\WINDOWS\System32\OpenSSH\ssh.exe -W %h:%p %r@<i>as.abci.ai</i>
+     ProxyCommand C:\WINDOWS\System32\OpenSSH\ssh.exe -W %h:%p %r@as.abci.ai
      IdentityFile C:\path\to\identity_file
 
-Host <i>abci-a</i>
-     HostName <i>es-a</i>
+Host abci-a
+     HostName es-a
      User username
-     ProxyCommand C:\WINDOWS\System32\OpenSSH\ssh.exe -W %h:%p %r@<i>as.abci.ai</i>
+     ProxyCommand C:\WINDOWS\System32\OpenSSH\ssh.exe -W %h:%p %r@as.abci.ai
      IdentityFile C:\path\to\identity_file
 
-Host <i>as.abci.ai</i>
+Host as.abci.ai
      IdentityFile C:\path\to\identity_file
-</pre></div>
+```
 
 ## File Transfer to Interactive Node
 
@@ -160,9 +163,9 @@ local-file    100% |***********************|  file-size  transfer-time
 
 If you have OpenSSH 7.3 or later and already added the configuration to your ``$HOME/.ssh/config`` as described at [ProxyJump](#proxyjump), you can directly run the `scp` (`sftp`) command.
 
-<div class="codehilite"><pre>
-[yourpc ~]$ scp local-file <i>abci</i>:remote-dir
-</pre></div>
+```
+[yourpc ~]$ scp local-file abci:remote-dir
+```
 
 ## Changing Password
 
@@ -185,7 +188,7 @@ passwd: all authentication tokens updated successfully.
 
     - Specify a character string with more than 15 characters arranged randomly. For example, words in Linux dictionary cannot be used. We recommend generating it automatically by using password creation software.
     - Should contain all character types of lower-case letters, upper-case letters, numeric characters, and special characters.
-	- As special charaters, the following 33 types of characters can be used: (blank) ! " # $ % & ' ( ) * + , - . / : ; < = > ? @ [ \ ] ^ _ ` { | } ~
+	- As special characters, the following 33 types of characters can be used: (blank) ! " # $ % & ' ( ) * + , - . / : ; < = > ? @ [ \ ] ^ _ ` { | } ~
     - Do not contain multi-byte characters.
 
 ## Login Shell
@@ -278,20 +281,21 @@ Total          1,101.0000    51.5000    10.5000          -          -          -
 
 ## Checking Disk Quota
 
-To display your disk usage and quota about home area and group area,
-use the `show_quota` command
+To display your disk/inodes usage and quota about home and group area,
+use the `show_quota` command as below;
 
-Example) Display disk information.
+Example) Display disk and inode quota
 
 ```
 [username@es1 ~]$ show_quota
 Disk quotas for user username
-  Directory                     used(GiB)       limit(GiB)          nfiles
-  /home                               100              200           1,234
+  Directory                            used(GiB)        limit(GiB)      used(nfiles)     limit(nfiles)
+  /home                                      100               200             1,234                 -
+  /scratch/username                        1,234            10,240                 0                 -
 
 Disk quotas for ABCI group grpname
-  Directory                     used(GiB)       limit(GiB)          nfiles
-  /groups/grpname                   1,024            2,048         123,456
+  Directory                            used(GiB)        limit(GiB)      used(nfiles)     limit(nfiles)
+  /groups/grpname                          1,024             2,048           123,456       200,000,000
 ```
 
 | Item  | Description |
@@ -299,7 +303,18 @@ Disk quotas for ABCI group grpname
 | Directory  | Assignment directory |
 | used(GiB)  | Disk usage |
 | limit(GiB) | Disk quota limit |
-| nfiles     | Number of files |
+| used(nfiles) | Number of inodes |
+| limit(nfiles) | inode quota limit |
+
+In case "-" is displayed in the culumn for the inodes quota limit, the number of inodes is unlimited.
+If the disk usage exceeds the disk limit, the column `used (GiB)` displays "*".
+
+When the number of inodes (disk usage) exceeds the inode (disk) quota limit, the file or directory creation is failed with the following message.
+
+```
+[username@es1 ~]$ touch quota_test
+touch: cannot touch 'quota_test': Disk quota exceeded
+```
 
 ## Checking ABCI Cloud Storage Usage
 

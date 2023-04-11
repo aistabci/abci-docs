@@ -2,9 +2,7 @@
 
 The following MPIs can be used with the ABCI system.
 
-* [Open MPI](https://www.open-mpi.org/)
-* [MVAPICH2](http://mvapich.cse.ohio-state.edu/overview/#mv2)
-* [MVAPICH2-GDR](http://mvapich.cse.ohio-state.edu/overview/#mv2gdr)
+* [NVIDIA HPC-X](https://developer.nvidia.com/networking/hpc-x)
 * [Intel MPI](https://software.intel.com/en-us/intel-mpi-library)
 
 To use one of these libraries, it is necessary to configure the user environment in advance using the `module` command.
@@ -12,99 +10,59 @@ If you run the `module` command in an interactive node, environment variables fo
 If you run the `module` command in a compute node, environment variables both for compilation and execution are set automatically.
 
 ```
-[username@es1 ~]$ module load openmpi/4.0.5
+[username@es1 ~]$ module load hpcx/2.12
 ```
 
 ```
-[username@es1 ~]$ module load cuda/11.0 mvapich/mvapich2-gdr/2.3.5
-```
-
-```
-[username@es1 ~]$ module load mvapich/mvapich2/2.3.5
-```
-
-```
-[username@es1 ~]$ module load intel-mpi/2019.9
+[username@es1 ~]$ module load intel-mpi/2021.8
 ```
 
 The following is a list MPI versions installed in the ABCI system.
 
-## Open MPI
+## NVIDIA HPC-X
 
-Compute Node (V):
+| Module Version | MPI Version |  Compute Node (V) | Compute Node (A) |
+| :-- | :-- | :-- | :-- |
+| 2.12 | 4.1.5a1 | Yes | Yes |
 
-| openmpi/ | Compiler version | w/o CUDA | cuda8.0 | cuda9.0 | cuda9.1 | cuda9.2 | cuda10.0 | cuda10.1 | cuda10.2 | cuda11.0 | cuda11.1 | cuda11.2 |
-|:--|:--|:--|:--|:--|:--|:--|:--|:--|:--|:--|:--|:--|
-| 2.1.6  | gcc/4.8.5     | Yes | Yes | Yes | Yes | Yes | Yes | Yes | Yes | Yes | Yes | Yes |
-| 2.1.6  | gcc/7.4.0     | Yes | -   | -   | -   | Yes | Yes | Yes | Yes | Yes | Yes | Yes |
-| 2.1.6  | gcc/9.3.0     | Yes | -   | -   | -   | -   | -   | Yes | Yes | Yes | Yes | Yes |
-| 2.1.6  | pgi/20.4      | Yes | Yes | Yes | Yes | Yes | Yes | Yes | Yes | Yes | Yes | Yes |
-| 2.1.6  | nvhpc/20.11   | Yes | Yes | Yes | Yes | Yes | Yes | Yes | Yes | Yes | Yes | Yes |
-| 2.1.6  | nvhpc/21.2    | Yes | Yes | Yes | Yes | Yes | Yes | Yes | Yes | Yes | Yes | Yes |
-| 3.1.6  | gcc/4.8.5     | Yes | -   | -   | -   | Yes | Yes | Yes | Yes | Yes | Yes | Yes |
-| 3.1.6  | gcc/7.4.0     | Yes | -   | -   | -   | Yes | Yes | Yes | Yes | Yes | Yes | Yes |
-| 3.1.6  | gcc/9.3.0     | Yes | -   | -   | -   | Yes | Yes | Yes | Yes | Yes | Yes | Yes |
-| 3.1.6  | pgi/20.4      | Yes | -   | -   | -   | Yes | Yes | Yes | Yes | Yes | Yes | Yes |
-| 3.1.6  | nvhpc/20.11   | Yes | -   | -   | -   | Yes | Yes | Yes | Yes | Yes | Yes | Yes |
-| 3.1.6  | nvhpc/21.2    | Yes | -   | -   | -   | Yes | Yes | Yes | Yes | Yes | Yes | Yes |
-| 4.0.5  | gcc/4.8.5     | Yes | -   | -   | -   | Yes | Yes | Yes | Yes | Yes | Yes | Yes |
-| 4.0.5  | gcc/7.4.0     | Yes | -   | -   | -   | Yes | Yes | Yes | Yes | Yes | Yes | Yes |
-| 4.0.5  | gcc/9.3.0     | Yes | -   | -   | -   | Yes | Yes | Yes | Yes | Yes | Yes | Yes |
-| 4.0.5  | pgi/20.4      | Yes | -   | -   | -   | Yes | Yes | Yes | Yes | Yes | Yes | Yes |
-| 4.0.5  | nvhpc/20.11   | Yes | -   | -   | -   | Yes | Yes | Yes | Yes | Yes | Yes | Yes |
-| 4.0.5  | nvhpc/21.2    | Yes | -   | -   | -   | Yes | Yes | Yes | Yes | Yes | Yes | Yes |
+### Using HPC-X
 
-Compute Node (A):
+This section describes how to use the NVIDIA HPC-X module.
 
-| openmpi/ | Compiler version | w/o CUDA | cuda10.0[^1] | cuda10.1[^1] | cuda10.2[^1] | cuda11.0 | cuda11.1 | cuda11.2 |
-|:--|:--|:--|:--|:--|:--|:--|:--|:--|
-| 2.1.6  | gcc/7.4.0     | Yes | Yes | Yes | Yes | Yes | Yes | Yes |
-| 2.1.6  | gcc/8.3.1     | Yes | Yes | Yes | Yes | Yes | Yes | Yes |
-| 2.1.6  | gcc/9.3.0     | Yes | -   | Yes | Yes | Yes | Yes | Yes |
-| 2.1.6  | pgi/20.4      | Yes | -   | -   | -   | Yes | Yes | Yes |
-| 2.1.6  | nvhpc/20.11   | Yes | Yes | Yes | Yes | Yes | Yes | Yes |
-| 2.1.6  | nvhpc/21.2    | Yes | Yes | Yes | Yes | Yes | Yes | Yes |
-| 3.1.6  | gcc/7.4.0     | Yes | Yes | Yes | Yes | Yes | Yes | Yes |
-| 3.1.6  | gcc/8.3.1     | Yes | Yes | Yes | Yes | Yes | Yes | Yes |
-| 3.1.6  | gcc/9.3.0     | Yes | Yes | Yes | Yes | Yes | Yes | Yes |
-| 3.1.6  | pgi/20.4      | Yes | -   | -   | -   | Yes | Yes | Yes |
-| 3.1.6  | nvhpc/20.11   | Yes | Yes | Yes | Yes | Yes | Yes | Yes |
-| 3.1.6  | nvhpc/21.2    | Yes | Yes | Yes | Yes | Yes | Yes | Yes |
-| 4.0.5  | gcc/7.4.0     | Yes | Yes | Yes | Yes | Yes | Yes | Yes |
-| 4.0.5  | gcc/8.3.1     | Yes | Yes | Yes | Yes | Yes | Yes | Yes |
-| 4.0.5  | gcc/9.3.0     | Yes | Yes | Yes | Yes | Yes | Yes | Yes |
-| 4.0.5  | pgi/20.4      | Yes | -   | -   | -   | Yes | Yes | Yes |
-| 4.0.5  | nvhpc/20.11   | Yes | Yes | Yes | Yes | Yes | Yes | Yes |
-| 4.0.5  | nvhpc/21.2    | Yes | Yes | Yes | Yes | Yes | Yes | Yes |
+ABCI provides the following types of HPC-X modules.Please load the module according to your application.
 
-[^1]: Provided only for experimental use. NVIDIA A100 is supported on CUDA 11＋.
+| Module Name | Description |
+| :-- | :-- |
+| hpcx       | Standard  |
+| hpcx-mt    | Multi-Threading support |
+| hpcx-debug | for debug  |
+| hpcx-prof  | for profiling  |
 
-## MVAPICH2
+When executing the `mpirun` and `mpiexec` commands in a job, a host file is also specified in the `-hostfile` option.
+The host file is set in the `$SGE_JOB_HOSTLIST` environment variable.
 
-| mvapich/mvapich2/ | Compiler version | Compute Node (V) | Compute Node (A) |
-|:--|:--|:--|:--|
-| 2.3.5 | gcc/4.8.5     | Yes | -   |
-| 2.3.5 | gcc/7.4.0     | Yes | Yes |
-| 2.3.5 | gcc/8.3.1     | -   | Yes |
-| 2.3.5 | gcc/9.3.0     | Yes | Yes |
-| 2.3.5 | pgi/20.4      | Yes | Yes |
-| 2.3.5 | nvhpc/20.11   | Yes | Yes |
-| 2.3.5 | nvhpc/21.2    | Yes | Yes |
+```
+[username@es1 ~]$ qrsh -g groupname -l rt_F=2 -l h_rt=01:00:0
+[username@g0001 ~]$ module load hpcx/2.12
+[username@g0001 ~]$ mpirun -np 2 -map-by ppr:1:node -hostfile $SGE_JOB_HOSTLIST ./hello_c
+Hello, world, I am 0 of 2, (Open MPI v4.1.5a1, package: Open MPI root@hpc-kernel-03 Distribution, ident: 4.1.5a1, repo rev: v4.1.4-2-g1c67bf1c6a, Unreleased developer copy, 144)
+Hello, world, I am 1 of 2, (Open MPI v4.1.5a1, package: Open MPI root@hpc-kernel-03 Distribution, ident: 4.1.5a1, repo rev: v4.1.4-2-g1c67bf1c6a, Unreleased developer copy, 144)
+```
 
-## MVAPICH2-GDR
+NVIDIA HPC-X provides the NCCL-SHARP plug-in.
+The plug-in supports different versions of NCCL for different versions of HPC-X.
+See the table below for compatibility between HPC-X and NCCL.
 
-| mvapich/mvapich2-gdr/ | Compiler version | cuda10.0 | cuda10.1 | cuda10.2 | cuda11.0 |
-|:--|:--|:--|:--|:--|:--|
-| 2.3.5  | gcc/4.8.5 | -   | -   | Yes | Yes |
+| HPC-X Version | NCCL Version |
+| :-- | :-- |
+| 2.12 | 2.12 |
 
-!!! note
-    Compute Node (A) does not currently provide MVAPICH2-GDR.
+For information on how to use SHARP and the NCCL-SHARP plug-in, see [Using SHARP](tips/sharp.md).
 
-!!! note
-    If you need MVAPICH2-GDR for PGI, please contact Customer Support.
+For more information about NVIDIA HPC-X, please refer to [the official documentation](https://docs.nvidia.com/networking/category/hpcx).
 
 ## Intel MPI
 
 | intel-mpi/ | Compute Node (V) | Compute Node (A) |
 |:--|:--|:--|
-| 2019.9 | Yes | Yes |
+| 2021.8 | Yes | Yes |

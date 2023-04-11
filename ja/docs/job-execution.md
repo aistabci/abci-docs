@@ -189,6 +189,7 @@ Reservedサービスでは、インタラクティブジョブ、バッチジョ
 | -l USE\_BEEOND=*1*<br>-v BEEOND\_METADATA\_SERVER=*num*<br>-v BEEOND\_STORAGE\_SERVER=*num* | BeeGFS On Demand (BeeOND)を利用するジョブの投入。詳細は[BeeONDストレージ利用](storage.md#beeond-storage)を参照。 |
 | -v GPU\_COMPUTE\_MODE=*mode* | 計算ノードのGPU Compute Modeの変更。詳細は[GPU Compute Modeの変更](gpu.md#changing-gpu-compute-mode)を参照。 |
 | -l docker<br>-l docker\_images | Dockerを利用するジョブの投入。詳細は[Docker](containers.md#docker)を参照。 |
+| -l USE_EXTRA_NETWORK=1 | ジョブに割り当てる計算ノードが最小ホップ構成とならないことを許容する。<br>実行時間が短いジョブで本オプションを指定した場合、計算資源の空き状況によっては未指定時より早くジョブを開始できる場合があるが、通信性能が劣化する可能性がある。 |
 
 ## インタラクティブジョブ {#interactive-jobs}
 
@@ -251,7 +252,7 @@ ABCIシステムでバッチジョブを実行する場合、実行するプロ�
 #$-cwd
 
 source /etc/profile.d/modules.sh
-module load cuda/9.2/9.2.88.1
+module load cuda/10.2/10.2.89
 ./a.out
 ```
 
@@ -275,6 +276,23 @@ Your job 12345 ("run.sh") has been submitted
 
 !!! note
     Spotサービスでは、バッチジョブ投入時にABCIポイントが不足している場合、バッチジョブの投入に失敗します。
+
+### ジョブ投入時のエラー {#job-submission-error}
+
+バッチジョブの投入に成功した場合、`qsub`コマンドの終了ステータスは`0`となります。
+失敗した場合は0以外の値となり、エラーメッセージが出力されます。
+
+以下はエラーメッセージの一部です。
+こちらにないエラーについて確認したい場合は、ABCIサポートまで[お問い合わせ](./contact.md)ください。
+
+| エラーメッセージ | 終了ステータス | 説明 |
+|:--|:--|:--|
+| qsub: ERROR: error: ERROR! invalid option argument "*XXX*" | 255 | オプション指定に誤りがあります。[ジョブ実行オプション](#job-execution-options)を確認してください。 |
+| Unable to run job: SIM0021: invalid option value: '*XXX*' | 1 | オプションに指定した値に誤りがあります。[ジョブ実行オプション](#job-execution-options)を確認してください。 |
+| Unable to run job: job rejected: the requested project "*username*" does not exist. | 1 | ABCIグループが指定されていません。`-g`オプションでABCIグループを指定してください。 |
+| Unable to run job: SIM4403: The amount of estimated consumed-point '*NNN*' is over remaining point. Try 'show_point' for point information. | 1 | ABCIポイントが不足しています。[ABCIポイントの確認](getting-started.md#checking-abci-point)を参照の上、ABCIポイントの使用状況を確認してください。 |
+| Unable to run job: Resource type is not specified. Specify resource type with '-l' option. | 1 | 資源タイプと個数が指定されていません。[ジョブ実行オプション](#job-execution-options)を確認してください。 |
+| Unable to run job: SIM4702: Specified resource(*XXX*) is over limitation(*NNN*). | 1 | 要求したリソースが制限を超過しています。制限値については[同時に利用可能なノード数](#number-of-nodes-available-at-the-same-time)、[経過時間およびノード時間積の制限](#elapsed-time-and-node-time-product-limits)を確認してください。 |
 
 ### バッチジョブの状態の確認 {#show-the-status-of-batch-jobs}
 
@@ -458,6 +476,9 @@ jc_name      NONE
 | SGE\_TASK\_LAST | アレイジョブの最後のタスクID |
 | SGE\_TASK\_STEPSIZE | アレイジョブのステップサイズ |
 
+!!! warning
+    上記の環境変数については、ジョブスケジューラで予約された変数であり、ジョブスケジューラの動作に影響を与える可能性があるためジョブの中で変更しないようにしてください。
+
 ## 事前予約 {#advance-reservation}
 
 Reservedサービスでは、計算ノードを事前に予約して計画的なジョブ実行が可能となります。
@@ -468,9 +489,10 @@ Reservedサービスでは、計算ノードを事前に予約して計画的な
 |:--|:--|:--|
 | 最小予約日数 | 1日 | 1日 |
 | 最大予約日数 | 30日 | 30日 |
+| ABCIグループあたりの最大同時予約可能ノード数 | 272ノード | 30ノード |
 | システムあたりの最大同時予約可能ノード数 | 442ノード | 50ノード |
-| 1予約あたりの最大予約ノード数 | 34ノード | 16ノード |
-| 1予約あたりの最大予約ノード時間積 | 12,288ノード時間積 | 6,144ノード時間積 |
+| 1予約あたりの最大予約ノード数 | 34ノード | 18ノード |
+| 1予約あたりの最大予約ノード時間積 | 13,056ノード時間積 | 6,912ノード時間積 |
 | 予約受付開始時刻 | 30日前の午前10時 | 30日前の午前10時 |
 | 予約受付締切時刻 | 予約開始前日の午後9時 | 予約開始前日の午後9時 |
 | 予約取消受付期間 | 予約開始前日の午後9時 | 予約開始前日の午後9時 |
@@ -484,9 +506,6 @@ Reservedサービスでは、計算ノードを事前に予約して計画的な
 
 !!! warning
     計算ノードの予約は、利用責任者もしくは利用管理者のみが実施できます。
-
-!!! warning
-    ABCI利用者ポータルでは、計算ノード(A)の予約はできません。
 
 ```
 $ qrsub options
