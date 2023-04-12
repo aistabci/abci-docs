@@ -44,7 +44,7 @@ Currently Loaded Modulefiles:
 ### Display the configuration of modules
 
 ```
-[username@es1 ~]$ module show module show cuda/11.7/11.7.1
+[username@es1 ~]$ module show cuda/11.7/11.7.1
 -------------------------------------------------------------------
 /apps/modules/modulefiles/rocky8/gpgpu/cuda/11.7/11.7.1:
 
