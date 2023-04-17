@@ -24,7 +24,7 @@ If you set up with the `module` command in compute node, environment variables f
 Setting command for Intel oneAPI is following:
 
 ```
-[username@g0001 ~]$ module load intel/2022.2.1
+[username@es1 ~]$ module load intel/2023.0.0
 ```
 
 List of compile/link commands of Intel oneAPI:
@@ -35,26 +35,6 @@ List of compile/link commands of Intel oneAPI:
 | C | icc |
 | C++ | icpc |
 
-## PGI
-
-PGI Compiler is available on the ABCI System.
-To use PGI compiler, set up user environment by the `module` command.
-If you set up with the `module` command in compute node, environment variables for compilation and execution are set automatically.
-
-Setting command for PGI Compiler is following:
-
-```
-[username@g0001 ~]$ module load pgi/20.4
-```
-
-List of compile/link commands of PGI Compiler:
-
-| Programing Language | command |
-|:--|:--|
-| Fortran | pgf90 |
-| C | pgcc |
-| C++ | pgc++ |
-
 ## OpenMP
 
 The compilers provided on the ABCI System support thread parallelization by OpenMP specifications.
@@ -64,7 +44,6 @@ To activate the OpenMP specifications, specify the compile option as follows:
 |:--|:--|
 | GCC | -fopenmp |
 | Intel oneAPI | -qopenmp |
-| PGI | -mp |
 
 ## CUDA
 
@@ -72,6 +51,6 @@ CUDA is available on the ABCI System.
 To use CUDA compiler, set up user environment by the `module` command.
 If you set up with the `module` command in compute node, environment variables for compilation and execution are set automatically.
 
-| Programing Language | command |
+| Programming Language | command |
 |:--|:--|
 | C++ | nvcc |
