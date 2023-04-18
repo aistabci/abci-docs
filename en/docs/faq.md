@@ -20,18 +20,17 @@ SingularityPRO has a function equivalent to ``docker login`` that provides authe
 [username@es1 ~]$ singularity pull docker://myregistry.azurecr.io/namespace/repo_name:repo_tag
 ```
 
-For more information on SingularityPRO authentication, see below.
+For more information on SingularityPRO authentication, refer to the SingularityCE user guide.
 
-* [SingularityPRO 3.7 User Guide](https://repo.sylabs.io/c/0f6898986ad0b646b5ce6deba21781ac62cb7e0a86a5153bbb31732ee6593f43/guides/singularitypro37-user-guide/)
-    * [Making use of private images from Private Registries](https://repo.sylabs.io/c/0f6898986ad0b646b5ce6deba21781ac62cb7e0a86a5153bbb31732ee6593f43/guides/singularitypro37-user-guide/singularity_and_docker.html?highlight=support%20docker%20oci#making-use-of-private-images-from-private-registries)
-
+* [SingularityCE 3.9 User Guide](https://docs.sylabs.io/guides/3.9/user-guide/index.html)
+    * [Authentication/Private Containers](https://docs.sylabs.io/guides/3.9/user-guide/singularity_and_docker.html#authentication-private-containers)
 
 ## Q. I want to assign multiple compute nodes and have each compute node perform different processing
 
 If you give `-l rt_F=N` or `-l rt_AF=N` option to `qrsh` or `qsub`, you can assign N compute nodes. You can also use MPI if you want to perform different processing on each assigned compute node.
 
 ```
-$ module load openmpi/4.1.3
+$ module load hpcx/2.12
 $ mpirun -hostfile $SGE_JOB_HOSTLIST -np 1 command1 : -np 1 command2 : ... : -np1 commandN
 ```
 
@@ -239,10 +238,9 @@ The Compute Node (A) and the Compute Node (V) use different Operating Systems.
 | Node | Operating System |
 |:-|:-|
 | Compute Node (A) | Red Hat Enterprise Linux 8.2 |
-| Compute Node (V) | CentOS Linux 7.5 |
+| Compute Node (V) | Rocky Linux 8.6 |
 
-Since the versions of kernels and libraries such as `glibc` are different, the operation cannot be guaranteed when the program built for the Compute Node (V) is run on the Compute Node (A) as it is.
-
+Rocky Linux and Red Hat Enterprise Linux are compatible, but a program built on one is not guaranteed to work on the other.
 Please rebuild the program for the Compute Node (A) using the Compute Node (A) or the Interactive Node (A) described later.
 
 ### CUDA Version

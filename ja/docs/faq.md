@@ -20,18 +20,17 @@ SingularityPROには``docker login``相当の機能として、環境変数で�
 [username@es1 ~]$ singularity pull docker://myregistry.azurecr.io/namespace/repo_name:repo_tag
 ```
 
-SingularityPRO の認証に関する詳細は、以下をご参照ください。
+SingularityPROの認証に関する詳細は、SingularityCEのユーザーガイドをご参照ください。
 
-* [SingularityPRO 3.7 User Guide](https://repo.sylabs.io/c/0f6898986ad0b646b5ce6deba21781ac62cb7e0a86a5153bbb31732ee6593f43/guides/singularitypro37-user-guide/)
-    * [Making use of private images from Private Registries](https://repo.sylabs.io/c/0f6898986ad0b646b5ce6deba21781ac62cb7e0a86a5153bbb31732ee6593f43/guides/singularitypro37-user-guide/singularity_and_docker.html?highlight=support%20docker%20oci#making-use-of-private-images-from-private-registries)
-
+* [SingularityCE 3.9 User Guide](https://docs.sylabs.io/guides/3.9/user-guide/index.html)
+    * [Authentication/Private Containers](https://docs.sylabs.io/guides/3.9/user-guide/singularity_and_docker.html#authentication-private-containers)
 
 ## Q. 複数の計算ノードを割り当て、それぞれの計算ノードで異なる処理をさせたい
 
 `qrsh`や`qsub`で`-l rt_F=N`オプションもしくは`-l rt_AF=N`オプションを与えると、N個の計算ノードを割り当てることができます。割り当てられた計算ノードでそれぞれ異なる処理をさせたい場合にもMPIが使えます。
 
 ```
-$ module load openmpi/4.1.3
+$ module load hpcx/2.12
 $ mpirun -hostfile $SGE_JOB_HOSTLIST -np 1 command1 : -np 1 command2 : ... : -np1 commandN
 ```
 
@@ -245,10 +244,9 @@ ABCIは、2021年5月にABCI 2.0にアップグレードされました。
 | 項目 | OS |
 |:--|:--|
 | 計算ノード(A) | Red Hat Enterprise Linux 8.2 |
-| 計算ノード(V) | CentOS Linux 7.5 |
+| 計算ノード(V) | Rocky Linux 8.6 |
 
-カーネルやglibcなどライブラリのバージョンも異なるため、計算ノード(V)向けにビルドしたプログラムをそのまま計算ノード(A)上で動かしても動作は保証されません。
-
+Rocky LinuxとRed Hat Enterprise Linuxは互換性がありますが、動作を保証するものではありません。
 計算ノード(A)向けのプログラムは、計算ノード(A)や後述するインタラクティブノード(A)を使用してビルドしてください。
 
 ### CUDA Version
