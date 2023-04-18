@@ -1,6 +1,13 @@
 # Access Control (2) - Policy -
 
-Other than ACL, Access Control Policy is also available to define permission for bucket and ABCI Cloud Storage account. Access Control Policy can control accessibility in different ways from the ones ACL offers. "Bucket Policy" can be set with the Users Account, but Usage Managers Account is necessary to set "User Policy". If your ABCI Cloud Storage account is Users Account, ask Usage Managers to change the accessibility or to grant you appropriate permission.
+Other than ACL, Access Control Policy is also available to define permission for bucket and ABCI Cloud Storage account. Access Control Policy can control accessibility in different ways from the ones ACL offers.
+
+There are two types of "Access Control Policy": "Bucket Policy" and "User Policy".
+
+* Bucket Policy: Set an access control policy for the bucket.
+* User Policy: Set access control policies for your ABCI Cloud Storage account.
+
+"Bucket Policy" can be set with the Users Account, but Usage Managers Account is necessary to set "User Policy". If your ABCI Cloud Storage account is Users Account, ask Usage Managers to change the accessibility or to grant you appropriate permission.
 
 ## Default Permission 
 
@@ -8,16 +15,17 @@ Default setting grants all ABCI Cloud Storage accounts full-control permission t
 
 In case you use default setting, additional policy settings mentioned below is unnecessary. When detailed and complexed setting, such as granting specific ABCI Cloud Storage account only read permission, granting permission to only limited ABCI Cloud Storage accounts, are neeeded, the following instructions are helpful. 
 
+## Common notes for Access Control Policy
 
-## Setting Bucket Policy {#config-bucket-policy}
-
-Bucket Policy sets access control policies for bucket. Bucket Policy can control accessibility on a per-bucket basis.
-
-General conditions are following.
+The following are common notes for bucket and user policies.
 
 - Endpoint is 'https://s3.abci.ai'
 - Ruling order does not matter, and Deny is prioritized over Allow. Even Denys in otner policy has priority.
 - Although capital letters are available for the name of policies (i.e. names specified by '--policy-name'), it is highly recommended that you use small letters of alphabets and numbers and hyphen(0x2d).
+
+## Setting Bucket Policy {#config-bucket-policy}
+
+Bucket Policy sets access control policies for bucket. Bucket Policy can control accessibility on a per-bucket basis.
 
 For bucket policy setting, access permissions are written in JSON format. In order to define what to allow, what to deny and judgement conditions, combinations of Effect, Action, Resource and Principal are used.
 
@@ -90,7 +98,7 @@ Note that NotPrincipal is not supported.
     Condition is not supported in bucket policy. Therefore, for example, it is not possible to set conditions such as IP address limitation.
 
 
-### Example 1:  Allowing Cross-Account Bucket Access {#allowing-cross-account-bucket-access}
+### Example 1:  Share bucket between ABCI Groups {#share-bucket-between-groups}
 
 This part explains how to share a bucket between ABCI groups.
 In this example, two ABCI cloud storage accounts bbb00000.1 and bbb00001.1 belonging to Group B are granted access to the 'share-bucket' bucket owned by Group A.
