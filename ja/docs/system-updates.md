@@ -66,6 +66,7 @@
 | Update | Singularityエンドポイント | 2.1.5 | 1.7.2 |
 | Update | DDN Lustre | 2.12.8_ddn23 | 2.12.8_ddn10 |
 | Update | Scality S3 Connector | 7.10.6.7 | 7.10.2.2 |
+| Update | BeeOND | 7.3.3 | 7.2.3 |
 
 ## 2023-03-08
 
