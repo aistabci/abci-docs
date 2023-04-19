@@ -20,10 +20,10 @@ SingularityPRO has a function equivalent to ``docker login`` that provides authe
 [username@es1 ~]$ singularity pull docker://myregistry.azurecr.io/namespace/repo_name:repo_tag
 ```
 
-For more information on SingularityPRO authentication, refer to the SingularityCE user guide.
+For more information on SingularityPRO authentication, refer to the following user guide.
 
-* [SingularityCE 3.9 User Guide](https://docs.sylabs.io/guides/3.9/user-guide/index.html)
-    * [Authentication/Private Containers](https://docs.sylabs.io/guides/3.9/user-guide/singularity_and_docker.html#authentication-private-containers)
+* [SingularityPRO 3.9 User Guide](https://repo.sylabs.io/guides/pro-3.9/user-guide/index.html)
+    * [Authentication/Private Containers](https://repo.sylabs.io/guides/pro-3.9/user-guide/singularity_and_docker.html#authentication-private-containers)
 
 ## Q. I want to assign multiple compute nodes and have each compute node perform different processing
 
