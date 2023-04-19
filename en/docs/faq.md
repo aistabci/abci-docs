@@ -27,11 +27,30 @@ For more information on SingularityPRO authentication, refer to the following us
 
 ## Q. I want to assign multiple compute nodes and have each compute node perform different processing
 
-If you give `-l rt_F=N` or `-l rt_AF=N` option to `qrsh` or `qsub`, you can assign N compute nodes. You can also use MPI if you want to perform different processing on each assigned compute node.
+If you give `-l rt_F=N` or `-l rt_AF=N` option to `qrsh` or `qsub`, you can assign N compute nodes.
+You can use MPI if you want to perform different processing on each assigned compute node.
 
+```shell
+[username@es1 ~]$ qrsh -g grpname -l rt_F=3 -l h_rt=1:00:00
+[username@g0001 ~]$ module load hpcx/2.12
+[username@g0001 ~]$ mpirun -hostfile $SGE_JOB_HOSTLIST -np 1 command1 : -np 1 command2 : -np 1 command3
 ```
-$ module load hpcx/2.12
-$ mpirun -hostfile $SGE_JOB_HOSTLIST -np 1 command1 : -np 1 command2 : ... : -np1 commandN
+
+Another option is to enable SSH login to compute nodes, which allows each assigned compute node to perform different operations.
+SSH login access to compute nodes is enabled by specifying the `-l USE_SSH=1` option when executing `qrsh` or `qsub`.
+For more information on the `-l USE_SSH=1` option, see [Appendix. SSH Access to Compute Nodes](appendix/ssh-access.md).
+
+The following is an example of using SSH access to perform different operations on assigned compute nodes.
+
+```shell
+[username@es1 ~]$ qrsh -g grpname -l rt_F=3 -l h_rt=1:00:00 -l USE_SSH=1
+[username@g0001 ~]$ cat $SGE_JOB_HOSTLIST
+g0001
+g0002
+g0003
+[username@g0001 ~]$ ssh -p 2222 g0001 command1 &
+[username@g0001 ~]$ ssh -p 2222 g0002 command2 &
+[username@g0001 ~]$ ssh -p 2222 g0003 command3 &
 ```
 
 ## Q. I want to avoid to close SSH session unexpectedly

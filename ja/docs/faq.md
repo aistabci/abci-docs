@@ -27,11 +27,30 @@ SingularityPROの認証に関する詳細は、下記のユーザーガイドを
 
 ## Q. 複数の計算ノードを割り当て、それぞれの計算ノードで異なる処理をさせたい
 
-`qrsh`や`qsub`で`-l rt_F=N`オプションもしくは`-l rt_AF=N`オプションを与えると、N個の計算ノードを割り当てることができます。割り当てられた計算ノードでそれぞれ異なる処理をさせたい場合にもMPIが使えます。
+`qrsh`や`qsub`で`-l rt_F=N`オプションもしくは`-l rt_AF=N`オプションを与えると、N個の計算ノードを割り当てることができます。
+割り当てられた計算ノードでそれぞれ異なる処理をさせたい場合にMPIが使えます。
 
+```shell
+[username@es1 ~]$ qrsh -g grpname -l rt_F=3 -l h_rt=1:00:00
+[username@g0001 ~]$ module load hpcx/2.12
+[username@g0001 ~]$ mpirun -hostfile $SGE_JOB_HOSTLIST -np 1 command1 : -np 1 command2 : -np 1 command3
 ```
-$ module load hpcx/2.12
-$ mpirun -hostfile $SGE_JOB_HOSTLIST -np 1 command1 : -np 1 command2 : ... : -np1 commandN
+
+他にも、計算ノードへのSSHログインを有効にすることで、割り当てられた計算ノードにそれぞれ異なる処理をさせることができます。
+計算ノードへのSSHログインアクセスは、`qrsh`や`qsub`実行時に`-l USE_SSH=1`オプションを指定することで有効になります。
+`USE_SSH`オプションについては、[付録. 計算ノードへのSSHアクセス](appendix/ssh-access.md)を参照してください。
+
+以下はSSHアクセスを使用して割り当てられた計算ノードに異なる処理を実行させる例です。
+
+```shell
+[username@es1 ~]$ qrsh -g grpname -l rt_F=3 -l h_rt=1:00:00 -l USE_SSH=1
+[username@g0001 ~]$ cat $SGE_JOB_HOSTLIST
+g0001
+g0002
+g0003
+[username@g0001 ~]$ ssh -p 2222 g0001 command1 &
+[username@g0001 ~]$ ssh -p 2222 g0002 command2 &
+[username@g0001 ~]$ ssh -p 2222 g0003 command3 &
 ```
 
 ## Q. SSHのセッションが閉じられてしまうのを回避したい
