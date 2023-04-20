@@ -20,19 +20,37 @@ SingularityPROには``docker login``相当の機能として、環境変数で�
 [username@es1 ~]$ singularity pull docker://myregistry.azurecr.io/namespace/repo_name:repo_tag
 ```
 
-SingularityPRO の認証に関する詳細は、以下をご参照ください。
+SingularityPROの認証に関する詳細は、下記のユーザーガイドをご参照ください。
 
-* [SingularityPRO 3.7 User Guide](https://repo.sylabs.io/c/0f6898986ad0b646b5ce6deba21781ac62cb7e0a86a5153bbb31732ee6593f43/guides/singularitypro37-user-guide/)
-    * [Making use of private images from Private Registries](https://repo.sylabs.io/c/0f6898986ad0b646b5ce6deba21781ac62cb7e0a86a5153bbb31732ee6593f43/guides/singularitypro37-user-guide/singularity_and_docker.html?highlight=support%20docker%20oci#making-use-of-private-images-from-private-registries)
-
+* [SingularityPRO 3.9 User Guide](https://repo.sylabs.io/guides/pro-3.9/user-guide/index.html)
+    * [Authentication/Private Containers](https://repo.sylabs.io/guides/pro-3.9/user-guide/singularity_and_docker.html#authentication-private-containers)
 
 ## Q. 複数の計算ノードを割り当て、それぞれの計算ノードで異なる処理をさせたい
 
-`qrsh`や`qsub`で`-l rt_F=N`オプションもしくは`-l rt_AF=N`オプションを与えると、N個の計算ノードを割り当てることができます。割り当てられた計算ノードでそれぞれ異なる処理をさせたい場合にもMPIが使えます。
+`qrsh`や`qsub`で`-l rt_F=N`オプションもしくは`-l rt_AF=N`オプションを与えると、N個の計算ノードを割り当てることができます。
+割り当てられた計算ノードでそれぞれ異なる処理をさせたい場合にMPIが使えます。
 
+```shell
+[username@es1 ~]$ qrsh -g grpname -l rt_F=3 -l h_rt=1:00:00
+[username@g0001 ~]$ module load hpcx/2.12
+[username@g0001 ~]$ mpirun -hostfile $SGE_JOB_HOSTLIST -np 1 command1 : -np 1 command2 : -np 1 command3
 ```
-$ module load openmpi/4.1.3
-$ mpirun -hostfile $SGE_JOB_HOSTLIST -np 1 command1 : -np 1 command2 : ... : -np1 commandN
+
+他にも、計算ノードへのSSHログインを有効にすることで、割り当てられた計算ノードにそれぞれ異なる処理をさせることができます。
+計算ノードへのSSHログインアクセスは、`qrsh`や`qsub`実行時に`-l USE_SSH=1`オプションを指定することで有効になります。
+`USE_SSH`オプションについては、[付録. 計算ノードへのSSHアクセス](appendix/ssh-access.md)を参照してください。
+
+以下はSSHアクセスを使用して割り当てられた計算ノードに異なる処理を実行させる例です。
+
+```shell
+[username@es1 ~]$ qrsh -g grpname -l rt_F=3 -l h_rt=1:00:00 -l USE_SSH=1
+[username@g0001 ~]$ cat $SGE_JOB_HOSTLIST
+g0001
+g0002
+g0003
+[username@g0001 ~]$ ssh -p 2222 g0001 command1 &
+[username@g0001 ~]$ ssh -p 2222 g0002 command2 &
+[username@g0001 ~]$ ssh -p 2222 g0003 command3 &
 ```
 
 ## Q. SSHのセッションが閉じられてしまうのを回避したい
@@ -245,10 +263,9 @@ ABCIは、2021年5月にABCI 2.0にアップグレードされました。
 | 項目 | OS |
 |:--|:--|
 | 計算ノード(A) | Red Hat Enterprise Linux 8.2 |
-| 計算ノード(V) | CentOS Linux 7.5 |
+| 計算ノード(V) | Rocky Linux 8.6 |
 
-カーネルやglibcなどライブラリのバージョンも異なるため、計算ノード(V)向けにビルドしたプログラムをそのまま計算ノード(A)上で動かしても動作は保証されません。
-
+Rocky LinuxとRed Hat Enterprise Linuxは互換性がありますが、動作を保証するものではありません。
 計算ノード(A)向けのプログラムは、計算ノード(A)や後述するインタラクティブノード(A)を使用してビルドしてください。
 
 ### CUDA Version

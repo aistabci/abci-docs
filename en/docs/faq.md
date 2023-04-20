@@ -20,19 +20,37 @@ SingularityPRO has a function equivalent to ``docker login`` that provides authe
 [username@es1 ~]$ singularity pull docker://myregistry.azurecr.io/namespace/repo_name:repo_tag
 ```
 
-For more information on SingularityPRO authentication, see below.
+For more information on SingularityPRO authentication, refer to the following user guide.
 
-* [SingularityPRO 3.7 User Guide](https://repo.sylabs.io/c/0f6898986ad0b646b5ce6deba21781ac62cb7e0a86a5153bbb31732ee6593f43/guides/singularitypro37-user-guide/)
-    * [Making use of private images from Private Registries](https://repo.sylabs.io/c/0f6898986ad0b646b5ce6deba21781ac62cb7e0a86a5153bbb31732ee6593f43/guides/singularitypro37-user-guide/singularity_and_docker.html?highlight=support%20docker%20oci#making-use-of-private-images-from-private-registries)
-
+* [SingularityPRO 3.9 User Guide](https://repo.sylabs.io/guides/pro-3.9/user-guide/index.html)
+    * [Authentication/Private Containers](https://repo.sylabs.io/guides/pro-3.9/user-guide/singularity_and_docker.html#authentication-private-containers)
 
 ## Q. I want to assign multiple compute nodes and have each compute node perform different processing
 
-If you give `-l rt_F=N` or `-l rt_AF=N` option to `qrsh` or `qsub`, you can assign N compute nodes. You can also use MPI if you want to perform different processing on each assigned compute node.
+If you give `-l rt_F=N` or `-l rt_AF=N` option to `qrsh` or `qsub`, you can assign N compute nodes.
+You can use MPI if you want to perform different processing on each assigned compute node.
 
+```shell
+[username@es1 ~]$ qrsh -g grpname -l rt_F=3 -l h_rt=1:00:00
+[username@g0001 ~]$ module load hpcx/2.12
+[username@g0001 ~]$ mpirun -hostfile $SGE_JOB_HOSTLIST -np 1 command1 : -np 1 command2 : -np 1 command3
 ```
-$ module load openmpi/4.1.3
-$ mpirun -hostfile $SGE_JOB_HOSTLIST -np 1 command1 : -np 1 command2 : ... : -np1 commandN
+
+Another option is to enable SSH login to compute nodes, which allows each assigned compute node to perform different operations.
+SSH login access to compute nodes is enabled by specifying the `-l USE_SSH=1` option when executing `qrsh` or `qsub`.
+For more information on the `-l USE_SSH=1` option, see [Appendix. SSH Access to Compute Nodes](appendix/ssh-access.md).
+
+The following is an example of using SSH access to perform different operations on assigned compute nodes.
+
+```shell
+[username@es1 ~]$ qrsh -g grpname -l rt_F=3 -l h_rt=1:00:00 -l USE_SSH=1
+[username@g0001 ~]$ cat $SGE_JOB_HOSTLIST
+g0001
+g0002
+g0003
+[username@g0001 ~]$ ssh -p 2222 g0001 command1 &
+[username@g0001 ~]$ ssh -p 2222 g0002 command2 &
+[username@g0001 ~]$ ssh -p 2222 g0003 command3 &
 ```
 
 ## Q. I want to avoid to close SSH session unexpectedly
@@ -239,10 +257,9 @@ The Compute Node (A) and the Compute Node (V) use different Operating Systems.
 | Node | Operating System |
 |:-|:-|
 | Compute Node (A) | Red Hat Enterprise Linux 8.2 |
-| Compute Node (V) | CentOS Linux 7.5 |
+| Compute Node (V) | Rocky Linux 8.6 |
 
-Since the versions of kernels and libraries such as `glibc` are different, the operation cannot be guaranteed when the program built for the Compute Node (V) is run on the Compute Node (A) as it is.
-
+Rocky Linux and Red Hat Enterprise Linux are compatible, but a program built on one is not guaranteed to work on the other.
 Please rebuild the program for the Compute Node (A) using the Compute Node (A) or the Interactive Node (A) described later.
 
 ### CUDA Version
