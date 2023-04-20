@@ -430,13 +430,6 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#pgi" class="md-nav__link">
-    PGI
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
   <a href="#openmp" class="md-nav__link">
     OpenMP
   </a>
@@ -842,7 +835,7 @@
   
     <li class="md-nav__item">
       <a href="../abci-cloudstorage/encryption/" class="md-nav__link">
-        Data encryption
+        Data Encryption
       </a>
     </li>
   
@@ -1176,7 +1169,7 @@
 To use Intel oneAPI, set up user environment by the <code>module</code> command.
 If you set up with the <code>module</code> command in compute node, environment variables for compilation and execution are set automatically.</p>
 <p>Setting command for Intel oneAPI is following:</p>
-<div class="codehilite"><pre><span></span><code><span class="p">[</span><span class="n">username</span><span class="err">@</span><span class="n">g0001</span> <span class="o">~</span><span class="p">]</span><span class="o">$</span> <span class="n">module</span> <span class="nb">load</span> <span class="n">intel</span><span class="o">/</span><span class="mf">2022.2</span><span class="o">.</span><span class="mi">1</span>
+<div class="codehilite"><pre><span></span><code><span class="p">[</span><span class="n">username</span><span class="err">@</span><span class="n">es1</span> <span class="o">~</span><span class="p">]</span><span class="o">$</span> <span class="n">module</span> <span class="nb">load</span> <span class="n">intel</span><span class="o">/</span><span class="mf">2023.0</span><span class="o">.</span><span class="mi">0</span>
 </code></pre></div>
 
 <p>List of compile/link commands of Intel oneAPI:</p>
@@ -1202,37 +1195,6 @@ If you set up with the <code>module</code> command in compute node, environment 
 </tr>
 </tbody>
 </table>
-<h2 id="pgi">PGI</h2>
-<p>PGI Compiler is available on the ABCI System.
-To use PGI compiler, set up user environment by the <code>module</code> command.
-If you set up with the <code>module</code> command in compute node, environment variables for compilation and execution are set automatically.</p>
-<p>Setting command for PGI Compiler is following:</p>
-<div class="codehilite"><pre><span></span><code><span class="p">[</span><span class="n">username</span><span class="err">@</span><span class="n">g0001</span> <span class="o">~</span><span class="p">]</span><span class="o">$</span> <span class="n">module</span> <span class="nb">load</span> <span class="n">pgi</span><span class="o">/</span><span class="mf">20.4</span>
-</code></pre></div>
-
-<p>List of compile/link commands of PGI Compiler:</p>
-<table>
-<thead>
-<tr>
-<th align="left">Programing Language</th>
-<th align="left">command</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td align="left">Fortran</td>
-<td align="left">pgf90</td>
-</tr>
-<tr>
-<td align="left">C</td>
-<td align="left">pgcc</td>
-</tr>
-<tr>
-<td align="left">C++</td>
-<td align="left">pgc++</td>
-</tr>
-</tbody>
-</table>
 <h2 id="openmp">OpenMP</h2>
 <p>The compilers provided on the ABCI System support thread parallelization by OpenMP specifications.
 To activate the OpenMP specifications, specify the compile option as follows:</p>
@@ -1252,10 +1214,6 @@ To activate the OpenMP specifications, specify the compile option as follows:</p
 <td align="left">Intel oneAPI</td>
 <td align="left">-qopenmp</td>
 </tr>
-<tr>
-<td align="left">PGI</td>
-<td align="left">-mp</td>
-</tr>
 </tbody>
 </table>
 <h2 id="cuda">CUDA</h2>
@@ -1265,7 +1223,7 @@ If you set up with the <code>module</code> command in compute node, environment 
 <table>
 <thead>
 <tr>
-<th align="left">Programing Language</th>
+<th align="left">Programming Language</th>
 <th align="left">command</th>
 </tr>
 </thead>

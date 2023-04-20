@@ -852,10 +852,37 @@
       
         <li class="md-nav__item">
   <a href="#_2" class="md-nav__link">
-    ポリシーの設定
+    アクセス制御ポリシー共通の注意点
   </a>
   
-    <nav class="md-nav" aria-label="ポリシーの設定">
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#config-bucket-policy" class="md-nav__link">
+    バケットポリシーの設定
+  </a>
+  
+    <nav class="md-nav" aria-label="バケットポリシーの設定">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#share-bucket-between-groups" class="md-nav__link">
+    例1：ABCIグループ間でバケットを共有する
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#config-user-policy" class="md-nav__link">
+    ユーザーポリシーの設定
+  </a>
+  
+    <nav class="md-nav" aria-label="ユーザーポリシーの設定">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -1140,24 +1167,26 @@
                 
                 
                 <h1 id="2-">アクセス制御(2) - ポリシーによる制御</h1>
-<p>バケットやオブジェクトに設定するACLとは別に、クラウドストレージアカウントに対する「アクセス制御ポリシー」を設定することができます。これにより、ACLでは設定できないようなアクセス制御が可能です。ただし、設定には管理者用のクラウドストレージアカウントが必要です。権限がない場合は、所属グループの利用管理者等、管理者用のクラウドストレージアカウントを持つ者に設定、あるいは権限の付与を依頼してください。</p>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>バケットやオブジェクトにはポリシーを設定できません。そのため、グループ内のストレージアカウント全てにポリシーを設定しなければならないケースがあります。</p>
-</div>
+<p>バケットやオブジェクトに設定するACLとは別に、バケットやクラウドストレージアカウントに対する「アクセス制御ポリシー」を設定することができます。これにより、ACLでは設定できないようなアクセス制御が可能です。</p>
+<p>「アクセス制御ポリシー」には「バケットポリシー」と「ユーザーポリシー」の2種類あります。</p>
+<ul>
+<li>バケットポリシー: バケットに対してアクセス制御ポリシーを設定します。</li>
+<li>ユーザーポリシー: クラウドストレージアカウントに対してアクセス制御ポリシーを設定します。</li>
+</ul>
+<p>「バケットポリシー」は利用者用のクラウドストレージアカウントで設定可能ですが、「ユーザーポリシー」を設定するには管理者用のクラウドストレージアカウントが必要です。権限がない場合は、所属グループの利用管理者等、管理者用のクラウドストレージアカウントを持つ者に設定、あるいは権限の付与を依頼してください。</p>
 <h2 id="_1">デフォルトのアクセス許可</h2>
 <p>デフォルトでは、バケットやオブジェクトにACLが特に設定されていなければ、グループ内のクラウドストレージアカウントはグループ内のデータにフルアクセス（読み書き両方）できる設定となっています。</p>
 <p>デフォルトのまま使う場合には、以降に説明するポリシーの追加設定を行う必要はありません。特定のクラウドストレージアカウントを読み取りしかできないようする、あるバケットにアクセスできるのは一部のクラウドストレージアカウントだけにするなど、細かい制御が必要な場合には、以下を参考にポリシーを設定してください。</p>
-<h2 id="_2">ポリシーの設定</h2>
-<!--  デフォルトサブグループが導入されたら、デフォルトのアクセス権限を変更できる  -->
-
-<p>まず最初に、共通の注意点を挙げます。</p>
+<h2 id="_2">アクセス制御ポリシー共通の注意点</h2>
+<p>バケットポリシー、ユーザーポリシーに共通の注意点を挙げます。</p>
 <ul>
-<li>エンドポイントは <code>https://s3.abci.ai</code> です。</li>
+<li>エンドポイントは https://s3.abci.ai です。</li>
 <li>順番に関係なく、DenyルールがAllowルールよりも優先されます。同一ポリシー内でなくとも、別のポリシーにDenyルールがあればそれが優先されます。</li>
 <li>ポリシーの名前(--policy-nameに指定する名前)は、大文字を用いてもエラーにはなりませんが、問題になるケースがあるため、小文字英字と数字、およびハイフン(0x2d)で構成してください。</li>
 </ul>
-<p>ポリシーの設定では、JSON形式でアクセス許可の定義を書きます。Effect, Action, Resource, Condition の組み合わせにより、何を許可するか、何を拒否するか、どのような条件で判定するかなどを記述します。</p>
+<h2 id="config-bucket-policy">バケットポリシーの設定</h2>
+<p>バケットポリシーではバケットに対してアクセス制御ポリシーを設定します。これにより、バケット単位でアクセス制御が可能です。</p>
+<p>バケットポリシーの設定では、JSON形式でアクセス許可の定義を書きます。Effect, Action, Resource, Principal の組み合わせにより、何を許可するか、何を拒否するかなどを記述します。</p>
 <p>Effect には、"Allow" または "Deny" が設定できます。許可するルールなのか、拒否するルールなのかを記します。</p>
 <p>Action には、どのようなリクエスト(動作)に対する制限なのかを記述します。例えば、オブジェクトのダウンロードについては、s3:GetObject を指定します。ワイルドカード (<code>s3:*</code>) を使うこともできます。</p>
 <p>アクションの一覧：</p>
@@ -1259,6 +1288,74 @@
 -->
 
 <p>Resource には、アクセス対象となるリソースを記述します。例えば、<code>arn:aws:s3:::sensor8</code> は、sensor8 という名前のバケットを示しています。その中のオブジェクトは、<code>arn:aws:s3:::sensor8/test.dat</code> のように記します。ワイルドカード (<code>*</code>) も使うことができます。</p>
+<p>Principal には、アクセス権を設定するユーザーを記述します。ワイルドカード (<code>*</code>) を指定してインターネット上の誰からでもアクセスできる（パブリックアクセス）設定を行うこともできます。
+なお、NotPrincipal はサポートされていません。</p>
+<div class="admonition caution">
+<p class="admonition-title">Caution</p>
+<p>誰からでも読み取りアクセスができる設定を行う場合は、下記をよくお読みいただき、データを公開することが適切であるかご確認の上、設定をお願いします。</p>
+<ul>
+<li><a href="https://abci.ai/ja/how_to_use/">ABCI約款・規約</a></li>
+<li><a href="https://abci.ai/ja/how_to_use/data/cloudstorage-agreement.pdf">ABCIクラウドストレージ規約</a></li>
+</ul>
+</div>
+<div class="admonition caution">
+<p class="admonition-title">Caution</p>
+<p>第三者によって意図しない利用がなされる恐れがありますので、誰からでも書き込みアクセスができる設定はしないでください。</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>バケットポリシーでは Condition がサポートされていません。そのため、例えば接続元IPアドレスによるアクセス制限といった条件を設定できません。</p>
+</div>
+<h3 id="share-bucket-between-groups">例1：ABCIグループ間でバケットを共有する</h3>
+<p>ABCIグループ間でバケットを共有する方法について説明します。
+この例では、グループAが所有する share-bucket というバケットをグループBに所属する bbb00000.1、bbb00001.1 という2人のクラウドストレージアカウントにアクセスを許可します。</p>
+<p>まず、アクセスを許可するアカウント bbb00000.1 と bbb00001.1 の Arn の値をグループBのユーザが <code>aws iam get-user</code> で確認します。
+<code>aws iam get-user</code> を実行するには管理者用のクラウドストレージアカウントが必要です。</p>
+<div class="codehilite"><pre><span></span><code><span class="o">[</span><span class="n">username@es1 ~</span><span class="o">]</span><span class="err">$</span><span class="w"> </span><span class="n">aws</span><span class="w"> </span><span class="o">--</span><span class="n">endpoint</span><span class="o">-</span><span class="n">url</span><span class="w"> </span><span class="nl">https</span><span class="p">:</span><span class="o">//</span><span class="n">s3</span><span class="p">.</span><span class="n">abci</span><span class="p">.</span><span class="n">ai</span><span class="w"> </span><span class="n">iam</span><span class="w"> </span><span class="k">get</span><span class="o">-</span><span class="k">user</span><span class="w"> </span><span class="o">--</span><span class="k">user</span><span class="o">-</span><span class="n">name</span><span class="w"> </span><span class="n">bbb00000</span><span class="mf">.1</span><span class="w"> </span><span class="o">--</span><span class="n">query</span><span class="w"> </span><span class="k">User</span><span class="p">.</span><span class="n">Arn</span><span class="w"></span>
+<span class="ss">&quot;arn:aws:iam::987654321098:user/bbb00000.1&quot;</span><span class="w"></span>
+<span class="o">[</span><span class="n">username@es1 ~</span><span class="o">]</span><span class="err">$</span><span class="w"> </span><span class="n">aws</span><span class="w"> </span><span class="o">--</span><span class="n">endpoint</span><span class="o">-</span><span class="n">url</span><span class="w"> </span><span class="nl">https</span><span class="p">:</span><span class="o">//</span><span class="n">s3</span><span class="p">.</span><span class="n">abci</span><span class="p">.</span><span class="n">ai</span><span class="w"> </span><span class="n">iam</span><span class="w"> </span><span class="k">get</span><span class="o">-</span><span class="k">user</span><span class="w"> </span><span class="o">--</span><span class="k">user</span><span class="o">-</span><span class="n">name</span><span class="w"> </span><span class="n">bbb00001</span><span class="mf">.1</span><span class="w"> </span><span class="o">--</span><span class="n">query</span><span class="w"> </span><span class="k">User</span><span class="p">.</span><span class="n">Arn</span><span class="w"></span>
+<span class="ss">&quot;arn:aws:iam::987654321098:user/bbb00001.1&quot;</span><span class="w"></span>
+</code></pre></div>
+
+<p>次に、グループAのユーザが以下の内容の cross-access-pc.json というファイルを作成します。説明上、cross-access-pc.json としますが、任意のファイル名を使うことができます。</p>
+<div class="codehilite"><pre><span></span><code>{
+    &quot;Version&quot;: &quot;2012-10-17&quot;,
+    &quot;Statement&quot;: [
+        {
+            &quot;Effect&quot;: &quot;Allow&quot;,
+            &quot;Principal&quot;: {
+                &quot;AWS&quot;: [
+                    &quot;arn:aws:iam::987654321098:user/bbb00000.1&quot;,
+                    &quot;arn:aws:iam::987654321098:user/bbb00001.1&quot;
+                ]
+            },
+            &quot;Action&quot;: [
+                &quot;s3:List*&quot;,
+                &quot;s3:Get*&quot;
+            ],
+            &quot;Resource&quot;: [
+                &quot;arn:aws:s3:::share-bucket&quot;,
+                &quot;arn:aws:s3:::share-bucket/*&quot;
+            ]
+        }
+    ]
+}
+</code></pre></div>
+
+<p>上記では、bbb00000.1 と bbb00001.1 に share-bucket バケットに対する読み取り専用のアクセスを許可するポリシーを定義しています。</p>
+<p>このポリシーを share-bucket バケットに適用します。</p>
+<div class="codehilite"><pre><span></span><code><span class="o">[</span><span class="n">username@es1 ~</span><span class="o">]</span><span class="err">$</span><span class="w"> </span><span class="n">aws</span><span class="w"> </span><span class="c1">--endpoint-url https://s3.abci.ai s3api put-bucket-policy --bucket share-bucket --policy file://cross-access-pc.json</span>
+</code></pre></div>
+
+<p>上記により bbb00000.1 と bbb00001.1 は、share-bucket バケットにアクセスできるようになります。</p>
+<p>バケットに適用されたポリシーを確認する場合は、<code>aws --endpoint-url https://s3.abci.ai s3api get-bucket-policy --bucket share-bucket</code> を実行してください。</p>
+<p>また、ポリシーを削除する場合は、<code>aws --endpoint-url https://s3.abci.ai s3api delete-bucket-policy --bucket share-bucket</code> を実行してください。</p>
+<h2 id="config-user-policy">ユーザーポリシーの設定</h2>
+<!--  デフォルトサブグループが導入されたら、デフォルトのアクセス権限を変更できる  -->
+
+<p>ユーザーポリシーではクラウドストレージアカウントに対してアクセス制御ポリシーを設定します。これにより、クラウドストレージアカウント単位でアクセス制御が可能です。</p>
+<p>ユーザーポリシーの設定では、JSON形式でアクセス許可の定義を書きます。Effect, Action, Resource, Condition の組み合わせにより、何を許可するか、何を拒否するか、どのような条件で判定するかなどを記述します。</p>
+<p>Effect, Action, Resource については<a href="./#config-bucket-policy">バケットポリシーの設定</a>を参照してください。</p>
 <p>Condition には、条件演算子と条件キーを記述します。</p>
 <table>
 <thead>
@@ -1343,7 +1440,7 @@ Condition要素は、必要なければ省略可能です。</p>
 }
 </code></pre></div>
 
-<p>以降ではいくつか例を挙げて、ポリシーによるアクセス制御の方法を説明します。</p>
+<p>以降ではいくつか例を挙げて、ユーザーポリシーによるアクセス制御の方法を説明します。</p>
 <h3 id="1">例1：バケットにアクセスできるアカウントを限定する</h3>
 <p>グループ内に aaa00000.1、aaa00001.1、aaa00002.1、aaa00003.1 という4人のクラウドストレージアカウントが作られており、sensor8 というバケットがあるものとします。今回、そこにアクセスできるユーザーを、aaa00000.1 と aaa00001.1 の 2人に限定する方法を説明します。</p>
 <p>以下の内容の sensor8.json というファイルを作成します。説明上、sensor8.json としますが、任意のファイル名を使うことができます。</p>

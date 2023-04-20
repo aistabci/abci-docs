@@ -776,7 +776,7 @@
   
     <li class="md-nav__item">
       <a href="../encryption/" class="md-nav__link">
-        Data encryption
+        Data Encryption
       </a>
     </li>
   
@@ -839,11 +839,38 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#setting-policy" class="md-nav__link">
-    Setting Policy
+  <a href="#common-notes-for-access-control-policy" class="md-nav__link">
+    Common notes for Access Control Policy
   </a>
   
-    <nav class="md-nav" aria-label="Setting Policy">
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#config-bucket-policy" class="md-nav__link">
+    Setting Bucket Policy
+  </a>
+  
+    <nav class="md-nav" aria-label="Setting Bucket Policy">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#share-bucket-between-groups" class="md-nav__link">
+    Example 1:  Share bucket between ABCI Groups
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#config-user-policy" class="md-nav__link">
+    Setting User Policy
+  </a>
+  
+    <nav class="md-nav" aria-label="Setting User Policy">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -1128,24 +1155,26 @@
                 
                 
                 <h1 id="access-control-2-policy-">Access Control (2) - Policy -</h1>
-<p>Other than ACL, Access Control Policy is also available to define permisson for ABCI Cloud Storage account. Access Control Policy can control accessibility in different ways from the ones ACL offers. To use Access Control Policy, Usage Managers Account is necessary. If your ABCI Cloud Storage account is Users Account, ask Usage Managers to change the accessibility or to grant you appropreate permission.</p>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>Access control policies cannot be applied to buckets or objects. Therefore, there may be the cases that you need to set Access Control Policy to all ABCI Cloud Storage accounts within a group.</p>
-</div>
+<p>Other than ACL, Access Control Policy is also available to define permission for bucket and ABCI Cloud Storage account. Access Control Policy can control accessibility in different ways from the ones ACL offers.</p>
+<p>There are two types of "Access Control Policy": "Bucket Policy" and "User Policy".</p>
+<ul>
+<li>Bucket Policy: Set an access control policy for the bucket.</li>
+<li>User Policy: Set access control policies for your ABCI Cloud Storage account.</li>
+</ul>
+<p>"Bucket Policy" can be set with the Users Account, but Usage Managers Account is necessary to set "User Policy". If your ABCI Cloud Storage account is Users Account, ask Usage Managers to change the accessibility or to grant you appropriate permission.</p>
 <h2 id="default-permission">Default Permission</h2>
 <p>Default setting grants all ABCI Cloud Storage accounts full-control permission to object of the group. </p>
 <p>In case you use default setting, additional policy settings mentioned below is unnecessary. When detailed and complexed setting, such as granting specific ABCI Cloud Storage account only read permission, granting permission to only limited ABCI Cloud Storage accounts, are neeeded, the following instructions are helpful. </p>
-<h2 id="setting-policy">Setting Policy</h2>
-<!--  Once "default-sub-group" is introdued, default access permision can be changed  -->
-
-<p>General conditions are following.</p>
+<h2 id="common-notes-for-access-control-policy">Common notes for Access Control Policy</h2>
+<p>The following are common notes for bucket and user policies.</p>
 <ul>
 <li>Endpoint is 'https://s3.abci.ai'</li>
 <li>Ruling order does not matter, and Deny is prioritized over Allow. Even Denys in otner policy has priority.</li>
 <li>Although capital letters are available for the name of policies (i.e. names specified by '--policy-name'), it is highly recommended that you use small letters of alphabets and numbers and hyphen(0x2d).</li>
 </ul>
-<p>For policy setting, access permissions are written in JSON format. In order to define what to allow, what to deny and judgement condistions, combinations of Effect, Action, Resource and Condition are used.</p>
+<h2 id="config-bucket-policy">Setting Bucket Policy</h2>
+<p>Bucket Policy sets access control policies for bucket. Bucket Policy can control accessibility on a per-bucket basis.</p>
+<p>For bucket policy setting, access permissions are written in JSON format. In order to define what to allow, what to deny and judgement conditions, combinations of Effect, Action, Resource and Principal are used.</p>
 <p>For Effect, 'Allow' and 'Deny' are available to define rules.</p>
 <p>For Action, restrictions against requests or actions are written. As for downloading objects, for example, specify 's3:GetObject.' Wildcards (e.g. s3:*) are also available.</p>
 <p>Action:</p>
@@ -1247,6 +1276,74 @@
 -->
 
 <p>Resouce defines accessible resources. For example, 'arn:aws:s3:::sensor8' means the bucket 'sensor8.' The object in the bucket is written as 'arn:aws:s3:::sensor8/test.dat.' Wildcards are available.</p>
+<p>Principal defines accessible ABCI Cloud Storage account. Using a wildcard can grant access to anyone on the internet. 
+Note that NotPrincipal is not supported.</p>
+<div class="admonition caution">
+<p class="admonition-title">Caution</p>
+<p>Before you grant read access to everyone in the world, please read the following agreements carefully, and make sure it is appropriate to do so.</p>
+<ul>
+<li><a href="https://abci.ai/en/how_to_use/">ABCI Agreement and Rules</a></li>
+<li><a href="https://abci.ai/en/how_to_use/data/cloudstorage-agreement.pdf">ABCI Cloud Storage Terms of Use</a></li>
+</ul>
+</div>
+<div class="admonition caution">
+<p class="admonition-title">Caution</p>
+<p>Please do not grant write access to everyone in the world due to the possibility of unintended use by a third party.</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Condition is not supported in bucket policy. Therefore, for example, it is not possible to set conditions such as IP address limitation.</p>
+</div>
+<h3 id="share-bucket-between-groups">Example 1:  Share bucket between ABCI Groups</h3>
+<p>This part explains how to share a bucket between ABCI groups.
+In this example, two ABCI cloud storage accounts bbb00000.1 and bbb00001.1 belonging to Group B are granted access to the 'share-bucket' bucket owned by Group A.</p>
+<p>Firstly, a user in Group B executes the command <code>aws iam get-user</code> to obtain the Arn values for users bbb00000.1 and bbb00001.1 whose access is to be allowed.
+To execute the command <code>aws iam get-user</code>, Usage Managers Account is necessary.</p>
+<div class="codehilite"><pre><span></span><code><span class="o">[</span><span class="n">username@es1 ~</span><span class="o">]</span><span class="err">$</span><span class="w"> </span><span class="n">aws</span><span class="w"> </span><span class="o">--</span><span class="n">endpoint</span><span class="o">-</span><span class="n">url</span><span class="w"> </span><span class="nl">https</span><span class="p">:</span><span class="o">//</span><span class="n">s3</span><span class="p">.</span><span class="n">abci</span><span class="p">.</span><span class="n">ai</span><span class="w"> </span><span class="n">iam</span><span class="w"> </span><span class="k">get</span><span class="o">-</span><span class="k">user</span><span class="w"> </span><span class="o">--</span><span class="k">user</span><span class="o">-</span><span class="n">name</span><span class="w"> </span><span class="n">bbb00000</span><span class="mf">.1</span><span class="w"> </span><span class="o">--</span><span class="n">query</span><span class="w"> </span><span class="k">User</span><span class="p">.</span><span class="n">Arn</span><span class="w"></span>
+<span class="ss">&quot;arn:aws:iam::987654321098:user/bbb00000.1&quot;</span><span class="w"></span>
+<span class="o">[</span><span class="n">username@es1 ~</span><span class="o">]</span><span class="err">$</span><span class="w"> </span><span class="n">aws</span><span class="w"> </span><span class="o">--</span><span class="n">endpoint</span><span class="o">-</span><span class="n">url</span><span class="w"> </span><span class="nl">https</span><span class="p">:</span><span class="o">//</span><span class="n">s3</span><span class="p">.</span><span class="n">abci</span><span class="p">.</span><span class="n">ai</span><span class="w"> </span><span class="n">iam</span><span class="w"> </span><span class="k">get</span><span class="o">-</span><span class="k">user</span><span class="w"> </span><span class="o">--</span><span class="k">user</span><span class="o">-</span><span class="n">name</span><span class="w"> </span><span class="n">bbb00001</span><span class="mf">.1</span><span class="w"> </span><span class="o">--</span><span class="n">query</span><span class="w"> </span><span class="k">User</span><span class="p">.</span><span class="n">Arn</span><span class="w"></span>
+<span class="ss">&quot;arn:aws:iam::987654321098:user/bbb00001.1&quot;</span><span class="w"></span>
+</code></pre></div>
+
+<p>Secondly, a user in group A create a .json file whose name is 'cross-access-pc.json', for example, as following. The name of a .json file can be arbitrary.</p>
+<div class="codehilite"><pre><span></span><code>{
+    &quot;Version&quot;: &quot;2012-10-17&quot;,
+    &quot;Statement&quot;: [
+        {
+            &quot;Effect&quot;: &quot;Allow&quot;,
+            &quot;Principal&quot;: {
+                &quot;AWS&quot;: [
+                    &quot;arn:aws:iam::987654321098:user/bbb00000.1&quot;,
+                    &quot;arn:aws:iam::987654321098:user/bbb00001.1&quot;
+                ]
+            },
+            &quot;Action&quot;: [
+                &quot;s3:List*&quot;,
+                &quot;s3:Get*&quot;
+            ],
+            &quot;Resource&quot;: [
+                &quot;arn:aws:s3:::share-bucket&quot;,
+                &quot;arn:aws:s3:::share-bucket/*&quot;
+            ]
+        }
+    ]
+}
+</code></pre></div>
+
+<p>It defines the policy that allows bbb00000.1 and bbb00001.1 to read-only access the bucket.</p>
+<p>Apply the policy to the bucket 'share-bucket'.</p>
+<div class="codehilite"><pre><span></span><code><span class="o">[</span><span class="n">username@es1 ~</span><span class="o">]</span><span class="err">$</span><span class="w"> </span><span class="n">aws</span><span class="w"> </span><span class="c1">--endpoint-url https://s3.abci.ai s3api put-bucket-policy --bucket share-bucket --policy file://cross-access-pc.json</span>
+</code></pre></div>
+
+<p>By applying the above rules, bbb00000.1 and bbb00001.1 can access the bucket 'share-bucket'.</p>
+<p>To clarify the bucket to which the policy is applied, execute the command <code>aws --endpoint-url https://s3.abci.ai s3api get-bucket-policy --bucket share-bucket</code>.</p>
+<p>Also, if you want to remove the policy, execute the command <code>aws --endpoint-url https://s3.abci.ai s3api delete-bucket-policy --bucket share-bucket</code>.</p>
+<h2 id="config-user-policy">Setting User Policy</h2>
+<!--  Once "default-sub-group" is introdued, default access permision can be changed  -->
+
+<p>User Policy sets access control policies for ABCI Cloud Storage account. User Policy can control accessibility on a per ABCI Cloud Storage account basis.</p>
+<p>For user policy setting, access permissions are written in JSON format. In order to define what to allow, what to deny and judgement conditions, combinations of Effect, Action, Resource and Condition are used.</p>
+<p>For Effect, Action and Resource, please refer to <a href="./#config-bucket-policy">Setting Bucket Policy</a>.</p>
 <p>Condition determines condition operators and condition keys.</p>
 <table>
 <thead>
@@ -1331,7 +1428,7 @@ Condition element can be omitted if it is unnecessary.</p>
 }
 </code></pre></div>
 
-<p>The following examples show how to control access by policy.</p>
+<p>The following examples show how to control access by user policy.</p>
 <h3 id="example-1-limiting-bucket-access-by-accounts">Example 1:  Limiting Bucket Access By Accounts</h3>
 <p>Four ABCI Cloud Storage accounts, aaa00000.1, aaa000001.1, aaa00002.1 and aaa00003.1, are created, for example, and there is a bucket whose name is 'sensor8'.Now we are showing how to allow only two users, aaa00000.1 and aaa00001.1, to access the bucket.</p>
 <p>Firstly, create a .json file whose name is 'sensor8.json', for example, as following. The name of a .json file can be arbitrary.</p>

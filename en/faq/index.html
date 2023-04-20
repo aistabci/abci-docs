@@ -774,7 +774,7 @@
   
     <li class="md-nav__item">
       <a href="../abci-cloudstorage/encryption/" class="md-nav__link">
-        Data encryption
+        Data Encryption
       </a>
     </li>
   
@@ -1230,17 +1230,33 @@
 <span class="o">[</span>username@es1 ~<span class="o">]</span>$ singularity pull docker://myregistry.azurecr.io/namespace/repo_name:repo_tag
 </code></pre></div>
 
-<p>For more information on SingularityPRO authentication, see below.</p>
+<p>For more information on SingularityPRO authentication, refer to the following user guide.</p>
 <ul>
-<li><a href="https://repo.sylabs.io/c/0f6898986ad0b646b5ce6deba21781ac62cb7e0a86a5153bbb31732ee6593f43/guides/singularitypro37-user-guide/">SingularityPRO 3.7 User Guide</a><ul>
-<li><a href="https://repo.sylabs.io/c/0f6898986ad0b646b5ce6deba21781ac62cb7e0a86a5153bbb31732ee6593f43/guides/singularitypro37-user-guide/singularity_and_docker.html?highlight=support%20docker%20oci#making-use-of-private-images-from-private-registries">Making use of private images from Private Registries</a></li>
+<li><a href="https://repo.sylabs.io/guides/pro-3.9/user-guide/index.html">SingularityPRO 3.9 User Guide</a><ul>
+<li><a href="https://repo.sylabs.io/guides/pro-3.9/user-guide/singularity_and_docker.html#authentication-private-containers">Authentication/Private Containers</a></li>
 </ul>
 </li>
 </ul>
 <h2 id="q-i-want-to-assign-multiple-compute-nodes-and-have-each-compute-node-perform-different-processing">Q. I want to assign multiple compute nodes and have each compute node perform different processing</h2>
-<p>If you give <code>-l rt_F=N</code> or <code>-l rt_AF=N</code> option to <code>qrsh</code> or <code>qsub</code>, you can assign N compute nodes. You can also use MPI if you want to perform different processing on each assigned compute node.</p>
-<div class="codehilite"><pre><span></span><code><span class="o">$</span> <span class="n">module</span> <span class="nb">load</span> <span class="n">openmpi</span><span class="o">/</span><span class="mf">4.1</span><span class="o">.</span><span class="mi">3</span>
-<span class="o">$</span> <span class="n">mpirun</span> <span class="o">-</span><span class="n">hostfile</span> <span class="o">$</span><span class="n">SGE_JOB_HOSTLIST</span> <span class="o">-</span><span class="n">np</span> <span class="mi">1</span> <span class="n">command1</span> <span class="p">:</span> <span class="o">-</span><span class="n">np</span> <span class="mi">1</span> <span class="n">command2</span> <span class="p">:</span> <span class="o">...</span> <span class="p">:</span> <span class="o">-</span><span class="n">np1</span> <span class="n">commandN</span>
+<p>If you give <code>-l rt_F=N</code> or <code>-l rt_AF=N</code> option to <code>qrsh</code> or <code>qsub</code>, you can assign N compute nodes.
+You can use MPI if you want to perform different processing on each assigned compute node.</p>
+<div class="codehilite"><pre><span></span><code><span class="o">[</span>username@es1 ~<span class="o">]</span>$ qrsh -g grpname -l <span class="nv">rt_F</span><span class="o">=</span><span class="m">3</span> -l <span class="nv">h_rt</span><span class="o">=</span><span class="m">1</span>:00:00
+<span class="o">[</span>username@g0001 ~<span class="o">]</span>$ module load hpcx/2.12
+<span class="o">[</span>username@g0001 ~<span class="o">]</span>$ mpirun -hostfile <span class="nv">$SGE_JOB_HOSTLIST</span> -np <span class="m">1</span> command1 : -np <span class="m">1</span> command2 : -np <span class="m">1</span> command3
+</code></pre></div>
+
+<p>Another option is to enable SSH login to compute nodes, which allows each assigned compute node to perform different operations.
+SSH login access to compute nodes is enabled by specifying the <code>-l USE_SSH=1</code> option when executing <code>qrsh</code> or <code>qsub</code>.
+For more information on the <code>-l USE_SSH=1</code> option, see <a href="../appendix/ssh-access/">Appendix. SSH Access to Compute Nodes</a>.</p>
+<p>The following is an example of using SSH access to perform different operations on assigned compute nodes.</p>
+<div class="codehilite"><pre><span></span><code><span class="o">[</span>username@es1 ~<span class="o">]</span>$ qrsh -g grpname -l <span class="nv">rt_F</span><span class="o">=</span><span class="m">3</span> -l <span class="nv">h_rt</span><span class="o">=</span><span class="m">1</span>:00:00 -l <span class="nv">USE_SSH</span><span class="o">=</span><span class="m">1</span>
+<span class="o">[</span>username@g0001 ~<span class="o">]</span>$ cat <span class="nv">$SGE_JOB_HOSTLIST</span>
+g0001
+g0002
+g0003
+<span class="o">[</span>username@g0001 ~<span class="o">]</span>$ ssh -p <span class="m">2222</span> g0001 command1 <span class="p">&amp;</span>
+<span class="o">[</span>username@g0001 ~<span class="o">]</span>$ ssh -p <span class="m">2222</span> g0002 command2 <span class="p">&amp;</span>
+<span class="o">[</span>username@g0001 ~<span class="o">]</span>$ ssh -p <span class="m">2222</span> g0003 command3 <span class="p">&amp;</span>
 </code></pre></div>
 
 <h2 id="q-i-want-to-avoid-to-close-ssh-session-unexpectedly">Q. I want to avoid to close SSH session unexpectedly</h2>
@@ -1453,12 +1469,12 @@ In addition to the previously provided Compute Nodes (V) with NVIDIA V100, the C
 </tr>
 <tr>
 <td align="left">Compute Node (V)</td>
-<td align="left">CentOS Linux 7.5</td>
+<td align="left">Rocky Linux 8.6</td>
 </tr>
 </tbody>
 </table>
-<p>Since the versions of kernels and libraries such as <code>glibc</code> are different, the operation cannot be guaranteed when the program built for the Compute Node (V) is run on the Compute Node (A) as it is.</p>
-<p>Please rebuild the program for the Compute Node (A) using the Compute Node (A) or the Interactive Node (A) described later.</p>
+<p>Rocky Linux and Red Hat Enterprise Linux are compatible, but a program built on one is not guaranteed to work on the other.
+Please rebuild the program for the Compute Node (A) using the Compute Node (A) or the Interactive Node (A) described later.</p>
 <h3 id="cuda-version">CUDA Version</h3>
 <p>The NVIDIA A100 installed on the compute node (A) is Compute Capability 8.0 compliant.</p>
 <p>CUDA 10 and earlier does not support Compute Capability 8.0. Therefore, Compute Node (A) should use CUDA 11 or later that supports Compute Capability 8.0.</p>

@@ -1242,17 +1242,33 @@
 <span class="o">[</span>username@es1 ~<span class="o">]</span>$ singularity pull docker://myregistry.azurecr.io/namespace/repo_name:repo_tag
 </code></pre></div>
 
-<p>SingularityPRO の認証に関する詳細は、以下をご参照ください。</p>
+<p>SingularityPROの認証に関する詳細は、下記のユーザーガイドをご参照ください。</p>
 <ul>
-<li><a href="https://repo.sylabs.io/c/0f6898986ad0b646b5ce6deba21781ac62cb7e0a86a5153bbb31732ee6593f43/guides/singularitypro37-user-guide/">SingularityPRO 3.7 User Guide</a><ul>
-<li><a href="https://repo.sylabs.io/c/0f6898986ad0b646b5ce6deba21781ac62cb7e0a86a5153bbb31732ee6593f43/guides/singularitypro37-user-guide/singularity_and_docker.html?highlight=support%20docker%20oci#making-use-of-private-images-from-private-registries">Making use of private images from Private Registries</a></li>
+<li><a href="https://repo.sylabs.io/guides/pro-3.9/user-guide/index.html">SingularityPRO 3.9 User Guide</a><ul>
+<li><a href="https://repo.sylabs.io/guides/pro-3.9/user-guide/singularity_and_docker.html#authentication-private-containers">Authentication/Private Containers</a></li>
 </ul>
 </li>
 </ul>
 <h2 id="q">Q. 複数の計算ノードを割り当て、それぞれの計算ノードで異なる処理をさせたい</h2>
-<p><code>qrsh</code>や<code>qsub</code>で<code>-l rt_F=N</code>オプションもしくは<code>-l rt_AF=N</code>オプションを与えると、N個の計算ノードを割り当てることができます。割り当てられた計算ノードでそれぞれ異なる処理をさせたい場合にもMPIが使えます。</p>
-<div class="codehilite"><pre><span></span><code><span class="o">$</span> <span class="n">module</span> <span class="nb">load</span> <span class="n">openmpi</span><span class="o">/</span><span class="mf">4.1</span><span class="o">.</span><span class="mi">3</span>
-<span class="o">$</span> <span class="n">mpirun</span> <span class="o">-</span><span class="n">hostfile</span> <span class="o">$</span><span class="n">SGE_JOB_HOSTLIST</span> <span class="o">-</span><span class="n">np</span> <span class="mi">1</span> <span class="n">command1</span> <span class="p">:</span> <span class="o">-</span><span class="n">np</span> <span class="mi">1</span> <span class="n">command2</span> <span class="p">:</span> <span class="o">...</span> <span class="p">:</span> <span class="o">-</span><span class="n">np1</span> <span class="n">commandN</span>
+<p><code>qrsh</code>や<code>qsub</code>で<code>-l rt_F=N</code>オプションもしくは<code>-l rt_AF=N</code>オプションを与えると、N個の計算ノードを割り当てることができます。
+割り当てられた計算ノードでそれぞれ異なる処理をさせたい場合にMPIが使えます。</p>
+<div class="codehilite"><pre><span></span><code><span class="o">[</span>username@es1 ~<span class="o">]</span>$ qrsh -g grpname -l <span class="nv">rt_F</span><span class="o">=</span><span class="m">3</span> -l <span class="nv">h_rt</span><span class="o">=</span><span class="m">1</span>:00:00
+<span class="o">[</span>username@g0001 ~<span class="o">]</span>$ module load hpcx/2.12
+<span class="o">[</span>username@g0001 ~<span class="o">]</span>$ mpirun -hostfile <span class="nv">$SGE_JOB_HOSTLIST</span> -np <span class="m">1</span> command1 : -np <span class="m">1</span> command2 : -np <span class="m">1</span> command3
+</code></pre></div>
+
+<p>他にも、計算ノードへのSSHログインを有効にすることで、割り当てられた計算ノードにそれぞれ異なる処理をさせることができます。
+計算ノードへのSSHログインアクセスは、<code>qrsh</code>や<code>qsub</code>実行時に<code>-l USE_SSH=1</code>オプションを指定することで有効になります。
+<code>USE_SSH</code>オプションについては、<a href="../appendix/ssh-access/">付録. 計算ノードへのSSHアクセス</a>を参照してください。</p>
+<p>以下はSSHアクセスを使用して割り当てられた計算ノードに異なる処理を実行させる例です。</p>
+<div class="codehilite"><pre><span></span><code><span class="o">[</span>username@es1 ~<span class="o">]</span>$ qrsh -g grpname -l <span class="nv">rt_F</span><span class="o">=</span><span class="m">3</span> -l <span class="nv">h_rt</span><span class="o">=</span><span class="m">1</span>:00:00 -l <span class="nv">USE_SSH</span><span class="o">=</span><span class="m">1</span>
+<span class="o">[</span>username@g0001 ~<span class="o">]</span>$ cat <span class="nv">$SGE_JOB_HOSTLIST</span>
+g0001
+g0002
+g0003
+<span class="o">[</span>username@g0001 ~<span class="o">]</span>$ ssh -p <span class="m">2222</span> g0001 command1 <span class="p">&amp;</span>
+<span class="o">[</span>username@g0001 ~<span class="o">]</span>$ ssh -p <span class="m">2222</span> g0002 command2 <span class="p">&amp;</span>
+<span class="o">[</span>username@g0001 ~<span class="o">]</span>$ ssh -p <span class="m">2222</span> g0003 command3 <span class="p">&amp;</span>
 </code></pre></div>
 
 <h2 id="q-ssh">Q. SSHのセッションが閉じられてしまうのを回避したい</h2>
@@ -1473,12 +1489,12 @@ ABCIシステム利用環境の<a href="../getting-started/#general-method">SSH�
 </tr>
 <tr>
 <td align="left">計算ノード(V)</td>
-<td align="left">CentOS Linux 7.5</td>
+<td align="left">Rocky Linux 8.6</td>
 </tr>
 </tbody>
 </table>
-<p>カーネルやglibcなどライブラリのバージョンも異なるため、計算ノード(V)向けにビルドしたプログラムをそのまま計算ノード(A)上で動かしても動作は保証されません。</p>
-<p>計算ノード(A)向けのプログラムは、計算ノード(A)や後述するインタラクティブノード(A)を使用してビルドしてください。</p>
+<p>Rocky LinuxとRed Hat Enterprise Linuxは互換性がありますが、動作を保証するものではありません。
+計算ノード(A)向けのプログラムは、計算ノード(A)や後述するインタラクティブノード(A)を使用してビルドしてください。</p>
 <h3 id="cuda-version">CUDA Version</h3>
 <p>計算ノード(A)に搭載されているNVIDIA A100はCompute Capability 8.0に準拠しています。</p>
 <p>CUDA 10以前ではCompute Capability 8.0をサポートしていません。そのため、計算ノード(A)では、Compute Capability 8.0をサポートするCUDA 11以降を使用してください。</p>
