@@ -192,7 +192,7 @@ ABCIシステムで利用可能なソフトウェア一覧を以下に示しま�
 | | Go | 1.20 | 1.20 |
 | | Julia | 1.8 | 1.8 |
 | File System | [DDN Lustre](storage.md#home-area) | 2.12.8\_ddn23 | 2.12.8\_ddn23 |
-| | [BeeOND](storage.md#beeond-storage) | 7.2.3 | 7.2.3 |
+| | [BeeOND](storage.md#beeond-storage) | 7.3.3 | 7.3.3 |
 | Object Storage | Scality S3 Connector | 7.10.6.7 | 7.10.6.7 |
 | Container | [SingularityPRO](containers.md#singularity) | 3.9-10 | 3.9-10 |
 | | Singularity Endpoint | 2.1.5 | 2.1.5 |
