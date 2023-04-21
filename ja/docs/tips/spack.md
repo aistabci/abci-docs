@@ -37,7 +37,16 @@ GitHubからcloneし、使用するバージョンをcheckoutすることで、S
 
 #### コンパイラの登録 {#adding-compilers}
 
-Spackで使用するコンパイラをSpackに登録します。
+Spackで使用するコンパイラを`spack compiler find`コマンドでSpackに登録します。
+
+```Console
+[username@es1 ~]$ spack compiler find
+==> Added 2 new compilers to ${HOME}/.spack/linux/compilers.yaml
+    gcc@8.5.0  clang@13.0.1
+==> Compilers are defined in the following files:
+    ${HOME}/.spack/linux/compilers.yaml
+```
+
 登録されたコンパイラは`spack compiler list`コマンドで確認できます。
 
 GCC 8.5.0は標準のパス（/usr/bin）に入っているため、Spackが自動的に見つけます。
@@ -68,7 +77,7 @@ gcc@12.2.0  gcc@8.5.0
 
 ```Console
 [username@es-a1 ~]$ cp /apps/spack/anode/compilers.yaml ${HOME}/.spack/linux/
-[username@es-a1 ~]:$ spack compiler list
+[username@es-a1 ~]$ spack compiler list
 ==> Available compilers
 -- gcc rhel8-x86_64 ---------------------------------------------
 gcc@12.2.0  gcc@8.3.1

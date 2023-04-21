@@ -37,9 +37,19 @@ After that, you can use Spack by loading a setup shell script.
 
 #### Adding Compilers {#adding-compilers}
 
-First, you have to register compilers you want to use in Spack.
+First, register the compiler to be used in Spack by `spack compiler find` command.
 
-`spack compiler list` command automatically detects and registers compilers which are located in the default path (/usr/bin).
+```Console
+[username@es1 ~]$ spack compiler find
+==> Added 2 new compilers to ${HOME}/.spack/linux/compilers.yaml
+    gcc@8.5.0  clang@13.0.1
+==> Compilers are defined in the following files:
+    ${HOME}/.spack/linux/compilers.yaml
+```
+
+`spack compiler list` command shows registered compilers.
+
+GCC 8.5.0 is located in the default path (/usr/bin), so automatically detected and registered.
 
 ```Console
 [username@es1 ~]$ spack compiler list
@@ -65,7 +75,7 @@ Compute Node (A)
 
 ```Console
 [username@es-a1 ~]$ cp /apps/spack/anode/compilers.yaml ${HOME}/.spack/linux/
-[username@es-a1 ~]:$ spack compiler list
+[username@es-a1 ~]$ spack compiler list
 ==> Available compilers
 -- gcc rhel8-x86_64 ---------------------------------------------
 gcc@12.2.0  gcc@8.3.1
