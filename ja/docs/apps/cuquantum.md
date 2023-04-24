@@ -1,5 +1,5 @@
 
-# NVIDIA cuQuantum Appliance
+# cuQuantum Appliance
 
 ## cuQuantum Applianceについて
 
@@ -10,10 +10,10 @@ NVIDIA cuQuantum Applianceは、NVIDIA cuQuantumを簡単に利用できるよ�
 
 本ドキュメントでは、次の流れに沿ってcuQuantum Applianceの使い方について説明します。
 
-* cuQuantum ApplianceをABCIで実行可能なSingularityイメージに変換する。
-* インタラクティブジョブで実行する。
-* IBM Qiskit Aerの状態ベクトルシミュレーションをシングルノード・マルチGPUで実行する。
-* CUDA-aware Open MPIを用いて、状態ベクトルシミュレーションをマルチノード・マルチGPUで実行する。
+1. cuQuantum ApplianceをABCIで実行可能なSingularityイメージに変換する。
+2. インタラクティブジョブで実行する。
+3. IBM Qiskit Aerの状態ベクトルシミュレーションをシングルノード・マルチGPUで実行する。
+4. CUDA-aware Open MPIを用いて、状態ベクトルシミュレーションをマルチノード・マルチGPUで実行する。
 
 ## Singularityイメージの作成
 
