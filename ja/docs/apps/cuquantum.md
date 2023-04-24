@@ -17,7 +17,7 @@ NVIDIA cuQuantum Applianceは、NVIDIA cuQuantumを簡単に利用できるよ�
 
 ## Singularityイメージの作成
 
-NDIVIA NGC以下、NGCという)で公開されているcuQuantum ApplianceのDockerイメージからSingularityイメージを作成します。
+NDIVIA NGC(以下「NGC」という)で公開されているcuQuantum ApplianceのDockerイメージからSingularityイメージを作成します。
 
 まず、singularityproモジュールをロードします。
 
@@ -81,7 +81,7 @@ singularity exec --nv cuquantum-appliance.img mpiexec -n 4 python3 ghz.py
 [username@es1 ~]$ qsub -g grpname job.sh
 ```
 
-ここでは、cuQuantum Applianceのドキュメントに掲載されている[サンプルプログラム](https://docs.nvidia.com/cuda/cuquantum/appliance/qiskit.html#getting-started)を、`ghz.py`として保存したものを実行しています。  
+ここでは、cuQuantum Applianceのドキュメントに掲載されている[サンプルプログラム](https://docs.nvidia.com/cuda/cuquantum/appliance/qiskit.html#getting-started)を、`ghz.py`として保存したものを実行しています。
 
 ```python
 from qiskit import QuantumCircuit, transpile
@@ -140,17 +140,17 @@ SpackをGitHubからcloneし、使用するバージョンをcheckoutします�
 以降はターミナル上で、Spackを有効化するスクリプトを読み込めば、Spackが使えます。
 
 ```
-[username@es2 spack]$ source ${HOME}/spack/share/spack/setup-env.sh
+[username@es1 ~]$ source ${HOME}/spack/share/spack/setup-env.sh
 ```
 
 次に、コンパイラを見つけます。
 
 ```
-[username@es2 spack]$ spack compiler find
-==> Added 3 new compilers to /home/<username>/.spack/linux/compilers.yaml
-    gcc@11.2.0  gcc@4.8.5  gcc@4.4.7
+[username@es1 ~]$ spack compiler find
+==> Added 2 new compilers to /home/username/.spack/linux/compilers.yaml
+    gcc@8.5.0  clang@13.0.1
 ==> Compilers are defined in the following files:
-    /home/<username>/.spack/linux/compilers.yaml
+    /home/username/.spack/linux/compilers.yaml
 ```
 
 #### ABCIソフトウェアの登録
@@ -204,7 +204,7 @@ Vノード2台を用いたジョブスクリプト例を示します。
 source /etc/profile.d/modules.sh
 module load singularitypro
 source ${HOME}/spack/share/spack/setup-env.sh
-spack load openmpi@4.1.4 
+spack load openmpi@4.1.4
 export UCX_WARN_UNUSED_ENV_VARS=n # suppress UCX warning
 MPIOPTS="-np 8 -map-by ppr:4:node -hostfile $SGE_JOB_HOSTLIST"
 mpiexec $MPIOPTS  singularity exec --nv cuquantum-appliance.img python3 ghz_mpi.py
@@ -212,7 +212,7 @@ mpiexec $MPIOPTS  singularity exec --nv cuquantum-appliance.img python3 ghz_mpi.
 [username@es1 ~]$ qsub -g grpname job.sh
 ```
 
-ここでは、cuQuantum Applianceのドキュメントに掲載されている[サンプルプログラム](https://docs.nvidia.com/cuda/cuquantum/appliance/cusvaer.html#mpi4py-label)を、ghz_mpi.py として保存したものを実行しています。 
+ここでは、cuQuantum Applianceのドキュメントに掲載されている[サンプルプログラム](https://docs.nvidia.com/cuda/cuquantum/appliance/cusvaer.html#mpi4py-label)を、ghz_mpi.py として保存したものを実行しています。
 
 ```python
 from qiskit import QuantumCircuit, transpile
@@ -223,7 +223,7 @@ from mpi4py import MPI
 options = {
   'cusvaer_global_index_bits': [2, 1],
   'cusvaer_p2p_device_bits': 2,
-  'precision': 'single'         
+  'precision': 'single'
 }
 
 def create_ghz_circuit(n_qubits):
@@ -266,15 +266,13 @@ Result: rank: 0, size: 8
 options = {
   'cusvaer_global_index_bits': [2, 1],
   'cusvaer_p2p_device_bits': 2,
-  'precision': 'single'         
+  'precision': 'single' 
 }
 ```
 
-
-
 #### cusvaer_global_index_bits
 
-cusvaer_global_index_bitsはノード間のネットワーク構造を表す正の整数のリストです。
+`cusvaer_global_index_bits`オプションは、ノード間のネットワーク構造を表す正の整数のリストです。
 
 クラスタ内で8ノードが高速通信を行うと仮定し、32ノードのシミュレーションを行った場合、cusvaer_global_index_bitsの値は`[3, 2]`です。
 最初の3は`log2(8)`で、高速通信を行う8ノードを表し、状態ベクトルの3量子ビットに相当します。
@@ -289,7 +287,7 @@ Vノードを2ノード起動していますので、2つの4ノードグルー�
 
 #### cusvaer_p2p_device_bits
 
-cusvaer_p2p_device_bitsオプションは、GPUDirect P2Pを使用して通信できるGPUの数を指定します。
+`cusvaer_p2p_device_bits`オプションは、GPUDirect P2Pを使用して通信できるGPUの数を指定します。
 
 計算ノード(V)は、1ノードにGPUが4台搭載されていますので、`'cusvaer_p2p_device_bits': 2` となります。
 計算ノード(A)などの8GPUノードの場合、`log2(8) = 3`となります。
