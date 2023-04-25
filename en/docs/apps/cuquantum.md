@@ -11,21 +11,20 @@ The NVIDIA cuQuantum Appliance is a containerized software that makes it easy to
 This document explains how to use cuQuantum Appliance according to the following flow.
 
 1. Convert cuQuantum Appliance to Singularity image executable by ABCI.
-2. Run it in an interactive job.
-3. Run IBM Qiskit Aer state vector simulations on a single node and multiple GPUs.
-4. Run state vector simulations with CUDA-aware Open MPI on multi-node multi-GPUs.
+2. Run IBM Qiskit Aer state vector simulations on a single node and multiple GPUs.
+3. Run state vector simulations with CUDA-aware Open MPI on multi-node multi-GPUs.
 
 ## Creating Singularity Images
 
 Create a Singularity image from the cuQuantum Appliance Docker image available at NVIDIA NGC (hereafter referred to as NGC).
 
-First, load the singularitypro module.
+First, submit an interactive job and log in to the computation node.
+After logging into the compute node, load the `singularitypro` module.
 
 ```
 [username@es1 ~]$ qrsh -g grpname -l rt_F=1 -l h_rt=1:00:00
 [username@g0001 ~]$ module load singularitypro
 ```
-
 
 Next, pull the cuQuantum Appliance Docker image provided by NGC as `cuquantum-appliance.img` (any name).
 
@@ -37,13 +36,9 @@ The singularity build/pull command uses `/tmp` as the location for temporary fil
 The cuQuantum Appliance is a large container and singularity build/pull on a compute node will fail due to insufficient space in `/tmp`.
 So we set the `SINGULARITY_TMPDIR` environment variable to use local scratch.
 
-## Execution in interactive jobs
-
-The following is how to use the created Singularity image `cuquantum-appliance.img` from an interactive job.
+The following is how to use the created Singularity image `cuquantum-appliance.img`.
 
 ```
-[username@es1 ~]$ qrsh -g grpname -l rt_F=1 -l h_rt=1:00:00
-[username@g0001 ~]$ module load singularitypro
 [username@g0001 ~]$ singularity run ./cuquantum-appliance.img
 ```
 
@@ -68,20 +63,6 @@ Singularity>
 Open MPI is installed in the docker container of the cuQuantum Appliance.
 On a single node, simulations can be run on multiple GPUs using it.
 
-```
-[username@es1 ~]$ cat job.sh
-#!/bin/sh
-#$-l rt_F=1
-#$-j y
-#$-cwd
-source /etc/profile.d/modules.sh
-module load singularitypro
-export UCX_WARN_UNUSED_ENV_VARS=n # suppress UCX warning
-singularity exec --nv cuquantum-appliance.img mpiexec -n 4 python3 ghz.py
-
-[username@es1 ~]$ qsub -g grpname job.sh
-```
-
 Here we are running [the sample program](https://docs.nvidia.com/cuda/cuquantum/appliance/qiskit.html#getting-started) from the cuQuantum Appliance documentation, saved as `ghz.py`.
 
 ```python
@@ -105,6 +86,22 @@ result = job.result()
 if result.mpi_rank == 0:
     print(result.get_counts())
     print(f'backend: {result.backend_name}')
+```
+
+Prepare a batch script `job.sh` (any name) and submit the job.
+
+```
+[username@es1 ~]$ cat job.sh
+#!/bin/sh
+#$-l rt_F=1
+#$-j y
+#$-cwd
+source /etc/profile.d/modules.sh
+module load singularitypro
+export UCX_WARN_UNUSED_ENV_VARS=n # suppress UCX warning
+singularity exec --nv cuquantum-appliance.img mpiexec -n 4 python3 ghz.py
+
+[username@es1 ~]$ qsub -g grpname job.sh
 ```
 
 The results are as follows.
@@ -176,16 +173,19 @@ Compute node (A):
 
 #### Installing CUDA-aware Open MPI
 
-!!! note
-    Work on a compute node equipped with a GPU.
+To perform installation on a compute node equipped with a GPU, submit an interactive job and log in to the compute node.
+
+```
+[username@es1 ~]$ qrsh -g grpname -l rt_F=1 -l h_rt=1:00:00
+```
 
 Install CUDA and UCX, the communication library required by cuQuantum Appliance, specifying the version.
 
 ```
+[username@g0001 ~]$ source ${HOME}/spack/share/spack/setup-env.sh
 [username@g0001 ~]$ spack install cuda@11.8.0
 [username@g0001 ~]$ spack install ucx@1.13.1
 ```
-
 
 Install Open MPI with CUDA-aware. Specify `SGE` as the scheduler and `UCX` as the communication library.
 
@@ -194,25 +194,6 @@ Install Open MPI with CUDA-aware. Specify `SGE` as the scheduler and `UCX` as th
 ```
 
 ### Execution in batch jobs
-
-An example job script using two compute nodes (V) is shown below.
-
-```
-[username@es1 ~]$ cat job.sh
-#!/bin/sh
-#$-l rt_F=2
-#$-j y
-#$-cwd
-source /etc/profile.d/modules.sh
-module load singularitypro
-source ${HOME}/spack/share/spack/setup-env.sh
-spack load openmpi@4.1.4
-export UCX_WARN_UNUSED_ENV_VARS=n # suppress UCX warning
-MPIOPTS="-np 8 -map-by ppr:4:node -hostfile $SGE_JOB_HOSTLIST"
-mpiexec $MPIOPTS  singularity exec --nv cuquantum-appliance.img python3 ghz_mpi.py
-
-[username@es1 ~]$ qsub -g grpname job.sh
-```
 
 Here we are running [the sample program](https://docs.nvidia.com/cuda/cuquantum/appliance/cusvaer.html#mpi4py-label) from the cuQuantum Appliance documentation, saved as `ghz_mpi.py`.
 
@@ -248,6 +229,25 @@ result = job.result()
 print(f"Result: rank: {result.mpi_rank}, size: {result.num_mpi_processes}")
 ```
 
+Prepare a job script `job.sh` (any name) using two computation nodes and submit the job.
+
+```
+[username@es1 ~]$ cat job.sh
+#!/bin/sh
+#$-l rt_F=2
+#$-j y
+#$-cwd
+source /etc/profile.d/modules.sh
+module load singularitypro
+source ${HOME}/spack/share/spack/setup-env.sh
+spack load openmpi@4.1.4
+export UCX_WARN_UNUSED_ENV_VARS=n # suppress UCX warning
+MPIOPTS="-np 8 -map-by ppr:4:node -hostfile $SGE_JOB_HOSTLIST"
+mpiexec $MPIOPTS  singularity exec --nv cuquantum-appliance.img python3 ghz_mpi.py
+
+[username@es1 ~]$ qsub -g grpname job.sh
+```
+
 The results are as follows.
 
 ```
@@ -273,12 +273,12 @@ options = {
 
 #### cusvaer_global_index_bits
 
-`cusvaer_global_index_bits` is a list of positive integers that represents the inter-node network structure.
-
-Assuming 8 nodes has faster communication network in a cluster, and running 32 node simulation, the value of `cusvaer_global_index_bits` is `[3, 2]`.
-The first `3` is log2(8) representing **8** nodes with fast communication which corresponding to 3 qubits in the state vector.
-The second `2` means **4** 8-node groups in 32 nodes.
-The sum of the global_index_bits elements is 5, which means the number of nodes is `32 = 2^5`.
+> `cusvaer_global_index_bits` is a list of positive integers that represents the inter-node network structure.
+>
+> Assuming 8 nodes has faster communication network in a cluster, and running 32 node simulation, the value of `cusvaer_global_index_bits` is `[3, 2]`.
+> The first `3` is log2(8) representing **8** nodes with fast communication which corresponding to 3 qubits in the state vector.
+> The second `2` means **4** 8-node groups in 32 nodes.
+> The sum of the global_index_bits elements is 5, which means the number of nodes is `32 = 2^5`.
 
 In a compute node (V), there are four GPUs per node.
 The 4 nodes in the cluster are communicating at the high speeds mentioned in the description above.
@@ -287,12 +287,13 @@ Therefore, we set `'cusvaer_global_index_bits': [2, 1]`.
 
 #### cusvaer_p2p_device_bits
 
-`cusvaer_p2p_device_bits` option is to specify the number of GPUs that can communicate by using GPUDirect P2P.
+> `cusvaer_p2p_device_bits` option is to specify the number of GPUs that can communicate by using GPUDirect P2P.
+>
+> For 8 GPU node such as DGX A100, the number is log2(8) = 3.
+>
+> The value of `cusvaer_p2p_device_bits` is typically the same as the first element of `cusvaer_global_index_bits` as the GPUDirect P2P network is typically the fastest in a cluster.
 
 For compute nodes (V), `'cusvaer_p2p_device_bits': 2` since there are 4 GPUs on each node.
-For 8 GPU node such as Compute Node (A), the number is `log2(8) = 3`.
-
-The value of `cusvaer_p2p_device_bits` is typically the same as the first element of `cusvaer_global_index_bits` as the GPUDirect P2P network is typically the fastest in a cluster.
 
 Also, for the calculation precision, `'precision': 'single'` is used, and `complex64` is used.
 
