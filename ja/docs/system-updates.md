@@ -63,7 +63,7 @@
 | Update | aws-cli | 2.11 | 2.4 |
 | Delete | fuse-sshfs | 3.7.2 |  |
 | Update | SingularityPRO | 3.9-10 | 3.9-9 |
-| Update | Singularityエンドポイント | 2.1.5 | 1.7.2 |
+| Update | Singularity Enterprise | 2.1.5 | 1.7.2 |
 | Update | DDN Lustre | 2.12.8_ddn23 | 2.12.8_ddn10 |
 | Update | Scality S3 Connector | 7.10.6.7 | 7.10.2.2 |
 | Update | BeeOND | 7.3.3 | 7.2.3 |
