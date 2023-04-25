@@ -3,10 +3,10 @@
 
 ## About cuQuantum Appliance
 
-NVIDIA cuQuantum is a software development kit that enables acceleration of quantum circuit simulations on GPUs.
+[NVIDIA cuQuantum](https://developer.nvidia.com/cuquantum-sdk) is a software development kit that enables acceleration of quantum circuit simulations on GPUs.
 It supports IBM Qiskit Aer and Google Cirq qsim as quantum circuit simulation frameworks.
 
-The NVIDIA cuQuantum Appliance is a containerized software that makes it easy to use NVIDIA cuQuantum and enables execution of quantum circuit simulations using multiple GPUs and nodes.
+[The NVIDIA cuQuantum Appliance](https://catalog.ngc.nvidia.com/orgs/nvidia/containers/cuquantum-appliance) is a containerized software that makes it easy to use NVIDIA cuQuantum and enables execution of quantum circuit simulations using multiple GPUs and nodes.
 
 This document explains how to use cuQuantum Appliance according to the following flow.
 

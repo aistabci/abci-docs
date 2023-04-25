@@ -3,10 +3,10 @@
 
 ## cuQuantum Applianceについて
 
-NVIDIA cuQuantumは、量子回路シミュレーションをGPUで加速できるソフトウェア開発キットです。
+[NVIDIA cuQuantum](https://developer.nvidia.com/cuquantum-sdk)は、量子回路シミュレーションをGPUで加速できるソフトウェア開発キットです。
 量子回路シミュレーションとしては、IBM Qiskit Aer、Google Cirq qsimに対応しています。
 
-NVIDIA cuQuantum Applianceは、NVIDIA cuQuantumを簡単に利用できるようデプロイ可能なソフトウェアとしてコンテナ化されたもので、複数のGPUと複数のノードを活用して量子回路シミュレーションを実行することができます。
+[NVIDIA cuQuantum Appliance](https://catalog.ngc.nvidia.com/orgs/nvidia/containers/cuquantum-appliance)は、NVIDIA cuQuantumを簡単に利用できるようデプロイ可能なソフトウェアとしてコンテナ化されたもので、複数のGPUと複数のノードを活用して量子回路シミュレーションを実行することができます。
 
 本ドキュメントでは、次の流れに沿ってcuQuantum Applianceの使い方について説明します。
 
