@@ -141,33 +141,25 @@ After that, you can use Spack by loading the script that activates Spack on the 
 [username@es1 ~]$ source ${HOME}/spack/share/spack/setup-env.sh
 ```
 
-Next, find a compiler.
+Next, create a directory in which to place the configuration files.
 
 ```
-[username@es1 ~]$ spack compiler find
-==> Added 2 new compilers to /home/username/.spack/linux/compilers.yaml
-    gcc@8.5.0  clang@13.0.1
-==> Compilers are defined in the following files:
-    /home/username/.spack/linux/compilers.yaml
+[username@es1 ~]$ mkdir -p ${HOME}/.spack/$(spack arch --platform)
 ```
 
-#### Refer to the software in ABCI
+Finally, configure the software ABCI provide, depending on the compute nodes that will use Spack.
 
-Spack resolves software dependencies and automatically installs dependent software as well.
-Since this is a waste of disk space, set up the software provided by ABCI to be referenced by Spack.
-
-The configuration for the software referenced by Spack is defined in `$HOME/.spack/linux/packages.yaml`.
-By copying the configuration file (packages.yaml) that includes settings for software such as CUDA and cmake provided by ABCI to the user environment, and setting it to reference ABCI's software.
-
-Compute node (V):
+Compute Node(V):
 
 ```
+[username@es1 ~]$ cp /apps/spack/vnode/compilers.yaml ${HOME}/.spack/linux/
 [username@es1 ~]$ cp /apps/spack/vnode/packages.yaml ${HOME}/.spack/linux/
 ```
 
-Compute node (A):
+Compute Node(A):
 
 ```
+[username@es-a1 ~]$ cp /apps/spack/anode/compilers.yaml ${HOME}/.spack/linux/
 [username@es-a1 ~]$ cp /apps/spack/anode/packages.yaml ${HOME}/.spack/linux/
 ```
 
@@ -180,6 +172,12 @@ To perform installation on a compute node equipped with a GPU, submit an interac
 ```
 
 Install CUDA and UCX, the communication library required by cuQuantum Appliance, specifying the version.
+
+!!! note
+    The communication libraries required by the cuQuantum Appliance are listed in [this document](https://docs.nvidia.com/cuda/cuquantum/appliance/cusvaer.html?highlight=ucx#mpi-libraries) and version 23.03 requires the following libraries, versions:
+
+    * Open MPI: 4.1.4
+    * UCX: 1.13.1
 
 ```
 [username@g0001 ~]$ source ${HOME}/spack/share/spack/setup-env.sh
@@ -304,4 +302,3 @@ For more information on options, see [cuQuantum Appliance documentation](https:/
 
 1. [NVIDIA cuQuantum Appliance](https://docs.nvidia.com/cuda/cuquantum/appliance/index.html)
 2. [Best-in-Class Quantum Circuit Simulation at Scale with NVIDIA cuQuantum Appliance](https://developer.nvidia.com/blog/best-in-class-quantum-circuit-simulation-at-scale-with-nvidia-cuquantum-appliance/)
-3. [Software Management by Spack](../tips/spack.md)

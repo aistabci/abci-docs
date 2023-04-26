@@ -141,33 +141,25 @@ SpackをGitHubからcloneし、使用するバージョンをcheckoutします�
 [username@es1 ~]$ source ${HOME}/spack/share/spack/setup-env.sh
 ```
 
-次に、コンパイラを見つけます。
+次に、設定ファイルを置くディレクトリを作成します。
 
 ```
-[username@es1 ~]$ spack compiler find
-==> Added 2 new compilers to /home/username/.spack/linux/compilers.yaml
-    gcc@8.5.0  clang@13.0.1
-==> Compilers are defined in the following files:
-    /home/username/.spack/linux/compilers.yaml
+[username@es1 ~]$ mkdir -p ${HOME}/.spack/$(spack arch --platform)
 ```
 
-#### ABCIソフトウェアの登録
-
-Spackはソフトウェアの依存関係を解決して、依存するソフトウェアも自動的にインストールします。
-ディスクスペースの浪費となりますので、ABCIが提供するソフトウェアは、Spackから参照するように設定します。
-
-Spackが参照するソフトウェアの設定は`$HOME/.spack/linux/packages.yaml`に定義します。
-ABCIで提供するCUDA、cmake等の設定を記載した設定ファイル(packages.yaml)をユーザ環境にコピーすることでABCIのソフトウェアを参照することができます。
+最後に、Spackを使用する計算ノードに応じて、ABCIが提供するソフトウェアを設定します。
 
 計算ノード(V):
 
 ```
+[username@es1 ~]$ cp /apps/spack/vnode/compilers.yaml ${HOME}/.spack/linux/
 [username@es1 ~]$ cp /apps/spack/vnode/packages.yaml ${HOME}/.spack/linux/
 ```
 
 計算ノード(A):
 
 ```
+[username@es-a1 ~]$ cp /apps/spack/anode/compilers.yaml ${HOME}/.spack/linux/
 [username@es-a1 ~]$ cp /apps/spack/anode/packages.yaml ${HOME}/.spack/linux/
 ```
 
@@ -180,6 +172,12 @@ GPUを搭載する計算ノード上でインストール作業を行うため�
 ```
 
 CUDAとcuQuantum Applianceが必要とする通信ライブラリUCXを、バージョンを指定してインストールします。
+
+!!! note
+    cuQuantum Applianceが必要とする通信ライブラリは[このドキュメント](https://docs.nvidia.com/cuda/cuquantum/appliance/cusvaer.html?highlight=ucx#mpi-libraries)に記載があり、バージョン23.03は次のライブラリ、バージョンを必要とします。
+
+    * Open MPI: 4.1.4
+    * UCX: 1.13.1
 
 ```
 [username@g0001 ~]$ source ${HOME}/spack/share/spack/setup-env.sh
@@ -308,4 +306,3 @@ options = {
 
 1. [NVIDIA cuQuantum Appliance](https://docs.nvidia.com/cuda/cuquantum/appliance/index.html)
 2. [NVIDIA cuQuantum Appliance で大規模にクラス最高の量子回路シミュレーションを実現](https://developer.nvidia.com/ja-jp/blog/best-in-class-quantum-circuit-simulation-at-scale-with-nvidia-cuquantum-appliance/)
-3. [ABCI 2.0 User Guide | Spackによるソフトウェア管理](https://docs.abci.ai/ja/tips/spack/)
