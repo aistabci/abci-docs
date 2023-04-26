@@ -393,7 +393,7 @@ Spackでは、同一ソフトウェアを異なる設定で複数インストー
 
 #### 使い方 {#how-to-use}
 
-「CCUDA 11.8.0を使用するOpenMPI 4.1.4」を使う場合の利用方法を説明します。
+「CUDA 11.8.0を使用するOpenMPI 4.1.4」を使う場合の利用方法を説明します。
 
 `spack load`実行時にOpenMPIのバージョン並びにCUDAの依存関係を指定することで、特定のバージョンを利用することが可能です。
 
@@ -502,9 +502,9 @@ mpiexec -n ${NMPIPROC} -map-by ppr:${NPPN}:node dbcast $SRC_FILE $DST_FILE
 ```
 
 
-### ソフトウェア環境からのSinguarityイメージの作成手順 {#build-singularity-image-from-environment}
+### ソフトウェア環境からのSingularityイメージの作成手順 {#build-singularity-image-from-environment}
 
-[ソフトウェア環境の定義と利用](#using-environments)で作成した環境を用いてSingurarityのイメージを作成することが可能です。
+[ソフトウェア環境の定義と利用](#using-environments)で作成した環境を用いてSingularityのイメージを作成することが可能です。
 ここではmyenvという名前のSpack環境を用いてCUDA-awareのOpenMPIをインストールし、Singularityイメージを作成する例を示します。
 
 ```Console

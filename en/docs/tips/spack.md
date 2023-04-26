@@ -155,7 +155,7 @@ gcc@12.2.0  gcc@8.3.1
 `compiler info` sub-command shows the detail of a specific compiler.
 
 ```Console
-sername@es1 ~]$ spack compiler info gcc@8.5.0
+[username@es1 ~]$ spack compiler info gcc@8.5.0
 gcc@8.5.0:
         paths:
              cc = /usr/bin/gcc
@@ -279,7 +279,7 @@ Description:
 (snip)
 ```
 
-`versions` sub-command shows avaitable versions for a specific software.
+`versions` sub-command shows available versions for a specific software.
 
 ```Console
 [username@es1 ~]$ spack versions openmpi
