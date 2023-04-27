@@ -279,6 +279,8 @@ options = {
 > 最初の3は`log2(8)`で、高速通信を行う8ノードを表し、状態ベクトルの3量子ビットに相当します。
 > 2番目の2は、32ノードの中に4つの8ノードグループがあることを意味します。
 > global_index_bitsの要素の合計は5であり、これはノードの数が`32 = 2^5`であることを意味します。
+> 
+> <cite>[cusvaer &mdash; NVIDIA cuQuantum 23.03.0 documentation](https://docs.nvidia.com/cuda/cuquantum/appliance/cusvaer.html#cusvaer-global-index-bits)</cite>より、翻訳して引用
 
 計算ノード(V)では、1ノードにGPUが4台搭載されています。
 ここで言われているクラスタ内で4ノードが高速通信をしています。
@@ -292,8 +294,9 @@ options = {
 >
 > DGX A100などの8GPUノードの場合、`log2(8) = 3`となります。
 >
-> GPUDirectのP2Pネットワークはクラスタ内で最も高速であるため、cusvaer_p2p_device_bitsの値は通常、cusvaer_global_index_bitsの最初の要
-素と同じです。
+> GPUDirectのP2Pネットワークはクラスタ内で最も高速であるため、cusvaer_p2p_device_bitsの値は通常、cusvaer_global_index_bitsの最初の要素と同じです。
+>
+> <cite>[cusvaer &mdash; NVIDIA cuQuantum 23.03.0 documentation](https://docs.nvidia.com/cuda/cuquantum/appliance/cusvaer.html#cusvaer-p2p-device-bits)</cite>より、翻訳して引用
 
 計算ノード(V)は、1ノードにGPUが4台搭載されているので、`'cusvaer_p2p_device_bits': 2` となります。
 

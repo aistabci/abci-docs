@@ -277,6 +277,8 @@ options = {
 > The first `3` is log2(8) representing **8** nodes with fast communication which corresponding to 3 qubits in the state vector.
 > The second `2` means **4** 8-node groups in 32 nodes.
 > The sum of the global_index_bits elements is 5, which means the number of nodes is `32 = 2^5`.
+> 
+> <cite>[cusvaer &mdash; NVIDIA cuQuantum 23.03.0 documentation](https://docs.nvidia.com/cuda/cuquantum/appliance/cusvaer.html#cusvaer-global-index-bits)</cite>
 
 In a compute node (V), there are four GPUs per node.
 The 4 nodes in the cluster are communicating at the high speeds mentioned in the description above.
@@ -290,6 +292,8 @@ Therefore, we set `'cusvaer_global_index_bits': [2, 1]`.
 > For 8 GPU node such as DGX A100, the number is log2(8) = 3.
 >
 > The value of `cusvaer_p2p_device_bits` is typically the same as the first element of `cusvaer_global_index_bits` as the GPUDirect P2P network is typically the fastest in a cluster.
+> 
+> <cite>[cusvaer &mdash; NVIDIA cuQuantum 23.03.0 documentation](https://docs.nvidia.com/cuda/cuquantum/appliance/cusvaer.html#cusvaer-p2p-device-bits)</cite>
 
 For compute nodes (V), `'cusvaer_p2p_device_bits': 2` since there are 4 GPUs on each node.
 
