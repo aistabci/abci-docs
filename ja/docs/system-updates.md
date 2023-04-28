@@ -1,11 +1,11 @@
 # システム更新履歴
 
-## 2023-04-07 更新予定 {#2023-04-06}
+## 2023-04-07 {#2023-04-07}
 
-* 計算ノード(V)とインタラクティブノード(V)のOSを***CentOS 7***から***Rocky Linux 8***へ変更します。
+* 計算ノード(V)とインタラクティブノード(V)のOSを***CentOS 7***から***Rocky Linux 8***へ変更しました。
     * 本変更に伴い、プログラムの再コンパイルやPython仮想環境の再構築が必要になります。
 
-* 下記は2023年3月末日でサポートを終了します。
+* 下記は2023年3月末日でサポートを終了しました。
   終了したモジュールについては、コンテナイメージの利用もしくは、[過去のABCI Environment Modules](faq.md#q-how-to-use-previous-abci-environment-modules)をご利用ください。
   詳しくは、Tipsの[提供を終了したモジュールとその代替手段](tips/modules-removed-and-alternatives.md)を参照してください。
     * Compilers：PGI
@@ -15,27 +15,34 @@
     * Utilities：fuse-sshfs
     * コンテナエンジン：Docker
 
-* ABCIグループ領域のinode数上限値が設定されます。
+* ABCIグループ毎の最大同時予約可能ノード数を設定しました。
+    * 計算ノード(V) の ABCIグループ毎の最大同時予約可能ノード数: 272ノード
+    * 計算ノード(A) の ABCIグループ毎の最大同時予約可能ノード数: 30ノード
+
+* ABCIグループ領域のinode数上限値が設定されました。
     * 2023年度4月からABCIグループ領域のinode使用数について、上限値として2億個を設定します。
     * inode使用数の確認方法については [ディスククォータの確認](getting-started.md#checking-disk-quota)を参照ください。
 
-* ABCI Singularity エンドポイントのアップデートを行います。
+* ABCI Singularity エンドポイントのアップデートを行いました。
     * 本アップデートに伴い、アクセストークンの再作成が必要となります。
-    * 本アップデートに伴い、SingularityPRO Enterpriseプラグインが利用可能となります。それに伴い重複する機能である以下のコマンドを廃止します。
+    * 本アップデートに伴い、SingularityPRO Enterpriseプラグインが利用可能となります。それに伴い重複する機能である以下のコマンドを廃止しました。
         * list_singularity_images
         * revoke_singularity_token
 
 * ABCI利用者ポータルの更新
-    * 特定類型該当性に関する申告書について、下記の機能が追加されます。
+    * 特定類型該当性に関する申告書について、下記の機能が追加されました。
         * 「日本の学生等」の 「特定類型該当性に関する申告書」 を利用者ポータルから申請できます。
         * 「日本の学生等」と「非居住者」以外のすべての利用者が、利用者ポータルから「特定類型該当性に関する申告」 を申請できます。（注：「特定類型該当性に関する申告」 を申請していない利用者は、ABCIを利用できません。）
-    * 公開鍵操作について、下記の機能が追加されます。
+    * 公開鍵操作について、下記の機能が追加されました。
         * ABCIグループの利用責任者・管理者がABCIグループの利用者の公開鍵の操作履歴を参照できます。
         * ABCIグループに所属する利用者が公開鍵を登録・削除した際に、ABCIグループの利用責任者・管理者へ通知メールが送られます。デフォルトでは通知されません。
 
 | Add / Update / Delete | Software | Version | Previous version |
 |:--|:--|:--|:--|
-| Delete | gcc | 9.3.0 |  |
+| Delete | gcc | 9.3.0 | |
+| Delete | cuda | 9.0.176.1<br>9.1.85.3<br>9.2.148.1<br>10.0.130.1<br>10.1.243<br>11.7.0 | |
+| Delete | cudnn | 7.0.5<br>7.1.4<br>7.2.1<br>7.3.1<br>7.4.2<br>7.5.1 | |
+| Delete | nccl | 2.4.8-1 | |
 | Update | intel | 2023.0.0 | 2022.2.1 |
 | Update | intel-advisor | 2023.0 | 2022.3.1 |
 | Update | intel-inspector | 2023.0 | 2022.3.1 |
@@ -56,7 +63,10 @@
 | Update | aws-cli | 2.11 | 2.4 |
 | Delete | fuse-sshfs | 3.7.2 |  |
 | Update | SingularityPRO | 3.9-10 | 3.9-9 |
-| Update | Singularityエンドポイント | 2.1.5 | 1.7.2 |
+| Update | Singularity Enterprise | 2.1.5 | 1.7.2 |
+| Update | DDN Lustre | 2.12.8_ddn23 | 2.12.8_ddn10 |
+| Update | Scality S3 Connector | 7.10.6.7 | 7.10.2.2 |
+| Update | BeeOND | 7.3.3 | 7.2.3 |
 
 ## 2023-03-08
 
@@ -169,7 +179,7 @@
 
 | Add / Update / Delete | Software | Version | Previous version |
 |:--|:--|:--|:--|
-| Update | Scality S3 Connector | 8.5.2.2 | 7.4.9.3 |
+| Update | Scality S3 Connector | 7.10.2.2 | 7.4.9.3 |
 | Update | SingularityPRO | 3.9-4 | 3.7-4 |
 | Update | DDN Lustre (計算ノード(V)) | 2.12.6_ddn58-1 | 2.12.5_ddn13-1 |
 | Update | OFED (計算ノード(V)) | 5.2-1.0.4.0 | 5.0-2.1.8.0 |

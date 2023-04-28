@@ -39,13 +39,17 @@ pullによるSingularityイメージファイルの作成例）
 
 ```
 [username@es1 ~]$ module load singularitypro
-[username@es1 ~]$ singularity pull caffe2.img docker://caffe2ai/caffe2:latest
+[username@es1 ~]$ export SINGULARITY_TMPDIR=/scratch/$USER
+[username@es1 ~]$ singularity pull tensorflow.img docker://tensorflow/tensorflow:latest-gpu
 INFO:    Converting OCI blobs to SIF format
 INFO:    Starting build...
 ...
-[username@es1 ~]$ ls caffe2.img
-caffe2.img
+[username@es1 ~]$ ls tensorflow.img
+tensorflow.img
 ```
+
+SINGULARITY_TMPDIR環境変数は`pull`や後述する`build`実行時の一時ファイルを作成する場所を指定します。
+詳しくはFAQ [singularity build/pullすると容量不足でエラーになる](faq.md#q-insufficient-disk-space-for-singularity-build)を参照してください。
 
 ### Singularityイメージファイルの作成(build) {#create-a-singularity-image-build}
 
@@ -54,13 +58,13 @@ ABCIシステムのSingularityPRO環境では`fakeroot`オプションを使用�
 !!! note
     SingularityPRO環境ではリモートビルドも利用可能です。詳細は[ABCI Singularity エンドポイント](abci-singularity-endpoint.md)を参照して下さい。
 
-buildによるSingularityイメージファイルの作成例）
+`build`によるSingularityイメージファイルの作成例）
 
 ```
 [username@es1 ~]$ module load singularitypro
 [username@es1 ~]$ cat ubuntu.def
 Bootstrap: docker
-From: ubuntu:18.04
+From: ubuntu:20.04
 
 %post
     apt-get update
@@ -95,9 +99,9 @@ Singularityを利用する場合、ジョブ中に`singularity run`コマンド�
 インタラクティブジョブにおけるSingularityイメージファイルを使用したコンテナの実行例）
 
 ```
-[username@es1 ~]$ qrsh -g grpname -l rt_G.small=1 -l h_rt=1:00:00
+[username@es1 ~]$ qrsh -g grpname -l rt_F=1 -l h_rt=1:00:00
 [username@g0001 ~]$ module load singularitypro
-[username@g0001 ~]$ singularity run ./caffe2.img
+[username@g0001 ~]$ singularity run --nv ./tensorflow.img
 ```
 
 バッチジョブにおけるSingularityイメージファイルを使用したコンテナの実行例）
@@ -108,28 +112,38 @@ Singularityを利用する場合、ジョブ中に`singularity run`コマンド�
 #$-l rt_F=1
 #$-j y
 source /etc/profile.d/modules.sh
-module load singularitypro openmpi/4.0.5
+module load singularitypro
 
-mpiexec -n 4 singularity exec --nv ./caffe2.img \
-    python sample.py
+singularity exec --nv ./tensorflow.img python3 sample.py
 
 [username@es1 ~]$ qsub -g grpname job.sh
 ```
 
 Docker Hubで公開されているコンテナイメージの実行例）
 
-以下の例はDocker Hubで公開されているcaffe2のコンテナイメージを使用しSingularityを実行しています。
-`singularity run`コマンドにより起動したSingularityコンテナ上で`python sample.py`が実行されます。
+以下の例はDocker Hubで公開されているTensorFlowのコンテナイメージを使用しSingularityを実行しています。
+`singularity run`コマンドにより起動したSingularityコンテナ上で`python3 sample.py`を実行します。
 コンテナイメージは初回起動時にダウンロードされ、ホーム領域にキャッシングされます。
 2回目以降の起動はキャッシュされたデータを使用することで起動が高速化されます。
 
 ```
 [username@es1 ~]$ qrsh -g grpname -l rt_F=1 -l h_rt=1:00:00
 [username@g0001 ~]$ module load singularitypro
-[username@g0001 ~]$ singularity run --nv docker://caffe2ai/caffe2:latest
-...
-Singularity> python sample.py
-True
+[username@g0001 ~]$ export SINGULARITY_TMPDIR=$SGE_LOCALDIR
+[username@g0001 ~]$ singularity run --nv docker://tensorflow/tensorflow:latest-gpu
+
+________                               _______________
+___  __/__________________________________  ____/__  /________      __
+__  /  _  _ \_  __ \_  ___/  __ \_  ___/_  /_   __  /_  __ \_ | /| / /
+_  /   /  __/  / / /(__  )/ /_/ /  /   _  __/   _  / / /_/ /_ |/ |/ /
+/_/    \___//_/ /_//____/ \____//_/    /_/      /_/  \____/____/|__/
+
+
+You are running this container as user with ID 10000 and group 10000,
+which should map to the ID and group for your user on the Docker host. Great!
+
+/sbin/ldconfig.real: Can't create temporary cache file /etc/ld.so.cache~: Read-only file system
+Singularity> python3 sample.py
 ```
 
 ### DockerfileからのSingularityイメージファイルの作成方法 {#build-singularity-image-from-dockerfile}
@@ -184,7 +198,7 @@ DockerfileをSingularity recipeファイルに変換することで、ABCIシス
 Singularity Pythonのインストール例）
 
 ```
-[username@es1 ~]$ module load gcc/9.3.0 python/3.10
+[username@es1 ~]$ module load python/3.10
 [username@es1 ~]$ python3 -m venv work
 [username@es1 ~]$ source work/bin/activate
 (work) [username@es1 ~]$ pip3 install spython
@@ -192,12 +206,12 @@ Singularity Pythonのインストール例）
 
 以下の例では、NVIDIA社による[SSD300 v1.1モデル学習用コンテナイメージ](https://github.com/NVIDIA/DeepLearningExamples/tree/master/PyTorch/Detection/SSD)のDockerfileをSingularity recipeファイル（ssd.def）に変換し、正常にイメージを作成できるよう修正します。
 
-Dockerfileから変換しただけでは次の2点の問題が発生するため、それぞれの対処が必要となります。
+変更点)
 
 - WORKDIRにファイルがコピーされない => コピー先をWORKDIRの絶対パスに設定
 
 ```
-[username@es1 ~]$ module load gcc/9.3.0 python/3.10
+[username@es1 ~]$ module load python/3.10
 [username@es1 ~]$ source work/bin/activate
 (work) [username@es1 ~]$ git clone https://github.com/NVIDIA/DeepLearningExamples
 (work) [username@es1 ~]$ cd DeepLearningExamples/PyTorch/Detection/SSD
@@ -205,33 +219,30 @@ Dockerfileから変換しただけでは次の2点の問題が発生するため
 (work) [username@es1 SSD]$ cp -p ssd.def ssd_org.def
 (work) [username@es1 SSD]$ vi ssd.def
 Bootstrap: docker
-From: nvcr.io/nvidia/pytorch:21.05-py3
+From: nvcr.io/nvidia/pytorch:22.10-py3
 Stage: spython-base
 
 %files
 requirements.txt /workspace/ssd/  #<- WORKDIR以下にコピー
 . /workspace/ssd/                 #<- WORKDIR以下にコピー
 %post
-FROM_IMAGE_NAME=nvcr.io/nvidia/pytorch:21.05-py3
+FROM_IMAGE_NAME=nvcr.io/nvidia/pytorch:22.10-py3
 
 # Set working directory
+mkdir -p /workspace/ssd
 cd /workspace/ssd
 
-# Install nv-cocoapi
-COCOAPI_VERSION=2.0+nv0.6.0
-export COCOAPI_TAG=$(echo ${COCOAPI_VERSION} | sed 's/^.*+n//') \
-&& pip install --no-cache-dir pybind11                             \
-&& pip install --no-cache-dir git+https://github.com/NVIDIA/cocoapi.git@${COCOAPI_TAG}#subdirectory=PythonAPI
-# Install dllogger
-pip install --no-cache-dir git+https://github.com/NVIDIA/dllogger.git#egg=dllogger
+# Copy the model files
 
-# Install requirements
-pip install -r requirements.txt
-python3 -m pip install pycocotools==2.0.0
+# Install python requirements
+pip install --no-cache-dir -r requirements.txt
 mkdir models #<- main.py実行時に必要なため追加
 
+CUDNN_V8_API_ENABLED=1
+TORCH_CUDNN_V8_API_ENABLED=1
 %environment
-export COCOAPI_VERSION=2.0+nv0.6.0
+export CUDNN_V8_API_ENABLED=1
+export TORCH_CUDNN_V8_API_ENABLED=1
 %runscript
 cd /workspace/ssd
 exec /bin/bash "$@"
@@ -245,7 +256,7 @@ Singularity recipeファイルからのコンテナイメージの作成方法�
 ### Singularity recipeファイル例
 
 ここでは、Singularityのrecipeファイルの例を示します。
-recipeファイルの詳細については[Singularity](#singularity)のユーザガイドを参照願います。
+recipeファイルの詳細については[Singularity](#singularity)のユーザガイドを参照してください。
 
 #### コンテナイメージ内にローカルファイルを組み込む場合
 
@@ -272,8 +283,8 @@ From: ubuntu:latest
 
     echo "Installing Open MPI"
     export OMPI_DIR=/opt/ompi
-    export OMPI_VERSION=4.0.5
-    export OMPI_URL="https://download.open-mpi.org/release/open-mpi/v4.0/openmpi-$OMPI_VERSION.tar.bz2"
+    export OMPI_VERSION=4.1.5
+    export OMPI_URL="https://download.open-mpi.org/release/open-mpi/v4.1/openmpi-$OMPI_VERSION.tar.bz2"
     mkdir -p /tmp/ompi
     mkdir -p /opt
     # Download
@@ -345,10 +356,10 @@ INFO:    Build complete: openmpi.sif
 [username@g0001 ~]$
 ```
 
-実行例
+実行例)
 ```
-[username@g0001 ~]$ module load singularitypro openmpi/4.0.5
-[username@g0001 ~]$ mpirun -np 4 -map-by node singularity exec openmpi.sif /opt/mpitest
+[username@g0001 ~]$ module load singularitypro hpcx/2.12
+[username@g0001 ~]$ mpirun -hostfile $SGE_JOB_HOSTLIST -np 4 -map-by node singularity exec openmpi.sif /opt/mpitest
 Hello, I am rank 2/4
 Hello, I am rank 3/4
 Hello, I am rank 0/4
@@ -435,63 +446,9 @@ INFO:    Build complete: h2o4gpuPy.sif
 
 実行例
 ```
-[username@g0001 ~]$ module load singularitypro openmpi/4.0.5 cuda/10.2
+[username@g0001 ~]$ module load singularitypro cuda/10.2
 [username@g0001 ~]$ singularity exec --nv h2o4gpuPy.sif python3 h2o4gpu_sample.py
 [[1.  0.5]
  [1.  4. ]]
 [username@g0001 ~]$
 ```
-
-## Docker
-
-!!! warning
-    2022年度の運用において、Dockerコンテナ上でのジョブ実行機能のサポートを廃止する予定です。コンテナを使用したい場合は、Singularityコンテナをジョブ内でご利用ください。
-    また、ABCIが提供しているDockerイメージのメンテナンスも併せて終了します。
-
-ABCIシステムではDockerコンテナ上でのジョブ実行が可能です。
-Dockerを利用する場合、ジョブ投入時に`-l docker`オプションと`-l docker_images`オプションを指定する必要があります。
-
-| オプション | 説明 |
-|:--|:--|
-| -l docker | ジョブをDockerコンテナ上で実行します。 |
-| -l docker_images | 利用するDockerイメージを指定します。 |
-
-!!! warning
-    ABCIシステムでは、メモリインテンシブノードではDockerを利用できません。
-
-利用可能なDockerイメージは`show_docker_images`コマンドで参照可能です。
-
-```
-[username@es1 ~]$ show_docker_images
-REPOSITORY                TAG             IMAGE ID     CREATED       SIZE
-jcm:5000/dhub/ubuntu      latest          113a43faa138 3 weeks ago   81.2MB
-```
-
-!!! warning
-    ABCIシステムでは、システム内で公開されているDockerイメージのみ利用可能です。
-
-Dockerジョブのジョブスクリプト例）
-
-以下のジョブスクリプトでは`python3 ./sample.py`がDockerコンテナ上で実行されます。
-
-```
-[username@es1 ~]$ cat run.sh
-#!/bin/sh
-#$-cwd
-#$-j y
-#$-l rt_F=1
-#$-l docker=1
-#$-l docker_images="*jcm:5000/dhub/ubuntu*"
-
-python3 ./sample.py
-```
-
-Dockerジョブの投入例）
-
-```
-[username@es1 ~]$ qsub -g grpname run.sh
-Your job 12345 ("run.sh") has been submitted
-```
-
-!!! warning
-    Dockerコンテナはノード占有ジョブでのみ利用可能です。

@@ -20,19 +20,37 @@ SingularityPRO has a function equivalent to ``docker login`` that provides authe
 [username@es1 ~]$ singularity pull docker://myregistry.azurecr.io/namespace/repo_name:repo_tag
 ```
 
-For more information on SingularityPRO authentication, see below.
+For more information on SingularityPRO authentication, refer to the following user guide.
 
-* [SingularityPRO 3.7 User Guide](https://repo.sylabs.io/c/0f6898986ad0b646b5ce6deba21781ac62cb7e0a86a5153bbb31732ee6593f43/guides/singularitypro37-user-guide/)
-    * [Making use of private images from Private Registries](https://repo.sylabs.io/c/0f6898986ad0b646b5ce6deba21781ac62cb7e0a86a5153bbb31732ee6593f43/guides/singularitypro37-user-guide/singularity_and_docker.html?highlight=support%20docker%20oci#making-use-of-private-images-from-private-registries)
-
+* [SingularityPRO 3.9 User Guide](https://repo.sylabs.io/guides/pro-3.9/user-guide/index.html)
+    * [Authentication/Private Containers](https://repo.sylabs.io/guides/pro-3.9/user-guide/singularity_and_docker.html#authentication-private-containers)
 
 ## Q. I want to assign multiple compute nodes and have each compute node perform different processing
 
-If you give `-l rt_F=N` or `-l rt_AF=N` option to `qrsh` or `qsub`, you can assign N compute nodes. You can also use MPI if you want to perform different processing on each assigned compute node.
+If you give `-l rt_F=N` or `-l rt_AF=N` option to `qrsh` or `qsub`, you can assign N compute nodes.
+You can use MPI if you want to perform different processing on each assigned compute node.
 
+```shell
+[username@es1 ~]$ qrsh -g grpname -l rt_F=3 -l h_rt=1:00:00
+[username@g0001 ~]$ module load hpcx/2.12
+[username@g0001 ~]$ mpirun -hostfile $SGE_JOB_HOSTLIST -np 1 command1 : -np 1 command2 : -np 1 command3
 ```
-$ module load openmpi/4.1.3
-$ mpirun -hostfile $SGE_JOB_HOSTLIST -np 1 command1 : -np 1 command2 : ... : -np1 commandN
+
+Another option is to enable SSH login to compute nodes, which allows each assigned compute node to perform different operations.
+SSH login access to compute nodes is enabled by specifying the `-l USE_SSH=1` option when executing `qrsh` or `qsub`.
+For more information on the `-l USE_SSH=1` option, see [Appendix. SSH Access to Compute Nodes](appendix/ssh-access.md).
+
+The following is an example of using SSH access to perform different operations on assigned compute nodes.
+
+```shell
+[username@es1 ~]$ qrsh -g grpname -l rt_F=3 -l h_rt=1:00:00 -l USE_SSH=1
+[username@g0001 ~]$ cat $SGE_JOB_HOSTLIST
+g0001
+g0002
+g0003
+[username@g0001 ~]$ ssh -p 2222 g0001 command1 &
+[username@g0001 ~]$ ssh -p 2222 g0002 command2 &
+[username@g0001 ~]$ ssh -p 2222 g0003 command3 &
 ```
 
 ## Q. I want to avoid to close SSH session unexpectedly
@@ -239,10 +257,9 @@ The Compute Node (A) and the Compute Node (V) use different Operating Systems.
 | Node | Operating System |
 |:-|:-|
 | Compute Node (A) | Red Hat Enterprise Linux 8.2 |
-| Compute Node (V) | CentOS Linux 7.5 |
+| Compute Node (V) | Rocky Linux 8.6 |
 
-Since the versions of kernels and libraries such as `glibc` are different, the operation cannot be guaranteed when the program built for the Compute Node (V) is run on the Compute Node (A) as it is.
-
+Rocky Linux and Red Hat Enterprise Linux are compatible, but a program built on one is not guaranteed to work on the other.
 Please rebuild the program for the Compute Node (A) using the Compute Node (A) or the Interactive Node (A) described later.
 
 ### CUDA Version
@@ -278,10 +295,16 @@ ABCI Environment Modules for each year are installed below, so set the path of t
 
 Please note that previous ABCI Environment Modules is not eligible for the ABCI System support.
 
-| ABCI Environment Modules | Installed Path                |
-| ------------------------ | ----------------------------- |
-| 2020 version             | `/apps/modules-abci-1.0`      |
-| 2021 version             | `/apps/modules-abci-2.0-2021` |
+!!! note
+    In FY2023, we changed the operating system for the Compute Node (V) and the Interactive Node (V) from CentOS 7 to Rocky Linux 8.
+    As a result, the previous Environment Modules for CentOS 7 will not work on the new Compute Node (V) and the Interactive Node (V).
+    Please use the Memory-Intensive Node to use the previous Environment Modules for CentOS 7.
+
+| ABCI Environment Modules | Installed Path                | Compute Node (V) | Compute Node (A) | Memory-Intensive Node |
+| ------------------------ | ----------------------------- | ---------------- | ---------------- | --------------------- |
+| 2020 version             | `/apps/modules-abci-1.0`      | -                | -                | Yes                   |
+| 2021 version             | `/apps/modules-abci-2.0-2021` | -                | Yes              | Yes                   |
+| 2022 version             | `/apps/modules-abci-2.0-2022` | -                | Yes              | Yes                   |
 
 The following is an example of using the 2021 version of ABCI Environment Modules.
 
@@ -298,22 +321,4 @@ ch, tcsh:
 setenv MODULE_HOME /apps/modules-abci-2.0-2021
 source ${MODULE_HOME}/etc/profile.d/modules.csh
 ```
-
-## Q. What are the new Group Area and data migration?
-
-In FY2021, we expanded the storage system. Refer to [Storage Systems](https://docs.abci.ai/en/01/#storage-systems) for details.
-As the storage system is expanded, the configuration of the Group Area has been changed, and data have been migrated from the Group Area used until FY2020 (hereinafter referred to as **Old Area**) to the new Group Area (hereinafter referred to as **New Area**). 
-
-The all data in the **Old Area** have been transferred to the **New Area**, then the source paths, were allocated to the **Old Areas** have been replaced with symlinks to the destination directories in the **New Areas**, so that it can be accessed at the same path as the **Old Area**.  
-
-The sources and the destinations of data migration are as follows. 
-
-| Source                               | Destination                                                      |
-|:--                                   |:--                                                               |
-| d002 users'<br/>`/groups[1-2]/gAA50NNN/` | `/projects/datarepository/gAA50NNN/migrated_from_SFA_GPFS/`[^1]  |
-| others'<br/>`/groups[1-2]/gAA50NNN/` | `/groups/gAA50NNN/migrated_from_SFA_GPFS/`                       |
-| `/fs3/d001/gAA50NNN/`                | `/projects/d001/gAA50NNN/migrated_from_SFA_GPFS/`                |
-| `/fs3/d002/gAA50NNN/`                | `/projects/datarepository/gAA50NNN/migrated_from_SFA_GPFS3/`[^1] |
-
-[^1]: As `/fs3/d002` users have multiple migration sources, there are two migration destination directories, `migrated_from_SFA_GPFS/` and `migrated_from_SFA_GPFS3/` . 
 

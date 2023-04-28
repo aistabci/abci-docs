@@ -5,13 +5,13 @@ Spackを使うことにより、同一ソフトウェアをバージョン、設
 ABCI上でSpackを使うことにより、ABCIが標準でサポートしていないソフトウェアを簡単にインストールすることができるようになります。
 
 !!! note
-    動作確認は2020年12月3日にbashで行っており、その時の最新のバージョンである0.16.0を使用しています。
+    動作確認は2023年3月31日にbashで行っており、その時の最新のバージョンである0.19.1を使用しています。
 
 !!! caution
     - Spackは、独自のパッケージフォーマットでパッケージングされたHPC向けのソフトウェアを導入するためのツールであり、Linuxディストリビューションが提供するパッケージとの互換性はありません。そのためyum,aptなどのコマンドの代替として利用することはできません。
 
     - Spackは、Spackをインストールしたディレクトリ以下にソフトウェアをインストールします。多数のソフトウェアを導入すると多くの容量を消費しますので、使わなくなったソフトウェアはアンインストールするなどの管理をしてください。
-
+    
     - 計算ノード(V)と計算ノード(A)はOSが異なるため、本ドキュメントに従ってSpackを導入する場合、一方のノードに対応する設定しか行えません。どちらの計算ノードで使用するか選択しご利用ください。本ドキュメントの例は、計算ノード(V)での結果を表示しております。
 
 
@@ -24,7 +24,7 @@ GitHubからcloneし、使用するバージョンをcheckoutすることで、S
 ```Console
 [username@es1 ~]$ git clone https://github.com/spack/spack.git
 [username@es1 ~]$ cd ./spack
-[username@es1 ~/spack]$ git checkout v0.16.0
+[username@es1 ~/spack]$ git checkout v0.19.1
 ```
 
 以降はターミナル上で、Spackを有効化するスクリプトを読み込めば使えます。
@@ -37,16 +37,28 @@ GitHubからcloneし、使用するバージョンをcheckoutすることで、S
 
 #### コンパイラの登録 {#adding-compilers}
 
-Spackで使用するコンパイラをSpackに登録します。
+Spackで使用するコンパイラを`spack compiler find`コマンドでSpackに登録します。
+
+```Console
+[username@es1 ~]$ spack compiler find
+==> Added 2 new compilers to ${HOME}/.spack/linux/compilers.yaml
+    gcc@8.5.0  clang@13.0.1
+==> Compilers are defined in the following files:
+    ${HOME}/.spack/linux/compilers.yaml
+```
+
 登録されたコンパイラは`spack compiler list`コマンドで確認できます。
 
-GCC 4.4.7と4.8.5は標準のパス（/usr/bin）に入っているため、Spackが自動的に見つけます。
+GCC 8.5.0は標準のパス（/usr/bin）に入っているため、Spackが自動的に見つけます。
 
 ```Console
 [username@es1 ~]$ spack compiler list
 ==> Available compilers
--- gcc centos7-x86_64 -------------------------------------------
-gcc@4.8.5  gcc@4.4.7
+-- clang rocky8-x86_64 ------------------------------------------
+clang@13.0.1
+
+-- gcc rocky8-x86_64 --------------------------------------------
+gcc@8.5.0
 ```
 
 ABCIが提供しているGCCの設定ファイル(compilers.yaml)を配置しておりますので、以下のようにユーザ環境にコピーすることでコンパイラを利用することが可能です。
@@ -57,18 +69,18 @@ ABCIが提供しているGCCの設定ファイル(compilers.yaml)を配置して
 [username@es1 ~]$ cp /apps/spack/vnode/compilers.yaml ${HOME}/.spack/linux/
 [username@es1 ~]$ spack compiler list
 ==> Available compilers
--- gcc centos7-x86_64 -------------------------------------------
-gcc@7.4.0  gcc@4.8.5
+-- gcc rocky8-x86_64 --------------------------------------------
+gcc@12.2.0  gcc@8.5.0
 ```
 
 計算ノード(A)
 
 ```Console
 [username@es-a1 ~]$ cp /apps/spack/anode/compilers.yaml ${HOME}/.spack/linux/
-[username@es-a1 ~]:$ spack compiler list
+[username@es-a1 ~]$ spack compiler list
 ==> Available compilers
 -- gcc rhel8-x86_64 ---------------------------------------------
-gcc@9.3.0  gcc@8.3.1  gcc@7.4.0
+gcc@12.2.0  gcc@8.3.1
 ```
 
 
@@ -76,11 +88,11 @@ gcc@9.3.0  gcc@8.3.1  gcc@7.4.0
 #### ABCIソフトウェアの登録 {#adding-abci-software}
 
 Spackはソフトウェアの依存関係を解決して、依存するソフトウェアも自動的にインストールします。
-標準の設定では、CUDAやOpenMPIなど、ABCIが既に提供しているソフトウェアも利用者ごとにインストールされます。
+標準の設定では、CUDAなど、ABCIが既に提供しているソフトウェアも利用者ごとにインストールされます。
 ディスクスペースの浪費となりますので、ABCIが提供するソフトウェアは、Spackから*参照する*ように設定することをお勧めします。
 
 Spackが参照するソフトウェアの設定は`$HOME/.spack/linux/packages.yaml`に定義します。
-ABCIで提供するCUDA、OpenMPI、cmake等の設定を記載した設定ファイル(packages.yaml)をユーザ環境にコピーすることでABCIのソフトウェアを*参照する*ことができます。
+ABCIで提供するCUDA、cmake等の設定を記載した設定ファイル(packages.yaml)をユーザ環境にコピーすることでABCIのソフトウェアを*参照する*ことができます。
 
 計算ノード(V)
 
@@ -104,23 +116,21 @@ packages:
     buildable: false
     externals:
 (snip)
-    - spec: cuda@10.2.89%gcc@4.8.5
+    - spec: cuda@11.7.1%gcc@8.5.0
       modules:
-      - cuda/10.2/10.2.89
-    - spec: cuda@10.2.89%gcc@7.4.0
+      - cuda/11.7/11.7.1
+    - spec: cuda@11.7.1%gcc@12.2.0
       modules:
-      - cuda/10.2/10.2.89
+      - cuda/11.7/11.7.1
 (snip)
-  openmpi:
+  hpcx-mpi:
     externals:
-    - spec: openmpi@2.1.6%gcc@4.8.5
-      prefix: /apps/openmpi/2.1.6/gcc4.8.5
-    - spec: openmpi@2.1.6%gcc@7.4.0
-      prefix: /apps/openmpi/2.1.6/gcc7.4.0
+    - spec: hpcx@2.11%gcc@8.5.0
+      prefix: /apps/openmpi/2.11/gcc8.5.0
 (snip)
 ```
 
-このファイルを設置すると、例えば、SpackでCUDAのバージョン10.2.89のインストールを実行すると、実際にはインストールはされずに、SpackがEnvironment Modulesの`cuda/10.2/10.2.89`を使用するようになります。
+このファイルを設置すると、例えば、SpackでCUDAのバージョン11.7.1のインストールを実行すると、実際にはインストールはされずに、SpackがEnvironment Modulesの`cuda/11.7/11.7.1`を使用するようになります。
 CUDAセクションで`buildable: false`を指定することにより、Spackはここで指定しているバージョン以外のCUDAをインストールしなくなります。
 ABCIが提供していないバージョンのCUDAをSpackでインストールしたい場合は、この記述を削除してください。
 
@@ -139,29 +149,27 @@ Spackに登録されているコンパイラ一覧は`compiler list`サブコマ
 ```Console
 [username@es1 ~]$ spack compiler list
 ==> Available compilers
--- gcc centos7-x86_64 -------------------------------------------
-gcc@7.4.0  gcc@4.8.5
+-- gcc rhel8-x86_64 ---------------------------------------------
+gcc@12.2.0  gcc@8.3.1
 ```
 
 特定コンパイラの詳細情報を確認するには、`compiler info`サブコマンドを実行します。
 
 ```Console
-[username@es1 ~]$ spack compiler info gcc@4.8.5
-gcc@4.8.5:
-	paths:
-		cc = /usr/bin/gcc
-		cxx = /usr/bin/g++
-		f77 = /usr/bin/gfortran
-		fc = /usr/bin/gfortran
-	Extra rpaths:
-		/usr/lib/gcc/x86_64-redhat-linux/4.8.5
-	modules  = []
-	operating system  = centos7
+[username@es1 ~]$ spack compiler info gcc@8.5.0
+gcc@8.5.0:
+        paths:
+             cc = /usr/bin/gcc
+             cxx = /usr/bin/g++
+             f77 = /usr/bin/gfortran
+             fc = /usr/bin/gfortran
+        modules  = []
+        operating system  = rocky8
 ```
 
 ### ソフトウェア管理関連 {#software-management-operations}
 
-#### インストール {#install}
+#### インストール {#install-openmpi}
 
 OpenMPIのSpack標準バージョンは、以下の通りにインストールできます。
 `schedulers=sge`と`fabrics=auto`の意味は[導入事例](#cuda-aware-openmpi)を参照ください。
@@ -173,14 +181,14 @@ OpenMPIのSpack標準バージョンは、以下の通りにインストール�
 バージョンを指定する場合は、`@`で指定します。
 
 ```Console
-[username@es1 ~]$ spack install openmpi@3.1.4 schedulers=sge fabrics=auto
+[username@es1 ~]$ spack install openmpi@4.1.3 schedulers=sge fabrics=auto
 ```
 
 コンパイラを指定する場合は`%`で指定します。
 以下の例では、コンパイラのバージョンも指定しています。
 
 ```Console
-[username@es1 ~]$ spack install openmpi@3.1.4 %gcc@7.4.0 schedulers=sge fabrics=auto
+[username@es1 ~]$ spack install openmpi@4.1.3 %gcc@12.2.0 schedulers=sge fabrics=auto
 ```
 
 #### アンインストール {#uninstall}
@@ -222,12 +230,16 @@ abyss
 
 ```Console
 [username@es1 ~]$ spack list mpi
-==> 21 packages.
-compiz       mpifileutils  mpix-launch-swift  r-rmpi        vampirtrace
-fujitsu-mpi  mpilander     openmpi            rempi
-intel-mpi    mpileaks      pbmpi              spectrum-mpi
-mpibash      mpip          pnmpi              sst-dumpi
-mpich        mpir          py-mpi4py          umpire
+compiz                          intel-oneapi-mpi  mpir               r-rmpi
+cray-mpich                      mpi-bash          mpitrampoline      rempi
+exempi                          mpi-serial        mpiwrapper         rkt-compiler-lib
+fujitsu-mpi                     mpibind           mpix-launch-swift  spectrum-mpi
+hpcx-mpi                        mpich             openmpi            spiral-package-mpi
+intel-mpi                       mpifileutils      pbmpi              sst-dumpi
+intel-mpi-benchmarks            mpilander         phylobayesmpi      umpire
+intel-oneapi-compilers          mpileaks          pnmpi              vampirtrace
+intel-oneapi-compilers-classic  mpip              py-mpi4py          wi4mpi
+==> 36 packages
 ```
 
 インストールしたソフトウェア一覧は`find`サブコマンドで確認できます。
@@ -235,7 +247,7 @@ mpich        mpir          py-mpi4py          umpire
 ```Console
 [username@es1 ~]$ spack find
 ==> 49 installed packages
--- linux-centos7-haswell / gcc@4.8.5 ----------------------------
+-- linux-rocky8-skylake_avx512 / gcc@8.5.0 ----------------------------
 autoconf@2.69    gdbm@1.18.1          libxml2@2.9.9  readline@8.0
 (snip)
 ```
@@ -244,15 +256,15 @@ autoconf@2.69    gdbm@1.18.1          libxml2@2.9.9  readline@8.0
 
 ```Console
 [username@es1 ~]$ spack find -dl openmpi
--- linux-centos7-skylake_avx512 / gcc@7.4.0 ---------------------
-6pxjftg openmpi@3.1.1
-ahftjey     hwloc@1.11.11
-vf52amo         cuda@9.0.176.4
+-- linux-rocky8-skylake_avx512 / gcc@8.5.0 ---------------------
+6pxjftg openmpi@4.1.4
+ahftjey     hwloc@2.8.0
+vf52amo         cuda@11.8.0
 edtwt6g         libpciaccess@0.16
-bt74u75         libxml2@2.9.10
+bt74u75         libxml2@2.10.1
 qazxaa4             libiconv@1.16
-jb22kvg             xz@5.2.5
-pkmj6e7             zlib@1.2.11
+jb22kvg             xz@5.2.7
+pkmj6e7             zlib@1.2.13
 2dq7ece         numactl@2.0.14
 ```
 
@@ -273,15 +285,17 @@ Description:
 ```Console
 [username@es1 ~]$ spack versions openmpi
 ==> Safe versions (already checksummed):
-  develop  3.0.3  2.1.1   1.10.5  1.8.5  1.7.2  1.5.5  1.4.2  1.2.8  1.1.5
-  4.0.1    3.0.2  2.1.0   1.10.4  1.8.4  1.7.1  1.5.4  1.4.1  1.2.7  1.1.4
-  4.0.0    3.0.1  2.0.4   1.10.3  1.8.3  1.7    1.5.3  1.4    1.2.6  1.1.3
-  3.1.4    3.0.0  2.0.3   1.10.2  1.8.2  1.6.5  1.5.2  1.3.4  1.2.5  1.1.2
-  3.1.3    2.1.6  2.0.2   1.10.1  1.8.1  1.6.4  1.5.1  1.3.3  1.2.4  1.1.1
-  3.1.2    2.1.5  2.0.1   1.10.0  1.8    1.6.3  1.5    1.3.2  1.2.3  1.1
-  3.1.1    2.1.4  2.0.0   1.8.8   1.7.5  1.6.2  1.4.5  1.3.1  1.2.2  1.0.2
-  3.1.0    2.1.3  1.10.7  1.8.7   1.7.4  1.6.1  1.4.4  1.3    1.2.1  1.0.1
-  3.0.4    2.1.2  1.10.6  1.8.6   1.7.3  1.6    1.4.3  1.2.9  1.2    1.0
+  main   4.0.4  3.1.2  2.1.6  2.0.2   1.10.1  1.8.1  1.6.4  1.5.1  1.3.3  1.2.4  1.1.1
+  4.1.4  4.0.3  3.1.1  2.1.5  2.0.1   1.10.0  1.8    1.6.3  1.5    1.3.2  1.2.3  1.1
+  4.1.3  4.0.2  3.1.0  2.1.4  2.0.0   1.8.8   1.7.5  1.6.2  1.4.5  1.3.1  1.2.2  1.0.2
+  4.1.2  4.0.1  3.0.5  2.1.3  1.10.7  1.8.7   1.7.4  1.6.1  1.4.4  1.3    1.2.1  1.0.1
+  4.1.1  4.0.0  3.0.4  2.1.2  1.10.6  1.8.6   1.7.3  1.6    1.4.3  1.2.9  1.2    1.0
+  4.1.0  3.1.6  3.0.3  2.1.1  1.10.5  1.8.5   1.7.2  1.5.5  1.4.2  1.2.8  1.1.5
+  4.0.7  3.1.5  3.0.2  2.1.0  1.10.4  1.8.4   1.7.1  1.5.4  1.4.1  1.2.7  1.1.4
+  4.0.6  3.1.4  3.0.1  2.0.4  1.10.3  1.8.3   1.7    1.5.3  1.4    1.2.6  1.1.3
+  4.0.5  3.1.3  3.0.0  2.0.3  1.10.2  1.8.2   1.6.5  1.5.2  1.3.4  1.2.5  1.1.2
+==> Remote versions (not yet checksummed):
+  4.1.5
 ```
 
 
@@ -344,54 +358,54 @@ Spackにはソフトウェアパッケージを「環境」という単位でグ
 
 #### インストール方法 {#how-to-install}
 
-CUDA 10.1.243を使用するOpenMPI 3.1.1をインストールする場合の例です。
+CUDA 11.8.0を使用するOpenMPI 4.1.4をインストールする場合の例です。
 GPUを搭載する計算ノード上で作業を行います。
 
 ```Console
-[username@g0001 ~]$ spack install cuda@10.1.243
-[username@g0001 ~]$ spack install openmpi@3.1.1 +cuda schedulers=sge fabrics=auto ^cuda@10.1.243
-[username@g0001 ~]$ spack find --paths openmpi@3.1.1
+[username@g0001 ~]$ spack install cuda@11.8.0
+[username@g0001 ~]$ spack install openmpi@4.1.4 +cuda schedulers=sge fabrics=auto ^cuda@11.8.0
+[username@g0001 ~]$ spack find --paths openmpi@4.1.4
 ==> 1 installed package
--- linux-centos7-haswell / gcc@4.8.5 ----------------------------
-openmpi@3.1.1  ${SPACK_ROOT}/opt/spack/linux-centos7-haswell/gcc-4.8.5/openmpi-3.1.1-4mmghhfuk5n7my7g3ko2zwzlo4wmoc5v
-[username@g0001 ~]$ echo "btl_openib_warn_default_gid_prefix = 0" >> ${SPACK_ROOT}/opt/spack/linux-centos7-haswell/gcc-4.8.5/openmpi-3.1.1-4mmghhfuk5n7my7g3ko2zwzlo4wmoc5v/etc/openmpi-mca-params.conf
+-- linux-rocky8-skylake_avx512 / gcc@8.5.0 ----------------------------
+openmpi@4.1.4  ${SPACK_ROOT}/opt/spack/linux-rocky8-skylake_avx512/gcc-8.5.0/openmpi-4.1.4-4mmghhfuk5n7my7g3ko2zwzlo4wmoc5v
+[username@g0001 ~]$ echo "btl_openib_warn_default_gid_prefix = 0" >> ${SPACK_ROOT}/opt/spack/linux-centos7-haswell/gcc-8.5.0/openmpi-4.1.4-4mmghhfuk5n7my7g3ko2zwzlo4wmoc5v/etc/openmpi-mca-params.conf
 ```
 
-1行目では、ABCIが提供するCUDAを使用するよう、CUDAのバージョン`10.1.243`をインストールします。
+1行目では、ABCIが提供するCUDAを使用するよう、CUDAのバージョン`11.8.0`をインストールします。
 2行目では、[インストール済みソフトウェアの構成](../appendix/installed-software.md#open-mpi)と同様の設定で、OpenMPIをインストールしています。
 インストールオプションの意味は以下の通りです。
 
 - `+cuda`: CUDAを有効にしてビルドします。
 - `schedulers=sge`: MPIプロセスを起動する手段を指定しています。ABCIではSGE互換のAGEを使っているため、sgeを指定します。
 - `fabrics=auto`: 通信ライブラリを選択します。この例では自動判別としています。
-- `^cuda@10.1.243`: 使用するCUDAを指定します。`^`は依存するソフトウェアを指定するときに使います。
+- `^cuda@11.8.0`: 使用するCUDAを指定します。`^`は依存するソフトウェアを指定するときに使います。
 
 4行目では実行時の警告を消すため、設定ファイルを編集しています（任意）。
 そのため、3行目でOpenMPIがインストールされたパスを確認しています。
 
 Spackでは、同一ソフトウェアを異なる設定で複数インストールし、管理することができます。
-ここでは、CUDA 10.0.130.1を使用するOpenMPI 3.1.1を追加インストールします。
+ここでは、CUDA 11.7.1を使用するOpenMPI 4.1.3を追加インストールします。
 
 ```Console
-[username@g0001 ~]$ spack install cuda@10.0.130.1
-[username@g0001 ~]$ spack install openmpi@3.1.1 +cuda schedulers=sge fabrics=auto ^cuda@10.0.130.1
+[username@g0001 ~]$ spack install cuda@11.7.1
+[username@g0001 ~]$ spack install openmpi@4.1.3 +cuda schedulers=sge fabrics=auto ^cuda@11.7.1
 ```
 
 #### 使い方 {#how-to-use}
 
-「CUDA 10.1.243を使用するOpenMPI 3.1.1」を使う場合の利用方法を説明します。
+「CUDA 11.8.0を使用するOpenMPI 4.1.4」を使う場合の利用方法を説明します。
 
 `spack load`実行時にOpenMPIのバージョン並びにCUDAの依存関係を指定することで、特定のバージョンを利用することが可能です。
 
 ```Console
-[username@es1 ~]$ spack load openmpi@3.1.1 ^cuda@10.1.243
+[username@es1 ~]$ spack load openmpi@4.1.4 ^cuda@11.8.0
 ```
 
 計算ノード上でプログラムをコンパイルする場合は、SpackでインストールしたOpenMPIを呼び出してからMPIを起動します。
 
 ```Console
 [username@g0001 ~]$ source ${HOME}/spack/share/spack/setup-env.sh
-[username@g0001 ~]$ spack load openmpi@3.1.1 ^cuda@10.1.243
+[username@g0001 ~]$ spack load openmpi@4.1.4 ^cuda@11.8.0
 [username@g0001 ~]$ mpicc ...
 ```
 
@@ -404,7 +418,7 @@ Spackでは、同一ソフトウェアを異なる設定で複数インストー
 #$-cwd
 
 source ${HOME}/spack/share/spack/setup-env.sh
-spack load openmpi@3.1.1 ^cuda@10.1.243
+spack load openmpi@4.1.4 ^cuda@11.8.0
 
 NUM_NODES=${NHOSTS}
 NUM_GPUS_PER_NODE=4
@@ -416,20 +430,19 @@ mpiexec ${MPIOPTS} YOUR_PROGRAM
 不要になった場合は、バージョン並びに依存関係を指定してアンインストールします。
 
 ```Console
-[username@es1 ~]$ spack uninstall openmpi@3.1.1 ^cuda@10.1.243
+[username@es1 ~]$ spack uninstall openmpi@4.1.4 ^cuda@11.8.0
 ```
-
 
 ### CUDA-aware MVAPICH2 {#cuda-aware-mvapich2}
 
 CUDA-aware MVAPICH2を使用する場合は、以下を参考にSpackでインストールしてください。
 
 GPUを搭載する計算ノード上で作業を行います。
-上述した[CUDA-aware OpenMPI](#cuda-aware-openmpi)と同様に、使用するCUDAをインストールしたのちに、CUDAオプション（`+cuda`）、通信ライブラリ（`fabrics=mrail`）、およびCUDAの依存関係（`^cuda@10.1.243`）を指定してMVAPICH2をインストールします。
+上述した[CUDA-aware OpenMPI](#cuda-aware-openmpi)に、使用するCUDAをインストールしたのちに、CUDAオプション（`+cuda`）、通信ライブラリ（`fabrics=mrail`）、およびCUDAの依存関係（`^cuda@11.8.0`）を指定してMVAPICH2をインストールします。
 
 ```Console
-[username@g0001 ~]$ spack install cuda@10.1.243
-[username@g0001 ~]$ spack install mvapich2@2.3.2 +cuda fabrics=mrail ^cuda@10.1.243
+[username@g0001 ~]$ spack install cuda@11.8.0
+[username@g0001 ~]$ spack install mvapich2@2.3.7 +cuda fabrics=mrail ^cuda@11.8.0
 ```
 
 使い方もCUDA-aware OpenMPIと同様に、インストールしたMVAPICH2をロードして使います。
@@ -442,7 +455,7 @@ GPUを搭載する計算ノード上で作業を行います。
 #$-cwd
 
 source ${HOME}/spack/share/spack/setup-env.sh
-spack load mvapich2@2.3.2 ^cuda@10.1.243
+spack load mvapich2@2.3.7 ^cuda@11.8.0
 
 NUM_NODES=${NHOSTS}
 NUM_GPUS_PER_NODE=4
@@ -459,13 +472,12 @@ mpiexec ${MPIOPTS} YOUR_PROGRAM
 [MPIFileUtils](https://hpc.github.io/mpifileutils/)は、MPIを用いたファイル転送ツールです。
 複数のライブラリに依存するため、マニュアルでインストールするのは面倒ですが、Spackを用いると簡単にインストールできます。
 
-以下の例では、OpenMPI 2.1.6を使用して、MPIFileUtilsをインストールします。
+以下の例では、OpenMPI 4.1.4を使用して、MPIFileUtilsをインストールします。
 該当するOpenMPIをインストールした後で（1行目）、それへの依存を指定してMPIFileUtilsをインストールします（2行目）。
-[ABCIソフトウェアの登録](#adding-abci-software)にてpackages.yamlをコピーした場合、ABCIが提供するOpenMPI 2.1.6が使用されます。
 
 ```Console
-[username@es1 ~]$ spack install openmpi@2.1.6
-[username@es1 ~]$ spack install mpifileutils ^openmpi@2.1.6
+[username@es1 ~]$ spack install openmpi@4.1.4
+[username@es1 ~]$ spack install mpifileutils ^openmpi@4.1.4
 ```
 
 使うときには、MPIFileUtilsのモジュールをロードします。
@@ -479,7 +491,7 @@ MPIFileUtilsのモジュールをロードすると、`dbcast`などのプログ
 #$-cwd
 
 source ${HOME}/spack/share/spack/setup-env.sh
-spack load mpifileutils@0.10.1 ^openmpi@2.1.6
+spack load mpifileutils@0.11.1 ^openmpi@4.1.4
 
 NPPN=5
 NMPIPROC=$(( $NHOSTS * $NPPN ))
@@ -490,15 +502,15 @@ mpiexec -n ${NMPIPROC} -map-by ppr:${NPPN}:node dbcast $SRC_FILE $DST_FILE
 ```
 
 
-### ソフトウェア環境からのSinguarityイメージの作成手順 {#build-singularity-image-from-environment}
+### ソフトウェア環境からのSingularityイメージの作成手順 {#build-singularity-image-from-environment}
 
-[ソフトウェア環境の定義と利用](#using-environments)で作成した環境を用いてSingurarityのイメージを作成することが可能です。
+[ソフトウェア環境の定義と利用](#using-environments)で作成した環境を用いてSingularityのイメージを作成することが可能です。
 ここではmyenvという名前のSpack環境を用いてCUDA-awareのOpenMPIをインストールし、Singularityイメージを作成する例を示します。
 
 ```Console
 [username@es1 ~]$ spack env create myenv
 [username@es1 ~]$ spack activate -p myenv
-[myenv] [username@es1 ~]$ openmpi +cuda schedulers=sge fabrics=auto
+[myenv] [username@es1 ~]$ spack install openmpi +cuda schedulers=sge fabrics=auto
 [username@es1 ~]$ cp -p ${HOME}/spack/var/spack/environments/myenv/spack.yaml .
 [username@es1 ~]$ vi spack.yaml
 ```
@@ -517,8 +529,8 @@ spack:
 
   container:                       # <- 追加
     images:                        # <- 追加
-      build: spack/centos7:0.16.0  # <- 追加
-      final: spack/centos7:0.16.0  # <- 追加
+      build: spack/centos7:0.19.1  # <- 追加
+      final: spack/centos7:0.19.1  # <- 追加
     format: singularity            # <- 追加
     strip: false                   # <- 追加
 ```

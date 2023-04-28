@@ -16,17 +16,17 @@
 
 ```
 [username@es1 ~]$ qrsh -g grpname -l rt_G.small=1 -l h_rt=1:00:00
-[username@g0001 ~]$ module load gcc/9.3.0 python/3.8/3.8.7 cuda/11.0/11.0.3 cudnn/8.0/8.0.5 nccl/2.8/2.8.4-1
+[username@g0001 ~]$ module load python/3.11 cuda/11.2 cudnn/8.1 nccl/2.8
 [username@g0001 ~]$ python3 -m venv ~/venv/mxnet
 [username@g0001 ~]$ source ~/venv/mxnet/bin/activate
 (mxnet) [username@g0001 ~]$ pip3 install --upgrade pip setuptools
-(mxnet) [username@g0001 ~]$ pip3 install mxnet-cu110
+(mxnet) [username@g0001 ~]$ pip3 install mxnet-cu112==1.9.1 numpy==1.23.5
 ```
 
 次回以降は、次のようにモジュールの読み込みとPython仮想環境のアクティベートだけでMXNetを使用できます。
 
 ```
-[username@g0001 ~]$ module load gcc/9.3.0 python/3.8/3.8.7 cuda/11.0/11.0.3 cudnn/8.0/8.0.5 nccl/2.8/2.8.4-1
+[username@g0001 ~]$ module load python/3.11 cuda/11.2 cudnn/8.1 nccl/2.8
 [username@g0001 ~]$ source ~/venv/mxnet/bin/activate
 ```
 
@@ -38,9 +38,9 @@ MXNetサンプルプログラム `mnist.py` の実行方法をインタラクテ
 
 ```
 [username@es1 ~]$ qrsh -g grpname -l rt_G.small=1 -l h_rt=1:00:00
-[username@g0001 ~]$ module load gcc/9.3.0 python/3.8/3.8.7 cuda/11.0/11.0.3 cudnn/8.0/8.0.5 nccl/2.8/2.8.4-1
+[username@g0001 ~]$ module load python/3.11 cuda/11.2 cudnn/8.1 nccl/2.8
 [username@g0001 ~]$ source ~/venv/mxnet/bin/activate
-(mxnet) [username@g0001 ~]$ git clone -b v1.8.x https://github.com/apache/incubator-mxnet.git
+(mxnet) [username@g0001 ~]$ git clone -b v1.9.x https://github.com/apache/incubator-mxnet.git
 (mxnet) [username@g0001 ~]$ python3 incubator-mxnet/example/gluon/mnist/mnist.py --cuda
 ```
 
@@ -56,9 +56,9 @@ MXNetサンプルプログラム `mnist.py` の実行方法をインタラクテ
 #$ -cwd
 
 source /etc/profile.d/modules.sh
-module load gcc/9.3.0 python/3.8/3.8.7 cuda/11.0/11.0.3 cudnn/8.0/8.0.5 nccl/2.8/2.8.4-1
+module load python/3.11 cuda/11.2 cudnn/8.1 nccl/2.8
 source ~/venv/mxnet/bin/activate
-git clone -b v1.8.x https://github.com/apache/incubator-mxnet.git
+git clone -b v1.9.x https://github.com/apache/incubator-mxnet.git
 python3 incubator-mxnet/example/gluon/mnist/mnist.py --cuda
 deactivate
 ```
@@ -84,18 +84,18 @@ Your job 1234567 ('run.sh') has been submitted
 
 ```
 [username@es1 ~]$ qrsh -g grpname -l rt_G.small=1 -l h_rt=1:00:00
-[username@g0001 ~]$ module load gcc/9.3.0 python/3.8/3.8.7 openmpi/4.0.5 cuda/11.0/11.0.3 cudnn/8.0/8.0.5 nccl/2.8/2.8.4-1
+[username@g0001 ~]$ module load python/3.11 cuda/11.2 cudnn/8.1 nccl/2.8 hpcx-mt/2.12
 [username@g0001 ~]$ python3 -m venv ~/venv/mxnet+horovod
 [username@g0001 ~]$ source ~/venv/mxnet+horovod/bin/activate
 (mxnet+horovod) [username@g0001 ~]$ pip3 install --upgrade pip setuptools
-(mxnet+horovod) [username@g0001 ~]$ pip3 install mxnet-cu110
-(mxnet+horovod) [username@g0001 ~]$ HOROVOD_WITH_MXNET=1 HOROVOD_GPU_OPERATIONS=NCCL HOROVOD_NCCL_HOME=$NCCL_HOME HOROVOD_WITH_MPI=1 HOROVOD_WITHOUT_GLOO=1 pip3 install --no-cache-dir horovod==0.22.0
+(mxnet+horovod) [username@g0001 ~]$ pip3 install mxnet-cu112==1.9.1 numpy==1.23.5
+(mxnet+horovod) [username@g0001 ~]$ HOROVOD_NCCL_LINK=SHARED HOROVOD_WITH_MXNET=1 HOROVOD_GPU_OPERATIONS=NCCL HOROVOD_NCCL_HOME=$NCCL_HOME HOROVOD_WITH_MPI=1 HOROVOD_WITHOUT_GLOO=1 pip3 install --no-cache-dir horovod==0.27.0
 ```
 
 次回以降は、次のようにモジュールの読み込みとPython仮想環境のアクティベートだけでMXNetとHorovodを使用できます。
 
 ```
-[username@g0001 ~]$ module load gcc/9.3.0 python/3.8/3.8.7 openmpi/4.0.5 cuda/11.0/11.0.3 cudnn/8.0/8.0.5 nccl/2.8/2.8.4-1
+[username@g0001 ~]$ module load python/3.11 cuda/11.2 cudnn/8.1 nccl/2.8 hpcx-mt/2.12
 [username@g0001 ~]$ source ~/venv/mxnet+horovod/bin/activate
 ```
 
@@ -109,9 +109,9 @@ Horovodを利用するMXNetサンプルプログラム `mxnet_train.py` で分�
 
 ```
 [username@es1 ~]$ qrsh -g grpname -l rt_G.large=1 -l h_rt=1:00:00
-[username@g0001 ~]$ module load gcc/9.3.0 python/3.8/3.8.7 openmpi/4.0.5 cuda/11.0/11.0.3 cudnn/8.0/8.0.5 nccl/2.8/2.8.4-1
+[username@g0001 ~]$ module load python/3.11 cuda/11.2 cudnn/8.1 nccl/2.8 hpcx-mt/2.12
 [username@g0001 ~]$ source ~/venv/mxnet+horovod/bin/activate
-(mxnet+horovod) [username@g0001 ~]$ git clone -b v0.22.0 https://github.com/horovod/horovod.git
+(mxnet+horovod) [username@g0001 ~]$ git clone -b v0.27.0 https://github.com/horovod/horovod.git
 (mxnet+horovod) [username@g0001 ~]$ mpirun -np 4 -map-by ppr:4:node -mca pml ob1 python3 horovod/examples/mxnet/mxnet_mnist.py
 ```
 
@@ -129,15 +129,15 @@ Horovodを利用するMXNetサンプルプログラム `mxnet_train.py` で分�
 #$ -cwd
 
 source /etc/profile.d/modules.sh
-module load gcc/9.3.0 python/3.8/3.8.7 openmpi/4.0.5 cuda/11.0/11.0.3 cudnn/8.0/8.0.5 nccl/2.8/2.8.4-1
+module load python/3.11 cuda/11.2 cudnn/8.1 nccl/2.8 hpcx-mt/2.12
 source ~/venv/mxnet+horovod/bin/activate
 
-git clone -b v0.22.0 https://github.com/horovod/horovod.git
+git clone -b v0.27.0 https://github.com/horovod/horovod.git
 
 NUM_GPUS_PER_NODE=4
 NUM_PROCS=$(expr ${NHOSTS} \* ${NUM_GPUS_PER_NODE})
 
-MPIOPTS="-np ${NUM_PROCS} -map-by ppr:${NUM_GPUS_PER_NODE}:node -mca pml ob1 -mca btl self,tcp -mca btl_tcp_if_include bond0"
+MPIOPTS="-hostfile $SGE_JOB_HOSTLIST -np ${NUM_PROCS} -map-by ppr:${NUM_GPUS_PER_NODE}:node -mca pml ob1 -mca btl self,tcp -mca btl_tcp_if_include bond0"
 
 mpirun ${MPIOPTS} python3 horovod/examples/mxnet/mxnet_mnist.py
 

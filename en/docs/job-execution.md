@@ -250,7 +250,7 @@ Example) Sample job script executing program with CUDA
 #$-cwd
 
 source /etc/profile.d/modules.sh
-module load cuda/9.2/9.2.88.1
+module load cuda/10.2/10.2.89
 ./a.out
 ```
 
@@ -482,6 +482,7 @@ The maximum number of nodes and the node-time product that can be reserved for t
 |:--|:--|:--|
 | Minimum reservation days | 1 day | 1 day |
 | Maximum reservation days | 30 days | 30 days |
+| Maximum number of nodes can be reserved at once per ABCI group | 272 nodes | 30 nodes |
 | Maximum number of nodes can be reserved at once per system | 442 nodes | 50 nodes |
 | Maximum reserved nodes per reservation | 34 nodes | 18 nodes |
 | Maximum reserved node time per reservation | 13,056 node x hour | 6,912 node x hour |
@@ -498,9 +499,6 @@ When the reservation is completed, a reservation ID will be issued. Please speci
 
 !!! warning
     Making reservation of compute node is permitted to a responsible person or a manager.
-
-!!! warning
-    You cannot reserve a compute node (A) in the ABCI User Portal.
 
 ```
 $ qrsub options
