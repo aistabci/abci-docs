@@ -276,7 +276,7 @@ options = {
 > Assuming 8 nodes has faster communication network in a cluster, and running 32 node simulation, the value of `cusvaer_global_index_bits` is `[3, 2]`.
 > The first `3` is log2(8) representing **8** nodes with fast communication which corresponding to 3 qubits in the state vector.
 > The second `2` means **4** 8-node groups in 32 nodes.
-> The sum of the global_index_bits elements is 5, which means the number of nodes is `32 = 2^5`.
+> The sum of the global_index_bits elements is 5, which means the number of nodes is 32 = 2^5.
 > 
 > <cite>[cusvaer &mdash; NVIDIA cuQuantum 23.03.0 documentation](https://docs.nvidia.com/cuda/cuquantum/appliance/cusvaer.html#cusvaer-global-index-bits)</cite>
 

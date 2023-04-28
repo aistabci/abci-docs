@@ -275,10 +275,10 @@ options = {
 
 > `cusvaer_global_index_bits`オプションは、ノード間のネットワーク構造を表す正の整数のリストです。
 >
-> クラスタ内で8ノードが高速通信を行うと仮定し、32ノードのシミュレーションを行った場合、cusvaer_global_index_bitsの値は`[3, 2]`です。
-> 最初の3は`log2(8)`で、高速通信を行う8ノードを表し、状態ベクトルの3量子ビットに相当します。
-> 2番目の2は、32ノードの中に4つの8ノードグループがあることを意味します。
-> global_index_bitsの要素の合計は5であり、これはノードの数が`32 = 2^5`であることを意味します。
+> クラスタ内で8ノードが高速通信を行うと仮定し、32ノードのシミュレーションを行った場合、`cusvaer_global_index_bits`の値は`[3, 2]`です。
+> 最初の`3`はlog2(8)で、高速通信を行う**8**ノードを表し、状態ベクトルの3量子ビットに相当します。
+> 2番目の`2`は、32ノードの中に**4つ**の8ノードグループがあることを意味します。
+> global_index_bitsの要素の合計は5であり、これはノードの数が32 = 2^5であることを意味します。
 > 
 > <cite>[cusvaer &mdash; NVIDIA cuQuantum 23.03.0 documentation](https://docs.nvidia.com/cuda/cuquantum/appliance/cusvaer.html#cusvaer-global-index-bits)</cite>より、翻訳して引用
 
@@ -290,11 +290,11 @@ options = {
 
 #### cusvaer_p2p_device_bits
 
-> cusvaer_p2p_device_bitsオプションは、GPUDirect P2Pを使用して通信できるGPUの数を指定します。
+> `cusvaer_p2p_device_bits`オプションは、GPUDirect P2Pを使用して通信できるGPUの数を指定します。
 >
-> DGX A100などの8GPUノードの場合、`log2(8) = 3`となります。
+> DGX A100などの8GPUノードの場合、log2(8) = 3となります。
 >
-> GPUDirectのP2Pネットワークはクラスタ内で最も高速であるため、cusvaer_p2p_device_bitsの値は通常、cusvaer_global_index_bitsの最初の要素と同じです。
+> GPUDirectのP2Pネットワークはクラスタ内で最も高速であるため、`cusvaer_p2p_device_bits`の値は通常、`cusvaer_global_index_bits`の最初の要素と同じです。
 >
 > <cite>[cusvaer &mdash; NVIDIA cuQuantum 23.03.0 documentation](https://docs.nvidia.com/cuda/cuquantum/appliance/cusvaer.html#cusvaer-p2p-device-bits)</cite>より、翻訳して引用
 
