@@ -37,7 +37,16 @@ GitHubからcloneし、使用するバージョンをcheckoutすることで、S
 
 #### コンパイラの登録 {#adding-compilers}
 
-Spackで使用するコンパイラをSpackに登録します。
+Spackで使用するコンパイラを`spack compiler find`コマンドでSpackに登録します。
+
+```Console
+[username@es1 ~]$ spack compiler find
+==> Added 2 new compilers to ${HOME}/.spack/linux/compilers.yaml
+    gcc@8.5.0  clang@13.0.1
+==> Compilers are defined in the following files:
+    ${HOME}/.spack/linux/compilers.yaml
+```
+
 登録されたコンパイラは`spack compiler list`コマンドで確認できます。
 
 GCC 8.5.0は標準のパス（/usr/bin）に入っているため、Spackが自動的に見つけます。
@@ -68,7 +77,7 @@ gcc@12.2.0  gcc@8.5.0
 
 ```Console
 [username@es-a1 ~]$ cp /apps/spack/anode/compilers.yaml ${HOME}/.spack/linux/
-[username@es-a1 ~]:$ spack compiler list
+[username@es-a1 ~]$ spack compiler list
 ==> Available compilers
 -- gcc rhel8-x86_64 ---------------------------------------------
 gcc@12.2.0  gcc@8.3.1
@@ -384,7 +393,7 @@ Spackでは、同一ソフトウェアを異なる設定で複数インストー
 
 #### 使い方 {#how-to-use}
 
-「CCUDA 11.8.0を使用するOpenMPI 4.1.4」を使う場合の利用方法を説明します。
+「CUDA 11.8.0を使用するOpenMPI 4.1.4」を使う場合の利用方法を説明します。
 
 `spack load`実行時にOpenMPIのバージョン並びにCUDAの依存関係を指定することで、特定のバージョンを利用することが可能です。
 
@@ -493,9 +502,9 @@ mpiexec -n ${NMPIPROC} -map-by ppr:${NPPN}:node dbcast $SRC_FILE $DST_FILE
 ```
 
 
-### ソフトウェア環境からのSinguarityイメージの作成手順 {#build-singularity-image-from-environment}
+### ソフトウェア環境からのSingularityイメージの作成手順 {#build-singularity-image-from-environment}
 
-[ソフトウェア環境の定義と利用](#using-environments)で作成した環境を用いてSingurarityのイメージを作成することが可能です。
+[ソフトウェア環境の定義と利用](#using-environments)で作成した環境を用いてSingularityのイメージを作成することが可能です。
 ここではmyenvという名前のSpack環境を用いてCUDA-awareのOpenMPIをインストールし、Singularityイメージを作成する例を示します。
 
 ```Console
