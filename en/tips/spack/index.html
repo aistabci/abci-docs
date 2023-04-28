@@ -540,6 +540,18 @@
   
 
           
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../apps/cuquantum/" class="md-nav__link">
+        cuQuantum Appliance
+      </a>
+    </li>
+  
+
+          
         </ul>
       </nav>
     </li>
@@ -1305,8 +1317,16 @@ Using Spack on ABCI enables easily installing software which is not officially s
 
 <h3 id="configuration-for-abci">Configuration for ABCI</h3>
 <h4 id="adding-compilers">Adding Compilers</h4>
-<p>First, you have to register compilers you want to use in Spack.</p>
-<p><code>spack compiler list</code> command automatically detects and registers compilers which are located in the default path (/usr/bin).</p>
+<p>First, register the compiler to be used in Spack by <code>spack compiler find</code> command.</p>
+<div class="codehilite"><pre><span></span><code><span class="gp">[username@es1 ~]$ </span>spack compiler find
+<span class="go">==&gt; Added 2 new compilers to ${HOME}/.spack/linux/compilers.yaml</span>
+<span class="go">    gcc@8.5.0  clang@13.0.1</span>
+<span class="go">==&gt; Compilers are defined in the following files:</span>
+<span class="gp">    $</span><span class="o">{</span>HOME<span class="o">}</span>/.spack/linux/compilers.yaml
+</code></pre></div>
+
+<p><code>spack compiler list</code> command shows registered compilers.</p>
+<p>GCC 8.5.0 is located in the default path (/usr/bin), so automatically detected and registered.</p>
 <div class="codehilite"><pre><span></span><code><span class="gp">[username@es1 ~]$ </span>spack compiler list
 <span class="go">==&gt; Available compilers</span>
 <span class="go">-- gcc centos7-x86_64 -------------------------------------------</span>
@@ -1325,7 +1345,7 @@ Copying this file to your environment sets up GCC to be used in Spack.</p>
 
 <p>Compute Node (A)</p>
 <div class="codehilite"><pre><span></span><code><span class="gp">[username@es-a1 ~]$ </span>cp /apps/spack/anode/compilers.yaml <span class="si">${</span><span class="nv">HOME</span><span class="si">}</span>/.spack/linux/
-<span class="gp">[username@es-a1 ~]:$ </span>spack compiler list
+<span class="gp">[username@es-a1 ~]$ </span>spack compiler list
 <span class="go">==&gt; Available compilers</span>
 <span class="go">-- gcc rhel8-x86_64 ---------------------------------------------</span>
 <span class="go">gcc@12.2.0  gcc@8.3.1</span>
@@ -1382,7 +1402,7 @@ For detail, please refer to <a href="https://spack.readthedocs.io/en/latest/basi
 </code></pre></div>
 
 <p><code>compiler info</code> sub-command shows the detail of a specific compiler.</p>
-<div class="codehilite"><pre><span></span><code><span class="gp">sername@es1 ~]$ </span>spack compiler info gcc@8.5.0
+<div class="codehilite"><pre><span></span><code><span class="gp">[username@es1 ~]$ </span>spack compiler info gcc@8.5.0
 <span class="go">gcc@8.5.0:</span>
 <span class="go">        paths:</span>
 <span class="go">             cc = /usr/bin/gcc</span>
@@ -1480,7 +1500,7 @@ The following example uses <code>mpi</code> as the keyword.</p>
 <span class="gp gp-VirtualEnv">(snip)</span>
 </code></pre></div>
 
-<p><code>versions</code> sub-command shows avaitable versions for a specific software.</p>
+<p><code>versions</code> sub-command shows available versions for a specific software.</p>
 <div class="codehilite"><pre><span></span><code><span class="gp">[username@es1 ~]$ </span>spack versions openmpi
 <span class="go">==&gt; Safe versions (already checksummed):</span>
 <span class="go">  main   4.0.4  3.1.2  2.1.6  2.0.2   1.10.1  1.8.1  1.6.4  1.5.1  1.3.3  1.2.4  1.1.1</span>

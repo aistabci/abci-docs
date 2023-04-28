@@ -1,0 +1,1552 @@
+
+<!doctype html>
+<html lang="ja" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="ABCI 2.0 User Guide, Japanese version">
+      
+      
+      
+        <meta name="author" content="AIST">
+      
+      
+        <link rel="canonical" href="https://docs.abci.ai/ja/apps/cuquantum/">
+      
+      <link rel="icon" href="../../img/favicon.png">
+      <meta name="generator" content="mkdocs-1.1.2, mkdocs-material-7.1.3">
+    
+    
+      
+        <title>cuQuantum Appliance - ABCI 2.0 User Guide</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.e35208c4.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.ef6f36e2.min.css">
+        
+          
+          
+          <meta name="theme-color" content="#ef5552">
+        
+      
+    
+    
+    
+      
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700%7CRoboto+Mono&display=fallback">
+        <style>:root{--md-text-font-family:"Roboto";--md-code-font-family:"Roboto Mono"}</style>
+      
+    
+    
+    
+    
+      
+    
+    
+  <script defer data-domain="docs.abci.ai" src="https://analytics.abci.ai/js/plausible.js"></script>
+
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="" data-md-color-primary="red" data-md-color-accent="">
+  
+    
+    <script>function __prefix(e){return new URL("../..",location).pathname+"."+e}function __get(e,t=localStorage){return JSON.parse(t.getItem(__prefix(e)))}</script>
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#cuquantum-appliance" class="md-skip">
+          コンテンツにスキップ
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+      <header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="ヘッダー">
+    <a href="../.." title="ABCI 2.0 User Guide" class="md-header__button md-logo" aria-label="ABCI 2.0 User Guide" data-md-component="logo">
+      
+  <img src="../../img/logo.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            ABCI 2.0 User Guide
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              cuQuantum Appliance
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+      <div class="md-header__option">
+        <div class="md-select">
+          
+          <button class="md-header__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m12.87 15.07-2.54-2.51.03-.03A17.52 17.52 0 0 0 14.07 6H17V4h-7V2H8v2H1v2h11.17C11.5 7.92 10.44 9.75 9 11.35 8.07 10.32 7.3 9.19 6.69 8h-2c.73 1.63 1.73 3.17 2.98 4.56l-5.09 5.02L4 19l5-5 3.11 3.11.76-2.04M18.5 10h-2L12 22h2l1.12-3h4.75L21 22h2l-4.5-12m-2.62 7 1.62-4.33L19.12 17h-3.24z"/></svg>
+          </button>
+          <div class="md-select__inner">
+            <ul class="md-select__list">
+              
+                <li class="md-select__item">
+                  <a href="https://docs.abci.ai/en/" hreflang="" class="md-select__link">
+                    English
+                  </a>
+                </li>
+                
+                <li class="md-select__item">
+                  <a href="https://docs.abci.ai/ja/" hreflang="" class="md-select__link">
+                    日本語
+                  </a>
+                </li>
+                
+            </ul>
+          </div>
+        </div>
+      </div>
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+      </label>
+      
+<div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="検索" placeholder="検索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" data-md-state="active" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+      </label>
+      <button type="reset" class="md-search__icon md-icon" aria-label="クリア" tabindex="-1">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"/></svg>
+      </button>
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            検索を初期化
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        
+<a href="https://github.com/aistairc/abci-docs/" title="リポジトリへ" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+      </div>
+    
+  </nav>
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+<nav class="md-nav md-nav--primary md-nav--integrated" aria-label="ナビゲーション" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="ABCI 2.0 User Guide" class="md-nav__button md-logo" aria-label="ABCI 2.0 User Guide" data-md-component="logo">
+      
+  <img src="../../img/logo.png" alt="logo">
+
+    </a>
+    ABCI 2.0 User Guide
+  </label>
+  
+    <div class="md-nav__source">
+      
+<a href="https://github.com/aistairc/abci-docs/" title="リポジトリへ" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        はじめに
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../system-overview/" class="md-nav__link">
+        ABCIシステムの概要
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../getting-started/" class="md-nav__link">
+        ABCIの利用開始
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../job-execution/" class="md-nav__link">
+        ジョブ実行
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../storage/" class="md-nav__link">
+        ストレージ
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../environment-modules/" class="md-nav__link">
+        Environment Modules
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../python/" class="md-nav__link">
+        Python
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../gpu/" class="md-nav__link">
+        GPU
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../mpi/" class="md-nav__link">
+        MPI
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../containers/" class="md-nav__link">
+        コンテナ
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../development-tools/" class="md-nav__link">
+        開発ツール
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_12" type="checkbox" id="__nav_12" >
+      
+      <label class="md-nav__link" for="__nav_12">
+        付録
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="付録" data-md-level="1">
+        <label class="md-nav__title" for="__nav_12">
+          <span class="md-nav__icon md-icon"></span>
+          付録
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../appendix/installed-software/" class="md-nav__link">
+        付録. インストール済みソフトウェアの構成
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../appendix/using-abci-with-hpci/" class="md-nav__link">
+        付録. HPCIによるABCIシステム利用
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../appendix/external-networks/" class="md-nav__link">
+        付録. 外部ネットワークとの通信
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../appendix/ssh-access/" class="md-nav__link">
+        付録. 計算ノードへのSSHアクセス
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_13" type="checkbox" id="__nav_13" checked>
+      
+      <label class="md-nav__link" for="__nav_13">
+        各種アプリケーション
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="各種アプリケーション" data-md-level="1">
+        <label class="md-nav__title" for="__nav_13">
+          <span class="md-nav__icon md-icon"></span>
+          各種アプリケーション
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../" class="md-nav__link">
+        概要
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../tensorflow/" class="md-nav__link">
+        TensorFlow
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../pytorch/" class="md-nav__link">
+        PyTorch
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../mxnet/" class="md-nav__link">
+        MXNet
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          cuQuantum Appliance
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        cuQuantum Appliance
+      </a>
+      
+        
+<nav class="md-nav md-nav--secondary" aria-label="目次">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目次
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#cuquantum-appliance_1" class="md-nav__link">
+    cuQuantum Applianceについて
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#cuquantum-appliancesingularity" class="md-nav__link">
+    cuQuantum ApplianceをSingularityイメージに変換する
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#gpu" class="md-nav__link">
+    シングルノード・マルチGPUで実行する
+  </a>
+  
+    <nav class="md-nav" aria-label="シングルノード・マルチGPUで実行する">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    バッチジョブでの実行
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#gpu_1" class="md-nav__link">
+    マルチノード・マルチGPUで実行する
+  </a>
+  
+    <nav class="md-nav" aria-label="マルチノード・マルチGPUで実行する">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#spackcuda-aware-open-mpi" class="md-nav__link">
+    SpackによるCUDA-aware Open MPIのインストール
+  </a>
+  
+    <nav class="md-nav" aria-label="SpackによるCUDA-aware Open MPIのインストール">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#spack" class="md-nav__link">
+    Spack環境設定
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#cuda-aware-open-mpi" class="md-nav__link">
+    CUDA-aware Open MPIのインストール
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    バッチジョブでの実行
+  </a>
+  
+    <nav class="md-nav" aria-label="バッチジョブでの実行">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#cusvaer_global_index_bits" class="md-nav__link">
+    cusvaer_global_index_bits
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#cusvaer_p2p_device_bits" class="md-nav__link">
+    cusvaer_p2p_device_bits
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    参考
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_14" type="checkbox" id="__nav_14" >
+      
+      <label class="md-nav__link" for="__nav_14">
+        Tips
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Tips" data-md-level="1">
+        <label class="md-nav__title" for="__nav_14">
+          <span class="md-nav__icon md-icon"></span>
+          Tips
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../tips/ngc/" class="md-nav__link">
+        NVIDIA NGC
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../tips/sharp/" class="md-nav__link">
+        SHARPの利用
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../tips/remote-desktop/" class="md-nav__link">
+        リモートデスクトップの利用
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../tips/awscli/" class="md-nav__link">
+        AWS CLIの利用
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../tips/tera-term/" class="md-nav__link">
+        Tera Termの利用
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../tips/putty/" class="md-nav__link">
+        PuTTYの利用
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../tips/jupyter-notebook/" class="md-nav__link">
+        Jupyter Notebookの利用
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../tips/sregistry-cli/" class="md-nav__link">
+        Singularity Global Clientの利用
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../tips/spack/" class="md-nav__link">
+        Spackによるソフトウェア管理
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../tips/datasets/" class="md-nav__link">
+        データセットの利用
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../tips/dl-amazon-ecr/" class="md-nav__link">
+        Amazon ECR からコンテナ取得
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../tips/modules-removed-and-alternatives/" class="md-nav__link">
+        提供を終了したモジュールとその代替手段
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_15" type="checkbox" id="__nav_15" >
+      
+      <label class="md-nav__link" for="__nav_15">
+        ABCI クラウドストレージ
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="ABCI クラウドストレージ" data-md-level="1">
+        <label class="md-nav__title" for="__nav_15">
+          <span class="md-nav__icon md-icon"></span>
+          ABCI クラウドストレージ
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../abci-cloudstorage/" class="md-nav__link">
+        概要
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../abci-cloudstorage/cs-account/" class="md-nav__link">
+        アカウントとアクセスキー
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../abci-cloudstorage/usage/" class="md-nav__link">
+        使い方
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../abci-cloudstorage/encryption/" class="md-nav__link">
+        データの暗号化
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../abci-cloudstorage/acl/" class="md-nav__link">
+        アクセス制御(1)
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../abci-cloudstorage/policy/" class="md-nav__link">
+        アクセス制御(2)
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../abci-cloudstorage/default-sub-group/" class="md-nav__link">
+        アクセス制御(3)
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../abci-cloudstorage/publishing-datasets/" class="md-nav__link">
+        データセットの公開
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../abci-cloudstorage/caution/" class="md-nav__link">
+        ご利用時の注意
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../abci-cloudstorage/s3fs-usage/" class="md-nav__link">
+        s3fs-fuseの利用
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../abci-datasets/" class="md-nav__link">
+        ABCI データセット
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../abci-singularity-endpoint/" class="md-nav__link">
+        ABCI Singularity エンドポイント
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../faq/" class="md-nav__link">
+        FAQ
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../known-issues/" class="md-nav__link">
+        既知の問題
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../system-updates/" class="md-nav__link">
+        システム更新履歴
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="https://abci.ai/ja/about_abci/info.html" class="md-nav__link">
+        運転状況
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../contact/" class="md-nav__link">
+        お問い合わせ
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_23" type="checkbox" id="__nav_23" >
+      
+      <label class="md-nav__link" for="__nav_23">
+        リンク
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="リンク" data-md-level="1">
+        <label class="md-nav__title" for="__nav_23">
+          <span class="md-nav__icon md-icon"></span>
+          リンク
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="https://abci.ai/ja/" class="md-nav__link">
+        ABCI Webページ
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="https://docs.abci.ai/portal/ja/" class="md-nav__link">
+        ABCI利用者ポータル手引き
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="https://portal.abci.ai/user/project_register_app.php?lang=ja" class="md-nav__link">
+        ABCI利用者ポータル (利用申請)
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="https://portal.abci.ai/user/login.php?lang=ja" class="md-nav__link">
+        ABCI利用者ポータル (ログイン)
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+          
+          <div class="md-content" data-md-component="content">
+            <article class="md-content__inner md-typeset">
+              
+                
+                  <a href="https://github.com/aistairc/abci-docs/edit/master/ja/docs/apps/cuquantum.md" title="編集" class="md-content__button md-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75L3 17.25z"/></svg>
+                  </a>
+                
+                
+                <h1 id="cuquantum-appliance">cuQuantum Appliance</h1>
+<h2 id="cuquantum-appliance_1">cuQuantum Applianceについて</h2>
+<p><a href="https://developer.nvidia.com/cuquantum-sdk">NVIDIA cuQuantum</a>は、量子回路シミュレーションをGPUで加速できるソフトウェア開発キットです。
+量子回路シミュレーションとしては、IBM Qiskit Aer、Google Cirq qsimに対応しています。</p>
+<p><a href="https://catalog.ngc.nvidia.com/orgs/nvidia/containers/cuquantum-appliance">NVIDIA cuQuantum Appliance</a>は、NVIDIA cuQuantumを簡単に利用できるようデプロイ可能なソフトウェアとしてコンテナ化されたもので、複数のGPUと複数のノードを活用して量子回路シミュレーションを実行することができます。</p>
+<p>本ドキュメントでは、次の流れに沿ってcuQuantum Applianceの使い方について説明します。</p>
+<ol>
+<li>cuQuantum ApplianceをABCIで実行可能なSingularityイメージに変換する。</li>
+<li>IBM Qiskit Aerの状態ベクトルシミュレーションをシングルノード・マルチGPUで実行する。</li>
+<li>CUDA-aware Open MPIを用いて、状態ベクトルシミュレーションをマルチノード・マルチGPUで実行する。</li>
+</ol>
+<h2 id="cuquantum-appliancesingularity">cuQuantum ApplianceをSingularityイメージに変換する</h2>
+<p>NVIDIA NGC(以下「NGC」という)で公開されているcuQuantum ApplianceのDockerイメージからSingularityイメージを作成します。</p>
+<p>まず、インタラクティブジョブを投入し計算ノードにログインします。
+計算ノードにログインした後、<code>singularitypro</code>モジュールをロードします。</p>
+<div class="codehilite"><pre><span></span><code><span class="p">[</span><span class="n">username</span><span class="err">@</span><span class="n">es1</span> <span class="o">~</span><span class="p">]</span><span class="o">$</span> <span class="n">qrsh</span> <span class="o">-</span><span class="n">g</span> <span class="n">grpname</span> <span class="o">-</span><span class="n">l</span> <span class="n">rt_F</span><span class="o">=</span><span class="mi">1</span> <span class="o">-</span><span class="n">l</span> <span class="n">h_rt</span><span class="o">=</span><span class="mi">1</span><span class="p">:</span><span class="mi">00</span><span class="p">:</span><span class="mi">00</span>
+<span class="p">[</span><span class="n">username</span><span class="err">@</span><span class="n">g0001</span> <span class="o">~</span><span class="p">]</span><span class="o">$</span> <span class="n">module</span> <span class="nb">load</span> <span class="n">singularitypro</span>
+</code></pre></div>
+
+<p>次に、NGCが提供するcuQuantum Appliance Dockerイメージを、<code>cuquantum-appliance.img</code>(名前は任意)として、<code>singularity pull</code>します。</p>
+<div class="codehilite"><pre><span></span><code><span class="o">[</span><span class="n">username@g0001 ~</span><span class="o">]</span><span class="err">$</span><span class="w"> </span><span class="n">SINGULARITY_TMPDIR</span><span class="o">=</span><span class="err">$</span><span class="n">SGE_LOCALDIR</span><span class="w"> </span><span class="n">singularity</span><span class="w"> </span><span class="n">pull</span><span class="w"> </span><span class="n">cuquantum</span><span class="o">-</span><span class="n">appliance</span><span class="p">.</span><span class="n">img</span><span class="w"> </span><span class="nl">docker</span><span class="p">:</span><span class="o">//</span><span class="n">nvcr</span><span class="p">.</span><span class="n">io</span><span class="o">/</span><span class="n">nvidia</span><span class="o">/</span><span class="n">cuquantum</span><span class="o">-</span><span class="nl">appliance</span><span class="p">:</span><span class="mf">23.03</span><span class="w"></span>
+</code></pre></div>
+
+<p>singularity build/pullコマンドは一時ファイルの作成場所として<code>/tmp</code>を使用します。
+cuQuantum Applianceは、イメージサイズの大きいコンテナで、計算ノード上でsingularity build/pullする際に<code>/tmp</code>の容量が足りずエラーになります。
+そこで、ローカルスクラッチを使用するよう<code>SINGULARITY_TMPDIR</code>環境変数を設定しています。</p>
+<p>作成したSingularityイメージ<code>cuquantum-appliance.img</code>を利用する方法は以下のとおりです。</p>
+<div class="codehilite"><pre><span></span><code><span class="o">[</span><span class="n">username@g0001 ~</span><span class="o">]</span><span class="err">$</span><span class="w"> </span><span class="n">singularity</span><span class="w"> </span><span class="n">run</span><span class="w"> </span><span class="p">.</span><span class="o">/</span><span class="n">cuquantum</span><span class="o">-</span><span class="n">appliance</span><span class="p">.</span><span class="n">img</span><span class="w"></span>
+</code></pre></div>
+
+<p>以下のように、cuQuantum Applianceが起動します。</p>
+<div class="codehilite"><pre><span></span><code><span class="gh">================================</span>
+<span class="gh">== NVIDIA cuQuantum Appliance ==</span>
+<span class="gh">================================</span>
+
+NVIDIA cuQuantum Appliance 23.03
+
+Copyright (c) NVIDIA CORPORATION &amp; AFFILIATES.  All rights reserved.
+
+Singularity&gt;
+</code></pre></div>
+
+<h2 id="gpu">シングルノード・マルチGPUで実行する</h2>
+<h3 id="_1">バッチジョブでの実行</h3>
+<p>cuQuantum ApplianceのDockerコンテナには、Open MPIがインストールされています。
+シングルノードでは、それを使って、マルチGPUでシミュレーションが実行できます。</p>
+<p>ここでは、cuQuantum Applianceのドキュメントに掲載されている<a href="https://docs.nvidia.com/cuda/cuquantum/appliance/qiskit.html#getting-started">サンプルプログラム</a>を、<code>ghz.py</code>として保存したものを実行しています。</p>
+<div class="codehilite"><pre><span></span><code><span class="kn">from</span> <span class="nn">qiskit</span> <span class="kn">import</span> <span class="n">QuantumCircuit</span><span class="p">,</span> <span class="n">transpile</span>
+<span class="kn">from</span> <span class="nn">qiskit</span> <span class="kn">import</span> <span class="n">Aer</span>
+
+<span class="k">def</span> <span class="nf">create_ghz_circuit</span><span class="p">(</span><span class="n">n_qubits</span><span class="p">):</span>
+    <span class="n">circuit</span> <span class="o">=</span> <span class="n">QuantumCircuit</span><span class="p">(</span><span class="n">n_qubits</span><span class="p">)</span>
+    <span class="n">circuit</span><span class="o">.</span><span class="n">h</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">qubit</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n_qubits</span> <span class="o">-</span> <span class="mi">1</span><span class="p">):</span>
+        <span class="n">circuit</span><span class="o">.</span><span class="n">cx</span><span class="p">(</span><span class="n">qubit</span><span class="p">,</span> <span class="n">qubit</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">circuit</span>
+
+<span class="n">simulator</span> <span class="o">=</span> <span class="n">Aer</span><span class="o">.</span><span class="n">get_backend</span><span class="p">(</span><span class="s1">&#39;aer_simulator_statevector&#39;</span><span class="p">)</span>
+<span class="n">circuit</span> <span class="o">=</span> <span class="n">create_ghz_circuit</span><span class="p">(</span><span class="n">n_qubits</span><span class="o">=</span><span class="mi">20</span><span class="p">)</span>
+<span class="n">circuit</span><span class="o">.</span><span class="n">measure_all</span><span class="p">()</span>
+<span class="n">circuit</span> <span class="o">=</span> <span class="n">transpile</span><span class="p">(</span><span class="n">circuit</span><span class="p">,</span> <span class="n">simulator</span><span class="p">)</span>
+<span class="n">job</span> <span class="o">=</span> <span class="n">simulator</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">circuit</span><span class="p">)</span>
+<span class="n">result</span> <span class="o">=</span> <span class="n">job</span><span class="o">.</span><span class="n">result</span><span class="p">()</span>
+
+<span class="k">if</span> <span class="n">result</span><span class="o">.</span><span class="n">mpi_rank</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">result</span><span class="o">.</span><span class="n">get_counts</span><span class="p">())</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;backend: </span><span class="si">{</span><span class="n">result</span><span class="o">.</span><span class="n">backend_name</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+</code></pre></div>
+
+<p>バッチスクリプト<code>job.sh</code>(名前は任意)を用意し、ジョブを投入します。</p>
+<div class="codehilite"><pre><span></span><code><span class="p">[</span><span class="n">username</span><span class="err">@</span><span class="n">es1</span> <span class="o">~</span><span class="p">]</span><span class="o">$</span> <span class="n">cat</span> <span class="n">job</span><span class="o">.</span><span class="n">sh</span>
+<span class="c1">#!/bin/sh</span>
+<span class="c1">#$-l rt_F=1</span>
+<span class="c1">#$-j y</span>
+<span class="c1">#$-cwd</span>
+<span class="n">source</span> <span class="o">/</span><span class="n">etc</span><span class="o">/</span><span class="n">profile</span><span class="o">.</span><span class="n">d</span><span class="o">/</span><span class="n">modules</span><span class="o">.</span><span class="n">sh</span>
+<span class="n">module</span> <span class="nb">load</span> <span class="n">singularitypro</span>
+<span class="k">export</span> <span class="n">UCX_WARN_UNUSED_ENV_VARS</span><span class="o">=</span><span class="n">n</span> <span class="c1"># suppress UCX warning</span>
+<span class="n">singularity</span> <span class="n">exec</span> <span class="o">--</span><span class="n">nv</span> <span class="n">cuquantum</span><span class="o">-</span><span class="n">appliance</span><span class="o">.</span><span class="n">img</span> <span class="n">mpiexec</span> <span class="o">-</span><span class="n">n</span> <span class="mi">4</span> <span class="n">python3</span> <span class="n">ghz</span><span class="o">.</span><span class="n">py</span>
+
+<span class="p">[</span><span class="n">username</span><span class="err">@</span><span class="n">es1</span> <span class="o">~</span><span class="p">]</span><span class="o">$</span> <span class="n">qsub</span> <span class="o">-</span><span class="n">g</span> <span class="n">grpname</span> <span class="n">job</span><span class="o">.</span><span class="n">sh</span>
+</code></pre></div>
+
+<p>結果は、以下の通りです。</p>
+<div class="codehilite"><pre><span></span><code>{&#39;11111111111111111111&#39;: 501, &#39;00000000000000000000&#39;: 523}
+backend: cusvaer_simulator_statevector
+</code></pre></div>
+
+<h2 id="gpu_1">マルチノード・マルチGPUで実行する</h2>
+<p>ABCIが提供しているOpen MPIは、cuQuantum Applianceに同梱されているCUDA-aware Open MPIと互換性がありません。
+マルチノードでの実行を行うには、同一バージョンのCUDA-aware Open MPIが必要になります。
+CUDA-aware Open MPIをソースコードからコンパイル、インストールするためにSpackを利用します。</p>
+<h3 id="spackcuda-aware-open-mpi">SpackによるCUDA-aware Open MPIのインストール</h3>
+<p><a href="../../tips/spack/">Spackによるソフトウェア管理</a>にもとづいて、CUDA-aware Open MPIをインストールします。</p>
+<h4 id="spack">Spack環境設定</h4>
+<p>SpackをGitHubからcloneし、使用するバージョンをcheckoutします。</p>
+<div class="codehilite"><pre><span></span><code><span class="o">[</span><span class="n">username@es1 ~</span><span class="o">]</span><span class="err">$</span><span class="w"> </span><span class="n">git</span><span class="w"> </span><span class="n">clone</span><span class="w"> </span><span class="nl">https</span><span class="p">:</span><span class="o">//</span><span class="n">github</span><span class="p">.</span><span class="n">com</span><span class="o">/</span><span class="n">spack</span><span class="o">/</span><span class="n">spack</span><span class="p">.</span><span class="n">git</span><span class="w"></span>
+<span class="o">[</span><span class="n">username@es1 ~</span><span class="o">]</span><span class="err">$</span><span class="w"> </span><span class="n">cd</span><span class="w"> </span><span class="p">.</span><span class="o">/</span><span class="n">spack</span><span class="w"></span>
+<span class="o">[</span><span class="n">username@es1 ~/spack</span><span class="o">]</span><span class="err">$</span><span class="w"> </span><span class="n">git</span><span class="w"> </span><span class="n">checkout</span><span class="w"> </span><span class="n">v0</span><span class="mf">.19.2</span><span class="w"></span>
+</code></pre></div>
+
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>2023年4月時点の最新バージョンである v0.19.2を用います。</p>
+</div>
+<p>以降はターミナル上で、Spackを有効化するスクリプトを読み込めば、Spackが使えます。</p>
+<div class="codehilite"><pre><span></span><code>[username@es1 ~]$ source <span class="cp">${</span><span class="n">HOME</span><span class="cp">}</span>/spack/share/spack/setup-env.sh
+</code></pre></div>
+
+<p>次に、設定ファイルを置くディレクトリを作成します。</p>
+<div class="codehilite"><pre><span></span><code>[username@es1 ~]$ mkdir -p <span class="cp">${</span><span class="n">HOME</span><span class="cp">}</span>/.spack/$(spack arch --platform)
+</code></pre></div>
+
+<p>最後に、Spackを使用する計算ノードに応じて、ABCIが提供するソフトウェアを設定します。</p>
+<p>計算ノード(V):</p>
+<div class="codehilite"><pre><span></span><code>[username@es1 ~]$ cp /apps/spack/vnode/compilers.yaml <span class="cp">${</span><span class="n">HOME</span><span class="cp">}</span>/.spack/linux/
+[username@es1 ~]$ cp /apps/spack/vnode/packages.yaml <span class="cp">${</span><span class="n">HOME</span><span class="cp">}</span>/.spack/linux/
+</code></pre></div>
+
+<p>計算ノード(A):</p>
+<div class="codehilite"><pre><span></span><code>[username@es-a1 ~]$ cp /apps/spack/anode/compilers.yaml <span class="cp">${</span><span class="n">HOME</span><span class="cp">}</span>/.spack/linux/
+[username@es-a1 ~]$ cp /apps/spack/anode/packages.yaml <span class="cp">${</span><span class="n">HOME</span><span class="cp">}</span>/.spack/linux/
+</code></pre></div>
+
+<h4 id="cuda-aware-open-mpi">CUDA-aware Open MPIのインストール</h4>
+<p>GPUを搭載する計算ノード上でインストール作業を行うため、インタラクティブジョブを投入し計算ノードにログインします。</p>
+<div class="codehilite"><pre><span></span><code><span class="o">[</span><span class="n">username@es1 ~</span><span class="o">]</span><span class="err">$</span><span class="w"> </span><span class="n">qrsh</span><span class="w"> </span><span class="o">-</span><span class="n">g</span><span class="w"> </span><span class="n">grpname</span><span class="w"> </span><span class="o">-</span><span class="n">l</span><span class="w"> </span><span class="n">rt_F</span><span class="o">=</span><span class="mi">1</span><span class="w"> </span><span class="o">-</span><span class="n">l</span><span class="w"> </span><span class="n">h_rt</span><span class="o">=</span><span class="mi">1</span><span class="err">:</span><span class="mi">00</span><span class="err">:</span><span class="mi">00</span><span class="w"></span>
+</code></pre></div>
+
+<p>CUDAとcuQuantum Applianceが必要とする通信ライブラリUCXを、バージョンを指定してインストールします。</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>cuQuantum Applianceが必要とする通信ライブラリは<a href="https://docs.nvidia.com/cuda/cuquantum/appliance/cusvaer.html?highlight=ucx#mpi-libraries">このドキュメント</a>に記載があり、バージョン23.03は次のライブラリ、バージョンを必要とします。</p>
+<ul>
+<li>Open MPI: 4.1.4</li>
+<li>UCX: 1.13.1</li>
+</ul>
+</div>
+<div class="codehilite"><pre><span></span><code><span class="p">[</span><span class="n">username</span><span class="p">@</span><span class="n">g0001</span> <span class="o">~</span><span class="p">]</span><span class="n">$</span> <span class="n">source</span> <span class="n">$</span><span class="p">{</span><span class="n">HOME</span><span class="p">}</span><span class="o">/</span><span class="n">spack</span><span class="o">/</span><span class="n">share</span><span class="o">/</span><span class="n">spack</span><span class="o">/</span><span class="n">setup</span><span class="o">-</span><span class="n">env</span><span class="p">.</span><span class="n">sh</span>
+<span class="p">[</span><span class="n">username</span><span class="p">@</span><span class="n">g0001</span> <span class="o">~</span><span class="p">]</span><span class="n">$</span> <span class="n">spack</span> <span class="n">install</span> <span class="n">cuda</span><span class="mf">@11.8.0</span>
+<span class="p">[</span><span class="n">username</span><span class="p">@</span><span class="n">g0001</span> <span class="o">~</span><span class="p">]</span><span class="n">$</span> <span class="n">spack</span> <span class="n">install</span> <span class="n">ucx</span><span class="mf">@1.13.1</span>
+</code></pre></div>
+
+<p>Open MPIを、CUDA-awareでインストールします。スケジューラは<code>SGE</code>、通信ライブラリは、<code>UCX</code>を指定します。</p>
+<div class="codehilite"><pre><span></span><code><span class="p">[</span><span class="n">username</span><span class="p">@</span><span class="n">g0001</span> <span class="o">~</span><span class="p">]</span><span class="n">$</span> <span class="n">spack</span> <span class="n">install</span> <span class="n">openmpi</span><span class="mf">@4.1.4</span> <span class="o">+</span><span class="n">cuda</span> <span class="n">schedulers</span><span class="o">=</span><span class="n">sge</span> <span class="n">fabrics</span><span class="o">=</span><span class="n">ucx</span> <span class="o">^</span><span class="n">cuda</span><span class="mf">@11.8.0</span> <span class="o">^</span><span class="n">ucx</span><span class="mf">@1.13.1</span>
+</code></pre></div>
+
+<h3 id="_2">バッチジョブでの実行</h3>
+<p>ここでは、cuQuantum Applianceのドキュメントに掲載されている<a href="https://docs.nvidia.com/cuda/cuquantum/appliance/cusvaer.html#mpi4py-label">サンプルプログラム</a>を、<code>ghz_mpi.py</code> として保存したものを実行しています。</p>
+<div class="codehilite"><pre><span></span><code><span class="kn">from</span> <span class="nn">qiskit</span> <span class="kn">import</span> <span class="n">QuantumCircuit</span><span class="p">,</span> <span class="n">transpile</span>
+<span class="kn">from</span> <span class="nn">cusvaer.backends</span> <span class="kn">import</span> <span class="n">StatevectorSimulator</span>
+<span class="c1"># import mpi4py here to call MPI_Init()</span>
+<span class="kn">from</span> <span class="nn">mpi4py</span> <span class="kn">import</span> <span class="n">MPI</span>
+
+<span class="n">options</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="s1">&#39;cusvaer_global_index_bits&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span>
+  <span class="s1">&#39;cusvaer_p2p_device_bits&#39;</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span>
+  <span class="s1">&#39;precision&#39;</span><span class="p">:</span> <span class="s1">&#39;single&#39;</span>
+<span class="p">}</span>
+
+<span class="k">def</span> <span class="nf">create_ghz_circuit</span><span class="p">(</span><span class="n">n_qubits</span><span class="p">):</span>
+    <span class="n">ghz</span> <span class="o">=</span> <span class="n">QuantumCircuit</span><span class="p">(</span><span class="n">n_qubits</span><span class="p">)</span>
+    <span class="n">ghz</span><span class="o">.</span><span class="n">h</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">qubit</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n_qubits</span> <span class="o">-</span> <span class="mi">1</span><span class="p">):</span>
+        <span class="n">ghz</span><span class="o">.</span><span class="n">cx</span><span class="p">(</span><span class="n">qubit</span><span class="p">,</span> <span class="n">qubit</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span>
+    <span class="n">ghz</span><span class="o">.</span><span class="n">measure_all</span><span class="p">()</span>
+    <span class="k">return</span> <span class="n">ghz</span>
+
+<span class="n">circuit</span> <span class="o">=</span> <span class="n">create_ghz_circuit</span><span class="p">(</span><span class="mi">33</span><span class="p">)</span>
+
+<span class="c1"># Create StatevectorSimulator instead of using Aer.get_backend()</span>
+<span class="n">simulator</span> <span class="o">=</span> <span class="n">StatevectorSimulator</span><span class="p">()</span>
+<span class="n">simulator</span><span class="o">.</span><span class="n">set_options</span><span class="p">(</span><span class="o">**</span><span class="n">options</span><span class="p">)</span>
+<span class="n">circuit</span> <span class="o">=</span> <span class="n">transpile</span><span class="p">(</span><span class="n">circuit</span><span class="p">,</span> <span class="n">simulator</span><span class="p">)</span>
+<span class="n">job</span> <span class="o">=</span> <span class="n">simulator</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">circuit</span><span class="p">)</span>
+<span class="n">result</span> <span class="o">=</span> <span class="n">job</span><span class="o">.</span><span class="n">result</span><span class="p">()</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Result: rank: </span><span class="si">{</span><span class="n">result</span><span class="o">.</span><span class="n">mpi_rank</span><span class="si">}</span><span class="s2">, size: </span><span class="si">{</span><span class="n">result</span><span class="o">.</span><span class="n">num_mpi_processes</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</code></pre></div>
+
+<p>計算ノード(V)2台を用いたジョブスクリプト <code>job.sh</code> を用意し、ジョブを投入します。</p>
+<div class="codehilite"><pre><span></span><code><span class="p">[</span><span class="n">username</span><span class="p">@</span><span class="n">es1</span> <span class="o">~</span><span class="p">]</span><span class="n">$</span> <span class="n">cat</span> <span class="n">job</span><span class="p">.</span><span class="n">sh</span>
+<span class="cp">#!/bin/sh</span>
+<span class="cp">#$-l rt_F=2</span>
+<span class="cp">#$-j y</span>
+<span class="cp">#$-cwd</span>
+<span class="n">source</span> <span class="o">/</span><span class="n">etc</span><span class="o">/</span><span class="n">profile</span><span class="p">.</span><span class="n">d</span><span class="o">/</span><span class="n">modules</span><span class="p">.</span><span class="n">sh</span>
+<span class="n">module</span> <span class="n">load</span> <span class="n">singularitypro</span>
+<span class="n">source</span> <span class="n">$</span><span class="p">{</span><span class="n">HOME</span><span class="p">}</span><span class="o">/</span><span class="n">spack</span><span class="o">/</span><span class="n">share</span><span class="o">/</span><span class="n">spack</span><span class="o">/</span><span class="n">setup</span><span class="o">-</span><span class="n">env</span><span class="p">.</span><span class="n">sh</span>
+<span class="n">spack</span> <span class="n">load</span> <span class="n">openmpi</span><span class="mf">@4.1.4</span>
+<span class="n">export</span> <span class="n">UCX_WARN_UNUSED_ENV_VARS</span><span class="o">=</span><span class="n">n</span> <span class="err">#</span> <span class="n">suppress</span> <span class="n">UCX</span> <span class="n">warning</span>
+<span class="n">MPIOPTS</span><span class="o">=</span><span class="s">&quot;-np 8 -map-by ppr:4:node -hostfile $SGE_JOB_HOSTLIST&quot;</span>
+<span class="n">mpiexec</span> <span class="n">$MPIOPTS</span> <span class="n">singularity</span> <span class="n">exec</span> <span class="o">--</span><span class="n">nv</span> <span class="n">cuquantum</span><span class="o">-</span><span class="n">appliance</span><span class="p">.</span><span class="n">img</span> <span class="n">python3</span> <span class="n">ghz_mpi</span><span class="p">.</span><span class="n">py</span>
+
+<span class="p">[</span><span class="n">username</span><span class="p">@</span><span class="n">es1</span> <span class="o">~</span><span class="p">]</span><span class="n">$</span> <span class="n">qsub</span> <span class="o">-</span><span class="n">g</span> <span class="n">grpname</span> <span class="n">job</span><span class="p">.</span><span class="n">sh</span>
+</code></pre></div>
+
+<p>結果は、以下の通りです。</p>
+<div class="codehilite"><pre><span></span><code><span class="n">Result</span><span class="o">:</span> <span class="n">rank</span><span class="o">:</span> <span class="mi">3</span><span class="o">,</span> <span class="n">size</span><span class="o">:</span> <span class="mi">8</span>
+<span class="n">Result</span><span class="o">:</span> <span class="n">rank</span><span class="o">:</span> <span class="mi">1</span><span class="o">,</span> <span class="n">size</span><span class="o">:</span> <span class="mi">8</span>
+<span class="n">Result</span><span class="o">:</span> <span class="n">rank</span><span class="o">:</span> <span class="mi">7</span><span class="o">,</span> <span class="n">size</span><span class="o">:</span> <span class="mi">8</span>
+<span class="n">Result</span><span class="o">:</span> <span class="n">rank</span><span class="o">:</span> <span class="mi">5</span><span class="o">,</span> <span class="n">size</span><span class="o">:</span> <span class="mi">8</span>
+<span class="n">Result</span><span class="o">:</span> <span class="n">rank</span><span class="o">:</span> <span class="mi">4</span><span class="o">,</span> <span class="n">size</span><span class="o">:</span> <span class="mi">8</span>
+<span class="n">Result</span><span class="o">:</span> <span class="n">rank</span><span class="o">:</span> <span class="mi">6</span><span class="o">,</span> <span class="n">size</span><span class="o">:</span> <span class="mi">8</span>
+<span class="n">Result</span><span class="o">:</span> <span class="n">rank</span><span class="o">:</span> <span class="mi">2</span><span class="o">,</span> <span class="n">size</span><span class="o">:</span> <span class="mi">8</span>
+<span class="n">Result</span><span class="o">:</span> <span class="n">rank</span><span class="o">:</span> <span class="mi">0</span><span class="o">,</span> <span class="n">size</span><span class="o">:</span> <span class="mi">8</span>
+</code></pre></div>
+
+<p>ここでは、<code>rt_F=2</code>として、計算ノード(V)を資源タイプFullで2台起動しています。
+それに対応して、以下のようにオプションを設定しています。</p>
+<div class="codehilite"><pre><span></span><code>options = {
+  &#39;cusvaer_global_index_bits&#39;: [2, 1],
+  &#39;cusvaer_p2p_device_bits&#39;: 2,
+  &#39;precision&#39;: &#39;single&#39; 
+}
+</code></pre></div>
+
+<h4 id="cusvaer_global_index_bits">cusvaer_global_index_bits</h4>
+<blockquote>
+<p><code>cusvaer_global_index_bits</code>オプションは、ノード間のネットワーク構造を表す正の整数のリストです。</p>
+<p>クラスタ内で8ノードが高速通信を行うと仮定し、32ノードのシミュレーションを行った場合、<code>cusvaer_global_index_bits</code>の値は<code>[3, 2]</code>です。
+最初の<code>3</code>はlog2(8)で、高速通信を行う<strong>8</strong>ノードを表し、状態ベクトルの3量子ビットに相当します。
+2番目の<code>2</code>は、32ノードの中に<strong>4つ</strong>の8ノードグループがあることを意味します。
+global_index_bitsの要素の合計は5であり、これはノードの数が32 = 2^5であることを意味します。</p>
+<p><cite><a href="https://docs.nvidia.com/cuda/cuquantum/appliance/cusvaer.html#cusvaer-global-index-bits">cusvaer &mdash; NVIDIA cuQuantum 23.03.0 documentation</a></cite>より、翻訳して引用</p>
+</blockquote>
+<p>計算ノード(V)では、1ノードにGPUが4台搭載されています。
+ここで言われているクラスタ内で4ノードが高速通信をしています。
+計算ノード(V)を2ノード起動していますので、2つの4ノードグループがあることになります。
+したがって、<code>'cusvaer_global_index_bits': [2, 1]</code> と設定しています。</p>
+<h4 id="cusvaer_p2p_device_bits">cusvaer_p2p_device_bits</h4>
+<blockquote>
+<p><code>cusvaer_p2p_device_bits</code>オプションは、GPUDirect P2Pを使用して通信できるGPUの数を指定します。</p>
+<p>DGX A100などの8GPUノードの場合、log2(8) = 3となります。</p>
+<p>GPUDirectのP2Pネットワークはクラスタ内で最も高速であるため、<code>cusvaer_p2p_device_bits</code>の値は通常、<code>cusvaer_global_index_bits</code>の最初の要素と同じです。</p>
+<p><cite><a href="https://docs.nvidia.com/cuda/cuquantum/appliance/cusvaer.html#cusvaer-p2p-device-bits">cusvaer &mdash; NVIDIA cuQuantum 23.03.0 documentation</a></cite>より、翻訳して引用</p>
+</blockquote>
+<p>計算ノード(V)は、1ノードにGPUが4台搭載されているので、<code>'cusvaer_p2p_device_bits': 2</code> となります。</p>
+<p>また、演算精度は、 <code>'precision': 'single'</code> として、<code>complex64</code>を使用しています。</p>
+<p>オプションの詳細は、<a href="https://docs.nvidia.com/cuda/cuquantum/appliance/cusvaer.html#specifying-device-network-structure">cuQuantum Applianceのドキュメント</a>を参照してください。</p>
+<h2 id="_3">参考</h2>
+<ol>
+<li><a href="https://docs.nvidia.com/cuda/cuquantum/appliance/index.html">NVIDIA cuQuantum Appliance</a></li>
+<li><a href="https://developer.nvidia.com/ja-jp/blog/best-in-class-quantum-circuit-simulation-at-scale-with-nvidia-cuquantum-appliance/">NVIDIA cuQuantum Appliance で大規模にクラス最高の量子回路シミュレーションを実現</a></li>
+</ol>
+                
+              
+              
+                
+
+
+              
+            </article>
+          </div>
+        </div>
+        
+      </main>
+      
+        
+<footer class="md-footer">
+  
+    <nav class="md-footer__inner md-grid" aria-label="フッター">
+      
+        <a href="../mxnet/" class="md-footer__link md-footer__link--prev" rel="prev">
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+          </div>
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                前
+              </span>
+              MXNet
+            </div>
+          </div>
+        </a>
+      
+      
+        <a href="../../tips/ngc/" class="md-footer__link md-footer__link--next" rel="next">
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                次
+              </span>
+              NVIDIA NGC
+            </div>
+          </div>
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4z"/></svg>
+          </div>
+        </a>
+      
+    </nav>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-footer-copyright">
+        
+          <div class="md-footer-copyright__highlight">
+            Copyright &copy; 2021 National Institute of Advanced Industrial Science and Technology (AIST)
+          </div>
+        
+        Made with
+        <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+          Material for MkDocs
+        </a>
+        
+      </div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    <script id="__config" type="application/json">{"base": "../..", "features": ["toc.integrate"], "translations": {"clipboard.copy": "\u30af\u30ea\u30c3\u30d7\u30dc\u30fc\u30c9\u3078\u30b3\u30d4\u30fc", "clipboard.copied": "\u30b3\u30d4\u30fc\u3057\u307e\u3057\u305f", "search.config.lang": "ja", "search.config.pipeline": "trimmer, stemmer", "search.config.separator": "[\\s\\-\u3000\u3001\u3002\uff0c\uff0e]+", "search.placeholder": "\u691c\u7d22", "search.result.placeholder": "\u691c\u7d22\u30ad\u30fc\u30ef\u30fc\u30c9\u3092\u5165\u529b\u3057\u3066\u304f\u3060\u3055\u3044", "search.result.none": "\u4f55\u3082\u898b\u3064\u304b\u308a\u307e\u305b\u3093\u3067\u3057\u305f", "search.result.one": "1\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.other": "#\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.more.one": "\u3053\u306e\u30da\u30fc\u30b8\u5185\u306b\u3082\u30461\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.more.other": "\u3053\u306e\u30da\u30fc\u30b8\u5185\u306b\u3042\u3068#\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.term.missing": "\u691c\u7d22\u306b\u542b\u307e\u308c\u306a\u3044"}, "search": "../../assets/javascripts/workers/search.fe42c31b.min.js", "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.4ea5477f.min.js"></script>
+      
+    
+  </body>
+</html>

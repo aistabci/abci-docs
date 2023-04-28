@@ -540,6 +540,18 @@
   
 
           
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../apps/cuquantum/" class="md-nav__link">
+        cuQuantum Appliance
+      </a>
+    </li>
+  
+
+          
         </ul>
       </nav>
     </li>
@@ -871,7 +883,7 @@
         
           <li class="md-nav__item">
   <a href="#build-singularity-image-from-environment" class="md-nav__link">
-    ソフトウェア環境からのSinguarityイメージの作成手順
+    ソフトウェア環境からのSingularityイメージの作成手順
   </a>
   
 </li>
@@ -1317,8 +1329,15 @@ ABCI上でSpackを使うことにより、ABCIが標準でサポートしてい�
 
 <h3 id="configuration-for-abci">ABCI用設定</h3>
 <h4 id="adding-compilers">コンパイラの登録</h4>
-<p>Spackで使用するコンパイラをSpackに登録します。
-登録されたコンパイラは<code>spack compiler list</code>コマンドで確認できます。</p>
+<p>Spackで使用するコンパイラを<code>spack compiler find</code>コマンドでSpackに登録します。</p>
+<div class="codehilite"><pre><span></span><code><span class="gp">[username@es1 ~]$ </span>spack compiler find
+<span class="go">==&gt; Added 2 new compilers to ${HOME}/.spack/linux/compilers.yaml</span>
+<span class="go">    gcc@8.5.0  clang@13.0.1</span>
+<span class="go">==&gt; Compilers are defined in the following files:</span>
+<span class="gp">    $</span><span class="o">{</span>HOME<span class="o">}</span>/.spack/linux/compilers.yaml
+</code></pre></div>
+
+<p>登録されたコンパイラは<code>spack compiler list</code>コマンドで確認できます。</p>
 <p>GCC 8.5.0は標準のパス（/usr/bin）に入っているため、Spackが自動的に見つけます。</p>
 <div class="codehilite"><pre><span></span><code><span class="gp">[username@es1 ~]$ </span>spack compiler list
 <span class="go">==&gt; Available compilers</span>
@@ -1340,7 +1359,7 @@ ABCI上でSpackを使うことにより、ABCIが標準でサポートしてい�
 
 <p>計算ノード(A)</p>
 <div class="codehilite"><pre><span></span><code><span class="gp">[username@es-a1 ~]$ </span>cp /apps/spack/anode/compilers.yaml <span class="si">${</span><span class="nv">HOME</span><span class="si">}</span>/.spack/linux/
-<span class="gp">[username@es-a1 ~]:$ </span>spack compiler list
+<span class="gp">[username@es-a1 ~]$ </span>spack compiler list
 <span class="go">==&gt; Available compilers</span>
 <span class="go">-- gcc rhel8-x86_64 ---------------------------------------------</span>
 <span class="go">gcc@12.2.0  gcc@8.3.1</span>
@@ -1577,7 +1596,7 @@ GPUを搭載する計算ノード上で作業を行います。</p>
 </code></pre></div>
 
 <h4 id="how-to-use">使い方</h4>
-<p>「CCUDA 11.8.0を使用するOpenMPI 4.1.4」を使う場合の利用方法を説明します。</p>
+<p>「CUDA 11.8.0を使用するOpenMPI 4.1.4」を使う場合の利用方法を説明します。</p>
 <p><code>spack load</code>実行時にOpenMPIのバージョン並びにCUDAの依存関係を指定することで、特定のバージョンを利用することが可能です。</p>
 <div class="codehilite"><pre><span></span><code><span class="gp">[username@es1 ~]$ </span>spack load openmpi@4.1.4 ^cuda@11.8.0
 </code></pre></div>
@@ -1663,8 +1682,8 @@ spack load mpifileutils@0.11.1 ^openmpi@4.1.4
 mpiexec -n <span class="si">${</span><span class="nv">NMPIPROC</span><span class="si">}</span> -map-by ppr:<span class="si">${</span><span class="nv">NPPN</span><span class="si">}</span>:node dbcast <span class="nv">$SRC_FILE</span> <span class="nv">$DST_FILE</span>
 </code></pre></div>
 
-<h3 id="build-singularity-image-from-environment">ソフトウェア環境からのSinguarityイメージの作成手順</h3>
-<p><a href="#using-environments">ソフトウェア環境の定義と利用</a>で作成した環境を用いてSingurarityのイメージを作成することが可能です。
+<h3 id="build-singularity-image-from-environment">ソフトウェア環境からのSingularityイメージの作成手順</h3>
+<p><a href="#using-environments">ソフトウェア環境の定義と利用</a>で作成した環境を用いてSingularityのイメージを作成することが可能です。
 ここではmyenvという名前のSpack環境を用いてCUDA-awareのOpenMPIをインストールし、Singularityイメージを作成する例を示します。</p>
 <div class="codehilite"><pre><span></span><code><span class="gp">[username@es1 ~]$ </span>spack env create myenv
 <span class="gp">[username@es1 ~]$ </span>spack activate -p myenv
