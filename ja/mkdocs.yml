@@ -27,6 +27,7 @@ nav:
     - 'TensorFlow': 'apps/tensorflow.md'
     - 'PyTorch': 'apps/pytorch.md'
     - 'MXNet': 'apps/mxnet.md'
+    - 'cuQuantum Appliance': 'apps/cuquantum.md'
   - 'Tips':
     - 'NVIDIA NGC': 'tips/ngc.md'
     - 'SHARPの利用': 'tips/sharp.md'
