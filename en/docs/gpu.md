@@ -33,6 +33,7 @@ The following is a list of CUDA Toolkit, cuDNN, and NCCL that can be used with t
 | cuda/11.8     | 11.8.0        | Yes                   | Yes                           | Yes                           |
 | cuda/12.0     | 12.0.0        | Yes                   | Yes                           | Yes                           |
 | cuda/12.1     | 12.1.0        | Yes                   | Yes                           | Yes                           |
+| cuda/12.1     | 12.1.1        | Yes                   | Yes                           | Yes                           |
 
 [^1]: Provided only for experimental use. NVIDIA A100 is supported on CUDA 11＋.
 [^2]: Provided only for experimental use. Rocky Linux 8.6 is supported with CUDA 11.7.1 or later.
@@ -53,6 +54,7 @@ Compute Node (V):
 | 8.6.0   | Yes           | Yes           | Yes           | Yes           | Yes           | Yes           | Yes           | Yes           | Yes       | Yes       | -         | -         |
 | 8.7.0   | Yes           | Yes           | Yes           | Yes           | Yes           | Yes           | Yes           | Yes           | Yes       | Yes       | -         | -         |
 | 8.8.1   | -             | Yes           | Yes           | Yes           | Yes           | Yes           | Yes           | Yes           | Yes       | Yes       | Yes       | Yes       |
+| 8.9.1   | -             | Yes           | Yes           | Yes           | Yes           | Yes           | Yes           | Yes           | Yes       | Yes       | Yes       | Yes       |
 
 Compute Node (A):
 
@@ -68,6 +70,7 @@ Compute Node (A):
 | 8.6.0   | Yes           | Yes       | Yes       | Yes       | Yes       | Yes       | Yes       | Yes       | Yes       | Yes       | -         | -         |
 | 8.7.0   | Yes           | Yes       | Yes       | Yes       | Yes       | Yes       | Yes       | Yes       | Yes       | Yes       | -         | -         |
 | 8.8.1   | -             | Yes       | Yes       | Yes       | Yes       | Yes       | Yes       | Yes       | Yes       | Yes       | Yes       | Yes       |
+| 8.9.1   | -             | Yes       | Yes       | Yes       | Yes       | Yes       | Yes       | Yes       | Yes       | Yes       | Yes       | Yes       |
 
 ## NCCL
 
@@ -88,6 +91,7 @@ Compute Node (V):
 | 2.15.5-1  | Yes           | Yes           | -             | -             | -             | -             | -             | -             | -         | Yes       | -         | -         |
 | 2.16.2-1  | -             | Yes           | -             | -             | -             | -             | -             | -             | -         | Yes       | Yes       | -         |
 | 2.17.1-1  | -             | Yes           | -             | -             | -             | -             | -             | -             | -         | -         | Yes       | Yes       |
+| 2.18.1-1  | -             | Yes           | -             | -             | -             | -             | -             | -             | -         | -         | Yes       | Yes       |
 
 Compute Node (A):
 
@@ -106,6 +110,7 @@ Compute Node (A):
 | 2.15.5-1  | Yes           | Yes       | -         | -         | -         | -         | -         | -         | -         | Yes       | -         | -         |
 | 2.16.2-1  | -             | Yes       | -         | -         | -         | -         | -         | -         | -         | Yes       | Yes       | -         |
 | 2.17.1-1  | -             | Yes       | -         | -         | -         | -         | -         | -         | -         | -         | Yes       | Yes       |
+| 2.18.1-1  | -             | Yes       | -         | -         | -         | -         | -         | -         | -         | -         | Yes       | Yes       |
 
 ## GDRCopy
 

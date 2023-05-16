@@ -1,5 +1,13 @@
 # システム更新履歴
 
+## 2023-05-16
+
+| Add / Update / Delete | Software | Version | Previous version |
+|:--|:--|:--|:--|
+| Add | cuda | 12.1.1 | |
+| Add | cudnn | 8.9.1 | |
+| Add | nccl | 2.18.1-1 | |
+
 ## 2023-04-07 {#2023-04-07}
 
 * 計算ノード(V)とインタラクティブノード(V)のOSを***CentOS 7***から***Rocky Linux 8***へ変更しました。

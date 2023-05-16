@@ -1,5 +1,13 @@
 # System Updates
 
+## 2023-05-16
+
+| Add / Update / Delete | Software | Version | Previous version |
+|:--|:--|:--|:--|
+| Add | cuda | 12.1.1 | |
+| Add | cudnn | 8.9.1 | |
+| Add | nccl | 2.18.1-1 | |
+
 ## 2023-04-07 {#2023-04-07}
 
 * Change the OS for compute nodes (V) and interactive nodes (V) from ***CentOS 7*** to ***Rocky Linux 8***.
