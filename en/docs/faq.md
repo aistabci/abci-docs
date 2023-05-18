@@ -322,3 +322,30 @@ setenv MODULE_HOME /apps/modules-abci-2.0-2021
 source ${MODULE_HOME}/etc/profile.d/modules.csh
 ```
 
+## Q. How to reduce inode usage
+
+As an example of how to reduce inode usage in the process of generating a large number of files, the following is an example of using the stream-zip module to store stream data generated in the python program within a zip file (a sample of creating a 100 file zip).<br>
+The following program uses the datetime and stream_zip modules.<br>
+For more information about stream-zip, see [stream-zip documentation](https://stream-zip.docs.trade.gov.uk/).
+
+```
+from datetime import datetime
+from stream_zip import ZIP_64, stream_zip
+
+def gen_file(i):
+    modified_at = datetime.now()
+    perms = 0o600
+    filename = f'file{i:04d}'
+    def data_gen():
+        yield b"aaaaa"
+    return filename, modified_at, perms, ZIP_64, data_gen()
+
+def generator():
+    for i in range(100):
+        yield gen_file(i)
+
+with open("output.zip", "wb") as f:
+    for chunk in stream_zip(generator()):
+        f.write(chunk)
+```
+
