@@ -1,5 +1,18 @@
 # System Updates
 
+## 2023-05-18
+
+* For the time being, change the following limits for Spot and Reserved services.<br>
+However, it may be restored depending on the power situation and congestion.<br>
+Also, if the congestion level is the same as last year, it may be restored at the end of August 2023.<br>
+
+| Service | Resource type name | Limitations | Previous upper limit | Changed upper limit |
+|:--|:--|:--|:--|:--|
+| Spot | rt_AF | Number of nodes available at the same time | 64 nodes | 90 nodes |
+| Spot | rt_AF | Limit of elapsed time | 72 hours | 168 hours |
+| Spot | rt_AF | Limit of node-time product | 288 nodes &middot; hours | 15120 nodes &middot; hours |
+| Reserved | rt_AF | Maximum reserved nodes per reservation | 18 nodes | 30 nodes |
+
 ## 2023-05-16
 
 | Add / Update / Delete | Software | Version | Previous version |
