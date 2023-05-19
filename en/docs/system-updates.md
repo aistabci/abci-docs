@@ -2,9 +2,8 @@
 
 ## 2023-05-18
 
-* For the time being, change the following limits for Spot and Reserved services.<br>
-However, it may be restored depending on the power situation and congestion.<br>
-Also, if the congestion level is the same as last year, it may be restored at the end of August 2023.<br>
+* Change the following limits for Spot and Reserved services on compute node(A) until the end of August 2023.<br>
+However, depending on power and congestion conditions, it is possible to restore the settings before the end of August 2023.
 
 | Service | Resource type name | Limitations | Previous upper limit | Changed upper limit |
 |:--|:--|:--|:--|:--|
