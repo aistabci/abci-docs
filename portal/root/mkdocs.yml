@@ -8,6 +8,7 @@ theme:
   name: 'material'
   palette:
     primary: 'blue'
+  custom_dir: overrides
 plugins:
   - redirects:
       redirect_maps:
