@@ -324,11 +324,13 @@ source ${MODULE_HOME}/etc/profile.d/modules.csh
 
 ## Q. How to reduce inode usage
 
-As an example of how to reduce inode usage in the process of generating a large number of files, the following is an example of using the stream-zip module to store stream data generated in the python program within a zip file (a sample of creating a 100 file zip).<br>
-The following program uses the datetime and stream_zip modules.<br>
-For more information about stream-zip, see [stream-zip documentation](https://stream-zip.docs.trade.gov.uk/).
+One way to reduce inode usage during large file generation is to use a ZIP file.
+
+This example shows how to use Python's stream-zip module to store the generated data in a ZIP file.
+For more information about stream-zip, see [stream-zip Documentation](https://stream-zip.docs.trade.gov.uk/).
 
 ```
+# This program generates an `output.zip` file containing 100 files named `file0000` through `file0099`.
 from datetime import datetime
 from stream_zip import ZIP_64, stream_zip
 

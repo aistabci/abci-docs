@@ -332,11 +332,14 @@ source ${MODULE_HOME}/etc/profile.d/modules.csh
 
 ## Q. inodeの使用量を削減したい {#q-how-to-reduce-inode-usage}
 
-大量のファイルを生成する処理においてinodeの使用量を低減する方法の一例として、pythonプログラム内で生成されたstreamデータをzipファイ>ル内に格納する際にstream-zipモジュールを使用した場合の例(100ファイル入ったzipを作成するサンプル)を以下に示します。<br>
-下記プログラムではdatetimeモジュールとstream_zipモジュールを使用しています。<br>
-なお、stream-zipに関する詳細は、[stream-zipドキュメント](https://stream-zip.docs.trade.gov.uk/) をご参照ください。
+大量のファイルを生成する処理においてinodeの使用量を低減する方法として、ZIPファイルを利用する方法があります。
+
+ここではPythonのstream-zipモジュールを使用して、生成したデータをZIPファイルに格納する例を示します。
+なお、stream-zipに関する詳細は、[stream-zipのドキュメント](https://stream-zip.docs.trade.gov.uk/) をご参照ください。
 
 ```
+# このプログラムは、ファイル名`file0000`から`file0099`の
+# 100ファイルを収めた`output.zip`ファイルを生成します。
 from datetime import datetime
 from stream_zip import ZIP_64, stream_zip
 
