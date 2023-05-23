@@ -3,14 +3,12 @@ site_description: ABCI Portal Guide
 site_author: AIST
 site_url: https://docs.abci.ai/portal/
 copyright: 'Copyright &copy; 2018 National Institute of Advanced Industrial Science and Technology (AIST)'
-google_analytics:
-  - 'UA-118371652-2'
-  - 'auto'
 nav: []
 theme:
   name: 'material'
   palette:
     primary: 'blue'
+  custom_dir: overrides
 plugins:
   - redirects:
       redirect_maps:
