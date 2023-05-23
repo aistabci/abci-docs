@@ -324,7 +324,7 @@ source ${MODULE_HOME}/etc/profile.d/modules.csh
 
 ## Q. How to reduce inode usage
 
-One way to reduce inode usage during large file generation is to use a ZIP file.
+One of several ways to reduce the number of inodes in a process that generates a large number of files is to use a ZIP file.
 
 This example shows how to use Python's stream-zip module to store the generated data in a ZIP file.
 For more information about stream-zip, see [stream-zip Documentation](https://stream-zip.docs.trade.gov.uk/).
