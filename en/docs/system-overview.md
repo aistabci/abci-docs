@@ -138,10 +138,10 @@ The ABCI system has five storage systems for storing large amounts of data used 
 
 | # | Storage System | Media | Usage |
 |:--|:--|:--|:--|
-| 1 | DDN SFA 14KX x1<br>DDN SS9012 Enclosure x5 | 7.68 TB SAS SSD x185 | Home area, Application area |
-| 2 | DDN ES7990X x3<br>DDN SS9012 Enclosure x6 | 18 TB NL-SAS HDD x801 | Group area |
-| 3 | DDN ES400NVX x3 | 7.68 TB NVMe HDD x69 | Fast data area |
-| 4 | DDN SFA 14KX x3<br>DDN SS8462 Enclosure x30 | 3.84 TB SAS SSD x216<br>12 TB NL-SAS HDD x2400 | Group areas, Global scratch area |
+| 1 | DDN SFA 14KX x1<br>DDN SS9012 Enclosure x5 | 7.68 TB SAS SSD x185 | Home area(/home), Application area |
+| 2 | DDN ES7990X x3<br>DDN SS9012 Enclosure x6 | 18 TB NL-SAS HDD x801 | Group area(/groups) |
+| 3 | DDN ES400NVX x3 | 7.68 TB NVMe HDD x69 | Fast data area(/bb) |
+| 4 | DDN SFA 14KX x3<br>DDN SS8462 Enclosure x30 | 3.84 TB SAS SSD x216<br>12 TB NL-SAS HDD x2400 | Group area for specific purpose(/projects), Global scratch area(/scratch) |
 | 5 | HPE Apollo 4510 Gen10 x24 | 12 TB SATA HDD x1440 | ABCI Cloud Storage |
 
 Below is a list of shared file systems and ABCI Cloud Storage provided by the ABCI system using the above storage systems.
@@ -150,7 +150,7 @@ Below is a list of shared file systems and ABCI Cloud Storage provided by the AB
 |:--|:--|:--|:--|:--|
 | Home area | /home | 1.0 PB | Lustre | See [Home Area](storage.md#home-area) |
 | Group area | /groups | 10.8 PB | Lustre | See [Group Area](storage.md#group-area) |
-| Group area | /projects | 21.6 PB | Lustre | Reserved for special purposes |
+| Group area for specific purpose | /projects | 21.6 PB | Lustre | Reserved for special purposes |
 | ABCI Cloud Storage | | 13 PB max. | | See [ABCI Cloud Storage](abci-cloudstorage.md) |
 | Fast data area | /bb | 0.3 PB | | Reserved area for the particular application |
 | Global scratch area | /scratch | 0.4 PB | Lustre | See [Global scratch area](storage.md#scratch-area) |
