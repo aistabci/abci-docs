@@ -1513,25 +1513,25 @@ Intel Xeon Gold 6148プロセッサーを2基搭載し、384 GiBのメインメ�
 <td align="left">1</td>
 <td align="left">DDN SFA 14KX x1<br>DDN SS9012エンクロージャ x5</td>
 <td align="left">7.68 TB SAS SSD x185</td>
-<td align="left">ホーム領域、アプリケーション領域</td>
+<td align="left">ホーム領域(/home)、アプリケーション領域</td>
 </tr>
 <tr>
 <td align="left">2</td>
 <td align="left">DDN ES7990X x3<br>DDN SS9012エンクロージャ x6</td>
 <td align="left">18 TB NL-SAS HDD x801</td>
-<td align="left">グループ領域</td>
+<td align="left">グループ領域(/groups)</td>
 </tr>
 <tr>
 <td align="left">3</td>
 <td align="left">DDN ES400NVX x3</td>
 <td align="left">7.68 TB NVMe HDD x69</td>
-<td align="left">高速データ領域</td>
+<td align="left">高速データ領域(/bb)</td>
 </tr>
 <tr>
 <td align="left">4</td>
 <td align="left">DDN SFA 14KX x3<br>DDN SS8462エンクロージャ x30</td>
 <td align="left">3.84 TB SAS SSD x216<br>12 TB NL-SAS HDD x2400</td>
-<td align="left">グループ領域、グローバルスクラッチ領域</td>
+<td align="left">特定グループ領域(/projects)、グローバルスクラッチ領域(/scratch)</td>
 </tr>
 <tr>
 <td align="left">5</td>
@@ -1568,7 +1568,7 @@ Intel Xeon Gold 6148プロセッサーを2基搭載し、384 GiBのメインメ�
 <td align="left"><a href="../storage/#group-area">グループ領域</a>を参照</td>
 </tr>
 <tr>
-<td align="left">グループ領域</td>
+<td align="left">特定グループ領域</td>
 <td align="left">/projects</td>
 <td align="left">21.6 PB</td>
 <td align="left">Lustre</td>
@@ -1680,8 +1680,8 @@ Intel Xeon Gold 6148プロセッサーを2基搭載し、384 GiBのメインメ�
 <tr>
 <td align="left">Development Environment</td>
 <td align="left"><a href="../gpu/#cuda-toolkit">CUDA Toolkit</a></td>
-<td align="left">10.2.89<br>11.0.3<br>11.1.1<br>11.2.2<br>11.3.1<br>11.4.4<br>11.5.2<br>11.6.2<br>11.7.1<br>11.8.0<br>12.0.0<br>12.1.0</td>
-<td align="left">10.2.89<br>11.0.3<br>11.1.1<br>11.2.2<br>11.3.1<br>11.4.4<br>11.5.2<br>11.6.2<br>11.7.1<br>11.8.0<br>12.0.0<br>12.1.0</td>
+<td align="left">10.2.89<br>11.0.3<br>11.1.1<br>11.2.2<br>11.3.1<br>11.4.4<br>11.5.2<br>11.6.2<br>11.7.1<br>11.8.0<br>12.0.0<br>12.1.0<br>12.1.1</td>
+<td align="left">10.2.89<br>11.0.3<br>11.1.1<br>11.2.2<br>11.3.1<br>11.4.4<br>11.5.2<br>11.6.2<br>11.7.1<br>11.8.0<br>12.0.0<br>12.1.0<br>12.1.1</td>
 </tr>
 <tr>
 <td align="left"></td>
@@ -1812,14 +1812,14 @@ Intel Xeon Gold 6148プロセッサーを2基搭載し、384 GiBのメインメ�
 <tr>
 <td align="left">Library</td>
 <td align="left"><a href="../gpu/#cudnn">cuDNN</a></td>
-<td align="left">7.6.5<br>8.0.5<br>8.1.1<br>8.2.4<br>8.3.3<br>8.4.1<br>8.5.0<br>8.6.0<br>8.7.0<br>8.8.1</td>
-<td align="left">7.6.5<br>8.0.5<br>8.1.1<br>8.2.4<br>8.3.3<br>8.4.1<br>8.5.0<br>8.6.0<br>8.7.0<br>8.8.1</td>
+<td align="left">7.6.5<br>8.0.5<br>8.1.1<br>8.2.4<br>8.3.3<br>8.4.1<br>8.5.0<br>8.6.0<br>8.7.0<br>8.8.1<br>8.9.1</td>
+<td align="left">7.6.5<br>8.0.5<br>8.1.1<br>8.2.4<br>8.3.3<br>8.4.1<br>8.5.0<br>8.6.0<br>8.7.0<br>8.8.1<br>8.9.1</td>
 </tr>
 <tr>
 <td align="left"></td>
 <td align="left"><a href="../gpu/#nccl">NCCL</a></td>
-<td align="left">2.5.6-1<br>2.6.4-1<br>2.7.8-1<br>2.8.4-1<br>2.9.9-1<br>2.10.3-1<br>2.11.4-1<br>2.12.12-1<br>2.13.4-1<br>2.14.3-1<br>2.15.5-1<br>2.16.2-1<br>2.17.1-1</td>
-<td align="left">2.5.6-1<br>2.6.4-1<br>2.7.8-1<br>2.8.4-1<br>2.9.9-1<br>2.10.3-1<br>2.11.4-1<br>2.12.12-1<br>2.13.4-1<br>2.14.3-1<br>2.15.5-1<br>2.16.2-1<br>2.17.1-1</td>
+<td align="left">2.5.6-1<br>2.6.4-1<br>2.7.8-1<br>2.8.4-1<br>2.9.9-1<br>2.10.3-1<br>2.11.4-1<br>2.12.12-1<br>2.13.4-1<br>2.14.3-1<br>2.15.5-1<br>2.16.2-1<br>2.17.1-1<br>2.18.1-1</td>
+<td align="left">2.5.6-1<br>2.6.4-1<br>2.7.8-1<br>2.8.4-1<br>2.9.9-1<br>2.10.3-1<br>2.11.4-1<br>2.12.12-1<br>2.13.4-1<br>2.14.3-1<br>2.15.5-1<br>2.16.2-1<br>2.17.1-1<br>2.18.1-1</td>
 </tr>
 <tr>
 <td align="left"></td>

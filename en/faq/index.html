@@ -1065,6 +1065,13 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#q-how-to-reduce-inode-usage" class="md-nav__link">
+    Q. How to reduce inode usage
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -1587,6 +1594,31 @@ Please use the Memory-Intensive Node to use the previous Environment Modules for
 <p>ch, tcsh:</p>
 <div class="codehilite"><pre><span></span><code>setenv MODULE_HOME /apps/modules-abci-2.0-2021
 source <span class="cp">${</span><span class="n">MODULE_HOME</span><span class="cp">}</span>/etc/profile.d/modules.csh
+</code></pre></div>
+
+<h2 id="q-how-to-reduce-inode-usage">Q. How to reduce inode usage</h2>
+<p>One of several ways to reduce the number of inodes in a process that generates a large number of files is to use a ZIP file.</p>
+<p>This example shows how to use Python's stream-zip module to store the generated data in a ZIP file.
+For more information about stream-zip, see <a href="https://stream-zip.docs.trade.gov.uk/">stream-zip Documentation</a>.</p>
+<div class="codehilite"><pre><span></span><code><span class="c1"># This program generates an `output.zip` file containing 100 files named `file0000` through `file0099`.</span>
+<span class="kn">from</span> <span class="nn">datetime</span> <span class="kn">import</span> <span class="n">datetime</span>
+<span class="kn">from</span> <span class="nn">stream_zip</span> <span class="kn">import</span> <span class="n">ZIP_64</span><span class="p">,</span> <span class="n">stream_zip</span>
+
+<span class="k">def</span> <span class="nf">gen_file</span><span class="p">(</span><span class="n">i</span><span class="p">):</span>
+    <span class="n">modified_at</span> <span class="o">=</span> <span class="n">datetime</span><span class="o">.</span><span class="n">now</span><span class="p">()</span>
+    <span class="n">perms</span> <span class="o">=</span> <span class="mo">0o600</span>
+    <span class="n">filename</span> <span class="o">=</span> <span class="sa">f</span><span class="s1">&#39;file</span><span class="si">{</span><span class="n">i</span><span class="si">:</span><span class="s1">04d</span><span class="si">}</span><span class="s1">&#39;</span>
+    <span class="k">def</span> <span class="nf">data_gen</span><span class="p">():</span>
+        <span class="k">yield</span> <span class="sa">b</span><span class="s2">&quot;aaaaa&quot;</span>
+    <span class="k">return</span> <span class="n">filename</span><span class="p">,</span> <span class="n">modified_at</span><span class="p">,</span> <span class="n">perms</span><span class="p">,</span> <span class="n">ZIP_64</span><span class="p">,</span> <span class="n">data_gen</span><span class="p">()</span>
+
+<span class="k">def</span> <span class="nf">generator</span><span class="p">():</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">100</span><span class="p">):</span>
+        <span class="k">yield</span> <span class="n">gen_file</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
+
+<span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s2">&quot;output.zip&quot;</span><span class="p">,</span> <span class="s2">&quot;wb&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+    <span class="k">for</span> <span class="n">chunk</span> <span class="ow">in</span> <span class="n">stream_zip</span><span class="p">(</span><span class="n">generator</span><span class="p">()):</span>
+        <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">chunk</span><span class="p">)</span>
 </code></pre></div>
                 
               

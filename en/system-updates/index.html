@@ -971,6 +971,20 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#2023-05-18" class="md-nav__link">
+    2023-05-18
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2023-05-16" class="md-nav__link">
+    2023-05-16
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#2023-04-07" class="md-nav__link">
     2023-04-07
   </a>
@@ -1512,6 +1526,83 @@
                 
                 
                 <h1 id="system-updates">System Updates</h1>
+<h2 id="2023-05-18">2023-05-18</h2>
+<ul>
+<li>Change the following limits for Spot and Reserved services on compute node (A) until the end of August 2023.<br>
+However, depending on power and congestion conditions, it is possible to restore the settings before the end of August 2023.</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th align="left">Service</th>
+<th align="left">Resource type name</th>
+<th align="left">Limitations</th>
+<th align="left">Previous upper limit</th>
+<th align="left">Changed upper limit</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">Spot</td>
+<td align="left">rt_AF</td>
+<td align="left">Number of nodes available at the same time</td>
+<td align="left">64 nodes</td>
+<td align="left">90 nodes</td>
+</tr>
+<tr>
+<td align="left">Spot</td>
+<td align="left">rt_AF</td>
+<td align="left">Limit of elapsed time</td>
+<td align="left">72 hours</td>
+<td align="left">168 hours</td>
+</tr>
+<tr>
+<td align="left">Spot</td>
+<td align="left">rt_AF</td>
+<td align="left">Limit of node-time product</td>
+<td align="left">288 nodes &middot; hours</td>
+<td align="left">15120 nodes &middot; hours</td>
+</tr>
+<tr>
+<td align="left">Reserved</td>
+<td align="left">rt_AF</td>
+<td align="left">Maximum reserved nodes per reservation</td>
+<td align="left">18 nodes</td>
+<td align="left">30 nodes</td>
+</tr>
+</tbody>
+</table>
+<h2 id="2023-05-16">2023-05-16</h2>
+<table>
+<thead>
+<tr>
+<th align="left">Add / Update / Delete</th>
+<th align="left">Software</th>
+<th align="left">Version</th>
+<th align="left">Previous version</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">Add</td>
+<td align="left">cuda</td>
+<td align="left">12.1.1</td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="left">Add</td>
+<td align="left">cudnn</td>
+<td align="left">8.9.1</td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="left">Add</td>
+<td align="left">nccl</td>
+<td align="left">2.18.1-1</td>
+<td align="left"></td>
+</tr>
+</tbody>
+</table>
 <h2 id="2023-04-07">2023-04-07</h2>
 <ul>
 <li>

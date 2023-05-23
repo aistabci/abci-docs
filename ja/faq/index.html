@@ -1077,6 +1077,13 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#q-how-to-reduce-inode-usage" class="md-nav__link">
+    Q. inodeの使用量を削減したい
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -1609,6 +1616,32 @@ CentOS 7用の過去のEnvironment Modulesを利用したい場合は、メモ�
 <p>csh, tcshの場合:</p>
 <div class="codehilite"><pre><span></span><code>setenv MODULE_HOME /apps/modules-abci-2.0-2021
 source <span class="cp">${</span><span class="n">MODULE_HOME</span><span class="cp">}</span>/etc/profile.d/modules.csh
+</code></pre></div>
+
+<h2 id="q-how-to-reduce-inode-usage">Q. inodeの使用量を削減したい</h2>
+<p>大量のファイルを生成する処理においてinodeの使用量を低減する方法として、ZIPファイルを利用する方法があります。</p>
+<p>ここではPythonのstream-zipモジュールを使用して、生成したデータをZIPファイルに格納する例を示します。
+なお、stream-zipに関する詳細は、<a href="https://stream-zip.docs.trade.gov.uk/">stream-zipのドキュメント</a> をご参照ください。</p>
+<div class="codehilite"><pre><span></span><code><span class="c1"># このプログラムは、ファイル名`file0000`から`file0099`の</span>
+<span class="c1"># 100ファイルを収めた`output.zip`ファイルを生成します。</span>
+<span class="kn">from</span> <span class="nn">datetime</span> <span class="kn">import</span> <span class="n">datetime</span>
+<span class="kn">from</span> <span class="nn">stream_zip</span> <span class="kn">import</span> <span class="n">ZIP_64</span><span class="p">,</span> <span class="n">stream_zip</span>
+
+<span class="k">def</span> <span class="nf">gen_file</span><span class="p">(</span><span class="n">i</span><span class="p">):</span>
+    <span class="n">modified_at</span> <span class="o">=</span> <span class="n">datetime</span><span class="o">.</span><span class="n">now</span><span class="p">()</span>
+    <span class="n">perms</span> <span class="o">=</span> <span class="mo">0o600</span>
+    <span class="n">filename</span> <span class="o">=</span> <span class="sa">f</span><span class="s1">&#39;file</span><span class="si">{</span><span class="n">i</span><span class="si">:</span><span class="s1">04d</span><span class="si">}</span><span class="s1">&#39;</span>
+    <span class="k">def</span> <span class="nf">data_gen</span><span class="p">():</span>
+        <span class="k">yield</span> <span class="sa">b</span><span class="s2">&quot;aaaaa&quot;</span>
+    <span class="k">return</span> <span class="n">filename</span><span class="p">,</span> <span class="n">modified_at</span><span class="p">,</span> <span class="n">perms</span><span class="p">,</span> <span class="n">ZIP_64</span><span class="p">,</span> <span class="n">data_gen</span><span class="p">()</span>
+
+<span class="k">def</span> <span class="nf">generator</span><span class="p">():</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">100</span><span class="p">):</span>
+        <span class="k">yield</span> <span class="n">gen_file</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
+
+<span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s2">&quot;output.zip&quot;</span><span class="p">,</span> <span class="s2">&quot;wb&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+    <span class="k">for</span> <span class="n">chunk</span> <span class="ow">in</span> <span class="n">stream_zip</span><span class="p">(</span><span class="n">generator</span><span class="p">()):</span>
+        <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">chunk</span><span class="p">)</span>
 </code></pre></div>
                 
               
