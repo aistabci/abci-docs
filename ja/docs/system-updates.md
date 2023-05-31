@@ -60,9 +60,17 @@
 | Add / Update / Delete | Software | Version | Previous version |
 |:--|:--|:--|:--|
 | Delete | gcc | 9.3.0 | |
+| Delete | gcc | 11.2.0 | |
+| Add | python | 3.11.2 | |
+| Update | python | 3.10.10 | 3.10.4 |
+| Delete | python | 2.7.18<br>3.7.13<br>3.8.13 | |
 | Delete | cuda | 9.0.176.1<br>9.1.85.3<br>9.2.148.1<br>10.0.130.1<br>10.1.243<br>11.7.0 | |
 | Delete | cudnn | 7.0.5<br>7.1.4<br>7.2.1<br>7.3.1<br>7.4.2<br>7.5.1 | |
 | Delete | nccl | 2.4.8-1 | |
+| Add | hpcx | 2.12 | |
+| Add | hpcx-debug | 2.12 | |
+| Add | hpcx-mt | 2.12 | |
+| Add | hpcx-prof | 2.12 | |
 | Update | intel | 2023.0.0 | 2022.2.1 |
 | Update | intel-advisor | 2023.0 | 2022.3.1 |
 | Update | intel-inspector | 2023.0 | 2022.3.1 |
