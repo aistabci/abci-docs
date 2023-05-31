@@ -59,8 +59,8 @@
 
 | Add / Update / Delete | Software | Version | Previous version |
 |:--|:--|:--|:--|
-| Delete | gcc | 9.3.0 | |
-| Delete | gcc | 11.2.0 | |
+| Add | gcc | 12.2.0 | |
+| Delete | gcc | 9.3.0<br>11.2.0 | |
 | Add | python | 3.11.2 | |
 | Update | python | 3.10.10 | 3.10.4 |
 | Delete | python | 2.7.18<br>3.7.13<br>3.8.13 | |
