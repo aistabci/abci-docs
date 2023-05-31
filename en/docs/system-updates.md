@@ -1,5 +1,10 @@
 # System Updates
 
+## 2023-06-12 (future update) {#2023-06-12}
+
+* ABCI User Portal Updates
+    * The "Position" field is required in the "User input" form.
+
 ## 2023-05-18
 
 * Change the following limits for Spot and Reserved services on compute node (A) until the end of August 2023.<br>
