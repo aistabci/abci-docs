@@ -4,6 +4,8 @@
 
 * ABCI User Portal Updates
     * The "Position" field is required in the "User input" form.
+* Modification of the HPC-X parameter
+    * Modify the "hwloc_base_binding_policy" parameter of the hpcx*/2.12 module from "core"(bind processes to the CPU core) to "none"(do not bind).
 
 ## 2023-05-18
 
