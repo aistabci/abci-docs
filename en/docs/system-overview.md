@@ -138,10 +138,10 @@ The ABCI system has five storage systems for storing large amounts of data used 
 
 | # | Storage System | Media | Usage |
 |:--|:--|:--|:--|
-| 1 | DDN SFA 14KX x1<br>DDN SS9012 Enclosure x5 | 7.68 TB SAS SSD x185 | Home area, Application area |
-| 2 | DDN ES7990X x3<br>DDN SS9012 Enclosure x6 | 18 TB NL-SAS HDD x801 | Group area |
-| 3 | DDN ES400NVX x3 | 7.68 TB NVMe HDD x69 | Fast data area |
-| 4 | DDN SFA 14KX x3<br>DDN SS8462 Enclosure x30 | 3.84 TB SAS SSD x216<br>12 TB NL-SAS HDD x2400 | Group areas, Global scratch area |
+| 1 | DDN SFA 14KX x1<br>DDN SS9012 Enclosure x5 | 7.68 TB SAS SSD x185 | Home area(/home), Application area |
+| 2 | DDN ES7990X x3<br>DDN SS9012 Enclosure x6 | 18 TB NL-SAS HDD x801 | Group area(/groups) |
+| 3 | DDN ES400NVX x3 | 7.68 TB NVMe HDD x69 | Fast data area(/bb) |
+| 4 | DDN SFA 14KX x3<br>DDN SS8462 Enclosure x30 | 3.84 TB SAS SSD x216<br>12 TB NL-SAS HDD x2400 | Group area for specific purpose(/projects), Global scratch area(/scratch) |
 | 5 | HPE Apollo 4510 Gen10 x24 | 12 TB SATA HDD x1440 | ABCI Cloud Storage |
 
 Below is a list of shared file systems and ABCI Cloud Storage provided by the ABCI system using the above storage systems.
@@ -150,7 +150,7 @@ Below is a list of shared file systems and ABCI Cloud Storage provided by the AB
 |:--|:--|:--|:--|:--|
 | Home area | /home | 1.0 PB | Lustre | See [Home Area](storage.md#home-area) |
 | Group area | /groups | 10.8 PB | Lustre | See [Group Area](storage.md#group-area) |
-| Group area | /projects | 21.6 PB | Lustre | Reserved for special purposes |
+| Group area for specific purpose | /projects | 21.6 PB | Lustre | Reserved for special purposes |
 | ABCI Cloud Storage | | 13 PB max. | | See [ABCI Cloud Storage](abci-cloudstorage.md) |
 | Fast data area | /bb | 0.3 PB | | Reserved area for the particular application |
 | Global scratch area | /scratch | 0.4 PB | Lustre | See [Global scratch area](storage.md#scratch-area) |
@@ -177,7 +177,7 @@ The software available on the ABCI system is shown below.
 | OS | Rocky Linux | 8.6 | - |
 | OS | Red Hat Enterprise Linux | - | 8.2 |
 | Job Scheduler | Altair Grid Engine | 8.6.19_C121_1 | 8.6.19_C121_1 |
-| Development Environment | [CUDA Toolkit](gpu.md#cuda-toolkit) | 10.2.89<br>11.0.3<br>11.1.1<br>11.2.2<br>11.3.1<br>11.4.4<br>11.5.2<br>11.6.2<br>11.7.1<br>11.8.0<br>12.0.0<br>12.1.0 | 10.2.89<br>11.0.3<br>11.1.1<br>11.2.2<br>11.3.1<br>11.4.4<br>11.5.2<br>11.6.2<br>11.7.1<br>11.8.0<br>12.0.0<br>12.1.0 |
+| Development Environment | [CUDA Toolkit](gpu.md#cuda-toolkit) | 10.2.89<br>11.0.3<br>11.1.1<br>11.2.2<br>11.3.1<br>11.4.4<br>11.5.2<br>11.6.2<br>11.7.1<br>11.8.0<br>12.0.0<br>12.1.0<br>12.1.1 | 10.2.89<br>11.0.3<br>11.1.1<br>11.2.2<br>11.3.1<br>11.4.4<br>11.5.2<br>11.6.2<br>11.7.1<br>11.8.0<br>12.0.0<br>12.1.0<br>12.1.1 |
 | | Intel oneAPI<br>(compilers and libraries) | 2023.0.0 | 2023.0.0 |
 | | Intel VTune | 2023.0.0 | 2023.0.0 |
 | | Intel Trace Analyzer and Collector | 2021.8.0 | 2021.8.0 |
@@ -199,8 +199,8 @@ The software available on the ABCI system is shown below.
 | Container | [SingularityPRO](containers.md#singularity) | 3.9-10 | 3.9-10 |
 | | Singularity Endpoint | 2.1.5 | 2.1.5 |
 | MPI | [Intel MPI](mpi.md#intel-mpi) | 2021.8 | 2021.8 |
-| Library | [cuDNN](gpu.md#cudnn) | 7.6.5<br>8.0.5<br>8.1.1<br>8.2.4<br>8.3.3<br>8.4.1<br>8.5.0<br>8.6.0<br>8.7.0<br>8.8.1 | 7.6.5<br>8.0.5<br>8.1.1<br>8.2.4<br>8.3.3<br>8.4.1<br>8.5.0<br>8.6.0<br>8.7.0<br>8.8.1 |
-| | [NCCL](gpu.md#nccl) | 2.5.6-1<br>2.6.4-1<br>2.7.8-1<br>2.8.4-1<br>2.9.9-1<br>2.10.3-1<br>2.11.4-1<br>2.12.12-1<br>2.13.4-1<br>2.14.3-1<br>2.15.5-1<br>2.16.2-1<br>2.17.1-1 | 2.5.6-1<br>2.6.4-1<br>2.7.8-1<br>2.8.4-1<br>2.9.9-1<br>2.10.3-1<br>2.11.4-1<br>2.12.12-1<br>2.13.4-1<br>2.14.3-1<br>2.15.5-1<br>2.16.2-1<br>2.17.1-1 |
+| Library | [cuDNN](gpu.md#cudnn) | 7.6.5<br>8.0.5<br>8.1.1<br>8.2.4<br>8.3.3<br>8.4.1<br>8.5.0<br>8.6.0<br>8.7.0<br>8.8.1<br>8.9.1 | 7.6.5<br>8.0.5<br>8.1.1<br>8.2.4<br>8.3.3<br>8.4.1<br>8.5.0<br>8.6.0<br>8.7.0<br>8.8.1<br>8.9.1 |
+| | [NCCL](gpu.md#nccl) | 2.5.6-1<br>2.6.4-1<br>2.7.8-1<br>2.8.4-1<br>2.9.9-1<br>2.10.3-1<br>2.11.4-1<br>2.12.12-1<br>2.13.4-1<br>2.14.3-1<br>2.15.5-1<br>2.16.2-1<br>2.17.1-1<br>2.18.1-1 | 2.5.6-1<br>2.6.4-1<br>2.7.8-1<br>2.8.4-1<br>2.9.9-1<br>2.10.3-1<br>2.11.4-1<br>2.12.12-1<br>2.13.4-1<br>2.14.3-1<br>2.15.5-1<br>2.16.2-1<br>2.17.1-1<br>2.18.1-1 |
 | | gdrcopy | 2.3 | 2.3 |
 | | UCX | 1.10 | 1.11 |
 | | libfabric | 1.7.0-1 | 1.9.0rc1-1 |

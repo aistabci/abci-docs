@@ -1,5 +1,25 @@
 # System Updates
 
+## 2023-05-18
+
+* Change the following limits for Spot and Reserved services on compute node (A) until the end of August 2023.<br>
+However, depending on power and congestion conditions, it is possible to restore the settings before the end of August 2023.
+
+| Service | Resource type name | Limitations | Previous upper limit | Changed upper limit |
+|:--|:--|:--|:--|:--|
+| Spot | rt_AF | Number of nodes available at the same time | 64 nodes | 90 nodes |
+| Spot | rt_AF | Limit of elapsed time | 72 hours | 168 hours |
+| Spot | rt_AF | Limit of node-time product | 288 nodes &middot; hours | 15120 nodes &middot; hours |
+| Reserved | rt_AF | Maximum reserved nodes per reservation | 18 nodes | 30 nodes |
+
+## 2023-05-16
+
+| Add / Update / Delete | Software | Version | Previous version |
+|:--|:--|:--|:--|
+| Add | cuda | 12.1.1 | |
+| Add | cudnn | 8.9.1 | |
+| Add | nccl | 2.18.1-1 | |
+
 ## 2023-04-07 {#2023-04-07}
 
 * Change the OS for compute nodes (V) and interactive nodes (V) from ***CentOS 7*** to ***Rocky Linux 8***.
