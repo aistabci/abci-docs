@@ -115,9 +115,10 @@ There is an elapsed time limit (executable time limit) for jobs depending on the
 | On-demand | rt\_F, rt\_AF | 12:00:00/1:00:00 |
 |           | rt\_G.large, rt\_C.large, rt\_M.large | 12:00:00/1:00:00 |
 |           | rt\_G.small, rt\_C.small, rt\_AG.small, rt\_M.small | 12:00:00/1:00:00 |
-| Spot      | rt\_F, rt\_AF, rt\_G.large | 168:00:00/1:00:00 |
-|           | rt\_C.large, rt\_M.large, rt\_M.small | 72:00:00/1:00:00 |
-|           | rt\_G.small, rt\_C.small, rt\_AG.small | 72:00:00/1:00:00 |
+| Spot      | rt\_F, rt\_AF | 168:00:00/1:00:00 |
+|           | rt\_G.large | 168:00:00/1:00:00 |
+|           | rt\_C.large, rt\_M.large | 72:00:00/1:00:00 |
+|           | rt\_G.small, rt\_C.small, rt\_AG.small, rt\_M.small | 72:00:00/1:00:00 |
 | Reserved  | rt\_F, rt\_AF | unlimited |
 |           | rt\_G.large, rt\_C.large | unlimited |
 |           | rt\_G.small, rt\_C.small, rt\_AG.small | unlimited |
