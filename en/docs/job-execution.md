@@ -115,10 +115,9 @@ There is an elapsed time limit (executable time limit) for jobs depending on the
 | On-demand | rt\_F, rt\_AF | 12:00:00/1:00:00 |
 |           | rt\_G.large, rt\_C.large, rt\_M.large | 12:00:00/1:00:00 |
 |           | rt\_G.small, rt\_C.small, rt\_AG.small, rt\_M.small | 12:00:00/1:00:00 |
-| Spot      | rt\_F | 72:00:00/1:00:00 |
-|           | rt\_AF | 168:00:00/1:00:00 |
-|           | rt\_G.large, rt\_C.large, rt\_M.large, rt\_M.small | 72:00:00/1:00:00 |
-|           | rt\_G.small, rt\_C.small, rt\_AG.small | 168:00:00/1:00:00 |
+| Spot      | rt\_F, rt\_AF, rt\_G.large | 168:00:00/1:00:00 |
+|           | rt\_C.large, rt\_M.large, rt\_M.small | 72:00:00/1:00:00 |
+|           | rt\_G.small, rt\_C.small, rt\_AG.small | 72:00:00/1:00:00 |
 | Reserved  | rt\_F, rt\_AF | unlimited |
 |           | rt\_G.large, rt\_C.large | unlimited |
 |           | rt\_G.small, rt\_C.small, rt\_AG.small | unlimited |
@@ -128,8 +127,9 @@ In addition, when executing a job that uses multiple nodes in On-demand or Spot 
 | Service | max value of node-hour |
 |:--|--:|
 | On-demand                                     |    12 nodes &middot; hours |
-| Spot: Compute Node (V), Memory-Intensive Node |  2304 nodes &middot; hours |
+| Spot: Compute Node (V)                        | 43008 nodes &middot; hours |
 | Spot: Compute Node (A)                        | 15120 nodes &middot; hours |
+| Spot: Memory-Intensive Node                   |  2304 nodes &middot; hours |
 
 ### Limitation on the number of job submissions and executions
 
@@ -485,8 +485,8 @@ The maximum number of nodes and the node-time product that can be reserved for t
 | Maximum reservation days | 30 days | 30 days |
 | Maximum number of nodes can be reserved at once per ABCI group | 272 nodes | 30 nodes |
 | Maximum number of nodes can be reserved at once per system | 442 nodes | 50 nodes |
-| Maximum reserved nodes per reservation | 34 nodes | 30 nodes |
-| Maximum reserved node time per reservation | 13,056 node x hour | 6,912 node x hour |
+| Maximum reserved nodes per reservation | 272 nodes | 30 nodes |
+| Maximum reserved node time per reservation | 45,696 node x hour | 6,912 node x hour |
 | Start time of accept reservation | 10:00 a.m. of 30 days ago | 10:00 a.m. of 30 days ago |
 | Closing time of accept reservation | 9:00 p.m. of Start reservation of the day before | 9:00 p.m. of Start reservation of the day before |
 | Canceling reservation accept term | 9:00 p.m. of Start reservation of the day before | 9:00 p.m. of Start reservation of the day before |

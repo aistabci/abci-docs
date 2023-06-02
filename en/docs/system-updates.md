@@ -7,6 +7,18 @@
 * Modification of the HPC-X parameter
     * Modify the "hwloc_base_binding_policy" parameter of the hpcx*/2.12 module from "core"(bind processes to the CPU core) to "none"(do not bind).
 
+## 2023-06-02
+
+* Change the following limits for Spot and Reserved services on compute node (A) and compute node (A).
+
+| Service | Resource type name | Limitations | Previous upper limit | Changed upper limit |
+|:--|:--|:--|:--|:--|
+| Spot | rt_F, rt_G.large | Limit of elapsed time | 72 hours | 168 hours |
+| Spot | rt_G.small, rt_AG.small, rt_C.small |  Limit of elapsed time | 168 hours | 72 hours |
+| Spot | rt_F | Limit of node-time product | 2304 nodes &middot; hours | 43008 nodes &middot; hours |
+| Reserved | rt_F | Maximum reserved nodes per reservation | 34 nodes | 272 nodes |
+| Reserved | rt_F | Maximum reserved node time per reservation | 13056 nodes &middot; hours | 45696 nodes &middot; hours |
+
 ## 2023-05-18
 
 * Change the following limits for Spot and Reserved services on compute node (A) until the end of August 2023.<br>

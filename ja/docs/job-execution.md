@@ -115,10 +115,9 @@ ABCIシステムには、[計算ノード](system-overview.md#compute-node)と[�
 | On-demand | rt\_F, rt\_AF | 12:00:00/1:00:00 |
 |           | rt\_G.large, rt\_C.large, rt\_M.large | 12:00:00/1:00:00 |
 |           | rt\_G.small, rt\_C.small, rt\_AG.small, rt\_M.small | 12:00:00/1:00:00 |
-| Spot      | rt\_F | 72:00:00/1:00:00 |
-|           | rt\_AF | 168:00:00/1:00:00 |
-|           | rt\_G.large, rt\_C.large, rt\_M.large, rt\_M.small | 72:00:00/1:00:00 |
-|           | rt\_G.small, rt\_C.small, rt\_AG.small | 168:00:00/1:00:00 |
+| Spot      | rt\_F, rt\_AF, rt\_G.large | 168:00:00/1:00:00 |
+|           | rt\_C.large, rt\_M.large, rt\_M.small | 72:00:00/1:00:00 |
+|           | rt\_G.small, rt\_C.small, rt\_AG.small | 72:00:00/1:00:00 |
 | Reserved  | rt\_F, rt\_AF | 無制限 |
 |           | rt\_G.large, rt\_C.large | 無制限 |
 |           | rt\_G.small, rt\_C.small, rt\_AG.small | 無制限 |
@@ -128,8 +127,9 @@ ABCIシステムには、[計算ノード](system-overview.md#compute-node)と[�
 | サービス名 | ノード時間積の最大値 |
 |:--|--:|
 | On-demand                                     |    12 nodes &middot; hours |
-| Spot(計算ノード(V), メモリインテンシブノード) |  2304 nodes &middot; hours |
+| Spot(計算ノード(V))                           | 43008 nodes &middot; hours |
 | Spot(計算ノード(A))                           | 15120 nodes &middot; hours |
+| Spot(メモリインテンシブノード)                |  2304 nodes &middot; hours |
 
 ### ジョブ投入数および実行数の制限 {#limitation-on-the-number-of-job-submissions-and-executions}
 
@@ -492,8 +492,8 @@ Reservedサービスでは、計算ノードを事前に予約して計画的な
 | 最大予約日数 | 30日 | 30日 |
 | ABCIグループあたりの最大同時予約可能ノード数 | 272ノード | 30ノード |
 | システムあたりの最大同時予約可能ノード数 | 442ノード | 50ノード |
-| 1予約あたりの最大予約ノード数 | 34ノード | 30ノード |
-| 1予約あたりの最大予約ノード時間積 | 13,056ノード時間積 | 6,912ノード時間積 |
+| 1予約あたりの最大予約ノード数 | 272ノード | 30ノード |
+| 1予約あたりの最大予約ノード時間積 | 45,696ノード時間積 | 6,912ノード時間積 |
 | 予約受付開始時刻 | 30日前の午前10時 | 30日前の午前10時 |
 | 予約受付締切時刻 | 予約開始前日の午後9時 | 予約開始前日の午後9時 |
 | 予約取消受付期間 | 予約開始前日の午後9時 | 予約開始前日の午後9時 |
