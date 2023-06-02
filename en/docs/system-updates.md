@@ -4,6 +4,28 @@
 
 * ABCI User Portal Updates
     * The "Position" field is required in the "User input" form.
+* Change process binding for HPC-X module
+    * Change the default value of the parameter `hwloc_base_binding_policy` that controls process binding in the HPC-X module from `core` that binds processes to CPU cores to `none` that does not bind processes.
+        * Default value before change: `core`
+        * Default value after change: `none`
+
+## 2023-06-02
+
+* In the Spot service, the limits of elapsed time and node-time product have been changed as follows.
+
+| Resource type name | Limitations | Previous upper limit | Changed upper limit |
+|:--|:--|:--|:--|
+| rt_F, rt_G.large | Limit of elapsed time | 72 hours | 168 hours |
+| rt_G.small, rt_AG.small, rt_C.small |  Limit of elapsed time | 168 hours | 72 hours |
+| rt_F | Limit of node-time product | 2304 nodes &middot; hours | 43008 nodes &middot; hours |
+
+* In the Reserved service, the limits of the number of reserved nodes and reserved node-time have been changed as follows.
+
+| Resource type name | Limitations | Previous upper limit | Changed upper limit |
+|:--|:--|:--|:--|
+| rt_F | Maximum reserved nodes per reservation | 34 nodes | 272 nodes |
+| rt_F | Maximum reserved node time per reservation | 13056 nodes &middot; hours | 45696 nodes &middot; hours |
+| rt_F | Maximum number of nodes can be reserved at once per system | 442 nodes | 476 nodes |
 
 ## 2023-05-18
 
