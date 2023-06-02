@@ -18,6 +18,7 @@
 | Spot | rt_F | Limit of node-time product | 2304 nodes &middot; hours | 43008 nodes &middot; hours |
 | Reserved | rt_F | Maximum reserved nodes per reservation | 34 nodes | 272 nodes |
 | Reserved | rt_F | Maximum reserved node time per reservation | 13056 nodes &middot; hours | 45696 nodes &middot; hours |
+| Reserved | rt_F | Maximum number of nodes can be reserved at once per system | 442 nodes | 476 nodes |
 
 ## 2023-05-18
 
