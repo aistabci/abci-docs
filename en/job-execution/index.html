@@ -1725,23 +1725,23 @@ When using any of the On-demand, Spot, and Reserved services, you need to specif
 </tr>
 <tr>
 <td align="left">Spot</td>
-<td align="left">rt_F</td>
-<td align="left">72:00:00/1:00:00</td>
-</tr>
-<tr>
-<td align="left"></td>
-<td align="left">rt_AF</td>
+<td align="left">rt_F, rt_AF</td>
 <td align="left">168:00:00/1:00:00</td>
 </tr>
 <tr>
 <td align="left"></td>
-<td align="left">rt_G.large, rt_C.large, rt_M.large, rt_M.small</td>
+<td align="left">rt_G.large</td>
+<td align="left">168:00:00/1:00:00</td>
+</tr>
+<tr>
+<td align="left"></td>
+<td align="left">rt_C.large, rt_M.large</td>
 <td align="left">72:00:00/1:00:00</td>
 </tr>
 <tr>
 <td align="left"></td>
-<td align="left">rt_G.small, rt_C.small, rt_AG.small</td>
-<td align="left">168:00:00/1:00:00</td>
+<td align="left">rt_G.small, rt_C.small, rt_AG.small, rt_M.small</td>
+<td align="left">72:00:00/1:00:00</td>
 </tr>
 <tr>
 <td align="left">Reserved</td>
@@ -1774,12 +1774,16 @@ When using any of the On-demand, Spot, and Reserved services, you need to specif
 <td align="right">12 nodes &middot; hours</td>
 </tr>
 <tr>
-<td align="left">Spot: Compute Node (V), Memory-Intensive Node</td>
-<td align="right">2304 nodes &middot; hours</td>
+<td align="left">Spot: Compute Node (V)</td>
+<td align="right">43008 nodes &middot; hours</td>
 </tr>
 <tr>
 <td align="left">Spot: Compute Node (A)</td>
 <td align="right">15120 nodes &middot; hours</td>
+</tr>
+<tr>
+<td align="left">Spot: Memory-Intensive Node</td>
+<td align="right">2304 nodes &middot; hours</td>
 </tr>
 </tbody>
 </table>
@@ -2404,17 +2408,17 @@ For more detail, use <code>man sge_accounting</code> command.</p>
 </tr>
 <tr>
 <td align="left">Maximum number of nodes can be reserved at once per system</td>
-<td align="left">442 nodes</td>
+<td align="left">476 nodes</td>
 <td align="left">50 nodes</td>
 </tr>
 <tr>
 <td align="left">Maximum reserved nodes per reservation</td>
-<td align="left">34 nodes</td>
+<td align="left">272 nodes</td>
 <td align="left">30 nodes</td>
 </tr>
 <tr>
 <td align="left">Maximum reserved node time per reservation</td>
-<td align="left">13,056 node x hour</td>
+<td align="left">45,696 node x hour</td>
 <td align="left">6,912 node x hour</td>
 </tr>
 <tr>

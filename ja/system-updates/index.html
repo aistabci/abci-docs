@@ -990,6 +990,13 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#2023-06-02" class="md-nav__link">
+    2023-06-02
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#2023-05-18" class="md-nav__link">
     2023-05-18
   </a>
@@ -1551,7 +1558,82 @@
 <li>利用者入力の際に職名欄の入力が必須となります。</li>
 </ul>
 </li>
+<li>HPC-Xモジュールのプロセスバインディングを変更<ul>
+<li>HPC-Xモジュールにおける、プロセスバインディングを制御するパラメータ<code>hwloc_base_binding_policy</code>のデフォルト値を、CPUコアにプロセスをバインドする<code>core</code>から、プロセスをバインドしない<code>none</code>に変更します。<ul>
+<li>変更前のデフォルト値：<code>core</code></li>
+<li>変更後のデフォルト値：<code>none</code></li>
 </ul>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="2023-06-02">2023-06-02</h2>
+<ul>
+<li>Spotサービスにおいて、経過時間およびノード時間積の制限を以下の通り変更しました。</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th align="left">資源タイプ</th>
+<th align="left">項目</th>
+<th align="left">変更前の上限値</th>
+<th align="left">変更後の上限値</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">rt_F, rt_G.large</td>
+<td align="left">経過時間上限</td>
+<td align="left">72時間</td>
+<td align="left">168時間</td>
+</tr>
+<tr>
+<td align="left">rt_G.small, rt_AG.small, rt_C.small</td>
+<td align="left">経過時間上限</td>
+<td align="left">168時間</td>
+<td align="left">72時間</td>
+</tr>
+<tr>
+<td align="left">rt_F</td>
+<td align="left">ノード時間積上限</td>
+<td align="left">2304ノード時間</td>
+<td align="left">43008ノード時間</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>Reservedサービスにおいて、予約ノード数およびノード時間積の制限を以下の通り変更しました。</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th align="left">資源タイプ</th>
+<th align="left">項目</th>
+<th align="left">変更前の上限値</th>
+<th align="left">変更後の上限値</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">rt_F</td>
+<td align="left">1予約あたりの最大予約ノード数</td>
+<td align="left">34ノード</td>
+<td align="left">272ノード</td>
+</tr>
+<tr>
+<td align="left">rt_F</td>
+<td align="left">1予約あたりの最大ノード時間積</td>
+<td align="left">13056ノード時間</td>
+<td align="left">45696ノード時間</td>
+</tr>
+<tr>
+<td align="left">rt_F</td>
+<td align="left">システムあたりの最大同時予約可能ノード数</td>
+<td align="left">442ノード</td>
+<td align="left">476ノード</td>
+</tr>
+</tbody>
+</table>
 <h2 id="2023-05-18">2023-05-18</h2>
 <ul>
 <li>2023年8月末まで、計算ノード(A)のSpotサービスおよびReservedサービスの以下の上限値を変更します。<br>

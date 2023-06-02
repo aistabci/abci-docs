@@ -1737,23 +1737,23 @@
 </tr>
 <tr>
 <td align="left">Spot</td>
-<td align="left">rt_F</td>
-<td align="left">72:00:00/1:00:00</td>
-</tr>
-<tr>
-<td align="left"></td>
-<td align="left">rt_AF</td>
+<td align="left">rt_F, rt_AF</td>
 <td align="left">168:00:00/1:00:00</td>
 </tr>
 <tr>
 <td align="left"></td>
-<td align="left">rt_G.large, rt_C.large, rt_M.large, rt_M.small</td>
+<td align="left">rt_G.large</td>
+<td align="left">168:00:00/1:00:00</td>
+</tr>
+<tr>
+<td align="left"></td>
+<td align="left">rt_C.large, rt_M.large</td>
 <td align="left">72:00:00/1:00:00</td>
 </tr>
 <tr>
 <td align="left"></td>
-<td align="left">rt_G.small, rt_C.small, rt_AG.small</td>
-<td align="left">168:00:00/1:00:00</td>
+<td align="left">rt_G.small, rt_C.small, rt_AG.small, rt_M.small</td>
+<td align="left">72:00:00/1:00:00</td>
 </tr>
 <tr>
 <td align="left">Reserved</td>
@@ -1786,12 +1786,16 @@
 <td align="right">12 nodes &middot; hours</td>
 </tr>
 <tr>
-<td align="left">Spot(計算ノード(V), メモリインテンシブノード)</td>
-<td align="right">2304 nodes &middot; hours</td>
+<td align="left">Spot(計算ノード(V))</td>
+<td align="right">43008 nodes &middot; hours</td>
 </tr>
 <tr>
 <td align="left">Spot(計算ノード(A))</td>
 <td align="right">15120 nodes &middot; hours</td>
+</tr>
+<tr>
+<td align="left">Spot(メモリインテンシブノード)</td>
+<td align="right">2304 nodes &middot; hours</td>
 </tr>
 </tbody>
 </table>
@@ -2423,17 +2427,17 @@ module load cuda/10.2/10.2.89
 </tr>
 <tr>
 <td align="left">システムあたりの最大同時予約可能ノード数</td>
-<td align="left">442ノード</td>
+<td align="left">476ノード</td>
 <td align="left">50ノード</td>
 </tr>
 <tr>
 <td align="left">1予約あたりの最大予約ノード数</td>
-<td align="left">34ノード</td>
+<td align="left">272ノード</td>
 <td align="left">30ノード</td>
 </tr>
 <tr>
 <td align="left">1予約あたりの最大予約ノード時間積</td>
-<td align="left">13,056ノード時間積</td>
+<td align="left">45,696ノード時間積</td>
 <td align="left">6,912ノード時間積</td>
 </tr>
 <tr>
