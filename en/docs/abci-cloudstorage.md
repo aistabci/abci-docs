@@ -16,8 +16,8 @@ ABCI Cloud Storage has unique capabilities.
 
     Users can encrypt data transfers between clients and the storage. Users can also encrypt data and store encrypted data in the storage.
 
-To start using ABCI Cloud Storage, Usage Manager of each ABCI group should apply for use on [ABCI User Portal](https://portal.abci.ai/user/).
-If you are not a Usage Manager, please contact to Usage Managers of your group.
+To start using ABCI Cloud Storage, User Administrator of each ABCI group should apply for use on [ABCI User Portal](https://portal.abci.ai/user/).
+If you are not a User Administrator, please contact to User Administrators of your group.
 For details of the operation, refer to [ABCI Portal Guide](https://docs.abci.ai/portal/en/).
 
 ABCI points based on the total size of objects in buckets owned by your ABCI group are subtracted from your ABCI group's each day. There is no charge for data transfer or API calls. Users can check the total size by [show_cs_usage](getting-started.md#check-cloud-storage-usage). The calculation formula of ABCI points for using ABCI Cloud Storage is as follows.
@@ -35,4 +35,4 @@ As for charge coefficient of ABCI Cloud Storage, see [this page](https://abci.ai
 | [Usage](abci-cloudstorage/usage.md) | This section shows basic usage. |
 | [Encryption](abci-cloudstorage/encryption.md) | This section explains encryption. |
 | [Access Control (1)](abci-cloudstorage/acl.md) | This section shows how to control accessibility by ACL. Data can be shared between groups. |
-| [Access Control (2)](abci-cloudstorage/policy.md) | This section explains access control which is applicable to buckets and user accounts. It is possible to set access control that cannot be done with ACL. Settings for buckets can be done with a User Account, but Usage Managers Account is necessary to set for accounts. |
+| [Access Control (2)](abci-cloudstorage/policy.md) | This section explains access control which is applicable to buckets and user accounts. It is possible to set access control that cannot be done with ACL. Settings for buckets can be done with a User Account, but User Administrators Account is necessary to set for accounts. |

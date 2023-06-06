@@ -7,7 +7,7 @@ There are two types of "Access Control Policy": "Bucket Policy" and "User Policy
 * Bucket Policy: Set an access control policy for the bucket.
 * User Policy: Set access control policies for your ABCI Cloud Storage account.
 
-"Bucket Policy" can be set with the Users Account, but Usage Managers Account is necessary to set "User Policy". If your ABCI Cloud Storage account is Users Account, ask Usage Managers to change the accessibility or to grant you appropriate permission.
+"Bucket Policy" can be set with the Users Account, but Usage Managers Account is necessary to set "User Policy". If your ABCI Cloud Storage account is Users Account, ask User Administrators to change the accessibility or to grant you appropriate permission.
 
 ## Default Permission 
 

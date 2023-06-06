@@ -3,7 +3,7 @@
 
 ## Cloud Storage Account
 
-There are two types of accounts. The one is 'Cloud Storage Account for user' and the other is 'Cloud Storage Account for manager'. Cloud Storage Account for user is issued to each ABCI user per ABCI group. Both Cloud Storage Account for user and Cloud Storage Account for manager are issued to Usage Managers.
+There are two types of accounts. The one is 'Cloud Storage Account for user' and the other is 'Cloud Storage Account for manager'. Cloud Storage Account for user is issued to each ABCI user per ABCI group. Both Cloud Storage Account for user and Cloud Storage Account for manager are issued to User Administrators.
 
 ### Cloud Storage Account for User
 
@@ -17,11 +17,11 @@ An ABCI user can own at most 10 Cloud Storage Accounts per group. If an ABCI use
 
 ### Cloud Storage Account for Manager
 
-This account is only given to Usage Managers and allow them to control accessibility. For more information, see [Access Control(2)](policy.md).
+This account is only given to User Administrators and allow them to control accessibility. For more information, see [Access Control(2)](policy.md).
 
 Even though Usage Managers can use this account in order to perform what users can do such as uploading or downloading data, they are basically supposed to use rather their Users Account than Usage Managers Account to do so.
 
-The Cloud Storage Account for Manager is issued to every single Usage Manager. If a user is a Usage Manager for two groups, two accounts are given to her/him.
+The Cloud Storage Account for Manager is issued to every single User Administrator. If a user is a User Administrator for two groups, two accounts are given to her/him.
 
 ## Access Key
 
