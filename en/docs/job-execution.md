@@ -500,7 +500,7 @@ To make a reservation compute node, use `qrsub` command or the ABCI User Portal.
 When the reservation is completed, a reservation ID will be issued. Please specify this reservation ID when using the reserved node.
 
 !!! warning
-    Making reservation of compute node is permitted to a Responsible Pperson or User Administrators.
+    Making reservation of compute node is permitted to a Responsible Person or User Administrators.
 
 ```
 $ qrsub options
