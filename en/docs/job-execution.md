@@ -500,7 +500,7 @@ To make a reservation compute node, use `qrsub` command or the ABCI User Portal.
 When the reservation is completed, a reservation ID will be issued. Please specify this reservation ID when using the reserved node.
 
 !!! warning
-    Making reservation of compute node is permitted to a responsible person or a manager.
+    Making reservation of compute node is permitted to a Responsible Person or User Administrators.
 
 ```
 $ qrsub options
@@ -581,7 +581,7 @@ Checking the Number of Reservable Nodes for Compute Nodes(A)
 ### Cancel a reservation
 
 !!! warning
-    Canceling reservation is permitted to a responsible person or a manager.
+    Canceling reservation is permitted to a Responsible Person or User Administrators.
 
 To cancel a reservation, use the `qrdel` command or the ABCI User Portal. When canceling reservation with qrdel command, multiple reservation IDs can be specified as comma separated list. If you specify a reservation ID that does not exist or a reservation ID that you do not have deletion permission for, an error occurs and any reservations are not canceled.
 
