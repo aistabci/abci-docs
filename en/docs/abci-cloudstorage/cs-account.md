@@ -19,7 +19,7 @@ An ABCI user can own at most 10 Cloud Storage Accounts per group. If an ABCI use
 
 This account is only given to User Administrators and allow them to control accessibility. For more information, see [Access Control(2)](policy.md).
 
-Even though Usage Managers can use this account in order to perform what users can do such as uploading or downloading data, they are basically supposed to use rather their Users Account than Usage Managers Account to do so.
+Even though User Administrators can use the 'Cloud Storage Account for managers' in order to perform what 'Cloud Storage Account for users' can do such as uploading or downloading data, it is basically supposed to use rather 'Cloud Storage Account for user' than 'Cloud Storage Account for manager' to do so.
 
 The Cloud Storage Account for Manager is issued to every single User Administrator. If a user is a User Administrator for two groups, two accounts are given to her/him.
 

@@ -35,4 +35,4 @@ As for charge coefficient of ABCI Cloud Storage, see [this page](https://abci.ai
 | [Usage](abci-cloudstorage/usage.md) | This section shows basic usage. |
 | [Encryption](abci-cloudstorage/encryption.md) | This section explains encryption. |
 | [Access Control (1)](abci-cloudstorage/acl.md) | This section shows how to control accessibility by ACL. Data can be shared between groups. |
-| [Access Control (2)](abci-cloudstorage/policy.md) | This section explains access control which is applicable to buckets and user accounts. It is possible to set access control that cannot be done with ACL. Settings for buckets can be done with a User Account, but Usage Managers Account is necessary to set for accounts. |
+| [Access Control (2)](abci-cloudstorage/policy.md) | This section explains access control which is applicable to buckets and user accounts. It is possible to set access control that cannot be done with ACL. Settings for buckets can be done with Cloud Storage Account for users, but Cloud Storage Account for managers is necessary to set for accounts. |

@@ -7,7 +7,7 @@ There are two types of "Access Control Policy": "Bucket Policy" and "User Policy
 * Bucket Policy: Set an access control policy for the bucket.
 * User Policy: Set access control policies for your ABCI Cloud Storage account.
 
-"Bucket Policy" can be set with the Users Account, but Usage Managers Account is necessary to set "User Policy". If your ABCI Cloud Storage account is Users Account, ask User Administrators to change the accessibility or to grant you appropriate permission.
+"Bucket Policy" can be set with the Cloud Storage Account for user, but Cloud Storage Account for manager is necessary to set "User Policy". If your ABCI Cloud Storage Account is which for Users, ask User Administrators to change the accessibility or to grant you appropriate permission.
 
 ## Default Permission 
 
@@ -104,7 +104,7 @@ This part explains how to share a bucket between ABCI groups.
 In this example, two ABCI cloud storage accounts bbb00000.1 and bbb00001.1 belonging to Group B are granted access to the 'share-bucket' bucket owned by Group A.
 
 Firstly, a user in Group B executes the command `aws iam get-user` to obtain the Arn values for users bbb00000.1 and bbb00001.1 whose access is to be allowed.
-To execute the command `aws iam get-user`, Usage Managers Account is necessary.
+To execute the command `aws iam get-user`, Cloud Storage Account for manager is necessary.
 
 ```
 [username@es1 ~]$ aws --endpoint-url https://s3.abci.ai iam get-user --user-name bbb00000.1 --query User.Arn
