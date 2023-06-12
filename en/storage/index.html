@@ -1364,7 +1364,7 @@ If an attempt is made to create a file that exceeds the limit, an error message 
 </code></pre></div>
 
 <h2 id="group-area">Group Area</h2>
-<p>Group area is the disk area of the Lustre file system shared by interactive and compute nodes. To use Group area, "Usage Manager" of the group needs to apply "Add group disk" via <a href="https://portal.abci.ai/user/">ABCI User Portal</a>. Regarding how to add group disk, please refer to <a href="https://docs.abci.ai/portal/en/03/#352-disk-addition-request">Disk Addition Request</a> in the <a href="https://docs.abci.ai/portal/en/">ABCI Portal Guide</a>.</p>
+<p>Group area is the disk area of the Lustre file system shared by interactive and compute nodes. To use Group area, "User Administrator" of the group needs to apply "Add group disk" via <a href="https://portal.abci.ai/user/">ABCI User Portal</a>. Regarding how to add group disk, please refer to <a href="https://docs.abci.ai/portal/en/03/#352-disk-addition-request">Disk Addition Request</a> in the <a href="https://docs.abci.ai/portal/en/">ABCI Portal Guide</a>.</p>
 <p>To find the path to your group area, use the <code>show_quota</code> command. For details, see <a href="../getting-started/#checking-disk-quota">Checking Disk Quota</a>.</p>
 <h3 id="how-to-check-inode-usage">How to check inode usage</h3>
 <p>The MDT stores inode information for a file, but there is an upper limit on the number of inodes that can be stored per MDT.
