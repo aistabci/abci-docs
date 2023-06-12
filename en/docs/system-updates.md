@@ -1,11 +1,11 @@
 # System Updates
 
-## 2023-06-12 (future update) {#2023-06-12}
+## 2023-06-12
 
 * ABCI User Portal Updates
     * The "Position" field is required in the "User input" form.
 * Change process binding for HPC-X module
-    * Change the default value of the parameter `hwloc_base_binding_policy` that controls process binding in the HPC-X module from `core` that binds processes to CPU cores to `none` that does not bind processes.
+    * Changed the default value of the parameter `hwloc_base_binding_policy` that controls process binding in the HPC-X module from `core` that binds processes to CPU cores to `none` that does not bind processes.
         * Default value before change: `core`
         * Default value after change: `none`
 
