@@ -9,6 +9,10 @@
         * 変更前のデフォルト値：`core`
         * 変更後のデフォルト値：`none`
 
+| Add / Update / Delete | Software | Version | Previous version |
+|:--|:--|:--|:--|
+| Add | cudnn | 8.9.2 | |
+
 ## 2023-06-02
 
 * Spotサービスにおいて、経過時間およびノード時間積の制限を以下の通り変更しました。

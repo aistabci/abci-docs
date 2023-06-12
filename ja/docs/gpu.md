@@ -55,6 +55,7 @@ ABCIシステムでは、NVIDIAが提供する以下のライブラリが利用�
 | 8.7.0   | Yes           | Yes           | Yes           | Yes           | Yes           | Yes           | Yes           | Yes           | Yes       | Yes       | -         | -         |
 | 8.8.1   | -             | Yes           | Yes           | Yes           | Yes           | Yes           | Yes           | Yes           | Yes       | Yes       | Yes       | Yes       |
 | 8.9.1   | -             | Yes           | Yes           | Yes           | Yes           | Yes           | Yes           | Yes           | Yes       | Yes       | Yes       | Yes       |
+| 8.9.2   | -             | Yes           | Yes           | Yes           | Yes           | Yes           | Yes           | Yes           | Yes       | Yes       | Yes       | Yes       |
 
 計算ノード(A):
 
@@ -71,6 +72,7 @@ ABCIシステムでは、NVIDIAが提供する以下のライブラリが利用�
 | 8.7.0   | Yes           | Yes       | Yes       | Yes       | Yes       | Yes       | Yes       | Yes       | Yes       | Yes       | -         | -         |
 | 8.8.1   | -             | Yes       | Yes       | Yes       | Yes       | Yes       | Yes       | Yes       | Yes       | Yes       | Yes       | Yes       |
 | 8.9.1   | -             | Yes       | Yes       | Yes       | Yes       | Yes       | Yes       | Yes       | Yes       | Yes       | Yes       | Yes       |
+| 8.9.2   | -             | Yes       | Yes       | Yes       | Yes       | Yes       | Yes       | Yes       | Yes       | Yes       | Yes       | Yes       |
 
 ## NCCL
 

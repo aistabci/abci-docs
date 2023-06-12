@@ -9,6 +9,10 @@
         * Default value before change: `core`
         * Default value after change: `none`
 
+| Add / Update / Delete | Software | Version | Previous version |
+|:--|:--|:--|:--|
+| Add | cudnn | 8.9.2 | |
+
 ## 2023-06-02
 
 * In the Spot service, the limits of elapsed time and node-time product have been changed as follows.
