@@ -1,5 +1,36 @@
 # System Updates
 
+## 2023-06-12
+
+* ABCI User Portal Updates
+    * The "Position" field is required in the "User input" form.
+* Change process binding for HPC-X module
+    * Changed the default value of the parameter `hwloc_base_binding_policy` that controls process binding in the HPC-X module from `core` that binds processes to CPU cores to `none` that does not bind processes.
+        * Default value before change: `core`
+        * Default value after change: `none`
+
+| Add / Update / Delete | Software | Version | Previous version |
+|:--|:--|:--|:--|
+| Add | cudnn | 8.9.2 | |
+
+## 2023-06-02
+
+* In the Spot service, the limits of elapsed time and node-time product have been changed as follows.
+
+| Resource type name | Limitations | Previous upper limit | Changed upper limit |
+|:--|:--|:--|:--|
+| rt_F, rt_G.large | Limit of elapsed time | 72 hours | 168 hours |
+| rt_G.small, rt_AG.small, rt_C.small |  Limit of elapsed time | 168 hours | 72 hours |
+| rt_F | Limit of node-time product | 2304 nodes &middot; hours | 43008 nodes &middot; hours |
+
+* In the Reserved service, the limits of the number of reserved nodes and reserved node-time have been changed as follows.
+
+| Resource type name | Limitations | Previous upper limit | Changed upper limit |
+|:--|:--|:--|:--|
+| rt_F | Maximum reserved nodes per reservation | 34 nodes | 272 nodes |
+| rt_F | Maximum reserved node time per reservation | 13056 nodes &middot; hours | 45696 nodes &middot; hours |
+| rt_F | Maximum number of nodes can be reserved at once per system | 442 nodes | 476 nodes |
+
 ## 2023-05-18
 
 * Change the following limits for Spot and Reserved services on compute node (A) until the end of August 2023.<br>
@@ -59,10 +90,18 @@ However, depending on power and congestion conditions, it is possible to restore
 
 | Add / Update / Delete | Software | Version | Previous version |
 |:--|:--|:--|:--|
-| Delete | gcc | 9.3.0 | |
+| Add | gcc | 12.2.0 | |
+| Delete | gcc | 9.3.0<br>11.2.0 | |
+| Add | python | 3.11.2 | |
+| Update | python | 3.10.10 | 3.10.4 |
+| Delete | python | 2.7.18<br>3.7.13<br>3.8.13 | |
 | Delete | cuda | 9.0.176.1<br>9.1.85.3<br>9.2.148.1<br>10.0.130.1<br>10.1.243<br>11.7.0 | |
 | Delete | cudnn | 7.0.5<br>7.1.4<br>7.2.1<br>7.3.1<br>7.4.2<br>7.5.1 | |
 | Delete | nccl | 2.4.8-1 | |
+| Add | hpcx | 2.12 | |
+| Add | hpcx-debug | 2.12 | |
+| Add | hpcx-mt | 2.12 | |
+| Add | hpcx-prof | 2.12 | |
 | Update | intel | 2023.0.0 | 2022.2.1 |
 | Update | intel-advisor | 2023.0 | 2022.3.1 |
 | Update | intel-inspector | 2023.0 | 2022.3.1 |

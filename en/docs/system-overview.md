@@ -199,7 +199,7 @@ The software available on the ABCI system is shown below.
 | Container | [SingularityPRO](containers.md#singularity) | 3.9-10 | 3.9-10 |
 | | Singularity Endpoint | 2.1.5 | 2.1.5 |
 | MPI | [Intel MPI](mpi.md#intel-mpi) | 2021.8 | 2021.8 |
-| Library | [cuDNN](gpu.md#cudnn) | 7.6.5<br>8.0.5<br>8.1.1<br>8.2.4<br>8.3.3<br>8.4.1<br>8.5.0<br>8.6.0<br>8.7.0<br>8.8.1<br>8.9.1 | 7.6.5<br>8.0.5<br>8.1.1<br>8.2.4<br>8.3.3<br>8.4.1<br>8.5.0<br>8.6.0<br>8.7.0<br>8.8.1<br>8.9.1 |
+| Library | [cuDNN](gpu.md#cudnn) | 7.6.5<br>8.0.5<br>8.1.1<br>8.2.4<br>8.3.3<br>8.4.1<br>8.5.0<br>8.6.0<br>8.7.0<br>8.8.1<br>8.9.1<br>8.9.2 | 7.6.5<br>8.0.5<br>8.1.1<br>8.2.4<br>8.3.3<br>8.4.1<br>8.5.0<br>8.6.0<br>8.7.0<br>8.8.1<br>8.9.1<br>8.9.2 |
 | | [NCCL](gpu.md#nccl) | 2.5.6-1<br>2.6.4-1<br>2.7.8-1<br>2.8.4-1<br>2.9.9-1<br>2.10.3-1<br>2.11.4-1<br>2.12.12-1<br>2.13.4-1<br>2.14.3-1<br>2.15.5-1<br>2.16.2-1<br>2.17.1-1<br>2.18.1-1 | 2.5.6-1<br>2.6.4-1<br>2.7.8-1<br>2.8.4-1<br>2.9.9-1<br>2.10.3-1<br>2.11.4-1<br>2.12.12-1<br>2.13.4-1<br>2.14.3-1<br>2.15.5-1<br>2.16.2-1<br>2.17.1-1<br>2.18.1-1 |
 | | gdrcopy | 2.3 | 2.3 |
 | | UCX | 1.10 | 1.11 |
