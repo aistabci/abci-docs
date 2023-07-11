@@ -58,6 +58,10 @@ ABCIシステムのSingularityPRO環境では`fakeroot`オプションを使用�
 !!! note
     SingularityPRO環境ではリモートビルドも利用可能です。詳細は[ABCI Singularity エンドポイント](abci-singularity-endpoint.md)を参照して下さい。
 
+!!! warning
+    `fakeroot`オプションを使用する場合、`SINGULARITY_TMPDIR`環境変数に指定できる場所は、ノードローカルの領域のみ(/tmpや$SGE_LOCALDIRなど)となります。
+    ホーム領域($HOME)、グループ領域(/groups/$YOUR_GROUP)、グルーバルスクラッチ領域(/scratch/$USER)は指定できません。
+
 `build`によるSingularityイメージファイルの作成例）
 
 ```
@@ -89,10 +93,6 @@ INFO:    Build complete: ubuntu.sif
 uid=0000(aaa00000aa) gid=0000(aaa00000aa) groups=0000(aaa00000aa),00000(gaa00000)
 [username@es1 groupname]$ newgrp gaa00000
 ```
-
-!!! warning
-    `fakeroot`オプションを使用する場合、`SINGULARITY_TMPDIR`環境変数に指定できる場所は、ノードローカルの領域のみ(/tmpや$SGE_LOCALDIRなど)となります。
-    ホーム領域($HOME)、グループ領域(/groups/$YOUR_GROUP)、グルーバルスクラッチ領域(/scratch/$USER)は指定できません。
 
 ### コンテナの実行 {#running-a-container-with-singularity}
 
