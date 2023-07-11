@@ -91,6 +91,10 @@ uid=0000(aaa00000aa) gid=0000(aaa00000aa) groups=0000(aaa00000aa),00000(gaa00000
 [username@es1 groupname]$ newgrp gaa00000
 ```
 
+!!! warning
+    When using the `fakeroot` option, only node-local areas (such as /tmp or $SGE_LOCALDIR) can be specified for the `SINGULARITY_TMPDIR` environment variable.
+    Home area ($HOME), Group area (/groups/$YOUR_GROUP), and global scratch area (/scratch/$USER) cannot be specified.
+
 ### Running a container with Singularity
 
 When you use Singularity, you need to start Singularity container using `singularity run` command in job script.
