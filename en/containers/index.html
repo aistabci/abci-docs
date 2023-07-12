@@ -1239,6 +1239,11 @@ Please refer to the FAQ <a href="../faq/#q-insufficient-disk-space-for-singulari
 <p class="admonition-title">Note</p>
 <p>In the SingularityPRO environment, you can also build container image file using remote build. See <a href="../abci-singularity-endpoint/">ABCI Singularity Endpoint</a> for more information.</p>
 </div>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>When using the <code>fakeroot</code> option, only node-local areas (such as /tmp or $SGE_LOCALDIR) can be specified for the <code>SINGULARITY_TMPDIR</code> environment variable.
+Home area ($HOME), Group area (/groups/$YOUR_GROUP), and global scratch area (/scratch/$USER) cannot be specified.</p>
+</div>
 <p>Example) Create a Singularity image file using <code>build</code></p>
 <div class="codehilite"><pre><span></span><code><span class="p">[</span><span class="n">username</span><span class="err">@</span><span class="n">es1</span> <span class="o">~</span><span class="p">]</span><span class="n">$</span> <span class="k">module</span> <span class="n">load</span> <span class="n">singularitypro</span>
 <span class="p">[</span><span class="n">username</span><span class="err">@</span><span class="n">es1</span> <span class="o">~</span><span class="p">]</span><span class="n">$</span> <span class="n">cat</span> <span class="n">ubuntu</span><span class="p">.</span><span class="n">def</span>

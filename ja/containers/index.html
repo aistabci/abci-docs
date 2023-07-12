@@ -1250,6 +1250,11 @@ NGC CatalogのABCIでの使い方はTipsの<a href="https://docs.abci.ai/ja/tips
 <p class="admonition-title">Note</p>
 <p>SingularityPRO環境ではリモートビルドも利用可能です。詳細は<a href="../abci-singularity-endpoint/">ABCI Singularity エンドポイント</a>を参照して下さい。</p>
 </div>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p><code>fakeroot</code>オプションを使用する場合、<code>SINGULARITY_TMPDIR</code>環境変数に指定できる場所は、ノードローカルの領域のみ(/tmpや$SGE_LOCALDIRなど)となります。
+ホーム領域($HOME)、グループ領域(/groups/$YOUR_GROUP)、グルーバルスクラッチ領域(/scratch/$USER)は指定できません。</p>
+</div>
 <p><code>build</code>によるSingularityイメージファイルの作成例）</p>
 <div class="codehilite"><pre><span></span><code><span class="p">[</span><span class="n">username</span><span class="err">@</span><span class="n">es1</span> <span class="o">~</span><span class="p">]</span><span class="n">$</span> <span class="k">module</span> <span class="n">load</span> <span class="n">singularitypro</span>
 <span class="p">[</span><span class="n">username</span><span class="err">@</span><span class="n">es1</span> <span class="o">~</span><span class="p">]</span><span class="n">$</span> <span class="n">cat</span> <span class="n">ubuntu</span><span class="p">.</span><span class="n">def</span>
