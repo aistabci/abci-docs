@@ -59,6 +59,10 @@ In the SingularityPRO environment of the ABCI system, you can build container im
 !!! note
     In the SingularityPRO environment, you can also build container image file using remote build. See [ABCI Singularity Endpoint](abci-singularity-endpoint.md) for more information.
 
+!!! warning
+    When using the `fakeroot` option, only node-local areas (such as /tmp or $SGE_LOCALDIR) can be specified for the `SINGULARITY_TMPDIR` environment variable.
+    Home area ($HOME), Group area (/groups/$YOUR_GROUP), and global scratch area (/scratch/$USER) cannot be specified.
+
 Example) Create a Singularity image file using `build`
 
 ```
