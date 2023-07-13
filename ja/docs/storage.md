@@ -4,7 +4,7 @@ ABCIで利用可能なストレージは、下記の5種類です。
 
 * [ホーム領域](#home-area)
 * [グループ領域](#group-area)
-* [グローバススクラッチ領域](#scratch-area)
+* [グローバルスクラッチ領域](#scratch-area)
 * [ローカルストレージ](#local-storage)
 	* [ローカルスクラッチ](#local-scratch)
 	* [永続ローカルスクラッチ](#persistent-local-scratch) (Reserved専用)
