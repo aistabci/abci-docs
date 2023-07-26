@@ -26,7 +26,7 @@ See [Batch Jobs](#batch-jobs) for usage, and [Job Execution Options](#job-execut
 
 ### Reserved Service
 
-Reserved service is a service that allows you to reserve and use computational resources on a daily basis in advance. It allows planned job execution without being affected by the congenstions of On-demand and Spot services. In addition, if the reserved days of the Reserved Service are long, the elapsed time limit can be set longer than that of the Spot Service, so jobs with an elapsed time longer than that of the Spot Service can be executed.
+Reserved service is a service that allows you to reserve and use computational resources on a daily basis in advance. It allows planned job execution without being affected by the congenstions of On-demand and Spot services. In addition, since you can reserve more days than the elapsed time limit of the Spot Service, it is possible to execute jobs for a longer time.
 
 In Reserved service, you first make a reservation in advance to obtain a reservation ID (AR-ID), and then use this reservation ID to execute interactive jobs and batch jobs.
 
@@ -133,7 +133,7 @@ In addition, when executing a job that uses multiple nodes in On-demand or Spot 
 | Spot: Memory-Intensive Node                   |  2304 nodes &middot; hours |
 
 !!!note
-    The Reserved Service allows jobs to be submitted with unlimited elapsed time by not specifying an elapsed time limit, but the job is killed when the reservation is terminated. For more information about restrictions for the Reserved service, see [Advance Reservation](#advance-reservation).
+    There is no limit on the elapsed time in the Reserved service, but the job will be forcibly terminated when the reservation ends. See [Advance Reservation](#advance-reservation) for more information about restrictions on Reserved Services.
 
 ### Limitation on the number of job submissions and executions
 
