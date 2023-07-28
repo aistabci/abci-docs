@@ -488,7 +488,7 @@ The maximum number of nodes and the node-time product that can be reserved for t
 | Minimum reservation days | 1 day | 1 day |
 | Maximum reservation days | 30 days | 30 days |
 | Maximum number of nodes can be reserved at once per ABCI group | 272 nodes | 30 nodes |
-| Maximum number of nodes can be reserved at once per system | 476 nodes | 50 nodes |
+| Maximum number of nodes can be reserved at once per system | 476 nodes | 30 nodes |
 | Maximum reserved nodes per reservation | 272 nodes | 30 nodes |
 | Maximum reserved node time per reservation | 45,696 node x hour | 6,912 node x hour |
 | Start time of accept reservation | 10:00 a.m. of 30 days ago | 10:00 a.m. of 30 days ago |
