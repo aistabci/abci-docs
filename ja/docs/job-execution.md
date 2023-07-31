@@ -26,7 +26,7 @@ ABCIシステムでは、以下のジョブサービスが利用可能です。
 
 ### Reservedサービス {#reserved-service}
 
-計算リソースを日単位で事前に予約して利用できるサービスです。On-demandおよびSpotサービスの混雑の影響を受けることなく、計画的なジョブ実行が可能となります。また、経過時間およびノード時間積の制限がないため、より長時間のジョブ実行が可能です。
+計算リソースを日単位で事前に予約して利用できるサービスです。On-demandおよびSpotサービスの混雑の影響を受けることなく、計画的なジョブ実行が可能となります。また、Spotサービスの経過時間制限以上の予約日数が取れるため、より長時間のジョブ実行が可能です。
 
 Reservedサービスでは、まず事前予約を行って予約ID (AR-ID)を取得し、この予約IDを用いてインタラクティブジョブやバッチジョブの実行を行います。
 
@@ -131,6 +131,10 @@ ABCIシステムには、[計算ノード](system-overview.md#compute-node)と[�
 | Spot(計算ノード(V))                           | 43008 nodes &middot; hours |
 | Spot(計算ノード(A))                           | 15120 nodes &middot; hours |
 | Spot(メモリインテンシブノード)                |  2304 nodes &middot; hours |
+
+!!! note
+    Reservedサービスでは経過時間に制限はありませんが、予約の終了と共にジョブは強制終了します。
+    Reservedサービスに関する制限の詳細については[事前予約](#advance-reservation)を参照してください。
 
 ### ジョブ投入数および実行数の制限 {#limitation-on-the-number-of-job-submissions-and-executions}
 

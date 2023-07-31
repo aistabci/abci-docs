@@ -58,6 +58,10 @@ ABCIシステムのSingularityPRO環境では`fakeroot`オプションを使用�
 !!! note
     SingularityPRO環境ではリモートビルドも利用可能です。詳細は[ABCI Singularity エンドポイント](abci-singularity-endpoint.md)を参照して下さい。
 
+!!! warning
+    `fakeroot`オプションを使用する場合、`SINGULARITY_TMPDIR`環境変数に指定できる場所は、ノードローカルの領域のみ(/tmpや$SGE_LOCALDIRなど)となります。
+    ホーム領域($HOME)、グループ領域(/groups/$YOUR_GROUP)、グルーバルスクラッチ領域(/scratch/$USER)は指定できません。
+
 `build`によるSingularityイメージファイルの作成例）
 
 ```

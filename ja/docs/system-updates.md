@@ -1,5 +1,12 @@
 # システム更新履歴
 
+## 2023-07-10
+
+| Add / Update / Delete | Software | Version | Previous version |
+|:--|:--|:--|:--|
+| Add | cuda | 12.2.0 | |
+| Add | nccl | 2.18.3-1 | |
+
 ## 2023-06-12
 
 * ABCI利用者ポータルの更新
