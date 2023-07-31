@@ -1404,7 +1404,7 @@
 <p>Spot Service is a batch job execution service suitable for executing applications that do not require interactive processing. It is possible to execute jobs that take longer or have a higher degree of parallelism than On-demand service.</p>
 <p>See <a href="#batch-jobs">Batch Jobs</a> for usage, and <a href="#job-execution-options">Job Execution Options</a> for details on batch job execution options.</p>
 <h3 id="reserved-service">Reserved Service</h3>
-<p>Reserved service is a service that allows you to reserve and use computational resources on a daily basis in advance. It allows planned job execution without being affected by the congenstions of On-demand and Spot services. In addition, since there are no restrictions on elapsed time and node-time product, it is possible to execute jobs for a longer period of time.</p>
+<p>Reserved service is a service that allows you to reserve and use computational resources on a daily basis in advance. It allows planned job execution without being affected by the congenstions of On-demand and Spot services. In addition, since you can reserve more days than the elapsed time limit of the Spot Service, it is possible to execute jobs for a longer time.</p>
 <p>In Reserved service, you first make a reservation in advance to obtain a reservation ID (AR-ID), and then use this reservation ID to execute interactive jobs and batch jobs.</p>
 <p>See <a href="#advance-reservation">Advance Reservation</a> for the reservation method. The usage and execution options for interactive jobs and batch jobs are the same as for On-demand and Spot services.</p>
 <h2 id="job-execution-resource">Job Execution Resource</h2>
@@ -1787,6 +1787,10 @@ When using any of the On-demand, Spot, and Reserved services, you need to specif
 </tr>
 </tbody>
 </table>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>There is no limit on the elapsed time in the Reserved service, but the job will be forcibly terminated when the reservation ends. See <a href="#advance-reservation">Advance Reservation</a> for more information about restrictions on Reserved Services.</p>
+</div>
 <h3 id="limitation-on-the-number-of-job-submissions-and-executions">Limitation on the number of job submissions and executions</h3>
 <p>The job limit of submission and execution for the job service are as follows. 
 The number of the submitted jobs to the reserved node is included in the number of unfinished/running jobs as well as other On-demand/Spot jobs and are affected by the limit.</p>
