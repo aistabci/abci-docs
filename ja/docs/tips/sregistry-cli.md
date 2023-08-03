@@ -57,7 +57,7 @@ actions:
 
 
 !!! note
-    手順は[AWS CLIの利用](/tips/awscli/){:target="aws_cli"}の[アクセストークンの登録](/tips/awscli/#_2){:target="aws_cli"}手順を完了していることを前提としています。
+    手順は[AWS CLIの利用](awscli.md){:target="aws_cli"}の[アクセストークンの登録](awscli.md#_2){:target="aws_cli"}手順を完了していることを前提としています。
 
 
 Singularity Global ClientとAmazon ECR利用に必要なモジュールの読み込みます。

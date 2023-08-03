@@ -676,6 +676,10 @@ The points are counted as the usage points of the person responsible for the use
 The calculation formula of ABCI point for using Reserved service is follows:
 
 > Service charge coefficient  
+> &times; Resource type charge coefficient  
 > &times; number of reserved nodes  
 > &times; number of reserved days  
 > &times; 24
+
+!!! note
+    Reservation for Compute Node (V) is treated as resource type rt_F, and reservations for Compute Node (A) is treated as resource type rt_AF.
