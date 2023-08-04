@@ -6,7 +6,7 @@ SingularityPRO では、Amazon ECR からコンテナイメージを ``singulari
 SingularityPRO と Amazon ECR の利用に必要なモジュールを読み込みます。
 
 !!! note
-    [AWS CLIの利用](/tips/awscli/){:target="aws_cli"}の[アクセストークンの登録手順](/tips/awscli/#_2){:target="aws_cli"}を完了していることを前提としています。
+    [AWS CLIの利用](awscli.md){:target="aws_cli"}の[アクセストークンの登録手順](awscli.md#_2){:target="aws_cli"}を完了していることを前提としています。
 
 ```
 [username@es1 ~]$ module load singularitypro aws-cli

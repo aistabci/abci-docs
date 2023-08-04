@@ -57,7 +57,7 @@ As an execution example, the following shows the procedure for pull the latest-g
 
 
 !!! note
-    This procedure assumes that you have completed [Register access token](/tips/awscli/#register-access-token){:target="aws_cli"} in [AWS CLI](/tips/awscli/){:target="aws_cli"}.
+    This procedure assumes that you have completed [Register access token](awscli.md#register-access-token){:target="aws_cli"} in [AWS CLI](awscli.md){:target="aws_cli"}.
 
 
 Load modules necessary for using Singularity Global Client and Amazon ECR.
