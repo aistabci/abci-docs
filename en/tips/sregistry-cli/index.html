@@ -1169,7 +1169,7 @@ For details, please refer to the page about the registry you want to use from <a
 <p>As an execution example, the following shows the procedure for pull the latest-gpu tag image from <code>myrepos/tensorflow</code> repository on Amazon Elastic Container Registry (ECR) and saving it as a <code>mytensorflow.simg</code> file in the current directory.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>This procedure assumes that you have completed <a href="/tips/awscli/#register-access-token" target="aws_cli">Register access token</a> in <a href="/tips/awscli/" target="aws_cli">AWS CLI</a>.</p>
+<p>This procedure assumes that you have completed <a href="../awscli/#register-access-token" target="aws_cli">Register access token</a> in <a href="../awscli/" target="aws_cli">AWS CLI</a>.</p>
 </div>
 <p>Load modules necessary for using Singularity Global Client and Amazon ECR.</p>
 <div class="codehilite"><pre><span></span><code><span class="p">[</span><span class="n">username</span><span class="err">@</span><span class="n">es1</span> <span class="o">~</span><span class="p">]</span><span class="o">$</span> <span class="n">module</span> <span class="nb">load</span> <span class="n">singularitypro</span> <span class="n">python</span><span class="o">/</span><span class="mf">3.6</span><span class="o">/</span><span class="mf">3.6</span><span class="o">.</span><span class="mi">12</span> <span class="n">sregistry</span><span class="o">-</span><span class="n">cli</span> <span class="n">aws</span><span class="o">-</span><span class="n">cli</span>

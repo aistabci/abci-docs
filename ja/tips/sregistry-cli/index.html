@@ -1181,7 +1181,7 @@
 <p>実行例として、Amazon Elastic Container Registry (ECR) の<code>myrepos/tensorflow</code>レポジトリからlatest-gpuタグのイメージを取得し、カレントディレクトリに<code>mytensorflow.simg</code>ファイルとして保存する手順を示します。</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>手順は<a href="/tips/awscli/" target="aws_cli">AWS CLIの利用</a>の<a href="/tips/awscli/#_2" target="aws_cli">アクセストークンの登録</a>手順を完了していることを前提としています。</p>
+<p>手順は<a href="../awscli/" target="aws_cli">AWS CLIの利用</a>の<a href="../awscli/#_2" target="aws_cli">アクセストークンの登録</a>手順を完了していることを前提としています。</p>
 </div>
 <p>Singularity Global ClientとAmazon ECR利用に必要なモジュールの読み込みます。</p>
 <div class="codehilite"><pre><span></span><code><span class="p">[</span><span class="n">username</span><span class="err">@</span><span class="n">es1</span> <span class="o">~</span><span class="p">]</span><span class="o">$</span> <span class="n">module</span> <span class="nb">load</span> <span class="n">singularitypro</span> <span class="n">python</span><span class="o">/</span><span class="mf">3.6</span><span class="o">/</span><span class="mf">3.6</span><span class="o">.</span><span class="mi">12</span> <span class="n">sregistry</span><span class="o">-</span><span class="n">cli</span> <span class="n">aws</span><span class="o">-</span><span class="n">cli</span>

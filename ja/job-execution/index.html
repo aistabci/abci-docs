@@ -2685,10 +2685,15 @@ module load cuda/10.2/10.2.89
 <p>サービスごとの使用ABCIポイントの計算式は以下の通りです。</p>
 <blockquote>
 <p><a href="#job-services">サービス課金係数</a><br />
+&times; 資源タイプ課金係数<br />
 &times; 予約ノード数<br />
 &times; 予約日数<br />
 &times; 24</p>
 </blockquote>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>計算ノード(V)の予約は資源タイプrt_F、計算ノード(A)の予約は資源タイプrt_AFとして扱われます。</p>
+</div>
 <div class="footnote">
 <hr />
 <ol>
