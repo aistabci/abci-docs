@@ -544,6 +544,12 @@ Your advance reservation 12345 has been granted
 計算ノードの予約が完了した時点でABCIポイントを消費します。
 また、発行された予約IDは予約時に指定したABCIグループに所属するABCIアカウントでご利用いただけます。
 
+!!! note
+    予約可能なノード数が`qrsub`コマンドで指定したノード数より少ない場合、以下のエラーメッセージを出力して予約取得に失敗します。  
+    ```
+    advance_reservation: no suitable queues
+    ```
+
 ### 予約状態の確認 {#show-the-status-of-reservations}
 
 予約状態を確認するには、[ABCI利用者ポータル](https://portal.abci.ai/user/)もしくは`qrstat`コマンドを使用します。

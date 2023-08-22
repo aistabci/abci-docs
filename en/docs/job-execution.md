@@ -536,6 +536,12 @@ Your advance reservation 12345 has been granted
 The ABCI points are consumed when complete reservation.
 In addition, the issued reservation ID can be used for the ABCI accounts belonging to the ABCI group specified at the time of reservation.
 
+!!! note
+    If the number of nodes that can be reserved is less than the number of nodes specified by the `qrsub` command, the reservation acquisition fails with the following error message:  
+    ```
+    advance_reservation: no suitable queues
+    ```
+
 ### Show the status of reservations
 
 To show the current status of reservations, use the `qrstat` command or the ABCI User Portal.
