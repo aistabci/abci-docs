@@ -2532,6 +2532,11 @@ module load cuda/10.2/10.2.89
 
 <p>計算ノードの予約が完了した時点でABCIポイントを消費します。
 また、発行された予約IDは予約時に指定したABCIグループに所属するABCIアカウントでご利用いただけます。</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>予約可能なノード数が<code>qrsub</code>コマンドで指定したノード数より少ない場合、以下のエラーメッセージを出力して予約取得に失敗します。<br />
+<code>advance_reservation: no suitable queues</code></p>
+</div>
 <h3 id="show-the-status-of-reservations">予約状態の確認</h3>
 <p>予約状態を確認するには、<a href="https://portal.abci.ai/user/">ABCI利用者ポータル</a>もしくは<code>qrstat</code>コマンドを使用します。</p>
 <p>例)</p>
