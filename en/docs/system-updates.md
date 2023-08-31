@@ -1,5 +1,13 @@
 # System Updates
 
+## 2023-08-01
+
+* Due to the "1st ABCI Large-scale Language Model Building Support Program", Change the following limits for Reserved services on compute node (A) until the end of September 2023.
+
+| Service | Resource type name | Limitations | Previous upper limit | Changed upper limit |
+|:--|:--|:--|:--|:--|
+| Reserved | rt_AF | Maximum number of nodes can be reserved at once per system | 50 nodes | 30 nodes |
+
 ## 2023-07-10
 
 | Add / Update / Delete | Software | Version | Previous version |

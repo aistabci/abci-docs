@@ -488,7 +488,7 @@ The maximum number of nodes and the node-time product that can be reserved for t
 | Minimum reservation days | 1 day | 1 day |
 | Maximum reservation days | 30 days | 30 days |
 | Maximum number of nodes can be reserved at once per ABCI group | 272 nodes | 30 nodes |
-| Maximum number of nodes can be reserved at once per system | 476 nodes | 50 nodes |
+| Maximum number of nodes can be reserved at once per system | 476 nodes | 30 nodes |
 | Maximum reserved nodes per reservation | 272 nodes | 30 nodes |
 | Maximum reserved node time per reservation | 45,696 node x hour | 6,912 node x hour |
 | Start time of accept reservation | 10:00 a.m. of 30 days ago | 10:00 a.m. of 30 days ago |
@@ -535,6 +535,12 @@ Your advance reservation 12345 has been granted
 
 The ABCI points are consumed when complete reservation.
 In addition, the issued reservation ID can be used for the ABCI accounts belonging to the ABCI group specified at the time of reservation.
+
+!!! note
+    If the number of nodes that can be reserved is less than the number of nodes specified by the `qrsub` command, the reservation acquisition fails with the following error message:  
+    ```
+    advance_reservation: no suitable queues
+    ```
 
 ### Show the status of reservations
 
@@ -676,6 +682,10 @@ The points are counted as the usage points of the person responsible for the use
 The calculation formula of ABCI point for using Reserved service is follows:
 
 > Service charge coefficient  
+> &times; Resource type charge coefficient  
 > &times; number of reserved nodes  
 > &times; number of reserved days  
 > &times; 24
+
+!!! note
+    Reservation for Compute Node (V) is treated as resource type rt_F, and reservations for Compute Node (A) is treated as resource type rt_AF.

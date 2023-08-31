@@ -153,7 +153,7 @@ Copyright 2017-2022 The TensorFlow Authors.  All rights reserved.
         http://hostname:8888/?token=token_string
 ```
 
-The subsequent steps are the same as for [Using Pip Install](using-pip-install).
+The subsequent steps are the same as for [Using Pip Install](#using-pip-install).
 
 * [Generate an SSH tunnel](#generate-an-ssh-tunnel)
 * [Connect to Jupyter Notebook](#connect-to-jupyter-notebook)
