@@ -540,7 +540,8 @@ In addition, the issued reservation ID can be used for the ABCI accounts belongi
     If the number of nodes that can be reserved is less than the number of nodes specified by the `qrsub` command, the reservation acquisition fails with the following error message:  
     ```
     advance_reservation: no suitable queues
-    ```
+    ```  
+    Note that the number of nodes displayed by the `qrstat --available` command does not include the currently running Spot jobs and the jobs scheduled to run during that time period. Therefore, the reservation might fail even if the qrstat command shows a node that is not reserved.
 
 ### Show the status of reservations
 
