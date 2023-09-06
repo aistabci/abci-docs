@@ -541,7 +541,7 @@ In addition, the issued reservation ID can be used for the ABCI accounts belongi
     ```
     advance_reservation: no suitable queues
     ```  
-    Note that the number of nodes displayed by the `qrstat --available` command does not include the currently running Spot jobs and the jobs scheduled to run during that time period. Therefore, the reservation might fail even if the qrstat command shows a node that is not reserved.
+    Note that the number of nodes displayed by the `qrstat --available` command does not include currently running jobs. Therefore, even if the `qrstat` command shows the number of nodes that can be reserved, the reservation might fail.
 
 ### Show the status of reservations
 
