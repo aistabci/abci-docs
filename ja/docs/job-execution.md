@@ -548,7 +548,8 @@ Your advance reservation 12345 has been granted
     予約可能なノード数が`qrsub`コマンドで指定したノード数より少ない場合、以下のエラーメッセージを出力して予約取得に失敗します。  
     ```
     advance_reservation: no suitable queues
-    ```
+    ```  
+    なお、`qrstat --available` コマンドで表示されるノード数には、現在実行中のジョブは加味されておりません。そのため、qrstat コマンドで「予約可能なノード数」が表示されていても、予約に失敗することがあります。
 
 ### 予約状態の確認 {#show-the-status-of-reservations}
 
