@@ -1,5 +1,19 @@
 # System Updates
 
+## 2023-09-21 (future update) {#2023-09-21}
+
+* The upper limits of Spot Service on Compute Node (A) and Memory-intensive Node will be changed as follows.
+
+| Service | Resource type name | Limitations | Previous upper limit | Changed upper limit |
+|:--|:--|:--|:--|:--|
+| Spot | rt_A | Number of nodes available at the same time | 90 nodes | 64 nodes |
+| Spot | rt_A | Limit of elapsed time | 168 hours | 72 hours |
+| Spot | rt_A | Limit of node-time product | 15120 nodes &middot; hours | 2304 nodes &middot; hours |
+| Spot | rt_M.large, rt_M.small | Limit of node-time product | 2304 nodes &middot; hours | 72 nodes &middot; hours |
+
+* The new limits will be effective for jobs submitted after the limit change on Thursday, September 21.<br>
+If you want to use the previous limit, please submit your job before the limit change.
+
 ## 2023-08-01
 
 * Due to the "1st ABCI Large-scale Language Model Building Support Program", Change the following limits for Reserved services on compute node (A) until the end of September 2023.
