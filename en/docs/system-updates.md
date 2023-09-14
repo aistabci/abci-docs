@@ -12,7 +12,7 @@
 | Spot | rt_M.large, rt_M.small | Limit of node-time product | 2304 nodes &middot; hours | 72 nodes &middot; hours |
 
 * The new limits will be effective for jobs submitted after the limit change on Thursday, September 21.<br>
-If you want to use the previous limit, please submit your job by Wednesday, September 20.
+If you want to use the previous limit, please submit your job before the limit change.
 
 ## 2023-08-01
 
