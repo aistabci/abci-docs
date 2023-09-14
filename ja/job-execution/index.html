@@ -2535,7 +2535,8 @@ module load cuda/10.2/10.2.89
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>予約可能なノード数が<code>qrsub</code>コマンドで指定したノード数より少ない場合、以下のエラーメッセージを出力して予約取得に失敗します。<br />
-<code>advance_reservation: no suitable queues</code></p>
+<code>advance_reservation: no suitable queues</code><br />
+なお、<code>qrstat --available</code> コマンドで表示されるノード数には、現在実行中のジョブは加味されておりません。そのため、qrstat コマンドで「予約可能なノード数」が表示されていても、予約に失敗することがあります。</p>
 </div>
 <h3 id="show-the-status-of-reservations">予約状態の確認</h3>
 <p>予約状態を確認するには、<a href="https://portal.abci.ai/user/">ABCI利用者ポータル</a>もしくは<code>qrstat</code>コマンドを使用します。</p>

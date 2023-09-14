@@ -983,6 +983,13 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#2023-09-21" class="md-nav__link">
+    2023-09-21 更新予定
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#2023-08-01" class="md-nav__link">
     2023-08-01
   </a>
@@ -1566,6 +1573,55 @@
                 
                 
                 <h1 id="_1">システム更新履歴</h1>
+<h2 id="2023-09-21">2023-09-21 更新予定</h2>
+<ul>
+<li>計算ノード(A)とメモリインテンシブノードのSpotサービスにおいて以下の上限値を変更します。</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th align="left">サービス</th>
+<th align="left">資源タイプ</th>
+<th align="left">項目</th>
+<th align="left">変更前の上限値</th>
+<th align="left">変更後の上限値</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">Spot</td>
+<td align="left">rt_A</td>
+<td align="left">同時に利用可能なノード数</td>
+<td align="left">90ノード</td>
+<td align="left">64ノード</td>
+</tr>
+<tr>
+<td align="left">Spot</td>
+<td align="left">rt_A</td>
+<td align="left">経過時間上限</td>
+<td align="left">168時間</td>
+<td align="left">72時間</td>
+</tr>
+<tr>
+<td align="left">Spot</td>
+<td align="left">rt_A</td>
+<td align="left">ノード時間積上限</td>
+<td align="left">15120ノード時間</td>
+<td align="left">2304ノード時間</td>
+</tr>
+<tr>
+<td align="left">Spot</td>
+<td align="left">rt_M.large, rt_M.small</td>
+<td align="left">ノード時間積上限</td>
+<td align="left">2304ノード時間</td>
+<td align="left">72ノード時間</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>新しい上限値は、2023年9月21日の上限値変更時より後に投入されたジョブから有効になります。<br>
+今までの上限値を利用したい場合は、上限値の変更前までにジョブを投入してください。</li>
+</ul>
 <h2 id="2023-08-01">2023-08-01</h2>
 <ul>
 <li>「第1回 大規模言語モデル構築支援プログラム」の開催に伴い、2023年9月末まで計算ノード(A)のReservedサービスにおいて以下の上限値を変更します。</li>

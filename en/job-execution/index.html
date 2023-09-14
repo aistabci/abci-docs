@@ -2515,7 +2515,8 @@ In addition, the issued reservation ID can be used for the ABCI accounts belongi
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>If the number of nodes that can be reserved is less than the number of nodes specified by the <code>qrsub</code> command, the reservation acquisition fails with the following error message:<br />
-<code>advance_reservation: no suitable queues</code></p>
+<code>advance_reservation: no suitable queues</code><br />
+Note that the number of nodes displayed by the <code>qrstat --available</code> command does not include currently running jobs. Therefore, even if the <code>qrstat</code> command shows the number of nodes that can be reserved, the reservation might fail.</p>
 </div>
 <h3 id="show-the-status-of-reservations">Show the status of reservations</h3>
 <p>To show the current status of reservations, use the <code>qrstat</code> command or the ABCI User Portal.</p>
