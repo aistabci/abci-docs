@@ -1,8 +1,8 @@
 # System Updates
 
-## 2023-09-21 (future update) {#2023-09-21}
+## 2023-09-21 {#2023-09-21}
 
-* The upper limits of Spot Service on Compute Node (A) and Memory-intensive Node will be changed as follows.
+* The upper limits of Spot Service on Compute Node (A) and Memory-intensive Node have been changed as follows.
 
 | Service | Resource type name | Limitations | Previous upper limit | Changed upper limit |
 |:--|:--|:--|:--|:--|

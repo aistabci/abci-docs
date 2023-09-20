@@ -94,7 +94,7 @@ ABCIシステムには、[計算ノード](system-overview.md#compute-node)と[�
 |           | rt\_G.small | 1 |
 |           | rt\_C.large | 1 |
 |           | rt\_C.small | 1 |
-|           | rt\_AF      | 1-90 |
+|           | rt\_AF      | 1-64 |
 |           | rt\_AG.small| 1 |
 |           | rt\_M.large | 1 |
 |           | rt\_M.small | 1 |
@@ -115,7 +115,8 @@ ABCIシステムには、[計算ノード](system-overview.md#compute-node)と[�
 | On-demand | rt\_F, rt\_AF | 12:00:00/1:00:00 |
 |           | rt\_G.large, rt\_C.large, rt\_M.large | 12:00:00/1:00:00 |
 |           | rt\_G.small, rt\_C.small, rt\_AG.small, rt\_M.small | 12:00:00/1:00:00 |
-| Spot      | rt\_F, rt\_AF | 168:00:00/1:00:00 |
+| Spot      | rt\_F | 168:00:00/1:00:00 |
+|           | rt\_AF | 72:00:00/1:00:00 |
 |           | rt\_G.large | 168:00:00/1:00:00 |
 |           | rt\_C.large, rt\_M.large | 72:00:00/1:00:00 |
 |           | rt\_G.small, rt\_C.small, rt\_AG.small, rt\_M.small | 72:00:00/1:00:00 |
@@ -129,8 +130,8 @@ ABCIシステムには、[計算ノード](system-overview.md#compute-node)と[�
 |:--|--:|
 | On-demand                                     |    12 nodes &middot; hours |
 | Spot(計算ノード(V))                           | 43008 nodes &middot; hours |
-| Spot(計算ノード(A))                           | 15120 nodes &middot; hours |
-| Spot(メモリインテンシブノード)                |  2304 nodes &middot; hours |
+| Spot(計算ノード(A))                           |  2304 nodes &middot; hours |
+| Spot(メモリインテンシブノード)                |    72 nodes &middot; hours |
 
 !!! note
     Reservedサービスでは経過時間に制限はありませんが、予約の終了と共にジョブは強制終了します。

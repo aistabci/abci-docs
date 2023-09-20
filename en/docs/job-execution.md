@@ -94,7 +94,7 @@ The available resource type and number of nodes for each service are as follows.
 |           | rt\_G.small | 1 |
 |           | rt\_C.large | 1 |
 |           | rt\_C.small | 1 |
-|           | rt\_AF      | 1-90 |
+|           | rt\_AF      | 1-64 |
 |           | rt\_AG.small| 1 |
 |           | rt\_M.large | 1 |
 |           | rt\_M.small | 1 |
@@ -115,7 +115,8 @@ There is an elapsed time limit (executable time limit) for jobs depending on the
 | On-demand | rt\_F, rt\_AF | 12:00:00/1:00:00 |
 |           | rt\_G.large, rt\_C.large, rt\_M.large | 12:00:00/1:00:00 |
 |           | rt\_G.small, rt\_C.small, rt\_AG.small, rt\_M.small | 12:00:00/1:00:00 |
-| Spot      | rt\_F, rt\_AF | 168:00:00/1:00:00 |
+| Spot      | rt\_F | 168:00:00/1:00:00 |
+|           | rt\_AF | 72:00:00/1:00:00 |
 |           | rt\_G.large | 168:00:00/1:00:00 |
 |           | rt\_C.large, rt\_M.large | 72:00:00/1:00:00 |
 |           | rt\_G.small, rt\_C.small, rt\_AG.small, rt\_M.small | 72:00:00/1:00:00 |
@@ -129,8 +130,8 @@ In addition, when executing a job that uses multiple nodes in On-demand or Spot 
 |:--|--:|
 | On-demand                                     |    12 nodes &middot; hours |
 | Spot: Compute Node (V)                        | 43008 nodes &middot; hours |
-| Spot: Compute Node (A)                        | 15120 nodes &middot; hours |
-| Spot: Memory-Intensive Node                   |  2304 nodes &middot; hours |
+| Spot: Compute Node (A)                        |  2304 nodes &middot; hours |
+| Spot: Memory-Intensive Node                   |    72 nodes &middot; hours |
 
 !!!note
     There is no limit on the elapsed time in the Reserved service, but the job will be forcibly terminated when the reservation ends. See [Advance Reservation](#advance-reservation) for more information about restrictions on Reserved Services.
