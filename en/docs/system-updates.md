@@ -1,5 +1,17 @@
 # System Updates
 
+## 2023-10-02 (future update) {#2023-10-02}
+
+* Due to the "Compute Node (V) Usage Promotion Program", the following resource type charge coefficients on compute node (V) will be changed until January 9, 2024.
+
+| Resource type name | Previous resource type charge coefficient | Changed resource type charge coefficient |
+|:--|:--|:--|
+| rt_F       | 1.0 Point/hour | 0.5 Point/hour |
+| rt_G.large | 0.9 Point/hour | 0.5 Point/hour |
+| rt_G.small | 0.3 Point/hour | 0.2 Point/hour |
+| rt_C.large | 0.6 Point/hour | 0.3 Point/hour |
+| rt_C.small | 0.2 Point/hour | 0.1 Point/hour |
+
 ## 2023-09-21 {#2023-09-21}
 
 * The upper limits of Spot Service on Compute Node (A) and Memory-intensive Node have been changed as follows.
