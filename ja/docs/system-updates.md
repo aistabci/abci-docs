@@ -2,7 +2,7 @@
 
 ## 2023-10-02 更新予定 {#2023-10-02}
 
-* 「[計算ノード(V)利用促進プログラム](https://abci.ai/news/2023/09/01/ja_nodevpromotion.html)」の開催に伴い、2023年10月2日 12:00から2024年1月9日まで[計算ノード(V)の各資源タイプ](https://docs.abci.ai/ja/job-execution/#compute-node-v)の資源タイプ課金係数を以下の通り変更します。
+* 「[計算ノード(V)利用促進プログラム](https://abci.ai/news/2023/09/01/ja_nodevpromotion.html)」の開催に伴い、2023年10月2日 12:00から2024年1月9日まで[計算ノード(V)の各資源タイプ](job-execution.md/#compute-node-v)の資源タイプ課金係数を以下の通り変更します。
 
 | 資源タイプ | 資源タイプ名 | 変更前の資源タイプ課金係数 | 変更後の資源タイプ課金係数 |
 |:--|:--|:--|:--|
@@ -15,7 +15,7 @@
 * 計算ノード(V)以外の資源タイプ課金係数については従来通りです。
 * Reservedサービスで計算ノード(V)を予約する場合の資源タイプ課金係数も同様に0.50となります。
 
-計算式については [https://docs.abci.ai/ja/job-execution/#accounting](https://docs.abci.ai/ja/job-execution/#accounting) を参照ください。
+計算式については[課金](job-execution.md/#accounting)のページを参照ください。
 
 ## 2023-09-21 {#2023-09-21}
 
