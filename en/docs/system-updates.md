@@ -2,15 +2,20 @@
 
 ## 2023-10-02 (future update) {#2023-10-02}
 
-* Due to the "[Compute Node (V) Usage Promotion Program](https://abci.ai/news/2023/09/01/en_nodevpromotion.html)", the resource type charge coefficients for the Compute Node (V) will be changed as follows from Oct 2, 2023 12:00pm to Jan 9, 2024. The charge coefficient at the time of reservation will also be 1.5 times the changed value. The billing coefficients for resource types other than Compute Node (V) will remain the same as before.
+* Due to the "Compute Node (V) Usage Promotion Program", the resource type charge coefficients for [resource type in the Computation Node (V)](https://docs.abci.ai/en/job-execution/#compute-node-v) will be changed as follows from 12:00 on October 2, 2023 to January 9, 2024.
 
-| Resource type name | Previous resource type charge coefficient | Changed resource type charge coefficient |
-|:--|:--|:--|
-| rt_F       | 1.0 Point/hour | 0.5 Point/hour |
-| rt_G.large | 0.9 Point/hour | 0.5 Point/hour |
-| rt_G.small | 0.3 Point/hour | 0.2 Point/hour |
-| rt_C.large | 0.6 Point/hour | 0.3 Point/hour |
-| rt_C.small | 0.2 Point/hour | 0.1 Point/hour |
+| Resource type | Resource type name | Previous resource type charge coefficient | Changed resource type charge coefficient |
+|:--|:--|:--|:--|
+| Full    | rt_F       | 1.00 | 0.50 |
+| G.large | rt_G.large | 0.90 | 0.50 |
+| G.small | rt_G.small | 0.30 | 0.20 |
+| C.large | rt_C.large | 0.60 | 0.30 |
+| C.small | rt_C.small | 0.20 | 0.10 |
+
+* Resource type charge coefficients other than Compute Node (V) are the same as before.
+* The charge coefficients for reservation of Compute Node (V) by Reserved Service is also 0.50.
+
+For the calculation formula, see "[https://docs.abci.ai/en/job-execution/#accounting](https://docs.abci.ai/en/job-execution/#accounting)"
 
 ## 2023-09-21 {#2023-09-21}
 
