@@ -2,7 +2,7 @@
 
 ## 2023-10-02 (future update) {#2023-10-02}
 
-* Due to the "Compute Node (V) Usage Promotion Program", the following resource type charge coefficients on compute node (V) will be changed until January 9, 2024.
+* Due to the "[Compute Node (V) Usage Promotion Program](https://abci.ai/news/2023/09/01/en_nodevpromotion.html)", the resource type charge coefficients for the Compute Node (V) will be changed as follows from Oct 2, 2023 12:00pm to Jan 9, 2024. The charge coefficient at the time of reservation will also be 1.5 times the changed value. The billing coefficients for resource types other than Compute Node (V) will remain the same as before.
 
 | Resource type name | Previous resource type charge coefficient | Changed resource type charge coefficient |
 |:--|:--|:--|
