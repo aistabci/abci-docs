@@ -1,5 +1,22 @@
 # System Updates
 
+## 2023-10-02 (future update) {#2023-10-02}
+
+* Due to the "[Compute Node (V) Usage Promotion Program](https://abci.ai/news/2023/09/01/en_nodevpromotion.html)", the resource type charge coefficients for [resource type in the Computation Node (V)](job-execution.md#compute-node-v) will be changed as follows from 12:00 on October 2, 2023 to January 9, 2024.
+
+| Resource type | Resource type name | Previous resource type charge coefficient | Changed resource type charge coefficient |
+|:--|:--|:--|:--|
+| Full    | rt_F       | 1.00 | 0.50 |
+| G.large | rt_G.large | 0.90 | 0.50 |
+| G.small | rt_G.small | 0.30 | 0.20 |
+| C.large | rt_C.large | 0.60 | 0.30 |
+| C.small | rt_C.small | 0.20 | 0.10 |
+
+* Resource type charge coefficients other than Compute Node (V) are the same as before.
+* The charge coefficients for reservation of Compute Node (V) by Reserved Service is also 0.50.
+
+For the calculation formula, see "[Accounting](job-execution.md#accounting)"
+
 ## 2023-09-21 {#2023-09-21}
 
 * The upper limits of Spot Service on Compute Node (A) and Memory-intensive Node have been changed as follows.
