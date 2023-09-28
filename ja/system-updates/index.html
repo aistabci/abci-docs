@@ -983,6 +983,13 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#2023-10-02" class="md-nav__link">
+    2023-10-02 更新予定
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#2023-09-21" class="md-nav__link">
     2023-09-21
   </a>
@@ -1573,6 +1580,57 @@
                 
                 
                 <h1 id="_1">システム更新履歴</h1>
+<h2 id="2023-10-02">2023-10-02 更新予定</h2>
+<ul>
+<li>「<a href="https://abci.ai/news/2023/09/01/ja_nodevpromotion.html">計算ノード(V)利用促進プログラム</a>」の開催に伴い、2023年10月2日 12:00から2024年1月9日まで<a href="../job-execution/#compute-node-v">計算ノード(V)の各資源タイプ</a>の資源タイプ課金係数を以下の通り変更します。</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th align="left">資源タイプ</th>
+<th align="left">資源タイプ名</th>
+<th align="left">変更前の資源タイプ課金係数</th>
+<th align="left">変更後の資源タイプ課金係数</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">Full</td>
+<td align="left">rt_F</td>
+<td align="left">1.00</td>
+<td align="left">0.50</td>
+</tr>
+<tr>
+<td align="left">G.large</td>
+<td align="left">rt_G.large</td>
+<td align="left">0.90</td>
+<td align="left">0.50</td>
+</tr>
+<tr>
+<td align="left">G.small</td>
+<td align="left">rt_G.small</td>
+<td align="left">0.30</td>
+<td align="left">0.20</td>
+</tr>
+<tr>
+<td align="left">C.large</td>
+<td align="left">rt_C.large</td>
+<td align="left">0.60</td>
+<td align="left">0.30</td>
+</tr>
+<tr>
+<td align="left">C.small</td>
+<td align="left">rt_C.small</td>
+<td align="left">0.20</td>
+<td align="left">0.10</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>計算ノード(V)以外の資源タイプ課金係数については従来通りです。</li>
+<li>Reservedサービスで計算ノード(V)を予約する場合の資源タイプ課金係数も同様に0.50となります。</li>
+</ul>
+<p>計算式については<a href="../job-execution/#accounting">課金</a>のページを参照ください。</p>
 <h2 id="2023-09-21">2023-09-21</h2>
 <ul>
 <li>計算ノード(A)とメモリインテンシブノードのSpotサービスにおいて以下の上限値を変更しました。</li>
