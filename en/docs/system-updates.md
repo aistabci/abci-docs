@@ -1,5 +1,36 @@
 # System Updates
 
+## 2023-10-02 (future update) {#2023-10-02}
+
+* Due to the "[Compute Node (V) Usage Promotion Program](https://abci.ai/news/2023/09/01/en_nodevpromotion.html)", the resource type charge coefficients for [resource type in the Computation Node (V)](job-execution.md#compute-node-v) will be changed as follows from 12:00 on October 2, 2023 to January 9, 2024.
+
+| Resource type | Resource type name | Previous resource type charge coefficient | Changed resource type charge coefficient |
+|:--|:--|:--|:--|
+| Full    | rt_F       | 1.00 | 0.50 |
+| G.large | rt_G.large | 0.90 | 0.50 |
+| G.small | rt_G.small | 0.30 | 0.20 |
+| C.large | rt_C.large | 0.60 | 0.30 |
+| C.small | rt_C.small | 0.20 | 0.10 |
+
+* Resource type charge coefficients other than Compute Node (V) are the same as before.
+* The charge coefficients for reservation of Compute Node (V) by Reserved Service is also 0.50.
+
+For the calculation formula, see "[Accounting](job-execution.md#accounting)"
+
+## 2023-09-21 {#2023-09-21}
+
+* The upper limits of Spot Service on Compute Node (A) and Memory-intensive Node have been changed as follows.
+
+| Service | Resource type name | Limitations | Previous upper limit | Changed upper limit |
+|:--|:--|:--|:--|:--|
+| Spot | rt_AF | Number of nodes available at the same time | 90 nodes | 64 nodes |
+| Spot | rt_AF | Limit of elapsed time | 168 hours | 72 hours |
+| Spot | rt_AF | Limit of node-time product | 15120 nodes &middot; hours | 2304 nodes &middot; hours |
+| Spot | rt_M.large, rt_M.small | Limit of node-time product | 2304 nodes &middot; hours | 72 nodes &middot; hours |
+
+* The new limits will be effective for jobs submitted after the limit change on Thursday, September 21.<br>
+If you want to use the previous limit, please submit your job before the limit change.
+
 ## 2023-08-01
 
 * Due to the "1st ABCI Large-scale Language Model Building Support Program", Change the following limits for Reserved services on compute node (A) until the end of September 2023.
