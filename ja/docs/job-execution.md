@@ -46,11 +46,11 @@ ABCIシステムには、[計算ノード](system-overview.md#compute-node)と[�
 
 | 資源タイプ | 資源タイプ名 | 説明 | 割り当て物理CPUコア数 | 割り当てGPU数 | メモリ (GiB) | ローカルストレージ (GB) | 資源タイプ課金係数 |
 |:--|:--|:--|:--|:--|:--|:--|:--|
-| Full | rt\_F | ノード占有 | 40 | 4 | 360 | 1440 | 1.00 |
-| G.large | rt\_G.large | ノード共有<br>GPU利用 | 20 | 4 | 240 | 720 | 0.90 |
-| G.small | rt\_G.small | ノード共有<br>GPU利用 | 5 | 1 | 60 | 180 | 0.30 |
-| C.large | rt\_C.large | ノード共有<br>CPUのみ利用 | 20 | 0 | 120 | 720 | 0.60 |
-| C.small | rt\_C.small | ノード共有<br>CPUのみ利用 | 5 | 0 | 30 | 180 | 0.20 |
+| Full | rt\_F | ノード占有 | 40 | 4 | 360 | 1440 | 0.50 |
+| G.large | rt\_G.large | ノード共有<br>GPU利用 | 20 | 4 | 240 | 720 | 0.50 |
+| G.small | rt\_G.small | ノード共有<br>GPU利用 | 5 | 1 | 60 | 180 | 0.20 |
+| C.large | rt\_C.large | ノード共有<br>CPUのみ利用 | 20 | 0 | 120 | 720 | 0.30 |
+| C.small | rt\_C.small | ノード共有<br>CPUのみ利用 | 5 | 0 | 30 | 180 | 0.10 |
 
 #### 計算ノード(A) {#compute-node-a}
 
