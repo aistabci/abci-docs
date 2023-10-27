@@ -40,7 +40,10 @@ ABCIシステムでは、計算リソースを論理的に分割した資源タ�
 
 ### 利用可能な資源タイプ {#available-resource-types}
 
-ABCIシステムには、[計算ノード](system-overview.md#compute-node)と[メモリインテンシブノード](system-overview.md#memory-intensive-node)の2種類の計算リソースがあり、それぞれについて次のように資源タイプが用意されています。
+ABCIシステムには、次のように資源タイプが用意されています。
+
+!!! note
+    メモリインテンシブノードのサービスは、2023年10月27日15:00 をもって終了しました。
 
 #### 計算ノード(V) {#compute-node-v}
 
@@ -61,19 +64,6 @@ ABCIシステムには、[計算ノード](system-overview.md#compute-node)と[�
 
 [^1]: /local1 (1590 GB) と /local2 (1850 GB) の合算。
 
-#### メモリインテンシブノード {#memory-intensive-node}
-
-| 資源タイプ | 資源タイプ名 | 説明 | 割り当て物理CPUコア数 | 割り当てGPU数 | メモリ (GiB) | ローカルストレージ (GB) | 資源タイプ課金係数 |
-|:--|:--|:--|:--|:--|:--|:--|:--|
-| M.large | rt\_M.large | ノード共有<br>CPUのみ利用 | 8 | \- | 800 | 480 | 0.40 | 
-| M.small | rt\_M.small | ノード共有<br>CPUのみ利用 | 4 | \- | 400 | 240 | 0.20 | 
-
-複数ノードを使用するジョブを実行する場合は、計算ノードを占有する資源タイプ`rt_F`もしくは`rt_AF`を指定してください。メモリインテンシブノードでは複数ノードを使用するジョブを実行することはできません。
-
-!!! warning
-    ノード共有の資源タイプでは、ジョブのプロセス情報は同一ノードで実行されている他のジョブから参照可能になります。
-    他のジョブから参照させたくない場合、資源タイプ`rt_F`もしくは`rt_AF`を指定しノード占有でジョブを実行してください。
-
 ### 同時に利用可能なノード数 {#number-of-nodes-available-at-the-same-time}
 
 ジョブサービスごとに利用可能な資源タイプとノード数の組み合わせを以下に示します。同時に複数ノードを利用する場合は、資源タイプ`rt_F`もしくは`rt_AF`を指定する必要があります。
@@ -87,8 +77,6 @@ ABCIシステムには、[計算ノード](system-overview.md#compute-node)と[�
 |           | rt\_C.small | 1 |
 |           | rt\_AF      | 1-4 |
 |           | rt\_AG.small| 1 |
-|           | rt\_M.large | 1 |
-|           | rt\_M.small | 1 |
 | Spot      | rt\_F       | 1-512 |
 |           | rt\_G.large | 1 |
 |           | rt\_G.small | 1 |
@@ -96,8 +84,6 @@ ABCIシステムには、[計算ノード](system-overview.md#compute-node)と[�
 |           | rt\_C.small | 1 |
 |           | rt\_AF      | 1-64 |
 |           | rt\_AG.small| 1 |
-|           | rt\_M.large | 1 |
-|           | rt\_M.small | 1 |
 | Reserved  | rt\_F       | 1-予約ノード数 |
 |           | rt\_G.large | 1 |
 |           | rt\_G.small | 1 |
@@ -113,13 +99,13 @@ ABCIシステムには、[計算ノード](system-overview.md#compute-node)と[�
 | サービス名 | 資源タイプ名 | 経過時間制限 (上限値/デフォルト) |
 |:--|:--|:--|
 | On-demand | rt\_F, rt\_AF | 12:00:00/1:00:00 |
-|           | rt\_G.large, rt\_C.large, rt\_M.large | 12:00:00/1:00:00 |
-|           | rt\_G.small, rt\_C.small, rt\_AG.small, rt\_M.small | 12:00:00/1:00:00 |
+|           | rt\_G.large, rt\_C.large | 12:00:00/1:00:00 |
+|           | rt\_G.small, rt\_C.small, rt\_AG.small | 12:00:00/1:00:00 |
 | Spot      | rt\_F | 168:00:00/1:00:00 |
 |           | rt\_AF | 72:00:00/1:00:00 |
 |           | rt\_G.large | 168:00:00/1:00:00 |
-|           | rt\_C.large, rt\_M.large | 72:00:00/1:00:00 |
-|           | rt\_G.small, rt\_C.small, rt\_AG.small, rt\_M.small | 72:00:00/1:00:00 |
+|           | rt\_C.large | 72:00:00/1:00:00 |
+|           | rt\_G.small, rt\_C.small, rt\_AG.small | 72:00:00/1:00:00 |
 | Reserved  | rt\_F, rt\_AF | 無制限 |
 |           | rt\_G.large, rt\_C.large | 無制限 |
 |           | rt\_G.small, rt\_C.small, rt\_AG.small | 無制限 |
@@ -131,7 +117,6 @@ ABCIシステムには、[計算ノード](system-overview.md#compute-node)と[�
 | On-demand                                     |    12 nodes &middot; hours |
 | Spot(計算ノード(V))                           | 43008 nodes &middot; hours |
 | Spot(計算ノード(A))                           |  2304 nodes &middot; hours |
-| Spot(メモリインテンシブノード)                |    72 nodes &middot; hours |
 
 !!! note
     Reservedサービスでは経過時間に制限はありませんが、予約の終了と共にジョブは強制終了します。

@@ -34,7 +34,6 @@ Below is a list of the computational resources of the ABCI system.
 | Interactive Node (A) | *es-a* | Login server for Compute Node (A), the frontend of the ABCI system | 2 |
 | Compute Node (V) | *g0001*-*g1088* | Server w/ NVIDIA V100 GPU accelerators | 1,088 |
 | Compute Node (A) | *a0001*-*a0120* | Server w/ NVIDIA A100 GPU accelerators | 120 |
-| Memory-Intensive Node | *m01*-*m10* | Server w/ Intel Optane memory | 10 |
 
 !!! note
     In the following descriptions, `Interactive Node` refers to both the interactive node (V) and the interactive node (A).
@@ -43,7 +42,10 @@ Below is a list of the computational resources of the ABCI system.
 !!! note
     Due to operational and maintenance reasons, some computing resources may not be provided.
 
-Among them, interactive nodes, compute nodes(V), and memory-intensive nodes are equipped with 2 ports of InfiniBand EDR, compute nodes(A) are equipped with 4 ports of InfiniBand HDR and they are connected by InfiniBand switch group together with [Storage Systems](#storage-systems) described later.
+!!! note
+    The memory-intensive node service ended at 15:00 on October 27, 2023.
+
+Among them, interactive nodes, and compute nodes(V) are equipped with 2 ports of InfiniBand EDR, compute nodes(A) are equipped with 4 ports of InfiniBand HDR and they are connected by InfiniBand switch group together with [Storage Systems](#storage-systems) described later.
 
 Below are the details of these nodes.
 
@@ -115,23 +117,6 @@ The specifications of the compute node (A) are shown below:
 
 Reference: [Block Diagram of Compute Node (A)](img/compute-node-a-diagram.png)
 
-### Memory-Intensive Node
-
-The memory-intensive node of ABCI system consists of Supermicro 4029GR-TRT2.
-The memory-intensive node is equipped with two Intel Xeon Gold 6132 Processors and two Intel Optane memory, and up to 2.6 TiB of memory can be used together with the main memory.
-
-The specifications of the memory-intensive node are shown below:
-
-| Item | Description | # |
-|:--|:--|:--|
-| CPU | [Intel Xeon Gold 6132 Processor<br>2.6 GHz, 14 Cores (28 Threads)](https://ark.intel.com/content/www/us/en/ark/products/123541/intel-xeon-gold-6    132-processor-19-25m-cache-2-60-ghz.html) | 2 |
-| Memory | 32 GiB DDR4 2666 MHz RDIMM (ECC) | 24 |
-| SSD | [Intel SSD DC S4500 1.9 TB](https://ark.intel.com/content/www/us/en/ark/products/120524/intel-ssd-dc-s4500-series-1-9tb-2-5in-sata-6gb-s-3d1-tlc.html) | 1 |
-| Optane SSD | [Intel Optane SSD DC P4800X 1.5 TB](https://ark.intel.com/content/www/us/en/ark/products/187934/intel-optane-ssd-dc-p4800x-series-with-intel-memory-drive-technology-1-5tb-1-2-height-pcie-x4-3d-xpoint.html) | 2 |
-| Interconnect | InfiniBand EDR (100 Gbps) | 2 |
-
-To execute the program for the memory-intensive node, submit the program to the job management system as a batch job or an interactive job, as with the compute node.
-
 ## Storage Systems
 
 The ABCI system has five storage systems for storing large amounts of data used for AI and Big Data applications, and these are used to provide shared file systems and ABCI Cloud Storage. The total effective capacity is up to 47 PB.
@@ -156,7 +141,7 @@ Below is a list of shared file systems and ABCI Cloud Storage provided by the AB
 | Global scratch area | /scratch | 0.4 PB | Lustre | See [Global scratch area](storage.md#scratch-area) |
 
 
-Interactive nodes, compute nodes, and memory-intensive nodes mount the shared file systems, and users can access these file systems from common mount points.
+Interactive nodes, and compute nodes mount the shared file systems, and users can access these file systems from common mount points.
 
 Besides this, these nodes each have local storage that can be used as a local scratch area. The list is shown below.
 
@@ -166,7 +151,6 @@ Besides this, these nodes each have local storage that can be used as a local sc
 | Compute node (V) | /local | 1.6 TB | XFS | See [Local Storage](storage.md#local-storage) |
 | Compute node (A) | /local1 | 2.0 TB | XFS | See [Local Storage](storage.md#local-storage) |
 |                 | /local2 | 2.0 TB | XFS | See [Local Storage](storage.md#local-storage) |
-| memory-intensive node | /local | 1.9 TB | XFS | See [Local Storage](storage.md#local-storage) |
 
 ## Software
 

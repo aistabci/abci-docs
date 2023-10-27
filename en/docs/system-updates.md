@@ -1,8 +1,8 @@
 # System Updates
 
-## 2023-10-27 (future update) {#2023-10-27}
+## 2023-10-27 {#2023-10-27}
 
-* The compute resource type service provided by the memory-intensive node is scheduled to end on October 27, 2023 at 15:00.
+* The memory-intensive node service ended at 15:00 on October 27, 2023.
   The target resource type names are rt_M.large and rt_M.small.
 
 ## 2023-10-02 {#2023-10-02}

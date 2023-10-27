@@ -23,17 +23,11 @@ Example) Python 3.10.10:
 Python 3.10.10
 ```
 
-When using Python in the Memory-intensive Node environment, load the `gcc/12.2.0` module before the python module.
-
-```
-[username@m01 ~]$ module load gcc/12.2.0
-[username@m01 ~]$ module load python/3.10/3.10.10
-[username@m01 ~]$ python3 --version
-Python 3.10.10
-```
-
 !!! note
     Users can install any python distributions (c.f., pyenv, conda) into their own home or group area. Please kindly note that such distributions are not eligible for the ABCI System support.
+
+!!! note
+    The memory-intensive node service ended at 15:00 on October 27, 2023.
 
 ## Python Virtual Environments
 
