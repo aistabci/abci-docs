@@ -2,7 +2,7 @@
 
 ## 2023-10-27 {#2023-10-27}
 
-* The memory-intensive node service ended at 15:00 on October 27, 2023.
+* The memory-intensive node service ended at 15:00 on October 27, 2023.<br>
   The target resource type names are rt_M.large and rt_M.small.
 
 ## 2023-10-02 {#2023-10-02}

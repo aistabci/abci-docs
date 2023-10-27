@@ -303,9 +303,6 @@ foo.txt    <- The file remain only when it is copied explicitly in script.
 !!! note
     In `rt_AF`, not only `$SGE_LOCALDIR` but also`/local2` can be used as a local scratch. The files stored under `/local2` are removed as well when the job finished.
 
-!!! note
-    The memory-intensive node service ended at 15:00 on October 27, 2023.
-
 ### Persistent local scratch (Reserved only) {#persistent-local-scratch}
 
 This function is for the Reserved service only.
