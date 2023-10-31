@@ -23,17 +23,11 @@ python/3.10/3.10.10 python/3.11/3.11.2
 Python 3.10.10
 ```
 
-なお、メモリインテンシブノード環境でPythonを利用する場合、`gcc/12.2.0`モジュールをpythonモジュールより先にロードしてください。
-
-```
-[username@m01 ~]$ module load gcc/12.2.0
-[username@m01 ~]$ module load python/3.10/3.10.10
-[username@m01 ~]$ python3 --version
-Python 3.10.10
-```
-
 !!! note
     pyenvやcondaなどのPythonディストリビューションを利用者のホーム領域やグループ領域にインストールすることも可能です。この場合はサポート範囲外となりますのでご了承ください。
+
+!!! note
+    メモリインテンシブノードのサービスは、2023年10月27日15:00 をもって終了しました。
 
 ## Python仮想環境 {#python-virtual-environments}
 
