@@ -1166,16 +1166,13 @@
 <span class="n">Python</span> <span class="mf">3.10</span><span class="o">.</span><span class="mi">10</span>
 </code></pre></div>
 
-<p>なお、メモリインテンシブノード環境でPythonを利用する場合、<code>gcc/12.2.0</code>モジュールをpythonモジュールより先にロードしてください。</p>
-<div class="codehilite"><pre><span></span><code><span class="p">[</span><span class="n">username</span><span class="err">@</span><span class="n">m01</span> <span class="o">~</span><span class="p">]</span><span class="o">$</span> <span class="n">module</span> <span class="nb">load</span> <span class="n">gcc</span><span class="o">/</span><span class="mf">12.2</span><span class="o">.</span><span class="mi">0</span>
-<span class="p">[</span><span class="n">username</span><span class="err">@</span><span class="n">m01</span> <span class="o">~</span><span class="p">]</span><span class="o">$</span> <span class="n">module</span> <span class="nb">load</span> <span class="n">python</span><span class="o">/</span><span class="mf">3.10</span><span class="o">/</span><span class="mf">3.10</span><span class="o">.</span><span class="mi">10</span>
-<span class="p">[</span><span class="n">username</span><span class="err">@</span><span class="n">m01</span> <span class="o">~</span><span class="p">]</span><span class="o">$</span> <span class="n">python3</span> <span class="o">--</span><span class="n">version</span>
-<span class="n">Python</span> <span class="mf">3.10</span><span class="o">.</span><span class="mi">10</span>
-</code></pre></div>
-
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>pyenvやcondaなどのPythonディストリビューションを利用者のホーム領域やグループ領域にインストールすることも可能です。この場合はサポート範囲外となりますのでご了承ください。</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>メモリインテンシブノードのサービスは、2023年10月27日15:00 をもって終了しました。</p>
 </div>
 <h2 id="python-virtual-environments">Python仮想環境</h2>
 <p>ABCIではシステム全体で使うPython実行環境に利用者が変更を加えることはできません。その代わりに、利用者はPython仮想環境を使って必要なモジュールを追加して利用することができます。</p>

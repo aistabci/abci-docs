@@ -329,13 +329,6 @@
   
 </li>
         
-          <li class="md-nav__item">
-  <a href="#memory-intensive-node" class="md-nav__link">
-    メモリインテンシブノード
-  </a>
-  
-</li>
-        
       </ul>
     </nav>
   
@@ -1303,12 +1296,6 @@
 <td align="left">NVIDIA A100 GPUを搭載するサーバ</td>
 <td align="left">120</td>
 </tr>
-<tr>
-<td align="left">メモリインテンシブノード</td>
-<td align="left"><em>m01</em>-<em>m10</em></td>
-<td align="left">Intel Optaneメモリを搭載するサーバ</td>
-<td align="left">10</td>
-</tr>
 </tbody>
 </table>
 <div class="admonition note">
@@ -1320,7 +1307,11 @@
 <p class="admonition-title">Note</p>
 <p>運用・保守上の合理的理由により、計算リソースの一部が提供されない場合があります。</p>
 </div>
-<p>このうち、インタラクティブノード、計算ノード(V)、メモリインテンシブノードはInfiniBand EDRを2ポート、計算ノード(A)はInfiniBand HDRを4ポート備えており、後述の<a href="#storage-systems">ストレージシステム</a>とともに、InfiniBandスイッチにより接続されます。</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>メモリインテンシブノードのサービスは、2023年10月27日15:00 をもって終了しました。</p>
+</div>
+<p>このうち、インタラクティブノード、計算ノード(V)はInfiniBand EDRを2ポート、計算ノード(A)はInfiniBand HDRを4ポート備えており、後述の<a href="#storage-systems">ストレージシステム</a>とともに、InfiniBandスイッチにより接続されます。</p>
 <p>以下ではこれらのノードの詳細を以下に示します。</p>
 <h3 id="interactive-node">インタラクティブノード</h3>
 <p>ABCIシステムでは、計算ノード(V), 計算ノード(A)という2種類の計算ノードを提供しています。各計算ノード向けプログラム開発の利便性を向上させるため、インタラクティブノード(V)、インタラクティブノード(A) という2種類のインタラクティブノードを提供しています。</p>
@@ -1456,47 +1447,6 @@ Intel Xeon Gold 6148プロセッサーを2基搭載し、384 GiBのメインメ�
 </tbody>
 </table>
 <p>参考: <a href="../img/compute-node-a-diagram.png">計算ノード(A)のブロック図</a></p>
-<h3 id="memory-intensive-node">メモリインテンシブノード</h3>
-<p>ABCIシステムのメモリインテンシブノードは、Supermicro 4029GR-TRT2で構成されています。
-メモリインテンシブノードは、Intel Xeon Gold 6132プロセッサーを2基、Intel Optane メモリを2基搭載し、メインメモリと合わせて最大2.6 TiBのメモリを利用可能です。</p>
-<p>メモリインテンシブノードの構成を以下に示します。</p>
-<table>
-<thead>
-<tr>
-<th align="left">項目</th>
-<th align="left">説明</th>
-<th align="left">個数</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td align="left">CPU</td>
-<td align="left"><a href="https://ark.intel.com/content/www/us/en/ark/products/123541/intel-xeon-gold-6132-processor-19-25m-cache-2-60-ghz.html">Intel Xeon Gold 6132 Processor 2.6 GHz, 14 Cores (28 Threads)</a></td>
-<td align="left">2</td>
-</tr>
-<tr>
-<td align="left">Memory</td>
-<td align="left">32 GiB DDR4 2666 MHz RDIMM (ECC)</td>
-<td align="left">24</td>
-</tr>
-<tr>
-<td align="left">SSD</td>
-<td align="left"><a href="https://ark.intel.com/content/www/us/en/ark/products/120524/intel-ssd-dc-s4500-series-1-9tb-2-5in-sata-6gb-s-3d1-tlc.html">Intel SSD DC S4500 1.9 TB</a></td>
-<td align="left">1</td>
-</tr>
-<tr>
-<td align="left">Optane SSD</td>
-<td align="left"><a href="https://ark.intel.com/content/www/us/en/ark/products/187934/intel-optane-ssd-dc-p4800x-series-with-intel-memory-drive-technology-1-5tb-1-2-height-pcie-x4-3d-xpoint.html">Intel Optane SSD DC P4800X 1.5 TB</a></td>
-<td align="left">2</td>
-</tr>
-<tr>
-<td align="left">Interconnect</td>
-<td align="left">InfiniBand EDR (100 Gbps)</td>
-<td align="left">2</td>
-</tr>
-</tbody>
-</table>
-<p>メモリインテンシブノード向けのプログラムを実行するには、計算ノードと同様に、バッチジョブもしくはインタラクティブジョブとしてジョブ管理システムに処理を依頼します。</p>
 <h2 id="storage-systems">ストレージシステム</h2>
 <p>ABCIシステムは、人工知能やビッグデータ応用に用いる大容量データを格納するためのストレージシステムを5基備えており、これらを用いて共有ファイルシステム及びABCIクラウドストレージを提供しています。合算で最大47 PBの実効容量があります。</p>
 <table>
@@ -1597,7 +1547,7 @@ Intel Xeon Gold 6148プロセッサーを2基搭載し、384 GiBのメインメ�
 </tr>
 </tbody>
 </table>
-<p>インタラクティブノード、計算ノード、メモリインテンシブノードは、共有ファイルシステムをマウントしており、利用者は共通のマウントポイントからこれらのファイルシステムにアクセスすることができます。</p>
+<p>インタラクティブノード、計算ノードは、共有ファイルシステムをマウントしており、利用者は共通のマウントポイントからこれらのファイルシステムにアクセスすることができます。</p>
 <p>これ以外に、これらのノードはそれぞれローカルスクラッチ領域として利用可能なローカルストレージを搭載しています。以下に一覧を示します。</p>
 <table>
 <thead>
@@ -1635,13 +1585,6 @@ Intel Xeon Gold 6148プロセッサーを2基搭載し、384 GiBのメインメ�
 <td align="left"></td>
 <td align="left">/local2</td>
 <td align="left">2.0 TB</td>
-<td align="left">XFS</td>
-<td align="left"><a href="../storage/#local-storage">ローカルストレージ</a>を参照</td>
-</tr>
-<tr>
-<td align="left">メモリインテンシブノード</td>
-<td align="left">/local</td>
-<td align="left">1.9 TB</td>
 <td align="left">XFS</td>
 <td align="left"><a href="../storage/#local-storage">ローカルストレージ</a>を参照</td>
 </tr>

@@ -374,13 +374,6 @@
   
 </li>
         
-          <li class="md-nav__item">
-  <a href="#memory-intensive-node" class="md-nav__link">
-    メモリインテンシブノード
-  </a>
-  
-</li>
-        
       </ul>
     </nav>
   
@@ -1423,7 +1416,11 @@
 <p>ABCIシステムでは、計算リソースを論理的に分割した資源タイプを利用して、ジョブサービスにシステムリソースを割り当てます。On-demand、Spot、Reservedのいずれのサービスを利用する場合も、利用者は利用したい資源タイプとその数量を指定して、ジョブの投入/実行、計算ノードの予約を行います。</p>
 <p>以下では、まず利用可能な資源タイプについて解説し、続いて同時に利用可能な資源量、経過時間およびノード時間積、ジョブ投入数および実行数に関する制限事項等を説明します。</p>
 <h3 id="available-resource-types">利用可能な資源タイプ</h3>
-<p>ABCIシステムには、<a href="../system-overview/#compute-node">計算ノード</a>と<a href="../system-overview/#memory-intensive-node">メモリインテンシブノード</a>の2種類の計算リソースがあり、それぞれについて次のように資源タイプが用意されています。</p>
+<p>ABCIシステムには、次の資源タイプが用意されています。</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>メモリインテンシブノードのサービスは、2023年10月27日15:00 をもって終了しました。</p>
+</div>
 <h4 id="compute-node-v">計算ノード(V)</h4>
 <table>
 <thead>
@@ -1528,49 +1525,6 @@
 </tr>
 </tbody>
 </table>
-<h4 id="memory-intensive-node">メモリインテンシブノード</h4>
-<table>
-<thead>
-<tr>
-<th align="left">資源タイプ</th>
-<th align="left">資源タイプ名</th>
-<th align="left">説明</th>
-<th align="left">割り当て物理CPUコア数</th>
-<th align="left">割り当てGPU数</th>
-<th align="left">メモリ (GiB)</th>
-<th align="left">ローカルストレージ (GB)</th>
-<th align="left">資源タイプ課金係数</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td align="left">M.large</td>
-<td align="left">rt_M.large</td>
-<td align="left">ノード共有<br>CPUのみ利用</td>
-<td align="left">8</td>
-<td align="left">-</td>
-<td align="left">800</td>
-<td align="left">480</td>
-<td align="left">0.40</td>
-</tr>
-<tr>
-<td align="left">M.small</td>
-<td align="left">rt_M.small</td>
-<td align="left">ノード共有<br>CPUのみ利用</td>
-<td align="left">4</td>
-<td align="left">-</td>
-<td align="left">400</td>
-<td align="left">240</td>
-<td align="left">0.20</td>
-</tr>
-</tbody>
-</table>
-<p>複数ノードを使用するジョブを実行する場合は、計算ノードを占有する資源タイプ<code>rt_F</code>もしくは<code>rt_AF</code>を指定してください。メモリインテンシブノードでは複数ノードを使用するジョブを実行することはできません。</p>
-<div class="admonition warning">
-<p class="admonition-title">Warning</p>
-<p>ノード共有の資源タイプでは、ジョブのプロセス情報は同一ノードで実行されている他のジョブから参照可能になります。
-他のジョブから参照させたくない場合、資源タイプ<code>rt_F</code>もしくは<code>rt_AF</code>を指定しノード占有でジョブを実行してください。</p>
-</div>
 <h3 id="number-of-nodes-available-at-the-same-time">同時に利用可能なノード数</h3>
 <p>ジョブサービスごとに利用可能な資源タイプとノード数の組み合わせを以下に示します。同時に複数ノードを利用する場合は、資源タイプ<code>rt_F</code>もしくは<code>rt_AF</code>を指定する必要があります。</p>
 <table>
@@ -1618,16 +1572,6 @@
 <td align="right">1</td>
 </tr>
 <tr>
-<td align="left"></td>
-<td align="left">rt_M.large</td>
-<td align="right">1</td>
-</tr>
-<tr>
-<td align="left"></td>
-<td align="left">rt_M.small</td>
-<td align="right">1</td>
-</tr>
-<tr>
 <td align="left">Spot</td>
 <td align="left">rt_F</td>
 <td align="right">1-512</td>
@@ -1660,16 +1604,6 @@
 <tr>
 <td align="left"></td>
 <td align="left">rt_AG.small</td>
-<td align="right">1</td>
-</tr>
-<tr>
-<td align="left"></td>
-<td align="left">rt_M.large</td>
-<td align="right">1</td>
-</tr>
-<tr>
-<td align="left"></td>
-<td align="left">rt_M.small</td>
 <td align="right">1</td>
 </tr>
 <tr>
@@ -1727,12 +1661,12 @@
 </tr>
 <tr>
 <td align="left"></td>
-<td align="left">rt_G.large, rt_C.large, rt_M.large</td>
+<td align="left">rt_G.large, rt_C.large</td>
 <td align="left">12:00:00/1:00:00</td>
 </tr>
 <tr>
 <td align="left"></td>
-<td align="left">rt_G.small, rt_C.small, rt_AG.small, rt_M.small</td>
+<td align="left">rt_G.small, rt_C.small, rt_AG.small</td>
 <td align="left">12:00:00/1:00:00</td>
 </tr>
 <tr>
@@ -1752,12 +1686,12 @@
 </tr>
 <tr>
 <td align="left"></td>
-<td align="left">rt_C.large, rt_M.large</td>
+<td align="left">rt_C.large</td>
 <td align="left">72:00:00/1:00:00</td>
 </tr>
 <tr>
 <td align="left"></td>
-<td align="left">rt_G.small, rt_C.small, rt_AG.small, rt_M.small</td>
+<td align="left">rt_G.small, rt_C.small, rt_AG.small</td>
 <td align="left">72:00:00/1:00:00</td>
 </tr>
 <tr>
@@ -1797,10 +1731,6 @@
 <tr>
 <td align="left">Spot(計算ノード(A))</td>
 <td align="right">2304 nodes &middot; hours</td>
-</tr>
-<tr>
-<td align="left">Spot(メモリインテンシブノード)</td>
-<td align="right">72 nodes &middot; hours</td>
 </tr>
 </tbody>
 </table>

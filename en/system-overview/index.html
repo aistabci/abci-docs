@@ -329,13 +329,6 @@
   
 </li>
         
-          <li class="md-nav__item">
-  <a href="#memory-intensive-node" class="md-nav__link">
-    Memory-Intensive Node
-  </a>
-  
-</li>
-        
       </ul>
     </nav>
   
@@ -1291,12 +1284,6 @@
 <td align="left">Server w/ NVIDIA A100 GPU accelerators</td>
 <td align="left">120</td>
 </tr>
-<tr>
-<td align="left">Memory-Intensive Node</td>
-<td align="left"><em>m01</em>-<em>m10</em></td>
-<td align="left">Server w/ Intel Optane memory</td>
-<td align="left">10</td>
-</tr>
 </tbody>
 </table>
 <div class="admonition note">
@@ -1308,7 +1295,11 @@ Similarly, <code>Compute Node</code> refers to both the compute node (V) and the
 <p class="admonition-title">Note</p>
 <p>Due to operational and maintenance reasons, some computing resources may not be provided.</p>
 </div>
-<p>Among them, interactive nodes, compute nodes(V), and memory-intensive nodes are equipped with 2 ports of InfiniBand EDR, compute nodes(A) are equipped with 4 ports of InfiniBand HDR and they are connected by InfiniBand switch group together with <a href="#storage-systems">Storage Systems</a> described later.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The memory-intensive node service ended at 15:00 on October 27, 2023.</p>
+</div>
+<p>Among them, interactive nodes, and compute nodes(V) are equipped with 2 ports of InfiniBand EDR, compute nodes(A) are equipped with 4 ports of InfiniBand HDR and they are connected by InfiniBand switch group together with <a href="#storage-systems">Storage Systems</a> described later.</p>
 <p>Below are the details of these nodes.</p>
 <h3 id="interactive-node">Interactive Node</h3>
 <p>The ABCI system provides two types of compute nodes: compute node (V) and compute node (A). To improve the convenience of program development for each compute node, we provide two types of interactive nodes: interactive node (V) and interactive node (A).</p>
@@ -1445,47 +1436,6 @@ The compute node (A) is equipped with two Intel Xeon Platinum 8360Y Processors a
 </tbody>
 </table>
 <p>Reference: <a href="../img/compute-node-a-diagram.png">Block Diagram of Compute Node (A)</a></p>
-<h3 id="memory-intensive-node">Memory-Intensive Node</h3>
-<p>The memory-intensive node of ABCI system consists of Supermicro 4029GR-TRT2.
-The memory-intensive node is equipped with two Intel Xeon Gold 6132 Processors and two Intel Optane memory, and up to 2.6 TiB of memory can be used together with the main memory.</p>
-<p>The specifications of the memory-intensive node are shown below:</p>
-<table>
-<thead>
-<tr>
-<th align="left">Item</th>
-<th align="left">Description</th>
-<th align="left">#</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td align="left">CPU</td>
-<td align="left"><a href="https://ark.intel.com/content/www/us/en/ark/products/123541/intel-xeon-gold-6    132-processor-19-25m-cache-2-60-ghz.html">Intel Xeon Gold 6132 Processor<br>2.6 GHz, 14 Cores (28 Threads)</a></td>
-<td align="left">2</td>
-</tr>
-<tr>
-<td align="left">Memory</td>
-<td align="left">32 GiB DDR4 2666 MHz RDIMM (ECC)</td>
-<td align="left">24</td>
-</tr>
-<tr>
-<td align="left">SSD</td>
-<td align="left"><a href="https://ark.intel.com/content/www/us/en/ark/products/120524/intel-ssd-dc-s4500-series-1-9tb-2-5in-sata-6gb-s-3d1-tlc.html">Intel SSD DC S4500 1.9 TB</a></td>
-<td align="left">1</td>
-</tr>
-<tr>
-<td align="left">Optane SSD</td>
-<td align="left"><a href="https://ark.intel.com/content/www/us/en/ark/products/187934/intel-optane-ssd-dc-p4800x-series-with-intel-memory-drive-technology-1-5tb-1-2-height-pcie-x4-3d-xpoint.html">Intel Optane SSD DC P4800X 1.5 TB</a></td>
-<td align="left">2</td>
-</tr>
-<tr>
-<td align="left">Interconnect</td>
-<td align="left">InfiniBand EDR (100 Gbps)</td>
-<td align="left">2</td>
-</tr>
-</tbody>
-</table>
-<p>To execute the program for the memory-intensive node, submit the program to the job management system as a batch job or an interactive job, as with the compute node.</p>
 <h2 id="storage-systems">Storage Systems</h2>
 <p>The ABCI system has five storage systems for storing large amounts of data used for AI and Big Data applications, and these are used to provide shared file systems and ABCI Cloud Storage. The total effective capacity is up to 47 PB.</p>
 <table>
@@ -1586,7 +1536,7 @@ The memory-intensive node is equipped with two Intel Xeon Gold 6132 Processors a
 </tr>
 </tbody>
 </table>
-<p>Interactive nodes, compute nodes, and memory-intensive nodes mount the shared file systems, and users can access these file systems from common mount points.</p>
+<p>Interactive nodes, and compute nodes mount the shared file systems, and users can access these file systems from common mount points.</p>
 <p>Besides this, these nodes each have local storage that can be used as a local scratch area. The list is shown below.</p>
 <table>
 <thead>
@@ -1624,13 +1574,6 @@ The memory-intensive node is equipped with two Intel Xeon Gold 6132 Processors a
 <td align="left"></td>
 <td align="left">/local2</td>
 <td align="left">2.0 TB</td>
-<td align="left">XFS</td>
-<td align="left">See <a href="../storage/#local-storage">Local Storage</a></td>
-</tr>
-<tr>
-<td align="left">memory-intensive node</td>
-<td align="left">/local</td>
-<td align="left">1.9 TB</td>
 <td align="left">XFS</td>
 <td align="left">See <a href="../storage/#local-storage">Local Storage</a></td>
 </tr>

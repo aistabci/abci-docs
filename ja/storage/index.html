@@ -1537,40 +1537,17 @@
 </code></pre></div>
 
 <h2 id="local-storage">ローカルストレージ</h2>
-<p>ABCIシステムでは、計算ノード(V)に1.6 TBのNVMe SSD x 1、計算ノード(A)に2.0 TBのNVMe SSD x 2、メモリインテンシブノードに1.9 TBのSATA 3.0 SSD x 1が搭載されています。これらローカルストレージは次のように利用できます。</p>
+<p>ABCIシステムでは、計算ノード(V)に1.6 TBのNVMe SSD x 1、計算ノード(A)に2.0 TBのNVMe SSD x 2が搭載されています。これらローカルストレージは次のように利用できます。</p>
 <ul>
 <li>ノードに閉じたスクラッチ領域として利用する（<em>ローカルスクラッチ</em>、<em>永続ローカルスクラッチ (Reserved専用)</em>）。</li>
 <li>複数の計算ノードのローカルストレージにまたがる分散共有ファイルシステムを構成して利用する（<em>BeeONDストレージ</em>）。</li>
 </ul>
-<p>ただし、ノード毎にサポートしている利用方法が異なっています。以下の対応表を確認してください。</p>
-<table>
-<thead>
-<tr>
-<th align="left">ローカルストレージの利用方法</th>
-<th align="center">計算ノード（VおよびA）</th>
-<th align="center">メモリインテンシブノード</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td align="left">ローカルスクラッチ</td>
-<td align="center">ok</td>
-<td align="center">ok</td>
-</tr>
-<tr>
-<td align="left">BeeONDストレージ</td>
-<td align="center">ok</td>
-<td align="center">-</td>
-</tr>
-<tr>
-<td align="left">永続ローカルスクラッチ (Reserved専用)</td>
-<td align="center">ok</td>
-<td align="center">-</td>
-</tr>
-</tbody>
-</table>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>メモリインテンシブノードのサービスは、2023年10月27日15:00 をもって終了しました。</p>
+</div>
 <h3 id="local-scratch">ローカルスクラッチ</h3>
-<p>計算ノードとメモリインテンシブノードのローカルストレージは、ジョブ投入時に特別なオプションを指定することなくローカルスクラッチとして利用できます。
+<p>計算ノードのローカルストレージは、ジョブ投入時に特別なオプションを指定することなくローカルスクラッチとして利用できます。
 なお、ローカルストレージとして利用できる容量は、指定した<a href="../job-execution/#job-execution-resource">ジョブ実行リソース</a>によって異なります。
 ローカルストレージへのパスはジョブ毎に異なり、<a href="../job-execution/#environment-variables">環境変数</a><code>SGE_LOCALDIR</code>を利用してアクセスすることができます。</p>
 <p>例）ジョブスクリプトの例(use_local_storage.sh)</p>

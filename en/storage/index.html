@@ -1526,40 +1526,17 @@ The first 64KiB of the file data is placed on the MDT and rest of file is placed
 </code></pre></div>
 
 <h2 id="local-storage">Local Storage</h2>
-<p>In ABCI System, a 1.6 TB NVMe SSD x1 is installed into each compute node (V), a 2.0 TB NVMe SSD x2 are installed into each compute node (A) and a 1.9 TB SATA 3.0 SSD x1 is installed into each memory-intensive node. There are two ways to utilize these storages as follows:</p>
+<p>In ABCI System, a 1.6 TB NVMe SSD x1 is installed into each compute node (V) and a 2.0 TB NVMe SSD x2 are installed into each compute node (A). There are two ways to utilize these storages as follows:</p>
 <ul>
 <li>Using as a local scratch of a node (<em>Local scratch</em>, <em>Persistent local scratch (Reserved only)</em>).</li>
 <li>Using as a distributed shared file system, which consists of multiple NVMe storages in multiple compute nodes (<em>BeeOND storage</em>).</li>
 </ul>
-<p>The follwing table shows how to utilize local storage by two types of node.</p>
-<table>
-<thead>
-<tr>
-<th align="left"></th>
-<th align="center">compute node</th>
-<th align="center">memory-intensive node</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td align="left">using as a Local scratch</td>
-<td align="center">ok</td>
-<td align="center">ok</td>
-</tr>
-<tr>
-<td align="left">using as a BeeOND storage</td>
-<td align="center">ok</td>
-<td align="center">-</td>
-</tr>
-<tr>
-<td align="left">using as a Persistent Local scratch (Reserved only)</td>
-<td align="center">ok</td>
-<td align="center">-</td>
-</tr>
-</tbody>
-</table>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The memory-intensive node service ended at 15:00 on October 27, 2023.</p>
+</div>
 <h3 id="local-scratch">Local scratch</h3>
-<p>You can use local storages attached to compute or memory-intensive nodes on which your jobs are running as temporal local scratch without specifying any additional options.
+<p>Local storage on compute nodes is available as a local scratch without specifying any special options at job submission.
 Note that the amount of the local storage you can use is determined by "Resource type". For more detail on "Resource type", please refer to <a href="../job-execution/#job-execution-resource">Job Execution Resource</a>.
 The local storage path is different for each job and you can access to local storage by using <a href="../job-execution/#environment-variables">environment variables</a> <code>SGE_LOCALDIR</code>.</p>
 <p>Example) sample of job script (use_local_storage.sh)</p>

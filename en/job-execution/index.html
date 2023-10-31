@@ -374,13 +374,6 @@
   
 </li>
         
-          <li class="md-nav__item">
-  <a href="#memory-intensive-node" class="md-nav__link">
-    Memory-intensive Node
-  </a>
-  
-</li>
-        
       </ul>
     </nav>
   
@@ -1412,7 +1405,11 @@
 When using any of the On-demand, Spot, and Reserved services, you need to specify the resource type and its quantity that you want to use, submit or execute jobs, and reserves compute nodes.</p>
 <p>The following describes the available resource types first, followed by the restrictions on the amount of resources available at the same time, elapsed time and node-time product, job submissions and executions, and so on.</p>
 <h3 id="available-resource-types">Available Resource Types</h3>
-<p>The ABCI system has two types of computational resources, <a href="../system-overview/#compute-node">compute node</a> and <a href="../system-overview/#memory-intensive-node">memory-intensive node</a>, each of which has the following resource types:</p>
+<p>The ABCI system provides the following resource types:</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The memory-intensive node service ended at 15:00 on October 27, 2023.</p>
+</div>
 <h4 id="compute-node-v">Compute Node (V)</h4>
 <table>
 <thead>
@@ -1517,48 +1514,6 @@ When using any of the On-demand, Spot, and Reserved services, you need to specif
 </tr>
 </tbody>
 </table>
-<h4 id="memory-intensive-node">Memory-intensive Node</h4>
-<table>
-<thead>
-<tr>
-<th align="left">Resource type</th>
-<th align="left">Resource type name</th>
-<th align="left">Description</th>
-<th align="left">Assigned physical CPU core</th>
-<th align="left">Number of assigned GPU</th>
-<th align="left">Memory (GiB)</th>
-<th align="left">Local storage (GB)</th>
-<th align="left">Resource type charge coefficient</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td align="left">M.large</td>
-<td align="left">rt_M.large</td>
-<td align="left">node-sharing<br>CPU only</td>
-<td align="left">8</td>
-<td align="left">-</td>
-<td align="left">800</td>
-<td align="left">480</td>
-<td align="left">0.40</td>
-</tr>
-<tr>
-<td align="left">M.small</td>
-<td align="left">rt_M.small</td>
-<td align="left">node-sharing<br>CPU only</td>
-<td align="left">4</td>
-<td align="left">-</td>
-<td align="left">400</td>
-<td align="left">240</td>
-<td align="left">0.20</td>
-</tr>
-</tbody>
-</table>
-<p>When you execute a job using multiple nodes, you need to specify resource type <code>rt_F</code> or <code>rt_AF</code> for node-exclusive. The memory-intensive node is not available for using multiple nodes.</p>
-<div class="admonition warning">
-<p class="admonition-title">Warning</p>
-<p>On node-sharing job, the job process information can be seen from other jobs executed on the same nodes. If you want to hide your job process information, specify resource type <code>rt_F</code> or <code>rt_AF</code> and execute a node-exclusive job.</p>
-</div>
 <h3 id="number-of-nodes-available-at-the-same-time">Number of nodes available at the same time</h3>
 <p>The available resource type and number of nodes for each service are as follows. When you execute a job using multiple nodes, you need to specify resource type <code>rt_F</code> or <code>rt_AF</code>.</p>
 <table>
@@ -1606,16 +1561,6 @@ When using any of the On-demand, Spot, and Reserved services, you need to specif
 <td align="right">1</td>
 </tr>
 <tr>
-<td align="left"></td>
-<td align="left">rt_M.large</td>
-<td align="right">1</td>
-</tr>
-<tr>
-<td align="left"></td>
-<td align="left">rt_M.small</td>
-<td align="right">1</td>
-</tr>
-<tr>
 <td align="left">Spot</td>
 <td align="left">rt_F</td>
 <td align="right">1-512</td>
@@ -1648,16 +1593,6 @@ When using any of the On-demand, Spot, and Reserved services, you need to specif
 <tr>
 <td align="left"></td>
 <td align="left">rt_AG.small</td>
-<td align="right">1</td>
-</tr>
-<tr>
-<td align="left"></td>
-<td align="left">rt_M.large</td>
-<td align="right">1</td>
-</tr>
-<tr>
-<td align="left"></td>
-<td align="left">rt_M.small</td>
 <td align="right">1</td>
 </tr>
 <tr>
@@ -1715,12 +1650,12 @@ When using any of the On-demand, Spot, and Reserved services, you need to specif
 </tr>
 <tr>
 <td align="left"></td>
-<td align="left">rt_G.large, rt_C.large, rt_M.large</td>
+<td align="left">rt_G.large, rt_C.large</td>
 <td align="left">12:00:00/1:00:00</td>
 </tr>
 <tr>
 <td align="left"></td>
-<td align="left">rt_G.small, rt_C.small, rt_AG.small, rt_M.small</td>
+<td align="left">rt_G.small, rt_C.small, rt_AG.small</td>
 <td align="left">12:00:00/1:00:00</td>
 </tr>
 <tr>
@@ -1740,12 +1675,12 @@ When using any of the On-demand, Spot, and Reserved services, you need to specif
 </tr>
 <tr>
 <td align="left"></td>
-<td align="left">rt_C.large, rt_M.large</td>
+<td align="left">rt_C.large</td>
 <td align="left">72:00:00/1:00:00</td>
 </tr>
 <tr>
 <td align="left"></td>
-<td align="left">rt_G.small, rt_C.small, rt_AG.small, rt_M.small</td>
+<td align="left">rt_G.small, rt_C.small, rt_AG.small</td>
 <td align="left">72:00:00/1:00:00</td>
 </tr>
 <tr>
@@ -1785,10 +1720,6 @@ When using any of the On-demand, Spot, and Reserved services, you need to specif
 <tr>
 <td align="left">Spot: Compute Node (A)</td>
 <td align="right">2304 nodes &middot; hours</td>
-</tr>
-<tr>
-<td align="left">Spot: Memory-Intensive Node</td>
-<td align="right">72 nodes &middot; hours</td>
 </tr>
 </tbody>
 </table>
