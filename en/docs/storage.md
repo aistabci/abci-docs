@@ -257,22 +257,17 @@ Example) Enable the DoM feature and set a striping pattern (for OST(s)) of the d
 
 ## Local Storage
 
-In ABCI System, a 1.6 TB NVMe SSD x1 is installed into each compute node (V), a 2.0 TB NVMe SSD x2 are installed into each compute node (A) and a 1.9 TB SATA 3.0 SSD x1 is installed into each memory-intensive node. There are two ways to utilize these storages as follows:
+In ABCI System, a 1.6 TB NVMe SSD x1 is installed into each compute node (V) and a 2.0 TB NVMe SSD x2 are installed into each compute node (A). There are two ways to utilize these storages as follows:
 
 * Using as a local scratch of a node (*Local scratch*, *Persistent local scratch (Reserved only)*).
 * Using as a distributed shared file system, which consists of multiple NVMe storages in multiple compute nodes (*BeeOND storage*).
 
-The follwing table shows how to utilize local storage by two types of node.
-
-|  | compute node | memory-intensive node |
-|:---|:--:|:--:|
-| using as a Local scratch | ok | ok |
-| using as a BeeOND storage | ok | - |
-| using as a Persistent Local scratch (Reserved only) | ok | - |
+!!! note
+    The memory-intensive node service ended at 15:00 on October 27, 2023.
 
 ### Local scratch
 
-You can use local storages attached to compute or memory-intensive nodes on which your jobs are running as temporal local scratch without specifying any additional options.
+Local storage on compute nodes is available as a local scratch without specifying any special options at job submission.
 Note that the amount of the local storage you can use is determined by "Resource type". For more detail on "Resource type", please refer to [Job Execution Resource](job-execution.md#job-execution-resource).
 The local storage path is different for each job and you can access to local storage by using [environment variables](job-execution.md#environment-variables) `SGE_LOCALDIR`.
 

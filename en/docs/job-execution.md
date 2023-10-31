@@ -41,17 +41,20 @@ The following describes the available resource types first, followed by the rest
 
 ### Available Resource Types
 
-The ABCI system has two types of computational resources, [compute node](system-overview.md#compute-node) and [memory-intensive node](system-overview.md#memory-intensive-node), each of which has the following resource types:
+The ABCI system provides the following resource types:
+
+!!! note
+    The memory-intensive node service ended at 15:00 on October 27, 2023.
 
 #### Compute Node (V)
 
 | Resource type | Resource type name | Description | Assigned physical CPU core | Number of assigned GPU | Memory (GiB) | Local storage (GB) | Resource type charge coefficient |
 |:--|:--|:--|:--|:--|:--|:--|:--|
-| Full | rt\_F | node-exclusive | 40 | 4 | 360 | 1440 | 1.00 |
-| G.large | rt\_G.large | node-sharing<br>with GPU | 20 | 4 | 240 | 720 | 0.90 |
-| G.small | rt\_G.small | node-sharing<br>with GPU | 5 | 1 | 60 | 180 | 0.30 |
-| C.large | rt\_C.large | node-sharing<br>CPU only | 20 | 0 | 120 | 720 | 0.60 |
-| C.small | rt\_C.small | node-sharing<br>CPU only | 5 | 0 | 30 | 180 | 0.20 |
+| Full | rt\_F | node-exclusive | 40 | 4 | 360 | 1440 | 0.50 |
+| G.large | rt\_G.large | node-sharing<br>with GPU | 20 | 4 | 240 | 720 | 0.50 |
+| G.small | rt\_G.small | node-sharing<br>with GPU | 5 | 1 | 60 | 180 | 0.20 |
+| C.large | rt\_C.large | node-sharing<br>CPU only | 20 | 0 | 120 | 720 | 0.30 |
+| C.small | rt\_C.small | node-sharing<br>CPU only | 5 | 0 | 30 | 180 | 0.10 |
 
 #### Compute Node (A)
 
@@ -61,18 +64,6 @@ The ABCI system has two types of computational resources, [compute node](system-
 | AG.small | rt\_AG.small | node-sharing<br>with GPU | 9 | 1 | 60 | 390 | 0.50 |
 
 [^1]: The sum of /local1 (1590 GB) and /local2 (1850 GB).
-
-#### Memory-intensive Node
-
-| Resource type | Resource type name | Description | Assigned physical CPU core | Number of assigned GPU | Memory (GiB) | Local storage (GB) | Resource type charge coefficient |
-|:--|:--|:--|:--|:--|:--|:--|:--|
-| M.large | rt\_M.large | node-sharing<br>CPU only | 8 | \- | 800 | 480 | 0.40 |
-| M.small | rt\_M.small | node-sharing<br>CPU only | 4 | \- | 400 | 240 | 0.20 |
-
-When you execute a job using multiple nodes, you need to specify resource type `rt_F` or `rt_AF` for node-exclusive. The memory-intensive node is not available for using multiple nodes.
-
-!!! warning
-    On node-sharing job, the job process information can be seen from other jobs executed on the same nodes. If you want to hide your job process information, specify resource type `rt_F` or `rt_AF` and execute a node-exclusive job.
 
 ### Number of nodes available at the same time
 
@@ -87,8 +78,6 @@ The available resource type and number of nodes for each service are as follows.
 |           | rt\_C.small | 1 |
 |           | rt\_AF      | 1-4 |
 |           | rt\_AG.small| 1 |
-|           | rt\_M.large | 1 |
-|           | rt\_M.small | 1 |
 | Spot      | rt\_F       | 1-512 |
 |           | rt\_G.large | 1 |
 |           | rt\_G.small | 1 |
@@ -96,8 +85,6 @@ The available resource type and number of nodes for each service are as follows.
 |           | rt\_C.small | 1 |
 |           | rt\_AF      | 1-64 |
 |           | rt\_AG.small| 1 |
-|           | rt\_M.large | 1 |
-|           | rt\_M.small | 1 |
 | Reserved  | rt\_F       | 1-(number of reserved nodes) |
 |           | rt\_G.large | 1 |
 |           | rt\_G.small | 1 |
@@ -113,13 +100,13 @@ There is an elapsed time limit (executable time limit) for jobs depending on the
 | Service | Resource type name | Limit of elapsed time (upper limit/default) |
 |:--|:--|:--|
 | On-demand | rt\_F, rt\_AF | 12:00:00/1:00:00 |
-|           | rt\_G.large, rt\_C.large, rt\_M.large | 12:00:00/1:00:00 |
-|           | rt\_G.small, rt\_C.small, rt\_AG.small, rt\_M.small | 12:00:00/1:00:00 |
+|           | rt\_G.large, rt\_C.large | 12:00:00/1:00:00 |
+|           | rt\_G.small, rt\_C.small, rt\_AG.small | 12:00:00/1:00:00 |
 | Spot      | rt\_F | 168:00:00/1:00:00 |
 |           | rt\_AF | 72:00:00/1:00:00 |
 |           | rt\_G.large | 168:00:00/1:00:00 |
-|           | rt\_C.large, rt\_M.large | 72:00:00/1:00:00 |
-|           | rt\_G.small, rt\_C.small, rt\_AG.small, rt\_M.small | 72:00:00/1:00:00 |
+|           | rt\_C.large | 72:00:00/1:00:00 |
+|           | rt\_G.small, rt\_C.small, rt\_AG.small | 72:00:00/1:00:00 |
 | Reserved  | rt\_F, rt\_AF | unlimited |
 |           | rt\_G.large, rt\_C.large | unlimited |
 |           | rt\_G.small, rt\_C.small, rt\_AG.small | unlimited |
@@ -131,7 +118,6 @@ In addition, when executing a job that uses multiple nodes in On-demand or Spot 
 | On-demand                                     |    12 nodes &middot; hours |
 | Spot: Compute Node (V)                        | 43008 nodes &middot; hours |
 | Spot: Compute Node (A)                        |  2304 nodes &middot; hours |
-| Spot: Memory-Intensive Node                   |    72 nodes &middot; hours |
 
 !!!note
     There is no limit on the elapsed time in the Reserved service, but the job will be forcibly terminated when the reservation ends. See [Advance Reservation](#advance-reservation) for more information about restrictions on Reserved Services.

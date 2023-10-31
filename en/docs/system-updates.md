@@ -1,8 +1,13 @@
 # System Updates
 
-## 2023-10-02 (future update) {#2023-10-02}
+## 2023-10-27 {#2023-10-27}
 
-* Due to the "[Compute Node (V) Usage Promotion Program](https://abci.ai/news/2023/09/01/en_nodevpromotion.html)", the resource type charge coefficients for [resource type in the Computation Node (V)](job-execution.md#compute-node-v) will be changed as follows from 12:00 on October 2, 2023 to January 9, 2024.
+* The memory-intensive node service ended at 15:00 on October 27, 2023.<br>
+  The target resource type names are rt_M.large and rt_M.small.
+
+## 2023-10-02 {#2023-10-02}
+
+* Due to the "[Compute Node (V) Usage Promotion Program](https://abci.ai/news/2023/09/01/en_nodevpromotion.html)", the following changes were made to the resource type charge coefficients for [resource type in the Computation Node (V)](job-execution.md#compute-node-v). The change period is scheduled from 12:00 on October 2, 2023 to January 9, 2024.
 
 | Resource type | Resource type name | Previous resource type charge coefficient | Changed resource type charge coefficient |
 |:--|:--|:--|:--|

@@ -34,7 +34,6 @@ ABCIシステムの計算リソースの一覧を以下に示します。
 | インタラクティブノード(A) | *es-a* | ABCIシステムのフロントエンドとなる計算ノード(A)向けログインサーバ | 2 |
 | 計算ノード(V) | *g0001*-*g1088* | NVIDIA V100 GPUを搭載するサーバ | 1,088 |
 | 計算ノード(A) | *a0001*-*a0120* | NVIDIA A100 GPUを搭載するサーバ | 120 |
-| メモリインテンシブノード | *m01*-*m10* | Intel Optaneメモリを搭載するサーバ | 10 |
 
 !!! note
     以降の説明で、「インタラクティブノード」は、インタラクティブノード(V)とインタラクティブノード(A)の両方を指します。
@@ -43,7 +42,10 @@ ABCIシステムの計算リソースの一覧を以下に示します。
 !!! note
     運用・保守上の合理的理由により、計算リソースの一部が提供されない場合があります。
 
-このうち、インタラクティブノード、計算ノード(V)、メモリインテンシブノードはInfiniBand EDRを2ポート、計算ノード(A)はInfiniBand HDRを4ポート備えており、後述の[ストレージシステム](#storage-systems)とともに、InfiniBandスイッチにより接続されます。
+!!! note
+    メモリインテンシブノードのサービスは、2023年10月27日15:00 をもって終了しました。
+
+このうち、インタラクティブノード、計算ノード(V)はInfiniBand EDRを2ポート、計算ノード(A)はInfiniBand HDRを4ポート備えており、後述の[ストレージシステム](#storage-systems)とともに、InfiniBandスイッチにより接続されます。
 
 以下ではこれらのノードの詳細を以下に示します。
 
@@ -113,23 +115,6 @@ ABCIシステムの計算ノードは、計算ノード(V)と計算ノード(A)�
 
 参考: [計算ノード(A)のブロック図](img/compute-node-a-diagram.png)
 
-### メモリインテンシブノード {#memory-intensive-node}
-
-ABCIシステムのメモリインテンシブノードは、Supermicro 4029GR-TRT2で構成されています。
-メモリインテンシブノードは、Intel Xeon Gold 6132プロセッサーを2基、Intel Optane メモリを2基搭載し、メインメモリと合わせて最大2.6 TiBのメモリを利用可能です。
-
-メモリインテンシブノードの構成を以下に示します。
-
-| 項目 | 説明 | 個数 |
-|:--|:--|:--|
-| CPU | [Intel Xeon Gold 6132 Processor 2.6 GHz, 14 Cores (28 Threads)](https://ark.intel.com/content/www/us/en/ark/products/123541/intel-xeon-gold-6132-processor-19-25m-cache-2-60-ghz.html) | 2 |
-| Memory | 32 GiB DDR4 2666 MHz RDIMM (ECC) | 24 |
-| SSD | [Intel SSD DC S4500 1.9 TB](https://ark.intel.com/content/www/us/en/ark/products/120524/intel-ssd-dc-s4500-series-1-9tb-2-5in-sata-6gb-s-3d1-tlc.html) | 1 |
-| Optane SSD | [Intel Optane SSD DC P4800X 1.5 TB](https://ark.intel.com/content/www/us/en/ark/products/187934/intel-optane-ssd-dc-p4800x-series-with-intel-memory-drive-technology-1-5tb-1-2-height-pcie-x4-3d-xpoint.html) | 2 |
-| Interconnect | InfiniBand EDR (100 Gbps) | 2 |
-
-メモリインテンシブノード向けのプログラムを実行するには、計算ノードと同様に、バッチジョブもしくはインタラクティブジョブとしてジョブ管理システムに処理を依頼します。
-
 ## ストレージシステム {#storage-systems}
 
 ABCIシステムは、人工知能やビッグデータ応用に用いる大容量データを格納するためのストレージシステムを5基備えており、これらを用いて共有ファイルシステム及びABCIクラウドストレージを提供しています。合算で最大47 PBの実効容量があります。
@@ -154,7 +139,7 @@ ABCIシステムは、人工知能やビッグデータ応用に用いる大容�
 | グローバルスクラッチ領域 | /scratch | 0.4 PB | Lustre | [グローバルスクラッチ領域](storage.md#scratch-area)を参照 |
 
 
-インタラクティブノード、計算ノード、メモリインテンシブノードは、共有ファイルシステムをマウントしており、利用者は共通のマウントポイントからこれらのファイルシステムにアクセスすることができます。
+インタラクティブノード、計算ノードは、共有ファイルシステムをマウントしており、利用者は共通のマウントポイントからこれらのファイルシステムにアクセスすることができます。
 
 これ以外に、これらのノードはそれぞれローカルスクラッチ領域として利用可能なローカルストレージを搭載しています。以下に一覧を示します。
 
@@ -164,7 +149,6 @@ ABCIシステムは、人工知能やビッグデータ応用に用いる大容�
 | 計算ノード(V) | /local | 1.6 TB | XFS | [ローカルストレージ](storage.md#local-storage)を参照 |
 | 計算ノード(A) | /local1 | 2.0 TB | XFS | [ローカルストレージ](storage.md#local-storage)を参照 |
 |               | /local2 | 2.0 TB | XFS | [ローカルストレージ](storage.md#local-storage)を参照 |
-| メモリインテンシブノード | /local | 1.9 TB | XFS | [ローカルストレージ](storage.md#local-storage)を参照 |
 
 ## ソフトウェア {#software}
 
