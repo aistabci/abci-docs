@@ -1,5 +1,13 @@
 # System Updates
 
+## 2023-11-07
+
+| Add / Update / Delete | Software | Version | Previous version |
+|:--|:--|:--|:--|
+| Add | cuda | 12.3.0 | |
+| Add | cudnn | 8.9.5 | |
+| Add | nccl | 2.18.5-1 | |
+
 ## 2023-10-27 {#2023-10-27}
 
 * The memory-intensive node service ended at 15:00 on October 27, 2023.<br>
