@@ -177,11 +177,12 @@ Reservedサービスでは、インタラクティブジョブ、バッチジョ
 
 | オプション | 説明 |
 |:--|:--|
-| -l USE\_SSH=*1*<br>-v SSH\_PORT=*port* | 計算ノードへのSSHログインを有効にする。詳細は[計算ノードへのSSHアクセス](appendix/ssh-access.md)を参照。 |
+| -l USE\_SSH=*1*<br>-v SSH\_PORT=*port*<br>-v ALLOW\_GROUP\_SSH=*1* | 計算ノードへのSSHログインを有効にする。詳細は[計算ノードへのSSHアクセス](appendix/ssh-access.md)を参照。 |
 | -l USE\_BEEOND=*1*<br>-v BEEOND\_METADATA\_SERVER=*num*<br>-v BEEOND\_STORAGE\_SERVER=*num* | BeeGFS On Demand (BeeOND)を利用するジョブの投入。詳細は[BeeONDストレージ利用](storage.md#beeond-storage)を参照。 |
 | -v GPU\_COMPUTE\_MODE=*mode* | 計算ノードのGPU Compute Modeの変更。詳細は[GPU Compute Modeの変更](gpu.md#changing-gpu-compute-mode)を参照。 |
 | -l docker<br>-l docker\_images | Dockerを利用するジョブの投入。詳細は[Docker](containers.md#docker)を参照。 |
 | -l USE_EXTRA_NETWORK=1 | ジョブに割り当てる計算ノードが最小ホップ構成とならないことを許容する。<br>実行時間が短いジョブで本オプションを指定した場合、計算資源の空き状況によっては未指定時より早くジョブを開始できる場合があるが、通信性能が劣化する可能性がある。 |
+| -v ALLOW\_GROUP\_QDEL=*1* | ABCIグループに所属する他のABCIアカウントによるジョブの削除を許可する。 |
 
 ## インタラクティブジョブ {#interactive-jobs}
 
@@ -339,6 +340,13 @@ job-ID     prior   name       user         state submit/start at     queue      
 ------------------------------------------------------------------------------------------------------------------------------------------------
      12345 0.25586 run.sh     username     r     06/27/2018 21:14:49 gpu@g0001                                                        80
 [username@es1 ~]$ qdel 12345
+username has registered the job 12345 for deletion
+```
+
+ジョブ投入時に`-v ALLOW_GROUP_QDEL=1`オプションを使用してABCIグループに所属する他のABCIアカウントによるジョブ削除を許可した場合、`-g group`オプションを使用してジョブを削除します。
+
+```
+[username@es1 ~]$ qdel -g group 12345
 username has registered the job 12345 for deletion
 ```
 

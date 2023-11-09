@@ -1,5 +1,12 @@
 # システム更新履歴
 
+## 2023-11-14 {#2023-11-14}
+
+* 計算ノードへのSSHログインを、ABCIグループに所属する他のABCIアカウントにも許可する機能を追加しました。<br>
+  詳細は[計算ノードへのSSHアクセス](appendix/ssh-access.md)を参照してください。
+* ABCIグループに所属する他のABCIアカウントにジョブの削除を許可する機能を追加しました。<br>
+  詳細は[ジョブ実行オプション](job-execution.md#job-execution-options)、[バッチジョブの削除](job-execution.md#delete-a-batch-job)を参照してください。
+
 ## 2023-11-07
 
 | Add / Update / Delete | Software | Version | Previous version |
