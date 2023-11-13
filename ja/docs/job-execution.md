@@ -158,7 +158,7 @@ Reservedサービスでは、インタラクティブジョブ、バッチジョ
 
 | オプション | 説明 |
 |:--|:--|
-| -g *group* | ABCI利用グループを*group*で指定します。 |
+| -g *group* | ABCI利用グループを*group*で指定します。自分のABCIアカウントが所属しているABCIグループのみ指定できます。 |
 | -l *resource_type*=*num* | 資源タイプ*resource_type*と、その個数*num*を指定します。本オプションは指定必須です。 |
 | -l h\_rt=[*HH:MM:*]*SS* | 経過時間制限値を指定します。[*HH:MM:*]*SS*で指定することができます。ジョブの実行時間が指定した時間を超過した場合、ジョブは強制終了されます。 |
 | -N *name* | ジョブ名を*name*で指定します。デフォルトは、ジョブスクリプト名です。 |
@@ -350,6 +350,10 @@ username has registered the job 12345 for deletion
 [username@es1 ~]$ qdel -g group 12345
 username has registered the job 12345 for deletion
 ```
+
+| オプション | 説明 |
+|:--|:--|
+| -g *group* | ABCI利用グループを*group*で指定します。自分のABCIアカウントが所属しているABCIグループのみ指定できます。 |
 
 ### バッチジョブの標準出力と標準エラー出力 {#stdout-and-stderr-of-batch-jobs}
 

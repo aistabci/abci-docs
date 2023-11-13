@@ -2,10 +2,10 @@
 
 ## 2023-11-14 {#2023-11-14}
 
-* 計算ノードへのSSHログインを、ABCIグループに所属する他のABCIアカウントにも許可する機能を追加しました。<br>
-  詳細は[計算ノードへのSSHアクセス](appendix/ssh-access.md)を参照してください。
-* ABCIグループに所属する他のABCIアカウントにジョブの削除を許可する機能を追加しました。<br>
-  詳細は[ジョブ実行オプション](job-execution.md#job-execution-options)、[バッチジョブの削除](job-execution.md#delete-a-batch-job)を参照してください。
+* 計算ノードへのSSHログインを、ABCIグループに所属する他のABCIアカウントにも許可する機能のため、新しいオプション`-v ALLOW_GROUP_SSH=1`を追加しました。<br>
+  新しいオプション`-v ALLOW_GROUP_SSH=1`の詳細は[計算ノードへのSSHアクセス](appendix/ssh-access.md)を参照してください。
+* ABCIグループに所属する他のABCIアカウントにジョブの削除を許可する機能のため、qsubに新しいオプション`-v ALLOW_GROUP_QDEL=1`を追加しました。<br>
+  qsubの新しいオプション`-v ALLOW_GROUP_SSH=1`とqdelのオプション`-g group`の詳細は[ジョブ実行オプション](job-execution.md#job-execution-options)、[バッチジョブの削除](job-execution.md#delete-a-batch-job)を参照してください。
 
 ## 2023-11-07
 

@@ -158,7 +158,7 @@ The major options of the `qrsh` and the `qsub` commands are follows.
 
 | Option | Description |
 |:--|:--|
-| -g *group* | Specify ABCI user group |
+| -g *group* | Specify ABCI user group. You can only specify the ABCI group to which your ABCI account belongs. |
 | -l *resource_type*=*number* | Specify resource type (mandatory) |
 | -l h\_rt=[*HH:MM:*]*SS* | Specify elapsed time by [*HH:MM:*]*SS*. When execution time of job exceed specified time, job is rejected. |
 | -N *name* | Specify job name. default is name of job script. |
@@ -182,7 +182,7 @@ In addition, the following options can be used as extended options:
 | -v GPU\_COMPUTE\_MODE=*mode* | Change GPU Compute Mode. See [Changing GPU Compute Mode](gpu.md#changing-gpu-compute-mode) for details. |
 | -l docker<br>-l docker\_images | Submit a job with a Docker container. See [Docker](containers.md#docker) for details. |
 | -l USE_EXTRA_NETWORK=1 | To allow a calculation node assigned to a job not to be a minimum hop configuration. If this option is specified for a job with a short execution time, depending on the availability of computing resources, the job may be started earlier than when it was not specified, but communication performance may deteriorate. |
-| -v ALLOW\_GROUP\_QDEL=*1* | Allow other ABCI accounts belonging to the ABCI group to delete jobs. |
+| -v ALLOW\_GROUP\_QDEL=*1* | Allow other accounts in the ABCI group specified when the job was submitted to delete this job. |
 
 ## Interactive Jobs
 
@@ -341,12 +341,17 @@ job-ID     prior   name       user         state submit/start at     queue      
 username has registered the job 12345 for deletion
 ```
 
-If you used the `-v ALLOW_GROUP_QDEL=1` option when submitting the job to allow job deletion by other ABCI accounts belonging to the ABCI group, use the `-g group` option to delete the job.
+Specifying the `-v ALLOW_GROUP_QDEL=1` option when submitting a job enables accounts in the ABCI group specified by the `-g group` option of the qsub command to delete this job.<br>
+Specify the `-g group` option in the qdel command if you want other accounts to delete authorized jobs.
 
 ```
 [username@es1 ~]$ qdel -g group 12345
 username has registered the job 12345 for deletion
 ```
+
+| Option | Description |
+|:--|:--|
+| -g *group* | Specify ABCI user group. You can only specify the ABCI group to which your ABCI account belongs. |
 
 ### Stdout and Stderr of Batch Jobs
 

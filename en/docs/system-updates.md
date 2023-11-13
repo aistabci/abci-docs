@@ -2,10 +2,10 @@
 
 ## 2023-11-14 {#2023-11-14}
 
-* We have added the feature that allows SSH login to the compute nodes for other ABCI accounts belonging to the ABCI group.<br>
-  For more information, please refer to the [SSH Access to Compute Nodes](appendix/ssh-access.md).
-* We have added the feature that allows job deletion for other ABCI accounts belonging to the ABCI group.<br>
-  For more information, please refer to the [Job Execution Options](job-execution.md#job-execution-options) and [Delete a batch job](job-execution.md#delete-a-batch-job).
+* Added new option `-v ALLOW_GROUP_SSH=1` to allow SSH logins to the compute nodes for other ABCI accounts that belong to the ABCI group.<br>
+  For more information about the new option `-v ALLOW_GROUP_SSH=1`, please refer to the [SSH Access to Compute Nodes](appendix/ssh-access.md).
+* Added new option `-v ALLOW_GROUP_QDEL=1` to qsub that allows job deletion for other ABCI accounts that belong to the ABCI group.<br>
+  For more information about the new qsub option `-v ALLOW_GROUP_SSH=1` and the qdel option `-g group`, please refer to the [Job Execution Options](job-execution.md#job-execution-options) and [Delete a batch job](job-execution.md#delete-a-batch-job).
 
 ## 2023-11-07
 

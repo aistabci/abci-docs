@@ -6,7 +6,7 @@ If you run a job with the resource type `rt_F` and `rt_AF`, you can enable SSH l
 |:--|:--|
 | -l USE\_SSH=*1* | Enable SSH login to the compute nodes. |
 | -v SSH\_PORT=*port* | Specify the port number (default: 2222) in the range of 2200-2299. |
-| -v ALLOW\_GROUP\_SSH=*1* | Allow SSH login by other ABCI accounts belonging to the ABCI group. |
+| -v ALLOW\_GROUP\_SSH=*1* | Allow SSH login by other accounts in the ABCI group specified when submitting the job. |
 
 If you enable this option, you will be able to login to the compute nodes from the interactive nodes with SSH.
 If you are running a job that uses multiple nodes, you will be able to login to each other between compute nodes.
