@@ -6,11 +6,12 @@ If you run a job with the resource type `rt_F` and `rt_AF`, you can enable SSH l
 |:--|:--|
 | -l USE\_SSH=*1* | Enable SSH login to the compute nodes. |
 | -v SSH\_PORT=*port* | Specify the port number (default: 2222) in the range of 2200-2299. |
+| -v ALLOW\_GROUP\_SSH=*1* | Allow SSH login by other accounts in the ABCI group specified when submitting the job. |
 
 If you enable this option, you will be able to login to the compute nodes from the interactive nodes with SSH.
 If you are running a job that uses multiple nodes, you will be able to login to each other between compute nodes.
 
-Only the user who submitted the job can login with SSH. And, when the job finishes executing, the session logged in to the compute node is automatically disconnected.
+By default, only the user who submitted the job can login with SSH. By using the `-v ALLOW_GROUP_SSH=1` option, other users belonging to the ABCI group specified when submitting the job will also be able to login with SSH. And, when the job finishes executing, the session logged in to the compute node is automatically disconnected.
 
 The following is an example of a job script when executing the `qsub` command:
 
@@ -20,6 +21,7 @@ The following is an example of a job script when executing the `qsub` command:
 #$-l rt_F=2
 #$-l USE_SSH=1
 #$-v SSH_PORT=2299
+#$-v ALLOW_GROUP_SSH=1
 #$-cwd
 
 ...

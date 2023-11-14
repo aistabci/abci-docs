@@ -158,7 +158,7 @@ Reservedサービスでは、インタラクティブジョブ、バッチジョ
 
 | オプション | 説明 |
 |:--|:--|
-| -g *group* | ABCI利用グループを*group*で指定します。 |
+| -g *group* | ABCI利用グループを*group*で指定します。自分のABCIアカウントが所属しているABCIグループのみ指定できます。 |
 | -l *resource_type*=*num* | 資源タイプ*resource_type*と、その個数*num*を指定します。本オプションは指定必須です。 |
 | -l h\_rt=[*HH:MM:*]*SS* | 経過時間制限値を指定します。[*HH:MM:*]*SS*で指定することができます。ジョブの実行時間が指定した時間を超過した場合、ジョブは強制終了されます。 |
 | -N *name* | ジョブ名を*name*で指定します。デフォルトは、ジョブスクリプト名です。 |
@@ -177,11 +177,12 @@ Reservedサービスでは、インタラクティブジョブ、バッチジョ
 
 | オプション | 説明 |
 |:--|:--|
-| -l USE\_SSH=*1*<br>-v SSH\_PORT=*port* | 計算ノードへのSSHログインを有効にする。詳細は[計算ノードへのSSHアクセス](appendix/ssh-access.md)を参照。 |
+| -l USE\_SSH=*1*<br>-v SSH\_PORT=*port*<br>-v ALLOW\_GROUP\_SSH=*1* | 計算ノードへのSSHログインを有効にする。詳細は[計算ノードへのSSHアクセス](appendix/ssh-access.md)を参照。 |
 | -l USE\_BEEOND=*1*<br>-v BEEOND\_METADATA\_SERVER=*num*<br>-v BEEOND\_STORAGE\_SERVER=*num* | BeeGFS On Demand (BeeOND)を利用するジョブの投入。詳細は[BeeONDストレージ利用](storage.md#beeond-storage)を参照。 |
 | -v GPU\_COMPUTE\_MODE=*mode* | 計算ノードのGPU Compute Modeの変更。詳細は[GPU Compute Modeの変更](gpu.md#changing-gpu-compute-mode)を参照。 |
 | -l docker<br>-l docker\_images | Dockerを利用するジョブの投入。詳細は[Docker](containers.md#docker)を参照。 |
 | -l USE_EXTRA_NETWORK=1 | ジョブに割り当てる計算ノードが最小ホップ構成とならないことを許容する。<br>実行時間が短いジョブで本オプションを指定した場合、計算資源の空き状況によっては未指定時より早くジョブを開始できる場合があるが、通信性能が劣化する可能性がある。 |
+| -v ALLOW\_GROUP\_QDEL=*1* | ジョブ投入時に指定したABCIグループ内の他アカウントがこのジョブを削除することを許可する。 |
 
 ## インタラクティブジョブ {#interactive-jobs}
 
@@ -341,6 +342,18 @@ job-ID     prior   name       user         state submit/start at     queue      
 [username@es1 ~]$ qdel 12345
 username has registered the job 12345 for deletion
 ```
+
+ジョブ投入時に`-v ALLOW_GROUP_QDEL=1`オプションを指定すると、qsubコマンドの`-g group`オプションで指定したABCIグループのアカウントがこのジョブを削除できるようになります。<br>
+許可されたジョブを他のアカウントが削除する場合、qdelコマンドに`-g group`オプションを指定します。
+
+```
+[username@es1 ~]$ qdel -g group 12345
+username has registered the job 12345 for deletion
+```
+
+| オプション | 説明 |
+|:--|:--|
+| -g *group* | ABCI利用グループを*group*で指定します。自分のABCIアカウントが所属しているABCIグループのみ指定できます。 |
 
 ### バッチジョブの標準出力と標準エラー出力 {#stdout-and-stderr-of-batch-jobs}
 
