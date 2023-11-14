@@ -971,6 +971,20 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#2023-11-14" class="md-nav__link">
+    2023-11-14
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2023-11-07" class="md-nav__link">
+    2023-11-07
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#2023-10-27" class="md-nav__link">
     2023-10-27
   </a>
@@ -1575,6 +1589,44 @@
                 
                 
                 <h1 id="system-updates">System Updates</h1>
+<h2 id="2023-11-14">2023-11-14</h2>
+<ul>
+<li>Added new option <code>-v ALLOW_GROUP_SSH=1</code> to allow SSH logins to the compute nodes for other ABCI accounts that belong to the ABCI group.<br>
+  For more information about the new option <code>-v ALLOW_GROUP_SSH=1</code>, please refer to the <a href="../appendix/ssh-access/">SSH Access to Compute Nodes</a>.</li>
+<li>Added new option <code>-v ALLOW_GROUP_QDEL=1</code> to qsub that allows job deletion for other ABCI accounts that belong to the ABCI group.<br>
+  For more information about the new qsub option <code>-v ALLOW_GROUP_SSH=1</code> and the qdel option <code>-g group</code>, please refer to the <a href="../job-execution/#job-execution-options">Job Execution Options</a> and <a href="../job-execution/#delete-a-batch-job">Delete a batch job</a>.</li>
+</ul>
+<h2 id="2023-11-07">2023-11-07</h2>
+<table>
+<thead>
+<tr>
+<th align="left">Add / Update / Delete</th>
+<th align="left">Software</th>
+<th align="left">Version</th>
+<th align="left">Previous version</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">Add</td>
+<td align="left">cuda</td>
+<td align="left">12.3.0</td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="left">Add</td>
+<td align="left">cudnn</td>
+<td align="left">8.9.5</td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="left">Add</td>
+<td align="left">nccl</td>
+<td align="left">2.18.5-1</td>
+<td align="left"></td>
+</tr>
+</tbody>
+</table>
 <h2 id="2023-10-27">2023-10-27</h2>
 <ul>
 <li>The memory-intensive node service ended at 15:00 on October 27, 2023.<br>

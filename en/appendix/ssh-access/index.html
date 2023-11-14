@@ -1100,17 +1100,22 @@
 <td align="left">-v SSH_PORT=<em>port</em></td>
 <td align="left">Specify the port number (default: 2222) in the range of 2200-2299.</td>
 </tr>
+<tr>
+<td align="left">-v ALLOW_GROUP_SSH=<em>1</em></td>
+<td align="left">Allow SSH login by other accounts in the ABCI group specified when submitting the job.</td>
+</tr>
 </tbody>
 </table>
 <p>If you enable this option, you will be able to login to the compute nodes from the interactive nodes with SSH.
 If you are running a job that uses multiple nodes, you will be able to login to each other between compute nodes.</p>
-<p>Only the user who submitted the job can login with SSH. And, when the job finishes executing, the session logged in to the compute node is automatically disconnected.</p>
+<p>By default, only the user who submitted the job can login with SSH. By using the <code>-v ALLOW_GROUP_SSH=1</code> option, other users belonging to the ABCI group specified when submitting the job will also be able to login with SSH. And, when the job finishes executing, the session logged in to the compute node is automatically disconnected.</p>
 <p>The following is an example of a job script when executing the <code>qsub</code> command:</p>
 <div class="codehilite"><pre><span></span><code><span class="ch">#!/bin/bash</span>
 
 <span class="c1">#$-l rt_F=2</span>
 <span class="c1">#$-l USE_SSH=1</span>
 <span class="c1">#$-v SSH_PORT=2299</span>
+<span class="c1">#$-v ALLOW_GROUP_SSH=1</span>
 <span class="c1">#$-cwd</span>
 
 ...

@@ -1806,7 +1806,7 @@ The number of the submitted jobs to the reserved node is included in the number 
 <tbody>
 <tr>
 <td align="left">-g <em>group</em></td>
-<td align="left">Specify ABCI user group</td>
+<td align="left">Specify ABCI user group. You can only specify the ABCI group to which your ABCI account belongs.</td>
 </tr>
 <tr>
 <td align="left">-l <em>resource_type</em>=<em>number</em></td>
@@ -1872,7 +1872,7 @@ The number of the submitted jobs to the reserved node is included in the number 
 </thead>
 <tbody>
 <tr>
-<td align="left">-l USE_SSH=<em>1</em><br>-v SSH_PORT=<em>port</em></td>
+<td align="left">-l USE_SSH=<em>1</em><br>-v SSH_PORT=<em>port</em><br>-v ALLOW_GROUP_SSH=<em>1</em></td>
 <td align="left">Enable SSH login to the compute nodes. See <a href="../appendix/ssh-access/">SSH Access to Compute Nodes</a> for details.</td>
 </tr>
 <tr>
@@ -1890,6 +1890,10 @@ The number of the submitted jobs to the reserved node is included in the number 
 <tr>
 <td align="left">-l USE_EXTRA_NETWORK=1</td>
 <td align="left">To allow a calculation node assigned to a job not to be a minimum hop configuration. If this option is specified for a job with a short execution time, depending on the availability of computing resources, the job may be started earlier than when it was not specified, but communication performance may deteriorate.</td>
+</tr>
+<tr>
+<td align="left">-v ALLOW_GROUP_QDEL=<em>1</em></td>
+<td align="left">Allow other accounts in the ABCI group specified when the job was submitted to delete this job.</td>
 </tr>
 </tbody>
 </table>
@@ -2102,6 +2106,26 @@ If you want to confirm for errors not listed in the following table, please <a h
 <span class="c">username has registered the job 12345 for deletion</span>
 </code></pre></div>
 
+<p>Specifying the <code>-v ALLOW_GROUP_QDEL=1</code> option when submitting a job enables accounts in the ABCI group specified by the <code>-g group</code> option of the qsub command to delete this job.<br>
+Specify the <code>-g group</code> option in the qdel command if you want other accounts to delete authorized jobs.</p>
+<div class="codehilite"><pre><span></span><code><span class="o">[</span><span class="n">username@es1 ~</span><span class="o">]</span><span class="err">$</span><span class="w"> </span><span class="n">qdel</span><span class="w"> </span><span class="o">-</span><span class="n">g</span><span class="w"> </span><span class="k">group</span><span class="w"> </span><span class="mi">12345</span><span class="w"></span>
+<span class="n">username</span><span class="w"> </span><span class="n">has</span><span class="w"> </span><span class="n">registered</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="n">job</span><span class="w"> </span><span class="mi">12345</span><span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="n">deletion</span><span class="w"></span>
+</code></pre></div>
+
+<table>
+<thead>
+<tr>
+<th align="left">Option</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">-g <em>group</em></td>
+<td align="left">Specify ABCI user group. You can only specify the ABCI group to which your ABCI account belongs.</td>
+</tr>
+</tbody>
+</table>
 <h3 id="stdout-and-stderr-of-batch-jobs">Stdout and Stderr of Batch Jobs</h3>
 <p>Standard output file and standard error output file are written to job execution directory, or to files specified at job submission.
 Standard output generated during a job execution is written to a standard output file and error messages generated during the

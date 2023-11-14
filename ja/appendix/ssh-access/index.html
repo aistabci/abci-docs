@@ -1112,17 +1112,22 @@
 <td align="left">-v SSH_PORT=<em>port</em></td>
 <td align="left">SSHのポート番号を指定する(デフォルト: 2222)。2200-2299 の範囲で指定可。</td>
 </tr>
+<tr>
+<td align="left">-v ALLOW_GROUP_SSH=<em>1</em></td>
+<td align="left">ジョブ投入時に指定したABCIグループ内の他アカウントへSSHログインを許可する。</td>
+</tr>
 </tbody>
 </table>
 <p>このオプションを有効にすると、インタラクティブノードから計算ノードへのSSHログインが可能になります。
 複数ノードを使用するジョブを実行している場合は、計算ノード間で相互にSSHログインが可能になります。</p>
-<p>SSHログインできるのは、ジョブを投入したユーザのみです。また、ジョブの実行が終了すると計算ノードにログインしているセッションは自動的に切断されます。</p>
+<p>デフォルトでは、SSHログインできるのは、ジョブを投入したユーザのみです。<code>-v ALLOW_GROUP_SSH=1</code>オプションを使用するとジョブ投入時に指定したABCIグループに所属する他のユーザもSSHログインが可能になります。また、ジョブの実行が終了すると計算ノードにログインしているセッションは自動的に切断されます。</p>
 <p><code>qsub</code>コマンド実行時のジョブスクリプトの例を以下に示します。</p>
 <div class="codehilite"><pre><span></span><code><span class="ch">#!/bin/bash</span>
 
 <span class="c1">#$-l rt_F=2</span>
 <span class="c1">#$-l USE_SSH=1</span>
 <span class="c1">#$-v SSH_PORT=2299</span>
+<span class="c1">#$-v ALLOW_GROUP_SSH=1</span>
 <span class="c1">#$-cwd</span>
 
 ...
