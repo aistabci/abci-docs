@@ -1,5 +1,14 @@
 # System Updates
 
+## 2023-12-12
+
+| Add / Update / Delete | Software | Version | Previous version |
+|:--|:--|:--|:--|
+| Add | rclone | 1.61.1 | |
+| Update | SingularityPRO | 3.11-5 | 3.9-10 |
+
+* Add `/lib64/libibverbs/libmlx5-rdmav34.so` to libraries that are bind-mount from the runtime host side of the Singularity container.
+
 ## 2023-11-14 {#2023-11-14}
 
 * Added new option `-v ALLOW_GROUP_SSH=1` to allow SSH logins to the compute nodes for other ABCI accounts that belong to the ABCI group.<br>

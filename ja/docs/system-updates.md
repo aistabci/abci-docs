@@ -1,5 +1,14 @@
 # システム更新履歴
 
+## 2023-12-12
+
+| Add / Update / Delete | Software | Version | Previous version |
+|:--|:--|:--|:--|
+| Add | rclone | 1.61.1 | |
+| Update | SingularityPRO | 3.11-5 | 3.9-10 |
+
+* Singularityコンテナの実行時、ホスト側からバインドマウントされるライブラリに新たに `/lib64/libibverbs/libmlx5-rdmav34.so` を追加しました。
+
 ## 2023-11-14 {#2023-11-14}
 
 * 計算ノードへのSSHログインを、ABCIグループに所属する他のABCIアカウントにも許可する機能のため、新しいオプション`-v ALLOW_GROUP_SSH=1`を追加しました。<br>
