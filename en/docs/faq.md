@@ -22,8 +22,8 @@ SingularityPRO has a function equivalent to ``docker login`` that provides authe
 
 For more information on SingularityPRO authentication, refer to the following user guide.
 
-* [SingularityPRO 3.9 User Guide](https://repo.sylabs.io/guides/pro-3.9/user-guide/index.html)
-    * [Authentication/Private Containers](https://repo.sylabs.io/guides/pro-3.9/user-guide/singularity_and_docker.html#authentication-private-containers)
+* [SingularityPRO 3.11 User Guide](https://repo.sylabs.io/guides/pro-3.11/user-guide/index.html)
+    * [Authentication/Private Containers](https://repo.sylabs.io/guides/pro-3.11/user-guide/singularity_and_docker.html#authentication-private-containers)
 
 ## Q. I want to assign multiple compute nodes and have each compute node perform different processing
 
