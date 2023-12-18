@@ -20,7 +20,7 @@
 [username@g0001 ~]$ python3 -m venv ~/venv/pytorch
 [username@g0001 ~]$ source ~/venv/pytorch/bin/activate
 (pytorch) [username@g0001 ~]$ pip3 install --upgrade pip setuptools
-(pytorch) [username@g0001 ~]$ pip3 install torch torchvision torchaudio
+(pytorch) [username@g0001 ~]$ pip3 install torch==2.0.1 torchvision==0.15.2 torchaudio==2.0.2 --extra-index-url https://download.pytorch.org/whl/cu118
 ```
 
 次回以降は、次のようにモジュールの読み込みとPython仮想環境のアクティベートだけでPyTorchを使用できます。
@@ -90,7 +90,8 @@ Your job 1234567 ('run.sh') has been submitted
 [username@g0001 ~]$ python3 -m venv ~/venv/pytorch+horovod
 [username@g0001 ~]$ source ~/venv/pytorch+horovod/bin/activate
 (pytorch+horovod) [username@g0001 ~]$ pip3 install --upgrade pip setuptools
-(pytorch+horovod) [username@g0001 ~]$ pip3 install torch torchvision torchaudio
+(pytorch+horovod) [username@g0001 ~]$ pip3 install wheel
+(pytorch+horovod) [username@g0001 ~]$ pip3 install torch==2.0.1 torchvision==0.15.2 torchaudio==2.0.2 --extra-index-url https://download.pytorch.org/whl/cu118
 (pytorch+horovod) [username@g0001 ~]$ HOROVOD_NCCL_LINK=SHARED HOROVOD_WITH_PYTORCH=1 HOROVOD_GPU_OPERATIONS=NCCL HOROVOD_NCCL_HOME=$NCCL_HOME HOROVOD_WITHOUT_GLOO=1 pip3 install --no-cache-dir horovod==0.27.0
 ```
 
