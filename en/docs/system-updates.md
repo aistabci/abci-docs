@@ -2,7 +2,7 @@
 
 ## 2024-01-09 (future update) {#2024-01-09}
 
-* The resource type charging coefficient for each [resource type in the Computation Node (V)](job-execution.md#compute-node-v), which has been changed in accordance with the "[Compute Node (V) Usage Promotion Program](https://abci.ai/news/2023/09/01/en_nodevpromotion.html)" will be restored from 12:00 on January 9, 2024.
+* Due to the termination of the "[Compute Node (V) Usage Promotion Program](https://abci.ai/news/2023/09/01/en_nodevpromotion.html)", the Resource Type Charging Factor for each [resource type in the Computation Node (V)](job-execution.md#compute-node-v) that has been changed will be restored from 12:00 on January 9, 2024.
 
 | Resource type | Resource type name | Previous resource type charge coefficient | Changed resource type charge coefficient |
 |:--|:--|:--|:--|
