@@ -88,6 +88,7 @@ Your job 1234567 ('run.sh') has been submitted
 [username@g0001 ~]$ python3 -m venv ~/venv/mxnet+horovod
 [username@g0001 ~]$ source ~/venv/mxnet+horovod/bin/activate
 (mxnet+horovod) [username@g0001 ~]$ pip3 install --upgrade pip setuptools
+(mxnet+horovod) [username@g0001 ~]$ pip3 install wheel
 (mxnet+horovod) [username@g0001 ~]$ pip3 install mxnet-cu112==1.9.1 numpy==1.23.5
 (mxnet+horovod) [username@g0001 ~]$ HOROVOD_NCCL_LINK=SHARED HOROVOD_WITH_MXNET=1 HOROVOD_GPU_OPERATIONS=NCCL HOROVOD_NCCL_HOME=$NCCL_HOME HOROVOD_WITH_MPI=1 HOROVOD_WITHOUT_GLOO=1 pip3 install --no-cache-dir horovod==0.27.0
 ```

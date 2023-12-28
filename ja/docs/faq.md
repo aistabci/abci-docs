@@ -22,8 +22,8 @@ SingularityPROには``docker login``相当の機能として、環境変数で�
 
 SingularityPROの認証に関する詳細は、下記のユーザーガイドをご参照ください。
 
-* [SingularityPRO 3.9 User Guide](https://repo.sylabs.io/guides/pro-3.9/user-guide/index.html)
-    * [Authentication/Private Containers](https://repo.sylabs.io/guides/pro-3.9/user-guide/singularity_and_docker.html#authentication-private-containers)
+* [SingularityPRO 3.11 User Guide](https://repo.sylabs.io/guides/pro-3.11/user-guide/index.html)
+    * [Authentication/Private Containers](https://repo.sylabs.io/guides/pro-3.11/user-guide/singularity_and_docker.html#authentication-private-containers)
 
 ## Q. 複数の計算ノードを割り当て、それぞれの計算ノードで異なる処理をさせたい
 

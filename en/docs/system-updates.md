@@ -1,5 +1,26 @@
 # System Updates
 
+## 2024-01-09 (future update) {#2024-01-09}
+
+* Due to the termination of the "[Compute Node (V) Usage Promotion Program](https://abci.ai/news/2023/09/01/en_nodevpromotion.html)", the Resource Type Charging Factor for each [resource type in the Computation Node (V)](job-execution.md#compute-node-v) that has been changed will be restored from 12:00 on January 9, 2024.
+
+| Resource type | Resource type name | Previous resource type charge coefficient | Changed resource type charge coefficient |
+|:--|:--|:--|:--|
+| Full    | rt_F       | 0.50 | 1.00 |
+| G.large | rt_G.large | 0.50 | 0.90 |
+| G.small | rt_G.small | 0.20 | 0.30 |
+| C.large | rt_C.large | 0.30 | 0.60 |
+| C.small | rt_C.small | 0.10 | 0.20 |
+
+## 2023-12-12
+
+| Add / Update / Delete | Software | Version | Previous version |
+|:--|:--|:--|:--|
+| Add | rclone | 1.61.1 | |
+| Update | SingularityPRO | 3.11-5 | 3.9-10 |
+
+* Add `/lib64/libibverbs/libmlx5-rdmav34.so` to libraries that are bind-mount from the runtime host side of the Singularity container.
+
 ## 2023-11-14 {#2023-11-14}
 
 * Added new option `-v ALLOW_GROUP_SSH=1` to allow SSH logins to the compute nodes for other ABCI accounts that belong to the ABCI group.<br>

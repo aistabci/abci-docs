@@ -178,7 +178,7 @@ ABCIシステムで利用可能なソフトウェア一覧を以下に示しま�
 | File System | [DDN Lustre](storage.md#home-area) | 2.12.8\_ddn23 | 2.12.8\_ddn23 |
 | | [BeeOND](storage.md#beeond-storage) | 7.3.3 | 7.3.3 |
 | Object Storage | Scality S3 Connector | 7.10.6.7 | 7.10.6.7 |
-| Container | [SingularityPRO](containers.md#singularity) | 3.9-10 | 3.9-10 |
+| Container | [SingularityPRO](containers.md#singularity) | 3.11-5 | 3.11-5 |
 | | Singularity Endpoint | 2.1.5 | 2.1.5 |
 | MPI | [Intel MPI](mpi.md#intel-mpi) | 2021.8 | 2021.8 |
 | Library | [cuDNN](gpu.md#cudnn) | 7.6.5<br>8.0.5<br>8.1.1<br>8.2.4<br>8.3.3<br>8.4.1<br>8.5.0<br>8.6.0<br>8.7.0<br>8.8.1<br>8.9.1<br>8.9.2<br>8.9.5 | 7.6.5<br>8.0.5<br>8.1.1<br>8.2.4<br>8.3.3<br>8.4.1<br>8.5.0<br>8.6.0<br>8.7.0<br>8.8.1<br>8.9.1<br>8.9.2<br>8.9.5 |
@@ -189,3 +189,4 @@ ABCIシステムで利用可能なソフトウェア一覧を以下に示しま�
 | | Intel MKL | 2022.0.2 | 2022.0.2 |
 | Utility | aws-cli | 2.11 | 2.11 |
 | | s3fs-fuse | 1.91 | 1.91 |
+| | rclone | 1.61.1 | 1.61.1 |
