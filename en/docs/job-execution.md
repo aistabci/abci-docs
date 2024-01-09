@@ -50,11 +50,11 @@ The ABCI system provides the following resource types:
 
 | Resource type | Resource type name | Description | Assigned physical CPU core | Number of assigned GPU | Memory (GiB) | Local storage (GB) | Resource type charge coefficient |
 |:--|:--|:--|:--|:--|:--|:--|:--|
-| Full | rt\_F | node-exclusive | 40 | 4 | 360 | 1440 | 0.50 |
-| G.large | rt\_G.large | node-sharing<br>with GPU | 20 | 4 | 240 | 720 | 0.50 |
-| G.small | rt\_G.small | node-sharing<br>with GPU | 5 | 1 | 60 | 180 | 0.20 |
-| C.large | rt\_C.large | node-sharing<br>CPU only | 20 | 0 | 120 | 720 | 0.30 |
-| C.small | rt\_C.small | node-sharing<br>CPU only | 5 | 0 | 30 | 180 | 0.10 |
+| Full | rt\_F | node-exclusive | 40 | 4 | 360 | 1440 | 1.00 |
+| G.large | rt\_G.large | node-sharing<br>with GPU | 20 | 4 | 240 | 720 | 0.90 |
+| G.small | rt\_G.small | node-sharing<br>with GPU | 5 | 1 | 60 | 180 | 0.30 |
+| C.large | rt\_C.large | node-sharing<br>CPU only | 20 | 0 | 120 | 720 | 0.60 |
+| C.small | rt\_C.small | node-sharing<br>CPU only | 5 | 0 | 30 | 180 | 0.20 |
 
 #### Compute Node (A)
 
