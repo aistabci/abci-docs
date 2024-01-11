@@ -283,7 +283,7 @@ From: ubuntu:latest
 
 %post
     echo "Installing required packages..."
-    apt-get update && apt-get install -y wget git bash gcc gfortran g++ make file
+    apt-get update && apt-get install -y wget git bash gcc gfortran g++ make file bzip2
 
     echo "Installing Open MPI"
     export OMPI_DIR=/opt/ompi
@@ -363,7 +363,7 @@ INFO:    Build complete: openmpi.sif
 実行例)
 ```
 [username@g0001 ~]$ module load singularitypro hpcx/2.12
-[username@g0001 ~]$ mpirun -hostfile $SGE_JOB_HOSTLIST -np 4 -map-by node singularity exec openmpi.sif /opt/mpitest
+[username@g0001 ~]$ mpirun -hostfile $SGE_JOB_HOSTLIST -np 4 -map-by node singularity exec --env OPAL_PREFIX=/opt/ompi --env PMIX_INSTALL_PREFIX=/opt/ompi openmpi.sif /opt/mpitest
 Hello, I am rank 2/4
 Hello, I am rank 3/4
 Hello, I am rank 0/4
