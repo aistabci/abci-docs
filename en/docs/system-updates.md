@@ -1,5 +1,13 @@
 # System Updates
 
+## 2024-01-23
+
+| Add / Update / Delete | Software | Version | Previous version |
+|:--|:--|:--|:--|
+| Add | cuda | 12.3.2 | |
+| Add | cudnn | 8.9.7 | |
+| Add | nccl | 2.19.3-1 | |
+
 ## 2024-01-09 {#2024-01-09}
 
 * Due to the termination of the "[Compute Node (V) Usage Promotion Program](https://abci.ai/news/2023/09/01/en_nodevpromotion.html)", the Resource Type Charging Factor for each [resource type in the Computation Node (V)](job-execution.md#compute-node-v) that has been changed was restored from 12:00 on January 9, 2024.

@@ -36,6 +36,7 @@ ABCIシステムでは、NVIDIAが提供する以下のライブラリが利用�
 | cuda/12.1     | 12.1.1        | Yes                   | Yes                           | Yes                           |
 | cuda/12.2     | 12.2.0        | Yes                   | Yes                           | Yes                           |
 | cuda/12.3     | 12.3.0        | Yes                   | Yes                           | Yes                           |
+| cuda/12.3     | 12.3.2        | Yes                   | Yes                           | Yes                           |
 
 [^1]: 試験用に提供しています。NVIDIA A100は、CUDA 11以降でサポートされます。
 [^2]: 試験用に提供しています。Rocky Linux 8.6は、CUDA 11.7.1以降でサポートされます。
@@ -59,6 +60,7 @@ ABCIシステムでは、NVIDIAが提供する以下のライブラリが利用�
 | 8.9.1   | -             | Yes           | Yes           | Yes           | Yes           | Yes           | Yes           | Yes           | Yes       | Yes       | Yes       | Yes       | Yes       | Yes       |
 | 8.9.2   | -             | Yes           | Yes           | Yes           | Yes           | Yes           | Yes           | Yes           | Yes       | Yes       | Yes       | Yes       | Yes       | Yes       |
 | 8.9.5   | -             | Yes           | Yes           | Yes           | Yes           | Yes           | Yes           | Yes           | Yes       | Yes       | Yes       | Yes       | Yes       | Yes       |
+| 8.9.7   | -             | Yes           | Yes           | Yes           | Yes           | Yes           | Yes           | Yes           | Yes       | Yes       | Yes       | Yes       | Yes       | Yes       |
 
 計算ノード(A):
 
@@ -77,6 +79,7 @@ ABCIシステムでは、NVIDIAが提供する以下のライブラリが利用�
 | 8.9.1   | -             | Yes       | Yes       | Yes       | Yes       | Yes       | Yes       | Yes       | Yes       | Yes       | Yes       | Yes       | Yes       | Yes       |
 | 8.9.2   | -             | Yes       | Yes       | Yes       | Yes       | Yes       | Yes       | Yes       | Yes       | Yes       | Yes       | Yes       | Yes       | Yes       |
 | 8.9.5   | -             | Yes       | Yes       | Yes       | Yes       | Yes       | Yes       | Yes       | Yes       | Yes       | Yes       | Yes       | Yes       | Yes       |
+| 8.9.7   | -             | Yes       | Yes       | Yes       | Yes       | Yes       | Yes       | Yes       | Yes       | Yes       | Yes       | Yes       | Yes       | Yes       |
 
 ## NCCL
 
@@ -100,6 +103,7 @@ ABCIシステムでは、NVIDIAが提供する以下のライブラリが利用�
 | 2.18.1-1  | -             | Yes           | -             | -             | -             | -             | -             | -             | -         | -         | Yes       | Yes       | -         | -         |
 | 2.18.3-1  | -             | Yes           | -             | -             | -             | -             | -             | -             | -         | -         | Yes       | Yes       | Yes       | -         |
 | 2.18.5-1  | -             | Yes           | -             | -             | -             | -             | -             | -             | -         | -         | Yes       | -         | Yes       | -         |
+| 2.19.3-1  | -             | Yes           | -             | -             | -             | -             | -             | -             | -         | -         | Yes       | -         | Yes       | Yes       |
 
 
 計算ノード(A):
@@ -122,6 +126,7 @@ ABCIシステムでは、NVIDIAが提供する以下のライブラリが利用�
 | 2.18.1-1  | -             | Yes       | -         | -         | -         | -         | -         | -         | -         | -         | Yes       | Yes       | -         | -         |
 | 2.18.3-1  | -             | Yes       | -         | -         | -         | -         | -         | -         | -         | -         | Yes       | Yes       | Yes       | -         |
 | 2.18.5-1  | -             | Yes       | -         | -         | -         | -         | -         | -         | -         | -         | Yes       | -         | Yes       | -         |
+| 2.19.3-1  | -             | Yes       | -         | -         | -         | -         | -         | -         | -         | -         | Yes       | -         | Yes       | Yes       |
 
 ## GDRCopy
 

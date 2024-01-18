@@ -1,5 +1,13 @@
 # システム更新履歴
 
+## 2024-01-23
+
+| Add / Update / Delete | Software | Version | Previous version |
+|:--|:--|:--|:--|
+| Add | cuda | 12.3.2 | |
+| Add | cudnn | 8.9.7 | |
+| Add | nccl | 2.19.3-1 | |
+
 ## 2024-01-09 {#2024-01-09}
 
 * 「[計算ノード(V)利用促進プログラム](https://abci.ai/news/2023/09/01/ja_nodevpromotion.html)」の終了に伴い、変更しておりました[計算ノード(V)の各資源タイプ](job-execution.md#compute-node-v)の資源タイプ課金係数を、2024年1月9日12:00より元に戻しました。
