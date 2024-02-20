@@ -4,7 +4,7 @@
 
 | Add / Update / Delete | Software | Version | Previous version |
 |:--|:--|:--|:--|
-| Update | Singularity Endpoint | 2.3 | 2.1.5 |
+| Update | ABCI Singularity Endpoint | 2.3 | 2.1.5 |
 
 ## 2024-01-23
 
@@ -223,7 +223,7 @@ However, depending on power and congestion conditions, it is possible to restore
 | Update | aws-cli | 2.11 | 2.4 |
 | Delete | fuse-sshfs | 3.7.2 |  |
 | Update | SingularityPRO | 3.9-10 | 3.9-9 |
-| Update | Singularity Endpoint | 2.1.5 | 1.7.2 |
+| Update | ABCI Singularity Endpoint | 2.1.5 | 1.7.2 |
 | Update | DDN Lustre | 2.12.8_ddn23 | 2.12.8_ddn10 |
 | Update | Scality S3 Connector | 7.10.6.7 | 7.10.2.2 |
 | Update | BeeOND | 7.3.3 | 7.2.3 |
@@ -271,7 +271,7 @@ Programs compiled with previous version of the Intel oneAPI modules, which was d
 | Add / Update / Delete | Software | Version | Previous version |
 |:--|:--|:--|:--|
 | Update | SingularityPRO | 3.9-8 | 3.9-4 |
-| Update | Singularity Endpoint | 1.7.2 | 1.2.5 |
+| Update | ABCI Singularity Endpoint | 1.7.2 | 1.2.5 |
 
 ## 2022-10-25
 
@@ -315,7 +315,7 @@ Programs compiled with previous version of the Intel oneAPI modules, which was d
 * Altair Grid Engine has been updated. The job queue and job reservations are not preserved. Please resubmit your batch job(s). Please recreate your reservation(s). 
 * Some of [Known Issues](known-issues.md) have been resolved in this update.
 * Reinstalled R (4.1.3) with --enable-R-shlib enabled.
-* The update of Singularity Endpoint has been postponed.
+* The update of ABCI Singularity Endpoint has been postponed.
 
 ## 2022-05-26 
 
