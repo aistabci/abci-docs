@@ -1,5 +1,11 @@
 # システム更新履歴
 
+## 2024-04-12 更新予定 {#2024-04-12}
+
+| Add / Update / Delete | Software | Version | Previous version |
+|:--|:--|:--|:--|
+| Update | ABCI Singularityエンドポイント | 2.3 | 2.1.5 |
+
 ## 2024-01-23
 
 | Add / Update / Delete | Software | Version | Previous version |
@@ -217,7 +223,7 @@
 | Update | aws-cli | 2.11 | 2.4 |
 | Delete | fuse-sshfs | 3.7.2 |  |
 | Update | SingularityPRO | 3.9-10 | 3.9-9 |
-| Update | Singularity Enterprise | 2.1.5 | 1.7.2 |
+| Update | ABCI Singularityエンドポイント | 2.1.5 | 1.7.2 |
 | Update | DDN Lustre | 2.12.8_ddn23 | 2.12.8_ddn10 |
 | Update | Scality S3 Connector | 7.10.6.7 | 7.10.2.2 |
 | Update | BeeOND | 7.3.3 | 7.2.3 |
@@ -265,7 +271,7 @@
 | Add / Update / Delete | Software | Version | Previous version |
 |:--|:--|:--|:--|
 | Update | SingularityPRO | 3.9-8 | 3.9-4 |
-| Update | Singularityエンドポイント | 1.7.2 | 1.2.5 |
+| Update | ABCI Singularityエンドポイント | 1.7.2 | 1.2.5 |
 
 ## 2022-10-25
 
@@ -308,7 +314,7 @@
 * Altair Grid Engineのアップデートにより予約およびジョブは削除されました。ジョブの再投入・予約の再作成をお願いします。
 * 今回の修正で解消される[「既知の問題」](known-issues.md)があります。
 * R(4.1.3)について、--enable-R-shlib を有効にして再インストールしております。
-* Singularityエンドポイントについては、都合によりアップデートを見送りました。
+* ABCI Singularityエンドポイントについては、都合によりアップデートを見送りました。
 
 ## 2022-05-26 
 
