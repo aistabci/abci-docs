@@ -6,6 +6,18 @@
 |:--|:--|:--|:--|
 | Update | ABCI Singularityエンドポイント | 2.3 | 2.1.5 |
 
+* On-demandサービスとSpotサービスにおいて、資源タイプごとに実行可能な計算ノードを以下の通り制限する予定です。
+
+| サービス | 資源タイプ | ノード数 | ホスト名 |
+|:--|:--|:--|:--|
+| On-demand, Spot | rt_F        | 1,054 | g[0001-1020,1055-1088] |
+|                 | rt_G.large  | 34    | g[1021-1054] |
+|                 | rt_G.small  | 34    | g[1021-1054] |
+|                 | rt_C.large  | 34    | g[1021-1054] |
+|                 | rt_C.small  | 34    | g[1021-1054] |
+|                 | rt_AF       | 115   | a[0001-0115] |
+|                 | rt_AG.small | 5     | a[0116-0120] |
+
 ## 2024-01-23
 
 | Add / Update / Delete | Software | Version | Previous version |
