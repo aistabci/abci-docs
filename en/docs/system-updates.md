@@ -6,17 +6,25 @@
 |:--|:--|:--|:--|
 | Update | ABCI Singularity Endpoint | 2.3 | 2.1.5 |
 
-* The computable nodes executable in On-demand and Spot services will be restricted according to each resource type as follows.
+* Until now, there were no restrictions on the nodes allocated for each resource type, and they were allocated sequentially from the available computing resources.<br>
+  From April 12, 2024, we will impose restrictions on the nodes allocated for each resource type.<br>
+  The Job Services subject to this will be the On-demand Service and the Spot Service.
 
-| Service | Resource type name | nodes | Hostname |
-|:--|:--|:--|:--|
-| On-demand, Spot | rt_F        | 1,054 | g[0001-1020,1055-1088] |
-|                 | rt_G.large  | 34    | g[1021-1054] |
-|                 | rt_G.small  | 34    | g[1021-1054] |
-|                 | rt_C.large  | 34    | g[1021-1054] |
-|                 | rt_C.small  | 34    | g[1021-1054] |
-|                 | rt_AF       | 115   | a[0001-0115] |
-|                 | rt_AG.small | 5     | a[0116-0120] |
+| Resource type name | nodes | Hostname |
+| :-- | :-- | :-- |
+| rt_F | 1,054 | g0001-g1010,g1055-g1088 |
+| rt_G.large, rt_G.small, rt_C.large, rt_C.small | 34 | g1021-g1054 |
+| rt_AF | 115 | a0001-a0115 |
+| rt_AG.small | 5 | a0116-a0120 |
+
+* Also, in the Reserved Service, from April 12, 2024, we will impose restrictions on the nodes to which reservations can be allocated.<br>
+  However, there are no restrictions on the resource types that can be run on the reserved compute nodes.<br>
+  As before, Compute Node (V) can run resource types rt_F, rt_G.large, rt_G.small, rt_C.large, rt_C.small, and Compute Node (A) can run resource types rt_AF, rt_AG.small.
+
+| Node Type | Nodes | Hostname |
+| :-- | :-- | :-- |
+| Compute Node (V) | 1,054 | g0001-g1010,g1055-g1088 |
+| Compute Node (A) | 115 | a0001-a0115 |
 
 ## 2024-01-23
 
