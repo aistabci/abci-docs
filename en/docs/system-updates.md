@@ -17,7 +17,8 @@
 | rt_AF | 115 | a0001-a0115 |
 | rt_AG.small | 5 | a0116-a0120 |
 
-* Also, in the Reserved Service, from April 12, 2024, we will impose restrictions on the nodes to which reservations can be allocated.<br>
+* In the Reserved Service, from April 12, 2024, we will impose restrictions on the nodes allocated for reservations.<br>
+  Reservations will be allocated from the nodes listed below.<br>
   However, there are no restrictions on the resource types that can be run on the reserved compute nodes.<br>
   As before, Compute Node (V) can run resource types rt_F, rt_G.large, rt_G.small, rt_C.large, rt_C.small, and Compute Node (A) can run resource types rt_AF, rt_AG.small.
 
