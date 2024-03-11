@@ -10,9 +10,9 @@
   From April 12, 2024, we will impose restrictions on the nodes allocated for each resource type.<br>
   The Job Services subject to this will be the On-demand Service and the Spot Service.
 
-| Resource type name | nodes | Hostname |
+| Resource type name | Nodes | Hostname |
 | :-- | :-- | :-- |
-| rt_F | 1,054 | g0001-g1010,g1055-g1088 |
+| rt_F | 1,054 | g0001-g1020,g1055-g1088 |
 | rt_G.large, rt_G.small, rt_C.large, rt_C.small | 34 | g1021-g1054 |
 | rt_AF | 115 | a0001-a0115 |
 | rt_AG.small | 5 | a0116-a0120 |
@@ -24,7 +24,7 @@
 
 | Node Type | Nodes | Hostname |
 | :-- | :-- | :-- |
-| Compute Node (V) | 1,054 | g0001-g1010,g1055-g1088 |
+| Compute Node (V) | 1,054 | g0001-g1020,g1055-g1088 |
 | Compute Node (A) | 115 | a0001-a0115 |
 
 ## 2024-01-23
