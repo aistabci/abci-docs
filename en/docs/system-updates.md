@@ -6,26 +6,18 @@
 |:--|:--|:--|:--|
 | Update | ABCI Singularity Endpoint | 2.3 | 2.1.5 |
 
-* Until now, there were no restrictions on the nodes allocated for each resource type, and they were allocated sequentially from the available computing resources.<br>
-  From April 12, 2024, we will impose restrictions on the nodes allocated for each resource type.<br>
-  The Job Services subject to this will be the On-demand Service and the Spot Service.
+* Until now, there were no restrictions on the number of jobs executed for each resource type, and they were allocated sequentially from the available computing resources.<br>
+  From April 12, 2024, we will impose restrictions on the number of running jobs at the same time per system for each resource type.<br>
+  The Job Services subject to this will be the On-demand Service and the Spot Service.<br>
+  Jobs submitted to reserved nodes in the Reserved service are not included in the count.
 
-| Resource type name | Nodes | Hostname |
-| :-- | :-- | :-- |
-| rt_F | 1,054 | g0001-g1020,g1055-g1088 |
-| rt_G.large, rt_G.small, rt_C.large, rt_C.small | 34 | g1021-g1054 |
-| rt_AF | 115 | a0001-a0115 |
-| rt_AG.small | 5 | a0116-a0120 |
-
-* In the Reserved Service, from April 12, 2024, we will impose restrictions on the nodes allocated for reservations.<br>
-  Reservations will be allocated from the nodes listed below.<br>
-  However, there are no restrictions on the resource types that can be run on the reserved compute nodes.<br>
-  As before, Compute Node (V) can run resource types rt_F, rt_G.large, rt_G.small, rt_C.large, rt_C.small, and Compute Node (A) can run resource types rt_AF, rt_AG.small.
-
-| Node Type | Nodes | Hostname |
-| :-- | :-- | :-- |
-| Compute Node (V) | 1,054 | g0001-g1020,g1055-g1088 |
-| Compute Node (A) | 115 | a0001-a0115 |
+| Resource type name | Maximum number of running jobs at the same time per system |
+|:--|:--|
+| rt_F | 1054 |
+| rt_G.large, rt_C.large | 34 |
+| rt_G.small, rt_C.small | 136 |
+| rt_AF | 115 |
+| rt_AG.small | 40 |
 
 ## 2024-01-23
 
