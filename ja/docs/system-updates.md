@@ -6,6 +6,16 @@
 |:--|:--|:--|:--|
 | Update | ABCI Singularityエンドポイント | 2.3 | 2.1.5 |
 
+## 2024-03-26
+
+| Add / Update / Delete | Software | Version | Previous version |
+|:--|:--|:--|:--|
+| Add | cuda | 12.4.0 | |
+| Add | cudnn | 9.0.0 | |
+| Add | nccl | 2.20.5-1 | |
+
+* cuDNN 9.0.0をCUDA 11.0から11.3で使用した場合、`cudnnRNNBackwardWeights_v8`関数呼び出し時にエラーが発生することを確認しています。
+
 ## 2024-01-23
 
 | Add / Update / Delete | Software | Version | Previous version |

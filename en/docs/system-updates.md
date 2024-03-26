@@ -6,6 +6,16 @@
 |:--|:--|:--|:--|
 | Update | ABCI Singularity Endpoint | 2.3 | 2.1.5 |
 
+## 2024-03-26
+
+| Add / Update / Delete | Software | Version | Previous version |
+|:--|:--|:--|:--|
+| Add | cuda | 12.4.0 | |
+| Add | cudnn | 9.0.0 | |
+| Add | nccl | 2.20.5-1 | |
+
+* We have confirmed that when cuDNN 9.0.0 is used with CUDA 11.0 to CUDA 11.3, an error occurs when calling the `cudnnRNNBackwardWeights_v8` function.
+
 ## 2024-01-23
 
 | Add / Update / Delete | Software | Version | Previous version |
