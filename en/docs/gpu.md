@@ -37,6 +37,7 @@ The following is a list of CUDA Toolkit, cuDNN, and NCCL that can be used with t
 | cuda/12.2     | 12.2.0        | Yes                   | Yes                           | Yes                           |
 | cuda/12.3     | 12.3.0        | Yes                   | Yes                           | Yes                           |
 | cuda/12.3     | 12.3.2        | Yes                   | Yes                           | Yes                           |
+| cuda/12.4     | 12.4.0        | Yes                   | Yes                           | Yes                           |
 
 [^1]: Provided only for experimental use. NVIDIA A100 is supported on CUDA 11＋.
 [^2]: Provided only for experimental use. Rocky Linux 8.6 is supported with CUDA 11.7.1 or later.
@@ -45,87 +46,93 @@ The following is a list of CUDA Toolkit, cuDNN, and NCCL that can be used with t
 
 Compute Node (V):
 
-| Version | cuda/10.2[^2] | cuda/11.0[^2] | cuda/11.1[^2] | cuda/11.2[^2] | cuda/11.3[^2] | cuda/11.4[^2] | cuda/11.5[^2] | cuda/11.6[^2] | cuda/11.7 | cuda/11.8 | cuda/12.0 | cuda/12.1 | cuda/12.2 | cuda/12.3 |
-| ------- | ------------- | ------------- | ------------- | ------------- | ------------- | ------------- | ------------- | ------------- | --------- | --------- | --------- | --------- | --------- | --------- |
-| 7.6.5   | Yes           | -             | -             | -             | -             | -             | -             | -             | -         | -         | -         | -         | -         | -         |
-| 8.0.5   | Yes           | Yes           | Yes           | -             | -             | -             | -             | -             | -         | -         | -         | -         | -         | -         |
-| 8.1.1   | Yes           | Yes           | Yes           | Yes           | -             | -             | -             | -             | -         | -         | -         | -         | -         | -         |
-| 8.2.4   | Yes           | Yes           | Yes           | Yes           | Yes           | Yes           | -             | -             | -         | -         | -         | -         | -         | -         |
-| 8.3.3   | Yes           | Yes           | Yes           | Yes           | Yes           | Yes           | Yes           | Yes           | -         | -         | -         | -         | -         | -         |
-| 8.4.1   | Yes           | Yes           | Yes           | Yes           | Yes           | Yes           | Yes           | Yes           | Yes       | Yes       | -         | -         | -         | -         |
-| 8.5.0   | Yes           | Yes           | Yes           | Yes           | Yes           | Yes           | Yes           | Yes           | Yes       | Yes       | -         | -         | -         | -         |
-| 8.6.0   | Yes           | Yes           | Yes           | Yes           | Yes           | Yes           | Yes           | Yes           | Yes       | Yes       | -         | -         | -         | -         |
-| 8.7.0   | Yes           | Yes           | Yes           | Yes           | Yes           | Yes           | Yes           | Yes           | Yes       | Yes       | -         | -         | -         | -         |
-| 8.8.1   | -             | Yes           | Yes           | Yes           | Yes           | Yes           | Yes           | Yes           | Yes       | Yes       | Yes       | Yes       | Yes       | Yes       |
-| 8.9.1   | -             | Yes           | Yes           | Yes           | Yes           | Yes           | Yes           | Yes           | Yes       | Yes       | Yes       | Yes       | Yes       | Yes       |
-| 8.9.2   | -             | Yes           | Yes           | Yes           | Yes           | Yes           | Yes           | Yes           | Yes       | Yes       | Yes       | Yes       | Yes       | Yes       |
-| 8.9.5   | -             | Yes           | Yes           | Yes           | Yes           | Yes           | Yes           | Yes           | Yes       | Yes       | Yes       | Yes       | Yes       | Yes       |
-| 8.9.7   | -             | Yes           | Yes           | Yes           | Yes           | Yes           | Yes           | Yes           | Yes       | Yes       | Yes       | Yes       | Yes       | Yes       |
+| Version | cuda/10.2[^2] | cuda/11.0[^2] | cuda/11.1[^2] | cuda/11.2[^2] | cuda/11.3[^2] | cuda/11.4[^2] | cuda/11.5[^2] | cuda/11.6[^2] | cuda/11.7 | cuda/11.8 | cuda/12.0 | cuda/12.1 | cuda/12.2 | cuda/12.3 | cuda/12.4 |
+| ------- | ------------- | ------------- | ------------- | ------------- | ------------- | ------------- | ------------- | ------------- | --------- | --------- | --------- | --------- | --------- | --------- | --------- |
+| 7.6.5   | Yes           | -             | -             | -             | -             | -             | -             | -             | -         | -         | -         | -         | -         | -         | -         |
+| 8.0.5   | Yes           | Yes           | Yes           | -             | -             | -             | -             | -             | -         | -         | -         | -         | -         | -         | -         |
+| 8.1.1   | Yes           | Yes           | Yes           | Yes           | -             | -             | -             | -             | -         | -         | -         | -         | -         | -         | -         |
+| 8.2.4   | Yes           | Yes           | Yes           | Yes           | Yes           | Yes           | -             | -             | -         | -         | -         | -         | -         | -         | -         |
+| 8.3.3   | Yes           | Yes           | Yes           | Yes           | Yes           | Yes           | Yes           | Yes           | -         | -         | -         | -         | -         | -         | -         |
+| 8.4.1   | Yes           | Yes           | Yes           | Yes           | Yes           | Yes           | Yes           | Yes           | Yes       | Yes       | -         | -         | -         | -         | -         |
+| 8.5.0   | Yes           | Yes           | Yes           | Yes           | Yes           | Yes           | Yes           | Yes           | Yes       | Yes       | -         | -         | -         | -         | -         |
+| 8.6.0   | Yes           | Yes           | Yes           | Yes           | Yes           | Yes           | Yes           | Yes           | Yes       | Yes       | -         | -         | -         | -         | -         |
+| 8.7.0   | Yes           | Yes           | Yes           | Yes           | Yes           | Yes           | Yes           | Yes           | Yes       | Yes       | -         | -         | -         | -         | -         |
+| 8.8.1   | -             | Yes           | Yes           | Yes           | Yes           | Yes           | Yes           | Yes           | Yes       | Yes       | Yes       | Yes       | Yes       | Yes       | Yes       |
+| 8.9.1   | -             | Yes           | Yes           | Yes           | Yes           | Yes           | Yes           | Yes           | Yes       | Yes       | Yes       | Yes       | Yes       | Yes       | Yes       |
+| 8.9.2   | -             | Yes           | Yes           | Yes           | Yes           | Yes           | Yes           | Yes           | Yes       | Yes       | Yes       | Yes       | Yes       | Yes       | Yes       |
+| 8.9.5   | -             | Yes           | Yes           | Yes           | Yes           | Yes           | Yes           | Yes           | Yes       | Yes       | Yes       | Yes       | Yes       | Yes       | Yes       |
+| 8.9.7   | -             | Yes           | Yes           | Yes           | Yes           | Yes           | Yes           | Yes           | Yes       | Yes       | Yes       | Yes       | Yes       | Yes       | Yes       |
+| 9.0.0[^3] | -             | Yes           | Yes           | Yes           | Yes           | Yes           | Yes           | Yes           | Yes       | Yes       | Yes       | Yes       | Yes       | Yes       | Yes       |
 
 Compute Node (A):
 
-| Version | cuda/10.2[^1] | cuda/11.0 | cuda/11.1 | cuda/11.2 | cuda/11.3 | cuda/11.4 | cuda/11.5 | cuda/11.6 | cuda/11.7 | cuda/11.8 | cuda/12.0 | cuda/12.1 | cuda/12.2 | cuda/12.3 |
-| :------ | :------------ | :-------- | :-------- | :-------- | :-------- | :-------- | :-------- | :-------- | :-------- | :-------- | :-------- | :-------- | :-------- | :-------- |
-| 7.6.5   | Yes           | -         | -         | -         | -         | -         | -         | -         | -         | -         | -         | -         | -         | -         |
-| 8.0.5   | Yes           | Yes       | Yes       | -         | -         | -         | -         | -         | -         | -         | -         | -         | -         | -         |
-| 8.1.1   | Yes           | Yes       | Yes       | Yes       | -         | -         | -         | -         | -         | -         | -         | -         | -         | -         |
-| 8.2.4   | Yes           | Yes       | Yes       | Yes       | Yes       | Yes       | -         | -         | -         | -         | -         | -         | -         | -         |
-| 8.3.3   | Yes           | Yes       | Yes       | Yes       | Yes       | Yes       | Yes       | Yes       | -         | -         | -         | -         | -         | -         |
-| 8.4.1   | Yes           | Yes       | Yes       | Yes       | Yes       | Yes       | Yes       | Yes       | Yes       | Yes       | -         | -         | -         | -         |
-| 8.5.0   | Yes           | Yes       | Yes       | Yes       | Yes       | Yes       | Yes       | Yes       | Yes       | Yes       | -         | -         | -         | -         |
-| 8.6.0   | Yes           | Yes       | Yes       | Yes       | Yes       | Yes       | Yes       | Yes       | Yes       | Yes       | -         | -         | -         | -         |
-| 8.7.0   | Yes           | Yes       | Yes       | Yes       | Yes       | Yes       | Yes       | Yes       | Yes       | Yes       | -         | -         | -         | -         |
-| 8.8.1   | -             | Yes       | Yes       | Yes       | Yes       | Yes       | Yes       | Yes       | Yes       | Yes       | Yes       | Yes       | Yes       | Yes       |
-| 8.9.1   | -             | Yes       | Yes       | Yes       | Yes       | Yes       | Yes       | Yes       | Yes       | Yes       | Yes       | Yes       | Yes       | Yes       |
-| 8.9.2   | -             | Yes       | Yes       | Yes       | Yes       | Yes       | Yes       | Yes       | Yes       | Yes       | Yes       | Yes       | Yes       | Yes       |
-| 8.9.5   | -             | Yes       | Yes       | Yes       | Yes       | Yes       | Yes       | Yes       | Yes       | Yes       | Yes       | Yes       | Yes       | Yes       |
-| 8.9.7   | -             | Yes       | Yes       | Yes       | Yes       | Yes       | Yes       | Yes       | Yes       | Yes       | Yes       | Yes       | Yes       | Yes       |
+| Version | cuda/10.2[^1] | cuda/11.0 | cuda/11.1 | cuda/11.2 | cuda/11.3 | cuda/11.4 | cuda/11.5 | cuda/11.6 | cuda/11.7 | cuda/11.8 | cuda/12.0 | cuda/12.1 | cuda/12.2 | cuda/12.3 | cuda/12.4 |
+| :------ | :------------ | :-------- | :-------- | :-------- | :-------- | :-------- | :-------- | :-------- | :-------- | :-------- | :-------- | :-------- | :-------- | :-------- | :-------- |
+| 7.6.5   | Yes           | -         | -         | -         | -         | -         | -         | -         | -         | -         | -         | -         | -         | -         | -         |
+| 8.0.5   | Yes           | Yes       | Yes       | -         | -         | -         | -         | -         | -         | -         | -         | -         | -         | -         | -         |
+| 8.1.1   | Yes           | Yes       | Yes       | Yes       | -         | -         | -         | -         | -         | -         | -         | -         | -         | -         | -         |
+| 8.2.4   | Yes           | Yes       | Yes       | Yes       | Yes       | Yes       | -         | -         | -         | -         | -         | -         | -         | -         | -         |
+| 8.3.3   | Yes           | Yes       | Yes       | Yes       | Yes       | Yes       | Yes       | Yes       | -         | -         | -         | -         | -         | -         | -         |
+| 8.4.1   | Yes           | Yes       | Yes       | Yes       | Yes       | Yes       | Yes       | Yes       | Yes       | Yes       | -         | -         | -         | -         | -         |
+| 8.5.0   | Yes           | Yes       | Yes       | Yes       | Yes       | Yes       | Yes       | Yes       | Yes       | Yes       | -         | -         | -         | -         | -         |
+| 8.6.0   | Yes           | Yes       | Yes       | Yes       | Yes       | Yes       | Yes       | Yes       | Yes       | Yes       | -         | -         | -         | -         | -         |
+| 8.7.0   | Yes           | Yes       | Yes       | Yes       | Yes       | Yes       | Yes       | Yes       | Yes       | Yes       | -         | -         | -         | -         | -         |
+| 8.8.1   | -             | Yes       | Yes       | Yes       | Yes       | Yes       | Yes       | Yes       | Yes       | Yes       | Yes       | Yes       | Yes       | Yes       | Yes       |
+| 8.9.1   | -             | Yes       | Yes       | Yes       | Yes       | Yes       | Yes       | Yes       | Yes       | Yes       | Yes       | Yes       | Yes       | Yes       | Yes       |
+| 8.9.2   | -             | Yes       | Yes       | Yes       | Yes       | Yes       | Yes       | Yes       | Yes       | Yes       | Yes       | Yes       | Yes       | Yes       | Yes       |
+| 8.9.5   | -             | Yes       | Yes       | Yes       | Yes       | Yes       | Yes       | Yes       | Yes       | Yes       | Yes       | Yes       | Yes       | Yes       | Yes       |
+| 8.9.7   | -             | Yes       | Yes       | Yes       | Yes       | Yes       | Yes       | Yes       | Yes       | Yes       | Yes       | Yes       | Yes       | Yes       | Yes       |
+| 9.0.0[^3] | -             | Yes       | Yes       | Yes       | Yes       | Yes       | Yes       | Yes       | Yes       | Yes       | Yes       | Yes       | Yes       | Yes       | Yes       |
+
+[^3]: We have confirmed that when cuDNN 9.0.0 is used with CUDA 11.0 to CUDA 11.3, an error occurs when calling the `cudnnRNNBackwardWeights_v8` function.
 
 ## NCCL
 
 Compute Node (V):
 
-| Version   | cuda/10.2[^2] | cuda/11.0[^2] | cuda/11.1[^2] | cuda/11.2[^2] | cuda/11.3[^2] | cuda/11.4[^2] | cuda/11.5[^2] | cuda/11.6[^2] | cuda/11.7 | cuda/11.8 | cuda/12.0 | cuda/12.1 | cuda/12.2 | cuda/12.3 |
-| --------- | ------------- | ------------- | ------------- | ------------- | ------------- | ------------- | ------------- | ------------- | --------- | --------- | --------- | --------- | --------- | --------- |
-| 2.5.6-1   | Yes           | -             | -             | -             | -             | -             | -             | -             | -         | -         | -         | -         | -         | -         |
-| 2.6.4-1   | Yes           | -             | -             | -             | -             | -             | -             | -             | -         | -         | -         | -         | -         | -         |
-| 2.7.8-1   | Yes           | Yes           | Yes           | -             | -             | -             | -             | -             | -         | -         | -         | -         | -         | -         |
-| 2.8.4-1   | Yes           | Yes           | Yes           | Yes           | -             | -             | -             | -             | -         | -         | -         | -         | -         | -         |
-| 2.9.9-1   | Yes           | Yes           | -             | -             | Yes           | -             | -             | -             | -         | -         | -         | -         | -         | -         |
-| 2.10.3-1  | Yes           | Yes           | -             | -             | -             | Yes           | -             | -             | -         | -         | -         | -         | -         | -         |
-| 2.11.4-1  | Yes           | Yes           | -             | -             | -             | Yes           | Yes           | Yes           | -         | -         | -         | -         | -         | -         |
-| 2.12.12-1 | Yes           | Yes           | -             | -             | -             | -             | -             | Yes           | -         | -         | -         | -         | -         | -         |
-| 2.13.4-1  | Yes           | Yes           | -             | -             | -             | -             | -             | -             | Yes       | -         | -         | -         | -         | -         |
-| 2.14.3-1  | Yes           | Yes           | -             | -             | -             | -             | -             | -             | Yes       | -         | -         | -         | -         | -         |
-| 2.15.5-1  | Yes           | Yes           | -             | -             | -             | -             | -             | -             | -         | Yes       | -         | -         | -         | -         |
-| 2.16.2-1  | -             | Yes           | -             | -             | -             | -             | -             | -             | -         | Yes       | Yes       | -         | -         | -         |
-| 2.17.1-1  | -             | Yes           | -             | -             | -             | -             | -             | -             | -         | -         | Yes       | Yes       | -         | -         |
-| 2.18.1-1  | -             | Yes           | -             | -             | -             | -             | -             | -             | -         | -         | Yes       | Yes       | -         | -         |
-| 2.18.3-1  | -             | Yes           | -             | -             | -             | -             | -             | -             | -         | -         | Yes       | Yes       | Yes       | -         |
-| 2.18.5-1  | -             | Yes           | -             | -             | -             | -             | -             | -             | -         | -         | Yes       | -         | Yes       | -         |
-| 2.19.3-1  | -             | Yes           | -             | -             | -             | -             | -             | -             | -         | -         | Yes       | -         | Yes       | Yes       |
+| Version   | cuda/10.2[^2] | cuda/11.0[^2] | cuda/11.1[^2] | cuda/11.2[^2] | cuda/11.3[^2] | cuda/11.4[^2] | cuda/11.5[^2] | cuda/11.6[^2] | cuda/11.7 | cuda/11.8 | cuda/12.0 | cuda/12.1 | cuda/12.2 | cuda/12.3 | cuda/12.4 |
+| --------- | ------------- | ------------- | ------------- | ------------- | ------------- | ------------- | ------------- | ------------- | --------- | --------- | --------- | --------- | --------- | --------- | --------- |
+| 2.5.6-1   | Yes           | -             | -             | -             | -             | -             | -             | -             | -         | -         | -         | -         | -         | -         | -         |
+| 2.6.4-1   | Yes           | -             | -             | -             | -             | -             | -             | -             | -         | -         | -         | -         | -         | -         | -         |
+| 2.7.8-1   | Yes           | Yes           | Yes           | -             | -             | -             | -             | -             | -         | -         | -         | -         | -         | -         | -         |
+| 2.8.4-1   | Yes           | Yes           | Yes           | Yes           | -             | -             | -             | -             | -         | -         | -         | -         | -         | -         | -         |
+| 2.9.9-1   | Yes           | Yes           | -             | -             | Yes           | -             | -             | -             | -         | -         | -         | -         | -         | -         | -         |
+| 2.10.3-1  | Yes           | Yes           | -             | -             | -             | Yes           | -             | -             | -         | -         | -         | -         | -         | -         | -         |
+| 2.11.4-1  | Yes           | Yes           | -             | -             | -             | Yes           | Yes           | Yes           | -         | -         | -         | -         | -         | -         | -         |
+| 2.12.12-1 | Yes           | Yes           | -             | -             | -             | -             | -             | Yes           | -         | -         | -         | -         | -         | -         | -         |
+| 2.13.4-1  | Yes           | Yes           | -             | -             | -             | -             | -             | -             | Yes       | -         | -         | -         | -         | -         | -         |
+| 2.14.3-1  | Yes           | Yes           | -             | -             | -             | -             | -             | -             | Yes       | -         | -         | -         | -         | -         | -         |
+| 2.15.5-1  | Yes           | Yes           | -             | -             | -             | -             | -             | -             | -         | Yes       | -         | -         | -         | -         | -         |
+| 2.16.2-1  | -             | Yes           | -             | -             | -             | -             | -             | -             | -         | Yes       | Yes       | -         | -         | -         | -         |
+| 2.17.1-1  | -             | Yes           | -             | -             | -             | -             | -             | -             | -         | -         | Yes       | Yes       | -         | -         | -         |
+| 2.18.1-1  | -             | Yes           | -             | -             | -             | -             | -             | -             | -         | -         | Yes       | Yes       | -         | -         | -         |
+| 2.18.3-1  | -             | Yes           | -             | -             | -             | -             | -             | -             | -         | -         | Yes       | Yes       | Yes       | -         | -         |
+| 2.18.5-1  | -             | Yes           | -             | -             | -             | -             | -             | -             | -         | -         | Yes       | -         | Yes       | -         | -         |
+| 2.19.3-1  | -             | Yes           | -             | -             | -             | -             | -             | -             | -         | -         | Yes       | -         | Yes       | Yes       | -         |
+| 2.20.5-1  | -             | Yes           | -             | -             | -             | -             | -             | -             | -         | -         | -         | -         | Yes       | -         | Yes       |
 
 Compute Node (A):
 
-| Version   | cuda/10.2[^1] | cuda/11.0 | cuda/11.1 | cuda/11.2 | cuda/11.3 | cuda/11.4 | cuda/11.5 | cuda/11.6 | cuda/11.7 | cuda/11.8 | cuda/12.0 | cuda/12.1 | cuda/12.2 | cuda/12.3 |
-| :-------- | :------------ | :-------- | :-------- | :-------- | :-------- | :-------- | :-------- | :-------- | :-------- | :-------- | :-------- | :-------- | :-------- | :-------- |
-| 2.5.6-1   | Yes           | -         | -         | -         | -         | -         | -         | -         | -         | -         | -         | -         | -         | -         |
-| 2.6.4-1   | Yes           | -         | -         | -         | -         | -         | -         | -         | -         | -         | -         | -         | -         | -         |
-| 2.7.8-1   | Yes           | Yes       | Yes       | -         | -         | -         | -         | -         | -         | -         | -         | -         | -         | -         |
-| 2.8.4-1   | Yes           | Yes       | Yes       | Yes       | -         | -         | -         | -         | -         | -         | -         | -         | -         | -         |
-| 2.9.9-1   | Yes           | Yes       | -         | -         | Yes       | -         | -         | -         | -         | -         | -         | -         | -         | -         |
-| 2.10.3-1  | Yes           | Yes       | -         | -         | -         | Yes       | -         | -         | -         | -         | -         | -         | -         | -         |
-| 2.11.4-1  | Yes           | Yes       | -         | -         | -         | Yes       | Yes       | Yes       | -         | -         | -         | -         | -         | -         |
-| 2.12.12-1 | Yes           | Yes       | -         | -         | -         | -         | -         | Yes       | -         | -         | -         | -         | -         | -         |
-| 2.13.4-1  | Yes           | Yes       | -         | -         | -         | -         | -         | -         | Yes       | -         | -         | -         | -         | -         |
-| 2.14.3-1  | Yes           | Yes       | -         | -         | -         | -         | -         | -         | Yes       | -         | -         | -         | -         | -         |
-| 2.15.5-1  | Yes           | Yes       | -         | -         | -         | -         | -         | -         | -         | Yes       | -         | -         | -         | -         |
-| 2.16.2-1  | -             | Yes       | -         | -         | -         | -         | -         | -         | -         | Yes       | Yes       | -         | -         | -         |
-| 2.17.1-1  | -             | Yes       | -         | -         | -         | -         | -         | -         | -         | -         | Yes       | Yes       | -         | -         |
-| 2.18.1-1  | -             | Yes       | -         | -         | -         | -         | -         | -         | -         | -         | Yes       | Yes       | -         | -         |
-| 2.18.3-1  | -             | Yes       | -         | -         | -         | -         | -         | -         | -         | -         | Yes       | Yes       | Yes       | -         |
-| 2.18.5-1  | -             | Yes       | -         | -         | -         | -         | -         | -         | -         | -         | Yes       | -         | Yes       | -         |
-| 2.19.3-1  | -             | Yes       | -         | -         | -         | -         | -         | -         | -         | -         | Yes       | -         | Yes       | Yes       |
+| Version   | cuda/10.2[^1] | cuda/11.0 | cuda/11.1 | cuda/11.2 | cuda/11.3 | cuda/11.4 | cuda/11.5 | cuda/11.6 | cuda/11.7 | cuda/11.8 | cuda/12.0 | cuda/12.1 | cuda/12.2 | cuda/12.3 | cuda/12.4 |
+| :-------- | :------------ | :-------- | :-------- | :-------- | :-------- | :-------- | :-------- | :-------- | :-------- | :-------- | :-------- | :-------- | :-------- | :-------- | :-------- |
+| 2.5.6-1   | Yes           | -         | -         | -         | -         | -         | -         | -         | -         | -         | -         | -         | -         | -         | -         |
+| 2.6.4-1   | Yes           | -         | -         | -         | -         | -         | -         | -         | -         | -         | -         | -         | -         | -         | -         |
+| 2.7.8-1   | Yes           | Yes       | Yes       | -         | -         | -         | -         | -         | -         | -         | -         | -         | -         | -         | -         |
+| 2.8.4-1   | Yes           | Yes       | Yes       | Yes       | -         | -         | -         | -         | -         | -         | -         | -         | -         | -         | -         |
+| 2.9.9-1   | Yes           | Yes       | -         | -         | Yes       | -         | -         | -         | -         | -         | -         | -         | -         | -         | -         |
+| 2.10.3-1  | Yes           | Yes       | -         | -         | -         | Yes       | -         | -         | -         | -         | -         | -         | -         | -         | -         |
+| 2.11.4-1  | Yes           | Yes       | -         | -         | -         | Yes       | Yes       | Yes       | -         | -         | -         | -         | -         | -         | -         |
+| 2.12.12-1 | Yes           | Yes       | -         | -         | -         | -         | -         | Yes       | -         | -         | -         | -         | -         | -         | -         |
+| 2.13.4-1  | Yes           | Yes       | -         | -         | -         | -         | -         | -         | Yes       | -         | -         | -         | -         | -         | -         |
+| 2.14.3-1  | Yes           | Yes       | -         | -         | -         | -         | -         | -         | Yes       | -         | -         | -         | -         | -         | -         |
+| 2.15.5-1  | Yes           | Yes       | -         | -         | -         | -         | -         | -         | -         | Yes       | -         | -         | -         | -         | -         |
+| 2.16.2-1  | -             | Yes       | -         | -         | -         | -         | -         | -         | -         | Yes       | Yes       | -         | -         | -         | -         |
+| 2.17.1-1  | -             | Yes       | -         | -         | -         | -         | -         | -         | -         | -         | Yes       | Yes       | -         | -         | -         |
+| 2.18.1-1  | -             | Yes       | -         | -         | -         | -         | -         | -         | -         | -         | Yes       | Yes       | -         | -         | -         |
+| 2.18.3-1  | -             | Yes       | -         | -         | -         | -         | -         | -         | -         | -         | Yes       | Yes       | Yes       | -         | -         |
+| 2.18.5-1  | -             | Yes       | -         | -         | -         | -         | -         | -         | -         | -         | Yes       | -         | Yes       | -         | -         |
+| 2.19.3-1  | -             | Yes       | -         | -         | -         | -         | -         | -         | -         | -         | Yes       | -         | Yes       | Yes       | -         |
+| 2.20.5-1  | -             | Yes       | -         | -         | -         | -         | -         | -         | -         | -         | -         | -         | Yes       | -         | Yes       |
 
 ## GDRCopy
 
