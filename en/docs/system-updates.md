@@ -6,7 +6,7 @@
 |:--|:--|:--|:--|
 | Update | ABCI Singularity Endpoint | 2.3 | 2.1.5 |
 
-## 2024-03-26
+## 2024-03-27
 
 | Add / Update / Delete | Software | Version | Previous version |
 |:--|:--|:--|:--|
