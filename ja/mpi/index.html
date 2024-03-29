@@ -16,7 +16,7 @@
         <link rel="canonical" href="https://docs.abci.ai/ja/mpi/">
       
       <link rel="icon" href="../img/favicon.png">
-      <meta name="generator" content="mkdocs-1.1.2, mkdocs-material-7.1.3">
+      <meta name="generator" content="mkdocs-1.2.4, mkdocs-material-7.1.3">
     
     
       
@@ -1151,10 +1151,10 @@
 <p>利用するためには事前に<code>module</code>コマンドを用いて利用環境を設定する必要があります。
 インタラクティブノードで<code>module</code>コマンドを用いると、コンパイル用環境変数（ヘッダファイルおよびライブラリのサーチパス）が自動で設定されます。
 計算ノードで<code>module</code>コマンドを用いると、コンパイル用環境変数に加え、実行用環境変数も自動で設定されます。</p>
-<div class="codehilite"><pre><span></span><code><span class="p">[</span><span class="n">username</span><span class="err">@</span><span class="n">es1</span> <span class="o">~</span><span class="p">]</span><span class="o">$</span> <span class="n">module</span> <span class="nb">load</span> <span class="n">hpcx</span><span class="o">/</span><span class="mf">2.12</span>
+<div class="codehilite"><pre><span></span><code><span class="p">[</span><span class="n">username</span><span class="err">@</span><span class="n">es1</span><span class="w"> </span><span class="o">~</span><span class="p">]</span><span class="o">$</span><span class="w"> </span><span class="n">module</span><span class="w"> </span><span class="nb">load</span><span class="w"> </span><span class="n">hpcx</span><span class="o">/</span><span class="mf">2.12</span>
 </code></pre></div>
 
-<div class="codehilite"><pre><span></span><code><span class="p">[</span><span class="n">username</span><span class="err">@</span><span class="n">es1</span> <span class="o">~</span><span class="p">]</span><span class="o">$</span> <span class="n">module</span> <span class="nb">load</span> <span class="n">intel</span><span class="o">-</span><span class="n">mpi</span><span class="o">/</span><span class="mf">2021.8</span>
+<div class="codehilite"><pre><span></span><code><span class="p">[</span><span class="n">username</span><span class="err">@</span><span class="n">es1</span><span class="w"> </span><span class="o">~</span><span class="p">]</span><span class="o">$</span><span class="w"> </span><span class="n">module</span><span class="w"> </span><span class="nb">load</span><span class="w"> </span><span class="n">intel</span><span class="o">-</span><span class="n">mpi</span><span class="o">/</span><span class="mf">2021.8</span>
 </code></pre></div>
 
 <p>以下では、ABCIシステムに導入されているMPIのバージョン一覧を示します。</p>
@@ -1162,18 +1162,18 @@
 <table>
 <thead>
 <tr>
-<th align="left">Module Version</th>
-<th align="left">Open MPI Version</th>
-<th align="left">Compute Node (V)</th>
-<th align="left">Compute Node (A)</th>
+<th style="text-align: left;">Module Version</th>
+<th style="text-align: left;">Open MPI Version</th>
+<th style="text-align: left;">Compute Node (V)</th>
+<th style="text-align: left;">Compute Node (A)</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td align="left">2.12</td>
-<td align="left">4.1.5a1</td>
-<td align="left">Yes</td>
-<td align="left">Yes</td>
+<td style="text-align: left;">2.12</td>
+<td style="text-align: left;">4.1.5a1</td>
+<td style="text-align: left;">Yes</td>
+<td style="text-align: left;">Yes</td>
 </tr>
 </tbody>
 </table>
@@ -1183,36 +1183,36 @@
 <table>
 <thead>
 <tr>
-<th align="left">モジュール名</th>
-<th align="left">説明</th>
+<th style="text-align: left;">モジュール名</th>
+<th style="text-align: left;">説明</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td align="left">hpcx</td>
-<td align="left">標準</td>
+<td style="text-align: left;">hpcx</td>
+<td style="text-align: left;">標準</td>
 </tr>
 <tr>
-<td align="left">hpcx-mt</td>
-<td align="left">マルチスレッド対応</td>
+<td style="text-align: left;">hpcx-mt</td>
+<td style="text-align: left;">マルチスレッド対応</td>
 </tr>
 <tr>
-<td align="left">hpcx-debug</td>
-<td align="left">デバッグ用</td>
+<td style="text-align: left;">hpcx-debug</td>
+<td style="text-align: left;">デバッグ用</td>
 </tr>
 <tr>
-<td align="left">hpcx-prof</td>
-<td align="left">プロファイリング用</td>
+<td style="text-align: left;">hpcx-prof</td>
+<td style="text-align: left;">プロファイリング用</td>
 </tr>
 </tbody>
 </table>
 <p>また、ジョブ内で<code>mpirun</code>、<code>mpiexec</code>コマンドを実行する際には<code>-hostfile</code>オプションにホストファイルを指定します。
 ホストファイルは<code>SGE_JOB_HOSTLIST</code>環境変数に設定されています。</p>
-<div class="codehilite"><pre><span></span><code><span class="p">[</span><span class="n">username</span><span class="err">@</span><span class="n">es1</span> <span class="o">~</span><span class="p">]</span><span class="o">$</span> <span class="n">qrsh</span> <span class="o">-</span><span class="n">g</span> <span class="n">groupname</span> <span class="o">-</span><span class="n">l</span> <span class="n">rt_F</span><span class="o">=</span><span class="mi">2</span> <span class="o">-</span><span class="n">l</span> <span class="n">h_rt</span><span class="o">=</span><span class="mi">01</span><span class="p">:</span><span class="mi">00</span><span class="p">:</span><span class="mi">0</span>
-<span class="p">[</span><span class="n">username</span><span class="err">@</span><span class="n">g0001</span> <span class="o">~</span><span class="p">]</span><span class="o">$</span> <span class="n">module</span> <span class="nb">load</span> <span class="n">hpcx</span><span class="o">/</span><span class="mf">2.12</span>
-<span class="p">[</span><span class="n">username</span><span class="err">@</span><span class="n">g0001</span> <span class="o">~</span><span class="p">]</span><span class="o">$</span> <span class="n">mpirun</span> <span class="o">-</span><span class="n">np</span> <span class="mi">2</span> <span class="o">-</span><span class="n">map</span><span class="o">-</span><span class="n">by</span> <span class="n">ppr</span><span class="p">:</span><span class="mi">1</span><span class="p">:</span><span class="n">node</span> <span class="o">-</span><span class="n">hostfile</span> <span class="o">$</span><span class="n">SGE_JOB_HOSTLIST</span> <span class="o">./</span><span class="n">hello_c</span>
-<span class="n">Hello</span><span class="p">,</span> <span class="n">world</span><span class="p">,</span> <span class="n">I</span> <span class="n">am</span> <span class="mi">0</span> <span class="n">of</span> <span class="mi">2</span><span class="p">,</span> <span class="p">(</span><span class="n">Open</span> <span class="n">MPI</span> <span class="n">v4</span><span class="o">.</span><span class="mf">1.5</span><span class="n">a1</span><span class="p">,</span> <span class="n">package</span><span class="p">:</span> <span class="n">Open</span> <span class="n">MPI</span> <span class="n">root</span><span class="err">@</span><span class="n">hpc</span><span class="o">-</span><span class="n">kernel</span><span class="o">-</span><span class="mi">03</span> <span class="n">Distribution</span><span class="p">,</span> <span class="n">ident</span><span class="p">:</span> <span class="mf">4.1</span><span class="o">.</span><span class="mi">5</span><span class="n">a1</span><span class="p">,</span> <span class="n">repo</span> <span class="n">rev</span><span class="p">:</span> <span class="n">v4</span><span class="o">.</span><span class="mf">1.4</span><span class="o">-</span><span class="mi">2</span><span class="o">-</span><span class="n">g1c67bf1c6a</span><span class="p">,</span> <span class="n">Unreleased</span> <span class="n">developer</span> <span class="n">copy</span><span class="p">,</span> <span class="mi">144</span><span class="p">)</span>
-<span class="n">Hello</span><span class="p">,</span> <span class="n">world</span><span class="p">,</span> <span class="n">I</span> <span class="n">am</span> <span class="mi">1</span> <span class="n">of</span> <span class="mi">2</span><span class="p">,</span> <span class="p">(</span><span class="n">Open</span> <span class="n">MPI</span> <span class="n">v4</span><span class="o">.</span><span class="mf">1.5</span><span class="n">a1</span><span class="p">,</span> <span class="n">package</span><span class="p">:</span> <span class="n">Open</span> <span class="n">MPI</span> <span class="n">root</span><span class="err">@</span><span class="n">hpc</span><span class="o">-</span><span class="n">kernel</span><span class="o">-</span><span class="mi">03</span> <span class="n">Distribution</span><span class="p">,</span> <span class="n">ident</span><span class="p">:</span> <span class="mf">4.1</span><span class="o">.</span><span class="mi">5</span><span class="n">a1</span><span class="p">,</span> <span class="n">repo</span> <span class="n">rev</span><span class="p">:</span> <span class="n">v4</span><span class="o">.</span><span class="mf">1.4</span><span class="o">-</span><span class="mi">2</span><span class="o">-</span><span class="n">g1c67bf1c6a</span><span class="p">,</span> <span class="n">Unreleased</span> <span class="n">developer</span> <span class="n">copy</span><span class="p">,</span> <span class="mi">144</span><span class="p">)</span>
+<div class="codehilite"><pre><span></span><code><span class="p">[</span><span class="n">username</span><span class="err">@</span><span class="n">es1</span><span class="w"> </span><span class="o">~</span><span class="p">]</span><span class="o">$</span><span class="w"> </span><span class="n">qrsh</span><span class="w"> </span><span class="o">-</span><span class="n">g</span><span class="w"> </span><span class="n">groupname</span><span class="w"> </span><span class="o">-</span><span class="n">l</span><span class="w"> </span><span class="n">rt_F</span><span class="o">=</span><span class="mi">2</span><span class="w"> </span><span class="o">-</span><span class="n">l</span><span class="w"> </span><span class="n">h_rt</span><span class="o">=</span><span class="mi">01</span><span class="p">:</span><span class="mi">00</span><span class="p">:</span><span class="mi">0</span>
+<span class="p">[</span><span class="n">username</span><span class="err">@</span><span class="n">g0001</span><span class="w"> </span><span class="o">~</span><span class="p">]</span><span class="o">$</span><span class="w"> </span><span class="n">module</span><span class="w"> </span><span class="nb">load</span><span class="w"> </span><span class="n">hpcx</span><span class="o">/</span><span class="mf">2.12</span>
+<span class="p">[</span><span class="n">username</span><span class="err">@</span><span class="n">g0001</span><span class="w"> </span><span class="o">~</span><span class="p">]</span><span class="o">$</span><span class="w"> </span><span class="n">mpirun</span><span class="w"> </span><span class="o">-</span><span class="n">np</span><span class="w"> </span><span class="mi">2</span><span class="w"> </span><span class="o">-</span><span class="n">map</span><span class="o">-</span><span class="n">by</span><span class="w"> </span><span class="n">ppr</span><span class="p">:</span><span class="mi">1</span><span class="p">:</span><span class="n">node</span><span class="w"> </span><span class="o">-</span><span class="n">hostfile</span><span class="w"> </span><span class="o">$</span><span class="n">SGE_JOB_HOSTLIST</span><span class="w"> </span><span class="o">./</span><span class="n">hello_c</span>
+<span class="n">Hello</span><span class="p">,</span><span class="w"> </span><span class="n">world</span><span class="p">,</span><span class="w"> </span><span class="n">I</span><span class="w"> </span><span class="n">am</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="n">of</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="p">(</span><span class="n">Open</span><span class="w"> </span><span class="n">MPI</span><span class="w"> </span><span class="n">v4</span><span class="o">.</span><span class="mf">1.5</span><span class="n">a1</span><span class="p">,</span><span class="w"> </span><span class="n">package</span><span class="p">:</span><span class="w"> </span><span class="n">Open</span><span class="w"> </span><span class="n">MPI</span><span class="w"> </span><span class="n">root</span><span class="err">@</span><span class="n">hpc</span><span class="o">-</span><span class="n">kernel</span><span class="o">-</span><span class="mi">03</span><span class="w"> </span><span class="n">Distribution</span><span class="p">,</span><span class="w"> </span><span class="n">ident</span><span class="p">:</span><span class="w"> </span><span class="mf">4.1</span><span class="o">.</span><span class="mi">5</span><span class="n">a1</span><span class="p">,</span><span class="w"> </span><span class="n">repo</span><span class="w"> </span><span class="n">rev</span><span class="p">:</span><span class="w"> </span><span class="n">v4</span><span class="o">.</span><span class="mf">1.4</span><span class="o">-</span><span class="mi">2</span><span class="o">-</span><span class="n">g1c67bf1c6a</span><span class="p">,</span><span class="w"> </span><span class="n">Unreleased</span><span class="w"> </span><span class="n">developer</span><span class="w"> </span><span class="n">copy</span><span class="p">,</span><span class="w"> </span><span class="mi">144</span><span class="p">)</span>
+<span class="n">Hello</span><span class="p">,</span><span class="w"> </span><span class="n">world</span><span class="p">,</span><span class="w"> </span><span class="n">I</span><span class="w"> </span><span class="n">am</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="n">of</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="p">(</span><span class="n">Open</span><span class="w"> </span><span class="n">MPI</span><span class="w"> </span><span class="n">v4</span><span class="o">.</span><span class="mf">1.5</span><span class="n">a1</span><span class="p">,</span><span class="w"> </span><span class="n">package</span><span class="p">:</span><span class="w"> </span><span class="n">Open</span><span class="w"> </span><span class="n">MPI</span><span class="w"> </span><span class="n">root</span><span class="err">@</span><span class="n">hpc</span><span class="o">-</span><span class="n">kernel</span><span class="o">-</span><span class="mi">03</span><span class="w"> </span><span class="n">Distribution</span><span class="p">,</span><span class="w"> </span><span class="n">ident</span><span class="p">:</span><span class="w"> </span><span class="mf">4.1</span><span class="o">.</span><span class="mi">5</span><span class="n">a1</span><span class="p">,</span><span class="w"> </span><span class="n">repo</span><span class="w"> </span><span class="n">rev</span><span class="p">:</span><span class="w"> </span><span class="n">v4</span><span class="o">.</span><span class="mf">1.4</span><span class="o">-</span><span class="mi">2</span><span class="o">-</span><span class="n">g1c67bf1c6a</span><span class="p">,</span><span class="w"> </span><span class="n">Unreleased</span><span class="w"> </span><span class="n">developer</span><span class="w"> </span><span class="n">copy</span><span class="p">,</span><span class="w"> </span><span class="mi">144</span><span class="p">)</span>
 </code></pre></div>
 
 <p>NVIDIA HPC-XではNCCL-SHARPプラグインを提供しています。
@@ -1220,14 +1220,14 @@
 <table>
 <thead>
 <tr>
-<th align="left">HPC-Xバージョン</th>
-<th align="left">NCCL バージョン</th>
+<th style="text-align: left;">HPC-Xバージョン</th>
+<th style="text-align: left;">NCCL バージョン</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td align="left">2.12</td>
-<td align="left">2.12</td>
+<td style="text-align: left;">2.12</td>
+<td style="text-align: left;">2.12</td>
 </tr>
 </tbody>
 </table>
@@ -1237,16 +1237,16 @@
 <table>
 <thead>
 <tr>
-<th align="left">intel-mpi/</th>
-<th align="left">Compute Node (V)</th>
-<th align="left">Compute Node (A)</th>
+<th style="text-align: left;">intel-mpi/</th>
+<th style="text-align: left;">Compute Node (V)</th>
+<th style="text-align: left;">Compute Node (A)</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td align="left">2021.8</td>
-<td align="left">Yes</td>
-<td align="left">Yes</td>
+<td style="text-align: left;">2021.8</td>
+<td style="text-align: left;">Yes</td>
+<td style="text-align: left;">Yes</td>
 </tr>
 </tbody>
 </table>

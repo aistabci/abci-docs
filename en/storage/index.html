@@ -16,7 +16,7 @@
         <link rel="canonical" href="https://docs.abci.ai/en/storage/">
       
       <link rel="icon" href="../img/favicon.png">
-      <meta name="generator" content="mkdocs-1.1.2, mkdocs-material-7.1.3">
+      <meta name="generator" content="mkdocs-1.2.4, mkdocs-material-7.1.3">
     
     
       
@@ -1297,28 +1297,28 @@ If an attempt is made to create a file that exceeds the limit, an error message 
 <p>See <a href="https://wiki.lustre.org/Configuring_Lustre_File_Striping">Configuring Lustre File Striping</a> for an overview of file striping feature.</p>
 </div>
 <h4 id="how-to-set-up-file-striping">How to Set Up File Striping</h4>
-<div class="codehilite"><pre><span></span><code><span class="err">$</span><span class="w"> </span><span class="n">lfs</span><span class="w"> </span><span class="n">setstripe</span><span class="w">  </span><span class="o">[</span><span class="n">options</span><span class="o">]</span><span class="w"> </span><span class="o">&lt;</span><span class="n">dirname</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="n">filename</span><span class="o">&gt;</span><span class="w"></span>
+<div class="codehilite"><pre><span></span><code><span class="err">$</span><span class="w"> </span><span class="n">lfs</span><span class="w"> </span><span class="n">setstripe</span><span class="w">  </span><span class="o">[</span><span class="n">options</span><span class="o">]</span><span class="w"> </span><span class="o">&lt;</span><span class="n">dirname</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="n">filename</span><span class="o">&gt;</span>
 </code></pre></div>
 
 <table>
 <thead>
 <tr>
-<th align="center">Option</th>
-<th align="left">Description</th>
+<th style="text-align: center;">Option</th>
+<th style="text-align: left;">Description</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td align="center">-S</td>
-<td align="left">Sets a stripe size. -S #k, -S #m or -S #g option sets the size to KiB, MiB or GiB respectively.</td>
+<td style="text-align: center;">-S</td>
+<td style="text-align: left;">Sets a stripe size. -S #k, -S #m or -S #g option sets the size to KiB, MiB or GiB respectively.</td>
 </tr>
 <tr>
-<td align="center">-i</td>
-<td align="left">Specifies the start OST index to which a file is written. If -1 is set, the start OST is randomly selected.</td>
+<td style="text-align: center;">-i</td>
+<td style="text-align: left;">Specifies the start OST index to which a file is written. If -1 is set, the start OST is randomly selected.</td>
 </tr>
 <tr>
-<td align="center">-c</td>
-<td align="left">Sets a stripe count. If -1 is set, all available OSTs are written.</td>
+<td style="text-align: center;">-c</td>
+<td style="text-align: left;">Sets a stripe count. If -1 is set, all available OSTs are written.</td>
 </tr>
 </tbody>
 </table>
@@ -1327,40 +1327,40 @@ If an attempt is made to create a file that exceeds the limit, an error message 
 <p>To display  OST index, use the <code>lfs df</code> or <code>lfs osts</code> command</p>
 </div>
 <p>Example) Set a stripe pattern #1. (Creating a new file with a specific stripe pattern.)</p>
-<div class="codehilite"><pre><span></span><code><span class="o">[</span><span class="n">username@es1 work</span><span class="o">]</span><span class="err">$</span><span class="w"> </span><span class="n">lfs</span><span class="w"> </span><span class="n">setstripe</span><span class="w"> </span><span class="o">-</span><span class="n">S</span><span class="w"> </span><span class="mi">1</span><span class="n">m</span><span class="w"> </span><span class="o">-</span><span class="n">i</span><span class="w"> </span><span class="mi">10</span><span class="w"> </span><span class="o">-</span><span class="n">c</span><span class="w"> </span><span class="mi">4</span><span class="w"> </span><span class="n">stripe</span><span class="o">-</span><span class="k">file</span><span class="w"></span>
-<span class="o">[</span><span class="n">username@es1 work</span><span class="o">]</span><span class="err">$</span><span class="w"> </span><span class="n">ls</span><span class="w"></span>
-<span class="n">stripe</span><span class="o">-</span><span class="k">file</span><span class="w"></span>
+<div class="codehilite"><pre><span></span><code><span class="o">[</span><span class="n">username@es1 work</span><span class="o">]</span><span class="err">$</span><span class="w"> </span><span class="n">lfs</span><span class="w"> </span><span class="n">setstripe</span><span class="w"> </span><span class="o">-</span><span class="n">S</span><span class="w"> </span><span class="mi">1</span><span class="n">m</span><span class="w"> </span><span class="o">-</span><span class="n">i</span><span class="w"> </span><span class="mi">10</span><span class="w"> </span><span class="o">-</span><span class="n">c</span><span class="w"> </span><span class="mi">4</span><span class="w"> </span><span class="n">stripe</span><span class="o">-</span><span class="k">file</span>
+<span class="o">[</span><span class="n">username@es1 work</span><span class="o">]</span><span class="err">$</span><span class="w"> </span><span class="n">ls</span>
+<span class="n">stripe</span><span class="o">-</span><span class="k">file</span>
 </code></pre></div>
 
 <p>Example) Set a stripe pattern #2. (Setting up a stripe pattern to a directory.)</p>
-<div class="codehilite"><pre><span></span><code><span class="o">[</span><span class="n">username@es1 work</span><span class="o">]</span><span class="err">$</span><span class="w"> </span><span class="n">mkdir</span><span class="w"> </span><span class="n">stripe</span><span class="o">-</span><span class="n">dir</span><span class="w"></span>
-<span class="o">[</span><span class="n">username@es1 work</span><span class="o">]</span><span class="err">$</span><span class="w"> </span><span class="n">lfs</span><span class="w"> </span><span class="n">setstripe</span><span class="w"> </span><span class="o">-</span><span class="n">S</span><span class="w"> </span><span class="mi">1</span><span class="n">m</span><span class="w"> </span><span class="o">-</span><span class="n">i</span><span class="w"> </span><span class="mi">10</span><span class="w"> </span><span class="o">-</span><span class="n">c</span><span class="w"> </span><span class="mi">4</span><span class="w"> </span><span class="n">stripe</span><span class="o">-</span><span class="n">dir</span><span class="w"></span>
+<div class="codehilite"><pre><span></span><code><span class="o">[</span><span class="n">username@es1 work</span><span class="o">]</span><span class="err">$</span><span class="w"> </span><span class="n">mkdir</span><span class="w"> </span><span class="n">stripe</span><span class="o">-</span><span class="n">dir</span>
+<span class="o">[</span><span class="n">username@es1 work</span><span class="o">]</span><span class="err">$</span><span class="w"> </span><span class="n">lfs</span><span class="w"> </span><span class="n">setstripe</span><span class="w"> </span><span class="o">-</span><span class="n">S</span><span class="w"> </span><span class="mi">1</span><span class="n">m</span><span class="w"> </span><span class="o">-</span><span class="n">i</span><span class="w"> </span><span class="mi">10</span><span class="w"> </span><span class="o">-</span><span class="n">c</span><span class="w"> </span><span class="mi">4</span><span class="w"> </span><span class="n">stripe</span><span class="o">-</span><span class="n">dir</span>
 </code></pre></div>
 
 <h4 id="how-to-display-file-striping-settings">How to Display File Striping Settings</h4>
 <p>To display the stripe pattern of a specified file or directory, use the lfs getstripe command.</p>
-<div class="codehilite"><pre><span></span><code>$ lfs getstripe &lt;dirname <span class="p">|</span> filename&gt;
+<div class="codehilite"><pre><span></span><code>$<span class="w"> </span>lfs<span class="w"> </span>getstripe<span class="w"> </span>&lt;dirname<span class="w"> </span><span class="p">|</span><span class="w"> </span>filename&gt;
 </code></pre></div>
 
 <p>Example) Display stripe settings #1. (Displaying the stripe pattern of a file.)</p>
-<div class="codehilite"><pre><span></span><code><span class="o">[</span><span class="n">username@es1 work</span><span class="o">]</span><span class="err">$</span><span class="w"> </span><span class="n">lfs</span><span class="w"> </span><span class="n">getstripe</span><span class="w"> </span><span class="n">stripe</span><span class="o">-</span><span class="k">file</span><span class="w"></span>
-<span class="n">stripe</span><span class="o">-</span><span class="k">file</span><span class="w"></span>
-<span class="nl">lmm_stripe_count</span><span class="p">:</span><span class="w">  </span><span class="mi">4</span><span class="w"></span>
-<span class="nl">lmm_stripe_size</span><span class="p">:</span><span class="w">   </span><span class="mi">1048576</span><span class="w"></span>
-<span class="nl">lmm_pattern</span><span class="p">:</span><span class="w">       </span><span class="mi">1</span><span class="w"></span>
-<span class="nl">lmm_layout_gen</span><span class="p">:</span><span class="w">    </span><span class="mi">0</span><span class="w"></span>
-<span class="nl">lmm_stripe_offset</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="w"></span>
-<span class="w">        </span><span class="n">obdidx</span><span class="w">           </span><span class="n">objid</span><span class="w">           </span><span class="n">objid</span><span class="w">           </span><span class="k">group</span><span class="w"></span>
-<span class="w">            </span><span class="mi">10</span><span class="w">         </span><span class="mi">3024641</span><span class="w">       </span><span class="mh">0x2e2701</span><span class="w">                </span><span class="mi">0</span><span class="w"></span>
-<span class="w">            </span><span class="mi">11</span><span class="w">         </span><span class="mi">3026034</span><span class="w">       </span><span class="mh">0x2e2c72</span><span class="w">                </span><span class="mi">0</span><span class="w"></span>
-<span class="w">            </span><span class="mi">12</span><span class="w">         </span><span class="mi">3021952</span><span class="w">       </span><span class="mh">0x2e1c80</span><span class="w">                </span><span class="mi">0</span><span class="w"></span>
-<span class="w">            </span><span class="mi">13</span><span class="w">         </span><span class="mi">3019616</span><span class="w">       </span><span class="mh">0x2e1360</span><span class="w">                </span><span class="mi">0</span><span class="w"></span>
+<div class="codehilite"><pre><span></span><code><span class="o">[</span><span class="n">username@es1 work</span><span class="o">]</span><span class="err">$</span><span class="w"> </span><span class="n">lfs</span><span class="w"> </span><span class="n">getstripe</span><span class="w"> </span><span class="n">stripe</span><span class="o">-</span><span class="k">file</span>
+<span class="n">stripe</span><span class="o">-</span><span class="k">file</span>
+<span class="nl">lmm_stripe_count</span><span class="p">:</span><span class="w">  </span><span class="mi">4</span>
+<span class="nl">lmm_stripe_size</span><span class="p">:</span><span class="w">   </span><span class="mi">1048576</span>
+<span class="nl">lmm_pattern</span><span class="p">:</span><span class="w">       </span><span class="mi">1</span>
+<span class="nl">lmm_layout_gen</span><span class="p">:</span><span class="w">    </span><span class="mi">0</span>
+<span class="nl">lmm_stripe_offset</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span>
+<span class="w">        </span><span class="n">obdidx</span><span class="w">           </span><span class="n">objid</span><span class="w">           </span><span class="n">objid</span><span class="w">           </span><span class="k">group</span>
+<span class="w">            </span><span class="mi">10</span><span class="w">         </span><span class="mi">3024641</span><span class="w">       </span><span class="mh">0x2e2701</span><span class="w">                </span><span class="mi">0</span>
+<span class="w">            </span><span class="mi">11</span><span class="w">         </span><span class="mi">3026034</span><span class="w">       </span><span class="mh">0x2e2c72</span><span class="w">                </span><span class="mi">0</span>
+<span class="w">            </span><span class="mi">12</span><span class="w">         </span><span class="mi">3021952</span><span class="w">       </span><span class="mh">0x2e1c80</span><span class="w">                </span><span class="mi">0</span>
+<span class="w">            </span><span class="mi">13</span><span class="w">         </span><span class="mi">3019616</span><span class="w">       </span><span class="mh">0x2e1360</span><span class="w">                </span><span class="mi">0</span>
 </code></pre></div>
 
 <p>Example) Display stripe settings #2. (Displaying the stripe pattern of a directory.)</p>
-<div class="codehilite"><pre><span></span><code><span class="o">[</span><span class="n">username@es1 work</span><span class="o">]</span><span class="err">$</span><span class="w"> </span><span class="n">lfs</span><span class="w"> </span><span class="n">getstripe</span><span class="w"> </span><span class="n">stripe</span><span class="o">-</span><span class="n">dir</span><span class="w"></span>
-<span class="n">stripe</span><span class="o">-</span><span class="n">dir</span><span class="w"></span>
-<span class="nl">stripe_count</span><span class="p">:</span><span class="w">  </span><span class="mi">4</span><span class="w"> </span><span class="nl">stripe_size</span><span class="p">:</span><span class="w">   </span><span class="mi">1048576</span><span class="w"> </span><span class="nl">stripe_offset</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="w"></span>
+<div class="codehilite"><pre><span></span><code><span class="o">[</span><span class="n">username@es1 work</span><span class="o">]</span><span class="err">$</span><span class="w"> </span><span class="n">lfs</span><span class="w"> </span><span class="n">getstripe</span><span class="w"> </span><span class="n">stripe</span><span class="o">-</span><span class="n">dir</span>
+<span class="n">stripe</span><span class="o">-</span><span class="n">dir</span>
+<span class="nl">stripe_count</span><span class="p">:</span><span class="w">  </span><span class="mi">4</span><span class="w"> </span><span class="nl">stripe_size</span><span class="p">:</span><span class="w">   </span><span class="mi">1048576</span><span class="w"> </span><span class="nl">stripe_offset</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span>
 </code></pre></div>
 
 <h2 id="group-area">Group Area</h2>
@@ -1371,25 +1371,25 @@ If an attempt is made to create a file that exceeds the limit, an error message 
 You can see how much inodes are currently used for each MDT with the <code>lfs df -i</code>.
 The <code>IUse%</code>entry in the<code>/groups [MDT:?]</code>line in the output of the command is the percentage of the inode used in each MDT.<br>
 In the following example, the inode utilization for MDT:0 is 30%.</p>
-<div class="codehilite"><pre><span></span><code><span class="o">[</span><span class="n">username@es1 ~</span><span class="o">]</span><span class="err">$</span><span class="w"> </span><span class="n">lfs</span><span class="w"> </span><span class="n">df</span><span class="w"> </span><span class="o">-</span><span class="n">i</span><span class="w"> </span><span class="o">/</span><span class="n">groups</span><span class="w"></span>
-<span class="n">UUID</span><span class="w">                      </span><span class="n">Inodes</span><span class="w">       </span><span class="n">IUsed</span><span class="w">       </span><span class="n">IFree</span><span class="w"> </span><span class="n">IUse</span><span class="o">%</span><span class="w"> </span><span class="n">Mounted</span><span class="w"> </span><span class="k">on</span><span class="w"></span>
-<span class="n">groups</span><span class="o">-</span><span class="n">MDT0000_UUID</span><span class="w">   </span><span class="mi">3110850464</span><span class="w">   </span><span class="mi">904313344</span><span class="w">  </span><span class="mi">2206537120</span><span class="w">  </span><span class="mi">30</span><span class="o">%</span><span class="w"> </span><span class="o">/</span><span class="n">groups</span><span class="o">[</span><span class="n">MDT:0</span><span class="o">]</span><span class="w"></span>
-<span class="n">groups</span><span class="o">-</span><span class="n">MDT0001_UUID</span><span class="w">   </span><span class="mi">3110850464</span><span class="w">  </span><span class="mi">2778144306</span><span class="w">   </span><span class="mi">332706158</span><span class="w">  </span><span class="mi">90</span><span class="o">%</span><span class="w"> </span><span class="o">/</span><span class="n">groups</span><span class="o">[</span><span class="n">MDT:1</span><span class="o">]</span><span class="w"></span>
-<span class="n">groups</span><span class="o">-</span><span class="n">MDT0002_UUID</span><span class="w">   </span><span class="mi">3110850464</span><span class="w">   </span><span class="mi">935143862</span><span class="w">  </span><span class="mi">2175706602</span><span class="w">  </span><span class="mi">31</span><span class="o">%</span><span class="w"> </span><span class="o">/</span><span class="n">groups</span><span class="o">[</span><span class="n">MDT:2</span><span class="o">]</span><span class="w"></span>
-<span class="n">groups</span><span class="o">-</span><span class="n">MDT0003_UUID</span><span class="w">   </span><span class="mi">3110850464</span><span class="w">  </span><span class="mi">1356224703</span><span class="w">  </span><span class="mi">1754625761</span><span class="w">  </span><span class="mi">44</span><span class="o">%</span><span class="w"> </span><span class="o">/</span><span class="n">groups</span><span class="o">[</span><span class="n">MDT:3</span><span class="o">]</span><span class="w"></span>
-<span class="n">groups</span><span class="o">-</span><span class="n">MDT0004_UUID</span><span class="w">   </span><span class="mi">3110850464</span><span class="w">   </span><span class="mi">402932004</span><span class="w">  </span><span class="mi">2707918460</span><span class="w">  </span><span class="mi">13</span><span class="o">%</span><span class="w"> </span><span class="o">/</span><span class="n">groups</span><span class="o">[</span><span class="n">MDT:4</span><span class="o">]</span><span class="w"></span>
-<span class="n">groups</span><span class="o">-</span><span class="n">MDT0005_UUID</span><span class="w">   </span><span class="mi">3110850464</span><span class="w">         </span><span class="mi">433</span><span class="w">  </span><span class="mi">3110850031</span><span class="w">   </span><span class="mi">1</span><span class="o">%</span><span class="w"> </span><span class="o">/</span><span class="n">groups</span><span class="o">[</span><span class="n">MDT:5</span><span class="o">]</span><span class="w"></span>
-<span class="p">(</span><span class="n">snip</span><span class="p">)</span><span class="w"></span>
+<div class="codehilite"><pre><span></span><code><span class="o">[</span><span class="n">username@es1 ~</span><span class="o">]</span><span class="err">$</span><span class="w"> </span><span class="n">lfs</span><span class="w"> </span><span class="n">df</span><span class="w"> </span><span class="o">-</span><span class="n">i</span><span class="w"> </span><span class="o">/</span><span class="n">groups</span>
+<span class="n">UUID</span><span class="w">                      </span><span class="n">Inodes</span><span class="w">       </span><span class="n">IUsed</span><span class="w">       </span><span class="n">IFree</span><span class="w"> </span><span class="n">IUse</span><span class="o">%</span><span class="w"> </span><span class="n">Mounted</span><span class="w"> </span><span class="k">on</span>
+<span class="n">groups</span><span class="o">-</span><span class="n">MDT0000_UUID</span><span class="w">   </span><span class="mi">3110850464</span><span class="w">   </span><span class="mi">904313344</span><span class="w">  </span><span class="mi">2206537120</span><span class="w">  </span><span class="mi">30</span><span class="o">%</span><span class="w"> </span><span class="o">/</span><span class="n">groups</span><span class="o">[</span><span class="n">MDT:0</span><span class="o">]</span>
+<span class="n">groups</span><span class="o">-</span><span class="n">MDT0001_UUID</span><span class="w">   </span><span class="mi">3110850464</span><span class="w">  </span><span class="mi">2778144306</span><span class="w">   </span><span class="mi">332706158</span><span class="w">  </span><span class="mi">90</span><span class="o">%</span><span class="w"> </span><span class="o">/</span><span class="n">groups</span><span class="o">[</span><span class="n">MDT:1</span><span class="o">]</span>
+<span class="n">groups</span><span class="o">-</span><span class="n">MDT0002_UUID</span><span class="w">   </span><span class="mi">3110850464</span><span class="w">   </span><span class="mi">935143862</span><span class="w">  </span><span class="mi">2175706602</span><span class="w">  </span><span class="mi">31</span><span class="o">%</span><span class="w"> </span><span class="o">/</span><span class="n">groups</span><span class="o">[</span><span class="n">MDT:2</span><span class="o">]</span>
+<span class="n">groups</span><span class="o">-</span><span class="n">MDT0003_UUID</span><span class="w">   </span><span class="mi">3110850464</span><span class="w">  </span><span class="mi">1356224703</span><span class="w">  </span><span class="mi">1754625761</span><span class="w">  </span><span class="mi">44</span><span class="o">%</span><span class="w"> </span><span class="o">/</span><span class="n">groups</span><span class="o">[</span><span class="n">MDT:3</span><span class="o">]</span>
+<span class="n">groups</span><span class="o">-</span><span class="n">MDT0004_UUID</span><span class="w">   </span><span class="mi">3110850464</span><span class="w">   </span><span class="mi">402932004</span><span class="w">  </span><span class="mi">2707918460</span><span class="w">  </span><span class="mi">13</span><span class="o">%</span><span class="w"> </span><span class="o">/</span><span class="n">groups</span><span class="o">[</span><span class="n">MDT:4</span><span class="o">]</span>
+<span class="n">groups</span><span class="o">-</span><span class="n">MDT0005_UUID</span><span class="w">   </span><span class="mi">3110850464</span><span class="w">         </span><span class="mi">433</span><span class="w">  </span><span class="mi">3110850031</span><span class="w">   </span><span class="mi">1</span><span class="o">%</span><span class="w"> </span><span class="o">/</span><span class="n">groups</span><span class="o">[</span><span class="n">MDT:5</span><span class="o">]</span>
+<span class="p">(</span><span class="n">snip</span><span class="p">)</span>
 </code></pre></div>
 
 <p>You can check MDT No. used by your ABCI group with the following command.</p>
-<div class="codehilite"><pre><span></span><code><span class="o">[</span><span class="n">username@es1 ~</span><span class="o">]</span><span class="err">$</span><span class="w"> </span><span class="n">ls</span><span class="w"> </span><span class="o">-</span><span class="n">d</span><span class="w"> </span><span class="o">/</span><span class="n">groups</span><span class="o">/</span><span class="vm">?</span><span class="o">/</span><span class="p">(</span><span class="n">ABCI</span><span class="w"> </span><span class="k">group</span><span class="w"> </span><span class="n">name</span><span class="p">)</span><span class="w"></span>
-<span class="o">/</span><span class="n">groups</span><span class="o">/</span><span class="p">(</span><span class="n">MDT</span><span class="w"> </span><span class="k">No</span><span class="p">.)</span><span class="o">/</span><span class="p">(</span><span class="n">ABCI</span><span class="w"> </span><span class="k">group</span><span class="w"> </span><span class="n">name</span><span class="p">)</span><span class="w"></span>
+<div class="codehilite"><pre><span></span><code><span class="o">[</span><span class="n">username@es1 ~</span><span class="o">]</span><span class="err">$</span><span class="w"> </span><span class="n">ls</span><span class="w"> </span><span class="o">-</span><span class="n">d</span><span class="w"> </span><span class="o">/</span><span class="n">groups</span><span class="o">/</span><span class="vm">?</span><span class="o">/</span><span class="p">(</span><span class="n">ABCI</span><span class="w"> </span><span class="k">group</span><span class="w"> </span><span class="n">name</span><span class="p">)</span>
+<span class="o">/</span><span class="n">groups</span><span class="o">/</span><span class="p">(</span><span class="n">MDT</span><span class="w"> </span><span class="k">No</span><span class="p">.)</span><span class="o">/</span><span class="p">(</span><span class="n">ABCI</span><span class="w"> </span><span class="k">group</span><span class="w"> </span><span class="n">name</span><span class="p">)</span>
 </code></pre></div>
 
 <p>In the following example, the ABCI group uses MDT:0.</p>
-<div class="codehilite"><pre><span></span><code><span class="o">[</span><span class="n">username@es1 ~</span><span class="o">]</span><span class="err">$</span><span class="w"> </span><span class="n">ls</span><span class="w"> </span><span class="o">-</span><span class="n">d</span><span class="w"> </span><span class="o">/</span><span class="n">groups</span><span class="o">/</span><span class="vm">?</span><span class="o">/</span><span class="n">gaa00000</span><span class="w"></span>
-<span class="o">/</span><span class="n">groups</span><span class="o">/</span><span class="mi">0</span><span class="o">/</span><span class="n">gaa00000</span><span class="w"></span>
+<div class="codehilite"><pre><span></span><code><span class="o">[</span><span class="n">username@es1 ~</span><span class="o">]</span><span class="err">$</span><span class="w"> </span><span class="n">ls</span><span class="w"> </span><span class="o">-</span><span class="n">d</span><span class="w"> </span><span class="o">/</span><span class="n">groups</span><span class="o">/</span><span class="vm">?</span><span class="o">/</span><span class="n">gaa00000</span>
+<span class="o">/</span><span class="n">groups</span><span class="o">/</span><span class="mi">0</span><span class="o">/</span><span class="n">gaa00000</span>
 </code></pre></div>
 
 <h2 id="scratch-area">Global scratch area</h2>
@@ -1415,40 +1415,40 @@ The first candidate to be deleted is the one whose last access time is older tha
 <p>Files and directories under the global scratch area are selected as candidates for deletion based on the last access time and creation date. However, you cannot check the creation date of files and directories with the ls command.</p>
 <p>We have prepared the <code>show_scratch</code> command to display the creation date of files and directories under the global scratch area. To check whether the file created in the global scratch area is a candidate for deletion, use the <code>show_scratch</code> command.</p>
 <p>Example) Display creation date.</p>
-<div class="codehilite"><pre><span></span><code><span class="o">[</span><span class="n">username@es1 ~</span><span class="o">]</span><span class="err">$</span><span class="w"> </span><span class="n">show_scratch</span><span class="w"></span>
-<span class="w">                                                                     </span><span class="k">Last</span><span class="w"> </span><span class="nl">Updated</span><span class="p">:</span><span class="w"> </span><span class="mi">2022</span><span class="o">/</span><span class="mi">01</span><span class="o">/</span><span class="mi">01</span><span class="w"> </span><span class="mi">00</span><span class="err">:</span><span class="mi">05</span><span class="w"></span>
-<span class="n">Directory</span><span class="o">/</span><span class="k">File</span><span class="w">                                     </span><span class="n">created_date</span><span class="w">        </span><span class="n">valid_date</span><span class="w">    </span><span class="n">remained</span><span class="p">(</span><span class="n">days</span><span class="p">)</span><span class="w"></span>
-<span class="o">/</span><span class="n">scratch</span><span class="o">/</span><span class="n">username</span><span class="o">/</span><span class="n">dir1</span><span class="w">                               </span><span class="mi">2021</span><span class="o">/</span><span class="mi">12</span><span class="o">/</span><span class="mi">17</span><span class="w">        </span><span class="mi">2022</span><span class="o">/</span><span class="mi">01</span><span class="o">/</span><span class="mi">26</span><span class="w">                </span><span class="mi">25</span><span class="w"></span>
-<span class="o">/</span><span class="n">scratch</span><span class="o">/</span><span class="n">username</span><span class="o">/</span><span class="n">dir2</span><span class="w">                               </span><span class="mi">2021</span><span class="o">/</span><span class="mi">12</span><span class="o">/</span><span class="mi">18</span><span class="w">        </span><span class="mi">2022</span><span class="o">/</span><span class="mi">01</span><span class="o">/</span><span class="mi">27</span><span class="w">                </span><span class="mi">26</span><span class="w"></span>
-<span class="o">/</span><span class="n">scratch</span><span class="o">/</span><span class="n">username</span><span class="o">/</span><span class="n">file1</span><span class="w">                              </span><span class="mi">2021</span><span class="o">/</span><span class="mi">12</span><span class="o">/</span><span class="mi">19</span><span class="w">        </span><span class="mi">2022</span><span class="o">/</span><span class="mi">01</span><span class="o">/</span><span class="mi">28</span><span class="w">                </span><span class="mi">27</span><span class="w"></span>
-<span class="o">/</span><span class="n">scratch</span><span class="o">/</span><span class="n">username</span><span class="o">/</span><span class="n">file2</span><span class="w">                              </span><span class="mi">2021</span><span class="o">/</span><span class="mi">11</span><span class="o">/</span><span class="mi">20</span><span class="w">        </span><span class="mi">2021</span><span class="o">/</span><span class="mi">12</span><span class="o">/</span><span class="mi">30</span><span class="w">                 </span><span class="mi">0</span><span class="w"></span>
-<span class="n">Directories</span><span class="w"> </span><span class="ow">and</span><span class="w"> </span><span class="n">files</span><span class="w"> </span><span class="n">that</span><span class="w"> </span><span class="n">have</span><span class="w"> </span><span class="n">expired</span><span class="w"> </span><span class="n">will</span><span class="w"> </span><span class="n">be</span><span class="w"> </span><span class="n">deleted</span><span class="w"> </span><span class="n">soon</span><span class="p">.</span><span class="w"></span>
-<span class="k">If</span><span class="w"> </span><span class="n">necessary</span><span class="p">,</span><span class="w"> </span><span class="n">please</span><span class="w"> </span><span class="k">backup</span><span class="p">.</span><span class="w"></span>
+<div class="codehilite"><pre><span></span><code><span class="o">[</span><span class="n">username@es1 ~</span><span class="o">]</span><span class="err">$</span><span class="w"> </span><span class="n">show_scratch</span>
+<span class="w">                                                                     </span><span class="k">Last</span><span class="w"> </span><span class="nl">Updated</span><span class="p">:</span><span class="w"> </span><span class="mi">2022</span><span class="o">/</span><span class="mi">01</span><span class="o">/</span><span class="mi">01</span><span class="w"> </span><span class="mi">00</span><span class="err">:</span><span class="mi">05</span>
+<span class="n">Directory</span><span class="o">/</span><span class="k">File</span><span class="w">                                     </span><span class="n">created_date</span><span class="w">        </span><span class="n">valid_date</span><span class="w">    </span><span class="n">remained</span><span class="p">(</span><span class="n">days</span><span class="p">)</span>
+<span class="o">/</span><span class="n">scratch</span><span class="o">/</span><span class="n">username</span><span class="o">/</span><span class="n">dir1</span><span class="w">                               </span><span class="mi">2021</span><span class="o">/</span><span class="mi">12</span><span class="o">/</span><span class="mi">17</span><span class="w">        </span><span class="mi">2022</span><span class="o">/</span><span class="mi">01</span><span class="o">/</span><span class="mi">26</span><span class="w">                </span><span class="mi">25</span>
+<span class="o">/</span><span class="n">scratch</span><span class="o">/</span><span class="n">username</span><span class="o">/</span><span class="n">dir2</span><span class="w">                               </span><span class="mi">2021</span><span class="o">/</span><span class="mi">12</span><span class="o">/</span><span class="mi">18</span><span class="w">        </span><span class="mi">2022</span><span class="o">/</span><span class="mi">01</span><span class="o">/</span><span class="mi">27</span><span class="w">                </span><span class="mi">26</span>
+<span class="o">/</span><span class="n">scratch</span><span class="o">/</span><span class="n">username</span><span class="o">/</span><span class="n">file1</span><span class="w">                              </span><span class="mi">2021</span><span class="o">/</span><span class="mi">12</span><span class="o">/</span><span class="mi">19</span><span class="w">        </span><span class="mi">2022</span><span class="o">/</span><span class="mi">01</span><span class="o">/</span><span class="mi">28</span><span class="w">                </span><span class="mi">27</span>
+<span class="o">/</span><span class="n">scratch</span><span class="o">/</span><span class="n">username</span><span class="o">/</span><span class="n">file2</span><span class="w">                              </span><span class="mi">2021</span><span class="o">/</span><span class="mi">11</span><span class="o">/</span><span class="mi">20</span><span class="w">        </span><span class="mi">2021</span><span class="o">/</span><span class="mi">12</span><span class="o">/</span><span class="mi">30</span><span class="w">                 </span><span class="mi">0</span>
+<span class="n">Directories</span><span class="w"> </span><span class="ow">and</span><span class="w"> </span><span class="n">files</span><span class="w"> </span><span class="n">that</span><span class="w"> </span><span class="n">have</span><span class="w"> </span><span class="n">expired</span><span class="w"> </span><span class="n">will</span><span class="w"> </span><span class="n">be</span><span class="w"> </span><span class="n">deleted</span><span class="w"> </span><span class="n">soon</span><span class="p">.</span>
+<span class="k">If</span><span class="w"> </span><span class="n">necessary</span><span class="p">,</span><span class="w"> </span><span class="n">please</span><span class="w"> </span><span class="k">backup</span><span class="p">.</span>
 </code></pre></div>
 
 <table>
 <thead>
 <tr>
-<th align="left">Item</th>
-<th align="left">Description</th>
+<th style="text-align: left;">Item</th>
+<th style="text-align: left;">Description</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td align="left">Directory/File</td>
-<td align="left">files and directories name</td>
+<td style="text-align: left;">Directory/File</td>
+<td style="text-align: left;">files and directories name</td>
 </tr>
 <tr>
-<td align="left">created_date</td>
-<td align="left">creation date of files and directories</td>
+<td style="text-align: left;">created_date</td>
+<td style="text-align: left;">creation date of files and directories</td>
 </tr>
 <tr>
-<td align="left">valid_date</td>
-<td align="left">valid date (The date of the 40th day from the creation date. After this date, it will be a candidate for deletion.)</td>
+<td style="text-align: left;">valid_date</td>
+<td style="text-align: left;">valid date (The date of the 40th day from the creation date. After this date, it will be a candidate for deletion.)</td>
 </tr>
 <tr>
-<td align="left">remained(days)</td>
-<td align="left">remaining days until it becomes a candidate for deletion</td>
+<td style="text-align: left;">remained(days)</td>
+<td style="text-align: left;">remaining days until it becomes a candidate for deletion</td>
 </tr>
 </tbody>
 </table>
@@ -1466,24 +1466,24 @@ Note that the DoM and Stripe features are disabled by default.</p>
 </div>
 <h4 id="how-to-set-up-dom">How to configure DoM Features</h4>
 <p>Use the <code>lfs setstripe</code> command to configure DoM features.</p>
-<div class="codehilite"><pre><span></span><code><span class="err">$</span><span class="w"> </span><span class="n">lfs</span><span class="w"> </span><span class="n">setstripe</span><span class="w"> </span><span class="o">[</span><span class="n">options</span><span class="o">]</span><span class="w"> </span><span class="o">&lt;</span><span class="n">dirname</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="n">filename</span><span class="o">&gt;</span><span class="w"></span>
+<div class="codehilite"><pre><span></span><code><span class="err">$</span><span class="w"> </span><span class="n">lfs</span><span class="w"> </span><span class="n">setstripe</span><span class="w"> </span><span class="o">[</span><span class="n">options</span><span class="o">]</span><span class="w"> </span><span class="o">&lt;</span><span class="n">dirname</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="n">filename</span><span class="o">&gt;</span>
 </code></pre></div>
 
 <table>
 <thead>
 <tr>
-<th align="center">Option</th>
-<th align="left">Description</th>
+<th style="text-align: center;">Option</th>
+<th style="text-align: left;">Description</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td align="center">-E</td>
-<td align="left">Specify the end offset of each component. -E #k, -E #m, -E #g allows you to set the size in KiB, MiB and GiB. Also, -1 means eof.</td>
+<td style="text-align: center;">-E</td>
+<td style="text-align: left;">Specify the end offset of each component. -E #k, -E #m, -E #g allows you to set the size in KiB, MiB and GiB. Also, -1 means eof.</td>
 </tr>
 <tr>
-<td align="center">-L</td>
-<td align="left">Set Layout Type. Specifying <code>mdt</code> enables DoM.</td>
+<td style="text-align: center;">-L</td>
+<td style="text-align: left;">Set Layout Type. Specifying <code>mdt</code> enables DoM.</td>
 </tr>
 </tbody>
 </table>
@@ -1493,19 +1493,19 @@ Note that the DoM and Stripe features are disabled by default.</p>
 </div>
 <p>Example）Create a new file with DoM enabled<br>
 The first 64KiB of the file data is placed on the MDT and rest of file is placed  on  OST(s) with default striping.</p>
-<div class="codehilite"><pre><span></span><code><span class="o">[</span><span class="n">username@es1 work</span><span class="o">]</span><span class="err">$</span><span class="w"> </span><span class="n">lfs</span><span class="w"> </span><span class="n">setstripe</span><span class="w"> </span><span class="o">-</span><span class="n">E</span><span class="w"> </span><span class="mi">64</span><span class="n">k</span><span class="w"> </span><span class="o">-</span><span class="n">L</span><span class="w"> </span><span class="n">mdt</span><span class="w"> </span><span class="o">-</span><span class="n">E</span><span class="w"> </span><span class="o">-</span><span class="mi">1</span><span class="w"> </span><span class="n">dom</span><span class="o">-</span><span class="k">file</span><span class="w"></span>
-<span class="o">[</span><span class="n">username@es1 work</span><span class="o">]</span><span class="err">$</span><span class="w"> </span><span class="n">ls</span><span class="w"></span>
-<span class="n">dom</span><span class="o">-</span><span class="k">file</span><span class="w"></span>
+<div class="codehilite"><pre><span></span><code><span class="o">[</span><span class="n">username@es1 work</span><span class="o">]</span><span class="err">$</span><span class="w"> </span><span class="n">lfs</span><span class="w"> </span><span class="n">setstripe</span><span class="w"> </span><span class="o">-</span><span class="n">E</span><span class="w"> </span><span class="mi">64</span><span class="n">k</span><span class="w"> </span><span class="o">-</span><span class="n">L</span><span class="w"> </span><span class="n">mdt</span><span class="w"> </span><span class="o">-</span><span class="n">E</span><span class="w"> </span><span class="o">-</span><span class="mi">1</span><span class="w"> </span><span class="n">dom</span><span class="o">-</span><span class="k">file</span>
+<span class="o">[</span><span class="n">username@es1 work</span><span class="o">]</span><span class="err">$</span><span class="w"> </span><span class="n">ls</span>
+<span class="n">dom</span><span class="o">-</span><span class="k">file</span>
 </code></pre></div>
 
 <p>Example）Configure DoM features for the directory</p>
-<div class="codehilite"><pre><span></span><code><span class="o">[</span><span class="n">username@es1 work</span><span class="o">]</span><span class="err">$</span><span class="w"> </span><span class="n">mkdir</span><span class="w"> </span><span class="n">dom</span><span class="o">-</span><span class="n">dir</span><span class="w"></span>
-<span class="o">[</span><span class="n">username@es1 work</span><span class="o">]</span><span class="err">$</span><span class="w"> </span><span class="n">lfs</span><span class="w"> </span><span class="n">setstripe</span><span class="w"> </span><span class="o">-</span><span class="n">E</span><span class="w"> </span><span class="mi">64</span><span class="n">k</span><span class="w"> </span><span class="o">-</span><span class="n">L</span><span class="w"> </span><span class="n">mdt</span><span class="w"> </span><span class="o">-</span><span class="n">E</span><span class="w"> </span><span class="o">-</span><span class="mi">1</span><span class="w"> </span><span class="n">dom</span><span class="o">-</span><span class="n">dir</span><span class="w"></span>
+<div class="codehilite"><pre><span></span><code><span class="o">[</span><span class="n">username@es1 work</span><span class="o">]</span><span class="err">$</span><span class="w"> </span><span class="n">mkdir</span><span class="w"> </span><span class="n">dom</span><span class="o">-</span><span class="n">dir</span>
+<span class="o">[</span><span class="n">username@es1 work</span><span class="o">]</span><span class="err">$</span><span class="w"> </span><span class="n">lfs</span><span class="w"> </span><span class="n">setstripe</span><span class="w"> </span><span class="o">-</span><span class="n">E</span><span class="w"> </span><span class="mi">64</span><span class="n">k</span><span class="w"> </span><span class="o">-</span><span class="n">L</span><span class="w"> </span><span class="n">mdt</span><span class="w"> </span><span class="o">-</span><span class="n">E</span><span class="w"> </span><span class="o">-</span><span class="mi">1</span><span class="w"> </span><span class="n">dom</span><span class="o">-</span><span class="n">dir</span>
 </code></pre></div>
 
 <p>Example) Checking if the file is DoM enabled</p>
-<div class="codehilite"><pre><span></span><code><span class="o">[</span><span class="n">username@es1 work</span><span class="o">]</span><span class="err">$</span><span class="w"> </span><span class="n">lfs</span><span class="w"> </span><span class="n">getstripe</span><span class="w"> </span><span class="o">-</span><span class="n">I1</span><span class="w"> </span><span class="o">-</span><span class="n">L</span><span class="w"> </span><span class="n">dom</span><span class="o">-</span><span class="k">file</span><span class="w"></span>
-<span class="n">mdt</span><span class="w"></span>
+<div class="codehilite"><pre><span></span><code><span class="o">[</span><span class="n">username@es1 work</span><span class="o">]</span><span class="err">$</span><span class="w"> </span><span class="n">lfs</span><span class="w"> </span><span class="n">getstripe</span><span class="w"> </span><span class="o">-</span><span class="n">I1</span><span class="w"> </span><span class="o">-</span><span class="n">L</span><span class="w"> </span><span class="n">dom</span><span class="o">-</span><span class="k">file</span>
+<span class="n">mdt</span>
 </code></pre></div>
 
 <p>If you see <code>mdt</code>, the DoM feature is enabled. It is not valid for any other display.</p>
@@ -1515,14 +1515,14 @@ The first 64KiB of the file data is placed on the MDT and rest of file is placed
 </div>
 <p>You can also configure <a href="./#advanced-option-file-striping">File Striping</a> with the DoM feature.</p>
 <p>Example) Create a new file with DoM layout and a specific striping pattern for the rest data placed on OST(s).</p>
-<div class="codehilite"><pre><span></span><code><span class="o">[</span><span class="n">username@es1 work</span><span class="o">]</span><span class="err">$</span><span class="w"> </span><span class="n">lfs</span><span class="w"> </span><span class="n">setstripe</span><span class="w"> </span><span class="o">-</span><span class="n">E</span><span class="w"> </span><span class="mi">64</span><span class="n">k</span><span class="w"> </span><span class="o">-</span><span class="n">L</span><span class="w"> </span><span class="n">mdt</span><span class="w"> </span><span class="o">-</span><span class="n">E</span><span class="w"> </span><span class="o">-</span><span class="mi">1</span><span class="w"> </span><span class="o">-</span><span class="n">S</span><span class="w"> </span><span class="mi">1</span><span class="n">m</span><span class="w"> </span><span class="o">-</span><span class="n">i</span><span class="w"> </span><span class="o">-</span><span class="mi">1</span><span class="w"> </span><span class="o">-</span><span class="n">c</span><span class="w"> </span><span class="mi">4</span><span class="w"> </span><span class="n">dom</span><span class="o">-</span><span class="n">stripe</span><span class="o">-</span><span class="k">file</span><span class="w"></span>
-<span class="o">[</span><span class="n">username@es1 work</span><span class="o">]</span><span class="err">$</span><span class="w"> </span><span class="n">ls</span><span class="w"></span>
-<span class="n">dom</span><span class="o">-</span><span class="n">stripe</span><span class="o">-</span><span class="k">file</span><span class="w"></span>
+<div class="codehilite"><pre><span></span><code><span class="o">[</span><span class="n">username@es1 work</span><span class="o">]</span><span class="err">$</span><span class="w"> </span><span class="n">lfs</span><span class="w"> </span><span class="n">setstripe</span><span class="w"> </span><span class="o">-</span><span class="n">E</span><span class="w"> </span><span class="mi">64</span><span class="n">k</span><span class="w"> </span><span class="o">-</span><span class="n">L</span><span class="w"> </span><span class="n">mdt</span><span class="w"> </span><span class="o">-</span><span class="n">E</span><span class="w"> </span><span class="o">-</span><span class="mi">1</span><span class="w"> </span><span class="o">-</span><span class="n">S</span><span class="w"> </span><span class="mi">1</span><span class="n">m</span><span class="w"> </span><span class="o">-</span><span class="n">i</span><span class="w"> </span><span class="o">-</span><span class="mi">1</span><span class="w"> </span><span class="o">-</span><span class="n">c</span><span class="w"> </span><span class="mi">4</span><span class="w"> </span><span class="n">dom</span><span class="o">-</span><span class="n">stripe</span><span class="o">-</span><span class="k">file</span>
+<span class="o">[</span><span class="n">username@es1 work</span><span class="o">]</span><span class="err">$</span><span class="w"> </span><span class="n">ls</span>
+<span class="n">dom</span><span class="o">-</span><span class="n">stripe</span><span class="o">-</span><span class="k">file</span>
 </code></pre></div>
 
 <p>Example) Enable the DoM feature and set a striping pattern (for OST(s)) of the directory</p>
-<div class="codehilite"><pre><span></span><code><span class="o">[</span><span class="n">username@es1 work</span><span class="o">]</span><span class="err">$</span><span class="w"> </span><span class="n">mkdir</span><span class="w"> </span><span class="n">dom</span><span class="o">-</span><span class="n">stripe</span><span class="o">-</span><span class="n">dir</span><span class="w"></span>
-<span class="o">[</span><span class="n">username@es1 work</span><span class="o">]</span><span class="err">$</span><span class="w"> </span><span class="n">lfs</span><span class="w"> </span><span class="n">setstripe</span><span class="w"> </span><span class="o">-</span><span class="n">E</span><span class="w"> </span><span class="mi">64</span><span class="n">k</span><span class="w"> </span><span class="o">-</span><span class="n">L</span><span class="w"> </span><span class="n">mdt</span><span class="w"> </span><span class="o">-</span><span class="n">E</span><span class="w"> </span><span class="o">-</span><span class="mi">1</span><span class="w"> </span><span class="o">-</span><span class="n">S</span><span class="w"> </span><span class="mi">1</span><span class="n">m</span><span class="w"> </span><span class="o">-</span><span class="n">i</span><span class="w"> </span><span class="o">-</span><span class="mi">1</span><span class="w"> </span><span class="o">-</span><span class="n">c</span><span class="w"> </span><span class="mi">4</span><span class="w"> </span><span class="n">dom</span><span class="o">-</span><span class="n">stripe</span><span class="o">-</span><span class="n">dir</span><span class="w"></span>
+<div class="codehilite"><pre><span></span><code><span class="o">[</span><span class="n">username@es1 work</span><span class="o">]</span><span class="err">$</span><span class="w"> </span><span class="n">mkdir</span><span class="w"> </span><span class="n">dom</span><span class="o">-</span><span class="n">stripe</span><span class="o">-</span><span class="n">dir</span>
+<span class="o">[</span><span class="n">username@es1 work</span><span class="o">]</span><span class="err">$</span><span class="w"> </span><span class="n">lfs</span><span class="w"> </span><span class="n">setstripe</span><span class="w"> </span><span class="o">-</span><span class="n">E</span><span class="w"> </span><span class="mi">64</span><span class="n">k</span><span class="w"> </span><span class="o">-</span><span class="n">L</span><span class="w"> </span><span class="n">mdt</span><span class="w"> </span><span class="o">-</span><span class="n">E</span><span class="w"> </span><span class="o">-</span><span class="mi">1</span><span class="w"> </span><span class="o">-</span><span class="n">S</span><span class="w"> </span><span class="mi">1</span><span class="n">m</span><span class="w"> </span><span class="o">-</span><span class="n">i</span><span class="w"> </span><span class="o">-</span><span class="mi">1</span><span class="w"> </span><span class="o">-</span><span class="n">c</span><span class="w"> </span><span class="mi">4</span><span class="w"> </span><span class="n">dom</span><span class="o">-</span><span class="n">stripe</span><span class="o">-</span><span class="n">dir</span>
 </code></pre></div>
 
 <h2 id="local-storage">Local Storage</h2>
@@ -1545,18 +1545,18 @@ The local storage path is different for each job and you can access to local sto
 <span class="c1">#$-l rt_F=1</span>
 <span class="c1">#$-cwd</span>
 
-<span class="nb">echo</span> test1 &gt; <span class="nv">$SGE_LOCALDIR</span>/foo.txt
-<span class="nb">echo</span> test2 &gt; <span class="nv">$SGE_LOCALDIR</span>/bar.txt
-cp -rp <span class="nv">$SGE_LOCALDIR</span>/foo.txt <span class="nv">$HOME</span>/test/foo.txt
+<span class="nb">echo</span><span class="w"> </span>test1<span class="w"> </span>&gt;<span class="w"> </span><span class="nv">$SGE_LOCALDIR</span>/foo.txt
+<span class="nb">echo</span><span class="w"> </span>test2<span class="w"> </span>&gt;<span class="w"> </span><span class="nv">$SGE_LOCALDIR</span>/bar.txt
+cp<span class="w"> </span>-rp<span class="w"> </span><span class="nv">$SGE_LOCALDIR</span>/foo.txt<span class="w"> </span><span class="nv">$HOME</span>/test/foo.txt
 </code></pre></div>
 
 <p>Example) Submitting a job</p>
-<div class="codehilite"><pre><span></span><code><span class="o">[</span><span class="n">username@es1 ~</span><span class="o">]</span><span class="err">$</span><span class="w"> </span><span class="n">qsub</span><span class="w"> </span><span class="o">-</span><span class="n">g</span><span class="w"> </span><span class="n">grpname</span><span class="w"> </span><span class="n">use_local_storage</span><span class="p">.</span><span class="n">sh</span><span class="w"></span>
+<div class="codehilite"><pre><span></span><code><span class="o">[</span><span class="n">username@es1 ~</span><span class="o">]</span><span class="err">$</span><span class="w"> </span><span class="n">qsub</span><span class="w"> </span><span class="o">-</span><span class="n">g</span><span class="w"> </span><span class="n">grpname</span><span class="w"> </span><span class="n">use_local_storage</span><span class="p">.</span><span class="n">sh</span>
 </code></pre></div>
 
 <p>Example) Status after execution of use_local_storage.sh</p>
-<div class="codehilite"><pre><span></span><code><span class="p">[</span><span class="n">username</span><span class="o">@</span><span class="n">es1</span> <span class="o">~</span><span class="p">]</span><span class="o">$</span> <span class="n">ls</span> <span class="o">$</span><span class="n">HOME</span><span class="o">/</span><span class="n">test</span><span class="o">/</span>
-<span class="n">foo.txt</span>    <span class="o">&lt;-</span> <span class="n">The</span> <span class="n">file</span> <span class="n">remain</span> <span class="n">only</span> <span class="n">when</span> <span class="n">it</span> <span class="n">is</span> <span class="n">copied</span> <span class="n">explicitly</span> <span class="n">in</span> <span class="n">script.</span>
+<div class="codehilite"><pre><span></span><code><span class="p">[</span><span class="n">username</span><span class="o">@</span><span class="n">es1</span><span class="w"> </span><span class="o">~</span><span class="p">]</span><span class="o">$</span><span class="w"> </span><span class="n">ls</span><span class="w"> </span><span class="o">$</span><span class="n">HOME</span><span class="o">/</span><span class="n">test</span><span class="o">/</span>
+<span class="n">foo.txt</span><span class="w">    </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">The</span><span class="w"> </span><span class="n">file</span><span class="w"> </span><span class="n">remain</span><span class="w"> </span><span class="n">only</span><span class="w"> </span><span class="n">when</span><span class="w"> </span><span class="n">it</span><span class="w"> </span><span class="n">is</span><span class="w"> </span><span class="n">copied</span><span class="w"> </span><span class="n">explicitly</span><span class="w"> </span><span class="n">in</span><span class="w"> </span><span class="n">script.</span>
 </code></pre></div>
 
 <div class="admonition warning">
@@ -1577,12 +1577,12 @@ The persistent local storage can be accessed by using <a href="../job-execution/
 <span class="c1">#$-l rt_F=1</span>
 <span class="c1">#$-cwd</span>
 
-<span class="nb">echo</span> test1 &gt; <span class="nv">$SGE_ARDIR</span>/foo.txt
-<span class="nb">echo</span> test2 &gt; <span class="nv">$SGE_ARDIR</span>/bar.txt
+<span class="nb">echo</span><span class="w"> </span>test1<span class="w"> </span>&gt;<span class="w"> </span><span class="nv">$SGE_ARDIR</span>/foo.txt
+<span class="nb">echo</span><span class="w"> </span>test2<span class="w"> </span>&gt;<span class="w"> </span><span class="nv">$SGE_ARDIR</span>/bar.txt
 </code></pre></div>
 
 <p>Example) Submitting a job</p>
-<div class="codehilite"><pre><span></span><code><span class="o">[</span><span class="n">username@es1 ~</span><span class="o">]</span><span class="err">$</span><span class="w"> </span><span class="n">qsub</span><span class="w"> </span><span class="o">-</span><span class="n">g</span><span class="w"> </span><span class="n">grpname</span><span class="w"> </span><span class="o">-</span><span class="n">ar</span><span class="w"> </span><span class="mi">12345</span><span class="w"> </span><span class="n">use_reserved_storage_write</span><span class="p">.</span><span class="n">sh</span><span class="w"></span>
+<div class="codehilite"><pre><span></span><code><span class="o">[</span><span class="n">username@es1 ~</span><span class="o">]</span><span class="err">$</span><span class="w"> </span><span class="n">qsub</span><span class="w"> </span><span class="o">-</span><span class="n">g</span><span class="w"> </span><span class="n">grpname</span><span class="w"> </span><span class="o">-</span><span class="n">ar</span><span class="w"> </span><span class="mi">12345</span><span class="w"> </span><span class="n">use_reserved_storage_write</span><span class="p">.</span><span class="n">sh</span>
 </code></pre></div>
 
 <p>Example) sample of job script (use_reserved_storage_read.sh)</p>
@@ -1591,12 +1591,12 @@ The persistent local storage can be accessed by using <a href="../job-execution/
 <span class="c1">#$-l rt_F=1</span>
 <span class="c1">#$-cwd</span>
 
-cat <span class="nv">$SGE_ARDIR</span>/foo.txt
-cat <span class="nv">$SGE_ARDIR</span>/bar.txt
+cat<span class="w"> </span><span class="nv">$SGE_ARDIR</span>/foo.txt
+cat<span class="w"> </span><span class="nv">$SGE_ARDIR</span>/bar.txt
 </code></pre></div>
 
 <p>Example) Submitting a job</p>
-<div class="codehilite"><pre><span></span><code><span class="o">[</span><span class="n">username@es1 ~</span><span class="o">]</span><span class="err">$</span><span class="w"> </span><span class="n">qsub</span><span class="w"> </span><span class="o">-</span><span class="n">g</span><span class="w"> </span><span class="n">grpname</span><span class="w"> </span><span class="o">-</span><span class="n">ar</span><span class="w"> </span><span class="mi">12345</span><span class="w"> </span><span class="n">use_reserved_storage_read</span><span class="p">.</span><span class="n">sh</span><span class="w"></span>
+<div class="codehilite"><pre><span></span><code><span class="o">[</span><span class="n">username@es1 ~</span><span class="o">]</span><span class="err">$</span><span class="w"> </span><span class="n">qsub</span><span class="w"> </span><span class="o">-</span><span class="n">g</span><span class="w"> </span><span class="n">grpname</span><span class="w"> </span><span class="o">-</span><span class="n">ar</span><span class="w"> </span><span class="mi">12345</span><span class="w"> </span><span class="n">use_reserved_storage_read</span><span class="p">.</span><span class="n">sh</span>
 </code></pre></div>
 
 <div class="admonition warning">
@@ -1621,18 +1621,18 @@ And you need to specify <code>-l rt_F</code> or <code>-l rt_AF</code> option in 
 <span class="c1">#$-l USE_BEEOND=1</span>
 <span class="c1">#$-cwd</span>
 
-<span class="nb">echo</span> test1 &gt; <span class="nv">$SGE_BEEONDDIR</span>/foo.txt
-<span class="nb">echo</span> test2 &gt; <span class="nv">$SGE_BEEONDDIR</span>/bar.txt
-cp -rp <span class="nv">$SGE_BEEONDDIR</span>/foo.txt <span class="nv">$HOME</span>/test/foo.txt
+<span class="nb">echo</span><span class="w"> </span>test1<span class="w"> </span>&gt;<span class="w"> </span><span class="nv">$SGE_BEEONDDIR</span>/foo.txt
+<span class="nb">echo</span><span class="w"> </span>test2<span class="w"> </span>&gt;<span class="w"> </span><span class="nv">$SGE_BEEONDDIR</span>/bar.txt
+cp<span class="w"> </span>-rp<span class="w"> </span><span class="nv">$SGE_BEEONDDIR</span>/foo.txt<span class="w"> </span><span class="nv">$HOME</span>/test/foo.txt
 </code></pre></div>
 
 <p>Example) Submitting a job</p>
-<div class="codehilite"><pre><span></span><code><span class="o">[</span><span class="n">username@es1 ~</span><span class="o">]</span><span class="err">$</span><span class="w"> </span><span class="n">qsub</span><span class="w"> </span><span class="o">-</span><span class="n">g</span><span class="w"> </span><span class="n">grpname</span><span class="w"> </span><span class="n">use_beeond</span><span class="p">.</span><span class="n">sh</span><span class="w"></span>
+<div class="codehilite"><pre><span></span><code><span class="o">[</span><span class="n">username@es1 ~</span><span class="o">]</span><span class="err">$</span><span class="w"> </span><span class="n">qsub</span><span class="w"> </span><span class="o">-</span><span class="n">g</span><span class="w"> </span><span class="n">grpname</span><span class="w"> </span><span class="n">use_beeond</span><span class="p">.</span><span class="n">sh</span>
 </code></pre></div>
 
 <p>Example) Status after execution of use_beeond.sh</p>
-<div class="codehilite"><pre><span></span><code><span class="p">[</span><span class="n">username</span><span class="o">@</span><span class="n">es1</span> <span class="o">~</span><span class="p">]</span><span class="o">$</span> <span class="n">ls</span> <span class="o">$</span><span class="n">HOME</span><span class="o">/</span><span class="n">test</span><span class="o">/</span>
-<span class="n">foo.txt</span>    <span class="o">&lt;-</span> <span class="n">The</span> <span class="n">file</span> <span class="n">remain</span> <span class="n">only</span> <span class="n">when</span> <span class="n">it</span> <span class="n">is</span> <span class="n">copied</span> <span class="n">explicitly</span> <span class="n">in</span> <span class="n">script.</span>
+<div class="codehilite"><pre><span></span><code><span class="p">[</span><span class="n">username</span><span class="o">@</span><span class="n">es1</span><span class="w"> </span><span class="o">~</span><span class="p">]</span><span class="o">$</span><span class="w"> </span><span class="n">ls</span><span class="w"> </span><span class="o">$</span><span class="n">HOME</span><span class="o">/</span><span class="n">test</span><span class="o">/</span>
+<span class="n">foo.txt</span><span class="w">    </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">The</span><span class="w"> </span><span class="n">file</span><span class="w"> </span><span class="n">remain</span><span class="w"> </span><span class="n">only</span><span class="w"> </span><span class="n">when</span><span class="w"> </span><span class="n">it</span><span class="w"> </span><span class="n">is</span><span class="w"> </span><span class="n">copied</span><span class="w"> </span><span class="n">explicitly</span><span class="w"> </span><span class="n">in</span><span class="w"> </span><span class="n">script.</span>
 </code></pre></div>
 
 <div class="admonition warning">
@@ -1646,20 +1646,7 @@ Compute node (V) has only one NVMe SSD, so local scratch and BeeOND storage are 
 </div>
 <p>BeeGFS allows data to be staged in and out of the BeeOND storage in parallel using the beeond-cp command. To use beeond-cp, specify the <code>USE_SSH=1</code> option to enable SSH login to the compute nodes, and then specify the ssh command and port number in the <code>PARALLEL_SSH</code> environment variable.</p>
 <p>Example) sample of job script (use beeond-cp)</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal"> 1</span>
-<span class="normal"> 2</span>
-<span class="normal"> 3</span>
-<span class="normal"> 4</span>
-<span class="normal"> 5</span>
-<span class="normal"> 6</span>
-<span class="normal"> 7</span>
-<span class="normal"> 8</span>
-<span class="normal"> 9</span>
-<span class="normal">10</span>
-<span class="normal">11</span>
-<span class="normal">12</span>
-<span class="normal">13</span>
-<span class="normal">14</span></pre></div></td><td class="code"><div class="codehilite"><pre><span></span><code><span class="ch">#!/bin/bash</span>
+<div class="codehilite"><pre><span></span><code><span class="ch">#!/bin/bash</span>
 <span class="c1">#$-l rt_F=4</span>
 <span class="c1">#$-l USE_BEEOND=1</span>
 <span class="c1">#$-l USE_SSH=1</span>
@@ -1667,32 +1654,32 @@ Compute node (V) has only one NVMe SSD, so local scratch and BeeOND storage are 
 <span class="c1">#$-j y</span>
 <span class="c1">#$-cwd</span>
 
-<span class="nb">export</span> <span class="nv">PARALLEL_SSH</span><span class="o">=</span><span class="s2">&quot;ssh -p 2222&quot;</span>
-<span class="nb">export</span> <span class="nv">src_dir</span><span class="o">=</span>/path/to/data
+<span class="nb">export</span><span class="w"> </span><span class="nv">PARALLEL_SSH</span><span class="o">=</span><span class="s2">&quot;ssh -p 2222&quot;</span>
+<span class="nb">export</span><span class="w"> </span><span class="nv">src_dir</span><span class="o">=</span>/path/to/data
 
-beeond-cp stagein -n <span class="si">${</span><span class="nv">SGE_JOB_HOSTLIST</span><span class="si">}</span> -g <span class="si">${</span><span class="nv">src_dir</span><span class="si">}</span> -l <span class="si">${</span><span class="nv">SGE_BEEONDDIR</span><span class="si">}</span>
-<span class="o">(</span>main process<span class="o">)</span>
-beeond-cp stageout -n <span class="si">${</span><span class="nv">SGE_JOB_HOSTLIST</span><span class="si">}</span> -g <span class="si">${</span><span class="nv">src_dir</span><span class="si">}</span> -l <span class="si">${</span><span class="nv">SGE_BEEONDDIR</span><span class="si">}</span>d
+beeond-cp<span class="w"> </span>stagein<span class="w"> </span>-n<span class="w"> </span><span class="si">${</span><span class="nv">SGE_JOB_HOSTLIST</span><span class="si">}</span><span class="w"> </span>-g<span class="w"> </span><span class="si">${</span><span class="nv">src_dir</span><span class="si">}</span><span class="w"> </span>-l<span class="w"> </span><span class="si">${</span><span class="nv">SGE_BEEONDDIR</span><span class="si">}</span>
+<span class="o">(</span>main<span class="w"> </span>process<span class="o">)</span>
+beeond-cp<span class="w"> </span>stageout<span class="w"> </span>-n<span class="w"> </span><span class="si">${</span><span class="nv">SGE_JOB_HOSTLIST</span><span class="si">}</span><span class="w"> </span>-g<span class="w"> </span><span class="si">${</span><span class="nv">src_dir</span><span class="si">}</span><span class="w"> </span>-l<span class="w"> </span><span class="si">${</span><span class="nv">SGE_BEEONDDIR</span><span class="si">}</span>d
 </code></pre></div>
-</td></tr></table>
+
 <h4 id="advanced-option-configure-beeond-servers">[Advanced Option] Configure BeeOND Servers</h4>
 <p>A BeeOND filesystem partition consists of two kinds of services running on compute nodes: one is storage service which stores files, and the other is metadata service which stores file matadata.  Each service runs on compute nodes.  We refer to a compute node which runs storage service as a storage server and a compute node which runs metadata service as a metadata server.  Users can specify number of storage servers and metadata servers.</p>
 <p>The default values for counts of metadata server and storage server are as follows.</p>
 <table>
 <thead>
 <tr>
-<th align="center">Parameter</th>
-<th align="right">Default</th>
+<th style="text-align: center;">Parameter</th>
+<th style="text-align: right;">Default</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td align="center">Count of metadata servers</td>
-<td align="right">1</td>
+<td style="text-align: center;">Count of metadata servers</td>
+<td style="text-align: right;">1</td>
 </tr>
 <tr>
-<td align="center">Count of storage servers</td>
-<td align="right">Number of nodes requested by a job</td>
+<td style="text-align: center;">Count of storage servers</td>
+<td style="text-align: right;">Number of nodes requested by a job</td>
 </tr>
 </tbody>
 </table>
@@ -1700,18 +1687,18 @@ beeond-cp stageout -n <span class="si">${</span><span class="nv">SGE_JOB_HOSTLIS
 <table>
 <thead>
 <tr>
-<th align="left">Environment Variable</th>
-<th align="left">Description</th>
+<th style="text-align: left;">Environment Variable</th>
+<th style="text-align: left;">Description</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td align="left">BEEOND_METADATA_SERVER</td>
-<td align="left">Count of metadata servers in integer</td>
+<td style="text-align: left;">BEEOND_METADATA_SERVER</td>
+<td style="text-align: left;">Count of metadata servers in integer</td>
 </tr>
 <tr>
-<td align="left">BEEOND_STORAGE_SERVER</td>
-<td align="left">Count of storage servers in integer</td>
+<td style="text-align: left;">BEEOND_STORAGE_SERVER</td>
+<td style="text-align: left;">Count of storage servers in integer</td>
 </tr>
 </tbody>
 </table>
@@ -1725,7 +1712,7 @@ beeond-cp stageout -n <span class="si">${</span><span class="nv">SGE_JOB_HOSTLIS
 <span class="c1">#$-v BEEOND_STORAGE_SERVER=4</span>
 <span class="c1">#$-cwd</span>
 
-beegfs-df -p /beeond
+beegfs-df<span class="w"> </span>-p<span class="w"> </span>/beeond
 </code></pre></div>
 
 <p>Example output</p>
@@ -1750,21 +1737,21 @@ TargetID   Cap. Pool        Total         Free    %      ITotal       IFree    %
 <table>
 <thead>
 <tr>
-<th align="center">Parameter</th>
-<th align="right">Default</th>
-<th align="left">Description</th>
+<th style="text-align: center;">Parameter</th>
+<th style="text-align: right;">Default</th>
+<th style="text-align: left;">Description</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td align="center">Stripe size</td>
-<td align="right">512 KB</td>
-<td align="left">File chunk size</td>
+<td style="text-align: center;">Stripe size</td>
+<td style="text-align: right;">512 KB</td>
+<td style="text-align: left;">File chunk size</td>
 </tr>
 <tr>
-<td align="center">Stripe count</td>
-<td align="right">4</td>
-<td align="left">Number of storage servers that store chunks of a file</td>
+<td style="text-align: center;">Stripe count</td>
+<td style="text-align: right;">4</td>
+<td style="text-align: left;">Number of storage servers that store chunks of a file</td>
 </tr>
 </tbody>
 </table>
@@ -1778,9 +1765,9 @@ TargetID   Cap. Pool        Total         Free    %      ITotal       IFree    %
 <span class="c1">#$-cwd</span>
 
 <span class="nv">BEEOND_DIR</span><span class="o">=</span>/beeond/data
-mkdir <span class="si">${</span><span class="nv">BEEOND_DIR</span><span class="si">}</span>
-beegfs-ctl --setpattern --numtargets<span class="o">=</span><span class="m">8</span> --chunksize<span class="o">=</span>4M --mount<span class="o">=</span>/beeond <span class="si">${</span><span class="nv">BEEOND_DIR</span><span class="si">}</span>
-beegfs-ctl --mount<span class="o">=</span>/beeond --getentryinfo <span class="si">${</span><span class="nv">BEEOND_DIR</span><span class="si">}</span>
+mkdir<span class="w"> </span><span class="si">${</span><span class="nv">BEEOND_DIR</span><span class="si">}</span>
+beegfs-ctl<span class="w"> </span>--setpattern<span class="w"> </span>--numtargets<span class="o">=</span><span class="m">8</span><span class="w"> </span>--chunksize<span class="o">=</span>4M<span class="w"> </span>--mount<span class="o">=</span>/beeond<span class="w"> </span><span class="si">${</span><span class="nv">BEEOND_DIR</span><span class="si">}</span>
+beegfs-ctl<span class="w"> </span>--mount<span class="o">=</span>/beeond<span class="w"> </span>--getentryinfo<span class="w"> </span><span class="si">${</span><span class="nv">BEEOND_DIR</span><span class="si">}</span>
 </code></pre></div>
 
 <p>Output example</p>

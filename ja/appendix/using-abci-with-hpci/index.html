@@ -16,7 +16,7 @@
         <link rel="canonical" href="https://docs.abci.ai/ja/appendix/using-abci-with-hpci/">
       
       <link rel="icon" href="../../img/favicon.png">
-      <meta name="generator" content="mkdocs-1.1.2, mkdocs-material-7.1.3">
+      <meta name="generator" content="mkdocs-1.2.4, mkdocs-material-7.1.3">
     
     
       
@@ -1174,13 +1174,13 @@
 <p>ABCIシステムのフロントエンドであるインタラクティブノード (代表ホスト名：<em>es</em>もしくは<em>es-a</em>) にログインするには、代理証明書を利用してHPCI 向けアクセスサーバ (ホスト名：<em>hpci.abci.ai</em>) にログインして、更に<code>ssh</code>コマンドを用いてインタラクティブノードにログインする必要があります。なお本章では、ABCIのサーバ名はフォントをイタリックで表記します。</p>
 <h3 id="linux-macos-environment">Linux / macOSなどの環境</h3>
 <p><code>gsissh</code>コマンドでHPCI向けアクセスサーバ(<em>hpci.abci.ai</em>)にログインします。</p>
-<div class="codehilite"><pre><span></span><code><span class="o">[</span><span class="n">yourpc ~</span><span class="o">]</span><span class="err">$</span><span class="w"> </span><span class="n">gsissh</span><span class="w"> </span><span class="o">-</span><span class="n">p</span><span class="w"> </span><span class="mi">2222</span><span class="w"> </span><span class="n">hpci</span><span class="p">.</span><span class="n">abci</span><span class="p">.</span><span class="n">ai</span><span class="w"></span>
-<span class="o">[</span><span class="n">username@hpci1 ~</span><span class="o">]</span><span class="err">$</span><span class="w"></span>
+<div class="codehilite"><pre><span></span><code><span class="o">[</span><span class="n">yourpc ~</span><span class="o">]</span><span class="err">$</span><span class="w"> </span><span class="n">gsissh</span><span class="w"> </span><span class="o">-</span><span class="n">p</span><span class="w"> </span><span class="mi">2222</span><span class="w"> </span><span class="n">hpci</span><span class="p">.</span><span class="n">abci</span><span class="p">.</span><span class="n">ai</span>
+<span class="o">[</span><span class="n">username@hpci1 ~</span><span class="o">]</span><span class="err">$</span>
 </code></pre></div>
 
 <p>HPCI向けアクセスサーバにログイン後、<code>ssh</code>コマンドを用いてインタラクティブノードにログインします。</p>
-<div class="codehilite"><pre><span></span><code><span class="o">[</span><span class="n">username@hpci1 ~</span><span class="o">]</span><span class="err">$</span><span class="w"> </span><span class="n">ssh</span><span class="w"> </span><span class="n">es</span><span class="w"></span>
-<span class="o">[</span><span class="n">username@es1 ~</span><span class="o">]</span><span class="err">$</span><span class="w"></span>
+<div class="codehilite"><pre><span></span><code><span class="o">[</span><span class="n">username@hpci1 ~</span><span class="o">]</span><span class="err">$</span><span class="w"> </span><span class="n">ssh</span><span class="w"> </span><span class="n">es</span>
+<span class="o">[</span><span class="n">username@es1 ~</span><span class="o">]</span><span class="err">$</span>
 </code></pre></div>
 
 <h3 id="windows-environment-gsi-sshterm">Windows環境 (GSI-SSHTerm)</h3>
@@ -1191,8 +1191,8 @@
 <li><code>ssh</code>コマンドを用いてインタラクティブノードへログイン</li>
 </ol>
 <p>HPCI向けアクセスサーバにログイン後、<code>ssh</code>コマンドを用いてインタラクティブノードにログインします。</p>
-<div class="codehilite"><pre><span></span><code><span class="o">[</span><span class="n">username@hpci1 ~</span><span class="o">]</span><span class="err">$</span><span class="w"> </span><span class="n">ssh</span><span class="w"> </span><span class="n">es</span><span class="w"></span>
-<span class="o">[</span><span class="n">username@es1 ~</span><span class="o">]</span><span class="err">$</span><span class="w"></span>
+<div class="codehilite"><pre><span></span><code><span class="o">[</span><span class="n">username@hpci1 ~</span><span class="o">]</span><span class="err">$</span><span class="w"> </span><span class="n">ssh</span><span class="w"> </span><span class="n">es</span>
+<span class="o">[</span><span class="n">username@es1 ~</span><span class="o">]</span><span class="err">$</span>
 </code></pre></div>
 
 <h2 id="file-transfer-to-interactive-node">インタラクティブノードへのファイル転送</h2>
@@ -1200,49 +1200,49 @@
 そのため、インタラクティブノードへファイル転送をする場合、
 一旦HPCI向けアクセスサーバ(ホスト名：<em>hpci.abci.ai</em>)へファイル転送し、
 さらにインタラクティブノードへ<code>scp</code>(<code>sftp</code>)コマンドで転送してください。</p>
-<div class="codehilite"><pre><span></span><code><span class="o">[</span><span class="n">username@hpci1 ~</span><span class="o">]</span><span class="err">$</span><span class="w"> </span><span class="n">scp</span><span class="w"> </span><span class="k">local</span><span class="o">-</span><span class="k">file</span><span class="w"> </span><span class="n">username</span><span class="nv">@es</span><span class="err">:</span><span class="n">remote</span><span class="o">-</span><span class="n">dir</span><span class="w"></span>
-<span class="k">local</span><span class="o">-</span><span class="k">file</span><span class="w">    </span><span class="mi">100</span><span class="o">%</span><span class="w"> </span><span class="o">|***********************|</span><span class="w">  </span><span class="k">file</span><span class="o">-</span><span class="k">size</span><span class="w">  </span><span class="n">transfer</span><span class="o">-</span><span class="nc">time</span><span class="w"></span>
+<div class="codehilite"><pre><span></span><code><span class="o">[</span><span class="n">username@hpci1 ~</span><span class="o">]</span><span class="err">$</span><span class="w"> </span><span class="n">scp</span><span class="w"> </span><span class="k">local</span><span class="o">-</span><span class="k">file</span><span class="w"> </span><span class="n">username</span><span class="nv">@es</span><span class="err">:</span><span class="n">remote</span><span class="o">-</span><span class="n">dir</span>
+<span class="k">local</span><span class="o">-</span><span class="k">file</span><span class="w">    </span><span class="mi">100</span><span class="o">%</span><span class="w"> </span><span class="o">|***********************|</span><span class="w">  </span><span class="k">file</span><span class="o">-</span><span class="k">size</span><span class="w">  </span><span class="n">transfer</span><span class="o">-</span><span class="nc">time</span>
 </code></pre></div>
 
 <p>HPCI向けアクセスサーバ用ホーム領域の使用状況と割り当て量を表示するには、
 <code>quota</code>コマンドを利用します。</p>
-<div class="codehilite"><pre><span></span><code><span class="o">[</span><span class="n">username@hpci1 ~</span><span class="o">]</span><span class="err">$</span><span class="w"> </span><span class="n">quota</span><span class="w"></span>
-<span class="k">Disk</span><span class="w"> </span><span class="n">quotas</span><span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="k">user</span><span class="w"> </span><span class="n">username</span><span class="w"> </span><span class="p">(</span><span class="n">uid</span><span class="w"> </span><span class="mi">1000</span><span class="p">)</span><span class="err">:</span><span class="w"></span>
-<span class="w">     </span><span class="n">Filesystem</span><span class="w">  </span><span class="n">blocks</span><span class="w">   </span><span class="n">quota</span><span class="w">   </span><span class="k">limit</span><span class="w">   </span><span class="n">grace</span><span class="w">   </span><span class="n">files</span><span class="w">   </span><span class="n">quota</span><span class="w">   </span><span class="k">limit</span><span class="w">   </span><span class="n">grace</span><span class="w"></span>
-<span class="w">      </span><span class="o">/</span><span class="n">dev</span><span class="o">/</span><span class="n">sdb2</span><span class="w">      </span><span class="mi">48</span><span class="w">  </span><span class="mi">104857600</span><span class="w"> </span><span class="mi">104857600</span><span class="w">              </span><span class="mi">10</span><span class="w">       </span><span class="mi">0</span><span class="w">       </span><span class="mi">0</span><span class="w"></span>
+<div class="codehilite"><pre><span></span><code><span class="o">[</span><span class="n">username@hpci1 ~</span><span class="o">]</span><span class="err">$</span><span class="w"> </span><span class="n">quota</span>
+<span class="k">Disk</span><span class="w"> </span><span class="n">quotas</span><span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="k">user</span><span class="w"> </span><span class="n">username</span><span class="w"> </span><span class="p">(</span><span class="n">uid</span><span class="w"> </span><span class="mi">1000</span><span class="p">)</span><span class="err">:</span>
+<span class="w">     </span><span class="n">Filesystem</span><span class="w">  </span><span class="n">blocks</span><span class="w">   </span><span class="n">quota</span><span class="w">   </span><span class="k">limit</span><span class="w">   </span><span class="n">grace</span><span class="w">   </span><span class="n">files</span><span class="w">   </span><span class="n">quota</span><span class="w">   </span><span class="k">limit</span><span class="w">   </span><span class="n">grace</span>
+<span class="w">      </span><span class="o">/</span><span class="n">dev</span><span class="o">/</span><span class="n">sdb2</span><span class="w">      </span><span class="mi">48</span><span class="w">  </span><span class="mi">104857600</span><span class="w"> </span><span class="mi">104857600</span><span class="w">              </span><span class="mi">10</span><span class="w">       </span><span class="mi">0</span><span class="w">       </span><span class="mi">0</span>
 </code></pre></div>
 
 <table>
 <thead>
 <tr>
-<th align="left">項目</th>
-<th align="left">説明</th>
+<th style="text-align: left;">項目</th>
+<th style="text-align: left;">説明</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td align="left">Filesystem</td>
-<td align="left">ファイルシステム</td>
+<td style="text-align: left;">Filesystem</td>
+<td style="text-align: left;">ファイルシステム</td>
 </tr>
 <tr>
-<td align="left">blocks</td>
-<td align="left">ディスク使用量(KB)</td>
+<td style="text-align: left;">blocks</td>
+<td style="text-align: left;">ディスク使用量(KB)</td>
 </tr>
 <tr>
-<td align="left">files</td>
-<td align="left">ファイル使用数</td>
+<td style="text-align: left;">files</td>
+<td style="text-align: left;">ファイル使用数</td>
 </tr>
 <tr>
-<td align="left">quota</td>
-<td align="left">上限値(ソフトリミット)</td>
+<td style="text-align: left;">quota</td>
+<td style="text-align: left;">上限値(ソフトリミット)</td>
 </tr>
 <tr>
-<td align="left">limit</td>
-<td align="left">上限値(ハードリミット)</td>
+<td style="text-align: left;">limit</td>
+<td style="text-align: left;">上限値(ハードリミット)</td>
 </tr>
 <tr>
-<td align="left">grace</td>
-<td align="left">猶予期間</td>
+<td style="text-align: left;">grace</td>
+<td style="text-align: left;">猶予期間</td>
 </tr>
 </tbody>
 </table>
@@ -1257,15 +1257,15 @@
 <p class="admonition-title">Note</p>
 <p>インタラクティブノードではHPCI共用ストレージはマウントできません。</p>
 </div>
-<div class="codehilite"><pre><span></span><code><span class="o">[</span><span class="n">username@hpci1 ~</span><span class="o">]</span><span class="err">$</span><span class="w"> </span><span class="n">mount</span><span class="p">.</span><span class="n">hpci</span><span class="w"></span>
+<div class="codehilite"><pre><span></span><code><span class="o">[</span><span class="n">username@hpci1 ~</span><span class="o">]</span><span class="err">$</span><span class="w"> </span><span class="n">mount</span><span class="p">.</span><span class="n">hpci</span>
 </code></pre></div>
 
 <p>マウント状況は<code>df</code>コマンドで確認できます。</p>
-<div class="codehilite"><pre><span></span><code><span class="o">[</span><span class="n">username@hpci1 ~</span><span class="o">]</span><span class="err">$</span><span class="w"> </span><span class="n">df</span><span class="w"> </span><span class="o">-</span><span class="n">h</span><span class="w"> </span><span class="o">/</span><span class="n">gfarm</span><span class="o">/</span><span class="n">project</span><span class="o">-</span><span class="n">ID</span><span class="o">/</span><span class="n">username</span><span class="w"></span>
+<div class="codehilite"><pre><span></span><code><span class="o">[</span><span class="n">username@hpci1 ~</span><span class="o">]</span><span class="err">$</span><span class="w"> </span><span class="n">df</span><span class="w"> </span><span class="o">-</span><span class="n">h</span><span class="w"> </span><span class="o">/</span><span class="n">gfarm</span><span class="o">/</span><span class="n">project</span><span class="o">-</span><span class="n">ID</span><span class="o">/</span><span class="n">username</span>
 </code></pre></div>
 
 <p>HPCI共用ストレージをアンマウントする場合は、<code>umount.hpci</code>コマンドを使用します。</p>
-<div class="codehilite"><pre><span></span><code><span class="o">[</span><span class="n">username@hpci1 ~</span><span class="o">]</span><span class="err">$</span><span class="w"> </span><span class="n">umount</span><span class="p">.</span><span class="n">hpci</span><span class="w"></span>
+<div class="codehilite"><pre><span></span><code><span class="o">[</span><span class="n">username@hpci1 ~</span><span class="o">]</span><span class="err">$</span><span class="w"> </span><span class="n">umount</span><span class="p">.</span><span class="n">hpci</span>
 </code></pre></div>
 
 <h2 id="communication-between-access-server-for-hpci-and-external-services">HPCI向けアクセスサーバと外部サービスの通信</h2>
@@ -1278,14 +1278,14 @@
 <table>
 <thead>
 <tr>
-<th align="left">ポート番号</th>
-<th align="left">サービスタイプ</th>
+<th style="text-align: left;">ポート番号</th>
+<th style="text-align: left;">サービスタイプ</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td align="left">443/tcp</td>
-<td align="left">https</td>
+<td style="text-align: left;">443/tcp</td>
+<td style="text-align: left;">https</td>
 </tr>
 </tbody>
 </table>

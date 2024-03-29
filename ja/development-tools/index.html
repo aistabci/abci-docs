@@ -16,7 +16,7 @@
         <link rel="canonical" href="https://docs.abci.ai/ja/development-tools/">
       
       <link rel="icon" href="../img/favicon.png">
-      <meta name="generator" content="mkdocs-1.1.2, mkdocs-material-7.1.3">
+      <meta name="generator" content="mkdocs-1.2.4, mkdocs-material-7.1.3">
     
     
       
@@ -1150,41 +1150,41 @@
 <table>
 <thead>
 <tr>
-<th align="left">種別</th>
-<th align="left">言語処理系</th>
-<th align="left">コマンド</th>
+<th style="text-align: left;">種別</th>
+<th style="text-align: left;">言語処理系</th>
+<th style="text-align: left;">コマンド</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td align="left">逐次</td>
-<td align="left">Fortran</td>
-<td align="left">gfortran</td>
+<td style="text-align: left;">逐次</td>
+<td style="text-align: left;">Fortran</td>
+<td style="text-align: left;">gfortran</td>
 </tr>
 <tr>
-<td align="left"></td>
-<td align="left">C</td>
-<td align="left">gcc</td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;">C</td>
+<td style="text-align: left;">gcc</td>
 </tr>
 <tr>
-<td align="left"></td>
-<td align="left">C++</td>
-<td align="left">g++</td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;">C++</td>
+<td style="text-align: left;">g++</td>
 </tr>
 <tr>
-<td align="left">MPI並列</td>
-<td align="left">Fortran</td>
-<td align="left">mpifort</td>
+<td style="text-align: left;">MPI並列</td>
+<td style="text-align: left;">Fortran</td>
+<td style="text-align: left;">mpifort</td>
 </tr>
 <tr>
-<td align="left"></td>
-<td align="left">C</td>
-<td align="left">mpicc</td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;">C</td>
+<td style="text-align: left;">mpicc</td>
 </tr>
 <tr>
-<td align="left"></td>
-<td align="left">C++</td>
-<td align="left">mpic++</td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;">C++</td>
+<td style="text-align: left;">mpic++</td>
 </tr>
 </tbody>
 </table>
@@ -1194,29 +1194,29 @@
 計算ノードで<code>module</code>コマンドを用いて利用環境を設定すると、コンパイル用環境変数に
 ヘッダファイルおよびライブラリのサーチパスが自動で設定され、実行用環境変数も自動で設定されます。</p>
 <p>Intel oneAPIの環境設定:</p>
-<div class="codehilite"><pre><span></span><code><span class="p">[</span><span class="n">username</span><span class="err">@</span><span class="n">es1</span> <span class="o">~</span><span class="p">]</span><span class="o">$</span> <span class="n">module</span> <span class="nb">load</span> <span class="n">intel</span><span class="o">/</span><span class="mf">2023.0</span><span class="o">.</span><span class="mi">0</span>
+<div class="codehilite"><pre><span></span><code><span class="p">[</span><span class="n">username</span><span class="err">@</span><span class="n">es1</span><span class="w"> </span><span class="o">~</span><span class="p">]</span><span class="o">$</span><span class="w"> </span><span class="n">module</span><span class="w"> </span><span class="nb">load</span><span class="w"> </span><span class="n">intel</span><span class="o">/</span><span class="mf">2023.0</span><span class="o">.</span><span class="mi">0</span>
 </code></pre></div>
 
 <p>コンパイル/リンクコマンド一覧:</p>
 <table>
 <thead>
 <tr>
-<th align="left">言語処理系</th>
-<th align="left">コマンド</th>
+<th style="text-align: left;">言語処理系</th>
+<th style="text-align: left;">コマンド</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td align="left">Fortran</td>
-<td align="left">ifort</td>
+<td style="text-align: left;">Fortran</td>
+<td style="text-align: left;">ifort</td>
 </tr>
 <tr>
-<td align="left">C</td>
-<td align="left">icc</td>
+<td style="text-align: left;">C</td>
+<td style="text-align: left;">icc</td>
 </tr>
 <tr>
-<td align="left">C++</td>
-<td align="left">icpc</td>
+<td style="text-align: left;">C++</td>
+<td style="text-align: left;">icpc</td>
 </tr>
 </tbody>
 </table>
@@ -1226,18 +1226,18 @@ OpenMPを有効化する場合、コンパイル/リンク時に以下のよう�
 <table>
 <thead>
 <tr>
-<th align="left"></th>
-<th align="left">オプション</th>
+<th style="text-align: left;"></th>
+<th style="text-align: left;">オプション</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td align="left">GCC</td>
-<td align="left">-fopenmp</td>
+<td style="text-align: left;">GCC</td>
+<td style="text-align: left;">-fopenmp</td>
 </tr>
 <tr>
-<td align="left">Intel oneAPI</td>
-<td align="left">-qopenmp</td>
+<td style="text-align: left;">Intel oneAPI</td>
+<td style="text-align: left;">-qopenmp</td>
 </tr>
 </tbody>
 </table>
@@ -1249,14 +1249,14 @@ OpenMPを有効化する場合、コンパイル/リンク時に以下のよう�
 <table>
 <thead>
 <tr>
-<th align="left">言語処理系</th>
-<th align="left">コマンド</th>
+<th style="text-align: left;">言語処理系</th>
+<th style="text-align: left;">コマンド</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td align="left">C++</td>
-<td align="left">nvcc</td>
+<td style="text-align: left;">C++</td>
+<td style="text-align: left;">nvcc</td>
 </tr>
 </tbody>
 </table>

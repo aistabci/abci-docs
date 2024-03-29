@@ -16,7 +16,7 @@
         <link rel="canonical" href="https://docs.abci.ai/ja/tips/spack/">
       
       <link rel="icon" href="../../img/favicon.png">
-      <meta name="generator" content="mkdocs-1.1.2, mkdocs-material-7.1.3">
+      <meta name="generator" content="mkdocs-1.2.4, mkdocs-material-7.1.3">
     
     
       
@@ -1318,19 +1318,19 @@ ABCI上でSpackを使うことにより、ABCIが標準でサポートしてい�
 <h2 id="setup-spack">Spack環境設定</h2>
 <h3 id="install">インストール</h3>
 <p>GitHubからcloneし、使用するバージョンをcheckoutすることで、Spackをインストールすることができます。</p>
-<div class="codehilite"><pre><span></span><code><span class="gp">[username@es1 ~]$ </span>git clone https://github.com/spack/spack.git
-<span class="gp">[username@es1 ~]$ </span><span class="nb">cd</span> ./spack
-<span class="gp">[username@es1 ~/spack]$ </span>git checkout v0.19.1
+<div class="codehilite"><pre><span></span><code><span class="gp">[username@es1 ~]$ </span>git<span class="w"> </span>clone<span class="w"> </span>https://github.com/spack/spack.git
+<span class="gp">[username@es1 ~]$ </span><span class="nb">cd</span><span class="w"> </span>./spack
+<span class="gp">[username@es1 ~/spack]$ </span>git<span class="w"> </span>checkout<span class="w"> </span>v0.19.1
 </code></pre></div>
 
 <p>以降はターミナル上で、Spackを有効化するスクリプトを読み込めば使えます。</p>
-<div class="codehilite"><pre><span></span><code><span class="gp">[username@es1 ~]$ </span><span class="nb">source</span> <span class="si">${</span><span class="nv">HOME</span><span class="si">}</span>/spack/share/spack/setup-env.sh
+<div class="codehilite"><pre><span></span><code><span class="gp">[username@es1 ~]$ </span><span class="nb">source</span><span class="w"> </span><span class="si">${</span><span class="nv">HOME</span><span class="si">}</span>/spack/share/spack/setup-env.sh
 </code></pre></div>
 
 <h3 id="configuration-for-abci">ABCI用設定</h3>
 <h4 id="adding-compilers">コンパイラの登録</h4>
 <p>Spackで使用するコンパイラを<code>spack compiler find</code>コマンドでSpackに登録します。</p>
-<div class="codehilite"><pre><span></span><code><span class="gp">[username@es1 ~]$ </span>spack compiler find
+<div class="codehilite"><pre><span></span><code><span class="gp">[username@es1 ~]$ </span>spack<span class="w"> </span>compiler<span class="w"> </span>find
 <span class="go">==&gt; Added 2 new compilers to ${HOME}/.spack/linux/compilers.yaml</span>
 <span class="go">    gcc@8.5.0  clang@13.0.1</span>
 <span class="go">==&gt; Compilers are defined in the following files:</span>
@@ -1339,7 +1339,7 @@ ABCI上でSpackを使うことにより、ABCIが標準でサポートしてい�
 
 <p>登録されたコンパイラは<code>spack compiler list</code>コマンドで確認できます。</p>
 <p>GCC 8.5.0は標準のパス（/usr/bin）に入っているため、Spackが自動的に見つけます。</p>
-<div class="codehilite"><pre><span></span><code><span class="gp">[username@es1 ~]$ </span>spack compiler list
+<div class="codehilite"><pre><span></span><code><span class="gp">[username@es1 ~]$ </span>spack<span class="w"> </span>compiler<span class="w"> </span>list
 <span class="go">==&gt; Available compilers</span>
 <span class="go">-- clang rocky8-x86_64 ------------------------------------------</span>
 <span class="go">clang@13.0.1</span>
@@ -1350,16 +1350,16 @@ ABCI上でSpackを使うことにより、ABCIが標準でサポートしてい�
 
 <p>ABCIが提供しているGCCの設定ファイル(compilers.yaml)を配置しておりますので、以下のようにユーザ環境にコピーすることでコンパイラを利用することが可能です。</p>
 <p>計算ノード(V)</p>
-<div class="codehilite"><pre><span></span><code><span class="gp">[username@es1 ~]$ </span>cp /apps/spack/vnode/compilers.yaml <span class="si">${</span><span class="nv">HOME</span><span class="si">}</span>/.spack/linux/
-<span class="gp">[username@es1 ~]$ </span>spack compiler list
+<div class="codehilite"><pre><span></span><code><span class="gp">[username@es1 ~]$ </span>cp<span class="w"> </span>/apps/spack/vnode/compilers.yaml<span class="w"> </span><span class="si">${</span><span class="nv">HOME</span><span class="si">}</span>/.spack/linux/
+<span class="gp">[username@es1 ~]$ </span>spack<span class="w"> </span>compiler<span class="w"> </span>list
 <span class="go">==&gt; Available compilers</span>
 <span class="go">-- gcc rocky8-x86_64 --------------------------------------------</span>
 <span class="go">gcc@12.2.0  gcc@8.5.0</span>
 </code></pre></div>
 
 <p>計算ノード(A)</p>
-<div class="codehilite"><pre><span></span><code><span class="gp">[username@es-a1 ~]$ </span>cp /apps/spack/anode/compilers.yaml <span class="si">${</span><span class="nv">HOME</span><span class="si">}</span>/.spack/linux/
-<span class="gp">[username@es-a1 ~]$ </span>spack compiler list
+<div class="codehilite"><pre><span></span><code><span class="gp">[username@es-a1 ~]$ </span>cp<span class="w"> </span>/apps/spack/anode/compilers.yaml<span class="w"> </span><span class="si">${</span><span class="nv">HOME</span><span class="si">}</span>/.spack/linux/
+<span class="gp">[username@es-a1 ~]$ </span>spack<span class="w"> </span>compiler<span class="w"> </span>list
 <span class="go">==&gt; Available compilers</span>
 <span class="go">-- gcc rhel8-x86_64 ---------------------------------------------</span>
 <span class="go">gcc@12.2.0  gcc@8.3.1</span>
@@ -1372,30 +1372,30 @@ ABCI上でSpackを使うことにより、ABCIが標準でサポートしてい�
 <p>Spackが参照するソフトウェアの設定は<code>$HOME/.spack/linux/packages.yaml</code>に定義します。
 ABCIで提供するCUDA、cmake等の設定を記載した設定ファイル(packages.yaml)をユーザ環境にコピーすることでABCIのソフトウェアを<em>参照する</em>ことができます。</p>
 <p>計算ノード(V)</p>
-<div class="codehilite"><pre><span></span><code><span class="gp">[username@es1 ~]$ </span>cp /apps/spack/vnode/packages.yaml <span class="si">${</span><span class="nv">HOME</span><span class="si">}</span>/.spack/linux/
+<div class="codehilite"><pre><span></span><code><span class="gp">[username@es1 ~]$ </span>cp<span class="w"> </span>/apps/spack/vnode/packages.yaml<span class="w"> </span><span class="si">${</span><span class="nv">HOME</span><span class="si">}</span>/.spack/linux/
 </code></pre></div>
 
 <p>計算ノード(A)</p>
-<div class="codehilite"><pre><span></span><code><span class="gp">[username@es-a1 ~]$ </span>cp /apps/spack/anode/packages.yaml <span class="si">${</span><span class="nv">HOME</span><span class="si">}</span>/.spack/linux/
+<div class="codehilite"><pre><span></span><code><span class="gp">[username@es-a1 ~]$ </span>cp<span class="w"> </span>/apps/spack/anode/packages.yaml<span class="w"> </span><span class="si">${</span><span class="nv">HOME</span><span class="si">}</span>/.spack/linux/
 </code></pre></div>
 
 <p>packages.yaml (抜粋)</p>
 <div class="codehilite"><pre><span></span><code><span class="nt">packages</span><span class="p">:</span>
-  <span class="nt">cuda</span><span class="p">:</span>
-    <span class="nt">buildable</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">false</span>
-    <span class="nt">externals</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">cuda</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">buildable</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span>
+<span class="w">    </span><span class="nt">externals</span><span class="p">:</span>
 <span class="l l-Scalar l-Scalar-Plain">(snip)</span>
-    <span class="l l-Scalar l-Scalar-Plain">- spec</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">cuda@11.7.1%gcc@8.5.0</span>
-      <span class="l l-Scalar l-Scalar-Plain">modules</span><span class="p p-Indicator">:</span>
-      <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">cuda/11.7/11.7.1</span>
-<span class=" -Error">    </span><span class="p p-Indicator">-</span> <span class="nt">spec</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">cuda@11.7.1%gcc@12.2.0</span>
-      <span class="nt">modules</span><span class="p">:</span>
-      <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">cuda/11.7/11.7.1</span>
+<span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">- spec</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">cuda@11.7.1%gcc@8.5.0</span>
+<span class="w">      </span><span class="l l-Scalar l-Scalar-Plain">modules</span><span class="p p-Indicator">:</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">cuda/11.7/11.7.1</span>
+<span class="w w-Error">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">spec</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">cuda@11.7.1%gcc@12.2.0</span>
+<span class="w">      </span><span class="nt">modules</span><span class="p">:</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">cuda/11.7/11.7.1</span>
 <span class="l l-Scalar l-Scalar-Plain">(snip)</span>
-  <span class="l l-Scalar l-Scalar-Plain">hpcx-mpi</span><span class="p p-Indicator">:</span>
-    <span class="nt">externals</span><span class="p">:</span>
-    <span class="p p-Indicator">-</span> <span class="nt">spec</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">hpcx@2.11%gcc@8.5.0</span>
-      <span class="nt">prefix</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">/apps/openmpi/2.11/gcc8.5.0</span>
+<span class="w">  </span><span class="l l-Scalar l-Scalar-Plain">hpcx-mpi</span><span class="p p-Indicator">:</span>
+<span class="w">    </span><span class="nt">externals</span><span class="p">:</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">spec</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">hpcx@2.11%gcc@8.5.0</span>
+<span class="w">      </span><span class="nt">prefix</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/apps/openmpi/2.11/gcc8.5.0</span>
 <span class="l l-Scalar l-Scalar-Plain">(snip)</span>
 </code></pre></div>
 
@@ -1408,14 +1408,14 @@ ABCIが提供していないバージョンのCUDAをSpackでインストール�
 詳細は<a href="https://spack.readthedocs.io/en/latest/basic_usage.html">公式ドキュメント</a>を参照ください。</p>
 <h3 id="compiler-operations">コンパイラ関連</h3>
 <p>Spackに登録されているコンパイラ一覧は<code>compiler list</code>サブコマンドで確認できます。</p>
-<div class="codehilite"><pre><span></span><code><span class="gp">[username@es1 ~]$ </span>spack compiler list
+<div class="codehilite"><pre><span></span><code><span class="gp">[username@es1 ~]$ </span>spack<span class="w"> </span>compiler<span class="w"> </span>list
 <span class="go">==&gt; Available compilers</span>
 <span class="go">-- gcc rhel8-x86_64 ---------------------------------------------</span>
 <span class="go">gcc@12.2.0  gcc@8.3.1</span>
 </code></pre></div>
 
 <p>特定コンパイラの詳細情報を確認するには、<code>compiler info</code>サブコマンドを実行します。</p>
-<div class="codehilite"><pre><span></span><code><span class="gp">[username@es1 ~]$ </span>spack compiler info gcc@8.5.0
+<div class="codehilite"><pre><span></span><code><span class="gp">[username@es1 ~]$ </span>spack<span class="w"> </span>compiler<span class="w"> </span>info<span class="w"> </span>gcc@8.5.0
 <span class="go">gcc@8.5.0:</span>
 <span class="go">        paths:</span>
 <span class="go">             cc = /usr/bin/gcc</span>
@@ -1430,37 +1430,37 @@ ABCIが提供していないバージョンのCUDAをSpackでインストール�
 <h4 id="install-openmpi">インストール</h4>
 <p>OpenMPIのSpack標準バージョンは、以下の通りにインストールできます。
 <code>schedulers=sge</code>と<code>fabrics=auto</code>の意味は<a href="#cuda-aware-openmpi">導入事例</a>を参照ください。</p>
-<div class="codehilite"><pre><span></span><code><span class="gp">[username@es1 ~]$ </span>spack install openmpi <span class="nv">schedulers</span><span class="o">=</span>sge <span class="nv">fabrics</span><span class="o">=</span>auto
+<div class="codehilite"><pre><span></span><code><span class="gp">[username@es1 ~]$ </span>spack<span class="w"> </span>install<span class="w"> </span>openmpi<span class="w"> </span><span class="nv">schedulers</span><span class="o">=</span>sge<span class="w"> </span><span class="nv">fabrics</span><span class="o">=</span>auto
 </code></pre></div>
 
 <p>バージョンを指定する場合は、<code>@</code>で指定します。</p>
-<div class="codehilite"><pre><span></span><code><span class="gp">[username@es1 ~]$ </span>spack install openmpi@4.1.3 <span class="nv">schedulers</span><span class="o">=</span>sge <span class="nv">fabrics</span><span class="o">=</span>auto
+<div class="codehilite"><pre><span></span><code><span class="gp">[username@es1 ~]$ </span>spack<span class="w"> </span>install<span class="w"> </span>openmpi@4.1.3<span class="w"> </span><span class="nv">schedulers</span><span class="o">=</span>sge<span class="w"> </span><span class="nv">fabrics</span><span class="o">=</span>auto
 </code></pre></div>
 
 <p>コンパイラを指定する場合は<code>%</code>で指定します。
 以下の例では、コンパイラのバージョンも指定しています。</p>
-<div class="codehilite"><pre><span></span><code><span class="gp">[username@es1 ~]$ </span>spack install openmpi@4.1.3 %gcc@12.2.0 <span class="nv">schedulers</span><span class="o">=</span>sge <span class="nv">fabrics</span><span class="o">=</span>auto
+<div class="codehilite"><pre><span></span><code><span class="gp">[username@es1 ~]$ </span>spack<span class="w"> </span>install<span class="w"> </span>openmpi@4.1.3<span class="w"> </span>%gcc@12.2.0<span class="w"> </span><span class="nv">schedulers</span><span class="o">=</span>sge<span class="w"> </span><span class="nv">fabrics</span><span class="o">=</span>auto
 </code></pre></div>
 
 <h4 id="uninstall">アンインストール</h4>
 <p><code>uninstall</code>サブコマンドで、インストール済みのソフトウェアをアンインストールできます。
 インストール同様に、バージョンを指定してアンインストールできます。</p>
-<div class="codehilite"><pre><span></span><code><span class="gp">[username@es1 ~]$ </span>spack uninstall openmpi
+<div class="codehilite"><pre><span></span><code><span class="gp">[username@es1 ~]$ </span>spack<span class="w"> </span>uninstall<span class="w"> </span>openmpi
 </code></pre></div>
 
 <p>ソフトウェアのハッシュを指定してアンインストールすることもできます。
 <code>/</code>に続いてハッシュを指定します。
 ハッシュは<a href="#information">情報確認</a>に示す通り、<code>find</code>サブコマンドで取得できます。</p>
-<div class="codehilite"><pre><span></span><code><span class="gp">[username@es1 ~]$ </span>spack uninstall /ffwtsvk
+<div class="codehilite"><pre><span></span><code><span class="gp">[username@es1 ~]$ </span>spack<span class="w"> </span>uninstall<span class="w"> </span>/ffwtsvk
 </code></pre></div>
 
 <p>インストールした全てのソフトウェアを一括して削除するには以下の通りに実行します。</p>
-<div class="codehilite"><pre><span></span><code><span class="gp">[username@es1 ~]$ </span>spack uninstall --all
+<div class="codehilite"><pre><span></span><code><span class="gp">[username@es1 ~]$ </span>spack<span class="w"> </span>uninstall<span class="w"> </span>--all
 </code></pre></div>
 
 <h4 id="information">情報確認</h4>
 <p>Spackでインストールできるソフトウェア一覧は、<code>list</code>サブコマンドで確認できます。</p>
-<div class="codehilite"><pre><span></span><code><span class="gp">[username@es1 ~]$ </span>spack list
+<div class="codehilite"><pre><span></span><code><span class="gp">[username@es1 ~]$ </span>spack<span class="w"> </span>list
 <span class="go">abinit</span>
 <span class="go">abyss</span>
 <span class="gp gp-VirtualEnv">(snip)</span>
@@ -1468,7 +1468,7 @@ ABCIが提供していないバージョンのCUDAをSpackでインストール�
 
 <p>キーワードを指定することで、キーワードを名前の一部に含むソフトウェアのみを表示できます。
 以下では<code>mpi</code>をキーワードとして指定しています。</p>
-<div class="codehilite"><pre><span></span><code><span class="gp">[username@es1 ~]$ </span>spack list mpi
+<div class="codehilite"><pre><span></span><code><span class="gp">[username@es1 ~]$ </span>spack<span class="w"> </span>list<span class="w"> </span>mpi
 <span class="go">compiz                          intel-oneapi-mpi  mpir               r-rmpi</span>
 <span class="go">cray-mpich                      mpi-bash          mpitrampoline      rempi</span>
 <span class="go">exempi                          mpi-serial        mpiwrapper         rkt-compiler-lib</span>
@@ -1482,7 +1482,7 @@ ABCIが提供していないバージョンのCUDAをSpackでインストール�
 </code></pre></div>
 
 <p>インストールしたソフトウェア一覧は<code>find</code>サブコマンドで確認できます。</p>
-<div class="codehilite"><pre><span></span><code><span class="gp">[username@es1 ~]$ </span>spack find
+<div class="codehilite"><pre><span></span><code><span class="gp">[username@es1 ~]$ </span>spack<span class="w"> </span>find
 <span class="go">==&gt; 49 installed packages</span>
 <span class="go">-- linux-rocky8-skylake_avx512 / gcc@8.5.0 ----------------------------</span>
 <span class="go">autoconf@2.69    gdbm@1.18.1          libxml2@2.9.9  readline@8.0</span>
@@ -1490,7 +1490,7 @@ ABCIが提供していないバージョンのCUDAをSpackでインストール�
 </code></pre></div>
 
 <p>インストールしたソフトウェアのハッシュ、依存関係は<code>find</code>サブコマンドに<code>-dl</code>オプションを指定することで確認できます。</p>
-<div class="codehilite"><pre><span></span><code><span class="gp">[username@es1 ~]$ </span>spack find -dl openmpi
+<div class="codehilite"><pre><span></span><code><span class="gp">[username@es1 ~]$ </span>spack<span class="w"> </span>find<span class="w"> </span>-dl<span class="w"> </span>openmpi
 <span class="go">-- linux-rocky8-skylake_avx512 / gcc@8.5.0 ---------------------</span>
 <span class="go">6pxjftg openmpi@4.1.4</span>
 <span class="go">ahftjey     hwloc@2.8.0</span>
@@ -1504,7 +1504,7 @@ ABCIが提供していないバージョンのCUDAをSpackでインストール�
 </code></pre></div>
 
 <p>特定のソフトウェアの詳細情報を確認するには、<code>info</code>サブコマンドを使用します。</p>
-<div class="codehilite"><pre><span></span><code><span class="gp">[username@es1 ~]$ </span>spack info openmpi
+<div class="codehilite"><pre><span></span><code><span class="gp">[username@es1 ~]$ </span>spack<span class="w"> </span>info<span class="w"> </span>openmpi
 <span class="go">AutotoolsPackage:   openmpi</span>
 
 <span class="go">Description:</span>
@@ -1514,7 +1514,7 @@ ABCIが提供していないバージョンのCUDAをSpackでインストール�
 </code></pre></div>
 
 <p>特定ソフトウェアの、インストール可能なバージョン一覧は<code>versions</code>サブコマンドで確認できます。</p>
-<div class="codehilite"><pre><span></span><code><span class="gp">[username@es1 ~]$ </span>spack versions openmpi
+<div class="codehilite"><pre><span></span><code><span class="gp">[username@es1 ~]$ </span>spack<span class="w"> </span>versions<span class="w"> </span>openmpi
 <span class="go">==&gt; Safe versions (already checksummed):</span>
 <span class="go">  main   4.0.4  3.1.2  2.1.6  2.0.2   1.10.1  1.8.1  1.6.4  1.5.1  1.3.3  1.2.4  1.1.1</span>
 <span class="go">  4.1.4  4.0.3  3.1.1  2.1.5  2.0.1   1.10.0  1.8    1.6.3  1.5    1.3.2  1.2.3  1.1</span>
@@ -1532,33 +1532,33 @@ ABCIが提供していないバージョンのCUDAをSpackでインストール�
 <h3 id="use-of-installed-software">ソフトウェア利用方法</h3>
 <p>Spackでインストールしたソフトウェアは<code>spack load</code>コマンドで使用可能です。
 ABCIが提供するモジュール同様に、ロードして使用できます。</p>
-<div class="codehilite"><pre><span></span><code><span class="gp">[username@es1 ~]$ </span>spack load xxxxx
+<div class="codehilite"><pre><span></span><code><span class="gp">[username@es1 ~]$ </span>spack<span class="w"> </span>load<span class="w"> </span>xxxxx
 </code></pre></div>
 
 <p><code>spack load</code>はソフトウェアを使用するための<code>PATH</code>、<code>MANPATH</code>、<code>CPATH</code>、<code>LD_LIBRARY_PATH</code>等の環境変数を設定します。</p>
 <p>不要になった場合は、<code>spack unload</code>します。</p>
-<div class="codehilite"><pre><span></span><code><span class="gp">[username@es1 ~]$ </span>spack unload xxxxx
+<div class="codehilite"><pre><span></span><code><span class="gp">[username@es1 ~]$ </span>spack<span class="w"> </span>unload<span class="w"> </span>xxxxx
 </code></pre></div>
 
 <h3 id="using-environments">ソフトウェア環境の定義と利用</h3>
 <p>Spackにはソフトウェアパッケージを「環境」という単位でグルーピングする機能があります。
 環境ごとにソフトウェアをバージョンや依存関係を変えてインストールすることができ、環境を切り替えることで一括して使用するソフトウェアを変えることができます。</p>
 <p>まず<code>spack env create</code>でSpack環境を構築します。ここで別のSpack環境名を指定することで複数のSpack環境を作成することが可能です。</p>
-<div class="codehilite"><pre><span></span><code><span class="gp">[username@es1 ~]$ </span>spack env create myenv
+<div class="codehilite"><pre><span></span><code><span class="gp">[username@es1 ~]$ </span>spack<span class="w"> </span>env<span class="w"> </span>create<span class="w"> </span>myenv
 </code></pre></div>
 
 <p><code>spack env activate</code>で作ったSpack環境を有効にします。<code>-p</code>をつけることで現在有効になっているSpack環境名をプロンプトに表示することができます。有効にした環境にソフトウェアをインストールしていきます。</p>
-<div class="codehilite"><pre><span></span><code><span class="gp">[username@es1 ~]$ </span>spack env activate -p myenv
-<span class="gp">[myenv] [username@es1 ~]$ </span>spack install xxxxx
+<div class="codehilite"><pre><span></span><code><span class="gp">[username@es1 ~]$ </span>spack<span class="w"> </span>env<span class="w"> </span>activate<span class="w"> </span>-p<span class="w"> </span>myenv
+<span class="gp">[myenv] [username@es1 ~]$ </span>spack<span class="w"> </span>install<span class="w"> </span>xxxxx
 </code></pre></div>
 
 <p><code>spack env deactivate</code>でSpack環境を無効にします。別の環境を使う場合、その環境を<code>spack env activate</code>します。</p>
-<div class="codehilite"><pre><span></span><code><span class="gp">[myenv] [username@es1 ~]$ </span>spack env deactivate
+<div class="codehilite"><pre><span></span><code><span class="gp">[myenv] [username@es1 ~]$ </span>spack<span class="w"> </span>env<span class="w"> </span>deactivate
 <span class="gp">[username@es1 ~]$</span>
 </code></pre></div>
 
 <p><code>spack env list</code>で作成済みのSpack環境の一覧を表示することが可能です。</p>
-<div class="codehilite"><pre><span></span><code><span class="gp">[username@es1 ~]$ </span>spack env list
+<div class="codehilite"><pre><span></span><code><span class="gp">[username@es1 ~]$ </span>spack<span class="w"> </span>env<span class="w"> </span>list
 <span class="go">==&gt; 2 environments</span>
 <span class="go">    myenv</span>
 <span class="go">    another_env</span>
@@ -1569,13 +1569,13 @@ ABCIが提供するモジュール同様に、ロードして使用できます�
 <h4 id="how-to-install">インストール方法</h4>
 <p>CUDA 11.8.0を使用するOpenMPI 4.1.4をインストールする場合の例です。
 GPUを搭載する計算ノード上で作業を行います。</p>
-<div class="codehilite"><pre><span></span><code><span class="gp">[username@g0001 ~]$ </span>spack install cuda@11.8.0
-<span class="gp">[username@g0001 ~]$ </span>spack install openmpi@4.1.4 +cuda <span class="nv">schedulers</span><span class="o">=</span>sge <span class="nv">fabrics</span><span class="o">=</span>auto ^cuda@11.8.0
-<span class="gp">[username@g0001 ~]$ </span>spack find --paths openmpi@4.1.4
+<div class="codehilite"><pre><span></span><code><span class="gp">[username@g0001 ~]$ </span>spack<span class="w"> </span>install<span class="w"> </span>cuda@11.8.0
+<span class="gp">[username@g0001 ~]$ </span>spack<span class="w"> </span>install<span class="w"> </span>openmpi@4.1.4<span class="w"> </span>+cuda<span class="w"> </span><span class="nv">schedulers</span><span class="o">=</span>sge<span class="w"> </span><span class="nv">fabrics</span><span class="o">=</span>auto<span class="w"> </span>^cuda@11.8.0
+<span class="gp">[username@g0001 ~]$ </span>spack<span class="w"> </span>find<span class="w"> </span>--paths<span class="w"> </span>openmpi@4.1.4
 <span class="go">==&gt; 1 installed package</span>
 <span class="go">-- linux-rocky8-skylake_avx512 / gcc@8.5.0 ----------------------------</span>
 <span class="gp">openmpi@4.1.4  $</span><span class="o">{</span>SPACK_ROOT<span class="o">}</span>/opt/spack/linux-rocky8-skylake_avx512/gcc-8.5.0/openmpi-4.1.4-4mmghhfuk5n7my7g3ko2zwzlo4wmoc5v
-<span class="gp">[username@g0001 ~]$ </span><span class="nb">echo</span> <span class="s2">&quot;btl_openib_warn_default_gid_prefix = 0&quot;</span> &gt;&gt; <span class="si">${</span><span class="nv">SPACK_ROOT</span><span class="si">}</span>/opt/spack/linux-centos7-haswell/gcc-8.5.0/openmpi-4.1.4-4mmghhfuk5n7my7g3ko2zwzlo4wmoc5v/etc/openmpi-mca-params.conf
+<span class="gp">[username@g0001 ~]$ </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;btl_openib_warn_default_gid_prefix = 0&quot;</span><span class="w"> </span>&gt;&gt;<span class="w"> </span><span class="si">${</span><span class="nv">SPACK_ROOT</span><span class="si">}</span>/opt/spack/linux-centos7-haswell/gcc-8.5.0/openmpi-4.1.4-4mmghhfuk5n7my7g3ko2zwzlo4wmoc5v/etc/openmpi-mca-params.conf
 </code></pre></div>
 
 <p>1行目では、ABCIが提供するCUDAを使用するよう、CUDAのバージョン<code>11.8.0</code>をインストールします。
@@ -1591,20 +1591,20 @@ GPUを搭載する計算ノード上で作業を行います。</p>
 そのため、3行目でOpenMPIがインストールされたパスを確認しています。</p>
 <p>Spackでは、同一ソフトウェアを異なる設定で複数インストールし、管理することができます。
 ここでは、CUDA 11.7.1を使用するOpenMPI 4.1.3を追加インストールします。</p>
-<div class="codehilite"><pre><span></span><code><span class="gp">[username@g0001 ~]$ </span>spack install cuda@11.7.1
-<span class="gp">[username@g0001 ~]$ </span>spack install openmpi@4.1.3 +cuda <span class="nv">schedulers</span><span class="o">=</span>sge <span class="nv">fabrics</span><span class="o">=</span>auto ^cuda@11.7.1
+<div class="codehilite"><pre><span></span><code><span class="gp">[username@g0001 ~]$ </span>spack<span class="w"> </span>install<span class="w"> </span>cuda@11.7.1
+<span class="gp">[username@g0001 ~]$ </span>spack<span class="w"> </span>install<span class="w"> </span>openmpi@4.1.3<span class="w"> </span>+cuda<span class="w"> </span><span class="nv">schedulers</span><span class="o">=</span>sge<span class="w"> </span><span class="nv">fabrics</span><span class="o">=</span>auto<span class="w"> </span>^cuda@11.7.1
 </code></pre></div>
 
 <h4 id="how-to-use">使い方</h4>
 <p>「CUDA 11.8.0を使用するOpenMPI 4.1.4」を使う場合の利用方法を説明します。</p>
 <p><code>spack load</code>実行時にOpenMPIのバージョン並びにCUDAの依存関係を指定することで、特定のバージョンを利用することが可能です。</p>
-<div class="codehilite"><pre><span></span><code><span class="gp">[username@es1 ~]$ </span>spack load openmpi@4.1.4 ^cuda@11.8.0
+<div class="codehilite"><pre><span></span><code><span class="gp">[username@es1 ~]$ </span>spack<span class="w"> </span>load<span class="w"> </span>openmpi@4.1.4<span class="w"> </span>^cuda@11.8.0
 </code></pre></div>
 
 <p>計算ノード上でプログラムをコンパイルする場合は、SpackでインストールしたOpenMPIを呼び出してからMPIを起動します。</p>
-<div class="codehilite"><pre><span></span><code><span class="gp">[username@g0001 ~]$ </span><span class="nb">source</span> <span class="si">${</span><span class="nv">HOME</span><span class="si">}</span>/spack/share/spack/setup-env.sh
-<span class="gp">[username@g0001 ~]$ </span>spack load openmpi@4.1.4 ^cuda@11.8.0
-<span class="gp">[username@g0001 ~]$ </span>mpicc ...
+<div class="codehilite"><pre><span></span><code><span class="gp">[username@g0001 ~]$ </span><span class="nb">source</span><span class="w"> </span><span class="si">${</span><span class="nv">HOME</span><span class="si">}</span>/spack/share/spack/setup-env.sh
+<span class="gp">[username@g0001 ~]$ </span>spack<span class="w"> </span>load<span class="w"> </span>openmpi@4.1.4<span class="w"> </span>^cuda@11.8.0
+<span class="gp">[username@g0001 ~]$ </span>mpicc<span class="w"> </span>...
 </code></pre></div>
 
 <p>ジョブスクリプトでは、以下のように使用します。</p>
@@ -1613,26 +1613,26 @@ GPUを搭載する計算ノード上で作業を行います。</p>
 <span class="c1">#$-j y</span>
 <span class="c1">#$-cwd</span>
 
-<span class="nb">source</span> <span class="si">${</span><span class="nv">HOME</span><span class="si">}</span>/spack/share/spack/setup-env.sh
-spack load openmpi@4.1.4 ^cuda@11.8.0
+<span class="nb">source</span><span class="w"> </span><span class="si">${</span><span class="nv">HOME</span><span class="si">}</span>/spack/share/spack/setup-env.sh
+spack<span class="w"> </span>load<span class="w"> </span>openmpi@4.1.4<span class="w"> </span>^cuda@11.8.0
 
 <span class="nv">NUM_NODES</span><span class="o">=</span><span class="si">${</span><span class="nv">NHOSTS</span><span class="si">}</span>
 <span class="nv">NUM_GPUS_PER_NODE</span><span class="o">=</span><span class="m">4</span>
-<span class="nv">NUM_PROCS</span><span class="o">=</span><span class="k">$(</span>expr <span class="si">${</span><span class="nv">NUM_NODES</span><span class="si">}</span> <span class="se">\*</span> <span class="si">${</span><span class="nv">NUM_GPUS_PER_NODE</span><span class="si">}</span><span class="k">)</span>
+<span class="nv">NUM_PROCS</span><span class="o">=</span><span class="k">$(</span>expr<span class="w"> </span><span class="si">${</span><span class="nv">NUM_NODES</span><span class="si">}</span><span class="w"> </span><span class="se">\*</span><span class="w"> </span><span class="si">${</span><span class="nv">NUM_GPUS_PER_NODE</span><span class="si">}</span><span class="k">)</span>
 <span class="nv">MPIOPTS</span><span class="o">=</span><span class="s2">&quot;-n </span><span class="si">${</span><span class="nv">NUM_PROCS</span><span class="si">}</span><span class="s2"> -map-by ppr:</span><span class="si">${</span><span class="nv">NUM_GPUS_PER_NODE</span><span class="si">}</span><span class="s2">:node -x PATH -x LD_LIBRARY_PATH&quot;</span>
-mpiexec <span class="si">${</span><span class="nv">MPIOPTS</span><span class="si">}</span> YOUR_PROGRAM
+mpiexec<span class="w"> </span><span class="si">${</span><span class="nv">MPIOPTS</span><span class="si">}</span><span class="w"> </span>YOUR_PROGRAM
 </code></pre></div>
 
 <p>不要になった場合は、バージョン並びに依存関係を指定してアンインストールします。</p>
-<div class="codehilite"><pre><span></span><code><span class="gp">[username@es1 ~]$ </span>spack uninstall openmpi@4.1.4 ^cuda@11.8.0
+<div class="codehilite"><pre><span></span><code><span class="gp">[username@es1 ~]$ </span>spack<span class="w"> </span>uninstall<span class="w"> </span>openmpi@4.1.4<span class="w"> </span>^cuda@11.8.0
 </code></pre></div>
 
 <h3 id="cuda-aware-mvapich2">CUDA-aware MVAPICH2</h3>
 <p>CUDA-aware MVAPICH2を使用する場合は、以下を参考にSpackでインストールしてください。</p>
 <p>GPUを搭載する計算ノード上で作業を行います。
 上述した<a href="#cuda-aware-openmpi">CUDA-aware OpenMPI</a>に、使用するCUDAをインストールしたのちに、CUDAオプション（<code>+cuda</code>）、通信ライブラリ（<code>fabrics=mrail</code>）、およびCUDAの依存関係（<code>^cuda@11.8.0</code>）を指定してMVAPICH2をインストールします。</p>
-<div class="codehilite"><pre><span></span><code><span class="gp">[username@g0001 ~]$ </span>spack install cuda@11.8.0
-<span class="gp">[username@g0001 ~]$ </span>spack install mvapich2@2.3.7 +cuda <span class="nv">fabrics</span><span class="o">=</span>mrail ^cuda@11.8.0
+<div class="codehilite"><pre><span></span><code><span class="gp">[username@g0001 ~]$ </span>spack<span class="w"> </span>install<span class="w"> </span>cuda@11.8.0
+<span class="gp">[username@g0001 ~]$ </span>spack<span class="w"> </span>install<span class="w"> </span>mvapich2@2.3.7<span class="w"> </span>+cuda<span class="w"> </span><span class="nv">fabrics</span><span class="o">=</span>mrail<span class="w"> </span>^cuda@11.8.0
 </code></pre></div>
 
 <p>使い方もCUDA-aware OpenMPIと同様に、インストールしたMVAPICH2をロードして使います。
@@ -1642,16 +1642,16 @@ mpiexec <span class="si">${</span><span class="nv">MPIOPTS</span><span class="si
 <span class="c1">#$-j y</span>
 <span class="c1">#$-cwd</span>
 
-<span class="nb">source</span> <span class="si">${</span><span class="nv">HOME</span><span class="si">}</span>/spack/share/spack/setup-env.sh
-spack load mvapich2@2.3.7 ^cuda@11.8.0
+<span class="nb">source</span><span class="w"> </span><span class="si">${</span><span class="nv">HOME</span><span class="si">}</span>/spack/share/spack/setup-env.sh
+spack<span class="w"> </span>load<span class="w"> </span>mvapich2@2.3.7<span class="w"> </span>^cuda@11.8.0
 
 <span class="nv">NUM_NODES</span><span class="o">=</span><span class="si">${</span><span class="nv">NHOSTS</span><span class="si">}</span>
 <span class="nv">NUM_GPUS_PER_NODE</span><span class="o">=</span><span class="m">4</span>
-<span class="nv">NUM_PROCS</span><span class="o">=</span><span class="k">$(</span>expr <span class="si">${</span><span class="nv">NUM_NODES</span><span class="si">}</span> <span class="se">\*</span> <span class="si">${</span><span class="nv">NUM_GPUS_PER_NODE</span><span class="si">}</span><span class="k">)</span>
+<span class="nv">NUM_PROCS</span><span class="o">=</span><span class="k">$(</span>expr<span class="w"> </span><span class="si">${</span><span class="nv">NUM_NODES</span><span class="si">}</span><span class="w"> </span><span class="se">\*</span><span class="w"> </span><span class="si">${</span><span class="nv">NUM_GPUS_PER_NODE</span><span class="si">}</span><span class="k">)</span>
 <span class="nv">MPIE_ARGS</span><span class="o">=</span><span class="s2">&quot;-genv MV2_USE_CUDA=1&quot;</span>
 <span class="nv">MPIOPTS</span><span class="o">=</span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">MPIE_ARGS</span><span class="si">}</span><span class="s2"> -np </span><span class="si">${</span><span class="nv">NUM_PROCS</span><span class="si">}</span><span class="s2"> -ppn </span><span class="si">${</span><span class="nv">NUM_GPUS_PER_NODE</span><span class="si">}</span><span class="s2">&quot;</span>
 
-mpiexec <span class="si">${</span><span class="nv">MPIOPTS</span><span class="si">}</span> YOUR_PROGRAM
+mpiexec<span class="w"> </span><span class="si">${</span><span class="nv">MPIOPTS</span><span class="si">}</span><span class="w"> </span>YOUR_PROGRAM
 </code></pre></div>
 
 <h3 id="mpifileutils">MPIFileUtils</h3>
@@ -1659,8 +1659,8 @@ mpiexec <span class="si">${</span><span class="nv">MPIOPTS</span><span class="si
 複数のライブラリに依存するため、マニュアルでインストールするのは面倒ですが、Spackを用いると簡単にインストールできます。</p>
 <p>以下の例では、OpenMPI 4.1.4を使用して、MPIFileUtilsをインストールします。
 該当するOpenMPIをインストールした後で（1行目）、それへの依存を指定してMPIFileUtilsをインストールします（2行目）。</p>
-<div class="codehilite"><pre><span></span><code><span class="gp">[username@es1 ~]$ </span>spack install openmpi@4.1.4
-<span class="gp">[username@es1 ~]$ </span>spack install mpifileutils ^openmpi@4.1.4
+<div class="codehilite"><pre><span></span><code><span class="gp">[username@es1 ~]$ </span>spack<span class="w"> </span>install<span class="w"> </span>openmpi@4.1.4
+<span class="gp">[username@es1 ~]$ </span>spack<span class="w"> </span>install<span class="w"> </span>mpifileutils<span class="w"> </span>^openmpi@4.1.4
 </code></pre></div>
 
 <p>使うときには、MPIFileUtilsのモジュールをロードします。
@@ -1671,25 +1671,25 @@ MPIFileUtilsのモジュールをロードすると、<code>dbcast</code>など�
 <span class="c1">#$-j y</span>
 <span class="c1">#$-cwd</span>
 
-<span class="nb">source</span> <span class="si">${</span><span class="nv">HOME</span><span class="si">}</span>/spack/share/spack/setup-env.sh
-spack load mpifileutils@0.11.1 ^openmpi@4.1.4
+<span class="nb">source</span><span class="w"> </span><span class="si">${</span><span class="nv">HOME</span><span class="si">}</span>/spack/share/spack/setup-env.sh
+spack<span class="w"> </span>load<span class="w"> </span>mpifileutils@0.11.1<span class="w"> </span>^openmpi@4.1.4
 
 <span class="nv">NPPN</span><span class="o">=</span><span class="m">5</span>
-<span class="nv">NMPIPROC</span><span class="o">=</span><span class="k">$((</span> <span class="nv">$NHOSTS</span> <span class="o">*</span> <span class="nv">$NPPN</span> <span class="k">))</span>
+<span class="nv">NMPIPROC</span><span class="o">=</span><span class="k">$((</span><span class="w"> </span><span class="nv">$NHOSTS</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="nv">$NPPN</span><span class="w"> </span><span class="k">))</span>
 <span class="nv">SRC_FILE</span><span class="o">=</span>name_of_file
 <span class="nv">DST_FILE</span><span class="o">=</span>name_of_file
 
-mpiexec -n <span class="si">${</span><span class="nv">NMPIPROC</span><span class="si">}</span> -map-by ppr:<span class="si">${</span><span class="nv">NPPN</span><span class="si">}</span>:node dbcast <span class="nv">$SRC_FILE</span> <span class="nv">$DST_FILE</span>
+mpiexec<span class="w"> </span>-n<span class="w"> </span><span class="si">${</span><span class="nv">NMPIPROC</span><span class="si">}</span><span class="w"> </span>-map-by<span class="w"> </span>ppr:<span class="si">${</span><span class="nv">NPPN</span><span class="si">}</span>:node<span class="w"> </span>dbcast<span class="w"> </span><span class="nv">$SRC_FILE</span><span class="w"> </span><span class="nv">$DST_FILE</span>
 </code></pre></div>
 
 <h3 id="build-singularity-image-from-environment">ソフトウェア環境からのSingularityイメージの作成手順</h3>
 <p><a href="#using-environments">ソフトウェア環境の定義と利用</a>で作成した環境を用いてSingularityのイメージを作成することが可能です。
 ここではmyenvという名前のSpack環境を用いてCUDA-awareのOpenMPIをインストールし、Singularityイメージを作成する例を示します。</p>
-<div class="codehilite"><pre><span></span><code><span class="gp">[username@es1 ~]$ </span>spack env create myenv
-<span class="gp">[username@es1 ~]$ </span>spack activate -p myenv
-<span class="gp">[myenv] [username@es1 ~]$ </span>spack install openmpi +cuda <span class="nv">schedulers</span><span class="o">=</span>sge <span class="nv">fabrics</span><span class="o">=</span>auto
-<span class="gp">[username@es1 ~]$ </span>cp -p <span class="si">${</span><span class="nv">HOME</span><span class="si">}</span>/spack/var/spack/environments/myenv/spack.yaml .
-<span class="gp">[username@es1 ~]$ </span>vi spack.yaml
+<div class="codehilite"><pre><span></span><code><span class="gp">[username@es1 ~]$ </span>spack<span class="w"> </span>env<span class="w"> </span>create<span class="w"> </span>myenv
+<span class="gp">[username@es1 ~]$ </span>spack<span class="w"> </span>activate<span class="w"> </span>-p<span class="w"> </span>myenv
+<span class="gp">[myenv] [username@es1 ~]$ </span>spack<span class="w"> </span>install<span class="w"> </span>openmpi<span class="w"> </span>+cuda<span class="w"> </span><span class="nv">schedulers</span><span class="o">=</span>sge<span class="w"> </span><span class="nv">fabrics</span><span class="o">=</span>auto
+<span class="gp">[username@es1 ~]$ </span>cp<span class="w"> </span>-p<span class="w"> </span><span class="si">${</span><span class="nv">HOME</span><span class="si">}</span>/spack/var/spack/environments/myenv/spack.yaml<span class="w"> </span>.
+<span class="gp">[username@es1 ~]$ </span>vi<span class="w"> </span>spack.yaml
 </code></pre></div>
 
 <p><code>spack.yaml</code>は以下にように編集します。</p>
@@ -1698,20 +1698,20 @@ mpiexec -n <span class="si">${</span><span class="nv">NMPIPROC</span><span class
 <span class="c1"># It describes a set of packages to be installed, along with</span>
 <span class="c1"># configuration settings.</span>
 <span class="nt">spack</span><span class="p">:</span>
-  <span class="c1"># add package specs to the `specs` list</span>
-  <span class="nt">specs</span><span class="p">:</span> <span class="p p-Indicator">[</span><span class="nv">openmpi +cuda fabrics=auto schedulers=sge</span><span class="p p-Indicator">]</span>
-  <span class="nt">view</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">true</span>                       <span class="c1"># &lt;- この行は削除</span>
+<span class="w">  </span><span class="c1"># add package specs to the `specs` list</span>
+<span class="w">  </span><span class="nt">specs</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="nv">openmpi +cuda fabrics=auto schedulers=sge</span><span class="p p-Indicator">]</span>
+<span class="w">  </span><span class="nt">view</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span><span class="w">                       </span><span class="c1"># &lt;- この行は削除</span>
 
-  <span class="nt">container</span><span class="p">:</span>                       <span class="c1"># &lt;- 追加</span>
-    <span class="nt">images</span><span class="p">:</span>                        <span class="c1"># &lt;- 追加</span>
-      <span class="nt">build</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">spack/centos7:0.19.1</span>  <span class="c1"># &lt;- 追加</span>
-      <span class="nt">final</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">spack/centos7:0.19.1</span>  <span class="c1"># &lt;- 追加</span>
-    <span class="nt">format</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">singularity</span>            <span class="c1"># &lt;- 追加</span>
-    <span class="nt">strip</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">false</span>                   <span class="c1"># &lt;- 追加</span>
+<span class="w">  </span><span class="nt">container</span><span class="p">:</span><span class="w">                       </span><span class="c1"># &lt;- 追加</span>
+<span class="w">    </span><span class="nt">images</span><span class="p">:</span><span class="w">                        </span><span class="c1"># &lt;- 追加</span>
+<span class="w">      </span><span class="nt">build</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">spack/centos7:0.19.1</span><span class="w">  </span><span class="c1"># &lt;- 追加</span>
+<span class="w">      </span><span class="nt">final</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">spack/centos7:0.19.1</span><span class="w">  </span><span class="c1"># &lt;- 追加</span>
+<span class="w">    </span><span class="nt">format</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">singularity</span><span class="w">            </span><span class="c1"># &lt;- 追加</span>
+<span class="w">    </span><span class="nt">strip</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span><span class="w">                   </span><span class="c1"># &lt;- 追加</span>
 </code></pre></div>
 
 <p><code>spack containerize</code>を用いて、spack.yamlファイルからSingularityレシピファイル(myenv.def)を作成します。</p>
-<div class="codehilite"><pre><span></span><code><span class="gp">[username@es1 ~]$ </span>spack containerize &gt; myenv.def
+<div class="codehilite"><pre><span></span><code><span class="gp">[username@es1 ~]$ </span>spack<span class="w"> </span>containerize<span class="w"> </span>&gt;<span class="w"> </span>myenv.def
 </code></pre></div>
 
 <p>SigularityレシピファイルからSingularityイメージを作成する方法については、<a href="../../containers/#build-a-singularity-image">Singularityイメージファイルの作成(build)</a>をご参照ください。</p>

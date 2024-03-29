@@ -16,7 +16,7 @@
         <link rel="canonical" href="https://docs.abci.ai/ja/abci-cloudstorage/policy/">
       
       <link rel="icon" href="../../img/favicon.png">
-      <meta name="generator" content="mkdocs-1.1.2, mkdocs-material-7.1.3">
+      <meta name="generator" content="mkdocs-1.2.4, mkdocs-material-7.1.3">
     
     
       
@@ -1208,30 +1208,30 @@
 <table>
 <thead>
 <tr>
-<th align="left">アクション</th>
-<th align="left">説明</th>
+<th style="text-align: left;">アクション</th>
+<th style="text-align: left;">説明</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td align="left">s3:CreateBucket</td>
-<td align="left">バケットの作成</td>
+<td style="text-align: left;">s3:CreateBucket</td>
+<td style="text-align: left;">バケットの作成</td>
 </tr>
 <tr>
-<td align="left">s3:DeleteBucket</td>
-<td align="left">バケットの削除</td>
+<td style="text-align: left;">s3:DeleteBucket</td>
+<td style="text-align: left;">バケットの削除</td>
 </tr>
 <tr>
-<td align="left">s3:ListBucket</td>
-<td align="left">バケットの一覧を表示</td>
+<td style="text-align: left;">s3:ListBucket</td>
+<td style="text-align: left;">バケットの一覧を表示</td>
 </tr>
 <tr>
-<td align="left">s3:PutBucketACL</td>
-<td align="left">バケットにACLを適用</td>
+<td style="text-align: left;">s3:PutBucketACL</td>
+<td style="text-align: left;">バケットにACLを適用</td>
 </tr>
 <tr>
-<td align="left">s3:GetBucketACL</td>
-<td align="left">バケットに設定されたACLの一覧を取得</td>
+<td style="text-align: left;">s3:GetBucketACL</td>
+<td style="text-align: left;">バケットに設定されたACLの一覧を取得</td>
 </tr>
 </tbody>
 </table>
@@ -1241,38 +1241,38 @@
 <table>
 <thead>
 <tr>
-<th align="left">アクション</th>
-<th align="left">説明</th>
+<th style="text-align: left;">アクション</th>
+<th style="text-align: left;">説明</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td align="left">s3:GetObject</td>
-<td align="left">オブジェクトのダウンロード</td>
+<td style="text-align: left;">s3:GetObject</td>
+<td style="text-align: left;">オブジェクトのダウンロード</td>
 </tr>
 <tr>
-<td align="left">s3:PutObject</td>
-<td align="left">オブジェクトのアップロード</td>
+<td style="text-align: left;">s3:PutObject</td>
+<td style="text-align: left;">オブジェクトのアップロード</td>
 </tr>
 <tr>
-<td align="left">s3:DeleteObject</td>
-<td align="left">オブジェクトの削除</td>
+<td style="text-align: left;">s3:DeleteObject</td>
+<td style="text-align: left;">オブジェクトの削除</td>
 </tr>
 <tr>
-<td align="left">s3:GetObjectACL</td>
-<td align="left">オブジェクトに設定されたACLを取得</td>
+<td style="text-align: left;">s3:GetObjectACL</td>
+<td style="text-align: left;">オブジェクトに設定されたACLを取得</td>
 </tr>
 <tr>
-<td align="left">s3:PutObjectACL</td>
-<td align="left">オブジェクトにACLを適用</td>
+<td style="text-align: left;">s3:PutObjectACL</td>
+<td style="text-align: left;">オブジェクトにACLを適用</td>
 </tr>
 <tr>
-<td align="left">s3:HeadObject</td>
-<td align="left">オブジェクトのメタデータの取得</td>
+<td style="text-align: left;">s3:HeadObject</td>
+<td style="text-align: left;">オブジェクトのメタデータの取得</td>
 </tr>
 <tr>
-<td align="left">s3:CopyObject</td>
-<td align="left">オブジェクトのコピー</td>
+<td style="text-align: left;">s3:CopyObject</td>
+<td style="text-align: left;">オブジェクトのコピー</td>
 </tr>
 </tbody>
 </table>
@@ -1323,10 +1323,10 @@
 この例では、グループAが所有する share-bucket というバケットをグループBに所属する bbb00000.1、bbb00001.1 という2人のクラウドストレージアカウントにアクセスを許可します。</p>
 <p>まず、アクセスを許可するアカウント bbb00000.1 と bbb00001.1 の Arn の値をグループBのユーザが <code>aws iam get-user</code> で確認します。
 <code>aws iam get-user</code> を実行するには管理者用のクラウドストレージアカウントが必要です。</p>
-<div class="codehilite"><pre><span></span><code><span class="o">[</span><span class="n">username@es1 ~</span><span class="o">]</span><span class="err">$</span><span class="w"> </span><span class="n">aws</span><span class="w"> </span><span class="o">--</span><span class="n">endpoint</span><span class="o">-</span><span class="n">url</span><span class="w"> </span><span class="nl">https</span><span class="p">:</span><span class="o">//</span><span class="n">s3</span><span class="p">.</span><span class="n">abci</span><span class="p">.</span><span class="n">ai</span><span class="w"> </span><span class="n">iam</span><span class="w"> </span><span class="k">get</span><span class="o">-</span><span class="k">user</span><span class="w"> </span><span class="o">--</span><span class="k">user</span><span class="o">-</span><span class="n">name</span><span class="w"> </span><span class="n">bbb00000</span><span class="mf">.1</span><span class="w"> </span><span class="o">--</span><span class="n">query</span><span class="w"> </span><span class="k">User</span><span class="p">.</span><span class="n">Arn</span><span class="w"></span>
-<span class="ss">&quot;arn:aws:iam::987654321098:user/bbb00000.1&quot;</span><span class="w"></span>
-<span class="o">[</span><span class="n">username@es1 ~</span><span class="o">]</span><span class="err">$</span><span class="w"> </span><span class="n">aws</span><span class="w"> </span><span class="o">--</span><span class="n">endpoint</span><span class="o">-</span><span class="n">url</span><span class="w"> </span><span class="nl">https</span><span class="p">:</span><span class="o">//</span><span class="n">s3</span><span class="p">.</span><span class="n">abci</span><span class="p">.</span><span class="n">ai</span><span class="w"> </span><span class="n">iam</span><span class="w"> </span><span class="k">get</span><span class="o">-</span><span class="k">user</span><span class="w"> </span><span class="o">--</span><span class="k">user</span><span class="o">-</span><span class="n">name</span><span class="w"> </span><span class="n">bbb00001</span><span class="mf">.1</span><span class="w"> </span><span class="o">--</span><span class="n">query</span><span class="w"> </span><span class="k">User</span><span class="p">.</span><span class="n">Arn</span><span class="w"></span>
-<span class="ss">&quot;arn:aws:iam::987654321098:user/bbb00001.1&quot;</span><span class="w"></span>
+<div class="codehilite"><pre><span></span><code><span class="o">[</span><span class="n">username@es1 ~</span><span class="o">]</span><span class="err">$</span><span class="w"> </span><span class="n">aws</span><span class="w"> </span><span class="o">--</span><span class="n">endpoint</span><span class="o">-</span><span class="n">url</span><span class="w"> </span><span class="nl">https</span><span class="p">:</span><span class="o">//</span><span class="n">s3</span><span class="p">.</span><span class="n">abci</span><span class="p">.</span><span class="n">ai</span><span class="w"> </span><span class="n">iam</span><span class="w"> </span><span class="k">get</span><span class="o">-</span><span class="k">user</span><span class="w"> </span><span class="o">--</span><span class="k">user</span><span class="o">-</span><span class="n">name</span><span class="w"> </span><span class="n">bbb00000</span><span class="mf">.1</span><span class="w"> </span><span class="o">--</span><span class="n">query</span><span class="w"> </span><span class="k">User</span><span class="p">.</span><span class="n">Arn</span>
+<span class="ss">&quot;arn:aws:iam::987654321098:user/bbb00000.1&quot;</span>
+<span class="o">[</span><span class="n">username@es1 ~</span><span class="o">]</span><span class="err">$</span><span class="w"> </span><span class="n">aws</span><span class="w"> </span><span class="o">--</span><span class="n">endpoint</span><span class="o">-</span><span class="n">url</span><span class="w"> </span><span class="nl">https</span><span class="p">:</span><span class="o">//</span><span class="n">s3</span><span class="p">.</span><span class="n">abci</span><span class="p">.</span><span class="n">ai</span><span class="w"> </span><span class="n">iam</span><span class="w"> </span><span class="k">get</span><span class="o">-</span><span class="k">user</span><span class="w"> </span><span class="o">--</span><span class="k">user</span><span class="o">-</span><span class="n">name</span><span class="w"> </span><span class="n">bbb00001</span><span class="mf">.1</span><span class="w"> </span><span class="o">--</span><span class="n">query</span><span class="w"> </span><span class="k">User</span><span class="p">.</span><span class="n">Arn</span>
+<span class="ss">&quot;arn:aws:iam::987654321098:user/bbb00001.1&quot;</span>
 </code></pre></div>
 
 <p>次に、グループAのユーザが以下の内容の cross-access-pc.json というファイルを作成します。説明上、cross-access-pc.json としますが、任意のファイル名を使うことができます。</p>
@@ -1372,68 +1372,68 @@
 <table>
 <thead>
 <tr>
-<th align="left">条件演算子</th>
-<th align="left">説明</th>
+<th style="text-align: left;">条件演算子</th>
+<th style="text-align: left;">説明</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td align="left">StringEquals</td>
-<td align="left">指定した文字列と完全一致することをチェックする文字列条件演算子です。</td>
+<td style="text-align: left;">StringEquals</td>
+<td style="text-align: left;">指定した文字列と完全一致することをチェックする文字列条件演算子です。</td>
 </tr>
 <tr>
-<td align="left">StringNotEquals</td>
-<td align="left">指定した文字列に一致しないことをチェックする文字列条件演算子です 。</td>
+<td style="text-align: left;">StringNotEquals</td>
+<td style="text-align: left;">指定した文字列に一致しないことをチェックする文字列条件演算子です 。</td>
 </tr>
 <tr>
-<td align="left">StringLike</td>
-<td align="left">指定したパターンに一致することをチェックする文字列条件演算子です。複数文字一致のワイルドカード (*) と 1 文字一致のワイルドカード (?) を使うことができます。</td>
+<td style="text-align: left;">StringLike</td>
+<td style="text-align: left;">指定したパターンに一致することをチェックする文字列条件演算子です。複数文字一致のワイルドカード (*) と 1 文字一致のワイルドカード (?) を使うことができます。</td>
 </tr>
 <tr>
-<td align="left">StringNotLike</td>
-<td align="left">指定したパターンに一致しないことをチェックする文字列条件演算子です。複数文字一致のワイルドカード (*) と 1 文字一致のワイルドカード (?) を使うことができます。</td>
+<td style="text-align: left;">StringNotLike</td>
+<td style="text-align: left;">指定したパターンに一致しないことをチェックする文字列条件演算子です。複数文字一致のワイルドカード (*) と 1 文字一致のワイルドカード (?) を使うことができます。</td>
 </tr>
 <tr>
-<td align="left">DateLessThan</td>
-<td align="left">指定した日時よりも前であるかチェックする日付条件演算子です。日付は "2019-09-27T01:30:00Z" のような形式で記述します。</td>
+<td style="text-align: left;">DateLessThan</td>
+<td style="text-align: left;">指定した日時よりも前であるかチェックする日付条件演算子です。日付は "2019-09-27T01:30:00Z" のような形式で記述します。</td>
 </tr>
 <tr>
-<td align="left">DateGreaterThan</td>
-<td align="left">指定した日時よりも後であるかチェックする日付条件演算子です。日付のフォーマットは DateLessThan と同じです。</td>
+<td style="text-align: left;">DateGreaterThan</td>
+<td style="text-align: left;">指定した日時よりも後であるかチェックする日付条件演算子です。日付のフォーマットは DateLessThan と同じです。</td>
 </tr>
 <tr>
-<td align="left">IpAddress</td>
-<td align="left">指定のIPアドレスに一致する、または指定のアドレスレンジの範囲に含まれていることをチェックするIPアドレス条件演算子です。</td>
+<td style="text-align: left;">IpAddress</td>
+<td style="text-align: left;">指定のIPアドレスに一致する、または指定のアドレスレンジの範囲に含まれていることをチェックするIPアドレス条件演算子です。</td>
 </tr>
 <tr>
-<td align="left">NotIpAddress</td>
-<td align="left">指定のIPアドレスに一致しない、または指定のアドレスレンジの範囲に含まれていないことをチェックするIPアドレス条件演算子です。</td>
+<td style="text-align: left;">NotIpAddress</td>
+<td style="text-align: left;">指定のIPアドレスに一致しない、または指定のアドレスレンジの範囲に含まれていないことをチェックするIPアドレス条件演算子です。</td>
 </tr>
 </tbody>
 </table>
 <table>
 <thead>
 <tr>
-<th align="left">条件キー</th>
-<th align="left">説明</th>
+<th style="text-align: left;">条件キー</th>
+<th style="text-align: left;">説明</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td align="left">aws:username</td>
-<td align="left">例えば aaa00000.1 のようなクラウドストレージアカウント名です。文字列条件演算子でチェックします。</td>
+<td style="text-align: left;">aws:username</td>
+<td style="text-align: left;">例えば aaa00000.1 のようなクラウドストレージアカウント名です。文字列条件演算子でチェックします。</td>
 </tr>
 <tr>
-<td align="left">aws:SourceIp</td>
-<td align="left">接続元IPアドレスです。IPアドレス条件演算子でチェックします。</td>
+<td style="text-align: left;">aws:SourceIp</td>
+<td style="text-align: left;">接続元IPアドレスです。IPアドレス条件演算子でチェックします。</td>
 </tr>
 <tr>
-<td align="left">aws:CurrentTime</td>
-<td align="left">現在の日時です。日付条件演算子でチェックします。</td>
+<td style="text-align: left;">aws:CurrentTime</td>
+<td style="text-align: left;">現在の日時です。日付条件演算子でチェックします。</td>
 </tr>
 <tr>
-<td align="left">aws:UserAgent</td>
-<td align="left">HTTPヘッダのUser-Agentです。文字列条件演算子でチェックします。偽装が可能なためアクセスの禁止などには適しませんが、例えば、特定のアプリケーション向けに用意したバケットへの誤ったアクセスを防止する対策などに使うことが考えられます。</td>
+<td style="text-align: left;">aws:UserAgent</td>
+<td style="text-align: left;">HTTPヘッダのUser-Agentです。文字列条件演算子でチェックします。偽装が可能なためアクセスの禁止などには適しませんが、例えば、特定のアプリケーション向けに用意したバケットへの誤ったアクセスを防止する対策などに使うことが考えられます。</td>
 </tr>
 </tbody>
 </table>
@@ -1473,20 +1473,20 @@ Condition要素は、必要なければ省略可能です。</p>
 <p>上記では aaa00002.1 と aaa00003.1 が sensor8 にアクセスを禁止するポリシーを定義しています。
 Denyルールが優先されるため、他のポリシーで aaa00002.1 と aaa00003.1 に対して Allowルールが適用されていたとしても、本ポリシーを適用することでアクセスを禁止することができます。</p>
 <p>本ポリシーをクラウドストレージに登録します。</p>
-<div class="codehilite"><pre><span></span><code><span class="o">[</span><span class="n">username@es1 ~</span><span class="o">]</span><span class="err">$</span><span class="w"> </span><span class="n">aws</span><span class="w"> </span><span class="o">--</span><span class="n">endpoint</span><span class="o">-</span><span class="n">url</span><span class="w"> </span><span class="nl">https</span><span class="p">:</span><span class="o">//</span><span class="n">s3</span><span class="p">.</span><span class="n">abci</span><span class="p">.</span><span class="n">ai</span><span class="w"> </span><span class="n">iam</span><span class="w"> </span><span class="k">create</span><span class="o">-</span><span class="n">policy</span><span class="w"> </span><span class="o">--</span><span class="n">policy</span><span class="o">-</span><span class="n">name</span><span class="w"> </span><span class="n">sensor8policy</span><span class="w"> </span><span class="o">--</span><span class="n">policy</span><span class="o">-</span><span class="n">document</span><span class="w"> </span><span class="k">file</span><span class="err">:</span><span class="o">//</span><span class="n">sensor8</span><span class="p">.</span><span class="n">json</span><span class="w"></span>
-<span class="err">{</span><span class="w"></span>
-<span class="w">    </span><span class="ss">&quot;Policy&quot;</span><span class="err">:</span><span class="w"> </span><span class="err">{</span><span class="w"></span>
-<span class="w">        </span><span class="ss">&quot;PolicyName&quot;</span><span class="err">:</span><span class="w"> </span><span class="ss">&quot;sensor8policy&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">        </span><span class="ss">&quot;CreateDate&quot;</span><span class="err">:</span><span class="w"> </span><span class="ss">&quot;2019-07-30T06:22:47Z&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">        </span><span class="ss">&quot;AttachmentCount&quot;</span><span class="err">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"></span>
-<span class="w">        </span><span class="ss">&quot;IsAttachable&quot;</span><span class="err">:</span><span class="w"> </span><span class="k">true</span><span class="p">,</span><span class="w"></span>
-<span class="w">        </span><span class="ss">&quot;PolicyId&quot;</span><span class="err">:</span><span class="w"> </span><span class="ss">&quot;51OFYS8BQEFTP68KT4I63AAZYHNBPHHA&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">        </span><span class="ss">&quot;DefaultVersionId&quot;</span><span class="err">:</span><span class="w"> </span><span class="ss">&quot;v1&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">        </span><span class="ss">&quot;Path&quot;</span><span class="err">:</span><span class="w"> </span><span class="ss">&quot;/&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">        </span><span class="ss">&quot;Arn&quot;</span><span class="err">:</span><span class="w"> </span><span class="ss">&quot;arn:aws:iam::123456789012:policy/sensor8policy&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">        </span><span class="ss">&quot;UpdateDate&quot;</span><span class="err">:</span><span class="w"> </span><span class="ss">&quot;2019-07-30T06:22:47Z&quot;</span><span class="w"></span>
-<span class="w">    </span><span class="err">}</span><span class="w"></span>
-<span class="err">}</span><span class="w"></span>
+<div class="codehilite"><pre><span></span><code><span class="o">[</span><span class="n">username@es1 ~</span><span class="o">]</span><span class="err">$</span><span class="w"> </span><span class="n">aws</span><span class="w"> </span><span class="o">--</span><span class="n">endpoint</span><span class="o">-</span><span class="n">url</span><span class="w"> </span><span class="nl">https</span><span class="p">:</span><span class="o">//</span><span class="n">s3</span><span class="p">.</span><span class="n">abci</span><span class="p">.</span><span class="n">ai</span><span class="w"> </span><span class="n">iam</span><span class="w"> </span><span class="k">create</span><span class="o">-</span><span class="n">policy</span><span class="w"> </span><span class="o">--</span><span class="n">policy</span><span class="o">-</span><span class="n">name</span><span class="w"> </span><span class="n">sensor8policy</span><span class="w"> </span><span class="o">--</span><span class="n">policy</span><span class="o">-</span><span class="n">document</span><span class="w"> </span><span class="k">file</span><span class="err">:</span><span class="o">//</span><span class="n">sensor8</span><span class="p">.</span><span class="n">json</span>
+<span class="err">{</span>
+<span class="w">    </span><span class="ss">&quot;Policy&quot;</span><span class="err">:</span><span class="w"> </span><span class="err">{</span>
+<span class="w">        </span><span class="ss">&quot;PolicyName&quot;</span><span class="err">:</span><span class="w"> </span><span class="ss">&quot;sensor8policy&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="ss">&quot;CreateDate&quot;</span><span class="err">:</span><span class="w"> </span><span class="ss">&quot;2019-07-30T06:22:47Z&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="ss">&quot;AttachmentCount&quot;</span><span class="err">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span>
+<span class="w">        </span><span class="ss">&quot;IsAttachable&quot;</span><span class="err">:</span><span class="w"> </span><span class="k">true</span><span class="p">,</span>
+<span class="w">        </span><span class="ss">&quot;PolicyId&quot;</span><span class="err">:</span><span class="w"> </span><span class="ss">&quot;51OFYS8BQEFTP68KT4I63AAZYHNBPHHA&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="ss">&quot;DefaultVersionId&quot;</span><span class="err">:</span><span class="w"> </span><span class="ss">&quot;v1&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="ss">&quot;Path&quot;</span><span class="err">:</span><span class="w"> </span><span class="ss">&quot;/&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="ss">&quot;Arn&quot;</span><span class="err">:</span><span class="w"> </span><span class="ss">&quot;arn:aws:iam::123456789012:policy/sensor8policy&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="ss">&quot;UpdateDate&quot;</span><span class="err">:</span><span class="w"> </span><span class="ss">&quot;2019-07-30T06:22:47Z&quot;</span>
+<span class="w">    </span><span class="err">}</span>
+<span class="err">}</span>
 </code></pre></div>
 
 <p>カレントディレクトリの sensor8.json の内容を sensor8policy という名前で登録しています。
@@ -1525,20 +1525,20 @@ Arn の値は、クラウドストレージアカウントへの適用時に必�
 </code></pre></div>
 
 <p>このポリシーをクラウドストレージに登録します。</p>
-<div class="codehilite"><pre><span></span><code><span class="o">[</span><span class="n">username@es1 ~</span><span class="o">]</span><span class="err">$</span><span class="w"> </span><span class="n">aws</span><span class="w"> </span><span class="o">--</span><span class="n">endpoint</span><span class="o">-</span><span class="n">url</span><span class="w"> </span><span class="nl">https</span><span class="p">:</span><span class="o">//</span><span class="n">s3</span><span class="p">.</span><span class="n">abci</span><span class="p">.</span><span class="n">ai</span><span class="w"> </span><span class="n">iam</span><span class="w"> </span><span class="k">create</span><span class="o">-</span><span class="n">policy</span><span class="w"> </span><span class="o">--</span><span class="n">policy</span><span class="o">-</span><span class="n">name</span><span class="w"> </span><span class="n">src</span><span class="o">-</span><span class="n">ip</span><span class="o">-</span><span class="n">pc</span><span class="w"> </span><span class="o">--</span><span class="n">policy</span><span class="o">-</span><span class="n">document</span><span class="w"> </span><span class="k">file</span><span class="err">:</span><span class="o">//</span><span class="n">src</span><span class="o">-</span><span class="n">ip</span><span class="o">-</span><span class="n">pc</span><span class="p">.</span><span class="n">json</span><span class="w"></span>
-<span class="err">{</span><span class="w"></span>
-<span class="w">    </span><span class="ss">&quot;Policy&quot;</span><span class="err">:</span><span class="w"> </span><span class="err">{</span><span class="w"></span>
-<span class="w">        </span><span class="ss">&quot;PolicyName&quot;</span><span class="err">:</span><span class="w"> </span><span class="ss">&quot;src-ip-pc&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">        </span><span class="ss">&quot;CreateDate&quot;</span><span class="err">:</span><span class="w"> </span><span class="ss">&quot;2019-08-08T13:24:54Z&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">        </span><span class="ss">&quot;AttachmentCount&quot;</span><span class="err">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"></span>
-<span class="w">        </span><span class="ss">&quot;IsAttachable&quot;</span><span class="err">:</span><span class="w"> </span><span class="k">true</span><span class="p">,</span><span class="w"></span>
-<span class="w">        </span><span class="ss">&quot;PolicyId&quot;</span><span class="err">:</span><span class="w"> </span><span class="ss">&quot;K9B9SFWR0JL4GSY8Z1K2441VJERSC2Q7&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">        </span><span class="ss">&quot;DefaultVersionId&quot;</span><span class="err">:</span><span class="w"> </span><span class="ss">&quot;v1&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">        </span><span class="ss">&quot;Path&quot;</span><span class="err">:</span><span class="w"> </span><span class="ss">&quot;/&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">        </span><span class="ss">&quot;Arn&quot;</span><span class="err">:</span><span class="w"> </span><span class="ss">&quot;arn:aws:iam::123456789012:policy/src-ip-pc&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">        </span><span class="ss">&quot;UpdateDate&quot;</span><span class="err">:</span><span class="w"> </span><span class="ss">&quot;2019-08-08T13:24:54Z&quot;</span><span class="w"></span>
-<span class="w">    </span><span class="err">}</span><span class="w"></span>
-<span class="err">}</span><span class="w"></span>
+<div class="codehilite"><pre><span></span><code><span class="o">[</span><span class="n">username@es1 ~</span><span class="o">]</span><span class="err">$</span><span class="w"> </span><span class="n">aws</span><span class="w"> </span><span class="o">--</span><span class="n">endpoint</span><span class="o">-</span><span class="n">url</span><span class="w"> </span><span class="nl">https</span><span class="p">:</span><span class="o">//</span><span class="n">s3</span><span class="p">.</span><span class="n">abci</span><span class="p">.</span><span class="n">ai</span><span class="w"> </span><span class="n">iam</span><span class="w"> </span><span class="k">create</span><span class="o">-</span><span class="n">policy</span><span class="w"> </span><span class="o">--</span><span class="n">policy</span><span class="o">-</span><span class="n">name</span><span class="w"> </span><span class="n">src</span><span class="o">-</span><span class="n">ip</span><span class="o">-</span><span class="n">pc</span><span class="w"> </span><span class="o">--</span><span class="n">policy</span><span class="o">-</span><span class="n">document</span><span class="w"> </span><span class="k">file</span><span class="err">:</span><span class="o">//</span><span class="n">src</span><span class="o">-</span><span class="n">ip</span><span class="o">-</span><span class="n">pc</span><span class="p">.</span><span class="n">json</span>
+<span class="err">{</span>
+<span class="w">    </span><span class="ss">&quot;Policy&quot;</span><span class="err">:</span><span class="w"> </span><span class="err">{</span>
+<span class="w">        </span><span class="ss">&quot;PolicyName&quot;</span><span class="err">:</span><span class="w"> </span><span class="ss">&quot;src-ip-pc&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="ss">&quot;CreateDate&quot;</span><span class="err">:</span><span class="w"> </span><span class="ss">&quot;2019-08-08T13:24:54Z&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="ss">&quot;AttachmentCount&quot;</span><span class="err">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span>
+<span class="w">        </span><span class="ss">&quot;IsAttachable&quot;</span><span class="err">:</span><span class="w"> </span><span class="k">true</span><span class="p">,</span>
+<span class="w">        </span><span class="ss">&quot;PolicyId&quot;</span><span class="err">:</span><span class="w"> </span><span class="ss">&quot;K9B9SFWR0JL4GSY8Z1K2441VJERSC2Q7&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="ss">&quot;DefaultVersionId&quot;</span><span class="err">:</span><span class="w"> </span><span class="ss">&quot;v1&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="ss">&quot;Path&quot;</span><span class="err">:</span><span class="w"> </span><span class="ss">&quot;/&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="ss">&quot;Arn&quot;</span><span class="err">:</span><span class="w"> </span><span class="ss">&quot;arn:aws:iam::123456789012:policy/src-ip-pc&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="ss">&quot;UpdateDate&quot;</span><span class="err">:</span><span class="w"> </span><span class="ss">&quot;2019-08-08T13:24:54Z&quot;</span>
+<span class="w">    </span><span class="err">}</span>
+<span class="err">}</span>
 </code></pre></div>
 
 <p>次に、グループ内の各クラウドストレージアカウントに本ポリシーを適用していきます。以下の例ではクラウドストレージアカウント aaa00004.1 にポリシーを適用しています。ポリシーのARNは、ポリシーを登録した時に出力されていますが、aws --endpoint-url https://s3.abci.ai iam list-policies を実行して確認することもできます。</p>

@@ -16,7 +16,7 @@
         <link rel="canonical" href="https://docs.abci.ai/en/system-updates/">
       
       <link rel="icon" href="../img/favicon.png">
-      <meta name="generator" content="mkdocs-1.1.2, mkdocs-material-7.1.3">
+      <meta name="generator" content="mkdocs-1.2.4, mkdocs-material-7.1.3">
     
     
       
@@ -978,6 +978,13 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#2024-03-27" class="md-nav__link">
+    2024-03-27
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#2024-01-23" class="md-nav__link">
     2024-01-23
   </a>
@@ -1621,49 +1628,83 @@
 <table>
 <thead>
 <tr>
-<th align="left">Add / Update / Delete</th>
-<th align="left">Software</th>
-<th align="left">Version</th>
-<th align="left">Previous version</th>
+<th style="text-align: left;">Add / Update / Delete</th>
+<th style="text-align: left;">Software</th>
+<th style="text-align: left;">Version</th>
+<th style="text-align: left;">Previous version</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td align="left">Update</td>
-<td align="left">ABCI Singularity Endpoint</td>
-<td align="left">2.3</td>
-<td align="left">2.1.5</td>
+<td style="text-align: left;">Update</td>
+<td style="text-align: left;">ABCI Singularity Endpoint</td>
+<td style="text-align: left;">2.3</td>
+<td style="text-align: left;">2.1.5</td>
 </tr>
 </tbody>
 </table>
+<h2 id="2024-03-27">2024-03-27</h2>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Add / Update / Delete</th>
+<th style="text-align: left;">Software</th>
+<th style="text-align: left;">Version</th>
+<th style="text-align: left;">Previous version</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">Add</td>
+<td style="text-align: left;">cuda</td>
+<td style="text-align: left;">12.4.0</td>
+<td style="text-align: left;"></td>
+</tr>
+<tr>
+<td style="text-align: left;">Add</td>
+<td style="text-align: left;">cudnn</td>
+<td style="text-align: left;">9.0.0</td>
+<td style="text-align: left;"></td>
+</tr>
+<tr>
+<td style="text-align: left;">Add</td>
+<td style="text-align: left;">nccl</td>
+<td style="text-align: left;">2.20.5-1</td>
+<td style="text-align: left;"></td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>We have confirmed that when cuDNN 9.0.0 is used with CUDA 11.0 to CUDA 11.3, an error occurs when calling the <code>cudnnRNNBackwardWeights_v8</code> function.</li>
+</ul>
 <h2 id="2024-01-23">2024-01-23</h2>
 <table>
 <thead>
 <tr>
-<th align="left">Add / Update / Delete</th>
-<th align="left">Software</th>
-<th align="left">Version</th>
-<th align="left">Previous version</th>
+<th style="text-align: left;">Add / Update / Delete</th>
+<th style="text-align: left;">Software</th>
+<th style="text-align: left;">Version</th>
+<th style="text-align: left;">Previous version</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td align="left">Add</td>
-<td align="left">cuda</td>
-<td align="left">12.3.2</td>
-<td align="left"></td>
+<td style="text-align: left;">Add</td>
+<td style="text-align: left;">cuda</td>
+<td style="text-align: left;">12.3.2</td>
+<td style="text-align: left;"></td>
 </tr>
 <tr>
-<td align="left">Add</td>
-<td align="left">cudnn</td>
-<td align="left">8.9.7</td>
-<td align="left"></td>
+<td style="text-align: left;">Add</td>
+<td style="text-align: left;">cudnn</td>
+<td style="text-align: left;">8.9.7</td>
+<td style="text-align: left;"></td>
 </tr>
 <tr>
-<td align="left">Add</td>
-<td align="left">nccl</td>
-<td align="left">2.19.3-1</td>
-<td align="left"></td>
+<td style="text-align: left;">Add</td>
+<td style="text-align: left;">nccl</td>
+<td style="text-align: left;">2.19.3-1</td>
+<td style="text-align: left;"></td>
 </tr>
 </tbody>
 </table>
@@ -1674,42 +1715,42 @@
 <table>
 <thead>
 <tr>
-<th align="left">Resource type</th>
-<th align="left">Resource type name</th>
-<th align="left">Previous resource type charge coefficient</th>
-<th align="left">Changed resource type charge coefficient</th>
+<th style="text-align: left;">Resource type</th>
+<th style="text-align: left;">Resource type name</th>
+<th style="text-align: left;">Previous resource type charge coefficient</th>
+<th style="text-align: left;">Changed resource type charge coefficient</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td align="left">Full</td>
-<td align="left">rt_F</td>
-<td align="left">0.50</td>
-<td align="left">1.00</td>
+<td style="text-align: left;">Full</td>
+<td style="text-align: left;">rt_F</td>
+<td style="text-align: left;">0.50</td>
+<td style="text-align: left;">1.00</td>
 </tr>
 <tr>
-<td align="left">G.large</td>
-<td align="left">rt_G.large</td>
-<td align="left">0.50</td>
-<td align="left">0.90</td>
+<td style="text-align: left;">G.large</td>
+<td style="text-align: left;">rt_G.large</td>
+<td style="text-align: left;">0.50</td>
+<td style="text-align: left;">0.90</td>
 </tr>
 <tr>
-<td align="left">G.small</td>
-<td align="left">rt_G.small</td>
-<td align="left">0.20</td>
-<td align="left">0.30</td>
+<td style="text-align: left;">G.small</td>
+<td style="text-align: left;">rt_G.small</td>
+<td style="text-align: left;">0.20</td>
+<td style="text-align: left;">0.30</td>
 </tr>
 <tr>
-<td align="left">C.large</td>
-<td align="left">rt_C.large</td>
-<td align="left">0.30</td>
-<td align="left">0.60</td>
+<td style="text-align: left;">C.large</td>
+<td style="text-align: left;">rt_C.large</td>
+<td style="text-align: left;">0.30</td>
+<td style="text-align: left;">0.60</td>
 </tr>
 <tr>
-<td align="left">C.small</td>
-<td align="left">rt_C.small</td>
-<td align="left">0.10</td>
-<td align="left">0.20</td>
+<td style="text-align: left;">C.small</td>
+<td style="text-align: left;">rt_C.small</td>
+<td style="text-align: left;">0.10</td>
+<td style="text-align: left;">0.20</td>
 </tr>
 </tbody>
 </table>
@@ -1717,24 +1758,24 @@
 <table>
 <thead>
 <tr>
-<th align="left">Add / Update / Delete</th>
-<th align="left">Software</th>
-<th align="left">Version</th>
-<th align="left">Previous version</th>
+<th style="text-align: left;">Add / Update / Delete</th>
+<th style="text-align: left;">Software</th>
+<th style="text-align: left;">Version</th>
+<th style="text-align: left;">Previous version</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td align="left">Add</td>
-<td align="left">rclone</td>
-<td align="left">1.61.1</td>
-<td align="left"></td>
+<td style="text-align: left;">Add</td>
+<td style="text-align: left;">rclone</td>
+<td style="text-align: left;">1.61.1</td>
+<td style="text-align: left;"></td>
 </tr>
 <tr>
-<td align="left">Update</td>
-<td align="left">SingularityPRO</td>
-<td align="left">3.11-5</td>
-<td align="left">3.9-10</td>
+<td style="text-align: left;">Update</td>
+<td style="text-align: left;">SingularityPRO</td>
+<td style="text-align: left;">3.11-5</td>
+<td style="text-align: left;">3.9-10</td>
 </tr>
 </tbody>
 </table>
@@ -1752,30 +1793,30 @@
 <table>
 <thead>
 <tr>
-<th align="left">Add / Update / Delete</th>
-<th align="left">Software</th>
-<th align="left">Version</th>
-<th align="left">Previous version</th>
+<th style="text-align: left;">Add / Update / Delete</th>
+<th style="text-align: left;">Software</th>
+<th style="text-align: left;">Version</th>
+<th style="text-align: left;">Previous version</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td align="left">Add</td>
-<td align="left">cuda</td>
-<td align="left">12.3.0</td>
-<td align="left"></td>
+<td style="text-align: left;">Add</td>
+<td style="text-align: left;">cuda</td>
+<td style="text-align: left;">12.3.0</td>
+<td style="text-align: left;"></td>
 </tr>
 <tr>
-<td align="left">Add</td>
-<td align="left">cudnn</td>
-<td align="left">8.9.5</td>
-<td align="left"></td>
+<td style="text-align: left;">Add</td>
+<td style="text-align: left;">cudnn</td>
+<td style="text-align: left;">8.9.5</td>
+<td style="text-align: left;"></td>
 </tr>
 <tr>
-<td align="left">Add</td>
-<td align="left">nccl</td>
-<td align="left">2.18.5-1</td>
-<td align="left"></td>
+<td style="text-align: left;">Add</td>
+<td style="text-align: left;">nccl</td>
+<td style="text-align: left;">2.18.5-1</td>
+<td style="text-align: left;"></td>
 </tr>
 </tbody>
 </table>
@@ -1791,42 +1832,42 @@
 <table>
 <thead>
 <tr>
-<th align="left">Resource type</th>
-<th align="left">Resource type name</th>
-<th align="left">Previous resource type charge coefficient</th>
-<th align="left">Changed resource type charge coefficient</th>
+<th style="text-align: left;">Resource type</th>
+<th style="text-align: left;">Resource type name</th>
+<th style="text-align: left;">Previous resource type charge coefficient</th>
+<th style="text-align: left;">Changed resource type charge coefficient</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td align="left">Full</td>
-<td align="left">rt_F</td>
-<td align="left">1.00</td>
-<td align="left">0.50</td>
+<td style="text-align: left;">Full</td>
+<td style="text-align: left;">rt_F</td>
+<td style="text-align: left;">1.00</td>
+<td style="text-align: left;">0.50</td>
 </tr>
 <tr>
-<td align="left">G.large</td>
-<td align="left">rt_G.large</td>
-<td align="left">0.90</td>
-<td align="left">0.50</td>
+<td style="text-align: left;">G.large</td>
+<td style="text-align: left;">rt_G.large</td>
+<td style="text-align: left;">0.90</td>
+<td style="text-align: left;">0.50</td>
 </tr>
 <tr>
-<td align="left">G.small</td>
-<td align="left">rt_G.small</td>
-<td align="left">0.30</td>
-<td align="left">0.20</td>
+<td style="text-align: left;">G.small</td>
+<td style="text-align: left;">rt_G.small</td>
+<td style="text-align: left;">0.30</td>
+<td style="text-align: left;">0.20</td>
 </tr>
 <tr>
-<td align="left">C.large</td>
-<td align="left">rt_C.large</td>
-<td align="left">0.60</td>
-<td align="left">0.30</td>
+<td style="text-align: left;">C.large</td>
+<td style="text-align: left;">rt_C.large</td>
+<td style="text-align: left;">0.60</td>
+<td style="text-align: left;">0.30</td>
 </tr>
 <tr>
-<td align="left">C.small</td>
-<td align="left">rt_C.small</td>
-<td align="left">0.20</td>
-<td align="left">0.10</td>
+<td style="text-align: left;">C.small</td>
+<td style="text-align: left;">rt_C.small</td>
+<td style="text-align: left;">0.20</td>
+<td style="text-align: left;">0.10</td>
 </tr>
 </tbody>
 </table>
@@ -1842,41 +1883,41 @@
 <table>
 <thead>
 <tr>
-<th align="left">Service</th>
-<th align="left">Resource type name</th>
-<th align="left">Limitations</th>
-<th align="left">Previous upper limit</th>
-<th align="left">Changed upper limit</th>
+<th style="text-align: left;">Service</th>
+<th style="text-align: left;">Resource type name</th>
+<th style="text-align: left;">Limitations</th>
+<th style="text-align: left;">Previous upper limit</th>
+<th style="text-align: left;">Changed upper limit</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td align="left">Spot</td>
-<td align="left">rt_AF</td>
-<td align="left">Number of nodes available at the same time</td>
-<td align="left">90 nodes</td>
-<td align="left">64 nodes</td>
+<td style="text-align: left;">Spot</td>
+<td style="text-align: left;">rt_AF</td>
+<td style="text-align: left;">Number of nodes available at the same time</td>
+<td style="text-align: left;">90 nodes</td>
+<td style="text-align: left;">64 nodes</td>
 </tr>
 <tr>
-<td align="left">Spot</td>
-<td align="left">rt_AF</td>
-<td align="left">Limit of elapsed time</td>
-<td align="left">168 hours</td>
-<td align="left">72 hours</td>
+<td style="text-align: left;">Spot</td>
+<td style="text-align: left;">rt_AF</td>
+<td style="text-align: left;">Limit of elapsed time</td>
+<td style="text-align: left;">168 hours</td>
+<td style="text-align: left;">72 hours</td>
 </tr>
 <tr>
-<td align="left">Spot</td>
-<td align="left">rt_AF</td>
-<td align="left">Limit of node-time product</td>
-<td align="left">15120 nodes &middot; hours</td>
-<td align="left">2304 nodes &middot; hours</td>
+<td style="text-align: left;">Spot</td>
+<td style="text-align: left;">rt_AF</td>
+<td style="text-align: left;">Limit of node-time product</td>
+<td style="text-align: left;">15120 nodes &middot; hours</td>
+<td style="text-align: left;">2304 nodes &middot; hours</td>
 </tr>
 <tr>
-<td align="left">Spot</td>
-<td align="left">rt_M.large, rt_M.small</td>
-<td align="left">Limit of node-time product</td>
-<td align="left">2304 nodes &middot; hours</td>
-<td align="left">72 nodes &middot; hours</td>
+<td style="text-align: left;">Spot</td>
+<td style="text-align: left;">rt_M.large, rt_M.small</td>
+<td style="text-align: left;">Limit of node-time product</td>
+<td style="text-align: left;">2304 nodes &middot; hours</td>
+<td style="text-align: left;">72 nodes &middot; hours</td>
 </tr>
 </tbody>
 </table>
@@ -1891,20 +1932,20 @@ If you want to use the previous limit, please submit your job before the limit c
 <table>
 <thead>
 <tr>
-<th align="left">Service</th>
-<th align="left">Resource type name</th>
-<th align="left">Limitations</th>
-<th align="left">Previous upper limit</th>
-<th align="left">Changed upper limit</th>
+<th style="text-align: left;">Service</th>
+<th style="text-align: left;">Resource type name</th>
+<th style="text-align: left;">Limitations</th>
+<th style="text-align: left;">Previous upper limit</th>
+<th style="text-align: left;">Changed upper limit</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td align="left">Reserved</td>
-<td align="left">rt_AF</td>
-<td align="left">Maximum number of nodes can be reserved at once per system</td>
-<td align="left">50 nodes</td>
-<td align="left">30 nodes</td>
+<td style="text-align: left;">Reserved</td>
+<td style="text-align: left;">rt_AF</td>
+<td style="text-align: left;">Maximum number of nodes can be reserved at once per system</td>
+<td style="text-align: left;">50 nodes</td>
+<td style="text-align: left;">30 nodes</td>
 </tr>
 </tbody>
 </table>
@@ -1912,24 +1953,24 @@ If you want to use the previous limit, please submit your job before the limit c
 <table>
 <thead>
 <tr>
-<th align="left">Add / Update / Delete</th>
-<th align="left">Software</th>
-<th align="left">Version</th>
-<th align="left">Previous version</th>
+<th style="text-align: left;">Add / Update / Delete</th>
+<th style="text-align: left;">Software</th>
+<th style="text-align: left;">Version</th>
+<th style="text-align: left;">Previous version</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td align="left">Add</td>
-<td align="left">cuda</td>
-<td align="left">12.2.0</td>
-<td align="left"></td>
+<td style="text-align: left;">Add</td>
+<td style="text-align: left;">cuda</td>
+<td style="text-align: left;">12.2.0</td>
+<td style="text-align: left;"></td>
 </tr>
 <tr>
-<td align="left">Add</td>
-<td align="left">nccl</td>
-<td align="left">2.18.3-1</td>
-<td align="left"></td>
+<td style="text-align: left;">Add</td>
+<td style="text-align: left;">nccl</td>
+<td style="text-align: left;">2.18.3-1</td>
+<td style="text-align: left;"></td>
 </tr>
 </tbody>
 </table>
@@ -1951,18 +1992,18 @@ If you want to use the previous limit, please submit your job before the limit c
 <table>
 <thead>
 <tr>
-<th align="left">Add / Update / Delete</th>
-<th align="left">Software</th>
-<th align="left">Version</th>
-<th align="left">Previous version</th>
+<th style="text-align: left;">Add / Update / Delete</th>
+<th style="text-align: left;">Software</th>
+<th style="text-align: left;">Version</th>
+<th style="text-align: left;">Previous version</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td align="left">Add</td>
-<td align="left">cudnn</td>
-<td align="left">8.9.2</td>
-<td align="left"></td>
+<td style="text-align: left;">Add</td>
+<td style="text-align: left;">cudnn</td>
+<td style="text-align: left;">8.9.2</td>
+<td style="text-align: left;"></td>
 </tr>
 </tbody>
 </table>
@@ -1973,30 +2014,30 @@ If you want to use the previous limit, please submit your job before the limit c
 <table>
 <thead>
 <tr>
-<th align="left">Resource type name</th>
-<th align="left">Limitations</th>
-<th align="left">Previous upper limit</th>
-<th align="left">Changed upper limit</th>
+<th style="text-align: left;">Resource type name</th>
+<th style="text-align: left;">Limitations</th>
+<th style="text-align: left;">Previous upper limit</th>
+<th style="text-align: left;">Changed upper limit</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td align="left">rt_F, rt_G.large</td>
-<td align="left">Limit of elapsed time</td>
-<td align="left">72 hours</td>
-<td align="left">168 hours</td>
+<td style="text-align: left;">rt_F, rt_G.large</td>
+<td style="text-align: left;">Limit of elapsed time</td>
+<td style="text-align: left;">72 hours</td>
+<td style="text-align: left;">168 hours</td>
 </tr>
 <tr>
-<td align="left">rt_G.small, rt_AG.small, rt_C.small</td>
-<td align="left">Limit of elapsed time</td>
-<td align="left">168 hours</td>
-<td align="left">72 hours</td>
+<td style="text-align: left;">rt_G.small, rt_AG.small, rt_C.small</td>
+<td style="text-align: left;">Limit of elapsed time</td>
+<td style="text-align: left;">168 hours</td>
+<td style="text-align: left;">72 hours</td>
 </tr>
 <tr>
-<td align="left">rt_F</td>
-<td align="left">Limit of node-time product</td>
-<td align="left">2304 nodes &middot; hours</td>
-<td align="left">43008 nodes &middot; hours</td>
+<td style="text-align: left;">rt_F</td>
+<td style="text-align: left;">Limit of node-time product</td>
+<td style="text-align: left;">2304 nodes &middot; hours</td>
+<td style="text-align: left;">43008 nodes &middot; hours</td>
 </tr>
 </tbody>
 </table>
@@ -2006,30 +2047,30 @@ If you want to use the previous limit, please submit your job before the limit c
 <table>
 <thead>
 <tr>
-<th align="left">Resource type name</th>
-<th align="left">Limitations</th>
-<th align="left">Previous upper limit</th>
-<th align="left">Changed upper limit</th>
+<th style="text-align: left;">Resource type name</th>
+<th style="text-align: left;">Limitations</th>
+<th style="text-align: left;">Previous upper limit</th>
+<th style="text-align: left;">Changed upper limit</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td align="left">rt_F</td>
-<td align="left">Maximum reserved nodes per reservation</td>
-<td align="left">34 nodes</td>
-<td align="left">272 nodes</td>
+<td style="text-align: left;">rt_F</td>
+<td style="text-align: left;">Maximum reserved nodes per reservation</td>
+<td style="text-align: left;">34 nodes</td>
+<td style="text-align: left;">272 nodes</td>
 </tr>
 <tr>
-<td align="left">rt_F</td>
-<td align="left">Maximum reserved node time per reservation</td>
-<td align="left">13056 nodes &middot; hours</td>
-<td align="left">45696 nodes &middot; hours</td>
+<td style="text-align: left;">rt_F</td>
+<td style="text-align: left;">Maximum reserved node time per reservation</td>
+<td style="text-align: left;">13056 nodes &middot; hours</td>
+<td style="text-align: left;">45696 nodes &middot; hours</td>
 </tr>
 <tr>
-<td align="left">rt_F</td>
-<td align="left">Maximum number of nodes can be reserved at once per system</td>
-<td align="left">442 nodes</td>
-<td align="left">476 nodes</td>
+<td style="text-align: left;">rt_F</td>
+<td style="text-align: left;">Maximum number of nodes can be reserved at once per system</td>
+<td style="text-align: left;">442 nodes</td>
+<td style="text-align: left;">476 nodes</td>
 </tr>
 </tbody>
 </table>
@@ -2041,41 +2082,41 @@ However, depending on power and congestion conditions, it is possible to restore
 <table>
 <thead>
 <tr>
-<th align="left">Service</th>
-<th align="left">Resource type name</th>
-<th align="left">Limitations</th>
-<th align="left">Previous upper limit</th>
-<th align="left">Changed upper limit</th>
+<th style="text-align: left;">Service</th>
+<th style="text-align: left;">Resource type name</th>
+<th style="text-align: left;">Limitations</th>
+<th style="text-align: left;">Previous upper limit</th>
+<th style="text-align: left;">Changed upper limit</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td align="left">Spot</td>
-<td align="left">rt_AF</td>
-<td align="left">Number of nodes available at the same time</td>
-<td align="left">64 nodes</td>
-<td align="left">90 nodes</td>
+<td style="text-align: left;">Spot</td>
+<td style="text-align: left;">rt_AF</td>
+<td style="text-align: left;">Number of nodes available at the same time</td>
+<td style="text-align: left;">64 nodes</td>
+<td style="text-align: left;">90 nodes</td>
 </tr>
 <tr>
-<td align="left">Spot</td>
-<td align="left">rt_AF</td>
-<td align="left">Limit of elapsed time</td>
-<td align="left">72 hours</td>
-<td align="left">168 hours</td>
+<td style="text-align: left;">Spot</td>
+<td style="text-align: left;">rt_AF</td>
+<td style="text-align: left;">Limit of elapsed time</td>
+<td style="text-align: left;">72 hours</td>
+<td style="text-align: left;">168 hours</td>
 </tr>
 <tr>
-<td align="left">Spot</td>
-<td align="left">rt_AF</td>
-<td align="left">Limit of node-time product</td>
-<td align="left">288 nodes &middot; hours</td>
-<td align="left">15120 nodes &middot; hours</td>
+<td style="text-align: left;">Spot</td>
+<td style="text-align: left;">rt_AF</td>
+<td style="text-align: left;">Limit of node-time product</td>
+<td style="text-align: left;">288 nodes &middot; hours</td>
+<td style="text-align: left;">15120 nodes &middot; hours</td>
 </tr>
 <tr>
-<td align="left">Reserved</td>
-<td align="left">rt_AF</td>
-<td align="left">Maximum reserved nodes per reservation</td>
-<td align="left">18 nodes</td>
-<td align="left">30 nodes</td>
+<td style="text-align: left;">Reserved</td>
+<td style="text-align: left;">rt_AF</td>
+<td style="text-align: left;">Maximum reserved nodes per reservation</td>
+<td style="text-align: left;">18 nodes</td>
+<td style="text-align: left;">30 nodes</td>
 </tr>
 </tbody>
 </table>
@@ -2083,30 +2124,30 @@ However, depending on power and congestion conditions, it is possible to restore
 <table>
 <thead>
 <tr>
-<th align="left">Add / Update / Delete</th>
-<th align="left">Software</th>
-<th align="left">Version</th>
-<th align="left">Previous version</th>
+<th style="text-align: left;">Add / Update / Delete</th>
+<th style="text-align: left;">Software</th>
+<th style="text-align: left;">Version</th>
+<th style="text-align: left;">Previous version</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td align="left">Add</td>
-<td align="left">cuda</td>
-<td align="left">12.1.1</td>
-<td align="left"></td>
+<td style="text-align: left;">Add</td>
+<td style="text-align: left;">cuda</td>
+<td style="text-align: left;">12.1.1</td>
+<td style="text-align: left;"></td>
 </tr>
 <tr>
-<td align="left">Add</td>
-<td align="left">cudnn</td>
-<td align="left">8.9.1</td>
-<td align="left"></td>
+<td style="text-align: left;">Add</td>
+<td style="text-align: left;">cudnn</td>
+<td style="text-align: left;">8.9.1</td>
+<td style="text-align: left;"></td>
 </tr>
 <tr>
-<td align="left">Add</td>
-<td align="left">nccl</td>
-<td align="left">2.18.1-1</td>
-<td align="left"></td>
+<td style="text-align: left;">Add</td>
+<td style="text-align: left;">nccl</td>
+<td style="text-align: left;">2.18.1-1</td>
+<td style="text-align: left;"></td>
 </tr>
 </tbody>
 </table>
@@ -2175,228 +2216,228 @@ However, depending on power and congestion conditions, it is possible to restore
 <table>
 <thead>
 <tr>
-<th align="left">Add / Update / Delete</th>
-<th align="left">Software</th>
-<th align="left">Version</th>
-<th align="left">Previous version</th>
+<th style="text-align: left;">Add / Update / Delete</th>
+<th style="text-align: left;">Software</th>
+<th style="text-align: left;">Version</th>
+<th style="text-align: left;">Previous version</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td align="left">Add</td>
-<td align="left">gcc</td>
-<td align="left">12.2.0</td>
-<td align="left"></td>
+<td style="text-align: left;">Add</td>
+<td style="text-align: left;">gcc</td>
+<td style="text-align: left;">12.2.0</td>
+<td style="text-align: left;"></td>
 </tr>
 <tr>
-<td align="left">Delete</td>
-<td align="left">gcc</td>
-<td align="left">9.3.0<br>11.2.0</td>
-<td align="left"></td>
+<td style="text-align: left;">Delete</td>
+<td style="text-align: left;">gcc</td>
+<td style="text-align: left;">9.3.0<br>11.2.0</td>
+<td style="text-align: left;"></td>
 </tr>
 <tr>
-<td align="left">Add</td>
-<td align="left">python</td>
-<td align="left">3.11.2</td>
-<td align="left"></td>
+<td style="text-align: left;">Add</td>
+<td style="text-align: left;">python</td>
+<td style="text-align: left;">3.11.2</td>
+<td style="text-align: left;"></td>
 </tr>
 <tr>
-<td align="left">Update</td>
-<td align="left">python</td>
-<td align="left">3.10.10</td>
-<td align="left">3.10.4</td>
+<td style="text-align: left;">Update</td>
+<td style="text-align: left;">python</td>
+<td style="text-align: left;">3.10.10</td>
+<td style="text-align: left;">3.10.4</td>
 </tr>
 <tr>
-<td align="left">Delete</td>
-<td align="left">python</td>
-<td align="left">2.7.18<br>3.7.13<br>3.8.13</td>
-<td align="left"></td>
+<td style="text-align: left;">Delete</td>
+<td style="text-align: left;">python</td>
+<td style="text-align: left;">2.7.18<br>3.7.13<br>3.8.13</td>
+<td style="text-align: left;"></td>
 </tr>
 <tr>
-<td align="left">Delete</td>
-<td align="left">cuda</td>
-<td align="left">9.0.176.1<br>9.1.85.3<br>9.2.148.1<br>10.0.130.1<br>10.1.243<br>11.7.0</td>
-<td align="left"></td>
+<td style="text-align: left;">Delete</td>
+<td style="text-align: left;">cuda</td>
+<td style="text-align: left;">9.0.176.1<br>9.1.85.3<br>9.2.148.1<br>10.0.130.1<br>10.1.243<br>11.7.0</td>
+<td style="text-align: left;"></td>
 </tr>
 <tr>
-<td align="left">Delete</td>
-<td align="left">cudnn</td>
-<td align="left">7.0.5<br>7.1.4<br>7.2.1<br>7.3.1<br>7.4.2<br>7.5.1</td>
-<td align="left"></td>
+<td style="text-align: left;">Delete</td>
+<td style="text-align: left;">cudnn</td>
+<td style="text-align: left;">7.0.5<br>7.1.4<br>7.2.1<br>7.3.1<br>7.4.2<br>7.5.1</td>
+<td style="text-align: left;"></td>
 </tr>
 <tr>
-<td align="left">Delete</td>
-<td align="left">nccl</td>
-<td align="left">2.4.8-1</td>
-<td align="left"></td>
+<td style="text-align: left;">Delete</td>
+<td style="text-align: left;">nccl</td>
+<td style="text-align: left;">2.4.8-1</td>
+<td style="text-align: left;"></td>
 </tr>
 <tr>
-<td align="left">Add</td>
-<td align="left">hpcx</td>
-<td align="left">2.12</td>
-<td align="left"></td>
+<td style="text-align: left;">Add</td>
+<td style="text-align: left;">hpcx</td>
+<td style="text-align: left;">2.12</td>
+<td style="text-align: left;"></td>
 </tr>
 <tr>
-<td align="left">Add</td>
-<td align="left">hpcx-debug</td>
-<td align="left">2.12</td>
-<td align="left"></td>
+<td style="text-align: left;">Add</td>
+<td style="text-align: left;">hpcx-debug</td>
+<td style="text-align: left;">2.12</td>
+<td style="text-align: left;"></td>
 </tr>
 <tr>
-<td align="left">Add</td>
-<td align="left">hpcx-mt</td>
-<td align="left">2.12</td>
-<td align="left"></td>
+<td style="text-align: left;">Add</td>
+<td style="text-align: left;">hpcx-mt</td>
+<td style="text-align: left;">2.12</td>
+<td style="text-align: left;"></td>
 </tr>
 <tr>
-<td align="left">Add</td>
-<td align="left">hpcx-prof</td>
-<td align="left">2.12</td>
-<td align="left"></td>
+<td style="text-align: left;">Add</td>
+<td style="text-align: left;">hpcx-prof</td>
+<td style="text-align: left;">2.12</td>
+<td style="text-align: left;"></td>
 </tr>
 <tr>
-<td align="left">Update</td>
-<td align="left">intel</td>
-<td align="left">2023.0.0</td>
-<td align="left">2022.2.1</td>
+<td style="text-align: left;">Update</td>
+<td style="text-align: left;">intel</td>
+<td style="text-align: left;">2023.0.0</td>
+<td style="text-align: left;">2022.2.1</td>
 </tr>
 <tr>
-<td align="left">Update</td>
-<td align="left">intel-advisor</td>
-<td align="left">2023.0</td>
-<td align="left">2022.3.1</td>
+<td style="text-align: left;">Update</td>
+<td style="text-align: left;">intel-advisor</td>
+<td style="text-align: left;">2023.0</td>
+<td style="text-align: left;">2022.3.1</td>
 </tr>
 <tr>
-<td align="left">Update</td>
-<td align="left">intel-inspector</td>
-<td align="left">2023.0</td>
-<td align="left">2022.3.1</td>
+<td style="text-align: left;">Update</td>
+<td style="text-align: left;">intel-inspector</td>
+<td style="text-align: left;">2023.0</td>
+<td style="text-align: left;">2022.3.1</td>
 </tr>
 <tr>
-<td align="left">Update</td>
-<td align="left">intel-itac</td>
-<td align="left">2021.8.0</td>
-<td align="left">2021.7.1</td>
+<td style="text-align: left;">Update</td>
+<td style="text-align: left;">intel-itac</td>
+<td style="text-align: left;">2021.8.0</td>
+<td style="text-align: left;">2021.7.1</td>
 </tr>
 <tr>
-<td align="left">Update</td>
-<td align="left">intel-mkl</td>
-<td align="left">2023.0.0</td>
-<td align="left">2022.0.2</td>
+<td style="text-align: left;">Update</td>
+<td style="text-align: left;">intel-mkl</td>
+<td style="text-align: left;">2023.0.0</td>
+<td style="text-align: left;">2022.0.2</td>
 </tr>
 <tr>
-<td align="left">Update</td>
-<td align="left">intel-vtune</td>
-<td align="left">2023.0.0</td>
-<td align="left">2022.4.1</td>
+<td style="text-align: left;">Update</td>
+<td style="text-align: left;">intel-vtune</td>
+<td style="text-align: left;">2023.0.0</td>
+<td style="text-align: left;">2022.4.1</td>
 </tr>
 <tr>
-<td align="left">Update</td>
-<td align="left">intel-mpi</td>
-<td align="left">2021.8</td>
-<td align="left">2021.7</td>
+<td style="text-align: left;">Update</td>
+<td style="text-align: left;">intel-mpi</td>
+<td style="text-align: left;">2021.8</td>
+<td style="text-align: left;">2021.7</td>
 </tr>
 <tr>
-<td align="left">Delete</td>
-<td align="left">pgi</td>
-<td align="left">20.4</td>
-<td align="left"></td>
+<td style="text-align: left;">Delete</td>
+<td style="text-align: left;">pgi</td>
+<td style="text-align: left;">20.4</td>
+<td style="text-align: left;"></td>
 </tr>
 <tr>
-<td align="left">Update</td>
-<td align="left">cmake</td>
-<td align="left">3.26.1</td>
-<td align="left">3.22.3</td>
+<td style="text-align: left;">Update</td>
+<td style="text-align: left;">cmake</td>
+<td style="text-align: left;">3.26.1</td>
+<td style="text-align: left;">3.22.3</td>
 </tr>
 <tr>
-<td align="left">Update</td>
-<td align="left">go</td>
-<td align="left">1.20</td>
-<td align="left">1.18</td>
+<td style="text-align: left;">Update</td>
+<td style="text-align: left;">go</td>
+<td style="text-align: left;">1.20</td>
+<td style="text-align: left;">1.18</td>
 </tr>
 <tr>
-<td align="left">Update</td>
-<td align="left">julia</td>
-<td align="left">1.8</td>
-<td align="left">1.6</td>
+<td style="text-align: left;">Update</td>
+<td style="text-align: left;">julia</td>
+<td style="text-align: left;">1.8</td>
+<td style="text-align: left;">1.6</td>
 </tr>
 <tr>
-<td align="left">Update</td>
-<td align="left">openjdk</td>
-<td align="left">1.8.0.362</td>
-<td align="left">1.8.0.332</td>
+<td style="text-align: left;">Update</td>
+<td style="text-align: left;">openjdk</td>
+<td style="text-align: left;">1.8.0.362</td>
+<td style="text-align: left;">1.8.0.332</td>
 </tr>
 <tr>
-<td align="left">Update</td>
-<td align="left">openjdk</td>
-<td align="left">11.0.18.0.10</td>
-<td align="left">11.0.15.0.9<br>11.0.15.0.10</td>
+<td style="text-align: left;">Update</td>
+<td style="text-align: left;">openjdk</td>
+<td style="text-align: left;">11.0.18.0.10</td>
+<td style="text-align: left;">11.0.15.0.9<br>11.0.15.0.10</td>
 </tr>
 <tr>
-<td align="left">Update</td>
-<td align="left">openjdk</td>
-<td align="left">17.0.6.0.10</td>
-<td align="left">17.0.3.0.7</td>
+<td style="text-align: left;">Update</td>
+<td style="text-align: left;">openjdk</td>
+<td style="text-align: left;">17.0.6.0.10</td>
+<td style="text-align: left;">17.0.3.0.7</td>
 </tr>
 <tr>
-<td align="left">Update</td>
-<td align="left">R</td>
-<td align="left">4.2.3</td>
-<td align="left">4.1.3</td>
+<td style="text-align: left;">Update</td>
+<td style="text-align: left;">R</td>
+<td style="text-align: left;">4.2.3</td>
+<td style="text-align: left;">4.1.3</td>
 </tr>
 <tr>
-<td align="left">Delete</td>
-<td align="left">openmpi</td>
-<td align="left">4.0.5</td>
-<td align="left"></td>
+<td style="text-align: left;">Delete</td>
+<td style="text-align: left;">openmpi</td>
+<td style="text-align: left;">4.0.5</td>
+<td style="text-align: left;"></td>
 </tr>
 <tr>
-<td align="left">Delete</td>
-<td align="left">openmpi</td>
-<td align="left">4.1.3</td>
-<td align="left"></td>
+<td style="text-align: left;">Delete</td>
+<td style="text-align: left;">openmpi</td>
+<td style="text-align: left;">4.1.3</td>
+<td style="text-align: left;"></td>
 </tr>
 <tr>
-<td align="left">Update</td>
-<td align="left">aws-cli</td>
-<td align="left">2.11</td>
-<td align="left">2.4</td>
+<td style="text-align: left;">Update</td>
+<td style="text-align: left;">aws-cli</td>
+<td style="text-align: left;">2.11</td>
+<td style="text-align: left;">2.4</td>
 </tr>
 <tr>
-<td align="left">Delete</td>
-<td align="left">fuse-sshfs</td>
-<td align="left">3.7.2</td>
-<td align="left"></td>
+<td style="text-align: left;">Delete</td>
+<td style="text-align: left;">fuse-sshfs</td>
+<td style="text-align: left;">3.7.2</td>
+<td style="text-align: left;"></td>
 </tr>
 <tr>
-<td align="left">Update</td>
-<td align="left">SingularityPRO</td>
-<td align="left">3.9-10</td>
-<td align="left">3.9-9</td>
+<td style="text-align: left;">Update</td>
+<td style="text-align: left;">SingularityPRO</td>
+<td style="text-align: left;">3.9-10</td>
+<td style="text-align: left;">3.9-9</td>
 </tr>
 <tr>
-<td align="left">Update</td>
-<td align="left">ABCI Singularity Endpoint</td>
-<td align="left">2.1.5</td>
-<td align="left">1.7.2</td>
+<td style="text-align: left;">Update</td>
+<td style="text-align: left;">ABCI Singularity Endpoint</td>
+<td style="text-align: left;">2.1.5</td>
+<td style="text-align: left;">1.7.2</td>
 </tr>
 <tr>
-<td align="left">Update</td>
-<td align="left">DDN Lustre</td>
-<td align="left">2.12.8_ddn23</td>
-<td align="left">2.12.8_ddn10</td>
+<td style="text-align: left;">Update</td>
+<td style="text-align: left;">DDN Lustre</td>
+<td style="text-align: left;">2.12.8_ddn23</td>
+<td style="text-align: left;">2.12.8_ddn10</td>
 </tr>
 <tr>
-<td align="left">Update</td>
-<td align="left">Scality S3 Connector</td>
-<td align="left">7.10.6.7</td>
-<td align="left">7.10.2.2</td>
+<td style="text-align: left;">Update</td>
+<td style="text-align: left;">Scality S3 Connector</td>
+<td style="text-align: left;">7.10.6.7</td>
+<td style="text-align: left;">7.10.2.2</td>
 </tr>
 <tr>
-<td align="left">Update</td>
-<td align="left">BeeOND</td>
-<td align="left">7.3.3</td>
-<td align="left">7.2.3</td>
+<td style="text-align: left;">Update</td>
+<td style="text-align: left;">BeeOND</td>
+<td style="text-align: left;">7.3.3</td>
+<td style="text-align: left;">7.2.3</td>
 </tr>
 </tbody>
 </table>
@@ -2404,30 +2445,30 @@ However, depending on power and congestion conditions, it is possible to restore
 <table>
 <thead>
 <tr>
-<th align="left">Add / Update / Delete</th>
-<th align="left">Software</th>
-<th align="left">Version</th>
-<th align="left">Previous version</th>
+<th style="text-align: left;">Add / Update / Delete</th>
+<th style="text-align: left;">Software</th>
+<th style="text-align: left;">Version</th>
+<th style="text-align: left;">Previous version</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td align="left">Add</td>
-<td align="left">cuda</td>
-<td align="left">12.1.0</td>
-<td align="left"></td>
+<td style="text-align: left;">Add</td>
+<td style="text-align: left;">cuda</td>
+<td style="text-align: left;">12.1.0</td>
+<td style="text-align: left;"></td>
 </tr>
 <tr>
-<td align="left">Add</td>
-<td align="left">cudnn</td>
-<td align="left">8.8.1</td>
-<td align="left"></td>
+<td style="text-align: left;">Add</td>
+<td style="text-align: left;">cudnn</td>
+<td style="text-align: left;">8.8.1</td>
+<td style="text-align: left;"></td>
 </tr>
 <tr>
-<td align="left">Add</td>
-<td align="left">nccl</td>
-<td align="left">2.17.1-1</td>
-<td align="left"></td>
+<td style="text-align: left;">Add</td>
+<td style="text-align: left;">nccl</td>
+<td style="text-align: left;">2.17.1-1</td>
+<td style="text-align: left;"></td>
 </tr>
 </tbody>
 </table>
@@ -2435,54 +2476,54 @@ However, depending on power and congestion conditions, it is possible to restore
 <table>
 <thead>
 <tr>
-<th align="left">Add / Update / Delete</th>
-<th align="left">Software</th>
-<th align="left">Version</th>
-<th align="left">Previous version</th>
+<th style="text-align: left;">Add / Update / Delete</th>
+<th style="text-align: left;">Software</th>
+<th style="text-align: left;">Version</th>
+<th style="text-align: left;">Previous version</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td align="left">Update</td>
-<td align="left">intel</td>
-<td align="left">2022.2.1</td>
-<td align="left">2022.0.2</td>
+<td style="text-align: left;">Update</td>
+<td style="text-align: left;">intel</td>
+<td style="text-align: left;">2022.2.1</td>
+<td style="text-align: left;">2022.0.2</td>
 </tr>
 <tr>
-<td align="left">Update</td>
-<td align="left">intel-advisor</td>
-<td align="left">2022.3.1</td>
-<td align="left">2022.0</td>
+<td style="text-align: left;">Update</td>
+<td style="text-align: left;">intel-advisor</td>
+<td style="text-align: left;">2022.3.1</td>
+<td style="text-align: left;">2022.0</td>
 </tr>
 <tr>
-<td align="left">Update</td>
-<td align="left">intel-inspector</td>
-<td align="left">2022.3.1</td>
-<td align="left">2022.0</td>
+<td style="text-align: left;">Update</td>
+<td style="text-align: left;">intel-inspector</td>
+<td style="text-align: left;">2022.3.1</td>
+<td style="text-align: left;">2022.0</td>
 </tr>
 <tr>
-<td align="left">Update</td>
-<td align="left">intel-itac</td>
-<td align="left">2021.7.1</td>
-<td align="left">2021.5.0</td>
+<td style="text-align: left;">Update</td>
+<td style="text-align: left;">intel-itac</td>
+<td style="text-align: left;">2021.7.1</td>
+<td style="text-align: left;">2021.5.0</td>
 </tr>
 <tr>
-<td align="left">Update</td>
-<td align="left">intel-mkl</td>
-<td align="left">2022.0.2</td>
-<td align="left">2022.0.0</td>
+<td style="text-align: left;">Update</td>
+<td style="text-align: left;">intel-mkl</td>
+<td style="text-align: left;">2022.0.2</td>
+<td style="text-align: left;">2022.0.0</td>
 </tr>
 <tr>
-<td align="left">Update</td>
-<td align="left">intel-vtune</td>
-<td align="left">2022.4.1</td>
-<td align="left">2022.0.0</td>
+<td style="text-align: left;">Update</td>
+<td style="text-align: left;">intel-vtune</td>
+<td style="text-align: left;">2022.4.1</td>
+<td style="text-align: left;">2022.0.0</td>
 </tr>
 <tr>
-<td align="left">Update</td>
-<td align="left">intel-mpi</td>
-<td align="left">2021.7</td>
-<td align="left">2021.5</td>
+<td style="text-align: left;">Update</td>
+<td style="text-align: left;">intel-mpi</td>
+<td style="text-align: left;">2021.7</td>
+<td style="text-align: left;">2021.5</td>
 </tr>
 </tbody>
 </table>
@@ -2495,18 +2536,18 @@ Programs compiled with previous version of the Intel oneAPI modules, which was d
 <table>
 <thead>
 <tr>
-<th align="left">Add / Update / Delete</th>
-<th align="left">Software</th>
-<th align="left">Version</th>
-<th align="left">Previous version</th>
+<th style="text-align: left;">Add / Update / Delete</th>
+<th style="text-align: left;">Software</th>
+<th style="text-align: left;">Version</th>
+<th style="text-align: left;">Previous version</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td align="left">Update</td>
-<td align="left">SingularityPRO</td>
-<td align="left">3.9-9</td>
-<td align="left">3.9-8</td>
+<td style="text-align: left;">Update</td>
+<td style="text-align: left;">SingularityPRO</td>
+<td style="text-align: left;">3.9-9</td>
+<td style="text-align: left;">3.9-8</td>
 </tr>
 </tbody>
 </table>
@@ -2514,30 +2555,30 @@ Programs compiled with previous version of the Intel oneAPI modules, which was d
 <table>
 <thead>
 <tr>
-<th align="left">Add / Update / Delete</th>
-<th align="left">Software</th>
-<th align="left">Version</th>
-<th align="left">Previous version</th>
+<th style="text-align: left;">Add / Update / Delete</th>
+<th style="text-align: left;">Software</th>
+<th style="text-align: left;">Version</th>
+<th style="text-align: left;">Previous version</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td align="left">Add</td>
-<td align="left">cuda</td>
-<td align="left">12.0.0</td>
-<td align="left"></td>
+<td style="text-align: left;">Add</td>
+<td style="text-align: left;">cuda</td>
+<td style="text-align: left;">12.0.0</td>
+<td style="text-align: left;"></td>
 </tr>
 <tr>
-<td align="left">Add</td>
-<td align="left">cudnn</td>
-<td align="left">8.7.0</td>
-<td align="left"></td>
+<td style="text-align: left;">Add</td>
+<td style="text-align: left;">cudnn</td>
+<td style="text-align: left;">8.7.0</td>
+<td style="text-align: left;"></td>
 </tr>
 <tr>
-<td align="left">Add</td>
-<td align="left">nccl</td>
-<td align="left">2.16.2-1</td>
-<td align="left"></td>
+<td style="text-align: left;">Add</td>
+<td style="text-align: left;">nccl</td>
+<td style="text-align: left;">2.16.2-1</td>
+<td style="text-align: left;"></td>
 </tr>
 </tbody>
 </table>
@@ -2545,24 +2586,24 @@ Programs compiled with previous version of the Intel oneAPI modules, which was d
 <table>
 <thead>
 <tr>
-<th align="left">Add / Update / Delete</th>
-<th align="left">Software</th>
-<th align="left">Version</th>
-<th align="left">Previous version</th>
+<th style="text-align: left;">Add / Update / Delete</th>
+<th style="text-align: left;">Software</th>
+<th style="text-align: left;">Version</th>
+<th style="text-align: left;">Previous version</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td align="left">Update</td>
-<td align="left">SingularityPRO</td>
-<td align="left">3.9-8</td>
-<td align="left">3.9-4</td>
+<td style="text-align: left;">Update</td>
+<td style="text-align: left;">SingularityPRO</td>
+<td style="text-align: left;">3.9-8</td>
+<td style="text-align: left;">3.9-4</td>
 </tr>
 <tr>
-<td align="left">Update</td>
-<td align="left">ABCI Singularity Endpoint</td>
-<td align="left">1.7.2</td>
-<td align="left">1.2.5</td>
+<td style="text-align: left;">Update</td>
+<td style="text-align: left;">ABCI Singularity Endpoint</td>
+<td style="text-align: left;">1.7.2</td>
+<td style="text-align: left;">1.2.5</td>
 </tr>
 </tbody>
 </table>
@@ -2570,30 +2611,30 @@ Programs compiled with previous version of the Intel oneAPI modules, which was d
 <table>
 <thead>
 <tr>
-<th align="left">Add / Update / Delete</th>
-<th align="left">Software</th>
-<th align="left">Version</th>
-<th align="left">Previous version</th>
+<th style="text-align: left;">Add / Update / Delete</th>
+<th style="text-align: left;">Software</th>
+<th style="text-align: left;">Version</th>
+<th style="text-align: left;">Previous version</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td align="left">Add</td>
-<td align="left">cuda</td>
-<td align="left">11.8.0</td>
-<td align="left"></td>
+<td style="text-align: left;">Add</td>
+<td style="text-align: left;">cuda</td>
+<td style="text-align: left;">11.8.0</td>
+<td style="text-align: left;"></td>
 </tr>
 <tr>
-<td align="left">Add</td>
-<td align="left">cudnn</td>
-<td align="left">8.6.0</td>
-<td align="left"></td>
+<td style="text-align: left;">Add</td>
+<td style="text-align: left;">cudnn</td>
+<td style="text-align: left;">8.6.0</td>
+<td style="text-align: left;"></td>
 </tr>
 <tr>
-<td align="left">Add</td>
-<td align="left">nccl</td>
-<td align="left">2.15.5-1</td>
-<td align="left"></td>
+<td style="text-align: left;">Add</td>
+<td style="text-align: left;">nccl</td>
+<td style="text-align: left;">2.15.5-1</td>
+<td style="text-align: left;"></td>
 </tr>
 </tbody>
 </table>
@@ -2601,30 +2642,30 @@ Programs compiled with previous version of the Intel oneAPI modules, which was d
 <table>
 <thead>
 <tr>
-<th align="left">Add / Update / Delete</th>
-<th align="left">Software</th>
-<th align="left">Version</th>
-<th align="left">Previous version</th>
+<th style="text-align: left;">Add / Update / Delete</th>
+<th style="text-align: left;">Software</th>
+<th style="text-align: left;">Version</th>
+<th style="text-align: left;">Previous version</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td align="left">Add</td>
-<td align="left">cuda</td>
-<td align="left">11.7.1</td>
-<td align="left"></td>
+<td style="text-align: left;">Add</td>
+<td style="text-align: left;">cuda</td>
+<td style="text-align: left;">11.7.1</td>
+<td style="text-align: left;"></td>
 </tr>
 <tr>
-<td align="left">Add</td>
-<td align="left">cudnn</td>
-<td align="left">8.5.0</td>
-<td align="left"></td>
+<td style="text-align: left;">Add</td>
+<td style="text-align: left;">cudnn</td>
+<td style="text-align: left;">8.5.0</td>
+<td style="text-align: left;"></td>
 </tr>
 <tr>
-<td align="left">Add</td>
-<td align="left">nccl</td>
-<td align="left">2.13.4-1<br>2.14.3-1</td>
-<td align="left"></td>
+<td style="text-align: left;">Add</td>
+<td style="text-align: left;">nccl</td>
+<td style="text-align: left;">2.13.4-1<br>2.14.3-1</td>
+<td style="text-align: left;"></td>
 </tr>
 </tbody>
 </table>
@@ -2632,18 +2673,18 @@ Programs compiled with previous version of the Intel oneAPI modules, which was d
 <table>
 <thead>
 <tr>
-<th align="left">Add / Update / Delete</th>
-<th align="left">Software</th>
-<th align="left">Version</th>
-<th align="left">Previous version</th>
+<th style="text-align: left;">Add / Update / Delete</th>
+<th style="text-align: left;">Software</th>
+<th style="text-align: left;">Version</th>
+<th style="text-align: left;">Previous version</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td align="left">Update</td>
-<td align="left">cudnn</td>
-<td align="left">8.4.1</td>
-<td align="left">8.4.0</td>
+<td style="text-align: left;">Update</td>
+<td style="text-align: left;">cudnn</td>
+<td style="text-align: left;">8.4.1</td>
+<td style="text-align: left;">8.4.0</td>
 </tr>
 </tbody>
 </table>
@@ -2655,54 +2696,54 @@ Programs compiled with previous version of the Intel oneAPI modules, which was d
 <table>
 <thead>
 <tr>
-<th align="left">Add / Update / Delete</th>
-<th align="left">Software</th>
-<th align="left">Version</th>
-<th align="left">Previous version</th>
+<th style="text-align: left;">Add / Update / Delete</th>
+<th style="text-align: left;">Software</th>
+<th style="text-align: left;">Version</th>
+<th style="text-align: left;">Previous version</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td align="left">Add</td>
-<td align="left">cuda</td>
-<td align="left">11.7.0</td>
-<td align="left"></td>
+<td style="text-align: left;">Add</td>
+<td style="text-align: left;">cuda</td>
+<td style="text-align: left;">11.7.0</td>
+<td style="text-align: left;"></td>
 </tr>
 <tr>
-<td align="left">Update</td>
-<td align="left">nccl</td>
-<td align="left">2.12.12-1</td>
-<td align="left">2.12.10-1</td>
+<td style="text-align: left;">Update</td>
+<td style="text-align: left;">nccl</td>
+<td style="text-align: left;">2.12.12-1</td>
+<td style="text-align: left;">2.12.10-1</td>
 </tr>
 <tr>
-<td align="left">Update</td>
-<td align="left">Altair Grid Engine</td>
-<td align="left">8.6.19_C121_1</td>
-<td align="left">8.6.17</td>
+<td style="text-align: left;">Update</td>
+<td style="text-align: left;">Altair Grid Engine</td>
+<td style="text-align: left;">8.6.19_C121_1</td>
+<td style="text-align: left;">8.6.17</td>
 </tr>
 <tr>
-<td align="left">Update</td>
-<td align="left">openjdk</td>
-<td align="left">1.8.0.332</td>
-<td align="left">1.8.0.322</td>
+<td style="text-align: left;">Update</td>
+<td style="text-align: left;">openjdk</td>
+<td style="text-align: left;">1.8.0.332</td>
+<td style="text-align: left;">1.8.0.322</td>
 </tr>
 <tr>
-<td align="left">Update</td>
-<td align="left">openjdk</td>
-<td align="left">11.0.15.0.9(Compute Node (V))<br>11.0.15.0.10(Compute Node (A))</td>
-<td align="left">11.0.14.1.1</td>
+<td style="text-align: left;">Update</td>
+<td style="text-align: left;">openjdk</td>
+<td style="text-align: left;">11.0.15.0.9(Compute Node (V))<br>11.0.15.0.10(Compute Node (A))</td>
+<td style="text-align: left;">11.0.14.1.1</td>
 </tr>
 <tr>
-<td align="left">Update</td>
-<td align="left">openjdk</td>
-<td align="left">17.0.3.0.7</td>
-<td align="left">17.0.2.0.8</td>
+<td style="text-align: left;">Update</td>
+<td style="text-align: left;">openjdk</td>
+<td style="text-align: left;">17.0.3.0.7</td>
+<td style="text-align: left;">17.0.2.0.8</td>
 </tr>
 <tr>
-<td align="left">Update</td>
-<td align="left">DDN Lustre</td>
-<td align="left">2.12.8_ddn10</td>
-<td align="left">2.12.6_ddn58-1</td>
+<td style="text-align: left;">Update</td>
+<td style="text-align: left;">DDN Lustre</td>
+<td style="text-align: left;">2.12.8_ddn10</td>
+<td style="text-align: left;">2.12.6_ddn58-1</td>
 </tr>
 </tbody>
 </table>
@@ -2719,18 +2760,18 @@ Programs compiled with previous version of the Intel oneAPI modules, which was d
 <table>
 <thead>
 <tr>
-<th align="left">Current</th>
-<th align="left">Previous</th>
+<th style="text-align: left;">Current</th>
+<th style="text-align: left;">Previous</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td align="left">Altair Grid Engine</td>
-<td align="left">Univa Grid Engine</td>
+<td style="text-align: left;">Altair Grid Engine</td>
+<td style="text-align: left;">Univa Grid Engine</td>
 </tr>
 <tr>
-<td align="left">AGE</td>
-<td align="left">UGE</td>
+<td style="text-align: left;">AGE</td>
+<td style="text-align: left;">UGE</td>
 </tr>
 </tbody>
 </table>
@@ -2772,270 +2813,270 @@ Programs compiled with previous version of the Intel oneAPI modules, which was d
 <table>
 <thead>
 <tr>
-<th align="left">Add / Update / Delete</th>
-<th align="left">Software</th>
-<th align="left">Version</th>
-<th align="left">Previous version</th>
+<th style="text-align: left;">Add / Update / Delete</th>
+<th style="text-align: left;">Software</th>
+<th style="text-align: left;">Version</th>
+<th style="text-align: left;">Previous version</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td align="left">Update</td>
-<td align="left">Scality S3 Connector</td>
-<td align="left">8.5.2.2</td>
-<td align="left">7.4.9.3</td>
+<td style="text-align: left;">Update</td>
+<td style="text-align: left;">Scality S3 Connector</td>
+<td style="text-align: left;">8.5.2.2</td>
+<td style="text-align: left;">7.4.9.3</td>
 </tr>
 <tr>
-<td align="left">Update</td>
-<td align="left">SingularityPRO</td>
-<td align="left">3.9-4</td>
-<td align="left">3.7-4</td>
+<td style="text-align: left;">Update</td>
+<td style="text-align: left;">SingularityPRO</td>
+<td style="text-align: left;">3.9-4</td>
+<td style="text-align: left;">3.7-4</td>
 </tr>
 <tr>
-<td align="left">Update</td>
-<td align="left">DDN Lustre (Compute node (V))</td>
-<td align="left">2.12.6_ddn58-1</td>
-<td align="left">2.12.5_ddn13-1</td>
+<td style="text-align: left;">Update</td>
+<td style="text-align: left;">DDN Lustre (Compute node (V))</td>
+<td style="text-align: left;">2.12.6_ddn58-1</td>
+<td style="text-align: left;">2.12.5_ddn13-1</td>
 </tr>
 <tr>
-<td align="left">Update</td>
-<td align="left">OFED (Compute node (V))</td>
-<td align="left">5.2-1.0.4.0</td>
-<td align="left">5.0-2.1.8.0</td>
+<td style="text-align: left;">Update</td>
+<td style="text-align: left;">OFED (Compute node (V))</td>
+<td style="text-align: left;">5.2-1.0.4.0</td>
+<td style="text-align: left;">5.0-2.1.8.0</td>
 </tr>
 <tr>
-<td align="left">Update</td>
-<td align="left">gcc</td>
-<td align="left">11.2.0</td>
-<td align="left">9.3.0</td>
+<td style="text-align: left;">Update</td>
+<td style="text-align: left;">gcc</td>
+<td style="text-align: left;">11.2.0</td>
+<td style="text-align: left;">9.3.0</td>
 </tr>
 <tr>
-<td align="left">Delete</td>
-<td align="left">gcc</td>
-<td align="left">7.4.0</td>
-<td align="left"></td>
+<td style="text-align: left;">Delete</td>
+<td style="text-align: left;">gcc</td>
+<td style="text-align: left;">7.4.0</td>
+<td style="text-align: left;"></td>
 </tr>
 <tr>
-<td align="left">Update</td>
-<td align="left">intel</td>
-<td align="left">2022.0.2</td>
-<td align="left">2020.4.304</td>
+<td style="text-align: left;">Update</td>
+<td style="text-align: left;">intel</td>
+<td style="text-align: left;">2022.0.2</td>
+<td style="text-align: left;">2020.4.304</td>
 </tr>
 <tr>
-<td align="left">Delete</td>
-<td align="left">nvhpc</td>
-<td align="left">20.11<br>21.2</td>
-<td align="left"></td>
+<td style="text-align: left;">Delete</td>
+<td style="text-align: left;">nvhpc</td>
+<td style="text-align: left;">20.11<br>21.2</td>
+<td style="text-align: left;"></td>
 </tr>
 <tr>
-<td align="left">Delete</td>
-<td align="left">openjdk</td>
-<td align="left">1.7.0.171</td>
-<td align="left"></td>
+<td style="text-align: left;">Delete</td>
+<td style="text-align: left;">openjdk</td>
+<td style="text-align: left;">1.7.0.171</td>
+<td style="text-align: left;"></td>
 </tr>
 <tr>
-<td align="left">Update</td>
-<td align="left">openjdk</td>
-<td align="left">1.8.0.322</td>
-<td align="left">1.8.0.242</td>
+<td style="text-align: left;">Update</td>
+<td style="text-align: left;">openjdk</td>
+<td style="text-align: left;">1.8.0.322</td>
+<td style="text-align: left;">1.8.0.242</td>
 </tr>
 <tr>
-<td align="left">Update</td>
-<td align="left">openjdk</td>
-<td align="left">11.0.14.1.1</td>
-<td align="left">11.0.6.10</td>
+<td style="text-align: left;">Update</td>
+<td style="text-align: left;">openjdk</td>
+<td style="text-align: left;">11.0.14.1.1</td>
+<td style="text-align: left;">11.0.6.10</td>
 </tr>
 <tr>
-<td align="left">Update</td>
-<td align="left">openjdk</td>
-<td align="left">17.0.2.0.8</td>
-<td align="left">15.0.2.0.7</td>
+<td style="text-align: left;">Update</td>
+<td style="text-align: left;">openjdk</td>
+<td style="text-align: left;">17.0.2.0.8</td>
+<td style="text-align: left;">15.0.2.0.7</td>
 </tr>
 <tr>
-<td align="left">Delete</td>
-<td align="left">lua</td>
-<td align="left">5.3.6<br>5.4.2</td>
-<td align="left"></td>
+<td style="text-align: left;">Delete</td>
+<td style="text-align: left;">lua</td>
+<td style="text-align: left;">5.3.6<br>5.4.2</td>
+<td style="text-align: left;"></td>
 </tr>
 <tr>
-<td align="left">Delete</td>
-<td align="left">julia</td>
-<td align="left">1.0</td>
-<td align="left"></td>
+<td style="text-align: left;">Delete</td>
+<td style="text-align: left;">julia</td>
+<td style="text-align: left;">1.0</td>
+<td style="text-align: left;"></td>
 </tr>
 <tr>
-<td align="left">Update</td>
-<td align="left">julia</td>
-<td align="left">1.6.6</td>
-<td align="left">1.5</td>
+<td style="text-align: left;">Update</td>
+<td style="text-align: left;">julia</td>
+<td style="text-align: left;">1.6.6</td>
+<td style="text-align: left;">1.5</td>
 </tr>
 <tr>
-<td align="left">Update</td>
-<td align="left">intel-advisor</td>
-<td align="left">2022.0</td>
-<td align="left">2020.3</td>
+<td style="text-align: left;">Update</td>
+<td style="text-align: left;">intel-advisor</td>
+<td style="text-align: left;">2022.0</td>
+<td style="text-align: left;">2020.3</td>
 </tr>
 <tr>
-<td align="left">Update</td>
-<td align="left">intel-inspector</td>
-<td align="left">2022.0</td>
-<td align="left">2020.3</td>
+<td style="text-align: left;">Update</td>
+<td style="text-align: left;">intel-inspector</td>
+<td style="text-align: left;">2022.0</td>
+<td style="text-align: left;">2020.3</td>
 </tr>
 <tr>
-<td align="left">Update</td>
-<td align="left">intel-itac</td>
-<td align="left">2021.5.0</td>
-<td align="left">2020.0.3</td>
+<td style="text-align: left;">Update</td>
+<td style="text-align: left;">intel-itac</td>
+<td style="text-align: left;">2021.5.0</td>
+<td style="text-align: left;">2020.0.3</td>
 </tr>
 <tr>
-<td align="left">Update</td>
-<td align="left">intel-mkl</td>
-<td align="left">2022.0.0</td>
-<td align="left">2020.0.4</td>
+<td style="text-align: left;">Update</td>
+<td style="text-align: left;">intel-mkl</td>
+<td style="text-align: left;">2022.0.0</td>
+<td style="text-align: left;">2020.0.4</td>
 </tr>
 <tr>
-<td align="left">Update</td>
-<td align="left">intel-vtune</td>
-<td align="left">2022.0.0</td>
-<td align="left">2020.3</td>
+<td style="text-align: left;">Update</td>
+<td style="text-align: left;">intel-vtune</td>
+<td style="text-align: left;">2022.0.0</td>
+<td style="text-align: left;">2020.3</td>
 </tr>
 <tr>
-<td align="left">Add</td>
-<td align="left">python</td>
-<td align="left">3.10.4</td>
-<td align="left"></td>
+<td style="text-align: left;">Add</td>
+<td style="text-align: left;">python</td>
+<td style="text-align: left;">3.10.4</td>
+<td style="text-align: left;"></td>
 </tr>
 <tr>
-<td align="left">Update</td>
-<td align="left">python</td>
-<td align="left">3.7.13</td>
-<td align="left">3.7.10</td>
+<td style="text-align: left;">Update</td>
+<td style="text-align: left;">python</td>
+<td style="text-align: left;">3.7.13</td>
+<td style="text-align: left;">3.7.10</td>
 </tr>
 <tr>
-<td align="left">Update</td>
-<td align="left">python</td>
-<td align="left">3.8.13</td>
-<td align="left">3.8.7</td>
+<td style="text-align: left;">Update</td>
+<td style="text-align: left;">python</td>
+<td style="text-align: left;">3.8.13</td>
+<td style="text-align: left;">3.8.7</td>
 </tr>
 <tr>
-<td align="left">Delete</td>
-<td align="left">python</td>
-<td align="left">3.6.12</td>
-<td align="left"></td>
+<td style="text-align: left;">Delete</td>
+<td style="text-align: left;">python</td>
+<td style="text-align: left;">3.6.12</td>
+<td style="text-align: left;"></td>
 </tr>
 <tr>
-<td align="left">Update</td>
-<td align="left">R</td>
-<td align="left">4.1.3</td>
-<td align="left">4.0.4</td>
+<td style="text-align: left;">Update</td>
+<td style="text-align: left;">R</td>
+<td style="text-align: left;">4.1.3</td>
+<td style="text-align: left;">4.0.4</td>
 </tr>
 <tr>
-<td align="left">Delete</td>
-<td align="left">cuda</td>
-<td align="left">8.0.61.2<br>9.2.88.1<br>11.4.1<br>11.6.0</td>
-<td align="left"></td>
+<td style="text-align: left;">Delete</td>
+<td style="text-align: left;">cuda</td>
+<td style="text-align: left;">8.0.61.2<br>9.2.88.1<br>11.4.1<br>11.6.0</td>
+<td style="text-align: left;"></td>
 </tr>
 <tr>
-<td align="left">Update</td>
-<td align="left">cuda</td>
-<td align="left">11.4.4</td>
-<td align="left">11.4.1</td>
+<td style="text-align: left;">Update</td>
+<td style="text-align: left;">cuda</td>
+<td style="text-align: left;">11.4.4</td>
+<td style="text-align: left;">11.4.1</td>
 </tr>
 <tr>
-<td align="left">Update</td>
-<td align="left">cuda</td>
-<td align="left">11.5.2</td>
-<td align="left">11.5.1</td>
+<td style="text-align: left;">Update</td>
+<td style="text-align: left;">cuda</td>
+<td style="text-align: left;">11.5.2</td>
+<td style="text-align: left;">11.5.1</td>
 </tr>
 <tr>
-<td align="left">Update</td>
-<td align="left">cuda</td>
-<td align="left">11.6.2</td>
-<td align="left">11.6.0</td>
+<td style="text-align: left;">Update</td>
+<td style="text-align: left;">cuda</td>
+<td style="text-align: left;">11.6.2</td>
+<td style="text-align: left;">11.6.0</td>
 </tr>
 <tr>
-<td align="left">Delete</td>
-<td align="left">cudnn</td>
-<td align="left">5.1.10<br>6.0.21<br>8.2.0<br>8.2.1<br>8.2.2</td>
-<td align="left"></td>
+<td style="text-align: left;">Delete</td>
+<td style="text-align: left;">cudnn</td>
+<td style="text-align: left;">5.1.10<br>6.0.21<br>8.2.0<br>8.2.1<br>8.2.2</td>
+<td style="text-align: left;"></td>
 </tr>
 <tr>
-<td align="left">Update</td>
-<td align="left">cudnn</td>
-<td align="left">8.3.3</td>
-<td align="left">8.3.2</td>
+<td style="text-align: left;">Update</td>
+<td style="text-align: left;">cudnn</td>
+<td style="text-align: left;">8.3.3</td>
+<td style="text-align: left;">8.3.2</td>
 </tr>
 <tr>
-<td align="left">Delete</td>
-<td align="left">nccl</td>
-<td align="left">1.3.5-1<br>2.1.15-1<br>2.2.13-1<br>2.3.7-1<br>2.9.6-1<br></td>
-<td align="left"></td>
+<td style="text-align: left;">Delete</td>
+<td style="text-align: left;">nccl</td>
+<td style="text-align: left;">1.3.5-1<br>2.1.15-1<br>2.2.13-1<br>2.3.7-1<br>2.9.6-1<br></td>
+<td style="text-align: left;"></td>
 </tr>
 <tr>
-<td align="left">Add</td>
-<td align="left">nccl</td>
-<td align="left">2.12.7-1</td>
-<td align="left"></td>
+<td style="text-align: left;">Add</td>
+<td style="text-align: left;">nccl</td>
+<td style="text-align: left;">2.12.7-1</td>
+<td style="text-align: left;"></td>
 </tr>
 <tr>
-<td align="left">Update</td>
-<td align="left">gdrcopy</td>
-<td align="left">2.3</td>
-<td align="left">2.0</td>
+<td style="text-align: left;">Update</td>
+<td style="text-align: left;">gdrcopy</td>
+<td style="text-align: left;">2.3</td>
+<td style="text-align: left;">2.0</td>
 </tr>
 <tr>
-<td align="left">Update</td>
-<td align="left">intel-mpi</td>
-<td align="left">2021.5</td>
-<td align="left">2019.9</td>
+<td style="text-align: left;">Update</td>
+<td style="text-align: left;">intel-mpi</td>
+<td style="text-align: left;">2021.5</td>
+<td style="text-align: left;">2019.9</td>
 </tr>
 <tr>
-<td align="left">Add</td>
-<td align="left">openmpi</td>
-<td align="left">4.1.3</td>
-<td align="left"></td>
+<td style="text-align: left;">Add</td>
+<td style="text-align: left;">openmpi</td>
+<td style="text-align: left;">4.1.3</td>
+<td style="text-align: left;"></td>
 </tr>
 <tr>
-<td align="left">Delete</td>
-<td align="left">openmpi</td>
-<td align="left">2.1.6</td>
-<td align="left"></td>
+<td style="text-align: left;">Delete</td>
+<td style="text-align: left;">openmpi</td>
+<td style="text-align: left;">2.1.6</td>
+<td style="text-align: left;"></td>
 </tr>
 <tr>
-<td align="left">Delete</td>
-<td align="left">openmpi</td>
-<td align="left">3.1.6</td>
-<td align="left"></td>
+<td style="text-align: left;">Delete</td>
+<td style="text-align: left;">openmpi</td>
+<td style="text-align: left;">3.1.6</td>
+<td style="text-align: left;"></td>
 </tr>
 <tr>
-<td align="left">Update</td>
-<td align="left">aws-cli</td>
-<td align="left">2.4</td>
-<td align="left">2.1</td>
+<td style="text-align: left;">Update</td>
+<td style="text-align: left;">aws-cli</td>
+<td style="text-align: left;">2.4</td>
+<td style="text-align: left;">2.1</td>
 </tr>
 <tr>
-<td align="left">Update</td>
-<td align="left">fuse-sshfs</td>
-<td align="left">3.7.2</td>
-<td align="left">3.7.1</td>
+<td style="text-align: left;">Update</td>
+<td style="text-align: left;">fuse-sshfs</td>
+<td style="text-align: left;">3.7.2</td>
+<td style="text-align: left;">3.7.1</td>
 </tr>
 <tr>
-<td align="left">Update</td>
-<td align="left">f3fs-fuse</td>
-<td align="left">1.91</td>
-<td align="left">1.87</td>
+<td style="text-align: left;">Update</td>
+<td style="text-align: left;">f3fs-fuse</td>
+<td style="text-align: left;">1.91</td>
+<td style="text-align: left;">1.87</td>
 </tr>
 <tr>
-<td align="left">Delete</td>
-<td align="left">sregistory-cli</td>
-<td align="left">0.2.36</td>
-<td align="left"></td>
+<td style="text-align: left;">Delete</td>
+<td style="text-align: left;">sregistory-cli</td>
+<td style="text-align: left;">0.2.36</td>
+<td style="text-align: left;"></td>
 </tr>
 <tr>
-<td align="left">Update</td>
-<td align="left">NVIDIA Tesla Driver</td>
-<td align="left"><a href="https://docs.nvidia.com/datacenter/tesla/tesla-release-notes-517-47-03/index.html">510.47.03</a></td>
-<td align="left">470.57.02</td>
+<td style="text-align: left;">Update</td>
+<td style="text-align: left;">NVIDIA Tesla Driver</td>
+<td style="text-align: left;"><a href="https://docs.nvidia.com/datacenter/tesla/tesla-release-notes-517-47-03/index.html">510.47.03</a></td>
+<td style="text-align: left;">470.57.02</td>
 </tr>
 </tbody>
 </table>
@@ -3052,36 +3093,36 @@ Programs compiled with previous version of the Intel oneAPI modules, which was d
 <table>
 <thead>
 <tr>
-<th align="left">Add / Update / Delete</th>
-<th align="left">Software</th>
-<th align="left">Version</th>
-<th align="left">Previous version</th>
+<th style="text-align: left;">Add / Update / Delete</th>
+<th style="text-align: left;">Software</th>
+<th style="text-align: left;">Version</th>
+<th style="text-align: left;">Previous version</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td align="left">Delete</td>
-<td align="left">hadoop</td>
-<td align="left">3.3</td>
-<td align="left"></td>
+<td style="text-align: left;">Delete</td>
+<td style="text-align: left;">hadoop</td>
+<td style="text-align: left;">3.3</td>
+<td style="text-align: left;"></td>
 </tr>
 <tr>
-<td align="left">Delete</td>
-<td align="left">spark</td>
-<td align="left">3.0</td>
-<td align="left"></td>
+<td style="text-align: left;">Delete</td>
+<td style="text-align: left;">spark</td>
+<td style="text-align: left;">3.0</td>
+<td style="text-align: left;"></td>
 </tr>
 <tr>
-<td align="left">Update</td>
-<td align="left">DDN Lustre (Compute Node (A))</td>
-<td align="left">2.12.6_ddn58-1</td>
-<td align="left">2.12.5_ddn13-1</td>
+<td style="text-align: left;">Update</td>
+<td style="text-align: left;">DDN Lustre (Compute Node (A))</td>
+<td style="text-align: left;">2.12.6_ddn58-1</td>
+<td style="text-align: left;">2.12.5_ddn13-1</td>
 </tr>
 <tr>
-<td align="left">Update</td>
-<td align="left">OFED (Compute Node (A))</td>
-<td align="left">5.2-1.0.4.0</td>
-<td align="left">5.1-0.6.6.0</td>
+<td style="text-align: left;">Update</td>
+<td style="text-align: left;">OFED (Compute Node (A))</td>
+<td style="text-align: left;">5.2-1.0.4.0</td>
+<td style="text-align: left;">5.1-0.6.6.0</td>
 </tr>
 </tbody>
 </table>
@@ -3092,30 +3133,30 @@ Programs compiled with previous version of the Intel oneAPI modules, which was d
 <table>
 <thead>
 <tr>
-<th align="left">Add / Update / Delete</th>
-<th align="left">Software</th>
-<th align="left">Version</th>
-<th align="left">Previous version</th>
+<th style="text-align: left;">Add / Update / Delete</th>
+<th style="text-align: left;">Software</th>
+<th style="text-align: left;">Version</th>
+<th style="text-align: left;">Previous version</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td align="left">Add</td>
-<td align="left">CUDA</td>
-<td align="left">11.3.1<br>11.4.1<br>11.4.2<br>11.5.1<br>11.6.0</td>
-<td align="left"></td>
+<td style="text-align: left;">Add</td>
+<td style="text-align: left;">CUDA</td>
+<td style="text-align: left;">11.3.1<br>11.4.1<br>11.4.2<br>11.5.1<br>11.6.0</td>
+<td style="text-align: left;"></td>
 </tr>
 <tr>
-<td align="left">Add</td>
-<td align="left">cuDNN</td>
-<td align="left">8.2.2<br>8.2.4<br>8.3.2</td>
-<td align="left"></td>
+<td style="text-align: left;">Add</td>
+<td style="text-align: left;">cuDNN</td>
+<td style="text-align: left;">8.2.2<br>8.2.4<br>8.3.2</td>
+<td style="text-align: left;"></td>
 </tr>
 <tr>
-<td align="left">Add</td>
-<td align="left">NCCL</td>
-<td align="left">2.10.3-1<br>2.11.4-1</td>
-<td align="left"></td>
+<td style="text-align: left;">Add</td>
+<td style="text-align: left;">NCCL</td>
+<td style="text-align: left;">2.10.3-1<br>2.11.4-1</td>
+<td style="text-align: left;"></td>
 </tr>
 </tbody>
 </table>
@@ -3123,36 +3164,36 @@ Programs compiled with previous version of the Intel oneAPI modules, which was d
 <table>
 <thead>
 <tr>
-<th align="left">Add / Update / Delete</th>
-<th align="left">Software</th>
-<th align="left">Version</th>
-<th align="left">Previous version</th>
+<th style="text-align: left;">Add / Update / Delete</th>
+<th style="text-align: left;">Software</th>
+<th style="text-align: left;">Version</th>
+<th style="text-align: left;">Previous version</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td align="left">Update</td>
-<td align="left">OFED</td>
-<td align="left">5.1-0.6.6.0</td>
-<td align="left">5.0-2.1.8.0</td>
+<td style="text-align: left;">Update</td>
+<td style="text-align: left;">OFED</td>
+<td style="text-align: left;">5.1-0.6.6.0</td>
+<td style="text-align: left;">5.0-2.1.8.0</td>
 </tr>
 <tr>
-<td align="left">Update</td>
-<td align="left">Scality S3 Connector</td>
-<td align="left">7.4.9.3</td>
-<td align="left">7.4.8.4</td>
+<td style="text-align: left;">Update</td>
+<td style="text-align: left;">Scality S3 Connector</td>
+<td style="text-align: left;">7.4.9.3</td>
+<td style="text-align: left;">7.4.8.4</td>
 </tr>
 <tr>
-<td align="left">Update</td>
-<td align="left">NVIDIA Tesla Driver</td>
-<td align="left"><a href="https://docs.nvidia.com/datacenter/tesla/tesla-release-notes-470-57-02/index.html">470.57.02</a></td>
-<td align="left">460.32.03</td>
+<td style="text-align: left;">Update</td>
+<td style="text-align: left;">NVIDIA Tesla Driver</td>
+<td style="text-align: left;"><a href="https://docs.nvidia.com/datacenter/tesla/tesla-release-notes-470-57-02/index.html">470.57.02</a></td>
+<td style="text-align: left;">460.32.03</td>
 </tr>
 <tr>
-<td align="left">Add</td>
-<td align="left">ffmpeg</td>
-<td align="left">3.4.9<br>4.2.5</td>
-<td align="left"></td>
+<td style="text-align: left;">Add</td>
+<td style="text-align: left;">ffmpeg</td>
+<td style="text-align: left;">3.4.9<br>4.2.5</td>
+<td style="text-align: left;"></td>
 </tr>
 </tbody>
 </table>
@@ -3164,24 +3205,24 @@ Programs compiled with previous version of the Intel oneAPI modules, which was d
 <table>
 <thead>
 <tr>
-<th align="left">Add / Update / Delete</th>
-<th align="left">Software</th>
-<th align="left">Version</th>
-<th align="left">Previous version</th>
+<th style="text-align: left;">Add / Update / Delete</th>
+<th style="text-align: left;">Software</th>
+<th style="text-align: left;">Version</th>
+<th style="text-align: left;">Previous version</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td align="left">Update</td>
-<td align="left">BeeOND</td>
-<td align="left">7.2.3</td>
-<td align="left">7.2.1</td>
+<td style="text-align: left;">Update</td>
+<td style="text-align: left;">BeeOND</td>
+<td style="text-align: left;">7.2.3</td>
+<td style="text-align: left;">7.2.1</td>
 </tr>
 <tr>
-<td align="left">Update</td>
-<td align="left">DDN Lustre</td>
-<td align="left">2.12.5_ddn13-1</td>
-<td align="left">2.12.6_ddn13-1</td>
+<td style="text-align: left;">Update</td>
+<td style="text-align: left;">DDN Lustre</td>
+<td style="text-align: left;">2.12.5_ddn13-1</td>
+<td style="text-align: left;">2.12.6_ddn13-1</td>
 </tr>
 </tbody>
 </table>
@@ -3189,18 +3230,18 @@ Programs compiled with previous version of the Intel oneAPI modules, which was d
 <table>
 <thead>
 <tr>
-<th align="left">Add / Update / Delete</th>
-<th align="left">Software</th>
-<th align="left">Version</th>
-<th align="left">Previous version</th>
+<th style="text-align: left;">Add / Update / Delete</th>
+<th style="text-align: left;">Software</th>
+<th style="text-align: left;">Version</th>
+<th style="text-align: left;">Previous version</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td align="left">Update</td>
-<td align="left">SingularityPRO</td>
-<td align="left">3.7-4</td>
-<td align="left">3.7-1</td>
+<td style="text-align: left;">Update</td>
+<td style="text-align: left;">SingularityPRO</td>
+<td style="text-align: left;">3.7-4</td>
+<td style="text-align: left;">3.7-1</td>
 </tr>
 </tbody>
 </table>
@@ -3208,24 +3249,24 @@ Programs compiled with previous version of the Intel oneAPI modules, which was d
 <table>
 <thead>
 <tr>
-<th align="left">Add / Update / Delete</th>
-<th align="left">Software</th>
-<th align="left">Version</th>
-<th align="left">Previous version</th>
+<th style="text-align: left;">Add / Update / Delete</th>
+<th style="text-align: left;">Software</th>
+<th style="text-align: left;">Version</th>
+<th style="text-align: left;">Previous version</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td align="left">Add</td>
-<td align="left">cuDNN</td>
-<td align="left"><a href="https://docs.nvidia.com/deeplearning/cudnn/release-notes/rel_8.html#rel-821">8.2.1</a></td>
-<td align="left"></td>
+<td style="text-align: left;">Add</td>
+<td style="text-align: left;">cuDNN</td>
+<td style="text-align: left;"><a href="https://docs.nvidia.com/deeplearning/cudnn/release-notes/rel_8.html#rel-821">8.2.1</a></td>
+<td style="text-align: left;"></td>
 </tr>
 <tr>
-<td align="left">Add</td>
-<td align="left">NCCL</td>
-<td align="left"><a href="https://docs.nvidia.com/deeplearning/nccl/release-notes/rel_2-9-9.html">2.9.9-1</a></td>
-<td align="left"></td>
+<td style="text-align: left;">Add</td>
+<td style="text-align: left;">NCCL</td>
+<td style="text-align: left;"><a href="https://docs.nvidia.com/deeplearning/nccl/release-notes/rel_2-9-9.html">2.9.9-1</a></td>
+<td style="text-align: left;"></td>
 </tr>
 </tbody>
 </table>
@@ -3233,24 +3274,24 @@ Programs compiled with previous version of the Intel oneAPI modules, which was d
 <table>
 <thead>
 <tr>
-<th align="left">Add / Update / Delete</th>
-<th align="left">Software</th>
-<th align="left">Version</th>
-<th align="left">Previous version</th>
+<th style="text-align: left;">Add / Update / Delete</th>
+<th style="text-align: left;">Software</th>
+<th style="text-align: left;">Version</th>
+<th style="text-align: left;">Previous version</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td align="left">Add</td>
-<td align="left">cuDNN</td>
-<td align="left"><a href="https://docs.nvidia.com/deeplearning/cudnn/release-notes/rel_8.html#rel-820">8.2.0</a></td>
-<td align="left"></td>
+<td style="text-align: left;">Add</td>
+<td style="text-align: left;">cuDNN</td>
+<td style="text-align: left;"><a href="https://docs.nvidia.com/deeplearning/cudnn/release-notes/rel_8.html#rel-820">8.2.0</a></td>
+<td style="text-align: left;"></td>
 </tr>
 <tr>
-<td align="left">Add</td>
-<td align="left">NCCL</td>
-<td align="left"><a href="https://docs.nvidia.com/deeplearning/nccl/release-notes/rel_2-9-6.html">2.9.6-1</a></td>
-<td align="left"></td>
+<td style="text-align: left;">Add</td>
+<td style="text-align: left;">NCCL</td>
+<td style="text-align: left;"><a href="https://docs.nvidia.com/deeplearning/nccl/release-notes/rel_2-9-6.html">2.9.6-1</a></td>
+<td style="text-align: left;"></td>
 </tr>
 </tbody>
 </table>
@@ -3261,342 +3302,342 @@ Programs compiled with previous version of the Intel oneAPI modules, which was d
 <table>
 <thead>
 <tr>
-<th align="left">Add / Update / Delete</th>
-<th align="left">Software</th>
-<th align="left">Version</th>
-<th align="left">Previous version</th>
+<th style="text-align: left;">Add / Update / Delete</th>
+<th style="text-align: left;">Software</th>
+<th style="text-align: left;">Version</th>
+<th style="text-align: left;">Previous version</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td align="left">Update</td>
-<td align="left">NVIDIA Tesla Driver</td>
-<td align="left"><a href="https://docs.nvidia.com/datacenter/tesla/tesla-release-notes-460-32-03/index.html">460.32.03</a></td>
-<td align="left">440.33.01</td>
+<td style="text-align: left;">Update</td>
+<td style="text-align: left;">NVIDIA Tesla Driver</td>
+<td style="text-align: left;"><a href="https://docs.nvidia.com/datacenter/tesla/tesla-release-notes-460-32-03/index.html">460.32.03</a></td>
+<td style="text-align: left;">440.33.01</td>
 </tr>
 <tr>
-<td align="left">Update</td>
-<td align="left">OFED</td>
-<td align="left">5.0-2.1.8.0</td>
-<td align="left">4.4-1.0.0.0</td>
+<td style="text-align: left;">Update</td>
+<td style="text-align: left;">OFED</td>
+<td style="text-align: left;">5.0-2.1.8.0</td>
+<td style="text-align: left;">4.4-1.0.0.0</td>
 </tr>
 <tr>
-<td align="left">Update</td>
-<td align="left">Univa Grid Engine</td>
-<td align="left">8.6.17</td>
-<td align="left">8.6.6</td>
+<td style="text-align: left;">Update</td>
+<td style="text-align: left;">Univa Grid Engine</td>
+<td style="text-align: left;">8.6.17</td>
+<td style="text-align: left;">8.6.6</td>
 </tr>
 <tr>
-<td align="left">Update</td>
-<td align="left">SingularityPRO</td>
-<td align="left">3.7-1</td>
-<td align="left">3.5-6</td>
+<td style="text-align: left;">Update</td>
+<td style="text-align: left;">SingularityPRO</td>
+<td style="text-align: left;">3.7-1</td>
+<td style="text-align: left;">3.5-6</td>
 </tr>
 <tr>
-<td align="left">Update</td>
-<td align="left">BeeOND</td>
-<td align="left">7.2.1</td>
-<td align="left">7.2</td>
+<td style="text-align: left;">Update</td>
+<td style="text-align: left;">BeeOND</td>
+<td style="text-align: left;">7.2.1</td>
+<td style="text-align: left;">7.2</td>
 </tr>
 <tr>
-<td align="left">Update</td>
-<td align="left">Docker</td>
-<td align="left">19.03.15</td>
-<td align="left">17.12.0</td>
+<td style="text-align: left;">Update</td>
+<td style="text-align: left;">Docker</td>
+<td style="text-align: left;">19.03.15</td>
+<td style="text-align: left;">17.12.0</td>
 </tr>
 <tr>
-<td align="left">Update</td>
-<td align="left">Scality S3 Connector</td>
-<td align="left">7.4.8.1</td>
-<td align="left">7.4.8</td>
+<td style="text-align: left;">Update</td>
+<td style="text-align: left;">Scality S3 Connector</td>
+<td style="text-align: left;">7.4.8.1</td>
+<td style="text-align: left;">7.4.8</td>
 </tr>
 <tr>
-<td align="left">Add</td>
-<td align="left">gcc</td>
-<td align="left">9.3.0</td>
-<td align="left"></td>
+<td style="text-align: left;">Add</td>
+<td style="text-align: left;">gcc</td>
+<td style="text-align: left;">9.3.0</td>
+<td style="text-align: left;"></td>
 </tr>
 <tr>
-<td align="left">Add</td>
-<td align="left">pgi</td>
-<td align="left">20.4</td>
-<td align="left"></td>
+<td style="text-align: left;">Add</td>
+<td style="text-align: left;">pgi</td>
+<td style="text-align: left;">20.4</td>
+<td style="text-align: left;"></td>
 </tr>
 <tr>
-<td align="left">Add</td>
-<td align="left">nvhpc</td>
-<td align="left">20.11<br>21.2</td>
-<td align="left"></td>
+<td style="text-align: left;">Add</td>
+<td style="text-align: left;">nvhpc</td>
+<td style="text-align: left;">20.11<br>21.2</td>
+<td style="text-align: left;"></td>
 </tr>
 <tr>
-<td align="left">Add</td>
-<td align="left">cmake</td>
-<td align="left">3.19</td>
-<td align="left"></td>
+<td style="text-align: left;">Add</td>
+<td style="text-align: left;">cmake</td>
+<td style="text-align: left;">3.19</td>
+<td style="text-align: left;"></td>
 </tr>
 <tr>
-<td align="left">Add</td>
-<td align="left">go</td>
-<td align="left">1.15</td>
-<td align="left"></td>
+<td style="text-align: left;">Add</td>
+<td style="text-align: left;">go</td>
+<td style="text-align: left;">1.15</td>
+<td style="text-align: left;"></td>
 </tr>
 <tr>
-<td align="left">Add</td>
-<td align="left">julia</td>
-<td align="left">1.5</td>
-<td align="left"></td>
+<td style="text-align: left;">Add</td>
+<td style="text-align: left;">julia</td>
+<td style="text-align: left;">1.5</td>
+<td style="text-align: left;"></td>
 </tr>
 <tr>
-<td align="left">Add</td>
-<td align="left">lua</td>
-<td align="left">5.3.6<br>5.4.2</td>
-<td align="left"></td>
+<td style="text-align: left;">Add</td>
+<td style="text-align: left;">lua</td>
+<td style="text-align: left;">5.3.6<br>5.4.2</td>
+<td style="text-align: left;"></td>
 </tr>
 <tr>
-<td align="left">Add</td>
-<td align="left">python</td>
-<td align="left">2.7.18<br>3.6.12<br>3.7.10<br>3.8.7</td>
-<td align="left"></td>
+<td style="text-align: left;">Add</td>
+<td style="text-align: left;">python</td>
+<td style="text-align: left;">2.7.18<br>3.6.12<br>3.7.10<br>3.8.7</td>
+<td style="text-align: left;"></td>
 </tr>
 <tr>
-<td align="left">Add</td>
-<td align="left">R</td>
-<td align="left">4.0.4</td>
-<td align="left"></td>
+<td style="text-align: left;">Add</td>
+<td style="text-align: left;">R</td>
+<td style="text-align: left;">4.0.4</td>
+<td style="text-align: left;"></td>
 </tr>
 <tr>
-<td align="left">Add</td>
-<td align="left">CUDA</td>
-<td align="left">11.0.3<br>11.1.1<br>11.2.2</td>
-<td align="left"></td>
+<td style="text-align: left;">Add</td>
+<td style="text-align: left;">CUDA</td>
+<td style="text-align: left;">11.0.3<br>11.1.1<br>11.2.2</td>
+<td style="text-align: left;"></td>
 </tr>
 <tr>
-<td align="left">Add</td>
-<td align="left">cuDNN</td>
-<td align="left"><a href="https://docs.nvidia.com/deeplearning/cudnn/release-notes/rel_8.html#rel-811">8.1.1</a></td>
-<td align="left"></td>
+<td style="text-align: left;">Add</td>
+<td style="text-align: left;">cuDNN</td>
+<td style="text-align: left;"><a href="https://docs.nvidia.com/deeplearning/cudnn/release-notes/rel_8.html#rel-811">8.1.1</a></td>
+<td style="text-align: left;"></td>
 </tr>
 <tr>
-<td align="left">Add</td>
-<td align="left">NCCL</td>
-<td align="left"><a href="https://docs.nvidia.com/deeplearning/nccl/release-notes/rel_2-8-4.html">2.8.4-1</a></td>
-<td align="left"></td>
+<td style="text-align: left;">Add</td>
+<td style="text-align: left;">NCCL</td>
+<td style="text-align: left;"><a href="https://docs.nvidia.com/deeplearning/nccl/release-notes/rel_2-8-4.html">2.8.4-1</a></td>
+<td style="text-align: left;"></td>
 </tr>
 <tr>
-<td align="left">Add</td>
-<td align="left">openmpi</td>
-<td align="left">4.0.5</td>
-<td align="left"></td>
+<td style="text-align: left;">Add</td>
+<td style="text-align: left;">openmpi</td>
+<td style="text-align: left;">4.0.5</td>
+<td style="text-align: left;"></td>
 </tr>
 <tr>
-<td align="left">Add</td>
-<td align="left">mvapich2-gdr</td>
-<td align="left">2.3.5</td>
-<td align="left"></td>
+<td style="text-align: left;">Add</td>
+<td style="text-align: left;">mvapich2-gdr</td>
+<td style="text-align: left;">2.3.5</td>
+<td style="text-align: left;"></td>
 </tr>
 <tr>
-<td align="left">Add</td>
-<td align="left">mvapich2</td>
-<td align="left">2.3.5</td>
-<td align="left"></td>
+<td style="text-align: left;">Add</td>
+<td style="text-align: left;">mvapich2</td>
+<td style="text-align: left;">2.3.5</td>
+<td style="text-align: left;"></td>
 </tr>
 <tr>
-<td align="left">Add</td>
-<td align="left">hadoop</td>
-<td align="left">3.3</td>
-<td align="left"></td>
+<td style="text-align: left;">Add</td>
+<td style="text-align: left;">hadoop</td>
+<td style="text-align: left;">3.3</td>
+<td style="text-align: left;"></td>
 </tr>
 <tr>
-<td align="left">Add</td>
-<td align="left">spark</td>
-<td align="left">3.0</td>
-<td align="left"></td>
+<td style="text-align: left;">Add</td>
+<td style="text-align: left;">spark</td>
+<td style="text-align: left;">3.0</td>
+<td style="text-align: left;"></td>
 </tr>
 <tr>
-<td align="left">Add</td>
-<td align="left">aws-cli</td>
-<td align="left">2.1</td>
-<td align="left"></td>
+<td style="text-align: left;">Add</td>
+<td style="text-align: left;">aws-cli</td>
+<td style="text-align: left;">2.1</td>
+<td style="text-align: left;"></td>
 </tr>
 <tr>
-<td align="left">Add</td>
-<td align="left">fuse-sshfs</td>
-<td align="left">3.7.1</td>
-<td align="left"></td>
+<td style="text-align: left;">Add</td>
+<td style="text-align: left;">fuse-sshfs</td>
+<td style="text-align: left;">3.7.1</td>
+<td style="text-align: left;"></td>
 </tr>
 <tr>
-<td align="left">Add</td>
-<td align="left">s3fs-fuse</td>
-<td align="left">1.87</td>
-<td align="left"></td>
+<td style="text-align: left;">Add</td>
+<td style="text-align: left;">s3fs-fuse</td>
+<td style="text-align: left;">1.87</td>
+<td style="text-align: left;"></td>
 </tr>
 <tr>
-<td align="left">Add</td>
-<td align="left">sregistry-cli</td>
-<td align="left">0.2.36</td>
-<td align="left"></td>
+<td style="text-align: left;">Add</td>
+<td style="text-align: left;">sregistry-cli</td>
+<td style="text-align: left;">0.2.36</td>
+<td style="text-align: left;"></td>
 </tr>
 <tr>
-<td align="left">Delete</td>
-<td align="left">intel</td>
-<td align="left">2017.8.262<br>2018.5.274<br>2019.5.281</td>
-<td align="left"></td>
+<td style="text-align: left;">Delete</td>
+<td style="text-align: left;">intel</td>
+<td style="text-align: left;">2017.8.262<br>2018.5.274<br>2019.5.281</td>
+<td style="text-align: left;"></td>
 </tr>
 <tr>
-<td align="left">Delete</td>
-<td align="left">pgi</td>
-<td align="left">17.10<br>18.10<br>19.1<br>19.10<br>20.1</td>
-<td align="left"></td>
+<td style="text-align: left;">Delete</td>
+<td style="text-align: left;">pgi</td>
+<td style="text-align: left;">17.10<br>18.10<br>19.1<br>19.10<br>20.1</td>
+<td style="text-align: left;"></td>
 </tr>
 <tr>
-<td align="left">Delete</td>
-<td align="left">nvhpc</td>
-<td align="left">20.9</td>
-<td align="left"></td>
+<td style="text-align: left;">Delete</td>
+<td style="text-align: left;">nvhpc</td>
+<td style="text-align: left;">20.9</td>
+<td style="text-align: left;"></td>
 </tr>
 <tr>
-<td align="left">Delete</td>
-<td align="left">cmake</td>
-<td align="left">3.16<br>3.17</td>
-<td align="left"></td>
+<td style="text-align: left;">Delete</td>
+<td style="text-align: left;">cmake</td>
+<td style="text-align: left;">3.16<br>3.17</td>
+<td style="text-align: left;"></td>
 </tr>
 <tr>
-<td align="left">Delete</td>
-<td align="left">go</td>
-<td align="left">1.12<br>1.13</td>
-<td align="left"></td>
+<td style="text-align: left;">Delete</td>
+<td style="text-align: left;">go</td>
+<td style="text-align: left;">1.12<br>1.13</td>
+<td style="text-align: left;"></td>
 </tr>
 <tr>
-<td align="left">Delete</td>
-<td align="left">intel-advisor</td>
-<td align="left">2017.5<br>2018.4<br>2019.5</td>
-<td align="left"></td>
+<td style="text-align: left;">Delete</td>
+<td style="text-align: left;">intel-advisor</td>
+<td style="text-align: left;">2017.5<br>2018.4<br>2019.5</td>
+<td style="text-align: left;"></td>
 </tr>
 <tr>
-<td align="left">Delete</td>
-<td align="left">intel-inspector</td>
-<td align="left">2017.4<br>2018.4<br>2019.5</td>
-<td align="left"></td>
+<td style="text-align: left;">Delete</td>
+<td style="text-align: left;">intel-inspector</td>
+<td style="text-align: left;">2017.4<br>2018.4<br>2019.5</td>
+<td style="text-align: left;"></td>
 </tr>
 <tr>
-<td align="left">Delete</td>
-<td align="left">intel-itac</td>
-<td align="left">2017.0.4<br>2018.0.4<br>2019.0.5</td>
-<td align="left"></td>
+<td style="text-align: left;">Delete</td>
+<td style="text-align: left;">intel-itac</td>
+<td style="text-align: left;">2017.0.4<br>2018.0.4<br>2019.0.5</td>
+<td style="text-align: left;"></td>
 </tr>
 <tr>
-<td align="left">Delete</td>
-<td align="left">intel-mkl</td>
-<td align="left">2017.0.4<br>2018.0.4<br>2019.0.5</td>
-<td align="left"></td>
+<td style="text-align: left;">Delete</td>
+<td style="text-align: left;">intel-mkl</td>
+<td style="text-align: left;">2017.0.4<br>2018.0.4<br>2019.0.5</td>
+<td style="text-align: left;"></td>
 </tr>
 <tr>
-<td align="left">Delete</td>
-<td align="left">intel-vtune</td>
-<td align="left">2017.6<br>2018.4<br>2019.6</td>
-<td align="left"></td>
+<td style="text-align: left;">Delete</td>
+<td style="text-align: left;">intel-vtune</td>
+<td style="text-align: left;">2017.6<br>2018.4<br>2019.6</td>
+<td style="text-align: left;"></td>
 </tr>
 <tr>
-<td align="left">Delete</td>
-<td align="left">julia</td>
-<td align="left">1.3<br>1.4</td>
-<td align="left"></td>
+<td style="text-align: left;">Delete</td>
+<td style="text-align: left;">julia</td>
+<td style="text-align: left;">1.3<br>1.4</td>
+<td style="text-align: left;"></td>
 </tr>
 <tr>
-<td align="left">Delete</td>
-<td align="left">python</td>
-<td align="left">2.7.15<br>3.4.8<br>3.5.5<br>3.7.6</td>
-<td align="left"></td>
+<td style="text-align: left;">Delete</td>
+<td style="text-align: left;">python</td>
+<td style="text-align: left;">2.7.15<br>3.4.8<br>3.5.5<br>3.7.6</td>
+<td style="text-align: left;"></td>
 </tr>
 <tr>
-<td align="left">Delete</td>
-<td align="left">R</td>
-<td align="left">3.5.0<br>3.6.3</td>
-<td align="left"></td>
+<td style="text-align: left;">Delete</td>
+<td style="text-align: left;">R</td>
+<td style="text-align: left;">3.5.0<br>3.6.3</td>
+<td style="text-align: left;"></td>
 </tr>
 <tr>
-<td align="left">Delete</td>
-<td align="left">cuda</td>
-<td align="left">10.0.130</td>
-<td align="left"></td>
+<td style="text-align: left;">Delete</td>
+<td style="text-align: left;">cuda</td>
+<td style="text-align: left;">10.0.130</td>
+<td style="text-align: left;"></td>
 </tr>
 <tr>
-<td align="left">Delete</td>
-<td align="left">cudnn</td>
-<td align="left">7.1.3<br>7.5.0<br>7.6.0<br>7.6.1<br>7.6.2<br>7.6.3<br>7.6.4<br>8.0.2</td>
-<td align="left"></td>
+<td style="text-align: left;">Delete</td>
+<td style="text-align: left;">cudnn</td>
+<td style="text-align: left;">7.1.3<br>7.5.0<br>7.6.0<br>7.6.1<br>7.6.2<br>7.6.3<br>7.6.4<br>8.0.2</td>
+<td style="text-align: left;"></td>
 </tr>
 <tr>
-<td align="left">Delete</td>
-<td align="left">nccl</td>
-<td align="left">2.3.4-1<br>2.3.5-2<br>2.4.2-1<br>2.4.7-1<br>2.8.3-1</td>
-<td align="left"></td>
+<td style="text-align: left;">Delete</td>
+<td style="text-align: left;">nccl</td>
+<td style="text-align: left;">2.3.4-1<br>2.3.5-2<br>2.4.2-1<br>2.4.7-1<br>2.8.3-1</td>
+<td style="text-align: left;"></td>
 </tr>
 <tr>
-<td align="left">Delete</td>
-<td align="left">intel-mpi</td>
-<td align="left">2017.4<br>2018.4<br>2019.5</td>
-<td align="left"></td>
+<td style="text-align: left;">Delete</td>
+<td style="text-align: left;">intel-mpi</td>
+<td style="text-align: left;">2017.4<br>2018.4<br>2019.5</td>
+<td style="text-align: left;"></td>
 </tr>
 <tr>
-<td align="left">Delete</td>
-<td align="left">openmpi</td>
-<td align="left">4.0.3</td>
-<td align="left"></td>
+<td style="text-align: left;">Delete</td>
+<td style="text-align: left;">openmpi</td>
+<td style="text-align: left;">4.0.3</td>
+<td style="text-align: left;"></td>
 </tr>
 <tr>
-<td align="left">Delete</td>
-<td align="left">mvapich2-gdr</td>
-<td align="left">2.3.3<br>2.3.4</td>
-<td align="left"></td>
+<td style="text-align: left;">Delete</td>
+<td style="text-align: left;">mvapich2-gdr</td>
+<td style="text-align: left;">2.3.3<br>2.3.4</td>
+<td style="text-align: left;"></td>
 </tr>
 <tr>
-<td align="left">Delete</td>
-<td align="left">mvapich2</td>
-<td align="left">2.3.3<br>2.3.4</td>
-<td align="left"></td>
+<td style="text-align: left;">Delete</td>
+<td style="text-align: left;">mvapich2</td>
+<td style="text-align: left;">2.3.3<br>2.3.4</td>
+<td style="text-align: left;"></td>
 </tr>
 <tr>
-<td align="left">Delete</td>
-<td align="left">hadoop</td>
-<td align="left">2.9<br>2.10<br>3.1</td>
-<td align="left"></td>
+<td style="text-align: left;">Delete</td>
+<td style="text-align: left;">hadoop</td>
+<td style="text-align: left;">2.9<br>2.10<br>3.1</td>
+<td style="text-align: left;"></td>
 </tr>
 <tr>
-<td align="left">Delete</td>
-<td align="left">singularity</td>
-<td align="left">2.6.1</td>
-<td align="left"></td>
+<td style="text-align: left;">Delete</td>
+<td style="text-align: left;">singularity</td>
+<td style="text-align: left;">2.6.1</td>
+<td style="text-align: left;"></td>
 </tr>
 <tr>
-<td align="left">Delete</td>
-<td align="left">spark</td>
-<td align="left">2.3<br>2.4</td>
-<td align="left"></td>
+<td style="text-align: left;">Delete</td>
+<td style="text-align: left;">spark</td>
+<td style="text-align: left;">2.3<br>2.4</td>
+<td style="text-align: left;"></td>
 </tr>
 <tr>
-<td align="left">Delete</td>
-<td align="left">aws-cli</td>
-<td align="left">1.16.194<br>1.18<br>2.0</td>
-<td align="left"></td>
+<td style="text-align: left;">Delete</td>
+<td style="text-align: left;">aws-cli</td>
+<td style="text-align: left;">1.16.194<br>1.18<br>2.0</td>
+<td style="text-align: left;"></td>
 </tr>
 <tr>
-<td align="left">Delete</td>
-<td align="left">fuse-sshfs</td>
-<td align="left">2.10</td>
-<td align="left"></td>
+<td style="text-align: left;">Delete</td>
+<td style="text-align: left;">fuse-sshfs</td>
+<td style="text-align: left;">2.10</td>
+<td style="text-align: left;"></td>
 </tr>
 <tr>
-<td align="left">Delete</td>
-<td align="left">s3fs-fuse</td>
-<td align="left">1.85</td>
-<td align="left"></td>
+<td style="text-align: left;">Delete</td>
+<td style="text-align: left;">s3fs-fuse</td>
+<td style="text-align: left;">1.85</td>
+<td style="text-align: left;"></td>
 </tr>
 <tr>
-<td align="left">Delete</td>
-<td align="left">sregistry-cli</td>
-<td align="left">0.2.31</td>
-<td align="left"></td>
+<td style="text-align: left;">Delete</td>
+<td style="text-align: left;">sregistry-cli</td>
+<td style="text-align: left;">0.2.31</td>
+<td style="text-align: left;"></td>
 </tr>
 </tbody>
 </table>
@@ -3604,24 +3645,24 @@ Programs compiled with previous version of the Intel oneAPI modules, which was d
 <table>
 <thead>
 <tr>
-<th align="left">Add / Update / Delete</th>
-<th align="left">Software</th>
-<th align="left">Version</th>
-<th align="left">Previous version</th>
+<th style="text-align: left;">Add / Update / Delete</th>
+<th style="text-align: left;">Software</th>
+<th style="text-align: left;">Version</th>
+<th style="text-align: left;">Previous version</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td align="left">Update</td>
-<td align="left">SingularityPRO</td>
-<td align="left">3.5-6</td>
-<td align="left">3.5-4</td>
+<td style="text-align: left;">Update</td>
+<td style="text-align: left;">SingularityPRO</td>
+<td style="text-align: left;">3.5-6</td>
+<td style="text-align: left;">3.5-4</td>
 </tr>
 <tr>
-<td align="left">Update</td>
-<td align="left">DDN Lustre</td>
-<td align="left">2.12.6_ddn13-1</td>
-<td align="left">2.10.7_ddn14-1</td>
+<td style="text-align: left;">Update</td>
+<td style="text-align: left;">DDN Lustre</td>
+<td style="text-align: left;">2.12.6_ddn13-1</td>
+<td style="text-align: left;">2.10.7_ddn14-1</td>
 </tr>
 </tbody>
 </table>
@@ -3629,90 +3670,90 @@ Programs compiled with previous version of the Intel oneAPI modules, which was d
 <table>
 <thead>
 <tr>
-<th align="left">Add / Update / Delete</th>
-<th align="left">Software</th>
-<th align="left">Version</th>
-<th align="left">Previous version</th>
+<th style="text-align: left;">Add / Update / Delete</th>
+<th style="text-align: left;">Software</th>
+<th style="text-align: left;">Version</th>
+<th style="text-align: left;">Previous version</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td align="left">Add</td>
-<td align="left">go</td>
-<td align="left">1.14</td>
-<td align="left"></td>
+<td style="text-align: left;">Add</td>
+<td style="text-align: left;">go</td>
+<td style="text-align: left;">1.14</td>
+<td style="text-align: left;"></td>
 </tr>
 <tr>
-<td align="left">Add</td>
-<td align="left">intel</td>
-<td align="left">2020.4.304</td>
-<td align="left"></td>
+<td style="text-align: left;">Add</td>
+<td style="text-align: left;">intel</td>
+<td style="text-align: left;">2020.4.304</td>
+<td style="text-align: left;"></td>
 </tr>
 <tr>
-<td align="left">Add</td>
-<td align="left">intel-advisor</td>
-<td align="left">2020.3</td>
-<td align="left"></td>
+<td style="text-align: left;">Add</td>
+<td style="text-align: left;">intel-advisor</td>
+<td style="text-align: left;">2020.3</td>
+<td style="text-align: left;"></td>
 </tr>
 <tr>
-<td align="left">Add</td>
-<td align="left">intel-inspector</td>
-<td align="left">2020.3</td>
-<td align="left"></td>
+<td style="text-align: left;">Add</td>
+<td style="text-align: left;">intel-inspector</td>
+<td style="text-align: left;">2020.3</td>
+<td style="text-align: left;"></td>
 </tr>
 <tr>
-<td align="left">Add</td>
-<td align="left">intel-itac</td>
-<td align="left">2020.0.3</td>
-<td align="left"></td>
+<td style="text-align: left;">Add</td>
+<td style="text-align: left;">intel-itac</td>
+<td style="text-align: left;">2020.0.3</td>
+<td style="text-align: left;"></td>
 </tr>
 <tr>
-<td align="left">Add</td>
-<td align="left">intel-mkl</td>
-<td align="left">2020.0.4</td>
-<td align="left"></td>
+<td style="text-align: left;">Add</td>
+<td style="text-align: left;">intel-mkl</td>
+<td style="text-align: left;">2020.0.4</td>
+<td style="text-align: left;"></td>
 </tr>
 <tr>
-<td align="left">Add</td>
-<td align="left">intel-mpi</td>
-<td align="left">2019.9</td>
-<td align="left"></td>
+<td style="text-align: left;">Add</td>
+<td style="text-align: left;">intel-mpi</td>
+<td style="text-align: left;">2019.9</td>
+<td style="text-align: left;"></td>
 </tr>
 <tr>
-<td align="left">Add</td>
-<td align="left">intel-vtune</td>
-<td align="left">2020.3</td>
-<td align="left"></td>
+<td style="text-align: left;">Add</td>
+<td style="text-align: left;">intel-vtune</td>
+<td style="text-align: left;">2020.3</td>
+<td style="text-align: left;"></td>
 </tr>
 <tr>
-<td align="left">Add</td>
-<td align="left">nvhpc</td>
-<td align="left">20.9</td>
-<td align="left"></td>
+<td style="text-align: left;">Add</td>
+<td style="text-align: left;">nvhpc</td>
+<td style="text-align: left;">20.9</td>
+<td style="text-align: left;"></td>
 </tr>
 <tr>
-<td align="left">Add</td>
-<td align="left">cuDNN</td>
-<td align="left"><a href="https://docs.nvidia.com/deeplearning/sdk/cudnn-release-notes/rel_8.html#rel-805">8.0.5</a></td>
-<td align="left"></td>
+<td style="text-align: left;">Add</td>
+<td style="text-align: left;">cuDNN</td>
+<td style="text-align: left;"><a href="https://docs.nvidia.com/deeplearning/sdk/cudnn-release-notes/rel_8.html#rel-805">8.0.5</a></td>
+<td style="text-align: left;"></td>
 </tr>
 <tr>
-<td align="left">Add</td>
-<td align="left">NCCL</td>
-<td align="left"><a href="https://docs.nvidia.com/deeplearning/nccl/release-notes/rel_2-8-3.html">2.8.3-1</a></td>
-<td align="left"></td>
+<td style="text-align: left;">Add</td>
+<td style="text-align: left;">NCCL</td>
+<td style="text-align: left;"><a href="https://docs.nvidia.com/deeplearning/nccl/release-notes/rel_2-8-3.html">2.8.3-1</a></td>
+<td style="text-align: left;"></td>
 </tr>
 <tr>
-<td align="left">Update</td>
-<td align="left">BeeOND</td>
-<td align="left">7.2</td>
-<td align="left">7.1.5</td>
+<td style="text-align: left;">Update</td>
+<td style="text-align: left;">BeeOND</td>
+<td style="text-align: left;">7.2</td>
+<td style="text-align: left;">7.1.5</td>
 </tr>
 <tr>
-<td align="left">Update</td>
-<td align="left">Scality S3 Connector</td>
-<td align="left">7.4.8</td>
-<td align="left">7.4.6.3</td>
+<td style="text-align: left;">Update</td>
+<td style="text-align: left;">Scality S3 Connector</td>
+<td style="text-align: left;">7.4.8</td>
+<td style="text-align: left;">7.4.6.3</td>
 </tr>
 </tbody>
 </table>
@@ -3722,18 +3763,18 @@ Programs compiled with previous version of the Intel oneAPI modules, which was d
 <table>
 <thead>
 <tr>
-<th align="left">Add / Update / Delete</th>
-<th align="left">Software</th>
-<th align="left">Version</th>
-<th align="left">Previous version</th>
+<th style="text-align: left;">Add / Update / Delete</th>
+<th style="text-align: left;">Software</th>
+<th style="text-align: left;">Version</th>
+<th style="text-align: left;">Previous version</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td align="left">Update</td>
-<td align="left">SingularityPRO</td>
-<td align="left">3.5-4</td>
-<td align="left">3.5-2</td>
+<td style="text-align: left;">Update</td>
+<td style="text-align: left;">SingularityPRO</td>
+<td style="text-align: left;">3.5-4</td>
+<td style="text-align: left;">3.5-2</td>
 </tr>
 </tbody>
 </table>
@@ -3741,18 +3782,18 @@ Programs compiled with previous version of the Intel oneAPI modules, which was d
 <table>
 <thead>
 <tr>
-<th align="left">Add / Update / Delete</th>
-<th align="left">Software</th>
-<th align="left">Version</th>
-<th align="left">Previous version</th>
+<th style="text-align: left;">Add / Update / Delete</th>
+<th style="text-align: left;">Software</th>
+<th style="text-align: left;">Version</th>
+<th style="text-align: left;">Previous version</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td align="left">Update</td>
-<td align="left">Scality S3 Connector</td>
-<td align="left">7.4.6.3</td>
-<td align="left">7.4.5.4</td>
+<td style="text-align: left;">Update</td>
+<td style="text-align: left;">Scality S3 Connector</td>
+<td style="text-align: left;">7.4.6.3</td>
+<td style="text-align: left;">7.4.5.4</td>
 </tr>
 </tbody>
 </table>
@@ -3760,42 +3801,42 @@ Programs compiled with previous version of the Intel oneAPI modules, which was d
 <table>
 <thead>
 <tr>
-<th align="left">Add / Update / Delete</th>
-<th align="left">Software</th>
-<th align="left">Version</th>
-<th align="left">Previous version</th>
+<th style="text-align: left;">Add / Update / Delete</th>
+<th style="text-align: left;">Software</th>
+<th style="text-align: left;">Version</th>
+<th style="text-align: left;">Previous version</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td align="left">Add</td>
-<td align="left">SingularityPRO</td>
-<td align="left">3.5-2</td>
-<td align="left"></td>
+<td style="text-align: left;">Add</td>
+<td style="text-align: left;">SingularityPRO</td>
+<td style="text-align: left;">3.5-2</td>
+<td style="text-align: left;"></td>
 </tr>
 <tr>
-<td align="left">Add</td>
-<td align="left">cuDNN</td>
-<td align="left"><a href="https://docs.nvidia.com/deeplearning/sdk/cudnn-release-notes/rel_8.html#rel-802">8.0.2</a></td>
-<td align="left"></td>
+<td style="text-align: left;">Add</td>
+<td style="text-align: left;">cuDNN</td>
+<td style="text-align: left;"><a href="https://docs.nvidia.com/deeplearning/sdk/cudnn-release-notes/rel_8.html#rel-802">8.0.2</a></td>
+<td style="text-align: left;"></td>
 </tr>
 <tr>
-<td align="left">Add</td>
-<td align="left">NCCL</td>
-<td align="left"><a href="https://docs.nvidia.com/deeplearning/nccl/release-notes/rel_2-7-8.html">2.7.8-1</a></td>
-<td align="left"></td>
+<td style="text-align: left;">Add</td>
+<td style="text-align: left;">NCCL</td>
+<td style="text-align: left;"><a href="https://docs.nvidia.com/deeplearning/nccl/release-notes/rel_2-7-8.html">2.7.8-1</a></td>
+<td style="text-align: left;"></td>
 </tr>
 <tr>
-<td align="left">Add</td>
-<td align="left">mvapich2-gdr</td>
-<td align="left">2.3.4</td>
-<td align="left"></td>
+<td style="text-align: left;">Add</td>
+<td style="text-align: left;">mvapich2-gdr</td>
+<td style="text-align: left;">2.3.4</td>
+<td style="text-align: left;"></td>
 </tr>
 <tr>
-<td align="left">Add</td>
-<td align="left">mvapich2</td>
-<td align="left">2.3.4</td>
-<td align="left"></td>
+<td style="text-align: left;">Add</td>
+<td style="text-align: left;">mvapich2</td>
+<td style="text-align: left;">2.3.4</td>
+<td style="text-align: left;"></td>
 </tr>
 </tbody>
 </table>
@@ -3803,18 +3844,18 @@ Programs compiled with previous version of the Intel oneAPI modules, which was d
 <table>
 <thead>
 <tr>
-<th align="left">Add / Update / Delete</th>
-<th align="left">Software</th>
-<th align="left">Version</th>
-<th align="left">Previous version</th>
+<th style="text-align: left;">Add / Update / Delete</th>
+<th style="text-align: left;">Software</th>
+<th style="text-align: left;">Version</th>
+<th style="text-align: left;">Previous version</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td align="left">Update</td>
-<td align="left">BeeOND</td>
-<td align="left">7.1.5</td>
-<td align="left">7.1.4</td>
+<td style="text-align: left;">Update</td>
+<td style="text-align: left;">BeeOND</td>
+<td style="text-align: left;">7.1.5</td>
+<td style="text-align: left;">7.1.4</td>
 </tr>
 </tbody>
 </table>
@@ -3830,246 +3871,246 @@ If you need MVAPICH2-GDR for PGI, please contact Customer Support.</p>
 <table>
 <thead>
 <tr>
-<th align="left">Add / Update / Delete</th>
-<th align="left">Software</th>
-<th align="left">Version</th>
-<th align="left">Previous version</th>
+<th style="text-align: left;">Add / Update / Delete</th>
+<th style="text-align: left;">Software</th>
+<th style="text-align: left;">Version</th>
+<th style="text-align: left;">Previous version</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td align="left">Update</td>
-<td align="left">DDN GRIDScaler</td>
-<td align="left">4.2.3.20</td>
-<td align="left">4.2.3.17</td>
+<td style="text-align: left;">Update</td>
+<td style="text-align: left;">DDN GRIDScaler</td>
+<td style="text-align: left;">4.2.3.20</td>
+<td style="text-align: left;">4.2.3.17</td>
 </tr>
 <tr>
-<td align="left">Update</td>
-<td align="left">Scality S3 Connector</td>
-<td align="left">7.4.5.4</td>
-<td align="left">7.4.5.0</td>
+<td style="text-align: left;">Update</td>
+<td style="text-align: left;">Scality S3 Connector</td>
+<td style="text-align: left;">7.4.5.4</td>
+<td style="text-align: left;">7.4.5.0</td>
 </tr>
 <tr>
-<td align="left">Update</td>
-<td align="left">libfabric</td>
-<td align="left">1.7.0-1</td>
-<td align="left">1.5.3-1</td>
+<td style="text-align: left;">Update</td>
+<td style="text-align: left;">libfabric</td>
+<td style="text-align: left;">1.7.0-1</td>
+<td style="text-align: left;">1.5.3-1</td>
 </tr>
 <tr>
-<td align="left">Add</td>
-<td align="left">intel</td>
-<td align="left">2018.5.274<br>2019.5.281</td>
-<td align="left"></td>
+<td style="text-align: left;">Add</td>
+<td style="text-align: left;">intel</td>
+<td style="text-align: left;">2018.5.274<br>2019.5.281</td>
+<td style="text-align: left;"></td>
 </tr>
 <tr>
-<td align="left">Add</td>
-<td align="left">pgi</td>
-<td align="left">19.1<br>19.10<br>20.1</td>
-<td align="left"></td>
+<td style="text-align: left;">Add</td>
+<td style="text-align: left;">pgi</td>
+<td style="text-align: left;">19.1<br>19.10<br>20.1</td>
+<td style="text-align: left;"></td>
 </tr>
 <tr>
-<td align="left">Add</td>
-<td align="left">R</td>
-<td align="left">3.6.3</td>
-<td align="left"></td>
+<td style="text-align: left;">Add</td>
+<td style="text-align: left;">R</td>
+<td style="text-align: left;">3.6.3</td>
+<td style="text-align: left;"></td>
 </tr>
 <tr>
-<td align="left">Add</td>
-<td align="left">cmake</td>
-<td align="left">3.16<br>3.17</td>
-<td align="left"></td>
+<td style="text-align: left;">Add</td>
+<td style="text-align: left;">cmake</td>
+<td style="text-align: left;">3.16<br>3.17</td>
+<td style="text-align: left;"></td>
 </tr>
 <tr>
-<td align="left">Add</td>
-<td align="left">go</td>
-<td align="left">1.12<br>1.13</td>
-<td align="left"></td>
+<td style="text-align: left;">Add</td>
+<td style="text-align: left;">go</td>
+<td style="text-align: left;">1.12<br>1.13</td>
+<td style="text-align: left;"></td>
 </tr>
 <tr>
-<td align="left">Add</td>
-<td align="left">intel-advisor</td>
-<td align="left">2017.5<br>2018.4<br>2019.5</td>
-<td align="left"></td>
+<td style="text-align: left;">Add</td>
+<td style="text-align: left;">intel-advisor</td>
+<td style="text-align: left;">2017.5<br>2018.4<br>2019.5</td>
+<td style="text-align: left;"></td>
 </tr>
 <tr>
-<td align="left">Add</td>
-<td align="left">intel-inspector</td>
-<td align="left">2017.4<br>2018.4<br>2019.5</td>
-<td align="left"></td>
+<td style="text-align: left;">Add</td>
+<td style="text-align: left;">intel-inspector</td>
+<td style="text-align: left;">2017.4<br>2018.4<br>2019.5</td>
+<td style="text-align: left;"></td>
 </tr>
 <tr>
-<td align="left">Add</td>
-<td align="left">intel-itac</td>
-<td align="left">2017.0.4<br>2018.0.4<br>2019.0.5</td>
-<td align="left"></td>
+<td style="text-align: left;">Add</td>
+<td style="text-align: left;">intel-itac</td>
+<td style="text-align: left;">2017.0.4<br>2018.0.4<br>2019.0.5</td>
+<td style="text-align: left;"></td>
 </tr>
 <tr>
-<td align="left">Add</td>
-<td align="left">intel-mkl</td>
-<td align="left">2017.0.4<br>2018.0.4<br>2019.0.5</td>
-<td align="left"></td>
+<td style="text-align: left;">Add</td>
+<td style="text-align: left;">intel-mkl</td>
+<td style="text-align: left;">2017.0.4<br>2018.0.4<br>2019.0.5</td>
+<td style="text-align: left;"></td>
 </tr>
 <tr>
-<td align="left">Add</td>
-<td align="left">intel-vtune</td>
-<td align="left">2017.6<br>2018.4<br>2019.6</td>
-<td align="left"></td>
+<td style="text-align: left;">Add</td>
+<td style="text-align: left;">intel-vtune</td>
+<td style="text-align: left;">2017.6<br>2018.4<br>2019.6</td>
+<td style="text-align: left;"></td>
 </tr>
 <tr>
-<td align="left">Add</td>
-<td align="left">julia</td>
-<td align="left">1.0<br>1.3<br>1.4</td>
-<td align="left"></td>
+<td style="text-align: left;">Add</td>
+<td style="text-align: left;">julia</td>
+<td style="text-align: left;">1.0<br>1.3<br>1.4</td>
+<td style="text-align: left;"></td>
 </tr>
 <tr>
-<td align="left">Add</td>
-<td align="left">openjdk</td>
-<td align="left">1.8.0.242<br>11.0.6.10</td>
-<td align="left"></td>
+<td style="text-align: left;">Add</td>
+<td style="text-align: left;">openjdk</td>
+<td style="text-align: left;">1.8.0.242<br>11.0.6.10</td>
+<td style="text-align: left;"></td>
 </tr>
 <tr>
-<td align="left">Add</td>
-<td align="left">python</td>
-<td align="left">3.7.6<br>3.8.2</td>
-<td align="left"></td>
+<td style="text-align: left;">Add</td>
+<td style="text-align: left;">python</td>
+<td style="text-align: left;">3.7.6<br>3.8.2</td>
+<td style="text-align: left;"></td>
 </tr>
 <tr>
-<td align="left">Add</td>
-<td align="left">gdrcopy</td>
-<td align="left">2.0</td>
-<td align="left"></td>
+<td style="text-align: left;">Add</td>
+<td style="text-align: left;">gdrcopy</td>
+<td style="text-align: left;">2.0</td>
+<td style="text-align: left;"></td>
 </tr>
 <tr>
-<td align="left">Add</td>
-<td align="left">nccl</td>
-<td align="left"><a href="https://docs.nvidia.com/deeplearning/nccl/release-notes/rel_2-6-4.html">2.6.4-1</a></td>
-<td align="left"></td>
+<td style="text-align: left;">Add</td>
+<td style="text-align: left;">nccl</td>
+<td style="text-align: left;"><a href="https://docs.nvidia.com/deeplearning/nccl/release-notes/rel_2-6-4.html">2.6.4-1</a></td>
+<td style="text-align: left;"></td>
 </tr>
 <tr>
-<td align="left">Add</td>
-<td align="left">intel-mpi</td>
-<td align="left">2017.4<br>2018.4<br>2019.5</td>
-<td align="left"></td>
+<td style="text-align: left;">Add</td>
+<td style="text-align: left;">intel-mpi</td>
+<td style="text-align: left;">2017.4<br>2018.4<br>2019.5</td>
+<td style="text-align: left;"></td>
 </tr>
 <tr>
-<td align="left">Add</td>
-<td align="left">mvapich2-gdr</td>
-<td align="left">2.3.3</td>
-<td align="left"></td>
+<td style="text-align: left;">Add</td>
+<td style="text-align: left;">mvapich2-gdr</td>
+<td style="text-align: left;">2.3.3</td>
+<td style="text-align: left;"></td>
 </tr>
 <tr>
-<td align="left">Add</td>
-<td align="left">mvapich2</td>
-<td align="left">2.3.3</td>
-<td align="left"></td>
+<td style="text-align: left;">Add</td>
+<td style="text-align: left;">mvapich2</td>
+<td style="text-align: left;">2.3.3</td>
+<td style="text-align: left;"></td>
 </tr>
 <tr>
-<td align="left">Add</td>
-<td align="left">openmpi</td>
-<td align="left">3.1.6<br>4.0.3</td>
-<td align="left"></td>
+<td style="text-align: left;">Add</td>
+<td style="text-align: left;">openmpi</td>
+<td style="text-align: left;">3.1.6<br>4.0.3</td>
+<td style="text-align: left;"></td>
 </tr>
 <tr>
-<td align="left">Add</td>
-<td align="left">hadoop</td>
-<td align="left">2.9<br>2.10<br>3.1</td>
-<td align="left"></td>
+<td style="text-align: left;">Add</td>
+<td style="text-align: left;">hadoop</td>
+<td style="text-align: left;">2.9<br>2.10<br>3.1</td>
+<td style="text-align: left;"></td>
 </tr>
 <tr>
-<td align="left">Add</td>
-<td align="left">spark</td>
-<td align="left">2.3<br>2.4</td>
-<td align="left"></td>
+<td style="text-align: left;">Add</td>
+<td style="text-align: left;">spark</td>
+<td style="text-align: left;">2.3<br>2.4</td>
+<td style="text-align: left;"></td>
 </tr>
 <tr>
-<td align="left">Add</td>
-<td align="left">aws-cli</td>
-<td align="left">1.18<br>2.0</td>
-<td align="left"></td>
+<td style="text-align: left;">Add</td>
+<td style="text-align: left;">aws-cli</td>
+<td style="text-align: left;">1.18<br>2.0</td>
+<td style="text-align: left;"></td>
 </tr>
 <tr>
-<td align="left">Delete</td>
-<td align="left">gcc</td>
-<td align="left">7.3.0</td>
-<td align="left"></td>
+<td style="text-align: left;">Delete</td>
+<td style="text-align: left;">gcc</td>
+<td style="text-align: left;">7.3.0</td>
+<td style="text-align: left;"></td>
 </tr>
 <tr>
-<td align="left">Delete</td>
-<td align="left">intel</td>
-<td align="left">2018.2.199<br>2018.3.222<br>2019.3.199</td>
-<td align="left"></td>
+<td style="text-align: left;">Delete</td>
+<td style="text-align: left;">intel</td>
+<td style="text-align: left;">2018.2.199<br>2018.3.222<br>2019.3.199</td>
+<td style="text-align: left;"></td>
 </tr>
 <tr>
-<td align="left">Delete</td>
-<td align="left">pgi</td>
-<td align="left">18.5<br>19.3</td>
-<td align="left"></td>
+<td style="text-align: left;">Delete</td>
+<td style="text-align: left;">pgi</td>
+<td style="text-align: left;">18.5<br>19.3</td>
+<td style="text-align: left;"></td>
 </tr>
 <tr>
-<td align="left">Delete</td>
-<td align="left">go</td>
-<td align="left">1.11.2</td>
-<td align="left"></td>
+<td style="text-align: left;">Delete</td>
+<td style="text-align: left;">go</td>
+<td style="text-align: left;">1.11.2</td>
+<td style="text-align: left;"></td>
 </tr>
 <tr>
-<td align="left">Delete</td>
-<td align="left">intel-mkl</td>
-<td align="left">2017.8.262<br>2018.2.199<br>2018.3.222<br>2019.3.199</td>
-<td align="left"></td>
+<td style="text-align: left;">Delete</td>
+<td style="text-align: left;">intel-mkl</td>
+<td style="text-align: left;">2017.8.262<br>2018.2.199<br>2018.3.222<br>2019.3.199</td>
+<td style="text-align: left;"></td>
 </tr>
 <tr>
-<td align="left">Delete</td>
-<td align="left">openjdk</td>
-<td align="left">1.6.0.41<br>1.8.0.161</td>
-<td align="left"></td>
+<td style="text-align: left;">Delete</td>
+<td style="text-align: left;">openjdk</td>
+<td style="text-align: left;">1.6.0.41<br>1.8.0.161</td>
+<td style="text-align: left;"></td>
 </tr>
 <tr>
-<td align="left">Delete</td>
-<td align="left">cuda</td>
-<td align="left">9.0/9.0.176.2<br>9.0/9.0.176.3</td>
-<td align="left"></td>
+<td style="text-align: left;">Delete</td>
+<td style="text-align: left;">cuda</td>
+<td style="text-align: left;">9.0/9.0.176.2<br>9.0/9.0.176.3</td>
+<td style="text-align: left;"></td>
 </tr>
 <tr>
-<td align="left">Delete</td>
-<td align="left">gdrcopy</td>
-<td align="left">1.2</td>
-<td align="left"></td>
+<td style="text-align: left;">Delete</td>
+<td style="text-align: left;">gdrcopy</td>
+<td style="text-align: left;">1.2</td>
+<td style="text-align: left;"></td>
 </tr>
 <tr>
-<td align="left">Delete</td>
-<td align="left">intel-mpi</td>
-<td align="left">2018.2.199</td>
-<td align="left"></td>
+<td style="text-align: left;">Delete</td>
+<td style="text-align: left;">intel-mpi</td>
+<td style="text-align: left;">2018.2.199</td>
+<td style="text-align: left;"></td>
 </tr>
 <tr>
-<td align="left">Delete</td>
-<td align="left">mvapich2-gdr</td>
-<td align="left">2.3rc1<br>2.3<br>2.3a<br>2.3.1<br>2.3.2</td>
-<td align="left"></td>
+<td style="text-align: left;">Delete</td>
+<td style="text-align: left;">mvapich2-gdr</td>
+<td style="text-align: left;">2.3rc1<br>2.3<br>2.3a<br>2.3.1<br>2.3.2</td>
+<td style="text-align: left;"></td>
 </tr>
 <tr>
-<td align="left">Delete</td>
-<td align="left">mvapich2</td>
-<td align="left">2.3rc2<br>2.3<br>2.3.2</td>
-<td align="left"></td>
+<td style="text-align: left;">Delete</td>
+<td style="text-align: left;">mvapich2</td>
+<td style="text-align: left;">2.3rc2<br>2.3<br>2.3.2</td>
+<td style="text-align: left;"></td>
 </tr>
 <tr>
-<td align="left">Delete</td>
-<td align="left">openmpi</td>
-<td align="left">1.10.7<br>2.1.3<br>2.1.5<br>3.0.3<br>3.1.0<br>3.1.2<br>3.1.3</td>
-<td align="left"></td>
+<td style="text-align: left;">Delete</td>
+<td style="text-align: left;">openmpi</td>
+<td style="text-align: left;">1.10.7<br>2.1.3<br>2.1.5<br>3.0.3<br>3.1.0<br>3.1.2<br>3.1.3</td>
+<td style="text-align: left;"></td>
 </tr>
 <tr>
-<td align="left">Delete</td>
-<td align="left">hadoop</td>
-<td align="left">2.9.1<br>2.9.2</td>
-<td align="left"></td>
+<td style="text-align: left;">Delete</td>
+<td style="text-align: left;">hadoop</td>
+<td style="text-align: left;">2.9.1<br>2.9.2</td>
+<td style="text-align: left;"></td>
 </tr>
 <tr>
-<td align="left">Delete</td>
-<td align="left">spark</td>
-<td align="left">2.3.1<br>2.3.2<br>2.4.0</td>
-<td align="left"></td>
+<td style="text-align: left;">Delete</td>
+<td style="text-align: left;">spark</td>
+<td style="text-align: left;">2.3.1<br>2.3.2<br>2.4.0</td>
+<td style="text-align: left;"></td>
 </tr>
 </tbody>
 </table>
@@ -4077,54 +4118,54 @@ If you need MVAPICH2-GDR for PGI, please contact Customer Support.</p>
 <table>
 <thead>
 <tr>
-<th align="left">Add / Update / Delete</th>
-<th align="left">Software</th>
-<th align="left">Version</th>
-<th align="left">Previous version</th>
+<th style="text-align: left;">Add / Update / Delete</th>
+<th style="text-align: left;">Software</th>
+<th style="text-align: left;">Version</th>
+<th style="text-align: left;">Previous version</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td align="left">Update</td>
-<td align="left">DDN Lustre</td>
-<td align="left">2.10.7_ddn14-1</td>
-<td align="left">2.10.5_ddn7-1</td>
+<td style="text-align: left;">Update</td>
+<td style="text-align: left;">DDN Lustre</td>
+<td style="text-align: left;">2.10.7_ddn14-1</td>
+<td style="text-align: left;">2.10.5_ddn7-1</td>
 </tr>
 <tr>
-<td align="left">Update</td>
-<td align="left">BeeOND</td>
-<td align="left">7.1.4</td>
-<td align="left">7.1.3</td>
+<td style="text-align: left;">Update</td>
+<td style="text-align: left;">BeeOND</td>
+<td style="text-align: left;">7.1.4</td>
+<td style="text-align: left;">7.1.3</td>
 </tr>
 <tr>
-<td align="left">Update</td>
-<td align="left">Scality S3 Connector</td>
-<td align="left">7.4.5.0</td>
-<td align="left">7.4.4.4</td>
+<td style="text-align: left;">Update</td>
+<td style="text-align: left;">Scality S3 Connector</td>
+<td style="text-align: left;">7.4.5.0</td>
+<td style="text-align: left;">7.4.4.4</td>
 </tr>
 <tr>
-<td align="left">Update</td>
-<td align="left">NVIDIA Tesla Driver</td>
-<td align="left"><a href="https://docs.nvidia.com/datacenter/tesla/tesla-release-notes-440-3301/index.html">440.33.01</a></td>
-<td align="left">410.104</td>
+<td style="text-align: left;">Update</td>
+<td style="text-align: left;">NVIDIA Tesla Driver</td>
+<td style="text-align: left;"><a href="https://docs.nvidia.com/datacenter/tesla/tesla-release-notes-440-3301/index.html">440.33.01</a></td>
+<td style="text-align: left;">410.104</td>
 </tr>
 <tr>
-<td align="left">Add</td>
-<td align="left">CUDA</td>
-<td align="left"><a href="https://docs.nvidia.com/cuda/cuda-toolkit-release-notes/index.html">10.2.89</a></td>
-<td align="left"></td>
+<td style="text-align: left;">Add</td>
+<td style="text-align: left;">CUDA</td>
+<td style="text-align: left;"><a href="https://docs.nvidia.com/cuda/cuda-toolkit-release-notes/index.html">10.2.89</a></td>
+<td style="text-align: left;"></td>
 </tr>
 <tr>
-<td align="left">Add</td>
-<td align="left">cuDNN</td>
-<td align="left"><a href="https://docs.nvidia.com/deeplearning/sdk/cudnn-release-notes/rel_765.html">7.6.5</a></td>
-<td align="left"></td>
+<td style="text-align: left;">Add</td>
+<td style="text-align: left;">cuDNN</td>
+<td style="text-align: left;"><a href="https://docs.nvidia.com/deeplearning/sdk/cudnn-release-notes/rel_765.html">7.6.5</a></td>
+<td style="text-align: left;"></td>
 </tr>
 <tr>
-<td align="left">Add</td>
-<td align="left">NCCL</td>
-<td align="left"><a href="https://docs.nvidia.com/deeplearning/sdk/nccl-release-notes/rel_2-5-6.html">2.5.6-1</a></td>
-<td align="left"></td>
+<td style="text-align: left;">Add</td>
+<td style="text-align: left;">NCCL</td>
+<td style="text-align: left;"><a href="https://docs.nvidia.com/deeplearning/sdk/nccl-release-notes/rel_2-5-6.html">2.5.6-1</a></td>
+<td style="text-align: left;"></td>
 </tr>
 </tbody>
 </table>
@@ -4136,24 +4177,24 @@ If you need MVAPICH2-GDR for PGI, please contact Customer Support.</p>
 <table>
 <thead>
 <tr>
-<th align="left">Add / Update / Delete</th>
-<th align="left">Software</th>
-<th align="left">Version</th>
-<th align="left">Previous version</th>
+<th style="text-align: left;">Add / Update / Delete</th>
+<th style="text-align: left;">Software</th>
+<th style="text-align: left;">Version</th>
+<th style="text-align: left;">Previous version</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td align="left">Add</td>
-<td align="left">GCC</td>
-<td align="left">7.3.0, 7.4.0</td>
-<td align="left"></td>
+<td style="text-align: left;">Add</td>
+<td style="text-align: left;">GCC</td>
+<td style="text-align: left;">7.3.0, 7.4.0</td>
+<td style="text-align: left;"></td>
 </tr>
 <tr>
-<td align="left">Add</td>
-<td align="left">sregistry-cli</td>
-<td align="left">0.2.31</td>
-<td align="left"></td>
+<td style="text-align: left;">Add</td>
+<td style="text-align: left;">sregistry-cli</td>
+<td style="text-align: left;">0.2.31</td>
+<td style="text-align: left;"></td>
 </tr>
 </tbody>
 </table>
@@ -4166,66 +4207,66 @@ If you need MVAPICH2-GDR for PGI, please contact Customer Support.</p>
 <table>
 <thead>
 <tr>
-<th align="left">Add / Update / Delete</th>
-<th align="left">Software</th>
-<th align="left">Version</th>
-<th align="left">Previous version</th>
+<th style="text-align: left;">Add / Update / Delete</th>
+<th style="text-align: left;">Software</th>
+<th style="text-align: left;">Version</th>
+<th style="text-align: left;">Previous version</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td align="left">Update</td>
-<td align="left">Univa Grid Engine</td>
-<td align="left">8.6.6</td>
-<td align="left">8.6.3</td>
+<td style="text-align: left;">Update</td>
+<td style="text-align: left;">Univa Grid Engine</td>
+<td style="text-align: left;">8.6.6</td>
+<td style="text-align: left;">8.6.3</td>
 </tr>
 <tr>
-<td align="left">Update</td>
-<td align="left">DDN GRIDScaler</td>
-<td align="left">4.2.3.17</td>
-<td align="left">4.2.3.15</td>
+<td style="text-align: left;">Update</td>
+<td style="text-align: left;">DDN GRIDScaler</td>
+<td style="text-align: left;">4.2.3.17</td>
+<td style="text-align: left;">4.2.3.15</td>
 </tr>
 <tr>
-<td align="left">Update</td>
-<td align="left">BeeOND</td>
-<td align="left">7.1.3</td>
-<td align="left">7.1.2</td>
+<td style="text-align: left;">Update</td>
+<td style="text-align: left;">BeeOND</td>
+<td style="text-align: left;">7.1.3</td>
+<td style="text-align: left;">7.1.2</td>
 </tr>
 <tr>
-<td align="left">Add</td>
-<td align="left">CUDA</td>
-<td align="left"><a href="https://docs.nvidia.com/cuda/archive/10.1/">10.1.243</a></td>
-<td align="left"></td>
+<td style="text-align: left;">Add</td>
+<td style="text-align: left;">CUDA</td>
+<td style="text-align: left;"><a href="https://docs.nvidia.com/cuda/archive/10.1/">10.1.243</a></td>
+<td style="text-align: left;"></td>
 </tr>
 <tr>
-<td align="left">Add</td>
-<td align="left">cuDNN</td>
-<td align="left"><a href="https://docs.nvidia.com/deeplearning/sdk/cudnn-release-notes/rel_750.html">7.6.3</a><br><a href="https://docs.nvidia.com/deeplearning/sdk/cudnn-release-notes/rel_764.html">7.6.4</a></td>
-<td align="left"></td>
+<td style="text-align: left;">Add</td>
+<td style="text-align: left;">cuDNN</td>
+<td style="text-align: left;"><a href="https://docs.nvidia.com/deeplearning/sdk/cudnn-release-notes/rel_750.html">7.6.3</a><br><a href="https://docs.nvidia.com/deeplearning/sdk/cudnn-release-notes/rel_764.html">7.6.4</a></td>
+<td style="text-align: left;"></td>
 </tr>
 <tr>
-<td align="left">Add</td>
-<td align="left">NCCL</td>
-<td align="left"><a href="https://docs.nvidia.com/deeplearning/sdk/nccl-release-notes/rel_2-4-8.html">2.4.8-1</a></td>
-<td align="left"></td>
+<td style="text-align: left;">Add</td>
+<td style="text-align: left;">NCCL</td>
+<td style="text-align: left;"><a href="https://docs.nvidia.com/deeplearning/sdk/nccl-release-notes/rel_2-4-8.html">2.4.8-1</a></td>
+<td style="text-align: left;"></td>
 </tr>
 <tr>
-<td align="left">Add</td>
-<td align="left">MVAPICH2-GDR</td>
-<td align="left">2.3.2</td>
-<td align="left"></td>
+<td style="text-align: left;">Add</td>
+<td style="text-align: left;">MVAPICH2-GDR</td>
+<td style="text-align: left;">2.3.2</td>
+<td style="text-align: left;"></td>
 </tr>
 <tr>
-<td align="left">Add</td>
-<td align="left">MVAPICH2</td>
-<td align="left">2.3.2</td>
-<td align="left"></td>
+<td style="text-align: left;">Add</td>
+<td style="text-align: left;">MVAPICH2</td>
+<td style="text-align: left;">2.3.2</td>
+<td style="text-align: left;"></td>
 </tr>
 <tr>
-<td align="left">Add</td>
-<td align="left">fuse-sshfs</td>
-<td align="left">2.10</td>
-<td align="left"></td>
+<td style="text-align: left;">Add</td>
+<td style="text-align: left;">fuse-sshfs</td>
+<td style="text-align: left;">2.10</td>
+<td style="text-align: left;"></td>
 </tr>
 </tbody>
 </table>
@@ -4248,21 +4289,21 @@ command.</p>
 <table>
 <thead>
 <tr>
-<th align="left">Limitations</th>
-<th align="left">Current limits</th>
-<th align="left">Previous limits</th>
+<th style="text-align: left;">Limitations</th>
+<th style="text-align: left;">Current limits</th>
+<th style="text-align: left;">Previous limits</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td align="left">The maximum number of tasks within an array job</td>
-<td align="left">75000</td>
-<td align="left">1000</td>
+<td style="text-align: left;">The maximum number of tasks within an array job</td>
+<td style="text-align: left;">75000</td>
+<td style="text-align: left;">1000</td>
 </tr>
 <tr>
-<td align="left">The maximum number of any user's running jobs at the same time</td>
-<td align="left">200</td>
-<td align="left">0(unlimited)</td>
+<td style="text-align: left;">The maximum number of any user's running jobs at the same time</td>
+<td style="text-align: left;">200</td>
+<td style="text-align: left;">0(unlimited)</td>
 </tr>
 </tbody>
 </table>
@@ -4276,30 +4317,30 @@ command.</p>
 <table>
 <thead>
 <tr>
-<th align="left">Add / Update / Delete</th>
-<th align="left">Software</th>
-<th align="left">Version</th>
-<th align="left">Previous version</th>
+<th style="text-align: left;">Add / Update / Delete</th>
+<th style="text-align: left;">Software</th>
+<th style="text-align: left;">Version</th>
+<th style="text-align: left;">Previous version</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td align="left">Add</td>
-<td align="left">cuDNN</td>
-<td align="left"><a href="https://docs.nvidia.com/deeplearning/sdk/cudnn-release-notes/rel_762.html">7.6.2</a></td>
-<td align="left"></td>
+<td style="text-align: left;">Add</td>
+<td style="text-align: left;">cuDNN</td>
+<td style="text-align: left;"><a href="https://docs.nvidia.com/deeplearning/sdk/cudnn-release-notes/rel_762.html">7.6.2</a></td>
+<td style="text-align: left;"></td>
 </tr>
 <tr>
-<td align="left">Add</td>
-<td align="left">NCCL</td>
-<td align="left"><a href="https://docs.nvidia.com/deeplearning/sdk/nccl-release-notes/rel_2-4-7.html">2.4.7-1</a></td>
-<td align="left"></td>
+<td style="text-align: left;">Add</td>
+<td style="text-align: left;">NCCL</td>
+<td style="text-align: left;"><a href="https://docs.nvidia.com/deeplearning/sdk/nccl-release-notes/rel_2-4-7.html">2.4.7-1</a></td>
+<td style="text-align: left;"></td>
 </tr>
 <tr>
-<td align="left">Add</td>
-<td align="left">s3fs-fuse</td>
-<td align="left">1.85</td>
-<td align="left"></td>
+<td style="text-align: left;">Add</td>
+<td style="text-align: left;">s3fs-fuse</td>
+<td style="text-align: left;">1.85</td>
+<td style="text-align: left;"></td>
 </tr>
 </tbody>
 </table>
@@ -4311,30 +4352,30 @@ command.</p>
 <table>
 <thead>
 <tr>
-<th align="left">Add / Update / Delete</th>
-<th align="left">Software</th>
-<th align="left">Version</th>
-<th align="left">Previous version</th>
+<th style="text-align: left;">Add / Update / Delete</th>
+<th style="text-align: left;">Software</th>
+<th style="text-align: left;">Version</th>
+<th style="text-align: left;">Previous version</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td align="left">Add</td>
-<td align="left">CUDA</td>
-<td align="left">10.0.130.1</td>
-<td align="left"></td>
+<td style="text-align: left;">Add</td>
+<td style="text-align: left;">CUDA</td>
+<td style="text-align: left;">10.0.130.1</td>
+<td style="text-align: left;"></td>
 </tr>
 <tr>
-<td align="left">Add</td>
-<td align="left">cuDNN</td>
-<td align="left"><a href="https://docs.nvidia.com/deeplearning/sdk/cudnn-release-notes/rel_751.html">7.5.1</a><br><a href="https://docs.nvidia.com/deeplearning/sdk/cudnn-release-notes/rel_760.html">7.6.0</a><br><a href="https://docs.nvidia.com/deeplearning/sdk/cudnn-release-notes/rel_761.html">7.6.1</a></td>
-<td align="left"></td>
+<td style="text-align: left;">Add</td>
+<td style="text-align: left;">cuDNN</td>
+<td style="text-align: left;"><a href="https://docs.nvidia.com/deeplearning/sdk/cudnn-release-notes/rel_751.html">7.5.1</a><br><a href="https://docs.nvidia.com/deeplearning/sdk/cudnn-release-notes/rel_760.html">7.6.0</a><br><a href="https://docs.nvidia.com/deeplearning/sdk/cudnn-release-notes/rel_761.html">7.6.1</a></td>
+<td style="text-align: left;"></td>
 </tr>
 <tr>
-<td align="left">Add</td>
-<td align="left">aws-cli</td>
-<td align="left">1.16.194</td>
-<td align="left"></td>
+<td style="text-align: left;">Add</td>
+<td style="text-align: left;">aws-cli</td>
+<td style="text-align: left;">1.16.194</td>
+<td style="text-align: left;"></td>
 </tr>
 </tbody>
 </table>
@@ -4342,66 +4383,66 @@ command.</p>
 <table>
 <thead>
 <tr>
-<th align="left">Add / Update / Delete</th>
-<th align="left">Software</th>
-<th align="left">Version</th>
-<th align="left">Previous version</th>
+<th style="text-align: left;">Add / Update / Delete</th>
+<th style="text-align: left;">Software</th>
+<th style="text-align: left;">Version</th>
+<th style="text-align: left;">Previous version</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td align="left">Update</td>
-<td align="left">CentOS</td>
-<td align="left">7.5</td>
-<td align="left">7.4</td>
+<td style="text-align: left;">Update</td>
+<td style="text-align: left;">CentOS</td>
+<td style="text-align: left;">7.5</td>
+<td style="text-align: left;">7.4</td>
 </tr>
 <tr>
-<td align="left">Update</td>
-<td align="left">Univa Grid Engine</td>
-<td align="left">8.6.3</td>
-<td align="left">8.5.4</td>
+<td style="text-align: left;">Update</td>
+<td style="text-align: left;">Univa Grid Engine</td>
+<td style="text-align: left;">8.6.3</td>
+<td style="text-align: left;">8.5.4</td>
 </tr>
 <tr>
-<td align="left">Update</td>
-<td align="left">Java</td>
-<td align="left">1.7.0_171</td>
-<td align="left">1.7.0_141</td>
+<td style="text-align: left;">Update</td>
+<td style="text-align: left;">Java</td>
+<td style="text-align: left;">1.7.0_171</td>
+<td style="text-align: left;">1.7.0_141</td>
 </tr>
 <tr>
-<td align="left">Update</td>
-<td align="left">Java</td>
-<td align="left">1.8.0_161</td>
-<td align="left">1.8.0_131</td>
+<td style="text-align: left;">Update</td>
+<td style="text-align: left;">Java</td>
+<td style="text-align: left;">1.8.0_161</td>
+<td style="text-align: left;">1.8.0_131</td>
 </tr>
 <tr>
-<td align="left">Add</td>
-<td align="left">DDN Lustre</td>
-<td align="left">2.10.5_ddn7-1</td>
-<td align="left"></td>
+<td style="text-align: left;">Add</td>
+<td style="text-align: left;">DDN Lustre</td>
+<td style="text-align: left;">2.10.5_ddn7-1</td>
+<td style="text-align: left;"></td>
 </tr>
 <tr>
-<td align="left">Update</td>
-<td align="left">NVIDIA Tesla Driver</td>
-<td align="left"><a href="https://docs.nvidia.com/datacenter/tesla/tesla-release-notes-410-104/index.html">410.104</a></td>
-<td align="left">396.44</td>
+<td style="text-align: left;">Update</td>
+<td style="text-align: left;">NVIDIA Tesla Driver</td>
+<td style="text-align: left;"><a href="https://docs.nvidia.com/datacenter/tesla/tesla-release-notes-410-104/index.html">410.104</a></td>
+<td style="text-align: left;">396.44</td>
 </tr>
 <tr>
-<td align="left">Add</td>
-<td align="left">CUDA</td>
-<td align="left"><a href="https://docs.nvidia.com/cuda/archive/10.0/">10.0.130</a></td>
-<td align="left"></td>
+<td style="text-align: left;">Add</td>
+<td style="text-align: left;">CUDA</td>
+<td style="text-align: left;"><a href="https://docs.nvidia.com/cuda/archive/10.0/">10.0.130</a></td>
+<td style="text-align: left;"></td>
 </tr>
 <tr>
-<td align="left">Add</td>
-<td align="left">Intel Compiler</td>
-<td align="left">2019.3</td>
-<td align="left"></td>
+<td style="text-align: left;">Add</td>
+<td style="text-align: left;">Intel Compiler</td>
+<td style="text-align: left;">2019.3</td>
+<td style="text-align: left;"></td>
 </tr>
 <tr>
-<td align="left">Add</td>
-<td align="left">PGI</td>
-<td align="left">18.10<br>19.3</td>
-<td align="left"></td>
+<td style="text-align: left;">Add</td>
+<td style="text-align: left;">PGI</td>
+<td style="text-align: left;">18.10<br>19.3</td>
+<td style="text-align: left;"></td>
 </tr>
 </tbody>
 </table>
@@ -4413,48 +4454,48 @@ command.</p>
 <table>
 <thead>
 <tr>
-<th align="left">Add / Update / Delete</th>
-<th align="left">Software</th>
-<th align="left">Version</th>
-<th align="left">Previous version</th>
+<th style="text-align: left;">Add / Update / Delete</th>
+<th style="text-align: left;">Software</th>
+<th style="text-align: left;">Version</th>
+<th style="text-align: left;">Previous version</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td align="left">Add</td>
-<td align="left">Intel Compiler</td>
-<td align="left">2017.8<br>2018.3</td>
-<td align="left"></td>
+<td style="text-align: left;">Add</td>
+<td style="text-align: left;">Intel Compiler</td>
+<td style="text-align: left;">2017.8<br>2018.3</td>
+<td style="text-align: left;"></td>
 </tr>
 <tr>
-<td align="left">Add</td>
-<td align="left">PGI</td>
-<td align="left">17.10</td>
-<td align="left"></td>
+<td style="text-align: left;">Add</td>
+<td style="text-align: left;">PGI</td>
+<td style="text-align: left;">17.10</td>
+<td style="text-align: left;"></td>
 </tr>
 <tr>
-<td align="left">Add</td>
-<td align="left">Open MPI</td>
-<td align="left">2.1.6</td>
-<td align="left"></td>
+<td style="text-align: left;">Add</td>
+<td style="text-align: left;">Open MPI</td>
+<td style="text-align: left;">2.1.6</td>
+<td style="text-align: left;"></td>
 </tr>
 <tr>
-<td align="left">Add</td>
-<td align="left">cuDNN</td>
-<td align="left"><a href="https://docs.nvidia.com/deeplearning/sdk/cudnn-release-notes/rel_750.html">7.5.0</a></td>
-<td align="left"></td>
+<td style="text-align: left;">Add</td>
+<td style="text-align: left;">cuDNN</td>
+<td style="text-align: left;"><a href="https://docs.nvidia.com/deeplearning/sdk/cudnn-release-notes/rel_750.html">7.5.0</a></td>
+<td style="text-align: left;"></td>
 </tr>
 <tr>
-<td align="left">Add</td>
-<td align="left">NCCL</td>
-<td align="left"><a href="https://docs.nvidia.com/deeplearning/sdk/nccl-release-notes/rel_2-4-2.html">2.4.2-1</a></td>
-<td align="left"></td>
+<td style="text-align: left;">Add</td>
+<td style="text-align: left;">NCCL</td>
+<td style="text-align: left;"><a href="https://docs.nvidia.com/deeplearning/sdk/nccl-release-notes/rel_2-4-2.html">2.4.2-1</a></td>
+<td style="text-align: left;"></td>
 </tr>
 <tr>
-<td align="left">Add</td>
-<td align="left">Intel MKL</td>
-<td align="left">2017.8<br>2018.3</td>
-<td align="left"></td>
+<td style="text-align: left;">Add</td>
+<td style="text-align: left;">Intel MKL</td>
+<td style="text-align: left;">2017.8<br>2018.3</td>
+<td style="text-align: left;"></td>
 </tr>
 </tbody>
 </table>
@@ -4468,162 +4509,162 @@ command.</p>
 <h2 id="2019-01-31">2019-01-31</h2>
 <h3 id="usergroupjob-names-are-now-masked-when-displaying-the-result-of-qstat">User/Group/Job names are now masked when displaying the result of 'qstat'</h3>
 <p>We changed the job scheduler configuration, so that User/Group/Job names are masked from the result of <code>qstat</code> command. These columns are shown only for your own jobs, otherwise these columns are masked by '*'. An example follows:</p>
-<div class="codehilite"><pre><span></span><code><span class="o">[</span><span class="n">username@es1 ~</span><span class="o">]</span><span class="err">$</span><span class="w"> </span><span class="n">qstat</span><span class="w"> </span><span class="o">-</span><span class="n">u</span><span class="w"> </span><span class="s1">&#39;*&#39;</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="n">head</span><span class="w"></span>
-<span class="n">job</span><span class="o">-</span><span class="n">ID</span><span class="w">     </span><span class="k">prior</span><span class="w">   </span><span class="n">name</span><span class="w">       </span><span class="k">user</span><span class="w">         </span><span class="k">state</span><span class="w"> </span><span class="n">submit</span><span class="o">/</span><span class="k">start</span><span class="w"> </span><span class="k">at</span><span class="w">     </span><span class="n">queue</span><span class="w">                          </span><span class="n">jclass</span><span class="w">                         </span><span class="n">slots</span><span class="w"> </span><span class="n">ja</span><span class="o">-</span><span class="n">task</span><span class="o">-</span><span class="n">ID</span><span class="w"></span>
-<span class="o">------------------------------------------------------------------------------------------------------------------------------------------------</span><span class="w"></span>
-<span class="w">    </span><span class="mi">123456</span><span class="w"> </span><span class="mf">0.28027</span><span class="w"> </span><span class="n">run</span><span class="p">.</span><span class="n">sh</span><span class="w">     </span><span class="n">username</span><span class="w">     </span><span class="n">r</span><span class="w">     </span><span class="mi">01</span><span class="o">/</span><span class="mi">31</span><span class="o">/</span><span class="mi">2019</span><span class="w"> </span><span class="mi">12</span><span class="err">:</span><span class="mi">34</span><span class="err">:</span><span class="mi">56</span><span class="w"> </span><span class="n">gpu</span><span class="nv">@g0001</span><span class="w">                                                        </span><span class="mi">80</span><span class="w"></span>
-<span class="w">    </span><span class="mi">123457</span><span class="w"> </span><span class="mf">0.28027</span><span class="w"> </span><span class="o">**********</span><span class="w"> </span><span class="o">**********</span><span class="w">   </span><span class="n">r</span><span class="w">     </span><span class="mi">01</span><span class="o">/</span><span class="mi">31</span><span class="o">/</span><span class="mi">2019</span><span class="w"> </span><span class="mi">12</span><span class="err">:</span><span class="mi">34</span><span class="err">:</span><span class="mi">56</span><span class="w"> </span><span class="n">gpu</span><span class="nv">@g0002</span><span class="w">                                                        </span><span class="mi">80</span><span class="w"></span>
-<span class="w">    </span><span class="mi">123458</span><span class="w"> </span><span class="mf">0.28027</span><span class="w"> </span><span class="o">**********</span><span class="w"> </span><span class="o">**********</span><span class="w">   </span><span class="n">r</span><span class="w">     </span><span class="mi">01</span><span class="o">/</span><span class="mi">31</span><span class="o">/</span><span class="mi">2019</span><span class="w"> </span><span class="mi">12</span><span class="err">:</span><span class="mi">34</span><span class="err">:</span><span class="mi">56</span><span class="w"> </span><span class="n">gpu</span><span class="nv">@g0003</span><span class="w">                                                        </span><span class="mi">80</span><span class="w"></span>
-<span class="w">    </span><span class="mi">123450</span><span class="w"> </span><span class="mf">0.28027</span><span class="w"> </span><span class="o">**********</span><span class="w"> </span><span class="o">**********</span><span class="w">   </span><span class="n">r</span><span class="w">     </span><span class="mi">01</span><span class="o">/</span><span class="mi">31</span><span class="o">/</span><span class="mi">2019</span><span class="w"> </span><span class="mi">12</span><span class="err">:</span><span class="mi">34</span><span class="err">:</span><span class="mi">56</span><span class="w"> </span><span class="n">gpu</span><span class="nv">@g0004</span><span class="w">                                                        </span><span class="mi">80</span><span class="w"></span>
+<div class="codehilite"><pre><span></span><code><span class="o">[</span><span class="n">username@es1 ~</span><span class="o">]</span><span class="err">$</span><span class="w"> </span><span class="n">qstat</span><span class="w"> </span><span class="o">-</span><span class="n">u</span><span class="w"> </span><span class="s1">&#39;*&#39;</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="n">head</span>
+<span class="n">job</span><span class="o">-</span><span class="n">ID</span><span class="w">     </span><span class="k">prior</span><span class="w">   </span><span class="n">name</span><span class="w">       </span><span class="k">user</span><span class="w">         </span><span class="k">state</span><span class="w"> </span><span class="n">submit</span><span class="o">/</span><span class="k">start</span><span class="w"> </span><span class="k">at</span><span class="w">     </span><span class="n">queue</span><span class="w">                          </span><span class="n">jclass</span><span class="w">                         </span><span class="n">slots</span><span class="w"> </span><span class="n">ja</span><span class="o">-</span><span class="n">task</span><span class="o">-</span><span class="n">ID</span>
+<span class="o">------------------------------------------------------------------------------------------------------------------------------------------------</span>
+<span class="w">    </span><span class="mi">123456</span><span class="w"> </span><span class="mf">0.28027</span><span class="w"> </span><span class="n">run</span><span class="p">.</span><span class="n">sh</span><span class="w">     </span><span class="n">username</span><span class="w">     </span><span class="n">r</span><span class="w">     </span><span class="mi">01</span><span class="o">/</span><span class="mi">31</span><span class="o">/</span><span class="mi">2019</span><span class="w"> </span><span class="mi">12</span><span class="err">:</span><span class="mi">34</span><span class="err">:</span><span class="mi">56</span><span class="w"> </span><span class="n">gpu</span><span class="nv">@g0001</span><span class="w">                                                        </span><span class="mi">80</span>
+<span class="w">    </span><span class="mi">123457</span><span class="w"> </span><span class="mf">0.28027</span><span class="w"> </span><span class="o">**********</span><span class="w"> </span><span class="o">**********</span><span class="w">   </span><span class="n">r</span><span class="w">     </span><span class="mi">01</span><span class="o">/</span><span class="mi">31</span><span class="o">/</span><span class="mi">2019</span><span class="w"> </span><span class="mi">12</span><span class="err">:</span><span class="mi">34</span><span class="err">:</span><span class="mi">56</span><span class="w"> </span><span class="n">gpu</span><span class="nv">@g0002</span><span class="w">                                                        </span><span class="mi">80</span>
+<span class="w">    </span><span class="mi">123458</span><span class="w"> </span><span class="mf">0.28027</span><span class="w"> </span><span class="o">**********</span><span class="w"> </span><span class="o">**********</span><span class="w">   </span><span class="n">r</span><span class="w">     </span><span class="mi">01</span><span class="o">/</span><span class="mi">31</span><span class="o">/</span><span class="mi">2019</span><span class="w"> </span><span class="mi">12</span><span class="err">:</span><span class="mi">34</span><span class="err">:</span><span class="mi">56</span><span class="w"> </span><span class="n">gpu</span><span class="nv">@g0003</span><span class="w">                                                        </span><span class="mi">80</span>
+<span class="w">    </span><span class="mi">123450</span><span class="w"> </span><span class="mf">0.28027</span><span class="w"> </span><span class="o">**********</span><span class="w"> </span><span class="o">**********</span><span class="w">   </span><span class="n">r</span><span class="w">     </span><span class="mi">01</span><span class="o">/</span><span class="mi">31</span><span class="o">/</span><span class="mi">2019</span><span class="w"> </span><span class="mi">12</span><span class="err">:</span><span class="mi">34</span><span class="err">:</span><span class="mi">56</span><span class="w"> </span><span class="n">gpu</span><span class="nv">@g0004</span><span class="w">                                                        </span><span class="mi">80</span>
 </code></pre></div>
 
 <h2 id="2018-12-18">2018-12-18</h2>
 <table>
 <thead>
 <tr>
-<th align="left">Add / Update / Delete</th>
-<th align="left">Software</th>
-<th align="left">Version</th>
-<th align="left">Previous version</th>
+<th style="text-align: left;">Add / Update / Delete</th>
+<th style="text-align: left;">Software</th>
+<th style="text-align: left;">Version</th>
+<th style="text-align: left;">Previous version</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td align="left">Add</td>
-<td align="left">cuDNN</td>
-<td align="left"><a href="https://docs.nvidia.com/deeplearning/sdk/cudnn-release-notes/rel_742.html">7.4.2</a></td>
-<td align="left"></td>
+<td style="text-align: left;">Add</td>
+<td style="text-align: left;">cuDNN</td>
+<td style="text-align: left;"><a href="https://docs.nvidia.com/deeplearning/sdk/cudnn-release-notes/rel_742.html">7.4.2</a></td>
+<td style="text-align: left;"></td>
 </tr>
 <tr>
-<td align="left">Add</td>
-<td align="left">NCCL</td>
-<td align="left"><a href="https://docs.nvidia.com/deeplearning/sdk/nccl-release-notes/rel_2-3-7.html">2.3.7-1</a></td>
-<td align="left"></td>
+<td style="text-align: left;">Add</td>
+<td style="text-align: left;">NCCL</td>
+<td style="text-align: left;"><a href="https://docs.nvidia.com/deeplearning/sdk/nccl-release-notes/rel_2-3-7.html">2.3.7-1</a></td>
+<td style="text-align: left;"></td>
 </tr>
 <tr>
-<td align="left">Add</td>
-<td align="left">Open MPI</td>
-<td align="left">3.0.3<br>3.1.3</td>
-<td align="left"></td>
+<td style="text-align: left;">Add</td>
+<td style="text-align: left;">Open MPI</td>
+<td style="text-align: left;">3.0.3<br>3.1.3</td>
+<td style="text-align: left;"></td>
 </tr>
 <tr>
-<td align="left">Add</td>
-<td align="left">MVAPICH2-GDR</td>
-<td align="left">2.3</td>
-<td align="left"></td>
+<td style="text-align: left;">Add</td>
+<td style="text-align: left;">MVAPICH2-GDR</td>
+<td style="text-align: left;">2.3</td>
+<td style="text-align: left;"></td>
 </tr>
 <tr>
-<td align="left">Add</td>
-<td align="left">Hadoop</td>
-<td align="left">2.9.2</td>
-<td align="left"></td>
+<td style="text-align: left;">Add</td>
+<td style="text-align: left;">Hadoop</td>
+<td style="text-align: left;">2.9.2</td>
+<td style="text-align: left;"></td>
 </tr>
 <tr>
-<td align="left">Add</td>
-<td align="left">Spark</td>
-<td align="left">2.3.2<br>2.4.0</td>
-<td align="left"></td>
+<td style="text-align: left;">Add</td>
+<td style="text-align: left;">Spark</td>
+<td style="text-align: left;">2.3.2<br>2.4.0</td>
+<td style="text-align: left;"></td>
 </tr>
 <tr>
-<td align="left">Add</td>
-<td align="left">Go</td>
-<td align="left">1.11.2</td>
-<td align="left"></td>
+<td style="text-align: left;">Add</td>
+<td style="text-align: left;">Go</td>
+<td style="text-align: left;">1.11.2</td>
+<td style="text-align: left;"></td>
 </tr>
 <tr>
-<td align="left">Add</td>
-<td align="left">Intel MKL</td>
-<td align="left">2018.2.199</td>
-<td align="left"></td>
+<td style="text-align: left;">Add</td>
+<td style="text-align: left;">Intel MKL</td>
+<td style="text-align: left;">2018.2.199</td>
+<td style="text-align: left;"></td>
 </tr>
 </tbody>
 </table>
 <h3 id="cudnn-742">cuDNN 7.4.2</h3>
 <p>The NVIDIA CUDA Deep Neural Network library (cuDNN) 7.4.2 was installed.</p>
 <p>To set up user environment:</p>
-<div class="codehilite"><pre><span></span><code><span class="o">$</span> <span class="n">module</span> <span class="nb">load</span> <span class="n">cuda</span><span class="o">/</span><span class="mf">9.2</span><span class="o">/</span><span class="mf">9.2</span><span class="o">.</span><span class="mf">148.1</span>
-<span class="o">$</span> <span class="n">module</span> <span class="nb">load</span> <span class="n">cudnn</span><span class="o">/</span><span class="mf">7.4</span><span class="o">/</span><span class="mf">7.4</span><span class="o">.</span><span class="mi">2</span>
+<div class="codehilite"><pre><span></span><code><span class="o">$</span><span class="w"> </span><span class="n">module</span><span class="w"> </span><span class="nb">load</span><span class="w"> </span><span class="n">cuda</span><span class="o">/</span><span class="mf">9.2</span><span class="o">/</span><span class="mf">9.2</span><span class="o">.</span><span class="mf">148.1</span>
+<span class="o">$</span><span class="w"> </span><span class="n">module</span><span class="w"> </span><span class="nb">load</span><span class="w"> </span><span class="n">cudnn</span><span class="o">/</span><span class="mf">7.4</span><span class="o">/</span><span class="mf">7.4</span><span class="o">.</span><span class="mi">2</span>
 </code></pre></div>
 
 <h3 id="nccl-237-1">NCCL 2.3.7-1</h3>
 <p>The NVIDIA Collective Communications Library (NCCL) 2.3.7-1 was installed.</p>
 <p>To set up user environment:</p>
-<div class="codehilite"><pre><span></span><code><span class="o">$</span> <span class="n">module</span> <span class="nb">load</span> <span class="n">cuda</span><span class="o">/</span><span class="mf">9.2</span><span class="o">/</span><span class="mf">9.2</span><span class="o">.</span><span class="mf">148.1</span>
-<span class="o">$</span> <span class="n">module</span> <span class="nb">load</span> <span class="n">nccl</span><span class="o">/</span><span class="mf">2.3</span><span class="o">/</span><span class="mf">2.3</span><span class="o">.</span><span class="mi">7</span><span class="o">-</span><span class="mi">1</span>
+<div class="codehilite"><pre><span></span><code><span class="o">$</span><span class="w"> </span><span class="n">module</span><span class="w"> </span><span class="nb">load</span><span class="w"> </span><span class="n">cuda</span><span class="o">/</span><span class="mf">9.2</span><span class="o">/</span><span class="mf">9.2</span><span class="o">.</span><span class="mf">148.1</span>
+<span class="o">$</span><span class="w"> </span><span class="n">module</span><span class="w"> </span><span class="nb">load</span><span class="w"> </span><span class="n">nccl</span><span class="o">/</span><span class="mf">2.3</span><span class="o">/</span><span class="mf">2.3</span><span class="o">.</span><span class="mi">7</span><span class="o">-</span><span class="mi">1</span>
 </code></pre></div>
 
 <h3 id="open-mpi-303-313">Open MPI 3.0.3, 3.1.3</h3>
 <p>Open MPI (without --cuda option) 3.0.3, 3.1.3 were installed.</p>
 <p>To set up user environment:</p>
-<div class="codehilite"><pre><span></span><code><span class="o">$</span> <span class="n">module</span> <span class="nb">load</span> <span class="n">openmpi</span><span class="o">/</span><span class="mf">3.1</span><span class="o">.</span><span class="mi">3</span>
+<div class="codehilite"><pre><span></span><code><span class="o">$</span><span class="w"> </span><span class="n">module</span><span class="w"> </span><span class="nb">load</span><span class="w"> </span><span class="n">openmpi</span><span class="o">/</span><span class="mf">3.1</span><span class="o">.</span><span class="mi">3</span>
 </code></pre></div>
 
 <h3 id="mvapich2-gdr-23">MVAPICH2-GDR 2.3</h3>
 <p>MVAPICH2-GDR 2.3 was installed.</p>
 <p>To set up user environment:</p>
-<div class="codehilite"><pre><span></span><code><span class="o">$</span> <span class="n">module</span> <span class="nb">load</span> <span class="n">cuda</span><span class="o">/</span><span class="mf">9.2</span><span class="o">/</span><span class="mf">9.2</span><span class="o">.</span><span class="mf">148.1</span>
-<span class="o">$</span> <span class="n">module</span> <span class="nb">load</span> <span class="n">mvapich</span><span class="o">/</span><span class="n">mvapich2</span><span class="o">-</span><span class="n">gdr</span><span class="o">/</span><span class="mf">2.3</span>
+<div class="codehilite"><pre><span></span><code><span class="o">$</span><span class="w"> </span><span class="n">module</span><span class="w"> </span><span class="nb">load</span><span class="w"> </span><span class="n">cuda</span><span class="o">/</span><span class="mf">9.2</span><span class="o">/</span><span class="mf">9.2</span><span class="o">.</span><span class="mf">148.1</span>
+<span class="o">$</span><span class="w"> </span><span class="n">module</span><span class="w"> </span><span class="nb">load</span><span class="w"> </span><span class="n">mvapich</span><span class="o">/</span><span class="n">mvapich2</span><span class="o">-</span><span class="n">gdr</span><span class="o">/</span><span class="mf">2.3</span>
 </code></pre></div>
 
 <h3 id="hadoop-292">Hadoop 2.9.2</h3>
 <p>Apache Hadoop 2.9.2 was installed.</p>
 <p>To set up user environment:</p>
-<div class="codehilite"><pre><span></span><code><span class="o">$</span> <span class="n">module</span> <span class="nb">load</span> <span class="n">openjdk</span><span class="o">/</span><span class="mf">1.8</span><span class="o">.</span><span class="mf">0.131</span>
-<span class="o">$</span> <span class="n">module</span> <span class="nb">load</span> <span class="n">hadoop</span><span class="o">/</span><span class="mf">2.9</span><span class="o">.</span><span class="mi">1</span>
+<div class="codehilite"><pre><span></span><code><span class="o">$</span><span class="w"> </span><span class="n">module</span><span class="w"> </span><span class="nb">load</span><span class="w"> </span><span class="n">openjdk</span><span class="o">/</span><span class="mf">1.8</span><span class="o">.</span><span class="mf">0.131</span>
+<span class="o">$</span><span class="w"> </span><span class="n">module</span><span class="w"> </span><span class="nb">load</span><span class="w"> </span><span class="n">hadoop</span><span class="o">/</span><span class="mf">2.9</span><span class="o">.</span><span class="mi">1</span>
 </code></pre></div>
 
 <h3 id="spark-232-240">Spark 2.3.2, 2.4.0</h3>
 <p>Apache Spark 2.3.2, 2.4.0 were installed.</p>
 <p>To set up user environment:</p>
-<div class="codehilite"><pre><span></span><code><span class="o">$</span> <span class="n">module</span> <span class="nb">load</span> <span class="n">spark</span><span class="o">/</span><span class="mf">2.4</span><span class="o">.</span><span class="mi">0</span>
+<div class="codehilite"><pre><span></span><code><span class="o">$</span><span class="w"> </span><span class="n">module</span><span class="w"> </span><span class="nb">load</span><span class="w"> </span><span class="n">spark</span><span class="o">/</span><span class="mf">2.4</span><span class="o">.</span><span class="mi">0</span>
 </code></pre></div>
 
 <h3 id="go-1112">Go 1.11.2</h3>
 <p>Go Programming Language 1.11.2 was installed.</p>
 <p>To set up user environment:</p>
-<div class="codehilite"><pre><span></span><code><span class="o">$</span> <span class="n">module</span> <span class="nb">load</span> <span class="n">go</span><span class="o">/</span><span class="mf">1.11</span><span class="o">.</span><span class="mi">2</span>
+<div class="codehilite"><pre><span></span><code><span class="o">$</span><span class="w"> </span><span class="n">module</span><span class="w"> </span><span class="nb">load</span><span class="w"> </span><span class="n">go</span><span class="o">/</span><span class="mf">1.11</span><span class="o">.</span><span class="mi">2</span>
 </code></pre></div>
 
 <h3 id="intel-mkl-20182199">Intel MKL 2018.2.199</h3>
 <p>Intel Math Kernel Library (MKL) 2018.2.199 was installed.</p>
 <p>To set up user environment:</p>
-<div class="codehilite"><pre><span></span><code><span class="o">$</span> <span class="n">module</span> <span class="nb">load</span> <span class="n">intel</span><span class="o">-</span><span class="n">mkl</span><span class="o">/</span><span class="mf">2018.2</span><span class="o">.</span><span class="mi">199</span>
+<div class="codehilite"><pre><span></span><code><span class="o">$</span><span class="w"> </span><span class="n">module</span><span class="w"> </span><span class="nb">load</span><span class="w"> </span><span class="n">intel</span><span class="o">-</span><span class="n">mkl</span><span class="o">/</span><span class="mf">2018.2</span><span class="o">.</span><span class="mi">199</span>
 </code></pre></div>
 
 <h2 id="2018-12-14">2018-12-14</h2>
 <table>
 <thead>
 <tr>
-<th align="left">Add / Update / Delete</th>
-<th align="left">Software</th>
-<th align="left">Version</th>
-<th align="left">Previous version</th>
+<th style="text-align: left;">Add / Update / Delete</th>
+<th style="text-align: left;">Software</th>
+<th style="text-align: left;">Version</th>
+<th style="text-align: left;">Previous version</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td align="left">Update</td>
-<td align="left">Singularity</td>
-<td align="left">2.6.1</td>
-<td align="left">2.6.0</td>
+<td style="text-align: left;">Update</td>
+<td style="text-align: left;">Singularity</td>
+<td style="text-align: left;">2.6.1</td>
+<td style="text-align: left;">2.6.0</td>
 </tr>
 <tr>
-<td align="left">Delete</td>
-<td align="left">Singularity</td>
-<td align="left">2.5.2</td>
-<td align="left"></td>
+<td style="text-align: left;">Delete</td>
+<td style="text-align: left;">Singularity</td>
+<td style="text-align: left;">2.5.2</td>
+<td style="text-align: left;"></td>
 </tr>
 </tbody>
 </table>
 <p>Singularity 2.6.1 was installed. The usage is as follows:</p>
-<div class="codehilite"><pre><span></span><code><span class="o">$</span> <span class="n">module</span> <span class="nb">load</span> <span class="n">singularity</span><span class="o">/</span><span class="mf">2.6</span><span class="o">.</span><span class="mi">1</span>
-<span class="o">$</span> <span class="n">singularity</span> <span class="n">run</span> <span class="n">image_path</span>
+<div class="codehilite"><pre><span></span><code><span class="o">$</span><span class="w"> </span><span class="n">module</span><span class="w"> </span><span class="nb">load</span><span class="w"> </span><span class="n">singularity</span><span class="o">/</span><span class="mf">2.6</span><span class="o">.</span><span class="mi">1</span>
+<span class="o">$</span><span class="w"> </span><span class="n">singularity</span><span class="w"> </span><span class="n">run</span><span class="w"> </span><span class="n">image_path</span>
 </code></pre></div>
 
 <p>The release note will be found:</p>
 <p><a href="https://github.com/sylabs/singularity/releases/tag/2.6.1">Singularity 2.6.1</a></p>
 <p>And, we uninstalled version 2.5.2 and 2.6.0 because severe security issues (<a href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=2018-19295">CVE-2018-19295</a>) were reported. If you are using Singularity with specifying version number, such as <code>singularity/2.5.0</code> or <code>singularity/2.6.0</code>, please modify your job scripts to specify <code>singularity/2.6.1</code>.</p>
-<div class="codehilite"><pre><span></span><code><span class="n">ex</span><span class="p">)</span> <span class="n">module</span> <span class="nb">load</span> <span class="n">singularity</span><span class="o">/</span><span class="mf">2.5</span><span class="o">.</span><span class="mi">2</span> <span class="o">-&gt;</span> <span class="n">module</span> <span class="nb">load</span> <span class="n">singularity</span><span class="o">/</span><span class="mf">2.6</span><span class="o">.</span><span class="mi">1</span>
+<div class="codehilite"><pre><span></span><code><span class="n">ex</span><span class="p">)</span><span class="w"> </span><span class="n">module</span><span class="w"> </span><span class="nb">load</span><span class="w"> </span><span class="n">singularity</span><span class="o">/</span><span class="mf">2.5</span><span class="o">.</span><span class="mi">2</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="n">module</span><span class="w"> </span><span class="nb">load</span><span class="w"> </span><span class="n">singularity</span><span class="o">/</span><span class="mf">2.6</span><span class="o">.</span><span class="mi">1</span>
 </code></pre></div>
                 
               

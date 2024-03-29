@@ -16,7 +16,7 @@
         <link rel="canonical" href="https://docs.abci.ai/en/faq/">
       
       <link rel="icon" href="../img/favicon.png">
-      <meta name="generator" content="mkdocs-1.1.2, mkdocs-material-7.1.3">
+      <meta name="generator" content="mkdocs-1.2.4, mkdocs-material-7.1.3">
     
     
       
@@ -1238,15 +1238,15 @@
                 <h1 id="faq">FAQ</h1>
 <h2 id="q-if-i-enter-ctrls-during-interactive-jobs-i-cannot-enter-keys-after-that">Q. If I enter Ctrl+S during interactive jobs, I cannot enter keys after that</h2>
 <p>This is because standard terminal emulators for macOS, Windows, and Linux have Ctrl+S/Ctrl+Q flow control enabled by default. To disable it, execute the following in the terminal emulator of the local PC:</p>
-<div class="codehilite"><pre><span></span><code>$ stty -ixon
+<div class="codehilite"><pre><span></span><code>$<span class="w"> </span>stty<span class="w"> </span>-ixon
 </code></pre></div>
 
 <p>Executing while logged in to the interactive node has the same effect.</p>
 <h2 id="q-singularity-cannot-use-container-registries-that-require-authentication">Q. Singularity cannot use container registries that require authentication</h2>
 <p>SingularityPRO has a function equivalent to <code>docker login</code> that provides authentication information with environment variables.</p>
-<div class="codehilite"><pre><span></span><code><span class="o">[</span>username@es1 ~<span class="o">]</span>$ <span class="nb">export</span> <span class="nv">SINGULARITY_DOCKER_USERNAME</span><span class="o">=</span><span class="s1">&#39;username&#39;</span>
-<span class="o">[</span>username@es1 ~<span class="o">]</span>$ <span class="nb">export</span> <span class="nv">SINGULARITY_DOCKER_PASSWORD</span><span class="o">=</span><span class="s1">&#39;password&#39;</span>
-<span class="o">[</span>username@es1 ~<span class="o">]</span>$ singularity pull docker://myregistry.azurecr.io/namespace/repo_name:repo_tag
+<div class="codehilite"><pre><span></span><code><span class="o">[</span>username@es1<span class="w"> </span>~<span class="o">]</span>$<span class="w"> </span><span class="nb">export</span><span class="w"> </span><span class="nv">SINGULARITY_DOCKER_USERNAME</span><span class="o">=</span><span class="s1">&#39;username&#39;</span>
+<span class="o">[</span>username@es1<span class="w"> </span>~<span class="o">]</span>$<span class="w"> </span><span class="nb">export</span><span class="w"> </span><span class="nv">SINGULARITY_DOCKER_PASSWORD</span><span class="o">=</span><span class="s1">&#39;password&#39;</span>
+<span class="o">[</span>username@es1<span class="w"> </span>~<span class="o">]</span>$<span class="w"> </span>singularity<span class="w"> </span>pull<span class="w"> </span>docker://myregistry.azurecr.io/namespace/repo_name:repo_tag
 </code></pre></div>
 
 <p>For more information on SingularityPRO authentication, refer to the following user guide.</p>
@@ -1259,35 +1259,35 @@
 <h2 id="q-i-want-to-assign-multiple-compute-nodes-and-have-each-compute-node-perform-different-processing">Q. I want to assign multiple compute nodes and have each compute node perform different processing</h2>
 <p>If you give <code>-l rt_F=N</code> or <code>-l rt_AF=N</code> option to <code>qrsh</code> or <code>qsub</code>, you can assign N compute nodes.
 You can use MPI if you want to perform different processing on each assigned compute node.</p>
-<div class="codehilite"><pre><span></span><code><span class="o">[</span>username@es1 ~<span class="o">]</span>$ qrsh -g grpname -l <span class="nv">rt_F</span><span class="o">=</span><span class="m">3</span> -l <span class="nv">h_rt</span><span class="o">=</span><span class="m">1</span>:00:00
-<span class="o">[</span>username@g0001 ~<span class="o">]</span>$ module load hpcx/2.12
-<span class="o">[</span>username@g0001 ~<span class="o">]</span>$ mpirun -hostfile <span class="nv">$SGE_JOB_HOSTLIST</span> -np <span class="m">1</span> command1 : -np <span class="m">1</span> command2 : -np <span class="m">1</span> command3
+<div class="codehilite"><pre><span></span><code><span class="o">[</span>username@es1<span class="w"> </span>~<span class="o">]</span>$<span class="w"> </span>qrsh<span class="w"> </span>-g<span class="w"> </span>grpname<span class="w"> </span>-l<span class="w"> </span><span class="nv">rt_F</span><span class="o">=</span><span class="m">3</span><span class="w"> </span>-l<span class="w"> </span><span class="nv">h_rt</span><span class="o">=</span><span class="m">1</span>:00:00
+<span class="o">[</span>username@g0001<span class="w"> </span>~<span class="o">]</span>$<span class="w"> </span>module<span class="w"> </span>load<span class="w"> </span>hpcx/2.12
+<span class="o">[</span>username@g0001<span class="w"> </span>~<span class="o">]</span>$<span class="w"> </span>mpirun<span class="w"> </span>-hostfile<span class="w"> </span><span class="nv">$SGE_JOB_HOSTLIST</span><span class="w"> </span>-np<span class="w"> </span><span class="m">1</span><span class="w"> </span>command1<span class="w"> </span>:<span class="w"> </span>-np<span class="w"> </span><span class="m">1</span><span class="w"> </span>command2<span class="w"> </span>:<span class="w"> </span>-np<span class="w"> </span><span class="m">1</span><span class="w"> </span>command3
 </code></pre></div>
 
 <p>Another option is to enable SSH login to compute nodes, which allows each assigned compute node to perform different operations.
 SSH login access to compute nodes is enabled by specifying the <code>-l USE_SSH=1</code> option when executing <code>qrsh</code> or <code>qsub</code>.
 For more information on the <code>-l USE_SSH=1</code> option, see <a href="../appendix/ssh-access/">Appendix. SSH Access to Compute Nodes</a>.</p>
 <p>The following is an example of using SSH access to perform different operations on assigned compute nodes.</p>
-<div class="codehilite"><pre><span></span><code><span class="o">[</span>username@es1 ~<span class="o">]</span>$ qrsh -g grpname -l <span class="nv">rt_F</span><span class="o">=</span><span class="m">3</span> -l <span class="nv">h_rt</span><span class="o">=</span><span class="m">1</span>:00:00 -l <span class="nv">USE_SSH</span><span class="o">=</span><span class="m">1</span>
-<span class="o">[</span>username@g0001 ~<span class="o">]</span>$ cat <span class="nv">$SGE_JOB_HOSTLIST</span>
+<div class="codehilite"><pre><span></span><code><span class="o">[</span>username@es1<span class="w"> </span>~<span class="o">]</span>$<span class="w"> </span>qrsh<span class="w"> </span>-g<span class="w"> </span>grpname<span class="w"> </span>-l<span class="w"> </span><span class="nv">rt_F</span><span class="o">=</span><span class="m">3</span><span class="w"> </span>-l<span class="w"> </span><span class="nv">h_rt</span><span class="o">=</span><span class="m">1</span>:00:00<span class="w"> </span>-l<span class="w"> </span><span class="nv">USE_SSH</span><span class="o">=</span><span class="m">1</span>
+<span class="o">[</span>username@g0001<span class="w"> </span>~<span class="o">]</span>$<span class="w"> </span>cat<span class="w"> </span><span class="nv">$SGE_JOB_HOSTLIST</span>
 g0001
 g0002
 g0003
-<span class="o">[</span>username@g0001 ~<span class="o">]</span>$ ssh -p <span class="m">2222</span> g0001 command1 <span class="p">&amp;</span>
-<span class="o">[</span>username@g0001 ~<span class="o">]</span>$ ssh -p <span class="m">2222</span> g0002 command2 <span class="p">&amp;</span>
-<span class="o">[</span>username@g0001 ~<span class="o">]</span>$ ssh -p <span class="m">2222</span> g0003 command3 <span class="p">&amp;</span>
+<span class="o">[</span>username@g0001<span class="w"> </span>~<span class="o">]</span>$<span class="w"> </span>ssh<span class="w"> </span>-p<span class="w"> </span><span class="m">2222</span><span class="w"> </span>g0001<span class="w"> </span>command1<span class="w"> </span><span class="p">&amp;</span>
+<span class="o">[</span>username@g0001<span class="w"> </span>~<span class="o">]</span>$<span class="w"> </span>ssh<span class="w"> </span>-p<span class="w"> </span><span class="m">2222</span><span class="w"> </span>g0002<span class="w"> </span>command2<span class="w"> </span><span class="p">&amp;</span>
+<span class="o">[</span>username@g0001<span class="w"> </span>~<span class="o">]</span>$<span class="w"> </span>ssh<span class="w"> </span>-p<span class="w"> </span><span class="m">2222</span><span class="w"> </span>g0003<span class="w"> </span>command3<span class="w"> </span><span class="p">&amp;</span>
 </code></pre></div>
 
 <h2 id="q-i-want-to-avoid-to-close-ssh-session-unexpectedly">Q. I want to avoid to close SSH session unexpectedly</h2>
 <p>The SSH session may be closed shortly after connecting to ABCI with SSH. In such a case, you may be able to avoid it by performing KeepAlive communication between the SSH client and the server.</p>
 <p>To enable KeepAlive, set the option ServerAliveInterval to about 60 seconds in the system ssh configuration file (/etc/ssh/ssh_config) or per-user configuration file (~/.ssh/config) on the user's terminal.</p>
-<div class="codehilite"><pre><span></span><code><span class="o">[</span><span class="n">username@yourpc ~</span><span class="o">]</span><span class="err">$</span><span class="w"> </span><span class="n">vi</span><span class="w"> </span><span class="o">~/</span><span class="p">.</span><span class="n">ssh</span><span class="o">/</span><span class="n">config</span><span class="w"></span>
-<span class="o">[</span><span class="n">username@yourpc ~</span><span class="o">]</span><span class="err">$</span><span class="w"> </span><span class="n">cat</span><span class="w"> </span><span class="o">~/</span><span class="p">.</span><span class="n">ssh</span><span class="o">/</span><span class="n">config</span><span class="w"></span>
-<span class="p">(</span><span class="n">snip</span><span class="p">)</span><span class="w"></span>
-<span class="k">Host</span><span class="w"> </span><span class="k">as</span><span class="p">.</span><span class="n">abci</span><span class="p">.</span><span class="n">ai</span><span class="w"></span>
-<span class="w">   </span><span class="n">ServerAliveInterval</span><span class="w"> </span><span class="mi">60</span><span class="w"></span>
-<span class="p">(</span><span class="n">snip</span><span class="p">)</span><span class="w"></span>
-<span class="o">[</span><span class="n">username@userpc ~</span><span class="o">]</span><span class="err">$</span><span class="w"></span>
+<div class="codehilite"><pre><span></span><code><span class="o">[</span><span class="n">username@yourpc ~</span><span class="o">]</span><span class="err">$</span><span class="w"> </span><span class="n">vi</span><span class="w"> </span><span class="o">~/</span><span class="p">.</span><span class="n">ssh</span><span class="o">/</span><span class="n">config</span>
+<span class="o">[</span><span class="n">username@yourpc ~</span><span class="o">]</span><span class="err">$</span><span class="w"> </span><span class="n">cat</span><span class="w"> </span><span class="o">~/</span><span class="p">.</span><span class="n">ssh</span><span class="o">/</span><span class="n">config</span>
+<span class="p">(</span><span class="n">snip</span><span class="p">)</span>
+<span class="k">Host</span><span class="w"> </span><span class="k">as</span><span class="p">.</span><span class="n">abci</span><span class="p">.</span><span class="n">ai</span>
+<span class="w">   </span><span class="n">ServerAliveInterval</span><span class="w"> </span><span class="mi">60</span>
+<span class="p">(</span><span class="n">snip</span><span class="p">)</span>
+<span class="o">[</span><span class="n">username@userpc ~</span><span class="o">]</span><span class="err">$</span>
 </code></pre></div>
 
 <div class="admonition note">
@@ -1301,14 +1301,14 @@ You can access it by following the procedure below.</p>
 <p>You need to set up SSH tunnel.
 The following example, written in <code>$HOME/.ssh/config</code> on your PC, sets up the SSH tunnel connection to ABCI internal servers through as.abci.ai by using ProxyCommand.
 Please also refer to the procedure in <a href="../getting-started/#general-method">Login using an SSH Client::General method</a> in ABCI System User Environment.</p>
-<div class="codehilite"><pre><span></span><code>Host *.abci.local
-    User         username
-    IdentityFile /path/identity_file
-    ProxyCommand ssh -W %h:%p -l username -i /path/identity_file as.abci.ai
+<div class="codehilite"><pre><span></span><code>Host<span class="w"> </span>*.abci.local
+<span class="w">    </span>User<span class="w">         </span>username
+<span class="w">    </span>IdentityFile<span class="w"> </span>/path/identity_file
+<span class="w">    </span>ProxyCommand<span class="w"> </span>ssh<span class="w"> </span>-W<span class="w"> </span>%h:%p<span class="w"> </span>-l<span class="w"> </span>username<span class="w"> </span>-i<span class="w"> </span>/path/identity_file<span class="w"> </span>as.abci.ai
 </code></pre></div>
 
 <p>You can create an SSH tunnel that transfers 3000/tcp on your PC to 3000/tcp on vws1.</p>
-<div class="codehilite"><pre><span></span><code><span class="o">[</span>username@userpc ~<span class="o">]</span>$ ssh -L <span class="m">3000</span>:vws1:3000 es.abci.local
+<div class="codehilite"><pre><span></span><code><span class="o">[</span>username@userpc<span class="w"> </span>~<span class="o">]</span>$<span class="w"> </span>ssh<span class="w"> </span>-L<span class="w"> </span><span class="m">3000</span>:vws1:3000<span class="w"> </span>es.abci.local
 </code></pre></div>
 
 <p>You can access the service by opening <code>http://localhost:3000/</code> on your favorite browser.</p>
@@ -1316,99 +1316,99 @@ Please also refer to the procedure in <a href="../getting-started/#general-metho
 <p>Please see <a href="../tips/datasets/">Datasets</a>.</p>
 <h2 id="q-image-file-creation-with-singularity-pull-fails-in-batch-job">Q. Image file creation with Singularity pull fails in batch job</h2>
 <p>When you try to create an image file with Singularity pull in a batch job, the mksquashfs executable file may not be found and the creation may fail.</p>
-<div class="codehilite"><pre><span></span><code><span class="n">INFO</span><span class="o">:</span>    <span class="n">Converting</span> <span class="n">OCI</span> <span class="n">blobs</span> <span class="n">to</span> <span class="n">SIF</span> <span class="n">format</span>
-<span class="n">FATAL</span><span class="o">:</span>   <span class="n">While</span> <span class="n">making</span> <span class="n">image</span> <span class="n">from</span> <span class="n">oci</span> <span class="n">registry</span><span class="o">:</span> <span class="k">while</span> <span class="n">building</span> <span class="n">SIF</span> <span class="n">from</span> <span class="n">layers</span><span class="o">:</span> <span class="n">unable</span> <span class="n">to</span> <span class="n">create</span> <span class="k">new</span> <span class="n">build</span><span class="o">:</span> <span class="k">while</span> <span class="n">searching</span> <span class="k">for</span> <span class="n">mksquashfs</span><span class="o">:</span> <span class="n">exec</span><span class="o">:</span> <span class="s2">&quot;mksquashfs&quot;</span><span class="o">:</span> <span class="n">executable</span> <span class="n">file</span> <span class="n">not</span> <span class="n">found</span> <span class="k">in</span> <span class="n">$PATH</span>
+<div class="codehilite"><pre><span></span><code><span class="n">INFO</span><span class="o">:</span><span class="w">    </span><span class="n">Converting</span><span class="w"> </span><span class="n">OCI</span><span class="w"> </span><span class="n">blobs</span><span class="w"> </span><span class="n">to</span><span class="w"> </span><span class="n">SIF</span><span class="w"> </span><span class="n">format</span>
+<span class="n">FATAL</span><span class="o">:</span><span class="w">   </span><span class="n">While</span><span class="w"> </span><span class="n">making</span><span class="w"> </span><span class="n">image</span><span class="w"> </span><span class="n">from</span><span class="w"> </span><span class="n">oci</span><span class="w"> </span><span class="n">registry</span><span class="o">:</span><span class="w"> </span><span class="k">while</span><span class="w"> </span><span class="n">building</span><span class="w"> </span><span class="n">SIF</span><span class="w"> </span><span class="n">from</span><span class="w"> </span><span class="n">layers</span><span class="o">:</span><span class="w"> </span><span class="n">unable</span><span class="w"> </span><span class="n">to</span><span class="w"> </span><span class="n">create</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">build</span><span class="o">:</span><span class="w"> </span><span class="k">while</span><span class="w"> </span><span class="n">searching</span><span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="n">mksquashfs</span><span class="o">:</span><span class="w"> </span><span class="n">exec</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;mksquashfs&quot;</span><span class="o">:</span><span class="w"> </span><span class="n">executable</span><span class="w"> </span><span class="n">file</span><span class="w"> </span><span class="n">not</span><span class="w"> </span><span class="n">found</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="n">$PATH</span>
 </code></pre></div>
 
 <p>The problem can be avoided by adding <code>/usr/sbin</code> to PATH like this:</p>
 <p>Example)</p>
-<div class="codehilite"><pre><span></span><code><span class="p">[</span><span class="n">username</span><span class="err">@</span><span class="n">g0001</span> <span class="o">~</span><span class="p">]</span><span class="o">$</span> <span class="k">export</span> <span class="n">PATH</span><span class="o">=</span><span class="s2">&quot;$PATH:/usr/sbin&quot;</span> 
-<span class="p">[</span><span class="n">username</span><span class="err">@</span><span class="n">g0001</span> <span class="o">~</span><span class="p">]</span><span class="o">$</span> <span class="n">module</span> <span class="nb">load</span> <span class="n">singularitypro</span>
-<span class="p">[</span><span class="n">username</span><span class="err">@</span><span class="n">g0001</span> <span class="o">~</span><span class="p">]</span><span class="o">$</span> <span class="n">singularity</span> <span class="n">run</span> <span class="o">--</span><span class="n">nv</span> <span class="n">docker</span><span class="p">:</span><span class="o">//</span><span class="n">caffe2ai</span><span class="o">/</span><span class="n">caffe2</span><span class="p">:</span><span class="n">latest</span>
+<div class="codehilite"><pre><span></span><code><span class="p">[</span><span class="n">username</span><span class="err">@</span><span class="n">g0001</span><span class="w"> </span><span class="o">~</span><span class="p">]</span><span class="o">$</span><span class="w"> </span><span class="k">export</span><span class="w"> </span><span class="n">PATH</span><span class="o">=</span><span class="s2">&quot;$PATH:/usr/sbin&quot;</span><span class="w"> </span>
+<span class="p">[</span><span class="n">username</span><span class="err">@</span><span class="n">g0001</span><span class="w"> </span><span class="o">~</span><span class="p">]</span><span class="o">$</span><span class="w"> </span><span class="n">module</span><span class="w"> </span><span class="nb">load</span><span class="w"> </span><span class="n">singularitypro</span>
+<span class="p">[</span><span class="n">username</span><span class="err">@</span><span class="n">g0001</span><span class="w"> </span><span class="o">~</span><span class="p">]</span><span class="o">$</span><span class="w"> </span><span class="n">singularity</span><span class="w"> </span><span class="n">run</span><span class="w"> </span><span class="o">--</span><span class="n">nv</span><span class="w"> </span><span class="n">docker</span><span class="p">:</span><span class="o">//</span><span class="n">caffe2ai</span><span class="o">/</span><span class="n">caffe2</span><span class="p">:</span><span class="n">latest</span>
 </code></pre></div>
 
 <h2 id="q-insufficient-disk-space-for-singularity-build">Q. I get an error due to insufficient disk space, when I ran the singularity build/pull on the compute node.</h2>
 <p>The <code>singularity build</code> and <code>pull</code> commands use <code>/tmp</code> as the location to create temporary files.
 When you build a large container on the compute node, it may cause an error due to insufficient space in <code>/tmp</code>.</p>
-<div class="codehilite"><pre><span></span><code><span class="n">FATAL</span><span class="o">:</span>   <span class="n">While</span> <span class="n">making</span> <span class="n">image</span> <span class="n">from</span> <span class="n">oci</span> <span class="n">registry</span><span class="o">:</span> <span class="n">error</span> <span class="n">fetching</span> <span class="n">image</span> <span class="n">to</span> <span class="n">cache</span><span class="o">:</span> 
-<span class="k">while</span> <span class="n">building</span> <span class="n">SIF</span> <span class="n">from</span> <span class="n">layers</span><span class="o">:</span> <span class="n">conveyor</span> <span class="n">failed</span> <span class="n">to</span> <span class="kd">get</span><span class="o">:</span> <span class="n">writing</span> <span class="n">blob</span><span class="o">:</span> <span class="n">write</span> 
-<span class="sr">/tmp/0123456789.1.gpu/bundle-temp-0123456789/</span><span class="n">oci</span><span class="o">-</span><span class="n">put</span><span class="o">-</span><span class="n">blob0123456789</span><span class="o">:</span> 
-<span class="n">no</span> <span class="n">space</span> <span class="n">left</span> <span class="n">on</span> <span class="n">device</span>
+<div class="codehilite"><pre><span></span><code><span class="n">FATAL</span><span class="o">:</span><span class="w">   </span><span class="n">While</span><span class="w"> </span><span class="n">making</span><span class="w"> </span><span class="n">image</span><span class="w"> </span><span class="n">from</span><span class="w"> </span><span class="n">oci</span><span class="w"> </span><span class="n">registry</span><span class="o">:</span><span class="w"> </span><span class="n">error</span><span class="w"> </span><span class="n">fetching</span><span class="w"> </span><span class="n">image</span><span class="w"> </span><span class="n">to</span><span class="w"> </span><span class="n">cache</span><span class="o">:</span><span class="w"> </span>
+<span class="k">while</span><span class="w"> </span><span class="n">building</span><span class="w"> </span><span class="n">SIF</span><span class="w"> </span><span class="n">from</span><span class="w"> </span><span class="n">layers</span><span class="o">:</span><span class="w"> </span><span class="n">conveyor</span><span class="w"> </span><span class="n">failed</span><span class="w"> </span><span class="n">to</span><span class="w"> </span><span class="kd">get</span><span class="o">:</span><span class="w"> </span><span class="n">writing</span><span class="w"> </span><span class="n">blob</span><span class="o">:</span><span class="w"> </span><span class="n">write</span><span class="w"> </span>
+<span class="sr">/tmp/0123456789.1.gpu/bundle-temp-0123456789/</span><span class="n">oci</span><span class="o">-</span><span class="n">put</span><span class="o">-</span><span class="n">blob0123456789</span><span class="o">:</span><span class="w"> </span>
+<span class="n">no</span><span class="w"> </span><span class="n">space</span><span class="w"> </span><span class="n">left</span><span class="w"> </span><span class="n">on</span><span class="w"> </span><span class="n">device</span>
 </code></pre></div>
 
 <p>If you get an error due to insufficient space, set the <code>SINGULARITY_TMPDIR</code> environment variable to use the local storage as shown below:</p>
-<div class="codehilite"><pre><span></span><code><span class="o">[</span><span class="n">username@g0001 ~</span><span class="o">]</span><span class="err">$</span><span class="w"> </span><span class="n">SINGULARITY_TMPDIR</span><span class="o">=</span><span class="err">$</span><span class="n">SGE_LOCALDIR</span><span class="w"> </span><span class="n">singularity</span><span class="w"> </span><span class="n">pull</span><span class="w"> </span><span class="nl">docker</span><span class="p">:</span><span class="o">//</span><span class="n">nvcr</span><span class="p">.</span><span class="n">io</span><span class="o">/</span><span class="n">nvidia</span><span class="o">/</span><span class="nl">tensorflow</span><span class="p">:</span><span class="mf">20.12</span><span class="o">-</span><span class="n">tf1</span><span class="o">-</span><span class="n">py3</span><span class="w"></span>
+<div class="codehilite"><pre><span></span><code><span class="o">[</span><span class="n">username@g0001 ~</span><span class="o">]</span><span class="err">$</span><span class="w"> </span><span class="n">SINGULARITY_TMPDIR</span><span class="o">=</span><span class="err">$</span><span class="n">SGE_LOCALDIR</span><span class="w"> </span><span class="n">singularity</span><span class="w"> </span><span class="n">pull</span><span class="w"> </span><span class="nl">docker</span><span class="p">:</span><span class="o">//</span><span class="n">nvcr</span><span class="p">.</span><span class="n">io</span><span class="o">/</span><span class="n">nvidia</span><span class="o">/</span><span class="nl">tensorflow</span><span class="p">:</span><span class="mf">20.12</span><span class="o">-</span><span class="n">tf1</span><span class="o">-</span><span class="n">py3</span>
 </code></pre></div>
 
 <h2 id="q-how-can-i-find-the-job-id">Q. How can I find the job ID?</h2>
 <p>When you submit a batch job using the <code>qsub</code> command, the command outputs the job ID.</p>
-<div class="codehilite"><pre><span></span><code><span class="o">[</span><span class="n">username@es1 ~</span><span class="o">]</span><span class="err">$</span><span class="w"> </span><span class="n">qsub</span><span class="w"> </span><span class="o">-</span><span class="n">g</span><span class="w"> </span><span class="n">grpname</span><span class="w"> </span><span class="n">test</span><span class="p">.</span><span class="n">sh</span><span class="w"></span>
-<span class="n">Your</span><span class="w"> </span><span class="n">job</span><span class="w"> </span><span class="mi">1000001</span><span class="w"> </span><span class="p">(</span><span class="ss">&quot;test.sh&quot;</span><span class="p">)</span><span class="w"> </span><span class="n">has</span><span class="w"> </span><span class="n">been</span><span class="w"> </span><span class="n">submitted</span><span class="w"></span>
+<div class="codehilite"><pre><span></span><code><span class="o">[</span><span class="n">username@es1 ~</span><span class="o">]</span><span class="err">$</span><span class="w"> </span><span class="n">qsub</span><span class="w"> </span><span class="o">-</span><span class="n">g</span><span class="w"> </span><span class="n">grpname</span><span class="w"> </span><span class="n">test</span><span class="p">.</span><span class="n">sh</span>
+<span class="n">Your</span><span class="w"> </span><span class="n">job</span><span class="w"> </span><span class="mi">1000001</span><span class="w"> </span><span class="p">(</span><span class="ss">&quot;test.sh&quot;</span><span class="p">)</span><span class="w"> </span><span class="n">has</span><span class="w"> </span><span class="n">been</span><span class="w"> </span><span class="n">submitted</span>
 </code></pre></div>
 
 <p>If you are using <code>qrsh</code>, you can get the job ID by retrieving the value of the JOB_ID environment variable.This variable is available for <code>qsub</code> (batch job environment) as well.</p>
-<div class="codehilite"><pre><span></span><code><span class="o">[</span><span class="n">username@es1 ~</span><span class="o">]</span><span class="err">$</span><span class="w"> </span><span class="n">qrsh</span><span class="w"> </span><span class="o">-</span><span class="n">g</span><span class="w"> </span><span class="n">grpname</span><span class="w"> </span><span class="o">-</span><span class="n">l</span><span class="w"> </span><span class="n">rt_C</span><span class="p">.</span><span class="n">small</span><span class="o">=</span><span class="mi">1</span><span class="w"> </span><span class="o">-</span><span class="n">l</span><span class="w"> </span><span class="n">h_rt</span><span class="o">=</span><span class="mi">1</span><span class="err">:</span><span class="mi">00</span><span class="err">:</span><span class="mi">00</span><span class="w"></span>
-<span class="o">[</span><span class="n">username@g0001 ~</span><span class="o">]</span><span class="err">$</span><span class="w"> </span><span class="n">echo</span><span class="w"> </span><span class="err">$</span><span class="n">JOB_ID</span><span class="w"></span>
-<span class="mi">1000002</span><span class="w"></span>
-<span class="o">[</span><span class="n">username@g0001 ~</span><span class="o">]</span><span class="err">$</span><span class="w"></span>
+<div class="codehilite"><pre><span></span><code><span class="o">[</span><span class="n">username@es1 ~</span><span class="o">]</span><span class="err">$</span><span class="w"> </span><span class="n">qrsh</span><span class="w"> </span><span class="o">-</span><span class="n">g</span><span class="w"> </span><span class="n">grpname</span><span class="w"> </span><span class="o">-</span><span class="n">l</span><span class="w"> </span><span class="n">rt_C</span><span class="p">.</span><span class="n">small</span><span class="o">=</span><span class="mi">1</span><span class="w"> </span><span class="o">-</span><span class="n">l</span><span class="w"> </span><span class="n">h_rt</span><span class="o">=</span><span class="mi">1</span><span class="err">:</span><span class="mi">00</span><span class="err">:</span><span class="mi">00</span>
+<span class="o">[</span><span class="n">username@g0001 ~</span><span class="o">]</span><span class="err">$</span><span class="w"> </span><span class="n">echo</span><span class="w"> </span><span class="err">$</span><span class="n">JOB_ID</span>
+<span class="mi">1000002</span>
+<span class="o">[</span><span class="n">username@g0001 ~</span><span class="o">]</span><span class="err">$</span>
 </code></pre></div>
 
 <p>To find the job ID of your already submitted job, use the <code>qstat</code> command.</p>
 <div class="codehilite"><pre><span></span><code><span class="k">[</span><span class="c">username@es1 ~</span><span class="k">]</span><span class="c">$ qstat</span>
 <span class="c">job</span><span class="nb">-</span><span class="c">ID     prior   name       user         state submit/start at     queue                          jclass                         slots ja</span><span class="nb">-</span><span class="c">task</span><span class="nb">-</span><span class="c">ID</span>
-<span class="nb">------------------------------------------------------------------------------------------------------------------------------------------------</span><span class="c"></span>
+<span class="nb">------------------------------------------------------------------------------------------------------------------------------------------------</span>
 <span class="c">   1000003 0</span><span class="nt">.</span><span class="c">00000 test</span><span class="nt">.</span><span class="c">sh username   qw    08/01/2020 13:05:30</span>
 </code></pre></div>
 
 <p>To find the job ID of your completed job, use <code>qacct -j</code>. The <code>-b</code> and <code>-e</code> options are useful for narrowing the search range. See qacct(1) man page (type <code>man qacct</code> on an interactive node). The following example lists the completed jobs that started on and after September 1st, 2020. <code>jobnumber</code> has the same meaning as <code>job-ID</code>.</p>
-<div class="codehilite"><pre><span></span><code><span class="o">[</span><span class="n">username@es1 ~</span><span class="o">]</span><span class="err">$</span><span class="w"> </span><span class="n">qacct</span><span class="w"> </span><span class="o">-</span><span class="n">j</span><span class="w"> </span><span class="o">-</span><span class="n">b</span><span class="w"> </span><span class="mi">202009010000</span><span class="w"></span>
-<span class="o">==============================================================</span><span class="w"></span>
-<span class="n">qname</span><span class="w">        </span><span class="n">gpu</span><span class="w"></span>
-<span class="n">hostname</span><span class="w">     </span><span class="n">g0001</span><span class="w"></span>
-<span class="k">group</span><span class="w">        </span><span class="n">grpname</span><span class="w"></span>
-<span class="n">owner</span><span class="w">        </span><span class="n">username</span><span class="w"></span>
+<div class="codehilite"><pre><span></span><code><span class="o">[</span><span class="n">username@es1 ~</span><span class="o">]</span><span class="err">$</span><span class="w"> </span><span class="n">qacct</span><span class="w"> </span><span class="o">-</span><span class="n">j</span><span class="w"> </span><span class="o">-</span><span class="n">b</span><span class="w"> </span><span class="mi">202009010000</span>
+<span class="o">==============================================================</span>
+<span class="n">qname</span><span class="w">        </span><span class="n">gpu</span>
+<span class="n">hostname</span><span class="w">     </span><span class="n">g0001</span>
+<span class="k">group</span><span class="w">        </span><span class="n">grpname</span>
+<span class="n">owner</span><span class="w">        </span><span class="n">username</span>
 
-<span class="err">:</span><span class="w"></span>
+<span class="err">:</span>
 
-<span class="n">jobname</span><span class="w">      </span><span class="n">QRLOGIN</span><span class="w"></span>
-<span class="n">jobnumber</span><span class="w">    </span><span class="mi">1000010</span><span class="w"></span>
+<span class="n">jobname</span><span class="w">      </span><span class="n">QRLOGIN</span>
+<span class="n">jobnumber</span><span class="w">    </span><span class="mi">1000010</span>
 
-<span class="err">:</span><span class="w"></span>
+<span class="err">:</span>
 
-<span class="n">qsub_time</span><span class="w">    </span><span class="mi">09</span><span class="o">/</span><span class="mi">01</span><span class="o">/</span><span class="mi">2020</span><span class="w"> </span><span class="mi">16</span><span class="err">:</span><span class="mi">41</span><span class="err">:</span><span class="mf">37.736</span><span class="w"></span>
-<span class="n">start_time</span><span class="w">   </span><span class="mi">09</span><span class="o">/</span><span class="mi">01</span><span class="o">/</span><span class="mi">2020</span><span class="w"> </span><span class="mi">16</span><span class="err">:</span><span class="mi">41</span><span class="err">:</span><span class="mf">47.094</span><span class="w"></span>
-<span class="n">end_time</span><span class="w">     </span><span class="mi">09</span><span class="o">/</span><span class="mi">01</span><span class="o">/</span><span class="mi">2020</span><span class="w"> </span><span class="mi">16</span><span class="err">:</span><span class="mi">45</span><span class="err">:</span><span class="mf">46.296</span><span class="w"></span>
+<span class="n">qsub_time</span><span class="w">    </span><span class="mi">09</span><span class="o">/</span><span class="mi">01</span><span class="o">/</span><span class="mi">2020</span><span class="w"> </span><span class="mi">16</span><span class="err">:</span><span class="mi">41</span><span class="err">:</span><span class="mf">37.736</span>
+<span class="n">start_time</span><span class="w">   </span><span class="mi">09</span><span class="o">/</span><span class="mi">01</span><span class="o">/</span><span class="mi">2020</span><span class="w"> </span><span class="mi">16</span><span class="err">:</span><span class="mi">41</span><span class="err">:</span><span class="mf">47.094</span>
+<span class="n">end_time</span><span class="w">     </span><span class="mi">09</span><span class="o">/</span><span class="mi">01</span><span class="o">/</span><span class="mi">2020</span><span class="w"> </span><span class="mi">16</span><span class="err">:</span><span class="mi">45</span><span class="err">:</span><span class="mf">46.296</span>
 
-<span class="err">:</span><span class="w"></span>
+<span class="err">:</span>
 
-<span class="o">==============================================================</span><span class="w"></span>
-<span class="n">qname</span><span class="w">        </span><span class="n">gpu</span><span class="w"></span>
-<span class="n">hostname</span><span class="w">     </span><span class="n">g0001</span><span class="w"></span>
-<span class="k">group</span><span class="w">        </span><span class="n">grpname</span><span class="w"></span>
-<span class="n">owner</span><span class="w">        </span><span class="n">username</span><span class="w"></span>
+<span class="o">==============================================================</span>
+<span class="n">qname</span><span class="w">        </span><span class="n">gpu</span>
+<span class="n">hostname</span><span class="w">     </span><span class="n">g0001</span>
+<span class="k">group</span><span class="w">        </span><span class="n">grpname</span>
+<span class="n">owner</span><span class="w">        </span><span class="n">username</span>
 
-<span class="err">:</span><span class="w"></span>
+<span class="err">:</span>
 
-<span class="n">jobname</span><span class="w">      </span><span class="n">testjob</span><span class="w"></span>
-<span class="n">jobnumber</span><span class="w">    </span><span class="mi">1000120</span><span class="w"></span>
+<span class="n">jobname</span><span class="w">      </span><span class="n">testjob</span>
+<span class="n">jobnumber</span><span class="w">    </span><span class="mi">1000120</span>
 
-<span class="err">:</span><span class="w"></span>
+<span class="err">:</span>
 
-<span class="n">qsub_time</span><span class="w">    </span><span class="mi">09</span><span class="o">/</span><span class="mi">07</span><span class="o">/</span><span class="mi">2020</span><span class="w"> </span><span class="mi">15</span><span class="err">:</span><span class="mi">35</span><span class="err">:</span><span class="mf">04.088</span><span class="w"></span>
-<span class="n">start_time</span><span class="w">   </span><span class="mi">09</span><span class="o">/</span><span class="mi">07</span><span class="o">/</span><span class="mi">2020</span><span class="w"> </span><span class="mi">15</span><span class="err">:</span><span class="mi">43</span><span class="err">:</span><span class="mf">11.513</span><span class="w"></span>
-<span class="n">end_time</span><span class="w">     </span><span class="mi">09</span><span class="o">/</span><span class="mi">07</span><span class="o">/</span><span class="mi">2020</span><span class="w"> </span><span class="mi">15</span><span class="err">:</span><span class="mi">50</span><span class="err">:</span><span class="mf">11.534</span><span class="w"></span>
+<span class="n">qsub_time</span><span class="w">    </span><span class="mi">09</span><span class="o">/</span><span class="mi">07</span><span class="o">/</span><span class="mi">2020</span><span class="w"> </span><span class="mi">15</span><span class="err">:</span><span class="mi">35</span><span class="err">:</span><span class="mf">04.088</span>
+<span class="n">start_time</span><span class="w">   </span><span class="mi">09</span><span class="o">/</span><span class="mi">07</span><span class="o">/</span><span class="mi">2020</span><span class="w"> </span><span class="mi">15</span><span class="err">:</span><span class="mi">43</span><span class="err">:</span><span class="mf">11.513</span>
+<span class="n">end_time</span><span class="w">     </span><span class="mi">09</span><span class="o">/</span><span class="mi">07</span><span class="o">/</span><span class="mi">2020</span><span class="w"> </span><span class="mi">15</span><span class="err">:</span><span class="mi">50</span><span class="err">:</span><span class="mf">11.534</span>
 
-<span class="err">:</span><span class="w"></span>
+<span class="err">:</span>
 </code></pre></div>
 
 <h2 id="q-i-want-to-run-the-linux-command-on-all-allocated-compute-node">Q. I want to run the Linux command on all allocated compute node</h2>
 <p>ABCI provides the <code>ugedsh</code> command to execute Linux commands in parallel on all allocated compute nodes.
 The command specified in the argument of the <code>ugedsh</code> command is executed once on each node.</p>
 <p>Example)</p>
-<div class="codehilite"><pre><span></span><code><span class="o">[</span><span class="n">username@es1 ~</span><span class="o">]</span><span class="err">$</span><span class="w"> </span><span class="n">qrsh</span><span class="w"> </span><span class="o">-</span><span class="n">g</span><span class="w"> </span><span class="n">grpname</span><span class="w"> </span><span class="o">-</span><span class="n">l</span><span class="w"> </span><span class="n">rt_F</span><span class="o">=</span><span class="mi">2</span><span class="w"></span>
-<span class="o">[</span><span class="n">username@g0001 ~</span><span class="o">]</span><span class="err">$</span><span class="w"> </span><span class="n">ugedsh</span><span class="w"> </span><span class="n">hostname</span><span class="w"></span>
-<span class="nl">g0001</span><span class="p">:</span><span class="w"> </span><span class="n">g0001</span><span class="p">.</span><span class="n">abci</span><span class="p">.</span><span class="k">local</span><span class="w"></span>
-<span class="nl">g0002</span><span class="p">:</span><span class="w"> </span><span class="n">g0002</span><span class="p">.</span><span class="n">abci</span><span class="p">.</span><span class="k">local</span><span class="w"></span>
+<div class="codehilite"><pre><span></span><code><span class="o">[</span><span class="n">username@es1 ~</span><span class="o">]</span><span class="err">$</span><span class="w"> </span><span class="n">qrsh</span><span class="w"> </span><span class="o">-</span><span class="n">g</span><span class="w"> </span><span class="n">grpname</span><span class="w"> </span><span class="o">-</span><span class="n">l</span><span class="w"> </span><span class="n">rt_F</span><span class="o">=</span><span class="mi">2</span>
+<span class="o">[</span><span class="n">username@g0001 ~</span><span class="o">]</span><span class="err">$</span><span class="w"> </span><span class="n">ugedsh</span><span class="w"> </span><span class="n">hostname</span>
+<span class="nl">g0001</span><span class="p">:</span><span class="w"> </span><span class="n">g0001</span><span class="p">.</span><span class="n">abci</span><span class="p">.</span><span class="k">local</span>
+<span class="nl">g0002</span><span class="p">:</span><span class="w"> </span><span class="n">g0002</span><span class="p">.</span><span class="n">abci</span><span class="p">.</span><span class="k">local</span>
 </code></pre></div>
 
 <h2 id="q-what-is-the-difference-between-compute-node-a-and-compute-node-v">Q. What is the difference between Compute Node (A) and Compute Node (V)</h2>
@@ -1420,27 +1420,27 @@ In addition to the previously provided Compute Nodes (V) with NVIDIA V100, the C
 <table>
 <thead>
 <tr>
-<th align="left">Resource type</th>
-<th align="left">Resource type name</th>
-<th align="left">Assigned physical CPU core</th>
-<th align="left">Number of assigned GPU</th>
-<th align="left">Memory (GiB)</th>
+<th style="text-align: left;">Resource type</th>
+<th style="text-align: left;">Resource type name</th>
+<th style="text-align: left;">Assigned physical CPU core</th>
+<th style="text-align: left;">Number of assigned GPU</th>
+<th style="text-align: left;">Memory (GiB)</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td align="left">Full</td>
-<td align="left">rt_AF</td>
-<td align="left">72</td>
-<td align="left">8</td>
-<td align="left">480</td>
+<td style="text-align: left;">Full</td>
+<td style="text-align: left;">rt_AF</td>
+<td style="text-align: left;">72</td>
+<td style="text-align: left;">8</td>
+<td style="text-align: left;">480</td>
 </tr>
 <tr>
-<td align="left">AG.small</td>
-<td align="left">rt_AG.small</td>
-<td align="left">9</td>
-<td align="left">1</td>
-<td align="left">60</td>
+<td style="text-align: left;">AG.small</td>
+<td style="text-align: left;">rt_AG.small</td>
+<td style="text-align: left;">9</td>
+<td style="text-align: left;">1</td>
+<td style="text-align: left;">60</td>
 </tr>
 </tbody>
 </table>
@@ -1451,24 +1451,24 @@ In addition to the previously provided Compute Nodes (V) with NVIDIA V100, the C
 <table>
 <thead>
 <tr>
-<th align="left"><a href="../job-execution/#available-resource-types">Resource type name</a><br><a href="../job-execution/#execution-priority">Execution Priority</a></th>
-<th align="left">On-demand or Spot Service<br>Execution Priority: -500 (default)<br>(point/hour)</th>
-<th align="left">On-demand or Spot Service<br>Execution Priority: -400<br>(point/hour)</th>
-<th align="left">Reserved Service<br>(point/day)</th>
+<th style="text-align: left;"><a href="../job-execution/#available-resource-types">Resource type name</a><br><a href="../job-execution/#execution-priority">Execution Priority</a></th>
+<th style="text-align: left;">On-demand or Spot Service<br>Execution Priority: -500 (default)<br>(point/hour)</th>
+<th style="text-align: left;">On-demand or Spot Service<br>Execution Priority: -400<br>(point/hour)</th>
+<th style="text-align: left;">Reserved Service<br>(point/day)</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td align="left">rt_AF</td>
-<td align="left">3.0</td>
-<td align="left">4.5</td>
-<td align="left">108</td>
+<td style="text-align: left;">rt_AF</td>
+<td style="text-align: left;">3.0</td>
+<td style="text-align: left;">4.5</td>
+<td style="text-align: left;">108</td>
 </tr>
 <tr>
-<td align="left">rt_AG.small</td>
-<td align="left">0.5</td>
-<td align="left">0.75</td>
-<td align="left">N/A</td>
+<td style="text-align: left;">rt_AG.small</td>
+<td style="text-align: left;">0.5</td>
+<td style="text-align: left;">0.75</td>
+<td style="text-align: left;">N/A</td>
 </tr>
 </tbody>
 </table>
@@ -1477,18 +1477,18 @@ In addition to the previously provided Compute Nodes (V) with NVIDIA V100, the C
 <table>
 <thead>
 <tr>
-<th align="left">Node</th>
-<th align="left">Operating System</th>
+<th style="text-align: left;">Node</th>
+<th style="text-align: left;">Operating System</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td align="left">Compute Node (A)</td>
-<td align="left">Red Hat Enterprise Linux 8.2</td>
+<td style="text-align: left;">Compute Node (A)</td>
+<td style="text-align: left;">Red Hat Enterprise Linux 8.2</td>
 </tr>
 <tr>
-<td align="left">Compute Node (V)</td>
-<td align="left">Rocky Linux 8.6</td>
+<td style="text-align: left;">Compute Node (V)</td>
+<td style="text-align: left;">Rocky Linux 8.6</td>
 </tr>
 </tbody>
 </table>
@@ -1507,36 +1507,36 @@ Please rebuild the program for the Compute Node (A) using the Compute Node (A) o
 <table>
 <thead>
 <tr>
-<th align="left"></th>
-<th align="center">Interactive Node (V)</th>
-<th align="center">Interactive Node (A)</th>
+<th style="text-align: left;"></th>
+<th style="text-align: center;">Interactive Node (V)</th>
+<th style="text-align: center;">Interactive Node (A)</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td align="left">Can users log in?</td>
-<td align="center">Yes</td>
-<td align="center">Yes</td>
+<td style="text-align: left;">Can users log in?</td>
+<td style="text-align: center;">Yes</td>
+<td style="text-align: center;">Yes</td>
 </tr>
 <tr>
-<td align="left">Can users develop programs for Compute Nodes (V)?</td>
-<td align="center">Yes</td>
-<td align="center">No</td>
+<td style="text-align: left;">Can users develop programs for Compute Nodes (V)?</td>
+<td style="text-align: center;">Yes</td>
+<td style="text-align: center;">No</td>
 </tr>
 <tr>
-<td align="left">Can users develop programs for Compute Nodes (A)?</td>
-<td align="center">No</td>
-<td align="center">Yes</td>
+<td style="text-align: left;">Can users develop programs for Compute Nodes (A)?</td>
+<td style="text-align: center;">No</td>
+<td style="text-align: center;">Yes</td>
 </tr>
 <tr>
-<td align="left">Can users submit jobs for Compute Nodes (A)?</td>
-<td align="center">Yes</td>
-<td align="center">Yes</td>
+<td style="text-align: left;">Can users submit jobs for Compute Nodes (A)?</td>
+<td style="text-align: center;">Yes</td>
+<td style="text-align: center;">Yes</td>
 </tr>
 <tr>
-<td align="left">Can users submit jobs for Compute Nodes (A)?</td>
-<td align="center">Yes</td>
-<td align="center">Yes</td>
+<td style="text-align: left;">Can users submit jobs for Compute Nodes (A)?</td>
+<td style="text-align: center;">Yes</td>
+<td style="text-align: center;">Yes</td>
 </tr>
 </tbody>
 </table>
@@ -1583,13 +1583,13 @@ Also, the memory-intensive node service ended at 15:00 on October 1, 2023, so th
 </table>
 <p>The following is an example of using the 2021 version of ABCI Environment Modules.</p>
 <p>sh, bash:</p>
-<div class="codehilite"><pre><span></span><code><span class="k">export</span> <span class="n">MODULE_HOME</span><span class="o">=/</span><span class="n">apps</span><span class="o">/</span><span class="n">modules</span><span class="o">-</span><span class="n">abci</span><span class="o">-</span><span class="mf">2.0</span><span class="o">-</span><span class="mi">2021</span>
-<span class="o">.</span> <span class="o">$</span><span class="p">{</span><span class="n">MODULE_HOME</span><span class="p">}</span><span class="o">/</span><span class="n">etc</span><span class="o">/</span><span class="n">profile</span><span class="o">.</span><span class="n">d</span><span class="o">/</span><span class="n">modules</span><span class="o">.</span><span class="n">sh</span>
+<div class="codehilite"><pre><span></span><code><span class="k">export</span><span class="w"> </span><span class="n">MODULE_HOME</span><span class="o">=/</span><span class="n">apps</span><span class="o">/</span><span class="n">modules</span><span class="o">-</span><span class="n">abci</span><span class="o">-</span><span class="mf">2.0</span><span class="o">-</span><span class="mi">2021</span>
+<span class="o">.</span><span class="w"> </span><span class="o">$</span><span class="p">{</span><span class="n">MODULE_HOME</span><span class="p">}</span><span class="o">/</span><span class="n">etc</span><span class="o">/</span><span class="n">profile</span><span class="o">.</span><span class="n">d</span><span class="o">/</span><span class="n">modules</span><span class="o">.</span><span class="n">sh</span>
 </code></pre></div>
 
 <p>ch, tcsh:</p>
-<div class="codehilite"><pre><span></span><code>setenv MODULE_HOME /apps/modules-abci-2.0-2021
-source <span class="cp">${</span><span class="n">MODULE_HOME</span><span class="cp">}</span>/etc/profile.d/modules.csh
+<div class="codehilite"><pre><span></span><code>setenv<span class="w"> </span>MODULE_HOME<span class="w"> </span>/apps/modules-abci-2.0-2021
+source<span class="w"> </span><span class="cp">${</span><span class="n">MODULE_HOME</span><span class="cp">}</span>/etc/profile.d/modules.csh
 </code></pre></div>
 
 <h2 id="q-how-to-reduce-inode-usage">Q. How to reduce inode usage</h2>

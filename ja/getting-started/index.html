@@ -16,7 +16,7 @@
         <link rel="canonical" href="https://docs.abci.ai/ja/getting-started/">
       
       <link rel="icon" href="../img/favicon.png">
-      <meta name="generator" content="mkdocs-1.1.2, mkdocs-material-7.1.3">
+      <meta name="generator" content="mkdocs-1.2.4, mkdocs-material-7.1.3">
     
     
       
@@ -1297,26 +1297,26 @@
 <h4 id="general-method">一般的なログイン方法</h4>
 <p>以下のコマンドでアクセスサーバ(<em>as.abci.ai</em>)にログインし、SSHトンネルを作成します。</p>
 <p>インタラクティブノード(V)向け</p>
-<div class="codehilite"><pre><span></span><code><span class="p">[</span><span class="n">yourpc</span> <span class="o">~</span><span class="p">]</span><span class="o">$</span> <span class="n">ssh</span> <span class="o">-</span><span class="n">i</span> <span class="o">/</span><span class="n">path</span><span class="o">/</span><span class="n">identity_file</span> <span class="o">-</span><span class="n">L</span> <span class="m">10022</span><span class="o">:</span><span class="n">es</span><span class="o">:</span><span class="m">22</span> <span class="o">-</span><span class="n">l</span> <span class="n">username</span> <span class="n">as.abci.ai</span>
-<span class="n">The</span> <span class="n">authenticity</span> <span class="n">of</span> <span class="n">host</span> <span class="s">&#39;as.abci.ai (0.0.0.1)&#39;</span> <span class="n">can</span><span class="s">&#39;t be established.</span>
+<div class="codehilite"><pre><span></span><code><span class="p">[</span><span class="n">yourpc</span><span class="w"> </span><span class="o">~</span><span class="p">]</span><span class="o">$</span><span class="w"> </span><span class="n">ssh</span><span class="w"> </span><span class="o">-</span><span class="n">i</span><span class="w"> </span><span class="o">/</span><span class="n">path</span><span class="o">/</span><span class="n">identity_file</span><span class="w"> </span><span class="o">-</span><span class="n">L</span><span class="w"> </span><span class="m">10022</span><span class="o">:</span><span class="n">es</span><span class="o">:</span><span class="m">22</span><span class="w"> </span><span class="o">-</span><span class="n">l</span><span class="w"> </span><span class="n">username</span><span class="w"> </span><span class="n">as.abci.ai</span>
+<span class="n">The</span><span class="w"> </span><span class="n">authenticity</span><span class="w"> </span><span class="n">of</span><span class="w"> </span><span class="n">host</span><span class="w"> </span><span class="s">&#39;as.abci.ai (0.0.0.1)&#39;</span><span class="w"> </span><span class="n">can</span><span class="s">&#39;t be established.</span>
 <span class="s">RSA key fingerprint is XX:XX:XX:XX:XX:XX:XX:XX:XX:XX:XX:XX:XX:XX:XX:XX. &lt;- 初回ログイン時のみ表示</span>
 <span class="s">Are you sure you want to continue connecting (yes/no)?  &lt;- yesを入力</span>
-<span class="s">Warning: Permanently added ‘XX.XX.XX.XX&#39;</span> <span class="p">(</span><span class="n">RSA</span><span class="p">)</span> <span class="n">to</span> <span class="n">the</span> <span class="n">list</span> <span class="n">of</span> <span class="n">known</span> <span class="n">hosts.</span>
-<span class="n">Enter</span> <span class="n">passphrase</span> <span class="n">for</span> <span class="n">key</span> <span class="s">&#39;/path/identity_file&#39;</span><span class="o">:</span> <span class="o">&lt;-</span> パスフレーズ入力
+<span class="s">Warning: Permanently added ‘XX.XX.XX.XX&#39;</span><span class="w"> </span><span class="p">(</span><span class="n">RSA</span><span class="p">)</span><span class="w"> </span><span class="n">to</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="n">list</span><span class="w"> </span><span class="n">of</span><span class="w"> </span><span class="n">known</span><span class="w"> </span><span class="n">hosts.</span>
+<span class="n">Enter</span><span class="w"> </span><span class="n">passphrase</span><span class="w"> </span><span class="n">for</span><span class="w"> </span><span class="n">key</span><span class="w"> </span><span class="s">&#39;/path/identity_file&#39;</span><span class="o">:</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span>パスフレーズ入力
 </code></pre></div>
 
 <p>インタラクティブノード(A)向け</p>
-<div class="codehilite"><pre><span></span><code><span class="p">[</span><span class="n">yourpc</span> <span class="o">~</span><span class="p">]</span><span class="o">$</span> <span class="n">ssh</span> <span class="o">-</span><span class="n">i</span> <span class="o">/</span><span class="n">path</span><span class="o">/</span><span class="n">identity_file</span> <span class="o">-</span><span class="n">L</span> <span class="m">10022</span><span class="o">:</span><span class="n">es</span><span class="o">-</span><span class="n">a</span><span class="o">:</span><span class="m">22</span> <span class="o">-</span><span class="n">l</span> <span class="n">username</span> <span class="n">as.abci.ai</span>
-<span class="n">The</span> <span class="n">authenticity</span> <span class="n">of</span> <span class="n">host</span> <span class="s">&#39;as.abci.ai (0.0.0.1)&#39;</span> <span class="n">can</span><span class="s">&#39;t be established.</span>
+<div class="codehilite"><pre><span></span><code><span class="p">[</span><span class="n">yourpc</span><span class="w"> </span><span class="o">~</span><span class="p">]</span><span class="o">$</span><span class="w"> </span><span class="n">ssh</span><span class="w"> </span><span class="o">-</span><span class="n">i</span><span class="w"> </span><span class="o">/</span><span class="n">path</span><span class="o">/</span><span class="n">identity_file</span><span class="w"> </span><span class="o">-</span><span class="n">L</span><span class="w"> </span><span class="m">10022</span><span class="o">:</span><span class="n">es</span><span class="o">-</span><span class="n">a</span><span class="o">:</span><span class="m">22</span><span class="w"> </span><span class="o">-</span><span class="n">l</span><span class="w"> </span><span class="n">username</span><span class="w"> </span><span class="n">as.abci.ai</span>
+<span class="n">The</span><span class="w"> </span><span class="n">authenticity</span><span class="w"> </span><span class="n">of</span><span class="w"> </span><span class="n">host</span><span class="w"> </span><span class="s">&#39;as.abci.ai (0.0.0.1)&#39;</span><span class="w"> </span><span class="n">can</span><span class="s">&#39;t be established.</span>
 <span class="s">RSA key fingerprint is XX:XX:XX:XX:XX:XX:XX:XX:XX:XX:XX:XX:XX:XX:XX:XX. &lt;- 初回ログイン時のみ表示</span>
 <span class="s">Are you sure you want to continue connecting (yes/no)?  &lt;- yesを入力</span>
-<span class="s">Warning: Permanently added ‘XX.XX.XX.XX&#39;</span> <span class="p">(</span><span class="n">RSA</span><span class="p">)</span> <span class="n">to</span> <span class="n">the</span> <span class="n">list</span> <span class="n">of</span> <span class="n">known</span> <span class="n">hosts.</span>
-<span class="n">Enter</span> <span class="n">passphrase</span> <span class="n">for</span> <span class="n">key</span> <span class="s">&#39;/path/identity_file&#39;</span><span class="o">:</span> <span class="o">&lt;-</span> パスフレーズ入力
+<span class="s">Warning: Permanently added ‘XX.XX.XX.XX&#39;</span><span class="w"> </span><span class="p">(</span><span class="n">RSA</span><span class="p">)</span><span class="w"> </span><span class="n">to</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="n">list</span><span class="w"> </span><span class="n">of</span><span class="w"> </span><span class="n">known</span><span class="w"> </span><span class="n">hosts.</span>
+<span class="n">Enter</span><span class="w"> </span><span class="n">passphrase</span><span class="w"> </span><span class="n">for</span><span class="w"> </span><span class="n">key</span><span class="w"> </span><span class="s">&#39;/path/identity_file&#39;</span><span class="o">:</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span>パスフレーズ入力
 </code></pre></div>
 
 <p>アクセスサーバへのログインが成功すると、ターミナル上に下記のメッセージが表示されます。</p>
-<div class="codehilite"><pre><span></span><code><span class="nv">Welcome</span> <span class="nv">to</span> <span class="nv">ABCI</span> <span class="nv">access</span> <span class="nv">server</span>.
-<span class="nv">Please</span> <span class="nv">press</span> <span class="nv">any</span> <span class="nv">key</span> <span class="k">if</span> <span class="nv">you</span> <span class="k">disconnect</span> <span class="nv">this</span> <span class="nv">session</span>.
+<div class="codehilite"><pre><span></span><code><span class="nv">Welcome</span><span class="w"> </span><span class="nv">to</span><span class="w"> </span><span class="nv">ABCI</span><span class="w"> </span><span class="nv">access</span><span class="w"> </span><span class="nv">server</span>.
+<span class="nv">Please</span><span class="w"> </span><span class="nv">press</span><span class="w"> </span><span class="nv">any</span><span class="w"> </span><span class="nv">key</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="nv">you</span><span class="w"> </span><span class="k">disconnect</span><span class="w"> </span><span class="nv">this</span><span class="w"> </span><span class="nv">session</span>.
 </code></pre></div>
 
 <div class="admonition warning">
@@ -1324,33 +1324,33 @@
 <p>上記状態で何らかのキーを入力するとSSH接続が切断されてしますので注意してください。</p>
 </div>
 <p>続いて、別のターミナルを起動し、SSHトンネルを用いてインタラクティブノードにログインします。</p>
-<div class="codehilite"><pre><span></span><code><span class="p">[</span><span class="n">yourpc</span> <span class="o">~</span><span class="p">]</span><span class="o">$</span> <span class="n">ssh</span> <span class="o">-</span><span class="n">i</span> <span class="o">/</span><span class="n">path</span><span class="o">/</span><span class="n">identity_file</span> <span class="o">-</span><span class="n">p</span> <span class="m">10022</span> <span class="o">-</span><span class="n">l</span> <span class="n">username</span> <span class="n">localhost</span>
-<span class="n">The</span> <span class="n">authenticity</span> <span class="n">of</span> <span class="n">host</span> <span class="s">&#39;localhost (127.0.0.1)&#39;</span> <span class="n">can</span><span class="s">&#39;t be established.</span>
+<div class="codehilite"><pre><span></span><code><span class="p">[</span><span class="n">yourpc</span><span class="w"> </span><span class="o">~</span><span class="p">]</span><span class="o">$</span><span class="w"> </span><span class="n">ssh</span><span class="w"> </span><span class="o">-</span><span class="n">i</span><span class="w"> </span><span class="o">/</span><span class="n">path</span><span class="o">/</span><span class="n">identity_file</span><span class="w"> </span><span class="o">-</span><span class="n">p</span><span class="w"> </span><span class="m">10022</span><span class="w"> </span><span class="o">-</span><span class="n">l</span><span class="w"> </span><span class="n">username</span><span class="w"> </span><span class="n">localhost</span>
+<span class="n">The</span><span class="w"> </span><span class="n">authenticity</span><span class="w"> </span><span class="n">of</span><span class="w"> </span><span class="n">host</span><span class="w"> </span><span class="s">&#39;localhost (127.0.0.1)&#39;</span><span class="w"> </span><span class="n">can</span><span class="s">&#39;t be established.</span>
 <span class="s">RSA key fingerprint is XX:XX:XX:XX:XX:XX:XX:XX:XX:XX:XX:XX:XX:XX:XX:XX. &lt;- 初回ログイン時のみ表示</span>
 <span class="s">Are you sure you want to continue connecting (yes/no)? &lt;- yesを入力</span>
 <span class="s">Warning: Permanently added &#39;</span><span class="n">localhost</span><span class="s">&#39; (RSA) to the list of known hosts.</span>
-<span class="s">Enter passphrase for key &#39;</span><span class="o">-</span><span class="n">i</span> <span class="o">/</span><span class="n">path</span><span class="o">/</span><span class="n">identity_file</span><span class="s">&#39;</span><span class="err">: &lt;- パスフレーズ入力</span>
-<span class="p">[</span><span class="n">username</span><span class="o">@</span><span class="n">es1</span> <span class="o">~</span><span class="p">]</span><span class="o">$</span>
+<span class="s">Enter passphrase for key &#39;</span><span class="o">-</span><span class="n">i</span><span class="w"> </span><span class="o">/</span><span class="n">path</span><span class="o">/</span><span class="n">identity_file</span><span class="s">&#39;</span><span class="err">: &lt;- パスフレーズ入力</span>
+<span class="p">[</span><span class="n">username</span><span class="o">@</span><span class="n">es1</span><span class="w"> </span><span class="o">~</span><span class="p">]</span><span class="o">$</span>
 </code></pre></div>
 
 <h4 id="proxyjump">ProxyJumpの使用</h4>
 <p>ここではOpenSSH 7.3で実装されたProxyJumpを使ったログイン方法を説明します。Windows Subsystem for Linux (WSL)でも同様のログイン方法が使えます。</p>
 <p>まずローカルPCの<code>$HOME/.ssh/config</code>に以下の記述を行います。</p>
-<div class="codehilite"><pre><span></span><code><span class="k">Host</span><span class="w"> </span><span class="n">abci</span><span class="w"></span>
-<span class="w">     </span><span class="n">HostName</span><span class="w"> </span><span class="n">es</span><span class="w"></span>
-<span class="w">     </span><span class="k">User</span><span class="w"> </span><span class="n">username</span><span class="w"></span>
-<span class="w">     </span><span class="n">ProxyJump</span><span class="w"> </span><span class="o">%</span><span class="n">r</span><span class="nv">@as</span><span class="p">.</span><span class="n">abci</span><span class="p">.</span><span class="n">ai</span><span class="w"></span>
-<span class="w">     </span><span class="n">IdentityFile</span><span class="w"> </span><span class="o">/</span><span class="k">path</span><span class="o">/</span><span class="k">to</span><span class="o">/</span><span class="n">identity_file</span><span class="w"></span>
-<span class="w">     </span><span class="n">HostKeyAlgorithms</span><span class="w"> </span><span class="n">ssh</span><span class="o">-</span><span class="n">rsa</span><span class="w"></span>
+<div class="codehilite"><pre><span></span><code><span class="k">Host</span><span class="w"> </span><span class="n">abci</span>
+<span class="w">     </span><span class="n">HostName</span><span class="w"> </span><span class="n">es</span>
+<span class="w">     </span><span class="k">User</span><span class="w"> </span><span class="n">username</span>
+<span class="w">     </span><span class="n">ProxyJump</span><span class="w"> </span><span class="o">%</span><span class="n">r</span><span class="nv">@as</span><span class="p">.</span><span class="n">abci</span><span class="p">.</span><span class="n">ai</span>
+<span class="w">     </span><span class="n">IdentityFile</span><span class="w"> </span><span class="o">/</span><span class="k">path</span><span class="o">/</span><span class="k">to</span><span class="o">/</span><span class="n">identity_file</span>
+<span class="w">     </span><span class="n">HostKeyAlgorithms</span><span class="w"> </span><span class="n">ssh</span><span class="o">-</span><span class="n">rsa</span>
 
-<span class="k">Host</span><span class="w"> </span><span class="n">abci</span><span class="o">-</span><span class="n">a</span><span class="w"></span>
-<span class="w">     </span><span class="n">HostName</span><span class="w"> </span><span class="n">es</span><span class="o">-</span><span class="n">a</span><span class="w"></span>
-<span class="w">     </span><span class="k">User</span><span class="w"> </span><span class="n">username</span><span class="w"></span>
-<span class="w">     </span><span class="n">ProxyJump</span><span class="w"> </span><span class="o">%</span><span class="n">r</span><span class="nv">@as</span><span class="p">.</span><span class="n">abci</span><span class="p">.</span><span class="n">ai</span><span class="w"></span>
-<span class="w">     </span><span class="n">IdentityFile</span><span class="w"> </span><span class="o">/</span><span class="k">path</span><span class="o">/</span><span class="k">to</span><span class="o">/</span><span class="n">identity_file</span><span class="w"></span>
+<span class="k">Host</span><span class="w"> </span><span class="n">abci</span><span class="o">-</span><span class="n">a</span>
+<span class="w">     </span><span class="n">HostName</span><span class="w"> </span><span class="n">es</span><span class="o">-</span><span class="n">a</span>
+<span class="w">     </span><span class="k">User</span><span class="w"> </span><span class="n">username</span>
+<span class="w">     </span><span class="n">ProxyJump</span><span class="w"> </span><span class="o">%</span><span class="n">r</span><span class="nv">@as</span><span class="p">.</span><span class="n">abci</span><span class="p">.</span><span class="n">ai</span>
+<span class="w">     </span><span class="n">IdentityFile</span><span class="w"> </span><span class="o">/</span><span class="k">path</span><span class="o">/</span><span class="k">to</span><span class="o">/</span><span class="n">identity_file</span>
 
-<span class="k">Host</span><span class="w"> </span><span class="k">as</span><span class="p">.</span><span class="n">abci</span><span class="p">.</span><span class="n">ai</span><span class="w"></span>
-<span class="w">     </span><span class="n">IdentityFile</span><span class="w"> </span><span class="o">/</span><span class="k">path</span><span class="o">/</span><span class="k">to</span><span class="o">/</span><span class="n">identity_file</span><span class="w"></span>
+<span class="k">Host</span><span class="w"> </span><span class="k">as</span><span class="p">.</span><span class="n">abci</span><span class="p">.</span><span class="n">ai</span>
+<span class="w">     </span><span class="n">IdentityFile</span><span class="w"> </span><span class="o">/</span><span class="k">path</span><span class="o">/</span><span class="k">to</span><span class="o">/</span><span class="n">identity_file</span>
 </code></pre></div>
 
 <p>以降は、以下のコマンドのみでログインできます。</p>
@@ -1358,29 +1358,29 @@
 </code></pre></div>
 
 <p>Windows 10 バージョン 1803 以降に標準でバンドルされている OpenSSH_for_Windows_7.7p1 では ProxyJump が機能しないため、代わりに ProxyCommand を使用してください。以下に ProxyCommand を使った config ファイルの例を示します。ssh.exe は絶対パスで記述して下さい。</p>
-<div class="codehilite"><pre><span></span><code><span class="k">Host</span><span class="w"> </span><span class="n">abci</span><span class="w"></span>
-<span class="w">     </span><span class="n">HostName</span><span class="w"> </span><span class="n">es</span><span class="w"></span>
-<span class="w">     </span><span class="k">User</span><span class="w"> </span><span class="n">username</span><span class="w"></span>
-<span class="w">     </span><span class="n">ProxyCommand</span><span class="w"> </span><span class="nl">C</span><span class="p">:</span><span class="err">\</span><span class="n">WINDOWS</span><span class="err">\</span><span class="n">System32</span><span class="err">\</span><span class="n">OpenSSH</span><span class="err">\</span><span class="n">ssh</span><span class="p">.</span><span class="n">exe</span><span class="w"> </span><span class="o">-</span><span class="n">W</span><span class="w"> </span><span class="o">%</span><span class="nl">h</span><span class="p">:</span><span class="o">%</span><span class="n">p</span><span class="w"> </span><span class="o">%</span><span class="n">r</span><span class="nv">@as</span><span class="p">.</span><span class="n">abci</span><span class="p">.</span><span class="n">ai</span><span class="w"></span>
-<span class="w">     </span><span class="n">IdentityFile</span><span class="w"> </span><span class="nl">C</span><span class="p">:</span><span class="err">\</span><span class="k">path</span><span class="err">\</span><span class="k">to</span><span class="err">\</span><span class="n">identity_file</span><span class="w"></span>
+<div class="codehilite"><pre><span></span><code><span class="k">Host</span><span class="w"> </span><span class="n">abci</span>
+<span class="w">     </span><span class="n">HostName</span><span class="w"> </span><span class="n">es</span>
+<span class="w">     </span><span class="k">User</span><span class="w"> </span><span class="n">username</span>
+<span class="w">     </span><span class="n">ProxyCommand</span><span class="w"> </span><span class="nl">C</span><span class="p">:</span><span class="err">\</span><span class="n">WINDOWS</span><span class="err">\</span><span class="n">System32</span><span class="err">\</span><span class="n">OpenSSH</span><span class="err">\</span><span class="n">ssh</span><span class="p">.</span><span class="n">exe</span><span class="w"> </span><span class="o">-</span><span class="n">W</span><span class="w"> </span><span class="o">%</span><span class="nl">h</span><span class="p">:</span><span class="o">%</span><span class="n">p</span><span class="w"> </span><span class="o">%</span><span class="n">r</span><span class="nv">@as</span><span class="p">.</span><span class="n">abci</span><span class="p">.</span><span class="n">ai</span>
+<span class="w">     </span><span class="n">IdentityFile</span><span class="w"> </span><span class="nl">C</span><span class="p">:</span><span class="err">\</span><span class="k">path</span><span class="err">\</span><span class="k">to</span><span class="err">\</span><span class="n">identity_file</span>
 
-<span class="k">Host</span><span class="w"> </span><span class="n">abci</span><span class="o">-</span><span class="n">a</span><span class="w"></span>
-<span class="w">     </span><span class="n">HostName</span><span class="w"> </span><span class="n">es</span><span class="o">-</span><span class="n">a</span><span class="w"></span>
-<span class="w">     </span><span class="k">User</span><span class="w"> </span><span class="n">username</span><span class="w"></span>
-<span class="w">     </span><span class="n">ProxyCommand</span><span class="w"> </span><span class="nl">C</span><span class="p">:</span><span class="err">\</span><span class="n">WINDOWS</span><span class="err">\</span><span class="n">System32</span><span class="err">\</span><span class="n">OpenSSH</span><span class="err">\</span><span class="n">ssh</span><span class="p">.</span><span class="n">exe</span><span class="w"> </span><span class="o">-</span><span class="n">W</span><span class="w"> </span><span class="o">%</span><span class="nl">h</span><span class="p">:</span><span class="o">%</span><span class="n">p</span><span class="w"> </span><span class="o">%</span><span class="n">r</span><span class="nv">@as</span><span class="p">.</span><span class="n">abci</span><span class="p">.</span><span class="n">ai</span><span class="w"></span>
-<span class="w">     </span><span class="n">IdentityFile</span><span class="w"> </span><span class="nl">C</span><span class="p">:</span><span class="err">\</span><span class="k">path</span><span class="err">\</span><span class="k">to</span><span class="err">\</span><span class="n">identity_file</span><span class="w"></span>
+<span class="k">Host</span><span class="w"> </span><span class="n">abci</span><span class="o">-</span><span class="n">a</span>
+<span class="w">     </span><span class="n">HostName</span><span class="w"> </span><span class="n">es</span><span class="o">-</span><span class="n">a</span>
+<span class="w">     </span><span class="k">User</span><span class="w"> </span><span class="n">username</span>
+<span class="w">     </span><span class="n">ProxyCommand</span><span class="w"> </span><span class="nl">C</span><span class="p">:</span><span class="err">\</span><span class="n">WINDOWS</span><span class="err">\</span><span class="n">System32</span><span class="err">\</span><span class="n">OpenSSH</span><span class="err">\</span><span class="n">ssh</span><span class="p">.</span><span class="n">exe</span><span class="w"> </span><span class="o">-</span><span class="n">W</span><span class="w"> </span><span class="o">%</span><span class="nl">h</span><span class="p">:</span><span class="o">%</span><span class="n">p</span><span class="w"> </span><span class="o">%</span><span class="n">r</span><span class="nv">@as</span><span class="p">.</span><span class="n">abci</span><span class="p">.</span><span class="n">ai</span>
+<span class="w">     </span><span class="n">IdentityFile</span><span class="w"> </span><span class="nl">C</span><span class="p">:</span><span class="err">\</span><span class="k">path</span><span class="err">\</span><span class="k">to</span><span class="err">\</span><span class="n">identity_file</span>
 
-<span class="k">Host</span><span class="w"> </span><span class="k">as</span><span class="p">.</span><span class="n">abci</span><span class="p">.</span><span class="n">ai</span><span class="w"></span>
-<span class="w">     </span><span class="n">IdentityFile</span><span class="w"> </span><span class="nl">C</span><span class="p">:</span><span class="err">\</span><span class="k">path</span><span class="err">\</span><span class="k">to</span><span class="err">\</span><span class="n">identity_file</span><span class="w"></span>
+<span class="k">Host</span><span class="w"> </span><span class="k">as</span><span class="p">.</span><span class="n">abci</span><span class="p">.</span><span class="n">ai</span>
+<span class="w">     </span><span class="n">IdentityFile</span><span class="w"> </span><span class="nl">C</span><span class="p">:</span><span class="err">\</span><span class="k">path</span><span class="err">\</span><span class="k">to</span><span class="err">\</span><span class="n">identity_file</span>
 </code></pre></div>
 
 <h2 id="file-transfer-to-interactive-node">インタラクティブノードへのファイル転送</h2>
 <p>ローカルPCとABCIシステム間でファイル転送をするには、<code>scp</code>(<code>sftp</code>)コマンドを利用します。この場合もSSHトンネルを介して行う必要があります。</p>
 <p>SSHトンネルの設定後、以下のように実行します。</p>
-<div class="codehilite"><pre><span></span><code><span class="p">[</span><span class="n">yourpc</span> <span class="o">~</span><span class="p">]</span><span class="o">$</span> <span class="n">scp</span> <span class="o">-</span><span class="n">i</span> <span class="o">/</span><span class="n">path</span><span class="o">/</span><span class="n">identity_file</span> <span class="o">-</span><span class="n">P</span> <span class="m">10022</span> <span class="n">local</span><span class="o">-</span><span class="n">file</span> <span class="n">username</span><span class="o">@</span><span class="n">localhost</span><span class="o">:</span><span class="n">remote</span><span class="o">-</span><span class="n">dir</span>
-<span class="n">Enter</span> <span class="n">passphrase</span> <span class="n">for</span> <span class="n">key</span><span class="o">:</span> <span class="o">&lt;-</span> パスフレーズを入力
+<div class="codehilite"><pre><span></span><code><span class="p">[</span><span class="n">yourpc</span><span class="w"> </span><span class="o">~</span><span class="p">]</span><span class="o">$</span><span class="w"> </span><span class="n">scp</span><span class="w"> </span><span class="o">-</span><span class="n">i</span><span class="w"> </span><span class="o">/</span><span class="n">path</span><span class="o">/</span><span class="n">identity_file</span><span class="w"> </span><span class="o">-</span><span class="n">P</span><span class="w"> </span><span class="m">10022</span><span class="w"> </span><span class="n">local</span><span class="o">-</span><span class="n">file</span><span class="w"> </span><span class="n">username</span><span class="o">@</span><span class="n">localhost</span><span class="o">:</span><span class="n">remote</span><span class="o">-</span><span class="n">dir</span>
+<span class="n">Enter</span><span class="w"> </span><span class="n">passphrase</span><span class="w"> </span><span class="n">for</span><span class="w"> </span><span class="n">key</span><span class="o">:</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span>パスフレーズを入力
 
-<span class="n">local</span><span class="o">-</span><span class="n">file</span>    <span class="m">100</span>% <span class="o">|***********************|</span>  <span class="n">file</span><span class="o">-</span><span class="n">size</span>  <span class="n">transfer</span><span class="o">-</span><span class="n">time</span>
+<span class="n">local</span><span class="o">-</span><span class="n">file</span><span class="w">    </span><span class="m">100</span>%<span class="w"> </span><span class="o">|***********************|</span><span class="w">  </span><span class="n">file</span><span class="o">-</span><span class="n">size</span><span class="w">  </span><span class="n">transfer</span><span class="o">-</span><span class="n">time</span>
 </code></pre></div>
 
 <p>ProxyJumpが使える場合は、SSHトンネルを明示的に設定する必要はありません。<a href="#proxyjump">ProxyJumpの使用</a>で説明したとおり<code>$HOME/.ssh/config</code>の設定がしてあれば、直接<code>scp</code> (<code>sftp</code>)コマンドでファイル転送が行えます。</p>
@@ -1391,12 +1391,12 @@
 <p>ABCIシステムのパスワードはLDAPで管理されています。 SSHログインではパスワードは使用しませんが、
 <a href="https://portal.abci.ai/user/">ABCI利用者ポータル</a>へのログイン、ログインシェルの変更の際にパスワードが必要になります。
 パスワードを変更する場合は、<code>passwd</code>コマンドを使用します。</p>
-<div class="codehilite"><pre><span></span><code><span class="p">[</span><span class="n">username</span><span class="o">@</span><span class="n">es1</span> <span class="o">~</span><span class="p">]</span><span class="o">$</span> <span class="n">passwd</span>
-<span class="n">Changing</span> <span class="n">password</span> <span class="n">for</span> <span class="n">user</span> <span class="n">username.</span>
-<span class="n">Current</span> <span class="n">Password</span><span class="o">:</span> <span class="o">&lt;-</span> 現在のパスワードを入力
-<span class="n">New</span> <span class="n">password</span><span class="o">:</span> <span class="o">&lt;-</span> 新しいパスワードを入力
-<span class="n">Retype</span> <span class="n">new</span> <span class="n">password</span><span class="o">:</span> <span class="o">&lt;-</span> 新しいパスワードを再度入力
-<span class="n">passwd</span><span class="o">:</span> <span class="n">all</span> <span class="n">authentication</span> <span class="n">tokens</span> <span class="n">updated</span> <span class="n">successfully.</span>
+<div class="codehilite"><pre><span></span><code><span class="p">[</span><span class="n">username</span><span class="o">@</span><span class="n">es1</span><span class="w"> </span><span class="o">~</span><span class="p">]</span><span class="o">$</span><span class="w"> </span><span class="n">passwd</span>
+<span class="n">Changing</span><span class="w"> </span><span class="n">password</span><span class="w"> </span><span class="n">for</span><span class="w"> </span><span class="n">user</span><span class="w"> </span><span class="n">username.</span>
+<span class="n">Current</span><span class="w"> </span><span class="n">Password</span><span class="o">:</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span>現在のパスワードを入力
+<span class="n">New</span><span class="w"> </span><span class="n">password</span><span class="o">:</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span>新しいパスワードを入力
+<span class="n">Retype</span><span class="w"> </span><span class="n">new</span><span class="w"> </span><span class="n">password</span><span class="o">:</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span>新しいパスワードを再度入力
+<span class="n">passwd</span><span class="o">:</span><span class="w"> </span><span class="n">all</span><span class="w"> </span><span class="n">authentication</span><span class="w"> </span><span class="n">tokens</span><span class="w"> </span><span class="n">updated</span><span class="w"> </span><span class="n">successfully.</span>
 </code></pre></div>
 
 <div class="admonition warning">
@@ -1414,52 +1414,52 @@
 <p>ABCIシステムのデフォルトログインシェルは、bashが設定されています。
 ログインシェルは<code>chsh</code>コマンドを使用してtcshもしくはzshに変更することができます。
 ログインシェルの変更は次回ログインから有効となります。また、ログインシェルの反映には10分程度時間がかかります。</p>
-<div class="codehilite"><pre><span></span><code><span class="err">$</span><span class="w"> </span><span class="n">chsh</span><span class="w"> </span><span class="o">[</span><span class="n">options</span><span class="o">]</span><span class="w"> </span><span class="o">&lt;</span><span class="n">new_shell</span><span class="o">&gt;</span><span class="w"></span>
+<div class="codehilite"><pre><span></span><code><span class="err">$</span><span class="w"> </span><span class="n">chsh</span><span class="w"> </span><span class="o">[</span><span class="n">options</span><span class="o">]</span><span class="w"> </span><span class="o">&lt;</span><span class="n">new_shell</span><span class="o">&gt;</span>
 </code></pre></div>
 
 <table>
 <thead>
 <tr>
-<th align="left">オプション</th>
-<th align="left">説明</th>
+<th style="text-align: left;">オプション</th>
+<th style="text-align: left;">説明</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td align="left">-l</td>
-<td align="left">利用可能なログインシェル一覧を表示する</td>
+<td style="text-align: left;">-l</td>
+<td style="text-align: left;">利用可能なログインシェル一覧を表示する</td>
 </tr>
 <tr>
-<td align="left">-s <em>new_shell</em></td>
-<td align="left">ログインシェルを<em>new_shell</em>に変更する</td>
+<td style="text-align: left;">-s <em>new_shell</em></td>
+<td style="text-align: left;">ログインシェルを<em>new_shell</em>に変更する</td>
 </tr>
 </tbody>
 </table>
 <p>例) ログインシェルを tcsh に変更する。</p>
-<div class="codehilite"><pre><span></span><code><span class="p">[</span><span class="n">username</span><span class="o">@</span><span class="n">es1</span> <span class="o">~</span><span class="p">]</span><span class="o">$</span> <span class="n">chsh</span> <span class="o">-</span><span class="n">s</span> <span class="o">/</span><span class="n">bin</span><span class="o">/</span><span class="n">tcsh</span>
-<span class="n">Password</span> <span class="n">for</span> <span class="n">username</span><span class="o">@</span><span class="n">ABCI.LOCAL</span><span class="o">:</span> <span class="o">&lt;-</span> パスワードを入力
+<div class="codehilite"><pre><span></span><code><span class="p">[</span><span class="n">username</span><span class="o">@</span><span class="n">es1</span><span class="w"> </span><span class="o">~</span><span class="p">]</span><span class="o">$</span><span class="w"> </span><span class="n">chsh</span><span class="w"> </span><span class="o">-</span><span class="n">s</span><span class="w"> </span><span class="o">/</span><span class="n">bin</span><span class="o">/</span><span class="n">tcsh</span>
+<span class="n">Password</span><span class="w"> </span><span class="n">for</span><span class="w"> </span><span class="n">username</span><span class="o">@</span><span class="n">ABCI.LOCAL</span><span class="o">:</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span>パスワードを入力
 </code></pre></div>
 
 <p>ABCIシステムへログインすると、ABCIシステムを利用するための環境設定が自動で設定されます。環境変数<code>PATH</code>や環境変数<code>LD_LIBRARY_PATH</code>等をカスタマイズする場合は、以下に示す個人用設定ファイルに設定してください。</p>
 <table>
 <thead>
 <tr>
-<th align="left">ログインシェル</th>
-<th align="left">個人用設定ファイル</th>
+<th style="text-align: left;">ログインシェル</th>
+<th style="text-align: left;">個人用設定ファイル</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td align="left">bash</td>
-<td align="left">$HOME/.bash_profile</td>
+<td style="text-align: left;">bash</td>
+<td style="text-align: left;">$HOME/.bash_profile</td>
 </tr>
 <tr>
-<td align="left">tcsh</td>
-<td align="left">$HOME/.cshrc</td>
+<td style="text-align: left;">tcsh</td>
+<td style="text-align: left;">$HOME/.cshrc</td>
 </tr>
 <tr>
-<td align="left">zsh</td>
-<td align="left">$HOME/.zshrc</td>
+<td style="text-align: left;">zsh</td>
+<td style="text-align: left;">$HOME/.zshrc</td>
 </tr>
 </tbody>
 </table>
@@ -1472,81 +1472,81 @@
 <p>ABCIポイントの使用状況と購入数を確認するには、<code>show_point</code>コマンドを利用します。
 ABCIポイント消費率が100%を超える見込みの場合、新規ジョブ投入が行えず、投入済みジョブは実行開始時にエラーになります（実行中ジョブは影響を受けません）。</p>
 <p>例) ABCIポイントを確認する。</p>
-<div class="codehilite"><pre><span></span><code><span class="o">[</span><span class="n">username@es1 ~</span><span class="o">]</span><span class="err">$</span><span class="w"> </span><span class="n">show_point</span><span class="w"></span>
-<span class="k">Group</span><span class="w">                 </span><span class="k">Disk</span><span class="w">            </span><span class="n">CloudStorage</span><span class="w">                    </span><span class="n">Used</span><span class="w">           </span><span class="n">Point</span><span class="w">   </span><span class="n">Used</span><span class="o">%</span><span class="w"></span>
-<span class="n">grpname</span><span class="w">                  </span><span class="mi">5</span><span class="w">                  </span><span class="mf">0.0124</span><span class="w">             </span><span class="mi">12</span><span class="p">,</span><span class="mf">345.6789</span><span class="w">         </span><span class="mi">100</span><span class="p">,</span><span class="mi">000</span><span class="w">      </span><span class="mi">12</span><span class="w"></span>
-<span class="w">  </span><span class="err">`</span><span class="o">-</span><span class="w"> </span><span class="n">username</span><span class="w">          </span><span class="o">-</span><span class="w">                         </span><span class="o">-</span><span class="w">                  </span><span class="mf">0.1234</span><span class="w">               </span><span class="o">-</span><span class="w">       </span><span class="mi">0</span><span class="w"></span>
+<div class="codehilite"><pre><span></span><code><span class="o">[</span><span class="n">username@es1 ~</span><span class="o">]</span><span class="err">$</span><span class="w"> </span><span class="n">show_point</span>
+<span class="k">Group</span><span class="w">                 </span><span class="k">Disk</span><span class="w">            </span><span class="n">CloudStorage</span><span class="w">                    </span><span class="n">Used</span><span class="w">           </span><span class="n">Point</span><span class="w">   </span><span class="n">Used</span><span class="o">%</span>
+<span class="n">grpname</span><span class="w">                  </span><span class="mi">5</span><span class="w">                  </span><span class="mf">0.0124</span><span class="w">             </span><span class="mi">12</span><span class="p">,</span><span class="mf">345.6789</span><span class="w">         </span><span class="mi">100</span><span class="p">,</span><span class="mi">000</span><span class="w">      </span><span class="mi">12</span>
+<span class="w">  </span><span class="err">`</span><span class="o">-</span><span class="w"> </span><span class="n">username</span><span class="w">          </span><span class="o">-</span><span class="w">                         </span><span class="o">-</span><span class="w">                  </span><span class="mf">0.1234</span><span class="w">               </span><span class="o">-</span><span class="w">       </span><span class="mi">0</span>
 </code></pre></div>
 
 <table>
 <thead>
 <tr>
-<th align="left">項目</th>
-<th align="left">説明</th>
+<th style="text-align: left;">項目</th>
+<th style="text-align: left;">説明</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td align="left">Group</td>
-<td align="left">ABCI利用グループ名</td>
+<td style="text-align: left;">Group</td>
+<td style="text-align: left;">ABCI利用グループ名</td>
 </tr>
 <tr>
-<td align="left">Disk</td>
-<td align="left">グループ領域割当量(TB)</td>
+<td style="text-align: left;">Disk</td>
+<td style="text-align: left;">グループ領域割当量(TB)</td>
 </tr>
 <tr>
-<td align="left">CloudStorage</td>
-<td align="left">ABCIクラウドストレージの ABCIポイント使用量</td>
+<td style="text-align: left;">CloudStorage</td>
+<td style="text-align: left;">ABCIクラウドストレージの ABCIポイント使用量</td>
 </tr>
 <tr>
-<td align="left">Used</td>
-<td align="left">ABCIポイント使用量</td>
+<td style="text-align: left;">Used</td>
+<td style="text-align: left;">ABCIポイント使用量</td>
 </tr>
 <tr>
-<td align="left">Point</td>
-<td align="left">ABCIポイント購入量</td>
+<td style="text-align: left;">Point</td>
+<td style="text-align: left;">ABCIポイント購入量</td>
 </tr>
 <tr>
-<td align="left">Used%</td>
-<td align="left">ABCIポイント消費率</td>
+<td style="text-align: left;">Used%</td>
+<td style="text-align: left;">ABCIポイント消費率</td>
 </tr>
 </tbody>
 </table>
 <p>月ごとのABCIポイントの使用状況を確認するには、<code>show_point_history</code>コマンドを利用します。</p>
 <p>例) ABCIポイントの月単位の使用状況を確認する。</p>
-<div class="codehilite"><pre><span></span><code><span class="o">[</span><span class="n">username@es1 ~</span><span class="o">]</span><span class="err">$</span><span class="w"> </span><span class="n">show_point_history</span><span class="w"> </span><span class="o">-</span><span class="n">g</span><span class="w"> </span><span class="n">grpname</span><span class="w"></span>
-<span class="w">                      </span><span class="n">Apr</span><span class="w">        </span><span class="n">May</span><span class="w">        </span><span class="n">Jun</span><span class="w">        </span><span class="n">Jul</span><span class="w">        </span><span class="n">Aug</span><span class="w">        </span><span class="n">Sep</span><span class="w">        </span><span class="n">Oct</span><span class="w">        </span><span class="n">Nov</span><span class="w">        </span><span class="k">Dec</span><span class="w">        </span><span class="n">Jan</span><span class="w">        </span><span class="n">Feb</span><span class="w">        </span><span class="n">Mar</span><span class="w">          </span><span class="n">Total</span><span class="w"></span>
-<span class="k">Disk</span><span class="w">           </span><span class="mi">1</span><span class="p">,</span><span class="mf">000.0000</span><span class="w">     </span><span class="mf">0.0000</span><span class="w">     </span><span class="mf">0.0000</span><span class="w">          </span><span class="o">-</span><span class="w">          </span><span class="o">-</span><span class="w">          </span><span class="o">-</span><span class="w">          </span><span class="o">-</span><span class="w">          </span><span class="o">-</span><span class="w">          </span><span class="o">-</span><span class="w">          </span><span class="o">-</span><span class="w">          </span><span class="o">-</span><span class="w">          </span><span class="o">-</span><span class="w">     </span><span class="mi">1</span><span class="p">,</span><span class="mf">000.0000</span><span class="w"></span>
-<span class="n">CloudStorage</span><span class="w">       </span><span class="mf">1.0000</span><span class="w">     </span><span class="mf">1.5000</span><span class="w">     </span><span class="mf">0.5000</span><span class="w">          </span><span class="o">-</span><span class="w">          </span><span class="o">-</span><span class="w">          </span><span class="o">-</span><span class="w">          </span><span class="o">-</span><span class="w">          </span><span class="o">-</span><span class="w">          </span><span class="o">-</span><span class="w">          </span><span class="o">-</span><span class="w">          </span><span class="o">-</span><span class="w">          </span><span class="o">-</span><span class="w">         </span><span class="mf">2.0000</span><span class="w"></span>
-<span class="n">Job</span><span class="w">              </span><span class="mf">100.0000</span><span class="w">    </span><span class="mf">50.0000</span><span class="w">    </span><span class="mf">10.0000</span><span class="w">          </span><span class="o">-</span><span class="w">          </span><span class="o">-</span><span class="w">          </span><span class="o">-</span><span class="w">          </span><span class="o">-</span><span class="w">          </span><span class="o">-</span><span class="w">          </span><span class="o">-</span><span class="w">          </span><span class="o">-</span><span class="w">          </span><span class="o">-</span><span class="w">          </span><span class="o">-</span><span class="w">       </span><span class="mf">160.0000</span><span class="w"></span>
-<span class="w">  </span><span class="o">|-</span><span class="w"> </span><span class="n">username1</span><span class="w">    </span><span class="mf">60.0000</span><span class="w">    </span><span class="mf">40.0000</span><span class="w">     </span><span class="mf">5.0000</span><span class="w">          </span><span class="o">-</span><span class="w">          </span><span class="o">-</span><span class="w">          </span><span class="o">-</span><span class="w">          </span><span class="o">-</span><span class="w">          </span><span class="o">-</span><span class="w">          </span><span class="o">-</span><span class="w">          </span><span class="o">-</span><span class="w">          </span><span class="o">-</span><span class="w">          </span><span class="o">-</span><span class="w">       </span><span class="mf">105.0000</span><span class="w"></span>
-<span class="w">  </span><span class="err">`</span><span class="o">-</span><span class="w"> </span><span class="n">username2</span><span class="w">    </span><span class="mf">40.0000</span><span class="w">    </span><span class="mf">10.0000</span><span class="w">     </span><span class="mf">5.0000</span><span class="w">          </span><span class="o">-</span><span class="w">          </span><span class="o">-</span><span class="w">          </span><span class="o">-</span><span class="w">          </span><span class="o">-</span><span class="w">          </span><span class="o">-</span><span class="w">          </span><span class="o">-</span><span class="w">          </span><span class="o">-</span><span class="w">          </span><span class="o">-</span><span class="w">          </span><span class="o">-</span><span class="w">        </span><span class="mf">55.0000</span><span class="w"></span>
-<span class="n">Total</span><span class="w">          </span><span class="mi">1</span><span class="p">,</span><span class="mf">101.0000</span><span class="w">    </span><span class="mf">51.5000</span><span class="w">    </span><span class="mf">10.5000</span><span class="w">          </span><span class="o">-</span><span class="w">          </span><span class="o">-</span><span class="w">          </span><span class="o">-</span><span class="w">          </span><span class="o">-</span><span class="w">          </span><span class="o">-</span><span class="w">          </span><span class="o">-</span><span class="w">          </span><span class="o">-</span><span class="w">          </span><span class="o">-</span><span class="w">          </span><span class="o">-</span><span class="w">     </span><span class="mi">1</span><span class="p">,</span><span class="mf">162.0000</span><span class="w"></span>
+<div class="codehilite"><pre><span></span><code><span class="o">[</span><span class="n">username@es1 ~</span><span class="o">]</span><span class="err">$</span><span class="w"> </span><span class="n">show_point_history</span><span class="w"> </span><span class="o">-</span><span class="n">g</span><span class="w"> </span><span class="n">grpname</span>
+<span class="w">                      </span><span class="n">Apr</span><span class="w">        </span><span class="n">May</span><span class="w">        </span><span class="n">Jun</span><span class="w">        </span><span class="n">Jul</span><span class="w">        </span><span class="n">Aug</span><span class="w">        </span><span class="n">Sep</span><span class="w">        </span><span class="n">Oct</span><span class="w">        </span><span class="n">Nov</span><span class="w">        </span><span class="k">Dec</span><span class="w">        </span><span class="n">Jan</span><span class="w">        </span><span class="n">Feb</span><span class="w">        </span><span class="n">Mar</span><span class="w">          </span><span class="n">Total</span>
+<span class="k">Disk</span><span class="w">           </span><span class="mi">1</span><span class="p">,</span><span class="mf">000.0000</span><span class="w">     </span><span class="mf">0.0000</span><span class="w">     </span><span class="mf">0.0000</span><span class="w">          </span><span class="o">-</span><span class="w">          </span><span class="o">-</span><span class="w">          </span><span class="o">-</span><span class="w">          </span><span class="o">-</span><span class="w">          </span><span class="o">-</span><span class="w">          </span><span class="o">-</span><span class="w">          </span><span class="o">-</span><span class="w">          </span><span class="o">-</span><span class="w">          </span><span class="o">-</span><span class="w">     </span><span class="mi">1</span><span class="p">,</span><span class="mf">000.0000</span>
+<span class="n">CloudStorage</span><span class="w">       </span><span class="mf">1.0000</span><span class="w">     </span><span class="mf">1.5000</span><span class="w">     </span><span class="mf">0.5000</span><span class="w">          </span><span class="o">-</span><span class="w">          </span><span class="o">-</span><span class="w">          </span><span class="o">-</span><span class="w">          </span><span class="o">-</span><span class="w">          </span><span class="o">-</span><span class="w">          </span><span class="o">-</span><span class="w">          </span><span class="o">-</span><span class="w">          </span><span class="o">-</span><span class="w">          </span><span class="o">-</span><span class="w">         </span><span class="mf">2.0000</span>
+<span class="n">Job</span><span class="w">              </span><span class="mf">100.0000</span><span class="w">    </span><span class="mf">50.0000</span><span class="w">    </span><span class="mf">10.0000</span><span class="w">          </span><span class="o">-</span><span class="w">          </span><span class="o">-</span><span class="w">          </span><span class="o">-</span><span class="w">          </span><span class="o">-</span><span class="w">          </span><span class="o">-</span><span class="w">          </span><span class="o">-</span><span class="w">          </span><span class="o">-</span><span class="w">          </span><span class="o">-</span><span class="w">          </span><span class="o">-</span><span class="w">       </span><span class="mf">160.0000</span>
+<span class="w">  </span><span class="o">|-</span><span class="w"> </span><span class="n">username1</span><span class="w">    </span><span class="mf">60.0000</span><span class="w">    </span><span class="mf">40.0000</span><span class="w">     </span><span class="mf">5.0000</span><span class="w">          </span><span class="o">-</span><span class="w">          </span><span class="o">-</span><span class="w">          </span><span class="o">-</span><span class="w">          </span><span class="o">-</span><span class="w">          </span><span class="o">-</span><span class="w">          </span><span class="o">-</span><span class="w">          </span><span class="o">-</span><span class="w">          </span><span class="o">-</span><span class="w">          </span><span class="o">-</span><span class="w">       </span><span class="mf">105.0000</span>
+<span class="w">  </span><span class="err">`</span><span class="o">-</span><span class="w"> </span><span class="n">username2</span><span class="w">    </span><span class="mf">40.0000</span><span class="w">    </span><span class="mf">10.0000</span><span class="w">     </span><span class="mf">5.0000</span><span class="w">          </span><span class="o">-</span><span class="w">          </span><span class="o">-</span><span class="w">          </span><span class="o">-</span><span class="w">          </span><span class="o">-</span><span class="w">          </span><span class="o">-</span><span class="w">          </span><span class="o">-</span><span class="w">          </span><span class="o">-</span><span class="w">          </span><span class="o">-</span><span class="w">          </span><span class="o">-</span><span class="w">        </span><span class="mf">55.0000</span>
+<span class="n">Total</span><span class="w">          </span><span class="mi">1</span><span class="p">,</span><span class="mf">101.0000</span><span class="w">    </span><span class="mf">51.5000</span><span class="w">    </span><span class="mf">10.5000</span><span class="w">          </span><span class="o">-</span><span class="w">          </span><span class="o">-</span><span class="w">          </span><span class="o">-</span><span class="w">          </span><span class="o">-</span><span class="w">          </span><span class="o">-</span><span class="w">          </span><span class="o">-</span><span class="w">          </span><span class="o">-</span><span class="w">          </span><span class="o">-</span><span class="w">          </span><span class="o">-</span><span class="w">     </span><span class="mi">1</span><span class="p">,</span><span class="mf">162.0000</span>
 </code></pre></div>
 
 <table>
 <thead>
 <tr>
-<th align="left">項目</th>
-<th align="left">説明</th>
+<th style="text-align: left;">項目</th>
+<th style="text-align: left;">説明</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td align="left">Disk</td>
-<td align="left">グループ領域のABCIポイント使用量</td>
+<td style="text-align: left;">Disk</td>
+<td style="text-align: left;">グループ領域のABCIポイント使用量</td>
 </tr>
 <tr>
-<td align="left">CloudStorage</td>
-<td align="left">ABCIクラウドストレージの ABCIポイント使用量</td>
+<td style="text-align: left;">CloudStorage</td>
+<td style="text-align: left;">ABCIクラウドストレージの ABCIポイント使用量</td>
 </tr>
 <tr>
-<td align="left">Job</td>
-<td align="left">グループ所属全ユーザのOn-demand、Spot、ReservedサービスでのABCIポイント使用量の合計値</td>
+<td style="text-align: left;">Job</td>
+<td style="text-align: left;">グループ所属全ユーザのOn-demand、Spot、ReservedサービスでのABCIポイント使用量の合計値</td>
 </tr>
 <tr>
-<td align="left">Total(行)</td>
-<td align="left">Disk、CloudStorage、JobでのABCIポイント使用量の合計値</td>
+<td style="text-align: left;">Total(行)</td>
+<td style="text-align: left;">Disk、CloudStorage、JobでのABCIポイント使用量の合計値</td>
 </tr>
 </tbody>
 </table>
@@ -1562,68 +1562,68 @@ ABCIポイント消費率が100%を超える見込みの場合、新規ジョブ
 <p>ホーム領域およびグループ領域の使用状況と割り当て量を表示するには、
 <code>show_quota</code>コマンドを利用します。</p>
 <p>例) ディスクおよびinodeクォータを確認する。</p>
-<div class="codehilite"><pre><span></span><code><span class="o">[</span><span class="n">username@es1 ~</span><span class="o">]</span><span class="err">$</span><span class="w"> </span><span class="n">show_quota</span><span class="w"></span>
-<span class="k">Disk</span><span class="w"> </span><span class="n">quotas</span><span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="k">user</span><span class="w"> </span><span class="n">username</span><span class="w"></span>
-<span class="w">  </span><span class="n">Directory</span><span class="w">                            </span><span class="n">used</span><span class="p">(</span><span class="n">GiB</span><span class="p">)</span><span class="w">        </span><span class="k">limit</span><span class="p">(</span><span class="n">GiB</span><span class="p">)</span><span class="w">      </span><span class="n">used</span><span class="p">(</span><span class="n">nfiles</span><span class="p">)</span><span class="w">     </span><span class="k">limit</span><span class="p">(</span><span class="n">nfiles</span><span class="p">)</span><span class="w"></span>
-<span class="w">  </span><span class="o">/</span><span class="n">home</span><span class="w">                                      </span><span class="mi">100</span><span class="w">               </span><span class="mi">200</span><span class="w">             </span><span class="mi">1</span><span class="p">,</span><span class="mi">234</span><span class="w">                 </span><span class="o">-</span><span class="w"></span>
-<span class="w">  </span><span class="o">/</span><span class="n">scratch</span><span class="o">/</span><span class="n">username</span><span class="w">                        </span><span class="mi">1</span><span class="p">,</span><span class="mi">234</span><span class="w">            </span><span class="mi">10</span><span class="p">,</span><span class="mi">240</span><span class="w">                 </span><span class="mi">0</span><span class="w">                 </span><span class="o">-</span><span class="w"></span>
+<div class="codehilite"><pre><span></span><code><span class="o">[</span><span class="n">username@es1 ~</span><span class="o">]</span><span class="err">$</span><span class="w"> </span><span class="n">show_quota</span>
+<span class="k">Disk</span><span class="w"> </span><span class="n">quotas</span><span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="k">user</span><span class="w"> </span><span class="n">username</span>
+<span class="w">  </span><span class="n">Directory</span><span class="w">                            </span><span class="n">used</span><span class="p">(</span><span class="n">GiB</span><span class="p">)</span><span class="w">        </span><span class="k">limit</span><span class="p">(</span><span class="n">GiB</span><span class="p">)</span><span class="w">      </span><span class="n">used</span><span class="p">(</span><span class="n">nfiles</span><span class="p">)</span><span class="w">     </span><span class="k">limit</span><span class="p">(</span><span class="n">nfiles</span><span class="p">)</span>
+<span class="w">  </span><span class="o">/</span><span class="n">home</span><span class="w">                                      </span><span class="mi">100</span><span class="w">               </span><span class="mi">200</span><span class="w">             </span><span class="mi">1</span><span class="p">,</span><span class="mi">234</span><span class="w">                 </span><span class="o">-</span>
+<span class="w">  </span><span class="o">/</span><span class="n">scratch</span><span class="o">/</span><span class="n">username</span><span class="w">                        </span><span class="mi">1</span><span class="p">,</span><span class="mi">234</span><span class="w">            </span><span class="mi">10</span><span class="p">,</span><span class="mi">240</span><span class="w">                 </span><span class="mi">0</span><span class="w">                 </span><span class="o">-</span>
 
-<span class="k">Disk</span><span class="w"> </span><span class="n">quotas</span><span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="n">ABCI</span><span class="w"> </span><span class="k">group</span><span class="w"> </span><span class="n">grpname</span><span class="w"></span>
-<span class="w">  </span><span class="n">Directory</span><span class="w">                            </span><span class="n">used</span><span class="p">(</span><span class="n">GiB</span><span class="p">)</span><span class="w">        </span><span class="k">limit</span><span class="p">(</span><span class="n">GiB</span><span class="p">)</span><span class="w">      </span><span class="n">used</span><span class="p">(</span><span class="n">nfiles</span><span class="p">)</span><span class="w">     </span><span class="k">limit</span><span class="p">(</span><span class="n">nfiles</span><span class="p">)</span><span class="w"></span>
-<span class="w">  </span><span class="o">/</span><span class="n">groups</span><span class="o">/</span><span class="n">grpname</span><span class="w">                          </span><span class="mi">1</span><span class="p">,</span><span class="mi">024</span><span class="w">             </span><span class="mi">2</span><span class="p">,</span><span class="mi">048</span><span class="w">           </span><span class="mi">123</span><span class="p">,</span><span class="mi">456</span><span class="w">       </span><span class="mi">200</span><span class="p">,</span><span class="mi">000</span><span class="p">,</span><span class="mi">000</span><span class="w"></span>
+<span class="k">Disk</span><span class="w"> </span><span class="n">quotas</span><span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="n">ABCI</span><span class="w"> </span><span class="k">group</span><span class="w"> </span><span class="n">grpname</span>
+<span class="w">  </span><span class="n">Directory</span><span class="w">                            </span><span class="n">used</span><span class="p">(</span><span class="n">GiB</span><span class="p">)</span><span class="w">        </span><span class="k">limit</span><span class="p">(</span><span class="n">GiB</span><span class="p">)</span><span class="w">      </span><span class="n">used</span><span class="p">(</span><span class="n">nfiles</span><span class="p">)</span><span class="w">     </span><span class="k">limit</span><span class="p">(</span><span class="n">nfiles</span><span class="p">)</span>
+<span class="w">  </span><span class="o">/</span><span class="n">groups</span><span class="o">/</span><span class="n">grpname</span><span class="w">                          </span><span class="mi">1</span><span class="p">,</span><span class="mi">024</span><span class="w">             </span><span class="mi">2</span><span class="p">,</span><span class="mi">048</span><span class="w">           </span><span class="mi">123</span><span class="p">,</span><span class="mi">456</span><span class="w">       </span><span class="mi">200</span><span class="p">,</span><span class="mi">000</span><span class="p">,</span><span class="mi">000</span>
 </code></pre></div>
 
 <table>
 <thead>
 <tr>
-<th align="left">項目</th>
-<th align="left">説明</th>
+<th style="text-align: left;">項目</th>
+<th style="text-align: left;">説明</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td align="left">Directory</td>
-<td align="left">領域種別</td>
+<td style="text-align: left;">Directory</td>
+<td style="text-align: left;">領域種別</td>
 </tr>
 <tr>
-<td align="left">used(GiB)</td>
-<td align="left">ディスク使用量</td>
+<td style="text-align: left;">used(GiB)</td>
+<td style="text-align: left;">ディスク使用量</td>
 </tr>
 <tr>
-<td align="left">limit(GiB)</td>
-<td align="left">ディスク上限値</td>
+<td style="text-align: left;">limit(GiB)</td>
+<td style="text-align: left;">ディスク上限値</td>
 </tr>
 <tr>
-<td align="left">used(nfiles)</td>
-<td align="left">inode使用数</td>
+<td style="text-align: left;">used(nfiles)</td>
+<td style="text-align: left;">inode使用数</td>
 </tr>
 <tr>
-<td align="left">limit(nfiles)</td>
-<td align="left">inode数上限値</td>
+<td style="text-align: left;">limit(nfiles)</td>
+<td style="text-align: left;">inode数上限値</td>
 </tr>
 </tbody>
 </table>
 <p>なお、inode数上限値の欄に "-" が表示されている場合、inode使用数に制限はありません。
 また、ディスク使用量がディスク上限値を超えている場合、ディスク使用量の欄に"*"が表示されます。</p>
 <p>inode使用数がinode数上限値を超過している、またはディスク使用量がディスク上限値を超過している場合、新規ファイル・ディレクトリの作成に失敗します。</p>
-<div class="codehilite"><pre><span></span><code><span class="o">[</span><span class="n">username@es1 ~</span><span class="o">]</span><span class="err">$</span><span class="w"> </span><span class="n">touch</span><span class="w"> </span><span class="n">quota_test</span><span class="w"></span>
-<span class="nl">touch</span><span class="p">:</span><span class="w"> </span><span class="n">cannot</span><span class="w"> </span><span class="n">touch</span><span class="w"> </span><span class="s1">&#39;quota_test&#39;</span><span class="err">:</span><span class="w"> </span><span class="k">Disk</span><span class="w"> </span><span class="n">quota</span><span class="w"> </span><span class="n">exceeded</span><span class="w"></span>
+<div class="codehilite"><pre><span></span><code><span class="o">[</span><span class="n">username@es1 ~</span><span class="o">]</span><span class="err">$</span><span class="w"> </span><span class="n">touch</span><span class="w"> </span><span class="n">quota_test</span>
+<span class="nl">touch</span><span class="p">:</span><span class="w"> </span><span class="n">cannot</span><span class="w"> </span><span class="n">touch</span><span class="w"> </span><span class="s1">&#39;quota_test&#39;</span><span class="err">:</span><span class="w"> </span><span class="k">Disk</span><span class="w"> </span><span class="n">quota</span><span class="w"> </span><span class="n">exceeded</span>
 </code></pre></div>
 
 <h2 id="checking-cloud-storage-usage">ABCI クラウドストレージ利用状況の確認</h2>
 <p>ABCI クラウドストレージの使用状況表示するには、<code>show_cs_usage</code> コマンドを利用します。</p>
 <p>例1) オプション指定なしで、所属するABCIグループ grpname の直近の利用状態を確認できます。</p>
-<div class="codehilite"><pre><span></span><code><span class="o">[</span><span class="n">username@es1 ~</span><span class="o">]</span><span class="err">$</span><span class="w"> </span><span class="n">show_cs_usage</span><span class="w"></span>
-<span class="n">Cloud</span><span class="w"> </span><span class="n">Storage</span><span class="w"> </span><span class="k">Usage</span><span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="n">ABCI</span><span class="w"> </span><span class="n">groups</span><span class="w"></span>
-<span class="nc">Date</span><span class="w">           </span><span class="k">Group</span><span class="w">                   </span><span class="n">used</span><span class="p">(</span><span class="n">GiB</span><span class="p">)</span><span class="w"></span>
-<span class="mi">2020</span><span class="o">/</span><span class="mi">01</span><span class="o">/</span><span class="mi">13</span><span class="w">     </span><span class="n">grpname</span><span class="w">                       </span><span class="mi">162</span><span class="w"></span>
+<div class="codehilite"><pre><span></span><code><span class="o">[</span><span class="n">username@es1 ~</span><span class="o">]</span><span class="err">$</span><span class="w"> </span><span class="n">show_cs_usage</span>
+<span class="n">Cloud</span><span class="w"> </span><span class="n">Storage</span><span class="w"> </span><span class="k">Usage</span><span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="n">ABCI</span><span class="w"> </span><span class="n">groups</span>
+<span class="nc">Date</span><span class="w">           </span><span class="k">Group</span><span class="w">                   </span><span class="n">used</span><span class="p">(</span><span class="n">GiB</span><span class="p">)</span>
+<span class="mi">2020</span><span class="o">/</span><span class="mi">01</span><span class="o">/</span><span class="mi">13</span><span class="w">     </span><span class="n">grpname</span><span class="w">                       </span><span class="mi">162</span>
 </code></pre></div>
 
 <p>例2) オプション -d で日付を指定できます。日付の書式は、 yyyymmdd で指定してください。(ABCIグループは grpname)</p>
-<div class="codehilite"><pre><span></span><code><span class="o">[</span><span class="n">username@es1 ~</span><span class="o">]</span><span class="err">$</span><span class="w"> </span><span class="n">show_cs_usage</span><span class="w"> </span><span class="o">-</span><span class="n">d</span><span class="w"> </span><span class="mi">20191217</span><span class="w"></span>
-<span class="n">Cloud</span><span class="w"> </span><span class="n">Storage</span><span class="w"> </span><span class="k">Usage</span><span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="n">ABCI</span><span class="w"> </span><span class="n">groups</span><span class="w"></span>
-<span class="nc">Date</span><span class="w">           </span><span class="k">Group</span><span class="w">                   </span><span class="n">used</span><span class="p">(</span><span class="n">GiB</span><span class="p">)</span><span class="w"></span>
-<span class="mi">2019</span><span class="o">/</span><span class="mi">12</span><span class="o">/</span><span class="mi">17</span><span class="w">     </span><span class="n">grpname</span><span class="w">                       </span><span class="mi">124</span><span class="w"></span>
+<div class="codehilite"><pre><span></span><code><span class="o">[</span><span class="n">username@es1 ~</span><span class="o">]</span><span class="err">$</span><span class="w"> </span><span class="n">show_cs_usage</span><span class="w"> </span><span class="o">-</span><span class="n">d</span><span class="w"> </span><span class="mi">20191217</span>
+<span class="n">Cloud</span><span class="w"> </span><span class="n">Storage</span><span class="w"> </span><span class="k">Usage</span><span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="n">ABCI</span><span class="w"> </span><span class="n">groups</span>
+<span class="nc">Date</span><span class="w">           </span><span class="k">Group</span><span class="w">                   </span><span class="n">used</span><span class="p">(</span><span class="n">GiB</span><span class="p">)</span>
+<span class="mi">2019</span><span class="o">/</span><span class="mi">12</span><span class="o">/</span><span class="mi">17</span><span class="w">     </span><span class="n">grpname</span><span class="w">                       </span><span class="mi">124</span>
 </code></pre></div>
                 
               

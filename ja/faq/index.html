@@ -16,7 +16,7 @@
         <link rel="canonical" href="https://docs.abci.ai/ja/faq/">
       
       <link rel="icon" href="../img/favicon.png">
-      <meta name="generator" content="mkdocs-1.1.2, mkdocs-material-7.1.3">
+      <meta name="generator" content="mkdocs-1.2.4, mkdocs-material-7.1.3">
     
     
       
@@ -1250,15 +1250,15 @@
                 <h1 id="faq">FAQ</h1>
 <h2 id="q-ctrls">Q. インタラクティブ利用時にCtrl+Sを入力するとそれ以降のキー入力ができない</h2>
 <p>macOS、Windows、Linuxなどの標準のターミナルエミュレータでは、デフォルトでCtrl+S/Ctrl+Qによる出力制御が有効になっているためです。無効にするためには、ローカルPCのターミナルエミュレータで以下を実行してください。</p>
-<div class="codehilite"><pre><span></span><code>$ stty -ixon
+<div class="codehilite"><pre><span></span><code>$<span class="w"> </span>stty<span class="w"> </span>-ixon
 </code></pre></div>
 
 <p>インタラクティブノードにログインした状態で実行しても同等の効果があります。</p>
 <h2 id="q-singularity">Q. 認証が必要なコンテナレジストリをSingularityで利用できない</h2>
 <p>SingularityPROには<code>docker login</code>相当の機能として、環境変数で認証情報を与える機能があります。</p>
-<div class="codehilite"><pre><span></span><code><span class="o">[</span>username@es1 ~<span class="o">]</span>$ <span class="nb">export</span> <span class="nv">SINGULARITY_DOCKER_USERNAME</span><span class="o">=</span><span class="s1">&#39;username&#39;</span>
-<span class="o">[</span>username@es1 ~<span class="o">]</span>$ <span class="nb">export</span> <span class="nv">SINGULARITY_DOCKER_PASSWORD</span><span class="o">=</span><span class="s1">&#39;password&#39;</span>
-<span class="o">[</span>username@es1 ~<span class="o">]</span>$ singularity pull docker://myregistry.azurecr.io/namespace/repo_name:repo_tag
+<div class="codehilite"><pre><span></span><code><span class="o">[</span>username@es1<span class="w"> </span>~<span class="o">]</span>$<span class="w"> </span><span class="nb">export</span><span class="w"> </span><span class="nv">SINGULARITY_DOCKER_USERNAME</span><span class="o">=</span><span class="s1">&#39;username&#39;</span>
+<span class="o">[</span>username@es1<span class="w"> </span>~<span class="o">]</span>$<span class="w"> </span><span class="nb">export</span><span class="w"> </span><span class="nv">SINGULARITY_DOCKER_PASSWORD</span><span class="o">=</span><span class="s1">&#39;password&#39;</span>
+<span class="o">[</span>username@es1<span class="w"> </span>~<span class="o">]</span>$<span class="w"> </span>singularity<span class="w"> </span>pull<span class="w"> </span>docker://myregistry.azurecr.io/namespace/repo_name:repo_tag
 </code></pre></div>
 
 <p>SingularityPROの認証に関する詳細は、下記のユーザーガイドをご参照ください。</p>
@@ -1271,35 +1271,35 @@
 <h2 id="q">Q. 複数の計算ノードを割り当て、それぞれの計算ノードで異なる処理をさせたい</h2>
 <p><code>qrsh</code>や<code>qsub</code>で<code>-l rt_F=N</code>オプションもしくは<code>-l rt_AF=N</code>オプションを与えると、N個の計算ノードを割り当てることができます。
 割り当てられた計算ノードでそれぞれ異なる処理をさせたい場合にMPIが使えます。</p>
-<div class="codehilite"><pre><span></span><code><span class="o">[</span>username@es1 ~<span class="o">]</span>$ qrsh -g grpname -l <span class="nv">rt_F</span><span class="o">=</span><span class="m">3</span> -l <span class="nv">h_rt</span><span class="o">=</span><span class="m">1</span>:00:00
-<span class="o">[</span>username@g0001 ~<span class="o">]</span>$ module load hpcx/2.12
-<span class="o">[</span>username@g0001 ~<span class="o">]</span>$ mpirun -hostfile <span class="nv">$SGE_JOB_HOSTLIST</span> -np <span class="m">1</span> command1 : -np <span class="m">1</span> command2 : -np <span class="m">1</span> command3
+<div class="codehilite"><pre><span></span><code><span class="o">[</span>username@es1<span class="w"> </span>~<span class="o">]</span>$<span class="w"> </span>qrsh<span class="w"> </span>-g<span class="w"> </span>grpname<span class="w"> </span>-l<span class="w"> </span><span class="nv">rt_F</span><span class="o">=</span><span class="m">3</span><span class="w"> </span>-l<span class="w"> </span><span class="nv">h_rt</span><span class="o">=</span><span class="m">1</span>:00:00
+<span class="o">[</span>username@g0001<span class="w"> </span>~<span class="o">]</span>$<span class="w"> </span>module<span class="w"> </span>load<span class="w"> </span>hpcx/2.12
+<span class="o">[</span>username@g0001<span class="w"> </span>~<span class="o">]</span>$<span class="w"> </span>mpirun<span class="w"> </span>-hostfile<span class="w"> </span><span class="nv">$SGE_JOB_HOSTLIST</span><span class="w"> </span>-np<span class="w"> </span><span class="m">1</span><span class="w"> </span>command1<span class="w"> </span>:<span class="w"> </span>-np<span class="w"> </span><span class="m">1</span><span class="w"> </span>command2<span class="w"> </span>:<span class="w"> </span>-np<span class="w"> </span><span class="m">1</span><span class="w"> </span>command3
 </code></pre></div>
 
 <p>他にも、計算ノードへのSSHログインを有効にすることで、割り当てられた計算ノードにそれぞれ異なる処理をさせることができます。
 計算ノードへのSSHログインアクセスは、<code>qrsh</code>や<code>qsub</code>実行時に<code>-l USE_SSH=1</code>オプションを指定することで有効になります。
 <code>USE_SSH</code>オプションについては、<a href="../appendix/ssh-access/">付録. 計算ノードへのSSHアクセス</a>を参照してください。</p>
 <p>以下はSSHアクセスを使用して割り当てられた計算ノードに異なる処理を実行させる例です。</p>
-<div class="codehilite"><pre><span></span><code><span class="o">[</span>username@es1 ~<span class="o">]</span>$ qrsh -g grpname -l <span class="nv">rt_F</span><span class="o">=</span><span class="m">3</span> -l <span class="nv">h_rt</span><span class="o">=</span><span class="m">1</span>:00:00 -l <span class="nv">USE_SSH</span><span class="o">=</span><span class="m">1</span>
-<span class="o">[</span>username@g0001 ~<span class="o">]</span>$ cat <span class="nv">$SGE_JOB_HOSTLIST</span>
+<div class="codehilite"><pre><span></span><code><span class="o">[</span>username@es1<span class="w"> </span>~<span class="o">]</span>$<span class="w"> </span>qrsh<span class="w"> </span>-g<span class="w"> </span>grpname<span class="w"> </span>-l<span class="w"> </span><span class="nv">rt_F</span><span class="o">=</span><span class="m">3</span><span class="w"> </span>-l<span class="w"> </span><span class="nv">h_rt</span><span class="o">=</span><span class="m">1</span>:00:00<span class="w"> </span>-l<span class="w"> </span><span class="nv">USE_SSH</span><span class="o">=</span><span class="m">1</span>
+<span class="o">[</span>username@g0001<span class="w"> </span>~<span class="o">]</span>$<span class="w"> </span>cat<span class="w"> </span><span class="nv">$SGE_JOB_HOSTLIST</span>
 g0001
 g0002
 g0003
-<span class="o">[</span>username@g0001 ~<span class="o">]</span>$ ssh -p <span class="m">2222</span> g0001 command1 <span class="p">&amp;</span>
-<span class="o">[</span>username@g0001 ~<span class="o">]</span>$ ssh -p <span class="m">2222</span> g0002 command2 <span class="p">&amp;</span>
-<span class="o">[</span>username@g0001 ~<span class="o">]</span>$ ssh -p <span class="m">2222</span> g0003 command3 <span class="p">&amp;</span>
+<span class="o">[</span>username@g0001<span class="w"> </span>~<span class="o">]</span>$<span class="w"> </span>ssh<span class="w"> </span>-p<span class="w"> </span><span class="m">2222</span><span class="w"> </span>g0001<span class="w"> </span>command1<span class="w"> </span><span class="p">&amp;</span>
+<span class="o">[</span>username@g0001<span class="w"> </span>~<span class="o">]</span>$<span class="w"> </span>ssh<span class="w"> </span>-p<span class="w"> </span><span class="m">2222</span><span class="w"> </span>g0002<span class="w"> </span>command2<span class="w"> </span><span class="p">&amp;</span>
+<span class="o">[</span>username@g0001<span class="w"> </span>~<span class="o">]</span>$<span class="w"> </span>ssh<span class="w"> </span>-p<span class="w"> </span><span class="m">2222</span><span class="w"> </span>g0003<span class="w"> </span>command3<span class="w"> </span><span class="p">&amp;</span>
 </code></pre></div>
 
 <h2 id="q-ssh">Q. SSHのセッションが閉じられてしまうのを回避したい</h2>
 <p>SSHでABCIに無事接続したしばらく後に、SSHのセッションが閉じられてしまうことがあります。このような場合は、SSHクライアントとサーバ間でKeepAliveの通信をすることで回避できる場合があります。</p>
 <p>KeepAliveを適用するには、利用者の端末でシステムのssh設定ファイル(/etc/ssh/ssh_config)、またはユーザ毎の設定ファイル(~/.ssh/config)に、オプション ServerAliveInterval を60秒程度で設定してください。</p>
-<div class="codehilite"><pre><span></span><code><span class="o">[</span><span class="n">username@userpc ~</span><span class="o">]</span><span class="err">$</span><span class="w"> </span><span class="n">vi</span><span class="w"> </span><span class="o">~/</span><span class="p">.</span><span class="n">ssh</span><span class="o">/</span><span class="n">config</span><span class="w"></span>
-<span class="o">[</span><span class="n">username@userpc ~</span><span class="o">]</span><span class="err">$</span><span class="w"> </span><span class="n">cat</span><span class="w"> </span><span class="o">~/</span><span class="p">.</span><span class="n">ssh</span><span class="o">/</span><span class="n">config</span><span class="w"></span>
-<span class="p">(</span><span class="n">snip</span><span class="p">)</span><span class="w"></span>
-<span class="k">Host</span><span class="w"> </span><span class="k">as</span><span class="p">.</span><span class="n">abci</span><span class="p">.</span><span class="n">ai</span><span class="w"></span>
-<span class="w">   </span><span class="n">ServerAliveInterval</span><span class="w"> </span><span class="mi">60</span><span class="w"></span>
-<span class="p">(</span><span class="n">snip</span><span class="p">)</span><span class="w"></span>
-<span class="o">[</span><span class="n">username@userpc ~</span><span class="o">]</span><span class="err">$</span><span class="w"></span>
+<div class="codehilite"><pre><span></span><code><span class="o">[</span><span class="n">username@userpc ~</span><span class="o">]</span><span class="err">$</span><span class="w"> </span><span class="n">vi</span><span class="w"> </span><span class="o">~/</span><span class="p">.</span><span class="n">ssh</span><span class="o">/</span><span class="n">config</span>
+<span class="o">[</span><span class="n">username@userpc ~</span><span class="o">]</span><span class="err">$</span><span class="w"> </span><span class="n">cat</span><span class="w"> </span><span class="o">~/</span><span class="p">.</span><span class="n">ssh</span><span class="o">/</span><span class="n">config</span>
+<span class="p">(</span><span class="n">snip</span><span class="p">)</span>
+<span class="k">Host</span><span class="w"> </span><span class="k">as</span><span class="p">.</span><span class="n">abci</span><span class="p">.</span><span class="n">ai</span>
+<span class="w">   </span><span class="n">ServerAliveInterval</span><span class="w"> </span><span class="mi">60</span>
+<span class="p">(</span><span class="n">snip</span><span class="p">)</span>
+<span class="o">[</span><span class="n">username@userpc ~</span><span class="o">]</span><span class="err">$</span>
 </code></pre></div>
 
 <div class="admonition note">
@@ -1312,14 +1312,14 @@ ABCI内部サーバ<code>vws1</code>の3000/tcpポートで動作しています
 <p>SSHトンネルの設定をしてください。
 以下の例では、ローカルPCの<code>$HOME/.ssh/config</code>に、ProxyCommandを用いてas.abci.ai経由でABCI内部サーバにSSHトンネル接続する設定をしています。
 ABCIシステム利用環境の<a href="../getting-started/#general-method">SSHクライアントによるログイン::一般的なログイン方法</a>も参考にしてください。</p>
-<div class="codehilite"><pre><span></span><code>Host *.abci.local
-    User         username
-    IdentityFile /path/identity_file
-    ProxyCommand ssh -W %h:%p -l username -i /path/identity_file as.abci.ai
+<div class="codehilite"><pre><span></span><code>Host<span class="w"> </span>*.abci.local
+<span class="w">    </span>User<span class="w">         </span>username
+<span class="w">    </span>IdentityFile<span class="w"> </span>/path/identity_file
+<span class="w">    </span>ProxyCommand<span class="w"> </span>ssh<span class="w"> </span>-W<span class="w"> </span>%h:%p<span class="w"> </span>-l<span class="w"> </span>username<span class="w"> </span>-i<span class="w"> </span>/path/identity_file<span class="w"> </span>as.abci.ai
 </code></pre></div>
 
 <p>ローカルPCの3000番ポートをvws1サーバの3000/tcpポートに転送するSSHトンネルを作成します。</p>
-<div class="codehilite"><pre><span></span><code><span class="o">[</span>username@userpc ~<span class="o">]</span>$ ssh -L <span class="m">3000</span>:vws1:3000 es.abci.local
+<div class="codehilite"><pre><span></span><code><span class="o">[</span>username@userpc<span class="w"> </span>~<span class="o">]</span>$<span class="w"> </span>ssh<span class="w"> </span>-L<span class="w"> </span><span class="m">3000</span>:vws1:3000<span class="w"> </span>es.abci.local
 </code></pre></div>
 
 <p>ブラウザで<code>http://localhost:3000/</code>にアクセスします。</p>
@@ -1336,99 +1336,99 @@ ABCIシステム利用環境の<a href="../getting-started/#general-method">SSH�
 <p><a href="../tips/datasets/">データセットの利用</a>を参照してください。</p>
 <h2 id="q-singularity-pull">Q. バッチジョブでSingularity pullでのイメージファイル作成に失敗する</h2>
 <p>バッチジョブでSingularity pullでのイメージファイルを作成しようとした際に、mksquashfs の実行ファイルが見つからず作成に失敗することがあります。</p>
-<div class="codehilite"><pre><span></span><code><span class="n">INFO</span><span class="o">:</span>    <span class="n">Converting</span> <span class="n">OCI</span> <span class="n">blobs</span> <span class="n">to</span> <span class="n">SIF</span> <span class="n">format</span>
-<span class="n">FATAL</span><span class="o">:</span>   <span class="n">While</span> <span class="n">making</span> <span class="n">image</span> <span class="n">from</span> <span class="n">oci</span> <span class="n">registry</span><span class="o">:</span> <span class="k">while</span> <span class="n">building</span> <span class="n">SIF</span> <span class="n">from</span> <span class="n">layers</span><span class="o">:</span> <span class="n">unable</span> <span class="n">to</span> <span class="n">create</span> <span class="k">new</span> <span class="n">build</span><span class="o">:</span> <span class="k">while</span> <span class="n">searching</span> <span class="k">for</span> <span class="n">mksquashfs</span><span class="o">:</span> <span class="n">exec</span><span class="o">:</span> <span class="s2">&quot;mksquashfs&quot;</span><span class="o">:</span> <span class="n">executable</span> <span class="n">file</span> <span class="n">not</span> <span class="n">found</span> <span class="k">in</span> <span class="n">$PATH</span>
+<div class="codehilite"><pre><span></span><code><span class="n">INFO</span><span class="o">:</span><span class="w">    </span><span class="n">Converting</span><span class="w"> </span><span class="n">OCI</span><span class="w"> </span><span class="n">blobs</span><span class="w"> </span><span class="n">to</span><span class="w"> </span><span class="n">SIF</span><span class="w"> </span><span class="n">format</span>
+<span class="n">FATAL</span><span class="o">:</span><span class="w">   </span><span class="n">While</span><span class="w"> </span><span class="n">making</span><span class="w"> </span><span class="n">image</span><span class="w"> </span><span class="n">from</span><span class="w"> </span><span class="n">oci</span><span class="w"> </span><span class="n">registry</span><span class="o">:</span><span class="w"> </span><span class="k">while</span><span class="w"> </span><span class="n">building</span><span class="w"> </span><span class="n">SIF</span><span class="w"> </span><span class="n">from</span><span class="w"> </span><span class="n">layers</span><span class="o">:</span><span class="w"> </span><span class="n">unable</span><span class="w"> </span><span class="n">to</span><span class="w"> </span><span class="n">create</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">build</span><span class="o">:</span><span class="w"> </span><span class="k">while</span><span class="w"> </span><span class="n">searching</span><span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="n">mksquashfs</span><span class="o">:</span><span class="w"> </span><span class="n">exec</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;mksquashfs&quot;</span><span class="o">:</span><span class="w"> </span><span class="n">executable</span><span class="w"> </span><span class="n">file</span><span class="w"> </span><span class="n">not</span><span class="w"> </span><span class="n">found</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="n">$PATH</span>
 </code></pre></div>
 
 <p>これは、以下のように、<code>/usr/sbin</code> にパスを通すことで回避できます。 </p>
 <p>実行例）</p>
-<div class="codehilite"><pre><span></span><code><span class="p">[</span><span class="n">username</span><span class="err">@</span><span class="n">g0001</span> <span class="o">~</span><span class="p">]</span><span class="o">$</span> <span class="k">export</span> <span class="n">PATH</span><span class="o">=</span><span class="s2">&quot;$PATH:/usr/sbin&quot;</span>
-<span class="p">[</span><span class="n">username</span><span class="err">@</span><span class="n">g0001</span> <span class="o">~</span><span class="p">]</span><span class="o">$</span> <span class="n">module</span> <span class="nb">load</span> <span class="n">singularitypro</span>
-<span class="p">[</span><span class="n">username</span><span class="err">@</span><span class="n">g0001</span> <span class="o">~</span><span class="p">]</span><span class="o">$</span> <span class="n">singularity</span> <span class="n">run</span> <span class="o">--</span><span class="n">nv</span> <span class="n">docker</span><span class="p">:</span><span class="o">//</span><span class="n">caffe2ai</span><span class="o">/</span><span class="n">caffe2</span><span class="p">:</span><span class="n">latest</span>
+<div class="codehilite"><pre><span></span><code><span class="p">[</span><span class="n">username</span><span class="err">@</span><span class="n">g0001</span><span class="w"> </span><span class="o">~</span><span class="p">]</span><span class="o">$</span><span class="w"> </span><span class="k">export</span><span class="w"> </span><span class="n">PATH</span><span class="o">=</span><span class="s2">&quot;$PATH:/usr/sbin&quot;</span>
+<span class="p">[</span><span class="n">username</span><span class="err">@</span><span class="n">g0001</span><span class="w"> </span><span class="o">~</span><span class="p">]</span><span class="o">$</span><span class="w"> </span><span class="n">module</span><span class="w"> </span><span class="nb">load</span><span class="w"> </span><span class="n">singularitypro</span>
+<span class="p">[</span><span class="n">username</span><span class="err">@</span><span class="n">g0001</span><span class="w"> </span><span class="o">~</span><span class="p">]</span><span class="o">$</span><span class="w"> </span><span class="n">singularity</span><span class="w"> </span><span class="n">run</span><span class="w"> </span><span class="o">--</span><span class="n">nv</span><span class="w"> </span><span class="n">docker</span><span class="p">:</span><span class="o">//</span><span class="n">caffe2ai</span><span class="o">/</span><span class="n">caffe2</span><span class="p">:</span><span class="n">latest</span>
 </code></pre></div>
 
 <h2 id="q-insufficient-disk-space-for-singularity-build">Q. 計算ノードでsingularity build/pullすると容量不足でエラーになる</h2>
 <p>singularity build/pull コマンドは一時ファイルの作成場所として <code>/tmp</code> を使用します。
 大きなコンテナを計算ノード上でsingularity build/pullする際に <code>/tmp</code> の容量が足りずエラーになる場合があります。</p>
-<div class="codehilite"><pre><span></span><code><span class="n">FATAL</span><span class="o">:</span>   <span class="n">While</span> <span class="n">making</span> <span class="n">image</span> <span class="n">from</span> <span class="n">oci</span> <span class="n">registry</span><span class="o">:</span> <span class="n">error</span> <span class="n">fetching</span> <span class="n">image</span> <span class="n">to</span> <span class="n">cache</span><span class="o">:</span> 
-<span class="k">while</span> <span class="n">building</span> <span class="n">SIF</span> <span class="n">from</span> <span class="n">layers</span><span class="o">:</span> <span class="n">conveyor</span> <span class="n">failed</span> <span class="n">to</span> <span class="kd">get</span><span class="o">:</span> <span class="n">writing</span> <span class="n">blob</span><span class="o">:</span> <span class="n">write</span> 
-<span class="sr">/tmp/0123456789.1.gpu/bundle-temp-0123456789/</span><span class="n">oci</span><span class="o">-</span><span class="n">put</span><span class="o">-</span><span class="n">blob0123456789</span><span class="o">:</span> 
-<span class="n">no</span> <span class="n">space</span> <span class="n">left</span> <span class="n">on</span> <span class="n">device</span>
+<div class="codehilite"><pre><span></span><code><span class="n">FATAL</span><span class="o">:</span><span class="w">   </span><span class="n">While</span><span class="w"> </span><span class="n">making</span><span class="w"> </span><span class="n">image</span><span class="w"> </span><span class="n">from</span><span class="w"> </span><span class="n">oci</span><span class="w"> </span><span class="n">registry</span><span class="o">:</span><span class="w"> </span><span class="n">error</span><span class="w"> </span><span class="n">fetching</span><span class="w"> </span><span class="n">image</span><span class="w"> </span><span class="n">to</span><span class="w"> </span><span class="n">cache</span><span class="o">:</span><span class="w"> </span>
+<span class="k">while</span><span class="w"> </span><span class="n">building</span><span class="w"> </span><span class="n">SIF</span><span class="w"> </span><span class="n">from</span><span class="w"> </span><span class="n">layers</span><span class="o">:</span><span class="w"> </span><span class="n">conveyor</span><span class="w"> </span><span class="n">failed</span><span class="w"> </span><span class="n">to</span><span class="w"> </span><span class="kd">get</span><span class="o">:</span><span class="w"> </span><span class="n">writing</span><span class="w"> </span><span class="n">blob</span><span class="o">:</span><span class="w"> </span><span class="n">write</span><span class="w"> </span>
+<span class="sr">/tmp/0123456789.1.gpu/bundle-temp-0123456789/</span><span class="n">oci</span><span class="o">-</span><span class="n">put</span><span class="o">-</span><span class="n">blob0123456789</span><span class="o">:</span><span class="w"> </span>
+<span class="n">no</span><span class="w"> </span><span class="n">space</span><span class="w"> </span><span class="n">left</span><span class="w"> </span><span class="n">on</span><span class="w"> </span><span class="n">device</span>
 </code></pre></div>
 
 <p>容量が足りずエラーになる場合は、次のようにローカルスクラッチを使用するよう<code>SINGULARITY_TMPDIR</code>環境変数を設定してください。</p>
-<div class="codehilite"><pre><span></span><code><span class="o">[</span><span class="n">username@g0001 ~</span><span class="o">]</span><span class="err">$</span><span class="w"> </span><span class="n">SINGULARITY_TMPDIR</span><span class="o">=</span><span class="err">$</span><span class="n">SGE_LOCALDIR</span><span class="w"> </span><span class="n">singularity</span><span class="w"> </span><span class="n">pull</span><span class="w"> </span><span class="nl">docker</span><span class="p">:</span><span class="o">//</span><span class="n">nvcr</span><span class="p">.</span><span class="n">io</span><span class="o">/</span><span class="n">nvidia</span><span class="o">/</span><span class="nl">tensorflow</span><span class="p">:</span><span class="mf">20.12</span><span class="o">-</span><span class="n">tf1</span><span class="o">-</span><span class="n">py3</span><span class="w"></span>
+<div class="codehilite"><pre><span></span><code><span class="o">[</span><span class="n">username@g0001 ~</span><span class="o">]</span><span class="err">$</span><span class="w"> </span><span class="n">SINGULARITY_TMPDIR</span><span class="o">=</span><span class="err">$</span><span class="n">SGE_LOCALDIR</span><span class="w"> </span><span class="n">singularity</span><span class="w"> </span><span class="n">pull</span><span class="w"> </span><span class="nl">docker</span><span class="p">:</span><span class="o">//</span><span class="n">nvcr</span><span class="p">.</span><span class="n">io</span><span class="o">/</span><span class="n">nvidia</span><span class="o">/</span><span class="nl">tensorflow</span><span class="p">:</span><span class="mf">20.12</span><span class="o">-</span><span class="n">tf1</span><span class="o">-</span><span class="n">py3</span>
 </code></pre></div>
 
 <h2 id="q-how-can-i-find-the-job-id">Q. ジョブ ID を調べるには？</h2>
 <p><code>qsub</code> コマンドを使ってバッチジョブを投入した場合は、コマンドがジョブ ID を出力しています。</p>
-<div class="codehilite"><pre><span></span><code><span class="o">[</span><span class="n">username@es1 ~</span><span class="o">]</span><span class="err">$</span><span class="w"> </span><span class="n">qsub</span><span class="w"> </span><span class="o">-</span><span class="n">g</span><span class="w"> </span><span class="n">grpname</span><span class="w"> </span><span class="n">test</span><span class="p">.</span><span class="n">sh</span><span class="w"></span>
-<span class="n">Your</span><span class="w"> </span><span class="n">job</span><span class="w"> </span><span class="mi">1000001</span><span class="w"> </span><span class="p">(</span><span class="ss">&quot;test.sh&quot;</span><span class="p">)</span><span class="w"> </span><span class="n">has</span><span class="w"> </span><span class="n">been</span><span class="w"> </span><span class="n">submitted</span><span class="w"></span>
+<div class="codehilite"><pre><span></span><code><span class="o">[</span><span class="n">username@es1 ~</span><span class="o">]</span><span class="err">$</span><span class="w"> </span><span class="n">qsub</span><span class="w"> </span><span class="o">-</span><span class="n">g</span><span class="w"> </span><span class="n">grpname</span><span class="w"> </span><span class="n">test</span><span class="p">.</span><span class="n">sh</span>
+<span class="n">Your</span><span class="w"> </span><span class="n">job</span><span class="w"> </span><span class="mi">1000001</span><span class="w"> </span><span class="p">(</span><span class="ss">&quot;test.sh&quot;</span><span class="p">)</span><span class="w"> </span><span class="n">has</span><span class="w"> </span><span class="n">been</span><span class="w"> </span><span class="n">submitted</span>
 </code></pre></div>
 
 <p><code>qrsh</code> を使っている場合は、環境変数 JOB_ID の値を見ることで確認できます。この変数は、qsub (バッチジョブ) の場合でも利用可能です。</p>
-<div class="codehilite"><pre><span></span><code><span class="o">[</span><span class="n">username@es1 ~</span><span class="o">]</span><span class="err">$</span><span class="w"> </span><span class="n">qrsh</span><span class="w"> </span><span class="o">-</span><span class="n">g</span><span class="w"> </span><span class="n">grpname</span><span class="w"> </span><span class="o">-</span><span class="n">l</span><span class="w"> </span><span class="n">rt_C</span><span class="p">.</span><span class="n">small</span><span class="o">=</span><span class="mi">1</span><span class="w"> </span><span class="o">-</span><span class="n">l</span><span class="w"> </span><span class="n">h_rt</span><span class="o">=</span><span class="mi">1</span><span class="err">:</span><span class="mi">00</span><span class="err">:</span><span class="mi">00</span><span class="w"></span>
-<span class="o">[</span><span class="n">username@g0001 ~</span><span class="o">]</span><span class="err">$</span><span class="w"> </span><span class="n">echo</span><span class="w"> </span><span class="err">$</span><span class="n">JOB_ID</span><span class="w"></span>
-<span class="mi">1000002</span><span class="w"></span>
-<span class="o">[</span><span class="n">username@g0001 ~</span><span class="o">]</span><span class="err">$</span><span class="w"></span>
+<div class="codehilite"><pre><span></span><code><span class="o">[</span><span class="n">username@es1 ~</span><span class="o">]</span><span class="err">$</span><span class="w"> </span><span class="n">qrsh</span><span class="w"> </span><span class="o">-</span><span class="n">g</span><span class="w"> </span><span class="n">grpname</span><span class="w"> </span><span class="o">-</span><span class="n">l</span><span class="w"> </span><span class="n">rt_C</span><span class="p">.</span><span class="n">small</span><span class="o">=</span><span class="mi">1</span><span class="w"> </span><span class="o">-</span><span class="n">l</span><span class="w"> </span><span class="n">h_rt</span><span class="o">=</span><span class="mi">1</span><span class="err">:</span><span class="mi">00</span><span class="err">:</span><span class="mi">00</span>
+<span class="o">[</span><span class="n">username@g0001 ~</span><span class="o">]</span><span class="err">$</span><span class="w"> </span><span class="n">echo</span><span class="w"> </span><span class="err">$</span><span class="n">JOB_ID</span>
+<span class="mi">1000002</span>
+<span class="o">[</span><span class="n">username@g0001 ~</span><span class="o">]</span><span class="err">$</span>
 </code></pre></div>
 
 <p>すでに投入済みのジョブに付与されているジョブ ID を確認するには、<code>qstat</code> コマンドを使ってください。</p>
 <div class="codehilite"><pre><span></span><code><span class="k">[</span><span class="c">username@es1 ~</span><span class="k">]</span><span class="c">$ qstat</span>
 <span class="c">job</span><span class="nb">-</span><span class="c">ID     prior   name       user         state submit/start at     queue                          jclass                         slots ja</span><span class="nb">-</span><span class="c">task</span><span class="nb">-</span><span class="c">ID</span>
-<span class="nb">------------------------------------------------------------------------------------------------------------------------------------------------</span><span class="c"></span>
+<span class="nb">------------------------------------------------------------------------------------------------------------------------------------------------</span>
 <span class="c">   1000003 0</span><span class="nt">.</span><span class="c">00000 test</span><span class="nt">.</span><span class="c">sh username   qw    08/01/2020 13:05:30</span>
 </code></pre></div>
 
 <p>対象のジョブがすでに完了している場合は、<code>qacct -j</code> を使ってジョブ ID を調べます。<code>-b</code> や <code>-e</code> オプションが、対象範囲を限定するために役に立ちます。qacct(1) man ページ (インタラクティブノードで <code>man qacct</code>) で使い方を確認できます。下記の例は、完了したジョブのうち、2020年 9月 1日 以降に開始されていたものを出力しています。<code>jobnumber</code> がジョブ ID です。</p>
-<div class="codehilite"><pre><span></span><code><span class="o">[</span><span class="n">username@es1 ~</span><span class="o">]</span><span class="err">$</span><span class="w"> </span><span class="n">qacct</span><span class="w"> </span><span class="o">-</span><span class="n">j</span><span class="w"> </span><span class="o">-</span><span class="n">b</span><span class="w"> </span><span class="mi">202009010000</span><span class="w"></span>
-<span class="o">==============================================================</span><span class="w"></span>
-<span class="n">qname</span><span class="w">        </span><span class="n">gpu</span><span class="w"></span>
-<span class="n">hostname</span><span class="w">     </span><span class="n">g0001</span><span class="w"></span>
-<span class="k">group</span><span class="w">        </span><span class="n">grpname</span><span class="w"></span>
-<span class="n">owner</span><span class="w">        </span><span class="n">username</span><span class="w"></span>
+<div class="codehilite"><pre><span></span><code><span class="o">[</span><span class="n">username@es1 ~</span><span class="o">]</span><span class="err">$</span><span class="w"> </span><span class="n">qacct</span><span class="w"> </span><span class="o">-</span><span class="n">j</span><span class="w"> </span><span class="o">-</span><span class="n">b</span><span class="w"> </span><span class="mi">202009010000</span>
+<span class="o">==============================================================</span>
+<span class="n">qname</span><span class="w">        </span><span class="n">gpu</span>
+<span class="n">hostname</span><span class="w">     </span><span class="n">g0001</span>
+<span class="k">group</span><span class="w">        </span><span class="n">grpname</span>
+<span class="n">owner</span><span class="w">        </span><span class="n">username</span>
 
-<span class="err">:</span><span class="w"></span>
+<span class="err">:</span>
 
-<span class="n">jobname</span><span class="w">      </span><span class="n">QRLOGIN</span><span class="w"></span>
-<span class="n">jobnumber</span><span class="w">    </span><span class="mi">1000010</span><span class="w"></span>
+<span class="n">jobname</span><span class="w">      </span><span class="n">QRLOGIN</span>
+<span class="n">jobnumber</span><span class="w">    </span><span class="mi">1000010</span>
 
-<span class="err">:</span><span class="w"></span>
+<span class="err">:</span>
 
-<span class="n">qsub_time</span><span class="w">    </span><span class="mi">09</span><span class="o">/</span><span class="mi">01</span><span class="o">/</span><span class="mi">2020</span><span class="w"> </span><span class="mi">16</span><span class="err">:</span><span class="mi">41</span><span class="err">:</span><span class="mf">37.736</span><span class="w"></span>
-<span class="n">start_time</span><span class="w">   </span><span class="mi">09</span><span class="o">/</span><span class="mi">01</span><span class="o">/</span><span class="mi">2020</span><span class="w"> </span><span class="mi">16</span><span class="err">:</span><span class="mi">41</span><span class="err">:</span><span class="mf">47.094</span><span class="w"></span>
-<span class="n">end_time</span><span class="w">     </span><span class="mi">09</span><span class="o">/</span><span class="mi">01</span><span class="o">/</span><span class="mi">2020</span><span class="w"> </span><span class="mi">16</span><span class="err">:</span><span class="mi">45</span><span class="err">:</span><span class="mf">46.296</span><span class="w"></span>
+<span class="n">qsub_time</span><span class="w">    </span><span class="mi">09</span><span class="o">/</span><span class="mi">01</span><span class="o">/</span><span class="mi">2020</span><span class="w"> </span><span class="mi">16</span><span class="err">:</span><span class="mi">41</span><span class="err">:</span><span class="mf">37.736</span>
+<span class="n">start_time</span><span class="w">   </span><span class="mi">09</span><span class="o">/</span><span class="mi">01</span><span class="o">/</span><span class="mi">2020</span><span class="w"> </span><span class="mi">16</span><span class="err">:</span><span class="mi">41</span><span class="err">:</span><span class="mf">47.094</span>
+<span class="n">end_time</span><span class="w">     </span><span class="mi">09</span><span class="o">/</span><span class="mi">01</span><span class="o">/</span><span class="mi">2020</span><span class="w"> </span><span class="mi">16</span><span class="err">:</span><span class="mi">45</span><span class="err">:</span><span class="mf">46.296</span>
 
-<span class="err">:</span><span class="w"></span>
+<span class="err">:</span>
 
-<span class="o">==============================================================</span><span class="w"></span>
-<span class="n">qname</span><span class="w">        </span><span class="n">gpu</span><span class="w"></span>
-<span class="n">hostname</span><span class="w">     </span><span class="n">g0001</span><span class="w"></span>
-<span class="k">group</span><span class="w">        </span><span class="n">grpname</span><span class="w"></span>
-<span class="n">owner</span><span class="w">        </span><span class="n">username</span><span class="w"></span>
+<span class="o">==============================================================</span>
+<span class="n">qname</span><span class="w">        </span><span class="n">gpu</span>
+<span class="n">hostname</span><span class="w">     </span><span class="n">g0001</span>
+<span class="k">group</span><span class="w">        </span><span class="n">grpname</span>
+<span class="n">owner</span><span class="w">        </span><span class="n">username</span>
 
-<span class="err">:</span><span class="w"></span>
+<span class="err">:</span>
 
-<span class="n">jobname</span><span class="w">      </span><span class="n">testjob</span><span class="w"></span>
-<span class="n">jobnumber</span><span class="w">    </span><span class="mi">1000120</span><span class="w"></span>
+<span class="n">jobname</span><span class="w">      </span><span class="n">testjob</span>
+<span class="n">jobnumber</span><span class="w">    </span><span class="mi">1000120</span>
 
-<span class="err">:</span><span class="w"></span>
+<span class="err">:</span>
 
-<span class="n">qsub_time</span><span class="w">    </span><span class="mi">09</span><span class="o">/</span><span class="mi">07</span><span class="o">/</span><span class="mi">2020</span><span class="w"> </span><span class="mi">15</span><span class="err">:</span><span class="mi">35</span><span class="err">:</span><span class="mf">04.088</span><span class="w"></span>
-<span class="n">start_time</span><span class="w">   </span><span class="mi">09</span><span class="o">/</span><span class="mi">07</span><span class="o">/</span><span class="mi">2020</span><span class="w"> </span><span class="mi">15</span><span class="err">:</span><span class="mi">43</span><span class="err">:</span><span class="mf">11.513</span><span class="w"></span>
-<span class="n">end_time</span><span class="w">     </span><span class="mi">09</span><span class="o">/</span><span class="mi">07</span><span class="o">/</span><span class="mi">2020</span><span class="w"> </span><span class="mi">15</span><span class="err">:</span><span class="mi">50</span><span class="err">:</span><span class="mf">11.534</span><span class="w"></span>
+<span class="n">qsub_time</span><span class="w">    </span><span class="mi">09</span><span class="o">/</span><span class="mi">07</span><span class="o">/</span><span class="mi">2020</span><span class="w"> </span><span class="mi">15</span><span class="err">:</span><span class="mi">35</span><span class="err">:</span><span class="mf">04.088</span>
+<span class="n">start_time</span><span class="w">   </span><span class="mi">09</span><span class="o">/</span><span class="mi">07</span><span class="o">/</span><span class="mi">2020</span><span class="w"> </span><span class="mi">15</span><span class="err">:</span><span class="mi">43</span><span class="err">:</span><span class="mf">11.513</span>
+<span class="n">end_time</span><span class="w">     </span><span class="mi">09</span><span class="o">/</span><span class="mi">07</span><span class="o">/</span><span class="mi">2020</span><span class="w"> </span><span class="mi">15</span><span class="err">:</span><span class="mi">50</span><span class="err">:</span><span class="mf">11.534</span>
 
-<span class="err">:</span><span class="w"></span>
+<span class="err">:</span>
 </code></pre></div>
 
 <h2 id="q_3">Q. 割り当てられた全計算ノードでコマンドを並列に実行したい</h2>
 <p>ABCIでは、割り当てられた全計算ノードで並列にLinuxコマンドを実行する<code>ugedsh</code>コマンドを用意しています。
 <code>ugedsh</code>コマンドの引数で指定したコマンドは、各ノードで1回ずつ実行されます。</p>
 <p>実行例) </p>
-<div class="codehilite"><pre><span></span><code><span class="o">[</span><span class="n">username@es1 ~</span><span class="o">]</span><span class="err">$</span><span class="w"> </span><span class="n">qrsh</span><span class="w"> </span><span class="o">-</span><span class="n">g</span><span class="w"> </span><span class="n">grpname</span><span class="w"> </span><span class="o">-</span><span class="n">l</span><span class="w"> </span><span class="n">rt_F</span><span class="o">=</span><span class="mi">2</span><span class="w"></span>
-<span class="o">[</span><span class="n">username@g0001 ~</span><span class="o">]</span><span class="err">$</span><span class="w"> </span><span class="n">ugedsh</span><span class="w"> </span><span class="n">hostname</span><span class="w"></span>
-<span class="nl">g0001</span><span class="p">:</span><span class="w"> </span><span class="n">g0001</span><span class="p">.</span><span class="n">abci</span><span class="p">.</span><span class="k">local</span><span class="w"></span>
-<span class="nl">g0002</span><span class="p">:</span><span class="w"> </span><span class="n">g0002</span><span class="p">.</span><span class="n">abci</span><span class="p">.</span><span class="k">local</span><span class="w"></span>
+<div class="codehilite"><pre><span></span><code><span class="o">[</span><span class="n">username@es1 ~</span><span class="o">]</span><span class="err">$</span><span class="w"> </span><span class="n">qrsh</span><span class="w"> </span><span class="o">-</span><span class="n">g</span><span class="w"> </span><span class="n">grpname</span><span class="w"> </span><span class="o">-</span><span class="n">l</span><span class="w"> </span><span class="n">rt_F</span><span class="o">=</span><span class="mi">2</span>
+<span class="o">[</span><span class="n">username@g0001 ~</span><span class="o">]</span><span class="err">$</span><span class="w"> </span><span class="n">ugedsh</span><span class="w"> </span><span class="n">hostname</span>
+<span class="nl">g0001</span><span class="p">:</span><span class="w"> </span><span class="n">g0001</span><span class="p">.</span><span class="n">abci</span><span class="p">.</span><span class="k">local</span>
+<span class="nl">g0002</span><span class="p">:</span><span class="w"> </span><span class="n">g0002</span><span class="p">.</span><span class="n">abci</span><span class="p">.</span><span class="k">local</span>
 </code></pre></div>
 
 <h2 id="q-what-is-the-difference-between-compute-node-a-and-compute-node-v">Q. 計算ノード(A)と計算ノード(V)の違いが知りたい</h2>
@@ -1440,27 +1440,27 @@ ABCIシステム利用環境の<a href="../getting-started/#general-method">SSH�
 <table>
 <thead>
 <tr>
-<th align="left">資源タイプ</th>
-<th align="left">資源タイプ名</th>
-<th align="left">割り当て物理CPUコア数</th>
-<th align="left">割り当てGPU数</th>
-<th align="left">メモリ(GiB)</th>
+<th style="text-align: left;">資源タイプ</th>
+<th style="text-align: left;">資源タイプ名</th>
+<th style="text-align: left;">割り当て物理CPUコア数</th>
+<th style="text-align: left;">割り当てGPU数</th>
+<th style="text-align: left;">メモリ(GiB)</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td align="left">Full</td>
-<td align="left">rt_AF</td>
-<td align="left">72</td>
-<td align="left">8</td>
-<td align="left">480</td>
+<td style="text-align: left;">Full</td>
+<td style="text-align: left;">rt_AF</td>
+<td style="text-align: left;">72</td>
+<td style="text-align: left;">8</td>
+<td style="text-align: left;">480</td>
 </tr>
 <tr>
-<td align="left">AG.small</td>
-<td align="left">rt_AG.small</td>
-<td align="left">9</td>
-<td align="left">1</td>
-<td align="left">60</td>
+<td style="text-align: left;">AG.small</td>
+<td style="text-align: left;">rt_AG.small</td>
+<td style="text-align: left;">9</td>
+<td style="text-align: left;">1</td>
+<td style="text-align: left;">60</td>
 </tr>
 </tbody>
 </table>
@@ -1471,24 +1471,24 @@ ABCIシステム利用環境の<a href="../getting-started/#general-method">SSH�
 <table>
 <thead>
 <tr>
-<th align="left"><a href="../job-execution/#available-resource-types">資源タイプ名</a><br><a href="../job-execution/#execution-priority">実行優先度</a></th>
-<th align="left">On-demandおよびSpotサービス<br>実行優先度: -500(既定)<br>(ポイント/時間)</th>
-<th align="left">On-demandおよびSpotサービス<br>実行優先度: -400<br>(ポイント/時間)</th>
-<th align="left">Reservedサービス<br>(ポイント/日)</th>
+<th style="text-align: left;"><a href="../job-execution/#available-resource-types">資源タイプ名</a><br><a href="../job-execution/#execution-priority">実行優先度</a></th>
+<th style="text-align: left;">On-demandおよびSpotサービス<br>実行優先度: -500(既定)<br>(ポイント/時間)</th>
+<th style="text-align: left;">On-demandおよびSpotサービス<br>実行優先度: -400<br>(ポイント/時間)</th>
+<th style="text-align: left;">Reservedサービス<br>(ポイント/日)</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td align="left">rt_AF</td>
-<td align="left">3.0</td>
-<td align="left">4.5</td>
-<td align="left">108</td>
+<td style="text-align: left;">rt_AF</td>
+<td style="text-align: left;">3.0</td>
+<td style="text-align: left;">4.5</td>
+<td style="text-align: left;">108</td>
 </tr>
 <tr>
-<td align="left">rt_AG.small</td>
-<td align="left">0.5</td>
-<td align="left">0.75</td>
-<td align="left">NA</td>
+<td style="text-align: left;">rt_AG.small</td>
+<td style="text-align: left;">0.5</td>
+<td style="text-align: left;">0.75</td>
+<td style="text-align: left;">NA</td>
 </tr>
 </tbody>
 </table>
@@ -1497,18 +1497,18 @@ ABCIシステム利用環境の<a href="../getting-started/#general-method">SSH�
 <table>
 <thead>
 <tr>
-<th align="left">項目</th>
-<th align="left">OS</th>
+<th style="text-align: left;">項目</th>
+<th style="text-align: left;">OS</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td align="left">計算ノード(A)</td>
-<td align="left">Red Hat Enterprise Linux 8.2</td>
+<td style="text-align: left;">計算ノード(A)</td>
+<td style="text-align: left;">Red Hat Enterprise Linux 8.2</td>
 </tr>
 <tr>
-<td align="left">計算ノード(V)</td>
-<td align="left">Rocky Linux 8.6</td>
+<td style="text-align: left;">計算ノード(V)</td>
+<td style="text-align: left;">Rocky Linux 8.6</td>
 </tr>
 </tbody>
 </table>
@@ -1529,36 +1529,36 @@ ABCIシステム利用環境の<a href="../getting-started/#general-method">SSH�
 <table>
 <thead>
 <tr>
-<th align="left"></th>
-<th align="left">インタラクティブノード(V)</th>
-<th align="left">インタラクティブノード(A)</th>
+<th style="text-align: left;"></th>
+<th style="text-align: left;">インタラクティブノード(V)</th>
+<th style="text-align: left;">インタラクティブノード(A)</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td align="left">利用者がログインできるか?</td>
-<td align="left">Yes</td>
-<td align="left">Yes</td>
+<td style="text-align: left;">利用者がログインできるか?</td>
+<td style="text-align: left;">Yes</td>
+<td style="text-align: left;">Yes</td>
 </tr>
 <tr>
-<td align="left">計算ノード(V)向けのプログラム開発が可能か?</td>
-<td align="left">Yes</td>
-<td align="left">No</td>
+<td style="text-align: left;">計算ノード(V)向けのプログラム開発が可能か?</td>
+<td style="text-align: left;">Yes</td>
+<td style="text-align: left;">No</td>
 </tr>
 <tr>
-<td align="left">計算ノード(A)向けのプログラム開発が可能か?</td>
-<td align="left">No</td>
-<td align="left">Yes</td>
+<td style="text-align: left;">計算ノード(A)向けのプログラム開発が可能か?</td>
+<td style="text-align: left;">No</td>
+<td style="text-align: left;">Yes</td>
 </tr>
 <tr>
-<td align="left">計算ノード(V)向けのジョブ投入が可能か?</td>
-<td align="left">Yes</td>
-<td align="left">Yes</td>
+<td style="text-align: left;">計算ノード(V)向けのジョブ投入が可能か?</td>
+<td style="text-align: left;">Yes</td>
+<td style="text-align: left;">Yes</td>
 </tr>
 <tr>
-<td align="left">計算ノード(A)向けのジョブ投入が可能か?</td>
-<td align="left">Yes</td>
-<td align="left">Yes</td>
+<td style="text-align: left;">計算ノード(A)向けのジョブ投入が可能か?</td>
+<td style="text-align: left;">Yes</td>
+<td style="text-align: left;">Yes</td>
 </tr>
 </tbody>
 </table>
@@ -1605,13 +1605,13 @@ ABCIシステム利用環境の<a href="../getting-started/#general-method">SSH�
 </table>
 <p>以下は2021年度版Environment Modulesを利用する例です。</p>
 <p>sh, bashの場合:</p>
-<div class="codehilite"><pre><span></span><code><span class="k">export</span> <span class="n">MODULE_HOME</span><span class="o">=/</span><span class="n">apps</span><span class="o">/</span><span class="n">modules</span><span class="o">-</span><span class="n">abci</span><span class="o">-</span><span class="mf">2.0</span><span class="o">-</span><span class="mi">2021</span>
-<span class="o">.</span> <span class="o">$</span><span class="p">{</span><span class="n">MODULE_HOME</span><span class="p">}</span><span class="o">/</span><span class="n">etc</span><span class="o">/</span><span class="n">profile</span><span class="o">.</span><span class="n">d</span><span class="o">/</span><span class="n">modules</span><span class="o">.</span><span class="n">sh</span>
+<div class="codehilite"><pre><span></span><code><span class="k">export</span><span class="w"> </span><span class="n">MODULE_HOME</span><span class="o">=/</span><span class="n">apps</span><span class="o">/</span><span class="n">modules</span><span class="o">-</span><span class="n">abci</span><span class="o">-</span><span class="mf">2.0</span><span class="o">-</span><span class="mi">2021</span>
+<span class="o">.</span><span class="w"> </span><span class="o">$</span><span class="p">{</span><span class="n">MODULE_HOME</span><span class="p">}</span><span class="o">/</span><span class="n">etc</span><span class="o">/</span><span class="n">profile</span><span class="o">.</span><span class="n">d</span><span class="o">/</span><span class="n">modules</span><span class="o">.</span><span class="n">sh</span>
 </code></pre></div>
 
 <p>csh, tcshの場合:</p>
-<div class="codehilite"><pre><span></span><code>setenv MODULE_HOME /apps/modules-abci-2.0-2021
-source <span class="cp">${</span><span class="n">MODULE_HOME</span><span class="cp">}</span>/etc/profile.d/modules.csh
+<div class="codehilite"><pre><span></span><code>setenv<span class="w"> </span>MODULE_HOME<span class="w"> </span>/apps/modules-abci-2.0-2021
+source<span class="w"> </span><span class="cp">${</span><span class="n">MODULE_HOME</span><span class="cp">}</span>/etc/profile.d/modules.csh
 </code></pre></div>
 
 <h2 id="q-how-to-reduce-inode-usage">Q. inodeの使用量を削減したい</h2>

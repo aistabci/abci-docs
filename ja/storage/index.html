@@ -16,7 +16,7 @@
         <link rel="canonical" href="https://docs.abci.ai/ja/storage/">
       
       <link rel="icon" href="../img/favicon.png">
-      <meta name="generator" content="mkdocs-1.1.2, mkdocs-material-7.1.3">
+      <meta name="generator" content="mkdocs-1.2.4, mkdocs-material-7.1.3">
     
     
       
@@ -1309,28 +1309,28 @@
 </div>
 <h4 id="how-to-set-up-file-striping">ストライプ機能の設定方法</h4>
 <p>ストライプ機能の設定は、<code>lfs setstripe</code>コマンドで行います。 <code>lfs setstripe</code>コマンドでは、データを分散させるストライプパターン（ストライプサイズや範囲）を指定することができます。</p>
-<div class="codehilite"><pre><span></span><code><span class="err">$</span><span class="w"> </span><span class="n">lfs</span><span class="w"> </span><span class="n">setstripe</span><span class="w">  </span><span class="o">[</span><span class="n">options</span><span class="o">]</span><span class="w"> </span><span class="o">&lt;</span><span class="n">dirname</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="n">filename</span><span class="o">&gt;</span><span class="w"></span>
+<div class="codehilite"><pre><span></span><code><span class="err">$</span><span class="w"> </span><span class="n">lfs</span><span class="w"> </span><span class="n">setstripe</span><span class="w">  </span><span class="o">[</span><span class="n">options</span><span class="o">]</span><span class="w"> </span><span class="o">&lt;</span><span class="n">dirname</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="n">filename</span><span class="o">&gt;</span>
 </code></pre></div>
 
 <table>
 <thead>
 <tr>
-<th align="center">オプション</th>
-<th align="left">説明</th>
+<th style="text-align: center;">オプション</th>
+<th style="text-align: left;">説明</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td align="center">-S</td>
-<td align="left">ストライプサイズを設定。-S #k, -S #m, -S #gとすることで、サイズをKiB,MiB,GiBで設定可能。</td>
+<td style="text-align: center;">-S</td>
+<td style="text-align: left;">ストライプサイズを設定。-S #k, -S #m, -S #gとすることで、サイズをKiB,MiB,GiBで設定可能。</td>
 </tr>
 <tr>
-<td align="center">-i</td>
-<td align="left">ファイル書き込みを開始するOSTインデックスを指定。 -1とした場合、ファイル書き込みを開始するOSTはランダム。本システムでは、OSTインデックスは 0 から 17 を指定可能です。</td>
+<td style="text-align: center;">-i</td>
+<td style="text-align: left;">ファイル書き込みを開始するOSTインデックスを指定。 -1とした場合、ファイル書き込みを開始するOSTはランダム。本システムでは、OSTインデックスは 0 から 17 を指定可能です。</td>
 </tr>
 <tr>
-<td align="center">-c</td>
-<td align="left">ストライプカウントを設定。 -1とした場合、すべてのOSTに書き込みを実行。</td>
+<td style="text-align: center;">-c</td>
+<td style="text-align: left;">ストライプカウントを設定。 -1とした場合、すべてのOSTに書き込みを実行。</td>
 </tr>
 </tbody>
 </table>
@@ -1339,40 +1339,40 @@
 <p>OSTインデックスは、<code>lfs df</code>コマンドの OST:#の値 や<code>lfs osts</code>コマンドの左端の値で確認可能です。</p>
 </div>
 <p>例）ストライプパターンを持った新規ファイルの作成</p>
-<div class="codehilite"><pre><span></span><code><span class="o">[</span><span class="n">username@es1 work</span><span class="o">]</span><span class="err">$</span><span class="w"> </span><span class="n">lfs</span><span class="w"> </span><span class="n">setstripe</span><span class="w"> </span><span class="o">-</span><span class="n">S</span><span class="w"> </span><span class="mi">1</span><span class="n">m</span><span class="w"> </span><span class="o">-</span><span class="n">i</span><span class="w"> </span><span class="mi">10</span><span class="w"> </span><span class="o">-</span><span class="n">c</span><span class="w"> </span><span class="mi">4</span><span class="w"> </span><span class="n">stripe</span><span class="o">-</span><span class="k">file</span><span class="w"></span>
-<span class="o">[</span><span class="n">username@es1 work</span><span class="o">]</span><span class="err">$</span><span class="w"> </span><span class="n">ls</span><span class="w"></span>
-<span class="n">stripe</span><span class="o">-</span><span class="k">file</span><span class="w"></span>
+<div class="codehilite"><pre><span></span><code><span class="o">[</span><span class="n">username@es1 work</span><span class="o">]</span><span class="err">$</span><span class="w"> </span><span class="n">lfs</span><span class="w"> </span><span class="n">setstripe</span><span class="w"> </span><span class="o">-</span><span class="n">S</span><span class="w"> </span><span class="mi">1</span><span class="n">m</span><span class="w"> </span><span class="o">-</span><span class="n">i</span><span class="w"> </span><span class="mi">10</span><span class="w"> </span><span class="o">-</span><span class="n">c</span><span class="w"> </span><span class="mi">4</span><span class="w"> </span><span class="n">stripe</span><span class="o">-</span><span class="k">file</span>
+<span class="o">[</span><span class="n">username@es1 work</span><span class="o">]</span><span class="err">$</span><span class="w"> </span><span class="n">ls</span>
+<span class="n">stripe</span><span class="o">-</span><span class="k">file</span>
 </code></pre></div>
 
 <p>例) ディレクトリに対して、ストライプパターンを設定</p>
-<div class="codehilite"><pre><span></span><code><span class="o">[</span><span class="n">username@es1 work</span><span class="o">]</span><span class="err">$</span><span class="w"> </span><span class="n">mkdir</span><span class="w"> </span><span class="n">stripe</span><span class="o">-</span><span class="n">dir</span><span class="w"></span>
-<span class="o">[</span><span class="n">username@es1 work</span><span class="o">]</span><span class="err">$</span><span class="w"> </span><span class="n">lfs</span><span class="w"> </span><span class="n">setstripe</span><span class="w"> </span><span class="o">-</span><span class="n">S</span><span class="w"> </span><span class="mi">1</span><span class="n">m</span><span class="w"> </span><span class="o">-</span><span class="n">i</span><span class="w"> </span><span class="mi">10</span><span class="w"> </span><span class="o">-</span><span class="n">c</span><span class="w"> </span><span class="mi">4</span><span class="w"> </span><span class="n">stripe</span><span class="o">-</span><span class="n">dir</span><span class="w"></span>
+<div class="codehilite"><pre><span></span><code><span class="o">[</span><span class="n">username@es1 work</span><span class="o">]</span><span class="err">$</span><span class="w"> </span><span class="n">mkdir</span><span class="w"> </span><span class="n">stripe</span><span class="o">-</span><span class="n">dir</span>
+<span class="o">[</span><span class="n">username@es1 work</span><span class="o">]</span><span class="err">$</span><span class="w"> </span><span class="n">lfs</span><span class="w"> </span><span class="n">setstripe</span><span class="w"> </span><span class="o">-</span><span class="n">S</span><span class="w"> </span><span class="mi">1</span><span class="n">m</span><span class="w"> </span><span class="o">-</span><span class="n">i</span><span class="w"> </span><span class="mi">10</span><span class="w"> </span><span class="o">-</span><span class="n">c</span><span class="w"> </span><span class="mi">4</span><span class="w"> </span><span class="n">stripe</span><span class="o">-</span><span class="n">dir</span>
 </code></pre></div>
 
 <h4 id="how-to-display-file-striping-settings">ストライプ機能の表示方法</h4>
 <p>ファイルやディレクトリのストライプパターンの情報を表示する場合は、<code>lfs getstripe</code>コマンドで行います。</p>
-<div class="codehilite"><pre><span></span><code>$ lfs getstripe &lt;dirname <span class="p">|</span> filename&gt;
+<div class="codehilite"><pre><span></span><code>$<span class="w"> </span>lfs<span class="w"> </span>getstripe<span class="w"> </span>&lt;dirname<span class="w"> </span><span class="p">|</span><span class="w"> </span>filename&gt;
 </code></pre></div>
 
 <p>例) ファイルの設定表示例</p>
-<div class="codehilite"><pre><span></span><code><span class="o">[</span><span class="n">username@es1 work</span><span class="o">]</span><span class="err">$</span><span class="w"> </span><span class="n">lfs</span><span class="w"> </span><span class="n">getstripe</span><span class="w"> </span><span class="n">stripe</span><span class="o">-</span><span class="k">file</span><span class="w"></span>
-<span class="n">stripe</span><span class="o">-</span><span class="k">file</span><span class="w"></span>
-<span class="nl">lmm_stripe_count</span><span class="p">:</span><span class="w">  </span><span class="mi">4</span><span class="w"></span>
-<span class="nl">lmm_stripe_size</span><span class="p">:</span><span class="w">   </span><span class="mi">1048576</span><span class="w"></span>
-<span class="nl">lmm_pattern</span><span class="p">:</span><span class="w">       </span><span class="mi">1</span><span class="w"></span>
-<span class="nl">lmm_layout_gen</span><span class="p">:</span><span class="w">    </span><span class="mi">0</span><span class="w"></span>
-<span class="nl">lmm_stripe_offset</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="w"></span>
-<span class="w">        </span><span class="n">obdidx</span><span class="w">           </span><span class="n">objid</span><span class="w">           </span><span class="n">objid</span><span class="w">           </span><span class="k">group</span><span class="w"></span>
-<span class="w">            </span><span class="mi">10</span><span class="w">         </span><span class="mi">3024641</span><span class="w">       </span><span class="mh">0x2e2701</span><span class="w">                </span><span class="mi">0</span><span class="w"></span>
-<span class="w">            </span><span class="mi">11</span><span class="w">         </span><span class="mi">3026034</span><span class="w">       </span><span class="mh">0x2e2c72</span><span class="w">                </span><span class="mi">0</span><span class="w"></span>
-<span class="w">            </span><span class="mi">12</span><span class="w">         </span><span class="mi">3021952</span><span class="w">       </span><span class="mh">0x2e1c80</span><span class="w">                </span><span class="mi">0</span><span class="w"></span>
-<span class="w">            </span><span class="mi">13</span><span class="w">         </span><span class="mi">3019616</span><span class="w">       </span><span class="mh">0x2e1360</span><span class="w">                </span><span class="mi">0</span><span class="w"></span>
+<div class="codehilite"><pre><span></span><code><span class="o">[</span><span class="n">username@es1 work</span><span class="o">]</span><span class="err">$</span><span class="w"> </span><span class="n">lfs</span><span class="w"> </span><span class="n">getstripe</span><span class="w"> </span><span class="n">stripe</span><span class="o">-</span><span class="k">file</span>
+<span class="n">stripe</span><span class="o">-</span><span class="k">file</span>
+<span class="nl">lmm_stripe_count</span><span class="p">:</span><span class="w">  </span><span class="mi">4</span>
+<span class="nl">lmm_stripe_size</span><span class="p">:</span><span class="w">   </span><span class="mi">1048576</span>
+<span class="nl">lmm_pattern</span><span class="p">:</span><span class="w">       </span><span class="mi">1</span>
+<span class="nl">lmm_layout_gen</span><span class="p">:</span><span class="w">    </span><span class="mi">0</span>
+<span class="nl">lmm_stripe_offset</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span>
+<span class="w">        </span><span class="n">obdidx</span><span class="w">           </span><span class="n">objid</span><span class="w">           </span><span class="n">objid</span><span class="w">           </span><span class="k">group</span>
+<span class="w">            </span><span class="mi">10</span><span class="w">         </span><span class="mi">3024641</span><span class="w">       </span><span class="mh">0x2e2701</span><span class="w">                </span><span class="mi">0</span>
+<span class="w">            </span><span class="mi">11</span><span class="w">         </span><span class="mi">3026034</span><span class="w">       </span><span class="mh">0x2e2c72</span><span class="w">                </span><span class="mi">0</span>
+<span class="w">            </span><span class="mi">12</span><span class="w">         </span><span class="mi">3021952</span><span class="w">       </span><span class="mh">0x2e1c80</span><span class="w">                </span><span class="mi">0</span>
+<span class="w">            </span><span class="mi">13</span><span class="w">         </span><span class="mi">3019616</span><span class="w">       </span><span class="mh">0x2e1360</span><span class="w">                </span><span class="mi">0</span>
 </code></pre></div>
 
 <p>例) ディレクトリの設定表示例</p>
-<div class="codehilite"><pre><span></span><code><span class="o">[</span><span class="n">username@es1 work</span><span class="o">]</span><span class="err">$</span><span class="w"> </span><span class="n">lfs</span><span class="w"> </span><span class="n">getstripe</span><span class="w"> </span><span class="n">stripe</span><span class="o">-</span><span class="n">dir</span><span class="w"></span>
-<span class="n">stripe</span><span class="o">-</span><span class="n">dir</span><span class="w"></span>
-<span class="nl">stripe_count</span><span class="p">:</span><span class="w">  </span><span class="mi">4</span><span class="w"> </span><span class="nl">stripe_size</span><span class="p">:</span><span class="w">   </span><span class="mi">1048576</span><span class="w"> </span><span class="nl">stripe_offset</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="w"></span>
+<div class="codehilite"><pre><span></span><code><span class="o">[</span><span class="n">username@es1 work</span><span class="o">]</span><span class="err">$</span><span class="w"> </span><span class="n">lfs</span><span class="w"> </span><span class="n">getstripe</span><span class="w"> </span><span class="n">stripe</span><span class="o">-</span><span class="n">dir</span>
+<span class="n">stripe</span><span class="o">-</span><span class="n">dir</span>
+<span class="nl">stripe_count</span><span class="p">:</span><span class="w">  </span><span class="mi">4</span><span class="w"> </span><span class="nl">stripe_size</span><span class="p">:</span><span class="w">   </span><span class="mi">1048576</span><span class="w"> </span><span class="nl">stripe_offset</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span>
 </code></pre></div>
 
 <h2 id="group-area">グループ領域</h2>
@@ -1383,25 +1383,25 @@
 することが可能です。
 コマンドの出力結果のうち、<code>/groups[MDT:?]</code>の行に記載されている<code>IUse%</code>の項目が各MDTにおけるinodeの使用率となります。<br>
 以下の例の場合、MDT:0 の inode使用率は 30% となります。</p>
-<div class="codehilite"><pre><span></span><code><span class="o">[</span><span class="n">username@es1 ~</span><span class="o">]</span><span class="err">$</span><span class="w"> </span><span class="n">lfs</span><span class="w"> </span><span class="n">df</span><span class="w"> </span><span class="o">-</span><span class="n">i</span><span class="w"> </span><span class="o">/</span><span class="n">groups</span><span class="w"></span>
-<span class="n">UUID</span><span class="w">                      </span><span class="n">Inodes</span><span class="w">       </span><span class="n">IUsed</span><span class="w">       </span><span class="n">IFree</span><span class="w"> </span><span class="n">IUse</span><span class="o">%</span><span class="w"> </span><span class="n">Mounted</span><span class="w"> </span><span class="k">on</span><span class="w"></span>
-<span class="n">groups</span><span class="o">-</span><span class="n">MDT0000_UUID</span><span class="w">   </span><span class="mi">3110850464</span><span class="w">   </span><span class="mi">904313344</span><span class="w">  </span><span class="mi">2206537120</span><span class="w">  </span><span class="mi">30</span><span class="o">%</span><span class="w"> </span><span class="o">/</span><span class="n">groups</span><span class="o">[</span><span class="n">MDT:0</span><span class="o">]</span><span class="w"></span>
-<span class="n">groups</span><span class="o">-</span><span class="n">MDT0001_UUID</span><span class="w">   </span><span class="mi">3110850464</span><span class="w">  </span><span class="mi">2778144306</span><span class="w">   </span><span class="mi">332706158</span><span class="w">  </span><span class="mi">90</span><span class="o">%</span><span class="w"> </span><span class="o">/</span><span class="n">groups</span><span class="o">[</span><span class="n">MDT:1</span><span class="o">]</span><span class="w"></span>
-<span class="n">groups</span><span class="o">-</span><span class="n">MDT0002_UUID</span><span class="w">   </span><span class="mi">3110850464</span><span class="w">   </span><span class="mi">935143862</span><span class="w">  </span><span class="mi">2175706602</span><span class="w">  </span><span class="mi">31</span><span class="o">%</span><span class="w"> </span><span class="o">/</span><span class="n">groups</span><span class="o">[</span><span class="n">MDT:2</span><span class="o">]</span><span class="w"></span>
-<span class="n">groups</span><span class="o">-</span><span class="n">MDT0003_UUID</span><span class="w">   </span><span class="mi">3110850464</span><span class="w">  </span><span class="mi">1356224703</span><span class="w">  </span><span class="mi">1754625761</span><span class="w">  </span><span class="mi">44</span><span class="o">%</span><span class="w"> </span><span class="o">/</span><span class="n">groups</span><span class="o">[</span><span class="n">MDT:3</span><span class="o">]</span><span class="w"></span>
-<span class="n">groups</span><span class="o">-</span><span class="n">MDT0004_UUID</span><span class="w">   </span><span class="mi">3110850464</span><span class="w">   </span><span class="mi">402932004</span><span class="w">  </span><span class="mi">2707918460</span><span class="w">  </span><span class="mi">13</span><span class="o">%</span><span class="w"> </span><span class="o">/</span><span class="n">groups</span><span class="o">[</span><span class="n">MDT:4</span><span class="o">]</span><span class="w"></span>
-<span class="n">groups</span><span class="o">-</span><span class="n">MDT0005_UUID</span><span class="w">   </span><span class="mi">3110850464</span><span class="w">         </span><span class="mi">433</span><span class="w">  </span><span class="mi">3110850031</span><span class="w">   </span><span class="mi">1</span><span class="o">%</span><span class="w"> </span><span class="o">/</span><span class="n">groups</span><span class="o">[</span><span class="n">MDT:5</span><span class="o">]</span><span class="w"></span>
-<span class="p">(</span><span class="n">snip</span><span class="p">)</span><span class="w"></span>
+<div class="codehilite"><pre><span></span><code><span class="o">[</span><span class="n">username@es1 ~</span><span class="o">]</span><span class="err">$</span><span class="w"> </span><span class="n">lfs</span><span class="w"> </span><span class="n">df</span><span class="w"> </span><span class="o">-</span><span class="n">i</span><span class="w"> </span><span class="o">/</span><span class="n">groups</span>
+<span class="n">UUID</span><span class="w">                      </span><span class="n">Inodes</span><span class="w">       </span><span class="n">IUsed</span><span class="w">       </span><span class="n">IFree</span><span class="w"> </span><span class="n">IUse</span><span class="o">%</span><span class="w"> </span><span class="n">Mounted</span><span class="w"> </span><span class="k">on</span>
+<span class="n">groups</span><span class="o">-</span><span class="n">MDT0000_UUID</span><span class="w">   </span><span class="mi">3110850464</span><span class="w">   </span><span class="mi">904313344</span><span class="w">  </span><span class="mi">2206537120</span><span class="w">  </span><span class="mi">30</span><span class="o">%</span><span class="w"> </span><span class="o">/</span><span class="n">groups</span><span class="o">[</span><span class="n">MDT:0</span><span class="o">]</span>
+<span class="n">groups</span><span class="o">-</span><span class="n">MDT0001_UUID</span><span class="w">   </span><span class="mi">3110850464</span><span class="w">  </span><span class="mi">2778144306</span><span class="w">   </span><span class="mi">332706158</span><span class="w">  </span><span class="mi">90</span><span class="o">%</span><span class="w"> </span><span class="o">/</span><span class="n">groups</span><span class="o">[</span><span class="n">MDT:1</span><span class="o">]</span>
+<span class="n">groups</span><span class="o">-</span><span class="n">MDT0002_UUID</span><span class="w">   </span><span class="mi">3110850464</span><span class="w">   </span><span class="mi">935143862</span><span class="w">  </span><span class="mi">2175706602</span><span class="w">  </span><span class="mi">31</span><span class="o">%</span><span class="w"> </span><span class="o">/</span><span class="n">groups</span><span class="o">[</span><span class="n">MDT:2</span><span class="o">]</span>
+<span class="n">groups</span><span class="o">-</span><span class="n">MDT0003_UUID</span><span class="w">   </span><span class="mi">3110850464</span><span class="w">  </span><span class="mi">1356224703</span><span class="w">  </span><span class="mi">1754625761</span><span class="w">  </span><span class="mi">44</span><span class="o">%</span><span class="w"> </span><span class="o">/</span><span class="n">groups</span><span class="o">[</span><span class="n">MDT:3</span><span class="o">]</span>
+<span class="n">groups</span><span class="o">-</span><span class="n">MDT0004_UUID</span><span class="w">   </span><span class="mi">3110850464</span><span class="w">   </span><span class="mi">402932004</span><span class="w">  </span><span class="mi">2707918460</span><span class="w">  </span><span class="mi">13</span><span class="o">%</span><span class="w"> </span><span class="o">/</span><span class="n">groups</span><span class="o">[</span><span class="n">MDT:4</span><span class="o">]</span>
+<span class="n">groups</span><span class="o">-</span><span class="n">MDT0005_UUID</span><span class="w">   </span><span class="mi">3110850464</span><span class="w">         </span><span class="mi">433</span><span class="w">  </span><span class="mi">3110850031</span><span class="w">   </span><span class="mi">1</span><span class="o">%</span><span class="w"> </span><span class="o">/</span><span class="n">groups</span><span class="o">[</span><span class="n">MDT:5</span><span class="o">]</span>
+<span class="p">(</span><span class="n">snip</span><span class="p">)</span>
 </code></pre></div>
 
 <p>なお、ABCIグループが使用しているMDTは以下のコマンドで確認することができます。</p>
-<div class="codehilite"><pre><span></span><code><span class="o">[</span><span class="n">username@es1 ~</span><span class="o">]</span><span class="err">$</span><span class="w"> </span><span class="n">ls</span><span class="w"> </span><span class="o">-</span><span class="n">d</span><span class="w"> </span><span class="o">/</span><span class="n">groups</span><span class="o">/</span><span class="vm">?</span><span class="o">/</span><span class="p">(</span><span class="n">ABCIグループ名</span><span class="p">)</span><span class="w"></span>
-<span class="o">/</span><span class="n">groups</span><span class="o">/</span><span class="p">(</span><span class="n">MDT番号</span><span class="p">)</span><span class="o">/</span><span class="p">(</span><span class="n">ABCIグループ名</span><span class="p">)</span><span class="w"></span>
+<div class="codehilite"><pre><span></span><code><span class="o">[</span><span class="n">username@es1 ~</span><span class="o">]</span><span class="err">$</span><span class="w"> </span><span class="n">ls</span><span class="w"> </span><span class="o">-</span><span class="n">d</span><span class="w"> </span><span class="o">/</span><span class="n">groups</span><span class="o">/</span><span class="vm">?</span><span class="o">/</span><span class="p">(</span><span class="n">ABCIグループ名</span><span class="p">)</span>
+<span class="o">/</span><span class="n">groups</span><span class="o">/</span><span class="p">(</span><span class="n">MDT番号</span><span class="p">)</span><span class="o">/</span><span class="p">(</span><span class="n">ABCIグループ名</span><span class="p">)</span>
 </code></pre></div>
 
 <p>以下の例の場合、MDT:0を使用しています。</p>
-<div class="codehilite"><pre><span></span><code><span class="o">[</span><span class="n">username@es1 ~</span><span class="o">]</span><span class="err">$</span><span class="w"> </span><span class="n">ls</span><span class="w"> </span><span class="o">-</span><span class="n">d</span><span class="w"> </span><span class="o">/</span><span class="n">groups</span><span class="o">/</span><span class="vm">?</span><span class="o">/</span><span class="n">gaa00000</span><span class="w"></span>
-<span class="o">/</span><span class="n">groups</span><span class="o">/</span><span class="mi">0</span><span class="o">/</span><span class="n">gaa00000</span><span class="w"></span>
+<div class="codehilite"><pre><span></span><code><span class="o">[</span><span class="n">username@es1 ~</span><span class="o">]</span><span class="err">$</span><span class="w"> </span><span class="n">ls</span><span class="w"> </span><span class="o">-</span><span class="n">d</span><span class="w"> </span><span class="o">/</span><span class="n">groups</span><span class="o">/</span><span class="vm">?</span><span class="o">/</span><span class="n">gaa00000</span>
+<span class="o">/</span><span class="n">groups</span><span class="o">/</span><span class="mi">0</span><span class="o">/</span><span class="n">gaa00000</span>
 </code></pre></div>
 
 <h2 id="scratch-area">グローバルスクラッチ領域</h2>
@@ -1427,40 +1427,40 @@
 <p>グローバルスクラッチ領域下のファイルおよびディレクトリの作成日を確認するための<code>show_scratch</code>コマンドを用意しました。
 グローバルスクラッチ領域に作成したファイルが削除候補となっているかどうかの確認には<code>show_scratch</code>コマンドを使用してください。</p>
 <p>例) ファイル/ディレクトリの作成日を確認する。</p>
-<div class="codehilite"><pre><span></span><code><span class="o">[</span><span class="n">username@es1 ~</span><span class="o">]</span><span class="err">$</span><span class="w"> </span><span class="n">show_scratch</span><span class="w"></span>
-<span class="w">                                                                     </span><span class="k">Last</span><span class="w"> </span><span class="nl">Updated</span><span class="p">:</span><span class="w"> </span><span class="mi">2022</span><span class="o">/</span><span class="mi">01</span><span class="o">/</span><span class="mi">01</span><span class="w"> </span><span class="mi">00</span><span class="err">:</span><span class="mi">05</span><span class="w"></span>
-<span class="n">Directory</span><span class="o">/</span><span class="k">File</span><span class="w">                                     </span><span class="n">created_date</span><span class="w">        </span><span class="n">valid_date</span><span class="w">    </span><span class="n">remained</span><span class="p">(</span><span class="n">days</span><span class="p">)</span><span class="w"></span>
-<span class="o">/</span><span class="n">scratch</span><span class="o">/</span><span class="n">username</span><span class="o">/</span><span class="n">dir1</span><span class="w">                               </span><span class="mi">2021</span><span class="o">/</span><span class="mi">12</span><span class="o">/</span><span class="mi">17</span><span class="w">        </span><span class="mi">2022</span><span class="o">/</span><span class="mi">01</span><span class="o">/</span><span class="mi">26</span><span class="w">                </span><span class="mi">25</span><span class="w"></span>
-<span class="o">/</span><span class="n">scratch</span><span class="o">/</span><span class="n">username</span><span class="o">/</span><span class="n">dir2</span><span class="w">                               </span><span class="mi">2021</span><span class="o">/</span><span class="mi">12</span><span class="o">/</span><span class="mi">18</span><span class="w">        </span><span class="mi">2022</span><span class="o">/</span><span class="mi">01</span><span class="o">/</span><span class="mi">27</span><span class="w">                </span><span class="mi">26</span><span class="w"></span>
-<span class="o">/</span><span class="n">scratch</span><span class="o">/</span><span class="n">username</span><span class="o">/</span><span class="n">file1</span><span class="w">                              </span><span class="mi">2021</span><span class="o">/</span><span class="mi">12</span><span class="o">/</span><span class="mi">19</span><span class="w">        </span><span class="mi">2022</span><span class="o">/</span><span class="mi">01</span><span class="o">/</span><span class="mi">28</span><span class="w">                </span><span class="mi">27</span><span class="w"></span>
-<span class="o">/</span><span class="n">scratch</span><span class="o">/</span><span class="n">username</span><span class="o">/</span><span class="n">file2</span><span class="w">                              </span><span class="mi">2021</span><span class="o">/</span><span class="mi">11</span><span class="o">/</span><span class="mi">20</span><span class="w">        </span><span class="mi">2021</span><span class="o">/</span><span class="mi">12</span><span class="o">/</span><span class="mi">30</span><span class="w">                 </span><span class="mi">0</span><span class="w"></span>
-<span class="n">Directories</span><span class="w"> </span><span class="ow">and</span><span class="w"> </span><span class="n">files</span><span class="w"> </span><span class="n">that</span><span class="w"> </span><span class="n">have</span><span class="w"> </span><span class="n">expired</span><span class="w"> </span><span class="n">will</span><span class="w"> </span><span class="n">be</span><span class="w"> </span><span class="n">deleted</span><span class="w"> </span><span class="n">soon</span><span class="p">.</span><span class="w"></span>
-<span class="k">If</span><span class="w"> </span><span class="n">necessary</span><span class="p">,</span><span class="w"> </span><span class="n">please</span><span class="w"> </span><span class="k">backup</span><span class="p">.</span><span class="w"></span>
+<div class="codehilite"><pre><span></span><code><span class="o">[</span><span class="n">username@es1 ~</span><span class="o">]</span><span class="err">$</span><span class="w"> </span><span class="n">show_scratch</span>
+<span class="w">                                                                     </span><span class="k">Last</span><span class="w"> </span><span class="nl">Updated</span><span class="p">:</span><span class="w"> </span><span class="mi">2022</span><span class="o">/</span><span class="mi">01</span><span class="o">/</span><span class="mi">01</span><span class="w"> </span><span class="mi">00</span><span class="err">:</span><span class="mi">05</span>
+<span class="n">Directory</span><span class="o">/</span><span class="k">File</span><span class="w">                                     </span><span class="n">created_date</span><span class="w">        </span><span class="n">valid_date</span><span class="w">    </span><span class="n">remained</span><span class="p">(</span><span class="n">days</span><span class="p">)</span>
+<span class="o">/</span><span class="n">scratch</span><span class="o">/</span><span class="n">username</span><span class="o">/</span><span class="n">dir1</span><span class="w">                               </span><span class="mi">2021</span><span class="o">/</span><span class="mi">12</span><span class="o">/</span><span class="mi">17</span><span class="w">        </span><span class="mi">2022</span><span class="o">/</span><span class="mi">01</span><span class="o">/</span><span class="mi">26</span><span class="w">                </span><span class="mi">25</span>
+<span class="o">/</span><span class="n">scratch</span><span class="o">/</span><span class="n">username</span><span class="o">/</span><span class="n">dir2</span><span class="w">                               </span><span class="mi">2021</span><span class="o">/</span><span class="mi">12</span><span class="o">/</span><span class="mi">18</span><span class="w">        </span><span class="mi">2022</span><span class="o">/</span><span class="mi">01</span><span class="o">/</span><span class="mi">27</span><span class="w">                </span><span class="mi">26</span>
+<span class="o">/</span><span class="n">scratch</span><span class="o">/</span><span class="n">username</span><span class="o">/</span><span class="n">file1</span><span class="w">                              </span><span class="mi">2021</span><span class="o">/</span><span class="mi">12</span><span class="o">/</span><span class="mi">19</span><span class="w">        </span><span class="mi">2022</span><span class="o">/</span><span class="mi">01</span><span class="o">/</span><span class="mi">28</span><span class="w">                </span><span class="mi">27</span>
+<span class="o">/</span><span class="n">scratch</span><span class="o">/</span><span class="n">username</span><span class="o">/</span><span class="n">file2</span><span class="w">                              </span><span class="mi">2021</span><span class="o">/</span><span class="mi">11</span><span class="o">/</span><span class="mi">20</span><span class="w">        </span><span class="mi">2021</span><span class="o">/</span><span class="mi">12</span><span class="o">/</span><span class="mi">30</span><span class="w">                 </span><span class="mi">0</span>
+<span class="n">Directories</span><span class="w"> </span><span class="ow">and</span><span class="w"> </span><span class="n">files</span><span class="w"> </span><span class="n">that</span><span class="w"> </span><span class="n">have</span><span class="w"> </span><span class="n">expired</span><span class="w"> </span><span class="n">will</span><span class="w"> </span><span class="n">be</span><span class="w"> </span><span class="n">deleted</span><span class="w"> </span><span class="n">soon</span><span class="p">.</span>
+<span class="k">If</span><span class="w"> </span><span class="n">necessary</span><span class="p">,</span><span class="w"> </span><span class="n">please</span><span class="w"> </span><span class="k">backup</span><span class="p">.</span>
 </code></pre></div>
 
 <table>
 <thead>
 <tr>
-<th align="left">項目</th>
-<th align="left">説明</th>
+<th style="text-align: left;">項目</th>
+<th style="text-align: left;">説明</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td align="left">Directory/File</td>
-<td align="left">ディレクトリ名/ファイル名</td>
+<td style="text-align: left;">Directory/File</td>
+<td style="text-align: left;">ディレクトリ名/ファイル名</td>
 </tr>
 <tr>
-<td align="left">created_date</td>
-<td align="left">ディレクトリ/ファイルの作成日</td>
+<td style="text-align: left;">created_date</td>
+<td style="text-align: left;">ディレクトリ/ファイルの作成日</td>
 </tr>
 <tr>
-<td align="left">valid_date</td>
-<td align="left">有効期限（作成日から40日目の日付。この日を過ぎると削除候補となります。）</td>
+<td style="text-align: left;">valid_date</td>
+<td style="text-align: left;">有効期限（作成日から40日目の日付。この日を過ぎると削除候補となります。）</td>
 </tr>
 <tr>
-<td align="left">remained(days)</td>
-<td align="left">削除候補となるまでの残り日数</td>
+<td style="text-align: left;">remained(days)</td>
+<td style="text-align: left;">削除候補となるまでの残り日数</td>
 </tr>
 </tbody>
 </table>
@@ -1476,24 +1476,24 @@
 </div>
 <h4 id="how-to-set-up-dom">DoM機能の設定方法</h4>
 <p>DoM機能の設定は、<code>lfs setstripe</code>コマンドで行います。</p>
-<div class="codehilite"><pre><span></span><code><span class="err">$</span><span class="w"> </span><span class="n">lfs</span><span class="w"> </span><span class="n">setstripe</span><span class="w"> </span><span class="o">[</span><span class="n">options</span><span class="o">]</span><span class="w"> </span><span class="o">&lt;</span><span class="n">dirname</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="n">filename</span><span class="o">&gt;</span><span class="w"></span>
+<div class="codehilite"><pre><span></span><code><span class="err">$</span><span class="w"> </span><span class="n">lfs</span><span class="w"> </span><span class="n">setstripe</span><span class="w"> </span><span class="o">[</span><span class="n">options</span><span class="o">]</span><span class="w"> </span><span class="o">&lt;</span><span class="n">dirname</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="n">filename</span><span class="o">&gt;</span>
 </code></pre></div>
 
 <table>
 <thead>
 <tr>
-<th align="center">オプション</th>
-<th align="left">説明</th>
+<th style="text-align: center;">オプション</th>
+<th style="text-align: left;">説明</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td align="center">-E</td>
-<td align="left">部分ファイルの終端を示すオフセット。-E #k, -E #m, -E #gとすることで、サイズをKiB,MiB,GiBで設定可能です。<br>また、-1はeofを意味します。</td>
+<td style="text-align: center;">-E</td>
+<td style="text-align: left;">部分ファイルの終端を示すオフセット。-E #k, -E #m, -E #gとすることで、サイズをKiB,MiB,GiBで設定可能です。<br>また、-1はeofを意味します。</td>
 </tr>
 <tr>
-<td align="center">-L</td>
-<td align="left">レイアウトタイプを設定。mdt を指定することで、DoM が有効になります。</td>
+<td style="text-align: center;">-L</td>
+<td style="text-align: left;">レイアウトタイプを設定。mdt を指定することで、DoM が有効になります。</td>
 </tr>
 </tbody>
 </table>
@@ -1503,19 +1503,19 @@
 </div>
 <p>例）DoM を有効にした新規ファイルの作成<br>
 64KiB までの部分ファイルのレイアウトをmdtに設定します。</p>
-<div class="codehilite"><pre><span></span><code><span class="o">[</span><span class="n">username@es1 work</span><span class="o">]</span><span class="err">$</span><span class="w"> </span><span class="n">lfs</span><span class="w"> </span><span class="n">setstripe</span><span class="w"> </span><span class="o">-</span><span class="n">E</span><span class="w"> </span><span class="mi">64</span><span class="n">k</span><span class="w"> </span><span class="o">-</span><span class="n">L</span><span class="w"> </span><span class="n">mdt</span><span class="w"> </span><span class="o">-</span><span class="n">E</span><span class="w"> </span><span class="o">-</span><span class="mi">1</span><span class="w"> </span><span class="n">dom</span><span class="o">-</span><span class="k">file</span><span class="w"></span>
-<span class="o">[</span><span class="n">username@es1 work</span><span class="o">]</span><span class="err">$</span><span class="w"> </span><span class="n">ls</span><span class="w"></span>
-<span class="n">dom</span><span class="o">-</span><span class="k">file</span><span class="w"></span>
+<div class="codehilite"><pre><span></span><code><span class="o">[</span><span class="n">username@es1 work</span><span class="o">]</span><span class="err">$</span><span class="w"> </span><span class="n">lfs</span><span class="w"> </span><span class="n">setstripe</span><span class="w"> </span><span class="o">-</span><span class="n">E</span><span class="w"> </span><span class="mi">64</span><span class="n">k</span><span class="w"> </span><span class="o">-</span><span class="n">L</span><span class="w"> </span><span class="n">mdt</span><span class="w"> </span><span class="o">-</span><span class="n">E</span><span class="w"> </span><span class="o">-</span><span class="mi">1</span><span class="w"> </span><span class="n">dom</span><span class="o">-</span><span class="k">file</span>
+<span class="o">[</span><span class="n">username@es1 work</span><span class="o">]</span><span class="err">$</span><span class="w"> </span><span class="n">ls</span>
+<span class="n">dom</span><span class="o">-</span><span class="k">file</span>
 </code></pre></div>
 
 <p>例）ディレクトリに対して、DoM 機能を設定</p>
-<div class="codehilite"><pre><span></span><code><span class="o">[</span><span class="n">username@es1 work</span><span class="o">]</span><span class="err">$</span><span class="w"> </span><span class="n">mkdir</span><span class="w"> </span><span class="n">dom</span><span class="o">-</span><span class="n">dir</span><span class="w"></span>
-<span class="o">[</span><span class="n">username@es1 work</span><span class="o">]</span><span class="err">$</span><span class="w"> </span><span class="n">lfs</span><span class="w"> </span><span class="n">setstripe</span><span class="w"> </span><span class="o">-</span><span class="n">E</span><span class="w"> </span><span class="mi">64</span><span class="n">k</span><span class="w"> </span><span class="o">-</span><span class="n">L</span><span class="w"> </span><span class="n">mdt</span><span class="w"> </span><span class="o">-</span><span class="n">E</span><span class="w"> </span><span class="o">-</span><span class="mi">1</span><span class="w"> </span><span class="n">dom</span><span class="o">-</span><span class="n">dir</span><span class="w"></span>
+<div class="codehilite"><pre><span></span><code><span class="o">[</span><span class="n">username@es1 work</span><span class="o">]</span><span class="err">$</span><span class="w"> </span><span class="n">mkdir</span><span class="w"> </span><span class="n">dom</span><span class="o">-</span><span class="n">dir</span>
+<span class="o">[</span><span class="n">username@es1 work</span><span class="o">]</span><span class="err">$</span><span class="w"> </span><span class="n">lfs</span><span class="w"> </span><span class="n">setstripe</span><span class="w"> </span><span class="o">-</span><span class="n">E</span><span class="w"> </span><span class="mi">64</span><span class="n">k</span><span class="w"> </span><span class="o">-</span><span class="n">L</span><span class="w"> </span><span class="n">mdt</span><span class="w"> </span><span class="o">-</span><span class="n">E</span><span class="w"> </span><span class="o">-</span><span class="mi">1</span><span class="w"> </span><span class="n">dom</span><span class="o">-</span><span class="n">dir</span>
 </code></pre></div>
 
 <p>例) 保存されているファイルに対して、DoM機能が有効になっているかを確認</p>
-<div class="codehilite"><pre><span></span><code><span class="o">[</span><span class="n">username@es1 work</span><span class="o">]</span><span class="err">$</span><span class="w"> </span><span class="n">lfs</span><span class="w"> </span><span class="n">getstripe</span><span class="w"> </span><span class="o">-</span><span class="n">I1</span><span class="w"> </span><span class="o">-</span><span class="n">L</span><span class="w"> </span><span class="n">dom</span><span class="o">-</span><span class="k">file</span><span class="w"></span>
-<span class="n">mdt</span><span class="w"></span>
+<div class="codehilite"><pre><span></span><code><span class="o">[</span><span class="n">username@es1 work</span><span class="o">]</span><span class="err">$</span><span class="w"> </span><span class="n">lfs</span><span class="w"> </span><span class="n">getstripe</span><span class="w"> </span><span class="o">-</span><span class="n">I1</span><span class="w"> </span><span class="o">-</span><span class="n">L</span><span class="w"> </span><span class="n">dom</span><span class="o">-</span><span class="k">file</span>
+<span class="n">mdt</span>
 </code></pre></div>
 
 <p><code>mdt</code>と表示されればそのファイルはDoM機能が有効になっています。それ以外の表示の場合は無効です。</p>
@@ -1526,14 +1526,14 @@
 <p>また、DoM 機能と一緒に<a href="./#advanced-option-file-striping">ストライプ機能</a>を設定可能です。</p>
 <p>例）DoM 機能とストライプパターンを持った新規ファイルの作成<br>
 64KiBまでの部分ファイルのレイアウトをmdtに設定し、残りの部分についてストライプパターンを設定します。</p>
-<div class="codehilite"><pre><span></span><code><span class="o">[</span><span class="n">username@es1 work</span><span class="o">]</span><span class="err">$</span><span class="w"> </span><span class="n">lfs</span><span class="w"> </span><span class="n">setstripe</span><span class="w"> </span><span class="o">-</span><span class="n">E</span><span class="w"> </span><span class="mi">64</span><span class="n">k</span><span class="w"> </span><span class="o">-</span><span class="n">L</span><span class="w"> </span><span class="n">mdt</span><span class="w"> </span><span class="o">-</span><span class="n">E</span><span class="w"> </span><span class="o">-</span><span class="mi">1</span><span class="w"> </span><span class="o">-</span><span class="n">S</span><span class="w"> </span><span class="mi">1</span><span class="n">m</span><span class="w"> </span><span class="o">-</span><span class="n">i</span><span class="w"> </span><span class="o">-</span><span class="mi">1</span><span class="w"> </span><span class="o">-</span><span class="n">c</span><span class="w"> </span><span class="mi">4</span><span class="w"> </span><span class="n">dom</span><span class="o">-</span><span class="n">stripe</span><span class="o">-</span><span class="k">file</span><span class="w"></span>
-<span class="o">[</span><span class="n">username@es1 work</span><span class="o">]</span><span class="err">$</span><span class="w"> </span><span class="n">ls</span><span class="w"></span>
-<span class="n">dom</span><span class="o">-</span><span class="n">stripe</span><span class="o">-</span><span class="k">file</span><span class="w"></span>
+<div class="codehilite"><pre><span></span><code><span class="o">[</span><span class="n">username@es1 work</span><span class="o">]</span><span class="err">$</span><span class="w"> </span><span class="n">lfs</span><span class="w"> </span><span class="n">setstripe</span><span class="w"> </span><span class="o">-</span><span class="n">E</span><span class="w"> </span><span class="mi">64</span><span class="n">k</span><span class="w"> </span><span class="o">-</span><span class="n">L</span><span class="w"> </span><span class="n">mdt</span><span class="w"> </span><span class="o">-</span><span class="n">E</span><span class="w"> </span><span class="o">-</span><span class="mi">1</span><span class="w"> </span><span class="o">-</span><span class="n">S</span><span class="w"> </span><span class="mi">1</span><span class="n">m</span><span class="w"> </span><span class="o">-</span><span class="n">i</span><span class="w"> </span><span class="o">-</span><span class="mi">1</span><span class="w"> </span><span class="o">-</span><span class="n">c</span><span class="w"> </span><span class="mi">4</span><span class="w"> </span><span class="n">dom</span><span class="o">-</span><span class="n">stripe</span><span class="o">-</span><span class="k">file</span>
+<span class="o">[</span><span class="n">username@es1 work</span><span class="o">]</span><span class="err">$</span><span class="w"> </span><span class="n">ls</span>
+<span class="n">dom</span><span class="o">-</span><span class="n">stripe</span><span class="o">-</span><span class="k">file</span>
 </code></pre></div>
 
 <p>例）ディレクトリに対して、DoM 機能と OST に格納する部分データのストライプパターンを設定</p>
-<div class="codehilite"><pre><span></span><code><span class="o">[</span><span class="n">username@es1 work</span><span class="o">]</span><span class="err">$</span><span class="w"> </span><span class="n">mkdir</span><span class="w"> </span><span class="n">dom</span><span class="o">-</span><span class="n">stripe</span><span class="o">-</span><span class="n">dir</span><span class="w"></span>
-<span class="o">[</span><span class="n">username@es1 work</span><span class="o">]</span><span class="err">$</span><span class="w"> </span><span class="n">lfs</span><span class="w"> </span><span class="n">setstripe</span><span class="w"> </span><span class="o">-</span><span class="n">E</span><span class="w"> </span><span class="mi">64</span><span class="n">k</span><span class="w"> </span><span class="o">-</span><span class="n">L</span><span class="w"> </span><span class="n">mdt</span><span class="w"> </span><span class="o">-</span><span class="n">E</span><span class="w"> </span><span class="o">-</span><span class="mi">1</span><span class="w"> </span><span class="o">-</span><span class="n">S</span><span class="w"> </span><span class="mi">1</span><span class="n">m</span><span class="w"> </span><span class="o">-</span><span class="n">i</span><span class="w"> </span><span class="o">-</span><span class="mi">1</span><span class="w"> </span><span class="o">-</span><span class="n">c</span><span class="w"> </span><span class="mi">4</span><span class="w"> </span><span class="n">dom</span><span class="o">-</span><span class="n">stripe</span><span class="o">-</span><span class="n">dir</span><span class="w"></span>
+<div class="codehilite"><pre><span></span><code><span class="o">[</span><span class="n">username@es1 work</span><span class="o">]</span><span class="err">$</span><span class="w"> </span><span class="n">mkdir</span><span class="w"> </span><span class="n">dom</span><span class="o">-</span><span class="n">stripe</span><span class="o">-</span><span class="n">dir</span>
+<span class="o">[</span><span class="n">username@es1 work</span><span class="o">]</span><span class="err">$</span><span class="w"> </span><span class="n">lfs</span><span class="w"> </span><span class="n">setstripe</span><span class="w"> </span><span class="o">-</span><span class="n">E</span><span class="w"> </span><span class="mi">64</span><span class="n">k</span><span class="w"> </span><span class="o">-</span><span class="n">L</span><span class="w"> </span><span class="n">mdt</span><span class="w"> </span><span class="o">-</span><span class="n">E</span><span class="w"> </span><span class="o">-</span><span class="mi">1</span><span class="w"> </span><span class="o">-</span><span class="n">S</span><span class="w"> </span><span class="mi">1</span><span class="n">m</span><span class="w"> </span><span class="o">-</span><span class="n">i</span><span class="w"> </span><span class="o">-</span><span class="mi">1</span><span class="w"> </span><span class="o">-</span><span class="n">c</span><span class="w"> </span><span class="mi">4</span><span class="w"> </span><span class="n">dom</span><span class="o">-</span><span class="n">stripe</span><span class="o">-</span><span class="n">dir</span>
 </code></pre></div>
 
 <h2 id="local-storage">ローカルストレージ</h2>
@@ -1556,18 +1556,18 @@
 <span class="c1">#$-l rt_F=1</span>
 <span class="c1">#$-cwd</span>
 
-<span class="nb">echo</span> test1 &gt; <span class="nv">$SGE_LOCALDIR</span>/foo.txt
-<span class="nb">echo</span> test2 &gt; <span class="nv">$SGE_LOCALDIR</span>/bar.txt
-cp -rp <span class="nv">$SGE_LOCALDIR</span>/foo.txt <span class="nv">$HOME</span>/test/foo.txt
+<span class="nb">echo</span><span class="w"> </span>test1<span class="w"> </span>&gt;<span class="w"> </span><span class="nv">$SGE_LOCALDIR</span>/foo.txt
+<span class="nb">echo</span><span class="w"> </span>test2<span class="w"> </span>&gt;<span class="w"> </span><span class="nv">$SGE_LOCALDIR</span>/bar.txt
+cp<span class="w"> </span>-rp<span class="w"> </span><span class="nv">$SGE_LOCALDIR</span>/foo.txt<span class="w"> </span><span class="nv">$HOME</span>/test/foo.txt
 </code></pre></div>
 
 <p>例）ジョブの投入</p>
-<div class="codehilite"><pre><span></span><code><span class="o">[</span><span class="n">username@es1 ~</span><span class="o">]</span><span class="err">$</span><span class="w"> </span><span class="n">qsub</span><span class="w"> </span><span class="o">-</span><span class="n">g</span><span class="w"> </span><span class="n">grpname</span><span class="w"> </span><span class="n">use_local_storage</span><span class="p">.</span><span class="n">sh</span><span class="w"></span>
+<div class="codehilite"><pre><span></span><code><span class="o">[</span><span class="n">username@es1 ~</span><span class="o">]</span><span class="err">$</span><span class="w"> </span><span class="n">qsub</span><span class="w"> </span><span class="o">-</span><span class="n">g</span><span class="w"> </span><span class="n">grpname</span><span class="w"> </span><span class="n">use_local_storage</span><span class="p">.</span><span class="n">sh</span>
 </code></pre></div>
 
 <p>例）use_local_storage.sh 実行後の状態</p>
-<div class="codehilite"><pre><span></span><code><span class="p">[</span><span class="n">username</span><span class="o">@</span><span class="n">es1</span> <span class="o">~</span><span class="p">]</span><span class="o">$</span> <span class="n">ls</span> <span class="o">$</span><span class="n">HOME</span><span class="o">/</span><span class="n">test</span><span class="o">/</span>
-<span class="n">foo.txt</span>    <span class="o">&lt;-</span> スクリプト内で明示的にコピーしたファイルのみが残る。
+<div class="codehilite"><pre><span></span><code><span class="p">[</span><span class="n">username</span><span class="o">@</span><span class="n">es1</span><span class="w"> </span><span class="o">~</span><span class="p">]</span><span class="o">$</span><span class="w"> </span><span class="n">ls</span><span class="w"> </span><span class="o">$</span><span class="n">HOME</span><span class="o">/</span><span class="n">test</span><span class="o">/</span>
+<span class="n">foo.txt</span><span class="w">    </span><span class="o">&lt;-</span><span class="w"> </span>スクリプト内で明示的にコピーしたファイルのみが残る。
 </code></pre></div>
 
 <div class="admonition warning">
@@ -1587,12 +1587,12 @@ cp -rp <span class="nv">$SGE_LOCALDIR</span>/foo.txt <span class="nv">$HOME</spa
 <span class="c1">#$-l rt_F=1</span>
 <span class="c1">#$-cwd</span>
 
-<span class="nb">echo</span> test1 &gt; <span class="nv">$SGE_ARDIR</span>/foo.txt
-<span class="nb">echo</span> test2 &gt; <span class="nv">$SGE_ARDIR</span>/bar.txt
+<span class="nb">echo</span><span class="w"> </span>test1<span class="w"> </span>&gt;<span class="w"> </span><span class="nv">$SGE_ARDIR</span>/foo.txt
+<span class="nb">echo</span><span class="w"> </span>test2<span class="w"> </span>&gt;<span class="w"> </span><span class="nv">$SGE_ARDIR</span>/bar.txt
 </code></pre></div>
 
 <p>例）ジョブの投入</p>
-<div class="codehilite"><pre><span></span><code><span class="o">[</span><span class="n">username@es1 ~</span><span class="o">]</span><span class="err">$</span><span class="w"> </span><span class="n">qsub</span><span class="w"> </span><span class="o">-</span><span class="n">g</span><span class="w"> </span><span class="n">grpname</span><span class="w"> </span><span class="o">-</span><span class="n">ar</span><span class="w"> </span><span class="mi">12345</span><span class="w"> </span><span class="n">use_reserved_storage_write</span><span class="p">.</span><span class="n">sh</span><span class="w"></span>
+<div class="codehilite"><pre><span></span><code><span class="o">[</span><span class="n">username@es1 ~</span><span class="o">]</span><span class="err">$</span><span class="w"> </span><span class="n">qsub</span><span class="w"> </span><span class="o">-</span><span class="n">g</span><span class="w"> </span><span class="n">grpname</span><span class="w"> </span><span class="o">-</span><span class="n">ar</span><span class="w"> </span><span class="mi">12345</span><span class="w"> </span><span class="n">use_reserved_storage_write</span><span class="p">.</span><span class="n">sh</span>
 </code></pre></div>
 
 <p>例）ジョブスクリプトの例 (use_reserved_storage_read.sh)</p>
@@ -1601,12 +1601,12 @@ cp -rp <span class="nv">$SGE_LOCALDIR</span>/foo.txt <span class="nv">$HOME</spa
 <span class="c1">#$-l rt_F=1</span>
 <span class="c1">#$-cwd</span>
 
-cat <span class="nv">$SGE_ARDIR</span>/foo.txt
-cat <span class="nv">$SGE_ARDIR</span>/bar.txt
+cat<span class="w"> </span><span class="nv">$SGE_ARDIR</span>/foo.txt
+cat<span class="w"> </span><span class="nv">$SGE_ARDIR</span>/bar.txt
 </code></pre></div>
 
 <p>例）ジョブの投入</p>
-<div class="codehilite"><pre><span></span><code><span class="o">[</span><span class="n">username@es1 ~</span><span class="o">]</span><span class="err">$</span><span class="w"> </span><span class="n">qsub</span><span class="w"> </span><span class="o">-</span><span class="n">g</span><span class="w"> </span><span class="n">grpname</span><span class="w"> </span><span class="o">-</span><span class="n">ar</span><span class="w"> </span><span class="mi">12345</span><span class="w"> </span><span class="n">use_reserved_storage_read</span><span class="p">.</span><span class="n">sh</span><span class="w"></span>
+<div class="codehilite"><pre><span></span><code><span class="o">[</span><span class="n">username@es1 ~</span><span class="o">]</span><span class="err">$</span><span class="w"> </span><span class="n">qsub</span><span class="w"> </span><span class="o">-</span><span class="n">g</span><span class="w"> </span><span class="n">grpname</span><span class="w"> </span><span class="o">-</span><span class="n">ar</span><span class="w"> </span><span class="mi">12345</span><span class="w"> </span><span class="n">use_reserved_storage_read</span><span class="p">.</span><span class="n">sh</span>
 </code></pre></div>
 
 <div class="admonition warning">
@@ -1631,18 +1631,18 @@ BeeOND を利用するジョブを投入するときは、<code>-l USE_BEEOND=1<
 <span class="c1">#$-l USE_BEEOND=1</span>
 <span class="c1">#$-cwd</span>
 
-<span class="nb">echo</span> test1 &gt; <span class="nv">$SGE_BEEONDDIR</span>/foo.txt
-<span class="nb">echo</span> test2 &gt; <span class="nv">$SGE_BEEONDDIR</span>/bar.txt
-cp -rp <span class="nv">$SGE_BEEONDDIR</span>/foo.txt <span class="nv">$HOME</span>/test/foo.txt
+<span class="nb">echo</span><span class="w"> </span>test1<span class="w"> </span>&gt;<span class="w"> </span><span class="nv">$SGE_BEEONDDIR</span>/foo.txt
+<span class="nb">echo</span><span class="w"> </span>test2<span class="w"> </span>&gt;<span class="w"> </span><span class="nv">$SGE_BEEONDDIR</span>/bar.txt
+cp<span class="w"> </span>-rp<span class="w"> </span><span class="nv">$SGE_BEEONDDIR</span>/foo.txt<span class="w"> </span><span class="nv">$HOME</span>/test/foo.txt
 </code></pre></div>
 
 <p>例）ジョブの投入</p>
-<div class="codehilite"><pre><span></span><code><span class="o">[</span><span class="n">username@es1 ~</span><span class="o">]</span><span class="err">$</span><span class="w"> </span><span class="n">qsub</span><span class="w"> </span><span class="o">-</span><span class="n">g</span><span class="w"> </span><span class="n">grpname</span><span class="w"> </span><span class="n">use_beeond</span><span class="p">.</span><span class="n">sh</span><span class="w"></span>
+<div class="codehilite"><pre><span></span><code><span class="o">[</span><span class="n">username@es1 ~</span><span class="o">]</span><span class="err">$</span><span class="w"> </span><span class="n">qsub</span><span class="w"> </span><span class="o">-</span><span class="n">g</span><span class="w"> </span><span class="n">grpname</span><span class="w"> </span><span class="n">use_beeond</span><span class="p">.</span><span class="n">sh</span>
 </code></pre></div>
 
 <p>例）use_beeond.sh 実行後の状態</p>
-<div class="codehilite"><pre><span></span><code><span class="p">[</span><span class="n">username</span><span class="o">@</span><span class="n">es1</span> <span class="o">~</span><span class="p">]</span><span class="o">$</span> <span class="n">ls</span> <span class="o">$</span><span class="n">HOME</span><span class="o">/</span><span class="n">test</span><span class="o">/</span>
-<span class="n">foo.txt</span>    <span class="o">&lt;-</span> スクリプト内で明示的にコピーしたファイルのみが残る。
+<div class="codehilite"><pre><span></span><code><span class="p">[</span><span class="n">username</span><span class="o">@</span><span class="n">es1</span><span class="w"> </span><span class="o">~</span><span class="p">]</span><span class="o">$</span><span class="w"> </span><span class="n">ls</span><span class="w"> </span><span class="o">$</span><span class="n">HOME</span><span class="o">/</span><span class="n">test</span><span class="o">/</span>
+<span class="n">foo.txt</span><span class="w">    </span><span class="o">&lt;-</span><span class="w"> </span>スクリプト内で明示的にコピーしたファイルのみが残る。
 </code></pre></div>
 
 <div class="admonition warning">
@@ -1657,20 +1657,7 @@ cp -rp <span class="nv">$SGE_BEEONDDIR</span>/foo.txt <span class="nv">$HOME</sp
 <p>BeeONDではbeeond-cpコマンドを利用して、BeeONDファイルシステム領域に並列にデータをステージイン、ステージアウトする事が可能です。
 beeond-cpを利用する場合、<code>USE_SSH=1</code>オプションを指定し計算ノードへのSSHログインを有効にしたあと、<code>PARALLEL_SSH</code>環境変数にsshコマンドとポート番号を指定してください。
 以下はbeeond-cpを使用する例です。</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal"> 1</span>
-<span class="normal"> 2</span>
-<span class="normal"> 3</span>
-<span class="normal"> 4</span>
-<span class="normal"> 5</span>
-<span class="normal"> 6</span>
-<span class="normal"> 7</span>
-<span class="normal"> 8</span>
-<span class="normal"> 9</span>
-<span class="normal">10</span>
-<span class="normal">11</span>
-<span class="normal">12</span>
-<span class="normal">13</span>
-<span class="normal">14</span></pre></div></td><td class="code"><div class="codehilite"><pre><span></span><code><span class="ch">#!/bin/bash</span>
+<div class="codehilite"><pre><span></span><code><span class="ch">#!/bin/bash</span>
 <span class="c1">#$-l rt_F=4</span>
 <span class="c1">#$-l USE_BEEOND=1</span>
 <span class="c1">#$-l USE_SSH=1</span>
@@ -1678,14 +1665,14 @@ beeond-cpを利用する場合、<code>USE_SSH=1</code>オプションを指定�
 <span class="c1">#$-j y</span>
 <span class="c1">#$-cwd</span>
 
-<span class="nb">export</span> <span class="nv">PARALLEL_SSH</span><span class="o">=</span><span class="s2">&quot;ssh -p 2222&quot;</span>
-<span class="nb">export</span> <span class="nv">src_dir</span><span class="o">=</span>/path/to/data
+<span class="nb">export</span><span class="w"> </span><span class="nv">PARALLEL_SSH</span><span class="o">=</span><span class="s2">&quot;ssh -p 2222&quot;</span>
+<span class="nb">export</span><span class="w"> </span><span class="nv">src_dir</span><span class="o">=</span>/path/to/data
 
-beeond-cp stagein -n <span class="si">${</span><span class="nv">SGE_JOB_HOSTLIST</span><span class="si">}</span> -g <span class="si">${</span><span class="nv">src_dir</span><span class="si">}</span> -l <span class="si">${</span><span class="nv">SGE_BEEONDDIR</span><span class="si">}</span>
+beeond-cp<span class="w"> </span>stagein<span class="w"> </span>-n<span class="w"> </span><span class="si">${</span><span class="nv">SGE_JOB_HOSTLIST</span><span class="si">}</span><span class="w"> </span>-g<span class="w"> </span><span class="si">${</span><span class="nv">src_dir</span><span class="si">}</span><span class="w"> </span>-l<span class="w"> </span><span class="si">${</span><span class="nv">SGE_BEEONDDIR</span><span class="si">}</span>
 <span class="o">(</span>計算処理<span class="o">)</span>
-beeond-cp stageout -n <span class="si">${</span><span class="nv">SGE_JOB_HOSTLIST</span><span class="si">}</span> -g <span class="si">${</span><span class="nv">src_dir</span><span class="si">}</span> -l <span class="si">${</span><span class="nv">SGE_BEEONDDIR</span><span class="si">}</span>
+beeond-cp<span class="w"> </span>stageout<span class="w"> </span>-n<span class="w"> </span><span class="si">${</span><span class="nv">SGE_JOB_HOSTLIST</span><span class="si">}</span><span class="w"> </span>-g<span class="w"> </span><span class="si">${</span><span class="nv">src_dir</span><span class="si">}</span><span class="w"> </span>-l<span class="w"> </span><span class="si">${</span><span class="nv">SGE_BEEONDDIR</span><span class="si">}</span>
 </code></pre></div>
-</td></tr></table>
+
 <h4 id="advanced-option-configure-beeond-servers">[高度な設定] BeeONDサーバ数変更</h4>
 <p>BeeGFS領域は、ファイルの実体を格納するストレージサービスを提供する計算ノード（ストレージサーバ）、ファイルのメタデータを格納するメタデータサービスを提供する計算ノード（メタデータサーバ）により構成されます。
 ABCIのBeeONDではストレージサーバ数、メタデータサーバ数を変更することができます。</p>
@@ -1693,18 +1680,18 @@ ABCIのBeeONDではストレージサーバ数、メタデータサーバ数を�
 <table>
 <thead>
 <tr>
-<th align="center">設定項目</th>
-<th align="right">デフォルト値</th>
+<th style="text-align: center;">設定項目</th>
+<th style="text-align: right;">デフォルト値</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td align="center">メタデータサーバ数</td>
-<td align="right">1</td>
+<td style="text-align: center;">メタデータサーバ数</td>
+<td style="text-align: right;">1</td>
 </tr>
 <tr>
-<td align="center">ストレージサーバ数</td>
-<td align="right">ジョブの要求ノード数</td>
+<td style="text-align: center;">ストレージサーバ数</td>
+<td style="text-align: right;">ジョブの要求ノード数</td>
 </tr>
 </tbody>
 </table>
@@ -1712,18 +1699,18 @@ ABCIのBeeONDではストレージサーバ数、メタデータサーバ数を�
 <table>
 <thead>
 <tr>
-<th align="left">環境変数</th>
-<th align="left">説明</th>
+<th style="text-align: left;">環境変数</th>
+<th style="text-align: left;">説明</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td align="left">BEEOND_METADATA_SERVER</td>
-<td align="left">メタデータサーバ数を整数で指定</td>
+<td style="text-align: left;">BEEOND_METADATA_SERVER</td>
+<td style="text-align: left;">メタデータサーバ数を整数で指定</td>
 </tr>
 <tr>
-<td align="left">BEEOND_STORAGE_SERVER</td>
-<td align="left">ストレージサーバ数を整数で指定</td>
+<td style="text-align: left;">BEEOND_STORAGE_SERVER</td>
+<td style="text-align: left;">ストレージサーバ数を整数で指定</td>
 </tr>
 </tbody>
 </table>
@@ -1737,7 +1724,7 @@ ABCIのBeeONDではストレージサーバ数、メタデータサーバ数を�
 <span class="c1">#$-v BEEOND_STORAGE_SERVER=4</span>
 <span class="c1">#$-cwd</span>
 
-beegfs-df -p /beeond
+beegfs-df<span class="w"> </span>-p<span class="w"> </span>/beeond
 </code></pre></div>
 
 <p>出力例</p>
@@ -1762,21 +1749,21 @@ TargetID   Cap. Pool        Total         Free    %      ITotal       IFree    %
 <table>
 <thead>
 <tr>
-<th align="center">設定項目</th>
-<th align="right">デフォルト値</th>
-<th align="left">説明</th>
+<th style="text-align: center;">設定項目</th>
+<th style="text-align: right;">デフォルト値</th>
+<th style="text-align: left;">説明</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td align="center">ストライプサイズ</td>
-<td align="right">512 KB</td>
-<td align="left">ファイルの分割サイズ</td>
+<td style="text-align: center;">ストライプサイズ</td>
+<td style="text-align: right;">512 KB</td>
+<td style="text-align: left;">ファイルの分割サイズ</td>
 </tr>
 <tr>
-<td align="center">ストライプカウント</td>
-<td align="right">4</td>
-<td align="left">分割したファイル断片を格納するストレージサーバの数</td>
+<td style="text-align: center;">ストライプカウント</td>
+<td style="text-align: right;">4</td>
+<td style="text-align: left;">分割したファイル断片を格納するストレージサーバの数</td>
 </tr>
 </tbody>
 </table>
@@ -1790,9 +1777,9 @@ TargetID   Cap. Pool        Total         Free    %      ITotal       IFree    %
 <span class="c1">#$-cwd</span>
 
 <span class="nv">BEEOND_DIR</span><span class="o">=</span>/beeond/data
-mkdir <span class="si">${</span><span class="nv">BEEOND_DIR</span><span class="si">}</span>
-beegfs-ctl --setpattern --numtargets<span class="o">=</span><span class="m">8</span> --chunksize<span class="o">=</span>4M --mount<span class="o">=</span>/beeond <span class="si">${</span><span class="nv">BEEOND_DIR</span><span class="si">}</span>
-beegfs-ctl --mount<span class="o">=</span>/beeond --getentryinfo <span class="si">${</span><span class="nv">BEEOND_DIR</span><span class="si">}</span>
+mkdir<span class="w"> </span><span class="si">${</span><span class="nv">BEEOND_DIR</span><span class="si">}</span>
+beegfs-ctl<span class="w"> </span>--setpattern<span class="w"> </span>--numtargets<span class="o">=</span><span class="m">8</span><span class="w"> </span>--chunksize<span class="o">=</span>4M<span class="w"> </span>--mount<span class="o">=</span>/beeond<span class="w"> </span><span class="si">${</span><span class="nv">BEEOND_DIR</span><span class="si">}</span>
+beegfs-ctl<span class="w"> </span>--mount<span class="o">=</span>/beeond<span class="w"> </span>--getentryinfo<span class="w"> </span><span class="si">${</span><span class="nv">BEEOND_DIR</span><span class="si">}</span>
 </code></pre></div>
 
 <p>出力例</p>

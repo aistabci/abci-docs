@@ -16,7 +16,7 @@
         <link rel="canonical" href="https://docs.abci.ai/en/tips/remote-desktop/">
       
       <link rel="icon" href="../../img/favicon.png">
-      <meta name="generator" content="mkdocs-1.1.2, mkdocs-material-7.1.3">
+      <meta name="generator" content="mkdocs-1.2.4, mkdocs-material-7.1.3">
     
     
       
@@ -1172,50 +1172,42 @@
 <ul>
 <li>Login to the interactive node, and launch <code>vncserver</code> for initial settings </li>
 </ul>
-<div class="codehilite"><pre><span></span><code><span class="o">[</span><span class="n">username@es1 ~</span><span class="o">]</span><span class="err">$</span><span class="w"> </span><span class="n">vncserver</span><span class="w"></span>
-<span class="n">You</span><span class="w"> </span><span class="n">will</span><span class="w"> </span><span class="n">require</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="n">password</span><span class="w"> </span><span class="k">to</span><span class="w"> </span><span class="n">access</span><span class="w"> </span><span class="n">your</span><span class="w"> </span><span class="n">desktops</span><span class="p">.</span><span class="w"></span>
+<div class="codehilite"><pre><span></span><code><span class="o">[</span><span class="n">username@es1 ~</span><span class="o">]</span><span class="err">$</span><span class="w"> </span><span class="n">vncserver</span>
+<span class="n">You</span><span class="w"> </span><span class="n">will</span><span class="w"> </span><span class="n">require</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="n">password</span><span class="w"> </span><span class="k">to</span><span class="w"> </span><span class="n">access</span><span class="w"> </span><span class="n">your</span><span class="w"> </span><span class="n">desktops</span><span class="p">.</span>
 
-<span class="nl">Password</span><span class="p">:</span><span class="w"></span>
-<span class="nl">Verify</span><span class="p">:</span><span class="w"></span>
-<span class="n">Would</span><span class="w"> </span><span class="n">you</span><span class="w"> </span><span class="ow">like</span><span class="w"> </span><span class="k">to</span><span class="w"> </span><span class="n">enter</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="k">view</span><span class="o">-</span><span class="k">only</span><span class="w"> </span><span class="n">password</span><span class="w"> </span><span class="p">(</span><span class="n">y</span><span class="o">/</span><span class="n">n</span><span class="p">)</span><span class="vm">?</span><span class="w"> </span><span class="n">n</span><span class="w"></span>
+<span class="nl">Password</span><span class="p">:</span>
+<span class="nl">Verify</span><span class="p">:</span>
+<span class="n">Would</span><span class="w"> </span><span class="n">you</span><span class="w"> </span><span class="ow">like</span><span class="w"> </span><span class="k">to</span><span class="w"> </span><span class="n">enter</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="k">view</span><span class="o">-</span><span class="k">only</span><span class="w"> </span><span class="n">password</span><span class="w"> </span><span class="p">(</span><span class="n">y</span><span class="o">/</span><span class="n">n</span><span class="p">)</span><span class="vm">?</span><span class="w"> </span><span class="n">n</span>
 
-<span class="k">New</span><span class="w"> </span><span class="s1">&#39;es1.abci.local:1 (username)&#39;</span><span class="w"> </span><span class="n">desktop</span><span class="w"> </span><span class="k">is</span><span class="w"> </span><span class="n">es1</span><span class="p">.</span><span class="n">abci</span><span class="p">.</span><span class="k">local</span><span class="err">:</span><span class="mi">1</span><span class="w"></span>
+<span class="k">New</span><span class="w"> </span><span class="s1">&#39;es1.abci.local:1 (username)&#39;</span><span class="w"> </span><span class="n">desktop</span><span class="w"> </span><span class="k">is</span><span class="w"> </span><span class="n">es1</span><span class="p">.</span><span class="n">abci</span><span class="p">.</span><span class="k">local</span><span class="err">:</span><span class="mi">1</span>
 
-<span class="n">Creating</span><span class="w"> </span><span class="k">default</span><span class="w"> </span><span class="n">startup</span><span class="w"> </span><span class="n">script</span><span class="w"> </span><span class="o">/</span><span class="n">home</span><span class="o">/</span><span class="n">username</span><span class="o">/</span><span class="p">.</span><span class="n">vnc</span><span class="o">/</span><span class="n">xstartup</span><span class="w"></span>
-<span class="n">Creating</span><span class="w"> </span><span class="k">default</span><span class="w"> </span><span class="n">config</span><span class="w"> </span><span class="o">/</span><span class="n">home</span><span class="o">/</span><span class="n">username</span><span class="o">/</span><span class="p">.</span><span class="n">vnc</span><span class="o">/</span><span class="n">config</span><span class="w"></span>
-<span class="n">Starting</span><span class="w"> </span><span class="n">applications</span><span class="w"> </span><span class="n">specified</span><span class="w"> </span><span class="ow">in</span><span class="w"> </span><span class="o">/</span><span class="n">home</span><span class="o">/</span><span class="n">username</span><span class="o">/</span><span class="p">.</span><span class="n">vnc</span><span class="o">/</span><span class="n">xstartup</span><span class="w"></span>
-<span class="nf">Log</span><span class="w"> </span><span class="k">file</span><span class="w"> </span><span class="k">is</span><span class="w"> </span><span class="o">/</span><span class="n">home</span><span class="o">/</span><span class="n">username</span><span class="o">/</span><span class="p">.</span><span class="n">vnc</span><span class="o">/</span><span class="n">es4</span><span class="p">.</span><span class="n">abci</span><span class="p">.</span><span class="k">local</span><span class="err">:</span><span class="mf">1.</span><span class="nf">log</span><span class="w"></span>
+<span class="n">Creating</span><span class="w"> </span><span class="k">default</span><span class="w"> </span><span class="n">startup</span><span class="w"> </span><span class="n">script</span><span class="w"> </span><span class="o">/</span><span class="n">home</span><span class="o">/</span><span class="n">username</span><span class="o">/</span><span class="p">.</span><span class="n">vnc</span><span class="o">/</span><span class="n">xstartup</span>
+<span class="n">Creating</span><span class="w"> </span><span class="k">default</span><span class="w"> </span><span class="n">config</span><span class="w"> </span><span class="o">/</span><span class="n">home</span><span class="o">/</span><span class="n">username</span><span class="o">/</span><span class="p">.</span><span class="n">vnc</span><span class="o">/</span><span class="n">config</span>
+<span class="n">Starting</span><span class="w"> </span><span class="n">applications</span><span class="w"> </span><span class="n">specified</span><span class="w"> </span><span class="ow">in</span><span class="w"> </span><span class="o">/</span><span class="n">home</span><span class="o">/</span><span class="n">username</span><span class="o">/</span><span class="p">.</span><span class="n">vnc</span><span class="o">/</span><span class="n">xstartup</span>
+<span class="nf">Log</span><span class="w"> </span><span class="k">file</span><span class="w"> </span><span class="k">is</span><span class="w"> </span><span class="o">/</span><span class="n">home</span><span class="o">/</span><span class="n">username</span><span class="o">/</span><span class="p">.</span><span class="n">vnc</span><span class="o">/</span><span class="n">es4</span><span class="p">.</span><span class="n">abci</span><span class="p">.</span><span class="k">local</span><span class="err">:</span><span class="mf">1.</span><span class="nf">log</span>
 </code></pre></div>
 
 <ul>
 <li>Stop VNC server</li>
 </ul>
-<div class="codehilite"><pre><span></span><code><span class="o">[</span><span class="n">username@es1 ~</span><span class="o">]</span><span class="err">$</span><span class="w"> </span><span class="n">vncserver</span><span class="w"> </span><span class="o">-</span><span class="k">kill</span><span class="w"> </span><span class="err">:</span><span class="mi">1</span><span class="w"></span>
+<div class="codehilite"><pre><span></span><code><span class="o">[</span><span class="n">username@es1 ~</span><span class="o">]</span><span class="err">$</span><span class="w"> </span><span class="n">vncserver</span><span class="w"> </span><span class="o">-</span><span class="k">kill</span><span class="w"> </span><span class="err">:</span><span class="mi">1</span>
 </code></pre></div>
 
 <ul>
 <li>Edit some configuration files</li>
 </ul>
 <p>$HOME/.vnc/xstartup:</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">1</span>
-<span class="normal">2</span>
-<span class="normal">3</span>
-<span class="normal">4</span>
-<span class="normal">5</span>
-<span class="normal">6</span>
-<span class="normal">7</span>
-<span class="normal">8</span>
-<span class="normal">9</span></pre></div></td><td class="code"><div class="codehilite"><pre><span></span><code><span class="ch">#!/bin/sh</span>
+<div class="codehilite"><pre><span></span><code><span class="ch">#!/bin/sh</span>
 
-<span class="nb">unset</span> SESSION_MANAGER
-<span class="nb">unset</span> DBUS_SESSION_BUS_ADDRESS
+<span class="nb">unset</span><span class="w"> </span>SESSION_MANAGER
+<span class="nb">unset</span><span class="w"> </span>DBUS_SESSION_BUS_ADDRESS
 <span class="c1">#exec /etc/X11/xinit/xinitrc</span>
 
-xrdb <span class="nv">$HOME</span>/.Xresources
+xrdb<span class="w"> </span><span class="nv">$HOME</span>/.Xresources
 
-startxfce4 <span class="p">&amp;</span>
+startxfce4<span class="w"> </span><span class="p">&amp;</span>
 </code></pre></div>
-</td></tr></table>
+
 <p>You can change screen size to edit $HOME/.vnc/config if needed.</p>
 <div class="codehilite"><pre><span></span><code>geometry=2000x1200
 </code></pre></div>
@@ -1223,26 +1215,26 @@ startxfce4 <span class="p">&amp;</span>
 <ul>
 <li>Login to ABCI</li>
 </ul>
-<div class="codehilite"><pre><span></span><code><span class="o">[</span><span class="n">user@localmachine</span><span class="o">]</span><span class="err">$</span><span class="w"> </span><span class="n">ssh</span><span class="w"> </span><span class="o">-</span><span class="n">J</span><span class="w"> </span><span class="o">%</span><span class="n">r</span><span class="nv">@as</span><span class="p">.</span><span class="n">abci</span><span class="p">.</span><span class="n">ai</span><span class="w"> </span><span class="n">username</span><span class="nv">@es</span><span class="w"></span>
+<div class="codehilite"><pre><span></span><code><span class="o">[</span><span class="n">user@localmachine</span><span class="o">]</span><span class="err">$</span><span class="w"> </span><span class="n">ssh</span><span class="w"> </span><span class="o">-</span><span class="n">J</span><span class="w"> </span><span class="o">%</span><span class="n">r</span><span class="nv">@as</span><span class="p">.</span><span class="n">abci</span><span class="p">.</span><span class="n">ai</span><span class="w"> </span><span class="n">username</span><span class="nv">@es</span>
 </code></pre></div>
 
 <ul>
 <li>Login to a compute node which is assigned by AGE with ABCI On-demand service and resource type rt_F.</li>
 </ul>
-<div class="codehilite"><pre><span></span><code><span class="o">[</span><span class="n">username@es1 ~</span><span class="o">]</span><span class="err">$</span><span class="w"> </span><span class="n">qrsh</span><span class="w"> </span><span class="o">-</span><span class="n">g</span><span class="w"> </span><span class="n">grpname</span><span class="w"> </span><span class="o">-</span><span class="n">l</span><span class="w"> </span><span class="n">rt_F</span><span class="o">=</span><span class="mi">1</span><span class="w"> </span><span class="o">-</span><span class="n">l</span><span class="w"> </span><span class="n">h_rt</span><span class="o">=</span><span class="mi">1</span><span class="err">:</span><span class="mi">00</span><span class="err">:</span><span class="mi">00</span><span class="w"></span>
+<div class="codehilite"><pre><span></span><code><span class="o">[</span><span class="n">username@es1 ~</span><span class="o">]</span><span class="err">$</span><span class="w"> </span><span class="n">qrsh</span><span class="w"> </span><span class="o">-</span><span class="n">g</span><span class="w"> </span><span class="n">grpname</span><span class="w"> </span><span class="o">-</span><span class="n">l</span><span class="w"> </span><span class="n">rt_F</span><span class="o">=</span><span class="mi">1</span><span class="w"> </span><span class="o">-</span><span class="n">l</span><span class="w"> </span><span class="n">h_rt</span><span class="o">=</span><span class="mi">1</span><span class="err">:</span><span class="mi">00</span><span class="err">:</span><span class="mi">00</span>
 </code></pre></div>
 
 <ul>
 <li>Launch <code>vncserver</code></li>
 </ul>
-<div class="codehilite"><pre><span></span><code><span class="o">[</span><span class="n">username@g0001 ~</span><span class="o">]</span><span class="err">$</span><span class="w"> </span><span class="n">vncserver</span><span class="w"></span>
+<div class="codehilite"><pre><span></span><code><span class="o">[</span><span class="n">username@g0001 ~</span><span class="o">]</span><span class="err">$</span><span class="w"> </span><span class="n">vncserver</span>
 
-<span class="k">New</span><span class="w"> </span><span class="s1">&#39;g0001.abci.local:1 (username)&#39;</span><span class="w"> </span><span class="n">desktop</span><span class="w"> </span><span class="k">is</span><span class="w"> </span><span class="n">g0001</span><span class="p">.</span><span class="n">abci</span><span class="p">.</span><span class="k">local</span><span class="err">:</span><span class="mi">1</span><span class="w"></span>
+<span class="k">New</span><span class="w"> </span><span class="s1">&#39;g0001.abci.local:1 (username)&#39;</span><span class="w"> </span><span class="n">desktop</span><span class="w"> </span><span class="k">is</span><span class="w"> </span><span class="n">g0001</span><span class="p">.</span><span class="n">abci</span><span class="p">.</span><span class="k">local</span><span class="err">:</span><span class="mi">1</span>
 
-<span class="n">Starting</span><span class="w"> </span><span class="n">applications</span><span class="w"> </span><span class="n">specified</span><span class="w"> </span><span class="ow">in</span><span class="w"> </span><span class="o">/</span><span class="n">home</span><span class="o">/</span><span class="n">username</span><span class="o">/</span><span class="p">.</span><span class="n">vnc</span><span class="o">/</span><span class="n">xstartup</span><span class="w"></span>
-<span class="nf">Log</span><span class="w"> </span><span class="k">file</span><span class="w"> </span><span class="k">is</span><span class="w"> </span><span class="o">/</span><span class="n">home</span><span class="o">/</span><span class="n">username</span><span class="o">/</span><span class="p">.</span><span class="n">vnc</span><span class="o">/</span><span class="n">g0001</span><span class="p">.</span><span class="n">abci</span><span class="p">.</span><span class="k">local</span><span class="err">:</span><span class="mf">1.</span><span class="nf">log</span><span class="w"></span>
+<span class="n">Starting</span><span class="w"> </span><span class="n">applications</span><span class="w"> </span><span class="n">specified</span><span class="w"> </span><span class="ow">in</span><span class="w"> </span><span class="o">/</span><span class="n">home</span><span class="o">/</span><span class="n">username</span><span class="o">/</span><span class="p">.</span><span class="n">vnc</span><span class="o">/</span><span class="n">xstartup</span>
+<span class="nf">Log</span><span class="w"> </span><span class="k">file</span><span class="w"> </span><span class="k">is</span><span class="w"> </span><span class="o">/</span><span class="n">home</span><span class="o">/</span><span class="n">username</span><span class="o">/</span><span class="p">.</span><span class="n">vnc</span><span class="o">/</span><span class="n">g0001</span><span class="p">.</span><span class="n">abci</span><span class="p">.</span><span class="k">local</span><span class="err">:</span><span class="mf">1.</span><span class="nf">log</span>
 
-<span class="o">[</span><span class="n">username@g0001 ~</span><span class="o">]</span><span class="err">$</span><span class="w"></span>
+<span class="o">[</span><span class="n">username@g0001 ~</span><span class="o">]</span><span class="err">$</span>
 </code></pre></div>
 
 <p>g0001.abci.local:1 is the display name of the VNC server you launched. Port 5901 is assinged to the connection to this server.
@@ -1254,17 +1246,17 @@ In general, you can connect to the VNC server using a port with the display numb
 <h4 id="create-an-ssh-tunnel">Create an SSH tunnel</h4>
 <p>To connect to the VNC server by using Port 5901 of your computer, you need to create an SSH tunnel between <code>localhost:5901</code> and  <code>g0001.abci.local:5901</code>.</p>
 <p>If you have OpenSSH 7.3 or later, you can create an SSH tunnel with the following command:</p>
-<div class="codehilite"><pre><span></span><code><span class="o">[</span><span class="n">user@localmachine</span><span class="o">]</span><span class="err">$</span><span class="w"> </span><span class="n">ssh</span><span class="w"> </span><span class="o">-</span><span class="n">N</span><span class="w"> </span><span class="o">-</span><span class="n">L</span><span class="w"> </span><span class="mi">5901</span><span class="err">:</span><span class="n">g0001</span><span class="p">.</span><span class="n">abci</span><span class="p">.</span><span class="k">local</span><span class="err">:</span><span class="mi">5901</span><span class="w"> </span><span class="o">-</span><span class="n">J</span><span class="w"> </span><span class="o">%</span><span class="n">r</span><span class="nv">@as</span><span class="p">.</span><span class="n">abci</span><span class="p">.</span><span class="n">ai</span><span class="w"> </span><span class="n">username</span><span class="nv">@es</span><span class="w"></span>
+<div class="codehilite"><pre><span></span><code><span class="o">[</span><span class="n">user@localmachine</span><span class="o">]</span><span class="err">$</span><span class="w"> </span><span class="n">ssh</span><span class="w"> </span><span class="o">-</span><span class="n">N</span><span class="w"> </span><span class="o">-</span><span class="n">L</span><span class="w"> </span><span class="mi">5901</span><span class="err">:</span><span class="n">g0001</span><span class="p">.</span><span class="n">abci</span><span class="p">.</span><span class="k">local</span><span class="err">:</span><span class="mi">5901</span><span class="w"> </span><span class="o">-</span><span class="n">J</span><span class="w"> </span><span class="o">%</span><span class="n">r</span><span class="nv">@as</span><span class="p">.</span><span class="n">abci</span><span class="p">.</span><span class="n">ai</span><span class="w"> </span><span class="n">username</span><span class="nv">@es</span>
 </code></pre></div>
 
 <p>If you cannot use ProxyJump, you can also create one with the following command:</p>
-<div class="codehilite"><pre><span></span><code><span class="o">[</span><span class="n">user@localmachine</span><span class="o">]</span><span class="err">$</span><span class="w"> </span><span class="n">ssh</span><span class="w"> </span><span class="o">-</span><span class="n">L</span><span class="w"> </span><span class="mi">10022</span><span class="err">:</span><span class="nl">es</span><span class="p">:</span><span class="mi">22</span><span class="w"> </span><span class="o">-</span><span class="n">l</span><span class="w"> </span><span class="n">username</span><span class="w"> </span><span class="k">as</span><span class="p">.</span><span class="n">abci</span><span class="p">.</span><span class="n">ai</span><span class="w"></span>
-<span class="o">[</span><span class="n">user@localmachine</span><span class="o">]</span><span class="err">$</span><span class="w"> </span><span class="n">ssh</span><span class="w"> </span><span class="o">-</span><span class="n">p</span><span class="w"> </span><span class="mi">10022</span><span class="w"> </span><span class="o">-</span><span class="n">N</span><span class="w"> </span><span class="o">-</span><span class="n">L</span><span class="w"> </span><span class="mi">5901</span><span class="err">:</span><span class="n">g0001</span><span class="p">.</span><span class="n">abci</span><span class="p">.</span><span class="k">local</span><span class="err">:</span><span class="mi">5901</span><span class="w"> </span><span class="o">-</span><span class="n">l</span><span class="w"> </span><span class="n">username</span><span class="w"> </span><span class="n">localhost</span><span class="w"></span>
+<div class="codehilite"><pre><span></span><code><span class="o">[</span><span class="n">user@localmachine</span><span class="o">]</span><span class="err">$</span><span class="w"> </span><span class="n">ssh</span><span class="w"> </span><span class="o">-</span><span class="n">L</span><span class="w"> </span><span class="mi">10022</span><span class="err">:</span><span class="nl">es</span><span class="p">:</span><span class="mi">22</span><span class="w"> </span><span class="o">-</span><span class="n">l</span><span class="w"> </span><span class="n">username</span><span class="w"> </span><span class="k">as</span><span class="p">.</span><span class="n">abci</span><span class="p">.</span><span class="n">ai</span>
+<span class="o">[</span><span class="n">user@localmachine</span><span class="o">]</span><span class="err">$</span><span class="w"> </span><span class="n">ssh</span><span class="w"> </span><span class="o">-</span><span class="n">p</span><span class="w"> </span><span class="mi">10022</span><span class="w"> </span><span class="o">-</span><span class="n">N</span><span class="w"> </span><span class="o">-</span><span class="n">L</span><span class="w"> </span><span class="mi">5901</span><span class="err">:</span><span class="n">g0001</span><span class="p">.</span><span class="n">abci</span><span class="p">.</span><span class="k">local</span><span class="err">:</span><span class="mi">5901</span><span class="w"> </span><span class="o">-</span><span class="n">l</span><span class="w"> </span><span class="n">username</span><span class="w"> </span><span class="n">localhost</span>
 </code></pre></div>
 
 <h4 id="launch-vnc-client">Launch VNC client</h4>
 <p>In macOS, VNC client is integrated in Finder. So, you can connect to the VNC server by the following command:</p>
-<div class="codehilite"><pre><span></span><code><span class="o">[</span><span class="n">user@localmachine</span><span class="o">]</span><span class="err">$</span><span class="w"> </span><span class="k">open</span><span class="w"> </span><span class="nl">vnc</span><span class="p">:</span><span class="o">//</span><span class="nl">localhost</span><span class="p">:</span><span class="mi">5901</span><span class="o">/</span><span class="w"></span>
+<div class="codehilite"><pre><span></span><code><span class="o">[</span><span class="n">user@localmachine</span><span class="o">]</span><span class="err">$</span><span class="w"> </span><span class="k">open</span><span class="w"> </span><span class="nl">vnc</span><span class="p">:</span><span class="o">//</span><span class="nl">localhost</span><span class="p">:</span><span class="mi">5901</span><span class="o">/</span>
 </code></pre></div>
 
 <p>If not using macOS, you need to install a VNC client separately and configure it to connect to the VNC server.</p>
@@ -1274,22 +1266,22 @@ In general, you can connect to the VNC server using a port with the display numb
 <table>
 <thead>
 <tr>
-<th align="left">item</th>
-<th align="left">value</th>
+<th style="text-align: left;">item</th>
+<th style="text-align: left;">value</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td align="left">sample image</td>
-<td align="left"><img src="vnc_portfw_putty_01.png"  width="480" title="putty:ssh tunnel" ></td>
+<td style="text-align: left;">sample image</td>
+<td style="text-align: left;"><img src="vnc_portfw_putty_01.png"  width="480" title="putty:ssh tunnel" ></td>
 </tr>
 <tr>
-<td align="left">local port</td>
-<td align="left">port number which you can use on your system. ex) 15901</td>
+<td style="text-align: left;">local port</td>
+<td style="text-align: left;">port number which you can use on your system. ex) 15901</td>
 </tr>
 <tr>
-<td align="left">remote host:port</td>
-<td align="left">hostname of compute node and port number of VNC server ex) g0123:5901)</td>
+<td style="text-align: left;">remote host:port</td>
+<td style="text-align: left;">hostname of compute node and port number of VNC server ex) g0123:5901)</td>
 </tr>
 </tbody>
 </table>
@@ -1304,17 +1296,17 @@ In the example of Tiger VNC client, hostname and port number are connected by ":
 <ul>
 <li>stop VNC service and exit compute node.</li>
 </ul>
-<div class="codehilite"><pre><span></span><code><span class="o">[</span><span class="n">username@g0001 ~</span><span class="o">]</span><span class="err">$</span><span class="w"> </span><span class="n">vncserver</span><span class="w"> </span><span class="o">-</span><span class="n">list</span><span class="w"></span>
+<div class="codehilite"><pre><span></span><code><span class="o">[</span><span class="n">username@g0001 ~</span><span class="o">]</span><span class="err">$</span><span class="w"> </span><span class="n">vncserver</span><span class="w"> </span><span class="o">-</span><span class="n">list</span>
 
-<span class="n">TigerVNC</span><span class="w"> </span><span class="n">server</span><span class="w"> </span><span class="nl">sessions</span><span class="p">:</span><span class="w"></span>
+<span class="n">TigerVNC</span><span class="w"> </span><span class="n">server</span><span class="w"> </span><span class="nl">sessions</span><span class="p">:</span>
 
-<span class="n">X</span><span class="w"> </span><span class="n">DISPLAY</span><span class="w"> </span><span class="err">#</span><span class="w">     </span><span class="n">PROCESS</span><span class="w"> </span><span class="n">ID</span><span class="w"></span>
-<span class="err">:</span><span class="mi">1</span><span class="w">              </span><span class="mi">5081</span><span class="w"></span>
+<span class="n">X</span><span class="w"> </span><span class="n">DISPLAY</span><span class="w"> </span><span class="err">#</span><span class="w">     </span><span class="n">PROCESS</span><span class="w"> </span><span class="n">ID</span>
+<span class="err">:</span><span class="mi">1</span><span class="w">              </span><span class="mi">5081</span>
 
-<span class="o">[</span><span class="n">username@g0001 ~</span><span class="o">]</span><span class="err">$</span><span class="w"> </span><span class="n">vncserver</span><span class="w"> </span><span class="o">-</span><span class="k">kill</span><span class="w"> </span><span class="err">:</span><span class="mi">1</span><span class="w"></span>
-<span class="n">Killing</span><span class="w"> </span><span class="n">Xvnc</span><span class="w"> </span><span class="n">process</span><span class="w"> </span><span class="n">ID</span><span class="w"> </span><span class="n">XXXXXX</span><span class="w"></span>
-<span class="o">[</span><span class="n">username@g0001 ~</span><span class="o">]</span><span class="err">$</span><span class="w"> </span><span class="k">exit</span><span class="w"></span>
-<span class="o">[</span><span class="n">username@es1 ~</span><span class="o">]</span><span class="err">$</span><span class="w"></span>
+<span class="o">[</span><span class="n">username@g0001 ~</span><span class="o">]</span><span class="err">$</span><span class="w"> </span><span class="n">vncserver</span><span class="w"> </span><span class="o">-</span><span class="k">kill</span><span class="w"> </span><span class="err">:</span><span class="mi">1</span>
+<span class="n">Killing</span><span class="w"> </span><span class="n">Xvnc</span><span class="w"> </span><span class="n">process</span><span class="w"> </span><span class="n">ID</span><span class="w"> </span><span class="n">XXXXXX</span>
+<span class="o">[</span><span class="n">username@g0001 ~</span><span class="o">]</span><span class="err">$</span><span class="w"> </span><span class="k">exit</span>
+<span class="o">[</span><span class="n">username@es1 ~</span><span class="o">]</span><span class="err">$</span>
 </code></pre></div>
                 
               

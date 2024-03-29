@@ -16,7 +16,7 @@
         <link rel="canonical" href="https://docs.abci.ai/ja/tips/remote-desktop/">
       
       <link rel="icon" href="../../img/favicon.png">
-      <meta name="generator" content="mkdocs-1.1.2, mkdocs-material-7.1.3">
+      <meta name="generator" content="mkdocs-1.2.4, mkdocs-material-7.1.3">
     
     
       
@@ -1208,48 +1208,41 @@
 <ul>
 <li>vncserverを起動し、VNCサーバのパスワードなどの初期設定をします。</li>
 </ul>
-<div class="codehilite"><pre><span></span><code><span class="o">[</span><span class="n">username@es1 ~</span><span class="o">]</span><span class="err">$</span><span class="w"> </span><span class="n">vncserver</span><span class="w"></span>
-<span class="n">You</span><span class="w"> </span><span class="n">will</span><span class="w"> </span><span class="n">require</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="n">password</span><span class="w"> </span><span class="k">to</span><span class="w"> </span><span class="n">access</span><span class="w"> </span><span class="n">your</span><span class="w"> </span><span class="n">desktops</span><span class="p">.</span><span class="w"></span>
+<div class="codehilite"><pre><span></span><code><span class="o">[</span><span class="n">username@es1 ~</span><span class="o">]</span><span class="err">$</span><span class="w"> </span><span class="n">vncserver</span>
+<span class="n">You</span><span class="w"> </span><span class="n">will</span><span class="w"> </span><span class="n">require</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="n">password</span><span class="w"> </span><span class="k">to</span><span class="w"> </span><span class="n">access</span><span class="w"> </span><span class="n">your</span><span class="w"> </span><span class="n">desktops</span><span class="p">.</span>
 
-<span class="nl">Password</span><span class="p">:</span><span class="w"></span>
-<span class="nl">Verify</span><span class="p">:</span><span class="w"></span>
-<span class="n">Would</span><span class="w"> </span><span class="n">you</span><span class="w"> </span><span class="ow">like</span><span class="w"> </span><span class="k">to</span><span class="w"> </span><span class="n">enter</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="k">view</span><span class="o">-</span><span class="k">only</span><span class="w"> </span><span class="n">password</span><span class="w"> </span><span class="p">(</span><span class="n">y</span><span class="o">/</span><span class="n">n</span><span class="p">)</span><span class="vm">?</span><span class="w"> </span><span class="n">n</span><span class="w"></span>
+<span class="nl">Password</span><span class="p">:</span>
+<span class="nl">Verify</span><span class="p">:</span>
+<span class="n">Would</span><span class="w"> </span><span class="n">you</span><span class="w"> </span><span class="ow">like</span><span class="w"> </span><span class="k">to</span><span class="w"> </span><span class="n">enter</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="k">view</span><span class="o">-</span><span class="k">only</span><span class="w"> </span><span class="n">password</span><span class="w"> </span><span class="p">(</span><span class="n">y</span><span class="o">/</span><span class="n">n</span><span class="p">)</span><span class="vm">?</span><span class="w"> </span><span class="n">n</span>
 
-<span class="k">New</span><span class="w"> </span><span class="s1">&#39;es1.abci.local:1 (username)&#39;</span><span class="w"> </span><span class="n">desktop</span><span class="w"> </span><span class="k">is</span><span class="w"> </span><span class="n">es1</span><span class="p">.</span><span class="n">abci</span><span class="p">.</span><span class="k">local</span><span class="err">:</span><span class="mi">1</span><span class="w"></span>
+<span class="k">New</span><span class="w"> </span><span class="s1">&#39;es1.abci.local:1 (username)&#39;</span><span class="w"> </span><span class="n">desktop</span><span class="w"> </span><span class="k">is</span><span class="w"> </span><span class="n">es1</span><span class="p">.</span><span class="n">abci</span><span class="p">.</span><span class="k">local</span><span class="err">:</span><span class="mi">1</span>
 
-<span class="n">Creating</span><span class="w"> </span><span class="k">default</span><span class="w"> </span><span class="n">startup</span><span class="w"> </span><span class="n">script</span><span class="w"> </span><span class="o">/</span><span class="n">home</span><span class="o">/</span><span class="n">username</span><span class="o">/</span><span class="p">.</span><span class="n">vnc</span><span class="o">/</span><span class="n">xstartup</span><span class="w"></span>
-<span class="n">Creating</span><span class="w"> </span><span class="k">default</span><span class="w"> </span><span class="n">config</span><span class="w"> </span><span class="o">/</span><span class="n">home</span><span class="o">/</span><span class="n">username</span><span class="o">/</span><span class="p">.</span><span class="n">vnc</span><span class="o">/</span><span class="n">config</span><span class="w"></span>
-<span class="n">Starting</span><span class="w"> </span><span class="n">applications</span><span class="w"> </span><span class="n">specified</span><span class="w"> </span><span class="ow">in</span><span class="w"> </span><span class="o">/</span><span class="n">home</span><span class="o">/</span><span class="n">username</span><span class="o">/</span><span class="p">.</span><span class="n">vnc</span><span class="o">/</span><span class="n">xstartup</span><span class="w"></span>
-<span class="nf">Log</span><span class="w"> </span><span class="k">file</span><span class="w"> </span><span class="k">is</span><span class="w"> </span><span class="o">/</span><span class="n">home</span><span class="o">/</span><span class="n">username</span><span class="o">/</span><span class="p">.</span><span class="n">vnc</span><span class="o">/</span><span class="n">es4</span><span class="p">.</span><span class="n">abci</span><span class="p">.</span><span class="k">local</span><span class="err">:</span><span class="mf">1.</span><span class="nf">log</span><span class="w"></span>
+<span class="n">Creating</span><span class="w"> </span><span class="k">default</span><span class="w"> </span><span class="n">startup</span><span class="w"> </span><span class="n">script</span><span class="w"> </span><span class="o">/</span><span class="n">home</span><span class="o">/</span><span class="n">username</span><span class="o">/</span><span class="p">.</span><span class="n">vnc</span><span class="o">/</span><span class="n">xstartup</span>
+<span class="n">Creating</span><span class="w"> </span><span class="k">default</span><span class="w"> </span><span class="n">config</span><span class="w"> </span><span class="o">/</span><span class="n">home</span><span class="o">/</span><span class="n">username</span><span class="o">/</span><span class="p">.</span><span class="n">vnc</span><span class="o">/</span><span class="n">config</span>
+<span class="n">Starting</span><span class="w"> </span><span class="n">applications</span><span class="w"> </span><span class="n">specified</span><span class="w"> </span><span class="ow">in</span><span class="w"> </span><span class="o">/</span><span class="n">home</span><span class="o">/</span><span class="n">username</span><span class="o">/</span><span class="p">.</span><span class="n">vnc</span><span class="o">/</span><span class="n">xstartup</span>
+<span class="nf">Log</span><span class="w"> </span><span class="k">file</span><span class="w"> </span><span class="k">is</span><span class="w"> </span><span class="o">/</span><span class="n">home</span><span class="o">/</span><span class="n">username</span><span class="o">/</span><span class="p">.</span><span class="n">vnc</span><span class="o">/</span><span class="n">es4</span><span class="p">.</span><span class="n">abci</span><span class="p">.</span><span class="k">local</span><span class="err">:</span><span class="mf">1.</span><span class="nf">log</span>
 </code></pre></div>
 
 <ul>
 <li>一旦終了します。</li>
 </ul>
-<div class="codehilite"><pre><span></span><code><span class="o">[</span><span class="n">username@es1 ~</span><span class="o">]</span><span class="err">$</span><span class="w"> </span><span class="n">vncserver</span><span class="w"> </span><span class="o">-</span><span class="k">kill</span><span class="w"> </span><span class="err">:</span><span class="mi">1</span><span class="w"></span>
+<div class="codehilite"><pre><span></span><code><span class="o">[</span><span class="n">username@es1 ~</span><span class="o">]</span><span class="err">$</span><span class="w"> </span><span class="n">vncserver</span><span class="w"> </span><span class="o">-</span><span class="k">kill</span><span class="w"> </span><span class="err">:</span><span class="mi">1</span>
 </code></pre></div>
 
 <ul>
 <li>設定ファイルをいくつか修正します。</li>
 </ul>
 <p>$HOME/.vnc/xstartup を以下のとおり編集します。</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">1</span>
-<span class="normal">2</span>
-<span class="normal">3</span>
-<span class="normal">4</span>
-<span class="normal">5</span>
-<span class="normal">6</span>
-<span class="normal">7</span>
-<span class="normal">8</span></pre></div></td><td class="code"><div class="codehilite"><pre><span></span><code><span class="ch">#!/bin/sh</span>
+<div class="codehilite"><pre><span></span><code><span class="ch">#!/bin/sh</span>
 
-<span class="nb">unset</span> SESSION_MANAGER
-<span class="nb">unset</span> DBUS_SESSION_BUS_ADDRESS
+<span class="nb">unset</span><span class="w"> </span>SESSION_MANAGER
+<span class="nb">unset</span><span class="w"> </span>DBUS_SESSION_BUS_ADDRESS
 <span class="c1">#exec /etc/X11/xinit/xinitrc</span>
 
-xrdb <span class="nv">$HOME</span>/.Xresources
-startxfce4 <span class="p">&amp;</span>
+xrdb<span class="w"> </span><span class="nv">$HOME</span>/.Xresources
+startxfce4<span class="w"> </span><span class="p">&amp;</span>
 </code></pre></div>
-</td></tr></table>
+
 <p>必要に応じて $HOME/.vnc/config でスクリーンサイズを変更しておきます。</p>
 <div class="codehilite"><pre><span></span><code>geometry=2000x1200
 </code></pre></div>
@@ -1257,26 +1250,26 @@ startxfce4 <span class="p">&amp;</span>
 <ul>
 <li>（ログインしていない場合は）ABCIにログインします。</li>
 </ul>
-<div class="codehilite"><pre><span></span><code><span class="o">[</span><span class="n">user@localmachine</span><span class="o">]</span><span class="err">$</span><span class="w"> </span><span class="n">ssh</span><span class="w"> </span><span class="o">-</span><span class="n">J</span><span class="w"> </span><span class="o">%</span><span class="n">r</span><span class="nv">@as</span><span class="p">.</span><span class="n">abci</span><span class="p">.</span><span class="n">ai</span><span class="w"> </span><span class="n">username</span><span class="nv">@es</span><span class="w"></span>
+<div class="codehilite"><pre><span></span><code><span class="o">[</span><span class="n">user@localmachine</span><span class="o">]</span><span class="err">$</span><span class="w"> </span><span class="n">ssh</span><span class="w"> </span><span class="o">-</span><span class="n">J</span><span class="w"> </span><span class="o">%</span><span class="n">r</span><span class="nv">@as</span><span class="p">.</span><span class="n">abci</span><span class="p">.</span><span class="n">ai</span><span class="w"> </span><span class="n">username</span><span class="nv">@es</span>
 </code></pre></div>
 
 <ul>
 <li>On-demand、ノード専有で1ノード確保してログインします。</li>
 </ul>
-<div class="codehilite"><pre><span></span><code><span class="o">[</span><span class="n">username@es1 ~</span><span class="o">]</span><span class="err">$</span><span class="w"> </span><span class="n">qrsh</span><span class="w"> </span><span class="o">-</span><span class="n">g</span><span class="w"> </span><span class="n">grpname</span><span class="w"> </span><span class="o">-</span><span class="n">l</span><span class="w"> </span><span class="n">rt_F</span><span class="o">=</span><span class="mi">1</span><span class="w"> </span><span class="o">-</span><span class="n">l</span><span class="w"> </span><span class="n">h_rt</span><span class="o">=</span><span class="mi">1</span><span class="err">:</span><span class="mi">00</span><span class="err">:</span><span class="mi">00</span><span class="w"></span>
+<div class="codehilite"><pre><span></span><code><span class="o">[</span><span class="n">username@es1 ~</span><span class="o">]</span><span class="err">$</span><span class="w"> </span><span class="n">qrsh</span><span class="w"> </span><span class="o">-</span><span class="n">g</span><span class="w"> </span><span class="n">grpname</span><span class="w"> </span><span class="o">-</span><span class="n">l</span><span class="w"> </span><span class="n">rt_F</span><span class="o">=</span><span class="mi">1</span><span class="w"> </span><span class="o">-</span><span class="n">l</span><span class="w"> </span><span class="n">h_rt</span><span class="o">=</span><span class="mi">1</span><span class="err">:</span><span class="mi">00</span><span class="err">:</span><span class="mi">00</span>
 </code></pre></div>
 
 <ul>
 <li>vncserverを起動します。</li>
 </ul>
-<div class="codehilite"><pre><span></span><code><span class="o">[</span><span class="n">username@g0001 ~</span><span class="o">]</span><span class="err">$</span><span class="w"> </span><span class="n">vncserver</span><span class="w"></span>
+<div class="codehilite"><pre><span></span><code><span class="o">[</span><span class="n">username@g0001 ~</span><span class="o">]</span><span class="err">$</span><span class="w"> </span><span class="n">vncserver</span>
 
-<span class="k">New</span><span class="w"> </span><span class="s1">&#39;g0001.abci.local:1 (username)&#39;</span><span class="w"> </span><span class="n">desktop</span><span class="w"> </span><span class="k">is</span><span class="w"> </span><span class="n">g0001</span><span class="p">.</span><span class="n">abci</span><span class="p">.</span><span class="k">local</span><span class="err">:</span><span class="mi">1</span><span class="w"></span>
+<span class="k">New</span><span class="w"> </span><span class="s1">&#39;g0001.abci.local:1 (username)&#39;</span><span class="w"> </span><span class="n">desktop</span><span class="w"> </span><span class="k">is</span><span class="w"> </span><span class="n">g0001</span><span class="p">.</span><span class="n">abci</span><span class="p">.</span><span class="k">local</span><span class="err">:</span><span class="mi">1</span>
 
-<span class="n">Starting</span><span class="w"> </span><span class="n">applications</span><span class="w"> </span><span class="n">specified</span><span class="w"> </span><span class="ow">in</span><span class="w"> </span><span class="o">/</span><span class="n">home</span><span class="o">/</span><span class="n">username</span><span class="o">/</span><span class="p">.</span><span class="n">vnc</span><span class="o">/</span><span class="n">xstartup</span><span class="w"></span>
-<span class="nf">Log</span><span class="w"> </span><span class="k">file</span><span class="w"> </span><span class="k">is</span><span class="w"> </span><span class="o">/</span><span class="n">home</span><span class="o">/</span><span class="n">username</span><span class="o">/</span><span class="p">.</span><span class="n">vnc</span><span class="o">/</span><span class="n">g0001</span><span class="p">.</span><span class="n">abci</span><span class="p">.</span><span class="k">local</span><span class="err">:</span><span class="mf">1.</span><span class="nf">log</span><span class="w"></span>
+<span class="n">Starting</span><span class="w"> </span><span class="n">applications</span><span class="w"> </span><span class="n">specified</span><span class="w"> </span><span class="ow">in</span><span class="w"> </span><span class="o">/</span><span class="n">home</span><span class="o">/</span><span class="n">username</span><span class="o">/</span><span class="p">.</span><span class="n">vnc</span><span class="o">/</span><span class="n">xstartup</span>
+<span class="nf">Log</span><span class="w"> </span><span class="k">file</span><span class="w"> </span><span class="k">is</span><span class="w"> </span><span class="o">/</span><span class="n">home</span><span class="o">/</span><span class="n">username</span><span class="o">/</span><span class="p">.</span><span class="n">vnc</span><span class="o">/</span><span class="n">g0001</span><span class="p">.</span><span class="n">abci</span><span class="p">.</span><span class="k">local</span><span class="err">:</span><span class="mf">1.</span><span class="nf">log</span>
 
-<span class="o">[</span><span class="n">username@g0001 ~</span><span class="o">]</span><span class="err">$</span><span class="w"></span>
+<span class="o">[</span><span class="n">username@g0001 ~</span><span class="o">]</span><span class="err">$</span>
 </code></pre></div>
 
 <p>g0001.abci.local:1 が起動したVNCサーバのディスプレイ名です。このVNCサーバには5901というポート番号が割り当てられます。:2の場合は5902、:3の場合は5903、とディスプレイ番号に5900を加えたポートが割り当てられます。</p>
@@ -1287,17 +1280,17 @@ startxfce4 <span class="p">&amp;</span>
 <h4 id="create-an-ssh-tunnel">SSHトンネルの設定</h4>
 <p>ローカルPCのポート5901を使ってVNCサーバに接続できるようにする場合、<code>localhost:5901</code>と<code>g0001.abci.local:5901</code>の間のSSHトンネルを作成する必要があります。</p>
 <p>ProxyJumpが利用可能なOpenSSH 7.3以降がインストールされている場合は、以下のように実行することでSSHトンネルを作成できます。</p>
-<div class="codehilite"><pre><span></span><code><span class="o">[</span><span class="n">user@localmachine</span><span class="o">]</span><span class="err">$</span><span class="w"> </span><span class="n">ssh</span><span class="w"> </span><span class="o">-</span><span class="n">N</span><span class="w"> </span><span class="o">-</span><span class="n">L</span><span class="w"> </span><span class="mi">5901</span><span class="err">:</span><span class="n">g0001</span><span class="p">.</span><span class="n">abci</span><span class="p">.</span><span class="k">local</span><span class="err">:</span><span class="mi">5901</span><span class="w"> </span><span class="o">-</span><span class="n">J</span><span class="w"> </span><span class="o">%</span><span class="n">r</span><span class="nv">@as</span><span class="p">.</span><span class="n">abci</span><span class="p">.</span><span class="n">ai</span><span class="w"> </span><span class="n">username</span><span class="nv">@es</span><span class="w"></span>
+<div class="codehilite"><pre><span></span><code><span class="o">[</span><span class="n">user@localmachine</span><span class="o">]</span><span class="err">$</span><span class="w"> </span><span class="n">ssh</span><span class="w"> </span><span class="o">-</span><span class="n">N</span><span class="w"> </span><span class="o">-</span><span class="n">L</span><span class="w"> </span><span class="mi">5901</span><span class="err">:</span><span class="n">g0001</span><span class="p">.</span><span class="n">abci</span><span class="p">.</span><span class="k">local</span><span class="err">:</span><span class="mi">5901</span><span class="w"> </span><span class="o">-</span><span class="n">J</span><span class="w"> </span><span class="o">%</span><span class="n">r</span><span class="nv">@as</span><span class="p">.</span><span class="n">abci</span><span class="p">.</span><span class="n">ai</span><span class="w"> </span><span class="n">username</span><span class="nv">@es</span>
 </code></pre></div>
 
 <p>ProxyJumpが利用できない場合は、以下のように実行すれば同様にSSHトンネルを作成できます。</p>
-<div class="codehilite"><pre><span></span><code><span class="o">[</span><span class="n">user@localmachine</span><span class="o">]</span><span class="err">$</span><span class="w"> </span><span class="n">ssh</span><span class="w"> </span><span class="o">-</span><span class="n">L</span><span class="w"> </span><span class="mi">10022</span><span class="err">:</span><span class="nl">es</span><span class="p">:</span><span class="mi">22</span><span class="w"> </span><span class="o">-</span><span class="n">l</span><span class="w"> </span><span class="n">username</span><span class="w"> </span><span class="k">as</span><span class="p">.</span><span class="n">abci</span><span class="p">.</span><span class="n">ai</span><span class="w"></span>
-<span class="o">[</span><span class="n">user@localmachine</span><span class="o">]</span><span class="err">$</span><span class="w"> </span><span class="n">ssh</span><span class="w"> </span><span class="o">-</span><span class="n">p</span><span class="w"> </span><span class="mi">10022</span><span class="w"> </span><span class="o">-</span><span class="n">N</span><span class="w"> </span><span class="o">-</span><span class="n">L</span><span class="w"> </span><span class="mi">5901</span><span class="err">:</span><span class="n">g0001</span><span class="p">.</span><span class="n">abci</span><span class="p">.</span><span class="k">local</span><span class="err">:</span><span class="mi">5901</span><span class="w"> </span><span class="o">-</span><span class="n">l</span><span class="w"> </span><span class="n">username</span><span class="w"> </span><span class="n">localhost</span><span class="w"></span>
+<div class="codehilite"><pre><span></span><code><span class="o">[</span><span class="n">user@localmachine</span><span class="o">]</span><span class="err">$</span><span class="w"> </span><span class="n">ssh</span><span class="w"> </span><span class="o">-</span><span class="n">L</span><span class="w"> </span><span class="mi">10022</span><span class="err">:</span><span class="nl">es</span><span class="p">:</span><span class="mi">22</span><span class="w"> </span><span class="o">-</span><span class="n">l</span><span class="w"> </span><span class="n">username</span><span class="w"> </span><span class="k">as</span><span class="p">.</span><span class="n">abci</span><span class="p">.</span><span class="n">ai</span>
+<span class="o">[</span><span class="n">user@localmachine</span><span class="o">]</span><span class="err">$</span><span class="w"> </span><span class="n">ssh</span><span class="w"> </span><span class="o">-</span><span class="n">p</span><span class="w"> </span><span class="mi">10022</span><span class="w"> </span><span class="o">-</span><span class="n">N</span><span class="w"> </span><span class="o">-</span><span class="n">L</span><span class="w"> </span><span class="mi">5901</span><span class="err">:</span><span class="n">g0001</span><span class="p">.</span><span class="n">abci</span><span class="p">.</span><span class="k">local</span><span class="err">:</span><span class="mi">5901</span><span class="w"> </span><span class="o">-</span><span class="n">l</span><span class="w"> </span><span class="n">username</span><span class="w"> </span><span class="n">localhost</span>
 </code></pre></div>
 
 <h4 id="launch-vnc-client">VNCクライアントの起動</h4>
 <p>macOSでは、FinderにVNCクライアントが統合されているため、以下のコマンドで起動できます。</p>
-<div class="codehilite"><pre><span></span><code><span class="o">[</span><span class="n">user@localmachine</span><span class="o">]</span><span class="err">$</span><span class="w"> </span><span class="k">open</span><span class="w"> </span><span class="nl">vnc</span><span class="p">:</span><span class="o">//</span><span class="nl">localhost</span><span class="p">:</span><span class="mi">5901</span><span class="o">/</span><span class="w"></span>
+<div class="codehilite"><pre><span></span><code><span class="o">[</span><span class="n">user@localmachine</span><span class="o">]</span><span class="err">$</span><span class="w"> </span><span class="k">open</span><span class="w"> </span><span class="nl">vnc</span><span class="p">:</span><span class="o">//</span><span class="nl">localhost</span><span class="p">:</span><span class="mi">5901</span><span class="o">/</span>
 </code></pre></div>
 
 <p>macOS以外のOSでは、別途VNCクライアントをインストールする必要があります。</p>
@@ -1311,26 +1304,26 @@ startxfce4 <span class="p">&amp;</span>
 <table>
 <thead>
 <tr>
-<th align="left">項目</th>
-<th align="left">画面と設定値</th>
+<th style="text-align: left;">項目</th>
+<th style="text-align: left;">画面と設定値</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td align="left">設定画面</td>
-<td align="left"><img src="vnc_portfw_teraterm_01.png"  width="480" title="teraterm:ssh tunnel" ></td>
+<td style="text-align: left;">設定画面</td>
+<td style="text-align: left;"><img src="vnc_portfw_teraterm_01.png"  width="480" title="teraterm:ssh tunnel" ></td>
 </tr>
 <tr>
-<td align="left">ローカルのポート</td>
-<td align="left">システムで許されている任意のポート番号 （例:15901）</td>
+<td style="text-align: left;">ローカルのポート</td>
+<td style="text-align: left;">システムで許されている任意のポート番号 （例:15901）</td>
 </tr>
 <tr>
-<td align="left">リモート側ホスト</td>
-<td align="left">計算ノード (例:g0001)</td>
+<td style="text-align: left;">リモート側ホスト</td>
+<td style="text-align: left;">計算ノード (例:g0001)</td>
 </tr>
 <tr>
-<td align="left">リモート側ポート</td>
-<td align="left">VNCサーバのポート番号 （例:5901）</td>
+<td style="text-align: left;">リモート側ポート</td>
+<td style="text-align: left;">VNCサーバのポート番号 （例:5901）</td>
 </tr>
 </tbody>
 </table>
@@ -1341,22 +1334,22 @@ startxfce4 <span class="p">&amp;</span>
 <table>
 <thead>
 <tr>
-<th align="left">項目</th>
-<th align="left">画面と設定値</th>
+<th style="text-align: left;">項目</th>
+<th style="text-align: left;">画面と設定値</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td align="left">設定画面</td>
-<td align="left"><img src="vnc_portfw_putty_01.png"  width="480" title="putty:ssh tunnel" ></td>
+<td style="text-align: left;">設定画面</td>
+<td style="text-align: left;"><img src="vnc_portfw_putty_01.png"  width="480" title="putty:ssh tunnel" ></td>
 </tr>
 <tr>
-<td align="left">ローカルのポート</td>
-<td align="left">システムで許されている任意のポート番号 （例:15901）</td>
+<td style="text-align: left;">ローカルのポート</td>
+<td style="text-align: left;">システムで許されている任意のポート番号 （例:15901）</td>
 </tr>
 <tr>
-<td align="left">リモート側ホスト：ポート</td>
-<td align="left">計算ノードとVNCサーバのポート番号 (例:g0123:5901)</td>
+<td style="text-align: left;">リモート側ホスト：ポート</td>
+<td style="text-align: left;">計算ノードとVNCサーバのポート番号 (例:g0123:5901)</td>
 </tr>
 </tbody>
 </table>
@@ -1372,15 +1365,15 @@ startxfce4 <span class="p">&amp;</span>
 <ul>
 <li>VNCサーバを終了し、計算ノードからexitします。</li>
 </ul>
-<div class="codehilite"><pre><span></span><code><span class="o">[</span><span class="n">username@g0001 ~</span><span class="o">]</span><span class="err">$</span><span class="w"> </span><span class="n">vncserver</span><span class="w"> </span><span class="o">-</span><span class="n">list</span><span class="w"></span>
-<span class="n">TigerVNC</span><span class="w"> </span><span class="n">server</span><span class="w"> </span><span class="nl">sessions</span><span class="p">:</span><span class="w"></span>
-<span class="n">X</span><span class="w"> </span><span class="n">DISPLAY</span><span class="w"> </span><span class="err">#</span><span class="w">     </span><span class="n">PROCESS</span><span class="w"> </span><span class="n">ID</span><span class="w"></span>
-<span class="err">:</span><span class="mi">1</span><span class="w">              </span><span class="mi">5081</span><span class="w"></span>
+<div class="codehilite"><pre><span></span><code><span class="o">[</span><span class="n">username@g0001 ~</span><span class="o">]</span><span class="err">$</span><span class="w"> </span><span class="n">vncserver</span><span class="w"> </span><span class="o">-</span><span class="n">list</span>
+<span class="n">TigerVNC</span><span class="w"> </span><span class="n">server</span><span class="w"> </span><span class="nl">sessions</span><span class="p">:</span>
+<span class="n">X</span><span class="w"> </span><span class="n">DISPLAY</span><span class="w"> </span><span class="err">#</span><span class="w">     </span><span class="n">PROCESS</span><span class="w"> </span><span class="n">ID</span>
+<span class="err">:</span><span class="mi">1</span><span class="w">              </span><span class="mi">5081</span>
 
-<span class="o">[</span><span class="n">username@g0001 ~</span><span class="o">]</span><span class="err">$</span><span class="w"> </span><span class="n">vncserver</span><span class="w"> </span><span class="o">-</span><span class="k">kill</span><span class="w"> </span><span class="err">:</span><span class="mi">1</span><span class="w"></span>
-<span class="n">Killing</span><span class="w"> </span><span class="n">Xvnc</span><span class="w"> </span><span class="n">process</span><span class="w"> </span><span class="n">ID</span><span class="w"> </span><span class="n">XXXXXX</span><span class="w"></span>
-<span class="o">[</span><span class="n">username@g0001 ~</span><span class="o">]</span><span class="err">$</span><span class="w"> </span><span class="k">exit</span><span class="w"></span>
-<span class="o">[</span><span class="n">username@es1 ~</span><span class="o">]</span><span class="err">$</span><span class="w"></span>
+<span class="o">[</span><span class="n">username@g0001 ~</span><span class="o">]</span><span class="err">$</span><span class="w"> </span><span class="n">vncserver</span><span class="w"> </span><span class="o">-</span><span class="k">kill</span><span class="w"> </span><span class="err">:</span><span class="mi">1</span>
+<span class="n">Killing</span><span class="w"> </span><span class="n">Xvnc</span><span class="w"> </span><span class="n">process</span><span class="w"> </span><span class="n">ID</span><span class="w"> </span><span class="n">XXXXXX</span>
+<span class="o">[</span><span class="n">username@g0001 ~</span><span class="o">]</span><span class="err">$</span><span class="w"> </span><span class="k">exit</span>
+<span class="o">[</span><span class="n">username@es1 ~</span><span class="o">]</span><span class="err">$</span>
 </code></pre></div>
                 
               

@@ -16,7 +16,7 @@
         <link rel="canonical" href="https://docs.abci.ai/ja/known-issues/">
       
       <link rel="icon" href="../img/favicon.png">
-      <meta name="generator" content="mkdocs-1.1.2, mkdocs-material-7.1.3">
+      <meta name="generator" content="mkdocs-1.2.4, mkdocs-material-7.1.3">
     
     
       
@@ -1096,138 +1096,138 @@
 <table>
 <thead>
 <tr>
-<th align="left">日時</th>
-<th align="left">カテゴリ</th>
-<th align="left">内容</th>
-<th align="left">状況</th>
+<th style="text-align: left;">日時</th>
+<th style="text-align: left;">カテゴリ</th>
+<th style="text-align: left;">内容</th>
+<th style="text-align: left;">状況</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td align="left">2023/04/07</td>
-<td align="left">Job</td>
-<td align="left">インタラクティブノード(V)よりジョブを投入した際、エラーメッセージ (configuration error - unknown item 'HOME_MODE' (notify administrator)) が出力されます。なお、ジョブの実行には問題ないと思われるためメッセージは無視願います。</td>
-<td align="left">2023/05/18<br>対応完了。エラーメッセージの出力は解消しました。</td>
+<td style="text-align: left;">2023/04/07</td>
+<td style="text-align: left;">Job</td>
+<td style="text-align: left;">インタラクティブノード(V)よりジョブを投入した際、エラーメッセージ (configuration error - unknown item 'HOME_MODE' (notify administrator)) が出力されます。なお、ジョブの実行には問題ないと思われるためメッセージは無視願います。</td>
+<td style="text-align: left;">2023/05/18<br>対応完了。エラーメッセージの出力は解消しました。</td>
 </tr>
 <tr>
-<td align="left">2023/01/31</td>
-<td align="left">Application</td>
-<td align="left">Intel oneAPIにおいて<a href="https://www.intel.com/content/www/us/en/security-center/advisory/intel-sa-00773.html">脆弱性</a>が確認されたため、コマンドicpx, icpcを利用不可に設定しております。<br><br>2023/02/06<br>脆弱性のあるIntel oneAPIがインストールされたディレクトリの実行権限を削除しました。</td>
-<td align="left">2023/02/03<br> 対応完了。Intel oneAPIの脆弱性を修正したバージョンへアップデートしました。<br>なお、以前のバージョンでコンパイルされたプログラムについては、脆弱性が含まれている可能性があるため、お手数ですが新しいバージョンで再度コンパイルをお願いします。バージョン番号は<a href="../system-updates/#2023-02-03">システム更新履歴</a>を参照ください。<br><br>2023/02/06<br>脆弱性を含む<code>intel/2022.0.2</code>以前のIntel oneAPIモジュールは公開を停止しました。脆弱性が修正された<code>intel/2022.2.1</code>モジュールをご利用ください。<br>以前のバージョンでコンパイルされたプログラムについては、公開停止モジュールをリンクしている場合、稼働しなくなります。お手数ですが新しいバージョンで再度コンパイルをお願いします。</td>
+<td style="text-align: left;">2023/01/31</td>
+<td style="text-align: left;">Application</td>
+<td style="text-align: left;">Intel oneAPIにおいて<a href="https://www.intel.com/content/www/us/en/security-center/advisory/intel-sa-00773.html">脆弱性</a>が確認されたため、コマンドicpx, icpcを利用不可に設定しております。<br><br>2023/02/06<br>脆弱性のあるIntel oneAPIがインストールされたディレクトリの実行権限を削除しました。</td>
+<td style="text-align: left;">2023/02/03<br> 対応完了。Intel oneAPIの脆弱性を修正したバージョンへアップデートしました。<br>なお、以前のバージョンでコンパイルされたプログラムについては、脆弱性が含まれている可能性があるため、お手数ですが新しいバージョンで再度コンパイルをお願いします。バージョン番号は<a href="../system-updates/#2023-02-03">システム更新履歴</a>を参照ください。<br><br>2023/02/06<br>脆弱性を含む<code>intel/2022.0.2</code>以前のIntel oneAPIモジュールは公開を停止しました。脆弱性が修正された<code>intel/2022.2.1</code>モジュールをご利用ください。<br>以前のバージョンでコンパイルされたプログラムについては、公開停止モジュールをリンクしている場合、稼働しなくなります。お手数ですが新しいバージョンで再度コンパイルをお願いします。</td>
 </tr>
 <tr>
-<td align="left">2022/12/23</td>
-<td align="left">Application</td>
-<td align="left">計算ノード(A)環境において、cuDNN 8.7.0をCUDA 10.2で利用した場合に、<code>cudnnConvolutionForward</code>関数が失敗することを確認しています。</td>
-<td align="left">CUDA 11.xでcuDNN 8.7.0が利用できることを確認しています。計算ノード(A)環境でcuDNN 8.7.0を使用する場合はCUDA 11.xをご利用ください。</td>
+<td style="text-align: left;">2022/12/23</td>
+<td style="text-align: left;">Application</td>
+<td style="text-align: left;">計算ノード(A)環境において、cuDNN 8.7.0をCUDA 10.2で利用した場合に、<code>cudnnConvolutionForward</code>関数が失敗することを確認しています。</td>
+<td style="text-align: left;">CUDA 11.xでcuDNN 8.7.0が利用できることを確認しています。計算ノード(A)環境でcuDNN 8.7.0を使用する場合はCUDA 11.xをご利用ください。</td>
 </tr>
 <tr>
-<td align="left">2022/12/13</td>
-<td align="left">Singularity Endpoint</td>
-<td align="left">12/13(火) メンテナンス作業後より、Singularityエンドポイントの一部機能(pullおよびRemote Build)の障害により、Singularityエンドポイントの運用を停止しております。</td>
-<td align="left">2023/01/05<br> 対応完了。SingularityPROのアップデートにより事象は解消しました。</td>
+<td style="text-align: left;">2022/12/13</td>
+<td style="text-align: left;">Singularity Endpoint</td>
+<td style="text-align: left;">12/13(火) メンテナンス作業後より、Singularityエンドポイントの一部機能(pullおよびRemote Build)の障害により、Singularityエンドポイントの運用を停止しております。</td>
+<td style="text-align: left;">2023/01/05<br> 対応完了。SingularityPROのアップデートにより事象は解消しました。</td>
 </tr>
 <tr>
-<td align="left">2022/06/13</td>
-<td align="left">Job</td>
-<td align="left">6/11 (土) 21:00～06/13 (月) 09:48 に計算ノード(A)(V)で下記の障害が発生しました。<br> &bull; バッチジョブ新規実行不可<br> &bull; すべての予約が消滅<br>バッチジョブの再投入をお願いします。予約の再作成をお願いします。</td>
-<td align="left">2022/06/21<br> 対応完了。</td>
+<td style="text-align: left;">2022/06/13</td>
+<td style="text-align: left;">Job</td>
+<td style="text-align: left;">6/11 (土) 21:00～06/13 (月) 09:48 に計算ノード(A)(V)で下記の障害が発生しました。<br> &bull; バッチジョブ新規実行不可<br> &bull; すべての予約が消滅<br>バッチジョブの再投入をお願いします。予約の再作成をお願いします。</td>
+<td style="text-align: left;">2022/06/21<br> 対応完了。</td>
 </tr>
 <tr>
-<td align="left">2022/05/09</td>
-<td align="left">FileSystem</td>
-<td align="left">Lustreファイルシステムにおいて、複数のスレッドが同一のファイルにほぼ同時に <code>fallocate</code> システムコールを発行した場合に、タイミングによりデッドロックが発生することを確認しています。<br>この問題によりホーム領域がアクセス不可となる現象が確認されています。</td>
-<td align="left">2022/06/21<br>Lustreのアップデートにより事象は解消しました。</td>
+<td style="text-align: left;">2022/05/09</td>
+<td style="text-align: left;">FileSystem</td>
+<td style="text-align: left;">Lustreファイルシステムにおいて、複数のスレッドが同一のファイルにほぼ同時に <code>fallocate</code> システムコールを発行した場合に、タイミングによりデッドロックが発生することを確認しています。<br>この問題によりホーム領域がアクセス不可となる現象が確認されています。</td>
+<td style="text-align: left;">2022/06/21<br>Lustreのアップデートにより事象は解消しました。</td>
 </tr>
 <tr>
-<td align="left">2022/04/06</td>
-<td align="left">Singularity</td>
-<td align="left">Remote Builderサービスの障害により、Singularity エンドポイントのリモートビルド機能が利用できません。<br> コンテナイメージの作成は、<code>--fakeroot</code> オプションをご利用ください。<br> なお、Singularity エンドポイントの Library,  Keystore 機能は利用可能です。</td>
-<td align="left">2022/04/14<br> 対応完了。Remote Builderサービスの障害は解消されました。</td>
+<td style="text-align: left;">2022/04/06</td>
+<td style="text-align: left;">Singularity</td>
+<td style="text-align: left;">Remote Builderサービスの障害により、Singularity エンドポイントのリモートビルド機能が利用できません。<br> コンテナイメージの作成は、<code>--fakeroot</code> オプションをご利用ください。<br> なお、Singularity エンドポイントの Library,  Keystore 機能は利用可能です。</td>
+<td style="text-align: left;">2022/04/14<br> 対応完了。Remote Builderサービスの障害は解消されました。</td>
 </tr>
 <tr>
-<td align="left">2022/04/06</td>
-<td align="left">Job</td>
-<td align="left">ジョブスケジューラの障害のため、システム停止時にReservedサービスの予約が消える事象を確認しています。<br>事象が解消されるまで、メンテナンス作業後の期間に対する予約取得をお控えください。</td>
-<td align="left">2022/06/21<br>Altair Grid Engineのアップデートにより事象は解消しました。</td>
+<td style="text-align: left;">2022/04/06</td>
+<td style="text-align: left;">Job</td>
+<td style="text-align: left;">ジョブスケジューラの障害のため、システム停止時にReservedサービスの予約が消える事象を確認しています。<br>事象が解消されるまで、メンテナンス作業後の期間に対する予約取得をお控えください。</td>
+<td style="text-align: left;">2022/06/21<br>Altair Grid Engineのアップデートにより事象は解消しました。</td>
 </tr>
 <tr>
-<td align="left">2022/01/21</td>
-<td align="left">Application</td>
-<td align="left">計算ノード(A)上でintel-vtune/2020.3モジュールのvtuneの実行に失敗する事象を確認しています。</td>
-<td align="left">2022/04/06<br>Intel VTune のアップデートにより事象は解消しました。</td>
+<td style="text-align: left;">2022/01/21</td>
+<td style="text-align: left;">Application</td>
+<td style="text-align: left;">計算ノード(A)上でintel-vtune/2020.3モジュールのvtuneの実行に失敗する事象を確認しています。</td>
+<td style="text-align: left;">2022/04/06<br>Intel VTune のアップデートにより事象は解消しました。</td>
 </tr>
 <tr>
-<td align="left">2021/12/17</td>
-<td align="left">Application</td>
-<td align="left">計算ノード(A)上でpytorchとNCCLを使用する分散深層学習の実行に失敗する現象を確認しています。<br>回避策として、以下の環境変数をジョブスクリプト内で指定してください。<br>NCCL_IB_DISABLE=1</td>
-<td align="left">2022/03/03<br>対応完了。OFEDのアップデートを実施し、問題は解消されました。</td>
+<td style="text-align: left;">2021/12/17</td>
+<td style="text-align: left;">Application</td>
+<td style="text-align: left;">計算ノード(A)上でpytorchとNCCLを使用する分散深層学習の実行に失敗する現象を確認しています。<br>回避策として、以下の環境変数をジョブスクリプト内で指定してください。<br>NCCL_IB_DISABLE=1</td>
+<td style="text-align: left;">2022/03/03<br>対応完了。OFEDのアップデートを実施し、問題は解消されました。</td>
 </tr>
 <tr>
-<td align="left">2021/10/19</td>
-<td align="left">MPI</td>
-<td align="left">計算ノード(V)上のOpenMPI 3.1.6において、mpirunコマンドに-mca pml cmフラグを指定した場合に、MPI_Send/MPI_Recvで処理が止まり先に進まない現象を確認しています。</td>
-<td align="left">OpenMPI 3系はすでに非サポート状態のため、OpenMPI 4系を利用してください。</td>
+<td style="text-align: left;">2021/10/19</td>
+<td style="text-align: left;">MPI</td>
+<td style="text-align: left;">計算ノード(V)上のOpenMPI 3.1.6において、mpirunコマンドに-mca pml cmフラグを指定した場合に、MPI_Send/MPI_Recvで処理が止まり先に進まない現象を確認しています。</td>
+<td style="text-align: left;">OpenMPI 3系はすでに非サポート状態のため、OpenMPI 4系を利用してください。</td>
 </tr>
 <tr>
-<td align="left">2021/07/06</td>
-<td align="left">Singularity</td>
-<td align="left">Remote Builderサービスの障害により、リモートビルド機能が利用できません。</td>
-<td align="left">2021/07/21<br>対応完了。Remote Builder サービス内で発生していたネットワークの問題が解消されました。</td>
+<td style="text-align: left;">2021/07/06</td>
+<td style="text-align: left;">Singularity</td>
+<td style="text-align: left;">Remote Builderサービスの障害により、リモートビルド機能が利用できません。</td>
+<td style="text-align: left;">2021/07/21<br>対応完了。Remote Builder サービス内で発生していたネットワークの問題が解消されました。</td>
 </tr>
 <tr>
-<td align="left">2021/05/25</td>
-<td align="left">GPU</td>
-<td align="left">繰り返しGPUを使う場合にステータスがDまたはZでプロセスが残り、GPUメモリが解放されない現象が確認されています。その後にそのGPUを利用すると、GPUメモリが解放されていないため後続のプロセスが正常に実行されません。本事象を確認したら<a href="&#109;&#97;&#105;&#108;&#116;&#111;&#58;&#113;&#97;&#64;&#97;&#98;&#99;&#105;&#46;&#97;&#105;">&#113;&#97;&#64;&#97;&#98;&#99;&#105;&#46;&#97;&#105;</a>までご連絡ください。</td>
-<td align="left">2021/08/12<br>対応完了。GPUメモリが解放されない問題は解消されました。</td>
+<td style="text-align: left;">2021/05/25</td>
+<td style="text-align: left;">GPU</td>
+<td style="text-align: left;">繰り返しGPUを使う場合にステータスがDまたはZでプロセスが残り、GPUメモリが解放されない現象が確認されています。その後にそのGPUを利用すると、GPUメモリが解放されていないため後続のプロセスが正常に実行されません。本事象を確認したら<a href="&#109;&#97;&#105;&#108;&#116;&#111;&#58;&#113;&#97;&#64;&#97;&#98;&#99;&#105;&#46;&#97;&#105;">&#113;&#97;&#64;&#97;&#98;&#99;&#105;&#46;&#97;&#105;</a>までご連絡ください。</td>
+<td style="text-align: left;">2021/08/12<br>対応完了。GPUメモリが解放されない問題は解消されました。</td>
 </tr>
 <tr>
-<td align="left">2021/05/17</td>
-<td align="left">MPI</td>
-<td align="left">Open MPI 4.0.5にて、66ノード以上を使用したプログラム実行が異常終了することを確認しています。66ノード以上を使用する場合、MCAパラメータplm_rsh_no_tree_spawn trueおよびplm_rsh_num_concurrent $NHOSTSを指定してプログラムを実行してください。<BR><BR>$ mpirun -mca plm_rsh_no_tree_spawn true -mca plm_rsh_num_concurrent $NHOSTS ./a.out</td>
-<td align="left">2021/05/31<br>対応完了。これらMCAパラメータのデフォルト値を変更しました。</td>
+<td style="text-align: left;">2021/05/17</td>
+<td style="text-align: left;">MPI</td>
+<td style="text-align: left;">Open MPI 4.0.5にて、66ノード以上を使用したプログラム実行が異常終了することを確認しています。66ノード以上を使用する場合、MCAパラメータplm_rsh_no_tree_spawn trueおよびplm_rsh_num_concurrent $NHOSTSを指定してプログラムを実行してください。<BR><BR>$ mpirun -mca plm_rsh_no_tree_spawn true -mca plm_rsh_num_concurrent $NHOSTS ./a.out</td>
+<td style="text-align: left;">2021/05/31<br>対応完了。これらMCAパラメータのデフォルト値を変更しました。</td>
 </tr>
 <tr>
-<td align="left">2020/09/30</td>
-<td align="left">Singularity</td>
-<td align="left">以下のセキュリティ問題が報告されています。インタラクティブノードや、Full以外の資源タイプでSingularityPROを使用する時に影響を受けます。更新するまでは、SingularityPROはFull計算タイプでご利用ください。<BR><BR><a href="https://github.com/hpcng/singularity/security/advisories/GHSA-w6v2-qchm-grj7">CVE-2020-25039</a><BR><a href="https://github.com/hpcng/singularity/security/advisories/GHSA-jv9c-w74q-6762">CVE-2020-25040</a></td>
-<td align="left">2020/10/09<br>対応完了。問題が修正されている 3.5-4 へアップデートしました。</td>
+<td style="text-align: left;">2020/09/30</td>
+<td style="text-align: left;">Singularity</td>
+<td style="text-align: left;">以下のセキュリティ問題が報告されています。インタラクティブノードや、Full以外の資源タイプでSingularityPROを使用する時に影響を受けます。更新するまでは、SingularityPROはFull計算タイプでご利用ください。<BR><BR><a href="https://github.com/hpcng/singularity/security/advisories/GHSA-w6v2-qchm-grj7">CVE-2020-25039</a><BR><a href="https://github.com/hpcng/singularity/security/advisories/GHSA-jv9c-w74q-6762">CVE-2020-25040</a></td>
+<td style="text-align: left;">2020/10/09<br>対応完了。問題が修正されている 3.5-4 へアップデートしました。</td>
 </tr>
 <tr>
-<td align="left">2020/01/14</td>
-<td align="left">Cloud Storage</td>
-<td align="left">他グループに ACL で write許可設定したバケットにて、他グループがオブジェクトを作成・削除した場合、課金計算が正しく行われません。</td>
-<td align="left">2020/04/03<br>対応完了。問題が修正されたバージョンにアップデートしました。</td>
+<td style="text-align: left;">2020/01/14</td>
+<td style="text-align: left;">Cloud Storage</td>
+<td style="text-align: left;">他グループに ACL で write許可設定したバケットにて、他グループがオブジェクトを作成・削除した場合、課金計算が正しく行われません。</td>
+<td style="text-align: left;">2020/04/03<br>対応完了。問題が修正されたバージョンにアップデートしました。</td>
 </tr>
 <tr>
-<td align="left">2019/11/14</td>
-<td align="left">Cloud Storage</td>
-<td align="left">オブジェクトストレージの不具合により、マルチパートに分割して保存されたオブジェクトの上書き時または削除時に以下のエラーメッセージが出力されます。<BR>[上書き時] upload failed: object to s3://mybucket/object An error occurred (None) when calling the CompleteMultipartUpload operation: undefined<BR>[削除時] delete failed: s3://mybucket/object An error occurred (None) when calling the DeleteObject operation: undefined<BR><BR>AWS CLI の s3 コマンドを使用した場合、サイズの大きなファイルはマルチパート分割されます。サイズの大きなファイルを扱う場合、<a href="https://docs.aws.amazon.com/cli/latest/topic/s3-config.html">こちら</a>を参照し multipart_threshold を大きな値に設定ください。</td>
-<td align="left">2019/12/17<br>対応完了。マルチパートアップロードでサイズの大きなファイルのアップロードが可能になりました。</td>
+<td style="text-align: left;">2019/11/14</td>
+<td style="text-align: left;">Cloud Storage</td>
+<td style="text-align: left;">オブジェクトストレージの不具合により、マルチパートに分割して保存されたオブジェクトの上書き時または削除時に以下のエラーメッセージが出力されます。<BR>[上書き時] upload failed: object to s3://mybucket/object An error occurred (None) when calling the CompleteMultipartUpload operation: undefined<BR>[削除時] delete failed: s3://mybucket/object An error occurred (None) when calling the DeleteObject operation: undefined<BR><BR>AWS CLI の s3 コマンドを使用した場合、サイズの大きなファイルはマルチパート分割されます。サイズの大きなファイルを扱う場合、<a href="https://docs.aws.amazon.com/cli/latest/topic/s3-config.html">こちら</a>を参照し multipart_threshold を大きな値に設定ください。</td>
+<td style="text-align: left;">2019/12/17<br>対応完了。マルチパートアップロードでサイズの大きなファイルのアップロードが可能になりました。</td>
 </tr>
 <tr>
-<td align="left">2019/10/04</td>
-<td align="left">MPI</td>
-<td align="left">MVPICH2-GDR 2.3.2のMPI_Allreduceにて、GPUメモリ間での通信を行った際、以下のノード数、GPU数、メッセージサイズの組み合わせでfloating point exceptionが発生することを確認しています。<BR>Nodes: 28, GPU/Node: 4, Message size: 256KB<BR>Nodes: 30, GPU/Node: 4, Message size: 256KB<BR>Nodes: 33, GPU/Node: 4, Message size: 256KB<BR>Nodes: 34, GPU/Node: 4, Message size: 256KB</td>
-<td align="left">2020/04/21<br>対応完了。問題が修正されたバージョンにアップデートしました。</td>
+<td style="text-align: left;">2019/10/04</td>
+<td style="text-align: left;">MPI</td>
+<td style="text-align: left;">MVPICH2-GDR 2.3.2のMPI_Allreduceにて、GPUメモリ間での通信を行った際、以下のノード数、GPU数、メッセージサイズの組み合わせでfloating point exceptionが発生することを確認しています。<BR>Nodes: 28, GPU/Node: 4, Message size: 256KB<BR>Nodes: 30, GPU/Node: 4, Message size: 256KB<BR>Nodes: 33, GPU/Node: 4, Message size: 256KB<BR>Nodes: 34, GPU/Node: 4, Message size: 256KB</td>
+<td style="text-align: left;">2020/04/21<br>対応完了。問題が修正されたバージョンにアップデートしました。</td>
 </tr>
 <tr>
-<td align="left">2019/04/10</td>
-<td align="left">Job</td>
-<td align="left">ジョブスケジューラのアップデート(8.5.4 -&gt; 8.6.3)に伴い、以下のジョブ投入オプションは引数が必須になりました。<BR>リソースタイプ(-l rt_F等)<BR>$ qsub -g GROUP -l rt_F=1<BR>  $ qsub -g GROUP -l rt_G.small=1</td>
-<td align="left">対応完了</td>
+<td style="text-align: left;">2019/04/10</td>
+<td style="text-align: left;">Job</td>
+<td style="text-align: left;">ジョブスケジューラのアップデート(8.5.4 -&gt; 8.6.3)に伴い、以下のジョブ投入オプションは引数が必須になりました。<BR>リソースタイプ(-l rt_F等)<BR>$ qsub -g GROUP -l rt_F=1<BR>  $ qsub -g GROUP -l rt_G.small=1</td>
+<td style="text-align: left;">対応完了</td>
 </tr>
 <tr>
-<td align="left">2019/04/10</td>
-<td align="left">Job</td>
-<td align="left">ジョブスケジューラのアップデート(8.5.4 -&gt; 8.6.3)に伴い、以下のジョブ投入オプションは引数が必須になりました。BEEOND使用する場合は、-l USE_BEEONDオプションに"1"を省略せず指定してください。<BR>BEEOND 実行 (-l USE_BEEOND)<BR>$ qsub -g GROUP -l rt_F=2 -l USE_BEEOND=1</td>
-<td align="left">対応完了</td>
+<td style="text-align: left;">2019/04/10</td>
+<td style="text-align: left;">Job</td>
+<td style="text-align: left;">ジョブスケジューラのアップデート(8.5.4 -&gt; 8.6.3)に伴い、以下のジョブ投入オプションは引数が必須になりました。BEEOND使用する場合は、-l USE_BEEONDオプションに"1"を省略せず指定してください。<BR>BEEOND 実行 (-l USE_BEEOND)<BR>$ qsub -g GROUP -l rt_F=2 -l USE_BEEOND=1</td>
+<td style="text-align: left;">対応完了</td>
 </tr>
 <tr>
-<td align="left">2019/04/05</td>
-<td align="left">Job</td>
-<td align="left">通常計算ノードで rt_C.small/rt_G.small はそれぞれ最大で4ジョブまで実行されますが、ジョブスケジューラの不具合により、それぞれ最大2ジョブまでしか実行できない事象が発生しています。<br>Reservedサービスでも同様の事象が発生しており、rt_C.small/rt_G.small を使用の場合はご注意ください。<BR>$ qsub -ar ARID -l rt_G.small=1 -g GROUP run.sh (x 3回) <BR>$ qstat<BR>job-ID     prior   name       user         state<BR>--------<BR>    478583 0.25586 sample.sh  username   r<BR>    478584 0.25586 sample.sh  username   r<BR>    478586 0.25586 sample.sh  username   qw</td>
-<td align="left">2019/10/04<br>対応完了</td>
+<td style="text-align: left;">2019/04/05</td>
+<td style="text-align: left;">Job</td>
+<td style="text-align: left;">通常計算ノードで rt_C.small/rt_G.small はそれぞれ最大で4ジョブまで実行されますが、ジョブスケジューラの不具合により、それぞれ最大2ジョブまでしか実行できない事象が発生しています。<br>Reservedサービスでも同様の事象が発生しており、rt_C.small/rt_G.small を使用の場合はご注意ください。<BR>$ qsub -ar ARID -l rt_G.small=1 -g GROUP run.sh (x 3回) <BR>$ qstat<BR>job-ID     prior   name       user         state<BR>--------<BR>    478583 0.25586 sample.sh  username   r<BR>    478584 0.25586 sample.sh  username   r<BR>    478586 0.25586 sample.sh  username   qw</td>
+<td style="text-align: left;">2019/10/04<br>対応完了</td>
 </tr>
 </tbody>
 </table>
