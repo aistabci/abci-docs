@@ -10,9 +10,9 @@ The following libraries provided by NVIDIA are available on the ABCI System:
 To use these libraries, it is necessary to set up the users environment using the `module` command in advance. The `module` command allows users to automatically set environment variables for execution, such as` PATH`, and environment variables for compilation, such as search paths for header files and libraries.
 
 ```
-[username@g0001 ~]$ module load cuda/10.2/10.2.89
-[username@g0001 ~]$ module load cudnn/7.6/7.6.5
-[username@g0001 ~]$ module load nccl/2.5/2.5.6-1
+[username@g0001 ~]$ module load cuda/11.2/11.2.2
+[username@g0001 ~]$ module load cudnn/8.1/8.1.1
+[username@g0001 ~]$ module load nccl/2.8/2.8.4-1
 ```
 
 The following is a list of CUDA Toolkit, cuDNN, and NCCL that can be used with the ABCI system.
