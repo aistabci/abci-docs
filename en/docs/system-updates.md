@@ -17,7 +17,7 @@
 | Update | intel-mpi | 2021.11 | 2021.8 |
 | Add | gcc | 13.2.0 | |
 | Delete | gcc | 12.2.0 | |
-| Update | cmake | 3.28.3 | 3.26.1 |
+| Update | cmake | 3.29.0 | 3.26.1 |
 | Add | python | 3.12.2 | |
 | Update | python | 3.10.14 | 3.10.10 |
 | Update | python | 3.11.9 | 3.11.2 |

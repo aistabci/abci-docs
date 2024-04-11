@@ -41,16 +41,16 @@ Keep your access token in a safe place for a later registration step.
 To check that ABCI Singularity Endpoint (cloud.se2.abci.local) is correctly configured as a remote endpoint, use `singularity remote list ` command.
 
 ```
-[axc01050oa@es1 docs]$ singularity remote list
+[username@es1 docs]$ singularity remote list
 
 NAME         URI                   DEFAULT?  GLOBAL?  EXCLUSIVE?  SECURE?
 ABCI         cloud.se2.abci.local  ✓         ✓                    ✓
 SylabsCloud  cloud.sylabs.io                 ✓                    ✓
-[axc01050oa@es1 docs]$
+[username@es1 docs]$
 ```
 
 !!! note
-    If the `singularity remote list` command results in a checkmark of `?`, replace it with a check mark.
+    In the output of the `singularity remote list` command, each column contains a `?` symbol may appear. In that case, `?` mark to a check mark.
 
 !!! note
     SylabsCloud is a public service endpoint operated by [Sylabs](https://sylabs.io/). It is available by signing in to <https://cloud.sylabs.io/> and obtaining an access token.

@@ -168,7 +168,7 @@ The software available on the ABCI system is shown below.
 | | Intel Inspector | 2024.0 | 2024.0 |
 | | Intel Advisor | 2024.0.0 | 2024.0.0 |
 | | GCC | 8.5.0<br>13.2.0 | 8.3.1<br>13.2.0 |
-| | cmake | 3.28.3 | 3.28.3 |
+| | cmake | 3.29.0 | 3.29.0 |
 | | [Python](python.md) | 3.10.14<br>3.11.9<br>3.12.2 | 3.10.14<br>3.11.9<br>3.12.2 |
 | | Ruby | 2.5.9-229 | 2.5.5-157 |
 | | R | 4.3.3 | 4.3.3 |
