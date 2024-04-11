@@ -313,6 +313,7 @@ ABCIでは、過去のEnvironment Modulesを提供しています。
 | 2020年度版 | `/apps/modules-abci-1.0`      | -             | -             |
 | 2021年度版 | `/apps/modules-abci-2.0-2021` | -             | Yes           |
 | 2022年度版 | `/apps/modules-abci-2.0-2022` | -             | Yes           |
+| 2023年度版 | `/apps/modules-abci-2.0-2023` | Yes           | Yes           |
 
 以下は2021年度版Environment Modulesを利用する例です。
 
