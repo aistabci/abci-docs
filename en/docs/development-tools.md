@@ -24,16 +24,16 @@ If you set up with the `module` command in compute node, environment variables f
 Setting command for Intel oneAPI is following:
 
 ```
-[username@es1 ~]$ module load intel/2023.0.0
+[username@es1 ~]$ module load intel/2024.0.2
 ```
 
 List of compile/link commands of Intel oneAPI:
 
 | Programing Language | command |
 |:--|:--|
-| Fortran | ifort |
-| C | icc |
-| C++ | icpc |
+| Fortran | ifx |
+| C | icx |
+| C++ | icpx |
 
 ## OpenMP
 

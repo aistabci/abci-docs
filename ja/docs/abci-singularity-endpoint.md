@@ -41,23 +41,16 @@ just a moment, please...
 `singularity remote list` を実行し、本サービスを提供している ABCI Singularity エンドポイント（cloud.se2.abci.local）が、リモートエンドポイントとして正しく設定されていることを確認して下さい。
 
 ```
-[username@es1 ~]$ singularity remote list
-Cloud Services Endpoints
-========================
+[axc01050oa@es1 docs]$ singularity remote list
 
-NAME         URI                   ACTIVE  GLOBAL  EXCLUSIVE  INSECURE
-ABCI         cloud.se2.abci.local  YES     YES     NO         NO
-SylabsCloud  cloud.sylabs.io       NO      YES     NO         NO
-
-Keyservers
-==========
-
-URI                          GLOBAL  INSECURE  ORDER
-https://keys.se2.abci.local  YES     NO        1*
-
-* Active cloud services keyserver
-[username@es1 ~]$ 
+NAME         URI                   DEFAULT?  GLOBAL?  EXCLUSIVE?  SECURE?
+ABCI         cloud.se2.abci.local  ✓         ✓                    ✓
+SylabsCloud  cloud.sylabs.io                 ✓                    ✓
+[axc01050oa@es1 docs]$
 ```
+
+!!! note
+    `singularity remote list`コマンドでチェックマークが`?`と表示される場合はチェックマークに読み替えてください。
 
 !!! note
     SylabsCloud は [Sylabs](https://sylabs.io/) が運営するパブリックサービスのエンドポイントです。<https://cloud.sylabs.io/> にサインインし、アクセストークンを取得することで利用可能になります。
