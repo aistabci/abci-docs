@@ -1,10 +1,37 @@
 # System Updates
 
-## 2024-04-12 (future update) {#2024-04-12}
+## 2024-04-12
 
 | Add / Update / Delete | Software | Version | Previous version |
 |:--|:--|:--|:--|
-| Update | ABCI Singularity Endpoint | 2.3 | 2.1.5 |
+| Delete | cuda | 10.2.89<br>11.0.3<br>11.1.1<br>11.3.1<br>11.4.4<br>11.5.2<br>12.0.0<br>12.1.0<br>12.3.0 | |
+| Delete | cudnn | 7.6.5<br>8.0.5<br>8.2.4<br>8.5.0<br>8.9.1<br>8.9.2<br>8.9.5<br> | |
+| Delete | nccl | 2.5.6-1<br>2.6.4-1<br>2.7.8-1<br>2.9.9-1<br>2.10.3-1<br>2.18.1-1<br>2.18.3-1 | |
+| Update | gdrcopy | 2.4.1 | 2.3 |
+| Update | intel | 2024.0.2 | 2023.0.0 |
+| Update | intel-advisor | 2024.0.0 | 2023.0 |
+| Update | intel-inspector | 2024.0 | 2023.0 |
+| Update | intel-itac | 2022.0 | 2021.8.0 |
+| Update | intel-mkl | 2024.0.0 | 2023.0.0 |
+| Update | intel-vtune | 2024.0.0 | 2023.0.0 |
+| Update | intel-mpi | 2021.11 | 2021.8 |
+| Add | gcc | 13.2.0 | |
+| Delete | gcc | 12.2.0 | |
+| Update | cmake | 3.29.0 | 3.26.1 |
+| Add | python | 3.12.2 | |
+| Update | python | 3.10.14 | 3.10.10 |
+| Update | python | 3.11.9 | 3.11.2 |
+| Update | R | 4.3.3 | 4.2.3 |
+| Update | openjdk | 1.8.0.402 | 1.8.0.362 |
+| Update | openjdk | 11.0.22.0.7 | 11.0.18.0.10 |
+| Update | openjdk | 17.0.10.0.7 | 17.0.6.0.10 |
+| Update | Go | 1.22.2 | 1.20 |
+| Update | julia | 1.10 | 1.8 |
+| Update | aws-cli | 2.15.35 | 2.11 |
+| Update | s3fs-fuse | 1.94 | 1.91 |
+| Update | DDN Lustre | 2.14.0\_ddn134 | 2.12.8\_ddn23 |
+| Update | SingularityPRO | 4.1.2-2 | 3.11-5 |
+| Update | ABCI Singularity Endpoint | 2.3.0 | 2.1.5 |
 
 ## 2024-03-27
 

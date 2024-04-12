@@ -25,16 +25,16 @@ ABCIシステムではIntel oneAPIが利用可能です。
 Intel oneAPIの環境設定:
 
 ```
-[username@es1 ~]$ module load intel/2023.0.0
+[username@es1 ~]$ module load intel/2024.0.2
 ```
 
 コンパイル/リンクコマンド一覧:
 
 | 言語処理系 | コマンド |
 |:--|:--|
-| Fortran | ifort |
-| C | icc |
-| C++ | icpc |
+| Fortran | ifx |
+| C | icx |
+| C++ | icpx |
 
 ## OpenMP
 

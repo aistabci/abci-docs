@@ -14,7 +14,7 @@ If you run the `module` command in a compute node, environment variables both fo
 ```
 
 ```
-[username@es1 ~]$ module load intel-mpi/2021.8
+[username@es1 ~]$ module load intel-mpi/2021.11
 ```
 
 The following is a list MPI versions installed in the ABCI system.
@@ -65,4 +65,4 @@ For more information about NVIDIA HPC-X, please refer to [the official documenta
 
 | intel-mpi/ | Compute Node (V) | Compute Node (A) |
 |:--|:--|:--|
-| 2021.8 | Yes | Yes |
+| 2021.11 | Yes | Yes |

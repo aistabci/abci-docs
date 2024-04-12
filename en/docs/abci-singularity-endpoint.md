@@ -42,22 +42,15 @@ To check that ABCI Singularity Endpoint (cloud.se2.abci.local) is correctly conf
 
 ```
 [username@es1 ~]$ singularity remote list
-Cloud Services Endpoints
-========================
 
-NAME         URI                   ACTIVE  GLOBAL  EXCLUSIVE  INSECURE
-ABCI         cloud.se2.abci.local  YES     YES     NO         NO
-SylabsCloud  cloud.sylabs.io       NO      YES     NO         NO
-
-Keyservers
-==========
-
-URI                          GLOBAL  INSECURE  ORDER
-https://keys.se2.abci.local  YES     NO        1*
-
-* Active cloud services keyserver
+NAME         URI                   DEFAULT?  GLOBAL?  EXCLUSIVE?  SECURE?
+ABCI         cloud.se2.abci.local  ✓         ✓                    ✓
+SylabsCloud  cloud.sylabs.io                 ✓                    ✓
 [username@es1 ~]$
 ```
+
+!!! note
+    In the output of the `singularity remote list` command, depending on the terminal you are using, each column contains a `?` symbol may appear. In that case, `?` mark to a check mark.
 
 !!! note
     SylabsCloud is a public service endpoint operated by [Sylabs](https://sylabs.io/). It is available by signing in to <https://cloud.sylabs.io/> and obtaining an access token.

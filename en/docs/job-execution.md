@@ -50,18 +50,18 @@ The ABCI system provides the following resource types:
 
 | Resource type | Resource type name | Description | Assigned physical CPU core | Number of assigned GPU | Memory (GiB) | Local storage (GB) | Resource type charge coefficient |
 |:--|:--|:--|:--|:--|:--|:--|:--|
-| Full | rt\_F | node-exclusive | 40 | 4 | 360 | 1440 | 1.00 |
-| G.large | rt\_G.large | node-sharing<br>with GPU | 20 | 4 | 240 | 720 | 0.90 |
-| G.small | rt\_G.small | node-sharing<br>with GPU | 5 | 1 | 60 | 180 | 0.30 |
-| C.large | rt\_C.large | node-sharing<br>CPU only | 20 | 0 | 120 | 720 | 0.60 |
-| C.small | rt\_C.small | node-sharing<br>CPU only | 5 | 0 | 30 | 180 | 0.20 |
+| Full | rt\_F | node-exclusive | 40 | 4 | 360 | 1440 | 1.20 |
+| G.large | rt\_G.large | node-sharing<br>with GPU | 20 | 4 | 240 | 720 | 1.08 |
+| G.small | rt\_G.small | node-sharing<br>with GPU | 5 | 1 | 60 | 180 | 0.36 |
+| C.large | rt\_C.large | node-sharing<br>CPU only | 20 | 0 | 120 | 720 | 0.72 |
+| C.small | rt\_C.small | node-sharing<br>CPU only | 5 | 0 | 30 | 180 | 0.24 |
 
 #### Compute Node (A)
 
 | Resource type | Resource type name | Description | Assigned physical CPU core | Number of assigned GPU | Memory (GiB) | Local storage (GB) | Resource type charge coefficient |
 |:--|:--|:--|:--|:--|:--|:--|:--|
-| Full | rt\_AF | node-exclusive | 72 | 8 | 480 | 3440[^1] | 3.00 |
-| AG.small | rt\_AG.small | node-sharing<br>with GPU | 9 | 1 | 60 | 390 | 0.50 |
+| Full | rt\_AF | node-exclusive | 72 | 8 | 480 | 3440[^1] | 6.00 |
+| AG.small | rt\_AG.small | node-sharing<br>with GPU | 9 | 1 | 60 | 390 | 1.00 |
 
 [^1]: The sum of /local1 (1590 GB) and /local2 (1850 GB).
 
@@ -132,6 +132,18 @@ The number of the submitted jobs to the reserved node is included in the number 
 | The maximum number of tasks within an array job                   | 75000   |
 | The maximum number of any user's unfinished jobs at the same time | 1000    |
 | The maximum number of any user's running jobs at the same time    | 200     |
+
+Until fiscal 2023, there was no limit on the number of jobs executed per resource type, and the system was allocated sequentially from the available calculation resources. Starting in fiscal 2024, we will impose restrictions on the number of running jobs at the same time per system for each resource type.
+The Job Services subject to this will be the On-demand Service and the Spot Service.
+Jobs submitted to reserved nodes in the Reserved service are not included in the count.
+
+| Resource type name | Maximum number of running jobs at the same time per system |
+|:--|:--|
+| rt_F | 1054 |
+| rt_G.large, rt_C.large | 34 |
+| rt_G.small, rt_C.small | 136 |
+| rt_AF | 115 |
+| rt_AG.small | 40 |
 
 ### Execution Priority {#execution-priority}
 

@@ -161,35 +161,35 @@ The software available on the ABCI system is shown below.
 | OS | Rocky Linux | 8.6 | - |
 | OS | Red Hat Enterprise Linux | - | 8.2 |
 | Job Scheduler | Altair Grid Engine | 8.6.19_C121_1 | 8.6.19_C121_1 |
-| Development Environment | [CUDA Toolkit](gpu.md#cuda-toolkit) | 10.2.89<br>11.0.3<br>11.1.1<br>11.2.2<br>11.3.1<br>11.4.4<br>11.5.2<br>11.6.2<br>11.7.1<br>11.8.0<br>12.0.0<br>12.1.0<br>12.1.1<br>12.2.0<br>12.3.0<br>12.3.2<br>12.4.0 | 10.2.89<br>11.0.3<br>11.1.1<br>11.2.2<br>11.3.1<br>11.4.4<br>11.5.2<br>11.6.2<br>11.7.1<br>11.8.0<br>12.0.0<br>12.1.0<br>12.1.1<br>12.2.0<br>12.3.0<br>12.3.2<br>12.4.0 |
-| | Intel oneAPI<br>(compilers and libraries) | 2023.0.0 | 2023.0.0 |
-| | Intel VTune | 2023.0.0 | 2023.0.0 |
-| | Intel Trace Analyzer and Collector | 2021.8.0 | 2021.8.0 |
-| | Intel Inspector | 2023.0 | 2023.0 |
-| | Intel Advisor | 2023.0 | 2023.0 |
-| | GCC | 8.5.0<br>12.2.0 | 8.3.1<br>12.2.0 |
-| | cmake | 3.26.1 | 3.26.1 |
-| | [Python](python.md) | 3.10.10<br>3.11.2 | 3.10.10<br>3.11.2 |
+| Development Environment | [CUDA Toolkit](gpu.md#cuda-toolkit) | 11.2.2<br>11.6.2<br>11.7.1<br>11.8.0<br>12.1.1<br>12.2.0<br>12.3.2<br>12.4.0 | 11.2.2<br>11.6.2<br>11.7.1<br>11.8.0<br>12.1.1<br>12.2.0<br>12.3.2<br>12.4.0 |
+| | Intel oneAPI<br>(compilers and libraries) | 2024.0.2 | 2024.0.2 |
+| | Intel VTune | 2024.0.0 | 2024.0.0 |
+| | Intel Trace Analyzer and Collector | 2022.0 | 2022.0 |
+| | Intel Inspector | 2024.0 | 2024.0 |
+| | Intel Advisor | 2024.0.0 | 2024.0.0 |
+| | GCC | 8.5.0<br>13.2.0 | 8.3.1<br>13.2.0 |
+| | cmake | 3.29.0 | 3.29.0 |
+| | [Python](python.md) | 3.10.14<br>3.11.9<br>3.12.2 | 3.10.14<br>3.11.9<br>3.12.2 |
 | | Ruby | 2.5.9-229 | 2.5.5-157 |
-| | R | 4.2.3 | 4.2.3 |
-| | Java | 1.8.0.362<br>11.0.18.0.10<br>17.0.6.0.10 | 1.8.0.362<br>11.0.18.0.10<br>17.0.6.0.10 |
+| | R | 4.3.3 | 4.3.3 |
+| | Java | 1.8.0.402<br>11.0.22.0.7<br>17.0.10.0.7 | 1.8.0.402<br>11.0.22.0.7<br>17.0.10.0.7 |
 | | Scala | 2.10.6 | 2.10.6 |
 | | Perl | 5.26.3 | 5.26.3 |
-| | Go | 1.20 | 1.20 |
-| | Julia | 1.8 | 1.8 |
-| File System | [DDN Lustre](storage.md#home-area) | 2.12.8\_ddn23 | 2.12.8\_ddn23 |
+| | Go | 1.22.2 | 1.22.2 |
+| | Julia | 1.10 | 1.10 |
+| File System | [DDN Lustre](storage.md#home-area) | 2.14.0\_ddn134 | 2.14.0\_ddn134 |
 | | [BeeOND](storage.md#beeond-storage) | 7.3.3 | 7.3.3 |
 | Object Storage | Scality S3 Connector | 7.10.6.7 | 7.10.6.7 |
-| Container | [SingularityPRO](containers.md#singularity) | 3.11-5 | 3.11-5 |
-| | Singularity Endpoint | 2.1.5 | 2.1.5 |
-| MPI | [Intel MPI](mpi.md#intel-mpi) | 2021.8 | 2021.8 |
-| Library | [cuDNN](gpu.md#cudnn) | 7.6.5<br>8.0.5<br>8.1.1<br>8.2.4<br>8.3.3<br>8.4.1<br>8.5.0<br>8.6.0<br>8.7.0<br>8.8.1<br>8.9.1<br>8.9.2<br>8.9.5<br>8.9.7<br>9.0.0 | 7.6.5<br>8.0.5<br>8.1.1<br>8.2.4<br>8.3.3<br>8.4.1<br>8.5.0<br>8.6.0<br>8.7.0<br>8.8.1<br>8.9.1<br>8.9.2<br>8.9.5<br>8.9.7<br>9.0.0 |
-| | [NCCL](gpu.md#nccl) | 2.5.6-1<br>2.6.4-1<br>2.7.8-1<br>2.8.4-1<br>2.9.9-1<br>2.10.3-1<br>2.11.4-1<br>2.12.12-1<br>2.13.4-1<br>2.14.3-1<br>2.15.5-1<br>2.16.2-1<br>2.17.1-1<br>2.18.1-1<br>2.18.3-1<br>2.18.5-1<br>2.19.3-1<br>2.20.5-1 | 2.5.6-1<br>2.6.4-1<br>2.7.8-1<br>2.8.4-1<br>2.9.9-1<br>2.10.3-1<br>2.11.4-1<br>2.12.12-1<br>2.13.4-1<br>2.14.3-1<br>2.15.5-1<br>2.16.2-1<br>2.17.1-1<br>2.18.1-1<br>2.18.3-1<br>2.18.5-1<br>2.19.3-1<br>2.20.5-1 |
-| | gdrcopy | 2.3 | 2.3 |
+| Container | [SingularityPRO](containers.md#singularity) | 4.1.2-2 | 4.1.2-2 |
+| | Singularity Endpoint | 2.3.0 | 2.3.0 |
+| MPI | [Intel MPI](mpi.md#intel-mpi) | 2021.11 | 2021.11 |
+| Library | [cuDNN](gpu.md#cudnn) | 8.1.1<br>8.3.3<br>8.4.1<br>8.6.0<br>8.7.0<br>8.8.1<br>8.9.7<br>9.0.0 | 8.1.1<br>8.3.3<br>8.4.1<br>8.6.0<br>8.7.0<br>8.8.1<br>8.9.7<br>9.0.0 |
+| | [NCCL](gpu.md#nccl) | 2.8.4-1<br>2.11.4-1<br>2.12.12-1<br>2.13.4-1<br>2.14.3-1<br>2.15.5-1<br>2.16.2-1<br>2.17.1-1<br>2.18.5-1<br>2.19.3-1<br>2.20.5-1 | 2.8.4-1<br>2.11.4-1<br>2.12.12-1<br>2.13.4-1<br>2.14.3-1<br>2.15.5-1<br>2.16.2-1<br>2.17.1-1<br>2.18.5-1<br>2.19.3-1<br>2.20.5-1 |
+| | gdrcopy | 2.4.1 | 2.4.1 |
 | | UCX | 1.10 | 1.11 |
 | | libfabric | 1.7.0-1 | 1.9.0rc1-1 |
-| | Intel MKL | 2022.0.2 | 2022.0.2 |
-| Utility | aws-cli | 2.11 | 2.11 |
-| | s3fs-fuse | 1.91 | 1.91 |
+| | Intel MKL | 2024.0.0 | 2024.0.0 |
+| Utility | aws-cli | 2.15.35 | 2.15.35 |
+| | s3fs-fuse | 1.94 | 1.94 |
 | | rclone | 1.61.1 | 1.61.1 |
 
