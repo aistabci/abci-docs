@@ -305,6 +305,7 @@ Please note that previous ABCI Environment Modules is not eligible for the ABCI 
 | 2020 version             | `/apps/modules-abci-1.0`      | -                | -                |
 | 2021 version             | `/apps/modules-abci-2.0-2021` | -                | Yes              |
 | 2022 version             | `/apps/modules-abci-2.0-2022` | -                | Yes              |
+| 2023 version             | `/apps/modules-abci-2.0-2023` | Yes              | Yes              |
 
 The following is an example of using the 2021 version of ABCI Environment Modules.
 
