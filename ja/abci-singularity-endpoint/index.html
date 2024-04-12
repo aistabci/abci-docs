@@ -1331,23 +1331,17 @@
 <h3 id="_5">リモートエンドポイントの設定確認</h3>
 <p><code>singularity remote list</code> を実行し、本サービスを提供している ABCI Singularity エンドポイント（cloud.se2.abci.local）が、リモートエンドポイントとして正しく設定されていることを確認して下さい。</p>
 <div class="codehilite"><pre><span></span><code><span class="o">[</span><span class="n">username@es1 ~</span><span class="o">]</span><span class="err">$</span><span class="w"> </span><span class="n">singularity</span><span class="w"> </span><span class="n">remote</span><span class="w"> </span><span class="n">list</span>
-<span class="n">Cloud</span><span class="w"> </span><span class="n">Services</span><span class="w"> </span><span class="n">Endpoints</span>
-<span class="o">========================</span>
 
-<span class="n">NAME</span><span class="w">         </span><span class="n">URI</span><span class="w">                   </span><span class="n">ACTIVE</span><span class="w">  </span><span class="k">GLOBAL</span><span class="w">  </span><span class="n">EXCLUSIVE</span><span class="w">  </span><span class="n">INSECURE</span>
-<span class="n">ABCI</span><span class="w">         </span><span class="n">cloud</span><span class="p">.</span><span class="n">se2</span><span class="p">.</span><span class="n">abci</span><span class="p">.</span><span class="k">local</span><span class="w">  </span><span class="n">YES</span><span class="w">     </span><span class="n">YES</span><span class="w">     </span><span class="k">NO</span><span class="w">         </span><span class="k">NO</span>
-<span class="n">SylabsCloud</span><span class="w">  </span><span class="n">cloud</span><span class="p">.</span><span class="n">sylabs</span><span class="p">.</span><span class="n">io</span><span class="w">       </span><span class="k">NO</span><span class="w">      </span><span class="n">YES</span><span class="w">     </span><span class="k">NO</span><span class="w">         </span><span class="k">NO</span>
-
-<span class="n">Keyservers</span>
-<span class="o">==========</span>
-
-<span class="n">URI</span><span class="w">                          </span><span class="k">GLOBAL</span><span class="w">  </span><span class="n">INSECURE</span><span class="w">  </span><span class="k">ORDER</span>
-<span class="nl">https</span><span class="p">:</span><span class="o">//</span><span class="n">keys</span><span class="p">.</span><span class="n">se2</span><span class="p">.</span><span class="n">abci</span><span class="p">.</span><span class="k">local</span><span class="w">  </span><span class="n">YES</span><span class="w">     </span><span class="k">NO</span><span class="w">        </span><span class="mi">1</span><span class="o">*</span>
-
-<span class="o">*</span><span class="w"> </span><span class="n">Active</span><span class="w"> </span><span class="n">cloud</span><span class="w"> </span><span class="n">services</span><span class="w"> </span><span class="n">keyserver</span>
-<span class="o">[</span><span class="n">username@es1 ~</span><span class="o">]</span><span class="err">$</span><span class="w"> </span>
+<span class="n">NAME</span><span class="w">         </span><span class="n">URI</span><span class="w">                   </span><span class="k">DEFAULT</span><span class="vm">?</span><span class="w">  </span><span class="k">GLOBAL</span><span class="vm">?</span><span class="w">  </span><span class="n">EXCLUSIVE</span><span class="vm">?</span><span class="w">  </span><span class="n">SECURE</span><span class="vm">?</span>
+<span class="n">ABCI</span><span class="w">         </span><span class="n">cloud</span><span class="p">.</span><span class="n">se2</span><span class="p">.</span><span class="n">abci</span><span class="p">.</span><span class="k">local</span><span class="w">  </span><span class="err">✓</span><span class="w">         </span><span class="err">✓</span><span class="w">                    </span><span class="err">✓</span>
+<span class="n">SylabsCloud</span><span class="w">  </span><span class="n">cloud</span><span class="p">.</span><span class="n">sylabs</span><span class="p">.</span><span class="n">io</span><span class="w">                 </span><span class="err">✓</span><span class="w">                    </span><span class="err">✓</span>
+<span class="o">[</span><span class="n">username@es1 ~</span><span class="o">]</span><span class="err">$</span>
 </code></pre></div>
 
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p><code>singularity remote list</code>コマンドの出力において、使用している端末により各列に<code>?</code>マークが表示される場合があります。その場合は<code>?</code>マークをチェックマークに読み替えてください。</p>
+</div>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>SylabsCloud は <a href="https://sylabs.io/">Sylabs</a> が運営するパブリックサービスのエンドポイントです。<a href="https://cloud.sylabs.io/">https://cloud.sylabs.io/</a> にサインインし、アクセストークンを取得することで利用可能になります。</p>

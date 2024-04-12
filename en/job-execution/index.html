@@ -1433,7 +1433,7 @@ When using any of the On-demand, Spot, and Reserved services, you need to specif
 <td style="text-align: left;">4</td>
 <td style="text-align: left;">360</td>
 <td style="text-align: left;">1440</td>
-<td style="text-align: left;">1.00</td>
+<td style="text-align: left;">1.20</td>
 </tr>
 <tr>
 <td style="text-align: left;">G.large</td>
@@ -1443,7 +1443,7 @@ When using any of the On-demand, Spot, and Reserved services, you need to specif
 <td style="text-align: left;">4</td>
 <td style="text-align: left;">240</td>
 <td style="text-align: left;">720</td>
-<td style="text-align: left;">0.90</td>
+<td style="text-align: left;">1.08</td>
 </tr>
 <tr>
 <td style="text-align: left;">G.small</td>
@@ -1453,7 +1453,7 @@ When using any of the On-demand, Spot, and Reserved services, you need to specif
 <td style="text-align: left;">1</td>
 <td style="text-align: left;">60</td>
 <td style="text-align: left;">180</td>
-<td style="text-align: left;">0.30</td>
+<td style="text-align: left;">0.36</td>
 </tr>
 <tr>
 <td style="text-align: left;">C.large</td>
@@ -1463,7 +1463,7 @@ When using any of the On-demand, Spot, and Reserved services, you need to specif
 <td style="text-align: left;">0</td>
 <td style="text-align: left;">120</td>
 <td style="text-align: left;">720</td>
-<td style="text-align: left;">0.60</td>
+<td style="text-align: left;">0.72</td>
 </tr>
 <tr>
 <td style="text-align: left;">C.small</td>
@@ -1473,7 +1473,7 @@ When using any of the On-demand, Spot, and Reserved services, you need to specif
 <td style="text-align: left;">0</td>
 <td style="text-align: left;">30</td>
 <td style="text-align: left;">180</td>
-<td style="text-align: left;">0.20</td>
+<td style="text-align: left;">0.24</td>
 </tr>
 </tbody>
 </table>
@@ -1500,7 +1500,7 @@ When using any of the On-demand, Spot, and Reserved services, you need to specif
 <td style="text-align: left;">8</td>
 <td style="text-align: left;">480</td>
 <td style="text-align: left;">3440<sup id="fnref:1"><a class="footnote-ref" href="#fn:1">1</a></sup></td>
-<td style="text-align: left;">3.00</td>
+<td style="text-align: left;">6.00</td>
 </tr>
 <tr>
 <td style="text-align: left;">AG.small</td>
@@ -1510,7 +1510,7 @@ When using any of the On-demand, Spot, and Reserved services, you need to specif
 <td style="text-align: left;">1</td>
 <td style="text-align: left;">60</td>
 <td style="text-align: left;">390</td>
-<td style="text-align: left;">0.50</td>
+<td style="text-align: left;">1.00</td>
 </tr>
 </tbody>
 </table>
@@ -1749,6 +1749,39 @@ The number of the submitted jobs to the reserved node is included in the number 
 <tr>
 <td style="text-align: left;">The maximum number of any user's running jobs at the same time</td>
 <td style="text-align: left;">200</td>
+</tr>
+</tbody>
+</table>
+<p>Until fiscal 2023, there was no limit on the number of jobs executed per resource type, and the system was allocated sequentially from the available calculation resources. Starting in fiscal 2024, we will impose restrictions on the number of running jobs at the same time per system for each resource type.
+The Job Services subject to this will be the On-demand Service and the Spot Service.
+Jobs submitted to reserved nodes in the Reserved service are not included in the count.</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Resource type name</th>
+<th style="text-align: left;">Maximum number of running jobs at the same time per system</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">rt_F</td>
+<td style="text-align: left;">1054</td>
+</tr>
+<tr>
+<td style="text-align: left;">rt_G.large, rt_C.large</td>
+<td style="text-align: left;">34</td>
+</tr>
+<tr>
+<td style="text-align: left;">rt_G.small, rt_C.small</td>
+<td style="text-align: left;">136</td>
+</tr>
+<tr>
+<td style="text-align: left;">rt_AF</td>
+<td style="text-align: left;">115</td>
+</tr>
+<tr>
+<td style="text-align: left;">rt_AG.small</td>
+<td style="text-align: left;">40</td>
 </tr>
 </tbody>
 </table>
