@@ -17,13 +17,14 @@ ABCIでは計算ノード(A)向けにNCCL-SHARPプラグインをモジュール
 
 | NCCL SHARPプラグインモジュール           | NCCLバージョン       |
 | ---------------------------------------- | -------------------- |
-| `nccl-rdma-sharp-plugins/v2.1.x-5f238fb` | 2.8、2.9、2.10、2.11 |
+| `nccl-rdma-sharp-plugins/v2.1.x-5f238fb` | 2.8、2.11 |
 | `nccl-rdma-sharp-plugins/v2.2.x-5e6ed3e` | 2.12                 |
+| `nccl-rdma-sharp-plugins/v2.5.x-4ccb98a` | 2.12、2.13、2.14、2.15、2.16、2.17、2.18、2.19 |
 
 NCCLでSHARPを使用するには、CUDA、NCCL、およびNCCL SHARPプラグインモジュールをロードし、次の環境変数を設定します。
 
 ```
-[username@es-a1 ~] module load cuda/11.0 nccl/2.8 nccl-rdma-sharp-plugins/v2.1.x-5f238fb
+[username@es-a1 ~] module load cuda/11.2 nccl/2.8 nccl-rdma-sharp-plugins/v2.1.x-5f238fb
 ```
 
 * `NCCL_COLLNET_ENABLE=1`
@@ -35,11 +36,14 @@ NCCLでSHARPを使用するには、CUDA、NCCL、およびNCCL SHARPプラグ�
 
 [nccl-tests](https://github.com/NVIDIA/nccl-tests)を使い、NCCLでSHARPを有効にする例を以下に示します。
 
+!!! warning
+    `nccl-rdma-sharp-plugins/v2.5.x-4ccb98a`において、NCCL 2.12 ~ 2.16ではnccl-testsが動作しない問題を確認しています。
+
 まず、nccl-testsをダウンロードし、MPIサポートを有効にした上でビルドします。
 
 ```
-[username@es-a1 ~] module load openmpi/4.1.3 cuda/11.0 nccl/2.8
-[username@es-a1 ~] git clone https://github.com/NVIDIA/nccl-tests.git
+[username@es-a1 ~] module load hpcx/2.12 cuda/11.2 nccl/2.8
+[username@es-a1 ~] git clone https://github.com/NVIDIA/nccl-tests.git -b v2.11.0
 [username@es-a1 ~] cd nccl-tests
 [username@es-a1 ~] make MPI=1 MPI_HOME=${OMPI_HOME} CUDA_HOME=${CUDA_HOME} NCCL_HOME=${NCCL_HOME}
 ```
@@ -48,9 +52,10 @@ NCCLでSHARPを使用するには、CUDA、NCCL、およびNCCL SHARPプラグ�
 
 ```
 [username@es-a1 ~] qrsh -g group -l rt_AF=2 -l h_rt=01:00:00
-[username@a0000 ~] module load openmpi/4.1.3 cuda/11.0 nccl/2.8 nccl-rdma-sharp-plugins/v2.1.x-5f238fb
+[username@a0000 ~] module load hpcx/2.12 cuda/11.2 nccl/2.8 nccl-rdma-sharp-plugins/v2.1.x-5f238fb
 [username@a0000 ~] cd nccl-tests
 [username@a0000 ~] mpirun -np 16 -map-by ppr:8:node \
+-hostfile ${SGE_JOB_HOSTLIST} \
 -x UCX_TLS=dc,shm,self \
 -x LD_LIBRARY_PATH=${LD_LIBRARY_PATH} \
 -x NCCL_COLLNET_ENABLE=1 \

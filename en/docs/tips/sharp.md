@@ -18,13 +18,14 @@ The corresponding module of the plugin changes depending on the version of NCCL.
 
 | NCCL-SHARP plugin module                 | NCCL versions        |
 | ---------------------------------------- | -------------------- |
-| `nccl-rdma-sharp-plugins/v2.1.x-5f238fb` | 2.8、2.9、2.10、2.11 |
+| `nccl-rdma-sharp-plugins/v2.1.x-5f238fb` | 2.8、2.11 |
 | `nccl-rdma-sharp-plugins/v2.2.x-5e6ed3e` | 2.12                 |
+| `nccl-rdma-sharp-plugins/v2.5.x-4ccb98a` | 2.12、2.13、2.14、2.15、2.16、2.17、2.18、2.19 |
 
 To use SHARP with NCCL, load the CUDA, NCCL and NCCL SHARP plugin modules and set the following environment variables:
 
 ```
-[username@es-a1 ~] module load cuda/11.0 nccl/2.8 nccl-rdma-sharp-plugins/v2.1.x-5f238fb
+[username@es-a1 ~] module load cuda/11.2 nccl/2.8 nccl-rdma-sharp-plugins/v2.1.x-5f238fb
 ```
 
 * `NCCL_COLLNET_ENABLE=1`
@@ -34,13 +35,16 @@ To use SHARP with NCCL, load the CUDA, NCCL and NCCL SHARP plugin modules and se
 
 ### Example using nccl-tests
 
-The following is an example of enabling SHARP on NCCL using [nccl-tests](https://github.com/NVIDIA/nccl-tests)).
+The following is an example of enabling SHARP on NCCL using [nccl-tests](https://github.com/NVIDIA/nccl-tests).
+
+!!! warning
+    We have confirmed an issue in the `nccl-rdma-sharp-plugins/v2.5.x-4ccb98a` module where nccl-tests do not run with NCCL 2.12 through 2.16.
 
 First, download nccl-tests, enable MPI support, and then build.
 
 ```
-[username@es-a1 ~] module load openmpi/4.1.3 cuda/11.0 nccl/2.8
-[username@es-a1 ~] git clone https://github.com/NVIDIA/nccl-tests.git
+[username@es-a1 ~] module load hpcx/2.12 cuda/11.2 nccl/2.8
+[username@es-a1 ~] git clone https://github.com/NVIDIA/nccl-tests.git -b v2.11.0
 [username@es-a1 ~] cd nccl-tests
 [username@es-a1 ~] make MPI=1 MPI_HOME=${OMPI_HOME} CUDA_HOME=${CUDA_HOME} NCCL_HOME=${NCCL_HOME}
 ```
@@ -49,9 +53,10 @@ After building, a binary will be generated under the `build` directory, so execu
 
 ```
 [username@es-a1 ~] qrsh -g group -l rt_AF=2 -l h_rt=01:00:00
-[username@a0000 ~] module load openmpi/4.1.3 cuda/11.0 nccl/2.8 nccl-rdma-sharp-plugins/v2.1.x-5f238fb
+[username@a0000 ~] module load hpcx/2.12 cuda/11.2 nccl/2.8 nccl-rdma-sharp-plugins/v2.1.x-5f238fb
 [username@a0000 ~] cd nccl-tests
 [username@a0000 ~] mpirun -np 16 -map-by ppr:8:node \
+-hostfile ${SGE_JOB_HOSTLIST} \
 -x UCX_TLS=dc,shm,self \
 -x LD_LIBRARY_PATH=${LD_LIBRARY_PATH} \
 -x NCCL_COLLNET_ENABLE=1 \
