@@ -18,7 +18,7 @@ The followings are examples.
 ## Singularity
 
 [Singularity](https://www.sylabs.io/singularity/) is available on the ABCI System.
-Available version is SingularityPRO 3.11.
+Available version is SingularityPRO 4.1.
 To use Singularity, set up user environment by the `module` command.
 
 ```
@@ -27,7 +27,7 @@ To use Singularity, set up user environment by the `module` command.
 
 More comprehensive user guide for Singularity will be found:
 
-* [SingularityPRO User Guide](https://repo.sylabs.io/guides/pro-3.11/user-guide/)
+* [SingularityPRO User Guide](https://repo.sylabs.io/guides/pro-4.1/user-guide/)
 
 To run NGC-provided Docker images on ABCI by using Singularity: [NVIDIA NGC](tips/ngc.md)
 
