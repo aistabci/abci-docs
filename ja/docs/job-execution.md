@@ -140,9 +140,9 @@ Reservedサービスで予約ノードに投入されたジョブはカウント
 
 | 資源タイプ | システムあたりの同時実行ジョブ数の制限値 |
 |:--|:--|
-| rt_F | 1054 |
-| rt_G.large, rt_C.large | 34 |
-| rt_G.small, rt_C.small | 136 |
+| rt_F | 918 |
+| rt_G.large, rt_C.large | 170 |
+| rt_G.small, rt_C.small | 680 |
 | rt_AF | 115 |
 | rt_AG.small | 40 |
 
