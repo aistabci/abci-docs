@@ -54,7 +54,7 @@ $ lfs setstripe  [options] <dirname | filename>
 Example) Set a stripe pattern #1. (Creating a new file with a specific stripe pattern.)
 
 ```
-[username@es1 work]$ lfs setstripe -S 1m -i 10 -c 4 stripe-file
+[username@es1 work]$ lfs setstripe -S 1m -i 4 -c 4 stripe-file
 [username@es1 work]$ ls
 stripe-file
 ```
@@ -63,7 +63,7 @@ Example) Set a stripe pattern #2. (Setting up a stripe pattern to a directory.)
 
 ```
 [username@es1 work]$ mkdir stripe-dir
-[username@es1 work]$ lfs setstripe -S 1m -i 10 -c 4 stripe-dir
+[username@es1 work]$ lfs setstripe -S 1m -i 4 -c 4 stripe-dir
 ```
 
 #### How to Display File Striping Settings
@@ -83,12 +83,12 @@ lmm_stripe_count:  4
 lmm_stripe_size:   1048576
 lmm_pattern:       1
 lmm_layout_gen:    0
-lmm_stripe_offset: 10
+lmm_stripe_offset: 4
         obdidx           objid           objid           group
-            10         3024641       0x2e2701                0
-            11         3026034       0x2e2c72                0
-            12         3021952       0x2e1c80                0
-            13         3019616       0x2e1360                0
+             4         3024641       0x2e2701                0
+             5         3026034       0x2e2c72                0
+             6         3021952       0x2e1c80                0
+             7         3019616       0x2e1360                0
 ```
 
 Example) Display stripe settings #2. (Displaying the stripe pattern of a directory.)
@@ -96,7 +96,7 @@ Example) Display stripe settings #2. (Displaying the stripe pattern of a directo
 ```
 [username@es1 work]$ lfs getstripe stripe-dir
 stripe-dir
-stripe_count:  4 stripe_size:   1048576 stripe_offset: 10
+stripe_count:  4 stripe_size:   1048576 stripe_offset: 4
 ```
 
 ## Group Area
