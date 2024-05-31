@@ -54,6 +54,9 @@ nav:
     - 's3fs-fuseの利用': 'abci-cloudstorage/s3fs-usage.md'
   - 'ABCI データセット': 'abci-datasets.md'
   - 'ABCI Singularity エンドポイント': 'abci-singularity-endpoint.md'
+  - 'Open OnDemand (Experimental)':
+    - '使い方': 'open-ondemand/index.md'
+    - 'AIHub': 'open-ondemand/aihub.md'
   - 'FAQ': 'faq.md'
   - '既知の問題': 'known-issues.md'
   - 'システム更新履歴': 'system-updates.md'
