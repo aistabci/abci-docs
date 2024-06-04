@@ -10,9 +10,7 @@
 - ホーム領域、グループ領域のファイル操作
 - Jupyter Lab等のWebアプリケーションの利用
 
-
-< TODO: 管理者向けメニューを取り除いた、OODトップページのスクリーンショット >
-
+![Open OnDemandトップページ](img/ondemand-top-page.png){width=640}
 
 !!! caution
     Open OnDemandは試験的機能として公開しています。
@@ -21,7 +19,22 @@
 
 ## ログイン方法 {#login}
 
-< TODO: スクリーンショットを交えて説明 >
+Open OnDemandにログインするためにはまず、URL [https://ood-portal.abci.ai/](https://ood-portal.abci.ai/) にアクセスします。
+ood-portal.abci.ai にアクセスした後、ABCIアカウント名とパスワードの入力が求められるので、[ABCI利用者ポータル](https://portal.abci.ai/)で設定したABCIアカウント名とパスワードを入力してください。
+
+[![パスワード入力画面](img/login.png){width=640}](img/login.png)
+
+ABCIアカウント名とパスワードによる認証後、アクセスコードの入力が求められます。
+アクセスコードは登録しているメールアドレス宛に送付されますので、アクセスコードを受信後、入力フォームにアクセスコードを入力してください。
+
+[![アクセスコード入力画面](img/email-otp.png){width=640}](img/email-otp.png)
+
+アクセスコードによる認証後、Open OnDemandへのログインが完了します。
+
+[![Open OnDemandトップページ](img/ondemand-top-page.png){width=640}](img/ondemand-top-page.png)
+
+!!! warning
+    ログイン中にエラーが発生した場合は、管理者まで[お問合せ](../contact.md)ください。
 
 
 ## アプリケーション {#applications}
