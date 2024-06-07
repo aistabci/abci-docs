@@ -4,11 +4,11 @@
 
 * In Spot and On-demand Service on Compute Node (V), the upper limits for the number of running jobs at the same time per system have been changed as follows.
 
-| Resource type name | Limitations | Previous upper limit | Changed upper limit |
-|:--|:--|:--|:--|
-| rt_F | Maximum number of running jobs at the same time per system | 1054 | 918 |
-| rt_G.large, rt_C.large | Maximum number of running jobs at the same time per system | 34 | 170 |
-| rt_G.small, rt_C.small | Maximum number of running jobs at the same time per system | 136 | 680 |
+| Resource type name | Limitations | Changed upper limit |
+|:--|:--|:--|
+| rt_F | Maximum number of running jobs at the same time per system | 918 |
+| rt_G.large, rt_C.large | Maximum number of running jobs at the same time per system | 170 |
+| rt_G.small, rt_C.small | Maximum number of running jobs at the same time per system | 680 |
 
 ## 2024-04-12
 
