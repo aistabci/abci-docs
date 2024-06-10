@@ -43,16 +43,14 @@ Open OnDemandが提供する機能には、画面上部のメニューからア�
 
 [![Open OnDemand Application Menu](ood-menu.png)](ood-menu.png)
 
-1. Files: ファイル操作をブラウザ上で行えます
+1. **Files**: ファイル操作をブラウザ上で行えます
 
-2. Jobs: ジョブ編集・管理をブラウザ上で行えます
+2. **Jobs**: ジョブ編集・管理をブラウザ上で行えます
 
-2. Clusters: インタラクティブノードのコンソールが開きます
+3. **Clusters**: インタラクティブノードのコンソールが開きます
 
-3. Interactive Apps: 計算ノード上でWebアプリケーションを起動し、その画面をWebブラウザに転送します。<br>
-   以下のアプリケーションを提供します。
+4. **Interactive Apps**: 計算ノード上でWebアプリケーションを起動し、その画面をWebブラウザに転送します。<br>
+   詳細は[インタラクティブアプリ](interactive-apps.md)を参照ください。
 
-     - [Jupyter Lab](https://jupyter.org/): 対話型の開発環境
-     - [Qni](https://qniapp.net/): ブラウザ上で動作する、対話型の量子回路設計・シミュレータ。ABCI上のQniは、ABCI計算ノードのGPUを用いたシミュレーションを提供します。
-
-4. AIHub: [AIHubのアプリケーション](aihub.md)
+5. **AI Hub**: AI HubはABCI上で大規模な汎用学習済みモデルの再利用等を行うためのツールやサービス群です。AI Hubを構成する機能の1つである、Mlflow Tracking Serverのデプロイを管理するアプリケーションを提供します。<br>
+   詳細は[AI Hub](aihub.md)を参照ください。
