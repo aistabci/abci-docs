@@ -16,9 +16,13 @@ AIHubはABCI上で大規模な汎用学習済みモデルの再利用等を行�
 
 * アプリ用コマンド実行許可設定
 	* アプリ利用のためにABCIアカウントに管理サーバのコマンド実行許可設定が必要となっています。
-	* 設定されていない場合は、`App for MLflow Server`の管理者へ依頼してください。 
+	* 設定されていない場合は、`App for MLflow Server`の管理者へ依頼してください。
+ * ABCIクラウドストレージにバケットとアクセスキーの作成 (MLflow Tracking Serverを作成する場合)
+	* 作成方法は[ABCIクラウドストレージの使い方](https://docs.abci.ai/ja/abci-cloudstorage/usage/)をご確認ください。
 
 ## アプリ操作方法 {#operation}
+
+`App for MLflow Server`を起動するには、メニューから`AIHub`、`MLflow Server`をクリックしてください。
 
 `App for MLflow Server`を起動すると、以下のような画面が表示されます。
 
@@ -26,14 +30,17 @@ AIHubはABCI上で大規模な汎用学習済みモデルの再利用等を行�
 　
 #### MLflow Tracking Serverを作成(デプロイ)する場合
 
-* 予めABCIクラウドストレージにバケットとアクセスキーの作成が必要です。
-	* 作成方法は[ABCIクラウドストレージの使い方](https://docs.abci.ai/ja/abci-cloudstorage/usage/)をご確認ください。  
+  
 * 画面の説明にもとに、以下の項目を入力し`Create Service`ボタンをクリックします。
-	* ABCIグループ名
-	* 環境名
-	* バケット名
-	* アクセスキーID
-	* シークレットアクセスキー
+
+	| 項目 | 説明 |
+	| -- | --
+	| `group_name` | ABCIグループ名 |
+	| `env_name` | 環境名 |
+	| `cloud_storage_bucket_name` | バケット名 |
+	| `cloud_storage_accesskey_ID` | アクセスキーID |
+	| `cloud_storage_secret_accesskey` | シークレットアクセスキー |
+
 * Serviceの作成に成功すると、Operational status for requests 欄に「Service created」と表示されます。
 
 #### MLflow Tracking Serverを管理・利用する場合
@@ -44,7 +51,9 @@ AIHubはABCI上で大規模な汎用学習済みモデルの再利用等を行�
 	* 利用を終えたサービスは、資源節約のため停止や削除にご協力ください。
 * MLflow Tracking ServerにBasic認証の設定する場合は、サービスの`Update Auth Info`ボタンをクリックします。
 	* 予め所定の場所に以下のフォーマットのYAMLファイルを配置しておく必要があります。
-	    * {'user_name':'＜Basic認証用ユーザ名＞', 'pass':'＜Basic認証用パスワード＞'}
+
+		`{'user_name':'＜Basic認証用ユーザ名＞', 'pass':'＜Basic認証用パスワード＞'}`
+
 * MLflowのUIを確認する場合は、`URL for access from outside ABCI`のURLをクリックします。
 	* Basic認証用のユーザ名とパスワードを入力してログインします。
 * 起動しているMLflow Tracking Serverをご利用ください。
