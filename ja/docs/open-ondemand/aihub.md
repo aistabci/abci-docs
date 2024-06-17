@@ -14,9 +14,6 @@ AIHubはABCI上で大規模な汎用学習済みモデルの再利用等を行�
 
 ## 前提条件 {#prerequisites}
 
-* アプリ用コマンド実行許可設定
-	* アプリ利用のためにABCIアカウントに管理サーバのコマンド実行許可設定が必要となっています。
-	* 設定されていない場合は、`App for MLflow Server`の管理者へ依頼してください。
  * ABCIクラウドストレージにバケットとアクセスキーの作成 (MLflow Tracking Serverを作成する場合)
 	* 作成方法は[ABCIクラウドストレージの使い方](https://docs.abci.ai/ja/abci-cloudstorage/usage/)をご確認ください。
 
