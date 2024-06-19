@@ -4,7 +4,7 @@ site_author: AIST
 site_url: https://docs.abci.ai/ja/
 repo_url: https://github.com/aistairc/abci-docs
 edit_uri: edit/master/ja/docs/
-copyright: 'Copyright &copy; 2021 National Institute of Advanced Industrial Science and Technology (AIST)'
+copyright: 'Copyright &copy; 2024 National Institute of Advanced Industrial Science and Technology (AIST) / AIST Solutions Co. (AISol)'
 nav:
   - 'はじめに': 'index.md'
   - 'ABCIシステムの概要': 'system-overview.md'
