@@ -1,6 +1,6 @@
 # System Updates
 
-## 2024-06-12
+## 2024-06-18
 
 | Add / Update / Delete | Software | Version | Previous version |
 |:--|:--|:--|:--|
