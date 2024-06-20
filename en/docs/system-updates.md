@@ -1,5 +1,13 @@
 # System Updates
 
+## 2024-06-18
+
+| Add / Update / Delete | Software | Version | Previous version |
+|:--|:--|:--|:--|
+| Add | cuda | 12.4.1<br>12.5.0 | |
+| Add | cudnn | 9.1.1 | |
+| Add | nccl | 2.21.5-1 | |
+
 ## 2024-05-28
 
 * In Spot and On-demand Service on Compute Node (V), the upper limits for the number of running jobs at the same time per system have been changed as follows.

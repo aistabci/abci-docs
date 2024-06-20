@@ -1,5 +1,13 @@
 # システム更新履歴
 
+## 2024-06-18
+
+| Add / Update / Delete | Software | Version | Previous version |
+|:--|:--|:--|:--|
+| Add | cuda | 12.4.1<br>12.5.0 | |
+| Add | cudnn | 9.1.1 | |
+| Add | nccl | 2.21.5-1 | |
+
 ## 2024-05-28
 
 * 計算ノード(V)のSpotサービスとOn-demandサービスにおいて、システムあたりの同時実行ジョブ数の制限を以下の通り変更しました。
