@@ -139,9 +139,9 @@ Jobs submitted to reserved nodes in the Reserved service are not included in the
 
 | Resource type name | Maximum number of running jobs at the same time per system |
 |:--|:--|
-| rt_F | 1054 |
-| rt_G.large, rt_C.large | 34 |
-| rt_G.small, rt_C.small | 136 |
+| rt_F | 918 |
+| rt_G.large, rt_C.large | 170 |
+| rt_G.small, rt_C.small | 680 |
 | rt_AF | 115 |
 | rt_AG.small | 40 |
 

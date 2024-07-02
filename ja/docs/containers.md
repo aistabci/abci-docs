@@ -17,7 +17,7 @@ NGC CatalogのABCIでの使い方はTipsの[NVIDIA NGC](https://docs.abci.ai/ja/
 ## Singularity
 
 ABCIシステムでは[Singularity](https://www.sylabs.io/singularity/)が利用可能です。
-利用可能なバージョンはSingularityPRO 3.11となります。
+利用可能なバージョンはSingularityPRO 4.1となります。
 利用するためには事前に`module`コマンドを用いて利用環境を設定する必要があります。
 
 ```
@@ -26,7 +26,7 @@ ABCIシステムでは[Singularity](https://www.sylabs.io/singularity/)が利用
 
 より網羅的なユーザガイドは、以下にあります。
 
-* [SingularityPRO User Guide](https://repo.sylabs.io/guides/pro-3.11/user-guide/) (英文)
+* [SingularityPRO User Guide](https://repo.sylabs.io/guides/pro-4.1/user-guide/) (英文)
 
 Singularityを用いて、NGCが提供するDockerイメージをABCIで実行する方法は、[NVIDIA NGC](tips/ngc.md) で説明しています。
 

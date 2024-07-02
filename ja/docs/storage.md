@@ -46,7 +46,7 @@ $ lfs setstripe  [options] <dirname | filename>
 | オプション | 説明 |
 |:--:|:---|
 | -S | ストライプサイズを設定。-S #k, -S #m, -S #gとすることで、サイズをKiB,MiB,GiBで設定可能。 |
-| -i | ファイル書き込みを開始するOSTインデックスを指定。 -1とした場合、ファイル書き込みを開始するOSTはランダム。本システムでは、OSTインデックスは 0 から 17 を指定可能です。 |
+| -i | ファイル書き込みを開始するOSTインデックスを指定。 -1とした場合、ファイル書き込みを開始するOSTはランダム。本システムでは、OSTインデックスは 0 から 7 を指定可能です。 |
 | -c | ストライプカウントを設定。 -1とした場合、すべてのOSTに書き込みを実行。 |
 
 !!! Tips
@@ -55,7 +55,7 @@ $ lfs setstripe  [options] <dirname | filename>
 例）ストライプパターンを持った新規ファイルの作成
 
 ```
-[username@es1 work]$ lfs setstripe -S 1m -i 10 -c 4 stripe-file
+[username@es1 work]$ lfs setstripe -S 1m -i 4 -c 4 stripe-file
 [username@es1 work]$ ls
 stripe-file
 ```
@@ -64,7 +64,7 @@ stripe-file
 
 ```
 [username@es1 work]$ mkdir stripe-dir
-[username@es1 work]$ lfs setstripe -S 1m -i 10 -c 4 stripe-dir
+[username@es1 work]$ lfs setstripe -S 1m -i 4 -c 4 stripe-dir
 ```
 
 #### ストライプ機能の表示方法 {#how-to-display-file-striping-settings}
@@ -84,12 +84,12 @@ lmm_stripe_count:  4
 lmm_stripe_size:   1048576
 lmm_pattern:       1
 lmm_layout_gen:    0
-lmm_stripe_offset: 10
+lmm_stripe_offset: 4
         obdidx           objid           objid           group
-            10         3024641       0x2e2701                0
-            11         3026034       0x2e2c72                0
-            12         3021952       0x2e1c80                0
-            13         3019616       0x2e1360                0
+             4         3024641       0x2e2701                0
+             5         3026034       0x2e2c72                0
+             6         3021952       0x2e1c80                0
+             7         3019616       0x2e1360                0
 ```
 
 例) ディレクトリの設定表示例
@@ -97,7 +97,7 @@ lmm_stripe_offset: 10
 ```
 [username@es1 work]$ lfs getstripe stripe-dir
 stripe-dir
-stripe_count:  4 stripe_size:   1048576 stripe_offset: 10
+stripe_count:  4 stripe_size:   1048576 stripe_offset: 4
 ```
 
 ## グループ領域 {#group-area}
