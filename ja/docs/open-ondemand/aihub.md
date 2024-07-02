@@ -1,6 +1,6 @@
 # AIHub
 
-## 概要 {#overview} 
+## 概要 {#overview}
 
 AIHubはABCI上で大規模な汎用学習済みモデルの再利用等を行うためのツールやサービス群であり、Open OnDemandからは`App for MLflow Server`を利用できます。
 
@@ -10,7 +10,8 @@ AIHubはABCI上で大規模な汎用学習済みモデルの再利用等を行�
 
 !!! caution
     `App for MLflow Server`は試験的機能として公開しています。
-    予告なくサービス変更する場合や問い合わせへの回答が困難な場合があります。
+    予告なくサービス変更する場合や、問い合わせへの回答に時間を要する場合があります。
+
 
 ## 前提条件 {#prerequisites}
 
@@ -27,7 +28,7 @@ AIHubはABCI上で大規模な汎用学習済みモデルの再利用等を行�
 　
 #### MLflow Tracking Serverを作成(デプロイ)する場合
 
-  
+
 * 画面の説明にもとに、以下の項目を入力し`Create Service`ボタンをクリックします。
 
 	| 項目 | 説明 |
