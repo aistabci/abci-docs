@@ -1,8 +1,8 @@
-# AIHub
+# AI Hub
 
 ## 概要 {#overview}
 
-AIHubはABCI上で大規模な汎用学習済みモデルの再利用等を行うためのツールやサービス群であり、Open OnDemandからは`App for MLflow Server`を利用できます。
+AI HubはABCI上で大規模な汎用学習済みモデルの再利用等を行うためのツールやサービス群であり、Open OnDemandからは`App for MLflow Server`を利用できます。
 
 `App for MLflow Server`は、実験管理ツールである[MLflow](https://mlflow.org/docs/latest/index.html)のTracking ServerをABCIグループ単位で利用できる形にデプロイし、WebUIから管理できるアプリです。
 
@@ -16,11 +16,11 @@ AIHubはABCI上で大規模な汎用学習済みモデルの再利用等を行�
 ## 前提条件 {#prerequisites}
 
  * ABCIクラウドストレージにバケットとアクセスキーの作成 (MLflow Tracking Serverを作成する場合)
-	* 作成方法は[ABCIクラウドストレージの使い方](https://docs.abci.ai/ja/abci-cloudstorage/usage/)をご確認ください。
+	* 作成方法は[ABCIクラウドストレージの使い方](../abci-cloudstorage/usage.md)をご確認ください。
 
 ## アプリ操作方法 {#operation}
 
-`App for MLflow Server`を起動するには、メニューから`AIHub`、`MLflow Server`をクリックしてください。
+`App for MLflow Server`を起動するには、メニューから`AI Hub`、`MLflow Server`をクリックしてください。
 
 `App for MLflow Server`を起動すると、以下のような画面が表示されます。
 
@@ -32,7 +32,7 @@ AIHubはABCI上で大規模な汎用学習済みモデルの再利用等を行�
 * 画面の説明にもとに、以下の項目を入力し`Create Service`ボタンをクリックします。
 
 	| 項目 | 説明 |
-	| -- | --
+	| -- | -- |
 	| `group_name` | ABCIグループ名 |
 	| `env_name` | 環境名 |
 	| `cloud_storage_bucket_name` | バケット名 |
@@ -55,6 +55,6 @@ AIHubはABCI上で大規模な汎用学習済みモデルの再利用等を行�
 * MLflowのUIを確認する場合は、`URL for access from outside ABCI`のURLをクリックします。
 	* Basic認証用のユーザ名とパスワードを入力してログインします。
 * 起動しているMLflow Tracking Serverをご利用ください。
-	* ABCIの[ジョブ](https://docs.abci.ai/ja/job-execution/)やOpen OnDemandのJupyter Labから利用できます。
+	* ABCIの[ジョブ](../job-execution.md)やOpen OnDemandのJupyter Labから利用できます。
 	* MLflow APIのトラッキングURIに`URL for access from inside ABCI`を指定することで、AIモデルの学習履歴や学習モデルをモデルレジストリに記録できます。
 	* MLflow Tracking Serverの具体的な利用方法は[MLflow](https://mlflow.org/docs/latest/index.html)のドキュメントをご確認ください。
