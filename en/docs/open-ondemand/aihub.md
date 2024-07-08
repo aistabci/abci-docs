@@ -14,7 +14,7 @@ The deployed MLflow Tracking Server can be used by teams for recording and shari
 
 ## Prerequisites
 
-* ABCI Cloud Storage bucket and access key (if creating an MLflow Tracking Server)
+* An ABCI Cloud Storage bucket and an access key (When creating an MLflow Tracking Server)
 	* Please refer to [How to Use ABCI Cloud Storage](../abci-cloudstorage/usage.md) for the creation method.
 
 ## Using AI Hub
@@ -23,7 +23,7 @@ To start the `App for MLflow Server`, click `AI Hub` and then `MLflow Server` fr
 
 When you start the `App for MLflow Server`, the following screen will be displayed.
 
-![App for MLflow Server画面](img/app_for_mlflow_server.png){width=640}
+![Screenshot of App for MLflow Server](img/app_for_mlflow_server.png){width=640}
 
 #### Creating MLflow Tracking Server
 
@@ -56,4 +56,3 @@ When you start the `App for MLflow Server`, the following screen will be display
 	* It can be accessed from the HPC Cluster's job services or Jupyter Lab in Open OnDemand.
 	* By specifying `URL for access from inside ABCI` as the MLflow API tracking URI, you can record AI model training histories and models in the model registry.
 	* For specific usage of MLflow Tracking Server, please refer to the [MLflow documentation](https://mlflow.org/docs/latest/index.html).
-

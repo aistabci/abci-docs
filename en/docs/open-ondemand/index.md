@@ -4,7 +4,7 @@
 
 [Open OnDemand (OOD)](https://openondemand.org/) is a portal site for using ABCI through a web browser.
 
-The following features become available on the web browser, making it easier to use ABCI than ever before:
+The following features is available on the web browser, making it easier to use ABCI than ever before:
 
 * Console operations on interactive nodes
 * File operations in the home areas and the group areas
