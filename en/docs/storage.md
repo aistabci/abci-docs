@@ -139,7 +139,7 @@ In the following example, the ABCI group uses MDT:0.
 
 Global scratch area is lustre file system and available for all ABCI users.
 This storage is shared by interactive nodes and all Compute Nodes V and A.
-The quota for every users is set in 10TiB. 
+The quota for every users is set in 5TiB. 
 
 The following directory is available for all users as a high speed data area.
 ```
@@ -150,7 +150,7 @@ To see the quota value of the global scratch area, issue `show_quota` command. F
 !!! warning
     The global scratch area has a cleanup function.<br>
     When the usage of the file area or inode area of /scratch exceeds 80%, delete candidates are selected based on the last access time and creation date of files and directories directly under /scratch/(ABCI account), and the files/directories of the delete candidates are automatically deleted. If a directory directly under /scratch/(ABCI account) becomes a candidate for deletion, all files/directories under that directory are deleted. Note that the last access time and creation date of the files/directories under that directory are not taken into account.<br>
-    The first candidate to be deleted is the one whose last access time is older than 40 days. If, after deleting the candidate, the utilization of/scratch is still over 80%, the next candidate to be deleted is one whose creation date is older than 40 days.
+    The first candidate to be deleted is the one whose last access time is older than 7 days. If, after deleting the candidate, the utilization of/scratch is still over 80%, the next candidate to be deleted is one whose creation date is older than 7 days.
 
 !!! note
     When storing a large number of files under the global scratch area, create a directory under /scratch/(ABCI account) and store the files in the directory.
@@ -167,10 +167,10 @@ Example) Display creation date.
 [username@es1 ~]$ show_scratch
                                                                      Last Updated: 2022/01/01 00:05
 Directory/File                                     created_date        valid_date    remained(days)
-/scratch/username/dir1                               2021/12/17        2022/01/26                25
-/scratch/username/dir2                               2021/12/18        2022/01/27                26
-/scratch/username/file1                              2021/12/19        2022/01/28                27
-/scratch/username/file2                              2021/11/20        2021/12/30                 0
+/bb/scratch/username/dir1                            2021/12/17        2022/01/26                25
+/bb/scratch/username/dir2                            2021/12/18        2022/01/27                26
+/bb/scratch/username/file1                           2021/12/19        2022/01/28                27
+/bb/scratch/username/file2                           2021/11/20        2021/12/30                 0
 Directories and files that have expired will be deleted soon.
 If necessary, please backup.
 ```

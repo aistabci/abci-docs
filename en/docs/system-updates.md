@@ -1,5 +1,10 @@
 # System Updates
 
+## 2024-07-12
+
+* The /projects service is no longer available.
+* The global scratch area (/scratch) was retired on June 28, 2024, and will resume with a new storage area on July 12. However, the disk quota for each user will be changed from 10TiB to 5TiB. In addition, the automatic deletion feature for usage over 80% will still apply. However, 40 days after the file was last accessed or created will be reduced to 7 days.
+
 ## 2024-06-18
 
 | Add / Update / Delete | Software | Version | Previous version |
