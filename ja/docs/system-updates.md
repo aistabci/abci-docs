@@ -1,5 +1,18 @@
 # システム更新履歴
 
+## 2024-08-08
+
+| Add / Update / Delete | Software | Version | Previous version |
+|:--|:--|:--|:--|
+| Add | nccl | 2.22.3-1 | |
+
+## 2024-07-31
+
+| Add / Update / Delete | Software | Version | Previous version |
+|:--|:--|:--|:--|
+| Add | cuda | 12.5.1 | |
+| Add | cudnn | 9.2.1 | |
+
 ## 2024-06-28
 
 * 特定グループ領域(/projects)のサービス提供を終了いたしました。
