@@ -1,5 +1,13 @@
 # システム更新履歴
 
+## 2024-08-30 更新予定 {#2024-08-30}
+
+| Add / Update / Delete | Software | Version | Previous version |
+|:--|:--|:--|:--|
+| Update | openjdk | 1.8.0.422 | 1.8.0.402 |
+| Update | openjdk | 11.0.24.0.8 | 11.0.22.0.7 |
+| Update | openjdk | 17.0.12.0.7 | 17.0.10.0.7 |
+
 ## 2024-06-28
 
 * 特定グループ領域(/projects)のサービス提供を終了いたしました。
