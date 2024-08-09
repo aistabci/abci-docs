@@ -31,6 +31,7 @@ The following is a list of CUDA Toolkit, cuDNN, and NCCL that can be used with t
 | cuda/12.4     | 12.4.0        | Yes                   | Yes                           | Yes                           |
 | cuda/12.4     | 12.4.1        | Yes                   | Yes                           | Yes                           |
 | cuda/12.5     | 12.5.0        | Yes                   | Yes                           | Yes                           |
+| cuda/12.5     | 12.5.1        | Yes                   | Yes                           | Yes                           |
 
 [^1]: Provided only for experimental use. Rocky Linux 8.6 is supported with CUDA 11.7.1 or later.
 
@@ -49,6 +50,7 @@ Compute Node (V):
 | 8.9.7   | Yes           | Yes           | Yes       | Yes       | Yes       | Yes       | Yes       | Yes       | Yes       |
 | 9.0.0[^2] | Yes           | Yes           | Yes       | Yes       | Yes       | Yes       | Yes       | Yes       | Yes       |
 | 9.1.1   | Yes           | Yes           | Yes       | Yes       | Yes       | Yes       | Yes       | Yes       | Yes       |
+| 9.2.1   | Yes           | Yes           | Yes       | Yes       | Yes       | Yes       | Yes       | Yes       | Yes       |
 
 Compute Node (A):
 
@@ -63,6 +65,7 @@ Compute Node (A):
 | 8.9.7   | Yes       | Yes       | Yes       | Yes       | Yes       | Yes       | Yes       | Yes       | Yes       |
 | 9.0.0[^2] | Yes       | Yes       | Yes       | Yes       | Yes       | Yes       | Yes       | Yes       | Yes       |
 | 9.1.1   | Yes       | Yes       | Yes       | Yes       | Yes       | Yes       | Yes       | Yes       | Yes       |
+| 9.2.1   | Yes       | Yes       | Yes       | Yes       | Yes       | Yes       | Yes       | Yes       | Yes       |
 
 [^2]: We have confirmed that when cuDNN 9.0.0 is used with CUDA 11.0 to CUDA 11.3, an error occurs when calling the `cudnnRNNBackwardWeights_v8` function.
 
@@ -84,6 +87,7 @@ Compute Node (V):
 | 2.19.3-1  | -             | -             | -         | -         | -         | Yes       | Yes       | -         | -         |
 | 2.20.5-1  | -             | -             | -         | -         | -         | Yes       | -         | Yes       | -         |
 | 2.21.5-1  | -             | -             | -         | -         | -         | Yes       | -         | Yes       | Yes       |
+| 2.22.3-1  | -             | -             | -         | -         | -         | Yes       | -         | Yes       | Yes       |
 
 Compute Node (A):
 
@@ -101,6 +105,7 @@ Compute Node (A):
 | 2.19.3-1  | -         | -         | -         | -         | -         | Yes       | Yes       | -         | -         |
 | 2.20.5-1  | -         | -         | -         | -         | -         | Yes       | -         | Yes       | -         |
 | 2.21.5-1  | -         | -         | -         | -         | -         | Yes       | -         | Yes       | Yes       |
+| 2.22.3-1  | -         | -         | -         | -         | -         | Yes       | -         | Yes       | Yes       |
 
 ## GDRCopy
 
