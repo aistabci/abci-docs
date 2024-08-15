@@ -1,6 +1,6 @@
 # システム更新履歴
 
-## 2024-08-30 更新予定 {#2024-08-30}
+## 2024-08-30 {#2024-08-30}
 
 | Add / Update / Delete | Software | Version | Previous version |
 |:--|:--|:--|:--|

@@ -1,6 +1,6 @@
 # System Updates
 
-## 2024-08-30 (future update) {#2024-08-30}
+## 2024-08-30 {#2024-08-30}
 
 | Add / Update / Delete | Software | Version | Previous version |
 |:--|:--|:--|:--|
