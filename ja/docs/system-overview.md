@@ -134,7 +134,7 @@ ABCIシステムは、人工知能やビッグデータ応用に用いる大容�
 | グループ領域 | /groups | 10.8 PB | Lustre | [グループ領域](storage.md#group-area)を参照 |
 | ABCIクラウドストレージ | | 最大13 PB | | [ABCIクラウドストレージ](abci-cloudstorage.md)を参照 |
 | 高速データ領域 | /bb | 0.3 PB | Lustre | 特定用途に予約済みの領域 |
-| グローバルスクラッチ領域 | /scratch | 0.1 PB | Lustre | [グローバルスクラッチ領域](storage.md#scratch-area)を参照 |
+| グローバルスクラッチ領域 | /scratch | 0.1 PB (物理的には/bbに含まれます) | Lustre | [グローバルスクラッチ領域](storage.md#scratch-area)を参照 |
 
 
 インタラクティブノード、計算ノードは、共有ファイルシステムをマウントしており、利用者は共通のマウントポイントからこれらのファイルシステムにアクセスすることができます。

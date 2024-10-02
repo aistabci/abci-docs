@@ -136,7 +136,7 @@ Below is a list of shared file systems and ABCI Cloud Storage provided by the AB
 | Group area | /groups | 10.8 PB | Lustre | See [Group Area](storage.md#group-area) |
 | ABCI Cloud Storage | | 13 PB max. | | See [ABCI Cloud Storage](abci-cloudstorage.md) |
 | Fast data area | /bb | 0.3 PB | | Reserved area for the particular application |
-| Global scratch area | /scratch | 0.1 PB | Lustre | See [Global scratch area](storage.md#scratch-area) |
+| Global scratch area | /scratch | 0.1 PB (physically included in /bb) | Lustre | See [Global scratch area](storage.md#scratch-area) |
 
 
 Interactive nodes, and compute nodes mount the shared file systems, and users can access these file systems from common mount points.
