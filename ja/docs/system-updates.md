@@ -1,6 +1,6 @@
 # システム更新履歴
 
-## 2024-09-25
+## 2024-10-02
 
 | Add / Update / Delete | Software | Version | Previous version |
 |:--|:--|:--|:--|
