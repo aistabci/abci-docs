@@ -1,5 +1,12 @@
 # システム更新履歴
 
+## 2024-10-02
+
+| Add / Update / Delete | Software | Version | Previous version |
+|:--|:--|:--|:--|
+| Add | cuda | 12.6.1 | |
+| Add | cudnn | 9.3.0<br>9.4.0 | |
+
 ## 2024-08-30 {#2024-08-30}
 
 | Add / Update / Delete | Software | Version | Previous version |
