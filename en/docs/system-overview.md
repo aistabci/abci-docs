@@ -119,7 +119,7 @@ Reference: [Block Diagram of Compute Node (A)](img/compute-node-a-diagram.png)
 
 ## Storage Systems
 
-The ABCI system has five storage systems for storing large amounts of data used for AI and Big Data applications, and these are used to provide shared file systems and ABCI Cloud Storage. The total effective capacity is up to 24.6 PB.
+The ABCI system has four storage systems for storing large amounts of data used for AI and Big Data applications, and these are used to provide shared file systems and ABCI Cloud Storage. The total effective capacity is up to 24.6 PB.
 
 | # | Storage System | Media | Usage |
 |:--|:--|:--|:--|
