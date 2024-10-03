@@ -2,7 +2,7 @@
 
 ## System Architecture
 
-The ABCI system consists of 1,088 compute nodes with 4,352 NVIDIA V100 GPU accelerators, 120 compute nodes with 960 NVIDIA A100 GPU accelerators and other computing resources, shared file systems and ABCI Cloud Storage with total capacity of approximately 47 PB, InfiniBand network that connects these elements at high speed, firewall, and so on. It also includes software to make the best use of these hardware. And, the ABCI system uses SINET5, the Science Information NETwork, to connect to the Internet at 100 Gbps.
+The ABCI system consists of 1,088 compute nodes with 4,352 NVIDIA V100 GPU accelerators, 120 compute nodes with 960 NVIDIA A100 GPU accelerators and other computing resources, shared file systems and ABCI Cloud Storage with total capacity of approximately 24.6 PB, InfiniBand network that connects these elements at high speed, firewall, and so on. It also includes software to make the best use of these hardware. And, the ABCI system uses SINET5, the Science Information NETwork, to connect to the Internet at 100 Gbps.
 
 [![ABCI System Overview](img/abci_system_en.svg)](img/abci_system_en.svg)
 
@@ -119,7 +119,7 @@ Reference: [Block Diagram of Compute Node (A)](img/compute-node-a-diagram.png)
 
 ## Storage Systems
 
-The ABCI system has five storage systems for storing large amounts of data used for AI and Big Data applications, and these are used to provide shared file systems and ABCI Cloud Storage. The total effective capacity is up to 47 PB.
+The ABCI system has four storage systems for storing large amounts of data used for AI and Big Data applications, and these are used to provide shared file systems and ABCI Cloud Storage. The total effective capacity is up to 24.6 PB.
 
 | # | Storage System | Media | Usage |
 |:--|:--|:--|:--|
@@ -136,7 +136,7 @@ Below is a list of shared file systems and ABCI Cloud Storage provided by the AB
 | Group area | /groups | 10.8 PB | Lustre | See [Group Area](storage.md#group-area) |
 | ABCI Cloud Storage | | 13 PB max. | | See [ABCI Cloud Storage](abci-cloudstorage.md) |
 | Fast data area | /bb | 0.3 PB | | Reserved area for the particular application |
-| Global scratch area | /scratch | 0.1 PB | Lustre | See [Global scratch area](storage.md#scratch-area) |
+| Global scratch area | /scratch | 0.1 PB (physically included in /bb) | Lustre | See [Global scratch area](storage.md#scratch-area) |
 
 
 Interactive nodes, and compute nodes mount the shared file systems, and users can access these file systems from common mount points.
