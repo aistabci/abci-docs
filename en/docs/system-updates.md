@@ -28,7 +28,6 @@
     * ABCI Point Addition Request
     * Change theme and overview
     * Node Reservation / Cancellation
-    * Usage History for ABCI Point
     * Additional History for ABCI Point
     * Add User to ABCI Group
     * Add ABCI Group (New Application)
