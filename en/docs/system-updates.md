@@ -1,36 +1,56 @@
 # System Updates
 
-## mid-November 2024 {#2024-11}
+## Scheduled Update for December 2024 {#2024-12}
 
-### Scheduled to be updated around mid-November (date being adjusted)
+* The home area of ABCI 3.0 will be mounted on the ABCI 2.0 interactive nodes. Details, including the schedule and the mount point, will be provided at a later date.
 
-* You can still log in to the ABCI 2.0 interactive node.
-* The ABCI 2.0 compute node, local storage, and global scratch area (/scratch) will be unavailable.
-* ABCI 2.0 storage such as group area (/groups), fast data area (/bb), and ABCI cloud storage are still accessible from the ABCI 2.0 interactive node.
-    * However, storage will be phased out. For information on when to retire, see [Notification of upcoming storage services](https://abci.ai/news/2024/09/04/en_storage_after_nov2024.html).
+## Scheduled Update for November 2024 {#2024-11}
 
-* The ABCI 3.0 groups area (/groups) is mounted on the ABCI 2.0 interactive node with a mount point of /groups-new.
-    * Use the interactive node to migrate the required data on ABCI 2.0 storage such as /groups and /bb to /groups-new.
-* Data migration from ABCI 2.0 home area (/home) to ABCI 3.0 /home is performed by the system operator. You will not be able to log in to the ABCI 2.0 interactive node during data migration. I will let you know the schedule later.
+With the introduction of the next ABCI system, ABCI 2.0 operations will be terminated on October 31, 2024. In preparation for this, several services will be phased out.
 
-### Scheduled for renewal in December (schedule being adjusted)
+During November, the following services will remain available:
 
-* At some point, ABCI 3.0/home is mounted on the ABCI 2.0 interactive node. I will let you know the schedule later.
+* Users can continue to log in to the ABCI 2.0 interactive nodes.
+* Storage associated with ABCI 2.0 including the group area(`/groups`), Fast data area(`/bb`), and ABCI Cloud Storage will remain accessible from the ABCI 2.0 interactive nodes. However, storage services will be phased out gradually. For specific end dates, please refer to "[Notification of upcoming storage services](https://abci.ai/news/2024/09/04/en_storage_after_nov2024.html)".
 
-### ABCI User Portal Limitations After November
-* The following applications will be accepted and reflected in the ABCI 2.0 system, but will not be reflected in ABCI 3.0
-    * Cloud Storage Usage
-* The following applications will be accepted and reflected in the ABCI 2.0 system, but will not be reflected immediately in ABCI3.0. A separate application is required to be reflected in ABCI3.0. The procedure will be announced separately.
-    * Edit User (Change email address only)
-    * Delete User from ABCI Group
-    * Register Public Key and Delete Public Key
-* The following will not be accepted. The following buttons are hidden in the User Portal (Group Management). or if you apply, you won't be approved.
-    * ABCI Point Addition Request
-    * Change theme and overview
-    * Node Reservation / Cancellation
-    * Additional History for ABCI Point
-    * Add User to ABCI Group
-    * Add ABCI Group (New Application)
+The following services will be discontinued:
+
+* ABCI 2.0 Compute Nodes (V and A)
+* ABCI 2.0 Local Storage and Global scratch area(`/scratch`)
+
+### Data Migration from ABCI 2.0 to ABCI 3.0
+
+* The system administrators will handle the migration of data from the ABCI 2.0 home area(`/home`).
+    * During the data migration from the ABCI 2.0 home area, logging in to the ABCI 2.0 interactive nodes will not be possible. Details regarding the migration schedule will be provided at a later date.
+* The ABCI 3.0 group area will be mounted on the ABCI 2.0 interactive nodes at the `/groups-new` mount point.
+    * Users are requested to transfer any necessary data from ABCI 2.0 storage(such as `/groups` and `/bb`) to the ABCI 3.0 group area (`/groups-new`) via the interactive nodes.
+
+### Restrictions on the ABCI User Portal Starting in November
+
+Starting in November, certain application services will no longer be available in the ABCI User Portal.
+
+The following applications will still be accepted.
+However, while these changes will be reflected on the ABCI 2.0 system, they will not be reflected on ABCI 3.0.
+
+* Cloud Storage Usage
+
+The following applications will be accepted.
+These changes will be reflected on the ABCI 2.0 system, but a separate application will be required to reflect them on ABCI 3.0. Application procedures for ABCI 3.0 will be provided at a later date.
+
+* Edit User
+    * Only email address changes will be accepted.
+* Delete User from ABCI Group
+* Register Public Key and Delete Public Key
+
+The following applications will not be accepted.
+The application buttons for these services will be hidden in the User Portal, and any applications submitted will not be approved.
+
+* New Application
+* Node Reservation / Cancellation
+* Additional History for ABCI Point
+* ABCI Point Addition Request
+* Add User to ABCI Group
+* Change theme and overview
 
 ## 2024-10-02
 
