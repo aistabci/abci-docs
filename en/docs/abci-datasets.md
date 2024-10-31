@@ -78,8 +78,8 @@ Citation:
 
 # More detailed description or additional information
 # This item is for describing additional information which are not shown in the above, and for the case that another web page specified by UsageInfo is not available.
-# The description can be written in the Markdown format.
-#AdditionalInfo:
+# The description can be written in the Markdown format, starting from the line following “AdditionalInfo: | ”.
+#AdditionalInfo: |
 ```
 
 Next, upload the YAML file to the ABCI Cloud Storage.  When the dataset is stored in the ABCI Cloud Storage, upload it to the same bucket as the dataset.  Otherwise, upload it to the newly created bucket.  Note that the file name of `my_dataset_info.yaml` is just an example.  You can use an arbitrary name.

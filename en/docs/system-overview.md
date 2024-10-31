@@ -2,7 +2,7 @@
 
 ## System Architecture
 
-The ABCI system consists of 1,088 compute nodes with 4,352 NVIDIA V100 GPU accelerators, 120 compute nodes with 960 NVIDIA A100 GPU accelerators and other computing resources, shared file systems and ABCI Cloud Storage with total capacity of approximately 47 PB, InfiniBand network that connects these elements at high speed, firewall, and so on. It also includes software to make the best use of these hardware. And, the ABCI system uses SINET5, the Science Information NETwork, to connect to the Internet at 100 Gbps.
+The ABCI system consists of 1,088 compute nodes with 4,352 NVIDIA V100 GPU accelerators, 120 compute nodes with 960 NVIDIA A100 GPU accelerators and other computing resources, shared file systems and ABCI Cloud Storage with total capacity of approximately 24.6 PB, InfiniBand network that connects these elements at high speed, firewall, and so on. It also includes software to make the best use of these hardware. And, the ABCI system uses SINET5, the Science Information NETwork, to connect to the Internet at 100 Gbps.
 
 [![ABCI System Overview](img/abci_system_en.svg)](img/abci_system_en.svg)
 
@@ -119,7 +119,7 @@ Reference: [Block Diagram of Compute Node (A)](img/compute-node-a-diagram.png)
 
 ## Storage Systems
 
-The ABCI system has five storage systems for storing large amounts of data used for AI and Big Data applications, and these are used to provide shared file systems and ABCI Cloud Storage. The total effective capacity is up to 47 PB.
+The ABCI system has four storage systems for storing large amounts of data used for AI and Big Data applications, and these are used to provide shared file systems and ABCI Cloud Storage. The total effective capacity is up to 24.6 PB.
 
 | # | Storage System | Media | Usage |
 |:--|:--|:--|:--|
@@ -136,7 +136,7 @@ Below is a list of shared file systems and ABCI Cloud Storage provided by the AB
 | Group area | /groups | 10.8 PB | Lustre | See [Group Area](storage.md#group-area) |
 | ABCI Cloud Storage | | 13 PB max. | | See [ABCI Cloud Storage](abci-cloudstorage.md) |
 | Fast data area | /bb | 0.3 PB | | Reserved area for the particular application |
-| Global scratch area | /scratch | 0.1 PB | Lustre | See [Global scratch area](storage.md#scratch-area) |
+| Global scratch area | /scratch | 0.1 PB (physically included in /bb) | Lustre | See [Global scratch area](storage.md#scratch-area) |
 
 
 Interactive nodes, and compute nodes mount the shared file systems, and users can access these file systems from common mount points.
@@ -159,7 +159,7 @@ The software available on the ABCI system is shown below.
 | OS | Rocky Linux | 8.6 | - |
 | OS | Red Hat Enterprise Linux | - | 8.2 |
 | Job Scheduler | Altair Grid Engine | 8.6.19_C121_1 | 8.6.19_C121_1 |
-| Development Environment | [CUDA Toolkit](gpu.md#cuda-toolkit) | 11.2.2<br>11.6.2<br>11.7.1<br>11.8.0<br>12.1.1<br>12.2.0<br>12.3.2<br>12.4.0<br>12.4.1<br>12.5.0<br>12.5.1 | 11.2.2<br>11.6.2<br>11.7.1<br>11.8.0<br>12.1.1<br>12.2.0<br>12.3.2<br>12.4.0<br>12.4.1<br>12.5.0<br>12.5.1 |
+| Development Environment | [CUDA Toolkit](gpu.md#cuda-toolkit) | 11.2.2<br>11.6.2<br>11.7.1<br>11.8.0<br>12.1.1<br>12.2.0<br>12.3.2<br>12.4.0<br>12.4.1<br>12.5.0<br>12.5.1<br>12.6.1 | 11.2.2<br>11.6.2<br>11.7.1<br>11.8.0<br>12.1.1<br>12.2.0<br>12.3.2<br>12.4.0<br>12.4.1<br>12.5.0<br>12.5.1<br>12.6.1 |
 | | Intel oneAPI<br>(compilers and libraries) | 2024.0.2 | 2024.0.2 |
 | | Intel VTune | 2024.0.0 | 2024.0.0 |
 | | Intel Trace Analyzer and Collector | 2022.0 | 2022.0 |
@@ -181,7 +181,7 @@ The software available on the ABCI system is shown below.
 | Container | [SingularityPRO](containers.md#singularity) | 4.1.2-2 | 4.1.2-2 |
 | | Singularity Endpoint | 2.3.0 | 2.3.0 |
 | MPI | [Intel MPI](mpi.md#intel-mpi) | 2021.11 | 2021.11 |
-| Library | [cuDNN](gpu.md#cudnn) | 8.1.1<br>8.3.3<br>8.4.1<br>8.6.0<br>8.7.0<br>8.8.1<br>8.9.7<br>9.0.0<br>9.1.1<br>9.2.1 | 8.1.1<br>8.3.3<br>8.4.1<br>8.6.0<br>8.7.0<br>8.8.1<br>8.9.7<br>9.0.0<br>9.1.1<br>9.2.1 |
+| Library | [cuDNN](gpu.md#cudnn) | 8.1.1<br>8.3.3<br>8.4.1<br>8.6.0<br>8.7.0<br>8.8.1<br>8.9.7<br>9.0.0<br>9.1.1<br>9.2.1<br>9.3.0<br>9.4.0 | 8.1.1<br>8.3.3<br>8.4.1<br>8.6.0<br>8.7.0<br>8.8.1<br>8.9.7<br>9.0.0<br>9.1.1<br>9.2.1<br>9.3.0<br>9.4.0 |
 | | [NCCL](gpu.md#nccl) | 2.8.4-1<br>2.11.4-1<br>2.12.12-1<br>2.13.4-1<br>2.14.3-1<br>2.15.5-1<br>2.16.2-1<br>2.17.1-1<br>2.18.5-1<br>2.19.3-1<br>2.20.5-1<br>2.21.5-1<br>2.22.3-1 | 2.8.4-1<br>2.11.4-1<br>2.12.12-1<br>2.13.4-1<br>2.14.3-1<br>2.15.5-1<br>2.16.2-1<br>2.17.1-1<br>2.18.5-1<br>2.19.3-1<br>2.20.5-1<br>2.21.5-1<br>2.22.3-1 |
 | | gdrcopy | 2.4.1 | 2.4.1 |
 | | UCX | 1.10 | 1.11 |
