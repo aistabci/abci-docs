@@ -1,80 +1,79 @@
 
-# ABCIクラウドストレージのデータ移行
+# ABCI Cloud Storage Data Migration
 
-ここでは、ABCIクラウドストレージに保存しているデータを別ストレージへ移行する方法を説明します。
+This section explains how to migrate data stored in ABCI cloud storage to another storage.
 
-## 移行準備
+## Prerequisites
 
-まずは、ABCIクラウドストレージからデータを取得できるようアクセスキーの発行、設定を行います。
+First, set up and issue an access key so you can retrieve data from the ABCI cloud storage.
 
-アクセスキーの発行方法は[利用者ポータルガイド](https://docs.abci.ai/portal/ja/02/#282)を参照してください。
+For instructions on issuing an access key, please refer to the [User Portal Guide](https://docs.abci.ai/portal/en/02/#282).
 
-ABCIクラウドストレージのクライアントとして`rclone`を利用します。
-ABCIではrcloneを提供していますので、次のコマンドを実行してrcloneを使えるようにしてください。
+The `rclone` will be used as the client for ABCI cloud storage. Since ABCI provides rclone, please run the following command to make it available for use.
 
 ```
 [username@es ~]$ module load rclone
 ```
 
-### rcloneの設定 {#rclone-config}
+### rclone config
 
-rcloneの設定は`rclone config`コマンドを使用して、対話的に行います。
-ここではABCIクラウドストレージおよびAmazon S3を利用する場合の設定項目を記載しますので、下記の表を参考にrcloneの設定を行なってください。
+The `rclone config` command is used to configure rclone interactively.
 
-詳細は[rcloneの設定例](#rclone-config-example)も参照してください。
+Here, we list the configuration items required for using ABCI cloud storage and Amazon S3. Please refer to the table below when setting up rclone.
 
-`リモート名`、`アクセスキー`、`シークレットアクセスキー`は適宜変更してください。
+For further details, please also refer to the [rclone configuration examples](#rclone-config-example).
+
+Please replace `Name`, `Access Key`, and `Secret Access Key` as appropriate.
 
 ```
 [username@es ~]$ rclone config
 ```
 
-設定項目(ABCIクラウドストレージ):
+Setting Items(ABCI Cloud Storage):
 
-| 項目名 | 値 | 説明 |
+| Item | Value | Description |
 | -- | -- | -- |
-| リモート名(`name>`) | `abci` | アクセス先を示す名称。 |
-| ストレージタイプ(`Storage>`) | `5` | Amazon S3準拠のストレージ(`s3`)。 |
-| プロバイダー(`provider>`) | `25` | その他(`Other`)のS3プロバイダー。 |
-| クレデンシャル(`env_auth>`) | `1` | AWSクレデンシャルを入力する。 |
-| アクセスキー(`access_key_id>`) | `ACCESS-KEY` | ABCI利用者ポータルで発行したアクセスキー。 |
-| シークレットアクセスキー(`secret_access_key>`) | `SECRET-ACCESS-KEY` | ABCI利用者ポータルで発行したシークレットアクセスキー。 |
-| リージョン(`region>`) | `us-east-1` | ABCIクラウドストレージのリージョン。 |
-| エンドポイント(`endpoint>`) | `https://s3.abci.ai` | ABCIクラウドストレージのエンドポイント。 |
-| 場所の制約(`location_constraint>`) | (空白) | 初期値。 |
-| ACL(`acl>`) | `1` | 所有者に`FULL_CONTROLL`を付与。 |
+| Name(`name>`) | `abci` | The name indicating the access destination. |
+| Type of storage(`Storage>`) | `5` | Amazon S3 Compliant Storage(`s3`)。 |
+| Provider(`provider>`) | `25` | Any other S3 compatible provider(`Other`). |
+| Credentials(`env_auth>`) | `1` | Enter AWS credentials. |
+| Access key(`access_key_id>`) | `ACCESS-KEY` | Access key issued by ABCI. |
+| Secret access key(`secret_access_key>`) | `SECRET-ACCESS-KEY` | Secret access key issued by ABCI. |
+| Region(`region>`) | `us-east-1` | ABCI cloud storage region. |
+| Endpoint(`endpoint>`) | `https://s3.abci.ai` | ABCI cloud storage endpoint. |
+| Location constraint(`location_constraint>`) | (empty) | Initial value. |
+| ACL(`acl>`) | `1` | Gives owner `FULL_CONTROLL`. |
 
-設定項目(Amazon S3):
+Setting Items(Amazon S3):
 
-| 項目名 | 値 | 説明 |
+| Item | Value | Description |
 | -- | -- | -- |
-| リモート名(`name>`) | `s3` | アクセス先を示す名称。 |
-| ストレージタイプ(`Storage>`) | `5` | Amazon S3準拠のストレージ(`s3`)。 |
-| プロバイダー(`provider>`) | `1` | Amazon S3。 |
-| クレデンシャル(`env_auth>`) | `1` | AWSクレデンシャルを入力する。 |
-| アクセスキー(`access_key_id>`) | `ACCESS-KEY` | AWSのアクセスキー。 |
-| シークレットアクセスキー(`secret_access_key>`) | `SECRET-ACCESS-KEY` | AWSのシークレットアクセスキー。 |
-| リージョン(`region>`) | `14` | Amazon S3のリージョン。ここでは東京リージョンを指定しています。 |
-| エンドポイント(`endpoint>`) | (空白) | 初期値。 |
-| 場所の制約(`location_constraint>`) | (空白) | 初期値。 |
-| ACL(`acl>`) | `1` | 所有者に`FULL_CONTROLL`を付与。 |
-| サーバーサイド暗号化(`server_side_encryption>`) | (空白) | 初期値。 |
-| SSE KMS ID(`sse_kms_key_id>`) | (空白) | 初期値。 |
-| ストレージクラス(`storage_class>`) | (空白) | 初期値。 |
+| Name(`name>`) | `s3` | The name indicating the access destination. |
+| Storage type(`Storage>`) | `5` | Amazon S3 Compliant Storage(`s3`). |
+| Provider(`provider>`) | `1` | Amazon S3. |
+| Credentials(`env_auth>`) | `1` | Enter AWS credentials. |
+| Access key(`access_key_id>`) | `ACCESS-KEY` | Access key issued by AWS. |
+| Secret access key(`secret_access_key>`) | `SECRET-ACCESS-KEY` | Secret access key issued by AWS |
+| Region(`region>`) | `14` | Amazon S3 region. The Tokyo region is specified. |
+| Endpoint(`endpoint>`) | (empty) | Initial value. |
+| Location constraint(`location_constraint>`) | (empty) | Initial value. |
+| ACL(`acl>`) | `1` | Gives owner `FULL_CONTROLL`. |
+| Server side encryption(`server_side_encryption>`) | (empty) | Initial value. |
+| SSE KMS ID(`sse_kms_key_id>`) | (empty) | Initial value. |
+| Storage class(`storage_class>`) | (empty) | Initial value. |
 
+## Migrating to ABCI 3.0 group area
 
-## ABCI 3.0のグループ領域へ移行する
+The ABCI 3.0 group area can be accessed from the interactive nodes of the ABCI 2.0 system at `/groups-new/grpname`.
+Replace `grpname` with your own ABCI group name.
 
-ABCI 3.0のグループ領域はABCI 2.0のインタラクティブノードからは`/groups-new/grpname`として参照できます。
-`grpname`には利用者自身のABCIグループが入ります。
-
-ABCIクラウドストレージの`bucket`バケットから`/groups-new/grpname/bucket`ディレクトリにデータをコピーする場合は以下のコマンドを実行します。
+To copy data from the `bucket` bucket in ABCI cloud storage to the `/groups-new/grpname/bucket` directory, run the following command.
 
 ```
 [username@es ~]$ rclone copy abci:bucket /groups-new/grpname/bucket --multi-thread-streams 0 --transfers 8 --fast-list --no-traverse
 ```
 
-コピーしたオブジェクトがABCIクラウドストレージ内のものと一致するかは`rclone check`コマンドで確認できます。
+You can use the `rclone check` command to check whether the copied data matches what is in the ABCI cloud storage.
 
 ```
 [username@es ~]$ rclone check abci:bucket /groups-new/grpname/bucket
@@ -83,30 +82,29 @@ ABCIクラウドストレージの`bucket`バケットから`/groups-new/grpname
 2024/10/31 8:15:00 NOTICE: Local file system at /groups-new/grpname/bucket: 435 matching files
 ```
 
-使用したrcloneのオプションについては以下の通りです。
+The rclone command options used are as follows:
 
-| オプション | 説明 |
+| Option | Description |
 | -- | -- |
-| `--fast-list` | 事前にファイル一覧を取得します。メモリ使用量が増えますが、クラウドストレージとのトランザクションが減少します。 |
-| `--no-traverse` | 書き込み先のディレクトリ情報の取得をスキップします。 |
-| `--transfers` | 並行して実行するファイル転送の数。|
-| `--multi-thread-streams` | マルチスレッドダウンロードの最大ストリーム数(デフォルト:4)。0の場合シングルスレッドでダウンロードします。 |
+| `--fast-list` | Pre-fetch the file list, which increases memory usage but reduces transactions with cloud storage. |
+| `--no-traverse` | Skip getting destination directory information. |
+| `--transfers` | The number of file transfers to perform in parallel. |
+| `--multi-thread-streams` | Number of streams for multi-threaded download (default: 4). If 0, download in single thread. |
 
+## Migrating to Amazon S3
 
-## Amazon S3へ移行する
+You can also use the `rclone` command to transfer data to Amazon S3.
 
-rcloneを利用してAmazon S3にデータを転送することもできます。
+Here, we will refer to the remote name of the ABCI cloud storage as `abci` and the remote name of Amazon S3 as `s3`.
+Please configure these settings according to the [rclone configuration](#rclone-config) mentioned above.
 
-ここではABCIクラウドストレージのリモート名を`abci`、Amazon S3のリモート名を`s3`として説明します。上述の[rcloneの設定](#rclone-config)を参考に設定しておいてください。
-ABCIクラウドストレージの`bucket`バケットからAmazon S3にある`s3-bucket`バケットにデータをコピーするには以下のコマンドを実行します。
+To copy data from the `bucket` bucket in ABCI cloud storage to the `s3-bucket` bucket in Amazon S3, run the following command.
 
 ```
 [username@es ~]$ rclone copy abci:bucket s3:s3-bucket --transfers 8 --fast-list --no-traverse --s3-upload-concurrency 8 --s3-chunk-size 64M
 ```
 
-ABCIクラウドストレージの`bucket`バケット内のオブジェクトがAmazon S3の`s3-bucket`下にコピーされます。
-
-コピーしたオブジェクトがABCIクラウドストレージ内のものと一致するかは`rclone check`コマンドで確認できます。
+You can use the `rclone check` command to check whether the copied data matches what is in the ABCI cloud storage.
 
 ```
 [username@es ~]$ rclone check abci:bucket s3:s3-bucket
@@ -115,22 +113,21 @@ ABCIクラウドストレージの`bucket`バケット内のオブジェクト�
 2024/10/31 8:15:00 NOTICE: S3 bucket s3-bucket: 435 matching files
 ```
 
-使用したrcloneのオプションについては以下の通りです。
+The rclone command options used are as follows:
 
-| オプション | 説明 |
+| Option | Description |
 | -- | -- |
-| `--fast-list` | 事前にファイル一覧を取得します。メモリ使用量が増えますが、クラウドストレージとのトランザクションが減少します。 |
-| `--no-traverse` | 書き込み先のディレクトリ情報の取得をスキップします。 |
-| `--transfers` | 並行して実行するファイル転送の数。|
-| `--s3-upload-concurrency` | マルチパートアップロード時の並列数。(デフォルト:4) |
-| `--s3-chunk-size` | マルチパートアップロード時のチャンクサイズ。(デフォルト:5MiB) |
+| `--fast-list` | Pre-fetch the file list, which increases memory usage but reduces transactions with cloud storage. |
+| `--no-traverse` | Skip getting destination directory information. |
+| `--transfers` | The number of file transfers to perform in parallel. | 
+| `--s3-upload-concurrency` | The number of parallel uploads for multipart uploads. (Default: 4) |
+| `--s3-chunk-size` | Chunk size for multipart uploads. (Default: 5MiB) |
 
+## Example of rclone configuration
 
-## rcloneの設定例 {#rclone-config-example}
+Below is an example of running `rclone config`.
 
-以下は`rclone config`の実行例です。
-
-### ABCIクラウドストレージの設定例
+### Configuration example for ABCI Cloud Storage
 
 ```
 [username@es ~]$ rclone config
@@ -261,7 +258,7 @@ q) Quit config
 e/n/d/r/c/s/q> q
 ```
 
-### Amazon S3の設定例 {#rclone-config-s3}
+### Configuration example for Amazon S3
 
 ```
 [username@es ~]$ rclone config
