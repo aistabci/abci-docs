@@ -52,6 +52,20 @@ The application buttons for these services will be hidden in the User Portal, an
 * Add User to ABCI Group
 * Change theme and overview
 
+The following functions are available to users.
+
+* All Users:
+    * User Password Reissue
+    * Browse / Delete Public Key ((*)We will provide information on how to apply to ABCI3.0 separately.)
+* Users with Administrator Authority:
+    * Delete User from ABCI Group (*)
+    * Edit User (*)
+        * Set Administrator Authority (*)
+        * Change Responsible Person (*)
+        * Change a bill address or budget code (*)
+    * Storage submissions (including Manage ABCI Cloud Storage) (*)
+    * Usage History for ABCI Point ( ABCI2.0 point usage history (history up to 2024/10/31) available until 2025/3/30 17:00. ABCI 3.0 point usage history not visible. )
+
 ## 2024-10-02
 
 | Add / Update / Delete | Software | Version | Previous version |
