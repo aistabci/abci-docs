@@ -1,0 +1,27 @@
+site_name: ABCI 3.0 User Guide
+site_description: ABCI 3.0 User Guide, English version
+site_author: AIST
+site_url: https://docs.abci.ai/v3/en
+copyright: 'Copyright &copy; 2024 National Institute of Advanced Industrial Science and Technology (AIST) / AIST Solutions Co. (AISol)'
+nav:
+  - 'Introduction': 'index.md'
+extra:
+  alternate:
+    - name: 'English'
+      link: 'https://docs.abci.ai/v3/en/'
+    - name: '日本語'
+      link: 'https://docs.abci.ai/v3/ja/'
+theme:
+  name: 'material'
+  favicon: 'img/favicon.png'
+  logo: 'img/logo.png'
+  palette:
+    primary: 'red'
+markdown_extensions:
+  - admonition
+  - codehilite
+  - attr_list
+  - footnotes
+plugins:
+  - search:
+      lang: en
