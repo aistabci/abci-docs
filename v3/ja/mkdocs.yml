@@ -8,11 +8,9 @@ nav:
 extra:
   alternate:
     - name: 'English'
-      #link: 'https://docs.abci.ai/v3/en/'
-      link: '/v3/en/'
+      link: 'https://docs.abci.ai/v3/en/'
     - name: '日本語'
-      #link: 'https://docs.abci.ai/v3/ja/'
-      link: '/v3/ja/'
+      link: 'https://docs.abci.ai/v3/ja/'
 theme:
   name: 'material'
   favicon: 'img/favicon.png'
