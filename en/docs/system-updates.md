@@ -33,6 +33,10 @@ The following applications will still be accepted.
 However, while these changes will be reflected on the ABCI 2.0 system, they will not be reflected on ABCI 3.0.
 
 * Cloud Storage Usage
+* User Password Reissue
+* Usage History for ABCI Point
+    * Point usage history for ABCI 2.0 up to October 31, 2024 is available until March 30, 2025 at 17:00.
+    * ABCI 3.0 point usage history not visible.
 
 The following applications will be accepted.
 These changes will be reflected on the ABCI 2.0 system, but a separate application will be required to reflect them on ABCI 3.0. Application procedures for ABCI 3.0 will be provided at a later date.
@@ -41,6 +45,11 @@ These changes will be reflected on the ABCI 2.0 system, but a separate applicati
     * Only email address changes will be accepted.
 * Delete User from ABCI Group
 * Register Public Key and Delete Public Key
+* Edit User
+* Set Administrator Authority
+* Change Responsible Person
+* Change a bill address or budget code
+* Disk Addition or Reduction Request
 
 The following applications will not be accepted.
 The application buttons for these services will be hidden in the User Portal, and any applications submitted will not be approved.
@@ -51,20 +60,6 @@ The application buttons for these services will be hidden in the User Portal, an
 * ABCI Point Addition Request
 * Add User to ABCI Group
 * Change theme and overview
-
-The following functions are available to users.
-
-* All Users:
-    * User Password Reissue
-    * Browse / Delete Public Key ((*)We will provide information on how to apply to ABCI3.0 separately.)
-* Users with Administrator Authority:
-    * Delete User from ABCI Group (*)
-    * Edit User (*)
-        * Set Administrator Authority (*)
-        * Change Responsible Person (*)
-        * Change a bill address or budget code (*)
-    * Storage submissions (including Manage ABCI Cloud Storage) (*)
-    * Usage History for ABCI Point ( ABCI2.0 point usage history (history up to 2024/10/31) available until 2025/3/30 17:00. ABCI 3.0 point usage history not visible. )
 
 ## 2024-10-02
 
