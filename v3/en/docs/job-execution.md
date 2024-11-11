@@ -132,30 +132,22 @@ In Spot service, you can specify `-400` to your job, so as to execute it in high
 
 In Reserved service, the priority is fixed at `-500` and cannot be changed for both interactive and batch jobs.
 -->
-<!--
+
 ## Job Execution Options
 
-Use `qrsh` command to run interactive jobs and the `qsub` command to run batch jobs.
+Use `qrsh` command to run interactive jobs and batch jobs.
 
-The major options of the `qrsh` and the `qsub` command are follows.
+The major options of the `qsub` command are follows.
 
 | Option | Description |
 |:--|:--|
-| -g *group* | Specify ABCI user group. You can only specify the ABCI group to which your ABCI account belongs. |
-| -l *resource_type*=*number* | Specify resource type (mandatory) |
-| -l h\_rt=[*HH:MM:*]*SS* | Specify elapsed time by [*HH:MM:*]*SS*. When execution time of job exceed specified time, job is rejected. |
-| -N *name* | Specify job name. default is name of job script. |
-| -o *stdout_name* | Specify standard output stream of job |
-| -p *priority* | Specify POSIX priority for Spot service |
-| -e *stderr_name* | Specify standard error stream of job |
-| -j y | Specify standard error stream is merged into standard output stream |
-| -m a | Mail is sent when job is aborted |
-| -m b | Mail is sent when job is started |
-| -m e | Mail is sent when job is finished |
-| -t *start*[*-end*[*:step*]] | Specify task ID of array job. The suboption is *start_number*[-*end_number*[*:step_size*]] |
-| -hold\_jid *job_id* | Specify job ID having dependency. The submitted job is not executed until dependent job finished. When this option is used by `qrsh` command, the command must be specified as an argument. |
-| -ar *ar_id* | Specify reserved ID (AR-ID), when using reserved compute node |
+| -I | Interactive job is executed. |
+| -p *group* | Specify ABCI user group. You can only specify the ABCI group to which your ABCI account belongs. |
+| -q *resource_type*=*number* | Specify resource type |
+| -l walltime=[*HH:MM:*]*SS* | Specify elapsed time by [*HH:MM:*]*SS*. When execution time of job exceed specified time, job is rejected. |
+| -j oe | Combine standard output and standard error output into a single file. |
 
+<!--
 In addition, the following options can be used as extended options:
 
 | Option | Description |
