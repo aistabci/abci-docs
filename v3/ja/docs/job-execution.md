@@ -332,13 +332,9 @@ username has registered the job 12345 for deletion
 許可されたジョブを他のアカウントが削除する場合、qdelコマンドに`-p group`オプションを指定します。
 
 ```
-[username@int1 ~]$ qdel -g group 12345
+[username@int1 ~]$ qdel 12345
 username has registered the job 12345 for deletion
 ```
-
-| オプション | 説明 |
-|:--|:--|
-| -g *group* | ABCI利用グループを*group*で指定します。自分のABCIアカウントが所属しているABCIグループのみ指定できます。 |
 
 ### バッチジョブの標準出力と標準エラー出力 {#stdout-and-stderr-of-batch-jobs}
 
@@ -632,7 +628,7 @@ granted_parallel_environment        perack01
 granted_slots_list                  gpu@g0001=80,gpu@g0002=80
 ```
 
-## 課金 {#accounting}
+## 課金（更新中） {#accounting}
 
 ### Spotサービス {#on-demand-and-spot-services}
 

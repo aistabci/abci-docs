@@ -123,9 +123,9 @@ Besides this, these nodes each have local storage that can be used as a local sc
 
 | Node type | Mount point | Capacity | File system | Notes |
 |:--|:--|:--|:--|:--|
-| Interactive node | /local | 12 TB |  | |
-| Compute node | /local1 | 7 TB |  |  |
-|                 | /local2 | 7 TB | BeeGFS |  |
+| Interactive node | /local | 12 TB | XFS | |
+| Compute node | /local1 | 7 TB | XFS |  |
+|                 | /local2 | 7 TB | XFS | Includes BeeGFS |
 
 ## Software
 

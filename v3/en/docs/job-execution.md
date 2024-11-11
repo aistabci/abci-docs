@@ -330,13 +330,9 @@ Specifying the `-v ALLOW_GROUP_QDEL=1` option when submitting a job enables acco
 Specify the `-p group` option in the qdel command if you want other accounts to delete authorized jobs.
 
 ```
-[username@int1 ~]$ qdel -g group 12345
+[username@int1 ~]$ qdel 12345
 username has registered the job 12345 for deletion
 ```
-
-| Option | Description |
-|:--|:--|
-| -g *group* | Specify ABCI user group. You can only specify the ABCI group to which your ABCI account belongs. |
 
 ### Stdout and Stderr of Batch Jobs
 
@@ -625,7 +621,7 @@ granted_parallel_environment        perack01
 granted_slots_list                  gpu@g0001=80,gpu@g0002=80
 ```
 
-## Accounting
+## Accounting (Under Update)
 
 ### Spot Service
 

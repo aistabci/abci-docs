@@ -166,9 +166,12 @@ passwd: all authentication tokens updated successfully.
     - Should contain all character types of lower-case letters, upper-case letters, numeric characters, and special characters.
 	- As special characters, the following 33 types of characters can be used: (blank) ! " # $ % & ' ( ) * + , - . / : ; < = > ? @ [ \ ] ^ _ ` { | } ~
     - Do not contain multi-byte characters.
+-->
 
 ## Login Shell
 
+The default login shell for the ABCI system is set to bash. For any changes to the login shell, please contact the operations team.
+<!--
 GNU bash is the login shell be default on the ABCI system.
 The tcsh and zsh are available as a login shell.
 To change the login shell, use the `chsh` command.
