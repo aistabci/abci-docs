@@ -5,6 +5,9 @@ site_url: https://docs.abci.ai/v3/ja
 copyright: 'Copyright &copy; 2024 National Institute of Advanced Industrial Science and Technology (AIST) / AIST Solutions Co. (AISol)'
 nav:
   - 'はじめに': 'index.md'
+  - 'ABCIシステムの概要': 'system-overview.md'
+  - 'ABCIの利用開始': 'getting-started.md'
+  - 'ジョブ実行': 'job-execution.md'
 extra:
   alternate:
     - name: 'English'
@@ -17,6 +20,9 @@ theme:
   logo: 'img/logo.png'
   palette:
     primary: 'red'
+  features:
+    - toc.integrate
+  custom_dir: overrides
 markdown_extensions:
   - admonition
   - codehilite
@@ -25,3 +31,8 @@ markdown_extensions:
 plugins:
   - search:
       lang: ja
+  - redirects:
+      redirect_maps:
+        '01.md': 'system-overview.md'
+        '02.md': 'getting-started.md'
+        '03.md': 'job-execution.md'
