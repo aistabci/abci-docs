@@ -4,25 +4,6 @@
 
 The ABCI system consists of 766 compute nodes with 6,128 NVIDIA H200 GPU accelerators and other computing resources, shared file systems and ABCI Cloud Storage with total capacity of approximately 74 PB, InfiniBand network that connects these elements at high speed, firewall, and so on. It also includes software to make the best use of these hardware. And, the ABCI system uses SINET5, the Science Information NETwork, to connect to the Internet at 100 Gbps.
 
-<!--[![ABCI System Overview](img/abci_system_en.svg)](img/abci_system_en.svg)-->
-<!--
-The main specifications of the ABCI system are as follows:
-
-| Item | Total Performance and Capacity: Compute Node (V) | Total Performance and Capacity: Compute Node (A) | Total Performance and Capacity |
-|:--|:--|:--|:--|
-| Theoretical Peak Performance (FP64) | 37.2 PFLOPS | 19.3 PFLOPS | 56.6 PFLOPS |
-| Effective Performance by HPL | 19.88 PFLOPS[^1] | 11.48 PFLOPS | 22.20 PFLOPS[^2] |
-| Effective Performance per Power by HPL | 14.423 GFLOPS/Watt | 21.89 GFLOPS/W | - |
-| Theoretical Peak Performance (FP32) | 75.0 PFLOPS | 151.0 PFLOPS | 226.0 PFLOPS |
-| Theoretical Peak Performance (FP16) | 550.6 PFLOPS | 300.8 PFLOPS | 851.5 PFLOPS |
-| Theoretical Peak Performance (INT8) | 261.1 POPS | 599.0 POPS | 860.1 POPS |
-| Total Memory Capacity | 476 TiB | 97.5 TiB | 573.5 TiB |
-| Theoretical Peak Memory Bandwidth | 4.19 PB/s | 1.54 PB/s | 5.73 PB/s |
-| Total Capacity of Local Storage | 1,740 TB | 480 TB | 2,220 TB |
-
-[^1]: [https://www.top500.org/system/179393/](https://www.top500.org/system/179393/)
-[^2]: [https://www.top500.org/system/179954/](https://www.top500.org/system/179954/)
--->
 ## Computing Resources
 
 Below is a list of the computational resources of the ABCI system.
@@ -40,16 +21,11 @@ Below is a list of the computational resources of the ABCI system.
 
 Among them, each interactive node and compute node are equipped with InfiniBand HDR and are connected to Storage Systems described later by InfiniBand switch group.
 Also, each compute node is equipped with 8 port of InfiniBand NDR and the compute nodes are connected by InfiniBand switch.
-<!--Among them, interactive nodes, and compute nodes(V) are equipped with 2 ports of InfiniBand EDR, compute nodes(A) are equipped with 4 ports of InfiniBand HDR and they are connected by InfiniBand switch group together with [Storage Systems](#storage-systems) described later.-->
 
 Below are the details of these nodes.
 
 ### Interactive Node
-<!--
-The ABCI system provides two types of compute nodes: compute node (V) and compute node (A). To improve the convenience of program development for each compute node, we provide two types of interactive nodes: interactive node (V) and interactive node (A).
 
-When developing a program for each compute node application, use the corresponding interactive node. It is possible to submit jobs to both compute nodes from either interactive node.
--->
 The interactive node of ABCI system consists of HPE ProLiant DL380 Gen11.
 The interactive node is equipped with two Intel Xeon Platinum 8468 Processors and approximately 1100 GB of main memory available.
 
@@ -96,7 +72,6 @@ The specifications of the compute node are shown below:
 | | InfiniBand HDR (200 Gbps) | 1 |
 | | 10GBASE-SR | 1 |
 
-<!--Reference: [Block Diagram of Compute Node (V)](img/compute-node-v-diagram.png)-->
 
 ## Storage Systems
 
