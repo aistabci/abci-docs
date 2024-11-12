@@ -110,7 +110,7 @@ Reservedサービスで予約ノードに投入されたジョブはカウント
 | オプション | 説明 |
 |:--|:--|
 | -I | インタラクティブジョブを実行します。 |
-| -p *group* | ABCI利用グループを*group*で指定します。自分のABCIアカウントが所属しているABCIグループのみ指定できます。 |
+| -P *group* | ABCI利用グループを*group*で指定します。自分のABCIアカウントが所属しているABCIグループのみ指定できます。 |
 | -q *resource_type*=*num* | 資源タイプ*resource_type*と、その個数*num*を指定します。 |
 | -l walltime=[*HH:MM:*]*SS* | 経過時間制限値を指定します。[*HH:MM:*]*SS*で指定することができます。ジョブの実行時間が指定した時間を超過した場合、ジョブは強制終了されます。 |
 | -j oe | 標準出力と標準エラー出力を1つのファイルに結合します。 |
@@ -121,13 +121,13 @@ Reservedサービスで予約ノードに投入されたジョブはカウント
 インタラクティブジョブを実行するには、`qsub`コマンドに`-I`オプションを付け加えます。
 
 ```
-$ qsub -I -p group -q resource_type=num [options]
+$ qsub -I -P group -q resource_type=num [options]
 ```
 
 例) インタラクティブジョブを実行 (On-demandサービス)
 
 ```
-[username@int1 ~]$ qsub -I -p grpname -q rt_HF -l walltime=1:00:00
+[username@int1 ~]$ qsub -I -P grpname -q rt_HF -l walltime=1:00:00
 [username@g0001 ~]$ 
 ```
 
@@ -173,13 +173,13 @@ module load cuda/10.2/10.2.89
 バッチジョブを実行するには、`qsub`コマンドを使用します。
 
 ```
-$ qsub -p group [options] script_name
+$ qsub -P group [options] script_name
 ```
 
 例) ジョブスクリプトrun.shをバッチジョブとして投入 (Spotサービス)
 
 ```
-[username@int1 ~]$ qsub -p grpname run.sh
+[username@int1 ~]$ qsub -P grpname run.sh
 Your job 12345 ("run.sh") has been submitted
 ```
 
@@ -247,8 +247,8 @@ job-ID     prior   name       user         state submit/start at     queue      
 username has registered the job 12345 for deletion
 ```
 
-ジョブ投入時に`-v ALLOW_GROUP_QDEL=1`オプションを指定すると、qsubコマンドの`-p group`オプションで指定したABCIグループのアカウントがこのジョブを削除できるようになります。<br>
-許可されたジョブを他のアカウントが削除する場合、qdelコマンドに`-p group`オプションを指定します。
+ジョブ投入時に`-v ALLOW_GROUP_QDEL=1`オプションを指定すると、qsubコマンドの`-P group`オプションで指定したABCIグループのアカウントがこのジョブを削除できるようになります。<br>
+許可されたジョブを他のアカウントが削除する場合、qdelコマンドに`-P group`オプションを指定します。
 
 ```
 [username@int1 ~]$ qdel 12345
@@ -311,7 +311,7 @@ $ qrsub options
 例) 2024年7月5日から1週間 (7日間) 計算ノード4台を予約
 
 ```
-[username@int1 ~]$ qrsub -a 20240705 -d 7 -p grpname -n 4 -N "Reserve_for_AI"
+[username@int1 ~]$ qrsub -a 20240705 -d 7 -P grpname -n 4 -N "Reserve_for_AI"
 Your advance reservation 12345 has been granted
 ```
 
@@ -391,7 +391,7 @@ ar-id      name       owner        state start at             end at            
 例) ジョブスクリプトrun.shを予約ID`12345`で予約された計算ノードにバッチジョブとして投入
 
 ```
-[username@int1 ~]$ qsub -p grpname -ar 12345 run.sh
+[username@int1 ~]$ qsub -P grpname -ar 12345 run.sh
 Your job 12345 ("run.sh") has been submitted
 ```
 
@@ -418,7 +418,7 @@ Your job 12345 ("run.sh") has been submitted
 
 例) g0001は利用可能、g0002は利用不可
 ```
-[username@int1 ~]$ qrsub -a 20240705 -d 7 -p grpname -n 2 -N "Reserve_for_AI" 
+[username@int1 ~]$ qrsub -a 20240705 -d 7 -P grpname -n 2 -N "Reserve_for_AI" 
 Your advance reservation 12345 has been granted
 [username@int1 ~]$ qrstat -ar 12345
 (snip)

@@ -109,7 +109,7 @@ The major options of the `qsub` command are follows.
 | Option | Description |
 |:--|:--|
 | -I | Interactive job is executed. |
-| -p *group* | Specify ABCI user group. You can only specify the ABCI group to which your ABCI account belongs. |
+| -P *group* | Specify ABCI user group. You can only specify the ABCI group to which your ABCI account belongs. |
 | -q *resource_type*=*number* | Specify resource type |
 | -l walltime=[*HH:MM:*]*SS* | Specify elapsed time by [*HH:MM:*]*SS*. When execution time of job exceed specified time, job is rejected. |
 | -j oe | Combine standard output and standard error output into a single file. |
@@ -120,13 +120,13 @@ The major options of the `qsub` command are follows.
 To run an interactive job, add the `-I` option to the `qsub` command.
 
 ```
-$ qsub -I -p group -q resource_type=number [option]
+$ qsub -I -P group -q resource_type=number [option]
 ```
 
 Example) Executing an interactive job (On-demand service)
 
 ```
-[username@int1 ~]$ qsub -p grpname -q rt_HF -l walltime=1:00:00
+[username@int1 ~]$ qsub -P grpname -q rt_HF -l walltime=1:00:00
 [username@g0001 ~]$ 
 ```
 
@@ -171,13 +171,13 @@ module load cuda/10.2/10.2.89
 To submit a batch job, use the `qsub` command.
 
 ```
-$ qsub -p group [option] job_script
+$ qsub -P group [option] job_script
 ```
 
 Example) Submission job script run.sh as a batch job (Spot service)
 
 ```
-[username@int1 ~]$ qsub -p grpname run.sh
+[username@int1 ~]$ qsub -P grpname run.sh
 Your job 12345 ("run.sh") has been submitted
 ```
 
@@ -245,8 +245,8 @@ job-ID     prior   name       user         state submit/start at     queue      
 username has registered the job 12345 for deletion
 ```
 
-Specifying the `-v ALLOW_GROUP_QDEL=1` option when submitting a job enables accounts in the ABCI group specified by the `-p group` option of the qsub command to delete this job.<br>
-Specify the `-p group` option in the qdel command if you want other accounts to delete authorized jobs.
+Specifying the `-v ALLOW_GROUP_QDEL=1` option when submitting a job enables accounts in the ABCI group specified by the `-P group` option of the qsub command to delete this job.<br>
+Specify the `-P group` option in the qdel command if you want other accounts to delete authorized jobs.
 
 ```
 [username@int1 ~]$ qdel 12345
@@ -304,7 +304,7 @@ $ qrsub options
 Example) Make a reservation 4 compute nodes from 2024/07/05 to 1 week (7 days)
 
 ```
-[username@int1 ~]$ qrsub -a 20240705 -d 7 -p grpname -n 4 -N "Reserve_for_AI"
+[username@int1 ~]$ qrsub -a 20240705 -d 7 -P grpname -n 4 -N "Reserve_for_AI"
 Your advance reservation 12345 has been granted
 ```
 
@@ -384,7 +384,7 @@ Example) Execute an interactive job on compute node reserved with reservation ID
 Example) Submit a batch job on compute node reserved with reservation ID `12345`.
 
 ```
-[username@int1 ~]$ qsub -p grpname -ar 12345 run.sh
+[username@int1 ~]$ qsub -P grpname -ar 12345 run.sh
 Your job 12345 ("run.sh") has been submitted
 ```
 
@@ -411,7 +411,7 @@ Advance Reservation does not guarantee the health of the compute node for the du
 
 Example) g0001 is available, g0002 is unavailable
 ```
-[username@int1 ~]$ qrsub -a 20240705 -d 7 -p grpname -n 2 -N "Reserve_for_AI" 
+[username@int1 ~]$ qrsub -a 20240705 -d 7 -P grpname -n 2 -N "Reserve_for_AI" 
 Your advance reservation 12345 has been granted
 [username@int1 ~]$ qrstat -ar 12345
 (snip)
