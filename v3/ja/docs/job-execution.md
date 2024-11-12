@@ -128,7 +128,7 @@ $ qsub -I -P group -q resource_type=num [options]
 
 ```
 [username@int1 ~]$ qsub -I -P grpname -q rt_HF -l walltime=1:00:00
-[username@g0001 ~]$ 
+[username@hnode001 ~]$ 
 ```
 
 !!! note
@@ -212,7 +212,7 @@ $ qstat [options]
 [username@int1 ~]$ qstat
 job-ID     prior   name       user         state submit/start at     queue                          jclass                         slots ja-task-ID
 ------------------------------------------------------------------------------------------------------------------------------------------------
-     12345 0.25586 run.sh     username     r     06/27/2018 21:14:49 gpu@g0001                                                        80
+     12345 0.25586 run.sh     username     r     06/27/2018 21:14:49 gpu@hnode001                                                        80
 ```
 
 | 項目 | 説明 |
@@ -242,7 +242,7 @@ $ qdel job_id
 [username@int1 ~]$ qstat
 job-ID     prior   name       user         state submit/start at     queue                          jclass                         slots ja-task-ID
 ------------------------------------------------------------------------------------------------------------------------------------------------
-     12345 0.25586 run.sh     username     r     06/27/2018 21:14:49 gpu@g0001                                                        80
+     12345 0.25586 run.sh     username     r     06/27/2018 21:14:49 gpu@hnode001                                                        80
 [username@int1 ~]$ qdel 12345
 username has registered the job 12345 for deletion
 ```
@@ -385,7 +385,7 @@ ar-id      name       owner        state start at             end at            
 
 ```
 [username@int1 ~]$ qrsh -g grpname -ar 12345 -l rt_HF=1 -l h_rt=1:00:00
-[username@g0001 ~]$ 
+[username@hnode001 ~]$ 
 ```
 
 例) ジョブスクリプトrun.shを予約ID`12345`で予約された計算ノードにバッチジョブとして投入
@@ -416,16 +416,16 @@ Your job 12345 ("run.sh") has been submitted
     - ハードウェア障害は適宜対応しております。予約開始前日より前の利用不可に対するお問い合わせはご遠慮願います。
     - 予約している計算ノード数変更や予約期間の延長の依頼は対応不可になります。
 
-例) g0001は利用可能、g0002は利用不可
+例) hnode001は利用可能、hnode002は利用不可
 ```
 [username@int1 ~]$ qrsub -a 20240705 -d 7 -P grpname -n 2 -N "Reserve_for_AI" 
 Your advance reservation 12345 has been granted
 [username@int1 ~]$ qrstat -ar 12345
 (snip)
-message                             reserved queue gpu@g0002 is disabled
-message                             reserved queue gpu@g0002 is unknown
+message                             reserved queue gpu@hnode002 is disabled
+message                             reserved queue gpu@hnode002 is unknown
 granted_parallel_environment        perack01
-granted_slots_list                  gpu@g0001=80,gpu@g0002=80
+granted_slots_list                  gpu@hnode001=80,gpu@hnode002=80
 ```
 
 ## 課金（更新中） {#accounting}

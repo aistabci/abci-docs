@@ -127,7 +127,7 @@ Example) Executing an interactive job (On-demand service)
 
 ```
 [username@int1 ~]$ qsub -P grpname -q rt_HF -l walltime=1:00:00
-[username@g0001 ~]$ 
+[username@hnode001 ~]$ 
 ```
 
 !!! note
@@ -210,7 +210,7 @@ Example)
 [username@int1 ~]$ qstat
 job-ID     prior   name       user         state submit/start at     queue                          jclass                         slots ja-task-ID
 ------------------------------------------------------------------------------------------------------------------------------------------------
-     12345 0.25586 run.sh     username     r     06/27/2018 21:14:49 gpu@g0001                                                        80
+     12345 0.25586 run.sh     username     r     06/27/2018 21:14:49 gpu@hnode001                                                        80
 ```
 
 | Field | Description |
@@ -240,7 +240,7 @@ Example) Delete a batch job
 [username@int1 ~]$ qstat
 job-ID     prior   name       user         state submit/start at     queue                          jclass                         slots ja-task-ID
 ------------------------------------------------------------------------------------------------------------------------------------------------
-     12345 0.25586 run.sh     username     r     06/27/2018 21:14:49 gpu@g0001                                                        80
+     12345 0.25586 run.sh     username     r     06/27/2018 21:14:49 gpu@hnode001                                                        80
 [username@int1 ~]$ qdel 12345
 username has registered the job 12345 for deletion
 ```
@@ -378,7 +378,7 @@ Example) Execute an interactive job on compute node reserved with reservation ID
 
 ```
 [username@int1 ~]$ qrsh -g grpname -ar 12345 -l rt_HF=1 -l h_rt=1:00:00
-[username@g0001 ~]$ 
+[username@hnode001 ~]$ 
 ```
 
 Example) Submit a batch job on compute node reserved with reservation ID `12345`.
@@ -409,16 +409,16 @@ Advance Reservation does not guarantee the health of the compute node for the du
     - Hardware failures are handled properly. Please refrain from inquiring about unavailability before the day before the reservation starts.  
     - Requests to change the number of reserved compute nodes or to extend the reservation period can not be accepted.
 
-Example) g0001 is available, g0002 is unavailable
+Example) hnode001 is available, hnode002 is unavailable
 ```
 [username@int1 ~]$ qrsub -a 20240705 -d 7 -P grpname -n 2 -N "Reserve_for_AI" 
 Your advance reservation 12345 has been granted
 [username@int1 ~]$ qrstat -ar 12345
 (snip)
-message                             reserved queue gpu@g0002 is disabled
-message                             reserved queue gpu@g0002 is unknown
+message                             reserved queue gpu@hnode002 is disabled
+message                             reserved queue gpu@hnode002 is unknown
 granted_parallel_environment        perack01
-granted_slots_list                  gpu@g0001=80,gpu@g0002=80
+granted_slots_list                  gpu@hnode001=80,gpu@hnode002=80
 ```
 
 ## Accounting (Under Update)
