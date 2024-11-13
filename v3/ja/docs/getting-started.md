@@ -76,7 +76,7 @@ Host abci
      User username
      ProxyJump %r@as.v3.abci.ai
      IdentityFile /path/to/identity_file
-     HostKeyAlgorithms ssh-rsa
+     HostKeyAlgorithms ssh-ed25519
 
 Host as.v3.abci.ai
      IdentityFile /path/to/identity_file

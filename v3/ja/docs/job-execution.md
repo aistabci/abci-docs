@@ -110,24 +110,24 @@ Reservedサービスで予約ノードに投入されたジョブはカウント
 | オプション | 説明 |
 |:--|:--|
 | -I | インタラクティブジョブを実行します。 |
-| -P *group* | ABCI利用グループを*group*で指定します。自分のABCIアカウントが所属しているABCIグループのみ指定できます。 |
-| -q *resource_type*=*num* | 資源タイプ*resource_type*と、その個数*num*を指定します。 |
+| -P *group* | ABCI利用グループを*group*で指定します。自分のABCIアカウントが所属しているABCIグループのみ指定できます。本オプションは指定必須です。 |
+| -q *resource_type* | 資源タイプ*resource_type*を指定します。本オプションは指定必須です。 |
+| -l select=*num*:ncpus=*num_cpus* | ノード数を*num*で、資源タイプに対応したCPU数を*num_cpus*で指定します。*num_cpus*について、rt_HFは192、rt_HCは32、rt_HGは16を設定します。本オプションは指定必須です。 |
 | -l walltime=[*HH:MM:*]*SS* | 経過時間制限値を指定します。[*HH:MM:*]*SS*で指定することができます。ジョブの実行時間が指定した時間を超過した場合、ジョブは強制終了されます。 |
-| -j oe | 標準出力と標準エラー出力を1つのファイルに結合します。 |
-
+| -N name | ジョブ名を*name*で指定します。デフォルトは、ジョブスクリプト名です。 |
 
 ## インタラクティブジョブ {#interactive-jobs}
 
 インタラクティブジョブを実行するには、`qsub`コマンドに`-I`オプションを付け加えます。
 
 ```
-$ qsub -I -P group -q resource_type=num [options]
+$ qsub -I -P group -q resource_type -l select=num:ncpus=num_cpus [options]
 ```
 
 例) インタラクティブジョブを実行 (On-demandサービス)
 
 ```
-[username@int1 ~]$ qsub -I -P grpname -q rt_HF -l walltime=1:00:00
+[username@int1 ~]$ qsub -I -P grpname -q rt_HF -l select=1:ncpus=192
 [username@hnode001 ~]$ 
 ```
 
@@ -141,11 +141,12 @@ ABCIシステムでバッチジョブを実行する場合、実行するプロ�
 実行するコマンド列を記載します。
 
 ```bash
-#!/bin/bash
-
-#PBS -q rt_HG
+#!/bin/sh
+#PBS -q rt_HF
+#PBS -l select=1:ncpus=192
 #PBS -l walltime=1:23:45
-#PBS  -j oe
+#PBS -P grpname
+
 cd ${PBS_O_WORKDIR}
 
 [Environment Modules の初期化]
@@ -156,31 +157,32 @@ cd ${PBS_O_WORKDIR}
 例) CUDAを利用したプログラムを実行するジョブスクリプト例
 
 ```bash
-#!/bin/bash
-
-#PBS -q rt_HG
+#!/bin/sh
+#PBS -q rt_HF
+#PBS -l select=1:ncpus=192
 #PBS -l walltime=1:23:45
-#PBS  -j oe
+#PBS -P grpname
+
 cd ${PBS_O_WORKDIR}
 
 source /etc/profile.d/modules.sh
-module load cuda/10.2/10.2.89
+module load cuda/12.6/12.6.1
 ./a.out
 ```
 
 ### バッチジョブの投入 {#submit-a-batch-job}
 
-バッチジョブを実行するには、`qsub`コマンドを使用します。
+バッチジョブを実行するには、`qsub`コマンドを使用します。実行後はジョブIDが出力されます。
 
 ```
-$ qsub -P group [options] script_name
+$ qsub script_name
 ```
 
 例) ジョブスクリプトrun.shをバッチジョブとして投入 (Spotサービス)
 
 ```
-[username@int1 ~]$ qsub -P grpname run.sh
-Your job 12345 ("run.sh") has been submitted
+[username@int1 ~]$ qsub run.sh
+1234.pbs1
 ```
 
 !!! note
@@ -203,30 +205,26 @@ $ qstat [options]
 
 | オプション | 説明 |
 |:--|:--|
-| -r | ジョブのリソース情報を表示します。 |
-| -j | ジョブに関する追加情報を表示します。 |
+| -f | ジョブに関する追加情報を表示します。 |
 
 例)
 
 ```
 [username@int1 ~]$ qstat
-job-ID     prior   name       user         state submit/start at     queue                          jclass                         slots ja-task-ID
-------------------------------------------------------------------------------------------------------------------------------------------------
-     12345 0.25586 run.sh     username     r     06/27/2018 21:14:49 gpu@hnode001                                                        80
+Job id                 Name             User              Time Use S Queue
+---------------------  ---------------- ----------------  -------- - -----
+12345.pbs1              run.sh           username          00:01:23 R rt_HF
 ```
 
 | 項目 | 説明 |
 |:--|:--|
-| job-ID | ジョブID |
-| prior | ジョブ優先度 |
-| name | ジョブ名 |
-| user | ジョブのオーナー |
-| state | ジョブ状態 (r: 実行中、qw: 待機中、d: 削除中、E: エラー状態) |
-| submit/start at | ジョブ投入/開始時刻 |
-| queue | キュー名 |
-| jclass | ジョブクラス名 |
-| slots | ジョブスロット数 (ノード数 x 80) |
-| ja-task-ID | アレイジョブのタスクID |
+| Job id | ジョブID |
+| Name | ジョブ名 |
+| User | ジョブのオーナー |
+| Time Use | ジョブのCPU利用時間 |
+| S | ジョブ状態 (R: 実行中, Q: 待機中, F: 完了, S: 一時停止, E: 終了中) |
+| Queue | 資源タイプ |
+
 
 ### バッチジョブの削除 {#delete-a-batch-job}
 
@@ -240,20 +238,13 @@ $ qdel job_id
 
 ```
 [username@int1 ~]$ qstat
-job-ID     prior   name       user         state submit/start at     queue                          jclass                         slots ja-task-ID
-------------------------------------------------------------------------------------------------------------------------------------------------
-     12345 0.25586 run.sh     username     r     06/27/2018 21:14:49 gpu@hnode001                                                        80
-[username@int1 ~]$ qdel 12345
-username has registered the job 12345 for deletion
+Job id                 Name             User              Time Use S Queue
+---------------------  ---------------- ----------------  -------- - -----
+12345.pbs1              run.sh           username          00:01:23 R rt_HF
+[username@int1 ~]$ qdel 12345.pbs1
+[username@int1 ~]$
 ```
 
-ジョブ投入時に`-v ALLOW_GROUP_QDEL=1`オプションを指定すると、qsubコマンドの`-P group`オプションで指定したABCIグループのアカウントがこのジョブを削除できるようになります。<br>
-許可されたジョブを他のアカウントが削除する場合、qdelコマンドに`-P group`オプションを指定します。
-
-```
-[username@int1 ~]$ qdel 12345
-username has registered the job 12345 for deletion
-```
 
 ### バッチジョブの標準出力と標準エラー出力 {#stdout-and-stderr-of-batch-jobs}
 
@@ -262,10 +253,10 @@ username has registered the job 12345 for deletion
 標準出力ファイルにはジョブ実行中の標準出力、標準エラー出力ファイルにはジョブ実行中のエラーメッセージが出力されます。
 ジョブ投入時に、標準出力ファイル、標準エラー出力ファイルを指定しなかった場合は、以下のファイルに出力されます。
 
-- *JOB_NAME*.o*JOB_ID*  ---  標準出力ファイル
-- *JOB_NAME*.e*JOB_ID*  ---  標準エラー出力ファイル
+- *JOB_NAME*.o*NUM_JOB_ID*  ---  標準出力ファイル
+- *JOB_NAME*.e*NUM_JOB_ID*  ---  標準エラー出力ファイル
 
-例）ジョブ名がrun.sh、ジョブIDが`12345`の場合
+例）ジョブ名がrun.sh、ジョブIDが`12345.pbs1`の場合
 
 - 標準出力ファイル名：run.sh.o12345
 - 標準エラー出力ファイル名：run.sh.e12345

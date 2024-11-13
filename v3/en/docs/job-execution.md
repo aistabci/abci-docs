@@ -102,31 +102,31 @@ Jobs submitted to reserved nodes in the Reserved service are not included in the
 
 ## Job Execution Options
 
-Use `qrsh` command to run interactive jobs and batch jobs.
+Use `qsub` command to run interactive jobs and batch jobs.
 
 The major options of the `qsub` command are follows.
 
 | Option | Description |
 |:--|:--|
 | -I | Interactive job is executed. |
-| -P *group* | Specify ABCI user group. You can only specify the ABCI group to which your ABCI account belongs. |
-| -q *resource_type*=*number* | Specify resource type |
+| -P *group* | Specify ABCI user group. You can only specify the ABCI group to which your ABCI account belongs. (mandatory) |
+| -q *resource_type* | Specify resource type (mandatory) |
+| -l select=*num*:ncpus=*num_cpus* | Specify the number of nodes with *num* and the number of CPUs corresponding to each resource type with *num_cpus*. For *num_cpus*, set 192 for rt_HF, 32 for rt_HC, and 16 for rt_HG. (mandatory) |
 | -l walltime=[*HH:MM:*]*SS* | Specify elapsed time by [*HH:MM:*]*SS*. When execution time of job exceed specified time, job is rejected. |
-| -j oe | Combine standard output and standard error output into a single file. |
-
+| -N name | Specify the job name with *name*. The default is the job script name. |
 
 ## Interactive Jobs
 
 To run an interactive job, add the `-I` option to the `qsub` command.
 
 ```
-$ qsub -I -P group -q resource_type=number [option]
+$ qsub -I -P group -q resource_type -l select=num:ncpus=num_cpus [options]
 ```
 
 Example) Executing an interactive job (On-demand service)
 
 ```
-[username@int1 ~]$ qsub -P grpname -q rt_HF -l walltime=1:00:00
+[username@int1 ~]$ qsub -I -P grpname -q rt_HF -l select=1:ncpus=192
 [username@hnode001 ~]$ 
 ```
 
@@ -139,11 +139,12 @@ To run a batch job on the ABCI System, you need to make a job script in addition
 The job script is described job execute option, such as resource type, elapsed time limit, etc., and executing command sequence.
 
 ```bash
-#!/bin/bash
-
-#PBS -q rt_HG
+#!/bin/sh
+#PBS -q rt_HF
+#PBS -l select=1:ncpus=192
 #PBS -l walltime=1:23:45
-#PBS  -j oe
+#PBS -P grpname
+
 cd ${PBS_O_WORKDIR}
 
 [Initialization of Environment Modules]
@@ -154,31 +155,32 @@ cd ${PBS_O_WORKDIR}
 Example) Sample job script executing program with CUDA
 
 ```bash
-#!/bin/bash
-
-#PBS -q rt_HG
+#!/bin/sh
+#PBS -q rt_HF
+#PBS -l select=1:ncpus=192
 #PBS -l walltime=1:23:45
-#PBS  -j oe
+#PBS -P grpname
+
 cd ${PBS_O_WORKDIR}
 
 source /etc/profile.d/modules.sh
-module load cuda/10.2/10.2.89
+module load cuda/12.6/12.6.1
 ./a.out
 ```
 
 ### Submit a batch job
 
-To submit a batch job, use the `qsub` command.
+To submit a batch job, use the `qsub` command. The job ID is displayed after submission. 
 
 ```
-$ qsub -P group [option] job_script
+$ qsub job_script
 ```
 
 Example) Submission job script run.sh as a batch job (Spot service)
 
 ```
-[username@int1 ~]$ qsub -P grpname run.sh
-Your job 12345 ("run.sh") has been submitted
+[username@int1 ~]$ qsub run.sh
+1234.pbs1
 ```
 
 !!! note
@@ -201,30 +203,25 @@ The major options of the `qstat` command are follows.
 
 | Option | Description |
 |:--|:--|
-| -r | Display resource information about job |
-| -j | Display additional information about job |
+| -f | Display additional information about job |
 
 Example)
 
 ```
 [username@int1 ~]$ qstat
-job-ID     prior   name       user         state submit/start at     queue                          jclass                         slots ja-task-ID
-------------------------------------------------------------------------------------------------------------------------------------------------
-     12345 0.25586 run.sh     username     r     06/27/2018 21:14:49 gpu@hnode001                                                        80
+Job id                 Name             User              Time Use S Queue
+---------------------  ---------------- ----------------  -------- - -----
+12345.pbs1              run.sh           username          00:01:23 R rt_HF
 ```
 
 | Field | Description |
 |:--|:--|
-| job-ID | Job ID |
-| prior | Job priority |
-| name | Job name |
-| user | Job owner |
-| state | Job status (r: running, qw: waiting, d: delete, E: error) |
-| submit/start at | Job submission/start time |
-| queue | Queue name |
-| jclass | Job class name |
-| slots | Number of job slot (number of node x 80) |
-| ja-task-ID | Task ID of array job |
+| Job id | Job ID |
+| Name | Job name |
+| User | Job owner |
+| Time Use | CPU usage time of the job |
+| S | Job status (R: running, Q: queued, F: finished, S: suspended, E: exiting) |
+| Queue | Resource type |
 
 ### Delete a batch job
 
@@ -238,20 +235,13 @@ Example) Delete a batch job
 
 ```
 [username@int1 ~]$ qstat
-job-ID     prior   name       user         state submit/start at     queue                          jclass                         slots ja-task-ID
-------------------------------------------------------------------------------------------------------------------------------------------------
-     12345 0.25586 run.sh     username     r     06/27/2018 21:14:49 gpu@hnode001                                                        80
-[username@int1 ~]$ qdel 12345
-username has registered the job 12345 for deletion
+Job id                 Name             User              Time Use S Queue
+---------------------  ---------------- ----------------  -------- - -----
+12345.pbs1              run.sh           username          00:01:23 R rt_HF
+[username@int1 ~]$ qdel 12345.pbs1
+[username@int1 ~]$
 ```
 
-Specifying the `-v ALLOW_GROUP_QDEL=1` option when submitting a job enables accounts in the ABCI group specified by the `-P group` option of the qsub command to delete this job.<br>
-Specify the `-P group` option in the qdel command if you want other accounts to delete authorized jobs.
-
-```
-[username@int1 ~]$ qdel 12345
-username has registered the job 12345 for deletion
-```
 
 ### Stdout and Stderr of Batch Jobs
 
@@ -260,8 +250,8 @@ Standard output generated during a job execution is written to a standard output
 job execution to a standard error output file if no standard output and standard err output files are specified at job submission,
 the following files are generated for output.
 
-- *JOB_NAME*.o*JOB_ID*  ---  Standard output file
-- *JOB_NAME*.e*JOB_ID*  ---  Standard error output file
+- *JOB_NAME*.o*NUM_JOB_ID*  ---  Standard output file
+- *JOB_NAME*.e*NUM_JOB_ID*  ---  Standard error output file
 
 ## Advance Reservation (Under Update)
 
