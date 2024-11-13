@@ -108,7 +108,6 @@ The major options of the `qsub` command are follows.
 
 | Option | Description |
 |:--|:--|
-| -I | Interactive job is executed. |
 | -P *group* | Specify ABCI user group. You can only specify the ABCI group to which your ABCI account belongs. (mandatory) |
 | -q *resource_type* | Specify resource type (mandatory) |
 | -l select=*num*:ncpus=*num_cpus* | Specify the number of nodes with *num* and the number of CPUs corresponding to each resource type with *num_cpus*. For *num_cpus*, set 192 for rt_HF, 32 for rt_HC, and 16 for rt_HG. (mandatory) |
