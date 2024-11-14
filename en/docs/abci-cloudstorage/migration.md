@@ -21,7 +21,7 @@ The `rclone config` command is used to configure rclone interactively.
 
 Here, we list the configuration items required for using ABCI cloud storage and Amazon S3. Please refer to the table below when setting up rclone.
 
-For further details, please also refer to the [rclone configuration examples](#rclone-config-example).
+For further details, please also refer to the [rclone configuration examples](#example-of-rclone-configuration).
 
 Please replace `Name`, `Access Key`, and `Secret Access Key` as appropriate.
 

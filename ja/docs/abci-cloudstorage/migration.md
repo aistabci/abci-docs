@@ -21,7 +21,7 @@ ABCIではrcloneを提供していますので、次のコマンドを実行し�
 rcloneの設定は`rclone config`コマンドを使用して、対話的に行います。
 ここではABCIクラウドストレージおよびAmazon S3を利用する場合の設定項目を記載しますので、下記の表を参考にrcloneの設定を行なってください。
 
-詳細は[rcloneの設定例](#rclone-config-example)も参照してください。
+詳細は[rcloneの設定例](#example-of-rclone-configuration)も参照してください。
 
 `リモート名`、`アクセスキー`、`シークレットアクセスキー`は適宜変更してください。
 
@@ -126,7 +126,7 @@ ABCIクラウドストレージの`bucket`バケット内のオブジェクト�
 | `--s3-chunk-size` | マルチパートアップロード時のチャンクサイズ。(デフォルト:5MiB) |
 
 
-## rcloneの設定例 {#rclone-config-example}
+## rcloneの設定例 {#example-of-rclone-configuration}
 
 以下は`rclone config`の実行例です。
 
