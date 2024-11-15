@@ -288,7 +288,7 @@ $ qrsub options
 | -g *group* | Specify ABCI UserGroup |
 | -N *name* | Specify reservation name. The reservation name can be alphanumeric and special characters `=+-_.`. The maximum length is 64 characters. However, the first letter must not be a number. |
 | -n *nnode* | Specify the number of nodes. |
-| -l *resource_type* | Specifies the resource type to reserve. ( default: rt_F )|
+| -l *resource_type* | Specifies the resource type to reserve. ( default: rt_HF )|
 
 Example) Make a reservation 4 compute nodes from 2024/07/05 to 1 week (7 days)
 
