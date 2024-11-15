@@ -81,7 +81,7 @@ The ABCI system has three storage systems for storing large amounts of data used
 |:--|:--|:--|:--|
 | 1 | DDN ES400NVX2 | 61.44TB NVMe SSD x256 | Home area(/home) |
 | 2 | DDN ES400NVX2 | 61.44TB NVMe SSD x1280 | Group area(/groups) |
-| 3 | DDN ES400NVX2 | 30.72TB NVMe SSD x48 | ABCI Cloud Storage(/groups_s3) |
+| 3 | DDN ES400NVX2 | 30.72TB NVMe SSD x48 | ABCI Object area(/groups_s3) |
 
 Below is a list of shared file systems provided by the ABCI system using the above storage systems.
 
@@ -89,7 +89,7 @@ Below is a list of shared file systems provided by the ABCI system using the abo
 |:--|:--|:--|:--|:--|
 | Home area | /home | 10 PB | Lustre |  |
 | Group area | /groups | 63 PB | Lustre |  |
-| ABCI Cloud Storage | /groups_s3 | 1 PB | Lustre |  |
+| ABCI Object area | /groups_s3 | 1 PB | Lustre |  |
 
 
 Interactive nodes, and compute nodes mount the shared file systems, and users can access these file systems from common mount points.
