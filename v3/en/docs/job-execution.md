@@ -48,7 +48,7 @@ The ABCI system provides the following resource types:
 | Resource type name | Description | Assigned physical CPU core | Number of assigned GPU | Memory (GB) | Local storage (GB) | Resource type charge coefficient |
 |:--|:--|:--|:--|:--|:--|:--|
 | rt\_HF | node-exclusive | 96 | 8 | 1728 | 14 | 15 |
-| rt\_HG | node-sharing<br>with GPU | 8 | 1 | 144 | 1.4 | 2|
+| rt\_HG | node-sharing<br>with GPU | 8 | 1 | 144 | 1.4 | 3|
 | rt\_HC | node-sharing<br>CPU only | 16 | 0 | 288 | 1.4 | 1 |
 
 
@@ -390,7 +390,7 @@ Advance Reservation does not guarantee the health of the compute node for the du
 
 * To check the availability status of the reserved compute nodes, using the `qrstat -ar ar_id` command. 
 * If some reserved compute nodes appear unavailable status the day before the reservation start date, consider canceling the reservation and making the reservation again. 
-* For example, if the compute node becomes unavailable during the reservation period, please check [Contact](./contact.md) and contact <qa@abci.ai>.
+* For example, if the compute node becomes unavailable during the reservation period, please check [Contact](./contact.md) and contact <abci3-qa@abci.ai>.
 
 !!! note
     - Reservation can be canceled by 9:00 p.m. of the day before the reservation starts.  

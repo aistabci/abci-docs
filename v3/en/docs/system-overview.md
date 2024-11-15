@@ -2,7 +2,7 @@
 
 ## System Architecture
 
-The ABCI system consists of 766 compute nodes with 6,128 NVIDIA H200 GPU accelerators and other computing resources, shared file systems and ABCI Cloud Storage with total capacity of approximately 74 PB, InfiniBand network that connects these elements at high speed, firewall, and so on. It also includes software to make the best use of these hardware. And, the ABCI system uses SINET5, the Science Information NETwork, to connect to the Internet at 100 Gbps.
+The ABCI system consists of 766 compute nodes with 6,128 NVIDIA H200 GPU accelerators and other computing resources, shared file systems with total capacity of approximately 74 PB, InfiniBand network that connects these elements at high speed, firewall, and so on. It also includes software to make the best use of these hardware. And, the ABCI system uses SINET6, the Science Information NETwork, to connect to the Internet at 100 Gbps.
 
 ## Computing Resources
 

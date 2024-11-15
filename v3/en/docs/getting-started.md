@@ -19,7 +19,7 @@ To connect to the interactive node, you will need the following in advance:
 	* RSA keys, at least 2048bits
 	* ECDSA keys, 256, 384, and 521bits
 	* Ed25519 keys
-* Please contact the operations team for SSH public key registration.
+* Please contact the operations team (abci3-qa@abci.ai ) for SSH public key registration.
 
 !!! note
     Tera Term and PuTTY can be used as SSH clients.
@@ -120,4 +120,4 @@ If you have OpenSSH 7.3 or later and already added the configuration to your ``$
 
 ## Login Shell
 
-The default login shell for the ABCI system is set to bash. For any changes to the login shell, please contact the operations team.
+The default login shell for the ABCI system is set to bash. For any changes to the login shell, please contact the operations team (abci3-qa@abci.ai ).

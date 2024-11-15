@@ -31,8 +31,3 @@ markdown_extensions:
 plugins:
   - search:
       lang: en
-  - redirects:
-      redirect_maps:
-        '01.md': 'system-overview.md'
-        '02.md': 'getting-started.md'
-        '03.md': 'job-execution.md'
