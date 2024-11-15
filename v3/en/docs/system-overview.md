@@ -75,7 +75,7 @@ The specifications of the compute node are shown below:
 
 ## Storage Systems
 
-The ABCI system has three storage systems for storing large amounts of data used for AI and Big Data applications, and these are used to provide shared file systems and ABCI Cloud Storage. The total effective capacity is up to approximately 74 PB.
+The ABCI system has three storage systems for storing large amounts of data used for AI and Big Data applications, and these are used to provide shared file systems. The total effective capacity is up to approximately 74 PB.
 
 | # | Storage System | Media | Usage |
 |:--|:--|:--|:--|
@@ -83,7 +83,7 @@ The ABCI system has three storage systems for storing large amounts of data used
 | 2 | DDN ES400NVX2 | 61.44TB NVMe SSD x1280 | Group area(/groups) |
 | 3 | DDN ES400NVX2 | 30.72TB NVMe SSD x48 | ABCI Cloud Storage(/groups_s3) |
 
-Below is a list of shared file systems and ABCI Cloud Storage provided by the ABCI system using the above storage systems.
+Below is a list of shared file systems provided by the ABCI system using the above storage systems.
 
 | Usage | Mount point | Capacity | File system | Notes |
 |:--|:--|:--|:--|:--|
