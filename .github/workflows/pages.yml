@@ -11,6 +11,7 @@ on:
       - 'ja/**'
       - 'portal/**'
       - 'root/**'
+      - 'v3/**'
 
 concurrency:
   group: "pages"
@@ -44,6 +45,10 @@ jobs:
           mkdocs build --config-file ./portal/root/mkdocs.yml --site-dir "${GITHUB_WORKSPACE}/site/portal/"
           mkdocs build --config-file ./portal/ja/mkdocs.yml   --site-dir "${GITHUB_WORKSPACE}/site/portal/ja/"
           mkdocs build --config-file ./portal/en/mkdocs.yml   --site-dir "${GITHUB_WORKSPACE}/site/portal/en/"
+          
+          mkdocs build --config-file ./v3/root/mkdocs.yml --site-dir "${GITHUB_WORKSPACE}/site/v3/"
+          mkdocs build --config-file ./v3/ja/mkdocs.yml   --site-dir "${GITHUB_WORKSPACE}/site/v3/ja/"
+          mkdocs build --config-file ./v3/en/mkdocs.yml   --site-dir "${GITHUB_WORKSPACE}/site/v3/en/"
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@56afc609e74202658d3ffba0e8f6dda462b719fa # v3.0.1
