@@ -110,7 +110,7 @@ The major options of the `qsub` command are follows.
 |:--|:--|
 | -P *group* | Specify ABCI user group. You can only specify the ABCI group to which your ABCI account belongs. (mandatory) |
 | -q *resource_type* | Specify resource type (mandatory) |
-| -l select=*num*:ncpus=*num_cpus*[*:mpiprocs=num_mpi:ompthreads=num_omp*] | Specify the number of nodes with *num* and the number of CPUs corresponding to each resource type with *num_cpus*, the number of MPI processes with *num_mpi*, and the number of threads with *num_omp*. For *num_cpus*, set 192 for rt_HF, 32 for rt_HC, and 16 for rt_HG. (mandatory) |
+| -l select=*num*[*:ncpus=num_cpus:mpiprocs=num_mpi:ompthreads=num_omp*] | Specify the number of nodes with *num* and the number of CPUs corresponding to each resource type with *num_cpus*, the number of MPI processes with *num_mpi*, and the number of threads with *num_omp*. (mandatory) |
 | -l walltime=[*HH:MM:*]*SS* | Specify elapsed time by [*HH:MM:*]*SS*. When execution time of job exceed specified time, job is rejected. |
 | -N name | Specify the job name with *name*. The default is the job script name. |
 
