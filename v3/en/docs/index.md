@@ -7,4 +7,4 @@ This User Guide describes the technical details of ABCI 3.0 and how to use it. A
 !!! note
     For simplicity, *ABCI 3.0* is hereafter referred to as *ABCI* in this document.
 
-![ABCI Overview](img/abci_dc.jpg)
+![ABCI Overview](img/abci30_dc.jpg)

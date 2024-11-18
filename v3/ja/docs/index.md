@@ -7,4 +7,4 @@
 !!! note
     本書では、単純のために *ABCI 3.0* のことを以降 *ABCI* と呼びます。
 
-![ABCI Overview](img/abci_dc.jpg)
+![ABCI Overview](img/abci30_dc.jpg)
