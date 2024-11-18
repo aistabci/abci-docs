@@ -5,6 +5,10 @@ site_url: https://docs.abci.ai/v3/en
 copyright: 'Copyright &copy; 2024 National Institute of Advanced Industrial Science and Technology (AIST) / AIST Solutions Co. (AISol)'
 nav:
   - 'Introduction': 'index.md'
+  - 'ABCI System Overview': 'system-overview.md'
+  - 'Getting Started ABCI': 'getting-started.md'
+  - 'Job Execution': 'job-execution.md'
+  - 'Contact': 'contact.md'
 extra:
   alternate:
     - name: 'English'
@@ -17,6 +21,9 @@ theme:
   logo: 'img/logo.png'
   palette:
     primary: 'red'
+  features:
+    - toc.integrate
+  custom_dir: overrides
 markdown_extensions:
   - admonition
   - codehilite
