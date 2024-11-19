@@ -6,9 +6,9 @@ The following job services are available in the ABCI System.
 
 | Service name | Description | Service charge coefficient | Job style |
 |:--|:--|:--|:--|
-| On-demand | Job service of interactive execution | 7.5 | Interactive |
-| Spot | Job service of batch execution | 7.5 | Batch |
-| Reserved | Job service of reservation | 11.25 | Batch/Interactive |
+| On-demand | Job service of interactive execution | 1.0 | Interactive |
+| Spot | Job service of batch execution | 1.0 | Batch |
+| Reserved | Job service of reservation | 1.5 | Batch/Interactive |
 
 For the job execution resources available for each job service and the restrictions, see [Job Execution Resources](#job-execution-resource). Also, for accounting, see [Accounting](#accounting).
 
