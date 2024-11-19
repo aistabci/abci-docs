@@ -1,5 +1,8 @@
 # 7. GPU
 
+!!! note
+    Due to the Compute Node service outage on October 31, 2024, GPUs are no longer available.
+
 The following libraries provided by NVIDIA are available on the ABCI System:
 
 * [CUDA Toolkit](https://developer.nvidia.com/cuda-toolkit)

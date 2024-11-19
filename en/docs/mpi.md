@@ -1,5 +1,8 @@
 # MPI
 
+!!! note
+    Due to the Compute Node service outage on October 31, 2024, MPI is no longer available.
+
 The following MPIs can be used with the ABCI system.
 
 * [NVIDIA HPC-X](https://developer.nvidia.com/networking/hpc-x)

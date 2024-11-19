@@ -5,10 +5,6 @@ ABCIで利用可能なストレージは、下記の5種類です。
 * [ホーム領域](#home-area)
 * [グループ領域](#group-area)
 * [グローバルスクラッチ領域](#scratch-area)
-* [ローカルストレージ](#local-storage)
-	* [ローカルスクラッチ](#local-scratch)
-	* [永続ローカルスクラッチ](#persistent-local-scratch) (Reserved専用)
-	* [BeeONDストレージ](#beeond-storage)
 * [ABCIクラウドストレージ](abci-cloudstorage.md)
 
 !!! Tips
@@ -255,6 +251,9 @@ dom-stripe-file
 ```
 
 ## ローカルストレージ {#local-storage}
+
+!!! note
+    ローカルストレージのサービスは、2024年10月31日 をもって終了しました。
 
 ABCIシステムでは、計算ノード(V)に1.6 TBのNVMe SSD x 1、計算ノード(A)に2.0 TBのNVMe SSD x 2が搭載されています。これらローカルストレージは次のように利用できます。
 

@@ -1,5 +1,8 @@
 # MPI
 
+!!! note
+    2024年10月31日の計算ノードサービス停止により、MPIは使用できなくなりました。
+
 ABCIシステムでは、以下のMPIを利用できます。
 
 * [NVIDIA HPC-X](https://developer.nvidia.com/networking/hpc-x)

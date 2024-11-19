@@ -5,10 +5,6 @@ ABCI has the following five types of storage.
 * [Home Area](#home-area)
 * [Group Area](#group-area)
 * [Global scratch area](#scratch-area)
-* [Local Storage](#local-storage)
-	* [Local scratch](#local-scratch)
-	* [Persistent local scratch](#persistent-local-scratch) (Reserved only)
-	* [BeeOND storage](#beeond-storage)
 * [ABCI Cloud Storage](abci-cloudstorage.md)
 
 !!! Tips
@@ -256,6 +252,9 @@ Example) Enable the DoM feature and set a striping pattern (for OST(s)) of the d
 ```
 
 ## Local Storage
+
+!!! note
+    Local Storage service was discontinued on October 31, 2024.
 
 In ABCI System, a 1.6 TB NVMe SSD x1 is installed into each compute node (V) and a 2.0 TB NVMe SSD x2 are installed into each compute node (A). There are two ways to utilize these storages as follows:
 

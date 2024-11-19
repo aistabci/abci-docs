@@ -1,5 +1,8 @@
 # GPU
 
+!!! note
+    2024年10月31日の計算ノードサービス停止により、GPUは使用できなくなりました。
+
 ABCIシステムでは、NVIDIAが提供する以下のライブラリが利用できます。
 
 * [CUDA Toolkit](https://developer.nvidia.com/cuda-toolkit)

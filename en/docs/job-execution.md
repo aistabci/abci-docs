@@ -2,6 +2,9 @@
 
 ## Job Services
 
+!!! note
+    Job Services ended on October 31, 2024.
+
 The following job services are available in the ABCI System.
 
 | Service name | Description | Service charge coefficient | Job style |
