@@ -1,11 +1,11 @@
+!!! info
+    [Compute Node (V)](#compute-node-v) and [Compute Node (A)](#compute-node-a) were discontinued on October 31, 2024.
+
 # ABCI System Overview
 
 ## System Architecture
 
 The ABCI system consists of 1,088 compute nodes with 4,352 NVIDIA V100 GPU accelerators, 120 compute nodes with 960 NVIDIA A100 GPU accelerators and other computing resources, shared file systems and ABCI Cloud Storage with total capacity of approximately 24.6 PB, InfiniBand network that connects these elements at high speed, firewall, and so on. It also includes software to make the best use of these hardware. And, the ABCI system uses SINET5, the Science Information NETwork, to connect to the Internet at 100 Gbps.
-
-!!! note
-    The [Compute Node (V)](#compute-node-v) and [Compute Node (A)](#compute-node-a) services were discontinued on October 31, 2024.
 
 [![ABCI System Overview](img/abci_system_en.svg)](img/abci_system_en.svg)
 

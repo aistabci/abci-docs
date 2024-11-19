@@ -1,9 +1,9 @@
+!!! info
+    The Job Service ended on October 31, 2024.
+
 # Job Execution
 
 ## Job Services
-
-!!! note
-    Job Services ended on October 31, 2024.
 
 The following job services are available in the ABCI System.
 

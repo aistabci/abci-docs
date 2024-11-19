@@ -1,7 +1,7 @@
-# 7. GPU
+!!! info
+    GPU is no longer available due to the end of service of Compute Nodes.
 
-!!! note
-    Due to the Compute Node service outage on October 31, 2024, GPUs are no longer available.
+# 7. GPU
 
 The following libraries provided by NVIDIA are available on the ABCI System:
 

@@ -1,7 +1,7 @@
-# MPI
+!!! info
+    MPI is no longer available due to the end of service of Compute Nodes.
 
-!!! note
-    Due to the Compute Node service outage on October 31, 2024, MPI is no longer available.
+# MPI
 
 The following MPIs can be used with the ABCI system.
 
