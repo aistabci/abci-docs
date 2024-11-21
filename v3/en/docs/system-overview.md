@@ -58,7 +58,7 @@ To execute the program for the compute node, submit the program to the job manag
 #### Compute Node
 
 The compute node of ABCI system consists of HPE Cray XD670.
-The compute node is equipped with two Intel Xeon Platinum 8558 Processors and eight NVIDIA H200 GPU accelerators. In the entire system, the total number of CPU cores is 36,768 cores, and the total number of GPUs is 6,128.
+The compute node is equipped with two Intel Xeon Platinum 8558 Processors and eight NVIDIA H200 GPU accelerators. In the entire system, the total number of CPU cores is 73,536 cores, and the total number of GPUs is 6,128.
 
 The specifications of the compute node are shown below:
 

@@ -114,19 +114,21 @@ Reservedサービスで予約ノードに投入されたジョブはカウント
 | -l select=*num*[*:ncpus=num_cpus:mpiprocs=num_mpi:ompthreads=num_omp*] | ノード数を*num*で、資源タイプに対応したCPU数を*num_cpus*で、MPIプロセス数を*num_mpi*で、スレッド数を*num_omp*で指定します。本オプションは指定必須です。 |
 | -l walltime=[*HH:MM:*]*SS* | 経過時間制限値を指定します。[*HH:MM:*]*SS*で指定することができます。ジョブの実行時間が指定した時間を超過した場合、ジョブは強制終了されます。 |
 | -N name | ジョブ名を*name*で指定します。デフォルトは、ジョブスクリプト名です。 |
+| -o *stdout_name* | 標準出力名を*stdout_name*で指定します。 |
+| -j oe | 標準エラー出力を標準出力にマージします。 |
 
 ## インタラクティブジョブ {#interactive-jobs}
 
 インタラクティブジョブを実行するには、`qsub`コマンドに`-I`オプションを付け加えます。
 
 ```
-$ qsub -I -P group -q resource_type -l select=num:ncpus=num_cpus [options]
+$ qsub -I -P group -q resource_type -l select=num [options]
 ```
 
 例) インタラクティブジョブを実行 (On-demandサービス)
 
 ```
-[username@int1 ~]$ qsub -I -P grpname -q rt_HF -l select=1:ncpus=192
+[username@int1 ~]$ qsub -I -P grpname -q rt_HF -l select=1
 [username@hnode001 ~]$ 
 ```
 
@@ -205,6 +207,7 @@ $ qstat [options]
 | オプション | 説明 |
 |:--|:--|
 | -f | ジョブに関する追加情報を表示します。 |
+| -a | 全ての待機中、実行中のジョブを表示します。 |
 
 例)
 

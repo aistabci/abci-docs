@@ -113,19 +113,21 @@ The major options of the `qsub` command are follows.
 | -l select=*num*[*:ncpus=num_cpus:mpiprocs=num_mpi:ompthreads=num_omp*] | Specify the number of nodes with *num* and the number of CPUs corresponding to each resource type with *num_cpus*, the number of MPI processes with *num_mpi*, and the number of threads with *num_omp*. (mandatory) |
 | -l walltime=[*HH:MM:*]*SS* | Specify elapsed time by [*HH:MM:*]*SS*. When execution time of job exceed specified time, job is rejected. |
 | -N name | Specify the job name with *name*. The default is the job script name. |
+| -o *stdout_name* | Specify standard output stream of job |
+| -j oe | Specify standard error stream is merged into standard output stream |
 
 ## Interactive Jobs
 
 To run an interactive job, add the `-I` option to the `qsub` command.
 
 ```
-$ qsub -I -P group -q resource_type -l select=num:ncpus=num_cpus [options]
+$ qsub -I -P group -q resource_type -l select=num [options]
 ```
 
 Example) Executing an interactive job (On-demand service)
 
 ```
-[username@int1 ~]$ qsub -I -P grpname -q rt_HF -l select=1:ncpus=192
+[username@int1 ~]$ qsub -I -P grpname -q rt_HF -l select=1
 [username@hnode001 ~]$ 
 ```
 
@@ -203,6 +205,7 @@ The major options of the `qstat` command are follows.
 | Option | Description |
 |:--|:--|
 | -f | Display additional information about job |
+| -a | Display all queued and running jobs |
 
 Example)
 
