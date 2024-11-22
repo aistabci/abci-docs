@@ -205,7 +205,7 @@ The major options of the `qstat` command are follows.
 | Option | Description |
 |:--|:--|
 | -f | Display additional information about job |
-| -a | Display all queued and running jobs |
+| -a | Display queued and running jobs along with additional information |
 
 Example)
 
