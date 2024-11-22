@@ -89,6 +89,8 @@ Below is a list of shared file systems provided by the ABCI system using the abo
 |:--|:--|:--|:--|:--|
 | Home area | /home | 10 PB | Lustre |  |
 | Group area | /groups | 63 PB | Lustre |  |
+| Home area | /home-2.0 (read-only) | 0.5 PB | Lustre | Home area used in ABCI 2.0 |
+| Group area | /groups-2.0 (read-only) | 10.8 PB | Lustre | Group area used in ABCI 2.0 |
 | ABCI Object area | /groups_s3 | 1 PB | Lustre |  |
 
 
