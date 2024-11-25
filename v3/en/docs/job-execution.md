@@ -142,7 +142,7 @@ The job script is described job execute option, such as resource type, elapsed t
 ```bash
 #!/bin/sh
 #PBS -q rt_HF
-#PBS -l select=1:ncpus=192
+#PBS -l select=1
 #PBS -l walltime=1:23:45
 #PBS -P grpname
 
@@ -158,7 +158,7 @@ Example) Sample job script executing program with CUDA
 ```bash
 #!/bin/sh
 #PBS -q rt_HF
-#PBS -l select=1:ncpus=192
+#PBS -l select=1
 #PBS -l walltime=1:23:45
 #PBS -P grpname
 

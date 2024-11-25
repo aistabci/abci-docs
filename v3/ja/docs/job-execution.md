@@ -144,7 +144,7 @@ ABCIシステムでバッチジョブを実行する場合、実行するプロ�
 ```bash
 #!/bin/sh
 #PBS -q rt_HF
-#PBS -l select=1:ncpus=192
+#PBS -l select=1
 #PBS -l walltime=1:23:45
 #PBS -P grpname
 
@@ -160,7 +160,7 @@ cd ${PBS_O_WORKDIR}
 ```bash
 #!/bin/sh
 #PBS -q rt_HF
-#PBS -l select=1:ncpus=192
+#PBS -l select=1
 #PBS -l walltime=1:23:45
 #PBS -P grpname
 
