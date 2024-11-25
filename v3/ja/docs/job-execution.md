@@ -298,7 +298,7 @@ $ qrsub options
 | -n *nnnode* | 予約するノード数を*nnnode*で指定します。 |
 | -l *resource_type* | 予約する資源タイプを*resource_type*で指定します。 省略した場合は、rt_HF が指定されたとみなします。|
 
-例) 2024年7月5日から1週間 (7日間) 計算ノード4台を予約
+例) 2024年7月5日から1週間 (7日間) 計算ノード(H)4台を予約
 
 ```
 [username@int1 ~]$ qrsub -a 20240705 -d 7 -P grpname -n 4 -N "Reserve_for_AI"

@@ -12,15 +12,15 @@ Below is a list of the computational resources of the ABCI system.
 |:--|:--|:--|:--|
 | Access Server | *as.v3.abci.ai* | SSH server for external access | 2 |
 | Interactive Node | *int* | Login server, the frontend of the ABCI system | 5 |
-| Compute Node | *hnode001*-*hnode108*[^1] | Server w/ NVIDIA H200 GPU accelerators | 108 |
+| Compute Node (H) | *hnode001*-*hnode108*[^1] | Server w/ NVIDIA H200 GPU accelerators | 108 |
 
-[^1]: 766 compute nodes will become available around January 2025.
+[^1]: 766 compute nodes (H) will become available around January 2025.
 
 !!! note
     Due to operational and maintenance reasons, some computing resources may not be provided.
 
-Among them, each interactive node and compute node are equipped with InfiniBand HDR and are connected to Storage Systems described later by InfiniBand switch group.
-Also, each compute node is equipped with 8 port of InfiniBand NDR and the compute nodes are connected by InfiniBand switch.
+Among them, each interactive node and compute node (H) are equipped with InfiniBand HDR and are connected to Storage Systems described later by InfiniBand switch group.
+Also, each compute node (H) is equipped with 8 port of InfiniBand NDR and the compute nodes (H) are connected by InfiniBand switch.
 
 Below are the details of these nodes.
 
@@ -43,7 +43,7 @@ The specifications of the interactive node are shown below:
 
 Users can login to the interactive node, the frontend of the ABCI system, using SSH tunneling via the access server.
 
-The interactive node allows users to interactively execute commands, and create and edit programs, submit jobs, and display job statuses. The interactive node does not have a GPU, but users can use it to develop programs for compute nodes.
+The interactive node allows users to interactively execute commands, and create and edit programs, submit jobs, and display job statuses. The interactive node does not have a GPU, but users can use it to develop programs for compute nodes (H).
 
 Please refer to [Getting Started ABCI](getting-started.md) for details of login method and [Job Execution](job-execution.md) for details of job submission method.
 
@@ -55,12 +55,12 @@ Please refer to [Getting Started ABCI](getting-started.md) for details of login 
 
 To execute the program for the compute node, submit the program to the job management system as a batch job or an interactive job. Interactive jobs allow you to compile and debug programs, and run interactive applications, visualization software and so on. For details, refer to [Job Execution](job-execution.md).
 
-#### Compute Node
+#### Compute Node (H)
 
-The compute node of ABCI system consists of HPE Cray XD670.
-The compute node is equipped with two Intel Xeon Platinum 8558 Processors and eight NVIDIA H200 GPU accelerators. In the entire system, the total number of CPU cores is 36,768 cores, and the total number of GPUs is 6,128.
+The compute node (H) of ABCI system consists of HPE Cray XD670.
+The compute node (H) is equipped with two Intel Xeon Platinum 8558 Processors and eight NVIDIA H200 GPU accelerators. In the entire system, the total number of CPU cores is 36,768 cores, and the total number of GPUs is 6,128.
 
-The specifications of the compute node are shown below:
+The specifications of the compute node (H) are shown below:
 
 | Item | Description | # |
 |:--|:--|:--|
@@ -92,21 +92,21 @@ Below is a list of shared file systems provided by the ABCI system using the abo
 | ABCI Object area | /groups_s3 | 1 PB | Lustre |  |
 
 
-Interactive nodes, and compute nodes mount the shared file systems, and users can access these file systems from common mount points.
+Interactive nodes, and compute nodes (H) mount the shared file systems, and users can access these file systems from common mount points.
 
 Besides this, these nodes each have local storage that can be used as a local scratch area. The list is shown below.
 
 | Node type | Mount point | Capacity | File system | Notes |
 |:--|:--|:--|:--|:--|
 | Interactive node | /local | 12 TB | XFS | |
-| Compute node | /local1 | 7 TB | XFS |  |
+| Compute node (H) | /local1 | 7 TB | XFS |  |
 |                 | /local2 | 7 TB | XFS | Includes BeeGFS |
 
 ## Software
 
 The software available on the ABCI system is shown below. Details on the version information are scheduled to be released by January 2025.
 
-| Category | Software | Interactive Node | Compute Node |
+| Category | Software | Interactive Node | Compute Node (H) |
 |:--|:--|:--|:--|
 | OS | Rocky Linux | - | 9.4 |
 | OS | Red Hat Enterprise Linux | 9.4 | - |

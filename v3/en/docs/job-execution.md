@@ -26,7 +26,7 @@ See [Batch Jobs](#batch-jobs) for usage, and [Job Execution Options](#job-execut
 
 ### Reserved Service (Available from mid-January)
 
-Reserved service is a service that allows you to reserve and use computational resources on a daily basis in advance. It allows planned job execution without being affected by the congenstions of On-demand and Spot service. In addition, since you can reserve more days than the elapsed time limit of the Spot Service, it is possible to execute jobs for a longer time.
+Reserved service is a service that allows you to reserve and use computational resources on a daily basis in advance. It allows planned job execution without being affected by the congestions of On-demand and Spot service. In addition, since you can reserve more days than the elapsed time limit of the Spot Service, it is possible to execute jobs for a longer time.
 
 In Reserved service, you first make a reservation in advance to obtain a reservation ID (AR-ID), and then use this reservation ID to execute interactive jobs and batch jobs.
 
@@ -290,7 +290,7 @@ $ qrsub options
 | -n *nnode* | Specify the number of nodes. |
 | -l *resource_type* | Specifies the resource type to reserve. ( default: rt_HF )|
 
-Example) Make a reservation 4 compute nodes from 2024/07/05 to 1 week (7 days)
+Example) Make a reservation 4 compute nodes (H) from 2024/07/05 to 1 week (7 days)
 
 ```
 [username@int1 ~]$ qrsub -a 20240705 -d 7 -P grpname -n 4 -N "Reserve_for_AI"
