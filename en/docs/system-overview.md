@@ -1,3 +1,6 @@
+!!! info
+    [Compute Node (V)](#compute-node-v) and [Compute Node (A)](#compute-node-a) were discontinued on October 31, 2024.
+
 # ABCI System Overview
 
 ## System Architecture

@@ -1,3 +1,6 @@
+!!! info
+    GPU is no longer available due to the end of service of Compute Nodes.
+
 # 7. GPU
 
 The following libraries provided by NVIDIA are available on the ABCI System:
