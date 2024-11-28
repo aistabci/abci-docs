@@ -58,7 +58,7 @@ To execute the program for the compute node, submit the program to the job manag
 #### Compute Node (H)
 
 The compute node (H) of ABCI system consists of HPE Cray XD670.
-The compute node (H) is equipped with two Intel Xeon Platinum 8558 Processors and eight NVIDIA H200 GPU accelerators. In the entire system, the total number of CPU cores is 36,768 cores, and the total number of GPUs is 6,128.
+The compute node (H) is equipped with two Intel Xeon Platinum 8558 Processors and eight NVIDIA H200 GPU accelerators. In the entire system, the total number of CPU cores is 73,536 cores, and the total number of GPUs is 6,128.
 
 The specifications of the compute node (H) are shown below:
 
@@ -89,6 +89,8 @@ Below is a list of shared file systems provided by the ABCI system using the abo
 |:--|:--|:--|:--|:--|
 | Home area | /home | 10 PB | Lustre |  |
 | Group area | /groups | 63 PB | Lustre |  |
+| Archive | /home-2.0 | 0.5 PB | Lustre | Read-only. Home area used in ABCI 2.0 |
+| Archive | /groups-2.0 | 10.8 PB | Lustre | Read-only. Group area used in ABCI 2.0 |
 | ABCI Object area | /groups_s3 | 1 PB | Lustre |  |
 
 

@@ -6,9 +6,9 @@ The following job services are available in the ABCI System.
 
 | Service name | Description | Service charge coefficient | Job style |
 |:--|:--|:--|:--|
-| On-demand | Job service of interactive execution | 7.5 | Interactive |
-| Spot | Job service of batch execution | 7.5 | Batch |
-| Reserved | Job service of reservation | 11.25 | Batch/Interactive |
+| On-demand | Job service of interactive execution | 1.0 | Interactive |
+| Spot | Job service of batch execution | 1.0 | Batch |
+| Reserved | Job service of reservation | 1.5 | Batch/Interactive |
 
 For the job execution resources available for each job service and the restrictions, see [Job Execution Resources](#job-execution-resource). Also, for accounting, see [Accounting](#accounting).
 
@@ -113,19 +113,21 @@ The major options of the `qsub` command are follows.
 | -l select=*num*[*:ncpus=num_cpus:mpiprocs=num_mpi:ompthreads=num_omp*] | Specify the number of nodes with *num* and the number of CPUs corresponding to each resource type with *num_cpus*, the number of MPI processes with *num_mpi*, and the number of threads with *num_omp*. (mandatory) |
 | -l walltime=[*HH:MM:*]*SS* | Specify elapsed time by [*HH:MM:*]*SS*. When execution time of job exceed specified time, job is rejected. |
 | -N name | Specify the job name with *name*. The default is the job script name. |
+| -o *stdout_name* | Specify standard output stream of job |
+| -j oe | Specify standard error stream is merged into standard output stream |
 
 ## Interactive Jobs
 
 To run an interactive job, add the `-I` option to the `qsub` command.
 
 ```
-$ qsub -I -P group -q resource_type -l select=num:ncpus=num_cpus [options]
+$ qsub -I -P group -q resource_type -l select=num [options]
 ```
 
 Example) Executing an interactive job (On-demand service)
 
 ```
-[username@int1 ~]$ qsub -I -P grpname -q rt_HF -l select=1:ncpus=192
+[username@int1 ~]$ qsub -I -P grpname -q rt_HF -l select=1
 [username@hnode001 ~]$ 
 ```
 
@@ -140,7 +142,7 @@ The job script is described job execute option, such as resource type, elapsed t
 ```bash
 #!/bin/sh
 #PBS -q rt_HF
-#PBS -l select=1:ncpus=192
+#PBS -l select=1
 #PBS -l walltime=1:23:45
 #PBS -P grpname
 
@@ -156,7 +158,7 @@ Example) Sample job script executing program with CUDA
 ```bash
 #!/bin/sh
 #PBS -q rt_HF
-#PBS -l select=1:ncpus=192
+#PBS -l select=1
 #PBS -l walltime=1:23:45
 #PBS -P grpname
 
@@ -203,6 +205,7 @@ The major options of the `qstat` command are follows.
 | Option | Description |
 |:--|:--|
 | -f | Display additional information about job |
+| -a | Display queued and running jobs along with additional information |
 
 Example)
 

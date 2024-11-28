@@ -6,9 +6,9 @@ ABCIシステムでは、以下のジョブサービスが利用可能です。
 
 | サービス名 | 説明 | サービス課金係数 | 利用形態 |
 |:--|:--|:--|:--|
-| On-demand | インタラクティブジョブの実行サービス | 7.5 | インタラクティブジョブ |
-| Spot | バッチジョブの実行サービス | 7.5 | バッチジョブ |
-| Reserved | 事前予約型ジョブサービス | 11.25 | 事前予約 |
+| On-demand | インタラクティブジョブの実行サービス | 1.0 | インタラクティブジョブ |
+| Spot | バッチジョブの実行サービス | 1.0 | バッチジョブ |
+| Reserved | 事前予約型ジョブサービス | 1.5 | 事前予約 |
 
 各ジョブサービスで利用可能なジョブ実行リソース、制限事項等については、[ジョブ実行リソース](#job-execution-resource)を参照してください。また、課金については、[課金](#accounting)を参照してください。
 
@@ -114,19 +114,21 @@ Reservedサービスで予約ノードに投入されたジョブはカウント
 | -l select=*num*[*:ncpus=num_cpus:mpiprocs=num_mpi:ompthreads=num_omp*] | ノード数を*num*で、資源タイプに対応したCPU数を*num_cpus*で、MPIプロセス数を*num_mpi*で、スレッド数を*num_omp*で指定します。本オプションは指定必須です。 |
 | -l walltime=[*HH:MM:*]*SS* | 経過時間制限値を指定します。[*HH:MM:*]*SS*で指定することができます。ジョブの実行時間が指定した時間を超過した場合、ジョブは強制終了されます。 |
 | -N name | ジョブ名を*name*で指定します。デフォルトは、ジョブスクリプト名です。 |
+| -o *stdout_name* | 標準出力名を*stdout_name*で指定します。 |
+| -j oe | 標準エラー出力を標準出力にマージします。 |
 
 ## インタラクティブジョブ {#interactive-jobs}
 
 インタラクティブジョブを実行するには、`qsub`コマンドに`-I`オプションを付け加えます。
 
 ```
-$ qsub -I -P group -q resource_type -l select=num:ncpus=num_cpus [options]
+$ qsub -I -P group -q resource_type -l select=num [options]
 ```
 
 例) インタラクティブジョブを実行 (On-demandサービス)
 
 ```
-[username@int1 ~]$ qsub -I -P grpname -q rt_HF -l select=1:ncpus=192
+[username@int1 ~]$ qsub -I -P grpname -q rt_HF -l select=1
 [username@hnode001 ~]$ 
 ```
 
@@ -142,7 +144,7 @@ ABCIシステムでバッチジョブを実行する場合、実行するプロ�
 ```bash
 #!/bin/sh
 #PBS -q rt_HF
-#PBS -l select=1:ncpus=192
+#PBS -l select=1
 #PBS -l walltime=1:23:45
 #PBS -P grpname
 
@@ -158,7 +160,7 @@ cd ${PBS_O_WORKDIR}
 ```bash
 #!/bin/sh
 #PBS -q rt_HF
-#PBS -l select=1:ncpus=192
+#PBS -l select=1
 #PBS -l walltime=1:23:45
 #PBS -P grpname
 
@@ -205,6 +207,7 @@ $ qstat [options]
 | オプション | 説明 |
 |:--|:--|
 | -f | ジョブに関する追加情報を表示します。 |
+| -a | 待機中および実行中のジョブを、追加情報を含めて表示します。 |
 
 例)
 
