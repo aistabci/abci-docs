@@ -11,7 +11,7 @@ Below is a list of the computational resources of the ABCI system.
 | Node Type | Hostname | Description | # |
 |:--|:--|:--|:--|
 | Access Server | *as.v3.abci.ai* | SSH server for external access | 2 |
-| Interactive Node | *int* | Login server, the frontend of the ABCI system | 5 |
+| Interactive Node | *login* | Login server, the frontend of the ABCI system | 5 |
 | Compute Node | *hnode001*-*hnode108*[^1] | Server w/ NVIDIA H200 GPU accelerators | 108 |
 
 [^1]: 766 compute nodes will become available around January 2025.
