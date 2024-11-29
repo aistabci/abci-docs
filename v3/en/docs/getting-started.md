@@ -2,10 +2,10 @@
 
 ## Connecting to Interactive Node
 
-To connect to the interactive node (*int*), the ABCI frontend, two-step SSH public key authentication is required.
+To connect to the interactive node (*login*), the ABCI frontend, two-step SSH public key authentication is required.
 
-1. Login to the access server (*as.v3.abci.ai*) with SSH public key authentication, so as to create an *SSH tunnel* between your computer and *int*.
-2. Login to the interactive node (*int*) with SSH public key authentication via the SSH tunnel.
+1. Login to the access server (*as.v3.abci.ai*) with SSH public key authentication, so as to create an *SSH tunnel* between your computer and *login*.
+2. Login to the interactive node (*login*) with SSH public key authentication via the SSH tunnel.
 
 In this document, ABCI server names are written in *italics*.
 
@@ -33,7 +33,7 @@ In this section, we will describe two methods to login to the interactive node u
 Login to the access server (*as.v3.abci.ai*) with following command:
 
 ```
-[yourpc ~]$ ssh -i /path/identity_file -L 10022:int:22 -l username as.v3.abci.ai
+[yourpc ~]$ ssh -i /path/identity_file -L 10022:login:22 -l username as.v3.abci.ai
 The authenticity of host 'as.v3.abci.ai (0.0.0.1)' can't be established.
 RSA key fingerprint is XX:XX:XX:XX:XX:XX:XX:XX:XX:XX:XX:XX:XX:XX:XX:XX. <- Display only at the first login
 Are you sure you want to continue connecting (yes/no)? <- Enter "yes"
@@ -61,7 +61,7 @@ RSA key fingerprint is XX:XX:XX:XX:XX:XX:XX:XX:XX:XX:XX:XX:XX:XX:XX:XX. <- Displ
 Are you sure you want to continue connecting (yes/no)? <- Enter "yes"
 Warning: Permanently added 'localhost' (RSA) to the list of known hosts.
 Enter passphrase for key '/path/identity_file': <- Enter passphrase
-[username@int1 ~]$
+[username@login1 ~]$
 ```
 
 #### ProxyJump
@@ -72,7 +72,7 @@ First, add the following configuration to your ``$HOME/.ssh/config``:
 
 ```
 Host abci
-     HostName int
+     HostName login
      User username
      ProxyJump %r@as.v3.abci.ai
      IdentityFile /path/to/identity_file
@@ -92,7 +92,7 @@ ProxyJump does not work with OpenSSH_for_Windows_7.7p1 which is bundled with Win
 
 ```
 Host abci
-     HostName int
+     HostName login
      User username
      ProxyCommand C:\WINDOWS\System32\OpenSSH\ssh.exe -W %h:%p %r@as.v3.abci.ai
      IdentityFile C:\path\to\identity_file

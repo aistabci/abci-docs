@@ -128,7 +128,7 @@ $ qsub -I -P group -q resource_type -l select=num [options]
 例) インタラクティブジョブを実行 (On-demandサービス)
 
 ```
-[username@int1 ~]$ qsub -I -P grpname -q rt_HF -l select=1
+[username@login1 ~]$ qsub -I -P grpname -q rt_HF -l select=1
 [username@hnode001 ~]$ 
 ```
 
@@ -182,7 +182,7 @@ $ qsub script_name
 例) ジョブスクリプトrun.shをバッチジョブとして投入 (Spotサービス)
 
 ```
-[username@int1 ~]$ qsub run.sh
+[username@login1 ~]$ qsub run.sh
 1234.pbs1
 ```
 
@@ -212,7 +212,7 @@ $ qstat [options]
 例)
 
 ```
-[username@int1 ~]$ qstat
+[username@login1 ~]$ qstat
 Job id                 Name             User              Time Use S Queue
 ---------------------  ---------------- ----------------  -------- - -----
 12345.pbs1              run.sh           username          00:01:23 R rt_HF
@@ -239,12 +239,12 @@ $ qdel job_id
 例) バッチジョブを削除
 
 ```
-[username@int1 ~]$ qstat
+[username@login1 ~]$ qstat
 Job id                 Name             User              Time Use S Queue
 ---------------------  ---------------- ----------------  -------- - -----
 12345.pbs1              run.sh           username          00:01:23 R rt_HF
-[username@int1 ~]$ qdel 12345.pbs1
-[username@int1 ~]$
+[username@login1 ~]$ qdel 12345.pbs1
+[username@login1 ~]$
 ```
 
 
@@ -304,7 +304,7 @@ $ qrsub options
 例) 2024年7月5日から1週間 (7日間) 計算ノード4台を予約
 
 ```
-[username@int1 ~]$ qrsub -a 20240705 -d 7 -P grpname -n 4 -N "Reserve_for_AI"
+[username@login1 ~]$ qrsub -a 20240705 -d 7 -P grpname -n 4 -N "Reserve_for_AI"
 Your advance reservation 12345 has been granted
 ```
 
@@ -326,7 +326,7 @@ Your advance reservation 12345 has been granted
 例)
 
 ```
-[username@int1 ~]$ qrstat
+[username@login1 ~]$ qrstat
 ar-id      name       owner        state start at             end at               duration    sr
 ----------------------------------------------------------------------------------------------------
      12345 Reserve_fo root         w     07/05/2024 10:00:00  07/12/2024 09:30:00  167:30:00    false
@@ -347,7 +347,7 @@ ar-id      name       owner        state start at             end at            
 
 計算ノードの予約可能ノード数の確認
 ```
-[username@int1 ~]$ qrstat --available
+[username@login1 ~]$ qrstat --available
 06/27/2024  441
 07/05/2024  432
 07/06/2024  434
@@ -367,7 +367,7 @@ ar-id      name       owner        state start at             end at            
 例) 予約を取り消し
 
 ```
-[username@int1 ~]$ qrdel 12345,12346
+[username@login1 ~]$ qrdel 12345,12346
 ```
 
 ### 予約ノードの使い方 {#how-to-use-reserved-node}
@@ -377,14 +377,14 @@ ar-id      name       owner        state start at             end at            
 例) 予約ID`12345`で予約された計算ノードでインタラクティブジョブを実行
 
 ```
-[username@int1 ~]$ qrsh -g grpname -ar 12345 -l rt_HF=1 -l h_rt=1:00:00
+[username@login1 ~]$ qrsh -g grpname -ar 12345 -l rt_HF=1 -l h_rt=1:00:00
 [username@hnode001 ~]$ 
 ```
 
 例) ジョブスクリプトrun.shを予約ID`12345`で予約された計算ノードにバッチジョブとして投入
 
 ```
-[username@int1 ~]$ qsub -P grpname -ar 12345 run.sh
+[username@login1 ~]$ qsub -P grpname -ar 12345 run.sh
 Your job 12345 ("run.sh") has been submitted
 ```
 
@@ -411,9 +411,9 @@ Your job 12345 ("run.sh") has been submitted
 
 例) hnode001は利用可能、hnode002は利用不可
 ```
-[username@int1 ~]$ qrsub -a 20240705 -d 7 -P grpname -n 2 -N "Reserve_for_AI" 
+[username@login1 ~]$ qrsub -a 20240705 -d 7 -P grpname -n 2 -N "Reserve_for_AI" 
 Your advance reservation 12345 has been granted
-[username@int1 ~]$ qrstat -ar 12345
+[username@login1 ~]$ qrstat -ar 12345
 (snip)
 message                             reserved queue gpu@hnode002 is disabled
 message                             reserved queue gpu@hnode002 is unknown
