@@ -27,7 +27,7 @@ Below are the details of these nodes.
 ### Interactive Node
 
 The interactive node of ABCI system consists of HPE ProLiant DL380 Gen11.
-The interactive node is equipped with two Intel Xeon Platinum 8468 Processors and approximately 1100 GB of main memory available.
+The interactive node is equipped with two Intel Xeon Platinum 8468 Processors and approximately 1024 GB of main memory available.
 
 The specifications of the interactive node are shown below:
 
@@ -65,7 +65,7 @@ The specifications of the compute node (H) are shown below:
 |:--|:--|:--|
 | CPU | Intel Xeon Platinum 8558 2.1GHz, 48cores | 2 |
 | GPU | NVIDIA H200 SXM 141GB | 8 |
-| Memory | 4 GB DDR5-5600 4400 MHz | 32 |
+| Memory | 64 GB DDR5-5600 4400 MHz | 32 |
 | SSD | NVMe SSD 7.68 TB | 2 |
 | Interconnect | InfiniBand NDR (200 Gbps) | 8 |
 | | InfiniBand HDR (200 Gbps) | 1 |
