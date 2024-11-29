@@ -1,3 +1,6 @@
+!!! info
+    MPI is no longer available due to the end of service of Compute Nodes.
+
 # MPI
 
 The following MPIs can be used with the ABCI system.

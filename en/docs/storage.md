@@ -1,14 +1,13 @@
+!!! info
+    * As of 15:00 on October 27, 2023, the Memory Intensive Node service was terminated.
+    * As of October 31, 2024, the [Global scratch area](#scratch-area) and [Local Storage](#local-storage) services have been discontinued.
+
 # Storage
 
-ABCI has the following five types of storage. 
+ABCI has the following three types of storage. 
 
 * [Home Area](#home-area)
 * [Group Area](#group-area)
-* [Global scratch area](#scratch-area)
-* [Local Storage](#local-storage)
-	* [Local scratch](#local-scratch)
-	* [Persistent local scratch](#persistent-local-scratch) (Reserved only)
-	* [BeeOND storage](#beeond-storage)
 * [ABCI Cloud Storage](abci-cloudstorage.md)
 
 !!! Tips
@@ -137,6 +136,9 @@ In the following example, the ABCI group uses MDT:0.
 
 ## Global scratch area {#scratch-area}
 
+!!! info
+    As of October 31, 2024, the Global Scratch Area service was discontinued.
+
 Global scratch area is lustre file system and available for all ABCI users.
 This storage is shared by interactive nodes and all Compute Nodes V and A.
 The quota for every users is set in 5TiB. 
@@ -257,13 +259,13 @@ Example) Enable the DoM feature and set a striping pattern (for OST(s)) of the d
 
 ## Local Storage
 
+!!! info
+    As of October 31, 2024, the Local Storage service was discontinued.
+
 In ABCI System, a 1.6 TB NVMe SSD x1 is installed into each compute node (V) and a 2.0 TB NVMe SSD x2 are installed into each compute node (A). There are two ways to utilize these storages as follows:
 
 * Using as a local scratch of a node (*Local scratch*, *Persistent local scratch (Reserved only)*).
 * Using as a distributed shared file system, which consists of multiple NVMe storages in multiple compute nodes (*BeeOND storage*).
-
-!!! note
-    The memory-intensive node service ended at 15:00 on October 27, 2023.
 
 ### Local scratch
 

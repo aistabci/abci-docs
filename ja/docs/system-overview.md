@@ -1,3 +1,6 @@
+!!! info
+    2024年10月31日をもって、[計算ノード(V)](#compute-node-v)および[計算ノード(A)](#compute-node-a)のサービスは終了しました。
+
 # ABCIシステムの概要
 
 ## システム全体概要 {#system-architecture}

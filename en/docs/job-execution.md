@@ -1,3 +1,6 @@
+!!! info
+    The Job Service ended on October 31, 2024.
+
 # Job Execution
 
 ## Job Services

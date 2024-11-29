@@ -51,6 +51,7 @@ nav:
     - 'Publishing Datasets': 'abci-cloudstorage/publishing-datasets.md'
     - 'Caution': 'abci-cloudstorage/caution.md'
     - 'Using s3fs-fuse': 'abci-cloudstorage/s3fs-usage.md'
+    - 'Data Migration': 'abci-cloudstorage/migration.md'
   - 'ABCI Datasets': 'abci-datasets.md'
   - 'ABCI Singularity Endpoint': 'abci-singularity-endpoint.md'
   - 'Open OnDemand':
