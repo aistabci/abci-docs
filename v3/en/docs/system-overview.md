@@ -2,7 +2,7 @@
 
 ## System Architecture
 
-The ABCI system consists of 766 compute nodes with 6,128 NVIDIA H200 GPU accelerators and other computing resources, shared file systems with total capacity of approximately 74 PB, InfiniBand network that connects these elements at high speed, firewall, and so on. It also includes software to make the best use of these hardware. And, the ABCI system uses SINET6, the Science Information NETwork, to connect to the Internet at 100 Gbps.
+The ABCI system consists of 766 compute nodes with 6,128 NVIDIA H200 GPU accelerators and other computing resources, 75PB of physical storage, InfiniBand network that connects these elements at high speed, firewall, and so on. It also includes software to make the best use of these hardware. And, the ABCI system uses SINET6, the Science Information NETwork, to connect to the Internet at 100 Gbps.
 
 ## Computing Resources
 
@@ -11,7 +11,7 @@ Below is a list of the computational resources of the ABCI system.
 | Node Type | Hostname | Description | # |
 |:--|:--|:--|:--|
 | Access Server | *as.v3.abci.ai* | SSH server for external access | 2 |
-| Interactive Node | *int* | Login server, the frontend of the ABCI system | 5 |
+| Interactive Node | *login* | Login server, the frontend of the ABCI system | 5 |
 | Compute Node (H) | *hnode001*-*hnode108*[^1] | Server w/ NVIDIA H200 GPU accelerators | 108 |
 
 [^1]: 766 compute nodes (H) will become available around January 2025.
@@ -19,27 +19,26 @@ Below is a list of the computational resources of the ABCI system.
 !!! note
     Due to operational and maintenance reasons, some computing resources may not be provided.
 
-Among them, each interactive node and compute node (H) are equipped with InfiniBand HDR and are connected to Storage Systems described later by InfiniBand switch group.
-Also, each compute node (H) is equipped with 8 port of InfiniBand NDR and the compute nodes (H) are connected by InfiniBand switch.
+Among them, each interactive node and compute node (H) are equipped with InfiniBand HDR (200 Gbps) and are connected to Storage Systems described later by InfiniBand switch group.
+Also, each compute node (H) is equipped with 8 port of InfiniBand NDR (200 Gbps) and the compute nodes (H) are connected by InfiniBand switch.
 
 Below are the details of these nodes.
 
 ### Interactive Node
 
 The interactive node of ABCI system consists of HPE ProLiant DL380 Gen11.
-The interactive node is equipped with two Intel Xeon Platinum 8468 Processors and approximately 1100 GB of main memory available.
+The interactive node is equipped with two Intel Xeon Platinum 8468 Processors and approximately 1024 GB of main memory available.
 
 The specifications of the interactive node are shown below:
 
 | Item| Description | # |
 |:--|:--|:--|
 | CPU | Intel Xeon Platinum 8468 Processor 2.1 GHz, 48 Cores | 2 |
-| Memory | 68 GB DDR5-4800 | 16 |
+| Memory | 64 GB DDR5-4800 | 16 |
 | SSD | SAS SSD 960 GB | 2 |
 | SSD | NVMe SSD 3.2 TB | 4 |
 | Interconnect | InfiniBand HDR (200 Gbps) | 2 |
 | | 10GBASE-SR | 1 |
-| | 1GBASE-SR | 1 |
 
 Users can login to the interactive node, the frontend of the ABCI system, using SSH tunneling via the access server.
 
@@ -66,7 +65,7 @@ The specifications of the compute node (H) are shown below:
 |:--|:--|:--|
 | CPU | Intel Xeon Platinum 8558 2.1GHz, 48cores | 2 |
 | GPU | NVIDIA H200 SXM 141GB | 8 |
-| Memory | 68 GB DDR5-5600 4400 MHz | 32 |
+| Memory | 64 GB DDR5-5600 4400 MHz | 32 |
 | SSD | NVMe SSD 7.68 TB | 2 |
 | Interconnect | InfiniBand NDR (200 Gbps) | 8 |
 | | InfiniBand HDR (200 Gbps) | 1 |
@@ -75,7 +74,7 @@ The specifications of the compute node (H) are shown below:
 
 ## Storage Systems
 
-The ABCI system has three storage systems for storing large amounts of data used for AI and Big Data applications, and these are used to provide shared file systems. The total effective capacity is up to approximately 74 PB.
+The ABCI system has three storage systems for storing large amounts of data used for AI and Big Data applications, and these are used to provide shared file systems. Combined, /home, /groups, and /groups_s3 have an effective capacity of approximately 74 PB.
 
 | # | Storage System | Media | Usage |
 |:--|:--|:--|:--|
@@ -85,7 +84,7 @@ The ABCI system has three storage systems for storing large amounts of data used
 
 Below is a list of shared file systems provided by the ABCI system using the above storage systems.
 
-| Usage | Mount point | Capacity | File system | Notes |
+| Usage | Mount point | Effective capacity | File system | Notes |
 |:--|:--|:--|:--|:--|
 | Home area | /home | 10 PB | Lustre |  |
 | Group area | /groups | 63 PB | Lustre |  |
@@ -125,7 +124,7 @@ The software available on the ABCI system is shown below. Details on the version
 | File System | DDN Lustre |  |  |
 | | BeeOND |  |  |
 | Object Storage | DDN S3 API |  |  |
-| Container | Singularity-CE |  |  |
+| Container | SingularityCE |  |  |
 | MPI | Intel MPI |  |  |
 | Library | cuDNN |  |  |
 | | NCCL |  |  |

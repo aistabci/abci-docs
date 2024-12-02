@@ -127,7 +127,7 @@ $ qsub -I -P group -q resource_type -l select=num [options]
 Example) Executing an interactive job (On-demand service)
 
 ```
-[username@int1 ~]$ qsub -I -P grpname -q rt_HF -l select=1
+[username@login1 ~]$ qsub -I -P grpname -q rt_HF -l select=1
 [username@hnode001 ~]$ 
 ```
 
@@ -180,7 +180,7 @@ $ qsub job_script
 Example) Submission job script run.sh as a batch job (Spot service)
 
 ```
-[username@int1 ~]$ qsub run.sh
+[username@login1 ~]$ qsub run.sh
 1234.pbs1
 ```
 
@@ -210,7 +210,7 @@ The major options of the `qstat` command are follows.
 Example)
 
 ```
-[username@int1 ~]$ qstat
+[username@login1 ~]$ qstat
 Job id                 Name             User              Time Use S Queue
 ---------------------  ---------------- ----------------  -------- - -----
 12345.pbs1              run.sh           username          00:01:23 R rt_HF
@@ -236,12 +236,12 @@ $ qdel job_ID
 Example) Delete a batch job
 
 ```
-[username@int1 ~]$ qstat
+[username@login1 ~]$ qstat
 Job id                 Name             User              Time Use S Queue
 ---------------------  ---------------- ----------------  -------- - -----
 12345.pbs1              run.sh           username          00:01:23 R rt_HF
-[username@int1 ~]$ qdel 12345.pbs1
-[username@int1 ~]$
+[username@login1 ~]$ qdel 12345.pbs1
+[username@login1 ~]$
 ```
 
 
@@ -296,7 +296,7 @@ $ qrsub options
 Example) Make a reservation 4 compute nodes (H) from 2024/07/05 to 1 week (7 days)
 
 ```
-[username@int1 ~]$ qrsub -a 20240705 -d 7 -P grpname -n 4 -N "Reserve_for_AI"
+[username@login1 ~]$ qrsub -a 20240705 -d 7 -P grpname -n 4 -N "Reserve_for_AI"
 Your advance reservation 12345 has been granted
 ```
 
@@ -318,7 +318,7 @@ To show the current status of reservations, use the `qrstat` command.
 Example)
 
 ```
-[username@int1 ~]$ qrstat
+[username@login1 ~]$ qrstat
 ar-id      name       owner        state start at             end at               duration    sr
 ----------------------------------------------------------------------------------------------------
      12345 Reserve_fo root         w     07/05/2024 10:00:00  07/12/2024 09:30:00  167:30:00    false
@@ -339,7 +339,7 @@ If you want to show the number of nodes that can be reserved, use`qrstat` comman
 
 Checking the Number of Reservable Nodes for Compute Nodes
 ```
-[username@int1 ~]$ qrstat --available
+[username@login1 ~]$ qrstat --available
 06/27/2024  441
 07/05/2024  432
 07/06/2024  434
@@ -359,7 +359,7 @@ To cancel a reservation, use the `qrdel` command. When canceling reservation wit
 Example) Cancel a reservation
 
 ```
-[username@int1 ~]$ qrdel 12345,12346
+[username@login1 ~]$ qrdel 12345,12346
 ```
 
 ### How to use reserved node  
@@ -369,14 +369,14 @@ To run a job using reserved compute nodes, specify reservation ID with the `-ar`
 Example) Execute an interactive job on compute node reserved with reservation ID `12345`.
 
 ```
-[username@int1 ~]$ qrsh -g grpname -ar 12345 -l rt_HF=1 -l h_rt=1:00:00
+[username@login1 ~]$ qrsh -g grpname -ar 12345 -l rt_HF=1 -l h_rt=1:00:00
 [username@hnode001 ~]$ 
 ```
 
 Example) Submit a batch job on compute node reserved with reservation ID `12345`.
 
 ```
-[username@int1 ~]$ qsub -P grpname -ar 12345 run.sh
+[username@login1 ~]$ qsub -P grpname -ar 12345 run.sh
 Your job 12345 ("run.sh") has been submitted
 ```
 
@@ -403,9 +403,9 @@ Advance Reservation does not guarantee the health of the compute node for the du
 
 Example) hnode001 is available, hnode002 is unavailable
 ```
-[username@int1 ~]$ qrsub -a 20240705 -d 7 -P grpname -n 2 -N "Reserve_for_AI" 
+[username@login1 ~]$ qrsub -a 20240705 -d 7 -P grpname -n 2 -N "Reserve_for_AI" 
 Your advance reservation 12345 has been granted
-[username@int1 ~]$ qrstat -ar 12345
+[username@login1 ~]$ qrstat -ar 12345
 (snip)
 message                             reserved queue gpu@hnode002 is disabled
 message                             reserved queue gpu@hnode002 is unknown

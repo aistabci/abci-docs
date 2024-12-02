@@ -2,10 +2,10 @@
 
 ## インタラクティブノードへの接続 {#connecting-to-interactive-node}
 
-ABCIシステムのフロントエンドであるインタラクティブノード(ホスト名: *int*)に接続するには、二段階のSSH公開鍵認証による接続を行います。
+ABCIシステムのフロントエンドであるインタラクティブノード(ホスト名: *login*)に接続するには、二段階のSSH公開鍵認証による接続を行います。
 
 1. SSH公開鍵認証を用いてアクセスサーバ(ホスト名: *as.v3.abci.ai*)にログインして、ローカルPCとインタラクティブノードの間にSSHポートフォワーディングによるトンネリング（以下「SSHトンネル」という）を作成
-2. SSHトンネルを介して、SSH公開鍵認証を用いてインタラクティブノード(*int*)にログイン
+2. SSHトンネルを介して、SSH公開鍵認証を用いてインタラクティブノード(*login*)にログイン
 
 なお本章では、ABCIのサーバ名は *イタリック* で表記します。
 
@@ -33,7 +33,7 @@ ABCIシステムのフロントエンドであるインタラクティブノー�
 以下のコマンドでアクセスサーバ(*as.v3.abci.ai*)にログインし、SSHトンネルを作成します。
 
 ```
-[yourpc ~]$ ssh -i /path/identity_file -L 10022:int:22 -l username as.v3.abci.ai
+[yourpc ~]$ ssh -i /path/identity_file -L 10022:login:22 -l username as.v3.abci.ai
 The authenticity of host 'as.v3.abci.ai (0.0.0.1)' can't be established.
 RSA key fingerprint is XX:XX:XX:XX:XX:XX:XX:XX:XX:XX:XX:XX:XX:XX:XX:XX. <- 初回ログイン時のみ表示
 Are you sure you want to continue connecting (yes/no)?  <- yesを入力
@@ -61,7 +61,7 @@ RSA key fingerprint is XX:XX:XX:XX:XX:XX:XX:XX:XX:XX:XX:XX:XX:XX:XX:XX. <- 初�
 Are you sure you want to continue connecting (yes/no)? <- yesを入力
 Warning: Permanently added 'localhost' (RSA) to the list of known hosts.
 Enter passphrase for key '-i /path/identity_file': <- パスフレーズ入力
-[username@int1 ~]$
+[username@login1 ~]$
 ```
 
 #### ProxyJumpの使用 {#proxyjump}
@@ -72,7 +72,7 @@ Enter passphrase for key '-i /path/identity_file': <- パスフレーズ入力
 
 ```
 Host abci
-     HostName int
+     HostName login
      User username
      ProxyJump %r@as.v3.abci.ai
      IdentityFile /path/to/identity_file
@@ -92,7 +92,7 @@ Windows 10 バージョン 1803 以降に標準でバンドルされている Op
 
 ```
 Host abci
-     HostName int
+     HostName login
      User username
      ProxyCommand C:\WINDOWS\System32\OpenSSH\ssh.exe -W %h:%p %r@as.v3.abci.ai
      IdentityFile C:\path\to\identity_file
