@@ -25,7 +25,7 @@ ABCIシステムではIntel oneAPIが利用可能です。
 Intel oneAPIの環境設定:
 
 ```
-[username@es1 ~]$ module load intel/2024.0.2
+[username@login1 ~]$ module load intel/2024.2.1
 ```
 
 コンパイル/リンクコマンド一覧:

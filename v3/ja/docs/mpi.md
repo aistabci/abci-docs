@@ -10,20 +10,20 @@ ABCIシステムでは、以下のMPIを利用できます。
 計算ノードで`module`コマンドを用いると、コンパイル用環境変数に加え、実行用環境変数も自動で設定されます。
 
 ```
-[username@es1 ~]$ module load hpcx/2.12
+[username@login1 ~]$ module load hpcx/2.20
 ```
 
 ```
-[username@es1 ~]$ module load intel-mpi/2021.11
+[username@login1 ~]$ module load intel-mpi/2021.13
 ```
 
 以下では、ABCIシステムに導入されているMPIのバージョン一覧を示します。
 
 ## NVIDIA HPC-X
 
-| Module Version | Open MPI Version |  Compute Node (V) | Compute Node (A) |
-| :-- | :-- | :-- | :-- |
-| 2.12 | 4.1.5a1 | Yes | Yes |
+| Module Version | Open MPI Version |  Compute Node (H) |
+| :-- | :-- | :-- | 
+| 2.20 | <mark>4.1.5a1</mark> | Yes |
 
 ### 使用方法
 
@@ -42,9 +42,9 @@ ABCIで提供しているHPC-Xモジュールには以下の種類がありま�
 ホストファイルは`SGE_JOB_HOSTLIST`環境変数に設定されています。
 
 ```
-[username@es1 ~]$ qrsh -g groupname -l rt_F=2 -l h_rt=01:00:0
-[username@g0001 ~]$ module load hpcx/2.12
-[username@g0001 ~]$ mpirun -np 2 -map-by ppr:1:node -hostfile $SGE_JOB_HOSTLIST ./hello_c
+[username@login1 ~]$ qsub -I -P groupname -q rt_HF -l select=2 -l walltime=01:00:00
+[username@hnode001 ~]$ module load hpcx/2.20
+[username@hnode001 ~]$ mpirun -np 2 -map-by ppr:1:node -hostfile $SGE_JOB_HOSTLIST ./hello_c
 Hello, world, I am 0 of 2, (Open MPI v4.1.5a1, package: Open MPI root@hpc-kernel-03 Distribution, ident: 4.1.5a1, repo rev: v4.1.4-2-g1c67bf1c6a, Unreleased developer copy, 144)
 Hello, world, I am 1 of 2, (Open MPI v4.1.5a1, package: Open MPI root@hpc-kernel-03 Distribution, ident: 4.1.5a1, repo rev: v4.1.4-2-g1c67bf1c6a, Unreleased developer copy, 144)
 ```
@@ -54,14 +54,12 @@ NVIDIA HPC-XではNCCL-SHARPプラグインを提供しています。
 
 | HPC-Xバージョン | NCCL バージョン |
 | :-- | :-- |
-| 2.12 | 2.12 |
-
-SHARPおよびNCCL-SHARPプラグインの使用方法については[SHARPの利用](tips/sharp.md)を参照してください。
+| 2.20 | <mark>2.23</mark> |
 
 NVIDIA HPC-Xについて、より詳しい情報は[公式ドキュメント](https://docs.nvidia.com/networking/category/hpcx)を参照してください。
 
 ## Intel MPI
 
-| intel-mpi/ | Compute Node (V) | Compute Node (A) |
-|:--|:--|:--|
-| 2021.11 | Yes | Yes |
+| intel-mpi/ | Compute Node (H) |
+|:--|:--|
+| 2021.13 | Yes |

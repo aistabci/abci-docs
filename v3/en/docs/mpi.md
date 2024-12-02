@@ -10,20 +10,20 @@ If you run the `module` command in an interactive node, environment variables fo
 If you run the `module` command in a compute node, environment variables both for compilation and execution are set automatically.
 
 ```
-[username@es1 ~]$ module load hpcx/2.12
+[username@login1 ~]$ module load hpcx/2.20
 ```
 
 ```
-[username@es1 ~]$ module load intel-mpi/2021.11
+[username@login1 ~]$ module load intel-mpi/2021.13
 ```
 
 The following is a list MPI versions installed in the ABCI system.
 
 ## NVIDIA HPC-X
 
-| Module Version | Open MPI Version |  Compute Node (V) | Compute Node (A) |
-| :-- | :-- | :-- | :-- |
-| 2.12 | 4.1.5a1 | Yes | Yes |
+| Module Version | Open MPI Version |  Compute Node (H) |
+| :-- | :-- | :-- |
+| 2.20 | <mark>4.1.5a1</mark> | Yes |
 
 ### Using HPC-X
 
@@ -42,9 +42,9 @@ When executing the `mpirun` and `mpiexec` commands in a job, a host file is also
 The host file is set in the `$SGE_JOB_HOSTLIST` environment variable.
 
 ```
-[username@es1 ~]$ qrsh -g groupname -l rt_F=2 -l h_rt=01:00:0
-[username@g0001 ~]$ module load hpcx/2.12
-[username@g0001 ~]$ mpirun -np 2 -map-by ppr:1:node -hostfile $SGE_JOB_HOSTLIST ./hello_c
+[username@login1 ~]$ qsub -I -P groupname -q rt_HF -l select=2 -l walltime=01:00:00
+[username@hnode001 ~]$ module load hpcx/2.20
+[username@hnode001 ~]$ mpirun -np 2 -map-by ppr:1:node -hostfile $SGE_JOB_HOSTLIST ./hello_c
 Hello, world, I am 0 of 2, (Open MPI v4.1.5a1, package: Open MPI root@hpc-kernel-03 Distribution, ident: 4.1.5a1, repo rev: v4.1.4-2-g1c67bf1c6a, Unreleased developer copy, 144)
 Hello, world, I am 1 of 2, (Open MPI v4.1.5a1, package: Open MPI root@hpc-kernel-03 Distribution, ident: 4.1.5a1, repo rev: v4.1.4-2-g1c67bf1c6a, Unreleased developer copy, 144)
 ```
@@ -55,14 +55,12 @@ See the table below for compatibility between HPC-X and NCCL.
 
 | HPC-X Version | NCCL Version |
 | :-- | :-- |
-| 2.12 | 2.12 |
-
-For information on how to use SHARP and the NCCL-SHARP plug-in, see [Using SHARP](tips/sharp.md).
+| 2.20 | <mark>2.23</mark> |
 
 For more information about NVIDIA HPC-X, please refer to [the official documentation](https://docs.nvidia.com/networking/category/hpcx).
 
 ## Intel MPI
 
-| intel-mpi/ | Compute Node (V) | Compute Node (A) |
-|:--|:--|:--|
-| 2021.11 | Yes | Yes |
+| intel-mpi/ | Compute Node (H) |
+|:--|:--|
+| 2021.13 | Yes |

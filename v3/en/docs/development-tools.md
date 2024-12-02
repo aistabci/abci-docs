@@ -24,7 +24,7 @@ If you set up with the `module` command in compute node, environment variables f
 Setting command for Intel oneAPI is following:
 
 ```
-[username@es1 ~]$ module load intel/2024.0.2
+[username@login1 ~]$ module load intel/2024.2.1
 ```
 
 List of compile/link commands of Intel oneAPI:
