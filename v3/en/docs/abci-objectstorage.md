@@ -1,8 +1,8 @@
-# ABCI Cloud Storage
+# ABCI Object Storage (Under Upadate)
 
-ABCI Cloud Storage Service offers an object storage service that has a compatible interface with Amazon Simple Storage Service (Amazon S3).
+ABCI Object Storage Service offers an object storage service that has a compatible interface with Amazon Simple Storage Service (Amazon S3).
 
-ABCI Cloud Storage has unique capabilities.
+ABCI Object Storage has unique capabilities.
 
 - Compatibility
 
@@ -16,23 +16,18 @@ ABCI Cloud Storage has unique capabilities.
 
     Users can encrypt data transfers between clients and the storage. Users can also encrypt data and store encrypted data in the storage.
 
-To start using ABCI Cloud Storage, User Administrator of each ABCI group should apply for use on [ABCI User Portal](https://portal.abci.ai/user/).
-If you are not a User Administrator, please contact to User Administrators of your group.
-For details of the operation, refer to [ABCI Portal Guide](https://docs.abci.ai/portal/en/).
 
-ABCI points based on the total size of objects in buckets owned by your ABCI group are subtracted from your ABCI group's each day. There is no charge for data transfer or API calls. Users can check the total size by [show_cs_usage](getting-started.md#check-cloud-storage-usage). The calculation formula of ABCI points for using ABCI Cloud Storage is as follows.
+ABCI points based on the total size of objects in buckets owned by your ABCI group are subtracted from your ABCI group's each day. There is no charge for data transfer or API calls. Users can check the total size by show_cs_usage. The calculation formula of ABCI points for using ABCI Object Storage is as follows.
 
 ```
 ABCI point = the size of data stored in the storage of the previous day
-           × charge coefficient of ABCI Cloud Storage
+           × charge coefficient of ABCI Object Storage
 ```
-
-As for charge coefficient of ABCI Cloud Storage, see [this page](https://abci.ai/en/how_to_use/tariffs.html).
 
 | Page | Outline |
 |:--|:--|
-| [Accounts and Access Keys](abci-cloudstorage/cs-account.md) | This section explains accounts and access keys. |
-| [Usage](abci-cloudstorage/usage.md) | This section shows basic usage. |
-| [Encryption](abci-cloudstorage/encryption.md) | This section explains encryption. |
-| [Access Control (1)](abci-cloudstorage/acl.md) | This section shows how to control accessibility by ACL. Data can be shared between groups. |
-| [Access Control (2)](abci-cloudstorage/policy.md) | This section explains access control which is applicable to buckets and user accounts. It is possible to set access control that cannot be done with ACL. Access crontrol settings for buckets can be done with a 'Cloud Storage Account for user', but 'Cloud Storage Account for manager' is necessary to set for access control settings for accounts. |
+| [Accounts and Access Keys](abci-objectstorage/cs-account.md) | This section explains accounts and access keys. |
+| [Usage](abci-objectstorage/usage.md) | This section shows basic usage. |
+| Encryption | This section explains encryption. |
+| Access Control (1) | This section shows how to control accessibility by ACL. Data can be shared between groups. |
+| Access Control (2) | This section explains access control which is applicable to buckets and user accounts. It is possible to set access control that cannot be done with ACL. Access crontrol settings for buckets can be done with a 'Object Storage Account for user', but 'Oloud Storage Account for manager' is necessary to set for access control settings for accounts. |
