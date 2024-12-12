@@ -183,7 +183,7 @@ Time stamps are not be preserved.
 This command can handle objects which have specific prefix with option '--recursive'
 and files which are stored in specific directories.
 
-The example shown next transfers 'annotaitions.zip' in current directory to a bucket 'dataset-c0541' in ABCI Cloud Storage.
+The example shown next transfers 'annotaitions.zip' in current directory to a bucket 'dataset-c0541' in ABCI Object Storage.
 
 ```
 [username@login1 ~]$ aws --endpoint-url https://s3.v3.abci.ai s3 mv annotations.zip s3://dataset-c0541/
@@ -201,7 +201,7 @@ move: s3://dataset-c0541/sensor-1/0002.dat to s3://dataset-c0542/sensor-1/0002.d
 ```
 
 
-### Synchronize Local Directory with ABCI Cloud Storage
+### Synchronize Local Directory with ABCI Object Storage
 
 Here is an example that synchronizes a directory 'sensor2' in current directory and a bucket 'mybucket'. If an option '--delete' is not given, exsiting objects in the bucket will not be deleted and exsiting objects which have same names with the ones in the current directory will be overwritten. When executing same command again, only updated data will be sent.
 ```

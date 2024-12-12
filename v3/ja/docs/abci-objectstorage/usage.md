@@ -183,7 +183,7 @@ copy: s3://dataset-tmpl-c0000/logo.png to s3://dataset-c0541/logo.png
 --recursive オプションの付与で特定のプレフィックスを持つオブジェクト、
 または特定のディレクトリに入っているファイルを対象として扱えます。
 
-次の例では、カレントディレクトリにある annotations.zip をクラウドストレージ上の dataset-c0541 バケットに移動を行っています。
+次の例では、カレントディレクトリにある annotations.zip をオブジェクトストレージ上の dataset-c0541 バケットに移動を行っています。
 
 ```
 [username@login1 ~]$ aws --endpoint-url https://s3.v3.abci.ai s3 mv annotations.zip s3://dataset-c0541/
@@ -201,7 +201,7 @@ move: s3://dataset-c0541/sensor-1/0002.dat to s3://dataset-c0542/sensor-1/0002.d
 ```
 
 
-### ローカルディレクトリとクラウドストレージの同期
+### ローカルディレクトリとオブジェクトストレージの同期
 
 以下の例では、カレントディレクトリにある sensor2 というディレクトリと mybucket というバケットを同期させています。--delete オプションをつけていなければバケットにあった既存のオブジェクトは削除されませんが、同名のものは上書きされます。次に同じコマンドラインを実行すると、更新されたファイルのみ送ります。
 ```
