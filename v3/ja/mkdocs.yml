@@ -12,6 +12,7 @@ nav:
     - '概要 （更新中）': 'abci-objectstorage.md'
     - 'アカウントとアクセスキー （更新中）': 'abci-objectstorage/cs-account.md'
     - '使い方 （更新中）': 'abci-objectstorage/usage.md'
+  - 'コンテナ': 'containers.md'
   - 'お問い合わせ': 'contact.md'
 extra:
   alternate:
