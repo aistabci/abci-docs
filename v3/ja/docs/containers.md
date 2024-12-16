@@ -38,13 +38,13 @@ Singularityコンテナイメージはファイルとして保存することが
 pullによるSingularityイメージファイルの作成例）
 
 ```
-[username@es1 ~]$ module load singularitypro
-[username@es1 ~]$ export SINGULARITY_TMPDIR=/scratch/$USER
-[username@es1 ~]$ singularity pull tensorflow.img docker://tensorflow/tensorflow:latest-gpu
+[username@login1 ~]$ module load singularitypro
+[username@login1 ~]$ export SINGULARITY_TMPDIR=/scratch/$USER
+[username@login1 ~]$ singularity pull tensorflow.img docker://tensorflow/tensorflow:latest-gpu
 INFO:    Converting OCI blobs to SIF format
 INFO:    Starting build...
 ...
-[username@es1 ~]$ ls tensorflow.img
+[username@login1 ~]$ ls tensorflow.img
 tensorflow.img
 ```
 
@@ -65,8 +65,8 @@ ABCIシステムのSingularityPRO環境では`fakeroot`オプションを使用�
 `build`によるSingularityイメージファイルの作成例）
 
 ```
-[username@es1 ~]$ module load singularitypro
-[username@es1 ~]$ cat ubuntu.def
+[username@login1 ~]$ module load singularitypro
+[username@login1 ~]$ cat ubuntu.def
 Bootstrap: docker
 From: ubuntu:20.04
 
@@ -77,21 +77,21 @@ From: ubuntu:20.04
 %runscript
     lsb_release -d
 
-[username@es1 ~]$ singularity build --fakeroot ubuntu.sif ubuntu.def
+[username@login1 ~]$ singularity build --fakeroot ubuntu.sif ubuntu.def
 INFO:    Starting build...
 (snip)
 INFO:    Creating SIF file...
 INFO:    Build complete: ubuntu.sif
-[username@es1 singularity]$
+[username@login1 singularity]$
 ```
 
 なお、上記コマンドにおいてイメージファイル(ubuntu.sif)の出力先をグループ領域にするとエラーが発生します。その場合、singularityコマンドを実行する前に以下のように`id`コマンドでイメージ出力先グループ領域の所有グループを確認の上、`newgrp`コマンドを実施いただくことで回避可能です。
 下記例の`gaa00000`の箇所がイメージ出力先グループ領域の所有グループとなります。
 
 ```
-[username@es1 groupname]$ id -a
+[username@login1 groupname]$ id -a
 uid=0000(aaa00000aa) gid=0000(aaa00000aa) groups=0000(aaa00000aa),00000(gaa00000)
-[username@es1 groupname]$ newgrp gaa00000
+[username@login1 groupname]$ newgrp gaa00000
 ```
 
 ### コンテナの実行 {#running-a-container-with-singularity}
@@ -103,7 +103,7 @@ Singularityを利用する場合、ジョブ中に`singularity run`コマンド�
 インタラクティブジョブにおけるSingularityイメージファイルを使用したコンテナの実行例）
 
 ```
-[username@es1 ~]$ qrsh -g grpname -l rt_HF=1 -l walltime=1:00:00
+[username@login1 ~]$ qsub -I -P group -q rt_HF=1 -l walltime=1:00:00
 [username@hnode001 ~]$ module load singularitypro
 [username@hnode001 ~]$ singularity run --nv ./tensorflow.img
 ```
@@ -111,7 +111,7 @@ Singularityを利用する場合、ジョブ中に`singularity run`コマンド�
 バッチジョブにおけるSingularityイメージファイルを使用したコンテナの実行例）
 
 ```
-[username@es1 ~]$ cat job.sh
+[username@login1 ~]$ cat job.sh
 #!/bin/sh
 #$-l rt_HF=1
 #$-j y
@@ -120,7 +120,7 @@ module load singularitypro
 
 singularity exec --nv ./tensorflow.img python3 sample.py
 
-[username@es1 ~]$ qsub -g grpname job.sh
+[username@login1 ~]$ qsub -g grpname job.sh
 ```
 
 Docker Hubで公開されているコンテナイメージの実行例）
@@ -131,7 +131,7 @@ Docker Hubで公開されているコンテナイメージの実行例）
 2回目以降の起動はキャッシュされたデータを使用することで起動が高速化されます。
 
 ```
-[username@es1 ~]$ qrsh -g grpname -l rt_HF=1 -l walltime=1:00:00
+[username@login1 ~]$ qsub -I -P group -q rt_HF=1 -l walltime=1:00:00
 [username@hnode001 ~]$ module load singularitypro
 [username@hnode001 ~]$ export SINGULARITY_TMPDIR=$SGE_LOCALDIR
 [username@hnode001 ~]$ singularity run --nv docker://tensorflow/tensorflow:latest-gpu
@@ -202,10 +202,10 @@ DockerfileをSingularity recipeファイルに変換することで、ABCIシス
 Singularity Pythonのインストール例）
 
 ```
-[username@es1 ~]$ module load python/3.10
-[username@es1 ~]$ python3 -m venv work
-[username@es1 ~]$ source work/bin/activate
-(work) [username@es1 ~]$ pip3 install spython
+[username@login1 ~]$ module load python/3.10
+[username@login1 ~]$ python3 -m venv work
+[username@login1 ~]$ source work/bin/activate
+(work) [username@login1 ~]$ pip3 install spython
 ```
 
 以下の例では、NVIDIA社による[SSD300 v1.1モデル学習用コンテナイメージ](https://github.com/NVIDIA/DeepLearningExamples/tree/master/PyTorch/Detection/SSD)のDockerfileをSingularity recipeファイル（ssd.def）に変換し、正常にイメージを作成できるよう修正します。
@@ -215,13 +215,13 @@ Singularity Pythonのインストール例）
 - WORKDIRにファイルがコピーされない => コピー先をWORKDIRの絶対パスに設定
 
 ```
-[username@es1 ~]$ module load python/3.10
-[username@es1 ~]$ source work/bin/activate
-(work) [username@es1 ~]$ git clone https://github.com/NVIDIA/DeepLearningExamples
-(work) [username@es1 ~]$ cd DeepLearningExamples/PyTorch/Detection/SSD
-(work) [username@es1 SSD]$ spython recipe Dockerfile ssd.def
-(work) [username@es1 SSD]$ cp -p ssd.def ssd_org.def
-(work) [username@es1 SSD]$ vi ssd.def
+[username@login1 ~]$ module load python/3.10
+[username@login1 ~]$ source work/bin/activate
+(work) [username@login1 ~]$ git clone https://github.com/NVIDIA/DeepLearningExamples
+(work) [username@login1 ~]$ cd DeepLearningExamples/PyTorch/Detection/SSD
+(work) [username@login1 SSD]$ spython recipe Dockerfile ssd.def
+(work) [username@login1 SSD]$ cp -p ssd.def ssd_org.def
+(work) [username@login1 SSD]$ vi ssd.def
 Bootstrap: docker
 From: nvcr.io/nvidia/pytorch:22.10-py3
 Stage: spython-base
@@ -348,7 +348,7 @@ int main (int argc, char **argv) {
 `singularity`コマンドでコンテナイメージをbuildします。
 buildに成功すると、コンテナイメージ(openmpi.sif)が生成されます。
 ```
-[username@es1 ~]$ qrsh -g grpname -l rt_G.small=1
+[username@login1 ~]$ qsub -I -P group -q rt_HG=1 -l select=1
 [username@hnode001 ~]$ module load singularitypro
 [username@hnode001 ~]$ singularity build --fakeroot openmpi.sif openmpi.def
 INFO:    Starting build...
@@ -436,7 +436,7 @@ print(model.cluster_centers_)
 `singularity`コマンドでコンテナイメージをbuildします。
 buildに成功すると、コンテナイメージ(h2o4gpuPy.sif)が生成されます。
 ```
-[username@es1 ~]$ qrsh -g grpname -l rt_G.small=1
+[username@login1 ~]$ qsub -I -P group -q rt_HG=1 -l select=1
 [username@hnode001 ~]$ module load singularitypro
 [username@hnode001 ~]$ singularity build --fakeroot h2o4gpuPy.sif h2o4gpuPy.def
 INFO:    Starting build...
@@ -456,3 +456,4 @@ INFO:    Build complete: h2o4gpuPy.sif
  [1.  4. ]]
 [username@hnode001 ~]$
 ```
+
