@@ -255,6 +255,23 @@ the following files are generated for output.
 - *JOB_NAME*.o*NUM_JOB_ID*  ---  Standard output file
 - *JOB_NAME*.e*NUM_JOB_ID*  ---  Standard error output file
 
+
+## Environment Variables
+
+During job execution, the following environment variables are available for the executing job script/binary.
+
+| Variable Name | Description |
+|:--|:--|
+| PBS\_ENVIRONMENT         | For batch jobs, 'PBS\_BATCH' is set, and for interactive jobs, 'PBS\_INTERACTIVE' is set. |
+| PBS\_JOBID             | Job ID |
+| PBS\_JOBNAME           | Name of the PBS job. |
+| PBS\_NODEFILE  | The absolute path includes only hosts assigned by PBS |
+| PBS\_LOCALDIR | The local storage path assigned by PBS |
+| PBS\_O\_WORKDIR     | The working directory path of the job submitter |
+
+!!! warning
+    Do not change these environment variables in a job because they are reserved by the job scheduler and may affect the job scheduler's behavior.
+
 ## Advance Reservation (Under Update)
 
 In the case of Reserved service, job execution can be scheduled by reserving compute node in advance.
