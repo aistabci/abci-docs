@@ -266,7 +266,7 @@ During job execution, the following environment variables are available for the 
 | PBS\_JOBID             | Job ID |
 | PBS\_JOBNAME           | Name of the PBS job. |
 | PBS\_NODEFILE  | The absolute path includes only hosts assigned by PBS |
-| TMPDIR       | Pathname of job's scratch directory |
+| PBS\_LOCALDIR | The local storage path assigned by PBS |
 | PBS\_O\_WORKDIR     | The working directory path of the job submitter |
 
 !!! warning

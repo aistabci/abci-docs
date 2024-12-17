@@ -274,7 +274,7 @@ Job id                 Name             User              Time Use S Queue
 | PBS\_JOBID | ジョブID |
 | PBS\_JOBNAME | ジョブ名 |
 | PBS\_NODEFILE | ジョブに割り当てられたホストが記載されたファイルへのパス |
-| TMPDIR | ジョブに割り当てられた一時ディレクトリへのパス |
+| PBS\_LOCALDIR | ジョブに割り当てられたローカルストレージへのパス |
 | PBS\_O\_WORKDIR | ジョブ投入時の作業ディレクトリへのパス |
 
 !!! warning
