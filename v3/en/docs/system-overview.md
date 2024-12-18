@@ -88,9 +88,14 @@ Below is a list of shared file systems provided by the ABCI system using the abo
 |:--|:--|:--|:--|:--|
 | Home area | /home | 10 PB | Lustre |  |
 | Group area | /groups | 63 PB | Lustre |  |
+| ABCI Object area | /groups_s3 | 1 PB | Lustre |  |
+
+The following file systems are mounted for the purpose of data migration.
+
+| Usage | Mount point | Effective capacity | File system | Notes |
+|:--|:--|:--|:--|:--|
 | Archive | /home-2.0 | 0.5 PB | Lustre | Read-only. Home area used in ABCI 2.0 |
 | Archive | /groups-2.0 | 10.8 PB | Lustre | Read-only. Group area used in ABCI 2.0 |
-| ABCI Object area | /groups_s3 | 1 PB | Lustre |  |
 
 
 Interactive nodes, and compute nodes (H) mount the shared file systems, and users can access these file systems from common mount points.
