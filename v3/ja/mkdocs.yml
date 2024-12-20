@@ -8,6 +8,7 @@ nav:
   - 'ABCIシステムの概要': 'system-overview.md'
   - 'ABCIの利用開始': 'getting-started.md'
   - 'ジョブ実行': 'job-execution.md'
+  - 'Environment Modules': 'environment-modules.md'
   - 'ABCI オブジェクトストレージ （更新中）':
     - '概要 （更新中）': 'abci-objectstorage/index.md'
     - 'アカウントとアクセスキー （更新中）': 'abci-objectstorage/account.md'
