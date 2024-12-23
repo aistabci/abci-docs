@@ -23,7 +23,7 @@ ABCIシステムでは、以下のMPIを利用できます。
 
 | Module Version | Open MPI Version |  Compute Node (H) |
 | :-- | :-- | :-- | 
-| 2.20 | <mark>4.1.5a1</mark> | Yes |
+| 2.20 | 4.1.7a1 | Yes |
 
 ### 使用方法
 
@@ -39,14 +39,14 @@ ABCIで提供しているHPC-Xモジュールには以下の種類がありま�
 | hpcx-prof  | プロファイリング用  |
 
 また、ジョブ内で`mpirun`、`mpiexec`コマンドを実行する際には`-hostfile`オプションにホストファイルを指定します。
-ホストファイルは`SGE_JOB_HOSTLIST`環境変数に設定されています。
+ホストファイルは`PBS_NODEFILE`環境変数に設定されています。
 
 ```
 [username@login1 ~]$ qsub -I -P groupname -q rt_HF -l select=2 -l walltime=01:00:00
 [username@hnode001 ~]$ module load hpcx/2.20
-[username@hnode001 ~]$ mpirun -np 2 -map-by ppr:1:node -hostfile $SGE_JOB_HOSTLIST ./hello_c
-Hello, world, I am 0 of 2, (Open MPI v4.1.5a1, package: Open MPI root@hpc-kernel-03 Distribution, ident: 4.1.5a1, repo rev: v4.1.4-2-g1c67bf1c6a, Unreleased developer copy, 144)
-Hello, world, I am 1 of 2, (Open MPI v4.1.5a1, package: Open MPI root@hpc-kernel-03 Distribution, ident: 4.1.5a1, repo rev: v4.1.4-2-g1c67bf1c6a, Unreleased developer copy, 144)
+[username@hnode001 ~]$ mpirun -np 2 -map-by ppr:1:node -hostfile $PBS_NODEFILE ./hello_c
+Hello, world, I am 0 of 2, (Open MPI v4.1.7a1, package: Open MPI root@hnode001 Distribution, ident: 4.1.7a1, repo rev: v4.1.5-115-g41ba5192d2, Unreleased developer copy, 141)
+Hello, world, I am 1 of 2, (Open MPI v4.1.7a1, package: Open MPI root@hnode001 Distribution, ident: 4.1.7a1, repo rev: v4.1.5-115-g41ba5192d2, Unreleased developer copy, 141)
 ```
 
 NVIDIA HPC-XではNCCL-SHARPプラグインを提供しています。

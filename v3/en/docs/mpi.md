@@ -23,7 +23,7 @@ The following is a list MPI versions installed in the ABCI system.
 
 | Module Version | Open MPI Version |  Compute Node (H) |
 | :-- | :-- | :-- |
-| 2.20 | <mark>4.1.5a1</mark> | Yes |
+| 2.20 | 4.1.7a1 | Yes |
 
 ### Using HPC-X
 
@@ -39,14 +39,14 @@ ABCI provides the following types of HPC-X modules.Please load the module accord
 | hpcx-prof  | for profiling  |
 
 When executing the `mpirun` and `mpiexec` commands in a job, a host file is also specified in the `-hostfile` option.
-The host file is set in the `$SGE_JOB_HOSTLIST` environment variable.
+The host file is set in the `$PBS_NODEFILE` environment variable.
 
 ```
 [username@login1 ~]$ qsub -I -P groupname -q rt_HF -l select=2 -l walltime=01:00:00
 [username@hnode001 ~]$ module load hpcx/2.20
-[username@hnode001 ~]$ mpirun -np 2 -map-by ppr:1:node -hostfile $SGE_JOB_HOSTLIST ./hello_c
-Hello, world, I am 0 of 2, (Open MPI v4.1.5a1, package: Open MPI root@hpc-kernel-03 Distribution, ident: 4.1.5a1, repo rev: v4.1.4-2-g1c67bf1c6a, Unreleased developer copy, 144)
-Hello, world, I am 1 of 2, (Open MPI v4.1.5a1, package: Open MPI root@hpc-kernel-03 Distribution, ident: 4.1.5a1, repo rev: v4.1.4-2-g1c67bf1c6a, Unreleased developer copy, 144)
+[username@hnode001 ~]$ mpirun -np 2 -map-by ppr:1:node -hostfile $PBS_NODEFILE ./hello_c
+Hello, world, I am 0 of 2, (Open MPI v4.1.7a1, package: Open MPI root@hnode001 Distribution, ident: 4.1.7a1, repo rev: v4.1.5-115-g41ba5192d2, Unreleased developer copy, 141)
+Hello, world, I am 1 of 2, (Open MPI v4.1.7a1, package: Open MPI root@hnode001 Distribution, ident: 4.1.7a1, repo rev: v4.1.5-115-g41ba5192d2, Unreleased developer copy, 141)
 ```
 
 NVIDIA HPC-X provides the NCCL-SHARP plug-in.
