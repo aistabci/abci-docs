@@ -13,6 +13,10 @@ nav:
     - '概要 （更新中）': 'abci-objectstorage/index.md'
     - 'アカウントとアクセスキー （更新中）': 'abci-objectstorage/account.md'
     - '使い方 （更新中）': 'abci-objectstorage/usage.md'
+  - 'Open OnDemand（更新中）':
+    - '使い方（更新中）': 'open-ondemand/index.md'
+    - 'インタラクティブアプリ（更新中）': 'open-ondemand/interactive-apps.md'
+    - 'AI Hub（更新中）': 'open-ondemand/aihub.md'
   - 'お問い合わせ': 'contact.md'
 extra:
   alternate:

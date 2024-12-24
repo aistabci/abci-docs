@@ -13,6 +13,10 @@ nav:
     - 'Overview (Under Update)': 'abci-objectstorage/index.md'
     - 'Accounts and Access keys (Under Update)': 'abci-objectstorage/account.md'
     - 'Usage (Under Update)': 'abci-objectstorage/usage.md'
+  - 'Open OnDemand (Under Update)':
+    - 'Using Open OnDemand (Under Update)': 'open-ondemand/index.md'
+    - 'Ineractive Apps (Under Update)': 'open-ondemand/interactive-apps.md'
+    - 'AI Hub (Under Update)': 'open-ondemand/aihub.md'
   - 'Contact': 'contact.md'
 extra:
   alternate:
