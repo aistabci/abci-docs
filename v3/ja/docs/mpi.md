@@ -54,7 +54,7 @@ NVIDIA HPC-XではNCCL-SHARPプラグインを提供しています。
 
 | HPC-Xバージョン | NCCL バージョン |
 | :-- | :-- |
-| 2.20 | <mark>2.23</mark> |
+| 2.20 | 2.23 |
 
 NVIDIA HPC-Xについて、より詳しい情報は[公式ドキュメント](https://docs.nvidia.com/networking/category/hpcx)を参照してください。
 

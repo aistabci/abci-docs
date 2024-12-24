@@ -55,7 +55,7 @@ See the table below for compatibility between HPC-X and NCCL.
 
 | HPC-X Version | NCCL Version |
 | :-- | :-- |
-| 2.20 | <mark>2.23</mark> |
+| 2.20 | 2.23 |
 
 For more information about NVIDIA HPC-X, please refer to [the official documentation](https://docs.nvidia.com/networking/category/hpcx).
 
