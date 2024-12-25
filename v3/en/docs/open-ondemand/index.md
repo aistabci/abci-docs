@@ -44,5 +44,7 @@ The feature compatibility with ABCI 2.0 is shown below.
 | Job management | 〇 | 〇 | 
 | Console operations on interactive nodes | 〇 | 〇 | 
 | Jupyter notebook | 〇 | 〇 | 
-| Qni | 〇 | 〇 | 
-| AI Hub | 〇 | 〇 | 
+| Qni | 〇 | ×[^1] | 
+| AI Hub | 〇 | ×[^1] | 
+
+[^1]: This feature is scheduled for future implementation.
