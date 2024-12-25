@@ -432,16 +432,13 @@ granted_slots_list                  gpu@hnode001=80,gpu@hnode002=80
 
 ## Accounting (Under Update)
 
-### Spot Service
+### On-demand and Spot services
 
 In On-demand and Spot services, when starting a job, the ABCI point scheduled
 for job is calculated by limited value of elapsed time, and subtract processing is executed.
 When a job finishes, the ABCI point is calculated again by actual elapsed time, and repayment process is executed.
 
-For information on accounting, please refer to the following URL.
-
-Japanese: [https://abci.ai/ja/how_to_use/tariffs.html](https://abci.ai/ja/how_to_use/tariffs.html)  
-English: [https://abci.ai/en/how_to_use/tariffs.html](https://abci.ai/en/how_to_use/tariffs.html)
+Please refer to the [accounting information](https://abci.ai/en/how_to_use/tariffs.html) for the charges related to On-demand and Spot services.
 
 !!! note
     * The five and under decimal places is rounding off.
@@ -460,4 +457,4 @@ Japanese: [https://abci.ai/ja/how_to_use/tariffs.html](https://abci.ai/ja/how_to
 English: [https://abci.ai/en/how_to_use/tariffs.html](https://abci.ai/en/how_to_use/tariffs.html)
 
 !!! note
-    Reservation for Compute Node is treated as resource type rt_HF.
+    Reservation for Compute Node (H) is treated as resource type rt_HF.
