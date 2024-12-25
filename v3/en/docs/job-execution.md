@@ -44,13 +44,13 @@ The following describes the available resource types first, followed by the rest
 
 The ABCI system provides the following resource types:
 
-
-| Resource type name | Description | Assigned physical CPU core | Number of assigned GPU | Memory (GB) | Local storage (GB) | Resource type charge coefficient |
+| Resource type name | Description | Assigned physical CPU core | Number of assigned GPU | Memory (GB) | Local storage (GB) | ABCI points per hour for Spot and On-demand (※) |
 |:--|:--|:--|:--|:--|:--|:--|
-| rt\_HF | node-exclusive | 96 | 8 | 1728 | 14 | 15 |
-| rt\_HG | node-sharing<br>with GPU | 8 | 1 | 144 | 1.4 | 3|
-| rt\_HC | node-sharing<br>CPU only | 16 | 0 | 288 | 1.4 | 1 |
+| rt\_HF | node-exclusive | 96 | 8 | 1728 | 14 | 7.5 |
+| rt\_HG | node-sharing<br>with GPU | 8 | 1 | 144 | 1.4 | 1.5 |
+| rt\_HC | node-sharing<br>CPU only | 16 | 0 | 288 | 1.4 | 0.5 |
 
+(※) Reserved service for rt_HF consumes 1.5 times the points.
 
 ### Number of nodes available at the same time
 
