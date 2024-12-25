@@ -454,10 +454,7 @@ On-demandおよびSpotサービスの課金については、[ご利用料金](h
 
 Reservedサービスでは、予約完了時に予約期間を元にABCIポイントを計算し、減算処理を実施します。予約の取り消しをしない限り、返却処理は実施されません。予約にて消費するポイントは、グループの利用責任者の消費ポイントとしてカウントされます。
 
-課金情報については、下記URLを参照ください。
-
-日本語版: [https://abci.ai/ja/how_to_use/tariffs.html](https://abci.ai/ja/how_to_use/tariffs.html)  
-英語版: [https://abci.ai/en/how_to_use/tariffs.html](https://abci.ai/en/how_to_use/tariffs.html)
+課金情報については、[ご利用料金](https://abci.ai/ja/how_to_use/tariffs.html)を参照ください。
 
 !!! note
     計算ノード(H)の予約は資源タイプrt_HFとして扱われます。

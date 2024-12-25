@@ -451,10 +451,7 @@ a period of reservation, end subtract processing is executed.
 The repayment process is not executed unless reservation is cancelled.
 The points are counted as the usage points of the person responsible for the use of the group.
 
-For information on accounting, please refer to the following URL.
-
-Japanese: [https://abci.ai/ja/how_to_use/tariffs.html](https://abci.ai/ja/how_to_use/tariffs.html)  
-English: [https://abci.ai/en/how_to_use/tariffs.html](https://abci.ai/en/how_to_use/tariffs.html)
+Please refer to the [accounting information](https://abci.ai/en/how_to_use/tariffs.html) for the charges.
 
 !!! note
     Reservation for Compute Node (H) is treated as resource type rt_HF.
