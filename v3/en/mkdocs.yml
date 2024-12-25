@@ -15,8 +15,6 @@ nav:
     - 'Usage (Under Update)': 'abci-objectstorage/usage.md'
   - 'Open OnDemand (Under Update)':
     - 'Using Open OnDemand (Under Update)': 'open-ondemand/index.md'
-    - 'Ineractive Apps (Under Update)': 'open-ondemand/interactive-apps.md'
-    - 'AI Hub (Under Update)': 'open-ondemand/aihub.md'
   - 'Contact': 'contact.md'
 extra:
   alternate:
