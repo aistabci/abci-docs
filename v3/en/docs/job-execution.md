@@ -44,13 +44,13 @@ The following describes the available resource types first, followed by the rest
 
 The ABCI system provides the following resource types:
 
-
-| Resource type name | Description | Assigned physical CPU core | Number of assigned GPU | Memory (GB) | Local storage (GB) | Resource type charge coefficient |
+| Resource type name | Description | Assigned physical CPU core | Number of assigned GPU | Memory (GB) | Local storage (GB) | ABCI points per hour for Spot and On-demand (※) |
 |:--|:--|:--|:--|:--|:--|:--|
-| rt\_HF | node-exclusive | 96 | 8 | 1728 | 14 | 15 |
-| rt\_HG | node-sharing<br>with GPU | 8 | 1 | 144 | 1.4 | 3|
-| rt\_HC | node-sharing<br>CPU only | 16 | 0 | 288 | 1.4 | 1 |
+| rt\_HF | node-exclusive | 96 | 8 | 1728 | 14 | 7.5 |
+| rt\_HG | node-sharing<br>with GPU | 8 | 1 | 144 | 1.4 | 1.5 |
+| rt\_HC | node-sharing<br>CPU only | 16 | 0 | 288 | 1.4 | 0.5 |
 
+(※) Reserved service for rt_HF consumes 1.5 times the points.
 
 ### Number of nodes available at the same time
 
@@ -255,6 +255,23 @@ the following files are generated for output.
 - *JOB_NAME*.o*NUM_JOB_ID*  ---  Standard output file
 - *JOB_NAME*.e*NUM_JOB_ID*  ---  Standard error output file
 
+
+## Environment Variables
+
+During job execution, the following environment variables are available for the executing job script/binary.
+
+| Variable Name | Description |
+|:--|:--|
+| PBS\_ENVIRONMENT         | For batch jobs, 'PBS\_BATCH' is set, and for interactive jobs, 'PBS\_INTERACTIVE' is set. |
+| PBS\_JOBID             | Job ID |
+| PBS\_JOBNAME           | Name of the PBS job. |
+| PBS\_NODEFILE  | The absolute path includes only hosts assigned by PBS |
+| PBS\_LOCALDIR | The local storage path assigned by PBS |
+| PBS\_O\_WORKDIR     | The working directory path of the job submitter |
+
+!!! warning
+    Do not change these environment variables in a job because they are reserved by the job scheduler and may affect the job scheduler's behavior.
+
 ## Advance Reservation (Under Update)
 
 In the case of Reserved service, job execution can be scheduled by reserving compute node in advance.
@@ -415,21 +432,13 @@ granted_slots_list                  gpu@hnode001=80,gpu@hnode002=80
 
 ## Accounting (Under Update)
 
-### Spot Service
+### On-demand and Spot services
 
 In On-demand and Spot services, when starting a job, the ABCI point scheduled
 for job is calculated by limited value of elapsed time, and subtract processing is executed.
 When a job finishes, the ABCI point is calculated again by actual elapsed time, and repayment process is executed.
 
-The calculation formula of ABCI point for using On-demand and Spot services is as follows:
-
-> [Service charge coefficient](#job-services)  
-> &times; [Resource type charge coefficient](#available-resource-types)  
-> &times; POSIX priority charge coefficient(1.0 or 1.5)  
-> &times; Number of resource type  
-> &times; max(Elapsed time[sec], Minimum Elapsed time[sec])  
-> &times; Utilization class coefficient(Standard Utilization:1.0, Development Acceleration Utilization:0.5)  
-> &div; 3600
+Please refer to the [accounting information](https://abci.ai/en/how_to_use/tariffs.html) for the charges related to On-demand and Spot services.
 
 !!! note
     * The five and under decimal places is rounding off.
@@ -442,14 +451,7 @@ a period of reservation, end subtract processing is executed.
 The repayment process is not executed unless reservation is cancelled.
 The points are counted as the usage points of the person responsible for the use of the group.
 
-The calculation formula of ABCI point for using Reserved service is follows:
-
-> [Service charge coefficient](#job-services)  
-> &times; [Resource type charge coefficient](#available-resource-types)  
-> &times; number of reserved nodes  
-> &times; number of reserved days  
-> &times; Utilization class coefficient(Standard Utilization:1.0, Development Acceleration Utilization:0.5)  
-> &times; 24
+Please refer to the [accounting information](https://abci.ai/en/how_to_use/tariffs.html) for the charges.
 
 !!! note
-    Reservation for Compute Node is treated as resource type rt_HF.
+    Reservation for Compute Node (H) is treated as resource type rt_HF.
