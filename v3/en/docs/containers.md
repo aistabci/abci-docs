@@ -452,3 +452,16 @@ Example) running the container
  [1.  4. ]]
 [username@g0001 ~]$
 ```
+
+### Environment Variables
+
+During job execution, the following environment variables are available for the executing job script/binary.
+
+| Variable Name | Description |
+|:--|:--|
+| PBS\_ENVIRONMENT         | For batch jobs, 'PBS\_BATCH' is set, and for interactive jobs, 'PBS\_INTERACTIVE' is set. |
+| PBS\_JOBID             | Job ID |
+| PBS\_JOBNAME           | Name of the PBS job. |
+| PBS\_NODEFILE  | The absolute path includes only hosts assigned by PBS |
+| PBS\_LOCALDIR | The local storage path assigned by PBS |
+| PBS\_O\_WORKDIR     | The working directory path of the job submitter |

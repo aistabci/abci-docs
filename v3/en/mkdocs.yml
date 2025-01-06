@@ -9,6 +9,7 @@ nav:
   - 'Getting Started ABCI': 'getting-started.md'
   - 'Job Execution': 'job-execution.md'
   - 'Environment Modules': 'environment-modules.md'
+  - 'Containers': 'containers.md'
   - 'ABCI Object Storage (Under Update)':
     - 'Overview (Under Update)': 'abci-objectstorage/index.md'
     - 'Accounts and Access keys (Under Update)': 'abci-objectstorage/account.md'
