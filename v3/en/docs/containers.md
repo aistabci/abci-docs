@@ -90,7 +90,36 @@ You can also use the `singularity run` command to run a container image publishe
 Example) Run a container with a Singularity image file in an interactive job
 
 ```
-ername@login1 ~]$ qsub -I -P grpname -q rt_HF=1 -l walltime=1:00:00
+[username@login1 ~]$ qsub -I -P group -q rt_HF=1 -l walltime=1:00:00
+[username@hnode001 ~]$ singularity run --nv ./tensorflow.sif
+```
+Example) Run a container with a Singularity image file in a batch job
+
+```
+[username@login1 ~]$ cat job.sh
+#!/bin/sh
+#PBS -q rt_HF
+#PBS -l select=1
+#PBS -l walltime=1:23:45
+#PBS -P grpname
+
+cd ${PBS_O_WORKDIR}
+
+source /etc/profile.d/modules.sh
+singularity exec --nv ./tensorflow.sif python3 sample.py
+
+[username@login1 ~]$ qsub job.sh
+```
+
+Example) Run a container image published in Docker Hub
+
+The following sample executes a Singularity container using TensorFlow container image published in Docker Hub.
+`python3 sample.py` is executed in the container started by `singularity run` command.
+The container image is downloaded at the first startup and cached in home area.
+The second and subsequent times startup is faster by using cached data.
+
+```
+[username@login1 ~]$ qsub -I -P grpname -q rt_HF=1 -l walltime=1:00:00
 [username@hnode001 ~]$ export SINGULARITY_TMPDIR=$PBS_LOCALDIR
 [username@hnode001 ~]$ singularity run --nv docker://tensorflow/tensorflow:latest-gpu
 
@@ -269,6 +298,7 @@ mpitest.c
 ```
 #include <mpi.h>
 #include <stdio.h>
+#include <stdlib.h>
 int main (int argc, char **argv) {
         int rc;
         int size;
@@ -432,4 +462,3 @@ Additionally, below are some of the environment variables available when using t
 |:--|:--|
 | NVIDIA\_DRIVER\_CAPABILITIES | Function control in the container |
 | NVIDIA\_REQUIRE\_* | Specify constraints for cuda, driver, arch, and brand |
-
