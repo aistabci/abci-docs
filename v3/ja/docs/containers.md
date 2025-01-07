@@ -46,9 +46,6 @@ SINGULARITY_TMPDIR環境変数は`pull`や後述する`build`実行時の一時�
 
 ABCIシステムのSingularityCE環境では`fakeroot`オプションを使用することによりbuildを使ったイメージ構築が可能です。
 
-!!! note
-    SingularityCE環境ではリモートビルドも利用可能です。詳細は[ABCI Singularity エンドポイント](abci-singularity-endpoint.md)を参照して下さい。
-
 !!! warning
     `fakeroot`オプションを使用する場合、`SINGULARITY_TMPDIR`環境変数に指定できる場所は、ノードローカルの領域のみ(/tmpや$SGE_LOCALDIRなど)となります。
     ホーム領域($HOME)、グループ領域(/groups/$YOUR_GROUP)、グルーバルスクラッチ領域(/scratch/$USER)は指定できません。
@@ -112,7 +109,7 @@ cd ${PBS_O_WORKDIR}
 source /etc/profile.d/modules.sh
 singularity exec --nv ./tensorflow.sif python3 sample.py
 
-[username@login1 ~]$ qsub -g grpname job.sh
+[username@login1 ~]$ qsub job.sh
 ```
 
 Docker Hubで公開されているコンテナイメージの実行例）
@@ -350,7 +347,7 @@ INFO:    Build complete: openmpi.sif
 
 実行例)
 ```
-[username@hnode001 ~]$ module load hpcx/2.12
+[username@hnode001 ~]$ module load hpcx/2.20
 [username@hnode001 ~]$ mpirun -hostfile $SGE_JOB_HOSTLIST -np 4 -map-by node singularity exec --env OPAL_PREFIX=/opt/ompi --env PMIX_INSTALL_PREFIX=/opt/ompi openmpi.sif /opt/mpitest
 Hello, I am rank 2/4
 Hello, I am rank 3/4
@@ -437,7 +434,7 @@ INFO:    Build complete: h2o4gpuPy.sif
 
 実行例
 ```
-[username@hnode001 ~]$ module load cuda/10.2
+[username@hnode001 ~]$ module load cuda/12.6
 [username@hnode001 ~]$ singularity exec --nv h2o4gpuPy.sif python3 h2o4gpu_sample.py
 [[1.  0.5]
  [1.  4. ]]

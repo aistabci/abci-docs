@@ -22,7 +22,7 @@ Available version is SingularityCE 4.1.
 
 More comprehensive user guide for Singularity will be found:
 
-* [SingularityCE User Guide](https://repo.sylabs.io/guides/pro-4.1/user-guide/)
+* [SingularityCE User Guide](https://docs.sylabs.io/guides/4.1/user-guide/)
 
 To run NGC-provided Docker images on ABCI by using Singularity: [NVIDIA NGC](tips/ngc.md)
 
@@ -33,7 +33,7 @@ This procedure shows how to create a Singularity image file using `pull`.
 
 Example) Create a Singularity image file using `pull`
 ```
-ername@login1 ~]$ singularity pull tensorflow.sif docker://tensorflow/tensorflow:latest-gpu
+[username@login1 ~]$ singularity pull tensorflow.sif docker://tensorflow/tensorflow:latest-gpu
 INFO:    Converting OCI blobs to SIF format
 INFO:    Starting build...
 ...
@@ -114,7 +114,7 @@ cd ${PBS_O_WORKDIR}
 source /etc/profile.d/modules.sh
 singularity exec --nv ./tensorflow.sif python3 sample.py
 
-[username@login1 ~]$ qsub -g grpname job.sh
+[username@login1 ~]$ qsub job.sh
 ```
 
 Example) Run a container image published in Docker Hub
@@ -122,7 +122,12 @@ Example) Run a container image published in Docker Hub
 The following sample executes a Singularity container using TensorFlow container image published in Docker Hub.
 `python3 sample.py` is executed in the container started by `singularity run` command.
 The container image is downloaded at the first startup and cached in home area.
-The second and subsequent times startup is faster by using cached data.
+The second and subsequent times startup is faster by using cached data
+
+```
+[username@login1 ~]$ qsub -I -P group -q rt_HF=1 -l walltime=1:00:00
+[username@hnode001 ~]$ singularity run --nv ./tensorflow.sif
+```
 
 ```
 [username@login1 ~]$ cat job.sh
@@ -215,8 +220,8 @@ From: nvcr.io/nvidia/pytorch:22.10-py3
 Stage: spython-base
 
 %files
-requirements.txt /workspace/ssd/  #<- WORKDIR以下にコピー
-. /workspace/ssd/                 #<- WORKDIR以下にコピー
+requirements.txt /workspace/ssd/  #<- copy to WORKDIR directory.
+. /workspace/ssd/                 #<- copy to WORKDIR directory.
 %post
 FROM_IMAGE_NAME=nvcr.io/nvidia/pytorch:22.10-py3
 
@@ -228,7 +233,7 @@ cd /workspace/ssd
 
 # Install python requirements
 pip install --no-cache-dir -r requirements.txt
-mkdir models #<- main.py実行時に必要なため追加
+mkdir models #<- Requires to run main.py
 
 CUDNN_V8_API_ENABLED=1
 TORCH_CUDNN_V8_API_ENABLED=1
@@ -333,7 +338,6 @@ int main (int argc, char **argv) {
 Use `singularity` command to build the container image. If successful, a container image (openmpi.sif) is generated.
 ```
 [username@login1 ~]$ qsub -I -P group -q rt_HG=1 -l select=1
-[username@hnode001 ~]$ module load singularitypro
 [username@hnode001 ~]$ singularity build --fakeroot openmpi.sif openmpi.def
 INFO:    Starting build...
 Getting image source signatures
@@ -346,7 +350,7 @@ INFO:    Build complete: openmpi.sif
 
 Example) running the container
 ```
-[username@hnode001 ~]$ module load singularitypro hpcx/2.12
+[username@hnode001 ~]$ module load singularitypro hpcx/2.20
 [username@hnode001 ~]$ mpirun -hostfile $SGE_JOB_HOSTLIST -np 4 -map-by node singularity exec --env OPAL_PREFIX=/opt/ompi --env PMIX_INSTALL_PREFIX=/opt/ompi openmpi.sif /opt/mpitest
 Hello, I am rank 2/4
 Hello, I am rank 3/4
@@ -420,7 +424,6 @@ print(model.cluster_centers_)
 Use `singularity` command to build the container image. If successful, a container image (h2o4gpuPy.sif) is generated.
 ```
 [username@login1 ~]$ qsub -I -P group -q rt_HG=1 -l select=1
-[username@hnode001 ~]$ module load singularitypro
 [username@hnode001 ~]$ singularity build --fakeroot h2o4gpuPy.sif h2o4gpuPy.def
 INFO:    Starting build...
 Getting image source signatures
