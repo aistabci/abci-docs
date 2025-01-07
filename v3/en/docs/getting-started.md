@@ -121,3 +121,55 @@ If you have OpenSSH 7.3 or later and already added the configuration to your ``$
 ## Login Shell
 
 The default login shell for the ABCI system is set to bash. For any changes to the login shell, please contact the operations team (abci3-qa@abci.ai ).
+
+
+## Checking ABCI Point (Under Update)
+
+To display ABCI point usage and limitation, use the `show_point` command.
+When your ABCI point usage ratio will reach 100%, a new job cannot be submitted, and queued jobs will become error state at the beginning. (Any running jobs are not affected.)
+
+Example) Display ABCI point information.
+
+```
+[username@login1 ~]$ show_point
+Group                 Disk            ObjectStorage                    Used           Point   Used%
+grpname                  5                  0.0124             12,345.6789         100,000      12
+  `- username          -                         -                  0.1234               -       0
+ 
+```
+
+| Item | Description |
+|:--|:--|
+| Group | ABCI group name |
+| Disk  | Disk assignment (TB) |
+| ObjectStorage | ABCI point usage of ABCI Object Storage |
+| Used  | ABCI point usage |
+| Point | ABCI point limit |
+| Used% | ABCI point usage ratio |
+
+To display ABCI point usage per monthly, use the `show_point_history` command.
+
+Example) Display ABCI point usage per monthly.
+
+```
+[username@login1 ~]$ show_point_history -g grpname
+                      Apr        May        Jun        Jul        Aug        Sep        Oct        Nov        Dec        Jan        Feb        Mar          Total
+Disk           1,000.0000     0.0000     0.0000          -          -          -          -          -          -          -          -          -     1,000.0000
+ObjectStorage       1.0000     1.5000     0.5000          -          -          -          -          -          -          -          -          -         2.0000
+Job              100.0000    50.0000    10.0000          -          -          -          -          -          -          -          -          -       160.0000
+  |- username1    60.0000    40.0000     5.0000          -          -          -          -          -          -          -          -          -       105.0000
+  `- username2    40.0000    10.0000     5.0000          -          -          -          -          -          -          -          -          -        55.0000
+Total          1,101.0000    51.5000    10.5000          -          -          -          -          -          -          -          -          -     1,162.0000
+```
+
+| Item | Description |
+|:--|:--|
+| Disk  | ABCI point usage of Disk |
+| ObjectStorage | ABCI point usage of ABCI Object Storage |
+| Job  | Total ABCI point usage of On-demand, Spot, and Reserved Services for all users in the group |
+| Total(rows) | Total ABCI point usage of Disk, ObjectStorage, and Job |
+
+!!! note
+    - For information on calculating point consumption per service, see [Accounting](job-execution.md#accounting).
+    - The point usage of the job of Spot/On-demand service which executed across months is counted in the month in which the job was submitted. The repayment process after the end of the job is also performed for the point usage of the month in which the job was submitted.
+    - The points usage of the Reserved service are counted in the month in which the reservation was made. If you cancel the reservation, it will be returned to the points used in the month you made the reservation.
