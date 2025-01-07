@@ -17,16 +17,9 @@ NGC CatalogのABCIでの使い方はTipsの[NVIDIA NGC](https://docs.abci.ai/ja/
 ## Singularity
 
 ABCIシステムでは[Singularity](https://www.sylabs.io/singularity/)が利用可能です。
-利用可能なバージョンはSingularityPRO 4.1となります。
-利用するためには事前に`module`コマンドを用いて利用環境を設定する必要があります。
+利用可能なバージョンはSingularityCE 4.1となります。網羅的なユーザガイドは、以下にあります。
 
-```
-[username@hnode001 ~]$ module load singularitypro
-```
-
-より網羅的なユーザガイドは、以下にあります。
-
-* [SingularityPRO User Guide](https://repo.sylabs.io/guides/pro-4.1/user-guide/) (英文)
+* [SingularityCE User Guide](https://docs.sylabs.io/guides/4.1/user-guide/) (英文)
 
 Singularityを用いて、NGCが提供するDockerイメージをABCIで実行する方法は、[NVIDIA NGC](tips/ngc.md) で説明しています。
 
@@ -38,14 +31,12 @@ Singularityコンテナイメージはファイルとして保存することが
 pullによるSingularityイメージファイルの作成例）
 
 ```
-[username@login1 ~]$ module load singularitypro
-[username@login1 ~]$ export SINGULARITY_TMPDIR=/scratch/$USER
-[username@login1 ~]$ singularity pull tensorflow.img docker://tensorflow/tensorflow:latest-gpu
+[username@login1 ~]$ singularity pull tensorflow.sif docker://tensorflow/tensorflow:latest-gpu
 INFO:    Converting OCI blobs to SIF format
 INFO:    Starting build...
 ...
-[username@login1 ~]$ ls tensorflow.img
-tensorflow.img
+[username@login1 ~]$ ls tensorflow.sif
+tensorflow.sif
 ```
 
 SINGULARITY_TMPDIR環境変数は`pull`や後述する`build`実行時の一時ファイルを作成する場所を指定します。
@@ -53,10 +44,10 @@ SINGULARITY_TMPDIR環境変数は`pull`や後述する`build`実行時の一時�
 
 ### Singularityイメージファイルの作成(build) {#create-a-singularity-image-build}
 
-ABCIシステムのSingularityPRO環境では`fakeroot`オプションを使用することによりbuildを使ったイメージ構築が可能です。
+ABCIシステムのSingularityCE環境では`fakeroot`オプションを使用することによりbuildを使ったイメージ構築が可能です。
 
 !!! note
-    SingularityPRO環境ではリモートビルドも利用可能です。詳細は[ABCI Singularity エンドポイント](abci-singularity-endpoint.md)を参照して下さい。
+    SingularityCE環境ではリモートビルドも利用可能です。詳細は[ABCI Singularity エンドポイント](abci-singularity-endpoint.md)を参照して下さい。
 
 !!! warning
     `fakeroot`オプションを使用する場合、`SINGULARITY_TMPDIR`環境変数に指定できる場所は、ノードローカルの領域のみ(/tmpや$SGE_LOCALDIRなど)となります。
@@ -65,10 +56,9 @@ ABCIシステムのSingularityPRO環境では`fakeroot`オプションを使用�
 `build`によるSingularityイメージファイルの作成例）
 
 ```
-[username@login1 ~]$ module load singularitypro
 [username@login1 ~]$ cat ubuntu.def
 Bootstrap: docker
-From: ubuntu:20.04
+From: ubuntu:24.04
 
 %post
     apt-get update
@@ -86,12 +76,12 @@ INFO:    Build complete: ubuntu.sif
 ```
 
 なお、上記コマンドにおいてイメージファイル(ubuntu.sif)の出力先をグループ領域にするとエラーが発生します。その場合、singularityコマンドを実行する前に以下のように`id`コマンドでイメージ出力先グループ領域の所有グループを確認の上、`newgrp`コマンドを実施いただくことで回避可能です。
-下記例の`gaa00000`の箇所がイメージ出力先グループ領域の所有グループとなります。
+下記例の`gaa50000`の箇所がイメージ出力先グループ領域の所有グループとなります。
 
 ```
 [username@login1 groupname]$ id -a
-uid=0000(aaa00000aa) gid=0000(aaa00000aa) groups=0000(aaa00000aa),00000(gaa00000)
-[username@login1 groupname]$ newgrp gaa00000
+uid=10000(aaa10000aa) gid=10000(aaa10000aa) groups=10000(aaa10000aa),50000(gaa50000)
+[username@login1 groupname]$ newgrp gaa50000
 ```
 
 ### コンテナの実行 {#running-a-container-with-singularity}
@@ -104,8 +94,7 @@ Singularityを利用する場合、ジョブ中に`singularity run`コマンド�
 
 ```
 [username@login1 ~]$ qsub -I -P group -q rt_HF=1 -l walltime=1:00:00
-[username@hnode001 ~]$ module load singularitypro
-[username@hnode001 ~]$ singularity run --nv ./tensorflow.img
+[username@hnode001 ~]$ singularity run --nv ./tensorflow.sif
 ```
 
 バッチジョブにおけるSingularityイメージファイルを使用したコンテナの実行例）
@@ -113,12 +102,15 @@ Singularityを利用する場合、ジョブ中に`singularity run`コマンド�
 ```
 [username@login1 ~]$ cat job.sh
 #!/bin/sh
-#$-l rt_HF=1
-#$-j y
-source /etc/profile.d/modules.sh
-module load singularitypro
+#PBS -q rt_HF
+#PBS -l select=1
+#PBS -l walltime=1:23:45
+#PBS -P grpname
 
-singularity exec --nv ./tensorflow.img python3 sample.py
+cd ${PBS_O_WORKDIR}
+
+source /etc/profile.d/modules.sh
+singularity exec --nv ./tensorflow.sif python3 sample.py
 
 [username@login1 ~]$ qsub -g grpname job.sh
 ```
@@ -131,9 +123,8 @@ Docker Hubで公開されているコンテナイメージの実行例）
 2回目以降の起動はキャッシュされたデータを使用することで起動が高速化されます。
 
 ```
-[username@login1 ~]$ qsub -I -P group -q rt_HF=1 -l walltime=1:00:00
-[username@hnode001 ~]$ module load singularitypro
-[username@hnode001 ~]$ export SINGULARITY_TMPDIR=$SGE_LOCALDIR
+[username@login1 ~]$ qsub -I -P grpname -q rt_HF=1 -l walltime=1:00:00
+[username@hnode001 ~]$ export SINGULARITY_TMPDIR=$PBS_LOCALDIR
 [username@hnode001 ~]$ singularity run --nv docker://tensorflow/tensorflow:latest-gpu
 
 ________                               _______________
@@ -202,7 +193,6 @@ DockerfileをSingularity recipeファイルに変換することで、ABCIシス
 Singularity Pythonのインストール例）
 
 ```
-[username@login1 ~]$ module load python/3.10
 [username@login1 ~]$ python3 -m venv work
 [username@login1 ~]$ source work/bin/activate
 (work) [username@login1 ~]$ pip3 install spython
@@ -215,7 +205,6 @@ Singularity Pythonのインストール例）
 - WORKDIRにファイルがコピーされない => コピー先をWORKDIRの絶対パスに設定
 
 ```
-[username@login1 ~]$ module load python/3.10
 [username@login1 ~]$ source work/bin/activate
 (work) [username@login1 ~]$ git clone https://github.com/NVIDIA/DeepLearningExamples
 (work) [username@login1 ~]$ cd DeepLearningExamples/PyTorch/Detection/SSD
@@ -287,7 +276,7 @@ From: ubuntu:latest
 
     echo "Installing Open MPI"
     export OMPI_DIR=/opt/ompi
-    export OMPI_VERSION=4.1.5
+    export OMPI_VERSION=4.1.7
     export OMPI_URL="https://download.open-mpi.org/release/open-mpi/v4.1/openmpi-$OMPI_VERSION.tar.bz2"
     mkdir -p /tmp/ompi
     mkdir -p /opt
@@ -349,7 +338,6 @@ int main (int argc, char **argv) {
 buildに成功すると、コンテナイメージ(openmpi.sif)が生成されます。
 ```
 [username@login1 ~]$ qsub -I -P group -q rt_HG=1 -l select=1
-[username@hnode001 ~]$ module load singularitypro
 [username@hnode001 ~]$ singularity build --fakeroot openmpi.sif openmpi.def
 INFO:    Starting build...
 Getting image source signatures
@@ -362,7 +350,7 @@ INFO:    Build complete: openmpi.sif
 
 実行例)
 ```
-[username@hnode001 ~]$ module load singularitypro hpcx/2.12
+[username@hnode001 ~]$ module load hpcx/2.12
 [username@hnode001 ~]$ mpirun -hostfile $SGE_JOB_HOSTLIST -np 4 -map-by node singularity exec --env OPAL_PREFIX=/opt/ompi --env PMIX_INSTALL_PREFIX=/opt/ompi openmpi.sif /opt/mpitest
 Hello, I am rank 2/4
 Hello, I am rank 3/4
@@ -437,7 +425,6 @@ print(model.cluster_centers_)
 buildに成功すると、コンテナイメージ(h2o4gpuPy.sif)が生成されます。
 ```
 [username@login1 ~]$ qsub -I -P group -q rt_HG=1 -l select=1
-[username@hnode001 ~]$ module load singularitypro
 [username@hnode001 ~]$ singularity build --fakeroot h2o4gpuPy.sif h2o4gpuPy.def
 INFO:    Starting build...
 Getting image source signatures
@@ -450,7 +437,7 @@ INFO:    Build complete: h2o4gpuPy.sif
 
 実行例
 ```
-[username@hnode001 ~]$ module load singularitypro cuda/10.2
+[username@hnode001 ~]$ module load cuda/10.2
 [username@hnode001 ~]$ singularity exec --nv h2o4gpuPy.sif python3 h2o4gpu_sample.py
 [[1.  0.5]
  [1.  4. ]]
