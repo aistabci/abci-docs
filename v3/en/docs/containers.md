@@ -4,7 +4,6 @@ ABCI allows users to create an application execution environment using Singulari
 This allows users to create their own customized environments or build and compute equivalent environments on ABCI based on container images officially distributed by external organizations.
 
 For example, the [NGC Catalog](https://catalog.ngc.nvidia.com/) provides container images of various deep learning frameworks, CUDA and HPC environments.
-See [NVIDIA NGC](https://docs.abci.ai/ja/tips/ngc/)for tips on how to use the NGC Catalog with ABCI.
 
 You can also download container images on which the latest software is installed from official or verified repositories on Docker Hub.
 However, be aware not to use untrusted container images.
@@ -24,8 +23,6 @@ More comprehensive user guide for Singularity will be found:
 
 * [SingularityCE User Guide](https://docs.sylabs.io/guides/4.1/user-guide/)
 
-To run NGC-provided Docker images on ABCI by using Singularity: [NVIDIA NGC](tips/ngc.md)
-
 ### Create a Singularity image (pull)
 
 Singularity container image can be stored as a file.
@@ -40,9 +37,6 @@ INFO:    Starting build...
 [username@login1 ~]$ ls tensorflow.sif
 tensorflow.sif
 ```
-
-The `SINGULARITY_TMPDIR` environment variable specifies the location where temporary files are created when the pull or build commands are executed.
-Please refer to the FAQ ["I get an error due to insufficient disk space, when I ran the singularity build/pull on the compute node."](faq.md#q-insufficient-disk-space-for-singularity-build) for more information.
 
 ### Create a Singularity image (build)
 
@@ -350,7 +344,7 @@ INFO:    Build complete: openmpi.sif
 Example) running the container
 ```
 [username@hnode001 ~]$ module load hpcx/2.20
-[username@hnode001 ~]$ mpirun -hostfile $SGE_JOB_HOSTLIST -np 4 -map-by node singularity exec --env OPAL_PREFIX=/opt/ompi --env PMIX_INSTALL_PREFIX=/opt/ompi openmpi.sif /opt/mpitest
+[username@hnode001 ~]$ mpirun -hostfile $PBS_NODEFILE -np 4 -map-by node singularity exec --env OPAL_PREFIX=/opt/ompi --env PMIX_INSTALL_PREFIX=/opt/ompi openmpi.sif /opt/mpitest
 Hello, I am rank 2/4
 Hello, I am rank 3/4
 Hello, I am rank 0/4
@@ -359,13 +353,13 @@ Hello, I am rank 1/4
 
 #### Using the CUDA Toolkit
 
-This is an example of running python on  [h2o4gpu](https://github.com/sylabs/examples/tree/eb713691a30cfd455e1de24cb014646bde404adb/machinelearning/h2o4gpu) with the [CUDA Toolkit](gpu.md#cuda-toolkit).
+This is an example of running python on  [h2o4gpu](https://github.com/sylabs/examples/tree/eb713691a30cfd455e1de24cb014646bde404adb/machinelearning/h2o4gpu) with the CUDA Toolkit.
 In this case, you will have a Singularity recipe file (h2o4gpuPy.def) and a validation script (h2o4gpu_sample.py) in your home directory.
 
 h2o4gpuPy.def
 ```
 BootStrap: docker
-From: nvidia/cuda:10.2-devel-ubuntu18.04
+From: nvidia/cuda:12.1.0-devel-ubuntu18.04
 
 # Note: This container will have only the Python API enabled
 

@@ -4,7 +4,6 @@ ABCIではSingularityコンテナを利用してアプリケーション実行�
 これにより、利用者自身でカスタマイズした環境を作成したり、外部機関によって公式に配布されているコンテナイメージをもとにABCI上に同等の環境を構築し、計算することができます。
 
 例えば、[NGC Catalog](https://catalog.ngc.nvidia.com/)からは各種の深層学習フレームワーク、CUDAやHPC環境がセットアップされたコンテナイメージを利用できます。
-NGC CatalogのABCIでの使い方はTipsの[NVIDIA NGC](https://docs.abci.ai/ja/tips/ngc/)を参照してください。
 
 また、Docker Hubの公式リポジトリおよび検証済みリポジトリから、最新のソフトウェアがインストールされたコンテナイメージをダウンロードして使用することもできます。ただし、信頼できないコンテナイメージは使用しないように注意してください。
 以下はDocker Hubで公開されているコンテナイメージの例です。
@@ -20,8 +19,6 @@ ABCIシステムでは[Singularity](https://www.sylabs.io/singularity/)が利用
 利用可能なバージョンはSingularityCE 4.1となります。網羅的なユーザガイドは、以下にあります。
 
 * [SingularityCE User Guide](https://docs.sylabs.io/guides/4.1/user-guide/) (英文)
-
-Singularityを用いて、NGCが提供するDockerイメージをABCIで実行する方法は、[NVIDIA NGC](tips/ngc.md) で説明しています。
 
 ### Singularityイメージファイルの作成(pull) {#create-a-singularity-image-pull}
 
@@ -39,16 +36,13 @@ INFO:    Starting build...
 tensorflow.sif
 ```
 
-SINGULARITY_TMPDIR環境変数は`pull`や後述する`build`実行時の一時ファイルを作成する場所を指定します。
-詳しくはFAQ [singularity build/pullすると容量不足でエラーになる](faq.md#q-insufficient-disk-space-for-singularity-build)を参照してください。
-
 ### Singularityイメージファイルの作成(build) {#create-a-singularity-image-build}
 
 ABCIシステムのSingularityCE環境では`fakeroot`オプションを使用することによりbuildを使ったイメージ構築が可能です。
 
 !!! warning
-    `fakeroot`オプションを使用する場合、`SINGULARITY_TMPDIR`環境変数に指定できる場所は、ノードローカルの領域のみ(/tmpや$SGE_LOCALDIRなど)となります。
-    ホーム領域($HOME)、グループ領域(/groups/$YOUR_GROUP)、グルーバルスクラッチ領域(/scratch/$USER)は指定できません。
+    `fakeroot`オプションを使用する場合、`SINGULARITY_TMPDIR`環境変数に指定できる場所は、ノードローカルの領域のみ(/tmpや$PBS_LOCALDIRなど)となります。
+    ホーム領域($HOME)、グループ領域(/groups/$YOUR_GROUP)は指定できません。
 
 `build`によるSingularityイメージファイルの作成例）
 
@@ -348,7 +342,7 @@ INFO:    Build complete: openmpi.sif
 実行例)
 ```
 [username@hnode001 ~]$ module load hpcx/2.20
-[username@hnode001 ~]$ mpirun -hostfile $SGE_JOB_HOSTLIST -np 4 -map-by node singularity exec --env OPAL_PREFIX=/opt/ompi --env PMIX_INSTALL_PREFIX=/opt/ompi openmpi.sif /opt/mpitest
+[username@hnode001 ~]$ mpirun -hostfile $PBS_NODEFILE -np 4 -map-by node singularity exec --env OPAL_PREFIX=/opt/ompi --env PMIX_INSTALL_PREFIX=/opt/ompi openmpi.sif /opt/mpitest
 Hello, I am rank 2/4
 Hello, I am rank 3/4
 Hello, I am rank 0/4
@@ -357,13 +351,13 @@ Hello, I am rank 1/4
 
 #### CUDA Toolkitを使用する場合
 
-[CUDA Toolkit](gpu.md#cuda-toolkit)を組み入れて [h2o4gpu](https://github.com/sylabs/examples/tree/eb713691a30cfd455e1de24cb014646bde404adb/machinelearning/h2o4gpu) で python を実行する場合の例です。
+CUDA Toolkitを組み入れて [h2o4gpu](https://github.com/sylabs/examples/tree/eb713691a30cfd455e1de24cb014646bde404adb/machinelearning/h2o4gpu) で python を実行する場合の例です。
 ここでは、Singularity recipeファイル(h2o4gpuPy.def)および動作確認用のスクリプト(h2o4gpu_sample.py)をホームディレクトリに用意します。
 
 h2o4gpuPy.def
 ```
 BootStrap: docker
-From: nvidia/cuda:10.2-devel-ubuntu18.04
+From: nvidia/cuda:12.1.0-devel-ubuntu18.04
 
 # Note: This container will have only the Python API enabled
 
