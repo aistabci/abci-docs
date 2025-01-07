@@ -441,3 +441,24 @@ INFO:    Build complete: h2o4gpuPy.sif
 [username@hnode001 ~]$
 ```
 
+
+### 環境変数 {#environment-variables}
+
+`singularity`コマンド実行時に利用可能な環境変数の一部を以下に記載します。
+
+| 環境変数 | 説明 |
+|:--|:--|
+| SINGULARITYENV\_CUDA_VISIBLE\_DEVICES | Singularityから利用可能なGPUの制御 |
+| SINGULARITYENV\_LD\_LIBRARY\_PATH | 指定されたコンテナ外のライブラリのパスがコンテナ内のLD_LIBRARY_PATHに適用される |
+| SINGULARITY\_TMPDIR | 一時ディレクトリのパス |
+| SINGULARITY\_BINDPATH | ホストシステムのディレクトリをコンテナ内にバインドマウント |
+
+!!! note
+    SINGULARITYENV\_*MYVAR*を利用することで、任意の環境変数*MYVAR*をコンテナ内に引き継ぐことが可能です。
+
+また、`--nvccli`オプションを利用した場合に利用可能な環境変数の一部を以下に記載します。
+
+| 環境変数 | 説明 |
+|:--|:--|
+| NVIDIA\_DRIVER\_CAPABILITIES | コンテナにおける機能制御 |
+| NVIDIA\_REQUIRE\_* | cuda、driver、arch、brandの要件指定 |

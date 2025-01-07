@@ -442,3 +442,25 @@ Example) running the container
  [1.  4. ]]
 [username@hnode001 ~]$
 ```
+
+### Environment Variables
+
+Below are some of the environment variables available when executing the `singularity` command.
+
+| Variable Name | Description |
+|:--|:--|
+| SINGULARITYENV\_CUDA_VISIBLE\_DEVICES | Control of GPUs available from Singularity |
+| SINGULARITYENV\_LD\_LIBRARY\_PATH | The specified library paths outside the container are applied to the LD_LIBRARY_PATH inside the container |
+| SINGULARITY\_TMPDIR | Path to the temporary directory |
+| SINGULARITY\_BINDPATH | Bind mount a host system directory into the container |
+
+!!! note
+    By using SINGULARITYENV\_*MYVAR*, it is possible to pass any environment variable *MYVAR* into the container
+
+Additionally, below are some of the environment variables available when using the `--nvccli` option
+
+| Variable Name | Description |
+|:--|:--|
+| NVIDIA\_DRIVER\_CAPABILITIES | Function control in the container |
+| NVIDIA\_REQUIRE\_* | Specify constraints for cuda, driver, arch, and brand |
+

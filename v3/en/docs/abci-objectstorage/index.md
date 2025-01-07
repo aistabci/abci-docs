@@ -26,8 +26,8 @@ ABCI point = the size of data stored in the storage of the previous day
 
 | Page | Outline |
 |:--|:--|
-| [Accounts and Access Keys](abci-objectstorage/cs-account.md) | This section explains accounts and access keys. |
-| [Usage](abci-objectstorage/usage.md) | This section shows basic usage. |
+| [Accounts and Access Keys](./account.md) | This section explains accounts and access keys. |
+| [Usage](./usage.md) | This section shows basic usage. |
 | Encryption | This section explains encryption. |
 | Access Control (1) | This section shows how to control accessibility by ACL. Data can be shared between groups. |
 | Access Control (2) | This section explains access control which is applicable to buckets and user accounts. It is possible to set access control that cannot be done with ACL. Access crontrol settings for buckets can be done with a 'Object Storage Account for user', but 'Oloud Storage Account for manager' is necessary to set for access control settings for accounts. |
