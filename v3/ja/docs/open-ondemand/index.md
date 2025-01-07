@@ -1,4 +1,4 @@
-# Open OnDemand　（更新中）
+# Open OnDemand
 
 ## 概要 {#overview}
 

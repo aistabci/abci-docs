@@ -1,4 +1,4 @@
-# Open OnDemand (Under Update)
+# Open OnDemand
 
 ## Overview
 
