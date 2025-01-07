@@ -42,7 +42,7 @@ When executing the `mpirun` and `mpiexec` commands in a job, a host file is also
 The host file is set in the `$PBS_NODEFILE` environment variable.
 
 ```
-[username@login1 ~]$ qsub -I -P groupname -q rt_HF -l select=2 -l walltime=01:00:00
+[username@login1 ~]$ qsub -I -P groupname -q rt_HF -l select=2:mpiprocs=192 -l walltime=01:00:00
 [username@hnode001 ~]$ module load hpcx/2.20
 [username@hnode001 ~]$ mpirun -np 2 -map-by ppr:1:node -hostfile $PBS_NODEFILE ./hello_c
 Hello, world, I am 0 of 2, (Open MPI v4.1.7a1, package: Open MPI root@hnode001 Distribution, ident: 4.1.7a1, repo rev: v4.1.5-115-g41ba5192d2, Unreleased developer copy, 141)

@@ -10,18 +10,10 @@
 - ホーム領域、グループ領域のファイル操作
 - Jupyter Lab等のWebアプリケーションの利用
 
-![Open OnDemandトップページ](img/ondemand-top-page.png){width=640}
-
-!!! caution
-    Open OnDemandは試験的機能として公開しています。
-    予告なくサービス変更する場合や、問い合わせへの回答に時間を要する場合があります。
-
 
 ## アプリケーション {#applications}
 
-Open OnDemandが提供する機能には、画面上部のメニューからアクセスできます。
-
-[![Open OnDemand Application Menu](ood-menu.png)](ood-menu.png)
+Open OnDemandが提供する機能には、画面上の以下メニューからアクセスできます。
 
 1. **Files**: ファイル操作をブラウザ上で行えます
 

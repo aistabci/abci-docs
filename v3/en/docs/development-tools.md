@@ -29,7 +29,7 @@ Setting command for Intel oneAPI is following:
 
 List of compile/link commands of Intel oneAPI:
 
-| Programing Language | command |
+| Programming Language | command |
 |:--|:--|
 | Fortran | ifx |
 | C | icx |

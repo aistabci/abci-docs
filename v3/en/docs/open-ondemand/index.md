@@ -10,18 +10,11 @@ The following features is available on the web browser, making it easier to use 
 * File operations in the home areas and the group areas
 * Use of web applications such as Jupyter Lab
 
-![Open OnDemand top page](img/ondemand-top-page.png){width=640}
-
-!!! caution
-    Open OnDemand is released as an experimental feature.
-    The service may change without notice, and responses to inquiries may take some time.
 
 
 ## Applications
 
-You can access the features provided by the Open OnDemand from the menu at the top of the screen.
-
-[![Open OnDemand Application Menu](ood-menu.png)](ood-menu.png)
+You can access the features provided by the Open OnDemand from the following menu on the screen.
 
 1. **Files**: Perform file operations in the browser.
 
