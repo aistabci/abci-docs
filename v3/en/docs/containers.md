@@ -345,7 +345,7 @@ INFO:    Build complete: openmpi.sif
 
 Example) running the container
 ```
-[username@hnode001 ~]$ module load singularitypro hpcx/2.20
+[username@hnode001 ~]$ module load hpcx/2.20
 [username@hnode001 ~]$ mpirun -hostfile $SGE_JOB_HOSTLIST -np 4 -map-by node singularity exec --env OPAL_PREFIX=/opt/ompi --env PMIX_INSTALL_PREFIX=/opt/ompi openmpi.sif /opt/mpitest
 Hello, I am rank 2/4
 Hello, I am rank 3/4
