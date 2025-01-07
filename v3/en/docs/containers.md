@@ -46,11 +46,6 @@ Please refer to the FAQ ["I get an error due to insufficient disk space, when I 
 
 ### Create a Singularity image (build)
 
-In the SingularityPRO environment of the ABCI system, you can build container image files using `fakeroot` option.
-
-!!! note
-    In the SingularityPRO environment, you can also build container image file using remote build. See [ABCI Singularity Endpoint](abci-singularity-endpoint.md) for more information.
-
 !!! warning
     When using the `fakeroot` option, only node-local areas (such as /tmp or $PBS_LOCALDIR) can be specified for the `SINGULARITY_TMPDIR` environment variable.
     Home area ($HOME), Group area (/groups/$YOUR_GROUP)  cannot be specified.
@@ -142,7 +137,7 @@ cd ${PBS_O_WORKDIR}
 source /etc/profile.d/modules.sh
 singularity exec --nv ./tensorflow.sif python3 sample.py
 
-[username@login1 ~]$ qsub -g grpname job.sh
+[username@login1 ~]$ qsub job.sh
 ```
 
 ### Build Singularity image from Dockerfile
@@ -436,7 +431,7 @@ INFO:    Build complete: h2o4gpuPy.sif
 
 Example) running the container
 ```
-[username@hnode001 ~]$ module load singularitypro cuda/10.2
+[username@hnode001 ~]$ module load cuda/12.6
 [username@hnode001 ~]$ singularity exec --nv h2o4gpuPy.sif python3 h2o4gpu_sample.py
 [[1.  0.5]
  [1.  4. ]]
