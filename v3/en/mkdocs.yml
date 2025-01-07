@@ -10,6 +10,7 @@ nav:
   - 'Job Execution': 'job-execution.md'
   - 'Environment Modules': 'environment-modules.md'
   - 'MPI': 'mpi.md'
+  - 'Containers': 'containers.md'
   - 'Development Tools': 'development-tools.md'
   - 'ABCI Object Storage (Under Update)':
     - 'Overview (Under Update)': 'abci-objectstorage/index.md'
