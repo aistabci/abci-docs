@@ -89,6 +89,7 @@ You can also use the `singularity run` command to run a container image publishe
 
 Example) Run a container with a Singularity image file in an interactive job
 
+```
 ername@login1 ~]$ qsub -I -P grpname -q rt_HF=1 -l walltime=1:00:00
 [username@hnode001 ~]$ export SINGULARITY_TMPDIR=$PBS_LOCALDIR
 [username@hnode001 ~]$ singularity run --nv docker://tensorflow/tensorflow:latest-gpu
