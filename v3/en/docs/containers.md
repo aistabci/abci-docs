@@ -455,13 +455,21 @@ Example) running the container
 
 ### Environment Variables
 
-During job execution, the following environment variables are available for the executing job script/binary.
+Below are some of the environment variables available when executing the `singularity` command.
 
 | Variable Name | Description |
 |:--|:--|
-| PBS\_ENVIRONMENT         | For batch jobs, 'PBS\_BATCH' is set, and for interactive jobs, 'PBS\_INTERACTIVE' is set. |
-| PBS\_JOBID             | Job ID |
-| PBS\_JOBNAME           | Name of the PBS job. |
-| PBS\_NODEFILE  | The absolute path includes only hosts assigned by PBS |
-| PBS\_LOCALDIR | The local storage path assigned by PBS |
-| PBS\_O\_WORKDIR     | The working directory path of the job submitter |
+| SINGULARITYENV\_CUDA_VISIBLE\_DEVICES | Control of GPUs available from Singularity |
+| SINGULARITYENV\_LD\_LIBRARY\_PATH | The specified library paths outside the container are applied to the LD_LIBRARY_PATH inside the container |
+| SINGULARITY\_TMPDIR | Path to the temporary directory |
+| SINGULARITY\_BINDPATH | Bind mount a host system directory into the container |
+
+!!! note
+    By using SINGULARITYENV\_*MYVAR*, it is possible to pass any environment variable *MYVAR* into the container
+
+Additionally, below are some of the environment variables available when using the `--nvccli` option
+
+| Variable Name | Description |
+|:--|:--|
+| NVIDIA\_DRIVER\_CAPABILITIES | Function control in the container |
+| NVIDIA\_REQUIRE\_* | Specify constraints for cuda, driver, arch, and brand |

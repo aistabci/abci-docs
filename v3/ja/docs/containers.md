@@ -468,6 +468,9 @@ INFO:    Build complete: h2o4gpuPy.sif
 | SINGULARITY\_TMPDIR | 一時ディレクトリのパス |
 | SINGULARITY\_BINDPATH | ホストシステムのディレクトリをコンテナ内にバインドマウント |
 
+!!! note
+    SINGULARITYENV\_*MYVAR*を利用することで、任意の環境変数*MYVAR*をコンテナ内に引き継ぐことが可能です。
+
 また、`--nvccli`オプションを利用した場合に利用可能な環境変数の一部を以下に記載します。
 
 | 環境変数 | 説明 |
