@@ -8,10 +8,16 @@ nav:
   - 'ABCIシステムの概要': 'system-overview.md'
   - 'ABCIの利用開始': 'getting-started.md'
   - 'ジョブ実行': 'job-execution.md'
+  - 'Environment Modules': 'environment-modules.md'
+  - 'MPI': 'mpi.md'
+  - 'コンテナ': 'containers.md'
+  - '開発ツール': 'development-tools.md'
   - 'ABCI オブジェクトストレージ （更新中）':
     - '概要 （更新中）': 'abci-objectstorage/index.md'
     - 'アカウントとアクセスキー （更新中）': 'abci-objectstorage/account.md'
     - '使い方 （更新中）': 'abci-objectstorage/usage.md'
+  - 'Open OnDemand':
+    - '使い方': 'open-ondemand/index.md'
   - 'お問い合わせ': 'contact.md'
 extra:
   alternate:
