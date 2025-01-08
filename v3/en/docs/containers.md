@@ -128,14 +128,7 @@ You are running this container as user with ID 10000 and group 10000,
 which should map to the ID and group for your user on the Docker host. Great!
 
 /sbin/ldconfig.real: Can't create temporary cache file /etc/ld.so.cache~: Read-only file system
-Singularity> python3 sample.py``
-
-
-The following sample executes a Singularity container using TensorFlow container image published in Docker Hub.
-`python3 sample.py` is executed in the container started by `singularity run` command.
-The container image is downloaded at the first startup and cached in home area.
-The second and subsequent times startup is faster by using cached data
-
+Singularity> python3 sample.py
 ```
 ### Build Singularity image from Dockerfile
 
