@@ -365,7 +365,6 @@ From: nvidia/cuda:12.1.0-devel-ubuntu18.04
 
 %environment
 # -----------------------------------------------------------------------------------
-
     export PYTHON_VERSION=3.6
     export CUDA_HOME=/usr/local/cuda
     export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:$CUDA_HOME/lib64/:$CUDA_HOME/lib/:$CUDA_HOME/extras/CUPTI/lib64
@@ -380,26 +379,25 @@ From: nvidia/cuda:12.1.0-devel-ubuntu18.04
     export CUDA_HOME=/usr/local/cuda
     export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:$CUDA_HOME/lib64/:$CUDA_HOME/lib/:$CUDA_HOME/extras/CUPTI/lib64
 
-    echo "deb http://developer.download.nvidia.com/compute/machine-learning/repos/ubuntu1804/x86_64 /" > /etc/apt/sources.list.d/nvidia-ml.list
-
-    apt-get -y update && apt-get install -y --no-install-recommends \
-        build-essential \
-        git \
-        curl \
-        vim \
-        wget \
-        ca-certificates \
-        libjpeg-dev \
-        libpng-dev \
-        libpython3.6-dev \
-        libopenblas-dev pbzip2 \
-        libcurl4-openssl-dev libssl-dev libxml2-dev
+    apt-get -y update
+    apt-get install -y --no-install-recommends build-essential
+    apt-get install -y --no-install-recommends git
+    apt-get install -y --no-install-recommends vim
+    apt-get install -y --no-install-recommends wget
+    apt-get install -y --no-install-recommends ca-certificates
+    apt-get install -y --no-install-recommends libjpeg-dev
+    apt-get install -y --no-install-recommends libpng-dev
+    apt-get install -y --no-install-recommends libpython3.6-dev
+    apt-get install -y --no-install-recommends libopenblas-dev pbzip2
+    apt-get install -y --no-install-recommends libcurl4-openssl-dev libssl-dev libxml2-dev
+    apt-get install -y --no-install-recommends python3-pip
+    apt-get install -y --no-install-recommends wget
 
     ln -s /usr/bin/python${PYTHON_VERSION} /usr/bin/python
+    ln -s /usr/bin/pip3 /usr/bin/pip
 
-    curl -O https://bootstrap.pypa.io/get-pip.py && \
-    python get-pip.py && \
-    rm get-pip.py
+    pip3 install setuptools
+    pip3 install --upgrade pip
 
     wget https://s3.amazonaws.com/h2o-release/h2o4gpu/releases/stable/ai/h2o/h2o4gpu/0.4-cuda10/rel-0.4.0/h2o4gpu-0.4.0-cp36-cp36m-linux_x86_64.whl
     pip install h2o4gpu-0.4.0-cp36-cp36m-linux_x86_64.whl
@@ -420,7 +418,7 @@ Use `singularity` command to build the container image. If successful, a contain
 [username@hnode001 ~]$ singularity build --fakeroot h2o4gpuPy.sif h2o4gpuPy.def
 INFO:    Starting build...
 Getting image source signatures
-(snip)
+(skip)
 INFO:    Adding environment to container
 INFO:    Creating SIF file...
 INFO:    Build complete: h2o4gpuPy.sif
