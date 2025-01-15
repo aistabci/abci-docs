@@ -24,7 +24,7 @@ Spot Service is a batch job execution service suitable for executing application
 
 See [Batch Jobs](#batch-jobs) for usage, and [Job Execution Options](#job-execution-options) for details on batch job execution options.
 
-### Reserved Service (Available from mid-January)
+### Reserved Service
 
 Reserved service is a service that allows you to reserve and use computational resources on a daily basis in advance. It allows planned job execution without being affected by the congestions of On-demand and Spot service. In addition, since you can reserve more days than the elapsed time limit of the Spot Service, it is possible to execute jobs for a longer time.
 
