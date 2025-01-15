@@ -196,7 +196,7 @@ $ qsub script_name
 
 ### バッチジョブの状態の確認 {#show-the-status-of-batch-jobs}
 
-バッチジョブを状態を確認するには、`qstat`コマンドを利用します。
+利用者自身が投入したバッチジョブの状態を確認するには、`qstat`コマンドを利用します。
 
 ```
 $ qstat [options]
@@ -206,8 +206,8 @@ $ qstat [options]
 
 | オプション | 説明 |
 |:--|:--|
-| -f | ジョブに関する追加情報を表示します。 |
-| -a | 待機中および実行中のジョブを、追加情報を含めて表示します。 |
+| -f | ジョブに関する詳細情報を表示します。 |
+| -a | 利用ノード数などの追加情報を含めて表示します。 |
 
 例)
 
@@ -216,6 +216,39 @@ $ qstat [options]
 Job id                 Name             User              Time Use S Queue
 ---------------------  ---------------- ----------------  -------- - -----
 12345.pbs1              run.sh           username          00:01:23 R rt_HF
+```
+
+| 項目 | 説明 |
+|:--|:--|
+| Job id | ジョブID |
+| Name | ジョブ名 |
+| User | ジョブのオーナー |
+| Time Use | ジョブのCPU利用時間 |
+| S | ジョブ状態 (R: 実行中, Q: 待機中, F: 完了, S: 一時停止, E: 終了中) |
+| Queue | 資源タイプ |
+
+
+自身が所属するグループを対象としてバッチジョブの状態を確認するには、`qgstat`コマンドを利用します。
+
+```
+$ qgstat [options]
+```
+
+`qgstat`コマンドの主要なオプションを以下に示します。
+
+| オプション | 説明 |
+|:--|:--|
+| -f | ジョブに関する詳細情報を表示します。 |
+| -a | 利用ノード数などの追加情報を含めて表示します。 |
+
+例)
+
+```
+[username@login1 ~]$ qgstat
+Job id                 Name             User              Time Use S Queue
+---------------------  ---------------- ----------------  -------- - -----
+12345.pbs1              run01.sh           username01          00:01:23 R rt_HF
+23456.pbs1              run02.sh           username02          00:01:23 R rt_HF
 ```
 
 | 項目 | 説明 |
@@ -280,7 +313,7 @@ Job id                 Name             User              Time Use S Queue
 !!! warning
     上記の環境変数については、ジョブスケジューラで予約された変数であり、ジョブスケジューラの動作に影響を与える可能性があるためジョブの中で変更しないようにしてください。
 
-## 事前予約（更新中） {#advance-reservation}
+## 事前予約 {#advance-reservation}
 
 Reservedサービスでは、計算ノードを事前に予約して計画的なジョブ実行が可能となります。
 
@@ -438,7 +471,7 @@ granted_parallel_environment        perack01
 granted_slots_list                  gpu@hnode001=80,gpu@hnode002=80
 ```
 
-## 課金（更新中） {#accounting}
+## 課金 {#accounting}
 
 ### On-demandおよびSpotサービス {#on-demand-and-spot-services}
 
@@ -448,7 +481,7 @@ On-demandおよびSpotサービスの課金については、[ご利用料金](h
 
 !!! note
     - 小数点5位以下は切り捨てられます。
-    - 最低経過時間より短い経過時間ジョブを実行した場合、ABCIポイントは最低経過時間を元に計算されます。
+    - 最低経過時間（1.8秒）より短い経過時間ジョブを実行した場合、ABCIポイントは最低経過時間を元に計算されます。
 
 ### Reservedサービス {#reserved-service_1}
 

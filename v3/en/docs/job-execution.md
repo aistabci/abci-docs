@@ -194,7 +194,7 @@ If it fails, it will be a non-zero value and an error message will appear.
 
 ### Show the status of batch jobs
 
-To show the current status of batch jobs, use the `qstat` command.
+To show the current status of batch jobs submitted by the user, use the `qstat` command.
 
 ```
 $ qstat [option]
@@ -204,8 +204,8 @@ The major options of the `qstat` command are follows.
 
 | Option | Description |
 |:--|:--|
-| -f | Display additional information about job |
-| -a | Display queued and running jobs along with additional information |
+| -f | Display detailed information about job |
+| -a | Display additional information about job, including the number of nodes used |
 
 Example)
 
@@ -224,6 +224,40 @@ Job id                 Name             User              Time Use S Queue
 | Time Use | CPU usage time of the job |
 | S | Job status (R: running, Q: queued, F: finished, S: suspended, E: exiting) |
 | Queue | Resource type |
+
+
+To show the current status of batch jobs for the group you belong to, use the `qgstat` command.
+
+```
+$ qgstat [option]
+```
+
+The major options of the `qgstat` command are follows.
+
+| Option | Description |
+|:--|:--|
+| -f | Display detailed information about job |
+| -a | Display additional information about job, including the number of nodes used |
+
+Example)
+
+```
+[username@login1 ~]$ qgstat
+Job id                 Name             User              Time Use S Queue
+---------------------  ---------------- ----------------  -------- - -----
+12345.pbs1              run01.sh           username01          00:01:23 R rt_HF
+23456.pbs1              run02.sh           username02          00:01:23 R rt_HF
+```
+
+| Field | Description |
+|:--|:--|
+| Job id | Job ID |
+| Name | Job name |
+| User | Job owner |
+| Time Use | CPU usage time of the job |
+| S | Job status (R: running, Q: queued, F: finished, S: suspended, E: exiting) |
+| Queue | Resource type |
+
 
 ### Delete a batch job
 
@@ -272,7 +306,7 @@ During job execution, the following environment variables are available for the 
 !!! warning
     Do not change these environment variables in a job because they are reserved by the job scheduler and may affect the job scheduler's behavior.
 
-## Advance Reservation (Under Update)
+## Advance Reservation
 
 In the case of Reserved service, job execution can be scheduled by reserving compute node in advance.
 
@@ -430,7 +464,7 @@ granted_parallel_environment        perack01
 granted_slots_list                  gpu@hnode001=80,gpu@hnode002=80
 ```
 
-## Accounting (Under Update)
+## Accounting
 
 ### On-demand and Spot services
 
@@ -442,7 +476,7 @@ Please refer to the [accounting information](https://abci.ai/en/how_to_use/tarif
 
 !!! note
     * The five and under decimal places is rounding off.
-    * If the elapsed time of job execution is less than the minimum elapsed time, ABCI point calculated based on the minimum elapsed time.
+    * If the elapsed time of job execution is less than the minimum elapsed time(1.8 seconds), ABCI point calculated based on the minimum elapsed time.
 
 ### Reserved Service
 

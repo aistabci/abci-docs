@@ -12,9 +12,7 @@ ABCIシステムの計算リソースの一覧を以下に示します。
 |:--|:--|:--|:--|
 | アクセスサーバ | *as.v3.abci.ai* | 外部からアクセスするためのSSHサーバ | 2 |
 | インタラクティブノード | *login* | ABCIシステムのフロントエンドとなるログインサーバ | 5 |
-| 計算ノード(H) | *hnode001*-*hnode108*[^1] | NVIDIA H200 GPUを搭載するサーバ | 108 |
-
-[^1]: 2025年1月頃に766台の計算ノード(H)が利用可能となります。
+| 計算ノード(H) | *hnode001*-*hnode766* | NVIDIA H200 GPUを搭載するサーバ | 766 |
 
 !!! note
     運用・保守上の合理的理由により、計算リソースの一部が提供されない場合があります。
@@ -82,7 +80,7 @@ ABCIシステムは、人工知能やビッグデータ応用に用いる大容�
 
 上記のストレージシステムを用いて、ABCIシステムが提供している共有ファイルシステムの一覧を以下に示します。
 
-| 用途 | マウントポイント | 実行容量 | ファイルシステム | 備考 |
+| 用途 | マウントポイント | 実効容量 | ファイルシステム | 備考 |
 |:--|:--|:--|:--|:--|
 | ホーム領域 | /home | 10 PB | Lustre |  |
 | グループ領域 | /groups | 63 PB | Lustre |  |
@@ -90,7 +88,7 @@ ABCIシステムは、人工知能やビッグデータ応用に用いる大容�
 
 データ移行目的のために、下記のファイルシステムがマウントされています。
 
-| 用途 | マウントポイント | 実行容量 | ファイルシステム | 備考 |
+| 用途 | マウントポイント | 実効容量 | ファイルシステム | 備考 |
 |:--|:--|:--|:--|:--|
 | アーカイブ | /home-2.0 | 0.5 PB | Lustre | 読み取り専用。ABCI 2.0で利用されていたホーム領域 |
 | アーカイブ | /groups-2.0 | 10.8 PB | Lustre | 読み取り専用。ABCI 2.0で利用されていたグループ領域 |
@@ -108,32 +106,32 @@ ABCIシステムは、人工知能やビッグデータ応用に用いる大容�
 
 ## ソフトウェア {#software}
 
-ABCIシステムで利用可能なソフトウェア一覧を以下に示します。詳細なバージョン情報については2025年1月までに公表予定です。
+ABCIシステムで利用可能なソフトウェア一覧を以下に示します。
 
 | Category | Software | Interactive Node | Compute Node |
 |:--|:--|:--|:--|
 | OS | Rocky Linux | - | 9.4 |
 | OS | Red Hat Enterprise Linux | 9.4 | - |
-| Job Scheduler | Altair PBS Professional |  |  |
-| Development Environment | CUDA Toolkit |  |  |
-| | Intel oneAPI<br>(compilers and libraries) |  |  |
-| | Python |  |  |
-| | Ruby |  |  |
-| | R |  |  |
-| | Java |  |  |
-| | Scala |  |  |
-| | Perl |  |  |
-| | Go |  |  |
-| File System | DDN Lustre |  |  |
-| | BeeOND |  |  |
-| Object Storage | DDN S3 API |  |  |
-| Container | SingularityCE |  |  |
-| MPI | Intel MPI |  |  |
-| Library | cuDNN |  |  |
-| | NCCL |  |  |
-| | gdrcopy |  |  |
-| | UCX |  |  |
-| | Intel MKL |  |  |
-| Utility | aws-cli |  |  |
-| | s3fs-fuse |  |  |
-| | rclone |  |  |
+| Job Scheduler | Altair PBS Professional | 2022.1.6 | 2022.1.6 |
+| Development Environment | CUDA Toolkit | 11.8.0<br>12.0.1<br>12.1.1<br>12.2.2<br>12.3.2<br>12.4.1<br>12.5.1<br>12.6.1 | 11.8.0<br>12.0.1<br>12.1.1<br>12.2.2<br>12.3.2<br>12.4.1<br>12.5.1<br>12.6.1 |
+| | Intel oneAPI<br>(compilers and libraries) | 2024.2.1 | 2024.2.1 |
+| | Python | 3.9.18 | 3.9.18 |
+| | Ruby | 3.0.4 | 3.0.4 |
+| | R | 4.4.1 | 4.4.1 |
+| | Java | 11.0.22.0.7 | 11.0.23.0.9 |
+| | Scala | 3.5.2 | 3.5.2 |
+| | Perl | 5.32.1 | 5.32.1 |
+| | Go | 1.21.7 | 1.21.9 |
+| File System | DDN Lustre | 2.14.0_ddn172 | 2.14.0_ddn172 |
+| | BeeOND | - | 7.4.5 |
+| Object Storage | s3cmd | 2.4.0 | 2.4.0 |
+| Container | SingularityCE | 4.1.5 | 4.1.5 |
+| MPI | Intel MPI | 2021.13 | 2021.13 |
+| Library | cuDNN | 9.5.1 | 9.5.1 |
+| | NCCL | 2.23.4-1 | 2.23.4-1 |
+| | gdrcopy | 2.4.1 | 2.4.1 |
+| | UCX | 1.17 | 1.17 |
+| | Intel MKL | 2024.2.1 | 2024.2.1 |
+| Utility | aws-cli | 1.29.62 | 1.29.62 |
+| | s3fs-fuse | 1.94 | 1.94 |
+| | rclone | 1.57.0 | 1.57.0 |
