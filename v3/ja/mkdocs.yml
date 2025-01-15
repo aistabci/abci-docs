@@ -12,6 +12,8 @@ nav:
   - 'MPI': 'mpi.md'
   - 'コンテナ': 'containers.md'
   - '開発ツール': 'development-tools.md'
+  - 'Tips':
+    - 'Tera Termの利用': 'tips/tera-term.md'
   - 'ABCI オブジェクトストレージ （更新中）':
     - '概要 （更新中）': 'abci-objectstorage/index.md'
     - 'アカウントとアクセスキー （更新中）': 'abci-objectstorage/account.md'

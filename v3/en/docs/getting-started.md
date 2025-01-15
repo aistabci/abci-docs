@@ -123,7 +123,7 @@ If you have OpenSSH 7.3 or later and already added the configuration to your ``$
 The default login shell for the ABCI system is set to bash. For any changes to the login shell, please contact the operations team (abci3-qa@abci.ai ).
 
 
-## Checking ABCI Point (Under Update)
+## Checking ABCI Point
 
 To display ABCI point usage and limitation, use the `show_point` command.
 When your ABCI point usage ratio will reach 100%, a new job cannot be submitted, and queued jobs will become error state at the beginning. (Any running jobs are not affected.)
