@@ -23,7 +23,7 @@ Open OnDemandが提供する機能には、画面上の以下メニューから�
 
 4. **Interactive Apps**: 計算ノード上でWebアプリケーションを起動し、その画面をWebブラウザに転送します。
 
-5. **AI Hub**: AI HubはABCI上で大規模な汎用学習済みモデルの再利用等を行うためのツールやサービス群です。AI Hubを構成する機能の1つである、Mlflow Tracking Serverのデプロイを管理するアプリケーションを提供します。
+5. **AI Hub**: AI HubはABCI上で大規模な汎用学習済みモデルの再利用等を行うためのツールやサービス群です。AI Hubを構成する機能の1つである、MLflow Tracking Serverのデプロイを管理するアプリケーションを提供します。
 
 
 ## ABCI 2.0との機能互換性 {#compatibility}

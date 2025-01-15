@@ -84,7 +84,7 @@ Singularityを利用する場合、ジョブ中に`singularity run`コマンド�
 インタラクティブジョブにおけるSingularityイメージファイルを使用したコンテナの実行例）
 
 ```
-[username@login1 ~]$ qsub -I -P group -q rt_HF=1 -l walltime=1:00:00
+[username@login1 ~]$ qsub -I -P group -q rt_HF -l select=1 -l walltime=1:00:00
 [username@hnode001 ~]$ singularity run --nv ./tensorflow.sif
 ```
 
@@ -114,7 +114,7 @@ Docker Hubで公開されているコンテナイメージの実行例）
 2回目以降の起動はキャッシュされたデータを使用することで起動が高速化されます。
 
 ```
-[username@login1 ~]$ qsub -I -P grpname -q rt_HF=1 -l walltime=1:00:00
+[username@login1 ~]$ qsub -I -P grpname -q rt_HF -l select=1 -l walltime=1:00:00
 [username@hnode001 ~]$ export SINGULARITY_TMPDIR=$PBS_LOCALDIR
 [username@hnode001 ~]$ singularity run --nv docker://tensorflow/tensorflow:latest-gpu
 
@@ -328,7 +328,7 @@ int main (int argc, char **argv) {
 `singularity`コマンドでコンテナイメージをbuildします。
 buildに成功すると、コンテナイメージ(openmpi.sif)が生成されます。
 ```
-[username@login1 ~]$ qsub -I -P group -q rt_HG=1 -l select=1
+[username@login1 ~]$ qsub -I -P group -q rt_HF -l select=1
 [username@hnode001 ~]$ singularity build --fakeroot openmpi.sif openmpi.def
 INFO:    Starting build...
 Getting image source signatures
@@ -414,7 +414,7 @@ print(model.cluster_centers_)
 `singularity`コマンドでコンテナイメージをbuildします。
 buildに成功すると、コンテナイメージ(h2o4gpuPy.sif)が生成されます。
 ```
-[username@login1 ~]$ qsub -I -P group -q rt_HG=1 -l select=1
+[username@login1 ~]$ qsub -I -P group -q rt_HF -l select=1
 [username@hnode001 ~]$ singularity build --fakeroot h2o4gpuPy.sif h2o4gpuPy.def
 INFO:    Starting build...
 Getting image source signatures

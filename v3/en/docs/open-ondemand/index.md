@@ -24,7 +24,7 @@ You can access the features provided by the Open OnDemand from the following men
 
 4. **Interactive Apps**: Launch web applications on the compute nodes and transfer the screen to the web browser.
 
-5. **AI Hub**: AI Hub is a collection of tools and services for reusing large-scale pre-trained models on the ABCI. It provides an application to manage the deployment of the Mlflow Tracking Server, one of the features that constitute AI Hub.
+5. **AI Hub**: AI Hub is a collection of tools and services for reusing large-scale pre-trained models on the ABCI. It provides an application to manage the deployment of the MLflow Tracking Server, one of the features that constitute AI Hub.
 
 
 ## Compatibility with ABCI 2.0 

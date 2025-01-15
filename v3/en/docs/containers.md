@@ -84,7 +84,7 @@ You can also use the `singularity run` command to run a container image publishe
 Example) Run a container with a Singularity image file in an interactive job
 
 ```
-[username@login1 ~]$ qsub -I -P group -q rt_HF=1 -l walltime=1:00:00
+[username@login1 ~]$ qsub -I -P group -q rt_HF -l select=1 -l walltime=1:00:00
 [username@hnode001 ~]$ singularity run --nv ./tensorflow.sif
 ```
 Example) Run a container with a Singularity image file in a batch job
@@ -113,7 +113,7 @@ The container image is downloaded at the first startup and cached in home area.
 The second and subsequent times startup is faster by using cached data.
 
 ```
-[username@login1 ~]$ qsub -I -P grpname -q rt_HF=1 -l walltime=1:00:00
+[username@login1 ~]$ qsub -I -P grpname -q rt_HF -l select=1 -l walltime=1:00:00
 [username@hnode001 ~]$ export SINGULARITY_TMPDIR=$PBS_LOCALDIR
 [username@hnode001 ~]$ singularity run --nv docker://tensorflow/tensorflow:latest-gpu
 
@@ -323,7 +323,7 @@ int main (int argc, char **argv) {
 
 Use `singularity` command to build the container image. If successful, a container image (openmpi.sif) is generated.
 ```
-[username@login1 ~]$ qsub -I -P group -q rt_HG=1 -l select=1
+[username@login1 ~]$ qsub -I -P group -q rt_HF -l select=1
 [username@hnode001 ~]$ singularity build --fakeroot openmpi.sif openmpi.def
 INFO:    Starting build...
 Getting image source signatures
@@ -407,7 +407,7 @@ print(model.cluster_centers_)
 
 Use `singularity` command to build the container image. If successful, a container image (h2o4gpuPy.sif) is generated.
 ```
-[username@login1 ~]$ qsub -I -P group -q rt_HG=1 -l select=1
+[username@login1 ~]$ qsub -I -P group -q rt_HF -l select=1
 [username@hnode001 ~]$ singularity build --fakeroot h2o4gpuPy.sif h2o4gpuPy.def
 INFO:    Starting build...
 Getting image source signatures
