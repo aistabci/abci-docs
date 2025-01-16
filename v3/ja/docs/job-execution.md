@@ -373,7 +373,6 @@ R1234.pbs1 UNCONFIRMED
 Resv ID         Queue         User     State             Start / Duration / End
 -------------------------------------------------------------------------------
 R1234.pbs1      R1234         usrname RN            Wed 10:40 / 1506000 / Sat Feb 01 21:00
-
 ```
 
 | 項目 | 説明 |

@@ -364,9 +364,9 @@ Example)
 
 ```
 [username@login1 ~]$ qrstat
-ar-id      name       owner        state start at             end at               duration    sr
-----------------------------------------------------------------------------------------------------
-     12345 Reserve_fo root         w     07/05/2024 10:00:00  07/12/2024 09:30:00  167:30:00    false
+Resv ID         Queue         User     State             Start / Duration / End
+-------------------------------------------------------------------------------
+R1234.pbs1      R1234         usrname RN            Wed 10:40 / 1506000 / Sat Feb 01 21:00
 ```
 
 | Field | Description |
