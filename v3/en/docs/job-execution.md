@@ -28,7 +28,7 @@ See [Batch Jobs](#batch-jobs) for usage, and [Job Execution Options](#job-execut
 
 Reserved service is a service that allows you to reserve and use computational resources on a daily basis in advance. It allows planned job execution without being affected by the congestions of On-demand and Spot service. In addition, since you can reserve more days than the elapsed time limit of the Spot Service, it is possible to execute jobs for a longer time.
 
-In Reserved service, you first make a reservation in advance to obtain a reservation ID (AR-ID), and then use this reservation ID to execute interactive jobs and batch jobs.
+In Reserved service, you first make a reservation in advance to obtain a reservation ID (Resv ID), and then use this reservation ID to execute interactive jobs and batch jobs.
 
 See [Advance Reservation](#advance-reservation) for the reservation method. The usage and execution options for batch job is the same as for Spot service.
 The usage and execution options for interactive jobs and batch jobs are the same as for On-demand and Spot services.
@@ -245,8 +245,8 @@ Example)
 [username@login1 ~]$ qgstat
 Job id                 Name             User              Time Use S Queue
 ---------------------  ---------------- ----------------  -------- - -----
-12345.pbs1              run01.sh           username01          00:01:23 R rt_HF
-23456.pbs1              run02.sh           username02          00:01:23 R rt_HF
+12345.pbs1             run01.sh         username01        00:01:23 R rt_HF
+23456.pbs1             run02.sh         username02        00:01:23 R rt_HF
 ```
 
 | Field | Description |
@@ -340,7 +340,7 @@ $ qrsub options
 | -D *days* | Specify reservation day. |
 | -P *group* | Specify ABCI UserGroup |
 | -N *name* | Specify reservation name. Up to 230 characters can be specified, consisting of alphanumeric characters and the symbols `+-_.`, excluding spaces. |
-| -n *nnode* | Specify the number of nodes. |
+| -n *numnodes* | Specify the number of nodes. |
 
 Example) Make a reservation 4 compute nodes (H) from 2025/01/15 to 1 week (7 days)
 
@@ -376,21 +376,18 @@ Example)
 [username@login1 ~]$ qrstat
 Resv ID         Queue         User     State             Start / Duration / End
 -------------------------------------------------------------------------------
-R1234.pbs1      R1234         usrname RN            Wed 10:40 / 1506000 / Sat Feb 01 21:00
+R1234.pbs1      R1234         usrname  RN            Wed 10:40 / 1506000 / Sat Feb 01 21:00
 ```
 
 | Field | Description |
 |:-|:-|
-| Resv ID | Reservation ID (AR-ID) |
+| Resv ID | Reservation ID (Resv ID) |
 | Queue| Queue name |
 | User | Executing user |
 | State | Status of reservation(CO: Reservation confirmed, RN: Reservation running) |
 | Start | Start reservation date (start time is 10:00 a.m. at all time) |
 | Duration | Reservation term (seconds) |
 | End | End reservation date (end time is 9:30 a.m. at all time) |
-
-!!! note
-    The no reservation day is not printed.
 
 ### Cancel a reservation
 
@@ -407,7 +404,9 @@ Example) Cancel a reservation
 
 ### How to use reserved node  
 
-To run a job using reserved compute nodes, specify the ID listed before the `.` in the reservation ID with the `-q` option. In this case, specify the resource type using `-v RTYPE=`.
+To run a job to a reserved compute node, use the `-q` option of the `qsub` command to specify the reservation queue. The reservation queue can be identified by the string before the dot (`.`) in the reservation ID, or by checking the `Queue` column in the output of the `qrstat` command.
+
+Additionally, to specify the resource type to be used on the reserved node, use the `-v RTYPE={resource_type}` option of the qsub command.
 
 Example) Execute an interactive job of `rt_HG` on compute node reserved with reservation ID `R1234.pbs1`.
 
@@ -434,7 +433,7 @@ Example) Submit a batch job of `rt_HG` on compute node reserved with reservation
 
 Advance Reservation does not guarantee the health of the compute node for the duration. Some reserved compute nodes may become unavailable while they are in use. Please check the following points.
 
-* To check the availability status of the reserved compute nodes, using the `qrstat -f AR-ID` command. 
+* To check the availability status of the reserved compute nodes, using the `qrstat -f Resv ID` command. 
 * If some reserved compute nodes appear unavailable status the day before the reservation start date, consider canceling the reservation and making the reservation again. 
 * For example, if the compute node becomes unavailable during the reservation period, please check [Contact](./contact.md) and contact <abci3-qa@abci.ai>.
 
