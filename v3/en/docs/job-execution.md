@@ -360,6 +360,16 @@ In addition, the issued reservation ID can be used for the ABCI accounts belongi
 
 To show the current status of reservations, use the `qrstat` command.
 
+```
+$ qrstat [option]
+```
+
+The major options of the `qrstat` command are follows.
+
+| Option | Description |
+|:--|:--|
+| -f, -F | Display detailed information about reservations |
+
 Example)
 
 ```
