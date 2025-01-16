@@ -336,19 +336,17 @@ $ qrsub options
 
 | Option | Description |
 |:--|:--|
-| -a *YYYYMMDD* | Specify start reservation date (format: YYYYMMDD) |
-| -d *days* | Specify reservation day. exclusive with -e option |
-| -e *YYYYMMDD* | Specify end reservation date (format: YYYYMMDD). exclusive with -d option |
-| -g *group* | Specify ABCI UserGroup |
-| -N *name* | Specify reservation name. The reservation name can be alphanumeric and special characters `=+-_.`. The maximum length is 64 characters. However, the first letter must not be a number. |
+| -R *YYMMDD* | Specify start reservation date (format: YYMMDD) |
+| -D *days* | Specify reservation day. |
+| -P *group* | Specify ABCI UserGroup |
+| -N *name* | Specify reservation name. Up to 230 characters can be specified, consisting of alphanumeric characters and the symbols `+-_.`, excluding spaces. |
 | -n *nnode* | Specify the number of nodes. |
-| -l *resource_type* | Specifies the resource type to reserve. ( default: rt_HF )|
 
-Example) Make a reservation 4 compute nodes (H) from 2024/07/05 to 1 week (7 days)
+Example) Make a reservation 4 compute nodes (H) from 2025/01/15 to 1 week (7 days)
 
 ```
-[username@login1 ~]$ qrsub -a 20240705 -d 7 -P grpname -n 4 -N "Reserve_for_AI"
-Your advance reservation 12345 has been granted
+[username@login1 ~]$ qrsub -R 250115 -D 7 -P grpname -n 4 -N "Reserve_for_AI"
+R1234.pbs1 UNCONFIRMED
 ```
 
 
@@ -356,11 +354,7 @@ The ABCI points are consumed when complete reservation.
 In addition, the issued reservation ID can be used for the ABCI accounts belonging to the ABCI group specified at the time of reservation.
 
 !!! note
-    If the number of nodes that can be reserved is less than the number of nodes specified by the `qrsub` command, the reservation acquisition fails with the following error message:  
-    ```
-    advance_reservation: no suitable queues
-    ```  
-    Note that the number of nodes displayed by the `qrstat --available` command does not include currently running jobs. Therefore, even if the `qrstat` command shows the number of nodes that can be reserved, the reservation might fail.
+    If the number of nodes that can be reserved is less than the number of nodes specified by the `qrsub` command, the reservation acquisition fails with error messages.
 
 ### Show the status of reservations
 
@@ -377,25 +371,13 @@ ar-id      name       owner        state start at             end at            
 
 | Field | Description |
 |:-|:-|
-| ar-id | Reservation ID (AR-ID) |
-| name | Reserve name |
-| owner | `root` is always displayed |
-| state | Status of reservation |
-| start at | Start reservation date (start time is 10:00 a.m. at all time) |
-| end at | End reservation date (end time is 9:30 a.m. at all time) |
-| duration | Reservation term (hhh:mm:ss) |
-| sr | `false` is always displayed |
-
-If you want to show the number of nodes that can be reserved, use`qrstat` command with `--available` option.
-
-Checking the Number of Reservable Nodes for Compute Nodes
-```
-[username@login1 ~]$ qrstat --available
-06/27/2024  441
-07/05/2024  432
-07/06/2024  434
-```
-
+| Resv ID | Reservation ID (AR-ID) |
+| Queue| Queue name |
+| User | Executing user |
+| State | Status of reservation(CO: Reservation confirmed, RN: Reservation running) |
+| Start | Start reservation date (start time is 10:00 a.m. at all time) |
+| Duration | Reservation term (seconds) |
+| End | End reservation date (end time is 9:30 a.m. at all time) |
 
 !!! note
     The no reservation day is not printed.
@@ -405,30 +387,30 @@ Checking the Number of Reservable Nodes for Compute Nodes
 !!! warning
     Canceling reservation is permitted to a Responsible Person or User Administrators.
 
-To cancel a reservation, use the `qrdel` command. When canceling reservation with qrdel command, multiple reservation IDs can be specified as comma separated list. If you specify a reservation ID that does not exist or a reservation ID that you do not have deletion permission for, an error occurs and any reservations are not canceled.
+To cancel a reservation, use the `qrdel` command. If you specify a reservation ID that does not exist or a reservation ID that you do not have deletion permission for, an error occurs and any reservations are not canceled.
 
 Example) Cancel a reservation
 
 ```
-[username@login1 ~]$ qrdel 12345,12346
+[username@login1 ~]$ qrdel R1234.pbs1
 ```
 
 ### How to use reserved node  
 
-To run a job using reserved compute nodes, specify reservation ID with the `-ar` option.
+To run a job using reserved compute nodes, specify the ID listed before the `.` in the reservation ID with the `-q` option. In this case, specify the resource type using `-v RTYPE=`.
 
-Example) Execute an interactive job on compute node reserved with reservation ID `12345`.
+Example) Execute an interactive job of `rt_HG` on compute node reserved with reservation ID `R1234.pbs1`.
 
 ```
-[username@login1 ~]$ qrsh -g grpname -ar 12345 -l rt_HF=1 -l h_rt=1:00:00
+[username@login1 ~]$ qsub -I -P grpname -q R1234 -v RTYPE=rt_HG -l select=1
 [username@hnode001 ~]$ 
 ```
 
-Example) Submit a batch job on compute node reserved with reservation ID `12345`.
+Example) Submit a batch job of `rt_HG` on compute node reserved with reservation ID `R1234.pbs1`.
 
 ```
-[username@login1 ~]$ qsub -P grpname -ar 12345 run.sh
-Your job 12345 ("run.sh") has been submitted
+[username@login1 ~]$ qsub -P grpname -q R1234 -v RTYPE=rt_HG -l select=1 run.sh
+9290.pbs1
 ```
 
 !!! note
@@ -442,7 +424,7 @@ Your job 12345 ("run.sh") has been submitted
 
 Advance Reservation does not guarantee the health of the compute node for the duration. Some reserved compute nodes may become unavailable while they are in use. Please check the following points.
 
-* To check the availability status of the reserved compute nodes, using the `qrstat -ar ar_id` command. 
+* To check the availability status of the reserved compute nodes, using the `qrstat -f AR-ID` command. 
 * If some reserved compute nodes appear unavailable status the day before the reservation start date, consider canceling the reservation and making the reservation again. 
 * For example, if the compute node becomes unavailable during the reservation period, please check [Contact](./contact.md) and contact <abci3-qa@abci.ai>.
 
@@ -452,16 +434,15 @@ Advance Reservation does not guarantee the health of the compute node for the du
     - Hardware failures are handled properly. Please refrain from inquiring about unavailability before the day before the reservation starts.  
     - Requests to change the number of reserved compute nodes or to extend the reservation period can not be accepted.
 
-Example) hnode001 is available, hnode002 is unavailable
+Example) Check the nodes reserved with reservation ID `R1234.pbs1`.
 ```
-[username@login1 ~]$ qrsub -a 20240705 -d 7 -P grpname -n 2 -N "Reserve_for_AI" 
-Your advance reservation 12345 has been granted
-[username@login1 ~]$ qrstat -ar 12345
-(snip)
-message                             reserved queue gpu@hnode002 is disabled
-message                             reserved queue gpu@hnode002 is unknown
-granted_parallel_environment        perack01
-granted_slots_list                  gpu@hnode001=80,gpu@hnode002=80
+[username@login1 ~]$ qrsub -R 250115 -D 7 -P grpname -n 3 -N "Reserve_for_AI"
+R1234.pbs1 UNCONFIRMED
+[username@login1 ~]$ qrstat -f R1234.pbs1
+(skip)
+resv_nodes = (hnode015[0]:ncpus=96+hnode015[1]:ncpus=96)+(hnode021[0]:ncpus=96+hnode021[1]:ncpus=96)+(hnode022[0]:ncpus=96+hnode022[1]:ncpus=96)
+Authorized_Users = username@login2
+Authorized_Groups = groupname
 ```
 
 ## Accounting
