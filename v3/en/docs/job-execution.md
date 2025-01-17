@@ -115,6 +115,11 @@ The major options of the `qsub` command are follows.
 | -N name | Specify the job name with *name*. The default is the job script name. |
 | -o *stdout_name* | Specify standard output stream of job |
 | -j oe | Specify standard error stream is merged into standard output stream |
+| -m n | Specify not to send emails |
+| -m a | Mail is sent when job is aborted |
+| -m b | Mail is sent when job is started |
+| -m e | Mail is sent when job is finished |
+| -M *mail_address* | Specify the recipient email address with *mail_address*. The default is the email address registered with ABCI for the job execution user |
 
 In addition, the following options are available as extended options.
 
