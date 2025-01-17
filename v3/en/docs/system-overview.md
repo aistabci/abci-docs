@@ -72,13 +72,13 @@ The specifications of the compute node (H) are shown below:
 
 ## Storage Systems
 
-The ABCI system has three storage systems for storing large amounts of data used for AI and Big Data applications, and these are used to provide shared file systems. Combined, /home, /groups, and /groups_s3 have an effective capacity of approximately 74 PB.
+The ABCI system has three storage systems for storing large amounts of data used for AI and Big Data applications, and these are used to provide shared file systems. Combined, /home and /groups<!--, and /groups_s3--> have an effective capacity of approximately 73 PB.
 
 | # | Storage System | Media | Usage |
 |:--|:--|:--|:--|
 | 1 | DDN ES400NVX2 | 61.44TB NVMe SSD x256 | Home area(/home) |
 | 2 | DDN ES400NVX2 | 61.44TB NVMe SSD x1280 | Group area(/groups) |
-| 3 | DDN ES400NVX2 | 30.72TB NVMe SSD x48 | ABCI Object area(/groups_s3) |
+<!--| 3 | DDN ES400NVX2 | 30.72TB NVMe SSD x48 | ABCI Object area(/groups_s3) |-->
 
 Below is a list of shared file systems provided by the ABCI system using the above storage systems.
 
@@ -86,7 +86,7 @@ Below is a list of shared file systems provided by the ABCI system using the abo
 |:--|:--|:--|:--|:--|
 | Home area | /home | 10 PB | Lustre |  |
 | Group area | /groups | 63 PB | Lustre |  |
-| ABCI Object area | /groups_s3 | 1 PB | Lustre |  |
+<!--| ABCI Object area | /groups_s3 | 1 PB | Lustre |  |-->
 
 The following file systems are mounted for the purpose of data migration.
 
