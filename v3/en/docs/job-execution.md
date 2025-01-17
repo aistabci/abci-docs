@@ -213,7 +213,7 @@ Example)
 [username@login1 ~]$ qstat
 Job id                 Name             User              Time Use S Queue
 ---------------------  ---------------- ----------------  -------- - -----
-12345.pbs1              run.sh           username          00:01:23 R rt_HF
+12345.pbs1             run.sh           username          00:01:23 R rt_HF
 ```
 
 | Field | Description |
@@ -273,7 +273,7 @@ Example) Delete a batch job
 [username@login1 ~]$ qstat
 Job id                 Name             User              Time Use S Queue
 ---------------------  ---------------- ----------------  -------- - -----
-12345.pbs1              run.sh           username          00:01:23 R rt_HF
+12345.pbs1             run.sh           username          00:01:23 R rt_HF
 [username@login1 ~]$ qdel 12345.pbs1
 [username@login1 ~]$
 ```
