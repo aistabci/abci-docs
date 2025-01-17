@@ -72,7 +72,7 @@ The specifications of the compute node (H) are shown below:
 
 ## Storage Systems
 
-The ABCI system has three storage systems for storing large amounts of data used for AI and Big Data applications, and these are used to provide shared file systems. Combined, /home and /groups<!--, and /groups_s3--> have an effective capacity of approximately 73 PB.
+The ABCI system has three storage systems for storing large amounts of data used for AI and Big Data applications, and these are used to provide shared file systems. Combined, /home, /groups, and the storage planned to be provided in the future<!--, and /groups_s3--> have an effective capacity of approximately 75 PB.
 
 | # | Storage System | Media | Usage |
 |:--|:--|:--|:--|
