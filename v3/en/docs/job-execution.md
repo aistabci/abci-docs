@@ -116,6 +116,12 @@ The major options of the `qsub` command are follows.
 | -o *stdout_name* | Specify standard output stream of job |
 | -j oe | Specify standard error stream is merged into standard output stream |
 
+In addition, the following options are available as extended options.
+
+| Option | Description |
+|:--|:--|
+| -v RTYPE=resource\_type | Specify the resource type to be used for the reserved job. This option is mandatory when submitting a job to a reserved node. |
+
 ## Interactive Jobs
 
 To run an interactive job, add the `-I` option to the `qsub` command.
@@ -406,7 +412,7 @@ Example) Cancel a reservation
 
 To run a job to a reserved compute node, use the `-q` option of the `qsub` command to specify the reservation queue. The reservation queue can be identified by the string before the dot (`.`) in the reservation ID, or by checking the `Queue` column in the output of the `qrstat` command.
 
-Additionally, to specify the resource type to be used on the reserved node, use the `-v RTYPE={resource_type}` option of the qsub command.
+Additionally, specify the resource type to be used on the reserved node with the -v `RTYPE=resource_type` option in the qsub command.
 
 Example) Execute an interactive job of `rt_HG` on compute node reserved with reservation ID `R1234.pbs1`.
 
