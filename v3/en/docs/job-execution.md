@@ -24,11 +24,11 @@ Spot Service is a batch job execution service suitable for executing application
 
 See [Batch Jobs](#batch-jobs) for usage, and [Job Execution Options](#job-execution-options) for details on batch job execution options.
 
-### Reserved Service (Available from mid-January)
+### Reserved Service
 
 Reserved service is a service that allows you to reserve and use computational resources on a daily basis in advance. It allows planned job execution without being affected by the congestions of On-demand and Spot service. In addition, since you can reserve more days than the elapsed time limit of the Spot Service, it is possible to execute jobs for a longer time.
 
-In Reserved service, you first make a reservation in advance to obtain a reservation ID (AR-ID), and then use this reservation ID to execute interactive jobs and batch jobs.
+In Reserved service, you first make a reservation in advance to obtain a reservation ID (Resv ID), and then use this reservation ID to execute interactive jobs and batch jobs.
 
 See [Advance Reservation](#advance-reservation) for the reservation method. The usage and execution options for batch job is the same as for Spot service.
 The usage and execution options for interactive jobs and batch jobs are the same as for On-demand and Spot services.
@@ -115,6 +115,17 @@ The major options of the `qsub` command are follows.
 | -N name | Specify the job name with *name*. The default is the job script name. |
 | -o *stdout_name* | Specify standard output stream of job |
 | -j oe | Specify standard error stream is merged into standard output stream |
+| -m n | Specify not to send emails |
+| -m a | Mail is sent when job is aborted |
+| -m b | Mail is sent when job is started |
+| -m e | Mail is sent when job is finished |
+| -M *mail_address* | Specify the recipient email address with *mail_address*. The default is the email address registered with ABCI for the job execution user |
+
+In addition, the following options are available as extended options.
+
+| Option | Description |
+|:--|:--|
+| -v RTYPE=resource\_type | Specify the resource type to be used for the reserved job. This option is mandatory when submitting a job to a reserved node. |
 
 ## Interactive Jobs
 
@@ -194,7 +205,7 @@ If it fails, it will be a non-zero value and an error message will appear.
 
 ### Show the status of batch jobs
 
-To show the current status of batch jobs, use the `qstat` command.
+To show the current status of batch jobs submitted by the user, use the `qstat` command.
 
 ```
 $ qstat [option]
@@ -204,8 +215,8 @@ The major options of the `qstat` command are follows.
 
 | Option | Description |
 |:--|:--|
-| -f | Display additional information about job |
-| -a | Display queued and running jobs along with additional information |
+| -f | Display detailed information about job |
+| -a | Display additional information about job, including the number of nodes used |
 
 Example)
 
@@ -213,7 +224,7 @@ Example)
 [username@login1 ~]$ qstat
 Job id                 Name             User              Time Use S Queue
 ---------------------  ---------------- ----------------  -------- - -----
-12345.pbs1              run.sh           username          00:01:23 R rt_HF
+12345.pbs1             run.sh           username          00:01:23 R rt_HF
 ```
 
 | Field | Description |
@@ -224,6 +235,40 @@ Job id                 Name             User              Time Use S Queue
 | Time Use | CPU usage time of the job |
 | S | Job status (R: running, Q: queued, F: finished, S: suspended, E: exiting) |
 | Queue | Resource type |
+
+
+To show the current status of batch jobs for the group you belong to, use the `qgstat` command.
+
+```
+$ qgstat [option]
+```
+
+The major options of the `qgstat` command are follows.
+
+| Option | Description |
+|:--|:--|
+| -f | Display detailed information about job |
+| -a | Display additional information about job, including the number of nodes used |
+
+Example)
+
+```
+[username@login1 ~]$ qgstat
+Job id                 Name             User              Time Use S Queue
+---------------------  ---------------- ----------------  -------- - -----
+12345.pbs1             run01.sh         username01        00:01:23 R rt_HF
+23456.pbs1             run02.sh         username02        00:01:23 R rt_HF
+```
+
+| Field | Description |
+|:--|:--|
+| Job id | Job ID |
+| Name | Job name |
+| User | Job owner |
+| Time Use | CPU usage time of the job |
+| S | Job status (R: running, Q: queued, F: finished, S: suspended, E: exiting) |
+| Queue | Resource type |
+
 
 ### Delete a batch job
 
@@ -239,7 +284,7 @@ Example) Delete a batch job
 [username@login1 ~]$ qstat
 Job id                 Name             User              Time Use S Queue
 ---------------------  ---------------- ----------------  -------- - -----
-12345.pbs1              run.sh           username          00:01:23 R rt_HF
+12345.pbs1             run.sh           username          00:01:23 R rt_HF
 [username@login1 ~]$ qdel 12345.pbs1
 [username@login1 ~]$
 ```
@@ -272,7 +317,7 @@ During job execution, the following environment variables are available for the 
 !!! warning
     Do not change these environment variables in a job because they are reserved by the job scheduler and may affect the job scheduler's behavior.
 
-## Advance Reservation (Under Update)
+## Advance Reservation
 
 In the case of Reserved service, job execution can be scheduled by reserving compute node in advance.
 
@@ -302,19 +347,17 @@ $ qrsub options
 
 | Option | Description |
 |:--|:--|
-| -a *YYYYMMDD* | Specify start reservation date (format: YYYYMMDD) |
-| -d *days* | Specify reservation day. exclusive with -e option |
-| -e *YYYYMMDD* | Specify end reservation date (format: YYYYMMDD). exclusive with -d option |
-| -g *group* | Specify ABCI UserGroup |
-| -N *name* | Specify reservation name. The reservation name can be alphanumeric and special characters `=+-_.`. The maximum length is 64 characters. However, the first letter must not be a number. |
-| -n *nnode* | Specify the number of nodes. |
-| -l *resource_type* | Specifies the resource type to reserve. ( default: rt_HF )|
+| -R *YYMMDD* | Specify start reservation date (format: YYMMDD) |
+| -D *days* | Specify reservation day. |
+| -P *group* | Specify ABCI UserGroup |
+| -N *name* | Specify reservation name. Up to 230 characters can be specified, consisting of alphanumeric characters and the symbols `+-_.`, excluding spaces. |
+| -n *numnodes* | Specify the number of nodes. |
 
-Example) Make a reservation 4 compute nodes (H) from 2024/07/05 to 1 week (7 days)
+Example) Make a reservation 4 compute nodes (H) from 2025/01/15 to 1 week (7 days)
 
 ```
-[username@login1 ~]$ qrsub -a 20240705 -d 7 -P grpname -n 4 -N "Reserve_for_AI"
-Your advance reservation 12345 has been granted
+[username@login1 ~]$ qrsub -R 250115 -D 7 -P grpname -n 4 -N "Reserve_for_AI"
+R1234.pbs1 UNCONFIRMED
 ```
 
 
@@ -322,79 +365,72 @@ The ABCI points are consumed when complete reservation.
 In addition, the issued reservation ID can be used for the ABCI accounts belonging to the ABCI group specified at the time of reservation.
 
 !!! note
-    If the number of nodes that can be reserved is less than the number of nodes specified by the `qrsub` command, the reservation acquisition fails with the following error message:  
-    ```
-    advance_reservation: no suitable queues
-    ```  
-    Note that the number of nodes displayed by the `qrstat --available` command does not include currently running jobs. Therefore, even if the `qrstat` command shows the number of nodes that can be reserved, the reservation might fail.
+    If the number of nodes that can be reserved is less than the number of nodes specified by the `qrsub` command, the reservation acquisition fails with error messages.
 
 ### Show the status of reservations
 
 To show the current status of reservations, use the `qrstat` command.
 
+```
+$ qrstat [option]
+```
+
+The major options of the `qrstat` command are follows.
+
+| Option | Description |
+|:--|:--|
+| -f, -F | Display detailed information about reservations |
+
 Example)
 
 ```
 [username@login1 ~]$ qrstat
-ar-id      name       owner        state start at             end at               duration    sr
-----------------------------------------------------------------------------------------------------
-     12345 Reserve_fo root         w     07/05/2024 10:00:00  07/12/2024 09:30:00  167:30:00    false
+Resv ID         Queue         User     State             Start / Duration / End
+-------------------------------------------------------------------------------
+R1234.pbs1      R1234         usrname  RN            Wed 10:40 / 1506000 / Sat Feb 01 21:00
 ```
 
 | Field | Description |
 |:-|:-|
-| ar-id | Reservation ID (AR-ID) |
-| name | Reserve name |
-| owner | `root` is always displayed |
-| state | Status of reservation |
-| start at | Start reservation date (start time is 10:00 a.m. at all time) |
-| end at | End reservation date (end time is 9:30 a.m. at all time) |
-| duration | Reservation term (hhh:mm:ss) |
-| sr | `false` is always displayed |
-
-If you want to show the number of nodes that can be reserved, use`qrstat` command with `--available` option.
-
-Checking the Number of Reservable Nodes for Compute Nodes
-```
-[username@login1 ~]$ qrstat --available
-06/27/2024  441
-07/05/2024  432
-07/06/2024  434
-```
-
-
-!!! note
-    The no reservation day is not printed.
+| Resv ID | Reservation ID (Resv ID) |
+| Queue| Queue name |
+| User | Executing user |
+| State | Status of reservation(CO: Reservation confirmed, RN: Reservation running) |
+| Start | Start reservation date (start time is 10:00 a.m. at all time) |
+| Duration | Reservation term (seconds) |
+| End | End reservation date (end time is 9:30 a.m. at all time) |
 
 ### Cancel a reservation
 
 !!! warning
     Canceling reservation is permitted to a Responsible Person or User Administrators.
 
-To cancel a reservation, use the `qrdel` command. When canceling reservation with qrdel command, multiple reservation IDs can be specified as comma separated list. If you specify a reservation ID that does not exist or a reservation ID that you do not have deletion permission for, an error occurs and any reservations are not canceled.
+To cancel a reservation, use the `qrdel` command. If you specify a reservation ID that does not exist or a reservation ID that you do not have deletion permission for, an error occurs and any reservations are not canceled.
 
 Example) Cancel a reservation
 
 ```
-[username@login1 ~]$ qrdel 12345,12346
+[username@login1 ~]$ qrdel R1234.pbs1
 ```
 
 ### How to use reserved node  
 
-To run a job using reserved compute nodes, specify reservation ID with the `-ar` option.
+To run a job to a reserved compute node, use the `-q` option of the `qsub` command to specify the reservation queue. The reservation queue can be identified by the string before the dot (`.`) in the reservation ID, or by checking the `Queue` column in the output of the `qrstat` command.
 
-Example) Execute an interactive job on compute node reserved with reservation ID `12345`.
+Additionally, specify the resource type to be used on the reserved node with the -v `RTYPE=resource_type` option in the qsub command.
+
+Example) Execute an interactive job of `rt_HG` on compute node reserved with reservation ID `R1234.pbs1`.
 
 ```
-[username@login1 ~]$ qrsh -g grpname -ar 12345 -l rt_HF=1 -l h_rt=1:00:00
+[username@login1 ~]$ qsub -I -P grpname -q R1234 -v RTYPE=rt_HG -l select=1
 [username@hnode001 ~]$ 
 ```
 
-Example) Submit a batch job on compute node reserved with reservation ID `12345`.
+Example) Submit a batch job of `rt_HG` on compute node reserved with reservation ID `R1234.pbs1`.
 
 ```
-[username@login1 ~]$ qsub -P grpname -ar 12345 run.sh
-Your job 12345 ("run.sh") has been submitted
+[username@login1 ~]$ qsub -P grpname -q R1234 -v RTYPE=rt_HG -l select=1 run.sh
+9290.pbs1
 ```
 
 !!! note
@@ -408,7 +444,7 @@ Your job 12345 ("run.sh") has been submitted
 
 Advance Reservation does not guarantee the health of the compute node for the duration. Some reserved compute nodes may become unavailable while they are in use. Please check the following points.
 
-* To check the availability status of the reserved compute nodes, using the `qrstat -ar ar_id` command. 
+* To check the availability status of the reserved compute nodes, using the `qrstat -f Resv ID` command. 
 * If some reserved compute nodes appear unavailable status the day before the reservation start date, consider canceling the reservation and making the reservation again. 
 * For example, if the compute node becomes unavailable during the reservation period, please check [Contact](./contact.md) and contact <abci3-qa@abci.ai>.
 
@@ -418,19 +454,18 @@ Advance Reservation does not guarantee the health of the compute node for the du
     - Hardware failures are handled properly. Please refrain from inquiring about unavailability before the day before the reservation starts.  
     - Requests to change the number of reserved compute nodes or to extend the reservation period can not be accepted.
 
-Example) hnode001 is available, hnode002 is unavailable
+Example) Check the nodes reserved with reservation ID `R1234.pbs1`.
 ```
-[username@login1 ~]$ qrsub -a 20240705 -d 7 -P grpname -n 2 -N "Reserve_for_AI" 
-Your advance reservation 12345 has been granted
-[username@login1 ~]$ qrstat -ar 12345
-(snip)
-message                             reserved queue gpu@hnode002 is disabled
-message                             reserved queue gpu@hnode002 is unknown
-granted_parallel_environment        perack01
-granted_slots_list                  gpu@hnode001=80,gpu@hnode002=80
+[username@login1 ~]$ qrsub -R 250115 -D 7 -P grpname -n 3 -N "Reserve_for_AI"
+R1234.pbs1 UNCONFIRMED
+[username@login1 ~]$ qrstat -f R1234.pbs1
+(skip)
+resv_nodes = (hnode015[0]:ncpus=96+hnode015[1]:ncpus=96)+(hnode021[0]:ncpus=96+hnode021[1]:ncpus=96)+(hnode022[0]:ncpus=96+hnode022[1]:ncpus=96)
+Authorized_Users = username@login2
+Authorized_Groups = groupname
 ```
 
-## Accounting (Under Update)
+## Accounting
 
 ### On-demand and Spot services
 
@@ -442,7 +477,7 @@ Please refer to the [accounting information](https://abci.ai/en/how_to_use/tarif
 
 !!! note
     * The five and under decimal places is rounding off.
-    * If the elapsed time of job execution is less than the minimum elapsed time, ABCI point calculated based on the minimum elapsed time.
+    * If the elapsed time of job execution is less than the minimum elapsed time(1.8 seconds), ABCI point calculated based on the minimum elapsed time.
 
 ### Reserved Service
 

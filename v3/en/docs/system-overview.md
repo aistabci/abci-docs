@@ -12,9 +12,7 @@ Below is a list of the computational resources of the ABCI system.
 |:--|:--|:--|:--|
 | Access Server | *as.v3.abci.ai* | SSH server for external access | 2 |
 | Interactive Node | *login* | Login server, the frontend of the ABCI system | 5 |
-| Compute Node (H) | *hnode001*-*hnode108*[^1] | Server w/ NVIDIA H200 GPU accelerators | 108 |
-
-[^1]: 766 compute nodes (H) will become available around January 2025.
+| Compute Node (H) | *hnode001*-*hnode766* | Server w/ NVIDIA H200 GPU accelerators | 766 |
 
 !!! note
     Due to operational and maintenance reasons, some computing resources may not be provided.
@@ -74,13 +72,13 @@ The specifications of the compute node (H) are shown below:
 
 ## Storage Systems
 
-The ABCI system has three storage systems for storing large amounts of data used for AI and Big Data applications, and these are used to provide shared file systems. Combined, /home, /groups, and /groups_s3 have an effective capacity of approximately 74 PB.
+The ABCI system has three storage systems for storing large amounts of data used for AI and Big Data applications, and these are used to provide shared file systems. Combined, /home, /groups, and the storage planned to be provided in the future<!--, and /groups_s3--> have an effective capacity of approximately 75 PB.
 
 | # | Storage System | Media | Usage |
 |:--|:--|:--|:--|
 | 1 | DDN ES400NVX2 | 61.44TB NVMe SSD x256 | Home area(/home) |
 | 2 | DDN ES400NVX2 | 61.44TB NVMe SSD x1280 | Group area(/groups) |
-| 3 | DDN ES400NVX2 | 30.72TB NVMe SSD x48 | ABCI Object area(/groups_s3) |
+<!--| 3 | DDN ES400NVX2 | 30.72TB NVMe SSD x48 | ABCI Object area(/groups_s3) |-->
 
 Below is a list of shared file systems provided by the ABCI system using the above storage systems.
 
@@ -88,7 +86,7 @@ Below is a list of shared file systems provided by the ABCI system using the abo
 |:--|:--|:--|:--|:--|
 | Home area | /home | 10 PB | Lustre |  |
 | Group area | /groups | 63 PB | Lustre |  |
-| ABCI Object area | /groups_s3 | 1 PB | Lustre |  |
+<!--| ABCI Object area | /groups_s3 | 1 PB | Lustre |  |-->
 
 The following file systems are mounted for the purpose of data migration.
 
@@ -110,33 +108,33 @@ Besides this, these nodes each have local storage that can be used as a local sc
 
 ## Software
 
-The software available on the ABCI system is shown below. Details on the version information are scheduled to be released by January 2025.
+The software available on the ABCI system is shown below.
 
 | Category | Software | Interactive Node | Compute Node (H) |
 |:--|:--|:--|:--|
 | OS | Rocky Linux | - | 9.4 |
 | OS | Red Hat Enterprise Linux | 9.4 | - |
-| Job Scheduler | Altair PBS Professional |  |  |
-| Development Environment | CUDA Toolkit |  |  |
-| | Intel oneAPI<br>(compilers and libraries) |  |  |
-| | Python |  |  |
-| | Ruby |  |  |
-| | R |  |  |
-| | Java |  |  |
-| | Scala |  |  |
-| | Perl |  |  |
-| | Go |  |  |
-| File System | DDN Lustre |  |  |
-| | BeeOND |  |  |
-| Object Storage | DDN S3 API |  |  |
-| Container | SingularityCE |  |  |
-| MPI | Intel MPI |  |  |
-| Library | cuDNN |  |  |
-| | NCCL |  |  |
-| | gdrcopy |  |  |
-| | UCX |  |  |
-| | Intel MKL |  |  |
-| Utility | aws-cli |  |  |
-| | s3fs-fuse |  |  |
-| | rclone |  |  |
+| Job Scheduler | Altair PBS Professional | 2022.1.6 | 2022.1.6 |
+| Development Environment | CUDA Toolkit | 11.8.0<br>12.0.1<br>12.1.1<br>12.2.2<br>12.3.2<br>12.4.1<br>12.5.1<br>12.6.1 | 11.8.0<br>12.0.1<br>12.1.1<br>12.2.2<br>12.3.2<br>12.4.1<br>12.5.1<br>12.6.1 |
+| | Intel oneAPI<br>(compilers and libraries) | 2024.2.1 | 2024.2.1 |
+| | Python | 3.9.18 | 3.9.18 |
+| | Ruby | 3.0.4 | 3.0.4 |
+| | R | 4.4.1 | 4.4.1 |
+| | Java | 11.0.22.0.7 | 11.0.23.0.9 |
+| | Scala | 3.5.2 | 3.5.2 |
+| | Perl | 5.32.1 | 5.32.1 |
+| | Go | 1.21.7 | 1.21.9 |
+| File System | DDN Lustre | 2.14.0_ddn172 | 2.14.0_ddn172 |
+| | BeeOND | - | 7.4.5 |
+| Object Storage | s3cmd | 2.4.0 | 2.4.0 |
+| Container | SingularityCE | 4.1.5 | 4.1.5 |
+| MPI | Intel MPI | 2021.13 | 2021.13 |
+| Library | cuDNN | 9.5.1 | 9.5.1 |
+| | NCCL | 2.23.4-1 | 2.23.4-1 |
+| | gdrcopy | 2.4.1 | 2.4.1 |
+| | UCX | 1.17 | 1.17 |
+| | Intel MKL | 2024.2.1 | 2024.2.1 |
+| Utility | aws-cli | 1.29.62 | 1.29.62 |
+| | s3fs-fuse | 1.94 | 1.94 |
+| | rclone | 1.57.0 | 1.57.0 |
 

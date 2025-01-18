@@ -24,11 +24,11 @@ ABCIシステムでは、以下のジョブサービスが利用可能です。
 
 利用方法は[バッチジョブ](#batch-jobs)、バッチジョブの実行オプションの詳細は[ジョブ実行オプション](#job-execution-options)をそれぞれ参照してください。
 
-### Reservedサービス（1月中旬から利用可能です。） {#reserved-service}
+### Reservedサービス {#reserved-service}
 
 計算リソースを日単位で事前に予約して利用できるサービスです。On-demandおよびSpotサービスの混雑の影響を受けることなく、計画的なジョブ実行が可能となります。また、Spotサービスの経過時間制限以上の予約日数が取れるため、より長時間のジョブ実行が可能です。
 
-Reservedサービスでは、まず事前予約を行って予約ID (AR-ID)を取得し、この予約IDを用いてインタラクティブジョブやバッチジョブの実行を行います。
+Reservedサービスでは、まず事前予約を行って予約ID (Resv ID)を取得し、この予約IDを用いてインタラクティブジョブやバッチジョブの実行を行います。
 
 予約方法は[事前予約](#advance-reservation)を参照してください。インタラクティブジョブやバッチジョブの利用方法、実行オプションはOn-demandおよびSpotサービスと共通です。
 
@@ -116,6 +116,17 @@ Reservedサービスで予約ノードに投入されたジョブはカウント
 | -N name | ジョブ名を*name*で指定します。デフォルトは、ジョブスクリプト名です。 |
 | -o *stdout_name* | 標準出力名を*stdout_name*で指定します。 |
 | -j oe | 標準エラー出力を標準出力にマージします。 |
+| -m n | メールの送信を行わないよう指定します。 |
+| -m a | バッチシステムによりジョブが中止された場合にメールを送信します。（デフォルト） |
+| -m b | ジョブ実行開始時にメールを送信します。 |
+| -m e | ジョブ実行終了時にメールを送信します。 |
+| -M *mail_address* | 送信先メールアドレスを*mail_address*で指定します。デフォルトはジョブ実行ユーザのABCIに登録されたメールアドレスです。 |
+
+この他、拡張オプションとして以下のオプションが使用可能です。
+
+| オプション | 説明 |
+|:--|:--|
+| -v RTYPE=resource\_type | 予約ジョブで利用する資源タイプを指定します。本オプションは予約ノードにジョブを投入する場合に必須です。 |
 
 ## インタラクティブジョブ {#interactive-jobs}
 
@@ -196,7 +207,7 @@ $ qsub script_name
 
 ### バッチジョブの状態の確認 {#show-the-status-of-batch-jobs}
 
-バッチジョブを状態を確認するには、`qstat`コマンドを利用します。
+利用者自身が投入したバッチジョブの状態を確認するには、`qstat`コマンドを利用します。
 
 ```
 $ qstat [options]
@@ -206,8 +217,8 @@ $ qstat [options]
 
 | オプション | 説明 |
 |:--|:--|
-| -f | ジョブに関する追加情報を表示します。 |
-| -a | 待機中および実行中のジョブを、追加情報を含めて表示します。 |
+| -f | ジョブに関する詳細情報を表示します。 |
+| -a | 利用ノード数などの追加情報を含めて表示します。 |
 
 例)
 
@@ -215,7 +226,40 @@ $ qstat [options]
 [username@login1 ~]$ qstat
 Job id                 Name             User              Time Use S Queue
 ---------------------  ---------------- ----------------  -------- - -----
-12345.pbs1              run.sh           username          00:01:23 R rt_HF
+12345.pbs1             run.sh           username          00:01:23 R rt_HF
+```
+
+| 項目 | 説明 |
+|:--|:--|
+| Job id | ジョブID |
+| Name | ジョブ名 |
+| User | ジョブのオーナー |
+| Time Use | ジョブのCPU利用時間 |
+| S | ジョブ状態 (R: 実行中, Q: 待機中, F: 完了, S: 一時停止, E: 終了中) |
+| Queue | 資源タイプ |
+
+
+自身が所属するグループを対象としてバッチジョブの状態を確認するには、`qgstat`コマンドを利用します。
+
+```
+$ qgstat [options]
+```
+
+`qgstat`コマンドの主要なオプションを以下に示します。
+
+| オプション | 説明 |
+|:--|:--|
+| -f | ジョブに関する詳細情報を表示します。 |
+| -a | 利用ノード数などの追加情報を含めて表示します。 |
+
+例)
+
+```
+[username@login1 ~]$ qgstat
+Job id                 Name             User              Time Use S Queue
+---------------------  ---------------- ----------------  -------- - -----
+12345.pbs1             run01.sh         username01        00:01:23 R rt_HF
+23456.pbs1             run02.sh         username02        00:01:23 R rt_HF
 ```
 
 | 項目 | 説明 |
@@ -242,7 +286,7 @@ $ qdel job_id
 [username@login1 ~]$ qstat
 Job id                 Name             User              Time Use S Queue
 ---------------------  ---------------- ----------------  -------- - -----
-12345.pbs1              run.sh           username          00:01:23 R rt_HF
+12345.pbs1             run.sh           username          00:01:23 R rt_HF
 [username@login1 ~]$ qdel 12345.pbs1
 [username@login1 ~]$
 ```
@@ -280,7 +324,7 @@ Job id                 Name             User              Time Use S Queue
 !!! warning
     上記の環境変数については、ジョブスケジューラで予約された変数であり、ジョブスケジューラの動作に影響を与える可能性があるためジョブの中で変更しないようにしてください。
 
-## 事前予約（更新中） {#advance-reservation}
+## 事前予約 {#advance-reservation}
 
 Reservedサービスでは、計算ノードを事前に予約して計画的なジョブ実行が可能となります。
 
@@ -310,99 +354,90 @@ $ qrsub options
 
 | オプション | 説明 |
 |:--|:--|
-| -a *YYYYMMDD* | 予約開始日を*YYYYMMDD*で指定します。 |
-| -d *days* | 予約日数を*days*で指定します。 -eオプションとは排他です。 |
-| -e *YYYYMMDD* | 予約終了日を*YYYYMMDD*指定します。-dオプションとは排他です。 |
-| -g *group* | ABCI利用グループを*group*で指定します。 |
-| -N *name* | 予約名を*name*で指定します。英数字と記号`=+-_.`が指定可能で、最大64文字まで指定できます。ただし、先頭の文字に数字を指定することはできません。 |
-| -n *nnnode* | 予約するノード数を*nnnode*で指定します。 |
-| -l *resource_type* | 予約する資源タイプを*resource_type*で指定します。 省略した場合は、rt_HF が指定されたとみなします。|
+| -R *YYMMDD* | 予約開始日を*YYMMDD*で指定します。 |
+| -D *days* | 予約日数を*days*で指定します。|
+| -P *group* | ABCI利用グループを*group*で指定します。 |
+| -N *name* | 予約名を*name*で指定します。スペース以外の英数字と記号`+-_.`が指定可能で、最大230文字まで指定できます。 |
+| -n *numnodes* | 予約するノード数を*numnodes*で指定します。 |
 
-例) 2024年7月5日から1週間 (7日間) 計算ノード(H)4台を予約
+例) 2025年1月15日から1週間 (7日間) 計算ノード(H)4台を予約
 
 ```
-[username@login1 ~]$ qrsub -a 20240705 -d 7 -P grpname -n 4 -N "Reserve_for_AI"
-Your advance reservation 12345 has been granted
+[username@login1 ~]$ qrsub -R 250115 -D 7 -P grpname -n 4 -N "Reserve_for_AI"
+R1234.pbs1 UNCONFIRMED
 ```
-
 
 計算ノードの予約が完了した時点でABCIポイントを消費します。
 また、発行された予約IDは予約時に指定したABCIグループに所属するABCIアカウントでご利用いただけます。
 
 !!! note
-    予約可能なノード数が`qrsub`コマンドで指定したノード数より少ない場合、以下のエラーメッセージを出力して予約取得に失敗します。  
-    ```
-    advance_reservation: no suitable queues
-    ```  
-    なお、`qrstat --available` コマンドで表示されるノード数には、現在実行中のジョブは加味されておりません。そのため、qrstat コマンドで「予約可能なノード数」が表示されていても、予約に失敗することがあります。
+    予約可能なノード数が`qrsub`コマンドで指定したノード数より少ない場合、エラーメッセージを出力して予約取得に失敗します。  
 
 ### 予約状態の確認 {#show-the-status-of-reservations}
 
 予約状態を確認するには、`qrstat`コマンドを使用します。
 
+```
+$ qrstat [options]
+```
+
+`qrstat`コマンドの主要なオプションを以下に示します。
+
+| オプション | 説明 |
+|:--|:--|
+| -f, -F | 詳細な予約情報を表示します。 |
+
 例)
 
 ```
 [username@login1 ~]$ qrstat
-ar-id      name       owner        state start at             end at               duration    sr
-----------------------------------------------------------------------------------------------------
-     12345 Reserve_fo root         w     07/05/2024 10:00:00  07/12/2024 09:30:00  167:30:00    false
+Resv ID         Queue         User     State             Start / Duration / End
+-------------------------------------------------------------------------------
+R1234.pbs1      R1234         usrname  RN            Wed 10:40 / 1506000 / Sat Feb 01 21:00
 ```
 
 | 項目 | 説明 |
 |:--|:--|
-| ar-id | 予約ID (AR-ID) |
-| name | 予約名 |
-| owner | 常にrootと表示 |
-| state | 予約状態 |
-| start at | 予約開始日 (予約開始時刻は常に午前10時) |
-| end at | 予約終了日 (予約終了時刻は常に午前9時30分) |
-| duration | 予約期間 (hhh:mm:ss) |
-| sr | 常にfalseと表示 |
-
-システムあたりの予約可能ノード数を確認するには、`qrstat`コマンドの`--available`オプションを使用します。
-
-計算ノードの予約可能ノード数の確認
-```
-[username@login1 ~]$ qrstat --available
-06/27/2024  441
-07/05/2024  432
-07/06/2024  434
-```
-
-
-!!! note
-    計算ノードが予約されていない日付は表示されません。
+| Resv ID | 予約ID (Resv ID) |
+| Queue | キュー名 |
+| User | 実行ユーザ |
+| State | 予約状態 (CO: 予約確定, RN: 予約実行中) |
+| Start | 予約開始日 (予約開始時刻は常に午前10時) |
+| Duration | 予約期間 (秒) |
+| End | 予約終了日 (予約終了時刻は常に午前9時30分) |
 
 ### 予約の取り消し {#cancel-a-reservation}
 
 !!! warning
     予約の取り消しは利用責任者もしくは利用管理者のみが実施できます。
 
-予約を取り消すには、`qrdel`コマンドを使用します。`qrdel`コマンドでの予約取り消しは、「,(カンマ)」区切りのリストとして複数指定できます。指定したar_idの中に1つでも存在しない予約ID、もしくは削除権限のない予約IDが指定されている場合は、エラーとなり削除は実行されません。
+予約を取り消すには、`qrdel`コマンドを使用します。指定したResv IDが存在しない場合、もしくは削除権限のない予約IDが指定されている場合は、エラーとなり削除は実行されません。
 
 例) 予約を取り消し
 
 ```
-[username@login1 ~]$ qrdel 12345,12346
+[username@login1 ~]$ qrdel R1234.pbs1
 ```
 
 ### 予約ノードの使い方 {#how-to-use-reserved-node}
 
-予約した計算ノードには、`-ar`オプションにて予約IDを指定してジョブを投入します。
+予約した計算ノードにジョブを投入するには、`qsub`コマンドの`-q`オプションに予約キューを指定します。
+予約キューは予約IDのドット(`.`)より前の文字列、または`qrstat`コマンドの`Queue`欄から確認できます。
 
-例) 予約ID`12345`で予約された計算ノードでインタラクティブジョブを実行
+さらに、予約ノードで利用する資源タイプをqsubコマンドの`-v RTYPE=resource_type`オプションで指定してください。
+
+例) 予約ID`R1234.pbs1`で予約された計算ノードで`rt_HG`のインタラクティブジョブを実行
 
 ```
-[username@login1 ~]$ qrsh -g grpname -ar 12345 -l rt_HF=1 -l h_rt=1:00:00
+[username@login1 ~]$ qsub -I -P grpname -q R1234 -v RTYPE=rt_HG -l select=1
 [username@hnode001 ~]$ 
 ```
 
-例) ジョブスクリプトrun.shを予約ID`12345`で予約された計算ノードにバッチジョブとして投入
+例) ジョブスクリプトrun.shを予約ID`R1234.pbs1`で予約された計算ノードに`rt_HG`のバッチジョブとして投入
 
 ```
-[username@login1 ~]$ qsub -P grpname -ar 12345 run.sh
-Your job 12345 ("run.sh") has been submitted
+[username@login1 ~]$ qsub -P grpname -q R1234 -v RTYPE=rt_HG -l select=1 run.sh
+9290.pbs1
 ```
 
 !!! note  
@@ -416,7 +451,7 @@ Your job 12345 ("run.sh") has been submitted
 
 予約は期間中の計算ノードの可用性を保証するものではありません。予約した計算ノードの利用中に一部が利用不可となることがありますので、以下の点をご確認ください。
 
-* 予約した計算ノードの利用可否状態は、`qrstat -ar ar_id` コマンドで確認できます。
+* 予約した計算ノードの利用可否状態は、`qrstat -f Resv ID` コマンドで確認できます。
 * 予約開始前日に一部の予約ノードが利用不可と表示される場合は、予約の取り消し・再度予約をご検討ください。
 * 予約期間中に計算ノードが利用不可となった場合などの時は、[お問い合わせ](./contact.md)のページをご覧の上、<abci3-qa@abci.ai> までご連絡ください。
 
@@ -426,19 +461,18 @@ Your job 12345 ("run.sh") has been submitted
     - ハードウェア障害は適宜対応しております。予約開始前日より前の利用不可に対するお問い合わせはご遠慮願います。
     - 予約している計算ノード数変更や予約期間の延長の依頼は対応不可になります。
 
-例) hnode001は利用可能、hnode002は利用不可
+例) 予約ID`R1234.pbs1`により予約されたノードを確認する。
 ```
-[username@login1 ~]$ qrsub -a 20240705 -d 7 -P grpname -n 2 -N "Reserve_for_AI" 
-Your advance reservation 12345 has been granted
-[username@login1 ~]$ qrstat -ar 12345
-(snip)
-message                             reserved queue gpu@hnode002 is disabled
-message                             reserved queue gpu@hnode002 is unknown
-granted_parallel_environment        perack01
-granted_slots_list                  gpu@hnode001=80,gpu@hnode002=80
+[username@login1 ~]$ qrsub -R 250115 -D 7 -P grpname -n 3 -N "Reserve_for_AI"
+R1234.pbs1 UNCONFIRMED
+[username@login1 ~]$ qrstat -f R1234.pbs1
+(skip)
+resv_nodes = (hnode015[0]:ncpus=96+hnode015[1]:ncpus=96)+(hnode021[0]:ncpus=96+hnode021[1]:ncpus=96)+(hnode022[0]:ncpus=96+hnode022[1]:ncpus=96)
+Authorized_Users = username@login2
+Authorized_Groups = groupname
 ```
 
-## 課金（更新中） {#accounting}
+## 課金 {#accounting}
 
 ### On-demandおよびSpotサービス {#on-demand-and-spot-services}
 
@@ -448,7 +482,7 @@ On-demandおよびSpotサービスの課金については、[ご利用料金](h
 
 !!! note
     - 小数点5位以下は切り捨てられます。
-    - 最低経過時間より短い経過時間ジョブを実行した場合、ABCIポイントは最低経過時間を元に計算されます。
+    - 最低経過時間（1.8秒）より短い経過時間ジョブを実行した場合、ABCIポイントは最低経過時間を元に計算されます。
 
 ### Reservedサービス {#reserved-service_1}
 
