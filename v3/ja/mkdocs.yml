@@ -9,6 +9,7 @@ nav:
   - 'ABCIの利用開始': 'getting-started.md'
   - 'ジョブ実行': 'job-execution.md'
   - 'Environment Modules': 'environment-modules.md'
+  - 'Python': 'python.md'
   - 'MPI': 'mpi.md'
   - 'コンテナ': 'containers.md'
   - '開発ツール': 'development-tools.md'
