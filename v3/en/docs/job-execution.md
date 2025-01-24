@@ -113,7 +113,9 @@ The major options of the `qsub` command are follows.
 | -l select=*num*[*:ncpus=num_cpus:mpiprocs=num_mpi:ompthreads=num_omp*] | Specify the number of nodes with *num* and the number of CPUs corresponding to each resource type with *num_cpus*, the number of MPI processes with *num_mpi*, and the number of threads with *num_omp*. (mandatory) |
 | -l walltime=[*HH:MM:*]*SS* | Specify elapsed time by [*HH:MM:*]*SS*. When execution time of job exceed specified time, job is rejected. |
 | -N name | Specify the job name with *name*. The default is the job script name. |
-| -o *stdout_name* | Specify standard output stream of job |
+| -o *stdout_name* | Specify standard output stream of job. The output file will be created after the job completes. |
+| -e *stderr_name* | Specify standard error stream of job. The output file will be created after the job completes. |
+| -k oe | During execution, the standard output and standard error output are streamed to *JOB_NAME*.o*NUM_JOB_ID*. However, if this option is used, the standard output and standard error output will not be directed to the files specified by -o or -e. |
 | -j oe | Specify standard error stream is merged into standard output stream |
 | -m n | Specify not to send emails |
 | -m a | Mail is sent when job is aborted |
@@ -179,6 +181,23 @@ source /etc/profile.d/modules.sh
 module load cuda/12.6/12.6.1
 ./a.out
 ```
+
+Additionally, to output the standard output of each command in the job script to a file during job execution, you can use the redirect `>&`.
+
+Example) To output the standard output to a file during job execution
+
+```bash
+#!/bin/sh
+#PBS -q rt_HF
+#PBS -l select=1
+#PBS -l walltime=1:23:45
+#PBS -P grpname
+
+cd ${PBS_O_WORKDIR}
+
+./a.out >& logfilename
+```
+
 
 ### Submit a batch job
 
@@ -300,6 +319,7 @@ the following files are generated for output.
 - *JOB_NAME*.o*NUM_JOB_ID*  ---  Standard output file
 - *JOB_NAME*.e*NUM_JOB_ID*  ---  Standard error output file
 
+Additionally, the output file will be created after the job completes.
 
 ## Environment Variables
 
