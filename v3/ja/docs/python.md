@@ -18,7 +18,7 @@ Python 3.9.18
 
 ABCIではシステム全体で使うPython実行環境に利用者が変更を加えることはできません。その代わりに、利用者はPython仮想環境を使って必要なモジュールを追加して利用することができます。
 
-ABCIが提供する`venv`を使って、軽量な仮想環境を作ることできます。
+ABCIが提供する`venv`を使って、軽量な仮想環境を作ることができます。
 このPython仮想環境には、仮想環境ごとのsiteディレクトリがあり、これはシステムのsiteディレクトリから分離させることができます。
 それぞれの仮想環境には、固有の (仮想環境を作成するのに使ったバイナリのバージョンと同一の) Pythonバイナリがあり、
 仮想環境ごとのsiteディレクトリに独立したPythonパッケージ群をインストールできます。
@@ -73,3 +73,26 @@ $ pip <sub-command> [options]
 | install --upgrade *package* | パッケージをアップグレードする。 |
 | uninstall *package* | パッケージをアンインストールする。 |
 | list | インストール済みパッケージを表示する。 |
+
+`pip`コマンドの使用例を以下に示します。`pip`コマンドは、[Python仮想環境](#python-virtual-environments)上でご実施ください。
+
+例) バージョンを指定してパッケージをインストール
+
+```
+$ pip install numpy==2.0.2
+Collecting numpy==2.0.2
+  Using cached numpy-2.0.2-cp39-cp39-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (19.5 MB)
+Installing collected packages: numpy
+Successfully installed numpy-2.0.2
+```
+
+例) インストール済みパッケージの表示
+
+```
+$ pip list
+Package    Version
+---------- -------
+numpy      2.0.2
+pip        21.2.3
+setuptools 53.0.0
+```

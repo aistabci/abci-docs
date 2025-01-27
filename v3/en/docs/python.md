@@ -70,3 +70,26 @@ $ pip <sub-command> [options]
 | install --upgrade *package* | upgrade package |
 | uninstall *package* | remove package |
 | list | list installed packages |
+
+Below are examples of executing `pip`. Please execute the `pip` command within a [Python virtual environment](#python-virtual-environments).
+
+Example) Installing a package with a specified version
+
+```
+$ pip install numpy==2.0.2
+Collecting numpy==2.0.2
+  Using cached numpy-2.0.2-cp39-cp39-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (19.5 MB)
+Installing collected packages: numpy
+Successfully installed numpy-2.0.2
+```
+
+Example) Listing installed packages
+
+```
+$ pip list
+Package    Version
+---------- -------
+numpy      2.0.2
+pip        21.2.3
+setuptools 53.0.0
+```

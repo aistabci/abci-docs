@@ -236,6 +236,7 @@ The major options of the `qstat` command are follows.
 |:--|:--|
 | -f | Display detailed information about job |
 | -a | Display additional information about job, including the number of nodes used |
+| -x | Display information including jobs that have been completed in the past 10 days |
 
 Example)
 
@@ -268,6 +269,7 @@ The major options of the `qgstat` command are follows.
 |:--|:--|
 | -f | Display detailed information about job |
 | -a | Display additional information about job, including the number of nodes used |
+| -x | Display information including jobs that have been completed in the past 10 days |
 
 Example)
 
