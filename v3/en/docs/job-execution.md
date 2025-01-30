@@ -422,7 +422,7 @@ R1234.pbs1      R1234         usrname  RN            Wed 10:40 / 1506000 / Sat F
 | Duration | Reservation term (seconds) |
 | End | End reservation date (end time is 9:30 a.m. at all time) |
 
-To check the number of reservable nodes per group, specify the group name with the `--available=grpname` option of the `qrstat` command and execute it.
+To check the number of reservable nodes per group, specify the group name with the `--available=grpname` option of the `qrstat` command and execute it. This option is available to all users.
 
 Example) Check the number of reservable nodes per group
 ```
