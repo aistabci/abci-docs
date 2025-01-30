@@ -317,11 +317,11 @@ Standard output file and standard error output file are written to job execution
 Standard output generated during a job execution is written to a standard output file and error messages generated during the
 job execution to a standard error output file if no standard output and standard err output files are specified at job submission,
 the following files are generated for output.
+Additionally, the output file will be created after the job completes.
 
 - *JOB_NAME*.o*NUM_JOB_ID*  ---  Standard output file
 - *JOB_NAME*.e*NUM_JOB_ID*  ---  Standard error output file
 
-Additionally, the output file will be created after the job completes.
 
 ## Environment Variables
 
@@ -421,6 +421,18 @@ R1234.pbs1      R1234         usrname  RN            Wed 10:40 / 1506000 / Sat F
 | Start | Start reservation date (start time is 10:00 a.m. at all time) |
 | Duration | Reservation term (seconds) |
 | End | End reservation date (end time is 9:30 a.m. at all time) |
+
+To check the number of reservable nodes per group, specify the group name with the `--available=grpname` option of the `qrstat` command and execute it.
+
+Example) Check the number of reservable nodes per group
+```
+[username@login1 ~]$ qrstat --available=grpname
+date       available nodes for group
+---------- -------------------------
+01/30/2025                       192
+01/31/2025                       192
+```
+
 
 ### Cancel a reservation
 
