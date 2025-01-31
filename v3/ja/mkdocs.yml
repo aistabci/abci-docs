@@ -21,6 +21,7 @@ nav:
 #    - '使い方 （更新中）': 'abci-objectstorage/usage.md'
   - 'Open OnDemand':
     - '使い方': 'open-ondemand/index.md'
+  - 'システム更新履歴': 'system-updates.md'
   - 'お問い合わせ': 'contact.md'
 extra:
   alternate:
