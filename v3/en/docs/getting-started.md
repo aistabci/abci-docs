@@ -30,7 +30,7 @@ In this section, we will describe two methods to login to the interactive node u
 
 #### General method
 
-Login to the access server (*as.v3.abci.ai*) with following command. As an example, port number 50022 is used for the connection. However, if this port is already being used for connections to other hosts (such as ABCI2.0) or if the originating terminal is using this port for another service, causing a conflict, please change to a different port number.
+Login to the access server (*as.v3.abci.ai*) with following command. As an example, the port number is set to 50022. However, if this port is already in use for SSH connections to other hosts or for network services on your local PC, please change it accordingly.
 
 ```
 [yourpc ~]$ ssh -i /path/identity_file -L 50022:login:22 -l username as.v3.abci.ai
