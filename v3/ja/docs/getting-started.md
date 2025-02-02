@@ -30,10 +30,10 @@ ABCIシステムのフロントエンドであるインタラクティブノー�
 
 #### 一般的なログイン方法 {#general-method}
 
-以下のコマンドでアクセスサーバ(*as.v3.abci.ai*)にログインし、SSHトンネルを作成します。
+以下のコマンドでアクセスサーバ(*as.v3.abci.ai*)にログインし、SSHトンネルを作成します。接続例としてポート番号を50022としていますが、他ホストへのSSH接続やローカルPC上のネットワークサービスですでに使用している場合は適宜変更してください。
 
 ```
-[yourpc ~]$ ssh -i /path/identity_file -L 10022:login:22 -l username as.v3.abci.ai
+[yourpc ~]$ ssh -i /path/identity_file -L 50022:login:22 -l username as.v3.abci.ai
 The authenticity of host 'as.v3.abci.ai (0.0.0.1)' can't be established.
 RSA key fingerprint is XX:XX:XX:XX:XX:XX:XX:XX:XX:XX:XX:XX:XX:XX:XX:XX. <- 初回ログイン時のみ表示
 Are you sure you want to continue connecting (yes/no)?  <- yesを入力
@@ -55,7 +55,7 @@ Please press any key if you disconnect this session.
 続いて、別のターミナルを起動し、SSHトンネルを用いてインタラクティブノードにログインします。
 
 ```
-[yourpc ~]$ ssh -i /path/identity_file -p 10022 -l username localhost
+[yourpc ~]$ ssh -i /path/identity_file -p 50022 -l username localhost
 The authenticity of host 'localhost (127.0.0.1)' can't be established.
 RSA key fingerprint is XX:XX:XX:XX:XX:XX:XX:XX:XX:XX:XX:XX:XX:XX:XX:XX. <- 初回ログイン時のみ表示
 Are you sure you want to continue connecting (yes/no)? <- yesを入力
@@ -108,7 +108,7 @@ Host as.v3.abci.ai
 SSHトンネルの設定後、以下のように実行します。
 
 ```
-[yourpc ~]$ scp -i /path/identity_file -P 10022 local-file username@localhost:remote-dir
+[yourpc ~]$ scp -i /path/identity_file -P 50022 local-file username@localhost:remote-dir
 Enter passphrase for key: <- パスフレーズを入力
     
 local-file    100% |***********************|  file-size  transfer-time

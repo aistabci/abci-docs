@@ -30,10 +30,10 @@ In this section, we will describe two methods to login to the interactive node u
 
 #### General method
 
-Login to the access server (*as.v3.abci.ai*) with following command:
+Login to the access server (*as.v3.abci.ai*) with following command. As an example, the port number is set to 50022. However, if this port is already in use for SSH connections to other hosts or for network services on your local PC, please change it accordingly.
 
 ```
-[yourpc ~]$ ssh -i /path/identity_file -L 10022:login:22 -l username as.v3.abci.ai
+[yourpc ~]$ ssh -i /path/identity_file -L 50022:login:22 -l username as.v3.abci.ai
 The authenticity of host 'as.v3.abci.ai (0.0.0.1)' can't be established.
 RSA key fingerprint is XX:XX:XX:XX:XX:XX:XX:XX:XX:XX:XX:XX:XX:XX:XX:XX. <- Display only at the first login
 Are you sure you want to continue connecting (yes/no)? <- Enter "yes"
@@ -55,7 +55,7 @@ Please press any key if you disconnect this session.
 Launch another terminal and login to the interactive node using the SSH tunnel:
 
 ```
-[yourpc ~]$ ssh -i /path/identity_file -p 10022 -l username localhost
+[yourpc ~]$ ssh -i /path/identity_file -p 50022 -l username localhost
 The authenticity of host 'localhost (127.0.0.1)' can't be established.
 RSA key fingerprint is XX:XX:XX:XX:XX:XX:XX:XX:XX:XX:XX:XX:XX:XX:XX:XX. <- Display only at the first login
 Are you sure you want to continue connecting (yes/no)? <- Enter "yes"
@@ -106,7 +106,7 @@ Host as.v3.abci.ai
 When you transfer files between your computer and the ABCI system, create an SSH tunnel and run the `scp` (`sftp`) command.
 
 ```
-[yourpc ~]$ scp -P 10022 local-file username@localhost:remote-dir
+[yourpc ~]$ scp -P 50022 local-file username@localhost:remote-dir
 Enter passphrase for key: <- Enter passphrase
     
 local-file    100% |***********************|  file-size  transfer-time
