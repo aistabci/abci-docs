@@ -13,6 +13,8 @@ nav:
   - 'MPI': 'mpi.md'
   - 'Containers': 'containers.md'
   - 'Development Tools': 'development-tools.md'
+  - 'Appendix':
+    - 'Appendix. Communications with External Networks': 'appendix/external-networks.md'
   - 'Tips':
     - 'GDS': 'tips/gds.md'
 #  - 'ABCI Object Storage (Under Update)':
