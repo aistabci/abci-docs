@@ -173,3 +173,67 @@ Total          1,101.0000    51.5000    10.5000          -          -          -
     - For information on calculating point consumption per service, see [Accounting](job-execution.md#accounting).
     - The point usage of the job of Spot/On-demand service which executed across months is counted in the month in which the job was submitted. The repayment process after the end of the job is also performed for the point usage of the month in which the job was submitted.
     - The points usage of the Reserved service are counted in the month in which the reservation was made. If you cancel the reservation, it will be returned to the points used in the month you made the reservation.
+
+
+
+## Checking Disk Quota
+
+To display your disk/inodes usage and quota about home and group area, use the `show_quota` command.
+The major option of the `show_quota` command are follows.
+
+| Option | Description |
+|:--|:--|
+| -b *G* | Display the disk size in Gibibyte. By default, the display is in Tebibytes. |
+
+
+Example) Display disk and inode quota
+
+```
+[username@login1 ~]$ show_quota
+Disk quotas for ABCI group grpname
+  Directory                          used(TiB)        limit(TiB)      used(nfiles)     limit(nfiles)
+  /groups/grpname                            0                32            422372         200000000
+
+Disk quotas for user username
+  Directory                          used(TiB)        limit(TiB)      used(nfiles)     limit(nfiles)
+  /home/username                             0                 2            103219                 0
+```
+
+| Item  | Description |
+|:-|:-|
+| Directory  | Assignment directory |
+| used(TiB)  | Disk usage |
+| limit(TiB) | Disk quota limit |
+| used(nfiles) | Number of inodes |
+| limit(nfiles) | inode quota limit |
+
+Example) Display disk and inode quota in Gibibyte
+
+```
+[username@login1 ~]$ show_quota -b G
+Disk quotas for ABCI group grpname
+  Directory                          used(GiB)        limit(GiB)      used(nfiles)     limit(nfiles)
+  /groups/grpname                          312             32768            422372         200000000
+
+Disk quotas for user username
+  Directory                          used(GiB)        limit(GiB)      used(nfiles)     limit(nfiles)
+  /home/username                            32              2048            103221                 0
+```
+
+| Item  | Description |
+|:-|:-|
+| Directory  | Assignment directory |
+| used(GiB)  | Disk usage |
+| limit(GiB) | Disk quota limit |
+| used(nfiles) | Number of inodes |
+| limit(nfiles) | inode quota limit |
+
+In case "0" is displayed in the culumn for the inodes quota limit, the number of inodes is unlimited.
+If the disk usage exceeds the disk limit, the column displays "*".
+
+When the number of inodes (disk usage) exceeds the inode (disk) quota limit, the file or directory creation is failed with the following message.
+
+```
+[username@login1 ~]$ touch quota_test
+touch: cannot touch 'quota_test': Disk quota exceeded
+```

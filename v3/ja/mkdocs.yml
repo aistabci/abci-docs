@@ -13,7 +13,10 @@ nav:
   - 'MPI': 'mpi.md'
   - 'コンテナ': 'containers.md'
   - '開発ツール': 'development-tools.md'
+  - '付録':
+    - '付録. 外部ネットワークとの通信': 'appendix/external-networks.md'
   - 'Tips':
+    - 'GPUDirect Storageの利用': 'tips/gds.md'
     - 'Tera Termの利用': 'tips/tera-term.md'
 #  - 'ABCI オブジェクトストレージ （更新中）':
 #    - '概要 （更新中）': 'abci-objectstorage/index.md'

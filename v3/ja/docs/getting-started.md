@@ -174,3 +174,65 @@ Total          1,101.0000    51.5000    10.5000          -          -          -
     - ジョブサービスのABCIポイント使用の計算については、[課金](job-execution.md#accounting)を参照してください。
     - On-demandおよびSpotサービスのジョブ実行から終了の間に月を跨ぐ場合、当該ジョブのポイント使用量は全てジョブを投入した月にてカウントします。ジョブ終了後の返却処理も、ジョブを投入した月の使用ポイントに対して実施されます。
     - Reservedサービスの使用ポイントは、予約を作成した月にカウントします。予約を取り消した場合、予約を作成した月の使用ポイントから当該予約分のポイントが削減されます。
+
+
+## ディスククォータの確認 {#checking-disk-quota}
+
+ホーム領域およびグループ領域の使用状況と割り当て量を表示するには、`show_quota`コマンドを利用します。
+`show_quota`コマンドに関する、主要なオプションを以下に示します。
+
+| オプション | 説明 |
+|:--|:--|
+| -b *G* | ディスクサイズの単位をGibibyteとして表示します。デフォルトではTebibyte単位での表示となります。 |
+
+例) ディスクおよびinodeクォータを確認する。
+
+```
+[username@login1 ~]$ show_quota
+Disk quotas for ABCI group grpname
+  Directory                          used(TiB)        limit(TiB)      used(nfiles)     limit(nfiles)
+  /groups/grpname                            0                32            422372         200000000
+
+Disk quotas for user username
+  Directory                          used(TiB)        limit(TiB)      used(nfiles)     limit(nfiles)
+  /home/username                             0                 2            103219                 0
+```
+
+| 項目  | 説明 |
+|:--|:--|
+| Directory  | 領域種別 |
+| used(TiB)  | ディスク使用量 |
+| limit(TiB) | ディスク上限値 |
+| used(nfiles) | inode使用数 |
+| limit(nfiles) | inode数上限値 |
+
+例) 単位をGibibyteとして、ディスクおよびinodeクォータを確認する。
+
+```
+[username@login1 ~]$ show_quota -b G
+Disk quotas for ABCI group grpname
+  Directory                          used(GiB)        limit(GiB)      used(nfiles)     limit(nfiles)
+  /groups/grpname                          312             32768            422372         200000000
+
+Disk quotas for user username
+  Directory                          used(GiB)        limit(GiB)      used(nfiles)     limit(nfiles)
+  /home/username                            32              2048            103221                 0
+```
+
+| 項目  | 説明 |
+|:--|:--|
+| Directory  | 領域種別 |
+| used(GiB)  | ディスク使用量 |
+| limit(GiB) | ディスク上限値 |
+| used(nfiles) | inode使用数 |
+| limit(nfiles) | inode数上限値 |
+
+なお、inode数上限値の欄に "0" が表示されている場合、inode使用数に制限はありません。
+また、ディスク使用量がディスク上限値を超えている場合、ディスク使用量の欄に"*"が表示されます。
+
+inode使用数がinode数上限値を超過している、またはディスク使用量がディスク上限値を超過している場合、新規ファイル・ディレクトリの作成に失敗します。
+
+```
+[username@login1 ~]$ touch quota_test
+touch: cannot touch 'quota_test': Disk quota exceeded
+```
