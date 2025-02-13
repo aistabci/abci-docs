@@ -1,11 +1,11 @@
 
-# GDSの利用
+# GPUDirect Storageの利用
 
 ABCIの計算ノード(H)では[GPUDirect&reg; Storage (GDS)](https://developer.nvidia.com/gpudirect-storage)が利用可能です。
 GDSは、ストレージとGPUメモリの間にダイレクトデータパスを作成します。ネットワークアダプターやストレージの近くにあるダイレクトメモリアクセスエンジンを有効にすることで、CPUに負担をかけることなく、GPU メモリへのデータ転送や取り出しが可能となります。
 
 
-## GDSを利用する
+## GPUDirect Storageを利用する
 
 GDSを使用するには、計算ノード(H)でCUDAモジュールをロードする必要があります。
 
@@ -13,12 +13,26 @@ GDSを使用するには、計算ノード(H)でCUDAモジュールをロード�
 [username@hnode001 ~] module load cuda/12.6/12.6.1
 ```
 
+GDSを使用可能となるCUDAのバージョン一覧を記載します。
 
-### GDSを使用した例
+| Major version | Minor version |
+| :-- | :-- |
+| cuda/11.8 | 11.8.0 |
+| cuda/12.0 | 12.0.1 |
+| cuda/12.1 | 12.1.1 |
+| cuda/12.2 | 12.2.2 |
+| cuda/12.3 | 12.3.2 |
+| cuda/12.4 | 12.4.1 |
+| cuda/12.5 | 12.5.1 |
+| cuda/12.6 | 12.6.1 |
+
+
+
+### GPUDirect Storageを使用した例
 
 [MagnumIO](https://github.com/NVIDIA/MagnumIO)のサンプルコードを使い、GDSを利用する例を以下に示します。
 
-まず、計算ノード上でCUDAモジュールをロードし、MagnumIOをダウンロードます。
+まず、計算ノード上でCUDAモジュールをロードし、MagnumIOをダウンロードします。
 
 ```
 [username@login1 ~] qsub -I -P grpname -q rt_HG -l select=1 -l walltime=01:00:00

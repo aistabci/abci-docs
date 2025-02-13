@@ -1,11 +1,11 @@
 
-# Using GDS
+# Using GPUDirect Storage
 
 [GPUDirect&reg; Storage (GDS)](https://developer.nvidia.com/gpudirect-storage) is available on the ABCI Compute Node (H).
 GDS creates a direct data path between storage and GPU memory. By enabling a direct memory access (DMA) engine near the network adapter or storage, it allows data transfers to and from GPU memory without burdening the CPU.
 
 
-## Using GDS
+## Using GPUDirect Storage
 
 To use GDS, load the CUDA modules on Compute Node (H):
 
@@ -13,8 +13,21 @@ To use GDS, load the CUDA modules on Compute Node (H):
 [username@hnode001 ~] module load cuda/12.6/12.6.1
 ```
 
+Versions of CUDA that support GDS are listed below.
 
-### Example using GDS
+| Major version | Minor version |
+| :-- | :-- |
+| cuda/11.8 | 11.8.0 |
+| cuda/12.0 | 12.0.1 |
+| cuda/12.1 | 12.1.1 |
+| cuda/12.2 | 12.2.2 |
+| cuda/12.3 | 12.3.2 |
+| cuda/12.4 | 12.4.1 |
+| cuda/12.5 | 12.5.1 |
+| cuda/12.6 | 12.6.1 |
+
+
+### Example using GPUDirect Storage
 
 The following is an example of GDS using a sample code of [MagnumIO](https://github.com/NVIDIA/MagnumIO).
 

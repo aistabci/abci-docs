@@ -16,7 +16,7 @@ nav:
   - 'Appendix':
     - 'Appendix. Communications with External Networks': 'appendix/external-networks.md'
   - 'Tips':
-    - 'GDS': 'tips/gds.md'
+    - 'GPUDirect Storage': 'tips/gds.md'
 #  - 'ABCI Object Storage (Under Update)':
 #    - 'Overview (Under Update)': 'abci-objectstorage/index.md'
 #    - 'Accounts and Access keys (Under Update)': 'abci-objectstorage/account.md'
