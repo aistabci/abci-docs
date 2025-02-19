@@ -12,4 +12,4 @@ theme:
 plugins:
   - redirects:
       redirect_maps:
-        'index.md': 'https://docs.abci.ai/portal/v3/ja/'
+        'index.md': 'https://docs.abci.ai/v3/portal/ja/'
