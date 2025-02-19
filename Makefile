@@ -17,6 +17,10 @@ build:
 	mkdocs build --config-file $(MKDOCS_ROOT)/v3/ja/mkdocs.yml   --site-dir $(SITE_DIR)/v3/ja/
 	mkdocs build --config-file $(MKDOCS_ROOT)/v3/en/mkdocs.yml   --site-dir $(SITE_DIR)/v3/en/
 
+	mkdocs build --config-file $(MKDOCS_ROOT)/v3/portal/root/mkdocs.yml --site-dir $(SITE_DIR)/v3/portal/
+	mkdocs build --config-file $(MKDOCS_ROOT)/v3/portal/ja/mkdocs.yml   --site-dir $(SITE_DIR)/v3/portal/ja/
+	mkdocs build --config-file $(MKDOCS_ROOT)/v3/portal/en/mkdocs.yml   --site-dir $(SITE_DIR)/v3/portal/en/
+
 publish-head:
 	ghp-import -m "deploy $(COMMIT_ID)" -c $(CNAME) -r origin -b gh-pages -p site
 
