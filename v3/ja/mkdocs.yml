@@ -13,8 +13,6 @@ nav:
   - 'MPI': 'mpi.md'
   - 'コンテナ': 'containers.md'
   - '開発ツール': 'development-tools.md'
-  - '付録':
-    - '付録. 外部ネットワークとの通信': 'appendix/external-networks.md'
   - 'Tips':
     - 'GPUDirect Storageの利用': 'tips/gds.md'
     - 'Tera Termの利用': 'tips/tera-term.md'
@@ -26,6 +24,8 @@ nav:
     - '使い方': 'open-ondemand/index.md'
   - 'システム更新履歴': 'system-updates.md'
   - 'お問い合わせ': 'contact.md'
+  - '各種申請':
+    - '外部ネットワークとの通信の申請': 'requests/external-networks.md'
 extra:
   alternate:
     - name: 'English'

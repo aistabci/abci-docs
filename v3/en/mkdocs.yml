@@ -13,8 +13,6 @@ nav:
   - 'MPI': 'mpi.md'
   - 'Containers': 'containers.md'
   - 'Development Tools': 'development-tools.md'
-  - 'Appendix':
-    - 'Appendix. Communications with External Networks': 'appendix/external-networks.md'
   - 'Tips':
     - 'GPUDirect Storage': 'tips/gds.md'
 #  - 'ABCI Object Storage (Under Update)':
@@ -25,6 +23,8 @@ nav:
     - 'Using Open OnDemand': 'open-ondemand/index.md'
   - 'System Updates': 'system-updates.md'
   - 'Contact': 'contact.md'
+  - 'Various Requests':
+    - 'Request for Communication with External Networks': 'requests/external-networks.md'
 extra:
   alternate:
     - name: 'English'
