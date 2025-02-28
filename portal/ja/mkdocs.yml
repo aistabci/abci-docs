@@ -13,8 +13,8 @@ nav:
   - 'リンク':
     - 'ABCI Webページ': 'https://abci.ai/ja/'
     - 'ABCI利用者手引き': 'https://docs.abci.ai/ja/'
-    - 'ABCI利用者ポータル (利用申請)': 'https://portal.abci.ai/user/project_register_app.php?lang=ja'
-    - 'ABCI利用者ポータル (ログイン)':  'https://portal.abci.ai/user/login.php?lang=ja'
+    - 'ABCI利用者ポータル (利用申請)': 'https://connect-business-5426.my.site.com/ProjectApplication_01'
+    - 'ABCI利用者ポータル (ログイン)':  'https://connect-business-5426.my.site.com/LoginPage'
 theme:
   name: 'material'
   favicon: 'img/favicon.png'
@@ -25,12 +25,6 @@ theme:
   features:
     - toc.integrate
   custom_dir: overrides
-extra:
-  alternate:
-    - name: 'English'
-      link: 'https://docs.abci.ai/portal/en/'
-    - name: '日本語'
-      link: 'https://docs.abci.ai/portal/ja/'
 markdown_extensions:
   - admonition
   - codehilite
