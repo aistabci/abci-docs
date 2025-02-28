@@ -25,6 +25,7 @@ nav:
   - 'Contact': 'contact.md'
   - 'Various Requests':
     - 'Request for Communication with External Networks': 'requests/external-networks.md'
+    - 'Request Related to Storage': 'requests/request-related-to-storage.md'
 extra:
   alternate:
     - name: 'English'
