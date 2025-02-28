@@ -14,6 +14,7 @@ nav:
   - 'コンテナ': 'containers.md'
   - '開発ツール': 'development-tools.md'
   - 'Tips':
+    - 'GPUDirect Storageの利用': 'tips/gds.md'
     - 'Tera Termの利用': 'tips/tera-term.md'
 #  - 'ABCI オブジェクトストレージ （更新中）':
 #    - '概要 （更新中）': 'abci-objectstorage/index.md'
@@ -21,7 +22,10 @@ nav:
 #    - '使い方 （更新中）': 'abci-objectstorage/usage.md'
   - 'Open OnDemand':
     - '使い方': 'open-ondemand/index.md'
+  - 'システム更新履歴': 'system-updates.md'
   - 'お問い合わせ': 'contact.md'
+  - '各種申請':
+    - '外部ネットワークとの通信の申請': 'requests/external-networks.md'
 extra:
   alternate:
     - name: 'English'

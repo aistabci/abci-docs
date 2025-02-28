@@ -130,7 +130,7 @@ The software available on the ABCI system is shown below.
 | Container | SingularityCE | 4.1.5 | 4.1.5 |
 | MPI | Intel MPI | 2021.13 | 2021.13 |
 | Library | cuDNN | 9.5.1 | 9.5.1 |
-| | NCCL | 2.23.4-1 | 2.23.4-1 |
+| | NCCL | 2.23.4-1<br>2.25.1-1 | 2.23.4-1<br>2.25.1-1 |
 | | gdrcopy | 2.4.1 | 2.4.1 |
 | | UCX | 1.17 | 1.17 |
 | | Intel MKL | 2024.2.1 | 2024.2.1 |
