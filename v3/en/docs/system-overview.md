@@ -106,6 +106,30 @@ Besides this, these nodes each have local storage that can be used as a local sc
 | Compute node (H) | /local1 | 7 TB | XFS |  |
 |                 | /local2 | 7 TB | XFS | Includes BeeGFS |
 
+Storage Service Specifications:
+
+|  | 	Initial Available Capacity | Increment Unit | Maximum Available Capacity | ABCI Points Consumption<br>(Standard Use) | ABCI Points Consumption<br>(Accelerated Development Use) |
+|:--|:--|:--|:--|:--|:--|
+| /home(*1) | 2TB | N/A | 2TB | Free | Free |
+| /groups(*2) | 0TB | 1TB | 1000TB(*3) | 5 points per month per 1TB | 5 points per month per 1TB |
+| /groups-2.0(*4) | 0TB | 1TB | 250TB | Free | Free |
+
+For the above services, 1TB is allocated as 1,099,511,627,776 bytes.
+
+* (*1) Inode Limit for /home
+    * The total number of inodes in the /home directory is approximately 25 billion.
+    * There is no limit on the number of inodes per user.
+* (*2) Inode Limit for /groups
+    * The initial inode limit is 200 million.
+    * The inode limit can be increased to 600 million upon email request and approval. Please refer to [Request Related to Storage](./requests/request-related-to-storage.md) for the application procedure.
+* (*3) Increasing Available Capacity for /groups
+    * The available capacity can be increased up to 1,000TB through the user portal.
+    * If it exceeds 1,000TB, an email request is required. Please refer to [Request Related to Storage](./requests/request-related-to-storage.md) for the application procedure.
+    * Increasing beyond 1,000TB is not necessarily guaranteed to be approved.
+* (*4) Free Provision of /groups-2.0
+    * /groups-2.0 is available for free until the end of September 2025.
+
+
 ## Software
 
 The software available on the ABCI system is shown below.

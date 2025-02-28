@@ -16,17 +16,38 @@ The followings are examples.
 
 ## Singularity
 
-[Singularity](https://www.sylabs.io/singularity/) is available on the ABCI System.
-Available version is SingularityCE 4.1.
-
+In the ABCI system, [SingularityCE](https://www.sylabs.io/singularity/) or [SingularityPRO](https://sylabs.io/singularity-pro/) is available. The available versions are SingularityCE 4.1 and SingularityPRO 4.1, respectively. 
 More comprehensive user guide for Singularity will be found:
 
 * [SingularityCE User Guide](https://docs.sylabs.io/guides/4.1/user-guide/)
+* [SingularityPRO User Guide](https://repo.sylabs.io/guides/pro-4.1/user-guide/)
+
+### How to Use SingularityCE
+
+When using SingularityCE, no environment setup is required, and it can be used with the singularity command.
+
+```
+[username@hnode001 ~]$ singularity --version
+singularity-ce version 4.1.5-1.el9
+[username@hnode001 ~]$ 
+```
+
+### How to Use SingularityPRO
+
+To use SingularityPRO, you need to set up the environment in advance using the `module` command. When using it, execute the `singularity` command.
+
+```
+[username@hnode001 ~]$ module load singularitypro/4.1.7
+[username@hnode001 ~]$ singularity --version
+SingularityPRO version 4.1.7-1.el9
+[username@hnode001 ~]$
+```
 
 ### Create a Singularity image (pull)
 
 Singularity container image can be stored as a file.
-This procedure shows how to create a Singularity image file using `pull`.
+This procedure shows how to create a Singularity image file using `pull`.  
+When using SingularityPRO, please refer to the [How to Use SingularityPRO](#how-to-use-singularitypro) and set up your environment in advance.
 
 Example) Create a Singularity image file using `pull`
 ```
@@ -39,6 +60,8 @@ tensorflow.sif
 ```
 
 ### Create a Singularity image (build)
+
+When using SingularityPRO, please refer to the [How to Use SingularityPRO](#how-to-use-singularitypro) and set up your environment in advance.
 
 !!! warning
     When using the `fakeroot` option, only node-local areas (such as /tmp or $PBS_LOCALDIR) can be specified for the `SINGULARITY_TMPDIR` environment variable.
@@ -79,7 +102,8 @@ uid=10000(aaa10000aa) gid=10000(aaa10000aa) groups=10000(aaa10000aa),50000(gaa50
 
 When you use Singularity, you need to start Singularity container using `singularity run` command in job script.
 To run an image file in a container, specify the image file as an argument to the `singularity run` command.
-You can also use the `singularity run` command to run a container image published in Docker Hub.
+You can also use the `singularity run` command to run a container image published in Docker Hub.  
+When using SingularityPRO, please refer to the [How to Use SingularityPRO](#how-to-use-singularitypro) and set up your environment in advance.
 
 Example) Run a container with a Singularity image file in an interactive job
 
@@ -242,7 +266,8 @@ This chapter shows examples of Singularity recipe files. See the [Singularity](#
 #### Including local files in the container image
 
 This is an example of compiling Open MPI and local program files (C language) into a container image.
-In this case, locate the Singularity recipe file (openmpi.def) and the program file (mpitest.c) in your home directory.
+In this case, locate the Singularity recipe file (openmpi.def) and the program file (mpitest.c) in your home directory.  
+When using SingularityPRO, please refer to the [How to Use SingularityPRO](#how-to-use-singularitypro) and set up your environment in advance.
 
 openmpi.def
 ```
@@ -347,7 +372,8 @@ Hello, I am rank 1/4
 #### Using the CUDA Toolkit
 
 This is an example of running python on  [h2o4gpu](https://github.com/sylabs/examples/tree/eb713691a30cfd455e1de24cb014646bde404adb/machinelearning/h2o4gpu) with the CUDA Toolkit.
-In this case, you will have a Singularity recipe file (h2o4gpuPy.def) and a validation script (h2o4gpu_sample.py) in your home directory.
+In this case, you will have a Singularity recipe file (h2o4gpuPy.def) and a validation script (h2o4gpu_sample.py) in your home directory.  
+When using SingularityPRO, please refer to the [How to Use SingularityPRO](#how-to-use-singularitypro) and set up your environment in advance.
 
 h2o4gpuPy.def
 ```
