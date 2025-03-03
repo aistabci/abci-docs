@@ -57,6 +57,12 @@ ABCIシステムには、次の資源タイプが用意されています。
 
 | サービス名 | 資源タイプ名 | ノード数 |
 |:--|:--|--:|
+| On-demand  | rt\_HF       | 1-128 |
+|   | rt\_HG       | 1 |
+|   | rt\_HC       | 1 |
+| Spot  | rt\_HF       | 1-128 |
+|   | rt\_HG       | 1 |
+|   | rt\_HC       | 1 |
 | Reserved  | rt\_HF       | 1-予約ノード数 |
 
 ### 経過時間およびノード時間積の制限 {#elapsed-time-and-node-time-product-limits}

@@ -58,6 +58,12 @@ The available resource type and number of nodes for each service are as follows.
 
 | Service | Resource type name | Number of nodes |
 |:--|:--|--:|
+| On-demand  | rt\_HF       | 1-128 |
+|   | rt\_HG       | 1 |
+|   | rt\_HC       | 1 |
+| Spot  | rt\_HF       | 1-128 |
+|   | rt\_HG       | 1 |
+|   | rt\_HC       | 1 |
 | Reserved  | rt\_HF       | 1-(number of reserved nodes) |
 
 ### Elapsed time and node-time product limits
