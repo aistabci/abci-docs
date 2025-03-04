@@ -111,7 +111,7 @@ Storage Service Specifications:
 |  | 	Initial Available Capacity | Increment Unit | Maximum Available Capacity | ABCI Points Consumption<br>(Standard Use) | ABCI Points Consumption<br>(Accelerated Development Use) |
 |:--|:--|:--|:--|:--|:--|
 | /home(*1) | 2TB | N/A | 2TB | Free | Free |
-| /groups(*2) | 0TB | 1TB | 1000TB(*3) | 5 points per month per 1TB | 5 points per month per 1TB |
+| /groups(*2) | 0TB | 1TB | 1000TB(*3) | 5 points per month per 1TB | 2.5 points per month per 1TB |
 | /groups-2.0(*4) | 0TB | 1TB | 250TB | Free | Free |
 
 For the above services, 1TB is allocated as 1,099,511,627,776 bytes.
