@@ -127,7 +127,7 @@ The major options of the `qsub` command are follows.
 | -m a | Mail is sent when job is aborted |
 | -m b | Mail is sent when job is started |
 | -m e | Mail is sent when job is finished |
-| -J *start*[*-end*[*:step*]] | Specify task ID of array job. The suboption is *start_number*[-*end_number*[*:step_size*]] |
+| -J *start*[*-end*[*:step*]] | Specify index number of array job. The suboption is *start_number*[-*end_number*[*:step_size*]] |
 | -M *mail_address* | Specify the recipient email address with *mail_address*. The default is the email address registered with ABCI for the job execution user |
 
 In addition, the following options are available as extended options.
@@ -244,6 +244,7 @@ The major options of the `qstat` command are follows.
 | -f | Display detailed information about job |
 | -a | Display additional information about job, including the number of nodes used |
 | -x | Display information including jobs that have been completed in the past 10 days |
+| -t | Display information including array jobs. |
 
 Example)
 
@@ -277,6 +278,7 @@ The major options of the `qgstat` command are follows.
 | -f | Display detailed information about job |
 | -a | Display additional information about job, including the number of nodes used |
 | -x | Display information including jobs that have been completed in the past 10 days |
+| -t | Display information including array jobs. |
 
 Example)
 
@@ -342,7 +344,7 @@ During job execution, the following environment variables are available for the 
 | PBS\_NODEFILE  | The absolute path includes only hosts assigned by PBS |
 | PBS\_LOCALDIR | The local storage path assigned by PBS |
 | PBS\_O\_WORKDIR     | The working directory path of the job submitter |
-| PBS\_ARRAY\_INDEX       | Task ID of the array job task the job represents |
+| PBS\_ARRAY\_INDEX       | Index number of the array job task the job represents |
 
 !!! warning
     Do not change these environment variables in a job because they are reserved by the job scheduler and may affect the job scheduler's behavior.

@@ -24,7 +24,7 @@ More comprehensive user guide for Singularity will be found:
 
 ### How to Use SingularityCE
 
-When using SingularityCE, no environment setup is required, and it can be used with the singularity command.
+SingularityCE is installed on the system and available via the `singularity` command.
 
 ```
 [username@hnode001 ~]$ singularity --version
@@ -34,7 +34,9 @@ singularity-ce version 4.1.5-1.el9
 
 ### How to Use SingularityPRO
 
-To use SingularityPRO, you need to set up the environment in advance using the `module` command. When using it, execute the `singularity` command.
+SingularityPro is provided as a module. To use SingularityPro, set up the environment using the `module load` command.
+
+Once the environment is set up, you can use SingularityPRO with the `singularity` command.
 
 ```
 [username@hnode001 ~]$ module load singularitypro/4.1.7
@@ -47,7 +49,6 @@ SingularityPRO version 4.1.7-1.el9
 
 Singularity container image can be stored as a file.
 This procedure shows how to create a Singularity image file using `pull`.  
-When using SingularityPRO, please refer to the [How to Use SingularityPRO](#how-to-use-singularitypro) and set up your environment in advance.
 
 Example) Create a Singularity image file using `pull`
 ```
@@ -60,8 +61,6 @@ tensorflow.sif
 ```
 
 ### Create a Singularity image (build)
-
-When using SingularityPRO, please refer to the [How to Use SingularityPRO](#how-to-use-singularitypro) and set up your environment in advance.
 
 !!! warning
     When using the `fakeroot` option, only node-local areas (such as /tmp or $PBS_LOCALDIR) can be specified for the `SINGULARITY_TMPDIR` environment variable.
@@ -103,7 +102,6 @@ uid=10000(aaa10000aa) gid=10000(aaa10000aa) groups=10000(aaa10000aa),50000(gaa50
 When you use Singularity, you need to start Singularity container using `singularity run` command in job script.
 To run an image file in a container, specify the image file as an argument to the `singularity run` command.
 You can also use the `singularity run` command to run a container image published in Docker Hub.  
-When using SingularityPRO, please refer to the [How to Use SingularityPRO](#how-to-use-singularitypro) and set up your environment in advance.
 
 Example) Run a container with a Singularity image file in an interactive job
 
@@ -267,7 +265,6 @@ This chapter shows examples of Singularity recipe files. See the [Singularity](#
 
 This is an example of compiling Open MPI and local program files (C language) into a container image.
 In this case, locate the Singularity recipe file (openmpi.def) and the program file (mpitest.c) in your home directory.  
-When using SingularityPRO, please refer to the [How to Use SingularityPRO](#how-to-use-singularitypro) and set up your environment in advance.
 
 openmpi.def
 ```
@@ -373,7 +370,6 @@ Hello, I am rank 1/4
 
 This is an example of running python on  [h2o4gpu](https://github.com/sylabs/examples/tree/eb713691a30cfd455e1de24cb014646bde404adb/machinelearning/h2o4gpu) with the CUDA Toolkit.
 In this case, you will have a Singularity recipe file (h2o4gpuPy.def) and a validation script (h2o4gpu_sample.py) in your home directory.  
-When using SingularityPRO, please refer to the [How to Use SingularityPRO](#how-to-use-singularitypro) and set up your environment in advance.
 
 h2o4gpuPy.def
 ```
