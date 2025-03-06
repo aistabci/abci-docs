@@ -108,27 +108,20 @@ Besides this, these nodes each have local storage that can be used as a local sc
 
 Storage Service Specifications:
 
-|  | 	Initial Available Capacity | Increment Unit | Maximum Available Capacity | ABCI Points Consumption<br>(Standard Use) | ABCI Points Consumption<br>(Accelerated Development Use) |
-|:--|:--|:--|:--|:--|:--|
-| /home(*1) | 2TB | N/A | 2TB | Free | Free |
-| /groups(*2) | 0TB | 1TB | 1000TB(*3) | 5 points per month per 1TB | 2.5 points per month per 1TB |
-| /groups-2.0(*4) | 0TB | 1TB | 250TB | Free | Free |
+| Storage | Initial Available Capacity | Capacity Limit | Number of Inode | Inode Limit | ABCI Points Consumption<br>(Standard Use) | ABCI Points Consumption<br>(Accelerated Development Use) |
+| :- | :- | :- | :- | :- | :- | :- |
+| /home | 2TB | 2TB | Free | 25 billion | Free | Free |
+| /groups | 0TB | 1000TB | 200 million | 600 million | 5 points per month per 1TB | 2.5 points per month per 1TB |
+| /groups-2.0 | - | - | - | - | Free | Free |
 
-For the above services, 1TB is allocated as 1,099,511,627,776 bytes.
+!!! note
+    * The storage service allocates 1,099,511,627,776 bytes per 1TB. 
+    * The total number of inodes in /home is approximately 25 billion. There is no limit on the number of inodes per user. 
+    * The capacity of /groups can be increased up to 1,000TB via the user portal[^footnote01]. 
+    * If you need more than 1,000TB of capacity or want to increase the inode limit in /groups, you need to apply via email. For application procedures, please refer to [Request for Increasing Group Area Quota](requests/group-area-quota-increase.md). 
+    * The /groups-2.0 service will be discontinued at the end of September 2025. For more details, please refer to [Future Storage Service Announcements](https://abci.ai/news/2024/09/04/ja_storage_after_nov2024.html).
 
-* (*1) Inode Limit for /home
-    * The total number of inodes in the /home directory is approximately 25 billion.
-    * There is no limit on the number of inodes per user.
-* (*2) Inode Limit for /groups
-    * The initial inode limit is 200 million.
-    * The inode limit can be increased to 600 million upon email request and approval. Please refer to [Request Related to Storage](./requests/request-related-to-storage.md) for the application procedure.
-* (*3) Increasing Available Capacity for /groups
-    * The available capacity can be increased up to 1,000TB through the user portal.
-    * If it exceeds 1,000TB, an email request is required. Please refer to [Request Related to Storage](./requests/request-related-to-storage.md) for the application procedure.
-    * Increasing beyond 1,000TB is not necessarily guaranteed to be approved.
-* (*4) Free Provision of /groups-2.0
-    * /groups-2.0 is available for free until the end of September 2025.
-
+[^footnote01]: The user portal is scheduled to be available from March 18, 2025.
 
 ## Software
 
