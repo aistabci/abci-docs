@@ -33,8 +33,8 @@ singularity-ce version 4.1.5-1.el9
 
 ### SingularityPROの利用方法 {#how-to-use-singularitypro}
 
-SingularityProは[モジュール](environment-modules.md)として提供しています。
-SingularityProを利用する場合は、`module load`コマンドを用いて利用環境を設定してください。
+SingularityPROは[モジュール](environment-modules.md)として提供しています。
+SingularityPROを利用する場合は、`module load`コマンドを用いて利用環境を設定してください。
 
 利用環境を設定後、`singularity`コマンドでSingularityPROが利用できます。
 

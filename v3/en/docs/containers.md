@@ -34,7 +34,7 @@ singularity-ce version 4.1.5-1.el9
 
 ### How to Use SingularityPRO
 
-SingularityPro is provided as a module. To use SingularityPro, set up the environment using the `module load` command.
+SingularityPRO is provided as a module. To use SingularityPRO, set up the environment using the `module load` command.
 
 Once the environment is set up, you can use SingularityPRO with the `singularity` command.
 
