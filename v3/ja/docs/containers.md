@@ -48,7 +48,7 @@ SingularityPRO version 4.1.7-1.el9
 ### Singularityイメージファイルの作成(pull) {#create-a-singularity-image-pull}
 
 Singularityコンテナイメージはファイルとして保存することが可能です。
-ここでは、`pull`を用いたSingularityイメージファイルの作成手順を示します。  
+ここでは、`pull`を用いたSingularityイメージファイルの作成手順を示します。
 
 pullによるSingularityイメージファイルの作成例）
 
@@ -63,7 +63,7 @@ tensorflow.sif
 
 ### Singularityイメージファイルの作成(build) {#create-a-singularity-image-build}
 
-ABCIシステムのSingularityCE環境では`fakeroot`オプションを使用することによりbuildを使ったイメージ構築が可能です。  
+ABCIシステムのSingularityCE環境では`fakeroot`オプションを使用することによりbuildを使ったイメージ構築が可能です。
 
 !!! warning
     `fakeroot`オプションを使用する場合、`SINGULARITY_TMPDIR`環境変数に指定できる場所は、ノードローカルの領域のみ(/tmpや$PBS_LOCALDIRなど)となります。
@@ -104,7 +104,7 @@ uid=10000(aaa10000aa) gid=10000(aaa10000aa) groups=10000(aaa10000aa),50000(gaa50
 
 Singularityを利用する場合、ジョブ中に`singularity run`コマンドを実行しSingularityコンテナを起動します。
 イメージファイルをコンテナで実行する場合は`singularity run`コマンドの引数でイメージファイルを指定します。
-また、`singularity run`コマンドではDocker Hubで公開されているコンテナイメージを指定して実行することも可能です。  
+また、`singularity run`コマンドではDocker Hubで公開されているコンテナイメージを指定して実行することも可能です。
 
 インタラクティブジョブにおけるSingularityイメージファイルを使用したコンテナの実行例）
 
@@ -270,7 +270,7 @@ recipeファイルの詳細については[Singularity](#singularity)のユー�
 #### コンテナイメージ内にローカルファイルを組み込む場合
 
 Open MPIおよびローカルのプログラムファイル(C言語)をコンパイルして、コンテナイメージに組み込む場合の例です。
-ここでは、Singularity recipeファイル(openmpi.def)とプログラムファイル(mpitest.c)をホームディレクトリに用意します。  
+ここでは、Singularity recipeファイル(openmpi.def)とプログラムファイル(mpitest.c)をホームディレクトリに用意します。
 
 openmpi.def
 ```
@@ -377,7 +377,7 @@ Hello, I am rank 1/4
 #### CUDA Toolkitを使用する場合
 
 CUDA Toolkitを組み入れて [h2o4gpu](https://github.com/sylabs/examples/tree/eb713691a30cfd455e1de24cb014646bde404adb/machinelearning/h2o4gpu) で python を実行する場合の例です。
-ここでは、Singularity recipeファイル(h2o4gpuPy.def)および動作確認用のスクリプト(h2o4gpu_sample.py)をホームディレクトリに用意します。  
+ここでは、Singularity recipeファイル(h2o4gpuPy.def)および動作確認用のスクリプト(h2o4gpu_sample.py)をホームディレクトリに用意します。
 
 h2o4gpuPy.def
 ```

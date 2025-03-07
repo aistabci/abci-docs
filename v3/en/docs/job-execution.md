@@ -127,7 +127,7 @@ The major options of the `qsub` command are follows.
 | -m a | Mail is sent when job is aborted |
 | -m b | Mail is sent when job is started |
 | -m e | Mail is sent when job is finished |
-| -J *start*[*-end*[*:step*]] | Specify index number of array job. The suboption is *start_number*[-*end_number*[*:step_size*]] |
+| -J *start*-*stop*[*:step*] | Specify the index range of the array job with *start*-*stop*[*:step*]. *start* is the first index and *stop* is the upper index bound. *step* is the stepping factor; if not specified, it is assumed to be 1. |
 | -M *mail_address* | Specify the recipient email address with *mail_address*. The default is the email address registered with ABCI for the job execution user |
 
 In addition, the following options are available as extended options.

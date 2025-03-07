@@ -26,7 +26,7 @@ nav:
   - 'お問い合わせ': 'contact.md'
   - '各種申請':
     - '外部ネットワークとの通信の申請': 'requests/external-networks.md'
-    - 'ストレージに関わる申請': 'requests/group-area-quota-increase.md'
+    - 'グループ領域の上限引き上げ申請': 'requests/group-area-quota-increase.md'
 extra:
   alternate:
     - name: 'English'

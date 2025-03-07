@@ -48,7 +48,7 @@ SingularityPRO version 4.1.7-1.el9
 ### Create a Singularity image (pull)
 
 Singularity container image can be stored as a file.
-This procedure shows how to create a Singularity image file using `pull`.  
+This procedure shows how to create a Singularity image file using `pull`.
 
 Example) Create a Singularity image file using `pull`
 ```
@@ -101,7 +101,7 @@ uid=10000(aaa10000aa) gid=10000(aaa10000aa) groups=10000(aaa10000aa),50000(gaa50
 
 When you use Singularity, you need to start Singularity container using `singularity run` command in job script.
 To run an image file in a container, specify the image file as an argument to the `singularity run` command.
-You can also use the `singularity run` command to run a container image published in Docker Hub.  
+You can also use the `singularity run` command to run a container image published in Docker Hub.
 
 Example) Run a container with a Singularity image file in an interactive job
 
@@ -264,7 +264,7 @@ This chapter shows examples of Singularity recipe files. See the [Singularity](#
 #### Including local files in the container image
 
 This is an example of compiling Open MPI and local program files (C language) into a container image.
-In this case, locate the Singularity recipe file (openmpi.def) and the program file (mpitest.c) in your home directory.  
+In this case, locate the Singularity recipe file (openmpi.def) and the program file (mpitest.c) in your home directory.
 
 openmpi.def
 ```
@@ -369,7 +369,7 @@ Hello, I am rank 1/4
 #### Using the CUDA Toolkit
 
 This is an example of running python on  [h2o4gpu](https://github.com/sylabs/examples/tree/eb713691a30cfd455e1de24cb014646bde404adb/machinelearning/h2o4gpu) with the CUDA Toolkit.
-In this case, you will have a Singularity recipe file (h2o4gpuPy.def) and a validation script (h2o4gpu_sample.py) in your home directory.  
+In this case, you will have a Singularity recipe file (h2o4gpuPy.def) and a validation script (h2o4gpu_sample.py) in your home directory.
 
 h2o4gpuPy.def
 ```
