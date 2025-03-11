@@ -16,6 +16,7 @@ nav:
   - 'Tips':
     - 'GPUDirect Storageの利用': 'tips/gds.md'
     - 'Tera Termの利用': 'tips/tera-term.md'
+    - 'PuTTYの利用': 'tips/putty.md'
 #  - 'ABCI オブジェクトストレージ （更新中）':
 #    - '概要 （更新中）': 'abci-objectstorage/index.md'
 #    - 'アカウントとアクセスキー （更新中）': 'abci-objectstorage/account.md'
