@@ -1,15 +1,20 @@
-site_name: ABCI Portal Guide
-site_description: ABCI Portal Guide, Japanese version
+site_name: ABCI 3.0 Portal Guide
+site_description: ABCI 3.0 Portal Guide, Japanese version
 site_author: AIST
 site_url: https://docs.abci.ai/portal/ja/
 repo_url: https://github.com/aistairc/abci-docs
 edit_uri: edit/master/portal/ja/docs/
-copyright: 'Copyright &copy; 2024 National Institute of Advanced Industrial Science and Technology (AIST) / AIST Solutions Co. (AISol)'
+copyright: 'Copyright &copy; 2021 National Institute of Advanced Industrial Science and Technology (AIST)'
 nav:
   - 'はじめに': 'index.md'
+  - '1. 利用グループ新規申請': '01.md'
+  - '2. 利用者ポータル': '02.md'
+  - '3. 利用管理者権限': '03.md'
   - 'リンク':
     - 'ABCI Webページ': 'https://abci.ai/ja/'
-    - 'ABCI利用者手引き': 'https://docs.abci.ai/v3/ja/'
+    - 'ABCI 3.0利用者手引き': 'https://docs.abci.ai/v3/ja/'
+    - 'ABCI利用者ポータル (利用申請)': 'https://portal.v3.abci.ai/ProjectApplication_01'
+    - 'ABCI利用者ポータル (ログイン)':  'https://portal.v3.abci.ai/'
 theme:
   name: 'material'
   favicon: 'img/favicon.png'
@@ -20,12 +25,6 @@ theme:
   features:
     - toc.integrate
   custom_dir: overrides
-extra:
-  alternate:
-    - name: 'English'
-      link: 'https://docs.abci.ai/v3/portal/en/'
-    - name: '日本語'
-      link: 'https://docs.abci.ai/v3/portal/ja/'
 markdown_extensions:
   - admonition
   - codehilite
