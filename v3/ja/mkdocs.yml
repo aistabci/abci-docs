@@ -15,6 +15,7 @@ nav:
   - '開発ツール': 'development-tools.md'
   - 'Tips':
     - 'GPUDirect Storageの利用': 'tips/gds.md'
+    - 'リモートデスクトップの利用': 'tips/remote-desktop.md'
     - 'Tera Termの利用': 'tips/tera-term.md'
     - 'PuTTYの利用': 'tips/putty.md'
 #  - 'ABCI オブジェクトストレージ （更新中）':
