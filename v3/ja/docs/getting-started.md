@@ -19,7 +19,9 @@ ABCIシステムのフロントエンドであるインタラクティブノー�
 	* RSA鍵 (2048bit以上)
 	* ECDSA鍵 (256bit、384bit、または521bit)
 	* Ed25519鍵
-* SSH公開鍵の登録については、運用担当者（abci3-qa@abci.ai ）までご連絡ください。
+* SSH公開鍵の登録は、[ABCI 3.0 利用者ポータル](https://portal.v3.abci.ai/ProjectApplication_01)から実施ください。
+	* ABCI 3.0利用者ポータルの利用手順は、以下を参照してください。
+	* 利用の手引き： [https://docs.abci.ai/v3/portal/ja/](https://docs.abci.ai/v3/portal/ja/)
 
 !!! note
     SSHクライアントとして、Tera TermやPuTTYも利用可能です。
