@@ -20,7 +20,7 @@ To connect to the interactive node, you will need the following in advance:
 	* ECDSA keys, 256, 384, and 521bits
 	* Ed25519 keys
 * Please register your SSH public key through the [ABCI 3.0 User Portal](https://portal.v3.abci.ai/ProjectApplication_01).
-	* For detailed instructions on how to use the ABCI 3.0 User Portal, please refer to the following guide:
+* For detailed instructions on how to use the ABCI 3.0 User Portal, please refer to the following guide:
 	* User Guide: [https://docs.abci.ai/v3/portal/en/](https://docs.abci.ai/v3/portal/en/)
 
 !!! note
