@@ -9,7 +9,7 @@
 3. 別のPuTTY画面を起動して、SSHトンネルを用いてインタラクティブノードにログイン
 
 !!! note
-    事前にSSH公開鍵の登録が必要です。SSH公開鍵の登録については、運用担当者（abci3-qa@abci.ai ）までご連絡ください。
+    事前に[ABCI利用者ポータル](https://portal.v3.abci.ai/)にてSSH公開鍵の登録が必要です。
 
 ## SSHトンネル情報の設定 {#ssh-tunnel-with-putty}
 
