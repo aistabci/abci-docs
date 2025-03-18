@@ -154,6 +154,14 @@ Example) Executing an interactive job (On-demand service)
 !!! note
     If ABCI point is insufficient when executing an interactive job with On-demand service, the execution is failed.
 
+To run applications that use the X Window system, log in to the interactive node using a terminal that supports GUI, such as MobaXterm. Then, specify the `-IX` argument when executing the interactive job:
+
+```
+[username@login1 ~]$ qsub -IX -P grpname -q rt_HF -l select=1 -l walltime=01:00:00
+[username@hnode001 ~]$ xterm <- execute X application
+```
+
+
 ## Batch Jobs
 
 To run a batch job on the ABCI System, you need to make a job script in addition to execution program.
