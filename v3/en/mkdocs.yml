@@ -15,7 +15,6 @@ nav:
   - 'Development Tools': 'development-tools.md'
   - 'Tips':
     - 'GPUDirect Storage': 'tips/gds.md'
-    - 'Remote Desktop': 'tips/remote-desktop.md'
     - 'PuTTY': 'tips/putty.md'
 #  - 'ABCI Object Storage (Under Update)':
 #    - 'Overview (Under Update)': 'abci-objectstorage/index.md'

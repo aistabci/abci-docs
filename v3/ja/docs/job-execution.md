@@ -155,8 +155,8 @@ $ qsub -I -P group -q resource_type -l select=num [options]
 !!! note
     On-demandサービスでは、インタラクティブジョブ実行時にABCIポイントが不足している場合、ジョブの実行に失敗します。
 
-X Window を利用するアプリケーションを実行するには、MobaXtermなどのGUIをサポートする端末でインタラクティブノードへログインします。
-次にインタラクティブジョブ実行時に、引数に`-IX`を指定します。
+X Window Systemを利用するアプリケーションを実行するには、MobaXtermなどのXサーバーをサポートするソフトウェアでインタラクティブノードへログインします。
+次にインタラクティブジョブを実行する際、引数に`-X`オプションを指定します。
 
 ```
 [username@login1 ~]$ qsub -IX -P grpname -q rt_HF -l select=1 -l walltime=01:00:00

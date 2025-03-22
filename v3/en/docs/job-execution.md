@@ -154,7 +154,7 @@ Example) Executing an interactive job (On-demand service)
 !!! note
     If ABCI point is insufficient when executing an interactive job with On-demand service, the execution is failed.
 
-To run applications that use the X Window system, log in to the interactive node using a terminal that supports GUI, such as MobaXterm. Then, specify the `-IX` argument when executing the interactive job:
+To run applications that use the X Window System, log in to the interactive node using software that supports X servers, such as MobaXterm. Then, when executing an interactive job, specify the `-X` option in the arguments:
 
 ```
 [username@login1 ~]$ qsub -IX -P grpname -q rt_HF -l select=1 -l walltime=01:00:00
