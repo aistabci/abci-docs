@@ -4,7 +4,7 @@
 
 We are planning to implement the following features:
 
-* Command to check cloud storage and cloud storage usage limits
+* Cloud Storage service and the command to check Cloud Storage usage limits
 * SSH access control option when submitting jobs
 * Open OnDemand Job Composer
 
