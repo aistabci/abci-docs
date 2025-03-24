@@ -2,7 +2,11 @@
 
 ## 2025-04-15 {#2025-04-15}
 
-We plan to implement a command to check the usage limits of cloud storage, a command for SSH access control options when submitting jobs, and the implementation of Job Composer in OOD.
+We are planning to implement the following features:
+
+* Command to check cloud storage and cloud storage usage limits
+* SSH access control option when submitting jobs
+* Open OnDemand Job Composer
 
 ## 2025-03-03 {#2025-03-03}
 
