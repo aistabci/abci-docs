@@ -4,9 +4,13 @@
 
 We are planning to implement the following features:
 
-* Cloud Storage service and the command to check Cloud Storage usage limits
 * SSH access control option when submitting jobs
 * Open OnDemand Job Composer
+* The following update for the Lustre client
+
+| Add / Update / Delete | Software | Version | Previous version |
+|:--|:--|:--|:--|
+| Update | Lustre-client | 2.14.0_ddn196 | 2.14.0_ddn172 |
 
 ## 2025-03-03 {#2025-03-03}
 

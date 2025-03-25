@@ -4,9 +4,13 @@
 
 次の機能の実装を予定しています。
 
-* クラウドストレージおよびクラウドストレージの利用上限値確認コマンド
 * ジョブ投入時のSSHアクセス制御オプション
 * Open OnDemand Job Composer
+* 下記Lustre clientのupdate
+
+| Add / Update / Delete | Software | Version | Previous version |
+|:--|:--|:--|:--|
+| Update | Lustre-client | 2.14.0_ddn196 | 2.14.0_ddn172 |
 
 ## 2025-03-03 {#2025-03-03}
 
