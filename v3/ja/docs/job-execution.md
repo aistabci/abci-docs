@@ -155,6 +155,14 @@ $ qsub -I -P group -q resource_type -l select=num [options]
 !!! note
     On-demandサービスでは、インタラクティブジョブ実行時にABCIポイントが不足している場合、ジョブの実行に失敗します。
 
+X Window Systemを利用するアプリケーションを実行するには、MobaXtermなどのXサーバーをサポートするソフトウェアでインタラクティブノードへログインします。
+次にインタラクティブジョブを実行する際、引数に`-X`オプションを指定します。
+
+```
+[username@login1 ~]$ qsub -IX -P grpname -q rt_HF -l select=1 -l walltime=01:00:00
+[username@hnode001 ~]$ xterm <- Xアプリケーションを起動
+```
+
 ## バッチジョブ {#batch-jobs}
 
 ABCIシステムでバッチジョブを実行する場合、実行するプログラムとは別にジョブスクリプトを作成します。
