@@ -16,12 +16,34 @@ The followings are examples.
 
 ## Singularity
 
-[Singularity](https://www.sylabs.io/singularity/) is available on the ABCI System.
-Available version is SingularityCE 4.1.
-
+In the ABCI system, [SingularityCE](https://www.sylabs.io/singularity/) or [SingularityPRO](https://sylabs.io/singularity-pro/) is available. The available versions are SingularityCE 4.1 and SingularityPRO 4.1, respectively. 
 More comprehensive user guide for Singularity will be found:
 
 * [SingularityCE User Guide](https://docs.sylabs.io/guides/4.1/user-guide/)
+* [SingularityPRO User Guide](https://repo.sylabs.io/guides/pro-4.1/user-guide/)
+
+### How to Use SingularityCE
+
+SingularityCE is installed on the system and available via the `singularity` command.
+
+```
+[username@hnode001 ~]$ singularity --version
+singularity-ce version 4.1.5-1.el9
+[username@hnode001 ~]$ 
+```
+
+### How to Use SingularityPRO
+
+SingularityPRO is provided as a module. To use SingularityPRO, set up the environment using the `module load` command.
+
+Once the environment is set up, you can use SingularityPRO with the `singularity` command.
+
+```
+[username@hnode001 ~]$ module load singularitypro/4.1.7
+[username@hnode001 ~]$ singularity --version
+SingularityPRO version 4.1.7-1.el9
+[username@hnode001 ~]$
+```
 
 ### Create a Singularity image (pull)
 

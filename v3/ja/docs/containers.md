@@ -15,10 +15,35 @@ ABCIではSingularityコンテナを利用してアプリケーション実行�
 
 ## Singularity
 
-ABCIシステムでは[Singularity](https://www.sylabs.io/singularity/)が利用可能です。
-利用可能なバージョンはSingularityCE 4.1となります。網羅的なユーザガイドは、以下にあります。
+ABCIシステムでは[SingularityCE](https://www.sylabs.io/singularity/)または、[SingularityPRO](https://sylabs.io/singularity-pro/)が利用可能です。
+利用可能なバージョンはそれぞれSingularityCE 4.1、SingularityPRO 4.1となります。網羅的なユーザガイドは、以下にあります。
 
 * [SingularityCE User Guide](https://docs.sylabs.io/guides/4.1/user-guide/) (英文)
+* [SingularityPRO User Guide](https://repo.sylabs.io/guides/pro-4.1/user-guide/) (英文)
+
+### SingularityCEの利用方法 {#how-to-use-singularityce}
+
+SingularityCEはシステムにインストールされており、`singularity`コマンドにより利用可能です。
+
+```
+[username@hnode001 ~]$ singularity --version
+singularity-ce version 4.1.5-1.el9
+[username@hnode001 ~]$ 
+```
+
+### SingularityPROの利用方法 {#how-to-use-singularitypro}
+
+SingularityPROは[モジュール](environment-modules.md)として提供しています。
+SingularityPROを利用する場合は、`module load`コマンドを用いて利用環境を設定してください。
+
+利用環境を設定後、`singularity`コマンドでSingularityPROが利用できます。
+
+```
+[username@hnode001 ~]$ module load singularitypro/4.1.7
+[username@hnode001 ~]$ singularity --version
+SingularityPRO version 4.1.7-1.el9
+[username@hnode001 ~]$
+```
 
 ### Singularityイメージファイルの作成(pull) {#create-a-singularity-image-pull}
 
@@ -433,7 +458,6 @@ INFO:    Build complete: h2o4gpuPy.sif
  [1.  4. ]]
 [username@hnode001 ~]$
 ```
-
 
 ### 環境変数 {#environment-variables}
 

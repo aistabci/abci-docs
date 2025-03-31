@@ -46,9 +46,9 @@ The ABCI system provides the following resource types:
 
 | Resource type name | Description | Assigned physical CPU core | Number of assigned GPU | Memory (GB) | Local storage (GB) | ABCI points per hour for Spot and On-demand (※) |
 |:--|:--|:--|:--|:--|:--|:--|
-| rt\_HF | node-exclusive | 96 | 8 | 1728 | 14 | 7.5 |
-| rt\_HG | node-sharing<br>with GPU | 8 | 1 | 144 | 1.4 | 1.5 |
-| rt\_HC | node-sharing<br>CPU only | 16 | 0 | 288 | 1.4 | 0.5 |
+| rt\_HF | node-exclusive | 96 | 8 | 1920 | 14 | 7.5 |
+| rt\_HG | node-sharing<br>with GPU | 8 | 1 | 160 | 1.4 | 1.5 |
+| rt\_HC | node-sharing<br>CPU only | 16 | 0 | 320 | 1.4 | 0.5 |
 
 (※) Reserved service for rt_HF consumes 1.5 times the points.
 
@@ -58,6 +58,12 @@ The available resource type and number of nodes for each service are as follows.
 
 | Service | Resource type name | Number of nodes |
 |:--|:--|--:|
+| On-demand  | rt\_HF       | 1-128 |
+|   | rt\_HG       | 1 |
+|   | rt\_HC       | 1 |
+| Spot  | rt\_HF       | 1-128 |
+|   | rt\_HG       | 1 |
+|   | rt\_HC       | 1 |
 | Reserved  | rt\_HF       | 1-(number of reserved nodes) |
 
 ### Elapsed time and node-time product limits
@@ -121,6 +127,7 @@ The major options of the `qsub` command are follows.
 | -m a | Mail is sent when job is aborted |
 | -m b | Mail is sent when job is started |
 | -m e | Mail is sent when job is finished |
+| -J *start*-*stop*[*:step*] | Specify the index range of the array job with *start*-*stop*[*:step*]. *start* is the first index and *stop* is the upper index bound. *step* is the stepping factor; if not specified, it is assumed to be 1. |
 | -M *mail_address* | Specify the recipient email address with *mail_address*. The default is the email address registered with ABCI for the job execution user |
 
 In addition, the following options are available as extended options.
@@ -146,6 +153,14 @@ Example) Executing an interactive job (On-demand service)
 
 !!! note
     If ABCI point is insufficient when executing an interactive job with On-demand service, the execution is failed.
+
+To run applications that use the X Window System, log in to the interactive node using software that supports X servers, such as MobaXterm. Then, when executing an interactive job, specify the `-X` option in the arguments:
+
+```
+[username@login1 ~]$ qsub -IX -P grpname -q rt_HF -l select=1 -l walltime=01:00:00
+[username@hnode001 ~]$ xterm <- execute X application
+```
+
 
 ## Batch Jobs
 
@@ -237,6 +252,7 @@ The major options of the `qstat` command are follows.
 | -f | Display detailed information about job |
 | -a | Display additional information about job, including the number of nodes used |
 | -x | Display information including jobs that have been completed in the past 10 days |
+| -t | Display information including array jobs. |
 
 Example)
 
@@ -270,6 +286,7 @@ The major options of the `qgstat` command are follows.
 | -f | Display detailed information about job |
 | -a | Display additional information about job, including the number of nodes used |
 | -x | Display information including jobs that have been completed in the past 10 days |
+| -t | Display information including array jobs. |
 
 Example)
 
@@ -335,6 +352,7 @@ During job execution, the following environment variables are available for the 
 | PBS\_NODEFILE  | The absolute path includes only hosts assigned by PBS |
 | PBS\_LOCALDIR | The local storage path assigned by PBS |
 | PBS\_O\_WORKDIR     | The working directory path of the job submitter |
+| PBS\_ARRAY\_INDEX       | Index number of the array job task the job represents |
 
 !!! warning
     Do not change these environment variables in a job because they are reserved by the job scheduler and may affect the job scheduler's behavior.
