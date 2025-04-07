@@ -25,7 +25,7 @@ ABCI point = ABCI Cloud Storage の使用量
            × ABCI Cloud Storage の単価
 ```
 
-ABCIクラウドストレージの単価は、[料金表](https://abci.ai/ja/how_to_use/tariffs.html) を確認してください。
+ABCIクラウドストレージの単価は、[料金表] を確認してください。
 
 | ページ名 | 概要 |
 |:--|:--|
