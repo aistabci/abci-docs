@@ -54,6 +54,8 @@ jobs:
           mkdocs build --config-file ./v3/portal/ja/mkdocs.yml   --site-dir "${GITHUB_WORKSPACE}/site/v3/portal/ja/"
           mkdocs build --config-file ./v3/portal/en/mkdocs.yml   --site-dir "${GITHUB_WORKSPACE}/site/v3/portal/en/"
 
+          mkdocs build --config-file ./v3/operations-portal/ja/mkdocs.yml --site-dir "${GITHUB_WORKSPACE}/site/v3/operations-portal/ja/"
+
       - name: Upload artifact
         uses: actions/upload-pages-artifact@56afc609e74202658d3ffba0e8f6dda462b719fa # v3.0.1
         with:
