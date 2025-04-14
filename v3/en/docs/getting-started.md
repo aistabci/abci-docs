@@ -16,7 +16,7 @@ To use the ABCI system, the "Responsible Person" must submit a new "ABCI applica
     - The "Responsible Person" can change "User" to "User Administrator" on the [ABCI User Portal](https://portal.abci.ai/user/).
     - The "Responsible Person" and "User Administrator" can add "User Administrators" or "Users" to the ABCI group.
     - The "Responsible Person" and "User Administrator" can change the "Responsible Person" of the ABCI group.
-    - Currently, ABCI 3.0 User Portal and the portal guide are available only in Japanese. 
+    - Currently, ABCI 3.0 User Portal and the portal guide are available only in Japanese.
 
 ### Uniqueness of the ABCI account {#account-uniqueness}
 As a general rule, each person should have a unique ABCI account. For example, it is not allowed that a company gets one ABCI account with use shared among more than one employees. On the other hand, if one person belongs to multiple corporations, that person may obtain multiple ABCI accounts. In such cases, the ABCI account corresponding to each corporation must be used appropriately.
