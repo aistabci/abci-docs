@@ -2,6 +2,8 @@
 
 ## 2025-04-15 {#2025-04-15}
 
+With the addition of the `qsub` command option, you can now control SSH login to compute nodes while a job is running. For detailedPlease refer to [job-execution.md#job-execution-options](job-execution.md#job-execution-options).
+
 We are planning to implement the following features:
 
 * SSH access control option when submitting jobs
