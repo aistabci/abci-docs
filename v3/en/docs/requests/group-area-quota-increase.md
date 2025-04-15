@@ -1,5 +1,5 @@
 # Request for Increasing Group Area Quota
-If you wish to use more than 200 million inodes or more than 1,000TB of disk space in a single ABCI group, please request by email to <abci3-qa@abci.ai>.ai using the format below. 
+If you wish to use more than 200 million inodes or more than 1,000TB of disk space in a single ABCI group, please request by email to <abci3-qa@abci.ai> using the format below. 
 The request should be sent by the responsible user or administrator, or with the responsible user in CC.
 
 If you only wish to increase either the inode limit or the disk usage limit, please delete the unnecessary part from the format below and apply.
