@@ -135,7 +135,7 @@ In addition, the following options are available as extended options.
 | Option | Description |
 |:--|:--|
 | -v RTYPE=resource\_type | Specify the resource type to be used for the reserved job. This option is mandatory when submitting a job to a reserved node. |
-| -v USE\_SSH=*{0,1,2}* | Specify SSH login to the compute nodes assigned to the job execution. The default is the  SSH login function disabled. (0: All group members including yourself cannot access 1: Only your account can access 2: Group members including yourself can access)
+| -v USE\_SSH=*{0,1,2}* | Specify SSH login to the compute nodes assigned to the job execution. The default is the  SSH login function disabled. 0: All group members including yourself cannot access, 1: Only your account can access, 2: Group members including yourself can access |
 
 ## Interactive Jobs
 
