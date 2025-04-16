@@ -1,5 +1,31 @@
 # Getting Started ABCI
 
+## Getting an ABCI account {#getting-an-account}
+
+### Application for use of ABCI
+To use an ABCI account, determine the research and development theme according to the agreements of use (rules or regulations) posted in the "Application Procedure", and submit a new "ABCI Application" on the ABCI User Portal. The ABCI application will be reviewed based on the terms of use, and if requirements are met, an ABCI group for which the application was made will be created and the applicant will be notified that the application has been adopted. After receiving notification, the applicant may start using the account.
+
+Please refer to the price list in [ABCI USAGE FEES](https://abci.ai/en/how_to_use/tariffs.html) and purchase ABCI points to pay the usage fee. Please purchase ABCI points for each ABCI group. At the time of application, a minimum of 1,000 ABCI points must be purchased.
+
+### Types of ABCI accounts {#account-type}
+There are three types of ABCI accounts: "Responsible Person", "User Administrator", "User".
+To use the ABCI system, the "Responsible Person" must submit a new "ABCI application" on the [ABCI User Portal](https://portal.v3.abci.ai/ProjectApplication_01) and obtain an ABCI group and one or more ABCI accounts. See the [ABCI Portal Guide](https://docs.abci.ai/v3/portal/ja/) for more details.
+
+!!! Note
+    - An ABCI account will also be issued to the "Responsible Person".
+    - The "Responsible Person" can change "User" to "User Administrator" on the [ABCI User Portal](https://portal.abci.ai/user/).
+    - The "Responsible Person" and "User Administrator" can add "User Administrators" or "Users" to the ABCI group.
+    - The "Responsible Person" and "User Administrator" can change the "Responsible Person" of the ABCI group.
+    - Currently, ABCI 3.0 User Portal and the portal guide are available only in Japanese.
+
+### Uniqueness of the ABCI account {#account-uniqueness}
+As a general rule, each person should have a unique ABCI account. For example, it is not allowed that a company gets one ABCI account with use shared among more than one employees. On the other hand, if one person belongs to multiple corporations, that person may obtain multiple ABCI accounts. In such cases, the ABCI account corresponding to each corporation must be used appropriately.
+
+### Persons belonging to multiple ABCI groups {#multi-titled-person}
+If one person is working on more than one themes in one corporation at the same time, instead of that person acquiring multiple ABCI accounts, such a person will belong to multiple ABCI groups with one ABCI account. In such cases, each ABCI group must be used appropriately according to the purpose of use. When unsure of which ABCI group to use, please contact the "Responsible Person" or "User Administrator" of the ABCI group. The "Responsible Person" or "User Administrator" of the ABCI group to which you belong will be displayed on the first screen after logging in to the [ABCI User Portal](https://portal.abci.ai/user/).
+
+Since usage determines which ABCI group bears the usage fee, please use the appropriate ABCI group according to the instructions of the "Responsible Person" or "User Administrator" of the ABCI group.
+
 ## Connecting to Interactive Node
 
 To connect to the interactive node (*login*), the ABCI frontend, two-step SSH public key authentication is required.
