@@ -12,6 +12,11 @@
 |:--|:--|:--|:--|
 | Update | Lustre-client | 2.14.0_ddn196 | 2.14.0_ddn172 |
 
+python の次のバージョンをインストールしました。
+
+* 3.12.9
+* 3.13.2
+
 ## 2025-03-03 {#2025-03-03}
 
 SingularityPROが利用可能となりました。使い方の詳細は[SingularityPROの利用方法](containers.md#how-to-use-singularitypro)を参照してください。
