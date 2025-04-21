@@ -2,11 +2,10 @@
 
 ## 2025-04-15 {#2025-04-15}
 
-`qsub`コマンドのオプション追加により、ジョブ実行中の計算ノードへのSSHログイン制御ができるようになりました。使い方の詳細は[ジョブ実行オプション](job-execution.md#job-execution-options)を参照してください。
+次の機能の実装をしました。
 
-次の機能の実装を予定しています。
-
-* ジョブ投入時のSSHアクセス制御オプション
+* ジョブ投入時のSSHアクセス制御オプション<br>
+    ** `qsub`コマンドのオプション追加により、ジョブ実行中の計算ノードへのSSHログイン制御ができるようになりました。使い方の詳細は[ジョブ実行オプション](job-execution.md#job-execution-options)を参照してください。
 * Open OnDemand Job Composer
 * 下記Lustre clientのupdate
 

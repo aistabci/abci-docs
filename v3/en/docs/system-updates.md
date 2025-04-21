@@ -2,11 +2,11 @@
 
 ## 2025-04-15 {#2025-04-15}
 
-With the addition of the `qsub` command option, you can now control SSH login to compute nodes while a job is running. For detailed, please refer to [Job Execution Options](job-execution.md#job-execution-options).
 
-We are planning to implement the following features:
+We implemented the following features:
 
-* SSH access control option when submitting jobs
+* SSH access control option when submitting jobs<br>
+  With the addition of the `qsub` command option, you can now control SSH login to compute nodes while a job is running. For detailed, please refer to [Job Execution Options](job-execution.md#job-execution-options).
 * Open OnDemand Job Composer
 * The following update for the Lustre client
 
