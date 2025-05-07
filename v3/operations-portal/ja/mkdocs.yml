@@ -1,0 +1,24 @@
+site_name: ABCI 3.0 Operations Portal Guide
+site_description: ABCI 3.0 Operations Portal Guide
+site_author: AIST
+site_url: https://docs.abci.ai/v3/operations-portal/ja
+copyright: 'Copyright &copy; 2024 National Institute of Advanced Industrial Science and Technology (AIST) / AIST Solutions Co. (AISol)'
+nav:
+  - 'はじめに': 'index.md'
+theme:
+  name: 'material'
+  favicon: 'img/favicon.png'
+  logo: 'img/logo.png'
+  palette:
+    primary: 'blue'
+  features:
+    - toc.integrate
+  custom_dir: overrides
+markdown_extensions:
+  - admonition
+  - codehilite
+  - attr_list
+  - footnotes
+plugins:
+  - search:
+      lang: ja
