@@ -8,7 +8,7 @@
     * `qsub`コマンドのオプション追加により、ジョブ実行中の計算ノードへのSSHログイン制御ができるようになりました。使い方の詳細は[ジョブ実行オプション](job-execution.md#job-execution-options)を参照してください。
 * Open OnDemand Job Composer
 
-以下のソフトウェアアップデートを行った。
+以下のソフトウェア・アップデートを行いました。
 
 | Add / Update / Delete | Software | Version | Previous version |
 |:--|:--|:--|:--|
