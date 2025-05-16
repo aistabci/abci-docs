@@ -13,6 +13,8 @@ We implemented the following features:
 |:--|:--|:--|:--|
 | Update | Lustre-client | 2.14.0_ddn196 | 2.14.0_ddn172 |
 
+The ABCI 2.0 home area (`/home-2.0`) that was mounted for data migration has been unmounted due to the end of provision.
+
 ## 2025-03-03 {#2025-03-03}
 
 SingularityPRO is now available. For detailed usage instructions, please refer to [How to use SingularityPRO](containers.md#how-to-use-singularitypro).
