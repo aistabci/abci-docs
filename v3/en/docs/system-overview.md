@@ -92,7 +92,6 @@ The following file systems are mounted for the purpose of data migration.
 
 | Usage | Mount point | Effective capacity | File system | Notes |
 |:--|:--|:--|:--|:--|
-| Archive | /home-2.0 | 0.5 PB | Lustre | Read-only. Home area used in ABCI 2.0 |
 | Archive | /groups-2.0 | 10.8 PB | Lustre | Read-only. Group area used in ABCI 2.0 |
 
 
