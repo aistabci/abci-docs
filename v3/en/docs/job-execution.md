@@ -44,11 +44,11 @@ The following describes the available resource types first, followed by the rest
 
 The ABCI system provides the following resource types:
 
-| Resource type name | Description | Assigned physical CPU core | Number of assigned GPU | Memory (GB) | Local storage (GB) | ABCI points per hour for Spot and On-demand (※) |
+| Resource type name | Description | Number of assigned CPU core | Number of assigned GPU | Memory (GB) | Local storage (GB) | ABCI points per hour for Spot and On-demand (※) |
 |:--|:--|:--|:--|:--|:--|:--|
-| rt\_HF | node-exclusive | 96 | 8 | 1920 | 14 | 7.5 |
-| rt\_HG | node-sharing<br>with GPU | 8 | 1 | 160 | 1.4 | 1.5 |
-| rt\_HC | node-sharing<br>CPU only | 16 | 0 | 320 | 1.4 | 0.5 |
+| rt\_HF | node-exclusive | 192 | 8 | 1920 | 14 | 7.5 |
+| rt\_HG | node-sharing<br>with GPU | 16 | 1 | 160 | 1.4 | 1.5 |
+| rt\_HC | node-sharing<br>CPU only | 32 | 0 | 320 | 1.4 | 0.5 |
 
 (※) Reserved service for rt_HF consumes 1.5 times the points.
 
@@ -116,7 +116,7 @@ The major options of the `qsub` command are follows.
 |:--|:--|
 | -P *group* | Specify ABCI user group. You can only specify the ABCI group to which your ABCI account belongs. (mandatory) |
 | -q *resource_type* | Specify resource type (mandatory) |
-| -l select=*num*[*:ncpus=num_cpus:mpiprocs=num_mpi:ompthreads=num_omp*] | Specify the number of nodes with *num* and the number of CPUs corresponding to each resource type with *num_cpus*, the number of MPI processes with *num_mpi*, and the number of threads with *num_omp*. (mandatory) |
+| -l select=*num*[*:ncpus=num_cpus:mpiprocs=num_mpi:ompthreads=num_omp*] | Specify the number of nodes with *num*, the number of MPI processes with *num_mpi* and the number of threads with *num_omp*. The number of CPU cores corresponding to the resource type specified by -q option is set to *num_cpus*. (mandatory) |
 | -l walltime=[*HH:MM:*]*SS* | Specify elapsed time by [*HH:MM:*]*SS*. When execution time of job exceed specified time, job is rejected. |
 | -N name | Specify the job name with *name*. The default is the job script name. |
 | -o *stdout_name* | Specify standard output stream of job. The output file will be created after the job completes. |
