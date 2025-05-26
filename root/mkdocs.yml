@@ -20,4 +20,4 @@ markdown_extensions:
 plugins:
   - redirects:
       redirect_maps:
-        'index.md': 'https://docs.abci.ai/ja/'
+        'index.md': 'https://docs.abci.ai/v3/ja/'
