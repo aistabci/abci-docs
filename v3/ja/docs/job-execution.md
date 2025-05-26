@@ -117,7 +117,7 @@ Reservedサービスで予約ノードに投入されたジョブはカウント
 |:--|:--|
 | -P *group* | ABCI利用グループを*group*で指定します。自分のABCIアカウントが所属しているABCIグループのみ指定できます。本オプションは指定必須です。 |
 | -q *resource_type* | 資源タイプ*resource_type*を指定します。本オプションは指定必須です。 |
-| -l select=*num*[*:ncpus=num_cpus:mpiprocs=num_mpi:ompthreads=num_omp*] | ノード数を*num*で、MPIプロセス数を*num_mpi*で、スレッド数を*num_omp*で指定します。ncpus には -q オプションで指定した資源タイプに応じた割り当てCPUコア数が設定されます。本オプションは指定必須です。 |
+| -l select=*num*[*:ncpus=num_cpus:mpiprocs=num_mpi:ompthreads=num_omp*] | ノード数を*num*で、MPIプロセス数を*num_mpi*で、スレッド数を*num_omp*で指定します。ncpus には -q オプションで指定した資源タイプに応じた割り当てCPUコア数が既定値として設定されます。本オプションは指定必須です。 |
 | -l walltime=[*HH:MM:*]*SS* | 経過時間制限値を指定します。[*HH:MM:*]*SS*で指定することができます。ジョブの実行時間が指定した時間を超過した場合、ジョブは強制終了されます。 |
 | -N name | ジョブ名を*name*で指定します。デフォルトは、ジョブスクリプト名です。 |
 | -o *stdout_name* | 標準出力名を*stdout_name*で指定します。出力ファイルはジョブ終了後に作成されます。 |
