@@ -44,13 +44,13 @@ The following describes the available resource types first, followed by the rest
 
 The ABCI system provides the following resource types:
 
-| Resource type name | Description | Assigned physical CPU core | Number of assigned GPU | Memory (GB) | Local storage (GB) | ABCI points per hour for Spot and On-demand (※) |
-|:--|:--|:--|:--|:--|:--|:--|
-| rt\_HF | node-exclusive | 96 | 8 | 1920 | 14 | 7.5 |
-| rt\_HG | node-sharing<br>with GPU | 8 | 1 | 160 | 1.4 | 1.5 |
-| rt\_HC | node-sharing<br>CPU only | 16 | 0 | 320 | 1.4 | 0.5 |
+| Resource type name | Description | Assigned physical CPU core | Number of assigned GPU | Memory (GB) | Local storage (GB) |
+|:--|:--|:--|:--|:--|:--|
+| rt\_HF | node-exclusive | 96 | 8 | 1920 | 14 |
+| rt\_HG | node-sharing<br>with GPU | 8 | 1 | 160 | 1.4 |
+| rt\_HC | node-sharing<br>CPU only | 16 | 0 | 320 | 1.4 |
 
-(※) Reserved service for rt_HF consumes 1.5 times the points.
+Please refer to the [accounting information](https://abci.ai/en/how_to_use/tariffs.html) for the charges associated with each resource type.
 
 ### Number of nodes available at the same time
 
@@ -135,7 +135,7 @@ In addition, the following options are available as extended options.
 | Option | Description |
 |:--|:--|
 | -v RTYPE=resource\_type | Specify the resource type to be used for the reserved job. This option is mandatory when submitting a job to a reserved node. |
-| -v USE\_SSH=*{0,1,2}* | Specify SSH login to the compute nodes assigned to the job execution. The default is the  SSH login function disabled. 0: All group members including yourself cannot access, 1: Only your account can access, 2: Group members including yourself can access |
+| -v USE\_SSH=*{0,1,2}* | Specify SSH login to the compute nodes assigned to the job execution of resource type "rt_HF". The default is the  SSH login function disabled. 0: All group members including yourself cannot access, 1: Only your account can access, 2: Group members including yourself can access |
 
 ## Interactive Jobs
 

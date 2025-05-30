@@ -7,11 +7,17 @@ We implemented the following features:
 * SSH access control option when submitting jobs
     * With the addition of the `qsub` command option, you can now control SSH login to compute nodes while a job is running. For detailed, please refer to [Job Execution Options](job-execution.md#job-execution-options).
 * Open OnDemand Job Composer
-* The following update for the Lustre client
+
+The following software has been updated:
 
 | Add / Update / Delete | Software | Version | Previous version |
 |:--|:--|:--|:--|
 | Update | Lustre-client | 2.14.0_ddn196 | 2.14.0_ddn172 |
+| Update | python (Interactive Node) | 3.19.21 | 3.19.18 |
+| Add | python | 3.12.9 | |
+| Add | python | 3.13.2 | |
+
+The ABCI 2.0 home area (`/home-2.0`) that was mounted for data migration has been unmounted due to the end of provision.
 
 ## 2025-03-03 {#2025-03-03}
 
