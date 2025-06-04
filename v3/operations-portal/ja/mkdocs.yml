@@ -1,16 +1,36 @@
-site_name: ABCI 3.0 Operations Portal Guide
-site_description: ABCI 3.0 Operations Portal Guide
+site_name: ABCI 3.0 Management Portal
+site_description: ABCI 3.0 Management Portal, Japanese version
 site_author: AIST
-site_url: https://docs.abci.ai/v3/operations-portal/ja
-copyright: 'Copyright &copy; 2024 National Institute of Advanced Industrial Science and Technology (AIST) / AIST Solutions Co. (AISol)'
+site_url: 
+repo_url: https://github.com/aistairc/abci-docs
+edit_uri: edit/master/portal/ja/docs/
+copyright: 'Copyright &copy; 2021 National Institute of Advanced Industrial Science and Technology (AIST)'
 nav:
   - 'はじめに': 'index.md'
+  - '1. 共通の操作': '01.md'
+  - '2. ログイン': '02.md'
+  - '3. 利用グループ参照': '03.md'
+  - '4. 利用グループ申請承認': '04.md'
+  - '5. 利用グループ一時停止': '05.md'
+  - '6. 利用グループ一時停止解除': '06.md'
+  - '7. 利用者アカウント参照': '07.md'
+  - '8. 利用者アカウント申請承認': '08.md'
+  - '9. 利用責任者変更申請承認': '09.md'
+  - '10. 利用アカウント一時停止': '10.md'
+  - '11. 利用アカウント一時停止解除': '11.md'
+  - '12. ABCIポイント追加承認': '12.md'
+  - '13. 各種一覧のダウンロード': '13.md'
+  - '14. 年度ごとの期日の設定方法': '14.md'
+  - '15. リストビューの作成方法': '15.md'
+  - '16. レポートの作成方法': '16.md'
+  - '17. ログイン状況の確認方法': '17.md'
 theme:
   name: 'material'
   favicon: 'img/favicon.png'
   logo: 'img/logo.png'
+  language: 'ja'
   palette:
-    primary: 'blue'
+    primary: 'teal'
   features:
     - toc.integrate
   custom_dir: overrides
@@ -18,7 +38,6 @@ markdown_extensions:
   - admonition
   - codehilite
   - attr_list
-  - footnotes
 plugins:
   - search:
       lang: ja
