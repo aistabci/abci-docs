@@ -13,7 +13,7 @@ The following software has been updated:
 | Add / Update / Delete | Software | Version | Previous version |
 |:--|:--|:--|:--|
 | Update | Lustre-client | 2.14.0_ddn196 | 2.14.0_ddn172 |
-| Update | python (Interactive Node) | 3.19.21 | 3.19.18 |
+| Update | python (Interactive Node) | 3.9.21 | 3.9.18 |
 | Add | python | 3.12.9 | |
 | Add | python | 3.13.2 | |
 
