@@ -22,6 +22,7 @@ nav:
 #    - 'Usage (Under Update)': 'abci-objectstorage/usage.md'
   - 'Open OnDemand':
     - 'Using Open OnDemand': 'open-ondemand/index.md'
+    - 'Ineractive Apps': 'open-ondemand/interactive-apps.md'
   - 'System Updates': 'system-updates.md'
   - 'Contact': 'contact.md'
   - 'Various Requests':

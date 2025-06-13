@@ -23,6 +23,7 @@ nav:
 #    - '使い方 （更新中）': 'abci-objectstorage/usage.md'
   - 'Open OnDemand':
     - '使い方': 'open-ondemand/index.md'
+    - 'インタラクティブアプリ': 'open-ondemand/interactive-apps.md'
   - 'システム更新履歴': 'system-updates.md'
   - 'お問い合わせ': 'contact.md'
   - '各種申請':
