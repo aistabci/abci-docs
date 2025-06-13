@@ -368,11 +368,11 @@ The maximum number of nodes and the node-time product that can be reserved for t
 |:--|:--|
 | Minimum reservation days | 1 day |
 | Maximum reservation days | 60 days |
-| Maximum number of nodes can be reserved at once per ABCI group | 192 nodes |
-| Maximum number of nodes can be reserved at once per system | 384 nodes |
+| Maximum number of nodes can be reserved at once per ABCI group | 32 nodes |
+| Maximum number of nodes can be reserved at once per system | 640 nodes |
 | Minimum reserved nodes per reservation | 1 nodes |
-| Maximum reserved nodes per reservation | 192 nodes |
-| Maximum reserved node time per reservation | 64,512 nodes x hour |
+| Maximum reserved nodes per reservation | 32 nodes |
+| Maximum reserved node time per reservation | 10,752 nodes x hour |
 
 ### Make a reservation
 
@@ -448,8 +448,8 @@ Example) Check the number of reservable nodes per group
 [username@login1 ~]$ qrstat --available=grpname
 date       available nodes for group
 ---------- -------------------------
-01/30/2025                       192
-01/31/2025                       192
+01/30/2025                       32
+01/31/2025                       32
 ```
 
 
