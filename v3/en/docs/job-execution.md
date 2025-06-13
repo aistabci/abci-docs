@@ -447,8 +447,8 @@ Example) Check the number of reservable nodes per group
 [username@login1 ~]$ qrstat --available=grpname
 date       available nodes for group
 ---------- -------------------------
-01/30/2025                       192
-01/31/2025                       192
+01/30/2025                       32
+01/31/2025                       32
 ```
 
 

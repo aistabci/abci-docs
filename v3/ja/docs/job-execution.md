@@ -453,8 +453,8 @@ R1234.pbs1      R1234         usrname  RN            Wed 10:40 / 1506000 / Sat F
 [username@login1 ~]$ qrstat --available=grpname
 date       available nodes for group
 ---------- -------------------------
-01/30/2025                       192
-01/31/2025                       192
+01/30/2025                       32
+01/31/2025                       32
 ```
 
 ### 予約の取り消し {#cancel-a-reservation}
