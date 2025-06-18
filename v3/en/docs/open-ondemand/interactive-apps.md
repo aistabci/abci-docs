@@ -2,8 +2,8 @@
 
 Interactive apps are applications that run on the ABCI compute nodes and can be interactively operated in the web browser.
 
-When launching an interactive app, you specify an ABCI group and a type of ABCI resources.
-The interactive app is launched as a batch job that consumes ABCI points from the specified group and uses computational resources of the specified resource type.
+To launch an interactive app, you specify an ABCI group, a type of ABCI resource and click the "Launch" button.
+The interactive app is launched as a batch job that consumes ABCI points from the specified group and uses computational resources of the specified resource type. Once the interactive app is launched, the link to connect to it is displayed, by clicking which you can use the app.
 
 Open OnDemand for ABCI provides the following interactive apps:
 
@@ -19,9 +19,9 @@ Jupyter Lab is launched on the compute nodes, allowing you to operate it from th
     ~/ondemand/data/sys/dashboard/batch_connect/sys/jupyter_app/jupyter_app/output/
     ```
 
-## VSCode {#vscode}
+## code-server {#code-server}
 
-Open OnDemand for ABCI provides [VSCode(Visual Studio Code)](https://azure.microsoft.com/en-us/products/visual-studio-code), allowing you to operate on compute nodes through your web browser with VSCode server running there.
+Open OnDemand for ABCI provides [code-server](https://github.com/coder/code-server), allowing you to use [VS Code](https://github.com/Microsoft/vscode) through your web browser and operate on compute nodes by running code-server there.
 
 ## Interactive Desktop {#interactive_desktop}
 

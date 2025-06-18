@@ -4,7 +4,7 @@
 
 Open OnDemand のインタラクティブアプリに、次のアプリケーションを追加しました。
 
-* VSCode(Visual Studio Code)
+* code-server
 * Interactive Desktop(Xfce)
 
 ## 2025-04-15 {#2025-04-15}
