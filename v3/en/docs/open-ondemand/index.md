@@ -16,7 +16,8 @@ The following features is available on the web browser, making it easier to use 
 To log in to the Open OnDemand, first open the URL [https://ood.v3.abci.ai/](https://ood.v3.abci.ai/).
 After accessing `ood.v3.abci.ai`, you will be prompted to enter your username and password.
 Please enter the ABCI account name and password.
-The initial passwords will be distributed sequentially to users, prioritizing applicants for Development Acceleration Use and Collaborative Data-PoC Support Program. 
+For the initial password, follow the form in the Customer Support Contacts section of the 
+[Customer Support](https://abci.ai/en/how_to_use/user_support.html) section and contact the Operation Support(abci3-qa@abci.ai). 
 To change the initial password, please refer to the  [How to change the initial password](#how-to-change-the-initial-password).
 
 After authenticating with your username and password, you will be asked to enter an access code.

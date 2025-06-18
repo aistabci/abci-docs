@@ -15,7 +15,7 @@
 
 Open OnDemandにログインするためにはまず、URL [https://ood.v3.abci.ai/](https://ood.v3.abci.ai/) にアクセスします。
 ood.v3.abci.ai にアクセスした後、ABCIアカウント名とパスワードの入力が求められるので、ABCIアカウント名とパスワードを入力してください。
-初期パスワードは、[開発加速利用](https://abci.ai/news/2024/10/15/ja_abci3.0_accelerated_use.html)と[共創型データ実証支援プログラム](https://abci.ai/ja/data_poc_support/)の応募者を優先して、順次利用者の皆様へお送りします。初期パスワードの変更については[初期パスワード変更方法](#how-to-change-the-initial-password)を参照してください。
+初期パスワードの発行は、[ユーザーサポート](https://abci.ai/ja/how_to_use/user_support.html) の「カスタマーサポート窓口」に記載された書式に従い、運用サポート(abci3-qa@abci.ai)へご依頼ください。初期パスワードの変更については[初期パスワード変更方法](#how-to-change-the-initial-password)を参照してください。
 
 ABCIアカウント名とパスワードによる認証後、アクセスコードの入力が求められます。
 アクセスコードは登録しているメールアドレス宛に送付されますので、アクセスコードを受信後、入力フォームにアクセスコードを入力してください。
