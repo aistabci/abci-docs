@@ -2,7 +2,7 @@
 
 Interactive apps are applications that run on the ABCI compute nodes and can be interactively operated in the web browser.
 
-To launch an interactive app, you specify an ABCI group, a type of ABCI resource and click the "Launch" button.
+To launch an interactive app, you open the app, specify an ABCI group and a type of ABCI resource, and click the "Launch" button.
 The interactive app is launched as a batch job that consumes ABCI points from the specified group.
 Once the interactive app is launched, the link to connect to it is displayed, by clicking which you can use the app.
 
