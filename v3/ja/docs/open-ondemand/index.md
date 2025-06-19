@@ -10,23 +10,12 @@
 - ホーム領域、グループ領域のファイル操作
 - Jupyter Lab等のWebアプリケーションの利用
 
+## 初期パスワードの発行 {#initial-password}
 
-## ログイン方法 {#login}
+Open OnDemandに初めてログインする場合、Open OnDemand用の初期パスワードが必要です。
+初期パスワードの発行は、[お問い合わせ](../contact.md)ページを参照のうえ、<abci3-qa@abci.ai> までご依頼ください。
 
-Open OnDemandにログインするためにはまず、URL [https://ood.v3.abci.ai/](https://ood.v3.abci.ai/) にアクセスします。
-ood.v3.abci.ai にアクセスした後、ABCIアカウント名とパスワードの入力が求められるので、ABCIアカウント名とパスワードを入力してください。
-初期パスワードの発行は、[ユーザーサポート](https://abci.ai/ja/how_to_use/user_support.html) の「カスタマーサポート窓口」に記載された書式に従い、運用サポート(abci3-qa@abci.ai)へご依頼ください。初期パスワードの変更については[初期パスワード変更方法](#how-to-change-the-initial-password)を参照してください。
-
-ABCIアカウント名とパスワードによる認証後、アクセスコードの入力が求められます。
-アクセスコードは登録しているメールアドレス宛に送付されますので、アクセスコードを受信後、入力フォームにアクセスコードを入力してください。
-
-!!! note
-    アクセスコードを記載したメールが、迷惑メールフォルダに振り分けられる場合があります。メールが届かない場合は、迷惑メールフォルダのご確認をお願いいたします。
-
-アクセスコードによる認証後、Open OnDemandへのログインが完了します。
-
-!!! warning
-    ログイン中にエラーが発生した場合は、管理者まで[お問合せ](../contact.md)ください。
+初期パスワードの変更については[初期パスワード変更方法](#how-to-change-the-initial-password)を参照してください。
 
 
 ## 初期パスワード変更方法 {#how-to-change-the-initial-password}
@@ -42,6 +31,23 @@ Retype new password:<新しいパスワードの再入力>
 passwd: all authentication tokens updated successfully.
 [username@login1 ~]$
 ```
+
+
+## ログイン方法 {#login}
+
+Open OnDemandにログインするためにはまず、URL [https://ood.v3.abci.ai/](https://ood.v3.abci.ai/) にアクセスします。
+ood.v3.abci.ai にアクセスした後、ABCIアカウント名とパスワードの入力が求められるので、ABCIアカウント名とパスワードを入力してください。
+
+ABCIアカウント名とパスワードによる認証後、アクセスコードの入力が求められます。
+アクセスコードは登録しているメールアドレス宛に送付されますので、アクセスコードを受信後、入力フォームにアクセスコードを入力してください。
+
+!!! note
+    アクセスコードを記載したメールが、迷惑メールフォルダに振り分けられる場合があります。メールが届かない場合は、迷惑メールフォルダのご確認をお願いいたします。
+
+アクセスコードによる認証後、Open OnDemandへのログインが完了します。
+
+!!! warning
+    ログイン中にエラーが発生した場合は、管理者まで[お問合せ](../contact.md)ください。
 
 
 ## アプリケーション {#applications}
