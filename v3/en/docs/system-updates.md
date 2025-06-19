@@ -1,5 +1,12 @@
 # System Updates
 
+## 2025-06-20 {#2025-06-20}
+
+We have added the following applications as Open OnDemand Interactive Apps.
+
+* code-server
+* Interactive Desktop(Xfce)
+
 ## 2025-04-15 {#2025-04-15}
 
 We implemented the following features:

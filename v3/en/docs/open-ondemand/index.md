@@ -54,7 +54,7 @@ You can access the features provided by the Open OnDemand from the menu at the t
 
 1. **Files**: Perform file operations in the browser.
 
-2. **Jobs(implementation in progress)**: Edit and manage jobs in the browser.
+2. **Jobs**: Edit and manage jobs in the browser.
 
 3. **Clusters**: Open the console for the interactive nodes.
 
