@@ -92,7 +92,6 @@ The following file systems are mounted for the purpose of data migration.
 
 | Usage | Mount point | Effective capacity | File system | Notes |
 |:--|:--|:--|:--|:--|
-| Archive | /home-2.0 | 0.5 PB | Lustre | Read-only. Home area used in ABCI 2.0 |
 | Archive | /groups-2.0 | 10.8 PB | Lustre | Read-only. Group area used in ABCI 2.0 |
 
 
@@ -110,13 +109,13 @@ Storage Service Specifications:
 
 | Storage | Initial Available Capacity | Capacity Limit | Number of Inode | Inode Limit | ABCI Points Consumption<br>(Standard Use) | ABCI Points Consumption<br>(Accelerated Development Use) |
 | :- | :- | :- | :- | :- | :- | :- |
-| /home | 2TB | 2TB | Free | 25 billion | Free | Free |
+| /home | 2TB | 2TB | | | Free | Free |
 | /groups | 0TB | 1000TB | 200 million | 600 million | 5 points per month per 1TB | 2.5 points per month per 1TB |
 | /groups-2.0 | - | - | - | - | Free | Free |
 
 !!! note
     * The storage service allocates 1,099,511,627,776 bytes per 1TB. 
-    * The total number of inodes in /home is approximately 25 billion. There is no limit on the number of inodes per user. 
+    * The /home file system is shared by all users, and its total number of inodes is about 25 billion. There is no limit on the number of inodes in the /home directory for individual users.
     * The capacity of /groups can be increased up to 1,000TB via the user portal[^footnote01]. 
     * If you need more than 1,000TB of capacity or want to increase the inode limit in /groups, you need to apply via email. For application procedures, please refer to [Request for Increasing Group Area Quota](requests/group-area-quota-increase.md). 
     * The /groups-2.0 service will be discontinued at the end of September 2025. For more details, please refer to [Future Storage Service Announcements](https://abci.ai/news/2024/09/04/en_storage_after_nov2024.html).
@@ -134,7 +133,7 @@ The software available on the ABCI system is shown below.
 | Job Scheduler | Altair PBS Professional | 2022.1.6 | 2022.1.6 |
 | Development Environment | CUDA Toolkit | 11.8.0<br>12.0.1<br>12.1.1<br>12.2.2<br>12.3.2<br>12.4.1<br>12.5.1<br>12.6.1 | 11.8.0<br>12.0.1<br>12.1.1<br>12.2.2<br>12.3.2<br>12.4.1<br>12.5.1<br>12.6.1 |
 | | Intel oneAPI<br>(compilers and libraries) | 2024.2.1 | 2024.2.1 |
-| | Python | 3.9.18 | 3.9.18 |
+| | Python | 3.9.21<br>3.12.9<br>3.13.2 | 3.9.18<br>3.12.9<br>3.13.2 |
 | | Ruby | 3.0.4 | 3.0.4 |
 | | R | 4.4.1 | 4.4.1 |
 | | Java | 11.0.22.0.7 | 11.0.23.0.9 |

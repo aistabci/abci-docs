@@ -7,11 +7,17 @@
 * ジョブ投入時のSSHアクセス制御オプション
     * `qsub`コマンドのオプション追加により、ジョブ実行中の計算ノードへのSSHログイン制御ができるようになりました。使い方の詳細は[ジョブ実行オプション](job-execution.md#job-execution-options)を参照してください。
 * Open OnDemand Job Composer
-* 下記Lustre clientのupdate
+
+以下のソフトウェア・アップデートを行いました。
 
 | Add / Update / Delete | Software | Version | Previous version |
 |:--|:--|:--|:--|
 | Update | Lustre-client | 2.14.0_ddn196 | 2.14.0_ddn172 |
+| Update | python (インタラクティブノード) | 3.19.21 | 3.19.18 |
+| Add | python | 3.12.9 | |
+| Add | python | 3.13.2 | |
+
+データ移行のためにマウントしていたABCI 2.0のホーム領域(`/home-2.0`)を提供終了に伴いアンマウントしました。
 
 ## 2025-03-03 {#2025-03-03}
 
