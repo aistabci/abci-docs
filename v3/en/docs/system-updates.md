@@ -1,5 +1,12 @@
 # System Updates
 
+## 2025-06-20 {#2025-06-20}
+
+We have added the following applications as Open OnDemand Interactive Apps.
+
+* code-server
+* Interactive Desktop(Xfce)
+
 ## 2025-04-15 {#2025-04-15}
 
 We implemented the following features:
@@ -13,7 +20,7 @@ The following software has been updated:
 | Add / Update / Delete | Software | Version | Previous version |
 |:--|:--|:--|:--|
 | Update | Lustre-client | 2.14.0_ddn196 | 2.14.0_ddn172 |
-| Update | python (Interactive Node) | 3.19.21 | 3.19.18 |
+| Update | python (Interactive Node) | 3.9.21 | 3.9.18 |
 | Add | python | 3.12.9 | |
 | Add | python | 3.13.2 | |
 
