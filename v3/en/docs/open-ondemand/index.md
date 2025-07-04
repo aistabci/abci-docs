@@ -40,7 +40,7 @@ To log in to the Open OnDemand, first open the URL [https://ood.v3.abci.ai/](htt
 After accessing `ood.v3.abci.ai`, you will be prompted to enter your username and password.
 Please enter the ABCI account name and password.
 After authenticating with your username and password, you will be asked to enter an access code.
-The access code will be sent to your registered email address, so please enter the access code into the input form after receiving it.
+The access code will be sent to your registered email address, so please enter the access code into the input form after receiving it. The access code is valid for 30 minutes after issuance.
 
 !!! note
     The email containing the access code may be sorted into your spam/junk mail folder. If you do not receive the email, please check your spam/junk mail folder.
@@ -59,7 +59,7 @@ You can access the features provided by the Open OnDemand from the menu at the t
 
 1. **Files**: Perform file operations in the browser.
 
-2. **Jobs(implementation in progress)**: Edit and manage jobs in the browser.
+2. **Jobs**: Edit and manage jobs in the browser.
 
 3. **Clusters**: Open the console for the interactive nodes.
 
