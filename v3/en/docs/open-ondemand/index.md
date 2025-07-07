@@ -11,24 +11,12 @@ The following features is available on the web browser, making it easier to use 
 * Use of web applications such as Jupyter Lab
 
 
-## Login
+## Initial password {#initial-password}
 
-To log in to the Open OnDemand, first open the URL [https://ood.v3.abci.ai/](https://ood.v3.abci.ai/).
-After accessing `ood.v3.abci.ai`, you will be prompted to enter your username and password.
-Please enter the ABCI account name and password.
-The initial passwords will be distributed sequentially to users, prioritizing applicants for Development Acceleration Use and Collaborative Data-PoC Support Program. 
-To change the initial password, please refer to the  [How to change the initial password](#how-to-change-the-initial-password).
+When you login to Open OnDemand for the first time, you need initial password for it.
+For your initial password, please contact <abci3-qa@abci.ai> refering to [Contact](../contact.md).
 
-After authenticating with your username and password, you will be asked to enter an access code.
-The access code will be sent to your registered email address, so please enter the access code into the input form after receiving it. The access code is valid for 30 minutes after issuance.
-
-!!! note
-    The email containing the access code may be sorted into your spam/junk mail folder. If you do not receive the email, please check your spam/junk mail folder.
-
-After authenticating with the access code, you will be logged in to the Open OnDemand.
-
-!!! warning
-    If an error occurs during login, please [contact](../contact.md) the administrator.
+Please refer to [How to change the initial password](#how-to-change-the-initial-password) for changing initial password.
 
 
 ## How to change the initial password {#how-to-change-the-initial-password}
@@ -44,6 +32,23 @@ Retype new password:<Re-entering the new password>
 passwd: all authentication tokens updated successfully.
 [username@login1 ~]$
 ```
+
+
+## Login
+
+To log in to the Open OnDemand, first open the URL [https://ood.v3.abci.ai/](https://ood.v3.abci.ai/).
+After accessing `ood.v3.abci.ai`, you will be prompted to enter your username and password.
+Please enter the ABCI account name and password.
+After authenticating with your username and password, you will be asked to enter an access code.
+The access code will be sent to your registered email address, so please enter the access code into the input form after receiving it. The access code is valid for 30 minutes after issuance.
+
+!!! note
+    The email containing the access code may be sorted into your spam/junk mail folder. If you do not receive the email, please check your spam/junk mail folder.
+
+After authenticating with the access code, you will be logged in to the Open OnDemand.
+
+!!! warning
+    If an error occurs during login, please [contact](../contact.md) the administrator.
 
 
 ## Applications
