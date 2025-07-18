@@ -67,6 +67,9 @@ You can access the features provided by the Open OnDemand from the menu at the t
 
 <!-- 5. **AI Hub**: AI Hub is a collection of tools and services for reusing large-scale pre-trained models on the ABCI. It provides an application to manage the deployment of the MLflow Tracking Server, one of the features that constitute AI Hub.-->
 
+!!! note
+    Time-out period of console in **Clusters** is 100 minutes if inactive, 10 hours if active.
+
 
 ## Compatibility with ABCI 2.0 
 
