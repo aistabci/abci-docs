@@ -65,7 +65,7 @@ Principal には、アクセス権を設定するユーザーを記述します�
 
 ABCIユーザー間でバケットを共有する方法について説明します。この例では、ユーザーAが所有する share-bucket というバケットを bbb00000.1、bbb00001.1 という2人のクラウドストレージアカウントにアクセスを許可します。
 
-まず、アクセスを許可するアカウント bbb00000.1 と bbb00001.1 の uuid の値をアクセス許可を受けるユーザが `aws s3api list-buckets` でID(uuid)を確認します。
+まず、アクセスを許可するアカウント bbb00000.1 と bbb00001.1 の UUID の値をアクセス許可を受けるユーザが `aws s3api list-buckets` でID(UUID)を確認します。
 
 ```
 [username@login1 ~]$ aws --endpoint-url https://s3.v3.abci.ai s3api list-buckets
@@ -77,28 +77,27 @@ ABCIユーザー間でバケットを共有する方法について説明しま�
         },
     ],
     "Owner": {
-        "DisplayName": "<バケット所有者ののuuid>",
-        "ID": "<バケット所有者ののuuid>"
+        "DisplayName": "<バケット所有者ののUUID>",
+        "ID": "<バケット所有者ののUUID>"
     }
 }
 ```
 
-次に、グループAのユーザが以下の内容の cross-access-pc.json というファイルを作成します。説明上、cross-access-pc.json としますが、任意のファイル名を使うことができます。
+次に、ユーザーAが以下の内容の cross-access-pc.json というファイルを作成します。説明上、cross-access-pc.json としますが、任意のファイル名を使うことができます。
 
 ```
 $cat cross-access-pc.json
 {
-  "Policy": {
-    "Id": "AllowUser",
     "Version": "2008-10-17",
+    "Id": "AllowUser",
     "Statement": [
       {
         "Sid": "statement1_Allow",
         "Effect": "Allow",
         "Principal": {
           "DDN": [
-            "<bbb00000のuuid>",
-            "<bbb00001のuuid>",
+            "<bbb00000.1のUUID>",
+            "<bbb00001.1のUUID>",
           ]
         },
         "Action": [
@@ -108,7 +107,6 @@ $cat cross-access-pc.json
         "Resource": "share-bucket"
       }
     ]
-  }
 }
 ```
 
