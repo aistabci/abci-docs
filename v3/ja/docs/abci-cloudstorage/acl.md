@@ -214,7 +214,7 @@ put-object-acl で public-read を設定します。また、get-object-acl で�
 
 ```
 [username@login1 ~]$ aws --endpoint-url https://s3.v3.abci.ai s3api put-object-acl --bucket test-pub2 --acl public-read --key test/test.txt
-[username@login1 ~]$ aws --endpoint-url https://s3.v3.abci.ai s3api get-object-acl--bucket test-pub2 --key test/test.txt
+[username@login1 ~]$ aws --endpoint-url https://s3.v3.abci.ai s3api get-object-acl --bucket test-pub2 --key test/test.txt
 {
     "Owner": {
         "DisplayName": "f12d0fa66ea4df5418c0c6234fd5eb3a9f4409bf50b5a58983a30be8f9a42bda",
