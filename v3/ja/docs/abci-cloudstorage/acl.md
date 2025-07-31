@@ -108,7 +108,7 @@ $ aws --endpoint-url https://s3.v3.abci.ai s3api list-buckets
 ```
 [username@login1 ~]$ aws --endpoint-url https://s3.v3.abci.ai s3api put-object-acl --acl private --bucket test-share --key test/testdata
 ```
-バケットに他のグループのwrite権限を付与し、他のグループがオブジェクトをアップロードした場合、そのオブジェクトにかかるABCIポイントは、バケットを所有しているグループから差し引かれます。
+バケットに他のグループのwrite権限を付与し、他のグループがオブジェクトをアップロードした場合、そのオブジェクトの利用量は、バケットを所有しているABCIグループの「クラウドストレージ容量」としてカウントされます。クラウドストレージ容量のためにはABCIポイントが必要です。
 
 ### クラウドストレージの全アカウントに公開 {#open-to-all-accounts-on-abci-cloud-storage}
 
@@ -121,7 +121,7 @@ $ aws --endpoint-url https://s3.v3.abci.ai s3api list-buckets
 
 ### パブリックアクセス {#public-access}
 
-インターネット上の誰からでもアクセスできるようにする（パブリックアクセス）設定は、次の２つの既定ACLを用いて行うことができます。それぞれ、バケットあるいはオブジェクトに適用します。
+誰からでもアクセスできるようにする（パブリックアクセス）設定は、次の２つの既定ACLを用いて行うことができます。それぞれ、バケットあるいはオブジェクトに適用します。
 
 | 既定ACL           |バケット                                                                                   |オブジェクト|
 | :--| :--| :--|
@@ -177,7 +177,7 @@ put-bucket-acl で public-read を設定します。設定の確認は get-bucke
 }
 ```
 
-アクセスができることの確認はインターネットブラウザで https://test-pub.s3.v3.abci.ai にアクセスすることでも可能です。Firefoxの場合は、オブジェクトのリストを含むXMLが表示されます。
+アクセスができることの確認は、curlコマンドにより "curl https://test-pub.s3.v3.abci.ai "とアクセスすることでも可能です。
 (現在はインターネットブラウザ経由でのURLアクセスはご利用いただけません)
 公開を停止し、初期値に戻す手順は以下の通りです。 追加された Grantee がなくなり、ABCIグループ名がの Permission が "FULL_CONTROL" になっていることを確認してください。
 

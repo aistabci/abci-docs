@@ -19,7 +19,7 @@ nav:
     - 'PuTTYの利用': 'tips/putty.md'
   - 'ABCIクラウドストレージ':
     - '概要': 'abci-cloudstorage.md'
-    - 'アカウントとアクセスキー': 'abci-cloudstorage/cs-account.md'
+    - 'クラウドストレージアカウントディレクトリとアクセスキー': 'abci-cloudstorage/cs-account.md'
     - '使い方': 'abci-cloudstorage/usage.md'
     - 'アクセス制御(1)': 'abci-cloudstorage/acl.md'
     - 'アクセス制御(2)': 'abci-cloudstorage/policy.md'
