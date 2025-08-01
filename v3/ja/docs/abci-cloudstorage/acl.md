@@ -2,7 +2,7 @@
 # アクセス制御(1) - ACLによる制御
 
 クラウドストレージでは、バケットやオブジェクトに対してアクセスコントロールリスト(ACL)を設定することで、誰がアクセスできるかを制御できます。
-デフォルトでは、自身のみアクセスできますが、他のユーザー、あるいは誰でもアクセスできるよう設定を変更することができます。
+初期設定では、自身のみアクセス可能ですが、他のユーザー、あるいは誰でもアクセスできるよう設定を変更することができます。
 
 ## ACLでの設定項目 {#what-to-configure}
 
@@ -125,8 +125,8 @@ $ aws --endpoint-url https://s3.v3.abci.ai s3api list-buckets
 
 | 既定ACL           |バケット                                                                                   |オブジェクト|
 | :--| :--| :--|
-| public-read       |指定したバケット配下のオブジェクト一覧が公開されます。                                     |指定したオブジェクトが公開されます。オブジェクトの変更は、適切な権限を有するクラウドストレージアカウントのみ が行えます。
-| public-read-write |誰もが、指定したバケット配下の読み書き、およびACLの変更が可能になります。|誰もがACLを適用したオブジェクトの読み書き、およびA CLの変更が可能になります。
+| public-read       |指定したバケット配下のオブジェクト一覧が公開されます。                                     |指定したオブジェクトが公開されます。オブジェクトの変更は、適切な権限を有するクラウドストレージアカウントのみが行えます。
+| public-read-write |誰もが、指定したバケット配下の読み書き、およびACLの変更が可能になります。|誰もがACLを適用したオブジェクトの読み書き、およびACLの変更が可能になります。
 
 !!! caution
     誰からでも読み取りアクセスができる設定を行う場合は、下記をよくお読みいただき、データを公開することが適切であるかご確認の上、設定をお願いします。
@@ -179,7 +179,7 @@ put-bucket-acl で public-read を設定します。設定の確認は get-bucke
 
 アクセスができることの確認は、curlコマンドにより「https://s3.vs.abci.ai/バケット名」にアクセスすることでも可能です。バケットtest-pubの場合は、 "curl https://s3.v3.abci.ai/test-pub "とアクセスしてください。
 (現在はインターネットブラウザ経由でのURLアクセスはご利用いただけません)
-公開を停止し、初期値に戻す手順は以下の通りです。 追加された Grantee がなくなり、ABCIグループ名がの Permission が "FULL_CONTROL" になっていることを確認してください。
+公開を停止し、初期値に戻す手順は以下の通りです。 追加された Grantee がなくなり、ABCIグループの Permission が "FULL_CONTROL" になっていることを確認してください。
 
 ```
 [username@login1 ~]$ aws --endpoint-url https://test-pub.s3.v3.abci.ai s3api put-bucket-acl --acl private --bucket test-pub
@@ -242,7 +242,7 @@ put-object-acl で public-read を設定します。また、get-object-acl で�
 
 アクセスができることの確認はcurlコマンドで可能です。この例では、curl -o test.txt https://s3.v3.abci.ai/test-pub2/test/test.txt により、ファイルのダウンロードが可能です。
 (現在はインターネットブラウザ経由でのURLアクセスはご利用いただけません)
-公開を停止し、初期値に戻す手順は以下の通りです。 追加された Grantee がなくなり、ABCIグループ名がの Permission が "FULL_CONTROL" になっていることを確認してください。
+公開を停止し、初期値に戻す手順は以下の通りです。 追加された Grantee がなくなり、ABCIグループの Permission が "FULL_CONTROL" になっていることを確認してください。
 
 ```
 [username@login1 ~]$ aws --endpoint-url https://s3.v3.abci.ai s3api put-object-acl --acl private --bucket  test-pub2 --key test/test.txt
