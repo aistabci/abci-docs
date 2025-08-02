@@ -16,10 +16,13 @@ nav:
   - 'Tips':
     - 'GPUDirect Storage': 'tips/gds.md'
     - 'PuTTY': 'tips/putty.md'
-#  - 'ABCI Object Storage (Under Update)':
-#    - 'Overview (Under Update)': 'abci-objectstorage/index.md'
-#    - 'Accounts and Access keys (Under Update)': 'abci-objectstorage/account.md'
-#    - 'Usage (Under Update)': 'abci-objectstorage/usage.md'
+  - 'ABCI Object Storage':
+    - 'Overview': 'abci-cloudstorage.md'
+    - 'Claud Storage Account DIrectories and Access keys': 'abci-cloudstorage/cs-account.md'
+    - 'Usage': 'abci-cloudstorage/usage.md'
+    - 'Access Control (1) ': 'abci-cloudstorage/acl.md'
+    - 'Access Control (2) ': 'abci-cloudstorage/policy.md'
+    - 'Caution': 'abci-cloudstorage/caution.md'
   - 'Open OnDemand':
     - 'Using Open OnDemand': 'open-ondemand/index.md'
     - 'Ineractive Apps': 'open-ondemand/interactive-apps.md'
