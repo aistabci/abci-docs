@@ -1,5 +1,11 @@
 # System Updates
 
+## 2025-08-05 {#2025-08-05}
+
+We have added ABCI Claud Storage.
+
+* Currently, it is avalable only internaly not open to internet.
+
 ## 2025-06-20 {#2025-06-20}
 
 We have added the following applications as Open OnDemand Interactive Apps.
