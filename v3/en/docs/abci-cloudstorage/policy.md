@@ -14,7 +14,7 @@ In case you use default setting, additional policy settings mentioned below is u
 
 ## Common notes for Access Control Policy
 
-The following are common notes for bucket and user policies.
+The following are common notes for bucket policy.
 
 - Endpoint is 'https://s3.v3.abci.ai'
 - Ruling order does not matter, and Deny is prioritized over Allow. Even Denys in otner policy has priority.

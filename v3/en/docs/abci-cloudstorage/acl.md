@@ -184,8 +184,8 @@ The example following shows how to stop opening to the public and retrieve defau
 Confirm that the grantee added before is deleted and the permission of the ABCI group is 'FULL_CONTROL'.
 
 ```
-[username@login1 ~]$ aws --endpoint-url https://s3.v3.abci.ai/test-pub s3api put-bucket-acl --acl private --bucket test-pub
-[username@login1 ~]$ aws --endpoint-url https://s3.v3.abci.ai/test-pub s3api get-bucket-acl --bucket test-pub
+[username@login1 ~]$ aws --endpoint-url https://s3.v3.abci.ai s3api put-bucket-acl --acl private --bucket test-pub
+[username@login1 ~]$ aws --endpoint-url https://s3.v3.abci.ai s3api get-bucket-acl --bucket test-pub
 {
     "Owner": {
         "DisplayName": "gxx00000",
