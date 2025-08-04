@@ -121,11 +121,11 @@ In order to list objects that have prefix 'pics/', for example, add prefix after
 The option '--recursive' can list all objects in a bucket.
 
 ```
-[username@login1 ~]$ aws --endpoint-url https://s3.abci.ai s3 ls s3://mybucket --recursive
-2019-07-05 17:33:05          4 test1.txt
-2019-07-05 21:12:47          4 test2.txt
-2019-07-29 21:55:57    1048576 pics/test3.png
-2019-07-29 21:55:59    1048576 pics/test4.png
+[username@login1 ~]$ aws --endpoint-url https://s3.v3.abci.ai s3 ls s3://mybucket --recursive
+2025-06-05 17:33:05          4 test1.txt
+2025-06-05 21:12:47          4 test2.txt
+2025-06-07 21:55:57    1048576 pics/test3.png
+2025-06-07 21:55:59    1048576 pics/test4.png
 ```
 
 
