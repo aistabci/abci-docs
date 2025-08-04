@@ -16,9 +16,9 @@ nav:
   - 'Tips':
     - 'GPUDirect Storage': 'tips/gds.md'
     - 'PuTTY': 'tips/putty.md'
-  - 'ABCI Object Storage':
+  - 'ABCI Cloud Storage':
     - 'Overview': 'abci-cloudstorage.md'
-    - 'Claud Storage Account DIrectories and Access keys': 'abci-cloudstorage/cs-account.md'
+    - 'Cloud Storage Account DIrectories and Access keys': 'abci-cloudstorage/cs-account.md'
     - 'Usage': 'abci-cloudstorage/usage.md'
     - 'Access Control (1) ': 'abci-cloudstorage/acl.md'
     - 'Access Control (2) ': 'abci-cloudstorage/policy.md'

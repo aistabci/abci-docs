@@ -126,7 +126,7 @@ Two standard ACLs open buckets and objects to the public, which enable any users
 | Standard ACL| Bucket | Object |
 | :--| :--| :--|
 | public-read | Opens the list of objects under specified bucket to any users. | Opens specified objects to any users. Users with appropreate account can modify them. |
-| public-read-write | Anyone can read and overwite the objects under the bucket and set ACL of the bucket. | Anyone can read and overwite the objects and set ACL of the object. |
+| public-read-write | Anyone can read and overwrite the objects under the bucket and set ACL of the bucket. | Anyone can read and overwite the objects and set ACL of the object. |
 
 !!! caution
     Before you grant read access to everyone, please read the following agreements carefully, and make sure it is appropriate to do so.
@@ -184,8 +184,8 @@ The example following shows how to stop opening to the public and retrieve defau
 Confirm that the grantee added before is deleted and the permission of the ABCI group is 'FULL_CONTROL'.
 
 ```
-[username@login1 ~]$ aws --endpoint-url https://test-pub.s3.v3.abci.ai s3api put-bucket-acl --acl private --bucket test-pub
-[username@login1 ~]$ aws --endpoint-url https://test-pub.s3.v3.abci.ai s3api get-bucket-acl --bucket test-pub
+[username@login1 ~]$ aws --endpoint-url https://s3.v3.abci.ai/test-pub s3api put-bucket-acl --acl private --bucket test-pub
+[username@login1 ~]$ aws --endpoint-url https://s3.v3.abci.ai/test-pub s3api get-bucket-acl --bucket test-pub
 {
     "Owner": {
         "DisplayName": "gxx00000",

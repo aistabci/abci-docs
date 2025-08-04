@@ -2,9 +2,9 @@
 
 ## 2025-08-05 {#2025-08-05}
 
-We have added ABCI Claud Storage.
+We have added ABCI Cloud Storage.
 
-* Currently, it is avalable only internaly not open to internet.
+* Currently, it is available only internally not open to internet.
 
 ## 2025-06-20 {#2025-06-20}
 

@@ -267,13 +267,13 @@ touch: cannot touch 'quota_test': Disk quota exceeded
 ```
 
 
-## Checking Claud Storage Usage {#checking-cloud-storage-usage}
+## Checking Cloud Storage Usage {#checking-cloud-storage-usage}
 
-To display your Claud Storage usagearea, use the `show_cs_quota` command.
+To display your Cloud Storage usage area, use the `show_cs_quota` command.
 The major option of the `show_quota` command are follows.
 
 
-Example 1) Withou option, display recent usage of your group grpname.
+Example 1) Without option, display recent usage of your group grpname.
 ```
 [username@login1 ~]$ $ show_cs_quota
 Disk quotas of ABCI cloud storage for gaa10000

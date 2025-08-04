@@ -1,9 +1,9 @@
 
-# Claud Storage Account Directories and Access Keys
+# Cloud Storage Account Directories and Access Keys
 
 ## Cloud Storage Account Directories
 
-An Claud Storage Account Directory(ABCI group name + . + serial number) is provided for each ABCI group.
+An Cloud Storage Account Directory(ABCI group name + . + serial number) is provided for each ABCI group.
 The user of the group can create buckets in it and store objects there.
 
 ### Cloud Storage Account Directory

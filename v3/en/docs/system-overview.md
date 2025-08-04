@@ -86,7 +86,7 @@ Below is a list of shared file systems provided by the ABCI system using the abo
 |:--|:--|:--|:--|:--|
 | Home area | /home | 10 PB | Lustre |  |
 | Group area | /groups | 63 PB | Lustre |  |
-| ABCI Claud Storage | /groups_s3 | 1PB | Lustre |  |
+| ABCI Cloud Storage | /groups_s3 | 1PB | Lustre |  |
 <!--| ABCI Object area | /groups_s3 | 1 PB | Lustre |  |-->
 
 The following file systems are mounted for the purpose of data migration.

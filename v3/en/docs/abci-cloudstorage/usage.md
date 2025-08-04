@@ -1,8 +1,8 @@
 # How to Use Cloud Storage
 
-## Procedure to setup AWS command line interface
+## Procedure to setup AWS Command Line Interface
 
-AWS command line interface(AWS CLI) is alerady installed in the interactive nodes.
+AWS Command Line Interface (AWS CLI) is alerady installed in the interactive nodes.
 To access the Cloud Storage, please configure AWS CLI following the steps described below.
 
 ## Configuration for the authentication
