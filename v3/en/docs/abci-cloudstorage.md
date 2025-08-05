@@ -24,7 +24,7 @@ For details of the operation, refer to [ABCI Portal Guide](https://docs.abci.ai/
 
 ABCI points based on the total size of Cloud Storage usage applied at ABCI User Portal by the User Administrator of the group is substracted from the balance of the group's points, then the users of the group can store objects up to the amount. The User Administrator of the group must apply to increase or decrease the amount. There is no charge for data transfer or API calls. Users can check the total size by [show_cs_usage](getting-started.md#checking-cloud-storage-usage).
 
-As for plice list of Cloud Storage, see [this page](https://abci.ai/en/how_to_use/tariffs.html).
+As for price list of Cloud Storage, see [this page](https://abci.ai/en/how_to_use/tariffs.html).
 
 | Page | Outline |
 |:--|:--|
