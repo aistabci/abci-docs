@@ -94,8 +94,8 @@ To show the list of buckets created on the ABCI group, run `aws --endpoint-url h
 For example
 ```
 [username@login1 ~]$ aws --endpoint-url https://s3.v3.abci.ai s3 ls
-2019-06-15 10:47:37 testbucket1
-2019-06-15 18:10:37 testbucket2
+2025-06-15 10:47:37 testbucket1
+2025-06-15 18:10:37 testbucket2
 ```
 
 
@@ -106,16 +106,16 @@ To show the list of objects in the bucket, run `aws --endpoint-url https://s3.v3
 ```
 [username@login1 ~]$ aws --endpoint-url https://s3.v3.abci.ai s3 ls s3://mybucket
                            PRE pics/
-2019-07-05 17:33:05          4 test1.txt
-2019-07-05 21:12:47          4 test2.txt
+2025-06-05 17:33:05          4 test1.txt
+2025-06-05 21:12:47          4 test2.txt
 ```
 
 In order to list objects that have prefix 'pics/', for example, add prefix after the bucket name.
 
 ```
 [username@login1 ~]$ aws --endpoint-url https://s3.v3.abci.ai s3 ls s3://mybucket/pics/
-2019-07-29 21:55:57    1048576 test3.png
-2019-07-29 21:55:59    1048576 test4.png
+2025-06-07 21:55:57    1048576 test3.png
+2025-06-07 21:55:59    1048576 test4.png
 ```
 
 The option '--recursive' can list all objects in a bucket.
@@ -152,10 +152,10 @@ upload: images/0002.jpg to s3://dataset-c0542/0002.jpg
 upload: images/0003.jpg to s3://dataset-c0542/0003.jpg
 upload: images/0004.jpg to s3://dataset-c0542/0004.jpg
 [username@login1 ~]$ aws --endpoint-url https://s3.v3.abci.ai s3 ls s3://dataet-c0542/
-2019-06-10 19:03:19    1048576 0001.jpg
-2019-06-10 19:03:19    1048576 0002.jpg
-2019-06-10 19:03:19    1048576 0003.jpg
-2019-06-10 19:03:19    1048576 0004.jpg
+2025-06-10 19:03:19    1048576 0001.jpg
+2025-06-10 19:03:19    1048576 0002.jpg
+2025-06-10 19:03:19    1048576 0003.jpg
+2025-06-10 19:03:19    1048576 0004.jpg
 [username@login1 ~]$
 ```
 
@@ -229,16 +229,16 @@ delete: s3://mybucket/readme.txt
 The option '--recursive' enables to delete objects which are located under specified prefix.
 ```
 [username@login1 ~]$ aws --endpoint-url https://s3.v3.abci.ai s3 ls s3://mybucket --recursive
-2019-07-30 20:46:53         32 a.txt
-2019-07-30 20:46:53         32 b.txt
-2019-07-31 14:51:50        512 xml/c.xml
-2019-07-31 14:51:54        512 xml/d.xml
+2025-06-30 20:46:53         32 a.txt
+2025-06-30 20:46:53         32 b.txt
+2025-06-31 14:51:50        512 xml/c.xml
+2025-06-31 14:51:54        512 xml/d.xml
 [username@login1 ~]$ aws --endpoint-url https://s3.v3.abci.ai s3 rm s3://mybucket/xml --recursive
 delete: s3://mybucket/xml/c.xml
 delete: s3://mybucket/xml/d.xml
 [username@login1 ~]$ aws --endpoint-url https://s3.v3.abci.ai s3 ls s3://mybucket --recursive
-2019-07-30 20:46:53         32 a.txt
-2019-07-30 20:46:53         32 b.txt
+2025-06-30 20:46:53         32 a.txt
+2025-06-30 20:46:53         32 b.txt
 ```
 
 
@@ -397,7 +397,7 @@ The path and object name are displayed in `Key`.
         {
             "UploadId": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
             "Key": "Testdata/data_10gib-1.dat",
-            "Initiated": "2019-11-12T09:58:16.242000+00:00",
+            "Initiated": "2025-11-12T09:58:16.242000+00:00",
             "StorageClass": "STANDARD",
             "Owner": {
                 "DisplayName": "ABCI GROUP",

@@ -54,7 +54,7 @@ Note that NotPrincipal is not supported.
     Before you grant read access to everyone in the world, please read the following agreements carefully, and make sure it is appropriate to do so.
     
     * [ABCI Agreement and Rules](https://abci.ai/en/how_to_use/)
-    * [ABCI Cloud Storage Terms of Use](https://abci.ai/en/how_to_use/data/cloudstorage-agreement.pdf)
+    * [ABCI Cloud Storage Terms of Use](https://abci.ai/ja/how_to_use/data/cloudstorage-agreement.pdf) (Japanese version only)
 
 !!! caution
     Please do not grant write access to everyone in the world due to the possibility of unintended use by a third party.

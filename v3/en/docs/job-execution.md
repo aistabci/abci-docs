@@ -26,7 +26,7 @@ See [Batch Jobs](#batch-jobs) for usage, and [Job Execution Options](#job-execut
 
 ### Reserved Service
 
-Reserved service is a service that allows you to reserve and use compute resources on a daily basis in advance. It allows planned job execution without being affected by the congestions of On-demand and Spot service. In addition, since you can reserve more days than the elapsed time limit of the Spot Service, it is possible to execute jobs for a longer time.
+Reserved service is a service that allows you to reserve and use computational resources on a daily basis in advance. It allows planned job execution without being affected by the congestions of On-demand and Spot service. In addition, since you can reserve more days than the elapsed time limit of the Spot Service, it is possible to execute jobs for a longer time.
 
 In Reserved service, you first make a reservation in advance to obtain a reservation ID (Resv ID), and then use this reservation ID to execute interactive jobs and batch jobs.
 
