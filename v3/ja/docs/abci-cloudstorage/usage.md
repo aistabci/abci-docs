@@ -1,41 +1,35 @@
-# ABCIオブジェクトストレージの使い方 （更新中）
+# クラウドストレージの使い方
 
-ここでは、クライアントツールとして AWS Command Line Interface (以降、AWS CLI) を用いたオブジェクトストレージの基本操作を説明します。
+## AWS コマンドラインインタフェース セットアップ手順
 
-
-## モジュールのロード
-
-ABCIでは、インタラクティブノードでも計算ノードでもAWS CLIを利用できます。利用に際して以下のようにモジュールをロードしてください。
-
-```
-[username@login1 ~]$ module load aws-cli
-```
-
-ABCI以外（手元のPC等）では、[こちら](https://github.com/aws/aws-cli)よりAWS CLIを取得し、書かれている手順に従ってインストールしてください。
-
+AWS コマンドラインインタフェース(AWS CLI)はインタラクティブノードにインストール済みです。
+クラウドストレージにアクセスするために以下の手順を参考にAWS CLIの設定を行ってください。
 
 ## 認証情報などの設定
 
-ABCIオブジェクトストレージへのアクセスは、ABCIアカウントとは別のオブジェクトストレージアカウントを用います。アカウントは複数持つことができ、それぞれにアクセスキー(アクセスキー ID とシークレットアクセスキーのペア)が対応しています。複数のABCIグループに所属しており、それぞれオブジェクトストレージを利用している場合は、それぞれのオブジェクトストレージアカウントが発行されます。初回は次のように、そのアクセスキーを AWS CLI に設定する作業が必要です。region name には、 `us-east-1` を設定してください。
+クラウドストレージへのアクセスは、ABCIアカウントとは別のクラウドストレージアカウントを用います。
+アカウントは複数持つことができ、それぞれにアクセスキー(アクセスキー ID とシークレットアクセスキーのペア)が対応しています。
+複数のABCIグループに所属しており、それぞれクラウドストレージを利用している場合は、それぞれのクラウドストレージアカウントが発行されます。
+初回は次のように、そのアクセスキーを AWS CLI に設定する作業が必要です。region name には、 ap-northeast-1 を設定してください。
 ```
-[username@login1 ~]$ aws configure
-AWS Access Key ID [None]: ACCESS-KEY-ID
-AWS Secret Access Key [None]: SECRET-ACCESS-KEY
-Default region name [None]: us-east-1
+[username@login1 ~] $ aws configure
+AWS Access Key ID [None]: <受信したAccess Key>
+AWS Secret Access Key [None]: <受信したSecret Key>
+Default region name [None]: ap-northeast-1
 Default output format [None]:(入力不要)
 ```
 
-複数のオブジェクトストレージアカウントを所持している場合は、--profile オプションを使用することで使い分けることができます。
-例えば、オブジェクトストレージアカウント aaa00000.2 を別に登録する場合は、以下のように設定します。
+複数のクラウドストレージアカウントを所持している場合は、--profile オプションを使用することで使い分けることができます。 
+例えば、クラウドストレージアカウント aaa00000.2 を別に登録する場合は、以下のように設定します。
 ```
 [username@login1 ~]$ aws configure --profile aaa00000.2
 AWS Access Key ID [None]: aaa00000.2's ACCESS-KEY-ID
 AWS Secret Access Key [None]: aaa00000.2's SECRET-ACCESS-KEY
-Default region name [None]: us-east-1
+Default region name [None]: ap-northeast-1
 Default output format [None]:(入力不要)
 ```
 
-オブジェクトストレージアカウント aaa00000.2 で aws コマンドを実行するときは、以下のように --profile オプションで指定します。
+クラウドストレージアカウント aaa00000.2 で aws コマンドを実行するときは、以下のように --profile オプションで指定します。
 ```
 [username@login1 ~]$  aws --profile aaa00000.2 --endpoint-url https://s3.v3.abci.ai s3api list-buckets
 ```
@@ -69,7 +63,7 @@ s3://bucket-1/project-1/docs/fig1.png
 
 バケット名は以下の規約があります。
 
-* オブジェクトストレージ全体で一意である必要があります
+* クラウドストレージ全体で一意である必要があります
 * 3～63文字で定義する必要があります
 * '\_'(アンダースコア)を含めることはできません
 * 先頭は小文字の英数字を指定する必要があります
@@ -83,16 +77,15 @@ s3://bucket-1/project-1/docs/fig1.png
 
 上記以外の特殊文字(例えば `<` や `#` など)は、避けた方が安全です。
 
-エンドポイント(--endpoint-url)には、`https://s3.v3.abci.ai` を指定してください。<!-- インタラクティブノード、および計算ノードからは、`http://s3.v3.abci.ai` を使うこともできます。 --> 
+エンドポイント(--endpoint-url)には、`https://s3.v3.abci.ai` を指定してください。
 
 
 ### バケットの作成
 
-s3 mb コマンドでバケットを作成します。
-例として、'dataset-summer-2024' というバケットを作るには、以下のように aws コマンドを実行します。
+s3 mb コマンドでバケットを作成します。 例として、'dataset-summer-2012' というバケットを作るには、以下のように aws コマンドを実行します。
 ```
-[username@login1 ~]$ aws --endpoint-url https://s3.v3.abci.ai s3 mb s3://dataset-summer-2024
-make_bucket: dataset-summer-2024
+[username@login1 ~]$ aws --endpoint-url https://s3.v3.abci.ai s3 mb s3://dataset-summer-2012
+make_bucket: dataset-summer-2012
 ```
 
 
@@ -103,8 +96,8 @@ make_bucket: dataset-summer-2024
 実行例
 ```
 [username@login1 ~]$ aws --endpoint-url https://s3.v3.abci.ai s3 ls
-2019-06-15 10:47:37 testbucket1
-2019-06-15 18:10:37 testbucket2
+2025-06-15 10:47:37 testbucket1
+2025-06-15 18:10:37 testbucket2
 ```
 
 
@@ -115,32 +108,32 @@ make_bucket: dataset-summer-2024
 ```
 [username@login1 ~]$ aws --endpoint-url https://s3.v3.abci.ai s3 ls s3://mybucket
                            PRE pics/
-2019-07-05 17:33:05          4 test1.txt
-2019-07-05 21:12:47          4 test2.txt
+2025-06-05 17:33:05          4 test1.txt
+2025-06-05 21:12:47          4 test2.txt
 ```
 
 例えば pics/ というプレフィックスを持つデータをリストするには、バケット名の後ろにプレフィックスをつけます。
 
 ```
 [username@login1 ~]$ aws --endpoint-url https://s3.v3.abci.ai s3 ls s3://mybucket/pics/
-2019-07-29 21:55:57    1048576 test3.png
-2019-07-29 21:55:59    1048576 test4.png
+2025-06-07 21:55:57    1048576 test3.png
+2025-06-07 21:55:59    1048576 test4.png
 ```
 
 `--recursive` オプションを使い、バケット内の全オブジェクトをリストすることもできます。
 
 ```
 [username@login1 ~]$ aws --endpoint-url https://s3.v3.abci.ai s3 ls s3://mybucket --recursive
-2019-07-05 17:33:05          4 test1.txt
-2019-07-05 21:12:47          4 test2.txt
-2019-07-29 21:55:57    1048576 pics/test3.png
-2019-07-29 21:55:59    1048576 pics/test4.png
+2025-06-05 17:33:05          4 test1.txt
+2025-06-05 21:12:47          4 test2.txt
+2025-06-07 21:55:57    1048576 pics/test3.png
+2025-06-07 21:55:59    1048576 pics/test4.png
 ```
-
 
 ### データのコピー(アップロード、ダウンロード、コピー)
 
-ファイルシステム上からABCIオブジェクトストレージ上のバケットへ、オブジェクトストレージ上のバケットからファイルシステム上へ、またはABCIオブジェクトストレージ上のバケットからABCIオブジェクトストレージ上のバケットへデータをコピーできます。
+ファイルシステム上からクラウドストレージ上のバケットへ、クラウドストレージ上のバケットからファイルシステム上へ、
+またはクラウドストレージ上のバケットからクラウドストレージ上のバケットへデータをコピーできます。
 
 0001.jpg というファイルを dataset-c0541 バケットにコピー
 ```
@@ -161,10 +154,10 @@ upload: images/0002.jpg to s3://dataset-c0542/0002.jpg
 upload: images/0003.jpg to s3://dataset-c0542/0003.jpg
 upload: images/0004.jpg to s3://dataset-c0542/0004.jpg
 [username@login1 ~]$ aws --endpoint-url https://s3.v3.abci.ai s3 ls s3://dataet-c0542/
-2019-06-10 19:03:19    1048576 0001.jpg
-2019-06-10 19:03:19    1048576 0002.jpg
-2019-06-10 19:03:19    1048576 0003.jpg
-2019-06-10 19:03:19    1048576 0004.jpg
+2025-06-10 19:03:19    1048576 0001.jpg
+2025-06-10 19:03:19    1048576 0002.jpg
+2025-06-10 19:03:19    1048576 0003.jpg
+2025-06-10 19:03:19    1048576 0004.jpg
 [username@login1 ~]$
 ```
 
@@ -174,16 +167,12 @@ dataset-tmpl-c0000 バケットから dataset-c0541 バケットへ logo.png を
 copy: s3://dataset-tmpl-c0000/logo.png to s3://dataset-c0541/logo.png
 ```
 
-
 ### データの移動
 
-オブジェクトを移動するには aws mv を使用します。
-バケット間の移動の他、ローカルからバケット、バケットからローカルへ移動を行えます。
-タイムスタンプは保持されません。
---recursive オプションの付与で特定のプレフィックスを持つオブジェクト、
-または特定のディレクトリに入っているファイルを対象として扱えます。
+オブジェクトを移動するには aws mv を使用します。 バケット間の移動の他、ローカルからバケット、バケットからローカルへ移動を行えます。 
+タイムスタンプは保持されません。`--recursive` オプションの付与で特定のプレフィックスを持つオブジェクト、 または特定のディレクトリに入っているファイルを対象として扱えます。
 
-次の例では、カレントディレクトリにある annotations.zip をオブジェクトストレージ上の dataset-c0541 バケットに移動を行っています。
+次の例では、カレントディレクトリにある annotations.zip をクラウドストレージ上の dataset-c0541 バケットに移動を行っています。
 
 ```
 [username@login1 ~]$ aws --endpoint-url https://s3.v3.abci.ai s3 mv annotations.zip s3://dataset-c0541/
@@ -200,10 +189,11 @@ move: s3://dataset-c0541/sensor-1/0004.dat to s3://dataset-c0542/sensor-1/0004.d
 move: s3://dataset-c0541/sensor-1/0002.dat to s3://dataset-c0542/sensor-1/0002.dat
 ```
 
+### ローカルディレクトリとクラウドストレージの同期
 
-### ローカルディレクトリとオブジェクトストレージの同期
-
-以下の例では、カレントディレクトリにある sensor2 というディレクトリと mybucket というバケットを同期させています。--delete オプションをつけていなければバケットにあった既存のオブジェクトは削除されませんが、同名のものは上書きされます。次に同じコマンドラインを実行すると、更新されたファイルのみ送ります。
+以下の例では、カレントディレクトリにある sensor2 というディレクトリと mybucket というバケットを同期させています。
+--delete オプションをつけていなければバケットにあった既存のオブジェクトは削除されませんが、同名のものは上書きされます。
+次に同じコマンドラインを実行すると、更新されたファイルのみ送ります。
 ```
 [username@login1 ~]$ aws --endpoint-url https://s3.v3.abci.ai s3 sync ./sensor2 s3://mybucket/
 upload: sensor2/0002.dat to s3://mybucket/0002.dat
@@ -229,7 +219,7 @@ download: s3://sensor3/rev1/0002.zip to testdata/0002.zip
 
 オブジェクトの削除は `aws s3 rm <S3Uri> [parameters]` で行います。
 
-実行例 
+実行例
 ```
 [username@login1 ~]$ aws --endpoint-url https://s3.v3.abci.ai s3 rm s3://mybucket/readme.txt
 delete: s3://mybucket/readme.txt
@@ -238,16 +228,18 @@ delete: s3://mybucket/readme.txt
 --recursive パラメータを使うことで、指定のプレフィックス以下のオブジェクトを削除できます。
 ```
 [username@login1 ~]$ aws --endpoint-url https://s3.v3.abci.ai s3 ls s3://mybucket --recursive
-2019-07-30 20:46:53         32 a.txt
-2019-07-30 20:46:53         32 b.txt
-2019-07-31 14:51:50        512 xml/c.xml
-2019-07-31 14:51:54        512 xml/d.xml
+2025-06-30 20:46:53         32 a.txt
+2025-06-30 20:46:53         32 b.txt
+2025-06-31 14:51:50        512 xml/c.xml
+2025-06-31 14:51:54        512 xml/d.xml
+
 [username@login1 ~]$ aws --endpoint-url https://s3.v3.abci.ai s3 rm s3://mybucket/xml --recursive
 delete: s3://mybucket/xml/c.xml
 delete: s3://mybucket/xml/d.xml
+
 [username@login1 ~]$ aws --endpoint-url https://s3.v3.abci.ai s3 ls s3://mybucket --recursive
-2019-07-30 20:46:53         32 a.txt
-2019-07-30 20:46:53         32 b.txt
+2025-06-30 20:46:53         32 a.txt
+2025-06-30 20:46:53         32 b.txt
 ```
 
 
@@ -271,7 +263,8 @@ remove_bucket: dataset-c0542
 
 ### オブジェクトの所有者の確認
 
-オブジェクトの所有者は、`s3api get-object-acl`コマンドで確認することができます。以下の例のようにオブジェクトを格納するバケットを BUCKET、オブジェクトの名前を OBJECT として、Owner で示される ABCIGROUP がオブジェクトを所有していることがわかります。
+オブジェクトの所有者は、`s3api get-object-acl` コマンドで確認することができます。
+以下の例のようにオブジェクトを格納するバケットを BUCKET、オブジェクトの名前を OBJECT として、Owner で示される ABCIGROUP がオブジェクトを所有していることがわかります。
 ```
 [username@login1 ~]$ aws --endpoint-url https://s3.v3.abci.ai s3api get-object-acl --bucket BUCKET --key OBJECT 
 
@@ -294,14 +287,15 @@ remove_bucket: dataset-c0542
 
 ### マルチパートアップロード（MPU）について
 
-AWS CLIは、データを自動的に分割して並行に送信することで、効率良くデータをアップロードする機能を備えています。これはマルチパートアップロード (MPU) と呼ばれています。MPU が有効であるかどうかは、クライアントツールやその設定に依存します。AWS CLI では、MPU が有効となるデータサイズは、デフォルトで [8MB](https://docs.aws.amazon.com/cli/latest/topic/s3-config.html#multipart-threshold) と定義されています。
+AWS CLIは、データを自動的に分割して並行に送信することで、効率良くデータをアップロードする機能を備えています。
+これはマルチパートアップロード (MPU) と呼ばれています。MPU が有効であるかどうかは、クライアントツールやその設定に依存します。AWS CLI では、
+MPU が有効となるデータサイズは、デフォルトで 8MB と定義されています。
 
 ### マルチパートアップロードを手動で有効にする方法
 
 AWS CLI では、データサイズに応じて MPU が自動的に有効になりますが、以下の方法を用いることで MPU を有効にすることもできます。
 
-まず、`split` コマンドなどでアプロードしたいデータを分割します。以下の例では、
-15M_test.dat を 3つに分割しています。
+まず、`split` コマンドなどでアプロードしたいデータを分割します。以下の例では、 15M_test.dat を 3つに分割しています。
 
 ```
 [username@login1 ~]$ split  -n 3 -d 15M_test.dat mpu_part-
@@ -313,7 +307,9 @@ total 3199056
 [username@login1 ~]$
 ```
 
-次に、コマンド `s3api create-multipart-upload` でアップロード先のバケットとパスを指定して、 MPU を開始します。アップロード先は、バケットを `--bucket`、パスを `--key` で指定します。以下の例は、バケット 'testbucket-00' に'mpu-sample' というオブジェクトを作成します。成功すると、以下のように `UploadId` が発行されます。
+次に、コマンド `s3api create-multipart-upload` でアップロード先のバケットとパスを指定して、 MPU を開始します。
+アップロード先は、バケットを `--bucket`、パスを `--key` で指定します。以下の例は、バケット 'testbucket-00' に'mpu-sample' というオブジェクトを作成します。
+成功すると、以下のように `UploadId` が発行されます。
 ```
 [username@login1 ~]$ aws --endpoint-url https://s3.v3.abci.ai s3api create-multipart-upload --bucket testbucket-00 --key mpu-sample
 
@@ -321,11 +317,11 @@ total 3199056
     "Bucket": "testbucket-00",
     "Key": "mpu-sample",
     "UploadId": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
-    
+
 } 
 ```
 
-これらのデータを `s3api part-upload `コマンドでアップロードします。この時、上記の UpLoadId を指定してください。コマンドが成功すると表示される 'ETag' は後で使用するため控えておいてください。
+これらのデータを `s3api part-upload` コマンドでアップロードします。この時、上記の UpLoadId を指定してください。コマンドが成功すると表示される 'ETag' は後で使用するため控えておいてください。
 
 ```
 [username@login1 ~]$ aws --endpoint-url https://s3.v3.abci.ai s3api upload-part --bucket testbucket-00 --key mpu-sample --part-number 1 --body mpu_part-00 --upload-id aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
@@ -335,6 +331,7 @@ total 3199056
 ```
 
 同様に、順次 `--part-number` の値と対応するデータを指定して残りのデータもアップロードします。
+
 ```
 [username@login1 ~]$ aws --endpoint-url https://s3.v3.abci.ai s3api upload-part --bucket testbucket-00 --key mpu-sample --part-number 2 --body mpu_part-01 --upload-id aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
 {
@@ -348,8 +345,7 @@ total 3199056
 ```
 
 !!! note
-    s3api upload-parts でアップロードされたデータは表示されませんが課金対象になります。
-    このため、MPU は必ずアップロードを完了させるか中止してください。
+    s3api upload-parts でアップロードされたデータは表示されませんが課金対象になります。 このため、MPU は必ずアップロードを完了させるか中止してください。
 
 全てのデータをアップロードしたら、ETag の値を以下のような JSONE 形式のファイルにまとめます。
 ```
@@ -388,9 +384,7 @@ total 3199056
 
 ### MPU の中止 {#abort-mpu}
 
-実行中の MPU を中止するには、まず MPU の一覧を表示し、`UploadId` と `Key` を確認します。
-MPU の一覧は、`s3api list-multipart-uploads` コマンドにアップロード時のバケットを指定して、確認することができます。MPU が残っていない場合は何も表示されません。
-以下の例では、オブジェクト data_10gib-1.dat を s3://BUCKET/Testdata/ にアップロードする途中であることが確認できます。`Key` にはバケットより下のパスとオブジェクト名が表示されています。
+実行中の MPU を中止するには、まず MPU の一覧を表示し、`UploadId` と `Key` を確認します。 MPU の一覧は、`s3api list-multipart-uploads` コマンドにアップロード時のバケットを指定して、確認することができます。MPU が残っていない場合は何も表示されません。 以下の例では、オブジェクト data_10gib-1.dat を s3://BUCKET/Testdata/ にアップロードする途中であることが確認できます。`Key` にはバケットより下のパスとオブジェクト名が表示されています。
 ```
 [username@login1 ~]$ aws --endpoint-url https://s3.v3.abci.ai s3api list-multipart-uploads --bucket BUCKET
 {
@@ -398,7 +392,7 @@ MPU の一覧は、`s3api list-multipart-uploads` コマンドにアップロー
         {
             "UploadId": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
             "Key": "Testdata/data_10gib-1.dat",
-            "Initiated": "2019-11-12T09:58:16.242000+00:00",
+            "Initiated": "2025-11-12T09:58:16.242000+00:00",
             "StorageClass": "STANDARD",
             "Owner": {
                 "DisplayName": "ABCI GROUP",
@@ -420,7 +414,3 @@ MPU の一覧は、`s3api list-multipart-uploads` コマンドにアップロー
 ```
 
 これで MPU の中止は完了です。MPU の実行中にサーバ側に作成されたデータも削除されます。
-
-<!--  s3fs-fuse は別で書くこと  -->
-
-<!--  使い方の説明はしないが Cyberduck と WinSCP について触れる  -->

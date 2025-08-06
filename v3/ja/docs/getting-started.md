@@ -264,3 +264,44 @@ inode使用数がinode数上限値を超過している、またはディスク�
 [username@login1 ~]$ touch quota_test
 touch: cannot touch 'quota_test': Disk quota exceeded
 ```
+
+
+## ABCI クラウドストレージ利用状況の確認 {#checking-cloud-storage-quota}
+
+ABCI クラウドストレージの使用状況表示するには、`show_cs_quota` コマンドを利用します。
+
+例1) オプション指定なしで、所属するABCIグループ grpname の直近の利用状態を確認できます。
+```
+[username@login1 ~]$ $ show_cs_quota
+Disk quotas of ABCI cloud storage for gaa10000
+  Directory                          used(TiB)        limit(TiB)      used(nfiles)     limit(nfiles)
+  /groups_s3/gaa10000                     0.01             10.00                99         200000000
+```
+
+例2) オプション -b で出力単位を指定できます。出力単位の書式は、(K:KB / M:MB / G:GB / T:TB)で指定してください。
+```
+[username@login1 ~]$ $ show_cs_quota -b G
+Disk quotas of ABCI cloud storage for gaa10000
+  Directory                          used(GiB)        limit(GiB)      used(nfiles)     limit(nfiles)
+  /groups_s3/gaa10000                     0.08              0.00               955         200000000
+```
+
+例3) オプション -csv で出力方式を指定できます。
+```
+[username@login1 ~]$ $ show_cs_quota -b G -csv
+Disk quotas of ABCI cloud storage for gaa10000,,,,
+Directory,used(GiB),limit(GiB),used(nfiles),limit(nfiles)
+/groups_s3/gaa10000,0.08,0.00,955,200000000
+```
+
+例4) オプション -h でコマンドに用意されているオプションが確認できます。
+```
+[username@login1 ~]$ $ show_cs_quota -h
+usage: show_cs_quota [-h] [-g GROUP [GROUP ...]] [-b [<unit>]] [-csv]
+Show Cloud Storage quota vaule(s).
+optional arguments:
+  -h, --help            show this help message and exit
+  -g GROUP [GROUP ...]  ABCI group name(s).
+  -b [<unit>]           Specify display unit (K:KB / M:MB / G:GB / T:TB).
+  -csv                  Output CSV format.
+```
