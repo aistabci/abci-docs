@@ -69,7 +69,7 @@ There are rules for naming buckets.
 
 To name object keys, UTF-8 characters are available though, there are special characters which should be preferably avoided.
 
-* There is no problem with using hyphens (-), underscores (_) and periods (.).
+* There is no problem with using hyphens (-), underscores (_) and dots (.).
 * Five characters, exclamation mark (!), asterisk (*), apostrophe ('),  left parenthesis ('(') and right parenthesis (')'), are available if they are properly used (e.g. escaping or quoting in shell scripts).
 
 Special characters other than the ones mentioned above should be avoided.
