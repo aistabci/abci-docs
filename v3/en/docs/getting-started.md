@@ -204,7 +204,7 @@ Total          1,101.0000    51.5000    10.5000          -          -          -
 
 
 
-## Checking Disk Quota
+## Checking Disk Quota {#checking-disk-quota}
 
 To display your disk/inodes usage and quota about home and group area, use the `show_quota` command.
 The major option of the `show_quota` command are follows.
@@ -264,4 +264,47 @@ When the number of inodes (disk usage) exceeds the inode (disk) quota limit, the
 ```
 [username@login1 ~]$ touch quota_test
 touch: cannot touch 'quota_test': Disk quota exceeded
+```
+
+
+## Checking Cloud Storage Usage {#checking-cloud-storage-usage}
+
+To display your Cloud Storage usage area, use the `show_cs_quota` command.
+The major option of the `show_quota` command are follows.
+
+
+Example 1) Without option, display recent usage of your group grpname.
+```
+[username@login1 ~]$ $ show_cs_quota
+Disk quotas of ABCI cloud storage for gaa10000
+  Directory                          used(TiB)        limit(TiB)      used(nfiles)     limit(nfiles)
+  /groups_s3/gaa10000                     0.01             10.00                99         200000000
+```
+
+Example 2) With the option `-b`, specify the unit. The format is (K:KB / M:MB / G:GB / T:TB).
+```
+[username@login1 ~]$ $ show_cs_quota -b G
+Disk quotas of ABCI cloud storage for gaa10000
+  Directory                          used(GiB)        limit(GiB)      used(nfiles)     limit(nfiles)
+  /groups_s3/gaa10000                     0.08              0.00               955         200000000
+```
+
+Example 3) With the option `-csv`, display in csv format.
+```
+[username@login1 ~]$ $ show_cs_quota -b G -csv
+Disk quotas of ABCI cloud storage for gaa10000,,,,
+Directory,used(GiB),limit(GiB),used(nfiles),limit(nfiles)
+/groups_s3/gaa10000,0.08,0.00,955,200000000
+```
+
+Example 4) With the option `-h`, display all the options.
+```
+[username@login1 ~]$ $ show_cs_quota -h
+usage: show_cs_quota [-h] [-g GROUP [GROUP ...]] [-b [<unit>]] [-csv]
+Show Cloud Storage quota vaule(s).
+optional arguments:
+  -h, --help            show this help message and exit
+  -g GROUP [GROUP ...]  ABCI group name(s).
+  -b [<unit>]           Specify display unit (K:KB / M:MB / G:GB / T:TB).
+  -csv                  Output CSV format.
 ```
