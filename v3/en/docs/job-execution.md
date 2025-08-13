@@ -254,6 +254,7 @@ The major options of the `qstat` command are follows.
 | -a | Display additional information about job, including the number of nodes used |
 | -x | Display information including jobs that have been completed in the past 10 days |
 | -t | Display information including array jobs. |
+| -q | Displays the number of jobs currently running or waiting for each resource type and reservation. |
 
 Example)
 
