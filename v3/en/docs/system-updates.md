@@ -6,6 +6,10 @@ We have added a description for ABCI Cloud Storage to the manual.
 
 \* The open day of the service for the users is expected to be in late August. Please note that ABCI Cloud Storage is only available within ABCI (login nodes and compute nodes) and is not currently available from external sources (such as the Internet). We will provide further information on external use as soon as it becomes available.
 
+## 2025-07-25 {#2025-07-25}
+
+Disabled the usage of qalter command by the users.
+
 ## 2025-06-20 {#2025-06-20}
 
 We have added the following applications as Open OnDemand Interactive Apps.
