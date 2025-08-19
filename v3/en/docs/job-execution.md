@@ -274,6 +274,33 @@ Job id                 Name             User              Time Use S Queue
 | S | Job status (R: running, Q: queued, F: finished, S: suspended, E: exiting) |
 | Queue | Resource type |
 
+Example: Check the congestion status)
+
+You can use the `qstat -q` command to check the number of running jobs and the number of queued jobs.
+The number of queued jobs allows you to see how much each resource type is being used.
+
+```
+[username@login1 ~]$ qstat -q | head
+
+server: pbs2
+
+Queue            Memory CPU Time Walltime Node   Run   Que   Lm  State
+---------------- ------ -------- -------- ---- ----- ----- ----  -----
+rt_HF              --      --    168:00:0  128    84    18   --   E R
+rt_HG              --      --    168:00:0    1   122     0   --   E R
+rt_HC              --      --    168:00:0    1    60    24   --   E R
+R0000000000        --      --       --     204     0     0   --   D S
+R0000000001        --      --       --     191    43     6   --   E R
+```
+
+The command output is as follows. For details, see `man qstat`.
+
+| Item | Description |
+| -- | -- |
+| `Queue` | Resource type and reservation name |
+| `Run` | Number of running jobs |
+| `Que` | Number of queued jobs |
+
 
 To show the current status of batch jobs for the group you belong to, use the `qgstat` command.
 
