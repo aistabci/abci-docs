@@ -308,6 +308,11 @@ Job id                 Name             User              Time Use S Queue
 | S | Job status (R: running, Q: queued, F: finished, S: suspended, E: exiting) |
 | Queue | Resource type |
 
+!!! note
+    Sometimes qgstat command takes long time to display the result. In the case, try to use
+    the light-weight alternative command qgstat_l, which displays the result based on stored data 
+    of the last 5 minutes.
+
 
 ### Delete a batch job
 
