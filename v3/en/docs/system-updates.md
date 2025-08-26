@@ -1,5 +1,16 @@
 # System Updates
 
+## 2025-08-26 {#2025-08-26}
+
+We added the following softwares.
+
+* CUDA Toolkit 12.9.1
+* cuDNN 9.12.0
+
+## 2025-08-08 {#2025-08-08}
+
+We installed GCC 13.2.0.
+
 ## 2025-06-20 {#2025-06-20}
 
 We have added the following applications as Open OnDemand Interactive Apps.
