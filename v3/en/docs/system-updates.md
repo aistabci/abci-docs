@@ -1,8 +1,8 @@
 # System Updates
 
-## 2025-08-21 {#2025-08-21}
+## 2025-07-11 {#2025-07-11}
 
-We added the description of qgstat_l which is the ligh-weight version of qgstat.
+We installed `qgstat_l` which is the lighweight version of qgstat.
 
 ## 2025-06-20 {#2025-06-20}
 
