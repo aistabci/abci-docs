@@ -9,9 +9,10 @@ ABCIのJupyterLabでは、自身で作成したPython仮想環境をメニュー
 OODにログインし、Interactive Apps：Jupyter(Normal)を実行します。
 <img src="ood-jl-001.png" width="800">
 
-
 ジョブを投入します。
+
 <img src="ood-jl-002.png" width="800">
+
 <img src="ood-jl-003.png" width="800">
 
 
@@ -33,7 +34,7 @@ JupyterLabのメニューより、「Other」-> 「Terminal」を起動します
 
 「Terminal」より以下のように実行し、仮想環境「work」を作成します。
 
-Python仮想環境の作成
+Python仮想環境を作成します。
 ```
 $ python3 -m venv work
 $ source work/bin/activate
@@ -44,13 +45,13 @@ $ source work/bin/activate
 <img src="ood-jl-008.png" width="800">
 
 
-作成した仮想環境にipykernelをインストールし、JupyterLabメニューに表示されるように設定
+作成した仮想環境にipykernelをインストールし、JupyterLabメニューに表示されるように設定します。
 ```
 (work) $ python3 -m pip install ipykernel
 (work) $ python3 -m ipykernel install --user --name=work --display-name="Python 3 (work)" 
 ```
 
-例として仮想環境に「numpy」をインストール
+例として、作成した仮想環境「work」に「numpy」パッケージをインストールします。
 ```
 (work) $ pip install numpy==2.2.2
 ```
@@ -60,20 +61,42 @@ $ source work/bin/activate
 <img src="ood-jl-010.png" width="800">
 <br><br>
 
-python3(ipykernel)でのnumpyサンプルプログラム実行例
+以下は、Python3 (ipykernel)でのnumpyプログラムの実行例です。
 
+「Notebook」->「Python3 (ipykernel)」をクリックしNotebookを開きます。
+Notebookを開いたあと次のPythonプログラムを入力してください。
 
-※numpyがインストールされていないので実行できない。
+```
+# numpyライブラリをインポート
+import numpy as np
+
+# 整数型の配列を用意
+arr_int32 = np.array([100, 200, 300, 400, 500], dtype=np.int32)
+print(arr_int32)
+
+# 浮動小数点数型の配列を用意
+arr_float = np.array([0.1, 0.2, 0.3, 0.4, 0.5], dtype=np.float64)
+print(arr_float)
+
+# 配列動詞の計算を + で表現できます
+arr_sum = arr_int32 + arr_float
+print(arr_sum)
+```
+
+Shift + Enterでプログラムを実行します。ただし、Python3 (ipykernel)環境ではnumpyをインストールしていないためエラーになります。
+
 <img src="ood-jl-011.png" width="800">
 <br><br>
 
+次に、作成した仮想環境Python3 (work)でプログラムを実行します。
 
-作成した仮想環境python3(work)でのnumpyサンプルプログラム実行例
+メニュー画面から今度は「Notebook」->「Python3 (work)」をクリックします。
+Notebookを開いたあと先ほどのプログラムを入力してください。
 
-※numpyがインストールされているので実行できる。
+Shift + Enterでプログラムを実行後、Python3 (work)環境にはnumpyをインストールしているのでプログラムが正しく実行されます。
+
 <img src="ood-jl-012.png" width="800">
 <br><br>
-
 
 ## JupyterLabのメニューからPython仮想環境を削除 {#del-venv}
 

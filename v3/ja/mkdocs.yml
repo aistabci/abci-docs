@@ -17,6 +17,7 @@ nav:
     - 'GPUDirect Storageの利用': 'tips/gds.md'
     - 'Tera Termの利用': 'tips/tera-term.md'
     - 'PuTTYの利用': 'tips/putty.md'
+    - 'JupyterLabにPython仮想環境を追加する方法': 'tips/jupyterlab_venv.md'
 #  - 'ABCI オブジェクトストレージ （更新中）':
 #    - '概要 （更新中）': 'abci-objectstorage/index.md'
 #    - 'アカウントとアクセスキー （更新中）': 'abci-objectstorage/account.md'
@@ -24,8 +25,6 @@ nav:
   - 'Open OnDemand':
     - '使い方': 'open-ondemand/index.md'
     - 'インタラクティブアプリ': 'open-ondemand/interactive-apps.md'
-    - 'Tips':
-      - 'JupyterLabにPython仮想環境を追加する方法': 'open-ondemand/oodtips/jupyterlab_venv.md'
   - 'システム更新履歴': 'system-updates.md'
   - 'お問い合わせ': 'contact.md'
   - '各種申請':
