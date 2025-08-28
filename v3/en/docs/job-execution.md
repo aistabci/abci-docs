@@ -254,6 +254,7 @@ The major options of the `qstat` command are follows.
 | -a | Display additional information about job, including the number of nodes used |
 | -x | Display information including jobs that have been completed in the past 10 days |
 | -t | Display information including array jobs. |
+| -q | Displays the number of jobs currently running or waiting for each resource type and reservation. |
 
 Example)
 
@@ -272,6 +273,33 @@ Job id                 Name             User              Time Use S Queue
 | Time Use | CPU usage time of the job |
 | S | Job status (R: running, Q: queued, F: finished, S: suspended, E: exiting) |
 | Queue | Resource type |
+
+Example: Check the congestion status)
+
+You can use the `qstat -q` command to check the number of running jobs and the number of queued jobs.
+The number of queued jobs allows you to see how much each resource type is being used.
+
+```
+[username@login1 ~]$ qstat -q | head
+
+server: pbs2
+
+Queue            Memory CPU Time Walltime Node   Run   Que   Lm  State
+---------------- ------ -------- -------- ---- ----- ----- ----  -----
+rt_HF              --      --    168:00:0  128    84    18   --   E R
+rt_HG              --      --    168:00:0    1   122     0   --   E R
+rt_HC              --      --    168:00:0    1    60    24   --   E R
+R0000000000        --      --       --     204     0     0   --   D S
+R0000000001        --      --       --     191    43     6   --   E R
+```
+
+The command output is as follows. For details, see `man qstat`.
+
+| Item | Description |
+| -- | -- |
+| `Queue` | Resource type and reservation name |
+| `Run` | Number of running jobs |
+| `Que` | Number of queued jobs |
 
 
 To show the current status of batch jobs for the group you belong to, use the `qgstat` command.
@@ -307,6 +335,22 @@ Job id                 Name             User              Time Use S Queue
 | Time Use | CPU usage time of the job |
 | S | Job status (R: running, Q: queued, F: finished, S: suspended, E: exiting) |
 | Queue | Resource type |
+
+qgstat tends to be delayed, especially when there are many jobs to be listed.
+To handle this case, we have prepared a lightweight alternative, `qgstat_l`, which displays results 
+based on stored data from the past 5 minutes.
+
+```
+$ qgstat_l [-f] [job-id] [-h]
+```
+
+The options of the `qgstat_l` command are follows.
+
+| Option | Description |
+| :-- | :-- |
+| -f | Display detailed information about job |
+| job-id | Display the information of the specified job. By default all the jobs are displayed. |
+| -h | Shows help message |
 
 
 ### Delete a batch job
