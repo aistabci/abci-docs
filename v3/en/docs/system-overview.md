@@ -141,7 +141,7 @@ The software available on the ABCI system is shown below.
 | | Scala | 3.5.2 | 3.5.2 |
 | | Perl | 5.32.1 | 5.32.1 |
 | | Go | 1.24.6 | 1.24.4 |
-| File System | DDN Lustre | 2.14.0_ddn172 | 2.14.0_ddn172 |
+| File System | DDN Lustre | 2.14.0_ddn196 | 2.14.0_ddn196 |
 | | BeeOND | - | 7.4.5 |
 | Object Storage | s3cmd | 2.4.0 | 2.4.0 |
 | Container | SingularityCE | 4.1.5 | 4.1.5 |
@@ -155,7 +155,7 @@ The software available on the ABCI system is shown below.
 | | gdrcopy | 2.4.1 | 2.4.1 |
 | | UCX | 1.17 | 1.17 |
 | | Intel MKL | 2024.2.1 | 2024.2.1 |
-| Utility | aws-cli | 1.22.39 | 1.22.39 |
+| Utility | aws-cli | 1.29.62 | 1.29.62 |
 | | s3fs-fuse | 1.94 | 1.94 |
-| | rclone | 1.57.0 | 1.57.0 |
+| | rclone | 1.70.3 | 1.70.3 |
 
