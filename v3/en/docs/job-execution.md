@@ -336,6 +336,22 @@ Job id                 Name             User              Time Use S Queue
 | S | Job status (R: running, Q: queued, F: finished, S: suspended, E: exiting) |
 | Queue | Resource type |
 
+qgstat tends to be delayed, especially when there are many jobs to be listed.
+To handle this case, we have prepared a lightweight alternative, `qgstat_l`, which displays results 
+based on stored data from the past 5 minutes.
+
+```
+$ qgstat_l [-f] [job-id] [-h]
+```
+
+The options of the `qgstat_l` command are follows.
+
+| Option | Description |
+| :-- | :-- |
+| -f | Display detailed information about job |
+| job-id | Display the information of the specified job. By default all the jobs are displayed. |
+| -h | Shows help message |
+
 
 ### Delete a batch job
 

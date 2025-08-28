@@ -10,6 +10,10 @@ We have added a description for ABCI Cloud Storage to the manual.
 
 Disabled the usage of qalter command by the users.
 
+## 2025-07-11 {#2025-07-11}
+
+We installed `qgstat_l` which is the lightweight version of qgstat.
+
 ## 2025-06-20 {#2025-06-20}
 
 We have added the following applications as Open OnDemand Interactive Apps.
