@@ -1,5 +1,13 @@
 # システム更新履歴
 
+## 2025-08-26 {#2025-08-26}
+
+We added the following softwares.
+
+* firefox (compute nodes)
+
+We granted the users access to NVIDIA GPU Performance Counters.
+
 ## 2025-06-20 {#2025-06-20}
 
 Open OnDemand のインタラクティブアプリに、次のアプリケーションを追加しました。

@@ -1,5 +1,13 @@
 # System Updates
 
+## 2025-08-26 {#2025-08-26}
+
+次のソフトウェアを追加しました。
+
+* firefox (計算ノード)
+
+一般利用者による NVIDIA GPU Performance Counters の利用を許可しました。
+
 ## 2025-06-20 {#2025-06-20}
 
 We have added the following applications as Open OnDemand Interactive Apps.
