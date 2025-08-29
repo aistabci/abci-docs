@@ -78,7 +78,7 @@ print(arr_int32)
 arr_float = np.array([0.1, 0.2, 0.3, 0.4, 0.5], dtype=np.float64)
 print(arr_float)
 
-# 配列動詞の計算を + で表現できます
+# 配列同士の計算を + で表現できます
 arr_sum = arr_int32 + arr_float
 print(arr_sum)
 ```
