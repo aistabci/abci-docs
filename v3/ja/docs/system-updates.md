@@ -2,11 +2,11 @@
 
 ## 2025-08-26 {#2025-08-26}
 
-We added the following softwares.
+次のソフトウェアを追加しました。
 
-* firefox (compute nodes)
+* firefox (計算ノード)
 
-We granted the users access to NVIDIA GPU Performance Counters.
+一般利用者による NVIDIA GPU Performance Counters の利用を許可しました。
 
 ## 2025-06-20 {#2025-06-20}
 
