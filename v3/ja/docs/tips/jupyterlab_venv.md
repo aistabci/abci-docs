@@ -16,7 +16,7 @@ OODにログインし、Interactive Apps：Jupyter(Normal)を実行します。
 <img src="ood-jl-003.png" width="800">
 
 
-ジョブが実行されましたら。「Connect to Jupyter」ボタンを押下します。
+ジョブが開始したら、「Connect to Jupyter」ボタンを押下します。
 <img src="ood-jl-004.png" width="800">
 
 
@@ -51,13 +51,13 @@ $ source work/bin/activate
 (work) $ python3 -m ipykernel install --user --name=work --display-name="Python 3 (work)" 
 ```
 
-例として、作成した仮想環境「work」に「numpy」パッケージをインストールします。
+作成した仮想環境「work」に「numpy」パッケージをインストールします。
 ```
 (work) $ pip install numpy==2.2.2
 ```
 <img src="ood-jl-009.png" width="800">
 
-ブラウザのJupyterLabのタブをリロードすると作成した仮想環境「work」がメニューに表示されます。
+ブラウザのJupyterLabのタブをリロードすると、作成した仮想環境「work」がメニューに表示されます。
 <img src="ood-jl-010.png" width="800">
 <br><br>
 
