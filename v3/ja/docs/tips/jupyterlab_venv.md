@@ -1,6 +1,6 @@
 # JupyterLabにPython仮想環境を追加する方法
 
-ABCIのJupyterLabでは、自身で作成したPython仮想環境をメニューに追加・削除することが可能です。
+ABCIのJupyterLabでは、自身で作成したカーネルを追加・削除することが可能です。追加したPython仮想環境はLauncher画面から選択可能です。
 
 ここではOpen OnDemand(OOD)のJupyterLabにPython仮想環境を追加する方法を示します。
 
@@ -24,13 +24,17 @@ OODにログインし、Interactive Apps：Jupyter(Normal)を実行します。
 <img src="ood-jl-005.png" width="800">
 
 
-## JupyterLabのメニューにPython仮想環境を追加 {#add-venv}
+## JupyterLabのLauncher画面にPython仮想環境を追加 {#add-venv}
 
 例としてPython仮想環境「work」を作成し、仮想環境「work」に「numpy」をインストールします。
 
-JupyterLabのメニューより、「Other」-> 「Terminal」を起動します。
+JupyterLabのLauncher画面より、「Other」-> 「Terminal」を起動します。
 <img src="ood-jl-006.png" width="800">
 <img src="ood-jl-007.png" width="800">
+
+!!! Note
+	もしLauncher画面が初期表示されない場合は、[File] - [New Launcher]から起動してください。
+
 
 「Terminal」より以下のように実行し、仮想環境「work」を作成します。
 
@@ -45,7 +49,7 @@ $ source work/bin/activate
 <img src="ood-jl-008.png" width="800">
 
 
-作成した仮想環境にipykernelをインストールし、JupyterLabメニューに表示されるように設定します。
+作成した仮想環境にipykernelをインストールし、JupyterLabのLauncher画面に表示されるように設定します。
 ```
 (work) $ python3 -m pip install ipykernel
 (work) $ python3 -m ipykernel install --user --name=work --display-name="Python 3 (work)" 
@@ -57,7 +61,7 @@ $ source work/bin/activate
 ```
 <img src="ood-jl-009.png" width="800">
 
-ブラウザのJupyterLabのタブをリロードすると、作成した仮想環境「work」がメニューに表示されます。
+ブラウザのJupyterLabのタブをリロードすると、作成した仮想環境「work」がLauncher画面に表示されます。
 <img src="ood-jl-010.png" width="800">
 <br><br>
 
@@ -90,7 +94,7 @@ Shift + Enterでプログラムを実行します。ただし、Python3 (ipykern
 
 次に、作成した仮想環境Python3 (work)でプログラムを実行します。
 
-メニュー画面から今度は「Notebook」->「Python3 (work)」をクリックします。
+Launcher画面から今度は「Notebook」->「Python3 (work)」をクリックします。
 Notebookを開いたあと先ほどのプログラムを入力してください。
 
 Shift + Enterでプログラムを実行後、Python3 (work)環境にはnumpyをインストールしているのでプログラムが正しく実行されます。
@@ -98,9 +102,9 @@ Shift + Enterでプログラムを実行後、Python3 (work)環境にはnumpyを
 <img src="ood-jl-012.png" width="800">
 <br><br>
 
-## JupyterLabのメニューからPython仮想環境を削除 {#del-venv}
+## JupyterLabのLauncher画面からPython仮想環境を削除 {#del-venv}
 
-JupyterLabのメニューからPython仮想環境を削除するには、以下のコマンドを実行することで削除できます。
+JupyterLabのLauncher画面からPython仮想環境を削除するには、以下のコマンドを実行することで削除できます。
 ```
 jupyter kernelspec uninstall 仮想環境名
 ```
@@ -118,7 +122,7 @@ $ jupyter kernelspec uninstall work
 	$ jupyter kernelspec list
 	```
 
-ブラウザのJupyterLabのタブをリロードすると仮想環境「work」がメニューから削除されています。
+ブラウザのJupyterLabのタブをリロードすると仮想環境「work」がLauncher画面から削除されています。
 <img src="ood-jl-013.png" width="800">
 
 ## Python仮想環境を削除 {#rm-venv}
