@@ -1,6 +1,6 @@
 # JupyterLabにPython仮想環境を追加する方法
 
-ABCIのJupyterLabでは、自身で作成したカーネルを追加・削除することが可能です。追加したPython仮想環境はLauncher画面から選択可能です。
+ABCIのJupyterLabでは、自身で作成したPython仮想環境をカーネルとして追加・削除することが可能です。追加したPython仮想環境はLauncher画面から選択可能です。
 
 ここではOpen OnDemand(OOD)のJupyterLabにPython仮想環境を追加する方法を示します。
 
