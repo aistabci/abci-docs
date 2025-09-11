@@ -6,6 +6,9 @@
 
 * CUDA Toolkit 12.9.1
 * cuDNN 9.12.0
+* firefox (計算ノード)
+
+一般利用者による NVIDIA GPU Performance Counters の利用を許可しました。
 
 ## 2025-08-08 {#2025-08-08}
 

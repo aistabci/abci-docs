@@ -6,6 +6,9 @@ We added the following softwares.
 
 * CUDA Toolkit 12.9.1
 * cuDNN 9.12.0
+* firefox (compute nodes)
+
+We granted the users access to NVIDIA GPU Performance Counters.
 
 ## 2025-08-08 {#2025-08-08}
 
