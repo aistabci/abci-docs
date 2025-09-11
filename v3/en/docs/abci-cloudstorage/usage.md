@@ -1,41 +1,32 @@
-# How to Use ABCI Object Storage (Under Update)
+# How to Use Cloud Storage
 
-This section describes how to use ABCI Object Storage as a client tool by using AWS Command Line Interface (AWS CLI).
+## Procedure to setup AWS Command Line Interface
 
+AWS Command Line Interface (AWS CLI) is alerady installed in the interactive nodes.
+To access the Cloud Storage, please configure AWS CLI following the steps described below.
 
-## Load Module
+## Configuration for the authentication
 
-On the ABCI system, AWS CLI is available both in interactive nodes and in compute nodes. Load the module before using AWS CLI as following.
-
-```
-[username@login1 ~]$ module load aws-cli
-```
-
-When using AWS CLI outside ABCI (for example, on your PC), get AWS CLI from [here](https://github.com/aws/aws-cli) and install it by following the guide.
-
-
-## Configuration
-
-In order to access ABCI Object Storage, ABCI users need to use a Object Storage Account that is different from ABCI account. Users are allowed to have multiple Object Storage Accounts. Access Key which is a pair of Access Key ID and Secret Access Key is issued for each Object Storage Account. If a user belongs to multiple ABCI groups and uses ABCI Object Storage from multiple groups, multiple Object Storage Accounts is issued per group. When accessing ABCI Object Storage for the first time, Access Key should be set up in AWS CLI as shown below. Specify `us-east-1` as region name. 
+In order to access Cloud Storage, ABCI users need to use a Cloud Storage Account that is different from ABCI account. Users are allowed to have multiple Cloud Storage Accounts. Access Key which is a pair of Access Key ID and Secret Access Key is issued for each Cloud Storage Account. If a user belongs to multiple ABCI groups and uses Cloud Storage from multiple groups, multiple Cloud Storage Accounts is issued per group. When accessing Cloud Storage for the first time, Access Key should be set up in AWS CLI as shown below. Specify `ap-northeast-1` as region name. 
 ```
 [username@login1 ~]$ aws configure
 AWS Access Key ID [None]: ACCESS-KEY-ID
 AWS Secret Access Key [None]: SECRET-ACCESS-KEY
-Default region name [None]: us-east-1
+Default region name [None]: ap-northeast-1
 Default output format [None]:(No input required)
 ```
 
-A user can switch with the option '--profile' if a user has multiple Object Storage Accounts.
-In order to configure the Object Storage Account 'aaa00000.2', for example, follow the instruction below.
+A user can switch with the option '--profile' if a user has multiple Cloud Storage Accounts.
+In order to configure the Cloud Storage Account 'aaa00000.2', for example, follow the instruction below.
 ```
 [username@login1 ~]$ aws configure --profile aaa00000.2
 AWS Access Key ID [None]: aaa00000.2's ACCESS-KEY-ID
 AWS Secret Access Key [None]: aaa00000.2's SECRET-ACCESS-KEY
-Default region name [None]: us-east-1
+Default region name [None]: ap-northeast-1
 Default output format [None]:(No input required)
 ```
 
-When running the AWS commands with the Object Storage Account 'aaa00000.2', use the option '--profile' as follows.
+When running the AWS commands with the Cloud Storage Account 'aaa00000.2', use the option '--profile' as follows.
 ```
 [username@login1 ~]$ aws --profile aaa00000.2 --endpoint-url https://s3.v3.abci.ai s3api list-buckets
 ```
@@ -69,7 +60,7 @@ In this example, `bucket-1` means a name of the bucket and `project-1/docs/fig1.
 
 There are rules for naming buckets.
 
-* It must be unique across ABCI Object Storage.
+* It must be unique across Cloud Storage.
 * The numbers of characters should be between 3 and 63.
 * It can not include underscores (_).
 * The first character must be a small letter of alphabets or numbers.
@@ -78,21 +69,21 @@ There are rules for naming buckets.
 
 To name object keys, UTF-8 characters are available though, there are special characters which should be preferably avoided.
 
-* There is no problem with using hyphens (-), underscores (_) and periods (.).
+* There is no problem with using hyphens (-), underscores (_) and dots (.).
 * Five characters, exclamation mark (!), asterisk (*), apostrophe ('),  left parenthesis ('(') and right parenthesis (')'), are available if they are properly used (e.g. escaping or quoting in shell scripts).
 
 Special characters other than the ones mentioned above should be avoided.
 
-Specify https://s3.v3.abci.ai as an endpoint (--endpoint-url).<!-- `http://s3.v3.abci.ai` is also availble from the interactive node and compute node. --> 
+Specify https://s3.v3.abci.ai as an endpoint (--endpoint-url).<!-- `http://s3.abci.ai` is also availble from the interactive node and compute node. --> 
 
 
 ### Create Bucket
 
 To create a bucket, use s3 mb command.
-A bucket whose name is 'dataset-summer-2024', for example, can be created by running aws commands as following.
+A bucket whose name is 'dataset-summer-2012', for example, can be created by running aws commands as following.
 ```
-[username@login1 ~]$ aws --endpoint-url https://s3.v3.abci.ai s3 mb s3://dataset-summer-2024
-make_bucket: dataset-summer-2024
+[username@login1 ~]$ aws --endpoint-url https://s3.v3.abci.ai s3 mb s3://dataset-summer-2012
+make_bucket: dataset-summer-2012
 ```
 
 
@@ -103,8 +94,8 @@ To show the list of buckets created on the ABCI group, run `aws --endpoint-url h
 For example
 ```
 [username@login1 ~]$ aws --endpoint-url https://s3.v3.abci.ai s3 ls
-2019-06-15 10:47:37 testbucket1
-2019-06-15 18:10:37 testbucket2
+2025-06-15 10:47:37 testbucket1
+2025-06-15 18:10:37 testbucket2
 ```
 
 
@@ -115,32 +106,32 @@ To show the list of objects in the bucket, run `aws --endpoint-url https://s3.v3
 ```
 [username@login1 ~]$ aws --endpoint-url https://s3.v3.abci.ai s3 ls s3://mybucket
                            PRE pics/
-2019-07-05 17:33:05          4 test1.txt
-2019-07-05 21:12:47          4 test2.txt
+2025-06-05 17:33:05          4 test1.txt
+2025-06-05 21:12:47          4 test2.txt
 ```
 
 In order to list objects that have prefix 'pics/', for example, add prefix after the bucket name.
 
 ```
 [username@login1 ~]$ aws --endpoint-url https://s3.v3.abci.ai s3 ls s3://mybucket/pics/
-2019-07-29 21:55:57    1048576 test3.png
-2019-07-29 21:55:59    1048576 test4.png
+2025-06-07 21:55:57    1048576 test3.png
+2025-06-07 21:55:59    1048576 test4.png
 ```
 
 The option '--recursive' can list all objects in a bucket.
 
 ```
 [username@login1 ~]$ aws --endpoint-url https://s3.v3.abci.ai s3 ls s3://mybucket --recursive
-2019-07-05 17:33:05          4 test1.txt
-2019-07-05 21:12:47          4 test2.txt
-2019-07-29 21:55:57    1048576 pics/test3.png
-2019-07-29 21:55:59    1048576 pics/test4.png
+2025-06-05 17:33:05          4 test1.txt
+2025-06-05 21:12:47          4 test2.txt
+2025-06-07 21:55:57    1048576 pics/test3.png
+2025-06-07 21:55:59    1048576 pics/test4.png
 ```
 
 
 ### Copy data (Upload, Download, Copy)
 
-Data can be copied from the file system to a bucket in ABCI Object Storage, from a bucket in ABCI Object Storage to the file system and from a bucket in ABCI Object Storage to another bucket in ABCI Object Storage.
+Data can be copied from the file system to a bucket in Cloud Storage, from a bucket in Cloud Storage to the file system and from a bucket in Cloud Storage to another bucket in Cloud Storage.
 
 Example: Copy the file '0001.jpg' to the bucket 'dataset-c0541'
 ```
@@ -161,10 +152,10 @@ upload: images/0002.jpg to s3://dataset-c0542/0002.jpg
 upload: images/0003.jpg to s3://dataset-c0542/0003.jpg
 upload: images/0004.jpg to s3://dataset-c0542/0004.jpg
 [username@login1 ~]$ aws --endpoint-url https://s3.v3.abci.ai s3 ls s3://dataet-c0542/
-2019-06-10 19:03:19    1048576 0001.jpg
-2019-06-10 19:03:19    1048576 0002.jpg
-2019-06-10 19:03:19    1048576 0003.jpg
-2019-06-10 19:03:19    1048576 0004.jpg
+2025-06-10 19:03:19    1048576 0001.jpg
+2025-06-10 19:03:19    1048576 0002.jpg
+2025-06-10 19:03:19    1048576 0003.jpg
+2025-06-10 19:03:19    1048576 0004.jpg
 [username@login1 ~]$
 ```
 
@@ -183,7 +174,7 @@ Time stamps are not be preserved.
 This command can handle objects which have specific prefix with option '--recursive'
 and files which are stored in specific directories.
 
-The example shown next transfers 'annotaitions.zip' in current directory to a bucket 'dataset-c0541' in ABCI Object Storage.
+The example shown next transfers 'annotaitions.zip' in current directory to a bucket 'dataset-c0541' in Cloud Storage.
 
 ```
 [username@login1 ~]$ aws --endpoint-url https://s3.v3.abci.ai s3 mv annotations.zip s3://dataset-c0541/
@@ -201,7 +192,7 @@ move: s3://dataset-c0541/sensor-1/0002.dat to s3://dataset-c0542/sensor-1/0002.d
 ```
 
 
-### Synchronize Local Directory with ABCI Object Storage
+### Synchronize Local Directory with Cloud Storage
 
 Here is an example that synchronizes a directory 'sensor2' in current directory and a bucket 'mybucket'. If an option '--delete' is not given, exsiting objects in the bucket will not be deleted and exsiting objects which have same names with the ones in the current directory will be overwritten. When executing same command again, only updated data will be sent.
 ```
@@ -238,16 +229,16 @@ delete: s3://mybucket/readme.txt
 The option '--recursive' enables to delete objects which are located under specified prefix.
 ```
 [username@login1 ~]$ aws --endpoint-url https://s3.v3.abci.ai s3 ls s3://mybucket --recursive
-2019-07-30 20:46:53         32 a.txt
-2019-07-30 20:46:53         32 b.txt
-2019-07-31 14:51:50        512 xml/c.xml
-2019-07-31 14:51:54        512 xml/d.xml
+2025-06-30 20:46:53         32 a.txt
+2025-06-30 20:46:53         32 b.txt
+2025-06-31 14:51:50        512 xml/c.xml
+2025-06-31 14:51:54        512 xml/d.xml
 [username@login1 ~]$ aws --endpoint-url https://s3.v3.abci.ai s3 rm s3://mybucket/xml --recursive
 delete: s3://mybucket/xml/c.xml
 delete: s3://mybucket/xml/d.xml
 [username@login1 ~]$ aws --endpoint-url https://s3.v3.abci.ai s3 ls s3://mybucket --recursive
-2019-07-30 20:46:53         32 a.txt
-2019-07-30 20:46:53         32 b.txt
+2025-06-30 20:46:53         32 a.txt
+2025-06-30 20:46:53         32 b.txt
 ```
 
 
@@ -295,14 +286,11 @@ To display object owner, use the `s3api get-object-acl` command. As shown in the
 
 ### MPU
 
-Uploading from a local file system, client applications upload data efficiently by automatically splitting the data and sending it in parallel. This is called a multipart upload (MPU). MPU is applied when the threshold of data size defined in the client application is exceeded. For instance, the default threshold is [8MB](https://docs.aws.amazon.com/cli/latest/topic/s3-config.html#multipart-threshold) for aws-cli and [15MB](https://s3tools.org/kb/item13.htm) for s3cmd.
+Uploading from a local file system, client applications upload data efficiently by automatically splitting the data and sending it in parallel. This is called a multipart upload (MPU). MPU is applied when the threshold of data size defined in the client application is exceeded. For instance, the default threshold is 8MB for aws-cli.
 
 ### Uploading Data with Manual MPU
 
 The following describes how to apply MPU manually.
-
-!!! note
-    It is recommended to use MPU automatically by the client application.
 
 First, using the `split` command to split the file. In the following example,
 15M_test.dat is divided into three parts.
@@ -409,7 +397,7 @@ The path and object name are displayed in `Key`.
         {
             "UploadId": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
             "Key": "Testdata/data_10gib-1.dat",
-            "Initiated": "2019-11-12T09:58:16.242000+00:00",
+            "Initiated": "2025-11-12T09:58:16.242000+00:00",
             "StorageClass": "STANDARD",
             "Owner": {
                 "DisplayName": "ABCI GROUP",
@@ -431,6 +419,8 @@ To abort the MPU, use `s3api abort -multipart -upload` command with specified `U
 [username@login1 ~]$ aws --endpoint-url https://s3.v3.abci.ai s3api abort-multipart-upload --bucket Testdata --key Testdata/data_10gib-1.dat --upload-id aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
 [username@login1 ~]$
 ```
+
+Now the MPU abortion is completed. The data which is created at the server side during MPU process is also deleted.
 
 <!--  Is s3fs-fuse another ?  -->
 
