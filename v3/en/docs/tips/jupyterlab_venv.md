@@ -1,6 +1,6 @@
 # How to Add a Python Virtual Environment to JupyterLab
 
-In ABCI's JupyterLab, you can add or remove Python virtual environments you've created as kernels. Added Python virtual environments can be selected from JupyterLab Launcher.
+In ABCI's JupyterLab, you can add or remove Python virtual environments you've created as kernels. These environments will then be available for selection in the JupyterLab Launcher.
 
 This section shows how to add a Python virtual environment to JupyterLab on Open OnDemand (OOD).
 
@@ -24,7 +24,7 @@ JupyterLab will open in a new browser tab.
 <img src="ood-jl-005.png" width="800">
 
 
-## Add Python virtual environments to the JupyterLab Launcher {#add-venv}
+## Adding a Python virtual environments to the JupyterLab Launcher {#add-venv}
 
 As an example, create a Python virtual environment named "work" and install numpy in the "work" virtual environment.
 
