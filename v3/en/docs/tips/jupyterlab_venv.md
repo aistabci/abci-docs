@@ -62,7 +62,7 @@ Install numpy package in the virtual environment "work" you created.
 
 Reload the JupyterLab browser tab and the newly created "work" virtual environment will appear in the JupyterLab Launcher.
 <img src="ood-jl-010.png" width="800">
-<br><br>
+
 
 Below is an example of running a numpy program in Python3 (ipykernel).
 
@@ -89,7 +89,7 @@ print(arr_sum)
 Press "Shift + Enter" to run the program. An error occurs because numpy is not installed in Python3 (ipykernel).
 
 <img src="ood-jl-011.png" width="800">
-<br><br>
+
 
 Next, execute the program using the created Python3 (work).
 
@@ -99,7 +99,7 @@ After opening the Notebook, enter the same program as before.
 Press "Shift + Enter" to run the program. Since numpy is installed in the Python3 (work), the program executes correctly.
 
 <img src="ood-jl-012.png" width="800">
-<br><br>
+
 
 ## Removing a Python Virtual Environment from the JupyterLab Launcher {#del-venv}
 

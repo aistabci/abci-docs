@@ -63,7 +63,7 @@ $ source work/bin/activate
 
 ブラウザのJupyterLabのタブをリロードすると、作成した仮想環境「work」がLauncher画面に表示されます。
 <img src="ood-jl-010.png" width="800">
-<br><br>
+
 
 以下は、Python3 (ipykernel)でのnumpyプログラムの実行例です。
 
@@ -90,7 +90,7 @@ print(arr_sum)
 Shift + Enterでプログラムを実行します。ただし、Python3 (ipykernel)環境ではnumpyをインストールしていないためエラーになります。
 
 <img src="ood-jl-011.png" width="800">
-<br><br>
+
 
 次に、作成した仮想環境Python3 (work)でプログラムを実行します。
 
@@ -100,7 +100,7 @@ Notebookを開いたあと先ほどのプログラムを入力してください
 Shift + Enterでプログラムを実行後、Python3 (work)環境にはnumpyをインストールしているのでプログラムが正しく実行されます。
 
 <img src="ood-jl-012.png" width="800">
-<br><br>
+
 
 ## JupyterLabのLauncher画面からPython仮想環境を削除 {#del-venv}
 
