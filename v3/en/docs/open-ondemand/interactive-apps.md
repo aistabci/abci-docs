@@ -26,7 +26,7 @@ Open OnDemand for ABCI provides [code-server](https://github.com/coder/code-serv
 
 ## Interactive Desktop {#interactive_desktop}
 
-Open OnDemand for ABCI provides [Interactive Desktop(Xfce)](https://www.xfce.org/?lang=en), allowing you to operate on the compute node through your web browser on your side by selecting "Interactive Desktop" in Open OnDemand Dashboard and launching vncserver.
+Open OnDemand for ABCI provides [Interactive Desktop(Xfce)](https://www.xfce.org/?lang=en), allowing you to operate on the compute node through web browser on your side by selecting "Interactive Desktop" in Open OnDemand Dashboard and launching vncserver.
 
 !!!info
     Connecting to Interactive Desktop and opening terminal, you can practice the GPU rendering following the commands below.
