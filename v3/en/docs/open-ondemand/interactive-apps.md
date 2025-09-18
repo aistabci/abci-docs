@@ -22,11 +22,11 @@ Jupyter Lab is launched on the compute nodes, allowing you to operate it from th
 
 ## code-server {#code-server}
 
-Open OnDemand for ABCI provides [code-server](https://github.com/coder/code-server), allowing you to use [VS Code](https://github.com/Microsoft/vscode) through your web browser and operate on compute nodes by running code-server there.
+Open OnDemand for ABCI provides [code-server](https://github.com/coder/code-server), allowing you to use [VSCode](https://github.com/Microsoft/vscode) on the compute node through web browser on your side by selecting "Code Server" in Open OnDemand Dashboard and launching a job with an approriate resource type specified.
 
 ## Interactive Desktop {#interactive_desktop}
 
-Open OnDemand for ABCI provides [Interactive Desktop(Xfce)](https://www.xfce.org/?lang=en), allowing you to operate on compute nodes through your web browser with vncserver running there.
+Open OnDemand for ABCI provides [Interactive Desktop(Xfce)](https://www.xfce.org/?lang=en), allowing you to operate on the compute node through your web browser on your side by selecting "Interactive Desktop" in Open OnDemand Dashboard and launching vncserver.
 
 !!!info
     Connecting to Interactive Desktop and opening terminal, you can practice the GPU rendering following the commands below.
