@@ -137,7 +137,8 @@ module load cuda/12.6/12.6.1
 | compiler        | gcc             | 13.2.0   |
 |                 | intel           | 2024.2.1 |
 |                 | nvhpc           | 24.9     |
-| devtools        | code-server     | 4.100.2  |
+| devtools        | cmake           | 4.1.1    |
+|                 | code-server     | 4.100.2  |
 |                 | intel-advisor   | 2024.2.1 |
 |                 | intel-inspector | 2024.2   |
 |                 | intel-itac      | 2022.4   |
@@ -149,13 +150,12 @@ module load cuda/12.6/12.6.1
 |                 | scala           | 3.5.2    |
 |                 | turbovnc        | 3.1.4    |
 | gpgpu           | cuda            | 11.8.0, 12.0.1, 12.1.1, 12.2.2, 12.3.2, 12.4.1, 12.5.1, 12.6.1, 12.8.1, 12.9.1 |
-|                 | cudnn           | 9.5/9.5.1, 9.12/9.12.0 |
-|                 | nccl            | 2.23/2.23.4-1, 2.25/2.25.1-1 |
+|                 | cudnn           | 9.5/9.5.1, 9.6/9.6.0, 9.7/9.7.1, 9.8/9.8.0, 9.9/9.9.0, 9.10/9.10.2, 9.11/9.11.1, 9.12/9.12.0 |
+|                 | nccl            | 2.23/2.23.4-1, 2.24/2.24.3-1, 2.25/2.25.1-1, 2.26/2.26.6-1, 2.27/2.27.7-1, 2.28/2.28.3-1 |
 | mpi             | hpcx            | 2.20     |
 |                 | hpcx-debug      | 2.20     |
 |                 | hpcx-mt         | 2.20     |
 |                 | hpcx-prof       | 2.20     |
 |                 | intel-mpi       | 2021.13  |
-| utils           | aws-cli         | 1.29.62  |
-|                 | gdrcopy         | 2.4.1    |
+| utils           | gdrcopy         | 2.4.1    |
 |                 | singularitypro  | 4.1.7    |
