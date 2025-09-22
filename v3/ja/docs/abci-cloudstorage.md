@@ -21,7 +21,7 @@ ABCIでは、Amazon Simple Storage Service (Amazon S3) 互換インターフェ�
 
 クラウドストレージでは、各ABCIグループの利用管理者が利用者ポータルで申請したクラウドストレージ利用量に応じてABCIポイントが差し引かれ、申請した量までクラウドストレージを利用可能です。利用量の増量または減量は、各ABCIグループの利用管理者からの申請が必要です。なお、データ転送量やAPIの呼び出し回数による課金は行っていません。[show_cs_quota](getting-started.md#checking-cloud-storage-quota) を使ってクラウドラウドストレージに保存したデータ量を確認できます。
 
-クラウドストレージの単価は、[料金表](https://abci.ai/ja/how_to_use/tariffs.html) を確認してください。
+クラウドストレージを利用するためには、[利用者ポータル](https://portal.v3.abci.ai/LoginPage?ec=302&startURL=%2Fs%2F)で、1TB単位で利用量を申請してください。1TBあたりのABCIポイント消費量は[料金表](https://abci.ai/ja/how_to_use/tariffs.html)を参照ください。ただし、システムの稼働確認や動作テストなど、軽微な利用を目的とする場合、利用量が1MB以内であればABCIポイントを消費せずに利用可能です。
 
 | ページ名 | 概要 |
 |:--|:--|
