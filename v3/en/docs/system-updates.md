@@ -1,5 +1,19 @@
 # System Updates
 
+## 2025-08-26 {#2025-08-26}
+
+We added the following softwares.
+
+* CUDA Toolkit 12.9.1
+* cuDNN 9.12.0
+* firefox (compute nodes)
+
+We granted the users access to NVIDIA GPU Performance Counters.
+
+## 2025-08-08 {#2025-08-08}
+
+We installed GCC 13.2.0.
+
 ## 2025-08-05 {#2025-08-05}
 
 We have added a description for ABCI Cloud Storage to the manual.
