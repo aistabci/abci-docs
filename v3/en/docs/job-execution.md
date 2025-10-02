@@ -44,13 +44,13 @@ The following describes the available resource types first, followed by the rest
 
 The ABCI system provides the following resource types:
 
-| Resource type name | Description | Assigned physical CPU core | Number of assigned GPU | Memory (GB) | Local storage (GB) | ABCI points per hour for Spot and On-demand (※) |
-|:--|:--|:--|:--|:--|:--|:--|
-| rt\_HF | node-exclusive | 96 | 8 | 1920 | 14 | 7.5 |
-| rt\_HG | node-sharing<br>with GPU | 8 | 1 | 160 | 1.4 | 1.5 |
-| rt\_HC | node-sharing<br>CPU only | 16 | 0 | 320 | 1.4 | 0.5 |
+| Resource type name | Description | Number of assigned CPU core | Number of assigned GPU | Memory (GB) | Local storage (GB) |
+|:--|:--|:--|:--|:--|:--|
+| rt\_HF | node-exclusive | 192 | 8 | 1920 | 14 |
+| rt\_HG | node-sharing<br>with GPU | 16 | 1 | 160 | 1.4 |
+| rt\_HC | node-sharing<br>CPU only | 32 | 0 | 320 | 1.4 |
 
-(※) Reserved service for rt_HF consumes 1.5 times the points.
+Please refer to the [accounting information](https://abci.ai/en/how_to_use/tariffs.html) for the charges associated with each resource type.
 
 ### Number of nodes available at the same time
 
@@ -116,7 +116,7 @@ The major options of the `qsub` command are follows.
 |:--|:--|
 | -P *group* | Specify ABCI user group. You can only specify the ABCI group to which your ABCI account belongs. (mandatory) |
 | -q *resource_type* | Specify resource type (mandatory) |
-| -l select=*num*[*:ncpus=num_cpus:mpiprocs=num_mpi:ompthreads=num_omp*] | Specify the number of nodes with *num* and the number of CPUs corresponding to each resource type with *num_cpus*, the number of MPI processes with *num_mpi*, and the number of threads with *num_omp*. (mandatory) |
+| -l select=*num*[*:ncpus=num_cpus:mpiprocs=num_mpi:ompthreads=num_omp*] | Specify the number of nodes with *num*, the number of MPI processes with *num_mpi* and the number of threads with *num_omp*. The number of CPU cores corresponding to the resource type specified by `-q` option is set to *ncpus* by default and the user cannot change it. (mandatory) |
 | -l walltime=[*HH:MM:*]*SS* | Specify elapsed time by [*HH:MM:*]*SS*. When execution time of job exceed specified time, job is rejected. |
 | -N name | Specify the job name with *name*. The default is the job script name. |
 | -o *stdout_name* | Specify standard output stream of job. The output file will be created after the job completes. |
@@ -135,6 +135,7 @@ In addition, the following options are available as extended options.
 | Option | Description |
 |:--|:--|
 | -v RTYPE=resource\_type | Specify the resource type to be used for the reserved job. This option is mandatory when submitting a job to a reserved node. |
+| -v USE\_SSH=*{0,1,2}* | Specify SSH login to the compute nodes assigned to the job execution of resource type "rt_HF". The default is the  SSH login function disabled. 0: All group members including yourself cannot access, 1: Only your account can access, 2: Group members including yourself can access |
 
 ## Interactive Jobs
 
@@ -253,6 +254,7 @@ The major options of the `qstat` command are follows.
 | -a | Display additional information about job, including the number of nodes used |
 | -x | Display information including jobs that have been completed in the past 10 days |
 | -t | Display information including array jobs. |
+| -q | Displays the number of jobs currently running or waiting for each resource type and reservation. |
 
 Example)
 
@@ -271,6 +273,33 @@ Job id                 Name             User              Time Use S Queue
 | Time Use | CPU usage time of the job |
 | S | Job status (R: running, Q: queued, F: finished, S: suspended, E: exiting) |
 | Queue | Resource type |
+
+Example: Check the congestion status)
+
+You can use the `qstat -q` command to check the number of running jobs and the number of queued jobs.
+The number of queued jobs allows you to see how much each resource type is being used.
+
+```
+[username@login1 ~]$ qstat -q | head
+
+server: pbs2
+
+Queue            Memory CPU Time Walltime Node   Run   Que   Lm  State
+---------------- ------ -------- -------- ---- ----- ----- ----  -----
+rt_HF              --      --    168:00:0  128    84    18   --   E R
+rt_HG              --      --    168:00:0    1   122     0   --   E R
+rt_HC              --      --    168:00:0    1    60    24   --   E R
+R0000000000        --      --       --     204     0     0   --   D S
+R0000000001        --      --       --     191    43     6   --   E R
+```
+
+The command output is as follows. For details, see `man qstat`.
+
+| Item | Description |
+| -- | -- |
+| `Queue` | Resource type and reservation name |
+| `Run` | Number of running jobs |
+| `Que` | Number of queued jobs |
 
 
 To show the current status of batch jobs for the group you belong to, use the `qgstat` command.
@@ -306,6 +335,22 @@ Job id                 Name             User              Time Use S Queue
 | Time Use | CPU usage time of the job |
 | S | Job status (R: running, Q: queued, F: finished, S: suspended, E: exiting) |
 | Queue | Resource type |
+
+qgstat tends to be delayed, especially when there are many jobs to be listed.
+To handle this case, we have prepared a lightweight alternative, `qgstat_l`, which displays results 
+based on stored data from the past 5 minutes.
+
+```
+$ qgstat_l [-f] [job-id] [-h]
+```
+
+The options of the `qgstat_l` command are follows.
+
+| Option | Description |
+| :-- | :-- |
+| -f | Display detailed information about job |
+| job-id | Display the information of the specified job. By default all the jobs are displayed. |
+| -h | Shows help message |
 
 
 ### Delete a batch job
@@ -367,11 +412,11 @@ The maximum number of nodes and the node-time product that can be reserved for t
 |:--|:--|
 | Minimum reservation days | 1 day |
 | Maximum reservation days | 60 days |
-| Maximum number of nodes can be reserved at once per ABCI group | 192 nodes |
-| Maximum number of nodes can be reserved at once per system | 384 nodes |
+| Maximum number of nodes can be reserved at once per ABCI group | 32 nodes |
+| Maximum number of nodes can be reserved at once per system | 640 nodes |
 | Minimum reserved nodes per reservation | 1 nodes |
-| Maximum reserved nodes per reservation | 192 nodes |
-| Maximum reserved node time per reservation | 64,512 nodes x hour |
+| Maximum reserved nodes per reservation | 32 nodes |
+| Maximum reserved node time per reservation | 10,752 nodes x hour |
 
 ### Make a reservation
 
@@ -447,8 +492,8 @@ Example) Check the number of reservable nodes per group
 [username@login1 ~]$ qrstat --available=grpname
 date       available nodes for group
 ---------- -------------------------
-01/30/2025                       192
-01/31/2025                       192
+01/30/2025                       32
+01/31/2025                       32
 ```
 
 

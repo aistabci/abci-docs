@@ -86,13 +86,13 @@ Below is a list of shared file systems provided by the ABCI system using the abo
 |:--|:--|:--|:--|:--|
 | Home area | /home | 10 PB | Lustre |  |
 | Group area | /groups | 63 PB | Lustre |  |
+| ABCI Cloud Storage | /groups_s3 | 1PB | Lustre |  |
 <!--| ABCI Object area | /groups_s3 | 1 PB | Lustre |  |-->
 
 The following file systems are mounted for the purpose of data migration.
 
 | Usage | Mount point | Effective capacity | File system | Notes |
 |:--|:--|:--|:--|:--|
-| Archive | /home-2.0 | 0.5 PB | Lustre | Read-only. Home area used in ABCI 2.0 |
 | Archive | /groups-2.0 | 10.8 PB | Lustre | Read-only. Group area used in ABCI 2.0 |
 
 
@@ -110,13 +110,13 @@ Storage Service Specifications:
 
 | Storage | Initial Available Capacity | Capacity Limit | Number of Inode | Inode Limit | ABCI Points Consumption<br>(Standard Use) | ABCI Points Consumption<br>(Accelerated Development Use) |
 | :- | :- | :- | :- | :- | :- | :- |
-| /home | 2TB | 2TB | Free | 25 billion | Free | Free |
+| /home | 2TB | 2TB | | | Free | Free |
 | /groups | 0TB | 1000TB | 200 million | 600 million | 5 points per month per 1TB | 2.5 points per month per 1TB |
 | /groups-2.0 | - | - | - | - | Free | Free |
 
 !!! note
     * The storage service allocates 1,099,511,627,776 bytes per 1TB. 
-    * The total number of inodes in /home is approximately 25 billion. There is no limit on the number of inodes per user. 
+    * The /home file system is shared by all users, and its total number of inodes is about 25 billion. There is no limit on the number of inodes in the /home directory for individual users.
     * The capacity of /groups can be increased up to 1,000TB via the user portal[^footnote01]. 
     * If you need more than 1,000TB of capacity or want to increase the inode limit in /groups, you need to apply via email. For application procedures, please refer to [Request for Increasing Group Area Quota](requests/group-area-quota-increase.md). 
     * The /groups-2.0 service will be discontinued at the end of September 2025. For more details, please refer to [Future Storage Service Announcements](https://abci.ai/news/2024/09/04/en_storage_after_nov2024.html).
@@ -132,26 +132,31 @@ The software available on the ABCI system is shown below.
 | OS | Rocky Linux | - | 9.4 |
 | OS | Red Hat Enterprise Linux | 9.4 | - |
 | Job Scheduler | Altair PBS Professional | 2022.1.6 | 2022.1.6 |
-| Development Environment | CUDA Toolkit | 11.8.0<br>12.0.1<br>12.1.1<br>12.2.2<br>12.3.2<br>12.4.1<br>12.5.1<br>12.6.1 | 11.8.0<br>12.0.1<br>12.1.1<br>12.2.2<br>12.3.2<br>12.4.1<br>12.5.1<br>12.6.1 |
+| Development Environment | CUDA Toolkit | 11.8.0<br>12.0.1<br>12.1.1<br>12.2.2<br>12.3.2<br>12.4.1<br>12.5.1<br>12.6.1<br>12.8.1<br>12.9.1 | 11.8.0<br>12.0.1<br>12.1.1<br>12.2.2<br>12.3.2<br>12.4.1<br>12.5.1<br>12.6.1<br>12.8.1<br>12.9.1 |
 | | Intel oneAPI<br>(compilers and libraries) | 2024.2.1 | 2024.2.1 |
-| | Python | 3.9.18 | 3.9.18 |
-| | Ruby | 3.0.4 | 3.0.4 |
-| | R | 4.4.1 | 4.4.1 |
-| | Java | 11.0.22.0.7 | 11.0.23.0.9 |
+| | GCC | 11.5.0<br>13.2.0 | 11.4.1<br>13.2.0 |
+| | Python | 3.9.21<br>3.12.9<br>3.13.2 | 3.9.21<br>3.12.9<br>3.13.2 |
+| | Ruby | 3.0.7 | 3.0.4 |
+| | R | 4.5.1 | 4.5.1 |
+| | Java | 17.0.16 | 17.0.16 |
 | | Scala | 3.5.2 | 3.5.2 |
 | | Perl | 5.32.1 | 5.32.1 |
-| | Go | 1.21.7 | 1.21.9 |
-| File System | DDN Lustre | 2.14.0_ddn172 | 2.14.0_ddn172 |
+| | Go | 1.24.6 | 1.24.4 |
+| File System | DDN Lustre | 2.14.0_ddn196 | 2.14.0_ddn196 |
 | | BeeOND | - | 7.4.5 |
 | Object Storage | s3cmd | 2.4.0 | 2.4.0 |
 | Container | SingularityCE | 4.1.5 | 4.1.5 |
 | MPI | Intel MPI | 2021.13 | 2021.13 |
-| Library | cuDNN | 9.5.1 | 9.5.1 |
+| | hpcx | 2.20 | 2.20 |
+| | hpcx-debug | 2.20 | 2.20 |
+| | hpcx-mt | 2.20 | 2.20 |
+| | hpcx-prof | 2.20 | 2.20 |
+| Library | cuDNN | 9.5.1<br>9.12.0 | 9.5.1<br>9.12.0 |
 | | NCCL | 2.23.4-1<br>2.25.1-1 | 2.23.4-1<br>2.25.1-1 |
 | | gdrcopy | 2.4.1 | 2.4.1 |
 | | UCX | 1.17 | 1.17 |
 | | Intel MKL | 2024.2.1 | 2024.2.1 |
 | Utility | aws-cli | 1.29.62 | 1.29.62 |
 | | s3fs-fuse | 1.94 | 1.94 |
-| | rclone | 1.57.0 | 1.57.0 |
+| | rclone | 1.70.3 | 1.70.3 |
 

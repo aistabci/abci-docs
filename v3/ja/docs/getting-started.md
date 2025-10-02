@@ -1,5 +1,31 @@
 # ABCIの利用開始
 
+## ABCIアカウントの取得 {#getting-an-account}
+
+### ABCIの利用申請 {#application-for-use-of-abci}
+ABCIを利用するためには、[「ご利用の流れ」](https://abci.ai/ja/how_to_use/)に掲載された利用規定（約款または規約）に従い、研究・開発テーマを決定し、[ABCI利用者ポータル](https://portal.v3.abci.ai/ProjectApplication_01) から「ABCI利用申請」を提出します。ABCI申請受付担当は利用規定に基づいて審査し、要件が満たされている場合に、申請されたABCIグループを作成し、申請者に採択された旨を通知します。申請者が通知を受け取ったら、利用開始となります。
+
+利用料金は、[料金表](https://abci.ai/ja/how_to_use/tariffs.html)を確認の上、ABCIポイントを購入することで支払いいただきます。ABCIポイントはABCIグループごとに購入してください。申請時には、ABCIポイントを 1,000ポイント以上購入する必要があります。
+
+### ABCIアカウントの種類 {#account-type}
+ABCIアカウントには、「利用責任者」「利用管理者」「利用者」の3種類があります。ABCIシステムを利用するには、「利用責任者」が [ABCI利用者ポータル](https://portal.v3.abci.ai/ProjectApplication_01) から「利用グループ申請」を行い、ABCIアカウントを取得する必要があります。
+詳細は [ABCI利用者ポータルガイド](https://docs.abci.ai/v3/portal/ja/) を参照してください。
+
+!!! note
+    - 「利用責任者」自身にもABCIアカウントが発行されます。
+    - 「利用責任者」は [ABCI利用者ポータル](https://portal.v3.abci.ai/) にて「利用者」を「利用管理者」に変更することが可能です。
+    - 「利用責任者」と「利用管理者」は、ABCIグループに「利用管理者」もしくは「利用者」を追加することが可能です。
+    - 「利用責任者」と「利用管理者」は、ABCIグループの「利用責任者」を変更することが可能です。
+
+### ABCIアカウントの一意性 {#account-uniqueness}
+原則として、1人の方は1つのABCIアカウントを利用ください。例えば、会社で1つのABCIアカウントを取得し、複数の社員が共有して使い回すことは認められません。
+一方で1人の方が複数の法人に所属している場合は複数のABCIアカウントを取得することができます。この場合、それぞれの法人に対応するABCIアカウントを使い分ける必要があります。
+
+### 複数のABCIグループに所属する場合 {#multi-titled-person}
+1人の方が1つの法人の中で複数のテーマに同時に取り組んでいる場合、1人で複数のABCIアカウントをそれぞれ取得するのではなく、1つのABCIアカウントで複数のABCIグループに所属することになります。この場合、その利用目的に応じてABCIグループを使い分ける必要があります。どのABCIグループを利用すべきか不明の場合は、ABCIグループの「利用責任者」または「利用管理者」へお問い合わせください。自分が所属しているABCIグループの「利用責任者」または「利用管理者」は、[ABCI利用者ポータル](https://portal.v3.abci.ai/) へログイン後の最初の画面に表示されます。
+
+ご利用料金をどのABCIグループが負担するかに関わるため、ABCIグループの「利用責任者」または「利用管理者」の指示に従い、適切なABCIグループを利用ください。
+
 ## インタラクティブノードへの接続 {#connecting-to-interactive-node}
 
 ABCIシステムのフロントエンドであるインタラクティブノード(ホスト名: *login*)に接続するには、二段階のSSH公開鍵認証による接続を行います。
@@ -237,4 +263,45 @@ inode使用数がinode数上限値を超過している、またはディスク�
 ```
 [username@login1 ~]$ touch quota_test
 touch: cannot touch 'quota_test': Disk quota exceeded
+```
+
+
+## ABCI クラウドストレージ利用状況の確認 {#checking-cloud-storage-quota}
+
+ABCI クラウドストレージの使用状況表示するには、`show_cs_quota` コマンドを利用します。
+
+例1) オプション指定なしで、所属するABCIグループ grpname の直近の利用状態を確認できます。
+```
+[username@login1 ~]$ $ show_cs_quota
+Disk quotas of ABCI cloud storage for gaa10000
+  Directory                          used(TiB)        limit(TiB)      used(nfiles)     limit(nfiles)
+  /groups_s3/gaa10000                     0.01             10.00                99         200000000
+```
+
+例2) オプション -b で出力単位を指定できます。出力単位の書式は、(K:KB / M:MB / G:GB / T:TB)で指定してください。
+```
+[username@login1 ~]$ $ show_cs_quota -b G
+Disk quotas of ABCI cloud storage for gaa10000
+  Directory                          used(GiB)        limit(GiB)      used(nfiles)     limit(nfiles)
+  /groups_s3/gaa10000                     0.08              0.00               955         200000000
+```
+
+例3) オプション -csv で出力方式を指定できます。
+```
+[username@login1 ~]$ $ show_cs_quota -b G -csv
+Disk quotas of ABCI cloud storage for gaa10000,,,,
+Directory,used(GiB),limit(GiB),used(nfiles),limit(nfiles)
+/groups_s3/gaa10000,0.08,0.00,955,200000000
+```
+
+例4) オプション -h でコマンドに用意されているオプションが確認できます。
+```
+[username@login1 ~]$ $ show_cs_quota -h
+usage: show_cs_quota [-h] [-g GROUP [GROUP ...]] [-b [<unit>]] [-csv]
+Show Cloud Storage quota vaule(s).
+optional arguments:
+  -h, --help            show this help message and exit
+  -g GROUP [GROUP ...]  ABCI group name(s).
+  -b [<unit>]           Specify display unit (K:KB / M:MB / G:GB / T:TB).
+  -csv                  Output CSV format.
 ```
