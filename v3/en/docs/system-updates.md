@@ -1,5 +1,9 @@
 # System Updates
 
+## 2025-09-24 {#2025-09-24}
+
+We installed `qgdel`. This allows administrators or responsible person to delete any job submitted by users belonging to the same group.
+
 ## 2025-08-26 {#2025-08-26}
 
 We added the following softwares.

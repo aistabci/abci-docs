@@ -373,6 +373,26 @@ Job id                 Name             User              Time Use S Queue
 [username@login1 ~]$
 ```
 
+同じグループに所属する利用者のジョブを削除するには、`qgdel`コマンドを利用します。
+
+!!! warning
+    `qgdel`コマンドは、利用責任者もしくは利用管理者のみが実施できます。
+
+```
+$ qgdel job_id
+```
+
+例) 同じグループに所属する利用者のバッチジョブを削除
+
+```
+[username01@login1 ~]$ qgstat
+Job id                 Name             User              Time Use S Queue
+---------------------  ---------------- ----------------  -------- - -----
+12345.pbs1             run01.sh         username02        00:01:23 R rt_HF
+[username01@login1 ~]$ qgdel 12345.pbs1
+[username01@login1 ~]$
+```
+
 
 ### バッチジョブの標準出力と標準エラー出力 {#stdout-and-stderr-of-batch-jobs}
 
