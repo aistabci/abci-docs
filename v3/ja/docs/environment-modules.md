@@ -139,6 +139,7 @@ module load cuda/12.6/12.6.1
 |                 | nvhpc           | 24.9     |
 | devtools        | cmake           | 4.1.1    |
 |                 | code-server     | 4.100.2  |
+|                 | go              | 1.25.1   |
 |                 | intel-advisor   | 2024.2.1 |
 |                 | intel-inspector | 2024.2   |
 |                 | intel-itac      | 2022.4   |
