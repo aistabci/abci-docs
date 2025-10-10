@@ -23,8 +23,8 @@ ABCIの計算ノードでJupyter Labを起動し、手元の作業PCのブラウ
 
 ## code-server {#code-server}
 
-[code-server](https://github.com/coder/code-server)は[VSCode](https://github.com/Microsoft/vscode)をWebブラウザで利用できるようにするソフトウェアです。
-利用者は、Open OnDemandのダッシュボードから「Code Server」を選択し、資源タイプを指定してジョブを起動することで、計算ノード上でVSCodeを利用できます。
+[code-server](https://github.com/coder/code-server)は[Visual Studio Code](https://github.com/Microsoft/vscode)をWebブラウザで利用できるようにするソフトウェアです。
+利用者は、Open OnDemandのダッシュボードから「Code Server」を選択し、資源タイプを指定してジョブを起動することで、計算ノード上でVS Codeを利用できます。
 
 ## Interactive Desktop {#interactive_desktop}
 
