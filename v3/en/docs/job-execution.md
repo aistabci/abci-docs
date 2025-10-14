@@ -372,6 +372,26 @@ Job id                 Name             User              Time Use S Queue
 [username@login1 ~]$
 ```
 
+To delete a job submitted by users belonging to the same group, use the `qgdel` command.
+
+!!! warning
+    Use of the `qgdel` is permitted to a Responsible Person or User Administrators.
+
+```
+$ qgdel job_id
+```
+
+Example) Delete a batch job submitted by users belonging to the same group
+
+```
+[username01@login1 ~]$ qgstat
+Job id                 Name             User              Time Use S Queue
+---------------------  ---------------- ----------------  -------- - -----
+12345.pbs1             run01.sh         username02        00:01:23 R rt_HF
+[username01@login1 ~]$ qgdel 12345.pbs1
+[username01@login1 ~]$
+```
+
 
 ### Stdout and Stderr of Batch Jobs
 

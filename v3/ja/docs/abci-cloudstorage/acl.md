@@ -177,7 +177,7 @@ put-bucket-acl で public-read を設定します。設定の確認は get-bucke
 }
 ```
 
-アクセスができることの確認は、curlコマンドにより「https://s3.vs.abci.ai/バケット名」にアクセスすることでも可能です。バケットtest-pubの場合は、 "curl https://s3.v3.abci.ai/test-pub "とアクセスしてください。
+アクセスができることの確認は、curlコマンドにより「https://s3.v3.abci.ai/バケット名」にアクセスすることでも可能です。バケットtest-pubの場合は、 "curl https://s3.v3.abci.ai/test-pub "とアクセスしてください。
 (現在はインターネットブラウザ経由でのURLアクセスはご利用いただけません)
 公開を停止し、初期値に戻す手順は以下の通りです。 追加された Grantee がなくなり、ABCIグループの Permission が "FULL_CONTROL" になっていることを確認してください。
 
