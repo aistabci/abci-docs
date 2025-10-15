@@ -408,15 +408,17 @@ In the case of Reserved service, job execution can be scheduled by reserving com
 
 The maximum number of nodes and the node-time product that can be reserved for this service is "Maximum reserved nodes per reservation" and "Maximum reserved node time per reservation" in the following table. In addition, in this service, the user can only execute jobs with the maximum number of reserved nodes. Note that there is an upper limit on "Maximum number of nodes can be reserved at once per system" for the entire system, so you may only be able to make reservations that fall below "Maximum reserved nodes per reservation" or you may not be able to make reservations. [Each resource types](#available-resource-types) are available for reserved compute nodes.
 
-| Item | Setting Value |
-|:--|:--|
-| Minimum reservation days | 1 day |
-| Maximum reservation days | 60 days |
-| Maximum number of nodes can be reserved at once per ABCI group | 32 nodes |
-| Maximum number of nodes can be reserved at once per system | 640 nodes |
-| Minimum reserved nodes per reservation | 1 nodes |
-| Maximum reserved nodes per reservation | 32 nodes |
-| Maximum reserved node time per reservation | 10,752 nodes x hour |
+| Item | Normal Setting Value | Setting Value for Peak Time (*1) | Notes |
+|:--|:--|:--|:--|
+| Minimum reservation days | 1 day | 1 day | No change |
+| Maximum reservation days | 60 days | 60 days | No change |
+| Maximum number of nodes can be reserved at once per ABCI group | 32 nodes | 16 nodes | |
+| Maximum number of nodes can be reserved at once per system | 640 nodes | 16 nodes | |
+| Minimum reserved nodes per reservation | 1 nodes | 1 nodes | No change |
+| Maximum reserved nodes per reservation | 32 nodes | 16 nodes | |
+| Maximum reserved node time per reservation | 10,752 nodes x hours | 5,376 nodes x hours | 16 nodes x 24 hours x 14 days = 5,376 |
+
+(*1) Due to a particularly busy period, we temporarily changed the settings at 11:00 AM on October 23. We plan to revert them once the congestion eases, but the exact date is yet to be determined.
 
 ### Make a reservation
 

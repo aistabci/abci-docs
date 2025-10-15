@@ -1,5 +1,9 @@
 # System Updates
 
+## 2025-10-20 {#2025-10-20}
+
+Due to high job volume, we have temporarily adjusted the number of available nodes for reservation.
+
 ## 2025-08-05 {#2025-08-05}
 
 We have added a description for ABCI Cloud Storage to the manual.
