@@ -1,6 +1,6 @@
 # System Updates
 
-## 2025-10-20 {#2025-10-20}
+## 2025-10-23 {#2025-10-23}
 
 Due to high job volume, we have temporarily adjusted the number of available nodes for reservation.
 
