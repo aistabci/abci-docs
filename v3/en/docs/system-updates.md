@@ -4,15 +4,15 @@
 
 Due to high job volume, we have temporarily adjusted the number of available nodes for reservation. We plan to revert them once the congestion eases.
 
-| Item | Normal Setting Value | Setting Value for Peak Time | Notes |
+| Item | Normal Setting Value | Setting Value for Peak Period | Notes |
 |:--|:--|:--|:--|
 | Minimum reservation days | 1 day | 1 day | No change. |
 | Maximum reservation days | 60 days | 60 days | No change. |
 | Maximum number of nodes can be reserved at once per ABCI group | 32 nodes | 32 nodes | No change. |
-| Maximum number of nodes can be reserved at once per system | 640 nodes | 96 nodes | Temporal value for peak time. |
+| Maximum number of nodes can be reserved at once per system | 640 nodes | 96 nodes | Temporal value for peak period. |
 | Minimum reserved nodes per reservation | 1 node | 1 node | No change. |
 | Maximum reserved nodes per reservation | 32 nodes | 32 nodes | No change. |
-| Maximum reserved node time per reservation | 10,752 nodes x hours | 5,376 nodes x hours |  Temporal value for peak time. For 32 nodes, corresponds to 24 hours x 7 days at a maximum. |
+| Maximum reserved node time per reservation | 10,752 nodes x hours | 5,376 nodes x hours |  Temporal value for peak period. For 32 nodes, corresponds to 24 hours x 7 days at a maximum. |
 
 ## 2025-08-05 {#2025-08-05}
 
