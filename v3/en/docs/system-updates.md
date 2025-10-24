@@ -1,5 +1,12 @@
 # System Updates
 
+## 2025-09-18 {#2025-09-18}
+
+We installed the following softwares.
+
+* nccl 2.24.3-1, 2.26.6-1, 2.27.7-1, 2.28.3-1
+* cudnn 9.6.0, 9.7.1, 9.8.0, 9.9.0, 9.10.2, 9.11.1
+
 ## 2025-08-05 {#2025-08-05}
 
 We have added a description for ABCI Cloud Storage to the manual.
