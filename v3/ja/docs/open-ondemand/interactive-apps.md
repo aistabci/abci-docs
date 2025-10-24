@@ -23,12 +23,12 @@ ABCIの計算ノードでJupyter Labを起動し、手元の作業PCのブラウ
 
 ## code-server {#code-server}
 
-[code-server](https://github.com/coder/code-server)は[VS Code](https://github.com/Microsoft/vscode)をWebブラウザで利用できるようにするソフトウェアです。
-ABCIの計算ノード上でcode-serverを起動し、手元の作業PCのブラウザから操作できるようになります。
+[code-server](https://github.com/coder/code-server)は[Visual Studio Code](https://github.com/Microsoft/vscode)をWebブラウザで利用できるようにするソフトウェアです。
+利用者は、Open OnDemandのダッシュボードから「Code Server」を選択し、資源タイプを指定してジョブを起動することで、計算ノード上でVS Codeを利用できます。
 
 ## Interactive Desktop {#interactive_desktop}
 
-[Interactive Desktop(Xfce)](https://www.xfce.org/?lang=ja)環境を提供します。 ABCIの計算ノード上でvncserverを起動し、手元の作業PCのブラウザから操作できるようになります。
+[Interactive Desktop(Xfce)](https://www.xfce.org/?lang=ja)環境を提供します。利用者は、Open OnDemandのダッシュボードから「Interactive Desktop」を選択することにより、ABCIの計算ノード上でvncserverを起動し、手元の作業PCのブラウザから操作できるようになります。
 !!!info
     Interactive Desktopに接続後、ターミナルを起動しターミナルから以下の手順でGPUレンダリングが可能です。
 
