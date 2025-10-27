@@ -18,13 +18,14 @@ Cloud Storage has unique capabilities.
 
 When using Cloud Storage, the user must agree to and comply with the [ABCI Cloud Storage Terms of Use](https://abci.ai/ja/how_to_use/data/cloudstorage-agreement.pdf) (Japanese version only).
 
-To start using Cloud Storage, User Administrator of each ABCI group should apply for use on [ABCI User Portal](https://portal.v3.abci.ai/user/).
-If you are not a User Administrator, please contact to User Administrators of your group.
-For details of the operation, refer to [ABCI Portal Guide](https://docs.abci.ai/v3/portal/en/).
+To start using Cloud Storage, the User Administrator of each ABCI group should apply for use on [ABCI User Portal](https://portal.v3.abci.ai/). If you are not the User Administrator, please contact to the User Administrators of your group. For details of the operation, refer to [ABCI Portal Guide](https://docs.abci.ai/v3/portal/en/). In addition, the User Administrator of the group must also apply to increase or decrease the amount. 
 
-ABCI points based on the total size of Cloud Storage usage applied at ABCI User Portal by the User Administrator of the group is substracted from the balance of the group's points, then the users of the group can store objects up to the amount. The User Administrator of the group must apply to increase or decrease the amount. There is no charge for data transfer or API calls. Users can check the total size by [show_cs_usage](getting-started.md#checking-cloud-storage-usage).
+ABCI points are subtracted from the balance of the group's points based on the total size of Cloud Storage usage applied by the User Administrator of the group at ABCI User Portal. The users of the group can then store objects up to the allocated amount. Please apply for usage in 1TB increments via [ABCI User Portal](https://portal.v3.abci.ai/). Refer to [price list](https://abci.ai/en/how_to_use/tariffs.html) for ABCI point consumption per 1TB.
 
-As for price list of Cloud Storage, see [this page](https://abci.ai/en/how_to_use/tariffs.html).
+!!! note
+    There is no charge for data transfer or API calls. Also, for minor usage such as system operation verification or functional testing, usage within 1MB is allowed without consuming ABCI points.
+
+Users can check the total size of the stored data by [show_cs_quota](getting-started.md#checking-cloud-storage-usage).
 
 | Page | Outline |
 |:--|:--|

@@ -14,6 +14,24 @@ Due to high job volume, we have temporarily adjusted the number of available nod
 | Maximum reserved nodes per reservation | 32 nodes | 32 nodes | No change. |
 | Maximum reserved node time per reservation | 10,752 nodes x hours | 5,376 nodes x hours |  Temporal value for peak period. For 32 nodes, corresponds to 24 hours x 7 days at a maximum. |
 
+## 2025-09-24 {#2025-09-24}
+
+We installed `qgdel`. This allows a Responsible Person or User Administrators to delete any job submitted by users belonging to the same group.
+
+## 2025-08-26 {#2025-08-26}
+
+We added the following softwares.
+
+* CUDA Toolkit 12.9.1
+* cuDNN 9.12.0
+* firefox (compute nodes)
+
+We granted the users access to NVIDIA GPU Performance Counters.
+
+## 2025-08-08 {#2025-08-08}
+
+We installed GCC 13.2.0.
+
 ## 2025-08-05 {#2025-08-05}
 
 We have added a description for ABCI Cloud Storage to the manual.
