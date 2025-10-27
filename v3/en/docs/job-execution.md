@@ -419,7 +419,7 @@ The maximum number of nodes and the node-time product that can be reserved for t
 | Maximum reserved node time per reservation | 5,376 nodes x hours |
 
 !!! note
-    The numbers of nodes were changed to the temporal values at Oct 8, 2025. Refer to [System Updates 2025-10-28](https://docs.abci.ai/v3/ja/system-updates/#2025-10-28) for the normal values.
+    The numbers of nodes were changed to the temporal values at Oct 28, 2025. Refer to [System Updates 2025-10-28](https://docs.abci.ai/v3/ja/system-updates/#2025-10-28) for the normal values.
 
 ### Make a reservation
 
