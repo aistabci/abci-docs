@@ -5,7 +5,7 @@
 
 There are two typical encryptions for cloud storages. The one is Server-Side Encryption (SSE) and another one is Client-Side Encryption (CSE). SSE needs to provide functionality from storage side. The ABCI Cloud Storage doesn't support SSE.
 
-CSE encrypts and decrypts data by the user, and stores the encrypted data in ABCI cloud storage.
+CSE encrypts and decrypts data by the user, and stores the encrypted data in cloud storage.
 CSE is available for ABCI cloud storage.
 
 However, ABCI doesn't offer Key Management Service (KMS), so CSE using encryption keys registered to KMS cannot be used.
@@ -159,7 +159,7 @@ example.txt encrypted and uploaded to s3://bucket-test/example_encrypted.txt
 ### File Download with CSE
 This section describes the steps to decrypt and download the object example_encrypted.txt stored in a cloud storage bucket with CSE.
 Prior to this, ensure that the virtual environment created in [the previous step](#install-the-aws-encryption-sdk) is activated.
-Prepare the download program file (Download_By_CSE.py) in your home directory. This program also uses [Boto3](https://aws.amazon.com/jp/sdk-for-python/). The variables used in the program are set as follows.
+Prepare the download program file (Download_By_CSE.py) in your home directory. This program also uses [Boto3](https://aws.amazon.com/sdk-for-python/). The variables used in the program are set as follows.
 
 | Variable Name | Description |
 | :-- | :-- |
