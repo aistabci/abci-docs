@@ -4,8 +4,10 @@
 
 We installed the following softwares.
 
-* nccl 2.24.3-1, 2.26.6-1, 2.27.7-1, 2.28.3-1
-* cudnn 9.6.0, 9.7.1, 9.8.0, 9.9.0, 9.10.2, 9.11.1
+| Add / Update / Delete | Software | Version | Previous version |
+|:--|:--|:--|:--|
+| Add | nccl | 2.24.3-1<br>2.26.6-1<br>2.27.7-1<br>2.28.3-1 | |
+| Add | cudnn | 9.6.0<br>9.7.1<br>9.8.0<br>9.9.0<br>9.10.2<br>9.11.1 | |
 
 ## 2025-08-05 {#2025-08-05}
 
