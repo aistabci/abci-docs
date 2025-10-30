@@ -18,6 +18,15 @@ Due to high job volume, we have temporarily adjusted the number of available nod
 
 We installed `qgdel`. This allows a Responsible Person or User Administrators to delete any job submitted by users belonging to the same group.
 
+## 2025-09-18 {#2025-09-18}
+
+We installed the following softwares.
+
+| Add / Update / Delete | Software | Version | Previous version |
+|:--|:--|:--|:--|
+| Add | nccl | 2.24.3-1<br>2.26.6-1<br>2.27.7-1<br>2.28.3-1 | |
+| Add | cudnn | 9.6.0<br>9.7.1<br>9.8.0<br>9.9.0<br>9.10.2<br>9.11.1 | |
+
 ## 2025-08-26 {#2025-08-26}
 
 We added the following softwares.
