@@ -3,10 +3,7 @@
 
 ## 暗号化機能の概要
 
-クラウド向けのストレージにおいては、一般的に、サーバ側で暗号化する Server-Side Encryption (SSE) とクライアント側で暗号化する Client-Side Encryption (CSE) があります。SSEはストレージ側での機能提供が必要であり、ABCIクラウドストレージではSSE機能をサポートしていません。
-
-CSEはデータの暗号化および復号を利用者が行い、暗号化されたデータをクラウドストレージに保存します。
-ABCIクラウドストレージではCSEを利用できます。
+クラウド向けのストレージにおいては、一般的に、サーバ側で暗号化する Server-Side Encryption (SSE) とクライアント側で暗号化する Client-Side Encryption (CSE) があります。ABCIクラウドストレージはSSEには対応していませんが、CSEを利用できます。CSEはデータの暗号化および復号を利用者が行い、暗号化されたデータをABCIクラウドストレージに保存します。
 
 ただし、ABCIクラウドストレージではKey Management Service(KMS)を提供していないため、KMSに保存されている暗号キーを利用してのCSEは利用できません。
 利用者自身で作成した秘密鍵、公開鍵と、[AWS Encryption SDK](https://docs.aws.amazon.com/ja_jp/encryption-sdk/latest/developer-guide/introduction.html)を利用してCSEを行う手順については、[AWS Encryption SDKによるCSE](#cse-with-the-aws-encryption-sdk)をご参照ください。
@@ -151,6 +148,17 @@ if __name__ == "__main__":
 example.txt encrypted and uploaded to s3://bucket-test/example_encrypted.txt
 (venv-aws-encsdk) [username@login1 ~]$
 ```
+CSEを利用せずオブジェクトにアクセスすると、暗号化により中身を確認できません。
+```
+(venv-aws-encsdk) [username@login1 ~]$ aws --endpoint-url https://s3.v3.abci.ai s3 cp s3://bucket-test/example_encrypted.txt -
+y~���9;D����ގ/�A����#�܁G�jZ�?�3����C͓�kb0��"ς�ռ����ͻ�u�cZ���C����\
+                                                                                                      "��&4��!o�V���X�{!4h(��I����
+L�Jg�[���T̔Ϙͦ('s��ګi�["4���$�ST&� A/�ӳ*�2D��H-L�~Њ���6'�g��7�d�aZ#@3v�(�d��5���*>���KM�����9��^&4ݱA���g%J�@�^�p����������3̂�ȧ�����~l�Pj��<���hph�ƟHg0e1�m-���Kڕ�#a޽Zn��
+��ڮ��bB�W^ݩ��:^@��
+                           �0  �8�����-c�aWy��������B���;E������X�[�9��
+(venv-aws-encsdk) [username@login1 ~]$
+```
+
 
 
 ### CSEを用いたファイルのダウンロード
