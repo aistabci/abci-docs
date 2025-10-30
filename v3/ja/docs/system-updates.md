@@ -1,5 +1,48 @@
 # システム更新履歴
 
+## 2025-10-29 {#2025-10-29}
+
+以下のソフトウェアをインストールしました。
+
+| Add / Update / Delete | Software | Version | Previous version |
+|:--|:--|:--|:--|
+| Add | s3fs-fuse | 1.95 | |
+
+## 2025-10-22 {#2025-10-22}
+
+以下のソフトウェアをインストールしました。
+
+| Add / Update / Delete | Software | Version | Previous version |
+|:--|:--|:--|:--|
+| Add | openjdk | 25.0.0 | |
+
+## 2025-09-29 {#2025-09-29}
+
+以下のソフトウェアをインストールしました。
+
+| Add / Update / Delete | Software | Version | Previous version |
+|:--|:--|:--|:--|
+| Add | go | 1.25.1 | |
+
+## 2025-09-18 {#2025-09-18}
+
+以下のソフトウェアをインストールしました。
+
+| Add / Update / Delete | Software | Version | Previous version |
+|:--|:--|:--|:--|
+| Add | cmake | 4.1.1 | |
+
+## 2025-08-26 {#2025-08-26}
+
+以下のソフトウェアを更新しました。
+
+| Add / Update / Delete | Software | Version | Previous version |
+|:--|:--|:--|:--|
+| Update | python(計算ノード) | 3.9.21 | 3.9.18 |
+| Update | ruby(インタラクティブノード) | 3.0.7 | 3.0.4 |
+| Update | R(インタラクティブノード, 計算ノード) | 4.5.1, 4.5.1 | 4.4.3, 4.4.1 |
+| Update | java(インタラクティブノード, 計算ノード) | 17.0.16, 17.0.16 | 11.0.22.0.7, 11.0.23.0.9 |
+
 ## 2025-08-05 {#2025-08-05}
 
 ABCIクラウドストレージの説明文章を追記しました。

@@ -147,7 +147,9 @@ Currently, following modules are available.
 |                 | intel-vtune     | 2024.2.1 |
 |                 | julia           | 1.11.1   |
 |                 | novnc           | 1.6.0    |
+|                 | openjdk         | 25.0.0   |
 |                 | python          | 3.12/3.12.9, 3.13/3.13.2 |
+|                 | R               | 4.5.1    |
 |                 | scala           | 3.5.2    |
 |                 | turbovnc        | 3.1.4    |
 | gpgpu           | cuda            | 11.8.0, 12.0.1, 12.1.1, 12.2.2, 12.3.2, 12.4.1, 12.5.1, 12.6.1, 12.8.1, 12.9.1 |
@@ -159,4 +161,5 @@ Currently, following modules are available.
 |                 | hpcx-prof       | 2.20     |
 |                 | intel-mpi       | 2021.13  |
 | utils           | gdrcopy         | 2.4.1    |
+|                 | s3fs-fuse       | 1.95     |
 |                 | singularitypro  | 4.1.7    |

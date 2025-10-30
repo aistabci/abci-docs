@@ -127,20 +127,22 @@ Storage Service Specifications:
 
 The software available on the ABCI system is shown below.
 
-| Category | Software | Interactive Node | Compute Node (H) |
+| Category | Software | Interactive Node | Compute Node |
 |:--|:--|:--|:--|
 | OS | Rocky Linux | - | 9.4 |
 | OS | Red Hat Enterprise Linux | 9.4 | - |
 | Job Scheduler | Altair PBS Professional | 2022.1.6 | 2022.1.6 |
-| Development Environment | CUDA Toolkit | 11.8.0<br>12.0.1<br>12.1.1<br>12.2.2<br>12.3.2<br>12.4.1<br>12.5.1<br>12.6.1 | 11.8.0<br>12.0.1<br>12.1.1<br>12.2.2<br>12.3.2<br>12.4.1<br>12.5.1<br>12.6.1 |
+| Development Environment | cmake | 4.1.1 | 4.1.1 |
+| | cuda | 11.8.0<br>12.0.1<br>12.1.1<br>12.2.2<br>12.3.2<br>12.4.1<br>12.5.1<br>12.6.1 | 11.8.0<br>12.0.1<br>12.1.1<br>12.2.2<br>12.3.2<br>12.4.1<br>12.5.1<br>12.6.1 |
 | | Intel oneAPI<br>(compilers and libraries) | 2024.2.1 | 2024.2.1 |
-| | Python | 3.9.21<br>3.12.9<br>3.13.2 | 3.9.18<br>3.12.9<br>3.13.2 |
-| | Ruby | 3.0.4 | 3.0.4 |
-| | R | 4.4.1 | 4.4.1 |
-| | Java | 11.0.22.0.7 | 11.0.23.0.9 |
+| | Python | 3.9.21<br>3.12.9<br>3.13.2 | 3.9.21<br>3.12.9<br>3.13.2 |
+| | Ruby | 3.0.7 | 3.0.4 |
+| | R | 4.5.1 | 4.5.1 |
+| | Java | 17.0.16 | 17.0.16 |
+| | openjdk | 25.0.0 | 25.0.0 |
 | | Scala | 3.5.2 | 3.5.2 |
 | | Perl | 5.32.1 | 5.32.1 |
-| | Go | 1.21.7 | 1.21.9 |
+| | Go | 1.24.6<br>1.25.1 | 1.24.4<br>1.25.1 |
 | File System | DDN Lustre | 2.14.0_ddn172 | 2.14.0_ddn172 |
 | | BeeOND | - | 7.4.5 |
 | Object Storage | s3cmd | 2.4.0 | 2.4.0 |
@@ -152,6 +154,6 @@ The software available on the ABCI system is shown below.
 | | UCX | 1.17 | 1.17 |
 | | Intel MKL | 2024.2.1 | 2024.2.1 |
 | Utility | aws-cli | 1.29.62 | 1.29.62 |
-| | s3fs-fuse | 1.94 | 1.94 |
+| | s3fs-fuse | 1.94<br>1.95 | 1.94<br>1.95 |
 | | rclone | 1.57.0 | 1.57.0 |
 
