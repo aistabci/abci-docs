@@ -372,6 +372,26 @@ Job id                 Name             User              Time Use S Queue
 [username@login1 ~]$
 ```
 
+To delete a job submitted by users belonging to the same group, use the `qgdel` command.
+
+!!! warning
+    Use of the `qgdel` is permitted to a Responsible Person or User Administrators.
+
+```
+$ qgdel job_id
+```
+
+Example) Delete a batch job submitted by users belonging to the same group
+
+```
+[username01@login1 ~]$ qgstat
+Job id                 Name             User              Time Use S Queue
+---------------------  ---------------- ----------------  -------- - -----
+12345.pbs1             run01.sh         username02        00:01:23 R rt_HF
+[username01@login1 ~]$ qgdel 12345.pbs1
+[username01@login1 ~]$
+```
+
 
 ### Stdout and Stderr of Batch Jobs
 
@@ -413,10 +433,13 @@ The maximum number of nodes and the node-time product that can be reserved for t
 | Minimum reservation days | 1 day |
 | Maximum reservation days | 60 days |
 | Maximum number of nodes can be reserved at once per ABCI group | 32 nodes |
-| Maximum number of nodes can be reserved at once per system | 640 nodes |
-| Minimum reserved nodes per reservation | 1 nodes |
+| Maximum number of nodes can be reserved at once per system | 96 nodes |
+| Minimum reserved nodes per reservation | 1 node |
 | Maximum reserved nodes per reservation | 32 nodes |
-| Maximum reserved node time per reservation | 10,752 nodes x hour |
+| Maximum reserved node time per reservation | 5,376 nodes x hours |
+
+!!! note
+    The numbers of nodes were changed to the temporal values at Oct 28, 2025. Refer to [System Updates 2025-10-28](https://docs.abci.ai/v3/ja/system-updates/#2025-10-28) for the normal values.
 
 ### Make a reservation
 

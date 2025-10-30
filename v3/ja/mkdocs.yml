@@ -17,6 +17,7 @@ nav:
     - 'GPUDirect Storageの利用': 'tips/gds.md'
     - 'Tera Termの利用': 'tips/tera-term.md'
     - 'PuTTYの利用': 'tips/putty.md'
+    - 'JupyterLabにPython仮想環境を追加する方法': 'tips/jupyterlab_venv.md'
   - 'ABCIクラウドストレージ':
     - '概要': 'abci-cloudstorage.md'
     - 'クラウドストレージアカウントディレクトリとアクセスキー': 'abci-cloudstorage/cs-account.md'

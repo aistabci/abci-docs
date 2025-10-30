@@ -177,7 +177,7 @@ Configure 'public-read' with 'put-bucket-acl'. To check the current configuratio
 }
 ```
 
-To confirm if it works properly, access 'https://s3.vs.abci.ai/(bucketname)' by curl command. For a bucket named test-pub, access as 'curl https://s3.v3.abci.ai/test-pub'.
+To confirm if it works properly, access 'https://s3.v3.abci.ai/(bucketname)' by curl command. For a bucket named test-pub, access as 'curl https://s3.v3.abci.ai/test-pub'.
 (Currently, you cannot access through internet browser)
 
 The example following shows how to stop opening to the public and retrieve default setting.
