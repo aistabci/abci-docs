@@ -27,6 +27,7 @@ nav:
   - 'Open OnDemand':
     - 'Using Open OnDemand': 'open-ondemand/index.md'
     - 'Ineractive Apps': 'open-ondemand/interactive-apps.md'
+  - 'Known Issues': 'known-issues.md'
   - 'System Updates': 'system-updates.md'
   - 'Contact': 'contact.md'
   - 'Various Requests':

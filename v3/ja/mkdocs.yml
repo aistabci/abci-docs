@@ -28,6 +28,7 @@ nav:
   - 'Open OnDemand':
     - '使い方': 'open-ondemand/index.md'
     - 'インタラクティブアプリ': 'open-ondemand/interactive-apps.md'
+  - '既知の問題': 'known-issues.md'
   - 'システム更新履歴': 'system-updates.md'
   - 'お問い合わせ': 'contact.md'
   - '各種申請':
