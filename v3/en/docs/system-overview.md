@@ -127,7 +127,7 @@ Storage Service Specifications:
 
 The software available on the ABCI system is shown below.
 
-| Category | Software | Interactive Node | Compute Node |
+| Category | Software | Interactive Node | Compute Node (H) |
 |:--|:--|:--|:--|
 | OS | Rocky Linux | - | 9.4 |
 | OS | Red Hat Enterprise Linux | 9.4 | - |
@@ -139,7 +139,7 @@ The software available on the ABCI system is shown below.
 | | Ruby | 3.0.7 | 3.0.4 |
 | | R | 4.5.1 | 4.5.1 |
 | | Java | 17.0.16 | 17.0.16 |
-| | openjdk | 25.0.0 | 25.0.0 |
+| | OpenJDK | 25.0.0 | 25.0.0 |
 | | Scala | 3.5.2 | 3.5.2 |
 | | Perl | 5.32.1 | 5.32.1 |
 | | Go | 1.24.6<br>1.25.1 | 1.24.4<br>1.25.1 |
