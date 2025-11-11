@@ -24,11 +24,28 @@ Due to high job volume, we have temporarily adjusted the number of available nod
 
 ## 2025-10-22 {#2025-10-22}
 
-We installed the following softwares.
+We installed the following software.
 
 | Add / Update / Delete | Software | Version | Previous version |
 |:--|:--|:--|:--|
 | Add | openjdk | 25.0.0 | |
+
+## 2025-10-21 {#2025-10-21}
+
+We installed the following software.
+
+| Add / Update / Delete | Software | Version | Previous version |
+|:--|:--|:--|:--|
+| Add | nccl | 2.27.7-1 (for CUDA13)<br>2.28.3-1 (for CUDA13) | |
+
+## 2025-10-15 {#2025-10-15}
+
+We installed the following softwares.
+
+| Add / Update / Delete | Software | Version | Previous version |
+|:--|:--|:--|:--|
+| Add | cuda | 13.0.1 | |
+| Add | cudnn | 9.12.0 (for CUDA13)<br>9.13.0 (for CUDA12,13) | |
 
 ## 2025-09-29 {#2025-09-29}
 
