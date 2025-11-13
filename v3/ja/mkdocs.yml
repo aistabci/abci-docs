@@ -22,12 +22,14 @@ nav:
     - '概要': 'abci-cloudstorage.md'
     - 'クラウドストレージアカウントディレクトリとアクセスキー': 'abci-cloudstorage/cs-account.md'
     - '使い方': 'abci-cloudstorage/usage.md'
+    - 'データの暗号化': 'abci-cloudstorage/encryption.md'
     - 'アクセス制御(1)': 'abci-cloudstorage/acl.md'
     - 'アクセス制御(2)': 'abci-cloudstorage/policy.md'
     - 'ご利用時の注意': 'abci-cloudstorage/caution.md'
   - 'Open OnDemand':
     - '使い方': 'open-ondemand/index.md'
     - 'インタラクティブアプリ': 'open-ondemand/interactive-apps.md'
+  - '既知の問題': 'known-issues.md'
   - 'システム更新履歴': 'system-updates.md'
   - 'お問い合わせ': 'contact.md'
   - '各種申請':
