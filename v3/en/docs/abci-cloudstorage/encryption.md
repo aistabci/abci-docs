@@ -3,10 +3,8 @@
 
 ## Outline of Encryption
 
-There are two typical encryptions for cloud storages. The one is Server-Side Encryption (SSE) and another one is Client-Side Encryption (CSE). SSE needs to provide functionality from storage side. The ABCI Cloud Storage doesn't support SSE.
-
-CSE encrypts and decrypts data by the user, and stores the encrypted data in ABCI cloud storage.
-CSE is available for ABCI cloud storage.
+There are two typical encryptions for cloud storages. The one is Server-Side Encryption (SSE) and another one is Client-Side Encryption (CSE). The ABCI Cloud Storage doesn't support SSE, but CSE can be used.
+CSE encrypts and decrypts data by the user, and stores the encrypted data in cloud storage.
 
 However, ABCI doesn't offer Key Management Service (KMS), so CSE using encryption keys registered to KMS cannot be used.
 For instructions on performing CSE using your own generated private and public keys with [the AWS Encryption SDK](https://docs.aws.amazon.com/encryption-sdk/latest/developer-guide/introduction.html), see [CSE with the AWS Encryption SDK](#cse-with-the-aws-encryption-sdk).
@@ -154,12 +152,22 @@ Run the created Upload_By_CSE.py program to upload the file.
 example.txt encrypted and uploaded to s3://bucket-test/example_encrypted.txt
 (venv-aws-encsdk) [username@login1 ~]$
 ```
+This object cannot be accessed without CSE, as its contents are encrypted.
+```
+(venv-aws-encsdk) [username@login1 ~]$ aws --endpoint-url https://s3.v3.abci.ai s3 cp s3://bucket-test/example_encrypted.txt -
+y~���9;D����ގ/�A����#�܁G�jZ�?�3����C͓�kb0��"ς�ռ����ͻ�u�cZ���C����\
+                                                                                                      "��&4��!o�V���X�{!4h(��I����
+L�Jg�[���T̔Ϙͦ('s��ګi�["4���$�ST&� A/�ӳ*�2D��H-L�~Њ���6'�g��7�d�aZ#@3v�(�d��5���*>���KM�����9��^&4ݱA���g%J�@�^�p����������3̂�ȧ�����~l�Pj��<���hph�ƟHg0e1�m-���Kڕ�#a޽Zn��
+��ڮ��bB�W^ݩ��:^@��
+                           �0  �8�����-c�aWy��������B���;E������X�[�9��
+(venv-aws-encsdk) [username@login1 ~]$
+```
 
 
 ### File Download with CSE
 This section describes the steps to decrypt and download the object example_encrypted.txt stored in a cloud storage bucket with CSE.
 Prior to this, ensure that the virtual environment created in [the previous step](#install-the-aws-encryption-sdk) is activated.
-Prepare the download program file (Download_By_CSE.py) in your home directory. This program also uses [Boto3](https://aws.amazon.com/jp/sdk-for-python/). The variables used in the program are set as follows.
+Prepare the download program file (Download_By_CSE.py) in your home directory. This program also uses [Boto3](https://aws.amazon.com/sdk-for-python/). The variables used in the program are set as follows.
 
 | Variable Name | Description |
 | :-- | :-- |
