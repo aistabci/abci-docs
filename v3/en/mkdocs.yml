@@ -22,6 +22,7 @@ nav:
     - 'Cloud Storage Account DIrectories and Access keys': 'abci-cloudstorage/cs-account.md'
     - 'Usage': 'abci-cloudstorage/usage.md'
     - 'Data Encryption': 'abci-cloudstorage/encryption.md'
+    - 'Presigned URLs': 'abci-cloudstorage/presignurls.md'
     - 'Access Control (1) ': 'abci-cloudstorage/acl.md'
     - 'Access Control (2) ': 'abci-cloudstorage/policy.md'
     - 'Caution': 'abci-cloudstorage/caution.md'

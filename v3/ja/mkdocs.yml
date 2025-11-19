@@ -23,6 +23,7 @@ nav:
     - 'クラウドストレージアカウントディレクトリとアクセスキー': 'abci-cloudstorage/cs-account.md'
     - '使い方': 'abci-cloudstorage/usage.md'
     - 'データの暗号化': 'abci-cloudstorage/encryption.md'
+    - '署名付きURL': 'abci-cloudstorage/presignurls.md'
     - 'アクセス制御(1)': 'abci-cloudstorage/acl.md'
     - 'アクセス制御(2)': 'abci-cloudstorage/policy.md'
     - 'ご利用時の注意': 'abci-cloudstorage/caution.md'
