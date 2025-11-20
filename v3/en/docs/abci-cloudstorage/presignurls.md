@@ -9,7 +9,7 @@ Specify the target object in [s3 object path], and set the publication period in
 aws [options] s3 presign [s3 object path] --expires-in [expiration time (seconds)] 
 ```
 
-### Use cases
+## Use cases
 In this example, a presigned URL is generated for the object 'file01.txt' located in the bucket 'bucket-test'.
 ```
 [username01@login1 ~]$ aws --endpoint-url https://s3.v3.abci.ai s3 cp s3://bucket-test/file01.txt -
@@ -17,16 +17,16 @@ This is file01.txt!
 ```
 To generate a presigned URL for this object with an expiration time of 300 seconds, run the following command.
 ```
-[username01@login1 ~]$ aws --endpoint-url https://s3.v3.abci.ai s3 presign s3://bucket-test/file01 --expires-in 300
-https://s3.v3.abci.ai/bucket-test/pub_read_file01?AWSAccessKeyId=AKIA750J0679G14AF406&Signature=fUzqEYce8eqkEZT4w5MFrw%2F6QMI%3D&Expires=1759474282
+[username01@login1 ~]$ aws --endpoint-url https://s3.v3.abci.ai s3 presign s3://bucket-test/file01.txt --expires-in 300
+https://s3.v3.abci.ai/bucket-test/file01.txt?AWSAccessKeyId=AKIA750J0679G14AF406&Signature=fUzqEYce8eqkEZT4w5MFrw%2F6QMI%3D&Expires=1759474282
 ```
 By accessing the presigned URL output as shown below, other users will also be able to access the object.
 ```
-[username02@login1 ~]$ curl "https://s3.v3.abci.ai/bucket-test/pub_read_file01?AWSAccessKeyId=AKIA750J0679G14AF406&Signature=fUzqEYce8eqkEZT4w5MFrw%2F6QMI%3D&Expires=1759474282"
+[username02@login1 ~]$ curl "https://s3.v3.abci.ai/bucket-test/file01.txt?AWSAccessKeyId=AKIA750J0679G14AF406&Signature=fUzqEYce8eqkEZT4w5MFrw%2F6QMI%3D&Expires=1759474282"
 This is file01.txt!
 ```
 A presigned URL that has expired cannot be accessed, as shown below.
 ```
-[username02@login1 ~]$ curl "https://s3.v3.abci.ai/bucket-test/pub_read_file01?AWSAccessKeyId=AKIA750J0679G14AF406&Signature=fUzqEYce8eqkEZT4w5MFrw%2F6QMI%3D&Expires=1759474282"
+[username02@login1 ~]$ curl "https://s3.v3.abci.ai/bucket-test/file01.txt?AWSAccessKeyId=AKIA750J0679G14AF406&Signature=fUzqEYce8eqkEZT4w5MFrw%2F6QMI%3D&Expires=1759474282"
 <?xml version="1.0" encoding="UTF-8"?><Error><Code>AccessDenied</Code><Message>Access Denied</Message><RequestId>4F60982696162049</RequestId><HostId>00000000000000000</HostId></Error>
 ```

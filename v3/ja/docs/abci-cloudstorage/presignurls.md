@@ -16,16 +16,16 @@ This is file01.txt!
 ```
 このオブジェクトについて、300秒を期限とした署名付きURLを作成する場合は以下のコマンドを実行します。
 ```
-[username01@login1 ~]$ aws --endpoint-url https://s3.v3.abci.ai s3 presign s3://bucket-test/file01 --expires-in 300
-https://s3.v3.abci.ai/bucket-test/pub_read_file01?AWSAccessKeyId=AKIA750J0679G14AF406&Signature=fUzqEYce8eqkEZT4w5MFrw%2F6QMI%3D&Expires=1759474282
+[username01@login1 ~]$ aws --endpoint-url https://s3.v3.abci.ai s3 presign s3://bucket-test/file01.txt --expires-in 300
+https://s3.v3.abci.ai/bucket-test/file01.txt?AWSAccessKeyId=AKIA750J0679G14AF406&Signature=fUzqEYce8eqkEZT4w5MFrw%2F6QMI%3D&Expires=1759474282
 ```
 以下の様に出力された署名付きURLにアクセスすることで他の利用者からもアクセスが可能となります。
 ```
-[username02@login1 ~]$ curl "https://s3.v3.abci.ai/bucket-test/pub_read_file01?AWSAccessKeyId=AKIA750J0679G14AF406&Signature=fUzqEYce8eqkEZT4w5MFrw%2F6QMI%3D&Expires=1759474282"
+[username02@login1 ~]$ curl "https://s3.v3.abci.ai/bucket-test/file01.txt?AWSAccessKeyId=AKIA750J0679G14AF406&Signature=fUzqEYce8eqkEZT4w5MFrw%2F6QMI%3D&Expires=1759474282"
 This is file01.txt!
 ```
 期限が過ぎた署名付きURLについては、以下の様にアクセスができません。
 ```
-[username02@login1 ~]$ curl "https://s3.v3.abci.ai/bucket-test/pub_read_file01?AWSAccessKeyId=AKIA750J0679G14AF406&Signature=fUzqEYce8eqkEZT4w5MFrw%2F6QMI%3D&Expires=1759474282"
+[username02@login1 ~]$ curl "https://s3.v3.abci.ai/bucket-test/file01.txt?AWSAccessKeyId=AKIA750J0679G14AF406&Signature=fUzqEYce8eqkEZT4w5MFrw%2F6QMI%3D&Expires=1759474282"
 <?xml version="1.0" encoding="UTF-8"?><Error><Code>AccessDenied</Code><Message>Access Denied</Message><RequestId>4F60982696162049</RequestId><HostId>00000000000000000</HostId></Error>
 ```
