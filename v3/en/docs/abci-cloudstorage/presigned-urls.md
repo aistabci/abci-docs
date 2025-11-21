@@ -4,9 +4,9 @@ Presigned URLs are URLs that contain time-limited authentication information. By
 
 ## Usage
 A presigned URL can be generated with the following command.
-Specify the target object in [s3 object path], and set the publication period in seconds in [--expires-in <expiration time (seconds)\>]. There is currently no limitation on the expiration period. If the [--expires-in] option is omitted, the default value of 3600 seconds (1 hour) is used.
+Specify the target object in `<s3 object path>`, and set the publication period in seconds in `[--expires-in <expiration time (seconds)>]`. There is currently no limitation on the expiration period. If the `[--expires-in]` option is omitted, the default value of 3600 seconds (1 hour) is used.
 ```
-aws [options] s3 presign [s3 object path] [--expires-in <expiration time (seconds)>]
+aws [options] s3 presign <s3 object path> [--expires-in <expiration time (seconds)>]
 ```
 
 ## Use cases
