@@ -3,9 +3,9 @@
 署名付きURLは、期限付きの認証情報を埋め込んだURLです。署名付きURLを作成し他の利用者に共有することで、その利用者はオブジェクトにアクセス可能となります。​このため署名付きURL機能では公開オブジェクトを作ることなく、URLを共有するのみで多数の利用者に期限付きでオブジェクトを公開することが可能です。
 
 ## 利用方法
-署名付きURLは以下のコマンドで作成可能です。[s3 object path]には対象とするオブジェクトを指定し、[expiration time (seconds)] には公開期間を秒単位で指定します。
+署名付きURLは以下のコマンドで作成可能です。[s3 object path]には対象とするオブジェクトを指定し、[--expires-in <expiration time (seconds)\>] には公開期間を秒単位で指定します。公開期間には現状制限はありません。[--expires-in]オプションを省略した場合は、3600 秒（1時間）がデフォルト値として使用されます。
 ```
-aws [options] s3 presign [s3 object path] --expires-in [expiration time (seconds)] 
+aws [options] s3 presign [s3 object path] [--expires-in <expiration time (seconds)>] 
 ```
 
 ## 実行例
@@ -29,3 +29,4 @@ This is file01.txt!
 [username02@login1 ~]$ curl "https://s3.v3.abci.ai/bucket-test/file01.txt?AWSAccessKeyId=AKIA750J0679G14AF406&Signature=fUzqEYce8eqkEZT4w5MFrw%2F6QMI%3D&Expires=1759474282"
 <?xml version="1.0" encoding="UTF-8"?><Error><Code>AccessDenied</Code><Message>Access Denied</Message><RequestId>4F60982696162049</RequestId><HostId>00000000000000000</HostId></Error>
 ```
+作成した署名付きURLは、有効期限が切れるまで直接無効化することはできません。共有後に署名付きURLでのアクセスを停止したい場合は、[各種操作](./usage.md#operations)をご参照の上、対象オブジェクトを削除するか、名前を変更することで無効化を行ってください。
