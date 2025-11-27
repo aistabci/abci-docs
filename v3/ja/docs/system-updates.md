@@ -30,6 +30,23 @@
 |:--|:--|:--|:--|
 | Add | openjdk | 25.0.0 | |
 
+## 2025-10-21 {#2025-10-21}
+
+以下のソフトウェアをインストールしました。
+
+| Add / Update / Delete | Software | Version | Previous version |
+|:--|:--|:--|:--|
+| Add | nccl | 2.27.7-1 (CUDA 13対応版)<br>2.28.3-1 (CUDA 13対応版) | |
+
+## 2025-10-15 {#2025-10-15}
+
+以下のソフトウェアをインストールしました。
+
+| Add / Update / Delete | Software | Version | Previous version |
+|:--|:--|:--|:--|
+| Add | cuda | 13.0.1 | |
+| Add | cudnn | 9.12.0 (CUDA 13対応版)<br>9.13.0 (CUDA 12, 13対応版) | |
+
 ## 2025-09-29 {#2025-09-29}
 
 以下のソフトウェアをインストールしました。
