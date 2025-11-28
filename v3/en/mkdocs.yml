@@ -21,12 +21,14 @@ nav:
     - 'Overview': 'abci-cloudstorage.md'
     - 'Cloud Storage Account DIrectories and Access keys': 'abci-cloudstorage/cs-account.md'
     - 'Usage': 'abci-cloudstorage/usage.md'
+    - 'Data Encryption': 'abci-cloudstorage/encryption.md'
     - 'Access Control (1) ': 'abci-cloudstorage/acl.md'
     - 'Access Control (2) ': 'abci-cloudstorage/policy.md'
     - 'Caution': 'abci-cloudstorage/caution.md'
   - 'Open OnDemand':
     - 'Using Open OnDemand': 'open-ondemand/index.md'
     - 'Ineractive Apps': 'open-ondemand/interactive-apps.md'
+  - 'Known Issues': 'known-issues.md'
   - 'System Updates': 'system-updates.md'
   - 'Contact': 'contact.md'
   - 'Various Requests':
