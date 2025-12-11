@@ -33,3 +33,5 @@ Users can check the total size of the stored data by [show_cs_quota](getting-sta
 | [Usage](abci-cloudstorage/usage.md) | This section shows basic usage. |
 | [Access Control (1)](abci-cloudstorage/acl.md) | This section shows how to control accessibility by ACL. Data can be shared between groups. |
 | [Access Control (2)](abci-cloudstorage/policy.md) | This section explains access control which is applicable to buckets and user accounts. It is possible to set access control that cannot be done with ACL. Access control settings for buckets can be done with a 'Cloud Storage Account for user', but 'Cloud Storage Account for manager' is necessary to set for access control settings for accounts. |
+| [Access Control (3)](abci-cloudstorage/acl-ip.md) | This section explains how to restrict access IP addresses using bucket policies. 
+
