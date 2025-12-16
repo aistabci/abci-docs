@@ -1,5 +1,38 @@
 # System Updates
 
+## 2025-12-23 {#2025-12-23}
+
+We increased the maximum number of files that can be opened simultaneously in the compute nodes as follows.
+
+| Limit type | Previous value | Current value |
+|:--|:--|:--|
+| soft limit | 16384 | 65536 |
+| hard limit | 16384 | 1048576 |
+
+## 2025-12-15 {#2025-12-15}
+
+We installed the following software.
+
+| Add / Update / Delete | Software | Version | Previous version |
+|:--|:--|:--|:--|
+| Add | graphviz(Compute Node) | 2.44.0 | |
+
+## 2025-12-11 {#2025-12-11}
+
+We installed the following software.
+
+| Add / Update / Delete | Software | Version | Previous version |
+|:--|:--|:--|:--|
+| Add | rclone | 1.71.0 | |
+
+## 2025-12-03 {#2025-12-03}
+
+We installed the following software.
+
+| Add / Update / Delete | Software | Version | Previous version |
+|:--|:--|:--|:--|
+| Add | singularity-ce | 4.3.3 | |
+
 ## 2025-10-29 {#2025-10-29}
 
 We installed the following software.
