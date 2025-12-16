@@ -269,7 +269,7 @@ put-object-acl で public-read を設定します。また、get-object-acl で�
 get-bucket-acl により過去に取得したACLのJSON設定ファイルを用い、ACLの設定をすることが可能です。
 現在のバケットACLの設定は以下の様にファイルに出力可能です。
 ```
-[username@login1 ~]$ aws --endpoint-url https://s3.v3.abci.ai s3api get-bucket-acl  --bucket bucket > bucket_acl.json
+[username@login1 ~]$ aws --endpoint-url https://s3.v3.abci.ai s3api get-bucket-acl --bucket bucket > bucket_acl.json
 [username@login1 ~]$ cat bucket_acl.json
 {
     "Owner": {
@@ -295,8 +295,26 @@ get-bucket-acl により過去に取得したACLのJSON設定ファイルを用�
     ]
 }
 ```
-put-bucket-acl によりACLのJSON設定ファイルの内容をバケットに設定できます。
+上記手順によりget-bucket-aclで出力したACLのJSON設定ファイルは、put-bucket-acl を使用してバケットに適用できます。
+以下の手順では、初期値となっているバケットのACL設定について、bucket_acl_old.jsonを適用することでpublic-readのACL設定を行っています。
 ```
+[username@login1 ~]$ aws --endpoint-url https://s3.v3.abci.ai s3api get-bucket-acl --bucket bucket 
+{
+    "Owner": {
+        "DisplayName": "f12d0fa66ea4df5418c0c6234fd5eb3a9f4409bf50b5a58983a30be8f9a42bda",
+        "ID": "f12d0fa66ea4df5418c0c6234fd5eb3a9f4409bf50b5a58983a30be8f9a42bda"
+    },
+    "Grants": [
+        {
+            "Grantee": {
+                "DisplayName": "f12d0fa66ea4df5418c0c6234fd5eb3a9f4409bf50b5a58983a30be8f9a42bda",
+                "ID": "f12d0fa66ea4df5418c0c6234fd5eb3a9f4409bf50b5a58983a30be8f9a42bda",
+                "Type": "CanonicalUser"
+            },
+            "Permission": "FULL_CONTROL"
+        }
+    ]
+}
 [username@login1 ~]$ cat bucket_acl_old.json
 {
     "Owner": {
@@ -322,4 +340,28 @@ put-bucket-acl によりACLのJSON設定ファイルの内容をバケットに�
     ]
 }
 [username@login1 ~]$ aws --endpoint-url https://s3.v3.abci.ai s3api put-bucket-acl --bucket bucket --access-control-policy file://bucket_acl_old.json
+[username@login1 ~]$ aws --endpoint-url https://s3.v3.abci.ai s3api get-bucket-acl --bucket bucket 
+{
+    "Owner": {
+        "DisplayName": "f12d0fa66ea4df5418c0c6234fd5eb3a9f4409bf50b5a58983a30be8f9a42bda",
+        "ID": "f12d0fa66ea4df5418c0c6234fd5eb3a9f4409bf50b5a58983a30be8f9a42bda"
+    },
+    "Grants": [
+        {
+            "Grantee": {
+                "DisplayName": "f12d0fa66ea4df5418c0c6234fd5eb3a9f4409bf50b5a58983a30be8f9a42bda",
+                "ID": "f12d0fa66ea4df5418c0c6234fd5eb3a9f4409bf50b5a58983a30be8f9a42bda",
+                "Type": "CanonicalUser"
+            },
+            "Permission": "FULL_CONTROL"
+        },
+        {
+            "Grantee": {
+                "Type": "Group",
+                "URI": "http://acs.amazonaws.com/groups/global/AllUsers"
+            },
+            "Permission": "READ"
+        }
+    ]
+}
 ```

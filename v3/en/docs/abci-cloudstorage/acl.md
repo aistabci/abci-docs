@@ -274,7 +274,7 @@ Confirm that the grantee added before is deleted and the permission of the ABCI 
 ACLs can be configured using a JSON configuration file of ACLs that was previously obtained with the get-bucket-acl command.
 The current bucket ACL configuration can be exported to a file as shown below.
 ```
-[username@login1 ~]$ aws --endpoint-url https://s3.v3.abci.ai s3api get-bucket-acl  --bucket bucket > bucket_acl.json
+[username@login1 ~]$ aws --endpoint-url https://s3.v3.abci.ai s3api get-bucket-acl --bucket bucket > bucket_acl.json
 [username@login1 ~]$ cat bucket_acl.json
 {
     "Owner": {
@@ -300,8 +300,26 @@ The current bucket ACL configuration can be exported to a file as shown below.
     ]
 }
 ```
-The JSON configuration file of ACLs can be applied to a bucket using the put-bucket-acl command.
+The JSON configuration file of ACLs by get-bucket-acl using the above procedure can be applied to the bucket using put-bucket-acl.
+In the following procedure, the public-read ACL configuration is applied to the bucket with default ACL settings by using bucket_acl_old.json.
 ```
+[username@login1 ~]$ aws --endpoint-url https://s3.v3.abci.ai s3api get-bucket-acl --bucket bucket 
+{
+    "Owner": {
+        "DisplayName": "f12d0fa66ea4df5418c0c6234fd5eb3a9f4409bf50b5a58983a30be8f9a42bda",
+        "ID": "f12d0fa66ea4df5418c0c6234fd5eb3a9f4409bf50b5a58983a30be8f9a42bda"
+    },
+    "Grants": [
+        {
+            "Grantee": {
+                "DisplayName": "f12d0fa66ea4df5418c0c6234fd5eb3a9f4409bf50b5a58983a30be8f9a42bda",
+                "ID": "f12d0fa66ea4df5418c0c6234fd5eb3a9f4409bf50b5a58983a30be8f9a42bda",
+                "Type": "CanonicalUser"
+            },
+            "Permission": "FULL_CONTROL"
+        }
+    ]
+}
 [username@login1 ~]$ cat bucket_acl_old.json
 {
     "Owner": {
@@ -327,4 +345,28 @@ The JSON configuration file of ACLs can be applied to a bucket using the put-buc
     ]
 }
 [username@login1 ~]$ aws --endpoint-url https://s3.v3.abci.ai s3api put-bucket-acl --bucket bucket --access-control-policy file://bucket_acl_old.json
+[username@login1 ~]$ aws --endpoint-url https://s3.v3.abci.ai s3api get-bucket-acl --bucket bucket 
+{
+    "Owner": {
+        "DisplayName": "f12d0fa66ea4df5418c0c6234fd5eb3a9f4409bf50b5a58983a30be8f9a42bda",
+        "ID": "f12d0fa66ea4df5418c0c6234fd5eb3a9f4409bf50b5a58983a30be8f9a42bda"
+    },
+    "Grants": [
+        {
+            "Grantee": {
+                "DisplayName": "f12d0fa66ea4df5418c0c6234fd5eb3a9f4409bf50b5a58983a30be8f9a42bda",
+                "ID": "f12d0fa66ea4df5418c0c6234fd5eb3a9f4409bf50b5a58983a30be8f9a42bda",
+                "Type": "CanonicalUser"
+            },
+            "Permission": "FULL_CONTROL"
+        },
+        {
+            "Grantee": {
+                "Type": "Group",
+                "URI": "http://acs.amazonaws.com/groups/global/AllUsers"
+            },
+            "Permission": "READ"
+        }
+    ]
+}
 ```
