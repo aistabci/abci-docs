@@ -8,7 +8,33 @@
 |:--|:--|:--|
 | ソフト・リミット | 16384 | 65536 |
 | ハード・リミット | 16384 | 1048576 |
- 
+
+オープン可能なファイル数の上限値は、ジョブを実行後`ulimit -n {limit}`コマンドで変更できます。
+
+インタラクティブジョブの例:
+
+```
+[username@login1 ~]$ qsub -I -P grpname -q rt_HF -l select=1
+[username@hnode001 ~]$ ulimit -n 131072
+```
+
+バッチジョブの例:
+
+```shell
+#!/bin/sh
+#PBS -q rt_HF
+#PBS -l select=1
+#PBS -l walltime=1:23:45
+#PBS -P grpname
+
+ulimit -n 262144
+
+cd ${PBS_O_WORKDIR}
+
+source /etc/profile.d/modules.sh
+module load cuda/12.6/12.6.1
+./a.out
+```
 
 ## 2025-12-15 {#2025-12-15}
 

@@ -6,8 +6,35 @@ We increased the maximum number of files that can be opened simultaneously in th
 
 | Limit type | Previous value | Current value |
 |:--|:--|:--|
-| soft limit | 16384 | 65536 |
-| hard limit | 16384 | 1048576 |
+| Soft limit | 16384 | 65536 |
+| Hard limit | 16384 | 1048576 |
+
+The maximum number of files that can be opened can be changed using the `ulimit -n {limit}` command after starting the job.
+
+Example in the interactive job:
+
+```
+[username@login1 ~]$ qsub -I -P grpname -q rt_HF -l select=1
+[username@hnode001 ~]$ ulimit -n 131072
+```
+
+Example in the batch job:
+
+```shell
+#!/bin/sh
+#PBS -q rt_HF
+#PBS -l select=1
+#PBS -l walltime=1:23:45
+#PBS -P grpname
+
+ulimit -n 262144
+
+cd ${PBS_O_WORKDIR}
+
+source /etc/profile.d/modules.sh
+module load cuda/12.6/12.6.1
+./a.out
+```
 
 ## 2025-12-15 {#2025-12-15}
 
