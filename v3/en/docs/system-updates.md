@@ -1,5 +1,12 @@
 # System Updates
 
+## 2025-12-23 {#2025-12-23}
+
+/local is now available for interactive nodes.
+
+* Added a note to the notes section of "ABCI System Overview > Storage System > Interactive Nodes."
+* Added a new section, "Tips > Using /local for Interactive Nodes."
+
 ## 2025-10-29 {#2025-10-29}
 
 We installed the following software.
