@@ -1,5 +1,65 @@
 # System Updates
 
+## 2025-12-23 {#2025-12-23}
+
+We increased the maximum number of files that can be opened simultaneously in the compute nodes as follows.
+
+| Limit type | Previous value | Current value |
+|:--|:--|:--|
+| Soft limit | 16384 | 65536 |
+| Hard limit | 16384 | 1048576 |
+
+The maximum number of files that can be opened can be changed using the `ulimit -n {limit}` command after starting the job.
+
+Example in the interactive job:
+
+```
+[username@login1 ~]$ qsub -I -P grpname -q rt_HF -l select=1
+[username@hnode001 ~]$ ulimit -n 131072
+```
+
+Example in the batch job:
+
+```shell
+#!/bin/sh
+#PBS -q rt_HF
+#PBS -l select=1
+#PBS -l walltime=1:23:45
+#PBS -P grpname
+
+ulimit -n 262144
+
+cd ${PBS_O_WORKDIR}
+
+source /etc/profile.d/modules.sh
+module load cuda/12.6/12.6.1
+./a.out
+```
+
+## 2025-12-15 {#2025-12-15}
+
+We installed the following software.
+
+| Add / Update / Delete | Software | Version | Previous version |
+|:--|:--|:--|:--|
+| Add | graphviz(Compute Node) | 2.44.0 | |
+
+## 2025-12-11 {#2025-12-11}
+
+We installed the following software.
+
+| Add / Update / Delete | Software | Version | Previous version |
+|:--|:--|:--|:--|
+| Add | rclone | 1.71.0 | |
+
+## 2025-12-03 {#2025-12-03}
+
+We installed the following software.
+
+| Add / Update / Delete | Software | Version | Previous version |
+|:--|:--|:--|:--|
+| Add | singularity-ce | 4.3.3 | |
+
 ## 2025-10-29 {#2025-10-29}
 
 We installed the following software.
