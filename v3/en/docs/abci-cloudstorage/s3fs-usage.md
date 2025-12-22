@@ -8,7 +8,7 @@ This section describes how to use the `s3fs-fuse` module.
 
 An access key is required to use s3fs-fuse.
 
-Please refer to [the ABCI Portal Guide](https://docs.abci.ai/portal/en/02/#282-manage-access-key) for how to issue an access key.
+Please refer to [the ABCI Portal Guide](https://docs.abci.ai/v3/portal/ja/02/#283-csad) for how to issue an access key.
 After issuing the access key, use the AWS CLI to set the access key. Please refer to [How to Use ABCI Cloud Storage](usage.md) for how to set the access key.
 
 Here, it is assumed that the access key is set in the `default` profile.
@@ -32,8 +32,10 @@ make_bucket: s3fs-bucket
 
 ## Mounting bucket
 
-!!!note
-    Since the area under /home is a Lustre mount area, s3fs mount cannot be used. We recommend using /tmp.
+`/tmp` on interactive nodes, `/tmp` on compute nodes, and local storage allocated to jobs (`$PBS_LOCALDIR`) can be used as mount points for `s3fs-fuse`.
+However, please note that if you mount a bucket using `s3fs-fuse` within a job, it will be automatically unmounted when the job ends.
+
+The following explains how to mount a bucket using `/tmp` on the interactive node.
 
 Create a mount point on the TMP directory and mount the `s3fs-bucket` bucket with the `s3fs` command.
 
@@ -55,7 +57,7 @@ After mounting the bucket, you can add and remove objects from the bucket in the
 ```
 [username@login1 ~]$ cp ~/my-file /tmp/s3fs_dir/
 [username@login1 ~]$ ls /tmp/s3fs_dir/my-file
-[username@login1 ~]$ rm tmp/s3fs_dir/my-file
+[username@login1 ~]$ rm /tmp/s3fs_dir/my-file
 ```
 
 ## Unmounting bucket

@@ -7,7 +7,7 @@ ABCIでは`s3fs-fuse`モジュールを提供しており、ABCIクラウドス�
 ## アクセスキー
 
 s3fs-fuseを使うにあたり、アクセスキーが必要です。
-アクセスキーの発行方法については [ABCI利用者ポータルガイド](https://docs.abci.ai/portal/ja/02/#282)を参照してください。
+アクセスキーの発行方法については [ABCI利用者ポータルガイド](https://docs.abci.ai/v3/portal/ja/02/#283-csad)を参照してください。
 アクセスキーを発行したあとAWS CLIを使用しアクセスキーを設定します。アクセスキーの設定方法については[ABCIクラウドストレージの使い方](usage.md)を参照してください。
 
 ここではアクセスキーを`default`プロファイルで設定しているものとします。
@@ -30,8 +30,10 @@ make_bucket: s3fs-bucket
 
 ## バケットをマウントする
 
-!!!note
-    /home配下はLustreマウント領域である為、s3fsマウントは使用できません。/tmpの利用を推奨します。
+インタラクティブノードの`/tmp`、計算ノードの`/tmp`および、ジョブに割り当てられたローカルストレージ(`$PBS_LOCALDIR`)が`s3fs-fuse`のマウントポイントとして利用できます。
+ただし、ジョブ内で`s3fs-fuse`を使用してバケットをマウントした場合、ジョブの終了時に自動でアンマウントされますのでご注意ください。
+
+以下ではインタラクティブノードの`/tmp`を利用したバケットのマウント方法を説明します。
 
 マウントポイントをTMPディレクトリ上に作成し、先ほど作成した`s3fs-bucket`バケットを`s3fs`コマンドでマウントします。
 
@@ -53,7 +55,7 @@ make_bucket: s3fs-bucket
 ```
 [username@login1 ~]$ cp ~/my-file /tmp/s3fs_dir/
 [username@login1 ~]$ ls /tmp/s3fs_dir/my-file
-[username@login1 ~]$ rm tmp/s3fs_dir/my-file
+[username@login1 ~]$ rm /tmp/s3fs_dir/my-file
 ```
 
 ## バケットをアンマウントする
