@@ -33,6 +33,12 @@ passwd: all authentication tokens updated successfully.
 [username@login1 ~]$
 ```
 
+!!! warning
+    パスワード規約は以下の通りです。
+
+    - 12文字以上。
+    - 英小文字、英大文字、数字、記号の4種類をすべて含む。
+    - 使用可能な記号は次の33種類。(空白) ! " # $ % & ' ( ) * + , - . / : ; < = > ? @ [ \ ] ^ _ ` { | } ~
 
 ## ログイン方法 {#login}
 
