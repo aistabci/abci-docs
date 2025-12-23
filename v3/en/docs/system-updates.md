@@ -6,6 +6,7 @@
 
 * Added a note to the notes section of "ABCI System Overview > Storage System > Interactive Nodes."
 * Added a new section, ["Tips > Using /local for Interactive Nodes."](tips/interactive_node_local_fs.md)
+
 We increased the maximum number of files that can be opened simultaneously in the compute nodes as follows.
 
 | Limit type | Previous value | Current value |
