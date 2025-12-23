@@ -2,6 +2,10 @@
 # Using /local on interactive nodes
 
 On ABCI interactive nodes, /local is available as a local scratch area.
+A directory called /local/groups/{ABCI group name} is created for each group, and users can create and use directories and files as needed under the directory of their group.
+
+!!!note
+    Note that /local exists for each interactive node and is not shared between interactive nodes (login1-login5) and compute nodes.
 
 ## Structure of /local
 
@@ -17,11 +21,11 @@ Group directories are created under /local/groups.
 ## Group Directory
 
 Each group directory is created under /local/groups, with the owner set to root, the group set to the group ID, and permissions set to 02770 (rwxrws---).
-For example, the group directory for group gxa00001 is /local/groups/gxa00001.
+For example, the group directory for group gaa50000 is /local/groups/gaa50000.
 
 ```
-[username@login1 ~]$ ls -ld /local/groups/gxa00001
-drwxrws--- 5 root gxa00001 4096 Dec 15  2025 /groups/gxa00001
+[username@login1 ~]$ ls -ld /local/groups/gaa50000
+drwxrws--- 5 root gaa50000 4096 Dec 15  2025 /local/groups/gaa50000
 ```
 
 Since the set-group-ID permission is set, the group ID of new files created in the group directory inherits the group ID of the parent directory.
@@ -34,7 +38,7 @@ Each group directory has XFS project quotas to prevent unlimited use.
 | :-- | :-- | :-- |
 | bhard | 1TB | Hard limit on usable blocks. Users cannot use more blocks than the limit. |
 | bsoft | N/A | Soft limit on usable blocks. Users can temporarily use more blocks than the limit. |
-| ihard | N/A | Hard limit on usable inodes. Users cannot use more blocks than the limit. |
+| ihard | N/A | Hard limit on usable inodes. Users cannot use more inodes than the limit. |
 | isoft | N/A | Soft limit on usable inodes. Users can temporarily use more inodes than the limit. |
 
 Due to the bhard limit, the total disk usage of files within each group directory cannot exceed 1TB.
@@ -49,7 +53,7 @@ Use the du command to check the usage of the group directory.
 
 Example:
 ```
-[username@login1 ~]$ du -sk /local/groups/gxa00001
+[username@login1 ~]$ du -sk /local/groups/gaa50000
 ```
 
 ## Automatic File Deletion
@@ -74,11 +78,11 @@ $ stat file
 
 Example:
 ```
-[username@login1 gxa00001]$ stat junk
-  File: junk
+[username@login1 gaa50000]$ stat sample.txt
+  File: sample.txt
   Size: 0         	Blocks: 0          IO Block: 4194304 regular empty file
 Device: 84f0b5a2h/2230367650d	Inode: 270216711578435798  Links: 1
-Access: (0640/-rw-r-----)  Uid: (18180/ach18180se)   Gid: (18180/ach18180se)
+Access: (0640/-rw-r-----)  Uid: (10000/username)   Gid: (50000/gaa50000)
 Access: 2025-12-15 15:14:46.000000000 +0900
 Modify: 2025-12-15 15:14:29.000000000 +0900
 Change: 2025-12-15 15:14:40.000000000 +0900
@@ -97,14 +101,14 @@ The -u option shows the access time rather than the modify time.
 
 Example: Show access time
 ```
-[username@login1 gxa00001]$ ls -l -u junk
--rw-r----- 1 ach18180se ach18180se 0 Dec 15 15:14 junk
+[username@login1 gaa50000]$ ls -l -u sample.txt
+-rw-r----- 1 username gaa50000 0 Dec 15 15:14 sample.txt
 ```
 
 Ref: Show modify time
 ```
-[username@login1 gxa00001]$ ls -l junk
--rw-r----- 1 ach18180se ach18180se 0 Dec 15 15:14 junk
+[username@login1 gaa50000]$ ls -l sample.txt
+-rw-r----- 1 username gaa50000 0 Dec 15 15:14 sample.txt
 ```
 
 You can also specify the --full-time option to show the full time.
@@ -112,12 +116,12 @@ You can also specify the --full-time option to show the full time.
 Example: Show the full access time.
 
 ```
-[username@login1 gxa00001]$ ls -l -u --full-time junk
--rw-r----- 1 ach18180se ach18180se 0 2025-12-15 15:14:46.000000000 +0900 junk
+[username@login1 gaa50000]$ ls -l -u --full-time sample.txt
+-rw-r----- 1 username gaa50000 0 2025-12-15 15:14:46.000000000 +0900 sample.txt
 ```
 
 Ref: Show the full modify time.
 ```
-[username@login1 gxa00001]$ ls -l --full-time junk
--rw-r----- 1 ach18180se ach18180se 0 2025-12-15 15:14:29.000000000 +0900 junk
+[username@login1 gaa50000]$ ls -l --full-time sample.txt
+-rw-r----- 1 username gaa50000 0 2025-12-15 15:14:29.000000000 +0900 sample.txt
 ```

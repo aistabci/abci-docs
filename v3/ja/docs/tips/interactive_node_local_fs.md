@@ -2,6 +2,11 @@
 # インタラクティブノードの/localの利用
 
 ABCIのインタラクティブノードでは、ローカルスクラッチ領域として、/localが利用可能です。
+グループ毎に/local/groups/{ABCIグループ名}というディレクトリが作成されているので、利用者は所属するグループのディレクトリ以下に、適宜ディレクトリやファイルを作成して利用することが出来ます。
+
+!!!note
+    /localはインタラクティブノード毎に存在し、インタラクティブノード間(login1〜login5)、および計算ノードと共有されておりませんのでご注意ください。
+
 
 ## /localの構造
 
@@ -17,11 +22,11 @@ ABCIのインタラクティブノードでは、ローカルスクラッチ領�
 ## グループディレクトリ
 
 各グループディレクトリは、/local/groupsの下に作成され、所有者はroot、グループはグループID、パーミッションは02770(rwxrws---)に設定されています。
-例えば、グループgxa00001のグループディレクトリは、/local/groups/gxa00001です。
+例えば、グループgaa50000のグループディレクトリは、/local/groups/gaa50000です。
 
 ```
-[username@login1 ~]$ ls -ld /local/groups/gxa00001
-drwxrws--- 5 root gxa00001 4096 Dec 15  2025 /groups/gxa00001
+[username@login1 ~]$ ls -ld /local/groups/gaa50000
+drwxrws--- 5 root gaa50000 4096 Dec 15  2025 /local/groups/gaa50000
 ```
 
 パーミッションにset-group-IDが設定されているので、グループディレクトリに新規作成されるファイルのグループIDは、親ディレクトリのグループIDを継承します。
@@ -34,7 +39,7 @@ drwxrws--- 5 root gxa00001 4096 Dec 15  2025 /groups/gxa00001
 | :-- | :-- | :-- |
 | bhard | 1TB | 使用可能ブロック数のハード制限。ユーザは制限値を超えるブロックを使用出来ません。 |
 | bsoft | なし | 使用可能ブロック数のソフト制限。ユーザは制限値を超えるブロックを一時的に使用出来ます。 |
-| ihard | なし | 使用可能inode数のハード制限。ユーザは制限値を超えるブロックを使用出来ません。 |
+| ihard | なし | 使用可能inode数のハード制限。ユーザは制限値を超えるinode数を使用出来ません。 |
 | isoft | なし | 使用可能inode数のソフト制限。ユーザは制限値を超えるinode数を一時的に使用出来ます。 |
 
 bhard制限により、各グループディレクトリに存在するファイルの総使用量が1TBを超えることは出来ません。
@@ -49,7 +54,7 @@ duコマンドを使用して、グループディレクトリの使用量を確
 
 例:
 ```
-[username@login1 ~]$ du -sk /local/groups/gxa00001
+[username@login1 ~]$ du -sk /local/groups/gaa50000
 ```
 
 ## 自動ファイル削除
@@ -82,11 +87,11 @@ $ stat ファイル名
 
 例:
 ```
-[username@login1 gxa00001]$ stat junk
-  File: junk
+[username@login1 gaa50000]$ stat sample.txt
+  File: sample.txt
   Size: 0         	Blocks: 0          IO Block: 4194304 regular empty file
 Device: 84f0b5a2h/2230367650d	Inode: 270216711578435798  Links: 1
-Access: (0640/-rw-r-----)  Uid: (18180/ach18180se)   Gid: (18180/ach18180se)
+Access: (0640/-rw-r-----)  Uid: (10000/username)   Gid: (50000/gaa50000)
 Access: 2025-12-15 15:14:46.000000000 +0900
 Modify: 2025-12-15 15:14:29.000000000 +0900
 Change: 2025-12-15 15:14:40.000000000 +0900
@@ -105,26 +110,26 @@ $ ls -l -u ファイル名
 
 例: アクセス日時を表示する。
 ```
-[username@login1 gxa00001]$ ls -l -u junk
--rw-r----- 1 ach18180se ach18180se 0 Dec 15 15:14 junk
+[username@login1 gaa50000]$ ls -l -u sample.txt
+-rw-r----- 1 username gaa50000 0 Dec 15 15:14 sample.txt
 ```
 
 参考: 更新日時を表示する。
 ```
-[username@login1 gxa00001]$ ls -l junk
--rw-r----- 1 ach18180se ach18180se 0 Dec 15 15:14 junk
+[username@login1 gaa50000]$ ls -l sample.txt
+-rw-r----- 1 username gaa50000 0 Dec 15 15:14 sample.txt
 ```
 
 上記の例ではアクセス日時と更新日時の違いが分かりませんが、その場合は--full-timeオプションを指定すると完全な日時が表示され、区別可能になります。
 
 例: 完全なアクセス日時を表示する。
 ```
-[username@login1 gxa00001]$ ls -l -u --full-time junk
--rw-r----- 1 ach18180se ach18180se 0 2025-12-15 15:14:46.000000000 +0900 junk
+[username@login1 gaa50000]$ ls -l -u --full-time sample.txt
+-rw-r----- 1 username gaa50000 0 2025-12-15 15:14:46.000000000 +0900 sample.txt
 ```
 
 参考: 完全な更新日時を表示する。
 ```
-[username@login1 gxa00001]$ ls -l --full-time junk
--rw-r----- 1 ach18180se ach18180se 0 2025-12-15 15:14:29.000000000 +0900 junk
+[username@login1 gaa50000]$ ls -l --full-time sample.txt
+-rw-r----- 1 username gaa50000 0 2025-12-15 15:14:29.000000000 +0900 sample.txt
 ```
