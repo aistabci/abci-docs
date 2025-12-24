@@ -18,6 +18,7 @@ nav:
     - 'Tera Termの利用': 'tips/tera-term.md'
     - 'PuTTYの利用': 'tips/putty.md'
     - 'JupyterLabにPython仮想環境を追加する方法': 'tips/jupyterlab_venv.md'
+    - 'インタラクティブノードの/localの利用': 'tips/interactive_node_local_fs.md'
   - 'ABCIクラウドストレージ':
     - '概要': 'abci-cloudstorage.md'
     - 'クラウドストレージアカウントディレクトリとアクセスキー': 'abci-cloudstorage/cs-account.md'

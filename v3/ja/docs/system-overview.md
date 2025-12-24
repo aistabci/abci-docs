@@ -99,7 +99,7 @@ ABCIシステムは、人工知能やビッグデータ応用に用いる大容�
 
 | ノード種類 | マウントポイント | 容量 | ファイルシステム | 備考 |
 |:--|:--|:--|:--|:--|
-| インタラクティブノード | /local | 12 TB | XFS | |
+| インタラクティブノード | /local | 12 TB | XFS | [インタラクティブノードの/localの利用](tips/interactive_node_local_fs.md) |
 | 計算ノード(H) | /local1 | 7 TB | XFS |  |
 |               | /local2 | 7 TB | XFS | BeeGFS含む |
 

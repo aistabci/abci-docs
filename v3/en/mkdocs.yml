@@ -17,6 +17,7 @@ nav:
     - 'GPUDirect Storage': 'tips/gds.md'
     - 'PuTTY': 'tips/putty.md'
     - 'How to add a Python virtual environment to JupyterLab': 'tips/jupyterlab_venv.md'
+    - 'Using /local on interactive nodes': 'tips/interactive_node_local_fs.md'
   - 'ABCI Cloud Storage':
     - 'Overview': 'abci-cloudstorage.md'
     - 'Cloud Storage Account DIrectories and Access keys': 'abci-cloudstorage/cs-account.md'
