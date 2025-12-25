@@ -50,6 +50,16 @@ If you want to use an access key other than the `default` profile, specify the` 
 [username@login1 ~]$ s3fs s3fs-bucket /tmp/s3fs_dir -o url=https://s3.v3.abci.ai/ -o profile=aaa00000.2 -o use_path_request_style
 ```
 
+## Verifying mount
+
+To verify that the mount was successful, use the `df` command.
+A line with "s3fs" at the beginning is a file system mounted with s3fs.
+
+```
+[username@login1 ~]$ df -hT | grep "^s3fs"
+s3fs                    fuse.s3fs    64P     0   64P   0% /tmp/s3fs_dir
+```
+
 ## File operations
 
 After mounting the bucket, you can add and remove objects from the bucket in the same way as you would with a file.
@@ -68,8 +78,17 @@ Use the `fusermount` command to unmount the bucket.
 [username@login1 ~]$ fusermount -u /tmp/s3fs_dir
 ```
 
-If you mount a bucket using `s3fs-fuse` in a job obtained by the On-demand or Spot service, it will be automatically unmounted at the end of the job.
-However, if you mount the bucket using `s3fs-fuse` on the interactive node, it will not be unmounted automatically, so unmount it when you no longer need it.
+## Verifying unmount
+
+To verify that the unmount was successful, use the `df` command.
+If the line that was displayed for s3fs has disappeared, the unmount was successful.
+
+```
+[username@login1 ~]$ df -hT | grep "^s3fs"
+[username@login1 ~]$
+```
+
+When you use `s3fs-fuse` to mount a bucket, it will not be unmounted automatically, so unmount it when you no longer need it.
 
 ## s3fs command options
 

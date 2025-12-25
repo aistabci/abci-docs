@@ -48,6 +48,16 @@ make_bucket: s3fs-bucket
 [username@login1 ~]$ s3fs s3fs-bucket /tmp/s3fs_dir -o url=https://s3.v3.abci.ai/ -o profile=aaa00000.2 -o use_path_request_style
 ```
 
+## マウントの確認
+
+マウントが成功したことを確認するには、`df`コマンドを使用します。
+先頭に「s3fs」が表示されている行が、s3fsでマウントされているファイルシステムです。
+
+```
+[username@login1 ~]$ df -hT | grep "^s3fs"
+s3fs                    fuse.s3fs    64P     0   64P   0% /tmp/s3fs_dir
+```
+
 ## ファイル操作
 
 バケットをマウントした後は、ファイル操作と同じ方法でバケットへオブジェクトの追加、削除が行えます。
@@ -66,7 +76,18 @@ make_bucket: s3fs-bucket
 [username@login1 ~]$ fusermount -u /tmp/s3fs_dir
 ```
 
-On-demand、Spotサービスで確保したジョブ内で`s3fs-fuse`を使用してバケットをマウントした場合、ジョブの終了時に自動でアンマウントされます。ただし、インタラクティブノード上で`s3fs-fuse`を利用してバケットをマウントした場合は、自動でアンマウントされないため、不要になったらアンマウントしてください。
+## アンマウントの確認
+
+アンマウントが成功したことを確認するには、`df`コマンドを使用します。
+s3fsで表示されていた行が消えていれば、アンマウントが成功しています。
+
+```
+[username@login1 ~]$ df -hT | grep "^s3fs"
+[username@login1 ~]$
+```
+
+`s3fs-fuse`を利用してバケットをマウントした場合は、自動でアンマウントされないため、不要になったらアンマウントしてください。
+
 
 ## s3fsコマンドオプション
 
