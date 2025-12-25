@@ -1,5 +1,9 @@
 # System Updates
 
+## 2025-12-26 {#2025-12-26}
+
+A CSAD deactivation feature has been added to the cloud storage service. Accordingly, instructions for configuring bucket ACLs using a configuration file have been added.
+
 ## 2025-12-23 {#2025-12-23}
 
 /local is now available for interactive nodes.
