@@ -35,9 +35,6 @@ make_bucket: s3fs-bucket
 `/tmp` on interactive nodes, `/tmp` on compute nodes, and local storage allocated to jobs (`$PBS_LOCALDIR`) can be used as mount points for `s3fs-fuse`.
 Please use `/tmp` or the local storage allocated to the job (`$PBS_LOCALDIR`) as the mount point.
 
-
-For the mount point, use `/tmp` or the local storage allocated to the job (`$PBS_LOCALDIR`).
-
 The following explains how to mount a bucket using `/tmp` on the interactive node.
 
 Create a mount point on the TMP directory and mount the `s3fs-bucket` bucket with the `s3fs` command.
