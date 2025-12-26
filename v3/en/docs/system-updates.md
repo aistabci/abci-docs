@@ -11,6 +11,13 @@ A CSAD deactivation feature has been added to the cloud storage service. Accordi
 * Added a note to the notes section of "ABCI System Overview > Storage System > Interactive Nodes."
 * Added a new section, ["Tips > Using /local for Interactive Nodes."](tips/interactive_node_local_fs.md)
 
+We updated the following softwares.
+
+| Add / Update / Delete | Software | Version | Previous version |
+|:--|:--|:--|:--|
+| Update | NVIDIA Device Driver | 580.82.07 | 570.124.06 |
+| Update | DDN Lustre | 2.14.0_ddn230 | 2.14.0_ddn196 |
+
 We increased the maximum number of files that can be opened simultaneously in the compute nodes as follows.
 
 | Limit type | Previous value | Current value |
