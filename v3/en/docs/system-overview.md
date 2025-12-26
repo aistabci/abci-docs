@@ -144,7 +144,7 @@ The software available on the ABCI system is shown below.
 | | Scala | 3.5.2 | 3.5.2 |
 | | Perl | 5.32.1 | 5.32.1 |
 | | Go | 1.24.6<br>1.25.1 | 1.24.4<br>1.25.1 |
-| File System | DDN Lustre | 2.14.0_ddn196 | 2.14.0_ddn196 |
+| File System | DDN Lustre | 2.14.0_ddn230 | 2.14.0_ddn230 |
 | | BeeOND | - | 7.4.5 |
 | Object Storage | s3cmd | 2.4.0 | 2.4.0 |
 | Container | SingularityCE | 4.1.5 | 4.1.5 |
