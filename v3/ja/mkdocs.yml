@@ -28,6 +28,7 @@ nav:
     - 'アクセス制御(1)': 'abci-cloudstorage/acl.md'
     - 'アクセス制御(2)': 'abci-cloudstorage/policy.md'
     - 'ご利用時の注意': 'abci-cloudstorage/caution.md'
+    - 's3fs-fuseの利用': 'abci-cloudstorage/s3fs-usage.md'
   - 'Open OnDemand':
     - '使い方': 'open-ondemand/index.md'
     - 'インタラクティブアプリ': 'open-ondemand/interactive-apps.md'

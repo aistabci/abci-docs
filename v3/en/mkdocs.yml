@@ -27,6 +27,7 @@ nav:
     - 'Access Control (1) ': 'abci-cloudstorage/acl.md'
     - 'Access Control (2) ': 'abci-cloudstorage/policy.md'
     - 'Caution': 'abci-cloudstorage/caution.md'
+    - 'Using s3fs-fuse': 'abci-cloudstorage/s3fs-usage.md'
   - 'Open OnDemand':
     - 'Using Open OnDemand': 'open-ondemand/index.md'
     - 'Ineractive Apps': 'open-ondemand/interactive-apps.md'
