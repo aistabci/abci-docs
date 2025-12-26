@@ -11,6 +11,13 @@
 * ABCIシステムの概要 > ストレージシステム > インタラクティブノード」の備考欄に追記。
 * [「Tips > インタラクティブノードの/localの利用」](tips/interactive_node_local_fs.md)を新設。
 
+以下のソフトウェアを更新しました。
+
+| Add / Update / Delete | Software | Version | Previous version |
+|:--|:--|:--|:--|
+| Update | NVIDIA Device Driver | 580.82.07 | 570.124.06 |
+| Update | DDN Lustre | 2.14.0_ddn230 | 2.14.0_ddn196 |
+
 計算ノードにおいて同時にオープン可能なファイル数の上限値を以下のように増加しました。
 
 | リミット種別 | 更新前 | 更新後 |
