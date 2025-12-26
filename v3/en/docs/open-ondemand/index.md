@@ -33,6 +33,12 @@ passwd: all authentication tokens updated successfully.
 [username@login1 ~]$
 ```
 
+!!! warning
+    Password policies are as follows:
+
+    - Specify a character string with more than 12 characters arranged randomly. We recommend generating it automatically by using password creation software.
+    - Should contain all character types of lower-case letters, upper-case letters, numeric characters, and special characters.
+    - As special characters, the following 33 types of characters can be used: (blank) ! " # $ % & ' ( ) * + , - . / : ; < = > ? @ [ \ ] ^ _ ` { | } ~
 
 ## Login
 

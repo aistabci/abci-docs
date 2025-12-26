@@ -102,7 +102,7 @@ Besides this, these nodes each have local storage that can be used as a local sc
 
 | Node type | Mount point | Capacity | File system | Notes |
 |:--|:--|:--|:--|:--|
-| Interactive node | /local | 12 TB | XFS | |
+| Interactive node | /local | 12 TB | XFS | [Using /local on interactive nodes](tips/interactive_node_local_fs.md) |
 | Compute node (H) | /local1 | 7 TB | XFS |  |
 |                 | /local2 | 7 TB | XFS | Includes BeeGFS |
 
@@ -159,6 +159,8 @@ The software available on the ABCI system is shown below.
 | | UCX | 1.17 | 1.17 |
 | | Intel MKL | 2024.2.1 | 2024.2.1 |
 | Utility | aws-cli | 1.29.62 | 1.29.62 |
+| | rclone | 1.70.3<br>1.71.0 | 1.70.3<br>1.71.0 |
 | | s3fs-fuse | 1.94<br>1.95 | 1.94<br>1.95 |
-| | rclone | 1.70.3 | 1.70.3 |
+| | singularity-ce | 4.3.3 | 4.3.3 |
+| | singularitypro | 4.1.7 | 4.1.7 |
 

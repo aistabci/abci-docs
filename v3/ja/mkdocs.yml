@@ -18,14 +18,17 @@ nav:
     - 'Tera Termの利用': 'tips/tera-term.md'
     - 'PuTTYの利用': 'tips/putty.md'
     - 'JupyterLabにPython仮想環境を追加する方法': 'tips/jupyterlab_venv.md'
+    - 'インタラクティブノードの/localの利用': 'tips/interactive_node_local_fs.md'
   - 'ABCIクラウドストレージ':
     - '概要': 'abci-cloudstorage.md'
     - 'クラウドストレージアカウントディレクトリとアクセスキー': 'abci-cloudstorage/cs-account.md'
     - '使い方': 'abci-cloudstorage/usage.md'
     - 'データの暗号化': 'abci-cloudstorage/encryption.md'
+    - '署名付きURL': 'abci-cloudstorage/presigned-urls.md'
     - 'アクセス制御(1)': 'abci-cloudstorage/acl.md'
     - 'アクセス制御(2)': 'abci-cloudstorage/policy.md'
     - 'ご利用時の注意': 'abci-cloudstorage/caution.md'
+    - 's3fs-fuseの利用': 'abci-cloudstorage/s3fs-usage.md'
   - 'Open OnDemand':
     - '使い方': 'open-ondemand/index.md'
     - 'インタラクティブアプリ': 'open-ondemand/interactive-apps.md'

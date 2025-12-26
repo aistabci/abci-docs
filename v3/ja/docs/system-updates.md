@@ -1,5 +1,74 @@
 # システム更新履歴
 
+## 2025-12-26 {#2025-12-26}
+
+クラウドストレージに、CSAD無効化機能が追加されました。これに伴い、設定ファイルを用いたバケットACLの設定方法を追記しました。
+
+## 2025-12-23 {#2025-12-23}
+
+インタラクティブノードの/localが利用可能になりました。
+
+* ABCIシステムの概要 > ストレージシステム > インタラクティブノード」の備考欄に追記。
+* [「Tips > インタラクティブノードの/localの利用」](tips/interactive_node_local_fs.md)を新設。
+
+計算ノードにおいて同時にオープン可能なファイル数の上限値を以下のように増加しました。
+
+| リミット種別 | 更新前 | 更新後 |
+|:--|:--|:--|
+| ソフト・リミット | 16384 | 65536 |
+| ハード・リミット | 16384 | 1048576 |
+
+オープン可能なファイル数の上限値は、ジョブを実行後`ulimit -n {limit}`コマンドで変更できます。
+
+インタラクティブジョブの例:
+
+```
+[username@login1 ~]$ qsub -I -P grpname -q rt_HF -l select=1
+[username@hnode001 ~]$ ulimit -n 131072
+```
+
+バッチジョブの例:
+
+```shell
+#!/bin/sh
+#PBS -q rt_HF
+#PBS -l select=1
+#PBS -l walltime=1:23:45
+#PBS -P grpname
+
+ulimit -n 262144
+
+cd ${PBS_O_WORKDIR}
+
+source /etc/profile.d/modules.sh
+module load cuda/12.6/12.6.1
+./a.out
+```
+
+## 2025-12-15 {#2025-12-15}
+
+以下のソフトウェアをインストールしました。
+
+| Add / Update / Delete | Software | Version | Previous version |
+|:--|:--|:--|:--|
+| Add | graphviz(計算ノード) | 2.44.0 | |
+
+## 2025-12-11 {#2025-12-11}
+
+以下のソフトウェアをインストールしました。
+
+| Add / Update / Delete | Software | Version | Previous version |
+|:--|:--|:--|:--|
+| Add | rclone | 1.71.0 | |
+
+## 2025-12-03 {#2025-12-03}
+
+以下のソフトウェアをインストールしました。
+
+| Add / Update / Delete | Software | Version | Previous version |
+|:--|:--|:--|:--|
+| Add | singularity-ce | 4.3.3 | |
+
 ## 2025-10-29 {#2025-10-29}
 
 以下のソフトウェアをインストールしました。
