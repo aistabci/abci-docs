@@ -47,10 +47,10 @@ module load cuda/12.6/12.6.1
 
 We updated the default multi-rail configration of `hpcx` module and `intel-mpi` module.
 
-|Parameter | Value |
-|:--|:--|
-| UCX_MAX_RNDV_RAILS | 4 |
-| UCX_MAX_EAGER_RAILS | 1 |
+|Parameter | Previous value | Current value |
+|:--|:--|:--|
+| UCX_MAX_RNDV_RAILS | none | 4 |
+| UCX_MAX_EAGER_RAILS | none | 1 |
 
 ## 2025-12-15 {#2025-12-15}
 
