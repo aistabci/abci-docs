@@ -45,8 +45,6 @@ module load cuda/12.6/12.6.1
 ./a.out
 ```
 
-## 2025-12-23 {#2025-12-23}
-
 We updated the default multi-rail configration of `hpcx` module and `intel-mpi` module.
 
 |Parameter | Value |
