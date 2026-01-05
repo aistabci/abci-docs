@@ -22,7 +22,7 @@ The maximum number of files that can be opened can be changed using the `ulimit 
 
 Example in the interactive job:
 
-```
+UCX_MAX_EAGER_RAILS```
 [username@login1 ~]$ qsub -I -P grpname -q rt_HF -l select=1
 [username@hnode001 ~]$ ulimit -n 131072
 ```
@@ -44,6 +44,15 @@ source /etc/profile.d/modules.sh
 module load cuda/12.6/12.6.1
 ./a.out
 ```
+
+## 2025-12-23 {#2025-12-23}
+
+We updated the default multi-rail configration of `hpcx` module and `intel-mpi` module.
+
+|Parameter | Value |
+|:--|:--|
+| UCX_MAX_RNDV_RAILS | 4 |
+| UCX_MAX_EAGER_RAILS | 1 |
 
 ## 2025-12-15 {#2025-12-15}
 

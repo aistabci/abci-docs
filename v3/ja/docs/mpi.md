@@ -63,3 +63,59 @@ NVIDIA HPC-Xについて、より詳しい情報は[公式ドキュメント](ht
 | intel-mpi/ | Compute Node (H) |
 |:--|:--|
 | 2021.13 | Yes |
+
+## Infiniband NDRを複数使用する方法
+
+`hpcx`モジュール及び`intel-mpi`モジュールではデフォルトでは`UCX_MAX_RNDV_RAILS=4`/`UCX_MAX_EAGER_RAILS=1`を設定しておりますが、以下のようにしてマルチレールに使用するレーン数を変更することができます。
+
+```bash
+export UCX_MAX_RNDV_RAILS=8
+export UCX_MAX_EAGER_RAILS=8
+```
+
+!!!info
+    上記の`8`はNDR HCAの数ですが、プログラムに応じて数値を1から8の間に変更して下さい。
+
+また、以下のようなラッパースクリプトを用いることで各プロセスにユニークなNDR HCAを割り当てることができます。
+
+* wrap.sh(hpcx)
+
+```bash
+#!/bin/sh
+
+NNDRS=8
+
+for i in $(seq 1 $NNDRS)
+do
+    if [ $((OMPI_COMM_WORLD_RANK%NNDRS)) -eq $((i-1)) ];then
+        export UCX_NET_DEVICES=mlx5_ibn$i:1
+    fi
+done
+
+$*
+```
+
+```bash
+mpirun -np $NP ./wrap.sh ./a.out
+```
+
+* wrap.sh(intel-mpi)
+
+```bash
+#!/bin/sh
+
+NNDRS=8
+
+for i in $(seq 1 $NNDRS)
+do
+    if [ $((PMI_RANK%NNDRS)) -eq $((i-1)) ];then
+        export UCX_NET_DEVICES=mlx5_ibn$i:1
+    fi
+done
+
+$*
+```
+
+```bash
+mpiexec.hydra -np $NP ./wrap.sh ./a.out
+```
