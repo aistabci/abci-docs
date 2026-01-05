@@ -22,7 +22,7 @@ The maximum number of files that can be opened can be changed using the `ulimit 
 
 Example in the interactive job:
 
-UCX_MAX_EAGER_RAILS```
+```
 [username@login1 ~]$ qsub -I -P grpname -q rt_HF -l select=1
 [username@hnode001 ~]$ ulimit -n 131072
 ```
