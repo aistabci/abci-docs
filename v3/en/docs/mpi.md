@@ -65,17 +65,29 @@ For more information about NVIDIA HPC-X, please refer to [the official documenta
 |:--|:--|
 | 2021.13 | Yes |
 
-## How to use multiple Infiniband NDR
+## How to change the number of InfiniBand NDR
 
-By default, the `hpcx` and `intel-mpi` modules set `UCX_MAX_RNDV_RAILS=4` and `UCX_MAX_EAGER_RAILS=1`. The number of lanes used for multi-rail can be modified as shown below.
+There are eight InfiniBand NDR HCA on compute nodes(H).  
+The following configuration is used by default on `hpcx`/`intel-mpi` modules.
 
-```
-export UCX_MAX_RNDV_RAILS=8
-export UCX_MAX_EAGER_RAILS=8
-```
+* The number of lanes is four for Rendezvous protocol(large message size)
+* The number of lanes is one for Eager protocol(small message size)
+
+The number of lanes can be changed by setting `UCX_MAX_RNDV_RAILS`/`UCX_MAX_EAGER_RAILS` environment variables.
 
 !!!info
-    Here, the value 8 indicates the number of NDR HCAs. Please adjust the value between 1 and 8 according to the application.
+    The range of the above environment variables is 1-8.
+
+The following is an example usage of interactive job.  
+In this example, the number of lanes used is doubled.
+
+```
+[username@login1 ~]$ qsub -I -P group -q rt_HF -l select=2:mpiprocs=8 -l walltime=1:0:0
+[username@hnode001 ~]$ module load hpcx/2.20
+[username@hnode001 ~]$ export UCX_MAX_RNDV_RAILS=8
+[username@hnode001 ~]$ export UCX_MAX_EAGER_RAILS=2
+[username@hnode001 ~]$ mpirun ./a.out
+```
 
 Additionally, a wrapper script like the following can be used to assign a unique NDR HCA to each process.
 
@@ -93,7 +105,7 @@ do
     fi
 done
 
-$*
+exec "$@"
 ```
 
 ```
@@ -114,9 +126,15 @@ do
     fi
 done
 
-$*
+exec "$@"
 ```
-
+  
 ```
 mpiexec.hydra -np $NP ./wrap.sh ./a.out
 ```
+
+!!!warn
+    Please specify the number of MPI processes by specifying `mpiprocs`(ppn) option of `qsub` command.
+  
+!!!info
+    `mlx5_ibn$i` is the name of NDR HCA.
