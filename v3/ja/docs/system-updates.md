@@ -15,7 +15,6 @@
 
 | Add / Update / Delete | Software | Version | Previous version |
 |:--|:--|:--|:--|
-| Update | NVIDIA Device Driver | 580.82.07 | 570.124.06 |
 | Update | DDN Lustre | 2.14.0_ddn230 | 2.14.0_ddn196 |
 
 計算ノードにおいて同時にオープン可能なファイル数の上限値を以下のように増加しました。
