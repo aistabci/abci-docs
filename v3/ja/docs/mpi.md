@@ -66,19 +66,19 @@ NVIDIA HPC-Xについて、より詳しい情報は[公式ドキュメント](ht
 
 ## InfiniBand NDRの使用個数の変更方法
 
-計算ノード(H)にはInfiniBand NDR HCAが8つ搭載されております。  
-`hpcx`/`intel-mpi`モジュールにおいてはデフォルトでは以下の設定となっております。  
+計算ノード(H)にはInfiniBand NDR HCAが8つ搭載されています。  
+ABCIが提供する`hpcx`モジュールおよび`intel-mpi`モジュールでは、デフォルトでマルチレールのレーン数に次の値が設定されています。  
   
 * Rendezvousプロトコル(大容量メッセージ)の使用レーンは4
 * Eagerプロトコル(小容量メッセージ)の使用レーンは1
   
-使用レーン数はそれぞれ`UCX_MAX_RNDV_RAILS`/`UCX_MAX_EAGER_RAILS`環境変数で変更することが可能です。
+使用レーン数はそれぞれ`UCX_MAX_RNDV_RAILS`/`UCX_MAX_EAGER_RAILS`環境変数で変更することができます。
 
 !!!info
-    上記環境変数に設定できる値は1-8となっております。
+    `UCX_MAX_RNDV_RAILS`、`UCX_MAX_EAGER_RAILS`環境変数に設定できる値は1-8です。
 
-インタラクティブジョブによる変更方法例は以下です。  
-使用レーン数を倍にしています。
+以下はインタラクティブジョブによる変更方法例です。  
+この例では、使用レーン数をデフォルト値の倍に設定しています。  
 
 ```
 [username@login1 ~]$ qsub -I -P group -q rt_HF -l select=2:mpiprocs=8 -l walltime=1:0:0

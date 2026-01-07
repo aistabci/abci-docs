@@ -68,7 +68,7 @@ For more information about NVIDIA HPC-X, please refer to [the official documenta
 ## How to change the number of InfiniBand NDR
 
 There are eight InfiniBand NDR HCA on compute nodes(H).  
-The following configuration is used by default on `hpcx`/`intel-mpi` modules.
+On ABCI, The following configuration is used by default on `hpcx`/`intel-mpi` modules.
 
 * The number of lanes is four for Rendezvous protocol(large message size)
 * The number of lanes is one for Eager protocol(small message size)
