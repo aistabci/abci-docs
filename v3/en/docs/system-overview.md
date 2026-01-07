@@ -119,9 +119,9 @@ Storage Service Specifications:
     * The /home file system is shared by all users, and its total number of inodes is about 25 billion. There is no limit on the number of inodes in the /home directory for individual users.
     * The capacity of /groups can be increased up to 1,000TB via the user portal[^footnote01]. 
     * If you need more than 1,000TB of capacity or want to increase the inode limit in /groups, you need to apply via email. For application procedures, please refer to [Request for Increasing Group Area Quota](requests/group-area-quota-increase.md). 
-    * The /groups-2.0 service will be discontinued at the end of September 2025. For more details, please refer to [Future Storage Service Announcements](https://abci.ai/news/2024/09/04/en_storage_after_nov2024.html).
+    * The /groups-2.0 service was discontinued at the end of September 2025. For more details, please refer to [Future Storage Service Announcements](https://abci.ai/news/2024/09/04/en_storage_after_nov2024.html).
 
-[^footnote01]: The user portal is scheduled to be available from March 18, 2025.
+[^footnote01]: The user portal has been available since March 18, 2025.
 
 ## Software
 
