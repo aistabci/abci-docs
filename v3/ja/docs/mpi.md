@@ -64,17 +64,29 @@ NVIDIA HPC-Xについて、より詳しい情報は[公式ドキュメント](ht
 |:--|:--|
 | 2021.13 | Yes |
 
-## Infiniband NDRを複数使用する方法
+## InfiniBand NDRの使用個数の変更方法
 
-`hpcx`モジュール及び`intel-mpi`モジュールではデフォルトでは`UCX_MAX_RNDV_RAILS=4`/`UCX_MAX_EAGER_RAILS=1`を設定しておりますが、以下のようにしてマルチレールに使用するレーン数を変更することができます。
-
-```bash
-export UCX_MAX_RNDV_RAILS=8
-export UCX_MAX_EAGER_RAILS=8
-```
+計算ノード(H)にはInfiniBand NDR HCAが8つ搭載されております。  
+`hpcx`/`intel-mpi`モジュールにおいてはデフォルトでは以下の設定となっております。  
+  
+* Rendezvousプロトコル(大容量メッセージ)の使用レーンは4
+* Eagerプロトコル(小容量メッセージ)の使用レーンは1
+  
+使用レーン数はそれぞれ`UCX_MAX_RNDV_RAILS`/`UCX_MAX_EAGER_RAILS`環境変数で変更することが可能です。
 
 !!!info
-    上記の`8`はNDR HCAの数ですが、プログラムに応じて数値を1から8の間に変更して下さい。
+    上記環境変数に設定できる値は1-8となっております。
+
+インタラクティブジョブによる変更方法例は以下です。  
+使用レーン数を倍にしています。
+
+```console
+[username@login1 ~]$ qsub -I -P group -q rt_HF -l select=2:mpiprocs=8 -l walltime=1:0:0
+[username@hnode001 ~]$ module load hpcx/2.20
+[username@hnode001 ~]$ export UCX_MAX_RNDV_RAILS=8
+[username@hnode001 ~]$ export UCX_MAX_EAGER_RAILS=2
+[username@hnode001 ~]$ mpirun ./a.out
+```
 
 また、以下のようなラッパースクリプトを用いることで各プロセスにユニークなNDR HCAを割り当てることができます。
 
@@ -92,11 +104,11 @@ do
     fi
 done
 
-$*
+exec "$@"
 ```
-
+  
 ```bash
-mpirun -np $NP ./wrap.sh ./a.out
+mpirun ./wrap.sh ./a.out
 ```
 
 * wrap.sh(intel-mpi)
@@ -113,9 +125,15 @@ do
     fi
 done
 
-$*
+exec "$@"
+```
+  
+```bash
+mpiexec.hydra ./wrap.sh ./a.out
 ```
 
-```bash
-mpiexec.hydra -np $NP ./wrap.sh ./a.out
-```
+!!!warn
+    ジョブ投入時に`qsub`コマンドに`mpiprocs`(ppn)を指定してMPIプロセス数を指定して下さい。
+  
+!!!info
+    上記の`mlx5_ibn$i`がNDR HCAのデバイス名です。
