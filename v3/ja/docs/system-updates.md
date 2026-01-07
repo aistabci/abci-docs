@@ -45,6 +45,14 @@ module load cuda/12.6/12.6.1
 ./a.out
 ```
 
+`hpcx`モジュール及び`intel-mpi`モジュールのデフォルトのマルチレール設定を変更いたしました。
+
+|Parameter | Previous value | Current value |
+|:--|:--|:--|
+| UCX_MAX_RNDV_RAILS | none | 4 |
+| UCX_MAX_EAGER_RAILS | none | 1 |
+| UCX_NET_DEVICES | none | NDR IB devices (8 ports) only |
+
 ## 2025-12-15 {#2025-12-15}
 
 以下のソフトウェアをインストールしました。
