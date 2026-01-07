@@ -67,7 +67,7 @@ For more information about NVIDIA HPC-X, please refer to [the official documenta
 
 ## How to change the number of InfiniBand NDR
 
-There are eight InfiniBand NDR HCA on compute nodes(H).  
+There are eight InfiniBand NDR HCA on compute nodes(H).
 On ABCI, The following configuration is used by default on `hpcx`/`intel-mpi` modules.
 
 * The number of lanes is four for Rendezvous protocol(large message size)
@@ -78,7 +78,7 @@ The number of lanes can be changed by setting `UCX_MAX_RNDV_RAILS`/`UCX_MAX_EAGE
 !!!info
     The range of the above environment variables is 1-8.
 
-The following is an example usage of interactive job.  
+The following is an example usage of interactive job.
 In this example, the number of lanes used is doubled.
 
 ```
@@ -128,13 +128,13 @@ done
 
 exec "$@"
 ```
-  
+
 ```
 mpiexec.hydra -np $NP ./wrap.sh ./a.out
 ```
 
 !!!warn
     Please specify the number of MPI processes by specifying `mpiprocs`(ppn) option of `qsub` command.
-  
+
 !!!info
     `mlx5_ibn$i` is the name of NDR HCA.
