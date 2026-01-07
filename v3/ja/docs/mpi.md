@@ -80,7 +80,7 @@ NVIDIA HPC-Xについて、より詳しい情報は[公式ドキュメント](ht
 インタラクティブジョブによる変更方法例は以下です。  
 使用レーン数を倍にしています。
 
-```console
+```
 [username@login1 ~]$ qsub -I -P group -q rt_HF -l select=2:mpiprocs=8 -l walltime=1:0:0
 [username@hnode001 ~]$ module load hpcx/2.20
 [username@hnode001 ~]$ export UCX_MAX_RNDV_RAILS=8
@@ -92,7 +92,7 @@ NVIDIA HPC-Xについて、より詳しい情報は[公式ドキュメント](ht
 
 * wrap.sh(hpcx)
 
-```bash
+```
 #!/bin/sh
 
 NNDRS=8
@@ -107,13 +107,13 @@ done
 exec "$@"
 ```
   
-```bash
+```
 mpirun ./wrap.sh ./a.out
 ```
 
 * wrap.sh(intel-mpi)
 
-```bash
+```
 #!/bin/sh
 
 NNDRS=8
@@ -128,7 +128,7 @@ done
 exec "$@"
 ```
   
-```bash
+```
 mpiexec.hydra ./wrap.sh ./a.out
 ```
 

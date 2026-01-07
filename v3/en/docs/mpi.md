@@ -69,7 +69,7 @@ For more information about NVIDIA HPC-X, please refer to [the official documenta
 
 By default, the `hpcx` and `intel-mpi` modules set `UCX_MAX_RNDV_RAILS=4` and `UCX_MAX_EAGER_RAILS=1`. The number of lanes used for multi-rail can be modified as shown below.
 
-```bash
+```
 export UCX_MAX_RNDV_RAILS=8
 export UCX_MAX_EAGER_RAILS=8
 ```
@@ -81,7 +81,7 @@ Additionally, a wrapper script like the following can be used to assign a unique
 
 * wrap.sh(hpcx)
 
-```bash
+```
 #!/bin/sh
 
 NNDRS=8
@@ -96,13 +96,13 @@ done
 $*
 ```
 
-```bash
+```
 mpirun -np $NP ./wrap.sh ./a.out
 ```
 
 * wrap.sh(intel-mpi)
 
-```bash
+```
 #!/bin/sh
 
 NNDRS=8
@@ -117,6 +117,6 @@ done
 $*
 ```
 
-```bash
+```
 mpiexec.hydra -np $NP ./wrap.sh ./a.out
 ```
