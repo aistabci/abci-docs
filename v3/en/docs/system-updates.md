@@ -1,5 +1,14 @@
 # System Updates
 
+## 2026-1-19 {#2026-01-19}
+
+We changed the limits on the number of jobs executed per resource type as follows.
+
+| Resource type name | Previous value | Current value |
+|:--|:--|:--|
+| rt_HG | 240 | 64 |
+| rt_HC | 60  | 16 |
+
 ## 2025-12-26 {#2025-12-26}
 
 A CSAD deactivation feature has been added to the cloud storage service. Accordingly, instructions for configuring bucket ACLs using a configuration file have been added.

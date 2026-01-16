@@ -103,8 +103,8 @@ Jobs submitted to reserved nodes in the Reserved service are not included in the
 | Resource type name | Maximum number of running jobs at the same time per system |
 |:--|:--|
 | rt_HF | 736 |
-| rt_HG | 240 |
-| rt_HC | 60 |
+| rt_HG | 64 |
+| rt_HC | 16 |
 
 ## Job Execution Options
 
