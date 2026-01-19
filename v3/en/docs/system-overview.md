@@ -130,7 +130,7 @@ The software available on the ABCI system is shown below.
 | | CUDA Toolkit | 11.8.0<br>12.0.1<br>12.1.1<br>12.2.2<br>12.3.2<br>12.4.1<br>12.5.1<br>12.6.1<br>12.8.1<br>12.9.1<br>13.0.1 | 11.8.0<br>12.0.1<br>12.1.1<br>12.2.2<br>12.3.2<br>12.4.1<br>12.5.1<br>12.6.1<br>12.8.1<br>12.9.1<br>13.0.1 |
 | | Intel oneAPI<br>(compilers and libraries) | 2024.2.1 | 2024.2.1 |
 | | GCC | 11.5.0<br>13.2.0 | 11.5.0<br>13.2.0 |
-| | Python | 3.9.23<br>3.12.9<br>3.13.2 | 3.9.23<br>3.12.9<br>3.13.2 |
+| | Python | 3.9.25<br>3.12.9<br>3.13.2 | 3.9.23<br>3.12.9<br>3.13.2 |
 | | Ruby | 3.0.7 | 3.0.7 |
 | | R | 4.5.1 | 4.5.1 |
 | | Java | 17.0.17 | 17.0.16 |
