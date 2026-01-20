@@ -1,8 +1,8 @@
 # System Updates
 
-## 2026-1-19 {#2026-01-19}
+## 2026-01-20 {#2026-01-20}
 
-We changed the limits on the number of jobs executed per resource type as follows.
+We changed the limits on the number of running jobs at the same time per system for each resource type as follows.
 
 | Resource type name | Previous value | Current value |
 |:--|:--|:--|
