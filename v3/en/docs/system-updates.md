@@ -1,5 +1,14 @@
 # System Updates
 
+## 2026-01-20 {#2026-01-20}
+
+We changed [the limits on the number of running jobs at the same time per system for each resource type](job-execution.md#limitation-on-the-number-of-job-submissions-and-executions) as follows.
+
+| Resource type name | Previous value | Current value |
+|:--|:--|:--|
+| rt_HG | 240 | 64 |
+| rt_HC | 60  | 16 |
+
 ## 2025-12-26 {#2025-12-26}
 
 A CSAD deactivation feature has been added to the cloud storage service. Accordingly, instructions for configuring bucket ACLs using a configuration file have been added.
