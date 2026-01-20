@@ -2,7 +2,7 @@
 
 ## 2026-01-20 {#2026-01-20}
 
-We changed the limits on the number of running jobs at the same time per system for each resource type as follows.
+We changed [the limits on the number of running jobs at the same time per system for each resource type](job-execution.md#limitation-on-the-number-of-job-submissions-and-executions) as follows.
 
 | Resource type name | Previous value | Current value |
 |:--|:--|:--|
