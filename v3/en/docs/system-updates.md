@@ -20,6 +20,19 @@ A CSAD deactivation feature has been added to the cloud storage service. Accordi
 * Added a note to the notes section of "ABCI System Overview > Storage System > Interactive Nodes."
 * Added a new section, ["Tips > Using /local for Interactive Nodes."](tips/interactive_node_local_fs.md)
 
+We updated the following softwares.
+
+| Add / Update / Delete | Software | Version | Previous version |
+|:--|:--|:--|:--|
+| Update | gcc(Compute Node)                      | 11.5.0         | 11.4.1         |
+| Update | python(Interactive Node, Compute Node) | 3.9.25, 3.9.23 | 3.9.21, 3.9.21 |
+| Update | ruby(Compute Node)                     | 3.0.7          | 3.0.4          |
+| Update | java(Interactive Node)                 | 17.0.17        | 17.0.16        |
+| Update | Go(Interactive Node, Compute Node)     | 1.25.3, 1.25.3 | 1.24.6, 1.24.4 |
+| Update | DDN Lustre                             | 2.14.0_ddn230  | 2.14.0_ddn196  |
+| Update | SingularityCE(Interactive Node)        | 4.3.5          | 4.1.5          |
+| Update | SingularityPRO                         | 4.1.12         | 4.1.7          |
+
 We increased the maximum number of files that can be opened simultaneously in the compute nodes as follows.
 
 | Limit type | Previous value | Current value |
@@ -84,7 +97,7 @@ We installed the following software.
 
 | Add / Update / Delete | Software | Version | Previous version |
 |:--|:--|:--|:--|
-| Add | singularity-ce | 4.3.3 | |
+| Add | SingularityCE | 4.3.3 | |
 
 ## 2025-10-29 {#2025-10-29}
 

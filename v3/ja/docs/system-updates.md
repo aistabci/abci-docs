@@ -20,6 +20,19 @@
 * ABCIシステムの概要 > ストレージシステム > インタラクティブノード」の備考欄に追記。
 * [「Tips > インタラクティブノードの/localの利用」](tips/interactive_node_local_fs.md)を新設。
 
+以下のソフトウェアを更新しました。
+
+| Add / Update / Delete | Software | Version | Previous version |
+|:--|:--|:--|:--|
+| Update | gcc(計算ノード)                            | 11.5.0         | 11.4.1         |
+| Update | python(インタラクティブノード, 計算ノード) | 3.9.25, 3.9.23 | 3.9.21, 3.9.21 |
+| Update | ruby(計算ノード)                           | 3.0.7          | 3.0.4          |
+| Update | java(インタラクティブノード)               | 17.0.17        | 17.0.16        |
+| Update | Go(インタラクティブノード, 計算ノード)     | 1.25.3, 1.25.3 | 1.24.6, 1.24.4 |
+| Update | DDN Lustre                                 | 2.14.0_ddn230  | 2.14.0_ddn196  |
+| Update | SingularityCE(インタラクティブノード)      | 4.3.5          | 4.1.5          |
+| Update | SingularityPRO                             | 4.1.12         | 4.1.7          |
+
 計算ノードにおいて同時にオープン可能なファイル数の上限値を以下のように増加しました。
 
 | リミット種別 | 更新前 | 更新後 |
