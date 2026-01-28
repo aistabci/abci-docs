@@ -106,6 +106,23 @@ Jobs submitted to reserved nodes in the Reserved service are not included in the
 | rt_HG | 64 |
 | rt_HC | 16 |
 
+### Execution Priority {#execution-priority}
+
+Each job service allows you to specify a priority when running a job, as follows:
+
+| Service | Description | POSIX priority | POSIX priority coefficient |
+|:--|:--|:--|:--|
+| On-demand | 1 | default (unchangable) | 1.0 |
+| Spot      | 0 | default               | 1.0 |
+|           | 1 | high priority         | 1.5 |
+| Reserved  | 0 | default (unchangable) | NA  |
+
+In On-demand service, the priority is fixed at `1` and cannot be changed.
+
+In Spot service, you can specify `1` to your job, so as to execute it in higher priority to other jobs. However, you will be charged according to the POSIX priority coefficient.
+
+In Reserved service, the priority is fixed at `0` and cannot be changed for both interactive and batch jobs.
+
 ## Job Execution Options
 
 Use `qsub` command to run interactive jobs and batch jobs.
