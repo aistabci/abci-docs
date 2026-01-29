@@ -137,6 +137,7 @@ The major options of the `qsub` command are follows.
 | -l walltime=[*HH:MM:*]*SS* | Specify elapsed time by [*HH:MM:*]*SS*. When execution time of job exceed specified time, job is rejected. |
 | -N name | Specify the job name with *name*. The default is the job script name. |
 | -o *stdout_name* | Specify standard output stream of job. The output file will be created after the job completes. |
+| -p *priority* | Specify POSIX priority for Spot service |
 | -e *stderr_name* | Specify standard error stream of job. The output file will be created after the job completes. |
 | -k oe | During execution, the standard output and standard error output are streamed to *JOB_NAME*.o*NUM_JOB_ID*. However, if this option is used, the standard output and standard error output will not be directed to the files specified by -o or -e. |
 | -j oe | Specify standard error stream is merged into standard output stream |
