@@ -110,16 +110,16 @@ Jobs submitted to reserved nodes in the Reserved service are not included in the
 
 Each job service allows you to specify a priority when running a job, as follows:
 
-| Service | Description | POSIX priority | POSIX priority coefficient |
+| Service | Description | Priority | Service charge coefficient |
 |:--|:--|:--|:--|
 | On-demand | 1 | default (unchangable) | 1.0 |
 | Spot      | 0 | default               | 1.0 |
 |           | 1 | high priority         | 1.5 |
-| Reserved  | 0 | default (unchangable) | NA  |
+| Reserved  | 0 | default (unchangable) | 1.5 |
 
 In On-demand service, the priority is fixed at `1` and cannot be changed.
 
-In Spot service, you can specify `1` to your job, so as to execute it in higher priority to other jobs. However, you will be charged according to the POSIX priority coefficient.
+In Spot service, you can specify `1` to your job, so as to execute it in higher priority to other jobs. However, you will be charged according to the Service charge coefficient.
 
 In Reserved service, the priority is fixed at `0` and cannot be changed for both interactive and batch jobs.
 
