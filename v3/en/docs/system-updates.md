@@ -1,5 +1,14 @@
 # System Updates
 
+## 2026-01-20 {#2026-01-20}
+
+We changed [the limits on the number of running jobs at the same time per system for each resource type](job-execution.md#limitation-on-the-number-of-job-submissions-and-executions) as follows.
+
+| Resource type name | Previous value | Current value |
+|:--|:--|:--|
+| rt_HG | 240 | 64 |
+| rt_HC | 60  | 16 |
+
 ## 2025-12-26 {#2025-12-26}
 
 A CSAD deactivation feature has been added to the cloud storage service. Accordingly, instructions for configuring bucket ACLs using a configuration file have been added.
@@ -10,6 +19,19 @@ A CSAD deactivation feature has been added to the cloud storage service. Accordi
 
 * Added a note to the notes section of "ABCI System Overview > Storage System > Interactive Nodes."
 * Added a new section, ["Tips > Using /local for Interactive Nodes."](tips/interactive_node_local_fs.md)
+
+We updated the following softwares.
+
+| Add / Update / Delete | Software | Version | Previous version |
+|:--|:--|:--|:--|
+| Update | gcc(Compute Node)                      | 11.5.0         | 11.4.1         |
+| Update | python(Interactive Node, Compute Node) | 3.9.25, 3.9.23 | 3.9.21, 3.9.21 |
+| Update | ruby(Compute Node)                     | 3.0.7          | 3.0.4          |
+| Update | java(Interactive Node)                 | 17.0.17        | 17.0.16        |
+| Update | Go(Interactive Node, Compute Node)     | 1.25.3, 1.25.3 | 1.24.6, 1.24.4 |
+| Update | DDN Lustre                             | 2.14.0_ddn230  | 2.14.0_ddn196  |
+| Update | SingularityCE(Interactive Node)        | 4.3.5          | 4.1.5          |
+| Update | SingularityPRO                         | 4.1.12         | 4.1.7          |
 
 We increased the maximum number of files that can be opened simultaneously in the compute nodes as follows.
 
@@ -45,6 +67,14 @@ module load cuda/12.6/12.6.1
 ./a.out
 ```
 
+We updated the default multi-rail configration of `hpcx` module and `intel-mpi` module.
+
+|Parameter | Previous value | Current value |
+|:--|:--|:--|
+| UCX_MAX_RNDV_RAILS | none | 4 |
+| UCX_MAX_EAGER_RAILS | none | 1 |
+| UCX_NET_DEVICES | none | NDR IB devices (8 ports) only |
+
 ## 2025-12-15 {#2025-12-15}
 
 We installed the following software.
@@ -67,7 +97,7 @@ We installed the following software.
 
 | Add / Update / Delete | Software | Version | Previous version |
 |:--|:--|:--|:--|
-| Add | singularity-ce | 4.3.3 | |
+| Add | SingularityCE | 4.3.3 | |
 
 ## 2025-10-29 {#2025-10-29}
 

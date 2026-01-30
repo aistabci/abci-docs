@@ -85,7 +85,7 @@ In addition, when executing a job that uses multiple nodes in On-demand or Spot 
 !!!note
     There is no limit on the elapsed time in the Reserved service, but the job will be forcibly terminated when the reservation ends. See [Advance Reservation](#advance-reservation) for more information about restrictions on Reserved Services.
 
-### Limitation on the number of job submissions and executions
+### Limitation on the number of job submissions and executions {#limitation-on-the-number-of-job-submissions-and-executions}
 
 The job limit of submission and execution for the job service are as follows. 
 The number of the submitted jobs to the reserved node is included in the number of unfinished/running jobs as well as other On-demand/Spot job and are affected by the limit.
@@ -103,8 +103,8 @@ Jobs submitted to reserved nodes in the Reserved service are not included in the
 | Resource type name | Maximum number of running jobs at the same time per system |
 |:--|:--|
 | rt_HF | 736 |
-| rt_HG | 240 |
-| rt_HC | 60 |
+| rt_HG | 64 |
+| rt_HC | 16 |
 
 ## Job Execution Options
 

@@ -164,4 +164,4 @@ Currently, following modules are available.
 |                 | rclone          | 1.71.0   |
 |                 | s3fs-fuse       | 1.95     |
 |                 | singularity-ce  | 4.3.3    |
-|                 | singularitypro  | 4.1.7    |
+|                 | singularitypro  | 4.1.12   |

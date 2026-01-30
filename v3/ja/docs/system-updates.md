@@ -1,5 +1,14 @@
 # システム更新履歴
 
+## 2026-01-20 {#2026-01-20}
+
+資源タイプ`rt_HG`、`rt_HC`における[システムあたりの同時実行ジョブ数の制限値](job-execution.md#limitation-on-the-number-of-job-submissions-and-executions)を以下のとおり変更しました。
+
+| 資源タイプ | 更新前 | 更新後 |
+|:--|:--|:--|
+| rt_HG | 240 | 64 |
+| rt_HC | 60  | 16 |
+
 ## 2025-12-26 {#2025-12-26}
 
 クラウドストレージに、CSAD無効化機能が追加されました。これに伴い、設定ファイルを用いたバケットACLの設定方法を追記しました。
@@ -10,6 +19,19 @@
 
 * ABCIシステムの概要 > ストレージシステム > インタラクティブノード」の備考欄に追記。
 * [「Tips > インタラクティブノードの/localの利用」](tips/interactive_node_local_fs.md)を新設。
+
+以下のソフトウェアを更新しました。
+
+| Add / Update / Delete | Software | Version | Previous version |
+|:--|:--|:--|:--|
+| Update | gcc(計算ノード)                            | 11.5.0         | 11.4.1         |
+| Update | python(インタラクティブノード, 計算ノード) | 3.9.25, 3.9.23 | 3.9.21, 3.9.21 |
+| Update | ruby(計算ノード)                           | 3.0.7          | 3.0.4          |
+| Update | java(インタラクティブノード)               | 17.0.17        | 17.0.16        |
+| Update | Go(インタラクティブノード, 計算ノード)     | 1.25.3, 1.25.3 | 1.24.6, 1.24.4 |
+| Update | DDN Lustre                                 | 2.14.0_ddn230  | 2.14.0_ddn196  |
+| Update | SingularityCE(インタラクティブノード)      | 4.3.5          | 4.1.5          |
+| Update | SingularityPRO                             | 4.1.12         | 4.1.7          |
 
 計算ノードにおいて同時にオープン可能なファイル数の上限値を以下のように増加しました。
 
@@ -44,6 +66,14 @@ source /etc/profile.d/modules.sh
 module load cuda/12.6/12.6.1
 ./a.out
 ```
+
+`hpcx`モジュール及び`intel-mpi`モジュールのデフォルトのマルチレール設定を変更いたしました。
+
+|Parameter | Previous value | Current value |
+|:--|:--|:--|
+| UCX_MAX_RNDV_RAILS | none | 4 |
+| UCX_MAX_EAGER_RAILS | none | 1 |
+| UCX_NET_DEVICES | none | NDR IB devices (8 ports) only |
 
 ## 2025-12-15 {#2025-12-15}
 
