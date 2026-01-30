@@ -106,6 +106,23 @@ Jobs submitted to reserved nodes in the Reserved service are not included in the
 | rt_HG | 64 |
 | rt_HC | 16 |
 
+### Execution Priority {#execution-priority}
+
+Each job service allows you to specify a priority when running a job, as follows:
+
+| Service | Description | Priority | Service charge coefficient |
+|:--|:--|:--|:--|
+| On-demand | 1 | default (unchangable) | 1.0 |
+| Spot      | 0 | default               | 1.0 |
+|           | 1 | high priority         | 1.5 |
+| Reserved  | 0 | default (unchangable) | 1.5 |
+
+In On-demand service, the priority is fixed at `1` and cannot be changed.
+
+In Spot service, you can specify `1` to your job, so as to execute it in higher priority to other jobs. However, you will be charged according to the Service charge coefficient.
+
+In Reserved service, the priority is fixed at `0` and cannot be changed for both interactive and batch jobs.
+
 ## Job Execution Options
 
 Use `qsub` command to run interactive jobs and batch jobs.
@@ -120,6 +137,7 @@ The major options of the `qsub` command are follows.
 | -l walltime=[*HH:MM:*]*SS* | Specify elapsed time by [*HH:MM:*]*SS*. When execution time of job exceed specified time, job is rejected. |
 | -N name | Specify the job name with *name*. The default is the job script name. |
 | -o *stdout_name* | Specify standard output stream of job. The output file will be created after the job completes. |
+| -p *priority* | Specify POSIX priority for Spot service |
 | -e *stderr_name* | Specify standard error stream of job. The output file will be created after the job completes. |
 | -k oe | During execution, the standard output and standard error output are streamed to *JOB_NAME*.o*NUM_JOB_ID*. However, if this option is used, the standard output and standard error output will not be directed to the files specified by -o or -e. |
 | -j oe | Specify standard error stream is merged into standard output stream |
