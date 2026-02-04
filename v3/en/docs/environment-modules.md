@@ -163,5 +163,5 @@ Currently, following modules are available.
 | utils           | gdrcopy         | 2.4.1    |
 |                 | rclone          | 1.71.0   |
 |                 | s3fs-fuse       | 1.95     |
-|                 | singularity-ce  | 4.3.3    |
+|                 | singularity-ce  | 4.3.3, 4.3.6    |
 |                 | singularitypro  | 4.1.12   |

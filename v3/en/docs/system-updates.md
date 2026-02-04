@@ -1,5 +1,13 @@
 # System Updates
 
+## 2026-02-04 {#2026-02-04}
+
+We installed the following software.
+
+| Add / Update / Delete | Software | Version | Previous version |
+|:--|:--|:--|:--|
+| Add | SingularityCE | 4.3.6 | |
+
 ## 2026-01-20 {#2026-01-20}
 
 We changed [the limits on the number of running jobs at the same time per system for each resource type](job-execution.md#limitation-on-the-number-of-job-submissions-and-executions) as follows.
