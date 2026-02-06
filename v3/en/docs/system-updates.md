@@ -1,5 +1,9 @@
 # System Updates
 
+## 2026-02-06 {#2026-02-06}
+
+We have added the `nodestatus` command to check node usage.
+
 ## 2026-01-20 {#2026-01-20}
 
 We changed [the limits on the number of running jobs at the same time per system for each resource type](job-execution.md#limitation-on-the-number-of-job-submissions-and-executions) as follows.

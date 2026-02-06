@@ -411,6 +411,31 @@ Job id                 Name             User              Time Use S Queue
 - 標準エラー出力ファイル名：run.sh.e12345
 
 
+## 計算ノードの利用状態の確認 {#check-node-status}
+
+計算ノードの利用状況については`nodestatus`コマンドを利用します。
+
+例)
+```
+[username01@login1 ~]$ nodestatus
+Node status                          Number of unit
+---------------------------------------------------
+Vacant Nodes                         : 0
+Partially Occupied Nodes             : 2
+Fully Occupied or Unavailable Nodes  : 764
+---------------------------------------------------
+Data Timestamp : 2026-02-05 17:30:01
+```
+
+| 項目 | 説明 |
+| -- | -- |
+| Vacant Nodes | 利用可能な計算ノード数 |
+| Partially Occupied Nodes | rt_HC,rt_HGで部分的に利用可能な計算ノード数 |
+| Fully Occupied or Unavailable Nodes | 利用中または利用不可のため現在ジョブ投入ができない計算ノード数 |
+
+こちらのコマンドにて表示されるデータは定期的に取得したデータを利用しています。
+リアルタイムでの状態ではありません。
+
 ## 環境変数 {#environment-variables}
 
 ジョブ実行中に、ジョブスクリプトもしくはコマンドラインで利用できる環境変数は以下の通りです。

@@ -1,5 +1,9 @@
 # システム更新履歴
 
+## 2026-02-06 {#2026-02-06}
+
+ノードの利用状況について確認するコマンド`nodestatus`が追加しました。
+
 ## 2026-01-20 {#2026-01-20}
 
 資源タイプ`rt_HG`、`rt_HC`における[システムあたりの同時実行ジョブ数の制限値](job-execution.md#limitation-on-the-number-of-job-submissions-and-executions)を以下のとおり変更しました。
