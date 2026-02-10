@@ -1,6 +1,6 @@
 # System Updates
 
-## 2026-02-04 {#2026-02-04}
+## 2026-02-10 {#2026-02-10}
 
 We installed the following software.
 
