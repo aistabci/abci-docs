@@ -1,5 +1,13 @@
 # システム更新履歴
 
+## 2026-02-10 {#2026-02-10}
+
+以下のソフトウェアをインストールしました。
+
+| Add / Update / Delete | Software | Version | Previous version |
+|:--|:--|:--|:--|
+| Add | singularity-ce | 4.3.6 | |
+
 ## 2026-01-20 {#2026-01-20}
 
 資源タイプ`rt_HG`、`rt_HC`における[システムあたりの同時実行ジョブ数の制限値](job-execution.md#limitation-on-the-number-of-job-submissions-and-executions)を以下のとおり変更しました。
