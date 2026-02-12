@@ -3,7 +3,7 @@
 ## 概要 {#overview}
 
 [Open OnDemand (OOD)](https://openondemand.org/)はWebブラウザからABCIを使用するためのポータルサイトです。
-
+現在のOpen OnDemandのバージョンは4.0.8です。
 以下の機能がWebブラウザ上で利用できるようになり、より簡単にABCIを使えるようになります。
 
 - インタラクティブノードでのコンソール操作
