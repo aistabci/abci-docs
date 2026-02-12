@@ -8,6 +8,14 @@ The version of Open OnDemand has been updated to 4.0.8.
 |:--|:--|:--|:--|
 | Update | Open OnDemand                           | 3.1.10         | 4.0.8         |
 
+## 2026-02-10 {#2026-02-10}
+
+We installed the following software.
+
+| Add / Update / Delete | Software | Version | Previous version |
+|:--|:--|:--|:--|
+| Add | SingularityCE | 4.3.6 | |
+
 ## 2026-01-20 {#2026-01-20}
 
 We changed [the limits on the number of running jobs at the same time per system for each resource type](job-execution.md#limitation-on-the-number-of-job-submissions-and-executions) as follows.
