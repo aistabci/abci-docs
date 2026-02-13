@@ -411,7 +411,7 @@ Job id                 Name             User              Time Use S Queue
 - 標準エラー出力ファイル名：run.sh.e12345
 
 
-## 計算ノードの利用状態の確認 {#check-node-status}
+## 計算ノードの利用状況の確認 {#check-the-usage-status-of-compute-nodes}
 
 計算ノードの利用状況については`nodestatus`コマンドを利用します。
 
@@ -433,7 +433,7 @@ Data Timestamp : 2026-02-05 17:30:01
 | Partially Occupied Nodes | rt_HC,rt_HGで部分的に利用可能な計算ノード数 |
 | Fully Occupied or Unavailable Nodes | 利用中または利用不可のため現在ジョブ投入ができない計算ノード数 |
 
-こちらのコマンドにて表示されるデータは定期的に取得したデータを利用しています。
+`nodestatus`コマンドにて表示されるデータは15分毎に取得したデータを利用しています。
 リアルタイムでの状態ではありません。
 
 ## 環境変数 {#environment-variables}
@@ -449,7 +449,6 @@ Data Timestamp : 2026-02-05 17:30:01
 | PBS\_LOCALDIR | ジョブに割り当てられたローカルストレージへのパス |
 | PBS\_O\_WORKDIR | ジョブ投入時の作業ディレクトリへのパス |
 | PBS\_ARRAY\_INDEX | アレイジョブのインデックス番号 |
-
 !!! warning
     上記の環境変数については、ジョブスケジューラで予約された変数であり、ジョブスケジューラの動作に影響を与える可能性があるためジョブの中で変更しないようにしてください。
 

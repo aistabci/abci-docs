@@ -1,8 +1,8 @@
 # System Updates
 
-## 2026-02-06 {#2026-02-06}
+## 2026-02-09 {#2026-02-09}
 
-We have added the `nodestatus` command to check node usage.
+We installed the `nodestatus` command. This allows to check node usage.
 
 ## 2026-01-20 {#2026-01-20}
 

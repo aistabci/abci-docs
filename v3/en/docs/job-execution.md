@@ -425,7 +425,7 @@ Data Timestamp : 2026-02-05 17:30:01
 | Partially Occupied Nodes | Number of compute nodes partially available in rt_HC and rt_HG |
 | Fully Occupied or Unavailable Nodes | Number of compute nodes currently unavailable for job submission due to being in use or unavailable |
 
-The data displayed by this command utilizes periodically acquired data.
+The data displayed in the `nodestatus` is based on data acquired every 15 minutes.
 It does not reflect real-time status.
 
 ## Environment Variables
