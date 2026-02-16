@@ -1,5 +1,13 @@
 # System Updates
 
+## 2026-02-17 {#2026-02-17}
+
+We installed the following softwares.
+
+| Add / Update / Delete | Software | Version | Previous version |
+|:--|:--|:--|:--|
+| Add | cudnn | 9.18.1 (for CUDA 12, 13) | |
+
 ## 2026-02-10 {#2026-02-10}
 
 We installed the following software.
