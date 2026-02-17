@@ -2,7 +2,7 @@
 
 ## 2026-02-13 {#2026-02-13}
 
-We installed the `nodestatus` command. This allows to check node usage.
+We installed the `nodestatus` command. This allows you to check the availability status of compute nodes (number of available nodes).
 
 ## 2026-02-10 {#2026-02-10}
 
