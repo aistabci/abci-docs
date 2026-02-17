@@ -431,7 +431,7 @@ Job id                 Name             User              Time Use S Queue
 
 ## 計算ノードの利用状況の確認 {#check-the-usage-status-of-compute-nodes}
 
-計算ノードの空き状況(利用可能ノード数)については`nodestatus`コマンドを利用します。
+計算ノードの空き状況(利用可能ノード数)については`nodestatus`コマンドを利用することで確認できます。
 オプションはなく`nodestatus`コマンドを実行のみとなります。
 
 ```
@@ -451,6 +451,7 @@ Data Timestamp : 2026-02-05 17:30:01
 ```
 
 コマンド出力項目については次の通りです。
+
 | 項目 | 説明 |
 | -- | -- |
 | Vacant Nodes | 計算ノードが空き状態であり利用可能な計算ノード数 |

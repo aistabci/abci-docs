@@ -443,6 +443,7 @@ Data Timestamp : 2026-02-05 17:30:01
 ```
 
 The command output items are as follows.
+
 | Item | Description |
 | -- | -- |
 | Vacant Nodes | Number of available compute nodes |
