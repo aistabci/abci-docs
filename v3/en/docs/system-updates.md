@@ -2,7 +2,7 @@
 
 ## 2026-02-17 {#2026-02-17}
 
-We installed the following softwares.
+We installed the following software.
 
 | Add / Update / Delete | Software | Version | Previous version |
 |:--|:--|:--|:--|
