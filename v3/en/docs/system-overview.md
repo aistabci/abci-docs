@@ -141,7 +141,7 @@ The software available on the ABCI system is shown below.
 | File System | DDN Lustre | 2.14.0_ddn230 | 2.14.0_ddn230 |
 | | BeeOND | - | 7.4.5 |
 | Object Storage | s3cmd | 2.4.0 | 2.4.0 |
-| Container | SingularityCE | 4.3.3<br>4.3.5 | 4.1.5<br>4.3.3 |
+| Container | SingularityCE | 4.3.3<br>4.3.5<br>4.3.6 | 4.1.5<br>4.3.3<br>4.3.6 |
 | | SingularityPRO | 4.1.12 | 4.1.12 |
 | MPI | Intel MPI | 2021.13 | 2021.13 |
 | | hpcx | 2.20 | 2.20 |
