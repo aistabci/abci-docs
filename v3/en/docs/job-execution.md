@@ -422,6 +422,36 @@ Additionally, the output file will be created after the job completes.
 - *JOB_NAME*.o*NUM_JOB_ID*  ---  Standard output file
 - *JOB_NAME*.e*NUM_JOB_ID*  ---  Standard error output file
 
+## Check the usage status of compute nodes
+To check the usage status of compute nodes (number of available nodes), use the `nodestatus` command.
+There are no options; only the `nodestatus` command can be executed.
+
+```
+$ nodestatus
+```
+
+Example) Command output results
+```
+[username01@login1 ~]$ nodestatus
+Node status                          Number of unit
+---------------------------------------------------
+Vacant Nodes                         : 0
+Partially Occupied Nodes             : 2
+Fully Occupied or Unavailable Nodes  : 764
+---------------------------------------------------
+Data Timestamp : 2026-02-05 17:30:01
+```
+
+The command output items are as follows.
+
+| Item | Description |
+| -- | -- |
+| Vacant Nodes | Number of available compute nodes |
+| Partially Occupied Nodes | Number of compute nodes partially available in rt_HC and rt_HG used for node sharing |
+| Fully Occupied or Unavailable Nodes | Number of compute nodes currently unavailable for job submission due to being in use or unavailable |
+
+The data displayed in the `nodestatus` is based on data acquired every 15 minutes.
+It does not reflect real-time status.
 
 ## Environment Variables
 
