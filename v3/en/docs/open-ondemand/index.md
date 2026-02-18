@@ -13,10 +13,10 @@ The following features is available on the web browser, making it easier to use 
 
 ## Initial password {#initial-password}
 
-When you login to Open OnDemand for the first time, you need initial password for it.
-For your initial password, please contact <abci3-qa@abci.ai> refering to [Contact](../contact.md).
+When you login to Open OnDemand for the first time, you need your initial password for it.
+You can obtain the initial password in [ABCI User Portal](https://portal.v3.abci.ai/).
 
-Please refer to [How to change the initial password](#how-to-change-the-initial-password) for changing initial password.
+Please refer to [ABCI Portal Guide](https://docs.abci.ai/v3/portal/ja/02/#210-ood) for details on obtaining the initial password.
 
 
 ## How to change the initial password {#how-to-change-the-initial-password}

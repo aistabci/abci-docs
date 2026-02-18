@@ -1,5 +1,9 @@
 # System Updates
 
+## 2026-03-06 {#2026-03-06}
+
+Updated the explanation on obtaining [Initial password](open-ondemand/index.md#initial-password) for Open OnDemand.
+
 ## 2026-02-10 {#2026-02-10}
 
 We installed the following software.
