@@ -3,7 +3,7 @@
 ## Overview
 
 [Open OnDemand (OOD)](https://openondemand.org/) is a portal site for using ABCI through a web browser.
-
+Open OnDemand version 4.0.8 is installed on ABCI.
 The following features is available on the web browser, making it easier to use ABCI than ever before:
 
 * Console operations on interactive nodes
