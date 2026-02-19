@@ -6,7 +6,7 @@ The version of Open OnDemand has been updated to 4.0.8.
 
 | Add / Update / Delete | Software | Version | Previous version |
 |:--|:--|:--|:--|
-| Update | Open OnDemand                           | 3.1.10         | 4.0.8         |
+| Update | Open OnDemand                           | 4.0.8         | 3.1.10         |
 
 ## 2026-02-17 {#2026-02-17}
 
