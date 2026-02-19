@@ -16,7 +16,7 @@
 Open OnDemandに初めてログインする場合、Open OnDemand用の初期パスワードが必要です。
 初期パスワードの発行は[利用者ポータル](https://portal.v3.abci.ai/)から行うことができます。
 
-初期パスワード発行の詳細については[ABCI Portal Guide](https://docs.abci.ai/v3/portal/ja/02/#210-ood)を参照してください。
+初期パスワード発行の詳細については[ABCI 3.0 Portal Guide](https://docs.abci.ai/v3/portal/ja/02/#210-ood)を参照してください。
 
 ## 初期パスワード変更方法 {#how-to-change-the-initial-password}
 

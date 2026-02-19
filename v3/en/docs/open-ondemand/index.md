@@ -16,7 +16,7 @@ The following features is available on the web browser, making it easier to use 
 When you login to Open OnDemand for the first time, you need your initial password for it.
 You can obtain the initial password in [ABCI User Portal](https://portal.v3.abci.ai/).
 
-Please refer to [ABCI Portal Guide](https://docs.abci.ai/v3/portal/ja/02/#210-ood) for details on obtaining the initial password.
+Please refer to [ABCI 3.0 Portal Guide](https://docs.abci.ai/v3/portal/ja/02/#210-ood) for details on obtaining the initial password.
 
 
 ## How to change the initial password {#how-to-change-the-initial-password}

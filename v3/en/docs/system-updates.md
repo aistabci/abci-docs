@@ -1,6 +1,6 @@
 # System Updates
 
-## 2026-03-06 {#2026-03-06}
+## 2026-03-05 {#2026-03-05}
 
 Updated the explanation on obtaining [Initial password](open-ondemand/index.md#initial-password) for Open OnDemand.
 
