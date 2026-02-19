@@ -440,7 +440,7 @@ During job execution, the following environment variables are available for the 
 !!! warning
     Do not change these environment variables in a job because they are reserved by the job scheduler and may affect the job scheduler's behavior.
 
-## Advance Reservation
+## Advance Reservation {#advance-reservation}
 
 In the case of Reserved service, job execution can be scheduled by reserving compute node in advance.
 
@@ -455,6 +455,11 @@ The maximum number of nodes and the node-time product that can be reserved for t
 | Minimum reserved nodes per reservation | 1 node |
 | Maximum reserved nodes per reservation | 32 nodes |
 | Maximum reserved node time per reservation | 5,376 nodes x hours |
+| Start time of accept reservation | 10:00 a.m. 30 days before |
+| Close time of accept reservation | 9:00 p.m. on the day before Start reservation day |
+| Canceling reservation accept term | 9:00 p.m. on the day before Start reservation day |
+| Reservation start time | 10:00 a.m. of Reservation start day |
+| Reservation end time | 9:30 a.m. of Reservation end day |
 
 !!! note
     The numbers of nodes were changed to the temporal values at Oct 28, 2025. Refer to [System Updates 2025-10-28](https://docs.abci.ai/v3/ja/system-updates/#2025-10-28) for the normal values.
